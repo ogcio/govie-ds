@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import "@ogcio-ds/theme-govie/theme.css";
+import "@govie-ds/theme-govie/theme.css";
 import { Container } from "@/components/chrome/container";
 import { Footer } from "@/components/chrome/footer";
 import { TopBar } from "@/components/chrome/top-bar";
