@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@ogcio-ds/design-components": "workspace:^",
-    "@ogcio-ds/react-layout": "workspace:^",
     "@ogcio-ds/theme-govie": "workspace:^",
     "@ogcio-ds/theme-hse": "workspace:^",
     "@ogcio-ds/tokens": "workspace:^",
