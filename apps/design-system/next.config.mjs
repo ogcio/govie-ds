@@ -1,6 +1,6 @@
 import { withContentlayer } from "next-contentlayer";
 
-const isCI = Boolean(process.env.GITHUB_PAGES);
+const isCI = Boolean(process.env.CI);
 const prefix = isCI ? "/ogcio-ds-poc" : undefined;
 
 /** @type {import('next').NextConfig} */
