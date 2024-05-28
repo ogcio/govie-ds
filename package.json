@@ -8,6 +8,7 @@
   "scripts": {
     "design-system": "nx run @govie-ds/design-system:dev",
     "design-system:build": "nx run @govie-ds/design-system:build",
+    "design-system:build:prod": "cross-env CI=true && nx run @govie-ds/design-system:build",
     "build": "nx run-many --target=build --all",
     "test": "nx run-many --target=test --all --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",
@@ -16,6 +17,7 @@
     "components:storybook": "nx run @govie-ds/design-components:storybook"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nx": "^18.1.3"
   }
 }

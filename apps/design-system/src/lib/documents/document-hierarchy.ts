@@ -14,9 +14,11 @@ export type DocumentHierarchy = {
   children: DocumentHierarchy[];
 };
 
-function getDocumentHierarchyInternal(paths: string[]): DocumentHierarchy {
+function getDocumentHierarchyInternal(
+  paths: string[]
+): DocumentHierarchy | undefined {
   if (!paths || paths.length === 0) {
-    throw new Error(`Invalid paths.`);
+    return;
   }
 
   const hierarchy: DocumentHierarchy = {
@@ -86,8 +88,14 @@ function cleanSlugs(value: DocumentHierarchy): DocumentHierarchy {
   };
 }
 
-export function getDocumentHierarchy(paths: string[]): DocumentHierarchy {
+export function getDocumentHierarchy(
+  paths: string[]
+): DocumentHierarchy | undefined {
   const hierarchy = getDocumentHierarchyInternal(paths);
+
+  if (!hierarchy) {
+    return;
+  }
 
   return cloneDeepWith(hierarchy, (value) => {
     if (isDocumentHierarchy(value)) {
