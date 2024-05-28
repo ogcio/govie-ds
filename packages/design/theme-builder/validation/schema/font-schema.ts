@@ -1,0 +1,91 @@
+import { z } from "zod";
+import {
+  createPixelSchema,
+  createTokenSchema,
+  createIntegerSchema,
+  createNumberSchema,
+} from "./shared.js";
+
+function createFontSizeSchema(name: string) {
+  return createTokenSchema({
+    type: "dimension",
+    valueSchema: createPixelSchema("Space"),
+    name,
+  });
+}
+
+const fontSizeSchema = z
+  .object({
+    "100": createFontSizeSchema("100"),
+    "200": createFontSizeSchema("200"),
+    "300": createFontSizeSchema("300"),
+    "400": createFontSizeSchema("400"),
+    "500": createFontSizeSchema("500"),
+    "600": createFontSizeSchema("600"),
+    "700": createFontSizeSchema("700"),
+    "800": createFontSizeSchema("800"),
+    "900": createFontSizeSchema("900"),
+    "1000": createFontSizeSchema("1000"),
+    "1100": createFontSizeSchema("1100"),
+    "1200": createFontSizeSchema("1200"),
+    "1300": createFontSizeSchema("1300"),
+  })
+  .strict();
+
+function createFontWeightSchema(name: string) {
+  return createTokenSchema({
+    type: "fontWeight",
+    valueSchema: createIntegerSchema("Font weight"),
+    name,
+  });
+}
+
+const fontWeightSchema = z
+  .object({
+    "100": createFontWeightSchema("100"),
+    "200": createFontWeightSchema("200"),
+    "300": createFontWeightSchema("300"),
+    "400": createFontWeightSchema("400"),
+    "500": createFontWeightSchema("500"),
+    "600": createFontWeightSchema("600"),
+    "700": createFontWeightSchema("700"),
+    "800": createFontWeightSchema("800"),
+    "900": createFontWeightSchema("900"),
+  })
+  .strict();
+
+function createFontLineHeightSchema(name: string) {
+  return createTokenSchema({
+    type: "number",
+    valueSchema: createNumberSchema("Line height"),
+    name,
+  });
+}
+
+const fontLineHeightSchema = z
+  .object({
+    "50": createFontLineHeightSchema("50"),
+    "100": createFontLineHeightSchema("100"),
+    "200": createFontLineHeightSchema("200"),
+    "300": createFontLineHeightSchema("300"),
+    "400": createFontLineHeightSchema("400"),
+    "500": createFontLineHeightSchema("500"),
+    "600": createFontLineHeightSchema("600"),
+    "700": createFontLineHeightSchema("700"),
+    "800": createFontLineHeightSchema("800"),
+    "900": createFontLineHeightSchema("900"),
+  })
+  .strict();
+
+export const fontSchema = z
+  .object(
+    {
+      size: fontSizeSchema,
+      weight: fontWeightSchema,
+      lineHeight: fontLineHeightSchema,
+    },
+    {
+      required_error: "Color is required.",
+    }
+  )
+  .strict();

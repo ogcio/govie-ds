@@ -1,0 +1,26 @@
+{
+  "name": "@ogcio-ds/tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "pnpm build:tokens && pnpm build:source",
+    "build:tokens": "tsx scripts/build.ts",
+    "build:source": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ogcio-ds/tokens-builder": "workspace:^"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "style-dictionary": "^3.9.2",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.2",
+    "typescript": "5.4.5"
+  }
+}

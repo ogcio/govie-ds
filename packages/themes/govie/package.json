@@ -1,0 +1,28 @@
+{
+  "name": "@ogcio-ds/theme-govie",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./theme.css": "./dist/theme.css",
+    "./light.css": "./dist/light.css",
+    "./dark.css": "./dist/dark.css"
+  },
+  "scripts": {
+    "build": "pnpm build:tokens && pnpm build:source",
+    "build:tokens": "tsx scripts/build.ts",
+    "build:source": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@ogcio-ds/theme-builder": "workspace:^",
+    "@tsconfig/node20": "^20.1.4",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.2",
+    "typescript": "5.4.5"
+  }
+}

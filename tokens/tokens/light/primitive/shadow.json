@@ -1,0 +1,66 @@
+{
+  "primitive": {
+    "shadow": {
+      "100": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0",
+          "color": "#0000000d"
+        }
+      },
+      "200": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0",
+          "color": "#0000001a"
+        }
+      },
+      "300": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "4px",
+          "blur": "6px",
+          "spread": "-1px",
+          "color": "#0000001a"
+        }
+      },
+      "400": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "10px",
+          "blur": "15px",
+          "spread": "-3px",
+          "color": "#0000001a"
+        }
+      },
+      "500": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "20px",
+          "blur": "25px",
+          "spread": "-5px",
+          "color": "#0000001a"
+        }
+      },
+      "600": {
+        "$type": "shadow",
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "25px",
+          "blur": "50px",
+          "spread": "-12px",
+          "color": "#00000040"
+        }
+      }
+    }
+  }
+}

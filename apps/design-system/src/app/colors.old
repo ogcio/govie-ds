@@ -1,0 +1,66 @@
+import { Fragment } from "react";
+import { ThemeSwitch } from "@/components/theme-changer";
+import { meta } from "@ogcio-ds/theme-govie";
+import { objectKeys } from "ts-extras";
+
+function Color({ name, value }: { name: string; value: string }) {
+  return (
+    <div>
+      <p>{name}</p>
+      <div
+        className="w-[16px] h-[16px]"
+        style={{
+          backgroundColor: value,
+        }}
+      />
+    </div>
+  );
+}
+
+function ColorSwatch({ colors }: { colors: any }) {
+  const variants = Object.keys(colors);
+
+  return (
+    <div className="flex gap-md">
+      {variants.map((variant) => (
+        <div key={variant}>
+          <Color name={variant} value={colors[variant].$value} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ColorsPage() {
+  const colors = objectKeys(meta.light.resolved.primitive.color);
+
+  return (
+    <Fragment>
+      <ThemeSwitch />
+      <h2>Primitive</h2>
+      <h3>Colors</h3>
+      <div className="flex flex-col gap-md">
+        {colors.map((color) => (
+          <Fragment key={color}>
+            <p>{color}</p>
+            <ColorSwatch colors={meta.light.resolved.primitive.color[color]} />
+          </Fragment>
+        ))}
+      </div>
+      <div>
+        <h2>Semantic</h2>
+        <h3>Surface</h3>
+        {Object.keys(meta.light.resolved.semantic.surface).map((surface) => {
+          return (
+            <Fragment key={surface}>
+              <Color
+                name={surface}
+                value={meta.light.resolved.semantic.surface[surface].$value}
+              />
+            </Fragment>
+          );
+        })}
+      </div>
+    </Fragment>
+  );
+}
