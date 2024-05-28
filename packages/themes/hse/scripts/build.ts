@@ -1,4 +1,4 @@
-import { buildTheme } from "@ogcio-ds/theme-builder";
+import { buildTheme } from "@govie-ds/theme-builder";
 
 async function main() {
   await buildTheme({

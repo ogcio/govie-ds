@@ -1,4 +1,4 @@
-import { meta as govieMeta } from "@ogcio-ds/theme-govie";
+import { meta as govieMeta } from "@govie-ds/theme-govie";
 import { objectKeys } from "ts-extras";
 import { SwatchSets } from "./swatch-sets";
 import camelcase from "camelcase";

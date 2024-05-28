@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { meta as govieMeta } from "@ogcio-ds/theme-govie";
-import orderBy from "lodash.orderby";
+import { meta as govieMeta } from "@govie-ds/theme-govie";
 import { Space, sortSpaces } from "./space.js";
-import { objectKeys } from "ts-extras";
 
 const meta = {
   title: "Space",

@@ -1,9 +1,9 @@
-import { meta, tokens as govieTokens } from "@ogcio-ds/theme-govie";
-import { variables } from "@ogcio-ds/tokens";
+import { meta, tokens as govieTokens } from "@govie-ds/theme-govie";
+import { variables } from "@govie-ds/tokens";
 import tailwindTheme from "tailwindcss/defaultTheme.js";
 import { CustomThemeConfig } from "tailwindcss/types/config.js";
 import { objectKeys } from "ts-extras";
-import { deepmerge } from "@ogcio-ds/deepmerge";
+import { deepmerge } from "@govie-ds/deepmerge";
 
 function convertColors(colors: typeof meta.light.resolved.primitive.color) {
   const convertedColorObject: Record<string, Record<string, string>> = {};

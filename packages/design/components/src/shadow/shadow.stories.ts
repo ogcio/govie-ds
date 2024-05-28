@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { meta as govieMeta } from "@ogcio-ds/theme-govie";
 import { Shadow } from "./shadow.js";
 
 const meta = {

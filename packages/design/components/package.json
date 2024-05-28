@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/design-components",
+  "name": "@govie-ds/design-components",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -18,9 +18,9 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@ogcio-ds/deepmerge": "workspace:^",
-    "@ogcio-ds/theme-govie": "workspace:^",
-    "@ogcio-ds/tokens": "workspace:^",
+    "@govie-ds/deepmerge": "workspace:^",
+    "@govie-ds/theme-govie": "workspace:^",
+    "@govie-ds/tokens": "workspace:^",
     "@tailwindcss/typography": "^0.5.13",
     "color-convert": "^2.0.1",
     "lodash.orderby": "^4.6.0",

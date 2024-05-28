@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "@ogcio-ds/theme-govie/theme.css";
+import "@govie-ds/theme-govie/theme.css";
 import "../styles/tailwind.css";
 
 const preview: Preview = {

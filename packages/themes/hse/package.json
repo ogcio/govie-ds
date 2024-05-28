@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/theme-hse",
+  "name": "@govie-ds/theme-hse",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -19,7 +19,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@ogcio-ds/theme-builder": "workspace:^",
+    "@govie-ds/theme-builder": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2"

@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import { glob } from "glob";
-import { deepmerge } from "@ogcio-ds/deepmerge";
+import { deepmerge } from "@govie-ds/deepmerge";
 
 export async function mergeDesignTokens({
   source,

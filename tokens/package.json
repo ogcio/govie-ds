@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/tokens",
+  "name": "@govie-ds/tokens",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@ogcio-ds/tokens-builder": "workspace:^"
+    "@govie-ds/tokens-builder": "workspace:^"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

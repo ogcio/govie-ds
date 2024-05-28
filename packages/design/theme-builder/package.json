@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/theme-builder",
+  "name": "@govie-ds/theme-builder",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -14,9 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@ogcio-ds/deepmerge": "workspace:^",
-    "@ogcio-ds/tokens": "workspace:^",
-    "@ogcio-ds/tokens-builder": "workspace:^",
+    "@govie-ds/deepmerge": "workspace:^",
+    "@govie-ds/tokens": "workspace:^",
+    "@govie-ds/tokens-builder": "workspace:^",
     "fs-extra": "^11.2.0",
     "glob": "^10.3.12",
     "json-schema-to-typescript": "^14.0.0",
