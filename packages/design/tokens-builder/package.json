@@ -1,0 +1,26 @@
+{
+  "name": "@ogcio-ds/tokens-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "camelcase": "^8.0.0",
+    "color": "^4.2.3",
+    "lodash.clonedeepwith": "^4.5.0",
+    "style-dictionary": "4.0.0-prerelease.28"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/color": "^3.0.6",
+    "@types/lodash.clonedeepwith": "^4.5.9",
+    "tsup": "^8.0.2",
+    "typescript": "5.4.5"
+  }
+}

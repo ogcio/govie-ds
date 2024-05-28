@@ -1,0 +1,24 @@
+{
+  "name": "@ogcio-ds/figma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/build.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ogcio-ds/theme-govie": "workspace:^",
+    "@ogcio-ds/theme-hse": "workspace:^",
+    "@ogcio-ds/tokens-builder": "workspace:^"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.7",
+    "tsx": "^4.7.2",
+    "typescript": "5.4.5"
+  }
+}

@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # - name: Lint
+      #   run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Create Figma tokens flat artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: figma-tokens
+          path: packages/design/figma/dist/tokens
+
+      - name: Create Figma tokens flat artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: figma-tokens-flat
+          path: packages/design/figma/dist/tokens-flat

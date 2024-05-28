@@ -1,0 +1,10 @@
+{
+  "component": {
+    "button": {
+      "primary-background-color-default": {
+        "$type": "color",
+        "$value": "{semantic.surface.primary}"
+      }
+    }
+  }
+}

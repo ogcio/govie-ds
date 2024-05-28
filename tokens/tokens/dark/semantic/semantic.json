@@ -1,0 +1,14 @@
+{
+  "semantic": {
+    "surface": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.color.green.100}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{primitive.color.red.100}"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@ogcio-ds/deepmerge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "deepmerge": "^4.3.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "tsup": "^8.0.2",
+    "typescript": "5.4.5"
+  }
+}

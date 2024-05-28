@@ -1,0 +1,21 @@
+{
+  "name": "root",
+  "private": true,
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "design-system": "nx run @ogcio-ds/design-system:dev",
+    "design-system:build": "nx run @ogcio-ds/design-system:build",
+    "build": "nx run-many --target=build --all",
+    "test": "nx run-many --target=test --all --verbose",
+    "tokens:build": "nx run @ogcio-ds/tokens:build",
+    "govie:build": "nx run @ogcio-ds/theme-govie:build",
+    "figma:build": "nx run @ogcio-ds/figma:build",
+    "components:storybook": "nx run @ogcio-ds/design-components:storybook"
+  },
+  "devDependencies": {
+    "nx": "^18.1.3"
+  }
+}
