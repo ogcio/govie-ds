@@ -1,4 +1,4 @@
-import { meta } from "@ogcio-ds/theme-govie";
+import { meta } from "@govie-ds/theme-govie";
 import { objectKeys } from "ts-extras";
 import { TokenName } from "../color/token-name";
 import { Table, Td } from "./table";

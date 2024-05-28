@@ -1,12 +1,12 @@
 import type { Config } from "tailwindcss";
-import { createTheme } from "@ogcio-ds/design-components";
+import { createTheme } from "@govie-ds/design-components";
 
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@ogcio-ds/design-components/src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@govie-ds/design-components/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: createTheme({
     theme: {

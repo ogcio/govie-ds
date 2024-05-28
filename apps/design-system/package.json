@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/design-system",
+  "name": "@govie-ds/design-system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,10 +11,10 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@ogcio-ds/design-components": "workspace:^",
-    "@ogcio-ds/theme-govie": "workspace:^",
-    "@ogcio-ds/theme-hse": "workspace:^",
-    "@ogcio-ds/tokens": "workspace:^",
+    "@govie-ds/design-components": "workspace:^",
+    "@govie-ds/theme-govie": "workspace:^",
+    "@govie-ds/theme-hse": "workspace:^",
+    "@govie-ds/tokens": "workspace:^",
     "@radix-ui/react-dialog": "^1.0.5",
     "@tailwindcss/typography": "^0.5.13",
     "camelcase": "^8.0.0",

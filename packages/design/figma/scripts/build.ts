@@ -1,5 +1,5 @@
-import { meta as govieMeta } from "@ogcio-ds/theme-govie";
-import { meta as hseMeta } from "@ogcio-ds/theme-hse";
+import { meta as govieMeta } from "@govie-ds/theme-govie";
+import { meta as hseMeta } from "@govie-ds/theme-hse";
 import { buildFigmaTokens } from "../src/figma-tokens.js";
 import { buildFigmaTokensFlat } from "../src/figma-tokens-flat.js";
 

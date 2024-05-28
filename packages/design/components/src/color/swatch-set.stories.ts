@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { meta as govieMeta } from "@ogcio-ds/theme-govie";
+import { meta as govieMeta } from "@govie-ds/theme-govie";
 import { SwatchSet } from "./swatch-set.js";
 
 const meta = {

@@ -1,5 +1,3 @@
-import { tokens } from "@ogcio-ds/theme-govie";
-
 export function Shadow({
   name,
   boxShadow,

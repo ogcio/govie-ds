@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio-ds/figma",
+  "name": "@govie-ds/figma",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,9 +11,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@ogcio-ds/theme-govie": "workspace:^",
-    "@ogcio-ds/theme-hse": "workspace:^",
-    "@ogcio-ds/tokens-builder": "workspace:^"
+    "@govie-ds/theme-govie": "workspace:^",
+    "@govie-ds/theme-hse": "workspace:^",
+    "@govie-ds/tokens-builder": "workspace:^"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

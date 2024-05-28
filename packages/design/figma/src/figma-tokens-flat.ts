@@ -1,4 +1,4 @@
-import { buildTokens } from "@ogcio-ds/tokens-builder";
+import { buildTokens } from "@govie-ds/tokens-builder";
 import { createManifest } from "./manifest.js";
 import {
   FigmaManifestCollection,

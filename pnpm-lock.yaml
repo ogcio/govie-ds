@@ -14,16 +14,16 @@ importers:
 
   apps/design-system:
     dependencies:
-      '@ogcio-ds/design-components':
+      '@govie-ds/design-components':
         specifier: workspace:^
         version: link:../../packages/design/components
-      '@ogcio-ds/theme-govie':
+      '@govie-ds/theme-govie':
         specifier: workspace:^
         version: link:../../packages/themes/govie
-      '@ogcio-ds/theme-hse':
+      '@govie-ds/theme-hse':
         specifier: workspace:^
         version: link:../../packages/themes/hse
-      '@ogcio-ds/tokens':
+      '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../tokens
       '@radix-ui/react-dialog':
@@ -114,13 +114,13 @@ importers:
 
   packages/design/components:
     dependencies:
-      '@ogcio-ds/deepmerge':
+      '@govie-ds/deepmerge':
         specifier: workspace:^
         version: link:../deepmerge
-      '@ogcio-ds/theme-govie':
+      '@govie-ds/theme-govie':
         specifier: workspace:^
         version: link:../../themes/govie
-      '@ogcio-ds/tokens':
+      '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../../tokens
       '@tailwindcss/typography':
@@ -245,13 +245,13 @@ importers:
 
   packages/design/figma:
     dependencies:
-      '@ogcio-ds/theme-govie':
+      '@govie-ds/theme-govie':
         specifier: workspace:^
         version: link:../../themes/govie
-      '@ogcio-ds/theme-hse':
+      '@govie-ds/theme-hse':
         specifier: workspace:^
         version: link:../../themes/hse
-      '@ogcio-ds/tokens-builder':
+      '@govie-ds/tokens-builder':
         specifier: workspace:^
         version: link:../tokens-builder
     devDependencies:
@@ -273,13 +273,13 @@ importers:
       '@animaapp/design-tokens-validator':
         specifier: ^0.0.2
         version: 0.0.2
-      '@ogcio-ds/deepmerge':
+      '@govie-ds/deepmerge':
         specifier: workspace:^
         version: link:../deepmerge
-      '@ogcio-ds/tokens':
+      '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../../tokens
-      '@ogcio-ds/tokens-builder':
+      '@govie-ds/tokens-builder':
         specifier: workspace:^
         version: link:../tokens-builder
       fs-extra:
@@ -353,7 +353,7 @@ importers:
 
   packages/themes/govie:
     devDependencies:
-      '@ogcio-ds/theme-builder':
+      '@govie-ds/theme-builder':
         specifier: workspace:^
         version: link:../../design/theme-builder
       '@tsconfig/node20':
@@ -371,7 +371,7 @@ importers:
 
   packages/themes/hse:
     devDependencies:
-      '@ogcio-ds/theme-builder':
+      '@govie-ds/theme-builder':
         specifier: workspace:^
         version: link:../../design/theme-builder
       '@tsconfig/node20':
@@ -386,7 +386,7 @@ importers:
 
   tokens:
     dependencies:
-      '@ogcio-ds/tokens-builder':
+      '@govie-ds/tokens-builder':
         specifier: workspace:^
         version: link:../packages/design/tokens-builder
     devDependencies:
