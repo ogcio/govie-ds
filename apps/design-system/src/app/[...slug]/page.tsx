@@ -3,6 +3,12 @@ import { Mdx } from "@/components/document/mdx";
 import * as documents from "@/lib/documents/documents";
 import { DocumentStatus } from "@/components/document/document-status";
 
+export async function generateStaticParams() {
+  return documents.getAll().map((document) => ({
+    slug: document.slug.split("/"),
+  }));
+}
+
 type DocPageProps = {
   params: {
     slug: string[];
