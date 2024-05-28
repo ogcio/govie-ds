@@ -1,8 +1,8 @@
 import { getDocumentHierarchy } from "./document-hierarchy";
 
 describe("getDocumentHierarchy", () => {
-  it("should throw for no paths", () => {
-    expect(() => getDocumentHierarchy([])).toThrowError(`Invalid paths.`);
+  it("should return undefined for no paths", () => {
+    expect(getDocumentHierarchy([])).toBeUndefined();
   });
 
   it("should return hierarchy for a single path", () => {
