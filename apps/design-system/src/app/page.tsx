@@ -4,6 +4,7 @@ import { Heading } from "@/components/typography/heading";
 import { Text } from "@/components/typography/text";
 import { Button } from "@/components/form/button";
 import heroImage from "../../public/hero.png";
+import { config } from "@/lib/config";
 
 function Prose({
   as: As = "div",
@@ -103,7 +104,7 @@ export default function HomePage() {
             Design System Building Block empowers your department to create
             cohesive digital experiences effortlessly.
           </Text>
-          <Button href="#">Learn more</Button>
+          <Button href={config.signUpFormUrl}>Learn more</Button>
         </Prose>
         <div>
           <Image
@@ -122,7 +123,7 @@ export default function HomePage() {
           or learn more about how the Design System building block can empower
           your public sector department.
         </Text>
-        <Button href="#">Get started</Button>
+        <Button href={config.signUpFormUrl}>Get started</Button>
       </Prose>
     </article>
   );
