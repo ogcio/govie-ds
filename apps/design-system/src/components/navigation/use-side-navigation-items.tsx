@@ -62,6 +62,10 @@ export function useSideNavigationItems() {
   const allDocumentIds = documents.getAll().map((document) => document.id);
   const documentHierarchy = getDocumentHierarchy(allDocumentIds);
 
+  if (!documentHierarchy) {
+    return [];
+  }
+
   const topLevelHierarchy = documentHierarchy.children.find(
     (child) => child.slug === slug[0]
   );
