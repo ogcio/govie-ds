@@ -4,6 +4,7 @@ import { Heading } from "@/components/typography/heading";
 import { Text } from "@/components/typography/text";
 import { Button } from "@/components/form/button";
 import heroImage from "../../public/hero.png";
+import { config } from "@/lib/config";
 
 function Prose({
   as: As = "div",
@@ -87,9 +88,33 @@ function Benefits() {
   );
 }
 
+function Feedback() {
+  return (
+    <div className="flex flex-col gap-xl">
+      <div className="flex items-center gap-lg">
+        <div className="bg-blue-600 px-md rounded text-white tracking-wider">
+          Alpha
+        </div>
+        <p className="text-gray-700 text-xs sm:text-md">
+          This is a new service - your{" "}
+          <a
+            className="underline text-blue-700 hover:decoration-md"
+            href={config.feedbackFormUrl}
+          >
+            feedback
+          </a>{" "}
+          will help us to improve it.
+        </p>
+      </div>
+      <hr />
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
-    <article className="flex flex-col sm:py-2xl gap-5xl grow">
+    <article className="flex flex-col sm:pb-2xl gap-5xl grow">
+      <Feedback />
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
         <Prose>
           <Heading as="h1" className="leading-none sm:leading-normal">
@@ -103,7 +128,7 @@ export default function HomePage() {
             Design System Building Block empowers your department to create
             cohesive digital experiences effortlessly.
           </Text>
-          <Button href="#">Learn more</Button>
+          <Button href={config.signUpFormUrl}>Learn more</Button>
         </Prose>
         <div>
           <Image
@@ -122,7 +147,7 @@ export default function HomePage() {
           or learn more about how the Design System building block can empower
           your public sector department.
         </Text>
-        <Button href="#">Get started</Button>
+        <Button href={config.signUpFormUrl}>Get started</Button>
       </Prose>
     </article>
   );
