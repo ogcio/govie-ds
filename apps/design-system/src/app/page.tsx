@@ -88,9 +88,33 @@ function Benefits() {
   );
 }
 
+function Feedback() {
+  return (
+    <div className="flex flex-col gap-xl">
+      <div className="flex items-center gap-md">
+        <div className="bg-blue-600 px-md rounded text-white tracking-wider">
+          Alpha
+        </div>
+        <p className="text-gray-700">
+          This is a new service - your{" "}
+          <a
+            className="underline text-blue-700 hover:decoration-md"
+            href={config.feedbackFormUrl}
+          >
+            feedback
+          </a>{" "}
+          will help us to improve it.
+        </p>
+      </div>
+      <hr />
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
-    <article className="flex flex-col sm:py-2xl gap-5xl grow">
+    <article className="flex flex-col sm:pb-2xl gap-5xl grow">
+      <Feedback />
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
         <Prose>
           <Heading as="h1" className="leading-none sm:leading-normal">

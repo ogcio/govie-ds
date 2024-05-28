@@ -12,12 +12,12 @@ export function Header({ onMobileMenuSelect = () => {} }: HeaderProps) {
     <div className="bg-emerald-800 border-b-lg border-gold-500">
       <Container>
         <div className="flex items-center py-xl gap-lg text-white">
-          <button
+          {/* <button
             className="block sm:hidden"
             onClick={() => onMobileMenuSelect()}
           >
             <MenuIcon />
-          </button>
+          </button> */}
           <a
             className="border-b-lg border-emerald-800 hover:border-white"
             href={config.buildingBlocksHomeUrl}
