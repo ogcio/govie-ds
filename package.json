@@ -6,6 +6,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "graph": "nx graph",
     "docs": "nx run @govie-ds/docs:dev",
     "docs:build": "nx run @govie-ds/docs:build",
     "docs:build:prod": "nx run @govie-ds/docs:build:prod",

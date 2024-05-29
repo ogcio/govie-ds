@@ -1,4 +1,4 @@
-FROM docker.io/node:lts-alpine as base
+FROM docker.io/node:20-alpine as base
 
 # Build image (run from root)
 
@@ -10,6 +10,7 @@ WORKDIR /build
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
 COPY apps/ ./apps
 COPY packages/ ./packages
+COPY tokens/ ./tokens
 
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
