@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/design-system",
+  "name": "@govie-ds/docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -35,6 +35,8 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "@nx-tools/container-metadata": "^6.0.1",
+    "@nx-tools/nx-container": "^6.0.1",
     "@types/color-convert": "^2.0.3",
     "@types/lodash.clonedeepwith": "^4.5.9",
     "@types/node": "^20",

@@ -1,0 +1,25 @@
+{
+  "name": "@govie-ds/docs",
+  "targets": {
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "defaultConfiguration": "local",
+      "options": {
+        "engine": "docker",
+        "context": "dist/apps/my-app",
+        "file": "apps/my-app/Dockerfile"
+      },
+      "configurations": {
+        "local": {
+          "tags": ["my-app:latest"],
+          "push": false
+        },
+        "production": {
+          "tags": ["my.image-registry.com/my-app:latest"],
+          "push": true
+        }
+      }
+    }
+  }
+}
