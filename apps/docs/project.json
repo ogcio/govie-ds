@@ -10,14 +10,13 @@
         "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]"
       }
     },
-    "container": {
+    "docker": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": ["build"],
       "defaultConfiguration": "local",
       "options": {
         "engine": "docker",
-        "context": "apps/docs",
-        "file": "apps/docs/Dockerfile"
+        "context": "../../",
+        "file": "Dockerfile"
       },
       "configurations": {
         "local": {
