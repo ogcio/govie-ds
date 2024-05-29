@@ -1,6 +1,7 @@
 import { withContentlayer } from "next-contentlayer";
 
 const isCI = Boolean(process.env.CI);
+const isExport = Boolean(process.env.OUTPUT_EXPORT);
 const prefix = undefined;
 
 /** @type {import('next').NextConfig} */
@@ -9,7 +10,7 @@ const nextConfig = {
   trailingSlash: true,
   basePath: prefix,
   assetPrefix: prefix,
-  output: "standalone",
+  output: isExport ? "export" : "standalone",
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
