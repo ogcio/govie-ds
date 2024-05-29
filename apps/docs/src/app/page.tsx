@@ -5,6 +5,7 @@ import { Text } from "@/components/typography/text";
 import { Button } from "@/components/form/button";
 import heroImage from "../../public/hero.png";
 import { config } from "@/lib/config";
+import { RightArrowIcon } from "@/components/icons/right-arrow-icon";
 
 function Prose({
   as: As = "div",
@@ -128,7 +129,9 @@ export default function HomePage() {
             Design System Building Block empowers your department to create
             cohesive digital experiences effortlessly.
           </Text>
-          <Button href={config.signUpFormUrl}>Sign up to learn more</Button>
+          <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+            Sign up to learn more
+          </Button>
         </Prose>
         <div>
           <Image
@@ -147,7 +150,9 @@ export default function HomePage() {
           or learn more about how the Design System building block can empower
           your public sector department.
         </Text>
-        <Button href={config.signUpFormUrl}>Sign up to learn more</Button>
+        <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+          Sign up to learn more
+        </Button>
       </Prose>
     </article>
   );
