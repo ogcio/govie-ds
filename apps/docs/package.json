@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "docker:local": "docker build -f Dockerfile ../.."
   },
   "dependencies": {
     "@govie-ds/design-components": "workspace:^",
