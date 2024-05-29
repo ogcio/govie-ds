@@ -128,7 +128,7 @@ export default function HomePage() {
             Design System Building Block empowers your department to create
             cohesive digital experiences effortlessly.
           </Text>
-          <Button href={config.signUpFormUrl}>Learn more</Button>
+          <Button href={config.signUpFormUrl}>Sign up to learn more</Button>
         </Prose>
         <div>
           <Image
@@ -147,7 +147,7 @@ export default function HomePage() {
           or learn more about how the Design System building block can empower
           your public sector department.
         </Text>
-        <Button href={config.signUpFormUrl}>Get started</Button>
+        <Button href={config.signUpFormUrl}>Sign up to learn more</Button>
       </Prose>
     </article>
   );
