@@ -1,7 +1,7 @@
 {
   "namedInputs": {
     "default": ["{projectRoot}/**/*"],
-    "nonTest": ["!{projectRoot}/**/*.spec.tsx"]
+    "nonTest": ["!{projectRoot}/**/*.test.tsx"]
   },
   "targetDefaults": {
     "build": {

@@ -1,7 +1,7 @@
 import { withContentlayer } from "next-contentlayer";
 
 const isCI = Boolean(process.env.CI);
-const prefix = isCI ? "/govie-ds" : undefined;
+const prefix = undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,7 +9,7 @@ const nextConfig = {
   trailingSlash: true,
   basePath: prefix,
   assetPrefix: prefix,
-  output: isCI ? "export" : undefined, // TODO: see https://github.com/vercel/next.js/issues/56253
+  output: "standalone",
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
