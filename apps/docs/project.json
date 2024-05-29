@@ -1,23 +1,32 @@
 {
   "name": "@govie-ds/docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "targets": {
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "push": true,
+        "trackDeps": true,
+        "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]"
+      }
+    },
     "container": {
       "executor": "@nx-tools/nx-container:build",
       "dependsOn": ["build"],
       "defaultConfiguration": "local",
       "options": {
         "engine": "docker",
-        "context": "dist/apps/my-app",
-        "file": "apps/my-app/Dockerfile"
+        "context": "apps/docs",
+        "file": "apps/docs/Dockerfile"
       },
       "configurations": {
         "local": {
-          "tags": ["my-app:latest"],
+          "tags": ["govie-ds-docs:latest"],
           "push": false
         },
         "production": {
-          "tags": ["my.image-registry.com/my-app:latest"],
-          "push": true
+          "tags": ["my.image-registry.com/govie-ds-docs:latest"],
+          "push": false
         }
       }
     }

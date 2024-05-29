@@ -6,9 +6,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "design-system": "nx run @govie-ds/design-system:dev",
-    "design-system:build": "nx run @govie-ds/design-system:build",
-    "design-system:build:prod": "nx run @govie-ds/design-system:build:prod",
+    "docs": "nx run @govie-ds/docs:dev",
+    "docs:build": "nx run @govie-ds/docs:build",
+    "docs:build:prod": "nx run @govie-ds/docs:build:prod",
     "build": "nx run-many --target=build --all",
     "test": "nx run-many --target=test --all --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",
@@ -17,7 +17,7 @@
     "components:storybook": "nx run @govie-ds/design-components:storybook"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
+    "@jscutlery/semver": "^5.2.2",
     "nx": "^18.1.3"
   }
 }

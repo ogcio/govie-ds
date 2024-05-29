@@ -9,7 +9,7 @@ const nextConfig = {
   trailingSlash: true,
   basePath: prefix,
   assetPrefix: prefix,
-  output: isCI ? "export" : undefined, // TODO: see https://github.com/vercel/next.js/issues/56253
+  output: "standalone",
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
