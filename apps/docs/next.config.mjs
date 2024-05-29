@@ -1,8 +1,7 @@
 import { withContentlayer } from "next-contentlayer";
 
-const isCI = Boolean(process.env.CI);
-const isExport = Boolean(process.env.OUTPUT_EXPORT);
-const prefix = undefined;
+const isGitHubPages = Boolean(process.env.GITHUB_PAGES);
+const prefix = isGitHubPages ? "/govie-ds" : undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,7 +9,7 @@ const nextConfig = {
   trailingSlash: true,
   basePath: prefix,
   assetPrefix: prefix,
-  output: isExport ? "export" : "standalone",
+  output: isGitHubPages ? "export" : "standalone",
   images: {
     unoptimized: true, // TODO: review image optimisation
   },

@@ -34,7 +34,7 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm run ds:build
         env:
-          OUTPUT_EXPORT: true
+          GITHUB_PAGES: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
