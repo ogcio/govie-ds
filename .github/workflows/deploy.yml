@@ -32,13 +32,13 @@ jobs:
         run: |
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm run design-system:build
+          pnpm run ds:build
         env:
-          GITHUB_PAGES: true
+          OUTPUT_EXPORT: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/design-system/out
+          path: ./apps/docs/out
 
   deploy:
     environment:
