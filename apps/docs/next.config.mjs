@@ -1,7 +1,7 @@
 import { withContentlayer } from "next-contentlayer";
 
 const isCI = Boolean(process.env.CI);
-const prefix = isCI ? "/govie-ds" : undefined;
+const prefix = undefined;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
