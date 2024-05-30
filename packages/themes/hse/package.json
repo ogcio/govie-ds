@@ -2,6 +2,7 @@
   "name": "@govie-ds/theme-hse",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "type": "module",
   "main": "dist/index.js",
   "exports": {
