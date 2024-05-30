@@ -6,7 +6,6 @@ import { dtcgFormatter } from "./formatters/dtcg.js";
 import { typeScriptConstsFormatter } from "./formatters/typescript-consts.js";
 import { figmaFormatter } from "./formatters/figma.js";
 import { cssVariableNameFormatter } from "./formatters/css-variable-names.js";
-import { toShadowString } from "./utils/shadow.js";
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -74,9 +73,6 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
           destination: platformConfig.css.outputFilename,
         },
       ],
-      expand: {
-        include: ["shadow"],
-      },
       options: {
         showFileHeader: false,
         selector: platformConfig.css.selector,
@@ -262,18 +258,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerTransform({
-    name: "shadow/css",
-    type: "value",
-    transitive: true,
-    filter: function (token) {
-      return token.$type === "shadow";
-    },
-    transform: function (token) {
-      return toShadowString(token.$value);
-    },
-  });
-
-  styleDictionary.registerTransform({
     name: "lineHeight/px",
     type: "value",
     filter: function (token) {
@@ -330,6 +314,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "size/rem", // TODO: review
       "lineHeight/px",
       "color/hex", // TODO: review,
+      "shadow/css/shorthand",
     ],
   });
 
