@@ -2,19 +2,19 @@
   "primitive": {
     "font": {
       "size": {
-        "100": { "$type": "dimension", "$value": "12px" },
-        "200": { "$type": "dimension", "$value": "14px" },
-        "300": { "$type": "dimension", "$value": "16px" },
-        "400": { "$type": "dimension", "$value": "18px" },
-        "500": { "$type": "dimension", "$value": "20px" },
-        "600": { "$type": "dimension", "$value": "24px" },
-        "700": { "$type": "dimension", "$value": "28px" },
-        "800": { "$type": "dimension", "$value": "32px" },
-        "900": { "$type": "dimension", "$value": "36px" },
-        "1000": { "$type": "dimension", "$value": "48px" },
-        "1100": { "$type": "dimension", "$value": "56px" },
-        "1200": { "$type": "dimension", "$value": "64px" },
-        "1300": { "$type": "dimension", "$value": "80px" }
+        "100": { "$type": "dimension", "$value": "0.75rem" },
+        "200": { "$type": "dimension", "$value": "0.875rem" },
+        "300": { "$type": "dimension", "$value": "1rem" },
+        "400": { "$type": "dimension", "$value": "1.125rem" },
+        "500": { "$type": "dimension", "$value": "1.25rem" },
+        "600": { "$type": "dimension", "$value": "1.5rem" },
+        "700": { "$type": "dimension", "$value": "1.75rem" },
+        "800": { "$type": "dimension", "$value": "2rem" },
+        "900": { "$type": "dimension", "$value": "2.25rem" },
+        "1000": { "$type": "dimension", "$value": "3rem" },
+        "1100": { "$type": "dimension", "$value": "3.5rem" },
+        "1200": { "$type": "dimension", "$value": "4rem" },
+        "1300": { "$type": "dimension", "$value": "5rem" }
       },
       "weight": {
         "100": { "$type": "fontWeight", "$value": 100 },

@@ -1,6 +1,5 @@
 import { z } from "zod";
 import {
-  createPixelSchema,
   createTokenSchema,
   createIntegerSchema,
   createNumberSchema,
@@ -10,7 +9,7 @@ import {
 function createFontSizeSchema(name: string) {
   return createTokenSchema({
     type: "dimension",
-    valueSchema: createPixelSchema("Space"),
+    valueSchema: createRemSchema("Font size"),
     name,
   });
 }
