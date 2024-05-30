@@ -296,7 +296,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       return token.attributes?.item === "lineHeight";
     },
     transform: function (token) {
-      return "15px";
+      return `${token.$value * 16}px`;
     },
   });
 
