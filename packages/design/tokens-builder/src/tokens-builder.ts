@@ -242,22 +242,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerTransform({
-    name: "size/font-rem",
-    type: "value",
-    filter: (token) =>
-      token.attributes?.type === "font" && token.attributes?.item === "size",
-    transform: (token, _) => {
-      const parsed = Number(token.$value.replace("px", ""));
-
-      if (isNaN(parsed)) {
-        throw new Error(`Invalid font size value for token ${token.name}.`);
-      }
-
-      return `${parsed / 16}rem`;
-    },
-  });
-
-  styleDictionary.registerTransform({
     name: "lineHeight/px",
     type: "value",
     filter: function (token) {
@@ -292,6 +276,17 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
     },
   });
 
+  styleDictionary.registerTransform({
+    name: "fontSize/px",
+    type: "value",
+    filter: (token) =>
+      token.attributes?.type === "font" && token.attributes?.item === "size",
+    transform: (token) => {
+      const parsed = Number(token.$value.replace("rem", ""));
+      return `${parsed * 16}px`;
+    },
+  });
+
   styleDictionary.registerTransformGroup({
     name: "css/custom",
     transforms: [
@@ -299,7 +294,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "name/kebab",
       // 'time/seconds',
       // 'html/icon',
-      "size/font-rem",
+      // "size/font-rem",
       // "color/css",
       // 'asset/url',
       // "fontFamily/css",
@@ -321,7 +316,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "name/pascal",
       // 'time/seconds',
       // 'html/icon',
-      "size/font-rem",
+      // "size/font-rem",
       // "color/css",
       // 'asset/url',
       // "size/px",
@@ -341,6 +336,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "color/hex", // TODO: review,
       "shadow/css/shorthand",
       "letterSpacing/percentage",
+      "fontSize/px",
     ],
   });
 
