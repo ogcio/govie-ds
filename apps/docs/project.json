@@ -20,12 +20,10 @@
       },
       "configurations": {
         "dev": {
-          "tags": ["dev", "govie-ds-docs:latest"],
-          "push": true
+          "tags": ["dev", "govie-ds-docs:latest"]
         },
         "production": {
-          "tags": ["my.image-registry.com/govie-ds-docs:latest"],
-          "push": false
+          "tags": ["prod", "govie-ds-docs:latest"]
         }
       }
     }

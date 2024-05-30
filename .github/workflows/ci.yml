@@ -58,19 +58,22 @@ jobs:
         id: login-pf-aws-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push docker
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build docker
         if: github.ref == 'refs/heads/main'
         run: |
           pnpm nx affected --base=last-release -t docker --parallel=1
 
-      # - name: Push docker
-      #   env:
-      #     ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-      #     ECR_REPOSITORY: ${{secrets.AWS_ECR_REPO}}
-      #     IMAGE_TAG: latest
-      #   run: |
-      #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      - name: Push docker
+        env:
+          ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
+          ECR_REPOSITORY: life-events-design-system
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Tag last-release
         if: github.ref == 'refs/heads/main'
