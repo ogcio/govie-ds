@@ -261,22 +261,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
     },
   });
 
-  // styleDictionary.registerTransform({
-  //   name: "size/dimension-px",
-  //   type: "value",
-  //   filter: (token) => token.$type === "dimension",
-  //   transform: function (token, _) {
-  //     const nonParsed = token.$value;
-
-  //     const parsedVal = parseFloat(nonParsed);
-  //     if (isNaN(parsedVal)) {
-  //       throw new Error(`Invalid dimension value for token ${token.name}.`);
-  //     }
-
-  //     return `${parsedVal}px`;
-  //   },
-  // });
-
   styleDictionary.registerTransform({
     name: "shadow/css",
     type: "value",
@@ -308,7 +292,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // 'time/seconds',
       // 'html/icon',
       "size/font-rem",
-      // "size/dimension-px",
       // "color/css",
       // 'asset/url',
       // "fontFamily/css",
@@ -330,7 +313,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // 'time/seconds',
       // 'html/icon',
       "size/font-rem",
-      // "size/dimension-px",
       // "color/css",
       // 'asset/url',
       // "size/px",
