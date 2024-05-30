@@ -289,6 +289,17 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
     },
   });
 
+  styleDictionary.registerTransform({
+    name: "lineHeight/px",
+    type: "value",
+    filter: function (token) {
+      return token.attributes?.item === "lineHeight";
+    },
+    transform: function (token) {
+      return "15px";
+    },
+  });
+
   styleDictionary.registerTransformGroup({
     name: "css/custom",
     transforms: [
@@ -335,6 +346,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "attribute/cti",
       "name/pascal",
       "size/rem", // TODO: review
+      "lineHeight/px",
       "color/hex", // TODO: review,
     ],
   });
