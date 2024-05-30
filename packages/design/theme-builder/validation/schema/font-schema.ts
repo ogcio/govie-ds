@@ -4,6 +4,7 @@ import {
   createTokenSchema,
   createIntegerSchema,
   createNumberSchema,
+  createRemSchema,
 } from "./shared.js";
 
 function createFontSizeSchema(name: string) {
@@ -81,12 +82,33 @@ const fontLineHeightSchema = z
   })
   .strict();
 
+function createLetterSpacingSchema(name: string) {
+  return createTokenSchema({
+    type: "dimension",
+    valueSchema: createRemSchema("Letter spacing"),
+    name,
+  });
+}
+
+const letterSpacingSchema = z.object({
+  "100": createLetterSpacingSchema("100"),
+  "200": createLetterSpacingSchema("200"),
+  "300": createLetterSpacingSchema("300"),
+  "400": createLetterSpacingSchema("400"),
+  "500": createLetterSpacingSchema("500"),
+  "600": createLetterSpacingSchema("600"),
+  "700": createLetterSpacingSchema("700"),
+  "800": createLetterSpacingSchema("800"),
+  "900": createLetterSpacingSchema("900"),
+});
+
 export const fontSchema = z
   .object(
     {
       size: fontSizeSchema,
       weight: fontWeightSchema,
       lineHeight: fontLineHeightSchema,
+      letterSpacing: letterSpacingSchema,
     },
     {
       required_error: "Color is required.",
