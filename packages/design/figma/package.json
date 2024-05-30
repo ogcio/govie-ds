@@ -2,6 +2,7 @@
   "name": "@govie-ds/figma",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "type": "module",
   "scripts": {

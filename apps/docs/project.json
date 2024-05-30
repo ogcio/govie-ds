@@ -12,20 +12,18 @@
     },
     "docker": {
       "executor": "@nx-tools/nx-container:build",
-      "defaultConfiguration": "local",
+      "defaultConfiguration": "dev",
       "options": {
         "engine": "docker",
         "context": "../../",
         "file": "Dockerfile"
       },
       "configurations": {
-        "local": {
-          "tags": ["govie-ds-docs:latest"],
-          "push": false
+        "dev": {
+          "tags": ["dev", "govie-ds-docs:latest"]
         },
         "production": {
-          "tags": ["my.image-registry.com/govie-ds-docs:latest"],
-          "push": false
+          "tags": ["prod", "govie-ds-docs:latest"]
         }
       }
     }

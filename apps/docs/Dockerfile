@@ -22,7 +22,7 @@ FROM base as production
 RUN apk add --no-cache dumb-init
 
 ENV NODE_ENV production
-ENV PORT 3000
+ENV PORT 3007
 ENV HOST 0.0.0.0
 ENV NEXT_TELEMETRY_DISABLED 1
 
@@ -44,6 +44,6 @@ COPY --from=builder --chown=nextjs:nodejs /build/apps/docs/public ./apps/docs/pu
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 3007
 
 CMD [ "dumb-init", "node", "apps/docs/server.js" ]
