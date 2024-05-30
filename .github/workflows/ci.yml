@@ -42,15 +42,15 @@ jobs:
           name: figma-tokens-flat
           path: packages/design/figma/dist/tokens-flat
 
-      # - name: Version
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     pnpm nx affected --base=last-release -t version --parallel=1
+      - name: Version
+        if: github.ref == 'refs/heads/main'
+        run: |
+          pnpm nx affected --base=last-release -t version --parallel=1
 
-      # - name: Docker
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     pnpm nx affected --base=last-release -t docker --parallel=1
+      - name: Docker
+        if: github.ref == 'refs/heads/main'
+        run: |
+          pnpm nx affected --base=last-release -t docker --parallel=1
 
       - name: Tag last-release
         if: github.ref == 'refs/heads/main'
