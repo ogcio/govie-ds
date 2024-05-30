@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "camelcase": "^8.0.0",
-    "color": "^4.2.3",
     "lodash.clonedeepwith": "^4.5.0",
     "style-dictionary": "4.0.0-prerelease.31"
   },
