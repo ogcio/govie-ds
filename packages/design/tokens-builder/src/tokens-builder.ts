@@ -248,32 +248,16 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: "size/font-rem",
     type: "value",
-    filter: (token) => token.$type === "fontSize",
-    transform: function (token, _) {
-      const nonParsed = token.$value;
+    filter: (token) =>
+      token.attributes?.type === "font" && token.attributes?.item === "size",
+    transform: (token, _) => {
+      const parsed = Number(token.$value.replace("px", ""));
 
-      const parsedVal = Number(nonParsed);
-      if (isNaN(parsedVal)) {
+      if (isNaN(parsed)) {
         throw new Error(`Invalid font size value for token ${token.name}.`);
       }
 
-      return `${parsedVal}rem`;
-    },
-  });
-
-  styleDictionary.registerTransform({
-    name: "size/dimension-px",
-    type: "value",
-    filter: (token) => token.$type === "dimension",
-    transform: function (token, _) {
-      const nonParsed = token.$value;
-
-      const parsedVal = parseFloat(nonParsed);
-      if (isNaN(parsedVal)) {
-        throw new Error(`Invalid dimension value for token ${token.name}.`);
-      }
-
-      return `${parsedVal}px`;
+      return `${parsed / 16}rem`;
     },
   });
 
@@ -308,7 +292,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // 'time/seconds',
       // 'html/icon',
       "size/font-rem",
-      "size/dimension-px",
       // "color/css",
       // 'asset/url',
       // "fontFamily/css",
@@ -330,7 +313,6 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // 'time/seconds',
       // 'html/icon',
       "size/font-rem",
-      "size/dimension-px",
       // "color/css",
       // 'asset/url',
       // "size/px",
