@@ -268,6 +268,18 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
     },
   });
 
+  styleDictionary.registerTransform({
+    name: "letterSpacing/em",
+    type: "value",
+    filter: function (token) {
+      return token.attributes?.item === "letterSpacing";
+    },
+    transform: function (token) {
+      const parsed = Number(token.$value.replace("rem", ""));
+      return `${parsed}em`;
+    },
+  });
+
   styleDictionary.registerTransformGroup({
     name: "css/custom",
     transforms: [
@@ -286,6 +298,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "transition/css/shorthand",
       "shadow/css/shorthand",
       "name/remove-tier-kebab",
+      "letterSpacing/em",
     ],
   });
 
