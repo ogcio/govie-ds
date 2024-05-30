@@ -74,6 +74,10 @@ const fontLineHeightSchema = z
     "700": createFontLineHeightSchema("700"),
     "800": createFontLineHeightSchema("800"),
     "900": createFontLineHeightSchema("900"),
+    "1000": createFontLineHeightSchema("1000"),
+    "1100": createFontLineHeightSchema("1100"),
+    "1200": createFontLineHeightSchema("1200"),
+    "1300": createFontLineHeightSchema("1300"),
   })
   .strict();
 

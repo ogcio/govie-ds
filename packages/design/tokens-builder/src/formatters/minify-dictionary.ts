@@ -1,13 +1,14 @@
 // Adapted from https://github.com/amzn/style-dictionary/blob/main/lib/common/formatHelpers/minifyDictionary.js
 
+import { Token } from "style-dictionary";
 import { OutputReferences } from "style-dictionary/types";
+import { usesReferences } from "style-dictionary/utils";
 
-// TODO: type
 export function minifyDictionary({
   tokens,
   outputReferences,
 }: {
-  tokens: Record<string, any>;
+  tokens: Record<string, Token>;
   outputReferences?: OutputReferences;
 }) {
   if (outputReferences && typeof outputReferences !== "boolean") {
@@ -21,9 +22,9 @@ export function minifyDictionary({
   const result: Record<string, unknown> = {};
 
   if (tokens.hasOwnProperty("original")) {
-    if (outputReferences) {
+    if (outputReferences && usesReferences(tokens.original.$value)) {
       return {
-        $type: tokens.original.$type, // TODO: review standards for type placement
+        $type: tokens.original.$type,
         $value: tokens.original.$value,
       };
     }
