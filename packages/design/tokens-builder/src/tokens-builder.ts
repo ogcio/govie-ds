@@ -6,7 +6,6 @@ import { dtcgFormatter } from "./formatters/dtcg.js";
 import { typeScriptConstsFormatter } from "./formatters/typescript-consts.js";
 import { figmaFormatter } from "./formatters/figma.js";
 import { cssVariableNameFormatter } from "./formatters/css-variable-names.js";
-import { toShadowString } from "./utils/shadow.js";
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -74,9 +73,6 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
           destination: platformConfig.css.outputFilename,
         },
       ],
-      expand: {
-        include: ["shadow"],
-      },
       options: {
         showFileHeader: false,
         selector: platformConfig.css.selector,
@@ -246,46 +242,48 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerTransform({
-    name: "size/font-rem",
+    name: "lineHeight/px",
     type: "value",
-    filter: (token) => token.$type === "fontSize",
-    transform: function (token, _) {
-      const nonParsed = token.$value;
-
-      const parsedVal = Number(nonParsed);
-      if (isNaN(parsedVal)) {
-        throw new Error(`Invalid font size value for token ${token.name}.`);
-      }
-
-      return `${parsedVal}rem`;
-    },
-  });
-
-  styleDictionary.registerTransform({
-    name: "size/dimension-px",
-    type: "value",
-    filter: (token) => token.$type === "dimension",
-    transform: function (token, _) {
-      const nonParsed = token.$value;
-
-      const parsedVal = parseFloat(nonParsed);
-      if (isNaN(parsedVal)) {
-        throw new Error(`Invalid dimension value for token ${token.name}.`);
-      }
-
-      return `${parsedVal}px`;
-    },
-  });
-
-  styleDictionary.registerTransform({
-    name: "shadow/css",
-    type: "value",
-    transitive: true,
     filter: function (token) {
-      return token.$type === "shadow";
+      return token.attributes?.item === "lineHeight";
     },
     transform: function (token) {
-      return toShadowString(token.$value);
+      return `${token.$value * 16}px`;
+    },
+  });
+
+  styleDictionary.registerTransform({
+    name: "letterSpacing/em",
+    type: "value",
+    filter: function (token) {
+      return token.attributes?.item === "letterSpacing";
+    },
+    transform: function (token) {
+      const parsed = Number(token.$value.replace("rem", ""));
+      return `${parsed}em`;
+    },
+  });
+
+  styleDictionary.registerTransform({
+    name: "letterSpacing/percentage",
+    type: "value",
+    filter: function (token) {
+      return token.attributes?.item === "letterSpacing";
+    },
+    transform: function (token) {
+      const parsed = Number(token.$value.replace("rem", ""));
+      return `${parsed * 100}%`;
+    },
+  });
+
+  styleDictionary.registerTransform({
+    name: "fontSize/px",
+    type: "value",
+    filter: (token) =>
+      token.attributes?.type === "font" && token.attributes?.item === "size",
+    transform: (token) => {
+      const parsed = Number(token.$value.replace("rem", ""));
+      return `${parsed * 16}px`;
     },
   });
 
@@ -296,8 +294,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "name/kebab",
       // 'time/seconds',
       // 'html/icon',
-      "size/font-rem",
-      "size/dimension-px",
+      // "size/font-rem",
       // "color/css",
       // 'asset/url',
       // "fontFamily/css",
@@ -308,6 +305,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "transition/css/shorthand",
       "shadow/css/shorthand",
       "name/remove-tier-kebab",
+      "letterSpacing/em",
     ],
   });
 
@@ -318,8 +316,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "name/pascal",
       // 'time/seconds',
       // 'html/icon',
-      "size/font-rem",
-      "size/dimension-px",
+      // "size/font-rem",
       // "color/css",
       // 'asset/url',
       // "size/px",
@@ -335,7 +332,11 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       "attribute/cti",
       "name/pascal",
       "size/rem", // TODO: review
+      "lineHeight/px",
       "color/hex", // TODO: review,
+      "shadow/css/shorthand",
+      "letterSpacing/percentage",
+      "fontSize/px",
     ],
   });
 

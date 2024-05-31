@@ -1,7 +1,6 @@
 import cloneDeepWith from "lodash.clonedeepwith";
 import { minifyDictionary } from "./minify-dictionary.js";
 import { FormatFnArguments } from "style-dictionary/types";
-import { toShadowString } from "../utils/shadow.js";
 
 // TODO: type
 function stripReferenceTiers({ tokens }: any) {
@@ -25,20 +24,6 @@ function fontWeightToDimension({ tokens }: any) {
   });
 }
 
-// TODO: type
-function shadowToString({ tokens }: any) {
-  return cloneDeepWith(tokens, (value) => {
-    if (value?.$type === "shadow") {
-      return {
-        $type: "string",
-        $value: toShadowString(value.$value),
-      };
-    }
-
-    return undefined;
-  });
-}
-
 export async function figmaFormatter({
   dictionary,
   platform,
@@ -50,10 +35,8 @@ export async function figmaFormatter({
     outputReferences: options.outputReferences,
   });
 
-  const cleanedTokens = shadowToString({
-    tokens: fontWeightToDimension({
-      tokens: stripReferenceTiers({ tokens }),
-    }),
+  const cleanedTokens = fontWeightToDimension({
+    tokens: stripReferenceTiers({ tokens }),
   });
 
   const lines = [JSON.stringify(cleanedTokens, null, 2), ""];

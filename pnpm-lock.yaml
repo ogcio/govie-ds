@@ -337,15 +337,12 @@ importers:
       camelcase:
         specifier: ^8.0.0
         version: 8.0.0
-      color:
-        specifier: ^4.2.3
-        version: 4.2.3
       lodash.clonedeepwith:
         specifier: ^4.5.0
         version: 4.5.0
       style-dictionary:
-        specifier: 4.0.0-prerelease.28
-        version: 4.0.0-prerelease.28
+        specifier: 4.0.0-prerelease.31
+        version: 4.0.0-prerelease.31
     devDependencies:
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -2920,6 +2917,10 @@ packages:
   '@yarnpkg/parsers@3.0.0-rc.46':
     resolution: {integrity: sha512-aiATs7pSutzda/rq8fnuPwTglyVwjM22bNnK2ZgjrpAjQHSSl3lztd2f9evst1W/qnC58DRz7T7QndUDumAR4Q==}
     engines: {node: '>=14.15.0'}
+
+  '@zip.js/zip.js@2.7.45':
+    resolution: {integrity: sha512-Mm2EXF33DJQ/3GWWEWeP1UCqzpQ5+fiMvT3QWspsXY05DyqqxWu7a9awSzU4/spHMHVFrTjani1PR0vprgZpow==}
+    engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=16.5.0'}
 
   '@zkochan/js-yaml@0.0.6':
     resolution: {integrity: sha512-nzvgl3VfhcELQ8LyVrYOru+UtAy1nrygk2+AGbTm8a5YcO6o8lSjAT+pfg3vJWxIoZKOUhrK6UU7xW/+00kQrg==}
@@ -6382,8 +6383,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  style-dictionary@4.0.0-prerelease.28:
-    resolution: {integrity: sha512-3jafy27p4TgbUsFy/BVSC0k9yDroNqCMhVrmJGLof5qhe7dhxebEUUt9W0cmvrLpgwztWqliYZmK60V/LxGYRA==}
+  style-dictionary@4.0.0-prerelease.31:
+    resolution: {integrity: sha512-VhcCqZiTzf/0jd6MXQvMiQcHXd8txShQpoSEKzY/K0y/blmbJUsH3g6T6wRIzTKPoPYQE9tS2QnhCqMMeLy3eQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -10135,6 +10136,8 @@ snapshots:
     dependencies:
       js-yaml: 3.14.1
       tslib: 2.6.2
+
+  '@zip.js/zip.js@2.7.45': {}
 
   '@zkochan/js-yaml@0.0.6':
     dependencies:
@@ -14388,11 +14391,12 @@ snapshots:
       lodash: 4.17.21
       tinycolor2: 1.6.0
 
-  style-dictionary@4.0.0-prerelease.28:
+  style-dictionary@4.0.0-prerelease.31:
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/glob': 10.3.13
       '@bundled-es-modules/memfs': 4.8.1
+      '@zip.js/zip.js': 2.7.45
       chalk: 5.3.0
       change-case: 5.4.4
       commander: 8.3.0

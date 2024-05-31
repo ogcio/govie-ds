@@ -1,15 +1,15 @@
 import { z } from "zod";
 import {
-  createPixelSchema,
   createTokenSchema,
   createIntegerSchema,
   createNumberSchema,
+  createRemSchema,
 } from "./shared.js";
 
 function createFontSizeSchema(name: string) {
   return createTokenSchema({
     type: "dimension",
-    valueSchema: createPixelSchema("Space"),
+    valueSchema: createRemSchema("Font size"),
     name,
   });
 }
@@ -74,8 +74,32 @@ const fontLineHeightSchema = z
     "700": createFontLineHeightSchema("700"),
     "800": createFontLineHeightSchema("800"),
     "900": createFontLineHeightSchema("900"),
+    "1000": createFontLineHeightSchema("1000"),
+    "1100": createFontLineHeightSchema("1100"),
+    "1200": createFontLineHeightSchema("1200"),
+    "1300": createFontLineHeightSchema("1300"),
   })
   .strict();
+
+function createLetterSpacingSchema(name: string) {
+  return createTokenSchema({
+    type: "dimension",
+    valueSchema: createRemSchema("Letter spacing"),
+    name,
+  });
+}
+
+const letterSpacingSchema = z.object({
+  "100": createLetterSpacingSchema("100"),
+  "200": createLetterSpacingSchema("200"),
+  "300": createLetterSpacingSchema("300"),
+  "400": createLetterSpacingSchema("400"),
+  "500": createLetterSpacingSchema("500"),
+  "600": createLetterSpacingSchema("600"),
+  "700": createLetterSpacingSchema("700"),
+  "800": createLetterSpacingSchema("800"),
+  "900": createLetterSpacingSchema("900"),
+});
 
 export const fontSchema = z
   .object(
@@ -83,6 +107,7 @@ export const fontSchema = z
       size: fontSizeSchema,
       weight: fontWeightSchema,
       lineHeight: fontLineHeightSchema,
+      letterSpacing: letterSpacingSchema,
     },
     {
       required_error: "Color is required.",

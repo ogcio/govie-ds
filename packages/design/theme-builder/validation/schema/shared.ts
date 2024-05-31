@@ -42,6 +42,14 @@ export function createPixelSchema(name: string) {
     .regex(/^(-?\d+px|0)$/, `${name} must be a dimension in pixels.`);
 }
 
+export function createRemSchema(name: string) {
+  return z
+    .string({
+      required_error: `${name} is required.`,
+    })
+    .regex(/^(-?\d+(\.\d+)?rem)$/, `${name} must be a dimension in rems.`);
+}
+
 export function createIntegerSchema(name: string) {
   return z
     .number({
