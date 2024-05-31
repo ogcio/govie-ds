@@ -14,5 +14,12 @@
     "test": {
       "inputs": ["default", "^nonTest"]
     }
+  },
+  "implicitDependencies": {
+    ".gitignore": "*",
+    "nx.json": "*",
+    "package.json": "*",
+    "pnpm-workspace.yaml": "*",
+    ".github/**/*": "*"
   }
 }
