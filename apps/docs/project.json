@@ -15,8 +15,8 @@
       "defaultConfiguration": "dev",
       "options": {
         "engine": "docker",
-        "context": "../../",
-        "file": "Dockerfile"
+        "context": ".",
+        "file": "apps/docs/Dockerfile"
       },
       "configurations": {
         "dev": {
