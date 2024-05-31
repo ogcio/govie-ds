@@ -15,6 +15,7 @@
       "defaultConfiguration": "dev",
       "options": {
         "engine": "docker",
+        "load": true,
         "context": "../../",
         "file": "Dockerfile"
       },
