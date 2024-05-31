@@ -1,5 +1,12 @@
 {
   "namedInputs": {
+    "sharedGlobals": [
+      "{workspaceRoot}/.gitignore",
+      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/pnpm-workspace.yaml",
+      "{workspaceRoot}/.github/**/*"
+    ],
     "default": ["{projectRoot}/**/*"],
     "nonTest": ["!{projectRoot}/**/*.test.tsx"]
   },
@@ -14,12 +21,5 @@
     "test": {
       "inputs": ["default", "^nonTest"]
     }
-  },
-  "implicitDependencies": {
-    ".gitignore": "*",
-    "nx.json": "*",
-    "package.json": "*",
-    "pnpm-workspace.yaml": "*",
-    ".github/**/*": "*"
   }
 }
