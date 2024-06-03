@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.1.4...@govie-ds/docs-0.2.0) (2024-06-03)
+
+### Dependency Updates
+
+* `@govie-ds/tokens` updated to version `0.1.0`
+
+### Features
+
+* add text tokens ([#31](https://github.com/ogcio/govie-ds/issues/31)) ([3b143e2](https://github.com/ogcio/govie-ds/commit/3b143e2c7f5fc68552ba79568e9e42b8af3b3063))
+
+
+
 ## [0.1.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.1.3...@govie-ds/docs-0.1.4) (2024-06-03)
 
 ### Dependency Updates
