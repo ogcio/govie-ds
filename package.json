@@ -7,7 +7,7 @@
   },
   "scripts": {
     "format": "nx run-many --target=format --all",
-    "format:check": "nx run-many --target=format --all -- --check",
+    "format:check": "nx run-many --target=format --all",
     "graph": "nx graph",
     "ds": "nx run @govie-ds/docs:dev",
     "ds:build": "nx run @govie-ds/docs:build",
