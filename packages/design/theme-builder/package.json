@@ -6,10 +6,13 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest"
   },
+  "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -24,9 +27,11 @@
     "zod-to-json-schema": "^3.23.0"
   },
   "devDependencies": {
+    "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.30",
+    "prettier": "^3.3.0",
     "tsup": "^8.0.2",
     "typescript": "5.4.5",
     "vitest": "^1.5.0",

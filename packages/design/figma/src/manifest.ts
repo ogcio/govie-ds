@@ -1,5 +1,5 @@
-import { promises as fs } from "fs";
-import { FigmaManifest } from "./figma-types.js";
+import { promises as fs } from 'fs';
+import { FigmaManifest } from './figma-types.js';
 
 export async function createManifest({
   outputFolder,

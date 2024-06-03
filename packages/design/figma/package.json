@@ -10,6 +10,7 @@
     "format:check": "prettier 'src/**/*.ts' --check",
     "build": "tsx scripts/build.ts"
   },
+  "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",

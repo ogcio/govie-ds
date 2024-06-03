@@ -1,6 +1,6 @@
-import { createPropertyFormatter, fileHeader } from "style-dictionary/utils";
-import { FormatFnArguments } from "style-dictionary/types";
-import { getTokens } from "./typescript-consts.js";
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
+import { FormatFnArguments } from 'style-dictionary/types';
+import { getTokens } from './typescript-consts.js';
 
 export async function cssVariableNameFormatter({
   dictionary,
@@ -14,7 +14,7 @@ export async function cssVariableNameFormatter({
     outputReferences: true,
     outputReferenceFallbacks: false,
     dictionary,
-    format: "css",
+    format: 'css',
     formatting: {},
     themeable: false,
     usesDtcg: true,
@@ -25,20 +25,20 @@ export async function cssVariableNameFormatter({
   const tokens = getTokens({ dictionary, camelCase: true });
 
   const variableNames = cssVariables.map(
-    (variable) => `var(${variable.substring(0, variable.indexOf(":")).trim()})`
+    (variable) => `var(${variable.substring(0, variable.indexOf(':')).trim()})`,
   );
 
   if (tokens.length !== variableNames.length) {
     throw new Error(
-      `Number of tokens (${tokens.length}) does not match number of variable names (${variableNames.length}).`
+      `Number of tokens (${tokens.length}) does not match number of variable names (${variableNames.length}).`,
     );
   }
 
   const consts = tokens.map(
-    (token, index) => `export const ${token.name} = '${variableNames[index]}';`
+    (token, index) => `export const ${token.name} = '${variableNames[index]}';`,
   );
 
-  const lines = [header, ...consts, ""];
+  const lines = [header, ...consts, ''];
 
-  return lines.join("\n");
+  return lines.join('\n');
 }

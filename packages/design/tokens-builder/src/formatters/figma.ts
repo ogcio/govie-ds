@@ -1,12 +1,12 @@
-import cloneDeepWith from "lodash.clonedeepwith";
-import { minifyDictionary } from "./minify-dictionary.js";
-import { FormatFnArguments } from "style-dictionary/types";
+import cloneDeepWith from 'lodash.clonedeepwith';
+import { minifyDictionary } from './minify-dictionary.js';
+import { FormatFnArguments } from 'style-dictionary/types';
 
 // TODO: type
 function stripReferenceTiers({ tokens }: any) {
   return cloneDeepWith(tokens, (value) => {
-    if (typeof value === "string" && value.startsWith("{")) {
-      return value.replace(/{(primitive|semantic|component)\./g, "{");
+    if (typeof value === 'string' && value.startsWith('{')) {
+      return value.replace(/{(primitive|semantic|component)\./g, '{');
     }
 
     return undefined;
@@ -16,8 +16,8 @@ function stripReferenceTiers({ tokens }: any) {
 // TODO: type
 function fontWeightToDimension({ tokens }: any) {
   return cloneDeepWith(tokens, (value) => {
-    if (value === "fontWeight") {
-      return "dimension";
+    if (value === 'fontWeight') {
+      return 'dimension';
     }
 
     return undefined;
@@ -39,7 +39,7 @@ export async function figmaFormatter({
     tokens: stripReferenceTiers({ tokens }),
   });
 
-  const lines = [JSON.stringify(cleanedTokens, null, 2), ""];
+  const lines = [JSON.stringify(cleanedTokens, null, 2), ''];
 
-  return lines.join("\n");
+  return lines.join('\n');
 }

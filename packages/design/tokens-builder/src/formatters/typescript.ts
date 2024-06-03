@@ -1,6 +1,6 @@
-import { fileHeader } from "style-dictionary/utils";
-import { minifyDictionary } from "./minify-dictionary.js";
-import { FormatFnArguments } from "style-dictionary/types";
+import { fileHeader } from 'style-dictionary/utils';
+import { minifyDictionary } from './minify-dictionary.js';
+import { FormatFnArguments } from 'style-dictionary/types';
 
 export async function typeScriptFormatter({
   dictionary,
@@ -20,12 +20,12 @@ export async function typeScriptFormatter({
   const lines = [
     header,
     ...(options.header ? [options.header] : []),
-    "",
+    '',
     options.exportType
       ? `export const ${options.export}: ${options.exportType} = ${tokensString};`
       : `export const ${options.export} = ${tokensString};`,
-    "",
+    '',
   ];
 
-  return lines.join("\n");
+  return lines.join('\n');
 }

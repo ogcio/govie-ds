@@ -327,6 +327,9 @@ importers:
         specifier: ^3.23.0
         version: 3.23.0(zod@3.23.4)
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -336,6 +339,9 @@ importers:
       '@types/node':
         specifier: ^20.11.30
         version: 20.11.30
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -364,6 +370,9 @@ importers:
         specifier: 4.0.0-prerelease.31
         version: 4.0.0-prerelease.31
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -373,6 +382,9 @@ importers:
       '@types/lodash.clonedeepwith':
         specifier: ^4.5.9
         version: 4.5.9
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
