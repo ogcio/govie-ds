@@ -1,5 +1,5 @@
-import { allDocs } from "contentlayer/generated";
-import { config } from "../config";
+import { allDocs } from 'contentlayer/generated';
+import { config } from '../config';
 
 export function getAll() {
   if (config.isProduction) {
@@ -20,7 +20,7 @@ export function getById({ id }: { id: string }) {
 }
 
 export function getBySlug({ slug }: { slug: string[] }) {
-  const doc = allDocs.find((doc) => doc.slug === slug.join("/"));
+  const doc = allDocs.find((doc) => doc.slug === slug.join('/'));
 
   if (config.isProduction && doc?.draft) {
     return undefined;
