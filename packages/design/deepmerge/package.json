@@ -21,7 +21,7 @@
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "prettier": "^3.3.0",
-    "tsup": "^8.0.2",
+    "tsup": "^8.1.0",
     "typescript": "5.4.5"
   }
 }
