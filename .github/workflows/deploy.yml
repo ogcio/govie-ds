@@ -34,7 +34,7 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm run ds:build
         env:
-          SHOW_DRAFTS: true
+          NEXT_PUBLIC_SHOW_DRAFTS: true
           NEXT_EXPORT: true
           GITHUB_PAGES: true
       - name: Upload artifact
