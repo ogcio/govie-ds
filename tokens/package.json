@@ -23,7 +23,6 @@
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "prettier": "^3.3.0",
-    "style-dictionary": "^3.9.2",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
     "typescript": "5.4.5"

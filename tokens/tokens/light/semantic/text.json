@@ -1,13 +1,12 @@
 {
   "semantic": {
-    "typography": {
+    "text": {
       "3xs": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{primitive.font.family.primary}",
           "fontSize": "{primitive.font.size.300}",
           "fontWeight": "{primitive.font.weight.400}",
-          "letterSpacing": "{primitive.font.letterSpacing.300}",
           "lineHeight": "{primitive.font.lineHeight.300}"
         }
       }
