@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+'use client';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 export function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);

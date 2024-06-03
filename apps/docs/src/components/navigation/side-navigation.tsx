@@ -1,5 +1,5 @@
-import { cn } from "@/lib/cn";
-import Link from "next/link";
+import { cn } from '@/lib/cn';
+import Link from 'next/link';
 
 export type SideNavigationItem = {
   id: string;
@@ -22,8 +22,8 @@ export function SideNavigation({
         <li
           key={item.id}
           className={cn(
-            "pl-md flex flex-col gap-md",
-            item.isActive ? "border-gold-400 border-l-md" : null
+            'pl-md flex flex-col gap-md',
+            item.isActive ? 'border-gold-400 border-l-md' : null,
           )}
         >
           {item.href ? (
@@ -31,9 +31,9 @@ export function SideNavigation({
               href={item.href}
               onClick={() => onSelect(item.id)}
               className={cn(
-                "text-blue-700 hover:text-blue-800",
-                "focus:bg-yellow-400",
-                "hover:underline hover:underline-offset-md hover:underline-thickness-lg"
+                'text-blue-700 hover:text-blue-800',
+                'focus:bg-yellow-400',
+                'hover:underline hover:underline-offset-md hover:underline-thickness-lg',
               )}
             >
               {item.name}

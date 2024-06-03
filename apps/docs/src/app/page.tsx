@@ -1,14 +1,14 @@
-import { Fragment } from "react";
-import Image from "next/image";
-import { Heading } from "@/components/typography/heading";
-import { Text } from "@/components/typography/text";
-import { Button } from "@/components/form/button";
-import heroImage from "../../public/hero.png";
-import { config } from "@/lib/config";
-import { RightArrowIcon } from "@/components/icons/right-arrow-icon";
+import { Fragment } from 'react';
+import Image from 'next/image';
+import { Heading } from '@/components/typography/heading';
+import { Text } from '@/components/typography/text';
+import { Button } from '@/components/form/button';
+import heroImage from '../../public/hero.png';
+import { config } from '@/lib/config';
+import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 
 function Prose({
-  as: As = "div",
+  as: As = 'div',
   children,
   className,
 }: {
@@ -23,34 +23,34 @@ function Prose({
 
 const benefits = [
   {
-    title: "Efficiency",
+    title: 'Efficiency',
     description:
-      "Streamline your design processes with a comprehensive suite of components, patterns, and guidelines.",
+      'Streamline your design processes with a comprehensive suite of components, patterns, and guidelines.',
   },
   {
-    title: "Consistency",
+    title: 'Consistency',
     description:
-      "Ensure a cohesive user experience across your digital services with a unified design language.",
+      'Ensure a cohesive user experience across your digital services with a unified design language.',
   },
   {
-    title: "Accessibility",
+    title: 'Accessibility',
     description:
-      "Meet WCAG 2.1 AA standards with accessible components and inclusive design principles.",
+      'Meet WCAG 2.1 AA standards with accessible components and inclusive design principles.',
   },
   {
-    title: "Performance",
+    title: 'Performance',
     description:
-      "Deliver fast and responsive digital services with lightweight components and optimised assets.",
+      'Deliver fast and responsive digital services with lightweight components and optimised assets.',
   },
   {
-    title: "Responsive",
+    title: 'Responsive',
     description:
-      "Create digital services that work across all devices and screen sizes with responsive components and layouts.",
+      'Create digital services that work across all devices and screen sizes with responsive components and layouts.',
   },
   {
-    title: "Compliance",
+    title: 'Compliance',
     description:
-      "Ensure compliance with government standards and regulations with the Design System building block.",
+      'Ensure compliance with government standards and regulations with the Design System building block.',
   },
 ];
 
@@ -97,13 +97,13 @@ function Feedback() {
           Alpha
         </div>
         <p className="text-gray-700 text-xs sm:text-md">
-          This is a new service - your{" "}
+          This is a new service - your{' '}
           <a
             className="underline text-blue-700 hover:decoration-md"
             href={config.feedbackFormUrl}
           >
             feedback
-          </a>{" "}
+          </a>{' '}
           will help us to improve it.
         </p>
       </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
           <Image
             src={heroImage}
             alt="Design system"
-            style={{ minWidth: "360px", width: "100%", height: "auto" }}
+            style={{ minWidth: '360px', width: '100%', height: 'auto' }}
             priority
           />
         </div>

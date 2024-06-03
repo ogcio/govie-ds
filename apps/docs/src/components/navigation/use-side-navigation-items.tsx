@@ -1,11 +1,11 @@
-import camelcase from "camelcase";
-import * as documents from "@/lib/documents/documents";
-import { SideNavigationItem } from "@/components/navigation/side-navigation";
+import camelcase from 'camelcase';
+import * as documents from '@/lib/documents/documents';
+import { SideNavigationItem } from '@/components/navigation/side-navigation';
 import {
   DocumentHierarchy,
   getDocumentHierarchy,
-} from "@/lib/documents/document-hierarchy";
-import { usePathname } from "next/navigation";
+} from '@/lib/documents/document-hierarchy';
+import { usePathname } from 'next/navigation';
 
 function toSideNavigationItem({
   slug,
@@ -14,25 +14,25 @@ function toSideNavigationItem({
   slug: string[];
   item: DocumentHierarchy;
 }): SideNavigationItem | undefined {
-  if (item.id.endsWith("index")) {
+  if (item.id.endsWith('index')) {
     return undefined;
   }
 
-  const name = item.slug.split("/").pop();
+  const name = item.slug.split('/').pop();
 
   if (!name) {
-    throw new Error("Invalid name from slug.");
+    throw new Error('Invalid name from slug.');
   }
 
-  const nameParts = name.split("-").filter(Boolean);
+  const nameParts = name.split('-').filter(Boolean);
 
   return {
     id: item.id,
     name: nameParts
       .map((part) => camelcase(part, { pascalCase: true }))
-      .join(" "),
+      .join(' '),
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
-    isActive: item.slug === slug.join("/"),
+    isActive: item.slug === slug.join('/'),
     children: item.children.map((child) => {
       const childDocument = documents.getById({ id: child.id });
 
@@ -44,7 +44,7 @@ function toSideNavigationItem({
         id: child.id,
         name: childDocument.title,
         href: `/${child.slug}`,
-        isActive: child.slug === slug.join("/"),
+        isActive: child.slug === slug.join('/'),
         children: [],
       };
     }),
@@ -53,7 +53,7 @@ function toSideNavigationItem({
 
 export function useSideNavigationItems() {
   const pathname = usePathname();
-  const slug = pathname.split("/").filter(Boolean);
+  const slug = pathname.split('/').filter(Boolean);
 
   if (slug.length === 0) {
     return [];
@@ -67,7 +67,7 @@ export function useSideNavigationItems() {
   }
 
   const topLevelHierarchy = documentHierarchy.children.find(
-    (child) => child.slug === slug[0]
+    (child) => child.slug === slug[0],
   );
 
   if (!topLevelHierarchy) {

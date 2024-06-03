@@ -1,12 +1,12 @@
-import { meta } from "@govie-ds/theme-govie";
-import { objectKeys } from "ts-extras";
-import { TokenName } from "../color/token-name";
-import { Table, Td } from "./table";
+import { meta } from '@govie-ds/theme-govie';
+import { objectKeys } from 'ts-extras';
+import { TokenName } from '../color/token-name';
+import { Table, Td } from './table';
 
 export function FontSizes() {
   return (
     <Table
-      headers={["Token", "Value", "Example"]}
+      headers={['Token', 'Value', 'Example']}
       ids={objectKeys(meta.light.resolved.primitive.font.size)}
       renderRow={(id) => {
         const { $value: value } = meta.light.resolved.primitive.font.size[id];

@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
-import * as documents from "@/lib/documents/documents";
-import { SideNavigationConnected } from "@/components/navigation/side-navigation-connected";
+import { notFound } from 'next/navigation';
+import * as documents from '@/lib/documents/documents';
+import { SideNavigationConnected } from '@/components/navigation/side-navigation-connected';
 
 export async function generateStaticParams() {
   return documents.getAll().map((document) => ({
-    slug: document.slug.split("/"),
+    slug: document.slug.split('/'),
   }));
 }
 

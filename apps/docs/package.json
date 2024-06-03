@@ -3,8 +3,8 @@
   "version": "0.1.4",
   "private": true,
   "scripts": {
-    "format": "prettier 'src/**/*.ts' --write",
-    "format:check": "prettier 'src/**/*.ts' --check",
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
     "dev": "next dev",
     "build": "next build",
     "build:prod": "cross-env CI=true next build",

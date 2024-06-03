@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Container } from "./container";
-import footerImage from "../../../public/logotype.png";
-import { OglLogo } from "../logos/ogl-logo";
+import Image from 'next/image';
+import { Container } from './container';
+import footerImage from '../../../public/logotype.png';
+import { OglLogo } from '../logos/ogl-logo';
 
 export function Footer() {
   return (
@@ -11,7 +11,7 @@ export function Footer() {
           <div className="flex gap-x-2xl items-center">
             <OglLogo />
             <span>
-              All content is available under the{" "}
+              All content is available under the{' '}
               <a
                 className="underline hover:decoration-4" // TODO: add to theme
                 href="#"
@@ -26,7 +26,7 @@ export function Footer() {
             src={footerImage}
             alt="OGCIO"
             width={190}
-            style={{ height: "auto" }}
+            style={{ height: 'auto' }}
           />
         </div>
       </Container>

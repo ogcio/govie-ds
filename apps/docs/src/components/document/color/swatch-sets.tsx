@@ -1,5 +1,5 @@
-import { Fragment } from "react/jsx-runtime";
-import { SwatchSet, SwatchSetProps } from "./swatch-set";
+import { Fragment } from 'react/jsx-runtime';
+import { SwatchSet, SwatchSetProps } from './swatch-set';
 
 export type SwatchSetsProps = {
   sets: SwatchSetProps[];

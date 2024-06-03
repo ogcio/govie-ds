@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
-import { Mdx } from "@/components/document/mdx";
-import * as documents from "@/lib/documents/documents";
-import { DocumentStatus } from "@/components/document/document-status";
+import { notFound } from 'next/navigation';
+import { Mdx } from '@/components/document/mdx';
+import * as documents from '@/lib/documents/documents';
+import { DocumentStatus } from '@/components/document/document-status';
 
 type DocPageProps = {
   params: {
@@ -18,12 +18,12 @@ export default function DocPage({ params }: DocPageProps) {
 
   return (
     <section className="flex flex-col gap-2xl grow">
-      {document.status !== "stable" ? (
+      {document.status !== 'stable' ? (
         <div>
           <DocumentStatus status={document.status} />
         </div>
       ) : null}
-      {document.status !== "coming-soon" ? (
+      {document.status !== 'coming-soon' ? (
         <div>
           <Mdx code={document.body.code} />
         </div>

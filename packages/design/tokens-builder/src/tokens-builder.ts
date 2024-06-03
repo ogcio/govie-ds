@@ -301,7 +301,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "cubicBezier/css",
       // "strokeStyle/css/shorthand",
       // "border/css/shorthand",
-      // "typography/css/shorthand",
+      'typography/css/shorthand',
       // "transition/css/shorthand",
       'shadow/css/shorthand',
       'name/remove-tier-kebab',
@@ -337,6 +337,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       'shadow/css/shorthand',
       'letterSpacing/percentage',
       'fontSize/px',
+      'typography/css/shorthand',
     ],
   });
 
