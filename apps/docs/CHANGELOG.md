@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.1.2...@govie-ds/docs-0.1.3) (2024-06-03)
+
+### Dependency Updates
+
+* `@govie-ds/design-components` updated to version `0.0.1`
+* `@govie-ds/tokens` updated to version `0.1.0`
+
+
 ## [0.1.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.1.1...@govie-ds/docs-0.1.2) (2024-06-03)
 
 ### Dependency Updates
