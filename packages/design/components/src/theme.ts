@@ -253,12 +253,12 @@ export function createTheme({
       // "96": tokens.govieSpace96,
     },
     screens: {
-      xs: tokens.govieBreakpointXs,
-      sm: tokens.govieBreakpointSm,
-      md: tokens.govieBreakpointMd,
-      lg: tokens.govieBreakpointLg,
-      xl: tokens.govieBreakpointXl,
-      '2xl': tokens.govieBreakpoint2Xl,
+      xs: tokens.govieScreenXs,
+      sm: tokens.govieScreenSm,
+      md: tokens.govieScreenMd,
+      lg: tokens.govieScreenLg,
+      xl: tokens.govieScreenXl,
+      '2xl': tokens.govieScreen2Xl,
     },
     textUnderlineOffset: {
       // TODO: tokens

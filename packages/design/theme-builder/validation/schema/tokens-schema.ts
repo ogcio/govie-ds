@@ -6,7 +6,7 @@ import {
 import { colorSchema } from "./color-schema.js";
 import { spaceSchema } from "./space-schema.js";
 import { fontSchema } from "./font-schema.js";
-import { breakpointSchema } from "./breakpoint-schema.js";
+import { screenSchema } from "./screen-schema.js";
 import { zIndexSchema } from "./z-index-schema.js";
 import { borderSchema } from "./border-schema.js";
 import { opacitySchema } from "./opacity-schema.js";
@@ -18,7 +18,7 @@ const primitiveSchema = z
       color: colorSchema,
       space: spaceSchema,
       font: fontSchema,
-      breakpoint: breakpointSchema,
+      screen: screenSchema,
       zIndex: zIndexSchema,
       border: borderSchema,
       opacity: opacitySchema,
