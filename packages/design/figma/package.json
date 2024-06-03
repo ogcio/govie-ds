@@ -6,8 +6,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
     "build": "tsx scripts/build.ts"
   },
+  "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -17,8 +20,10 @@
     "@govie-ds/tokens-builder": "workspace:^"
   },
   "devDependencies": {
+    "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.7",
+    "prettier": "^3.3.0",
     "tsx": "^4.7.2",
     "typescript": "5.4.5"
   }

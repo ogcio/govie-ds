@@ -1,5 +1,5 @@
-import { promises as fs } from "fs";
-import { FigmaManifest } from "./figma-types.js";
+import { promises as fs } from 'fs';
+import { FigmaManifest } from './figma-types.js';
 
 export async function createManifest({
   outputFolder,
@@ -10,6 +10,6 @@ export async function createManifest({
 }) {
   await fs.writeFile(
     `${outputFolder}/manifest.json`,
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifest, null, 2),
   );
 }

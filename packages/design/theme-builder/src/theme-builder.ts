@@ -1,13 +1,13 @@
-import { promises as fs } from "fs";
-import { buildTokens } from "@govie-ds/tokens-builder";
-import { meta } from "@govie-ds/tokens";
-import { zodToJsonSchema } from "zod-to-json-schema";
-import { compile } from "json-schema-to-typescript";
-import { ZodTypeAny } from "zod";
-import { outputFile } from "fs-extra";
-import { tokensSchema } from "../validation/schema/index.js";
-import { validateDesignTokensSchema } from "../validation/validate-schema.js";
-import { validateDesignTokensFormat } from "../validation/validate-format.js";
+import { promises as fs } from 'fs';
+import { buildTokens } from '@govie-ds/tokens-builder';
+import { meta } from '@govie-ds/tokens';
+import { zodToJsonSchema } from 'zod-to-json-schema';
+import { compile } from 'json-schema-to-typescript';
+import { ZodTypeAny } from 'zod';
+import { outputFile } from 'fs-extra';
+import { tokensSchema } from '../validation/schema/index.js';
+import { validateDesignTokensSchema } from '../validation/validate-schema.js';
+import { validateDesignTokensFormat } from '../validation/validate-format.js';
 
 async function validateAndBuildTokens({
   source,
@@ -25,15 +25,15 @@ async function validateAndBuildTokens({
 }
 
 async function convertZodSchemaToTypeScriptString(
-  schema: ZodTypeAny
+  schema: ZodTypeAny,
 ): Promise<string> {
   const jsonSchema = zodToJsonSchema(schema, {
-    $refStrategy: "none",
-    target: "openApi3",
+    $refStrategy: 'none',
+    target: 'openApi3',
   });
 
-  return await compile(jsonSchema, "Tokens", {
-    bannerComment: "",
+  return await compile(jsonSchema, 'Tokens', {
+    bannerComment: '',
     unknownAny: false,
     style: {
       singleQuote: true,
@@ -56,7 +56,7 @@ export async function buildTheme({
   // light: string
   // dark?: string
 
-  const prefix = "govie";
+  const prefix = 'govie';
 
   const tsSchema = await convertZodSchemaToTypeScriptString(tokensSchema);
   await outputFile(`${outputFolderTypeScript}/schema.ts`, tsSchema);
@@ -71,21 +71,21 @@ export async function buildTheme({
         prefix,
         selector: `[data-theme="${themeId}-light"]`,
         outputFolder: outputFolderCss,
-        outputFilename: "light.css",
+        outputFilename: 'light.css',
       },
       typeScript: {
         header: tokensSchemaImport,
-        export: "metaLight",
-        exportType: "Tokens",
+        export: 'metaLight',
+        exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
-        outputFilename: "meta-light.ts",
+        outputFilename: 'meta-light.ts',
         outputReferences: false,
       },
       typeScriptConsts: {
         prefix,
         camelCase: true,
         outputFolder: outputFolderTypeScript,
-        outputFilename: "tokens-light.ts",
+        outputFilename: 'tokens-light.ts',
       },
     },
   });
@@ -96,10 +96,10 @@ export async function buildTheme({
     platforms: {
       typeScript: {
         header: tokensSchemaImport,
-        export: "metaLightUnresolved",
-        exportType: "Tokens",
+        export: 'metaLightUnresolved',
+        exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
-        outputFilename: "meta-light-unresolved.ts",
+        outputFilename: 'meta-light-unresolved.ts',
         outputReferences: true,
       },
     },
@@ -113,21 +113,21 @@ export async function buildTheme({
         prefix,
         selector: `[data-theme="${themeId}-dark"]`,
         outputFolder: outputFolderCss,
-        outputFilename: "dark.css",
+        outputFilename: 'dark.css',
       },
       typeScript: {
         header: tokensSchemaImport,
-        export: "metaDark",
-        exportType: "Tokens",
+        export: 'metaDark',
+        exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
-        outputFilename: "meta-dark.ts",
+        outputFilename: 'meta-dark.ts',
         outputReferences: false,
       },
       typeScriptConsts: {
         prefix,
         camelCase: true,
         outputFolder: outputFolderTypeScript,
-        outputFilename: "tokens-dark.ts",
+        outputFilename: 'tokens-dark.ts',
       },
     },
   });
@@ -138,26 +138,26 @@ export async function buildTheme({
     platforms: {
       typeScript: {
         header: tokensSchemaImport,
-        export: "metaDarkUnresolved",
-        exportType: "Tokens",
+        export: 'metaDarkUnresolved',
+        exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
-        outputFilename: "meta-dark-unresolved.ts",
+        outputFilename: 'meta-dark-unresolved.ts',
         outputReferences: true,
       },
     },
   });
 
-  const lightCss = await fs.readFile(`${outputFolderCss}/light.css`, "utf-8");
+  const lightCss = await fs.readFile(`${outputFolderCss}/light.css`, 'utf-8');
 
   const lightCssRoot = lightCss.replace(
     `[data-theme=\"${themeId}-light\"]`,
-    ":root"
+    ':root',
   );
 
-  const darkCss = await fs.readFile(`${outputFolderCss}/dark.css`, "utf8");
+  const darkCss = await fs.readFile(`${outputFolderCss}/dark.css`, 'utf8');
 
   await outputFile(
     `${outputFolderCss}/theme.css`,
-    [lightCssRoot, darkCss].join("\n")
+    [lightCssRoot, darkCss].join('\n'),
   );
 }

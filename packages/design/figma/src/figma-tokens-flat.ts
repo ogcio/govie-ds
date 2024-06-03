@@ -1,10 +1,10 @@
-import { buildTokens } from "@govie-ds/tokens-builder";
-import { createManifest } from "./manifest.js";
+import { buildTokens } from '@govie-ds/tokens-builder';
+import { createManifest } from './manifest.js';
 import {
   FigmaManifestCollection,
   FigmaTokenCollections,
   FigmaTokenModes,
-} from "./figma-types.js";
+} from './figma-types.js';
 
 export async function buildFigmaModes({
   modes,
@@ -42,7 +42,7 @@ export async function buildFigmaTokensFlat({
   await createManifest({
     outputFolder,
     manifest: {
-      name: "web",
+      name: 'web',
       collections: Object.keys(collections).reduce((acc, collectionKey) => {
         const collection = collections[collectionKey];
         acc[collectionKey] = {
@@ -51,7 +51,7 @@ export async function buildFigmaTokensFlat({
               acc[modeKey] = [collection.modes[modeKey].outputFilename];
               return acc;
             },
-            {} as { [key: string]: string[] }
+            {} as { [key: string]: string[] },
           ),
         };
         return acc;

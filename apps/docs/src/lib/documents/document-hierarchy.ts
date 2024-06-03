@@ -1,5 +1,5 @@
-import cloneDeepWith from "lodash.clonedeepwith";
-import { getSegmentDetails } from "./document-details";
+import cloneDeepWith from 'lodash.clonedeepwith';
+import { getSegmentDetails } from './document-details';
 
 function sortHierarchyByOrder(hierarchy: DocumentHierarchy): DocumentHierarchy {
   hierarchy.children.sort((a, b) => a.order - b.order);
@@ -15,21 +15,21 @@ export type DocumentHierarchy = {
 };
 
 function getDocumentHierarchyInternal(
-  paths: string[]
+  paths: string[],
 ): DocumentHierarchy | undefined {
   if (!paths || paths.length === 0) {
     return;
   }
 
   const hierarchy: DocumentHierarchy = {
-    id: "",
+    id: '',
     order: 0,
-    slug: "",
+    slug: '',
     children: [],
   };
 
   for (const path of paths) {
-    const parts = path.split("/").map((part) => getSegmentDetails(part));
+    const parts = path.split('/').map((part) => getSegmentDetails(part));
 
     if (parts.length < 2 || parts.length > 3) {
       throw new Error(`Invalid path '${path}'.`);
@@ -54,7 +54,7 @@ function getDocumentHierarchyInternal(
           slug: parts
             .slice(0, i + 1)
             .map((p) => p.id)
-            .join("/"),
+            .join('/'),
           children: [],
         };
 
@@ -72,24 +72,24 @@ function isDocumentHierarchy(value: unknown): value is DocumentHierarchy {
     return false;
   }
 
-  return typeof value === "object" && value.hasOwnProperty("slug");
+  return typeof value === 'object' && value.hasOwnProperty('slug');
 }
 
 function cleanSlugs(value: DocumentHierarchy): DocumentHierarchy {
-  const slugParts = value.slug.split("/").filter((part) => part !== "index");
+  const slugParts = value.slug.split('/').filter((part) => part !== 'index');
 
   return {
     ...value,
     slug:
       slugParts.length === 3
         ? `${slugParts[0]}/${slugParts[2]}`
-        : slugParts.join("/"),
+        : slugParts.join('/'),
     children: value.children.map((child) => cleanSlugs(child)),
   };
 }
 
 export function getDocumentHierarchy(
-  paths: string[]
+  paths: string[],
 ): DocumentHierarchy | undefined {
   const hierarchy = getDocumentHierarchyInternal(paths);
 

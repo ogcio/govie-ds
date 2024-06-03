@@ -1,7 +1,7 @@
-import { Fragment } from "react/jsx-runtime";
-import orderBy from "lodash.orderby";
-import { objectKeys } from "ts-extras";
-import { TokenName } from "../token/token-name.js";
+import { Fragment } from 'react/jsx-runtime';
+import orderBy from 'lodash.orderby';
+import { objectKeys } from 'ts-extras';
+import { TokenName } from '../token/token-name.js';
 
 export type Space = {
   name: string;
@@ -13,15 +13,15 @@ export type SpaceProps = {
 };
 
 export function sortSpaces(
-  spaces: Record<string, { $type: string; $value: string }>
+  spaces: Record<string, { $type: string; $value: string }>,
 ) {
   return orderBy(
     objectKeys(spaces).map((key) => ({
       name: `space/${key}`,
-      value: Number(spaces[key].$value.replace("px", "")),
+      value: Number(spaces[key].$value.replace('px', '')),
     })),
-    ["value"],
-    ["asc"]
+    ['value'],
+    ['asc'],
   );
 }
 
@@ -39,7 +39,7 @@ export function Space({ spaces }: SpaceProps) {
           <div
             key={space.name}
             className="bg-blue-200"
-            style={{ width: space.value, height: "12px" }}
+            style={{ width: space.value, height: '12px' }}
           />
         </Fragment>
       ))}

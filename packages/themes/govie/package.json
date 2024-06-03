@@ -12,16 +12,21 @@
     "./dark.css": "./dist/dark.css"
   },
   "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
     "build": "pnpm build:tokens && pnpm build:source",
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup"
   },
+  "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@govie-ds/prettier-config": "workspace:^",
     "@govie-ds/theme-builder": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
+    "prettier": "^3.3.0",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
     "typescript": "5.4.5"

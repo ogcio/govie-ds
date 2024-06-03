@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Shadow } from "./shadow.js";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Shadow } from './shadow.js';
 
 const meta = {
-  title: "Shadow",
+  title: 'Shadow',
   component: Shadow,
 } satisfies Meta<typeof Shadow>;
 
@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    name: "shadow/100",
-    boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05)",
+    name: 'shadow/100',
+    boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.05)',
   },
 };

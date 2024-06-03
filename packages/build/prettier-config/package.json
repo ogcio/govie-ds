@@ -1,0 +1,10 @@
+{
+  "name": "@govie-ds/prettier-config",
+  "version": "0.1.0",
+  "main": "prettierrc.json",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "echo No build"
+  }
+}

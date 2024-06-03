@@ -1,5 +1,5 @@
-import { FormatFnArguments } from "style-dictionary/types";
-import { minifyDictionary } from "./minify-dictionary.js";
+import { FormatFnArguments } from 'style-dictionary/types';
+import { minifyDictionary } from './minify-dictionary.js';
 
 // TODO: type
 export async function dtcgFormatter({

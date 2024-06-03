@@ -3,6 +3,8 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
     "dev": "next dev",
     "build": "next build",
     "build:prod": "cross-env CI=true next build",
@@ -12,6 +14,7 @@
     "test:watch": "vitest",
     "docker:local": "docker build -f Dockerfile ../.."
   },
+  "prettier": "@govie-ds/prettier-config",
   "dependencies": {
     "@govie-ds/design-components": "workspace:^",
     "@govie-ds/theme-govie": "workspace:^",
@@ -36,6 +39,7 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "@govie-ds/prettier-config": "workspace:^",
     "@nx-tools/container-metadata": "^6.0.1",
     "@nx-tools/nx-container": "^6.0.1",
     "@types/color-convert": "^2.0.3",
@@ -47,6 +51,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
+    "prettier": "^3.3.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vitest": "^1.5.0"

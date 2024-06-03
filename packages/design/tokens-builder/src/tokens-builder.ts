@@ -1,11 +1,11 @@
-import StyleDictionary, { PlatformConfig, Token } from "style-dictionary";
-import { typeScriptFormatter } from "./formatters/typescript.js";
-import { Config } from "style-dictionary/types";
-import camelCase from "camelcase";
-import { dtcgFormatter } from "./formatters/dtcg.js";
-import { typeScriptConstsFormatter } from "./formatters/typescript-consts.js";
-import { figmaFormatter } from "./formatters/figma.js";
-import { cssVariableNameFormatter } from "./formatters/css-variable-names.js";
+import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
+import { typeScriptFormatter } from './formatters/typescript.js';
+import { Config } from 'style-dictionary/types';
+import camelCase from 'camelcase';
+import { dtcgFormatter } from './formatters/dtcg.js';
+import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
+import { figmaFormatter } from './formatters/figma.js';
+import { cssVariableNameFormatter } from './formatters/css-variable-names.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -56,20 +56,20 @@ function ensureTrailingSlash(path: string) {
     return path;
   }
 
-  return path.endsWith("/") ? path : `${path}/`;
+  return path.endsWith('/') ? path : `${path}/`;
 }
 
 function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
   const platforms: Record<string, PlatformConfig> = {};
 
   if (platformConfig.css) {
-    platforms["css"] = {
-      transformGroup: "css/custom",
+    platforms['css'] = {
+      transformGroup: 'css/custom',
       buildPath: ensureTrailingSlash(platformConfig.css.outputFolder),
       prefix: platformConfig.css.prefix,
       files: [
         {
-          format: "css/variables",
+          format: 'css/variables',
           destination: platformConfig.css.outputFilename,
         },
       ],
@@ -82,37 +82,37 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
   }
 
   if (platformConfig.cssVariableNames) {
-    platforms["cssVariableNames"] = {
-      transformGroup: "css/custom",
+    platforms['cssVariableNames'] = {
+      transformGroup: 'css/custom',
       buildPath: ensureTrailingSlash(
-        platformConfig.cssVariableNames.outputFolder
+        platformConfig.cssVariableNames.outputFolder,
       ),
       prefix: platformConfig.cssVariableNames.prefix,
       files: [
         {
-          format: "css/variable-names",
+          format: 'css/variable-names',
           destination: platformConfig.cssVariableNames.outputFilename,
         },
       ],
       options: {
-        fileHeader: "auto-generated",
+        fileHeader: 'auto-generated',
         camelCase: platformConfig.cssVariableNames.camelCase,
       },
     };
   }
 
   if (platformConfig.typeScript) {
-    platforms["typeScript"] = {
-      transformGroup: "js",
+    platforms['typeScript'] = {
+      transformGroup: 'js',
       buildPath: ensureTrailingSlash(platformConfig.typeScript.outputFolder),
       files: [
         {
-          format: "typeScript/object",
+          format: 'typeScript/object',
           destination: platformConfig.typeScript.outputFilename,
         },
       ],
       options: {
-        fileHeader: "auto-generated",
+        fileHeader: 'auto-generated',
         outputReferences: platformConfig.typeScript.outputReferences,
         header: platformConfig.typeScript.header,
         export: platformConfig.typeScript.export,
@@ -122,32 +122,32 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
   }
 
   if (platformConfig.typeScriptConsts) {
-    platforms["typeScriptConsts"] = {
-      transformGroup: "typeScript/consts",
+    platforms['typeScriptConsts'] = {
+      transformGroup: 'typeScript/consts',
       buildPath: ensureTrailingSlash(
-        platformConfig.typeScriptConsts.outputFolder
+        platformConfig.typeScriptConsts.outputFolder,
       ),
       prefix: platformConfig.typeScriptConsts.prefix,
       files: [
         {
-          format: "typeScript/consts",
+          format: 'typeScript/consts',
           destination: platformConfig.typeScriptConsts.outputFilename,
         },
       ],
       options: {
-        fileHeader: "auto-generated",
+        fileHeader: 'auto-generated',
         camelCase: platformConfig.typeScriptConsts.camelCase,
       },
     };
   }
 
   if (platformConfig.dtcg) {
-    platforms["dtcg"] = {
-      transformGroup: "js",
+    platforms['dtcg'] = {
+      transformGroup: 'js',
       buildPath: ensureTrailingSlash(platformConfig.dtcg.outputFolder),
       files: [
         {
-          format: "dtcg",
+          format: 'dtcg',
           destination: platformConfig.dtcg.outputFilename,
         },
       ],
@@ -158,12 +158,12 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
   }
 
   if (platformConfig.figma) {
-    platforms["figma"] = {
-      transformGroup: "figma",
+    platforms['figma'] = {
+      transformGroup: 'figma',
       buildPath: ensureTrailingSlash(platformConfig.figma.outputFolder),
       files: [
         {
-          format: "figma",
+          format: 'figma',
           destination: platformConfig.figma.outputFilename,
         },
       ],
@@ -179,7 +179,7 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
 function createRemoveTierTransformer({
   format,
 }: {
-  format: "kebab" | "pascal";
+  format: 'kebab' | 'pascal';
 }) {
   return function (token: Token) {
     if (!token.name) {
@@ -192,17 +192,17 @@ function createRemoveTierTransformer({
 
     const category = token.attributes?.category as string;
 
-    if (!["primitive", "semantic", "component"].includes(category)) {
+    if (!['primitive', 'semantic', 'component'].includes(category)) {
       throw new Error(
-        `Token ${token.name} has an invalid category '${category}'.`
+        `Token ${token.name} has an invalid category '${category}'.`,
       );
     }
 
-    if (format === "pascal") {
-      return token.name.replace(camelCase(category, { pascalCase: true }), "");
+    if (format === 'pascal') {
+      return token.name.replace(camelCase(category, { pascalCase: true }), '');
     }
 
-    return token.name.replace(`-${category}-`, "-");
+    return token.name.replace(`-${category}-`, '-');
   };
 }
 
@@ -213,39 +213,39 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
     platforms: createPlatforms(platforms),
   };
 
-  const styleDictionary = new StyleDictionary(config, { verbosity: "verbose" });
+  const styleDictionary = new StyleDictionary(config, { verbosity: 'verbose' });
 
   styleDictionary.registerFileHeader({
-    name: "auto-generated",
+    name: 'auto-generated',
     fileHeader: function () {
-      return ["This file was auto-generated."];
+      return ['This file was auto-generated.'];
     },
   });
 
   // Remove 'primitive', 'semantic', or 'component' tier name from the token name
   styleDictionary.registerTransform({
-    name: "name/remove-tier-kebab",
-    type: "name",
+    name: 'name/remove-tier-kebab',
+    type: 'name',
     filter: function () {
       return true;
     },
-    transform: createRemoveTierTransformer({ format: "kebab" }),
+    transform: createRemoveTierTransformer({ format: 'kebab' }),
   });
 
   styleDictionary.registerTransform({
-    name: "name/remove-tier-pascal",
-    type: "name",
+    name: 'name/remove-tier-pascal',
+    type: 'name',
     filter: function () {
       return true;
     },
-    transform: createRemoveTierTransformer({ format: "pascal" }),
+    transform: createRemoveTierTransformer({ format: 'pascal' }),
   });
 
   styleDictionary.registerTransform({
-    name: "lineHeight/px",
-    type: "value",
+    name: 'lineHeight/px',
+    type: 'value',
     filter: function (token) {
-      return token.attributes?.item === "lineHeight";
+      return token.attributes?.item === 'lineHeight';
     },
     transform: function (token) {
       return `${token.$value * 16}px`;
@@ -253,45 +253,45 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerTransform({
-    name: "letterSpacing/em",
-    type: "value",
+    name: 'letterSpacing/em',
+    type: 'value',
     filter: function (token) {
-      return token.attributes?.item === "letterSpacing";
+      return token.attributes?.item === 'letterSpacing';
     },
     transform: function (token) {
-      const parsed = Number(token.$value.replace("rem", ""));
+      const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed}em`;
     },
   });
 
   styleDictionary.registerTransform({
-    name: "letterSpacing/percentage",
-    type: "value",
+    name: 'letterSpacing/percentage',
+    type: 'value',
     filter: function (token) {
-      return token.attributes?.item === "letterSpacing";
+      return token.attributes?.item === 'letterSpacing';
     },
     transform: function (token) {
-      const parsed = Number(token.$value.replace("rem", ""));
+      const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed * 100}%`;
     },
   });
 
   styleDictionary.registerTransform({
-    name: "fontSize/px",
-    type: "value",
+    name: 'fontSize/px',
+    type: 'value',
     filter: (token) =>
-      token.attributes?.type === "font" && token.attributes?.item === "size",
+      token.attributes?.type === 'font' && token.attributes?.item === 'size',
     transform: (token) => {
-      const parsed = Number(token.$value.replace("rem", ""));
+      const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed * 16}px`;
     },
   });
 
   styleDictionary.registerTransformGroup({
-    name: "css/custom",
+    name: 'css/custom',
     transforms: [
-      "attribute/cti",
-      "name/kebab",
+      'attribute/cti',
+      'name/kebab',
       // 'time/seconds',
       // 'html/icon',
       // "size/font-rem",
@@ -303,17 +303,17 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "border/css/shorthand",
       // "typography/css/shorthand",
       // "transition/css/shorthand",
-      "shadow/css/shorthand",
-      "name/remove-tier-kebab",
-      "letterSpacing/em",
+      'shadow/css/shorthand',
+      'name/remove-tier-kebab',
+      'letterSpacing/em',
     ],
   });
 
   styleDictionary.registerTransformGroup({
-    name: "typeScript/consts",
+    name: 'typeScript/consts',
     transforms: [
-      "attribute/cti",
-      "name/pascal",
+      'attribute/cti',
+      'name/pascal',
       // 'time/seconds',
       // 'html/icon',
       // "size/font-rem",
@@ -322,46 +322,46 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "size/px",
       // "color/hsl",
       // TODO: font size: rem
-      "name/remove-tier-pascal",
+      'name/remove-tier-pascal',
     ],
   });
 
   styleDictionary.registerTransformGroup({
-    name: "figma",
+    name: 'figma',
     transforms: [
-      "attribute/cti",
-      "name/pascal",
-      "size/rem", // TODO: review
-      "lineHeight/px",
-      "color/hex", // TODO: review,
-      "shadow/css/shorthand",
-      "letterSpacing/percentage",
-      "fontSize/px",
+      'attribute/cti',
+      'name/pascal',
+      'size/rem', // TODO: review
+      'lineHeight/px',
+      'color/hex', // TODO: review,
+      'shadow/css/shorthand',
+      'letterSpacing/percentage',
+      'fontSize/px',
     ],
   });
 
   styleDictionary.registerFormat({
-    name: "dtcg",
+    name: 'dtcg',
     format: dtcgFormatter,
   });
 
   styleDictionary.registerFormat({
-    name: "typeScript/object",
+    name: 'typeScript/object',
     format: typeScriptFormatter,
   });
 
   styleDictionary.registerFormat({
-    name: "typeScript/consts",
+    name: 'typeScript/consts',
     format: typeScriptConstsFormatter,
   });
 
   styleDictionary.registerFormat({
-    name: "figma",
+    name: 'figma',
     format: figmaFormatter,
   });
 
   styleDictionary.registerFormat({
-    name: "css/variable-names",
+    name: 'css/variable-names',
     format: cssVariableNameFormatter,
   });
 

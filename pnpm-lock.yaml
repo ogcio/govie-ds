@@ -81,6 +81,9 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../packages/build/prettier-config
       '@nx-tools/container-metadata':
         specifier: ^6.0.1
         version: 6.0.1(@nx/devkit@19.1.0(nx@18.1.3))(tslib@2.6.2)
@@ -114,6 +117,9 @@ importers:
       postcss:
         specifier: ^8
         version: 8.4.38
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1
@@ -123,6 +129,8 @@ importers:
       vitest:
         specifier: ^1.5.0
         version: 1.5.0(@types/node@20.12.12)(happy-dom@12.10.3)
+
+  packages/build/prettier-config: {}
 
   packages/design/components:
     dependencies:
@@ -151,6 +159,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1.2.26
         version: 1.2.26(react@18.2.0)
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@storybook/addon-essentials':
         specifier: ^8.0.5
         version: 8.0.5(@types/react@18.2.78)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -217,6 +228,9 @@ importers:
       postcss:
         specifier: ^8
         version: 8.4.38
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -245,9 +259,15 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -267,12 +287,18 @@ importers:
         specifier: workspace:^
         version: link:../tokens-builder
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
       '@types/node':
         specifier: ^20.12.7
         version: 20.12.7
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsx:
         specifier: ^4.7.2
         version: 4.7.2
@@ -307,6 +333,9 @@ importers:
         specifier: ^3.23.0
         version: 3.23.0(zod@3.23.4)
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -316,6 +345,9 @@ importers:
       '@types/node':
         specifier: ^20.11.30
         version: 20.11.30
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -344,6 +376,9 @@ importers:
         specifier: 4.0.0-prerelease.31
         version: 4.0.0-prerelease.31
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -353,6 +388,9 @@ importers:
       '@types/lodash.clonedeepwith':
         specifier: ^4.5.9
         version: 4.5.9
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -362,12 +400,18 @@ importers:
 
   packages/themes/govie:
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@govie-ds/theme-builder':
         specifier: workspace:^
         version: link:../../design/theme-builder
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -380,12 +424,18 @@ importers:
 
   packages/themes/hse:
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@govie-ds/theme-builder':
         specifier: workspace:^
         version: link:../../design/theme-builder
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(postcss@8.4.38)(typescript@5.4.5)
@@ -399,9 +449,15 @@ importers:
         specifier: workspace:^
         version: link:../packages/design/tokens-builder
     devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../packages/build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.0
       style-dictionary:
         specifier: ^3.9.2
         version: 3.9.2
@@ -5798,8 +5854,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.0:
+    resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -9263,7 +9319,7 @@ snapshots:
       jscodeshift: 0.15.2(@babel/preset-env@7.24.4(@babel/core@7.24.4))
       leven: 3.1.0
       ora: 5.4.1
-      prettier: 3.2.5
+      prettier: 3.3.0
       prompts: 2.4.2
       read-pkg-up: 7.0.1
       semver: 7.6.0
@@ -9298,7 +9354,7 @@ snapshots:
       globby: 11.1.0
       jscodeshift: 0.15.2(@babel/preset-env@7.24.4(@babel/core@7.24.4))
       lodash: 4.17.21
-      prettier: 3.2.5
+      prettier: 3.3.0
       recast: 0.23.6
       tiny-invariant: 1.3.3
     transitivePeerDependencies:
@@ -9838,7 +9894,7 @@ snapshots:
 
   '@types/prettier@3.0.0':
     dependencies:
-      prettier: 3.2.5
+      prettier: 3.3.0
 
   '@types/pretty-hrtime@1.0.3': {}
 
@@ -12488,7 +12544,7 @@ snapshots:
       mkdirp: 3.0.1
       mz: 2.7.0
       node-fetch: 3.3.2
-      prettier: 3.2.5
+      prettier: 3.3.0
 
   json-schema-traverse@0.4.1: {}
 
@@ -13645,7 +13701,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.2.5: {}
+  prettier@3.3.0: {}
 
   pretty-format@27.5.1:
     dependencies:

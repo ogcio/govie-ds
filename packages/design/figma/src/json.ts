@@ -1,4 +1,4 @@
-import { promises as fs } from "fs";
+import { promises as fs } from 'fs';
 
 // TODO: type
 export async function writeJson({ outputFolder, filename, data }: any) {
@@ -8,6 +8,6 @@ export async function writeJson({ outputFolder, filename, data }: any) {
 }
 
 export async function readJson(filePath: string) {
-  const jsonData = await fs.readFile(filePath, "utf-8");
+  const jsonData = await fs.readFile(filePath, 'utf-8');
   return JSON.parse(jsonData);
 }
