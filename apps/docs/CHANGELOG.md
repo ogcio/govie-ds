@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.5](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.2.4...@govie-ds/docs-0.2.5) (2024-06-03)
+
+
+### Bug Fixes
+
+* update draft env var ([#36](https://github.com/ogcio/govie-ds/issues/36)) ([332809c](https://github.com/ogcio/govie-ds/commit/332809cd03136327ca6ae0f0b4ee31e4cc5303a3))
+
+
+
 ## [0.2.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.2.3...@govie-ds/docs-0.2.4) (2024-06-03)
 
 
