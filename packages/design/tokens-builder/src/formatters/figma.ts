@@ -2,6 +2,7 @@ import cloneDeepWith from 'lodash.clonedeepwith';
 import { minifyDictionary } from './minify-dictionary.js';
 import { FormatFnArguments } from 'style-dictionary/types';
 
+// TODO: implement as style dictionary transforms
 // TODO: type
 function stripReferenceTiers({ tokens }: any) {
   return cloneDeepWith(tokens, (value) => {
@@ -13,11 +14,28 @@ function stripReferenceTiers({ tokens }: any) {
   });
 }
 
+// TODO: implement as style dictionary transforms
 // TODO: type
-function fontWeightToDimension({ tokens }: any) {
+function toDimension({ tokens }: any) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'fontWeight') {
       return 'dimension';
+    }
+
+    return undefined;
+  });
+}
+
+// TODO: implement as style dictionary transforms
+// TODO: type
+function toString({ tokens }: any) {
+  return cloneDeepWith(tokens, (value) => {
+    if (
+      value === 'shadow' ||
+      value === 'typography' ||
+      value === 'fontFamily'
+    ) {
+      return 'string';
     }
 
     return undefined;
@@ -35,8 +53,10 @@ export async function figmaFormatter({
     outputReferences: options.outputReferences,
   });
 
-  const cleanedTokens = fontWeightToDimension({
-    tokens: stripReferenceTiers({ tokens }),
+  const cleanedTokens = toString({
+    tokens: toDimension({
+      tokens: stripReferenceTiers({ tokens }),
+    }),
   });
 
   const lines = [JSON.stringify(cleanedTokens, null, 2), ''];

@@ -4,20 +4,20 @@
       "family": {
         "primary": {
           "$type": "fontFamily",
-          "$value": ["\"Lato\"", "Arial", "sans-serif"]
+          "$value": ["Lato", "Arial", "sans-serif"]
         },
         "secondary": {
           "$type": "fontFamily",
-          "$value": ["\"Lato\"", "Arial", "sans-serif"]
+          "$value": ["Lato", "Arial", "sans-serif"]
         },
         "tertiary": {
           "$type": "fontFamily",
           "$value": [
             "ui-monospace",
-            "\"Cascadia Mono\"",
-            "\"Segoe UI Mono\"",
+            "Cascadia Mono",
+            "Segoe UI Mono",
             "consolas",
-            "\"Liberation Mono\"",
+            "Liberation Mono",
             "monospace"
           ]
         }
