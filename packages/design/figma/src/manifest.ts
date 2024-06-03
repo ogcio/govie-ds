@@ -10,6 +10,6 @@ export async function createManifest({
 }) {
   await fs.writeFile(
     `${outputFolder}/manifest.json`,
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifest, null, 2),
   );
 }

@@ -51,7 +51,7 @@ export async function buildFigmaTokensFlat({
               acc[modeKey] = [collection.modes[modeKey].outputFilename];
               return acc;
             },
-            {} as { [key: string]: string[] }
+            {} as { [key: string]: string[] },
           ),
         };
         return acc;
