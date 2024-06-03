@@ -26,6 +26,23 @@ export function createTokenSchema({
     .strict();
 }
 
+export function createStringSchema(name: string) {
+  return z
+    .string({
+      required_error: `${name} is required.`,
+    })
+}
+
+export function createStringArraySchema(name: string) {
+  return z
+    .array(
+      z.string({
+        required_error: `${name} is required.`,
+      })
+    )
+    .nonempty();
+}
+
 export function createColorHexSchema() {
   return z
     .string({

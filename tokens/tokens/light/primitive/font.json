@@ -1,6 +1,27 @@
 {
   "primitive": {
     "font": {
+      "family": {
+        "primary": {
+          "$type": "fontFamily",
+          "$value": ["\"Lato\"", "Arial", "sans-serif"]
+        },
+        "secondary": {
+          "$type": "fontFamily",
+          "$value": ["\"Lato\"", "Arial", "sans-serif"]
+        },
+        "tertiary": {
+          "$type": "fontFamily",
+          "$value": [
+            "ui-monospace",
+            "\"Cascadia Mono\"",
+            "\"Segoe UI Mono\"",
+            "consolas",
+            "\"Liberation Mono\"",
+            "monospace"
+          ]
+        }
+      },
       "size": {
         "100": { "$type": "dimension", "$value": "0.75rem" },
         "200": { "$type": "dimension", "$value": "0.875rem" },

@@ -1,10 +1,25 @@
 import { z } from "zod";
 import {
+  createStringArraySchema,
   createTokenSchema,
   createIntegerSchema,
   createNumberSchema,
   createRemSchema,
 } from "./shared.js";
+
+function createFontFamilySchema(name: string) {
+  return createTokenSchema({
+    type: "fontFamily",
+    valueSchema: createStringArraySchema("Font family"),
+    name
+  })
+}
+
+const fontFamilySchema = z.object({
+  "primary": createFontFamilySchema("primary"),
+  "secondary": createFontFamilySchema("secondary"),
+  "tertiary": createFontFamilySchema("tertiary")
+}).strict()
 
 function createFontSizeSchema(name: string) {
   return createTokenSchema({
@@ -104,6 +119,7 @@ const letterSpacingSchema = z.object({
 export const fontSchema = z
   .object(
     {
+      family: fontFamilySchema,
       size: fontSizeSchema,
       weight: fontWeightSchema,
       lineHeight: fontLineHeightSchema,
