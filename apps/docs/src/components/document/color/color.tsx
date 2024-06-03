@@ -1,5 +1,5 @@
-import convert from "color-convert";
-import { TokenName } from "./token-name";
+import convert from 'color-convert';
+import { TokenName } from './token-name';
 
 export function Color({
   name,
@@ -33,15 +33,15 @@ export function Color({
             <div className="text-sm text-gray-600">{value}</div>
             <div>RGB</div>
             <div className="text-sm text-gray-600">
-              {convert.hex.rgb(value).join(", ")}
+              {convert.hex.rgb(value).join(', ')}
             </div>
             <div>HSL</div>
             <div className="text-sm text-gray-600">
-              {convert.hex.hsl(value).join(", ")}
+              {convert.hex.hsl(value).join(', ')}
             </div>
             <div>CMYK</div>
             <div className="text-sm text-gray-600">
-              {convert.hex.cmyk(value).join(", ")}
+              {convert.hex.cmyk(value).join(', ')}
             </div>
           </div>
         </div>

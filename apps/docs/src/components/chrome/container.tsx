@@ -1,7 +1,7 @@
-import { cn } from "@/lib/cn";
+import { cn } from '@/lib/cn';
 
 export function Container({
-  as: As = "div",
+  as: As = 'div',
   children,
   className,
 }: {
@@ -9,5 +9,5 @@ export function Container({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <As className={cn("container mx-auto", className)}>{children}</As>;
+  return <As className={cn('container mx-auto', className)}>{children}</As>;
 }

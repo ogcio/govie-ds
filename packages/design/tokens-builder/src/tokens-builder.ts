@@ -297,11 +297,11 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       // "size/font-rem",
       // "color/css",
       // 'asset/url',
-      // "fontFamily/css",
+      'fontFamily/css',
       // "cubicBezier/css",
       // "strokeStyle/css/shorthand",
       // "border/css/shorthand",
-      // "typography/css/shorthand",
+      'typography/css/shorthand',
       // "transition/css/shorthand",
       'shadow/css/shorthand',
       'name/remove-tier-kebab',
@@ -334,9 +334,11 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       'size/rem', // TODO: review
       'lineHeight/px',
       'color/hex', // TODO: review,
+      'fontFamily/css',
       'shadow/css/shorthand',
       'letterSpacing/percentage',
       'fontSize/px',
+      'typography/css/shorthand',
     ],
   });
 

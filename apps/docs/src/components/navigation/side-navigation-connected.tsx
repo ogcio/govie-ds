@@ -1,6 +1,6 @@
-"use client";
-import { useSideNavigationItems } from "@/components/navigation/use-side-navigation-items";
-import { SideNavigation } from "./side-navigation";
+'use client';
+import { useSideNavigationItems } from '@/components/navigation/use-side-navigation-items';
+import { SideNavigation } from './side-navigation';
 
 export function SideNavigationConnected() {
   const sideNavigationItems = useSideNavigationItems();

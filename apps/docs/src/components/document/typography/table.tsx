@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { cn } from "@/lib/cn";
+import { Fragment } from 'react';
+import { cn } from '@/lib/cn';
 
 export function Th({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +17,7 @@ export function Td({
   style?: React.CSSProperties;
 }) {
   return (
-    <td className={cn("px-md py-lg text-gray-700", className)} style={style}>
+    <td className={cn('px-md py-lg text-gray-700', className)} style={style}>
       {children}
     </td>
   );

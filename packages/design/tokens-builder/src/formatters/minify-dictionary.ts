@@ -23,6 +23,13 @@ export function minifyDictionary({
 
   if (tokens.hasOwnProperty('original')) {
     if (outputReferences && usesReferences(tokens.original.$value)) {
+      if (typeof tokens.original.$value === 'object') {
+        return {
+          $type: tokens.$type,
+          $value: tokens.$value,
+        };
+      }
+
       return {
         $type: tokens.original.$type,
         $value: tokens.original.$value,

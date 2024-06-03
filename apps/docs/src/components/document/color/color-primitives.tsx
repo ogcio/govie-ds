@@ -1,7 +1,7 @@
-import { meta as govieMeta } from "@govie-ds/theme-govie";
-import { objectKeys } from "ts-extras";
-import { SwatchSets } from "./swatch-sets";
-import camelcase from "camelcase";
+import { meta as govieMeta } from '@govie-ds/theme-govie';
+import { objectKeys } from 'ts-extras';
+import { SwatchSets } from './swatch-sets';
+import camelcase from 'camelcase';
 
 type Token = {
   $type: string;
@@ -9,7 +9,7 @@ type Token = {
 };
 
 function dtcgToSet(
-  set: Record<string, Token>
+  set: Record<string, Token>,
 ): { name: number; value: string }[] {
   return Object.entries(set).map(([name, value]) => ({
     name: Number(name),
@@ -22,7 +22,7 @@ export function ColorPrimitives({}) {
     (key) => ({
       name: camelcase(key, { pascalCase: true }),
       set: dtcgToSet(govieMeta.light.resolved.primitive.color[key]),
-    })
+    }),
   );
 
   return <SwatchSets sets={sets} />;

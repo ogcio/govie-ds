@@ -1,5 +1,5 @@
-import { Text } from "@/components/typography/text";
-import { cn } from "@/lib/cn";
+import { Text } from '@/components/typography/text';
+import { cn } from '@/lib/cn';
 
 export type SwatchProps = {
   name: number;
@@ -15,9 +15,9 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
     >
       <Text
         className={cn(
-          "font-medium text-xs",
-          name <= 400 ? "text-gray-900" : undefined,
-          name > 400 ? "text-gray-50" : undefined
+          'font-medium text-xs',
+          name <= 400 ? 'text-gray-900' : undefined,
+          name > 400 ? 'text-gray-50' : undefined,
         )}
       >
         {name}
@@ -25,9 +25,9 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
       {hideValue ? null : (
         <Text
           className={cn(
-            "text-xs font-mono lowercase",
-            name <= 400 ? "text-gray-900" : undefined,
-            name > 400 ? "text-gray-50" : undefined
+            'text-xs font-mono lowercase',
+            name <= 400 ? 'text-gray-900' : undefined,
+            name > 400 ? 'text-gray-50' : undefined,
           )}
         >
           {value}

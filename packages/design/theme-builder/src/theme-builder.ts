@@ -19,7 +19,9 @@ async function validateAndBuildTokens({
   platforms: any;
 }) {
   validateDesignTokensSchema({ source, tokens });
-  validateDesignTokensFormat({ source, tokens });
+  // TODO: validator does not support aliases in composite tokens
+  // see https://github.com/AnimaApp/design-token-validator/issues/2
+  // validateDesignTokensFormat({ source, tokens });
 
   await buildTokens({ source, tokens, platforms });
 }

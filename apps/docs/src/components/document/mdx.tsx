@@ -1,8 +1,8 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
-import { Heading } from "../typography/heading";
-import { ColorPrimitives } from "@/components/document/color/color-primitives";
-import { FontSizes } from "./typography/font-sizes";
-import { FontWeights } from "./typography/font-weights";
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { Heading } from '../typography/heading';
+import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { FontSizes } from './typography/font-sizes';
+import { FontWeights } from './typography/font-weights';
 
 export type MdxProps = {
   code: string;
