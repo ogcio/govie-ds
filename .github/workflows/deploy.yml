@@ -35,6 +35,7 @@ jobs:
           pnpm run ds:build
         env:
           SHOW_DRAFTS: true
+          NEXT_EXPORT: true
           GITHUB_PAGES: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
