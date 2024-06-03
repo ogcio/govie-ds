@@ -1,6 +1,6 @@
 {
   "primitive": {
-    "breakpoint": {
+    "screen": {
       "xs": { "$type": "dimension", "$value": "480px" },
       "sm": { "$type": "dimension", "$value": "640px" },
       "md": { "$type": "dimension", "$value": "768px" },
