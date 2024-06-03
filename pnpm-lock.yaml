@@ -124,6 +124,8 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0(@types/node@20.12.12)(happy-dom@12.10.3)
 
+  packages/build/prettier-config: {}
+
   packages/design/components:
     dependencies:
       '@govie-ds/deepmerge':
@@ -151,6 +153,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1.2.26
         version: 1.2.26(react@18.2.0)
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@storybook/addon-essentials':
         specifier: ^8.0.5
         version: 8.0.5(@types/react@18.2.78)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)

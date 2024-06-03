@@ -1,9 +1,9 @@
-import { meta, tokens as govieTokens } from "@govie-ds/theme-govie";
-import { variables } from "@govie-ds/tokens";
-import tailwindTheme from "tailwindcss/defaultTheme.js";
-import { CustomThemeConfig } from "tailwindcss/types/config.js";
-import { objectKeys } from "ts-extras";
-import { deepmerge } from "@govie-ds/deepmerge";
+import { meta, tokens as govieTokens } from '@govie-ds/theme-govie';
+import { variables } from '@govie-ds/tokens';
+import tailwindTheme from 'tailwindcss/defaultTheme.js';
+import { CustomThemeConfig } from 'tailwindcss/types/config.js';
+import { objectKeys } from 'ts-extras';
+import { deepmerge } from '@govie-ds/deepmerge';
 
 function convertColors(colors: typeof meta.light.resolved.primitive.color) {
   const convertedColorObject: Record<string, Record<string, string>> = {};
@@ -34,22 +34,22 @@ export function createTheme({
     ...tailwindTheme,
     container: {
       padding: {
-        DEFAULT: "1rem",
-        sm: "1rem",
-        md: "2rem",
-        lg: "4rem",
-        xl: "6rem",
-        "2xl": "8rem",
+        DEFAULT: '1rem',
+        sm: '1rem',
+        md: '2rem',
+        lg: '4rem',
+        xl: '6rem',
+        '2xl': '8rem',
       },
     },
     colors: {
-      white: "#ffffff", // TODO: move to JSON tokens
-      black: "#000000",
+      white: '#ffffff', // TODO: move to JSON tokens
+      black: '#000000',
       ...convertColors(meta.light.resolved.primitive.color), // TODO: use color variables, variables as nested object in tokens package
     },
     // TODO: font family
     fontSize: {
-      "2xs": [
+      '2xs': [
         variables.govieFontSize100,
         {
           lineHeight: variables.govieFontLineHeight100,
@@ -85,19 +85,19 @@ export function createTheme({
           lineHeight: variables.govieFontLineHeight600,
         },
       ],
-      "2xl": [
+      '2xl': [
         variables.govieFontSize700,
         {
           lineHeight: variables.govieFontLineHeight700,
         },
       ],
-      "3xl": [
+      '3xl': [
         variables.govieFontSize800,
         {
           lineHeight: variables.govieFontLineHeight800,
         },
       ],
-      "4xl": [
+      '4xl': [
         variables.govieFontSize900,
         {
           lineHeight: variables.govieFontLineHeight900,
@@ -117,14 +117,14 @@ export function createTheme({
       black: variables.govieFontWeight900,
     },
     lineHeight: {
-      "3": variables.govieFontLineHeight50,
-      "4": variables.govieFontLineHeight100,
-      "5": variables.govieFontLineHeight200,
-      "6": variables.govieFontLineHeight400,
-      "7": variables.govieFontLineHeight600,
-      "8": variables.govieFontLineHeight700,
-      "9": variables.govieFontLineHeight800,
-      "10": variables.govieFontLineHeight900,
+      '3': variables.govieFontLineHeight50,
+      '4': variables.govieFontLineHeight100,
+      '5': variables.govieFontLineHeight200,
+      '6': variables.govieFontLineHeight400,
+      '7': variables.govieFontLineHeight600,
+      '8': variables.govieFontLineHeight700,
+      '9': variables.govieFontLineHeight800,
+      '10': variables.govieFontLineHeight900,
       none: variables.govieFontLineHeight100,
       tight: variables.govieFontLineHeight200,
       snug: variables.govieFontLineHeight300,
@@ -138,9 +138,9 @@ export function createTheme({
       md: variables.govieBorderWidth300,
       lg: variables.govieBorderWidth400,
       xl: variables.govieBorderWidth500,
-      "2xl": variables.govieBorderWidth600,
-      "3xl": variables.govieBorderWidth700,
-      "4xl": variables.govieBorderWidth800,
+      '2xl': variables.govieBorderWidth600,
+      '3xl': variables.govieBorderWidth700,
+      '4xl': variables.govieBorderWidth800,
       DEFAULT: variables.govieBorderWidth100,
     },
     borderRadius: {
@@ -149,8 +149,8 @@ export function createTheme({
       md: variables.govieBorderRadius200,
       lg: variables.govieBorderRadius300,
       xl: variables.govieBorderRadius400,
-      "2xl": variables.govieBorderRadius500,
-      "3xl": variables.govieBorderRadius600,
+      '2xl': variables.govieBorderRadius500,
+      '3xl': variables.govieBorderRadius600,
       full: variables.govieBorderRadiusFull,
       DEFAULT: variables.govieBorderRadius200,
     },
@@ -168,27 +168,27 @@ export function createTheme({
       1000: variables.govieZIndex1000,
     },
     opacity: {
-      "0": variables.govieOpacity0,
-      "5": variables.govieOpacity5,
-      "10": variables.govieOpacity10,
-      "15": variables.govieOpacity15,
-      "20": variables.govieOpacity20,
-      "25": variables.govieOpacity25,
-      "30": variables.govieOpacity30,
-      "35": variables.govieOpacity35,
-      "40": variables.govieOpacity40,
-      "45": variables.govieOpacity45,
-      "50": variables.govieOpacity50,
-      "55": variables.govieOpacity55,
-      "60": variables.govieOpacity60,
-      "65": variables.govieOpacity65,
-      "70": variables.govieOpacity70,
-      "75": variables.govieOpacity75,
-      "80": variables.govieOpacity80,
-      "85": variables.govieOpacity85,
-      "90": variables.govieOpacity90,
-      "95": variables.govieOpacity95,
-      "100": variables.govieOpacity100,
+      '0': variables.govieOpacity0,
+      '5': variables.govieOpacity5,
+      '10': variables.govieOpacity10,
+      '15': variables.govieOpacity15,
+      '20': variables.govieOpacity20,
+      '25': variables.govieOpacity25,
+      '30': variables.govieOpacity30,
+      '35': variables.govieOpacity35,
+      '40': variables.govieOpacity40,
+      '45': variables.govieOpacity45,
+      '50': variables.govieOpacity50,
+      '55': variables.govieOpacity55,
+      '60': variables.govieOpacity60,
+      '65': variables.govieOpacity65,
+      '70': variables.govieOpacity70,
+      '75': variables.govieOpacity75,
+      '80': variables.govieOpacity80,
+      '85': variables.govieOpacity85,
+      '90': variables.govieOpacity90,
+      '95': variables.govieOpacity95,
+      '100': variables.govieOpacity100,
     },
     // TODO: boxShadow, convert shadow object to string in tokens
     // "boxShadow": {
@@ -204,18 +204,18 @@ export function createTheme({
     spacing: {
       0: variables.govieSpace0,
       none: variables.govieSpace0,
-      "3xs": variables.govieSpacePx,
-      "2xs": variables.govieSpace05,
+      '3xs': variables.govieSpacePx,
+      '2xs': variables.govieSpace05,
       xs: variables.govieSpace1,
       sm: variables.govieSpace15,
       md: variables.govieSpace2,
       lg: variables.govieSpace3,
       xl: variables.govieSpace5,
-      "2xl": variables.govieSpace8,
-      "3xl": variables.govieSpace10,
-      "4xl": variables.govieSpace12,
-      "5xl": variables.govieSpace16,
-      "6xl": variables.govieSpace20,
+      '2xl': variables.govieSpace8,
+      '3xl': variables.govieSpace10,
+      '4xl': variables.govieSpace12,
+      '5xl': variables.govieSpace16,
+      '6xl': variables.govieSpace20,
       // "0": tokens.govieSpace0,
       // px: tokens.govieSpacePx,
       // "0.5": tokens.govieSpace05,
@@ -258,46 +258,46 @@ export function createTheme({
       md: tokens.govieBreakpointMd,
       lg: tokens.govieBreakpointLg,
       xl: tokens.govieBreakpointXl,
-      "2xl": tokens.govieBreakpoint2Xl,
+      '2xl': tokens.govieBreakpoint2Xl,
     },
     textUnderlineOffset: {
       // TODO: tokens
-      "0": "0px",
-      none: "0px",
-      auto: "auto",
-      "from-font": "from-font",
-      xs: "1px",
-      sm: "2px",
-      md: "3px",
-      lg: "4px",
-      xl: "8px",
+      '0': '0px',
+      none: '0px',
+      auto: 'auto',
+      'from-font': 'from-font',
+      xs: '1px',
+      sm: '2px',
+      md: '3px',
+      lg: '4px',
+      xl: '8px',
     },
     textDecorationThickness: {
       // TODO: tokens
-      0: "0px",
-      none: "0px",
-      auto: "auto",
-      "from-font": "from-font",
-      xs: "1px",
-      sm: "2px",
-      md: "3px",
-      lg: "4px",
-      xl: "8px",
+      0: '0px',
+      none: '0px',
+      auto: 'auto',
+      'from-font': 'from-font',
+      xs: '1px',
+      sm: '2px',
+      md: '3px',
+      lg: '4px',
+      xl: '8px',
     },
     extend: {
       // TODO: type
       typography: (theme: any) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.gray.950"),
+            color: theme('colors.gray.950'),
             p: {
-              fontSize: theme("fontSize.md")[0],
+              fontSize: theme('fontSize.md')[0],
             },
             h1: {
-              fontSize: theme("fontSize.4xl")[0],
+              fontSize: theme('fontSize.4xl')[0],
             },
             h2: {
-              fontSize: theme("fontSize.xl")[0],
+              fontSize: theme('fontSize.xl')[0],
             },
             // h3: {},
             // strong: {

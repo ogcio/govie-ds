@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { meta as govieMeta } from "@govie-ds/theme-govie";
-import { SwatchSets } from "./swatch-sets.js";
+import type { Meta, StoryObj } from '@storybook/react';
+import { meta as govieMeta } from '@govie-ds/theme-govie';
+import { SwatchSets } from './swatch-sets.js';
 
 const meta = {
-  title: "SwatchSets",
+  title: 'SwatchSets',
   component: SwatchSets,
 } satisfies Meta<typeof SwatchSets>;
 
@@ -26,11 +26,11 @@ export const Primary: Story = {
   args: {
     sets: [
       {
-        name: "Red",
+        name: 'Red',
         set: dtcgToSet(govieMeta.light.resolved.primitive.color.red),
       },
       {
-        name: "Blue",
+        name: 'Blue',
         set: dtcgToSet(govieMeta.light.resolved.primitive.color.blue),
       },
     ],
@@ -41,11 +41,11 @@ export const HideValues: Story = {
   args: {
     sets: [
       {
-        name: "Red",
+        name: 'Red',
         set: dtcgToSet(govieMeta.light.resolved.primitive.color.red),
       },
       {
-        name: "Blue",
+        name: 'Blue',
         set: dtcgToSet(govieMeta.light.resolved.primitive.color.blue),
       },
     ],

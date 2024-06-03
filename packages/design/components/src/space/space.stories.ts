@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { meta as govieMeta } from "@govie-ds/theme-govie";
-import { Space, sortSpaces } from "./space.js";
+import type { Meta, StoryObj } from '@storybook/react';
+import { meta as govieMeta } from '@govie-ds/theme-govie';
+import { Space, sortSpaces } from './space.js';
 
 const meta = {
-  title: "Space",
+  title: 'Space',
   component: Space,
 } satisfies Meta<typeof Space>;
 
@@ -16,7 +16,7 @@ export const Primary: Story = {
       (space) => ({
         name: space.name,
         value: `${space.value}px`,
-      })
+      }),
     ),
   },
 };
