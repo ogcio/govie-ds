@@ -6,8 +6,8 @@ export const config = {
   isProduction: () => isProduction(),
   showDrafts: () => {
     // Show drafts setting takes precedence
-    if (process.env.SHOW_DRAFTS) {
-      return process.env.SHOW_DRAFTS === 'true';
+    if (process.env.NEXT_PUBLIC_SHOW_DRAFTS) {
+      return process.env.NEXT_PUBLIC_SHOW_DRAFTS === 'true';
     }
 
     return !isProduction();
