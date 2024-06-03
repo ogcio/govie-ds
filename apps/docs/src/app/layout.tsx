@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import '@govie-ds/theme-govie/theme.css';
 import { Container } from '@/components/chrome/container';
@@ -30,15 +29,13 @@ export default function RootLayout({
         className={`${lato.className} transition duration-500 bg-white h-full`}
         // style={{ backgroundColor: "var(--ods-surface-primary)" }}
       >
-        <ThemeProvider>
-          <div className="flex flex-col gap-2xl h-full">
-            <TopBar />
-            <Container as="main" className="grow">
-              {children}
-            </Container>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <div className="flex flex-col gap-2xl h-full">
+          <TopBar />
+          <Container as="main" className="grow">
+            {children}
+          </Container>
+          <Footer />
+        </div>
       </body>
     </html>
   );
