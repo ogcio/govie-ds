@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export function createTokenSchema({
   type,
@@ -21,16 +21,15 @@ export function createTokenSchema({
       },
       {
         required_error: `${name} is required.`,
-      }
+      },
     )
     .strict();
 }
 
 export function createStringSchema(name: string) {
-  return z
-    .string({
-      required_error: `${name} is required.`,
-    })
+  return z.string({
+    required_error: `${name} is required.`,
+  });
 }
 
 export function createStringArraySchema(name: string) {
@@ -38,7 +37,7 @@ export function createStringArraySchema(name: string) {
     .array(
       z.string({
         required_error: `${name} is required.`,
-      })
+      }),
     )
     .nonempty();
 }
@@ -46,9 +45,9 @@ export function createStringArraySchema(name: string) {
 export function createColorHexSchema() {
   return z
     .string({
-      required_error: "Color is required.",
+      required_error: 'Color is required.',
     })
-    .regex(/^#[0-9a-f]{6,8}$/, "Color must be a full lowercase hex value.");
+    .regex(/^#[0-9a-f]{6,8}$/, 'Color must be a full lowercase hex value.');
 }
 
 export function createPixelSchema(name: string) {
@@ -87,15 +86,53 @@ export function createShadowValueSchema(name: string) {
   return z
     .object(
       {
-        offsetX: createPixelSchema("Offset X"),
-        offsetY: createPixelSchema("Offset Y"),
-        blur: createPixelSchema("Blur"),
-        spread: createPixelSchema("Spread"),
+        offsetX: createPixelSchema('Offset X'),
+        offsetY: createPixelSchema('Offset Y'),
+        blur: createPixelSchema('Blur'),
+        spread: createPixelSchema('Spread'),
         color: createColorHexSchema(),
       },
       {
         required_error: `${name} is required.`,
-      }
+      },
+    )
+    .strict();
+}
+
+function createTypographyValueSchema(name: string) {
+  return z
+    .object(
+      {
+        fontFamily: createStringArraySchema('Font family'),
+        fontSize: createRemSchema('Font size'),
+        fontWeight: createNumberSchema('Font weight'),
+        lineHeight: createNumberSchema('Line height'),
+      },
+      {
+        required_error: `${name} is required.`,
+      },
+    )
+    .strict();
+}
+
+function createTypographySchema(name: string) {
+  return createTokenSchema({
+    type: 'typography',
+    valueSchema: createTypographyValueSchema(name),
+    name,
+  });
+}
+
+export function createTypographySetSchema(name: string) {
+  return z
+    .object(
+      {
+        regular: createTypographySchema('regular'),
+        bold: createTypographySchema('bold'),
+      },
+      {
+        required_error: `${name} is required.`,
+      },
     )
     .strict();
 }

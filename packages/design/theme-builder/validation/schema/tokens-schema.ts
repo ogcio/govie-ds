@@ -12,6 +12,7 @@ import { borderSchema } from './border-schema.js';
 import { opacitySchema } from './opacity-schema.js';
 import { shadowSchema } from './shadow-schema.js';
 import { headingSchema } from './heading-schema.js';
+import { textSchema } from './text-schema.js';
 
 const primitiveSchema = z
   .object(
@@ -25,6 +26,7 @@ const primitiveSchema = z
       opacity: opacitySchema,
       shadow: shadowSchema,
       heading: headingSchema,
+      text: textSchema,
     },
     { required_error: 'Primitive is required.' },
   )
