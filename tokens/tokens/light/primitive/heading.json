@@ -1,7 +1,7 @@
 {
-  "semantic": {
-    "text": {
-      "3xs": {
+  "primitive": {
+    "heading": {
+      "2xs": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{primitive.font.family.primary}",
@@ -10,7 +10,7 @@
           "lineHeight": "{primitive.font.lineHeight.300}"
         }
       },
-      "2xs": {
+      "xs": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{primitive.font.family.primary}",
@@ -19,7 +19,7 @@
           "lineHeight": "{primitive.font.lineHeight.400}"
         }
       },
-      "xs": {
+      "sm": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{primitive.font.family.primary}",

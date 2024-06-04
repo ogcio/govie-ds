@@ -1,16 +1,17 @@
-import { z } from "zod";
+import { z } from 'zod';
 import {
   TokenError,
   TokensValidationError,
-} from "./tokens-validation-error.js";
-import { colorSchema } from "./color-schema.js";
-import { spaceSchema } from "./space-schema.js";
-import { fontSchema } from "./font-schema.js";
-import { screenSchema } from "./screen-schema.js";
-import { zIndexSchema } from "./z-index-schema.js";
-import { borderSchema } from "./border-schema.js";
-import { opacitySchema } from "./opacity-schema.js";
-import { shadowSchema } from "./shadow-schema.js";
+} from './tokens-validation-error.js';
+import { colorSchema } from './color-schema.js';
+import { spaceSchema } from './space-schema.js';
+import { fontSchema } from './font-schema.js';
+import { screenSchema } from './screen-schema.js';
+import { zIndexSchema } from './z-index-schema.js';
+import { borderSchema } from './border-schema.js';
+import { opacitySchema } from './opacity-schema.js';
+import { shadowSchema } from './shadow-schema.js';
+import { headingSchema } from './heading-schema.js';
 
 const primitiveSchema = z
   .object(
@@ -23,8 +24,9 @@ const primitiveSchema = z
       border: borderSchema,
       opacity: opacitySchema,
       shadow: shadowSchema,
+      heading: headingSchema,
     },
-    { required_error: "Primitive is required." }
+    { required_error: 'Primitive is required.' },
   )
   .strict();
 
@@ -43,7 +45,7 @@ export function validateDesignTokens({ tokens }: { tokens: unknown }) {
     const zodError = error as z.ZodError;
 
     const errors: TokenError[] = zodError.errors.map((error) => ({
-      path: error.path.join("."),
+      path: error.path.join('.'),
       message: error.message,
     }));
 
