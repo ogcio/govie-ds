@@ -148,7 +148,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1000}",
             "fontWeight": "{primitive.font.weight.400}",
-            "lineHeight": "{primitive.font.lineHeight.900}"
+            "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
         "bold": {
@@ -157,7 +157,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1000}",
             "fontWeight": "{primitive.font.weight.700}",
-            "lineHeight": "{primitive.font.lineHeight.900}"
+            "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         }
       },
@@ -168,7 +168,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1100}",
             "fontWeight": "{primitive.font.weight.400}",
-            "lineHeight": "{primitive.font.lineHeight.1000}"
+            "lineHeight": "{primitive.font.lineHeight.1100}"
           }
         },
         "bold": {
@@ -177,7 +177,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1100}",
             "fontWeight": "{primitive.font.weight.700}",
-            "lineHeight": "{primitive.font.lineHeight.1000}"
+            "lineHeight": "{primitive.font.lineHeight.1100}"
           }
         }
       },
@@ -188,7 +188,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1200}",
             "fontWeight": "{primitive.font.weight.400}",
-            "lineHeight": "{primitive.font.lineHeight.1100}"
+            "lineHeight": "{primitive.font.lineHeight.1200}"
           }
         },
         "bold": {
@@ -197,7 +197,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1200}",
             "fontWeight": "{primitive.font.weight.700}",
-            "lineHeight": "{primitive.font.lineHeight.1100}"
+            "lineHeight": "{primitive.font.lineHeight.1200}"
           }
         }
       },
@@ -208,7 +208,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1300}",
             "fontWeight": "{primitive.font.weight.400}",
-            "lineHeight": "{primitive.font.lineHeight.1200}"
+            "lineHeight": "{primitive.font.lineHeight.1300}"
           }
         },
         "bold": {
@@ -217,7 +217,7 @@
             "fontFamily": "{primitive.font.family.primary}",
             "fontSize": "{primitive.font.size.1300}",
             "fontWeight": "{primitive.font.weight.700}",
-            "lineHeight": "{primitive.font.lineHeight.1200}"
+            "lineHeight": "{primitive.font.lineHeight.1300}"
           }
         }
       }
