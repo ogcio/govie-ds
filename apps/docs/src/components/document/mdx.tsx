@@ -1,8 +1,11 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { Heading } from '../typography/heading';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { FontSizesTable } from './typography/font-sizes-table';
-import { FontWeightsTable } from './typography/font-weights-table';
+import { FontFamilyTable } from './typography/font-family-table';
+import { FontSizeTable } from './typography/font-size-table';
+import { FontWeightTable } from './typography/font-weight-table';
+import { LineHeightTable } from './typography/line-height-table';
+import { LetterSpacingTable } from './typography/letter-spacing-table';
 import { Typography } from './typography/typography';
 
 export type MdxProps = {
@@ -17,8 +20,11 @@ export function Mdx({ code }: MdxProps) {
       components={{
         h2: ({ children }) => <Heading as="h2">{children}</Heading>,
         ColorPrimitives: () => <ColorPrimitives />,
-        FontSizesTable: () => <FontSizesTable />,
-        FontWeightsTable: () => <FontWeightsTable />,
+        FontFamilyTable: () => <FontFamilyTable />,
+        FontSizeTable: () => <FontSizeTable />,
+        FontWeightTable: () => <FontWeightTable />,
+        LineHeightTable: () => <LineHeightTable />,
+        LetterSpacingTable: () => <LetterSpacingTable />,
         Typography: () => <Typography />,
       }}
     />
