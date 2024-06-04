@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/mdx';
 import * as documents from '@/lib/documents/documents';
 import { DocumentStatus } from '@/components/document/document-status';
+import { Draft } from '@/components/document/draft';
 
 type DocPageProps = {
   params: {
@@ -18,11 +19,14 @@ export default function DocPage({ params }: DocPageProps) {
 
   return (
     <section className="flex flex-col gap-2xl grow">
-      {document.status !== 'stable' ? (
-        <div>
-          <DocumentStatus status={document.status} />
-        </div>
-      ) : null}
+      <div className="flex justify-between items-center">
+        {document.status !== 'stable' ? (
+          <div>
+            <DocumentStatus status={document.status} />
+          </div>
+        ) : null}
+        {document.draft ? <Draft /> : null}
+      </div>
       {document.status !== 'coming-soon' ? (
         <div>
           <Mdx code={document.body.code} />
