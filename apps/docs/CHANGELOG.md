@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.6](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.2.5...@govie-ds/docs-0.2.6) (2024-06-04)
+
+### Dependency Updates
+
+* `@govie-ds/tokens` updated to version `0.1.0`
+
+### Bug Fixes
+
+* update figma typography output ([#37](https://github.com/ogcio/govie-ds/issues/37)) ([54c5336](https://github.com/ogcio/govie-ds/commit/54c53364b303e5e6b85f79d19baffb2e8b5964fa))
+
+
+
 ## [0.2.5](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.2.4...@govie-ds/docs-0.2.5) (2024-06-03)
 
 
