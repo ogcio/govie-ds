@@ -338,7 +338,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       'shadow/css/shorthand',
       'letterSpacing/percentage',
       'fontSize/px',
-      'typography/css/shorthand',
+      // 'typography/css/shorthand',
     ],
   });
 

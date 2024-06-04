@@ -375,6 +375,9 @@ importers:
       style-dictionary:
         specifier: 4.0.0-prerelease.31
         version: 4.0.0-prerelease.31
+      ts-extras:
+        specifier: ^0.11.0
+        version: 0.11.0
     devDependencies:
       '@govie-ds/prettier-config':
         specifier: workspace:^
