@@ -1,14 +1,14 @@
 import { meta } from '@govie-ds/theme-govie';
 import { FontTable } from './font-table';
 
-export function FontSizeTable() {
+export function LetterSpacingTable() {
   return (
     <FontTable<string>
-      name="font-size"
-      tokens={meta.light.resolved.primitive.font.size}
+      name="letter-spacing"
+      tokens={meta.light.resolved.primitive.font.letterSpacing}
       renderValue={(value) => value}
       renderExample={(value) => (
-        <span style={{ fontSize: value }}>Sample text</span>
+        <span style={{ letterSpacing: value }}>Sample text</span>
       )}
     />
   );

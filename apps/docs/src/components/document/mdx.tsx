@@ -4,6 +4,8 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { FontFamilyTable } from './typography/font-family-table';
 import { FontSizeTable } from './typography/font-size-table';
 import { FontWeightTable } from './typography/font-weight-table';
+import { LineHeightTable } from './typography/line-height-table';
+import { LetterSpacingTable } from './typography/letter-spacing-table';
 import { Typography } from './typography/typography';
 
 export type MdxProps = {
@@ -21,6 +23,8 @@ export function Mdx({ code }: MdxProps) {
         FontFamilyTable: () => <FontFamilyTable />,
         FontSizeTable: () => <FontSizeTable />,
         FontWeightTable: () => <FontWeightTable />,
+        LineHeightTable: () => <LineHeightTable />,
+        LetterSpacingTable: () => <LetterSpacingTable />,
         Typography: () => <Typography />,
       }}
     />
