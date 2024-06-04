@@ -3,7 +3,7 @@ import { objectKeys } from 'ts-extras';
 import { TokenName } from '../color/token-name';
 import { Table, Td } from './table';
 
-export function FontWeightsTable() {
+export function FontWeightTable() {
   return (
     <Table
       headers={['Token', 'Value', 'Example']}
