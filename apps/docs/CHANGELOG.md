@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.4.0...@govie-ds/docs-0.4.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* update letter spacing output ([#40](https://github.com/ogcio/govie-ds/issues/40)) ([61e5e7d](https://github.com/ogcio/govie-ds/commit/61e5e7df8528bf75edb9b02e47e2c2256c38dea7))
+
+
+
 # [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.3.0...@govie-ds/docs-0.4.0) (2024-06-04)
 
 
