@@ -1,8 +1,8 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { Heading } from '../typography/heading';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { FontSizes } from './typography/font-sizes';
-import { FontWeights } from './typography/font-weights';
+import { FontSizesTable } from './typography/font-sizes-table';
+import { FontWeightsTable } from './typography/font-weights-table';
 
 export type MdxProps = {
   code: string;
@@ -16,8 +16,8 @@ export function Mdx({ code }: MdxProps) {
       components={{
         h2: ({ children }) => <Heading as="h2">{children}</Heading>,
         ColorPrimitives: () => <ColorPrimitives />,
-        FontSizes: () => <FontSizes />,
-        FontWeights: () => <FontWeights />,
+        FontSizesTable: () => <FontSizesTable />,
+        FontWeightsTable: () => <FontWeightsTable />,
       }}
     />
   );

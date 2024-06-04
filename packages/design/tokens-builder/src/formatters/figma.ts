@@ -1,10 +1,11 @@
 import cloneDeepWith from 'lodash.clonedeepwith';
 import { minifyDictionary } from './minify-dictionary.js';
 import { FormatFnArguments } from 'style-dictionary/types';
+import { Tokens } from 'style-dictionary';
+import { objectKeys } from 'ts-extras';
 
 // TODO: implement as style dictionary transforms
-// TODO: type
-function stripReferenceTiers({ tokens }: any) {
+function stripReferenceTiers({ tokens }: Tokens) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value === 'string' && value.startsWith('{')) {
       return value.replace(/{(primitive|semantic|component)\./g, '{');
@@ -15,8 +16,7 @@ function stripReferenceTiers({ tokens }: any) {
 }
 
 // TODO: implement as style dictionary transforms
-// TODO: type
-function toDimension({ tokens }: any) {
+function toDimension({ tokens }: Tokens) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'fontWeight') {
       return 'dimension';
@@ -26,15 +26,49 @@ function toDimension({ tokens }: any) {
   });
 }
 
-// TODO: implement as style dictionary transforms
-// TODO: type
-function toString({ tokens }: any) {
+type FigmaType = 'color' | 'number' | 'string' | 'boolean';
+
+function toValue(key: string, value: any) {
+  if (key === 'fontSize') {
+    return value.$value[key].replace('rem', '');
+  }
+
+  if (key === 'fontFamily') {
+    return value.$value[key].join(', ');
+  }
+
+  return value.$value[key];
+}
+
+// Convert composite JSON tokens to nested Figma groups
+function toGroups({ tokens }: Tokens) {
+  const types: Record<string, FigmaType> = {
+    fontFamily: 'string',
+    fontSize: 'number',
+    fontWeight: 'number',
+    lineHeight: 'number',
+  };
+
   return cloneDeepWith(tokens, (value) => {
-    if (
-      value === 'shadow' ||
-      value === 'typography' ||
-      value === 'fontFamily'
-    ) {
+    if (value.$type === 'typography') {
+      return objectKeys(value.$value).reduce((acc, key) => {
+        acc[key] = {
+          $type: types[key],
+          $value: toValue(key, value),
+        };
+
+        return acc;
+      }, {} as Tokens);
+    }
+
+    return undefined;
+  });
+}
+
+// TODO: implement as style dictionary transforms
+function toString({ tokens }: Tokens) {
+  return cloneDeepWith(tokens, (value) => {
+    if (value === 'shadow' || value === 'fontFamily') {
       return 'string';
     }
 
@@ -53,9 +87,11 @@ export async function figmaFormatter({
     outputReferences: options.outputReferences,
   });
 
-  const cleanedTokens = toString({
-    tokens: toDimension({
-      tokens: stripReferenceTiers({ tokens }),
+  const cleanedTokens = toGroups({
+    tokens: toString({
+      tokens: toDimension({
+        tokens: stripReferenceTiers({ tokens }),
+      }),
     }),
   });
 

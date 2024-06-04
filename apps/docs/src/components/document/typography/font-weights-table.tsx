@@ -3,21 +3,23 @@ import { objectKeys } from 'ts-extras';
 import { TokenName } from '../color/token-name';
 import { Table, Td } from './table';
 
-export function FontSizes() {
+export function FontWeightsTable() {
   return (
     <Table
       headers={['Token', 'Value', 'Example']}
-      ids={objectKeys(meta.light.resolved.primitive.font.size)}
+      ids={objectKeys(meta.light.resolved.primitive.font.weight)}
       renderRow={(id) => {
-        const { $value: value } = meta.light.resolved.primitive.font.size[id];
+        const { $value: value } = meta.light.resolved.primitive.font.weight[id];
 
         return (
           <tr key={id}>
             <Td className="whitespace-nowrap w-[1px] text-sm">
-              <TokenName name={`font-size/${id}`} />
+              <TokenName name={`font-weight/${id}`} />
             </Td>
             <Td className="text-sm">{value}</Td>
-            <Td style={{ fontSize: value }}>Sample text</Td>
+            <Td className="text-lg" style={{ fontWeight: value }}>
+              Sample text
+            </Td>
           </tr>
         );
       }}
