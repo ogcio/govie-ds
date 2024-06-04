@@ -3,6 +3,8 @@ import { objectKeys } from 'ts-extras';
 import { Table, Td } from './table';
 import { TokenName } from '../color/token-name';
 import { P } from 'vitest/dist/reporters-yx5ZTtEV.js';
+import { FontTable } from './font-table';
+import { Heading } from '@/components/typography/heading';
 
 function remToPx(remString: string) {
   return `${Number(remString.replace('rem', '')) * 16}px`;
@@ -29,7 +31,7 @@ function TypographyCell({
 }) {
   return (
     <Td className="text-sm">
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-[auto,1fr] gap-x-md">
         <CellLabel label="Font family" />
         <p>{fontFamily.join(', ')}</p>
         <CellLabel label="Font size" />
@@ -47,57 +49,38 @@ function TypographyCell({
   );
 }
 
+type Font = {
+  fontFamily: string[];
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: number;
+};
+
 // TODO: type
 function TypographyTable({
   name,
   tokens,
 }: {
   name: string;
-  tokens: Record<string, { regular: any; bold: any }>;
+  tokens: Record<string, any>;
 }) {
   return (
-    <Table
-      headers={['Token', 'Regular', 'Bold']} // , 'Example']}
-      ids={objectKeys(tokens)}
-      renderRow={(id) => {
-        const { $value: regularValue } = tokens[id].regular;
-
-        const { $value: boldValue } = tokens[id].bold;
-
-        const {
-          fontFamily: fontFamilyRegular,
-          fontSize: fontSizeRegular,
-          fontWeight: fontWeightRegular,
-          lineHeight: lineHeightRegular,
-        } = regularValue;
-
-        const {
-          fontFamily: fontFamilyBold,
-          fontSize: fontSizeBold,
-          fontWeight: fontWeightBold,
-          lineHeight: lineHeightBold,
-        } = boldValue;
-
-        return (
-          <tr key={id}>
-            <Td className="whitespace-nowrap w-[1px] text-sm">
-              <TokenName name={`${name}/${id}`} />
-            </Td>
-            <TypographyCell
-              fontFamily={fontFamilyRegular}
-              fontSize={fontSizeRegular}
-              fontWeight={fontWeightRegular}
-              lineHeight={lineHeightRegular}
-            />
-            <TypographyCell
-              fontFamily={fontFamilyBold}
-              fontSize={fontSizeBold}
-              fontWeight={fontWeightBold}
-              lineHeight={lineHeightBold}
-            />
-          </tr>
-        );
-      }}
+    <FontTable<Font>
+      name={name}
+      tokens={tokens}
+      renderValue={(value) => <TypographyCell {...value} />}
+      renderExample={(value) => (
+        <span
+          style={{
+            fontFamily: value.fontFamily.join(', '),
+            fontSize: value.fontSize,
+            fontWeight: value.fontWeight,
+            lineHeight: value.lineHeight,
+          }}
+        >
+          The quick brown fox jumps over the lazy dog.
+        </span>
+      )}
     />
   );
 }
@@ -105,14 +88,34 @@ function TypographyTable({
 export function Typography() {
   return (
     <div className="flex flex-col gap-2xl">
-      <TypographyTable
-        name="heading"
-        tokens={meta.light.resolved.primitive.heading}
-      />
-      <TypographyTable
-        name="text"
-        tokens={meta.light.resolved.primitive.text}
-      />
+      <div>
+        <Heading as="h3">Heading (Regular)</Heading>
+        <TypographyTable
+          name="heading/regular"
+          tokens={meta.light.resolved.primitive.heading.regular}
+        />
+      </div>
+      <div>
+        <Heading as="h3">Heading (Bold)</Heading>
+        <TypographyTable
+          name="heading/bold"
+          tokens={meta.light.resolved.primitive.heading.bold}
+        />
+      </div>
+      <div>
+        <Heading as="h3">Text (Regular)</Heading>
+        <TypographyTable
+          name="text/regular"
+          tokens={meta.light.resolved.primitive.text.regular}
+        />
+      </div>
+      <div>
+        <Heading as="h3">Text (Bold)</Heading>
+        <TypographyTable
+          name="text/bold"
+          tokens={meta.light.resolved.primitive.text.bold}
+        />
+      </div>
     </div>
   );
 }

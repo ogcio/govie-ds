@@ -115,7 +115,7 @@ function createTypographyValueSchema(name: string) {
     .strict();
 }
 
-function createTypographySchema(name: string) {
+export function createTypographySchema(name: string) {
   return createTokenSchema({
     type: 'typography',
     valueSchema: createTypographyValueSchema(name),
@@ -123,16 +123,4 @@ function createTypographySchema(name: string) {
   });
 }
 
-export function createTypographySetSchema(name: string) {
-  return z
-    .object(
-      {
-        regular: createTypographySchema('regular'),
-        bold: createTypographySchema('bold'),
-      },
-      {
-        required_error: `${name} is required.`,
-      },
-    )
-    .strict();
-}
+

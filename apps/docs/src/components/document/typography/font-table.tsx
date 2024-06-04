@@ -25,7 +25,9 @@ export function FontTable<TValue>({
             <Td className="whitespace-nowrap w-[1px] text-sm">
               <TokenName name={`${name}/${id}`} />
             </Td>
-            <Td className="text-sm">{renderValue(value)}</Td>
+            <Td className="whitespace-nowrap w-[30%] text-sm">
+              {renderValue(value)}
+            </Td>
             <Td>{renderExample(value)}</Td>
           </tr>
         );
