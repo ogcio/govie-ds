@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.3.0...@govie-ds/docs-0.4.0) (2024-06-04)
+
+
+### Features
+
+* add font docs ([#39](https://github.com/ogcio/govie-ds/issues/39)) ([79c28a5](https://github.com/ogcio/govie-ds/commit/79c28a562226b097d11a5085695a86fe0b7cbcfa))
+
+
+
 # [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.2.6...@govie-ds/docs-0.3.0) (2024-06-04)
 
 ### Dependency Updates
