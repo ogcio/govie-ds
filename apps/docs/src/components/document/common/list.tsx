@@ -1,9 +1,8 @@
-import { Table, Td } from './table';
 import { TokenName } from '../color/token-name';
 import { objectKeys } from 'ts-extras';
 import { Fragment } from 'react';
 
-export function FontTable<TValue>({
+export function List<TValue>({
   name,
   tokens,
   renderValue,

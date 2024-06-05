@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
-import { Mdx } from '@/components/document/mdx';
+import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
-import { DocumentStatus } from '@/components/document/document-status';
-import { Draft } from '@/components/document/draft';
+import { DocumentStatus } from '@/components/document/common/document-status';
+import { Draft } from '@/components/document/common/draft';
 
 type DocPageProps = {
   params: {
@@ -27,7 +27,7 @@ export default function DocPage({ params }: DocPageProps) {
         ) : null}
         {document.draft ? <Draft /> : null}
       </div>
-      {document.status !== 'coming-soon' ? (
+      {document.status !== 'coming-soon' || document.draft ? (
         <div className="flex flex-col gap-xl">
           <Mdx code={document.body.code} />
         </div>

@@ -1,6 +1,7 @@
 import { meta } from '@govie-ds/tokens';
-import { FontTable } from './font-table';
+import { List } from '../common/list';
 import { Heading } from '@/components/typography/heading';
+import { sampleTextLong } from '../common/sample-text';
 
 function remToPx(remString: string) {
   return `${Number(remString.replace('rem', '')) * 16}px`;
@@ -71,7 +72,7 @@ function TypographyTable({
   tokens: Record<string, any>;
 }) {
   return (
-    <FontTable<Font>
+    <List<Font>
       name={name}
       tokens={tokens}
       renderValue={(value) => <TypographyCell {...value} />}
@@ -84,7 +85,7 @@ function TypographyTable({
             lineHeight: value.lineHeight,
           }}
         >
-          The quick brown fox jumps over the lazy dog.
+          {sampleTextLong}
         </span>
       )}
     />
