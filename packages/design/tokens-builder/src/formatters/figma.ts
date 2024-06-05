@@ -58,7 +58,6 @@ function toGroups(tokens: TokenCollection) {
 
 function percentageToString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
-    console.log('value', value);
     if (value.$type === 'number') {
       const stringValue = value.$value.toString();
 
