@@ -3,15 +3,14 @@ import { minifyDictionary } from './minify-dictionary.js';
 import { FormatFnArguments } from 'style-dictionary/types';
 import { Tokens } from 'style-dictionary';
 import { objectKeys } from 'ts-extras';
+import flow from 'lodash/fp/flow.js';
 
 type FigmaType = 'color' | 'number' | 'string' | 'boolean';
 
-type TokensTransformer = {
-  tokens: Record<string, unknown>; // TODO: type
-};
+type TokenCollection = Record<string, unknown>; // TODO: type
 
 // TODO: implement as style dictionary transforms
-function stripReferenceTiers({ tokens }: TokensTransformer) {
+function stripReferenceTiers(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value === 'string' && value.startsWith('{')) {
       return value.replace(/{(primitive|semantic|component)\./g, '{');
@@ -22,7 +21,7 @@ function stripReferenceTiers({ tokens }: TokensTransformer) {
 }
 
 // TODO: implement as style dictionary transforms
-function toDimension({ tokens }: TokensTransformer) {
+function toDimension(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'fontWeight') {
       return 'dimension';
@@ -33,7 +32,7 @@ function toDimension({ tokens }: TokensTransformer) {
 }
 
 // Convert composite JSON tokens to nested Figma groups
-function toGroups({ tokens }: TokensTransformer) {
+function toGroups(tokens: TokenCollection) {
   const types: Record<string, FigmaType> = {
     fontFamily: 'string',
     fontSize: 'number',
@@ -57,8 +56,9 @@ function toGroups({ tokens }: TokensTransformer) {
   });
 }
 
-function percentageToString({ tokens }: TokensTransformer) {
+function percentageToString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
+    console.log('value', value);
     if (value.$type === 'number') {
       const stringValue = value.$value.toString();
 
@@ -77,7 +77,7 @@ function percentageToString({ tokens }: TokensTransformer) {
 }
 
 // TODO: implement as style dictionary transforms
-function toString({ tokens }: TokensTransformer) {
+function toString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'shadow' || value === 'fontFamily') {
       return 'string';
@@ -98,13 +98,13 @@ export async function figmaFormatter({
     outputReferences: options.outputReferences,
   });
 
-  const cleanedTokens = toGroups({
-    tokens: toString({
-      tokens: toDimension({
-        tokens: stripReferenceTiers({ tokens: percentageToString({ tokens }) }),
-      }),
-    }),
-  });
+  const cleanedTokens = flow([
+    percentageToString,
+    stripReferenceTiers,
+    toDimension,
+    toString,
+    toGroups,
+  ])(tokens);
 
   const lines = [JSON.stringify(cleanedTokens, null, 2), ''];
 
