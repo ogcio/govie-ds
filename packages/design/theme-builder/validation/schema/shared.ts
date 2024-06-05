@@ -103,10 +103,10 @@ function createTypographyValueSchema(name: string) {
   return z
     .object(
       {
-        fontFamily: createStringArraySchema('Font family'),
-        fontSize: createRemSchema('Font size'),
-        fontWeight: createNumberSchema('Font weight'),
-        lineHeight: createNumberSchema('Line height'),
+        fontFamily: createStringSchema('Font family'),
+        fontSize: createStringSchema('Font size'),
+        fontWeight: createStringSchema('Font weight'),
+        lineHeight: createStringSchema('Line height'),
       },
       {
         required_error: `${name} is required.`,
@@ -122,5 +122,3 @@ export function createTypographySchema(name: string) {
     name,
   });
 }
-
-
