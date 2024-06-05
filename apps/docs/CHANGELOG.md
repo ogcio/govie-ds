@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.4.2...@govie-ds/docs-0.4.3) (2024-06-05)
+
+
+### Bug Fixes
+
+* add figma line height percentage  ([#42](https://github.com/ogcio/govie-ds/issues/42)) ([52ebdeb](https://github.com/ogcio/govie-ds/commit/52ebdeb7ce34975083fab339e2c02732ccf18cd5))
+
+
+
 ## [0.4.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.4.1...@govie-ds/docs-0.4.2) (2024-06-05)
 
 ### Dependency Updates
