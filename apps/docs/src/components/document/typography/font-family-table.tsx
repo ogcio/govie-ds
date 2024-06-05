@@ -1,5 +1,6 @@
 import { meta } from '@govie-ds/theme-govie';
 import { FontTable } from './font-table';
+import { sampleText } from './sample-text';
 
 export function FontFamilyTable() {
   return (
@@ -8,7 +9,7 @@ export function FontFamilyTable() {
       tokens={meta.light.resolved.primitive.font.family}
       renderValue={(value) => value.join(', ')}
       renderExample={(value) => (
-        <span style={{ fontFamily: value.join(', ') }}>Sample text</span>
+        <span style={{ fontFamily: value.join(', ') }}>{sampleText}</span>
       )}
     />
   );
