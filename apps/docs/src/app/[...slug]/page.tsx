@@ -28,7 +28,7 @@ export default function DocPage({ params }: DocPageProps) {
         {document.draft ? <Draft /> : null}
       </div>
       {document.status !== 'coming-soon' ? (
-        <div>
+        <div className="flex flex-col gap-xl">
           <Mdx code={document.body.code} />
         </div>
       ) : null}

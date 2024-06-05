@@ -1,14 +1,28 @@
 import { z } from 'zod';
-import { createTypographySetSchema } from './shared.js';
+import { createTypographySchema } from './shared.js';
+
+function createTypographySetSchema(name: string) {
+  return z
+    .object(
+      {
+        sm: createTypographySchema('sm'),
+        md: createTypographySchema('md'),
+        lg: createTypographySchema('lg'),
+        xl: createTypographySchema('xl'),
+        '2xl': createTypographySchema('2xl'),
+      },
+      {
+        required_error: `${name} is required.`,
+      },
+    )
+    .strict();
+}
 
 export const textSchema = z
   .object(
     {
-      sm: createTypographySetSchema('sm'),
-      md: createTypographySetSchema('md'),
-      lg: createTypographySetSchema('lg'),
-      xl: createTypographySetSchema('xl'),
-      '2xl': createTypographySetSchema('2xl'),
+      regular: createTypographySetSchema('regular'),
+      bold: createTypographySetSchema('bold'),      
     },
     {
       required_error: 'Text is required.',

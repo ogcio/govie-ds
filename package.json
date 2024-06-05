@@ -13,6 +13,7 @@
     "ds:build": "nx run @govie-ds/docs:build",
     "ds:build:prod": "nx run @govie-ds/docs:build:prod",
     "build": "nx run-many --target=build --all",
+    "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs",
     "test": "nx run-many --target=test --all --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",

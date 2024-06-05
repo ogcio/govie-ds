@@ -1,15 +1,22 @@
 import { meta } from '@govie-ds/tokens';
-import { objectKeys } from 'ts-extras';
-import { Table, Td } from './table';
-import { TokenName } from '../color/token-name';
-import { P } from 'vitest/dist/reporters-yx5ZTtEV.js';
+import { Td } from './table';
+import { FontTable } from './font-table';
+import { Heading } from '@/components/typography/heading';
 
 function remToPx(remString: string) {
   return `${Number(remString.replace('rem', '')) * 16}px`;
 }
 
-function unitlessToPx(unitless: number) {
-  return `${unitless * 16}px`;
+function lineHeightToPx({
+  fontSize,
+  lineHeight,
+}: {
+  fontSize: string;
+  lineHeight: number;
+}) {
+  const unitless = Number(fontSize.replace('rem', '')) * lineHeight * 16;
+  const pixels = Number.isInteger(unitless) ? unitless : unitless.toFixed(2);
+  return `${pixels}px`;
 }
 
 function CellLabel({ label }: { label: string }) {
@@ -28,24 +35,33 @@ function TypographyCell({
   lineHeight: number;
 }) {
   return (
-    <Td className="text-sm">
-      <div className="grid grid-cols-2">
-        <CellLabel label="Font family" />
-        <p>{fontFamily.join(', ')}</p>
-        <CellLabel label="Font size" />
-        <p>
-          {fontSize} ({remToPx(fontSize)})
-        </p>
-        <CellLabel label="Font weight" />
-        <p>{fontWeight}</p>
-        <CellLabel label="Line height" />
-        <p>
-          {lineHeight} ({unitlessToPx(lineHeight)})
-        </p>
-      </div>
-    </Td>
+    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-sm">
+      <CellLabel label="Font family" />
+      <p>{fontFamily.join(', ')}</p>
+      <CellLabel label="Font size" />
+      <p>
+        {fontSize}{' '}
+        <span className="text-xs font-light">(e.g. {remToPx(fontSize)})</span>
+      </p>
+      <CellLabel label="Font weight" />
+      <p>{fontWeight}</p>
+      <CellLabel label="Line height" />
+      <p>
+        {lineHeight}{' '}
+        <span className="text-xs font-light">
+          (e.g. {lineHeightToPx({ fontSize, lineHeight })})
+        </span>
+      </p>
+    </div>
   );
 }
+
+type Font = {
+  fontFamily: string[];
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: number;
+};
 
 // TODO: type
 function TypographyTable({
@@ -53,51 +69,25 @@ function TypographyTable({
   tokens,
 }: {
   name: string;
-  tokens: Record<string, { regular: any; bold: any }>;
+  tokens: Record<string, any>;
 }) {
   return (
-    <Table
-      headers={['Token', 'Regular', 'Bold']} // , 'Example']}
-      ids={objectKeys(tokens)}
-      renderRow={(id) => {
-        const { $value: regularValue } = tokens[id].regular;
-
-        const { $value: boldValue } = tokens[id].bold;
-
-        const {
-          fontFamily: fontFamilyRegular,
-          fontSize: fontSizeRegular,
-          fontWeight: fontWeightRegular,
-          lineHeight: lineHeightRegular,
-        } = regularValue;
-
-        const {
-          fontFamily: fontFamilyBold,
-          fontSize: fontSizeBold,
-          fontWeight: fontWeightBold,
-          lineHeight: lineHeightBold,
-        } = boldValue;
-
-        return (
-          <tr key={id}>
-            <Td className="whitespace-nowrap w-[1px] text-sm">
-              <TokenName name={`${name}/${id}`} />
-            </Td>
-            <TypographyCell
-              fontFamily={fontFamilyRegular}
-              fontSize={fontSizeRegular}
-              fontWeight={fontWeightRegular}
-              lineHeight={lineHeightRegular}
-            />
-            <TypographyCell
-              fontFamily={fontFamilyBold}
-              fontSize={fontSizeBold}
-              fontWeight={fontWeightBold}
-              lineHeight={lineHeightBold}
-            />
-          </tr>
-        );
-      }}
+    <FontTable<Font>
+      name={name}
+      tokens={tokens}
+      renderValue={(value) => <TypographyCell {...value} />}
+      renderExample={(value) => (
+        <span
+          style={{
+            fontFamily: value.fontFamily.join(', '),
+            fontSize: value.fontSize,
+            fontWeight: value.fontWeight,
+            lineHeight: value.lineHeight,
+          }}
+        >
+          The quick brown fox jumps over the lazy dog.
+        </span>
+      )}
     />
   );
 }
@@ -105,14 +95,20 @@ function TypographyTable({
 export function Typography() {
   return (
     <div className="flex flex-col gap-2xl">
-      <TypographyTable
-        name="heading"
-        tokens={meta.light.resolved.primitive.heading}
-      />
-      <TypographyTable
-        name="text"
-        tokens={meta.light.resolved.primitive.text}
-      />
+      <div className="flex flex-col gap-xl">
+        <Heading as="h3">Heading</Heading>
+        <TypographyTable
+          name="heading/regular"
+          tokens={meta.light.resolved.primitive.heading.regular}
+        />
+      </div>
+      <div className="flex flex-col gap-xl">
+        <Heading as="h3">Text</Heading>
+        <TypographyTable
+          name="text/regular"
+          tokens={meta.light.resolved.primitive.text.regular}
+        />
+      </div>
     </div>
   );
 }
