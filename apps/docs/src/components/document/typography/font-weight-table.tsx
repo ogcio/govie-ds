@@ -1,15 +1,15 @@
 import { meta } from '@govie-ds/theme-govie';
-import { FontTable } from './font-table';
-import { sampleText } from './sample-text';
+import { List } from '../common/list';
+import { sampleTextShort } from '../common/sample-text';
 
 export function FontWeightTable() {
   return (
-    <FontTable<number>
+    <List<number>
       name="font-weight"
       tokens={meta.light.resolved.primitive.font.weight}
       renderValue={(value) => value}
       renderExample={(value) => (
-        <span style={{ fontWeight: value }}>{sampleText}</span>
+        <span style={{ fontWeight: value }}>{sampleTextShort}</span>
       )}
     />
   );
