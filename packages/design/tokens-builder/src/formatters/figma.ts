@@ -4,8 +4,14 @@ import { FormatFnArguments } from 'style-dictionary/types';
 import { Tokens } from 'style-dictionary';
 import { objectKeys } from 'ts-extras';
 
+type FigmaType = 'color' | 'number' | 'string' | 'boolean';
+
+type TokensTransformer = {
+  tokens: Record<string, unknown>; // TODO: type
+};
+
 // TODO: implement as style dictionary transforms
-function stripReferenceTiers({ tokens }: Tokens) {
+function stripReferenceTiers({ tokens }: TokensTransformer) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value === 'string' && value.startsWith('{')) {
       return value.replace(/{(primitive|semantic|component)\./g, '{');
@@ -16,7 +22,7 @@ function stripReferenceTiers({ tokens }: Tokens) {
 }
 
 // TODO: implement as style dictionary transforms
-function toDimension({ tokens }: Tokens) {
+function toDimension({ tokens }: TokensTransformer) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'fontWeight') {
       return 'dimension';
@@ -26,10 +32,8 @@ function toDimension({ tokens }: Tokens) {
   });
 }
 
-type FigmaType = 'color' | 'number' | 'string' | 'boolean';
-
 // Convert composite JSON tokens to nested Figma groups
-function toGroups({ tokens }: Tokens) {
+function toGroups({ tokens }: TokensTransformer) {
   const types: Record<string, FigmaType> = {
     fontFamily: 'string',
     fontSize: 'number',
@@ -53,8 +57,27 @@ function toGroups({ tokens }: Tokens) {
   });
 }
 
+function percentageToString({ tokens }: TokensTransformer) {
+  return cloneDeepWith(tokens, (value) => {
+    if (value.$type === 'number') {
+      const stringValue = value.$value.toString();
+
+      if (stringValue.endsWith('%')) {
+        return {
+          $type: 'string',
+          $value: value.$value,
+        };
+      }
+
+      return value;
+    }
+
+    return undefined;
+  });
+}
+
 // TODO: implement as style dictionary transforms
-function toString({ tokens }: Tokens) {
+function toString({ tokens }: TokensTransformer) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'shadow' || value === 'fontFamily') {
       return 'string';
@@ -78,7 +101,7 @@ export async function figmaFormatter({
   const cleanedTokens = toGroups({
     tokens: toString({
       tokens: toDimension({
-        tokens: stripReferenceTiers({ tokens }),
+        tokens: stripReferenceTiers({ tokens: percentageToString({ tokens }) }),
       }),
     }),
   });
