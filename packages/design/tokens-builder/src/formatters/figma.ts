@@ -38,7 +38,7 @@ function toGroups({ tokens }: TokensTransformer) {
     fontFamily: 'string',
     fontSize: 'number',
     fontWeight: 'number',
-    lineHeight: 'number',
+    lineHeight: 'string',
   };
 
   return cloneDeepWith(tokens, (value) => {
