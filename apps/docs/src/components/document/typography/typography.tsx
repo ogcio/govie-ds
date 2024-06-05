@@ -14,8 +14,9 @@ function lineHeightToPx({
   fontSize: string;
   lineHeight: number;
 }) {
-  const unitless = Number(fontSize.replace('rem', '')) * lineHeight;
-  return `${unitless * 16}px`;
+  const unitless = Number(fontSize.replace('rem', '')) * lineHeight * 16;
+  const pixels = Number.isInteger(unitless) ? unitless : unitless.toFixed(2);
+  return `${pixels}px`;
 }
 
 function CellLabel({ label }: { label: string }) {
@@ -34,18 +35,22 @@ function TypographyCell({
   lineHeight: number;
 }) {
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-x-md">
+    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-sm">
       <CellLabel label="Font family" />
       <p>{fontFamily.join(', ')}</p>
       <CellLabel label="Font size" />
       <p>
-        {fontSize} ({remToPx(fontSize)})
+        {fontSize}{' '}
+        <span className="text-xs font-light">(e.g. {remToPx(fontSize)})</span>
       </p>
       <CellLabel label="Font weight" />
       <p>{fontWeight}</p>
       <CellLabel label="Line height" />
       <p>
-        {lineHeight} ({lineHeightToPx({ fontSize, lineHeight })})
+        {lineHeight}{' '}
+        <span className="text-xs font-light">
+          (e.g. {lineHeightToPx({ fontSize, lineHeight })})
+        </span>
       </p>
     </div>
   );
@@ -90,14 +95,14 @@ function TypographyTable({
 export function Typography() {
   return (
     <div className="flex flex-col gap-2xl">
-      <div>
+      <div className="flex flex-col gap-xl">
         <Heading as="h3">Heading</Heading>
         <TypographyTable
           name="heading/regular"
           tokens={meta.light.resolved.primitive.heading.regular}
         />
       </div>
-      <div>
+      <div className="flex flex-col gap-xl">
         <Heading as="h3">Text</Heading>
         <TypographyTable
           name="text/regular"
