@@ -1,5 +1,4 @@
 import { meta } from '@govie-ds/tokens';
-import { Td } from './table';
 import { FontTable } from './font-table';
 import { Heading } from '@/components/typography/heading';
 
