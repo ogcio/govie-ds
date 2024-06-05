@@ -242,13 +242,14 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerTransform({
-    name: 'lineHeight/px',
+    name: 'lineHeight/percentage',
     type: 'value',
     filter: function (token) {
       return token.attributes?.item === 'lineHeight';
     },
     transform: function (token) {
-      return `${token.$value * 16}px`;
+      const percent = Math.round(token.$value * 100);
+      return `${percent}%`;
     },
   });
 
@@ -332,7 +333,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
       'attribute/cti',
       'name/pascal',
       'size/rem', // TODO: review
-      'lineHeight/px',
+      'lineHeight/percentage',
       'color/hex', // TODO: review,
       'fontFamily/css',
       'shadow/css/shorthand',

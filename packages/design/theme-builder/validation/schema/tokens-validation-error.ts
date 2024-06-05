@@ -7,9 +7,9 @@ export class TokensValidationError extends Error {
   constructor(errors: TokenError[]) {
     const formattedErrors = errors
       .map((error) => `${error.path}: ${error.message}`)
-      .join("\n");
+      .join('\n');
 
-    super(`Invalid design tokens format:\n\n${formattedErrors}`);
+    super(`Invalid design tokens schema:\n\n${formattedErrors}`);
     this.errors = errors;
   }
 
