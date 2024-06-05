@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.4.4...@govie-ds/docs-0.5.0) (2024-06-05)
+
+
+### Features
+
+* add screen size docs ([#44](https://github.com/ogcio/govie-ds/issues/44)) ([8a212d3](https://github.com/ogcio/govie-ds/commit/8a212d354e6447c0b9d15a43c126cf7d22f01565))
+
+
+
 ## [0.4.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.4.3...@govie-ds/docs-0.4.4) (2024-06-05)
 
 
