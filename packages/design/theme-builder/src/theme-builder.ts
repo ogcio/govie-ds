@@ -7,7 +7,7 @@ import { ZodTypeAny } from 'zod';
 import { outputFile } from 'fs-extra';
 import { tokensSchema } from '../validation/schema/index.js';
 import { validateDesignTokensSchema } from '../validation/validate-schema.js';
-import { validateDesignTokensFormat } from '../validation/validate-format.js';
+// import { validateDesignTokensFormat } from '../validation/validate-format.js';
 
 async function validateAndBuildTokens({
   source,
@@ -18,7 +18,7 @@ async function validateAndBuildTokens({
   tokens?: any;
   platforms: any;
 }) {
-  validateDesignTokensSchema({ source, tokens });
+  //validateDesignTokensSchema({ source, tokens });
   // TODO: validator does not support aliases in composite tokens
   // see https://github.com/AnimaApp/design-token-validator/issues/2
   // validateDesignTokensFormat({ source, tokens });

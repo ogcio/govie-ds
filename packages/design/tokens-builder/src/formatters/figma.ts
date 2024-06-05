@@ -28,18 +28,6 @@ function toDimension({ tokens }: Tokens) {
 
 type FigmaType = 'color' | 'number' | 'string' | 'boolean';
 
-function toValue(key: string, value: any) {
-  if (key === 'fontSize') {
-    return value.$value[key].replace('rem', '');
-  }
-
-  if (key === 'fontFamily') {
-    return value.$value[key].join(', ');
-  }
-
-  return value.$value[key];
-}
-
 // Convert composite JSON tokens to nested Figma groups
 function toGroups({ tokens }: Tokens) {
   const types: Record<string, FigmaType> = {
@@ -54,7 +42,7 @@ function toGroups({ tokens }: Tokens) {
       return objectKeys(value.$value).reduce((acc, key) => {
         acc[key] = {
           $type: types[key],
-          $value: toValue(key, value),
+          $value: value.$value[key],
         };
 
         return acc;
