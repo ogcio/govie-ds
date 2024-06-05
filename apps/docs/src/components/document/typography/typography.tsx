@@ -34,7 +34,7 @@ function TypographyCell({
   lineHeight: number;
 }) {
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-sm">
+    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-md">
       <CellLabel label="Font family" />
       <p>{fontFamily.join(', ')}</p>
       <CellLabel label="Font size" />
