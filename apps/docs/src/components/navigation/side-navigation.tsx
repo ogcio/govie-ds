@@ -17,13 +17,14 @@ export function SideNavigation({
   onSelect?: (id: string) => void;
 }) {
   return (
-    <ul className="flex flex-col gap-md [&_ul]:ml-lg whitespace-nowrap">
+    <ul className="flex flex-col gap-lg [&_ul]:ml-lg whitespace-nowrap">
       {items.map((item) => (
         <li
           key={item.id}
           className={cn(
-            'pl-md flex flex-col gap-md',
-            item.isActive ? 'border-gold-400 border-l-md' : null,
+            'pl-md flex flex-col gap-md justify-center',
+            item.isActive ? 'border-gold-400' : 'border-transparent',
+            item.href ? 'border-l-md' : null,
           )}
         >
           {item.href ? (
@@ -31,7 +32,7 @@ export function SideNavigation({
               href={item.href}
               onClick={() => onSelect(item.id)}
               className={cn(
-                'text-blue-700 hover:text-blue-800',
+                'text-blue-700 text-sm hover:text-blue-800',
                 'focus:bg-yellow-400',
                 'hover:underline hover:underline-offset-md hover:underline-thickness-lg',
               )}
@@ -39,9 +40,9 @@ export function SideNavigation({
               {item.name}
             </Link>
           ) : (
-            <h2 className="text-gray-800 text-lg">{item.name}</h2>
+            <p className="text-gray-800 text-md my-md">{item.name}</p>
           )}
-          {item.children ? (
+          {item.children && item.children.length > 0 ? (
             <SideNavigation items={item.children} onSelect={onSelect} />
           ) : null}
         </li>
