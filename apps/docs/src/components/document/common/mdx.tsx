@@ -13,6 +13,7 @@ import { BorderWidthTable } from '../border/border-width-table';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { ShadowTable } from '../shadow/shadow-table';
 import { OpacityTable } from '../opacity/opacity-table';
+import { ZIndexTable } from '../z-index/z-index-table';
 
 export type MdxProps = {
   code: string;
@@ -39,6 +40,7 @@ export function Mdx({ code }: MdxProps) {
         BorderRadiusTable: () => <BorderRadiusTable />,
         ShadowTable: () => <ShadowTable />,
         OpacityTable: () => <OpacityTable />,
+        ZIndexTable: () => <ZIndexTable />,
       }}
     />
   );
