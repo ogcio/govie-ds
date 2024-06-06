@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.10.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.9.0...@govie-ds/docs-0.10.0) (2024-06-06)
+
+
+### Features
+
+* add z-index docs ([#50](https://github.com/ogcio/govie-ds/issues/50)) ([bc69bed](https://github.com/ogcio/govie-ds/commit/bc69bed90a2b20f77729abae9ebdb0b8127ac164))
+
+
+
 # [0.9.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.8.0...@govie-ds/docs-0.9.0) (2024-06-06)
 
 
