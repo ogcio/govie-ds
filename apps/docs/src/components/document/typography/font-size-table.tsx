@@ -1,5 +1,5 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList } from '../common/sample-list';
+import { SampleList, toSampleTokens } from '../common/sample-list';
 import { sampleTextShort } from '../common/sample-text';
 import { TokenValue } from '../common/token-value';
 
@@ -7,7 +7,7 @@ export function FontSizeTable() {
   return (
     <SampleList<string>
       name="font-size"
-      tokens={meta.light.resolved.primitive.font.size}
+      tokens={toSampleTokens(meta.light.resolved.primitive.font.size)}
       renderValue={(value) => {
         const rem = Number(value.replace('rem', ''));
         return (
