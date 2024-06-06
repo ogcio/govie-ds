@@ -1,12 +1,15 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList } from '../common/sample-list';
+import { SampleList, toSampleTokens } from '../common/sample-list';
+import { TokenValue } from '../common/token-value';
 
 export function ScreenSizeTable() {
   return (
     <SampleList<string>
       name="screen"
-      tokens={meta.light.resolved.primitive.screen}
-      renderValue={(value) => value}
+      tokens={toSampleTokens(meta.light.resolved.primitive.screen)}
+      renderValue={(value) => {
+        return <TokenValue value={value} />;
+      }}
       renderExample={(value) => {
         const screenWidth = Number(value.replace('px', ''));
         const percent = screenWidth / 1800;

@@ -1,6 +1,20 @@
-import { TokenName } from './token-name';
 import { objectKeys } from 'ts-extras';
+import { TokenName } from './token-name';
 import { Fragment } from 'react';
+
+export type SampleToken<TValue> = {
+  name: string;
+  value: TValue;
+};
+
+export function toSampleTokens<TValue>(
+  tokens: Record<string, { $type: string; $value: TValue }>,
+): SampleToken<TValue>[] {
+  return objectKeys(tokens).map((key) => ({
+    name: key,
+    value: tokens[key].$value,
+  }));
+}
 
 export function SampleList<TValue>({
   name,
@@ -9,32 +23,30 @@ export function SampleList<TValue>({
   renderExample,
 }: {
   name: string;
-  tokens: Record<string, { $value: TValue }>;
+  tokens: SampleToken<TValue>[];
   renderValue: (value: TValue) => React.ReactNode;
   renderExample: (value: TValue) => React.ReactNode;
 }) {
   return (
     <Fragment>
-      {objectKeys(tokens).map((key) => {
-        const { $value: value } = tokens[key];
-
+      {tokens.map((token) => {
         return (
           <div
-            key={key}
+            key={token.name}
             className="grid grid-cols-1 lg:grid-cols-2 gap-2xl border-y-xs border-gray-50 py-xl"
           >
             <div className="flex flex-col gap-lg">
               <div className="flex">
-                <TokenName name={`${name}/${key}`} />
+                <TokenName name={`${name}/${token.name}`} />
               </div>
               <div className="text-gray-900 text-xs px-md">
-                {renderValue(value)}
+                {renderValue(token.value)}
               </div>
             </div>
             <div className="flex flex-col gap-md">
               <p className="text-gray-600 text-2xs font-light">Sample</p>
               <div className="flex justify-center lg:justify-start text-center lg:text-start">
-                {renderExample(value)}
+                {renderExample(token.value)}
               </div>
             </div>
           </div>
