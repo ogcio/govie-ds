@@ -11,6 +11,7 @@ import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { SpaceTable } from '../space/space-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { BorderRadiusTable } from '../border/border-radius-table';
+import { ShadowTable } from '../shadow/shadow-table';
 
 export type MdxProps = {
   code: string;
@@ -30,11 +31,12 @@ export function Mdx({ code }: MdxProps) {
         FontWeightTable: () => <FontWeightTable />,
         LineHeightTable: () => <LineHeightTable />,
         LetterSpacingTable: () => <LetterSpacingTable />,
+        Typography: () => <Typography />,
         ScreenSizeTable: () => <ScreenSizeTable />,
         SpaceTable: () => <SpaceTable />,
         BorderWidthTable: () => <BorderWidthTable />,
         BorderRadiusTable: () => <BorderRadiusTable />,
-        Typography: () => <Typography />,
+        ShadowTable: () => <ShadowTable />,
       }}
     />
   );
