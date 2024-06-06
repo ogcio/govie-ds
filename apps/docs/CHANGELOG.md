@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.9.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.8.0...@govie-ds/docs-0.9.0) (2024-06-06)
+
+
+### Features
+
+* add opacity docs ([#49](https://github.com/ogcio/govie-ds/issues/49)) ([04e045f](https://github.com/ogcio/govie-ds/commit/04e045fd0ae671a7365cdf8cdabdd5a2bd79a364))
+
+
+
 # [0.8.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.7.0...@govie-ds/docs-0.8.0) (2024-06-06)
 
 
