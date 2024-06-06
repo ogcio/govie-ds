@@ -1,6 +1,6 @@
 import { meta } from '@govie-ds/theme-govie';
 import { SampleList, toSampleTokens } from '../common/sample-list';
-import { TokenValue, TokenValueComposite } from '../common/token-value';
+import { TokenValueComposite } from '../common/token-value';
 
 type Shadow = {
   offsetX: string;
