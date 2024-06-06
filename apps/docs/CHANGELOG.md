@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.6.0...@govie-ds/docs-0.7.0) (2024-06-06)
+
+
+### Features
+
+* add border docs ([#47](https://github.com/ogcio/govie-ds/issues/47)) ([3733eef](https://github.com/ogcio/govie-ds/commit/3733eefa30cf365e4c014570bb7cfd9d1b1b33a3))
+
+
+
 # [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.5.1...@govie-ds/docs-0.6.0) (2024-06-06)
 
 
