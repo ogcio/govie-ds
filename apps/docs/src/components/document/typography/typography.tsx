@@ -38,11 +38,11 @@ function TypographyCell({
   return (
     <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-md">
       <CellLabel label="Font family" />
-      <p>{fontFamily.join(', ')}</p>
+      <TokenValue value={fontFamily.join(', ')} />
       <CellLabel label="Font size" />
       <TokenValue value={fontSize} converted={`${remToPx(fontSize)}px`} />
       <CellLabel label="Font weight" />
-      <p>{fontWeight}</p>
+      <TokenValue value={fontWeight.toString()} />
       <CellLabel label="Line height" />
       <TokenValue
         value={lineHeight.toString()}
