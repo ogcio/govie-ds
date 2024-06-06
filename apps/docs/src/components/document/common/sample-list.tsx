@@ -33,7 +33,7 @@ export function SampleList<TValue>({
             </div>
             <div className="flex flex-col gap-md">
               <p className="text-gray-600 text-2xs font-light">Sample</p>
-              <div className="flex justify-center sm:justify-start text-center sm:text-start">
+              <div className="flex justify-center lg:justify-start text-center lg:text-start">
                 {renderExample(value)}
               </div>
             </div>
