@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.8.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.7.0...@govie-ds/docs-0.8.0) (2024-06-06)
+
+
+### Features
+
+* add shadow docs ([#48](https://github.com/ogcio/govie-ds/issues/48)) ([1ae83ee](https://github.com/ogcio/govie-ds/commit/1ae83eebbab0104b31a72ca259cf16bd867b0c1d))
+
+
+
 # [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.6.0...@govie-ds/docs-0.7.0) (2024-06-06)
 
 
