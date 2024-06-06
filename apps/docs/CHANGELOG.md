@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.5.1...@govie-ds/docs-0.6.0) (2024-06-06)
+
+
+### Features
+
+* add space docs ([#46](https://github.com/ogcio/govie-ds/issues/46)) ([00c20b7](https://github.com/ogcio/govie-ds/commit/00c20b776c08f4b62dce36571b0a9a25af3e3820))
+
+
+
 ## [0.5.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.5.0...@govie-ds/docs-0.5.1) (2024-06-06)
 
 
