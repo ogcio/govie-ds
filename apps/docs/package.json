@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/docs",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
