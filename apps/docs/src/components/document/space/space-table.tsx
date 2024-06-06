@@ -21,29 +21,15 @@ export function SpaceTable() {
       name="space"
       tokens={sortSpaces(meta.light.resolved.primitive.space)}
       renderValue={(value) => {
-        return <TokenValue value={value.toString()} />;
+        return <TokenValue value={`${value}px`} />;
       }}
       renderExample={(value) => {
-        return 'foo';
-        // const screenWidth = Number(value.replace('px', ''));
-        // const percent = screenWidth / 1800;
-        // const sampleWidth = 200;
-        // const sampleHeight = 60;
-
-        // return (
-        //   <div
-        //     className="bg-gray-50 flex justify-center"
-        //     style={{
-        //       width: sampleWidth,
-        //       height: sampleHeight,
-        //     }}
-        //   >
-        //     <div
-        //       className="bg-gold-200 h-full"
-        //       style={{ width: percent * sampleWidth }}
-        //     />
-        //   </div>
-        // );
+        return (
+          <div
+            className="bg-gold-200"
+            style={{ width: value, height: '12px' }}
+          />
+        );
       }}
     />
   );
