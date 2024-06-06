@@ -1,5 +1,5 @@
 import convert from 'color-convert';
-import { TokenName } from './token-name';
+import { TokenName } from '../common/token-name';
 
 export function Color({
   name,

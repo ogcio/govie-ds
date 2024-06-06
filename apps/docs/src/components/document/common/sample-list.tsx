@@ -1,4 +1,4 @@
-import { TokenName } from '../color/token-name';
+import { TokenName } from './token-name';
 import { objectKeys } from 'ts-extras';
 import { Fragment } from 'react';
 
