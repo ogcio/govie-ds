@@ -32,7 +32,7 @@ export function SideNavigation({
               href={item.href}
               onClick={() => onSelect(item.id)}
               className={cn(
-                'text-blue-700 text-sm hover:text-blue-800',
+                'py-sm text-blue-700 text-sm hover:text-blue-800',
                 'focus:bg-yellow-400',
                 'hover:underline hover:underline-offset-md hover:underline-thickness-lg',
               )}
