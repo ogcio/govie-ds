@@ -1,6 +1,5 @@
 import { meta } from '@govie-ds/tokens';
 import { SampleList, toSampleTokens } from '../common/sample-list';
-import { Heading } from '@/components/typography/heading';
 import { sampleTextLong } from '../common/sample-text';
 import { TokenValueComposite } from '../common/token-value';
 
@@ -41,7 +40,7 @@ function TypographyValueComposite({
         {
           name: 'Font size',
           value: fontSize,
-          converted: `${remToPx(fontSize)}px`,
+          converted: `e.g. ${remToPx(fontSize)}px`,
         },
         {
           name: 'Font weight',
@@ -64,18 +63,11 @@ type Font = {
   lineHeight: number;
 };
 
-// TODO: type
-function TypographyTable({
-  name,
-  tokens,
-}: {
-  name: string;
-  tokens: Record<string, any>;
-}) {
+export function TypographyTable() {
   return (
     <SampleList<Font>
-      name={name}
-      tokens={toSampleTokens(tokens)}
+      name="typography"
+      tokens={toSampleTokens(meta.light.resolved.semantic.typography.regular)}
       renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
@@ -90,26 +82,5 @@ function TypographyTable({
         </span>
       )}
     />
-  );
-}
-
-export function Typography() {
-  return (
-    <div className="flex flex-col gap-2xl">
-      <div className="flex flex-col gap-xl">
-        <Heading as="h3">Heading</Heading>
-        <TypographyTable
-          name="heading/regular"
-          tokens={meta.light.resolved.primitive.heading.regular}
-        />
-      </div>
-      <div className="flex flex-col gap-xl">
-        <Heading as="h3">Text</Heading>
-        <TypographyTable
-          name="text/regular"
-          tokens={meta.light.resolved.primitive.text.regular}
-        />
-      </div>
-    </div>
   );
 }

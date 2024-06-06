@@ -3,34 +3,7 @@ import {
   TokenError,
   TokensValidationError,
 } from './tokens-validation-error.js';
-import { colorSchema } from './color-schema.js';
-import { spaceSchema } from './space-schema.js';
-import { fontSchema } from './font-schema.js';
-import { screenSchema } from './screen-schema.js';
-import { zIndexSchema } from './z-index-schema.js';
-import { borderSchema } from './border-schema.js';
-import { opacitySchema } from './opacity-schema.js';
-import { shadowSchema } from './shadow-schema.js';
-import { headingSchema } from './heading-schema.js';
-import { textSchema } from './text-schema.js';
-
-const primitiveSchema = z
-  .object(
-    {
-      color: colorSchema,
-      space: spaceSchema,
-      font: fontSchema,
-      screen: screenSchema,
-      zIndex: zIndexSchema,
-      border: borderSchema,
-      opacity: opacitySchema,
-      shadow: shadowSchema,
-      heading: headingSchema,
-      text: textSchema,
-    },
-    { required_error: 'Primitive is required.' },
-  )
-  .strict();
+import { primitiveSchema } from './primitive/primitive-schema.js';
 
 export const tokensSchema = z
   .object({

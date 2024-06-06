@@ -24,7 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="h-full overflow-y-scroll"
+      suppressHydrationWarning
+    >
       <body
         className={`${lato.className} transition duration-500 bg-white h-full`}
         // style={{ backgroundColor: "var(--ods-surface-primary)" }}

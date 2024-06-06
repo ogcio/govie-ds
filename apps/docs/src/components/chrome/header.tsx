@@ -15,7 +15,7 @@ export function Header({
   return (
     <div className="bg-emerald-800 border-b-lg border-gold-500">
       <Container>
-        <div className="flex items-center py-xl gap-lg text-white">
+        <div className="flex items-center py-lg gap-lg text-white">
           {showMobileMenu ? (
             <button
               className="block sm:hidden"

@@ -5,7 +5,7 @@ import {
   createIntegerSchema,
   createNumberSchema,
   createRemSchema,
-} from './shared.js';
+} from '../shared.js';
 
 function createFontFamilySchema(name: string) {
   return createTokenSchema({
