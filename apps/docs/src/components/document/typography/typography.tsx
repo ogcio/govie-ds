@@ -1,10 +1,11 @@
 import { meta } from '@govie-ds/tokens';
-import { List } from '../common/list';
+import { SampleList } from '../common/sample-list';
 import { Heading } from '@/components/typography/heading';
 import { sampleTextLong } from '../common/sample-text';
+import { TokenValue } from '../common/token-value';
 
 function remToPx(remString: string) {
-  return `${Number(remString.replace('rem', '')) * 16}px`;
+  return Number(remString.replace('rem', '')) * 16;
 }
 
 function lineHeightToPx({
@@ -39,19 +40,14 @@ function TypographyCell({
       <CellLabel label="Font family" />
       <p>{fontFamily.join(', ')}</p>
       <CellLabel label="Font size" />
-      <p>
-        {fontSize}{' '}
-        <span className="text-xs font-light">(e.g. {remToPx(fontSize)})</span>
-      </p>
+      <TokenValue value={fontSize} converted={`${remToPx(fontSize)}px`} />
       <CellLabel label="Font weight" />
       <p>{fontWeight}</p>
       <CellLabel label="Line height" />
-      <p>
-        {lineHeight}{' '}
-        <span className="text-xs font-light">
-          (e.g. {lineHeightToPx({ fontSize, lineHeight })})
-        </span>
-      </p>
+      <TokenValue
+        value={lineHeight.toString()}
+        converted={`e.g. ${lineHeightToPx({ fontSize, lineHeight })}`}
+      />
     </div>
   );
 }
@@ -72,7 +68,7 @@ function TypographyTable({
   tokens: Record<string, any>;
 }) {
   return (
-    <List<Font>
+    <SampleList<Font>
       name={name}
       tokens={tokens}
       renderValue={(value) => <TypographyCell {...value} />}

@@ -1,10 +1,9 @@
 import { meta } from '@govie-ds/theme-govie';
-import { List } from '../common/list';
-import { sampleTextShort } from '../common/sample-text';
+import { SampleList } from '../common/sample-list';
 
 export function ScreenSizeTable() {
   return (
-    <List<string>
+    <SampleList<string>
       name="screen"
       tokens={meta.light.resolved.primitive.screen}
       renderValue={(value) => value}

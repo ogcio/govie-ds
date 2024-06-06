@@ -1,6 +1,7 @@
 import { meta } from '@govie-ds/theme-govie';
-import { List } from '../common/list';
+import { SampleList } from '../common/sample-list';
 import { sampleTextShort } from '../common/sample-text';
+import { TokenValue } from '../common/token-value';
 
 function remToEm(value: string) {
   return value.replace('rem', 'em');
@@ -8,10 +9,13 @@ function remToEm(value: string) {
 
 export function LetterSpacingTable() {
   return (
-    <List<string>
+    <SampleList<string>
       name="letter-spacing"
       tokens={meta.light.resolved.primitive.font.letterSpacing}
-      renderValue={(value) => remToEm(value)}
+      renderValue={(value) => {
+        const em = Number(value.replace('rem', ''));
+        return <TokenValue value={`${em}em`} converted={`e.g. ${em * 16}px`} />;
+      }}
       renderExample={(value) => (
         <span style={{ letterSpacing: remToEm(value) }}>{sampleTextShort}</span>
       )}
