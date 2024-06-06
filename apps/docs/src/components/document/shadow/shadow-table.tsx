@@ -1,6 +1,6 @@
 import { meta } from '@govie-ds/theme-govie';
 import { SampleList, toSampleTokens } from '../common/sample-list';
-import { TokenValue } from '../common/token-value';
+import { TokenValue, TokenValueComposite } from '../common/token-value';
 
 type Shadow = {
   offsetX: string;
@@ -20,10 +20,19 @@ export function ShadowTable() {
       name="shadow"
       tokens={toSampleTokens(meta.light.resolved.primitive.shadow)}
       renderValue={(value) => {
-        return <TokenValue value={toShadowString(value)} />;
+        return (
+          <TokenValueComposite
+            tokens={[
+              { name: 'Offset X', value: value.offsetX },
+              { name: 'Offset Y', value: value.offsetY },
+              { name: 'Blur', value: value.blur },
+              { name: 'Spread', value: value.spread },
+              { name: 'Color', value: value.color },
+            ]}
+          />
+        );
       }}
       renderExample={(value) => {
-        console.log(value);
         return (
           <div
             className="w-[200px] h-[32px]"

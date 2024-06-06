@@ -2,7 +2,7 @@ import { meta } from '@govie-ds/tokens';
 import { SampleList, toSampleTokens } from '../common/sample-list';
 import { Heading } from '@/components/typography/heading';
 import { sampleTextLong } from '../common/sample-text';
-import { TokenValue } from '../common/token-value';
+import { TokenValueComposite } from '../common/token-value';
 
 function remToPx(remString: string) {
   return Number(remString.replace('rem', '')) * 16;
@@ -20,11 +20,7 @@ function lineHeightToPx({
   return `${pixels}px`;
 }
 
-function CellLabel({ label }: { label: string }) {
-  return <p className="font-semibold">{label}:</p>;
-}
-
-function TypographyCell({
+function TypographyValueComposite({
   fontFamily,
   fontSize,
   fontWeight,
@@ -36,19 +32,28 @@ function TypographyCell({
   lineHeight: number;
 }) {
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-md">
-      <CellLabel label="Font family" />
-      <TokenValue value={fontFamily.join(', ')} />
-      <CellLabel label="Font size" />
-      <TokenValue value={fontSize} converted={`${remToPx(fontSize)}px`} />
-      <CellLabel label="Font weight" />
-      <TokenValue value={fontWeight.toString()} />
-      <CellLabel label="Line height" />
-      <TokenValue
-        value={lineHeight.toString()}
-        converted={`e.g. ${lineHeightToPx({ fontSize, lineHeight })}`}
-      />
-    </div>
+    <TokenValueComposite
+      tokens={[
+        {
+          name: 'Font family',
+          value: fontFamily.join(', '),
+        },
+        {
+          name: 'Font size',
+          value: fontSize,
+          converted: `${remToPx(fontSize)}px`,
+        },
+        {
+          name: 'Font weight',
+          value: fontWeight.toString(),
+        },
+        {
+          name: 'Line height',
+          value: lineHeight.toString(),
+          converted: `e.g. ${lineHeightToPx({ fontSize, lineHeight })}`,
+        },
+      ]}
+    />
   );
 }
 
@@ -71,7 +76,7 @@ function TypographyTable({
     <SampleList<Font>
       name={name}
       tokens={toSampleTokens(tokens)}
-      renderValue={(value) => <TypographyCell {...value} />}
+      renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
           style={{
