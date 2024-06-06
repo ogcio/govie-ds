@@ -1,6 +1,6 @@
 {
-  "primitive": {
-    "heading": {
+  "semantic": {
+    "typography": {
       "regular": {
         "2xs": {
           "$type": "typography",
