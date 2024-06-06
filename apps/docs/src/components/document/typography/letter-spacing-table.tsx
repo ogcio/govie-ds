@@ -1,5 +1,5 @@
 import { meta } from '@govie-ds/theme-govie';
-import { List } from '../common/list';
+import { SampleList } from '../common/sample-list';
 import { sampleTextShort } from '../common/sample-text';
 
 function remToEm(value: string) {
@@ -8,7 +8,7 @@ function remToEm(value: string) {
 
 export function LetterSpacingTable() {
   return (
-    <List<string>
+    <SampleList<string>
       name="letter-spacing"
       tokens={meta.light.resolved.primitive.font.letterSpacing}
       renderValue={(value) => remToEm(value)}

@@ -2,7 +2,7 @@ import { TokenName } from '../color/token-name';
 import { objectKeys } from 'ts-extras';
 import { Fragment } from 'react';
 
-export function List<TValue>({
+export function SampleList<TValue>({
   name,
   tokens,
   renderValue,
@@ -31,7 +31,9 @@ export function List<TValue>({
             </div>
             <div className="flex flex-col gap-md">
               <p className="text-gray-600 text-xs font-light">Sample</p>
-              {renderExample(value)}
+              <div className="flex justify-center sm:justify-start text-center sm:text-start">
+                {renderExample(value)}
+              </div>
             </div>
           </div>
         );

@@ -1,5 +1,5 @@
 import { meta } from '@govie-ds/tokens';
-import { List } from '../common/list';
+import { SampleList } from '../common/sample-list';
 import { Heading } from '@/components/typography/heading';
 import { sampleTextLong } from '../common/sample-text';
 
@@ -72,7 +72,7 @@ function TypographyTable({
   tokens: Record<string, any>;
 }) {
   return (
-    <List<Font>
+    <SampleList<Font>
       name={name}
       tokens={tokens}
       renderValue={(value) => <TypographyCell {...value} />}
