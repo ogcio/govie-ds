@@ -12,6 +12,7 @@ import { SpaceTable } from '../space/space-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { ShadowTable } from '../shadow/shadow-table';
+import { OpacityTable } from '../opacity/opacity-table';
 
 export type MdxProps = {
   code: string;
@@ -37,6 +38,7 @@ export function Mdx({ code }: MdxProps) {
         BorderWidthTable: () => <BorderWidthTable />,
         BorderRadiusTable: () => <BorderRadiusTable />,
         ShadowTable: () => <ShadowTable />,
+        OpacityTable: () => <OpacityTable />,
       }}
     />
   );
