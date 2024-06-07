@@ -26,8 +26,10 @@ function convertColors(colors: typeof meta.light.resolved.primitive.color) {
 const tokens = govieTokens.light;
 
 export function createTheme({
+  useVariables = true,
   theme,
 }: {
+  useVariables?: boolean;
   theme?: Partial<CustomThemeConfig>;
 } = {}): Partial<CustomThemeConfig> {
   const defaultTheme: Partial<CustomThemeConfig> = {
@@ -56,58 +58,94 @@ export function createTheme({
     // TODO: font family
     fontSize: {
       '2xs': [
-        variables.govieFontSize100,
+        useVariables
+          ? variables.govieFontSize100
+          : meta.light.resolved.primitive.font.size[100].$value,
         {
-          lineHeight: variables.govieFontLineHeight100,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight100
+            : meta.light.resolved.primitive.font.lineHeight[100].$value.toString(),
         },
       ],
       xs: [
-        variables.govieFontSize200,
+        useVariables
+          ? variables.govieFontSize200
+          : meta.light.resolved.primitive.font.size[200].$value,
         {
-          lineHeight: variables.govieFontLineHeight200,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight200
+            : meta.light.resolved.primitive.font.lineHeight[200].$value.toString(),
         },
       ],
       sm: [
-        variables.govieFontSize300,
+        useVariables
+          ? variables.govieFontSize300
+          : meta.light.resolved.primitive.font.size[300].$value,
         {
-          lineHeight: variables.govieFontLineHeight300,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight300
+            : meta.light.resolved.primitive.font.lineHeight[300].$value.toString(),
         },
       ],
       md: [
-        variables.govieFontSize400,
+        useVariables
+          ? variables.govieFontSize400
+          : meta.light.resolved.primitive.font.size[400].$value,
         {
-          lineHeight: variables.govieFontLineHeight400,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight400
+            : meta.light.resolved.primitive.font.lineHeight[400].$value.toString(),
         },
       ],
       lg: [
-        variables.govieFontSize500,
+        useVariables
+          ? variables.govieFontSize500
+          : meta.light.resolved.primitive.font.size[500].$value,
         {
-          lineHeight: variables.govieFontLineHeight500,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight500
+            : meta.light.resolved.primitive.font.lineHeight[500].$value.toString(),
         },
       ],
       xl: [
-        variables.govieFontSize600,
+        useVariables
+          ? variables.govieFontSize600
+          : meta.light.resolved.primitive.font.size[600].$value,
         {
-          lineHeight: variables.govieFontLineHeight600,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight600
+            : meta.light.resolved.primitive.font.lineHeight[600].$value.toString(),
         },
       ],
       '2xl': [
-        variables.govieFontSize700,
+        useVariables
+          ? variables.govieFontSize700
+          : meta.light.resolved.primitive.font.size[700].$value,
         {
-          lineHeight: variables.govieFontLineHeight700,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight700
+            : meta.light.resolved.primitive.font.lineHeight[700].$value.toString(),
         },
       ],
       '3xl': [
-        variables.govieFontSize800,
+        useVariables
+          ? variables.govieFontSize800
+          : meta.light.resolved.primitive.font.size[800].$value,
         {
-          lineHeight: variables.govieFontLineHeight800,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight800
+            : meta.light.resolved.primitive.font.lineHeight[800].$value.toString(),
         },
       ],
       '4xl': [
-        variables.govieFontSize900,
+        useVariables
+          ? variables.govieFontSize900
+          : meta.light.resolved.primitive.font.size[900].$value,
         {
-          lineHeight: variables.govieFontLineHeight900,
-          fontWeight: variables.govieFontWeight700,
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight900
+            : meta.light.resolved.primitive.font.lineHeight[900].$value.toString(),
+          // fontWeight: variables.govieFontWeight700,
         },
       ],
     },
@@ -297,6 +335,54 @@ export function createTheme({
           css: {
             color: theme('colors.gray.950'),
             p: {
+              fontSize: theme('fontSize.xs')[0],
+            },
+            h1: {
+              fontSize: theme('fontSize.xl')[0],
+            },
+            h2: {
+              fontSize: theme('fontSize.sm')[0],
+            },
+          },
+          // h3: {},
+          // strong: {
+          //   color: theme("colors.gray.800"),
+          // },
+          // a: {
+          //   fontSize: theme("fontSize.lg")[0],
+          //   color: theme("colors.white"),
+          // },
+          // },
+        },
+        md: {
+          css: {
+            p: {
+              fontSize: theme('fontSize.md')[0],
+            },
+            h1: {
+              fontSize: theme('fontSize.2xl')[0],
+            },
+            h2: {
+              fontSize: theme('fontSize.md')[0],
+            },
+          },
+        },
+        lg: {
+          css: {
+            p: {
+              fontSize: theme('fontSize.md')[0],
+            },
+            h1: {
+              fontSize: theme('fontSize.3xl')[0],
+            },
+            h2: {
+              fontSize: theme('fontSize.lg')[0],
+            },
+          },
+        },
+        xl: {
+          css: {
+            p: {
               fontSize: theme('fontSize.md')[0],
             },
             h1: {
@@ -305,14 +391,6 @@ export function createTheme({
             h2: {
               fontSize: theme('fontSize.xl')[0],
             },
-            // h3: {},
-            // strong: {
-            //   color: theme("colors.gray.800"),
-            // },
-            // a: {
-            //   fontSize: theme("fontSize.lg")[0],
-            //   color: theme("colors.white"),
-            // },
           },
         },
       }),

@@ -1,14 +1,17 @@
-import type { Config } from "tailwindcss";
-import { createTheme } from "@govie-ds/design-components";
+import type { Config } from 'tailwindcss';
+import { createTheme } from '@govie-ds/design-components';
+
+const useVariables = !(process.env.USE_RESOLVED_THEME === 'true');
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@govie-ds/design-components/src/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@govie-ds/design-components/src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: createTheme({
+    useVariables,
     theme: {
       animatedSettings: {
         animatedSpeed: 1000,
@@ -17,7 +20,7 @@ const config: Config = {
         bounceInSpeed: 750,
         bounceOutSpeed: 750,
         animationDelaySpeed: 500,
-        classes: ["bounce", "heartBeat"],
+        classes: ['bounce', 'heartBeat'],
       },
     },
   }),
@@ -31,8 +34,8 @@ const config: Config = {
   //   },
   // },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("tailwindcss-animatecss"),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animatecss'),
   ],
 };
 export default config;
