@@ -1,8 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { createPortal } from 'react-dom';
 
-export function Responsive({
+function ResponsiveInternal({
   title,
   styleSelector,
   children,
@@ -37,5 +37,22 @@ export function Responsive({
     <iframe title={title} ref={setContentRef}>
       {mountNode && createPortal(children, mountNode)}
     </iframe>
+  );
+}
+
+export function Responsive({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Fragment>
+      <link data-frame type="text/css" rel="stylesheet" href="/styles.css" />
+      <ResponsiveInternal title={title} styleSelector="link[data-frame]">
+        {children}
+      </ResponsiveInternal>
+    </Fragment>
   );
 }
