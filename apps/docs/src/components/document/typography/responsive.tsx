@@ -4,9 +4,11 @@ import { LatoFont } from './lato-font';
 
 export function Responsive({
   title,
+  height,
   children,
 }: {
   title: string;
+  height?: string | number;
   children: React.ReactNode;
 }) {
   return (
@@ -26,10 +28,18 @@ export function Responsive({
       <link data-frame type="text/css" rel="stylesheet" href="/styles.css" />
       <ResizableIFrame
         title={title}
-        height={200}
+        height={height ?? 200}
         styleSelector="link[data-frame]"
       >
-        <LatoFont>{children}</LatoFont>
+        <LatoFont>
+          <div
+            style={{
+              padding: '12px',
+            }}
+          >
+            {children}
+          </div>
+        </LatoFont>
       </ResizableIFrame>
     </Fragment>
   );

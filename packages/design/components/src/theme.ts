@@ -335,12 +335,15 @@ export function createTheme({
           css: {
             color: theme('colors.gray.950'),
             p: {
-              fontSize: theme('fontSize.xs')[0],
+              fontSize: theme('fontSize.sm')[0],
             },
             h1: {
-              fontSize: theme('fontSize.xl')[0],
+              fontSize: theme('fontSize.lg')[0],
             },
             h2: {
+              fontSize: theme('fontSize.md')[0],
+            },
+            h3: {
               fontSize: theme('fontSize.sm')[0],
             },
           },
@@ -360,9 +363,12 @@ export function createTheme({
               fontSize: theme('fontSize.md')[0],
             },
             h1: {
-              fontSize: theme('fontSize.2xl')[0],
+              fontSize: theme('fontSize.xl')[0],
             },
             h2: {
+              fontSize: theme('fontSize.lg')[0],
+            },
+            h3: {
               fontSize: theme('fontSize.md')[0],
             },
           },
@@ -370,12 +376,15 @@ export function createTheme({
         lg: {
           css: {
             p: {
-              fontSize: theme('fontSize.md')[0],
+              fontSize: theme('fontSize.lg')[0],
             },
             h1: {
-              fontSize: theme('fontSize.3xl')[0],
+              fontSize: theme('fontSize.2xl')[0],
             },
             h2: {
+              fontSize: theme('fontSize.xl')[0],
+            },
+            h3: {
               fontSize: theme('fontSize.lg')[0],
             },
           },
@@ -383,12 +392,15 @@ export function createTheme({
         xl: {
           css: {
             p: {
-              fontSize: theme('fontSize.md')[0],
+              fontSize: theme('fontSize.xl')[0],
             },
             h1: {
-              fontSize: theme('fontSize.4xl')[0],
+              fontSize: theme('fontSize.3xl')[0],
             },
             h2: {
+              fontSize: theme('fontSize.2xl')[0],
+            },
+            h3: {
               fontSize: theme('fontSize.xl')[0],
             },
           },
