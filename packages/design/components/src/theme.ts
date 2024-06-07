@@ -330,84 +330,63 @@ export function createTheme({
     },
     extend: {
       // TODO: type
-      typography: (theme: any) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.gray.950'),
-            p: {
-              fontSize: theme('fontSize.sm')[0],
+      typography: (theme: any) => {
+        console.log(theme('fontSize.sm'));
+
+        return {
+          DEFAULT: {
+            css: {
+              // color: theme('colors.gray.950'),
+              p: toFont(theme, 'fontSize.sm'),
+              h1: toFont(theme, 'fontSize.lg'),
+              h2: toFont(theme, 'fontSize.md'),
+              h3: toFont(theme, 'fontSize.sm'),
             },
-            h1: {
-              fontSize: theme('fontSize.lg')[0],
-            },
-            h2: {
-              fontSize: theme('fontSize.md')[0],
-            },
-            h3: {
-              fontSize: theme('fontSize.sm')[0],
+            // h3: {},
+            // strong: {
+            //   color: theme("colors.gray.800"),
+            // },
+            // a: {
+            //   fontSize: theme("fontSize.lg")[0],
+            //   color: theme("colors.white"),
+            // },
+            // },
+          },
+          md: {
+            css: {
+              p: toFont(theme, 'fontSize.md'),
+              h1: toFont(theme, 'fontSize.xl'),
+              h2: toFont(theme, 'fontSize.lg'),
+              h3: toFont(theme, 'fontSize.md'),
             },
           },
-          // h3: {},
-          // strong: {
-          //   color: theme("colors.gray.800"),
-          // },
-          // a: {
-          //   fontSize: theme("fontSize.lg")[0],
-          //   color: theme("colors.white"),
-          // },
-          // },
-        },
-        md: {
-          css: {
-            p: {
-              fontSize: theme('fontSize.md')[0],
-            },
-            h1: {
-              fontSize: theme('fontSize.xl')[0],
-            },
-            h2: {
-              fontSize: theme('fontSize.lg')[0],
-            },
-            h3: {
-              fontSize: theme('fontSize.md')[0],
+          lg: {
+            css: {
+              p: toFont(theme, 'fontSize.lg'),
+              h1: toFont(theme, 'fontSize.2xl'),
+              h2: toFont(theme, 'fontSize.xl'),
+              h3: toFont(theme, 'fontSize.lg'),
             },
           },
-        },
-        lg: {
-          css: {
-            p: {
-              fontSize: theme('fontSize.lg')[0],
-            },
-            h1: {
-              fontSize: theme('fontSize.2xl')[0],
-            },
-            h2: {
-              fontSize: theme('fontSize.xl')[0],
-            },
-            h3: {
-              fontSize: theme('fontSize.lg')[0],
+          xl: {
+            css: {
+              p: toFont(theme, 'fontSize.xl'),
+              h1: toFont(theme, 'fontSize.3xl'),
+              h2: toFont(theme, 'fontSize.2xl'),
+              h3: toFont(theme, 'fontSize.xl'),
             },
           },
-        },
-        xl: {
-          css: {
-            p: {
-              fontSize: theme('fontSize.xl')[0],
-            },
-            h1: {
-              fontSize: theme('fontSize.3xl')[0],
-            },
-            h2: {
-              fontSize: theme('fontSize.2xl')[0],
-            },
-            h3: {
-              fontSize: theme('fontSize.xl')[0],
-            },
-          },
-        },
-      }),
+        };
+      },
     },
   };
 
   return deepmerge(defaultTheme, theme);
+}
+
+function toFont(theme: any, name: string) {
+  return {
+    fontSize: theme(name)[0],
+    lineHeight: theme(name)[1].lineHeight,
+  };
 }
