@@ -1,9 +1,12 @@
+import { Prose } from '@/components/typography/prose';
 import { Responsive } from './responsive';
 
 export function TypographyResponsive() {
   return (
     <Responsive title="Sample">
-      <h1 className="bg-gold-200">Hello world</h1>
+      <Prose>
+        <h1>Hello world</h1>
+      </Prose>
     </Responsive>
   );
 }

@@ -32,6 +32,11 @@ export function createTheme({
 } = {}): Partial<CustomThemeConfig> {
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
+    fontFamily: {
+      primary: variables.govieFontFamilyPrimary,
+      secondary: variables.govieFontFamilySecondary,
+      tertiary: variables.govieFontFamilyTertiary,
+    },
     container: {
       padding: {
         DEFAULT: '1rem',

@@ -6,20 +6,7 @@ import { Button } from '@/components/form/button';
 import heroImage from '../../public/hero.png';
 import { config } from '@/lib/config';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
-
-function Prose({
-  as: As = 'div',
-  children,
-  className,
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <As className={`prose md:prose-lg lg:prose-xl ${className}`}>{children}</As>
-  );
-}
+import { Prose } from '@/components/typography/prose';
 
 const benefits = [
   {
