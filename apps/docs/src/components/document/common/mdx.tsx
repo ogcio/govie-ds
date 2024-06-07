@@ -7,6 +7,7 @@ import { FontWeightTable } from '../typography/font-weight-table';
 import { LineHeightTable } from '../typography/line-height-table';
 import { LetterSpacingTable } from '../typography/letter-spacing-table';
 import { TypographyTable } from '../typography/typography-table';
+import { TypographyResponsive } from '../typography/typography-responsive';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { SpaceTable } from '../space/space-table';
 import { BorderWidthTable } from '../border/border-width-table';
@@ -34,6 +35,7 @@ export function Mdx({ code }: MdxProps) {
         LineHeightTable: () => <LineHeightTable />,
         LetterSpacingTable: () => <LetterSpacingTable />,
         TypographyTable: () => <TypographyTable />,
+        TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,
         SpaceTable: () => <SpaceTable />,
         BorderWidthTable: () => <BorderWidthTable />,
