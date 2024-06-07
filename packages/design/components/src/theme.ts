@@ -331,8 +331,6 @@ export function createTheme({
     extend: {
       // TODO: type
       typography: (theme: any) => {
-        console.log(theme('fontSize.sm'));
-
         return {
           DEFAULT: {
             css: {
