@@ -6,7 +6,7 @@ describe('getDocumentHierarchy', () => {
   });
 
   it('should return hierarchy for a single path', () => {
-    expect(getDocumentHierarchy(['1-foo/2-bar']).children[0]).toEqual({
+    expect(getDocumentHierarchy(['1-foo/2-bar'])?.children[0]).toEqual({
       id: '1-foo',
       order: 1,
       slug: 'foo',
@@ -23,7 +23,7 @@ describe('getDocumentHierarchy', () => {
 
   it('should return hierarchy for multiple paths', () => {
     expect(
-      getDocumentHierarchy(['1-foo/2-bar', '1-foo/2-baz']).children[0],
+      getDocumentHierarchy(['1-foo/2-bar', '1-foo/2-baz'])?.children[0],
     ).toEqual({
       id: '1-foo',
       order: 1,
@@ -46,7 +46,7 @@ describe('getDocumentHierarchy', () => {
   });
 
   it('should return hierarchy for nested paths', () => {
-    expect(getDocumentHierarchy(['1-foo/2-bar/3-baz']).children[0]).toEqual({
+    expect(getDocumentHierarchy(['1-foo/2-bar/3-baz'])?.children[0]).toEqual({
       id: '1-foo',
       order: 1,
       slug: 'foo',
@@ -59,7 +59,7 @@ describe('getDocumentHierarchy', () => {
             {
               id: '1-foo/2-bar/3-baz',
               order: 3,
-              slug: 'foo/baz',
+              slug: 'foo/bar/baz',
               children: [],
             },
           ],
@@ -71,7 +71,7 @@ describe('getDocumentHierarchy', () => {
   it('should return hierarchy for multiple nested paths', () => {
     expect(
       getDocumentHierarchy(['1-foo/2-bar/3-baz', '1-foo/2-bar/3-qux'])
-        .children[0],
+        ?.children[0],
     ).toEqual({
       id: '1-foo',
       order: 1,
@@ -85,13 +85,13 @@ describe('getDocumentHierarchy', () => {
             {
               id: '1-foo/2-bar/3-baz',
               order: 3,
-              slug: 'foo/baz',
+              slug: 'foo/bar/baz',
               children: [],
             },
             {
               id: '1-foo/2-bar/3-qux',
               order: 3,
-              slug: 'foo/qux',
+              slug: 'foo/bar/qux',
               children: [],
             },
           ],
@@ -164,19 +164,19 @@ describe('getDocumentHierarchy', () => {
                 {
                   id: '2-foundations/1-styles/1-design-tokens',
                   order: 1,
-                  slug: 'foundations/design-tokens',
+                  slug: 'foundations/styles/design-tokens',
                   children: [],
                 },
                 {
                   id: '2-foundations/1-styles/2-colors',
                   order: 2,
-                  slug: 'foundations/colors',
+                  slug: 'foundations/styles/colors',
                   children: [],
                 },
                 {
                   id: '2-foundations/1-styles/3-typography',
                   order: 3,
-                  slug: 'foundations/typography',
+                  slug: 'foundations/styles/typography',
                   children: [],
                 },
               ],
@@ -189,7 +189,7 @@ describe('getDocumentHierarchy', () => {
                 {
                   id: '2-foundations/2-content/1-tone',
                   order: 1,
-                  slug: 'foundations/tone',
+                  slug: 'foundations/content/tone',
                   children: [],
                 },
               ],
