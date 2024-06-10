@@ -16,7 +16,7 @@ export function getDocumentDetails(path: string) {
   const pathParts = path.split('/').map((part) => getSegmentDetails(part));
 
   if (pathParts.length < 2 || pathParts.length > 3) {
-    throw new Error(`Invalid path length '${path}'.`);
+    throw new Error(`Invalid path '${path}'.`);
   }
 
   return {

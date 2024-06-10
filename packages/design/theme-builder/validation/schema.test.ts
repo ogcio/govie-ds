@@ -1,19 +1,19 @@
-import { TokensValidationError, validateDesignTokens } from "./schema/index.js";
+import { TokensValidationError, validateDesignTokens } from './schema/index.js';
 
-describe("validateDesignTokensSchema", () => {
-  it("should fail with no primitives", () => {
+describe('validateDesignTokensSchema', () => {
+  it('should fail with no primitives', () => {
     try {
       validateDesignTokens({ tokens: {} });
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: "Primitive is required.",
-        path: "primitive",
+        message: 'primitive is required.',
+        path: 'primitive',
       });
     }
   });
 
-  it("should fail with no color", () => {
+  it('should fail with no color', () => {
     try {
       validateDesignTokens({
         tokens: {
@@ -23,13 +23,13 @@ describe("validateDesignTokensSchema", () => {
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: "Color is required.",
-        path: "primitive.color",
+        message: 'color is required.',
+        path: 'primitive.color',
       });
     }
   });
 
-  it("should fail with no color swatch set", () => {
+  it('should fail with no color swatch set', () => {
     try {
       validateDesignTokens({
         tokens: {
@@ -41,13 +41,13 @@ describe("validateDesignTokensSchema", () => {
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: "gray is required.",
-        path: "primitive.color.gray",
+        message: 'gray is required.',
+        path: 'primitive.color.gray',
       });
     }
   });
 
-  it("should fail with no color swatch", () => {
+  it('should fail with no color swatch', () => {
     try {
       validateDesignTokens({
         tokens: {
@@ -61,22 +61,22 @@ describe("validateDesignTokensSchema", () => {
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: "50 is required.",
-        path: "primitive.color.gray.50",
+        message: '50 is required.',
+        path: 'primitive.color.gray.50',
       });
     }
   });
 
-  it("should fail with invalid type", () => {
+  it('should fail with invalid type', () => {
     try {
       validateDesignTokens({
         tokens: {
           primitive: {
             color: {
               gray: {
-                "50": {
-                  $type: "colour",
-                  $value: "#000000",
+                '50': {
+                  $type: 'colour',
+                  $value: '#000000',
                 },
               },
             },
@@ -87,21 +87,21 @@ describe("validateDesignTokensSchema", () => {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
         message: `Invalid literal value, expected "color".`,
-        path: "primitive.color.gray.50.$type",
+        path: 'primitive.color.gray.50.$type',
       });
     }
   });
 
-  it("should fail with invalid color hex", () => {
+  it('should fail with invalid color hex', () => {
     try {
       validateDesignTokens({
         tokens: {
           primitive: {
             color: {
               gray: {
-                "50": {
-                  $type: "color",
-                  $value: "#00000",
+                '50': {
+                  $type: 'color',
+                  $value: '#00000',
                 },
               },
             },
@@ -111,8 +111,8 @@ describe("validateDesignTokensSchema", () => {
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: "Color must be a full lowercase hex value.",
-        path: "primitive.color.gray.50.$value",
+        message: 'Color must be a full lowercase hex value.',
+        path: 'primitive.color.gray.50.$value',
       });
     }
   });
