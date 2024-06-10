@@ -351,7 +351,7 @@ export function createTheme({
           },
           lg: {
             css: {
-              p: toFont(theme, 'fontSize.lg'),
+              p: toFont(theme, 'fontSize.md'),
               h1: toFont(theme, 'fontSize.2xl'),
               h2: toFont(theme, 'fontSize.xl'),
               h3: toFont(theme, 'fontSize.lg'),
@@ -359,7 +359,7 @@ export function createTheme({
           },
           xl: {
             css: {
-              p: toFont(theme, 'fontSize.xl'),
+              p: toFont(theme, 'fontSize.md'),
               h1: toFont(theme, 'fontSize.3xl'),
               h2: toFont(theme, 'fontSize.2xl'),
               h3: toFont(theme, 'fontSize.xl'),
