@@ -4,7 +4,7 @@ import { createPixelSchema, createTokenSchema } from '../shared.js';
 function createScreenSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createPixelSchema('Screen'),
+    valueSchema: createPixelSchema('screen'),
     name,
   });
 }

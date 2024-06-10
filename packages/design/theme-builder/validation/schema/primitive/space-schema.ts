@@ -4,7 +4,7 @@ import { createPixelSchema, createTokenSchema } from '../shared.js';
 function createSpaceSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createPixelSchema('Space'),
+    valueSchema: createPixelSchema('space'),
     name,
   });
 }
@@ -49,7 +49,7 @@ export const spaceSchema = z
       96: createSpaceSchema('96'),
     },
     {
-      required_error: 'Space is required.',
+      required_error: 'space is required.',
     },
   )
   .strict();

@@ -340,15 +340,6 @@ export function createTheme({
               h2: toFont(theme, 'fontSize.md'),
               h3: toFont(theme, 'fontSize.sm'),
             },
-            // h3: {},
-            // strong: {
-            //   color: theme("colors.gray.800"),
-            // },
-            // a: {
-            //   fontSize: theme("fontSize.lg")[0],
-            //   color: theme("colors.white"),
-            // },
-            // },
           },
           md: {
             css: {

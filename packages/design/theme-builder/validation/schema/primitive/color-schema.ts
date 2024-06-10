@@ -45,7 +45,7 @@ export const colorSchema = z
       gold: createColorSwatchSetSchema('gold'),
     },
     {
-      required_error: 'Color is required.',
+      required_error: 'color is required.',
     },
   )
   .strict();

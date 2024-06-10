@@ -4,7 +4,7 @@ import { createPixelSchema, createTokenSchema } from '../shared.js';
 function createBorderWidthSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createPixelSchema('Border width'),
+    valueSchema: createPixelSchema('width'),
     name,
   });
 }
@@ -25,7 +25,7 @@ const borderWidthSchema = z
 function createBorderRadiusSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createPixelSchema('Border radius'),
+    valueSchema: createPixelSchema('radius'),
     name,
   });
 }
@@ -49,7 +49,7 @@ export const borderSchema = z
       radius: borderRadiusSchema,
     },
     {
-      required_error: 'Border is required.',
+      required_error: 'border is required.',
     },
   )
   .strict();
