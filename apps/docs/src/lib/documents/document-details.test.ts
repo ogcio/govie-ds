@@ -17,7 +17,7 @@ describe('getDocumentDetails', () => {
     expect(getDocumentDetails('1-foo/2-bar/3-baz')).toEqual({
       id: '1-foo/2-bar/3-baz',
       order: 3,
-      slug: 'foo/baz',
+      slug: 'foo/bar/baz',
     });
   });
 

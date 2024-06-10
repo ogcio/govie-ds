@@ -4,7 +4,7 @@ import { createNumberSchema, createTokenSchema } from '../shared.js';
 function createOpacitySchema(name: string) {
   return createTokenSchema({
     type: 'number',
-    valueSchema: createNumberSchema('Opacity'),
+    valueSchema: createNumberSchema('opacity'),
     name,
   });
 }

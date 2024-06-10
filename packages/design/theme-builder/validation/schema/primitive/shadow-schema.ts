@@ -4,7 +4,7 @@ import { createShadowValueSchema, createTokenSchema } from '../shared.js';
 function createShadowSchema(name: string) {
   return createTokenSchema({
     type: 'shadow',
-    valueSchema: createShadowValueSchema('Shadow'),
+    valueSchema: createShadowValueSchema('shadow'),
     name,
   });
 }

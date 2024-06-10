@@ -4,7 +4,7 @@ import { createIntegerSchema, createTokenSchema } from '../shared.js';
 function createZIndexSchema(name: string) {
   return createTokenSchema({
     type: 'number',
-    valueSchema: createIntegerSchema('Z-Index'),
+    valueSchema: createIntegerSchema('zIndex'),
     name,
   });
 }

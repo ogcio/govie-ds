@@ -80,10 +80,7 @@ function cleanSlugs(value: DocumentHierarchy): DocumentHierarchy {
 
   return {
     ...value,
-    slug:
-      slugParts.length === 3
-        ? `${slugParts[0]}/${slugParts[2]}`
-        : slugParts.join('/'),
+    slug: slugParts.join('/'),
     children: value.children.map((child) => cleanSlugs(child)),
   };
 }

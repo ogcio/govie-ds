@@ -10,7 +10,7 @@ import {
 function createFontFamilySchema(name: string) {
   return createTokenSchema({
     type: 'fontFamily',
-    valueSchema: createStringArraySchema('Font family'),
+    valueSchema: createStringArraySchema('fontFamily'),
     name,
   });
 }
@@ -26,7 +26,7 @@ const fontFamilySchema = z
 function createFontSizeSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createRemSchema('Font size'),
+    valueSchema: createRemSchema('fontSize'),
     name,
   });
 }
@@ -52,7 +52,7 @@ const fontSizeSchema = z
 function createFontWeightSchema(name: string) {
   return createTokenSchema({
     type: 'fontWeight',
-    valueSchema: createIntegerSchema('Font weight'),
+    valueSchema: createIntegerSchema('fontWeight'),
     name,
   });
 }
@@ -74,7 +74,7 @@ const fontWeightSchema = z
 function createFontLineHeightSchema(name: string) {
   return createTokenSchema({
     type: 'number',
-    valueSchema: createNumberSchema('Line height'),
+    valueSchema: createNumberSchema('lineHeight'),
     name,
   });
 }
@@ -101,7 +101,7 @@ const fontLineHeightSchema = z
 function createLetterSpacingSchema(name: string) {
   return createTokenSchema({
     type: 'dimension',
-    valueSchema: createRemSchema('Letter spacing'),
+    valueSchema: createRemSchema('letterSpacing'),
     name,
   });
 }
@@ -128,7 +128,7 @@ export const fontSchema = z
       letterSpacing: letterSpacingSchema,
     },
     {
-      required_error: 'Font is required.',
+      required_error: 'font is required.',
     },
   )
   .strict();

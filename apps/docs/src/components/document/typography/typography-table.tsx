@@ -67,7 +67,7 @@ export function TypographyTable() {
   return (
     <SampleList<Font>
       name="typography"
-      tokens={toSampleTokens(meta.light.resolved.semantic.typography.regular)}
+      tokens={toSampleTokens(meta.light.resolved.primitive.typography.regular)}
       renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
