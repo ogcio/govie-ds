@@ -1,7 +1,27 @@
 {
   "semantic": {
     "typography": {
-      "regular": {
+      "default": {
+        "mainTitle": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.lg}"
+        },
+        "body": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.md}"
+        }
+      },
+      "xs": {
+        "mainTitle": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.md}"
+        },
+        "body": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.sm}"
+        }
+      },
+      "md": {
         "mainTitle": {
           "$type": "typography",
           "$value": "{primitive.typography.regular.lg}"
