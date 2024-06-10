@@ -148,6 +148,50 @@ export function createTheme({
           // fontWeight: variables.govieFontWeight700,
         },
       ],
+      '5xl': [
+        useVariables
+          ? variables.govieFontSize1000
+          : meta.light.resolved.primitive.font.size[1000].$value,
+        {
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight1000
+            : meta.light.resolved.primitive.font.lineHeight[1000].$value.toString(),
+          // fontWeight: variables.govieFontWeight700,
+        },
+      ],
+      '6xl': [
+        useVariables
+          ? variables.govieFontSize1100
+          : meta.light.resolved.primitive.font.size[1100].$value,
+        {
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight1100
+            : meta.light.resolved.primitive.font.lineHeight[1100].$value.toString(),
+          // fontWeight: variables.govieFontWeight700,
+        },
+      ],
+      '7xl': [
+        useVariables
+          ? variables.govieFontSize1200
+          : meta.light.resolved.primitive.font.size[1200].$value,
+        {
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight1200
+            : meta.light.resolved.primitive.font.lineHeight[1200].$value.toString(),
+          // fontWeight: variables.govieFontWeight700,
+        },
+      ],
+      '8xl': [
+        useVariables
+          ? variables.govieFontSize1300
+          : meta.light.resolved.primitive.font.size[1300].$value,
+        {
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight1300
+            : meta.light.resolved.primitive.font.lineHeight[1300].$value.toString(),
+          // fontWeight: variables.govieFontWeight700,
+        },
+      ],
     },
     fontWeight: {
       thin: variables.govieFontWeight100,
@@ -334,35 +378,34 @@ export function createTheme({
         return {
           DEFAULT: {
             css: {
-              // color: theme('colors.gray.950'),
               p: toFont(theme, 'fontSize.sm'),
-              h1: toFont(theme, 'fontSize.lg'),
-              h2: toFont(theme, 'fontSize.md'),
-              h3: toFont(theme, 'fontSize.sm'),
+              h1: toFont(theme, 'fontSize.2xl', true),
+              h2: toFont(theme, 'fontSize.md', true),
+              h3: toFont(theme, 'fontSize.sm', true),
             },
           },
           md: {
             css: {
               p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.xl'),
-              h2: toFont(theme, 'fontSize.lg'),
-              h3: toFont(theme, 'fontSize.md'),
+              h1: toFont(theme, 'fontSize.4xl', true),
+              h2: toFont(theme, 'fontSize.lg', true),
+              h3: toFont(theme, 'fontSize.md', true),
             },
           },
           lg: {
             css: {
               p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.2xl'),
-              h2: toFont(theme, 'fontSize.xl'),
-              h3: toFont(theme, 'fontSize.lg'),
+              h1: toFont(theme, 'fontSize.5xl', true),
+              h2: toFont(theme, 'fontSize.xl', true),
+              h3: toFont(theme, 'fontSize.lg', true),
             },
           },
           xl: {
             css: {
               p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.3xl'),
-              h2: toFont(theme, 'fontSize.2xl'),
-              h3: toFont(theme, 'fontSize.xl'),
+              h1: toFont(theme, 'fontSize.6xl', true),
+              h2: toFont(theme, 'fontSize.2xl', true),
+              h3: toFont(theme, 'fontSize.xl', true),
             },
           },
         };
@@ -373,9 +416,10 @@ export function createTheme({
   return deepmerge(defaultTheme, theme);
 }
 
-function toFont(theme: any, name: string) {
+function toFont(theme: any, name: string, bold: boolean = false) {
   return {
     fontSize: theme(name)[0],
+    fontWeight: bold ? 700 : 400, // TODO: convert variables to object, generic fontSize object in theme
     lineHeight: theme(name)[1].lineHeight,
   };
 }

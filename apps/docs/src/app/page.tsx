@@ -59,12 +59,10 @@ function Benefit({
 function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
-      <Prose className="text-center">
-        <Text className="text-xl font-semibold lg:px-6xl">
-          The Design System building block offers a range of benefits to public
-          sector departments
-        </Text>
-      </Prose>
+      <Text className="text-center text-xl font-semibold lg:px-6xl max-w-[50ch]">
+        The Design System building block offers a range of benefits to public
+        sector departments
+      </Text>
       <ul className="grid grid-cols-1 gap-2xl sm:grid-cols-2 lg:grid-cols-3">
         {benefits.map(({ title, description }) => (
           <Fragment key={title}>
@@ -105,17 +103,15 @@ export default function HomePage() {
       <Feedback />
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
         <Prose>
-          <Heading as="h1" className="leading-none sm:leading-normal">
-            Design System
-          </Heading>
-          <Text>
+          <h1 className="leading-none sm:leading-normal">Design System</h1>
+          <p>
             The Design System building block enhances efficiency, quality, and
             consistency across public sector departments, offering a
             comprehensive design system solution. Engineered to be responsive,
             compliant with accessibility regulations, and highly flexible, the
             Design System Building Block empowers your department to create
             cohesive digital experiences effortlessly.
-          </Text>
+          </p>
           <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
             Sign up to learn more
           </Button>

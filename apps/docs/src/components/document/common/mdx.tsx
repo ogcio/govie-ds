@@ -27,8 +27,8 @@ export function Mdx({ code }: MdxProps) {
   return (
     <Component
       components={{
-        h1: ({ children }) => <Heading as="h1">{children}</Heading>,
-        h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+        // h1: ({ children }) => <Heading as="h1">{children}</Heading>,
+        // h2: ({ children }) => <Heading as="h2">{children}</Heading>,
         ColorPrimitives: () => <ColorPrimitives />,
         FontFamilyTable: () => <FontFamilyTable />,
         FontSizeTable: () => <FontSizeTable />,
