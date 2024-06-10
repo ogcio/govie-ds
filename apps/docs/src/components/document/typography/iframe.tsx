@@ -33,13 +33,11 @@ export function IFrame({
       return;
     }
 
-    const linkEls = window.parent.document.querySelectorAll(styleSelector);
+    const linkElements = window.parent.document.querySelectorAll(styleSelector);
 
-    if (linkEls.length) {
-      linkEls.forEach((el) => {
-        window.document.head.appendChild(el);
-      });
-    }
+    linkElements.forEach((linkElement) => {
+      window.document.head.appendChild(linkElement);
+    });
   }, [contentRef, styleSelector]);
 
   return (
