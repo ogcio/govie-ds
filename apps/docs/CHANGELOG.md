@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.11.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.10.1...@govie-ds/docs-0.11.0) (2024-06-10)
+
+### Dependency Updates
+
+* `@govie-ds/design-components` updated to version `0.1.0`
+* `@govie-ds/tokens` updated to version `0.1.0`
+
+### Features
+
+* add responsive typography sample ([#52](https://github.com/ogcio/govie-ds/issues/52)) ([6c3a61b](https://github.com/ogcio/govie-ds/commit/6c3a61b87b5652778327376345bc0e435bfc9e91))
+
+
+
 ## [0.10.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.10.0...@govie-ds/docs-0.10.1) (2024-06-06)
 
 ### Dependency Updates
