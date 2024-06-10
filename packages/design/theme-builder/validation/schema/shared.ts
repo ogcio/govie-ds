@@ -99,30 +99,6 @@ export function createShadowValueSchema(name: string) {
     .strict();
 }
 
-// function createTypographyValueSchema(name: string) {
-//   return z
-//     .object(
-//       {
-//         fontFamily: createStringSchema('Font family'),
-//         fontSize: createStringSchema('Font size'),
-//         fontWeight: createStringSchema('Font weight'),
-//         lineHeight: createStringSchema('Line height'),
-//       },
-//       {
-//         required_error: `${name} is required.`,
-//       },
-//     )
-//     .strict();
-// }
-
-// export function createTypographySchema(name: string) {
-//   return createTokenSchema({
-//     type: 'typography',
-//     valueSchema: createTypographyValueSchema(name),
-//     name,
-//   });
-// }
-
 export function createAliasSchema(name: string) {
   return z
     .string({
