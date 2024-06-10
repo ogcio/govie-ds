@@ -16,19 +16,15 @@ export function getDocumentDetails(path: string) {
   const pathParts = path.split('/').map((part) => getSegmentDetails(part));
 
   if (pathParts.length < 2 || pathParts.length > 3) {
-    throw new Error(`Invalid path '${path}'.`);
+    throw new Error(`Invalid path length '${path}'.`);
   }
 
   return {
     id: path,
-    order: pathParts.length === 2 ? pathParts[1].order : pathParts[2].order,
+    order: pathParts[pathParts.length - 1].order, // === 2 ? pathParts[1].order : pathParts[2].order,
     slug:
-      pathParts.length === 2
-        ? pathParts[1].id === 'index'
-          ? pathParts[0].id
-          : `${pathParts[0].id}/${pathParts[1].id}`
-        : pathParts[2].id === 'index'
-          ? pathParts[0].id
-          : `${pathParts[0].id}/${pathParts[2].id}`,
+      pathParts[pathParts.length - 1].id === 'index'
+        ? pathParts[0].id
+        : pathParts.map((part) => part.id).join('/'),
   };
 }
