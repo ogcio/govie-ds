@@ -7,6 +7,7 @@ import heroImage from '../../public/hero.png';
 import { config } from '@/lib/config';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 import { Prose } from '@/components/typography/prose';
+import { Feedback } from '@/components/chrome/feedback';
 
 const benefits = [
   {
@@ -27,12 +28,12 @@ const benefits = [
   {
     title: 'Performance',
     description:
-      'Deliver fast and responsive digital services with lightweight components and optimised assets.',
+      'Deliver fast and responsive digital services with optimised components and assets.',
   },
   {
     title: 'Responsive',
     description:
-      'Create digital services that work across all devices and screen sizes with responsive components and layouts.',
+      'Create digital services that work across all devices and screen sizes with responsive features and layouts.',
   },
   {
     title: 'Compliance',
@@ -60,8 +61,8 @@ function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
       <Text className="text-center text-xl font-semibold lg:px-6xl max-w-[50ch]">
-        The Design System building block offers a range of benefits to public
-        sector departments
+        The Design System building block offers a wide range of benefits to both
+        users and departments
       </Text>
       <ul className="grid grid-cols-1 gap-2xl sm:grid-cols-2 lg:grid-cols-3">
         {benefits.map(({ title, description }) => (
@@ -74,29 +75,6 @@ function Benefits() {
   );
 }
 
-function Feedback() {
-  return (
-    <div className="flex flex-col gap-xl">
-      <div className="flex items-center gap-lg">
-        <div className="bg-blue-600 px-md rounded text-white tracking-wider">
-          Alpha
-        </div>
-        <p className="text-gray-700 text-xs sm:text-md">
-          This is a new service - your{' '}
-          <a
-            className="underline text-blue-700 hover:decoration-md"
-            href={config.feedbackFormUrl}
-          >
-            feedback
-          </a>{' '}
-          will help us to improve it.
-        </p>
-      </div>
-      <hr />
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <article className="flex flex-col sm:pb-2xl gap-5xl grow">
@@ -105,12 +83,11 @@ export default function HomePage() {
         <Prose>
           <h1 className="leading-none sm:leading-normal">Design System</h1>
           <p>
-            The Design System building block enhances efficiency, quality, and
-            consistency across public sector departments, offering a
-            comprehensive design system solution. Engineered to be responsive,
-            compliant with accessibility regulations, and highly flexible, the
-            Design System Building Block empowers your department to create
-            cohesive digital experiences effortlessly.
+            The Design System Building Block ensures efficiency, quality and
+            consistency across public sector departments. Engineered to be
+            responsive, compliant with accessibility regulations and
+            customisable, the Design System Building Block allows departments to
+            create cohesive digital experiences effortlessly.
           </p>
           <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
             Sign up to learn more
@@ -130,8 +107,8 @@ export default function HomePage() {
         <Heading as="h2">Get started</Heading>
         <Text>
           Ready to elevate your design processes? Contact us to schedule a demo
-          or learn more about how the Design System building block can empower
-          your public sector department.
+          or learn more about how the Design System Building Block can benefit
+          your department.
         </Text>
         <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
           Sign up to learn more
