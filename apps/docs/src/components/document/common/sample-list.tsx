@@ -39,9 +39,7 @@ export function SampleList<TValue>({
               <div className="flex">
                 <TokenName name={`${name}/${token.name}`} />
               </div>
-              <div className="text-gray-900 text-xs px-md">
-                {renderValue(token.value)}
-              </div>
+              <div className="px-md">{renderValue(token.value)}</div>
             </div>
             <div className="flex flex-col gap-md">
               <p className="text-gray-600 text-2xs font-light">Sample</p>
