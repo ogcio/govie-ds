@@ -38,7 +38,7 @@ const benefits = [
   {
     title: 'Compliance',
     description:
-      'Ensure compliance with government standards and regulations with the Design System building block.',
+      'Ensure compliance with government standards and regulations with the Design System Building Block.',
   },
 ];
 
@@ -61,7 +61,7 @@ function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
       <Text className="text-center text-xl font-semibold lg:px-6xl max-w-[50ch]">
-        The Design System building block offers a wide range of benefits to both
+        The Design System Building Block offers a wide range of benefits to both
         users and departments
       </Text>
       <ul className="grid grid-cols-1 gap-2xl sm:grid-cols-2 lg:grid-cols-3">
