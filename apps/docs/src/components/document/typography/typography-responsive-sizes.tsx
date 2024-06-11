@@ -2,9 +2,8 @@ import { meta } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
 import { TokenName } from '../common/token-name';
 
-type TypographyScreenSize = {
-  screenSize: string;
-  alias: string;
+type TypographyScreenAlias = {
+  name: string;
   value: {
     fontFamily: string[];
     fontSize: string;
@@ -15,7 +14,8 @@ type TypographyScreenSize = {
 
 type TypographySize = {
   token: string;
-  sizes: TypographyScreenSize[];
+  screenSize: string;
+  aliases: TypographyScreenAlias[];
 };
 
 function aliasToTokenName(alias: string) {
@@ -26,7 +26,7 @@ function aliasToTokenName(alias: string) {
     .replaceAll('.', '/');
 }
 
-function getHeadingTokens(screenSize: string): TypographyScreenSize[] {
+function getHeadingTokens(screenSize: string) {
   const resolved = Object.hasOwn(
     meta.light.resolved.semantic.typography,
     screenSize,
@@ -47,8 +47,7 @@ function getHeadingTokens(screenSize: string): TypographyScreenSize[] {
 
   return objectKeys(resolved).map((typographyToken) => {
     return {
-      screenSize,
-      alias: aliasToTokenName(unresolved[typographyToken].$value),
+      name: aliasToTokenName(unresolved[typographyToken].$value),
       value: resolved[typographyToken].$value,
     };
   });
@@ -63,12 +62,15 @@ export function TypographyResponsiveSizes() {
     meta.light.resolved.semantic.typography.default.heading,
   );
 
-  const typographySizes: TypographySize[] = screenSizes.flatMap(
-    (screenSize) => {
-      return headingTokens.map((headingToken) => {
+  // console.log(headingTokens, screenSizes);
+
+  const typographySizes: TypographySize[] = headingTokens.flatMap(
+    (headingToken) => {
+      return screenSizes.map((screenSize) => {
         return {
           token: `heading/${headingToken}`,
-          sizes: getHeadingTokens(screenSize),
+          screenSize,
+          aliases: getHeadingTokens(screenSize),
         };
       });
     },
@@ -89,18 +91,18 @@ export function TypographyResponsiveSizes() {
           </tr>
         </thead>
         <tbody>
-          {typographySizes.map((typographySize) => (
+          {/* {typographySizes.map((typographySize) => (
             <tr key={typographySize.token}>
               <td>
                 <TokenName name={typographySize.token} />
               </td>
               {typographySize.sizes.map((size) => (
-                <td key={size.screenSize}>
+                <td key={size.alias}>
                   <TokenName name={size.alias} />
                 </td>
               ))}
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </div>
