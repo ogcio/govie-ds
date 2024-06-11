@@ -36,6 +36,8 @@ jobs:
       #       git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: Build and test
+        env:
+          DEPLOY_ENV: production
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
