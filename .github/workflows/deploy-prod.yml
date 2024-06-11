@@ -31,8 +31,6 @@ jobs:
           node-version: 20
 
       - name: Build and test
-        env:
-          DEPLOY_ENV: production
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
