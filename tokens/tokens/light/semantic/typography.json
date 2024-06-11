@@ -2,43 +2,51 @@
   "semantic": {
     "typography": {
       "default": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.lg}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
+        "heading": {
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          }
         }
       },
       "xs": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.sm}"
+        "heading": {
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          }
         }
       },
       "md": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.lg}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
+        "heading": {
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xl}"
+          }
         }
       },
       "xl": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.lg}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
+        "heading": {
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xl}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xl}"
+          }
         }
       }
     }

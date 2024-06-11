@@ -1,10 +1,10 @@
 import { meta } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
 import { TokenName } from '../common/token-name';
-import { get } from 'lodash';
 
 type TypographyScreenSize = {
-  token: string;
+  screenSize: string;
+  alias: string;
   value: {
     fontFamily: string[];
     fontSize: string;
@@ -26,15 +26,15 @@ function aliasToTokenName(alias: string) {
     .replaceAll('.', '/');
 }
 
-function getTypographyTokens(screenSize: string): TypographyScreenSize[] {
+function getHeadingTokens(screenSize: string): TypographyScreenSize[] {
   const resolved = Object.hasOwn(
     meta.light.resolved.semantic.typography,
     screenSize,
   )
     ? meta.light.resolved.semantic.typography[
         screenSize as keyof typeof meta.light.resolved.semantic.typography
-      ]
-    : meta.light.resolved.semantic.typography.default;
+      ]?.heading
+    : meta.light.resolved.semantic.typography.default.heading;
 
   const unresolved = Object.hasOwn(
     meta.light.unresolved.semantic.typography,
@@ -42,12 +42,13 @@ function getTypographyTokens(screenSize: string): TypographyScreenSize[] {
   )
     ? meta.light.unresolved.semantic.typography[
         screenSize as keyof typeof meta.light.unresolved.semantic.typography
-      ]
-    : meta.light.unresolved.semantic.typography.default;
+      ]?.heading
+    : meta.light.unresolved.semantic.typography.default.heading;
 
   return objectKeys(resolved).map((typographyToken) => {
     return {
-      token: aliasToTokenName(unresolved[typographyToken].$value),
+      screenSize,
+      alias: aliasToTokenName(unresolved[typographyToken].$value),
       value: resolved[typographyToken].$value,
     };
   });
@@ -58,15 +59,22 @@ export function TypographyResponsiveSizes() {
     meta.light.resolved.semantic.typography,
   ).filter((size) => size !== 'default');
 
-  const typographySizes: TypographySize[] = screenSizes.map((size) => {
-    return {
-      token: `screen/${size}`,
-      sizes: getTypographyTokens(size),
-    };
-  });
+  const headingTokens = objectKeys(
+    meta.light.resolved.semantic.typography.default.heading,
+  );
+
+  const typographySizes: TypographySize[] = screenSizes.flatMap(
+    (screenSize) => {
+      return headingTokens.map((headingToken) => {
+        return {
+          token: `heading/${headingToken}`,
+          sizes: getHeadingTokens(screenSize),
+        };
+      });
+    },
+  );
 
   console.log(JSON.stringify(typographySizes, null, 2));
-
   return (
     <div>
       <table>
@@ -87,8 +95,8 @@ export function TypographyResponsiveSizes() {
                 <TokenName name={typographySize.token} />
               </td>
               {typographySize.sizes.map((size) => (
-                <td key={size.token}>
-                  <TokenName name={size.token} />
+                <td key={size.screenSize}>
+                  <TokenName name={size.alias} />
                 </td>
               ))}
             </tr>
