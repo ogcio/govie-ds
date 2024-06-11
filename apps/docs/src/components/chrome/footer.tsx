@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <div className="bg-gold-50 p-x-xl py-3xl border-solid border-t-xs border-gold-500">
       <Container>
-        <div className="flex flex-wrap gap-2xl justify-end items-center">
+        <div className="flex flex-wrap gap-2xl justify-center sm:justify-end items-center">
           {/* <div className="flex gap-x-2xl items-center">
             <OglLogo />
             <span>
