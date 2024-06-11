@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.11.7](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.6...@govie-ds/docs-0.11.7) (2024-06-11)
+
+
+### Bug Fixes
+
+* update copy ([#60](https://github.com/ogcio/govie-ds/issues/60)) ([c81089f](https://github.com/ogcio/govie-ds/commit/c81089f589c33ab76e614f5c0bf5fd13e4348d8b))
+
+
+
 ## [0.11.6](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.5...@govie-ds/docs-0.11.6) (2024-06-11)
 
 
