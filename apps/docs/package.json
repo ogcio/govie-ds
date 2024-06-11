@@ -18,6 +18,7 @@
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
+    "@govie-ds/deepmerge": "workspace:^",
     "@govie-ds/design-components": "workspace:^",
     "@govie-ds/theme-govie": "workspace:^",
     "@govie-ds/theme-hse": "workspace:^",
