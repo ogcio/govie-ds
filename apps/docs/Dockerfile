@@ -3,6 +3,11 @@ FROM docker.io/node:20-alpine as base
 # Build image (run from root)
 
 FROM base as builder
+
+ARG DEPLOY_ENV
+
+ENV DEPLOY_ENV=${DEPLOY_ENV}
+
 RUN apk add --no-cache libc6-compat
 
 WORKDIR /build

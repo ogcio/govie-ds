@@ -2,6 +2,35 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.11.6](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.5...@govie-ds/docs-0.11.6) (2024-06-11)
+
+
+
+## [0.11.5](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.4...@govie-ds/docs-0.11.5) (2024-06-11)
+
+
+
+## [0.11.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.3...@govie-ds/docs-0.11.4) (2024-06-11)
+
+### Dependency Updates
+
+* `@govie-ds/theme-govie` updated to version `0.0.1`
+* `@govie-ds/theme-hse` updated to version `0.0.1`
+
+
+## [0.11.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.2...@govie-ds/docs-0.11.3) (2024-06-11)
+
+
+
+## [0.11.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.1...@govie-ds/docs-0.11.2) (2024-06-11)
+
+
+### Bug Fixes
+
+* update footer image position ([#54](https://github.com/ogcio/govie-ds/issues/54)) ([9556306](https://github.com/ogcio/govie-ds/commit/9556306223b649c3888c3ae10abbad8144bf1b32))
+
+
+
 ## [0.11.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.0...@govie-ds/docs-0.11.1) (2024-06-10)
 
 
