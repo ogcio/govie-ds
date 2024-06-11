@@ -64,4 +64,4 @@ jobs:
           ECR_REPOSITORY: life-events-design-system
           IMAGE_TAG: latest # TODO: env vars in Nx project.json
         run: |
-          pnpm ds:deploy --parallel=1 --configuration=production
+          pnpm ds:deploy --parallel=1

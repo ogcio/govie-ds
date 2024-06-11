@@ -12,7 +12,7 @@
     "ds": "nx run @govie-ds/docs:dev",
     "ds:build": "nx run @govie-ds/docs:build",
     "ds:build:prod": "nx run @govie-ds/docs:build:prod",
-    "ds:deploy": "nx run @govie-ds/docs:docker",
+    "ds:deploy": "nx run @govie-ds/docs:docker --configuration=production",
     "build": "nx run-many --target=build --all",
     "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs",
     "test": "nx run-many --target=test --all --verbose",
