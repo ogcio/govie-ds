@@ -30,11 +30,6 @@ jobs:
         with:
           node-version: 20
 
-      #   - name: Configure git
-      #     run: |
-      #       git config user.name "${GITHUB_ACTOR}"
-      #       git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
       - name: Build and test
         env:
           DEPLOY_ENV: production
@@ -44,23 +39,6 @@ jobs:
           pnpm nx affected --base=last-release -t format:check --parallel=3
           pnpm nx affected --base=last-release -t build --parallel=3
           pnpm nx affected --base=last-release -t test --parallel=3
-
-      #   - name: Create Figma tokens flat artifact
-      #     uses: actions/upload-artifact@v4
-      #     with:
-      #       name: figma-tokens
-      #       path: packages/design/figma/dist/tokens
-
-      #   - name: Create Figma tokens flat artifact
-      #     uses: actions/upload-artifact@v4
-      #     with:
-      #       name: figma-tokens-flat
-      #       path: packages/design/figma/dist/tokens-flat
-
-      #   - name: Version
-      #     if: github.ref == 'refs/heads/main'
-      #     run: |
-      #       pnpm nx affected --base=last-release -t version --parallel=1
 
       - name: Setup AWS ECR Details
         if: github.ref == 'refs/heads/main'
@@ -87,10 +65,3 @@ jobs:
           IMAGE_TAG: latest # TODO: env vars in Nx project.json
         run: |
           pnpm nx affected --base=last-release -t docker --parallel=1 --configuration=production
-
-    #   - name: Tag last-release
-    #     if: github.ref == 'refs/heads/main'
-    #     shell: bash
-    #     run: |
-    #       git tag -f last-release
-    #       git push origin last-release --force
