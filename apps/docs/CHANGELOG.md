@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.11.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.1...@govie-ds/docs-0.11.2) (2024-06-11)
+
+
+### Bug Fixes
+
+* update footer image position ([#54](https://github.com/ogcio/govie-ds/issues/54)) ([9556306](https://github.com/ogcio/govie-ds/commit/9556306223b649c3888c3ae10abbad8144bf1b32))
+
+
+
 ## [0.11.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.11.0...@govie-ds/docs-0.11.1) (2024-06-10)
 
 
