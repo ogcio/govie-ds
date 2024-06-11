@@ -1,9 +1,16 @@
 import { meta } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
+import { TokenName } from '../common/token-name';
+import { get } from 'lodash';
 
 type TypographyScreenSize = {
-  size: string;
-  value: string;
+  token: string;
+  value: {
+    fontFamily: string[];
+    fontSize: string;
+    fontWeight: number;
+    lineHeight: number;
+  };
 };
 
 type TypographySize = {
@@ -11,63 +18,82 @@ type TypographySize = {
   sizes: TypographyScreenSize[];
 };
 
-export function TypographyResponsiveSizes() {
-  const screenSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+function aliasToTokenName(alias: string) {
+  return alias
+    .replace('{primitive.', '')
+    .replace('{semantic.', '')
+    .replace('}', '')
+    .replaceAll('.', '/');
+}
 
-  const foo: TypographySize[] = objectKeys(
+function getTypographyTokens(screenSize: string): TypographyScreenSize[] {
+  const resolved = Object.hasOwn(
     meta.light.resolved.semantic.typography,
+    screenSize,
   )
-    .filter((size) => size !== 'default')
-    .map((size) => {
-      return {
-        token: key,
-        sizes: [
-          {
-            size: 'xs',
-            value: 'foo',
-          },
-        ],
-      };
-    });
+    ? meta.light.resolved.semantic.typography[
+        screenSize as keyof typeof meta.light.resolved.semantic.typography
+      ]
+    : meta.light.resolved.semantic.typography.default;
 
-  console.log({ foo });
+  const unresolved = Object.hasOwn(
+    meta.light.unresolved.semantic.typography,
+    screenSize,
+  )
+    ? meta.light.unresolved.semantic.typography[
+        screenSize as keyof typeof meta.light.unresolved.semantic.typography
+      ]
+    : meta.light.unresolved.semantic.typography.default;
 
-  // const typographyTokens = screenSizes.map((screenSize) => {
-  //   const resolved = Object.hasOwn(
-  //     meta.light.resolved.semantic.typography,
-  //     screenSize,
-  //   )
-  //     ? meta.light.resolved.semantic.typography[
-  //         screenSize as keyof typeof meta.light.resolved.semantic.typography
-  //       ]
-  //     : meta.light.resolved.semantic.typography.default;
+  return objectKeys(resolved).map((typographyToken) => {
+    return {
+      token: aliasToTokenName(unresolved[typographyToken].$value),
+      value: resolved[typographyToken].$value,
+    };
+  });
+}
 
-  //   const unresolved = Object.hasOwn(
-  //     meta.light.unresolved.semantic.typography,
-  //     screenSize,
-  //   )
-  //     ? meta.light.unresolved.semantic.typography[
-  //         screenSize as keyof typeof meta.light.unresolved.semantic.typography
-  //       ]
-  //     : meta.light.unresolved.semantic.typography.default;
+export function TypographyResponsiveSizes() {
+  const screenSizes = objectKeys(
+    meta.light.resolved.semantic.typography,
+  ).filter((size) => size !== 'default');
 
-  //   return {
-  //     screenSize,
-  //     resolved,
-  //     unresolved,
-  //   };
-  // });
+  const typographySizes: TypographySize[] = screenSizes.map((size) => {
+    return {
+      token: `screen/${size}`,
+      sizes: getTypographyTokens(size),
+    };
+  });
+
+  console.log(JSON.stringify(typographySizes, null, 2));
 
   return (
     <div>
       <table>
         <thead>
-          <th></th>
-          {screenSizes.map((size) => (
-            <th key={size}>screen/{size}</th>
-          ))}
+          <tr>
+            <th></th>
+            {screenSizes.map((size) => (
+              <th key={size}>
+                <TokenName name={`screen/${size}`} />
+              </th>
+            ))}
+          </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {typographySizes.map((typographySize) => (
+            <tr key={typographySize.token}>
+              <td>
+                <TokenName name={typographySize.token} />
+              </td>
+              {typographySize.sizes.map((size) => (
+                <td key={size.token}>
+                  <TokenName name={size.token} />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

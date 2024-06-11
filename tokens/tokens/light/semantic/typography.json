@@ -30,6 +30,16 @@
           "$type": "typography",
           "$value": "{primitive.typography.regular.md}"
         }
+      },
+      "xl": {
+        "mainTitle": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.lg}"
+        },
+        "body": {
+          "$type": "typography",
+          "$value": "{primitive.typography.regular.md}"
+        }
       }
     }
   }
