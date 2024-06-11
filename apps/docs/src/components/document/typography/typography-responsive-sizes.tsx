@@ -68,8 +68,6 @@ export function TypographyResponsiveSizes() {
     meta.light.resolved.semantic.typography.default.heading,
   );
 
-  // console.log(headingTokens, screenSizes);
-
   const typographySizes: TypographySize[] = headingTokens.flatMap(
     (headingToken) => {
       return screenSizes.map((screenSize) => {
