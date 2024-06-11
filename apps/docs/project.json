@@ -21,6 +21,7 @@
       "configurations": {
         "dev": {
           "push": true,
+          "build-args": ["DEPLOY_ENV=development"],
           "tags": [
             "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:dev",
             "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
