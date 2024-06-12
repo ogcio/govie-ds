@@ -90,7 +90,7 @@ export function TypographyResponsiveSizes() {
       <div />
       {screenSizes.map((size) => (
         <Fragment key={size}>
-          <div>
+          <div className="flex justify-center">
             <TokenName name={`screen/${size}`} />
           </div>
         </Fragment>
@@ -114,7 +114,9 @@ export function TypographyResponsiveSizes() {
 
               return (
                 <div key={screenSize} className="flex flex-col gap-lg">
-                  <TokenName name={typographySize.alias.name} />
+                  <div className="flex justify-center">
+                    <TokenName name={typographySize.alias.name} />
+                  </div>
                   <div className="hidden xl:block">
                     <TypographyValueComposite
                       fontFamily={typographySize.alias.value.fontFamily}
