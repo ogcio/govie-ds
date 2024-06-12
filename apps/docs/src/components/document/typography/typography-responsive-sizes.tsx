@@ -2,7 +2,6 @@ import { meta } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
 import { TokenName } from '../common/token-name';
 import { groupBy } from 'lodash';
-import { TokenValueComposite } from '../common/token-value';
 import { TypographyValueComposite } from './typography-value-composite';
 
 type TypographyScreenAlias = {
