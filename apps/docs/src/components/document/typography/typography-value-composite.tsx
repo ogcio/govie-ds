@@ -22,32 +22,48 @@ export function TypographyValueComposite({
   fontWeight,
   lineHeight,
 }: {
-  fontFamily: string[];
-  fontSize: string;
-  fontWeight: number;
-  lineHeight: number;
+  fontFamily?: string[];
+  fontSize?: string;
+  fontWeight?: number;
+  lineHeight?: number;
 }) {
   return (
     <TokenValueComposite
       tokens={[
-        {
-          name: 'Font family',
-          value: fontFamily.join(', '),
-        },
-        {
-          name: 'Font size',
-          value: fontSize,
-          converted: `e.g. ${remToPx(fontSize)}px`,
-        },
-        {
-          name: 'Font weight',
-          value: fontWeight.toString(),
-        },
-        {
-          name: 'Line height',
-          value: lineHeight.toString(),
-          converted: `e.g. ${lineHeightToPx({ fontSize, lineHeight })}`,
-        },
+        ...(fontFamily
+          ? [
+              {
+                name: 'Font family',
+                value: fontFamily.join(', '),
+              },
+            ]
+          : []),
+        ...(fontSize
+          ? [
+              {
+                name: 'Font size',
+                value: fontSize as string,
+                converted: `e.g. ${remToPx(fontSize)}px`,
+              },
+            ]
+          : []),
+        ...(fontWeight
+          ? [
+              {
+                name: 'Font weight',
+                value: fontWeight.toString(),
+              },
+            ]
+          : []),
+        ...(lineHeight && fontSize
+          ? [
+              {
+                name: 'Line height',
+                value: lineHeight.toString(),
+                converted: `e.g. ${lineHeightToPx({ fontSize, lineHeight })}`,
+              },
+            ]
+          : []),
       ]}
     />
   );

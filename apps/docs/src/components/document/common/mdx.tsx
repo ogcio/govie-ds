@@ -7,7 +7,7 @@ import { FontWeightTable } from '../typography/font-weight-table';
 import { LineHeightTable } from '../typography/line-height-table';
 import { LetterSpacingTable } from '../typography/letter-spacing-table';
 import { TypographyTable } from '../typography/typography-table';
-import { TypographyResponsiveSizes } from '../typography/typography-responsive-sizes';
+import { HeadingResponsiveSizes } from '../typography/heading-responsive-sizes';
 import { TypographyResponsive } from '../typography/typography-responsive';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { SpaceTable } from '../space/space-table';
@@ -29,6 +29,10 @@ export function Mdx({ code }: MdxProps) {
       components={{
         h1: ({ children }) => <Heading as="h1">{children}</Heading>,
         h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+        h3: ({ children }) => <Heading as="h3">{children}</Heading>,
+        h4: ({ children }) => <Heading as="h4">{children}</Heading>,
+        h5: ({ children }) => <Heading as="h5">{children}</Heading>,
+        h6: ({ children }) => <Heading as="h6">{children}</Heading>,
         ColorPrimitives: () => <ColorPrimitives />,
         FontFamilyTable: () => <FontFamilyTable />,
         FontSizeTable: () => <FontSizeTable />,
@@ -36,7 +40,7 @@ export function Mdx({ code }: MdxProps) {
         LineHeightTable: () => <LineHeightTable />,
         LetterSpacingTable: () => <LetterSpacingTable />,
         TypographyTable: () => <TypographyTable />,
-        TypographyResponsiveSizes: () => <TypographyResponsiveSizes />,
+        HeadingResponsiveSizes: () => <HeadingResponsiveSizes />,
         TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,
         SpaceTable: () => <SpaceTable />,

@@ -25,6 +25,7 @@ function aliasToTokenName(alias: string) {
   return alias
     .replace('{primitive.', '')
     .replace('{semantic.', '')
+    .replace('regular.', '')
     .replace('}', '')
     .replaceAll('.', '/');
 }
@@ -59,7 +60,7 @@ function getHeadingAlias(
   };
 }
 
-export function TypographyResponsiveSizes() {
+export function HeadingResponsiveSizes() {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
   ).filter((size) => size !== 'default');
@@ -85,52 +86,50 @@ export function TypographyResponsiveSizes() {
     (typographySize) => typographySize.token,
   );
 
-  return (
-    <div className="grid grid-cols-[auto,1fr,1fr,1fr] gap-x-md gap-y-xl">
-      <div />
-      {screenSizes.map((size) => (
-        <Fragment key={size}>
-          <div className="flex justify-center">
-            <TokenName name={`screen/${size}`} />
-          </div>
-        </Fragment>
-      ))}
-
-      {objectKeys(typographySizesGrouped).map((key) => {
-        return (
-          <Fragment key={key}>
-            <div>
-              <TokenName name={key} />
-            </div>
-
-            {screenSizes.map((screenSize) => {
-              const typographySize = typographySizesGrouped[key].find(
-                (typographySize) => typographySize.screenSize === screenSize,
-              );
-
-              if (!typographySize) {
-                throw new Error(`There was no typography size found.`);
-              }
-
-              return (
-                <div key={screenSize} className="flex flex-col gap-lg">
-                  <div className="flex justify-center">
-                    <TokenName name={typographySize.alias.name} />
-                  </div>
-                  <div className="hidden xl:block">
-                    <TypographyValueComposite
-                      fontFamily={typographySize.alias.value.fontFamily}
-                      fontSize={typographySize.alias.value.fontSize}
-                      fontWeight={typographySize.alias.value.fontWeight}
-                      lineHeight={typographySize.alias.value.lineHeight}
-                    />
-                  </div>
+  return objectKeys(typographySizesGrouped).map((headingToken, index) => {
+    return (
+      <div className="grid grid-cols-4 gap-x-md gap-y-xl border-y-xs border-gray-50 py-xl">
+        {index === 0 ? (
+          <Fragment>
+            <div />
+            {screenSizes.map((size) => (
+              <Fragment key={size}>
+                <div className="flex justify-center">
+                  <TokenName name={`screen/${size}`} />
                 </div>
-              );
-            })}
+              </Fragment>
+            ))}
           </Fragment>
-        );
-      })}
-    </div>
-  );
+        ) : null}
+
+        <Fragment key={headingToken}>
+          <div className="flex flex-col items-start">
+            <TokenName name={headingToken} />
+          </div>
+
+          {screenSizes.map((screenSize) => {
+            const typographySize = typographySizesGrouped[headingToken].find(
+              (typographySize) => typographySize.screenSize === screenSize,
+            );
+
+            if (!typographySize) {
+              throw new Error(`There was no typography size found.`);
+            }
+
+            return (
+              <div key={screenSize} className="flex flex-col gap-lg">
+                <TypographyValueComposite
+                  fontSize={typographySize.alias.value.fontSize}
+                  lineHeight={typographySize.alias.value.lineHeight}
+                />
+                <div className="hidden xl:flex justify-center">
+                  <TokenName name={typographySize.alias.name} />
+                </div>
+              </div>
+            );
+          })}
+        </Fragment>
+      </div>
+    );
+  });
 }
