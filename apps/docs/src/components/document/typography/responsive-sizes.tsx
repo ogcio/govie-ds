@@ -4,6 +4,7 @@ import { TokenName } from '../common/token-name';
 import { groupBy } from 'lodash';
 import { TypographyValueComposite } from './typography-value-composite';
 import { Fragment } from 'react';
+import { TypographyResponsive } from './typography-responsive';
 
 type TypographyScreenAlias = {
   name: string;
@@ -60,7 +61,7 @@ function getHeadingAlias(
   };
 }
 
-export function HeadingResponsiveSizes() {
+function TypographyResponsiveSizes({ token }: { token: string }) {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
   ).filter((size) => size !== 'default');
@@ -132,4 +133,12 @@ export function HeadingResponsiveSizes() {
       </div>
     );
   });
+}
+
+export function HeadingResponsiveSizes() {
+  return <TypographyResponsiveSizes token="heading" />;
+}
+
+export function DisplayResponsiveSizes() {
+  return <TypographyResponsiveSizes token="display" />;
 }
