@@ -9,5 +9,9 @@ export function Text({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <As className={cn('text-gray-950 text-md', className)}>{children}</As>;
+  return (
+    <As className={cn('text-gray-950 text-md max-w-[65ch]', className)}>
+      {children}
+    </As>
+  );
 }

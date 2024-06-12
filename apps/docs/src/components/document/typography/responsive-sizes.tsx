@@ -1,9 +1,10 @@
 import { meta } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
-import { TokenName } from '../common/token-name';
+import { TokenAlias } from '../common/token-alias';
 import { groupBy } from 'lodash';
 import { TypographyValueComposite } from './typography-value-composite';
 import { Fragment } from 'react';
+import { TokenName } from '../common/token-name';
 
 type TypographyScreenAlias = {
   name: string;
@@ -142,7 +143,7 @@ function TypographyResponsiveSizes({
                   lineHeight={typographySize.alias.value.lineHeight}
                 />
                 <div className="hidden xl:flex justify-center">
-                  <TokenName name={typographySize.alias.name} />
+                  <TokenAlias name={typographySize.alias.name} />
                 </div>
               </div>
             );

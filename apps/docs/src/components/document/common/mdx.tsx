@@ -20,6 +20,7 @@ import { ShadowTable } from '../shadow/shadow-table';
 import { OpacityTable } from '../opacity/opacity-table';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { cn } from '@/lib/cn';
+import { Text } from '@/components/typography/text';
 
 export type MdxProps = {
   code: string;
@@ -37,6 +38,8 @@ export function Mdx({ code }: MdxProps) {
         h4: ({ children }) => <Heading as="h4">{children}</Heading>,
         h5: ({ children }) => <Heading as="h5">{children}</Heading>,
         h6: ({ children }) => <Heading as="h6">{children}</Heading>,
+        p: ({ children }) => <Text>{children}</Text>,
+        span: ({ children }) => <Text as="span">{children}</Text>,
         code: ({ children }) => (
           <code
             className={cn(

@@ -33,6 +33,7 @@ function createFontSizeSchema(name: string) {
 
 const fontSizeSchema = z
   .object({
+    '50': createFontSizeSchema('50'),
     '100': createFontSizeSchema('100'),
     '200': createFontSizeSchema('200'),
     '300': createFontSizeSchema('300'),
