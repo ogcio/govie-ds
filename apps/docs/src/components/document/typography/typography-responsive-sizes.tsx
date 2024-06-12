@@ -3,6 +3,7 @@ import { objectKeys } from 'ts-extras';
 import { TokenName } from '../common/token-name';
 import { groupBy } from 'lodash';
 import { TypographyValueComposite } from './typography-value-composite';
+import { Fragment } from 'react';
 
 type TypographyScreenAlias = {
   name: string;
@@ -85,52 +86,49 @@ export function TypographyResponsiveSizes() {
   );
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {screenSizes.map((size) => (
-              <th key={size}>
-                <TokenName name={`screen/${size}`} />
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {objectKeys(typographySizesGrouped).map((key) => {
-            return (
-              <tr key={key}>
-                <td>
-                  <TokenName name={key} />
-                </td>
-                {screenSizes.map((screenSize) => {
-                  const typographySize = typographySizesGrouped[key].find(
-                    (typographySize) =>
-                      typographySize.screenSize === screenSize,
-                  );
+    <div className="grid grid-cols-[auto,1fr,1fr,1fr] gap-x-md gap-y-xl">
+      <div />
+      {screenSizes.map((size) => (
+        <Fragment key={size}>
+          <div>
+            <TokenName name={`screen/${size}`} />
+          </div>
+        </Fragment>
+      ))}
 
-                  if (!typographySize) {
-                    throw new Error(`There was no typography size found.`);
-                  }
+      {objectKeys(typographySizesGrouped).map((key) => {
+        return (
+          <Fragment key={key}>
+            <div>
+              <TokenName name={key} />
+            </div>
 
-                  return (
-                    <td key={screenSize}>
-                      <TokenName name={typographySize.alias.name} />
-                      <TypographyValueComposite
-                        fontFamily={typographySize.alias.value.fontFamily}
-                        fontSize={typographySize.alias.value.fontSize}
-                        fontWeight={typographySize.alias.value.fontWeight}
-                        lineHeight={typographySize.alias.value.lineHeight}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            {screenSizes.map((screenSize) => {
+              const typographySize = typographySizesGrouped[key].find(
+                (typographySize) => typographySize.screenSize === screenSize,
+              );
+
+              if (!typographySize) {
+                throw new Error(`There was no typography size found.`);
+              }
+
+              return (
+                <div key={screenSize} className="flex flex-col gap-lg">
+                  <TokenName name={typographySize.alias.name} />
+                  <div className="hidden xl:block">
+                    <TypographyValueComposite
+                      fontFamily={typographySize.alias.value.fontFamily}
+                      fontSize={typographySize.alias.value.fontSize}
+                      fontWeight={typographySize.alias.value.fontWeight}
+                      lineHeight={typographySize.alias.value.lineHeight}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </Fragment>
+        );
+      })}
     </div>
   );
 }
