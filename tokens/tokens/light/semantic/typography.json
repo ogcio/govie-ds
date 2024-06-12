@@ -2,33 +2,125 @@
   "semantic": {
     "typography": {
       "default": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.lg}"
+        "display": {
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.6xl}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.5xl}"
+          }
         },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
+        "heading": {
+          "main": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.3xl}"
+          },
+          "sub": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xl}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xs}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xs}"
+          }
         }
       },
       "xs": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.sm}"
+        "heading": {
+          "main": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.3xl}"
+          },
+          "sub": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xl}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.sm}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xs}"
+          }
         }
       },
       "md": {
-        "mainTitle": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.lg}"
-        },
-        "body": {
-          "$type": "typography",
-          "$value": "{primitive.typography.regular.md}"
+        "heading": {
+          "main": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.3xl}"
+          },
+          "sub": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xl}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.sm}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xs}"
+          }
+        }
+      },
+      "xl": {
+        "heading": {
+          "main": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.3xl}"
+          },
+          "sub": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xl}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.lg}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.md}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.xs}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typography.regular.2xs}"
+          }
         }
       }
     }
