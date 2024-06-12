@@ -4,7 +4,6 @@ import { TokenName } from '../common/token-name';
 import { groupBy } from 'lodash';
 import { TypographyValueComposite } from './typography-value-composite';
 import { Fragment } from 'react';
-import { TypographyResponsive } from './typography-responsive';
 
 type TypographyScreenAlias = {
   name: string;
@@ -31,56 +30,75 @@ function aliasToTokenName(alias: string) {
     .replaceAll('.', '/');
 }
 
-function getHeadingAlias(
-  headingToken: string,
-  screenSize: string,
-): TypographyScreenAlias {
-  const resolved = Object.hasOwn(
+function getTypographyValue(
+  typography: any,
+  screenSize: keyof typeof meta.light.resolved.semantic.typography,
+  tokenName: keyof typeof meta.light.resolved.semantic.typography.default,
+) {
+  if (Object.hasOwn(typography, screenSize)) {
+    if (Object.hasOwn(typography[screenSize], tokenName)) {
+      return typography[screenSize][tokenName];
+    }
+  }
+
+  if (Object.hasOwn(typography, 'default')) {
+    return typography.default[tokenName];
+  }
+
+  throw new Error(
+    `There was no typography size found for screen size ${screenSize} and token ${tokenName}.`,
+  );
+}
+
+function getAlias({
+  tokenName,
+  token,
+  screenSize,
+}: {
+  tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
+  token: string;
+  screenSize: keyof typeof meta.light.resolved.semantic.typography;
+}): TypographyScreenAlias {
+  const resolved = getTypographyValue(
     meta.light.resolved.semantic.typography,
     screenSize,
-  )
-    ? meta.light.resolved.semantic.typography[
-        screenSize as keyof typeof meta.light.resolved.semantic.typography
-      ]?.heading
-    : meta.light.resolved.semantic.typography.default.heading;
+    tokenName,
+  );
 
-  const unresolved = Object.hasOwn(
+  const unresolved = getTypographyValue(
     meta.light.unresolved.semantic.typography,
     screenSize,
-  )
-    ? meta.light.unresolved.semantic.typography[
-        screenSize as keyof typeof meta.light.unresolved.semantic.typography
-      ]?.heading
-    : meta.light.unresolved.semantic.typography.default.heading;
+    tokenName,
+  );
 
   return {
-    name: aliasToTokenName(
-      unresolved[headingToken as keyof typeof unresolved].$value,
-    ),
-    value: resolved[headingToken as keyof typeof resolved].$value,
+    name: aliasToTokenName(unresolved[token as keyof typeof unresolved].$value),
+    value: resolved[token as keyof typeof resolved].$value,
   };
 }
 
-function TypographyResponsiveSizes({ token }: { token: string }) {
+function TypographyResponsiveSizes({
+  tokenName,
+}: {
+  tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
+}) {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
   ).filter((size) => size !== 'default');
 
-  const headingTokens = objectKeys(
-    meta.light.resolved.semantic.typography.default.heading,
+  const tokens = objectKeys(
+    meta.light.resolved.semantic.typography.default[tokenName],
   );
 
-  const typographySizes: TypographySize[] = headingTokens.flatMap(
-    (headingToken) => {
-      return screenSizes.map((screenSize) => {
-        return {
-          token: `heading/${headingToken}`,
-          screenSize,
-          alias: getHeadingAlias(headingToken, screenSize),
-        };
-      });
-    },
-  );
+  const typographySizes: TypographySize[] = tokens.flatMap((token) => {
+    return screenSizes.map((screenSize) => {
+      return {
+        token: `${tokenName}/${token}`,
+        screenSize,
+        alias: getAlias({ tokenName, token, screenSize }),
+      };
+    });
+  });
 
   const typographySizesGrouped = groupBy(
     typographySizes,
@@ -136,9 +154,9 @@ function TypographyResponsiveSizes({ token }: { token: string }) {
 }
 
 export function HeadingResponsiveSizes() {
-  return <TypographyResponsiveSizes token="heading" />;
+  return <TypographyResponsiveSizes tokenName="heading" />;
 }
 
 export function DisplayResponsiveSizes() {
-  return <TypographyResponsiveSizes token="display" />;
+  return <TypographyResponsiveSizes tokenName="display" />;
 }

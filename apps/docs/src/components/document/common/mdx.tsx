@@ -41,7 +41,7 @@ export function Mdx({ code }: MdxProps) {
           <code
             className={cn(
               'rounded-sm bg-gray-50 border-gray-100 border-xs p-xs',
-              'text-gray-600 text-center text-2xs lg:text-xs',
+              'text-gray-600 text-center text-2xs',
             )}
           >
             {children}
