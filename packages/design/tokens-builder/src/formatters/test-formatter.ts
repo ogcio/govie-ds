@@ -113,7 +113,7 @@ export function testFormatter({
     allTokens,
     options,
   }: {
-    exportName: string;
+    exportName?: string;
     tokens?: TransformedTestTokens;
     allTokens?: TestToken[];
     options?: FormatterOptions;
@@ -121,13 +121,13 @@ export function testFormatter({
     const formatted = await format({ tokens, allTokens, options });
     const header = await fileHeader({ file: { destination: fileName } });
 
-    const obj = formatted
-      .replace(header, '')
-      .replace(`export const ${exportName} = `, '')
-      .trim()
-      .slice(0, -1);
+    let obj = formatted.replace(header, '').replace(';', '');
 
-    return JSON.parse(obj);
+    if (exportName) {
+      obj = obj.replace(`export const ${exportName} = `, '');
+    }
+
+    return JSON.parse(obj.trim());
   }
 
   return {

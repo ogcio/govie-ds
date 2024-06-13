@@ -1,7 +1,7 @@
 import { typeScriptFormatter } from './typescript.js';
 import { testFormatter } from './test-formatter.js';
 
-describe('typeScriptConstsFormatter', () => {
+describe('typeScriptFormatter', () => {
   const { formatArray, formatObject } = testFormatter({
     formatter: typeScriptFormatter,
   });
