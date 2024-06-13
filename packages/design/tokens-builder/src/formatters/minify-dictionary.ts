@@ -1,9 +1,8 @@
-// Adapted from https://github.com/amzn/style-dictionary/blob/main/lib/common/formatHelpers/minifyDictionary.js
-
 import { Token } from 'style-dictionary';
 import { OutputReferences } from 'style-dictionary/types';
 import { usesReferences } from 'style-dictionary/utils';
 
+// Adapted from https://github.com/amzn/style-dictionary/blob/main/lib/common/formatHelpers/minifyDictionary.js
 export function minifyDictionary({
   tokens,
   outputReferences,
@@ -21,7 +20,7 @@ export function minifyDictionary({
 
   const result: Record<string, unknown> = {};
 
-  if (tokens.hasOwnProperty('original')) {
+  if (Object.prototype.hasOwnProperty.call(tokens, 'original')) {
     if (outputReferences && usesReferences(tokens.original.$value)) {
       return {
         $type: tokens.original.$type,
@@ -35,8 +34,8 @@ export function minifyDictionary({
     };
   }
 
-  for (let name in tokens) {
-    if (tokens.hasOwnProperty(name)) {
+  for (const name in tokens) {
+    if (Object.prototype.hasOwnProperty.call(tokens, name)) {
       result[name] = minifyDictionary({
         tokens: tokens[name],
         outputReferences,

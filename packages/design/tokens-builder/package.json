@@ -8,6 +8,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
+    "lint": "eslint 'src/**/*.ts'",
     "build": "tsup"
   },
   "prettier": "@govie-ds/prettier-config",
@@ -17,16 +18,16 @@
   "dependencies": {
     "camelcase": "^8.0.0",
     "lodash": "^4.17.21",
-    "lodash.clonedeepwith": "^4.5.0",
     "style-dictionary": "4.0.0-prerelease.31",
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
+    "@govie-ds/eslint-config": "workspace:^",
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/color": "^3.0.6",
     "@types/lodash": "^4.17.4",
-    "@types/lodash.clonedeepwith": "^4.5.9",
+    "eslint": "^9.4.0",
     "prettier": "^3.3.0",
     "tsup": "^8.1.0",
     "typescript": "5.4.5"

@@ -55,7 +55,7 @@ export async function typeScriptConstsFormatter({
   //   return `export const ${tokenName} = ${JSON.stringify(token.$value)};`;
   // });
 
-  const lines = [header, ...consts, , ''];
+  const lines = [header, ...consts, ''];
 
   return lines.join('\n');
 }

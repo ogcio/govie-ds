@@ -1,9 +1,9 @@
-import cloneDeepWith from 'lodash.clonedeepwith';
 import { minifyDictionary } from './minify-dictionary.js';
 import { FormatFnArguments } from 'style-dictionary/types';
 import { Tokens } from 'style-dictionary';
 import { objectKeys } from 'ts-extras';
 import flow from 'lodash/fp/flow.js';
+import cloneDeepWith from 'lodash/cloneDeepWith.js';
 
 type FigmaType = 'color' | 'number' | 'string' | 'boolean';
 
