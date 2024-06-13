@@ -1,17 +1,17 @@
+import { Token } from 'style-dictionary';
 import { fileHeader } from 'style-dictionary/utils';
-import { Dictionary, Token } from 'style-dictionary';
+import { FormatFnArguments, TransformedToken } from 'style-dictionary/types';
 import camelCase from 'camelcase';
-import { FormatFnArguments } from 'style-dictionary/types';
 
 export function getTokens({
-  dictionary,
+  tokens,
   camelCase: camelCaseOption,
 }: {
-  dictionary: Dictionary;
+  tokens: TransformedToken[];
   camelCase: boolean;
 }) {
   // TODO: convert Space15 to Space1_5
-  return dictionary.allTokens.map((token: Token) => {
+  return tokens.map((token: Token) => {
     // if (token.comment) to_ret = to_ret.concat(" // " + token.comment);
 
     if (!token.name) {
@@ -36,7 +36,7 @@ export async function typeScriptConstsFormatter({
   const header = await fileHeader({ file });
 
   const consts = getTokens({
-    dictionary,
+    tokens: dictionary.allTokens,
     camelCase: options.camelCase ?? false,
   }).map(
     (token) => `export const ${token.name} = ${JSON.stringify(token.value)};`,

@@ -22,7 +22,7 @@ export async function cssVariableConstsFormatter({
 
   const cssVariables = dictionary.allTokens.map((token) => formatter(token));
 
-  const tokens = getTokens({ dictionary, camelCase: true });
+  const tokens = getTokens({ tokens: dictionary.allTokens, camelCase: true });
 
   const variableNames = cssVariables.map(
     (variable) => `var(${variable.substring(0, variable.indexOf(':')).trim()})`,
