@@ -5,7 +5,7 @@ import camelCase from 'camelcase';
 import { dtcgFormatter } from './formatters/dtcg.js';
 import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
 import { figmaFormatter } from './formatters/figma.js';
-import { cssVariableNameFormatter } from './formatters/css-variable-names.js';
+import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -15,7 +15,7 @@ export type TokenBuilderPlatformConfig = {
     outputFolder: string;
     outputFilename: string;
   };
-  cssVariableNames?: {
+  cssVariableConsts?: {
     prefix?: string;
     camelCase?: boolean;
     outputFolder: string;
@@ -81,22 +81,22 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
     };
   }
 
-  if (platformConfig.cssVariableNames) {
-    platforms['cssVariableNames'] = {
+  if (platformConfig.cssVariableConsts) {
+    platforms['cssVariableConsts'] = {
       transformGroup: 'css/custom',
       buildPath: ensureTrailingSlash(
-        platformConfig.cssVariableNames.outputFolder,
+        platformConfig.cssVariableConsts.outputFolder,
       ),
-      prefix: platformConfig.cssVariableNames.prefix,
+      prefix: platformConfig.cssVariableConsts.prefix,
       files: [
         {
-          format: 'css/variable-names',
-          destination: platformConfig.cssVariableNames.outputFilename,
+          format: 'css/variable-consts',
+          destination: platformConfig.cssVariableConsts.outputFilename,
         },
       ],
       options: {
         fileHeader: 'auto-generated',
-        camelCase: platformConfig.cssVariableNames.camelCase,
+        camelCase: platformConfig.cssVariableConsts.camelCase,
       },
     };
   }
@@ -364,8 +364,8 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerFormat({
-    name: 'css/variable-names',
-    format: cssVariableNameFormatter,
+    name: 'css/variable-consts',
+    format: cssVariableConstsFormatter,
   });
 
   await styleDictionary.buildAllPlatforms();

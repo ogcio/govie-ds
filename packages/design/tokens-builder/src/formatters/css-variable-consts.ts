@@ -2,7 +2,7 @@ import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import { FormatFnArguments } from 'style-dictionary/types';
 import { getTokens } from './typescript-consts.js';
 
-export async function cssVariableNameFormatter({
+export async function cssVariableConstsFormatter({
   dictionary,
   platform,
   options,

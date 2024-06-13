@@ -66,7 +66,7 @@ async function main() {
   await buildTokens({
     source: ["tokens/light/**/*.json"],
     platforms: {
-      cssVariableNames: {
+      cssVariableConsts: {
         prefix,
         camelCase: true,
         outputFolder: "./src/dist",
