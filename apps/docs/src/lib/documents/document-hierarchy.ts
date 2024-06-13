@@ -72,7 +72,10 @@ function isDocumentHierarchy(value: unknown): value is DocumentHierarchy {
     return false;
   }
 
-  return typeof value === 'object' && value.hasOwnProperty('slug');
+  return (
+    typeof value === 'object' &&
+    Object.prototype.hasOwnProperty.call(value, 'slug')
+  );
 }
 
 function cleanSlugs(value: DocumentHierarchy): DocumentHierarchy {

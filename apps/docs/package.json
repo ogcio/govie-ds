@@ -11,7 +11,7 @@
     "build:styles": "cross-env USE_RESOLVED_THEME=true tailwindcss build -i ./src/app/globals.css -o ./public/styles.css",
     "build:export": "cross-env NEXT_EXPORT=true next build",
     "start": "pnpm dlx serve@latest out",
-    "lint": "next lint",
+    "lint": "eslint 'src/**/*.ts'",
     "test": "vitest run",
     "test:watch": "vitest",
     "docker:local": "docker build -f Dockerfile ../.. --build-arg=DEPLOY_ENV=production"
