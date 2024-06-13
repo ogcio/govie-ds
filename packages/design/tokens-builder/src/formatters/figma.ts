@@ -67,11 +67,20 @@ function toGroups(tokens: TokenCollection) {
     fontSize: 'number',
     fontWeight: 'number',
     lineHeight: 'string',
+    offsetX: 'string',
+    offsetY: 'string',
+    blur: 'string',
+    spread: 'string',
+    color: 'string',
   };
 
   return cloneDeepWith(tokens, (value) => {
-    if (value.$type === 'typography') {
+    if (typeof value.$value === 'object') {
       return objectKeys(value.$value).reduce((acc, key) => {
+        if (!types[key]) {
+          throw new Error(`No type defined composite value key '${key}'.`);
+        }
+
         acc[key] = {
           $type: types[key],
           $value: value.$value[key],

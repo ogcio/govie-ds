@@ -214,6 +214,20 @@ describe('figmaFormatter', () => {
   it('should convert composite types to nested Figma groups', async () => {
     const formatted = await formatObject({
       tokens: {
+        shadow: {
+          regular: {
+            '500': {
+              type: 'shadow',
+              value: {
+                offsetX: '0px',
+                offsetY: '1px',
+                blur: '3px',
+                spread: '0px',
+                color: '#0000001a',
+              },
+            },
+          },
+        },
         typography: {
           regular: {
             '2xs': {
@@ -231,6 +245,32 @@ describe('figmaFormatter', () => {
     });
 
     expect(formatted).toEqual({
+      shadow: {
+        regular: {
+          '500': {
+            offsetX: {
+              $type: 'string',
+              $value: '0px',
+            },
+            offsetY: {
+              $type: 'string',
+              $value: '1px',
+            },
+            blur: {
+              $type: 'string',
+              $value: '3px',
+            },
+            spread: {
+              $type: 'string',
+              $value: '0px',
+            },
+            color: {
+              $type: 'string',
+              $value: '#0000001a',
+            },
+          },
+        },
+      },
       typography: {
         regular: {
           '2xs': {
