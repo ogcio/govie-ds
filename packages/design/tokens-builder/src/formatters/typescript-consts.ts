@@ -18,7 +18,9 @@ export function getTokens({
       throw new Error(`Token has no name.`);
     }
 
-    const tokenName = camelCaseOption ? camelCase(token.name) : token.name;
+    const tokenName = camelCaseOption
+      ? camelCase(token.name)
+      : camelCase(token.name, { pascalCase: true });
 
     return {
       name: tokenName,
