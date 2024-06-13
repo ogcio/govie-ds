@@ -8,6 +8,10 @@ export async function typeScriptFormatter({
   options,
   file,
 }: FormatFnArguments) {
+  if (!options.exportName) {
+    throw new Error('Missing exportName option.');
+  }
+
   const tokens = minifyDictionary({
     tokens: dictionary.tokens,
     outputReferences: options.outputReferences,
@@ -22,8 +26,8 @@ export async function typeScriptFormatter({
     ...(options.header ? [options.header] : []),
     '',
     options.exportType
-      ? `export const ${options.export}: ${options.exportType} = ${tokensString};`
-      : `export const ${options.export} = ${tokensString};`,
+      ? `export const ${options.exportName}: ${options.exportType} = ${tokensString};`
+      : `export const ${options.exportName} = ${tokensString};`,
     '',
   ];
 

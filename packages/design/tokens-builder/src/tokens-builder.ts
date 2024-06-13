@@ -23,7 +23,7 @@ export type TokenBuilderPlatformConfig = {
   };
   typeScript?: {
     header?: string;
-    export: string;
+    exportName: string;
     exportType?: string;
     outputFolder: string;
     outputFilename: string;
@@ -115,7 +115,7 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
         fileHeader: 'auto-generated',
         outputReferences: platformConfig.typeScript.outputReferences,
         header: platformConfig.typeScript.header,
-        export: platformConfig.typeScript.export,
+        exportName: platformConfig.typeScript.exportName,
         exportType: platformConfig.typeScript.exportType,
       },
     };

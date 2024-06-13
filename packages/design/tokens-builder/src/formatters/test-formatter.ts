@@ -1,4 +1,7 @@
+import cloneDeepWith from 'lodash/cloneDeepWith.js';
+import { Dictionary, TransformedToken } from 'style-dictionary';
 import { DesignToken, FormatFnArguments } from 'style-dictionary/types';
+import { fileHeader } from 'style-dictionary/utils';
 
 export type TestToken = {
   name: string;
@@ -8,48 +11,65 @@ export type TestToken = {
   value: unknown;
 };
 
+export type TestTokenUnnamed = Omit<TestToken, 'name'>;
+
+export type TransformedTestTokens = {
+  [key: string]: TransformedTestTokens | TestTokenUnnamed;
+};
+
 export type FormatterOptions = {
   [key: string]: unknown;
 };
+
+function toDesignToken(token: TestToken): DesignToken & { name: string } {
+  return {
+    name: token.name,
+    type: token.type,
+    value: token.value,
+    $type: token.type,
+    $value: token.value,
+    $description: token.description,
+    comment: token.comment,
+    themeable: true,
+    attributes: {},
+  };
+}
+
+function toTransformedToken(token: TestToken): TransformedToken {
+  return {
+    ...toDesignToken(token),
+    path: token.name ? token.name.split('.') : [],
+    original: toDesignToken(token),
+    filePath: 'file.json',
+    isSource: true,
+  };
+}
 
 export function testFormatter({
   formatter,
 }: {
   formatter: (args: FormatFnArguments) => Promise<string>;
 }) {
-  function toDesignToken(token: TestToken): DesignToken & { name: string } {
-    return {
-      name: token.name,
-      type: token.type,
-      value: token.value,
-      $type: token.type,
-      $value: token.value,
-      $description: token.description,
-      comment: token.comment,
-      themeable: true,
-      attributes: {},
-    };
-  }
+  const fileName = 'file.ts';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function format({
     tokens,
+    allTokens,
     options,
   }: {
-    tokens: TestToken[];
+    tokens?: TransformedTestTokens;
+    allTokens?: TestToken[];
     options?: FormatterOptions;
   }) {
-    const dictionary = {
-      tokens: {},
-      allTokens: tokens.map((token) => {
-        return {
-          ...toDesignToken(token),
-          path: token.name.split('.'),
-          original: toDesignToken(token),
-          filePath: 'file.json',
-          isSource: true,
-        };
-      }),
+    const dictionary: Dictionary = {
+      tokens: tokens
+        ? cloneDeepWith(tokens, (value) => {
+            if (value && typeof value === 'object' && 'type' in value) {
+              return toTransformedToken(value);
+            }
+          })
+        : {},
+      allTokens: (allTokens ?? []).map((token) => toTransformedToken(token)),
     };
 
     return formatter({
@@ -57,41 +77,57 @@ export function testFormatter({
       platform: {},
       options: options ?? {},
       file: {
-        destination: 'file.ts',
+        destination: fileName,
       },
     });
   }
 
   async function formatString({
     tokens,
+    allTokens,
     options,
   }: {
-    tokens: TestToken[];
+    tokens?: TransformedTestTokens;
+    allTokens?: TestToken[];
     options?: FormatterOptions;
   }) {
-    return await format({ tokens, options });
+    return await format({ tokens, allTokens, options });
   }
 
   async function formatArray({
     tokens,
+    allTokens,
     options,
   }: {
-    tokens: TestToken[];
+    tokens?: TransformedTestTokens;
+    allTokens?: TestToken[];
     options?: FormatterOptions;
   }) {
-    const formatted = await format({ tokens, options });
+    const formatted = await format({ tokens, allTokens, options });
     return formatted.split('\n');
   }
 
   async function formatObject({
+    exportName,
     tokens,
+    allTokens,
     options,
   }: {
-    tokens: TestToken[];
+    exportName: string;
+    tokens?: TransformedTestTokens;
+    allTokens?: TestToken[];
     options?: FormatterOptions;
   }) {
-    const formatted = await format({ tokens, options });
-    return JSON.parse(formatted);
+    const formatted = await format({ tokens, allTokens, options });
+    const header = await fileHeader({ file: { destination: fileName } });
+
+    const obj = formatted
+      .replace(header, '')
+      .replace(`export const ${exportName} = `, '')
+      .trim()
+      .slice(0, -1);
+
+    return JSON.parse(obj);
   }
 
   return {
