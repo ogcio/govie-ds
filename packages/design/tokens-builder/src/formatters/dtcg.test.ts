@@ -15,10 +15,7 @@ describe('dtcgFormatter', () => {
   });
 
   it('should return an object with token values', async () => {
-    const exportName = 'foo';
-
     const formatted = await formatObject({
-      exportName,
       tokens: {
         color: {
           gray: {
@@ -29,7 +26,6 @@ describe('dtcgFormatter', () => {
           },
         },
       },
-      options: { exportName },
     });
 
     expect(formatted).toEqual({
