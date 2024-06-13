@@ -1,4 +1,4 @@
-import cloneDeepWith from 'lodash.clonedeepwith';
+import cloneDeepWith from 'lodash/cloneDeepWith.js';
 import { getSegmentDetails } from './document-details';
 
 function sortHierarchyByOrder(hierarchy: DocumentHierarchy): DocumentHierarchy {

@@ -20,7 +20,7 @@ export function minifyDictionary({
 
   const result: Record<string, unknown> = {};
 
-  if (tokens.hasOwnProperty('original')) {
+  if (Object.prototype.hasOwnProperty.call(tokens, 'original')) {
     if (outputReferences && usesReferences(tokens.original.$value)) {
       return {
         $type: tokens.original.$type,
@@ -35,7 +35,7 @@ export function minifyDictionary({
   }
 
   for (const name in tokens) {
-    if (tokens.hasOwnProperty(name)) {
+    if (Object.prototype.hasOwnProperty.call(tokens, name)) {
       result[name] = minifyDictionary({
         tokens: tokens[name],
         outputReferences,
