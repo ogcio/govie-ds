@@ -10,7 +10,10 @@ export function TokenValue({ value, converted }: TokenValueProps) {
     <p className="leading-none">
       <span className="text-gray-900 text-xs">{value}</span>
       {converted ? (
-        <span className="text-2xs font-light"> ({converted})</span>
+        <span className="text-2xs font-light hidden lg:inline">
+          {' '}
+          ({converted})
+        </span>
       ) : null}
     </p>
   );
@@ -32,7 +35,7 @@ function TokenValueNameComposite({ name }: { name: string }) {
 
 export function TokenValueComposite({ tokens }: TokenValueCompositeProps) {
   return (
-    <div className="grid grid-cols-[auto,1fr] gap-x-md gap-y-md items-center">
+    <div className="grid grid-cols-1 xl:grid-cols-[auto,1fr] gap-x-md gap-y-md items-center">
       {tokens.map((token) => (
         <Fragment key={token.name}>
           <TokenValueNameComposite name={token.name} />

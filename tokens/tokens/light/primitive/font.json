@@ -23,6 +23,7 @@
         }
       },
       "size": {
+        "50": { "$type": "dimension", "$value": "0.5rem" },
         "100": { "$type": "dimension", "$value": "0.75rem" },
         "200": { "$type": "dimension", "$value": "0.875rem" },
         "300": { "$type": "dimension", "$value": "1rem" },

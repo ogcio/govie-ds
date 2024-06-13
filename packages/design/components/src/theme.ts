@@ -57,6 +57,16 @@ export function createTheme({
     },
     // TODO: font family
     fontSize: {
+      '3xs': [
+        useVariables
+          ? variables.govieFontSize50
+          : meta.light.resolved.primitive.font.size[50].$value,
+        {
+          lineHeight: useVariables
+            ? variables.govieFontLineHeight50
+            : meta.light.resolved.primitive.font.lineHeight[50].$value.toString(),
+        },
+      ],
       '2xs': [
         useVariables
           ? variables.govieFontSize100
