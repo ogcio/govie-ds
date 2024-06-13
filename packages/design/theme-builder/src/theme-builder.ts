@@ -153,7 +153,7 @@ export async function buildTheme({
   const lightCss = await fs.readFile(`${outputFolderCss}/light.css`, 'utf-8');
 
   const lightCssRoot = lightCss.replace(
-    `[data-theme=\"${themeId}-light\"]`,
+    `[data-theme="${themeId}-light"]`,
     ':root',
   );
 

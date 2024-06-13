@@ -8,6 +8,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
+    "lint": "eslint 'src/**/*.ts'",
     "build": "tsx scripts/build.ts"
   },
   "prettier": "@govie-ds/prettier-config",
@@ -20,9 +21,11 @@
     "@govie-ds/tokens-builder": "workspace:^"
   },
   "devDependencies": {
+    "@govie-ds/eslint-config": "workspace:^",
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.14.0",
+    "eslint": "^9.4.0",
     "prettier": "^3.3.0",
     "tsx": "^4.11.2",
     "typescript": "5.4.5"
