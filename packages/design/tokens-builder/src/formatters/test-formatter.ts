@@ -4,17 +4,15 @@ import { DesignToken, FormatFnArguments } from 'style-dictionary/types';
 import { fileHeader } from 'style-dictionary/utils';
 
 export type TestToken = {
-  name: string;
+  name?: string;
   type: string;
   description?: string;
   comment?: string;
   value: unknown;
 };
 
-export type TestTokenUnnamed = Omit<TestToken, 'name'>;
-
 export type TransformedTestTokens = {
-  [key: string]: TransformedTestTokens | TestTokenUnnamed;
+  [key: string]: TransformedTestTokens | TestToken;
 };
 
 export type FormatterOptions = {
@@ -23,7 +21,7 @@ export type FormatterOptions = {
 
 function toDesignToken(token: TestToken): DesignToken & { name: string } {
   return {
-    name: token.name,
+    name: token.name ?? 'name',
     type: token.type,
     value: token.value,
     $type: token.type,

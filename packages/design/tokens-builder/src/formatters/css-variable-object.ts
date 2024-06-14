@@ -17,6 +17,10 @@ export async function cssVariableObjectFormatter({
   options,
   file,
 }: FormatFnArguments) {
+  if (!options.exportName) {
+    throw new Error('Missing exportName option.');
+  }
+
   const formatter = createPropertyFormatter({
     outputReferences: true,
     outputReferenceFallbacks: false,
