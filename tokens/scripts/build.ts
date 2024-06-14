@@ -7,7 +7,7 @@ async function main() {
     source: ["tokens/light/**/*.json"],
     platforms: {
       typeScript: {
-        export: "metaLight",
+        exportName: "metaLight",
         outputFolder: "./src/dist",
         outputFilename: "meta-light.ts",
         outputReferences: false,
@@ -19,7 +19,7 @@ async function main() {
     source: ["tokens/light/**/*.json"],
     platforms: {
       typeScript: {
-        export: "metaLightUnresolved",
+        exportName: "metaLightUnresolved",
         outputFolder: "./src/dist",
         outputFilename: "meta-light-unresolved.ts",
         outputReferences: true,
@@ -37,7 +37,7 @@ async function main() {
     source: ["tokens/light/**/*.json", "tokens/dark/**/*.json"],
     platforms: {
       typeScript: {
-        export: "metaDark",
+        exportName: "metaDark",
         outputFolder: "./src/dist",
         outputFilename: "meta-dark.ts",
         outputReferences: false,
@@ -49,7 +49,7 @@ async function main() {
     source: ["tokens/light/**/*.json", "tokens/dark/**/*.json"],
     platforms: {
       typeScript: {
-        export: "metaDarkUnresolved",
+        exportName: "metaDarkUnresolved",
         outputFolder: "./src/dist",
         outputFilename: "meta-dark-unresolved.ts",
         outputReferences: true,
@@ -66,9 +66,9 @@ async function main() {
   await buildTokens({
     source: ["tokens/light/**/*.json"],
     platforms: {
-      cssVariableNames: {
+      cssVariableObject: {
         prefix,
-        camelCase: true,
+        exportName: "variables",
         outputFolder: "./src/dist",
         outputFilename: "variables.ts",
       },

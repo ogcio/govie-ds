@@ -2,7 +2,7 @@ import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import { FormatFnArguments } from 'style-dictionary/types';
 import { getTokens } from './typescript-consts.js';
 
-export async function cssVariableNameFormatter({
+export async function cssVariableConstsFormatter({
   dictionary,
   platform,
   options,
@@ -22,7 +22,7 @@ export async function cssVariableNameFormatter({
 
   const cssVariables = dictionary.allTokens.map((token) => formatter(token));
 
-  const tokens = getTokens({ dictionary, camelCase: true });
+  const tokens = getTokens({ tokens: dictionary.allTokens, camelCase: true });
 
   const variableNames = cssVariables.map(
     (variable) => `var(${variable.substring(0, variable.indexOf(':')).trim()})`,

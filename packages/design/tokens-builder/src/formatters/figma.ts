@@ -9,7 +9,7 @@ type FigmaType = 'color' | 'number' | 'string' | 'boolean';
 
 type TokenCollection = Record<string, unknown>; // TODO: type
 
-// TODO: implement as style dictionary transforms
+// TODO: implement as style dictionary transform
 function stripReferenceTiers(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value === 'string' && value.startsWith('{')) {
@@ -20,7 +20,7 @@ function stripReferenceTiers(tokens: TokenCollection) {
   });
 }
 
-// TODO: implement as style dictionary transforms
+// TODO: investigate transforms changing $type
 function toDimension(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (value === 'fontWeight') {
@@ -31,25 +31,10 @@ function toDimension(tokens: TokenCollection) {
   });
 }
 
-// Convert composite JSON tokens to nested Figma groups
-function toGroups(tokens: TokenCollection) {
-  const types: Record<string, FigmaType> = {
-    fontFamily: 'string',
-    fontSize: 'number',
-    fontWeight: 'number',
-    lineHeight: 'string',
-  };
-
+function toString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
-    if (value.$type === 'typography') {
-      return objectKeys(value.$value).reduce((acc, key) => {
-        acc[key] = {
-          $type: types[key],
-          $value: value.$value[key],
-        };
-
-        return acc;
-      }, {} as Tokens);
+    if (value === 'shadow' || value === 'fontFamily') {
+      return 'string';
     }
 
     return undefined;
@@ -75,11 +60,34 @@ function percentageToString(tokens: TokenCollection) {
   });
 }
 
-// TODO: implement as style dictionary transforms
-function toString(tokens: TokenCollection) {
+// Convert composite JSON tokens to nested Figma groups
+function toGroups(tokens: TokenCollection) {
+  const types: Record<string, FigmaType> = {
+    fontFamily: 'string',
+    fontSize: 'number',
+    fontWeight: 'number',
+    lineHeight: 'string',
+    offsetX: 'string',
+    offsetY: 'string',
+    blur: 'string',
+    spread: 'string',
+    color: 'string',
+  };
+
   return cloneDeepWith(tokens, (value) => {
-    if (value === 'shadow' || value === 'fontFamily') {
-      return 'string';
+    if (typeof value.$value === 'object') {
+      return objectKeys(value.$value).reduce((acc, key) => {
+        if (!types[key]) {
+          throw new Error(`No type defined composite value key '${key}'.`);
+        }
+
+        acc[key] = {
+          $type: types[key],
+          $value: value.$value[key],
+        };
+
+        return acc;
+      }, {} as Tokens);
     }
 
     return undefined;

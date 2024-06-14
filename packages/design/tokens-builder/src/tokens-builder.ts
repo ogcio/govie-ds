@@ -5,7 +5,8 @@ import camelCase from 'camelcase';
 import { dtcgFormatter } from './formatters/dtcg.js';
 import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
 import { figmaFormatter } from './formatters/figma.js';
-import { cssVariableNameFormatter } from './formatters/css-variable-names.js';
+import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
+import { cssVariableObjectFormatter } from './formatters/css-variable-object.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -15,7 +16,14 @@ export type TokenBuilderPlatformConfig = {
     outputFolder: string;
     outputFilename: string;
   };
-  cssVariableNames?: {
+  cssVariableObject?: {
+    prefix?: string;
+    exportName: string;
+    exportType?: string;
+    outputFolder: string;
+    outputFilename: string;
+  };
+  cssVariableConsts?: {
     prefix?: string;
     camelCase?: boolean;
     outputFolder: string;
@@ -23,7 +31,7 @@ export type TokenBuilderPlatformConfig = {
   };
   typeScript?: {
     header?: string;
-    export: string;
+    exportName: string;
     exportType?: string;
     outputFolder: string;
     outputFilename: string;
@@ -81,22 +89,43 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
     };
   }
 
-  if (platformConfig.cssVariableNames) {
-    platforms['cssVariableNames'] = {
+  if (platformConfig.cssVariableObject) {
+    platforms['cssVariableObject'] = {
       transformGroup: 'css/custom',
       buildPath: ensureTrailingSlash(
-        platformConfig.cssVariableNames.outputFolder,
+        platformConfig.cssVariableObject.outputFolder,
       ),
-      prefix: platformConfig.cssVariableNames.prefix,
+      prefix: platformConfig.cssVariableObject.prefix,
       files: [
         {
-          format: 'css/variable-names',
-          destination: platformConfig.cssVariableNames.outputFilename,
+          format: 'css/variable-object',
+          destination: platformConfig.cssVariableObject.outputFilename,
         },
       ],
       options: {
         fileHeader: 'auto-generated',
-        camelCase: platformConfig.cssVariableNames.camelCase,
+        exportName: platformConfig.cssVariableObject.exportName,
+        exportType: platformConfig.cssVariableObject.exportType,
+      },
+    };
+  }
+
+  if (platformConfig.cssVariableConsts) {
+    platforms['cssVariableConsts'] = {
+      transformGroup: 'css/custom',
+      buildPath: ensureTrailingSlash(
+        platformConfig.cssVariableConsts.outputFolder,
+      ),
+      prefix: platformConfig.cssVariableConsts.prefix,
+      files: [
+        {
+          format: 'css/variable-consts',
+          destination: platformConfig.cssVariableConsts.outputFilename,
+        },
+      ],
+      options: {
+        fileHeader: 'auto-generated',
+        camelCase: platformConfig.cssVariableConsts.camelCase,
       },
     };
   }
@@ -115,7 +144,7 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
         fileHeader: 'auto-generated',
         outputReferences: platformConfig.typeScript.outputReferences,
         header: platformConfig.typeScript.header,
-        export: platformConfig.typeScript.export,
+        exportName: platformConfig.typeScript.exportName,
         exportType: platformConfig.typeScript.exportType,
       },
     };
@@ -364,8 +393,13 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   });
 
   styleDictionary.registerFormat({
-    name: 'css/variable-names',
-    format: cssVariableNameFormatter,
+    name: 'css/variable-object',
+    format: cssVariableObjectFormatter,
+  });
+
+  styleDictionary.registerFormat({
+    name: 'css/variable-consts',
+    format: cssVariableConstsFormatter,
   });
 
   await styleDictionary.buildAllPlatforms();

@@ -25,6 +25,30 @@ function convertColors(colors: typeof meta.light.resolved.primitive.color) {
 
 const tokens = govieTokens.light;
 
+// TODO: type
+function toFont({
+  useVariables,
+  variables,
+  meta,
+  key,
+}: {
+  useVariables: boolean;
+  variables: any;
+  meta: any;
+  key: string;
+}): [string, { lineHeight: string }] {
+  return [
+    useVariables
+      ? variables.primitive.font.size[key]
+      : meta.light.resolved.primitive.font.size[key].$value,
+    {
+      lineHeight: useVariables
+        ? variables.primitive.font.lineHeight[key]
+        : meta.light.resolved.primitive.font.lineHeight[key].$value.toString(),
+    },
+  ];
+}
+
 export function createTheme({
   useVariables = true,
   theme,
@@ -35,9 +59,9 @@ export function createTheme({
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
     fontFamily: {
-      primary: variables.govieFontFamilyPrimary,
-      secondary: variables.govieFontFamilySecondary,
-      tertiary: variables.govieFontFamilyTertiary,
+      primary: variables.primitive.font.family.primary,
+      secondary: variables.primitive.font.family.secondary,
+      tertiary: variables.primitive.font.family.tertiary,
     },
     container: {
       padding: {
@@ -57,236 +81,105 @@ export function createTheme({
     },
     // TODO: font family
     fontSize: {
-      '3xs': [
-        useVariables
-          ? variables.govieFontSize50
-          : meta.light.resolved.primitive.font.size[50].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight50
-            : meta.light.resolved.primitive.font.lineHeight[50].$value.toString(),
-        },
-      ],
-      '2xs': [
-        useVariables
-          ? variables.govieFontSize100
-          : meta.light.resolved.primitive.font.size[100].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight100
-            : meta.light.resolved.primitive.font.lineHeight[100].$value.toString(),
-        },
-      ],
-      xs: [
-        useVariables
-          ? variables.govieFontSize200
-          : meta.light.resolved.primitive.font.size[200].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight200
-            : meta.light.resolved.primitive.font.lineHeight[200].$value.toString(),
-        },
-      ],
-      sm: [
-        useVariables
-          ? variables.govieFontSize300
-          : meta.light.resolved.primitive.font.size[300].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight300
-            : meta.light.resolved.primitive.font.lineHeight[300].$value.toString(),
-        },
-      ],
-      md: [
-        useVariables
-          ? variables.govieFontSize400
-          : meta.light.resolved.primitive.font.size[400].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight400
-            : meta.light.resolved.primitive.font.lineHeight[400].$value.toString(),
-        },
-      ],
-      lg: [
-        useVariables
-          ? variables.govieFontSize500
-          : meta.light.resolved.primitive.font.size[500].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight500
-            : meta.light.resolved.primitive.font.lineHeight[500].$value.toString(),
-        },
-      ],
-      xl: [
-        useVariables
-          ? variables.govieFontSize600
-          : meta.light.resolved.primitive.font.size[600].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight600
-            : meta.light.resolved.primitive.font.lineHeight[600].$value.toString(),
-        },
-      ],
-      '2xl': [
-        useVariables
-          ? variables.govieFontSize700
-          : meta.light.resolved.primitive.font.size[700].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight700
-            : meta.light.resolved.primitive.font.lineHeight[700].$value.toString(),
-        },
-      ],
-      '3xl': [
-        useVariables
-          ? variables.govieFontSize800
-          : meta.light.resolved.primitive.font.size[800].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight800
-            : meta.light.resolved.primitive.font.lineHeight[800].$value.toString(),
-        },
-      ],
-      '4xl': [
-        useVariables
-          ? variables.govieFontSize900
-          : meta.light.resolved.primitive.font.size[900].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight900
-            : meta.light.resolved.primitive.font.lineHeight[900].$value.toString(),
-          // fontWeight: variables.govieFontWeight700,
-        },
-      ],
-      '5xl': [
-        useVariables
-          ? variables.govieFontSize1000
-          : meta.light.resolved.primitive.font.size[1000].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight1000
-            : meta.light.resolved.primitive.font.lineHeight[1000].$value.toString(),
-          // fontWeight: variables.govieFontWeight700,
-        },
-      ],
-      '6xl': [
-        useVariables
-          ? variables.govieFontSize1100
-          : meta.light.resolved.primitive.font.size[1100].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight1100
-            : meta.light.resolved.primitive.font.lineHeight[1100].$value.toString(),
-          // fontWeight: variables.govieFontWeight700,
-        },
-      ],
-      '7xl': [
-        useVariables
-          ? variables.govieFontSize1200
-          : meta.light.resolved.primitive.font.size[1200].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight1200
-            : meta.light.resolved.primitive.font.lineHeight[1200].$value.toString(),
-          // fontWeight: variables.govieFontWeight700,
-        },
-      ],
-      '8xl': [
-        useVariables
-          ? variables.govieFontSize1300
-          : meta.light.resolved.primitive.font.size[1300].$value,
-        {
-          lineHeight: useVariables
-            ? variables.govieFontLineHeight1300
-            : meta.light.resolved.primitive.font.lineHeight[1300].$value.toString(),
-          // fontWeight: variables.govieFontWeight700,
-        },
-      ],
+      '3xs': toFont({ useVariables, variables, meta, key: '50' }),
+      '2xs': toFont({ useVariables, variables, meta, key: '100' }),
+      xs: toFont({ useVariables, variables, meta, key: '200' }),
+      sm: toFont({ useVariables, variables, meta, key: '300' }),
+      md: toFont({ useVariables, variables, meta, key: '400' }),
+      lg: toFont({ useVariables, variables, meta, key: '500' }),
+      xl: toFont({ useVariables, variables, meta, key: '600' }),
+      '2xl': toFont({ useVariables, variables, meta, key: '700' }),
+      '3xl': toFont({ useVariables, variables, meta, key: '800' }),
+      '4xl': toFont({ useVariables, variables, meta, key: '900' }),
+      '5xl': toFont({ useVariables, variables, meta, key: '1000' }),
+      '6xl': toFont({ useVariables, variables, meta, key: '1100' }),
+      '7xl': toFont({ useVariables, variables, meta, key: '1200' }),
+      '8xl': toFont({ useVariables, variables, meta, key: '1300' }),
     },
     fontWeight: {
-      thin: variables.govieFontWeight100,
-      extralight: variables.govieFontWeight200,
-      light: variables.govieFontWeight300,
-      normal: variables.govieFontWeight400,
-      medium: variables.govieFontWeight500,
-      semibold: variables.govieFontWeight600,
-      bold: variables.govieFontWeight700,
-      extrabold: variables.govieFontWeight800,
-      black: variables.govieFontWeight900,
+      thin: variables.primitive.font.weight['100'],
+      extralight: variables.primitive.font.weight['200'],
+      light: variables.primitive.font.weight['300'],
+      normal: variables.primitive.font.weight['400'],
+      medium: variables.primitive.font.weight['500'],
+      semibold: variables.primitive.font.weight['600'],
+      bold: variables.primitive.font.weight['700'],
+      extrabold: variables.primitive.font.weight['800'],
+      black: variables.primitive.font.weight['900'],
     },
-    lineHeight: {
-      '3': variables.govieFontLineHeight50,
-      '4': variables.govieFontLineHeight100,
-      '5': variables.govieFontLineHeight200,
-      '6': variables.govieFontLineHeight400,
-      '7': variables.govieFontLineHeight600,
-      '8': variables.govieFontLineHeight700,
-      '9': variables.govieFontLineHeight800,
-      '10': variables.govieFontLineHeight900,
-      none: variables.govieFontLineHeight100,
-      tight: variables.govieFontLineHeight200,
-      snug: variables.govieFontLineHeight300,
-      normal: variables.govieFontLineHeight400,
-      relaxed: variables.govieFontLineHeight500,
-      loose: variables.govieFontLineHeight700,
-    },
+    // lineHeight: {
+    //   '3': variables.govieFontLineHeight50,
+    //   '4': variables.govieFontLineHeight100,
+    //   '5': variables.govieFontLineHeight200,
+    //   '6': variables.govieFontLineHeight400,
+    //   '7': variables.govieFontLineHeight600,
+    //   '8': variables.govieFontLineHeight700,
+    //   '9': variables.govieFontLineHeight800,
+    //   '10': variables.govieFontLineHeight900,
+    //   none: variables.govieFontLineHeight100,
+    //   tight: variables.govieFontLineHeight200,
+    //   snug: variables.govieFontLineHeight300,
+    //   normal: variables.govieFontLineHeight400,
+    //   relaxed: variables.govieFontLineHeight500,
+    //   loose: variables.govieFontLineHeight700,
+    // },
     borderWidth: {
-      xs: variables.govieBorderWidth100,
-      sm: variables.govieBorderWidth200,
-      md: variables.govieBorderWidth300,
-      lg: variables.govieBorderWidth400,
-      xl: variables.govieBorderWidth500,
-      '2xl': variables.govieBorderWidth600,
-      '3xl': variables.govieBorderWidth700,
-      '4xl': variables.govieBorderWidth800,
-      DEFAULT: variables.govieBorderWidth100,
+      xs: variables.primitive.border.width['100'],
+      sm: variables.primitive.border.width['200'],
+      md: variables.primitive.border.width['300'],
+      lg: variables.primitive.border.width['400'],
+      xl: variables.primitive.border.width['500'],
+      '2xl': variables.primitive.border.width['600'],
+      '3xl': variables.primitive.border.width['700'],
+      '4xl': variables.primitive.border.width['800'],
+      DEFAULT: variables.primitive.border.width['100'],
     },
     borderRadius: {
       // "none": tokens.goiveBorderRadiusNone,
-      sm: variables.govieBorderRadius100,
-      md: variables.govieBorderRadius200,
-      lg: variables.govieBorderRadius300,
-      xl: variables.govieBorderRadius400,
-      '2xl': variables.govieBorderRadius500,
-      '3xl': variables.govieBorderRadius600,
-      full: variables.govieBorderRadiusFull,
-      DEFAULT: variables.govieBorderRadius200,
+      sm: variables.primitive.border.radius['100'],
+      md: variables.primitive.border.radius['200'],
+      lg: variables.primitive.border.radius['300'],
+      xl: variables.primitive.border.radius['400'],
+      '2xl': variables.primitive.border.radius['500'],
+      '3xl': variables.primitive.border.radius['600'],
+      full: variables.primitive.border.radius.full,
+      DEFAULT: variables.primitive.border.radius['200'],
     },
     zIndex: {
-      1: variables.govieZIndex1,
-      100: variables.govieZIndex100,
-      200: variables.govieZIndex200,
-      300: variables.govieZIndex300,
-      400: variables.govieZIndex400,
-      500: variables.govieZIndex500,
-      600: variables.govieZIndex600,
-      700: variables.govieZIndex700,
-      800: variables.govieZIndex800,
-      900: variables.govieZIndex900,
-      1000: variables.govieZIndex1000,
+      1: variables.primitive.zIndex['1'],
+      100: variables.primitive.zIndex['100'],
+      200: variables.primitive.zIndex['200'],
+      300: variables.primitive.zIndex['300'],
+      400: variables.primitive.zIndex['400'],
+      500: variables.primitive.zIndex['500'],
+      600: variables.primitive.zIndex['600'],
+      700: variables.primitive.zIndex['700'],
+      800: variables.primitive.zIndex['800'],
+      900: variables.primitive.zIndex['900'],
+      1000: variables.primitive.zIndex['1000'],
     },
     opacity: {
-      '0': variables.govieOpacity0,
-      '5': variables.govieOpacity5,
-      '10': variables.govieOpacity10,
-      '15': variables.govieOpacity15,
-      '20': variables.govieOpacity20,
-      '25': variables.govieOpacity25,
-      '30': variables.govieOpacity30,
-      '35': variables.govieOpacity35,
-      '40': variables.govieOpacity40,
-      '45': variables.govieOpacity45,
-      '50': variables.govieOpacity50,
-      '55': variables.govieOpacity55,
-      '60': variables.govieOpacity60,
-      '65': variables.govieOpacity65,
-      '70': variables.govieOpacity70,
-      '75': variables.govieOpacity75,
-      '80': variables.govieOpacity80,
-      '85': variables.govieOpacity85,
-      '90': variables.govieOpacity90,
-      '95': variables.govieOpacity95,
-      '100': variables.govieOpacity100,
+      '0': variables.primitive.opacity['0'],
+      '5': variables.primitive.opacity['5'],
+      '10': variables.primitive.opacity['10'],
+      '15': variables.primitive.opacity['15'],
+      '20': variables.primitive.opacity['20'],
+      '25': variables.primitive.opacity['25'],
+      '30': variables.primitive.opacity['30'],
+      '35': variables.primitive.opacity['35'],
+      '40': variables.primitive.opacity['40'],
+      '45': variables.primitive.opacity['45'],
+      '50': variables.primitive.opacity['50'],
+      '55': variables.primitive.opacity['55'],
+      '60': variables.primitive.opacity['60'],
+      '65': variables.primitive.opacity['65'],
+      '70': variables.primitive.opacity['70'],
+      '75': variables.primitive.opacity['75'],
+      '80': variables.primitive.opacity['80'],
+      '85': variables.primitive.opacity['85'],
+      '90': variables.primitive.opacity['90'],
+      '95': variables.primitive.opacity['95'],
+      '100': variables.primitive.opacity['100'],
     },
     // TODO: boxShadow, convert shadow object to string in tokens
     // "boxShadow": {
@@ -300,20 +193,20 @@ export function createTheme({
     //   "none": "none"
     // },
     spacing: {
-      0: variables.govieSpace0,
-      none: variables.govieSpace0,
-      '3xs': variables.govieSpacePx,
-      '2xs': variables.govieSpace05,
-      xs: variables.govieSpace1,
-      sm: variables.govieSpace15,
-      md: variables.govieSpace2,
-      lg: variables.govieSpace3,
-      xl: variables.govieSpace5,
-      '2xl': variables.govieSpace8,
-      '3xl': variables.govieSpace10,
-      '4xl': variables.govieSpace12,
-      '5xl': variables.govieSpace16,
-      '6xl': variables.govieSpace20,
+      0: variables.primitive.space['0'],
+      none: variables.primitive.space['0'],
+      '3xs': variables.primitive.space.px,
+      '2xs': variables.primitive.space['0-5'],
+      xs: variables.primitive.space['1'],
+      sm: variables.primitive.space['1-5'],
+      md: variables.primitive.space['2'],
+      lg: variables.primitive.space['3'],
+      xl: variables.primitive.space['5'],
+      '2xl': variables.primitive.space['8'],
+      '3xl': variables.primitive.space['10'],
+      '4xl': variables.primitive.space['12'],
+      '5xl': variables.primitive.space['16'],
+      '6xl': variables.primitive.space['20'],
       // "0": tokens.govieSpace0,
       // px: tokens.govieSpacePx,
       // "0.5": tokens.govieSpace05,
@@ -388,34 +281,34 @@ export function createTheme({
         return {
           DEFAULT: {
             css: {
-              p: toFont(theme, 'fontSize.sm'),
-              h1: toFont(theme, 'fontSize.2xl', true),
-              h2: toFont(theme, 'fontSize.md', true),
-              h3: toFont(theme, 'fontSize.sm', true),
+              p: toTypographyFont(theme, 'fontSize.sm'),
+              h1: toTypographyFont(theme, 'fontSize.2xl', true),
+              h2: toTypographyFont(theme, 'fontSize.md', true),
+              h3: toTypographyFont(theme, 'fontSize.sm', true),
             },
           },
           md: {
             css: {
-              p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.4xl', true),
-              h2: toFont(theme, 'fontSize.lg', true),
-              h3: toFont(theme, 'fontSize.md', true),
+              p: toTypographyFont(theme, 'fontSize.md'),
+              h1: toTypographyFont(theme, 'fontSize.4xl', true),
+              h2: toTypographyFont(theme, 'fontSize.lg', true),
+              h3: toTypographyFont(theme, 'fontSize.md', true),
             },
           },
           lg: {
             css: {
-              p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.5xl', true),
-              h2: toFont(theme, 'fontSize.xl', true),
-              h3: toFont(theme, 'fontSize.lg', true),
+              p: toTypographyFont(theme, 'fontSize.md'),
+              h1: toTypographyFont(theme, 'fontSize.5xl', true),
+              h2: toTypographyFont(theme, 'fontSize.xl', true),
+              h3: toTypographyFont(theme, 'fontSize.lg', true),
             },
           },
           xl: {
             css: {
-              p: toFont(theme, 'fontSize.md'),
-              h1: toFont(theme, 'fontSize.6xl', true),
-              h2: toFont(theme, 'fontSize.2xl', true),
-              h3: toFont(theme, 'fontSize.xl', true),
+              p: toTypographyFont(theme, 'fontSize.md'),
+              h1: toTypographyFont(theme, 'fontSize.6xl', true),
+              h2: toTypographyFont(theme, 'fontSize.2xl', true),
+              h3: toTypographyFont(theme, 'fontSize.xl', true),
             },
           },
         };
@@ -426,10 +319,12 @@ export function createTheme({
   return deepmerge(defaultTheme, theme);
 }
 
-function toFont(theme: any, name: string, bold: boolean = false) {
+function toTypographyFont(theme: any, name: string, bold: boolean = false) {
   return {
     fontSize: theme(name)[0],
-    fontWeight: bold ? 700 : 400, // TODO: convert variables to object, generic fontSize object in theme
+    fontWeight: bold
+      ? variables.primitive.font.weight['700']
+      : variables.primitive.font.weight['400'],
     lineHeight: theme(name)[1].lineHeight,
   };
 }

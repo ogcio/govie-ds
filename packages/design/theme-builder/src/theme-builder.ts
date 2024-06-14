@@ -78,7 +78,7 @@ export async function buildTheme({
       },
       typeScript: {
         header: tokensSchemaImport,
-        export: 'metaLight',
+        exportName: 'metaLight',
         exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
         outputFilename: 'meta-light.ts',
@@ -99,7 +99,7 @@ export async function buildTheme({
     platforms: {
       typeScript: {
         header: tokensSchemaImport,
-        export: 'metaLightUnresolved',
+        exportName: 'metaLightUnresolved',
         exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
         outputFilename: 'meta-light-unresolved.ts',
@@ -120,7 +120,7 @@ export async function buildTheme({
       },
       typeScript: {
         header: tokensSchemaImport,
-        export: 'metaDark',
+        exportName: 'metaDark',
         exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
         outputFilename: 'meta-dark.ts',
@@ -141,7 +141,7 @@ export async function buildTheme({
     platforms: {
       typeScript: {
         header: tokensSchemaImport,
-        export: 'metaDarkUnresolved',
+        exportName: 'metaDarkUnresolved',
         exportType: 'Tokens',
         outputFolder: outputFolderTypeScript,
         outputFilename: 'meta-dark-unresolved.ts',
