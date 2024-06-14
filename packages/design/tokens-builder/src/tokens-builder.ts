@@ -6,12 +6,20 @@ import { dtcgFormatter } from './formatters/dtcg.js';
 import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
 import { figmaFormatter } from './formatters/figma.js';
 import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
+import { cssVariableObjectFormatter } from './formatters/css-variable-object.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
   css?: {
     prefix?: string;
     selector: string;
+    outputFolder: string;
+    outputFilename: string;
+  };
+  cssVariableObject?: {
+    prefix?: string;
+    exportName: string;
+    exportType?: string;
     outputFolder: string;
     outputFilename: string;
   };
@@ -77,6 +85,27 @@ function createPlatforms(platformConfig: TokenBuilderPlatformConfig) {
         showFileHeader: false,
         selector: platformConfig.css.selector,
         outputReferences: true,
+      },
+    };
+  }
+
+  if (platformConfig.cssVariableObject) {
+    platforms['cssVariableObject'] = {
+      transformGroup: 'css/custom',
+      buildPath: ensureTrailingSlash(
+        platformConfig.cssVariableObject.outputFolder,
+      ),
+      prefix: platformConfig.cssVariableObject.prefix,
+      files: [
+        {
+          format: 'css/variable-object',
+          destination: platformConfig.cssVariableObject.outputFilename,
+        },
+      ],
+      options: {
+        fileHeader: 'auto-generated',
+        exportName: platformConfig.cssVariableObject.exportName,
+        exportType: platformConfig.cssVariableObject.exportType,
       },
     };
   }
@@ -361,6 +390,11 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerFormat({
     name: 'figma',
     format: figmaFormatter,
+  });
+
+  styleDictionary.registerFormat({
+    name: 'css/variable-object',
+    format: cssVariableObjectFormatter,
   });
 
   styleDictionary.registerFormat({
