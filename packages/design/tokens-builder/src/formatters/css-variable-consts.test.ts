@@ -18,7 +18,7 @@ describe('cssVariableConstsFormatter', () => {
     const formatted = await formatArray({
       allTokens: [
         {
-          name: 'color.gray.500',
+          name: 'color-gray-500',
           type: 'color',
           value: '#333333',
         },
@@ -26,7 +26,7 @@ describe('cssVariableConstsFormatter', () => {
     });
 
     expect(formatted).toContain(
-      `export const colorGray500 = 'var(--color.gray.500)';`,
+      `export const colorGray500 = 'var(--color-gray-500)';`,
     );
   });
 });
