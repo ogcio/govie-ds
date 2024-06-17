@@ -5,37 +5,37 @@
         "display": {
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.6xl}"
+            "$value": "{primitive.typography.heading.6xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.5xl}"
+            "$value": "{primitive.typography.heading.5xl}"
           }
         },
         "heading": {
           "main": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.3xl}"
+            "$value": "{primitive.typography.heading.3xl}"
           },
           "sub": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xl}"
+            "$value": "{primitive.typography.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.lg}"
+            "$value": "{primitive.typography.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.md}"
+            "$value": "{primitive.typography.heading.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.xs}"
+            "$value": "{primitive.typography.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xs}"
+            "$value": "{primitive.typography.heading.2xs}"
           }
         }
       },
@@ -43,27 +43,27 @@
         "heading": {
           "main": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.3xl}"
+            "$value": "{primitive.typography.heading.3xl}"
           },
           "sub": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xl}"
+            "$value": "{primitive.typography.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.lg}"
+            "$value": "{primitive.typography.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.md}"
+            "$value": "{primitive.typography.heading.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.sm}"
+            "$value": "{primitive.typography.heading.sm}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.xs}"
+            "$value": "{primitive.typography.heading.xs}"
           }
         }
       },
@@ -71,27 +71,27 @@
         "heading": {
           "main": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.3xl}"
+            "$value": "{primitive.typography.heading.3xl}"
           },
           "sub": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xl}"
+            "$value": "{primitive.typography.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.lg}"
+            "$value": "{primitive.typography.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.md}"
+            "$value": "{primitive.typography.heading.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.sm}"
+            "$value": "{primitive.typography.heading.sm}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.xs}"
+            "$value": "{primitive.typography.heading.xs}"
           }
         }
       },
@@ -99,27 +99,27 @@
         "heading": {
           "main": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.3xl}"
+            "$value": "{primitive.typography.heading.3xl}"
           },
           "sub": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xl}"
+            "$value": "{primitive.typography.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.lg}"
+            "$value": "{primitive.typography.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.md}"
+            "$value": "{primitive.typography.heading.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.xs}"
+            "$value": "{primitive.typography.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.regular.2xs}"
+            "$value": "{primitive.typography.heading.2xs}"
           }
         }
       }

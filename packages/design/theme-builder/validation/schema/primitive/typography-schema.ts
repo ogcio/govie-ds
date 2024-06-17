@@ -41,8 +41,8 @@ export const typographySchema = z
 
   .object(
     {
-      regular: createTypographyScaleSchema('regular'),
-      bold: createTypographyScaleSchema('bold'),
+      heading: createTypographyScaleSchema('regular'),
+      text: createTypographyScaleSchema('text'),
     },
     {
       required_error: 'typography is required.',
