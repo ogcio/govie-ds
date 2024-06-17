@@ -10,11 +10,11 @@ type Font = {
   lineHeight: number;
 };
 
-export function TypographyTable() {
+function TypographyTable({ type }: { type: 'heading' | 'text' }) {
   return (
     <SampleList<Font>
-      name="typography"
-      tokens={toSampleTokens(meta.light.resolved.primitive.typography.regular)}
+      name={`typography/${type}`}
+      tokens={toSampleTokens(meta.light.resolved.primitive.typography[type])}
       renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
@@ -30,4 +30,12 @@ export function TypographyTable() {
       )}
     />
   );
+}
+
+export function TypographyHeadingTable() {
+  return <TypographyTable type="heading" />;
+}
+
+export function TypographyTextTable() {
+  return <TypographyTable type="text" />;
 }

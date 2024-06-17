@@ -1,7 +1,13 @@
 import { minifyDictionary } from './minify-dictionary.js';
 import { FormatFnArguments } from 'style-dictionary/types';
-import { Tokens } from 'style-dictionary';
-import { objectKeys } from 'ts-extras';
+import {
+  isAlias,
+  flattenComposite,
+  flattenCompositeAlias,
+  getValue,
+  isCompositeToken,
+  aliasToPath,
+} from '@govie-ds/token-utils';
 import flow from 'lodash/fp/flow.js';
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
 
@@ -33,7 +39,11 @@ function toDimension(tokens: TokenCollection) {
 
 function toString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
-    if (value === 'shadow' || value === 'fontFamily') {
+    if (
+      value === 'shadow' ||
+      value === 'fontFamily' ||
+      value === 'typography'
+    ) {
       return 'string';
     }
 
@@ -60,8 +70,7 @@ function percentageToString(tokens: TokenCollection) {
   });
 }
 
-// Convert composite JSON tokens to nested Figma groups
-function toGroups(tokens: TokenCollection) {
+function figmaTypeResolver(key: string): FigmaType | undefined {
   const types: Record<string, FigmaType> = {
     fontFamily: 'string',
     fontSize: 'number',
@@ -74,20 +83,32 @@ function toGroups(tokens: TokenCollection) {
     color: 'string',
   };
 
+  return types[key];
+}
+
+// Convert composite JSON tokens to nested Figma groups
+function toGroups(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value.$value === 'object') {
-      return objectKeys(value.$value).reduce((acc, key) => {
-        if (!types[key]) {
-          throw new Error(`No type defined composite value key '${key}'.`);
-        }
+      return flattenComposite({
+        value,
+        resolveType: figmaTypeResolver,
+      });
+    }
 
-        acc[key] = {
-          $type: types[key],
-          $value: value.$value[key],
-        };
+    if (isAlias(value.$value)) {
+      const aliasedValue = getValue({
+        value: tokens,
+        path: aliasToPath(value.$value),
+      });
 
-        return acc;
-      }, {} as Tokens);
+      if (isCompositeToken(aliasedValue)) {
+        return flattenCompositeAlias({
+          alias: value.$value,
+          aliasedValue,
+          resolveType: figmaTypeResolver,
+        });
+      }
     }
 
     return undefined;
@@ -106,11 +127,11 @@ export async function figmaFormatter({
   });
 
   const cleanedTokens = flow([
+    toGroups,
     percentageToString,
     stripReferenceTiers,
     toDimension,
     toString,
-    toGroups,
   ])(tokens);
 
   const lines = [JSON.stringify(cleanedTokens, null, 2), ''];
