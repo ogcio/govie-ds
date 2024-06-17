@@ -13,7 +13,7 @@ export function isAlias(value: unknown) {
     for (const key in value) {
       if (Object.prototype.hasOwnProperty.call(value, key)) {
         const element = value[key];
-        let alias = isAlias(element);
+        const alias = isAlias(element);
 
         if (alias) {
           hasAlias = true;
