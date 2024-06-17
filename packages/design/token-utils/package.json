@@ -1,0 +1,33 @@
+{
+  "name": "@govie-ds/token-utils",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
+    "lint": "eslint 'src/**/*.ts'",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "prettier": "@govie-ds/prettier-config",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@govie-ds/eslint-config": "workspace:^",
+    "@govie-ds/prettier-config": "workspace:^",
+    "@tsconfig/node20": "^20.1.4",
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.0",
+    "tsup": "^8.1.0",
+    "typescript": "5.4.5",
+    "vitest": "^1.6.0"
+  }
+}

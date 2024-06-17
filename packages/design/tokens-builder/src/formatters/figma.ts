@@ -33,7 +33,11 @@ function toDimension(tokens: TokenCollection) {
 
 function toString(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
-    if (value === 'shadow' || value === 'fontFamily') {
+    if (
+      value === 'shadow' ||
+      value === 'fontFamily' ||
+      value === 'typography'
+    ) {
       return 'string';
     }
 
