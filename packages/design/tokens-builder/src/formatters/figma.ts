@@ -3,8 +3,10 @@ import { FormatFnArguments } from 'style-dictionary/types';
 import {
   isAlias,
   flattenComposite,
+  flattenCompositeAlias,
   getValue,
   isCompositeToken,
+  aliasToPath,
 } from '@govie-ds/token-utils';
 import flow from 'lodash/fp/flow.js';
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
@@ -84,14 +86,6 @@ function figmaTypeResolver(key: string): FigmaType | undefined {
   return types[key];
 }
 
-function aliasToPath(alias: string) {
-  if (!isAlias(alias)) {
-    throw new Error(`Invalid alias '${alias}'.`);
-  }
-
-  return alias.replace('{', '').replace('}', '');
-}
-
 // Convert composite JSON tokens to nested Figma groups
 function toGroups(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
@@ -109,8 +103,9 @@ function toGroups(tokens: TokenCollection) {
       });
 
       if (isCompositeToken(aliasedValue)) {
-        return flattenComposite({
-          value: aliasedValue,
+        return flattenCompositeAlias({
+          alias: value.$value,
+          aliasedValue,
           resolveType: figmaTypeResolver,
         });
       }

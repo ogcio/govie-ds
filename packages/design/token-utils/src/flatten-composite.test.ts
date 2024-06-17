@@ -1,4 +1,4 @@
-import { flattenComposite } from './flatten-composite';
+import { flattenComposite } from './flatten-composite.js';
 
 describe('flattenComposite', () => {
   it('should return expected types', () => {

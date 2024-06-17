@@ -1,4 +1,4 @@
-import { isAlias } from './is-alias';
+import { isAlias } from './is-alias.js';
 
 describe('isAlias', () => {
   it('should return false for undefined', () => {
