@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.13.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.13.2...@govie-ds/docs-0.13.3) (2024-06-17)
+
+### Dependency Updates
+
+* `@govie-ds/tokens` updated to version `0.1.0`
+
+### Bug Fixes
+
+* update figma composite alias output ([#66](https://github.com/ogcio/govie-ds/issues/66)) ([620f728](https://github.com/ogcio/govie-ds/commit/620f7287aeb0d4fa5614048f425ea71740ca06f7))
+
+
+
 ## [0.13.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.13.1...@govie-ds/docs-0.13.2) (2024-06-14)
 
 ### Dependency Updates
