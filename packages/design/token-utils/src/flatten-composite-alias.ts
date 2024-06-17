@@ -1,5 +1,6 @@
 import { objectKeys } from 'ts-extras';
 import { CompositeToken, Token } from './types.js';
+import { aliasJoin } from './alias-join.js';
 
 export function flattenCompositeAlias({
   alias,
@@ -20,7 +21,7 @@ export function flattenCompositeAlias({
 
       acc[key] = {
         $type: type,
-        $value: `${alias}.${key}`,
+        $value: aliasJoin(alias, key),
       };
 
       return acc;

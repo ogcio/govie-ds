@@ -1,6 +1,6 @@
 import { flattenCompositeAlias } from './flatten-composite-alias.js';
 
-describe.skip('flattenCompositeAlias', () => {
+describe('flattenCompositeAlias', () => {
   it('should return expected aliased values', () => {
     expect(
       flattenCompositeAlias({
@@ -14,7 +14,18 @@ describe.skip('flattenCompositeAlias', () => {
             lineHeight: '{primitive.font.lineHeight.1000}',
           },
         },
-        resolveType: () => 'string',
+        resolveType: (key) => {
+          switch (key) {
+            case 'fontFamily':
+              return 'string';
+            case 'fontSize':
+              return 'string';
+            case 'fontWeight':
+              return 'number';
+            case 'lineHeight':
+              return 'string';
+          }
+        },
       }),
     ).toEqual({
       fontFamily: {
