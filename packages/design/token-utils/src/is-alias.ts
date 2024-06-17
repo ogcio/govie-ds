@@ -1,21 +1,21 @@
-function createRegex() {
-  return new RegExp('\\' + '{' + '([^' + '}' + ']+)' + '\\' + '}', 'g');
+function isObject(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
 }
 
-export function isAlias(value, regexOrOptions = {}) {
-  const regex = createRegex();
+export function isAlias(value: unknown) {
+  const regex = /{([^}]+)}/g;
 
   if (typeof value === 'string') {
     return regex.test(value);
   }
 
-  if (typeof value === 'object') {
+  if (isObject(value)) {
     let hasAlias = false;
 
     for (const key in value) {
       if (Object.prototype.hasOwnProperty.call(value, key)) {
         const element = value[key];
-        let alias = isAlias(element, regexOrOptions);
+        let alias = isAlias(element);
 
         if (alias) {
           hasAlias = true;

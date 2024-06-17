@@ -1,6 +1,22 @@
 import { isAlias } from './is-alias';
 
 describe('isAlias', () => {
+  it('should return false for undefined', () => {
+    expect(isAlias(undefined)).toBe(false);
+  });
+
+  it('should return false for null', () => {
+    expect(isAlias(null)).toBe(false);
+  });
+
+  it('should return false for number', () => {
+    expect(isAlias(1)).toBe(false);
+  });
+
+  it('should return false for boolean', () => {
+    expect(isAlias(true)).toBe(false);
+  });
+
   it('should return false for empty string', () => {
     expect(isAlias('')).toBe(false);
   });

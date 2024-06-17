@@ -5,5 +5,5 @@ export function getValue<T>(
   path: string,
   defaultValue?: T,
 ): T {
-  return get(object, path, defaultValue);
+  return get(object, path, defaultValue) as T;
 }

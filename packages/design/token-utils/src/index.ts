@@ -1,1 +1,3 @@
-export * from './get-value';
+export * from './flatten-composite.js';
+export * from './get-value.js';
+export * from './is-alias.js';
