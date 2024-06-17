@@ -1,6 +1,4 @@
-function isObject(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === 'object';
-}
+import { isObject } from './types.js';
 
 export function isAlias(value: unknown) {
   const regex = /{([^}]+)}/g;

@@ -295,4 +295,79 @@ describe('figmaFormatter', () => {
       },
     });
   });
+
+  it('should convert composite types to nested Figma groups with aliases', async () => {
+    const formatted = await formatObject({
+      tokens: {
+        primitive: {
+          typography: {
+            '2xs': {
+              type: 'typography',
+              value: {
+                fontFamily: '{primitive.font.family.primary}',
+                fontSize: '{primitive.font.size.300}',
+                fontWeight: '{primitive.font.weight.400}',
+                lineHeight: '{primitive.font.lineHeight.1000}',
+              },
+            },
+          },
+        },
+        semantic: {
+          heading: {
+            main: {
+              type: 'typography',
+              value: '{primitive.typography.2xs}',
+            },
+          },
+        },
+      },
+    });
+
+    expect(formatted).toEqual({
+      primitive: {
+        typography: {
+          '2xs': {
+            fontFamily: {
+              $type: 'string',
+              $value: '{font.family.primary}',
+            },
+            fontSize: {
+              $type: 'number',
+              $value: '{font.size.300}',
+            },
+            fontWeight: {
+              $type: 'number',
+              $value: '{font.weight.400}',
+            },
+            lineHeight: {
+              $type: 'string',
+              $value: '{font.lineHeight.1000}',
+            },
+          },
+        },
+      },
+      semantic: {
+        heading: {
+          main: {
+            fontFamily: {
+              $type: 'string',
+              $value: '{typography.2xs.fontFamily}',
+            },
+            fontSize: {
+              $type: 'number',
+              $value: '{typography.2xs.fontSize}',
+            },
+            fontWeight: {
+              $type: 'number',
+              $value: '{typography.2xs.fontWeight}',
+            },
+            lineHeight: {
+              $type: 'string',
+              $value: '{typography.2xs.lineHeight}',
+            },
+          },
+        },
+      },
+    });
+  });
 });

@@ -1,9 +1,13 @@
 import get from 'lodash/get.js';
 
-export function getValue<T>(
-  object: Record<string, unknown>,
-  path: string,
-  defaultValue?: T,
-): T {
-  return get(object, path, defaultValue) as T;
+export function getValue<T>({
+  value,
+  path,
+  defaultValue,
+}: {
+  value: Record<string, unknown>;
+  path: string;
+  defaultValue?: T;
+}): T {
+  return get(value, path, defaultValue) as T;
 }

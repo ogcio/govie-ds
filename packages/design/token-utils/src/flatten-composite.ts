@@ -1,14 +1,5 @@
 import { objectKeys } from 'ts-extras';
-
-export type Token = {
-  $type: string;
-  $value: unknown;
-};
-
-export type CompositeToken = {
-  $type: string;
-  $value: Record<string, unknown>;
-};
+import { CompositeToken, Token } from './types.js';
 
 export function flattenComposite({
   value,

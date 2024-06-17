@@ -26,6 +26,7 @@
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:^",
     "@govie-ds/prettier-config": "workspace:^",
+    "@govie-ds/token-utils": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/color": "^3.0.6",
     "@types/lodash": "^4.17.4",
