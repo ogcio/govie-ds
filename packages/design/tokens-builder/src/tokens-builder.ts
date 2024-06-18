@@ -246,7 +246,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
 
   styleDictionary.registerFileHeader({
     name: 'auto-generated',
-    fileHeader: function () {
+    fileHeader() {
       return ['This file was auto-generated.'];
     },
   });
@@ -255,7 +255,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'name/remove-tier-kebab',
     type: 'name',
-    filter: function () {
+    filter() {
       return true;
     },
     transform: createRemoveTierTransformer({ format: 'kebab' }),
@@ -264,7 +264,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'name/remove-tier-pascal',
     type: 'name',
-    filter: function () {
+    filter() {
       return true;
     },
     transform: createRemoveTierTransformer({ format: 'pascal' }),
@@ -273,10 +273,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'lineHeight/percentage',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'lineHeight';
     },
-    transform: function (token) {
+    transform(token) {
       const percent = Math.round(token.$value * 100);
       return `${percent}%`;
     },
@@ -285,10 +285,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'letterSpacing/em',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'letterSpacing';
     },
-    transform: function (token) {
+    transform(token) {
       const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed}em`;
     },
@@ -297,10 +297,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'letterSpacing/percentage',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'letterSpacing';
     },
-    transform: function (token) {
+    transform(token) {
       const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed * 100}%`;
     },
