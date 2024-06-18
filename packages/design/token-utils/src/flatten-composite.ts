@@ -9,19 +9,19 @@ export function flattenComposite({
   resolveType: (key: string) => string | undefined;
 }): Record<string, Token> {
   return objectKeys(value.$value).reduce(
-    (acc, key) => {
+    (accumulator, key) => {
       const type = resolveType(key);
 
       if (type == null) {
         throw new Error(`No type defined composite value key '${key}'.`);
       }
 
-      acc[key] = {
+      accumulator[key] = {
         $type: type,
         $value: value.$value[key],
       };
 
-      return acc;
+      return accumulator;
     },
     {} as Record<string, Token>,
   );

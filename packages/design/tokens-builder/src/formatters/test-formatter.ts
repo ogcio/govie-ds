@@ -46,7 +46,7 @@ function toTransformedToken(token: TestToken): TransformedToken {
 export function testFormatter({
   formatter,
 }: {
-  formatter: (args: FormatFnArguments) => Promise<string>;
+  formatter: (formatArguments: FormatFnArguments) => Promise<string>;
 }) {
   const fileName = 'file.ts';
 
@@ -119,13 +119,13 @@ export function testFormatter({
     const formatted = await format({ tokens, allTokens, options });
     const header = await fileHeader({ file: { destination: fileName } });
 
-    let obj = formatted.replace(header, '').replace(';', '');
+    let value = formatted.replace(header, '').replace(';', '');
 
     if (exportName) {
-      obj = obj.replace(`export const ${exportName} = `, '');
+      value = value.replace(`export const ${exportName} = `, '');
     }
 
-    return JSON.parse(obj.trim());
+    return JSON.parse(value.trim());
   }
 
   return {

@@ -3,28 +3,28 @@ import { config } from '../config';
 
 export function getAll() {
   if (!config.showDrafts()) {
-    return allDocs.filter((doc) => !doc.draft);
+    return allDocs.filter((document) => !document.draft);
   }
 
   return allDocs;
 }
 
 export function getById({ id }: { id: string }) {
-  const doc = allDocs.find((doc) => doc.id === id);
+  const document = allDocs.find((document) => document.id === id);
 
-  if (!config.showDrafts() && doc?.draft) {
-    return undefined;
+  if (!config.showDrafts() && document?.draft) {
+    return;
   }
 
-  return doc;
+  return document;
 }
 
 export function getBySlug({ slug }: { slug: string[] }) {
-  const doc = allDocs.find((doc) => doc.slug === slug.join('/'));
+  const document = allDocs.find((document) => document.slug === slug.join('/'));
 
-  if (!config.showDrafts() && doc?.draft) {
-    return undefined;
+  if (!config.showDrafts() && document?.draft) {
+    return;
   }
 
-  return doc;
+  return document;
 }

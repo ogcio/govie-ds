@@ -21,9 +21,9 @@ export function getDocumentDetails(path: string) {
 
   return {
     id: path,
-    order: pathParts[pathParts.length - 1].order, // === 2 ? pathParts[1].order : pathParts[2].order,
+    order: pathParts.at(-1)?.order,
     slug:
-      pathParts[pathParts.length - 1].id === 'index'
+      pathParts.at(-1)?.id === 'index'
         ? pathParts[0].id
         : pathParts.map((part) => part.id).join('/'),
   };

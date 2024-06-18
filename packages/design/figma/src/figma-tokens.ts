@@ -19,7 +19,7 @@ export async function buildFigmaTokens({
     },
   });
 
-  const govieTokensLight = await readJson(`${outputFolder}/default.json`);
+  const govieTokensLight = await readJson<any>(`${outputFolder}/default.json`);
 
   await writeJson({
     outputFolder,
@@ -46,7 +46,9 @@ export async function buildFigmaTokens({
     },
   });
 
-  const hseTokensLight = await readJson(`${outputFolder}/alternative.json`);
+  const hseTokensLight = await readJson<any>(
+    `${outputFolder}/alternative.json`,
+  );
 
   await writeJson({
     outputFolder,

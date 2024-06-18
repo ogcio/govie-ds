@@ -43,19 +43,24 @@ export async function buildFigmaTokensFlat({
     outputFolder,
     manifest: {
       name: 'web',
-      collections: Object.keys(collections).reduce((acc, collectionKey) => {
-        const collection = collections[collectionKey];
-        acc[collectionKey] = {
-          modes: Object.keys(collection.modes).reduce(
-            (acc, modeKey) => {
-              acc[modeKey] = [collection.modes[modeKey].outputFilename];
-              return acc;
-            },
-            {} as { [key: string]: string[] },
-          ),
-        };
-        return acc;
-      }, {} as FigmaManifestCollection),
+      collections: Object.keys(collections).reduce(
+        (accumulator, collectionKey) => {
+          const collection = collections[collectionKey];
+          accumulator[collectionKey] = {
+            modes: Object.keys(collection.modes).reduce(
+              (accumulator_, modeKey) => {
+                accumulator_[modeKey] = [
+                  collection.modes[modeKey].outputFilename,
+                ];
+                return accumulator_;
+              },
+              {} as { [key: string]: string[] },
+            ),
+          };
+          return accumulator;
+        },
+        {} as FigmaManifestCollection,
+      ),
     },
   });
 }

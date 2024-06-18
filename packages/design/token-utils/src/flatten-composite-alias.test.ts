@@ -16,14 +16,18 @@ describe('flattenCompositeAlias', () => {
         },
         resolveType: (key) => {
           switch (key) {
-            case 'fontFamily':
+            case 'fontFamily': {
               return 'string';
-            case 'fontSize':
+            }
+            case 'fontSize': {
               return 'string';
-            case 'fontWeight':
+            }
+            case 'fontWeight': {
               return 'number';
-            case 'lineHeight':
+            }
+            case 'lineHeight': {
               return 'string';
+            }
           }
         },
       }),
