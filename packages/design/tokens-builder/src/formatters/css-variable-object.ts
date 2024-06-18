@@ -34,10 +34,10 @@ export async function cssVariableObjectFormatter({
   const cssVariablesObject = cloneDeepWith(dictionary.tokens, (value) => {
     if (isTransformedToken(value)) {
       const cssVariable = formatter(value);
-      return `var(${cssVariable.substring(0, cssVariable.indexOf(':')).trim()})`;
+      return `var(${cssVariable.slice(0, Math.max(0, cssVariable.indexOf(':'))).trim()})`;
     }
 
-    return undefined;
+    return;
   });
 
   const cssVariablesObjectString = JSON.stringify(cssVariablesObject, null, 2);

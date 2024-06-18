@@ -41,6 +41,7 @@ describe('flattenComposite', () => {
             lineHeight: '{primitive.font.lineHeight.1000}',
           },
         },
+        // eslint-disable-next-line unicorn/no-useless-undefined
         resolveType: () => undefined,
       }),
     ).toThrowError(`No type defined composite value key 'fontFamily'.`);
@@ -60,14 +61,18 @@ describe('flattenComposite', () => {
         },
         resolveType: (key) => {
           switch (key) {
-            case 'fontFamily':
+            case 'fontFamily': {
               return 'string';
-            case 'fontSize':
+            }
+            case 'fontSize': {
               return 'number';
-            case 'fontWeight':
+            }
+            case 'fontWeight': {
               return 'number';
-            case 'lineHeight':
+            }
+            case 'lineHeight': {
               return 'number';
+            }
           }
         },
       }),

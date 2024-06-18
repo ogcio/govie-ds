@@ -19,10 +19,8 @@ type TokenCollection = Record<string, unknown>; // TODO: type
 function stripReferenceTiers(tokens: TokenCollection) {
   return cloneDeepWith(tokens, (value) => {
     if (typeof value === 'string' && value.startsWith('{')) {
-      return value.replace(/{(primitive|semantic|component)\./g, '{');
+      return value.replaceAll(/{(primitive|semantic|component)\./g, '{');
     }
-
-    return undefined;
   });
 }
 
@@ -32,8 +30,6 @@ function toDimension(tokens: TokenCollection) {
     if (value === 'fontWeight') {
       return 'dimension';
     }
-
-    return undefined;
   });
 }
 
@@ -46,8 +42,6 @@ function toString(tokens: TokenCollection) {
     ) {
       return 'string';
     }
-
-    return undefined;
   });
 }
 
@@ -65,8 +59,6 @@ function percentageToString(tokens: TokenCollection) {
 
       return value;
     }
-
-    return undefined;
   });
 }
 
@@ -110,8 +102,6 @@ function toGroups(tokens: TokenCollection) {
         });
       }
     }
-
-    return undefined;
   });
 }
 

@@ -2,6 +2,7 @@ import { isAlias } from './is-alias.js';
 
 describe('isAlias', () => {
   it('should return false for undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isAlias(undefined)).toBe(false);
   });
 

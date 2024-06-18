@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+import { promises as fs } from 'node:fs';
 import { buildTokens } from '@govie-ds/tokens-builder';
 import { meta } from '@govie-ds/tokens';
 import { zodToJsonSchema } from 'zod-to-json-schema';
@@ -150,7 +150,7 @@ export async function buildTheme({
     },
   });
 
-  const lightCss = await fs.readFile(`${outputFolderCss}/light.css`, 'utf-8');
+  const lightCss = await fs.readFile(`${outputFolderCss}/light.css`, 'utf8');
 
   const lightCssRoot = lightCss.replace(
     `[data-theme="${themeId}-light"]`,

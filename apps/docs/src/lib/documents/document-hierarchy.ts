@@ -3,7 +3,11 @@ import { getSegmentDetails } from './document-details';
 
 function sortHierarchyByOrder(hierarchy: DocumentHierarchy): DocumentHierarchy {
   hierarchy.children.sort((a, b) => a.order - b.order);
-  hierarchy.children.forEach((child) => sortHierarchyByOrder(child));
+
+  for (const child of hierarchy.children) {
+    sortHierarchyByOrder(child);
+  }
+
   return hierarchy;
 }
 
@@ -36,8 +40,8 @@ function getDocumentHierarchyInternal(
     }
 
     let parent = hierarchy;
-    for (let i = 0; i < parts.length; i++) {
-      const part = parts[i];
+    for (let index = 0; index < parts.length; index++) {
+      const part = parts[index];
 
       const id = parent.id
         ? `${parent.id}/${part.order}-${part.id}`
@@ -52,7 +56,7 @@ function getDocumentHierarchyInternal(
           id,
           order: part.order,
           slug: parts
-            .slice(0, i + 1)
+            .slice(0, index + 1)
             .map((p) => p.id)
             .join('/'),
           children: [],
