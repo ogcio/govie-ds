@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import { ResizableIFrame } from './resizable-iframe';
 import { LatoFont } from './lato-font';
+import { ResizableIFrame } from './resizable-iframe';
 
 export function Responsive({
   title,

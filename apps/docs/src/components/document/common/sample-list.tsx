@@ -1,6 +1,6 @@
+import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
 import { TokenName } from './token-name';
-import { Fragment } from 'react';
 
 export type SampleToken<TValue> = {
   name: string;

@@ -1,6 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useState, useEffect } from 'react';
 
 export function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -16,7 +16,7 @@ export function ThemeSwitch() {
   }
 
   return (
-    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+    <select value={theme} onChange={(event) => setTheme(event.target.value)}>
       <option value="govie-light">Gov.ie Light</option>
       <option value="govie-dark">Gov.ie Dark</option>
       <option value="hse-light">HSE Light</option>

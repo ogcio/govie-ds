@@ -1,3 +1,1 @@
-import { eslintConfig } from '@govie-ds/eslint-config';
-
-export default [...eslintConfig];
+export { eslintConfig as default } from '@govie-ds/eslint-config';

@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { Container } from './container';
 import footerImage from '../../../public/logotype.png';
 import { OglLogo } from '../logos/ogl-logo';
+import { Container } from './container';
 
 export function Footer() {
   return (

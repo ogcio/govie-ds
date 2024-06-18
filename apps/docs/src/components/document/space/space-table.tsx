@@ -1,8 +1,8 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList, SampleToken } from '../common/sample-list';
-import { TokenValue } from '../common/token-value';
 import { orderBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
+import { SampleList, SampleToken } from '../common/sample-list';
+import { TokenValue } from '../common/token-value';
 
 function sortSpaces(
   spaces: Record<string, { $type: string; $value: string }>,

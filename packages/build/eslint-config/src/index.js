@@ -1,17 +1,15 @@
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
-// import * as eslintrc from '@eslint/eslintrc';
 import globals from 'globals';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-
 import { fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslintJs from '@eslint/js';
-// import eslintTs from 'typescript-eslint';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// const project = '../tsconfig.json';
+// eslint-plugin-import does not currently support eslint flat config
+// See https://github.com/import-js/eslint-plugin-import/issues/2948#issuecomment-2148832701
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -38,10 +36,7 @@ export const eslintConfig = [
   ...compat.extends('plugin:import/typescript'),
   {
     languageOptions: {
-      parserOptions: {
-        // project: path.resolve(__dirname, project),
-        // tsconfigRootDir: import.meta.dirname,
-      },
+      parserOptions: {},
     },
     settings: {
       'import/parsers': {
@@ -50,7 +45,7 @@ export const eslintConfig = [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: {}, // path.resolve(__dirname, project),
+          project: {},
         },
       },
     },
@@ -69,6 +64,18 @@ export const eslintConfig = [
       ],
       'unicorn/no-null': 'off',
       'unicorn/no-array-reduce': 'warn',
+      'unicorn/prevent-abbreviations': [
+        'error',
+        {
+          replacements: {
+            prop: false,
+            props: false,
+            ref: false,
+            refs: false,
+          },
+          ignore: ['generateStaticParams'],
+        },
+      ],
     },
   },
 ];

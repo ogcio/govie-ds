@@ -35,8 +35,9 @@ export function IFrame({
 
     const linkElements = window.parent.document.querySelectorAll(styleSelector);
 
+    // eslint-disable-next-line unicorn/no-array-for-each
     linkElements.forEach((linkElement) => {
-      window.document.head.appendChild(linkElement);
+      window.document.head.append(linkElement);
     });
   }, [contentRef, styleSelector]);
 

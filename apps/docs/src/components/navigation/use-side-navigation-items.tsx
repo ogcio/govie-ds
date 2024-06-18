@@ -1,11 +1,11 @@
 import camelcase from 'camelcase';
-import * as documents from '@/lib/documents/documents';
+import { usePathname } from 'next/navigation';
 import { SideNavigationItem } from '@/components/navigation/side-navigation';
 import {
   DocumentHierarchy,
   getDocumentHierarchy,
 } from '@/lib/documents/document-hierarchy';
-import { usePathname } from 'next/navigation';
+import * as documents from '@/lib/documents/documents';
 
 function toSideNavigationItem({
   slug,

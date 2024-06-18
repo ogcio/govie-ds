@@ -1,29 +1,29 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { Heading } from '../../typography/heading';
-import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { BorderRadiusTable } from '../border/border-radius-table';
+import { BorderWidthTable } from '../border/border-width-table';
+import { OpacityTable } from '../opacity/opacity-table';
+import { ScreenSizeTable } from '../screen-size/screen-size-table';
+import { ShadowTable } from '../shadow/shadow-table';
+import { SpaceTable } from '../space/space-table';
 import { FontFamilyTable } from '../typography/font-family-table';
 import { FontSizeTable } from '../typography/font-size-table';
 import { FontWeightTable } from '../typography/font-weight-table';
-import { LineHeightTable } from '../typography/line-height-table';
 import { LetterSpacingTable } from '../typography/letter-spacing-table';
-import {
-  TypographyHeadingTable,
-  TypographyTextTable,
-} from '../typography/typography-table';
+import { LineHeightTable } from '../typography/line-height-table';
 import {
   HeadingResponsiveSizes,
   DisplayResponsiveSizes,
 } from '../typography/responsive-sizes';
 import { TypographyResponsive } from '../typography/typography-responsive';
-import { ScreenSizeTable } from '../screen-size/screen-size-table';
-import { SpaceTable } from '../space/space-table';
-import { BorderWidthTable } from '../border/border-width-table';
-import { BorderRadiusTable } from '../border/border-radius-table';
-import { ShadowTable } from '../shadow/shadow-table';
-import { OpacityTable } from '../opacity/opacity-table';
+import {
+  TypographyHeadingTable,
+  TypographyTextTable,
+} from '../typography/typography-table';
 import { ZIndexTable } from '../z-index/z-index-table';
-import { cn } from '@/lib/cn';
+import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Text } from '@/components/typography/text';
+import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
