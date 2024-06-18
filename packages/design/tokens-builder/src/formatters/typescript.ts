@@ -1,6 +1,6 @@
+import { FormatFnArguments } from 'style-dictionary/types';
 import { fileHeader } from 'style-dictionary/utils';
 import { minifyDictionary } from './minify-dictionary.js';
-import { FormatFnArguments } from 'style-dictionary/types';
 
 export async function typeScriptFormatter({
   dictionary,

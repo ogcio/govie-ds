@@ -1,7 +1,7 @@
-import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
-import { FormatFnArguments } from 'style-dictionary/types';
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
 import { TransformedToken } from 'style-dictionary';
+import { FormatFnArguments } from 'style-dictionary/types';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 function isTransformedToken(value: unknown): value is TransformedToken {
   return (

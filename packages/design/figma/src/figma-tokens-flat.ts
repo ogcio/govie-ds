@@ -1,10 +1,10 @@
 import { buildTokens } from '@govie-ds/tokens-builder';
-import { createManifest } from './manifest.js';
 import {
   FigmaManifestCollection,
   FigmaTokenCollections,
   FigmaTokenModes,
 } from './figma-types.js';
+import { createManifest } from './manifest.js';
 
 export async function buildFigmaModes({
   modes,

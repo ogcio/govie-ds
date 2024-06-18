@@ -4,15 +4,69 @@ import tseslint from 'typescript-eslint';
 import globals from 'globals';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
+import { fixupPluginRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import eslintJs from '@eslint/js';
+// import eslintTs from 'typescript-eslint';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// const project = '../tsconfig.json';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: eslintJs.configs.recommended,
+});
+
+function legacyPlugin(name, alias = name) {
+  const plugin = compat.plugins(name)[0]?.plugins?.[alias];
+
+  if (!plugin) {
+    throw new Error(`Unable to resolve plugin ${name} and/or alias ${alias}`);
+  }
+
+  return fixupPluginRules(plugin);
+}
+
 export const eslintConfig = [
   { languageOptions: { globals: globals.browser } }, // { globals: eslintrc.Legacy.environments.get('es2024') } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginUnicorn.configs['flat/recommended'],
+  ...compat.extends('plugin:import/typescript'),
   {
+    languageOptions: {
+      parserOptions: {
+        // project: path.resolve(__dirname, project),
+        // tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: {}, // path.resolve(__dirname, project),
+        },
+      },
+    },
+    plugins: { import: legacyPlugin('eslint-plugin-import', 'import') },
     rules: {
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
+      'import/no-unresolved': 'off',
+      'import/order': [
+        'error',
+        {
+          alphabetize: {
+            order: 'asc',
+          },
+        },
+      ],
       'unicorn/no-null': 'off',
       'unicorn/no-array-reduce': 'warn',
     },

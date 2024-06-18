@@ -1,5 +1,5 @@
-import { allDocs } from 'contentlayer/generated';
 import { config } from '../config';
+import { allDocs } from 'contentlayer/generated';
 
 export function getAll() {
   if (!config.showDrafts()) {

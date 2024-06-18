@@ -1,5 +1,5 @@
-import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import { FormatFnArguments } from 'style-dictionary/types';
+import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 import { getTokens } from './typescript-consts.js';
 
 export async function cssVariableConstsFormatter({

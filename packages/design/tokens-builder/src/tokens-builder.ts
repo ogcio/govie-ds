@@ -1,12 +1,12 @@
-import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
-import { typeScriptFormatter } from './formatters/typescript.js';
-import { Config } from 'style-dictionary/types';
 import camelCase from 'camelcase';
-import { dtcgFormatter } from './formatters/dtcg.js';
-import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
-import { figmaFormatter } from './formatters/figma.js';
+import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
+import { Config } from 'style-dictionary/types';
 import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
 import { cssVariableObjectFormatter } from './formatters/css-variable-object.js';
+import { dtcgFormatter } from './formatters/dtcg.js';
+import { figmaFormatter } from './formatters/figma.js';
+import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
+import { typeScriptFormatter } from './formatters/typescript.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
