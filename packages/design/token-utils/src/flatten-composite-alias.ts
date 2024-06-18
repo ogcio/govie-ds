@@ -1,6 +1,6 @@
 import { objectKeys } from 'ts-extras';
-import { CompositeToken, Token } from './types.js';
 import { aliasJoin } from './alias-join.js';
+import { CompositeToken, Token } from './types.js';
 
 export function flattenCompositeAlias({
   alias,

@@ -1,10 +1,10 @@
 import { meta } from '@govie-ds/tokens';
+import { groupBy } from 'lodash';
+import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
 import { TokenAlias } from '../common/token-alias';
-import { groupBy } from 'lodash';
-import { TypographyValueComposite } from './typography-value-composite';
-import { Fragment } from 'react';
 import { TokenName } from '../common/token-name';
+import { TypographyValueComposite } from './typography-value-composite';
 
 type TypographyScreenAlias = {
   name: string;
@@ -36,10 +36,11 @@ function getTypographyValue(
   screenSize: keyof typeof meta.light.resolved.semantic.typography,
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default,
 ) {
-  if (Object.hasOwn(typography, screenSize)) {
-    if (Object.hasOwn(typography[screenSize], tokenName)) {
-      return typography[screenSize][tokenName];
-    }
+  if (
+    Object.hasOwn(typography, screenSize) &&
+    Object.hasOwn(typography[screenSize], tokenName)
+  ) {
+    return typography[screenSize][tokenName];
   }
 
   if (Object.hasOwn(typography, 'default')) {

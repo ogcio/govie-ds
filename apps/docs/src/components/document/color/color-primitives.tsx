@@ -1,7 +1,7 @@
 import { meta as govieMeta } from '@govie-ds/theme-govie';
+import camelcase from 'camelcase';
 import { objectKeys } from 'ts-extras';
 import { SwatchSets } from './swatch-sets';
-import camelcase from 'camelcase';
 
 type Token = {
   $type: string;
@@ -17,7 +17,7 @@ function dtcgToSet(
   }));
 }
 
-export function ColorPrimitives({}) {
+export function ColorPrimitives() {
   const sets = objectKeys(govieMeta.light.resolved.primitive.color).map(
     (key) => ({
       name: camelcase(key, { pascalCase: true }),

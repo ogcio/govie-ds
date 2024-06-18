@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/cn';
+import * as React from 'react';
 import { CloseIcon } from '../icons/close-icon';
+import { cn } from '@/lib/cn';
 
 const Sheet = SheetPrimitive.Root;
 

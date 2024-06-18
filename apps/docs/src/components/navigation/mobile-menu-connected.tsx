@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useSideNavigationItems } from '@/components/navigation/use-side-navigation-items';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from './sheet';
-import { useMainMenuItems } from './use-main-menu-items';
 import { SideNavigation } from './side-navigation';
+import { useMainMenuItems } from './use-main-menu-items';
+import { useSideNavigationItems } from '@/components/navigation/use-side-navigation-items';
 
 export function MobileMenuConnected({
   isOpen,

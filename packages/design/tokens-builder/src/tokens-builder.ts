@@ -1,12 +1,12 @@
-import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
-import { typeScriptFormatter } from './formatters/typescript.js';
-import { Config } from 'style-dictionary/types';
 import camelCase from 'camelcase';
-import { dtcgFormatter } from './formatters/dtcg.js';
-import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
-import { figmaFormatter } from './formatters/figma.js';
+import StyleDictionary, { PlatformConfig, Token } from 'style-dictionary';
+import { Config } from 'style-dictionary/types';
 import { cssVariableConstsFormatter } from './formatters/css-variable-consts.js';
 import { cssVariableObjectFormatter } from './formatters/css-variable-object.js';
+import { dtcgFormatter } from './formatters/dtcg.js';
+import { figmaFormatter } from './formatters/figma.js';
+import { typeScriptConstsFormatter } from './formatters/typescript-consts.js';
+import { typeScriptFormatter } from './formatters/typescript.js';
 
 // TODO: review collection of platforms to support more than one instance of the same platform
 export type TokenBuilderPlatformConfig = {
@@ -246,7 +246,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
 
   styleDictionary.registerFileHeader({
     name: 'auto-generated',
-    fileHeader: function () {
+    fileHeader() {
       return ['This file was auto-generated.'];
     },
   });
@@ -255,7 +255,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'name/remove-tier-kebab',
     type: 'name',
-    filter: function () {
+    filter() {
       return true;
     },
     transform: createRemoveTierTransformer({ format: 'kebab' }),
@@ -264,7 +264,7 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'name/remove-tier-pascal',
     type: 'name',
-    filter: function () {
+    filter() {
       return true;
     },
     transform: createRemoveTierTransformer({ format: 'pascal' }),
@@ -273,10 +273,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'lineHeight/percentage',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'lineHeight';
     },
-    transform: function (token) {
+    transform(token) {
       const percent = Math.round(token.$value * 100);
       return `${percent}%`;
     },
@@ -285,10 +285,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'letterSpacing/em',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'letterSpacing';
     },
-    transform: function (token) {
+    transform(token) {
       const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed}em`;
     },
@@ -297,10 +297,10 @@ async function build({ source, tokens, platforms }: TokenBuilderOptions) {
   styleDictionary.registerTransform({
     name: 'letterSpacing/percentage',
     type: 'value',
-    filter: function (token) {
+    filter(token) {
       return token.attributes?.item === 'letterSpacing';
     },
-    transform: function (token) {
+    transform(token) {
       const parsed = Number(token.$value.replace('rem', ''));
       return `${parsed * 100}%`;
     },

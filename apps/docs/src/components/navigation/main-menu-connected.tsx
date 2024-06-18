@@ -1,7 +1,7 @@
 'use client';
 
-import { MainMenu } from './main-menu';
 import { Container } from '../chrome/container';
+import { MainMenu } from './main-menu';
 import { useMainMenuItems } from './use-main-menu-items';
 
 export function MainMenuConnected() {

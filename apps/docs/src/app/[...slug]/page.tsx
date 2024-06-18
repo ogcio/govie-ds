@@ -1,16 +1,16 @@
 import { notFound } from 'next/navigation';
-import { Mdx } from '@/components/document/common/mdx';
-import * as documents from '@/lib/documents/documents';
 import { DocumentStatus } from '@/components/document/common/document-status';
 import { Draft } from '@/components/document/common/draft';
+import { Mdx } from '@/components/document/common/mdx';
+import * as documents from '@/lib/documents/documents';
 
-type DocPageProps = {
+type DocumentPageProps = {
   params: {
     slug: string[];
   };
 };
 
-export default function DocPage({ params }: DocPageProps) {
+export default function DocumentPage({ params }: DocumentPageProps) {
   const document = documents.getBySlug({ slug: params.slug });
 
   if (!document) {
@@ -20,11 +20,11 @@ export default function DocPage({ params }: DocPageProps) {
   return (
     <section className="flex flex-col gap-2xl grow">
       <div className="flex justify-between items-center">
-        {document.status !== 'stable' ? (
+        {document.status === 'stable' ? null : (
           <div>
             <DocumentStatus status={document.status} />
           </div>
-        ) : null}
+        )}
         {document.draft ? <Draft /> : null}
       </div>
       {document.status !== 'coming-soon' || document.draft ? (

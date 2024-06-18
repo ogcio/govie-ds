@@ -1,7 +1,7 @@
-import { Token } from 'style-dictionary';
-import { fileHeader } from 'style-dictionary/utils';
-import { FormatFnArguments, TransformedToken } from 'style-dictionary/types';
 import camelCase from 'camelcase';
+import { Token } from 'style-dictionary';
+import { FormatFnArguments, TransformedToken } from 'style-dictionary/types';
+import { fileHeader } from 'style-dictionary/utils';
 
 export function getTokens({
   tokens,

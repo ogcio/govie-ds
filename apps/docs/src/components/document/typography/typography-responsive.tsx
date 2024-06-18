@@ -1,5 +1,5 @@
-import { Prose } from '@/components/typography/prose';
 import { Responsive } from './responsive';
+import { Prose } from '@/components/typography/prose';
 
 export function TypographyResponsive() {
   return (

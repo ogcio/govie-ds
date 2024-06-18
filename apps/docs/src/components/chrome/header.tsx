@@ -1,6 +1,6 @@
-import { Container } from './container';
-import { Logo } from '../logos/logo';
 import { MenuIcon } from '../icons/menu-icon';
+import { Logo } from '../logos/logo';
+import { Container } from './container';
 import { config } from '@/lib/config';
 
 export type HeaderProps = {

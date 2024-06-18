@@ -1,5 +1,3 @@
-import { minifyDictionary } from './minify-dictionary.js';
-import { FormatFnArguments } from 'style-dictionary/types';
 import {
   isAlias,
   flattenComposite,
@@ -8,8 +6,10 @@ import {
   isCompositeToken,
   aliasToPath,
 } from '@govie-ds/token-utils';
-import flow from 'lodash/fp/flow.js';
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
+import flow from 'lodash/fp/flow.js';
+import { FormatFnArguments } from 'style-dictionary/types';
+import { minifyDictionary } from './minify-dictionary.js';
 
 type FigmaType = 'color' | 'number' | 'string' | 'boolean';
 

@@ -8,11 +8,15 @@ pnpm add -D eslint @govie-ds/eslint-config
 
 ```json
 "scripts": {
-    "lint": "eslint 'src/**/*.ts'"
+    "lint": "eslint 'src/**/*.{ts,tsx}'"
 }
 ```
 
 #### eslint.config.js
+
+```javascript
+export { eslintConfig as default } from '@govie-ds/eslint-config';
+```
 
 ```javascript
 import { eslintConfig } from '@govie-ds/eslint-config';

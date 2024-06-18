@@ -1,8 +1,8 @@
 import { meta as govieMeta } from '@govie-ds/theme-govie';
 import { meta as hseMeta } from '@govie-ds/theme-hse';
 import { buildTokens } from '@govie-ds/tokens-builder';
-import { createManifest } from '../src/manifest.js';
 import { readJson, writeJson } from '../src/json.js';
+import { createManifest } from '../src/manifest.js';
 
 export async function buildFigmaTokens({
   outputFolder,

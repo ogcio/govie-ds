@@ -1,9 +1,9 @@
 'use client';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Header } from './header';
 import { MainMenuConnected } from '../navigation/main-menu-connected';
 import { MobileMenuConnected } from '../navigation/mobile-menu-connected';
-import { usePathname } from 'next/navigation';
+import { Header } from './header';
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
