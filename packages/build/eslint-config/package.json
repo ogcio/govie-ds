@@ -6,8 +6,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "format": "prettier 'src/**/*.ts' --write",
-    "format:check": "prettier 'src/**/*.ts' --check"
+    "format": "prettier 'src/**/*.js' --write",
+    "format:check": "prettier 'src/**/*.js' --check"
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
