@@ -14,7 +14,7 @@ function createFontSchema(name: string) {
   });
 }
 
-function createTypographyScaleSchema(name: string) {
+function createHeadingTypescaleSchema(name: string) {
   return z
     .object(
       {
@@ -29,6 +29,7 @@ function createTypographyScaleSchema(name: string) {
         '4xl': createFontSchema('4xl'),
         '5xl': createFontSchema('5xl'),
         '6xl': createFontSchema('6xl'),
+        '7xl': createFontSchema('7xl'),
       },
       {
         required_error: `${name} is required.`,
@@ -37,12 +38,22 @@ function createTypographyScaleSchema(name: string) {
     .strict();
 }
 
+function createTextTypescaleSchema(name: string) {
+  return z.object({
+    xs: createFontSchema('xs'),
+    sm: createFontSchema('sm'),
+    md: createFontSchema('md'),
+    lg: createFontSchema('lg'),
+    xl: createFontSchema('xl'),
+  });
+}
+
 export const typographySchema = z
 
   .object(
     {
-      heading: createTypographyScaleSchema('regular'),
-      text: createTypographyScaleSchema('text'),
+      heading: createHeadingTypescaleSchema('heading'),
+      text: createTextTypescaleSchema('text'),
     },
     {
       required_error: 'typography is required.',
