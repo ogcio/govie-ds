@@ -15,11 +15,11 @@ import {
   HeadingResponsiveSizes,
   DisplayResponsiveSizes,
 } from '../typography/responsive-sizes';
-import { TypographyResponsive } from '../typography/typography-responsive';
 import {
   TypeScaleHeadingTable,
   TypeScaleTextTable,
 } from '../typography/type-scale-table';
+import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Text } from '@/components/typography/text';

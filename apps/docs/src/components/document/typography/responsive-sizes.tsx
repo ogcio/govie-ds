@@ -1,11 +1,11 @@
 import { meta } from '@govie-ds/tokens';
+import kebabCase from 'kebab-case';
 import { groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
-import kebabCase from 'kebab-case';
 
 type TypographyScreenAlias = {
   name: string;
