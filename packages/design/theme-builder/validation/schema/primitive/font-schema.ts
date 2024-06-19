@@ -47,6 +47,7 @@ const fontSizeSchema = z
     '1100': createFontSizeSchema('1100'),
     '1200': createFontSizeSchema('1200'),
     '1300': createFontSizeSchema('1300'),
+    '1400': createFontSizeSchema('1400'),
   })
   .strict();
 
