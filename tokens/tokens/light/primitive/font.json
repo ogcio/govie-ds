@@ -33,10 +33,11 @@
         "700": { "$type": "dimension", "$value": "1.75rem" },
         "800": { "$type": "dimension", "$value": "2rem" },
         "900": { "$type": "dimension", "$value": "2.25rem" },
-        "1000": { "$type": "dimension", "$value": "3rem" },
-        "1100": { "$type": "dimension", "$value": "3.5rem" },
-        "1200": { "$type": "dimension", "$value": "4rem" },
-        "1300": { "$type": "dimension", "$value": "5rem" }
+        "1000": { "$type": "dimension", "$value": "2.5rem" },
+        "1100": { "$type": "dimension", "$value": "3rem" },
+        "1200": { "$type": "dimension", "$value": "3.5rem" },
+        "1300": { "$type": "dimension", "$value": "4rem" },
+        "1400": { "$type": "dimension", "$value": "5rem" }
       },
       "weight": {
         "100": { "$type": "fontWeight", "$value": 100 },
