@@ -5,6 +5,7 @@ import { objectKeys } from 'ts-extras';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
+import kebabCase from 'kebab-case';
 
 type TypographyScreenAlias = {
   name: string;
@@ -23,12 +24,14 @@ type TypographySize = {
 };
 
 function aliasToTokenName(alias: string) {
-  return alias
+  const parts = alias
     .replace('{primitive.', '')
     .replace('{semantic.', '')
     .replace('regular.', '')
     .replace('}', '')
-    .replaceAll('.', '/');
+    .split('.');
+
+  return parts.map((part) => kebabCase(part)).join('/');
 }
 
 function getTypographyValue(

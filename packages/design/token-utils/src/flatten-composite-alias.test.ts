@@ -4,7 +4,7 @@ describe('flattenCompositeAlias', () => {
   it('should return expected aliased values', () => {
     expect(
       flattenCompositeAlias({
-        alias: '{primitive.typescale.xs}',
+        alias: '{primitive.typeScale.xs}',
         aliasedValue: {
           $type: 'typography',
           $value: {
@@ -34,19 +34,19 @@ describe('flattenCompositeAlias', () => {
     ).toEqual({
       fontFamily: {
         $type: 'string',
-        $value: '{primitive.typescale.xs.fontFamily}',
+        $value: '{primitive.typeScale.xs.fontFamily}',
       },
       fontSize: {
         $type: 'string',
-        $value: '{primitive.typescale.xs.fontSize}',
+        $value: '{primitive.typeScale.xs.fontSize}',
       },
       fontWeight: {
         $type: 'number',
-        $value: '{primitive.typescale.xs.fontWeight}',
+        $value: '{primitive.typeScale.xs.fontWeight}',
       },
       lineHeight: {
         $type: 'string',
-        $value: '{primitive.typescale.xs.lineHeight}',
+        $value: '{primitive.typeScale.xs.lineHeight}',
       },
     });
   });

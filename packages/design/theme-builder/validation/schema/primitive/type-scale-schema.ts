@@ -14,7 +14,7 @@ function createFontSchema(name: string) {
   });
 }
 
-function createHeadingTypescaleSchema(name: string) {
+function createHeadingTypeScaleSchema(name: string) {
   return z
     .object(
       {
@@ -38,7 +38,7 @@ function createHeadingTypescaleSchema(name: string) {
     .strict();
 }
 
-function createTextTypescaleSchema(name: string) {
+function createTextTypeScaleSchema(name: string) {
   return z.object({
     xs: createFontSchema('xs'),
     sm: createFontSchema('sm'),
@@ -48,12 +48,12 @@ function createTextTypescaleSchema(name: string) {
   });
 }
 
-export const typescaleSchema = z
+export const typeScaleSchema = z
 
   .object(
     {
-      heading: createHeadingTypescaleSchema('heading'),
-      text: createTextTypescaleSchema('text'),
+      heading: createHeadingTypeScaleSchema('heading'),
+      text: createTextTypeScaleSchema('text'),
     },
     {
       required_error: 'typography is required.',

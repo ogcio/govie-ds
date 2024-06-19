@@ -316,7 +316,7 @@ describe('figmaFormatter', () => {
           heading: {
             main: {
               type: 'typography',
-              value: '{primitive.typescale.2xs}',
+              value: '{primitive.typeScale.2xs}',
             },
           },
         },

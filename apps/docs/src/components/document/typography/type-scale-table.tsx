@@ -10,11 +10,11 @@ type Font = {
   lineHeight: number;
 };
 
-function TypescaleTable({ type }: { type: 'heading' | 'text' }) {
+function TypeScaleTable({ type }: { type: 'heading' | 'text' }) {
   return (
     <SampleList<Font>
-      name={`typescale/${type}`}
-      tokens={toSampleTokens(meta.light.resolved.primitive.typescale[type])}
+      name={`type-scale/${type}`}
+      tokens={toSampleTokens(meta.light.resolved.primitive.typeScale[type])}
       renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
@@ -32,10 +32,10 @@ function TypescaleTable({ type }: { type: 'heading' | 'text' }) {
   );
 }
 
-export function TypescaleHeadingTable() {
-  return <TypescaleTable type="heading" />;
+export function TypeScaleHeadingTable() {
+  return <TypeScaleTable type="heading" />;
 }
 
-export function TypescaleTextTable() {
-  return <TypescaleTable type="text" />;
+export function TypeScaleTextTable() {
+  return <TypeScaleTable type="text" />;
 }

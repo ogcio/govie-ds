@@ -31,6 +31,7 @@
     "clsx": "^2.1.1",
     "color-convert": "^2.0.1",
     "contentlayer": "^0.3.4",
+    "kebab-case": "^1.0.2",
     "lodash": "^4.17.21",
     "next": "14.2.3",
     "next-contentlayer": "^0.3.4",

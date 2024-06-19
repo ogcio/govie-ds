@@ -1,6 +1,6 @@
 {
   "primitive": {
-    "typescale": {
+    "typeScale": {
       "heading": {
         "2xs": {
           "$type": "typography",
