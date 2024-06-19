@@ -5,59 +5,59 @@
         "display": {
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.5xl}"
+            "$value": "{primitive.typescale.heading.5xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.4xl}"
+            "$value": "{primitive.typescale.heading.4xl}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.3xl}"
+            "$value": "{primitive.typescale.heading.3xl}"
           }
         },
         "heading": {
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xl}"
+            "$value": "{primitive.typescale.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.lg}"
+            "$value": "{primitive.typescale.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.sm}"
+            "$value": "{primitive.typescale.heading.sm}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.xs}"
+            "$value": "{primitive.typescale.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xs}"
+            "$value": "{primitive.typescale.heading.2xs}"
           }
         },
         "text": {
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typography.text.xl}"
+            "$value": "{primitive.typescale.text.xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.text.lg}"
+            "$value": "{primitive.typescale.text.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.text.md}"
+            "$value": "{primitive.typescale.text.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.text.sm}"
+            "$value": "{primitive.typescale.text.sm}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.text.xs}"
+            "$value": "{primitive.typescale.text.xs}"
           }
         }
       },
@@ -65,37 +65,37 @@
         "heading": {
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xl}"
+            "$value": "{primitive.typescale.heading.2xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.lg}"
+            "$value": "{primitive.typescale.heading.lg}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.sm}"
+            "$value": "{primitive.typescale.heading.sm}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.xs}"
+            "$value": "{primitive.typescale.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xs}"
+            "$value": "{primitive.typescale.heading.2xs}"
           }
         },
         "display": {
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.5xl}"
+            "$value": "{primitive.typescale.heading.5xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.4xl}"
+            "$value": "{primitive.typescale.heading.4xl}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.3xl}"
+            "$value": "{primitive.typescale.heading.3xl}"
           }
         }
       },
@@ -103,37 +103,37 @@
         "heading": {
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.3xl}"
+            "$value": "{primitive.typescale.heading.3xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.xl}"
+            "$value": "{primitive.typescale.heading.xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.sm}"
+            "$value": "{primitive.typescale.heading.sm}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.xs}"
+            "$value": "{primitive.typescale.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xs}"
+            "$value": "{primitive.typescale.heading.2xs}"
           }
         },
         "display": {
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.6xl}"
+            "$value": "{primitive.typescale.heading.6xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.5xl}"
+            "$value": "{primitive.typescale.heading.5xl}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.4xl}"
+            "$value": "{primitive.typescale.heading.4xl}"
           }
         }
       },
@@ -141,37 +141,37 @@
         "heading": {
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.4xl}"
+            "$value": "{primitive.typescale.heading.4xl}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xl}"
+            "$value": "{primitive.typescale.heading.2xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.md}"
+            "$value": "{primitive.typescale.heading.md}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.xs}"
+            "$value": "{primitive.typescale.heading.xs}"
           },
           "xs": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.2xs}"
+            "$value": "{primitive.typescale.heading.2xs}"
           }
         },
         "display": {
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.7xl}"
+            "$value": "{primitive.typescale.heading.7xl}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.6xl}"
+            "$value": "{primitive.typescale.heading.6xl}"
           },
           "sm": {
             "$type": "typography",
-            "$value": "{primitive.typography.heading.5xl}"
+            "$value": "{primitive.typescale.heading.5xl}"
           }
         }
       }

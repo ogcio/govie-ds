@@ -17,9 +17,9 @@ import {
 } from '../typography/responsive-sizes';
 import { TypographyResponsive } from '../typography/typography-responsive';
 import {
-  TypographyHeadingTable,
-  TypographyTextTable,
-} from '../typography/typography-table';
+  TypescaleHeadingTable,
+  TypescaleTextTable,
+} from '../typography/typescale-table';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Text } from '@/components/typography/text';
@@ -59,8 +59,8 @@ export function Mdx({ code }: MdxProps) {
         FontWeightTable: () => <FontWeightTable />,
         LineHeightTable: () => <LineHeightTable />,
         LetterSpacingTable: () => <LetterSpacingTable />,
-        TypographyHeadingTable: () => <TypographyHeadingTable />,
-        TypographyTextTable: () => <TypographyTextTable />,
+        TypescaleHeadingTable: () => <TypescaleHeadingTable />,
+        TypescaleTextTable: () => <TypescaleTextTable />,
         HeadingResponsiveSizes: () => <HeadingResponsiveSizes />,
         DisplayResponsiveSizes: () => <DisplayResponsiveSizes />,
         TypographyResponsive: () => <TypographyResponsive />,

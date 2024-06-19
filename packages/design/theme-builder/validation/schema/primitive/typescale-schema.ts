@@ -48,7 +48,7 @@ function createTextTypescaleSchema(name: string) {
   });
 }
 
-export const typographySchema = z
+export const typescaleSchema = z
 
   .object(
     {
