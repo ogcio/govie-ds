@@ -19,8 +19,12 @@
     "react": "*",
     "react-dom": "*"
   },
+  "dependencies": {
+    "@govie-ds/tokens": "workspace:^"
+  },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
+    "@types/css-modules": "^1.0.5",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "@vitejs/plugin-react": "^4.3.1",

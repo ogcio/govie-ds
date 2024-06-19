@@ -32,6 +32,9 @@ importers:
       '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../tokens
+      '@govie-react/ds':
+        specifier: workspace:^
+        version: link:../../packages/react/ds
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
         version: 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -502,10 +505,17 @@ importers:
         version: 1.6.0(@types/node@20.14.2)
 
   packages/react/ds:
+    dependencies:
+      '@govie-ds/tokens':
+        specifier: workspace:^
+        version: link:../../../tokens
     devDependencies:
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      '@types/css-modules':
+        specifier: ^1.0.5
+        version: 1.0.5
       '@types/react':
         specifier: ^18.2.78
         version: 18.3.3
@@ -669,6 +679,9 @@ importers:
       tsx:
         specifier: ^4.11.2
         version: 4.15.4
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
   tokens:
     dependencies:
@@ -3011,6 +3024,9 @@ packages:
 
   '@types/cross-spawn@6.0.6':
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
+
+  '@types/css-modules@1.0.5':
+    resolution: {integrity: sha512-oeKafs/df9lwOvtfiXVliZsocFVOexK9PZtLQWuPeuVCFR7jwiqlg60lu80JTe5NFNtH3tnV6Fs/ySR8BUPHAw==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -10465,6 +10481,8 @@ snapshots:
   '@types/cross-spawn@6.0.6':
     dependencies:
       '@types/node': 20.14.2
+
+  '@types/css-modules@1.0.5': {}
 
   '@types/debug@4.1.12':
     dependencies:

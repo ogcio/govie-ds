@@ -1,6 +1,7 @@
 import { MenuIcon } from '../icons/menu-icon';
 import { Logo } from '../logos/logo';
 import { Container } from './container';
+import { TestHeader } from './test-header';
 import { config } from '@/lib/config';
 
 export type HeaderProps = {
@@ -31,6 +32,7 @@ export function Header({
             <Logo />
           </a>
         </div>
+        <TestHeader />
       </Container>
     </div>
   );
