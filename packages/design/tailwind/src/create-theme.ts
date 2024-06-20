@@ -1,61 +1,20 @@
-import { meta, tokens as govieTokens } from '@govie-ds/theme-govie';
+import { deepmerge } from '@govie-ds/deepmerge';
 import { variables } from '@govie-ds/tokens';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
-import { objectKeys } from 'ts-extras';
-import { deepmerge } from '@govie-ds/deepmerge';
+import { convertColors, toFont, toTypographyFont } from './utils.js';
 
-function convertColors(colors: typeof meta.light.resolved.primitive.color) {
-  const convertedColorObject: Record<string, Record<string, string>> = {};
-
-  objectKeys(colors).forEach((colorKey) => {
-    const colorShades = colors[colorKey];
-    const convertedShades: Record<string, string> = {};
-
-    objectKeys(colorShades).forEach((shadeKey) => {
-      const shadeValue = colorShades[shadeKey].$value;
-      convertedShades[shadeKey] = shadeValue;
-    });
-
-    convertedColorObject[colorKey] = convertedShades;
-  });
-
-  return convertedColorObject;
-}
-
-const tokens = govieTokens.light;
-
-// TODO: type
-function toFont({
-  useVariables,
-  variables,
-  meta,
-  key,
-}: {
-  useVariables: boolean;
-  variables: any;
-  meta: any;
-  key: string;
-}): [string, { lineHeight: string }] {
-  return [
-    useVariables
-      ? variables.primitive.font.size[key]
-      : meta.light.resolved.primitive.font.size[key].$value,
-    {
-      lineHeight: useVariables
-        ? variables.primitive.font.lineHeight[key]
-        : meta.light.resolved.primitive.font.lineHeight[key].$value.toString(),
-    },
-  ];
-}
+export type CreateThemeOptions = {
+  meta: any; // TODO: add TS meta type to tokens package
+  overrides?: Partial<CustomThemeConfig>;
+  useVariables?: boolean;
+};
 
 export function createTheme({
+  meta,
+  overrides,
   useVariables = true,
-  theme,
-}: {
-  useVariables?: boolean;
-  theme?: Partial<CustomThemeConfig>;
-} = {}): Partial<CustomThemeConfig> {
+}: CreateThemeOptions): Partial<CustomThemeConfig> {
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
     fontFamily: {
@@ -244,12 +203,12 @@ export function createTheme({
       // "96": tokens.govieSpace96,
     },
     screens: {
-      xs: tokens.govieScreenXs,
-      sm: tokens.govieScreenSm,
-      md: tokens.govieScreenMd,
-      lg: tokens.govieScreenLg,
-      xl: tokens.govieScreenXl,
-      '2xl': tokens.govieScreen2Xl,
+      xs: meta.light.resolved.primitive.screen.xs.$value,
+      sm: meta.light.resolved.primitive.screen.sm.$value,
+      md: meta.light.resolved.primitive.screen.md.$value,
+      lg: meta.light.resolved.primitive.screen.lg.$value,
+      xl: meta.light.resolved.primitive.screen.xl.$value,
+      '2xl': meta.light.resolved.primitive.screen['2xl'].$value,
     },
     textUnderlineOffset: {
       // TODO: tokens
@@ -316,15 +275,5 @@ export function createTheme({
     },
   };
 
-  return deepmerge(defaultTheme, theme);
-}
-
-function toTypographyFont(theme: any, name: string, bold: boolean = false) {
-  return {
-    fontSize: theme(name)[0],
-    fontWeight: bold
-      ? variables.primitive.font.weight['700']
-      : variables.primitive.font.weight['400'],
-    lineHeight: theme(name)[1].lineHeight,
-  };
+  return deepmerge(defaultTheme, overrides);
 }

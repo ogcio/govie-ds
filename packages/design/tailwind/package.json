@@ -9,6 +9,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
+    "lint": "eslint 'src/**/*.ts'",
     "build": "tsup"
   },
   "prettier": "@govie-ds/prettier-config",
@@ -17,7 +18,6 @@
   "license": "MIT",
   "dependencies": {
     "@govie-ds/deepmerge": "workspace:^",
-    "@govie-ds/theme-govie": "workspace:^",
     "@govie-ds/tokens": "workspace:^",
     "ts-extras": "^0.11.0"
   },
