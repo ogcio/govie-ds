@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Header } from "./header.js";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Header } from './header.js';
 
 const meta = {
-  title: "Example/Header",
+  title: 'Example/Header',
   component: Header,
 } satisfies Meta<typeof Header>;
 
