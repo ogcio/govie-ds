@@ -27,7 +27,7 @@
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/lodash": "^4.17.4",
-    "eslint": "^9.4.0",
+    "eslint": "^9.5.0",
     "prettier": "^3.3.0",
     "tsup": "^8.1.0",
     "typescript": "5.4.5",

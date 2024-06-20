@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "@jscutlery/semver": "^5.2.2",
-    "nx": "^19.1.2"
+    "nx": "^19.3.0"
   }
 }

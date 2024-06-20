@@ -28,10 +28,10 @@
     "@govie-ds/prettier-config": "workspace:^",
     "@govie-ds/theme-builder": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
-    "eslint": "9.x",
+    "eslint": "~9.5.0",
     "prettier": "^3.3.0",
     "tsup": "^8.1.0",
-    "tsx": "^4.11.2",
+    "tsx": "^4.15.6",
     "typescript": "5.4.5"
   }
 }
