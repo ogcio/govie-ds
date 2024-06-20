@@ -574,6 +574,12 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1.2.26
         version: 1.5.0(react@18.3.1)
+      '@govie-ds/eslint-config':
+        specifier: workspace:^
+        version: link:../../build/eslint-config
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
       '@govie-ds/theme-govie':
         specifier: workspace:^
         version: link:../../themes/govie
@@ -628,6 +634,9 @@ importers:
       eslint-plugin-storybook:
         specifier: ^0.8.0
         version: 0.8.0(eslint@8.57.0)(typescript@5.4.5)
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.2
       storybook:
         specifier: ^8.0.5
         version: 8.1.8(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
