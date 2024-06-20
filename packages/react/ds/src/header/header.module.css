@@ -1,15 +1,15 @@
-.foo {
-  font-size: 8px; /* Default font size */
+.header {
+  font-size: 8px;
 
   @media (min-width: 768px) {
-    font-size: 8px; /* Font size for screens larger than 768px */
+    font-size: 8px;
   }
 
   @media (min-width: 1024px) {
-    font-size: 20px; /* Font size for screens larger than 1024px */
+    font-size: 20px;
   }
 
   @media (min-width: 1280px) {
-    font-size: 40px; /* Font size for screens larger than 1280px */
+    font-size: 40px;
   }
 }
