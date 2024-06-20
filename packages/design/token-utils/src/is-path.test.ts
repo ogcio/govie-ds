@@ -2,15 +2,15 @@ import { isPath } from './is-path.js';
 
 describe('isPath', () => {
   it('should return false for alias', () => {
-    expect(isPath('{primitive.typography.xs}')).toEqual(false);
+    expect(isPath('{primitive.typeScale.xs}')).toEqual(false);
   });
 
   it('should return false for invalid alias left brace', () => {
-    expect(isPath('{primitive.typography.xs')).toEqual(false);
+    expect(isPath('{primitive.typeScale.xs')).toEqual(false);
   });
 
   it('should return false for invalid alias right brace', () => {
-    expect(isPath('primitive.typography.xs}')).toEqual(false);
+    expect(isPath('primitive.typeScale.xs}')).toEqual(false);
   });
 
   it('should return true for path with no periods', () => {
@@ -22,18 +22,18 @@ describe('isPath', () => {
   });
 
   it('should return true for path with periods', () => {
-    expect(isPath('primitive.typography.xs')).toEqual(true);
+    expect(isPath('primitive.typeScale.xs')).toEqual(true);
   });
 
   it('should return false for path with leading period', () => {
-    expect(isPath('.primitive.typography.xs')).toEqual(false);
+    expect(isPath('.primitive.typeScale.xs')).toEqual(false);
   });
 
   it('should return false for path with trailing period', () => {
-    expect(isPath('primitive.typography.xs.')).toEqual(false);
+    expect(isPath('primitive.typeScale.xs.')).toEqual(false);
   });
 
   it('should return false for path with consecutive periods', () => {
-    expect(isPath('primitive..typography.xs')).toEqual(false);
+    expect(isPath('primitive..typeScale.xs')).toEqual(false);
   });
 });

@@ -1,4 +1,5 @@
 import { meta } from '@govie-ds/tokens';
+import kebabCase from 'kebab-case';
 import { groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
@@ -23,12 +24,14 @@ type TypographySize = {
 };
 
 function aliasToTokenName(alias: string) {
-  return alias
+  const parts = alias
     .replace('{primitive.', '')
     .replace('{semantic.', '')
     .replace('regular.', '')
     .replace('}', '')
-    .replaceAll('.', '/');
+    .split('.');
+
+  return parts.map((part) => kebabCase(part)).join('/');
 }
 
 function getTypographyValue(
@@ -161,4 +164,8 @@ export function HeadingResponsiveSizes() {
 
 export function DisplayResponsiveSizes() {
   return <TypographyResponsiveSizes tokenName="display" />;
+}
+
+export function TextResponsiveSizes() {
+  return <TypographyResponsiveSizes tokenName="text" />;
 }
