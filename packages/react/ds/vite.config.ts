@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { extname, relative, resolve } from "node:path";
+import { extname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { glob } from "glob";
 import react from "@vitejs/plugin-react";
@@ -8,11 +8,15 @@ import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ include: ["src"] })],
+  plugins: [
+    react(),
+    libInjectCss(),
+    dts({ include: ["src"], exclude: ["src/**/*.stories.tsx"] }),
+  ],
   build: {
     copyPublicDir: false,
     lib: {
-      entry: "src/index.ts", //resolve(__dirname, "lib/main.ts"),
+      entry: "src/index.ts",
       formats: ["es"],
     },
     rollupOptions: {
