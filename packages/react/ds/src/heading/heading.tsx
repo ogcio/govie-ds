@@ -1,4 +1,4 @@
-import { variables, meta } from '@govie-ds/tokens';
+import { variables } from '@govie-ds/tokens';
 import styles from './heading.module.css';
 
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
