@@ -14,6 +14,7 @@ import { LineHeightTable } from '../typography/line-height-table';
 import {
   HeadingResponsiveSizes,
   DisplayResponsiveSizes,
+  TextResponsiveSizes,
 } from '../typography/responsive-sizes';
 import {
   TypeScaleHeadingTable,
@@ -61,8 +62,9 @@ export function Mdx({ code }: MdxProps) {
         LetterSpacingTable: () => <LetterSpacingTable />,
         TypeScaleHeadingTable: () => <TypeScaleHeadingTable />,
         TypeScaleTextTable: () => <TypeScaleTextTable />,
-        HeadingResponsiveSizes: () => <HeadingResponsiveSizes />,
         DisplayResponsiveSizes: () => <DisplayResponsiveSizes />,
+        HeadingResponsiveSizes: () => <HeadingResponsiveSizes />,
+        TextResponsiveSizes: () => <TextResponsiveSizes />,
         TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,
         SpaceTable: () => <SpaceTable />,

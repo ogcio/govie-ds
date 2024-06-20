@@ -1,224 +1,266 @@
 {
   "semantic": {
-    "typeScale": {
+    "typography": {
       "default": {
+        "display": {
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.7xl}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.6xl}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.5xl}"
+          }
+        },
         "heading": {
           "7xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.5xl}"
           },
           "6xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.4xl}"
           },
           "5xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.3xl}"
           },
           "4xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xl}"
           },
           "3xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xl}"
           },
           "2xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.lg}"
           },
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.md}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xs}"
           },
           "2xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xs}"
           }
         },
         "text": {
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.md}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.xs}"
           }
         }
       },
       "xs": {
+        "display": {
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.7xl}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.6xl}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.5xl}"
+          }
+        },
         "heading": {
           "7xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.5xl}"
           },
           "6xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.4xl}"
           },
           "5xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.3xl}"
           },
           "4xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xl}"
           },
           "3xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xl}"
           },
           "2xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.lg}"
           },
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.md}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xs}"
           },
           "2xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xs}"
           }
         },
         "text": {
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.md}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.xs}"
           }
         }
       },
       "md": {
+        "display": {
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.7xl}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.6xl}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.5xl}"
+          }
+        },
         "heading": {
           "7xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.6xl}"
           },
           "6xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.5xl}"
           },
           "5xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.4xl}"
           },
           "4xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.3xl}"
           },
           "3xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xl}"
           },
           "2xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xl}"
           },
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.lg}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.md}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xs}"
           },
           "2xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xs}"
           }
         },
         "text": {
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.md}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.xs}"
           }
         }
@@ -226,87 +268,87 @@
       "xl": {
         "heading": {
           "7xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.7xl}"
           },
           "6xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.6xl}"
           },
           "5xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.5xl}"
           },
           "4xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.4xl}"
           },
           "3xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.3xl}"
           },
           "2xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xl}"
           },
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xl}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.lg}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.md}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.xs}"
           },
           "2xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.2xs}"
           }
         },
         "display": {
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.7xl}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.6xl}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.heading.5xl}"
           }
         },
         "text": {
           "xl": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.xl}"
           },
           "lg": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.lg}"
           },
           "md": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.md}"
           },
           "sm": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.sm}"
           },
           "xs": {
-            "$type": "typeScale",
+            "$type": "typography",
             "$value": "{primitive.typeScale.text.xs}"
           }
         }
