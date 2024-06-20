@@ -1,0 +1,15 @@
+.header {
+  font-size: 8px;
+
+  @media (min-width: 768px) {
+    font-size: 8px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 40px;
+  }
+}

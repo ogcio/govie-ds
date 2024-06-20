@@ -24,16 +24,16 @@
     "@govie-ds/tokens": "workspace:^",
     "@govie-ds/tokens-builder": "workspace:^",
     "fs-extra": "^11.2.0",
-    "glob": "^10.4.1",
+    "glob": "^10.4.2",
     "json-schema-to-typescript": "^14.0.5",
-    "zod-to-json-schema": "^3.23.0"
+    "zod-to-json-schema": "^3.23.1"
   },
   "devDependencies": {
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.14.0",
-    "eslint": "^9.4.0",
+    "@types/node": "^20.14.6",
+    "eslint": "^9.5.0",
     "prettier": "^3.3.0",
     "tsup": "^8.1.0",
     "typescript": "5.4.5",

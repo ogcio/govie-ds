@@ -1,0 +1,48 @@
+{
+  "name": "@govie-react/ds",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "build": "vite build"
+  },
+  "prettier": "@govie-ds/prettier-config",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "@govie-ds/tokens": "workspace:^"
+  },
+  "devDependencies": {
+    "@govie-ds/eslint-config": "workspace:^",
+    "@govie-ds/prettier-config": "workspace:^",
+    "@storybook/react": "^8.1.10",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/css-modules": "^1.0.5",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.5.0",
+    "glob": "^10.4.2",
+    "prettier": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "5.4.5",
+    "vite": "^5.3.1",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-lib-inject-css": "^2.1.1"
+  }
+}
