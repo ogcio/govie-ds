@@ -275,5 +275,5 @@ export function createTheme({
     },
   };
 
-  return deepmerge(defaultTheme, overrides);
+  return deepmerge<CustomThemeConfig>(defaultTheme, overrides);
 }

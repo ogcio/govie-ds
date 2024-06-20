@@ -1,0 +1,31 @@
+.heading7xl {
+  font: var(--govie-typography-default-heading-7xl);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-7xl);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-7xl);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-7xl);
+  }
+}
+
+.heading6xl {
+  font: var(--govie-typography-default-heading-6xl);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-6xl);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-6xl);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-6xl);
+  }
+}

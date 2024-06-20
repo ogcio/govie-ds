@@ -241,9 +241,6 @@ importers:
       '@govie-ds/deepmerge':
         specifier: workspace:^
         version: link:../deepmerge
-      '@govie-ds/theme-govie':
-        specifier: workspace:^
-        version: link:../../themes/govie
       '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../../tokens
@@ -428,6 +425,9 @@ importers:
       '@govie-ds/tokens':
         specifier: workspace:^
         version: link:../../../tokens
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
     devDependencies:
       '@govie-ds/eslint-config':
         specifier: workspace:^
