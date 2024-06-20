@@ -300,7 +300,7 @@ describe('figmaFormatter', () => {
     const formatted = await formatObject({
       tokens: {
         primitive: {
-          typography: {
+          typeScale: {
             '2xs': {
               type: 'typography',
               value: {
@@ -325,7 +325,7 @@ describe('figmaFormatter', () => {
 
     expect(formatted).toEqual({
       primitive: {
-        typography: {
+        typeScale: {
           '2xs': {
             fontFamily: {
               $type: 'string',
@@ -351,19 +351,19 @@ describe('figmaFormatter', () => {
           main: {
             fontFamily: {
               $type: 'string',
-              $value: '{typography.2xs.fontFamily}',
+              $value: '{typeScale.2xs.fontFamily}',
             },
             fontSize: {
               $type: 'number',
-              $value: '{typography.2xs.fontSize}',
+              $value: '{typeScale.2xs.fontSize}',
             },
             fontWeight: {
               $type: 'number',
-              $value: '{typography.2xs.fontWeight}',
+              $value: '{typeScale.2xs.fontWeight}',
             },
             lineHeight: {
               $type: 'string',
-              $value: '{typography.2xs.lineHeight}',
+              $value: '{typeScale.2xs.lineHeight}',
             },
           },
         },
