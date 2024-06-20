@@ -20,9 +20,9 @@ importers:
       '@govie-ds/deepmerge':
         specifier: workspace:^
         version: link:../../packages/design/deepmerge
-      '@govie-ds/design-components':
+      '@govie-ds/tailwind':
         specifier: workspace:^
-        version: link:../../packages/design/components
+        version: link:../../packages/design/tailwind
       '@govie-ds/theme-govie':
         specifier: workspace:^
         version: link:../../packages/themes/govie
@@ -171,127 +171,6 @@ importers:
 
   packages/build/prettier-config: {}
 
-  packages/design/components:
-    dependencies:
-      '@govie-ds/deepmerge':
-        specifier: workspace:^
-        version: link:../deepmerge
-      '@govie-ds/theme-govie':
-        specifier: workspace:^
-        version: link:../../themes/govie
-      '@govie-ds/tokens':
-        specifier: workspace:^
-        version: link:../../../tokens
-      '@tailwindcss/typography':
-        specifier: ^0.5.13
-        version: 0.5.13(tailwindcss@3.4.4)
-      color-convert:
-        specifier: ^2.0.1
-        version: 2.0.1
-      lodash.orderby:
-        specifier: ^4.6.0
-        version: 4.6.0
-      ts-extras:
-        specifier: ^0.11.0
-        version: 0.11.0
-    devDependencies:
-      '@chromatic-com/storybook':
-        specifier: ^1.5.0
-        version: 1.5.0(react@18.3.1)
-      '@govie-ds/prettier-config':
-        specifier: workspace:^
-        version: link:../../build/prettier-config
-      '@storybook/addon-essentials':
-        specifier: ^8.1.10
-        version: 8.1.10(@types/react-dom@18.3.0)(@types/react@18.3.3)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/addon-interactions':
-        specifier: ^8.1.10
-        version: 8.1.10(vitest@1.6.0(@types/node@20.14.6))
-      '@storybook/addon-links':
-        specifier: ^8.1.10
-        version: 8.1.10(react@18.3.1)
-      '@storybook/addon-onboarding':
-        specifier: ^8.1.10
-        version: 8.1.10(react@18.3.1)
-      '@storybook/blocks':
-        specifier: ^8.1.10
-        version: 8.1.10(@types/react-dom@18.3.0)(@types/react@18.3.3)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/react':
-        specifier: ^8.1.10
-        version: 8.1.10(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.4.5)
-      '@storybook/react-vite':
-        specifier: ^8.1.10
-        version: 8.1.10(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.18.0)(typescript@5.4.5)(vite@5.3.1(@types/node@20.14.6))
-      '@storybook/test':
-        specifier: ^8.1.10
-        version: 8.1.10(vitest@1.6.0(@types/node@20.14.6))
-      '@tsconfig/node20':
-        specifier: ^20.1.4
-        version: 20.1.4
-      '@types/color-convert':
-        specifier: ^2.0.3
-        version: 2.0.3
-      '@types/lodash.orderby':
-        specifier: ^4.6.9
-        version: 4.6.9
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.13.1
-        version: 7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0)(typescript@5.4.5))(eslint@9.5.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: ^7.13.1
-        version: 7.13.1(eslint@9.5.0)(typescript@5.4.5)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.0
-        version: 4.3.1(vite@5.3.1(@types/node@20.14.6))
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
-      eslint:
-        specifier: ^9.5.0
-        version: 9.5.0
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@9.5.0)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.7
-        version: 0.4.7(eslint@9.5.0)
-      eslint-plugin-storybook:
-        specifier: ^0.8.0
-        version: 0.8.0(eslint@9.5.0)(typescript@5.4.5)
-      postcss:
-        specifier: ^8
-        version: 8.4.38
-      prettier:
-        specifier: ^3.3.0
-        version: 3.3.2
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
-      storybook:
-        specifier: ^8.1.10
-        version: 8.1.10(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      tailwindcss:
-        specifier: ^3.4.3
-        version: 3.4.4
-      tsup:
-        specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
-      vite:
-        specifier: ^5.3.1
-        version: 5.3.1(@types/node@20.14.6)
-
   packages/design/deepmerge:
     dependencies:
       deepmerge:
@@ -315,7 +194,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -353,6 +232,43 @@ importers:
       tsx:
         specifier: ^4.15.6
         version: 4.15.6
+      typescript:
+        specifier: 5.4.5
+        version: 5.4.5
+
+  packages/design/tailwind:
+    dependencies:
+      '@govie-ds/deepmerge':
+        specifier: workspace:^
+        version: link:../deepmerge
+      '@govie-ds/theme-govie':
+        specifier: workspace:^
+        version: link:../../themes/govie
+      '@govie-ds/tokens':
+        specifier: workspace:^
+        version: link:../../../tokens
+      ts-extras:
+        specifier: ^0.11.0
+        version: 0.11.0
+    devDependencies:
+      '@govie-ds/prettier-config':
+        specifier: workspace:^
+        version: link:../../build/prettier-config
+      '@tsconfig/node20':
+        specifier: ^20.1.4
+        version: 20.1.4
+      eslint:
+        specifier: ^9.5.0
+        version: 9.5.0
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.2
+      tailwindcss:
+        specifier: ^3.4.3
+        version: 3.4.4
+      tsup:
+        specifier: ^8.1.0
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -407,7 +323,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -450,7 +366,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -499,7 +415,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -642,7 +558,7 @@ importers:
         version: 3.3.2
       storybook:
         specifier: ^8.1.10
-        version: 8.1.10(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 8.1.10(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -672,7 +588,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       tsx:
         specifier: ^4.15.6
         version: 4.15.6
@@ -702,7 +618,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       tsx:
         specifier: ^4.15.6
         version: 4.15.6
@@ -727,7 +643,7 @@ importers:
         version: 3.3.2
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5)
       tsx:
         specifier: ^4.15.6
         version: 4.15.6
@@ -3121,9 +3037,6 @@ packages:
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
-  '@types/lodash.orderby@4.6.9':
-    resolution: {integrity: sha512-T9o2wkIJOmxXwVTPTmwJ59W6eTi2FseiLR369fxszG649Po/xe9vqFNhf/MtnvT5jrbDiyWKxPFPZbpSVK0SVQ==}
-
   '@types/lodash@4.17.5':
     resolution: {integrity: sha512-MBIOHVZqVqgfro1euRDWX7OO0fBVUUMrN6Pwm8LQsz8cWhEpihlvR70ENj3f40j58TNxZaWv2ndSkInykNBBJw==}
 
@@ -3533,13 +3446,6 @@ packages:
   at-least-node@1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
-
-  autoprefixer@10.4.19:
-    resolution: {integrity: sha512-BaENR2+zBZ8xXhM4pUaKUxlVdxZ0EZhjvbopwnXmxRUfqDmwSpC2lAi/QXvx7NRdPCo1WKEcEF6mV64si1z4Ew==}
-    engines: {node: ^10 || ^12 || >=14}
-    hasBin: true
-    peerDependencies:
-      postcss: ^8.1.0
 
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
@@ -4668,9 +4574,6 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  fraction.js@4.3.7:
-    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
-
   fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
@@ -5455,9 +5358,6 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
-  lodash.orderby@4.6.0:
-    resolution: {integrity: sha512-T0rZxKmghOOf5YPnn8EY5iLYeWCpZq8G41FfqoVHH5QDTAFaghJRmAdLiadEDq+ztgM2q5PjA+Z1fOwGrLgmtg==}
-
   lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
 
@@ -5895,10 +5795,6 @@ packages:
 
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
-    engines: {node: '>=0.10.0'}
-
-  normalize-range@0.1.2:
-    resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
 
   npm-run-path@4.0.1:
@@ -9994,7 +9890,7 @@ snapshots:
       telejson: 7.2.0
       tiny-invariant: 1.3.3
 
-  '@storybook/cli@8.1.10(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@storybook/cli@8.1.10(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/types': 7.24.7
@@ -10021,7 +9917,7 @@ snapshots:
       get-npm-tarball-url: 2.1.0
       giget: 1.2.3
       globby: 14.0.1
-      jscodeshift: 0.15.2(@babel/preset-env@7.24.7)
+      jscodeshift: 0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
       leven: 3.1.0
       ora: 5.4.1
       prettier: 3.3.2
@@ -10057,7 +9953,7 @@ snapshots:
       '@types/cross-spawn': 6.0.6
       cross-spawn: 7.0.3
       globby: 14.0.1
-      jscodeshift: 0.15.2(@babel/preset-env@7.24.7)
+      jscodeshift: 0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
       lodash: 4.17.21
       prettier: 3.3.2
       recast: 0.23.9
@@ -10575,10 +10471,6 @@ snapshots:
     dependencies:
       '@types/node': 20.14.6
 
-  '@types/lodash.orderby@4.6.9':
-    dependencies:
-      '@types/lodash': 4.17.5
-
   '@types/lodash@4.17.5': {}
 
   '@types/mdast@3.0.15':
@@ -10661,21 +10553,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/eslint-plugin@7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0)(typescript@5.4.5))(eslint@9.5.0)(typescript@5.4.5)':
+  '@typescript-eslint/eslint-plugin@7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0))(eslint@9.5.0)':
     dependencies:
       '@eslint-community/regexpp': 4.10.1
-      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)
       '@typescript-eslint/scope-manager': 7.13.1
-      '@typescript-eslint/type-utils': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/type-utils': 7.13.1(eslint@9.5.0)
+      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)
       '@typescript-eslint/visitor-keys': 7.13.1
       eslint: 9.5.0
       graphemer: 1.4.0
       ignore: 5.3.1
       natural-compare: 1.4.0
       ts-api-utils: 1.3.0(typescript@5.4.5)
-    optionalDependencies:
-      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10692,7 +10582,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@7.13.1(eslint@9.5.0)(typescript@5.4.5)':
+  '@typescript-eslint/parser@7.13.1(eslint@9.5.0)':
     dependencies:
       '@typescript-eslint/scope-manager': 7.13.1
       '@typescript-eslint/types': 7.13.1
@@ -10700,8 +10590,6 @@ snapshots:
       '@typescript-eslint/visitor-keys': 7.13.1
       debug: 4.3.5
       eslint: 9.5.0
-    optionalDependencies:
-      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10727,15 +10615,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/type-utils@7.13.1(eslint@9.5.0)(typescript@5.4.5)':
+  '@typescript-eslint/type-utils@7.13.1(eslint@9.5.0)':
     dependencies:
       '@typescript-eslint/typescript-estree': 7.13.1(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)
       debug: 4.3.5
       eslint: 9.5.0
       ts-api-utils: 1.3.0(typescript@5.4.5)
-    optionalDependencies:
-      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10787,21 +10673,6 @@ snapshots:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@5.62.0(eslint@9.5.0)(typescript@5.4.5)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
-      '@types/json-schema': 7.0.15
-      '@types/semver': 7.5.8
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.4.5)
-      eslint: 9.5.0
-      eslint-scope: 5.1.1
-      semver: 7.6.2
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   '@typescript-eslint/utils@7.13.1(eslint@8.57.0)(typescript@5.4.5)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
@@ -10813,7 +10684,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@typescript-eslint/utils@7.13.1(eslint@9.5.0)(typescript@5.4.5)':
+  '@typescript-eslint/utils@7.13.1(eslint@9.5.0)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
       '@typescript-eslint/scope-manager': 7.13.1
@@ -11130,16 +11001,6 @@ snapshots:
   asynckit@0.4.0: {}
 
   at-least-node@1.0.0: {}
-
-  autoprefixer@10.4.19(postcss@8.4.38):
-    dependencies:
-      browserslist: 4.23.1
-      caniuse-lite: 1.0.30001633
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.0.1
-      postcss: 8.4.38
-      postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
     dependencies:
@@ -12068,7 +11929,7 @@ snapshots:
     dependencies:
       debug: 3.2.7
     optionalDependencies:
-      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)
       eslint: 9.5.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0))(eslint-plugin-import@2.29.1)(eslint@9.5.0)
@@ -12096,7 +11957,7 @@ snapshots:
       semver: 6.3.1
       tsconfig-paths: 3.15.0
     optionalDependencies:
-      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -12106,34 +11967,15 @@ snapshots:
     dependencies:
       eslint: 8.57.0
 
-  eslint-plugin-react-hooks@4.6.2(eslint@9.5.0):
-    dependencies:
-      eslint: 9.5.0
-
   eslint-plugin-react-refresh@0.4.7(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
-
-  eslint-plugin-react-refresh@0.4.7(eslint@9.5.0):
-    dependencies:
-      eslint: 9.5.0
 
   eslint-plugin-storybook@0.8.0(eslint@8.57.0)(typescript@5.4.5):
     dependencies:
       '@storybook/csf': 0.0.1
       '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
-      requireindex: 1.2.0
-      ts-dedent: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
-  eslint-plugin-storybook@0.8.0(eslint@9.5.0)(typescript@5.4.5):
-    dependencies:
-      '@storybook/csf': 0.0.1
-      '@typescript-eslint/utils': 5.62.0(eslint@9.5.0)(typescript@5.4.5)
-      eslint: 9.5.0
       requireindex: 1.2.0
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -12562,8 +12404,6 @@ snapshots:
       fetch-blob: 3.2.0
 
   forwarded@0.2.0: {}
-
-  fraction.js@4.3.7: {}
 
   fresh@0.5.2: {}
 
@@ -13200,7 +13040,7 @@ snapshots:
 
   jsbi@4.3.0: {}
 
-  jscodeshift@0.15.2(@babel/preset-env@7.24.7):
+  jscodeshift@0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)):
     dependencies:
       '@babel/core': 7.24.7
       '@babel/parser': 7.24.7
@@ -13366,8 +13206,6 @@ snapshots:
   lodash.isplainobject@4.0.6: {}
 
   lodash.merge@4.6.2: {}
-
-  lodash.orderby@4.6.0: {}
 
   lodash.sortby@4.7.0: {}
 
@@ -13996,8 +13834,6 @@ snapshots:
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
-
-  normalize-range@0.1.2: {}
 
   npm-run-path@4.0.1:
     dependencies:
@@ -15024,9 +14860,9 @@ snapshots:
 
   store2@2.14.3: {}
 
-  storybook@8.1.10(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  storybook@8.1.10(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@storybook/cli': 8.1.10(@babel/preset-env@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/cli': 8.1.10(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     transitivePeerDependencies:
       - '@babel/preset-env'
       - bufferutil
@@ -15355,7 +15191,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.1.0(@microsoft/api-extractor@7.43.0)(postcss@8.4.38)(typescript@5.4.5):
+  tsup@8.1.0(@microsoft/api-extractor@7.43.0(@types/node@20.14.6))(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.21.5)
       cac: 6.7.14
@@ -15460,9 +15296,9 @@ snapshots:
 
   typescript-eslint@7.13.1(eslint@9.5.0):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0)(typescript@5.4.5))(eslint@9.5.0)(typescript@5.4.5)
-      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)(typescript@5.4.5)
+      '@typescript-eslint/eslint-plugin': 7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0))(eslint@9.5.0)
+      '@typescript-eslint/parser': 7.13.1(eslint@9.5.0)
+      '@typescript-eslint/utils': 7.13.1(eslint@9.5.0)
       eslint: 9.5.0
     transitivePeerDependencies:
       - supports-color
