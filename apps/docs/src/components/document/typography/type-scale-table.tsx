@@ -1,6 +1,6 @@
 import { meta } from '@govie-ds/tokens';
 import { SampleList, toSampleTokens } from '../common/sample-list';
-import { sampleTextLong } from '../common/sample-text';
+import { sampleTextLong, sampleTextShort } from '../common/sample-text';
 import { TypographyValueComposite } from './typography-value-composite';
 
 type Font = {
@@ -10,11 +10,17 @@ type Font = {
   lineHeight: number;
 };
 
-function TypeScaleTable({ type }: { type: 'heading' | 'text' }) {
+function TypeScaleTable({
+  name,
+  tokens,
+}: {
+  name: string;
+  tokens: Record<string, { $type: string; $value: Font }>;
+}) {
   return (
     <SampleList<Font>
-      name={`type-scale/${type}`}
-      tokens={toSampleTokens(meta.light.resolved.primitive.typeScale[type])}
+      name={name}
+      tokens={toSampleTokens(tokens)}
       renderValue={(value) => <TypographyValueComposite {...value} />}
       renderExample={(value) => (
         <span
@@ -25,7 +31,7 @@ function TypeScaleTable({ type }: { type: 'heading' | 'text' }) {
             lineHeight: value.lineHeight,
           }}
         >
-          {sampleTextLong}
+          {sampleTextShort}
         </span>
       )}
     />
@@ -33,9 +39,25 @@ function TypeScaleTable({ type }: { type: 'heading' | 'text' }) {
 }
 
 export function TypeScaleHeadingTable() {
-  return <TypeScaleTable type="heading" />;
+  return (
+    <div className="flex flex-col gap-md">
+      <TypeScaleTable
+        name="type-scale/heading/regular"
+        tokens={meta.light.resolved.primitive.typeScale.heading.regular}
+      />
+      <TypeScaleTable
+        name="type-scale/heading/bold"
+        tokens={meta.light.resolved.primitive.typeScale.heading.bold}
+      />
+    </div>
+  );
 }
 
 export function TypeScaleTextTable() {
-  return <TypeScaleTable type="text" />;
+  return (
+    <TypeScaleTable
+      name="type-scale/text"
+      tokens={meta.light.resolved.primitive.typeScale.text}
+    />
+  );
 }

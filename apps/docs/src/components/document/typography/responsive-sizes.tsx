@@ -162,10 +162,6 @@ export function HeadingResponsiveSizes() {
   return <TypographyResponsiveSizes tokenName="heading" />;
 }
 
-export function DisplayResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="display" />;
-}
-
 export function TextResponsiveSizes() {
   return <TypographyResponsiveSizes tokenName="text" />;
 }
