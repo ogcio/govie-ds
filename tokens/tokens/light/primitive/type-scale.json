@@ -2,7 +2,7 @@
   "primitive": {
     "typeScale": {
       "heading": {
-        "2xs": {
+        "100": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -11,7 +11,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "xs": {
+        "200": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -20,7 +20,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "sm": {
+        "300": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -29,7 +29,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "md": {
+        "400": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -38,7 +38,7 @@
             "lineHeight": "{primitive.font.lineHeight.700}"
           }
         },
-        "lg": {
+        "500": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -47,7 +47,7 @@
             "lineHeight": "{primitive.font.lineHeight.700}"
           }
         },
-        "xl": {
+        "600": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -56,7 +56,7 @@
             "lineHeight": "{primitive.font.lineHeight.700}"
           }
         },
-        "2xl": {
+        "700": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -65,7 +65,7 @@
             "lineHeight": "{primitive.font.lineHeight.700}"
           }
         },
-        "3xl": {
+        "800": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -74,7 +74,7 @@
             "lineHeight": "{primitive.font.lineHeight.700}"
           }
         },
-        "4xl": {
+        "900": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -83,7 +83,7 @@
             "lineHeight": "{primitive.font.lineHeight.400}"
           }
         },
-        "5xl": {
+        "1000": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -92,7 +92,7 @@
             "lineHeight": "{primitive.font.lineHeight.400}"
           }
         },
-        "6xl": {
+        "1100": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -101,7 +101,7 @@
             "lineHeight": "{primitive.font.lineHeight.400}"
           }
         },
-        "7xl": {
+        "1200": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -112,7 +112,7 @@
         }
       },
       "text": {
-        "xs": {
+        "100": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -121,7 +121,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "sm": {
+        "200": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -130,7 +130,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "md": {
+        "300": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -139,7 +139,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "lg": {
+        "400": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
@@ -148,7 +148,7 @@
             "lineHeight": "{primitive.font.lineHeight.1000}"
           }
         },
-        "xl": {
+        "500": {
           "$type": "typography",
           "$value": {
             "fontFamily": "{primitive.font.family.primary}",
