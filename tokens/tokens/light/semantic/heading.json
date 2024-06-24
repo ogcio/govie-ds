@@ -3,77 +3,57 @@
     "typography": {
       "default": {
         "heading": {
-          "4xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.1000}"
-          },
-          "3xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.900}"
-          },
-          "2xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.800}"
-          },
           "xl": {
             "$type": "typography",
             "$value": "{primitive.typeScale.heading.bold.700}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.600}"
+            "$value": "{primitive.typeScale.heading.bold.500}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.500}"
+            "$value": "{primitive.typeScale.heading.bold.300}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.200}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.100}"
           }
         }
       },
       "xs": {
         "heading": {
-          "4xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.1000}"
-          },
-          "3xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.900}"
-          },
-          "2xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.800}"
-          },
           "xl": {
             "$type": "typography",
             "$value": "{primitive.typeScale.heading.bold.700}"
           },
           "lg": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.600}"
+            "$value": "{primitive.typeScale.heading.bold.500}"
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.500}"
+            "$value": "{primitive.typeScale.heading.bold.300}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.200}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.100}"
           }
         }
       },
       "md": {
         "heading": {
-          "4xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.1000}"
-          },
-          "3xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.900}"
-          },
-          "2xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.800}"
-          },
           "xl": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.700}"
+            "$value": "{primitive.typeScale.heading.bold.800}"
           },
           "lg": {
             "$type": "typography",
@@ -81,35 +61,39 @@
           },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.500}"
+            "$value": "{primitive.typeScale.heading.bold.300}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.200}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.100}"
           }
         }
       },
       "xl": {
         "heading": {
-          "4xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.1000}"
-          },
-          "3xl": {
+          "xl": {
             "$type": "typography",
             "$value": "{primitive.typeScale.heading.bold.900}"
           },
-          "2xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.800}"
-          },
-          "xl": {
+          "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.heading.bold.700}"
           },
-          "lg": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.600}"
-          },
           "md": {
             "$type": "typography",
-            "$value": "{primitive.typeScale.heading.bold.500}"
+            "$value": "{primitive.typeScale.heading.bold.400}"
+          },
+          "sm": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.200}"
+          },
+          "xs": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.100}"
           }
         }
       }
