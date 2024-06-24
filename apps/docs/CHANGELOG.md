@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.15.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.14.2...@govie-ds/docs-0.15.0) (2024-06-24)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.1.0`
+* `@govie-ds/tokens` updated to version `0.1.0`
+* `@govie-react/ds` updated to version `0.1.0`
+
+### Features
+
+* add heading component ([#71](https://github.com/ogcio/govie-ds/issues/71)) ([f1b7af6](https://github.com/ogcio/govie-ds/commit/f1b7af6e9f44ef38651f4b9670f3f50cfddcfa2e))
+
+
+
 ## [0.14.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.14.1...@govie-ds/docs-0.14.2) (2024-06-24)
 
 ### Dependency Updates
