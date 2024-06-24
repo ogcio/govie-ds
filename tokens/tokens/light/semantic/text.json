@@ -3,10 +3,6 @@
     "typography": {
       "default": {
         "text": {
-          "xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.400}"
-          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -18,19 +14,11 @@
           "sm": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.200}"
-          },
-          "xs": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.100}"
           }
         }
       },
       "xs": {
         "text": {
-          "xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.400}"
-          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -42,19 +30,11 @@
           "sm": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.200}"
-          },
-          "xs": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.100}"
           }
         }
       },
       "md": {
         "text": {
-          "xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.400}"
-          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -66,19 +46,11 @@
           "sm": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.200}"
-          },
-          "xs": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.100}"
           }
         }
       },
       "xl": {
         "text": {
-          "xl": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.400}"
-          },
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -90,10 +62,6 @@
           "sm": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.200}"
-          },
-          "xs": {
-            "$type": "typography",
-            "$value": "{primitive.typeScale.text.100}"
           }
         }
       }
