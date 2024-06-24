@@ -14,22 +14,36 @@ function createFontSchema(name: string) {
   });
 }
 
+function createHeadingScaleSchema(name: string) {
+  return z
+    .object(
+      {
+        '100': createFontSchema('100'),
+        '200': createFontSchema('200'),
+        '300': createFontSchema('300'),
+        '400': createFontSchema('400'),
+        '500': createFontSchema('500'),
+        '600': createFontSchema('600'),
+        '700': createFontSchema('700'),
+        '800': createFontSchema('800'),
+        '900': createFontSchema('900'),
+        '1000': createFontSchema('1000'),
+        '1100': createFontSchema('1100'),
+        '1200': createFontSchema('1200'),
+      },
+      {
+        required_error: `${name} is required.`,
+      },
+    )
+    .strict();
+}
+
 function createHeadingTypeScaleSchema(name: string) {
   return z
     .object(
       {
-        '2xs': createFontSchema('2xs'),
-        xs: createFontSchema('xs'),
-        sm: createFontSchema('sm'),
-        md: createFontSchema('md'),
-        lg: createFontSchema('lg'),
-        xl: createFontSchema('xl'),
-        '2xl': createFontSchema('2xl'),
-        '3xl': createFontSchema('3xl'),
-        '4xl': createFontSchema('4xl'),
-        '5xl': createFontSchema('5xl'),
-        '6xl': createFontSchema('6xl'),
-        '7xl': createFontSchema('7xl'),
+        regular: createHeadingScaleSchema('regular'),
+        bold: createHeadingScaleSchema('bold'),
       },
       {
         required_error: `${name} is required.`,
@@ -39,17 +53,23 @@ function createHeadingTypeScaleSchema(name: string) {
 }
 
 function createTextTypeScaleSchema(name: string) {
-  return z.object({
-    xs: createFontSchema('xs'),
-    sm: createFontSchema('sm'),
-    md: createFontSchema('md'),
-    lg: createFontSchema('lg'),
-    xl: createFontSchema('xl'),
-  });
+  return z
+    .object(
+      {
+        100: createFontSchema('100'),
+        200: createFontSchema('200'),
+        300: createFontSchema('300'),
+        400: createFontSchema('400'),
+        500: createFontSchema('500'),
+      },
+      {
+        required_error: `${name} is required.`,
+      },
+    )
+    .strict();
 }
 
 export const typeScaleSchema = z
-
   .object(
     {
       heading: createHeadingTypeScaleSchema('heading'),
