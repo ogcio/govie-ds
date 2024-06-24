@@ -1,0 +1,47 @@
+.paragraphSm {
+  font: var(--govie-typography-default-paragraph-sm);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-paragraph-sm);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-paragraph-sm);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-paragraph-sm);
+  }
+}
+
+.paragraphMd {
+  font: var(--govie-typography-default-paragraph-md);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-paragraph-md);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-paragraph-md);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-paragraph-md);
+  }
+}
+
+.paragraphLg {
+  font: var(--govie-typography-default-paragraph-lg);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-paragraph-lg);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-paragraph-lg);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-paragraph-lg);
+  }
+}

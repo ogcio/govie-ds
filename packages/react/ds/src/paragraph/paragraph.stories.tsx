@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Heading } from './heading.js';
+import { Paragraph } from './paragraph.js';
 
 const meta = {
-  title: 'typography/Heading',
-  component: Heading,
-} satisfies Meta<typeof Heading>;
+  title: 'typography/Paragraph',
+  component: Paragraph,
+} satisfies Meta<typeof Paragraph>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Heading',
+    children: 'Paragraph',
   },
 };
