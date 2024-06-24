@@ -1,17 +1,17 @@
 import { variables } from '@govie-ds/tokens';
-import styles from './heading.module.css';
+import styles from './paragraph.module.css';
 
-export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type ParagraphAs = 'p' | 'span';
 
-export type HeadingSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+export type ParagraphSize = 'lg' | 'md' | 'sm';
 
-export function Heading({
-  as: As = 'h1',
+export function Paragraph({
+  as: As = 'p',
   size = 'md',
   children,
 }: {
-  as?: HeadingAs;
-  size?: HeadingSize;
+  as?: ParagraphAs;
+  size?: ParagraphSize;
   children: React.ReactNode;
 }) {
   return (
@@ -19,20 +19,14 @@ export function Heading({
       <As
         className={(() => {
           switch (size) {
-            case 'xl': {
-              return styles.headingXl;
-            }
             case 'lg': {
-              return styles.headingLg;
+              return styles.paragraphLg;
             }
             case 'md': {
-              return styles.headingMd;
+              return styles.paragraphMd;
             }
             case 'sm': {
-              return styles.headingSm;
-            }
-            case 'xs': {
-              return styles.headingXs;
+              return styles.paragraphSm;
             }
             default: {
               throw new Error(`Invalid heading size '${size}'.`);
