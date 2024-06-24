@@ -1,31 +1,79 @@
-.heading7xl {
-  font: var(--govie-typography-default-heading-7xl);
+.headingXs {
+  font: var(--govie-typography-default-heading-xs);
 
   @media (min-width: 768px) {
-    font: var(--govie-typography-xs-heading-7xl);
+    font: var(--govie-typography-xs-heading-xs);
   }
 
   @media (min-width: 1024px) {
-    font: var(--govie-typography-md-heading-7xl);
+    font: var(--govie-typography-md-heading-xs);
   }
 
   @media (min-width: 1280px) {
-    font: var(--govie-typography-xl-heading-7xl);
+    font: var(--govie-typography-xl-heading-xs);
   }
 }
 
-.heading6xl {
-  font: var(--govie-typography-default-heading-6xl);
+.headingSm {
+  font: var(--govie-typography-default-heading-sm);
 
   @media (min-width: 768px) {
-    font: var(--govie-typography-xs-heading-6xl);
+    font: var(--govie-typography-xs-heading-sm);
   }
 
   @media (min-width: 1024px) {
-    font: var(--govie-typography-md-heading-6xl);
+    font: var(--govie-typography-md-heading-sm);
   }
 
   @media (min-width: 1280px) {
-    font: var(--govie-typography-xl-heading-6xl);
+    font: var(--govie-typography-xl-heading-sm);
+  }
+}
+
+.headingMd {
+  font: var(--govie-typography-default-heading-md);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-md);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-md);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-md);
+  }
+}
+
+.headingLg {
+  font: var(--govie-typography-default-heading-lg);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-lg);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-lg);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-lg);
+  }
+}
+
+.headingXl {
+  font: var(--govie-typography-default-heading-xl);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-xl);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-xl);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-xl);
   }
 }

@@ -3,19 +3,7 @@ import styles from './heading.module.css';
 
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export type HeadingSize =
-  | '7xl'
-  | '6xl'
-  | '5xl'
-  | '4xl'
-  | '3xl'
-  | '2xl'
-  | 'xl'
-  | 'lg'
-  | 'md'
-  | 'sm'
-  | 'xs'
-  | '2xs';
+export type HeadingSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
 export function Heading({
   as: As = 'h1',
@@ -29,7 +17,28 @@ export function Heading({
   return (
     <div>
       <As
-        className={size === '7xl' ? styles.heading7xl : styles.heading6xl}
+        className={(() => {
+          switch (size) {
+            case 'xl': {
+              return styles.headingXl;
+            }
+            case 'lg': {
+              return styles.headingLg;
+            }
+            case 'md': {
+              return styles.headingMd;
+            }
+            case 'sm': {
+              return styles.headingSm;
+            }
+            case 'xs': {
+              return styles.headingXs;
+            }
+            default: {
+              throw new Error(`Invalid heading size '${size}'.`);
+            }
+          }
+        })()}
         style={{
           fontFamily: variables.primitive.font.family.primary,
         }}
