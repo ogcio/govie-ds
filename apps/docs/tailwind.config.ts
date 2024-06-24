@@ -1,5 +1,7 @@
+/* eslint-disable unicorn/prefer-module */
+import { createTheme } from '@govie-ds/tailwind';
+import { meta } from '@govie-ds/theme-govie';
 import type { Config } from 'tailwindcss';
-import { createTheme } from '@govie-ds/design-components';
 
 const useVariables = !(process.env.USE_RESOLVED_THEME === 'true');
 
@@ -8,11 +10,10 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@govie-ds/design-components/src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: createTheme({
-    useVariables,
-    theme: {
+    meta,
+    overrides: {
       animatedSettings: {
         animatedSpeed: 1000,
         heartBeatSpeed: 500,
@@ -23,6 +24,7 @@ const config: Config = {
         classes: ['bounce', 'heartBeat'],
       },
     },
+    useVariables,
   }),
   // theme: {
   //   extend: {

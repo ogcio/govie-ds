@@ -6,6 +6,10 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./reset.css": "./reset/reset.css"
+  },
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
@@ -16,6 +20,10 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "files": [
+    "dist",
+    "reset"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -24,7 +32,8 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@govie-ds/tokens": "workspace:^"
+    "@govie-ds/tokens": "workspace:^",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:^",

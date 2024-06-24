@@ -2,7 +2,7 @@
   "semantic": {
     "typography": {
       "default": {
-        "text": {
+        "paragraph": {
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -18,7 +18,7 @@
         }
       },
       "xs": {
-        "text": {
+        "paragraph": {
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -34,7 +34,7 @@
         }
       },
       "md": {
-        "text": {
+        "paragraph": {
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"
@@ -50,7 +50,7 @@
         }
       },
       "xl": {
-        "text": {
+        "paragraph": {
           "lg": {
             "$type": "typography",
             "$value": "{primitive.typeScale.text.400}"

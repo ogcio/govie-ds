@@ -1,40 +1,40 @@
-import { getDocumentDetails } from "./src/lib/documents/document-details";
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { getDocumentDetails } from './src/lib/documents/document-details';
 
-export const Doc = defineDocumentType(() => ({
-  name: "Doc",
+const Document = defineDocumentType(() => ({
+  name: 'Doc',
   filePathPattern: `**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
-    title: { type: "string", required: true },
-    description: { type: "string", required: true },
-    draft: { type: "boolean", required: true },
+    title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    draft: { type: 'boolean', required: true },
     status: {
-      type: "enum",
-      options: ["coming-soon", "in-development", "stable"],
+      type: 'enum',
+      options: ['coming-soon', 'in-development', 'stable'],
       required: false,
-      default: "coming-soon",
+      default: 'coming-soon',
     },
   },
   computedFields: {
     id: {
-      type: "string",
-      resolve: (doc) => {
-        const docDetails = getDocumentDetails(doc._raw.flattenedPath);
-        return docDetails.id;
+      type: 'string',
+      resolve: (document) => {
+        const documentDetails = getDocumentDetails(document._raw.flattenedPath);
+        return documentDetails.id;
       },
     },
     slug: {
-      type: "string",
-      resolve: (doc) => {
-        const docDetails = getDocumentDetails(doc._raw.flattenedPath);
-        return docDetails.slug;
+      type: 'string',
+      resolve: (document) => {
+        const documentDetails = getDocumentDetails(document._raw.flattenedPath);
+        return documentDetails.slug;
       },
     },
   },
 }));
 
 export default makeSource({
-  contentDirPath: "./content",
-  documentTypes: [Doc],
+  contentDirPath: './content',
+  documentTypes: [Document],
 });

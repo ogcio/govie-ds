@@ -1,1 +1,1 @@
-export * from './header/header.jsx';
+export * from './heading/heading.js';
