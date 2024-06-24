@@ -1,0 +1,118 @@
+{
+  "semantic": {
+    "typography": {
+      "default": {
+        "heading": {
+          "4xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.1000}"
+          },
+          "3xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.900}"
+          },
+          "2xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.800}"
+          },
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.700}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.600}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.500}"
+          }
+        }
+      },
+      "xs": {
+        "heading": {
+          "4xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.1000}"
+          },
+          "3xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.900}"
+          },
+          "2xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.800}"
+          },
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.700}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.600}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.500}"
+          }
+        }
+      },
+      "md": {
+        "heading": {
+          "4xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.1000}"
+          },
+          "3xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.900}"
+          },
+          "2xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.800}"
+          },
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.700}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.600}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.500}"
+          }
+        }
+      },
+      "xl": {
+        "heading": {
+          "4xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.1000}"
+          },
+          "3xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.900}"
+          },
+          "2xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.800}"
+          },
+          "xl": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.700}"
+          },
+          "lg": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.600}"
+          },
+          "md": {
+            "$type": "typography",
+            "$value": "{primitive.typeScale.heading.bold.500}"
+          }
+        }
+      }
+    }
+  }
+}
