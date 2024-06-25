@@ -1,5 +1,5 @@
 import { variables } from '@govie-ds/tokens';
-import styles from './heading.module.css';
+import { Text } from '../text/text.js';
 
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -41,37 +41,15 @@ export function Heading({
   })();
 
   return (
-    <div>
-      <As
-        className={(() => {
-          switch (size ?? defaultSize) {
-            case 'xl': {
-              return styles.headingXl;
-            }
-            case 'lg': {
-              return styles.headingLg;
-            }
-            case 'md': {
-              return styles.headingMd;
-            }
-            case 'sm': {
-              return styles.headingSm;
-            }
-            case 'xs': {
-              return styles.headingXs;
-            }
-            default: {
-              throw new Error(`Invalid heading size '${size}'.`);
-            }
-          }
-        })()}
-        style={{
-          fontFamily: variables.primitive.font.family.primary,
-          color: variables.primitive.color.gray['950'],
-        }}
-      >
-        {children}
-      </As>
-    </div>
+    <Text
+      as={As}
+      size={size ?? defaultSize}
+      style={{
+        fontFamily: variables.primitive.font.family.primary,
+        color: variables.primitive.color.gray['950'],
+      }}
+    >
+      {children}
+    </Text>
   );
 }
