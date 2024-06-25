@@ -17,11 +17,6 @@ export function createTheme({
 }: CreateThemeOptions): Partial<CustomThemeConfig> {
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
-    fontFamily: {
-      primary: variables.primitive.font.family.primary,
-      secondary: variables.primitive.font.family.secondary,
-      tertiary: variables.primitive.font.family.tertiary,
-    },
     container: {
       padding: {
         DEFAULT: '1rem',
@@ -38,7 +33,11 @@ export function createTheme({
       black: '#000000',
       ...convertColors(meta.light.resolved.primitive.color), // TODO: use color variables, variables as nested object in tokens package
     },
-    // TODO: font family
+    fontFamily: {
+      primary: variables.primitive.font.family.primary,
+      secondary: variables.primitive.font.family.secondary,
+      tertiary: variables.primitive.font.family.tertiary,
+    },
     fontSize: {
       '3xs': toFont({ useVariables, variables, meta, key: '50' }),
       '2xs': toFont({ useVariables, variables, meta, key: '100' }),
@@ -66,22 +65,6 @@ export function createTheme({
       extrabold: variables.primitive.font.weight['800'],
       black: variables.primitive.font.weight['900'],
     },
-    // lineHeight: {
-    //   '3': variables.govieFontLineHeight50,
-    //   '4': variables.govieFontLineHeight100,
-    //   '5': variables.govieFontLineHeight200,
-    //   '6': variables.govieFontLineHeight400,
-    //   '7': variables.govieFontLineHeight600,
-    //   '8': variables.govieFontLineHeight700,
-    //   '9': variables.govieFontLineHeight800,
-    //   '10': variables.govieFontLineHeight900,
-    //   none: variables.govieFontLineHeight100,
-    //   tight: variables.govieFontLineHeight200,
-    //   snug: variables.govieFontLineHeight300,
-    //   normal: variables.govieFontLineHeight400,
-    //   relaxed: variables.govieFontLineHeight500,
-    //   loose: variables.govieFontLineHeight700,
-    // },
     borderWidth: {
       xs: variables.primitive.border.width['100'],
       sm: variables.primitive.border.width['200'],
@@ -240,34 +223,34 @@ export function createTheme({
         return {
           DEFAULT: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.sm'),
-              h1: toTypographyFont(theme, 'fontSize.2xl', true),
-              h2: toTypographyFont(theme, 'fontSize.md', true),
-              h3: toTypographyFont(theme, 'fontSize.sm', true),
+              p: toTypographyFont({ theme, name: 'fontSize.sm' }),
+              h1: toTypographyFont({ theme, name: 'fontSize.2xl', bold: true }),
+              h2: toTypographyFont({ theme, name: 'fontSize.md', bold: true }),
+              h3: toTypographyFont({ theme, name: 'fontSize.sm', bold: true }),
             },
           },
           md: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.4xl', true),
-              h2: toTypographyFont(theme, 'fontSize.lg', true),
-              h3: toTypographyFont(theme, 'fontSize.md', true),
+              p: toTypographyFont({ theme, name: 'fontSize.md' }),
+              h1: toTypographyFont({ theme, name: 'fontSize.4xl', bold: true }),
+              h2: toTypographyFont({ theme, name: 'fontSize.lg', bold: true }),
+              h3: toTypographyFont({ theme, name: 'fontSize.md', bold: true }),
             },
           },
           lg: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.5xl', true),
-              h2: toTypographyFont(theme, 'fontSize.xl', true),
-              h3: toTypographyFont(theme, 'fontSize.lg', true),
+              p: toTypographyFont({ theme, name: 'fontSize.md' }),
+              h1: toTypographyFont({ theme, name: 'fontSize.5xl', bold: true }),
+              h2: toTypographyFont({ theme, name: 'fontSize.xl', bold: true }),
+              h3: toTypographyFont({ theme, name: 'fontSize.lg', bold: true }),
             },
           },
           xl: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.6xl', true),
-              h2: toTypographyFont(theme, 'fontSize.2xl', true),
-              h3: toTypographyFont(theme, 'fontSize.xl', true),
+              p: toTypographyFont({ theme, name: 'fontSize.md' }),
+              h1: toTypographyFont({ theme, name: 'fontSize.6xl', bold: true }),
+              h2: toTypographyFont({ theme, name: 'fontSize.2xl', bold: true }),
+              h3: toTypographyFont({ theme, name: 'fontSize.xl', bold: true }),
             },
           },
         };

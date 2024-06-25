@@ -44,11 +44,15 @@ export function toFont({
   ];
 }
 
-export function toTypographyFont(
-  theme: any,
-  name: string,
-  bold: boolean = false,
-) {
+export function toTypographyFont({
+  theme,
+  name,
+  bold = false,
+}: {
+  theme: any;
+  name: string;
+  bold?: boolean;
+}) {
   return {
     fontSize: theme(name)[0],
     fontWeight: bold
