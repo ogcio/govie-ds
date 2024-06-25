@@ -223,7 +223,7 @@ export function createTheme({
           DEFAULT: {
             css: {
               p: {
-                font: variables.semantic.typography.default.paragraph.md,
+                font: variables.semantic.typography.default.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
               },
               h1: {
@@ -255,7 +255,7 @@ export function createTheme({
           xs: {
             css: {
               p: {
-                font: variables.semantic.typography.xs.paragraph.md,
+                font: variables.semantic.typography.xs.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
               },
               h1: {
@@ -287,7 +287,7 @@ export function createTheme({
           md: {
             css: {
               p: {
-                font: variables.semantic.typography.md.paragraph.md,
+                font: variables.semantic.typography.md.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
               },
               h1: {
@@ -319,7 +319,7 @@ export function createTheme({
           xl: {
             css: {
               p: {
-                font: variables.semantic.typography.xl.paragraph.md,
+                font: variables.semantic.typography.xl.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
               },
               h1: {
