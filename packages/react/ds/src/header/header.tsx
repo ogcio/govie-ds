@@ -1,8 +1,7 @@
 import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
-import { HarpLogo } from './harp-logo.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Text } from '../text/text.js';
+import { HarpLogo } from './harp-logo.js';
 
 export function Header({ serviceName }: { serviceName?: string }) {
   return (
