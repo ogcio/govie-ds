@@ -35,7 +35,7 @@ export function Heading({
         return 'xs';
       }
       default: {
-        throw new Error(`Invalid heading as '${as}'.`);
+        throw new Error(`Invalid heading as '${As}'.`);
       }
     }
   })();

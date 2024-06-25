@@ -1,4 +1,3 @@
-import { variables } from '@govie-ds/tokens';
 import { objectKeys } from 'ts-extras';
 
 // TODO: type
@@ -42,22 +41,4 @@ export function toFont({
         : meta.light.resolved.primitive.font.lineHeight[key].$value.toString(),
     },
   ];
-}
-
-export function toTypographyFont({
-  theme,
-  name,
-  bold = false,
-}: {
-  theme: any;
-  name: string;
-  bold?: boolean;
-}) {
-  return {
-    fontSize: theme(name)[0],
-    fontWeight: bold
-      ? variables.primitive.font.weight['700']
-      : variables.primitive.font.weight['400'],
-    lineHeight: theme(name)[1].lineHeight,
-  };
 }

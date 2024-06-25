@@ -2,7 +2,7 @@ import { deepmerge } from '@govie-ds/deepmerge';
 import { variables } from '@govie-ds/tokens';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
-import { convertColors, toFont, toTypographyFont } from './utils.js';
+import { convertColors, toFont } from './utils.js';
 
 export type CreateThemeOptions = {
   meta: any; // TODO: add TS meta type to tokens package
@@ -218,39 +218,106 @@ export function createTheme({
       xl: '8px',
     },
     extend: {
-      // TODO: type
-      typography: (theme: any) => {
+      typography: () => {
         return {
           DEFAULT: {
             css: {
-              p: toTypographyFont({ theme, name: 'fontSize.sm' }),
-              h1: toTypographyFont({ theme, name: 'fontSize.2xl', bold: true }),
-              h2: toTypographyFont({ theme, name: 'fontSize.md', bold: true }),
-              h3: toTypographyFont({ theme, name: 'fontSize.sm', bold: true }),
+              p: {
+                font: variables.semantic.typography.default.paragraph.md,
+              },
+              h1: {
+                font: variables.semantic.typography.default.heading.xl,
+              },
+              h2: {
+                font: variables.semantic.typography.default.heading.lg,
+              },
+              h3: {
+                font: variables.semantic.typography.default.heading.md,
+              },
+              h4: {
+                font: variables.semantic.typography.default.heading.sm,
+              },
+              h5: {
+                font: variables.semantic.typography.default.heading.xs,
+              },
+              h6: {
+                font: variables.semantic.typography.default.heading.xs,
+              },
+            },
+          },
+          xs: {
+            css: {
+              p: {
+                font: variables.semantic.typography.xs.paragraph.md,
+              },
+              h1: {
+                font: variables.semantic.typography.xs.heading.xl,
+              },
+              h2: {
+                font: variables.semantic.typography.xs.heading.lg,
+              },
+              h3: {
+                font: variables.semantic.typography.xs.heading.md,
+              },
+              h4: {
+                font: variables.semantic.typography.xs.heading.sm,
+              },
+              h5: {
+                font: variables.semantic.typography.xs.heading.xs,
+              },
+              h6: {
+                font: variables.semantic.typography.xs.heading.xs,
+              },
             },
           },
           md: {
             css: {
-              p: toTypographyFont({ theme, name: 'fontSize.md' }),
-              h1: toTypographyFont({ theme, name: 'fontSize.4xl', bold: true }),
-              h2: toTypographyFont({ theme, name: 'fontSize.lg', bold: true }),
-              h3: toTypographyFont({ theme, name: 'fontSize.md', bold: true }),
-            },
-          },
-          lg: {
-            css: {
-              p: toTypographyFont({ theme, name: 'fontSize.md' }),
-              h1: toTypographyFont({ theme, name: 'fontSize.5xl', bold: true }),
-              h2: toTypographyFont({ theme, name: 'fontSize.xl', bold: true }),
-              h3: toTypographyFont({ theme, name: 'fontSize.lg', bold: true }),
+              p: {
+                font: variables.semantic.typography.md.paragraph.md,
+              },
+              h1: {
+                font: variables.semantic.typography.md.heading.xl,
+              },
+              h2: {
+                font: variables.semantic.typography.md.heading.lg,
+              },
+              h3: {
+                font: variables.semantic.typography.md.heading.md,
+              },
+              h4: {
+                font: variables.semantic.typography.md.heading.sm,
+              },
+              h5: {
+                font: variables.semantic.typography.md.heading.xs,
+              },
+              h6: {
+                font: variables.semantic.typography.md.heading.xs,
+              },
             },
           },
           xl: {
             css: {
-              p: toTypographyFont({ theme, name: 'fontSize.md' }),
-              h1: toTypographyFont({ theme, name: 'fontSize.6xl', bold: true }),
-              h2: toTypographyFont({ theme, name: 'fontSize.2xl', bold: true }),
-              h3: toTypographyFont({ theme, name: 'fontSize.xl', bold: true }),
+              p: {
+                font: variables.semantic.typography.xl.paragraph.md,
+              },
+              h1: {
+                font: variables.semantic.typography.xl.heading.xl,
+              },
+              h2: {
+                font: variables.semantic.typography.xl.heading.lg,
+              },
+              h3: {
+                font: variables.semantic.typography.xl.heading.md,
+              },
+              h4: {
+                font: variables.semantic.typography.xl.heading.sm,
+              },
+              h5: {
+                font: variables.semantic.typography.xl.heading.xs,
+              },
+              h6: {
+                font: variables.semantic.typography.xl.heading.xs,
+              },
             },
           },
         };
