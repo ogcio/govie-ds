@@ -34,6 +34,7 @@ function aliasToTokenName(alias: string) {
   return parts.map((part) => kebabCase(part)).join('/');
 }
 
+// TODO: type
 function getTypographyValue(
   typography: any,
   screenSize: keyof typeof meta.light.resolved.semantic.typography,
@@ -162,6 +163,6 @@ export function HeadingResponsiveSizes() {
   return <TypographyResponsiveSizes tokenName="heading" />;
 }
 
-export function ParagraphResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="paragraph" />;
+export function TextResponsiveSizes() {
+  return <TypographyResponsiveSizes tokenName="text" />;
 }
