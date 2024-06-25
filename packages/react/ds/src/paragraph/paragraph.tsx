@@ -1,5 +1,5 @@
 import { variables } from '@govie-ds/tokens';
-import styles from './paragraph.module.css';
+import { Text } from '../text/text.js';
 
 export type ParagraphAs = 'p' | 'span';
 
@@ -15,31 +15,16 @@ export function Paragraph({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <As
-        className={(() => {
-          switch (size) {
-            case 'lg': {
-              return styles.paragraphLg;
-            }
-            case 'md': {
-              return styles.paragraphMd;
-            }
-            case 'sm': {
-              return styles.paragraphSm;
-            }
-            default: {
-              throw new Error(`Invalid heading size '${size}'.`);
-            }
-          }
-        })()}
-        style={{
-          fontFamily: variables.primitive.font.family.primary,
-          color: variables.primitive.color.gray['950'],
-        }}
-      >
-        {children}
-      </As>
-    </div>
+    <Text
+      as={As}
+      size={size}
+      style={{
+        fontFamily: variables.primitive.font.family.primary,
+        color: variables.primitive.color.gray['950'],
+        maxWidth: '65ch',
+      }}
+    >
+      {children}
+    </Text>
   );
 }

@@ -1,9 +1,10 @@
 import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { HarpLogo } from './harp-logo.js';
-import styles from './header.module.css';
+import { Paragraph } from '../paragraph/paragraph.js';
+import { Text } from '../text/text.js';
 
-export function Header() {
+export function Header({ serviceName }: { serviceName?: string }) {
   return (
     <header
       style={{
@@ -13,8 +14,35 @@ export function Header() {
       }}
     >
       <Container>
-        <div className={styles.header}>
-          <HarpLogo />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: variables.primitive.space[3],
+          }}
+        >
+          <div
+            style={{
+              color: 'white',
+              padding: `${variables.primitive.space[3]} 0`,
+            }}
+          >
+            <HarpLogo />
+          </div>
+          {serviceName ? (
+            <div
+              style={{
+                flexGrow: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                textAlign: 'center',
+              }}
+            >
+              <Text size="lg" style={{ color: 'white' }}>
+                {serviceName}
+              </Text>
+            </div>
+          ) : null}
         </div>
       </Container>
     </header>
