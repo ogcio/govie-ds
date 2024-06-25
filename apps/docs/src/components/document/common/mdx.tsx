@@ -1,5 +1,5 @@
+import { Heading } from '@govie-react/ds';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { Heading } from '../../typography/heading';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { OpacityTable } from '../opacity/opacity-table';
