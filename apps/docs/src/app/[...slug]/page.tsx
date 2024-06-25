@@ -18,7 +18,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   }
 
   return (
-    <section className="flex flex-col gap-2xl grow">
+    <section className="flex flex-col grow">
       <div className="flex justify-between items-center">
         {document.status === 'stable' ? null : (
           <div>
@@ -28,7 +28,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
         {document.draft ? <Draft /> : null}
       </div>
       {document.status !== 'coming-soon' || document.draft ? (
-        <div className="flex flex-col gap-xl">
+        <div>
           <Mdx code={document.body.code} />
         </div>
       ) : null}

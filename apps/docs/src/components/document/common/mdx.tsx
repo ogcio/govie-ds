@@ -1,4 +1,4 @@
-import { Heading } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-react/ds';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
@@ -22,7 +22,6 @@ import {
 import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 
 export type MdxProps = {
@@ -41,8 +40,8 @@ export function Mdx({ code }: MdxProps) {
         h4: ({ children }) => <Heading as="h4">{children}</Heading>,
         h5: ({ children }) => <Heading as="h5">{children}</Heading>,
         h6: ({ children }) => <Heading as="h6">{children}</Heading>,
-        p: ({ children }) => <Text>{children}</Text>,
-        span: ({ children }) => <Text as="span">{children}</Text>,
+        p: ({ children }) => <Paragraph>{children}</Paragraph>,
+        span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
         code: ({ children }) => (
           <code
             className={cn(
