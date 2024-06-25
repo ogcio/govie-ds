@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.15.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.15.2...@govie-ds/docs-0.15.3) (2024-06-25)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.1.0`
+* `@govie-ds/tokens` updated to version `0.1.0`
+* `@govie-react/ds` updated to version `0.1.0`
+
+### Bug Fixes
+
+* update semantic text scale ([#77](https://github.com/ogcio/govie-ds/issues/77)) ([07053e8](https://github.com/ogcio/govie-ds/commit/07053e8f070a8a1646f027e5a6c692d5724359b4))
+
+
+
 ## [0.15.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.15.1...@govie-ds/docs-0.15.2) (2024-06-25)
 
 ### Dependency Updates
