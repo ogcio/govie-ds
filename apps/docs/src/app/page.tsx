@@ -1,10 +1,10 @@
+import { Heading } from '@govie-react/ds';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
 import { Feedback } from '@/components/chrome/feedback';
 import { Button } from '@/components/form/button';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
-import { Heading } from '@/components/typography/heading';
 import { Prose } from '@/components/typography/prose';
 import { Text } from '@/components/typography/text';
 import { config } from '@/lib/config';

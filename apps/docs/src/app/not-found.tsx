@@ -1,4 +1,4 @@
-import { Heading } from '@/components/typography/heading';
+import { Heading } from '@govie-react/ds';
 
 export default function NotFoundPage() {
   return <Heading>Not Found</Heading>;

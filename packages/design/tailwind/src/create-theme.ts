@@ -2,7 +2,7 @@ import { deepmerge } from '@govie-ds/deepmerge';
 import { variables } from '@govie-ds/tokens';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
-import { convertColors, toFont, toTypographyFont } from './utils.js';
+import { convertColors, toFont } from './utils.js';
 
 export type CreateThemeOptions = {
   meta: any; // TODO: add TS meta type to tokens package
@@ -17,11 +17,6 @@ export function createTheme({
 }: CreateThemeOptions): Partial<CustomThemeConfig> {
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
-    fontFamily: {
-      primary: variables.primitive.font.family.primary,
-      secondary: variables.primitive.font.family.secondary,
-      tertiary: variables.primitive.font.family.tertiary,
-    },
     container: {
       padding: {
         DEFAULT: '1rem',
@@ -38,7 +33,11 @@ export function createTheme({
       black: '#000000',
       ...convertColors(meta.light.resolved.primitive.color), // TODO: use color variables, variables as nested object in tokens package
     },
-    // TODO: font family
+    fontFamily: {
+      primary: variables.primitive.font.family.primary,
+      secondary: variables.primitive.font.family.secondary,
+      tertiary: variables.primitive.font.family.tertiary,
+    },
     fontSize: {
       '3xs': toFont({ useVariables, variables, meta, key: '50' }),
       '2xs': toFont({ useVariables, variables, meta, key: '100' }),
@@ -66,22 +65,6 @@ export function createTheme({
       extrabold: variables.primitive.font.weight['800'],
       black: variables.primitive.font.weight['900'],
     },
-    // lineHeight: {
-    //   '3': variables.govieFontLineHeight50,
-    //   '4': variables.govieFontLineHeight100,
-    //   '5': variables.govieFontLineHeight200,
-    //   '6': variables.govieFontLineHeight400,
-    //   '7': variables.govieFontLineHeight600,
-    //   '8': variables.govieFontLineHeight700,
-    //   '9': variables.govieFontLineHeight800,
-    //   '10': variables.govieFontLineHeight900,
-    //   none: variables.govieFontLineHeight100,
-    //   tight: variables.govieFontLineHeight200,
-    //   snug: variables.govieFontLineHeight300,
-    //   normal: variables.govieFontLineHeight400,
-    //   relaxed: variables.govieFontLineHeight500,
-    //   loose: variables.govieFontLineHeight700,
-    // },
     borderWidth: {
       xs: variables.primitive.border.width['100'],
       sm: variables.primitive.border.width['200'],
@@ -235,39 +218,134 @@ export function createTheme({
       xl: '8px',
     },
     extend: {
-      // TODO: type
-      typography: (theme: any) => {
+      typography: () => {
         return {
           DEFAULT: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.sm'),
-              h1: toTypographyFont(theme, 'fontSize.2xl', true),
-              h2: toTypographyFont(theme, 'fontSize.md', true),
-              h3: toTypographyFont(theme, 'fontSize.sm', true),
+              p: {
+                font: variables.semantic.typography.default.paragraph.md,
+                fontWeight: variables.primitive.font.weight['400'],
+              },
+              h1: {
+                font: variables.semantic.typography.default.heading.xl,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h2: {
+                font: variables.semantic.typography.default.heading.lg,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h3: {
+                font: variables.semantic.typography.default.heading.md,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h4: {
+                font: variables.semantic.typography.default.heading.sm,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h5: {
+                font: variables.semantic.typography.default.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h6: {
+                font: variables.semantic.typography.default.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+            },
+          },
+          xs: {
+            css: {
+              p: {
+                font: variables.semantic.typography.xs.paragraph.md,
+                fontWeight: variables.primitive.font.weight['400'],
+              },
+              h1: {
+                font: variables.semantic.typography.xs.heading.xl,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h2: {
+                font: variables.semantic.typography.xs.heading.lg,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h3: {
+                font: variables.semantic.typography.xs.heading.md,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h4: {
+                font: variables.semantic.typography.xs.heading.sm,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h5: {
+                font: variables.semantic.typography.xs.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h6: {
+                font: variables.semantic.typography.xs.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
             },
           },
           md: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.4xl', true),
-              h2: toTypographyFont(theme, 'fontSize.lg', true),
-              h3: toTypographyFont(theme, 'fontSize.md', true),
-            },
-          },
-          lg: {
-            css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.5xl', true),
-              h2: toTypographyFont(theme, 'fontSize.xl', true),
-              h3: toTypographyFont(theme, 'fontSize.lg', true),
+              p: {
+                font: variables.semantic.typography.md.paragraph.md,
+                fontWeight: variables.primitive.font.weight['400'],
+              },
+              h1: {
+                font: variables.semantic.typography.md.heading.xl,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h2: {
+                font: variables.semantic.typography.md.heading.lg,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h3: {
+                font: variables.semantic.typography.md.heading.md,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h4: {
+                font: variables.semantic.typography.md.heading.sm,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h5: {
+                font: variables.semantic.typography.md.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h6: {
+                font: variables.semantic.typography.md.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
             },
           },
           xl: {
             css: {
-              p: toTypographyFont(theme, 'fontSize.md'),
-              h1: toTypographyFont(theme, 'fontSize.6xl', true),
-              h2: toTypographyFont(theme, 'fontSize.2xl', true),
-              h3: toTypographyFont(theme, 'fontSize.xl', true),
+              p: {
+                font: variables.semantic.typography.xl.paragraph.md,
+                fontWeight: variables.primitive.font.weight['400'],
+              },
+              h1: {
+                font: variables.semantic.typography.xl.heading.xl,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h2: {
+                font: variables.semantic.typography.xl.heading.lg,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h3: {
+                font: variables.semantic.typography.xl.heading.md,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h4: {
+                font: variables.semantic.typography.xl.heading.sm,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h5: {
+                font: variables.semantic.typography.xl.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
+              h6: {
+                font: variables.semantic.typography.xl.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+              },
             },
           },
         };
