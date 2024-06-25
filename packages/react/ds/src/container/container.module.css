@@ -1,0 +1,24 @@
+.container {
+  margin: 0 auto;
+  max-width: var(--govie-screen-xs);
+
+  @media (min-width: 640px) {
+    max-width: var(--govie-screen-sm);
+  }
+
+  @media (min-width: 768px) {
+    max-width: var(--govie-screen-md);
+  }
+
+  @media (min-width: 1024px) {
+    max-width: var(--govie-screen-lg);
+  }
+
+  @media (min-width: 1280px) {
+    max-width: var(--govie-screen-xl);
+  }
+
+  @media (min-width: 1536px) {
+    max-width: var(--govie-screen-2xl);
+  }
+}
