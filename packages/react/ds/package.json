@@ -1,6 +1,6 @@
 {
   "name": "@govie-react/ds",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "description": "",
   "type": "module",
@@ -36,6 +36,7 @@
     "clsx": "^2.1.1"
   },
   "devDependencies": {
+    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:^",
     "@govie-ds/prettier-config": "workspace:^",
     "@storybook/react": "^8.1.10",

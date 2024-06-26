@@ -64,7 +64,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           pnpm nx affected --base=last-release -t version --parallel=1
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Setup AWS ECR Details
         if: github.ref == 'refs/heads/main'
         uses: aws-actions/configure-aws-credentials@v4
