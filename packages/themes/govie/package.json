@@ -1,8 +1,7 @@
 {
   "name": "@govie-ds/theme-govie",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "version": "0.0.0",
+  "description": "The GOV IE design system theme.",
   "type": "module",
   "main": "dist/index.js",
   "exports": {
@@ -11,6 +10,12 @@
     "./light.css": "./dist/light.css",
     "./dark.css": "./dist/dark.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
