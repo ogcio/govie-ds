@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.1.0...@govie-ds/theme-govie-0.1.1) (2024-06-26)
+
+### Dependency Updates
+
+* `@govie-ds/eslint-config` updated to version `0.1.0`
+* `@govie-ds/prettier-config` updated to version `0.0.1`
+
+
 # 0.1.0 (2024-06-26)
 
 ### Dependency Updates
