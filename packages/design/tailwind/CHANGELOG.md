@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.1.0...@govie-ds/tailwind-0.1.1) (2024-06-26)
+
+### Dependency Updates
+
+* `@govie-ds/deepmerge` updated to version `0.1.1`
+
+
 # 0.1.0 (2024-06-26)
 
 ### Dependency Updates
