@@ -1,0 +1,29 @@
+{
+  "name": "@govie-ds/tokens",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "push": true,
+        "trackDeps": true,
+        "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]",
+        "postTargets": ["npm-publish", "github-release"]
+      }
+    },
+    "npm-publish": {
+      "executor": "@aaos/nx-publish:publish",
+      "options": {
+        "packageManager": "pnpm",
+        "projectFolderPath": "./tokens"
+      }
+    },
+    "github-release": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "{tag}",
+        "notes": "{notes}"
+      }
+    }
+  }
+}
