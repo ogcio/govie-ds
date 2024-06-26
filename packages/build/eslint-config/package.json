@@ -1,8 +1,7 @@
 {
   "name": "@govie-ds/eslint-config",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "private": true,
   "type": "module",
   "main": "src/index.js",
   "scripts": {
@@ -19,5 +18,8 @@
     "eslint-plugin-unicorn": "^54.0.0",
     "globals": "^15.6.0",
     "typescript-eslint": "^7.13.1"
+  },
+  "devDependencies": {
+    "@aaos/nx-publish": "^1.4.0"
   }
 }
