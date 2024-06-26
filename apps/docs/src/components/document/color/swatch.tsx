@@ -15,7 +15,7 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
     >
       <Text
         className={cn(
-          'font-medium text-xs',
+          'mb-0',
           name <= 400 ? 'text-gray-900' : undefined,
           name > 400 ? 'text-gray-50' : undefined,
         )}
@@ -25,7 +25,7 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
       {hideValue ? null : (
         <Text
           className={cn(
-            'text-xs font-mono lowercase',
+            'text-2xs xs:text-2xs md:text-xs xl:text-xs font-tertiary lowercase mb-0',
             name <= 400 ? 'text-gray-900' : undefined,
             name > 400 ? 'text-gray-50' : undefined,
           )}

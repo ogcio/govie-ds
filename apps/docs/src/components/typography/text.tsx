@@ -6,7 +6,7 @@ export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
   if (as === 'p' || as === 'span') {
-    const margin = as === 'p' ? 'mt-0 mb-[1.5em]' : 'my-0'; // TODO: tokens
+    const margin = as === 'p' ? 'mt-0 mb-[2em]' : 'my-0'; // TODO: tokens
     const maxWidth = as === 'p' ? 'm-w-[65ch]' : undefined; // TODO: tokens
 
     switch (size) {
