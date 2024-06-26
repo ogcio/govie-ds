@@ -70,7 +70,7 @@ jobs:
         run: |
           pnpm nx affected --base=last-release -t version --parallel=1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Setup AWS ECR Details
         if: github.ref == 'refs/heads/main'
