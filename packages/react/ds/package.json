@@ -1,11 +1,13 @@
 {
   "name": "@govie-react/ds",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.0",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": "./dist/index.js",
     "./reset.css": "./reset/reset.css"
