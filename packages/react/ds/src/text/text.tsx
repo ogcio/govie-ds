@@ -1,3 +1,4 @@
+import { cn } from '../cn.js';
 import headingStyles from './heading.module.css';
 import paragraphStyles from './paragraph.module.css';
 
@@ -49,15 +50,17 @@ export function Text({
   as: As = 'p',
   size,
   children,
+  className,
   style,
 }: {
   as?: TextAs;
   size?: TextSize;
   children: React.ReactNode;
+  className?: string;
   style?: React.CSSProperties;
 }) {
   return (
-    <As className={getTextClass({ as: As, size })} style={style}>
+    <As className={cn(getTextClass({ as: As, size }), className)} style={style}>
       {children}
     </As>
   );

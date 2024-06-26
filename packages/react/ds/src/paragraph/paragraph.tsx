@@ -20,10 +20,10 @@ export function Paragraph({
       size={size}
       style={{
         marginTop: 0,
-        marginBottom: '1.5em', // TODO: tokens
+        marginBottom: As === 'p' ? '1.5em' : undefined, // TODO: tokens
         fontFamily: variables.primitive.font.family.primary,
         color: variables.primitive.color.gray['950'],
-        maxWidth: '65ch',
+        maxWidth: As === 'p' ? '65ch' : undefined,
       }}
     >
       {children}

@@ -51,8 +51,8 @@ function Benefit({
 }) {
   return (
     <li className="flex flex-col gap-lg border-gray-50 border-sm rounded p-xl">
-      <Heading as="h3">{title}</Heading>
-      <Text className="text-gray-700">{description}</Text>
+      <Text as="h3">{title}</Text>
+      <Text className="text-gray-700 my-0">{description}</Text>
     </li>
   );
 }
