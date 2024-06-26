@@ -1,16 +1,19 @@
 {
   "name": "@govie-ds/deepmerge",
-  "version": "1.0.0",
-  "private": true,
-  "description": "",
-  "main": "dist/index.js",
+  "version": "0.0.0",
+  "description": "The GOV IE design system deepmerge utility.",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
     "lint": "eslint 'src/**/*.ts'",
     "build": "tsup"
   },
+  "files": [
+    "dist"
+  ],
   "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
+    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:^",
     "@govie-ds/prettier-config": "workspace:^",
     "@tsconfig/node20": "^20.1.4",

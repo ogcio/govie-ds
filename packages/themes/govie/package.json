@@ -4,6 +4,7 @@
   "description": "The GOV IE design system theme.",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./theme.css": "./dist/theme.css",
