@@ -5,6 +5,9 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
