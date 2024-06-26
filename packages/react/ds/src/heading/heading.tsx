@@ -45,6 +45,8 @@ export function Heading({
       as={As}
       size={size ?? defaultSize}
       style={{
+        marginTop: '1em', // TODO: tokens
+        marginBottom: '0.5em',
         fontFamily: variables.primitive.font.family.primary,
         color: variables.primitive.color.gray['950'],
       }}
