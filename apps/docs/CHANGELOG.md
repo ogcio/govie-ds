@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.15.5](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.15.4...@govie-ds/docs-0.15.5) (2024-06-26)
+
+### Dependency Updates
+
+* `@govie-react/ds` updated to version `0.1.0`
+
+### Bug Fixes
+
+* add text margin ([#79](https://github.com/ogcio/govie-ds/issues/79)) ([1db3956](https://github.com/ogcio/govie-ds/commit/1db3956a2056e5bbf393bae95b9b0ebea430d8a8))
+
+
+
 ## [0.15.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.15.3...@govie-ds/docs-0.15.4) (2024-06-25)
 
 ### Dependency Updates
