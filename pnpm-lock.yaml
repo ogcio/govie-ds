@@ -168,8 +168,16 @@ importers:
       typescript-eslint:
         specifier: ^7.13.1
         version: 7.13.1(eslint@9.5.0)
+    devDependencies:
+      '@aaos/nx-publish':
+        specifier: ^1.4.0
+        version: 1.4.0
 
-  packages/build/prettier-config: {}
+  packages/build/prettier-config:
+    devDependencies:
+      '@aaos/nx-publish':
+        specifier: ^1.4.0
+        version: 1.4.0
 
   packages/design/deepmerge:
     dependencies:
@@ -574,6 +582,9 @@ importers:
 
   packages/themes/govie:
     devDependencies:
+      '@aaos/nx-publish':
+        specifier: ^1.4.0
+        version: 1.4.0
       '@govie-ds/eslint-config':
         specifier: workspace:^
         version: link:../../build/eslint-config
