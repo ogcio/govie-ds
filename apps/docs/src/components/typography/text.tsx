@@ -6,15 +6,18 @@ export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
   if (as === 'p' || as === 'span') {
+    const margin = as === 'p' ? 'mt-0 mb-[1.5em]' : 'my-0'; // TODO: tokens
+    const maxWidth = as === 'p' ? 'm-w-[65ch]' : undefined; // TODO: tokens
+
     switch (size) {
       case 'lg': {
-        return 'text-md xs:text-md md:text-md xl:text-md';
+        return cn('text-md xs:text-md md:text-md xl:text-md', margin, maxWidth);
       }
       case 'md': {
-        return 'text-sm xs:text-sm md:text-sm xl:text-sm';
+        return cn('text-sm xs:text-sm md:text-sm xl:text-sm', margin, maxWidth);
       }
       case 'sm': {
-        return 'text-xs xs:text-xs md:text-xs xl:text-xs';
+        return cn('text-xs xs:text-xs md:text-xs xl:text-xs', margin, maxWidth);
       }
       default: {
         throw new Error(`Invalid heading size '${size}'.`);
@@ -22,51 +25,30 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
     }
   }
 
+  // TODO: tokens
+  const margin = 'mt-[0.5em] mb-[1em]';
+
   switch (size) {
     case 'xl': {
-      return 'text-2xl xs:text-2xl md:text-3xl xl:text-4xl';
+      return cn('text-2xl xs:text-2xl md:text-3xl xl:text-4xl', margin);
     }
     case 'lg': {
-      return 'text-lg xs:text-lg md:text-xl xl:text-2xl';
+      return cn('text-lg xs:text-lg md:text-xl xl:text-2xl', margin);
     }
     case 'md': {
-      return 'text-sm xs:text-sm md:text-sm xl:text-md';
+      return cn('text-sm xs:text-sm md:text-sm xl:text-md', margin);
     }
     case 'sm': {
-      return 'text-xs xs:text-xs md:text-xs xl:text-xs';
+      return cn('text-xs xs:text-xs md:text-xs xl:text-xs', margin);
     }
     case 'xs': {
-      return 'text-2xl xs:text-2xl md:text-2xl xl:text-2xl';
+      return cn('text-2xl xs:text-2xl md:text-2xl xl:text-2xl', margin);
     }
     default: {
       throw new Error(`Invalid heading size '${size}'.`);
     }
   }
 }
-
-// TODO: tokens
-function getStyles(as: TextAs) {
-  if (as === 'p') {
-    return {
-      marginTop: 0,
-      marginBottom: '1.5em',
-      maxWidth: '65ch',
-    };
-  }
-
-  if (as === 'span') {
-    return {
-      marginTop: 0,
-      marginBottom: 0,
-    };
-  }
-
-  return {
-    marginTop: '0.5em',
-    marginBottom: '1em',
-  };
-}
-
 // TODO: review margin/leading options for Heading/Paragraph React components
 // or exposing generic Text component from @govie-ds/react
 export function Text({
@@ -120,10 +102,7 @@ export function Text({
         getTextClass({ as: As, size: size ?? defaultSize }),
         className,
       )}
-      style={{
-        ...getStyles(As),
-        ...style,
-      }}
+      style={style}
     >
       {children}
     </As>
