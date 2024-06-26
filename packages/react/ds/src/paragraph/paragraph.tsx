@@ -20,7 +20,7 @@ export function Paragraph({
       size={size}
       style={{
         marginTop: 0,
-        marginBottom: As === 'p' ? '1.5em' : undefined, // TODO: tokens
+        marginBottom: As === 'p' ? '2em' : undefined, // TODO: tokens
         fontFamily: variables.primitive.font.family.primary,
         color: variables.primitive.color.gray['950'],
         maxWidth: As === 'p' ? '65ch' : undefined,
