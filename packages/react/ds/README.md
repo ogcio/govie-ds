@@ -77,7 +77,7 @@ function MyComponent() {
 }
 ```
 
-The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts), [FontSource](https://github.com/fontsource/fontsource) or embed code.
+The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://github.com/fontsource/fontsource) or embed code.
 
 ## Contribution
 
