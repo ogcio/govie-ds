@@ -20,7 +20,8 @@
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",
     "figma:build": "nx run @govie-ds/figma:build",
-    "react:storybook": "nx run @govie-ds/storybook-react:dev"
+    "react:storybook": "nx run @govie-ds/storybook-react:dev",
+    "example:vite": "nx run @govie-ds-example/vite:dev"
   },
   "devDependencies": {
     "@jscutlery/semver": "^5.2.2",
