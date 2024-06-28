@@ -1,3 +1,4 @@
+import { variables } from '@govie-ds/tokens';
 import { Text } from '../text/text.js';
 
 export type ParagraphAs = 'p' | 'span';
@@ -14,7 +15,17 @@ export function Paragraph({
   children: React.ReactNode;
 }) {
   return (
-    <Text as={As} size={size}>
+    <Text
+      as={As}
+      size={size}
+      style={{
+        marginTop: 0,
+        marginBottom: As === 'p' ? '2em' : undefined, // TODO: tokens
+        color: variables.primitive.color.gray['950'],
+        maxWidth: As === 'p' ? '65ch' : undefined,
+        fontFamily: 'inherit',
+      }}
+    >
       {children}
     </Text>
   );

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-import '@govie-react/ds/global.css';
 import '@govie-ds/theme-govie/theme.css';
 import { Container } from '@/components/chrome/container';
 import { Footer } from '@/components/chrome/footer';
