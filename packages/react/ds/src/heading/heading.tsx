@@ -17,16 +17,16 @@ export function Heading({
   const defaultSize = (() => {
     switch (As) {
       case 'h1': {
-        return 'xl';
-      }
-      case 'h2': {
         return 'lg';
       }
-      case 'h3': {
+      case 'h2': {
         return 'md';
       }
-      case 'h4': {
+      case 'h3': {
         return 'sm';
+      }
+      case 'h4': {
+        return 'xs';
       }
       case 'h5': {
         return 'xs';
@@ -47,7 +47,7 @@ export function Heading({
       style={{
         marginTop: '1em', // TODO: tokens
         marginBottom: '0.5em',
-        fontFamily: variables.primitive.font.family.primary,
+        fontFamily: 'inherit',
         color: variables.primitive.color.gray['950'],
       }}
     >

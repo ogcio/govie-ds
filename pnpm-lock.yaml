@@ -142,6 +142,55 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.6)
 
+  examples/vite:
+    dependencies:
+      '@fontsource/lato':
+        specifier: ^5.0.21
+        version: 5.0.21
+      '@govie-ds/theme-govie':
+        specifier: workspace:^
+        version: 0.1.2
+      '@govie-react/ds':
+        specifier: workspace:^
+        version: 0.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.13.1
+        version: 7.13.1(@typescript-eslint/parser@7.13.1(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser':
+        specifier: ^7.13.1
+        version: 7.13.1(eslint@8.57.0)(typescript@5.4.5)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.3.1(@types/node@20.14.6))
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.2
+        version: 4.6.2(eslint@8.57.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.7
+        version: 0.4.7(eslint@8.57.0)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.4.5
+      vite:
+        specifier: ^5.3.1
+        version: 5.3.1(@types/node@20.14.6)
+
   packages/build/eslint-config:
     dependencies:
       '@eslint/compat':
@@ -1827,6 +1876,21 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@fontsource/lato@5.0.21':
+    resolution: {integrity: sha512-UubLwvJO2bKuhWv6+ocx2Bou/pPIT6q7VpYaHIW7ZDaLPQY3uYAhveJg6P7Lvz5HYHyLba8JUc3yP7wvcqA8zQ==}
+
+  '@govie-ds/theme-govie@0.1.2':
+    resolution: {integrity: sha512-kTDY9mrixeXHwckuXJc307hPzImQJKGC4OZ2TawI/r2eDyCCMkV4QqIkHjRmBdC94oW9z9qwQh8g+GQ3EY1tSA==}
+
+  '@govie-ds/tokens@0.1.5':
+    resolution: {integrity: sha512-XTkewtBuS0amR01NyS117sKFNdw50MWD3DH2aAGOoTFHJZ39PluQjFkp+nYImeGHU91ZM+2lkXuybcmzk/OOsw==}
+
+  '@govie-react/ds@0.1.7':
+    resolution: {integrity: sha512-aiiSqII+37S1AcqzejbVtdtGC2aGHvDj4VAHpQN9WeI46szuIToe28eypI63cuf6xl/Ut0mEqc3/vZ5Vh+g2Eg==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
 
   '@grpc/grpc-js@1.10.9':
     resolution: {integrity: sha512-5tcgUctCG0qoNyfChZifz2tJqbRbXVO9J7X6duFcOjY3HUNCxg5D0ZCK7EP9vIcZ0zRpLU9bWkyCqVCLZ46IbQ==}
@@ -8854,6 +8918,19 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
+  '@fontsource/lato@5.0.21': {}
+
+  '@govie-ds/theme-govie@0.1.2': {}
+
+  '@govie-ds/tokens@0.1.5': {}
+
+  '@govie-react/ds@0.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@govie-ds/tokens': 0.1.5
+      clsx: 2.1.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   '@grpc/grpc-js@1.10.9':
     dependencies:
       '@grpc/proto-loader': 0.7.13
@@ -15537,7 +15614,7 @@ snapshots:
       debug: 4.3.5
       pathe: 1.1.2
       picocolors: 1.0.1
-      vite: 5.3.0(@types/node@20.14.6)
+      vite: 5.3.1(@types/node@20.14.6)
     transitivePeerDependencies:
       - '@types/node'
       - less

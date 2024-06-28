@@ -225,30 +225,37 @@ export function createTheme({
               p: {
                 font: variables.semantic.typography.default.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
+                fontFamily: 'inherit',
               },
               h1: {
-                font: variables.semantic.typography.default.heading.xl,
-                fontWeight: variables.primitive.font.weight['700'],
-              },
-              h2: {
                 font: variables.semantic.typography.default.heading.lg,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h3: {
+              h2: {
                 font: variables.semantic.typography.default.heading.md,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h4: {
+              h3: {
                 font: variables.semantic.typography.default.heading.sm,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
+              },
+              h4: {
+                font: variables.semantic.typography.default.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h5: {
                 font: variables.semantic.typography.default.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h6: {
                 font: variables.semantic.typography.default.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
             },
           },
@@ -257,30 +264,37 @@ export function createTheme({
               p: {
                 font: variables.semantic.typography.xs.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
+                fontFamily: 'inherit',
               },
               h1: {
-                font: variables.semantic.typography.xs.heading.xl,
-                fontWeight: variables.primitive.font.weight['700'],
-              },
-              h2: {
                 font: variables.semantic.typography.xs.heading.lg,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h3: {
+              h2: {
                 font: variables.semantic.typography.xs.heading.md,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h4: {
+              h3: {
                 font: variables.semantic.typography.xs.heading.sm,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
+              },
+              h4: {
+                font: variables.semantic.typography.xs.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h5: {
                 font: variables.semantic.typography.xs.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h6: {
                 font: variables.semantic.typography.xs.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
             },
           },
@@ -289,30 +303,37 @@ export function createTheme({
               p: {
                 font: variables.semantic.typography.md.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
+                fontFamily: 'inherit',
               },
               h1: {
-                font: variables.semantic.typography.md.heading.xl,
-                fontWeight: variables.primitive.font.weight['700'],
-              },
-              h2: {
                 font: variables.semantic.typography.md.heading.lg,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h3: {
+              h2: {
                 font: variables.semantic.typography.md.heading.md,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h4: {
+              h3: {
                 font: variables.semantic.typography.md.heading.sm,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
+              },
+              h4: {
+                font: variables.semantic.typography.md.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h5: {
                 font: variables.semantic.typography.md.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h6: {
                 font: variables.semantic.typography.md.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
             },
           },
@@ -321,30 +342,37 @@ export function createTheme({
               p: {
                 font: variables.semantic.typography.xl.text.md,
                 fontWeight: variables.primitive.font.weight['400'],
+                fontFamily: 'inherit',
               },
               h1: {
-                font: variables.semantic.typography.xl.heading.xl,
-                fontWeight: variables.primitive.font.weight['700'],
-              },
-              h2: {
                 font: variables.semantic.typography.xl.heading.lg,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h3: {
+              h2: {
                 font: variables.semantic.typography.xl.heading.md,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
-              h4: {
+              h3: {
                 font: variables.semantic.typography.xl.heading.sm,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
+              },
+              h4: {
+                font: variables.semantic.typography.xl.heading.xs,
+                fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h5: {
                 font: variables.semantic.typography.xl.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
               h6: {
                 font: variables.semantic.typography.xl.heading.xs,
                 fontWeight: variables.primitive.font.weight['700'],
+                fontFamily: 'inherit',
               },
             },
           },

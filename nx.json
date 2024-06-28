@@ -8,7 +8,7 @@
       "{workspaceRoot}/.github/**/*"
     ],
     "default": ["{projectRoot}/**/*"],
-    "nonTest": ["!{projectRoot}/**/*.test.tsx"]
+    "nonTest": ["!{projectRoot}/**/*.test.ts"]
   },
   "targetDefaults": {
     "build": {
