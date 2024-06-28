@@ -1,0 +1,19 @@
+p {
+  font-family: var(--govie-font-family-primary);
+  color: var(--govie-color-gray-950);
+  margin-top: 0;
+  margin-bottom: 2em;
+  max-width: 65ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--govie-font-family-primary);
+  color: var(--govie-color-gray-950);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}

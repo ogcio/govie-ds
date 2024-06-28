@@ -1,4 +1,3 @@
-import { variables } from '@govie-ds/tokens';
 import { Text } from '../text/text.js';
 
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -17,16 +16,16 @@ export function Heading({
   const defaultSize = (() => {
     switch (As) {
       case 'h1': {
-        return 'xl';
-      }
-      case 'h2': {
         return 'lg';
       }
-      case 'h3': {
+      case 'h2': {
         return 'md';
       }
-      case 'h4': {
+      case 'h3': {
         return 'sm';
+      }
+      case 'h4': {
+        return 'xs';
       }
       case 'h5': {
         return 'xs';
@@ -41,16 +40,7 @@ export function Heading({
   })();
 
   return (
-    <Text
-      as={As}
-      size={size ?? defaultSize}
-      style={{
-        marginTop: '1em', // TODO: tokens
-        marginBottom: '0.5em',
-        fontFamily: variables.primitive.font.family.primary,
-        color: variables.primitive.color.gray['950'],
-      }}
-    >
+    <Text as={As} size={size ?? defaultSize}>
       {children}
     </Text>
   );

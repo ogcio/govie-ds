@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '@govie-react/ds/reset.css';
+import '@govie-react/ds/global.css';
 import '@govie-ds/theme-govie/theme.css';
 
 const preview: Preview = {
