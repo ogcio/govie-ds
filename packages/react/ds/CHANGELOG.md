@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.8](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.1.7...@govie-react/ds-0.1.8) (2024-06-28)
+
+
+### Bug Fixes
+
+* update font ([#92](https://github.com/ogcio/govie-ds/issues/92)) ([69c8f92](https://github.com/ogcio/govie-ds/commit/69c8f9236562a2b2f79467441aa0a9a164a238a8))
+
+
+
 ## [0.1.7](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.1.6...@govie-react/ds-0.1.7) (2024-06-27)
 
 
