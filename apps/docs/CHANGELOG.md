@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.17.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.16.0...@govie-ds/docs-0.17.0) (2024-07-01)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.2.1`
+* `@govie-ds/theme-govie` updated to version `0.2.1`
+* `@govie-ds/tokens` updated to version `0.3.0`
+* `@govie-react/ds` updated to version `0.2.1`
+
+### Features
+
+* add size scale ([#95](https://github.com/ogcio/govie-ds/issues/95)) ([24e1d6e](https://github.com/ogcio/govie-ds/commit/24e1d6e335ce94735ad67a385a4606289c9eee35))
+
+
+
 # [0.16.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.15.16...@govie-ds/docs-0.16.0) (2024-07-01)
 
 ### Dependency Updates
