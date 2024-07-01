@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.2.0...@govie-ds/tokens-0.3.0) (2024-07-01)
+
+
+### Features
+
+* add size scale ([#95](https://github.com/ogcio/govie-ds/issues/95)) ([24e1d6e](https://github.com/ogcio/govie-ds/commit/24e1d6e335ce94735ad67a385a4606289c9eee35))
+
+
+
 # [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.1.5...@govie-ds/tokens-0.2.0) (2024-07-01)
 
 ### Dependency Updates
