@@ -1,7 +1,7 @@
 import "@govie-react/ds/reset.css";
 import "@govie-ds/theme-govie/theme.css";
 import "@fontsource/lato";
-import { Header, Heading, Paragraph } from "@govie-react/ds";
+import { Header, Heading, Paragraph, Link } from "@govie-react/ds";
 
 export function App() {
   return (
@@ -10,6 +10,7 @@ export function App() {
       <div>
         <Heading>Heading</Heading>
         <Paragraph>Paragraph</Paragraph>
+        <Link href="#">Link</Link>
       </div>
     </div>
   );

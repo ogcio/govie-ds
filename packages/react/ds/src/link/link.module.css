@@ -5,9 +5,13 @@
   text-underline-offset: 0.1em;
 
   &:hover {
-    color: var(--govie-color-purple-700);
+    color: var(--govie-color-blue-800);
     text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
     text-decoration-skip-ink: none;
+  }
+
+  &:visited {
+    color: var(--govie-color-purple-700);
   }
 
   &:focus {
