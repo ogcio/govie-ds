@@ -23,8 +23,8 @@
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
-    "@govie-ds/eslint-config": "workspace:^",
-    "@govie-ds/prettier-config": "workspace:^",
+    "@govie-ds/eslint-config": "workspace:*",
+    "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
     "@types/lodash": "^4.17.4",
     "eslint": "^9.5.0",
