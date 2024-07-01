@@ -1,0 +1,22 @@
+{
+  "primitive": {
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "48px"
+      }
+    }
+  }
+}
