@@ -19,17 +19,17 @@
   "license": "MIT",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@govie-ds/deepmerge": "workspace:^",
-    "@govie-ds/eslint-config": "workspace:^",
-    "@govie-ds/tokens": "workspace:^",
-    "@govie-ds/tokens-builder": "workspace:^",
+    "@govie-ds/deepmerge": "workspace:*",
+    "@govie-ds/eslint-config": "workspace:*",
+    "@govie-ds/tokens": "workspace:*",
+    "@govie-ds/tokens-builder": "workspace:*",
     "fs-extra": "^11.2.0",
     "glob": "^10.4.2",
     "json-schema-to-typescript": "^14.0.5",
     "zod-to-json-schema": "^3.23.1"
   },
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:^",
+    "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.14.6",

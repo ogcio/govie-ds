@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@fontsource/lato": "^5.0.21",
-    "@govie-ds/theme-govie": "workspace:^",
-    "@govie-react/ds": "workspace:^",
+    "@govie-ds/theme-govie": "workspace:*",
+    "@govie-react/ds": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

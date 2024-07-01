@@ -18,22 +18,22 @@ importers:
   apps/docs:
     dependencies:
       '@govie-ds/deepmerge':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/design/deepmerge
       '@govie-ds/tailwind':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/design/tailwind
       '@govie-ds/theme-govie':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/themes/govie
       '@govie-ds/theme-hse':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/themes/hse
       '@govie-ds/tokens':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../tokens
       '@govie-react/ds':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react/ds
       '@radix-ui/react-dialog':
         specifier: ^1.1.0
@@ -94,10 +94,10 @@ importers:
         version: 0.11.0
     devDependencies:
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/build/prettier-config
       '@nx-tools/container-metadata':
         specifier: ^6.0.1
@@ -148,11 +148,11 @@ importers:
         specifier: ^5.0.21
         version: 5.0.21
       '@govie-ds/theme-govie':
-        specifier: workspace:^
-        version: 0.1.2
+        specifier: workspace:*
+        version: link:../../packages/themes/govie
       '@govie-react/ds':
-        specifier: workspace:^
-        version: 0.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: workspace:*
+        version: link:../../packages/react/ds
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -238,10 +238,10 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -262,20 +262,20 @@ importers:
   packages/design/figma:
     dependencies:
       '@govie-ds/theme-govie':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../themes/govie
       '@govie-ds/theme-hse':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../themes/hse
       '@govie-ds/tokens-builder':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../tokens-builder
     devDependencies:
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -299,10 +299,10 @@ importers:
   packages/design/tailwind:
     dependencies:
       '@govie-ds/deepmerge':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../deepmerge
       '@govie-ds/tokens':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../tokens
       ts-extras:
         specifier: ^0.11.0
@@ -312,7 +312,7 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -339,16 +339,16 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2
       '@govie-ds/deepmerge':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../deepmerge
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/tokens':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../tokens
       '@govie-ds/tokens-builder':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../tokens-builder
       fs-extra:
         specifier: ^11.2.0
@@ -364,7 +364,7 @@ importers:
         version: 3.23.1(zod@3.23.8)
     devDependencies:
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -407,10 +407,10 @@ importers:
         version: 0.11.0
     devDependencies:
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -450,13 +450,13 @@ importers:
         version: 0.11.0
     devDependencies:
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/token-utils':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../token-utils
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -486,7 +486,7 @@ importers:
   packages/react/ds:
     dependencies:
       '@govie-ds/tokens':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../../tokens
       clsx:
         specifier: ^2.1.1
@@ -496,10 +496,10 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@storybook/react':
         specifier: ^8.1.10
@@ -563,16 +563,16 @@ importers:
         specifier: ^5.0.21
         version: 5.0.21
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/theme-govie':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../themes/govie
       '@govie-react/ds':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../ds
       '@storybook/addon-essentials':
         specifier: ^8.1.10
@@ -644,13 +644,13 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/theme-builder':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../design/theme-builder
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -674,13 +674,13 @@ importers:
   packages/themes/hse:
     devDependencies:
       '@govie-ds/eslint-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/eslint-config
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/theme-builder':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../design/theme-builder
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -707,10 +707,10 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@govie-ds/prettier-config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../packages/build/prettier-config
       '@govie-ds/tokens-builder':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../packages/design/tokens-builder
       '@tsconfig/node20':
         specifier: ^20.1.4
@@ -1882,18 +1882,6 @@ packages:
 
   '@fontsource/lato@5.0.21':
     resolution: {integrity: sha512-UubLwvJO2bKuhWv6+ocx2Bou/pPIT6q7VpYaHIW7ZDaLPQY3uYAhveJg6P7Lvz5HYHyLba8JUc3yP7wvcqA8zQ==}
-
-  '@govie-ds/theme-govie@0.1.2':
-    resolution: {integrity: sha512-kTDY9mrixeXHwckuXJc307hPzImQJKGC4OZ2TawI/r2eDyCCMkV4QqIkHjRmBdC94oW9z9qwQh8g+GQ3EY1tSA==}
-
-  '@govie-ds/tokens@0.1.5':
-    resolution: {integrity: sha512-XTkewtBuS0amR01NyS117sKFNdw50MWD3DH2aAGOoTFHJZ39PluQjFkp+nYImeGHU91ZM+2lkXuybcmzk/OOsw==}
-
-  '@govie-react/ds@0.1.7':
-    resolution: {integrity: sha512-aiiSqII+37S1AcqzejbVtdtGC2aGHvDj4VAHpQN9WeI46szuIToe28eypI63cuf6xl/Ut0mEqc3/vZ5Vh+g2Eg==}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
 
   '@grpc/grpc-js@1.10.9':
     resolution: {integrity: sha512-5tcgUctCG0qoNyfChZifz2tJqbRbXVO9J7X6duFcOjY3HUNCxg5D0ZCK7EP9vIcZ0zRpLU9bWkyCqVCLZ46IbQ==}
@@ -8922,17 +8910,6 @@ snapshots:
   '@fastify/busboy@2.1.1': {}
 
   '@fontsource/lato@5.0.21': {}
-
-  '@govie-ds/theme-govie@0.1.2': {}
-
-  '@govie-ds/tokens@0.1.5': {}
-
-  '@govie-react/ds@0.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@govie-ds/tokens': 0.1.5
-      clsx: 2.1.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@grpc/grpc-js@1.10.9':
     dependencies:
