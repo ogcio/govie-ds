@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.4.0...@govie-react/ds-0.5.0) (2024-07-02)
+
+
+### Features
+
+* add footer component ([#98](https://github.com/ogcio/govie-ds/issues/98)) ([fa0b0a2](https://github.com/ogcio/govie-ds/commit/fa0b0a2bc0fa7058870217a21947448febb934bc))
+
+
+
 # [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.3.0...@govie-react/ds-0.4.0) (2024-07-02)
 
 
