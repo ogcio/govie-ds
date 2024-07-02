@@ -2,7 +2,7 @@ import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
 import { HarpLogo } from './harp-logo.js';
-import { HeaderLink } from './header-link.js';
+import linkStyles from './header-link.module.css';
 
 export type HeaderProps = {
   serviceName?: string;
@@ -33,7 +33,13 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
               padding: `${variables.primitive.space[3]} 0`,
             }}
           >
-            <HarpLogo />
+            {homeHref ? (
+              <a className={linkStyles.logoLink} href={homeHref}>
+                <HarpLogo />
+              </a>
+            ) : (
+              <HarpLogo />
+            )}
           </div>
           {serviceName ? (
             <div
@@ -46,7 +52,9 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
             >
               {serviceHref ? (
                 <Text size="lg" style={{ color: 'white' }}>
-                  <HeaderLink href={serviceHref}>{serviceName}</HeaderLink>
+                  <a className={linkStyles.link} href={serviceHref}>
+                    {serviceName}
+                  </a>
                 </Text>
               ) : (
                 <Text size="lg" style={{ color: 'white' }}>

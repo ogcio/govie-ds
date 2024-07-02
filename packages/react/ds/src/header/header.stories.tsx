@@ -13,6 +13,12 @@ export const Default: Story = {
   args: {},
 };
 
+export const WithHomeHref: Story = {
+  args: {
+    homeHref: '#',
+  },
+};
+
 export const WithServiceName: Story = {
   args: {
     serviceName: 'Service Name',
