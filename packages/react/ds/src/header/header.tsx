@@ -2,7 +2,7 @@ import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
 import { HarpLogo } from './harp-logo.js';
-import linkStyles from './header-link.module.css';
+import linkStyles from './header.module.css';
 
 export type HeaderProps = {
   serviceName?: string;
