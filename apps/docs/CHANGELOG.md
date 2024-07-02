@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.18.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.17.3...@govie-ds/docs-0.18.0) (2024-07-02)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.3.0`
+* `@govie-react/ds` updated to version `0.5.0`
+
+### Features
+
+* add footer component ([#98](https://github.com/ogcio/govie-ds/issues/98)) ([fa0b0a2](https://github.com/ogcio/govie-ds/commit/fa0b0a2bc0fa7058870217a21947448febb934bc))
+
+
+
 ## [0.17.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.17.2...@govie-ds/docs-0.17.3) (2024-07-02)
 
 
