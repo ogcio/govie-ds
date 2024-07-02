@@ -144,6 +144,12 @@ importers:
 
   examples/nextjs:
     dependencies:
+      '@govie-ds/theme-govie':
+        specifier: workspace:*
+        version: link:../../packages/themes/govie
+      '@govie-react/ds':
+        specifier: workspace:*
+        version: link:../../packages/react/ds
       next:
         specifier: 14.2.4
         version: 14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
