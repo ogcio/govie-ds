@@ -20,10 +20,17 @@
 }
 
 .logoLink {
-  border-bottom: var(--govie-border-width-300) solid
-    var(--govie-color-emerald-800);
+  /* border-bottom: var(--govie-border-width-300) solid
+    var(--govie-color-emerald-800); */
 
-  &:hover {
-    border-color: white;
+  &:focus {
+    svg {
+      outline: 3px solid rgba(0, 0, 0, 0);
+      background-color: var(--govie-color-yellow-400);
+      box-shadow:
+        0 -2px var(--govie-color-yellow-400),
+        0 4px var(--govie-color-gray-900);
+      text-decoration: none;
+    }
   }
 }
