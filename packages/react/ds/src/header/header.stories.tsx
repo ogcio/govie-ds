@@ -18,3 +18,10 @@ export const WithServiceName: Story = {
     serviceName: 'Service Name',
   },
 };
+
+export const WithServiceHref: Story = {
+  args: {
+    serviceName: 'Service Name',
+    serviceHref: '#',
+  },
+};
