@@ -10,9 +10,38 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Small: Story = {
+  args: {
+    icon: <Icon id="thumbs-up" size="sm" />,
+    ariaLabel: 'Thumbs up',
+  },
+};
+
 export const Default: Story = {
   args: {
     icon: <Icon id="thumbs-up" />,
     ariaLabel: 'Thumbs up',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    icon: <Icon id="thumbs-up" size="lg" />,
+    ariaLabel: 'Thumbs up',
+  },
+};
+
+export const ExtraLarge: Story = {
+  args: {
+    icon: <Icon id="thumbs-up" size="xl" />,
+    ariaLabel: 'Thumbs up',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    icon: <Icon id="thumbs-up" />,
+    ariaLabel: 'Thumbs up',
+    disabled: true,
   },
 };
