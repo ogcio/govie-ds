@@ -11,7 +11,7 @@ export function App() {
         <Heading>Heading</Heading>
         <Paragraph>Paragraph</Paragraph>
         <Link href="#">Link</Link>
-        <Icon id="thumbs-up" solid />
+        <Icon id="thumbs-up" variant="filled" />
       </div>
     </div>
   );
