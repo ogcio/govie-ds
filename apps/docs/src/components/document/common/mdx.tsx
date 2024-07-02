@@ -5,6 +5,7 @@ import { BorderWidthTable } from '../border/border-width-table';
 import { OpacityTable } from '../opacity/opacity-table';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
+import { SizeTable } from '../size/size-table';
 import { SpaceTable } from '../space/space-table';
 import { FontFamilyTable } from '../typography/font-family-table';
 import { FontSizeTable } from '../typography/font-size-table';
@@ -64,6 +65,7 @@ export function Mdx({ code }: MdxProps) {
         TextResponsiveSizes: () => <TextResponsiveSizes />,
         TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,
+        SizeTable: () => <SizeTable />,
         SpaceTable: () => <SpaceTable />,
         BorderWidthTable: () => <BorderWidthTable />,
         BorderRadiusTable: () => <BorderRadiusTable />,
