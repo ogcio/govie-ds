@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from './icon-button.js';
 
 const meta = {
   title: 'IconButton',
   component: IconButton,
+  args: {
+    onClick: fn(),
+  },
 } satisfies Meta<typeof IconButton>;
 
 export default meta;

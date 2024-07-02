@@ -1,0 +1,15 @@
+.footer {
+  background-color: var(--govie-color-gold-50);
+  border-top: var(--govie-border-width-100) solid var(--govie-color-gold-500);
+  padding: var(--govie-space-10) var(--govie-space-5);
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
+}

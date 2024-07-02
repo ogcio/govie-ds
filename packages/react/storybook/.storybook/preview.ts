@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/react';
-import { fn } from '@storybook/test';
 import '@fontsource/lato';
 import '@govie-react/ds/reset.css';
 import '@govie-ds/theme-govie/theme.css';
@@ -13,9 +12,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-  },
-  args: {
-    onClick: fn(),
   },
 };
 
