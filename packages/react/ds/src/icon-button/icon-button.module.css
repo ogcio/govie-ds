@@ -1,9 +1,12 @@
 .iconButton {
-  cursor: pointer;
+  &:not([disabled]) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--govie-color-gray-50);
+    }
+  }
+
   padding: var(--govie-space-2);
   border-radius: var(--govie-border-radius-200);
-
-  &:hover {
-    background-color: var(--govie-color-gray-50);
-  }
 }

@@ -13,9 +13,16 @@ export function IconButton({
   disabled?: boolean;
 }) {
   return (
-    <button className={styles.iconButton} onClick={onClick} disabled={disabled}>
+    <button
+      className={styles.iconButton}
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={ariaLabel}
+    >
       {cloneElement(icon, {
-        ariaLabel,
+        ariaLabel: undefined,
+        ariaHidden: true,
+        color: disabled ? 'disabled' : undefined,
       })}
     </button>
   );

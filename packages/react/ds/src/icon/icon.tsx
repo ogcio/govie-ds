@@ -85,6 +85,8 @@ const iconMap: Record<string, () => React.ReactElement> = {
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
+export type IconColor = 'default' | 'disabled';
+
 function toWidthHeight(size: IconSize) {
   return {
     width: meta.light.resolved.primitive.size[size].$value,
@@ -96,12 +98,14 @@ export function Icon({
   id,
   size = 'md',
   solid = false,
+  color = 'default',
   ariaHidden,
   ariaLabel,
 }: {
   id: IconId;
   size?: IconSize;
   solid?: boolean;
+  color?: IconColor;
   ariaHidden?: boolean;
   ariaLabel?: string;
 }) {
@@ -122,6 +126,9 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
+      color={
+        color === 'default' ? 'currentColor' : 'var(--govie-color-gray-300)'
+      }
     >
       {icon()}
     </Svg>
