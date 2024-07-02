@@ -38,6 +38,13 @@ export const ExtraLarge: Story = {
   },
 };
 
+export const Solid: Story = {
+  args: {
+    icon: <Icon id="thumbs-up" solid />,
+    ariaLabel: 'Thumbs up',
+  },
+};
+
 export const Disabled: Story = {
   args: {
     icon: <Icon id="thumbs-up" />,
