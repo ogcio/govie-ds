@@ -39,7 +39,7 @@ export const ExtraLarge: Story = {
 export const Solid: Story = {
   args: {
     id: 'thumbs-up',
-    solid: true,
+    variant: 'filled',
   },
 };
 
