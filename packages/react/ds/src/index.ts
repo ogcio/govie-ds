@@ -1,3 +1,5 @@
+export * from './container/container.js';
+export * from './footer/footer.js';
 export * from './header/header.js';
 export * from './heading/heading.js';
 export * from './icon/icon.js';

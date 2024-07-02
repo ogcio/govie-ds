@@ -1,13 +1,15 @@
-import Image from 'next/image';
-import footerImage from '../../../public/logotype.png';
-import { OglLogo } from '../logos/ogl-logo';
-import { Container } from './container';
+import { Container } from '../container/container.js';
+import styles from './footer.module.css';
+import footerImage from './logo.png';
+// import { OglLogo } from '../logos/ogl-logo';
 
 export function Footer() {
   return (
-    <div className="bg-gold-50 p-x-xl py-3xl border-solid border-t-xs border-gold-500">
+    //  className="bg-gold-50 p-x-xl py-3xl border-solid border-t-xs border-gold-500">
+    <footer className={styles.footer}>
       <Container>
-        <div className="flex flex-wrap gap-2xl justify-center sm:justify-end items-center">
+        {/* flex flex-wrap gap-2xl justify-center sm:justify-end items-center */}
+        <div className={styles.footerInner}>
           {/* <div className="flex gap-x-2xl items-center">
             <OglLogo />
             <span>
@@ -22,14 +24,14 @@ export function Footer() {
               , except where otherwise stated.
             </span>
           </div> */}
-          <Image
+          <img
             src={footerImage}
-            alt="OGCIO"
+            alt="GOV IE"
             width={190}
             style={{ height: 'auto' }}
           />
         </div>
       </Container>
-    </div>
+    </footer>
   );
 }
