@@ -7,11 +7,7 @@ export default function Home() {
       <Heading>Heading</Heading>
       <Paragraph>Paragraph</Paragraph>
       <Icon id="send" />
-      {/* <IconButton
-        icon={<Icon id="send" />}
-        ariaLabel="Send"
-        onClick={() => alert("clicked")}
-      /> */}
+      <IconButton icon={<Icon id="send" />} ariaLabel="Send" />
     </main>
   );
 }
