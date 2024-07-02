@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.3.0...@govie-react/ds-0.4.0) (2024-07-02)
+
+
+### Features
+
+* add icon button ([#97](https://github.com/ogcio/govie-ds/issues/97)) ([a60b950](https://github.com/ogcio/govie-ds/commit/a60b950bcbdb6014ecb73746618bdf8db94a7c1d))
+
+
+
 # [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.2.1...@govie-react/ds-0.3.0) (2024-07-02)
 
 
