@@ -78,52 +78,34 @@ const iconMap: Record<string, () => React.ReactElement> = {
   ['mic']: Mic,
   ['send']: Send,
   ['thumbs-down']: ThumbsDown,
-  ['thumbs-down-filled']: ThumbsDownFilled,
+  ['thumbs-down-solid']: ThumbsDownFilled,
   ['thumbs-up']: ThumbsUp,
-  ['thumbs-up-filled']: ThumbsUpFilled,
+  ['thumbs-up-solid']: ThumbsUpFilled,
 };
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
 function toWidthHeight(size: IconSize) {
-  switch (size) {
-    case 'sm': {
-      return {
-        width: meta.light.resolved.primitive.size.sm.$value,
-        height: meta.light.resolved.primitive.size.sm.$value,
-      };
-    }
-    case 'md': {
-      return {
-        width: meta.light.resolved.primitive.size.md.$value,
-        height: meta.light.resolved.primitive.size.md.$value,
-      };
-    }
-    case 'lg': {
-      return {
-        width: meta.light.resolved.primitive.size.lg.$value,
-        height: meta.light.resolved.primitive.size.lg.$value,
-      };
-    }
-    case 'xl': {
-      return {
-        width: meta.light.resolved.primitive.size.xl.$value,
-        height: meta.light.resolved.primitive.size.xl.$value,
-      };
-    }
-  }
+  return {
+    width: meta.light.resolved.primitive.size[size].$value,
+    height: meta.light.resolved.primitive.size[size].$value,
+  };
 }
 
 export function Icon({
   id,
   size = 'md',
-  filled = false,
+  solid = false,
+  ariaHidden,
+  ariaLabel,
 }: {
   id: IconId;
   size?: IconSize;
-  filled?: boolean;
+  solid?: boolean;
+  ariaHidden?: boolean;
+  ariaLabel?: string;
 }) {
-  const iconId = [id, filled ? '-filled' : undefined].filter(Boolean).join('');
+  const iconId = [id, solid ? '-solid' : undefined].filter(Boolean).join('');
   const icon = iconMap[iconId];
 
   if (!icon) {
@@ -133,7 +115,14 @@ export function Icon({
   const { width, height } = toWidthHeight(size);
 
   return (
-    <Svg width={width} height={height} filled={filled}>
+    <Svg
+      width={width}
+      height={height}
+      solid={solid}
+      aria-hidden={ariaHidden || undefined}
+      aria-label={ariaLabel}
+      role={ariaLabel ? 'img' : 'presentation'}
+    >
       {icon()}
     </Svg>
   );

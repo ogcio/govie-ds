@@ -35,3 +35,24 @@ export const ExtraLarge: Story = {
     size: 'xl',
   },
 };
+
+export const Solid: Story = {
+  args: {
+    id: 'thumbs-up',
+    solid: true,
+  },
+};
+
+export const AriaHidden: Story = {
+  args: {
+    id: 'thumbs-up',
+    ariaHidden: true,
+  },
+};
+
+export const AriaLabel: Story = {
+  args: {
+    id: 'thumbs-up',
+    ariaLabel: 'Thumbs up',
+  },
+};
