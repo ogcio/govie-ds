@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.0...@govie-react/ds-0.5.1) (2024-07-03)
+
+
+### Bug Fixes
+
+* add header links ([#99](https://github.com/ogcio/govie-ds/issues/99)) ([0172fbd](https://github.com/ogcio/govie-ds/commit/0172fbd1720a716fc34e5fc3c24d5799831d033a))
+
+
+
 # [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.4.0...@govie-react/ds-0.5.0) (2024-07-02)
 
 
