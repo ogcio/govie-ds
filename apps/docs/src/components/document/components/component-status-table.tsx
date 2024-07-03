@@ -1,4 +1,4 @@
-import { Heading, Icon, Link } from '@govie-react/ds';
+import { Heading, Icon, Link, Paragraph } from '@govie-react/ds';
 import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -11,12 +11,13 @@ function ComponentStatusPill({
   href?: string;
 }) {
   return (
-    <div className="flex gap-sm">
+    <div className="flex gap-sm items-center">
       <div
         className={cn(
-          'px-sm rounded',
-          status === 'considering' ? 'bg-emerald-50' : undefined,
-          status === 'under-review' ? 'bg-blue-50' : undefined,
+          'px-md py-sm rounded text-xs',
+          status === 'considering' ? 'bg-gray-50 text-gray-800' : undefined,
+          status === 'under-review' ? 'bg-blue-50 text-blue-800' : undefined,
+          status === 'alpha' ? 'bg-yellow-50 text-yellow-800' : undefined,
         )}
       >
         {(() => {
@@ -36,41 +37,51 @@ function ComponentStatusPill({
 }
 
 export function ComponentStatusTable() {
-  return (
-    <ul className="flex flex-col gap-sm">
-      <li className="grid grid-cols-4">
-        <Heading as="h3">Component</Heading>
-        <Heading as="h3">Figma UI Kit</Heading>
-        <Heading as="h3">HTML</Heading>
-        <Heading as="h3">React</Heading>
-      </li>
-      {getComponents().map((component) => {
-        const figmaPlatform = component.statuses.find(
-          (platformStatus) => platformStatus.platform.id === 'figma',
-        );
-        const htmlPlatform = component.statuses.find(
-          (platformStatus) => platformStatus.platform.id === 'html',
-        );
-        const reactPlatform = component.statuses.find(
-          (platformStatus) => platformStatus.platform.id === 'react',
-        );
+  const components = getComponents();
 
-        return (
-          <li key={component.id} className="grid grid-cols-4">
-            <Text className="mb-0">{component.name}</Text>
-            <ComponentStatusPill
-              status={figmaPlatform?.status ?? 'considering'}
-            />
-            <ComponentStatusPill
-              status={htmlPlatform?.status ?? 'under-review'}
-              href={htmlPlatform?.platform.href}
-            />
-            <ComponentStatusPill
-              status={reactPlatform?.status ?? 'considering'}
-            />
-          </li>
-        );
-      })}
-    </ul>
+  return (
+    <div>
+      <Paragraph>
+        There are currently <strong>{components.length}</strong> components
+        under consideration for the design system.
+      </Paragraph>
+      <ul className="flex flex-col gap-sm xl:max-w-[60%]">
+        <li className="grid grid-cols-4 gap-sm">
+          <Heading as="h3">Component</Heading>
+          <Heading as="h3">Figma UI Kit</Heading>
+          <Heading as="h3">HTML</Heading>
+          <Heading as="h3">React</Heading>
+        </li>
+        {components.map((component) => {
+          const figmaPlatform = component.statuses.find(
+            (platformStatus) => platformStatus.platform.id === 'figma',
+          );
+          const htmlPlatform = component.statuses.find(
+            (platformStatus) => platformStatus.platform.id === 'html',
+          );
+          const reactPlatform = component.statuses.find(
+            (platformStatus) => platformStatus.platform.id === 'react',
+          );
+
+          return (
+            <li key={component.id} className="grid grid-cols-4 gap-sm">
+              <Text className="mb-0">{component.name}</Text>
+              <ComponentStatusPill
+                status={figmaPlatform?.status ?? 'considering'}
+                href={figmaPlatform?.platform.href}
+              />
+              <ComponentStatusPill
+                status={htmlPlatform?.status ?? 'under-review'}
+                href={htmlPlatform?.platform.href}
+              />
+              <ComponentStatusPill
+                status={reactPlatform?.status ?? 'considering'}
+                href={reactPlatform?.platform.href}
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
