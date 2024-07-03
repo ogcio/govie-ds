@@ -2,8 +2,15 @@ import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
 import { HarpLogo } from './harp-logo.js';
+import linkStyles from './header.module.css';
 
-export function Header({ serviceName }: { serviceName?: string }) {
+export type HeaderProps = {
+  serviceName?: string;
+  homeHref?: string;
+  serviceHref?: string;
+};
+
+export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
   return (
     <header
       style={{
@@ -26,7 +33,13 @@ export function Header({ serviceName }: { serviceName?: string }) {
               padding: `${variables.primitive.space[3]} 0`,
             }}
           >
-            <HarpLogo />
+            {homeHref ? (
+              <a className={linkStyles.homeLink} href={homeHref}>
+                <HarpLogo />
+              </a>
+            ) : (
+              <HarpLogo />
+            )}
           </div>
           {serviceName ? (
             <div
@@ -37,9 +50,17 @@ export function Header({ serviceName }: { serviceName?: string }) {
                 textAlign: 'center',
               }}
             >
-              <Text size="lg" style={{ color: 'white' }}>
-                {serviceName}
-              </Text>
+              {serviceHref ? (
+                <Text size="lg" style={{ color: 'white' }}>
+                  <a className={linkStyles.link} href={serviceHref}>
+                    {serviceName}
+                  </a>
+                </Text>
+              ) : (
+                <Text size="lg" style={{ color: 'white' }}>
+                  {serviceName}
+                </Text>
+              )}
             </div>
           ) : null}
         </div>
