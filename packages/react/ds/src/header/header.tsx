@@ -34,7 +34,7 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
             }}
           >
             {homeHref ? (
-              <a className={linkStyles.logoLink} href={homeHref}>
+              <a className={linkStyles.homeLink} href={homeHref}>
                 <HarpLogo />
               </a>
             ) : (
