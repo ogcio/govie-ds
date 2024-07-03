@@ -2,6 +2,7 @@ import { Heading, Paragraph } from '@govie-react/ds';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
+import { ComponentStatusTable } from '../components/component-status-table';
 import { OpacityTable } from '../opacity/opacity-table';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
@@ -72,6 +73,7 @@ export function Mdx({ code }: MdxProps) {
         ShadowTable: () => <ShadowTable />,
         OpacityTable: () => <OpacityTable />,
         ZIndexTable: () => <ZIndexTable />,
+        ComponentStatusTable: () => <ComponentStatusTable />,
       }}
     />
   );
