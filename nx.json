@@ -20,6 +20,9 @@
     },
     "test": {
       "inputs": ["default", "^nonTest"]
+    },
+    "version": {
+      "dependsOn": ["^version"]
     }
   }
 }
