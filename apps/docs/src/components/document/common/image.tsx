@@ -11,5 +11,20 @@ export function Image({
   width: number;
   height: number;
 }) {
-  return <NextImage src={src} alt={alt} width={width} height={height} />;
+  return (
+    <div className="bg-gray-50 p-lg flex items-center justify-center">
+      <div className="max-w-[60%]">
+        <NextImage
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
+        />
+      </div>
+    </div>
+  );
 }
