@@ -486,8 +486,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       style-dictionary:
-        specifier: 4.0.0-prerelease.31
-        version: 4.0.0-prerelease.31
+        specifier: 4.0.0
+        version: 4.0.0
       ts-extras:
         specifier: ^0.11.0
         version: 0.11.0
@@ -1514,8 +1514,8 @@ packages:
   '@bundled-es-modules/deepmerge@4.3.1':
     resolution: {integrity: sha512-Rk453EklPUPC3NRWc3VUNI/SSUjdBaFoaQvFRmNBNtMHVtOFD5AntiWg5kEE1hqcPqedYFDzxE3ZcMYPcA195w==}
 
-  '@bundled-es-modules/glob@10.3.13':
-    resolution: {integrity: sha512-eK+st/vwMmQy0pVvHLa2nzsS+p6NkNVR34e8qfiuzpzS1he4bMU3ODl0gbyv4r9INq5x41GqvRmFr8PtNw4yRA==}
+  '@bundled-es-modules/glob@10.4.2':
+    resolution: {integrity: sha512-740y5ofkzydsFao5EXJrGilcIL6EFEw/cmPf2uhTw9J6G1YOhiIFjNFCHdpgEiiH5VlU3G0SARSjlFlimRRSMA==}
 
   '@bundled-es-modules/memfs@4.8.1':
     resolution: {integrity: sha512-9BodQuihWm3XJGKYuV/vXckK8Tkf9EDiT/au1NJeFUyBMe7EMYRtOqL9eLzrjqJSDJUFoGwQFHvraFHwR8cysQ==}
@@ -4029,6 +4029,10 @@ packages:
 
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
+
+  component-emitter@2.0.0:
+    resolution: {integrity: sha512-4m5s3Me2xxlVKG9PkZpQqHQR7bgpnN7joDMJ4yvVkVXngjoITG76IaZmzmywSeRTeTpc6N6r3H3+KyUurV8OYw==}
+    engines: {node: '>=18'}
 
   compressible@2.0.18:
     resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==}
@@ -7011,6 +7015,9 @@ packages:
   stream@0.0.2:
     resolution: {integrity: sha512-gCq3NDI2P35B2n6t76YJuOp7d6cN/C7Rt0577l91wllh0sY9ZBuw9KaSGqH/b0hzn3CWWJbpbW0W0WvQ1H/Q7g==}
 
+  stream@0.0.3:
+    resolution: {integrity: sha512-aMsbn7VKrl4A2T7QAQQbzgN7NVc70vgF5INQrBXqn4dCXN1zy3L9HGgLO5s7PExmdrzTJ8uR/27aviW8or8/+A==}
+
   streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
     engines: {node: '>=10.0.0'}
@@ -7098,8 +7105,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  style-dictionary@4.0.0-prerelease.31:
-    resolution: {integrity: sha512-VhcCqZiTzf/0jd6MXQvMiQcHXd8txShQpoSEKzY/K0y/blmbJUsH3g6T6wRIzTKPoPYQE9tS2QnhCqMMeLy3eQ==}
+  style-dictionary@4.0.0:
+    resolution: {integrity: sha512-7UA+gdkNumWwKF8EIWIxvY2kNjNizeozA5P04c9EDZzP/bMAqTgf3GpwDNEFSv9QFAjQ/KXEhfyWZZDUoIKuLA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -8803,14 +8810,14 @@ snapshots:
     dependencies:
       deepmerge: 4.3.1
 
-  '@bundled-es-modules/glob@10.3.13':
+  '@bundled-es-modules/glob@10.4.2':
     dependencies:
       buffer: 6.0.3
       events: 3.3.0
       glob: 10.4.2
       patch-package: 8.0.0
       path: 0.12.7
-      stream: 0.0.2
+      stream: 0.0.3
       string_decoder: 1.3.0
       url: 0.11.3
 
@@ -11816,6 +11823,8 @@ snapshots:
     dependencies:
       array-ify: 1.0.0
       dot-prop: 5.3.0
+
+  component-emitter@2.0.0: {}
 
   compressible@2.0.18:
     dependencies:
@@ -15585,6 +15594,10 @@ snapshots:
     dependencies:
       emitter-component: 1.1.2
 
+  stream@0.0.3:
+    dependencies:
+      component-emitter: 2.0.0
+
   streamsearch@1.1.0: {}
 
   string-argv@0.3.2: {}
@@ -15689,10 +15702,10 @@ snapshots:
       minimist: 1.2.8
       through: 2.3.8
 
-  style-dictionary@4.0.0-prerelease.31:
+  style-dictionary@4.0.0:
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
-      '@bundled-es-modules/glob': 10.3.13
+      '@bundled-es-modules/glob': 10.4.2
       '@bundled-es-modules/memfs': 4.8.1
       '@zip.js/zip.js': 2.7.45
       chalk: 5.3.0
