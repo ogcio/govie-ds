@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.3.0...@govie-ds/tokens-0.3.1) (2024-07-04)
+
+### Dependency Updates
+
+* `@govie-ds/tokens-builder` updated to version `0.1.0`
+
+
 # [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.2.0...@govie-ds/tokens-0.3.0) (2024-07-01)
 
 
