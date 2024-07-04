@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.2...@govie-react/ds-0.5.3) (2024-07-04)
+
+
+### Bug Fixes
+
+* update reset path ([#103](https://github.com/ogcio/govie-ds/issues/103)) ([6e90d87](https://github.com/ogcio/govie-ds/commit/6e90d8792bba825a273f06d3649556ec54415202))
+
+
+
 ## [0.5.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.1...@govie-react/ds-0.5.2) (2024-07-04)
 
 ### Dependency Updates
