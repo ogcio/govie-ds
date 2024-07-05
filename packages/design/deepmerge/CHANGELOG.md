@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.2.0...@govie-ds/deepmerge-0.2.1) (2024-07-05)
+
+
+### Bug Fixes
+
+* update merge desc ([#107](https://github.com/ogcio/govie-ds/issues/107)) ([35fd649](https://github.com/ogcio/govie-ds/commit/35fd649facc6923f7854122a7c98f4e549eb2218))
+
+
+
 # [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.1.1...@govie-ds/deepmerge-0.2.0) (2024-07-01)
 
 
