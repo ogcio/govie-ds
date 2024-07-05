@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.18.9](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.18.8...@govie-ds/docs-0.18.9) (2024-07-05)
+
+
+### Bug Fixes
+
+* update image path ([#108](https://github.com/ogcio/govie-ds/issues/108)) ([ac72d5e](https://github.com/ogcio/govie-ds/commit/ac72d5e6706cf5af211a0e4d3a36fc4db3154043))
+
+
+
 ## [0.18.8](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.18.7...@govie-ds/docs-0.18.8) (2024-07-05)
 
 ### Dependency Updates
