@@ -23,6 +23,7 @@ import {
 } from '../typography/type-scale-table';
 import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
+import { Image } from './image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { cn } from '@/lib/cn';
 
@@ -54,6 +55,7 @@ export function Mdx({ code }: MdxProps) {
             {children}
           </code>
         ),
+        Image: (props) => <Image {...props} />,
         ColorPrimitives: () => <ColorPrimitives />,
         FontFamilyTable: () => <FontFamilyTable />,
         FontSizeTable: () => <FontSizeTable />,
