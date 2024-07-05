@@ -1,4 +1,5 @@
 import NextImage from 'next/image';
+import { config } from '@/lib/config';
 
 export function Image({
   src,
@@ -11,11 +12,13 @@ export function Image({
   width: number;
   height: number;
 }) {
+  const imageSource = config.isGitHubPages() ? `/govie-ds${src}` : src;
+
   return (
     <div className="bg-gray-50 p-lg flex items-center justify-center">
       <div className="max-w-[60%]">
         <NextImage
-          src={src}
+          src={imageSource}
           alt={alt}
           width={width}
           height={height}

@@ -6,6 +6,7 @@ function isProduction() {
 
 export type DocumentSiteConfiguration = {
   isProduction: () => boolean;
+  isGitHubPages: () => boolean;
   showDrafts: () => boolean;
   buildingBlocksHomeUrl: string;
   feedbackFormUrl: string;
@@ -24,6 +25,7 @@ function getConfiguration(
 ): DocumentSiteConfiguration {
   const defaultConfiguration: DocumentSiteConfiguration = {
     isProduction: () => isProduction(), // TODO: review if required
+    isGitHubPages: () => process.env.GITHUB_PAGES === 'true',
     showDrafts: () => {
       // Show drafts setting takes precedence
       if (process.env.NEXT_PUBLIC_SHOW_DRAFTS) {
