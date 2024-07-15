@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PhaseBanner } from './phase-banner.js';
 import { Fragment } from 'react/jsx-runtime';
 import { Link } from '../link/link.js';
+import { PhaseBanner } from './phase-banner.js';
 
 const meta = {
   title: 'navigation/PhaseBanner',
