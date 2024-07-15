@@ -1,4 +1,4 @@
-export function HarpLogo() {
+export function GovIELogo() {
   return (
     <svg
       width="110"
