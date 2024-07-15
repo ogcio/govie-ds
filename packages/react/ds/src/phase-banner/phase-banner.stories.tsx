@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { PhaseBanner } from './phase-banner.js';
+import { Fragment } from 'react/jsx-runtime';
+import { Link } from '../link/link.js';
 
 const meta = {
   title: 'navigation/PhaseBanner',
@@ -19,6 +21,11 @@ export const Alpha: Story = {
 export const Beta: Story = {
   args: {
     level: 'beta',
-    children: 'This is a beta service.',
+    children: (
+      <Fragment>
+        This part of GOV.IE is being rebuilt -{' '}
+        <Link href="https://example.com">find out what that means</Link>
+      </Fragment>
+    ),
   },
 };
