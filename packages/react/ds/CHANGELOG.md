@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.3...@govie-react/ds-0.6.0) (2024-07-15)
+
+
+### Features
+
+* add phase banner ([#109](https://github.com/ogcio/govie-ds/issues/109)) ([f4110a8](https://github.com/ogcio/govie-ds/commit/f4110a85f7cf1f8d6b5a6b5798c91f14a409ff75))
+
+
+
 ## [0.5.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.2...@govie-react/ds-0.5.3) (2024-07-04)
 
 
