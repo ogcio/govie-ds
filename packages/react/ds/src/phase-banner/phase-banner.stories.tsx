@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { PhaseBanner } from './phase-banner.js';
 
 const meta = {
@@ -13,13 +12,13 @@ type Story = StoryObj<typeof meta>;
 export const Alpha: Story = {
   args: {
     level: 'alpha',
-    children: <Paragraph>This is an alpha service.</Paragraph>,
+    children: 'This is an alpha service.',
   },
 };
 
 export const Beta: Story = {
   args: {
     level: 'beta',
-    children: <Paragraph>This is a beta service.</Paragraph>,
+    children: 'This is a beta service.',
   },
 };
