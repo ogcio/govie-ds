@@ -6,3 +6,4 @@ export * from './icon/icon.js';
 export * from './icon-button/icon-button.js';
 export * from './link/link.js';
 export * from './paragraph/paragraph.js';
+export * from './phase-banner/phase-banner.js';
