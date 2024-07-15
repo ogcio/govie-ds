@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.18.11](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.18.10...@govie-ds/docs-0.18.11) (2024-07-15)
+
+### Dependency Updates
+
+* `@govie-react/ds` updated to version `0.6.1`
+
+
 ## [0.18.10](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.18.9...@govie-ds/docs-0.18.10) (2024-07-15)
 
 ### Dependency Updates
