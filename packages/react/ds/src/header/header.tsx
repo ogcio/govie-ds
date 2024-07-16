@@ -1,7 +1,7 @@
 import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
-import { HarpLogo } from './harp-logo.js';
+import { GovIrelandLogo } from './gov-ireland-logo.js';
 import linkStyles from './header.module.css';
 
 export type HeaderProps = {
@@ -15,7 +15,7 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
     <header
       style={{
         backgroundColor: variables.primitive.color.emerald[800],
-        borderBottomWidth: variables.primitive.border.width[400],
+        // borderBottomWidth: variables.primitive.border.width[400], // TODO: semantic vars
         borderColor: variables.primitive.color.gold[500],
       }}
     >
@@ -35,10 +35,10 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
           >
             {homeHref ? (
               <a className={linkStyles.homeLink} href={homeHref}>
-                <HarpLogo />
+                <GovIrelandLogo />
               </a>
             ) : (
-              <HarpLogo />
+              <GovIrelandLogo />
             )}
           </div>
           {serviceName ? (
