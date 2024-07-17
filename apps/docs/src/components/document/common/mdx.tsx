@@ -1,9 +1,11 @@
-import { Heading, Paragraph } from '@govie-react/ds';
+import { Heading, Link, Paragraph } from '@govie-react/ds';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
+import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { Logos } from '../resources/logos';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
 import { SizeTable } from '../size/size-table';
@@ -45,6 +47,8 @@ export function Mdx({ code }: MdxProps) {
         h6: ({ children }) => <Heading as="h6">{children}</Heading>,
         p: ({ children }) => <Paragraph>{children}</Paragraph>,
         span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
+        a: ({ children, href }) =>
+          href ? <Link href={href}>{children}</Link> : null,
         code: ({ children }) => (
           <code
             className={cn(
@@ -76,6 +80,8 @@ export function Mdx({ code }: MdxProps) {
         OpacityTable: () => <OpacityTable />,
         ZIndexTable: () => <ZIndexTable />,
         ComponentStatusTable: () => <ComponentStatusTable />,
+        SystemElements: () => <SystemElements />,
+        Logos: () => <Logos />,
       }}
     />
   );
