@@ -116,17 +116,17 @@ const links = [
     icon: <DesignTokensIcon />,
   },
   {
-    href: '/foo',
+    href: '/components/html/',
     label: 'HTML components',
     icon: <HtmlIcon />,
   },
   {
-    href: '/bar',
+    href: '/components/react/',
     label: 'React components',
     icon: <ReactIcon />,
   },
   {
-    href: '/baz',
+    href: '/resources/figma/',
     label: 'Figma library',
     icon: <FigmaIcon />,
   },
