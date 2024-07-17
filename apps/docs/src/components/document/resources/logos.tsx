@@ -1,6 +1,6 @@
 import { Heading } from '@govie-react/ds';
-import Image from 'next/image';
 import { Fragment } from 'react';
+import { Image } from '../common/image';
 import { CopySvg } from './copy-svg';
 import { cn } from '@/lib/cn';
 
