@@ -1,5 +1,5 @@
-import { Link } from '@govie-react/ds';
 import { Fragment } from 'react';
+import { Link } from '@/components/typography/link';
 
 function Card({
   href,
