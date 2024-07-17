@@ -26,6 +26,7 @@ import { ZIndexTable } from '../z-index/z-index-table';
 import { Image } from './image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { cn } from '@/lib/cn';
+import { SystemElements } from '../get-started/system-elements';
 
 export type MdxProps = {
   code: string;
@@ -76,6 +77,7 @@ export function Mdx({ code }: MdxProps) {
         OpacityTable: () => <OpacityTable />,
         ZIndexTable: () => <ZIndexTable />,
         ComponentStatusTable: () => <ComponentStatusTable />,
+        SystemElements: () => <SystemElements />,
       }}
     />
   );
