@@ -1,5 +1,5 @@
 import { MenuIcon } from '../icons/menu-icon';
-import { Logo } from '../logos/logo';
+import { GovIELogo } from '../logos/govie-logo';
 import { Container } from './container';
 import { config } from '@/lib/config';
 
@@ -13,7 +13,7 @@ export function Header({
   onMobileMenuSelect = () => {},
 }: HeaderProps) {
   return (
-    <div className="bg-emerald-800 border-b-lg border-gold-500">
+    <div className="bg-emerald-800">
       <Container>
         <div className="flex items-center py-lg gap-lg text-white">
           {showMobileMenu ? (
@@ -28,7 +28,7 @@ export function Header({
             className="border-b-lg border-emerald-800 hover:border-white"
             href={config.buildingBlocksHomeUrl}
           >
-            <Logo />
+            <GovIELogo />
           </a>
         </div>
       </Container>

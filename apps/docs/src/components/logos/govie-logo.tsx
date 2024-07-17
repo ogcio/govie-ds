@@ -1,4 +1,4 @@
-export function Logo() {
+export function GovIELogo() {
   return (
     <svg
       width="110"
