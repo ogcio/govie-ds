@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.7.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.0...@govie-react/ds-0.7.1) (2024-07-17)
+
+
+### Bug Fixes
+
+* update clip path ([#116](https://github.com/ogcio/govie-ds/issues/116)) ([3babcc5](https://github.com/ogcio/govie-ds/commit/3babcc5ad7ad95d9f6808bba2041521058bfc33c))
+
+
+
 # [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.6.1...@govie-react/ds-0.7.0) (2024-07-17)
 
 
