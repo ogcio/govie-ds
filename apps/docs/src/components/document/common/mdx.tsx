@@ -1,4 +1,4 @@
-import { Heading, Link, Paragraph } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-react/ds';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
@@ -27,6 +27,7 @@ import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
 
 export type MdxProps = {
