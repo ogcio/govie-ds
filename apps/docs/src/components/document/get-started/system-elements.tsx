@@ -1,7 +1,7 @@
 import { Link } from '@govie-react/ds';
 import { Fragment } from 'react';
 
-function LargeButton({
+function Card({
   href,
   label,
   children,
@@ -137,9 +137,9 @@ export function SystemElements() {
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-lg">
       {links.map((link) => (
         <Fragment key={link.href}>
-          <LargeButton href={link.href} label={link.label}>
+          <Card href={link.href} label={link.label}>
             {link.icon}
-          </LargeButton>
+          </Card>
         </Fragment>
       ))}
     </div>
