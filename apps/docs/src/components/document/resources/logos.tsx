@@ -1,6 +1,8 @@
 import { Heading } from '@govie-react/ds';
 import Image from 'next/image';
 import { Fragment } from 'react';
+import { CopySvg } from './copy-svg';
+import { Text } from '@/components/typography/text';
 
 type Logo = {
   id: string;
@@ -42,8 +44,8 @@ function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-md">
         {logos.map((logo) => {
           return (
-            <div className="flex flex-col gap-md bg-gray-50 p-lg">
-              <div className="text-center">{logo.name}</div>
+            <div className="flex flex-col gap-md bg-gray-50 p-lg rounded">
+              <Text className="mb-0 text-center">{logo.name}</Text>
               <div
                 key={logo.id}
                 className="relative flex justify-center p-md"
@@ -55,6 +57,9 @@ function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
                   width={logo.width}
                   height={logo.height}
                 />
+              </div>
+              <div className="flex justify-end">
+                <CopySvg src={logo.src} />
               </div>
             </div>
           );
