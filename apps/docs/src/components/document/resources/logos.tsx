@@ -2,7 +2,7 @@ import { Heading } from '@govie-react/ds';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { CopySvg } from './copy-svg';
-import { Text } from '@/components/typography/text';
+import { cn } from '@/lib/cn';
 
 type Logo = {
   id: string;
@@ -10,7 +10,7 @@ type Logo = {
   src: string;
   width: number;
   height: number;
-  backgroundColor?: string;
+  dark?: boolean;
 };
 
 type LogoGroup = {
@@ -33,7 +33,45 @@ const logoGroups: LogoGroup[] = [
   },
   {
     name: 'Government of Ireland',
-    logos: [],
+    logos: [
+      {
+        id: 'standard',
+        name: 'Standard',
+        src: '/logos/government-of-ireland/gov-std.svg',
+        width: 181,
+        height: 64,
+      },
+      {
+        id: 'green',
+        name: 'Green',
+        src: '/logos/government-of-ireland/gov-green.svg',
+        width: 181,
+        height: 64,
+      },
+      {
+        id: 'black',
+        name: 'Black',
+        src: '/logos/government-of-ireland/gov-black.svg',
+        width: 181,
+        height: 64,
+      },
+      {
+        id: 'standard-reverse',
+        name: 'Standard Reverse',
+        src: '/logos/government-of-ireland/gov-std-reverse.svg',
+        width: 181,
+        height: 64,
+        dark: true,
+      },
+      {
+        id: 'white',
+        name: 'White',
+        src: '/logos/government-of-ireland/gov-white.svg',
+        width: 181,
+        height: 64,
+        dark: true,
+      },
+    ],
   },
 ];
 
@@ -41,16 +79,22 @@ function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
   return (
     <div>
       <Heading as="h2">{name}</Heading>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-md">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-md">
         {logos.map((logo) => {
           return (
-            <div className="flex flex-col gap-md bg-gray-50 p-lg rounded">
-              <Text className="mb-0 text-center">{logo.name}</Text>
-              <div
-                key={logo.id}
-                className="relative flex justify-center p-md"
-                style={{ backgroundColor: logo.backgroundColor ?? 'white' }}
+            <div
+              className="flex flex-col gap-xl bg-gray-50 p-lg rounded"
+              style={{ backgroundColor: logo.dark ? '#000' : undefined }}
+            >
+              <p
+                className={cn(
+                  'mb-0 font-tertiary text-2xs',
+                  logo.dark ? 'text-white' : 'text-gray-600',
+                )}
               >
+                {logo.name}
+              </p>
+              <div key={logo.id} className="relative flex justify-center">
                 <Image
                   src={logo.src}
                   alt={logo.name}
