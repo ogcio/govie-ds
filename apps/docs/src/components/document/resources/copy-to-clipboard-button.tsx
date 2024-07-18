@@ -23,7 +23,8 @@ export function CopyToClipboardButton({ text }: { text: string }) {
         setCopied(true);
       }}
       className={cn(
-        'bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-600 rounded inline-flex items-center justify-center w-[40px] h-[40px]',
+        'hidden md:inline-flex',
+        'bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-600 rounded items-center justify-center w-[40px] h-[40px]',
         'appearance-none border-none outline-none cursor-pointer relative',
         'transition ease-in delay-50',
       )}

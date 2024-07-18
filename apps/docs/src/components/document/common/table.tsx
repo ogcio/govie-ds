@@ -1,10 +1,12 @@
 import { Fragment } from 'react';
 import { cn } from '@/lib/cn';
 
+export function Tr({ children }: { children: React.ReactNode }) {
+  return <tr>{children}</tr>;
+}
+
 export function Th({ children }: { children: React.ReactNode }) {
-  return (
-    <th className="px-md py-sm text-left text-lg text-gray-700">{children}</th>
-  );
+  return <th className="p-xl text-left text-sm text-gray-600">{children}</th>;
 }
 
 export function Td({
@@ -17,7 +19,7 @@ export function Td({
   style?: React.CSSProperties;
 }) {
   return (
-    <td className={cn('px-md py-lg text-gray-700', className)} style={style}>
+    <td className={cn('p-xl text-gray-700', className)} style={style}>
       {children}
     </td>
   );
@@ -33,18 +35,23 @@ export function Table<TId>({
   ids: TId[];
   renderRow: (id: TId) => React.ReactNode;
 }) {
+  // TODO: review shadow ring-1 ring-black ring-opacity-5
   return (
-    <table className="min-w-full divide-y divide-gray-300">
-      <thead>
-        <tr>
-          {headers.map((header) => (
-            <Fragment key={header}>
-              <Th key={header}>{header}</Th>
-            </Fragment>
-          ))}
-        </tr>
-      </thead>
-      <tbody className="bg-white">{ids.map((id) => renderRow(id))}</tbody>
-    </table>
+    <div className="overflow-hidden sm:rounded-lg">
+      <table className="w-full border border-gray-100 table-fixed">
+        <thead className="bg-gray-50">
+          <Tr>
+            {headers.map((header) => (
+              <Fragment key={header}>
+                <Th key={header}>{header}</Th>
+              </Fragment>
+            ))}
+          </Tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100 bg-white">
+          {ids.map((id) => renderRow(id))}
+        </tbody>
+      </table>
+    </div>
   );
 }
