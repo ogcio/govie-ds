@@ -1,5 +1,4 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList } from '../common/sample-list';
 import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';

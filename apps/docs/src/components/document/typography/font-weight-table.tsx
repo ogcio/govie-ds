@@ -1,9 +1,8 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList } from '../common/sample-list';
+import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
-import { SampleTable } from '../common/sample-table';
 
 export function FontWeightTable() {
   return (

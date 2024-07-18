@@ -1,5 +1,4 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList } from '../common/sample-list';
 import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';
@@ -18,9 +17,16 @@ export function LineHeightTable() {
           />
         );
       }}
-      renderSample={({ value }) => (
-        <span style={{ lineHeight: value }}>{sampleTextShort}</span>
-      )}
+      renderSample={({ value }) => {
+        return (
+          <div className="flex">
+            <div className="border-y border-gold-200">
+              <p style={{ lineHeight: value }}>{sampleTextShort}</p>
+              <p style={{ lineHeight: value }}>{sampleTextShort}</p>
+            </div>
+          </div>
+        );
+      }}
     />
   );
 }
