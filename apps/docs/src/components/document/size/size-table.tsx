@@ -1,5 +1,6 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList, toSampleTokens } from '../common/sample-list';
+import { SampleList } from '../common/sample-list';
+import { toSampleTokens } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
 
 export function SizeTable() {

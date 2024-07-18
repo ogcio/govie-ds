@@ -1,6 +1,7 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList, toSampleTokens } from '../common/sample-list';
+import { SampleList } from '../common/sample-list';
 import { sampleTextShort } from '../common/sample-text';
+import { toSampleTokens } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
 
 function remToEm(value: string) {

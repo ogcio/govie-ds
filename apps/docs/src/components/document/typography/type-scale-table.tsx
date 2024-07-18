@@ -1,6 +1,7 @@
 import { meta } from '@govie-ds/tokens';
-import { SampleList, toSampleTokens } from '../common/sample-list';
-import { sampleTextLong, sampleTextShort } from '../common/sample-text';
+import { SampleList } from '../common/sample-list';
+import { sampleTextShort } from '../common/sample-text';
+import { toSampleTokens } from '../common/sample-token';
 import { TypographyValueComposite } from './typography-value-composite';
 
 type Font = {
