@@ -1,15 +1,16 @@
 import { meta } from '@govie-ds/theme-govie';
 import { SampleList } from '../common/sample-list';
+import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
 
 export function LineHeightTable() {
   return (
-    <SampleList<number>
+    <SampleTable<number>
       name="line-height"
       tokens={toSampleTokens(meta.light.resolved.primitive.font.lineHeight)}
-      renderValue={(value) => {
+      renderValue={({ value }) => {
         return (
           <TokenValue
             value={value.toString()}
@@ -17,7 +18,7 @@ export function LineHeightTable() {
           />
         );
       }}
-      renderExample={(value) => (
+      renderSample={({ value }) => (
         <span style={{ lineHeight: value }}>{sampleTextShort}</span>
       )}
     />
