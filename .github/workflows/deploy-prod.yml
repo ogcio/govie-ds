@@ -63,3 +63,11 @@ jobs:
           IMAGE_TAG: latest # TODO: env vars in Nx project.json
         run: |
           pnpm ds:deploy
+
+      - name: Deploy to ECS
+        if: github.ref == 'refs/heads/main'
+        env:
+          CLUSTER_NAME: life-events-ecs
+          SERVICE_NAME: design-system-service
+        run: |
+          aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment
