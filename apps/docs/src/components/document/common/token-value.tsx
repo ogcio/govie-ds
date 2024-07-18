@@ -3,19 +3,35 @@ import { Fragment } from 'react';
 export type TokenValueProps = {
   value: string;
   converted?: string;
+  inline?: boolean;
 };
 
-export function TokenValue({ value, converted }: TokenValueProps) {
+export function TokenValue({
+  value,
+  converted,
+  inline = false,
+}: TokenValueProps) {
+  if (inline) {
+    return (
+      <p className="leading-none">
+        <span className="text-gray-900 text-xs">{value}</span>
+        {converted ? (
+          <span className="text-2xs font-light hidden lg:inline">
+            {' '}
+            ({converted})
+          </span>
+        ) : null}
+      </p>
+    );
+  }
+
   return (
-    <p className="leading-none">
-      <span className="text-gray-900 text-xs">{value}</span>
+    <div>
+      <p className="leading-none text-gray-900 text-xs">{value}</p>
       {converted ? (
-        <span className="text-2xs font-light hidden lg:inline">
-          {' '}
-          ({converted})
-        </span>
+        <p className="text-2xs font-light hidden lg:inline">({converted})</p>
       ) : null}
-    </p>
+    </div>
   );
 }
 
@@ -39,7 +55,7 @@ export function TokenValueComposite({ tokens }: TokenValueCompositeProps) {
       {tokens.map((token) => (
         <Fragment key={token.name}>
           <TokenValueNameComposite name={token.name} />
-          <TokenValue value={token.value} converted={token.converted} />
+          <TokenValue value={token.value} converted={token.converted} inline />
         </Fragment>
       ))}
     </div>

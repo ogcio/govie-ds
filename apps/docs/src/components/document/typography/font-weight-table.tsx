@@ -1,17 +1,18 @@
 import { meta } from '@govie-ds/theme-govie';
-import { SampleList, toSampleTokens } from '../common/sample-list';
+import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
+import { toSampleTokens } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
 
 export function FontWeightTable() {
   return (
-    <SampleList<number>
+    <SampleTable<number>
       name="font-weight"
       tokens={toSampleTokens(meta.light.resolved.primitive.font.weight)}
-      renderValue={(value) => {
+      renderValue={({ value }) => {
         return <TokenValue value={value.toString()} />;
       }}
-      renderExample={(value) => (
+      renderSample={({ value }) => (
         <span style={{ fontWeight: value }}>{sampleTextShort}</span>
       )}
     />

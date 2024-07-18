@@ -1,7 +1,8 @@
 import { meta } from '@govie-ds/theme-govie';
 import { orderBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
-import { SampleList, SampleToken } from '../common/sample-list';
+import { SampleList } from '../common/sample-list';
+import { SampleToken } from '../common/sample-token';
 import { TokenValue } from '../common/token-value';
 
 function sortSpaces(

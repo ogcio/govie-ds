@@ -1,20 +1,6 @@
 import { Fragment } from 'react';
-import { objectKeys } from 'ts-extras';
+import { SampleToken } from './sample-token';
 import { TokenName } from './token-name';
-
-export type SampleToken<TValue> = {
-  name: string;
-  value: TValue;
-};
-
-export function toSampleTokens<TValue>(
-  tokens: Record<string, { $type: string; $value: TValue }>,
-): SampleToken<TValue>[] {
-  return objectKeys(tokens).map((key) => ({
-    name: key,
-    value: tokens[key].$value,
-  }));
-}
 
 export function SampleList<TValue>({
   name,
