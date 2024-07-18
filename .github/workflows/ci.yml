@@ -98,6 +98,14 @@ jobs:
         run: |
           pnpm nx affected --base=last-release -t docker --parallel=1
 
+      - name: Deploy to ECS
+        if: github.ref == 'refs/heads/main'
+        env:
+          CLUSTER_NAME: life-events-ecs
+          SERVICE_NAME: design-system-service
+        run: |
+          aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment
+
       - name: Tag last-release
         if: github.ref == 'refs/heads/main'
         shell: bash
