@@ -1,3 +1,3 @@
 export function Highlight({ children }: { children: React.ReactNode }) {
-  return <div className="bg-gray-50 rounded p-xl">{children}</div>;
+  return <div className="inline-block bg-gray-50 rounded p-xl">{children}</div>;
 }
