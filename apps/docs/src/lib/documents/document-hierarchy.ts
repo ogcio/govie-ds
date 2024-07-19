@@ -18,6 +18,14 @@ export type DocumentHierarchy = {
   children: DocumentHierarchy[];
 };
 
+export type DocumentHierarchyWithMeta = {
+  id: string;
+  order: number;
+  slug: string;
+  meta: Record<string, unknown>;
+  children: DocumentHierarchyWithMeta[];
+};
+
 function getDocumentHierarchyInternal(
   paths: string[],
 ): DocumentHierarchy | undefined {
@@ -51,20 +59,21 @@ function getDocumentHierarchyInternal(
 
       if (existing) {
         parent = existing;
-      } else {
-        const child: DocumentHierarchy = {
-          id,
-          order: part.order,
-          slug: parts
-            .slice(0, index + 1)
-            .map((p) => p.id)
-            .join('/'),
-          children: [],
-        };
-
-        parent.children.push(child);
-        parent = child;
+        continue;
       }
+
+      const child: DocumentHierarchy = {
+        id,
+        order: part.order,
+        slug: parts
+          .slice(0, index + 1)
+          .map((p) => p.id)
+          .join('/'),
+        children: [],
+      };
+
+      parent.children.push(child);
+      parent = child;
     }
   }
 

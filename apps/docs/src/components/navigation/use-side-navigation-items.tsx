@@ -3,22 +3,14 @@ import { usePathname } from 'next/navigation';
 import { SideNavigationItem } from '@/components/navigation/side-navigation';
 import {
   DocumentHierarchy,
+  DocumentHierarchyWithMeta,
   getDocumentHierarchy,
 } from '@/lib/documents/document-hierarchy';
 import * as documents from '@/lib/documents/documents';
+import { Doc } from 'contentlayer/generated';
 
-function toSideNavigationItem({
-  slug,
-  item,
-}: {
-  slug: string[];
-  item: DocumentHierarchy;
-}): SideNavigationItem | undefined {
-  if (item.id.endsWith('index')) {
-    return undefined;
-  }
-
-  const name = item.slug.split('/').pop();
+function getNameFromSlug(slug: string): string {
+  const name = slug.split('/').pop();
 
   if (!name) {
     throw new Error('Invalid name from slug.');
@@ -26,11 +18,29 @@ function toSideNavigationItem({
 
   const nameParts = name.split('-').filter(Boolean);
 
+  return nameParts
+    .map((part) => camelcase(part, { pascalCase: true }))
+    .join(' ');
+}
+
+function toSideNavigationItem({
+  slug,
+  item,
+}: {
+  slug: string[];
+  item: DocumentHierarchyWithMeta;
+}): SideNavigationItem | undefined {
+  if (item.id.endsWith('index')) {
+    return undefined;
+  }
+
+  const name: string = item.meta['navigation']
+    ? item.meta['navigation'].toString()
+    : getNameFromSlug(item.slug);
+
   return {
     id: item.id,
-    name: nameParts
-      .map((part) => camelcase(part, { pascalCase: true }))
-      .join(' '),
+    name,
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
     isActive: item.slug === slug.join('/'),
     children: item.children.map((child) => {
@@ -51,6 +61,29 @@ function toSideNavigationItem({
   };
 }
 
+function toMeta({
+  documents,
+  documentHierarchy,
+}: {
+  documents: Doc[];
+  documentHierarchy: DocumentHierarchy;
+}): DocumentHierarchyWithMeta {
+  const meta = documents.find(
+    (document) => document.id === documentHierarchy.id,
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { id, _id, _raw, body, ...rest } = meta ?? {};
+
+  return {
+    ...documentHierarchy,
+    meta: rest,
+    children: documentHierarchy.children.map((child) =>
+      toMeta({ documents, documentHierarchy: child }),
+    ),
+  };
+}
+
 export function useSideNavigationItems() {
   const pathname = usePathname();
   const slug = pathname.split('/').filter(Boolean);
@@ -59,14 +92,21 @@ export function useSideNavigationItems() {
     return [];
   }
 
-  const allDocumentIds = documents.getAll().map((document) => document.id);
-  const documentHierarchy = getDocumentHierarchy(allDocumentIds);
+  const allDocuments = documents.getAll();
+  const documentHierarchy = getDocumentHierarchy(
+    allDocuments.map((document) => document.id),
+  );
 
   if (!documentHierarchy) {
     return [];
   }
 
-  const topLevelHierarchy = documentHierarchy.children.find(
+  const documentHierarchyWithMeta: DocumentHierarchyWithMeta = toMeta({
+    documents: allDocuments,
+    documentHierarchy,
+  });
+
+  const topLevelHierarchy = documentHierarchyWithMeta.children.find(
     (child) => child.slug === slug[0],
   );
 

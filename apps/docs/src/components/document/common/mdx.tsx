@@ -27,6 +27,7 @@ import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
 
@@ -60,6 +61,8 @@ export function Mdx({ code }: MdxProps) {
             {children}
           </code>
         ),
+        blockquote: ({ children }) => <Highlight>{children}</Highlight>,
+        Highlight: ({ children }) => <Highlight>{children}</Highlight>,
         Image: (props) => <DocumentImage {...props} />,
         ColorPrimitives: () => <ColorPrimitives />,
         FontFamilyTable: () => <FontFamilyTable />,

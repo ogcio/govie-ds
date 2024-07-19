@@ -7,6 +7,7 @@ const Document = defineDocumentType(() => ({
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    navigation: { type: 'string', required: false },
     description: { type: 'string', required: true },
     draft: { type: 'boolean', required: true },
     status: {
