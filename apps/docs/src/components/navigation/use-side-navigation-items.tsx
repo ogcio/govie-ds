@@ -34,9 +34,13 @@ function toSideNavigationItem({
     return undefined;
   }
 
+  const name: string = item.meta['navigation']
+    ? item.meta['navigation'].toString()
+    : getNameFromSlug(item.slug);
+
   return {
     id: item.id,
-    name: item.meta['navigation'] ?? getNameFromSlug(item.slug),
+    name,
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
     isActive: item.slug === slug.join('/'),
     children: item.children.map((child) => {

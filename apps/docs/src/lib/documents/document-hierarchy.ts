@@ -22,7 +22,7 @@ export type DocumentHierarchyWithMeta = {
   id: string;
   order: number;
   slug: string;
-  meta: Record<string, string>;
+  meta: Record<string, unknown>;
   children: DocumentHierarchyWithMeta[];
 };
 
