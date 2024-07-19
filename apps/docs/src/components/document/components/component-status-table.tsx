@@ -1,4 +1,4 @@
-import { Heading, Icon, Link, Paragraph } from '@govie-react/ds';
+import { Heading, Link, Paragraph } from '@govie-react/ds';
 import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
