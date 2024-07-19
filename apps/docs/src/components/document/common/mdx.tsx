@@ -5,6 +5,7 @@ import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { Fonts } from '../resources/fonts';
 import { Logos } from '../resources/logos';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
@@ -30,7 +31,6 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
-import { Fonts } from '../resources/fonts';
 
 export type MdxProps = {
   code: string;
