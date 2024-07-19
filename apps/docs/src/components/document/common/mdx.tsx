@@ -5,6 +5,7 @@ import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { Fonts } from '../resources/fonts';
 import { Logos } from '../resources/logos';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
@@ -86,6 +87,7 @@ export function Mdx({ code }: MdxProps) {
         ComponentStatusTable: () => <ComponentStatusTable />,
         SystemElements: () => <SystemElements />,
         Logos: () => <Logos />,
+        Fonts: () => <Fonts />,
       }}
     />
   );
