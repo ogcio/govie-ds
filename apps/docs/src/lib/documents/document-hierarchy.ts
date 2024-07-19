@@ -51,20 +51,21 @@ function getDocumentHierarchyInternal(
 
       if (existing) {
         parent = existing;
-      } else {
-        const child: DocumentHierarchy = {
-          id,
-          order: part.order,
-          slug: parts
-            .slice(0, index + 1)
-            .map((p) => p.id)
-            .join('/'),
-          children: [],
-        };
-
-        parent.children.push(child);
-        parent = child;
+        continue;
       }
+
+      const child: DocumentHierarchy = {
+        id,
+        order: part.order,
+        slug: parts
+          .slice(0, index + 1)
+          .map((p) => p.id)
+          .join('/'),
+        children: [],
+      };
+
+      parent.children.push(child);
+      parent = child;
     }
   }
 

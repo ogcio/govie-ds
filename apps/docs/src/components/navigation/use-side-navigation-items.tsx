@@ -7,6 +7,20 @@ import {
 } from '@/lib/documents/document-hierarchy';
 import * as documents from '@/lib/documents/documents';
 
+function getNameFromSlug(slug: string): string {
+  const name = slug.split('/').pop();
+
+  if (!name) {
+    throw new Error('Invalid name from slug.');
+  }
+
+  const nameParts = name.split('-').filter(Boolean);
+
+  return nameParts
+    .map((part) => camelcase(part, { pascalCase: true }))
+    .join(' ');
+}
+
 function toSideNavigationItem({
   slug,
   item,
@@ -18,19 +32,9 @@ function toSideNavigationItem({
     return undefined;
   }
 
-  const name = item.slug.split('/').pop();
-
-  if (!name) {
-    throw new Error('Invalid name from slug.');
-  }
-
-  const nameParts = name.split('-').filter(Boolean);
-
   return {
     id: item.id,
-    name: nameParts
-      .map((part) => camelcase(part, { pascalCase: true }))
-      .join(' '),
+    name: getNameFromSlug(item.slug),
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
     isActive: item.slug === slug.join('/'),
     children: item.children.map((child) => {
