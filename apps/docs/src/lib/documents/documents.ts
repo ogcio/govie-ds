@@ -1,16 +1,16 @@
 import { config } from '../config';
-import { allDocs } from 'contentlayer/generated';
+import { allDocuments } from 'contentlayer/generated';
 
 export function getAll() {
   if (!config.showDrafts()) {
-    return allDocs.filter((document) => !document.draft);
+    return allDocuments.filter((document) => !document.draft);
   }
 
-  return allDocs;
+  return allDocuments;
 }
 
 export function getById({ id }: { id: string }) {
-  const document = allDocs.find((document) => document.id === id);
+  const document = allDocuments.find((document) => document.id === id);
 
   if (!config.showDrafts() && document?.draft) {
     return;
@@ -20,7 +20,9 @@ export function getById({ id }: { id: string }) {
 }
 
 export function getBySlug({ slug }: { slug: string[] }) {
-  const document = allDocs.find((document) => document.slug === slug.join('/'));
+  const document = allDocuments.find(
+    (document) => document.slug === slug.join('/'),
+  );
 
   if (!config.showDrafts() && document?.draft) {
     return;
