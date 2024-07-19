@@ -2,11 +2,12 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import { getDocumentDetails } from './src/lib/documents/document-details';
 
 const Document = defineDocumentType(() => ({
-  name: 'Document',
+  name: 'Doc',
   filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    navigation: { type: 'string', required: false },
     description: { type: 'string', required: true },
     draft: { type: 'boolean', required: true },
     status: {

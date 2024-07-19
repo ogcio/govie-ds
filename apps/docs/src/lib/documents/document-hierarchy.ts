@@ -18,6 +18,14 @@ export type DocumentHierarchy = {
   children: DocumentHierarchy[];
 };
 
+export type DocumentHierarchyWithMeta = {
+  id: string;
+  order: number;
+  slug: string;
+  meta: Record<string, string>;
+  children: DocumentHierarchyWithMeta[];
+};
+
 function getDocumentHierarchyInternal(
   paths: string[],
 ): DocumentHierarchy | undefined {
