@@ -12,8 +12,8 @@ export function DocumentImage({
   height: number;
 }) {
   return (
-    <div className="bg-gray-50 p-lg flex items-center justify-center">
-      <div className="max-w-[60%]">
+    <div className="bg-gray-50 p-xl flex items-center justify-center">
+      <div className="xl:max-w-[70%]">
         <Image
           src={src}
           alt={alt}
