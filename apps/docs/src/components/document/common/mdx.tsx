@@ -30,6 +30,7 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
+import { Fonts } from '../resources/fonts';
 
 export type MdxProps = {
   code: string;
@@ -86,6 +87,7 @@ export function Mdx({ code }: MdxProps) {
         ComponentStatusTable: () => <ComponentStatusTable />,
         SystemElements: () => <SystemElements />,
         Logos: () => <Logos />,
+        Fonts: () => <Fonts />,
       }}
     />
   );
