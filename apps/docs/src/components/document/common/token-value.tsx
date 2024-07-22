@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 export type TokenValueProps = {
   value: string;
   converted?: string;
