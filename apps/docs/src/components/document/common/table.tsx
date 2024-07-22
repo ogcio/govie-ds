@@ -19,7 +19,7 @@ export function Td({
   style?: React.CSSProperties;
 }) {
   return (
-    <td className={cn('p-xl text-gray-700', className)} style={style}>
+    <td className={cn('p-xl', className)} style={style}>
       {children}
     </td>
   );

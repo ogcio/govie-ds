@@ -73,7 +73,9 @@ export function Mdx({ code }: MdxProps) {
         LetterSpacingTable: () => <LetterSpacingTable />,
         TypeScaleHeadingTable: () => <TypeScaleHeadingTable />,
         TypeScaleTextTable: () => <TypeScaleTextTable />,
-        HeadingResponsiveSizes: () => <HeadingResponsiveSizes />,
+        HeadingResponsiveSizes: (props) => (
+          <HeadingResponsiveSizes {...props} />
+        ),
         TextResponsiveSizes: () => <TextResponsiveSizes />,
         TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,

@@ -8,8 +8,6 @@ import { SampleToken } from '../common/sample-token';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
-import { Table, Td, Tr } from '../common/table';
-import { TokenValue } from '../common/token-value';
 import { Text } from '@/components/typography/text';
 
 type TypographyScreenAliasValue = {
@@ -98,9 +96,11 @@ function getAlias({
 function TypographyResponsiveSizes({
   tokenName,
   size,
+  sampleText,
 }: {
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
   size: string;
+  sampleText: string;
 }) {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
@@ -126,6 +126,12 @@ function TypographyResponsiveSizes({
   );
 
   const tokenGroup = typographySizesGrouped[`${tokenName}/${size}`];
+
+  if (!tokenGroup) {
+    throw new Error(
+      `There was no typography size found for token ${tokenName}/${size}.`,
+    );
+  }
 
   const sampleTokens: SampleToken<TypeScaleValue>[] = tokenGroup.map(
     (typographySize) => {
@@ -155,7 +161,7 @@ function TypographyResponsiveSizes({
             fontFamily: value.value.fontFamily.join(', '),
           }}
         >
-          Heading Xl
+          {sampleText}
         </Text>
       )}
     />
@@ -217,8 +223,21 @@ function TypographySizesDetailed({
   });
 }
 
-export function HeadingResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="heading" size="xl" />;
+// TODO: size types
+export function HeadingResponsiveSizes({
+  size,
+  sampleText,
+}: {
+  size: string;
+  sampleText: string;
+}) {
+  return (
+    <TypographyResponsiveSizes
+      tokenName="heading"
+      size={size}
+      sampleText={sampleText}
+    />
+  );
 }
 
 export function TextResponsiveSizes() {
