@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.7.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.2...@govie-react/ds-0.7.3) (2024-07-22)
+
+
+### Bug Fixes
+
+* update heading and body size ([#128](https://github.com/ogcio/govie-ds/issues/128)) ([8e5f1d2](https://github.com/ogcio/govie-ds/commit/8e5f1d21d436bc26081f35f09cb7774cf98137bc))
+
+
+
 ## [0.7.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.1...@govie-react/ds-0.7.2) (2024-07-22)
 
 
