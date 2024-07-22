@@ -17,16 +17,16 @@ export function Heading({
   const defaultSize = (() => {
     switch (As) {
       case 'h1': {
-        return 'lg';
+        return 'xl';
       }
       case 'h2': {
-        return 'md';
+        return 'lg';
       }
       case 'h3': {
-        return 'sm';
+        return 'md';
       }
       case 'h4': {
-        return 'xs';
+        return 'sm';
       }
       case 'h5': {
         return 'xs';
