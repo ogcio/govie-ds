@@ -3,24 +3,36 @@ import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
+import { SampleTable } from '../common/sample-table';
+import { SampleToken } from '../common/sample-token';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
+import { Table, Td, Tr } from '../common/table';
+import { TokenValue } from '../common/token-value';
+import { Text } from '@/components/typography/text';
+
+type TypographyScreenAliasValue = {
+  fontFamily: string[];
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: number;
+};
 
 type TypographyScreenAlias = {
   name: string;
-  value: {
-    fontFamily: string[];
-    fontSize: string;
-    fontWeight: number;
-    lineHeight: number;
-  };
+  value: TypographyScreenAliasValue;
 };
 
 type TypographySize = {
   token: string;
   screenSize: string;
   alias: TypographyScreenAlias;
+};
+
+type TypeScaleValue = {
+  name: string;
+  value: TypographyScreenAliasValue;
 };
 
 function aliasToTokenName(alias: string) {
@@ -85,8 +97,10 @@ function getAlias({
 
 function TypographyResponsiveSizes({
   tokenName,
+  size,
 }: {
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
+  size: string;
 }) {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
@@ -111,10 +125,39 @@ function TypographyResponsiveSizes({
     (typographySize) => typographySize.token,
   );
 
+  const tokenGroup = typographySizesGrouped[`${tokenName}/${size}`];
+
+  const sampleTokens: SampleToken<TypeScaleValue>[] = tokenGroup.map(
+    (typographySize) => {
+      return {
+        name: typographySize.screenSize,
+        value: {
+          name: typographySize.alias.name,
+          value: typographySize.alias.value,
+        },
+      };
+    },
+  );
+
   return (
-    <TypographySizesDetailed
-      typographySizesGrouped={typographySizesGrouped}
-      screenSizes={screenSizes}
+    <SampleTable<TypeScaleValue>
+      name="screen"
+      tokenColumnName="Screen"
+      tokens={sampleTokens}
+      renderValue={({ value }) => {
+        return <TokenName name={value.name} />;
+      }}
+      renderSample={({ value }) => (
+        <Text
+          className="mb-0"
+          style={{
+            ...value.value,
+            fontFamily: value.value.fontFamily.join(', '),
+          }}
+        >
+          Heading Xl
+        </Text>
+      )}
     />
   );
 }
@@ -175,9 +218,9 @@ function TypographySizesDetailed({
 }
 
 export function HeadingResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="heading" />;
+  return <TypographyResponsiveSizes tokenName="heading" size="xl" />;
 }
 
 export function TextResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="text" />;
+  return null; // return <TypographyResponsiveSizes tokenName="text" />;
 }
