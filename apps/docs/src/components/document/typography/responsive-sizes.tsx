@@ -1,6 +1,6 @@
 import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
-import { groupBy } from 'lodash';
+import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
 import { TokenAlias } from '../common/token-alias';
@@ -111,6 +111,21 @@ function TypographyResponsiveSizes({
     (typographySize) => typographySize.token,
   );
 
+  return (
+    <TypographySizesDetailed
+      typographySizesGrouped={typographySizesGrouped}
+      screenSizes={screenSizes}
+    />
+  );
+}
+
+function TypographySizesDetailed({
+  typographySizesGrouped,
+  screenSizes,
+}: {
+  typographySizesGrouped: Dictionary<TypographySize[]>;
+  screenSizes: string[];
+}) {
   return objectKeys(typographySizesGrouped).map((headingToken, index) => {
     return (
       <div className="grid grid-cols-4 gap-x-md gap-y-xl border-y-xs border-gray-50 py-xl">
