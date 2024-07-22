@@ -1,4 +1,5 @@
-import { Heading, Link, Paragraph } from '@govie-react/ds';
+import { Link, Paragraph } from '@govie-react/ds';
+import { Table, Td, Tr } from '../common/table';
 import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -39,49 +40,80 @@ function ComponentStatusPill({
 export function ComponentStatusTable() {
   const components = getComponents();
 
+  const componentStatuses = components.map((component) => {
+    const figmaPlatform = component.statuses.find(
+      (platformStatus) => platformStatus.platform.id === 'figma',
+    );
+    const htmlPlatform = component.statuses.find(
+      (platformStatus) => platformStatus.platform.id === 'html',
+    );
+    const reactPlatform = component.statuses.find(
+      (platformStatus) => platformStatus.platform.id === 'react',
+    );
+
+    return {
+      id: component.id,
+      name: component.name,
+      figma: {
+        status: figmaPlatform?.status ?? 'considering',
+        href: figmaPlatform?.platform?.href,
+      },
+      html: {
+        status: htmlPlatform?.status ?? 'under-review',
+        href: htmlPlatform?.platform?.href,
+      },
+      react: {
+        status: reactPlatform?.status ?? 'considering',
+        href: reactPlatform?.platform?.href,
+      },
+    };
+  });
+
   return (
     <div>
       <Paragraph>
         There are currently <strong>{components.length}</strong> components
         under consideration for the design system.
       </Paragraph>
-      <ul className="flex flex-col gap-sm xl:max-w-[60%]">
-        <li className="grid grid-cols-4 gap-sm">
-          <Heading as="h3">Component</Heading>
-          <Heading as="h3">Figma UI Kit</Heading>
-          <Heading as="h3">HTML</Heading>
-          <Heading as="h3">React</Heading>
-        </li>
-        {components.map((component) => {
-          const figmaPlatform = component.statuses.find(
-            (platformStatus) => platformStatus.platform.id === 'figma',
-          );
-          const htmlPlatform = component.statuses.find(
-            (platformStatus) => platformStatus.platform.id === 'html',
-          );
-          const reactPlatform = component.statuses.find(
-            (platformStatus) => platformStatus.platform.id === 'react',
+      <Table
+        headers={['Component', 'Figma UI Kit', 'HTML', 'React']}
+        ids={componentStatuses.map((componentStatus) => componentStatus.id)}
+        renderRow={(id) => {
+          const componentStatus = componentStatuses.find(
+            (componentStatus) => componentStatus.id === id,
           );
 
+          if (!componentStatus) {
+            throw new Error(`Component status not found '${id}'.`);
+          }
+
           return (
-            <li key={component.id} className="grid grid-cols-4 gap-sm">
-              <Text className="mb-0">{component.name}</Text>
-              <ComponentStatusPill
-                status={figmaPlatform?.status ?? 'considering'}
-                href={figmaPlatform?.platform.href}
-              />
-              <ComponentStatusPill
-                status={htmlPlatform?.status ?? 'under-review'}
-                href={htmlPlatform?.platform.href}
-              />
-              <ComponentStatusPill
-                status={reactPlatform?.status ?? 'considering'}
-                href={reactPlatform?.platform.href}
-              />
-            </li>
+            <Tr key={id}>
+              <Td>
+                <Text className="mb-0">{componentStatus.name}</Text>
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.figma.status}
+                  href={componentStatus.figma.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.html.status}
+                  href={componentStatus.html.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.react.status}
+                  href={componentStatus.react.href}
+                />
+              </Td>
+            </Tr>
           );
-        })}
-      </ul>
+        }}
+      />
     </div>
   );
 }
