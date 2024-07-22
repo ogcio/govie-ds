@@ -118,8 +118,8 @@ export function SystemElements() {
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-lg">
       {links.map((link) => (
         <Fragment key={link.href}>
-          <Card href={link.href} label={link.label}>
-            {link.icon}
+          <Card link={{ href: link.href, label: link.label }}>
+            <div className="flex items-center justify-center">{link.icon}</div>
           </Card>
         </Fragment>
       ))}
