@@ -3,8 +3,8 @@ import { Image } from '../common/image';
 
 export function Fonts() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-xl">
-      <Card>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+      <Card title="Lato font">
         <Image
           src="/fonts/lato.png"
           alt="Lato font"
@@ -16,7 +16,7 @@ export function Fonts() {
           }}
         />
       </Card>
-      <Card>
+      <Card title="Arial font">
         <Image
           src="/fonts/arial.png"
           alt="Arial font"
@@ -28,7 +28,7 @@ export function Fonts() {
           }}
         />
       </Card>
-      <Card>
+      <Card title="Mono font">
         <Image
           src="/fonts/mono.png"
           alt="Mono font"

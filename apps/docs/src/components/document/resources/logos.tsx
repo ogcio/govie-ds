@@ -1,8 +1,8 @@
 import { Heading } from '@govie-react/ds';
 import { Fragment } from 'react';
+import { Card } from '../common/card';
 import { Image } from '../common/image';
 import { CopySvg } from './copy-svg';
-import { cn } from '@/lib/cn';
 
 type Logo = {
   id: string;
@@ -82,30 +82,21 @@ function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-xl">
         {logos.map((logo) => {
           return (
-            <div
-              className="flex flex-col gap-xl bg-gray-50 p-lg rounded"
-              style={{ backgroundColor: logo.dark ? '#000' : undefined }}
-            >
-              <p
-                className={cn(
-                  'mb-0 font-tertiary text-2xs',
-                  logo.dark ? 'text-white' : 'text-gray-600',
-                )}
-              >
-                {logo.name}
-              </p>
-              <div key={logo.id} className="relative flex justify-center">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={logo.width}
-                  height={logo.height}
-                />
-              </div>
-              <div className="flex justify-end">
-                <CopySvg src={logo.src} />
-              </div>
-            </div>
+            <Fragment key={logo.id}>
+              <Card title={logo.name} isDark={logo.dark}>
+                <div className="relative flex justify-center">
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={logo.width}
+                    height={logo.height}
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <CopySvg src={logo.src} />
+                </div>
+              </Card>
+            </Fragment>
           );
         })}
       </div>
