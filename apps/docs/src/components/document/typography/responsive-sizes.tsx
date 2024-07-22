@@ -1,26 +1,36 @@
 import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
-import { groupBy } from 'lodash';
+import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { objectKeys } from 'ts-extras';
+import { SampleTable } from '../common/sample-table';
+import { SampleToken } from '../common/sample-token';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
+import { Text } from '@/components/typography/text';
+
+type TypographyScreenAliasValue = {
+  fontFamily: string[];
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: number;
+};
 
 type TypographyScreenAlias = {
   name: string;
-  value: {
-    fontFamily: string[];
-    fontSize: string;
-    fontWeight: number;
-    lineHeight: number;
-  };
+  value: TypographyScreenAliasValue;
 };
 
 type TypographySize = {
   token: string;
   screenSize: string;
   alias: TypographyScreenAlias;
+};
+
+type TypeScaleValue = {
+  name: string;
+  value: TypographyScreenAliasValue;
 };
 
 function aliasToTokenName(alias: string) {
@@ -85,8 +95,12 @@ function getAlias({
 
 function TypographyResponsiveSizes({
   tokenName,
+  size,
+  sampleText,
 }: {
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
+  size: string;
+  sampleText: string;
 }) {
   const screenSizes = objectKeys(
     meta.light.resolved.semantic.typography,
@@ -111,6 +125,56 @@ function TypographyResponsiveSizes({
     (typographySize) => typographySize.token,
   );
 
+  const tokenGroup = typographySizesGrouped[`${tokenName}/${size}`];
+
+  if (!tokenGroup) {
+    throw new Error(
+      `There was no typography size found for token ${tokenName}/${size}.`,
+    );
+  }
+
+  const sampleTokens: SampleToken<TypeScaleValue>[] = tokenGroup.map(
+    (typographySize) => {
+      return {
+        name: typographySize.screenSize,
+        value: {
+          name: typographySize.alias.name,
+          value: typographySize.alias.value,
+        },
+      };
+    },
+  );
+
+  return (
+    <SampleTable<TypeScaleValue>
+      name="screen"
+      tokenColumnName="Screen"
+      tokens={sampleTokens}
+      renderValue={({ value }) => {
+        return <TokenName name={value.name} />;
+      }}
+      renderSample={({ value }) => (
+        <Text
+          className="mb-0"
+          style={{
+            ...value.value,
+            fontFamily: value.value.fontFamily.join(', '),
+          }}
+        >
+          {sampleText}
+        </Text>
+      )}
+    />
+  );
+}
+
+function TypographySizesDetailed({
+  typographySizesGrouped,
+  screenSizes,
+}: {
+  typographySizesGrouped: Dictionary<TypographySize[]>;
+  screenSizes: string[];
+}) {
   return objectKeys(typographySizesGrouped).map((headingToken, index) => {
     return (
       <div className="grid grid-cols-4 gap-x-md gap-y-xl border-y-xs border-gray-50 py-xl">
@@ -159,10 +223,36 @@ function TypographyResponsiveSizes({
   });
 }
 
-export function HeadingResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="heading" />;
+// TODO: size types
+export function HeadingResponsiveSizes({
+  size,
+  sampleText,
+}: {
+  size: string;
+  sampleText: string;
+}) {
+  return (
+    <TypographyResponsiveSizes
+      tokenName="heading"
+      size={size}
+      sampleText={sampleText}
+    />
+  );
 }
 
-export function TextResponsiveSizes() {
-  return <TypographyResponsiveSizes tokenName="text" />;
+// TODO: size types
+export function TextResponsiveSizes({
+  size,
+  sampleText,
+}: {
+  size: string;
+  sampleText: string;
+}) {
+  return (
+    <TypographyResponsiveSizes
+      tokenName="text"
+      size={size}
+      sampleText={sampleText}
+    />
+  );
 }
