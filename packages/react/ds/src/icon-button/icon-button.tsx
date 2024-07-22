@@ -4,26 +4,31 @@ import styles from './icon-button.module.css';
 export function IconButton({
   icon,
   onClick,
+  href,
   ariaLabel,
   disabled = false,
 }: {
   icon: React.ReactElement;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  href?: string;
   ariaLabel: string;
   disabled?: boolean;
 }) {
+  const Component = href ? 'a' : 'button';
+
   return (
-    <button
+    <Component
       className={styles.iconButton}
-      onClick={onClick}
+      onClick={href ? undefined : onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      href={href}
     >
       {cloneElement(icon, {
         ariaLabel: undefined,
         ariaHidden: true,
         color: disabled ? 'disabled' : undefined,
       })}
-    </button>
+    </Component>
   );
 }

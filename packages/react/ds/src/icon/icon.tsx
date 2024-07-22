@@ -11,6 +11,14 @@ function CopyDefault() {
   );
 }
 
+function OpenInNewDefault() {
+  return (
+    <Svg width={24} height={24}>
+      <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z"></path>
+    </Svg>
+  );
+}
+
 function EditDefault() {
   return (
     <Svg width={24} height={24} fill="none" stroke="currentColor">
@@ -79,7 +87,8 @@ export type IconId =
   | 'mic'
   | 'send'
   | 'thumbs-down'
-  | 'thumbs-up';
+  | 'thumbs-up'
+  | 'open-in-new';
 
 const iconMap: Record<string, () => React.ReactElement> = {
   ['copy']: CopyDefault,
@@ -90,6 +99,7 @@ const iconMap: Record<string, () => React.ReactElement> = {
   ['thumbs-down-filled']: ThumbsDownFilled,
   ['thumbs-up']: ThumbsUpDefault,
   ['thumbs-up-filled']: ThumbsUpFilled,
+  ['open-in-new']: OpenInNewDefault,
 };
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
