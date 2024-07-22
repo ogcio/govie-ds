@@ -240,6 +240,19 @@ export function HeadingResponsiveSizes({
   );
 }
 
-export function TextResponsiveSizes() {
-  return null; // return <TypographyResponsiveSizes tokenName="text" />;
+// TODO: size types
+export function TextResponsiveSizes({
+  size,
+  sampleText,
+}: {
+  size: string;
+  sampleText: string;
+}) {
+  return (
+    <TypographyResponsiveSizes
+      tokenName="text"
+      size={size}
+      sampleText={sampleText}
+    />
+  );
 }

@@ -76,7 +76,7 @@ export function Mdx({ code }: MdxProps) {
         HeadingResponsiveSizes: (props) => (
           <HeadingResponsiveSizes {...props} />
         ),
-        TextResponsiveSizes: () => <TextResponsiveSizes />,
+        TextResponsiveSizes: (props) => <TextResponsiveSizes {...props} />,
         TypographyResponsive: () => <TypographyResponsive />,
         ScreenSizeTable: () => <ScreenSizeTable />,
         SizeTable: () => <SizeTable />,
