@@ -1,4 +1,4 @@
-import { Link, Paragraph } from '@govie-react/ds';
+import { Icon, IconButton, Paragraph } from '@govie-react/ds';
 import { Table, Td, Tr } from '../common/table';
 import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
@@ -32,7 +32,13 @@ function ComponentStatusPill({
           }
         })()}
       </div>
-      {href ? <Link href={href}>View</Link> : null}
+      {href ? (
+        <IconButton
+          icon={<Icon id="open-in-new" size="sm" />}
+          href={href}
+          ariaLabel="Open"
+        />
+      ) : null}
     </div>
   );
 }
