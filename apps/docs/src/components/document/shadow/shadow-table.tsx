@@ -1,7 +1,7 @@
 import { meta } from '@govie-ds/theme-govie';
 import { SampleList } from '../common/sample-list';
 import { toSampleTokens } from '../common/sample-token';
-import { TokenValueComposite } from '../common/token-value';
+import { TokenValueComposite } from '../common/token-value-composite';
 
 type Shadow = {
   offsetX: string;

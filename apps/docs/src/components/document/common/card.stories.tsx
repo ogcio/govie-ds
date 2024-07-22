@@ -9,7 +9,6 @@ function Center({ children }: { children: React.ReactNode }) {
 const meta = {
   title: 'Common/Card',
   component: Card,
-  tags: ['autodocs'],
 } satisfies Meta<typeof Card>;
 
 export default meta;
