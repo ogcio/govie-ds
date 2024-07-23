@@ -47,7 +47,7 @@ export function createColorHexSchema() {
     .string({
       required_error: 'color is required.',
     })
-    .regex(/^#[0-9a-f]{6,8}$/, 'Color must be a full lowercase hex value.');
+    .regex(/^#[\da-f]{6,8}$/, 'Color must be a full lowercase hex value.');
 }
 
 export function createPixelSchema(name: string) {
@@ -104,8 +104,5 @@ export function createAliasSchema(name: string) {
     .string({
       required_error: `${name} is required.`,
     })
-    .regex(
-      /\{[a-zA-Z0-9_]+(?:\.[a-zA-Z0-9_]+)*\}/,
-      `${name} must be a valid alias.`,
-    );
+    .regex(/{\w+(?:\.\w+)*}/, `${name} must be a valid alias.`);
 }

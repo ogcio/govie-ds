@@ -1,6 +1,6 @@
-import { promises as fs } from "fs";
-import { glob } from "glob";
-import { deepmerge } from "@govie-ds/deepmerge";
+import { promises as fs } from 'node:fs';
+import { deepmerge } from '@govie-ds/deepmerge';
+import { glob } from 'glob';
 
 export async function mergeDesignTokens({
   source,
@@ -15,7 +15,7 @@ export async function mergeDesignTokens({
     const files = await glob(sourceGlob);
 
     for await (const file of files) {
-      const fileContent = await fs.readFile(file, "utf8");
+      const fileContent = await fs.readFile(file, 'utf8');
       const fileTokens = JSON.parse(fileContent);
       mergedTokens = deepmerge(mergedTokens, fileTokens);
     }

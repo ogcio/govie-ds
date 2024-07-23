@@ -1,5 +1,5 @@
-import { mergeDesignTokens } from "./merge-tokens.js";
-import { validateDesignTokens } from "./schema/index.js";
+import { mergeDesignTokens } from './merge-tokens.js';
+import { validateDesignTokens } from './schema/index.js';
 
 export async function validateDesignTokensSchema({
   source = [],

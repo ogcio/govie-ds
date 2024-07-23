@@ -1,15 +1,10 @@
 import { z } from 'zod';
 import { createAliasSchema, createTokenSchema } from '../shared.js';
 
-function createFontSchema(name: string) {
+function createTypographySchema(name: string) {
   return createTokenSchema({
     type: 'typography',
-    valueSchema: z.object({
-      fontFamily: createAliasSchema('fontFamily'),
-      fontSize: createAliasSchema('fontSize'),
-      fontWeight: createAliasSchema('fontWeight'),
-      lineHeight: createAliasSchema('lineHeight'),
-    }),
+    valueSchema: createAliasSchema(name),
     name,
   });
 }
@@ -18,12 +13,12 @@ function createResponsiveHeadingSchema() {
   return z
     .object(
       {
-        '4xl': createFontSchema('4xl'),
-        '3xl': createFontSchema('3xl'),
-        '2xl': createFontSchema('2xl'),
-        xl: createFontSchema('xl'),
-        lg: createFontSchema('lg'),
-        md: createFontSchema('md'),
+        xl: createTypographySchema('xl'),
+        lg: createTypographySchema('lg'),
+        md: createTypographySchema('md'),
+        sm: createTypographySchema('sm'),
+        xs: createTypographySchema('xs'),
+        ['2xs']: createTypographySchema('2xs'),
       },
       {
         required_error: 'heading is required.',
@@ -36,11 +31,9 @@ function createResponsiveTextSchema() {
   return z
     .object(
       {
-        xl: createFontSchema('xl'),
-        lg: createFontSchema('lg'),
-        md: createFontSchema('md'),
-        sm: createFontSchema('sm'),
-        xs: createFontSchema('xs'),
+        lg: createTypographySchema('lg'),
+        md: createTypographySchema('md'),
+        sm: createTypographySchema('sm'),
       },
       {
         required_error: 'text is required.',
