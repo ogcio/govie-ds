@@ -29,7 +29,7 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const htmlStorybookBaseUrl = 'https://ogcio.github.io/ogcio-ds';
+const htmlStorybookBaseUrl = 'https://storybook.design-system.ogcio.gov.ie/';
 
 export function getComponents(): ComponentDetail[] {
   let components: ComponentDetail[] = [
@@ -40,7 +40,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-button-primary-button--docs',
+            href: '?path=/docs/form-button-primary-button--docs',
           },
         },
       ],
@@ -52,7 +52,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-button-group--docs',
+            href: '?path=/docs/form-button-group--docs',
           },
         },
       ],
@@ -64,7 +64,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-character-count--docs',
+            href: '?path=/docs/form-character-count--docs',
           },
         },
       ],
@@ -76,7 +76,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-checkboxes--docs',
+            href: '?path=/docs/form-checkboxes--docs',
           },
         },
       ],
@@ -88,7 +88,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-date-input--docs',
+            href: '?path=/docs/form-date-input--docs',
           },
         },
       ],
@@ -100,7 +100,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-file-upload--docs',
+            href: '?path=/docs/form-file-upload--docs',
           },
         },
       ],
@@ -112,7 +112,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-icon-button--docs',
+            href: '?path=/docs/form-icon-button--docs',
           },
         },
         {
@@ -130,7 +130,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-text-input--docs',
+            href: '?path=/docs/form-text-input--docs',
           },
         },
       ],
@@ -142,7 +142,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-radio--docs',
+            href: '?path=/docs/form-radio--docs',
           },
         },
       ],
@@ -154,7 +154,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-select--docs',
+            href: '?path=/docs/form-select--docs',
           },
         },
       ],
@@ -166,7 +166,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/form-textarea--docs',
+            href: '?path=/docs/form-textarea--docs',
           },
         },
       ],
@@ -178,7 +178,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-accordion--docs',
+            href: '?path=/docs/typography-accordion--docs',
           },
         },
       ],
@@ -190,7 +190,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-cookie-banner--docs',
+            href: '?path=/docs/typography-cookie-banner--docs',
           },
         },
       ],
@@ -202,7 +202,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-details--docs',
+            href: '?path=/docs/typography-details--docs',
           },
         },
       ],
@@ -214,7 +214,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-error-summary--docs',
+            href: '?path=/docs/typography-error-summary--docs',
           },
         },
       ],
@@ -226,7 +226,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-inset-text--docs',
+            href: '?path=/docs/typography-inset-text--docs',
           },
         },
       ],
@@ -238,7 +238,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-label--docs',
+            href: '?path=/docs/typography-label--docs',
           },
         },
       ],
@@ -250,7 +250,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-phase-banner--docs',
+            href: '?path=/docs/typography-phase-banner--docs',
           },
         },
       ],
@@ -262,7 +262,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-summary-list--docs',
+            href: '?path=/docs/typography-summary-list--docs',
           },
         },
       ],
@@ -274,7 +274,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-table--docs',
+            href: '?path=/docs/typography-table--docs',
           },
         },
       ],
@@ -286,7 +286,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-tag--docs',
+            href: '?path=/docs/typography-tag--docs',
           },
         },
       ],
@@ -298,7 +298,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-task-list--docs',
+            href: '?path=/docs/typography-task-list--docs',
           },
         },
       ],
@@ -310,7 +310,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-heading--docs',
+            href: '?path=/docs/typography-heading--docs',
           },
         },
         {
@@ -328,7 +328,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-lists--docs',
+            href: '?path=/docs/typography-lists--docs',
           },
         },
       ],
@@ -340,7 +340,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-paragraph--docs',
+            href: '?path=/docs/typography-paragraph--docs',
           },
         },
         {
@@ -358,7 +358,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-section-break--docs',
+            href: '?path=/docs/typography-section-break--docs',
           },
         },
       ],
@@ -370,7 +370,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/typography-warning-text--docs',
+            href: '?path=/docs/typography-warning-text--docs',
           },
         },
       ],
@@ -382,7 +382,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/navigation-back-link--docs',
+            href: '?path=/docs/navigation-back-link--docs',
           },
         },
       ],
@@ -394,7 +394,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/navigation-breadcrumbs--docs',
+            href: '?path=/docs/navigation-breadcrumbs--docs',
           },
         },
       ],
@@ -406,7 +406,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/navigation-pagination--docs',
+            href: '?path=/docs/navigation-pagination--docs',
           },
         },
       ],
@@ -418,7 +418,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/navigation-tabs--docs',
+            href: '?path=/docs/navigation-tabs--docs',
           },
         },
       ],
@@ -430,7 +430,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/navigation-link--docs',
+            href: '?path=/docs/navigation-link--docs',
           },
         },
         {
@@ -466,7 +466,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-footer--docs',
+            href: '?path=/docs/layout-footer--docs',
           },
         },
         {
@@ -484,7 +484,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-header--docs',
+            href: '?path=/docs/layout-header--docs',
           },
         },
         {
@@ -502,7 +502,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-notification-panel--docs',
+            href: '?path=/docs/layout-notification-panel--docs',
           },
         },
       ],
@@ -514,7 +514,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-panel--docs',
+            href: '?path=/docs/layout-panel--docs',
           },
         },
       ],
@@ -526,7 +526,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-step-by-step-navigation--docs',
+            href: '?path=/docs/layout-step-by-step-navigation--docs',
           },
         },
       ],
@@ -538,7 +538,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/layout-superheader--docs',
+            href: '?path=/docs/layout-superheader--docs',
           },
         },
       ],
@@ -550,7 +550,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/application-actions--docs',
+            href: '?path=/docs/application-actions--docs',
           },
         },
       ],
@@ -562,7 +562,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/application-modal--docs',
+            href: '?path=/docs/application-modal--docs',
           },
         },
       ],
@@ -574,7 +574,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/application-progress-stepper--docs',
+            href: '?path=/docs/application-progress-stepper--docs',
           },
         },
       ],
@@ -586,7 +586,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/application-tick--docs',
+            href: '?path=/docs/application-tick--docs',
           },
         },
       ],
@@ -598,7 +598,7 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'html',
-            href: '/?path=/docs/application-tooltip--docs',
+            href: '?path=/docs/application-tooltip--docs',
           },
         },
       ],
