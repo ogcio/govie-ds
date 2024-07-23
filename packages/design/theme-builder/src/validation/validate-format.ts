@@ -1,10 +1,10 @@
-import { validate } from "@animaapp/design-tokens-validator";
-import { Tokens } from "@animaapp/design-tokens-validator/src/types.js";
-import { mergeDesignTokens } from "./merge-tokens.js";
+import { validate } from '@animaapp/design-tokens-validator';
+import { Tokens } from '@animaapp/design-tokens-validator/src/types.js';
+import { mergeDesignTokens } from './merge-tokens.js';
 
 export class DesignTokenValidationError extends Error {
   constructor(errors: string[] = []) {
-    super("Invalid design tokens format.");
+    super('Invalid design tokens format.');
     this.errors = errors;
   }
 
@@ -22,7 +22,7 @@ function validateDesignTokensObject({ tokens }: { tokens: unknown }) {
     // TODO: implement own DTCG validator
     // @animaapp/design-tokens-validator does not include error paths
     // and treats 0 as equivalent to null/undefined
-    if (errors[0].message === "Token must have a value") {
+    if (errors[0].message === 'Token must have a value') {
       return;
     }
 
