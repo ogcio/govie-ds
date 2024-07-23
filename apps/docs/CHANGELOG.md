@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.19.17](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.19.16...@govie-ds/docs-0.19.17) (2024-07-23)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.3.3`
+* `@govie-ds/theme-govie` updated to version `0.2.2`
+* `@govie-ds/theme-hse` updated to version `0.1.0`
+* `@govie-ds/tokens` updated to version `0.3.2`
+* `@govie-react/ds` updated to version `0.7.5`
+
+
 ## [0.19.16](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.19.15...@govie-ds/docs-0.19.16) (2024-07-23)
 
 ### Dependency Updates
