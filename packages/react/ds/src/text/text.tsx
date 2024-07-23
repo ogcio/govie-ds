@@ -4,7 +4,7 @@ import paragraphStyles from './paragraph.module.css';
 
 export type TextAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
-export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
   if (as === 'p' || as === 'span') {
@@ -19,7 +19,7 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
         return paragraphStyles.paragraphSm;
       }
       default: {
-        throw new Error(`Invalid heading size '${size}'.`);
+        throw new Error(`Invalid text size '${size}'.`);
       }
     }
   }
@@ -39,6 +39,9 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
     }
     case 'xs': {
       return headingStyles.headingXs;
+    }
+    case '2xs': {
+      return headingStyles.heading2Xs;
     }
     default: {
       throw new Error(`Invalid heading size '${size}'.`);

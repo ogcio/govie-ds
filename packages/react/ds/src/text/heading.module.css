@@ -1,3 +1,19 @@
+.heading2xs {
+  font: var(--govie-typography-default-heading-2xs);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-2xs);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-2xs);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-2xs);
+  }
+}
+
 .headingXs {
   font: var(--govie-typography-default-heading-xs);
 
@@ -11,6 +27,22 @@
 
   @media (min-width: 1280px) {
     font: var(--govie-typography-xl-heading-xs);
+  }
+}
+
+.headingSm {
+  font: var(--govie-typography-default-heading-sm);
+
+  @media (min-width: 768px) {
+    font: var(--govie-typography-xs-heading-sm);
+  }
+
+  @media (min-width: 1024px) {
+    font: var(--govie-typography-md-heading-sm);
+  }
+
+  @media (min-width: 1280px) {
+    font: var(--govie-typography-xl-heading-sm);
   }
 }
 

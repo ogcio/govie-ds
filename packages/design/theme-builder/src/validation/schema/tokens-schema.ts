@@ -1,14 +1,15 @@
 import { z } from 'zod';
+import { primitiveSchema } from './primitive/primitive-schema.js';
+import { semanticSchema } from './semantic/semantic-schema.js';
 import {
   TokenError,
   TokensValidationError,
 } from './tokens-validation-error.js';
-import { primitiveSchema } from './primitive/primitive-schema.js';
 
 export const tokensSchema = z
   .object({
     primitive: primitiveSchema,
-    semantic: z.any(), // TODO: implement
+    semantic: semanticSchema,
     component: z.any(), // TODO: implement
   })
   .strict();

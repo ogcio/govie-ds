@@ -5,8 +5,8 @@ import { outputFile } from 'fs-extra';
 import { compile } from 'json-schema-to-typescript';
 import { ZodTypeAny } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
-import { tokensSchema } from '../validation/schema/index.js';
-import { validateDesignTokensSchema } from '../validation/validate-schema.js';
+import { tokensSchema } from './validation/schema/index.js';
+import { validateDesignTokensSchema } from './validation/validate-schema.js';
 // import { validateDesignTokensFormat } from '../validation/validate-format.js';
 
 async function validateAndBuildTokens({
