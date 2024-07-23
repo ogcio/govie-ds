@@ -16,6 +16,7 @@ export const Default: Story = {
 export const WithHomeHref: Story = {
   args: {
     homeHref: '#',
+    homeAriaLabel: 'Home',
   },
 };
 
