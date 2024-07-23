@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.7.4](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.3...@govie-react/ds-0.7.4) (2024-07-23)
+
+
+### Bug Fixes
+
+* add home aria label ([#131](https://github.com/ogcio/govie-ds/issues/131)) ([b7b1f80](https://github.com/ogcio/govie-ds/commit/b7b1f801fb3e6cfa6030ffa9c4c100d29beda31e))
+
+
+
 ## [0.7.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.2...@govie-react/ds-0.7.3) (2024-07-22)
 
 
