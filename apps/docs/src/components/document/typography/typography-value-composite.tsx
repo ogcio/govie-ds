@@ -1,4 +1,4 @@
-import { TokenValueComposite } from '../common/token-value';
+import { TokenValueComposite } from '../common/token-value-composite';
 
 function remToPx(remString: string) {
   return Number(remString.replace('rem', '')) * 16;

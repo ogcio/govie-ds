@@ -5,6 +5,7 @@
 ```bash
 corepack enable
 pnpm install
+pnpm ds
 ```
 
 ## Build Figma tokens
