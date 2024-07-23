@@ -27,6 +27,7 @@ export function Header({
           <a
             className="border-b-lg border-emerald-800 hover:border-white"
             href={config.buildingBlocksHomeUrl}
+            aria-label="Home"
           >
             <GovIELogo />
           </a>

@@ -7,10 +7,16 @@ import linkStyles from './header.module.css';
 export type HeaderProps = {
   serviceName?: string;
   homeHref?: string;
+  homeAriaLabel?: string;
   serviceHref?: string;
 };
 
-export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
+export function Header({
+  serviceName,
+  homeHref,
+  homeAriaLabel,
+  serviceHref,
+}: HeaderProps) {
   return (
     <header
       style={{
@@ -34,7 +40,11 @@ export function Header({ serviceName, homeHref, serviceHref }: HeaderProps) {
             }}
           >
             {homeHref ? (
-              <a className={linkStyles.homeLink} href={homeHref}>
+              <a
+                className={linkStyles.homeLink}
+                href={homeHref}
+                aria-label={homeAriaLabel}
+              >
                 <GovIrelandLogo />
               </a>
             ) : (
