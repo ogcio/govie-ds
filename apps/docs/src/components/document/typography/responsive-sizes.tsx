@@ -158,7 +158,7 @@ function TypographyResponsiveSizes({
           className="mb-0"
           style={{
             ...value.value,
-            fontFamily: value.value.fontFamily.join(', '),
+            fontFamily: undefined,
           }}
         >
           {sampleText}
