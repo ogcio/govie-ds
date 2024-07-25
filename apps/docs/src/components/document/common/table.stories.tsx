@@ -1,4 +1,4 @@
-import { Heading, HeadingSize } from '@govie-react/ds';
+import { Container, Heading, HeadingSize } from '@govie-react/ds';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';
@@ -71,4 +71,20 @@ export const WithSample: Story = {
       );
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="flex flex-col gap-2xl h-full">
+        <div className="bg-green-700">Header</div>
+        <div className="container mx-auto grow">
+          <div className="flex gap-5xl">
+            <div>aside</div>
+            <div className="flex flex-col grow">
+              <Story />
+            </div>
+          </div>
+        </div>
+        <div>Footer</div>
+      </div>
+    ),
+  ],
 };
