@@ -112,10 +112,10 @@ function wrapComponents(
   wrapper: ({ key }: { key: string }) => any[] | undefined, // TODO: update types
 ) {
   // TODO: type
-  return Object.keys(components).reduce((acc, key) => {
+  return Object.keys(components).reduce((accumulator, key) => {
     const Component = components[key];
 
-    acc[key] = (props: Record<string, unknown>) => {
+    accumulator[key] = (props: Record<string, unknown>) => {
       const wrappers = wrapper({
         key,
       });
@@ -132,7 +132,7 @@ function wrapComponents(
       );
     };
 
-    return acc;
+    return accumulator;
   }, {} as any);
 }
 
