@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.19.21](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.19.20...@govie-ds/docs-0.19.21) (2024-07-25)
+
+
+### Bug Fixes
+
+* update figma resource copy ([#135](https://github.com/ogcio/govie-ds/issues/135)) ([88e888c](https://github.com/ogcio/govie-ds/commit/88e888c0c9366c6b5c3fe8f8116f45f51036ffe0))
+
+
+
 ## [0.19.20](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.19.19...@govie-ds/docs-0.19.20) (2024-07-25)
 
 
