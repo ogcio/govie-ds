@@ -21,7 +21,7 @@ export function MobileMenuConnected({
         <SheetHeader>
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
-        <div className="h-full flex flex-col gap-xl">
+        <div className="h-full flex flex-col gap-lg">
           {mainMenuItems.length === 0 ? null : (
             <ul className="flex flex-col gap-sm">
               {mainMenuItems.map((item) => (
@@ -38,7 +38,7 @@ export function MobileMenuConnected({
             </ul>
           )}
           <hr />
-          <div className="h-full relative overflow-y-scroll">
+          <div className="overflow-y-scroll mb-2xl">
             {sideNavigationItems.length === 0 ? null : (
               <SideNavigation
                 items={sideNavigationItems}

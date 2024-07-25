@@ -73,17 +73,13 @@ export const WithSample: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="flex flex-col gap-2xl h-full">
-        <div className="bg-green-700">Header</div>
-        <div className="container mx-auto grow">
-          <div className="flex gap-5xl">
-            <div>aside</div>
-            <div className="flex flex-col grow">
-              <Story />
-            </div>
+      <div className="container mx-auto grow">
+        <div className="flex gap-5xl">
+          <div className="hidden sm:block">aside</div>
+          <div className="flex flex-col grow overflow-x-auto">
+            <Story />
           </div>
         </div>
-        <div>Footer</div>
       </div>
     ),
   ],
