@@ -1,4 +1,4 @@
-import { Container, Heading, HeadingSize } from '@govie-react/ds';
+import { Heading, HeadingSize } from '@govie-react/ds';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';
@@ -24,7 +24,14 @@ export const Default: Story = {
   },
 };
 
-const samples = [
+type TableSample = {
+  id: string;
+  name: string;
+  value: string;
+  size: HeadingSize;
+};
+
+const samples: TableSample[] = [
   {
     id: '1',
     name: 'screen/xs',
@@ -65,7 +72,7 @@ export const WithSample: Story = {
             <TokenName name={sample.value} />
           </Td>
           <Td>
-            <Heading size={sample.size as HeadingSize}>Heading</Heading>
+            <Heading size={sample.size}>Heading</Heading>
           </Td>
         </Tr>
       );

@@ -38,7 +38,7 @@ export function Table<TId>({
   // TODO: review shadow ring-1 ring-black ring-opacity-5
   return (
     <div className="relative overflow-x-auto rounded-lg">
-      <table className="w-full border border-gray-50">
+      <table className="w-full border border-gray-50 lg:table-fixed">
         <thead className="bg-gray-50">
           <Tr>
             {headers.map((header) => (
