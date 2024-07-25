@@ -18,7 +18,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   }
 
   return (
-    <section className="flex flex-col grow">
+    <section className="flex flex-col grow overflow-x-auto">
       <div className="flex justify-between items-center">
         {document.status === 'stable' ? null : (
           <div>
