@@ -65,6 +65,7 @@
     "@storybook/test": "8.1.10",
     "@types/color-convert": "^2.0.3",
     "@types/lodash": "^4.17.4",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^20.14.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
