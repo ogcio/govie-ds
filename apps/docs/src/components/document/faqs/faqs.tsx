@@ -31,24 +31,27 @@ export function Faqs({
   return (
     <div>
       <ul className="flex gap-2xl my-xl border-b-xs border-gray-50">
-        {tabs.map((tab) => (
-          <li key={tab.title} className="flex">
-            {tab.id === current ? (
-              <p className="text-gray-900 border-b-md border-gold-200">
-                {tab.title}
-              </p>
-            ) : (
+        {tabs.map((tab) => {
+          const isCurrent = tab.id === current;
+          return (
+            <li key={tab.title} className="flex">
               <NextLink
                 href={tab.href}
+                aria-current={isCurrent ? 'page' : undefined}
                 className={cn(
-                  'inline-flex py-lg border-b-md border-transparent text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                  'inline-flex py-lg text-sm text-gray-500',
+                  isCurrent ? 'border-gold-200' : 'border-transparent',
+                  isCurrent
+                    ? 'pointer-events-none'
+                    : 'hover:border-gray-300 hover:text-gray-700',
+                  'border-b-md',
                 )}
               >
                 {tab.title}
               </NextLink>
-            )}
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
       {children}
     </div>
