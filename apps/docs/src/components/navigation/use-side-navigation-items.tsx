@@ -9,6 +9,15 @@ import {
 import * as documents from '@/lib/documents/documents';
 import { Doc } from 'contentlayer/generated';
 
+// TODO: generic solution for navigation titles for folders
+function toCased(value: string): string {
+  if (value === 'faqs') {
+    return 'FAQs';
+  }
+
+  return camelcase(value, { pascalCase: true });
+}
+
 function getNameFromSlug(slug: string): string {
   const name = slug.split('/').pop();
 
@@ -17,10 +26,7 @@ function getNameFromSlug(slug: string): string {
   }
 
   const nameParts = name.split('-').filter(Boolean);
-
-  return nameParts
-    .map((part) => camelcase(part, { pascalCase: true }))
-    .join(' ');
+  return nameParts.map((part) => toCased(part)).join(' ');
 }
 
 function toSideNavigationItem({
@@ -37,6 +43,8 @@ function toSideNavigationItem({
   const name: string = item.meta['navigation']
     ? item.meta['navigation'].toString()
     : getNameFromSlug(item.slug);
+
+  console.log({ name });
 
   return {
     id: item.id,

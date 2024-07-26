@@ -4,6 +4,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
+import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { Favicons } from '../resources/favicons';
@@ -89,6 +90,8 @@ const documentComponents: MDXComponents = {
   Logos: () => <Logos />,
   Fonts: () => <Fonts />,
   Favicons: () => <Favicons />,
+  Faqs: (props) => <Faqs {...props} />,
+  Faq: (props) => <Faq {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
