@@ -44,8 +44,6 @@ function toSideNavigationItem({
     ? item.meta['navigation'].toString()
     : getNameFromSlug(item.slug);
 
-  console.log({ name });
-
   return {
     id: item.id,
     name,

@@ -1,7 +1,6 @@
 import { Heading } from '@govie-react/ds';
-import NextLink from 'next/link';
 import React from 'react';
-import { cn } from '@/lib/cn';
+import { Tabs } from '../common/tabs';
 
 const tabs = [
   {
@@ -29,32 +28,9 @@ export function Faqs({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <ul className="flex gap-2xl my-xl border-b-xs border-gray-50">
-        {tabs.map((tab) => {
-          const isCurrent = tab.id === current;
-          return (
-            <li key={tab.title} className="flex">
-              <NextLink
-                href={tab.href}
-                aria-current={isCurrent ? 'page' : undefined}
-                className={cn(
-                  'inline-flex py-lg text-sm text-gray-500',
-                  isCurrent ? 'border-gold-200' : 'border-transparent',
-                  isCurrent
-                    ? 'pointer-events-none'
-                    : 'hover:border-gray-300 hover:text-gray-700',
-                  'border-b-md',
-                )}
-              >
-                {tab.title}
-              </NextLink>
-            </li>
-          );
-        })}
-      </ul>
+    <Tabs tabs={tabs} current={current}>
       {children}
-    </div>
+    </Tabs>
   );
 }
 
