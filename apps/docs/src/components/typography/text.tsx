@@ -2,7 +2,7 @@ import { cn } from '@/lib/cn';
 
 export type TextAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
-export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
   if (as === 'p' || as === 'span') {
@@ -27,22 +27,30 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
 
   // TODO: tokens
   const margin = 'mt-[0.5em] mb-[1em]';
+  const bold = 'font-bold';
 
   switch (size) {
     case 'xl': {
-      return cn('text-2xl xs:text-2xl md:text-3xl xl:text-4xl', margin);
+      return cn(
+        'font-semibold text-4xl xs:text-4xl md:text-5xl xl:text-6xl',
+        bold,
+        margin,
+      );
     }
     case 'lg': {
-      return cn('text-lg xs:text-lg md:text-xl xl:text-2xl', margin);
+      return cn('text-2xl xs:text-2xl md:text-3xl xl:text-4xl', bold, margin);
     }
     case 'md': {
-      return cn('text-sm xs:text-sm md:text-sm xl:text-md', margin);
+      return cn('text-lg xs:text-lg md:text-xl xl:text-2xl', bold, margin);
     }
     case 'sm': {
-      return cn('text-xs xs:text-xs md:text-xs xl:text-xs', margin);
+      return cn('text-lg xs:text-lg md:text-lg xl:text-xl', bold, margin);
     }
     case 'xs': {
-      return cn('text-2xl xs:text-2xl md:text-2xl xl:text-2xl', margin);
+      return cn('text-md xs:text-md md:text-md xl:text-md', bold, margin);
+    }
+    case '2xs': {
+      return cn('text-sm xs:text-sm md:text-sm xl:text-sm', bold, margin);
     }
     default: {
       throw new Error(`Invalid heading size '${size}'.`);

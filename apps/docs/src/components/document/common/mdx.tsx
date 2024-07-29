@@ -29,6 +29,7 @@ import {
 } from '../typography/type-scale-table';
 import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
+import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Highlight } from '@/components/typography/highlight';
@@ -92,6 +93,7 @@ const documentComponents: MDXComponents = {
   Favicons: () => <Favicons />,
   Faqs: (props) => <Faqs {...props} />,
   Faq: (props) => <Faq {...props} />,
+  DesignSystemBenefits: () => <DesignSystemBenefits />,
 };
 
 export function Mdx({ code }: MdxProps) {
