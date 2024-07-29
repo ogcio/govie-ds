@@ -1,0 +1,17 @@
+xl
+md
+sm
+xs
+2xs
+Arial
+Favicon
+Figma
+Frontend
+Lato
+Vite
+WCAG
+favicon
+inclusivity
+onboarding
+scalable
+user-centric
