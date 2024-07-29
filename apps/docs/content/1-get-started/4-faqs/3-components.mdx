@@ -15,7 +15,7 @@ A component is a modular, reusable piece of a user interface that can be indepen
 
 <Faq question="What components are provided by the design system?">
 
-The design system includes vanilla [HTML components](/components/html/) that are local and stable and an alpha library of [React components](/components/react/) currently under development.
+The design system includes vanilla [HTML components](/components/html/) that are **local** and stable and an alpha library of [React components](/components/react/) currently under development.
 
 </Faq>
 
@@ -38,6 +38,37 @@ In particular, global components:
 - Are built as an **HTML component**, including macro
 - Are built as a **React component**
 - Use design tokens so that they are **themeable** across both design and engineering
+
+</Faq>
+
+<Faq question="How will the local components be globalised?">
+
+The existing [HTML component](/components/html/) implementations are undergoing the following globalisation process, converting a single HTML component at a time from local to global based on priority:
+
+- Review design of the component
+- Implement as a design component within Figma
+- Document component anatomy
+- Document component guidelines
+- Implement the component in HTML using design tokens
+- Implement the component in React using design tokens
+- Document the component usage in HTML and React
+- Mark the local component as deprecated and provide links to the global component
+
+</Faq>
+
+<Faq question="How do you determine the order in which local components are globalised?">
+
+The components will be globalised based on the needs of departments with which we are currently collaborating and on usage statistics across various digital products.
+The current priority is reflected in the [component status](/components/status/) information.
+If you are interested in particular components being made available globally, then please [contact the design system team](/contact/).
+
+</Faq>
+
+<Faq question="Should I use the local HTML components if they are being globalised?">
+
+Yes, the existing local HTML components will be supported whilst they are being globalised.
+When a global version of a component is made available, the existing local version will be deprecated, but the local version will continue working unaffected.
+You can run the local version for as long as needed, and update to the global version when convenient for you.
 
 </Faq>
 
