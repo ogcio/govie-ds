@@ -51,6 +51,8 @@ const standardComponents: MDXComponents = {
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
+  ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
+  li: ({ children }) => <li className="text-md mb-lg">{children}</li>,
   code: ({ children }) => (
     <code
       className={cn(
