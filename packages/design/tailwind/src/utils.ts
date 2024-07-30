@@ -24,21 +24,25 @@ export function toFont({
   useVariables,
   variables,
   meta,
-  key,
+  fontSize,
+  lineHeight,
 }: {
   useVariables: boolean;
   variables: any;
   meta: any;
-  key: string;
+  fontSize: string;
+  lineHeight: string;
 }): [string, { lineHeight: string }] {
   return [
     useVariables
-      ? variables.primitive.font.size[key]
-      : meta.light.resolved.primitive.font.size[key].$value,
+      ? variables.primitive.font.size[fontSize]
+      : meta.light.resolved.primitive.font.size[fontSize].$value,
     {
       lineHeight: useVariables
-        ? variables.primitive.font.lineHeight[key]
-        : meta.light.resolved.primitive.font.lineHeight[key].$value.toString(),
+        ? variables.primitive.font.lineHeight[lineHeight]
+        : meta.light.resolved.primitive.font.lineHeight[
+            lineHeight
+          ].$value.toString(),
     },
   ];
 }

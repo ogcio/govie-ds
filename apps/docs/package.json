@@ -12,7 +12,9 @@
     "build:styles": "cross-env USE_RESOLVED_THEME=true tailwindcss build -i ./src/app/globals.css -o ./public/styles.css",
     "build:export": "cross-env NEXT_EXPORT=true next build",
     "start": "pnpm dlx serve@latest out",
-    "lint": "eslint '**/*.{ts,tsx}'",
+    "lint": "pnpm lint:code && pnpm lint:spelling",
+    "lint:code": "eslint '**/*.{ts,tsx}'",
+    "lint:spelling": "spellchecker -l en-GB -d dictionary.txt -f '**/*.mdx'",
     "test": "vitest run",
     "test:watch": "vitest",
     "docker:local": "docker build -f Dockerfile ../.. --build-arg=DEPLOY_ENV=production",
@@ -44,6 +46,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.4",
+    "spellchecker-cli": "^6.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animatecss": "^3.0.5",
     "ts-extras": "^0.11.0"

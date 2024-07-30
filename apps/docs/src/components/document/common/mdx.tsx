@@ -4,6 +4,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
+import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { Favicons } from '../resources/favicons';
@@ -28,6 +29,7 @@ import {
 } from '../typography/type-scale-table';
 import { TypographyResponsive } from '../typography/typography-responsive';
 import { ZIndexTable } from '../z-index/z-index-table';
+import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Highlight } from '@/components/typography/highlight';
@@ -49,6 +51,8 @@ const standardComponents: MDXComponents = {
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
+  ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
+  li: ({ children }) => <li className="text-md mb-lg">{children}</li>,
   code: ({ children }) => (
     <code
       className={cn(
@@ -89,6 +93,9 @@ const documentComponents: MDXComponents = {
   Logos: () => <Logos />,
   Fonts: () => <Fonts />,
   Favicons: () => <Favicons />,
+  Faqs: (props) => <Faqs {...props} />,
+  Faq: (props) => <Faq {...props} />,
+  DesignSystemBenefits: () => <DesignSystemBenefits />,
 };
 
 export function Mdx({ code }: MdxProps) {
