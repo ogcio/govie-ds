@@ -15,7 +15,9 @@ A component is a modular, reusable piece of a user interface that can be indepen
 
 <Faq question="What components are provided by the design system?">
 
-The design system includes vanilla [HTML components](/components/html/) that are **local** and stable and an alpha library of [React components](/components/react/) currently under development.
+The design system provides a set of components detailed on the [component status](/components/status/) page. The components are under design review and detailed component guidelines will be provided on this documentation site as each component is reviewed.
+
+Component implementations are provided that includes vanilla [HTML components](/components/html/) that are **local** and stable and an alpha library of [React components](/components/react/) currently under development.
 
 </Faq>
 
@@ -46,6 +48,7 @@ In particular, global components:
 The existing [HTML component](/components/html/) implementations are undergoing the following globalisation process, converting a single HTML component at a time from local to global based on priority:
 
 - Review design of the component
+- Define semantic design tokens
 - Implement as a design component within Figma
 - Document component anatomy
 - Document component guidelines
@@ -74,19 +77,74 @@ You can run the local version for as long as needed, and update to the global ve
 
 <Faq question="Will global components use the same HTML markup as local components?">
 
-TODO
+The markup will likely be similar in structure, but will use different class names and data attribute names, therefore when switching from local to global components, you will need to update the HTML markup.
+
+However, we are also looking to provide macros for global components that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) templating engines, so we would recommend switching to the use of macros where possible when moving from local to global components.
 
 </Faq>
 
-<Faq question="Why are the HTML components not web components?">
+<Faq question="Why will macros be provided alongside the HTML markup for global HTML components?">
 
-TODO
+The use of macros that are [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) compatible means that consumers of the global HTML components are protected from any underlying HTML markup changes whilst the global components are being built.
+
+This reduces the risk of having to deal with breaking changes as you update versions of global HTML components. It also greatly reduces the amount of code required to render components.
+
+</Faq>
+
+<Faq question="Will macros be provided for the local components?">
+
+No, the local components will require using the HTML markup directly, as already documented on the [HTML components Storybook](https://storybook.design-system.ogcio.gov.ie/).
+The priority for the design system team is to globalise the local components, rather than spending time improving the developer experience of the local components.
+However, we will still support the local components as they are globalised, providing any necessary bug fixing or assistance.
+
+When the global version of a component becomes available, we recommend favouring the use of the global component and the use of macros where possible.
+
+</Faq>
+
+<Faq question="Can I still use the HTML markup directly rather than the macros for global components?">
+
+Yes you can, but this would require more code compared to the use of macros, and having to deal with any underlying HTML markup changes as you update versions of the component library.
+
+We therefore strongly recommend the use of macros if you are using a technology stack that supports the execution of macros server side.
+
+</Faq>
+
+<Faq question="Can I run global and local components side by side or do I need to upgrade all components at once?">
+
+You can run local and global components side by side. Both sets of components will use different class and data attribute names, so will not interfere with each other.
+This provides a piecemeal migration path from a local component to the equivalent global component, one component at a time, when convenient for you.
+
+</Faq>
+
+<Faq question="Why are the HTML components not Web Components?">
+
+The [HTML components](/components/html/) are **data-driven** components (also known as **attribute-driven** components).
+This means that they use standard HTML tags with `data-` attributes. Any behaviour is attached to the component via JavaScript running on the client by querying the DOM for the appropriate `data-` attribute.
+
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) is a suite of technologies that provide a standard component model for the web, with wide browser support. Users can define new HTML tags that encapsulate appearance and behaviour.
+Web Components are framework agnostic, so promise a build once and run anywhere approach.
+
+The primary reason for the use of data-driven components over Web Components is that they provide a far simpler configuration for Server Side Rendering (SSR).
+
+Implementing SSR with data-driven components is straightforward. The server can render the components as standard HTML, and the client-side JavaScript can initialize or enhance the components based on data attributes. This approach supports progressive enhancement, where the basic content and functionality are available immediately, improving perceived performance and ensuring better accessibility and Search Engine Optimization (SEO), as the content is fully rendered and indexable by search engines.
+
+In comparison, Web Components are more complex to implement with SSR. While the server can render custom elements in the HTML, the full functionality of these components typically relies on client-side JavaScript to define and upgrade the elements, manage shadow DOM, and apply styles. This dependency can delay interactive features, affecting progressive enhancement and perceived performance. Additionally, web components can present challenges for SEO and accessibility, as crucial content and interactions might not be visible to search engines or accessible to assistive technologies until the JavaScript fully loads and executes.
+
+The SSR story for Web Components is constantly in review though, so the situation may change in future and a set of Web Components included in the design system.
 
 </Faq>
 
 <Faq question="Why don't React developers use the HTML components?">
 
-TODO
+Although having a single set of components would be easier to maintain, unfortunately the HTML components are not a good fit for React.
+Other than being non-idiomatic, the increasing popularity of moving work back to the server via React Server Components requires a seamless integration between server-side and client-side rendering, which is facilitated by React’s unified component model using JSX.
+Using the HTML components would greatly increase the complexity of building modern React applications.
+
+</Faq>
+
+<Faq question="Why are React components provided rather than Angular, Vue, Blazor etc?">
+
+The choice of React components is based on the needs on the design system and the other [Building Blocks](https://blocks.gov.ie/en)
 
 </Faq>
 
