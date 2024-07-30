@@ -5,6 +5,10 @@ import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import { ComponentStatusTable } from '../components/component-status-table';
 import { Faq, Faqs } from '../faqs/faqs';
+import {
+  DeveloperRecommendation,
+  DevelopersAdvice,
+} from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { Favicons } from '../resources/favicons';
@@ -32,6 +36,7 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
+import { wrapComponents } from './wrap-components';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
@@ -98,6 +103,8 @@ const documentComponents: MDXComponents = {
   Faq: (props) => <Faq {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
+  DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
+  DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -107,58 +114,17 @@ export function Mdx({ code }: MdxProps) {
     <Component
       components={{
         ...standardComponents,
-        ...wrapComponents(documentComponents, () => {
+        ...wrapComponents(documentComponents, ({ key }) => {
+          if (key === 'DeveloperRecommendation') {
+            return;
+          }
+
           return [MarginBottom];
         }),
       }}
     />
   );
 }
-
-// TODO: type
-function wrapComponents(
-  components: Record<string, any>,
-  wrapper: ({ key }: { key: string }) => any[] | undefined, // TODO: update types
-) {
-  // TODO: type
-  return Object.keys(components).reduce((accumulator, key) => {
-    const Component = components[key];
-
-    accumulator[key] = (props: Record<string, unknown>) => {
-      const wrappers = wrapper({
-        key,
-      });
-
-      if (!wrappers || wrappers.length === 0) {
-        return <Component {...props} />;
-      }
-
-      return (
-        <NestedComponents
-          component={<Component {...props} />}
-          wrappers={wrappers}
-        />
-      );
-    };
-
-    return accumulator;
-  }, {} as any);
-}
-
-// TODO: type
-const NestedComponents = ({
-  component,
-  wrappers,
-}: {
-  component: any;
-  wrappers: any[];
-}) => {
-  const nestedComponents = wrappers.reduceRight((accumulator, Component) => {
-    return <Component>{accumulator}</Component>;
-  }, component);
-
-  return nestedComponents;
-};
 
 function MarginBottom({ children }: { children: React.ReactNode }) {
   return <div className="mb-2xl">{children}</div>;

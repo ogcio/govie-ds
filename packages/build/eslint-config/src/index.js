@@ -51,6 +51,7 @@ export const eslintConfig = [
     },
     plugins: { import: legacyPlugin('eslint-plugin-import', 'import') },
     rules: {
+      curly: ['error', 'all'],
       'object-shorthand': ['error', 'always'],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
