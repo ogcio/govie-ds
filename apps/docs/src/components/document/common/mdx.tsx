@@ -28,6 +28,7 @@ import {
   TypeScaleTextTable,
 } from '../typography/type-scale-table';
 import { TypographyResponsive } from '../typography/typography-responsive';
+import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
@@ -96,6 +97,7 @@ const documentComponents: MDXComponents = {
   Faqs: (props) => <Faqs {...props} />,
   Faq: (props) => <Faq {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
+  Vision: () => <Vision />,
 };
 
 export function Mdx({ code }: MdxProps) {
