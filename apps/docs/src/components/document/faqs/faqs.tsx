@@ -47,7 +47,7 @@ export function Faq({
 }) {
   return (
     <div>
-      <Text as="h2" className="max-w-[36ch]">
+      <Text as="h2" size="md" className="max-w-[45ch]">
         {question}
       </Text>
       <div>{children}</div>

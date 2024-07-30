@@ -126,7 +126,7 @@ Web Components are framework agnostic, so promise a build once and run anywhere 
 
 The primary reason for the use of data-driven components over Web Components is that they provide a far simpler configuration for Server Side Rendering (SSR).
 
-Implementing SSR with data-driven components is straightforward. The server can render the components as standard HTML, and the client-side JavaScript can initialize or enhance the components based on data attributes. This approach supports progressive enhancement, where the basic content and functionality are available immediately, improving perceived performance and ensuring better accessibility and Search Engine Optimization (SEO), as the content is fully rendered and indexable by search engines.
+Implementing SSR with data-driven components is straightforward. The server can render the components as standard HTML, and the client-side JavaScript can initialise or enhance the components based on data attributes. This approach supports progressive enhancement, where the basic content and functionality are available immediately, improving perceived performance and ensuring better accessibility and Search Engine Optimisation (SEO), as the content is fully rendered and indexable by search engines.
 
 In comparison, Web Components are more complex to implement with SSR. While the server can render custom elements in the HTML, the full functionality of these components typically relies on client-side JavaScript to define and upgrade the elements, manage shadow DOM, and apply styles. This dependency can delay interactive features, affecting progressive enhancement and perceived performance. Additionally, web components can present challenges for SEO and accessibility, as crucial content and interactions might not be visible to search engines or accessible to assistive technologies until the JavaScript fully loads and executes.
 
@@ -144,19 +144,30 @@ Using the HTML components would greatly increase the complexity of building mode
 
 <Faq question="Why are React components provided rather than Angular, Vue, Blazor etc?">
 
-The choice of React components is based on the needs on the design system and the other [Building Blocks](https://blocks.gov.ie/en)
+The choice of React components is based on the available ecosystem and innovation in the React space.
+The design system documentation site is built with React, which allows us to use the same React components to document component anatomies on the documentation site.
+
+The other [Building Blocks](https://blocks.gov.ie/en) are also built with React, which allows the Building Blocks to be themeable as the React components are built out, broadening the use cases for all Building Blocks.
 
 </Faq>
 
 <Faq question="I have already built components in Angular, Vue, Blazor etc. should they not be part of the design system?">
 
-TODO
+Ideally the design system would provide additional idiomatic components in technologies such as Angular, Vue etc.
+However, given the current resources available to the design system team, we can only support the HTML and React component implementations.
+
+If your components are working well for you, we recommend that you keep maintaining them in the medium term.
+You should align your components with the design system guidelines as we make them available. In future, we will also look to provide the design tokens as packages that you can use directly to build out components.
+
+Long term, we would look to incorporate components implemented in other technologies into the design system.
+This would require aligning them with the latest guidelines and ensuring they are global, for example that they are built with our design tokens so that they are themeable using the same theming mechanism as our other components.
 
 </Faq>
 
 <Faq question="I want to change a component or create a new one, shall I just build one myself?">
 
-TODO
+If you have any suggestions for updates to existing components, or new components, we recommend [contacting the design system team](/contact/).
+This ensures that any changes or additions align with the overall design system principles, maintaining the goal of consistency and quality across multiple products.
 
 </Faq>
 

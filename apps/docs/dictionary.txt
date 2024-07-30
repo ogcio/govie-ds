@@ -16,3 +16,13 @@ onboarding
 scalable
 user-centric
 themeable
+SSR
+Vue
+theming
+JSX
+SEO
+DOM
+templating
+Nunjucks
+Jinja
+indexable
