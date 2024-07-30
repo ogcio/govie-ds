@@ -101,13 +101,13 @@ function Pills({
           <li
             key={`${item.text}${index}`}
             className={cn(
-              'relative flex flex-col gap-xs rounded shadow px-md py-sm text-center text-xs text-gray-700',
+              'relative flex flex-col rounded px-md py-sm text-center text-xs text-gray-700',
               backgroundColors[variant],
             )}
           >
-            <p className="z-100">{item.text}</p>
+            <p>{item.text}</p>
             {item.subText ? (
-              <p className="z-100 text-2xs text-gray-600">{item.subText}</p>
+              <p className="text-2xs text-gray-600">{item.subText}</p>
             ) : null}
           </li>
         ))}
@@ -157,7 +157,7 @@ function Structure({
 
 export function Vision() {
   return (
-    <div className="flex gap-md items-start">
+    <div className="grid xl:flex gap-md">
       <Structure title="Guidelines" items={guidelines} variant="guidelines" />
       <Structure title="Assets" items={assets} variant="assets" />
       <Structure title="Tools" items={tools} variant="tools" />
