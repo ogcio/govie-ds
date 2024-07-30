@@ -20,17 +20,21 @@ export function Header({
             <button
               className="block sm:hidden"
               onClick={() => onMobileMenuSelect()}
+              aria-label="Open menu"
             >
               <MenuIcon />
             </button>
           ) : null}
-          <a
-            className="border-b-lg border-emerald-800 hover:border-white"
-            href={config.buildingBlocksHomeUrl}
-            aria-label="Home"
-          >
-            <GovIELogo />
-          </a>
+          <div className="flex items-center gap-3xl">
+            <a
+              className="border-b-lg border-emerald-800 hover:border-white"
+              href={config.buildingBlocksHomeUrl}
+              aria-label="Home"
+            >
+              <GovIELogo />
+            </a>
+            <p className="text-xl mb-0">Design System</p>
+          </div>
         </div>
       </Container>
     </div>

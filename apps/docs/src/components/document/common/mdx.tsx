@@ -28,6 +28,7 @@ import {
   TypeScaleTextTable,
 } from '../typography/type-scale-table';
 import { TypographyResponsive } from '../typography/typography-responsive';
+import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
@@ -52,7 +53,7 @@ const standardComponents: MDXComponents = {
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
   ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
-  li: ({ children }) => <li className="text-md mb-lg">{children}</li>,
+  li: ({ children }) => <li className="text-md mb-sm">{children}</li>,
   code: ({ children }) => (
     <code
       className={cn(
@@ -96,6 +97,7 @@ const documentComponents: MDXComponents = {
   Faqs: (props) => <Faqs {...props} />,
   Faq: (props) => <Faq {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
+  Vision: () => <Vision />,
 };
 
 export function Mdx({ code }: MdxProps) {
