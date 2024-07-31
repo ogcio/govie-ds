@@ -5,6 +5,9 @@
   "main": "prettierrc.json",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "echo No build"
   },
