@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.3.2...@govie-ds/tokens-0.3.3) (2024-07-31)
+
+### Dependency Updates
+
+* `@govie-ds/prettier-config` updated to version `0.0.2`
+
+
 ## [0.3.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.3.1...@govie-ds/tokens-0.3.2) (2024-07-23)
 
 
