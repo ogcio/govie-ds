@@ -11,6 +11,9 @@
     "./light.css": "./dist/light.css",
     "./dark.css": "./dist/dark.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",

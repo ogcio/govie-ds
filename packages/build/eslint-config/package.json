@@ -4,6 +4,9 @@
   "license": "MIT",
   "type": "module",
   "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "format": "prettier 'src/**/*.js' --write",
     "format:check": "prettier 'src/**/*.js' --check"
