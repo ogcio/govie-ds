@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.0...@govie-ds/tailwind-0.4.1) (2024-07-31)
+
+### Dependency Updates
+
+* `@govie-ds/prettier-config` updated to version `0.0.2`
+* `@govie-ds/deepmerge` updated to version `0.2.2`
+* `@govie-ds/tokens` updated to version `0.3.3`
+
+
 # [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.3.3...@govie-ds/tailwind-0.4.0) (2024-07-30)
 
 
