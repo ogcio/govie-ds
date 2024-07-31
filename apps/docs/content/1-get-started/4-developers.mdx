@@ -7,4 +7,71 @@ status: in-development
 
 # Developers
 
-Development plays a crucial role in bringing government digital products to life, ensuring they are functional, reliable, and accessible. Integrating the Design System into development processes enables the creation of services that not only meet these standards but also streamline timelines by building upon a robust foundation. This approach promotes consistency, enhances user-friendliness, and improves accessibility for all users.
+The primary goal of the design system is to significantly contribute to the development of Government of Ireland digital products - increasing consistency, quality, efficiency, and accessibility.
+This is through a set of detailed [guidelines](/foundations/) and components as both data-driven [HTML components](/components/html/) and [React components](/components/react/).
+
+If you an engineer looking to get started with the design system, select your technology stack below for more information:
+
+<DevelopersAdvice>
+
+<DeveloperRecommendation platform="html">
+
+Use the **HTML components** with HTML markup.
+
+If you are using plain HTML files with no server side technology, we recommend using the [HTML components](/components/html/) with the HTML markup directly.
+
+You should favour global components where available over local components. Local components are marked as deprecated in the HTML components Storybook when a global equivalent is available.
+
+</DeveloperRecommendation>
+
+<DeveloperRecommendation platform="html-jinja">
+
+Use the **HTML components** with Jinja macros.
+
+If you are using Python based server side technology such as Django or Wagtail, we recommend using the [HTML components](/components/html/)
+and favouring global components over local components where possible.
+
+Global components provide macros that are compatible with [Jinja](https://jinja.palletsprojects.com/en/3.1.x/).
+You should configure your environment to use Jinja templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
+
+For local components, you must use the HTML markup directly.
+
+</DeveloperRecommendation>
+
+<DeveloperRecommendation platform="html-nunjucks">
+
+Use the **HTML components** with Nunjucks macros.
+
+If you are using Node, we recommend using the [HTML components](/components/html/)
+and favouring global components over local components where possible.
+
+Global components provide macros that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/).
+You should configure your environment to use Nunjucks templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
+
+For local components, you must use the HTML markup directly.
+
+</DeveloperRecommendation>
+
+<DeveloperRecommendation platform="react">
+
+Use the **React components**.
+
+If you are building React applications with Next.js or Vite, then you should use the [React components](/components/react/).
+
+The components are in early development, so the set available will expand over time as we go through the component globalisation process.
+
+</DeveloperRecommendation>
+
+<DeveloperRecommendation platform="guidelines">
+
+Use the **guidelines**.
+
+You are using a technology stack that is currently not supported. We recommend that you investigate the [HTML components](/components/html/) to see if they may be appropriate for your use case.
+
+Alternatively, you may decide to develop your own set of components directly, in which case they should follow the [guidelines](/foundations/) available to ensure consistency with the design system.
+
+If you believe your technology stack should be supported by the design system, then please [contact the design system team](/contact/).
+
+</DeveloperRecommendation>
+
+</DevelopersAdvice>
