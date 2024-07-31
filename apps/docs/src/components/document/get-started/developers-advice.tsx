@@ -1,7 +1,7 @@
 'use client';
 import { Heading } from '@govie-react/ds';
-import { Children, isValidElement } from 'react';
-import { useHash } from 'react-use';
+import { Children, isValidElement, useState } from 'react';
+import { useHash, useIsomorphicLayoutEffect } from 'react-use';
 import { PlatformSelection } from './platform-selection';
 
 const platforms = ['html', 'python', 'node', 'react', 'angular', 'other'];
@@ -27,7 +27,7 @@ function getPlatform(hash: string) {
   return platforms.includes(platform) ? platform : 'html';
 }
 
-export function DevelopersAdvice({ children }: { children: React.ReactNode }) {
+function DevelopersAdviceInternal({ children }: { children: React.ReactNode }) {
   const [hash, setHash] = useHash();
 
   const platform = getPlatform(hash);
@@ -65,6 +65,19 @@ export function DevelopersAdvice({ children }: { children: React.ReactNode }) {
       {recommendation}
     </div>
   );
+}
+
+// useHash is only available on the client
+export function DevelopersAdvice({ children }: { children: React.ReactNode }) {
+  const [isClient, setIsClient] = useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return isClient ? (
+    <DevelopersAdviceInternal>{children}</DevelopersAdviceInternal>
+  ) : null;
 }
 
 export function DeveloperRecommendation({
