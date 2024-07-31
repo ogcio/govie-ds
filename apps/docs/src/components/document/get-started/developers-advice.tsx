@@ -1,16 +1,22 @@
 'use client';
-import { Children, isValidElement, useState } from 'react';
+import { Heading } from '@govie-react/ds';
+import { Children, isValidElement } from 'react';
 import { useHash } from 'react-use';
 import { PlatformSelection } from './platform-selection';
 
 const platforms = ['html', 'python', 'node', 'react', 'angular', 'other'];
 
-type DeveloperRecommendation = 'html' | 'html-macro' | 'react' | 'guidelines';
+type DeveloperRecommendation =
+  | 'html'
+  | 'html-jinja'
+  | 'html-nunjucks'
+  | 'react'
+  | 'guidelines';
 
 const suggestions: Record<string, DeveloperRecommendation> = {
   html: 'html',
-  node: 'html-macro',
-  python: 'html-macro',
+  python: 'html-jinja',
+  node: 'html-nunjucks',
   react: 'react',
   angular: 'guidelines',
   other: 'guidelines',
@@ -55,6 +61,7 @@ export function DevelopersAdvice({ children }: { children: React.ReactNode }) {
         current={platform}
         onSelect={setHash}
       />
+      <Heading as="h2">Recommendation</Heading>
       {recommendation}
     </div>
   );
