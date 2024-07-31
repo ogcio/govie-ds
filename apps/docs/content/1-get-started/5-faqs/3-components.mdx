@@ -77,7 +77,7 @@ You can run the local version for as long as needed, and update to the global ve
 
 <Faq question="Will global components use the same HTML markup as local components?">
 
-The markup will likely be similar in structure, but will use different class names and data attribute names, therefore when switching from local to global components, you will need to update the HTML markup.
+The markup will likely be similar in structure, but with design modernisations, and will use different class names and data attribute names. Therefore when switching from local to global components, you will need to update the HTML markup.
 
 However, we are also looking to provide macros for global components that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) templating engines, so we would recommend switching to the use of macros where possible when moving from local to global components.
 
@@ -85,7 +85,7 @@ However, we are also looking to provide macros for global components that are co
 
 <Faq question="Why will macros be provided alongside the HTML markup for global HTML components?">
 
-The use of macros that are [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) compatible means that consumers of the global HTML components are protected from any underlying HTML markup changes whilst the global components are being built.
+The use of macros that are [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) compatible means that consumers of the global HTML components are protected from any underlying HTML markup changes whilst the global components are being built or as new features are added.
 
 This reduces the risk of having to deal with breaking changes as you update versions of global HTML components. It also greatly reduces the amount of code required to render components.
 
@@ -95,9 +95,9 @@ This reduces the risk of having to deal with breaking changes as you update vers
 
 No, the local components will require using the HTML markup directly, as already documented on the [HTML components Storybook](https://storybook.design-system.ogcio.gov.ie/).
 The priority for the design system team is to globalise the local components, rather than spending time improving the developer experience of the local components.
-However, we will still support the local components as they are globalised, providing any necessary bug fixing or assistance.
+However, we will still support the local components as they are globalised, providing assistance and implementing any necessary bug fixes.
 
-When the global version of a component becomes available, we recommend favouring the use of the global component and the use of macros where possible.
+When the global version of a component becomes available, we recommend favouring the use of the global component and the associated macros where possible.
 
 </Faq>
 
@@ -106,6 +106,7 @@ When the global version of a component becomes available, we recommend favouring
 Yes you can, but this would require more code compared to the use of macros, and having to deal with any underlying HTML markup changes as you update versions of the component library.
 
 We therefore strongly recommend the use of macros if you are using a technology stack that supports the execution of macros server side.
+There will be some situations where the use of the HTML markup directly will be necessary, either due to a lack of server environment or templating tooling.
 
 </Faq>
 
@@ -125,10 +126,13 @@ This means that they use standard HTML tags with `data-` attributes. Any behavio
 Web Components are framework agnostic, so promise a build once and run anywhere approach.
 
 The primary reason for the use of data-driven components over Web Components is that they provide a far simpler configuration for Server Side Rendering (SSR).
+Implementing SSR with data-driven components is straightforward. The server can render the components as standard HTML, and the client-side JavaScript can initialise or enhance the components based on data attributes.
 
-Implementing SSR with data-driven components is straightforward. The server can render the components as standard HTML, and the client-side JavaScript can initialise or enhance the components based on data attributes. This approach supports progressive enhancement, where the basic content and functionality are available immediately, improving perceived performance and ensuring better accessibility and Search Engine Optimisation (SEO), as the content is fully rendered and indexable by search engines.
+This approach supports progressive enhancement, where the basic content and functionality are available immediately, improving perceived performance and ensuring better accessibility and Search Engine Optimisation (SEO), as the content is fully rendered and indexable by search engines.
 
-In comparison, Web Components are more complex to implement with SSR. While the server can render custom elements in the HTML, the full functionality of these components typically relies on client-side JavaScript to define and upgrade the elements, manage shadow DOM, and apply styles. This dependency can delay interactive features, affecting progressive enhancement and perceived performance. Additionally, web components can present challenges for SEO and accessibility, as crucial content and interactions might not be visible to search engines or accessible to assistive technologies until the JavaScript fully loads and executes.
+In comparison, Web Components are more complex to implement with SSR. While the server can render custom elements in the HTML, the full functionality of these components typically relies on client-side JavaScript to define and upgrade the elements, manage shadow DOM, and apply styles.
+
+This dependency can delay interactive features, affecting progressive enhancement and perceived performance. Additionally, web components can present challenges for SEO and accessibility, as crucial content and interactions might not be visible to search engines or accessible to assistive technologies until the JavaScript fully loads and executes.
 
 The SSR story for Web Components is constantly in review though, so the situation may change in future and a set of Web Components included in the design system.
 
@@ -137,7 +141,7 @@ The SSR story for Web Components is constantly in review though, so the situatio
 <Faq question="Why don't React developers use the HTML components?">
 
 Although having a single set of components would be easier to maintain, unfortunately the HTML components are not a good fit for React.
-Other than being non-idiomatic, the increasing popularity of moving work back to the server via React Server Components requires a seamless integration between server-side and client-side rendering, which is facilitated by React's unified component model using JSX.
+Other than being non-idiomatic, the increasing popularity of moving work back to the server via technology such as React Server Components requires a seamless integration between server-side and client-side rendering, which is facilitated by React's unified component model using JSX.
 Using the HTML components would greatly increase the complexity of building modern React applications.
 
 </Faq>
@@ -166,7 +170,8 @@ This would require aligning them with the latest guidelines and ensuring they ar
 
 <Faq question="I want to change a component or create a new one, shall I just build one myself?">
 
-If you have any suggestions for updates to existing components, or new components, we recommend [contacting the design system team](/contact/).
+If you have any suggestions for updates to existing components, or new components that you feel should be part of the design system, we recommend [contacting the design system team](/contact/).
+
 This ensures that any changes or additions align with the overall design system principles, maintaining the goal of consistency and quality across multiple products.
 
 </Faq>
