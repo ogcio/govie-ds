@@ -10,7 +10,7 @@ export function PlatformSelection({
   onSelect: (platform: string) => void;
 }) {
   return (
-    <ul className="flex gap-lg">
+    <ul className="flex flex-wrap gap-lg">
       {platforms.map((platform) => (
         <li key={platform}>
           <button
