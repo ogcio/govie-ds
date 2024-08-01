@@ -574,6 +574,48 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.6)(terser@5.31.3)
 
+  packages/html/ds:
+    devDependencies:
+      '@aaos/nx-publish':
+        specifier: ^1.4.0
+        version: 1.4.0
+      '@govie-ds/eslint-config':
+        specifier: workspace:*
+        version: link:../../build/eslint-config
+      '@govie-ds/prettier-config':
+        specifier: workspace:*
+        version: link:../../build/prettier-config
+      '@tsconfig/node20':
+        specifier: ^20.1.4
+        version: 20.1.4
+      '@types/css-modules':
+        specifier: ^1.0.5
+        version: 1.0.5
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.3.1(@types/node@20.14.6)(terser@5.31.3))
+      eslint:
+        specifier: ^9.5.0
+        version: 9.5.0
+      glob:
+        specifier: ^10.4.2
+        version: 10.4.2
+      prettier:
+        specifier: ^3.3.0
+        version: 3.3.2
+      typescript:
+        specifier: 5.4.5
+        version: 5.4.5
+      vite:
+        specifier: ^5.3.1
+        version: 5.3.1(@types/node@20.14.6)(terser@5.31.3)
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@20.14.6)(rollup@4.18.0)(typescript@5.4.5)(vite@5.3.1(@types/node@20.14.6)(terser@5.31.3))
+      vite-plugin-lib-inject-css:
+        specifier: ^2.1.1
+        version: 2.1.1(vite@5.3.1(@types/node@20.14.6)(terser@5.31.3))
+
   packages/react/ds:
     dependencies:
       '@govie-ds/tokens':
