@@ -1,4 +1,6 @@
 import type { Preview } from "@storybook/web-components";
+import "@fontsource/lato";
+import "./global.css";
 import "../../ds/styles.css";
 
 const preview: Preview = {
