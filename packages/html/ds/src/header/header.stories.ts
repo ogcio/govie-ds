@@ -3,7 +3,7 @@
 // import headerData from '../data/headerData.json';
 
 import nunjucks from 'nunjucks';
-import headerMacro from './header.html?raw';
+import macro from './header.html?raw';
 
 const nunjucksEnvironment = nunjucks.configure({
   autoescape: true,
@@ -12,30 +12,25 @@ const nunjucksEnvironment = nunjucks.configure({
   lstripBlocks: true,
 });
 
-function renderMacro(
-  macro: string,
-  macroName: string,
-  props: Record<string, unknown>,
-): string {
-  const propsString = JSON.stringify(props);
+function renderMacro({ macro, name }: { macro: string; name: string }): string {
+  return function (props: Record<string, unknown>) {
+    const propsString = JSON.stringify(props);
 
-  const template = `
+    const template = `
     ${macro}
-    {{ ${macroName}(${propsString}) }}
+    {{ ${name}(${propsString}) }}
   `;
 
-  const rendered = nunjucksEnvironment.renderString(template);
-  return rendered.trim();
+    const rendered = nunjucksEnvironment.renderString(template);
+    return rendered.trim();
+  };
 }
 
 export default {
-  title: 'Components/Header',
+  title: 'Header',
 };
 
-// eslint-disable-next-line unicorn/prevent-abbreviations
-const Template = (args: any) => {
-  return renderMacro(headerMacro, 'header', args);
-};
+const Template = renderMacro({ macro, name: 'header' });
 
 export const Default = Template.bind({});
 Default.args = {
