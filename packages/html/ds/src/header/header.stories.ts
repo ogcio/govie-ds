@@ -17,12 +17,14 @@ function renderMacro(
   macroName: string,
   props: Record<string, unknown>,
 ): string {
+  const propsString = JSON.stringify(props);
+
   const template = `
     ${macro}
-    {{ ${macroName}(props) }}
+    {{ ${macroName}(${propsString}) }}
   `;
 
-  const rendered = nunjucksEnvironment.renderString(template, props);
+  const rendered = nunjucksEnvironment.renderString(template);
   return rendered.trim();
 }
 
@@ -36,4 +38,11 @@ const Template = (args: any) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  title: 'Service Name',
+};
+
+export const Title = Template.bind({});
+Title.args = {
+  title: 'Another title',
+};
