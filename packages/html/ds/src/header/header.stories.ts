@@ -39,5 +39,5 @@ Default.args = {
 
 export const Title = Template.bind({});
 Title.args = {
-  title: 'Another title',
+  title: 'Title',
 };
