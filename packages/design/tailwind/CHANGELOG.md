@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.1...@govie-ds/tailwind-0.4.2) (2024-08-02)
+
+### Dependency Updates
+
+* `@govie-ds/tokens` updated to version `0.3.4`
+
+
 ## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.0...@govie-ds/tailwind-0.4.1) (2024-07-31)
 
 ### Dependency Updates
