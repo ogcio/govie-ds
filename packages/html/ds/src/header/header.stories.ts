@@ -30,7 +30,7 @@ export default {
   title: 'Header',
 };
 
-const Template = renderMacro({ macro, name: 'header' });
+const Template = renderMacro({ macro, name: 'govieHeader' });
 
 export const Default = Template.bind({});
 Default.args = {

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build:tofix": "storybook build"
+    "build": "storybook build"
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
