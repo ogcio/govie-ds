@@ -1,7 +1,7 @@
 .footer {
-  background-color: var(--govie-color-gold-50);
-  border-top: var(--govie-border-width-100) solid var(--govie-color-gold-500);
-  padding: var(--govie-space-5) 0;
+  background-color: var(--gieds-color-gold-50);
+  border-top: var(--gieds-border-width-100) solid var(--gieds-color-gold-500);
+  padding: var(--gieds-space-5) 0;
 }
 
 .footerInner {

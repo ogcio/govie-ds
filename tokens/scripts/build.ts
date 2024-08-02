@@ -1,7 +1,7 @@
 import { buildTokens } from "@govie-ds/tokens-builder";
 
 async function main() {
-  const prefix = "govie";
+  const prefix = "gieds";
 
   await buildTokens({
     source: ["tokens/light/**/*.json"],
