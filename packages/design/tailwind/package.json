@@ -30,10 +30,10 @@
     "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
-    "eslint": "^9.5.0",
-    "prettier": "^3.3.0",
-    "tailwindcss": "^3.4.3",
-    "tsup": "^8.1.0",
+    "eslint": "^9.8.0",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.7",
+    "tsup": "^8.2.4",
     "typescript": "5.4.5"
   }
 }

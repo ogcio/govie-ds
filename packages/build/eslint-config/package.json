@@ -13,14 +13,14 @@
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
-    "@eslint/compat": "^1.1.0",
+    "@eslint/compat": "^1.1.1",
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.5.0",
+    "@eslint/js": "^9.8.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-unicorn": "^54.0.0",
-    "globals": "^15.6.0",
-    "typescript-eslint": "^7.13.1"
+    "globals": "^15.9.0",
+    "typescript-eslint": "^7.18.0"
   },
   "devDependencies": {
     "@aaos/nx-publish": "^1.4.0"

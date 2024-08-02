@@ -22,13 +22,13 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
     "autoprefixer": "^10.4.19",
-    "eslint": "^9.5.0",
+    "eslint": "^9.8.0",
     "nunjucks": "^3.2.4",
-    "postcss": "^8",
-    "prettier": "^3.3.0",
+    "postcss": "^8.4.40",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.7",
     "typescript": "5.4.5",
-    "vite": "^5.3.1",
+    "vite": "^5.3.5",
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-lib-inject-css": "^2.1.1"
   }
