@@ -3,10 +3,10 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--govie-color-gray-50);
+      background-color: var(--gieds-color-gray-50);
     }
   }
 
-  padding: var(--govie-space-2);
-  border-radius: var(--govie-border-radius-200);
+  padding: var(--gieds-space-2);
+  border-radius: var(--gieds-border-radius-200);
 }

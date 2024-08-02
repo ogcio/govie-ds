@@ -148,6 +148,6 @@ export function Icon({
     'aria-hidden': ariaHidden || undefined,
     'aria-label': ariaLabel,
     role: ariaLabel ? 'img' : 'presentation',
-    color: color === 'default' ? 'currentColor' : 'var(--govie-color-gray-300)',
+    color: color === 'default' ? 'currentColor' : 'var(--gieds-color-gray-300)',
   });
 }

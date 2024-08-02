@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.7.7](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.6...@govie-react/ds-0.7.7) (2024-08-02)
+
+### Dependency Updates
+
+* `@govie-ds/tokens` updated to version `0.3.4`
+
+### Bug Fixes
+
+* update css variable names ([#144](https://github.com/ogcio/govie-ds/issues/144)) ([898f5aa](https://github.com/ogcio/govie-ds/commit/898f5aa8248f92caf20c80e6a63346cc207341fb))
+
+
+
 ## [0.7.6](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.5...@govie-react/ds-0.7.6) (2024-07-31)
 
 ### Dependency Updates

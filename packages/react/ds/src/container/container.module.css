@@ -2,31 +2,31 @@
   margin: 0 auto;
   width: 100%;
   height: 100%;
-  max-width: var(--govie-screen-xs);
+  max-width: var(--gieds-screen-xs);
   padding: 0 16px;
 
   @media (min-width: 640px) {
-    max-width: var(--govie-screen-sm);
+    max-width: var(--gieds-screen-sm);
     padding: 0 16px;
   }
 
   @media (min-width: 768px) {
-    max-width: var(--govie-screen-md);
+    max-width: var(--gieds-screen-md);
     padding: 0 32px;
   }
 
   @media (min-width: 1024px) {
-    max-width: var(--govie-screen-lg);
+    max-width: var(--gieds-screen-lg);
     padding: 0 64px;
   }
 
   @media (min-width: 1280px) {
-    max-width: var(--govie-screen-xl);
+    max-width: var(--gieds-screen-xl);
     padding: 0 96px;
   }
 
   @media (min-width: 1536px) {
-    max-width: var(--govie-screen-2xl);
+    max-width: var(--gieds-screen-2xl);
     padding: 0 128px;
   }
 }

@@ -59,7 +59,7 @@ export async function buildTheme({
   // light: string
   // dark?: string
 
-  const prefix = 'govie';
+  const prefix = 'gieds';
 
   const tsSchema = await convertZodSchemaToTypeScriptString(tokensSchema);
   await outputFile(`${outputFolderTypeScript}/schema.ts`, tsSchema);

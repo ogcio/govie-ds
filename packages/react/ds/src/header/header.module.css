@@ -11,10 +11,10 @@
 
   &:focus {
     outline: 3px solid rgba(0, 0, 0, 0);
-    background-color: var(--govie-color-yellow-400);
+    background-color: var(--gieds-color-yellow-400);
     box-shadow:
-      0 -2px var(--govie-color-yellow-400),
-      0 4px var(--govie-color-gray-900);
+      0 -2px var(--gieds-color-yellow-400),
+      0 4px var(--gieds-color-gray-900);
     text-decoration: none;
   }
 }
@@ -23,10 +23,10 @@
   &:focus {
     svg {
       outline: 3px solid rgba(0, 0, 0, 0);
-      background-color: var(--govie-color-yellow-400);
+      background-color: var(--gieds-color-yellow-400);
       box-shadow:
-        0 -2px var(--govie-color-yellow-400),
-        0 4px var(--govie-color-gray-900);
+        0 -2px var(--gieds-color-yellow-400),
+        0 4px var(--gieds-color-gray-900);
       text-decoration: none;
     }
   }

@@ -1,47 +1,47 @@
 .paragraphSm {
-  font: var(--govie-typography-default-text-sm);
+  font: var(--gieds-typography-default-text-sm);
 
   @media (min-width: 768px) {
-    font: var(--govie-typography-xs-text-sm);
+    font: var(--gieds-typography-xs-text-sm);
   }
 
   @media (min-width: 1024px) {
-    font: var(--govie-typography-md-text-sm);
+    font: var(--gieds-typography-md-text-sm);
   }
 
   @media (min-width: 1280px) {
-    font: var(--govie-typography-xl-text-sm);
+    font: var(--gieds-typography-xl-text-sm);
   }
 }
 
 .paragraphMd {
-  font: var(--govie-typography-default-text-md);
+  font: var(--gieds-typography-default-text-md);
 
   @media (min-width: 768px) {
-    font: var(--govie-typography-xs-text-md);
+    font: var(--gieds-typography-xs-text-md);
   }
 
   @media (min-width: 1024px) {
-    font: var(--govie-typography-md-text-md);
+    font: var(--gieds-typography-md-text-md);
   }
 
   @media (min-width: 1280px) {
-    font: var(--govie-typography-xl-text-md);
+    font: var(--gieds-typography-xl-text-md);
   }
 }
 
 .paragraphLg {
-  font: var(--govie-typography-default-text-lg);
+  font: var(--gieds-typography-default-text-lg);
 
   @media (min-width: 768px) {
-    font: var(--govie-typography-xs-text-lg);
+    font: var(--gieds-typography-xs-text-lg);
   }
 
   @media (min-width: 1024px) {
-    font: var(--govie-typography-md-text-lg);
+    font: var(--gieds-typography-md-text-lg);
   }
 
   @media (min-width: 1280px) {
-    font: var(--govie-typography-xl-text-lg);
+    font: var(--gieds-typography-xl-text-lg);
   }
 }
