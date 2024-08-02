@@ -10,7 +10,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify"
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "build": "pnpm build:ts && pnpm build:styles",
+    "build:ts": "vite build",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify"
   },
   "prettier": "@govie-ds/prettier-config",
   "keywords": [],
@@ -20,16 +25,15 @@
     "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
-    "@tsconfig/node20": "^20.1.4",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.8.0",
+    "glob": "^10.4.5",
     "nunjucks": "^3.2.4",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.7",
     "typescript": "5.4.5",
     "vite": "^5.3.5",
-    "vite-plugin-dts": "^3.9.1",
-    "vite-plugin-lib-inject-css": "^2.1.1"
+    "vite-plugin-dts": "^3.9.1"
   }
 }

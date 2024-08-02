@@ -1,7 +1,7 @@
 export function initHeader() {
-  document
-    .querySelectorAll('[data-module="gieds-header"]')
-    .forEach((headerElement) => {
-      console.log({ headerElement });
-    });
+  for (const headerElement of document.querySelectorAll(
+    '[data-module="gieds-header"]',
+  )) {
+    console.log({ headerElement });
+  }
 }
