@@ -56,9 +56,11 @@ export function createTheme(
     },
     colors: {
       transparent: 'transparent',
-      white: '#ffffff', // TODO: move to JSON tokens
+      white: '#ffffff',
       black: '#000000',
-      // ...convertColors(meta.light.resolved.primitive.color), // TODO: use color variables, variables as nested object in tokens package
+      ...(useVariables
+        ? variables.primitive.color
+        : convertColors(meta.light.resolved.primitive.color)),
     },
     fontFamily: {
       primary: variables.primitive.font.family.primary,

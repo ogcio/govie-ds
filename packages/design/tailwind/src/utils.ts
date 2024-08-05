@@ -34,15 +34,5 @@ export function toFont({
     {
       lineHeight: valueResolver({ property: 'lineHeight', index: lineHeight }),
     },
-    // useVariables
-    //   ? variables.primitive.font.size[fontSize]
-    //   : meta.light.resolved.primitive.font.size[fontSize].$value,
-    // {
-    //   lineHeight: useVariables
-    //     ? variables.primitive.font.lineHeight[lineHeight]
-    //     : meta.light.resolved.primitive.font.lineHeight[
-    //         lineHeight
-    //       ].$value.toString(),
-    // },
   ];
 }

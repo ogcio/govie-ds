@@ -37,6 +37,21 @@ describe('createTheme', () => {
           light: {
             resolved: {
               primitive: {
+                color: {
+                  gray: {
+                    '50': { $type: 'color', $value: '#f7f7f8' },
+                    '100': { $type: 'color', $value: '#e9eaed' },
+                    '200': { $type: 'color', $value: '#d8dadf' },
+                    '300': { $type: 'color', $value: '#babec4' },
+                    '400': { $type: 'color', $value: '#a1a6af' },
+                    '500': { $type: 'color', $value: '#828893' },
+                    '600': { $type: 'color', $value: '#686d78' },
+                    '700': { $type: 'color', $value: '#51555e' },
+                    '800': { $type: 'color', $value: '#3a3c41' },
+                    '900': { $type: 'color', $value: '#252526' },
+                    '950': { $type: 'color', $value: '#0b0c0c' },
+                  },
+                },
                 font: {
                   size: {
                     '50': { $type: 'dimension', $value: '0.5rem' },
@@ -84,12 +99,12 @@ describe('createTheme', () => {
                   },
                 },
                 screen: {
-                  xs: { $type: 'dimension', $value: '480px' },
-                  sm: { $type: 'dimension', $value: '640px' },
-                  md: { $type: 'dimension', $value: '768px' },
-                  lg: { $type: 'dimension', $value: '1024px' },
-                  xl: { $type: 'dimension', $value: '1280px' },
-                  '2xl': { $type: 'dimension', $value: '1536px' },
+                  xs: { $type: 'dimension', $value: '100px' },
+                  sm: { $type: 'dimension', $value: '200px' },
+                  md: { $type: 'dimension', $value: '300px' },
+                  lg: { $type: 'dimension', $value: '400px' },
+                  xl: { $type: 'dimension', $value: '500px' },
+                  '2xl': { $type: 'dimension', $value: '600px' },
                 },
               },
             },
@@ -98,12 +113,35 @@ describe('createTheme', () => {
       }),
     ).toMatchObject({
       screens: {
-        xs: '480px',
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
+        xs: '100px',
+        sm: '200px',
+        md: '300px',
+        lg: '400px',
+        xl: '500px',
+        '2xl': '600px',
+      },
+    });
+  });
+
+  it('includes expected colors by default', () => {
+    expect(createTheme()).toMatchObject({
+      colors: {
+        transparent: 'transparent',
+        black: '#000000',
+        white: '#ffffff',
+      },
+    });
+  });
+
+  it('merges overrides', () => {
+    expect(
+      createTheme({ overrides: { colors: { red: '#ff0000' } } }),
+    ).toMatchObject({
+      colors: {
+        transparent: 'transparent',
+        black: '#000000',
+        white: '#ffffff',
+        red: '#ff0000',
       },
     });
   });
