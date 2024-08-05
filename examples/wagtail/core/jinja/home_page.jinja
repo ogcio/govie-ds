@@ -1,5 +1,4 @@
-{% from 'ds/header.html' import header %}
-{% from 'ds/navigation.html' import navigation %}
+{% from 'govie/header/header.html' import govieHeader %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,18 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
 </head>
-<body>
+<body>    
+    {{ govieHeader({ 'title': 'Application title' }) }}
     <h1>{{ page.title }}</h1>
-        {{ header({ 
-            'content': navigation({
-                'links': [
-                    {'href': '/', 'label': 'Home'},
-                    {'href': '/about', 'label': 'About'},
-                    {'href': '/services', 'label': 'Services'},
-                    {'href': '/contact', 'label': 'Contact'}
-                ]
-            })
-        }) }}
-    
 </body>
 </html>

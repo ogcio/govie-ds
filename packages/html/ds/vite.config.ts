@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { glob } from 'glob';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { processMacrosPlugin } from './scripts/plugin';
+import { processMacrosPlugin } from './scripts/process-macros-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({

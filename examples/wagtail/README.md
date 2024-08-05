@@ -1,8 +1,15 @@
 # Wagtail example
 
+### Setup env
+
 ```
 mkdir env
 python3 -m venv env
+```
+
+### Activate env
+
+```
 source env/bin/activate
 ```
 

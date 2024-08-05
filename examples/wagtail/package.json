@@ -1,0 +1,12 @@
+{
+  "name": "wagtail",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "@govie-frontend/ds": "workspace:*"
+  },
+  "author": "",
+  "license": "MIT"
+}

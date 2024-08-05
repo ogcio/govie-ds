@@ -58,7 +58,7 @@ export function processMacrosPlugin() {
         const content = fs.readFileSync(sourcePath, 'utf8');
 
         for (const destination of destinations) {
-          const destinationDirectory = `${destinationRootDirectory}/${destination.engine}/${destination.mode}/ds`;
+          const destinationDirectory = `${destinationRootDirectory}/${destination.engine}/${destination.mode}/govie`;
           const destinationPath = path.resolve(destinationDirectory, file);
 
           const updatedContent = processContent({
