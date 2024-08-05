@@ -14,10 +14,15 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
-### Database migrations and super user
+### Database migrations
 
 ```
 python3 manage.py migrate
+```
+
+### Create superuser
+
+```
 python3 manage.py createsuperuser
 ```
 
