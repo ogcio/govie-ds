@@ -84,11 +84,19 @@ TEMPLATES = [
             os.path.join(PROJECT_DIR, "../node_modules/@govie-frontend/ds/macros/jinja/prod"),
         ],
         'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
+            ],
             'extensions': [
                 'wagtail.jinja2tags.core',
                 'wagtail.admin.jinja2tags.userbar',
                 'wagtail.images.jinja2tags.images',
             ],
+            'environment': 'core.jinja2-env.environment',
         },
     }
 ]

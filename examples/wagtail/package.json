@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {},
   "dependencies": {
+    "@govie-ds/theme-govie": "workspace:*",
     "@govie-frontend/ds": "workspace:*"
   },
   "author": "",

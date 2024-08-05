@@ -1,4 +1,4 @@
-{% from 'govie/header/header.html' import govieHeader %}
+{% from 'govie/header/macro.html' import govieHeader %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ static('css/theme.css') }}">
+    <link rel="stylesheet" href="{{ static('css/styles.css') }}">
 </head>
 <body>    
     {{ govieHeader({ 'title': 'Application title' }) }}

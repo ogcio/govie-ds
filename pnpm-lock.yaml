@@ -284,6 +284,9 @@ importers:
 
   examples/wagtail:
     dependencies:
+      '@govie-ds/theme-govie':
+        specifier: workspace:*
+        version: link:../../packages/themes/govie
       '@govie-frontend/ds':
         specifier: workspace:*
         version: link:../../packages/html/ds
