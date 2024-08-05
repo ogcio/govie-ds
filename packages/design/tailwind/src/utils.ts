@@ -21,28 +21,18 @@ export function convertColors(colors: any) {
 
 // TODO: type
 export function toFont({
-  useVariables,
-  variables,
-  meta,
+  valueResolver,
   fontSize,
   lineHeight,
 }: {
-  useVariables: boolean;
-  variables: any;
-  meta: any;
+  valueResolver: (props: { property: string; index: string }) => string;
   fontSize: string;
   lineHeight: string;
 }): [string, { lineHeight: string }] {
   return [
-    useVariables
-      ? variables.primitive.font.size[fontSize]
-      : meta.light.resolved.primitive.font.size[fontSize].$value,
+    valueResolver({ property: 'size', index: fontSize }),
     {
-      lineHeight: useVariables
-        ? variables.primitive.font.lineHeight[lineHeight]
-        : meta.light.resolved.primitive.font.lineHeight[
-            lineHeight
-          ].$value.toString(),
+      lineHeight: valueResolver({ property: 'lineHeight', index: lineHeight }),
     },
   ];
 }

@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.20.7](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.20.6...@govie-ds/docs-0.20.7) (2024-08-05)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.4.3`
+
+### Bug Fixes
+
+* update create theme options ([#146](https://github.com/ogcio/govie-ds/issues/146)) ([fb431ea](https://github.com/ogcio/govie-ds/commit/fb431ea864b236fba7e8e3442acbce8d1ff37207))
+
+
+
 ## [0.20.6](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.20.5...@govie-ds/docs-0.20.6) (2024-08-02)
 
 ### Dependency Updates

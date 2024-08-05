@@ -5,21 +5,33 @@ import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utils.js';
 
 export type CreateThemeOptions = {
-  meta: any; // TODO: add TS meta type to tokens package
+  meta?: any;
   overrides?: Partial<CustomThemeConfig>;
-  useVariables?: boolean;
 };
 
-export function createTheme({
-  meta,
-  overrides,
-  useVariables = true,
-}: CreateThemeOptions): Partial<CustomThemeConfig> {
+export function createTheme(
+  options?: CreateThemeOptions,
+): Partial<CustomThemeConfig> {
+  const { meta, overrides } = options ?? {};
+
+  // TODO: type variables and meta
+  const fontValueResolver = ({
+    property,
+    index,
+  }: {
+    property: string;
+    index: string;
+  }): string => {
+    return meta
+      ? meta.light.resolved.primitive.font[property][index].$value
+      : (variables.primitive.font as any)[property][index];
+  };
+
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
     container: {
       padding: {
-        DEFAULT: '16px',
+        DEFAULT: '16px', // TODO: use tokens
         sm: '16px',
         md: '32px',
         lg: '64px',
@@ -29,9 +41,11 @@ export function createTheme({
     },
     colors: {
       transparent: 'transparent',
-      white: '#ffffff', // TODO: move to JSON tokens
+      white: '#ffffff',
       black: '#000000',
-      ...convertColors(meta.light.resolved.primitive.color), // TODO: use color variables, variables as nested object in tokens package
+      ...(meta
+        ? convertColors(meta.light.resolved.primitive.color)
+        : variables.primitive.color),
     },
     fontFamily: {
       primary: variables.primitive.font.family.primary,
@@ -40,102 +54,74 @@ export function createTheme({
     },
     fontSize: {
       '3xs': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '50',
         lineHeight: '1000',
       }),
       '2xs': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '100',
         lineHeight: '1000',
       }),
       xs: toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '200',
         lineHeight: '1000',
       }),
       // Start of standard scale
       sm: toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '300',
         lineHeight: '1000',
       }),
       md: toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '400',
         lineHeight: '1000',
       }),
       lg: toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '500',
         lineHeight: '1000',
       }),
       xl: toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '600',
         lineHeight: '700',
       }),
       '2xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '700',
         lineHeight: '700',
       }),
       '3xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '800',
         lineHeight: '700',
       }),
       '4xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '900',
         lineHeight: '700',
       }),
       '5xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '1000',
         lineHeight: '700',
       }),
       '6xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '1100',
         lineHeight: '400',
       }),
       // End of standard scale
       '7xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '1200',
         lineHeight: '400',
       }),
       '8xl': toFont({
-        useVariables,
-        variables,
-        meta,
+        valueResolver: fontValueResolver,
         fontSize: '1300',
         lineHeight: '400',
       }),
@@ -272,12 +258,14 @@ export function createTheme({
       // "96": tokens.govieSpace96,
     },
     screens: {
-      xs: meta.light.resolved.primitive.screen.xs.$value,
-      sm: meta.light.resolved.primitive.screen.sm.$value,
-      md: meta.light.resolved.primitive.screen.md.$value,
-      lg: meta.light.resolved.primitive.screen.lg.$value,
-      xl: meta.light.resolved.primitive.screen.xl.$value,
-      '2xl': meta.light.resolved.primitive.screen['2xl'].$value,
+      xs: meta ? meta.light.resolved.primitive.screen.xs.$value : '480px',
+      sm: meta ? meta.light.resolved.primitive.screen.sm.$value : '640px',
+      md: meta ? meta.light.resolved.primitive.screen.md.$value : '768px',
+      lg: meta ? meta.light.resolved.primitive.screen.lg.$value : '1024px',
+      xl: meta ? meta.light.resolved.primitive.screen.xl.$value : '1280px',
+      '2xl': meta
+        ? meta.light.resolved.primitive.screen['2xl'].$value
+        : '1536px',
     },
     textUnderlineOffset: {
       // TODO: tokens

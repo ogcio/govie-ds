@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/tailwind",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",
@@ -12,7 +12,9 @@
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
     "lint": "eslint 'src/**/*.ts'",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "files": [
     "dist"
@@ -34,6 +36,7 @@
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.7",
     "tsup": "^8.2.4",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vitest": "^1.6.0"
   }
 }
