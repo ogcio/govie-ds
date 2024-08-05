@@ -3,7 +3,7 @@ import { createTheme } from '@govie-ds/tailwind';
 import { meta } from '@govie-ds/theme-govie';
 import type { Config } from 'tailwindcss';
 
-const useVariables = !(process.env.USE_RESOLVED_THEME === 'true');
+const useMeta = process.env.USE_RESOLVED_THEME === 'true';
 
 const config: Config = {
   content: [
@@ -12,7 +12,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: createTheme({
-    meta,
+    meta: useMeta ? meta : undefined,
     overrides: {
       animatedSettings: {
         animatedSpeed: 1000,
@@ -24,7 +24,6 @@ const config: Config = {
         classes: ['bounce', 'heartBeat'],
       },
     },
-    useVariables,
   }),
   // theme: {
   //   extend: {
