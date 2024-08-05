@@ -4,28 +4,15 @@ import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utils.js';
 
-type CreateThemeMetaOptions = {
-  meta: any; // TODO: add TS meta type to tokens package
-  useVariables: false;
-};
-
-type CreateThemeVariablesOptions = {
-  meta?: undefined;
-  useVariables?: true;
-};
-
-export type CreateThemeOptions = (
-  | CreateThemeMetaOptions
-  | CreateThemeVariablesOptions
-) & {
+export type CreateThemeOptions = {
+  meta?: any;
   overrides?: Partial<CustomThemeConfig>;
 };
 
 export function createTheme(
   options?: CreateThemeOptions,
 ): Partial<CustomThemeConfig> {
-  const { overrides, useVariables = true } = options ?? {};
-  const meta = useVariables === false ? options?.meta : undefined;
+  const { meta, overrides } = options ?? {};
 
   // TODO: type variables and meta
   const fontValueResolver = ({
@@ -35,11 +22,9 @@ export function createTheme(
     property: string;
     index: string;
   }): string => {
-    if (useVariables) {
-      return (variables.primitive.font as any)[property][index];
-    }
-
-    return meta.light.resolved.primitive.font[property][index].$value;
+    return meta
+      ? meta.light.resolved.primitive.font[property][index].$value
+      : (variables.primitive.font as any)[property][index];
   };
 
   const defaultTheme: Partial<CustomThemeConfig> = {
@@ -58,9 +43,9 @@ export function createTheme(
       transparent: 'transparent',
       white: '#ffffff',
       black: '#000000',
-      ...(useVariables
-        ? variables.primitive.color
-        : convertColors(meta.light.resolved.primitive.color)),
+      ...(meta
+        ? convertColors(meta.light.resolved.primitive.color)
+        : variables.primitive.color),
     },
     fontFamily: {
       primary: variables.primitive.font.family.primary,
@@ -273,24 +258,14 @@ export function createTheme(
       // "96": tokens.govieSpace96,
     },
     screens: {
-      xs: useVariables
-        ? '480px'
-        : meta.light.resolved.primitive.screen.xs.$value,
-      sm: useVariables
-        ? '640px'
-        : meta.light.resolved.primitive.screen.sm.$value,
-      md: useVariables
-        ? '768px'
-        : meta.light.resolved.primitive.screen.md.$value,
-      lg: useVariables
-        ? '1024px'
-        : meta.light.resolved.primitive.screen.lg.$value,
-      xl: useVariables
-        ? '1280px'
-        : meta.light.resolved.primitive.screen.xl.$value,
-      '2xl': useVariables
-        ? '1536px'
-        : meta.light.resolved.primitive.screen['2xl'].$value,
+      xs: meta ? meta.light.resolved.primitive.screen.xs.$value : '480px',
+      sm: meta ? meta.light.resolved.primitive.screen.sm.$value : '640px',
+      md: meta ? meta.light.resolved.primitive.screen.md.$value : '768px',
+      lg: meta ? meta.light.resolved.primitive.screen.lg.$value : '1024px',
+      xl: meta ? meta.light.resolved.primitive.screen.xl.$value : '1280px',
+      '2xl': meta
+        ? meta.light.resolved.primitive.screen['2xl'].$value
+        : '1536px',
     },
     textUnderlineOffset: {
       // TODO: tokens
