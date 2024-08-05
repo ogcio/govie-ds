@@ -1,8 +1,8 @@
 from django.templatetags.static import static
-from jinja2 import Environment as Jinja2Environment
+from jinja2 import Environment
 
 def environment(**options):
-    env = Jinja2Environment(**options)
+    env = Environment(**options)
     env.globals.update({
         'static': static,
     })
