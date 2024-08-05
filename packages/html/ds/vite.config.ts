@@ -3,10 +3,14 @@ import { fileURLToPath } from 'node:url';
 import { glob } from 'glob';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { processMacrosPlugin } from './scripts/plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] })],
+  plugins: [
+    dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
+    processMacrosPlugin(),
+  ],
   build: {
     copyPublicDir: false,
     lib: {
