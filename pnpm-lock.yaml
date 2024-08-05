@@ -589,8 +589,8 @@ importers:
         specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/tailwind':
-        specifier: ^0.4.2
-        version: 0.4.2
+        specifier: workspace:*
+        version: link:../../design/tailwind
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.40)
@@ -2441,15 +2441,6 @@ packages:
 
   '@fontsource/lato@5.0.21':
     resolution: {integrity: sha512-UubLwvJO2bKuhWv6+ocx2Bou/pPIT6q7VpYaHIW7ZDaLPQY3uYAhveJg6P7Lvz5HYHyLba8JUc3yP7wvcqA8zQ==}
-
-  '@govie-ds/deepmerge@0.2.2':
-    resolution: {integrity: sha512-0R/NAauvuUZp169M/pMMoEIoPvsqlR1horHYmc68317KQ1OmW/dqXKSncFP28ghrZs67Hq8myL3wI7Hokh1Sxg==}
-
-  '@govie-ds/tailwind@0.4.2':
-    resolution: {integrity: sha512-YztVSCWQenvez80MZta8wbJNWEif4YEUJqFmeTPBqs0aghjg9icp9ZJzhEqbkkCEoqZVxfXLEKF2ue1eF1cuBQ==}
-
-  '@govie-ds/tokens@0.3.4':
-    resolution: {integrity: sha512-Oum9O2vyvBtsADB8awfNyGotCcl8DxcObne5JARqQ8VNdGjdt3KXmtn3MRhE5Y9egiRGFfEnmjVB74ebQfFBfA==}
 
   '@grpc/grpc-js@1.10.9':
     resolution: {integrity: sha512-5tcgUctCG0qoNyfChZifz2tJqbRbXVO9J7X6duFcOjY3HUNCxg5D0ZCK7EP9vIcZ0zRpLU9bWkyCqVCLZ46IbQ==}
@@ -12170,18 +12161,6 @@ snapshots:
   '@fastify/busboy@2.1.1': {}
 
   '@fontsource/lato@5.0.21': {}
-
-  '@govie-ds/deepmerge@0.2.2':
-    dependencies:
-      deepmerge: 4.3.1
-
-  '@govie-ds/tailwind@0.4.2':
-    dependencies:
-      '@govie-ds/deepmerge': 0.2.2
-      '@govie-ds/tokens': 0.3.4
-      ts-extras: 0.11.0
-
-  '@govie-ds/tokens@0.3.4': {}
 
   '@grpc/grpc-js@1.10.9':
     dependencies:
