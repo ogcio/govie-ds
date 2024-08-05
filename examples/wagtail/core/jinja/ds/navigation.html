@@ -1,0 +1,7 @@
+{% macro navigation(props) %}
+<ul>
+    {% for item in props.links %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+    {% endfor %}
+</ul>
+{% endmacro %}
