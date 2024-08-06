@@ -8,8 +8,8 @@ function addJavaScriptClass() {
     throw new Error('No body element found in the document.');
   }
 
-  if (!body.classList.contains('js')) {
-    body.classList.add('js');
+  if (!body.classList.contains('govie-js')) {
+    body.classList.add('govie-js');
   }
 }
 
@@ -22,7 +22,7 @@ function init() {
   libraryEvents.init();
 
   const componentEvents = createEvents({
-    type: 'load',
+    type: 'DOMContentLoaded',
     functions: [initHeader],
   });
 

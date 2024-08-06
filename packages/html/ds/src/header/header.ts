@@ -53,9 +53,11 @@ function createQuery({ element }: { element: Element }) {
 }
 
 export function initHeader() {
-  for (const headerElement of document.querySelectorAll(
+  const headerElements = document.querySelectorAll(
     '[data-module="gieds-header"]',
-  )) {
+  );
+
+  for (const headerElement of headerElements) {
     const query = createQuery({ element: headerElement });
 
     const searchIcon = query.getByElement({ name: 'search' });
@@ -64,16 +66,14 @@ export function initHeader() {
     });
 
     searchIcon.addEventListener('click', () => {
-      const isExpanded = searchContainer.classList.contains('max-h-0');
+      const isExpanded = !searchContainer.classList.contains('gi-hidden');
 
       if (isExpanded) {
-        searchContainer.classList.remove('max-h-0', 'opacity-0');
-        searchContainer.classList.add('max-h-screen', 'opacity-100');
+        searchContainer.classList.add('gi-hidden');
         return;
       }
 
-      searchContainer.classList.add('max-h-0', 'opacity-0');
-      searchContainer.classList.remove('max-h-screen', 'opacity-100');
+      searchContainer.classList.remove('gi-hidden');
     });
   }
 }
