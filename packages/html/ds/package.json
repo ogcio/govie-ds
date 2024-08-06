@@ -4,10 +4,10 @@
   "description": "",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/govie-frontend.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/govie-frontend.js",
     "./styles.css": "./dist/styles.css"
   },
   "publishConfig": {
