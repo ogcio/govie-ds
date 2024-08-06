@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.3...@govie-ds/tailwind-0.5.0) (2024-08-06)
+
+### Dependency Updates
+
+* `@govie-ds/deepmerge` updated to version `0.3.0`
+* `@govie-ds/tokens` updated to version `0.4.0`
+
+### Features
+
+* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
+
+
+
 ## [0.4.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.2...@govie-ds/tailwind-0.4.3) (2024-08-05)
 
 
