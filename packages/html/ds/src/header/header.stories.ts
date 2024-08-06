@@ -3,7 +3,7 @@
 // import headerData from '../data/headerData.json';
 
 import nunjucks from 'nunjucks';
-import macro from './header.html?raw';
+import macro from './macro.html?raw';
 
 const nunjucksEnvironment = nunjucks.configure({
   autoescape: true,
