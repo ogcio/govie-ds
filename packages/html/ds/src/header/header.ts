@@ -66,14 +66,14 @@ export function initHeader() {
     });
 
     searchIcon.addEventListener('click', () => {
-      const isExpanded = !searchContainer.classList.contains('gi-hidden');
+      const isExpanded = !searchContainer.classList.contains('js:gi-hidden');
 
       if (isExpanded) {
-        searchContainer.classList.add('gi-hidden');
+        searchContainer.classList.add('js:gi-hidden');
         return;
       }
 
-      searchContainer.classList.remove('gi-hidden');
+      searchContainer.classList.remove('js:gi-hidden');
     });
   }
 }
