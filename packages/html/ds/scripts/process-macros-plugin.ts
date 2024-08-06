@@ -16,7 +16,8 @@ function processContent({
   mode: string;
   content: string;
 }) {
-  if (mode === 'prod') {
+  if (mode === 'prod' || mode === 'dev') {
+    // TODO: prod only, add validation for dev
     return content.replace('{{ validation }}', '');
   }
 

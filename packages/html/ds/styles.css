@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.govie-js .js\:gi-hidden {
+  display: none;
+}
