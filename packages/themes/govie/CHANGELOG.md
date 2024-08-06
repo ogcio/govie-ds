@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.2.4...@govie-ds/theme-govie-0.3.0) (2024-08-06)
+
+### Dependency Updates
+
+* `@govie-ds/eslint-config` updated to version `0.2.0`
+* `@govie-ds/theme-builder` updated to version `0.1.0`
+
+### Features
+
+* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
+
+
+
 ## [0.2.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.2.3...@govie-ds/theme-govie-0.2.4) (2024-08-02)
 
 ### Dependency Updates
