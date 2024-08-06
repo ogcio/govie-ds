@@ -21,12 +21,13 @@
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",
     "figma:build": "nx run @govie-ds/figma:build",
+    "html:storybook": "nx run @govie-ds/storybook-html:dev",
     "react:storybook": "nx run @govie-ds/storybook-react:dev",
     "examples:vite": "nx run @govie-ds/examples-vite:dev",
     "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev"
   },
   "devDependencies": {
     "@jscutlery/semver": "^5.2.2",
-    "nx": "^19.3.0"
+    "nx": "^19.5.6"
   }
 }

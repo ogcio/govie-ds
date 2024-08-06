@@ -1,4 +1,4 @@
-import { extname, relative } from 'node:path';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
@@ -30,7 +30,10 @@ export default defineConfig({
           .map((file: string) => [
             // 1. The name of the entry point
             // src/nested/foo.js becomes nested/foo
-            relative('src', file.slice(0, file.length - extname(file).length)),
+            path.relative(
+              'src',
+              file.slice(0, file.length - path.extname(file).length),
+            ),
             // 2. The absolute path to the entry file
             // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
             fileURLToPath(new URL(file, import.meta.url)),

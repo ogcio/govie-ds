@@ -24,10 +24,10 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.14.6",
-    "eslint": "^9.5.0",
-    "prettier": "^3.3.0",
-    "tsx": "^4.15.6",
+    "@types/node": "^20.14.14",
+    "eslint": "^9.8.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.16.5",
     "typescript": "5.4.5"
   }
 }

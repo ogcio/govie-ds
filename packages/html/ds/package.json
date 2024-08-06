@@ -1,0 +1,49 @@
+{
+  "name": "@govie-frontend/ds",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./dist/styles.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "build": "pnpm build:ts && pnpm build:styles",
+    "build:ts": "vite build",
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify"
+  },
+  "prettier": "@govie-ds/prettier-config",
+  "files": [
+    "dist",
+    "macros"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@aaos/nx-publish": "^1.4.0",
+    "@govie-ds/eslint-config": "workspace:*",
+    "@govie-ds/prettier-config": "workspace:*",
+    "@govie-ds/tailwind": "workspace:*",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.8.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.4.5",
+    "nunjucks": "^3.2.4",
+    "postcss": "^8.4.40",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.7",
+    "typescript": "5.4.5",
+    "vite": "^5.3.5",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

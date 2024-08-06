@@ -4,3 +4,4 @@ dist
 .DS_Store
 *storybook.log
 package-lock.json
+storybook-static
