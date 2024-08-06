@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.2...@govie-ds/eslint-config-0.2.0) (2024-08-06)
+
+
+### Features
+
+* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
+
+
+
 ## [0.1.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.1...@govie-ds/eslint-config-0.1.2) (2024-07-31)
 
 
