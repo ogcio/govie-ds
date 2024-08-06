@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.2.2...@govie-ds/deepmerge-0.3.0) (2024-08-06)
+
+### Dependency Updates
+
+* `@govie-ds/eslint-config` updated to version `0.2.0`
+
+### Features
+
+* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
+
+
+
 ## [0.2.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.2.1...@govie-ds/deepmerge-0.2.2) (2024-07-31)
 
 ### Dependency Updates
