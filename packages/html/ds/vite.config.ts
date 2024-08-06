@@ -12,19 +12,29 @@ export default defineConfig({
     copyPublicDir: false,
     lib: {
       entry: 'src/index.ts',
-      formats: ['umd'],
-      fileName: 'govie-frontend',
+      formats: ['es', 'umd'],
+      fileName: (format) => {
+        if (format === 'es') {
+          return 'govie-frontend.esm.js';
+        }
+
+        if (format === 'umd') {
+          return 'govie-frontend.js';
+        }
+
+        return 'govie-frontend';
+      },
       name: 'GovieFrontend',
     },
-    rollupOptions: {
-      external: [],
-      input: 'src/index.ts',
-      output: {
-        assetFileNames: 'assets/[name][extname]',
-        entryFileNames: 'govie-frontend.js',
-        format: 'umd',
-      },
-    },
+    // rollupOptions: {
+    //   external: [],
+    //   input: 'src/index.ts',
+    //   output: {
+    //     assetFileNames: 'assets/[name][extname]',
+    //     entryFileNames: 'govie-frontend.js',
+    //     format: 'umd',
+    //   },
+    // },
     sourcemap: true,
   },
 });

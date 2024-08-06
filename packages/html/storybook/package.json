@@ -12,6 +12,7 @@
     "@fontsource/lato": "^5.0.21",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
+    "@govie-frontend/ds": "workspace:*",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-links": "^8.2.7",
     "@storybook/blocks": "^8.2.7",

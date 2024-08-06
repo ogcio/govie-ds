@@ -3,6 +3,7 @@ import "@fontsource/lato";
 import "@govie-ds/theme-govie/theme.css";
 import "./global.css";
 import "../../ds/styles.css";
+import "@govie-frontend/ds";
 
 const preview: Preview = {
   parameters: {

@@ -5,9 +5,13 @@
   "private": true,
   "type": "module",
   "main": "dist/govie-frontend.js",
+  "module": "dist/govie-frontend.esm.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/govie-frontend.js",
+    ".": {
+      "import": "./dist/govie-frontend.esm.js",
+      "require": "./dist/govie-frontend.js"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "publishConfig": {

@@ -13,18 +13,22 @@ function addJavaScriptClass() {
   }
 }
 
-const libraryEvents = createEvents({
-  type: 'DOMContentLoaded',
-  functions: [addJavaScriptClass],
-});
+function init() {
+  const libraryEvents = createEvents({
+    type: 'DOMContentLoaded',
+    functions: [addJavaScriptClass],
+  });
 
-libraryEvents.init();
+  libraryEvents.init();
 
-const componentEvents = createEvents({
-  type: 'load',
-  functions: [initHeader],
-});
+  const componentEvents = createEvents({
+    type: 'load',
+    functions: [initHeader],
+  });
 
-componentEvents.init();
+  componentEvents.init();
+}
+
+init();
 
 export * from './header/header.js';
