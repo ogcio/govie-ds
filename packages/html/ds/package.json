@@ -4,13 +4,13 @@
   "description": "",
   "private": true,
   "type": "module",
-  "main": "dist/govie-frontend.js",
+  "main": "dist/govie-frontend.umd.js",
   "module": "dist/govie-frontend.esm.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/govie-frontend.esm.js",
-      "require": "./dist/govie-frontend.js"
+      "require": "./dist/govie-frontend.umd.js"
     },
     "./styles.css": "./dist/styles.css"
   },
