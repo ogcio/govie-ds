@@ -19,7 +19,7 @@ export default defineConfig({
         }
 
         if (format === 'umd') {
-          return 'govie-frontend.js';
+          return 'govie-frontend.umd.js';
         }
 
         return 'govie-frontend';
