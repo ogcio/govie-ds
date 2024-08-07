@@ -8,7 +8,7 @@
         "push": true,
         "trackDeps": true,
         "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]",
-        "postTargets": ["npm-publish", "github-release"]
+        "postTargets": ["github-release"]
       }
     },
     "npm-publish": {
@@ -22,7 +22,12 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "{tag}",
-        "notes": "{notes}"
+        "notes": "{notes}",
+        "files": [
+          "./packages/html/ds/dist/govie-frontend.esm.js",
+          "./packages/html/ds/dist/govie-frontend.umd.js",
+          "./packages/html/ds/dist/styles.css"
+        ]
       }
     }
   }
