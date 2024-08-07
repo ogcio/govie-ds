@@ -22,7 +22,8 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "{tag}",
-        "notes": "{notes}"
+        "notes": "{notes}",
+        "files": ["dist/theme.css"]
       }
     }
   }
