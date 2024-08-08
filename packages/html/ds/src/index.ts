@@ -16,9 +16,11 @@ function addJavaScriptClass() {
 export function initGovIe() {
   addJavaScriptClass();
 
-  destroyAllInstances();
-
   initHeader();
+}
+
+export function destroyGovIe() {
+  destroyAllInstances();
 }
 
 const componentEvents = createEvents({
