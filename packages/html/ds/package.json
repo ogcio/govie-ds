@@ -38,6 +38,7 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
+    "@types/nunjucks": "^3.2.6",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.8.0",
     "fs-extra": "^11.2.0",

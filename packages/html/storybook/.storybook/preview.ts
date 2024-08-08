@@ -6,6 +6,7 @@ import "../../ds/styles.css";
 import "@govie-frontend/ds";
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
     controls: {
       matchers: {
