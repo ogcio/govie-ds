@@ -3,7 +3,11 @@ import "@fontsource/lato";
 import "@govie-ds/theme-govie/theme.css";
 import "./global.css";
 import "../../ds/styles.css";
-import "@govie-frontend/ds";
+import { initGovIe } from "@govie-frontend/ds";
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  initGovIe();
+});
 
 const preview: Preview = {
   tags: ["autodocs"],
