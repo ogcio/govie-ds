@@ -35,6 +35,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@govie-frontend/ds': path.resolve(
+            // eslint-disable-next-line unicorn/prefer-module
             __dirname,
             '../../ds/src/index.ts',
           ),

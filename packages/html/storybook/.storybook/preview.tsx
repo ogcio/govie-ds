@@ -1,17 +1,11 @@
 import { destroyGovIe, initGovIe } from '@govie-frontend/ds';
-import type { Preview } from '@storybook/web-components';
+import { DocsContainer } from '@storybook/addon-docs';
+import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import '@fontsource/lato';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
-
-// DOMContentLoaded fires for each story on the Docs page
-// so we need to destroy and re-initialise the components for each event
-document.addEventListener('DOMContentLoaded', () => {
-  destroyGovIe();
-  initGovIe();
-});
 
 export const decorators = [
   (Story, context) => {
@@ -36,6 +30,15 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /date$/i,
+      },
+    },
+    docs: {
+      // source: {
+      //   transform: (code) => {
+      //   },
+      // },
+      container: ({ children, context }) => {
+        return <DocsContainer context={context}>{children}</DocsContainer>;
       },
     },
   },
