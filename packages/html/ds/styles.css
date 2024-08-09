@@ -5,3 +5,8 @@
 .gieds-js .js\:gi-hidden {
   display: none;
 }
+
+.gieds-js .js\:gi-max-height {
+  max-height: 0;
+  opacity: 0;
+}

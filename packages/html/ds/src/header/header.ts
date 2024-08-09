@@ -132,15 +132,10 @@ export class Header extends Component {
     this.searchIconHandler = (event: Event) => {
       event.stopPropagation();
 
-      const isExpanded =
-        !this.searchContainer.classList.contains('js:gi-hidden');
-
-      if (isExpanded) {
-        this.searchContainer.classList.add('js:gi-hidden');
-        return;
-      }
-
-      this.searchContainer.classList.remove('js:gi-hidden');
+      const classList = this.searchContainer.classList;
+      classList.toggle('js:gi-max-height');
+      classList.toggle('gi-max-h-0');
+      classList.toggle('gi-opacity-0');
     };
 
     this.init();
