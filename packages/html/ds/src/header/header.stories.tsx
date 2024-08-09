@@ -1,33 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import nunjucks from 'nunjucks';
+import { renderMacro } from '../storybook/storybook';
 import macro from './macro.html?raw';
-
-const nunjucksEnvironment = nunjucks.configure({
-  autoescape: true,
-  noCache: true,
-  trimBlocks: true,
-  lstripBlocks: true,
-});
-
-function renderMacro<T = unknown>({
-  macro,
-  name,
-}: {
-  macro: string;
-  name: string;
-}) {
-  return function (props: T) {
-    const propsString = JSON.stringify(props);
-
-    const template = `
-    ${macro}
-    {{ ${name}(${propsString}) }}
-  `;
-
-    const rendered = nunjucksEnvironment.renderString(template, {});
-    return <div dangerouslySetInnerHTML={{ __html: rendered.trim() }} />;
-  };
-}
 
 type HeaderProps = {
   title: string;

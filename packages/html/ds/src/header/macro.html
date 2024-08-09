@@ -4,8 +4,12 @@
   data-module="gieds-header"
   class="gi-bg-emerald-800 gi-p-xl gi-text-white gi-rounded"
 >
-  {{ props.title }}
-  <button class="gi-bg-emerald-800" data-element="search">Search</button>
+  <div class="flex justify-between">
+    <div>
+      <p>{{props.title}}</p>
+    </div>
+    <button class="gi-bg-emerald-800" data-element="search">Search</button>
+  </div>
   <div class="js:gi-hidden" data-element="container">
     <input type="text" placeholder="Search" />
     <button class="gi-bg-emerald-800 gi-text-white gi-rounded">Search</button>
