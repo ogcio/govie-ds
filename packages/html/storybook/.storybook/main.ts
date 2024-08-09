@@ -1,21 +1,27 @@
-import type { StorybookConfig } from "@storybook/web-components-vite";
-import path from "node:path";
+import path from 'node:path';
+import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
-  stories: ["../../ds/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../../ds/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
+    '@storybook/addon-onboarding',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@chromatic-com/storybook',
+    '@storybook/addon-interactions',
+    '@storybook/addon-a11y',
   ],
   framework: {
-    name: "@storybook/web-components-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
+  docs: {
+    autodocs: 'tag',
+  },
   async viteFinal(config, { configType }) {
-    const { mergeConfig } = await import("vite");
+    const { mergeConfig } = await import('vite');
 
-    if (configType === "PRODUCTION") {
+    if (configType === 'PRODUCTION') {
       return config;
     }
 
@@ -28,9 +34,9 @@ const config: StorybookConfig = {
       },
       resolve: {
         alias: {
-          "@govie-frontend/ds": path.resolve(
+          '@govie-frontend/ds': path.resolve(
             __dirname,
-            "../../ds/src/index.ts"
+            '../../ds/src/index.ts',
           ),
         },
       },
