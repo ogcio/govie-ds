@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { StorybookConfig } from '@storybook/web-components-vite';
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../../ds/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],

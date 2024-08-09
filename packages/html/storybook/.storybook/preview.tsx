@@ -1,7 +1,7 @@
 import { destroyGovIe, initGovIe } from '@govie-frontend/ds';
-import { DocsContainer } from '@storybook/addon-docs';
+import { renderMacro } from '@govie-frontend/macro';
 import type { Preview } from '@storybook/react';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import '@fontsource/lato';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
@@ -34,13 +34,38 @@ const preview: Preview = {
     },
     docs: {
       source: {
-        transform: (code) => {
-          console.log(code);
-          return code;
+        transform: (_, context) => {
+          const { args, parameters } = context;
+
+          if (!parameters.macro) {
+            throw new Error('No macro found in parameters.');
+          }
+
+          if (!parameters.macro.html) {
+            throw new Error('No html found in macro.');
+          }
+
+          if (!parameters.macro.name) {
+            throw new Error('No name found in macro.');
+          }
+
+          const renderedMacro = renderMacro({
+            macro: parameters.macro.html,
+            name: parameters.macro.name,
+          })(args);
+
+          const macroOptions = JSON.stringify(args, null, 2);
+
+          const lines = [
+            '// Macro',
+            `{{ ${parameters.macro.name}(${macroOptions})} }}`,
+            '',
+            '// HTML',
+            renderedMacro,
+          ];
+
+          return lines.join('\n');
         },
-      },
-      container: ({ children, context }) => {
-        return <DocsContainer context={context}>{children}</DocsContainer>;
       },
     },
   },

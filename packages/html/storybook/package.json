@@ -20,6 +20,7 @@
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-frontend/ds": "workspace:*",
+    "@govie-frontend/macro": "workspace:*",
     "@storybook/addon-a11y": "^8.2.7",
     "@storybook/addon-docs": "^8.2.8",
     "@storybook/addon-essentials": "^8.2.7",

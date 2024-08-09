@@ -1,13 +1,6 @@
-import nunjucks from 'nunjucks';
+import { renderMacro } from '@govie-frontend/macro';
 
-const nunjucksEnvironment = nunjucks.configure({
-  autoescape: true,
-  noCache: true,
-  trimBlocks: true,
-  lstripBlocks: true,
-});
-
-export function renderMacro<TProps = unknown>({
+export function render<TProps = unknown>({
   macro,
   name,
 }: {
@@ -15,14 +8,7 @@ export function renderMacro<TProps = unknown>({
   name: string;
 }) {
   return function (props: TProps) {
-    const propsString = JSON.stringify(props);
-
-    const template = `
-      ${macro}
-      {{ ${name}(${propsString}) }}
-    `;
-
-    const rendered = nunjucksEnvironment.renderString(template, {});
-    return <div dangerouslySetInnerHTML={{ __html: rendered.trim() }} />;
+    const renderedMacro = renderMacro({ macro, name })(props);
+    return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   };
 }
