@@ -9,8 +9,14 @@ const nunjucksEnvironment = nunjucks.configure({
   lstripBlocks: true,
 });
 
-function renderMacro({ macro, name }: { macro: string; name: string }) {
-  return function (props: Record<string, unknown>) {
+function renderMacro<T = unknown>({
+  macro,
+  name,
+}: {
+  macro: string;
+  name: string;
+}) {
+  return function (props: T) {
     const propsString = JSON.stringify(props);
 
     const template = `
@@ -23,22 +29,16 @@ function renderMacro({ macro, name }: { macro: string; name: string }) {
   };
 }
 
-const render = renderMacro({ macro, name: 'govieHeader' });
-
-type Bar = {
-  title?: string;
-  foo: string;
+type HeaderProps = {
+  title: string;
 };
 
-// function Baz({ title, foo }: Bar) {
-//   return null
-// }
+const Header = renderMacro<HeaderProps>({ macro, name: 'govieHeader' });
 
-const meta: Meta<Bar> = {
-  // component: Baz,
-  render,
+const meta = {
+  component: Header,
   title: 'layout/Header',
-};
+} satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
