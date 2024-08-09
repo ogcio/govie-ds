@@ -33,15 +33,18 @@ const preview: Preview = {
       },
     },
     docs: {
-      // source: {
-      //   transform: (code) => {
-      //   },
-      // },
+      source: {
+        transform: (code) => {
+          console.log(code);
+          return code;
+        },
+      },
       container: ({ children, context }) => {
         return <DocsContainer context={context}>{children}</DocsContainer>;
       },
     },
   },
+  tags: ['autodocs'],
 };
 
 export default preview;
