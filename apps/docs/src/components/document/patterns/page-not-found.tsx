@@ -16,7 +16,7 @@ export function PageNotFound() {
         <Paragraph>
           If the web address is correct or you selected a link or button,
           contact the <Link href="#">service</Link> Helpline if you need to
-          speak to someone about your service.
+          speak to someone about your [service].
         </Paragraph>
       </main>
       <Footer />
