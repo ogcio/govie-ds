@@ -27,3 +27,5 @@ Nunjucks
 Jinja
 indexable
 viewport
+textarea
+Textarea

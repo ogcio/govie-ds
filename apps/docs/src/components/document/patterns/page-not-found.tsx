@@ -1,7 +1,7 @@
 'use client';
 import { Heading, Header, Footer, Link, Paragraph } from '@govie-react/ds';
 
-const PageNotFound = () => {
+export function PageNotFound() {
   return (
     <>
       <Header />
@@ -22,6 +22,4 @@ const PageNotFound = () => {
       <Footer />
     </>
   );
-};
-
-export default PageNotFound;
+}
