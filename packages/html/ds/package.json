@@ -23,7 +23,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "build": "pnpm build:ts && pnpm build:styles",
     "build:ts": "vite build",
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify"
+    "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "postbuild": "zip -r govie-frontend.zip dist"
   },
   "prettier": "@govie-ds/prettier-config",
   "files": [

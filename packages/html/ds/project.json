@@ -23,11 +23,7 @@
       "options": {
         "tag": "{tag}",
         "notes": "{notes}",
-        "files": [
-          "./packages/html/ds/dist/govie-frontend.esm.js",
-          "./packages/html/ds/dist/govie-frontend.umd.js",
-          "./packages/html/ds/dist/styles.css"
-        ]
+        "files": ["./packages/html/ds/govie-frontend.zip"]
       }
     }
   }
