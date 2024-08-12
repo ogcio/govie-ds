@@ -11,6 +11,7 @@ import {
 } from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { PageNotFound } from '../patterns/page-not-found';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
 import { Logos } from '../resources/logos';
@@ -104,6 +105,7 @@ const documentComponents: MDXComponents = {
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
   DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
+  PageNotFound: (props) => <PageNotFound {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
 };
 
