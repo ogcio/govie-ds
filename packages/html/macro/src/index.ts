@@ -1,1 +1,1 @@
-export * from "./macro.js";
+export * from './macro.js';
