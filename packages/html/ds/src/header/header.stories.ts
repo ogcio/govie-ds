@@ -1,43 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-nocheck
-// import headerData from '../data/headerData.json';
-
-import nunjucks from 'nunjucks';
+import type { Meta, StoryObj } from '@storybook/react';
+import { render } from '../storybook/storybook';
 import macro from './macro.html?raw';
 
-const nunjucksEnvironment = nunjucks.configure({
-  autoescape: true,
-  noCache: true,
-  trimBlocks: true,
-  lstripBlocks: true,
-});
-
-function renderMacro({ macro, name }: { macro: string; name: string }): string {
-  return function (props: Record<string, unknown>) {
-    const propsString = JSON.stringify(props);
-
-    const template = `
-    ${macro}
-    {{ ${name}(${propsString}) }}
-  `;
-
-    const rendered = nunjucksEnvironment.renderString(template);
-    return rendered.trim();
-  };
-}
-
-export default {
-  title: 'Header',
+type HeaderProps = {
+  title: string;
 };
 
-const Template = renderMacro({ macro, name: 'govieHeader' });
+const Header = render<HeaderProps>({ macro, name: 'govieHeader' });
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'Service Name',
+const meta = {
+  component: Header,
+  title: 'layout/Header',
+  parameters: {
+    macro: {
+      html: macro,
+      name: 'govieHeader',
+    },
+  },
+} satisfies Meta<typeof Header>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    title: 'Service Name',
+  },
 };
 
-export const Title = Template.bind({});
-Title.args = {
-  title: 'Title',
+export const Title: Story = {
+  args: {
+    title: 'Title',
+  },
 };

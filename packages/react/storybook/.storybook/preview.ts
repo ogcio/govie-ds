@@ -9,10 +9,11 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i,
+        date: /date$/i,
       },
     },
   },
+  tags: ['autodocs'],
 };
 
 export default preview;
