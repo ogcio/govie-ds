@@ -5,3 +5,5 @@ dist
 *storybook.log
 package-lock.json
 storybook-static
+theme.zip
+govie-frontend.zip

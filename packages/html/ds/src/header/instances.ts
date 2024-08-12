@@ -3,6 +3,8 @@ import { Header } from './header';
 class Instances {
   private _instances: {
     Header: { [id: string]: Header };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
   };
 
   constructor() {
@@ -13,22 +15,25 @@ class Instances {
 
   addInstance(
     component: keyof Instances['_instances'],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     instance: any,
     id?: string,
     override = false,
   ) {
     if (!this._instances[component]) {
-      console.warn(`GovIe: Component ${component} does not exist.`);
+      console.warn(`govie component ${component} does not exist.`);
       return false;
     }
 
-    if (this._instances[component][id] && !override) {
-      console.warn(`GovIe: Instance with ID ${id} already exists.`);
-      return;
-    }
+    if (id) {
+      if (this._instances[component][id] && !override) {
+        console.warn(`govie instance with id ${id} already exists.`);
+        return;
+      }
 
-    if (override && this._instances[component][id]) {
-      this._instances[component][id].destroyAndRemoveInstance();
+      if (override && this._instances[component][id]) {
+        this.destroyAndRemoveInstance(component, id);
+      }
     }
 
     this._instances[component][id ?? this._generateRandomId()] = instance;
@@ -40,7 +45,7 @@ class Instances {
 
   getInstances(component: keyof Instances['_instances']) {
     if (!this._instances[component]) {
-      console.warn(`GovIe: Component ${component} does not exist.`);
+      console.warn(`govie component ${component} does not exist.`);
       return false;
     }
     return this._instances[component];
@@ -52,9 +57,11 @@ class Instances {
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`GovIe: Instance with ID ${id} does not exist.`);
+      console.warn(`govie instance with id ${id} does not exist.`);
       return;
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this._instances[component][id] as any;
   }
 
@@ -72,6 +79,7 @@ class Instances {
   destroyAndRemoveAllInstances() {
     for (const component in this._instances) {
       for (const id in this._instances[component]) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         this.destroyAndRemoveInstance(component as any, id);
       }
     }
@@ -104,7 +112,7 @@ class Instances {
   }
 
   _generateRandomId() {
-    return Math.random().toString(36).slice(2, 11); // TODO: replace
+    return Math.random().toString(36).slice(2, 11);
   }
 
   private _componentAndInstanceCheck(
@@ -112,12 +120,12 @@ class Instances {
     id: string,
   ) {
     if (!this._instances[component]) {
-      console.warn(`GovIe: Component ${component} does not exist.`);
+      console.warn(`govie Component ${component} does not exist.`);
       return false;
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`GovIe: Instance with ID ${id} does not exist.`);
+      console.warn(`govie Instance with ID ${id} does not exist.`);
       return false;
     }
 
@@ -128,5 +136,6 @@ class Instances {
 export const instances = new Instances();
 
 if (typeof window !== 'undefined') {
-  window.GovIeInstances = instances;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).govieInstances = instances;
 }
