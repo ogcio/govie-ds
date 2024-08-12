@@ -624,9 +624,6 @@ importers:
       glob:
         specifier: ^10.4.5
         version: 10.4.5
-      nunjucks:
-        specifier: ^3.2.4
-        version: 3.2.4(chokidar@3.6.0)
       postcss:
         specifier: ^8.4.40
         version: 8.4.40
