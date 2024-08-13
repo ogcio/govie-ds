@@ -1,4 +1,3 @@
-'use client';
 import { Heading, Header, Footer, Link, Paragraph } from '@govie-react/ds';
 
 export function PageNotFound() {
