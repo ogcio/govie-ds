@@ -11,9 +11,9 @@ import {
 } from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
-import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
 import { Logos } from '../resources/logos';
