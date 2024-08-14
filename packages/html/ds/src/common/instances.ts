@@ -1,4 +1,4 @@
-import { Header } from './header';
+import { Header } from '../header/header';
 
 class Instances {
   private _instances: {
@@ -131,6 +131,29 @@ class Instances {
 
     return true;
   }
+}
+
+export type InstanceOptions = {
+  id?: string;
+  element: Element;
+};
+
+export function createInstance(classType: string, options: InstanceOptions) {
+  instances.addInstance('Header', new Header(options), options.id, true);
+}
+
+export function destroyInstance({
+  classType,
+  id,
+}: {
+  classType: 'Header';
+  id: string;
+}) {
+  instances.destroyAndRemoveInstance(classType, id);
+}
+
+export function destroyAllInstances() {
+  instances.destroyAndRemoveAllInstances();
 }
 
 export const instances = new Instances();

@@ -1,14 +1,14 @@
 import { renderMacro } from '@govie-frontend/macro';
 
 export function render<TProps = unknown>({
-  macro,
   name,
+  html,
 }: {
-  macro: string;
   name: string;
+  html: string;
 }) {
   return function (props: TProps) {
-    const renderedMacro = renderMacro({ macro, name })(props);
+    const renderedMacro = renderMacro({ name, html })(props);
     return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   };
 }

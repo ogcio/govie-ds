@@ -1,5 +1,6 @@
+import { destroyAllInstances } from './common/instances.js';
 import { createEvents } from './events.js';
-import { destroyAllInstances, initHeader } from './header/header.js';
+import { initHeader } from './header/header.js';
 
 function addJavaScriptClass() {
   const body = document?.body;

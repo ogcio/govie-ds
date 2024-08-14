@@ -1,7 +1,7 @@
 import { destroyGovIe, initGovIe } from '@govie-frontend/ds';
 import { renderMacro } from '@govie-frontend/macro';
 import type { Preview } from '@storybook/react';
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '@fontsource/lato';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
@@ -49,10 +49,7 @@ const preview: Preview = {
             throw new Error('No name found in macro.');
           }
 
-          const renderedMacro = renderMacro({
-            macro: parameters.macro.html,
-            name: parameters.macro.name,
-          })(args);
+          const renderedMacro = renderMacro(parameters.macro)(args);
 
           const macroOptions = JSON.stringify(args, null, 2);
 
