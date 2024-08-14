@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 env:
-  AWS_DEFAULT_REGION: eu-west-1
-  AWS_ASSUME_ROLE_ARN: arn:aws:iam::782102975611:role/OGCIO_GitHub_WebIdentity
-  AWS_S3_BUCKET_NAME: www-storybook-design-system-gov-ie
+  AWS_S3_BUCKET_NAME: storybook-html-design-system-blocks-gov-ie
 
 jobs:
   build:
