@@ -8,7 +8,7 @@ ARG DEPLOY_ENV
 
 ENV DEPLOY_ENV=${DEPLOY_ENV}
 
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat zip
 
 WORKDIR /build
 
