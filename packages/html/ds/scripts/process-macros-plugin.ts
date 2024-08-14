@@ -60,7 +60,11 @@ export function processMacrosPlugin() {
 
         for (const destination of destinations) {
           const destinationDirectory = `${destinationRootDirectory}/${destination.engine}/${destination.mode}/govie`;
-          const destinationPath = path.resolve(destinationDirectory, file);
+
+          const destinationPath = path.resolve(
+            destinationDirectory,
+            file.replace(path.basename(file), 'macro.html'),
+          );
 
           const updatedContent = processContent({
             engine: destination.engine,
