@@ -1,0 +1,61 @@
+name: Deploy HTML Storybook to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_DEFAULT_REGION: eu-west-1
+  AWS_ASSUME_ROLE_ARN: arn:aws:iam::782102975611:role/OGCIO_GitHub_WebIdentity
+  AWS_S3_BUCKET_NAME: www-storybook-design-system-gov-ie
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - run: npm i
+        env:
+          DS_ENV: aws
+      - run: npm run build:storybook:dist
+      - run: npm run storybook:build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: build-artifact
+          path: build
+
+  deploy:
+    name: Deploy to Amazon S3
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: build-artifact
+          path: build
+
+      - name: AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{env.AWS_ASSUME_ROLE_ARN}}
+          role-duration-seconds: 900
+          aws-region: ${{env.AWS_DEFAULT_REGION}}
+
+      - name: Deploy to S3
+        run: aws s3 sync build/ s3://$AWS_S3_BUCKET_NAME/
