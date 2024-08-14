@@ -21,8 +21,10 @@
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",
     "figma:build": "nx run @govie-ds/figma:build",
-    "html:storybook": "nx run @govie-ds/storybook-html:dev",
-    "react:storybook": "nx run @govie-ds/storybook-react:dev",
+    "html:storybook": "nx run @govie-frontend/storybook:dev",
+    "html:storybook:build": "nx run @govie-frontend/storybook:build",
+    "react:storybook": "nx run @govie-react/storybook:dev",
+    "react:storybook:build": "nx run @govie-react/storybook:build",
     "examples:vite": "nx run @govie-ds/examples-vite:dev",
     "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev"
   },
