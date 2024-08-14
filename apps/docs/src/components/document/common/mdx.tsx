@@ -13,6 +13,7 @@ import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
+import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
 import { Logos } from '../resources/logos';
@@ -108,6 +109,7 @@ const documentComponents: MDXComponents = {
   DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
+  ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
 };
 
