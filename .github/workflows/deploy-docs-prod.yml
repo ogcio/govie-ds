@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy docs to Production
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
           pnpm build
           pnpm test
 
-      - name: Setup AWS ECR Details
+      - name: Setup AWS Credentials
         if: github.ref == 'refs/heads/main'
         uses: aws-actions/configure-aws-credentials@v4
         with:
