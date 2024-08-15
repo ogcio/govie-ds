@@ -8,17 +8,17 @@ const nunjucksEnvironment = nunjucks.configure({
 });
 
 export function renderMacro<TProps = unknown>({
-  macro,
   name,
+  html,
 }: {
-  macro: string;
   name: string;
+  html: string;
 }) {
   return function (props: TProps) {
     const propsString = JSON.stringify(props);
 
     const template = `
-      ${macro}
+      ${html}
       {{ ${name}(${propsString}) }}
     `;
 

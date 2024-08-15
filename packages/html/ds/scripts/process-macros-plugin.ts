@@ -60,7 +60,11 @@ export function processMacrosPlugin() {
 
         for (const destination of destinations) {
           const destinationDirectory = `${destinationRootDirectory}/${destination.engine}/${destination.mode}/govie`;
-          const destinationPath = path.resolve(destinationDirectory, file);
+
+          const destinationPath = path.resolve(
+            destinationDirectory,
+            file.replace(path.basename(file), 'macro.html'),
+          );
 
           const updatedContent = processContent({
             engine: destination.engine,
@@ -68,8 +72,8 @@ export function processMacrosPlugin() {
             content,
           });
 
-          fs.ensureDirSync(path.dirname(destinationPath));
-          fs.writeFileSync(destinationPath, updatedContent);
+          await fs.ensureDir(path.dirname(destinationPath));
+          await fs.writeFile(destinationPath, updatedContent);
         }
       }
 
