@@ -17,6 +17,12 @@ function toType(typeName: string): MacroPropertyType {
     case 'ZodString': {
       return 'string';
     }
+    case 'ZodNumber': {
+      return 'number';
+    }
+    case 'ZodBoolean': {
+      return 'boolean';
+    }
     default: {
       throw new Error(`Unknown Zod type '${typeName}'.`);
     }
@@ -34,7 +40,9 @@ function getSchemaProperties(schema) {
       for (const [key, value] of Object.entries(shape)) {
         const fullPath = zodPath ? `${zodPath}.${key}` : key;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { typeName, description } = (value as any)._def;
+        const { innerType, typeName, description } = (value as any)._def;
+
+        const zodType = innerType ? innerType._def.typeName : typeName;
 
         let required = true;
         if (value instanceof z.ZodOptional) {
@@ -44,7 +52,7 @@ function getSchemaProperties(schema) {
         properties.push({
           name: key,
           description,
-          type: toType(typeName),
+          type: toType(zodType),
           required,
         });
 
