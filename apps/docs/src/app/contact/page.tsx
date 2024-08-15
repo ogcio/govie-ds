@@ -1,6 +1,6 @@
 import { Heading, Paragraph } from '@govie-react/ds';
-import { config } from '@/lib/config';
 import { Metadata } from 'next';
+import { config } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Contact us',
