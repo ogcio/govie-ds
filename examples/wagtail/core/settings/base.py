@@ -81,7 +81,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         "DIRS": [
             os.path.join(PROJECT_DIR, "jinja"),
-            os.path.join(PROJECT_DIR, "../node_modules/@govie-frontend/ds/macros/jinja/prod"),
+            os.path.join(PROJECT_DIR, "../node_modules/@govie-frontend/ds/macros/jinja/dev"),
         ],
         'OPTIONS': {
             'extensions': [
