@@ -80,14 +80,20 @@ function getConfiguration(
 }
 
 const getDeployEnvironment = () => {
-  if (process.env.DEPLOY_ENV === 'production') {
-    return 'production';
-  } else if (process.env.DEPLOY_ENV === 'staging') {
-    return 'staging';
-  } else if (process.env.DEPLOY_ENV === 'uat') {
-    return 'uat';
+  switch (process.env.DEPLOY_ENV) {
+    case 'production': {
+      return 'production';
+    }
+    case 'staging': {
+      return 'staging';
+    }
+    case 'uat': {
+      return 'uat';
+    }
+    default: {
+      return 'development';
+    }
   }
-  return 'development';
 };
 
 export const config: DocumentSiteConfiguration = getConfiguration(
