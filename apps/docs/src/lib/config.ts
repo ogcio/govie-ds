@@ -4,8 +4,18 @@ function isProduction() {
   return process.env.NODE_ENV === 'production';
 }
 
+function isUat() {
+  return process.env.NODE_ENV === ('uat' as any);
+}
+
+function isStaging() {
+  return process.env.NODE_ENV === ('staging' as any);
+}
+
 export type DocumentSiteConfiguration = {
   isProduction: () => boolean;
+  isUat: () => boolean;
+  isStaging: () => boolean;
   isGitHubPages: () => boolean;
   showDrafts: () => boolean;
   buildingBlocksHomeUrl: string;
@@ -13,7 +23,7 @@ export type DocumentSiteConfiguration = {
   signUpFormUrl: string;
 };
 
-type DocumentSiteEnvironment = 'development' | 'production';
+type DocumentSiteEnvironment = 'development' | 'uat' | 'staging' | 'production';
 
 type Configurations = Record<
   DocumentSiteEnvironment,
@@ -24,7 +34,9 @@ function getConfiguration(
   environment: DocumentSiteEnvironment,
 ): DocumentSiteConfiguration {
   const defaultConfiguration: DocumentSiteConfiguration = {
-    isProduction: () => isProduction(), // TODO: review if required
+    isProduction: () => isProduction(),
+    isUat: () => isUat(),
+    isStaging: () => isStaging(),
     isGitHubPages: () => process.env.GITHUB_PAGES === 'true',
     showDrafts: () => {
       // Show drafts setting takes precedence
@@ -42,6 +54,18 @@ function getConfiguration(
 
   const configurationOverrides: Configurations = {
     development: {},
+    staging: {
+      // TODO Review the following paths
+      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
+      feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
+      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+    },
+    uat: {
+      // TODO Review the following paths
+      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
+      feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
+      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+    },
     production: {
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
       feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
@@ -55,6 +79,17 @@ function getConfiguration(
   );
 }
 
+const getDeployEnvironment = () => {
+  if (process.env.DEPLOY_ENV === 'production') {
+    return 'production';
+  } else if (process.env.DEPLOY_ENV === 'staging') {
+    return 'staging';
+  } else if (process.env.DEPLOY_ENV === 'uat') {
+    return 'uat';
+  }
+  return 'development';
+};
+
 export const config: DocumentSiteConfiguration = getConfiguration(
-  process.env.DEPLOY_ENV === 'production' ? 'production' : 'development',
+  getDeployEnvironment(),
 );
