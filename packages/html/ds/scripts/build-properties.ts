@@ -52,9 +52,16 @@ function getSchemaProperties(schema) {
           processSchema(value, fullPath);
         }
       }
-    } else if (schema instanceof z.ZodArray) {
+
+      return;
+    }
+
+    if (schema instanceof z.ZodArray) {
       processSchema(schema._def.type, zodPath);
-    } else if (schema instanceof z.ZodUnion) {
+      return;
+    }
+
+    if (schema instanceof z.ZodUnion) {
       for (const option of schema._def.options) {
         processSchema(option, zodPath);
       }
@@ -114,7 +121,7 @@ async function buildProperties() {
   await fs.outputFile(destinationPath, content.join('\n'));
 
   // TODO: logger abstraction
-  console.log('Macros processed and copied.');
+  console.log('Properties generated from schemas.');
 }
 
 await buildProperties();
