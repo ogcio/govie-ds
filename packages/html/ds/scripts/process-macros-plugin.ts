@@ -7,26 +7,58 @@ type MacroDestination = {
   mode: 'dev' | 'prod';
 };
 
+function injectValidation({
+  macroHtml,
+  validationMarkup,
+}: {
+  macroHtml: string;
+  validationMarkup: string;
+}) {
+  const macroRegex = /({% macro [^%]*?%}\s*)/i;
+  return macroHtml.replace(
+    macroRegex,
+    (match) => `${match}${validationMarkup}`,
+  );
+}
+
+function injectJinjaValidation({ macroHtml }: { macroHtml: string }) {
+  const validationMarkup = `
+{% set required_keys = ['title'] %}
+  {% for key in required_keys %}
+      {% if props[key] is none %}
+          {% set error_message = "Missing required property '" ~ key ~ "'." %}
+          {{ throw(error_message) }}
+      {% endif %}
+{% endfor %}
+  `;
+
+  return injectValidation({ macroHtml, validationMarkup });
+}
+
 function processContent({
   engine,
   mode,
   content,
+  macroName,
 }: {
   engine: string;
   mode: string;
   content: string;
+  macroName: string;
 }) {
-  if (mode === 'prod' || mode === 'dev') {
-    // TODO: prod only, add validation for dev
-    return content.replace('{{ validation }}', '');
+  if (mode === 'prod') {
+    return content;
   }
+
+  console.log({ macroName });
 
   switch (engine) {
     case 'nunjucks': {
-      return content.replace('{{ validation }}', `nunjucks`);
+      // TODO: inject nunjucks validation
+      return content;
     }
     case 'jinja': {
-      return content.replace('{{ validation }}', `jinja`);
+      return injectJinjaValidation({ macroHtml: content });
     }
     default: {
       throw new Error(`Unsupported engine '${engine}'.`);
@@ -70,6 +102,7 @@ export function processMacrosPlugin() {
             engine: destination.engine,
             mode: destination.mode,
             content,
+            macroName: path.basename(file, '.html'),
           });
 
           await fs.ensureDir(path.dirname(destinationPath));
