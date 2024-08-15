@@ -3,6 +3,10 @@ name: Deploy docs to Production
 on:
   workflow_dispatch:
     inputs:
+      tag:
+        description: "Git tag to deploy"
+        required: true
+        default: "last-release"
       environment:
         description: "Select deployment environment"
         required: true
@@ -11,7 +15,7 @@ on:
           - staging
           - uat
           - production
-        default: uat
+        default: staging
 
 jobs:
   build:

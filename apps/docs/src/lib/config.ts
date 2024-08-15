@@ -41,15 +41,15 @@ function getConfiguration(
   const configurationOverrides: Configurations = {
     development: {},
     staging: {
-      // TODO Review the following paths
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
-      feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
+      feedbackFormUrl:
+        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf22',
       signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
     },
     uat: {
-      // TODO Review the following paths
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
-      feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
+      feedbackFormUrl:
+        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf229',
       signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
     },
     production: {
