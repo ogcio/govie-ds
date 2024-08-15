@@ -21,9 +21,9 @@
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "build": "pnpm build:ts && pnpm build:schemas && pnpm build:styles",
+    "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles",
+    "build:properties": "tsx scripts/build-properties.ts",
     "build:ts": "vite build",
-    "build:schemas": "tsx scripts/build.ts",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "postbuild": "zip -r govie-frontend.zip dist macros"
   },

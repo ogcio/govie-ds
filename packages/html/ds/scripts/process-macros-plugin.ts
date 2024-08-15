@@ -72,8 +72,8 @@ export function processMacrosPlugin() {
             content,
           });
 
-          fs.ensureDirSync(path.dirname(destinationPath));
-          fs.writeFileSync(destinationPath, updatedContent);
+          await fs.ensureDir(path.dirname(destinationPath));
+          await fs.writeFile(destinationPath, updatedContent);
         }
       }
 

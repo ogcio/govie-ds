@@ -65,7 +65,7 @@ function getSchemaProperties(schema) {
   return properties;
 }
 
-async function build() {
+async function buildProperties() {
   const sourceDirectory = path.resolve(import.meta.dirname, '../src');
   const destinationRootDirectory = path.resolve(
     import.meta.dirname,
@@ -74,14 +74,22 @@ async function build() {
 
   await fs.remove(destinationRootDirectory);
 
+  const content: string[] = [];
+
+  content.push(
+    `export type MacroPropertyType = 'string' | 'number' | 'boolean';`,
+    `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; };`,
+  );
+
+  const exportType = 'MacroProperty[]';
+
   for (const file of glob.sync('**/*.schema.ts', {
     cwd: sourceDirectory,
   })) {
     const sourcePath = path.resolve(sourceDirectory, file);
-    const content = fs.readFileSync(sourcePath, 'utf8');
-
     const module = await import(sourcePath);
 
+    // TODO: validate single export of ZodObject named fooSchema
     for (const key of Object.keys(module)) {
       const schema = module[key];
 
@@ -90,29 +98,23 @@ async function build() {
       }
 
       const properties = getSchemaProperties(schema);
-      console.log(`Properties for ${file}:`, properties);
 
-      const destinationDirectory = destinationRootDirectory; // `${destinationRootDirectory}/${destination.engine}/${destination.mode}/govie`;
-
-      const destinationPath = path.resolve(
-        destinationDirectory,
-        file.replace(path.basename(file), 'macro.html'),
+      const exportName = key.replace('Schema', '');
+      content.push(
+        `export const ${exportName}: ${exportType} = ${JSON.stringify(properties)};`,
       );
-
-      // const updatedContent = processContent({
-      //   engine: destination.engine,
-      //   mode: destination.mode,
-      //   content,
-      // });
-
-      const updatedContent = '';
-
-      // fs.ensureDirSync(path.dirname(destinationPath));
-      // fs.writeFileSync(destinationPath, updatedContent);
     }
   }
 
+  const destinationPath = path.resolve(
+    destinationRootDirectory,
+    'properties.ts',
+  );
+
+  await fs.outputFile(destinationPath, content.join('\n'));
+
+  // TODO: logger abstraction
   console.log('Macros processed and copied.');
 }
 
-await build();
+await buildProperties();
