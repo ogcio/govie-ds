@@ -7,17 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Select deployment environment"
-        required: true
-        type: choice
-        options:
-          - uat
-          - staging
-          - production
-        default: uat
 
 permissions:
   contents: write
@@ -54,9 +43,6 @@ jobs:
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-      - name: Set environment variable
-        run: echo "CONFIGURATION=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
 
       - name: Build and test
         run: |

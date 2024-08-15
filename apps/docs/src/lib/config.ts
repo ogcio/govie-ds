@@ -13,9 +13,6 @@ function isStaging() {
 }
 
 export type DocumentSiteConfiguration = {
-  isProduction: () => boolean;
-  isUat: () => boolean;
-  isStaging: () => boolean;
   isGitHubPages: () => boolean;
   showDrafts: () => boolean;
   buildingBlocksHomeUrl: string;
@@ -34,9 +31,6 @@ function getConfiguration(
   environment: DocumentSiteEnvironment,
 ): DocumentSiteConfiguration {
   const defaultConfiguration: DocumentSiteConfiguration = {
-    isProduction: () => isProduction(),
-    isUat: () => isUat(),
-    isStaging: () => isStaging(),
     isGitHubPages: () => process.env.GITHUB_PAGES === 'true',
     showDrafts: () => {
       // Show drafts setting takes precedence
@@ -79,7 +73,7 @@ function getConfiguration(
   );
 }
 
-const getDeployEnvironment = () => {
+function getDeployEnvironment(): DocumentSiteEnvironment {
   switch (process.env.DEPLOY_ENV) {
     case 'production': {
       return 'production';
@@ -94,7 +88,7 @@ const getDeployEnvironment = () => {
       return 'development';
     }
   }
-};
+}
 
 export const config: DocumentSiteConfiguration = getConfiguration(
   getDeployEnvironment(),
