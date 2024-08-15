@@ -28,7 +28,7 @@ export async function generateMetadata({
   }
 
   const title = `${document.title} - ${suffix}`;
-  const description = `${document.description} - ${suffix}`;
+  const { description } = document;
 
   return {
     title,

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { config } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Contact us',
+  title: 'Contact us - Gov IE Design System',
   description: 'Contact us',
 };
 
