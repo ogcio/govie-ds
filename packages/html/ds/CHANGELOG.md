@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.1.4...@govie-frontend/ds-0.2.0) (2024-08-15)
+
+
+### Features
+
+* add jinja macro validation ([#164](https://github.com/ogcio/govie-ds/issues/164)) ([ef97dea](https://github.com/ogcio/govie-ds/commit/ef97deac15ec09e362cf0915b7041bf7fbfcef70))
+
+
+
 ## [0.1.4](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.1.3...@govie-frontend/ds-0.1.4) (2024-08-15)
 
 ### Dependency Updates
