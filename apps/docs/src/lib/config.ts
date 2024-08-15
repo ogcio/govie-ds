@@ -4,14 +4,6 @@ function isProduction() {
   return process.env.NODE_ENV === 'production';
 }
 
-function isUat() {
-  return process.env.NODE_ENV === ('uat' as any);
-}
-
-function isStaging() {
-  return process.env.NODE_ENV === ('staging' as any);
-}
-
 export type DocumentSiteConfiguration = {
   isGitHubPages: () => boolean;
   showDrafts: () => boolean;
