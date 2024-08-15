@@ -25,7 +25,7 @@ function injectJinjaValidation({ macroHtml }: { macroHtml: string }) {
   const validationMarkup = `
 {% set required_keys = ['title'] %}
   {% for key in required_keys %}
-      {% if props[key] is none %}
+      {% if key not in props %}
           {% set error_message = "Missing required property '" ~ key ~ "'." %}
           {{ throw(error_message) }}
       {% endif %}
