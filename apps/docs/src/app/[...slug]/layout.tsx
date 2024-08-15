@@ -15,6 +15,27 @@ type DocumentLayoutProps = {
   };
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}) {
+  const document = documents.getBySlug({ slug: params.slug });
+  const suffix = 'Gov IE Design System';
+
+  if (!document) {
+    return;
+  }
+
+  const title = `${document.title} - ${suffix}`;
+  const description = `${document.description} - ${suffix}`;
+
+  return {
+    title,
+    description,
+  };
+}
+
 export default function DocumentLayoutProps({
   children,
   params,
