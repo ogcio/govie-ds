@@ -6,3 +6,5 @@ export const headerSchema = zod.object({
     required_error: 'Title is required.',
   }),
 });
+
+export type HeaderProps = zod.infer<typeof headerSchema>;

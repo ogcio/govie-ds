@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { render } from '../storybook/storybook';
-import html from './macro.html?raw';
-
-type HeaderProps = {
-  title: string;
-};
+import html from './header.html?raw';
+import { HeaderProps } from './header.schema';
 
 const Header = render<HeaderProps>({ name: 'govieHeader', html });
 
