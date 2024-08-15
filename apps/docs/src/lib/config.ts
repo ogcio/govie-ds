@@ -20,7 +20,7 @@ export type DocumentSiteConfiguration = {
   signUpFormUrl: string;
 };
 
-type DocumentSiteEnvironment = 'development' | 'uat' | 'staging' | 'production';
+type DocumentSiteEnvironment = 'development' | 'staging' | 'uat' | 'production';
 
 type Configurations = Record<
   DocumentSiteEnvironment,
