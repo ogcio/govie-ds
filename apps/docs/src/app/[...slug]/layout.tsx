@@ -15,6 +15,19 @@ type DocumentLayoutProps = {
   };
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}) {
+  const { title, description } = documents.getMeta({ slug: params.slug });
+
+  return {
+    title,
+    description,
+  };
+}
+
 export default function DocumentLayoutProps({
   children,
   params,
