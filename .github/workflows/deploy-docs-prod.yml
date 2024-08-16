@@ -1,4 +1,4 @@
-name: Deploy docs to Production
+name: Deploy docs to AWS
 
 on:
   workflow_dispatch:
