@@ -5,7 +5,6 @@ function isProduction() {
 }
 
 export type DocumentSiteConfiguration = {
-  isProduction: () => boolean;
   isGitHubPages: () => boolean;
   showDrafts: () => boolean;
   buildingBlocksHomeUrl: string;
@@ -13,7 +12,7 @@ export type DocumentSiteConfiguration = {
   signUpFormUrl: string;
 };
 
-type DocumentSiteEnvironment = 'development' | 'production';
+type DocumentSiteEnvironment = 'development' | 'staging' | 'uat' | 'production';
 
 type Configurations = Record<
   DocumentSiteEnvironment,
@@ -24,7 +23,6 @@ function getConfiguration(
   environment: DocumentSiteEnvironment,
 ): DocumentSiteConfiguration {
   const defaultConfiguration: DocumentSiteConfiguration = {
-    isProduction: () => isProduction(), // TODO: review if required
     isGitHubPages: () => process.env.GITHUB_PAGES === 'true',
     showDrafts: () => {
       // Show drafts setting takes precedence
@@ -42,6 +40,18 @@ function getConfiguration(
 
   const configurationOverrides: Configurations = {
     development: {},
+    staging: {
+      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
+      feedbackFormUrl:
+        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf22',
+      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+    },
+    uat: {
+      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
+      feedbackFormUrl:
+        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf229',
+      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+    },
     production: {
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
       feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
@@ -55,6 +65,23 @@ function getConfiguration(
   );
 }
 
+function getDeployEnvironment(): DocumentSiteEnvironment {
+  switch (process.env.DEPLOY_ENV) {
+    case 'production': {
+      return 'production';
+    }
+    case 'staging': {
+      return 'staging';
+    }
+    case 'uat': {
+      return 'uat';
+    }
+    default: {
+      return 'development';
+    }
+  }
+}
+
 export const config: DocumentSiteConfiguration = getConfiguration(
-  process.env.DEPLOY_ENV === 'production' ? 'production' : 'development',
+  getDeployEnvironment(),
 );

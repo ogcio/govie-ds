@@ -7,6 +7,15 @@ on:
         description: "Git tag to deploy"
         required: true
         default: "last-release"
+      environment:
+        description: "Select deployment environment"
+        required: true
+        type: choice
+        options:
+          - staging
+          - uat
+          - production
+        default: staging
 
 jobs:
   build:
@@ -29,6 +38,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Set environment variable
+        run: echo "CONFIGURATION=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
 
       - name: Build and test
         run: |

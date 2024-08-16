@@ -13,7 +13,7 @@
     "ds": "nx run @govie-ds/docs:dev",
     "ds:build": "nx run @govie-ds/docs:build",
     "ds:build:prod": "nx run @govie-ds/docs:build:prod",
-    "ds:deploy": "nx run @govie-ds/docs:docker --parallel=1 --configuration=production",
+    "ds:deploy": "nx run @govie-ds/docs:docker --parallel=1 --configuration=$CONFIGURATION",
     "ds:storybook": "nx run @govie-ds/docs:storybook",
     "build": "nx run-many --target=build --all",
     "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
