@@ -42,15 +42,9 @@ function getConfiguration(
     development: {},
     staging: {
       buildingBlocksHomeUrl: 'https://sta.blocks.gov.ie/en/',
-      feedbackFormUrl:
-        'https://forms.preprod.gov.ie/en/668be8b9d55bcd0026b990fa',
-      signUpFormUrl: 'https://forms.preprod.gov.ie/en/668be8cdd55bcd0026b9916b',
     },
     uat: {
       buildingBlocksHomeUrl: 'https://uat.blocks.gov.ie/en/',
-      feedbackFormUrl:
-        'https://forms.preprod.gov.ie/en/668be8b9d55bcd0026b990fa',
-      signUpFormUrl: 'https://forms.preprod.gov.ie/en/668be8cdd55bcd0026b9916b',
     },
     production: {
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
