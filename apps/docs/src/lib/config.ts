@@ -34,23 +34,17 @@ function getConfiguration(
       return !isProduction();
     },
     buildingBlocksHomeUrl: 'https://dev.blocks.gov.ie/en/',
-    feedbackFormUrl: 'https://www.forms.uat.gov.ie/en/664c61ba5f7c9800231db294',
-    signUpFormUrl: 'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf22',
+    feedbackFormUrl: 'https://forms.preprod.gov.ie/en/668be8b9d55bcd0026b990fa',
+    signUpFormUrl: 'https://forms.preprod.gov.ie/en/668be8cdd55bcd0026b9916b',
   };
 
   const configurationOverrides: Configurations = {
     development: {},
     staging: {
-      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
-      feedbackFormUrl:
-        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf22',
-      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+      buildingBlocksHomeUrl: 'https://sta.blocks.gov.ie/en/',
     },
     uat: {
-      buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
-      feedbackFormUrl:
-        'https://www.forms.uat.gov.ie/en/664b6de45f7c9800231daf229',
-      signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
+      buildingBlocksHomeUrl: 'https://uat.blocks.gov.ie/en/',
     },
     production: {
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
