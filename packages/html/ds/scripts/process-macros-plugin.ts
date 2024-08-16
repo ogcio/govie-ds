@@ -42,9 +42,23 @@ function injectJinjaValidation({
   return injectValidation({ macroHtml, validationMarkup });
 }
 
-function processContent({
+function injectNunjucksValidation({
+  macroHtml,
+  requiredKeys,
+}: {
+  macroHtml: string;
+  requiredKeys: string[];
+}) {
+  const validationMarkup = `
+{% set requiredKeys = ['title'] %}
+{% do validateProperties(props, requiredKeys) %}
+  `;
+
+  return injectValidation({ macroHtml, validationMarkup });
+}
+
+export function addMacroValidation({
   engine,
-  mode,
   content,
   macroName,
 }: {
@@ -53,20 +67,18 @@ function processContent({
   content: string;
   macroName: string;
 }) {
-  if (mode === 'prod') {
-    return content;
-  }
+  const requiredKeys: string[] = (properties[macroName] ?? [])
+    .filter((property) => property.required)
+    .map((property) => property.name);
 
   switch (engine) {
     case 'nunjucks': {
-      // TODO: inject nunjucks validation
-      return content;
+      return injectNunjucksValidation({
+        macroHtml: content,
+        requiredKeys,
+      });
     }
     case 'jinja': {
-      const requiredKeys: string[] = (properties[macroName] ?? [])
-        .filter((property) => property.required)
-        .map((property) => property.name);
-
       return injectJinjaValidation({
         macroHtml: content,
         requiredKeys,
@@ -110,12 +122,15 @@ export function processMacrosPlugin() {
             file.replace(path.basename(file), 'macro.html'),
           );
 
-          const updatedContent = processContent({
-            engine: destination.engine,
-            mode: destination.mode,
-            content,
-            macroName: path.basename(file, '.html'),
-          });
+          const updatedContent =
+            destination.mode === 'dev'
+              ? addMacroValidation({
+                  engine: destination.engine,
+                  mode: destination.mode,
+                  content,
+                  macroName: path.basename(file, '.html'),
+                })
+              : content;
 
           await fs.ensureDir(path.dirname(destinationPath));
           await fs.writeFile(destinationPath, updatedContent);

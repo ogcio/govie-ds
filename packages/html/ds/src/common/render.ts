@@ -1,9 +1,9 @@
 import { renderMacro } from '@govie-frontend/macro';
 import {
-  getByLabelText,
   getByText,
-  getByTestId,
-  queryByTestId,
+  // getByLabelText,
+  // getByTestId,
+  // queryByTestId,
   Matcher,
   SelectorMatcherOptions,
 } from '@testing-library/dom';

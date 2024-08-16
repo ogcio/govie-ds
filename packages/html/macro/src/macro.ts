@@ -1,11 +1,30 @@
 import nunjucks from 'nunjucks';
 
-const nunjucksEnvironment = nunjucks.configure({
-  autoescape: true,
-  noCache: true,
-  trimBlocks: true,
-  lstripBlocks: true,
-});
+function validateProperties(
+  properties: Record<string, unknown>,
+  requiredKeys: string[],
+) {
+  const missingKeys = requiredKeys.filter((key) => !(key in properties));
+
+  if (missingKeys.length > 0) {
+    throw new Error(`Missing required properties: ${missingKeys.join(', ')}`);
+  }
+}
+
+function createNunjucksEnvironment() {
+  const environment = nunjucks.configure({
+    autoescape: true,
+    noCache: true,
+    trimBlocks: true,
+    lstripBlocks: true,
+  });
+
+  environment.addGlobal('validateProperties', validateProperties);
+
+  return environment;
+}
+
+const nunjucksEnvironment = createNunjucksEnvironment();
 
 export function renderMacro<TProps = unknown>({
   name,
