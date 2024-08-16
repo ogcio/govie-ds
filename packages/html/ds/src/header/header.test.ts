@@ -1,32 +1,20 @@
-import { renderMacro } from '@govie-frontend/macro';
-import {
-  getByLabelText,
-  getByText,
-  getByTestId,
-  queryByTestId,
-} from '@testing-library/dom';
+import { render } from '../common/render';
 import html from './header.html?raw';
 import { HeaderProps } from './header.schema';
 
-function renderContent<TProps>({ name, html }: { name: string; html: string }) {
-  return function foo(props: TProps) {
-    const markup = renderMacro<TProps>({ name, html })(props);
-
-    const div = document.createElement('div');
-    div.innerHTML = markup;
-    return div;
-  };
-}
-
 describe('header', () => {
-  const renderHeader = renderContent<HeaderProps>({
+  const renderHeader = render<HeaderProps>({
     name: 'govieHeader',
     html,
   });
 
-  it('should work', () => {
-    const foo = renderHeader({ title: 'Application service' });
+  it('should render header title', () => {
+    const screen = renderHeader({ title: 'Application service' });
+    expect(screen.getByText('Application service')).toBeTruthy();
+  });
 
-    expect(getByText(foo, 'Application service')).toBeTruthy();
+  it('should pass axe tests', async () => {
+    const screen = renderHeader({ title: 'Application service' });
+    await screen.axe();
   });
 });
