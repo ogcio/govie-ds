@@ -24,7 +24,8 @@ jobs:
     permissions:
       id-token: write
       contents: read
-      environment: ${{ github.event.inputs.environment }}
+
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout code
