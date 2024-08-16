@@ -14,7 +14,7 @@ on:
         options:
           - staging
           - uat
-          - production
+          - prod
         default: staging
 
 jobs:
@@ -24,8 +24,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-
-    environment: prod
+      environment: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout code
