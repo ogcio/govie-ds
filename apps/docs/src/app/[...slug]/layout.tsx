@@ -20,8 +20,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }) {
-  const title = documents.getMetadataTitle({ slug: params.slug });
-  const description = documents.getMetadataDescription({ slug: params.slug });
+  const { title, description } = documents.getMeta({ slug: params.slug });
 
   return {
     title,

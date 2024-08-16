@@ -1,9 +1,10 @@
 import { Heading, Paragraph } from '@govie-react/ds';
 import { Metadata } from 'next';
 import { config } from '@/lib/config';
+import { getTitle } from '@/lib/documents';
 
 export const metadata: Metadata = {
-  title: 'Contact us - Gov IE Design System',
+  title: getTitle('Contact us'),
   description: 'Contact us',
 };
 

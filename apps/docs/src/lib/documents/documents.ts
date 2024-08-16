@@ -1,4 +1,5 @@
 import { config } from '../config';
+import { MetaDocument } from './types';
 import { allDocs } from 'contentlayer/generated';
 
 export function getAll() {
@@ -29,13 +30,28 @@ export function getBySlug({ slug }: { slug: string[] }) {
   return document;
 }
 
-export function getMetadataTitle({ slug }: { slug: string[] }) {
-  const suffix = 'Gov IE Design System';
-  const title = getBySlug({ slug })?.title;
-
-  return title ? `${title} - ${suffix}` : `Page not found - ${suffix}`;
+export function getTitle(title: string) {
+  const SUFFIX = 'Gov IE Design System';
+  return `${title} - ${SUFFIX}`;
 }
 
-export function getMetadataDescription({ slug }: { slug: string[] }) {
-  return getBySlug({ slug })?.description || 'The requested URL was not found';
+export function getMeta({ slug }: { slug: string[] }): MetaDocument {
+  const document = getBySlug({ slug });
+
+  if (!document) {
+    return {
+      title: getTitle('Page not found'),
+      description: 'The requested URL was not found',
+    };
+  }
+
+  const { description, draft, status, title } = document;
+  const titleWithSuffix = getTitle(title);
+
+  return {
+    title: titleWithSuffix,
+    description,
+    draft,
+    status,
+  };
 }
