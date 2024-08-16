@@ -20,18 +20,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string[] };
 }) {
-  const document = documents.getBySlug({ slug: params.slug });
-  const suffix = 'Gov IE Design System';
-
-  if (!document) {
-    return {
-      title: `Page not found - ${suffix}`,
-      description: 'The requested URL was not found ',
-    };
-  }
-
-  const title = `${document.title} - ${suffix}`;
-  const { description } = document;
+  const title = documents.getMetadataTitle({ slug: params.slug });
+  const description = documents.getMetadataDescription({ slug: params.slug });
 
   return {
     title,

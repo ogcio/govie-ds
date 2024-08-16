@@ -28,3 +28,14 @@ export function getBySlug({ slug }: { slug: string[] }) {
 
   return document;
 }
+
+export function getMetadataTitle({ slug }: { slug: string[] }) {
+  const suffix = 'Gov IE Design System';
+  const title = getBySlug({ slug })?.title;
+
+  return title ? `${title} - ${suffix}` : `Page not found - ${suffix}`;
+}
+
+export function getMetadataDescription({ slug }: { slug: string[] }) {
+  return getBySlug({ slug })?.description || 'The requested URL was not found';
+}
