@@ -13,6 +13,7 @@ import {
   SelectorMatcherOptions,
 } from '@testing-library/dom';
 import axe from 'axe-core';
+import { initGovIe } from '..';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations
@@ -32,6 +33,10 @@ export function render<TProps>({ name, html }: { name: string; html: string }) {
 
     const div = document.createElement('div');
     div.innerHTML = markup;
+
+    document.body.append(div);
+
+    initGovIe();
 
     return {
       getByText: (id: Matcher, options?: SelectorMatcherOptions) => {

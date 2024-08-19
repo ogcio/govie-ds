@@ -17,14 +17,19 @@ describe('header', () => {
   it('should hide container by default', () => {
     const screen = renderHeader({ title: 'Application service' });
 
+    const searchContainer = screen.getByTestId('container');
+    expect(searchContainer).toHaveClass('js:gi-max-height');
+  });
+
+  it('should display container when search icon is selected', () => {
+    const screen = renderHeader({ title: 'Application service' });
+
     const searchIcon = screen.getByTestId('search');
     const searchContainer = screen.getByTestId('container');
 
-    console.log({ searchContainer });
-
     userEvent.click(searchIcon);
 
-    expect(searchContainer).toHaveClass('hidden');
+    expect(searchContainer).not.toHaveClass('js:gi-max-height');
   });
 
   it('should pass axe tests', async () => {
