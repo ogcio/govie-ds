@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 env:
   AWS_S3_BUCKET_NAME: storybook-react-design-system-blocks-gov-ie
