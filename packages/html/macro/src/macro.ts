@@ -24,8 +24,6 @@ function createNunjucksEnvironment() {
   return environment;
 }
 
-const nunjucksEnvironment = createNunjucksEnvironment();
-
 export function renderMacro<TProps = unknown>({
   name,
   html,
@@ -41,6 +39,7 @@ export function renderMacro<TProps = unknown>({
       {{ ${name}(${propsString}) }}
     `;
 
+    const nunjucksEnvironment = createNunjucksEnvironment();
     const rendered = nunjucksEnvironment.renderString(template, {});
     return rendered.trim();
   };

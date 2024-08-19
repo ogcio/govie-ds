@@ -5,15 +5,13 @@ import {
   getByRole,
   getByTestId,
   getByText,
-  // getByLabelText,
-  // getByTestId,
-  // queryByTestId,
   Matcher,
   MatcherOptions,
   SelectorMatcherOptions,
 } from '@testing-library/dom';
 import axe from 'axe-core';
 import { initGovIe } from '..';
+import { addMacroValidation } from './validation';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations
@@ -29,7 +27,19 @@ function toAxeErrorMessage(violations: axe.Result[]) {
 
 export function render<TProps>({ name, html }: { name: string; html: string }) {
   return function (props: TProps) {
-    const markup = renderMacro<TProps>({ name, html })(props);
+    const htmlWithValidation = addMacroValidation({
+      engine: 'nunjucks',
+      mode: 'dev',
+      content: html,
+      macroName: name,
+    });
+
+    console.log({ htmlWithValidation });
+
+    const markup = renderMacro<TProps>({
+      name,
+      html: htmlWithValidation,
+    })(props);
 
     const div = document.createElement('div');
     div.innerHTML = markup;
