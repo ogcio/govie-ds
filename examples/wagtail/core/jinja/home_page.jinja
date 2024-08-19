@@ -2,16 +2,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ static('css/theme.css') }}">
     <link rel="stylesheet" href="{{ static('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ static('css/ogcio-ds-0.4.4.min.css')}}">
 </head>
-<body>    
+
+<body>
+    <h2>Header (Global)</h2>
     {{ govieHeader({ 'title': 'Application title' }) }}
-    <h1>{{ page.title }}</h1>
+    <h2>Header (Local)</h2>
+    <header data-module="govie-header" class="govie-header">
+        <h2>Application Title</h2>
+    </header>
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
+
 </html>
