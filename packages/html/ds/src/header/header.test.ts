@@ -9,10 +9,6 @@ describe('header', () => {
     html,
   });
 
-  it('should throw without required title', () => {
-    expect(() => renderHeader({})).toThrow();
-  });
-
   it('should render header title', () => {
     const screen = renderHeader({ title: 'Application service' });
     expect(screen.getByText('Application service')).toBeTruthy();

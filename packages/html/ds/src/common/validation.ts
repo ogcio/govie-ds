@@ -1,4 +1,4 @@
-import * as properties from '../dist/properties.js';
+import { properties } from '../dist/properties.js';
 
 function injectValidation({
   macroHtml,
