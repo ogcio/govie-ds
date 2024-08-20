@@ -44,7 +44,7 @@ function injectNunjucksValidation({
   const validationMarkup = `
   {% set requiredKeys = [${requiredKeys.map((key) => `'${key}'`).join(',')}] %}
   {{ validateProperties(props, requiredKeys) }}
-    `;
+`;
 
   return injectValidation({ macroHtml, validationMarkup });
 }

@@ -34,8 +34,6 @@ export function render<TProps>({ name, html }: { name: string; html: string }) {
       macroName: name,
     });
 
-    console.log({ htmlWithValidation });
-
     const markup = renderMacro<TProps>({
       name,
       html: htmlWithValidation,
