@@ -1,6 +1,6 @@
 {
   "name": "@govie-frontend/ds",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "private": true,
   "type": "module",
@@ -21,6 +21,8 @@
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles",
     "build:properties": "tsx scripts/build-properties.ts",
     "build:ts": "vite build",
@@ -42,12 +44,17 @@
     "@govie-ds/tailwind": "workspace:*",
     "@govie-frontend/macro": "workspace:*",
     "@storybook/react": "^8.2.8",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/user-event": "^14.5.2",
     "@types/nunjucks": "^3.2.6",
     "@types/react": "^18.3.3",
     "autoprefixer": "^10.4.19",
+    "axe-core": "^4.10.0",
     "eslint": "^9.8.0",
     "fs-extra": "^11.2.0",
     "glob": "^10.4.5",
+    "jsdom": "^24.1.1",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
@@ -57,6 +64,7 @@
     "typescript": "5.4.5",
     "vite": "^5.3.5",
     "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0",
     "zod": "^3.23.8"
   }
 }

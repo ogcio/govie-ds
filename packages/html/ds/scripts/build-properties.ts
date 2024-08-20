@@ -94,9 +94,11 @@ async function buildProperties() {
   content.push(
     `export type MacroPropertyType = 'string' | 'number' | 'boolean';`,
     `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; };`,
+    `export type MacroProperties = { [key: string]: MacroProperty[]; };`,
   );
 
   const exportType = 'MacroProperty[]';
+  const components: string[] = [];
 
   for (const file of glob.sync('**/*.schema.ts', {
     cwd: sourceDirectory,
@@ -116,10 +118,16 @@ async function buildProperties() {
 
       const exportName = key.replace('Schema', '');
       content.push(
-        `export const ${exportName}: ${exportType} = ${JSON.stringify(properties)};`,
+        `const ${exportName}: ${exportType} = ${JSON.stringify(properties)};`,
       );
+
+      components.push(exportName);
     }
   }
+
+  content.push(
+    `export const properties: MacroProperties = { ${components.join(',\n')} };`,
+  );
 
   const destinationPath = path.resolve(
     destinationRootDirectory,

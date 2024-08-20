@@ -19,12 +19,11 @@ export class Header extends BaseComponent {
       event.stopPropagation();
 
       const classList = this.searchContainer.classList;
+
       classList.toggle('js:gi-max-height');
       classList.toggle('gi-max-h-0');
       classList.toggle('gi-opacity-0');
     };
-
-    this.init();
   }
 
   initComponent() {

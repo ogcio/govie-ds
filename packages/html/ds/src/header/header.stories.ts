@@ -1,18 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { render } from '../storybook/storybook';
+import { renderComponent } from '../storybook/storybook';
 import html from './header.html?raw';
 import { HeaderProps } from './header.schema';
 
-const Header = render<HeaderProps>({ name: 'govieHeader', html });
+const macro = { name: 'govieHeader', html };
+
+const Header = renderComponent<HeaderProps>(macro);
 
 const meta = {
   component: Header,
   title: 'layout/Header',
   parameters: {
-    macro: {
-      name: 'govieHeader',
-      html,
-    },
+    macro,
   },
 } satisfies Meta<typeof Header>;
 

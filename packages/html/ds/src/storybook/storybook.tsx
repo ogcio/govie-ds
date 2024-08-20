@@ -1,6 +1,6 @@
 import { renderMacro } from '@govie-frontend/macro';
 
-export function render<TProps = unknown>({
+export function renderComponent<TProps = unknown>({
   name,
   html,
 }: {
