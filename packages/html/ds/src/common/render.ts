@@ -36,7 +36,7 @@ export function render<TProps>({ name, html }: { name: string; html: string }) {
 
     const markup = renderMacro<TProps>({
       name,
-      html: htmlWithValidation,
+      html,
     })(props);
 
     const div = document.createElement('div');
