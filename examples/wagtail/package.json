@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@govie-ds/theme-govie": "workspace:*",
-    "@govie-frontend/ds": "workspace:*"
+    "@govie-frontend/ds": "workspace:*",
+    "@ogcio/ogcio-ds": "^0.4.4"
   },
   "author": "",
   "license": "MIT"
