@@ -29,3 +29,12 @@ indexable
 viewport
 textarea
 Textarea
+NDA
+USD
+ICT
+digitalisation
+digitalising
+GovTech
+eGovernment
+UI
+pre-made
