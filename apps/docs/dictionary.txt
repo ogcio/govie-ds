@@ -13,11 +13,13 @@ WCAG
 favicon
 inclusivity
 onboarding
+programmatically
 scalable
 user-centric
 themeable
 SSR
 Vue
+Theming
 theming
 JSX
 SEO
@@ -53,6 +55,7 @@ customizable
 Color
 color
 colors
-color
 lifecycle
 organization
+JSON
+YAML

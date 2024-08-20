@@ -7,39 +7,36 @@ status: in-development
 
 # Design Tokens
 
-Tokens store design decisions within the design system. Design tokens are the building blocks of a design system. They store the visual styles of the system such as colors, typography, spacing, and more in a consistent, reusable format. Instead of using raw values like hex codes for colors or pixel values for spacing, design tokens apply contextual names like `primary-color` or `spacing-large`. This abstraction allows the system to scale consistently across platforms and devices, all while using a shared language that both designers and developers can reference and communicate with ease.
+Tokens store design decisions within the design system. Design tokens are the building blocks of a design system. They store the visual styles of the system such as colours, typography, spacing, and more in a consistent, reusable format. Instead of using raw values like hex codes for colours or pixel values for spacing, design tokens apply contextual names like `primary-colour` or `spacing-large`. This abstraction allows the system to scale consistently across platforms and devices, all while using a shared language that both designers and developers can reference and communicate with ease.
 
 ## What are Design Tokens?
 
-Design tokens represent the fundamental aspects of a design, including things like colors, fonts, spacing, sizes, shadows, and other styles. They serve as a translation layer between designers and developers, helping to unify the two disciplines. For example, instead of hardcoding `#3498db` as a color across the system, a token called primary-color is used. This token can represent `#3498db` in one theme but easily be swapped out for another value, such as `#2ecc71`, for a different theme without breaking the design system.
+Design tokens represent the fundamental aspects of a design, including things like colours, fonts, spacing, sizes, shadows, and other styles. They serve as a translation layer between designers and developers, helping to unify the two disciplines. For example, instead of hard coding `#3498db` as a colour across the system, a token called primary-colour is used. This token can represent `#3498db` in one theme but easily be swapped out for another value, such as `#2ecc71`, for a different theme without breaking the design system.
 
 ## How Do Design Tokens Work?
 
-Design tokens are typically stored in a centralized location, such as a JSON or YAML file, and are applied programmatically throughout the system. These tokens are then consumed by various platforms (web, mobile, etc.) to ensure the same design principles and visual styles are followed consistently.
+Design tokens are typically stored in a centralised location, such as a JSON or YAML file, and are applied programmatically throughout the system. These tokens are then consumed by various platforms (web, mobile, etc.) to ensure the same design principles and visual styles are followed consistently.
 
 For example:
 
-```json
-{
-  "primary-color": "#3498db",
-  "spacing-small": "8px",
-  "font-family-primary": "'Helvetica Neue', Arial, sans-serif"
-}
-```
-
+`"primary-colour": "#3498db"`
 \
+`"spacing-small": "8px"`
+\
+`"font-family-primary": "'Helvetica Neue', Arial, sans-serif"`
+
 These tokens can then be transformed and applied to different platforms using build tools or frameworks that support token usage, ensuring consistent styling across websites, native apps, and even design tools like Figma or Sketch.
 
 ## Benefits of Design Tokens
 
 - **Consistency Across Platforms:** Design tokens ensure that all platforms, whether it's web, iOS, Android, or even email, follow the same design rules. By changing a token value in one place, updates can propagate across the entire product ecosystem, preventing discrepancies in design.
 
-- **Scalability:** As the design system grows, the use of tokens makes it easy to scale by providing a centralized point of control. Adding new themes or updating styles becomes a matter of updating token values rather than changing individual components across multiple codebases.
+- **Scalability:** As the design system grows, the use of tokens makes it easy to scale by providing a centralised point of control. Adding new themes or updating styles becomes a matter of updating token values rather than changing individual components across multiple code-bases.
 
-- **Flexibility and Theming:** Design tokens enable easy customization and theming of products. For example, switching between light and dark themes or supporting brand-specific styles can be achieved simply by swapping the token values, all while maintaining consistent user experience principles.
+- **Flexibility and Theming:** Design tokens enable easy customisation and theming of products. For example, switching between light and dark themes or supporting brand-specific styles can be achieved simply by swapping the token values, all while maintaining consistent user experience principles.
 
-- **Improved Communication Between Designers and Developers:** With tokens, both designers and developers use the same language to describe visual elements. This reduces confusion, minimizes errors, and speeds up the development process since both teams are aligned on design decisions.
+- **Improved Communication Between Designers and Developers:** With tokens, both designers and developers use the same language to describe visual elements. This reduces confusion, minimises errors, and speeds up the development process since both teams are aligned on design decisions.
 
 - **Single Source of Truth:** Tokens act as a single source of truth for the design system. Since they are centrally stored and easily accessible, any updates made to them automatically sync across all parts of the design system. This helps in maintaining a consistent design and ensuring that design updates are efficiently propagated.
 
-- **Better Accessibility:** Because tokens are reusable and contextually named, they help ensure accessibility standards are met consistently. For instance, tokens can be used to define accessible color contrasts or maintain spacing standards for responsive and adaptive design.
+- **Better Accessibility:** Because tokens are reusable and contextually named, they help ensure accessibility standards are met consistently. For instance, tokens can be used to define accessible colour contrasts or maintain spacing standards for responsive and adaptive design.
