@@ -139,7 +139,9 @@ export type InstanceOptions = {
 };
 
 export function createInstance(classType: string, options: InstanceOptions) {
-  instances.addInstance('Header', new Header(options), options.id, true);
+  const instance = new Header(options);
+  instance.init();
+  instances.addInstance('Header', instance, options.id, true);
 }
 
 export function destroyInstance({
