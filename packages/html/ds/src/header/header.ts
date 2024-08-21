@@ -1,13 +1,19 @@
-import { BaseComponent, initialiseModule } from '../common/component';
+import {
+  BaseComponent,
+  BaseComponentOptions,
+  initialiseModule,
+} from '../common/component';
 
-export class Header extends BaseComponent {
+export type HeaderOptions = BaseComponentOptions;
+
+export class Header extends BaseComponent<HeaderOptions> {
   searchIcon: Element;
   searchContainer: Element;
 
   searchIconHandler: EventListenerOrEventListenerObject;
 
-  constructor({ element }: { element: Element }) {
-    super({ element });
+  constructor(options: HeaderOptions) {
+    super(options);
 
     this.searchIcon = this.query.getByElement({ name: 'search' });
 
@@ -37,5 +43,5 @@ export class Header extends BaseComponent {
 
 export const initHeader = initialiseModule({
   name: 'header',
-  classType: Header,
+  component: 'Header',
 });
