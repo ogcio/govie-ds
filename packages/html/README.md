@@ -1,6 +1,7 @@
+**NOTE**
+> The components should only be used by early adopters and collaborate with the design system team as the components are currently in the alpha phase. 
 
 ## DS
-
 
 #### About
 Package that contains the components and the styles of the <strong>HTML global components</strong>
