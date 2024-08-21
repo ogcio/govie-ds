@@ -1,3 +1,4 @@
+import { ComponentRegistryKey, createInstance } from './instances';
 import { createQuery, Query } from './query';
 
 export type BaseComponentOptions = {
@@ -41,4 +42,20 @@ export abstract class BaseComponent<TOptions extends BaseComponentOptions> {
   protected abstract initComponent(): void;
 
   protected abstract destroyComponent(): void;
+}
+
+export function initialiseModule({
+  name,
+  component,
+}: {
+  name: string;
+  component: ComponentRegistryKey;
+}) {
+  return function () {
+    const elements = document.querySelectorAll(`[data-module="gieds-${name}"]`);
+
+    for (const element of elements) {
+      createInstance({ component, options: { element } });
+    }
+  };
 }

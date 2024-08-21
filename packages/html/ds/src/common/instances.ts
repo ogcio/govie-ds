@@ -5,14 +5,12 @@ function generateRandomId() {
   return Math.random().toString(36).slice(2, 11);
 }
 
-type BaseComponentConstructor = {
-  new (options: BaseComponentOptions): BaseComponent<BaseComponentOptions>;
-};
-
-const classRegistry: Record<string, BaseComponentConstructor> = {
+const componentRegistry = {
   Header,
   // TODO: additional component classes
-};
+} as const;
+
+export type ComponentRegistryKey = keyof typeof componentRegistry;
 
 class Instances {
   private _instances: {
@@ -22,16 +20,20 @@ class Instances {
   constructor() {
     this._instances = {};
 
-    for (const key of Object.keys(classRegistry)) {
+    for (const key of Object.keys(componentRegistry)) {
       this._instances[key] = {};
     }
   }
 
-  addInstance<TOptions extends BaseComponentOptions>(
-    component: keyof Instances['_instances'],
-    options: TOptions,
-    instance?: BaseComponent<TOptions>,
-  ) {
+  addInstance<TOptions extends BaseComponentOptions>({
+    component,
+    instance,
+    options,
+  }: {
+    component: ComponentRegistryKey;
+    instance?: BaseComponent<TOptions>;
+    options: TOptions;
+  }) {
     if (!this._instances[component]) {
       console.warn(`Gov IE component ${component} does not exist.`);
       return false;
@@ -44,7 +46,7 @@ class Instances {
       }
 
       if (options.override && this._instances[component][options.id]) {
-        this.destroyAndRemoveInstance(component, options.id);
+        this.destroyAndRemoveInstance({ component, id: options.id });
       }
     }
 
@@ -53,8 +55,8 @@ class Instances {
       return;
     }
 
-    const classType = classRegistry[component];
-    const newInstance = new classType(options);
+    const componentType = componentRegistry[component];
+    const newInstance = new componentType(options);
     newInstance.init();
 
     this._instances[component][options.id ?? generateRandomId()] = newInstance;
@@ -64,16 +66,23 @@ class Instances {
     return this._instances;
   }
 
-  getInstances(component: keyof Instances['_instances']) {
+  getInstances({ component }: { component: ComponentRegistryKey }) {
     if (!this._instances[component]) {
       console.warn(`Gov IE component '${component}' does not exist.`);
       return false;
     }
+
     return this._instances[component];
   }
 
-  getInstance(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  getInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
 
@@ -85,43 +94,67 @@ class Instances {
     return this._instances[component][id];
   }
 
-  destroyAndRemoveInstance(
-    component: keyof Instances['_instances'],
-    id: string,
-  ) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  destroyAndRemoveInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
 
-    this.destroyInstanceObject(component, id);
-    this.removeInstance(component, id);
+    this.destroyInstanceObject({ component, id });
+    this.removeInstance({ component, id });
   }
 
   destroyAndRemoveAllInstances() {
     for (const component in this._instances) {
       for (const id in this._instances[component]) {
-        this.destroyAndRemoveInstance(component, id);
+        this.destroyAndRemoveInstance({
+          component: component as ComponentRegistryKey,
+          id,
+        });
       }
     }
   }
 
-  removeInstance(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  removeInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
 
     delete this._instances[component][id];
   }
 
-  destroyInstanceObject(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  destroyInstanceObject({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
 
     this._instances[component][id].destroy();
   }
 
-  instanceExists(component: keyof Instances['_instances'], id: string) {
+  instanceExists({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
     if (!this._instances[component]) {
       return false;
     }
@@ -133,10 +166,13 @@ class Instances {
     return true;
   }
 
-  private _componentAndInstanceCheck(
-    component: keyof Instances['_instances'],
-    id: string,
-  ) {
+  private componentAndInstanceCheck({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
     if (!this._instances[component]) {
       console.warn(`Gov IE component ${component} does not exist.`);
       return false;
@@ -151,45 +187,33 @@ class Instances {
   }
 }
 
-export function initialiseModule({
-  name,
-  className,
+export function createInstance({
+  component,
+  options,
 }: {
-  name: string;
-  className: keyof Instances['_instances'];
+  component: ComponentRegistryKey;
+  options: BaseComponentOptions;
 }) {
-  return function () {
-    const elements = document.querySelectorAll(`[data-module="gieds-${name}"]`);
+  const componentType = componentRegistry[component];
 
-    for (const element of elements) {
-      createInstance(className, { element });
-    }
-  };
-}
-
-export function createInstance(
-  className: keyof Instances['_instances'],
-  options: BaseComponentOptions,
-) {
-  const classType = classRegistry[className];
-
-  if (!classType) {
-    throw new Error(`Component '${classType}' not found in registry.`);
+  if (!componentType) {
+    throw new Error(`Component '${componentType}' not found in registry.`);
   }
 
-  const instance = new classType(options);
+  const instance = new componentType(options);
   instance.init();
-  instances.addInstance(className, options, instance);
+  instances.addInstance({ component, instance, options });
+  return instance;
 }
 
 export function destroyInstance({
-  className,
+  component,
   id,
 }: {
-  className: keyof Instances['_instances'];
+  component: ComponentRegistryKey;
   id: string;
 }) {
-  instances.destroyAndRemoveInstance(className, id);
+  instances.destroyAndRemoveInstance({ component, id });
 }
 
 export function destroyAllInstances() {
