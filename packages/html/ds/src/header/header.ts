@@ -1,6 +1,9 @@
-import { BaseComponent, initialiseModule } from '../common/component';
+import { BaseComponent, BaseComponentOptions } from '../common/component';
+import { initialiseModule } from '../common/instances';
 
-export class Header extends BaseComponent {
+export type HeaderOptions = BaseComponentOptions;
+
+export class Header extends BaseComponent<HeaderOptions> {
   searchIcon: Element;
   searchContainer: Element;
 
@@ -37,5 +40,5 @@ export class Header extends BaseComponent {
 
 export const initHeader = initialiseModule({
   name: 'header',
-  classType: Header,
+  classType: 'Header',
 });

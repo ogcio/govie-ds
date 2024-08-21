@@ -1,45 +1,60 @@
 import { Header } from '../header/header';
-import { BaseComponent } from './component';
+import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
   return Math.random().toString(36).slice(2, 11);
 }
 
+type BaseComponentConstructor = {
+  new (options: BaseComponentOptions): BaseComponent<BaseComponentOptions>;
+};
+
+const classRegistry: Record<string, BaseComponentConstructor> = {
+  Header,
+  // TODO: additional component classes
+};
+
 class Instances {
   private _instances: {
-    Header: { [id: string]: Header };
-    [key: string]: { [id: string]: BaseComponent };
+    [key: string]: { [id: string]: BaseComponent<BaseComponentOptions> };
   };
 
   constructor() {
-    this._instances = {
-      Header: {},
-    };
+    this._instances = {};
+
+    for (const key of Object.keys(classRegistry)) {
+      this._instances[key] = {};
+    }
   }
 
-  addInstance(
+  addInstance<TOptions extends BaseComponentOptions>(
     component: keyof Instances['_instances'],
-    instance: BaseComponent,
-    id?: string,
-    override = false,
+    options: TOptions,
+    instance?: BaseComponent<TOptions>,
   ) {
     if (!this._instances[component]) {
       console.warn(`Gov IE component ${component} does not exist.`);
       return false;
     }
 
-    if (id) {
-      if (this._instances[component][id] && !override) {
-        console.warn(`Gov IE instance with id '${id}' already exists.`);
+    if (options.id) {
+      if (this._instances[component][options.id] && !options.override) {
+        console.warn(`Gov IE instance with id '${options.id}' already exists.`);
         return;
       }
 
-      if (override && this._instances[component][id]) {
-        this.destroyAndRemoveInstance(component, id);
+      if (options.override && this._instances[component][options.id]) {
+        this.destroyAndRemoveInstance(component, options.id);
       }
     }
 
-    this._instances[component][id ?? generateRandomId()] = instance;
+    if (instance) {
+      this._instances[component][options.id ?? generateRandomId()] = instance;
+    }
+
+    const classType = classRegistry[component];
+    this._instances[component][options.id ?? generateRandomId()] =
+      new classType(options);
   }
 
   getAllInstances() {
@@ -74,6 +89,7 @@ class Instances {
     if (!this._componentAndInstanceCheck(component, id)) {
       return;
     }
+
     this.destroyInstanceObject(component, id);
     this.removeInstance(component, id);
   }
@@ -90,6 +106,7 @@ class Instances {
     if (!this._componentAndInstanceCheck(component, id)) {
       return;
     }
+
     delete this._instances[component][id];
   }
 
@@ -97,6 +114,7 @@ class Instances {
     if (!this._componentAndInstanceCheck(component, id)) {
       return;
     }
+
     this._instances[component][id].destroy();
   }
 
@@ -130,17 +148,44 @@ class Instances {
   }
 }
 
-export type InstanceOptions = {
-  id?: string;
-  element: Element;
-};
+export function initialiseModule({
+  name,
+  classType,
+}: {
+  name: string;
+  classType: keyof Instances['_instances'];
+}) {
+  return function () {
+    const elements = document.querySelectorAll(`[data-module="gieds-${name}"]`);
 
-export function createInstance<
-  T extends { new (options: InstanceOptions): BaseComponent },
->(classType: T, options: InstanceOptions) {
+    for (const element of elements) {
+      createInstance(classType, { element });
+    }
+  };
+}
+
+// export function createInstance<T extends BaseComponentConstructor>(
+//   classType: T,
+//   options: BaseComponentOptions,
+// ) {
+//   const instance = new classType(options);
+//   instance.init();
+//   instances.addInstance(classType.name, options, instance);
+// }
+
+export function createInstance(
+  className: keyof Instances['_instances'],
+  options: BaseComponentOptions,
+) {
+  const classType = classRegistry[className];
+
+  if (!classType) {
+    throw new Error(`Component '${classType}' not found in registry.`);
+  }
+
   const instance = new classType(options);
   instance.init();
-  instances.addInstance(classType.name, instance, options.id, true);
+  instances.addInstance(className, options);
 }
 
 export function destroyInstance({

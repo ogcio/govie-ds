@@ -29,7 +29,7 @@ function injectJinjaValidation({
             {{ throw(error_message) }}
         {% endif %}
   {% endfor %}
-    `;
+`;
 
   return injectValidation({ macroHtml, validationMarkup });
 }
