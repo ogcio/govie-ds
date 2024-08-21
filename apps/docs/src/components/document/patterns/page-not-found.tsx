@@ -1,4 +1,5 @@
-import { Heading, Header, Footer, Link, Paragraph } from '@govie-react/ds';
+import { Heading, Header, Link, Paragraph } from '@govie-react/ds';
+import { Footer } from '@/components/footer/footer';
 
 export function PageNotFound() {
   return (
