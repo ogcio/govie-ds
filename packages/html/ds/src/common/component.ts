@@ -1,14 +1,20 @@
-import { createInstance } from './instances';
+import { ComponentRegistryKey, createInstance } from './instances';
 import { createQuery, Query } from './query';
 
-export abstract class BaseComponent {
-  initialised: boolean;
+export type BaseComponentOptions = {
   element: Element;
+  id?: string;
+  override?: boolean;
+};
+
+export abstract class BaseComponent<TOptions extends BaseComponentOptions> {
+  initialised: boolean;
+  options: TOptions;
   query: Query;
 
-  constructor({ element }: { element: Element }) {
-    this.element = element;
-    this.query = createQuery({ element });
+  constructor(options: TOptions) {
+    this.options = options;
+    this.query = createQuery({ element: options.element });
 
     this.initialised = false;
   }
@@ -40,17 +46,16 @@ export abstract class BaseComponent {
 
 export function initialiseModule({
   name,
-  classType,
+  component,
 }: {
   name: string;
-  //initialise: ({ element }: { element: Element }) => void;
-  classType: any;
+  component: ComponentRegistryKey;
 }) {
   return function () {
     const elements = document.querySelectorAll(`[data-module="gieds-${name}"]`);
 
     for (const element of elements) {
-      createInstance(classType, { element });
+      createInstance({ component, options: { element } });
     }
   };
 }

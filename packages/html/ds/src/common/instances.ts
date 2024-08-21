@@ -1,105 +1,160 @@
 import { Header } from '../header/header';
+import { BaseComponent, BaseComponentOptions } from './component';
+
+function generateRandomId() {
+  return Math.random().toString(36).slice(2, 11);
+}
+
+const componentRegistry = {
+  Header,
+  // TODO: additional component classes
+} as const;
+
+export type ComponentRegistryKey = keyof typeof componentRegistry;
 
 class Instances {
   private _instances: {
-    Header: { [id: string]: Header };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
+    [key: string]: { [id: string]: BaseComponent<BaseComponentOptions> };
   };
 
   constructor() {
-    this._instances = {
-      Header: {},
-    };
+    this._instances = {};
+
+    for (const key of Object.keys(componentRegistry)) {
+      this._instances[key] = {};
+    }
   }
 
-  addInstance(
-    component: keyof Instances['_instances'],
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    instance: any,
-    id?: string,
-    override = false,
-  ) {
+  addInstance<TOptions extends BaseComponentOptions>({
+    component,
+    instance,
+    options,
+  }: {
+    component: ComponentRegistryKey;
+    instance?: BaseComponent<TOptions>;
+    options: TOptions;
+  }) {
     if (!this._instances[component]) {
-      console.warn(`govie component ${component} does not exist.`);
+      console.warn(`Gov IE component ${component} does not exist.`);
       return false;
     }
 
-    if (id) {
-      if (this._instances[component][id] && !override) {
-        console.warn(`govie instance with id ${id} already exists.`);
+    if (options.id) {
+      if (this._instances[component][options.id] && !options.override) {
+        console.warn(`Gov IE instance with id '${options.id}' already exists.`);
         return;
       }
 
-      if (override && this._instances[component][id]) {
-        this.destroyAndRemoveInstance(component, id);
+      if (options.override && this._instances[component][options.id]) {
+        this.destroyAndRemoveInstance({ component, id: options.id });
       }
     }
 
-    this._instances[component][id ?? this._generateRandomId()] = instance;
+    if (instance) {
+      this._instances[component][options.id ?? generateRandomId()] = instance;
+      return;
+    }
+
+    const componentType = componentRegistry[component];
+    const newInstance = new componentType(options);
+    newInstance.init();
+
+    this._instances[component][options.id ?? generateRandomId()] = newInstance;
   }
 
   getAllInstances() {
     return this._instances;
   }
 
-  getInstances(component: keyof Instances['_instances']) {
+  getInstances({ component }: { component: ComponentRegistryKey }) {
     if (!this._instances[component]) {
-      console.warn(`govie component ${component} does not exist.`);
+      console.warn(`Gov IE component '${component}' does not exist.`);
       return false;
     }
+
     return this._instances[component];
   }
 
-  getInstance(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  getInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`govie instance with id ${id} does not exist.`);
+      console.warn(`Gov IE instance with id ${id} does not exist.`);
       return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this._instances[component][id] as any;
+    return this._instances[component][id];
   }
 
-  destroyAndRemoveInstance(
-    component: keyof Instances['_instances'],
-    id: string,
-  ) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  destroyAndRemoveInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
-    this.destroyInstanceObject(component, id);
-    this.removeInstance(component, id);
+
+    this.destroyInstanceObject({ component, id });
+    this.removeInstance({ component, id });
   }
 
   destroyAndRemoveAllInstances() {
     for (const component in this._instances) {
       for (const id in this._instances[component]) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.destroyAndRemoveInstance(component as any, id);
+        this.destroyAndRemoveInstance({
+          component: component as ComponentRegistryKey,
+          id,
+        });
       }
     }
   }
 
-  removeInstance(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  removeInstance({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
+
     delete this._instances[component][id];
   }
 
-  destroyInstanceObject(component: keyof Instances['_instances'], id: string) {
-    if (!this._componentAndInstanceCheck(component, id)) {
+  destroyInstanceObject({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
+    if (!this.componentAndInstanceCheck({ component, id })) {
       return;
     }
+
     this._instances[component][id].destroy();
   }
 
-  instanceExists(component: keyof Instances['_instances'], id: string) {
+  instanceExists({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
     if (!this._instances[component]) {
       return false;
     }
@@ -111,21 +166,20 @@ class Instances {
     return true;
   }
 
-  _generateRandomId() {
-    return Math.random().toString(36).slice(2, 11);
-  }
-
-  private _componentAndInstanceCheck(
-    component: keyof Instances['_instances'],
-    id: string,
-  ) {
+  private componentAndInstanceCheck({
+    component,
+    id,
+  }: {
+    component: ComponentRegistryKey;
+    id: string;
+  }) {
     if (!this._instances[component]) {
-      console.warn(`govie Component ${component} does not exist.`);
+      console.warn(`Gov IE component ${component} does not exist.`);
       return false;
     }
 
     if (!this._instances[component][id]) {
-      console.warn(`govie Instance with ID ${id} does not exist.`);
+      console.warn(`Gov IE instance with identifier '${id}' does not exist.`);
       return false;
     }
 
@@ -133,25 +187,33 @@ class Instances {
   }
 }
 
-export type InstanceOptions = {
-  id?: string;
-  element: Element;
-};
+export function createInstance({
+  component,
+  options,
+}: {
+  component: ComponentRegistryKey;
+  options: BaseComponentOptions;
+}) {
+  const componentType = componentRegistry[component];
 
-export function createInstance(classType: string, options: InstanceOptions) {
-  const instance = new Header(options);
+  if (!componentType) {
+    throw new Error(`Component '${componentType}' not found in registry.`);
+  }
+
+  const instance = new componentType(options);
   instance.init();
-  instances.addInstance('Header', instance, options.id, true);
+  instances.addInstance({ component, instance, options });
+  return instance;
 }
 
 export function destroyInstance({
-  classType,
+  component,
   id,
 }: {
-  classType: 'Header';
+  component: ComponentRegistryKey;
   id: string;
 }) {
-  instances.destroyAndRemoveInstance(classType, id);
+  instances.destroyAndRemoveInstance({ component, id });
 }
 
 export function destroyAllInstances() {
@@ -161,6 +223,6 @@ export function destroyAllInstances() {
 export const instances = new Instances();
 
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (window as any).govieInstances = instances;
+  (window as unknown as { GovieInstances: Instances }).GovieInstances =
+    instances;
 }

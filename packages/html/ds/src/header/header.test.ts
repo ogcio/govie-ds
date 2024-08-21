@@ -24,6 +24,8 @@ describe('header', () => {
   it('should display container when search icon is selected', async () => {
     const screen = renderHeader({ title: 'Application service' });
 
+    // TODO: replace these tests, use getByTestId as a last resort
+    // see https://testing-library.com/docs/queries/about/#priority
     const searchIcon = screen.getByTestId('search');
     const searchContainer = screen.getByTestId('container');
 
