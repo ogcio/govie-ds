@@ -9,8 +9,8 @@ export class Header extends BaseComponent<HeaderOptions> {
 
   searchIconHandler: EventListenerOrEventListenerObject;
 
-  constructor({ element }: { element: Element }) {
-    super({ element });
+  constructor(options: HeaderOptions) {
+    super(options);
 
     this.searchIcon = this.query.getByElement({ name: 'search' });
 
@@ -40,5 +40,5 @@ export class Header extends BaseComponent<HeaderOptions> {
 
 export const initHeader = initialiseModule({
   name: 'header',
-  classType: 'Header',
+  className: 'Header',
 });

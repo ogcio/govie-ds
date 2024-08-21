@@ -50,11 +50,14 @@ class Instances {
 
     if (instance) {
       this._instances[component][options.id ?? generateRandomId()] = instance;
+      return;
     }
 
     const classType = classRegistry[component];
-    this._instances[component][options.id ?? generateRandomId()] =
-      new classType(options);
+    const newInstance = new classType(options);
+    newInstance.init();
+
+    this._instances[component][options.id ?? generateRandomId()] = newInstance;
   }
 
   getAllInstances() {
@@ -150,28 +153,19 @@ class Instances {
 
 export function initialiseModule({
   name,
-  classType,
+  className,
 }: {
   name: string;
-  classType: keyof Instances['_instances'];
+  className: keyof Instances['_instances'];
 }) {
   return function () {
     const elements = document.querySelectorAll(`[data-module="gieds-${name}"]`);
 
     for (const element of elements) {
-      createInstance(classType, { element });
+      createInstance(className, { element });
     }
   };
 }
-
-// export function createInstance<T extends BaseComponentConstructor>(
-//   classType: T,
-//   options: BaseComponentOptions,
-// ) {
-//   const instance = new classType(options);
-//   instance.init();
-//   instances.addInstance(classType.name, options, instance);
-// }
 
 export function createInstance(
   className: keyof Instances['_instances'],
@@ -185,17 +179,17 @@ export function createInstance(
 
   const instance = new classType(options);
   instance.init();
-  instances.addInstance(className, options);
+  instances.addInstance(className, options, instance);
 }
 
 export function destroyInstance({
-  classType,
+  className,
   id,
 }: {
-  classType: keyof Instances['_instances'];
+  className: keyof Instances['_instances'];
   id: string;
 }) {
-  instances.destroyAndRemoveInstance(classType, id);
+  instances.destroyAndRemoveInstance(className, id);
 }
 
 export function destroyAllInstances() {
