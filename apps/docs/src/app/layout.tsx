@@ -1,10 +1,10 @@
-import { Footer } from '@govie-react/ds';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
 import '@govie-ds/theme-govie/theme.css';
 import { Container } from '@/components/chrome/container';
 import { TopBar } from '@/components/chrome/top-bar';
+import { Footer } from '@/components/footer/footer';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],

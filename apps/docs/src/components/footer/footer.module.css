@@ -1,0 +1,31 @@
+.footer {
+  background-color: var(--gieds-color-gold-50);
+  border-top: var(--gieds-border-width-100) solid var(--gieds-color-gold-500);
+  padding: var(--gieds-space-5) 0;
+}
+
+.footer a {
+  color: #0b0c0c !important;
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footerLinkList {
+  align-items: center;
+  flex-grow: 1;
+  display: flex;
+  gap: 12px;
+  flex-flow: row wrap;
+}
+
+.footerLogoContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  align-items: center;
+}
