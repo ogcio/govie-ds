@@ -21,8 +21,10 @@ function injectJinjaValidation({
   macroHtml: string;
   requiredKeys: string[];
 }) {
+  const keys = requiredKeys.map((key) => `'${key}'`).join(',');
+
   const validationMarkup = `
-  {% set required_keys = [${requiredKeys.map((key) => `'${key}'`).join(',')}] %}
+  {% set required_keys = [${keys}] %}
     {% for key in required_keys %}
         {% if key not in props %}
             {% set error_message = "Missing required property '" ~ key ~ "'." %}
@@ -41,8 +43,10 @@ function injectNunjucksValidation({
   macroHtml: string;
   requiredKeys: string[];
 }) {
+  const keys = requiredKeys.map((key) => `'${key}'`).join(',');
+
   const validationMarkup = `
-  {% set requiredKeys = [${requiredKeys.map((key) => `'${key}'`).join(',')}] %}
+  {% set requiredKeys = [${keys}] %}
   {{ validateProperties(props, requiredKeys) }}
 `;
 
@@ -52,14 +56,14 @@ function injectNunjucksValidation({
 export function addMacroValidation({
   engine,
   content,
-  macroName,
+  componentName,
 }: {
   engine: string;
   mode: string;
   content: string;
-  macroName: string;
+  componentName: string;
 }) {
-  const requiredKeys: string[] = (properties[macroName] ?? [])
+  const requiredKeys: string[] = (properties[componentName] ?? [])
     .filter((property) => property.required)
     .map((property) => property.name);
 
