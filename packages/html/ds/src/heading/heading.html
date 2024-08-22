@@ -1,0 +1,30 @@
+{% macro caption(value='') %}
+<span class="gi-text-gray-500">{{value}}</span>
+{% endmacro %}
+
+{% macro govieHeading(props) %} 
+
+{% if "H1" in props.tag %}
+{{caption(props.caption)}}<h1 class="{{'gi-text-' + props.size}}">{{props.text}} </h1>
+
+{% elif "H2" in props.tag %}
+{{caption(props.caption)}}<h2 class="{{'gi-text-' + props.size}}">{{props.text}}</h2>
+
+{% elif "H3" in props.tag %}
+{{caption(props.caption)}}<h3 class="{{'gi-text-' + props.size}}">{{props.text}}</h3>
+
+{% elif "H4" in props.tag %}
+{{caption(props.caption)}}<h4 class="{{'gi-text-' + props.size}}">{{props.text}}</h4>
+
+{% elif "H5" in props.tag %}
+{{caption(props.caption)}}<h5 class="{{'gi-text-' + props.size}}">{{props.text}}</h5>
+
+{% elif "H6" in props.tag %}
+{{caption(props.caption)}}<h6 class="{{'gi-text-' + props.size}}">{{props.text}}</h6>
+
+{% endif %}
+
+{% endmacro %}
+
+
+
