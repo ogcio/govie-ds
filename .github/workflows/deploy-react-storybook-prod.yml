@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "packages/react/**"
 
 env:
   AWS_S3_BUCKET_NAME: storybook-react-design-system-blocks-gov-ie

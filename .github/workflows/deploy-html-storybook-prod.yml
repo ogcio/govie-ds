@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "packages/html/**"
 
 env:
   AWS_S3_BUCKET_NAME: storybook-html-design-system-blocks-gov-ie
