@@ -14,3 +14,163 @@ A high level of accessibility is important to ensure everyone can avail of gover
 Government sites are audited and regularly tested by the National Disability Authority (NDA).
 
 The NDA is the independent statutory body that provides information and advice to the government on policy and practice relevant to the lives of people with disabilities.
+
+# Accessibility tools
+* **Axe Dev Tools**
+
+Axe Dev Tools is a suite of accessibility testing tools designed to help developers and testers identify and fix accessibility issues on websites and web applications. Developed by Deque Systems, this tool integrates directly into browser developer tools (such as Chrome DevTools), making it easy to run automated accessibility tests during development. Axe Dev Tools provides comprehensive reports on accessibility violations, including details on the nature of the issues, the elements affected, and guidance on how to fix them. It covers a wide range of accessibility standards, including WCAG (Web Content Accessibility Guidelines), and is widely used for ensuring web content is accessible to people with disabilities.
+
+
+* **WAVE Report**
+
+WAVE (Web Accessibility Evaluation Tool) Report is an accessibility evaluation tool that helps users identify and address issues that affect the accessibility of web content. Developed by WebAIM (Web Accessibility In Mind), WAVE provides visual feedback by overlaying icons and indicators on a webpage, highlighting areas that require attention. The WAVE tool checks for a variety of accessibility issues, such as missing alternative text, low contrast text, and structural issues. It is available as a browser extension, making it easy to analyze webpages directly within the browser. WAVE also provides detailed explanations and recommendations for fixing identified issues, making it a valuable resource for web developers and accessibility professionals.
+
+
+* **NVDA Screen Reader**
+
+NVDA (NonVisual Desktop Access) is a free, open-source screen reader for Windows that enables blind and visually impaired users to interact with their computers. NVDA reads aloud text on the screen using synthetic speech, allowing users to navigate the operating system, browse the web, and use various applications without needing to see the screen. It supports a wide range of languages and comes with features like Braille display support, customizable speech settings, and the ability to read documents, emails, and web pages. NVDA is highly regarded for its robustness, regular updates, and strong community support, making it one of the most popular screen readers available.
+
+
+* **Color Contrast Analyser**
+
+Color Contrast Analyser is a tool used to check the color contrast ratio between text and its background, ensuring it meets accessibility standards like WCAG. Adequate contrast between text and background is crucial for readability, especially for users with visual impairments. This tool allows users to sample colors directly from their screen or input color values manually to calculate the contrast ratio. It then compares the calculated ratio against the required standards and provides feedback on whether the contrast is sufficient. The Color Contrast Analyser is particularly useful for designers and developers who need to ensure that their digital content is accessible to all users, including those with color vision deficiencies.
+
+# Accessibility Quality assurance (QA)
+
+Quality assurance (QA) in the context of accessibility testing is a critical process that ensures digital products—such as websites, web applications, and mobile apps—are usable by people of all abilities, including those with disabilities. This process is essential for meeting legal requirements, adhering to accessibility standards, and providing an inclusive user experience. Here's an overview of how we apply QA to accessibility testing:
+
+* __Understanding Accessibility Standards__
+
+Quality assurance for accessibility is guided by established standards, most notably the Web Content Accessibility Guidelines (WCAG), which outline criteria for making content accessible to a wide range of people with disabilities. QA teams need to be familiar with these guidelines, including the different levels of conformance (A, AA, and AAA), which range from basic to more advanced accessibility requirements.
+
+* __Automated Testing Tools__
+
+Automated tools are often the first step in accessibility QA testing. These tools can quickly identify common accessibility issues such as missing alt text, improper heading structure, and low color contrast. Tools like Axe Dev Tools, WAVE, and Lighthouse can be integrated into the development workflow to run automated tests on web pages and applications. While automated testing is efficient, it can only catch about 20-30% of accessibility issues, so it's important to use it in conjunction with manual testing.
+
+* __Manual Testing__
+
+Manual testing is crucial because many accessibility issues are context-specific and cannot be detected by automated tools. QA testers manually evaluate aspects like keyboard navigation, screen reader compatibility, and the usability of interactive elements (e.g., forms, buttons, and menus). Testers use assistive technologies such as screen readers (like NVDA or JAWS), screen magnifiers, and voice recognition software to simulate the experience of users with disabilities. They also check for issues like focus order, hidden content, and proper labelling of elements.
+
+* __User Testing with Assistive Technologies__
+
+Involving actual users with disabilities in the testing process can provide valuable insights that might not be apparent through automated or manual testing alone. User testing helps identify real-world usability challenges and ensures that the product is genuinely accessible to its intended audience. This might include testing with screen readers, voice control, or eye-tracking devices.
+
+* __Reporting and Fixing Issues__
+
+Once issues are identified, they are documented in detail, often with references to specific WCAG criteria. Reports generated from both automated and manual testing highlight the severity of issues and prioritise them for remediation. QA teams collaborate with developers to ensure that issues are fixed correctly and retested. Detailed documentation and clear communication are essential to ensure that accessibility improvements are properly implemented.
+
+* __Regression Testing__
+
+After accessibility issues are fixed, regression testing is conducted to ensure that new updates or changes to the product have not introduced new accessibility problems or reintroduced old ones. Continuous testing throughout the development lifecycle helps maintain a high standard of accessibility.
+
+* __Ongoing Monitoring and Maintenance__
+
+Accessibility is not a one-time effort but an ongoing process. QA teams should regularly monitor and test products as they evolve, especially when new features are added or major updates are made. This ensures that the product remains accessible over time and continues to meet legal and user requirements.
+
+* __Training and Education__
+
+For QA teams to effectively test for accessibility, they need ongoing training and education on the latest accessibility standards, tools, and best practices. Building a culture of accessibility within the organization, where all team members are aware of its importance, is key to sustaining accessibility in the long term.
+
+* __Compliance and Legal Considerations__
+
+Accessibility QA is also about ensuring compliance with legal requirements such as the Americans with Disabilities Act (ADA) in the U.S., the European Accessibility Act (EAA), or other relevant regulations. Non-compliance can result in legal consequences, so QA teams must ensure that accessibility testing is thorough and aligns with these legal frameworks.
+
+* __Inclusive Design Principles__
+
+Incorporating accessibility considerations from the very beginning of the design and development process—known as "inclusive design"—is more effective and efficient than retrofitting accessibility after the fact. QA plays a vital role in verifying that the product design supports accessibility from the ground up.
+
+In summary, quality assurance in accessibility testing is about ensuring that digital products are not only functional but also usable by people with diverse abilities. It involves a combination of automated tools, manual testing, real-user feedback, and continuous monitoring to meet both legal requirements and the needs of all users.
+
+# NVDA recommended tools
+
+Using NVDA (NonVisual Desktop Access) recommended tools refers to leveraging a suite of tools and techniques that enhance the accessibility testing process, particularly for ensuring compatibility with the NVDA screen reader. NVDA is a free, open-source screen reader for Windows, widely used by people with visual impairments to access digital content. Here’s an overview of the tools and strategies recommended when using NVDA for accessibility testing:
+
+__NVDA as a Primary Testing Tool__
+
+NVDA is the core tool for testing the accessibility of websites and applications. When using NVDA, testers can:
+
+*Navigate the Interface*: Testers use NVDA to navigate through web pages and applications using the keyboard, listening to how NVDA announces elements like headings, links, buttons, forms, and other interactive elements.
+
+*Test Focus Management*: Ensuring that the focus order (the sequence in which elements receive keyboard focus) is logical and intuitive is critical for screen reader users. NVDA helps testers check if the focus moves correctly between elements.
+
+*Check for Alternative Text*: NVDA reads out alternative text for images and other non-text content, helping testers ensure that meaningful descriptions are provided where necessary.
+
+*Assess ARIA Implementation*: NVDA supports ARIA roles, states, and properties, which enhance accessibility by providing additional context for complex UI elements. Testers use NVDA to verify if ARIA attributes are used correctly.  
+
+__Focus Highlight Tool__
+
+The Focus Highlight tool is an NVDA add-on that visually indicates which element has focus on the screen. This tool is particularly useful for developers and testers who want to observe how focus moves when interacting with a webpage or application using the keyboard. It helps identify issues with focus order and ensures that the focus is clearly visible and logical.
+
+__Speech Viewer__
+
+NVDA’s Speech Viewer tool displays in real-time what NVDA is announcing. This is useful for testers who are not familiar with screen readers or who prefer to see a textual representation of what NVDA is saying. It also allows testers to compare what is being announced against what is expected, making it easier to identify discrepancies.
+
+__Logging Features__
+
+NVDA provides logging features that capture events and outputs during a testing session. These logs can be invaluable for debugging issues or documenting findings during an accessibility audit. Testers can review the logs to understand how NVDA is interpreting and interacting with the content.
+
+__NVDA Developer Tools__
+
+NVDA Developer Tools is an add-on that provides additional debugging and inspection capabilities for advanced users. It allows testers and developers to inspect the accessibility tree, which represents the structure and properties of UI elements as perceived by screen readers. This tool helps diagnose issues related to how elements are exposed to assistive technologies.
+
+__Contrast Checker__
+
+Although NVDA does not directly include a contrast checker, it's important to use this tool in conjunction with NVDA to ensure that text and background color combinations meet WCAG contrast requirements. Tools like the Color Contrast Analyser can be used alongside NVDA to check that content is visually accessible as well as screen reader accessible.
+
+__ARIA Landmarks and Headings__
+
+When testing with NVDA, it’s essential to check how ARIA landmarks and HTML headings are announced. NVDA allows users to navigate by headings and landmarks, so testers should ensure these are used correctly to provide a meaningful and structured navigation experience.
+
+__Testing Across Different Browsers__
+
+NVDA’s behaviour can vary slightly across different web browsers, so it’s recommended to test content in multiple browsers, such as Firefox (which has particularly strong support for NVDA) and Chrome. This helps ensure that the content is consistently accessible across different environments.
+
+__Keyboard Testing__
+
+Using NVDA, testers should ensure that all interactive elements are fully operable using only the keyboard. NVDA supports various keyboard commands for navigating and interacting with content, and testers should verify that users can access and use all features without needing a mouse.
+
+__Training and Best Practices__
+
+Finally, it’s important for testers to be trained not only in using NVDA but also in understanding how people with visual impairments use screen readers in real-world scenarios. Familiarity with common screen reader shortcuts and navigation techniques is crucial for effective testing.
+
+# NVDA leveraging capabilities (NDA scans)
+
+NVDA is a powerful screen reader used by individuals with visual impairments to navigate digital content. When testing for accessibility, leveraging NVDA effectively means using its various features to simulate the experience of a screen reader user and identify potential accessibility issues.
+
+Here are our ways we leverage NVDA for accessibility testing:
+
+* __Understand the User Experience__
+
+    *Empathy Testing*: Start by navigating your website or application using only NVDA and a keyboard. This allows you to experience your site as a visually impaired user would, giving you firsthand insight into the usability and accessibility challenges they might face.
+
+    *Listen to Content*: Pay attention to how NVDA reads out the content. Is it logical? Are elements like headings, links, and buttons being announced correctly and in a way that makes sense?
+* __Testing for Keyboard Accessibility__
+
+    *Focus Order*: Ensure that all interactive elements are accessible via the keyboard and that the focus moves in a logical and intuitive sequence. NVDA can help you determine if the focus is properly managed and visible at all times.
+
+    *Interactive Elements*: Check that all interactive elements (such as buttons, links, and form fields) are accessible and properly labelled so that NVDA announces them correctly.
+* __Check Alternative Text and Descriptions__
+
+    *Images and Non-Text Content*: NVDA reads out the alt text for images and other non-text content. Use this feature to verify that all important images have appropriate and descriptive alt text. Decorative images should either have empty alt text (alt="") or be marked in a way that NVDA ignores them.
+
+    *ARIA Labels*: Ensure that ARIA (Accessible Rich Internet Applications) labels and roles are correctly implemented so that NVDA can provide the right context to users.
+* __Use NVDA’s Speech Viewer__
+
+    *Speech Viewer*: NVDA’s Speech Viewer is a tool that displays the text output that NVDA is reading aloud. This can be particularly useful for seeing exactly how NVDA interprets your content. It helps in identifying issues like incorrect reading order or missing information.
+* __Check the Accessibility Tree__
+
+    *NVDA Developer Tools*: These tools allow you to inspect the accessibility tree, which shows how the structure of your page is interpreted by assistive technologies. It’s important that this tree accurately reflects the visual structure and intended use of your page’s elements.
+* __Navigating by Headings and Landmarks__
+
+    *Headings and Landmarks*: NVDA allows users to navigate web pages by headings and landmarks. Make sure your headings are properly structured (using h1, h2, h3, etc. in a hierarchical order) and that landmarks (such as navigation, main, and footer) are appropriately used. This helps NVDA users quickly move through content in a meaningful way.
+* __Testing Dynamic Content__
+
+    *Live Regions*: For dynamic content (like alerts or updates), ensure that NVDA correctly announces changes. Using ARIA live regions (aria-live) allows content updates to be communicated to the user without disrupting their current task.
+
+    *Form Validation*: When testing forms, check that NVDA announces form field errors or validation messages promptly, helping users understand and correct mistakes.
+* __Testing Across Different Environments__
+
+    *Browser Compatibility*: NVDA might behave differently depending on the browser. Ensure you test your site in multiple browsers (e.g., Firefox, Chrome) to confirm consistent behaviour. Firefox is generally recommended when using NVDA, as it has strong support for screen readers.
+* __Use NVDA’s Logging Features__
+
+    *Logging*: NVDA’s logging capabilities can help you track what’s happening behind the scenes when testing for accessibility. Logs can provide insights into errors or unexpected behaviours that may not be immediately apparent through normal usage.
