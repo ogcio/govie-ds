@@ -72,7 +72,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.ecr-sign-in.outputs.registry }}
           ECR_REPOSITORY: life-events-design-system
-          IMAGE_TAG: latest # TODO: env vars in Nx project.json
+          IMAGE_TAG: ${{ github.event.inputs.environment }}
         run: |
           pnpm ds:deploy
 
