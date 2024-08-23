@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.21.17](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.16...@govie-ds/docs-0.21.17) (2024-08-23)
+
+
+
 ## [0.21.16](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.15...@govie-ds/docs-0.21.16) (2024-08-22)
 
 
