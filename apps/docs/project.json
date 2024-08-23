@@ -21,7 +21,7 @@
       "configurations": {
         "dev": {
           "push": true,
-          "build-args": ["DEPLOY_ENV=dev"],
+          "build-args": ["DEPLOY_ENV=development"],
           "tags": [
             "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:dev",
             "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
@@ -43,7 +43,7 @@
             "339713032391.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
           ]
         },
-        "production": {
+        "prod": {
           "push": true,
           "build-args": ["DEPLOY_ENV=production"],
           "tags": [
