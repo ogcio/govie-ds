@@ -41,7 +41,7 @@ jobs:
       - name: Set environment output if HTML package is affected
         id: check-affected
         run: |
-          if grep -q "@govie-frontend/ds" affected.txt; then
+          if grep -q "@govie-frontend/storybook" affected.txt; then
             echo "html_affected=true" >> $GITHUB_ENV
             echo "::set-output name=html_affected::true"
           else
