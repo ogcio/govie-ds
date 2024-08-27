@@ -36,7 +36,8 @@ jobs:
       - name: Determine affected projects
         id: affected
         run: |
-          nx show projects --affected --base=origin/main~1 --head=HEAD > affected.txt cat affected.txt
+          nx show projects --affected --base=origin/main~1 --head=HEAD > affected.txt
+          cat affected.txt
 
       - name: Set environment output if HTML package is affected
         id: check-affected
