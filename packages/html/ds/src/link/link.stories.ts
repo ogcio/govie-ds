@@ -9,7 +9,7 @@ const Link = renderComponent<LinkProps>(macro);
 
 const meta = {
   component: Link,
-  title: 'navigation/Link',
+  title: 'Navigation/Link',
   parameters: {
     macro,
   },
@@ -19,16 +19,61 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  argTypes: {
+    label: {
+      control: 'text',
+      type: { name: 'string', required: true },
+    },
+    href: {
+      control: 'text',
+      type: { name: 'string', required: true },
+    },
+    noUnderline: {
+      description: 'To remove underlines from links.',
+      control: 'boolean',
+      type: { name: 'boolean' },
+    },
+    external: {
+      description: 'To open the link in a new tab.',
+      control: 'boolean',
+      type: { name: 'boolean' },
+    },
+    noVisited: {
+      description:
+        'Where it is not helpful to distinguish between visited and unvisited states, for example when linking to pages with frequently-changing content such as the dashboard for an admin interface.',
+      control: 'boolean',
+      type: { name: 'boolean' },
+    },
+  },
   args: {
     href: '#',
-    label: 'Link text',
+    label: 'Link',
+    external: false,
+    noUnderline: false,
+    noVisited: false,
   },
-  //   argTypes: {
-  //     label: {
-  //       control: { type: 'text' },
-  //     },
-  //     href: {
-  //       control: { type: 'text' },
-  //     },
-  //   },
+};
+
+export const WithoutUnderline: Story = {
+  args: {
+    href: '#',
+    label: 'Link without underline',
+    noUnderline: true,
+  },
+};
+
+export const External: Story = {
+  args: {
+    href: '#',
+    label: 'Link (opens in a new tab)',
+    external: true,
+  },
+};
+
+export const NoVisited: Story = {
+  args: {
+    href: '#',
+    label: 'Link',
+    noVisited: true,
+  },
 };
