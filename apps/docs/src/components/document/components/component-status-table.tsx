@@ -82,7 +82,7 @@ export function ComponentStatusTable() {
         under consideration for the design system.
       </Paragraph>
       <Table
-        headers={['Component', 'Figma UI Kit', 'HTML', 'React']}
+        headers={['Component', 'Figma Library', 'HTML', 'React']}
         ids={componentStatuses.map((componentStatus) => componentStatus.id)}
         renderRow={(id) => {
           const componentStatus = componentStatuses.find(
