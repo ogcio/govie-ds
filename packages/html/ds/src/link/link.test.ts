@@ -22,11 +22,9 @@ describe('link', () => {
       href: 'https://example.com',
       label: 'Example Link',
     });
+    const linkElement = screen.getByRole('link');
 
-    expect(screen.getByRole('link')).toHaveAttribute(
-      'href',
-      'https://example.com',
-    );
+    expect(linkElement.getAttribute('href')).toBe('https://example.com');
   });
 
   it('should open in a new tab if external', () => {
@@ -35,12 +33,10 @@ describe('link', () => {
       label: 'Example Link',
       external: true,
     });
+    const linkElement = screen.getByRole('link');
 
-    expect(screen.getByRole('link')).toHaveAttribute('target', '_blank');
-    expect(screen.getByRole('link')).toHaveAttribute(
-      'rel',
-      'noreferrer noopener',
-    );
+    expect(linkElement.getAttribute('target')).toBe('_blank');
+    expect(linkElement.getAttribute('rel')).toBe('noreferrer noopener');
   });
 
   it('should not open in a new tab if not external', () => {
@@ -49,8 +45,9 @@ describe('link', () => {
       label: 'Example Link',
       external: false,
     });
+    const linkElement = screen.getByRole('link');
 
-    expect(screen.getByRole('link')).not.toHaveAttribute('target', '_blank');
+    expect(linkElement.getAttribute('target')).not.toBe('_blank');
   });
 
   it('should have visited style', () => {
@@ -59,8 +56,11 @@ describe('link', () => {
       label: 'Example Link',
       noVisited: false,
     });
+    const linkElement = screen.getByRole('link');
 
-    expect(screen.getByRole('link')).toHaveClass('visited:gi-text-purple-700');
+    expect(linkElement.classList.contains('visited:gi-text-purple-700')).toBe(
+      true,
+    );
   });
 
   it('should not have visited style if noVisited is true', () => {
@@ -70,8 +70,10 @@ describe('link', () => {
       noVisited: true,
     });
 
-    expect(screen.getByRole('link')).not.toHaveClass(
-      'visited:gi-text-purple-700',
+    const linkElement = screen.getByRole('link');
+
+    expect(linkElement.classList.contains('visited:gi-text-purple-700')).toBe(
+      false,
     );
   });
 

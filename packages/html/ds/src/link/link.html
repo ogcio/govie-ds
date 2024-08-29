@@ -1,11 +1,9 @@
 {% macro govieLink(props) %}
-
   {% macro getUnderlineClass(noUnderline) %}
     {% if not noUnderline %}
       gi-underline gi-underline-offset-[0.1em]
     {% endif %}
   {% endmacro %}
-
   {% macro getVisitedClass(noVisited) %}
     {% if noVisited %}
       visited:gi-text-blue-700
@@ -13,13 +11,11 @@
       visited:gi-text-purple-700
     {% endif %}
   {% endmacro %}
-
   {% macro getExternalAttribute(isExternal) %}
     {% if isExternal %}
       rel="noreferrer noopener" target="_blank"
     {% endif %}
   {% endmacro %}
-
   <a
     href="{{ props.href }}"
     {{ getExternalAttribute(props.external) | trim }}
