@@ -43,7 +43,7 @@ export function ComponentStatusPill({
   );
 }
 
-export function ComponentStatus({ componentId }: { componentId: string }) {
+export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   const components = getComponents();
 
   const componentStatuses = components
