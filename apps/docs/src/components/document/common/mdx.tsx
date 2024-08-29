@@ -1,9 +1,16 @@
+import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { Highlight } from '@/components/typography/highlight';
+import { Link } from '@/components/typography/link';
+import { cn } from '@/lib/cn';
 import { Heading, Paragraph } from '@govie-react/ds';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
-import { ComponentStatusTable } from '../components/component-status-table';
+import {
+  ComponentStatus,
+  ComponentStatusTable,
+} from '../components/component-status-table';
 import { Faq, Faqs } from '../faqs/faqs';
 import {
   DeveloperRecommendation,
@@ -40,10 +47,6 @@ import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { wrapComponents } from './wrap-components';
-import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { Highlight } from '@/components/typography/highlight';
-import { Link } from '@/components/typography/link';
-import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
@@ -98,6 +101,7 @@ const documentComponents: MDXComponents = {
   OpacityTable: () => <OpacityTable />,
   ZIndexTable: () => <ZIndexTable />,
   ComponentStatusTable: () => <ComponentStatusTable />,
+  ComponentStatus: (props) => <ComponentStatus {...props} />,
   SystemElements: () => <SystemElements />,
   Logos: () => <Logos />,
   Fonts: () => <Fonts />,

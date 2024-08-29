@@ -4,7 +4,7 @@ import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
-function ComponentStatusPill({
+export function ComponentStatusPill({
   status,
   href,
 }: {
@@ -39,6 +39,82 @@ function ComponentStatusPill({
           ariaLabel="Open"
         />
       ) : null}
+    </div>
+  );
+}
+
+export function ComponentStatus({ componentId }: { componentId: string }) {
+  const components = getComponents();
+
+  const componentStatuses = components
+    .filter((component) => component.id === componentId)
+    .map((component) => {
+      const figmaPlatform = component.statuses.find(
+        (platformStatus) => platformStatus.platform.id === 'figma',
+      );
+      const htmlPlatform = component.statuses.find(
+        (platformStatus) => platformStatus.platform.id === 'html',
+      );
+      const reactPlatform = component.statuses.find(
+        (platformStatus) => platformStatus.platform.id === 'react',
+      );
+
+      return {
+        id: component.id,
+        name: component.name,
+        figma: {
+          status: figmaPlatform?.status ?? 'considering',
+          href: figmaPlatform?.platform?.href,
+        },
+        html: {
+          status: htmlPlatform?.status ?? 'under-review',
+          href: htmlPlatform?.platform?.href,
+        },
+        react: {
+          status: reactPlatform?.status ?? 'considering',
+          href: reactPlatform?.platform?.href,
+        },
+      };
+    });
+
+  return (
+    <div>
+      <Table
+        headers={['Figma Library', 'HTML', 'React']}
+        ids={componentStatuses.map((componentStatus) => componentStatus.id)}
+        renderRow={(id) => {
+          const componentStatus = componentStatuses.find(
+            (componentStatus) => componentStatus.id === id,
+          );
+
+          if (!componentStatus) {
+            throw new Error(`Component status not found '${id}'.`);
+          }
+
+          return (
+            <Tr key={id}>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.figma.status}
+                  href={componentStatus.figma.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.html.status}
+                  href={componentStatus.html.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.react.status}
+                  href={componentStatus.react.href}
+                />
+              </Td>
+            </Tr>
+          );
+        }}
+      />
     </div>
   );
 }
