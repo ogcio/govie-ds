@@ -1,4 +1,4 @@
-import "@govie-react/ds/reset.css";
+import "@govie-react/ds/styles.css";
 import "@govie-ds/theme-govie/theme.css";
 import "@fontsource/lato";
 import {
@@ -18,7 +18,14 @@ export function App() {
       <Container>
         <Heading>Heading</Heading>
         <Paragraph>Paragraph</Paragraph>
-        <Link href="#">Link</Link>
+        <Link
+          href="https://www.google.com"
+          external={true}
+          noUnderline={true}
+          noVisited={true}
+        >
+          Link
+        </Link>
         <Icon id="thumbs-up" variant="filled" />
       </Container>
       <Footer />
