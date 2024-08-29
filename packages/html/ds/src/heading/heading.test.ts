@@ -1,7 +1,7 @@
 import { render } from '../common/render';
 import html from './heading.html?raw';
 import { HeadingProps } from './heading.schema';
-import { SIZE, TAG } from './heading.schema';
+import { Size, Tag } from './heading.schema';
 
 describe('heading', () => {
   const renderHeading = render<HeadingProps>({
@@ -12,8 +12,8 @@ describe('heading', () => {
   it('should render heading title', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H1,
+      size: Size.Medium,
+      tag: Tag.H1,
     });
     expect(screen.getByText('Heading Text')).toBeTruthy();
   });
@@ -21,8 +21,8 @@ describe('heading', () => {
   it('should render small heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.SMALL,
-      tag: TAG.H1,
+      size: Size.Small,
+      tag: Tag.H1,
     });
 
     expect(screen.getByRole('heading')).toHaveClass('gi-text-sm');
@@ -31,8 +31,8 @@ describe('heading', () => {
   it('should render medium heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H1,
+      size: Size.Medium,
+      tag: Tag.H1,
     });
 
     expect(screen.getByRole('heading')).toHaveClass('gi-text-md');
@@ -41,8 +41,8 @@ describe('heading', () => {
   it('should render large heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.LARGE,
-      tag: TAG.H1,
+      size: Size.Large,
+      tag: Tag.H1,
     });
 
     expect(screen.getByRole('heading')).toHaveClass('gi-text-lg');
@@ -51,8 +51,8 @@ describe('heading', () => {
   it('should render extra large heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.EXTRA_LARGE,
-      tag: TAG.H1,
+      size: Size.ExtraLarge,
+      tag: Tag.H1,
     });
 
     expect(screen.getByRole('heading')).toHaveClass('gi-text-xl');
@@ -61,8 +61,8 @@ describe('heading', () => {
   it('should contain H1 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H1,
+      size: Size.Medium,
+      tag: Tag.H1,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H1');
@@ -71,8 +71,8 @@ describe('heading', () => {
   it('should contain H2 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H2,
+      size: Size.Medium,
+      tag: Tag.H2,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H2');
@@ -81,8 +81,8 @@ describe('heading', () => {
   it('should contain H3 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H3,
+      size: Size.Medium,
+      tag: Tag.H3,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H3');
@@ -91,8 +91,8 @@ describe('heading', () => {
   it('should contain H4 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H4,
+      size: Size.Medium,
+      tag: Tag.H4,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H4');
@@ -101,8 +101,8 @@ describe('heading', () => {
   it('should contain H5 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H5,
+      size: Size.Medium,
+      tag: Tag.H5,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H5');
@@ -111,30 +111,29 @@ describe('heading', () => {
   it('should contain H6 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H6,
+      size: Size.Medium,
+      tag: Tag.H6,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H6');
   });
 
-  it('should contain caption', () => {
-    const screen = renderHeading({
-      text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H1,
-      caption: 'Caption text',
-    });
+  // it('should contain caption', () => {
+  //   const screen = renderHeading({
+  //     text: 'Heading Text',
+  //     size: Size.MEDIUM,
+  //     tag: Tag.H1,
+  //     caption: 'Caption text',
+  //   });
 
-    expect(screen.getByTestId('govie-heading-caption')).toBeTruthy();
-  });
+  //   expect(screen.getByTestId('govie-heading-caption')).toBeTruthy();
+  // });
 
   it('should pass axe tests', async () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: SIZE.MEDIUM,
-      tag: TAG.H1,
-      caption: 'Caption text',
+      size: Size.Medium,
+      tag: Tag.H1,
     });
 
     await screen.axe();

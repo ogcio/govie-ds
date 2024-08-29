@@ -1,4 +1,5 @@
 {% from 'govie/header/macro.html' import govieHeader %}
+{% from 'govie/heading/macro.html' import govieHeading %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,8 @@
     <header data-module="govie-header" class="govie-header">
         <h2>Application Title</h2>
     </header>
+
+    {{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) }}
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
