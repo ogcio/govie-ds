@@ -59,3 +59,4 @@ lifecycle
 organization
 JSON
 YAML
+Tooltip
