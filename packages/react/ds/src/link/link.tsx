@@ -15,6 +15,7 @@ export function Link({
   noUnderline,
   noVisited,
   external,
+  dark = false,
 }: LinkProps) {
   return (
     <Component
@@ -24,9 +25,8 @@ export function Link({
       className={`
         ${noUnderline ? '' : 'gi-underline gi-underline-offset-[0.1em]'}
         ${noVisited ? 'visited:gi-text-blue-700' : 'visited:gi-text-purple-700'}
-        gi-text-blue-700
+        ${dark ? 'gi-text-white hover:gi-text-white' : 'gi-text-blue-700 hover:gi-text-blue-800'}        
         gi-decoration-[max(1px,0.0625rem)]
-        hover:gi-text-blue-800
         hover:gi-decoration-skip-ink-none
         hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
         focus:gi-outline
