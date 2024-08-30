@@ -44,6 +44,12 @@ export const Default: Story = {
       control: 'boolean',
       type: { name: 'boolean' },
     },
+    dark: {
+      description:
+        'Show white links on dark backgrounds — for example, in headers, custom components, and patterns with darker backgrounds.',
+      control: 'boolean',
+      type: { name: 'boolean' },
+    },
   },
   args: {
     href: '#',
@@ -51,6 +57,7 @@ export const Default: Story = {
     external: false,
     noUnderline: false,
     noVisited: false,
+    dark: false,
   },
 };
 
@@ -75,5 +82,19 @@ export const NoVisited: Story = {
     href: '#',
     label: 'Link',
     noVisited: true,
+  },
+};
+
+export const Dark: Story = {
+  args: {
+    href: '#',
+    label: 'Link',
+    dark: true,
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [{ name: 'dark', value: '#1d70b8' }],
+    },
   },
 };

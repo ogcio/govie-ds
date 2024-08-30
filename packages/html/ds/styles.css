@@ -10,3 +10,8 @@
   max-height: 0;
   opacity: 0;
 }
+
+/* Workaround solution for <https://github.com/storybookjs/storybook/issues/13612> */
+.sb-show-main {
+  transition: none !important; /* !important needed to counter inline style */
+}
