@@ -1,5 +1,5 @@
 {% macro govieLink(props) %}
-  {% macro getDarlClass(dark) %}
+  {% macro getDarkClass(dark) %}
     {% if dark %}
       gi-text-white
       hover:gi-text-white
@@ -37,8 +37,7 @@
     class="
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited, props.dark) | trim }}
-      {{ getDarlClass(props.dark) | trim }}
-      hover:gi-text-blue-800
+      {{ getDarkClass(props.dark) | trim }}
       hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
       focus:gi-outline
       focus:gi-text-gray-950
