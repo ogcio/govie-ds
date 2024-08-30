@@ -1,7 +1,9 @@
 {% macro govieLink(props) %}
   {% macro getUnderlineClass(noUnderline) %}
     {% if not noUnderline %}
-      gi-underline gi-underline-offset-[0.1em]
+      gi-underline
+      gi-underline-offset-[0.1em]
+      focus:gi-no-underline
     {% endif %}
   {% endmacro %}
   {% macro getVisitedClass(noVisited) %}
@@ -23,11 +25,10 @@
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited) | trim }}
       gi-text-blue-700
-      gi-decoration-[max(1px,0.0625rem)]
       hover:gi-text-blue-800
-      hover:gi-decoration-skip-ink-none
       hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
       focus:gi-outline
+      focus:gi-text-gray-950
       focus:gi-outline-transparent
       focus:gi-bg-yellow-400
       focus:gi-outline-[3px]

@@ -65,7 +65,7 @@ export const WithoutUnderline: Story = {
 export const External: Story = {
   args: {
     href: '#',
-    label: 'Link (opens in a new tab)',
+    label: 'Link text (opens in a new tab)',
     external: true,
   },
 };
