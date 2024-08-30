@@ -14,14 +14,23 @@ import {
   Footer,
   Container,
   IconButton,
+  PhaseBanner,
 } from "@govie-react/ds";
 
 export function App() {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <Header />
+      <Header
+        serviceName="Example"
+        homeHref="www.gov.ie"
+        serviceHref="#"
+        homeAriaLabel="aria label"
+      />
       <Container>
         <Heading>Heading</Heading>
+
+        <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
+
         <Link
           href="https://www.google.com"
           external={true}
@@ -30,10 +39,11 @@ export function App() {
         >
           Link
         </Link>
+
         <Icon id="thumbs-up" variant="filled" />
+
         <IconButton icon={<Icon id="send" />} ariaLabel="Send" />
 
-        <Paragraph as="span">Span paragraph</Paragraph>
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -43,6 +53,9 @@ export function App() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Paragraph>
+
+        <hr />
+        <Paragraph as="span">Span paragraph</Paragraph>
       </Container>
       <Footer />
     </div>

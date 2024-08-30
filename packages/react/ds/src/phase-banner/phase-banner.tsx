@@ -1,5 +1,3 @@
-import styles from './phase-banner.module.css';
-
 export function PhaseBanner({
   level,
   children,
@@ -8,8 +6,12 @@ export function PhaseBanner({
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.phaseBanner}>
-      <div className={styles.pill}>{level}</div>
+    <div className={`gi-flex gi-items-center gi-gap-2`}>
+      <div
+        className={`gi-text-white gi-tracking-wider gi-bg-blue-600 gi-px-2 gi-rounded`}
+      >
+        {level}
+      </div>
       <div>{children}</div>
     </div>
   );
