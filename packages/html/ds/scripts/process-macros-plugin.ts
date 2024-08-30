@@ -37,7 +37,7 @@ export function processMacrosPlugin() {
 
           const destinationPath = path.resolve(
             destinationDirectory,
-            file.replace(path.basename(file), 'macro.html'),
+            file,
           );
 
           const updatedContent =
