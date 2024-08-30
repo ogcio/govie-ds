@@ -54,10 +54,6 @@ export const Default: Story = {
   args: {
     href: '#',
     label: 'Link',
-    external: false,
-    noUnderline: false,
-    noVisited: false,
-    dark: false,
   },
 };
 
