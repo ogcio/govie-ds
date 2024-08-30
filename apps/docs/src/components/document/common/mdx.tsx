@@ -3,7 +3,10 @@ import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
-import { ComponentStatusTable } from '../components/component-status-table';
+import {
+  ComponentStatusBlock,
+  ComponentStatusTable,
+} from '../components/component-status-table';
 import { Faq, Faqs } from '../faqs/faqs';
 import {
   DeveloperRecommendation,
@@ -98,6 +101,7 @@ const documentComponents: MDXComponents = {
   OpacityTable: () => <OpacityTable />,
   ZIndexTable: () => <ZIndexTable />,
   ComponentStatusTable: () => <ComponentStatusTable />,
+  ComponentStatusBlock: (props) => <ComponentStatusBlock {...props} />,
   SystemElements: () => <SystemElements />,
   Logos: () => <Logos />,
   Fonts: () => <Fonts />,
