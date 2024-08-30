@@ -1,5 +1,4 @@
 import { cloneElement } from 'react';
-import styles from './icon-button.module.css';
 
 export function IconButton({
   icon,
@@ -18,7 +17,12 @@ export function IconButton({
 
   return (
     <Component
-      className={styles.iconButton}
+      className={`
+        gi-p-[var(--gieds-space-2)] 
+        gi-rounded-[var(--gieds-border-radius-200)]
+        enabled:cursor-pointer
+        enabled:hover:bg-gray-50
+        `}
       onClick={href ? undefined : onClick}
       disabled={disabled}
       aria-label={ariaLabel}
