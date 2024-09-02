@@ -1,5 +1,5 @@
+import { Heading } from '@govie-react/ds';
 import { Fragment } from 'react';
-import { Text } from '@/components/typography/text';
 
 const benefits = [
   {
@@ -26,9 +26,7 @@ function Benefit({
   return (
     <Fragment>
       <dt>
-        <Text as="h3" className="mt-0 mb-0">
-          {title}
-        </Text>
+        <Heading as="h3">{title}</Heading>
       </dt>
       <dd>{description}</dd>
     </Fragment>

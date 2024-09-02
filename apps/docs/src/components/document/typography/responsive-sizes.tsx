@@ -1,4 +1,10 @@
 import { meta } from '@govie-ds/tokens';
+import {
+  Heading,
+  HeadingSize,
+  Paragraph,
+  ParagraphSize,
+} from '@govie-react/ds';
 import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
@@ -8,7 +14,6 @@ import { SampleToken } from '../common/sample-token';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
-import { Text } from '@/components/typography/text';
 
 type TypographyScreenAliasValue = {
   fontFamily: string[];
@@ -99,7 +104,7 @@ function TypographyResponsiveSizes({
   sampleText,
 }: {
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
-  size: string;
+  size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
   sampleText: string;
 }) {
   const screenSizes = objectKeys(
@@ -153,17 +158,13 @@ function TypographyResponsiveSizes({
       renderValue={({ value }) => {
         return <TokenName name={value.name} />;
       }}
-      renderSample={({ value }) => (
-        <Text
-          className="mb-0"
-          style={{
-            ...value.value,
-            fontFamily: undefined,
-          }}
-        >
-          {sampleText}
-        </Text>
-      )}
+      renderSample={({ id }) => {
+        return tokenName === 'heading' ? (
+          <Heading size={id as HeadingSize}>{sampleText}</Heading>
+        ) : (
+          <Paragraph size={id as ParagraphSize}>{sampleText}</Paragraph>
+        );
+      }}
     />
   );
 }
@@ -223,12 +224,11 @@ function TypographySizesDetailed({
   });
 }
 
-// TODO: size types
 export function HeadingResponsiveSizes({
   size,
   sampleText,
 }: {
-  size: string;
+  size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
   sampleText: string;
 }) {
   return (
@@ -245,7 +245,7 @@ export function TextResponsiveSizes({
   size,
   sampleText,
 }: {
-  size: string;
+  size: 'lg' | 'md' | 'sm';
   sampleText: string;
 }) {
   return (
@@ -256,3 +256,23 @@ export function TextResponsiveSizes({
     />
   );
 }
+
+// export function HeadingResponsiveSizes({
+//   size,
+//   sampleText,
+// }: {
+//   size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
+//   sampleText: string;
+// }) {
+//   return <Heading size={size}>{sampleText}</Heading>;
+// }
+
+// export function TextResponsiveSizes({
+//   size,
+//   sampleText,
+// }: {
+//   size: 'lg' | 'md' | 'sm';
+//   sampleText: string;
+// }) {
+//   return <Paragraph size={size}>{sampleText}</Paragraph>;
+// }

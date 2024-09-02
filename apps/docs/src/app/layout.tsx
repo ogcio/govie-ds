@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
+import '@govie-react/ds/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import { Container } from '@/components/chrome/container';
 import { TopBar } from '@/components/chrome/top-bar';
