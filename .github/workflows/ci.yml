@@ -40,6 +40,8 @@ jobs:
       contents: read
 
     environment: ${{ github.event.inputs.environment || 'dev' }}
+    env:
+      environment: ${{ github.event.inputs.environment || 'dev' }}
 
     steps:
       - name: Checkout code
@@ -80,7 +82,7 @@ jobs:
           path: packages/design/figma/dist/tokens-flat
 
       - name: Publish new ALPHA version on NPM
-        if: github.ref == 'refs/heads/main' && github.event.inputs.environment == 'dev'
+        if: github.ref == 'refs/heads/main' && env.environment == 'dev'
         run: |
           pnpm nx affected --base=last-release -t version --parallel=1 --releaseAs=prerelease --preid=alpha
         env:
@@ -88,7 +90,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish new PROD version on NPM
-        if: github.ref == 'refs/heads/main' && github.event.inputs.environment == 'prod'
+        if: github.ref == 'refs/heads/main' && env.environment == 'prod'
         run: |
           pnpm nx affected --base=last-release -t version --parallel=1
         env:
