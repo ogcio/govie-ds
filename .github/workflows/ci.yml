@@ -39,7 +39,7 @@ jobs:
       id-token: write
       contents: read
 
-    environment: ${{ github.event.inputs.environment }}
+    environment: ${{ github.event.inputs.environment || 'dev' }}
 
     steps:
       - name: Checkout code
