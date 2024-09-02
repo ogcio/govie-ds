@@ -889,6 +889,9 @@ importers:
       '@govie-ds/prettier-config':
         specifier: workspace:*
         version: link:../../build/prettier-config
+      '@govie-ds/tailwind':
+        specifier: workspace:*
+        version: link:../../design/tailwind
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../themes/govie
@@ -955,6 +958,9 @@ importers:
       storybook:
         specifier: ^8.2.7
         version: 8.2.7(@babel/preset-env@7.25.3(@babel/core@7.25.2))
+      tailwindcss:
+        specifier: ^3.4.7
+        version: 3.4.7
       typescript:
         specifier: 5.4.5
         version: 5.4.5
