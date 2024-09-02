@@ -1,27 +1,72 @@
 {% macro govieFooter(props) %}
-<footer data-module="gieds-footer">
-  <div>
+
+{% from 'link/link.html' import govieLink %}
+{% from 'footer/helpers.html' import hasTwoCols,hasTwoColsLinks %}
+
+<footer class="gi-bg-gold-50 gi-p-x-xl gi-py-3xl gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl" data-module="gieds-footer">
+  {# TODO: Use Container component #}
+  <div class="gi-w-5/6 gi-m-auto gi-max-w-screen-lg">
     <div>
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 483.2 195.7"
-        height="17"
-        width="41"
-        style="min-width: 41px"
-      >
-        <path
-          fill="currentColor"
-          d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
-        />
-      </svg>
-      <span
-        >All content is available under the Open Government Licence v3.0 ,
-        except where otherwise stated</span
-      >
+      {# secondary nav links #}
+      <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
+        {% if props.secondaryNavLinks %}
+          {% for linkObj in props.secondaryNavLinks %}
+            <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
+              {# TODO: Use Heading component #}
+              <h2 class="gi-text-lg gi-mb-2xl gi-pb-xl gi-border-gold-500 gi-border-b gi-border-solid">{{ linkObj.heading }}</h2>
+              <ul class="{{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
+                {% for link in linkObj.links %}
+                  <li class="gi-mb-xl">
+                    {{ govieLink({
+                        href : link.href,
+                        label : link.label
+                      })
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {# main links #}
+      <ul class="gi-mt-2xl gi-flex gi-gap-lg gi-mb-xl">
+        {% if props.links %}
+          {% for link in props.links %}
+            <li data-testid=main-link-{{loop.index0}}>
+              {{ govieLink({
+                  href : link.href,
+                  label : link.label
+                })
+              }}
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+      <div class="gi-flex gi-items-end gi-justify-between">
+        <div class="gi-mr-2xl">
+          <svg
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 483.2 195.7"
+          height="17"
+          width="41"
+          class="gi-min-w-3xl"
+        >
+          <path
+            fill="currentColor"
+            d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+          />
+        </svg>
+        <span
+          >All content is available under the Open Government Licence v3.0 ,
+          except where otherwise stated</span
+        >
+        </div>
+        <img alt="Gov IE Logo" width="190" src="https://ds.blocks.gov.ie/_next/static/media/logo.a6bf00ac.png" />
+      </div>
     </div>
-    <img alt="Gov IE Logo" width="190" src="footer-logo.png" />
   </div>
 </footer>
 {% endmacro %}

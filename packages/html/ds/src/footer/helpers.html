@@ -1,0 +1,11 @@
+{% macro hasTwoCols(twoCols) %}
+  {% if twoCols %}
+    sm:gi-col-span-2
+  {% endif %}
+{% endmacro %}
+
+{% macro hasTwoColsLinks(twoCols) %}
+  {% if twoCols %}
+    sm:gi-columns-2
+  {% endif %}
+{% endmacro %}
