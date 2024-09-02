@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import { glob } from 'glob';
 import * as z from 'zod';
 
-type MacroPropertyType = 'string' | 'number' | 'boolean';
+type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array';
 
 type MacroProperty = {
   name: string;
@@ -22,6 +22,9 @@ function toType(typeName: string): MacroPropertyType {
     }
     case 'ZodBoolean': {
       return 'boolean';
+    }
+    case 'ZodArray': {
+      return 'array';
     }
     default: {
       throw new Error(`Unknown Zod type '${typeName}'.`);
@@ -92,7 +95,7 @@ async function buildProperties() {
   const content: string[] = [];
 
   content.push(
-    `export type MacroPropertyType = 'string' | 'number' | 'boolean';`,
+    `export type MacroPropertyType = 'string' | 'number' | 'boolean'| 'array';`,
     `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; };`,
     `export type MacroProperties = { [key: string]: MacroProperty[]; };`,
   );

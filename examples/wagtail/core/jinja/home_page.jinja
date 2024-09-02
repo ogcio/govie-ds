@@ -1,5 +1,6 @@
 {% from 'header/header.html' import govieHeader %}
 {% from 'link/link.html' import govieLink %}
+{% from 'footer/footer.html' import govieFooter %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,12 @@
     }}
     <h2>Link (Local)</h2>
     <a class="govie-link" href="#">Link for testing</a>
+     <h2>Footer (Local)</h2>
+     <footer class="govie-footer"></footer>
+     <h2>Footer (Global)</h2>
+     {{ 
+        govieFooter({})
+     }}
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
