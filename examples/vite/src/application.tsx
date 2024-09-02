@@ -28,9 +28,7 @@ export function App() {
       />
       <Container>
         <Heading>Heading</Heading>
-
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
-
         <Link
           href="https://www.google.com"
           external={true}
@@ -39,11 +37,8 @@ export function App() {
         >
           Link
         </Link>
-
         <Icon id="thumbs-up" variant="filled" />
-
         <IconButton icon={<Icon id="send" />} ariaLabel="Send" />
-
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -53,7 +48,6 @@ export function App() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Paragraph>
-
         <hr />
         <Paragraph as="span">Span paragraph</Paragraph>
       </Container>
