@@ -21,8 +21,8 @@ jobs:
   determine-affected:
     runs-on: ubuntu-latest
     outputs:
-      html_affected: ${{ steps.check-affected.outputs.html_affected }}
-      react_affected: ${{ steps.check-affected.outputs.react_affected }}
+      html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
+      react_affected: ${{ steps.check-react-affected.outputs.react_affected }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,28 +49,24 @@ jobs:
         id: check-html-affected
         run: |
           if grep -q "@govie-frontend/storybook" affected.txt; then
-            echo "html_affected=true" >> $GITHUB_ENV
-            echo "::set-output name=html_affected::true"
+            echo "html_affected=true" >> "$GITHUB_OUTPUT"
           else
-            echo "html_affected=false" >> $GITHUB_ENV
-            echo "::set-output name=html_affected::false"
+            echo "html_affected=false" >> $GITHUB_OUTPUT
           fi
-      - name: Set environment output if HTML package is affected
+      - name: Set environment output if React package is affected
         id: check-react-affected
         run: |
           if grep -q "@govie-react/storybook" affected.txt; then
-            echo "react_affected=true" >> $GITHUB_ENV
-            echo "::set-output name=react_affected::true"
+            echo "react_affected=true" >> $GITHUB_OUTPUT
           else
-            echo "react_affected=false" >> $GITHUB_ENV
-            echo "::set-output name=react_affected::false"
+            echo "react_affected=false" >> $GITHUB_OUTPUT
           fi
 
-  chromatic:
+  chromatic-html:
     runs-on: ubuntu-latest
     environment: dev
     needs: determine-affected
-    if: ${{ needs.determine-affected.outputs.html_affected == 'true' || needs.determine-affected.outputs.react_affected == 'true' }}
+    if: ${{ needs.determine-affected.outputs.html_affected == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -86,23 +82,38 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Storybook build
-        if: ${{ needs.determine-affected.outputs.html_affected == 'true' }}
         run: pnpm html:storybook:build
 
       - name: Publish Global HTML Library to Chromatic
-        if: ${{ needs.determine-affected.outputs.html_affected == 'true' }}
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
           storybookBuildDir: packages/html/storybook/storybook-static
           autoAcceptChanges: "main"
 
+  chromatic-react:
+    runs-on: ubuntu-latest
+    environment: dev
+    needs: determine-affected
+    if: ${{ needs.determine-affected.outputs.react_affected == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile --ignore-scripts
+
       - name: Storybook build
-        if: ${{ needs.determine-affected.outputs.react_affected == 'true' }}
         run: pnpm react:storybook:build
 
       - name: Publish React Library to Chromatic
-        if: ${{ needs.determine-affected.outputs.react_affected == 'true' }}
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
