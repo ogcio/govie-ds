@@ -24,8 +24,8 @@ function toType(typeName: string): MacroPropertyType {
     case 'ZodBoolean': {
       return 'boolean';
     }
-    case 'ZodArray': 
-    case 'ZodNativeEnum': 
+    case 'ZodArray':
+    case 'ZodNativeEnum':
     case 'ZodEnum': {
       return 'array';
     }

@@ -1,6 +1,6 @@
 {% macro govieFooter(props) %}
 
-{% from 'link/link.html' import govieLink %}
+{% from 'heading/heading.html' import govieHeading %}
 {% from 'footer/helpers.html' import hasTwoCols,hasTwoColsLinks, govieFooterLink %}
 
 <footer class="gi-bg-gold-50 gi-p-x-xl gi-py-3xl gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl" data-module="gieds-footer">
@@ -12,9 +12,14 @@
         {% if props.secondaryNavLinks %}
           {% for linkObj in props.secondaryNavLinks %}
             <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
-              {# TODO: Use Heading component #}
-              <h2 class="gi-text-lg gi-mb-2xl gi-pb-xl gi-border-gold-500 gi-border-b gi-border-solid">{{ linkObj["heading"] }}</h2>
-              <ul class="{{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
+              {{
+                govieHeading({
+                  "text": linkObj.heading,
+                  "tag": "h2",
+                  "size": "lg"
+                })
+              }}
+              <ul class="gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl {{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
                 {% for link in linkObj.links %}
                   <li class="gi-mb-xl">
                     {{ govieFooterLink({
