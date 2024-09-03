@@ -4,7 +4,7 @@ import html from './footer.html?raw';
 import { FooterProps } from './footer.schema';
 
 // Name of the folder the macro resides
-export const path = import.meta.url.split('/footer')[0];
+const path = import.meta.url.split('/footer')[0];
 
 const macro = { name: 'govieFooter', html, path };
 

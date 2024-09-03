@@ -13,13 +13,13 @@
           {% for linkObj in props.secondaryNavLinks %}
             <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
               {# TODO: Use Heading component #}
-              <h2 class="gi-text-lg gi-mb-2xl gi-pb-xl gi-border-gold-500 gi-border-b gi-border-solid">{{ linkObj.heading }}</h2>
+              <h2 class="gi-text-lg gi-mb-2xl gi-pb-xl gi-border-gold-500 gi-border-b gi-border-solid">{{ linkObj["heading"] }}</h2>
               <ul class="{{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
                 {% for link in linkObj.links %}
                   <li class="gi-mb-xl">
                     {{ govieLink({
-                        href : link.href,
-                        label : link.label
+                        "href" : link.href,
+                        "label" : link.label
                       })
                     }}
                   </li>
@@ -35,8 +35,8 @@
           {% for link in props.links %}
             <li data-testid=main-link-{{loop.index0}}>
               {{ govieLink({
-                  href : link.href,
-                  label : link.label
+                  "href" : link.href,
+                  "label" : link.label
                 })
               }}
             </li>

@@ -2,6 +2,8 @@
 {% from 'link/link.html' import govieLink %}
 {% from 'footer/footer.html' import govieFooter %}
 
+{% from 'vars.jinja' import footerProps %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +35,7 @@
      <footer class="govie-footer"></footer>
      <h2>Footer (Global)</h2>
      {{ 
-        govieFooter({})
+        govieFooter(footerProps)
      }}
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
