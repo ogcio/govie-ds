@@ -33,6 +33,9 @@ jobs:
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
 
+      - name: Install Nx CLI
+        run: pnpm add -g nx
+
       - name: Determine affected projects
         id: affected
         run: |
@@ -68,6 +71,9 @@ jobs:
         run: |
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Install Nx CLI
+        run: pnpm add -g nx
 
       - name: Storybook build
         run: pnpm html:storybook:build
