@@ -1,0 +1,19 @@
+{% macro govieParagraph(props) %}
+  {% macro getSizeClass(size) %}
+    {% if size == 'lg' %}
+      xs:gi-text-lg md:gi-text-lg xl:gi-text-xl
+    {% elif size == 'md' %}
+      xs:gi-text-md md:gi-text-md xl:gi-text-lg
+    {% else %}
+      xs:gi-text-sm md:gi-text-sm xl:gi-text-md
+    {% endif %}
+  {% endmacro %}
+
+  {% if props.as == 'p' %}
+    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-0 gi-mb-[var(--gieds-space-8)] gi-max-w-[65ch]">{{ props.content }}</p>
+  {% elif props.as == 'span' %}
+    <span class="{{ getSizeClass(props.size) | trim }}">{{ props.content }}</span>
+  {% else %}
+    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-0 gi-mb-[var(--gieds-space-8)] gi-max-w-[65ch]">{{ props.content }}</p>
+  {% endif %}
+{% endmacro %}

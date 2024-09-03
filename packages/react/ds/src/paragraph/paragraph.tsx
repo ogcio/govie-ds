@@ -19,8 +19,8 @@ export function Paragraph({
       as={As}
       size={size}
       style={{
-        marginTop: 0,
-        marginBottom: As === 'p' ? '2em' : undefined, // TODO: tokens
+        marginTop: variables.primitive.space[0],
+        marginBottom: As === 'p' ? variables.primitive.space[8] : undefined,
         color: variables.primitive.color.gray['950'],
         maxWidth: As === 'p' ? '65ch' : undefined,
         fontFamily: 'inherit',
