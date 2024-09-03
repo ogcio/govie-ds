@@ -1,6 +1,7 @@
 {% from 'header/header.html' import govieHeader %}
 {% from 'link/link.html' import govieLink %}
 {% from 'footer/footer.html' import govieFooter %}
+{% from 'heading/heading.html' import govieFooter %}
 
 {% from 'vars.jinja' import footerProps %}
 
@@ -23,6 +24,8 @@
     <header data-module="govie-header" class="govie-header">
         <h2>Application Title</h2>
     </header>
+
+    {{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) }}
     <h2>Link (Global)</h2>
     {{ govieLink({
             "href": "#",

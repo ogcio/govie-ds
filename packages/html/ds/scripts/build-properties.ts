@@ -10,6 +10,7 @@ type MacroProperty = {
   description: string;
   type: MacroPropertyType;
   required: boolean;
+  values?: Record<string, string>;
 };
 
 function toType(typeName: string): MacroPropertyType {
@@ -23,7 +24,9 @@ function toType(typeName: string): MacroPropertyType {
     case 'ZodBoolean': {
       return 'boolean';
     }
-    case 'ZodArray': {
+    case 'ZodArray': 
+    case 'ZodNativeEnum': 
+    case 'ZodEnum': {
       return 'array';
     }
     default: {
@@ -38,7 +41,6 @@ function getSchemaProperties(schema) {
   const processSchema = (schema, zodPath = '') => {
     if (schema instanceof z.ZodObject) {
       const shape = schema.shape;
-
       // TODO: objectEntries
       for (const [key, value] of Object.entries(shape)) {
         const fullPath = zodPath ? `${zodPath}.${key}` : key;
@@ -46,6 +48,10 @@ function getSchemaProperties(schema) {
         const { innerType, typeName, description } = (value as any)._def;
 
         const zodType = innerType ? innerType._def.typeName : typeName;
+        const zodEnums =
+          typeName === 'ZodNativeEnum' || 'ZodEnum'
+            ? (value as any)._def.values
+            : undefined;
 
         let required = true;
         if (value instanceof z.ZodOptional) {
@@ -57,6 +63,7 @@ function getSchemaProperties(schema) {
           description,
           type: toType(zodType),
           required,
+          values: zodEnums ? zodEnums : undefined,
         });
 
         if (value instanceof z.ZodObject) {
@@ -95,8 +102,8 @@ async function buildProperties() {
   const content: string[] = [];
 
   content.push(
-    `export type MacroPropertyType = 'string' | 'number' | 'boolean'| 'array';`,
-    `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; };`,
+    `export type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array';`,
+    `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; values?: Record<string,string>; };`,
     `export type MacroProperties = { [key: string]: MacroProperty[]; };`,
   );
 
