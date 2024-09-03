@@ -23,7 +23,8 @@ export const Default: Story = {
   args: {
     size: Size.Medium,
     tag: Tag.H1,
-    text: 'Default',
+    text: 'Heading',
+    caption: '',
   },
   argTypes: {
     size: {
@@ -109,23 +110,21 @@ export const ExtraLarge: Story = {
   },
 };
 
-// Keep this commented for now until we get confirmation from design if we go ahead with the Caption prop
-
-// export const Caption: Story = {
-//   args: {
-//     size: Size.Medium,
-//     tag: Tag.H1,
-//     text: 'Heading with h6',
-//     caption: 'Caption Text',
-//   },
-//   argTypes: {
-//     size: {
-//       options: Object.values(Size),
-//       control: { type: 'radio' },
-//     },
-//     tag: {
-//       options: Object.values(Tag),
-//       control: { type: 'radio' },
-//     },
-//   },
-// };
+export const Caption: Story = {
+  args: {
+    size: Size.Medium,
+    tag: Tag.H1,
+    text: 'Heading with h6',
+    caption: 'Caption Text',
+  },
+  argTypes: {
+    size: {
+      options: Object.values(Size),
+      control: { type: 'radio' },
+    },
+    tag: {
+      options: Object.values(Tag),
+      control: { type: 'radio' },
+    },
+  },
+};

@@ -31,11 +31,11 @@ export const headingSchema = zod.object({
     description: 'Ttitle of the heading',
     required_error: 'Title is required',
   }),
-  // caption: zod
-  //   .string({
-  //     description: 'Caption of the heading',
-  //   })
-  //   .optional(),
+  caption: zod
+    .string({
+      description: 'Caption of the heading',
+    })
+    .optional(),
 });
 
 export type HeadingProps = zod.infer<typeof headingSchema>;
