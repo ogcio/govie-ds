@@ -58,7 +58,7 @@ const assets: Structure = {
 
 const tools: Structure = {
   additions: [
-    { text: 'Figma UI Kit' },
+    { text: 'Figma Library' },
     { text: 'Figma plugins' },
     { text: 'Token validators' },
     { text: 'Utility packages' },
