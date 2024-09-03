@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,7 +42,7 @@ jobs:
       - name: Determine affected projects
         id: affected
         run: |
-          pnpm nx show projects --affected --base="origin/main~1" --head=HEAD > affected.txt
+          pnpm nx show projects --affected --base=origin/main~1 --head=HEAD > affected.txt
           cat affected.txt
 
       - name: Set environment output if HTML package is affected
