@@ -19,7 +19,11 @@
                   <li class="gi-mb-xl">
                     {{ govieLink({
                         "href" : link.href,
-                        "label" : link.label
+                        "label" : link.label,
+                        "noVisited": link.noVisited,
+                        "external": link.external,
+                        "noUnderline": link.noUnderline,
+                        "dark" : link.dark
                       })
                     }}
                   </li>
@@ -35,8 +39,12 @@
           {% for link in props.links %}
             <li data-testid=main-link-{{loop.index0}}>
               {{ govieLink({
-                  "href" : link.href,
-                  "label" : link.label
+                "href" : link.href,
+                "label" : link.label,
+                "noVisited": link.noVisited,
+                "external": link.external,
+                "noUnderline": link.noUnderline,
+                "dark" : link.dark
                 })
               }}
             </li>
