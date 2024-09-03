@@ -1,2 +1,5 @@
 env
 __pycache__
+theme.css
+styles.css
+govie-frontend.umd.js

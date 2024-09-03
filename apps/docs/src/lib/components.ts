@@ -172,8 +172,8 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'accordian',
-      name: 'Accordian',
+      id: 'accordion',
+      name: 'Accordion',
       statuses: [
         {
           platform: {

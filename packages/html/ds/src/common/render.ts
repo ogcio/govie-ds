@@ -11,7 +11,7 @@ import {
 } from '@testing-library/dom';
 import axe from 'axe-core';
 import { initGovIe } from '..';
-// import { addMacroValidation } from './validation';
+import { addMacroValidation } from './validation';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations
@@ -25,18 +25,26 @@ function toAxeErrorMessage(violations: axe.Result[]) {
     .join('\n');
 }
 
-export function render<TProps>({ name, html }: { name: string; html: string }) {
+export function render<TProps>({
+  componentName,
+  macroName,
+  html,
+}: {
+  componentName: string;
+  macroName: string;
+  html: string;
+}) {
   return function (props: TProps) {
-    // const htmlWithValidation = addMacroValidation({
-    //   engine: 'nunjucks',
-    //   mode: 'dev',
-    //   content: html,
-    //   macroName: name,
-    // });
+    const htmlWithValidation = addMacroValidation({
+      engine: 'nunjucks',
+      mode: 'dev',
+      content: html,
+      componentName,
+    });
 
     const markup = renderMacro<TProps>({
-      name,
-      html,
+      name: macroName,
+      html: htmlWithValidation,
     })(props);
 
     const div = document.createElement('div');

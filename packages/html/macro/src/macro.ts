@@ -7,7 +7,7 @@ function validateProperties(
   const missingKeys = requiredKeys.filter((key) => !(key in properties));
 
   if (missingKeys.length > 0) {
-    throw new Error(`Missing required properties: ${missingKeys.join(', ')}`);
+    throw new Error(`Missing required properties '${missingKeys.join(', ')}'.`);
   }
 }
 
@@ -40,7 +40,10 @@ export function renderMacro<TProps = unknown>({
     `;
 
     const nunjucksEnvironment = createNunjucksEnvironment();
-    const rendered = nunjucksEnvironment.renderString(template, {});
+    const rendered = nunjucksEnvironment.renderString(template, {
+      validateProperties,
+    });
+
     return rendered.trim();
   };
 }
