@@ -40,7 +40,7 @@ jobs:
       - name: Determine affected projects
         id: affected
         run: |
-          pnpm nx show projects --affected --base=main --head=HEAD > affected.txt
+          pnpm nx show projects --affected --base="origin/main~1" --head=HEAD > affected.txt
           cat affected.txt
 
       - name: Set environment output if HTML package is affected
