@@ -1,8 +1,17 @@
 import * as zod from 'zod';
-import { linkSchema } from '../link/link.schema';
 
 export const footerSchema = zod.object({
-  links: linkSchema
+  links: zod
+    .object({
+      label: zod.string({
+        description: 'The label of the link',
+        required_error: 'The label is required',
+      }),
+      href: zod.string({
+        description: 'The url (href) of the link',
+        required_error: 'The url is required',
+      }),
+    })
     .array()
     .optional()
     .describe(
@@ -18,7 +27,17 @@ export const footerSchema = zod.object({
       heading: zod.string({
         description: 'Heading for the column of links',
       }),
-      links: linkSchema
+      links: zod
+        .object({
+          label: zod.string({
+            description: 'The label of the link',
+            required_error: 'The label is required',
+          }),
+          href: zod.string({
+            description: 'The url (href) of the link',
+            required_error: 'The url is required',
+          }),
+        })
         .array()
         .describe(
           'Array of secondary navigation links used in Footer. The links use the govieLink component therefore the properties are inhertied from govieLink',
