@@ -29,9 +29,9 @@ describe('heading', () => {
     const headingElement = screen.getByRole('heading');
     const classNames = ['xs:gi-text-sm', 'md:gi-text-sm', 'xl:gi-text-md'];
 
-    classNames.forEach((className) => {
+    for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
-    });
+    }
   });
 
   it('should render medium heading', () => {
@@ -44,9 +44,9 @@ describe('heading', () => {
     const headingElement = screen.getByRole('heading');
     const classNames = ['xs:gi-text-sm', 'md:gi-text-md', 'xl:gi-text-lg'];
 
-    classNames.forEach((className) => {
+    for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
-    });
+    }
   });
 
   it('should render large heading', () => {
@@ -59,9 +59,9 @@ describe('heading', () => {
     const headingElement = screen.getByRole('heading');
     const classNames = ['xs:gi-text-lg', 'md:gi-text-xl', 'xl:gi-text-2xl'];
 
-    classNames.forEach((className) => {
+    for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
-    });
+    }
   });
 
   it('should render extra large heading', () => {
@@ -74,9 +74,9 @@ describe('heading', () => {
     const headingElement = screen.getByRole('heading');
     const classNames = ['xs:gi-text-2xl', 'md:gi-text-3xl', 'xl:gi-text-4xl'];
 
-    classNames.forEach((className) => {
+    for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
-    });
+    }
   });
 
   it('should contain H1 tag', () => {
