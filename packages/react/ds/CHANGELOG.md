@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.9.0-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.0...@govie-react/ds-0.9.0-alpha.0) (2024-09-04)
+
+
+### Features
+
+* paragraph component ([#195](https://github.com/ogcio/govie-ds/issues/195)) ([7794355](https://github.com/ogcio/govie-ds/commit/77943552d36c71de8cd237d64c52537347b0497d))
+
+
+
 # [0.8.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.7...@govie-react/ds-0.8.0) (2024-08-06)
 
 ### Dependency Updates
