@@ -1,6 +1,9 @@
-{% from 'govie/header/macro.html' import govieHeader %}
-{% from 'govie/heading/macro.html' import govieHeading %}
-{% from 'govie/link/macro.html' import govieLink %}
+{% from 'header/header.html' import govieHeader %}
+{% from 'link/link.html' import govieLink %}
+{% from 'footer/footer.html' import govieFooter %}
+{% from 'heading/heading.html' import govieHeading %}
+
+{% from 'vars.jinja' import footerProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,12 @@
     }}
     <h2>Link (Local)</h2>
     <a class="govie-link" href="#">Link for testing</a>
+     <h2>Footer (Local)</h2>
+     <footer class="govie-footer"></footer>
+     <h2>Footer (Global)</h2>
+     {{ 
+        govieFooter(footerProps)
+     }}
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
