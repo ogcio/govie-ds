@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1-alpha.2](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.1...@govie-frontend/ds-0.3.1-alpha.2) (2024-09-04)
+
+
+### Features
+
+* footer component ([#187](https://github.com/ogcio/govie-ds/issues/187)) ([49ad582](https://github.com/ogcio/govie-ds/commit/49ad582e9a8492cf5196b7890f783aee0e9516c7))
+
+
+
 ## [0.3.1-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.0...@govie-frontend/ds-0.3.1-alpha.1) (2024-09-04)
 
 
