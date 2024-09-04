@@ -1,52 +1,45 @@
 import { cn } from '../cn.js';
-import headingStyles from './heading.module.css';
-import paragraphStyles from './paragraph.module.css';
 
 export type TextAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
-
 export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
   if (as === 'p' || as === 'span') {
-    switch (size) {
-      case 'lg': {
-        return paragraphStyles.paragraphLg;
-      }
-      case 'md': {
-        return paragraphStyles.paragraphMd;
-      }
-      case 'sm': {
-        return paragraphStyles.paragraphSm;
-      }
-      default: {
-        throw new Error(`Invalid text size '${size}'.`);
-      }
+    const margin = as === 'p' ? 'gi-mt-0 gi-mb-8' : 'gi-my-0';
+    const maxWidth = as === 'p' ? 'gi-max-w-prose' : undefined;
+
+    const sizes = {
+      md: 'gi-text-sm xs:gi-text-sm md:gi-text-sm xl:gi-text-sm',
+      lg: 'gi-text-md xs:gi-text-md md:gi-text-md xl:gi-text-md',
+      sm: 'gi-text-xs xs:gi-text-xs md:gi-text-xs xl:gi-text-xs',
+    };
+
+    if (!size || size === 'xl' || size === 'xs' || size === '2xs') {
+      throw new Error(`Invalid size '${size}'.`);
     }
+
+    const sizeClasses = sizes[size];
+
+    return cn(sizeClasses, margin, maxWidth);
   }
 
-  switch (size) {
-    case 'xl': {
-      return headingStyles.headingXl;
-    }
-    case 'lg': {
-      return headingStyles.headingLg;
-    }
-    case 'md': {
-      return headingStyles.headingMd;
-    }
-    case 'sm': {
-      return headingStyles.headingSm;
-    }
-    case 'xs': {
-      return headingStyles.headingXs;
-    }
-    case '2xs': {
-      return headingStyles.heading2Xs;
-    }
-    default: {
-      throw new Error(`Invalid heading size '${size}'.`);
-    }
+  const margin = 'gi-mt-2 gi-mb-8';
+  const bold = 'gi-font-bold';
+
+  const sizes = {
+    '2xs': 'gi-text-sm xs:gi-text-sm md:gi-text-sm xl:gi-text-sm',
+    xs: 'gi-text-md xs:gi-text-md md:gi-text-md xl:gi-text-md',
+    xl: 'gi-text-4xl xs:gi-text-4xl md:gi-text-5xl xl:gi-text-6xl',
+    lg: 'gi-text-2xl xs:gi-text-2xl md:gi-text-3xl xl:gi-text-4xl',
+    md: 'gi-text-lg xs:gi-text-lg md:gi-text-xl xl:gi-text-2xl',
+    sm: 'gi-text-lg xs:gi-text-lg md:gi-text-lg xl:gi-text-xl',
+  };
+
+  if (!size) {
+    throw new Error(`Invalid size '${size}'.`);
   }
+  const sizeClasses = sizes[size];
+  return cn(sizeClasses, margin, bold);
 }
 
 export function Text({
@@ -62,8 +55,46 @@ export function Text({
   className?: string;
   style?: React.CSSProperties;
 }) {
+  const defaultSize = (() => {
+    switch (As) {
+      case 'h1': {
+        return 'xl';
+      }
+      case 'h2': {
+        return 'lg';
+      }
+      case 'h3': {
+        return 'md';
+      }
+      case 'h4': {
+        return 'sm';
+      }
+      case 'h5': {
+        return 'xs';
+      }
+      case 'h6': {
+        return 'xs';
+      }
+      case 'p': {
+        return 'md';
+      }
+      case 'span': {
+        return 'md';
+      }
+      default: {
+        throw new Error(`Invalid text as '${As}'.`);
+      }
+    }
+  })();
+
   return (
-    <As className={cn(getTextClass({ as: As, size }), className)} style={style}>
+    <As
+      className={cn(
+        getTextClass({ as: As, size: size ?? defaultSize }),
+        className,
+      )}
+      style={style}
+    >
       {children}
     </As>
   );

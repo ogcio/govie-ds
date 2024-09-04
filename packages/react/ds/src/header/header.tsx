@@ -1,8 +1,6 @@
-import { variables } from '@govie-ds/tokens';
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
 import { GovIrelandLogo } from './gov-ireland-logo.js';
-import linkStyles from './header.module.css';
 
 export type HeaderProps = {
   serviceName?: string;
@@ -18,32 +16,22 @@ export function Header({
   serviceHref,
 }: HeaderProps) {
   return (
-    <header
-      style={{
-        backgroundColor: variables.primitive.color.emerald[800],
-        // borderBottomWidth: variables.primitive.border.width[400], // TODO: semantic vars
-        borderColor: variables.primitive.color.gold[500],
-      }}
-    >
+    <header className={`gi-bg-emerald-800 gi-border-gold-500 gi-font-primary`}>
       <Container>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: variables.primitive.space[3],
-          }}
-        >
-          <div
-            style={{
-              color: 'white',
-              padding: `${variables.primitive.space[3]} 0`,
-            }}
-          >
+        <div className={`gi-flex gi-items-center gi-gap-3`}>
+          <div className={`gi-text-white gi-py-3`}>
             {homeHref ? (
               <a
-                className={linkStyles.homeLink}
                 href={homeHref}
                 aria-label={homeAriaLabel}
+                className={`
+                  gi-block
+                  focus:gi-outline
+                  focus:gi-outline-transparent
+                  focus:gi-bg-yellow-400
+                  focus:gi-outline-[3px]
+                  focus:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-900)]  
+                `}
               >
                 <GovIrelandLogo />
               </a>
@@ -52,22 +40,30 @@ export function Header({
             )}
           </div>
           {serviceName ? (
-            <div
-              style={{
-                flexGrow: 1,
-                display: 'flex',
-                justifyContent: 'center',
-                textAlign: 'center',
-              }}
-            >
+            <div className={`gi-flex gi-grow gi-justify-center gi-text-center`}>
               {serviceHref ? (
-                <Text size="lg" style={{ color: 'white' }}>
-                  <a className={linkStyles.link} href={serviceHref}>
+                <Text as="span" size="lg" className={`gi-text-white`}>
+                  <a
+                    className={`
+                      gi-decoration-[max(1px,0.0625rem)]
+                      gi-underline-offset-[0.1em]
+                      hover:gi-underline
+                      hover:gi-decoration-skip-ink-none
+                      hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
+                      focus:gi-outline
+                      focus:gi-outline-transparent
+                      focus:gi-outline-[3px]
+                      focus:gi-no-underline
+                      focus:gi-bg-yellow-400                      
+                      focus:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-900)]
+                    `}
+                    href={serviceHref}
+                  >
                     {serviceName}
                   </a>
                 </Text>
               ) : (
-                <Text size="lg" style={{ color: 'white' }}>
+                <Text as="span" size="lg" className={`gi-text-white`}>
                   {serviceName}
                 </Text>
               )}
