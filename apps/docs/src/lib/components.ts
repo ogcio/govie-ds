@@ -8,7 +8,7 @@ export type ComponentStatus =
   | 'considering' // default status for Figma and React components
   | 'deprecated';
 
-export type ComponentPlatformId = 'figma' | 'html' | 'react';
+export type ComponentPlatformId = 'figma' | 'local' | 'global' | 'react';
 
 export type ComponentPlatform = {
   id: ComponentPlatformId;
@@ -29,7 +29,14 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const htmlStorybookBaseUrl = 'https://storybook.design-system.ogcio.gov.ie/';
+const globalHtmlStorybookBaseUrl =
+  'https://storybook-html.design-system.blocks.gov.ie/';
+
+const reactStorybookBaseUrl =
+  'https://storybook-react.design-system.blocks.gov.ie/';
+
+const localHtmlStorybookBaseUrl =
+  'https://storybook.design-system.ogcio.gov.ie/';
 
 export function getComponents(): ComponentDetail[] {
   let components: ComponentDetail[] = [
@@ -39,9 +46,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-button-primary-button--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -51,9 +71,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-button-group--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -63,9 +96,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-character-count--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -75,9 +121,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-checkboxes--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -87,9 +146,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-date-input--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -99,9 +171,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-file-upload--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -111,13 +196,21 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-icon-button--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/iconbutton--docs',
           },
           status: 'alpha',
         },
@@ -129,9 +222,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-text-input--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -141,9 +247,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-radio--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -153,9 +272,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-select--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -165,9 +297,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/form-textarea--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -177,9 +322,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-accordion--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -189,9 +347,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-cookie-banner--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -201,9 +372,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-details--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -213,9 +397,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-error-summary--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -225,9 +422,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-inset-text--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -237,9 +447,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-label--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -249,9 +472,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-phase-banner--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -261,9 +497,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-summary-list--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -273,9 +522,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-table--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -285,9 +547,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-tag--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -297,9 +572,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-task-list--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -309,13 +597,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-heading--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/typography-heading--docs',
+          },
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-heading--docs',
           },
           status: 'alpha',
         },
@@ -327,9 +624,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-lists--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -339,13 +649,21 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-paragraph--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-paragraph--docs',
           },
           status: 'alpha',
         },
@@ -357,9 +675,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-section-break--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -369,9 +700,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/typography-warning-text--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -381,9 +725,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/navigation-back-link--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -393,9 +750,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/navigation-breadcrumbs--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -405,9 +775,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/navigation-pagination--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -417,9 +800,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/navigation-tabs--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -429,13 +825,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/navigation-link--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/navigation-link--docs',
+          },
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/navigation-link--docs',
           },
           status: 'alpha',
         },
@@ -447,13 +852,20 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
           },
           status: 'considering',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/icon--docs',
           },
           status: 'alpha',
         },
@@ -465,13 +877,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/layout-footer--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/layout-footer--docs',
+          },
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/layout-footer--docs',
           },
           status: 'alpha',
         },
@@ -483,13 +904,21 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/layout-header--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'under-review',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/layout-header--docs',
           },
           status: 'alpha',
         },
@@ -501,9 +930,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/layout-notification-panel--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -513,9 +955,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/layout-panel--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -525,21 +980,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/layout-step-by-step-navigation--docs',
           },
+          status: 'stable',
         },
-      ],
-    },
-    {
-      id: 'super-header',
-      name: 'Super Header',
-      statuses: [
         {
           platform: {
-            id: 'html',
-            href: '?path=/docs/layout-superheader--docs',
+            id: 'global',
           },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -549,9 +1005,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/application-actions--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -561,9 +1030,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/application-modal--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -573,9 +1055,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/application-progress-stepper--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -585,9 +1080,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/application-tick--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -597,9 +1105,22 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
-            id: 'html',
+            id: 'local',
             href: '?path=/docs/application-tooltip--docs',
           },
+          status: 'stable',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
         },
       ],
     },
@@ -607,15 +1128,23 @@ export function getComponents(): ComponentDetail[] {
 
   components = components.map((component) => ({
     ...component,
-    statuses: component.statuses.map((status) => ({
-      ...status,
-      platform: {
-        ...status.platform,
-        href: status.platform.href
-          ? `${htmlStorybookBaseUrl}${status.platform.href}`
-          : undefined,
-      },
-    })),
+    statuses: component.statuses.map((status) => {
+      let baseUrl = globalHtmlStorybookBaseUrl;
+      if (status.platform.id === 'local') {
+        baseUrl = localHtmlStorybookBaseUrl;
+      } else if (status.platform.id === 'react') {
+        baseUrl = reactStorybookBaseUrl;
+      }
+      return {
+        ...status,
+        platform: {
+          ...status.platform,
+          href: status.platform.href
+            ? `${baseUrl}${status.platform.href}`
+            : undefined,
+        },
+      };
+    }),
   }));
 
   return sortBy(components, 'name');
