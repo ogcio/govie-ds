@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.0...@govie-frontend/ds-0.3.1-alpha.1) (2024-09-04)
+
+
+### Reverts
+
+* dark mode on HTML link component ([#197](https://github.com/ogcio/govie-ds/issues/197)) ([b1a448d](https://github.com/ogcio/govie-ds/commit/b1a448d92af7364dfc03f4d771153602f62b9c7e))
+
+
+
 ## [0.3.1-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.0...@govie-frontend/ds-0.3.1-alpha.0) (2024-09-03)
 
 

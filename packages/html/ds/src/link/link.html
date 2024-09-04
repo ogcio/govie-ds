@@ -1,13 +1,4 @@
 {% macro govieLink(props) %}
-  {% macro getDarkClass(dark) %}
-    {% if dark %}
-      gi-text-white
-      hover:gi-text-white
-    {% else %}
-      gi-text-blue-700
-      hover:gi-text-blue-800
-    {% endif %}
-  {% endmacro %}
   {% macro getUnderlineClass(noUnderline) %}
     {% if not noUnderline %}
       gi-underline
@@ -15,15 +6,11 @@
       focus:gi-no-underline
     {% endif %}
   {% endmacro %}
-  {% macro getVisitedClass(noVisited, dark) %}
+  {% macro getVisitedClass(noVisited) %}
     {% if noVisited %}
       visited:gi-text-blue-700
     {% else %}
-      {% if dark %}
-        visited:gi-text-white
-      {% else %}
-        visited:gi-text-purple-700
-      {% endif %}
+      visited:gi-text-purple-700
     {% endif %}
   {% endmacro %}
   {% macro getExternalAttribute(isExternal) %}
@@ -36,8 +23,9 @@
     {{ getExternalAttribute(props.external) | trim }}
     class="
       {{ getUnderlineClass(props.noUnderline) | trim }}
-      {{ getVisitedClass(props.noVisited, props.dark) | trim }}
-      {{ getDarkClass(props.dark) | trim }}
+      {{ getVisitedClass(props.noVisited) | trim }}
+      gi-text-blue-700
+      hover:gi-text-blue-800
       hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
       focus:gi-outline
       focus:gi-text-gray-950
