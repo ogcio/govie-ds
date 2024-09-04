@@ -1,38 +1,41 @@
- {% set footerProps = {
-    "links": [
+{% set footerProps = {
+  "links": [
+    {
+      "href": "#",
+      "label": "Link 1",
+    },
+    {
+      "href": "#",
+      "label": "Link 2",
+    },
+    {
+      "href": "#",
+      "label": "Link 3",
+    },
+  ],
+  "secondaryNavLinks": [
+    {
+      "heading": "Heading",
+      "hasTwoCols": true,
+      "links": [
         {
-            "href": '#',
-            "label": 'Link 1',
+          "href": "#",
+          "label": "Nav Link 1",
         },
         {
-            "href": '#',
-            "label": 'Link 2',
+          "href": "#",
+          "label": "Nav Link 2",
         },
         {
-            "href": '#',
-            "label": 'Link 3',
+          "href": "#",
+          "label": "Nav Link 3",
         },
-    ],
-    "secondaryNavLinks": [{
-        "heading": "Heading",
-        "hasTwoCols": true,
-        "links": [
-            {
-                "href": '#',
-                "label": 'Nav Link 1',  
-            },
-            {
-                "href": '#',
-                "label": 'Nav Link 2',  
-            },
-            {
-                "href": '#',
-                "label": 'Nav Link 3',  
-            },
-            {
-                "href": '#',
-                "label": 'Nav Link 4',  
-            },
-        ]
-    }]
- } %}
+        {
+          "href": "#",
+          "label": "Nav Link 4",
+        },
+      ],
+    },
+  ],
+}
+%}
