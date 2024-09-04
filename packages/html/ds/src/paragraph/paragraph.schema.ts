@@ -13,8 +13,8 @@ export enum SizeEnum {
 
 export const paragraphSchema = zod.object({
   content: zod.string({
-    description: 'Content is required',
-    required_error: '',
+    description: 'Content for paragraph.',
+    required_error: 'Content is required',
   }),
   as: zod
     .nativeEnum(AsEnum, {
