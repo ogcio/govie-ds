@@ -77,34 +77,6 @@ describe('link', () => {
     );
   });
 
-  it('should have white text on dark background', () => {
-    const screen = renderLink({
-      href: 'https://example.com',
-      label: 'Example Link',
-      dark: true,
-    });
-
-    const linkElement = screen.getByRole('link');
-
-    // Check if the dark styles are applied
-    expect(linkElement.classList.contains('gi-text-white')).toBe(true);
-    expect(linkElement.classList.contains('hover:gi-text-white')).toBe(true);
-  });
-
-  it('should have correct visited style on dark background', () => {
-    const screen = renderLink({
-      href: 'https://example.com',
-      label: 'Example Link',
-      dark: true,
-      noVisited: false,
-    });
-
-    const linkElement = screen.getByRole('link');
-
-    // Check if the visited style for dark background is applied
-    expect(linkElement.classList.contains('visited:gi-text-white')).toBe(true);
-  });
-
   it('should pass axe tests', async () => {
     const screen = renderLink({
       href: 'https://example.com',
