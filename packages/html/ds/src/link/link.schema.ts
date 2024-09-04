@@ -20,11 +20,6 @@ export const linkSchema = zod.object({
       description: 'To open the link in a new tab.',
     })
     .optional(),
-  dark: zod
-    .boolean({
-      description: 'Show white links on dark backgrounds.',
-    })
-    .optional(),
   noUnderline: zod
     .boolean({
       description: 'To remove underlines from links.',
