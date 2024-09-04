@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.0...@govie-ds/tailwind-0.6.0-alpha.0) (2024-09-04)
+
+
+### Features
+
+* enable tailwind in react components ([#186](https://github.com/ogcio/govie-ds/issues/186)) ([f97f8b2](https://github.com/ogcio/govie-ds/commit/f97f8b2c5a370b580bd22246787cd6eea0d06997))
+
+
+
 # [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.3...@govie-ds/tailwind-0.5.0) (2024-08-06)
 
 ### Dependency Updates
