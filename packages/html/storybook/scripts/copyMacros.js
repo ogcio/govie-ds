@@ -15,6 +15,7 @@ import { glob } from 'glob';
     const fileDirectory = path.resolve(destinationPath, path.dirname(file));
     const fileDestination = path.resolve(destinationPath, file);
 
+    await fs.mkdir(destinationPath, { recursive: true });
     await fs.mkdir(fileDirectory, { recursive: true });
     await fs.copyFile(srcFilePath, fileDestination);
   }
