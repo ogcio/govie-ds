@@ -70,6 +70,18 @@ describe('govieParagraph', () => {
     expect(pElement.classList.contains('xl:gi-text-md')).toBe(true);
   });
 
+  it('should safely render HTML content', () => {
+    const screen = renderParagraph({
+      as: AsEnum.Paragraph,
+      content: '<a href="#">Anchor tag</a>',
+      size: SizeEnum.Small,
+    });
+
+    const pElement = screen.getByText('Anchor tag');
+    expect(pElement).toBeTruthy();
+    expect(pElement.innerHTML).toContain('Anchor tag');
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderParagraph({
       as: AsEnum.Paragraph,

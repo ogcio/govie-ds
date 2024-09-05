@@ -2,7 +2,11 @@ import { destroyGovIe, initGovIe } from '@govie-frontend/ds';
 import { renderMacro } from '@govie-frontend/macro';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
-import '@fontsource/lato';
+import '@fontsource/lato/100.css';
+import '@fontsource/lato/300.css';
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/700.css';
+import '@fontsource/lato/900.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
@@ -59,7 +63,7 @@ const preview: Preview = {
 
           const lines = [
             '// Macro',
-            `{{ ${parameters.macro.name}(${macroOptions})} }}`,
+            `{{ ${parameters.macro.name}(${macroOptions}) }}`,
             '',
             '// HTML',
             renderedMacro,
