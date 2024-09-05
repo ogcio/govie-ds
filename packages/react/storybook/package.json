@@ -17,6 +17,7 @@
     "@fontsource/lato": "^5.0.21",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
+    "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-react/ds": "workspace:*",
     "@storybook/addon-a11y": "^8.2.7",
@@ -40,6 +41,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "prettier": "^3.3.3",
     "storybook": "^8.2.7",
+    "tailwindcss": "^3.4.7",
     "typescript": "5.4.5",
     "vite": "^5.3.5"
   }

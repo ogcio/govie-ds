@@ -5,6 +5,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  Link,
   Paragraph,
 } from "@govie-react/ds";
 
@@ -17,6 +18,8 @@ export default function Home() {
         <Paragraph>Paragraph</Paragraph>
         <Icon id="send" />
         <IconButton icon={<Icon id="send" />} ariaLabel="Send" />
+
+        <Link href={"/"}>This is a link</Link>
       </Container>
       <Footer />
     </div>
