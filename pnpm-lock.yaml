@@ -773,6 +773,12 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.2.0
+      glob:
+        specifier: ^10.4.5
+        version: 10.4.5
       nunjucks:
         specifier: ^3.2.4
         version: 3.2.4(chokidar@3.6.0)
@@ -7593,10 +7599,6 @@ packages:
     resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  minimatch@9.0.4:
-    resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -12790,12 +12792,12 @@ snapshots:
 
   '@microsoft/api-extractor@7.43.0':
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.13(@types/node@20.14.14)
+      '@microsoft/api-extractor-model': 7.28.13(@types/node@22.1.0)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 4.0.2(@types/node@20.14.14)
+      '@rushstack/node-core-library': 4.0.2(@types/node@22.1.0)
       '@rushstack/rig-package': 0.5.2
-      '@rushstack/terminal': 0.10.0(@types/node@20.14.14)
+      '@rushstack/terminal': 0.10.0(@types/node@22.1.0)
       '@rushstack/ts-command-line': 4.19.1
       lodash: 4.17.21
       minimatch: 3.0.8
@@ -13544,7 +13546,7 @@ snapshots:
 
   '@rushstack/ts-command-line@4.19.1':
     dependencies:
-      '@rushstack/terminal': 0.10.0(@types/node@20.14.14)
+      '@rushstack/terminal': 0.10.0(@types/node@22.1.0)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -15364,7 +15366,7 @@ snapshots:
       '@vue/compiler-dom': 3.4.29
       '@vue/shared': 3.4.29
       computeds: 0.0.1
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       muggle-string: 0.3.1
       path-browserify: 1.0.1
       vue-template-compiler: 2.7.16
@@ -17910,7 +17912,7 @@ snapshots:
     dependencies:
       foreground-child: 3.2.0
       jackspeak: 2.3.6
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       minipass: 7.1.2
       path-scurry: 1.11.1
 
@@ -17918,7 +17920,7 @@ snapshots:
     dependencies:
       foreground-child: 3.2.0
       jackspeak: 3.4.0
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       minipass: 7.1.2
       package-json-from-dist: 1.0.0
       path-scurry: 1.11.1
@@ -19317,10 +19319,6 @@ snapshots:
       brace-expansion: 2.0.1
 
   minimatch@9.0.3:
-    dependencies:
-      brace-expansion: 2.0.1
-
-  minimatch@9.0.4:
     dependencies:
       brace-expansion: 2.0.1
 

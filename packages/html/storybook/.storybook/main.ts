@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  staticDirs: ['../static'],
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite');
 
