@@ -30,8 +30,10 @@
     {{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) }}
 
     <h2>Paragraph (Global)</h2>
+    {% set paragraphContentWithLink = govieLink({ "href": "#", "label": "with Link", }) %}
+    {% set paragraphContent = "This is the paragraph content " ~ paragraphContentWithLink %}
     {{ govieParagraph({
-        "content": "This is a paragraph.",
+        "content": paragraphContent,
         "as": "p",
         "size": "lg"
     }) }}
@@ -39,8 +41,6 @@
     <p class="govie-body">We have sent you a confirmation email.</p>
 
     <h2>Container (Global)</h2>
-
-    {% set headingForContainer = govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) %}
     {{ govieContainer({
         "html": govieHeading({ 'size': 'md', 'tag': 'h1', 'text': 'Heading Under Container'})
     }) }}
