@@ -2,7 +2,8 @@
 {% from 'link/link.html' import govieLink %}
 {% from 'footer/footer.html' import govieFooter %}
 {% from 'heading/heading.html' import govieHeading %}
-{% from 'paragraph/macro.html' import govieParagraph %}
+{% from 'paragraph/paragraph.html' import govieParagraph %}
+{% from 'container/container.html' import govieContainer %}
 
 {% from 'vars.jinja' import footerProps %}
 
@@ -36,6 +37,13 @@
     }) }}
     <h2>Paragraph (Local)</h2>
     <p class="govie-body">We have sent you a confirmation email.</p>
+
+    <h2>Container (Global)</h2>
+
+    {% set headingForContainer = govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) %}
+    {{ govieContainer({
+        "html": govieHeading({ 'size': 'md', 'tag': 'h1', 'text': 'Heading Under Container'})
+    }) }}
 
     <h2>Link (Global)</h2>
     {{ govieLink({
