@@ -9,9 +9,9 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
     const maxWidth = as === 'p' ? 'gi-max-w-prose' : undefined;
 
     const sizes = {
-      md: 'gi-text-sm xs:gi-text-sm md:gi-text-sm xl:gi-text-sm',
-      lg: 'gi-text-md xs:gi-text-md md:gi-text-md xl:gi-text-md',
-      sm: 'gi-text-xs xs:gi-text-xs md:gi-text-xs xl:gi-text-xs',
+      sm: 'xs:gi-text-sm md:gi-text-sm xl:gi-text-md',
+      md: 'xs:gi-text-md md:gi-text-md xl:gi-text-lg',
+      lg: 'xs:gi-text-lg md:gi-text-lg xl:gi-text-xl',
     };
 
     if (!size || size === 'xl' || size === 'xs' || size === '2xs') {
