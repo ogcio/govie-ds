@@ -51,8 +51,11 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
       const figmaPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'figma',
       );
-      const htmlPlatform = component.statuses.find(
-        (platformStatus) => platformStatus.platform.id === 'html',
+      const localPlatform = component.statuses.find(
+        (platformStatus) => platformStatus.platform.id === 'local',
+      );
+      const globalPlatform = component.statuses.find(
+        (platformStatus) => platformStatus.platform.id === 'global',
       );
       const reactPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'react',
@@ -65,9 +68,13 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
           status: figmaPlatform?.status ?? 'considering',
           href: figmaPlatform?.platform?.href,
         },
-        html: {
-          status: htmlPlatform?.status ?? 'under-review',
-          href: htmlPlatform?.platform?.href,
+        local: {
+          status: localPlatform?.status ?? 'under-review',
+          href: localPlatform?.platform?.href,
+        },
+        global: {
+          status: globalPlatform?.status ?? 'under-review',
+          href: globalPlatform?.platform?.href,
         },
         react: {
           status: reactPlatform?.status ?? 'considering',
@@ -79,7 +86,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   return (
     <div>
       <Table
-        headers={['Figma Library', 'HTML', 'React']}
+        headers={['Figma Library', 'Local HTML', 'Global HTML', 'React']}
         ids={componentStatuses.map((componentStatus) => componentStatus.id)}
         renderRow={(id) => {
           const componentStatus = componentStatuses.find(
@@ -100,8 +107,14 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
               </Td>
               <Td>
                 <ComponentStatusPill
-                  status={componentStatus.html.status}
-                  href={componentStatus.html.href}
+                  status={componentStatus.local.status}
+                  href={componentStatus.local.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.global.status}
+                  href={componentStatus.global.href}
                 />
               </Td>
               <Td>
@@ -125,8 +138,11 @@ export function ComponentStatusTable() {
     const figmaPlatform = component.statuses.find(
       (platformStatus) => platformStatus.platform.id === 'figma',
     );
-    const htmlPlatform = component.statuses.find(
-      (platformStatus) => platformStatus.platform.id === 'html',
+    const localPlatform = component.statuses.find(
+      (platformStatus) => platformStatus.platform.id === 'local',
+    );
+    const globalPlatform = component.statuses.find(
+      (platformStatus) => platformStatus.platform.id === 'global',
     );
     const reactPlatform = component.statuses.find(
       (platformStatus) => platformStatus.platform.id === 'react',
@@ -139,9 +155,13 @@ export function ComponentStatusTable() {
         status: figmaPlatform?.status ?? 'considering',
         href: figmaPlatform?.platform?.href,
       },
-      html: {
-        status: htmlPlatform?.status ?? 'under-review',
-        href: htmlPlatform?.platform?.href,
+      local: {
+        status: localPlatform?.status ?? 'stable',
+        href: localPlatform?.platform?.href,
+      },
+      global: {
+        status: globalPlatform?.status ?? 'considering',
+        href: globalPlatform?.platform?.href,
       },
       react: {
         status: reactPlatform?.status ?? 'considering',
@@ -157,7 +177,13 @@ export function ComponentStatusTable() {
         under consideration for the design system.
       </Paragraph>
       <Table
-        headers={['Component', 'Figma Library', 'HTML', 'React']}
+        headers={[
+          'Component',
+          'Figma Library',
+          'Local HTML',
+          'Global HTML',
+          'React',
+        ]}
         ids={componentStatuses.map((componentStatus) => componentStatus.id)}
         renderRow={(id) => {
           const componentStatus = componentStatuses.find(
@@ -181,8 +207,14 @@ export function ComponentStatusTable() {
               </Td>
               <Td>
                 <ComponentStatusPill
-                  status={componentStatus.html.status}
-                  href={componentStatus.html.href}
+                  status={componentStatus.local.status}
+                  href={componentStatus.local.href}
+                />
+              </Td>
+              <Td>
+                <ComponentStatusPill
+                  status={componentStatus.global.status}
+                  href={componentStatus.global.href}
                 />
               </Td>
               <Td>

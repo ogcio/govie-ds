@@ -11,8 +11,8 @@ function validateProperties(
   }
 }
 
-function createNunjucksEnvironment() {
-  const environment = nunjucks.configure({
+function createNunjucksEnvironment(path = '') {
+  const environment = nunjucks.configure(path, {
     autoescape: true,
     noCache: true,
     trimBlocks: true,
@@ -27,9 +27,11 @@ function createNunjucksEnvironment() {
 export function renderMacro<TProps = unknown>({
   name,
   html,
+  path,
 }: {
   name: string;
   html: string;
+  path?: string;
 }) {
   return function (props: TProps) {
     const propsString = JSON.stringify(props);
@@ -39,7 +41,7 @@ export function renderMacro<TProps = unknown>({
       {{ ${name}(${propsString}) }}
     `;
 
-    const nunjucksEnvironment = createNunjucksEnvironment();
+    const nunjucksEnvironment = createNunjucksEnvironment(path);
     const rendered = nunjucksEnvironment.renderString(template, {
       validateProperties,
     });

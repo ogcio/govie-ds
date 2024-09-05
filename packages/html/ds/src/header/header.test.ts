@@ -28,7 +28,7 @@ describe('header', () => {
     const screen = renderHeader({ title: 'Application service' });
 
     const searchContainer = screen.getByTestId('container');
-    expect(searchContainer).toHaveClass('js:gi-max-height');
+    expect(searchContainer.classList.contains('js:gi-max-height')).toBe(true);
   });
 
   it('should display container when search icon is selected', async () => {
@@ -38,8 +38,7 @@ describe('header', () => {
     const searchContainer = screen.getByTestId('container');
 
     await userEvent.click(searchIcon);
-
-    expect(searchContainer).not.toHaveClass('js:gi-max-height');
+    expect(searchContainer.classList.contains('js:gi-max-height')).toBe(false);
   });
 
   it('should pass axe tests', async () => {

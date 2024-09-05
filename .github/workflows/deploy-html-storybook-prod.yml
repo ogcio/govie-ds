@@ -4,26 +4,73 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # Allow manual deployment trigger
+    inputs:
+      deploy_reason:
+        description: "Select deployment type"
+        required: true
+        default: "Manual Trigger"
 
 env:
   AWS_S3_BUCKET_NAME: storybook-html-design-system-blocks-gov-ie
 
 jobs:
-  build:
+  determine-affected:
     runs-on: ubuntu-latest
+    outputs:
+      html_affected: ${{ steps.check-affected.outputs.html_affected }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Determine affected projects
+        id: affected
+        run: |
+          pnpm nx show projects --affected --base=origin/main~1 --head=HEAD > affected.txt
+          cat affected.txt
+
+      - name: Set environment output if HTML package is affected
+        id: check-affected
+        run: |
+          if grep -q "@govie-frontend/storybook" affected.txt; then
+            echo "html_affected=true" >> $GITHUB_OUTPUT
+          else
+            echo "html_affected=false" >> $GITHUB_OUTPUT
+          fi
+
+  build:
+    runs-on: ubuntu-latest
+    needs: determine-affected
+    # Run if html is affected or manually triggered
+    if: ${{ needs.determine-affected.outputs.html_affected == 'true' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
 
-      - name: Storybook build
+      - name: Install dependencies
         run: |
-          corepack enable          
+          corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm html:storybook:build
+
+      - name: Storybook build
+        run: pnpm html:storybook:build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3.1.2
@@ -41,7 +88,7 @@ jobs:
     environment: prod
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download artifact
         uses: actions/download-artifact@v3.0.2
