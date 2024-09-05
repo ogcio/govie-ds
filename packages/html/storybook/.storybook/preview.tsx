@@ -17,6 +17,8 @@ export const decorators = [
       destroyGovIe();
       initGovIe();
     }, []);
+    const { args, parameters } = context;
+    parameters.macro.path = './macros';
 
     const storyResult = Story(context);
 
@@ -24,7 +26,8 @@ export const decorators = [
       return <div dangerouslySetInnerHTML={{ __html: storyResult }} />;
     }
 
-    return storyResult;
+    const renderedMacro = renderMacro(parameters.macro)(args);
+    return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   },
 ];
 
@@ -53,6 +56,7 @@ const preview: Preview = {
             throw new Error('No name found in macro.');
           }
 
+          parameters.macro.path = './macros';
           const renderedMacro = renderMacro(parameters.macro)(args);
 
           const macroOptions = JSON.stringify(args, null, 2);
