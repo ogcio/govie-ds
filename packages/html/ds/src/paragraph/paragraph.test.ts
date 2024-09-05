@@ -39,10 +39,9 @@ describe('govieParagraph', () => {
     });
     const pElement = screen.getByText('Large text');
 
-    expect(pElement.classList.contains('gi-text-md')).toBe(true);
-    expect(pElement.classList.contains('xs:gi-text-md')).toBe(true);
-    expect(pElement.classList.contains('md:gi-text-md')).toBe(true);
-    expect(pElement.classList.contains('xl:gi-text-md')).toBe(true);
+    expect(pElement.classList.contains('xs:gi-text-lg')).toBe(true);
+    expect(pElement.classList.contains('md:gi-text-lg')).toBe(true);
+    expect(pElement.classList.contains('xl:gi-text-xl')).toBe(true);
   });
 
   it('should have correct text size classes for "md"', () => {
@@ -53,10 +52,9 @@ describe('govieParagraph', () => {
     });
     const spanElement = screen.getByText('Medium text');
 
-    expect(spanElement.classList.contains('gi-text-sm')).toBe(true);
-    expect(spanElement.classList.contains('xs:gi-text-sm')).toBe(true);
-    expect(spanElement.classList.contains('md:gi-text-sm')).toBe(true);
-    expect(spanElement.classList.contains('xl:gi-text-sm')).toBe(true);
+    expect(spanElement.classList.contains('xs:gi-text-md')).toBe(true);
+    expect(spanElement.classList.contains('md:gi-text-md')).toBe(true);
+    expect(spanElement.classList.contains('xl:gi-text-lg')).toBe(true);
   });
 
   it('should have correct text size classes for "sm"', () => {
@@ -67,10 +65,9 @@ describe('govieParagraph', () => {
     });
     const pElement = screen.getByText('Small text');
 
-    expect(pElement.classList.contains('gi-text-xs')).toBe(true);
-    expect(pElement.classList.contains('xs:gi-text-xs')).toBe(true);
-    expect(pElement.classList.contains('md:gi-text-xs')).toBe(true);
-    expect(pElement.classList.contains('xl:gi-text-xs')).toBe(true);
+    expect(pElement.classList.contains('xs:gi-text-sm')).toBe(true);
+    expect(pElement.classList.contains('md:gi-text-sm')).toBe(true);
+    expect(pElement.classList.contains('xl:gi-text-md')).toBe(true);
   });
 
   it('should pass axe accessibility tests', async () => {
