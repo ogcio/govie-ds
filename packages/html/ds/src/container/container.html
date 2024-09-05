@@ -1,0 +1,7 @@
+{% macro govieContainer(content) %}
+<div class="gi-mx-auto gi-container" data-testid="govie-container">
+  {% if content.html %}
+    {{ content.html | safe | trim | indent(2) }}
+  {% endif %}
+</div>
+{% endmacro %}
