@@ -776,6 +776,12 @@ importers:
       chromatic:
         specifier: ^11.7.1
         version: 11.7.1
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.2.0
+      glob:
+        specifier: ^10.4.5
+        version: 10.4.5
       nunjucks:
         specifier: ^3.2.4
         version: 3.2.4(chokidar@3.6.0)
