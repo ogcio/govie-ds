@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.1...@govie-ds/tailwind-0.6.0-alpha.1) (2024-09-05)
+
+
+
+## [0.5.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.0...@govie-ds/tailwind-0.5.1) (2024-09-05)
+
+
+
 # [0.6.0-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.0...@govie-ds/tailwind-0.6.0-alpha.0) (2024-09-04)
 
 

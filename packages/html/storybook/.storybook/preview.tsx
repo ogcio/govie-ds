@@ -63,7 +63,7 @@ const preview: Preview = {
 
           const lines = [
             '// Macro',
-            `{{ ${parameters.macro.name}(${macroOptions})} }}`,
+            `{{ ${parameters.macro.name}(${macroOptions}) }}`,
             '',
             '// HTML',
             renderedMacro,
