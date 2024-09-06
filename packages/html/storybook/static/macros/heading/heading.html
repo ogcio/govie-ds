@@ -1,0 +1,44 @@
+{% macro govieHeading(props) %} 
+
+{% macro caption(value='') %}
+{% if value %}
+<span data-testid="govie-heading-caption" class="gi-text-gray-500">{{value}}</span>
+{% endif %}
+{% endmacro %}
+
+{% macro getClases(size) %}
+{% if '2xs' in size %}
+xs:gi-text-2xs md:gi-text-2xs xl:gi-text-2xs gi-font-bold
+{% elif 'xs' in size %}
+xs:gi-text-xs md:gi-text-xs xl:gi-text-xs gi-font-bold
+{% elif 'sm' in size %}
+xs:gi-text-sm md:gi-text-sm xl:gi-text-md gi-font-bold
+{% elif 'md' in size %}
+xs:gi-text-sm md:gi-text-md xl:gi-text-lg gi-font-bold
+{% elif 'lg' in size %}
+xs:gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold
+{% elif 'xl' in size %}
+xs:gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold
+{% endif %}
+{% endmacro %}
+
+{% if "h1" in props.tag %}
+{{caption(props.caption)}}<h1 class="{{getClases(props.size)}}">{{props.text}} </h1>
+
+{% elif "h2" in props.tag %}
+{{caption(props.caption)}}<h2 class="{{getClases(props.size)}}">{{props.text}}</h2>
+
+{% elif "h3" in props.tag %}
+{{caption(props.caption)}}<h3 class="{{getClases(props.size)}}">{{props.text}}</h3>
+
+{% elif "h4" in props.tag %}
+{{caption(props.caption)}}<h4 class="{{getClases(props.size)}}">{{props.text}}</h4>
+
+{% elif "h5" in props.tag %}
+{{caption(props.caption)}}<h5 class="{{getClases(props.size)}}">{{props.text}}</h5>
+
+{% elif "h6" in props.tag %}
+{{caption(props.caption)}}<h6 class="{{getClases(props.size)}}">{{props.text}}</h6>
+
+{% endif %}
+{% endmacro %}
