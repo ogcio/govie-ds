@@ -10,10 +10,10 @@
   {% endmacro %}
 
   {% if props.as == 'p' %}
-    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-0 gi-mb-8 gi-max-w-prose">{{ props.content }}</p>
+    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-0 gi-mb-8 gi-max-w-prose">{{ props.content | safe | trim }}</p>
   {% elif props.as == 'span' %}
-    <span class="{{ getSizeClass(props.size) | trim }} gi-my-0">{{ props.content }}</span>
+    <span class="{{ getSizeClass(props.size) | trim }} gi-my-0">{{ props.content | safe | trim }}</span>
   {% else %}
-    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-2 gi-mb-8 gi-max-w-prose">{{ props.content }}</p>
+    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-2 gi-mb-8 gi-max-w-prose">{{ props.content | safe | trim }}</p>
   {% endif %}
 {% endmacro %}
