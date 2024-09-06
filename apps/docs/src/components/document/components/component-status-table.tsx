@@ -1,6 +1,5 @@
 import { Icon, IconButton, Paragraph } from '@govie-react/ds';
 import { Table, Td, Tr } from '../common/table';
-import { Text } from '@/components/typography/text';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
@@ -198,7 +197,7 @@ export function ComponentStatusTable() {
           return (
             <Tr key={id}>
               <Td>
-                <Text className="mb-0">{componentStatus.name}</Text>
+                <Paragraph>{componentStatus.name}</Paragraph>
               </Td>
               <Td>
                 <ComponentStatusPill

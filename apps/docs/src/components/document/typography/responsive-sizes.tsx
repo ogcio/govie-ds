@@ -1,4 +1,5 @@
 import { meta } from '@govie-ds/tokens';
+import { Text } from '@govie-react/ds';
 import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
@@ -8,7 +9,6 @@ import { SampleToken } from '../common/sample-token';
 import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
 import { TypographyValueComposite } from './typography-value-composite';
-import { Text } from '@/components/typography/text';
 
 type TypographyScreenAliasValue = {
   fontFamily: string[];
@@ -99,7 +99,7 @@ function TypographyResponsiveSizes({
   sampleText,
 }: {
   tokenName: keyof typeof meta.light.resolved.semantic.typography.default;
-  size: string;
+  size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
   sampleText: string;
 }) {
   const screenSizes = objectKeys(
@@ -155,7 +155,7 @@ function TypographyResponsiveSizes({
       }}
       renderSample={({ value }) => (
         <Text
-          className="mb-0"
+          as={tokenName === 'heading' ? 'h1' : 'p'}
           style={{
             ...value.value,
             fontFamily: undefined,
@@ -223,12 +223,11 @@ function TypographySizesDetailed({
   });
 }
 
-// TODO: size types
 export function HeadingResponsiveSizes({
   size,
   sampleText,
 }: {
-  size: string;
+  size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
   sampleText: string;
 }) {
   return (
@@ -240,12 +239,11 @@ export function HeadingResponsiveSizes({
   );
 }
 
-// TODO: size types
 export function TextResponsiveSizes({
   size,
   sampleText,
 }: {
-  size: string;
+  size: 'lg' | 'md' | 'sm';
   sampleText: string;
 }) {
   return (

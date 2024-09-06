@@ -36,7 +36,6 @@
     "eslint": "^9.8.0",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
-    "typescript": "5.4.5",
     "vitest": "^1.6.0",
     "zod": "^3.23.8",
     "zod-to-ts": "^1.2.0"

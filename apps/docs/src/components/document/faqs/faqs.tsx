@@ -1,7 +1,6 @@
 import { Heading } from '@govie-react/ds';
 import React, { Fragment } from 'react';
 import { Tabs } from '../common/tabs';
-import { Text } from '@/components/typography/text';
 
 const tabs = [
   {
@@ -47,9 +46,9 @@ export function Faq({
 }) {
   return (
     <div>
-      <Text as="h2" size="md" className="max-w-[45ch]">
+      <Heading as="h2" size="md">
         {question}
-      </Text>
+      </Heading>
       <div>{children}</div>
     </div>
   );

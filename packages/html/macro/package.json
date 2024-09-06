@@ -24,7 +24,6 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
     "@types/nunjucks": "^3.2.6",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "tsup": "^8.2.4"
   }
 }
