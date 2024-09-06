@@ -1,7 +1,6 @@
 import { Heading } from '@govie-react/ds';
 import React, { Fragment } from 'react';
 import { Tabs } from '../common/tabs';
-import Head from 'next/head';
 
 const tabs = [
   {

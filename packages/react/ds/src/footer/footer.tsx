@@ -1,6 +1,5 @@
 import { Container } from '../container/container.js';
 import footerImage from './logo.png';
-// import { OglLogo } from '../logos/ogl-logo';
 
 export function Footer() {
   return (
