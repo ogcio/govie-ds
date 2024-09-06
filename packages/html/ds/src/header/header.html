@@ -1,60 +1,9 @@
-{% from 'header/logo.html' import govieLogo %} 
-{% from 'header/searchIcon.html' import searchIcon %} 
+{% from 'header/components/headerDesktop.html' import govieHeaderDesktop %} 
+{% from 'header/components/headerSmall.html' import govieHeaderSmall %} 
 
 {% macro govieHeader(props) %}
 
-<header data-module="gieds-header" class="gi-flex gi-flex-col">
-  <div class="gi-bg-emerald-700 gi-h-3xl">
-    <ul
-      class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl"
-    >
-      {% for link in props.secondaryNavLinks %}
-      <li>
-        <a
-          class="gi-text-white gi-underline gi-underline-offset-sm"
-          href="{{ link.href }}"
-          >{{ link.label }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div
-    class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-3xl gi-py-xl"
-  >
-    {{ govieLogo() }}
-    <div class="gi-flex">
-      <ul class="gi-gap-xl gi-flex gi-text-white">
-        {% for link in props.navLinks %}
-        <li>
-          <a href="{{ link.href }}">{{link.label}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      <span class="gi-text-white gi-mx-xl">|</span>
-      <button
-        data-element="search"
-        class="gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
-      >
-        <span class="gi-text-white">Search</span>
-        {{ searchIcon() }}
-      </button>
-    </div>
-  </div>
-  <div
-    class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-transition-[height] gi-duration-[.5s]"
-    data-element="container"
-    data-testid="container"
-  >
-    <div class="gi-flex gi-w-3/6 gi-mx-auto gi-flex-col gi-mt-8" >
-      <label class="gi-text-md gi-font-bold gi-mb-4" for="search">Enter search term</label>
-      <div class="gi-flex">
-        <input class="gi-px-3 gi-py-1 gi-grow" id="search" type="text" />
-        <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
-          {{ searchIcon() }}
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
+{{ govieHeaderDesktop(props) }}
+{{ govieHeaderSmall(props) }}
+
 {% endmacro %}

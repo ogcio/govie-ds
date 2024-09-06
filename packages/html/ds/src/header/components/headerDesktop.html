@@ -1,0 +1,51 @@
+{% from 'header/assets/logo.html' import govieLogo %} 
+{% from 'header/assets/searchIcon.html' import searchIcon %} 
+{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+
+{% macro govieHeaderDesktop(props) %}
+
+<header data-module="gieds-header" class="lg:gi-flex gi-hidden gi-flex-col">
+  <div class="gi-bg-emerald-700 gi-h-3xl">
+    <ul
+      class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl"
+    >
+      {% for link in props.secondaryNavLinks %}
+      <li>
+        <a
+          class="gi-text-white gi-underline gi-underline-offset-sm"
+          href="{{ link.href }}"
+          >{{ link.label }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div
+    class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-3xl gi-py-xl"
+  >
+    {{ govieLogo() }}
+    <div class="gi-flex">
+      <ul class="gi-gap-xl gi-flex gi-text-white">
+        {% for link in props.navLinks %}
+        <li>
+          <a href="{{ link.href }}">{{link.label}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <span class="gi-text-white gi-mx-xl">|</span>
+      <button
+        data-element="search"
+        class="gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+      >
+        <span class="gi-text-white">Search</span>
+        {{ searchIcon() }}
+      </button>
+    </div>
+  </div>
+  <!-- Remove below -->
+   <p class="gi-hidden" data-element="menu-container"></p>
+   <p class="gi-hidden" data-element="menu-icon"></p>
+   <!-- Remove top -->
+  {{ HeaderSearchContainer({ "isDesktopView": true }) }}
+</header>
+{% endmacro %}

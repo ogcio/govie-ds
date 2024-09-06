@@ -1,0 +1,28 @@
+{% from 'header/assets/searchIcon.html' import searchIcon %} 
+
+{% macro HeaderSearchContainer(props) %}
+
+{% if props.isDesktopView %}
+  {% set size = "gi-w-3/6" %}
+{% else %}
+  {% set size = "gi-w-full" %}
+{% endif %}
+
+<div
+  class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-transition-[height] gi-duration-[.5s] gi-px-8"
+  data-element="container"
+  data-testid="container"
+>
+  <div class="{{ size }} gi-flex gi-mx-auto gi-flex-col gi-mt-8">
+    <label class="gi-text-md gi-font-bold gi-mb-4" for="search"
+      >Enter search term</label
+    >
+    <div class="gi-flex">
+      <input class="gi-px-3 gi-py-1 gi-grow" id="search" type="text" />
+      <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
+        {{ searchIcon() }}
+      </button>
+    </div>
+  </div>
+</div>
+{% endmacro %}

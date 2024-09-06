@@ -1,0 +1,35 @@
+{% from 'header/assets/logo.html' import govieLogo %} 
+{% from 'header/assets/menuIcon.html' import menuIcon %} 
+{% from 'header/assets/searchIcon.html' import searchIcon %} 
+{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+{% from 'header/components/headerMenu.html' import headerMenu %}
+
+{% macro govieHeaderSmall(props) %}
+
+<header data-module="gieds-header" class="gi-flex-col gi-flex lg:gi-hidden">
+  <div class="gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
+    <div class="gi-flex gi-justify-between">
+      {{ govieLogo() }}
+      <div class="gi-flex gi-gap-2">
+        <button
+          data-element="search"
+          class="gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+        >
+        <span class="gi-text-white">Search</span>
+        {{ searchIcon() }}  
+        </button>
+        <button
+          data-element="menu-icon"
+          class="gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+        >
+        <span class="gi-text-white">Menu</span>
+        {{ menuIcon() }}
+        </button>
+      </div>
+    </div>
+  </div>
+  {{ HeaderSearchContainer() }}
+  {{ headerMenu() }}
+</header>
+
+{% endmacro %}

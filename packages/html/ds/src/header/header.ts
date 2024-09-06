@@ -8,14 +8,19 @@ export type HeaderOptions = BaseComponentOptions;
 
 export class Header extends BaseComponent<HeaderOptions> {
   searchIcon: Element;
+  menuIcon: Element;
   searchContainer: Element;
+  menuContainer: Element;
 
   searchIconHandler: EventListenerOrEventListenerObject;
+  menuIconHandler: EventListenerOrEventListenerObject;
 
   constructor(options: HeaderOptions) {
     super(options);
 
     this.searchIcon = this.query.getByElement({ name: 'search' });
+
+    this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
 
     this.searchContainer = this.query.getByElement({
       name: 'container',
@@ -33,14 +38,29 @@ export class Header extends BaseComponent<HeaderOptions> {
         this.searchContainer.querySelector('input')?.focus();
       }
     };
+
+    this.menuContainer = this.query.getByElement({
+      name: 'menu-container',
+    });
+
+    this.menuIconHandler = (event: Event) => {
+      event.stopPropagation();
+
+      const classList = this.menuContainer.classList;
+
+      classList.toggle('gi-translate-x-full');
+      classList.toggle('gi-opacity-0');
+    };
   }
 
   initComponent() {
     this.searchIcon.addEventListener('click', this.searchIconHandler);
+    this.menuIcon.addEventListener('click', this.menuIconHandler);
   }
 
   destroyComponent(): void {
     this.searchIcon.removeEventListener('click', this.searchIconHandler);
+    this.menuIcon.addEventListener('click', this.menuIconHandler);
   }
 }
 
