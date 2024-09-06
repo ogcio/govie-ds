@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.3.0...@govie-ds/deepmerge-0.3.1-alpha.0) (2024-09-06)
+
+
+
 # [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/deepmerge-0.2.2...@govie-ds/deepmerge-0.3.0) (2024-08-06)
 
 ### Dependency Updates
