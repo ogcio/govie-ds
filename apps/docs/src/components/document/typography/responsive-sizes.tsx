@@ -1,10 +1,5 @@
 import { meta } from '@govie-ds/tokens';
-import {
-  Heading,
-  HeadingSize,
-  Paragraph,
-  ParagraphSize,
-} from '@govie-react/ds';
+import { Text } from '@govie-react/ds';
 import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
@@ -158,13 +153,17 @@ function TypographyResponsiveSizes({
       renderValue={({ value }) => {
         return <TokenName name={value.name} />;
       }}
-      renderSample={({ id }) => {
-        return tokenName === 'heading' ? (
-          <Heading size={id as HeadingSize}>{sampleText}</Heading>
-        ) : (
-          <Paragraph size={id as ParagraphSize}>{sampleText}</Paragraph>
-        );
-      }}
+      renderSample={({ value }) => (
+        <Text
+          as={tokenName === 'heading' ? 'h1' : 'p'}
+          style={{
+            ...value.value,
+            fontFamily: undefined,
+          }}
+        >
+          {sampleText}
+        </Text>
+      )}
     />
   );
 }
@@ -240,7 +239,6 @@ export function HeadingResponsiveSizes({
   );
 }
 
-// TODO: size types
 export function TextResponsiveSizes({
   size,
   sampleText,
@@ -256,23 +254,3 @@ export function TextResponsiveSizes({
     />
   );
 }
-
-// export function HeadingResponsiveSizes({
-//   size,
-//   sampleText,
-// }: {
-//   size: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
-//   sampleText: string;
-// }) {
-//   return <Heading size={size}>{sampleText}</Heading>;
-// }
-
-// export function TextResponsiveSizes({
-//   size,
-//   sampleText,
-// }: {
-//   size: 'lg' | 'md' | 'sm';
-//   sampleText: string;
-// }) {
-//   return <Paragraph size={size}>{sampleText}</Paragraph>;
-// }
