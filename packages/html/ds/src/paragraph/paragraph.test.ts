@@ -39,9 +39,7 @@ describe('govieParagraph', () => {
     });
     const pElement = screen.getByText('Large text');
 
-    expect(pElement.classList.contains('xs:gi-text-lg')).toBe(true);
-    expect(pElement.classList.contains('md:gi-text-lg')).toBe(true);
-    expect(pElement.classList.contains('xl:gi-text-xl')).toBe(true);
+    expect(pElement.classList.contains('gi-text-lg')).toBe(true);
   });
 
   it('should have correct text size classes for "md"', () => {
