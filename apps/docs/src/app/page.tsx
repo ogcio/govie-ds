@@ -59,10 +59,7 @@ function Benefit({
 function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
-      <Heading
-        as="h2"
-        // className="text-center font-semibold lg:px-6xl max-w-[50ch]"
-      >
+      <Heading as="h2">
         The Design System Building Block offers a wide range of benefits to both
         users and departments
       </Heading>
