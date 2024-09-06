@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 const benefits = [
   {
     title: 'Consistency',
-    description: 'Consistent design and behavior across all applications',
+    description: 'Consistent design and behaviour across all applications',
   },
   {
     title: 'Quality',
