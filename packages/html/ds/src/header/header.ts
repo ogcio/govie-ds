@@ -26,9 +26,12 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const classList = this.searchContainer.classList;
 
-      classList.toggle('js:gi-max-height');
-      classList.toggle('gi-max-h-0');
-      classList.toggle('gi-opacity-0');
+      classList.toggle('gi-h-40');
+      classList.toggle('gi-h-0');
+
+      if (classList.contains('gi-h-40')) {
+        this.searchContainer.querySelector('input')?.focus();
+      }
     };
   }
 
