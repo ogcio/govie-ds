@@ -746,6 +746,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))
+      chromatic:
+        specifier: ^11.7.1
+        version: 11.7.1
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
@@ -916,6 +919,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))
+      chromatic:
+        specifier: ^11.7.1
+        version: 11.7.1
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -5078,6 +5084,18 @@ packages:
 
   chromatic@11.5.4:
     resolution: {integrity: sha512-+J+CopeUSyGUIQJsU6X7CfvSmeVBs0j6LZ9AgF4+XTjI4pFmUiUXsTc00rH9x9W1jCppOaqDXv2kqJJXGDK3mA==}
+    hasBin: true
+    peerDependencies:
+      '@chromatic-com/cypress': ^0.*.* || ^1.0.0
+      '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+    peerDependenciesMeta:
+      '@chromatic-com/cypress':
+        optional: true
+      '@chromatic-com/playwright':
+        optional: true
+
+  chromatic@11.7.1:
+    resolution: {integrity: sha512-LvgPimdQdnQB07ZDxLEC2KtxgYeqTw0X71GA7fi3zhgtKLxZcE+BSZ/5I9rrQp1V8ydmfElfw0ZwnUH4fVgUAQ==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -15766,6 +15784,8 @@ snapshots:
   chownr@2.0.0: {}
 
   chromatic@11.5.4: {}
+
+  chromatic@11.7.1: {}
 
   chrome-trace-event@1.0.4: {}
 
