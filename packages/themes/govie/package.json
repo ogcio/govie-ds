@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/theme-govie",
-  "version": "0.3.4-alpha.0",
+  "version": "0.3.4",
   "description": "The GOV IE design system theme.",
   "type": "module",
   "main": "dist/index.js",
