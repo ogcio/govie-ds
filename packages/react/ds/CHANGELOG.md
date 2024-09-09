@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.3...@govie-react/ds-0.8.1) (2024-09-09)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.5.2`
+* `@govie-ds/tokens` updated to version `0.4.1`
+
+
 # [0.9.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.2...@govie-react/ds-0.9.0-alpha.3) (2024-09-06)
 
 
