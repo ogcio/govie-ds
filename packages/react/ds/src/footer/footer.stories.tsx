@@ -134,3 +134,58 @@ export const WithSecondaryNavigationAndLinks: Story = {
     ],
   },
 };
+
+export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
+  args: {
+    links: [
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+      {
+        href: '#',
+        label: 'Link 2',
+      },
+      {
+        href: '#',
+        label: 'Link 3',
+      },
+    ],
+    secondaryNavLinks: [
+      {
+        heading: 'Heading',
+        links: [
+          {
+            href: '#',
+            label: 'Link 1',
+          },
+          {
+            href: '#',
+            label: 'Link 2',
+          },
+          {
+            href: '#',
+            label: 'Link 3',
+          },
+        ],
+      },
+      {
+        heading: 'Heading 2',
+        links: [
+          {
+            href: '#',
+            label: 'Link 4',
+          },
+          {
+            href: '#',
+            label: 'Link 5',
+          },
+          {
+            href: '#',
+            label: 'Link 6',
+          },
+        ],
+      },
+    ],
+  },
+};
