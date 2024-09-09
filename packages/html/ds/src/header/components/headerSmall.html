@@ -7,8 +7,8 @@
 {% macro govieHeaderSmall(props) %}
 
 <header data-module="gieds-header" class="gi-flex-col gi-flex lg:gi-hidden">
-  <div class="gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
-    <div class="gi-flex gi-justify-between">
+  <div class="gi-h-20 gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
+    <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
       {{ govieLogo() }}
       <div class="gi-flex gi-gap-2">
         <button
@@ -29,7 +29,10 @@
     </div>
   </div>
   {{ HeaderSearchContainer() }}
-  {{ headerMenu() }}
+  {{ headerMenu(props) }}
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
 </header>
 
 {% endmacro %}

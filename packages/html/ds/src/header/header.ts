@@ -9,11 +9,13 @@ export type HeaderOptions = BaseComponentOptions;
 export class Header extends BaseComponent<HeaderOptions> {
   searchIcon: Element;
   menuIcon: Element;
+  closeMenuIcon: Element;
   searchContainer: Element;
   menuContainer: Element;
 
   searchIconHandler: EventListenerOrEventListenerObject;
   menuIconHandler: EventListenerOrEventListenerObject;
+  closeMenuHandler: EventListenerOrEventListenerObject;
 
   constructor(options: HeaderOptions) {
     super(options);
@@ -21,6 +23,8 @@ export class Header extends BaseComponent<HeaderOptions> {
     this.searchIcon = this.query.getByElement({ name: 'search' });
 
     this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
+
+    this.closeMenuIcon = this.query.getByElement({ name: 'close-menu-icon' });
 
     this.searchContainer = this.query.getByElement({
       name: 'container',
@@ -48,19 +52,27 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const classList = this.menuContainer.classList;
 
-      classList.toggle('gi-translate-x-full');
-      classList.toggle('gi-opacity-0');
+      classList.remove('gi-translate-x-full');
+    };
+
+    this.closeMenuHandler = (event: Event) => {
+      event.stopPropagation();
+
+      const classList = this.menuContainer.classList;
+      classList.add('gi-translate-x-full');
     };
   }
 
   initComponent() {
     this.searchIcon.addEventListener('click', this.searchIconHandler);
     this.menuIcon.addEventListener('click', this.menuIconHandler);
+    this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
   }
 
   destroyComponent(): void {
     this.searchIcon.removeEventListener('click', this.searchIconHandler);
     this.menuIcon.addEventListener('click', this.menuIconHandler);
+    this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
   }
 }
 
