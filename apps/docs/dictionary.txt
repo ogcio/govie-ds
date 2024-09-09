@@ -60,3 +60,6 @@ organization
 JSON
 YAML
 Tooltip
+centered
+data-testid
+flexbox-based
