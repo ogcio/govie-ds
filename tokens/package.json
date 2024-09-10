@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/tokens",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "The GOV IE Design System tokens.",
   "type": "module",
   "main": "dist/index.js",
