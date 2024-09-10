@@ -1,4 +1,5 @@
-{% from 'header/assets/logo.html' import govieLogo %} 
+{% from 'header/assets/logo.html' import Logo %} 
+{% from 'header/assets/logoIconSmall.html' import LogoSmall %} 
 {% from 'header/assets/menuIcon.html' import menuIcon %} 
 {% from 'header/assets/searchIcon.html' import searchIcon %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
@@ -6,14 +7,17 @@
 
 {% macro govieHeaderSmall(props) %}
 
-<header data-module="gieds-header" class="gi-flex-col gi-flex lg:gi-hidden">
+<header class="gi-w-full gi-fixed gi-overflow-x-hidden gi-flex-col gi-flex sm:gi-hidden">
   <div class="gi-h-20 gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
-      {{ govieLogo() }}
+      <div class="gi-flex">
+        <div class="xs:gi-block gi-hidden">{{ Logo() }}</div>
+        <div class="xs:gi-hidden gi-block">{{ LogoSmall() }}</div>
+      </div>
       <div class="gi-flex gi-gap-2">
         <button
-          data-element="search"
-          class="gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          data-element="search-mobile"
+          class="gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
         <span class="gi-text-white">Search</span>
         {{ searchIcon() }}  
@@ -28,11 +32,21 @@
       </div>
     </div>
   </div>
-  {{ HeaderSearchContainer() }}
-  {{ headerMenu(props) }}
-  <p class="gi-h-52">CONTENT</p>
-  <p class="gi-h-52">CONTENT</p>
-  <p class="gi-h-52">CONTENT</p>
+  <div class="gi-hidden xs:gi-block">
+    {{ HeaderSearchContainer({"dataElement": "search-container-small"}) }}
+  </div>
+  
+  <div class="gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20" data-element="overlay-disabled"></div>
 </header>
+  {{ headerMenu(props) }}
+  
+  <a href="#">TESTEST</a>
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
+  <a href="#">TESTEST</a>
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
+  <p class="gi-h-52">CONTENT</p>
 
 {% endmacro %}

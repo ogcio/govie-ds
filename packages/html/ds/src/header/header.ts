@@ -7,38 +7,63 @@ import {
 export type HeaderOptions = BaseComponentOptions;
 
 export class Header extends BaseComponent<HeaderOptions> {
-  searchIcon: Element;
+  searchIconDesktop: Element;
+  searchIconMobile: Element;
   menuIcon: Element;
   closeMenuIcon: Element;
   searchContainer: Element;
+  searchContainerSmall: Element;
   menuContainer: Element;
+  overlayDisabledContainer: Element;
 
   searchIconHandler: EventListenerOrEventListenerObject;
   menuIconHandler: EventListenerOrEventListenerObject;
   closeMenuHandler: EventListenerOrEventListenerObject;
+  searchIconHandlerMobile:EventListenerOrEventListenerObject;
 
   constructor(options: HeaderOptions) {
     super(options);
 
-    this.searchIcon = this.query.getByElement({ name: 'search' });
+    this.searchIconDesktop = this.query.getByElement({ name: 'search-desktop' });
 
+    this.searchIconMobile = this.query.getByElement({ name: 'search-mobile' });
+    
     this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
 
     this.closeMenuIcon = this.query.getByElement({ name: 'close-menu-icon' });
 
-    this.searchContainer = this.query.getByElement({
-      name: 'container',
+    this.searchContainerSmall = this.query.getByElement({
+      name: 'search-container-small',
     });
+
+    this.searchContainer = this.query.getByElement({
+      name: 'search-container',
+    });
+
+    this.overlayDisabledContainer = this.query.getByElement({name: 'overlay-disabled'})
 
     this.searchIconHandler = (event: Event) => {
       event.stopPropagation();
 
       const classList = this.searchContainer.classList;
 
-      classList.toggle('gi-h-40');
-      classList.toggle('gi-h-0');
+      classList.toggle('xs:gi-h-40');
+      classList.toggle('xs:gi-h-0');
 
       if (classList.contains('gi-h-40')) {
+        this.searchContainer.querySelector('input')?.focus();
+      }
+    };
+
+    this.searchIconHandlerMobile = (event: Event) => {
+      event.stopPropagation();
+
+      const classList = this.searchContainerSmall.classList;
+
+      classList.toggle('xs:gi-h-40');
+      classList.toggle('xs:gi-h-0');
+
+      if (classList.contains('xs:gi-h-40')) {
         this.searchContainer.querySelector('input')?.focus();
       }
     };
@@ -51,28 +76,37 @@ export class Header extends BaseComponent<HeaderOptions> {
       event.stopPropagation();
 
       const classList = this.menuContainer.classList;
+      const overlayContainerClassList = this.overlayDisabledContainer.classList;
 
       classList.remove('gi-translate-x-full');
+      overlayContainerClassList.remove('gi-hidden');
+      overlayContainerClassList.add('gi-fixed');
     };
 
     this.closeMenuHandler = (event: Event) => {
       event.stopPropagation();
 
       const classList = this.menuContainer.classList;
+      const overlayContainerClassList = this.overlayDisabledContainer.classList;
+
       classList.add('gi-translate-x-full');
+      overlayContainerClassList.add('gi-hidden');
+      overlayContainerClassList.remove('gi-fixed');
     };
   }
 
   initComponent() {
-    this.searchIcon.addEventListener('click', this.searchIconHandler);
+    this.searchIconDesktop.addEventListener('click', this.searchIconHandler);
+    this.searchIconMobile.addEventListener('click', this.searchIconHandlerMobile);
     this.menuIcon.addEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
   }
 
   destroyComponent(): void {
-    this.searchIcon.removeEventListener('click', this.searchIconHandler);
-    this.menuIcon.addEventListener('click', this.menuIconHandler);
-    this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
+    this.searchIconDesktop.removeEventListener('click', this.searchIconHandler);
+    this.searchIconMobile.removeEventListener('click', this.searchIconHandlerMobile);
+    this.menuIcon.removeEventListener('click', this.menuIconHandler);
+    this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
   }
 }
 

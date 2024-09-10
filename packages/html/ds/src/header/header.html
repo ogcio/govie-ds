@@ -3,7 +3,10 @@
 
 {% macro govieHeader(props) %}
 
-{{ govieHeaderDesktop(props) }}
-{{ govieHeaderSmall(props) }}
+<div class="gi-relative gi-overflow-x-hidden" data-module="gieds-header">
+    {{ govieHeaderDesktop(props) }}
+    {{ govieHeaderSmall(props) }}
+</div>
+
 
 {% endmacro %}

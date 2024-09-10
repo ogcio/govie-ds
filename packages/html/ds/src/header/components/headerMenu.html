@@ -1,9 +1,11 @@
 {% from 'header/assets/closeIcon.html' import closeIcon %} 
+{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+
 {% macro headerMenu(props) %}
 
 <div
   data-element="menu-container"
-  class=" gi-bg-white gi-fixed gi-h-full gi-w-3/5 gi-translate-x-full gi-right-0 gi-transition-transform gi-duration-[.5s]"
+  class="gi-z-100 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-right-0 gi-transition-transform gi-duration-[.5s]"
 >
   <div class="gi-border-gray-100 gi-border-b gi-border-solid gi-h-20 gi-flex gi-justify-end">
     <button data-element="close-menu-icon" class="gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer">
@@ -11,7 +13,7 @@
       {{ closeIcon() }}
     </button>
   </div>
-  <ul class="gi-px-8" >
+  <ul class="gi-px-4 sm:gi-px-8" >
     {% for link in props.navLinks %}
       <li>
         <a href="{{ link.href }}" class="gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid">
@@ -26,6 +28,9 @@
         </a>
       </li>
     {% endfor %}
+    <li class="xs:gi-hidden gi-mt-8">
+      {{ HeaderSearchContainer({"dataElement": "search-container-mobile"}) }}
+    </li>
   </ul>
 </div>
 
