@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.21.21](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.21-alpha.3...@govie-ds/docs-0.21.21) (2024-09-10)
+
+### Dependency Updates
+
+* `@govie-ds/eslint-config` updated to version `0.3.0`
+* `@govie-ds/prettier-config` updated to version `0.1.0`
+* `@govie-ds/deepmerge` updated to version `0.4.0`
+* `@govie-ds/tailwind` updated to version `0.6.0`
+* `@govie-ds/theme-govie` updated to version `0.4.0`
+* `@govie-ds/theme-hse` updated to version `0.1.0`
+* `@govie-ds/tokens` updated to version `0.5.0`
+* `@govie-react/ds` updated to version `0.9.0`
+
+
 ## [0.21.21-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.21-alpha.2...@govie-ds/docs-0.21.21-alpha.3) (2024-09-09)
 
 
