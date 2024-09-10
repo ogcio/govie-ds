@@ -80,7 +80,7 @@ jobs:
       - name: Publish new version on NPM
         if: github.ref == 'refs/heads/main' && env.environment == 'prod'
         run: |
-          pnpm version --parallel=1
+          pnpm version:libs --parallel=1
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
