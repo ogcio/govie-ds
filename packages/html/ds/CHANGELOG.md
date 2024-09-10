@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1...@govie-frontend/ds-0.4.0) (2024-09-10)
+
+
+
 ## [0.3.1](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.8...@govie-frontend/ds-0.3.1) (2024-09-10)
 
 ### Dependency Updates
