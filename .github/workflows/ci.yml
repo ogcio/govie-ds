@@ -78,9 +78,9 @@ jobs:
           path: packages/design/figma/dist/tokens-flat
 
       - name: Publish new version on NPM
-        if: github.ref == 'refs/heads/main' && env.environment == 'prod'
+        if: github.ref == 'refs/heads/main' && env.environment == 'dev'
         run: |
-          pnpm version:libs --parallel=1
+          pnpm nx affected --base=last-release -t version --parallel=1
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
