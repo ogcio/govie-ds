@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/tailwind",
-  "version": "0.6.0-alpha.3",
+  "version": "0.5.3",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",
