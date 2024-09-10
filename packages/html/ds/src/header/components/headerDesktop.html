@@ -4,15 +4,15 @@
 
 {% macro govieHeaderDesktop(props) %}
 
-<header class="sm:gi-flex gi-hidden gi-flex-col">
-  <div class="gi-bg-emerald-700 gi-h-3xl">
+<header class="sm:gi-flex gi-hidden gi-flex-col gi-fixed gi-w-full">
+  <div class="gi-bg-emerald-700">
     <ul
-      class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl"
+      class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl gi-my-1"
     >
       {% for link in props.secondaryNavLinks %}
       <li>
         <a
-          class="gi-text-white gi-underline gi-underline-offset-sm"
+          class="focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white gi-underline gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-rounded-sm"
           href="{{ link.href }}"
           >{{ link.label }}</a
         >
@@ -25,17 +25,17 @@
   >
     {{ Logo() }}
     <div class="gi-flex">
-      <ul class="gi-gap-xl gi-flex gi-text-white">
+      <ul class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
-        <li>
-          <a href="{{ link.href }}">{{link.label}}</a>
+        <li class="gi-flex">
+          <a class="active:gi-underline hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" href="{{ link.href }}">{{link.label}}</a>
         </li>
         {% endfor %}
       </ul>
-      <span class="gi-text-white gi-mx-xl">|</span>
+      <span class="gi-text-white gi-p-2">|</span>
       <button
         data-element="search-desktop"
-        class="gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+        class="hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
       >
         <span class="gi-text-white">Search</span>
         {{ searchIcon() }}

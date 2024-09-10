@@ -50,7 +50,7 @@ export class Header extends BaseComponent<HeaderOptions> {
       classList.toggle('xs:gi-h-40');
       classList.toggle('xs:gi-h-0');
 
-      if (classList.contains('gi-h-40')) {
+      if (classList.contains('xs:gi-h-40')) {
         this.searchContainer.querySelector('input')?.focus();
       }
     };
