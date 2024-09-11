@@ -20,14 +20,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
+
       - name: Build site
         run: |
           corepack enable
@@ -37,6 +40,7 @@ jobs:
           NEXT_PUBLIC_SHOW_DRAFTS: true
           NEXT_EXPORT: true
           GITHUB_PAGES: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

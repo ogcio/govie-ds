@@ -1,0 +1,23 @@
+---
+title: Link
+description: Link HTML Component
+draft: false
+status: in-development
+---
+
+# Link
+
+<ComponentStatusBlock componentId="link" />
+
+## When to use this component
+
+Use the link component to create consistent, accessible, and visually appealing hyperlinks throughout your web application.
+This component is ideal when you need to provide both internal and external links with customizable styles, such as underlined text and different colors for visited and non-visited states.
+The component handles accessibility features like opening external links in a new tab with appropriate rel attributes (`noreferrer` and `noopener`), making it a great choice for scenarios where security and user experience are important.
+It also offers styling flexibility with options like no underline (`noUnderline`) and alternative visited link styling (`noVisited`).
+
+## When not to use this component
+
+Avoid using the link component if you require more complex interactivity or behaviour than a standard hyperlink provides, such as navigation within single-page applications (SPAs) where a specialised React Router link component may be more appropriate.
+This component is also not suitable for situations where highly customised styles or advanced visual effects are needed that go beyond the default class options provided.
+If your design requires additional elements (like icons) or more intricate hover and focus effects that are not supported by the component’s predefined classes, consider creating a custom link element instead.

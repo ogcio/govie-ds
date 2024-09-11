@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.3.4...@govie-ds/theme-govie-0.4.0) (2024-09-10)
+
+
+
+## [0.3.4](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.3.4-alpha.0...@govie-ds/theme-govie-0.3.4) (2024-09-09)
+
+### Dependency Updates
+
+* `@govie-ds/theme-builder` updated to version `0.1.0`
+
+
+## [0.3.4-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.3.3...@govie-ds/theme-govie-0.3.4-alpha.0) (2024-09-06)
+
+
+
 ## [0.3.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.3.2...@govie-ds/theme-govie-0.3.3) (2024-08-12)
 
 

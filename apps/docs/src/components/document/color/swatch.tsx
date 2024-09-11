@@ -1,4 +1,4 @@
-import { Text } from '@/components/typography/text';
+import { Text } from '@govie-react/ds';
 import { cn } from '@/lib/cn';
 
 export type SwatchProps = {

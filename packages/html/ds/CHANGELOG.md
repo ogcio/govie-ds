@@ -2,6 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1...@govie-frontend/ds-0.4.0) (2024-09-10)
+
+
+
+## [0.3.1](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.8...@govie-frontend/ds-0.3.1) (2024-09-10)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.5.3`
+* `@govie-frontend/macro` updated to version `0.1.0`
+
+
+## [0.3.1-alpha.8](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.7...@govie-frontend/ds-0.3.1-alpha.8) (2024-09-09)
+
+
+
+## [0.3.1-alpha.7](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.6...@govie-frontend/ds-0.3.1-alpha.7) (2024-09-06)
+
+
+
 ## [0.3.1-alpha.6](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.5...@govie-frontend/ds-0.3.1-alpha.6) (2024-09-05)
 
 

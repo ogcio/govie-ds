@@ -2,11 +2,31 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-# [0.6.0-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.1...@govie-ds/tailwind-0.6.0-alpha.1) (2024-09-05)
+# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.3...@govie-ds/tailwind-0.6.0) (2024-09-10)
 
 
 
-## [0.5.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.0...@govie-ds/tailwind-0.5.1) (2024-09-05)
+## [0.5.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.3...@govie-ds/tailwind-0.5.3) (2024-09-10)
+
+
+
+# [0.6.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.2...@govie-ds/tailwind-0.6.0-alpha.3) (2024-09-10)
+
+
+
+## [0.5.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.2...@govie-ds/tailwind-0.5.2) (2024-09-09)
+
+### Dependency Updates
+
+* `@govie-ds/deepmerge` updated to version `0.3.1`
+* `@govie-ds/tokens` updated to version `0.4.1`
+
+
+# [0.6.0-alpha.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.1...@govie-ds/tailwind-0.6.0-alpha.2) (2024-09-06)
+
+
+
+# [0.6.0-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.0...@govie-ds/tailwind-0.6.0-alpha.1) (2024-09-05)
 
 
 

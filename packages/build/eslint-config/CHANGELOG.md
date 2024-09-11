@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.2.0...@govie-ds/eslint-config-0.3.0) (2024-09-10)
+
+
+
 # [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.2...@govie-ds/eslint-config-0.2.0) (2024-08-06)
 
 

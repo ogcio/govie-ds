@@ -1,4 +1,4 @@
-import { Heading } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-react/ds';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
@@ -6,7 +6,6 @@ import { Feedback } from '@/components/chrome/feedback';
 import { Button } from '@/components/form/button';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 import { Prose } from '@/components/typography/prose';
-import { Text } from '@/components/typography/text';
 import { config } from '@/lib/config';
 
 const benefits = [
@@ -51,10 +50,8 @@ function Benefit({
 }) {
   return (
     <li className="border-gray-50 border-sm rounded p-xl">
-      <Text as="h3" className="mt-0">
-        {title}
-      </Text>
-      <Text className="text-gray-700 my-0">{description}</Text>
+      <Heading as="h3">{title}</Heading>
+      <Paragraph>{description}</Paragraph>
     </li>
   );
 }
@@ -62,13 +59,10 @@ function Benefit({
 function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
-      <Text
-        as="h2"
-        className="text-center font-semibold lg:px-6xl max-w-[50ch]"
-      >
+      <Heading as="h2">
         The Design System Building Block offers a wide range of benefits to both
         users and departments
-      </Text>
+      </Heading>
       <ul className="grid grid-cols-1 gap-2xl sm:grid-cols-2 lg:grid-cols-3">
         {benefits.map(({ title, description }) => (
           <Fragment key={title}>
@@ -110,11 +104,11 @@ export default function HomePage() {
       <Benefits />
       <Prose as="section">
         <Heading as="h2">Get started</Heading>
-        <Text>
+        <Paragraph>
           Ready to elevate your design processes? Contact us to schedule a demo
           or learn more about how the Design System Building Block can benefit
           your department.
-        </Text>
+        </Paragraph>
         <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
           Sign up to learn more
         </Button>

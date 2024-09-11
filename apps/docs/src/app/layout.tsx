@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
+import '@govie-react/ds/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import { Container } from '@/components/chrome/container';
 import { TopBar } from '@/components/chrome/top-bar';
@@ -11,6 +12,7 @@ const lato = Lato({
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--gieds-font-family-primary',
 });
 
 export const metadata: Metadata = {
@@ -30,8 +32,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${lato.className} transition duration-500 bg-white h-full`}
-        // style={{ backgroundColor: "var(--ods-surface-primary)" }}
+        className={`${lato.variable} ${lato.className} transition duration-500 bg-white h-full`}
       >
         <div className="flex flex-col gap-2xl h-full">
           <TopBar />

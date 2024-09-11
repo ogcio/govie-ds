@@ -2,6 +2,37 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.9.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.2...@govie-react/ds-0.9.0) (2024-09-10)
+
+
+
+## [0.8.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.4...@govie-react/ds-0.8.2) (2024-09-10)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.5.3`
+
+
+# [0.9.0-alpha.4](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.1...@govie-react/ds-0.9.0-alpha.4) (2024-09-09)
+
+
+
+## [0.8.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.3...@govie-react/ds-0.8.1) (2024-09-09)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.5.2`
+* `@govie-ds/tokens` updated to version `0.4.1`
+
+
+# [0.9.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.2...@govie-react/ds-0.9.0-alpha.3) (2024-09-06)
+
+
+
+# [0.9.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.2...@govie-react/ds-0.9.0-alpha.3) (2024-09-06)
+
+
+
 # [0.9.0-alpha.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.1...@govie-react/ds-0.9.0-alpha.2) (2024-09-05)
 
 

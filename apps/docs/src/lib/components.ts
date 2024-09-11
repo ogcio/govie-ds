@@ -367,6 +367,31 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'container',
+      name: 'Container',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/layout-container--docs',
+          },
+          status: 'alpha',
+        },
+        {
+          platform: {
+            id: 'react',
+          },
+          status: 'considering',
+        },
+      ],
+    },
+    {
       id: 'details',
       name: 'Details',
       statuses: [
@@ -657,8 +682,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
