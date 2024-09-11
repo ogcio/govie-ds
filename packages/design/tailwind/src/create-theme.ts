@@ -266,7 +266,7 @@ export function createTheme(
       '2xl': meta
         ? meta.light.resolved.primitive.screen['2xl'].$value
         : '1536px',
-      'nojs': { 'raw': '(scripting: none)' },  
+      nojs: { raw: '(scripting: none)' },
     },
     textUnderlineOffset: {
       // TODO: tokens
