@@ -726,8 +726,8 @@ importers:
         specifier: 8.2.8
         version: 8.2.8(react@18.3.1)(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/addon-viewport':
-        specifier: ^8.2.9
-        version: 8.2.9(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+        specifier: 8.2.8
+        version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/blocks':
         specifier: 8.2.8
         version: 8.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -3738,11 +3738,6 @@ packages:
     resolution: {integrity: sha512-/JZeIgB33yhryUvWaNO+3t9akcS8nGLyAUmlljPFr3LUDDYrO/0H9tE4CgjLqtwCXBq3k3s0HLzEJOrKI9Tmbw==}
     peerDependencies:
       storybook: ^8.2.8
-
-  '@storybook/addon-viewport@8.2.9':
-    resolution: {integrity: sha512-lyM24+DJEt8R0YZkJKee34NQWv0REACU6lYDalqJNdKS1sEwzLGWxg1hZXnw2JFdBID9NGVvyYU2w6LDozOB0g==}
-    peerDependencies:
-      storybook: ^8.2.9
 
   '@storybook/blocks@8.1.10':
     resolution: {integrity: sha512-8ZGgLIUBdSafcyaKR5Zs0CFisFCPoxZBVt3GMUCZtN+G17YhEg4+OnZs5aMZknfnh28BUnZS2STjWTGStAE5Rw==}
@@ -13664,11 +13659,6 @@ snapshots:
       memoizerific: 1.11.3
 
   '@storybook/addon-viewport@8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
-    dependencies:
-      memoizerific: 1.11.3
-      storybook: 8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2))
-
-  '@storybook/addon-viewport@8.2.9(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
     dependencies:
       memoizerific: 1.11.3
       storybook: 8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2))
