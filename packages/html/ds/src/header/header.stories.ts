@@ -22,6 +22,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  argTypes: {
+    navLinks: {
+      description: 'A list of navigation links',
+    },
+    secondaryNavLinks: {
+      description: 'A list of secondary navigation links',
+    },
+  },
   args: {
     navLinks: [
       {
@@ -50,20 +58,134 @@ export const Default: Story = {
   },
 };
 
-export const Title: Story = {
+export const NoLinks: Story = {};
+
+export const WithMainLinks: Story = {
+  args: {
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
+export const WithSecondaryLinks: Story = {
   args: {
     secondaryNavLinks: [
       {
         href: '#',
-        label: 'Link 1',
+        label: 'English',
       },
       {
         href: '#',
-        label: 'Link 2',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const withMainAndSecondaryLinks: Story = {
+  args: {
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
       },
       {
         href: '#',
-        label: 'Link 3',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    secondaryNavLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const tabletView: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'pixel',
+    },
+  },
+  args: {
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    secondaryNavLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const mobileView: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    secondaryNavLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
       },
     ],
   },

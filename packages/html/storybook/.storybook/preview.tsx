@@ -10,6 +10,10 @@ import '@fontsource/lato/900.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
+import {
+  INITIAL_VIEWPORTS,
+  MINIMAL_VIEWPORTS,
+} from '@storybook/addon-viewport';
 
 export const decorators = [
   (Story, context) => {
@@ -36,6 +40,13 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
+    viewport: {
+      viewports: {
+        ...INITIAL_VIEWPORTS,
+        ...MINIMAL_VIEWPORTS,
+      },
+      defaultViewport: 'responsive',
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
