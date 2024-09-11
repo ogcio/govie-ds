@@ -11,7 +11,7 @@
   class="gi-w-full gi-relative gi-flex-col gi-overflow-x-clip gi-flex sm:gi-hidden"
 >
   <div class="gi-h-20 gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
-    <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
+    <div class="gi-h-full gi-items-center gi-flex gi-justify-between nojs:gi-justify-center">
       <div class="gi-flex">
         <div class="xs:gi-block gi-hidden">{{ LogoIcon() }}</div>
         <div class="xs:gi-hidden gi-block">{{ LogoIconSmall() }}</div>
@@ -19,14 +19,14 @@
       <div class="gi-flex gi-gap-2">
         <button
           data-element="search-mobile"
-          class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white">Search</span>
           {{ searchIcon() }}
         </button>
         <button
           data-element="menu-icon"
-          class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white">Menu</span>
           {{ menuIcon() }}
