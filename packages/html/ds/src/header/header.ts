@@ -19,15 +19,17 @@ export class Header extends BaseComponent<HeaderOptions> {
   searchIconHandler: EventListenerOrEventListenerObject;
   menuIconHandler: EventListenerOrEventListenerObject;
   closeMenuHandler: EventListenerOrEventListenerObject;
-  searchIconHandlerMobile:EventListenerOrEventListenerObject;
+  searchIconHandlerMobile: EventListenerOrEventListenerObject;
 
   constructor(options: HeaderOptions) {
     super(options);
 
-    this.searchIconDesktop = this.query.getByElement({ name: 'search-desktop' });
+    this.searchIconDesktop = this.query.getByElement({
+      name: 'search-desktop',
+    });
 
     this.searchIconMobile = this.query.getByElement({ name: 'search-mobile' });
-    
+
     this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
 
     this.closeMenuIcon = this.query.getByElement({ name: 'close-menu-icon' });
@@ -40,7 +42,9 @@ export class Header extends BaseComponent<HeaderOptions> {
       name: 'search-container',
     });
 
-    this.overlayDisabledContainer = this.query.getByElement({name: 'overlay-disabled'})
+    this.overlayDisabledContainer = this.query.getByElement({
+      name: 'overlay-disabled',
+    });
 
     this.searchIconHandler = (event: Event) => {
       event.stopPropagation();
@@ -101,14 +105,20 @@ export class Header extends BaseComponent<HeaderOptions> {
 
   initComponent() {
     this.searchIconDesktop.addEventListener('click', this.searchIconHandler);
-    this.searchIconMobile.addEventListener('click', this.searchIconHandlerMobile);
+    this.searchIconMobile.addEventListener(
+      'click',
+      this.searchIconHandlerMobile,
+    );
     this.menuIcon.addEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
   }
 
   destroyComponent(): void {
     this.searchIconDesktop.removeEventListener('click', this.searchIconHandler);
-    this.searchIconMobile.removeEventListener('click', this.searchIconHandlerMobile);
+    this.searchIconMobile.removeEventListener(
+      'click',
+      this.searchIconHandlerMobile,
+    );
     this.menuIcon.removeEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
   }
