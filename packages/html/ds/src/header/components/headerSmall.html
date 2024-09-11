@@ -1,33 +1,35 @@
-{% from 'header/assets/logo.html' import Logo %} 
-{% from 'header/assets/logoIconSmall.html' import LogoSmall %} 
+{% from 'header/assets/logoIcon.html' import LogoIcon %} 
+{% from 'header/assets/logoIconSmall.html' import LogoIconSmall %} 
 {% from 'header/assets/menuIcon.html' import menuIcon %} 
 {% from 'header/assets/searchIcon.html' import searchIcon %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
-{% from 'header/components/headerMenu.html' import headerMenu %}
+{% from 'header/components/headerMenu.html' import headerMenu %} 
 
 {% macro govieHeaderSmall(props) %}
 
-<header class="gi-w-full gi-relative gi-overflow-x-hidden gi-flex-col gi-flex sm:gi-hidden">
+<header
+  class="gi-w-full gi-relative gi-flex-col gi-overflow-x-clip gi-flex sm:gi-hidden"
+>
   <div class="gi-h-20 gi-bg-emerald-700 gi-w-full gi-px-8 gi-py-4">
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
       <div class="gi-flex">
-        <div class="xs:gi-block gi-hidden">{{ Logo() }}</div>
-        <div class="xs:gi-hidden gi-block">{{ LogoSmall() }}</div>
+        <div class="xs:gi-block gi-hidden">{{ LogoIcon() }}</div>
+        <div class="xs:gi-hidden gi-block">{{ LogoIconSmall() }}</div>
       </div>
       <div class="gi-flex gi-gap-2">
         <button
           data-element="search-mobile"
           class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
-        <span class="gi-text-white">Search</span>
-        {{ searchIcon() }}  
+          <span class="gi-text-white">Search</span>
+          {{ searchIcon() }}
         </button>
         <button
           data-element="menu-icon"
           class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
-        <span class="gi-text-white">Menu</span>
-        {{ menuIcon() }}
+          <span class="gi-text-white">Menu</span>
+          {{ menuIcon() }}
         </button>
       </div>
     </div>
@@ -35,8 +37,11 @@
   <div class="gi-hidden xs:gi-block">
     {{ HeaderSearchContainer({"dataElement": "search-container-small"}) }}
   </div>
-  
-  <div class="gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20" data-element="overlay-disabled"></div>
-</header>
   {{ headerMenu(props) }}
+  <div
+    class="gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"
+    data-element="overlay-disabled"
+  ></div>
+</header>
+
 {% endmacro %}

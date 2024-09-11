@@ -7,26 +7,36 @@
   data-element="menu-container"
   class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-transition-transform gi-duration-[.5s]"
 >
-  <div class="gi-border-gray-100 gi-border-b gi-border-solid gi-h-20 gi-flex gi-justify-end">
-    <button data-element="close-menu-icon" class="gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer">
+  <div
+    class="gi-border-gray-100 gi-border-b gi-border-solid gi-h-20 gi-flex gi-justify-end"
+  >
+    <button
+      data-element="close-menu-icon"
+      class="gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+    >
       <span>Close</span>
       {{ closeIcon() }}
     </button>
   </div>
-  <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen" >
+  <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
     {% for link in props.navLinks %}
-      <li>
-        <a href="{{ link.href }}" class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid">
-          <span class="gi-font-bold gi-text-sm">{{ link.label }}</span>
-        </a>
-      </li>
-    {% endfor %}
-    {% for link in props.secondaryNavLinks %}
-      <li>
-        <a href="{{ link.href }}" class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid">
-          <span class="gi-text-sm">{{ link.label }}</span>
-        </a>
-      </li>
+    <li>
+      <a
+        href="{{ link.href }}"
+        class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
+      >
+        <span class="gi-font-bold gi-text-sm">{{ link.label }}</span>
+      </a>
+    </li>
+    {% endfor %} {% for link in props.secondaryNavLinks %}
+    <li>
+      <a
+        href="{{ link.href }}"
+        class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
+      >
+        <span class="gi-text-sm">{{ link.label }}</span>
+      </a>
+    </li>
     {% endfor %}
     <li class="xs:gi-hidden gi-mt-8">
       {{ HeaderSearchContainer({"dataElement": "search-container-mobile"}) }}

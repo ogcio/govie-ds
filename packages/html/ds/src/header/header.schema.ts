@@ -13,6 +13,7 @@ export const headerSchema = zod.object({
       }),
     })
     .array()
+    .describe('List of the navigation links')
     .optional(),
   secondaryNavLinks: zod
     .object({
@@ -26,6 +27,7 @@ export const headerSchema = zod.object({
       }),
     })
     .array()
+    .describe('List of secondary navigation links')
     .optional(),
 });
 

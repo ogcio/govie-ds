@@ -1,4 +1,4 @@
-{% from 'header/assets/logo.html' import Logo %} 
+{% from 'header/assets/logoIcon.html' import LogoIcon %} 
 {% from 'header/assets/searchIcon.html' import searchIcon %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
 
@@ -23,12 +23,16 @@
   <div
     class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-3xl gi-py-xl"
   >
-    {{ Logo() }}
+    {{ LogoIcon() }}
     <div class="gi-flex">
       <ul class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
         <li class="gi-flex">
-          <a class="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" href="{{ link.href }}">{{link.label}}</a>
+          <a
+            class="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            href="{{ link.href }}"
+            >{{link.label}}</a
+          >
         </li>
         {% endfor %}
       </ul>
@@ -44,4 +48,5 @@
   </div>
   {{ HeaderSearchContainer({ "dataElement": "search-container" }) }}
 </header>
+
 {% endmacro %}
