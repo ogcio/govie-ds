@@ -4,7 +4,7 @@
 
 {% macro govieHeaderDesktop(props) %}
 
-<header class="sm:gi-flex gi-hidden gi-flex-col gi-fixed gi-w-full">
+<header class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
   <div class="gi-bg-emerald-700">
     <ul
       class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl gi-my-1"
@@ -28,14 +28,14 @@
       <ul class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
         <li class="gi-flex">
-          <a class="active:gi-underline hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" href="{{ link.href }}">{{link.label}}</a>
+          <a class="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" href="{{ link.href }}">{{link.label}}</a>
         </li>
         {% endfor %}
       </ul>
       <span class="gi-text-white gi-p-2">|</span>
       <button
         data-element="search-desktop"
-        class="hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+        class="gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
       >
         <span class="gi-text-white">Search</span>
         {{ searchIcon() }}

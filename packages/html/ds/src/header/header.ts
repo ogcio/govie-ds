@@ -64,7 +64,7 @@ export class Header extends BaseComponent<HeaderOptions> {
       classList.toggle('xs:gi-h-0');
 
       if (classList.contains('xs:gi-h-40')) {
-        this.searchContainer.querySelector('input')?.focus();
+        this.searchContainerSmall.querySelector('input')?.focus();
       }
     };
 
@@ -76,9 +76,11 @@ export class Header extends BaseComponent<HeaderOptions> {
       event.stopPropagation();
 
       const classList = this.menuContainer.classList;
+      const bodyElement = document.querySelector('body');
       const overlayContainerClassList = this.overlayDisabledContainer.classList;
 
       classList.remove('gi-translate-x-full');
+      bodyElement?.classList.add('gi-overflow-hidden');
       overlayContainerClassList.remove('gi-hidden');
       overlayContainerClassList.add('gi-fixed');
     };
@@ -88,8 +90,10 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const classList = this.menuContainer.classList;
       const overlayContainerClassList = this.overlayDisabledContainer.classList;
+      const bodyElement = document.querySelector('body');
 
       classList.add('gi-translate-x-full');
+      bodyElement?.classList.remove('gi-overflow-hidden');
       overlayContainerClassList.add('gi-hidden');
       overlayContainerClassList.remove('gi-fixed');
     };
