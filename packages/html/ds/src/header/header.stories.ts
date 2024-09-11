@@ -26,7 +26,7 @@ export const Default: Story = {
     navLinks: {
       description: 'A list of navigation links',
     },
-    secondaryNavLinks: {
+    languages: {
       description: 'A list of secondary navigation links',
     },
   },
@@ -45,7 +45,7 @@ export const Default: Story = {
         label: 'Services',
       },
     ],
-    secondaryNavLinks: [
+    languages: [
       {
         href: '#',
         label: 'English',
@@ -81,7 +81,7 @@ export const WithMainLinks: Story = {
 
 export const WithSecondaryLinks: Story = {
   args: {
-    secondaryNavLinks: [
+    languages: [
       {
         href: '#',
         label: 'English',
@@ -110,7 +110,7 @@ export const withMainAndSecondaryLinks: Story = {
         label: 'Services',
       },
     ],
-    secondaryNavLinks: [
+    languages: [
       {
         href: '#',
         label: 'English',
@@ -144,7 +144,7 @@ export const tabletView: Story = {
         label: 'Services',
       },
     ],
-    secondaryNavLinks: [
+    languages: [
       {
         href: '#',
         label: 'English',
@@ -178,7 +178,7 @@ export const mobileView: Story = {
         label: 'Services',
       },
     ],
-    secondaryNavLinks: [
+    languages: [
       {
         href: '#',
         label: 'English',

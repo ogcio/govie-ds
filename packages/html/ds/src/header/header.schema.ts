@@ -15,14 +15,14 @@ export const headerSchema = zod.object({
     .array()
     .describe('List of the navigation links')
     .optional(),
-  secondaryNavLinks: zod
+  languages: zod
     .object({
       label: zod.string({
-        description: 'The label of the link',
+        description: 'The label of the language',
         required_error: 'The label is required',
       }),
       href: zod.string({
-        description: 'The url (href) of the link',
+        description: 'The url (href) of the language page',
         required_error: 'The url is required',
       }),
     })
