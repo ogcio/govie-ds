@@ -2,22 +2,24 @@ import React from 'react';
 
 // Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
-export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type HintTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   ref?: React.Ref<HTMLInputElement>;
 };
 
 // Use React.forwardRef to support refs properly
-export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+export const HintText = React.forwardRef<HTMLInputElement, HintTextProps>(
   ({ ...props }, ref) => {
     return (
-      <input
-        className="gi-border-sm gi-border-solid gi-border-gray-950 gi-box-border gi-w-full gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-border-lg focus:gi-outline-yellow-400 focus:gi-outline-offset-0"
+      <span
+        className="gi-text-md gi-font-normal gi-leading-5 gi-text-gray-600 gi-mb-2"
         ref={ref}
         {...props}
-      />
+      >
+        {props.children}
+      </span>
     );
   },
 );
 
 // Set the displayName for debugging purposes
-TextInput.displayName = 'TextInput';
+HintText.displayName = 'HintText';

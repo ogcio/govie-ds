@@ -10,6 +10,7 @@ import {
   Container,
   IconButton,
   PhaseBanner,
+  TextInput,
 } from "@govie-react/ds";
 
 export function App() {
@@ -23,6 +24,7 @@ export function App() {
       />
       <Container>
         <Heading>Heading</Heading>
+        <TextInput />
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
         <Link
           href="https://www.google.com"

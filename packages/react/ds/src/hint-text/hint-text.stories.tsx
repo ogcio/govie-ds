@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextInput } from './text-input.js';
+import { HintText } from './hint-text.js';
 
 const meta = {
-  title: 'Form/TextInput',
+  title: 'Form/HintText',
   parameters: {
     docs: {
       description: {
         component:
-          'Use the text input component when you need to let users enter text that’s no longer than a single line, such as their name or phone number.',
+          'Use hint text alongside a form input for help that’s relevant to the majority of users, like how their information will be used, or where to find it.',
       },
     },
   },
-  component: TextInput,
-} satisfies Meta<typeof TextInput>;
+  component: HintText,
+} satisfies Meta<typeof HintText>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -28,5 +28,7 @@ export const Default: Story = {
       },
     },
   },
-  args: {},
+  args: {
+    children: 'Hint text',
+  },
 };
