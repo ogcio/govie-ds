@@ -28,7 +28,8 @@
         <span class="gi-font-bold gi-text-sm">{{ link.label }}</span>
       </a>
     </li>
-    {% endfor %} {% for link in props.secondaryNavLinks %}
+    {% endfor %} 
+    {% for link in props.languages %}
     <li>
       <a
         href="{{ link.href }}"
