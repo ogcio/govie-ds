@@ -2,7 +2,7 @@ import React from 'react';
 
 // Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
-export type HintTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
   ref?: React.Ref<HTMLInputElement>;
 };
 
@@ -10,13 +10,13 @@ export type HintTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export const HintText = React.forwardRef<HTMLInputElement, HintTextProps>(
   ({ ...props }, ref) => {
     return (
-      <span
-        className="gi-text-md gi-font-normal gi-leading-5 gi-text-gray-600 gi-mb-2"
+      <p
+        className="gi-text-md gi-font-normal gi-leading-5 gi-text-gray-600 gi-mb-4"
         ref={ref}
         {...props}
       >
         {props.children}
-      </span>
+      </p>
     );
   },
 );

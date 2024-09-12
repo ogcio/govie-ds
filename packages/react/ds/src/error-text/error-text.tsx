@@ -17,7 +17,7 @@ export const ErrorText = React.forwardRef<HTMLParagraphElement, ErrorTextProps>(
   ({ size = ErrorSize.md, ...props }, ref) => {
     return (
       <p
-        className={`gi-text-${size} gi-font-bold gi-leading-5 gi-text-red-500 gi-mb-4 gi-mt-0 gi-clear-both gi-block`}
+        className={`gi-text-${size} gi-font-bold gi-leading-5 gi-text-red-600 gi-mb-4 gi-mt-0 gi-clear-both gi-block`}
         ref={ref}
         {...props}
       >
