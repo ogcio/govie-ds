@@ -32,7 +32,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
       </div>
 
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
-        {navLinks?.map((link,i) => (
+        {navLinks?.map((link, i) => (
           <li key={i}>
             <a
               href={link.href}
@@ -44,7 +44,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
             </a>
           </li>
         ))}
-        {languages?.map((link,i) => (
+        {languages?.map((link, i) => (
           <li key={i}>
             <a
               href={link.href}

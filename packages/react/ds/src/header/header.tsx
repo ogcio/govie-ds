@@ -26,7 +26,7 @@ export function Header({ languages, navLinks }: HeaderProps) {
       {languages && (
         <div className="gi-hidden sm:gi-block gi-bg-emerald-700">
           <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl">
-            {languages.map((link,i) => (
+            {languages.map((link, i) => (
               <li key={i}>
                 <a
                   href={link.href}
@@ -53,7 +53,7 @@ export function Header({ languages, navLinks }: HeaderProps) {
         </div>
         <div className="gi-flex gi-items-center">
           <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">
-            {navLinks?.map((link,i) => (
+            {navLinks?.map((link, i) => (
               <li key={i} className="gi-flex">
                 <a
                   href={link.href}
@@ -96,7 +96,10 @@ export function Header({ languages, navLinks }: HeaderProps) {
       </div>
       <HeaderSearch />
       <HeaderMenu languages={languages} navLinks={navLinks} />
-      <div id='HeaderOverlayContainer' className="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"></div>
+      <div
+        id="HeaderOverlayContainer"
+        className="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"
+      ></div>
     </header>
   );
 }
