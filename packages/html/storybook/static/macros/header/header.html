@@ -1,33 +1,23 @@
 {% macro govieHeader(props) %}
-<header data-module="gieds-header" class="gi-flex gi-flex-col">
-  <div
-    class="gi-flex gi-justify-between gi-p-xl gi-bg-emerald-800 gi-text-white"
-  >
-    <div>
-      <p>{{props.title}}</p>
+  <header data-module="gieds-header" class="gi-flex gi-flex-col gi-font-primary">
+    <div class="gi-flex gi-justify-between gi-p-xl gi-bg-emerald-800 gi-text-white">
+      <div>
+        <p>{{props.title}}</p>
+      </div>
+      <button class="gi-bg-emerald-800" data-element="search" data-testid="search">
+        Search
+      </button>
     </div>
-    <button
-      class="gi-bg-emerald-800"
-      data-element="search"
-      data-testid="search"
-    >
-      
-    </button>
-  </div>
-  <div
-    class="js:gi-max-height gi-bg-gold-200 gi-overflow-hidden"
-    data-element="container"
-    data-testid="container"
-  >
-    <div class="gi-p-xl">
-      <div class="gi-flex gi-gap-md">
-        <label for="search">Search</label>
-        <input id="search" type="text" />
-        <button class="gi-bg-emerald-800 gi-text-white gi-p-md gi-rounded">
-          
-        </button>
+    <div class="js:gi-max-height gi-bg-gold-200 gi-overflow-hidden" data-element="container" data-testid="container">
+      <div class="gi-p-xl">
+        <div class="gi-flex gi-gap-md">
+          <label for="search">Search</label>
+          <input id="search" type="text" />
+          <button class="gi-bg-emerald-800 gi-text-white gi-p-md gi-rounded">
+            Search
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 {% endmacro %}

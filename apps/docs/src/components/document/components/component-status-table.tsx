@@ -33,7 +33,7 @@ export function ComponentStatusPill({
       </div>
       {href ? (
         <IconButton
-          icon={<Icon id="open-in-new" size="sm" />}
+          icon={<Icon icon="open_in_new" size="sm" inline={true} />}
           href={href}
           ariaLabel="Open"
         />
