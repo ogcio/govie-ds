@@ -10,3 +10,13 @@
   max-height: 0;
   opacity: 0;
 }
+
+/* Header Styles */
+
+#MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+  height: var(--gieds-space-40);
+}
+
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+  transform: translateX(0);
+}

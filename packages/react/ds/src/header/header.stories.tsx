@@ -10,25 +10,30 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
-};
-
-export const WithHomeHref: Story = {
   args: {
-    homeHref: '#',
-    homeAriaLabel: 'Home',
-  },
-};
-
-export const WithServiceName: Story = {
-  args: {
-    serviceName: 'Service Name',
-  },
-};
-
-export const WithServiceHref: Story = {
-  args: {
-    serviceName: 'Service Name',
-    serviceHref: '#',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
   },
 };

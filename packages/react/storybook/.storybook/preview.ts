@@ -7,6 +7,7 @@ import '@fontsource/lato/900.css';
 import '@govie-react/ds/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
+import '../../ds/styles.css';
 
 const preview: Preview = {
   parameters: {
