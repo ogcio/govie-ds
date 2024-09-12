@@ -43,10 +43,18 @@ export const Default: Story = {
         defaultValue: { summary: '-' },
       },
     },
+    children: {
+      control: 'text',
+      table: {
+        category: 'Content',
+        type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: 'Label' },
+      },
+    },
   },
   args: {
-    htmlFor: 'input-id', // Example value for the htmlFor attribute
+    htmlFor: 'input-id',
     size: LabelSize.md,
-    children: 'Label text',
+    children: 'Label',
   },
 };

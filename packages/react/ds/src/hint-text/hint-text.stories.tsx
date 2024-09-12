@@ -27,8 +27,16 @@ export const Default: Story = {
         defaultValue: { summary: '-' },
       },
     },
+    children: {
+      control: 'text',
+      table: {
+        category: 'Content',
+        type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: 'Hint' },
+      },
+    },
   },
   args: {
-    children: 'Hint text',
+    children: 'Hint',
   },
 };
