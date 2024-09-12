@@ -5,12 +5,12 @@
 {% macro govieHeaderDesktop(props) %}
 
 <header class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
-  {% if props.secondaryNavLinks %}
+  {% if props.languages %}
   <div class="gi-bg-emerald-700">
     <ul
       class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl gi-my-1"
     >
-      {% for link in props.secondaryNavLinks %}
+      {% for link in props.languages %}
       <li>
         <a
           class="focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-rounded-sm"
