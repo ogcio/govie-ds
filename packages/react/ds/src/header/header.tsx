@@ -1,6 +1,6 @@
 import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
-import { GovIrelandLogo } from './gov-ireland-logo.js';
+import GovieLogo from '../../assets/logos/logo.js'
 
 export type HeaderProps = {
   serviceName?: string;
@@ -33,10 +33,10 @@ export function Header({
                   focus:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-900)]  
                 `}
               >
-                <GovIrelandLogo />
+                <GovieLogo />
               </a>
             ) : (
-              <GovIrelandLogo />
+              <GovieLogo />
             )}
           </div>
           {serviceName ? (
