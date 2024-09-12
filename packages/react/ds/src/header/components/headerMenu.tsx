@@ -32,8 +32,8 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
       </div>
 
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
-        {navLinks?.map((link) => (
-          <li>
+        {navLinks?.map((link,i) => (
+          <li key={i}>
             <a
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
@@ -44,8 +44,8 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
             </a>
           </li>
         ))}
-        {languages?.map((link) => (
-          <li>
+        {languages?.map((link,i) => (
+          <li key={i}>
             <a
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"

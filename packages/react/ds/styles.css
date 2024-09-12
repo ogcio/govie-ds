@@ -20,3 +20,7 @@
 #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
   transform: translateX(0);
 }
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+  display: block;
+  position: fixed;
+}

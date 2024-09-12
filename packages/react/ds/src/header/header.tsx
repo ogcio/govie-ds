@@ -25,9 +25,9 @@ export function Header({ languages, navLinks }: HeaderProps) {
     >
       {languages && (
         <div className="gi-hidden sm:gi-block gi-bg-emerald-700">
-          <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl gi-my-1">
-            {languages.map((link) => (
-              <li>
+          <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl">
+            {languages.map((link,i) => (
+              <li key={i}>
                 <a
                   href={link.href}
                   className="focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-rounded-sm"
@@ -53,8 +53,8 @@ export function Header({ languages, navLinks }: HeaderProps) {
         </div>
         <div className="gi-flex gi-items-center">
           <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">
-            {navLinks?.map((link) => (
-              <li className="gi-flex">
+            {navLinks?.map((link,i) => (
+              <li key={i} className="gi-flex">
                 <a
                   href={link.href}
                   className="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
@@ -96,14 +96,7 @@ export function Header({ languages, navLinks }: HeaderProps) {
       </div>
       <HeaderSearch />
       <HeaderMenu languages={languages} navLinks={navLinks} />
-      {/* Overlay div */}
-      <div className="gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"></div>
-      <div className="gi-bg-white">
-        <p className="gi-h-40">TEST</p>
-        <p className="gi-h-40">TEST</p>
-        <p className="gi-h-40">TEST</p>
-        <p className="gi-h-40">TEST</p>
-      </div>
+      <div id='HeaderOverlayContainer' className="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"></div>
     </header>
   );
 }
