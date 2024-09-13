@@ -32,7 +32,7 @@ export default function Home() {
         </Link>
         <Icon icon="thumb_up" />
         <IconButton
-          icon={<Icon icon="send" variant="filled" inline={true} />}
+          icon={<Icon icon="send" variant="filled" inline />}
           ariaLabel="Send"
         />
         <Paragraph>
