@@ -11,48 +11,48 @@ type Story = StoryObj<typeof meta>;
 
 export const Small: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
     size: 'sm',
   },
 };
 
 export const Default: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
   },
 };
 
 export const Large: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
     size: 'lg',
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
     size: 'xl',
   },
 };
 
-export const Solid: Story = {
+export const Outlined: Story = {
   args: {
-    id: 'thumbs-up',
-    variant: 'filled',
+    icon: 'thumb_up',
+    variant: 'outlined',
   },
 };
 
 export const AriaHidden: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
     ariaHidden: true,
   },
 };
 
 export const AriaLabel: Story = {
   args: {
-    id: 'thumbs-up',
+    icon: 'thumb_up',
     ariaLabel: 'Thumbs up',
   },
 };
