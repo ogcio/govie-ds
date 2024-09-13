@@ -37,7 +37,7 @@ export const Large: Story = {
 
 export const ExtraLarge: Story = {
   args: {
-    icon: <Icon id="send" size="xl" />,
+    icon: <Icon icon="send" size="xl" />,
     ariaLabel: 'Thumbs up',
   },
 };
