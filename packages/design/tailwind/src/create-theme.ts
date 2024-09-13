@@ -79,6 +79,11 @@ export function createTheme(
         fontSize: '400',
         lineHeight: '1000',
       }),
+      '2md': toFont({
+        valueResolver: fontValueResolver,
+        fontSize: '400',
+        lineHeight: '800',
+      }),
       lg: toFont({
         valueResolver: fontValueResolver,
         fontSize: '500',
