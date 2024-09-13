@@ -37,7 +37,6 @@ export function Icon({
   const iconStyle =
     variant === 'filled' ? 'material-icons' : 'material-icons-outlined';
   const iconColor = color === 'disabled' ? 'gi-text-gray-300' : '';
-  const textSize = `gi-text-[${fontSize}]`;
   const display = inline ? '' : 'gi-block';
 
   return (
@@ -45,7 +44,8 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
-      className={`${iconStyle} ${iconColor} ${textSize} ${display}`}
+      className={`${iconStyle} ${iconColor} ${display} ${fontSize}`}
+      style={{ fontSize }}
     >
       {icon as string}
     </span>
