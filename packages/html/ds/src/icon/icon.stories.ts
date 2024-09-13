@@ -52,6 +52,13 @@ export const Outlined: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    icon: IconId.ThumbUp,
+    disabled: true,
+  },
+};
+
 export const AriaHidden: Story = {
   args: {
     icon: IconId.ThumbUp,

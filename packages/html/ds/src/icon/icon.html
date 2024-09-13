@@ -15,9 +15,21 @@
 
   {% macro getAriaRole(props) %}
     {% if props.ariaLabel %}
-      img
+      role="img"
     {% else %}
-      presentation
+      role="presentation"
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getAriaLabel(props) %}
+    {% if props.ariaLabel %}
+      aria-label={{props.ariaLabel}}
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getAriaHidden(props) %}
+    {% if props.ariaHidden %}
+      aria-hidden
     {% endif %}
   {% endmacro %}
 
@@ -39,7 +51,10 @@
     {% endif %}
   {% endmacro %}
 
-  <span aria-hidden={{props.ariaHidden}} aria-label={{props.ariaLabel}} role={{getAriaRole(props)}}
+  <span data-testid="govie-icon" 
+    {{getAriaHidden(props) | trim}}
+    {{getAriaLabel(props) | trim}}
+    {{getAriaRole(props) | trim}}
     class="
       {{ getIconStyle(props) | trim }}
       {{ getDisabled(props) | trim }}

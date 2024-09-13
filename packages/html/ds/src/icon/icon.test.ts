@@ -1,5 +1,6 @@
 import { render } from '../common/render';
 import html from './icon.html?raw';
+import { IconId, IconSize } from './icon.schema';
 
 describe('govieIcon', () => {
   const renderIcon = render({
@@ -8,71 +9,67 @@ describe('govieIcon', () => {
     html,
   });
 
-  it('should render the provided HTML content correctly', () => {
-    const content = '<p>Test content</p>';
+  it('should render the ThumbDown icon', () => {
     const screen = renderIcon({
-      html: content,
+      icon: IconId.ThumbDown,
+      size: IconSize.Medium,
     });
-    const iconDiv = screen.getByTestId('govie-icon');
-    const pElement = screen.getByText('Test content');
-    expect(iconDiv).toBeTruthy();
-    expect(pElement).toBeTruthy();
-    expect(pElement.tagName).toBe('P');
+    const iconSpan = screen.getByTestId('govie-icon');
+    expect(iconSpan.textContent?.trim()).toBe('thumb_down');
   });
 
-  it('should apply the correct icon classes', () => {
-    const content = '<p>Styled content</p>';
+  it('should render the ThumbDown disabled', () => {
     const screen = renderIcon({
-      html: content,
+      icon: IconId.ThumbDown,
+      size: IconSize.Medium,
+      disabled: true,
     });
-    const iconDiv = screen.getByTestId('govie-icon');
-    expect(iconDiv).toBeTruthy();
-    expect(iconDiv.classList.contains('gi-mx-auto')).toBe(true);
-    expect(iconDiv.classList.contains('gi-icon')).toBe(true);
+    const iconSpan = screen.getByTestId('govie-icon');
+    expect(iconSpan.textContent?.trim()).toBe('thumb_down');
+    expect(iconSpan.classList.contains('gi-text-gray-300')).toBe(true);
   });
 
-  it('should correctly handle and render indented HTML content', () => {
-    const content = '<p>\n    Indented content\n</p>';
+  it('should render the ThumbDown with ARIA', () => {
     const screen = renderIcon({
-      html: content,
+      icon: IconId.ThumbDown,
+      size: IconSize.Medium,
+      ariaHidden: true,
+      ariaLabel: 'ARIA-LABEL',
     });
-    const iconDiv = screen.getByTestId('govie-icon');
-    const pElement = screen.getByText('Indented content');
-    expect(iconDiv).toBeTruthy();
-    expect(pElement).toBeTruthy();
-    expect(pElement.tagName).toBe('P');
+    const iconSpan = screen.getByTestId('govie-icon');
+    expect(iconSpan.textContent?.trim()).toBe('thumb_down');
+    expect(iconSpan.hasAttribute('aria-hidden')).toBe(true);
+    expect(iconSpan.hasAttribute('aria-label')).toBe(true);
+    expect(iconSpan.getAttribute('aria-label')).toBe('ARIA-LABEL');
   });
 
-  it('should safely render HTML content', () => {
-    const content = '<p><script>alert("XSS")</script>Safe content</p>';
+  it('should render the ThumbDown outlined', () => {
     const screen = renderIcon({
-      html: content,
+      icon: IconId.ThumbDown,
+      size: IconSize.Medium,
+      outlined: true,
     });
-    const iconDiv = screen.getByTestId('govie-icon');
-    const pElement = screen.getByText('Safe content');
-    expect(iconDiv).toBeTruthy();
-    expect(pElement).toBeTruthy();
-    expect(pElement.innerHTML).toContain('Safe content');
-    // TODO Handle sanitisation separately e.g. using a different python library.
-    // The `safe` filter in jinja doesn't sanitize the HTML content, it simply marks it as safe for rendering.
-    // expect(pElement.innerHTML).not.toContain('alert("XSS")');
+    const iconSpan = screen.getByTestId('govie-icon');
+    expect(iconSpan.textContent?.trim()).toBe('thumb_down');
+    expect(iconSpan.classList.contains('material-icons-outlined')).toBe(true);
   });
 
-  it('should handle empty content gracefully', () => {
+  it('should render the ThumbDown icon large', () => {
     const screen = renderIcon({
-      html: '',
+      icon: IconId.ThumbDown,
+      size: IconSize.Large,
     });
-    const iconDiv = screen.getByTestId('govie-icon');
-    expect(iconDiv).toBeTruthy();
-    expect(iconDiv.innerHTML).toBe('\n');
+    const iconSpan = screen.getByTestId('govie-icon');
+    expect(iconSpan.textContent?.trim()).toBe('thumb_down');
+    expect(iconSpan.classList.contains('gi-text-lg')).toBe(true);
   });
 
-  it('should pass axe accessibility tests', async () => {
-    const content = '<p>Accessible content</p>';
+  it('should pass axe tests', async () => {
     const screen = renderIcon({
-      html: content,
+      icon: IconId.ThumbDown,
+      size: IconSize.Large,
+      ariaLabel: 'ARIA-LABEL',
     });
-
     await screen.axe();
   });
 });
