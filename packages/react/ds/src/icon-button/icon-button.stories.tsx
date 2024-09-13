@@ -44,7 +44,7 @@ export const ExtraLarge: Story = {
 
 export const Solid: Story = {
   args: {
-    icon: <Icon icon="thumb_up" solid />,
+    icon: <Icon icon="thumb_up" variant="filled" />,
     ariaLabel: 'Thumbs up',
   },
 };
