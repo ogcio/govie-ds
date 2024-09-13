@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the text input component when you need to let users enter text that’s no longer than a single line, such as their name or phone number.',
+          'Use the text input component when you need to let users enter text that’s no longer than a single line, such as their name or phone number. Use the `halfFluid`, `fullFluid`, or `characterWidth` properties to control the width of the input field based on different design needs.',
       },
     },
   },
@@ -44,6 +44,36 @@ const meta = {
       table: {
         category: 'Content',
         type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    halfFluid: {
+      description:
+        'When `true`, the input width is set to 50% of the available space.',
+      control: 'boolean',
+      table: {
+        category: 'Width Control',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    fullFluid: {
+      description:
+        'When `true`, the input width is set to 100% of the available space.',
+      control: 'boolean',
+      table: {
+        category: 'Width Control',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    characterWidth: {
+      description:
+        'Sets the width of the input in terms of the number of characters it can contain.',
+      control: 'number',
+      table: {
+        category: 'Width Control',
+        type: { summary: 'number' },
         defaultValue: { summary: '-' },
       },
     },
@@ -114,6 +144,38 @@ export const WithLabelHintAndError: Story = {
       <HintText>Hint</HintText>
       <ErrorText>Error</ErrorText>
       <TextInput hasError suffix="KG" id="text-input" {...args} />
+    </FormGroup>
+  ),
+  args: {},
+};
+
+// New stories for additional props
+
+export const HalfFluid: Story = {
+  render: (args) => (
+    <FormGroup>
+      <Label htmlFor="text-input">Half Fluid Input</Label>
+      <TextInput id="text-input" halfFluid {...args} />
+    </FormGroup>
+  ),
+  args: {},
+};
+
+export const FullFluid: Story = {
+  render: (args) => (
+    <FormGroup>
+      <Label htmlFor="text-input">Full Fluid Input</Label>
+      <TextInput id="text-input" fullFluid {...args} />
+    </FormGroup>
+  ),
+  args: {},
+};
+
+export const CharacterWidth: Story = {
+  render: (args) => (
+    <FormGroup>
+      <Label htmlFor="text-input">4 characters width</Label>
+      <TextInput id="text-input" characterWidth={1000} {...args} />
     </FormGroup>
   ),
   args: {},
