@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node ./scripts/copyMacros.js && STORYBOOK_ENV=dev storybook dev -p 6006",
-    "build": "node ./scripts/copyMacros.js && STORYBOOK_ENV=prod storybook build"
+    "dev": "storybook dev -p 6006",
+    "build": "node ./scripts/copy-macros.js && storybook build"
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
