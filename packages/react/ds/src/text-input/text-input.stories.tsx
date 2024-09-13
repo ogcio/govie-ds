@@ -149,8 +149,6 @@ export const WithLabelHintAndError: Story = {
   args: {},
 };
 
-// New stories for additional props
-
 export const HalfFluid: Story = {
   render: (args) => (
     <FormGroup>
