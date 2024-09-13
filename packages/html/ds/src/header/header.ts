@@ -117,21 +117,23 @@ export class Header extends BaseComponent<HeaderOptions> {
     this.isLinkActive = () => {
       if (window) {
         const URL = window.location.href;
-        document
-          .querySelectorAll<HTMLAnchorElement>(`#links-container-desktop a`)
-          .forEach((link) => {
-            if (link.href === URL) {
-              link.classList.add('gi-underline', 'gi-underline-offset-sm');
-            }
-          });
+        const linksDesktop = document.querySelectorAll<HTMLAnchorElement>(
+          `#links-container-desktop a`,
+        );
+        for (const link of linksDesktop) {
+          if (link.href === URL) {
+            link.classList.add('gi-underline', 'gi-underline-offset-sm');
+          }
+        }
 
-        document
-          .querySelectorAll<HTMLAnchorElement>(`#links-container-mobile a`)
-          .forEach((link) => {
-            if (link.href === URL) {
-              link.classList.add('gi-underline', 'gi-underline-offset-sm');
-            }
-          });
+        const linksMobile = document.querySelectorAll<HTMLAnchorElement>(
+          `#links-container-mobile a`,
+        );
+        for (const link of linksMobile) {
+          if (link.href === URL) {
+            link.classList.add('gi-underline', 'gi-underline-offset-sm');
+          }
+        }
       }
     };
   }
