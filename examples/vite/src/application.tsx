@@ -34,7 +34,7 @@ export function App() {
         </Link>
         <Icon icon="thumb_up" />
         <IconButton
-          icon={<Icon icon="send" variant="filled" />}
+          icon={<Icon icon="send" variant="outlined" />}
           ariaLabel="Send"
         />
         <Paragraph>
