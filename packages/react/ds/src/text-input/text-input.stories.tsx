@@ -16,13 +16,37 @@ const meta = {
     },
   },
   component: TextInput,
-} satisfies Meta<typeof TextInput>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
   argTypes: {
+    hasError: {
+      description:
+        'Indicates whether the input should be displayed in an error state. When `true`, the border color will be red.',
+      control: 'boolean',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    prefix: {
+      description:
+        'Element or text to display on the left side of the input, such as a unit or symbol.',
+      control: 'text',
+      table: {
+        category: 'Content',
+        type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: '-' },
+      },
+    },
+    suffix: {
+      description:
+        'Element or text to display on the right side of the input, such as a unit or symbol.',
+      control: 'text',
+      table: {
+        category: 'Content',
+        type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: '-' },
+      },
+    },
     ref: {
       control: false,
       table: {
@@ -32,6 +56,12 @@ export const Default: Story = {
       },
     },
   },
+} satisfies Meta<typeof TextInput>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
   args: {},
 };
 
@@ -42,16 +72,16 @@ export const WithLabel: Story = {
       <TextInput id="text-input" {...args} />
     </FormGroup>
   ),
-  argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
-  },
+  args: {},
+};
+
+export const WithLabelAndPrefixSuffix: Story = {
+  render: (args) => (
+    <FormGroup>
+      <Label htmlFor="text-input">Label</Label>
+      <TextInput prefix="kg" suffix="per item" id="text-input" {...args} />
+    </FormGroup>
+  ),
   args: {},
 };
 
@@ -63,58 +93,28 @@ export const WithLabelAndHint: Story = {
       <TextInput id="text-input" {...args} />
     </FormGroup>
   ),
-  argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
-  },
   args: {},
 };
 
-export const WithLabelAndErorr: Story = {
+export const WithLabelAndError: Story = {
   render: (args) => (
     <FormGroup hasError={true}>
       <Label htmlFor="text-input">Label</Label>
       <ErrorText>Error</ErrorText>
-      <TextInput id="text-input" {...args} />
+      <TextInput hasError id="text-input" {...args} />
     </FormGroup>
   ),
-  argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
-  },
   args: {},
 };
 
 export const WithLabelHintAndError: Story = {
   render: (args) => (
-    <FormGroup hasError={true}>
+    <FormGroup hasError>
       <Label htmlFor="text-input">Label</Label>
       <HintText>Hint</HintText>
       <ErrorText>Error</ErrorText>
-      <TextInput id="text-input" {...args} />
+      <TextInput hasError suffix="KG" id="text-input" {...args} />
     </FormGroup>
   ),
-  argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
-  },
   args: {},
 };
