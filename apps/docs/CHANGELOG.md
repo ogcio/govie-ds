@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.22.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.21...@govie-ds/docs-0.22.0) (2024-09-13)
+
+### Dependency Updates
+
+* `@govie-react/ds` updated to version `0.10.0`
+
+### Features
+
+* use icon font from material design ([#209](https://github.com/ogcio/govie-ds/issues/209)) ([41a4b18](https://github.com/ogcio/govie-ds/commit/41a4b189c68625707c4886038dc3e091481b86c9))
+
+
+
 ## [0.21.21](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.21-alpha.3...@govie-ds/docs-0.21.21) (2024-09-10)
 
 ### Dependency Updates
