@@ -20,6 +20,7 @@ export class Header extends BaseComponent<HeaderOptions> {
   menuIconHandler: EventListenerOrEventListenerObject;
   closeMenuHandler: EventListenerOrEventListenerObject;
   searchIconHandlerMobile: EventListenerOrEventListenerObject;
+  isLinkActive: () => void;
 
   constructor(options: HeaderOptions) {
     super(options);
@@ -63,12 +64,23 @@ export class Header extends BaseComponent<HeaderOptions> {
       event.stopPropagation();
 
       const classList = this.searchContainerSmall.classList;
+      const classListSearchIcon = this.query.getByElement({
+        name: 'search-mobile-search-icon',
+      }).classList;
+      const classListCloseIcon = this.query.getByElement({
+        name: 'search-mobile-close-icon',
+      }).classList;
 
       classList.toggle('xs:gi-h-40');
       classList.toggle('xs:gi-h-0');
 
       if (classList.contains('xs:gi-h-40')) {
         this.searchContainerSmall.querySelector('input')?.focus();
+        classListSearchIcon.add('gi-hidden');
+        classListCloseIcon.remove('gi-hidden');
+      } else {
+        classListSearchIcon.remove('gi-hidden');
+        classListCloseIcon.add('gi-hidden');
       }
     };
 
@@ -101,6 +113,27 @@ export class Header extends BaseComponent<HeaderOptions> {
       overlayContainerClassList.add('gi-hidden');
       overlayContainerClassList.remove('gi-fixed');
     };
+
+    this.isLinkActive = () => {
+      if (window) {
+        const URL = window.location.href;
+        document
+          .querySelectorAll<HTMLAnchorElement>(`#links-container-desktop a`)
+          .forEach((link) => {
+            if (link.href === URL) {
+              link.classList.add('gi-underline', 'gi-underline-offset-sm');
+            }
+          });
+
+        document
+          .querySelectorAll<HTMLAnchorElement>(`#links-container-mobile a`)
+          .forEach((link) => {
+            if (link.href === URL) {
+              link.classList.add('gi-underline', 'gi-underline-offset-sm');
+            }
+          });
+      }
+    };
   }
 
   initComponent() {
@@ -111,6 +144,7 @@ export class Header extends BaseComponent<HeaderOptions> {
     );
     this.menuIcon.addEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
+    this.isLinkActive();
   }
 
   destroyComponent(): void {
@@ -121,6 +155,7 @@ export class Header extends BaseComponent<HeaderOptions> {
     );
     this.menuIcon.removeEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
+    this.isLinkActive();
   }
 }
 

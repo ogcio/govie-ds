@@ -12,13 +12,13 @@
   >
     <button
       data-element="close-menu-icon"
-      class="gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+      class="gi-mr-4 sm:gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
     >
       <span>Close</span>
       {{ closeIcon() }}
     </button>
   </div>
-  <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
+  <ul id="links-container-mobile" class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
     {% for link in props.navLinks %}
     <li>
       <a

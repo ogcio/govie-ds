@@ -98,15 +98,15 @@ export const withMainAndSecondaryLinks: Story = {
   args: {
     navLinks: [
       {
-        href: '#',
+        href: '#link-1',
         label: 'News',
       },
       {
-        href: '#',
+        href: '#link-2',
         label: 'Departments',
       },
       {
-        href: '#',
+        href: '#link-3',
         label: 'Services',
       },
     ],
@@ -132,15 +132,15 @@ export const tabletView: Story = {
   args: {
     navLinks: [
       {
-        href: '#',
+        href: '#link-1',
         label: 'News',
       },
       {
-        href: '#',
+        href: '#link-2',
         label: 'Departments',
       },
       {
-        href: '#',
+        href: '#link-3',
         label: 'Services',
       },
     ],
@@ -166,15 +166,15 @@ export const mobileView: Story = {
   args: {
     navLinks: [
       {
-        href: '#',
+        href: '#link-1',
         label: 'News',
       },
       {
-        href: '#',
+        href: '#link-2',
         label: 'Departments',
       },
       {
-        href: '#',
+        href: '#link-3',
         label: 'Services',
       },
     ],

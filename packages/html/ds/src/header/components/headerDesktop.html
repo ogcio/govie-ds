@@ -6,14 +6,14 @@
 
 <header class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
   {% if props.languages %}
-  <div class="gi-bg-emerald-700">
+  <div class="gi-bg-emerald-700 gi-flex gi-h-10 gi-justify-end gi-items-center">
     <ul
-      class="gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl gi-my-1"
+      class="gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1"
     >
       {% for link in props.languages %}
       <li>
         <a
-          class="focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-rounded-sm"
+          class="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
           href="{{ link.href }}"
           >{{ link.label }}</a
         >
@@ -23,15 +23,15 @@
   </div>
   {% endif %}
   <div
-    class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-3xl gi-py-xl"
+    class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-8 gi-py-4"
   >
     {{ LogoIcon() }}
-    <div class="gi-flex">
-      <ul class="gi-gap-4 gi-flex gi-text-white">
+    <div class="gi-flex gi-items-center">
+      <ul id="links-container-desktop" class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
         <li class="gi-flex">
           <a
-            class="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            class="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
             href="{{ link.href }}"
             >{{link.label}}</a
           >
@@ -39,11 +39,11 @@
         {% endfor %}
       </ul>
       {% if props.navLinks %}
-        <span class="nojs:gi-hidden gi-text-white gi-p-2">|</span>
+        <div class="nojs:gi-hidden gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
       {% endif %}
       <button
         data-element="search-desktop"
-        class="nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+        class="nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
       >
         <span class="gi-text-white">Search</span>
         {{ searchIcon() }}
