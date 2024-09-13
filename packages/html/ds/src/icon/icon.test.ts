@@ -61,7 +61,7 @@ describe('govieIcon', () => {
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
-    expect(iconSpan.classList.contains('gi-text-lg')).toBe(true);
+    expect(iconSpan.classList.contains('gi-text-[32px]')).toBe(true);
   });
 
   it('should pass axe tests', async () => {

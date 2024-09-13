@@ -33,26 +33,7 @@ export function Icon({
   ariaLabel?: string;
   inline?: boolean;
 }) {
-  let fontSize = 'gi-text-md';
-  switch (size) {
-    case 'sm': {
-      fontSize = 'gi-text-sm';
-      break;
-    }
-    case 'md': {
-      fontSize = 'gi-text-md';
-      break;
-    }
-    case 'lg': {
-      fontSize = 'gi-text-lg';
-      break;
-    }
-    case 'xl': {
-      fontSize = 'gi-text-xl';
-      break;
-    }
-  }
-
+  const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
     variant === 'outlined' ? 'material-icons-outlined' : 'material-icons';
   const iconColor = color === 'disabled' ? 'gi-text-gray-300' : '';
@@ -64,6 +45,7 @@ export function Icon({
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
       className={`${iconStyle} ${iconColor} ${display} ${fontSize}`}
+      style={{ fontSize }}
     >
       {icon as string}
     </span>

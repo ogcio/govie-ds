@@ -41,13 +41,13 @@
 
   {% macro getFontSize(props) %}
     {% if props.size == 'sm' %}
-      gi-text-sm
+      gi-text-[16px]
     {% elif props.size == 'lg' %}
-      gi-text-lg
+      gi-text-[32px]
     {% elif props.size == 'xl' %}
-      gi-text-xl
+      gi-text-[49px]
     {% else %}
-      gi-text-md
+      gi-text-[24px]
     {% endif %}
   {% endmacro %}
 
