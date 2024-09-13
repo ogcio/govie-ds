@@ -36,10 +36,10 @@ export const ExtraLarge: Story = {
   },
 };
 
-export const Solid: Story = {
+export const Outlined: Story = {
   args: {
     icon: 'thumb_up',
-    variant: 'filled',
+    variant: 'outlined',
   },
 };
 

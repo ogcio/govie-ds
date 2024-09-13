@@ -42,9 +42,9 @@ export const ExtraLarge: Story = {
   },
 };
 
-export const Solid: Story = {
+export const Outlined: Story = {
   args: {
-    icon: <Icon icon="thumb_up" variant="filled" />,
+    icon: <Icon icon="thumb_up" variant="outlined" />,
     ariaLabel: 'Thumbs up',
   },
 };

@@ -14,7 +14,7 @@ export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type IconColor = 'default' | 'disabled';
 
-export type IconVariant = 'default' | 'filled';
+export type IconVariant = 'default' | 'outlined';
 
 export function Icon({
   icon,
@@ -35,7 +35,7 @@ export function Icon({
 }) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
-    variant === 'filled' ? 'material-icons' : 'material-icons-outlined';
+    variant === 'outlined' ? 'material-icons-outlined' : 'material-icons';
   const iconColor = color === 'disabled' ? 'gi-text-gray-300' : '';
   const display = inline ? '' : 'gi-block';
 
