@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextInput } from './text-input.js';
-import { Label } from '../label/label.js';
-import { HintText } from '../hint-text/hint-text.js';
 import { ErrorText } from '../error-text/error-text.js';
 import { FormGroup } from '../form-group/form-group.js';
+import { HintText } from '../hint-text/hint-text.js';
+import { Label } from '../label/label.js';
+import { TextInput } from './text-input.js';
 
 const meta = {
   title: 'Form/TextInput',
@@ -96,84 +96,89 @@ export const Default: Story = {
 };
 
 export const WithLabel: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">Label</Label>
-      <TextInput id="text-input" {...args} />
+      <TextInput id="text-input" {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const WithLabelAndPrefixSuffix: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">Label</Label>
-      <TextInput prefix="kg" suffix="per item" id="text-input" {...args} />
+      <TextInput
+        prefix="kg"
+        suffix="per item"
+        id="text-input"
+        {..._arguments}
+      />
     </FormGroup>
   ),
   args: {},
 };
 
 export const WithLabelAndHint: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">Label</Label>
       <HintText>Hint</HintText>
-      <TextInput id="text-input" {...args} />
+      <TextInput id="text-input" {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const WithLabelAndError: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup hasError={true}>
       <Label htmlFor="text-input">Label</Label>
       <ErrorText>Error</ErrorText>
-      <TextInput hasError id="text-input" {...args} />
+      <TextInput hasError id="text-input" {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const WithLabelHintAndError: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup hasError>
       <Label htmlFor="text-input">Label</Label>
       <HintText>Hint</HintText>
       <ErrorText>Error</ErrorText>
-      <TextInput hasError suffix="KG" id="text-input" {...args} />
+      <TextInput hasError suffix="KG" id="text-input" {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const HalfFluid: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">Half Fluid Input</Label>
-      <TextInput id="text-input" halfFluid {...args} />
+      <TextInput id="text-input" halfFluid {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const FullFluid: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">Full Fluid Input</Label>
-      <TextInput id="text-input" fullFluid {...args} />
+      <TextInput id="text-input" fullFluid {..._arguments} />
     </FormGroup>
   ),
   args: {},
 };
 
 export const CharacterWidth: Story = {
-  render: (args) => (
+  render: (_arguments) => (
     <FormGroup>
       <Label htmlFor="text-input">4 characters width</Label>
-      <TextInput id="text-input" characterWidth={1000} {...args} />
+      <TextInput id="text-input" characterWidth={4} {..._arguments} />
     </FormGroup>
   ),
   args: {},

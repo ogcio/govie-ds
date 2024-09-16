@@ -16,7 +16,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
-      hasError = false,
+      hasError,
       prefix,
       suffix,
       halfFluid,
@@ -27,15 +27,15 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     // Determine dynamic width class
-    const widthClass =
-      fullFluid && !halfFluid && !characterWidth
-        ? 'gi-w-full'
-        : halfFluid
-          ? 'gi-w-1/2'
-          : characterWidth
-            ? // TODO Not working. Review it with the team.
-              `gi-w-[${characterWidth}em]`
-            : 'gi-w-auto'; // Default width if no specific width prop is provided
+    let widthClass = 'gi-w-auto'; // Default width
+
+    if (fullFluid && !halfFluid && !characterWidth) {
+      widthClass = 'gi-w-full';
+    } else if (halfFluid) {
+      widthClass = 'gi-w-1/2';
+    } else if (characterWidth) {
+      widthClass = `gi-w-[${characterWidth}em]`;
+    }
 
     return (
       <div className="gi-flex gi-items-center">
