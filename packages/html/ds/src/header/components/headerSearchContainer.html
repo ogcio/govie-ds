@@ -1,4 +1,4 @@
-{% from 'header/assets/searchIcon.html' import searchIcon %} 
+{% from 'icon/icon.html' import govieIcon %}
 
 {% macro HeaderSearchContainer(props) %}
 
@@ -18,7 +18,7 @@
         type="text"
       />
       <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
-        {{ searchIcon() }}
+        {{ govieIcon({"icon": "search"}) }}
       </button>
     </div>
   </div>

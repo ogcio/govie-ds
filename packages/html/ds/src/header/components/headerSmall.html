@@ -1,10 +1,8 @@
-{% from 'header/assets/logoIcon.html' import LogoIcon %} 
-{% from 'header/assets/logoIconSmall.html' import LogoIconSmall %} 
-{% from 'header/assets/menuIcon.html' import menuIcon %} 
-{% from 'header/assets/searchIcon.html' import searchIcon %} 
+{% from 'header/assets/logo.html' import govieLogo %} 
+{% from 'header/assets/logoSmall.html' import govieLogoSmall %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
 {% from 'header/components/headerMenu.html' import headerMenu %} 
-{% from 'header/assets/closeIcon.html' import closeIcon %} 
+{% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieHeaderSmall(props) %}
 
@@ -14,8 +12,8 @@
   <div class="gi-h-20 gi-bg-emerald-800 gi-w-full gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between nojs:gi-justify-center">
       <div class="gi-flex">
-        <div class="xs:gi-block gi-hidden">{{ LogoIcon() }}</div>
-        <div class="xs:gi-hidden gi-block">{{ LogoIconSmall() }}</div>
+        <div class="xs:gi-block gi-hidden">{{ govieLogo() }}</div>
+        <div class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</div>
       </div>
       <div class="gi-flex gi-gap-2">
         <button
@@ -24,8 +22,8 @@
         >
           <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
           <div>
-            <div data-element="search-mobile-search-icon">{{ searchIcon() }}</div>
-            <div class="gi-text-white gi-hidden" data-element="search-mobile-close-icon">{{ closeIcon(classes="gi-fill-white") }}</div>
+            <div class="gi-text-white" data-element="search-mobile-search-icon">{{ govieIcon({"icon": "search"}) }}</div>
+            <div class="gi-text-white gi-hidden" data-element="search-mobile-close-icon">{{ govieIcon({"icon": "close"}) }}</div>
           </div>
           
         </button>
@@ -34,7 +32,7 @@
           class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white gi-text-2md gi-font-bold">Menu</span>
-          {{ menuIcon() }}
+          <div class="gi-text-white">{{ govieIcon({"icon": "menu"}) }}</div>
         </button>
       </div>
     </div>

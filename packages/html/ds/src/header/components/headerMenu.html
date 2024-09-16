@@ -1,5 +1,5 @@
-{% from 'header/assets/closeIcon.html' import closeIcon %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+{% from 'icon/icon.html' import govieIcon %}
 
 {% macro headerMenu(props) %}
 
@@ -15,7 +15,7 @@
       class="gi-mr-4 sm:gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
     >
       <span class="gi-text-2md gi-font-bold">Close</span>
-      {{ closeIcon() }}
+      {{ govieIcon({"icon": "close"}) }}
     </button>
   </div>
   <ul id="links-container-mobile" class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">

@@ -1,6 +1,6 @@
-{% from 'header/assets/logoIcon.html' import LogoIcon %} 
-{% from 'header/assets/searchIcon.html' import searchIcon %} 
+{% from 'header/assets/logo.html' import govieLogo %} 
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+{% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieHeaderDesktop(props) %}
 
@@ -25,7 +25,7 @@
   <div
     class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-8 gi-py-4"
   >
-    {{ LogoIcon() }}
+    {{ govieLogo() }}
     <div class="gi-flex gi-items-center">
       <ul id="links-container-desktop" class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
@@ -46,7 +46,7 @@
         class="nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
       >
         <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
-        {{ searchIcon() }}
+        <div class="gi-text-white">{{ govieIcon({"icon": "search"}) }}</div>
       </button>
     </div>
   </div>
