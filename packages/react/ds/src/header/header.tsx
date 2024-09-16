@@ -1,11 +1,9 @@
-import { Container } from '../container/container.js';
 import { Text } from '../text/text.js';
 import GovieLogo from '../../assets/logos/logo.js';
 import GovieLogoSmall from '../../assets/logos/logoSmall.js';
-import SearchIcon from '../../assets/icons/searchIcon.js';
-import MobileMenu from '../../assets/icons/menuIcon.js';
 import HeaderMenu from './components/headerMenu.js';
 import HeaderSearch from './components/headerSearch.js';
+import { Icon } from '../icon/icon.js';
 
 export type HeaderProps = {
   languages?: {
@@ -20,17 +18,15 @@ export type HeaderProps = {
 
 export function Header({ languages, navLinks }: HeaderProps) {
   return (
-    <header
-      className={`gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary`}
-    >
+    <header className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary">
       {languages && (
-        <div className="gi-hidden sm:gi-block gi-bg-emerald-700">
-          <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-xl gi-items-center gi-h-full gi-mr-3xl">
+        <div className="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center">
+          <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1">
             {languages.map((link, i) => (
               <li key={i}>
                 <a
                   href={link.href}
-                  className="focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-rounded-sm"
+                  className="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
                 >
                   {link.label}
                 </a>
@@ -41,7 +37,7 @@ export function Header({ languages, navLinks }: HeaderProps) {
       )}
       <div
         id="MenuContainer"
-        className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-3xl gi-py-xl"
+        className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
         <div className="gi-flex">
           <div className="xs:gi-block gi-hidden">
@@ -57,7 +53,7 @@ export function Header({ languages, navLinks }: HeaderProps) {
               <li key={i} className="gi-flex">
                 <a
                   href={link.href}
-                  className="gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+                  className="gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
                 >
                   {link.label}
                 </a>
@@ -65,33 +61,33 @@ export function Header({ languages, navLinks }: HeaderProps) {
             ))}
           </ul>
           {navLinks && (
-            <Text
-              className="gi-hidden sm:gi-flex gi-text-white gi-p-2"
-              as="span"
-            >
-              |
-            </Text>
+            <div className="gi-hidden sm:gi-block gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
           )}
           <label
             htmlFor="SearchTrigger"
-            className="gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            className="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
           >
-            <Text className="gi-text-white" as="span">
+            <input className="gi-hidden" id="SearchTrigger" type="checkbox" />
+            <Text className="gi-text-2md gi-font-bold gi-text-white" as="span">
               Search
             </Text>
-            <SearchIcon />
+            <Icon className="search-icon gi-text-white" icon="search" />
+            <Icon className="gi-hidden close-icon gi-text-white" icon="close" />
           </label>
           <label
             htmlFor="MobileMenuTrigger"
-            className="sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            className="gi-mr-2 sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
           >
-            <Text className="gi-text-white" as="span">
+            <input
+              className="gi-hidden"
+              id="MobileMenuTrigger"
+              type="checkbox"
+            />
+            <Text className="gi-text-2md gi-font-bold gi-text-white" as="span">
               Menu
             </Text>
-            <MobileMenu />
+            <Icon className="gi-text-white" icon="menu" />
           </label>
-          <input className="gi-hidden" id="SearchTrigger" type="checkbox" />
-          <input className="gi-hidden" id="MobileMenuTrigger" type="checkbox" />
         </div>
       </div>
       <HeaderSearch />

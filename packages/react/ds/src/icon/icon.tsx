@@ -8,7 +8,10 @@ export type IconId =
   | 'thumb_down'
   | 'thumb_up'
   | 'open_in_new'
-  | 'attach_file';
+  | 'attach_file'
+  | 'close'
+  | 'search'
+  | 'menu';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -24,6 +27,7 @@ export function Icon({
   ariaHidden,
   ariaLabel,
   inline = false,
+  className = '',
 }: {
   icon: IconId;
   size?: IconSize;
@@ -32,6 +36,7 @@ export function Icon({
   ariaHidden?: boolean;
   ariaLabel?: string;
   inline?: boolean;
+  className?: string;
 }) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
@@ -44,7 +49,7 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
-      className={`${iconStyle} ${iconColor} ${display} ${fontSize}`}
+      className={`${className} ${iconStyle} ${iconColor} ${display} ${fontSize}`}
       style={{ fontSize }}
     >
       {icon as string}

@@ -1,6 +1,6 @@
-import CloseIcon from '../../../assets/icons/closeIcon.js';
 import { Text } from '../../text/text.js';
 import HeaderSearch from './headerSearch.js';
+import { Icon } from '../../icon/icon.js';
 
 type HeaderMenuProps = {
   navLinks?: {
@@ -22,15 +22,14 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
       <div className="gi-border-gray-100 gi-border-b gi-border-solid gi-h-20 gi-flex gi-justify-end">
         <label
           htmlFor="MobileMenuTrigger"
-          className="gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          className="gi-mr-4 sm:gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
-          <Text size="sm" as="span">
+          <Text className="gi-text-2md gi-font-bold" size="sm" as="span">
             Close
           </Text>
-          <CloseIcon />
+          <Icon icon="close" />
         </label>
       </div>
-
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
         {navLinks?.map((link, i) => (
           <li key={i}>

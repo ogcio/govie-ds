@@ -1,4 +1,4 @@
-import SearchIcon from '../../../assets/icons/searchIcon.js';
+import { Icon } from '../../icon/icon.js';
 
 function HeaderSearch({ className }: { className?: string }) {
   return (
@@ -17,7 +17,7 @@ function HeaderSearch({ className }: { className?: string }) {
             id="search"
           />
           <button className="gi-bg-emerald-800 gi-text-white gi-p-md">
-            <SearchIcon />
+            <Icon icon="search" />
           </button>
         </div>
       </div>
