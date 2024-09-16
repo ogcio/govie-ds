@@ -9,8 +9,8 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
     const maxWidth = as === 'p' ? 'gi-max-w-prose' : undefined;
 
     const sizes = {
-      sm: 'xs:gi-text-sm md:gi-text-sm xl:gi-text-md',
-      md: 'xs:gi-text-md md:gi-text-md xl:gi-text-lg',
+      sm: 'gi-text-sm',
+      md: 'gi-text-sm md:gi-text-md',
       lg: 'gi-text-lg',
     };
 
