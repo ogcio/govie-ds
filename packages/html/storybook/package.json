@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "node ./scripts/copy-macros.js && storybook build"
+    "build": "node ./scripts/copy-macros.js && STORYBOOK_ENV=prod storybook build"
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
@@ -27,6 +27,7 @@
     "@storybook/addon-interactions": "8.2.8",
     "@storybook/addon-links": "8.2.8",
     "@storybook/addon-onboarding": "8.2.8",
+    "@storybook/addon-viewport": "8.2.8",
     "@storybook/blocks": "8.2.8",
     "@storybook/react": "8.2.8",
     "@storybook/react-vite": "8.2.8",

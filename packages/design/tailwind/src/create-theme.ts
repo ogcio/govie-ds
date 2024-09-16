@@ -79,6 +79,11 @@ export function createTheme(
         fontSize: '400',
         lineHeight: '1000',
       }),
+      '2md': toFont({
+        valueResolver: fontValueResolver,
+        fontSize: '400',
+        lineHeight: '800',
+      }),
       lg: toFont({
         valueResolver: fontValueResolver,
         fontSize: '500',
@@ -266,6 +271,7 @@ export function createTheme(
       '2xl': meta
         ? meta.light.resolved.primitive.screen['2xl'].$value
         : '1536px',
+      nojs: { raw: '(scripting: none)' },
     },
     textUnderlineOffset: {
       // TODO: tokens
