@@ -39,8 +39,19 @@
         {% endfor %}
       </ul>
       {% if props.navLinks %}
-        <div class="nojs:gi-hidden gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
+      <div
+        class="gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"
+      ></div>
       {% endif %}
+      <noscript>
+        <a
+          href="{{ props.noJsSearchLink }}"
+          class="gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+        >
+          <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
+          <div class="gi-text-white">{{ govieIcon({"icon": "search"}) }}</div>
+        </a>
+      </noscript>
       <button
         data-element="search-desktop"
         class="nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"

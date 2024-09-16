@@ -23,6 +23,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
+    noJsMenuLink: {
+      description:
+        'Fallback link for the menu button if there is no JS enabled on page',
+    },
+    noJsSearchLink: {
+      description:
+        'Fallback link for the search button if there is no JS enabled on page',
+    },
     navLinks: {
       description: 'A list of navigation links',
     },
@@ -31,6 +39,8 @@ export const Default: Story = {
     },
   },
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     navLinks: [
       {
         href: '#',
@@ -48,20 +58,23 @@ export const Default: Story = {
     languages: [
       {
         href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
         label: 'Gaeilge',
       },
     ],
   },
 };
 
-export const NoLinks: Story = {};
+export const NoLinks: Story = {
+  args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
+  },
+};
 
 export const WithMainLinks: Story = {
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     navLinks: [
       {
         href: '#',
@@ -79,13 +92,11 @@ export const WithMainLinks: Story = {
   },
 };
 
-export const WithSecondaryLinks: Story = {
+export const WithLanguage: Story = {
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
       {
         href: '#',
         label: 'Gaeilge',
@@ -94,8 +105,10 @@ export const WithSecondaryLinks: Story = {
   },
 };
 
-export const withMainAndSecondaryLinks: Story = {
+export const withMainAndLanguageLinks: Story = {
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     navLinks: [
       {
         href: '#link-1',
@@ -111,10 +124,6 @@ export const withMainAndSecondaryLinks: Story = {
       },
     ],
     languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
       {
         href: '#',
         label: 'Gaeilge',
@@ -130,6 +139,8 @@ export const tabletView: Story = {
     },
   },
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     navLinks: [
       {
         href: '#link-1',
@@ -145,10 +156,6 @@ export const tabletView: Story = {
       },
     ],
     languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
       {
         href: '#',
         label: 'Gaeilge',
@@ -164,6 +171,8 @@ export const mobileView: Story = {
     },
   },
   args: {
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
     navLinks: [
       {
         href: '#link-1',
@@ -179,10 +188,6 @@ export const mobileView: Story = {
       },
     ],
     languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
       {
         href: '#',
         label: 'Gaeilge',

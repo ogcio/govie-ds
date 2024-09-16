@@ -9,23 +9,55 @@
 <header
   class="gi-w-full gi-relative gi-flex-col gi-overflow-x-clip gi-flex sm:gi-hidden"
 >
-  <div class="gi-h-20 gi-bg-emerald-800 gi-w-full gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
-    <div class="gi-h-full gi-items-center gi-flex gi-justify-between nojs:gi-justify-center">
+  <div
+    class="gi-h-20 gi-bg-emerald-800 gi-w-full gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
+  >
+    <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
       <div class="gi-flex">
         <div class="xs:gi-block gi-hidden">{{ govieLogo() }}</div>
         <div class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</div>
       </div>
       <div class="gi-flex gi-gap-2">
+        <noscript class="gi-flex gi-gap-2">
+          <a
+            href="{{ props.noJsSearchLink }}"
+            class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          >
+            <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
+            <div>
+              <div
+                class="gi-text-white"
+                data-element="search-mobile-search-icon"
+              >
+                {{ govieIcon({"icon": "search"}) }}
+              </div>
+            </div>
+          </a>
+          <a
+            href="{{ props.noJsMenuLink }}"
+            data-element="menu-icon"
+            class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          >
+            <span class="gi-text-white gi-text-2md gi-font-bold">Menu</span>
+            <div class="gi-text-white">{{ govieIcon({"icon": "menu"}) }}</div>
+          </a>
+        </noscript>
         <button
           data-element="search-mobile"
           class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
           <div>
-            <div class="gi-text-white" data-element="search-mobile-search-icon">{{ govieIcon({"icon": "search"}) }}</div>
-            <div class="gi-text-white gi-hidden" data-element="search-mobile-close-icon">{{ govieIcon({"icon": "close"}) }}</div>
+            <div class="gi-text-white" data-element="search-mobile-search-icon">
+              {{ govieIcon({"icon": "search"}) }}
+            </div>
+            <div
+              class="gi-text-white gi-hidden"
+              data-element="search-mobile-close-icon"
+            >
+              {{ govieIcon({"icon": "close"}) }}
+            </div>
           </div>
-          
         </button>
         <button
           data-element="menu-icon"

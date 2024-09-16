@@ -1,6 +1,18 @@
 import * as zod from 'zod';
 
 export const headerSchema = zod.object({
+  noJsMenuLink: zod.string({
+    description:
+      'The link of the menu page when there is no Javascript enabled',
+    required_error:
+      'The link is required for the fallback case where Javascript is disabled',
+  }),
+  noJsSearchLink: zod.string({
+    description:
+      'The link of the search page when there is no Javascript enabled',
+    required_error:
+      'The link is required for the fallback case where Javascript is disabled',
+  }),
   navLinks: zod
     .object({
       label: zod.string({
