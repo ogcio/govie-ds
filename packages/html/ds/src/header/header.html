@@ -1,33 +1,11 @@
+{% from 'header/components/headerDesktop.html' import govieHeaderDesktop %} 
+{% from 'header/components/headerSmall.html' import govieHeaderSmall %} 
+
 {% macro govieHeader(props) %}
-<header data-module="gieds-header" class="gi-flex gi-flex-col">
-  <div
-    class="gi-flex gi-justify-between gi-p-xl gi-bg-emerald-800 gi-text-white"
-  >
-    <div>
-      <p>{{props.title}}</p>
-    </div>
-    <button
-      class="gi-bg-emerald-800"
-      data-element="search"
-      data-testid="search"
-    >
-      Search
-    </button>
-  </div>
-  <div
-    class="js:gi-max-height gi-bg-gold-200 gi-overflow-hidden"
-    data-element="container"
-    data-testid="container"
-  >
-    <div class="gi-p-xl">
-      <div class="gi-flex gi-gap-md">
-        <label for="search">Search</label>
-        <input id="search" type="text" />
-        <button class="gi-bg-emerald-800 gi-text-white gi-p-md gi-rounded">
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
+
+<div class="gi-relative" data-module="gieds-header">
+    {{ govieHeaderDesktop(props) }}
+    {{ govieHeaderSmall(props) }}
+</div>
+
 {% endmacro %}

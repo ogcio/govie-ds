@@ -1,6 +1,6 @@
 {
   "name": "@govie-react/ds",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -55,6 +55,7 @@
     "eslint": "^9.8.0",
     "glob": "^10.4.5",
     "postcss": "^8.4.40",
+    "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

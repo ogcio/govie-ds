@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.5.0...@govie-frontend/ds-0.6.0) (2024-09-13)
+
+
+### Features
+
+* add icon in html library ([#211](https://github.com/ogcio/govie-ds/issues/211)) ([2c5f7dd](https://github.com/ogcio/govie-ds/commit/2c5f7dd324f21d4f8b22a96f2bc944ac9c9cdc0f))
+
+
+
+# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.4.0...@govie-frontend/ds-0.5.0) (2024-09-13)
+
+
+### Features
+
+* use icon font from material design ([#209](https://github.com/ogcio/govie-ds/issues/209)) ([41a4b18](https://github.com/ogcio/govie-ds/commit/41a4b189c68625707c4886038dc3e091481b86c9))
+
+
+
 # [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1...@govie-frontend/ds-0.4.0) (2024-09-10)
 
 

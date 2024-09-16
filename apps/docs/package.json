@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/docs",
-  "version": "0.21.21",
+  "version": "0.22.0",
   "private": true,
   "type": "module",
   "scripts": {

@@ -1,10 +1,5 @@
 import "@govie-react/ds/styles.css";
 import "@govie-ds/theme-govie/theme.css";
-import "@fontsource/lato/100.css";
-import "@fontsource/lato/300.css";
-import "@fontsource/lato/400.css";
-import "@fontsource/lato/700.css";
-import "@fontsource/lato/900.css";
 import {
   Header,
   Heading,
@@ -19,7 +14,7 @@ import {
 
 export function App() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <>
       <Header
         serviceName="Example"
         homeHref="www.gov.ie"
@@ -37,8 +32,11 @@ export function App() {
         >
           Link
         </Link>
-        <Icon id="thumbs-up" variant="filled" />
-        <IconButton icon={<Icon id="send" />} ariaLabel="Send" />
+        <Icon icon="thumb_up" />
+        <IconButton
+          icon={<Icon icon="send" variant="outlined" />}
+          ariaLabel="Send"
+        />
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -50,8 +48,11 @@ export function App() {
         </Paragraph>
         <hr />
         <Paragraph as="span">Span paragraph</Paragraph>
+        <hr />
+
+        <span className="material-icons">face</span>
       </Container>
       <Footer />
-    </div>
+    </>
   );
 }
