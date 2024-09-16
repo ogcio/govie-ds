@@ -5,7 +5,7 @@
 {% from 'paragraph/paragraph.html' import govieParagraph %}
 {% from 'container/container.html' import govieContainer %}
 
-{% from 'vars.jinja' import footerProps %}
+{% from 'vars.jinja' import footerProps, HeaderProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
 
 <body>
     <h2>Header (Global)</h2>
-    {{ govieHeader({ 'title': 'Application title' }) }}
+    {{ govieHeader(HeaderProps) }}
     <h2>Header (Local)</h2>
     <header data-module="govie-header" class="govie-header">
         <h2>Application Title</h2>

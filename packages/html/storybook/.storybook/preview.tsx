@@ -10,6 +10,10 @@ import '@fontsource/lato/900.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
+import {
+  INITIAL_VIEWPORTS,
+  MINIMAL_VIEWPORTS,
+} from '@storybook/addon-viewport';
 
 export const decorators = [
   (Story, context) => {
@@ -18,7 +22,10 @@ export const decorators = [
       initGovIe();
     }, []);
     const { args, parameters } = context;
-    parameters.macro.path = './macros';
+    const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
+    if (isProd) {
+      parameters.macro.path = './macros';
+    }
 
     const storyResult = Story(context);
 
@@ -33,6 +40,14 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      viewports: {
+        ...INITIAL_VIEWPORTS,
+        ...MINIMAL_VIEWPORTS,
+      },
+      defaultViewport: 'responsive',
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -43,6 +58,10 @@ const preview: Preview = {
       source: {
         transform: (_, context) => {
           const { args, parameters } = context;
+          const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
+          if (isProd) {
+            parameters.macro.path = './macros';
+          }
 
           if (!parameters.macro) {
             throw new Error('No macro found in parameters.');
@@ -56,7 +75,6 @@ const preview: Preview = {
             throw new Error('No name found in macro.');
           }
 
-          parameters.macro.path = './macros';
           const renderedMacro = renderMacro(parameters.macro)(args);
 
           const macroOptions = JSON.stringify(args, null, 2);

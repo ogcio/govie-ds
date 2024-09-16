@@ -3,7 +3,7 @@ import { z as zod } from 'zod';
 export const containerSchema = zod.object({
   html: zod
     .string({
-      description: 'HTML content of the container',
+      description: 'The raw HTML that will be wrapped around the container',
     })
     .optional(),
 });
