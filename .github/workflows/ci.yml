@@ -78,7 +78,7 @@ jobs:
           path: packages/design/figma/dist/tokens-flat
 
       - name: Publish new version on NPM
-        if: github.ref == 'refs/heads/main' && env.environment == 'dev'
+        if: github.ref == 'refs/heads/main' && env.environment == 'prod'
         run: |
           pnpm nx affected --base=last-release -t version --parallel=1
         env:
@@ -86,7 +86,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Tag Last Release
-        if: github.ref == 'refs/heads/main' && env.environment == 'dev'
+        if: github.ref == 'refs/heads/main' && env.environment == 'prod'
         shell: bash
         run: |
           git tag -f last-release
