@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { HintText } from './hint-text.js';
+import { HintSize, HintText } from './hint-text.js';
 
 const meta = {
   title: 'Form/HintText',
@@ -19,14 +19,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
     children: {
       control: 'text',
       table: {
@@ -38,5 +30,6 @@ export const Default: Story = {
   },
   args: {
     children: 'Hint',
+    size: HintSize.md,
   },
 };

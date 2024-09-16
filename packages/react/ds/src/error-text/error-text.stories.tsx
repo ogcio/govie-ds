@@ -19,14 +19,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
     size: {
       control: 'radio',
       options: Object.values(ErrorSize),

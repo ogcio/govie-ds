@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from '../text/text.js';
 
 export enum ErrorSize {
   sm = 'sm',
@@ -12,20 +13,18 @@ export type ErrorTextProps = React.HTMLAttributes<HTMLParagraphElement> & {
   size?: ErrorSize;
 };
 
-// Use React.forwardRef to support refs properly
-export const ErrorText = React.forwardRef<HTMLParagraphElement, ErrorTextProps>(
-  ({ size = ErrorSize.md, ...props }, ref) => {
-    return (
-      <p
-        className={`gi-text-${size} gi-font-bold gi-leading-5 gi-text-red-600 gi-mb-4 gi-mt-0 gi-clear-both gi-block`}
-        ref={ref}
-        {...props}
-      >
-        {props.children}
-      </p>
-    );
-  },
-);
-
-// Set the displayName for debugging purposes
-ErrorText.displayName = 'ErrorText';
+export const ErrorText: React.FC<ErrorTextProps> = ({
+  size = ErrorSize.md,
+  ...props
+}) => {
+  return (
+    <Text
+      as="p"
+      size={size}
+      className="gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mb-[14px] !gi-mt-0"
+      {...props}
+    >
+      {props.children}
+    </Text>
+  );
+};
