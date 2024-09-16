@@ -236,8 +236,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/form-textinput--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -467,7 +468,7 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'Label',
+      id: 'label',
       name: 'Label',
       statuses: [
         {
@@ -486,8 +487,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=docs/typography-label--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
