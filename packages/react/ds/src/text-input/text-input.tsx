@@ -26,15 +26,17 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     },
     ref,
   ) => {
-    // Determine dynamic width class
+    // Determine width style dynamically for `characterWidth`
+    // Work around solution because tailwind do not generate classes on build time.
+    const widthStyle = characterWidth ? { width: `${characterWidth}em` } : {};
+
+    // Determine static width class (for cases like fullFluid and halfFluid)
     let widthClass = 'gi-w-auto'; // Default width
 
     if (fullFluid && !halfFluid && !characterWidth) {
       widthClass = 'gi-w-full';
     } else if (halfFluid) {
       widthClass = 'gi-w-1/2';
-    } else if (characterWidth) {
-      widthClass = `gi-w-[${characterWidth}em]`;
     }
 
     return (
@@ -45,6 +47,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           </div>
         )}
         <input
+          style={widthStyle}
           className={`${hasError ? 'gi-border-red-600' : 'gi-border-gray-950'} ${widthClass} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0`}
           ref={ref}
           {...props}

@@ -11,6 +11,9 @@ import {
   IconButton,
   PhaseBanner,
   TextInput,
+  FormGroup,
+  Label,
+  HintText,
 } from "@govie-react/ds";
 
 export function App() {
@@ -24,7 +27,11 @@ export function App() {
       />
       <Container>
         <Heading>Heading</Heading>
-        <TextInput />
+        <FormGroup>
+          <Label htmlFor="text-input">4 characters width</Label>
+          <HintText>Hint Text</HintText>
+          <TextInput characterWidth={400} id="text-input" />
+        </FormGroup>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
         <Link
           href="https://www.google.com"
