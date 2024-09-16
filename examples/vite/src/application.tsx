@@ -30,7 +30,7 @@ export function App() {
         <FormGroup>
           <Label htmlFor="text-input">4 characters width</Label>
           <HintText>Hint Text</HintText>
-          <TextInput characterWidth={400} id="text-input" />
+          <TextInput characterWidth={40} id="text-input" />
         </FormGroup>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
         <Link
