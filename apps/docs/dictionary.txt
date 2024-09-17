@@ -52,6 +52,7 @@ analyze
 webpages
 NonVisual
 customizable
+Customizable
 Color
 color
 colors
@@ -63,3 +64,5 @@ Tooltip
 centered
 data-testid
 flexbox-based
+checkboxes
+dropdown

@@ -29,11 +29,31 @@ export const iconSchema = zod.object({
       description: 'Specifies the Icon size',
     })
     .optional(),
-  outlined: zod.boolean().optional(),
-  disabled: zod.boolean().optional(),
-  ariaHidden: zod.boolean().optional(),
-  ariaLabel: zod.string().optional(),
-  inline: zod.boolean().optional(),
+  outlined: zod
+    .boolean({
+      description: 'Define icon style outlined',
+    })
+    .optional(),
+  disabled: zod
+    .boolean({
+      description: 'Set disabled look&feel',
+    })
+    .optional(),
+  ariaHidden: zod
+    .boolean({
+      description: 'Set ARIA hidden field',
+    })
+    .optional(),
+  ariaLabel: zod
+    .string({
+      description: 'Set ARIA Label field',
+    })
+    .optional(),
+  inline: zod
+    .boolean({
+      description: 'View as inline (block is default).',
+    })
+    .optional(),
 });
 
 export type IconProps = zod.infer<typeof iconSchema>;
