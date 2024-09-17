@@ -713,14 +713,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
