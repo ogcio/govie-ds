@@ -1,0 +1,15 @@
+{% macro govieSectionBreak(props) %}
+  {% macro getMarginClass(size) %}
+    {% if size == 'xl' %}
+      gi-my-12
+    {% elif size == 'lg' %}
+      gi-my-8
+    {% elif size == 'md' %}
+      gi-my-4
+    {% else %}
+      gi-m-0
+    {% endif %}
+  {% endmacro %}
+
+  <hr class="{{ getMarginClass(props.size) | trim }} gi-border-b-1 gi-border-gray-400" data-testid="govie-section-break"/>
+{% endmacro %}
