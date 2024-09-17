@@ -26,7 +26,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Default Story for Label
 export const Default: Story = {
   argTypes: {
     content: {
@@ -53,24 +52,6 @@ export const Default: Story = {
   args: {
     content: 'Label Text',
     size: 'md',
-    for: 'input-id',
-  },
-};
-
-// Large label
-export const LargeLabel: Story = {
-  args: {
-    content: 'Large Label',
-    size: 'lg',
-    for: 'input-id',
-  },
-};
-
-// Small label
-export const SmallLabel: Story = {
-  args: {
-    content: 'Small Label',
-    size: 'sm',
     for: 'input-id',
   },
 };

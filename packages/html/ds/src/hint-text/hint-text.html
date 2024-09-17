@@ -1,0 +1,14 @@
+{% macro govieHintText(props) %}
+  {% macro getSizeClass(size) %}
+    {% if size == 'lg' %}
+      gi-text-lg
+    {% elif size == 'sm' %}
+      gi-text-sm
+    {% else %}
+      xs:gi-text-sm md:gi-text-md
+    {% endif %}
+  {% endmacro %}
+  <p class="{{ getSizeClass(props.size) | trim }} gi-font-normal gi-leading-5 gi-text-gray-600 !gi-mb-[10px]">
+    {{ props.content | safe | trim | indent(2) }}
+  </p>
+{% endmacro %}
