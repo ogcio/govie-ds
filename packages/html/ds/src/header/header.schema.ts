@@ -13,6 +13,10 @@ export const headerSchema = zod.object({
     required_error:
       'The link is required for the fallback case where Javascript is disabled',
   }),
+  logoLink: zod.string({
+    description: 'The link of the logo',
+    required_error: 'The link of the logo is required',
+  }),
   navLinks: zod
     .object({
       label: zod.string({

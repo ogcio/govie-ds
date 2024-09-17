@@ -25,7 +25,7 @@
   <div
     class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-8 gi-py-4"
   >
-    {{ govieLogo() }}
+    <a href="{{ props.logoLink }}">{{ govieLogo() }}</a>
     <div class="gi-flex gi-items-center">
       <ul id="links-container-desktop" class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
