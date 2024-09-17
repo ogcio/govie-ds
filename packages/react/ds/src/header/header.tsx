@@ -19,7 +19,10 @@ export type HeaderProps = {
 
 export function Header({ logoLink, languages, navLinks }: HeaderProps) {
   return (
-    <header className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary">
+    <header
+      id="GovieHeader"
+      className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary"
+    >
       {languages && (
         <div className="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center">
           <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1">
