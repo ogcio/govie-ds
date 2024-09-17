@@ -1,0 +1,18 @@
+{% macro govieCheckbox(props) %}
+
+{% macro getSizeClass(size) %}
+  {% if size == 'lg' %}
+    gi-w-11 gi-h-11
+  {% elif size == 'sm' %}
+    gi-w-6 gi-h-6
+  {% else %}
+    gi-w-8 gi-h-8
+  {% endif %}
+{% endmacro %}
+
+<div class="gi-flex gi-items-center" data-module="gieds-checkbox">
+  <input id="{{ props.checkboxId }}" value="{{ props.value }}" class="{{ getSizeClass(props.size) | trim }}" type="checkbox" />
+  <label for="{{ props.checkboxId }}" class="gi-font-primary xs:gi-text-sm md:gi-text-md">{{ props.label }}</label>
+</div>
+
+{% endmacro %}

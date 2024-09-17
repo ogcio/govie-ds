@@ -1,0 +1,12 @@
+{% from 'checkbox/checkbox.html' import govieCheckbox %} 
+
+{% macro govieCheckboxesGroup(props) %}
+  {% for checkbox in props.items %}
+      {{govieCheckbox({
+          "label": checkbox.label, 
+          "value": checkbox.value, 
+          "hint": checkbox.hint,
+          "checkboxId": props.fieldId + "-" + loop.index0
+      })}}
+  {% endfor %}
+{% endmacro %}

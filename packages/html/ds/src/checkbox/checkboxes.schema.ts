@@ -1,0 +1,47 @@
+import * as zod from 'zod';
+
+export const checkboxesSchema = zod.object({
+    fieldId: zod.string({
+        description: 'An unique ID given to the group of checkboxes',
+        required_error: 'The unique ID is required'
+
+    }),
+    items: zod.object({
+        label: zod.string({
+            description: 'The value of the checkbox that will be displayed on the screen',
+            required_error: 'The value of the checkbox is required'
+        }),
+        value: zod.string({
+            description: 'The value associated with the input (this is also the value that is sent on submit)',
+            required_error: 'The value associated with the input is required'
+        }),
+        hint: zod.string({
+            description: 'if there is additional text required in order to give the user more context',
+        
+        }).optional()
+        // conditionalInput: ENUMS
+    }).array(),
+    errorMessage: zod.string({
+        description: 'The error message to be displayed'
+    }).optional(),
+    noneOption: zod.object({
+        label: zod.string({
+            description: 'the value of the none checkbox label'
+        }),
+        value: zod.string({
+            description: 'The value associated with the none checkbox input'
+        }),
+        hint: zod.string({
+            description: 'The value of additional text of the none checkbox'
+        })
+    }).optional(),
+    title: zod.object({
+        value: zod.string({
+            description: 'The name of the title'
+        })
+        // size: ENUM of Sizes
+    }).optional(),
+    // checkboxesSize: ENUM SIZE
+})
+
+export type CheckboxesProps = zod.infer<typeof checkboxesSchema>;
