@@ -1,9 +1,9 @@
-import { Text } from '../text/text.js';
-import GovieLogo from '../../assets/logos/logo.js';
-import GovieLogoSmall from '../../assets/logos/logoSmall.js';
-import HeaderMenu from './components/headerMenu.js';
-import HeaderSearch from './components/headerSearch.js';
+import GovieLogoSmall from '../assets/logos/logo-small.js';
+import GovieLogo from '../assets/logos/logo.js';
 import { Icon } from '../icon/icon.js';
+import { Text } from '../text/text.js';
+import HeaderMenu from './components/header-menu.js';
+import HeaderSearch from './components/header-search.js';
 
 export type HeaderProps = {
   logoLink: string;
@@ -26,8 +26,8 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
       {languages && (
         <div className="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center">
           <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1">
-            {languages.map((link, i) => (
-              <li key={i}>
+            {languages.map((link, index) => (
+              <li key={index}>
                 <a
                   href={link.href}
                   className="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
@@ -53,8 +53,8 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
         </div>
         <div className="gi-flex gi-items-center">
           <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">
-            {navLinks?.map((link, i) => (
-              <li key={i} className="gi-flex">
+            {navLinks?.map((link, index) => (
+              <li key={index} className="gi-flex">
                 <a
                   href={link.href}
                   className="gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"

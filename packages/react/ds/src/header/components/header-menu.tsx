@@ -1,6 +1,6 @@
-import { Text } from '../../text/text.js';
-import HeaderSearch from './headerSearch.js';
 import { Icon } from '../../icon/icon.js';
+import { Text } from '../../text/text.js';
+import HeaderSearch from './header-search.js';
 
 type HeaderMenuProps = {
   navLinks?: {
@@ -31,8 +31,8 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
         </label>
       </div>
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
-        {navLinks?.map((link, i) => (
-          <li key={i}>
+        {navLinks?.map((link, index) => (
+          <li key={index}>
             <a
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
@@ -43,8 +43,8 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
             </a>
           </li>
         ))}
-        {languages?.map((link, i) => (
-          <li key={i}>
+        {languages?.map((link, index) => (
+          <li key={index}>
             <a
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
