@@ -940,8 +940,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/layout-header--docs',
           },
-          status: 'under-review',
+          status: 'alpha',
         },
         {
           platform: {
