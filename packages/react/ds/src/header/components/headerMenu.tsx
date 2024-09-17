@@ -47,7 +47,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
           <li key={i}>
             <a
               href={link.href}
-              className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
+              className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
             >
               <Text size="sm" as="span">
                 {link.label}

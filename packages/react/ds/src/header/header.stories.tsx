@@ -19,6 +19,7 @@ export const Default: Story = {
     },
   },
   args: {
+    logoLink: '/link',
     navLinks: [
       {
         href: '#',
@@ -46,10 +47,15 @@ export const Default: Story = {
   },
 };
 
-export const NoLinks: Story = {};
+export const NoLinks: Story = {
+  args: {
+    logoLink: '/path',
+  },
+};
 
 export const WithMainLinks: Story = {
   args: {
+    logoLink: '/path',
     navLinks: [
       {
         href: '#',
@@ -69,6 +75,7 @@ export const WithMainLinks: Story = {
 
 export const WithSecondaryLinks: Story = {
   args: {
+    logoLink: '/path',
     languages: [
       {
         href: '#',
@@ -84,6 +91,7 @@ export const WithSecondaryLinks: Story = {
 
 export const withMainAndSecondaryLinks: Story = {
   args: {
+    logoLink: '/path',
     navLinks: [
       {
         href: '#',
@@ -118,6 +126,7 @@ export const tabletView: Story = {
     },
   },
   args: {
+    logoLink: '/path',
     navLinks: [
       {
         href: '#',
@@ -152,6 +161,7 @@ export const mobileView: Story = {
     },
   },
   args: {
+    logoLink: '/path',
     navLinks: [
       {
         href: '#',

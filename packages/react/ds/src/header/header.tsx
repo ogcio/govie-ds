@@ -6,6 +6,7 @@ import HeaderSearch from './components/headerSearch.js';
 import { Icon } from '../icon/icon.js';
 
 export type HeaderProps = {
+  logoLink: string;
   languages?: {
     href: string;
     label: string;
@@ -16,7 +17,7 @@ export type HeaderProps = {
   }[];
 };
 
-export function Header({ languages, navLinks }: HeaderProps) {
+export function Header({ logoLink, languages, navLinks }: HeaderProps) {
   return (
     <header className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary">
       {languages && (
@@ -40,12 +41,12 @@ export function Header({ languages, navLinks }: HeaderProps) {
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
         <div className="gi-flex">
-          <div className="xs:gi-block gi-hidden">
+          <a href={logoLink} className="xs:gi-block gi-hidden">
             <GovieLogo />
-          </div>
-          <div className="xs:gi-hidden gi-block">
+          </a>
+          <a href={logoLink} className="xs:gi-hidden gi-block">
             <GovieLogoSmall />
-          </div>
+          </a>
         </div>
         <div className="gi-flex gi-items-center">
           <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">
