@@ -15,7 +15,7 @@ describe('govieBlockquote', () => {
     });
     const pElement = screen.getByText('This is a blockquote');
     expect(pElement).toBeTruthy();
-    expect(pElement.tagName).toBe('blockquote');
+    expect(pElement.tagName.toLowerCase()).toBe('blockquote');
   });
 
   it('should pass axe accessibility tests', async () => {
