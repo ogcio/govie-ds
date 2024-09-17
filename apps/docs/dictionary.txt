@@ -66,4 +66,5 @@ data-testid
 flexbox-based
 checkboxes
 dropdown
+Blockquote
 blockquote
