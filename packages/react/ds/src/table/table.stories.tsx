@@ -9,7 +9,7 @@ import { TableRow } from './table-row.js';
 import { Table } from './table.js';
 
 const meta = {
-  title: 'typography/Table',
+  title: 'components/Table',
   component: Table,
 } satisfies Meta<typeof Table>;
 
