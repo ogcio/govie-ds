@@ -24,9 +24,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
           htmlFor="MobileMenuTrigger"
           className="gi-mr-4 sm:gi-mr-8 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
-          <Text className="gi-text-2md gi-font-bold" size="sm" as="span">
-            Close
-          </Text>
+          <span className="gi-text-2md gi-font-bold">Close</span>
           <Icon icon="close" />
         </label>
       </div>
@@ -37,9 +35,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b gi-border-solid"
             >
-              <Text className="gi-font-bold" size="sm" as="span">
-                {link.label}
-              </Text>
+              <span className="gi-text-sm gi-font-bold">{link.label}</span>
             </a>
           </li>
         ))}
@@ -49,9 +45,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
             >
-              <Text size="sm" as="span">
-                {link.label}
-              </Text>
+              <span className="gi-text-sm">{link.label}</span>
             </a>
           </li>
         ))}

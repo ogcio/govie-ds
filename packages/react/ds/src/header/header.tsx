@@ -30,7 +30,7 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
+                  className="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
                 >
                   {link.label}
                 </a>
@@ -57,7 +57,7 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
               <li key={index} className="gi-flex">
                 <a
                   href={link.href}
-                  className="gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+                  className="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
                 >
                   {link.label}
                 </a>
@@ -69,27 +69,29 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
           )}
           <label
             htmlFor="SearchTrigger"
-            className="focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            className="gi-border gi-border-solid gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
           >
-            <input className="gi-hidden" id="SearchTrigger" type="checkbox" />
-            <Text className="gi-text-2md gi-font-bold gi-text-white" as="span">
+            <input
+              className="gi-block gi-w-0 gi-absolute gi-h-0"
+              id="SearchTrigger"
+              type="checkbox"
+            />
+            <span className="gi-text-2md gi-font-bold gi-text-white">
               Search
-            </Text>
+            </span>
             <Icon className="search-icon gi-text-white" icon="search" />
             <Icon className="gi-hidden close-icon gi-text-white" icon="close" />
           </label>
           <label
             htmlFor="MobileMenuTrigger"
-            className="gi-mr-2 sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+            className="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
           >
             <input
-              className="gi-hidden"
+              className="gi-block gi-w-0 gi-absolute gi-h-0"
               id="MobileMenuTrigger"
               type="checkbox"
             />
-            <Text className="gi-text-2md gi-font-bold gi-text-white" as="span">
-              Menu
-            </Text>
+            <span className="gi-text-2md gi-font-bold gi-text-white">Menu</span>
             <Icon className="gi-text-white" icon="menu" />
           </label>
         </div>

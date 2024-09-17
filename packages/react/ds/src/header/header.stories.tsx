@@ -121,6 +121,7 @@ export const withMainAndSecondaryLinks: Story = {
 
 export const tabletView: Story = {
   parameters: {
+    layout: 'fullscreen',
     viewport: {
       defaultViewport: 'pixel',
     },
@@ -156,6 +157,7 @@ export const tabletView: Story = {
 
 export const mobileView: Story = {
   parameters: {
+    layout: 'fullscreen',
     viewport: {
       defaultViewport: 'mobile2',
     },

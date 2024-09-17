@@ -15,7 +15,6 @@ import {
 
 const preview: Preview = {
   parameters: {
-    layout: 'fullscreen',
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -27,8 +26,8 @@ const preview: Preview = {
         ...INITIAL_VIEWPORTS,
         ...MINIMAL_VIEWPORTS,
       },
-      defaultViewport: 'responsive'
-    }
+      defaultViewport: 'responsive',
+    },
   },
   tags: ['autodocs'],
 };
