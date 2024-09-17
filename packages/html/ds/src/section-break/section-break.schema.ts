@@ -2,9 +2,9 @@ import * as zod from 'zod';
 
 export enum SizeEnum {
   ExtraLarge = 'xl',
-  Large = 'l',
-  Medium = 'm',
-  Small = 's',
+  Large = 'lg',
+  Medium = 'md',
+  Small = 'sm',
 }
 
 export const sectionBreakSchema = zod.object({

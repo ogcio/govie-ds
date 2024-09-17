@@ -11,7 +11,7 @@ describe('govieSectionBreak', () => {
 
   it('should have correct text size classes for "xl"', () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.Large,
+      size: SizeEnum.ExtraLarge,
     });
     const pElement = screen.getByTestId('govie-section-break');
     expect(pElement.classList.contains('gi-my-12')).toBe(true);
