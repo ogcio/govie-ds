@@ -7,6 +7,11 @@ import '@fontsource/lato/900.css';
 import '@govie-react/ds/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
+import '../../ds/styles.css';
+import {
+  INITIAL_VIEWPORTS,
+  MINIMAL_VIEWPORTS,
+} from '@storybook/addon-viewport';
 
 const preview: Preview = {
   parameters: {
@@ -15,6 +20,13 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /date$/i,
       },
+    },
+    viewport: {
+      viewports: {
+        ...INITIAL_VIEWPORTS,
+        ...MINIMAL_VIEWPORTS,
+      },
+      defaultViewport: 'responsive',
     },
   },
   tags: ['autodocs'],

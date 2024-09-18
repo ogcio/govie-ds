@@ -14,10 +14,27 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        serviceName="Example"
-        homeHref="www.gov.ie"
-        serviceHref="#"
-        homeAriaLabel="aria label"
+        logoLink="/home"
+        navLinks={[
+          {
+            href: "#",
+            label: "News",
+          },
+          {
+            href: "#",
+            label: "Departments",
+          },
+          {
+            href: "#",
+            label: "Services",
+          },
+        ]}
+        languages={[
+          {
+            href: "#",
+            label: "Gaeilge",
+          },
+        ]}
       />
       <Container>
         <Heading>Heading</Heading>

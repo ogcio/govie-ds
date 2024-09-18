@@ -1,9 +1,9 @@
-import { createTheme } from "@govie-ds/tailwind";
-import { Config } from "tailwindcss";
+import { createTheme } from '@govie-ds/tailwind';
+import { Config } from 'tailwindcss';
 
 const config: Config = {
-  prefix: "gi-",
-  content: ["../ds/src/**/*.html"],
+  prefix: 'gi-',
+  content: ['../ds/src/**/*.tsx'],
   theme: createTheme(),
   plugins: [],
 };
