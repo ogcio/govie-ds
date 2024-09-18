@@ -13,11 +13,12 @@ export const checkboxesSchema = zod.object({
   }),
   items: zod
     .object({
-      label: zod.string({
-        description:
-          'The value of the checkbox that will be displayed on the screen',
-        required_error: 'The value of the checkbox is required',
-      }),
+      label: zod
+        .string({
+          description:
+            'The value of the checkbox that will be displayed on the screen',
+        })
+        .optional(),
       value: zod.string({
         description:
           'The value associated with the input (this is also the value that is sent on submit)',
@@ -29,7 +30,6 @@ export const checkboxesSchema = zod.object({
             'if there is additional text required in order to give the user more context',
         })
         .optional(),
-      // conditionalInput: ENUMS
     })
     .array(),
   errorMessage: zod

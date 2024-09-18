@@ -30,9 +30,7 @@ export const Default: Story = {
         value: 'Checkbox-1',
       },
       {
-        label: 'Checkbox 2',
         value: 'Checkbox-2',
-        hint: 'This is a hint',
       },
       {
         label: 'Checkbox 3',
@@ -50,6 +48,6 @@ export const Default: Story = {
       hint: 'Hint for checkbox none',
       value: 'checkbox-none',
     },
-    checkboxesSize: CheckboxSizeEnum.Medium,
+    checkboxesSize: CheckboxSizeEnum.Large,
   },
 };
