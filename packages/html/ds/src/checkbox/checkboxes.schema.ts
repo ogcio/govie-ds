@@ -6,11 +6,6 @@ export enum CheckboxSizeEnum {
   Small = 'sm',
 }
 
-export enum TitleSizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-}
-
 export const checkboxesSchema = zod.object({
   fieldId: zod.string({
     description: 'An unique ID given to the group of checkboxes',
@@ -60,13 +55,14 @@ export const checkboxesSchema = zod.object({
       value: zod.string({
         description: 'The name of the title',
       }),
-      size: zod.nativeEnum(TitleSizeEnum, {
-        description: 'Specifies the size of the title',
+      asHeading: zod.boolean({
+        description:
+          'Specifies if the title is a heading ( use only if you have one group of checkboxes in a page )',
       }),
     })
     .optional(),
   checkboxesSize: zod.nativeEnum(CheckboxSizeEnum, {
-    description: 'Specifies the size of the paragraph',
+    description: 'Specifies the size of the checkbox',
   }),
 });
 

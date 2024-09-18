@@ -1,13 +1,30 @@
 {% from 'checkbox/checkbox.html' import govieCheckbox %} 
+{% from 'heading/heading.html' import govieHeading %}
 
 {% macro govieCheckboxesGroup(props) %}
-  {% for checkbox in props.items %}
-      {{govieCheckbox({
+  <fieldset>
+    <legend class="gi-mb-2.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      {% if props.title.asHeading %}
+        {{ govieHeading({
+          "size": "lg",
+          "tag": "h1",
+          "text": props.title.value 
+        })}}
+      {% else %}
+        {{ props.title.value }} 
+      {% endif %}
+    </legend>
+    <div>
+      {% for checkbox in props.items %}
+        {{govieCheckbox({
           "label": checkbox.label, 
           "value": checkbox.value, 
           "hint": checkbox.hint,
           "checkboxId": props.fieldId + "-" + loop.index0,
           "size": props.checkboxesSize
-      })}}
-  {% endfor %}
+        })}}
+      {% endfor %}
+    </div>
+  </fieldset>
+
 {% endmacro %}

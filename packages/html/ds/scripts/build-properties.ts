@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import { glob } from 'glob';
 import * as z from 'zod';
 
-type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array';
+type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array' | 'object';
 
 type MacroProperty = {
   name: string;
@@ -28,6 +28,9 @@ function toType(typeName: string): MacroPropertyType {
     case 'ZodNativeEnum':
     case 'ZodEnum': {
       return 'array';
+    }
+    case 'ZodObject': {
+      return 'object';
     }
     default: {
       throw new Error(`Unknown Zod type '${typeName}'.`);

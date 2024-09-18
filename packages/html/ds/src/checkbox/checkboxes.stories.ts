@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './checkboxes-group.html?raw';
-import {
-  CheckboxesProps,
-  CheckboxSizeEnum,
-  TitleSizeEnum,
-} from './checkboxes.schema';
+import { CheckboxesProps, CheckboxSizeEnum } from './checkboxes.schema';
 
 // Name of the folder the macro resides
 const path = import.meta.url.split('/checkbox')[0];
@@ -44,7 +40,7 @@ export const Default: Story = {
     ],
     title: {
       value: 'Organisation',
-      size: TitleSizeEnum.Large,
+      asHeading: true,
     },
     checkboxesSize: CheckboxSizeEnum.Medium,
   },
