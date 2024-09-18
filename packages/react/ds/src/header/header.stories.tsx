@@ -10,25 +10,183 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
-};
-
-export const WithHomeHref: Story = {
+  argTypes: {
+    navLinks: {
+      description: 'A list of navigation links',
+    },
+    languages: {
+      description: 'A list of secondary navigation links',
+    },
+  },
   args: {
-    homeHref: '#',
-    homeAriaLabel: 'Home',
+    logoLink: '/link',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
   },
 };
 
-export const WithServiceName: Story = {
+export const NoLinks: Story = {
   args: {
-    serviceName: 'Service Name',
+    logoLink: '/path',
   },
 };
 
-export const WithServiceHref: Story = {
+export const WithMainLinks: Story = {
   args: {
-    serviceName: 'Service Name',
-    serviceHref: '#',
+    logoLink: '/path',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
+export const WithSecondaryLinks: Story = {
+  args: {
+    logoLink: '/path',
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const withMainAndSecondaryLinks: Story = {
+  args: {
+    logoLink: '/path',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const tabletView: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'pixel',
+    },
+  },
+  args: {
+    logoLink: '/path',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const mobileView: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logoLink: '/path',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
   },
 };

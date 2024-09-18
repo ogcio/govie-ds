@@ -14,14 +14,14 @@
   >
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
       <div class="gi-flex">
-        <div class="xs:gi-block gi-hidden">{{ govieLogo() }}</div>
-        <div class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</div>
+        <a href="{{ props.logoLink }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
+        <a href="{{ props.logoLink }}" class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</a>
       </div>
       <div class="gi-flex gi-gap-2">
         <noscript class="gi-flex gi-gap-2">
           <a
             href="{{ props.noJsSearchLink }}"
-            class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+            class="gi-border gi-border-solid gi-border-transparent gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
           >
             <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
             <div>
@@ -36,7 +36,7 @@
           <a
             href="{{ props.noJsMenuLink }}"
             data-element="menu-icon"
-            class="gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+            class="gi-border gi-border-solid gi-border-transparent gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
           >
             <span class="gi-text-white gi-text-2md gi-font-bold">Menu</span>
             <div class="gi-text-white">{{ govieIcon({"icon": "menu"}) }}</div>
@@ -44,7 +44,7 @@
         </noscript>
         <button
           data-element="search-mobile"
-          class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-hidden gi-text-md xs:gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
           <div>
@@ -61,7 +61,7 @@
         </button>
         <button
           data-element="menu-icon"
-          class="nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
+          class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm gi-p-2 hover:gi-bg-black hover:gi-bg-opacity-20 focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-text-md gi-flex gi-items-center gi-gap-2 gi-cursor-pointer"
         >
           <span class="gi-text-white gi-text-2md gi-font-bold">Menu</span>
           <div class="gi-text-white">{{ govieIcon({"icon": "menu"}) }}</div>

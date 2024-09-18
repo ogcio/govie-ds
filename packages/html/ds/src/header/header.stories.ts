@@ -31,6 +31,9 @@ export const Default: Story = {
       description:
         'Fallback link for the search button if there is no JS enabled on page',
     },
+    logoLink: {
+      description: 'The link used for the Logo',
+    },
     navLinks: {
       description: 'A list of navigation links',
     },
@@ -39,6 +42,7 @@ export const Default: Story = {
     },
   },
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     navLinks: [
@@ -66,6 +70,7 @@ export const Default: Story = {
 
 export const NoLinks: Story = {
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
   },
@@ -73,6 +78,7 @@ export const NoLinks: Story = {
 
 export const WithMainLinks: Story = {
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     navLinks: [
@@ -94,6 +100,7 @@ export const WithMainLinks: Story = {
 
 export const WithLanguage: Story = {
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     languages: [
@@ -107,6 +114,7 @@ export const WithLanguage: Story = {
 
 export const withMainAndLanguageLinks: Story = {
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     navLinks: [
@@ -139,6 +147,7 @@ export const tabletView: Story = {
     },
   },
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     navLinks: [
@@ -171,6 +180,7 @@ export const mobileView: Story = {
     },
   },
   args: {
+    logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
     navLinks: [
