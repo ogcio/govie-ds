@@ -2,44 +2,51 @@
 {% from 'heading/heading.html' import govieHeading %}
 
 {% macro govieCheckboxesGroup(props) %}
-  <fieldset data-module="gieds-checkboxes">
-    <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-      {% if props.title.asHeading %}
-        {{ govieHeading({
-          "size": "lg",
-          "tag": "h1",
-          "text": props.title.value 
-        })}}
-      {% else %}
-        {{ props.title.value }} 
-      {% endif %}
-      {% if props.title.hint %}
-        <p class="gi-text-gray-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.title.hint }}</p>
-      {% endif %}
-    </legend>
-    <div data-element="checkbox-container" class="gi-flex gi-flex-col gi-gap-2.5">
-      {% for checkbox in props.items %}
-        {{govieCheckbox({
-          "label": checkbox.label, 
-          "value": checkbox.value, 
-          "hint": checkbox.hint,
-          "checkboxId": props.fieldId + "-" + loop.index0,
-          "size": props.checkboxesSize,
-          "dataElement": "checkbox" + loop.index0
-        })}}
-      {% endfor %}
-      {% if props.noneOption %}
-        <p class="{{ getSizeClass(props.size) | trim }} gi-text-center gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
-        {{ govieCheckbox({
-          "label": props.noneOption.label,
-          "value": props.noneOption.value,
-          "hint": props.noneOption.hint,
-          "checkboxId": props.fieldId + "-" + props.items.length,
-          "size": props.checkboxesSize,
-          "dataElement": "checkbox-none-option"
-        })}}
-      {% endif %}
-    </div>
-  </fieldset>
-
+  <div class="gi-flex">
+    {% if props.errorMessage %}
+    <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-700 gi-border-solid"></div>
+    {% endif %}
+    <fieldset data-module="gieds-checkboxes">
+      <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        {% if props.title.asHeading %}
+          {{ govieHeading({
+            "size": "lg",
+            "tag": "h1",
+            "text": props.title.value 
+          })}}
+        {% else %}
+          {{ props.title.value }} 
+        {% endif %}
+        {% if props.title.hint %}
+          <p class="gi-text-gray-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.title.hint }}</p>
+        {% endif %}
+      </legend>
+      <div data-element="checkbox-container" class="gi-flex gi-flex-col gi-gap-2.5">
+        {% if props.errorMessage %}
+          <p class="gi-font-bold gi-text-red-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.errorMessage }}</p>
+        {% endif %}
+        {% for checkbox in props.items %}
+          {{govieCheckbox({
+            "label": checkbox.label, 
+            "value": checkbox.value, 
+            "hint": checkbox.hint,
+            "checkboxId": props.fieldId + "-" + loop.index0,
+            "size": props.checkboxesSize,
+            "dataElement": "checkbox" + loop.index0
+          })}}
+        {% endfor %}
+        {% if props.noneOption %}
+          <p class="{{ getSizeClass(props.size) | trim }} gi-text-center gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
+          {{ govieCheckbox({
+            "label": props.noneOption.label,
+            "value": props.noneOption.value,
+            "hint": props.noneOption.hint,
+            "checkboxId": props.fieldId + "-" + props.items.length,
+            "size": props.checkboxesSize,
+            "dataElement": "checkbox-none-option"
+          })}}
+        {% endif %}
+      </div>
+    </fieldset>
+  </div>
 {% endmacro %}

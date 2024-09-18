@@ -44,6 +44,7 @@ export const Default: Story = {
       asHeading: true,
       hint: 'Title hint',
     },
+    errorMessage: 'Error message',
     noneOption: {
       label: 'Checkbox None',
       hint: 'Hint for checkbox none',
