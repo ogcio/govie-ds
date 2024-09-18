@@ -32,6 +32,7 @@ export const Default: Story = {
       {
         label: 'Checkbox 2',
         value: 'Checkbox-2',
+        hint: 'This is a hint',
       },
       {
         label: 'Checkbox 3',
@@ -41,6 +42,7 @@ export const Default: Story = {
     title: {
       value: 'Organisation',
       asHeading: true,
+      hint: 'Title hint',
     },
     checkboxesSize: CheckboxSizeEnum.Medium,
   },

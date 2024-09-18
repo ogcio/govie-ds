@@ -55,10 +55,17 @@ export const checkboxesSchema = zod.object({
       value: zod.string({
         description: 'The name of the title',
       }),
-      asHeading: zod.boolean({
-        description:
-          'Specifies if the title is a heading ( use only if you have one group of checkboxes in a page )',
-      }),
+      asHeading: zod
+        .boolean({
+          description:
+            'Specifies if the title is a heading ( use only if you have one group of checkboxes in a page )',
+        })
+        .optional(),
+      hint: zod
+        .string({
+          description: 'Specifies the hint of the title',
+        })
+        .optional(),
     })
     .optional(),
   checkboxesSize: zod.nativeEnum(CheckboxSizeEnum, {

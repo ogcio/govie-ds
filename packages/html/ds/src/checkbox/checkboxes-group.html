@@ -3,7 +3,7 @@
 
 {% macro govieCheckboxesGroup(props) %}
   <fieldset>
-    <legend class="gi-mb-2.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+    <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
       {% if props.title.asHeading %}
         {{ govieHeading({
           "size": "lg",
@@ -13,8 +13,11 @@
       {% else %}
         {{ props.title.value }} 
       {% endif %}
+      {% if props.title.hint %}
+        <p class="gi-text-gray-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.title.hint }}</p>
+      {% endif %}
     </legend>
-    <div>
+    <div class="gi-flex gi-flex-col gi-gap-2.5">
       {% for checkbox in props.items %}
         {{govieCheckbox({
           "label": checkbox.label, 

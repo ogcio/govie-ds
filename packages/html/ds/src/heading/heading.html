@@ -23,16 +23,16 @@
     {% endmacro %}
 
     {% if "h1" in props.tag %}
-        {{caption(props.caption)}}<h1 class="{{getClasses(props.size)}}">{{props.text}} </h1>
+        {{caption(props.caption)}}<h1 class="{{getClasses(props.size) | trim }}">{{props.text}} </h1>
     {% elif "h2" in props.tag %}
-        {{caption(props.caption)}}<h2 class="{{getClasses(props.size)}}">{{props.text}}</h2>
+        {{caption(props.caption)}}<h2 class="{{getClasses(props.size) | trim }}">{{props.text}}</h2>
     {% elif "h3" in props.tag %}
-        {{caption(props.caption)}}<h3 class="{{getClasses(props.size)}}">{{props.text}}</h3>
+        {{caption(props.caption)}}<h3 class="{{getClasses(props.size | trim )}}">{{props.text}}</h3>
     {% elif "h4" in props.tag %}
-        {{caption(props.caption)}}<h4 class="{{getClasses(props.size)}}">{{props.text}}</h4>
+        {{caption(props.caption)}}<h4 class="{{getClasses(props.size) | trim }}">{{props.text}}</h4>
     {% elif "h5" in props.tag %}
-        {{caption(props.caption)}}<h5 class="{{getClasses(props.size)}}">{{props.text}}</h5>
+        {{caption(props.caption)}}<h5 class="{{getClasses(props.size) | trim }}">{{props.text}}</h5>
     {% elif "h6" in props.tag %}
-        {{caption(props.caption)}}<h6 class="{{getClasses(props.size)}}">{{props.text}}</h6>
+        {{caption(props.caption)}}<h6 class="{{getClasses(props.size) | trim }}">{{props.text}}</h6>
     {% endif %}
 {% endmacro %}
