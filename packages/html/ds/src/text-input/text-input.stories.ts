@@ -3,8 +3,9 @@ import { renderComponent } from '../storybook/storybook';
 import html from './text-input.html?raw';
 import { TextInputProps } from './text-input.schema';
 
-const macro = { name: 'govieTextInput', html };
+const path = import.meta.url.split('/text-input')[0];
 
+const macro = { name: 'govieTextInput', html, path };
 const TextInput = renderComponent<TextInputProps>(macro);
 
 const meta = {
@@ -109,5 +110,20 @@ export const HalfFluid: Story = {
 export const CharacterWidth: Story = {
   args: {
     characterWidth: 20,
+  },
+};
+
+export const WithLabelHintAndErrorText = {
+  args: {
+    label: {
+      content: 'Label',
+    },
+    hintText: {
+      content: 'Hint',
+    },
+    errorText: {
+      content: 'Error',
+    },
+    hasError: true,
   },
 };
