@@ -1,4 +1,5 @@
 import { Header } from '../header/header';
+import { Checkboxes } from '../checkbox/checkbox';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -7,6 +8,7 @@ function generateRandomId() {
 
 const componentRegistry = {
   Header,
+  Checkboxes,
   // TODO: additional component classes
 } as const;
 

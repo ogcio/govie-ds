@@ -44,6 +44,11 @@ export const Default: Story = {
       asHeading: true,
       hint: 'Title hint',
     },
+    noneOption: {
+      label: 'Checkbox None',
+      hint: 'Hint for checkbox none',
+      value: 'checkbox-none',
+    },
     checkboxesSize: CheckboxSizeEnum.Medium,
   },
 };

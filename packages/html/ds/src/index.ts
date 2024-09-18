@@ -1,6 +1,7 @@
 import { destroyAllInstances } from './common/instances.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
+import { initCheckboxes } from './checkbox/checkbox.js';
 
 export * as properties from './dist/properties.js';
 
@@ -20,6 +21,7 @@ export function initGovIe() {
   addJavaScriptClass();
 
   initHeader();
+  initCheckboxes();
 }
 
 export function destroyGovIe() {
@@ -34,3 +36,4 @@ const componentEvents = createEvents({
 componentEvents.init();
 
 export * from './header/header.js';
+export * from './checkbox/checkbox.js';

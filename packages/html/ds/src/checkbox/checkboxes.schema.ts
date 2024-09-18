@@ -45,9 +45,11 @@ export const checkboxesSchema = zod.object({
       value: zod.string({
         description: 'The value associated with the none checkbox input',
       }),
-      hint: zod.string({
-        description: 'The value of additional text of the none checkbox',
-      }),
+      hint: zod
+        .string({
+          description: 'The value of additional text of the none checkbox',
+        })
+        .optional(),
     })
     .optional(),
   title: zod
