@@ -1,6 +1,15 @@
 import { cn } from '../cn.js';
 
-export type TextAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+export type TextAs =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'blockquote';
 export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
 
 function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
