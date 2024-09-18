@@ -2,7 +2,7 @@
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
 
-  {% if props.fullFluid is not defined or props.fullFluid %}
+  {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
   {% elif props.halfFluid %}
     {% set widthClass = 'gi-w-1/2' %}

@@ -87,5 +87,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    fullFluid: true,
+  },
+};
+
+export const WithSuffix: Story = {
+  args: {
+    fullFluid: true,
+    prefix: 'KG',
+    suffix: 'per item',
+  },
+};
+
+export const HalfFluid: Story = {
+  args: {
+    halfFluid: true,
+  },
+};
+
+export const CharacterWidth: Story = {
+  args: {
+    characterWidth: 20,
+  },
 };
