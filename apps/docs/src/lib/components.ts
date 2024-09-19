@@ -387,8 +387,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/layout-container--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -893,13 +894,14 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/components-icon--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/icon--docs',
+            href: '?path=/docs/components-icon--docs',
           },
           status: 'alpha',
         },
