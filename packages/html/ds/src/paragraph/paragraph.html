@@ -9,11 +9,27 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro getAlignClass(align) %}
+    {% if align == 'right' %}
+      gi-text-right
+    {% elif align == 'center' %}
+      gi-text-center
+    {% elif align == 'justify' %}
+      gi-text-justify
+    {% else %}
+      gi-text-left
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getCommonClasses(props) %}
+    {{ getSizeClass(props.size) | trim }} {{ getAlignClass(props.align) | trim }} gi-max-w-prose gi-text-gray-950 gi-font-primary
+  {% endmacro %}
+
   {% if props.as == 'p' %}
-    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-0 gi-mb-8 gi-max-w-prose gi-text-gray-950 gi-font-primary">{{ props.content | safe | trim }}</p>
+    <p class="{{ getCommonClasses(props) | trim }} gi-mt-0 gi-mb-8">{{ props.content | safe | trim }}</p>
   {% elif props.as == 'span' %}
-    <span class="{{ getSizeClass(props.size) | trim }} gi-my-0 gi-text-gray-950 gi-font-primary">{{ props.content | safe | trim }}</span>
+    <span class="{{ getCommonClasses(props) | trim }} gi-my-0">{{ props.content | safe | trim }}</span>
   {% else %}
-    <p class="{{ getSizeClass(props.size) | trim }} gi-mt-2 gi-mb-8 gi-max-w-prose gi-text-gray-950 gi-font-primary">{{ props.content | safe | trim }}</p>
+    <p class="{{ getCommonClasses(props) | trim }} gi-mt-2 gi-mb-8">{{ props.content | safe | trim }}</p>
   {% endif %}
 {% endmacro %}

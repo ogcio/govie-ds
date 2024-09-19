@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './paragraph.html?raw';
-import { AsEnum, ParagraphProps, SizeEnum } from './paragraph.schema';
+import {
+  AlignEnum,
+  AsEnum,
+  ParagraphProps,
+  SizeEnum,
+} from './paragraph.schema';
 
 const macro = { name: 'govieParagraph', html };
 
@@ -37,10 +42,26 @@ export const Default: Story = {
       type: { name: 'string', required: false },
       description: 'Specifies the size of the paragraph.',
     },
+    align: {
+      control: 'radio',
+      options: Object.values(AlignEnum),
+      type: { name: 'string', required: false },
+      description: 'Specifies the alignment of the paragraph.',
+    },
   },
   args: {
     content: 'This is a paragraph.',
     as: AsEnum.Paragraph,
     size: SizeEnum.Medium,
+    align: AlignEnum.Left,
+  },
+};
+
+export const RightAlignment: Story = {
+  args: {
+    content: 'This is a paragraph.',
+    as: AsEnum.Paragraph,
+    size: SizeEnum.Medium,
+    align: AlignEnum.Right,
   },
 };
