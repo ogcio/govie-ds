@@ -48,6 +48,4 @@ The entire folder can be uploaded as one with the [figma-variables-import](https
 
 Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
 
-<a href="https://www.browserstack.com/"><img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="120"></a>
-
-Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers.
+This project is tested with BrowserStack [BrowserStack](https://www.browserstack.com/)
