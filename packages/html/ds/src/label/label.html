@@ -1,0 +1,12 @@
+{% macro govieLabel(props) %}
+  {% macro getSizeClass(size) %}
+    {% if size == 'lg' %}
+      gi-text-lg
+    {% elif size == 'sm' %}
+      gi-text-sm
+    {% else %}
+      xs:gi-text-sm md:gi-text-md
+    {% endif %}
+  {% endmacro %}
+  <label {%- if props.for %} for="{{ props.for }}"{% endif %} class="{{ getSizeClass(props.size) | trim }} gi-leading-5 gi-text-gray-950 gi-mb-2 gi-block">{{ props.content | safe | trim }}</label>
+{% endmacro %}

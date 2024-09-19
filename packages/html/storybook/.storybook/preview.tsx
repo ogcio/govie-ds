@@ -40,7 +40,6 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
-    layout: 'fullscreen',
     viewport: {
       viewports: {
         ...INITIAL_VIEWPORTS,
