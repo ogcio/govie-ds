@@ -1,4 +1,6 @@
-# govie-ds
+# Gov IE Design System
+
+Gov IE Design System contains the code you need to start building a user interface for government platforms and services.
 
 ## Getting started
 
