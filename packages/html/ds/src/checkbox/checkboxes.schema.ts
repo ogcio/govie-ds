@@ -72,7 +72,7 @@ export const checkboxesSchema = zod.object({
     .optional(),
   checkboxesSize: zod.nativeEnum(CheckboxSizeEnum, {
     description: 'Specifies the size of the checkbox',
-  }),
+  }).optional(),
 });
 
 export type CheckboxesProps = zod.infer<typeof checkboxesSchema>;

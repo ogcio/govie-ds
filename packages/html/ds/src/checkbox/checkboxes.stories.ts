@@ -22,32 +22,184 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  argTypes: {
+    fieldId: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'the unique value for the checboxes group',
+    },
+    items: {
+      control: 'object',
+      type: {
+        name: 'object',
+        required: true,
+        value: {
+          label: {
+            name: 'string',
+          },
+          value: {
+            name: 'string',
+            required: true,
+          },
+          hint: {
+            name: 'string',
+          },
+        },
+      },
+      description: 'A list of the label, values and hint for the checkboxes',
+    },
+    errorMessage: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'The text of the error message',
+    },
+    noneOption: {
+      control: 'object',
+      type: {
+        name: 'object',
+        value: {
+          label: {
+            name: 'string',
+          },
+          value: {
+            name: 'string',
+            required: true,
+          },
+          hint: {
+            name: 'string',
+          },
+        },
+      },
+      description: 'The label, value and hint of the none option checkbox',
+    },
+    title: {
+      control: 'object',
+      type: {
+        name: 'object',
+        value: {
+          value: {
+            name: 'string',
+          },
+          asHeading: {
+            name: 'boolean',
+          },
+          hint: {
+            name: 'string',
+          },
+        },
+      },
+      description: 'The label, hint and option the make the title a heading',
+    },
+    checkboxesSize: {
+      control: 'radio',
+      options: ['lg', 'md', 'sm'],
+      description: 'The sizes of the checkboxes',
+    },
+  },
   args: {
     fieldId: 'UniqueID',
     items: [
       {
-        label: 'Checkbox 1',
-        value: 'Checkbox-1',
+        label: 'Employment Tribunal',
+        value: 'employment-tribunal',
       },
       {
-        value: 'Checkbox-2',
+        label: 'Ministry of Defence',
+        value: 'ministry-of-defence',
       },
       {
-        label: 'Checkbox 3',
-        value: 'Checkbox-3',
+        label: 'Department for Transport',
+        value: 'department-for-transport',
       },
     ],
     title: {
       value: 'Organisation',
       asHeading: true,
-      hint: 'Title hint',
     },
-    errorMessage: 'Error message',
+    checkboxesSize: CheckboxSizeEnum.Medium,
+  },
+};
+
+export const withHints: Story = {
+  args: {
+    fieldId: 'govie-field-ID',
+    items: [
+      {
+        label: 'Irish',
+        value: 'irish',
+      },
+      {
+        label: 'British',
+        value: 'british',
+        hint: 'including English, Scottish, Welsh and Northern Irish',
+      },
+      {
+        label: 'Citizen of another country',
+        value: 'citizen-of-another-country',
+      },
+    ],
+    title: {
+      value: 'What is your nationality?',
+      asHeading: true,
+      hint: 'If you have dual nationality, select all options that are relevant to you.',
+    },
+    checkboxesSize: CheckboxSizeEnum.Medium,
+  },
+};
+
+export const withErrorMessage: Story = {
+  args: {
+    fieldId: 'govie-field-ID',
+    items: [
+      {
+        label: 'Irish',
+        value: 'irish',
+      },
+      {
+        label: 'British',
+        value: 'british',
+      },
+      {
+        label: 'Citizen of another country',
+        value: 'citizen-of-another-country',
+      },
+    ],
+    title: {
+      value: 'What is your nationality?',
+      asHeading: true,
+      hint: 'If you have dual nationality, select all options that are relevant to you.',
+    },
+    errorMessage:
+      'Select if you are Irish, British or a citizen of a different country',
+  },
+};
+
+export const withNoneOption: Story = {
+  args: {
+    fieldId: 'govie-field-ID',
+    items: [
+      {
+        label: 'France',
+        value: 'france',
+      },
+      {
+        label: 'Portugal',
+        value: 'portugal',
+      },
+      {
+        label: 'Spain',
+        value: 'spain',
+      },
+    ],
+    title: {
+      value: 'Will you be travelling to any of these countries?',
+      asHeading: true,
+      hint: 'Select all countries that apply',
+    },
     noneOption: {
-      label: 'Checkbox None',
-      hint: 'Hint for checkbox none',
-      value: 'checkbox-none',
+      label: 'No, I will not be travelling to any of these countries',
+      value: 'no-travel',
     },
-    checkboxesSize: CheckboxSizeEnum.Large,
+    checkboxesSize: CheckboxSizeEnum.Medium,
   },
 };
