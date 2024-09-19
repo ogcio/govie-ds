@@ -45,6 +45,7 @@ export function render<TProps>({
     const markup = renderMacro<TProps>({
       name: macroName,
       html: htmlWithValidation,
+      path: './src/',
     })(props);
 
     const div = document.createElement('div');

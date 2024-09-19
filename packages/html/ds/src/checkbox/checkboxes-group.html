@@ -2,11 +2,11 @@
 {% from 'heading/heading.html' import govieHeading %}
 
 {% macro govieCheckboxesGroup(props) %}
-  <div class="gi-flex">
+  <div data-testid="govie-checkboxes" data-module="govie-checkboxes" class="gi-flex">
     {% if props.errorMessage %}
     <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-700 gi-border-solid"></div>
     {% endif %}
-    <fieldset data-module="gieds-checkboxes">
+    <fieldset>
       <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
           {{ govieHeading({
