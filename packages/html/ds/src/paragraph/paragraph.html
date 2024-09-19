@@ -21,8 +21,20 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro getWhitespaceClass(whitespace) %}
+    {% if whitespace == 'pre' %}
+      gi-whitespace-pre
+    {% elif whitespace == 'pre-wrap' %}
+      gi-whitespace-pre-wrap
+    {% elif whitespace == 'break-spaces' %}
+      gi-whitespace-break-spaces
+    {% else %}
+      gi-whitespace-normal
+    {% endif %}
+  {% endmacro %}
+
   {% macro getCommonClasses(props) %}
-    {{ getSizeClass(props.size) | trim }} {{ getAlignClass(props.align) | trim }} gi-max-w-prose gi-text-gray-950 gi-font-primary
+    {{ getSizeClass(props.size) | trim }} {{ getAlignClass(props.align) | trim }} {{ getWhitespaceClass(props.whitespace) | trim }} gi-max-w-prose gi-text-gray-950 gi-font-primary
   {% endmacro %}
 
   {% if props.as == 'p' %}

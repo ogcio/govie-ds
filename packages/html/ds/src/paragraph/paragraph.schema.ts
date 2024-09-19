@@ -18,6 +18,13 @@ export enum AlignEnum {
   Justify = 'justify',
 }
 
+export enum WhitespaceEnum {
+  Normal = 'normal',
+  Pre = 'pre',
+  PreWrap = 'pre-wrap',
+  BreakSpaces = 'break-spaces',
+}
+
 export const paragraphSchema = zod.object({
   content: zod.string({
     description: 'Content for paragraph.',
@@ -36,6 +43,11 @@ export const paragraphSchema = zod.object({
   align: zod
     .nativeEnum(AlignEnum, {
       description: 'Specifies the alignment of the text.',
+    })
+    .optional(),
+  whitespace: zod
+    .nativeEnum(WhitespaceEnum, {
+      description: 'Specifies the whitespace behavior.',
     })
     .optional(),
 });
