@@ -16,11 +16,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   ({ size = LabelSize.md, htmlFor, ...props }, ref) => {
     return (
       <label
-<<<<<<< Updated upstream
-        className={`gi-text-${size} gi-leading-5 gi-text-gray-950 gi-block`}
-=======
         className={`gi-text-${size} gi-leading-5 gi-text-gray-950 gi-mb-1 gi-block`}
->>>>>>> Stashed changes
         ref={ref}
         htmlFor={htmlFor}
         {...props}
