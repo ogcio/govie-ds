@@ -43,6 +43,14 @@ export const Default: Story = {
         defaultValue: { summary: 'This is error text' },
       },
     },
+    noMargin: {
+      control: 'boolean',
+      table: {
+        category: 'No margin',
+        type: { summary: 'Enable to remove the margin' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
   args: {
     size: ErrorSize.md,

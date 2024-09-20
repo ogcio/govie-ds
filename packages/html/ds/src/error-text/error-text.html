@@ -8,7 +8,14 @@
       xs:gi-text-sm md:gi-text-md
     {% endif %}
   {% endmacro %}
-  <p class="{{ getSizeClass(props.size) | trim }} gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mb-[14px] !gi-mt-0">
+
+  {% macro noMarginMacro(noMargin) %}
+    {% if not noMargin %}
+      !gi-mb-[14px]
+    {% endif %}
+  {% endmacro %}
+
+  <p class="{{ getSizeClass(props.size) | trim }} {{ noMarginMacro(props.noMargin) | trim }} gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mt-0">
     {{ props.content | safe | trim | indent(2) }}
   </p>
 {% endmacro %}

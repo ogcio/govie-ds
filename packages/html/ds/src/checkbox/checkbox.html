@@ -11,11 +11,10 @@
     </label>
   </div>
   {% if props.hint %}
-    <div class="gi-mb-[-10px]">
-      {{ govieHintText({
-        "content": props.hint
-      })}}
-    </div>
+    {{ govieHintText({
+      "content": props.hint,
+      "noMargin": true
+    })}}
   {% endif %}
 </div>
 

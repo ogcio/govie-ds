@@ -21,20 +21,20 @@
           {{ props.title.value }} 
         {% endif %}
         {% if props.title.hint %}
-          <div data-testid="title-hint" class="gi-mb-[-10px]">
+          <div data-testid="title-hint">
             {{ govieHintText({
-              "content": props.title.hint
+              "content": props.title.hint,
+              "noMargin": true
             })}}
           </div>
         {% endif %}
       </legend>
       <div data-element="checkbox-container" class="gi-flex gi-flex-col gi-gap-2.5">
         {% if props.errorMessage %}
-          <div class="gi-mb-[-14px]">
-            {{ govieErrorText({
-              "content": props.errorMessage
-            })}}
-          </div>
+          {{ govieErrorText({
+            "content": props.errorMessage,
+            "noMargin": true
+          })}}
         {% endif %}
         {% for checkbox in props.items %}
           {{govieCheckbox({
