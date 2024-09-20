@@ -113,6 +113,27 @@ export const CharacterWidth: Story = {
   },
 };
 
+export const WithLabel = {
+  args: {
+    label: {
+      content: 'Label',
+    },
+    fullFluid: true,
+  },
+};
+
+export const WithLabelAndHint = {
+  args: {
+    label: {
+      content: 'Label',
+    },
+    hintText: {
+      content: 'Hint',
+    },
+    fullFluid: true,
+  },
+};
+
 export const WithLabelHintAndErrorText = {
   args: {
     label: {
@@ -124,6 +145,7 @@ export const WithLabelHintAndErrorText = {
     errorText: {
       content: 'Error',
     },
+    fullFluid: true,
     hasError: true,
   },
 };

@@ -6,7 +6,8 @@
 
 {% macro govieHeaderSmall(props) %}
 
-<header
+<div
+  data-testid="header-mobile-view"
   class="gi-w-full gi-relative gi-flex-col gi-overflow-x-clip gi-flex sm:gi-hidden"
 >
   <div
@@ -14,8 +15,8 @@
   >
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
       <div class="gi-flex">
-        <a href="{{ props.logoLink }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
-        <a href="{{ props.logoLink }}" class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</a>
+        <a aria-label="Go to the home page" href="{{ props.logoLink }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
+        <a aria-label="Go to the home page" href="{{ props.logoLink }}" class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</a>
       </div>
       <div class="gi-flex gi-gap-2">
         <noscript class="gi-flex gi-gap-2">
@@ -70,13 +71,13 @@
     </div>
   </div>
   <div class="gi-hidden xs:gi-block">
-    {{ HeaderSearchContainer({"dataElement": "search-container-small"}) }}
+    {{ HeaderSearchContainer({"dataElement": "search-container-small","dataTestId": "search-container-tablet"}) }}
   </div>
   {{ headerMenu(props) }}
   <div
     class="gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"
     data-element="overlay-disabled"
   ></div>
-</header>
+</div>
 
 {% endmacro %}
