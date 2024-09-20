@@ -38,7 +38,6 @@ describe('checkboxes', () => {
       const inputElementValue = screen
         .getByText(checkbox.label)
         .previousElementSibling?.getAttribute('value');
-      console.log(inputElementValue);
       expect(labelElement).toBeTruthy();
       expect(inputElementValue).toEqual(checkbox.value);
     });
@@ -72,18 +71,18 @@ describe('checkboxes', () => {
     const checkboxHintElement = screen.getByText('hint for checkbox');
 
     expect(titleHintElement).toBeTruthy();
-    expect(checkboxHintElement).toBeTruthy()
+    expect(checkboxHintElement).toBeTruthy();
   });
 
   it('should render checkboxes with error message', () => {
     const propsWithError = {
       ...standardProps,
-      errorMessage: 'This is an error message'
-    }
+      errorMessage: 'This is an error message',
+    };
     const screen = renderCheckboxes(propsWithError);
     const errorElement = screen.getByText('This is an error message');
 
-    expect(errorElement).toBeTruthy()
+    expect(errorElement).toBeTruthy();
   });
 
   it('should render checkboxes with none option checkbox', () => {
@@ -92,24 +91,55 @@ describe('checkboxes', () => {
       noneOption: {
         label: 'Label for none option',
         value: 'value-for-none-option',
-        hint: 'Hint for none option'
-      }
-    }
+        hint: 'Hint for none option',
+      },
+    };
 
     const screen = renderCheckboxes(propsWithNoOption);
     const noOptionLabelElement = screen.getByText('Label for none option');
-    const noOptionInputElement = screen.getByText('Label for none option').previousElementSibling?.getAttribute('value');
+    const noOptionInputElement = screen
+      .getByText('Label for none option')
+      .previousElementSibling?.getAttribute('value');
     const noOptionHintElement = screen.getByText('Hint for none option');
 
-    console.log(screen)
     expect(noOptionLabelElement).toBeTruthy();
     expect(noOptionInputElement).toBeTruthy();
     expect(noOptionHintElement).toBeTruthy();
   });
 
-  it('should render small checkboxes', () => {});
+  it('should render small checkboxes', () => {
+    const classes = 'gi-w-6 gi-h-6';
+    const propsWithSmallCheckboxes = {
+      ...standardProps,
+      checkboxesSize: CheckboxSizeEnum.Small,
+    };
 
-  it('should render big checkboxes', () => {});
+    const screen = renderCheckboxes(propsWithSmallCheckboxes);
+
+    propsWithSmallCheckboxes.items.forEach((checkbox) => {
+      const inputElementClasses = screen.getByText(checkbox.label)
+        .previousElementSibling?.className;
+
+      expect(inputElementClasses?.includes(classes)).toBeTruthy();
+    });
+  });
+
+  it('should render big checkboxes', () => {
+    const classes = 'gi-w-11 gi-h-11';
+    const propsWithBigCheckboxes = {
+      ...standardProps,
+      checkboxesSize: CheckboxSizeEnum.Large,
+    };
+
+    const screen = renderCheckboxes(propsWithBigCheckboxes);
+
+    propsWithBigCheckboxes.items.forEach((checkbox) => {
+      const inputElementClasses = screen.getByText(checkbox.label)
+        .previousElementSibling?.className;
+
+      expect(inputElementClasses?.includes(classes)).toBeTruthy();
+    });
+  });
 
   it('should pass axe tests', async () => {
     const screen = renderCheckboxes({
