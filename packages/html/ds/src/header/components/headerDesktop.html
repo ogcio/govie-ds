@@ -4,7 +4,7 @@
 
 {% macro govieHeaderDesktop(props) %}
 
-<header class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
+<div class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
   {% if props.languages %}
   <div class="gi-bg-emerald-700 gi-flex gi-h-10 gi-justify-end gi-items-center">
     <ul
@@ -25,7 +25,7 @@
   <div
     class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-8 gi-py-4"
   >
-    <a href="{{ props.logoLink }}">{{ govieLogo() }}</a>
+    <a aria-label="Go to the home page" href="{{ props.logoLink }}">{{ govieLogo() }}</a>
     <div class="gi-flex gi-items-center">
       <ul id="links-container-desktop" class="gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}
@@ -62,6 +62,6 @@
     </div>
   </div>
   {{ HeaderSearchContainer({ "dataElement": "search-container" }) }}
-</header>
+</div>
 
 {% endmacro %}
