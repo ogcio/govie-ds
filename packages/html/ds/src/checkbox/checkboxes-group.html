@@ -1,10 +1,13 @@
-{% from 'checkbox/checkbox.html' import govieCheckbox, getSizeClass %} 
+{% from 'checkbox/checkbox.html' import govieCheckbox %} 
+{% from 'checkbox/helpers.html' import getSizeClass %}
 {% from 'heading/heading.html' import govieHeading %}
+{% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'error-text/error-text.html' import govieErrorText %}
 
 {% macro govieCheckboxesGroup(props) %}
   <div data-testid="govie-checkboxes" data-module="gieds-checkboxes" class="gi-flex">
     {% if props.errorMessage %}
-    <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-700 gi-border-solid"></div>
+    <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
     {% endif %}
     <fieldset>
       <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
@@ -18,12 +21,20 @@
           {{ props.title.value }} 
         {% endif %}
         {% if props.title.hint %}
-          <p data-testid="title-hint" class="gi-text-gray-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.title.hint }}</p>
+          <div data-testid="title-hint" class="gi-mb-[-10px]">
+            {{ govieHintText({
+              "content": props.title.hint
+            })}}
+          </div>
         {% endif %}
       </legend>
       <div data-element="checkbox-container" class="gi-flex gi-flex-col gi-gap-2.5">
         {% if props.errorMessage %}
-          <p class="gi-font-bold gi-text-red-700 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.errorMessage }}</p>
+          <div class="gi-mb-[-14px]">
+            {{ govieErrorText({
+              "content": props.errorMessage
+            })}}
+          </div>
         {% endif %}
         {% for checkbox in props.items %}
           {{govieCheckbox({

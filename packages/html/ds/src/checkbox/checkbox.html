@@ -1,44 +1,21 @@
-{% macro getSizeClass(size) %}
-  {% if size == 'lg' %}
-    gi-w-11 gi-h-11
-  {% elif size == 'sm' %}
-    gi-w-6 gi-h-6
-  {% else %}
-    gi-w-8 gi-h-8
-  {% endif %}
-{% endmacro %}
-
-{% macro getTickSize(size) %}
-  {% if size == 'lg' %}
-  checked:before:gi-w-[27px] checked:before:gi-h-[14px] checked:before:gi-left-[7px] checked:before:gi-top-[7px]
-  {% elif size == 'sm' %}
-  checked:before:gi-w-[16px] checked:before:gi-h-[9px] checked:before:gi-left-0.5 checked:before:gi-top-[4px]
-  {% else %}
-  checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-[6px]
-  {% endif %}
-{% endmacro %}
+{% from 'checkbox/helpers.html' import getTickSize, getSizeClass, getMarginClass %}
+{% from 'hint-text/hint-text.html' import govieHintText %}
 
 {% macro govieCheckbox(props) %}
 
-{% macro getMarginClass(size) %}
-  {% if size == 'lg' %}
-    gi-ml-11
-  {% elif size == 'sm' %}
-    gi-ml-6
-  {% else %}
-    gi-ml-8
-  {% endif %}
-{% endmacro %}
-
 <div class="gi-flex gi-flex-col">
   <div class="gi-flex gi-items-center gi-gap-3.5">
-    <input data-element="{{ props.dataElement }}" id="{{ props.checkboxId }}" value="{{ props.value }}" class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black" type="checkbox" />
-    <label for="{{ props.checkboxId }}" class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+    <input data-element="{{ props.dataElement }}" id="{{ props.checkboxId }}" value="{{ props.value }}" class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black" type="checkbox" />
+    <label for="{{ props.checkboxId }}" class="gi-cursor-pointer gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
       {{ props.label }}
     </label>
   </div>
   {% if props.hint %}
-    <p class="{{ getMarginClass(props.size) | trim }} gi-text-gray-700 gi-pl-3.5 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">{{ props.hint }}</p>
+    <div class="gi-mb-[-10px]">
+      {{ govieHintText({
+        "content": props.hint
+      })}}
+    </div>
   {% endif %}
 </div>
 

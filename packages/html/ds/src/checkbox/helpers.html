@@ -1,0 +1,29 @@
+{% macro getTickSize(size) %}
+  {% if size == 'lg' %}
+  checked:before:gi-w-[27px] checked:before:gi-h-[14px] checked:before:gi-left-[7px] checked:before:gi-top-[7px]
+  {% elif size == 'sm' %}
+  checked:before:gi-w-[16px] checked:before:gi-h-[9px] checked:before:gi-left-0.5 checked:before:gi-top-[4px]
+  {% else %}
+  checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-[6px]
+  {% endif %}
+{% endmacro %}
+
+{% macro getSizeClass(size) %}
+  {% if size == 'lg' %}
+    gi-w-11 gi-h-11
+  {% elif size == 'sm' %}
+    gi-w-6 gi-h-6
+  {% else %}
+    gi-w-8 gi-h-8
+  {% endif %}
+{% endmacro %}
+
+{% macro getMarginClass(size) %}
+  {% if size == 'lg' %}
+    gi-ml-11
+  {% elif size == 'sm' %}
+    gi-ml-6
+  {% else %}
+    gi-ml-8
+  {% endif %}
+{% endmacro %}
