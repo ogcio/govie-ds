@@ -7,6 +7,7 @@
 {% macro govieHeaderSmall(props) %}
 
 <div
+  data-testid="header-mobile-view"
   class="gi-w-full gi-relative gi-flex-col gi-overflow-x-clip gi-flex sm:gi-hidden"
 >
   <div
@@ -70,7 +71,7 @@
     </div>
   </div>
   <div class="gi-hidden xs:gi-block">
-    {{ HeaderSearchContainer({"dataElement": "search-container-small"}) }}
+    {{ HeaderSearchContainer({"dataElement": "search-container-small","dataTestId": "search-container-tablet"}) }}
   </div>
   {{ headerMenu(props) }}
   <div

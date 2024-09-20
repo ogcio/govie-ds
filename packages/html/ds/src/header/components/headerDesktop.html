@@ -4,7 +4,7 @@
 
 {% macro govieHeaderDesktop(props) %}
 
-<div class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
+<div data-testid="header-desktop-view" class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
   {% if props.languages %}
   <div class="gi-bg-emerald-700 gi-flex gi-h-10 gi-justify-end gi-items-center">
     <ul
@@ -13,6 +13,7 @@
       {% for link in props.languages %}
       <li>
         <a
+          data-testid="language-link-desktop-{{loop.index0}}"
           class="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
           href="{{ link.href }}"
           >{{ link.label }}</a
@@ -31,6 +32,7 @@
         {% for link in props.navLinks %}
         <li class="gi-flex">
           <a
+            data-testid="nav-link-desktop-{{loop.index0}}"
             class="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
             href="{{ link.href }}"
             >{{link.label}}</a
@@ -53,6 +55,7 @@
         </a>
       </noscript>
       <button
+        data-testid="search-desktop-button"
         data-element="search-desktop"
         class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
       >
@@ -61,7 +64,7 @@
       </button>
     </div>
   </div>
-  {{ HeaderSearchContainer({ "dataElement": "search-container" }) }}
+  {{ HeaderSearchContainer({ "dataElement": "search-container", "dataTestId": "search-container-desktop" }) }}
 </div>
 
 {% endmacro %}
