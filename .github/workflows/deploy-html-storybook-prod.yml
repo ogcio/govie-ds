@@ -11,9 +11,6 @@ on:
         required: true
         default: "Manual Trigger"
 
-env:
-  AWS_S3_BUCKET_NAME: storybook-html-design-system-blocks-gov-ie
-
 jobs:
   determine-affected:
     runs-on: ubuntu-latest
@@ -86,6 +83,7 @@ jobs:
       id-token: write
       contents: read
     environment: prod
+
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -102,3 +100,10 @@ jobs:
 
       - name: Deploy to S3
         run: aws s3 sync build/ s3://$AWS_S3_BUCKET_NAME/
+        env:
+          AWS_S3_BUCKET_NAME: ${{ vars.HTML_BUCKET_NAME }}
+
+      - name: Invalidate Cloudfront
+        run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
+        env:
+          DISTRIBUTION_ID: ${{ vars.HTML_DISTRIBUTION_ID }}

@@ -387,8 +387,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/layout-container--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -443,8 +444,8 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'inset-text',
-      name: 'Inset Text',
+      id: 'blockquote',
+      name: 'Blockquote',
       statuses: [
         {
           platform: {
@@ -456,14 +457,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-blockquote--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-blockquote--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -507,14 +510,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-phase-banner--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-phase-banner--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -711,14 +716,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
@@ -887,13 +894,14 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/components-icon--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/icon--docs',
+            href: '?path=/docs/components-icon--docs',
           },
           status: 'alpha',
         },
@@ -940,8 +948,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/layout-header--docs',
           },
-          status: 'under-review',
+          status: 'alpha',
         },
         {
           platform: {

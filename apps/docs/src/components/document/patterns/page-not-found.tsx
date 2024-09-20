@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer/footer';
 export function PageNotFound() {
   return (
     <>
-      <Header />
+      <Header logoLink="/" />
       <main>
         <Heading as="h2">Page not found</Heading>
         <Paragraph>
