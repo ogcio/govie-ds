@@ -16,6 +16,11 @@ export const errorTextSchema = zod.object({
       description: 'Size of the error text.',
     })
     .optional(),
+  classNames: zod
+    .string({
+      description: 'Add additional classes',
+    })
+    .optional(),
 });
 
 export type ErrorTextProps = zod.infer<typeof errorTextSchema>;

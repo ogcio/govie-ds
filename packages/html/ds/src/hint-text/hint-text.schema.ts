@@ -16,6 +16,11 @@ export const hintTextSchema = zod.object({
       description: 'Size of the hint text.',
     })
     .optional(),
+  classNames: zod
+    .string({
+      description: 'Add additional classes',
+    })
+    .optional(),
 });
 
 export type HintTextProps = zod.infer<typeof hintTextSchema>;
