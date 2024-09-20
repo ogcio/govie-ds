@@ -62,16 +62,19 @@ export const checkboxesSchema = zod.object({
       value: zod.string({
         description: 'The name of the title',
       }),
-      asHeading: zod.object({
-        size: zod.nativeEnum(Size, {
-          description: 'Options for the size of the heading',
-          required_error: 'Option is required',
-        }),
-        tag: zod.nativeEnum(Tag, {
-          description: 'Options for the tag element of the heading',
-          required_error: 'A tag element is required',
-        }),
-      }).describe('Heading object which includes size and tag').optional(),
+      asHeading: zod
+        .object({
+          size: zod.nativeEnum(Size, {
+            description: 'Options for the size of the heading',
+            required_error: 'Option is required',
+          }),
+          tag: zod.nativeEnum(Tag, {
+            description: 'Options for the tag element of the heading',
+            required_error: 'A tag element is required',
+          }),
+        })
+        .describe('Heading object which includes size and tag')
+        .optional(),
       hint: zod
         .string({
           description: 'Specifies the hint of the title',
