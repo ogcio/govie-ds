@@ -10,7 +10,7 @@ export const FormGroup = React.forwardRef<HTMLDivElement, FormGroupProps>(
     return (
       <div
         ref={ref}
-        className={`gi-pt-2 gi-mb-4 ${hasError ? 'gi-px-4 gi-border-solid gi-border-l-xl gi-border-red-600' : ''}`}
+        className={`gi-pt-2 gi-mb-4 ${hasError ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
         {...props}
       >
         {children}

@@ -230,8 +230,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-textinput--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
@@ -312,8 +313,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/form-textarea--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
