@@ -25,14 +25,14 @@ export function TabItem({
         aria-labelledby={`tab-label-${valueSlug}`}
         aria-roledescription="tab"
         defaultChecked={checked}
-        className={`gi-absolute gi-opacity-0`}
+        className="gi-absolute gi-opacity-0"
       />
       <label
         role="tab"
         htmlFor={`tab-${valueSlug}`}
         id={`tab-label-${valueSlug}`}
         aria-hidden="true"
-        className={`
+        className="
           gi-inline-block 
           gi-cursor-pointer
           gi-px-5
@@ -47,9 +47,9 @@ export function TabItem({
           gi-text-center 
           gi-text-md
           gi-underline
-          gi-text-slate-300`}
+          gi-text-slate-300"
       >
-        <Link href={href} noVisited={true} noColor={true}>
+        <Link href={href} noVisited noColor noUnderline>
           {children}
         </Link>
       </label>
