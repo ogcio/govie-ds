@@ -16,9 +16,9 @@ export const hintTextSchema = zod.object({
       description: 'Size of the hint text.',
     })
     .optional(),
-  noMargin: zod
-    .boolean({
-      description: 'Disable the margin of the text',
+  classNames: zod
+    .string({
+      description: 'Add additional classes',
     })
     .optional(),
 });

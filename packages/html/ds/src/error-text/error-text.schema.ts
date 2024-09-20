@@ -16,9 +16,9 @@ export const errorTextSchema = zod.object({
       description: 'Size of the error text.',
     })
     .optional(),
-  noMargin: zod
-    .boolean({
-      description: 'Disable the margin of the text',
+  classNames: zod
+    .string({
+      description: 'Add additional classes',
     })
     .optional(),
 });

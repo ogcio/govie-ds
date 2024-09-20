@@ -24,7 +24,7 @@
           <div data-testid="title-hint">
             {{ govieHintText({
               "content": props.title.hint,
-              "noMargin": true
+              "classNames": "!gi-mb-0"
             })}}
           </div>
         {% endif %}
@@ -33,7 +33,7 @@
         {% if props.errorMessage %}
           {{ govieErrorText({
             "content": props.errorMessage,
-            "noMargin": true
+            "classNames": "!gi-mb-0"
           })}}
         {% endif %}
         {% for checkbox in props.items %}

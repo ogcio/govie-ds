@@ -1,3 +1,5 @@
+{% from 'helpers/helpers.html' import addClasses %}
+
 {% macro govieErrorText(props) %}
   {% macro getSizeClass(size) %}
     {% if size == 'lg' %}
@@ -9,13 +11,7 @@
     {% endif %}
   {% endmacro %}
 
-  {% macro noMarginMacro(noMargin) %}
-    {% if not noMargin %}
-      !gi-mb-[14px]
-    {% endif %}
-  {% endmacro %}
-
-  <p class="{{ getSizeClass(props.size) | trim }} {{ noMarginMacro(props.noMargin) | trim }} gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mt-0">
+  <p class="{{ getSizeClass(props.size) | trim }} gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] {{ addClasses(props.classNames) | trim }}">
     {{ props.content | safe | trim | indent(2) }}
   </p>
 {% endmacro %}

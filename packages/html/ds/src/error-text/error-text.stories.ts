@@ -3,7 +3,9 @@ import { renderComponent } from '../storybook/storybook';
 import html from './error-text.html?raw';
 import { ErrorSize, ErrorTextProps } from './error-text.schema';
 
-const macro = { name: 'govieErrorText', html };
+const path = import.meta.url.split('/error-text')[0];
+
+const macro = { name: 'govieErrorText', html, path };
 
 const ErrorText = renderComponent<ErrorTextProps>(macro);
 
@@ -41,14 +43,6 @@ export const Default: Story = {
         category: 'Content',
         type: { summary: 'string' },
         defaultValue: { summary: 'This is error text' },
-      },
-    },
-    noMargin: {
-      control: 'boolean',
-      table: {
-        category: 'No margin',
-        type: { summary: 'Enable to remove the margin' },
-        defaultValue: { summary: 'false' },
       },
     },
   },
