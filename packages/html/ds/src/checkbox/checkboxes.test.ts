@@ -33,14 +33,14 @@ describe('checkboxes', () => {
 
   it('should render checkbox labels and inputs', () => {
     const screen = renderCheckboxes(standardProps);
-    standardProps.items.forEach((checkbox) => {
+    for (const checkbox of standardProps.items) {
       const labelElement = screen.getByText(checkbox.label);
       const inputElementValue = screen
         .getByText(checkbox.label)
         .previousElementSibling?.getAttribute('value');
       expect(labelElement).toBeTruthy();
       expect(inputElementValue).toEqual(checkbox.value);
-    });
+    }
   });
 
   it('should render the title', () => {
@@ -116,12 +116,11 @@ describe('checkboxes', () => {
 
     const screen = renderCheckboxes(propsWithSmallCheckboxes);
 
-    propsWithSmallCheckboxes.items.forEach((checkbox) => {
+    for (const checkbox of propsWithSmallCheckboxes.items) {
       const inputElementClasses = screen.getByText(checkbox.label)
         .previousElementSibling?.className;
-
       expect(inputElementClasses?.includes(classes)).toBeTruthy();
-    });
+    }
   });
 
   it('should render big checkboxes', () => {
@@ -133,12 +132,11 @@ describe('checkboxes', () => {
 
     const screen = renderCheckboxes(propsWithBigCheckboxes);
 
-    propsWithBigCheckboxes.items.forEach((checkbox) => {
+    for (const checkbox of propsWithBigCheckboxes.items) {
       const inputElementClasses = screen.getByText(checkbox.label)
         .previousElementSibling?.className;
-
       expect(inputElementClasses?.includes(classes)).toBeTruthy();
-    });
+    }
   });
 
   it('should pass axe tests', async () => {

@@ -37,8 +37,9 @@ export class Checkboxes extends BaseComponent<CheckboxesOptions> {
       const CheckboxesChecked = [...this.checkboxes]
         .map((checkbox) => checkbox.checked)
         .some(Boolean);
-      if (CheckboxesChecked && this.noneCheckbox)
+      if (CheckboxesChecked && this.noneCheckbox) {
         this.noneCheckbox.checked = false;
+      }
     };
   }
 

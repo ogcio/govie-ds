@@ -1,7 +1,7 @@
 import { destroyAllInstances } from './common/instances.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
-import { initCheckboxes } from './checkbox/checkbox.js';
+import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
 
 export * as properties from './dist/properties.js';
 

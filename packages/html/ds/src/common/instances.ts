@@ -1,5 +1,5 @@
-import { Header } from '../header/header';
 import { Checkboxes } from '../checkbox/checkbox';
+import { Header } from '../header/header';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {

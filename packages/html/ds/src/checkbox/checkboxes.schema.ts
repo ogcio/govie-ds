@@ -31,6 +31,9 @@ export const checkboxesSchema = zod.object({
         })
         .optional(),
     })
+    .describe(
+      'Array of the checkboxes which include the label,value and hint properties',
+    )
     .array(),
   errorMessage: zod
     .string({
@@ -51,6 +54,7 @@ export const checkboxesSchema = zod.object({
         })
         .optional(),
     })
+    .describe('if a checkbox is required to unselect all the other checkboxes')
     .optional(),
   title: zod
     .object({
@@ -69,10 +73,15 @@ export const checkboxesSchema = zod.object({
         })
         .optional(),
     })
+    .describe(
+      'The properties of the title which include value, asHeading and hint',
+    )
     .optional(),
-  size: zod.nativeEnum(CheckboxSizeEnum, {
-    description: 'Specifies the size of the checkbox',
-  }).optional(),
+  size: zod
+    .nativeEnum(CheckboxSizeEnum, {
+      description: 'Specifies the size of the checkbox',
+    })
+    .optional(),
 });
 
 export type CheckboxesProps = zod.infer<typeof checkboxesSchema>;
