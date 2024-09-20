@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { Size, Tag } from '../heading/heading.schema';
 import html from './checkboxes-group.html?raw';
 import { CheckboxesProps, CheckboxSizeEnum } from './checkboxes.schema';
 
@@ -158,7 +159,10 @@ describe('checkboxes', () => {
       ],
       title: {
         value: 'Organisation',
-        asHeading: true,
+        asHeading: {
+          size: Size.Medium,
+          tag: Tag.H1,
+        },
         hint: 'Title hint',
       },
       errorMessage: 'Error message',

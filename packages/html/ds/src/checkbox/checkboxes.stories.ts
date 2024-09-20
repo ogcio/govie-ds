@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Size, Tag } from '../heading/heading.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './checkboxes-group.html?raw';
 import { CheckboxesProps } from './checkboxes.schema';
@@ -114,7 +115,10 @@ export const Default: Story = {
     ],
     title: {
       value: 'Organisation',
-      asHeading: true,
+      asHeading: {
+        size: Size.Large,
+        tag: Tag.H1,
+      },
     },
   },
 };
@@ -139,7 +143,10 @@ export const withHints: Story = {
     ],
     title: {
       value: 'What is your nationality?',
-      asHeading: true,
+      asHeading: {
+        size: Size.Medium,
+        tag: Tag.H1,
+      },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
     },
   },
@@ -164,7 +171,10 @@ export const withErrorMessage: Story = {
     ],
     title: {
       value: 'What is your nationality?',
-      asHeading: true,
+      asHeading: {
+        size: Size.Medium,
+        tag: Tag.H1,
+      },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
     },
     errorMessage:
@@ -191,7 +201,10 @@ export const withNoneOption: Story = {
     ],
     title: {
       value: 'Will you be travelling to any of these countries?',
-      asHeading: true,
+      asHeading: {
+        size: Size.Medium,
+        tag: Tag.H1,
+      },
       hint: 'Select all countries that apply',
     },
     noneOption: {

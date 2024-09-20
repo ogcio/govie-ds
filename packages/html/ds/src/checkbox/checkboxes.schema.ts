@@ -1,4 +1,5 @@
 import * as zod from 'zod';
+import { Size, Tag } from '../heading/heading.schema';
 
 export enum CheckboxSizeEnum {
   Large = 'lg',
@@ -61,12 +62,16 @@ export const checkboxesSchema = zod.object({
       value: zod.string({
         description: 'The name of the title',
       }),
-      asHeading: zod
-        .boolean({
-          description:
-            'Specifies if the title is a heading ( use only if you have one group of checkboxes in a page )',
-        })
-        .optional(),
+      asHeading: zod.object({
+        size: zod.nativeEnum(Size, {
+          description: 'Options for the size of the heading',
+          required_error: 'Option is required',
+        }),
+        tag: zod.nativeEnum(Tag, {
+          description: 'Options for the tag element of the heading',
+          required_error: 'A tag element is required',
+        }),
+      }).describe('Heading object which includes size and tag').optional(),
       hint: zod
         .string({
           description: 'Specifies the hint of the title',

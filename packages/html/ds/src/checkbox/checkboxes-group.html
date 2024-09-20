@@ -13,8 +13,8 @@
       <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
           {{ govieHeading({
-            "size": "lg",
-            "tag": "h1",
+            "size": props.title.asHeading.size,
+            "tag": props.title.asHeading.tag,
             "text": props.title.value 
           })}}
         {% else %}
