@@ -18,7 +18,7 @@ export const HintText: React.FC<HintTextProps> = ({ size, ...props }, ref) => {
   return (
     <Text
       size={size}
-      className="gi-font-normal gi-leading-5 gi-text-gray-600 !gi-mb-[10px]"
+      className="gi-font-normal gi-leading-5 gi-text-gray-700 !gi-mb-[10px]"
       {...props}
     >
       {props.children}
