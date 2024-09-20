@@ -313,8 +313,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/form-textarea--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },
