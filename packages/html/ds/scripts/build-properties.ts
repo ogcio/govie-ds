@@ -105,7 +105,7 @@ async function buildProperties() {
   const content: string[] = [];
 
   content.push(
-    `export type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array';`,
+    `export type MacroPropertyType = 'string' | 'number' | 'boolean' | 'array' | 'object';`,
     `export type MacroProperty = { name: string; description: string; type: MacroPropertyType; required: boolean; values?: Record<string,string>; };`,
     `export type MacroProperties = { [key: string]: MacroProperty[]; };`,
   );

@@ -90,7 +90,7 @@ export const Default: Story = {
       },
       description: 'The label, hint and option the make the title a heading',
     },
-    checkboxesSize: {
+    size: {
       control: 'radio',
       options: ['lg', 'md', 'sm'],
       description: 'The sizes of the checkboxes',

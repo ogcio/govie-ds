@@ -42,7 +42,7 @@
             "value": checkbox.value, 
             "hint": checkbox.hint,
             "checkboxId": props.fieldId + "-" + loop.index0,
-            "size": props.checkboxesSize,
+            "size": props.size,
             "dataElement": "checkbox" + loop.index0
           })}}
         {% endfor %}
@@ -53,7 +53,7 @@
             "value": props.noneOption.value,
             "hint": props.noneOption.hint,
             "checkboxId": props.fieldId + "-" + props.items.length,
-            "size": props.checkboxesSize,
+            "size": props.size,
             "dataElement": "checkbox-none-option"
           })}}
         {% endif %}
