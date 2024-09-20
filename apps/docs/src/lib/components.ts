@@ -230,8 +230,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-textinput--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {

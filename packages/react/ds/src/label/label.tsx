@@ -16,7 +16,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   ({ size = LabelSize.md, htmlFor, ...props }, ref) => {
     return (
       <label
-        className={`gi-text-${size} gi-leading-5 gi-text-gray-950 gi-mb-2 gi-block`}
+        className={`gi-text-${size} gi-leading-5 gi-text-gray-950 gi-mb-1 gi-block`}
         ref={ref}
         htmlFor={htmlFor}
         {...props}
