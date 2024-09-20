@@ -2,6 +2,32 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.6.0...@govie-frontend/ds-0.7.0) (2024-09-20)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.7.0`
+
+### Bug Fixes
+
+* add logo link prop for the Header component ([#216](https://github.com/ogcio/govie-ds/issues/216)) ([4ec92f3](https://github.com/ogcio/govie-ds/commit/4ec92f324152b6da035ad7d6b3a95049e34e7f62))
+* html checkbox component ([#217](https://github.com/ogcio/govie-ds/issues/217)) ([d45ca94](https://github.com/ogcio/govie-ds/commit/d45ca94eafa38070b5412076d769166e3853b379))
+* html library unit test ([#221](https://github.com/ogcio/govie-ds/issues/221)) ([ad8dd93](https://github.com/ogcio/govie-ds/commit/ad8dd9346ab78eec6b4795aeceba9224a4c50565))
+* html phase banner ([2a6e427](https://github.com/ogcio/govie-ds/commit/2a6e427b784fa56d5ed879c6852cac72ab548e97))
+* phase banner component ([#220](https://github.com/ogcio/govie-ds/issues/220)) ([924d565](https://github.com/ogcio/govie-ds/commit/924d565be724426a1231c3dbaf7754add0e601aa))
+* update paragraph font sizes after review ([#214](https://github.com/ogcio/govie-ds/issues/214)) ([5ac3adb](https://github.com/ogcio/govie-ds/commit/5ac3adb5a3139297a52514ee8c9c66be9bdc51ea))
+
+
+### Features
+
+* add blockquote component ([#218](https://github.com/ogcio/govie-ds/issues/218)) ([756487d](https://github.com/ogcio/govie-ds/commit/756487d9daffc9528505d65b90906d28a9f091f0))
+* add html text input component ([#222](https://github.com/ogcio/govie-ds/issues/222)) ([e9755ad](https://github.com/ogcio/govie-ds/commit/e9755ad603a8d788c91a7af7140edd6a0c851805))
+* add section break component ([#219](https://github.com/ogcio/govie-ds/issues/219)) ([5dffc20](https://github.com/ogcio/govie-ds/commit/5dffc201c67308b873880c197c3a63bbcc920809))
+* implement header component ([#208](https://github.com/ogcio/govie-ds/issues/208)) ([4641b63](https://github.com/ogcio/govie-ds/commit/4641b6323a2ceb6ad852a7fb2f63682e2180fac6))
+* paragraph improvements ([#223](https://github.com/ogcio/govie-ds/issues/223)) ([e835d53](https://github.com/ogcio/govie-ds/commit/e835d5320fe8e4a2c91381437294bb2b5e803f39))
+
+
+
 # [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.5.0...@govie-frontend/ds-0.6.0) (2024-09-13)
 
 
