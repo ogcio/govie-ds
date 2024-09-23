@@ -1,6 +1,5 @@
 import React from 'react';
 import { slugify } from '../utils.js';
-import { Link } from '../link/link.js';
 
 export function TabItem({
   value,
@@ -9,7 +8,7 @@ export function TabItem({
   children,
 }: {
   value: string;
-  href: string;
+  href?: string;
   checked?: boolean;
   ariaLabel?: string;
   ariaLabelledby?: string;
@@ -49,9 +48,20 @@ export function TabItem({
           gi-underline
           gi-text-slate-300"
       >
-        <Link href={href} noVisited noColor noUnderline>
+        <a
+          href={href}
+          className="
+            gi-decoration-xs
+            hover:gi-decoration-lg
+            focus:gi-outline
+            focus:gi-outline-transparent
+            focus:gi-bg-yellow-400
+            focus:gi-outline-2
+            focus:gi-shadow-sm
+            focus:gi-shadow-yellow-400"
+        >
           {children}
-        </Link>
+        </a>
       </label>
     </>
   );
