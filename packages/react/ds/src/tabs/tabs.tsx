@@ -14,7 +14,7 @@ export function Tabs({
       role="tablist"
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledby}
-      className={`gi-flex gi-flex-wrap`}
+      className="gi-flex gi-flex-wrap"
     >
       {children}
     </div>
