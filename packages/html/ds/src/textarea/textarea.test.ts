@@ -18,8 +18,7 @@ interface ExtendedTextareaProps extends TextareaProps {
   };
 }
 
-// TODO Fix the import issue inside text-area.html to resolve the following test suite.
-describe.skip('govieTextArea', () => {
+describe('govieTextArea', () => {
   const renderTextArea = render<ExtendedTextareaProps>({
     componentName: 'textarea',
     macroName: 'govieTextArea',
