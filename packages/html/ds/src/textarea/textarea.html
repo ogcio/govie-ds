@@ -12,6 +12,9 @@
     {% set widthClass = 'gi-w-1/2' %}
   {% endif %}
 
+  {# Use a unique ID for the textarea if not provided #}
+  {% set textareaId = props.id or 'textarea-id' %}
+
   {# Conditionally render the wrapper div only if hasError is true #}
   {% if props.hasError %}
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
@@ -22,7 +25,7 @@
       {{ govieLabel({
         "content": props.label.content,
         "size": props.label.size or "md",
-        "for": props.label.for or "textarea-id"
+        "for": textareaId
       }) | trim }}
     {% endif %}
 
@@ -44,6 +47,7 @@
 
     <div class="gi-flex gi-items-center">
       <textarea
+        id="{{ textareaId }}"
         rows="{{ props.rows or 4 }}"
         cols="{{ props.cols or 100 }}"
         autocomplete="{{ props.autoComplete or 'on' }}"

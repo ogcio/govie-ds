@@ -22,6 +22,12 @@ export const textAreaSchema = zod.object({
       description: 'Sets the autocomplete behavior for the textarea.',
     })
     .optional(),
+  id: zod
+    .string({
+      description:
+        'Sets the ID for the textarea, used for accessibility and to link with the label.',
+    })
+    .optional(),
 });
 
 export type TextareaProps = zod.infer<typeof textAreaSchema>;

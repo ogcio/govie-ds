@@ -58,6 +58,15 @@ const meta = {
         defaultValue: { summary: 'on' },
       },
     },
+    id: {
+      description: 'Sets the ID for the textarea, used for accessibility.',
+      control: 'text',
+      table: {
+        category: 'Accessibility',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'textarea-id' },
+      },
+    },
   },
 } satisfies Meta<typeof TextArea>;
 
@@ -68,6 +77,7 @@ export const Default: Story = {
   args: {
     rows: 4,
     cols: 100,
+    id: 'textarea-id',
   },
 };
 
@@ -75,6 +85,7 @@ export const CustomSizeWith6RowsAnd50Cols: Story = {
   args: {
     rows: 6,
     cols: 50,
+    id: 'custom-size-textarea',
   },
 };
 
@@ -82,9 +93,11 @@ export const WithLabel = {
   args: {
     label: {
       content: 'Textarea Label',
+      for: 'textarea-id',
     },
     rows: 4,
     cols: 100,
+    id: 'textarea-id',
   },
 };
 
@@ -92,12 +105,14 @@ export const WithLabelAndHint = {
   args: {
     label: {
       content: 'Textarea Label',
+      for: 'textarea-id',
     },
     hintText: {
       content: 'Hint text for textarea',
     },
     rows: 4,
     cols: 100,
+    id: 'textarea-id',
   },
 };
 
@@ -105,6 +120,7 @@ export const WithLabelHintAndError = {
   args: {
     label: {
       content: 'Textarea Label',
+      for: 'textarea-id',
     },
     hintText: {
       content: 'Hint text for textarea',
@@ -115,5 +131,6 @@ export const WithLabelHintAndError = {
     rows: 4,
     cols: 100,
     hasError: true,
+    id: 'textarea-id',
   },
 };

@@ -21,7 +21,7 @@ interface ExtendedTextareaProps extends TextareaProps {
 describe('govieTextArea', () => {
   const renderTextArea = render<ExtendedTextareaProps>({
     componentName: 'textarea',
-    macroName: 'govieTextArea',
+    macroName: 'govieTextarea',
     html,
   });
 
