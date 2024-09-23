@@ -1,7 +1,6 @@
 import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon } from '../icon/icon.js';
-import { Text } from '../text/text.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 

@@ -34,7 +34,7 @@ export function renderMacro<TProps = unknown>({
   path?: string;
 }) {
   return function (props: TProps) {
-    const propsString = JSON.stringify(props);
+    const propsString = JSON.stringify(props, null, 2);
 
     const template = `
       ${html}

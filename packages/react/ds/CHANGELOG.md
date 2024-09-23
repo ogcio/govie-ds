@@ -2,6 +2,30 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.11.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.10.0...@govie-react/ds-0.11.0) (2024-09-20)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.7.0`
+
+### Bug Fixes
+
+* phase banner component ([#220](https://github.com/ogcio/govie-ds/issues/220)) ([924d565](https://github.com/ogcio/govie-ds/commit/924d565be724426a1231c3dbaf7754add0e601aa))
+* update paragraph font sizes after review ([#214](https://github.com/ogcio/govie-ds/issues/214)) ([5ac3adb](https://github.com/ogcio/govie-ds/commit/5ac3adb5a3139297a52514ee8c9c66be9bdc51ea))
+
+
+### Features
+
+* add blockquote component ([#218](https://github.com/ogcio/govie-ds/issues/218)) ([756487d](https://github.com/ogcio/govie-ds/commit/756487d9daffc9528505d65b90906d28a9f091f0))
+* add react textarea component ([#226](https://github.com/ogcio/govie-ds/issues/226)) ([a14c21c](https://github.com/ogcio/govie-ds/commit/a14c21c72959306e1aa7990f8f1d9acbc4117a71))
+* add section break component ([#219](https://github.com/ogcio/govie-ds/issues/219)) ([5dffc20](https://github.com/ogcio/govie-ds/commit/5dffc201c67308b873880c197c3a63bbcc920809))
+* add text input along with label, hint-text, error-text and form-group components. ([#212](https://github.com/ogcio/govie-ds/issues/212)) ([4ce451f](https://github.com/ogcio/govie-ds/commit/4ce451f3b295c1e2e6284a3cc93a401abfd02ad0))
+* paragraph improvements ([#223](https://github.com/ogcio/govie-ds/issues/223)) ([e835d53](https://github.com/ogcio/govie-ds/commit/e835d5320fe8e4a2c91381437294bb2b5e803f39))
+* react header component ([#210](https://github.com/ogcio/govie-ds/issues/210)) ([7ea90ef](https://github.com/ogcio/govie-ds/commit/7ea90ef549327d10b6e954d0b1bf8c3e4d3a2966))
+* react table components ([#215](https://github.com/ogcio/govie-ds/issues/215)) ([fe6a143](https://github.com/ogcio/govie-ds/commit/fe6a143b2650993f01b3cce7307c4bc3e9ff22ab))
+
+
+
 # [0.10.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0...@govie-react/ds-0.10.0) (2024-09-13)
 
 

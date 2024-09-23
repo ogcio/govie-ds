@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0...@govie-ds/tailwind-0.7.0) (2024-09-20)
+
+
+### Features
+
+* implement header component ([#208](https://github.com/ogcio/govie-ds/issues/208)) ([4641b63](https://github.com/ogcio/govie-ds/commit/4641b6323a2ceb6ad852a7fb2f63682e2180fac6))
+
+
+
 # [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.3...@govie-ds/tailwind-0.6.0) (2024-09-10)
 
 

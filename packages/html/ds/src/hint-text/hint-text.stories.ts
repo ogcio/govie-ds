@@ -3,7 +3,9 @@ import { renderComponent } from '../storybook/storybook';
 import html from './hint-text.html?raw';
 import { HintSize, HintTextProps } from './hint-text.schema';
 
-const macro = { name: 'govieHintText', html };
+const path = import.meta.url.split('/hint-text')[0];
+
+const macro = { name: 'govieHintText', html, path };
 
 const HintText = renderComponent<HintTextProps>(macro);
 

@@ -11,46 +11,46 @@
     {# secondary nav links #}
     <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
       {% if props.secondaryNavLinks %}
-      {% for linkObj in props.secondaryNavLinks %}
-      <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
-        {{
-        govieHeading({
-        "text": linkObj.heading,
-        "tag": "h2",
-        "size": "lg"
-        })
-        }}
-        <ul
-          class="gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl {{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
-          {% for link in linkObj.links %}
-          <li class="gi-mb-xl">
+        {% for linkObj in props.secondaryNavLinks %}
+          <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
             {{
-            govieFooterLink({
-            "href" : link.href,
-            "label" : link.label
-            })
+              govieHeading({
+                "text": linkObj.heading,
+                "tag": "h2",
+                "size": "lg"
+                })
             }}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endfor %}
+            <ul
+              class="gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl {{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
+              {% for link in linkObj.links %}
+                <li class="gi-mb-xl">
+                  {{
+                    govieFooterLink({
+                      "href" : link.href,
+                      "label" : link.label
+                    })
+                  }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
       {% endif %}
     </div>
     {# main links #}
     <div className="gi-flex gi-items-center">
       <ul class="gi-mt-xl gi-flex gi-gap-lg gi-mb-xl">
         {% if props.links %}
-        {% for link in props.links %}
-        <li data-testid=main-link-{{loop.index0}}>
-          {{
-          govieFooterLink({
-          "href" : link.href,
-          "label" : link.label
-          })
-          }}
-        </li>
-        {% endfor %}
+          {% for link in props.links %}
+            <li data-testid=main-link-{{loop.index0}}>
+              {{
+                govieFooterLink({
+                  "href" : link.href,
+                  "label" : link.label
+                })
+              }}
+            </li>
+          {% endfor %}
         {% endif %}
       </ul>
       <img class="gi-ml-auto" alt="Gov IE Logo" width="190" height="66"

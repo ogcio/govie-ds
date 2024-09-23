@@ -1,6 +1,6 @@
+import GovieLogo from '../assets/logos/logo-harp-gov.js';
 import { Container } from '../container/container.js';
 import { Heading } from '../heading/heading.js';
-import footerImage from './logo.png';
 
 type FooterLink = {
   label: string;
@@ -74,13 +74,9 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
               ))}
             </ul>
           )}
-          <img
-            className="gi-ml-auto"
-            width="190"
-            height="66"
-            src={footerImage}
-            alt="GOV IE"
-          />
+          <div className="gi-ml-auto">
+            <GovieLogo />
+          </div>
         </div>
       </Container>
     </footer>
