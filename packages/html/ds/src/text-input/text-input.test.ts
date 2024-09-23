@@ -18,8 +18,7 @@ interface ExtendedTextInputProps extends TextInputProps {
   };
 }
 
-// TODO Fix the import issue inside text-input.html to resolve the following test suite.
-describe.skip('govieTextInput', () => {
+describe('govieTextInput', () => {
   const renderTextInput = render<ExtendedTextInputProps>({
     componentName: 'text-input',
     macroName: 'govieTextInput',
