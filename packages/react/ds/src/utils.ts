@@ -1,3 +1,10 @@
+/**
+ * Returns a safe for url string representation.
+ *
+ * @param value - The string to be transformed
+ * @returns A string that can be used as slug
+ *
+ */
 export function slugify(value?: string) {
   if (!value) {
     return value;
