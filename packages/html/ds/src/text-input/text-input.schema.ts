@@ -1,12 +1,9 @@
 import * as zod from 'zod';
+import { errorTextSchema } from '../error-text/error-text.schema';
+import { hintTextSchema } from '../hint-text/hint-text.schema';
+import { labelSchema } from '../label/label.schema';
 
 export const textInputSchema = zod.object({
-  hasError: zod
-    .boolean({
-      description:
-        'Indicates whether the input should be displayed in an error state. When `true`, the border color will be red.',
-    })
-    .optional(),
   prefix: zod
     .string({
       description:
@@ -42,6 +39,9 @@ export const textInputSchema = zod.object({
       description: 'Sets the unique ID for the input field.',
     })
     .optional(),
+  label: labelSchema.optional(),
+  hintText: hintTextSchema.optional(),
+  errorText: errorTextSchema.optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;

@@ -2,24 +2,8 @@ import { render } from '../common/render';
 import html from './text-input.html?raw';
 import { TextInputProps } from './text-input.schema';
 
-interface ExtendedTextInputProps extends TextInputProps {
-  label?: {
-    content: string;
-    size?: string;
-    for?: string;
-  };
-  errorText?: {
-    content: string;
-    size?: string;
-  };
-  hintText?: {
-    content: string;
-    size?: string;
-  };
-}
-
 describe('govieTextInput', () => {
-  const renderTextInput = render<ExtendedTextInputProps>({
+  const renderTextInput = render<TextInputProps>({
     componentName: 'text-input',
     macroName: 'govieTextInput',
     html,
@@ -67,6 +51,7 @@ describe('govieTextInput', () => {
         size: 'md',
         for: 'input-id',
       },
+      id: 'input-id', // Ensure the input has the correct ID
     });
     const labelElement = screen.getByText('Text Input Label');
 
@@ -89,7 +74,6 @@ describe('govieTextInput', () => {
 
   it('should render error text when hasError is true', () => {
     const screen = renderTextInput({
-      hasError: true,
       errorText: {
         content: 'This is an error message',
       },
@@ -102,7 +86,9 @@ describe('govieTextInput', () => {
 
   it('should apply error styles to the input when hasError is true', () => {
     const screen = renderTextInput({
-      hasError: true,
+      errorText: {
+        content: 'Error message',
+      },
     });
     const inputElement = screen.getByRole('textbox');
 
@@ -116,7 +102,7 @@ describe('govieTextInput', () => {
     const prefixElement = screen.getByText('$');
 
     expect(prefixElement).toBeTruthy();
-    expect(prefixElement.tagName).toBe('DIV');
+    expect(prefixElement.tagName).toBe('DIV'); // Assuming prefix is rendered as a <div>
   });
 
   it('should render a suffix if provided', () => {
@@ -126,7 +112,7 @@ describe('govieTextInput', () => {
     const suffixElement = screen.getByText('kg');
 
     expect(suffixElement).toBeTruthy();
-    expect(suffixElement.tagName).toBe('DIV');
+    expect(suffixElement.tagName).toBe('DIV'); // Assuming suffix is rendered as a <div>
   });
 
   it('should associate the label with the input field using "for" attribute', () => {
@@ -136,6 +122,7 @@ describe('govieTextInput', () => {
         size: 'md',
         for: 'input-id',
       },
+      id: 'input-id', // Ensure the input has the correct ID
     });
     const inputElement = screen.getByRole('textbox');
     const labelElement = screen.getByText('Label for input');
@@ -163,6 +150,7 @@ describe('govieTextInput', () => {
         content: 'Accessible label',
         for: 'input-id',
       },
+      id: 'input-id', // Ensure the input has the correct ID for accessibility tests
     });
 
     await screen.axe();

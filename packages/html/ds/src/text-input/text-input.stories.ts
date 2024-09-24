@@ -21,16 +21,6 @@ const meta = {
   },
   component: TextInput,
   argTypes: {
-    hasError: {
-      description:
-        'Indicates whether the input should be displayed in an error state. When `true`, the border color will be red.',
-      control: 'boolean',
-      table: {
-        category: 'Appearance',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
     prefix: {
       description:
         'Element or text to display on the left side of the input, such as a unit or symbol.',
@@ -90,6 +80,31 @@ const meta = {
         defaultValue: { summary: 'input-id' },
       },
     },
+    label: {
+      description: 'Label associated with the input',
+      control: 'object',
+      table: {
+        category: 'Label',
+        type: { summary: 'Label' },
+      },
+    },
+    hintText: {
+      description: 'Hint text for the input to provide additional information.',
+      control: 'object',
+      table: {
+        category: 'Hint',
+        type: { summary: 'HintText' },
+      },
+    },
+    errorText: {
+      description:
+        'Error message for the input, displayed when there is a validation error.',
+      control: 'object',
+      table: {
+        category: 'Error',
+        type: { summary: 'ErrorText' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -99,7 +114,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     fullFluid: true,
-    id: 'default-input',
+    id: 'input-id',
+    label: {
+      content: 'Label',
+      for: 'input-id',
+    },
+    errorText: {
+      content: '',
+    },
+    hintText: {
+      content: '',
+    },
   },
 };
 
@@ -126,20 +151,22 @@ export const CharacterWidth: Story = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     label: {
       content: 'Label',
+      for: 'label-input',
     },
     fullFluid: true,
     id: 'label-input',
   },
 };
 
-export const WithLabelAndHint = {
+export const WithLabelAndHint: Story = {
   args: {
     label: {
       content: 'Label',
+      for: 'label-hint-input',
     },
     hintText: {
       content: 'Hint',
@@ -149,10 +176,11 @@ export const WithLabelAndHint = {
   },
 };
 
-export const WithLabelHintAndErrorText = {
+export const WithLabelHintAndErrorText: Story = {
   args: {
     label: {
       content: 'Label',
+      for: 'error-input',
     },
     hintText: {
       content: 'Hint',
@@ -161,7 +189,6 @@ export const WithLabelHintAndErrorText = {
       content: 'Error',
     },
     fullFluid: true,
-    hasError: true,
     id: 'error-input',
   },
 };
