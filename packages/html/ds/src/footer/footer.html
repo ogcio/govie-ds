@@ -7,10 +7,10 @@
 <footer class="gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl gi-font-primary"
   data-module="gieds-footer">
   {# TODO: Use Container component #}
-  <div class="gi-w-5/6 gi-m-auto gi-max-w-screen-lg">
+  <div class="gi-mx-auto gi-container">
 
     {# secondary nav links #}
-    <div class="gi-mx-auto gi-container">
+    <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
       {% if props.secondaryNavLinks %}
         {% for linkObj in props.secondaryNavLinks %}
           <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
@@ -39,7 +39,7 @@
       {% endif %}
     </div>
     {# main links #}
-    <div class="gi-container gi-flex gi-items-center">
+    <div class="gi-flex gi-items-center">
       <ul class="gi-flex gi-gap-lg gi-grow">
         {% if props.links %}
           {% for link in props.links %}
