@@ -52,11 +52,23 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const classList = this.searchContainer.classList;
 
+      const classListSearchIcon = this.query.getByElement({
+        name: 'search-icon',
+      }).classList;
+      const classListCloseIcon = this.query.getByElement({
+        name: 'search-close-icon',
+      }).classList;
+
       classList.toggle('xs:gi-h-40');
       classList.toggle('xs:gi-h-0');
 
       if (classList.contains('xs:gi-h-40')) {
         this.searchContainer.querySelector('input')?.focus();
+        classListSearchIcon.add('gi-hidden');
+        classListCloseIcon.remove('gi-hidden');
+      } else {
+        classListSearchIcon.remove('gi-hidden');
+        classListCloseIcon.add('gi-hidden');
       }
     };
 
