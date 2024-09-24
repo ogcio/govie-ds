@@ -18,7 +18,6 @@
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
 
-    {# Conditionally render the label if present in props #}
     {% if props.label %}
       {{ govieLabel({
         "content": props.label.content,
@@ -27,7 +26,6 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the hint text if present in props #}
     {% if props.hintText %}
       {{ govieHintText({
         "content": props.hintText.content,
@@ -35,7 +33,6 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the error text if present in props #}
     {% if isError %}
       {{ govieErrorText({
         "content": props.errorText.content,

@@ -24,7 +24,6 @@
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
 
-    {# Conditionally render the label if present in props, linking it with the input ID #}
     {% if props.label %}
       {{ govieLabel({
         "content": props.label.content,
@@ -33,7 +32,6 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the hint text if present in props #}
     {% if props.hintText %}
       {{ govieHintText({
         "content": props.hintText.content,
@@ -41,7 +39,6 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the error text if present in props and if there's an error #}
     {% if isError %}
       {{ govieErrorText({
         "content": props.errorText.content,
@@ -50,7 +47,6 @@
     {% endif %}
 
     <div class="gi-flex gi-items-center">
-      {# Render prefix if provided #}
       {% if props.prefix %}
         <div class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10">
           {{ props.prefix | safe }}
@@ -59,13 +55,11 @@
 
       <input
         id="{{ inputId }}"
-        type="text"  {# Default input type for text input #}
         {{ widthStyle | safe }}
         autocomplete="{{ props.autoComplete or 'on' }}"
         class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
       />
 
-      {# Render suffix if provided #}
       {% if props.suffix %}
         <div class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10">
           {{ props.suffix | safe }}
