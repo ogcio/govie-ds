@@ -70,26 +70,20 @@ export const Default: Story = {
     label: {
       content: 'Label',
     },
-    options: {
-      default: {
-        label: 'Default select',
+    options: [
+      {
+        label: 'Option 1',
         value: 'value-1',
       },
-      items: [
-        {
-          label: 'Option 1',
-          value: 'value-1',
-        },
-        {
-          label: 'Option 2',
-          value: 'value-2',
-        },
-        {
-          label: 'Option 3',
-          value: 'value-3',
-        },
-      ],
-    },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
   },
 };
 
@@ -102,26 +96,20 @@ export const withHint: Story = {
     hint: {
       content: 'This can be different to where you went before',
     },
-    options: {
-      default: {
-        label: 'Default select',
+    options: [
+      {
+        label: 'Option 1',
         value: 'value-1',
       },
-      items: [
-        {
-          label: 'Option 1',
-          value: 'value-2',
-        },
-        {
-          label: 'Option 2',
-          value: 'value-3',
-        },
-        {
-          label: 'Option 3',
-          value: 'value-4',
-        },
-      ],
-    },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
   },
 };
 
@@ -134,25 +122,39 @@ export const withError: Story = {
     error: {
       content: 'Error message',
     },
-    options: {
-      default: {
-        label: 'Default select',
+    options: [
+      {
+        label: 'Option 1',
         value: 'value-1',
       },
-      items: [
-        {
-          label: 'Option 1',
-          value: 'value-2',
-        },
-        {
-          label: 'Option 2',
-          value: 'value-3',
-        },
-        {
-          label: 'Option 3',
-          value: 'value-4',
-        },
-      ],
-    },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+};
+
+export const withoutLabel: Story = {
+  args: {
+    id: 'Unique-ID',
+    options: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
   },
 };

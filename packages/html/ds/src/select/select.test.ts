@@ -7,26 +7,24 @@ const standardProps = {
   label: {
     content: 'Label-text',
   },
-  options: {
-    default: {
+  options: [
+    {
       label: 'Default select',
       value: 'value-1',
     },
-    items: [
-      {
-        label: 'Option 1',
-        value: 'value-1',
-      },
-      {
-        label: 'Option 2',
-        value: 'value-2',
-      },
-      {
-        label: 'Option 3',
-        value: 'value-3',
-      },
-    ],
-  },
+    {
+      label: 'Option 1',
+      value: 'value-2',
+    },
+    {
+      label: 'Option 2',
+      value: 'value-3',
+    },
+    {
+      label: 'Option 3',
+      value: 'value-3',
+    },
+  ],
 };
 
 describe('select', () => {
@@ -50,7 +48,7 @@ describe('select', () => {
 
   it('should render the options', () => {
     const screen = renderSelect(standardProps);
-    for (const option of standardProps.options.items) {
+    for (const option of standardProps.options) {
       const optionElement = screen.getByText(option.label);
       expect(optionElement).toBeTruthy();
     }
@@ -80,5 +78,11 @@ describe('select', () => {
     const screen = renderSelect(propsWithHint);
     const hintElement = screen.getByText('Error Text');
     expect(hintElement).toBeTruthy();
+  });
+
+  it('should pass axe tests', async () => {
+    const screen = renderSelect(standardProps);
+
+    await screen.axe();
   });
 });

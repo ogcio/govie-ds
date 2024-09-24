@@ -3,13 +3,16 @@
 {% from 'error-text/error-text.html' import govieErrorText %}
 
 {% macro govieSelect(props) %}
+{% set ariaLabel = props.label.content or props.id %}
 
 <div data-module="gieds-select">
-  {{ govieLabel({
-    "content": props.label.content,
-    "size": props.label.size,
-    "for": props.id
-  }) }}
+  {% if props.label %}
+    {{ govieLabel({
+      "content": props.label.content,
+      "size": props.label.size,
+      "for": props.id
+    }) }}
+  {% endif %}
   {% if props.hint %}
     {{ govieHintText({
         "content": props.hint.content,
@@ -24,9 +27,8 @@
         "classNames": props.error.classNames
     }) }}
   {% endif %}
-  <select class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">  
-    <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ props.options.default.label }}">{{ props.options.default.label }}</option>
-    {% for option in props.options.items %}
+  <select id="{{ ariaLabel }}" aria-label="{{ ariaLabel }}" class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+    {% for option in props.options %}
       <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ option.value }}">{{ option.label }}</option>
     {% endfor %}
   </select>
