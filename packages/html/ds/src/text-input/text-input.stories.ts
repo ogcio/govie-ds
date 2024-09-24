@@ -81,6 +81,15 @@ const meta = {
         defaultValue: { summary: '-' },
       },
     },
+    id: {
+      description: 'Sets the unique ID for the input field.',
+      control: 'text',
+      table: {
+        category: 'Accessibility',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'input-id' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -90,6 +99,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     fullFluid: true,
+    id: 'default-input',
   },
 };
 
@@ -98,18 +108,21 @@ export const WithSuffix: Story = {
     fullFluid: true,
     prefix: 'KG',
     suffix: 'per item',
+    id: 'suffix-input',
   },
 };
 
 export const HalfFluid: Story = {
   args: {
     halfFluid: true,
+    id: 'half-fluid-input',
   },
 };
 
 export const CharacterWidth: Story = {
   args: {
     characterWidth: 20,
+    id: 'character-width-input',
   },
 };
 
@@ -119,6 +132,7 @@ export const WithLabel = {
       content: 'Label',
     },
     fullFluid: true,
+    id: 'label-input',
   },
 };
 
@@ -131,6 +145,7 @@ export const WithLabelAndHint = {
       content: 'Hint',
     },
     fullFluid: true,
+    id: 'label-hint-input',
   },
 };
 
@@ -147,5 +162,6 @@ export const WithLabelHintAndErrorText = {
     },
     fullFluid: true,
     hasError: true,
+    id: 'error-input',
   },
 };

@@ -15,17 +15,20 @@
     {% set widthStyle = 'style="width: ' ~ props.characterWidth ~ 'em;"' %}
   {% endif %}
 
+  {# Generate a unique or provided ID for input field #}
+  {% set inputId = props.id or 'input-id' %}
+
   {# Conditionally render the wrapper div only if hasError is true #}
   {% if props.hasError %}
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
 
-    {# Conditionally render the label if present in props #}
+    {# Conditionally render the label if present in props, linking it with input ID #}
     {% if props.label %}
       {{ govieLabel({
         "content": props.label.content,
         "size": props.label.size or "md",
-        "for": props.label.for or "input-id"
+        "for": inputId
       }) | trim }}
     {% endif %}
 
@@ -53,6 +56,7 @@
       {% endif %}
 
       <input
+        id="{{ inputId }}"
         {{ widthStyle | safe }}
         class="{% if props.hasError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
       />
