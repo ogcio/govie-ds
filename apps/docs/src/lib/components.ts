@@ -309,8 +309,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-textarea--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
