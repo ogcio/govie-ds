@@ -10,7 +10,7 @@
   <div class="gi-w-5/6 gi-m-auto gi-max-w-screen-lg">
 
     {# secondary nav links #}
-    <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
+    <div class="gi-mx-auto gi-container">
       {% if props.secondaryNavLinks %}
         {% for linkObj in props.secondaryNavLinks %}
           <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
@@ -39,8 +39,8 @@
       {% endif %}
     </div>
     {# main links #}
-    <div className="gi-flex gi-items-center">
-      <ul class="gi-mt-xl gi-flex gi-gap-lg gi-mb-xl">
+    <div class="gi-container gi-flex gi-items-center">
+      <ul class="gi-flex gi-gap-lg gi-grow">
         {% if props.links %}
           {% for link in props.links %}
             <li data-testid=main-link-{{loop.index0}}>
