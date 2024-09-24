@@ -11,14 +11,18 @@ export enum HintSize {
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
 export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
   size?: HintSize;
+  className?: string;
 };
 
 // Use React.forwardRef to support refs properly
-export const HintText: React.FC<HintTextProps> = ({ size, ...props }, ref) => {
+export const HintText: React.FC<HintTextProps> = (
+  { className, size, ...props },
+  ref,
+) => {
   return (
     <Text
       size={size}
-      className="gi-font-normal gi-leading-5 gi-text-gray-700 !gi-mb-[10px]"
+      className={`gi-font-normal gi-leading-5 gi-text-gray-700 gi-mb-[10px] ${className}`}
       {...props}
     >
       {props.children}

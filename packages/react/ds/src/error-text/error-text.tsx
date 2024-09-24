@@ -11,9 +11,11 @@ export enum ErrorSize {
 // the component can accept all the standard attributes and events that a `<p>` element can handle.
 export type ErrorTextProps = React.HTMLAttributes<HTMLParagraphElement> & {
   size?: ErrorSize;
+  className?: string;
 };
 
 export const ErrorText: React.FC<ErrorTextProps> = ({
+  className,
   size = ErrorSize.md,
   ...props
 }) => {
@@ -21,7 +23,7 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
     <Text
       as="p"
       size={size}
-      className="gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mb-[14px] !gi-mt-0"
+      className={`gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block gi-mb-[14px] gi-mt-0 ${className}`}
       {...props}
     >
       {props.children}
