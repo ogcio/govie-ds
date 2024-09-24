@@ -11,9 +11,6 @@ import {
   IconButton,
   PhaseBanner,
   TextInput,
-  FormGroup,
-  Label,
-  HintText,
   Select,
 } from "@govie-react/ds";
 
@@ -45,12 +42,21 @@ export function App() {
       />
       <Container>
         <Heading>Heading</Heading>
-        <FormGroup>
-          <Label htmlFor="text-input">4 characters width</Label>
-          <HintText>Hint Text</HintText>
-          <TextInput characterWidth={40} id="text-input" />
-        </FormGroup>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
+        <TextInput
+          error={{
+            children: "Error: Please correct this issue.",
+          }}
+          hint={{
+            children: "Hint: This is a helpful hint.",
+          }}
+          id="text-input-id"
+          label={{
+            children: "Label",
+            htmlFor: "text-input-id",
+          }}
+          suffix="KG"
+        />
         <Link
           href="https://www.google.com"
           external={true}

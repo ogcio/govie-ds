@@ -4,7 +4,12 @@
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'paragraph/paragraph.html' import govieParagraph %}
 {% from 'container/container.html' import govieContainer %}
+<<<<<<< HEAD
 {% from 'select/select.html' import govieSelect %}
+=======
+{% from 'text-input/text-input.html' import govieTextInput %}
+{% from 'textarea/textarea.html' import govieTextArea %}
+>>>>>>> c5a90d2 (chore: update examples for textarea and textinput)
 
 {% from 'vars.jinja' import footerProps, HeaderProps, SelectProps %}
 
@@ -64,6 +69,45 @@
      {{ 
         govieFooter(footerProps)
      }}
+    <h2>Form - Text Input</h2>
+    {{ govieTextInput({
+			"label": {
+				"content": "Label",
+				"for": "error-input"
+			},
+			"hintText": {
+				"content": "Hint"
+			},
+			"errorText": {
+				"content": "Error"
+			},
+			"fullFluid": true,
+			"id": "error-input",
+			"prefix": "KG",
+			"suffix": "per item"
+		}) }}
+		<h2>Form - TextArea</h2>
+		{{ govieTextArea({
+			"label": {
+				"content": "Textarea Label",
+				"for": "textarea-id"
+			},
+			"hintText": {
+				"content": "Hint text for textarea"
+			},
+			"errorText": {
+				"content": "Error message for textarea"
+			},
+			"rows": 4,
+			"cols": 100,
+			"id": "textarea-id"
+		}) }}
+    <h2>Footer (Local)</h2>
+    <footer class="govie-footer"></footer>
+    <h2>Footer (Global)</h2>
+    {{
+    govieFooter(footerProps)
+    }}
     <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
