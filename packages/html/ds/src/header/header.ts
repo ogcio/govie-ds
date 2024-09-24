@@ -10,7 +10,7 @@ export class Header extends BaseComponent<HeaderOptions> {
   searchIconDesktop: Element;
   searchIconMobile: Element;
   menuIcon: Element;
-  closeMenuIcon: Element;
+  closeMenuIcon: HTMLButtonElement;
   searchContainer: Element;
   searchContainerSmall: Element;
   menuContainer: Element;
@@ -33,7 +33,9 @@ export class Header extends BaseComponent<HeaderOptions> {
 
     this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
 
-    this.closeMenuIcon = this.query.getByElement({ name: 'close-menu-icon' });
+    this.closeMenuIcon = document.querySelector(
+      '[data-element="close-menu-icon"]',
+    )!;
 
     this.searchContainerSmall = this.query.getByElement({
       name: 'search-container-small',
@@ -52,11 +54,23 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const classList = this.searchContainer.classList;
 
+      const classListSearchIcon = this.query.getByElement({
+        name: 'search-icon',
+      }).classList;
+      const classListCloseIcon = this.query.getByElement({
+        name: 'search-close-icon',
+      }).classList;
+
       classList.toggle('xs:gi-h-40');
       classList.toggle('xs:gi-h-0');
 
       if (classList.contains('xs:gi-h-40')) {
         this.searchContainer.querySelector('input')?.focus();
+        classListSearchIcon.add('gi-hidden');
+        classListCloseIcon.remove('gi-hidden');
+      } else {
+        classListSearchIcon.remove('gi-hidden');
+        classListCloseIcon.add('gi-hidden');
       }
     };
 
@@ -90,6 +104,7 @@ export class Header extends BaseComponent<HeaderOptions> {
 
     this.menuIconHandler = (event: Event) => {
       event.stopPropagation();
+      this.closeMenuIcon.focus();
 
       const classList = this.menuContainer.classList;
       const bodyElement = document.querySelector('body');
@@ -146,6 +161,10 @@ export class Header extends BaseComponent<HeaderOptions> {
     );
     this.menuIcon.addEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
+    this.overlayDisabledContainer.addEventListener(
+      'click',
+      this.closeMenuHandler,
+    );
     this.isLinkActive();
   }
 
@@ -157,6 +176,10 @@ export class Header extends BaseComponent<HeaderOptions> {
     );
     this.menuIcon.removeEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
+    this.overlayDisabledContainer.addEventListener(
+      'click',
+      this.closeMenuHandler,
+    );
     this.isLinkActive();
   }
 }
