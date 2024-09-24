@@ -5,6 +5,7 @@
   {% from 'error-text/error-text.html' import govieErrorText %}
 
   {% set widthClass = 'gi-w-auto' %}
+  {% set isError = props.errorText and props.errorText.content %}
 
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
@@ -12,8 +13,8 @@
     {% set widthClass = 'gi-w-1/2' %}
   {% endif %}
 
-  {# Conditionally render the wrapper div only if hasError is true #}
-  {% if props.hasError %}
+  {# Conditionally render the wrapper div only if errorText content is available #}
+  {% if isError %}
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
 
@@ -34,8 +35,8 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the error text if present in props and if hasError is true #}
-    {% if props.errorText %}
+    {# Conditionally render the error text if present in props #}
+    {% if isError %}
       {{ govieErrorText({
         "content": props.errorText.content,
         "size": props.errorText.size or "md"
@@ -48,12 +49,12 @@
         rows="{{ props.rows or 4 }}"
         cols="{{ props.cols or 100 }}"
         autocomplete="{{ props.autoComplete or 'on' }}"
-        class="{% if props.hasError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10"
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10"
       ></textarea>
     </div>
 
-  {# Close the conditional wrapper div if hasError is true #}
-  {% if props.hasError %}
+  {# Close the conditional wrapper div if isError is true #}
+  {% if isError %}
   </div>
   {% endif %}
 

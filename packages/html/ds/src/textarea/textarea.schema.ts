@@ -4,12 +4,6 @@ import { hintTextSchema } from '../hint-text/hint-text.schema';
 import { labelSchema } from '../label/label.schema';
 
 export const textAreaSchema = zod.object({
-  hasError: zod
-    .boolean({
-      description:
-        'Indicates whether the textarea should be displayed in an error state. When `true`, the border color will be red.',
-    })
-    .optional(),
   rows: zod
     .number({
       description: 'Sets the number of rows (height) of the textarea.',

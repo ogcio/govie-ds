@@ -64,7 +64,6 @@ describe('govieTextArea', () => {
 
   it('should render error text when hasError is true', () => {
     const screen = renderTextArea({
-      hasError: true,
       errorText: {
         content: 'This is an error message',
       },
@@ -77,7 +76,9 @@ describe('govieTextArea', () => {
 
   it('should apply error styles to the textarea when hasError is true', () => {
     const screen = renderTextArea({
-      hasError: true,
+      errorText: {
+        content: 'This is Error',
+      },
     });
     const textareaElement = screen.getByRole('textbox');
 

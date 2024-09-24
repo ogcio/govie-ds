@@ -15,22 +15,12 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `hasError` can indicate validation errors.',
+          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `errorText` can indicate validation errors.',
       },
     },
   },
   component: TextArea,
   argTypes: {
-    hasError: {
-      description:
-        'Indicates whether the textarea should be displayed in an error state. When `true`, the border color will be red.',
-      control: 'boolean',
-      table: {
-        category: 'Appearance',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
     rows: {
       description: 'Sets the number of rows (height) of the textarea.',
       control: 'number',
@@ -166,7 +156,6 @@ export const WithLabelHintAndError: Story = {
     },
     rows: 4,
     cols: 100,
-    hasError: true,
     id: 'textarea-id',
   },
 };
