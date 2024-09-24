@@ -37,6 +37,11 @@ export const textInputSchema = zod.object({
         'Sets the width of the input in terms of the number of characters it can contain.',
     })
     .optional(),
+  id: zod
+    .string({
+      description: 'Sets the unique ID for the input field.',
+    })
+    .optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;
