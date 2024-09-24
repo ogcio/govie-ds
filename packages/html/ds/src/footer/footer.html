@@ -1,6 +1,7 @@
 {% macro govieFooter(props) %}
 
 {% from 'heading/heading.html' import govieHeading %}
+{% from 'assets/logos/gov-of-ireland/harp-gold.html' import Logo %}
 {% from 'footer/helpers.html' import hasTwoCols,hasTwoColsLinks, govieFooterLink %}
 
 <footer class="gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl gi-font-primary"
@@ -53,8 +54,12 @@
           {% endfor %}
         {% endif %}
       </ul>
-      <img class="gi-ml-auto" alt="Gov IE Logo" width="190" height="66"
-        src="https://ds.blocks.gov.ie/_next/static/media/logo.a6bf00ac.png" />
+      <div class="gi-ml-auto gi-w-fit">
+        {{Logo({
+          "width": "190",
+          "height": "66"
+        })}}
+      </div>
     </div>
   </div>
 </footer>
