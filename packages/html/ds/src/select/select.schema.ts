@@ -10,19 +10,31 @@ export const selectSchema = zod.object({
   }),
   label: labelSchema,
   options: zod.object({
-    default: zod.string({
-      description: 'Label for default value',
-      required_error: 'The label for default error is required',
+    default: zod.object({
+      label: zod.string({
+        description: 'Label for default option',
+        required_error: 'The label for default error is required',
+      }),
+      value: zod.string({
+        description: 'Value for the default option',
+      }),
     }),
     items: zod
-      .string({
-        description: 'Array of string for the label of the options',
-        required_error: 'The label of the items are required',
+      .object({
+        label: zod.string({
+          description: 'Label for the option',
+          required_error: 'The label for the option is required',
+        }),
+        value: zod.string({
+          description: 'Value for the option',
+          required_error: 'The value for the option is required',
+        }),
       })
-      .array(),
+      .array()
+      .describe('Array of options with labels and values'),
   }),
-  hint: hintTextSchema,
-  error: errorTextSchema,
+  hint: hintTextSchema.optional(),
+  error: errorTextSchema.optional(),
 });
 
 export type SelectProps = zod.infer<typeof selectSchema>;

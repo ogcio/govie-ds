@@ -5,7 +5,31 @@
 {% macro govieSelect(props) %}
 
 <div data-module="gieds-select">
-  TESTING
+  {{ govieLabel({
+    "content": props.label.content,
+    "size": props.label.size,
+    "for": props.id
+  }) }}
+  {% if props.hint %}
+    {{ govieHintText({
+        "content": props.hint.content,
+        "size": props.hint.size,
+        "classNames": props.hint.classNames
+    }) }}
+  {% endif %}
+  {% if props.error %}
+    {{ govieErrorText({
+        "content": props.error.content,
+        "size": props.error.size,
+        "classNames": props.error.classNames
+    }) }}
+  {% endif %}
+  <select class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">  
+    <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ props.options.default.label }}">{{ props.options.default.label }}</option>
+    {% for option in props.options.items %}
+      <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ option.value }}">{{ option.label }}</option>
+    {% endfor %}
+  </select>
 </div>
 
 {% endmacro %}

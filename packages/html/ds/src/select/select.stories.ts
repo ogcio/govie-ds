@@ -22,5 +22,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    id: 'Unique-ID',
+    label: {
+      content: 'Main Heading',
+    },
+    error: {
+      content: 'This is the error',
+    },
+    options: {
+      default: {
+        label: 'Default select',
+        value: 'value-1',
+      },
+      items: [
+        {
+          label: 'Option 1',
+          value: 'value-1',
+        },
+        {
+          label: 'Option 2',
+          value: 'value-2',
+        },
+        {
+          label: 'Option 3',
+          value: 'value-3',
+        },
+      ],
+    },
+  },
 };
