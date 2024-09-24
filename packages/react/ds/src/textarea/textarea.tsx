@@ -51,7 +51,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
         <div className="gi-flex gi-items-center">
           <textarea
-            id={id} // Bind the id for label association
+            id={id}
             rows={rows}
             cols={cols}
             autoComplete={autoComplete}
