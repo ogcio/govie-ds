@@ -1,7 +1,7 @@
 import * as zod from 'zod';
-import { labelSchema } from '../label/label.schema';
-import { hintTextSchema } from '../hint-text/hint-text.schema';
 import { errorTextSchema } from '../error-text/error-text.schema';
+import { hintTextSchema } from '../hint-text/hint-text.schema';
+import { labelSchema } from '../label/label.schema';
 
 export const textAreaSchema = zod.object({
   hasError: zod

@@ -35,7 +35,7 @@
     {% endif %}
 
     {# Conditionally render the error text if present in props and if hasError is true #}
-    {% if props.hasError and props.errorText %}
+    {% if props.errorText %}
       {{ govieErrorText({
         "content": props.errorText.content,
         "size": props.errorText.size or "md"
