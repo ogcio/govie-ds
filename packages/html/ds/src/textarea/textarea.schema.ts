@@ -1,4 +1,7 @@
 import * as zod from 'zod';
+import { labelSchema } from '../label/label.schema';
+import { hintTextSchema } from '../hint-text/hint-text.schema';
+import { errorTextSchema } from '../error-text/error-text.schema';
 
 export const textAreaSchema = zod.object({
   hasError: zod
@@ -28,6 +31,9 @@ export const textAreaSchema = zod.object({
         'Sets the ID for the textarea, used for accessibility and to link with the label.',
     })
     .optional(),
+  label: labelSchema.optional(),
+  hintText: hintTextSchema.optional(),
+  errorText: errorTextSchema.optional(),
 });
 
 export type TextareaProps = zod.infer<typeof textAreaSchema>;

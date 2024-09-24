@@ -5,7 +5,7 @@ import { TextareaProps } from './textarea.schema';
 
 const path = import.meta.url.split('/textarea')[0];
 
-const macro = { name: 'govieTextarea', html, path };
+const macro = { name: 'govieTextArea', html, path };
 const TextArea = renderComponent<TextareaProps>(macro);
 
 const meta = {
@@ -67,6 +67,32 @@ const meta = {
         defaultValue: { summary: 'textarea-id' },
       },
     },
+    label: {
+      description: 'Label associated with the textarea',
+      control: 'object',
+      table: {
+        category: 'Label',
+        type: { summary: 'Label' },
+      },
+    },
+    hintText: {
+      description:
+        'Hint text for the textarea to provide additional information.',
+      control: 'object',
+      table: {
+        category: 'Hint',
+        type: { summary: 'HintText' },
+      },
+    },
+    errorText: {
+      description:
+        'Error message for the textarea, displayed when there is a validation error.',
+      control: 'object',
+      table: {
+        category: 'Error',
+        type: { summary: 'ErrorText' },
+      },
+    },
   },
 } satisfies Meta<typeof TextArea>;
 
@@ -78,6 +104,10 @@ export const Default: Story = {
     rows: 4,
     cols: 100,
     id: 'textarea-id',
+    label: {
+      content: 'Textarea Label',
+      for: 'textarea-id',
+    },
   },
 };
 
@@ -89,7 +119,7 @@ export const CustomSizeWith6RowsAnd50Cols: Story = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     label: {
       content: 'Textarea Label',
@@ -101,7 +131,7 @@ export const WithLabel = {
   },
 };
 
-export const WithLabelAndHint = {
+export const WithLabelAndHint: Story = {
   args: {
     label: {
       content: 'Textarea Label',
@@ -116,7 +146,7 @@ export const WithLabelAndHint = {
   },
 };
 
-export const WithLabelHintAndError = {
+export const WithLabelHintAndError: Story = {
   args: {
     label: {
       content: 'Textarea Label',

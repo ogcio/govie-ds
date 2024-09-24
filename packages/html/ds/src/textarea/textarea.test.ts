@@ -2,26 +2,10 @@ import { render } from '../common/render';
 import html from './textarea.html?raw';
 import { TextareaProps } from './textarea.schema';
 
-interface ExtendedTextareaProps extends TextareaProps {
-  label?: {
-    content: string;
-    size?: string;
-    for?: string;
-  };
-  errorText?: {
-    content: string;
-    size?: string;
-  };
-  hintText?: {
-    content: string;
-    size?: string;
-  };
-}
-
 describe('govieTextArea', () => {
-  const renderTextArea = render<ExtendedTextareaProps>({
+  const renderTextArea = render<TextareaProps>({
     componentName: 'textarea',
-    macroName: 'govieTextarea',
+    macroName: 'govieTextArea',
     html,
   });
 
@@ -100,7 +84,7 @@ describe('govieTextArea', () => {
     expect(textareaElement.classList.contains('gi-border-red-600')).toBe(true);
   });
 
-  it('should associate the label with the textarea field using "for" attribute', () => {
+  it('should associate the label with the textarea field using the "for" attribute', () => {
     const screen = renderTextArea({
       label: {
         content: 'Label for textarea',
