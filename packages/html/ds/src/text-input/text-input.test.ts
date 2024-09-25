@@ -102,7 +102,7 @@ describe('govieTextInput', () => {
     const prefixElement = screen.getByText('$');
 
     expect(prefixElement).toBeTruthy();
-    expect(prefixElement.tagName).toBe('DIV'); // Assuming prefix is rendered as a <div>
+    expect(prefixElement.tagName).toBe('DIV');
   });
 
   it('should render a suffix if provided', () => {
@@ -112,7 +112,7 @@ describe('govieTextInput', () => {
     const suffixElement = screen.getByText('kg');
 
     expect(suffixElement).toBeTruthy();
-    expect(suffixElement.tagName).toBe('DIV'); // Assuming suffix is rendered as a <div>
+    expect(suffixElement.tagName).toBe('DIV');
   });
 
   it('should associate the label with the input field using "for" attribute', () => {
