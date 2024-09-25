@@ -35,10 +35,7 @@ export function processMacrosPlugin() {
         for (const destination of destinations) {
           const destinationDirectory = `${destinationRootDirectory}/${destination.engine}/${destination.mode}/govie`;
 
-          const destinationPath = path.resolve(
-            destinationDirectory,
-            file,
-          );
+          const destinationPath = path.resolve(destinationDirectory, file);
 
           const updatedContent =
             destination.mode === 'dev'
@@ -46,7 +43,7 @@ export function processMacrosPlugin() {
                   engine: destination.engine,
                   mode: destination.mode,
                   content,
-                  macroName: path.basename(file, '.html'),
+                  componentName: path.basename(file, '.html'),
                 })
               : content;
 
