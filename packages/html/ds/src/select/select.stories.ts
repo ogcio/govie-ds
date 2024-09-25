@@ -164,3 +164,48 @@ export const withoutLabel: Story = {
     ],
   },
 };
+
+export const withGroups: Story = {
+  args: {
+    id: 'unique-id',
+    label: {
+      content: 'Default Select',
+    },
+    options: [
+      {
+        groupName: 'Group 1',
+        items: [
+          {
+            label: 'Option 1',
+            value: 'value-1',
+          },
+          {
+            label: 'Option 2',
+            value: 'value-2',
+          },
+          {
+            label: 'Option 3',
+            value: 'value-3',
+          },
+        ],
+      },
+      {
+        groupName: 'Group 2',
+        items: [
+          {
+            label: 'Option 4',
+            value: 'value-4',
+          },
+          {
+            label: 'Option 5',
+            value: 'value-5',
+          },
+          {
+            label: 'Option 6',
+            value: 'value-6',
+          },
+        ],
+      },
+    ],
+  },
+};
