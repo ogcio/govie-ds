@@ -12,9 +12,9 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   halfFluid?: boolean;
   fullFluid?: boolean;
   characterWidth?: number;
-  label?: LabelProps;
-  hint?: HintTextProps;
   error?: ErrorTextProps;
+  hint?: HintTextProps;
+  label?: LabelProps;
 };
 
 // Use React.forwardRef to support refs properly
@@ -46,19 +46,23 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       widthClass = 'gi-w-1/2';
     }
 
+    const hasError = error?.children;
+    const hasHint = hint?.children;
+    const hasLabel = label?.children;
+
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${error ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-pt-2 gi-mb-4 ${hasError ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
-        {label && (
+        {hasLabel && (
           <Label size={label.size} htmlFor={id}>
-            {label.content}
+            {label.children}
           </Label>
         )}
 
-        {hint && <HintText size={hint.size}>{hint.children}</HintText>}
+        {hasHint && <HintText size={hint.size}>{hint.children}</HintText>}
 
-        {error && <ErrorText size={error.size}>{error.children}</ErrorText>}
+        {hasError && <ErrorText size={error.size}>{error.children}</ErrorText>}
 
         <div className="gi-flex gi-items-center">
           {prefix && (
@@ -69,7 +73,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           <input
             id={id}
             style={widthStyle}
-            className={`${error ? 'gi-border-red-600' : 'gi-border-gray-950'} ${widthClass} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5`}
+            className={`${hasError ? 'gi-border-red-600' : 'gi-border-gray-950'} ${widthClass} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5`}
             ref={ref}
             {...props}
           />

@@ -94,14 +94,14 @@ export const Default: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Input Label',
+      children: 'Input Label',
       htmlFor: 'text-input-id',
     },
     hint: {
-      content: '',
+      children: '',
     },
     error: {
-      content: '',
+      children: '',
     },
   },
 };
@@ -110,11 +110,11 @@ export const WithLabelAndHint: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'text-input-id',
     },
     hint: {
-      content: 'Hint: This is a helpful hint.',
+      children: 'Hint: This is a helpful hint.',
     },
   },
 };
@@ -123,11 +123,11 @@ export const WithLabelAndError: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'text-input-id',
     },
     error: {
-      content: 'Error: Please correct this issue.',
+      children: 'Error: Please correct this issue.',
     },
   },
 };
@@ -136,14 +136,14 @@ export const WithLabelHintAndError: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'text-input-id',
     },
     hint: {
-      content: 'Hint: This is a helpful hint.',
+      children: 'Hint: This is a helpful hint.',
     },
     error: {
-      content: 'Error: Please correct this issue.',
+      children: 'Error: Please correct this issue.',
     },
     suffix: 'KG',
   },
@@ -153,7 +153,7 @@ export const WithLabelAndPrefixSuffix: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'text-input-id',
     },
     prefix: 'kg',
@@ -165,7 +165,7 @@ export const HalfFluid: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Half Fluid Input',
+      children: 'Half Fluid Input',
       htmlFor: 'text-input-id',
     },
     halfFluid: true,
@@ -176,7 +176,7 @@ export const FullFluid: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: 'Full Fluid Input',
+      children: 'Full Fluid Input',
       htmlFor: 'text-input-id',
     },
     fullFluid: true,
@@ -187,7 +187,7 @@ export const CharacterWidth: Story = {
   args: {
     id: 'text-input-id',
     label: {
-      content: '4 characters width',
+      children: '4 characters width',
       htmlFor: 'text-input-id',
     },
     characterWidth: 4,

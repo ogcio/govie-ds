@@ -86,14 +86,14 @@ export const Default: Story = {
     cols: 100,
     id: 'textarea-id',
     label: {
-      content: 'Textarea Label',
+      children: 'Textarea Label',
       htmlFor: 'textarea-id',
     },
     error: {
-      content: '',
+      children: '',
     },
     hint: {
-      content: '',
+      children: '',
     },
   },
 };
@@ -102,11 +102,11 @@ export const WithLabelAndHint: Story = {
   args: {
     id: 'textarea-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'textarea-id',
     },
     hint: {
-      content: 'Hint: This is a helpful hint.',
+      children: 'Hint: This is a helpful hint.',
     },
     rows: 4,
     cols: 100,
@@ -117,11 +117,11 @@ export const WithLabelAndError: Story = {
   args: {
     id: 'textarea-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'textarea-id',
     },
     error: {
-      content: 'Error: Please correct this issue.',
+      children: 'Error: Please correct this issue.',
     },
   },
 };
@@ -130,14 +130,14 @@ export const WithLabelHintAndError: Story = {
   args: {
     id: 'textarea-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'textarea-id',
     },
     hint: {
-      content: 'Hint: This is a helpful hint.',
+      children: 'Hint: This is a helpful hint.',
     },
     error: {
-      content: 'Error: Please correct this issue.',
+      children: 'Error: Please correct this issue.',
     },
   },
 };
@@ -146,7 +146,7 @@ export const CustomRowsAndColumns: Story = {
   args: {
     id: 'textarea-id',
     label: {
-      content: 'Label',
+      children: 'Label',
       htmlFor: 'textarea-id',
     },
     rows: 6,

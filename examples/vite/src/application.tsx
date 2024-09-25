@@ -44,13 +44,13 @@ export function App() {
         <Heading>Heading</Heading>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
         <TextInput
+          id="text-input-id"
           error={{
             children: "Error: Please correct this issue.",
           }}
           hint={{
             children: "Hint: This is a helpful hint.",
           }}
-          id="text-input-id"
           label={{
             children: "Label",
             htmlFor: "text-input-id",
