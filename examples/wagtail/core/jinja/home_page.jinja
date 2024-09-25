@@ -4,8 +4,9 @@
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'paragraph/paragraph.html' import govieParagraph %}
 {% from 'container/container.html' import govieContainer %}
+{% from 'select/select.html' import govieSelect %}
 
-{% from 'vars.jinja' import footerProps, HeaderProps %}
+{% from 'vars.jinja' import footerProps, HeaderProps, SelectProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +54,10 @@
     }}
     <h2>Link (Local)</h2>
     <a class="govie-link" href="#">Link for testing</a>
+    <h2>Select (Global)</h2>
+    {{
+        govieSelect(SelectProps)
+    }}
      <h2>Footer (Local)</h2>
      <footer class="govie-footer"></footer>
      <h2>Footer (Global)</h2>

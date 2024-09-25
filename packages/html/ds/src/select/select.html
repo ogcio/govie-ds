@@ -1,0 +1,45 @@
+{% from 'label/label.html' import govieLabel %}
+{% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'error-text/error-text.html' import govieErrorText %}
+
+{% macro govieSelect(props) %}
+{% set ariaLabel = props.label.content or props.id %}
+
+<div data-module="gieds-select">
+  {% if props.label %}
+    {{ govieLabel({
+      "content": props.label.content,
+      "size": props.label.size,
+      "for": props.id
+    }) }}
+  {% endif %}
+  {% if props.hint %}
+    {{ govieHintText({
+        "content": props.hint.content,
+        "size": props.hint.size,
+        "classNames": props.hint.classNames
+    }) }}
+  {% endif %}
+  {% if props.error %}
+    {{ govieErrorText({
+        "content": props.error.content,
+        "size": props.error.size,
+        "classNames": props.error.classNames
+    }) }}
+  {% endif %}
+  <select id="{{ ariaLabel }}" aria-label="{{ ariaLabel }}" class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+    {% for option in props.options %}
+      {% if option.groupName %}
+        <optgroup label="{{ option.groupName }}">
+          {% for option in option.items %}
+            <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ option.value }}">{{ option.label }}</option>
+          {% endfor %}
+        </optgroup>
+      {% else %}
+        <option class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg" value="{{ option.value }}">{{ option.label }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+</div>
+
+{% endmacro %}
