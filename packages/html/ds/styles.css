@@ -28,7 +28,7 @@
   @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline
 }
 
-[name="tabs"]:hover+label {
+[name="tabs"]:hover+label > * {
   @apply gi-decoration-lg
 }
 

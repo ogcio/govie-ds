@@ -30,12 +30,11 @@
                 gi-text-md
                 gi-underline
                 gi-text-slate-300">
-            <span
+            <a
                 {%- if item.href %} href="{{ item.href }}" {% endif %}
-                class="
-                    gi-decoration-xs">
+                class="gi-decoration-xs">
                 {{ item.label }}
-            </span>
+            </a>
         </label>
     {% endmacro -%}
 
