@@ -14,6 +14,7 @@ import {
   FormGroup,
   Label,
   HintText,
+  Select,
 } from "@govie-react/ds";
 
 export function App() {
@@ -76,6 +77,24 @@ export function App() {
         <Paragraph as="span">Span paragraph</Paragraph>
         <hr />
 
+        <Select
+          id="unique-id"
+          label={{ content: "Label" }}
+          options={[
+            {
+              label: "Option 1",
+              value: "value-1",
+            },
+            {
+              label: "Option 2",
+              value: "value-2",
+            },
+            {
+              label: "Option 3",
+              value: "value-3",
+            },
+          ]}
+        />
         <span className="material-icons">face</span>
       </Container>
       <Footer />
