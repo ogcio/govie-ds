@@ -1,0 +1,93 @@
+import { render } from '../common/render';
+import html from './tabs.html?raw';
+import { TabsProps } from './tabs.schema';
+
+describe('tabs', () => {
+  const renderTabs = render<TabsProps>({
+    componentName: 'tabs',
+    macroName: 'govieTabs',
+    html,
+  });
+
+  it('should render tabs', () => {
+    const screen = renderTabs({
+      items: [
+        {
+          label: 'Tab 1',
+          checked: true,
+          panel: {
+            text: 'Tab 1 Content',
+          },
+        },
+        {
+          label: 'Tab 2',
+          panel: {
+            text: 'Tab 2 Content',
+          },
+        },
+        {
+          label: 'Tab 3',
+          panel: {
+            text: 'Tab 3 Content',
+          },
+        },
+      ],
+    });
+    expect(screen.getByText('Tab 1 Content')).toBeTruthy();
+  });
+
+  it('should render tabs', () => {
+    const screen = renderTabs({
+      items: [
+        {
+          label: 'Tab 1',
+          panel: {
+            text: 'Tab 1 Content',
+          },
+        },
+        {
+          label: 'Tab 2',
+          checked: true,
+          panel: {
+            text: 'Tab 2 Content',
+          },
+        },
+        {
+          label: 'Tab 3',
+          panel: {
+            text: 'Tab 3 Content',
+          },
+        },
+      ],
+    });
+    expect(screen.getByText('Tab 2 Content')).toBeTruthy();
+  });
+
+  it('should pass axe tests', async () => {
+    const screen = renderTabs({
+      items: [
+        {
+          label: 'Tab 1',
+          checked: true,
+          panel: {
+            text: 'Tab 1 Content',
+          },
+        },
+        {
+          label: 'Tab 2',
+          panel: {
+            text: 'Tab 2 Content',
+          },
+        },
+        {
+          label: 'Tab 3',
+          panel: {
+            text: 'Tab 3 Content',
+          },
+        },
+      ],
+    });
+
+    await screen.axe();
+  });
+});

@@ -1,0 +1,29 @@
+import * as zod from 'zod';
+
+export const tabsSchema = zod.object({
+  items: zod
+    .object({
+      label: zod.string({
+        description: 'The label of the tab',
+        required_error: 'The label is required',
+      }),
+      href: zod.string().describe('The link related to the tab').optional(),
+      checked: zod
+        .boolean()
+        .describe('Define if the item is selected')
+        .optional(),
+      panel: zod
+        .object({
+          html: zod.string().describe('The html content').optional(),
+          text: zod
+            .string()
+            .describe('The text content, will be wrapped into a Paragraph')
+            .optional(),
+        })
+        .describe('Tab Panel content'),
+    })
+    .array()
+    .describe('Tab Items'),
+});
+
+export type TabsProps = zod.infer<typeof tabsSchema>;
