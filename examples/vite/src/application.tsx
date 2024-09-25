@@ -11,7 +11,11 @@ import {
   IconButton,
   PhaseBanner,
   TextInput,
+<<<<<<< HEAD
   Select,
+=======
+  TextArea,
+>>>>>>> 4ed59aa (chore: update example with texarea react)
 } from "@govie-react/ds";
 
 export function App() {
@@ -56,6 +60,19 @@ export function App() {
             htmlFor: "text-input-id",
           }}
           suffix="KG"
+        />
+        <TextArea
+          error={{
+            children: "Error: Please correct this issue.",
+          }}
+          hint={{
+            children: "Hint: This is a helpful hint.",
+          }}
+          id="textarea-id"
+          label={{
+            children: "Label",
+            htmlFor: "textarea-id",
+          }}
         />
         <Link
           href="https://www.google.com"
