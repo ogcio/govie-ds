@@ -10,11 +10,9 @@ import {
   Container,
   IconButton,
   PhaseBanner,
-  TextInput,
-  FormGroup,
-  Label,
-  HintText,
   Select,
+  TextInput,
+  TextArea,
 } from "@govie-react/ds";
 
 export function App() {
@@ -45,12 +43,34 @@ export function App() {
       />
       <Container>
         <Heading>Heading</Heading>
-        <FormGroup>
-          <Label htmlFor="text-input">4 characters width</Label>
-          <HintText>Hint Text</HintText>
-          <TextInput characterWidth={40} id="text-input" />
-        </FormGroup>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
+        <TextInput
+          id="text-input-id"
+          error={{
+            children: "Error: Please correct this issue.",
+          }}
+          hint={{
+            children: "Hint: This is a helpful hint.",
+          }}
+          label={{
+            children: "Label",
+            htmlFor: "text-input-id",
+          }}
+          suffix="KG"
+        />
+        <TextArea
+          error={{
+            children: "Error: Please correct this issue.",
+          }}
+          hint={{
+            children: "Hint: This is a helpful hint.",
+          }}
+          id="textarea-id"
+          label={{
+            children: "Label",
+            htmlFor: "textarea-id",
+          }}
+        />
         <Link
           href="https://www.google.com"
           external={true}
