@@ -11,8 +11,8 @@ export type TextAreaProps =
     rows?: number;
     cols?: number;
     autoComplete?: string;
-    errorText?: ErrorTextProps;
-    hintText?: HintTextProps;
+    error?: ErrorTextProps;
+    hint?: HintTextProps;
     label?: LabelProps;
   };
 
@@ -24,17 +24,16 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       cols = 100, // default column count
       autoComplete = 'on', // default autoComplete behavior
       label,
-      errorText,
-      hintText,
+      error,
+      hint,
       id,
       ...props
     },
     ref,
   ) => {
-    const hasError = errorText && errorText.content;
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${hasError ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-pt-2 gi-mb-4 ${error ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
         {label && (
           <Label size={label.size} htmlFor={id}>
@@ -42,20 +41,16 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </Label>
         )}
 
-        {hintText && (
-          <HintText size={hintText.size}>{hintText.content}</HintText>
-        )}
+        {hint && <HintText size={hint.size}>{hint.content}</HintText>}
 
-        {hasError && errorText && (
-          <ErrorText size={errorText.size}>{errorText.content}</ErrorText>
-        )}
+        {error && <ErrorText size={error.size}>{error.children}</ErrorText>}
         <div className="gi-flex gi-items-center">
           <textarea
             id={id}
             rows={rows}
             cols={cols}
             autoComplete={autoComplete}
-            className={`${hasError ? 'gi-border-red-600' : 'gi-border-gray-950'} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10`}
+            className={`${error ? 'gi-border-red-600' : 'gi-border-gray-950'} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10`}
             ref={ref}
             {...props}
           />

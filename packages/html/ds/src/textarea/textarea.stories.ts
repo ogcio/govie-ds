@@ -15,7 +15,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `errorText` can indicate validation errors.',
+          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `error` can indicate validation errors.',
       },
     },
   },
@@ -65,7 +65,7 @@ const meta = {
         type: { summary: 'Label' },
       },
     },
-    hintText: {
+    hint: {
       description:
         'Hint text for the textarea to provide additional information.',
       control: 'object',
@@ -74,7 +74,7 @@ const meta = {
         type: { summary: 'HintText' },
       },
     },
-    errorText: {
+    error: {
       description:
         'Error message for the textarea, displayed when there is a validation error.',
       control: 'object',
@@ -98,10 +98,10 @@ export const Default: Story = {
       content: 'Textarea Label',
       for: 'textarea-id',
     },
-    errorText: {
+    error: {
       content: '',
     },
-    hintText: {
+    hint: {
       content: '',
     },
   },
@@ -133,7 +133,7 @@ export const WithLabelAndHint: Story = {
       content: 'Textarea Label',
       for: 'textarea-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint text for textarea',
     },
     rows: 4,
@@ -148,10 +148,10 @@ export const WithLabelHintAndError: Story = {
       content: 'Textarea Label',
       for: 'textarea-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint text for textarea',
     },
-    errorText: {
+    error: {
       content: 'Error message for textarea',
     },
     rows: 4,

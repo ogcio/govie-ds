@@ -88,7 +88,7 @@ const meta = {
         type: { summary: 'Label' },
       },
     },
-    hintText: {
+    hint: {
       description: 'Hint text for the input to provide additional information.',
       control: 'object',
       table: {
@@ -96,7 +96,7 @@ const meta = {
         type: { summary: 'HintText' },
       },
     },
-    errorText: {
+    error: {
       description:
         'Error message for the input, displayed when there is a validation error.',
       control: 'object',
@@ -119,10 +119,10 @@ export const Default: Story = {
       content: 'Label',
       for: 'input-id',
     },
-    errorText: {
+    error: {
       content: '',
     },
-    hintText: {
+    hint: {
       content: '',
     },
   },
@@ -168,7 +168,7 @@ export const WithLabelAndHint: Story = {
       content: 'Label',
       for: 'label-hint-input',
     },
-    hintText: {
+    hint: {
       content: 'Hint',
     },
     fullFluid: true,
@@ -182,10 +182,10 @@ export const WithLabelHintAndErrorText: Story = {
       content: 'Label',
       for: 'error-input',
     },
-    hintText: {
+    hint: {
       content: 'Hint',
     },
-    errorText: {
+    error: {
       content: 'Error',
     },
     fullFluid: true,

@@ -52,7 +52,7 @@ describe('govieTextArea', () => {
 
   it('should render hint text if provided', () => {
     const screen = renderTextArea({
-      hintText: {
+      hint: {
         content: 'This is a hint',
       },
     });
@@ -64,7 +64,7 @@ describe('govieTextArea', () => {
 
   it('should render error text when hasError is true', () => {
     const screen = renderTextArea({
-      errorText: {
+      error: {
         content: 'This is an error message',
       },
     });
@@ -76,7 +76,7 @@ describe('govieTextArea', () => {
 
   it('should apply error styles to the textarea when hasError is true', () => {
     const screen = renderTextArea({
-      errorText: {
+      error: {
         content: 'This is Error',
       },
     });

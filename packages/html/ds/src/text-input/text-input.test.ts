@@ -62,7 +62,7 @@ describe('govieTextInput', () => {
 
   it('should render hint text if provided', () => {
     const screen = renderTextInput({
-      hintText: {
+      hint: {
         content: 'This is a hint',
       },
     });
@@ -74,7 +74,7 @@ describe('govieTextInput', () => {
 
   it('should render error text when hasError is true', () => {
     const screen = renderTextInput({
-      errorText: {
+      error: {
         content: 'This is an error message',
       },
     });
@@ -86,7 +86,7 @@ describe('govieTextInput', () => {
 
   it('should apply error styles to the input when hasError is true', () => {
     const screen = renderTextInput({
-      errorText: {
+      error: {
         content: 'Error message',
       },
     });

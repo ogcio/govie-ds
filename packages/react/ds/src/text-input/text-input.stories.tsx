@@ -21,7 +21,7 @@ const meta = {
         type: { summary: 'Label' },
       },
     },
-    hintText: {
+    hint: {
       description: 'Hint text for additional guidance.',
       control: 'object',
       table: {
@@ -29,7 +29,7 @@ const meta = {
         type: { summary: 'HintText' },
       },
     },
-    errorText: {
+    error: {
       description: 'Error message displayed during validation errors.',
       control: 'object',
       table: {
@@ -97,10 +97,10 @@ export const Default: Story = {
       content: 'Input Label',
       htmlFor: 'text-input-id',
     },
-    hintText: {
+    hint: {
       content: '',
     },
-    errorText: {
+    error: {
       content: '',
     },
   },
@@ -113,7 +113,7 @@ export const WithLabelAndHint: Story = {
       content: 'Label',
       htmlFor: 'text-input-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint: This is a helpful hint.',
     },
   },
@@ -126,7 +126,7 @@ export const WithLabelAndError: Story = {
       content: 'Label',
       htmlFor: 'text-input-id',
     },
-    errorText: {
+    error: {
       content: 'Error: Please correct this issue.',
     },
   },
@@ -139,10 +139,10 @@ export const WithLabelHintAndError: Story = {
       content: 'Label',
       htmlFor: 'text-input-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint: This is a helpful hint.',
     },
-    errorText: {
+    error: {
       content: 'Error: Please correct this issue.',
     },
     suffix: 'KG',

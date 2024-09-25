@@ -39,9 +39,11 @@ export const textInputSchema = zod.object({
       description: 'Sets the unique ID for the input field.',
     })
     .optional(),
-  label: labelSchema.optional(),
-  hintText: hintTextSchema.optional(),
-  errorText: errorTextSchema.optional(),
+  label: labelSchema.describe('Label for text-input').optional(),
+  hint: hintTextSchema.describe('Hint for text-input').optional(),
+  error: errorTextSchema
+    .describe('Set error boundaries for text-input')
+    .optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;

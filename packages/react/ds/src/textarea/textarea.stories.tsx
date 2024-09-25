@@ -21,7 +21,7 @@ const meta = {
         type: { summary: 'Label' },
       },
     },
-    hintText: {
+    hint: {
       description:
         'Hint text for the textarea to provide additional information.',
       control: 'object',
@@ -30,7 +30,7 @@ const meta = {
         type: { summary: 'HintText' },
       },
     },
-    errorText: {
+    error: {
       description:
         'Error message for the textarea, displayed when there is a validation error.',
       control: 'object',
@@ -89,10 +89,10 @@ export const Default: Story = {
       content: 'Textarea Label',
       htmlFor: 'textarea-id',
     },
-    errorText: {
+    error: {
       content: '',
     },
-    hintText: {
+    hint: {
       content: '',
     },
   },
@@ -105,7 +105,7 @@ export const WithLabelAndHint: Story = {
       content: 'Label',
       htmlFor: 'textarea-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint: This is a helpful hint.',
     },
     rows: 4,
@@ -120,7 +120,7 @@ export const WithLabelAndError: Story = {
       content: 'Label',
       htmlFor: 'textarea-id',
     },
-    errorText: {
+    error: {
       content: 'Error: Please correct this issue.',
     },
   },
@@ -133,10 +133,10 @@ export const WithLabelHintAndError: Story = {
       content: 'Label',
       htmlFor: 'textarea-id',
     },
-    hintText: {
+    hint: {
       content: 'Hint: This is a helpful hint.',
     },
-    errorText: {
+    error: {
       content: 'Error: Please correct this issue.',
     },
   },

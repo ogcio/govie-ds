@@ -6,7 +6,7 @@
 
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
-  {% set isError = props.errorText and props.errorText.content %}
+  {% set isError = props.error and props.error.content %}
 
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
@@ -19,7 +19,7 @@
   {# Generate a unique or provided ID for the input field #}
   {% set inputId = props.id or 'input-id' %}
 
-  {# Conditionally render the wrapper div only if errorText content is available #}
+  {# Conditionally render the wrapper div only if error content is available #}
   {% if isError %}
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
@@ -32,17 +32,17 @@
       }) | trim }}
     {% endif %}
 
-    {% if props.hintText %}
+    {% if props.hint %}
       {{ govieHintText({
-        "content": props.hintText.content,
-        "size": props.hintText.size or "md"
+        "content": props.hint.content,
+        "size": props.hint.size or "md"
       }) | trim }}
     {% endif %}
 
     {% if isError %}
       {{ govieErrorText({
-        "content": props.errorText.content,
-        "size": props.errorText.size or "md"
+        "content": props.error.content,
+        "size": props.error.size or "md"
       }) | trim }}
     {% endif %}
 
