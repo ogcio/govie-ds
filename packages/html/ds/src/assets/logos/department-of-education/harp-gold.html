@@ -1,7 +1,9 @@
-{% macro Logo() %}
+{% macro Logo(props) %}
+{% set width = props.width or '148' %}
+{% set height = props.height or '48' %}
 <svg
-  width="148"
-  height="48"
+  width="{{ width }}"
+  height="{{ height }}"
   viewBox="0 0 148 48"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"

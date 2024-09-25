@@ -4,6 +4,7 @@ export type LinkProps = {
   children: React.ReactNode;
   noVisited?: boolean;
   noUnderline?: boolean;
+  noColor?: boolean;
   external?: boolean;
 };
 
@@ -11,9 +12,10 @@ export function Link({
   as: Component = 'a',
   href,
   children,
-  noUnderline,
-  noVisited,
-  external,
+  noUnderline = false,
+  noVisited = false,
+  noColor = false,
+  external = false,
 }: LinkProps) {
   return (
     <Component
@@ -23,15 +25,15 @@ export function Link({
       className={`
         ${noUnderline ? '' : 'gi-underline gi-underline-offset-[0.1em]'}
         ${noVisited ? 'visited:gi-text-blue-700' : 'visited:gi-text-purple-700'}
-        gi-text-blue-700 hover:gi-text-blue-800
-        gi-decoration-[max(1px,0.0625rem)]
-        hover:gi-decoration-skip-ink-none
-        hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
+        ${noColor ? '' : 'gi-text-blue-700 hover:gi-text-blue-800'}
+        gi-decoration-xs
+        hover:gi-decoration-lg
         focus:gi-outline
         focus:gi-outline-transparent
         focus:gi-bg-yellow-400
-        focus:gi-outline-[3px]
-        focus:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-900)]`}
+        focus:gi-outline-2
+        focus:gi-shadow-sm
+        focus:gi-shadow-yellow-400`}
     >
       {children}
     </Component>

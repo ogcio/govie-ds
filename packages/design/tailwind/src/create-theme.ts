@@ -143,6 +143,7 @@ export function createTheme(
       black: variables.primitive.font.weight['900'],
     },
     borderWidth: {
+      0: '0px',
       xs: variables.primitive.border.width['100'],
       sm: variables.primitive.border.width['200'],
       md: variables.primitive.border.width['300'],

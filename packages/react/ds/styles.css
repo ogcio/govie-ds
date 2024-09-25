@@ -17,29 +17,61 @@
   opacity: 0;
 }
 
-/* Header Styles */
+@layer components {
 
-#GovieHeader {
+  /* Header Styles */
 
-  #MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
-    height: var(--gieds-space-40);
+  #GovieHeader {
+
+    #MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+      height: var(--gieds-space-40);
+    }
+    
+    #SearchTrigger:checked ~ .search-icon {
+      display: none; 
+    }
+    
+    #SearchTrigger:checked ~ .close-icon {
+      display: block; 
+    }
+    
+    #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+      transform: translateX(0);
+    }
+    #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+      display: block;
+      position: fixed;
+    }
   }
+
+  /* Tabs */
   
-  #SearchTrigger:checked ~ .search-icon {
-    display: none; 
+  [name="tabs"]:checked+[role="tab"] {
+    @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline
   }
-  
-  #SearchTrigger:checked ~ .close-icon {
-    display: block; 
+
+  [name="tabs"]:hover+[role="tab"] > a {
+    @apply gi-decoration-lg
   }
-  
-  #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
-    transform: translateX(0);
+
+  [name="tabs"]:focus+[role="tab"] > a {
+    @apply gi-outline gi-outline-transparent gi-bg-yellow-400 gi-outline-2 gi-shadow gi-shadow-yellow-400
   }
-  #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+
+  [name="tabs"]:nth-of-type(1):checked~[role="tabpanel"]:nth-of-type(1),
+  [name="tabs"]:nth-of-type(2):checked~[role="tabpanel"]:nth-of-type(2),
+  [name="tabs"]:nth-of-type(3):checked~[role="tabpanel"]:nth-of-type(3),
+  [name="tabs"]:nth-of-type(4):checked~[role="tabpanel"]:nth-of-type(4),
+  [name="tabs"]:nth-of-type(5):checked~[role="tabpanel"]:nth-of-type(5),
+  [name="tabs"]:nth-of-type(6):checked~[role="tabpanel"]:nth-of-type(6),
+  [name="tabs"]:nth-of-type(7):checked~[role="tabpanel"]:nth-of-type(7),
+  [name="tabs"]:nth-of-type(8):checked~[role="tabpanel"]:nth-of-type(8),
+  [name="tabs"]:nth-of-type(9):checked~[role="tabpanel"]:nth-of-type(9),
+  [name="tabs"]:nth-of-type(10):checked~[role="tabpanel"]:nth-of-type(10),
+  [name="tabs"]:nth-of-type(11):checked~[role="tabpanel"]:nth-of-type(11),
+  [name="tabs"]:nth-of-type(12):checked~[role="tabpanel"]:nth-of-type(12) {
     display: block;
-    position: fixed;
   }
+
+  /* End Tabs */
 }
-
-
