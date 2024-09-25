@@ -24,7 +24,7 @@ export const selectSchema = zod.object({
     .describe('Array of options with labels and values'),
   hint: hintTextSchema.describe('Properties for the hint component').optional(),
   error: errorTextSchema
-    .describe('Properties for the erro component')
+    .describe('Properties for the error component')
     .optional(),
 });
 

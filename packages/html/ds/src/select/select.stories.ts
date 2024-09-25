@@ -66,9 +66,15 @@ export const Default: Story = {
     },
   },
   args: {
-    id: 'Unique-ID',
+    id: 'unique-id',
     label: {
       content: 'Label',
+    },
+    hint: {
+      content: '',
+    },
+    error: {
+      content: '',
     },
     options: [
       {
@@ -89,7 +95,7 @@ export const Default: Story = {
 
 export const withHint: Story = {
   args: {
-    id: 'Unique-ID',
+    id: 'unique-id',
     label: {
       content: 'Default Select',
     },
@@ -115,7 +121,7 @@ export const withHint: Story = {
 
 export const withError: Story = {
   args: {
-    id: 'Unique-ID',
+    id: 'unique-id',
     label: {
       content: 'Default Select',
     },
@@ -141,7 +147,7 @@ export const withError: Story = {
 
 export const withoutLabel: Story = {
   args: {
-    id: 'Unique-ID',
+    id: 'unique-id',
     options: [
       {
         label: 'Option 1',
