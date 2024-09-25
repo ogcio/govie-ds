@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    ariaLabel: 'aria label',
     items: [
       {
         label: 'Tab 1',
