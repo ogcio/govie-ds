@@ -1,6 +1,6 @@
-import { Label, LabelProps } from '../label/label.js';
-import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
+import { HintText, HintTextProps } from '../hint-text/hint-text.js';
+import { Label, LabelProps } from '../label/label.js';
 
 type Option = {
   label: string;
