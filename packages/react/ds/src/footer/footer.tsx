@@ -27,7 +27,7 @@ function FooterLink({ href, label }: FooterLink) {
 export function Footer({ links, secondaryNavLinks }: FooterProps) {
   return (
     <footer
-      className={`gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl gi-font-primary`}
+      className={`gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl`}
       data-module="gieds-footer"
     >
       <Container>

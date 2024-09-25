@@ -10,7 +10,7 @@
     <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
     {% endif %}
     <fieldset>
-      <legend class="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      <legend class="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
           {{ govieHeading({
             "size": props.title.asHeading.size,
@@ -47,7 +47,7 @@
           })}}
         {% endfor %}
         {% if props.noneOption %}
-          <p class="{{ getSizeClass(props.size) | trim }} gi-text-center gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
+          <p class="{{ getSizeClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
           {{ govieCheckbox({
             "label": props.noneOption.label,
             "value": props.noneOption.value,

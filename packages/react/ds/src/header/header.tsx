@@ -20,7 +20,7 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
   return (
     <header
       id="GovieHeader"
-      className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500 gi-font-primary"
+      className="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500"
     >
       {languages && (
         <div className="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center">
@@ -56,7 +56,7 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
               <li key={index} className="gi-flex">
                 <a
                   href={link.href}
-                  className="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-font-primary gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+                  className="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
                 >
                   {link.label}
                 </a>
