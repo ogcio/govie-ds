@@ -1,66 +1,6 @@
-{# {% from 'paragraph/paragraph.html' import govieParagraph %} #}
 
 {% macro govieTabs(props) %}
-    {%- macro _tabListItem(props, item, index) %}
-        {% set tabId = "tab-" + index -%}
-        {% set tabLabelId = "tab-label-" + index -%}
-        <input
-            name="tabs"
-            type="radio"
-            id="{{ tabId }}"
-            aria-labelledby="{{ tabLabelId }}"
-            aria-roledescription="tab"
-            {%- if item.checked %} checked {% endif %}
-            class="gi-absolute gi-opacity-0"
-        />
-        <label
-            role="tab"
-            for="{{ tabId }}"
-            id="{{ tabLabelId }}"
-            aria-hidden="true"
-            class="
-                gi-inline-block 
-                gi-cursor-pointer
-                gi-px-5
-                gi-py-2
-                gi-relative
-                gi-mr-1
-                gi-bg-gray-50
-                gi-text-center 
-                gi-text-md
-                gi-underline
-                gi-text-slate-300">
-            <a
-                {%- if item.href %} href="{{ item.href }}" {% endif %}
-                class="gi-decoration-xs">
-                {{ item.label }}
-            </a>
-        </label>
-    {% endmacro -%}
-
-    {%- macro _tabPanel(props, item, index) %}
-        {% set tabPanelId = "tab-panel-" + index -%}
-        {% set tabLabelId = "tab-label-" + index -%}
-        <div
-            id="{{ tabPanelId }}"
-            role="tabpanel"
-            aria-labelledby="{{ tabLabelId }}"
-            class="
-                gi-hidden 
-                gi-basis-full 
-                gi-border-xs
-                gi-border-solid 
-                gi-border-slate-200 
-                gi-bg-white 
-                gi-p-4">
-        {% if item.panel.html %}
-            {{ item.panel.html | safe | trim | indent(2) }}
-        {% elif item.panel.text %}
-            {# {{ govieParagraph({ "content": item.panel.text }) }} #}
-            {{item.panel.text}}
-        {% endif %}
-        </div>
-    {% endmacro -%}
+{% from 'tabs/helpers.html' import tabListItem, tabPanel %}
 
     <div 
         {%- if props.ariaLabel %} aria-label="{{ props.ariaLabel }}"  {% endif %}
