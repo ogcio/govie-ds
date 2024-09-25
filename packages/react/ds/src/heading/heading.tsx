@@ -13,7 +13,7 @@ export function Heading({
   children: React.ReactNode;
 }) {
   return (
-    <Text as={As} size={size} className={`gi-text-gray-950 gi-font-primary`}>
+    <Text as={As} size={size}>
       {children}
     </Text>
   );

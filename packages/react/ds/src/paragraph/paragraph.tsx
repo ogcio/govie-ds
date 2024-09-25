@@ -57,11 +57,7 @@ export function Paragraph({
   })();
 
   return (
-    <Text
-      as={As}
-      size={size}
-      className={`gi-text-gray-950 gi-font-primary ${alignClass} ${whitespaceClass}`}
-    >
+    <Text as={As} size={size} className={`${alignClass} ${whitespaceClass}`}>
       {children}
     </Text>
   );
