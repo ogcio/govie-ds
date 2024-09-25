@@ -7,6 +7,12 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 
+@layer base {
+  html {
+    @apply gi-text-gray-950 gi-font-primary;
+  }
+}
+
 .gieds-js .js\:gi-hidden {
   display: none;
 }

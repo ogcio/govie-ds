@@ -6,6 +6,7 @@
 
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
+  {% set isError = props.error and props.error.content %}
 
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
@@ -15,15 +16,14 @@
     {% set widthStyle = 'style="width: ' ~ props.characterWidth ~ 'em;"' %}
   {% endif %}
 
-  {# Generate a unique or provided ID for input field #}
+  {# Generate a unique or provided ID for the input field #}
   {% set inputId = props.id or 'input-id' %}
 
-  {# Conditionally render the wrapper div only if hasError is true #}
-  {% if props.hasError %}
+  {# Conditionally render the wrapper div only if error content is available #}
+  {% if isError %}
   <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
   {% endif %}
 
-    {# Conditionally render the label if present in props, linking it with input ID #}
     {% if props.label %}
       {{ govieLabel({
         "content": props.label.content,
@@ -32,19 +32,17 @@
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the hint text if present in props #}
-    {% if props.hintText %}
+    {% if props.hint %}
       {{ govieHintText({
-        "content": props.hintText.content,
-        "size": props.hintText.size or "md"
+        "content": props.hint.content,
+        "size": props.hint.size or "md"
       }) | trim }}
     {% endif %}
 
-    {# Conditionally render the error text if present in props and if hasError is true #}
-    {% if props.hasError and props.errorText %}
+    {% if isError %}
       {{ govieErrorText({
-        "content": props.errorText.content,
-        "size": props.errorText.size or "md"
+        "content": props.error.content,
+        "size": props.error.size or "md"
       }) | trim }}
     {% endif %}
 
@@ -58,7 +56,8 @@
       <input
         id="{{ inputId }}"
         {{ widthStyle | safe }}
-        class="{% if props.hasError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+        autocomplete="{{ props.autoComplete or 'on' }}"
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
       />
 
       {% if props.suffix %}
@@ -68,8 +67,8 @@
       {% endif %}
     </div>
 
-  {# Close the conditional wrapper div if hasError is true #}
-  {% if props.hasError %}
+  {# Close the conditional wrapper div if there's an error #}
+  {% if isError %}
   </div>
   {% endif %}
 

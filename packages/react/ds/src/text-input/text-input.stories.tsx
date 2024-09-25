@@ -1,8 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ErrorText } from '../error-text/error-text.js';
-import { FormGroup } from '../form-group/form-group.js';
-import { HintText } from '../hint-text/hint-text.js';
-import { Label } from '../label/label.js';
 import { TextInput } from './text-input.js';
 
 const meta = {
@@ -11,70 +7,74 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the text input component when you need to let users enter text that’s no longer than a single line, such as their name or phone number. Use the `halfFluid`, `fullFluid`, or `characterWidth` properties to control the width of the input field based on different design needs.',
+          'Use the TextInput component for single-line text inputs like names or phone numbers. You can control the width using the `halfFluid`, `fullFluid`, or `characterWidth` properties.',
       },
     },
   },
   component: TextInput,
   argTypes: {
-    hasError: {
-      description:
-        'Indicates whether the input should be displayed in an error state. When `true`, the border color will be red.',
-      control: 'boolean',
+    label: {
+      description: 'Label associated with the input field',
+      control: 'object',
       table: {
-        category: 'Appearance',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        category: 'Label',
+        type: { summary: 'Label' },
+      },
+    },
+    hint: {
+      description: 'Hint text for additional guidance.',
+      control: 'object',
+      table: {
+        category: 'Hint',
+        type: { summary: 'HintText' },
+      },
+    },
+    error: {
+      description: 'Error message displayed during validation errors.',
+      control: 'object',
+      table: {
+        category: 'Error',
+        type: { summary: 'ErrorText' },
       },
     },
     prefix: {
-      description:
-        'Element or text to display on the left side of the input, such as a unit or symbol.',
+      description: 'Element or text displayed before the input (e.g., a unit).',
       control: 'text',
       table: {
         category: 'Content',
         type: { summary: 'React.ReactNode' },
-        defaultValue: { summary: '-' },
       },
     },
     suffix: {
-      description:
-        'Element or text to display on the right side of the input, such as a unit or symbol.',
+      description: 'Element or text displayed after the input (e.g., a unit).',
       control: 'text',
       table: {
         category: 'Content',
         type: { summary: 'React.ReactNode' },
-        defaultValue: { summary: '-' },
       },
     },
     halfFluid: {
-      description:
-        'When `true`, the input width is set to 50% of the available space.',
+      description: 'Sets the width to 50% of available space.',
       control: 'boolean',
       table: {
         category: 'Width Control',
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
       },
     },
     fullFluid: {
-      description:
-        'When `true`, the input width is set to 100% of the available space.',
+      description: 'Sets the width to 100% of available space.',
       control: 'boolean',
       table: {
         category: 'Width Control',
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
       },
     },
     characterWidth: {
-      description:
-        'Sets the width of the input in terms of the number of characters it can contain.',
+      description: 'Controls the width in characters.',
       control: 'number',
       table: {
         category: 'Width Control',
         type: { summary: 'number' },
-        defaultValue: { summary: '-' },
       },
     },
     ref: {
@@ -82,7 +82,6 @@ const meta = {
       table: {
         category: 'Ref',
         type: { summary: 'React.Ref<HTMLInputElement>' },
-        defaultValue: { summary: '-' },
       },
     },
   },
@@ -92,94 +91,105 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
-};
-
-export const WithLabel: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">Label</Label>
-      <TextInput id="text-input" {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
-};
-
-export const WithLabelAndPrefixSuffix: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">Label</Label>
-      <TextInput
-        prefix="kg"
-        suffix="per item"
-        id="text-input"
-        {..._arguments}
-      />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Input Label',
+      htmlFor: 'text-input-id',
+    },
+    hint: {
+      children: '',
+    },
+    error: {
+      children: '',
+    },
+  },
 };
 
 export const WithLabelAndHint: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">Label</Label>
-      <HintText>Hint</HintText>
-      <TextInput id="text-input" {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Label',
+      htmlFor: 'text-input-id',
+    },
+    hint: {
+      children: 'Hint: This is a helpful hint.',
+    },
+  },
 };
 
 export const WithLabelAndError: Story = {
-  render: (_arguments) => (
-    <FormGroup hasError={true}>
-      <Label htmlFor="text-input">Label</Label>
-      <ErrorText>Error</ErrorText>
-      <TextInput hasError id="text-input" {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Label',
+      htmlFor: 'text-input-id',
+    },
+    error: {
+      children: 'Error: Please correct this issue.',
+    },
+  },
 };
 
 export const WithLabelHintAndError: Story = {
-  render: (_arguments) => (
-    <FormGroup hasError>
-      <Label htmlFor="text-input">Label</Label>
-      <HintText>Hint</HintText>
-      <ErrorText>Error</ErrorText>
-      <TextInput hasError suffix="KG" id="text-input" {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Label',
+      htmlFor: 'text-input-id',
+    },
+    hint: {
+      children: 'Hint: This is a helpful hint.',
+    },
+    error: {
+      children: 'Error: Please correct this issue.',
+    },
+    suffix: 'KG',
+  },
+};
+
+export const WithLabelAndPrefixSuffix: Story = {
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Label',
+      htmlFor: 'text-input-id',
+    },
+    prefix: 'kg',
+    suffix: 'per item',
+  },
 };
 
 export const HalfFluid: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">Half Fluid Input</Label>
-      <TextInput id="text-input" halfFluid {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Half Fluid Input',
+      htmlFor: 'text-input-id',
+    },
+    halfFluid: true,
+  },
 };
 
 export const FullFluid: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">Full Fluid Input</Label>
-      <TextInput id="text-input" fullFluid {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: 'Full Fluid Input',
+      htmlFor: 'text-input-id',
+    },
+    fullFluid: true,
+  },
 };
 
 export const CharacterWidth: Story = {
-  render: (_arguments) => (
-    <FormGroup>
-      <Label htmlFor="text-input">4 characters width</Label>
-      <TextInput id="text-input" characterWidth={4} {..._arguments} />
-    </FormGroup>
-  ),
-  args: {},
+  args: {
+    id: 'text-input-id',
+    label: {
+      children: '4 characters width',
+      htmlFor: 'text-input-id',
+    },
+    characterWidth: 4,
+  },
 };

@@ -35,7 +35,7 @@ const CheckboxesGroup = ({
         <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
       )}
       <fieldset>
-        <legend className="gi-mb-3.5 gi-font-primary sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
           {title.asHeading ? (
             <Heading size={title.asHeading.size} as={title.asHeading.tag}>
               {title.value}

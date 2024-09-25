@@ -25,9 +25,11 @@ export const textAreaSchema = zod.object({
         'Sets the ID for the textarea, used for accessibility and to link with the label.',
     })
     .optional(),
-  label: labelSchema.optional(),
-  hintText: hintTextSchema.optional(),
-  errorText: errorTextSchema.optional(),
+  label: labelSchema.describe('Label for textarea').optional(),
+  hint: hintTextSchema.describe('Hint for textarea').optional(),
+  error: errorTextSchema
+    .describe('Set error boundaries for texarea')
+    .optional(),
 });
 
 export type TextareaProps = zod.infer<typeof textAreaSchema>;

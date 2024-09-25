@@ -11,7 +11,7 @@ export * from './text/text.js';
 export * from './text-input/text-input.js';
 export * from './label/label.js';
 export * from './hint-text/hint-text.js';
-export * from './form-group/form-group.js';
 export * from './error-text/error-text.js';
 export * from './blockquote/blockquote.js';
 export * from './textarea/textarea.js';
+export * from './select/select.js';

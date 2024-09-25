@@ -15,10 +15,11 @@ export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
 };
 
 // Use React.forwardRef to support refs properly
-export const HintText: React.FC<HintTextProps> = (
-  { className, size, ...props },
-  ref,
-) => {
+export const HintText: React.FC<HintTextProps> = ({
+  className,
+  size,
+  ...props
+}) => {
   return (
     <Text
       size={size}
