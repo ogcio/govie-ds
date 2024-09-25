@@ -10,12 +10,9 @@ import {
   Container,
   IconButton,
   PhaseBanner,
-  TextInput,
-<<<<<<< HEAD
   Select,
-=======
+  TextInput,
   TextArea,
->>>>>>> 4ed59aa (chore: update example with texarea react)
 } from "@govie-react/ds";
 
 export function App() {
