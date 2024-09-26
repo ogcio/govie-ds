@@ -4,18 +4,18 @@
 
     <div 
         {%- if props.ariaLabel %} aria-label="{{ props.ariaLabel }}"  {% endif %}
-        class="tabs gi-flex gi-flex-wrap">
+        class="gi-tabs gi-flex gi-flex-wrap">
         
-        {% if props.items | length %}    
+        {% if props['items'] | length %}
             <div role="tablist" class="gi--mb-[1px]">
-                {% for item in props.items %}
+                {% for item in props['items'] %}
                     {% if item %}
                         {{- tabListItem(props, item, loop.index) | trim | indent(2, true) }}
                     {% endif %}
                 {% endfor %}
             </div>
 
-            {% for item in props.items %}
+            {% for item in props['items'] %}
                 {% if item %}
                 {{- tabPanel(props, item, loop.index) | trim | indent(2, true) }}
                 {% endif %}

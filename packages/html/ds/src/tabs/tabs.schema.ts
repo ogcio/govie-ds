@@ -6,27 +6,28 @@ export const tabsSchema = zod.object({
     required_error: 'The aria-label is required',
   }),
   items: zod
-    .object({
-      label: zod.string({
-        description: 'The label of the tab',
-        required_error: 'The label is required',
+    .array(
+      zod.object({
+        label: zod.string({
+          description: 'The label of the tab',
+          required_error: 'The label is required',
+        }),
+        href: zod.string().describe('The link related to the tab').optional(),
+        checked: zod
+          .boolean()
+          .describe('Define if the item is selected')
+          .optional(),
+        panel: zod
+          .object({
+            html: zod.string().describe('The html content').optional(),
+            text: zod
+              .string()
+              .describe('The text content, will be wrapped into a Paragraph')
+              .optional(),
+          })
+          .describe('Tab Panel content'),
       }),
-      href: zod.string().describe('The link related to the tab').optional(),
-      checked: zod
-        .boolean()
-        .describe('Define if the item is selected')
-        .optional(),
-      panel: zod
-        .object({
-          html: zod.string().describe('The html content').optional(),
-          text: zod
-            .string()
-            .describe('The text content, will be wrapped into a Paragraph')
-            .optional(),
-        })
-        .describe('Tab Panel content'),
-    })
-    .array()
+    )
     .describe('Tab Items'),
 });
 

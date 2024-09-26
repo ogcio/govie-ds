@@ -9,7 +9,7 @@ export function Tabs({
   children: React.ReactNode;
 }) {
   return (
-    <div aria-label={ariaLabel} className="tabs gi-flex gi-flex-wrap">
+    <div aria-label={ariaLabel} className="gi-tabs gi-flex gi-flex-wrap">
       {children}
     </div>
   );

@@ -1,8 +1,8 @@
 {% from 'paragraph/paragraph.html' import govieParagraph %}
 
 {%- macro tabListItem(props, item, index) %}
-    {% set tabId = "tab-" + index -%}
-    {% set tabLabelId = "tab-label-" + index -%}
+    {% set tabId = "tab-" + index|string -%}
+    {% set tabLabelId = "tab-label-" + index|string -%}
     <input
         name="tabs"
         type="radio"
@@ -38,8 +38,8 @@
 {% endmacro -%}
 
 {%- macro tabPanel(props, item, index) %}
-    {% set tabPanelId = "tab-panel-" + index -%}
-    {% set tabLabelId = "tab-label-" + index -%}
+    {% set tabPanelId = "tab-panel-" + index|string -%}
+    {% set tabLabelId = "tab-label-" + index|string -%}
     <div
         id="{{ tabPanelId }}"
         role="tabpanel"

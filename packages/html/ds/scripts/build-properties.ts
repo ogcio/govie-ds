@@ -66,7 +66,7 @@ function getSchemaProperties(schema) {
           description,
           type: toType(zodType),
           required,
-          values: zodEnums || undefined,
+          values: zodEnums,
         });
 
         if (value instanceof z.ZodObject) {
