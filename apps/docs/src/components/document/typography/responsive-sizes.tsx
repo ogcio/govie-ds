@@ -1,5 +1,5 @@
-import { meta } from '@govie-ds/tokens';
 import { Text } from '@govie-ds/react';
+import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
 import { Fragment } from 'react';
