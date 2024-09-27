@@ -69,3 +69,4 @@ jobs:
           git push origin last-release --force
           git checkout latest-release
           git rebase origin/main
+          git push origin --force
