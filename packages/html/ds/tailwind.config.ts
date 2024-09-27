@@ -6,6 +6,11 @@ const config: Config = {
   content: ['./src/**/*.html', './src/**/*.ts'],
   theme: createTheme(),
   plugins: [],
+  safelist: [
+    // { pattern: /text-./ },
+    // { pattern: /border-./ },
+    // { pattern: /./ },
+  ],
 };
 
 export default config;

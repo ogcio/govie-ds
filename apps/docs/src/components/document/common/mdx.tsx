@@ -44,6 +44,7 @@ import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { wrapComponents } from './wrap-components';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
@@ -65,11 +66,12 @@ const standardComponents: MDXComponents = {
     href ? <Link href={href}>{children}</Link> : null,
   ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
   li: ({ children }) => <li className="text-md mb-sm">{children}</li>,
-  code: ({ children }) => (
+  code: ({ children, className }) => (
     <code
       className={cn(
-        'rounded-sm bg-gray-50 border-gray-100 border-xs p-xs',
-        'text-gray-600 text-center text-2xs',
+        className
+          ? 'rounded-xs bg-gray-50 border-gray-100 border-xs p-3 text-gray-600 text-xs block'
+          : 'rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs',
       )}
     >
       {children}
@@ -115,6 +117,8 @@ const documentComponents: MDXComponents = {
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
+  TwoThirds: (props) => <TwoThirds {...props} />,
+  TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

@@ -24,6 +24,30 @@
 
 @layer components {
 
+  /* Typography */
+  
+  /* End Typography */
+
+  /* Layout */
+
+  .gi-layout-container {
+    @apply gi-container gi-mx-auto
+  }
+
+  .gi-layout-column-container {
+    @apply gi-flex gi-flex-col md:gi-flex-row
+  }
+
+  .gi-layout-column-2-3 {
+    @apply gi-w-full md:gi-w-2/3
+  }
+
+  .gi-layout-column-1-3 {
+    @apply gi-w-full md:gi-w-1/3
+  }
+
+  /* End Layout */
+
   /* Header Styles */
 
   #GovieHeader {
@@ -76,7 +100,6 @@
     div.gi-tabs:has([role="tablist"] [name="tabs"]:nth-of-type(11):checked) [role="tabpanel"]:nth-of-type(12),
     div.gi-tabs:has([role="tablist"] [name="tabs"]:nth-of-type(12):checked) [role="tabpanel"]:nth-of-type(13) {
       display: block;
-    }
-  
+    }  
     /* End Tabs */
 }
