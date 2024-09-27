@@ -36,11 +36,7 @@ export function TabItem({
           gi-cursor-pointer
           gi-px-5
           gi-py-2
-          gi-border-solid 
-          gi-border-border-gray-200
-          gi-border-b-xs 
           gi-relative
-          gi--mb-[1px]
           gi-mr-1
           gi-bg-gray-50
           gi-text-center 
@@ -48,18 +44,7 @@ export function TabItem({
           gi-underline
           gi-text-slate-300"
       >
-        <a
-          href={href}
-          className="
-            gi-decoration-xs
-            hover:gi-decoration-lg
-            focus:gi-outline
-            focus:gi-outline-transparent
-            focus:gi-bg-yellow-400
-            focus:gi-outline-2
-            focus:gi-shadow-sm
-            focus:gi-shadow-yellow-400"
-        >
+        <a href={href} className="gi-decoration-xs">
           {children}
         </a>
       </label>

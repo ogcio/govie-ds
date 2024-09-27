@@ -41,6 +41,7 @@
 %}
 
 {% set HeaderProps = {
+  "logoLink": "/",
   "noJsMenuLink": "/menu",
   "noJsSearchLink": "/search",
   "navLinks": [
@@ -86,4 +87,42 @@
     },
   ]
 }
+%}
+
+{% set tabsProps = {
+      "ariaLabel": "aria label",
+      "items": [
+        {
+            "label": "Tab 1",
+            "checked": true,
+            "panel": {
+              "text": "Tab 1 Content"
+            }
+        },
+        {
+            "label": "Tab 2",
+            "panel": {
+              "text": "Tab 2 Content"
+            }
+        },
+        {
+            "label": "Tab 3",
+            "panel": {
+              "text": "Tab 3 Content"
+            }
+        },
+        {
+            "label": "Tab 4",
+            "panel": {
+              "text": "Tab 4 Content"
+            }
+        },
+        {
+            "label": "Tab 5",
+            "panel": {
+              "text": "Tab 5 Content"
+            }
+        }
+      ]
+  }
 %}

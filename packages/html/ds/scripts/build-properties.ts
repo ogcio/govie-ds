@@ -52,7 +52,7 @@ function getSchemaProperties(schema) {
 
         const zodType = innerType ? innerType._def.typeName : typeName;
         const zodEnums =
-          typeName === 'ZodNativeEnum' || 'ZodEnum'
+          typeName === 'ZodNativeEnum' || typeName === 'ZodEnum'
             ? (value as any)._def.values
             : undefined;
 
@@ -66,7 +66,7 @@ function getSchemaProperties(schema) {
           description,
           type: toType(zodType),
           required,
-          values: zodEnums ? zodEnums : undefined,
+          values: zodEnums,
         });
 
         if (value instanceof z.ZodObject) {

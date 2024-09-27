@@ -15,3 +15,7 @@ export * from './error-text/error-text.js';
 export * from './blockquote/blockquote.js';
 export * from './textarea/textarea.js';
 export * from './select/select.js';
+export * from './tabs/tabs.js';
+export * from './tabs/tab-item.js';
+export * from './tabs/tab-panel.js';
+export * from './tabs/tab-list.js';
