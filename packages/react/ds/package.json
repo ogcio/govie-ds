@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/react",
+  "name": "@govie-react/ds",
   "version": "0.12.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
