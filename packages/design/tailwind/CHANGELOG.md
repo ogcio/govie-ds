@@ -15,6 +15,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.10.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.9.0...tailwind-v0.10.0) (2024-09-27)
+
+
+### Features
+
+* add tabs for react ([#228](https://github.com/ogcio/govie-ds/issues/228)) ([8f676ee](https://github.com/ogcio/govie-ds/commit/8f676eeeb269e90ec1ddb1dff4a3c1915f234496))
+
 ## [0.8.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.7.0...tailwind-v0.8.0) (2024-09-27)
 
 
