@@ -50,6 +50,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.9.1](https://github.com/ogcio/govie-ds/compare/html-v0.9.0...html-v0.9.1) (2024-09-27)
+
+
+### Bug Fixes
+
+* html package publish not required ([3e1b38c](https://github.com/ogcio/govie-ds/commit/3e1b38cb5eccdccca4662e4a891b22faa1a0c9b5))
+
 ## [0.9.0](https://github.com/ogcio/govie-ds/compare/html-v0.8.0...html-v0.9.0) (2024-09-27)
 
 
