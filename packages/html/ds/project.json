@@ -2,28 +2,11 @@
   "name": "@govie-frontend/ds",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "push": true,
-        "trackDeps": true,
-        "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]",
-        "postTargets": ["github-release"]
-      }
-    },
     "npm-publish": {
       "executor": "@aaos/nx-publish:publish",
       "options": {
         "packageManager": "pnpm",
         "projectFolderPath": "./packages/html/ds"
-      }
-    },
-    "github-release": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "{tag}",
-        "notes": "{notes}",
-        "files": ["./packages/html/ds/govie-frontend.zip"]
       }
     }
   }
