@@ -2,9 +2,6 @@
     "include-component-in-tag": true,
     "group-pull-request-title-pattern": "chore(ci): release ${branch}",
     "bootstrap-sha": "78025b35be74c6eccbfcbcec4a1509e2e919e7f4",
-    "plugins": [
-        "node-workspace"
-    ],
     "release-type": "node",
     "packages": {
         "packages/build/eslint-config": {},
