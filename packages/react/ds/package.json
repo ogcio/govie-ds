@@ -1,6 +1,6 @@
 {
   "name": "@govie-react/ds",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -43,7 +43,7 @@
     "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
-    "@govie-ds/tailwind": "workspace:*",
+    "@govie-ds/tailwind": "0.8.0",
     "@storybook/react": "^8.2.7",
     "@storybook/test": "^8.2.7",
     "@tsconfig/node20": "^20.1.4",
