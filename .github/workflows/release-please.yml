@@ -22,12 +22,6 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      - name: Configure git
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
       - name: Checkout code
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         uses: actions/checkout@v4
