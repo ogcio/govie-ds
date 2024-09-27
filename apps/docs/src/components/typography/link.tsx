@@ -1,4 +1,4 @@
-import { Link as DsLink, LinkProps } from '@govie-react/ds';
+import { Link as DsLink, LinkProps } from '@govie-ds/react';
 import NextLink from 'next/link';
 
 export function Link(props: Omit<LinkProps, 'as'>) {

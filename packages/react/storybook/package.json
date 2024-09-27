@@ -19,7 +19,7 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
-    "@govie-react/ds": "workspace:*",
+    "@govie-ds/react": "workspace:*",
     "@storybook/addon-a11y": "8.2.8",
     "@storybook/addon-essentials": "8.2.8",
     "@storybook/addon-interactions": "8.2.8",

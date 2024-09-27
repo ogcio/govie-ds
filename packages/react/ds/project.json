@@ -1,5 +1,5 @@
 {
-  "name": "@govie-react/ds",
+  "name": "@govie-ds/react",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {
     "npm-publish": {

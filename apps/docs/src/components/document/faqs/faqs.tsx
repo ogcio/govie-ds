@@ -1,4 +1,4 @@
-import { Heading } from '@govie-react/ds';
+import { Heading } from '@govie-ds/react';
 import React, { Fragment } from 'react';
 import { Tabs } from '../common/tabs';
 

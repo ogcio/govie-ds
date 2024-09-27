@@ -1,5 +1,5 @@
-import { destroyGovIe, initGovIe } from '@govie-frontend/ds';
-import { renderMacro } from '@govie-frontend/macro';
+import { destroyGovIe, initGovIe } from '@govie-ds/html';
+import { renderMacro } from '@govie-ds/macro';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import '@fontsource/lato/100.css';

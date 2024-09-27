@@ -1,4 +1,4 @@
-import { Heading, Link, Paragraph } from '@govie-react/ds';
+import { Heading, Link, Paragraph } from '@govie-ds/react';
 
 export function ContactDeptOrService() {
   return (

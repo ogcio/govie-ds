@@ -1,4 +1,4 @@
-import { Icon, IconButton, Paragraph } from '@govie-react/ds';
+import { Icon, IconButton, Paragraph } from '@govie-ds/react';
 import { Table, Td, Tr } from '../common/table';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';

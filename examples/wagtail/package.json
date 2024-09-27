@@ -6,12 +6,12 @@
   "scripts": {
     "build": "pnpm copy:theme && pnpm copy:styles && pnpm copy:scripts",
     "copy:theme": "cp -r node_modules/@govie-ds/theme-govie/dist/theme.css core/static/css/",
-    "copy:styles": "cp -r node_modules/@govie-frontend/ds/dist/styles.css core/static/css/",
-    "copy:scripts": "cp -r node_modules/@govie-frontend/ds/dist/govie-frontend.umd.js core/static/js/"
+    "copy:styles": "cp -r node_modules/@govie-ds/html/dist/styles.css core/static/css/",
+    "copy:scripts": "cp -r node_modules/@govie-ds/html/dist/govie-frontend.umd.js core/static/js/"
   },
   "dependencies": {
     "@govie-ds/theme-govie": "workspace:*",
-    "@govie-frontend/ds": "workspace:*",
+    "@govie-ds/html": "workspace:*",
     "@ogcio/ogcio-ds": "^0.4.4"
   },
   "author": "",

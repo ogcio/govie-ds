@@ -1,4 +1,4 @@
-import "@govie-react/ds/styles.css";
+import "@govie-ds/react/styles.css";
 import "@govie-ds/theme-govie/theme.css";
 import {
   Header,
@@ -17,7 +17,7 @@ import {
   TabItem,
   TabPanel,
   TabList,
-} from "@govie-react/ds";
+} from "@govie-ds/react";
 
 export function App() {
   return (

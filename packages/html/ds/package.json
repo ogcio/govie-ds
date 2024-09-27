@@ -1,5 +1,5 @@
 {
-  "name": "@govie-frontend/ds",
+  "name": "@govie-ds/html",
   "version": "0.8.0",
   "description": "",
   "private": true,
@@ -42,7 +42,7 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
-    "@govie-frontend/macro": "workspace:*",
+    "@govie-ds/macro": "workspace:*",
     "@storybook/react": "^8.2.8",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",

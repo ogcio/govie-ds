@@ -1,4 +1,4 @@
-import { Footer as GovieFooter } from '@govie-react/ds';
+import { Footer as GovieFooter } from '@govie-ds/react';
 
 // TODO: Review the content of each page from FooterLinks and update accordingly
 

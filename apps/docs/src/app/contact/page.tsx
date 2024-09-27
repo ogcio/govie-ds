@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-ds/react';
 import { Metadata } from 'next';
 import { config } from '@/lib/config';
 import { getTitle } from '@/lib/documents';

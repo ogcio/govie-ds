@@ -1,4 +1,4 @@
-import { Heading, HeadingSize } from '@govie-react/ds';
+import { Heading, HeadingSize } from '@govie-ds/react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';

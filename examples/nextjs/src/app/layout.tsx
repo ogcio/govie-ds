@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "@govie-react/ds/styles.css";
+import "@govie-ds/react/styles.css";
 import "@govie-ds/theme-govie/theme.css";
 
 export const metadata: Metadata = {

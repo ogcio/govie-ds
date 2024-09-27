@@ -1,4 +1,4 @@
-import { HeadingSize, ParagraphSize } from '@govie-react/ds';
+import { HeadingSize, ParagraphSize } from '@govie-ds/react';
 import { SampleToken } from './sample-token';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';

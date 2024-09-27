@@ -8,7 +8,7 @@ import {
   Link,
   Paragraph,
   PhaseBanner,
-} from "@govie-react/ds";
+} from "@govie-ds/react";
 
 export default function Home() {
   return (

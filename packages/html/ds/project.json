@@ -1,5 +1,5 @@
 {
-  "name": "@govie-frontend/ds",
+  "name": "@govie-ds/html",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {
     "npm-publish": {

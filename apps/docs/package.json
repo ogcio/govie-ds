@@ -28,7 +28,7 @@
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/theme-hse": "workspace:*",
     "@govie-ds/tokens": "workspace:*",
-    "@govie-react/ds": "workspace:*",
+    "@govie-ds/react": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",
     "camelcase": "^8.0.0",

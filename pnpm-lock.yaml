@@ -23,6 +23,9 @@ importers:
       '@govie-ds/deepmerge':
         specifier: workspace:*
         version: link:../../packages/design/deepmerge
+      '@govie-ds/react':
+        specifier: workspace:*
+        version: link:../../packages/react/ds
       '@govie-ds/tailwind':
         specifier: workspace:*
         version: link:../../packages/design/tailwind
@@ -35,9 +38,6 @@ importers:
       '@govie-ds/tokens':
         specifier: workspace:*
         version: link:../../tokens
-      '@govie-react/ds':
-        specifier: workspace:*
-        version: link:../../packages/react/ds
       '@radix-ui/react-dialog':
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -192,12 +192,12 @@ importers:
 
   examples/nextjs:
     dependencies:
+      '@govie-ds/react':
+        specifier: workspace:*
+        version: link:../../packages/react/ds
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../packages/themes/govie
-      '@govie-react/ds':
-        specifier: workspace:*
-        version: link:../../packages/react/ds
       next:
         specifier: 14.2.4
         version: 14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -232,12 +232,12 @@ importers:
 
   examples/vite:
     dependencies:
+      '@govie-ds/react':
+        specifier: workspace:*
+        version: link:../../packages/react/ds
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../packages/themes/govie
-      '@govie-react/ds':
-        specifier: workspace:*
-        version: link:../../packages/react/ds
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -275,12 +275,12 @@ importers:
 
   examples/wagtail:
     dependencies:
+      '@govie-ds/html':
+        specifier: workspace:*
+        version: link:../../packages/html/ds
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../packages/themes/govie
-      '@govie-frontend/ds':
-        specifier: workspace:*
-        version: link:../../packages/html/ds
       '@ogcio/ogcio-ds':
         specifier: ^0.4.4
         version: 0.4.4
@@ -570,15 +570,15 @@ importers:
       '@govie-ds/eslint-config':
         specifier: workspace:*
         version: link:../../build/eslint-config
+      '@govie-ds/macro':
+        specifier: workspace:*
+        version: link:../macro
       '@govie-ds/prettier-config':
         specifier: workspace:*
         version: link:../../build/prettier-config
       '@govie-ds/tailwind':
         specifier: workspace:*
         version: link:../../design/tailwind
-      '@govie-frontend/macro':
-        specifier: workspace:*
-        version: link:../macro
       '@storybook/react':
         specifier: ^8.2.8
         version: 8.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)
@@ -692,6 +692,12 @@ importers:
       '@govie-ds/eslint-config':
         specifier: workspace:*
         version: link:../../build/eslint-config
+      '@govie-ds/html':
+        specifier: workspace:*
+        version: link:../ds
+      '@govie-ds/macro':
+        specifier: workspace:*
+        version: link:../macro
       '@govie-ds/prettier-config':
         specifier: workspace:*
         version: link:../../build/prettier-config
@@ -701,12 +707,6 @@ importers:
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../themes/govie
-      '@govie-frontend/ds':
-        specifier: workspace:*
-        version: link:../ds
-      '@govie-frontend/macro':
-        specifier: workspace:*
-        version: link:../macro
       '@storybook/addon-a11y':
         specifier: 8.2.8
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -874,15 +874,15 @@ importers:
       '@govie-ds/prettier-config':
         specifier: workspace:*
         version: link:../../build/prettier-config
+      '@govie-ds/react':
+        specifier: workspace:*
+        version: link:../ds
       '@govie-ds/tailwind':
         specifier: workspace:*
         version: link:../../design/tailwind
       '@govie-ds/theme-govie':
         specifier: workspace:*
         version: link:../../themes/govie
-      '@govie-react/ds':
-        specifier: workspace:*
-        version: link:../ds
       '@storybook/addon-a11y':
         specifier: 8.2.8
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -12607,7 +12607,7 @@ snapshots:
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 4.0.2(@types/node@20.14.14)
+      '@rushstack/node-core-library': 4.0.2(@types/node@22.1.0)
     transitivePeerDependencies:
       - '@types/node'
     optional: true
@@ -12634,7 +12634,7 @@ snapshots:
       '@microsoft/api-extractor-model': 7.28.13
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 4.0.2(@types/node@20.14.14)
+      '@rushstack/node-core-library': 4.0.2(@types/node@22.1.0)
       '@rushstack/rig-package': 0.5.2
       '@rushstack/terminal': 0.10.0
       '@rushstack/ts-command-line': 4.19.1
@@ -13370,7 +13370,7 @@ snapshots:
 
   '@rushstack/terminal@0.10.0':
     dependencies:
-      '@rushstack/node-core-library': 4.0.2(@types/node@20.14.14)
+      '@rushstack/node-core-library': 4.0.2(@types/node@22.1.0)
       supports-color: 8.1.1
     optional: true
 

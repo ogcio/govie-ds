@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';

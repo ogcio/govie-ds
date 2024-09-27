@@ -13,7 +13,7 @@ Welcome to the GOV IE React component library, a collection of reusable React co
 To install the library, use the following command:
 
 ```
-npm install @govie-react/ds @govie-ds/theme-govie
+npm install @govie-ds/react @govie-ds/theme-govie
 ```
 
 ### Pinning packages
@@ -26,8 +26,8 @@ We **strongly recommend** that you pin the GOV IE design system packages, so tha
 "dependencies": {
 -  "@govie-ds/theme-govie": "^0.1.2",
 +  "@govie-ds/theme-govie": "0.1.2",
--  "@govie-react/ds": "^0.1.6",
-+  "@govie-react/ds": "0.1.6"
+-  "@govie-ds/react": "^0.1.6",
++  "@govie-ds/react": "0.1.6"
 ```
 
 ### Usage
@@ -46,10 +46,10 @@ export function App() {
 
 > Note that you should typically run some form of CSS reset or normalisation of styles as part of your application entry point, depending on your application styling solution. For example Tailwind includes [preflight](https://tailwindcss.com/docs/preflight), an optinionated set of base styles.
 
-Use components within your application from the `@govie-react/ds` component package:
+Use components within your application from the `@govie-ds/react` component package:
 
 ```jsx
-import { Header } from '@govie-react/ds';
+import { Header } from '@govie-ds/react';
 
 export function MyComponent() {
   return (
@@ -62,10 +62,10 @@ export function MyComponent() {
 
 ### Typography
 
-The `@govie-react/ds` package contains `Heading` and `Paragraph` components that implement the GOV IE design system responsive text guidelines:
+The `@govie-ds/react` package contains `Heading` and `Paragraph` components that implement the GOV IE design system responsive text guidelines:
 
 ```jsx
-import { Heading, Paragraph } from '@govie-react/ds';
+import { Heading, Paragraph } from '@govie-ds/react';
 
 function MyComponent() {
   return (
