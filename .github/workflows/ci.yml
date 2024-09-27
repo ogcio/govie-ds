@@ -80,7 +80,7 @@ jobs:
       - name: Publish new version on NPM
         if: github.ref == 'refs/heads/main' && env.environment == 'prod'
         run: |
-          pnpm nx affected --base=last-release -t version --parallel=1
+          pnpm nx affected --base=last-release -t npm-publish --parallel=1
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -91,3 +91,5 @@ jobs:
         run: |
           git tag -f last-release
           git push origin last-release --force
+          git checkout latest-release
+          git rebase origin/main

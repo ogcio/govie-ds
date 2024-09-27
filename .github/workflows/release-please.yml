@@ -23,33 +23,33 @@ jobs:
           manifest-file: .release-please-manifest.json
 
       - name: Configure git
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: Checkout code
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT }}
 
       - name: Use Node.js
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Build
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm nx affected --base=last-release -t build --parallel=3
 
       - name: Publish packages
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
           pnpm nx affected --base=last-release -t npm-publish --parallel=1
         env:
@@ -59,13 +59,17 @@ jobs:
       - name: Publish HTML output
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] }}
         run: gh release upload ${{ steps.release.outputs['packages/html/ds--tag_name'] }} ./packages/html/ds/govie-frontend.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
 
       - name: Publish Theme output
         if: ${{ steps.release.outputs['packages/themes/govie--release_created'] }}
         run: gh release upload ${{ steps.release.outputs['packages/themes/govie--tag_name'] }} ./packages/themes/govie/theme.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
 
       - name: Tag Last Release
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
           git tag -f last-release
           git push origin last-release --force
