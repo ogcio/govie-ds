@@ -7,6 +7,9 @@
     ],
     "release-type": "node",
     "packages": {
+        "packages/build/eslint-config": {},
+        "packages/build/prettier-config": {},
+        "packages/design/deepmerge": {},
         "packages/design/tailwind": {},
         "packages/html/ds": {},
         "packages/react/ds": {},

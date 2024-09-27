@@ -2,27 +2,11 @@
   "name": "@govie-ds/prettier-config",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "push": true,
-        "trackDeps": true,
-        "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]",
-        "postTargets": ["npm-publish", "github-release"]
-      }
-    },
     "npm-publish": {
       "executor": "@aaos/nx-publish:publish",
       "options": {
         "packageManager": "pnpm",
         "projectFolderPath": "./packages/build/prettier-config"
-      }
-    },
-    "github-release": {
-      "executor": "@jscutlery/semver:github",
-      "options": {
-        "tag": "{tag}",
-        "notes": "{notes}"
       }
     }
   }

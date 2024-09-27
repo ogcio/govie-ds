@@ -3,5 +3,8 @@
     "@govie-ds/theme-govie": "0.4.0",
     "@govie-react/ds": "0.11.0",
     "@govie-frontend/ds": "0.7.0",
-    "@govie-ds/tailwind": "0.7.0"
+    "@govie-ds/tailwind": "0.7.0",
+    "@govie-ds/eslint-config": "0.3.0",
+    "@govie-ds/deepmerge": "0.4.0",
+    "@govie-ds/prettier-config": "0.1.0"
 }

@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build and test
+      - name: Build
         if: ${{ steps.release.outputs.release_created }}
         run: |
           corepack enable          
@@ -50,7 +50,7 @@ jobs:
       - name: Publish packages
         if: ${{ steps.release.outputs.release_created }}
         run: |
-          pnpm nx affected --base=last-release -t version --parallel=1
+          pnpm nx affected --base=last-release -t npm-publish --parallel=1
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
