@@ -2,7 +2,6 @@ import React from 'react';
 
 export function Tabs({
   ariaLabel,
-  ariaLabelledby,
   children,
 }: {
   ariaLabel?: string;
@@ -10,12 +9,7 @@ export function Tabs({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      role="tablist"
-      aria-label={ariaLabel}
-      aria-labelledby={ariaLabelledby}
-      className="gi-flex gi-flex-wrap"
-    >
+    <div aria-label={ariaLabel} className="gi-tabs gi-flex gi-flex-wrap">
       {children}
     </div>
   );
