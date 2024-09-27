@@ -1,0 +1,70 @@
+on:
+  push:
+    branches:
+      - main
+name: release-please
+
+jobs:
+  release-please:
+    environment: "prod"
+
+    permissions:
+      contents: write # to create release commit (google-github-actions/release-please-action)
+      pull-requests: write # to create release PR (google-github-actions/release-please-action)
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.REPO_PAT }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      - name: Configure git
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Checkout code
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.REPO_PAT }}
+
+      - name: Use Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build and test
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          corepack enable          
+          pnpm install --frozen-lockfile --ignore-scripts
+          pnpm nx affected --base=last-release -t build --parallel=3
+
+      - name: Publish packages
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          pnpm nx affected --base=last-release -t version --parallel=1
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish HTML output
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] }}
+        run: gh release upload ${{ steps.release.outputs['packages/html/ds--tag_name'] }} ./packages/html/ds/govie-frontend.zip
+
+      - name: Publish Theme output
+        if: ${{ steps.release.outputs['packages/themes/govie--release_created'] }}
+        run: gh release upload ${{ steps.release.outputs['packages/themes/govie--tag_name'] }} ./packages/themes/govie/theme.zip
+
+      - name: Tag Last Release
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git tag -f last-release
+          git push origin last-release --force
