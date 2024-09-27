@@ -69,3 +69,5 @@ jobs:
         run: |
           git tag -f last-release
           git push origin last-release --force
+          git checkout latest-release
+          git rebase origin/main

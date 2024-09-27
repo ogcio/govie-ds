@@ -89,7 +89,7 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
           storybookBuildDir: packages/html/storybook/storybook-static
-          autoAcceptChanges: "main"
+          branchName: "latest-release"
 
   chromatic-react:
     runs-on: ubuntu-latest
@@ -120,4 +120,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
           storybookBuildDir: packages/react/storybook/storybook-static
-          autoAcceptChanges: "main"
+          branchName: "latest-release"
