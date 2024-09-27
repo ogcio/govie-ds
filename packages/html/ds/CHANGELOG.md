@@ -50,6 +50,24 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.8.0](https://github.com/ogcio/govie-ds/compare/ds-v0.7.0...ds-v0.8.0) (2024-09-27)
+
+
+### Features
+
+* add global html text-area component ([#231](https://github.com/ogcio/govie-ds/issues/231)) ([0990cba](https://github.com/ogcio/govie-ds/commit/0990cba7b04b0344d3be054dcf53b0b003cb87b1))
+* add html select component ([#236](https://github.com/ogcio/govie-ds/issues/236)) ([3ecf012](https://github.com/ogcio/govie-ds/commit/3ecf0122fee946f47fb002d0b84b75c9edeeec64))
+* add logo assets in the html global library ([#230](https://github.com/ogcio/govie-ds/issues/230)) ([a4ce0a3](https://github.com/ogcio/govie-ds/commit/a4ce0a3bb2917a6d5307e0a9ef20eea86d775be8))
+* add tabs to global html ([#238](https://github.com/ogcio/govie-ds/issues/238)) ([8d8cb9b](https://github.com/ogcio/govie-ds/commit/8d8cb9b637504dfad6b85e0c845a207e262bd89f))
+* html checkbox component ([#227](https://github.com/ogcio/govie-ds/issues/227)) ([915b8ac](https://github.com/ogcio/govie-ds/commit/915b8ac15cec60492cdc0dffc4d9024ce6915e86))
+* implement react checkbox component ([#233](https://github.com/ogcio/govie-ds/issues/233)) ([aa18178](https://github.com/ogcio/govie-ds/commit/aa181785fe5dcabeb282f27f96694a9f375d040e))
+
+
+### Bug Fixes
+
+* footer header fixes ([#235](https://github.com/ogcio/govie-ds/issues/235)) ([3af4f19](https://github.com/ogcio/govie-ds/commit/3af4f19ebd89a9d4d1850b23e584e67d15cfb8cf))
+* set default font family and colour ([#239](https://github.com/ogcio/govie-ds/issues/239)) ([aeaeda0](https://github.com/ogcio/govie-ds/commit/aeaeda0d55e4ad969d5eba8df48ac5cacb8123bf))
+
 ## [0.3.1](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.3.1-alpha.8...@govie-frontend/ds-0.3.1) (2024-09-10)
 
 ### Dependency Updates
