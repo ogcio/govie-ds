@@ -39,6 +39,22 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.12.0](https://github.com/ogcio/govie-ds/compare/ds-v0.11.0...ds-v0.12.0) (2024-09-27)
+
+
+### Features
+
+* add tabs for react ([#228](https://github.com/ogcio/govie-ds/issues/228)) ([8f676ee](https://github.com/ogcio/govie-ds/commit/8f676eeeb269e90ec1ddb1dff4a3c1915f234496))
+* add tabs to global html ([#238](https://github.com/ogcio/govie-ds/issues/238)) ([8d8cb9b](https://github.com/ogcio/govie-ds/commit/8d8cb9b637504dfad6b85e0c845a207e262bd89f))
+* implement react checkbox component ([#233](https://github.com/ogcio/govie-ds/issues/233)) ([aa18178](https://github.com/ogcio/govie-ds/commit/aa181785fe5dcabeb282f27f96694a9f375d040e))
+* react select component ([#240](https://github.com/ogcio/govie-ds/issues/240)) ([b9c16cb](https://github.com/ogcio/govie-ds/commit/b9c16cb01cbfc3c4a451aa0e09e30cc15a53c28e))
+
+
+### Bug Fixes
+
+* set default font family and colour ([#239](https://github.com/ogcio/govie-ds/issues/239)) ([aeaeda0](https://github.com/ogcio/govie-ds/commit/aeaeda0d55e4ad969d5eba8df48ac5cacb8123bf))
+* update react logo ([#229](https://github.com/ogcio/govie-ds/issues/229)) ([e5dcd18](https://github.com/ogcio/govie-ds/commit/e5dcd182518face44698b09ca9786d88cf969b18))
+
 ## [0.8.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.4...@govie-react/ds-0.8.2) (2024-09-10)
 
 ### Dependency Updates
