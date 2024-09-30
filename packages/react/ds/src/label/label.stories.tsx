@@ -43,11 +43,11 @@ export const Default: Story = {
         defaultValue: { summary: '-' },
       },
     },
-    children: {
+    text: {
       control: 'text',
       table: {
         category: 'Content',
-        type: { summary: 'React.ReactNode' },
+        type: { summary: 'text for label' },
         defaultValue: { summary: 'Label' },
       },
     },
@@ -55,6 +55,6 @@ export const Default: Story = {
   args: {
     htmlFor: 'input-id',
     size: LabelSize.md,
-    children: 'Label',
+    text: 'Label',
   },
 };

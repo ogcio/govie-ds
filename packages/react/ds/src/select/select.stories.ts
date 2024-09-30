@@ -63,13 +63,13 @@ export const Default: Story = {
   args: {
     id: 'unique-id',
     label: {
-      content: 'Label',
+      text: 'Label',
     },
     hint: {
-      content: '',
+      text: '',
     },
     error: {
-      content: '',
+      text: '',
     },
     options: [
       {
@@ -92,10 +92,10 @@ export const withHint: Story = {
   args: {
     id: 'unique-id',
     label: {
-      content: 'Default Select',
+      text: 'Default Select',
     },
     hint: {
-      content: 'This can be different to where you went before',
+      text: 'This can be different to where you went before',
     },
     options: [
       {
@@ -118,10 +118,10 @@ export const withError: Story = {
   args: {
     id: 'unique-id',
     label: {
-      content: 'Default Select',
+      text: 'Default Select',
     },
     error: {
-      content: 'Error message',
+      text: 'Error message',
     },
     options: [
       {
@@ -164,7 +164,7 @@ export const withGroups: Story = {
   args: {
     id: 'unique-id',
     label: {
-      content: 'Default Select',
+      text: 'Default Select',
     },
     options: [
       {

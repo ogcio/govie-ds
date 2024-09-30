@@ -41,7 +41,7 @@ const Checkbox = ({
           {label}
         </label>
       </div>
-      {hint && <HintText className="gi-mb-0">{hint}</HintText>}
+      {hint && <HintText text={hint} className="gi-mb-0" />}
     </div>
   );
 };
