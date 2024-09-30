@@ -7,9 +7,11 @@ const config: Config = {
   theme: createTheme(),
   plugins: [],
   safelist: [
-    // { pattern: /text-./ },
-    // { pattern: /border-./ },
-    // { pattern: /./ },
+    { pattern: /layout-./ },
+    { pattern: /grid-./ },
+    { pattern: /col-./ },
+    { pattern: /row-./ },
+    { pattern: /gap-./ },
   ],
 };
 
