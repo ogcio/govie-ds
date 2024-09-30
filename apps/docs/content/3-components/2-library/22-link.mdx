@@ -9,6 +9,57 @@ status: in-development
 
 <ComponentStatusBlock componentId="link" />
 
+## Component
+
+<Tabs>
+    <TabList>
+        <TabItem value="tab1" checked>HTML</TabItem>
+        <TabItem value="tab2">Macro</TabItem>
+        <TabItem value="tab3">React</TabItem>
+    </TabList>
+    <TabPanel value="tab1">
+        <Paragraph>
+        Base link with blue color: 
+        <a href="#" className="gi-link-base gi-link-blue">Base link with blue color</a>
+        ```html
+        <a href="#" class="gi-link-base gi-link-blue"></a>
+        ```
+        </Paragraph>
+
+        <Paragraph>
+        Base link with inherited color: <a href="#" className="gi-link-base">Base link with inherited color</a>
+        ```html
+        <a href="#" class="gi-link-base"></a>
+        ```
+        </Paragraph>
+
+        <Paragraph>
+        Base link with no underline: <a href="#" className="gi-link-base gi-link-blue gi-link-no-underline">Base link with inherited color</a>
+        ```html
+        <a href="#" class="gi-link-base gi-link-blue gi-link-no-underline"></a>
+        ```
+        </Paragraph>
+
+        <Paragraph>
+        Base link with no visited color: <a href="#" className="gi-link-base gi-link-blue gi-link-no-visited">Base link with no visited color</a>
+        ```html
+        <a href="#" class="gi-link-base gi-link-blue gi-link-no-visited"></a>
+        ```
+        </Paragraph>
+    </TabPanel>
+    <TabPanel value="tab2">
+        ```html
+        ```
+    </TabPanel>
+    <TabPanel value="tab3">
+        ```html
+        import { Link} from '@govie-ds/react';
+
+        <Link href="#">This is a sample link</Link>
+        ```
+    </TabPanel>
+</Tabs>
+
 ## When to use this component
 
 Use the link component to create consistent, accessible, and visually appealing hyperlinks throughout your web application.

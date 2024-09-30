@@ -1,4 +1,11 @@
-import { Heading, Paragraph } from '@govie-ds/react';
+import {
+  Heading,
+  Paragraph,
+  TabItem,
+  TabList,
+  TabPanel,
+  Tabs,
+} from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
@@ -115,6 +122,12 @@ const documentComponents: MDXComponents = {
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
+  Tabs: ({ children }) => <Tabs>{children}</Tabs>,
+  TabList: ({ children }) => <TabList>{children}</TabList>,
+  TabItem: (props) => <TabItem {...props}>{props.children}</TabItem>,
+  TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
+  Link: (props) => <Link {...props}>{props.children}</Link>,
+  Paragraph: (props) => <Paragraph {...props}>{props.children}</Paragraph>,
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -128,6 +141,9 @@ export function Mdx({ code }: MdxProps) {
           if (key === 'DeveloperRecommendation') {
             return;
           }
+          if (key.includes('Tab')) {
+            return;
+          }
 
           return [MarginBottom];
         }),
@@ -138,4 +154,5 @@ export function Mdx({ code }: MdxProps) {
 
 function MarginBottom({ children }: { children: React.ReactNode }) {
   return <div className="mb-2xl">{children}</div>;
+  // return <>{children}</>;
 }
