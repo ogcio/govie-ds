@@ -39,6 +39,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.13.1](https://github.com/ogcio/govie-ds/compare/react-v0.13.0...react-v0.13.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* add table export ([3a85f42](https://github.com/ogcio/govie-ds/commit/3a85f42b13fa4c0af9b930c4108aba032156d301))
+
 ## [0.13.0](https://github.com/ogcio/govie-ds/compare/react-v0.12.0...react-v0.13.0) (2024-09-27)
 
 
