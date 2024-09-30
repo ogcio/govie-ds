@@ -19,7 +19,7 @@ function HeaderSearch({
           </label>
           <div className="gi-flex">
             <input
-              name="Search param"
+              name="Search query"
               type="text"
               className="gi-px-3 gi-py-1 gi-grow gi-w-full"
               id="search"
