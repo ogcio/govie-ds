@@ -17,6 +17,7 @@ import {
   TabItem,
   TabPanel,
   TabList,
+  FileUpload,
 } from "@govie-ds/react";
 
 export function App() {
@@ -138,6 +139,16 @@ export function App() {
           </TabPanel>
         </Tabs>
         <hr />
+        <FileUpload
+          error={{
+            children: "Error: File must be smaller than 5MB.",
+          }}
+          id="file-upload-id"
+          label={{
+            children: "Upload File",
+            htmlFor: "file-upload-id",
+          }}
+        />
       </Container>
       <Footer />
     </>

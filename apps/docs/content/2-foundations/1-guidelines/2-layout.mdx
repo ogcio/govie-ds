@@ -1,0 +1,108 @@
+---
+title: Layout
+description: Layout information
+draft: true
+status: in-development
+---
+
+# Layout
+
+## Screen size
+
+Design for small screens first, starting with a single-column layout.
+
+For most types of page, we recommend using either a ‘two-thirds’ or a ‘two-thirds and one-third’ layout. That stops lines of text getting so long that the page becomes difficult to read on desktop devices. This would usually mean no more than 75 characters per line.
+
+Never make assumptions about what devices people are using. Design for different screen sizes rather than specific devices.
+
+## Common layouts
+
+### Two-thirds
+
+<TwoThirds>This is a test content</TwoThirds>
+
+```html
+<div className="gi-layout-column-container">
+    <div className="gi-layout-column-2-3">left content</div>
+</div>
+```
+
+### Two-thirds and one-third
+
+<TwoThirdsOneThird 
+    left={
+        <>This is a test content</>
+    }
+    right={
+        <>This is a side content</>
+    } />
+
+```html
+<div className="gi-layout-column-container">
+    <div className="gi-layout-column-2-3">left content</div>
+    <div className="gi-layout-column-1-3">right content</div>
+</div>
+```
+
+## Setting up page wrappers
+
+If you want to build your layout from scratch, or understand what each of the parts are responsible for, here’s an explanation of how the page wrappers work.
+
+### Limiting width of content
+
+To set up your layout you will need to create 2 wrappers. The first should have the class `gi-layout-container`, which sets the maximum width of the content but does not add any vertical margin or padding.
+
+If your design requires them, you should place components such as breadcrumbs, back link and phase banner inside this wrapper so that they sit directly underneath the header.
+
+## Using the grid system
+
+Use the grid system to lay out the content on your service’s pages.
+
+Most GOV.IE pages follow a ‘two-thirds and one-third’ layout, but the grid system allows for a number of additional combinations when necessary.
+
+Your main content should always be in a two-thirds column even if you’re not using a corresponding one-third column for secondary content.
+
+## Understanding the grid system
+
+GOV.ID Design System provides a powerful and flexible grid system based on CSS Grid. 
+
+### Basic Grid Structure
+To create a grid, you use the `gi-grid` class on a container element. Then, you can specify the number of columns using `gi-grid-cols-{n}` classes, where `{n}` is the number of columns.
+For example:
+
+```html
+<div class="grid grid-cols-3">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</div>
+```
+This creates a 3-column grid layout.
+
+### Responsive Grids
+It is easy to create responsive grids using breakpoint prefixes. You can specify different column counts for different screen sizes:
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+  <!-- Grid items -->
+</div>
+```
+This creates a grid that has 1 column on small screens, 2 columns on medium screens, and 4 columns on large screens.
+
+### Grid Gaps
+You can add gaps between grid items using the `gi-gap-{size}` classes:
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <!-- Grid items -->
+</div>
+```
+
+### Spanning Columns and Rows
+You are allowed to control how items span across columns and rows using classes like `gi-col-span-{n}` and `gi-row-span-{n}`:
+```html
+<div class="grid grid-cols-3">
+  <div class="col-span-2">Spans 2 columns</div>
+  <div>Normal column</div>
+</div>
+```
