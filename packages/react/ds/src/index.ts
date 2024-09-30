@@ -29,3 +29,4 @@ export * from './tabs/tabs.js';
 export * from './tabs/tab-item.js';
 export * from './tabs/tab-panel.js';
 export * from './tabs/tab-list.js';
+export * from './file-upload/file-upload.js';
