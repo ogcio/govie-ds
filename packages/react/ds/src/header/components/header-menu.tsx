@@ -1,5 +1,4 @@
 import { Icon } from '../../icon/icon.js';
-import { Text } from '../../text/text.js';
 import HeaderSearch from './header-search.js';
 
 type HeaderMenuProps = {
@@ -11,9 +10,10 @@ type HeaderMenuProps = {
     href: string;
     label: string;
   }[];
+  search_url: string;
 };
 
-function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
+function HeaderMenu({ languages, navLinks, search_url }: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
@@ -50,7 +50,7 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
           </li>
         ))}
         <li className="xs:gi-hidden gi-mt-8">
-          <HeaderSearch className="!gi-h-40" />
+          <HeaderSearch search_url={search_url} className="!gi-h-40" />
         </li>
       </ul>
     </div>

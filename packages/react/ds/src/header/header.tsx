@@ -6,6 +6,7 @@ import HeaderSearch from './components/header-search.js';
 
 export type HeaderProps = {
   logoLink: string;
+  search_url: string;
   languages?: {
     href: string;
     label: string;
@@ -16,7 +17,12 @@ export type HeaderProps = {
   }[];
 };
 
-export function Header({ logoLink, languages, navLinks }: HeaderProps) {
+export function Header({
+  search_url,
+  logoLink,
+  languages,
+  navLinks,
+}: HeaderProps) {
   return (
     <header
       id="GovieHeader"
@@ -95,8 +101,12 @@ export function Header({ logoLink, languages, navLinks }: HeaderProps) {
           </label>
         </div>
       </div>
-      <HeaderSearch />
-      <HeaderMenu languages={languages} navLinks={navLinks} />
+      <HeaderSearch search_url={search_url} />
+      <HeaderMenu
+        search_url={search_url}
+        languages={languages}
+        navLinks={navLinks}
+      />
       <div
         id="HeaderOverlayContainer"
         className="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"

@@ -14,6 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
+        search_url="/search-page"
         logoLink="/home"
         navLinks={[
           {
