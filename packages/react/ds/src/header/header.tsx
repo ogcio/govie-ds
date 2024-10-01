@@ -3,10 +3,20 @@ import GovieLogo from '../assets/logos/logo.js';
 import { Icon } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
+import { IconId } from '../icon/icon.js';
 
 export type HeaderProps = {
-  logoLink: string;
-  searchUrl?: string;
+  logo: {
+    image?: string;
+    href: string;
+  };
+  tools?: {
+    search?: {
+      action: string;
+      label?: string;
+      icon?: IconId;
+    };
+  };
   languages?: {
     href: string;
     label: string;
@@ -17,12 +27,7 @@ export type HeaderProps = {
   }[];
 };
 
-export function Header({
-  searchUrl,
-  logoLink,
-  languages,
-  navLinks,
-}: HeaderProps) {
+export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
   return (
     <header
       id="GovieHeader"
@@ -49,11 +54,25 @@ export function Header({
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
         <div className="gi-flex">
-          <a href={logoLink} className="xs:gi-block gi-hidden">
-            <GovieLogo />
+          <a href={logo.href} className="xs:gi-block gi-hidden">
+            {logo.image ? (
+              <img
+                className="gi-object-contain gi-h-12"
+                src="https://ds.blocks.gov.ie/_next/static/media/hero.01b46751.png"
+              />
+            ) : (
+              <GovieLogo />
+            )}
           </a>
-          <a href={logoLink} className="xs:gi-hidden gi-block">
-            <GovieLogoSmall />
+          <a href={logo.href} className="xs:gi-hidden gi-block">
+            {logo.image ? (
+              <img
+                className="gi-object-contain gi-h-10"
+                src="https://ds.blocks.gov.ie/_next/static/media/hero.01b46751.png"
+              />
+            ) : (
+              <GovieLogoSmall />
+            )}
           </a>
         </div>
         <div className="gi-flex gi-items-center">
@@ -69,10 +88,10 @@ export function Header({
               </li>
             ))}
           </ul>
-          {navLinks && searchUrl && (
+          {navLinks && tools?.search && (
             <div className="gi-hidden sm:gi-block gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
           )}
-          {searchUrl && (
+          {tools?.search && (
             <label
               htmlFor="SearchTrigger"
               className="gi-border gi-border-solid gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
@@ -83,9 +102,12 @@ export function Header({
                 type="checkbox"
               />
               <span className="gi-text-2md gi-font-bold gi-text-white">
-                Search
+                {tools.search.label ? tools.search.label : 'Search'}
               </span>
-              <Icon className="search-icon gi-text-white" icon="search" />
+              <Icon
+                className="search-icon gi-text-white"
+                icon={tools.search.icon ? tools.search.icon : 'search'}
+              />
               <Icon
                 className="gi-hidden close-icon gi-text-white"
                 icon="close"
@@ -106,9 +128,9 @@ export function Header({
           </label>
         </div>
       </div>
-      {searchUrl && <HeaderSearch searchUrl={searchUrl} />}
+      {tools?.search && <HeaderSearch {...tools.search} />}
       <HeaderMenu
-        searchUrl={searchUrl}
+        searchProps={tools?.search}
         languages={languages}
         navLinks={navLinks}
       />

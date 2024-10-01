@@ -1,11 +1,13 @@
-import { Icon } from '../../icon/icon.js';
+import { Icon, IconId } from '../../icon/icon.js';
 
 function HeaderSearch({
+  action,
   className,
-  searchUrl,
+  icon = 'search',
 }: {
+  action: string;
   className?: string;
-  searchUrl: string;
+  icon?: IconId;
 }) {
   return (
     <div
@@ -13,7 +15,7 @@ function HeaderSearch({
       className={`gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8 ${className}`}
     >
       <div className="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
-        <form action={searchUrl}>
+        <form action={action}>
           <label htmlFor="search" className="gi-text-md gi-font-bold gi-mb-4">
             Enter search term
           </label>
@@ -25,7 +27,7 @@ function HeaderSearch({
               id="search"
             />
             <button className="gi-bg-emerald-800 gi-text-white gi-p-md">
-              <Icon icon="search" />
+              <Icon icon={icon} />
             </button>
           </div>
         </form>
