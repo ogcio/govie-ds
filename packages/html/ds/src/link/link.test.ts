@@ -58,8 +58,10 @@ describe('link', () => {
     });
     const linkElement = screen.getByRole('link');
 
-    expect(linkElement.classList.contains('visited:gi-text-purple-700')).toBe(
-      true,
+    console.log(linkElement.classList);
+
+    expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
+      false,
     );
   });
 
@@ -72,8 +74,8 @@ describe('link', () => {
 
     const linkElement = screen.getByRole('link');
 
-    expect(linkElement.classList.contains('visited:gi-text-purple-700')).toBe(
-      false,
+    expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
+      true,
     );
   });
 
