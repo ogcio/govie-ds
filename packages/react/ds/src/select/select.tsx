@@ -23,16 +23,14 @@ type SelectProps = {
 };
 
 export function Select({ id, label, options, hint, error }: SelectProps) {
-  const ariaLabel = label?.content || id;
+  const ariaLabel = label?.text || id;
   return (
     <div>
-      {label && (
-        <Label htmlFor={id} size={label.size}>
-          {label.content}
-        </Label>
+      {label?.text && (
+        <Label text={label.text} htmlFor={id} size={label.size} />
       )}
-      {hint && <HintText size={hint.size}>{hint.content}</HintText>}
-      {error && <ErrorText size={error.size}>{error.content}</ErrorText>}
+      {hint && <HintText text={hint.text} size={hint.size} />}
+      {error && <ErrorText text={error.text} size={error.size} />}
       <select
         className="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
         id={ariaLabel}

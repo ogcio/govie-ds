@@ -8,12 +8,13 @@ export enum LabelSize {
 
 // Extend `React.LabelHTMLAttributes<HTMLLabelElement>` for correct label attributes
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
+  text: string;
   size?: LabelSize;
 };
 
 // Use React.forwardRef to support refs properly
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ size = LabelSize.md, htmlFor, ...props }, ref) => {
+  ({ text, size = LabelSize.md, htmlFor, ...props }, ref) => {
     return (
       <label
         className={`gi-text-${size} gi-leading-5 gi-mb-1 gi-block`}
@@ -21,7 +22,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         htmlFor={htmlFor}
         {...props}
       >
-        {props.children}
+        {text}
       </label>
     );
   },
