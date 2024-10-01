@@ -1,0 +1,21 @@
+/* GOV.IE Components Stylesheets */
+
+/* Link  */
+
+.gi-link {
+    @apply gi-decoration-xs gi-underline gi-underline-offset-[0.1em] gi-text-blue-700 hover:gi-text-blue-800 visited:gi-text-purple-700 hover:gi-decoration-lg focus:gi-outline focus:gi-outline-transparent focus:gi-bg-yellow-400 focus:gi-outline-2 focus:gi-shadow-sm focus:gi-shadow-yellow-400
+}
+
+.gi-link-inherit {
+    @apply gi-text-inherit hover:gi-text-inherit
+}
+
+.gi-link-no-visited {
+    @apply visited:gi-text-blue-700
+}
+
+.gi-link-no-underline {
+    @apply gi-no-underline gi-underline-offset-[0.1em] focus:gi-no-underline
+}
+
+/* End Link */

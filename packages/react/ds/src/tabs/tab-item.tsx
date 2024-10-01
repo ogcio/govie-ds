@@ -6,6 +6,7 @@ export function TabItem({
   href,
   checked = false,
   children,
+  tabName,
 }: {
   value: string;
   href?: string;
@@ -13,18 +14,19 @@ export function TabItem({
   ariaLabel?: string;
   ariaLabelledby?: string;
   children: React.ReactNode;
+  tabName?: string;
 }) {
   const valueSlug = slugify(value);
   return (
     <>
       <input
-        name="tabs"
+        name={tabName}
         type="radio"
         id={`tab-${valueSlug}`}
         aria-labelledby={`tab-label-${valueSlug}`}
         aria-roledescription="tab"
         defaultChecked={checked}
-        className="gi-absolute gi-opacity-0"
+        className="tab-item gi-absolute gi-opacity-0"
       />
       <label
         role="tab"
