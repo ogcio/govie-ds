@@ -14,6 +14,7 @@ export function Paragraph({
   whitespace = 'normal',
   children,
   style,
+  className,
 }: {
   as?: ParagraphAs;
   size?: ParagraphSize;
@@ -21,6 +22,7 @@ export function Paragraph({
   whitespace?: ParagraphWhitespace;
   children: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
 }) {
   const sizeClass = (() => {
     switch (size) {
@@ -72,7 +74,7 @@ export function Paragraph({
 
   return (
     <As
-      className={`${sizeClass} ${alignClass} ${whitespaceClass}`}
+      className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className}`}
       style={style}
     >
       {children}

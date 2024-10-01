@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../text/text.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 
 export enum ErrorSize {
   sm = 'sm',
@@ -22,13 +22,13 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
   ...props
 }) => {
   return (
-    <Text
-      as="p"
+    <Paragraph
+      as="span"
       size={size}
       className={`gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block gi-mb-[14px] gi-mt-0 ${className}`}
       {...props}
     >
       {text}
-    </Text>
+    </Paragraph>
   );
 };

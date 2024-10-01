@@ -1,5 +1,4 @@
 import { Icon } from '../../icon/icon.js';
-import { Text } from '../../text/text.js';
 import HeaderSearch from './header-search.js';
 
 type HeaderMenuProps = {

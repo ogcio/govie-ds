@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../text/text.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 
 export enum HintSize {
   sm = 'sm',
@@ -23,13 +23,13 @@ export const HintText: React.FC<HintTextProps> = ({
   ...props
 }) => {
   return (
-    <Text
+    <Paragraph
       size={size}
       className={`gi-font-normal gi-leading-5 gi-text-gray-700 gi-mb-[10px] ${className}`}
       {...props}
     >
       {text}
-    </Text>
+    </Paragraph>
   );
 };
 
