@@ -16,6 +16,10 @@ export type HeaderProps = {
       label?: string;
       icon?: IconId;
     };
+    menu?: {
+      label?: string;
+      icon?: IconId;
+    };
   };
   languages?: {
     href: string;
@@ -101,9 +105,11 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
                 id="SearchTrigger"
                 type="checkbox"
               />
-              <span className="gi-text-2md gi-font-bold gi-text-white">
-                {tools.search.label ? tools.search.label : 'Search'}
-              </span>
+              {tools.search.label && (
+                <span className="gi-text-2md gi-font-bold gi-text-white">
+                  {tools.search.label}
+                </span>
+              )}
               <Icon
                 className="search-icon gi-text-white"
                 icon={tools.search.icon ? tools.search.icon : 'search'}
@@ -123,8 +129,15 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
               id="MobileMenuTrigger"
               type="checkbox"
             />
-            <span className="gi-text-2md gi-font-bold gi-text-white">Menu</span>
-            <Icon className="gi-text-white" icon="menu" />
+            {tools?.menu?.label && (
+              <span className="gi-text-2md gi-font-bold gi-text-white">
+                {tools.menu.label}
+              </span>
+            )}
+            <Icon
+              className="gi-text-white"
+              icon={tools?.menu?.icon ? tools.menu.icon : 'menu'}
+            />
           </label>
         </div>
       </div>
