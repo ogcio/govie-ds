@@ -4,8 +4,10 @@ import { Icon } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 import { IconId } from '../icon/icon.js';
+import { Heading } from '../heading/heading.js';
 
 export type HeaderProps = {
+  title?: string;
   logo: {
     image?: string;
     href: string;
@@ -32,7 +34,13 @@ export type HeaderProps = {
   }[];
 };
 
-export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
+export function Header({
+  title,
+  tools,
+  logo,
+  languages,
+  navLinks,
+}: HeaderProps) {
   const hasDivider = tools?.items || tools?.search;
   return (
     <header
@@ -59,7 +67,7 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
         id="MenuContainer"
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
-        <div className="gi-flex">
+        <div className="gi-flex gi-items-center gi-gap-3">
           <a href={logo.href} className="xs:gi-block gi-hidden">
             {logo.image ? (
               <img
@@ -80,6 +88,12 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
               <GovieLogoSmall />
             )}
           </a>
+          {/* Replace the h2 with the Heading Component after refactor */}
+          {title && (
+            <h2 className="gi-tracking-wider gi-font-bold gi-text-white gi-text-lg xs:gi-text-lg md:gi-text-xl xl:gi-text-2xl">
+              {title}
+            </h2>
+          )}
         </div>
         <div className="gi-flex gi-items-center">
           <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">

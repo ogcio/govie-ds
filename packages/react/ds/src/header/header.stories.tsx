@@ -11,6 +11,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
+    title: {
+      control: 'text',
+      description: 'The title of the Header',
+    },
     logo: {
       control: 'object',
       type: {
@@ -195,6 +199,45 @@ export const WithSecondaryLinks: Story = {
 
 export const withMainAndSecondaryLinks: Story = {
   args: {
+    logo: {
+      href: 'path',
+    },
+    tools: {
+      search: {
+        label: 'Search',
+        action: '/search-page',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const withTitle: Story = {
+  args: {
+    title: 'Life Events',
     logo: {
       href: 'path',
     },
