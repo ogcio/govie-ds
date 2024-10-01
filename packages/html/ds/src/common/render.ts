@@ -56,6 +56,7 @@ export function render<TProps>({
     initGovIe();
 
     return {
+      container: div,
       getByText: (id: Matcher, options?: SelectorMatcherOptions) => {
         return getByText(div, id, options);
       },
