@@ -47,17 +47,6 @@ export const Default: Story = {
               },
             },
           },
-          menu: {
-            name: 'object',
-            value: {
-              label: {
-                name: 'string',
-              },
-              icon: {
-                name: 'string',
-              },
-            },
-          },
           items: {
             name: 'object',
             value: {
@@ -91,9 +80,6 @@ export const Default: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
-      },
-      menu: {
-        label: 'Menu',
       },
     },
     navLinks: [
@@ -129,9 +115,6 @@ export const NoLinks: Story = {
         label: 'Search',
         action: '/search_page',
       },
-      menu: {
-        label: 'Menu',
-      },
     },
   },
 };
@@ -145,9 +128,6 @@ export const WithMainLinks: Story = {
       search: {
         label: 'Search',
         action: '/search_page',
-      },
-      menu: {
-        label: 'Menu',
       },
     },
     navLinks: [
@@ -199,9 +179,6 @@ export const WithSecondaryLinks: Story = {
         label: 'Search',
         action: 'search_page',
       },
-      menu: {
-        label: 'Menu',
-      },
     },
     languages: [
       {
@@ -225,9 +202,6 @@ export const withMainAndSecondaryLinks: Story = {
       search: {
         label: 'Search',
         action: '/search-page',
-      },
-      menu: {
-        label: 'Menu',
       },
     },
     navLinks: [
@@ -420,9 +394,6 @@ export const WithExtraButtonsAndLabels: Story = {
       href: '/path',
     },
     tools: {
-      menu: {
-        label: 'Menu',
-      },
       items: [
         {
           href: '/home',
