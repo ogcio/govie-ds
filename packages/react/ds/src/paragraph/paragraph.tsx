@@ -13,12 +13,14 @@ export function Paragraph({
   align = 'start',
   whitespace = 'normal',
   children,
+  style,
 }: {
   as?: ParagraphAs;
   size?: ParagraphSize;
   align?: ParagraphAlign;
   whitespace?: ParagraphWhitespace;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }) {
   const sizeClass = (() => {
     switch (size) {
@@ -69,7 +71,10 @@ export function Paragraph({
   })();
 
   return (
-    <As className={`${sizeClass} ${alignClass} ${whitespaceClass}`}>
+    <As
+      className={`${sizeClass} ${alignClass} ${whitespaceClass}`}
+      style={style}
+    >
       {children}
     </As>
   );
