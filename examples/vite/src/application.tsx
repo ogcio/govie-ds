@@ -24,7 +24,7 @@ export function App() {
   return (
     <>
       <Header
-        search_url="/search-page"
+        searchUrl="/search-page"
         logoLink="/home"
         navLinks={[
           {

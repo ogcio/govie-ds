@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    search_url: {
+    searchUrl: {
       description: 'The url for the search page',
     },
     navLinks: {
@@ -22,7 +22,7 @@ export const Default: Story = {
     },
   },
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/link',
     navLinks: [
       {
@@ -53,14 +53,14 @@ export const Default: Story = {
 
 export const NoLinks: Story = {
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
   },
 };
 
 export const WithMainLinks: Story = {
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
     navLinks: [
       {
@@ -101,7 +101,7 @@ export const WithNoSearch: Story = {
 
 export const WithSecondaryLinks: Story = {
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
     languages: [
       {
@@ -118,7 +118,7 @@ export const WithSecondaryLinks: Story = {
 
 export const withMainAndSecondaryLinks: Story = {
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
     navLinks: [
       {
@@ -155,7 +155,7 @@ export const tabletView: Story = {
     },
   },
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
     navLinks: [
       {
@@ -192,7 +192,7 @@ export const mobileView: Story = {
     },
   },
   args: {
-    search_url: '/seach_page',
+    searchUrl: '/seach_page',
     logoLink: '/path',
     navLinks: [
       {

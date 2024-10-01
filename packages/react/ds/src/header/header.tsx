@@ -6,7 +6,7 @@ import HeaderSearch from './components/header-search.js';
 
 export type HeaderProps = {
   logoLink: string;
-  search_url?: string;
+  searchUrl?: string;
   languages?: {
     href: string;
     label: string;
@@ -18,7 +18,7 @@ export type HeaderProps = {
 };
 
 export function Header({
-  search_url,
+  searchUrl,
   logoLink,
   languages,
   navLinks,
@@ -69,10 +69,10 @@ export function Header({
               </li>
             ))}
           </ul>
-          {navLinks && search_url && (
+          {navLinks && searchUrl && (
             <div className="gi-hidden sm:gi-block gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
           )}
-          {search_url && (
+          {searchUrl && (
             <label
               htmlFor="SearchTrigger"
               className="gi-border gi-border-solid gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
@@ -106,9 +106,9 @@ export function Header({
           </label>
         </div>
       </div>
-      {search_url && <HeaderSearch search_url={search_url} />}
+      {searchUrl && <HeaderSearch searchUrl={searchUrl} />}
       <HeaderMenu
-        search_url={search_url}
+        searchUrl={searchUrl}
         languages={languages}
         navLinks={navLinks}
       />

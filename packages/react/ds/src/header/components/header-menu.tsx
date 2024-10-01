@@ -10,10 +10,10 @@ type HeaderMenuProps = {
     href: string;
     label: string;
   }[];
-  search_url?: string;
+  searchUrl?: string;
 };
 
-function HeaderMenu({ languages, navLinks, search_url }: HeaderMenuProps) {
+function HeaderMenu({ languages, navLinks, searchUrl }: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
@@ -49,9 +49,9 @@ function HeaderMenu({ languages, navLinks, search_url }: HeaderMenuProps) {
             </a>
           </li>
         ))}
-        {search_url && (
+        {searchUrl && (
           <li className="xs:gi-hidden gi-mt-8">
-            <HeaderSearch search_url={search_url} className="!gi-h-40" />
+            <HeaderSearch searchUrl={searchUrl} className="!gi-h-40" />
           </li>
         )}
       </ul>

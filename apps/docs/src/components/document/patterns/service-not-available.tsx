@@ -4,7 +4,7 @@ import { Footer } from '@/components/footer/footer';
 export function ServiceUnavailable() {
   return (
     <>
-      <Header search_url="/seach_page" logoLink="/" />
+      <Header searchUrl="/seach_page" logoLink="/" />
       <main>
         <Heading as="h2">Sorry, the service is unavailable</Heading>
         <Paragraph>You will be able to use the service later.</Paragraph>
