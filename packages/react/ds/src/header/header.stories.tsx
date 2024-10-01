@@ -79,6 +79,26 @@ export const WithMainLinks: Story = {
   },
 };
 
+export const WithNoSearch: Story = {
+  args: {
+    logoLink: '/path',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
 export const WithSecondaryLinks: Story = {
   args: {
     search_url: '/seach_page',
