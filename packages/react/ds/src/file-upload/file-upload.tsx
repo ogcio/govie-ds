@@ -14,23 +14,19 @@ export type FileUploadProps = React.InputHTMLAttributes<HTMLInputElement> & {
 // Use React.forwardRef to support refs properly
 export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
   ({ label, hint, error, id, ...props }, ref) => {
-    const hasError = error?.children;
-    const hasHint = hint?.children;
-    const hasLabel = label?.children;
-
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${hasError ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
-        {hasLabel && (
-          <Label size={label.size} htmlFor={id}>
+        {label?.text && (
+          <Label text={label.text} size={label.size} htmlFor={id}>
             {label.children}
           </Label>
         )}
 
-        {hasHint && <HintText size={hint.size}>{hint.children}</HintText>}
+        {hint?.text && <HintText text={hint.text} size={hint.size} />}
 
-        {hasError && <ErrorText size={error.size}>{error.children}</ErrorText>}
+        {error?.text && <ErrorText text={error.text} size={error.size} />}
 
         <input
           id={id}

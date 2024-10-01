@@ -28,17 +28,17 @@ export const Default: Story = {
         defaultValue: { summary: HintSize.md },
       },
     },
-    children: {
+    text: {
       control: 'text',
       table: {
         category: 'Content',
-        type: { summary: 'React.ReactNode' },
+        type: { summary: 'text of hint' },
         defaultValue: { summary: 'Hint' },
       },
     },
   },
   args: {
-    children: 'Hint',
+    text: 'Hint',
     size: HintSize.md,
   },
 };

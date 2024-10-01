@@ -43,11 +43,11 @@ const CheckboxesGroup = ({
           ) : (
             title.value
           )}
-          {title.hint && <HintText className="gi-mb-0">{title.hint}</HintText>}
+          {title.hint && <HintText text={title.hint} className="gi-mb-0" />}
         </legend>
         <div className="gi-flex gi-flex-col gi-gap-2.5">
           {errorMessage && (
-            <ErrorText className="gi-mb-0">{errorMessage}</ErrorText>
+            <ErrorText text={errorMessage} className="gi-mb-0" />
           )}
           {items.map((checkbox, index) => (
             <Checkbox

@@ -53,14 +53,14 @@ export const Default: Story = {
   args: {
     id: 'file-upload-id',
     label: {
-      children: 'Upload File',
+      text: 'Upload File',
       htmlFor: 'file-upload-id',
     },
     hint: {
-      children: '',
+      text: '',
     },
     error: {
-      children: '',
+      text: '',
     },
   },
 };
@@ -69,11 +69,11 @@ export const WithLabelAndHint: Story = {
   args: {
     id: 'file-upload-id',
     label: {
-      children: 'Upload File',
+      text: 'Upload File',
       htmlFor: 'file-upload-id',
     },
     hint: {
-      children: 'Hint: This is a helpful hint.',
+      text: 'Hint: This is a helpful hint.',
     },
   },
 };
@@ -82,11 +82,11 @@ export const WithLabelAndError: Story = {
   args: {
     id: 'file-upload-id',
     label: {
-      children: 'Upload File',
+      text: 'Upload File',
       htmlFor: 'file-upload-id',
     },
     error: {
-      children: 'Error: File must be smaller than 5MB.',
+      text: 'Error: File must be smaller than 5MB.',
     },
   },
 };
