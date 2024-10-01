@@ -164,5 +164,4 @@ export function Mdx({ code }: MdxProps) {
 
 function MarginBottom({ children }: { children: React.ReactNode }) {
   return <div className="mb-2xl">{children}</div>;
-  // return <>{children}</>;
 }
