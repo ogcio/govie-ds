@@ -58,8 +58,6 @@ describe('link', () => {
     });
     const linkElement = screen.getByRole('link');
 
-    console.log(linkElement.classList);
-
     expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
       false,
     );
