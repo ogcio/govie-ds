@@ -28,17 +28,17 @@ export const Default: Story = {
         defaultValue: { summary: ErrorSize.md },
       },
     },
-    children: {
+    text: {
       control: 'text',
       table: {
         category: 'Content',
-        type: { summary: 'React.ReactNode' },
+        type: { summary: 'Text of error' },
         defaultValue: { summary: 'Error' },
       },
     },
   },
   args: {
-    children: 'Error',
+    text: 'Error',
     size: ErrorSize.md,
   },
 };
