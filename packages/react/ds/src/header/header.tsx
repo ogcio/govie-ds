@@ -69,20 +69,14 @@ export function Header({
         <div className="gi-flex gi-items-center gi-gap-3">
           <a href={logo.href} className="xs:gi-block gi-hidden">
             {logo.image ? (
-              <img
-                className="gi-object-contain gi-h-12"
-                src={logo.image}
-              />
+              <img className="gi-object-contain gi-h-12" src={logo.image} />
             ) : (
               <GovieLogo />
             )}
           </a>
           <a href={logo.href} className="xs:gi-hidden gi-block">
             {logo.image ? (
-              <img
-                className="gi-object-contain gi-h-10"
-                src={logo.image}
-              />
+              <img className="gi-object-contain gi-h-10" src={logo.image} />
             ) : (
               <GovieLogoSmall />
             )}
