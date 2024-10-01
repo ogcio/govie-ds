@@ -181,8 +181,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-file-upload--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
