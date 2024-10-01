@@ -36,6 +36,16 @@ const meta = {
         type: { summary: 'ErrorText' },
       },
     },
+    accept: {
+      description:
+        'Defines the file types that the input should accept. For example: ".png, .jpg, image/*".',
+      control: 'text',
+      table: {
+        category: 'Attributes',
+        type: { summary: 'string' },
+        defaultValue: { summary: '*/*' },
+      },
+    },
     ref: {
       control: false,
       table: {
@@ -62,6 +72,7 @@ export const Default: Story = {
     error: {
       text: '',
     },
+    accept: '*/*',
   },
 };
 
@@ -75,6 +86,7 @@ export const WithLabelAndHint: Story = {
     hint: {
       text: 'Hint: This is a helpful hint.',
     },
+    accept: '*/*',
   },
 };
 
@@ -88,5 +100,17 @@ export const WithLabelAndError: Story = {
     error: {
       text: 'Error: File must be smaller than 5MB.',
     },
+    accept: '.pdf, .docx',
+  },
+};
+
+export const WithPDFAndDocxOnly: Story = {
+  args: {
+    id: 'file-upload-id',
+    label: {
+      text: 'Upload File',
+      htmlFor: 'file-upload-id',
+    },
+    accept: '.pdf, .docx',
   },
 };
