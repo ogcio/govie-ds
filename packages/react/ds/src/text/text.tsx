@@ -1,37 +1,9 @@
 import { cn } from '../cn.js';
 
-export type TextAs =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'p'
-  | 'span'
-  | 'blockquote';
+export type TextAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
 export type TextSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
 
-function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
-  if (as === 'p' || as === 'span') {
-    const margin = as === 'p' ? 'gi-mt-0 gi-mb-8' : 'gi-my-0';
-    const maxWidth = as === 'p' ? 'gi-max-w-prose' : undefined;
-
-    const sizes = {
-      sm: 'gi-text-sm',
-      md: 'gi-text-sm md:gi-text-md',
-      lg: 'gi-text-lg',
-    };
-
-    if (!size || size === 'xl' || size === 'xs' || size === '2xs') {
-      throw new Error(`Invalid size '${size}'.`);
-    }
-
-    const sizeClasses = sizes[size];
-
-    return cn(sizeClasses, margin, maxWidth);
-  }
-
+function getTextClass({ size }: { as: TextAs; size?: TextSize }) {
   const margin = 'gi-mt-2 gi-mb-8';
   const bold = 'gi-font-bold';
 
@@ -52,7 +24,7 @@ function getTextClass({ as, size }: { as: TextAs; size?: TextSize }) {
 }
 
 export function Text({
-  as: As = 'p',
+  as: As,
   size,
   children,
   className,
@@ -83,12 +55,6 @@ export function Text({
       }
       case 'h6': {
         return 'xs';
-      }
-      case 'p': {
-        return 'md';
-      }
-      case 'span': {
-        return 'md';
       }
       default: {
         throw new Error(`Invalid text as '${As}'.`);

@@ -1,11 +1,23 @@
 {% macro govieParagraph(props) %}
   {% macro getSizeClass(size) %}
     {% if size == 'lg' %}
-      gi-text-lg
+      {% if props.as == 'span' %}
+        gi-span-lg
+      {% else %}
+        gi-paragraph-lg
+      {% endif %}
     {% elif size == 'sm' %}
-      gi-text-sm
+      {% if props.as == 'span' %}
+        gi-span-sm
+      {% else %}
+        gi-paragraph-sm
+      {% endif %}
     {% else %}
-      xs:gi-text-sm md:gi-text-md
+      {% if props.as == 'span' %}
+        gi-span
+      {% else %}
+        gi-paragraph
+      {% endif %}
     {% endif %}
   {% endmacro %}
 
@@ -37,11 +49,9 @@
     {{ getSizeClass(props.size) | trim }} {{ getAlignClass(props.align) | trim }} {{ getWhitespaceClass(props.whitespace) | trim }} gi-max-w-prose
   {% endmacro %}
 
-  {% if props.as == 'p' %}
-    <p class="{{ getCommonClasses(props) | trim }} gi-mt-0 gi-mb-8">{{ props.content | safe | trim }}</p>
-  {% elif props.as == 'span' %}
-    <span class="{{ getCommonClasses(props) | trim }} gi-my-0">{{ props.content | safe | trim }}</span>
+  {% if props.as == 'span' %}
+    <span class="{{ getCommonClasses(props) | trim }}">{{ props.content | safe | trim }}</span>
   {% else %}
-    <p class="{{ getCommonClasses(props) | trim }} gi-mt-2 gi-mb-8">{{ props.content | safe | trim }}</p>
+    <p class="{{ getCommonClasses(props) | trim }}">{{ props.content | safe | trim }}</p>
   {% endif %}
 {% endmacro %}

@@ -1,8 +1,6 @@
-import { Text } from '../text/text.js';
-
 export type ParagraphAs = 'p' | 'span';
 export type ParagraphSize = 'lg' | 'md' | 'sm';
-export type ParagraphAlign = 'left' | 'center' | 'right' | 'justify';
+export type ParagraphAlign = 'start' | 'center' | 'end' | 'justify';
 export type ParagraphWhitespace =
   | 'normal'
   | 'pre'
@@ -12,7 +10,7 @@ export type ParagraphWhitespace =
 export function Paragraph({
   as: As = 'p',
   size = 'md',
-  align = 'left',
+  align = 'start',
   whitespace = 'normal',
   children,
 }: {
@@ -22,19 +20,33 @@ export function Paragraph({
   whitespace?: ParagraphWhitespace;
   children: React.ReactNode;
 }) {
+  const sizeClass = (() => {
+    switch (size) {
+      case 'lg': {
+        return As === 'p' ? 'gi-paragraph-lg' : 'gi-span-lg';
+      }
+      case 'sm': {
+        return As === 'p' ? 'gi-paragraph-sm' : 'gi-span-sm';
+      }
+      default: {
+        return As === 'p' ? 'gi-paragraph' : 'gi-span';
+      }
+    }
+  })();
+
   const alignClass = (() => {
     switch (align) {
       case 'center': {
         return 'gi-text-center';
       }
-      case 'right': {
-        return 'gi-text-right';
+      case 'end': {
+        return 'gi-text-end';
       }
       case 'justify': {
         return 'gi-text-justify';
       }
       default: {
-        return 'gi-text-left';
+        return 'gi-text-start';
       }
     }
   })();
@@ -57,8 +69,8 @@ export function Paragraph({
   })();
 
   return (
-    <Text as={As} size={size} className={`${alignClass} ${whitespaceClass}`}>
+    <As className={`${sizeClass} ${alignClass} ${whitespaceClass}`}>
       {children}
-    </Text>
+    </As>
   );
 }

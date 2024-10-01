@@ -9,6 +9,7 @@
 
 @import 'node_modules/@govie-ds/tailwind/css/layout.css';
 @import 'node_modules/@govie-ds/tailwind/css/components.css';
+@import 'node_modules/@govie-ds/tailwind/css/typography.css';
 
 .gieds-js .js\:gi-hidden {
   display: none;
