@@ -154,11 +154,14 @@ export class Header extends BaseComponent<HeaderOptions> {
   }
 
   initComponent() {
-    this.searchIconDesktop.addEventListener('click', this.searchIconHandler);
-    this.searchIconMobile.addEventListener(
-      'click',
-      this.searchIconHandlerMobile,
-    );
+    const isSearchEnabled = this.searchIconDesktop && this.searchIconMobile;
+    if (isSearchEnabled) {
+      this.searchIconDesktop.addEventListener('click', this.searchIconHandler);
+      this.searchIconMobile.addEventListener(
+        'click',
+        this.searchIconHandlerMobile,
+      );
+    }
     this.menuIcon.addEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
     this.overlayDisabledContainer.addEventListener(
@@ -169,14 +172,20 @@ export class Header extends BaseComponent<HeaderOptions> {
   }
 
   destroyComponent(): void {
-    this.searchIconDesktop.removeEventListener('click', this.searchIconHandler);
-    this.searchIconMobile.removeEventListener(
-      'click',
-      this.searchIconHandlerMobile,
-    );
+    const isSearchEnabled = this.searchIconDesktop && this.searchIconMobile;
+    if (isSearchEnabled) {
+      this.searchIconDesktop.removeEventListener(
+        'click',
+        this.searchIconHandler,
+      );
+      this.searchIconMobile.removeEventListener(
+        'click',
+        this.searchIconHandlerMobile,
+      );
+    }
     this.menuIcon.removeEventListener('click', this.menuIconHandler);
     this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
-    this.overlayDisabledContainer.addEventListener(
+    this.overlayDisabledContainer.removeEventListener(
       'click',
       this.closeMenuHandler,
     );

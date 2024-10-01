@@ -39,9 +39,11 @@
       </a>
     </li>
     {% endfor %}
-    <li class="xs:gi-hidden gi-mt-8">
-      {{ HeaderSearchContainer({"dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
-    </li>
+    {% if props.searchUrl %}
+      <li class="xs:gi-hidden gi-mt-8">
+        {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
+      </li>
+    {% endif %}
   </ul>
 </div>
 

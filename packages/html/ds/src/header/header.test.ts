@@ -3,6 +3,7 @@ import html from './header.html?raw';
 import { HeaderProps } from './header.schema';
 
 const standardProps = {
+  searchUrl: '/seach_page',
   logoLink: '/home',
   noJsMenuLink: '/menu',
   noJsSearchLink: '/search',

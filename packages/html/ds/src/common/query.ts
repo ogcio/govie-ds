@@ -3,10 +3,6 @@ export function createQuery({ element }: { element: Element }) {
     getByElement: ({ name }: { name: string }) => {
       const elements = element.querySelectorAll(`[data-element="${name}"]`);
 
-      if (elements.length === 0) {
-        throw new Error(`No elements with 'data-element="${name}"' found.`);
-      }
-
       if (elements.length > 1) {
         throw new Error(
           `More than one element with 'data-element="${name}"' found.`,

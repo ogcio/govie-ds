@@ -1,4 +1,4 @@
-import { Icon } from '../../icon/icon.js';
+import { Icon, IconId } from '../../icon/icon.js';
 import HeaderSearch from './header-search.js';
 
 type HeaderMenuProps = {
@@ -10,9 +10,14 @@ type HeaderMenuProps = {
     href: string;
     label: string;
   }[];
+  searchProps?: {
+    action: string;
+    label?: string;
+    icon?: IconId;
+  };
 };
 
-function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
+function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
@@ -48,9 +53,11 @@ function HeaderMenu({ languages, navLinks }: HeaderMenuProps) {
             </a>
           </li>
         ))}
-        <li className="xs:gi-hidden gi-mt-8">
-          <HeaderSearch className="!gi-h-40" />
-        </li>
+        {searchProps && (
+          <li className="xs:gi-hidden gi-mt-8">
+            <HeaderSearch {...searchProps} className="!gi-h-40" />
+          </li>
+        )}
       </ul>
     </div>
   );
