@@ -15,6 +15,11 @@ export enum ButtonSize {
   Large = 'large',
 }
 
+export enum IconPosition {
+  Left = 'left',
+  Right = 'right',
+}
+
 export const buttonSchema = zod.object({
   variant: zod
     .nativeEnum(ButtonVariant, {
@@ -37,7 +42,11 @@ export const buttonSchema = zod.object({
   icon: zod
     .object({
       props: iconSchema.describe('Icon for the button'),
-      position: zod.enum(['left', 'right']).optional(),
+      position: zod
+        .nativeEnum(IconPosition, {
+          description: 'The position of the icon',
+        })
+        .optional(),
     })
     .optional(),
 });
