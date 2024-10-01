@@ -11,9 +11,71 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    // searchUrl: {
-    //   description: 'The url for the search page',
-    // },
+    logo: {
+      control: 'object',
+      type: {
+        name: 'object',
+        value: {
+          image: {
+            name: 'string',
+          },
+          href: {
+            name: 'string',
+          },
+        },
+      },
+      description: 'The url and image for the logo',
+    },
+    tools: {
+      control: 'object',
+      description: 'Actionable items such as Search, Menu and additional CTA',
+      type: {
+        name: 'object',
+        value: {
+          search: {
+            name: 'object',
+            value: {
+              action: {
+                name: 'string',
+                required: true,
+              },
+              label: {
+                name: 'string',
+              },
+              icon: {
+                name: 'string',
+              },
+            },
+          },
+          menu: {
+            name: 'object',
+            value: {
+              label: {
+                name: 'string',
+              },
+              icon: {
+                name: 'string',
+              },
+            },
+          },
+          items: {
+            name: 'object',
+            value: {
+              label: {
+                name: 'string',
+              },
+              icon: {
+                name: 'string',
+              },
+              href: {
+                name: 'string',
+                required: true,
+              },
+            },
+          },
+        },
+      },
+    },
     navLinks: {
       description: 'A list of navigation links',
     },
@@ -28,9 +90,145 @@ export const Default: Story = {
     tools: {
       search: {
         action: '/search_page',
-        icon: 'thumb_up'
-        // label: 'Enter search term'
-      }
+        label: 'Search',
+      },
+      menu: {
+        label: 'Menu',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const NoLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      search: {
+        label: 'Search',
+        action: '/search_page',
+      },
+      menu: {
+        label: 'Menu',
+      },
+    },
+  },
+};
+
+export const WithMainLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      search: {
+        label: 'Search',
+        action: '/search_page',
+      },
+      menu: {
+        label: 'Menu',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
+export const WithNoSearch: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
+export const WithSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      search: {
+        label: 'Search',
+        action: 'search_page',
+      },
+      menu: {
+        label: 'Menu',
+      },
+    },
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const withMainAndSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: 'path',
+    },
+    tools: {
+      search: {
+        label: 'Search',
+        action: '/search-page',
+      },
+      menu: {
+        label: 'Menu',
+      },
     },
     navLinks: [
       {
@@ -59,172 +257,198 @@ export const Default: Story = {
   },
 };
 
-// export const NoLinks: Story = {
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//   },
-// };
+export const NoLabelSearch: Story = {
+  args: {
+    logo: {
+      href: 'path',
+    },
+    tools: {
+      search: {
+        action: '/search-page',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
 
-// export const WithMainLinks: Story = {
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//     navLinks: [
-//       {
-//         href: '#',
-//         label: 'News',
-//       },
-//       {
-//         href: '#',
-//         label: 'Departments',
-//       },
-//       {
-//         href: '#',
-//         label: 'Services',
-//       },
-//     ],
-//   },
-// };
+export const tabletView: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'pixel',
+    },
+  },
+  args: {
+    logo: {
+      href: 'path',
+    },
+    tools: {
+      search: {
+        action: '/search-page',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
 
-// export const WithNoSearch: Story = {
-//   args: {
-//     logoLink: '/path',
-//     navLinks: [
-//       {
-//         href: '#',
-//         label: 'News',
-//       },
-//       {
-//         href: '#',
-//         label: 'Departments',
-//       },
-//       {
-//         href: '#',
-//         label: 'Services',
-//       },
-//     ],
-//   },
-// };
+export const mobileView: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: 'path',
+    },
+    tools: {
+      search: {
+        action: '/search-page',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};
 
-// export const WithSecondaryLinks: Story = {
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//     languages: [
-//       {
-//         href: '#',
-//         label: 'English',
-//       },
-//       {
-//         href: '#',
-//         label: 'Gaeilge',
-//       },
-//     ],
-//   },
-// };
+export const WithExtraButtons: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      items: [
+        {
+          href: '/home',
+          icon: 'home',
+        },
+        {
+          href: '/logout',
+          icon: 'logout',
+        },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
 
-// export const withMainAndSecondaryLinks: Story = {
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//     navLinks: [
-//       {
-//         href: '#',
-//         label: 'News',
-//       },
-//       {
-//         href: '#',
-//         label: 'Departments',
-//       },
-//       {
-//         href: '#',
-//         label: 'Services',
-//       },
-//     ],
-//     languages: [
-//       {
-//         href: '#',
-//         label: 'English',
-//       },
-//       {
-//         href: '#',
-//         label: 'Gaeilge',
-//       },
-//     ],
-//   },
-// };
-
-// export const tabletView: Story = {
-//   parameters: {
-//     layout: 'fullscreen',
-//     viewport: {
-//       defaultViewport: 'pixel',
-//     },
-//   },
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//     navLinks: [
-//       {
-//         href: '#',
-//         label: 'News',
-//       },
-//       {
-//         href: '#',
-//         label: 'Departments',
-//       },
-//       {
-//         href: '#',
-//         label: 'Services',
-//       },
-//     ],
-//     languages: [
-//       {
-//         href: '#',
-//         label: 'English',
-//       },
-//       {
-//         href: '#',
-//         label: 'Gaeilge',
-//       },
-//     ],
-//   },
-// };
-
-// export const mobileView: Story = {
-//   parameters: {
-//     layout: 'fullscreen',
-//     viewport: {
-//       defaultViewport: 'mobile2',
-//     },
-//   },
-//   args: {
-//     searchUrl: '/seach_page',
-//     logoLink: '/path',
-//     navLinks: [
-//       {
-//         href: '#',
-//         label: 'News',
-//       },
-//       {
-//         href: '#',
-//         label: 'Departments',
-//       },
-//       {
-//         href: '#',
-//         label: 'Services',
-//       },
-//     ],
-//     languages: [
-//       {
-//         href: '#',
-//         label: 'English',
-//       },
-//       {
-//         href: '#',
-//         label: 'Gaeilge',
-//       },
-//     ],
-//   },
-// };
+export const WithExtraButtonsAndLabels: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      menu: {
+        label: 'Menu',
+      },
+      items: [
+        {
+          href: '/home',
+          icon: 'home',
+          label: 'Home',
+        },
+        {
+          href: '/logout',
+          icon: 'logout',
+          label: 'Logout',
+        },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};

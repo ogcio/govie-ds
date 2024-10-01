@@ -20,6 +20,11 @@ export type HeaderProps = {
       label?: string;
       icon?: IconId;
     };
+    items?: {
+      label?: string;
+      icon?: IconId;
+      href: string;
+    }[];
   };
   languages?: {
     href: string;
@@ -32,6 +37,7 @@ export type HeaderProps = {
 };
 
 export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
+  const hasDivider = tools?.items || tools?.search
   return (
     <header
       id="GovieHeader"
@@ -92,7 +98,7 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
               </li>
             ))}
           </ul>
-          {navLinks && tools?.search && (
+          {(navLinks || hasDivider) && (
             <div className="gi-hidden sm:gi-block gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
           )}
           {tools?.search && (
@@ -139,6 +145,19 @@ export function Header({ tools, logo, languages, navLinks }: HeaderProps) {
               icon={tools?.menu?.icon ? tools.menu.icon : 'menu'}
             />
           </label>
+          {tools?.items &&
+            tools?.items.map((item) => (
+              <a className='gi-rounded-sm gi-items-center gi-p-2 gi-border-solid gi-border gi-flex gi-gap-md focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 hover:gi-bg-black hover:gi-bg-opacity-20 gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400' href={item.href}>
+                {item.label && (
+                  <span className="gi-text-2md gi-font-bold gi-text-white">
+                    {item.label}
+                  </span>
+                )}
+                {item.icon && (
+                  <Icon className="gi-text-white" icon={item.icon} />
+                )}
+              </a>
+            ))}
         </div>
       </div>
       {tools?.search && <HeaderSearch {...tools.search} />}
