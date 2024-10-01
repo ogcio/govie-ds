@@ -14,7 +14,8 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        logoLink="/home"
+        logo={{ href: "/" }}
+        tools={{ search: { action: "/search-page" } }}
         navLinks={[
           {
             href: "#",

@@ -13,6 +13,11 @@ export const headerSchema = zod.object({
     required_error:
       'The link is required for the fallback case where Javascript is disabled',
   }),
+  searchUrl: zod
+    .string({
+      description: 'The URL for the search page',
+    })
+    .optional(),
   logoLink: zod.string({
     description: 'The link of the logo',
     required_error: 'The link of the logo is required',
