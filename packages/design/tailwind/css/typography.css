@@ -3,7 +3,7 @@
 /* Paragraph */
 
 .gi-paragraph {
-  @apply gi-text-md gi-mt-0 gi-mb-8 gi-max-w-prose
+  @apply gi-text-md gi-mt-0 gi-mb-9 gi-max-w-prose
 }
 
 .gi-paragraph-sm {
@@ -11,7 +11,7 @@
 }
 
 .gi-paragraph-lg {
-  @apply gi-text-lg gi-mt-0 gi-mb-8 gi-max-w-prose
+  @apply gi-text-lg gi-mt-0 gi-mb-10 gi-max-w-prose
 }
 
 .gi-span {
