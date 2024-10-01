@@ -1,10 +1,9 @@
 import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon } from '../icon/icon.js';
+import { IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
-import { IconId } from '../icon/icon.js';
-import { Heading } from '../heading/heading.js';
 
 export type HeaderProps = {
   title?: string;
@@ -128,7 +127,7 @@ export function Header({
               )}
               <Icon
                 className="search-icon gi-text-white"
-                icon={tools.search.icon ? tools.search.icon : 'search'}
+                icon={tools.search.icon || 'search'}
               />
               <Icon
                 className="gi-hidden close-icon gi-text-white"
