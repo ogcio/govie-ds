@@ -71,7 +71,7 @@ export function Header({
             {logo.image ? (
               <img
                 className="gi-object-contain gi-h-12"
-                src="https://ds.blocks.gov.ie/_next/static/media/hero.01b46751.png"
+                src={logo.image}
               />
             ) : (
               <GovieLogo />
@@ -81,7 +81,7 @@ export function Header({
             {logo.image ? (
               <img
                 className="gi-object-contain gi-h-10"
-                src="https://ds.blocks.gov.ie/_next/static/media/hero.01b46751.png"
+                src={logo.image}
               />
             ) : (
               <GovieLogoSmall />
