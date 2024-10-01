@@ -1,16 +1,17 @@
 {% macro govieLink(props) %}
   {% macro getUnderlineClass(noUnderline) %}
-    {% if not noUnderline %}
-      gi-underline
-      gi-underline-offset-[0.1em]
-      focus:gi-no-underline
+    {% if noUnderline %}
+      gi-link-no-underline
     {% endif %}
   {% endmacro %}
   {% macro getVisitedClass(noVisited) %}
     {% if noVisited %}
       visited:gi-text-blue-700
-    {% else %}
-      visited:gi-text-purple-700
+    {% endif %}
+  {% endmacro %}
+  {% macro getColorClass(noColor) %}
+    {% if noColor %}
+      gi-link-inherit
     {% endif %}
   {% endmacro %}
   {% macro getExternalAttribute(isExternal) %}
@@ -22,17 +23,10 @@
     href="{{ props.href }}"
     {{ getExternalAttribute(props.external) | trim }}
     class="
+      gi-link
+      {{ getColorClass(props.noColor) | trim }}
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited) | trim }}
-      gi-text-blue-700
-      hover:gi-text-blue-800
-      hover:gi-decoration-[max(3px,0.1875rem,0.12em)]
-      focus:gi-outline
-      focus:gi-text-gray-950
-      focus:gi-outline-transparent
-      focus:gi-bg-yellow-400
-      focus:gi-outline-[3px]
-      focus:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-900)]
     "
   >{{ props.label }}</a>
 

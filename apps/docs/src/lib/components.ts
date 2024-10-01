@@ -879,14 +879,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
