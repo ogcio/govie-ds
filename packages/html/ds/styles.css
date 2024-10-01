@@ -7,6 +7,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 
+@import 'node_modules/@govie-ds/tailwind/css/layout.css';
 @import 'node_modules/@govie-ds/tailwind/css/components.css';
 
 .gieds-js .js\:gi-hidden {

@@ -126,8 +126,8 @@ const documentComponents: MDXComponents = {
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
-  Tabs: ({ children }) => <Tabs>{children}</Tabs>,
-  TabList: ({ children }) => <TabList>{children}</TabList>,
+  Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
+  TabList: (props) => <TabList {...props}>{props.children}</TabList>,
   TabItem: (props) => <TabItem {...props}>{props.children}</TabItem>,
   TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
   Link: (props) => <Link {...props}>{props.children}</Link>,
@@ -145,7 +145,13 @@ export function Mdx({ code }: MdxProps) {
           if (key === 'DeveloperRecommendation') {
             return;
           }
+          if (key === 'Tabs') {
+            return [MarginBottom];
+          }
           if (key.includes('Tab')) {
+            return;
+          }
+          if (key === 'Link') {
             return;
           }
 

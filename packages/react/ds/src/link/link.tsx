@@ -23,10 +23,10 @@ export function Link({
       {...(external ? { rel: 'noreferrer noopener' } : {})}
       {...(external ? { target: '_blank' } : {})}
       className={`
-        gi-link-base
+        gi-link
         ${noUnderline ? 'gi-link-no-underline' : ''}
         ${noVisited ? 'gi-link-no-visited' : ''}
-        ${noColor ? '' : 'gi-link-blue'}`}
+        ${noColor ? 'gi-link-inherit' : ''}`}
     >
       {children}
     </Component>

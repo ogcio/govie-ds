@@ -9,6 +9,11 @@
       visited:gi-text-blue-700
     {% endif %}
   {% endmacro %}
+  {% macro getColorClass(noColor) %}
+    {% if noColor %}
+      gi-link-inherit
+    {% endif %}
+  {% endmacro %}
   {% macro getExternalAttribute(isExternal) %}
     {% if isExternal %}
       rel="noreferrer noopener" target="_blank"
@@ -18,8 +23,8 @@
     href="{{ props.href }}"
     {{ getExternalAttribute(props.external) | trim }}
     class="
-      gi-link-base
-      gi-link-blue
+      gi-link
+      {{ getColorClass(props.noColor) | trim }}
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited) | trim }}
     "
