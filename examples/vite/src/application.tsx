@@ -50,7 +50,7 @@ export function App() {
       <Container>
         <Heading>Design System </Heading>
 
-        <Tabs>
+        <Tabs id="tabs">
           <TabList>
             <TabItem value="tab1" checked>
               Typography

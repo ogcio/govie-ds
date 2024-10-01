@@ -1,4 +1,11 @@
-import { Heading, Paragraph } from '@govie-ds/react';
+import {
+  Heading,
+  Paragraph,
+  TabItem,
+  TabList,
+  TabPanel,
+  Tabs,
+} from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { BorderRadiusTable } from '../border/border-radius-table';
@@ -119,6 +126,12 @@ const documentComponents: MDXComponents = {
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
+  Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
+  TabList: (props) => <TabList {...props}>{props.children}</TabList>,
+  TabItem: (props) => <TabItem {...props}>{props.children}</TabItem>,
+  TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
+  Link: (props) => <Link {...props}>{props.children}</Link>,
+  Paragraph: (props) => <Paragraph {...props}>{props.children}</Paragraph>,
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -130,6 +143,15 @@ export function Mdx({ code }: MdxProps) {
         ...standardComponents,
         ...wrapComponents(documentComponents, ({ key }) => {
           if (key === 'DeveloperRecommendation') {
+            return;
+          }
+          if (key === 'Tabs') {
+            return [MarginBottom];
+          }
+          if (key.includes('Tab')) {
+            return;
+          }
+          if (key === 'Link') {
             return;
           }
 

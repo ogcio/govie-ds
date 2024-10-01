@@ -25,6 +25,11 @@ export const linkSchema = zod.object({
       description: 'To remove underlines from links.',
     })
     .optional(),
+  noColor: zod
+    .boolean({
+      description: 'To inherit color from parent.',
+    })
+    .optional(),
 });
 
 export type LinkProps = zod.infer<typeof linkSchema>;
