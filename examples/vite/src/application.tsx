@@ -24,8 +24,8 @@ export function App() {
   return (
     <>
       <Header
-        searchUrl="/search-page"
-        logoLink="/home"
+        logo={{ href: "/" }}
+        tools={{ search: { action: "/search-page" } }}
         navLinks={[
           {
             href: "#",
