@@ -1,5 +1,6 @@
 {% from 'header/header.html' import govieHeader %}
 {% from 'link/link.html' import govieLink %}
+{% from 'file-upload/file-upload.html' import govieFileUpload %}
 {% from 'footer/footer.html' import govieFooter %}
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'paragraph/paragraph.html' import govieParagraph %}
@@ -15,92 +16,92 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ static('css/theme.css') }}">
-    <link rel="stylesheet" href="{{ static('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ static('css/ogcio-ds-0.4.4.min.css')}}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ page.title }}</title>
+	<link rel="stylesheet" href="{{ static('css/theme.css') }}">
+	<link rel="stylesheet" href="{{ static('css/styles.css') }}">
+	<link rel="stylesheet" href="{{ static('css/ogcio-ds-0.4.4.min.css')}}">
 </head>
 
 <body>
-    <h2>Header (Global)</h2>
-    {{ govieHeader(HeaderProps) }}
+	<h2>Header (Global)</h2>
+	{{ govieHeader(HeaderProps) }}
 
-    <h2>Header (Local)</h2>
-    <header data-module="govie-header" class="govie-header">
-        <h2>Application Title</h2>
-    </header>
+	<h2>Header (Local)</h2>
+	<header data-module="govie-header" class="govie-header">
+			<h2>Application Title</h2>
+	</header>
 
-    <hr />
+	<hr />
 
-    {{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) }}
+	{{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading'}) }}
 
-    <hr />
+	<hr />
 
-    <h2>Paragraph (Global)</h2>
-    {% set paragraphContentWithLink = govieLink({ "href": "#", "label": "with Link", }) %}
-    {% set paragraphContent = "This is the paragraph content " ~ paragraphContentWithLink %}
-    {{ govieParagraph({
-        "content": paragraphContent,
-        "as": "p",
-        "size": "lg"
-    }) }}
-    <h2>Paragraph (Local)</h2>
-    <p class="govie-body">We have sent you a confirmation email.</p>
+	<h2>Paragraph (Global)</h2>
+	{% set paragraphContentWithLink = govieLink({ "href": "#", "label": "with Link", }) %}
+	{% set paragraphContent = "This is the paragraph content " ~ paragraphContentWithLink %}
+	{{ govieParagraph({
+			"content": paragraphContent,
+			"as": "p",
+			"size": "lg"
+	}) }}
+	<h2>Paragraph (Local)</h2>
+	<p class="govie-body">We have sent you a confirmation email.</p>
 
-    <hr />
-    <h2>Container (Global)</h2>
-    {{ govieContainer({
-        "html": govieHeading({ 'size': 'md', 'tag': 'h1', 'text': 'Heading Under Container'})
-    }) }}
+	<hr />
+	<h2>Container (Global)</h2>
+	{{ govieContainer({
+			"html": govieHeading({ 'size': 'md', 'tag': 'h1', 'text': 'Heading Under Container'})
+	}) }}
 
-    <hr />
+	<hr />
 
-    <h2>Link (Global)</h2>
-    {{ govieLink({
-            "href": "#",
-            "label": "Link for testing",
-        })
-    }}
-    <h2>Link (Local)</h2>
-    <a class="govie-link" href="#">Link for testing</a>
+	<h2>Link (Global)</h2>
+	{{ govieLink({
+			"href": "#",
+			"label": "Link for testing",
+		})
+	}}
+	<h2>Link (Local)</h2>
+	<a class="govie-link" href="#">Link for testing</a>
 
-    <hr />
-    <h2>Select (Global)</h2>
-    {{
-        govieSelect(SelectProps)
-    }}
+	<hr />
+	<h2>Select (Global)</h2>
+	{{
+		govieSelect(SelectProps)
+	}}
 
-    <hr />
+	<hr />
 
-    <h2>Tabs (Local)</h2>
-    <div class="govie-tabs" data-module="govie-tabs">
-    <h2 class="govie-tabs__title">Contents</h2>
-        <ul class="govie-tabs__list">
-            <li class="govie-tabs__list-item govie-tabs__list-item--selected">
-            <a class="govie-tabs__tab" href="#tab-1">Tab 1</a>
-            </li>
-            <li class="govie-tabs__list-item ">
-            <a class="govie-tabs__tab" href="#tab-2">Tab 2</a>
-            </li>
-        </ul>
-        <div class="govie-tabs__panel " id="tab-1">
-            <h2 class="govie-heading-s">Tab 1 content</h2>
-        </div>
-        <div class="govie-tabs__panel govie-tabs__panel--hidden" id="tab-2">
-            <h2 class="govie-heading-s">Tab 2 content</h2>
-        </div>
-    </div>
+	<h2>Tabs (Local)</h2>
+	<div class="govie-tabs" data-module="govie-tabs">
+	<h2 class="govie-tabs__title">Contents</h2>
+		<ul class="govie-tabs__list">
+			<li class="govie-tabs__list-item govie-tabs__list-item--selected">
+			<a class="govie-tabs__tab" href="#tab-1">Tab 1</a>
+			</li>
+			<li class="govie-tabs__list-item ">
+			<a class="govie-tabs__tab" href="#tab-2">Tab 2</a>
+			</li>
+		</ul>
+		<div class="govie-tabs__panel " id="tab-1">
+			<h2 class="govie-heading-s">Tab 1 content</h2>
+		</div>
+		<div class="govie-tabs__panel govie-tabs__panel--hidden" id="tab-2">
+			<h2 class="govie-heading-s">Tab 2 content</h2>
+		</div>
+	</div>
 
-    <h2>Tabs (Global)</h2>
-    {{ 
-        govieTabs(tabsProps)
-    }}
+	<h2>Tabs (Global)</h2>
+	{{ 
+		govieTabs(tabsProps)
+	}}
 
-    <hr />
+	<hr />
 
-    <h2>Form - Text Input</h2>
+	<h2>Form - Text Input</h2>
 	{{ govieTextInput({
 		"label": {
 			"content": "Label",
@@ -118,7 +119,7 @@
 		"suffix": "per item"
 	}) }}
 
-    <hr />
+	<hr />
 
 	<h2>Form - TextArea</h2>
 	{{ govieTextArea({
@@ -137,16 +138,28 @@
 		"id": "textarea-id"
 	}) }}
 
-    <hr />
+	<hr />
 
-    <h2>Footer (Local)</h2>
-    <footer class="govie-footer"></footer>
-    <h2>Footer (Global)</h2>
-    {{
-    govieFooter(footerProps)
-    }}
+	<h2>Form - File Upload</h2>
+	{{ govieFileUpload({
+		"id": "file-upload-id",
+		"label": {
+			"content": "Upload File",
+			"for": "file-upload-id"
+		},
+		"error": {
+			"content": "Error: File must be smaller than 5MB."
+		}
+		})
+	}}
 
-    <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
+	<h2>Footer (Local)</h2>
+	<footer class="govie-footer"></footer>
+	<h2>Footer (Global)</h2>
+	{{
+		govieFooter(footerProps)
+	}}
+	<script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
 </html>
