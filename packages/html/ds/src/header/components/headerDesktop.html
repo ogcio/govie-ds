@@ -40,7 +40,7 @@
         </li>
         {% endfor %}
       </ul>
-      {% if props.navLinks %}
+      {% if props.navLinks and props.searchUrl %}
       <div
         class="gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"
       ></div>
@@ -54,24 +54,28 @@
           <div class="gi-text-white">{{ govieIcon({"icon": "search"}) }}</div>
         </a>
       </noscript>
-      <button
-        data-testid="search-desktop-button"
-        data-element="search-desktop"
-        class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
-      >
-        <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
-        <div>
-          <div class="gi-text-white" data-element="search-icon">
-            {{ govieIcon({"icon": "search"}) }}
+      {% if props.searchUrl %}
+        <button
+          data-testid="search-desktop-button"
+          data-element="search-desktop"
+          class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+        >
+          <span class="gi-text-white gi-text-2md gi-font-bold">Search</span>
+          <div>
+            <div class="gi-text-white" data-element="search-icon">
+              {{ govieIcon({"icon": "search"}) }}
+            </div>
+            <div class="gi-text-white gi-hidden" data-element="search-close-icon">
+              {{ govieIcon({"icon": "close"}) }}
+            </div>
           </div>
-          <div class="gi-text-white gi-hidden" data-element="search-close-icon">
-            {{ govieIcon({"icon": "close"}) }}
-          </div>
-        </div>
-      </button>
+        </button>
+      {% endif %}
     </div>
   </div>
-  {{ HeaderSearchContainer({ "dataElement": "search-container", "dataTestId": "search-container-desktop" }) }}
+  {% if props.searchUrl %}
+    {{ HeaderSearchContainer({ "searchUrl": props.searchUrl, "dataElement": "search-container", "dataTestId": "search-container-desktop" }) }}
+  {% endif %}
 </div>
 
 {% endmacro %}

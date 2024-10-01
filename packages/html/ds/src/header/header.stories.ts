@@ -31,6 +31,9 @@ export const Default: Story = {
       description:
         'Fallback link for the search button if there is no JS enabled on page',
     },
+    searchUrl: {
+      description: 'The url for the search page',
+    },
     logoLink: {
       description: 'The link used for the Logo',
     },
@@ -42,6 +45,7 @@ export const Default: Story = {
     },
   },
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
@@ -70,6 +74,7 @@ export const Default: Story = {
 
 export const NoLinks: Story = {
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
@@ -77,6 +82,29 @@ export const NoLinks: Story = {
 };
 
 export const WithMainLinks: Story = {
+  args: {
+    searchUrl: '/seach_page',
+    logoLink: '/home',
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+  },
+};
+
+export const WithNoSearch: Story = {
   args: {
     logoLink: '/home',
     noJsMenuLink: '/menu',
@@ -100,6 +128,7 @@ export const WithMainLinks: Story = {
 
 export const WithLanguage: Story = {
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
@@ -114,6 +143,7 @@ export const WithLanguage: Story = {
 
 export const withMainAndLanguageLinks: Story = {
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
@@ -147,6 +177,7 @@ export const tabletView: Story = {
     },
   },
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
@@ -180,6 +211,7 @@ export const mobileView: Story = {
     },
   },
   args: {
+    searchUrl: '/seach_page',
     logoLink: '/home',
     noJsMenuLink: '/menu',
     noJsSearchLink: '/search',
