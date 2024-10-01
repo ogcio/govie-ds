@@ -37,7 +37,7 @@ export const buttonSchema = zod.object({
   icon: zod
     .object({
       props: iconSchema.describe('Icon for the button'),
-      position: zod.enum(['left', 'right']),
+      position: zod.enum(['left', 'right']).optional(),
     })
     .optional(),
 });

@@ -1,0 +1,35 @@
+{% macro getVariantClass(variant) %}
+  {% if variant == 'secondary' %}
+    gi-bg-gray-100 hover:gi-bg-gray-300
+  {% elif variant == 'tertiary' %}
+    gi-text-white gi-bg-red-500 hover:gi-bg-red-600
+  {% elif variant == 'flat' %}
+    gi-shadow-none hover:gi-bg-gray-100
+  {% elif variant == 'outlined' %}
+    gi-border-solid gi-border-sm gi-border-[black] gi-shadow-none hover:gi-bg-gray-100
+  {% else %}
+    gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900
+  {% endif %}
+{% endmacro %}
+
+{% macro getSizeClass(size) %}
+  {% if size == 'small' %}
+    gi-px-2 gi-py-1 xs:gi-text-2xs md:gi-text-sm lg:gi-text-md
+  {% elif size == 'large' %}
+    gi-px-4 gi-py-3 xs:gi-text-md md:gi-text-lg lg:gi-text-xl
+  {% else %}
+    gi-px-3 gi-py-2 xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+  {% endif %}
+{% endmacro %}
+
+{% macro getIconPosition(position) %}
+  {% if position == 'right' %}
+    gi-flex-row-reverse
+  {% endif %}  
+{% endmacro %}
+
+{% macro isButtonDisabled(btnDisabled) %}
+  {% if btnDisabled %}
+    gi-pointer-events-none gi-opacity-20
+  {% endif %}  
+{% endmacro %}
