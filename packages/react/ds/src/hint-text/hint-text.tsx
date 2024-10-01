@@ -24,6 +24,7 @@ export const HintText: React.FC<HintTextProps> = ({
 }) => {
   return (
     <Paragraph
+      as="span"
       size={size}
       className={`gi-font-normal gi-leading-5 gi-text-gray-700 gi-mb-[10px] ${className}`}
       {...props}
