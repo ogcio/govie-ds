@@ -700,14 +700,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
