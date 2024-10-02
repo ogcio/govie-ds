@@ -3,27 +3,27 @@
 /* Heading */
 
 .gi-heading-xl {
-  @apply gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold
+  @apply gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold gi-mt-1 gi-mb-8
 }
 
 .gi-heading-lg {
-  @apply gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold
+  @apply gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold gi-mt-1 gi-mb-6
 }
 
 .gi-heading-md {
-  @apply gi-text-sm md:gi-text-md xl:gi-text-lg gi-font-bold
+  @apply gi-text-sm md:gi-text-md xl:gi-text-lg gi-font-bold gi-mt-1 gi-mb-5
 }
 
 .gi-heading-sm {
-  @apply gi-text-sm xl:gi-text-md gi-font-bold
+  @apply gi-text-sm xl:gi-text-md gi-font-bold gi-mt-1 gi-mb-4
 }
 
 .gi-heading-xs {
-  @apply gi-text-xs gi-font-bold
+  @apply gi-text-xs gi-font-bold gi-mt-1 gi-mb-3
 }
 
 .gi-heading-2xs {
-  @apply gi-text-2xs gi-font-bold
+  @apply gi-text-2xs gi-font-bold gi-mt-1 gi-mb-2
 }
 
 /* End Paragraph */

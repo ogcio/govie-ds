@@ -77,7 +77,7 @@ const standardComponents: MDXComponents = {
     <code
       className={cn(
         className
-          ? 'rounded-xs bg-gray-50 border-gray-100 border-xs p-3 text-gray-600 text-xs block'
+          ? 'rounded-xs bg-gray-50 border-gray-100 border-xs p-3 text-gray-600 text-xs block mb-2xl'
           : 'rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs',
       )}
     >
@@ -143,16 +143,15 @@ export function Mdx({ code }: MdxProps) {
       components={{
         ...standardComponents,
         ...wrapComponents(documentComponents, ({ key }) => {
-          if (key === 'DeveloperRecommendation') {
-            return;
-          }
           if (key === 'Tabs') {
             return [MarginBottom];
           }
-          if (key.includes('Tab')) {
-            return;
-          }
-          if (key === 'Link') {
+          if (
+            key === 'DeveloperRecommendation' ||
+            key.includes('Tab') ||
+            key === 'Link' ||
+            key === 'Heading'
+          ) {
             return;
           }
 
