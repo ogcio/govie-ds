@@ -1,5 +1,4 @@
 import React from 'react';
-import { Paragraph } from '../paragraph/paragraph.js';
 
 export enum HintSize {
   sm = 'sm',
@@ -22,15 +21,27 @@ export const HintText: React.FC<HintTextProps> = ({
   size,
   ...props
 }) => {
+  const sizeClass = (() => {
+    switch (size) {
+      case 'lg': {
+        return 'gi-text-lg  gi-mb-2.5';
+      }
+      case 'sm': {
+        return 'gi-text-sm  gi-mb-1.5';
+      }
+      default: {
+        return 'gi-text-md  gi-mb-2';
+      }
+    }
+  })();
+
   return (
-    <Paragraph
-      as="span"
-      size={size}
-      className={`gi-font-normal gi-leading-5 gi-text-gray-700 gi-mb-[10px] ${className}`}
+    <div
+      className={`${sizeClass} gi-font-normal gi-text-gray-700 ${className}`}
       {...props}
     >
       {text}
-    </Paragraph>
+    </div>
   );
 };
 
