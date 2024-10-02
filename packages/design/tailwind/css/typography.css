@@ -1,5 +1,33 @@
 /* GOV.IE Typography Stylesheets */
 
+/* Heading */
+
+.gi-heading-xl {
+  @apply gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold
+}
+
+.gi-heading-lg {
+  @apply gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold
+}
+
+.gi-heading-md {
+  @apply gi-text-sm md:gi-text-md xl:gi-text-lg gi-font-bold
+}
+
+.gi-heading-sm {
+  @apply gi-text-sm xl:gi-text-md gi-font-bold
+}
+
+.gi-heading-xs {
+  @apply gi-text-xs gi-font-bold
+}
+
+.gi-heading-2xs {
+  @apply gi-text-2xs gi-font-bold
+}
+
+/* End Paragraph */
+
 /* Paragraph */
 
 .gi-paragraph {

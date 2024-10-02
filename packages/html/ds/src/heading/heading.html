@@ -8,22 +8,22 @@
 
     {% macro getClasses(size) %}
         {% if '2xs' in size %}
-            xs:gi-text-2xs md:gi-text-2xs xl:gi-text-2xs gi-font-bold
+            gi-heading-2xs
         {% elif 'xs' in size %}
-            xs:gi-text-xs md:gi-text-xs xl:gi-text-xs gi-font-bold
+            gi-heading-xs
         {% elif 'sm' in size %}
-            xs:gi-text-sm md:gi-text-sm xl:gi-text-md gi-font-bold
+            gi-heading-sm
         {% elif 'md' in size %}
-            xs:gi-text-sm md:gi-text-md xl:gi-text-lg gi-font-bold
+            gi-heading-md
         {% elif 'lg' in size %}
-            xs:gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold
+            gi-heading-lg
         {% elif 'xl' in size %}
-            xs:gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold
+            gi-heading-xl
         {% endif %}
     {% endmacro %}
 
     {% if "h1" in props.tag %}
-        {{caption(props.caption)}}<h1 class="{{getClasses(props.size) | trim }}">{{props.text}} </h1>
+        {{caption(props.caption)}}<h1 class="{{getClasses(props.size) | trim }}">{{props.text}}</h1>
     {% elif "h2" in props.tag %}
         {{caption(props.caption)}}<h2 class="{{getClasses(props.size) | trim }}">{{props.text}}</h2>
     {% elif "h3" in props.tag %}

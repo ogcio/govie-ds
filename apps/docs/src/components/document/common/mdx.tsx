@@ -132,6 +132,7 @@ const documentComponents: MDXComponents = {
   TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
   Link: (props) => <Link {...props}>{props.children}</Link>,
   Paragraph: (props) => <Paragraph {...props}>{props.children}</Paragraph>,
+  Heading: (props) => <Heading {...props}>{props.children}</Heading>,
 };
 
 export function Mdx({ code }: MdxProps) {
