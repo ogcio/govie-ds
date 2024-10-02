@@ -1,6 +1,11 @@
 import { render } from '../common/render';
 import html from './paragraph.html?raw';
-import { AsEnum, ParagraphProps, SizeEnum } from './paragraph.schema';
+import {
+  AlignEnum,
+  AsEnum,
+  ParagraphProps,
+  SizeEnum,
+} from './paragraph.schema';
 
 describe('govieParagraph', () => {
   const renderParagraph = render<ParagraphProps>({
@@ -39,7 +44,7 @@ describe('govieParagraph', () => {
     });
     const pElement = screen.getByText('Large text');
 
-    expect(pElement.classList.contains('gi-text-lg')).toBe(true);
+    expect(pElement.classList.contains('gi-paragraph-lg')).toBe(true);
   });
 
   it('should have correct text size classes for "md"', () => {
@@ -50,8 +55,7 @@ describe('govieParagraph', () => {
     });
     const spanElement = screen.getByText('Medium text');
 
-    expect(spanElement.classList.contains('xs:gi-text-sm')).toBe(true);
-    expect(spanElement.classList.contains('md:gi-text-md')).toBe(true);
+    expect(spanElement.classList.contains('gi-paragraph')).toBe(true);
   });
 
   it('should have correct text size classes for "sm"', () => {
@@ -62,7 +66,17 @@ describe('govieParagraph', () => {
     });
     const pElement = screen.getByText('Small text');
 
-    expect(pElement.classList.contains('gi-text-sm')).toBe(true);
+    expect(pElement.classList.contains('gi-paragraph-sm')).toBe(true);
+  });
+
+  it('should have aligned end', () => {
+    const screen = renderParagraph({
+      as: AsEnum.Paragraph,
+      content: 'Small text',
+      align: AlignEnum.End,
+    });
+    const pElement = screen.getByText('Small text');
+    expect(pElement.classList.contains('gi-text-end')).toBe(true);
   });
 
   it('should safely render HTML content', () => {

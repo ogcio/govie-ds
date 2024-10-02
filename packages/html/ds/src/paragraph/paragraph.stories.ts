@@ -60,7 +60,7 @@ export const Default: Story = {
     content: 'This is a paragraph.',
     as: AsEnum.Paragraph,
     size: SizeEnum.Medium,
-    align: AlignEnum.Left,
+    align: AlignEnum.Start,
     whitespace: WhitespaceEnum.Normal,
   },
 };
@@ -70,7 +70,7 @@ export const RightAlignment: Story = {
     content: 'This is a paragraph.',
     as: AsEnum.Paragraph,
     size: SizeEnum.Medium,
-    align: AlignEnum.Right,
+    align: AlignEnum.End,
   },
 };
 
