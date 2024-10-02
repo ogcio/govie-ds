@@ -1,4 +1,3 @@
-import { Text } from '@govie-ds/react';
 import { cn } from '@/lib/cn';
 
 export type SwatchProps = {
@@ -13,7 +12,7 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
       className="flex justify-between items-center px-xl py-lg"
       style={{ backgroundColor: value }}
     >
-      <Text
+      <p
         className={cn(
           'mb-0',
           name <= 400 ? 'text-gray-900' : undefined,
@@ -21,9 +20,9 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
         )}
       >
         {name}
-      </Text>
+      </p>
       {hideValue ? null : (
-        <Text
+        <p
           className={cn(
             'text-2xs xs:text-2xs md:text-xs xl:text-xs font-tertiary lowercase mb-0',
             name <= 400 ? 'text-gray-900' : undefined,
@@ -31,7 +30,7 @@ export function Swatch({ name, value, hideValue = false }: SwatchProps) {
           )}
         >
           {value}
-        </Text>
+        </p>
       )}
     </div>
   );

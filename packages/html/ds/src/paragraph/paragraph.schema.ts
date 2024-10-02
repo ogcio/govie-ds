@@ -12,9 +12,9 @@ export enum SizeEnum {
 }
 
 export enum AlignEnum {
-  Left = 'left',
+  Start = 'start',
   Center = 'center',
-  Right = 'right',
+  End = 'end',
   Justify = 'justify',
 }
 
