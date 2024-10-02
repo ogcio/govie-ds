@@ -1,6 +1,11 @@
 import { render } from '../common/render';
 import html from './paragraph.html?raw';
-import { AsEnum, ParagraphProps, SizeEnum } from './paragraph.schema';
+import {
+  AlignEnum,
+  AsEnum,
+  ParagraphProps,
+  SizeEnum,
+} from './paragraph.schema';
 
 describe('govieParagraph', () => {
   const renderParagraph = render<ParagraphProps>({
@@ -62,6 +67,16 @@ describe('govieParagraph', () => {
     const pElement = screen.getByText('Small text');
 
     expect(pElement.classList.contains('gi-paragraph-sm')).toBe(true);
+  });
+
+  it('should have aligned end', () => {
+    const screen = renderParagraph({
+      as: AsEnum.Paragraph,
+      content: 'Small text',
+      align: AlignEnum.End,
+    });
+    const pElement = screen.getByText('Small text');
+    expect(pElement.classList.contains('gi-text-end')).toBe(true);
   });
 
   it('should safely render HTML content', () => {
