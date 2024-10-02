@@ -74,7 +74,7 @@ export function Paragraph({
 
   return (
     <As
-      className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className}`}
+      className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
       style={style}
     >
       {children}
