@@ -13,7 +13,9 @@ export type HeaderProps = {
   };
   tools?: {
     search?: {
-      action: string;
+      action?: string;
+      // Temporary solution to include the usage of Server Actions, as the types of react allow only strings | undefined. The types/react package will eventually get allow this and a more permanent solution will be implemented
+      serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
       label?: string;
       icon?: IconId;
     };
