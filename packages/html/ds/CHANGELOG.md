@@ -50,6 +50,19 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.10.0](https://github.com/ogcio/govie-ds/compare/html-v0.9.1...html-v0.10.0) (2024-10-02)
+
+
+### Features
+
+* add html file-upload component ([#254](https://github.com/ogcio/govie-ds/issues/254)) ([dcce995](https://github.com/ogcio/govie-ds/commit/dcce99568c9ff53f70dbc663fbcac55bdbfe9ead))
+
+
+### Bug Fixes
+
+* improve link doc with tabs ([#252](https://github.com/ogcio/govie-ds/issues/252)) ([6925f88](https://github.com/ogcio/govie-ds/commit/6925f88ee92b7fbc717731cb550a7fe5efa636c4))
+* send formdata on submit and add search url prop ([#251](https://github.com/ogcio/govie-ds/issues/251)) ([0f49978](https://github.com/ogcio/govie-ds/commit/0f499783e4d6a4a5873c3485656a7a67d1280e8a))
+
 ## [0.9.1](https://github.com/ogcio/govie-ds/compare/html-v0.9.0...html-v0.9.1) (2024-09-27)
 
 

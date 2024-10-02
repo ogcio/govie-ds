@@ -6,6 +6,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [1.0.1](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.0...prettier-config-v1.0.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* improve link doc with tabs ([#252](https://github.com/ogcio/govie-ds/issues/252)) ([6925f88](https://github.com/ogcio/govie-ds/commit/6925f88ee92b7fbc717731cb550a7fe5efa636c4))
+
 ## [0.0.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/prettier-config-0.0.1...@govie-ds/prettier-config-0.0.2) (2024-07-31)
 
 

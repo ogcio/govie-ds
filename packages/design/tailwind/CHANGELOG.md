@@ -15,6 +15,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.10.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.10.0...tailwind-v0.10.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* improve link doc with tabs ([#252](https://github.com/ogcio/govie-ds/issues/252)) ([6925f88](https://github.com/ogcio/govie-ds/commit/6925f88ee92b7fbc717731cb550a7fe5efa636c4))
+
 ## [0.10.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.9.0...tailwind-v0.10.0) (2024-09-27)
 
 
