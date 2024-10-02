@@ -42,12 +42,25 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm nx affected --base=last-release -t build --parallel=3
 
-      - name: Publish packages
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+      - name: Publish DS React package
+        if: ${{ steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
-          pnpm nx affected --base=last-release -t npm-publish --parallel=1
+          pnpm --filter "@govie-ds/react" publish
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Theme GOV.IE package
+        if: ${{ steps.release.outputs['packages/theme/govie--release_created'] }}
+        run: |
+          pnpm --filter "@govie-ds/theme-govie" publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Theme GOV.IE design tokens package
+        if: ${{ steps.release.outputs['tokens--release_created'] }}
+        run: |
+          pnpm --filter "@govie-ds/tokens" publish
+        env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish HTML output
