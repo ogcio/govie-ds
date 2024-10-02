@@ -2,20 +2,23 @@ import { Icon, IconId } from '../../icon/icon.js';
 
 function HeaderSearch({
   action,
+  serverAction,
   className,
   icon = 'search',
 }: {
-  action: string;
+  action?: string;
+  serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   className?: string;
   icon?: IconId;
 }) {
+  const ActionType = action || serverAction;
   return (
     <div
       id="SearchContainer"
       className={`gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8 ${className}`}
     >
       <div className="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
-        <form action={action}>
+        <form action={ActionType}>
           <label htmlFor="search" className="gi-text-md gi-font-bold gi-mb-4">
             Enter search term
           </label>
