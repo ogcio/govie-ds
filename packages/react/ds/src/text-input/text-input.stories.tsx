@@ -86,6 +86,7 @@ const meta = {
     },
     type: {
       control: 'select',
+      description: 'Specifies the input type.',
       options: [
         'text',
         'date',

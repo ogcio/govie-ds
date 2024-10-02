@@ -3,6 +3,20 @@ import { errorTextSchema } from '../error-text/error-text.schema';
 import { hintTextSchema } from '../hint-text/hint-text.schema';
 import { labelSchema } from '../label/label.schema';
 
+export enum InputTypeEnum {
+  Text = 'text',
+  Date = 'date',
+  Datetime = 'datetime-local',
+  Email = 'email',
+  Month = 'month',
+  Number = 'number',
+  Password = 'password',
+  Tel = 'tel',
+  Time = 'time',
+  Url = 'url',
+  Week = 'week',
+}
+
 export const textInputSchema = zod.object({
   prefix: zod
     .string({
@@ -37,6 +51,11 @@ export const textInputSchema = zod.object({
   id: zod
     .string({
       description: 'Sets the unique ID for the input field.',
+    })
+    .optional(),
+  type: zod
+    .nativeEnum(InputTypeEnum, {
+      description: 'Specifies the input type.',
     })
     .optional(),
   label: labelSchema.describe('Label for text-input').optional(),
