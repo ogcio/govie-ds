@@ -15,7 +15,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
-  type:
+  type?:
     | 'text'
     | 'date'
     | 'datetime-local'
