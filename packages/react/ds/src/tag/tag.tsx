@@ -1,4 +1,3 @@
-// Define the enum
 export enum TagType {
   blue = 'blue',
   gray = 'gray',
@@ -7,13 +6,11 @@ export enum TagType {
   red = 'red',
 }
 
-// Update the TagProps type to accept enum values only
 export type TagProps = {
   text: string;
   type?: TagType | keyof typeof TagType;
 };
 
-// Define the colour mapping
 const colour = {
   [TagType.blue]: {
     background: 'gi-bg-blue-50',
@@ -42,7 +39,6 @@ const colour = {
   },
 };
 
-// Tag component
 export const Tag = ({ text, type = TagType.blue }: TagProps) => {
   return (
     <strong
