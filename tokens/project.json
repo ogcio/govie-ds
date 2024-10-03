@@ -1,13 +1,5 @@
 {
   "name": "@govie-ds/tokens",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "targets": {
-    "npm-publish": {
-      "executor": "@aaos/nx-publish:publish",
-      "options": {
-        "packageManager": "pnpm",
-        "projectFolderPath": "./tokens"
-      }
-    }
-  }
+  "targets": {}
 }

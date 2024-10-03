@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/react",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -40,7 +40,6 @@
     "clsx": "^2.1.1"
   },
   "devDependencies": {
-    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",

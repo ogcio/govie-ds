@@ -39,6 +39,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.14.1](https://github.com/ogcio/govie-ds/compare/react-v0.14.0...react-v0.14.1) (2024-10-03)
+
+
+### Bug Fixes
+
+* add server action support ([#260](https://github.com/ogcio/govie-ds/issues/260)) ([2c68b05](https://github.com/ogcio/govie-ds/commit/2c68b051b8f1557f5aaedb09ee809b73a970fa40))
+* remove undefined from paragraph ([bfd0871](https://github.com/ogcio/govie-ds/commit/bfd0871771ed82e3fcc0f29429f0d8577e38359e))
+
 ## [0.14.0](https://github.com/ogcio/govie-ds/compare/react-v0.13.1...react-v0.14.0) (2024-10-02)
 
 

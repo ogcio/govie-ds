@@ -29,7 +29,6 @@
     "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev"
   },
   "devDependencies": {
-    "@jscutlery/semver": "^5.2.2",
     "nx": "^19.5.6",
     "typescript": "^5.5.4"
   }

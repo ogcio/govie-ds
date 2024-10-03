@@ -1,13 +1,5 @@
 {
   "name": "@govie-ds/deepmerge",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "targets": {
-    "npm-publish": {
-      "executor": "@aaos/nx-publish:publish",
-      "options": {
-        "packageManager": "pnpm",
-        "projectFolderPath": "./packages/design/deepmerge"
-      }
-    }
-  }
+  "targets": {}
 }

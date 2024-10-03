@@ -22,7 +22,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tokens-builder": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
