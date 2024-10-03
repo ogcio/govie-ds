@@ -34,6 +34,7 @@ export const Default: Story = {
       control: 'radio',
       options: Object.values(ButtonAppearance),
       description: 'The description of the button',
+      type: 'string',
     },
     size: {
       control: 'radio',
@@ -49,10 +50,12 @@ export const Default: Story = {
     disabled: {
       control: 'boolean',
       description: 'Specify if the button is disabled',
+      type: 'boolean',
     },
     icon: {
       control: 'object',
       description: 'Add an icon to the button (See Icon Component)',
+      type: 'string',
     },
   },
   args: {

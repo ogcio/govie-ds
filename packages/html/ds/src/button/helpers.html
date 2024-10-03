@@ -45,8 +45,6 @@
 {% endmacro %}
 
 {% macro isButtonDisabled(disabled, variant, appearance) %}
-  {% set disabledClass = 'gi-pointer-events-none' %}
-
   {% if disabled %}
     {% if variant == 'secondary' %}
       {% if appearance == 'dark' %}

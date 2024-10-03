@@ -5,6 +5,7 @@ import {
   ButtonVariant,
   IconPosition,
   ButtonProps,
+  ButtonAppearance,
 } from './button-schema';
 import html from './button.html?raw';
 
@@ -42,16 +43,6 @@ describe('button', () => {
     expect(buttonElement).toBeTruthy();
   });
 
-  it('should render a tertiary button', () => {
-    const propsTertiaryButton = {
-      ...standardProps,
-      variant: ButtonVariant.Tertiary,
-    };
-    const screen = renderButton(propsTertiaryButton);
-    const buttonElement = screen.getByTestId('tertiary', { exact: false });
-    expect(buttonElement).toBeTruthy();
-  });
-
   it('should render a flat button', () => {
     const propsFlatButton = {
       ...standardProps,
@@ -62,13 +53,33 @@ describe('button', () => {
     expect(buttonElement).toBeTruthy();
   });
 
-  it('should render an outlined button', () => {
-    const propsOutlinedButton = {
+  it('should render a button with default appearance', () => {
+    const propsDefaultAppearance = {
       ...standardProps,
-      variant: ButtonVariant.Outlined,
+      appearance: ButtonAppearance.Default,
     };
-    const screen = renderButton(propsOutlinedButton);
-    const buttonElement = screen.getByTestId('outlined', { exact: false });
+    const screen = renderButton(propsDefaultAppearance);
+    const buttonElement = screen.getByTestId('default', { exact: false });
+    expect(buttonElement).toBeTruthy();
+  });
+
+  it('should render a button with light appearance', () => {
+    const propsLightAppearance = {
+      ...standardProps,
+      appearance: ButtonAppearance.Light,
+    };
+    const screen = renderButton(propsLightAppearance);
+    const buttonElement = screen.getByTestId('light', { exact: false });
+    expect(buttonElement).toBeTruthy();
+  });
+
+  it('should render a button with dark appearance', () => {
+    const propsDarkAppearance = {
+      ...standardProps,
+      appearance: ButtonAppearance.Dark,
+    };
+    const screen = renderButton(propsDarkAppearance);
+    const buttonElement = screen.getByTestId('dark', { exact: false });
     expect(buttonElement).toBeTruthy();
   });
 
@@ -123,7 +134,7 @@ describe('button', () => {
         props: {
           icon: IconId.ThumbUp,
         },
-        position: IconPosition.Right,
+        position: IconPosition.End,
       },
     };
     const screen = renderButton(propsIconButtonRight);
