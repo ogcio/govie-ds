@@ -1,4 +1,4 @@
-{% from 'button/helpers.html' import getVariantClass, getSizeClass, getIconPosition, isButtonDisabled %}
+{% from 'button/helpers.html' import getVariantAppearanceClass, getSizeClass, getIconPosition, isButtonDisabled %}
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieButton(props) %}
@@ -7,7 +7,7 @@
 {% set size = props.size or 'medium' %}
 {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
 
-<button data-testid="govieButton-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-gap-4 gi-flex gi-shadow-[0_2px_0_#0b0c0c] gi-rounded-md gi-font-primary focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-items-center {{ getVariantClass(props.variant) | trim }} {{getSizeClass(props.size) | trim }} {{getIconPosition(props.icon.position) | trim }} {{isButtonDisabled(props.disabled) | trim }}">
+<button data-testid="govieButton-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-gap-2 gi-flex gi-rounded-sm focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-items-center {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{getSizeClass(props.size) | trim }} {{getIconPosition(props.icon.position) | trim }} {{isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}">
   {% if props.icon %}
     {{ govieIcon(props.icon.props)}}
   {% endif %}

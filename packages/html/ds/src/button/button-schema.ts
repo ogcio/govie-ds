@@ -4,9 +4,13 @@ import { iconSchema } from '../icon/icon.schema';
 export enum ButtonVariant {
   Primary = 'primary',
   Secondary = 'secondary',
-  Tertiary = 'tertiary',
   Flat = 'flat',
-  Outlined = 'outlined',
+}
+
+export enum ButtonAppearance {
+  Default = 'default',
+  Dark = 'dark',
+  Light = 'light',
 }
 
 export enum ButtonSize {
@@ -16,14 +20,19 @@ export enum ButtonSize {
 }
 
 export enum IconPosition {
-  Left = 'left',
-  Right = 'right',
+  Start = 'start',
+  End = 'end',
 }
 
 export const buttonSchema = zod.object({
   variant: zod
     .nativeEnum(ButtonVariant, {
       description: 'Button variants',
+    })
+    .optional(),
+  appearance: zod
+    .nativeEnum(ButtonAppearance, {
+      description: 'Choose the appearance of the button',
     })
     .optional(),
   size: zod

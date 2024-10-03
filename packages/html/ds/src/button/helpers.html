@@ -1,35 +1,77 @@
-{% macro getVariantClass(variant) %}
-  {% if variant == 'secondary' %}
-    gi-bg-gray-100 hover:gi-bg-gray-300
-  {% elif variant == 'tertiary' %}
-    gi-text-white gi-bg-red-500 hover:gi-bg-red-600
-  {% elif variant == 'flat' %}
-    gi-shadow-none hover:gi-bg-gray-100
-  {% elif variant == 'outlined' %}
-    gi-border-solid gi-border-sm gi-border-[black] gi-shadow-none hover:gi-bg-gray-100
-  {% else %}
-    gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900
+{% macro getVariantAppearanceClass(disabled, variant, appearance) %}
+  {% if not disabled %}
+    {% if variant == 'secondary' %}
+      {% if appearance == 'dark' %}
+      gi-border-sm gi-border-solid gi-border-gray-950 hover:gi-bg-gray-200
+      {% elif appearance == 'light' %}
+      gi-text-white gi-border-sm gi-border-solid gi-border-white hover:gi-bg-gray-800 focus:gi-border-transparent
+      {% else %}
+      gi-border-sm gi-border-solid gi-border-emerald-800 gi-text-emerald-800 gi-border-emerald-800 hover:gi-bg-emerald-50
+      {% endif %}
+    {% elif variant == 'flat' %}
+      {% if appearance == 'dark' %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-gray-950 hover:gi-bg-gray-200 focus:gi-border-emerald-800
+      {% elif appearance == 'light' %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-white hover:gi-bg-gray-800
+      {% else %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-emerald-800 hover:gi-bg-emerald-50 focus:gi-border-emerald-800
+      {% endif %}
+    {% else %}
+      {% if appearance == 'dark' %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-white gi-bg-gray-950 hover:gi-bg-gray-800 focus:gi-bg-gray-800
+      {% elif appearance == 'light' %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-gray-950 gi-bg-white hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-border-solid focus:gi-border-sm focus:gi-border-black
+      {% else %}
+      gi-border-solid gi-border-transparent gi-border-sm gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900 focus:gi-bg-emerald-900
+      {% endif %}
+    {% endif %}
   {% endif %}
 {% endmacro %}
 
 {% macro getSizeClass(size) %}
   {% if size == 'small' %}
-    gi-px-2 gi-py-1 xs:gi-text-2xs md:gi-text-sm lg:gi-text-md
+    gi-px-2 gi-py-1.5 gi-text-xs
   {% elif size == 'large' %}
-    gi-px-4 gi-py-3 xs:gi-text-md md:gi-text-lg lg:gi-text-xl
+    gi-px-4 gi-py-3 gi-text-2md
   {% else %}
-    gi-px-3 gi-py-2 xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+    gi-px-3 gi-py-2 gi-text-sm
   {% endif %}
 {% endmacro %}
 
 {% macro getIconPosition(position) %}
-  {% if position == 'right' %}
+  {% if position == 'end' %}
     gi-flex-row-reverse
   {% endif %}  
 {% endmacro %}
 
-{% macro isButtonDisabled(btnDisabled) %}
-  {% if btnDisabled %}
-    gi-pointer-events-none gi-opacity-20
+{% macro isButtonDisabled(disabled, variant, appearance) %}
+  {% set disabledClass = 'gi-pointer-events-none' %}
+
+  {% if disabled %}
+    {% if variant == 'secondary' %}
+      {% if appearance == 'dark' %}
+        gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+      {% elif appearance == 'light' %}
+        gi-bg-gray-800 gi-border-gray-400 gi-text-gray-400 gi-pointer-events-none
+      {% else %}
+        gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+      {% endif %}
+    {% elif variant == 'flat' %}
+      {% if appearance == 'dark' %}
+        gi-text-gray-700 gi-pointer-events-none
+      {% elif appearance == 'light' %}
+        gi-text-gray-400 gi-pointer-events-none
+      {% else %}
+        gi-text-gray-700 gi-pointer-events-none
+      {% endif %}
+    {% else %}
+      {% if appearance == 'dark' %}
+        gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+      {% elif appearance == 'light' %}
+        gi-bg-gray-800 gi-text-gray-400 gi-pointer-events-none
+      {% else %}
+        gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+      {% endif %}
+    {% endif %}
   {% endif %}  
 {% endmacro %}

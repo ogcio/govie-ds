@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconId } from '../icon/icon.schema';
 import { renderComponent } from '../storybook/storybook';
-import { ButtonProps } from './button-schema';
+import { ButtonAppearance, ButtonProps } from './button-schema';
 import { ButtonVariant, ButtonSize, IconPosition } from './button-schema';
 import html from './button.html?raw';
 
@@ -29,6 +29,11 @@ export const Default: Story = {
       control: 'radio',
       options: Object.values(ButtonVariant),
       description: 'The variants of the button',
+    },
+    appearance: {
+      control: 'radio',
+      options: Object.values(ButtonAppearance),
+      description: 'The description of the button',
     },
     size: {
       control: 'radio',
@@ -73,7 +78,7 @@ export const WithIconRight: Story = {
       props: {
         icon: IconId.ThumbUp,
       },
-      position: IconPosition.Right,
+      position: IconPosition.End,
     },
     label: 'Button',
   },
