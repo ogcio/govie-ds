@@ -84,6 +84,27 @@ const meta = {
         type: { summary: 'React.Ref<HTMLInputElement>' },
       },
     },
+    type: {
+      control: 'select',
+      description: 'Specifies the input type.',
+      options: [
+        'text',
+        'date',
+        'datetime-local',
+        'email',
+        'month',
+        'number',
+        'password',
+        'tel',
+        'time',
+        'url',
+        'week',
+      ],
+      table: {
+        category: 'Content',
+        type: { summary: 'string' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -191,5 +212,16 @@ export const CharacterWidth: Story = {
       htmlFor: 'text-input-id',
     },
     characterWidth: 4,
+  },
+};
+
+export const DateInput: Story = {
+  args: {
+    id: 'text-input-id',
+    label: {
+      text: '4 characters width',
+      htmlFor: 'text-input-id',
+    },
+    type: 'date',
   },
 };

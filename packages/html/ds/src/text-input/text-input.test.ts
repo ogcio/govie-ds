@@ -1,6 +1,6 @@
 import { render } from '../common/render';
 import html from './text-input.html?raw';
-import { TextInputProps } from './text-input.schema';
+import { InputTypeEnum, TextInputProps } from './text-input.schema';
 
 describe('govieTextInput', () => {
   const renderTextInput = render<TextInputProps>({
@@ -142,6 +142,16 @@ describe('govieTextInput', () => {
     const labelElement = screen.getByText('Bold Label');
     expect(labelElement).toBeTruthy();
     expect(labelElement.innerHTML).toContain('Bold Label');
+  });
+
+  it('should render date input', () => {
+    const screen = renderTextInput({
+      type: InputTypeEnum.Date,
+    });
+    const inputElement = screen.getByTestId('textbox');
+
+    expect(inputElement).toBeTruthy();
+    expect(inputElement.getAttribute('type')).toBe('date');
   });
 
   it('should pass axe accessibility tests', async () => {
