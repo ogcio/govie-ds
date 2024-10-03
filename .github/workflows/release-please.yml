@@ -56,6 +56,13 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Publish Tailwind Builder package
+        if: ${{ steps.release.outputs['packages/design/tailwind--release_created'] }}
+        run: |
+          pnpm --filter "@govie-ds/tailwind" publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish HTML output
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] }}
         run: gh release upload ${{ steps.release.outputs['packages/html/ds--tag_name'] }} ./packages/html/ds/govie-frontend.zip

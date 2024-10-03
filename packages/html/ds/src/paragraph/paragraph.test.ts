@@ -55,7 +55,7 @@ describe('govieParagraph', () => {
     });
     const spanElement = screen.getByText('Medium text');
 
-    expect(spanElement.classList.contains('gi-paragraph')).toBe(true);
+    expect(spanElement.classList.contains('gi-paragraph-md')).toBe(true);
   });
 
   it('should have correct text size classes for "sm"', () => {
