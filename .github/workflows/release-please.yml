@@ -23,31 +23,37 @@ jobs:
           manifest-file: .release-please-manifest.json
 
       - name: Checkout code
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT }}
 
       - name: Use Node.js
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Build
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm nx affected --base=last-release -t build --parallel=3
 
-      - name: Publish packages
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+      - name: Publish DS React package
+        if: ${{ steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
-          pnpm nx affected --base=last-release -t npm-publish --parallel=1
+          pnpm --filter "@govie-ds/react" publish
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Theme GOV.IE design tokens package
+        if: ${{ steps.release.outputs['tokens--release_created'] }}
+        run: |
+          pnpm --filter "@govie-ds/tokens" publish
+        env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish HTML output
@@ -58,12 +64,15 @@ jobs:
 
       - name: Publish Theme output
         if: ${{ steps.release.outputs['packages/themes/govie--release_created'] }}
-        run: gh release upload ${{ steps.release.outputs['packages/themes/govie--tag_name'] }} ./packages/themes/govie/theme.zip
+        run: |
+          pnpm --filter "@govie-ds/theme-govie" publish
+          gh release upload ${{ steps.release.outputs['packages/themes/govie--tag_name'] }} ./packages/themes/govie/theme.zip
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Tag Last Release
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         run: |
           git tag -f last-release
           git push origin last-release --force

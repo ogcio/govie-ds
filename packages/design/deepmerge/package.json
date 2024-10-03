@@ -25,7 +25,6 @@
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
-    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
