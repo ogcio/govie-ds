@@ -27,7 +27,7 @@ describe('heading', () => {
     });
 
     const headingElement = screen.getByRole('heading');
-    const classNames = ['xs:gi-text-sm', 'md:gi-text-sm', 'xl:gi-text-md'];
+    const classNames = ['gi-heading-sm'];
 
     for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
@@ -42,7 +42,7 @@ describe('heading', () => {
     });
 
     const headingElement = screen.getByRole('heading');
-    const classNames = ['xs:gi-text-sm', 'md:gi-text-md', 'xl:gi-text-lg'];
+    const classNames = ['gi-heading-md'];
 
     for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
@@ -57,7 +57,7 @@ describe('heading', () => {
     });
 
     const headingElement = screen.getByRole('heading');
-    const classNames = ['xs:gi-text-lg', 'md:gi-text-xl', 'xl:gi-text-2xl'];
+    const classNames = ['gi-heading-lg'];
 
     for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
@@ -72,7 +72,7 @@ describe('heading', () => {
     });
 
     const headingElement = screen.getByRole('heading');
-    const classNames = ['xs:gi-text-2xl', 'md:gi-text-3xl', 'xl:gi-text-4xl'];
+    const classNames = ['gi-heading-xl'];
 
     for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);

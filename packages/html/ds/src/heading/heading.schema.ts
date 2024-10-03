@@ -19,10 +19,12 @@ export enum Tag {
 }
 
 export const headingSchema = zod.object({
-  size: zod.nativeEnum(Size, {
-    description: 'Options for the size of the heading',
-    required_error: 'Option is required',
-  }),
+  size: zod
+    .nativeEnum(Size, {
+      description: 'Options for the size of the heading',
+      required_error: 'Option is required',
+    })
+    .optional(),
   tag: zod.nativeEnum(Tag, {
     description: 'Options for the tag element of the heading',
     required_error: 'A tag element is required',
