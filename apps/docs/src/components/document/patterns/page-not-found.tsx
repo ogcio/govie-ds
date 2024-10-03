@@ -4,7 +4,10 @@ import { Footer } from '@/components/footer/footer';
 export function PageNotFound() {
   return (
     <>
-      <Header logoLink="/" />
+      <Header
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
+      />
       <main>
         <Heading as="h2">Page not found</Heading>
         <Paragraph>

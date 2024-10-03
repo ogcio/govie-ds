@@ -181,8 +181,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-file-upload--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
@@ -699,14 +700,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -878,14 +879,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },

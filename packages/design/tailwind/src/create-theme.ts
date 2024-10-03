@@ -40,6 +40,7 @@ export function createTheme(
       },
     },
     colors: {
+      inherit: 'inherit',
       transparent: 'transparent',
       white: '#ffffff',
       black: '#000000',

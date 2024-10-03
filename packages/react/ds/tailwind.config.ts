@@ -7,7 +7,6 @@ const config: Config = {
   theme: createTheme(),
   plugins: [],
   safelist: [
-    { pattern: /layout-./ },
     { pattern: /grid-./ },
     { pattern: /col-./ },
     { pattern: /row-./ },

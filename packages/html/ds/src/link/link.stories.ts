@@ -44,6 +44,11 @@ export const Default: Story = {
       control: 'boolean',
       type: { name: 'boolean' },
     },
+    noColor: {
+      description: 'To inherit color from parent',
+      control: 'boolean',
+      type: { name: 'boolean' },
+    },
   },
   args: {
     href: '#',

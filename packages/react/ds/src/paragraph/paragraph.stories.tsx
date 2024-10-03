@@ -20,7 +20,7 @@ export const RightAlignment: Story = {
     children: 'This is a paragraph.',
     as: 'p',
     size: 'md',
-    align: 'right',
+    align: 'end',
   },
 };
 

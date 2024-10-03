@@ -24,7 +24,8 @@ export function App() {
   return (
     <>
       <Header
-        logoLink="/home"
+        logo={{ href: "/" }}
+        tools={{ search: { action: "/search-page" } }}
         navLinks={[
           {
             href: "#",
@@ -49,7 +50,7 @@ export function App() {
       <Container>
         <Heading>Design System </Heading>
 
-        <Tabs>
+        <Tabs id="tabs">
           <TabList>
             <TabItem value="tab1" checked>
               Typography
@@ -94,33 +95,33 @@ export function App() {
             <TextInput
               id="text-input-id"
               error={{
-                children: "Error: Please correct this issue.",
+                text: "Error: Please correct this issue.",
               }}
               hint={{
-                children: "Hint: This is a helpful hint.",
+                text: "Hint: This is a helpful hint.",
               }}
               label={{
-                children: "Label",
+                text: "Label",
                 htmlFor: "text-input-id",
               }}
               suffix="KG"
             />
             <TextArea
               error={{
-                children: "Error: Please correct this issue.",
+                text: "Error: Please correct this issue.",
               }}
               hint={{
-                children: "Hint: This is a helpful hint.",
+                text: "Hint: This is a helpful hint.",
               }}
               id="textarea-id"
               label={{
-                children: "Label",
+                text: "Label",
                 htmlFor: "textarea-id",
               }}
             />
             <Select
               id="unique-id"
-              label={{ content: "Label" }}
+              label={{ text: "Label" }}
               options={[
                 {
                   label: "Option 1",
@@ -141,11 +142,11 @@ export function App() {
         <hr />
         <FileUpload
           error={{
-            children: "Error: File must be smaller than 5MB.",
+            text: "Error: File must be smaller than 5MB.",
           }}
           id="file-upload-id"
           label={{
-            children: "Upload File",
+            text: "Upload File",
             htmlFor: "file-upload-id",
           }}
         />

@@ -11,7 +11,9 @@ export type IconId =
   | 'attach_file'
   | 'close'
   | 'search'
-  | 'menu';
+  | 'menu'
+  | 'home'
+  | 'logout';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 

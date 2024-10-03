@@ -1,4 +1,3 @@
-import { Text } from '@govie-ds/react';
 import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
 import { Dictionary, groupBy } from 'lodash';
@@ -153,17 +152,28 @@ function TypographyResponsiveSizes({
       renderValue={({ value }) => {
         return <TokenName name={value.name} />;
       }}
-      renderSample={({ value }) => (
-        <Text
-          as={tokenName === 'heading' ? 'h1' : 'p'}
-          style={{
-            ...value.value,
-            fontFamily: undefined,
-          }}
-        >
-          {sampleText}
-        </Text>
-      )}
+      renderSample={({ value }) =>
+        tokenName === 'heading' ? (
+          <h1
+            className="gi-font-bold"
+            style={{
+              ...value.value,
+              fontFamily: undefined,
+            }}
+          >
+            {sampleText}
+          </h1>
+        ) : (
+          <p
+            style={{
+              ...value.value,
+              fontFamily: undefined,
+            }}
+          >
+            {sampleText}
+          </p>
+        )
+      }
     />
   );
 }
