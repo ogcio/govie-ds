@@ -19,7 +19,12 @@ export const fileUploadSchema = zod.object({
       description: 'Accepted file types (e.g., image/*, application/pdf).',
     })
     .optional(),
-  name: zod.string().optional(),
+  name: zod
+    .string({
+      description:
+        'Specifies the name of the file input field, used for form submission identification.',
+    })
+    .optional(),
 });
 
 export type FileUploadProps = zod.infer<typeof fileUploadSchema>;
