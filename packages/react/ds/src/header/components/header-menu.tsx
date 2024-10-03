@@ -11,7 +11,8 @@ type HeaderMenuProps = {
     label: string;
   }[];
   searchProps?: {
-    action: string;
+    action?: string;
+    serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     label?: string;
     icon?: IconId;
   };

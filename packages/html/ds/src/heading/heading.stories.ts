@@ -21,7 +21,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: Size.Medium,
     tag: Tag.H1,
     text: 'Heading',
     caption: '',
@@ -40,8 +39,7 @@ export const Default: Story = {
 
 export const Small: Story = {
   args: {
-    size: Size.Small,
-    tag: Tag.H1,
+    tag: Tag.H6,
     text: 'Small heading',
   },
   argTypes: {
@@ -59,7 +57,7 @@ export const Small: Story = {
 export const Medium: Story = {
   args: {
     size: Size.Medium,
-    tag: Tag.H1,
+    tag: Tag.H3,
     text: 'Medium heading',
   },
   argTypes: {

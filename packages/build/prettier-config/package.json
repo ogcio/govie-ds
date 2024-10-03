@@ -11,7 +11,5 @@
   "scripts": {
     "build": "echo No build"
   },
-  "devDependencies": {
-    "@aaos/nx-publish": "^1.4.0"
-  }
+  "devDependencies": {}
 }

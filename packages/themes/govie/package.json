@@ -31,7 +31,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@aaos/nx-publish": "^1.4.0",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/theme-builder": "workspace:*",
