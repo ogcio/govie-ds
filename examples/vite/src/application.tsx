@@ -18,6 +18,7 @@ import {
   TabPanel,
   TabList,
   FileUpload,
+  Tag,
 } from "@govie-ds/react";
 
 export function App() {
@@ -150,6 +151,8 @@ export function App() {
             htmlFor: "file-upload-id",
           }}
         />
+        <hr />
+        <Tag text="Completed" type="blue" />
       </Container>
       <Footer />
     </>
