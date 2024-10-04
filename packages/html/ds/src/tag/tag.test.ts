@@ -19,7 +19,6 @@ describe('govieTag', () => {
     expect(tagElement.tagName).toBe('STRONG');
   });
 
-  // Mapping of tag types to their expected single class
   const tagTypeClasses = {
     [TagType.blue]: 'gi-tag-blue',
     [TagType.gray]: 'gi-tag-gray',
@@ -39,8 +38,6 @@ describe('govieTag', () => {
         const tagElement = screen.getByText(
           `${type.charAt(0).toUpperCase() + type.slice(1)} tag`,
         );
-
-        // Check that the tag contains the correct class
         expect(tagElement.classList.contains(expectedClass)).toBe(true);
       });
     },
