@@ -31,7 +31,7 @@ export function createTheme(
     ...tailwindTheme,
     container: {
       padding: {
-        DEFAULT: '16px', // TODO: use tokens
+        default: '16px', // TODO: use tokens
         sm: '16px',
         md: '32px',
         lg: '64px',
@@ -153,7 +153,7 @@ export function createTheme(
       '2xl': variables.primitive.border.width['600'],
       '3xl': variables.primitive.border.width['700'],
       '4xl': variables.primitive.border.width['800'],
-      DEFAULT: variables.primitive.border.width['100'],
+      default: variables.primitive.border.width['100'],
     },
     borderRadius: {
       // "none": tokens.goiveBorderRadiusNone,
@@ -164,7 +164,7 @@ export function createTheme(
       '2xl': variables.primitive.border.radius['500'],
       '3xl': variables.primitive.border.radius['600'],
       full: variables.primitive.border.radius.full,
-      DEFAULT: variables.primitive.border.radius['200'],
+      default: variables.primitive.border.radius['200'],
     },
     zIndex: {
       1: variables.primitive.zIndex['1'],
@@ -205,7 +205,7 @@ export function createTheme(
     // TODO: boxShadow, convert shadow object to string in tokens
     // "boxShadow": {
     //   "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-    //   "DEFAULT": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    //   "default": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
     //   "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
     //   "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
     //   "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
@@ -302,7 +302,7 @@ export function createTheme(
     extend: {
       typography: () => {
         return {
-          DEFAULT: {
+          default: {
             css: {
               p: {
                 font: variables.semantic.typography.default.text.md,

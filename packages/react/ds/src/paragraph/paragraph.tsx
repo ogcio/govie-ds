@@ -33,7 +33,7 @@ export function Paragraph({
         return As === 'p' ? 'gi-paragraph-sm' : 'gi-span-sm';
       }
       default: {
-        return As === 'p' ? 'gi-paragraph' : 'gi-span';
+        return As === 'p' ? 'gi-paragraph-md' : 'gi-span-md';
       }
     }
   })();
