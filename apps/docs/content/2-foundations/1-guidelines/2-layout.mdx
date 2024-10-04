@@ -71,7 +71,7 @@ To create a grid, you use the `gi-grid` class on a container element. Then, you 
 For example:
 
 ```html
-<div class="grid grid-cols-3">
+<div class="gi-grid gi-grid-cols-3">
   <div>Column 1</div>
   <div>Column 2</div>
   <div>Column 3</div>
@@ -83,7 +83,7 @@ This creates a 3-column grid layout.
 It is easy to create responsive grids using breakpoint prefixes. You can specify different column counts for different screen sizes:
 
 ```html
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+<div class="gi-grid gi-grid-cols-1 md:gi-grid-cols-2 lg:gi-grid-cols-4">
   <!-- Grid items -->
 </div>
 ```
@@ -93,7 +93,7 @@ This creates a grid that has 1 column on small screens, 2 columns on medium scre
 You can add gaps between grid items using the `gi-gap-{size}` classes:
 
 ```html
-<div class="grid grid-cols-3 gap-4">
+<div class="gi-grid gi-grid-cols-3 gi-gap-4">
   <!-- Grid items -->
 </div>
 ```
@@ -101,7 +101,7 @@ You can add gaps between grid items using the `gi-gap-{size}` classes:
 ### Spanning Columns and Rows
 You are allowed to control how items span across columns and rows using classes like `gi-col-span-{n}` and `gi-row-span-{n}`:
 ```html
-<div class="grid grid-cols-3">
+<div class="gi-grid gi-grid-cols-3">
   <div class="col-span-2">Spans 2 columns</div>
   <div>Normal column</div>
 </div>
