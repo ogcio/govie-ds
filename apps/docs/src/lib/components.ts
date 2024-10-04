@@ -648,14 +648,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-heading--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-heading--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },

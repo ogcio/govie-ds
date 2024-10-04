@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './text-input.html?raw';
-import { TextInputProps } from './text-input.schema';
+import { InputTypeEnum, TextInputProps } from './text-input.schema';
 
 const path = import.meta.url.split('/text-input')[0];
 
@@ -105,6 +105,17 @@ const meta = {
         type: { summary: 'ErrorText' },
       },
     },
+    type: {
+      control: 'select',
+      options: Object.values(InputTypeEnum),
+      type: { name: 'string', required: false },
+      description: 'Specifies the input type.',
+      table: {
+        category: 'Content',
+        type: { summary: 'string' },
+        defaultValue: { summary: '-' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -190,5 +201,12 @@ export const WithLabelHintAndErrorText: Story = {
     },
     fullFluid: true,
     id: 'error-input',
+  },
+};
+
+export const DateInput: Story = {
+  args: {
+    id: 'text-input-id',
+    type: 'date',
   },
 };
