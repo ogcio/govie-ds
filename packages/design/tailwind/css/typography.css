@@ -3,55 +3,193 @@
 /* Heading */
 
 .gi-heading-xl {
-  @apply gi-text-4xl md:gi-text-5xl xl:gi-text-6xl gi-font-bold gi-mt-1 gi-mb-8
+  font: theme('typography.default.css.h1.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h1.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h1.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h1.font');
+  }
 }
 
 .gi-heading-lg {
-  @apply gi-text-2xl md:gi-text-3xl xl:gi-text-4xl gi-font-bold gi-mt-1 gi-mb-6
+  font: theme('typography.default.css.h2.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h2.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h2.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h2.font');
+  }
 }
 
 .gi-heading-md {
-  @apply gi-text-lg md:gi-text-xl xl:gi-text-2xl gi-font-bold gi-mt-1 gi-mb-5
+  font: theme('typography.default.css.h3.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h3.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h3.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h3.font');
+  }
 }
 
 .gi-heading-sm {
-  @apply gi-text-lg xl:gi-text-xl gi-font-bold gi-mt-1 gi-mb-4
+  font: theme('typography.default.css.h4.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h4.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h4.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h4.font');
+  }
 }
 
 .gi-heading-xs {
-  @apply gi-text-md gi-font-bold gi-mt-1 gi-mb-3
+  font: theme('typography.default.css.h5.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h5.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h5.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h5.font');
+  }
 }
 
 .gi-heading-2xs {
-  @apply gi-text-sm gi-font-bold gi-mt-1 gi-mb-2
+  font: theme('typography.default.css.h6.font');
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.h6.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.h6.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.h6.font');
+  }
 }
 
 /* End Paragraph */
 
 /* Paragraph */
 
-.gi-paragraph {
-  @apply gi-text-md gi-mt-0 gi-mb-9 gi-max-w-prose
-}
-
-.gi-paragraph-sm {
-  @apply gi-text-sm gi-mt-0 gi-mb-8 gi-max-w-prose
-}
-
 .gi-paragraph-lg {
-  @apply gi-text-lg gi-mt-0 gi-mb-10 gi-max-w-prose
+  font: theme('typography.default.css.p.font');
+  margin-bottom: 2em;
+  @apply gi-mt-0 gi-max-w-prose;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
 }
 
-.gi-span {
-  @apply gi-text-md gi-my-0
+.gi-paragraph-md {
+  font: theme('typography.default.css.p.font');
+  margin-bottom: 2em;
+  @apply gi-mt-0 gi-max-w-prose;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
 }
 
-.gi-span-sm {
-  @apply gi-text-sm gi-my-0
+.gi-paragraph-xs {
+  font: theme('typography.default.css.p.font');
+  margin-bottom: 2em;
+  @apply gi-mt-0 gi-max-w-prose;
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
 }
 
 .gi-span-lg {
-  @apply gi-text-lg gi-my-0
+  font: theme('typography.default.css.p.font');
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
+}
+
+.gi-span-md {
+  font: theme('typography.default.css.p.font');
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
+}
+
+.gi-span-xs {
+  font: theme('typography.default.css.p.font');
+
+  @media screen(sm) {
+    font: theme('typography.xs.css.p.font');
+  }
+  @media screen(md) {
+    font: theme('typography.md.css.p.font');
+  }
+  @media screen(xl) {
+    font: theme('typography.xl.css.p.font');
+  }
 }
 
 /* End Paragraph */
@@ -59,19 +197,19 @@
 /* Link  */
 
 .gi-link {
-  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.1em] gi-text-blue-700 hover:gi-text-blue-800 visited:gi-text-purple-700 hover:gi-decoration-lg focus:gi-outline focus:gi-outline-transparent focus:gi-bg-yellow-400 focus:gi-outline-2 focus:gi-shadow-sm focus:gi-shadow-yellow-400
+  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.1em] gi-text-blue-700 hover:gi-text-blue-800 visited:gi-text-purple-700 hover:gi-decoration-lg focus:gi-outline focus:gi-outline-transparent focus:gi-bg-yellow-400 focus:gi-outline-2 focus:gi-shadow-sm focus:gi-shadow-yellow-400;
 }
 
 .gi-link-inherit {
-  @apply gi-text-inherit hover:gi-text-inherit
+  @apply gi-text-inherit hover:gi-text-inherit;
 }
 
 .gi-link-no-visited {
-  @apply visited:gi-text-blue-700
+  @apply visited:gi-text-blue-700;
 }
 
 .gi-link-no-underline {
-  @apply gi-no-underline gi-underline-offset-[0.1em] focus:gi-no-underline
+  @apply gi-no-underline gi-underline-offset-[0.1em] focus:gi-no-underline;
 }
 
 /* End Link */
