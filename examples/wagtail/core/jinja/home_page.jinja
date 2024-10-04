@@ -9,6 +9,7 @@
 {% from 'text-input/text-input.html' import govieTextInput %}
 {% from 'textarea/textarea.html' import govieTextArea %}
 {% from 'tabs/tabs.html' import govieTabs %}
+{% from 'tag/tag.html' import govieTag %}
 
 {% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps %}
 
@@ -69,7 +70,15 @@
   <a class="govie-link" href="#">Link for testing</a>
 
   <hr />
-  <h2>Select (Global)</h2>
+
+  <h2>Typography - Tags</h2>
+  {{ govieTag({
+    "text": "Completed",
+    "type": "blue"
+  }) }}
+
+  <hr />
+  <h2>Form - Select (Global)</h2>
   {{ govieSelect(SelectProps) }}
 
   <hr />
