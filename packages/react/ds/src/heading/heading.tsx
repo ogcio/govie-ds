@@ -30,7 +30,7 @@ export function Heading({
         return 'xs';
       }
       case 'h6': {
-        return 'xs';
+        return '2xs';
       }
     }
   })();
@@ -53,7 +53,7 @@ export function Heading({
         return 'gi-heading-xs';
       }
       case '2xs': {
-        return 'gi-heading-xs';
+        return 'gi-heading-2xs';
       }
       default: {
         return;
