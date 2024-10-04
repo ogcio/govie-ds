@@ -1,1 +1,98 @@
 /* GOV.IE Components Stylesheets */
+
+/* Button */
+/* TODO: create separate focus classes once we get the variants for it */
+.gi-btn {
+    @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-items-center
+}
+    /* Button Primary */
+
+.gi-btn-primary {
+    @apply gi-border-transparent gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900 focus:gi-bg-emerald-900
+}
+
+.gi-btn-primary-disabled {
+    @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+}
+
+.gi-btn-primary-light {
+    @apply gi-border-transparent gi-text-gray-950 gi-bg-white hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-border-solid focus:gi-border-sm focus:gi-border-black
+}
+
+.gi-btn-primary-light-disabled {
+    @apply gi-border-transparent gi-bg-gray-800 gi-text-gray-400 gi-pointer-events-none
+}
+
+.gi-btn-primary-dark {
+    @apply gi-border-transparent gi-text-white gi-bg-gray-950 hover:gi-bg-gray-800 focus:gi-bg-gray-800
+}
+
+.gi-btn-primary-dark-disabled {
+    @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+}
+
+    /* Button Secondary */
+
+.gi-btn-secondary {
+    @apply gi-border-emerald-800 gi-text-emerald-800 gi-border-emerald-800 hover:gi-bg-emerald-50
+}
+
+.gi-btn-secondary-disabled {
+    @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+}
+
+.gi-btn-secondary-light {
+    @apply gi-text-white gi-border-white hover:gi-bg-gray-800 focus:gi-border-transparent
+}
+
+.gi-btn-secondary-light-disabled {
+    @apply gi-bg-gray-800 gi-border-gray-400 gi-text-gray-400 gi-pointer-events-none
+}
+
+.gi-btn-secondary-dark {
+    @apply gi-border-gray-950 hover:gi-bg-gray-200
+}
+
+.gi-btn-secondary-dark-disabled {
+    @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-pointer-events-none
+}
+
+    /* Button Flat */
+
+.gi-btn-flat {
+    @apply gi-border-transparent gi-text-emerald-800 hover:gi-bg-emerald-50 focus:gi-border-emerald-800
+}
+
+.gi-btn-flat-disabled {
+    @apply gi-border-transparent gi-text-gray-700 gi-pointer-events-none
+}
+
+.gi-btn-flat-light {
+    @apply gi-border-transparent gi-text-white hover:gi-bg-gray-800
+}
+
+.gi-btn-flat-light-disabled {
+    @apply gi-border-transparent gi-text-gray-400 gi-pointer-events-none
+}
+
+.gi-btn-flat-dark {
+    @apply gi-border-transparent gi-text-gray-950 hover:gi-bg-gray-200 focus:gi-border-emerald-800
+}
+
+.gi-btn-flat-dark-disabled {
+    @apply gi-border-transparent gi-text-gray-700 gi-pointer-events-none
+}
+
+    /* Button sizes */
+
+.gi-btn-small {
+    @apply gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs
+}
+
+.gi-btn-large {
+    @apply gi-h-12 gi-px-4 gi-py-3 gi-text-2md
+}
+
+.gi-btn-regular {
+    @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm
+} 

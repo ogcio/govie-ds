@@ -145,4 +145,9 @@ describe('button', () => {
     expect(iconElement).toBeTruthy();
     expect(buttonElementClasses.includes('gi-flex-row-reverse')).toBeTruthy();
   });
+
+  it('should pass axe tests', async () => {
+    const screen = renderButton(standardProps);
+    await screen.axe();
+  });
 });
