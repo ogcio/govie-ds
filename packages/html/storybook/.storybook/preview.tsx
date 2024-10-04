@@ -1,5 +1,9 @@
 import { destroyGovIe, initGovIe } from '@govie-ds/html';
 import { renderMacro } from '@govie-ds/macro';
+import {
+  INITIAL_VIEWPORTS,
+  MINIMAL_VIEWPORTS,
+} from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import '@fontsource/lato/100.css';
@@ -10,10 +14,18 @@ import '@fontsource/lato/900.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
-import {
-  INITIAL_VIEWPORTS,
-  MINIMAL_VIEWPORTS,
-} from '@storybook/addon-viewport';
+
+// add decorators for button
+const ButtonDecorator = (arguments_, parameters) => {
+  let classes = 'gi-p-4';
+  if (parameters.macro.name !== 'govieButton') {
+    return;
+  }
+  if (arguments_.appearance === 'light') {
+    classes += ' gi-bg-black';
+  }
+  return classes;
+};
 
 export const decorators = [
   (Story, context) => {
@@ -30,11 +42,21 @@ export const decorators = [
     const storyResult = Story(context);
 
     if (typeof storyResult === 'string') {
-      return <div dangerouslySetInnerHTML={{ __html: storyResult }} />;
+      return (
+        <div
+          className={ButtonDecorator(args, parameters)}
+          dangerouslySetInnerHTML={{ __html: storyResult }}
+        />
+      );
     }
 
     const renderedMacro = renderMacro(parameters.macro)(args);
-    return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
+    return (
+      <div
+        className={ButtonDecorator(args, parameters)}
+        dangerouslySetInnerHTML={{ __html: renderedMacro }}
+      />
+    );
   },
 ];
 
