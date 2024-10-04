@@ -1,34 +1,17 @@
 {% macro govieTag(props) %}
+  {# Mapping tag type to classes similar to React's tagClass structure #}
   {% macro getClasses(type) %}
-    {# Initialize classes for the blue type #}
-    {% set bgClass = 'gi-bg-blue-50' %}
-    {% set borderClass = 'gi-border-blue-100' %}
-    {% set textClass = 'gi-text-blue-700' %}
-
-    {# Determine the classes based on the type #}
-    {% if type == 'gray' %}
-      {% set bgClass = 'gi-bg-gray-50' %}
-      {% set borderClass = 'gi-border-gray-200' %}
-      {% set textClass = 'gi-text-gray-700' %}
-    {% elif type == 'green' %}
-      {% set bgClass = 'gi-bg-green-50' %}
-      {% set borderClass = 'gi-border-green-100' %}
-      {% set textClass = 'gi-text-green-700' %}
-    {% elif type == 'yellow' %}
-      {% set bgClass = 'gi-bg-yellow-50' %}
-      {% set borderClass = 'gi-border-yellow-300' %}
-      {% set textClass = 'gi-text-yellow-700' %}
-    {% elif type == 'red' %}
-      {% set bgClass = 'gi-bg-red-50' %}
-      {% set borderClass = 'gi-border-red-100' %}
-      {% set textClass = 'gi-text-red-700' %}
-    {% endif %}
-
-    {# Return the classes without extra whitespace #}
-    {{ bgClass ~ ' ' ~ borderClass ~ ' ' ~ textClass }}
+    {% set tagClasses = {
+      'blue': 'gi-tag-blue',
+      'gray': 'gi-tag-gray',
+      'green': 'gi-tag-green',
+      'yellow': 'gi-tag-yellow',
+      'red': 'gi-tag-red'
+    } %}
+    {{ tagClasses[type | default('blue')] }}
   {% endmacro %}
 
-  <strong class="{{ getClasses(props.type) | trim }} gi-rounded-md gi-border-xs gi-font-normal gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-align gi-items-center">
+  <strong class="gi-tag {{ getClasses(props.type) | trim }}">
     {{ props.text | safe | trim }}
   </strong>
 {% endmacro %}

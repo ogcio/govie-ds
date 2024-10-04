@@ -19,38 +19,18 @@ describe('govieTag', () => {
     expect(tagElement.tagName).toBe('STRONG');
   });
 
-  // Mapping of tag types to their expected classes
+  // Mapping of tag types to their expected single class
   const tagTypeClasses = {
-    [TagType.blue]: {
-      background: 'gi-bg-blue-50',
-      border: 'gi-border-blue-100',
-      text: 'gi-text-blue-700',
-    },
-    [TagType.gray]: {
-      background: 'gi-bg-gray-50',
-      border: 'gi-border-gray-200',
-      text: 'gi-text-gray-700',
-    },
-    [TagType.green]: {
-      background: 'gi-bg-green-50',
-      border: 'gi-border-green-100',
-      text: 'gi-text-green-700',
-    },
-    [TagType.yellow]: {
-      background: 'gi-bg-yellow-50',
-      border: 'gi-border-yellow-300',
-      text: 'gi-text-yellow-700',
-    },
-    [TagType.red]: {
-      background: 'gi-bg-red-50',
-      border: 'gi-border-red-100',
-      text: 'gi-text-red-700',
-    },
+    [TagType.blue]: 'gi-tag-blue',
+    [TagType.gray]: 'gi-tag-gray',
+    [TagType.green]: 'gi-tag-green',
+    [TagType.yellow]: 'gi-tag-yellow',
+    [TagType.red]: 'gi-tag-red',
   };
 
   describe.each(Object.entries(tagTypeClasses))(
-    'should have the correct classes for %s',
-    (type, { background, border, text }) => {
+    'should have the correct class for %s',
+    (type, expectedClass) => {
       it(`${type} tag`, () => {
         const screen = renderTag({
           text: `${type.charAt(0).toUpperCase() + type.slice(1)} tag`,
@@ -60,9 +40,8 @@ describe('govieTag', () => {
           `${type.charAt(0).toUpperCase() + type.slice(1)} tag`,
         );
 
-        expect(tagElement.classList.contains(background)).toBe(true);
-        expect(tagElement.classList.contains(border)).toBe(true);
-        expect(tagElement.classList.contains(text)).toBe(true);
+        // Check that the tag contains the correct class
+        expect(tagElement.classList.contains(expectedClass)).toBe(true);
       });
     },
   );
