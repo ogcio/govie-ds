@@ -7,6 +7,7 @@ import {
   Tabs,
   Button,
   Icon,
+  Tag
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -137,6 +138,7 @@ const documentComponents: MDXComponents = {
   Heading: (props) => <Heading {...props}>{props.children}</Heading>,
   Button: (props) => <Button {...props} />,
   Icon: (props) => <Icon {...props} />,
+  Tag: (props) => <Tag {...props}>{props.children}</Tag>
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -155,7 +157,8 @@ export function Mdx({ code }: MdxProps) {
             key.includes('Tab') ||
             key === 'Link' ||
             key === 'Heading' ||
-            key === 'Icon'
+            key === 'Icon' ||
+            key === 'Tag'
           ) {
             return;
           }

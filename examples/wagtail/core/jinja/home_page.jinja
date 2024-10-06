@@ -11,7 +11,7 @@
 {% from 'tabs/tabs.html' import govieTabs %}
 {% from 'button/button.html' import govieButton %}
 {% from 'icon/icon.html' import govieIcon %}
-
+{% from 'tag/tag.html' import govieTag %}
 
 {% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps %}
 
@@ -72,7 +72,15 @@
   <a class="govie-link" href="#">Link for testing</a>
 
   <hr />
-  <h2>Select (Global)</h2>
+
+  <h2>Typography - Tags</h2>
+  {{ govieTag({
+    "text": "Completed",
+    "type": "blue"
+  }) }}
+
+  <hr />
+  <h2>Form - Select (Global)</h2>
   {{ govieSelect(SelectProps) }}
 
   <hr />

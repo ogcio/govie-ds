@@ -1,0 +1,17 @@
+{% macro govieTag(props) %}
+  {# Mapping tag type to classes similar to React's tagClass structure #}
+  {% macro getClasses(type) %}
+    {% set tagClasses = {
+      'blue': 'gi-tag-blue',
+      'gray': 'gi-tag-gray',
+      'green': 'gi-tag-green',
+      'yellow': 'gi-tag-yellow',
+      'red': 'gi-tag-red'
+    } %}
+    {{ tagClasses[type | default('blue')] }}
+  {% endmacro %}
+
+  <strong class="gi-tag {{ getClasses(props.type) | trim }}">
+    {{ props.text | safe | trim }}
+  </strong>
+{% endmacro %}
