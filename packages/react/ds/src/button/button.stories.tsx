@@ -1,23 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { IconId } from '../icon/icon.schema';
-import { renderComponent } from '../storybook/storybook';
-import { ButtonAppearance, ButtonProps } from './button-schema';
-import { ButtonVariant, ButtonSize } from './button-schema';
-import html from './button.html?raw';
-
-// Name of the folder the macro resides
-const path = import.meta.url.split('/button')[0];
-
-const macro = { name: 'govieButton', html, path };
-
-const Button = renderComponent<ButtonProps>(macro);
+import { Icon } from '../icon/icon.js';
+import { Button } from './button.js';
+import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
 
 const meta = {
-  component: Button,
-  title: 'form/Button',
-  parameters: {
-    macro,
+  title: 'Form/Button',
+  decorators: (Story, context) => {
+    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    return (
+      <div className={`gi-p-4 ${isLight}`}>
+        <Story />
+      </div>
+    );
   },
+  parameters: {
+    docs: {
+      description: {
+        component: 'use this button where it is appropiate',
+      },
+    },
+  },
+  component: Button,
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -71,18 +74,14 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
+    icon: <Icon icon="thumb_up" />,
     label: 'Button',
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
+    icon: <Icon icon="thumb_up" />,
     iconEnd: true,
     label: 'Button',
   },
@@ -90,9 +89,7 @@ export const WithIconRight: Story = {
 
 export const WithoutLabel: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
+    icon: <Icon icon="thumb_up" />,
   },
 };
 

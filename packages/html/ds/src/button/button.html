@@ -8,11 +8,13 @@
 {% set size = props.size or 'medium' %}
 {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
 
-<button data-element="button-container" data-module="gieds-button" data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{getSizeClass(props.size) | trim }} {{getIconPosition(props.icon.position) | trim }} {{isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}">
+<button data-element="button-container" data-module="gieds-button" data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{getSizeClass(props.size) | trim }} {{getIconPosition(props.iconEnd) | trim }} {{isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}">
   {% if props.icon %}
-    {{ govieIcon(props.icon.props)}}
+    {{ govieIcon(props.icon)}}
   {% endif %}
-  {{ props.label }}
+  {% if props.label %}
+    {{ props.label }}
+  {% endif %}
 </button>
 
 {% endmacro %}

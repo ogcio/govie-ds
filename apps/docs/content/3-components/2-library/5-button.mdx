@@ -2,13 +2,249 @@
 title: Button
 description: Button HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Button
 
 <ComponentStatusBlock componentId="button" />
 
-## When to use this component
+## Primary buttons
 
-## When not to use this component
+<Button label="Primary Button" />
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+  <button id="button" data-module="govie-button" class="govie-button">Primary Button</button>
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+   {{ govieButton({
+    "label": "Primary button"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { Button } from '@govie-ds/react';
+
+  <Button label="Primary Button" />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Secondary buttons
+
+<Button label="Secondary Button" variant="secondary" />
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+  <button id="button" data-module="govie-button" class="govie-button govie-button--secondary">Secondary Button</button>
+  ```
+  </TabPanel>
+  <TabPanel value="tab22">
+  ```html
+  {{ govieButton({
+    "label": "Secondary button",
+    "variant": "secondary"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab23">
+  ```html
+  import { Button } from '@govie-ds/react';
+  
+  <Button label="Secondary Button" variant="secondary" />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Flat buttons
+
+<Button label="Flat Button" variant="flat" />
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+  ```html
+  <button id="button" data-module="govie-button" class="govie-button govie-button--flat">Flat Button</button>
+  ```
+  </TabPanel>
+  <TabPanel value="tab32">
+  ```html
+   {{ govieButton({
+    "label": "Flat button",
+    "variant": "flat"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab33">
+  ```html
+  import { Button } from '@govie-ds/react';
+  
+  <Button label="Flat Button" variant="flat" />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Buttons with icons and label
+
+<Button label="button" icon={<Icon icon="thumb_up" />} />
+
+<Tabs id="tab4">
+  <TabList>
+    <TabItem value="tab41" checked>HTML</TabItem>
+    <TabItem value="tab42">Macro</TabItem>
+    <TabItem value="tab43">React</TabItem>
+  </TabList>
+  <TabPanel value="tab41">
+  ```html
+  <button id="button" data-module="govie-button" class="govie-button  govie-button--icon">
+    <svg class="govie-button__icon-left" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 8.5H8V14.5H6V8.5H0V6.5H6V0.5H8V6.5H14V8.5Z" fill="white"></path>
+    </svg> button
+  </button>
+  ```
+  </TabPanel>
+  <TabPanel value="tab42">
+  ```html
+    {{ govieButton({
+    "label": "button",
+    "icon": {
+      "icon": "thumb_up"
+    }
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab43">
+  ```html
+  import { Button, Icon } from '@govie-ds/react';
+  
+  <Button label="button" icon={<Icon icon="thumb_up" />} />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Icon Buttons
+
+<Button icon={<Icon icon="thumb_up" />} />
+
+<Tabs id="tab5">
+  <TabList>
+    <TabItem value="tab51" checked>HTML</TabItem>
+    <TabItem value="tab52">Macro</TabItem>
+    <TabItem value="tab53">React</TabItem>
+  </TabList>
+  <TabPanel value="tab51">
+  ```html
+  Not available
+  ```
+  </TabPanel>
+  <TabPanel value="tab52">
+  ```html
+    {{ govieButton({
+    "icon": {
+      "icon": "thumb_up"
+    }
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab53">
+  ```html
+  import { Button, Icon } from '@govie-ds/react';
+  
+  <Button icon={<Icon icon="thumb_up" />} />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Disabled buttons
+
+<Button label="Disabled button" disabled={true} />
+
+<Tabs id="tab6">
+  <TabList>
+    <TabItem value="tab61" checked>HTML</TabItem>
+    <TabItem value="tab62">Macro</TabItem>
+    <TabItem value="tab63">React</TabItem>
+  </TabList>
+  <TabPanel value="tab61">
+  ```html
+  <button id="button" data-module="govie-button" disabled="true" aria-disabled="true" class="govie-button govie-button--disabled">Disabled button</button>
+  ```
+  </TabPanel>
+  <TabPanel value="tab62">
+  ```html
+    {{ govieButton({
+    "label": "Disabled button",
+    "disabled": true
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab63">
+  ```html
+  import { Button } from '@govie-ds/react';
+  
+  <Button label="Disabled button" disabled={true} />
+  ```
+  </TabPanel>
+</Tabs>
+
+## Buttons on dark backgrounds
+
+<div style={{marginBottom: "32px"}} className="gi-bg-black gi-p-4">
+  <Button label="Dark button" appearance="light" />
+</div>
+
+<Tabs id="tab7">
+  <TabList>
+    <TabItem value="tab71" checked>HTML</TabItem>
+    <TabItem value="tab72">Macro</TabItem>
+    <TabItem value="tab73">React</TabItem>
+  </TabList>
+  <TabPanel value="tab71">
+  ```html
+  Not available
+  ```
+  </TabPanel>
+  <TabPanel value="tab72">
+  ```html
+  {{ govieButton({
+    "label": "Dark button",
+    "appearance": "light"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab73">
+  ```html
+  import { Button } from '@govie-ds/react';
+  
+  <Button label="Dark button" appearance="light" />
+  ```
+  </TabPanel>
+</Tabs>
+
+### When to use this component
+
+Use the button component to help users carry out an action like starting an application or saving their information.
+
+### When not to use this component
+
+Do not use the button component when the intended action is for the user to navigate towards an external / internal link. For that use case use the Link component

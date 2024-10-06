@@ -48,16 +48,12 @@ export const buttonSchema = zod.object({
   disabled: zod
     .boolean({ description: 'Specify if the button should be disabled' })
     .optional(),
-  icon: zod
-    .object({
-      props: iconSchema.describe('Icon for the button'),
-      position: zod
-        .nativeEnum(IconPosition, {
-          description: 'The position of the icon',
-        })
-        .optional(),
+  iconEnd: zod
+    .boolean({
+      description: 'Specify if the icon should be at the end of the button',
     })
     .optional(),
+  icon: iconSchema.describe('Icon for the button').optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;

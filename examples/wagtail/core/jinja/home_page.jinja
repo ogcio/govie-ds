@@ -9,6 +9,9 @@
 {% from 'text-input/text-input.html' import govieTextInput %}
 {% from 'textarea/textarea.html' import govieTextArea %}
 {% from 'tabs/tabs.html' import govieTabs %}
+{% from 'button/button.html' import govieButton %}
+{% from 'icon/icon.html' import govieIcon %}
+
 
 {% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps %}
 
@@ -146,6 +149,12 @@
     "error": {
       "content": "Error: File must be smaller than 5MB."
     }
+  }) }}
+
+  <h2>Button</h2>
+
+  {{ govieButton({
+    "label": "Primary button",
   }) }}
 
   <h2>Footer (Local)</h2>
