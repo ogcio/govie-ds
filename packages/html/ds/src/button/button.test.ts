@@ -3,7 +3,6 @@ import { IconId } from '../icon/icon.schema';
 import {
   ButtonSize,
   ButtonVariant,
-  IconPosition,
   ButtonProps,
   ButtonAppearance,
 } from './button-schema';
@@ -117,9 +116,7 @@ describe('button', () => {
     const propsIconButton = {
       ...standardProps,
       icon: {
-        props: {
-          icon: IconId.ThumbUp,
-        },
+        icon: IconId.ThumbUp,
       },
     };
     const screen = renderButton(propsIconButton);
@@ -131,11 +128,9 @@ describe('button', () => {
     const propsIconButtonRight = {
       ...standardProps,
       icon: {
-        props: {
-          icon: IconId.ThumbUp,
-        },
-        position: IconPosition.End,
+        icon: IconId.ThumbUp,
       },
+      iconEnd: true,
     };
     const screen = renderButton(propsIconButtonRight);
     const iconElement = screen.getByTestId('govie-icon');
