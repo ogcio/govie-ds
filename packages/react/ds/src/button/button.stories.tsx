@@ -1,22 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import { ButtonAppearance, ButtonProps } from './button-schema';
-import { ButtonVariant, ButtonSize } from './button-schema';
-import html from './button.html?raw';
-
-// Name of the folder the macro resides
-const path = import.meta.url.split('/button')[0];
-
-const macro = { name: 'govieButton', html, path };
-
-const Button = renderComponent<ButtonProps>(macro);
+import { Fragment } from 'react/jsx-runtime';
+import { Icon } from '../icon/icon.js';
+import { Button } from './button.js';
+import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
 
 const meta = {
-  component: Button,
-  title: 'form/Button',
-  parameters: {
-    macro,
+  title: 'Form/Button',
+  decorators: (Story, context) => {
+    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    return (
+      <div className={`gi-p-4 ${isLight}`}>
+        <Story />
+      </div>
+    );
   },
+  parameters: {
+    docs: {
+      description: {
+        component: 'use this button where it is appropiate',
+      },
+    },
+  },
+  component: Button,
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -51,44 +56,48 @@ export const Default: Story = {
       description: 'Specify if the button is disabled',
       type: 'boolean',
     },
-    icon: {
-      control: 'object',
-      description: 'Add an icon to the button (See Icon Component)',
-      type: 'string',
-    },
-    iconEnd: {
-      control: 'boolean',
-      description: 'Specify if the icon should be at the end of the button',
-      type: 'boolean',
-    },
   },
   args: {
-    content: 'Button',
+    children: 'Button',
     variant: ButtonVariant.Primary,
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span> Button`,
+    children: (
+      <Fragment>
+        <Icon icon="thumb_up" />
+        Button
+      </Fragment>
+    ),
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    content: `Button <span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
+    children: (
+      <Fragment>
+        Button
+        <Icon icon="thumb_up" />
+      </Fragment>
+    ),
   },
 };
 
 export const WithoutLabel: Story = {
   args: {
-    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
+    children: (
+      <Fragment>
+        <Icon icon="thumb_up" />
+      </Fragment>
+    ),
   },
 };
 
 export const Disabled: Story = {
   args: {
+    children: 'Button',
     disabled: true,
-    content: `Button`,
   },
 };

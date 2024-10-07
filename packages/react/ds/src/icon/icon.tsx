@@ -21,6 +21,17 @@ export type IconColor = 'default' | 'disabled';
 
 export type IconVariant = 'default' | 'outlined';
 
+export type IconPropTypes = {
+  icon: IconId;
+  size?: IconSize;
+  variant?: IconVariant;
+  color?: IconColor;
+  ariaHidden?: boolean;
+  ariaLabel?: string;
+  inline?: boolean;
+  className?: string;
+};
+
 export function Icon({
   icon,
   size = 'md',
@@ -30,16 +41,7 @@ export function Icon({
   ariaLabel,
   inline = false,
   className = '',
-}: {
-  icon: IconId;
-  size?: IconSize;
-  variant?: IconVariant;
-  color?: IconColor;
-  ariaHidden?: boolean;
-  ariaLabel?: string;
-  inline?: boolean;
-  className?: string;
-}) {
+}: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
     variant === 'outlined' ? 'material-icons-outlined' : 'material-icons';

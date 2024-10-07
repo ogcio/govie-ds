@@ -38,12 +38,6 @@
   {% endif %}
 {% endmacro %}
 
-{% macro getIconPosition(position) %}
-  {% if position == 'end' %}
-    gi-flex-row-reverse
-  {% endif %}  
-{% endmacro %}
-
 {% macro isButtonDisabled(disabled, variant, appearance) %}
   {% if disabled %}
     {% if variant == 'secondary' %}
