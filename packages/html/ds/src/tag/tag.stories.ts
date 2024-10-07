@@ -53,6 +53,6 @@ export const Default: Story = {
   },
   args: {
     text: 'Completed',
-    type: TagType.blue,
+    type: TagType.info,
   },
 };

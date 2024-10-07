@@ -2,13 +2,13 @@
   {# Mapping tag type to classes similar to React's tagClass structure #}
   {% macro getClasses(type) %}
     {% set tagClasses = {
-      'blue': 'gi-tag-blue',
-      'gray': 'gi-tag-gray',
-      'green': 'gi-tag-green',
-      'yellow': 'gi-tag-yellow',
-      'red': 'gi-tag-red'
+      'default': 'gi-tag-default',
+      'info': 'gi-tag-info',
+      'success': 'gi-tag-success',
+      'warning': 'gi-tag-warning',
+      'error': 'gi-tag-error'
     } %}
-    {{ tagClasses[type | default('blue')] }}
+    {{ tagClasses[type | default('info')] }}
   {% endmacro %}
 
   <strong class="gi-tag {{ getClasses(props.type) | trim }}">
