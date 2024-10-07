@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { IconId } from '../icon/icon.schema';
 import { renderComponent } from '../storybook/storybook';
 import { ButtonAppearance, ButtonProps } from './button-schema';
 import { ButtonVariant, ButtonSize } from './button-schema';
@@ -64,41 +63,32 @@ export const Default: Story = {
     },
   },
   args: {
-    label: 'Button',
+    content: 'Button',
     variant: ButtonVariant.Primary,
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
-    label: 'Button',
+    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span> Button`,
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
-    iconEnd: true,
-    label: 'Button',
+    content: `Button <span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
   },
 };
 
 export const WithoutLabel: Story = {
   args: {
-    icon: {
-      icon: IconId.ThumbUp,
-    },
+    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
   },
 };
 
 export const Disabled: Story = {
   args: {
     disabled: true,
-    label: 'Button',
+    content: `Button`,
   },
 };

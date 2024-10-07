@@ -25,6 +25,9 @@ export enum IconPosition {
 }
 
 export const buttonSchema = zod.object({
+  content: zod.string({
+    description: 'The raw HTML that will be inserted',
+  }),
   variant: zod
     .nativeEnum(ButtonVariant, {
       description: 'Button variants',

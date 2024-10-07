@@ -52,12 +52,6 @@ export const getSizeClass = (size?: ButtonSize) => {
   return classes;
 };
 
-export const getIconPosition = (iconEnd?: boolean) => {
-  if (iconEnd) {
-    return 'gi-flex-row-reverse';
-  }
-};
-
 export const isButtonDisabled = ({
   disabled,
   variant,

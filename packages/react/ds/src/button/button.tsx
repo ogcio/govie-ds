@@ -1,6 +1,5 @@
 import {
   isButtonDisabled,
-  getIconPosition,
   getSizeClass,
   getVariantAppearanceClass,
 } from './helpers.js';
@@ -10,17 +9,14 @@ export const Button = ({
   variant,
   appearance,
   size,
-  label,
   disabled,
-  iconEnd,
-  icon,
+  children,
 }: ButtonProps) => {
   return (
     <button
-      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${getIconPosition(iconEnd)} ${isButtonDisabled({ disabled, variant, appearance })}`}
+      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
     >
-      {icon && icon}
-      {label}
+      {children}
     </button>
   );
 };

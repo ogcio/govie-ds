@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react/jsx-runtime';
 import { Icon } from '../icon/icon.js';
 import { Button } from './button.js';
 import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
@@ -55,47 +56,48 @@ export const Default: Story = {
       description: 'Specify if the button is disabled',
       type: 'boolean',
     },
-    icon: {
-      control: 'object',
-      description: 'Add an icon to the button (See Icon Component)',
-      type: 'string',
-    },
-    iconEnd: {
-      control: 'boolean',
-      description: 'Specify if the icon should be at the end of the button',
-      type: 'boolean',
-    },
   },
   args: {
-    label: 'Button',
+    children: 'Button',
     variant: ButtonVariant.Primary,
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    icon: <Icon icon="thumb_up" />,
-    label: 'Button',
+    children: (
+      <Fragment>
+        <Icon icon="thumb_up" />
+        Button
+      </Fragment>
+    ),
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    icon: <Icon icon="thumb_up" />,
-    iconEnd: true,
-    label: 'Button',
+    children: (
+      <Fragment>
+        Button
+        <Icon icon="thumb_up" />
+      </Fragment>
+    ),
   },
 };
 
 export const WithoutLabel: Story = {
   args: {
-    icon: <Icon icon="thumb_up" />,
+    children: (
+      <Fragment>
+        <Icon icon="thumb_up" />
+      </Fragment>
+    ),
   },
 };
 
 export const Disabled: Story = {
   args: {
+    children: 'Button',
     disabled: true,
-    label: 'Button',
   },
 };

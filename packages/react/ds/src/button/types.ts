@@ -1,5 +1,3 @@
-import { IconPropTypes } from '../icon/icon.js';
-
 export enum ButtonVariant {
   Primary = 'primary',
   Secondary = 'secondary',
@@ -19,11 +17,10 @@ export enum ButtonSize {
 }
 
 export type ButtonProps = {
+  children: React.ReactNode;
   variant?: ButtonVariant;
   appearance?: ButtonAppearance;
   size?: ButtonSize;
   label?: string;
   disabled?: boolean;
-  iconEnd?: boolean;
-  icon?: React.ReactElement<IconPropTypes>;
 };

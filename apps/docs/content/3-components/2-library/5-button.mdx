@@ -11,7 +11,7 @@ status: stable
 
 ## Primary buttons
 
-<Button label="Primary Button" />
+<Button>Primary Button</Button>
 
 <Tabs id="tab1">
   <TabList>
@@ -26,8 +26,8 @@ status: stable
   </TabPanel>
   <TabPanel value="tab12">
   ```html
-   {{ govieButton({
-    "label": "Primary button"
+  {{ govieButton({
+    "content": 'Primary Button'
   }) }}
   ```
   </TabPanel>
@@ -35,14 +35,14 @@ status: stable
   ```html
   import { Button } from '@govie-ds/react';
 
-  <Button label="Primary Button" />
+  <Button>Primary Button</Button>
   ```
   </TabPanel>
 </Tabs>
 
 ## Secondary buttons
 
-<Button label="Secondary Button" variant="secondary" />
+<Button variant="secondary">Secondary Button</Button>
 
 <Tabs id="tab2">
   <TabList>
@@ -58,8 +58,8 @@ status: stable
   <TabPanel value="tab22">
   ```html
   {{ govieButton({
-    "label": "Secondary button",
-    "variant": "secondary"
+    "content": 'Secondary Button',
+    "variant": 'secondary'
   }) }}
   ```
   </TabPanel>
@@ -67,14 +67,14 @@ status: stable
   ```html
   import { Button } from '@govie-ds/react';
   
-  <Button label="Secondary Button" variant="secondary" />
+  <Button variant="secondary">Secondary Button</Button>
   ```
   </TabPanel>
 </Tabs>
 
 ## Flat buttons
 
-<Button label="Flat Button" variant="flat" />
+<Button variant="flat">Flat Button</Button>
 
 <Tabs id="tab3">
   <TabList>
@@ -89,9 +89,9 @@ status: stable
   </TabPanel>
   <TabPanel value="tab32">
   ```html
-   {{ govieButton({
-    "label": "Flat button",
-    "variant": "flat"
+  {{ govieButton({
+    "content": 'Flat Button',
+    "variant": 'flat'
   }) }}
   ```
   </TabPanel>
@@ -99,14 +99,17 @@ status: stable
   ```html
   import { Button } from '@govie-ds/react';
   
-  <Button label="Flat Button" variant="flat" />
+  <Button variant="flat">Flat Button</Button>
   ```
   </TabPanel>
 </Tabs>
 
 ## Buttons with icons and label
 
-<Button label="button" icon={<Icon icon="thumb_up" />} />
+<Button>
+  <Icon icon="thumb_up" />
+  <span>button</span>
+</Button>
 
 <Tabs id="tab4">
   <TabList>
@@ -125,11 +128,8 @@ status: stable
   </TabPanel>
   <TabPanel value="tab42">
   ```html
-    {{ govieButton({
-    "label": "button",
-    "icon": {
-      "icon": "thumb_up"
-    }
+  {{ govieButton({
+    "content": govieIcon({"icon": "thumb_up"}) + 'button'
   }) }}
   ```
   </TabPanel>
@@ -137,14 +137,19 @@ status: stable
   ```html
   import { Button, Icon } from '@govie-ds/react';
   
-  <Button label="button" icon={<Icon icon="thumb_up" />} />
+  <Button>
+    <Icon icon="thumb_up" />
+    button
+  </Button>
   ```
   </TabPanel>
 </Tabs>
 
 ## Icon Buttons
 
-<Button icon={<Icon icon="thumb_up" />} />
+<Button>
+  <Icon icon="thumb_up" />
+</Button>
 
 <Tabs id="tab5">
   <TabList>
@@ -159,10 +164,8 @@ status: stable
   </TabPanel>
   <TabPanel value="tab52">
   ```html
-    {{ govieButton({
-    "icon": {
-      "icon": "thumb_up"
-    }
+  {{ govieButton({
+    "content": govieIcon({"icon": "thumb_up"})
   }) }}
   ```
   </TabPanel>
@@ -170,14 +173,18 @@ status: stable
   ```html
   import { Button, Icon } from '@govie-ds/react';
   
-  <Button icon={<Icon icon="thumb_up" />} />
+  <Button>
+    <Icon icon="thumb_up" />
+  </Button>
   ```
   </TabPanel>
 </Tabs>
 
 ## Disabled buttons
 
-<Button label="Disabled button" disabled={true} />
+<Button disabled={true}>
+  <span>Disabled Button</span>
+</Button>
 
 <Tabs id="tab6">
   <TabList>
@@ -192,8 +199,8 @@ status: stable
   </TabPanel>
   <TabPanel value="tab62">
   ```html
-    {{ govieButton({
-    "label": "Disabled button",
+  {{ govieButton({
+    "content": 'Disabled Button',
     "disabled": true
   }) }}
   ```
@@ -202,7 +209,9 @@ status: stable
   ```html
   import { Button } from '@govie-ds/react';
   
-  <Button label="Disabled button" disabled={true} />
+  <Button disabled={true}>
+    Disabled Button
+  </Button>
   ```
   </TabPanel>
 </Tabs>
@@ -210,7 +219,9 @@ status: stable
 ## Buttons on dark backgrounds
 
 <div style={{marginBottom: "32px"}} className="gi-bg-black gi-p-4">
-  <Button label="Dark button" appearance="light" />
+  <Button appearance="light">
+    <span>Dark Button</span>
+  </Button>
 </div>
 
 <Tabs id="tab7">
@@ -227,8 +238,8 @@ status: stable
   <TabPanel value="tab72">
   ```html
   {{ govieButton({
-    "label": "Dark button",
-    "appearance": "light"
+    "content": 'Dark Button',
+    "appearance": 'light'
   }) }}
   ```
   </TabPanel>
@@ -236,7 +247,9 @@ status: stable
   ```html
   import { Button } from '@govie-ds/react';
   
-  <Button label="Dark button" appearance="light" />
+  <Button appearance="light">
+    Dark Button
+  </Button>
   ```
   </TabPanel>
 </Tabs>
