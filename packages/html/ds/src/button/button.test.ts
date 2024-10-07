@@ -1,5 +1,6 @@
 import { render } from '../common/render';
-import { IconId } from '../icon/icon.schema';
+import buttonHtml from '../icon/icon.html?raw';
+import { IconId, IconProps } from '../icon/icon.schema';
 import {
   ButtonSize,
   ButtonVariant,
@@ -9,7 +10,7 @@ import {
 import html from './button.html?raw';
 
 const standardProps = {
-  label: 'Button Label',
+  content: 'Button Label',
   variant: ButtonVariant.Primary,
 };
 
@@ -20,9 +21,15 @@ describe('button', () => {
     html,
   });
 
+  const renderIcon = render<IconProps>({
+    componentName: 'icon',
+    macroName: 'govieIcon',
+    html: buttonHtml,
+  });
+
   it('should render the label', () => {
     const screen = renderButton(standardProps);
-    const buttonElement = screen.getByText(standardProps.label);
+    const buttonElement = screen.getByText(standardProps.content);
     expect(buttonElement).toBeTruthy();
   });
 
@@ -113,32 +120,16 @@ describe('button', () => {
   });
 
   it('should render a button with icon', () => {
+    const iconScreen = renderIcon({
+      icon: IconId.ThumbDown,
+    });
     const propsIconButton = {
-      ...standardProps,
-      icon: {
-        icon: IconId.ThumbUp,
-      },
+      content: iconScreen.container.innerHTML + 'button',
     };
-    const screen = renderButton(propsIconButton);
-    const buttonElement = screen.getByTestId('govie-icon');
-    expect(buttonElement).toBeTruthy();
-  });
 
-  it('should render a button with icon on right position', () => {
-    const propsIconButtonRight = {
-      ...standardProps,
-      icon: {
-        icon: IconId.ThumbUp,
-      },
-      iconEnd: true,
-    };
-    const screen = renderButton(propsIconButtonRight);
-    const iconElement = screen.getByTestId('govie-icon');
-    const buttonElementClasses = screen.getByTestId('govieButton', {
-      exact: false,
-    }).className;
-    expect(iconElement).toBeTruthy();
-    expect(buttonElementClasses.includes('gi-flex-row-reverse')).toBeTruthy();
+    const buttonScreen = renderButton(propsIconButton);
+    const buttonElement = buttonScreen.getByTestId('govie-icon');
+    expect(buttonElement).toBeTruthy();
   });
 
   it('should pass axe tests', async () => {
