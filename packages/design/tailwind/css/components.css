@@ -101,8 +101,7 @@
 /* Tag */
 
 .gi-tag {
-  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-leading-6
-	 gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
+  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-leading-6 gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
 }
 
 .gi-tag-default {
