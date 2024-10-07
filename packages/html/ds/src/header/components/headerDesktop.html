@@ -24,9 +24,16 @@
   </div>
   {% endif %}
   <div
-    class="gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-px-8 gi-py-4"
+    class="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
   >
-    <a aria-label="Go to the home page" href="{{ props.logoLink }}">{{ govieLogo() }}</a>
+    <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
+      <a aria-label="Go to the home page" href="{{ props.logoLink }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
+      {% if props.title %}
+        <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
+          {{props.title}}
+        </div>
+      {% endif %}
+    </div>
     <div class="gi-flex gi-items-center">
       <ul id="links-container-desktop" class="gi-flex-wrap gi-pl-3.5 gi-gap-4 gi-flex gi-text-white">
         {% for link in props.navLinks %}

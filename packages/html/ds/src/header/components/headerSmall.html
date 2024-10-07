@@ -14,9 +14,14 @@
     class="gi-h-20 gi-bg-emerald-800 gi-w-full gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
   >
     <div class="gi-h-full gi-items-center gi-flex gi-justify-between">
-      <div class="gi-flex">
+      <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
         <a aria-label="Go to the home page" href="{{ props.logoLink }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
         <a aria-label="Go to the home page" href="{{ props.logoLink }}" class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</a>
+        {% if props.title %}
+          <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
+            {{props.title}}
+          </div>
+        {% endif %}
       </div>
       <div class="gi-flex gi-gap-2">
         <noscript class="gi-flex gi-gap-2">

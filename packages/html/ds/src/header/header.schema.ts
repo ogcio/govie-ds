@@ -1,6 +1,11 @@
 import * as zod from 'zod';
 
 export const headerSchema = zod.object({
+  title: zod
+    .string({
+      description: 'The application title',
+    })
+    .optional(),
   noJsMenuLink: zod.string({
     description:
       'The link of the menu page when there is no Javascript enabled',

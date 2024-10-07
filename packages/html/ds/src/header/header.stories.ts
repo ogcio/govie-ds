@@ -237,3 +237,33 @@ export const mobileView: Story = {
     ],
   },
 };
+
+export const withTitle: Story = {
+  args: {
+    title: 'Life Events',
+    searchUrl: '/seach_page',
+    logoLink: '/home',
+    noJsMenuLink: '/menu',
+    noJsSearchLink: '/search',
+    navLinks: [
+      {
+        href: '#link-1',
+        label: 'News',
+      },
+      {
+        href: '#link-2',
+        label: 'Departments',
+      },
+      {
+        href: '#link-3',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};

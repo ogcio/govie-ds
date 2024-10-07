@@ -68,7 +68,7 @@ export function Header({
         id="MenuContainer"
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
-        <div className="gi-flex gi-items-center gi-gap-3">
+        <div className="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
           <a href={logo.href} className="xs:gi-block gi-hidden">
             {logo.image ? (
               <img className="gi-object-contain gi-h-12" src={logo.image} />
@@ -83,11 +83,10 @@ export function Header({
               <GovieLogoSmall />
             )}
           </a>
-          {/* Replace the h2 with the Heading Component after refactor */}
           {title && (
-            <h2 className="gi-tracking-wider gi-font-bold gi-text-white gi-text-lg xs:gi-text-lg md:gi-text-xl xl:gi-text-2xl">
+            <div className="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
               {title}
-            </h2>
+            </div>
           )}
         </div>
         <div className="gi-flex gi-items-center">
