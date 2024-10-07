@@ -7,9 +7,9 @@ import HeaderSearch from './components/header-search.js';
 
 export type HeaderProps = {
   title?: string;
-  logo: {
+  logo?: {
     image?: string;
-    href: string;
+    href?: string;
   };
   tools?: {
     search?: {
@@ -18,6 +18,10 @@ export type HeaderProps = {
       serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
       label?: string;
       icon?: IconId;
+    };
+    menu?: {
+      label?: string; // optional, default hide
+      icon?: IconId; // optional, default icon-hamburger
     };
     items?: {
       label?: string;
@@ -43,6 +47,9 @@ export function Header({
   navLinks,
 }: HeaderProps) {
   const hasDivider = tools?.items || tools?.search;
+
+  const logoClassName =
+    'gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm';
   return (
     <header
       id="GovieHeader"
@@ -53,12 +60,13 @@ export function Header({
           <ul className="gi-py-2 gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1">
             {languages.map((link, index) => (
               <li key={index}>
-                <a
-                  href={link.href}
-                  className="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
-                >
-                  {link.label}
-                </a>
+                {link.href ? (
+                  <a href={link.href} className={logoClassName}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <span className={logoClassName}>{link.label}</span>
+                )}
               </li>
             ))}
           </ul>
@@ -69,20 +77,41 @@ export function Header({
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
         <div className="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
-          <a href={logo.href} className="xs:gi-block gi-hidden">
-            {logo.image ? (
-              <img className="gi-object-contain gi-h-12" src={logo.image} />
-            ) : (
-              <GovieLogo />
-            )}
-          </a>
-          <a href={logo.href} className="xs:gi-hidden gi-block">
-            {logo.image ? (
-              <img className="gi-object-contain gi-h-10" src={logo.image} />
-            ) : (
-              <GovieLogoSmall />
-            )}
-          </a>
+          {logo?.href ? (
+            <>
+              <a href={logo.href} className="xs:gi-block gi-hidden">
+                {logo.image ? (
+                  <img className="gi-object-contain gi-h-12" src={logo.image} />
+                ) : (
+                  <GovieLogo />
+                )}
+              </a>
+              <a href={logo.href} className="xs:gi-hidden gi-block">
+                {logo.image ? (
+                  <img className="gi-object-contain gi-h-10" src={logo.image} />
+                ) : (
+                  <GovieLogoSmall />
+                )}
+              </a>
+            </>
+          ) : (
+            <>
+              <span className="xs:gi-block gi-hidden">
+                {logo?.image ? (
+                  <img className="gi-object-contain gi-h-12" src={logo.image} />
+                ) : (
+                  <GovieLogo />
+                )}
+              </span>
+              <span className="xs:gi-hidden gi-block">
+                {logo?.image ? (
+                  <img className="gi-object-contain gi-h-10" src={logo.image} />
+                ) : (
+                  <GovieLogoSmall />
+                )}
+              </span>
+            </>
+          )}
           {title && (
             <div className="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
               {title}
@@ -156,7 +185,10 @@ export function Header({
               id="MobileMenuTrigger"
               type="checkbox"
             />
-            <Icon className="gi-text-white" icon="menu" />
+            <Icon
+              className="gi-text-white"
+              icon={tools?.menu?.icon || 'menu'}
+            />
           </label>
         </div>
       </div>

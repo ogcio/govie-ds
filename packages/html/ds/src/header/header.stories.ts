@@ -23,19 +23,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    noJsMenuLink: {
-      description:
-        'Fallback link for the menu button if there is no JS enabled on page',
+    logo: {
+      href: {
+        description: 'The link used for the Logo',
+      },
     },
-    noJsSearchLink: {
-      description:
-        'Fallback link for the search button if there is no JS enabled on page',
-    },
-    searchUrl: {
-      description: 'The url for the search page',
-    },
-    logoLink: {
-      description: 'The link used for the Logo',
+    tools: {
+      search: {
+        action: {
+          description: 'The url for the search page',
+        },
+        noJsSearchLink: {
+          description:
+            'Fallback link for the search button if there is no JS enabled on page',
+        },
+      },
+      menu: {
+        noJsMenuLink: {
+          description:
+            'Fallback link for the menu button if there is no JS enabled on page',
+        },
+      },
     },
     navLinks: {
       description: 'A list of navigation links',
@@ -45,10 +53,18 @@ export const Default: Story = {
     },
   },
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: {
+        action: '/search_page',
+        label: 'Search',
+        noJsSearchLink: '/search',
+      },
+      menu: {
+        label: 'Menu',
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#',
@@ -73,20 +89,29 @@ export const Default: Story = {
 };
 
 export const NoLinks: Story = {
+  args: {},
+};
+
+export const OnlyTitle: Story = {
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    title: 'Application title',
   },
 };
 
 export const WithMainLinks: Story = {
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: {
+        action: '/search_page',
+        label: 'Search',
+        noJsSearchLink: '/search',
+      },
+      menu: {
+        label: 'Menu',
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#',
@@ -106,9 +131,12 @@ export const WithMainLinks: Story = {
 
 export const WithNoSearch: Story = {
   args: {
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#',
@@ -128,10 +156,13 @@ export const WithNoSearch: Story = {
 
 export const WithLanguage: Story = {
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: { action: '/search_page', noJsSearchLink: '/search' },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     languages: [
       {
         href: '#',
@@ -143,10 +174,13 @@ export const WithLanguage: Story = {
 
 export const withMainAndLanguageLinks: Story = {
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: { action: '/search_page', noJsSearchLink: '/search' },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#link-1',
@@ -177,10 +211,13 @@ export const tabletView: Story = {
     },
   },
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: { action: '/search_page', noJsSearchLink: '/search' },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#link-1',
@@ -211,10 +248,13 @@ export const mobileView: Story = {
     },
   },
   args: {
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: { action: '/search_page', noJsSearchLink: '/search' },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#link-1',
@@ -241,10 +281,13 @@ export const mobileView: Story = {
 export const withTitle: Story = {
   args: {
     title: 'Life Events',
-    searchUrl: '/seach_page',
-    logoLink: '/home',
-    noJsMenuLink: '/menu',
-    noJsSearchLink: '/search',
+    logo: { href: '/home' },
+    tools: {
+      search: { action: '/search_page', noJsSearchLink: '/search' },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
     navLinks: [
       {
         href: '#link-1',
@@ -263,6 +306,35 @@ export const withTitle: Story = {
       {
         href: '#',
         label: 'Gaeilge',
+      },
+    ],
+  },
+};
+
+export const WithNoLabels: Story = {
+  args: {
+    logo: { href: '/home' },
+    tools: {
+      search: {
+        action: '/search_page',
+        noJsSearchLink: '/search',
+      },
+      menu: {
+        noJsMenuLink: '/menu',
+      },
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'News',
+      },
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
       },
     ],
   },
