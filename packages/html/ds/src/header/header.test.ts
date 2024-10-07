@@ -3,10 +3,16 @@ import html from './header.html?raw';
 import { HeaderProps } from './header.schema';
 
 const standardProps = {
-  searchUrl: '/seach_page',
-  logoLink: '/home',
-  noJsMenuLink: '/menu',
-  noJsSearchLink: '/search',
+  logo: { href: '/home' },
+  tools: {
+    search: {
+      action: '/search_page',
+      noJsSearchLink: '/search',
+    },
+    menu: {
+      noJsMenuLink: '/menu',
+    },
+  },
   navLinks: [
     {
       href: '#link-1',
@@ -38,9 +44,16 @@ describe('header', () => {
 
   it('should pass axe tests', async () => {
     const screen = renderHeader({
-      logoLink: '/home',
-      noJsMenuLink: '/menu',
-      noJsSearchLink: '/search',
+      logo: { href: '/home' },
+      tools: {
+        search: {
+          action: '/search_page',
+          noJsSearchLink: '/search',
+        },
+        menu: {
+          noJsMenuLink: '/menu',
+        },
+      },
       navLinks: [
         {
           href: '#link-1',
