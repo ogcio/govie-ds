@@ -1,9 +1,9 @@
 export enum TagType {
-  blue = 'blue',
-  gray = 'gray',
-  green = 'green',
-  yellow = 'yellow',
-  red = 'red',
+  default = 'default',
+  info = 'info',
+  success = 'success',
+  warning = 'warning',
+  error = 'error',
 }
 
 export type TagProps = {
@@ -12,14 +12,14 @@ export type TagProps = {
 };
 
 const tagClass = {
-  [TagType.blue]: 'gi-tag-blue',
-  [TagType.gray]: 'gi-tag-gray',
-  [TagType.green]: 'gi-tag-green',
-  [TagType.yellow]: 'gi-tag-yellow',
-  [TagType.red]: 'gi-tag-red',
+  [TagType.default]: 'gi-tag-default',
+  [TagType.info]: 'gi-tag-info',
+  [TagType.success]: 'gi-tag-success',
+  [TagType.warning]: 'gi-tag-warning',
+  [TagType.error]: 'gi-tag-error',
 };
 
-export const Tag = ({ text, type = TagType.blue }: TagProps) => {
+export const Tag = ({ text, type = TagType.default }: TagProps) => {
   return <strong className={`gi-tag ${tagClass[type]}`}>{text}</strong>;
 };
 
