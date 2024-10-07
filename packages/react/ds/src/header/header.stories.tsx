@@ -110,17 +110,7 @@ export const Default: Story = {
 };
 
 export const NoLinks: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    tools: {
-      search: {
-        label: 'Search',
-        action: '/search_page',
-      },
-    },
-  },
+  args: {},
 };
 
 export const WithMainLinks: Story = {
@@ -437,6 +427,10 @@ export const WithExtraButtonsAndLabels: Story = {
       href: '/path',
     },
     tools: {
+      search: {
+        label: 'Search',
+        action: 'search_page',
+      },
       items: [
         {
           href: '/home',

@@ -1,198 +1,166 @@
 /* GOV.IE Typography Stylesheets */
 
-/* Heading */
-
 .gi-heading-xl {
   font: theme('typography.default.css.h1.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h1.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h1.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h1.font');
-  }
 }
 
 .gi-heading-lg {
   font: theme('typography.default.css.h2.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h2.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h2.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h2.font');
-  }
 }
 
 .gi-heading-md {
   font: theme('typography.default.css.h3.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h3.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h3.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h3.font');
-  }
 }
 
 .gi-heading-sm {
   font: theme('typography.default.css.h4.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h4.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h4.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h4.font');
-  }
 }
 
 .gi-heading-xs {
   font: theme('typography.default.css.h5.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h5.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h5.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h5.font');
-  }
 }
 
 .gi-heading-2xs {
   font: theme('typography.default.css.h6.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.h6.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.h6.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.h6.font');
-  }
 }
 
 /* End Paragraph */
 
 /* Paragraph */
 
-.gi-paragraph-lg {
-  font: theme('typography.default.css.p.font');
-  margin-bottom: 2em;
-  @apply gi-mt-0 gi-max-w-prose;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.p.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
-  }
-}
-
-.gi-paragraph-md {
-  font: theme('typography.default.css.p.font');
-  margin-bottom: 2em;
-  @apply gi-mt-0 gi-max-w-prose;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.p.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
-  }
-}
-
+.gi-paragraph-lg,
+.gi-paragraph-md,
 .gi-paragraph-xs {
   font: theme('typography.default.css.p.font');
   margin-bottom: 2em;
   @apply gi-mt-0 gi-max-w-prose;
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.p.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
-  }
 }
 
-.gi-span-lg {
-  font: theme('typography.default.css.p.font');
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.p.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
-  }
-}
-
-.gi-span-md {
-  font: theme('typography.default.css.p.font');
-
-  @media screen(sm) {
-    font: theme('typography.xs.css.p.font');
-  }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
-  }
-}
-
+.gi-span-lg,
+.gi-span-md,
 .gi-span-xs {
   font: theme('typography.default.css.p.font');
+}
 
-  @media screen(sm) {
+@media screen(sm) {
+  .gi-heading-xl {
+    font: theme('typography.xs.css.h1.font');
+  }
+
+  .gi-heading-lg {
+    font: theme('typography.xs.css.h2.font');
+  }
+
+  .gi-heading-md {
+    font: theme('typography.xs.css.h3.font');
+  }
+
+  .gi-heading-sm {
+    font: theme('typography.xs.css.h4.font');
+  }
+
+  .gi-heading-xs {
+    font: theme('typography.xs.css.h5.font');
+  }
+
+  .gi-heading-2xs {
+    font: theme('typography.xs.css.h6.font');
+  }
+
+  .gi-paragraph-lg {
     font: theme('typography.xs.css.p.font');
   }
-  @media screen(md) {
-    font: theme('typography.md.css.p.font');
-  }
-  @media screen(xl) {
-    font: theme('typography.xl.css.p.font');
+
+  .gi-paragraph-md,
+  .gi-paragraph-xs,
+  .gi-span-lg,
+  .gi-span-md,
+  .gi-span-xs {
+    font: theme('typography.xs.css.p.font');
   }
 }
 
-/* End Paragraph */
+@media screen(md) {
+  .gi-heading-xl {
+    font: theme('typography.md.css.h1.font');
+  }
+
+  .gi-heading-lg {
+    font: theme('typography.md.css.h2.font');
+  }
+
+  .gi-heading-md {
+    font: theme('typography.md.css.h3.font');
+  }
+
+  .gi-heading-sm {
+    font: theme('typography.md.css.h4.font');
+  }
+
+  .gi-heading-xs {
+    font: theme('typography.md.css.h5.font');
+  }
+
+  .gi-heading-2xs {
+    font: theme('typography.md.css.h6.font');
+  }
+
+  .gi-paragraph-lg,
+  .gi-paragraph-md,
+  .gi-paragraph-xs,
+  .gi-span-lg,
+  .gi-span-md,
+  .gi-span-xs {
+    font: theme('typography.md.css.p.font');
+  }
+}
+
+@media screen(xl) {
+  .gi-heading-xl {
+    font: theme('typography.xl.css.h1.font');
+  }
+
+  .gi-heading-lg {
+    font: theme('typography.xl.css.h2.font');
+  }
+
+  .gi-heading-md {
+    font: theme('typography.xl.css.h3.font');
+  }
+
+  .gi-heading-sm {
+    font: theme('typography.xl.css.h4.font');
+  }
+
+  .gi-heading-xs {
+    font: theme('typography.xl.css.h5.font');
+  }
+
+  .gi-heading-2xs {
+    font: theme('typography.xl.css.h6.font');
+  }
+
+  .gi-paragraph-lg,
+  .gi-paragraph-md,
+  .gi-paragraph-xs,
+  .gi-span-lg,
+  .gi-span-md,
+  .gi-span-xs {
+    font: theme('typography.xl.css.p.font');
+  }
+}
 
 /* Link  */
 
