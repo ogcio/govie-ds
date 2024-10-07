@@ -1,11 +1,11 @@
 import * as zod from 'zod';
 
 export enum TagType {
-  blue = 'blue',
-  gray = 'gray',
-  green = 'green',
-  yellow = 'yellow',
-  red = 'red',
+  default = 'default',
+  info = 'info',
+  success = 'success',
+  warning = 'warning',
+  error = 'error',
 }
 
 export const tagSchema = zod.object({

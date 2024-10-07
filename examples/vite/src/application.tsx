@@ -152,7 +152,7 @@ export function App() {
           }}
         />
         <hr />
-        <Tag text="Completed" type="blue" />
+        <Tag text="Completed" type="info" />
       </Container>
       <Footer />
     </>

@@ -101,25 +101,25 @@
 /* Tag */
 
 .gi-tag {
-  @apply gi-rounded-md gi-border-xs gi-font-normal gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
+  @apply gi-rounded-sm gi-border-xs gi-font-bold gi-leading-6 gi-py-0 gi-px-2 gi-inline-flex gi-justify-center gi-items-center;
 }
 
-.gi-tag-blue {
-  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700;
-}
-
-.gi-tag-gray {
+.gi-tag-default {
   @apply gi-bg-gray-50 gi-border-gray-200 gi-text-gray-700;
 }
 
-.gi-tag-green {
+.gi-tag-info {
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700;
+}
+
+.gi-tag-success {
   @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700;
 }
 
-.gi-tag-yellow {
+.gi-tag-warning {
   @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700;
 }
 
-.gi-tag-red {
+.gi-tag-error {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
