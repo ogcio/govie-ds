@@ -1,5 +1,4 @@
 import * as zod from 'zod';
-import { iconSchema } from '../icon/icon.schema';
 
 export enum ButtonVariant {
   Primary = 'primary',
@@ -43,20 +42,14 @@ export const buttonSchema = zod.object({
       description: 'Button sizes',
     })
     .optional(),
-  label: zod
-    .string({
-      description: 'The text of the button',
-    })
-    .optional(),
   disabled: zod
     .boolean({ description: 'Specify if the button should be disabled' })
     .optional(),
-  iconEnd: zod
-    .boolean({
-      description: 'Specify if the icon should be at the end of the button',
+  className: zod
+    .string({
+      description: 'Add additional classes',
     })
     .optional(),
-  icon: iconSchema.describe('Icon for the button').optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;
