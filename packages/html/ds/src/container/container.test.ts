@@ -64,7 +64,7 @@ describe('govieContainer', () => {
     });
     const containerDiv = screen.getByTestId('govie-container');
     expect(containerDiv).toBeTruthy();
-    expect(containerDiv.innerHTML).toBe('\n');
+    expect(containerDiv.textContent).toBe('\n  ');
   });
 
   it('should pass axe accessibility tests', async () => {

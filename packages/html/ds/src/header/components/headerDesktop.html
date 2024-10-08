@@ -1,94 +1,114 @@
-{% from 'header/assets/logo.html' import govieLogo %} 
+{% from 'header/assets/logo.html' import govieLogo %}
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieHeaderDesktop(props) %}
-
-<div data-testid="header-desktop-view" class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full">
-  {% if props.languages %}
-  <div class="gi-bg-emerald-700 gi-flex gi-h-10 gi-justify-end gi-items-center">
-    <ul
-      class="gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1"
-    >
-      {% for link in props.languages %}
-      <li>
-        <a
-          data-testid="language-link-desktop-{{loop.index0}}"
-          class="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
-          href="{{ link.href }}"
-          >{{ link.label }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
   <div
-    class="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
+    data-testid="header-desktop-view"
+    class="sm:gi-flex gi-hidden gi-flex-col gi-relative gi-w-full"
   >
-    <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
-      {% if props.logo.href %}
-        <a aria-label="Go to the home page" href="{{ props.logo.href }}" class="xs:gi-block gi-hidden">{{ govieLogo() }}</a>
-      {% else %}
-        <span class="xs:gi-block gi-hidden">{{ govieLogo() }}</span>
-      {% endif %}
-      {% if props.title %}
-        <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
-          {{props.title}}
-        </div>
-      {% endif %}
-    </div>
-    <div class="gi-flex gi-items-center">
-      <ul id="links-container-desktop" class="gi-flex-wrap gi-pl-3.5 gi-gap-4 gi-flex gi-text-white">
-        {% for link in props.navLinks %}
-        <li class="gi-flex">
-          <a
-            data-testid="nav-link-desktop-{{loop.index0}}"
-            class="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
-            href="{{ link.href }}"
-            >{{link.label}}</a
-          >
-        </li>
-        {% endfor %}
-      </ul>
-      {% if props.navLinks and props.tools %}
+    {% if props.languages %}
       <div
-        class="gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"
-      ></div>
-      {% endif %}
-      <noscript>
-        <a
-          href="{{ props.tools.search.noJsSearchLink }}"
-          class="gi-border gi-border-solid gi-border-transparent gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+        class="gi-bg-emerald-700 gi-flex gi-h-10 gi-justify-end gi-items-center"
+      >
+        <ul
+          class="gi-flex gi-justify-end gi-gap-4 gi-items-center gi-h-full gi-mr-8 gi-my-1"
         >
-          <span class="gi-text-white gi-text-2md gi-font-bold">{{props.tools.search.label}}</span>
-          <div class="gi-text-white">{{ govieIcon({"icon": props.tools.search.icon or "search"}) }}</div>
-        </a>
-      </noscript>
-      {% if props.tools.search %}
-        <button
-          data-testid="search-desktop-button"
-          data-element="search-desktop"
-          class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
-        >
-          {% if props.tools.search.label %}
-            <span class="gi-text-white gi-text-2md gi-font-bold">{{props.tools.search.label}}</span>
-          {% endif %}
-          <div>
-            <div class="gi-text-white" data-element="search-icon">
-              {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
-            </div>
-            <div class="gi-text-white gi-hidden" data-element="search-close-icon">
-              {{ govieIcon({"icon": "close"}) }}
-            </div>
+          {% for link in props.languages %}
+            <li>
+              <a
+                data-testid="language-link-desktop-{{ loop.index0 }}"
+                class="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
+                href="{{ link.href }}"
+                >{{ link.label }}</a
+              >
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <div
+      class="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
+    >
+      <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
+        {% if props.logo.href %}
+          <a
+            aria-label="Go to the home page"
+            href="{{ props.logo.href }}"
+            class="xs:gi-block gi-hidden"
+            >{{ govieLogo() }}</a
+          >
+        {% else %}
+          <span class="xs:gi-block gi-hidden">{{ govieLogo() }}</span>
+        {% endif %}
+        {% if props.title %}
+          <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">
+            {{ props.title }}
           </div>
-        </button>
-      {% endif %}
+        {% endif %}
+      </div>
+      <div class="gi-flex gi-items-center">
+        <ul
+          id="links-container-desktop"
+          class="gi-flex-wrap gi-pl-3.5 gi-gap-4 gi-flex gi-text-white"
+        >
+          {% for link in props.navLinks %}
+            <li class="gi-flex">
+              <a
+                data-testid="nav-link-desktop-{{ loop.index0 }}"
+                class="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+                href="{{ link.href }}"
+                >{{ link.label }}</a
+              >
+            </li>
+          {% endfor %}
+        </ul>
+        {% if props.navLinks and props.tools %}
+          <div
+            class="gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"
+          ></div>
+        {% endif %}
+        <noscript>
+          <a
+            href="{{ props.tools.search.noJsSearchLink }}"
+            class="gi-border gi-border-solid gi-border-transparent gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+          >
+            <span class="gi-text-white gi-text-2md gi-font-bold"
+              >{{ props.tools.search.label }}</span
+            >
+            <div class="gi-text-white">
+              {{ govieIcon({"icon": props.tools.search.icon or "search"}) }}
+            </div>
+          </a>
+        </noscript>
+        {% if props.tools.search %}
+          <button
+            data-testid="search-desktop-button"
+            data-element="search-desktop"
+            class="gi-border gi-border-solid gi-border-transparent nojs:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400"
+          >
+            {% if props.tools.search.label %}
+              <span class="gi-text-white gi-text-2md gi-font-bold"
+                >{{ props.tools.search.label }}</span
+              >
+            {% endif %}
+            <div>
+              <div class="gi-text-white" data-element="search-icon">
+                {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
+              </div>
+              <div
+                class="gi-text-white gi-hidden"
+                data-element="search-close-icon"
+              >
+                {{ govieIcon({"icon": "close"}) }}
+              </div>
+            </div>
+          </button>
+        {% endif %}
+      </div>
     </div>
+    {% if props.tools.search %}
+      {{ HeaderSearchContainer({ "searchUrl": props.tools.search.action, "dataElement": "search-container", "dataTestId": "search-container-desktop" }) }}
+    {% endif %}
   </div>
-  {% if props.tools.search %}
-    {{ HeaderSearchContainer({ "searchUrl": props.tools.search.action, "dataElement": "search-container", "dataTestId": "search-container-desktop" }) }}
-  {% endif %}
-</div>
-
 {% endmacro %}

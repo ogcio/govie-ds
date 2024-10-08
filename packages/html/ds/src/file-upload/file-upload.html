@@ -1,50 +1,59 @@
 {% macro govieFileUpload(props) %}
-
   {% from 'label/label.html' import govieLabel %}
   {% from 'hint-text/hint-text.html' import govieHintText %}
   {% from 'error-text/error-text.html' import govieErrorText %}
-
   {% set isError = props.error and props.error.content %}
   {% set inputId = props.id or 'file-upload-id' %}
 
   {# Conditionally render the wrapper div only if error content is available #}
+  {# prettier-ignore-start #}
   {% if isError %}
-  <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
+    <div
+      class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600"
+    ></div>
   {% endif %}
+  {# prettier-ignore-end #}
 
-    {% if props.label %}
-      {{ govieLabel({
+  {% if props.label %}
+    {{
+      govieLabel({
         "content": props.label.content,
         "size": props.label.size or "md",
         "for": inputId
-      }) | trim }}
-    {% endif %}
+      }) | trim
+    }}
+  {% endif %}
 
-    {% if props.hint %}
-      {{ govieHintText({
+  {% if props.hint %}
+    {{
+      govieHintText({
         "content": props.hint.content,
         "size": props.hint.size or "md"
-      }) | trim }}
-    {% endif %}
+      }) | trim
+    }}
+  {% endif %}
 
-    {% if isError %}
-      {{ govieErrorText({
+  {% if isError %}
+    {{
+      govieErrorText({
         "content": props.error.content,
         "size": props.error.size or "md"
-      }) | trim }}
-    {% endif %}
+      }) | trim
+    }}
+  {% endif %}
 
-    <input
-      id="{{ inputId }}"
-      class="xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1"
-      type="file"
-      name="{{ props.name or 'file' }}"
-      accept="{{ props.accept or '*/*' }}"
-    />
+  <input
+    id="{{ inputId }}"
+    class="xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1"
+    type="file"
+    name="{{ props.name or 'file' }}"
+    accept="{{ props.accept or '*/*' }}"
+  />
 
   {# Close the conditional wrapper div if there's an error #}
+  {# prettier-ignore-start #}
   {% if isError %}
   </div>
   {% endif %}
-
+  {# prettier-ignore-end #}
 {% endmacro %}

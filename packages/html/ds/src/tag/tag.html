@@ -1,13 +1,15 @@
 {% macro govieTag(props) %}
   {# Mapping tag type to classes similar to React's tagClass structure #}
   {% macro getClasses(type) %}
-    {% set tagClasses = {
-      'default': 'gi-tag-default',
-      'info': 'gi-tag-info',
-      'success': 'gi-tag-success',
-      'warning': 'gi-tag-warning',
-      'error': 'gi-tag-error'
-    } %}
+    {%
+      set tagClasses = {
+        'default': 'gi-tag-default',
+        'info': 'gi-tag-info',
+        'success': 'gi-tag-success',
+        'warning': 'gi-tag-warning',
+        'error': 'gi-tag-error'
+      }
+    %}
     {{ tagClasses[type | default('info')] }}
   {% endmacro %}
 
