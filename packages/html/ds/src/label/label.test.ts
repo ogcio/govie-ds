@@ -40,7 +40,7 @@ describe('govieLabel', () => {
     });
     const labelElement = screen.getByText('Medium label');
 
-    expect(labelElement.classList.contains('md:gi-text-md')).toBe(true);
+    expect(labelElement.classList.contains('gi-text-md')).toBe(true);
   });
 
   it('should have the correct size class for "sm"', () => {
