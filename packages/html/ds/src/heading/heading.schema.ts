@@ -30,7 +30,7 @@ export const headingSchema = zod.object({
     required_error: 'A tag element is required',
   }),
   text: zod.string({
-    description: 'Ttitle of the heading',
+    description: 'Title of the heading',
     required_error: 'Title is required',
   }),
   caption: zod

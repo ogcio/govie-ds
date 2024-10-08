@@ -5,14 +5,14 @@
     {% elif size == 'sm' %}
       gi-text-sm
     {% else %}
-      xs:gi-text-sm md:gi-text-md
+      gi-text-md
     {% endif %}
   {% endmacro %}
   <label
     {% if props.for %}
       for="{{ props.for }}"
     {% endif %}
-    class="{{ getSizeClass(props.size) | trim }} gi-leading-5 gi-mb-1 gi-block"
+    class="{{ getSizeClass(props.size) | trim }} gi-mb-1 gi-block"
     >{{ props.content | safe | trim }}</label
   >
 {% endmacro %}
