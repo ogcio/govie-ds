@@ -6,11 +6,13 @@ export function Heading({
   size,
   children,
   caption,
+  className,
 }: {
   caption?: string;
   as?: HeadingAs;
   size?: HeadingSize;
   children: React.ReactNode;
+  className?: string;
 }) {
   const defaultSize = (() => {
     switch (As) {
@@ -64,7 +66,7 @@ export function Heading({
   return (
     <>
       {caption && <span className="gi-text-gray-500">{caption}</span>}
-      <As className={sizeClasses}>{children}</As>
+      <As className={`${sizeClasses} ${className || ''}`}>{children}</As>
     </>
   );
 }

@@ -1,0 +1,31 @@
+{% macro getHeadingClasses(size, tag) %}
+  {% if not size %}
+    {% if 'h6' in tag %}
+      gi-heading-2xs
+    {% elif 'h5' in tag %}
+      gi-heading-xs
+    {% elif 'h4' in tag %}
+      gi-heading-sm
+    {% elif 'h3' in tag %}
+      gi-heading-md
+    {% elif 'h2' in tag %}
+      gi-heading-lg
+    {% elif 'h1' in tag %}
+      gi-heading-xl
+    {% endif %}
+  {% else %}
+    {% if '2xs' in size %}
+      gi-heading-2xs
+    {% elif 'xs' in size %}
+      gi-heading-xs
+    {% elif 'sm' in size %}
+      gi-heading-sm
+    {% elif 'md' in size %}
+      gi-heading-md
+    {% elif 'lg' in size %}
+      gi-heading-lg
+    {% elif 'xl' in size %}
+      gi-heading-xl
+    {% endif %}
+  {% endif %}
+{% endmacro %}

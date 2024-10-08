@@ -2,29 +2,27 @@
 {% from 'hint-text/hint-text.html' import govieHintText %}
 
 {% macro govieCheckbox(props) %}
-  <div class="gi-flex gi-flex-col">
-    <div class="gi-flex gi-items-center">
-      <input
-        data-element="{{ props.dataElement }}"
-        id="{{ props.checkboxId }}"
-        value="{{ props.value }}"
-        class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
-        type="checkbox"
-      />
-      <label
-        for="{{ props.checkboxId }}"
-        class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5 "
-      >
-        {{ props.label }}
-      </label>
-    </div>
-    {% if props.hint %}
-      {{
-        govieHintText({
-          "content": props.hint,
-          "classNames": "!gi-mb-0"
-        })
-      }}
-    {% endif %}
+  <div class="gi-flex gi-items-start">
+    <input
+      data-element="{{ props.dataElement }}"
+      id="{{ props.checkboxId }}"
+      value="{{ props.value }}"
+      class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
+      type="checkbox"
+    />
+    <label
+      for="{{ props.checkboxId }}"
+      class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
+    >
+      {{ props.label }}
+      {% if props.hint %}
+        {{
+          govieHintText({
+            "content": props.hint,
+            "classNames": "!gi-mb-0"
+          })
+        }}
+      {% endif %}
+    </label>
   </div>
 {% endmacro %}
