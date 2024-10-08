@@ -12,7 +12,7 @@
   {% endmacro %}
 
   <p
-    class="{{ getSizeClass(props.size) | trim }} gi-font-normal gi-text-gray-600 !gi-mb-[10px] {{ addClasses(props.classNames) | trim }}"
+    class="{{ getSizeClass(props.size) | trim }} gi-font-normal gi-text-gray-600 gi-mb-[10px] {{ addClasses(props.classNames) | trim }}"
   >
     {{ props.content | safe | trim | indent(2) }}
   </p>

@@ -173,7 +173,7 @@ export const withErrorMessage: Story = {
       value: 'What is your nationality?',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H1,
+        tag: Tag.H3,
       },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
     },

@@ -1,6 +1,6 @@
 {% from 'checkbox/checkbox.html' import govieCheckbox %}
 {% from 'checkbox/helpers.html' import getSizeClass %}
-{% from 'heading/heading.html' import govieHeading %}
+{% from 'heading/heading.html' import getHeadingClasses %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'error-text/error-text.html' import govieErrorText %}
 
@@ -12,19 +12,17 @@
   >
     {% if props.errorMessage %}
       <div
-        class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"
+        class="gi-w-5 gi-border-l-lg gi-border-l-red-600 gi-border-solid"
       ></div>
     {% endif %}
     <fieldset>
-      <legend class="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
-          {{
-            govieHeading({
-              "size": props.title.asHeading.size,
-              "tag": props.title.asHeading.tag,
-              "text": props.title.value
-            })
-          }}
+          {# prettier-ignore-start #}
+        <{{ props.title.asHeading.tag }} class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] {{ getHeadingClasses(props.title.asHeading.size, props.title.asHeading.tag) | trim }}">
+          {{ props.title.value }}
+        </{{ props.title.asHeading.tag }}>
+        {# prettier-ignore-end #}
         {% else %}
           {{ props.title.value }}
         {% endif %}
@@ -33,7 +31,7 @@
             {{
               govieHintText({
                 "content": props.title.hint,
-                "classNames": "!gi-mb-0"
+                "classNames": "!gi-mb-[var(--gieds-space-2)]"
               })
             }}
           </div>
