@@ -1,6 +1,6 @@
-{% from 'header/components/headerSearchContainer.html' import
-HeaderSearchContainer %} {% from 'icon/icon.html' import govieIcon %} {% macro
-headerMenu(props) %}
+{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %} 
+{% from 'icon/icon.html' import govieIcon %}
+{% macro headerMenu(props) %}
 
 <div
   data-element="menu-container"
@@ -32,7 +32,8 @@ headerMenu(props) %}
         <span class="gi-font-bold gi-text-sm">{{ link.label }}</span>
       </a>
     </li>
-    {% endfor %} {% for link in props.languages %}
+    {% endfor %} 
+    {% for link in props.languages %}
     <li>
       <a
         href="{{ link.href }}"
@@ -41,11 +42,11 @@ headerMenu(props) %}
         <span class="gi-text-sm">{{ link.label }}</span>
       </a>
     </li>
-    {% endfor %} {% if props.searchUrl %}
-    <li class="xs:gi-hidden gi-mt-8">
-      {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement":
-      "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
-    </li>
+    {% endfor %} 
+    {% if props.searchUrl %}
+      <li class="xs:gi-hidden gi-mt-8">
+        {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
+      </li>
     {% endif %}
   </ul>
 </div>

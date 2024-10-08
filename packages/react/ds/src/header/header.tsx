@@ -187,7 +187,7 @@ export function Header({
             />
             {tools?.menu?.label && (
               <span className="gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white">
-                {tools?.menu?.label}
+                {tools.menu.label}
               </span>
             )}
             <Icon
