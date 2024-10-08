@@ -1,5 +1,6 @@
 {% from 'button/helpers.html' import getVariantAppearanceClass, getSizeClass, isButtonDisabled %}
 {% from 'icon/icon.html' import govieIcon %}
+{% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieButton(props) %}
 
@@ -8,7 +9,7 @@
 {% set size = props.size or 'medium' %}
 {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
 
-<button data-element="button-container" data-module="gieds-button" data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{getSizeClass(props.size) | trim }} {{isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}">
+<button data-element="button-container" data-module="gieds-button" data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}" class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{getSizeClass(props.size) | trim }} {{isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }} {{ addClasses(props.classNames) | trim }}">
   {{ props.content | safe | trim }}
 </button>
 
