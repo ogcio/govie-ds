@@ -29,6 +29,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
+    children: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'the React Node that the button will accept',
+    },
     variant: {
       control: 'radio',
       options: Object.values(ButtonVariant),
@@ -87,6 +92,7 @@ export const WithIconRight: Story = {
 
 export const WithoutLabel: Story = {
   args: {
+    className: '!gi-p-3',
     children: (
       <Fragment>
         <Icon icon="thumb_up" />

@@ -45,7 +45,7 @@ export const buttonSchema = zod.object({
   disabled: zod
     .boolean({ description: 'Specify if the button should be disabled' })
     .optional(),
-  classNames: zod
+  className: zod
     .string({
       description: 'Add additional classes',
     })
