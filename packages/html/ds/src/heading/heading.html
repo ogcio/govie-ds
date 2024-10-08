@@ -1,58 +1,77 @@
 {% macro govieHeading(props) %}
 
-    {% macro caption(value='') %}
-        {% if value %}
-            <span data-testid="govie-heading-caption" class="gi-text-gray-500">{{value}}</span>
-        {% endif %}
-    {% endmacro %}
-
-    {% macro getDefaultSize(tag) %}
-        
-    {% endmacro %}
-
-    {% macro getClasses(size, tag) %}
-        {% if not size %}
-            {% if 'h6' in tag %}
-                gi-heading-2xs
-            {% elif 'h5' in tag %}
-                gi-heading-xs
-            {% elif 'h4' in tag %}
-                gi-heading-sm
-            {% elif 'h3' in tag %}
-                gi-heading-md
-            {% elif 'h2' in tag %}
-                gi-heading-lg
-            {% elif 'h1' in tag %}
-                gi-heading-xl
-            {% endif %}
-        {% else %}
-            {% if '2xs' in size %}
-                gi-heading-2xs
-            {% elif 'xs' in size %}
-                gi-heading-xs
-            {% elif 'sm' in size %}
-                gi-heading-sm
-            {% elif 'md' in size %}
-                gi-heading-md
-            {% elif 'lg' in size %}
-                gi-heading-lg
-            {% elif 'xl' in size %}
-                gi-heading-xl
-            {% endif %}
-        {% endif %}
-    {% endmacro %}
-
-    {% if "h1" in props.tag %}
-        {{caption(props.caption)}}<h1 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h1>
-    {% elif "h2" in props.tag %}
-        {{caption(props.caption)}}<h2 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h2>
-    {% elif "h3" in props.tag %}
-        {{caption(props.caption)}}<h3 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h3>
-    {% elif "h4" in props.tag %}
-        {{caption(props.caption)}}<h4 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h4>
-    {% elif "h5" in props.tag %}
-        {{caption(props.caption)}}<h5 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h5>
-    {% elif "h6" in props.tag %}
-        {{caption(props.caption)}}<h6 class="{{getClasses(props.size, props.tag) | trim }}">{{props.text}}</h6>
+  {% macro caption(value='') %}
+    {% if value %}
+      <span data-testid="govie-heading-caption" class="gi-text-gray-500"
+        >{{ value }}</span
+      >
     {% endif %}
+  {% endmacro %}
+
+  {% macro getDefaultSize(tag) %}
+  {% endmacro %}
+
+  {% macro getClasses(size, tag) %}
+    {% if not size %}
+      {% if 'h6' in tag %}
+        gi-heading-2xs
+      {% elif 'h5' in tag %}
+        gi-heading-xs
+      {% elif 'h4' in tag %}
+        gi-heading-sm
+      {% elif 'h3' in tag %}
+        gi-heading-md
+      {% elif 'h2' in tag %}
+        gi-heading-lg
+      {% elif 'h1' in tag %}
+        gi-heading-xl
+      {% endif %}
+    {% else %}
+      {% if '2xs' in size %}
+        gi-heading-2xs
+      {% elif 'xs' in size %}
+        gi-heading-xs
+      {% elif 'sm' in size %}
+        gi-heading-sm
+      {% elif 'md' in size %}
+        gi-heading-md
+      {% elif 'lg' in size %}
+        gi-heading-lg
+      {% elif 'xl' in size %}
+        gi-heading-xl
+      {% endif %}
+    {% endif %}
+  {% endmacro %}
+
+  {% if "h1" in props.tag %}
+    {{ caption(props.caption) }}
+    <h1 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h1>
+  {% elif "h2" in props.tag %}
+    {{ caption(props.caption) }}
+    <h2 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h2>
+  {% elif "h3" in props.tag %}
+    {{ caption(props.caption) }}
+    <h3 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h3>
+  {% elif "h4" in props.tag %}
+    {{ caption(props.caption) }}
+    <h4 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h4>
+  {% elif "h5" in props.tag %}
+    {{ caption(props.caption) }}
+    <h5 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h5>
+  {% elif "h6" in props.tag %}
+    {{ caption(props.caption) }}
+    <h6 class="{{ getClasses(props.size, props.tag) | trim }}">
+      {{ props.text }}
+    </h6>
+  {% endif %}
 {% endmacro %}

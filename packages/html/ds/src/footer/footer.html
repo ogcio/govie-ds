@@ -1,66 +1,69 @@
 {% macro govieFooter(props) %}
+  {% from 'heading/heading.html' import govieHeading %}
+  {% from 'assets/logos/gov-of-ireland/harp-gold.html' import Logo %}
+  {% from 'footer/helpers.html' import hasTwoCols,hasTwoColsLinks, govieFooterLink %}
 
-{% from 'heading/heading.html' import govieHeading %}
-{% from 'assets/logos/gov-of-ireland/harp-gold.html' import Logo %}
-{% from 'footer/helpers.html' import hasTwoCols,hasTwoColsLinks, govieFooterLink %}
-
-<footer class="gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl"
-  data-module="gieds-footer">
-  {# TODO: Use Container component #}
-  <div class="gi-mx-auto gi-container">
-
-    {# secondary nav links #}
-    <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
-      {% if props.secondaryNavLinks %}
-        {% for linkObj in props.secondaryNavLinks %}
-          <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
-            {{
-              govieHeading({
+  <footer
+    class="gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl"
+    data-module="gieds-footer"
+  >
+    {# TODO: Use Container component #}
+    <div class="gi-mx-auto gi-container">
+      {# secondary nav links #}
+      <div class="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
+        {% if props.secondaryNavLinks %}
+          {% for linkObj in props.secondaryNavLinks %}
+            <div class="{{ hasTwoCols(linkObj.hasTwoCols) | trim }}">
+              {{
+                govieHeading({
                 "text": linkObj.heading,
                 "tag": "h2",
                 "size": "lg"
                 })
-            }}
-            <ul
-              class="gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl {{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}">
-              {% for link in linkObj.links %}
-                <li class="gi-mb-xl">
-                  {{
-                    govieFooterLink({
-                      "href" : link.href,
-                      "label" : link.label
-                    })
-                  }}
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-    {# main links #}
-    <div class="gi-flex gi-items-center">
-      <ul class="gi-flex gi-gap-lg gi-grow">
-        {% if props.links %}
-          {% for link in props.links %}
-            <li data-testid=main-link-{{loop.index0}}>
-              {{
-                govieFooterLink({
-                  "href" : link.href,
-                  "label" : link.label
-                })
               }}
-            </li>
+              <ul
+                class="gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl {{ hasTwoColsLinks(linkObj.hasTwoCols) | trim }}"
+              >
+                {% for link in linkObj.links %}
+                  <li class="gi-mb-xl">
+                    {{
+                      govieFooterLink({
+                        "href" : link.href,
+                        "label" : link.label
+                      })
+                    }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           {% endfor %}
         {% endif %}
-      </ul>
-      <div class="gi-ml-auto gi-w-fit">
-        {{Logo({
-          "width": "190",
-          "height": "66"
-        })}}
+      </div>
+      {# main links #}
+      <div class="gi-flex gi-items-center">
+        <ul class="gi-flex gi-gap-lg gi-grow">
+          {% if props.links %}
+            {% for link in props.links %}
+              <li data-testid="main-link-{{ loop.index0 }}">
+                {{
+                  govieFooterLink({
+                    "href" : link.href,
+                    "label" : link.label
+                  })
+                }}
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+        <div class="gi-ml-auto gi-w-fit">
+          {{
+            Logo({
+              "width": "190",
+              "height": "66"
+            })
+          }}
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 {% endmacro %}

@@ -1,11 +1,9 @@
-{% from 'header/components/headerDesktop.html' import govieHeaderDesktop %} 
-{% from 'header/components/headerSmall.html' import govieHeaderSmall %} 
+{% from 'header/components/headerDesktop.html' import govieHeaderDesktop %}
+{% from 'header/components/headerSmall.html' import govieHeaderSmall %}
 
 {% macro govieHeader(props) %}
-
-<header class="gi-relative" data-module="gieds-header">
+  <header class="gi-relative" data-module="gieds-header">
     {{ govieHeaderDesktop(props) }}
     {{ govieHeaderSmall(props) }}
-</header>
-
+  </header>
 {% endmacro %}

@@ -1,10 +1,13 @@
 {% macro getTickSize(size) %}
   {% if size == 'lg' %}
-  checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2
+    checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5
+    checked:before:gi-top-2
   {% elif size == 'sm' %}
-  checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1
+    checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5
+    checked:before:gi-top-1
   {% else %}
-  checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5
+    checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1
+    checked:before:gi-top-1.5
   {% endif %}
 {% endmacro %}
 

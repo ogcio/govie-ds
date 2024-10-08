@@ -46,12 +46,18 @@
   {% endmacro %}
 
   {% macro getCommonClasses(props) %}
-    {{ getSizeClass(props.size) | trim }} {{ getAlignClass(props.align) | trim }} {{ getWhitespaceClass(props.whitespace) | trim }} gi-max-w-prose
+    {{ getSizeClass(props.size) | trim }}
+    {{ getAlignClass(props.align) | trim }}
+    {{ getWhitespaceClass(props.whitespace) | trim }} gi-max-w-prose
   {% endmacro %}
 
   {% if props.as == 'span' %}
-    <span class="{{ getCommonClasses(props) | trim }}">{{ props.content | safe | trim }}</span>
+    <span class="{{ getCommonClasses(props) | trim }}"
+      >{{ props.content | safe | trim }}</span
+    >
   {% else %}
-    <p class="{{ getCommonClasses(props) | trim }}">{{ props.content | safe | trim }}</p>
+    <p class="{{ getCommonClasses(props) | trim }}">
+      {{ props.content | safe | trim }}
+    </p>
   {% endif %}
 {% endmacro %}
