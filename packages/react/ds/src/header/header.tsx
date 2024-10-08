@@ -132,7 +132,7 @@ export function Header({
             ))}
           </ul>
           {navLinks && hasDivider && (
-            <div className="gi-hidden sm:gi-block gi-border-l gi-border-solid gi-border-l-white gi-h-8 gi-mx-6"></div>
+            <div className="gi-hidden sm:gi-block gi-border-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6"></div>
           )}
           {tools?.search && (
             <label
