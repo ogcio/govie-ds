@@ -31,7 +31,7 @@ export function createTheme(
     ...tailwindTheme,
     container: {
       padding: {
-        default: '16px', // TODO: use tokens
+        DEFAULT: '16px', // TODO: use tokens
         sm: '16px',
         md: '32px',
         lg: '64px',
@@ -153,7 +153,7 @@ export function createTheme(
       '2xl': variables.primitive.border.width['600'],
       '3xl': variables.primitive.border.width['700'],
       '4xl': variables.primitive.border.width['800'],
-      default: variables.primitive.border.width['100'],
+      DEFAULT: variables.primitive.border.width['100'],
     },
     borderRadius: {
       // "none": tokens.goiveBorderRadiusNone,
@@ -164,7 +164,7 @@ export function createTheme(
       '2xl': variables.primitive.border.radius['500'],
       '3xl': variables.primitive.border.radius['600'],
       full: variables.primitive.border.radius.full,
-      default: variables.primitive.border.radius['200'],
+      DEFAULT: variables.primitive.border.radius['200'],
     },
     zIndex: {
       1: variables.primitive.zIndex['1'],
@@ -302,7 +302,7 @@ export function createTheme(
     extend: {
       typography: () => {
         return {
-          default: {
+          DEFAULT: {
             css: {
               p: {
                 font: variables.semantic.typography.default.text.md,
