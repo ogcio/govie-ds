@@ -132,7 +132,7 @@ export function Header({
             ))}
           </ul>
           {navLinks && hasDivider && (
-            <div className="gi-hidden sm:gi-block gi-border-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6"></div>
+            <div className="gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6"></div>
           )}
           {tools?.search && (
             <label
@@ -185,6 +185,11 @@ export function Header({
               id="MobileMenuTrigger"
               type="checkbox"
             />
+            {tools?.menu?.label && (
+              <span className="gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white">
+                {tools?.menu?.label}
+              </span>
+            )}
             <Icon
               className="gi-text-white"
               icon={tools?.menu?.icon || 'menu'}
