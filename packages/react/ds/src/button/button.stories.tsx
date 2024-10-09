@@ -51,11 +51,6 @@ export const Default: Story = {
       type: { name: 'string' },
       description: 'The sizes of the button',
     },
-    label: {
-      control: 'text',
-      type: { name: 'string' },
-      description: 'Label of the Button',
-    },
     disabled: {
       control: 'boolean',
       description: 'Specify if the button is disabled',
@@ -84,17 +79,6 @@ export const WithIconRight: Story = {
     children: (
       <Fragment>
         Button
-        <Icon icon="thumb_up" />
-      </Fragment>
-    ),
-  },
-};
-
-export const WithoutLabel: Story = {
-  args: {
-    className: '!gi-p-3',
-    children: (
-      <Fragment>
         <Icon icon="thumb_up" />
       </Fragment>
     ),
