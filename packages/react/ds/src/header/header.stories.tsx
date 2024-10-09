@@ -233,15 +233,10 @@ export const withTitle: Story = {
     },
     tools: {
       search: {
-        label: 'Search',
         action: '/search-page',
       },
     },
     navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
       {
         href: '#',
         label: 'Departments',
