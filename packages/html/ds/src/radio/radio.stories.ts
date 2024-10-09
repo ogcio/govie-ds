@@ -32,8 +32,6 @@ export const Default: Story = {
       },
       hint: 'Heading hint',
     },
-    // inline: true,
-    errorMessage: 'error',
     fieldId: 'UniqueID',
     size: RadioSizeEnum.Small,
     items: [
@@ -49,6 +47,15 @@ export const Default: Story = {
       {
         label: 'Department for Transport',
         value: 'department-for-transport',
+        hint: 'test',
+        conditionalInput: {
+          fullFluid: true,
+          id: 'input-id',
+          label: {
+            content: 'Label',
+            for: 'input-id',
+          },
+        },
       },
     ],
     dividerOption: {

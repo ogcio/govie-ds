@@ -1,5 +1,6 @@
-{% from 'radio/helpers.html' import getRadioSize, getMarginClass %}
+{% from 'radio/helpers.html' import getRadioSize, getMarginClass, getRadioWidth %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'text-input/text-input.html' import govieTextInput %}
 
 {% macro govieRadio(props) %}
   <div class="gi-flex gi-flex-col">
@@ -19,14 +20,30 @@
         {{ props.label }}
       </label>
     </div>
-    {% if props.hint %}
-      <div class="{{ getMarginClass(props.size) | trim }}">
-        {{
-          govieHintText({
-            "content": props.hint,
-            "classNames": "!gi-mb-0"
-          })
-        }}
+    {% if props.hint or props.conditionalInput %}
+      <div class="gi-flex">
+        <div class="{{ getMarginClass(props.size) | trim }} gi-invisible">
+          <div
+            class="{{ getRadioWidth(props.size) | trim }} gi-h-full gi-flex gi-justify-center gi-mt-1"
+          >
+            <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+          </div>
+        </div>
+        <div>
+          <div>
+            {{
+              govieHintText({
+                "content": props.hint,
+                "classNames": "!gi-mb-0"
+              })
+            }}
+          </div>
+          {% if props.conditionalInput %}
+            <div class="gi-hidden">
+              {{ govieTextInput(props.conditionalInput) }}
+            </div>
+          {% endif %}
+        </div>
       </div>
     {% endif %}
   </div>

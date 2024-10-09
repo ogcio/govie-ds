@@ -14,13 +14,23 @@
   {% endif %}
 {% endmacro %}
 
+{% macro getRadioWidth(size) %}
+  {% if size == 'lg' %}
+    gi-w-11
+  {% elif size == 'sm' %}
+    gi-w-6
+  {% else %}
+    gi-w-[30px]
+  {% endif %}
+{% endmacro %}
+
 {% macro getMarginClass(size) %}
   {% if size == 'lg' %}
-    gi-ml-[58px]
+    gi-w-[58px]
   {% elif size == 'sm' %}
-    gi-ml-[38px]
+    gi-w-[38px]
   {% else %}
-    gi-ml-11
+    gi-w-11
   {% endif %}
 {% endmacro %}
 

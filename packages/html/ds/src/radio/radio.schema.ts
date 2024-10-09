@@ -1,5 +1,6 @@
 import * as zod from 'zod';
 import { Size, Tag } from '../heading/heading.schema';
+import { textInputSchema } from '../text-input/text-input.schema';
 
 export enum RadioSizeEnum {
   Large = 'lg',
@@ -35,6 +36,9 @@ export const radiosSchema = zod.object({
           description:
             'if there is additional text required in order to give the user more context',
         })
+        .optional(),
+      conditionalInput: textInputSchema
+        .describe('Add a conditional input if neccessary')
         .optional(),
     })
     .describe(

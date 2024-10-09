@@ -1,4 +1,4 @@
-{% from 'radio/helpers.html' import getMarginClass, getPargraphMarginClass %}
+{% from 'radio/helpers.html' import getPargraphMarginClass %}
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'error-text/error-text.html' import govieErrorText %}
@@ -59,7 +59,8 @@
               "hint": radio.hint,
               "radioId": props.fieldId + "-" + loop.index0,
               "size": props.size,
-              "dataElement": "radio" + loop.index0
+              "dataElement": "radio" + loop.index0,
+              "conditionalInput": radio.conditionalInput
               })
             }}
           {% endfor %}
@@ -76,7 +77,8 @@
                 "hint": props.dividerOption.hint,
                 "radioId": props.fieldId + "-" + props.items.length,
                 "size": props.size,
-                "dataElement": "radio-divider-option"
+                "dataElement": "radio-divider-option",
+                "conditionalInput": props.dividerOption.conditionalInput
               })
             }}
           {% endif %}
