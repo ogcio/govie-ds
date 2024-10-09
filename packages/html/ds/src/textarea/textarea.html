@@ -23,51 +23,49 @@
   {% endif %}
   {# prettier-ignore-end #}
 
-  
-    {% if props.label %}
-      {{
-        govieLabel({
-          "content": props.label.content,
-          "size": props.label.size or "md",
-          "for": props.label.for or "textarea-id",
-          "classNames": marginBottom
-        }) | trim
-      }}
-    {% endif %}
+  {% if props.label %}
+    {{
+      govieLabel({
+        "content": props.label.content,
+        "size": props.label.size or "md",
+        "for": props.label.for or "textarea-id",
+        "classNames": marginBottom
+      }) | trim
+    }}
+  {% endif %}
 
-    {% if isHint %}
-      {{
-        govieHintText({
-          "content": props.hint.content,
-          "size": props.hint.size or "md"
-        }) | trim
-      }}
-    {% endif %}
+  {% if isHint %}
+    {{
+      govieHintText({
+        "content": props.hint.content,
+        "size": props.hint.size or "md"
+      }) | trim
+    }}
+  {% endif %}
 
-    {% if isError %}
-      {{
-        govieErrorText({
-          "content": props.error.content,
-          "size": props.error.size or "md"
-        }) | trim
-      }}
-    {% endif %}
+  {% if isError %}
+    {{
+      govieErrorText({
+        "content": props.error.content,
+        "size": props.error.size or "md"
+      }) | trim
+    }}
+  {% endif %}
 
-    <div class="gi-flex gi-items-center">
-      <textarea
-        id="{{ props.id or 'textarea-id' }}"
-        rows="{{ props.rows or 4 }}"
-        cols="{{ props.cols or 100 }}"
-        autocomplete="{{ props.autoComplete or 'on' }}"
-        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10"
-      ></textarea>
-    </div>
+  <div class="gi-flex gi-items-center">
+    <textarea
+      id="{{ props.id or 'textarea-id' }}"
+      rows="{{ props.rows or 4 }}"
+      cols="{{ props.cols or 100 }}"
+      autocomplete="{{ props.autoComplete or 'on' }}"
+      class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10"
+    ></textarea>
+  </div>
 
-    {# Close the conditional wrapper div if isError is true #}
-    {# prettier-ignore-start #}
+  {# Close the conditional wrapper div if isError is true #}
+  {# prettier-ignore-start #}
   {% if isError %}
   </div>
   {% endif %}
   {# prettier-ignore-end #}
-  </div>
 {% endmacro %}
