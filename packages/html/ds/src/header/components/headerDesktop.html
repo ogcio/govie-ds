@@ -30,16 +30,16 @@
     <div
       class="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
     >
-      <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
+      <div class="gi-flex gi-items-center gi-gap-4 md:gi-gap-6 lg:gi-gap-12">
         {% if props.logo.href %}
           <a
             aria-label="Go to the home page"
             href="{{ props.logo.href }}"
-            class="xs:gi-block gi-hidden"
+            class="md:gi-block gi-hidden"
             >{{ govieLogo() }}</a
           >
         {% else %}
-          <span class="xs:gi-block gi-hidden">{{ govieLogo() }}</span>
+          <span class="md:gi-block gi-hidden">{{ govieLogo() }}</span>
         {% endif %}
         {% if props.title %}
           <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">

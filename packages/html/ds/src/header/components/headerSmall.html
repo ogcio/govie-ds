@@ -18,18 +18,18 @@
             <a
               aria-label="Go to the home page"
               href="{{ props.logo.href }}"
-              class="xs:gi-block gi-hidden"
+              class="md:gi-block gi-hidden"
               >{{ govieLogo() }}</a
             >
             <a
               aria-label="Go to the home page"
               href="{{ props.logo.href }}"
-              class="xs:gi-hidden gi-block"
+              class="md:gi-hidden gi-block"
               >{{ govieLogoSmall() }}</a
             >
           {% else %}
-            <span class="xs:gi-block gi-hidden">{{ govieLogo() }}</span>
-            <span class="xs:gi-hidden gi-block">{{ govieLogoSmall() }}</span>
+            <span class="md:gi-block gi-hidden">{{ govieLogo() }}</span>
+            <span class="md:gi-hidden gi-block">{{ govieLogoSmall() }}</span>
           {% endif %}
           {% if props.title %}
             <div class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0">

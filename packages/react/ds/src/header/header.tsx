@@ -76,17 +76,17 @@ export function Header({
         id="MenuContainer"
         className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
       >
-        <div className="gi-flex gi-items-center gi-gap-4 md:gi-gap-6">
+        <div className="gi-flex gi-items-center gi-gap-4 md:gi-gap-6 lg:gi-gap-12">
           {logo?.href ? (
             <>
-              <a href={logo.href} className="xs:gi-block gi-hidden">
+              <a href={logo.href} className="md:gi-block gi-hidden">
                 {logo.image ? (
                   <img className="gi-object-contain gi-h-12" src={logo.image} />
                 ) : (
                   <GovieLogo />
                 )}
               </a>
-              <a href={logo.href} className="xs:gi-hidden gi-block">
+              <a href={logo.href} className="md:gi-hidden gi-block">
                 {logo.image ? (
                   <img className="gi-object-contain gi-h-10" src={logo.image} />
                 ) : (
@@ -96,14 +96,14 @@ export function Header({
             </>
           ) : (
             <>
-              <span className="xs:gi-block gi-hidden">
+              <span className="md:gi-block gi-hidden">
                 {logo?.image ? (
                   <img className="gi-object-contain gi-h-12" src={logo.image} />
                 ) : (
                   <GovieLogo />
                 )}
               </span>
-              <span className="xs:gi-hidden gi-block">
+              <span className="md:gi-hidden gi-block">
                 {logo?.image ? (
                   <img className="gi-object-contain gi-h-10" src={logo.image} />
                 ) : (
