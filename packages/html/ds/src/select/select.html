@@ -4,6 +4,12 @@
 
 {% macro govieSelect(props) %}
   {% set ariaLabel = props.label.content or props.id %}
+  {% set isError = props.error and props.error.content %}
+  {% set isHint = props.hint and props.hint.content %}
+  {% set marginTop = '' %}
+  {% if props.error and props.hint %}
+    {% set marginTop = 'gi-mt-1' %}
+  {% endif %}
 
   <div data-module="gieds-select">
     {% if props.label %}
@@ -15,7 +21,7 @@
         })
       }}
     {% endif %}
-    {% if props.hint %}
+    {% if isHint %}
       {{
         govieHintText({
             "content": props.hint.content,
@@ -24,7 +30,7 @@
         })
       }}
     {% endif %}
-    {% if props.error %}
+    {% if isError %}
       {{
         govieErrorText({
             "content": props.error.content,
@@ -36,7 +42,7 @@
     <select
       id="{{ ariaLabel }}"
       aria-label="{{ ariaLabel }}"
-      class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+      class="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg {{ marginTop }}"
     >
       {% for option in props.options %}
         {% if option.groupName %}
