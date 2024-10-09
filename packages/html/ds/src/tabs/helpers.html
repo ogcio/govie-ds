@@ -10,25 +10,24 @@
     aria-labelledby="{{ tabLabelId }}"
     aria-roledescription="tab"
     {%- if item.checked %}checked{% endif %}
-    class="gi-absolute gi-opacity-0"
+    class="tab-item gi-absolute gi-opacity-0"
   />
   <label
     role="tab"
     for="{{ tabId }}"
     id="{{ tabLabelId }}"
     aria-hidden="true"
-    class="
-                gi-inline-block 
-                gi-cursor-pointer
-                gi-px-5
-                gi-py-2
-                gi-relative
-                gi-mr-1
-                gi-bg-gray-50
-                gi-text-center 
-                gi-text-md
-                gi-underline
-                gi-text-slate-300"
+    class="gi-inline-block
+          gi-cursor-pointer
+          gi-px-5
+          gi-py-2
+          gi-relative
+          gi-mr-1
+          gi-bg-gray-50
+          gi-text-center 
+          gi-text-md
+          gi-underline
+          gi-text-slate-300"
   >
     <a
       {%- if item.href %}href="{{ item.href }}"{% endif %}
