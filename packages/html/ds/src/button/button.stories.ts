@@ -51,12 +51,6 @@ export const Default: Story = {
       description: 'Specify if the button is disabled',
       type: 'boolean',
     },
-    className: {
-      control: 'text',
-      description:
-        'Specify additional classes ( this can be useful when an icon button needs to be rendered )',
-      type: 'string',
-    },
   },
   args: {
     content: 'Button',
@@ -73,13 +67,6 @@ export const WithIcon: Story = {
 export const WithIconRight: Story = {
   args: {
     content: `Button <span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span>`,
-  },
-};
-
-export const WithoutLabel: Story = {
-  args: {
-    content: `<span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span>`,
-    className: '!gi-p-3',
   },
 };
 

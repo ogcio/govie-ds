@@ -45,11 +45,6 @@ export const buttonSchema = zod.object({
   disabled: zod
     .boolean({ description: 'Specify if the button should be disabled' })
     .optional(),
-  className: zod
-    .string({
-      description: 'Add additional classes',
-    })
-    .optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;
