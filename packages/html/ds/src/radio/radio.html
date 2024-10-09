@@ -2,22 +2,32 @@
 {% from 'hint-text/hint-text.html' import govieHintText %}
 
 {% macro govieRadio(props) %}
-
-<div class="gi-flex gi-flex-col">
-  <div class="gi-flex gi-items-center">
-    <input name="{{ props.name }}" data-element="{{ props.dataElement }}" id="{{ props.radioId }}" value="{{ props.value }}" class="{{ getRadioSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0  focus:gi-border-[4px] focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf]" type="radio" />
-    <label for="{{ props.radioId }}" class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5 ">
-      {{ props.label }}
-    </label>
-  </div>
-  {% if props.hint %}
-    <div class="{{ getMarginClass(props.size) | trim }}">
-      {{ govieHintText({
-        "content": props.hint,
-        "classNames": "!gi-mb-0"
-      })}}
+  <div class="gi-flex gi-flex-col">
+    <div class="gi-flex gi-items-center">
+      <input
+        name="{{ props.name }}"
+        data-element="{{ props.dataElement }}"
+        id="{{ props.radioId }}"
+        value="{{ props.value }}"
+        class="{{ getRadioSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0  focus:gi-border-[4px] focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf]"
+        type="radio"
+      />
+      <label
+        for="{{ props.radioId }}"
+        class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5 "
+      >
+        {{ props.label }}
+      </label>
     </div>
-  {% endif %}
-</div>
-
+    {% if props.hint %}
+      <div class="{{ getMarginClass(props.size) | trim }}">
+        {{
+          govieHintText({
+            "content": props.hint,
+            "classNames": "!gi-mb-0"
+          })
+        }}
+      </div>
+    {% endif %}
+  </div>
 {% endmacro %}

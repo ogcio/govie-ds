@@ -9,57 +9,76 @@
 
   <div data-testid="govie-radios" data-module="gieds-radios" class="gi-flex">
     {% if props.errorMessage %}
-      <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
+      <div
+        class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"
+      ></div>
     {% endif %}
     <fieldset>
       <legend class="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
-          {{ govieHeading({
-            "size": props.title.asHeading.size,
-            "tag": props.title.asHeading.tag,
-            "text": props.title.value 
-          })}}
+          {{
+            govieHeading({
+              "size": props.title.asHeading.size,
+              "tag": props.title.asHeading.tag,
+              "text": props.title.value
+            })
+          }}
         {% else %}
-          {{ props.title.value }} 
+          {{ props.title.value }}
         {% endif %}
         {% if props.title.hint %}
           <div data-testid="title-hint">
-            {{ govieHintText({
-              "content": props.title.hint,
-              "classNames": "!gi-mb-0"
-            })}}
+            {{
+              govieHintText({
+                "content": props.title.hint,
+                "classNames": "!gi-mb-0"
+              })
+            }}
           </div>
         {% endif %}
       </legend>
-      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
+      <div
+        data-element="radio-container"
+        class="gi-flex gi-flex-col gi-gap-2.5"
+      >
         {% if props.errorMessage %}
-          {{ govieErrorText({
-            "content": props.errorMessage,
-            "classNames": "!gi-mb-0"
-          })}}
+          {{
+            govieErrorText({
+              "content": props.errorMessage,
+              "classNames": "!gi-mb-0"
+            })
+          }}
         {% endif %}
         <div class="gi-flex gi-gap-2.5 {{ isInline }}">
           {% for radio in props.items %}
-            {{govieRadio({
-            "name": props.fieldId,
-            "label": radio.label, 
-            "value": radio.value, 
-            "hint": radio.hint,
-            "radioId": props.fieldId + "-" + loop.index0,
-            "size": props.size,
-            "dataElement": "radio" + loop.index0
-            })}}
+            {{
+              govieRadio({
+              "name": props.fieldId,
+              "label": radio.label,
+              "value": radio.value,
+              "hint": radio.hint,
+              "radioId": props.fieldId + "-" + loop.index0,
+              "size": props.size,
+              "dataElement": "radio" + loop.index0
+              })
+            }}
           {% endfor %}
           {% if props.dividerOption %}
-            <p class="{{ getPargraphMarginClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
-            {{govieRadio({
-              "name": props.fieldId,
-              "label": props.dividerOption.label,
-              "hint": props.dividerOption.hint,
-              "radioId": props.fieldId + "-" + props.items.length,
-              "size": props.size,
-              "dataElement": "radio-divider-option"
-            })}}
+            <p
+              class="{{ getPargraphMarginClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            >
+              or
+            </p>
+            {{
+              govieRadio({
+                "name": props.fieldId,
+                "label": props.dividerOption.label,
+                "hint": props.dividerOption.hint,
+                "radioId": props.fieldId + "-" + props.items.length,
+                "size": props.size,
+                "dataElement": "radio-divider-option"
+              })
+            }}
           {% endif %}
         </div>
       </div>

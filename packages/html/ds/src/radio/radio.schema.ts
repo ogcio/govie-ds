@@ -12,9 +12,11 @@ export const radiosSchema = zod.object({
     description: 'An unique ID given to the group of radios',
     required_error: 'The unique ID is required',
   }),
-  inline: zod.boolean({
-    description: "specify if the radios are inline"
-  }).optional(),
+  inline: zod
+    .boolean({
+      description: 'specify if the radios are inline',
+    })
+    .optional(),
   items: zod
     .object({
       label: zod

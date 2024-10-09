@@ -30,7 +30,7 @@ export const Default: Story = {
         size: Size.Medium,
         tag: Tag.H2,
       },
-      hint: 'Heading hint'
+      hint: 'Heading hint',
     },
     // inline: true,
     errorMessage: 'error',
@@ -40,7 +40,7 @@ export const Default: Story = {
       {
         label: 'Employment Tribunal',
         value: 'employment-tribunal',
-        hint: 'hint item 1'
+        hint: 'hint item 1',
       },
       {
         label: 'Ministry of Defence',
