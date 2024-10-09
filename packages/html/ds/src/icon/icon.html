@@ -23,7 +23,7 @@
 
   {% macro getAriaLabel(props) %}
     {% if props.ariaLabel %}
-      aria-label={{props.ariaLabel}}
+      aria-label={{ props.ariaLabel }}
     {% endif %}
   {% endmacro %}
 
@@ -51,16 +51,17 @@
     {% endif %}
   {% endmacro %}
 
-  <span data-testid="govie-icon" 
-    {{getAriaHidden(props) | trim}}
-    {{getAriaLabel(props) | trim}}
-    {{getAriaRole(props) | trim}}
+  <span
+    data-testid="govie-icon"
+    {{ getAriaHidden(props) | trim }}
+    {{ getAriaLabel(props) | trim }}
+    {{ getAriaRole(props) | trim }}
     class="
       {{ getIconStyle(props) | trim }}
       {{ getDisabled(props) | trim }}
       {{ getInline(props) | trim }}
-      {{ getFontSize(props) | trim }}">
+      {{ getFontSize(props) | trim }}"
+  >
     {{ props.icon }}
   </span>
-
 {% endmacro %}

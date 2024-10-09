@@ -3,10 +3,6 @@ name: Deploy docs to AWS
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: "Git tag to deploy"
-        required: true
-        default: "last-release"
       environment:
         description: "Select deployment environment"
         required: true
@@ -31,7 +27,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.tag }}
           token: ${{ secrets.REPO_PAT }}
 
       - name: Use Node.js

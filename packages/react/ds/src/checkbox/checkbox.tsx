@@ -25,23 +25,21 @@ const Checkbox = ({
   hint,
 }: ChecboxType) => {
   return (
-    <div className="gi-flex gi-flex-col">
-      <div className="gi-flex gi-items-center">
-        <input
-          data-element={dataElement}
-          id={checkboxId}
-          value={value}
-          className={`${getSizeClass(size)} ${getTickSize(size)} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black`}
-          type="checkbox"
-        />
-        <label
-          htmlFor={checkboxId}
-          className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5"
-        >
-          {label}
-        </label>
-      </div>
-      {hint && <HintText text={hint} className="gi-mb-0" />}
+    <div className="gi-flex gi-items-start">
+      <input
+        data-element={dataElement}
+        id={checkboxId}
+        value={value}
+        className={`${getSizeClass(size)} ${getTickSize(size)} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black`}
+        type="checkbox"
+      />
+      <label
+        htmlFor={checkboxId}
+        className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
+      >
+        {label}
+        {hint && <HintText text={hint} className="gi-mb-0" />}
+      </label>
     </div>
   );
 };

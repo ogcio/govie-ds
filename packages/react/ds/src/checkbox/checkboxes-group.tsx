@@ -32,18 +32,27 @@ const CheckboxesGroup = ({
   return (
     <div className="gi-flex">
       {errorMessage && (
-        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
+        <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
       )}
       <fieldset>
         <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
           {title.asHeading ? (
-            <Heading size={title.asHeading.size} as={title.asHeading.tag}>
+            <Heading
+              size={title.asHeading.size}
+              as={title.asHeading.tag}
+              className="!gi-mb-[var(--gieds-space-2)]"
+            >
               {title.value}
             </Heading>
           ) : (
             title.value
           )}
-          {title.hint && <HintText text={title.hint} className="gi-mb-0" />}
+          {title.hint && (
+            <HintText
+              text={title.hint}
+              className="!gi-mb-[var(--gieds-space-2)]"
+            />
+          )}
         </legend>
         <div className="gi-flex gi-flex-col gi-gap-2.5">
           {errorMessage && (

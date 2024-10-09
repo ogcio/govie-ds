@@ -7,11 +7,13 @@
     {% elif size == 'sm' %}
       gi-text-sm
     {% else %}
-      xs:gi-text-sm md:gi-text-md
+      gi-text-md
     {% endif %}
   {% endmacro %}
 
-  <p class="{{ getSizeClass(props.size) | trim }} gi-font-bold gi-leading-5 gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] {{ addClasses(props.classNames) | trim }}">
+  <p
+    class="{{ getSizeClass(props.size) | trim }} gi-font-bold gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] {{ addClasses(props.classNames) | trim }}"
+  >
     {{ props.content | safe | trim | indent(2) }}
   </p>
 {% endmacro %}

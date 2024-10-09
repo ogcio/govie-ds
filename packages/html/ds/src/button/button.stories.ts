@@ -24,6 +24,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
+    content: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'the raw HTML that the button will accept',
+    },
     variant: {
       control: 'radio',
       options: Object.values(ButtonVariant),
@@ -41,24 +46,9 @@ export const Default: Story = {
       type: { name: 'string' },
       description: 'The sizes of the button',
     },
-    label: {
-      control: 'text',
-      type: { name: 'string' },
-      description: 'Label of the Button',
-    },
     disabled: {
       control: 'boolean',
       description: 'Specify if the button is disabled',
-      type: 'boolean',
-    },
-    icon: {
-      control: 'object',
-      description: 'Add an icon to the button (See Icon Component)',
-      type: 'string',
-    },
-    iconEnd: {
-      control: 'boolean',
-      description: 'Specify if the icon should be at the end of the button',
       type: 'boolean',
     },
   },
@@ -70,19 +60,13 @@ export const Default: Story = {
 
 export const WithIcon: Story = {
   args: {
-    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span> Button`,
+    content: `<span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span> Button`,
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    content: `Button <span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
-  },
-};
-
-export const WithoutLabel: Story = {
-  args: {
-    content: `<span role="presentation" class=" material-icons  gi-block 24px" style="font-size: 24px;">thumb_up</span>`,
+    content: `Button <span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span>`,
   },
 };
 

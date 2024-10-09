@@ -1,37 +1,37 @@
 /* GOV.IE Typography Stylesheets */
 
 .gi-heading-xl {
-  font: theme('typography.default.css.h1.font');
+  font: theme('typography.DEFAULT.css.h1.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
 .gi-heading-lg {
-  font: theme('typography.default.css.h2.font');
+  font: theme('typography.DEFAULT.css.h2.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
 .gi-heading-md {
-  font: theme('typography.default.css.h3.font');
+  font: theme('typography.DEFAULT.css.h3.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
 .gi-heading-sm {
-  font: theme('typography.default.css.h4.font');
+  font: theme('typography.DEFAULT.css.h4.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
 .gi-heading-xs {
-  font: theme('typography.default.css.h5.font');
+  font: theme('typography.DEFAULT.css.h5.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
 .gi-heading-2xs {
-  font: theme('typography.default.css.h6.font');
+  font: theme('typography.DEFAULT.css.h6.font');
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
@@ -43,7 +43,7 @@
 .gi-paragraph-lg,
 .gi-paragraph-md,
 .gi-paragraph-xs {
-  font: theme('typography.default.css.p.font');
+  font: theme('typography.DEFAULT.css.p.font');
   margin-bottom: 2em;
   @apply gi-mt-0 gi-max-w-prose;
 }
@@ -51,7 +51,7 @@
 .gi-span-lg,
 .gi-span-md,
 .gi-span-xs {
-  font: theme('typography.default.css.p.font');
+  font: theme('typography.DEFAULT.css.p.font');
 }
 
 @media screen(sm) {

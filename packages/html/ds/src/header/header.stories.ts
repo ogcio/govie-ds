@@ -290,10 +290,6 @@ export const withTitle: Story = {
     },
     navLinks: [
       {
-        href: '#link-1',
-        label: 'News',
-      },
-      {
         href: '#link-2',
         label: 'Departments',
       },
