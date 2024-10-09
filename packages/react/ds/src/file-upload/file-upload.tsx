@@ -30,7 +30,28 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
 
         <input
           id={id}
-          className="xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1"
+          className={`
+            xs:gi-text-md 
+            gi-text-sm 
+            gi-leading-10 
+            xs:!gi-leading-5 
+            gi-p-[3px]
+            gi-max-w-[100%]
+            gi-border-transparent
+            gi-flex-initial
+            gi-ml-[-5px]
+            gi-border-sm
+            gi-border-solid
+            gi-box-border
+            focus:gi-outline
+            focus:gi-outline-[3px]
+            focus:gi-border-lg
+            focus:gi-border-gray-950
+            focus:gi-outline-yellow-400
+            focus:gi-outline-offset-0
+            gi-z-1
+            ${!hint?.text && !error?.text ? 'gi-mt-1' : ''}
+            `}
           type="file"
           ref={ref}
           {...props}

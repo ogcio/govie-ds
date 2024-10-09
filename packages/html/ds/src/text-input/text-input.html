@@ -5,6 +5,7 @@
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
+  {% set isHint = props.hint and props.hint.content %}
 
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
@@ -12,6 +13,10 @@
     {% set widthClass = 'gi-w-1/2' %}
   {% elif props.characterWidth %}
     {% set widthStyle = 'style="width: ' ~ props.characterWidth ~ 'em;"' %}
+  {% endif %}
+  {% set marginTop = '' %}
+  {% if props.error and props.hint %}
+    {% set marginTop = 'gi-mt-1' %}
   {% endif %}
 
   {# Generate a unique or provided ID for the input field #}
@@ -36,7 +41,7 @@
     }}
   {% endif %}
 
-  {% if props.hint %}
+  {% if isHint %}
     {{
       govieHintText({
         "content": props.hint.content,
@@ -54,7 +59,7 @@
     }}
   {% endif %}
 
-  <div class="gi-flex gi-items-center">
+  <div class="gi-flex gi-items-center {{ marginTop }}">
     {% if props.prefix %}
       <div
         class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10"

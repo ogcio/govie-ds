@@ -42,7 +42,10 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {hint?.text && <HintText text={hint.text} size={hint.size} />}
 
         {error?.text && <ErrorText text={error.text} size={error.size} />}
-        <div className="gi-flex gi-items-center">
+
+        <div
+          className={`gi-flex gi-items-center ${!hint?.text && !error?.text ? 'gi-mt-1' : ''}`}
+        >
           <textarea
             id={id}
             rows={rows}

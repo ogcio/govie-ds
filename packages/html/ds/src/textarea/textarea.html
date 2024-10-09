@@ -4,11 +4,16 @@
   {% from 'error-text/error-text.html' import govieErrorText %}
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
+  {% set isHint = props.hint and props.hint.content %}
 
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
   {% elif props.halfFluid %}
     {% set widthClass = 'gi-w-1/2' %}
+  {% endif %}
+  {% set marginTop = '' %}
+  {% if props.error and props.hint %}
+    {% set marginTop = 'gi-mt-1' %}
   {% endif %}
 
   {# Conditionally render the wrapper div only if error content is available #}
@@ -28,7 +33,7 @@
     }}
   {% endif %}
 
-  {% if props.hint %}
+  {% if isHint %}
     {{
       govieHintText({
         "content": props.hint.content,
@@ -46,7 +51,7 @@
     }}
   {% endif %}
 
-  <div class="gi-flex gi-items-center">
+  <div class="gi-flex gi-items-center {{ marginTop }}">
     <textarea
       id="{{ props.id or 'textarea-id' }}"
       rows="{{ props.rows or 4 }}"

@@ -14,10 +14,10 @@ export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
 
 // Use React.forwardRef to support refs properly
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ text, size = LabelSize.md, htmlFor, ...props }, ref) => {
+  ({ text, size = LabelSize.md, htmlFor, className, ...props }, ref) => {
     return (
       <label
-        className={`gi-text-${size} gi-mb-1 gi-block`}
+        className={`gi-text-${size} gi-mb-1 gi-block ${className || ''}`}
         ref={ref}
         htmlFor={htmlFor}
         {...props}
