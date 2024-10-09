@@ -11,11 +11,10 @@ export const Button = ({
   size,
   disabled,
   children,
-  className,
 }: ButtonProps) => {
   return (
     <button
-      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })} ${className}`}
+      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
     >
       {children}
     </button>
