@@ -1,10 +1,12 @@
-{% from 'checkbox/checkbox.html' import govieCheckbox %} 
-{% from 'checkbox/helpers.html' import getSizeClass %}
+{% from 'radio/helpers.html' import getMarginClass, getPargraphMarginClass %}
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'error-text/error-text.html' import govieErrorText %}
+{% from 'radio/radio.html' import govieRadio %}
 
 {% macro govieRadiosGroup(props) %}
+  {% set isInline = 'gi-flex-row' if props.inline else 'gi-flex-col' %}
+
   <div data-testid="govie-radios" data-module="gieds-radios" class="gi-flex">
     {% if props.errorMessage %}
       <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
@@ -36,13 +38,30 @@
             "classNames": "!gi-mb-0"
           })}}
         {% endif %}
-        {% for radio in props.items %}
-          <!-- PLACEHOLDER FOR RADIO -->
-        {% endfor %}
-        {% if props.noneOption %}
-          <p class="{{ getSizeClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
-          <!-- PLACEHOLDER FOR RADIO -->
-        {% endif %}
+        <div class="gi-flex gi-gap-2.5 {{ isInline }}">
+          {% for radio in props.items %}
+            {{govieRadio({
+            "name": props.fieldId,
+            "label": radio.label, 
+            "value": radio.value, 
+            "hint": radio.hint,
+            "radioId": props.fieldId + "-" + loop.index0,
+            "size": props.size,
+            "dataElement": "radio" + loop.index0
+            })}}
+          {% endfor %}
+          {% if props.dividerOption %}
+            <p class="{{ getPargraphMarginClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg">or</p>
+            {{govieRadio({
+              "name": props.fieldId,
+              "label": props.dividerOption.label,
+              "hint": props.dividerOption.hint,
+              "radioId": props.fieldId + "-" + props.items.length,
+              "size": props.size,
+              "dataElement": "radio-divider-option"
+            })}}
+          {% endif %}
+        </div>
       </div>
     </fieldset>
   </div>
