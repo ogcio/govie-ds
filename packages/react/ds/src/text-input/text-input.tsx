@@ -64,16 +64,19 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
         {label?.text && (
-          <Label text={label.text} size={label.size} htmlFor={id} />
+          <Label
+            text={label.text}
+            size={label.size}
+            htmlFor={id}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+          />
         )}
 
         {hint?.text && <HintText text={hint.text} size={hint.size} />}
 
         {error?.text && <ErrorText text={error.text} size={error.size} />}
 
-        <div
-          className={`gi-flex gi-items-center ${!hint?.text && !error?.text ? 'gi-mt-1' : ''}`}
-        >
+        <div className="gi-flex gi-items-center">
           {prefix && (
             <div className="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10">
               {prefix}

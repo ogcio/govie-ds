@@ -5,9 +5,9 @@
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
   {% set inputId = props.id or 'file-upload-id' %}
-  {% set marginTop = '' %}
-  {% if props.error and props.hint %}
-    {% set marginTop = 'gi-mt-1' %}
+  {% set marginBottom = '' %}
+  {% if not isError and not isHint %}
+    {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
   {# Conditionally render the wrapper div only if error content is available #}
@@ -24,7 +24,8 @@
       govieLabel({
         "content": props.label.content,
         "size": props.label.size or "md",
-        "for": inputId
+        "for": inputId,
+        "classNames": marginBottom
       }) | trim
     }}
   {% endif %}

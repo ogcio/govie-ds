@@ -6,9 +6,9 @@
   {% set ariaLabel = props.label.content or props.id %}
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
-  {% set marginTop = '' %}
-  {% if props.error and props.hint %}
-    {% set marginTop = 'gi-mt-1' %}
+  {% set marginBottom = '' %}
+  {% if not isError and not isHint %}
+    {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
   <div data-module="gieds-select">
@@ -17,7 +17,8 @@
         govieLabel({
           "content": props.label.content,
           "size": props.label.size,
-          "for": props.id
+          "for": props.id,
+          "classNames": marginBottom
         })
       }}
     {% endif %}

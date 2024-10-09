@@ -19,7 +19,12 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
         className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
         {label?.text && (
-          <Label text={label.text} size={label.size} htmlFor={id}>
+          <Label
+            text={label.text}
+            size={label.size}
+            htmlFor={id}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+          >
             {label.children}
           </Label>
         )}
@@ -30,7 +35,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
 
         <input
           id={id}
-          className={`
+          className="
             xs:gi-text-md 
             gi-text-sm 
             gi-leading-10 
@@ -49,9 +54,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
             focus:gi-border-gray-950
             focus:gi-outline-yellow-400
             focus:gi-outline-offset-0
-            gi-z-1
-            ${!hint?.text && !error?.text ? 'gi-mt-1' : ''}
-            `}
+            gi-z-1"
           type="file"
           ref={ref}
           {...props}

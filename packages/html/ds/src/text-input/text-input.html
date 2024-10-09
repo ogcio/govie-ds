@@ -14,9 +14,9 @@
   {% elif props.characterWidth %}
     {% set widthStyle = 'style="width: ' ~ props.characterWidth ~ 'em;"' %}
   {% endif %}
-  {% set marginTop = '' %}
-  {% if props.error and props.hint %}
-    {% set marginTop = 'gi-mt-1' %}
+  {% set marginBottom = '' %}
+  {% if not isError and not isHint %}
+    {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
   {# Generate a unique or provided ID for the input field #}
@@ -36,7 +36,8 @@
       govieLabel({
         "content": props.label.content,
         "size": props.label.size or "md",
-        "for": inputId
+        "for": inputId,
+        "classNames": marginBottom
       }) | trim
     }}
   {% endif %}
