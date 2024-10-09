@@ -39,6 +39,32 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.15.0](https://github.com/ogcio/govie-ds/compare/react-v0.14.1...react-v0.15.0) (2024-10-09)
+
+
+### Features
+
+* add `govieTag` & `Tag` component for HTML and React respectively ([#265](https://github.com/ogcio/govie-ds/issues/265)) ([b7d65b1](https://github.com/ogcio/govie-ds/commit/b7d65b1c7bd59a39c46b7db6026cbb6e1c2a2b8f))
+* react button component ([#268](https://github.com/ogcio/govie-ds/issues/268)) ([e542542](https://github.com/ogcio/govie-ds/commit/e5425421250ab44cfec37ecc2577b15ae3af65c3))
+
+
+### Bug Fixes
+
+* checkboxes spacing ([ba5e25e](https://github.com/ogcio/govie-ds/commit/ba5e25e8458ec2bcd573ad2fa6987832b8aca74f))
+* header improvements ([#269](https://github.com/ogcio/govie-ds/issues/269)) ([7dfd240](https://github.com/ogcio/govie-ds/commit/7dfd240ed49f1c8d629ae22cb910f736de62598c))
+* header responsiveness ([#276](https://github.com/ogcio/govie-ds/issues/276)) ([69df71a](https://github.com/ogcio/govie-ds/commit/69df71a4478308fbf34c35cb1669b86c7704f0a7))
+* header separator ([34e6525](https://github.com/ogcio/govie-ds/commit/34e6525c4b83814c00db921f872768086e2287c5))
+* heading sizes ([e327694](https://github.com/ogcio/govie-ds/commit/e327694638323d883d7aa516a5410bf2c31254bc))
+* icon button ([#272](https://github.com/ogcio/govie-ds/issues/272)) ([abb1aab](https://github.com/ogcio/govie-ds/commit/abb1aab9805ee9e1c6a75298f7e8fec1c565fc1a))
+* improve heading ([#262](https://github.com/ogcio/govie-ds/issues/262)) ([c816e75](https://github.com/ogcio/govie-ds/commit/c816e75d0cfe029cce75535517c4b54738c1600a))
+* label spacing in inputs ([6ba9906](https://github.com/ogcio/govie-ds/commit/6ba9906b67442fed9b6484c962b743745eac3abd))
+* label spacing in inputs ([#277](https://github.com/ogcio/govie-ds/issues/277)) ([535b04d](https://github.com/ogcio/govie-ds/commit/535b04d60721dd4efd7ec2b6eda4a658767bde1b))
+* remove classname and icon button from component ([#275](https://github.com/ogcio/govie-ds/issues/275)) ([14c070b](https://github.com/ogcio/govie-ds/commit/14c070bfe1a57a2a0233867c317bdf6dbd01ddd1))
+* review header ([#271](https://github.com/ogcio/govie-ds/issues/271)) ([3371e03](https://github.com/ogcio/govie-ds/commit/3371e0397bdcd19ba19b6254946b8cbfc311e021))
+* typography ([#267](https://github.com/ogcio/govie-ds/issues/267)) ([bcdbac6](https://github.com/ogcio/govie-ds/commit/bcdbac66a46fe9ac56b920a0b39c9c2fefd78581))
+* ui review ([#274](https://github.com/ogcio/govie-ds/issues/274)) ([336e0f9](https://github.com/ogcio/govie-ds/commit/336e0f943ce8ddf24cf1c11d86b8f1f2fb28bf27))
+* update type on input ([#259](https://github.com/ogcio/govie-ds/issues/259)) ([aee9c00](https://github.com/ogcio/govie-ds/commit/aee9c001433df5ef69a1f0a575f327cd2a6cdfe0))
+
 ## [0.14.1](https://github.com/ogcio/govie-ds/compare/react-v0.14.0...react-v0.14.1) (2024-10-03)
 
 

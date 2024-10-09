@@ -15,6 +15,23 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.11.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.10.1...tailwind-v0.11.0) (2024-10-09)
+
+
+### Features
+
+* add `govieTag` & `Tag` component for HTML and React respectively ([#265](https://github.com/ogcio/govie-ds/issues/265)) ([b7d65b1](https://github.com/ogcio/govie-ds/commit/b7d65b1c7bd59a39c46b7db6026cbb6e1c2a2b8f))
+* html button component ([#264](https://github.com/ogcio/govie-ds/issues/264)) ([998d005](https://github.com/ogcio/govie-ds/commit/998d005ec04f6d8d85e27aa5c0534a34ccb81b4d))
+
+
+### Bug Fixes
+
+* header improvements ([#269](https://github.com/ogcio/govie-ds/issues/269)) ([7dfd240](https://github.com/ogcio/govie-ds/commit/7dfd240ed49f1c8d629ae22cb910f736de62598c))
+* heading sizes ([e327694](https://github.com/ogcio/govie-ds/commit/e327694638323d883d7aa516a5410bf2c31254bc))
+* improve heading ([#262](https://github.com/ogcio/govie-ds/issues/262)) ([c816e75](https://github.com/ogcio/govie-ds/commit/c816e75d0cfe029cce75535517c4b54738c1600a))
+* review header ([#271](https://github.com/ogcio/govie-ds/issues/271)) ([3371e03](https://github.com/ogcio/govie-ds/commit/3371e0397bdcd19ba19b6254946b8cbfc311e021))
+* typography ([#267](https://github.com/ogcio/govie-ds/issues/267)) ([bcdbac6](https://github.com/ogcio/govie-ds/commit/bcdbac66a46fe9ac56b920a0b39c9c2fefd78581))
+
 ## [0.10.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.10.0...tailwind-v0.10.1) (2024-10-02)
 
 
