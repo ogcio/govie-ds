@@ -32,7 +32,7 @@ const CheckboxesGroup = ({
   return (
     <div className="gi-flex">
       {errorMessage && (
-        <div className="gi-w-5 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
+        <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
       )}
       <fieldset>
         <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">

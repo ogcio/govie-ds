@@ -35,7 +35,7 @@ const Checkbox = ({
       />
       <label
         htmlFor={checkboxId}
-        className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5"
+        className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
       >
         {label}
         {hint && <HintText text={hint} className="gi-mb-0" />}
