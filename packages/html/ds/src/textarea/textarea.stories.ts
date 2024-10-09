@@ -98,6 +98,12 @@ export const Default: Story = {
       content: 'Textarea Label',
       for: 'textarea-id',
     },
+    error: {
+      content: '',
+    },
+    hint: {
+      content: '',
+    },
   },
 };
 
