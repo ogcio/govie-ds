@@ -34,6 +34,7 @@ export const Default: Story = {
     },
     fieldId: 'UniqueID',
     size: RadioSizeEnum.Small,
+    errorMessage: 'error',
     items: [
       {
         label: 'Employment Tribunal',

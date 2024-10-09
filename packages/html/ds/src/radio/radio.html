@@ -3,10 +3,14 @@
 {% from 'text-input/text-input.html' import govieTextInput %}
 
 {% macro govieRadio(props) %}
+  {% set hasConditionalInput = true if props.conditionalInput %}
+
   <div class="gi-flex gi-flex-col">
     <div class="gi-flex gi-items-center">
       <input
         name="{{ props.name }}"
+        data-has-conditional-input="{{ hasConditionalInput }}"
+        data-primary="true"
         data-element="{{ props.dataElement }}"
         id="{{ props.radioId }}"
         value="{{ props.value }}"
@@ -22,7 +26,10 @@
     </div>
     {% if props.hint or props.conditionalInput %}
       <div class="gi-flex">
-        <div class="{{ getMarginClass(props.size) | trim }} gi-invisible">
+        <div
+          data-conditional-divider="{{ props.radioId }}"
+          class="{{ getMarginClass(props.size) | trim }} gi-invisible"
+        >
           <div
             class="{{ getRadioWidth(props.size) | trim }} gi-h-full gi-flex gi-justify-center gi-mt-1"
           >
@@ -39,7 +46,10 @@
             }}
           </div>
           {% if props.conditionalInput %}
-            <div class="gi-hidden">
+            <div
+              data-conditional-container="{{ props.radioId }}"
+              class="gi-hidden"
+            >
               {{ govieTextInput(props.conditionalInput) }}
             </div>
           {% endif %}
