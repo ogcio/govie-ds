@@ -9,7 +9,7 @@
     "dev": "pnpm build:styles && next dev",
     "build": "pnpm build:site && pnpm build:styles",
     "build:site": "next build",
-    "build:styles": "cross-env USE_RESOLVED_THEME=true tailwindcss build -i ./src/app/globals.css -o ./public/styles.css",
+    "build:styles": "node ./scripts/copy-html-ds.js && cross-env USE_RESOLVED_THEME=true tailwindcss build -i ./src/app/globals.css -o ./public/styles.css",
     "build:export": "cross-env NEXT_EXPORT=true next build",
     "start": "pnpm dlx serve@latest out",
     "lint": "pnpm lint:code && pnpm lint:spelling",

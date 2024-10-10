@@ -38,4 +38,6 @@ next-env.d.ts
 .contentlayer
 .env
 styles.css
+theme.css
+*.umd.js
 *storybook.log
