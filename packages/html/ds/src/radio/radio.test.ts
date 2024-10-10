@@ -1,7 +1,32 @@
 import { render } from '../common/render';
+import { Size, Tag } from '../heading/heading.schema';
 import { RadiosProps, RadioSizeEnum } from './radio.schema';
-import { standardProps } from './radio.stories';
 import html from './radios-group.html?raw';
+
+const standardProps = {
+  fieldId: 'uniqueId',
+  title: {
+    value: 'Where do you live?',
+    asHeading: {
+      size: Size.Medium,
+      tag: Tag.H2,
+    },
+  },
+  items: [
+    {
+      label: 'England',
+      value: 'england',
+    },
+    {
+      label: 'Scotland',
+      value: 'scotland',
+    },
+    {
+      label: 'Ireland',
+      value: 'ireland',
+    },
+  ],
+};
 
 describe('radios', () => {
   const renderRadios = render<RadiosProps>({

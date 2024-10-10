@@ -1,4 +1,4 @@
-{% from 'radio/helpers.html' import getPargraphMarginClass %}
+{% from 'radio/helpers.html' import getRadioWidth %}
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'error-text/error-text.html' import govieErrorText %}
@@ -66,7 +66,7 @@
           {% endfor %}
           {% if props.dividerOption %}
             <p
-              class="{{ getPargraphMarginClass(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              class="{{ getRadioWidth(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
             >
               or
             </p>
