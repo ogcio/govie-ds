@@ -1,5 +1,6 @@
 import { Checkboxes } from '../checkbox/checkbox';
 import { Header } from '../header/header';
+import { Radio } from '../radio/radio';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -9,6 +10,7 @@ function generateRandomId() {
 const componentRegistry = {
   Header,
   Checkboxes,
+  Radio,
   // TODO: additional component classes
 } as const;
 

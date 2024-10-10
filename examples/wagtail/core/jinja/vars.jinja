@@ -133,3 +133,29 @@
       ]
   }
 %}
+
+{% set radioProps = {
+  "fieldId": "uniqueId",
+  "title": {
+    "value": "Where do you live?",
+    "asHeading": {
+      "size": "md",
+      "tag": "h2"
+    }
+  },
+  "items": [
+    {
+      "label": "England",
+      "value": "england"
+    },
+    {
+      "label": "Scotland",
+      "value": "scotland"
+    },
+    {
+      "label": "Ireland",
+      "value": "ireland"
+    }
+  ]
+} 
+%}
