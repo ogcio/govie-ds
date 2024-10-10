@@ -15,8 +15,7 @@ export function BasicPage({ size }: { size: 'lg' | 'md' | 'sm' }) {
   return (
     <iframe
       src="/templates/basic-page.html"
-      scrolling="no"
-      className={`h-[50vh] ${widthClass} border-solid border-gray-300 border`}
+      className={`h-[50vh] ${widthClass} border-solid border-gray-300 border overflow-hidden`}
     ></iframe>
   );
 }
