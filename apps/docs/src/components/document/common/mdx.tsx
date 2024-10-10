@@ -8,6 +8,7 @@ import {
   Button,
   Icon,
   Tag,
+  Header,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -139,6 +140,7 @@ const documentComponents: MDXComponents = {
   Button: (props) => <Button {...props} />,
   Icon: (props) => <Icon {...props} />,
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
+  Header: (props) => <Header {...props}>{props.children}</Header>,
 };
 
 export function Mdx({ code }: MdxProps) {
