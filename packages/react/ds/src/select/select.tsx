@@ -27,12 +27,30 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
   return (
     <div>
       {label?.text && (
-        <Label text={label.text} htmlFor={id} size={label.size} />
+        <Label
+          text={label.text}
+          htmlFor={id}
+          size={label.size}
+          className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+        />
       )}
       {hint && <HintText text={hint.text} size={hint.size} />}
       {error && <ErrorText text={error.text} size={error.size} />}
       <select
-        className="focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+        className="
+          focus:gi-outline 
+          focus:gi-outline-[3px] 
+          focus:gi-outline-yellow-400 
+          focus:gi-outline-offset-0
+          gi-p-1.5
+          gi-border-black
+          gi-border-[3px]
+          gi-border-solid
+          gi-min-w-56
+          gi-font-primary 
+          xs:gi-text-sm
+          md:gi-text-md
+          lg:gi-text-lg"
         id={ariaLabel}
         aria-label={ariaLabel}
       >

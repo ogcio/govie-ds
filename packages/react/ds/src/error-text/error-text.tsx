@@ -36,7 +36,7 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
 
   return (
     <div
-      className={`${sizeClass} gi-font-bold gi-text-red-600 ${className}`}
+      className={`${sizeClass} gi-font-bold gi-text-red-600 ${className || ''}`}
       {...props}
     >
       {text}

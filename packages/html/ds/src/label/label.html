@@ -1,3 +1,5 @@
+{% from 'helpers/helpers.html' import addClasses %}
+
 {% macro govieLabel(props) %}
   {% macro getSizeClass(size) %}
     {% if size == 'lg' %}
@@ -12,7 +14,7 @@
     {% if props.for %}
       for="{{ props.for }}"
     {% endif %}
-    class="{{ getSizeClass(props.size) | trim }} gi-mb-1 gi-block"
+    class="{{ getSizeClass(props.size) | trim }} gi-mb-1 gi-block {{ addClasses(props.classNames) | trim }}"
     >{{ props.content | safe | trim }}</label
   >
 {% endmacro %}

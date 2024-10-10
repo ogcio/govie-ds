@@ -22,6 +22,11 @@ export const labelSchema = zod.object({
         'Ensures the label is properly associated with the corresponding input element.',
     })
     .optional(),
+  classNames: zod
+    .string({
+      description: 'Add additional classes',
+    })
+    .optional(),
 });
 
 export type LabelProps = zod.infer<typeof labelSchema>;

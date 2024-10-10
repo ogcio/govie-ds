@@ -36,12 +36,18 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
       >
         {label?.text && (
-          <Label text={label.text} size={label.size} htmlFor={id} />
+          <Label
+            text={label.text}
+            size={label.size}
+            htmlFor={id}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+          />
         )}
 
         {hint?.text && <HintText text={hint.text} size={hint.size} />}
 
         {error?.text && <ErrorText text={error.text} size={error.size} />}
+
         <div className="gi-flex gi-items-center">
           <textarea
             id={id}
