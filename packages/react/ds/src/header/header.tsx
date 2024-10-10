@@ -50,47 +50,57 @@ export function Header({
 
   const headerClassNames =
     'gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500';
-
-  const languageBarClassName =
+  const languageBarClassNames =
     'gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4  gi-pr-8 gi-my-1';
-  const languageItemClassName =
+  const languageItemClassNames =
     'gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm';
+  const menuContainerClassNames =
+    'gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4';
+  const logoLargeClassNames = 'md:gi-block gi-hidden';
+  const logoSmallClassNames = 'md:gi-hidden gi-block';
+  const appTitleClassNames =
+    'gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow';
   const toolItemClassNames =
-    'gi-border gi-border-solid gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-hidden xs:gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
+    'gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
+  const toolItemLabelClassNames =
+    'gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white';
+  const navLinkContainerClassNames =
+    'gi-hidden sm:gi-flex gi-gap-4 gi-text-white';
   const navLinkClassNames =
     'gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
+  const menuDividerClassNames =
+    'gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6';
+  const overlayClassNames =
+    'gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20';
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
       {languages && (
-        <ul className={languageBarClassName}>
+        <ul className={languageBarClassNames}>
           {languages.map((link, index) => (
             <li key={index}>
               {link.href ? (
-                <a href={link.href} className={languageItemClassName}>
+                <a href={link.href} className={languageItemClassNames}>
                   {link.label}
                 </a>
               ) : (
-                <span className={languageItemClassName}>{link.label}</span>
+                <span className={languageItemClassNames}>{link.label}</span>
               )}
             </li>
           ))}
         </ul>
       )}
-      <div
-        id="MenuContainer"
-        className="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
-      >
+      <div id="MenuContainer" className={menuContainerClassNames}>
         {logo?.href ? (
           <>
-            <a href={logo.href} className="md:gi-block gi-hidden">
+            <a href={logo.href} className={logoLargeClassNames}>
               {logo.image ? (
                 <img className="gi-object-contain gi-h-12" src={logo.image} />
               ) : (
                 <GovieLogo />
               )}
             </a>
-            <a href={logo.href} className="md:gi-hidden gi-block">
+            <a href={logo.href} className={logoSmallClassNames}>
               {logo.image ? (
                 <img className="gi-object-contain gi-h-10" src={logo.image} />
               ) : (
@@ -100,14 +110,14 @@ export function Header({
           </>
         ) : (
           <>
-            <span className="md:gi-block gi-hidden">
+            <span className={logoLargeClassNames}>
               {logo?.image ? (
                 <img className="gi-object-contain gi-h-12" src={logo.image} />
               ) : (
                 <GovieLogo />
               )}
             </span>
-            <span className="md:gi-hidden gi-block">
+            <span className={logoSmallClassNames}>
               {logo?.image ? (
                 <img className="gi-object-contain gi-h-10" src={logo.image} />
               ) : (
@@ -117,13 +127,11 @@ export function Header({
           </>
         )}
 
-        <div className="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow">
-          {title}
-        </div>
+        <div className={appTitleClassNames}>{title}</div>
 
-        <ul className="gi-hidden sm:gi-flex gi-gap-4 gi-text-white">
+        <ul className={navLinkContainerClassNames}>
           {navLinks?.map((link, index) => (
-            <li key={index} className="gi-flex">
+            <li key={index}>
               <a href={link.href} className={navLinkClassNames}>
                 {link.label}
               </a>
@@ -131,7 +139,7 @@ export function Header({
           ))}
         </ul>
         {navLinks && hasDivider && (
-          <div className="gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6"></div>
+          <div className={menuDividerClassNames}></div>
         )}
         {tools?.search && (
           <label htmlFor="SearchTrigger" className={toolItemClassNames}>
@@ -141,30 +149,25 @@ export function Header({
               type="checkbox"
             />
             {tools.search.label && (
-              <span className="gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white">
+              <span className={toolItemLabelClassNames}>
                 {tools.search.label}
               </span>
             )}
             <Icon
-              className="search-icon gi-text-white"
+              className="search-icon"
               icon={tools.search.icon || 'search'}
             />
-            <Icon className="gi-hidden close-icon gi-text-white" icon="close" />
+            <Icon className="gi-hidden close-icon" icon="close" />
           </label>
         )}
 
         {tools?.items &&
           tools?.items.map((item) => (
-            <a
-              className="gi-rounded-sm gi-items-center gi-p-2 gi-border-solid gi-border gi-flex gi-gap-md focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 hover:gi-bg-black hover:gi-bg-opacity-20 gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
-              href={item.href}
-            >
+            <a className={toolItemClassNames} href={item.href}>
               {item.label && (
-                <span className="gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white">
-                  {item.label}
-                </span>
+                <span className={toolItemLabelClassNames}>{item.label}</span>
               )}
-              {item.icon && <Icon className="gi-text-white" icon={item.icon} />}
+              {item.icon && <Icon icon={item.icon} />}
             </a>
           ))}
         <label
@@ -177,11 +180,9 @@ export function Header({
             type="checkbox"
           />
           {tools?.menu?.label && (
-            <span className="gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white">
-              {tools.menu.label}
-            </span>
+            <span className={toolItemLabelClassNames}>{tools.menu.label}</span>
           )}
-          <Icon className="gi-text-white" icon={tools?.menu?.icon || 'menu'} />
+          <Icon icon={tools?.menu?.icon || 'menu'} />
         </label>
       </div>
       {tools?.search && <HeaderSearch {...tools.search} />}
@@ -190,10 +191,7 @@ export function Header({
         languages={languages}
         navLinks={navLinks}
       />
-      <div
-        id="HeaderOverlayContainer"
-        className="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"
-      ></div>
+      <div id="HeaderOverlayContainer" className={overlayClassNames}></div>
     </header>
   );
 }

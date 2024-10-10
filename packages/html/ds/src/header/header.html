@@ -1,4 +1,4 @@
-{% from 'header/assets/logo.html' import govieLogo %}
+{% from "header/assets/logo.html" import govieLogo %}
 {% from 'header/assets/logoSmall.html' import govieLogoSmall %}
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'header/assets/logo.html' import govieLogo %}
@@ -6,24 +6,28 @@
 {% from 'header/components/headerMenu.html' import headerMenu %}
 
 {% macro govieHeader(props) %}
-  
-  {% set toolItemClassNames = "gi-border gi-border-solid gi-border-transparent focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %}
+  {% set headerClassNames = "gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500" %}
+  {% set languageBarClassNames ="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4  gi-pr-8 gi-my-1" %}
+  {% set languageItemClassNames ="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm" %}
+  {% set menuContainerClassNames ="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4" %}
+  {% set logoLargeClassNames = "md:gi-block gi-hidden" %}
+  {% set logoSmallClassNames = "md:gi-hidden gi-block" %}
+  {% set appTitleClassNames = "gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow" %}
+  {% set toolItemClassNames ="gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %}
   {% set toolItemLabelClassNames = "gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white" %}
+  {% set navLinkContainerClassNames = "gi-hidden sm:gi-flex gi-gap-4 gi-text-white" %}
   {% set navLinkClassNames ="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %}
+  {% set menuDividerClassNames = "gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6" %}
+  {% set overlayClassNames = "gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20" %}
 
-  <header
-    id="GovieHeader"
-    class="gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500"
-  >
+  <header id="GovieHeader" class="{{ headerClassNames }}">
     {% if props.languages %}
-      <ul
-        class="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4  gi-pr-8 gi-my-1"
-      >
+      <ul class="{{ languageBarClassNames }}">
         {% for link in props.languages %}
           <li>
             <a
               data-testid="language-link-desktop-{{ loop.index0 }}"
-              class="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm"
+              class="{{ languageItemClassNames }}"
               href="{{ link.href }}"
               >{{ link.label }}</a
             >
@@ -32,38 +36,30 @@
       </ul>
     {% endif %}
 
-    <div
-      id="MenuContainer"
-      class="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
-    >
+    <div id="MenuContainer" class="{{ menuContainerClassNames }}">
       {% if props.logo.href %}
         <a
           aria-label="Go to the home page"
           href="{{ props.logo.href }}"
-          class="md:gi-block gi-hidden"
+          class="{{ logoLargeClassNames }}"
           >{{ govieLogo() }}</a
         >
         <a
           aria-label="Go to the home page"
           href="{{ props.logo.href }}"
-          class="md:gi-hidden gi-block"
+          class="{{ logoSmallClassNames }}"
           >{{ govieLogoSmall() }}</a
         >
       {% else %}
-        <span class="md:gi-block gi-hidden">{{ govieLogo() }}</span>
-        <span class="md:gi-hidden gi-block">{{ govieLogoSmall() }}</span>
+        <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
+        <span class="{{ logoSmallClassNames }}">{{ govieLogoSmall() }}</span>
       {% endif %}
 
-      <div
-        class="gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow"
-      >
+      <div class="{{ appTitleClassNames }}">
         {% if props.title %}{{ props.title }}{% endif %}
       </div>
 
-      <ul
-        id="links-container-desktop"
-        class="gi-hidden sm:gi-flex gi-gap-4 gi-text-white"
-      >
+      <ul id="links-container-desktop" class="{{ navLinkContainerClassNames }}">
         {% for link in props.navLinks %}
           <li class="gi-flex">
             <a
@@ -76,9 +72,7 @@
         {% endfor %}
       </ul>
       {% if props.navLinks and props.tools %}
-        <div
-          class="gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6"
-        ></div>
+        <div class="{{ menuDividerClassNames }}"></div>
       {% endif %}
       {% if props.tools.search %}
         <label htmlFor="SearchTrigger" class="{{ toolItemClassNames }}">
@@ -92,14 +86,20 @@
               >{{ props.tools.search.label }}</span
             >
           {% endif %}
-          <div class="gi-text-white search-icon">
+          <div class="search-icon">
             {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
           </div>
-          <div class="gi-text-white gi-hidden close-icon">
+          <div class="gi-hidden close-icon">
             {{ govieIcon({"icon": "close"}) }}
           </div>
         </label>
       {% endif %}
+      {% for item in props.tools.items %}
+        <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
+          <span class="{{ toolItemLabelClassNames }}">{{ item.label }}</span>
+          {{ govieIcon({"icon": item.icon }) }}
+        </a>
+      {% endfor %}
       {% if props.tools.menu %}
         <label
           htmlFor="MobileMenuTrigger"
@@ -116,7 +116,7 @@
               >{{ props.tools.menu.label }}</span
             >
           {% endif %}
-          <div class="gi-text-white" data-element="menu-icon">
+          <div data-element="menu-icon">
             {{ govieIcon({"icon": props.tools.menu.icon or "menu" }) }}
           </div>
         </label>
@@ -126,9 +126,6 @@
       {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "dataElement": "search-container-small","dataTestId": "search-container-tablet"}) }}
     {% endif %}
     {{ headerMenu(props) }}
-    <div
-      class="gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20"
-      data-element="overlay-disabled"
-    ></div>
+    <div class="{{ overlayClassNames }}" data-element="overlay-disabled"></div>
   </header>
 {% endmacro %}
