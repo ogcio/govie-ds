@@ -1,12 +1,17 @@
+import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
+import { Highlight } from '@/components/typography/highlight';
+import { Link } from '@/components/typography/link';
+import { cn } from '@/lib/cn';
 import {
+  Button,
   Heading,
+  Icon,
   Paragraph,
   TabItem,
   TabList,
   TabPanel,
   Tabs,
-  Button,
-  Icon,
   Tag,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -24,6 +29,7 @@ import {
 } from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { BasicPage } from '../patterns/basic-page';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
@@ -53,11 +59,6 @@ import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { wrapComponents } from './wrap-components';
-import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { Highlight } from '@/components/typography/highlight';
-import { Link } from '@/components/typography/link';
-import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
@@ -124,6 +125,7 @@ const documentComponents: MDXComponents = {
   Vision: () => <Vision />,
   DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
+  BasicPage: (props) => <BasicPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
