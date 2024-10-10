@@ -51,7 +51,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
           xs:gi-text-sm
           md:gi-text-md
           lg:gi-text-lg"
-        id={ariaLabel}
+        id={id}
         aria-label={ariaLabel}
       >
         {options.map((option) => {
