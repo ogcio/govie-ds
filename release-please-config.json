@@ -4,6 +4,7 @@
     "bootstrap-sha": "78025b35be74c6eccbfcbcec4a1509e2e919e7f4",
     "release-type": "node",
     "packages": {
+        "apps/docs": {},
         "packages/build/eslint-config": {},
         "packages/build/prettier-config": {},
         "packages/design/deepmerge": {},
