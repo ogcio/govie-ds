@@ -50,16 +50,16 @@
           }}
         {% endif %}
         <div class="gi-flex gi-gap-2.5 {{ isInline }}">
-          {% for radio in props.items %}
+          {% for radio in props['items'] %}
             {{
               govieRadio({
               "name": props.fieldId,
               "label": radio.label,
               "value": radio.value,
               "hint": radio.hint,
-              "radioId": props.fieldId + "-" + loop.index0,
+              "radioId": props.fieldId + "-" + loop.index0 | string,
               "size": props.size,
-              "dataElement": "radio" + loop.index0,
+              "dataElement": "radio" + loop.index0 | string,
               "conditionalInput": radio.conditionalInput
               })
             }}
@@ -76,7 +76,7 @@
                 "label": props.dividerOption.label,
                 "value": props.dividerOption.value,
                 "hint": props.dividerOption.hint,
-                "radioId": props.fieldId + "-" + props.items.length,
+                "radioId": props.fieldId + "-" + props.items.length | string,
                 "size": props.size,
                 "dataElement": "radio-divider-option",
                 "conditionalInput": props.dividerOption.conditionalInput
