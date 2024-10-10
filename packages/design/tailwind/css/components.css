@@ -152,7 +152,7 @@
 .gi-header-tool-item {
   @apply gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400;
 }
-.gi-header-tool-item span:first-of-type {
+.gi-header-tool-item span[data='label'] {
   @apply gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white;
 }
 .gi-header-nav {
@@ -168,27 +168,25 @@
   @apply gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20;
 }
 
-#GovieHeader {
-  #MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
-    height: var(--gieds-space-40);
-  }
+#MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+  @apply gi-h-40;
+}
 
-  #SearchTrigger:checked ~ .search-icon {
-    display: none;
-  }
+#SearchTrigger:checked ~ .search-icon {
+  @apply gi-hidden;
+}
 
-  #SearchTrigger:checked ~ .close-icon {
-    display: block;
-  }
+#SearchTrigger:checked ~ .close-icon {
+  @apply gi-block;
+}
 
-  #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
-    transform: translateX(0);
-  }
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+  transform: translateX(0);
+}
 
-  #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
-    display: block;
-    position: fixed;
-  }
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+  display: block;
+  position: fixed;
 }
 
 /* End Header */

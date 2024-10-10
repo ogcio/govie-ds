@@ -3,6 +3,7 @@
 {% macro HeaderSearchContainer(props) %}
   <div
     id="SearchContainer"
+    data-testid="SearchContainer"
     class="gi-flex
           gi-h-0
           gi-bg-gray-50
@@ -12,7 +13,7 @@
   >
     <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
       <form action="{{ props.searchUrl }}">
-        <label htmlFor="search" class="gi-text-md gi-font-bold gi-mb-4">
+        <label for="search" class="gi-text-md gi-font-bold gi-mb-4">
           Enter search term
         </label>
         <div class="gi-flex">

@@ -72,16 +72,15 @@
         <div class="{{ menuDividerClassNames }}"></div>
       {% endif %}
       {% if props.tools.search %}
-        <label htmlFor="SearchTrigger" class="{{ toolItemClassNames }}">
+        <label for="SearchTrigger" class="{{ toolItemClassNames }}">
           <input
             class="gi-block gi-w-0 gi-absolute gi-h-0"
             id="SearchTrigger"
             type="checkbox"
+            data-testid="SearchTrigger"
           />
           {% if props.tools.search.label %}
-            <span class="{{ toolItemLabelClassNames }}"
-              >{{ props.tools.search.label }}</span
-            >
+            <span>{{ props.tools.search.label }}</span>
           {% endif %}
           <div class="search-icon">
             {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
@@ -93,13 +92,13 @@
       {% endif %}
       {% for item in props.tools.items %}
         <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-          <span class="{{ toolItemLabelClassNames }}">{{ item.label }}</span>
+          <span>{{ item.label }}</span>
           {{ govieIcon({"icon": item.icon }) }}
         </a>
       {% endfor %}
       {% if props.tools.menu %}
         <label
-          htmlFor="MobileMenuTrigger"
+          for="MobileMenuTrigger"
           class="{{ toolItemClassNames }} sm:gi-hidden"
         >
           <input
@@ -109,9 +108,7 @@
             type="checkbox"
           />
           {% if props.tools.menu.label %}
-            <span class="{{ toolItemLabelClassNames }}"
-              >{{ props.tools.menu.label }}</span
-            >
+            <span>{{ props.tools.menu.label }}</span>
           {% endif %}
           <div data-element="menu-icon">
             {{ govieIcon({"icon": props.tools.menu.icon or "menu" }) }}
@@ -120,7 +117,7 @@
       {% endif %}
     </div>
     {% if props.tools.search %}
-      {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "dataElement": "search-container-small","dataTestId": "search-container-tablet"}) }}
+      {{ HeaderSearchContainer({"searchUrl": props.tools.search.action}) }}
     {% endif %}
     {{ headerMenu(props) }}
     <div class="{{ overlayClassNames }}" data-element="overlay-disabled"></div>
