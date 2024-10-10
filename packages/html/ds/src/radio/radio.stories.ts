@@ -12,7 +12,8 @@ const macro = { name: 'govieRadiosGroup', html, path };
 
 const Radios = renderComponent<RadiosProps>(macro);
 
-const standardProps = {
+export const standardProps = {
+  fieldId: 'uniqueId',
   title: {
     value: 'Where do you live?',
     asHeading: {
