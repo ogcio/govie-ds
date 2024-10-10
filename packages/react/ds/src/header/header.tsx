@@ -56,11 +56,7 @@ export function Header({
   const logoSmallClassNames = 'gi-header-logo-sm';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
-  // const toolItemLabelClassNames =
-  //   'gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white';
   const navLinkContainerClassNames = 'gi-header-nav';
-  // const navLinkClassNames =
-  //   'gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
   const menuDividerClassNames = 'gi-header-separator';
   const overlayClassNames = 'gi-header-overlay';
 
