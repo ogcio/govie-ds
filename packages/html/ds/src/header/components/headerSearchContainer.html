@@ -2,21 +2,25 @@
 
 {% macro HeaderSearchContainer(props) %}
   <div
-    class="gi-flex xs:gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
-    data-element="{{ props.dataElement }}"
-    data-testid="{{ props.dataTestId }}"
+    id="SearchContainer"
+    class="gi-flex
+          gi-h-0
+          gi-bg-gray-50
+          gi-overflow-hidden
+          gi-px-4
+          xs:gi-px-8"
   >
     <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
       <form action="{{ props.searchUrl }}">
-        <label class="gi-text-md gi-font-bold gi-mb-4" for="search"
-          >Enter search term</label
-        >
+        <label htmlFor="search" class="gi-text-md gi-font-bold gi-mb-4">
+          Enter search term
+        </label>
         <div class="gi-flex">
           <input
             name="search_query"
+            type="text"
             class="gi-px-3 gi-py-1 gi-grow gi-w-full"
             id="search"
-            type="text"
           />
           <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
             {{ govieIcon({"icon": "search"}) }}
