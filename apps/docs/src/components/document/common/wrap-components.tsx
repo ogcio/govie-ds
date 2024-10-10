@@ -8,6 +8,14 @@ export function wrapComponents(
     const Component = components[key];
 
     accumulator[key] = (props: Record<string, unknown>) => {
+      if (key === 'Header') {
+        return (
+          <div className="mb-2xl" {...props}>
+            <Component {...props} />
+          </div>
+        );
+      }
+
       const wrappers = wrapper({
         key,
       });

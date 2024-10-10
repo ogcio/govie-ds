@@ -85,6 +85,13 @@ export const Default: Story = {
         action: '/search_page',
         label: 'Search',
       },
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
+        },
+      ],
     },
     navLinks: [
       {

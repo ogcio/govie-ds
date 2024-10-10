@@ -11,6 +11,283 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 <ComponentStatusBlock componentId="header" />
 
+<Header 
+    title={'Application title'}
+    languages={[{ href: '#', label: 'Gaeilge' }]}
+    navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]}
+    tools={{
+      search: {
+        label: 'Search',
+        action: '/search-page',
+      },
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
+        },
+      ],
+      menu: {
+        label: 'Menu'
+      }
+    }} 
+/>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">        
+    ```html
+    
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">        
+    ```html
+    {{ govieHeader({
+        "title":"Application title"
+        "languages":[{ "href": "#", "label": "Gaeilge" }]
+        "navLinks":[{ "href": "#", "label": "News" },{ "href": "#", "label": "Departments" },{ "href": "#", "label": "Services" }]
+        "tools":{
+            "search": {
+                "label": "Search",
+                "action": "/search-page",
+            },
+            "items": [
+                {
+                    "href": "/item1",
+                    "label": "Home",
+                    "icon": "home",
+                },
+            ],
+            "menu": {
+                "label": "Menu"
+            }
+        }
+        })
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header 
+        title={'Application title'}
+        languages={[{ href: '#', label: 'Gaeilge' }]}
+        navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]}
+        tools={
+            search: {
+                label: 'Search',
+                action: '/search-page',
+            },
+            items: [
+                {
+                href: '/item1',
+                label: 'Home',
+                icon: 'home',
+                },
+            ],
+            menu: {
+                label: 'Menu'
+            }
+        } 
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
+## Header with title
+
+<Header title={'Application title'} />
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">        
+    ```html
+    
+    ```
+  </TabPanel>
+  <TabPanel value="tab22">        
+    ```html
+    {{ govieHeader({"title": "Application title"}) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header title={'Application title'}/>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Header with links
+
+<Header navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]} />
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">        
+    ```html
+    
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">        
+    ```html
+    {{ govieHeader({
+        "navLinks": [
+            { 
+                "href": "#", 
+                "label": "News" 
+            },
+            { 
+                "href": "#", 
+                "label": "Departments" 
+            },
+            { 
+                "href": "#", 
+                "label": "Services"
+            }
+        ]}) 
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header navLinks={[
+                { href: '#', label: 'News' },
+                { href: '#', label: 'Departments' },
+                { href: '#', label: 'Services' }
+            ]}/>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Header with language switch
+
+<Header languages={[{ href: '#', label: 'Gaeilge' }]}/>
+
+<Tabs id="tab4">
+  <TabList>
+    <TabItem value="tab41" checked>HTML</TabItem>
+    <TabItem value="tab42">Macro</TabItem>
+    <TabItem value="tab43">React</TabItem>
+  </TabList>
+  <TabPanel value="tab41">        
+    ```html
+    
+    ```
+  </TabPanel>
+  <TabPanel value="tab42">        
+    ```html
+    {{ govieHeader({
+        "languages": [
+            { 
+                "href": "#", 
+                "label": "Gaeilge" 
+            }
+        ]}) 
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab43">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header languages={[{ href: '#', label: 'Gaeilge' }]}/>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Header with tools
+
+<Header tools={{
+      search: {
+        label: 'Search',
+        action: '/search-page',
+      },
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
+        },
+      ],
+      menu: {
+        label: 'Menu'
+      }
+    }} />
+
+<Tabs id="tab5">
+  <TabList>
+    <TabItem value="tab51" checked>HTML</TabItem>
+    <TabItem value="tab52">Macro</TabItem>
+    <TabItem value="tab53">React</TabItem>
+  </TabList>
+  <TabPanel value="tab51">        
+    ```html
+    
+    ```
+  </TabPanel>
+  <TabPanel value="tab52">        
+    ```html
+    {{ govieHeader(
+        tools:{
+            search: {
+                label: 'Search'
+                action: '/search-page',
+            },
+            items: [
+                {
+                href: '/item1',
+                label: 'Home',
+                icon: 'home',
+                },
+            ],
+            menu: {
+                label: 'Menu'
+            }
+        }) 
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab53">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header tools={{
+        search: {
+            label: 'Search'
+            action: '/search-page',
+        },
+        items: [
+            {
+            href: '/item1',
+            label: 'Home',
+            icon: 'home',
+            },
+        ],
+        menu: {
+            label: 'Menu'
+        }
+    }} />
+    ```
+  </TabPanel>
+</Tabs>
+
 ## When to use this component
 
 You must use the GOV.IE header component at the top of every page. The Service Manual explains why it’s important for you to make your service look like GOV.IE.

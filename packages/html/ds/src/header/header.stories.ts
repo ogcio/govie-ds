@@ -33,17 +33,9 @@ export const Default: Story = {
         action: {
           description: 'The url for the search page',
         },
-        noJsSearchLink: {
-          description:
-            'Fallback link for the search button if there is no JS enabled on page',
-        },
       },
-      menu: {
-        noJsMenuLink: {
-          description:
-            'Fallback link for the menu button if there is no JS enabled on page',
-        },
-      },
+      items: [],
+      menu: {},
     },
     navLinks: {
       description: 'A list of navigation links',
@@ -58,11 +50,16 @@ export const Default: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
-        noJsSearchLink: '/search',
       },
+      items: [
+        {
+          href: '/item1',
+          label: 'Apps',
+          icon: 'apps',
+        },
+      ],
       menu: {
         label: 'Menu',
-        noJsMenuLink: '/menu',
       },
     },
     navLinks: [
@@ -105,11 +102,9 @@ export const WithMainLinks: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
-        noJsSearchLink: '/search',
       },
       menu: {
         label: 'Menu',
-        noJsMenuLink: '/menu',
       },
     },
     navLinks: [
@@ -133,9 +128,7 @@ export const WithNoSearch: Story = {
   args: {
     logo: { href: '/home' },
     tools: {
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      menu: {},
     },
     navLinks: [
       {
@@ -158,10 +151,8 @@ export const WithLanguage: Story = {
   args: {
     logo: { href: '/home' },
     tools: {
-      search: { action: '/search_page', noJsSearchLink: '/search' },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      search: { action: '/search_page' },
+      menu: {},
     },
     languages: [
       {
@@ -176,10 +167,8 @@ export const withMainAndLanguageLinks: Story = {
   args: {
     logo: { href: '/home' },
     tools: {
-      search: { action: '/search_page', noJsSearchLink: '/search' },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      search: { action: '/search_page' },
+      menu: {},
     },
     navLinks: [
       {
@@ -213,10 +202,8 @@ export const tabletView: Story = {
   args: {
     logo: { href: '/home' },
     tools: {
-      search: { action: '/search_page', noJsSearchLink: '/search' },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      search: { action: '/search_page' },
+      menu: {},
     },
     navLinks: [
       {
@@ -250,10 +237,8 @@ export const mobileView: Story = {
   args: {
     logo: { href: '/home' },
     tools: {
-      search: { action: '/search_page', noJsSearchLink: '/search' },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      search: { action: '/search_page' },
+      menu: {},
     },
     navLinks: [
       {
@@ -283,10 +268,8 @@ export const withTitle: Story = {
     title: 'Life Events',
     logo: { href: '/home' },
     tools: {
-      search: { action: '/search_page', noJsSearchLink: '/search' },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      search: { action: '/search_page' },
+      menu: {},
     },
     navLinks: [
       {
@@ -313,11 +296,8 @@ export const WithNoLabels: Story = {
     tools: {
       search: {
         action: '/search_page',
-        noJsSearchLink: '/search',
       },
-      menu: {
-        noJsMenuLink: '/menu',
-      },
+      menu: {},
     },
     navLinks: [
       {
