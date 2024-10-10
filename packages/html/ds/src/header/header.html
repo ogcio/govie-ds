@@ -6,19 +6,19 @@
 {% from 'header/components/headerMenu.html' import headerMenu %}
 
 {% macro govieHeader(props) %}
-  {% set headerClassNames = "gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500" %}
-  {% set languageBarClassNames ="gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4  gi-pr-8 gi-my-1" %}
-  {% set languageItemClassNames ="gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm" %}
-  {% set menuContainerClassNames ="gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4" %}
-  {% set logoLargeClassNames = "md:gi-block gi-hidden" %}
-  {% set logoSmallClassNames = "md:gi-hidden gi-block" %}
-  {% set appTitleClassNames = "gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow" %}
-  {% set toolItemClassNames ="gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %}
-  {% set toolItemLabelClassNames = "gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white" %}
-  {% set navLinkContainerClassNames = "gi-hidden sm:gi-flex gi-gap-4 gi-text-white" %}
-  {% set navLinkClassNames ="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %}
-  {% set menuDividerClassNames = "gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6" %}
-  {% set overlayClassNames = "gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20" %}
+  {% set headerClassNames = "gi-header" %}
+  {% set languageBarClassNames ="gi-header-language-bar" %}
+  {% set languageItemClassNames ="gi-header-language-item" %}
+  {% set menuContainerClassNames ="gi-header-menu" %}
+  {% set logoLargeClassNames = "gi-header-logo-lg" %}
+  {% set logoSmallClassNames = "gi-header-logo-sm" %}
+  {% set appTitleClassNames = "gi-header-title" %}
+  {% set toolItemClassNames ="gi-header-tool-item" %}
+  {# {% set toolItemLabelClassNames = "gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white" %} #}
+  {% set navLinkContainerClassNames = "gi-header-nav" %}
+  {# {% set navLinkClassNames ="gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400" %} #}
+  {% set menuDividerClassNames = "gi-header-separator" %}
+  {% set overlayClassNames = "gi-header-overlay" %}
 
   <header id="GovieHeader" class="{{ headerClassNames }}">
     {% if props.languages %}
@@ -64,7 +64,6 @@
           <li class="gi-flex">
             <a
               data-testid="nav-link-desktop-{{ loop.index0 }}"
-              class="{{ navLinkClassNames }}"
               href="{{ link.href }}"
               >{{ link.label }}</a
             >

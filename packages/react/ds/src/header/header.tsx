@@ -48,30 +48,21 @@ export function Header({
 }: HeaderProps) {
   const hasDivider = tools?.items || tools?.search;
 
-  const headerClassNames =
-    'gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500';
-  const languageBarClassNames =
-    'gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4  gi-pr-8 gi-my-1';
-  const languageItemClassNames =
-    'gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm';
-  const menuContainerClassNames =
-    'gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4';
-  const logoLargeClassNames = 'md:gi-block gi-hidden';
-  const logoSmallClassNames = 'md:gi-hidden gi-block';
-  const appTitleClassNames =
-    'gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow';
-  const toolItemClassNames =
-    'gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
-  const toolItemLabelClassNames =
-    'gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white';
-  const navLinkContainerClassNames =
-    'gi-hidden sm:gi-flex gi-gap-4 gi-text-white';
-  const navLinkClassNames =
-    'gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
-  const menuDividerClassNames =
-    'gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6';
-  const overlayClassNames =
-    'gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20';
+  const headerClassNames = 'gi-header';
+  const languageBarClassNames = 'gi-header-language-bar';
+  const languageItemClassNames = 'gi-header-language-item';
+  const menuContainerClassNames = 'gi-header-menu';
+  const logoLargeClassNames = 'gi-header-logo-lg';
+  const logoSmallClassNames = 'gi-header-logo-sm';
+  const appTitleClassNames = 'gi-header-title';
+  const toolItemClassNames = 'gi-header-tool-item';
+  // const toolItemLabelClassNames =
+  //   'gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white';
+  const navLinkContainerClassNames = 'gi-header-nav';
+  // const navLinkClassNames =
+  //   'gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400';
+  const menuDividerClassNames = 'gi-header-separator';
+  const overlayClassNames = 'gi-header-overlay';
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
@@ -132,9 +123,7 @@ export function Header({
         <ul className={navLinkContainerClassNames}>
           {navLinks?.map((link, index) => (
             <li key={index}>
-              <a href={link.href} className={navLinkClassNames}>
-                {link.label}
-              </a>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))}
         </ul>
@@ -148,11 +137,7 @@ export function Header({
               id="SearchTrigger"
               type="checkbox"
             />
-            {tools.search.label && (
-              <span className={toolItemLabelClassNames}>
-                {tools.search.label}
-              </span>
-            )}
+            {tools.search.label && <span>{tools.search.label}</span>}
             <Icon
               className="search-icon"
               icon={tools.search.icon || 'search'}
@@ -164,9 +149,7 @@ export function Header({
         {tools?.items &&
           tools?.items.map((item) => (
             <a className={toolItemClassNames} href={item.href}>
-              {item.label && (
-                <span className={toolItemLabelClassNames}>{item.label}</span>
-              )}
+              {item.label && <span>{item.label}</span>}
               {item.icon && <Icon icon={item.icon} />}
             </a>
           ))}
@@ -179,9 +162,7 @@ export function Header({
             id="MobileMenuTrigger"
             type="checkbox"
           />
-          {tools?.menu?.label && (
-            <span className={toolItemLabelClassNames}>{tools.menu.label}</span>
-          )}
+          {tools?.menu?.label && <span>{tools.menu.label}</span>}
           <Icon icon={tools?.menu?.icon || 'menu'} />
         </label>
       </div>
