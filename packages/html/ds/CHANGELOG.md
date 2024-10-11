@@ -50,6 +50,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.11.1](https://github.com/ogcio/govie-ds/compare/html-v0.11.0...html-v0.11.1) (2024-10-10)
+
+
+### Bug Fixes
+
+* match the id of select with for attr ([#280](https://github.com/ogcio/govie-ds/issues/280)) ([44f5d0d](https://github.com/ogcio/govie-ds/commit/44f5d0d220df7a15f8c6551ff6a6e24b513bdfe3))
+
 ## [0.11.0](https://github.com/ogcio/govie-ds/compare/html-v0.10.0...html-v0.11.0) (2024-10-09)
 
 
