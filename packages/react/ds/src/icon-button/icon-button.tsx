@@ -8,7 +8,7 @@ export function IconButton({
   disabled = false,
 }: {
   icon: React.ReactElement;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler;
   href?: string;
   ariaLabel: string;
   disabled?: boolean;

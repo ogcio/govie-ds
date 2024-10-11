@@ -40,7 +40,7 @@ const CheckboxesGroup = ({
             <Heading
               size={title.asHeading.size}
               as={title.asHeading.tag}
-              className="!gi-mb-[var(--gieds-space-2)]"
+              customClasses="!gi-mb-[var(--gieds-space-2)]"
             >
               {title.value}
             </Heading>
