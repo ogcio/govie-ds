@@ -15,6 +15,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.12.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.11.0...tailwind-v0.12.0) (2024-10-11)
+
+
+### Features
+
+* unify footer structure ([#284](https://github.com/ogcio/govie-ds/issues/284)) ([0ee181f](https://github.com/ogcio/govie-ds/commit/0ee181fb81b5d4d5bb75b90d0e9f521827d8a9bb))
+* unify header structure ([#278](https://github.com/ogcio/govie-ds/issues/278)) ([bb0c88d](https://github.com/ogcio/govie-ds/commit/bb0c88d45f747ab1dadde686492e80445ba23c39))
+
 ## [0.11.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.10.1...tailwind-v0.11.0) (2024-10-09)
 
 

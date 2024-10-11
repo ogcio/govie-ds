@@ -36,6 +36,33 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.24.0](https://github.com/ogcio/govie-ds/compare/docs-v0.23.0...docs-v0.24.0) (2024-10-11)
+
+
+### Features
+
+* add `govieTag` & `Tag` component for HTML and React respectively ([#265](https://github.com/ogcio/govie-ds/issues/265)) ([b7d65b1](https://github.com/ogcio/govie-ds/commit/b7d65b1c7bd59a39c46b7db6026cbb6e1c2a2b8f))
+* add file upload component ([#247](https://github.com/ogcio/govie-ds/issues/247)) ([8f73a13](https://github.com/ogcio/govie-ds/commit/8f73a1334703324315a63d4a6069d5de1dddcba1))
+* add global html text-area component ([#231](https://github.com/ogcio/govie-ds/issues/231)) ([0990cba](https://github.com/ogcio/govie-ds/commit/0990cba7b04b0344d3be054dcf53b0b003cb87b1))
+* add html file-upload component ([#254](https://github.com/ogcio/govie-ds/issues/254)) ([dcce995](https://github.com/ogcio/govie-ds/commit/dcce99568c9ff53f70dbc663fbcac55bdbfe9ead))
+* add tabs for react ([#228](https://github.com/ogcio/govie-ds/issues/228)) ([8f676ee](https://github.com/ogcio/govie-ds/commit/8f676eeeb269e90ec1ddb1dff4a3c1915f234496))
+* implement react checkbox component ([#233](https://github.com/ogcio/govie-ds/issues/233)) ([aa18178](https://github.com/ogcio/govie-ds/commit/aa181785fe5dcabeb282f27f96694a9f375d040e))
+* react button component ([#268](https://github.com/ogcio/govie-ds/issues/268)) ([e542542](https://github.com/ogcio/govie-ds/commit/e5425421250ab44cfec37ecc2577b15ae3af65c3))
+* react select component ([#240](https://github.com/ogcio/govie-ds/issues/240)) ([b9c16cb](https://github.com/ogcio/govie-ds/commit/b9c16cb01cbfc3c4a451aa0e09e30cc15a53c28e))
+* unify footer structure ([#284](https://github.com/ogcio/govie-ds/issues/284)) ([0ee181f](https://github.com/ogcio/govie-ds/commit/0ee181fb81b5d4d5bb75b90d0e9f521827d8a9bb))
+* unify header structure ([#278](https://github.com/ogcio/govie-ds/issues/278)) ([bb0c88d](https://github.com/ogcio/govie-ds/commit/bb0c88d45f747ab1dadde686492e80445ba23c39))
+
+
+### Bug Fixes
+
+* import order ([6d1f36e](https://github.com/ogcio/govie-ds/commit/6d1f36e0b59a35bdaddb916d089c0af462dc824e))
+* improve heading ([#262](https://github.com/ogcio/govie-ds/issues/262)) ([c816e75](https://github.com/ogcio/govie-ds/commit/c816e75d0cfe029cce75535517c4b54738c1600a))
+* improve link doc with tabs ([#252](https://github.com/ogcio/govie-ds/issues/252)) ([6925f88](https://github.com/ogcio/govie-ds/commit/6925f88ee92b7fbc717731cb550a7fe5efa636c4))
+* send formdata on submit and add search url prop ([#251](https://github.com/ogcio/govie-ds/issues/251)) ([0f49978](https://github.com/ogcio/govie-ds/commit/0f499783e4d6a4a5873c3485656a7a67d1280e8a))
+* typo ([1cc5119](https://github.com/ogcio/govie-ds/commit/1cc5119e7a44a8478c4b8e3ab136d1869a29c5f6))
+* typography ([#267](https://github.com/ogcio/govie-ds/issues/267)) ([bcdbac6](https://github.com/ogcio/govie-ds/commit/bcdbac66a46fe9ac56b920a0b39c9c2fefd78581))
+* update package naming ([2086e6f](https://github.com/ogcio/govie-ds/commit/2086e6f589401d644e10b0cd0532cdc446c9c7e1))
+
 ## [0.21.21](https://github.com/ogcio/govie-ds/compare/@govie-ds/docs-0.21.21-alpha.3...@govie-ds/docs-0.21.21) (2024-09-10)
 
 ### Dependency Updates
