@@ -172,7 +172,7 @@
   @apply gi-mb-xl;
 }
 
-.gi-footer a.footer-link {
+.gi-footer a {
   @apply gi-underline gi-underline-offset-sm;
 }
 

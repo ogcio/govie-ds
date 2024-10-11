@@ -15,9 +15,7 @@
               <ul>
                 {% for link in linkObj.links %}
                   <li>
-                    <a class="footer-link" href="{{ link.href }}">
-                      {{ link.label }}
-                    </a>
+                    <a href="{{ link.href }}"> {{ link.label }} </a>
                   </li>
                 {% endfor %}
               </ul>
@@ -31,9 +29,7 @@
           {% if props.links %}
             {% for link in props.links %}
               <li data-testid="main-link-{{ loop.index0 }}">
-                <a class="footer-link" href="{{ link.href }}">
-                  {{ link.label }}
-                </a>
+                <a href="{{ link.href }}"> {{ link.label }} </a>
               </li>
             {% endfor %}
           {% endif %}

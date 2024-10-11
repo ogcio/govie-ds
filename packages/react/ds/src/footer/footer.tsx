@@ -30,7 +30,6 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
                     <li data-testid={`secondary-${navIndex}-${index}`}>
                       <a
                         key={`secondary-${navIndex}-${index}`}
-                        className="footer-link"
                         href={link.href}
                       >
                         {link.label}
@@ -47,11 +46,7 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
             <ul>
               {links.map((link, index) => (
                 <li data-testid={`main-link-${index}`}>
-                  <a
-                    key={`main-link-${index}`}
-                    className="footer-link"
-                    href={link.href}
-                  >
+                  <a key={`main-link-${index}`} href={link.href}>
                     {link.label}
                   </a>
                 </li>
