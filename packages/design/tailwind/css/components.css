@@ -126,6 +126,122 @@
 
 /* End Tag */
 
+/* Header */
+
+.gi-header {
+  @apply gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-w-full;
+}
+.gi-header-language-bar {
+  @apply gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4 gi-pr-8;
+}
+.gi-header-language-item {
+  @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
+}
+.gi-header-menu {
+  @apply gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4;
+}
+.gi-header-logo-lg {
+  @apply md:gi-block gi-hidden;
+}
+.gi-header-logo-sm {
+  @apply md:gi-hidden gi-block;
+}
+.gi-header-title {
+  @apply gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow;
+}
+.gi-header-tool-item {
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400;
+}
+.gi-header-tool-item span.label {
+  @apply gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white;
+}
+.gi-header-nav {
+  @apply gi-hidden sm:gi-flex gi-gap-4 gi-text-white;
+}
+.gi-header-nav a {
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400;
+}
+.gi-header-separator {
+  @apply gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6;
+}
+.gi-header-overlay {
+  @apply gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20;
+}
+
+#MenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+  @apply gi-h-40;
+}
+
+#SearchTrigger:checked ~ .search-icon {
+  @apply gi-hidden;
+}
+
+#SearchTrigger:checked ~ .close-icon {
+  @apply gi-block;
+}
+
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+  transform: translateX(0);
+}
+
+#MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+  display: block;
+  position: fixed;
+}
+
+/* End Header */
+
+/* Tabs */
+
+.tab-item:checked + label {
+  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline;
+}
+
+.tab-item:hover + label > * {
+  @apply gi-decoration-lg;
+}
+
+.tab-item:focus + label > * {
+  @apply gi-outline gi-outline-transparent gi-bg-yellow-400 gi-outline-2 gi-shadow gi-shadow-yellow-400;
+}
+
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(1):checked)
+  [role='tabpanel']:nth-of-type(2),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(2):checked)
+  [role='tabpanel']:nth-of-type(3),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(3):checked)
+  [role='tabpanel']:nth-of-type(4),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(4):checked)
+  [role='tabpanel']:nth-of-type(5),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(5):checked)
+  [role='tabpanel']:nth-of-type(6),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(6):checked)
+  [role='tabpanel']:nth-of-type(7),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(7):checked)
+  [role='tabpanel']:nth-of-type(8),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(8):checked)
+  [role='tabpanel']:nth-of-type(9),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(9):checked)
+  [role='tabpanel']:nth-of-type(10),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(10):checked)
+  [role='tabpanel']:nth-of-type(11),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(11):checked)
+  [role='tabpanel']:nth-of-type(12),
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(12):checked)
+  [role='tabpanel']:nth-of-type(13) {
+  display: block;
+}
+
+/* End Tabs */
+
+/* Input File */
+
+input[type='file' i] {
+  @apply gi-appearance-none gi-bg-[initial] gi-cursor-default gi-items-baseline gi-text-ellipsis gi-text-start gi-whitespace-pre;
+}
+
+/* End Input File */
+
 /* Section Break */
 
 .gi-section-break-sm {

@@ -41,12 +41,6 @@ export const headerSchema = zod.object({
               description: 'The search icon, default is icon "search"',
             })
             .optional(),
-          noJsSearchLink: zod
-            .string({
-              description:
-                'The link of the search page when there is no Javascript enabled',
-            })
-            .optional(),
         })
         .describe('Search tool options')
         .optional(),
@@ -60,12 +54,6 @@ export const headerSchema = zod.object({
           icon: zod
             .string({
               description: 'The menu icon, default is icon "icon-hamburger"',
-            })
-            .optional(),
-          noJsMenuLink: zod
-            .string({
-              description:
-                'The link of the menu page when there is no Javascript enabled',
             })
             .optional(),
         })

@@ -8,10 +8,12 @@ import {
   Button,
   Icon,
   Tag,
+  Header,
   Footer,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
 import {
@@ -58,7 +60,6 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
-import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
@@ -77,17 +78,20 @@ const standardComponents: MDXComponents = {
     href ? <Link href={href}>{children}</Link> : null,
   ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
   li: ({ children }) => <li className="text-md mb-sm">{children}</li>,
-  code: ({ children, className }) => (
-    <code
-      className={cn(
-        className
-          ? 'rounded-xs bg-gray-50 border-gray-100 border-xs p-3 text-gray-600 text-xs block mb-2xl'
-          : 'rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs',
-      )}
-    >
-      {children}
-    </code>
-  ),
+  code: ({ children, className }) =>
+    className ? (
+      <SyntaxHighlighter
+        wrapLongLines
+        language={className}
+        className="max-h-[300px] overflow-scroll"
+      >
+        {children as string | string[]}
+      </SyntaxHighlighter>
+    ) : (
+      <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs">
+        {children}
+      </code>
+    ),
   blockquote: ({ children }) => <Highlight>{children}</Highlight>,
 };
 
@@ -140,6 +144,7 @@ const documentComponents: MDXComponents = {
   Button: (props) => <Button {...props} />,
   Icon: (props) => <Icon {...props} />,
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
+  Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
 };
 
