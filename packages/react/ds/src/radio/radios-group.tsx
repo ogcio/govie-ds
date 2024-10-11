@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ErrorText } from '../../dist/index.js';
+import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Radio, getRadioWidth } from './radio.js';
