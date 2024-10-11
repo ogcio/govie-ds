@@ -7,15 +7,15 @@
 }
 
 .gi-layout-column-container {
-  @apply gi-flex gi-flex-col md:gi-flex-row
+  @apply gi-grid gi-grid-cols-1 md:gi-grid-cols-3 gi-gap-4
 }
 
 .gi-layout-column-2-3 {
-  @apply gi-w-full md:gi-w-2/3
+  @apply gi-w-full md:gi-col-span-2
 }
 
 .gi-layout-column-1-3 {
-  @apply gi-w-full md:gi-w-1/3
+  @apply gi-w-full
 }
 
 /* End Layout */

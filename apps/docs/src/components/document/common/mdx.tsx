@@ -1,15 +1,15 @@
 import {
+  Button,
+  Footer,
+  Header,
   Heading,
+  Icon,
   Paragraph,
   TabItem,
   TabList,
   TabPanel,
   Tabs,
-  Button,
-  Icon,
   Tag,
-  Header,
-  Footer,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -27,6 +27,7 @@ import {
 } from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { BasicPage } from '../patterns/basic-page';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
@@ -129,6 +130,7 @@ const documentComponents: MDXComponents = {
   Vision: () => <Vision />,
   DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
+  BasicPage: (props) => <BasicPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
