@@ -68,7 +68,7 @@
           </li>
         {% endfor %}
       </ul>
-      {% if props.navLinks and props.tools %}
+      {% if props.navLinks and (props.tools.search or props.tools.items) %}
         <div class="{{ menuDividerClassNames }}"></div>
       {% endif %}
       {% if props.tools.search %}
