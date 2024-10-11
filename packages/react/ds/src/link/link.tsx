@@ -6,12 +6,14 @@ export type LinkProps = {
   noUnderline?: boolean;
   noColor?: boolean;
   external?: boolean;
+  size?: 'sm' | 'md';
 };
 
 export function Link({
   as: Component = 'a',
   href,
   children,
+  size,
   noUnderline = false,
   noVisited = false,
   noColor = false,
@@ -24,6 +26,7 @@ export function Link({
       {...(external ? { target: '_blank' } : {})}
       className={`
         gi-link
+        ${size ? `gi-link-${size}` : ''}
         ${noUnderline ? 'gi-link-no-underline' : ''}
         ${noVisited ? 'gi-link-no-visited' : ''}
         ${noColor ? 'gi-link-inherit' : ''}`}

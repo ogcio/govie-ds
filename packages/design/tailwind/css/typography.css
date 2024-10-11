@@ -165,7 +165,15 @@
 /* Link  */
 
 .gi-link {
-  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.1em] gi-text-blue-700 hover:gi-text-blue-800 visited:gi-text-purple-700 hover:gi-decoration-lg focus:gi-outline focus:gi-outline-transparent focus:gi-bg-yellow-400 focus:gi-outline-2 focus:gi-shadow-sm focus:gi-shadow-yellow-400;
+  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.2em] gi-text-blue-700 hover:gi-text-blue-800 visited:gi-text-purple-700 hover:gi-decoration-lg focus:gi-outline focus:gi-outline-transparent focus:gi-bg-yellow-400 focus:gi-outline-2 focus:gi-shadow-sm focus:gi-shadow-yellow-400;
+}
+
+.gi-link-sm {
+  @apply gi-text-sm;
+}
+
+.gi-link-md {
+  @apply gi-text-2md;
 }
 
 .gi-link-inherit {
