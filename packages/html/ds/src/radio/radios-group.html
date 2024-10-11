@@ -14,13 +14,14 @@
       ></div>
     {% endif %}
     <fieldset>
-      <legend class="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      <legend class="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
           {{
             govieHeading({
               "size": props.title.asHeading.size,
               "tag": props.title.asHeading.tag,
-              "text": props.title.value
+              "text": props.title.value,
+              "customClasses": '!gi-mb-0'
             })
           }}
         {% else %}

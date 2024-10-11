@@ -6,13 +6,13 @@ export function Heading({
   size,
   children,
   caption,
-  className,
+  customClasses = '',
 }: {
   caption?: string;
   as?: HeadingAs;
   size?: HeadingSize;
   children: React.ReactNode;
-  className?: string;
+  customClasses?: string;
 }) {
   const defaultSize = (() => {
     switch (As) {
@@ -58,15 +58,17 @@ export function Heading({
         return 'gi-heading-2xs';
       }
       default: {
-        return;
+        return '';
       }
     }
   })();
 
+  const combinedClasses = `${sizeClasses} ${customClasses}`.trim();
+
   return (
     <>
       {caption && <span className="gi-text-gray-500">{caption}</span>}
-      <As className={`${sizeClasses} ${className || ''}`}>{children}</As>
+      <As className={combinedClasses}>{children}</As>
     </>
   );
 }

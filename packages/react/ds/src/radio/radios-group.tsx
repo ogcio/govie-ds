@@ -27,9 +27,13 @@ const RadiosGroup = ({
       )}
       <fieldset>
         {title && (
-          <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <legend className="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
             {title.asHeading ? (
-              <Heading size={title.asHeading.size} as={title.asHeading.as}>
+              <Heading
+                customClasses="!gi-mb-0"
+                size={title.asHeading.size}
+                as={title.asHeading.as}
+              >
                 {title.value}
               </Heading>
             ) : (
