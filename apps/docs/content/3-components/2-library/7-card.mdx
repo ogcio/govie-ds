@@ -1,0 +1,107 @@
+---
+title: Card
+description: Card HTML Component
+draft: false
+status: stable
+---
+
+# Card
+
+<ComponentStatusBlock componentId="card" />
+
+## Vertical Card
+
+<Card
+  actions={[{ href: '#', text: 'Link' }]}
+  content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+  href="#"
+  img="https://via.placeholder.com/300x180"
+  title="Vertical Card"
+  type="vertical"
+/>
+
+<Tabs id="tab13">
+  <TabList>
+    <TabItem value="tab11" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+    Under consideration 
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+    Under consideration 
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```html
+    import { Card } from '@govie-ds/react';
+
+    <Card
+      actions={[{ href: '#', text: 'Link' }]}
+      content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+      href="#"
+      img="https://via.placeholder.com/300x180"
+      title="Vertical Card"
+      type="vertical"
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
+## Horizontal Card
+
+<Card
+  actions={[{ href: '#', text: 'Link' }]}
+  content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+  href="#"
+  img="https://via.placeholder.com/300x180"
+  title="Horizontal Card"
+  type="horizontal"
+/>
+
+<Tabs id="tab23">
+  <TabList>
+    <TabItem value="tab21" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+    Under consideration 
+  ```
+  </TabPanel>
+  <TabPanel value="tab22">
+  ```html
+    Under consideration 
+  ```
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```html
+    import { Card } from '@govie-ds/react';
+
+    <Card
+      actions={[{ href: '#', text: 'Link' }]}
+      content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+      href="#"
+      img="https://via.placeholder.com/300x180"
+      title="Horizontal Card"
+      type="horizontal"
+    />
+    ```
+  </TabPanel>
+</Tabs>
+### When to use this component
+
+Use the **Card** component to display content and actions on a single topic. Cards are useful for breaking up content into smaller, digestible pieces.
+
+### When not to use this component
+
+Avoid using cards when displaying continuous, long-form content. Consider using a different component like **List** for simpler content without heavy structure.

@@ -296,7 +296,7 @@ input[type='file' i] {
 /* Card */
 
 .gi-card {
-  @apply gi-flex gi-items-start gi-w-full;
+  @apply gi-flex gi-items-start gi-w-full gi-mt-2 gi-mb-3;
 }
 
 .gi-card-vertical {

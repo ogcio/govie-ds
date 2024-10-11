@@ -93,6 +93,31 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'card',
+      name: 'Card',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/components-card--docs',
+          },
+          status: 'alpha',
+        },
+      ],
+    },
+    {
       id: 'character-count',
       name: 'Character Count',
       statuses: [
