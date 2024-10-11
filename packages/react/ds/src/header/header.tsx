@@ -133,7 +133,9 @@ export function Header({
               id="SearchTrigger"
               type="checkbox"
             />
-            {tools.search.label && <span>{tools.search.label}</span>}
+            {tools.search.label && (
+              <span className="label">{tools.search.label}</span>
+            )}
             <Icon
               className="search-icon"
               icon={tools.search.icon || 'search'}
@@ -145,7 +147,7 @@ export function Header({
         {tools?.items &&
           tools?.items.map((item) => (
             <a className={toolItemClassNames} href={item.href}>
-              {item.label && <span>{item.label}</span>}
+              {item.label && <span className="label">{item.label}</span>}
               {item.icon && <Icon icon={item.icon} />}
             </a>
           ))}
@@ -158,7 +160,9 @@ export function Header({
             id="MobileMenuTrigger"
             type="checkbox"
           />
-          {tools?.menu?.label && <span>{tools.menu.label}</span>}
+          {tools?.menu?.label && (
+            <span className="label">{tools.menu.label}</span>
+          )}
           <Icon icon={tools?.menu?.icon || 'menu'} />
         </label>
       </div>

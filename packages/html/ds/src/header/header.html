@@ -80,7 +80,7 @@
             data-testid="SearchTrigger"
           />
           {% if props.tools.search.label %}
-            <span>{{ props.tools.search.label }}</span>
+            <span className="label">{{ props.tools.search.label }}</span>
           {% endif %}
           <div class="search-icon">
             {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
@@ -92,7 +92,7 @@
       {% endif %}
       {% for item in props.tools.items %}
         <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-          <span>{{ item.label }}</span>
+          <span className="label">{{ item.label }}</span>
           {{ govieIcon({"icon": item.icon }) }}
         </a>
       {% endfor %}
@@ -108,7 +108,7 @@
             type="checkbox"
           />
           {% if props.tools.menu.label %}
-            <span>{{ props.tools.menu.label }}</span>
+            <span class="label">{{ props.tools.menu.label }}</span>
           {% endif %}
           <div data-element="menu-icon">
             {{ govieIcon({"icon": props.tools.menu.icon or "menu" }) }}
@@ -120,6 +120,10 @@
       {{ HeaderSearchContainer({"searchUrl": props.tools.search.action}) }}
     {% endif %}
     {{ headerMenu(props) }}
-    <div class="{{ overlayClassNames }}" data-element="overlay-disabled"></div>
+    <div
+      id="HeaderOverlayContainer"
+      class="{{ overlayClassNames }}"
+      data-element="overlay-disabled"
+    ></div>
   </header>
 {% endmacro %}
