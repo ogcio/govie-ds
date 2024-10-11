@@ -43,7 +43,7 @@ const RadiosGroup = ({
             <ErrorText text={errorMessage} className='!gi-mb-0"' />
           )}
           <div
-            className={`gi-flex gi-gap-2.5 ${inline ? 'gi-flex-row' : 'gi-flex-col'}`}
+            className={`gi-flex ${inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5'}`}
           >
             {items.map((radio, index) => (
               <Radio
