@@ -19,6 +19,7 @@ import {
   TabList,
   FileUpload,
   Tag,
+  Card,
 } from "@govie-ds/react";
 
 export function App() {
@@ -84,13 +85,27 @@ export function App() {
             </Paragraph>
             <hr />
             <Paragraph as="span">Span paragraph</Paragraph>
+            <hr />
+            <Tag text="Completed" type="info" />
           </TabPanel>
           <TabPanel value="tab2">
             <PhaseBanner level="alpha">
               This is a pre-release version
             </PhaseBanner>
-
             <span className="material-icons">face</span>
+            <Card
+              actions={[
+                {
+                  href: "#",
+                  text: "Link",
+                },
+              ]}
+              content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+              href="#"
+              img="https://via.placeholder.com/300x180"
+              title="Vertical Card"
+              type="vertical"
+            />
           </TabPanel>
           <TabPanel value="tab3">
             <TextInput
@@ -138,21 +153,19 @@ export function App() {
                 },
               ]}
             />
+            <hr />
+            <FileUpload
+              error={{
+                text: "Error: File must be smaller than 5MB.",
+              }}
+              id="file-upload-id"
+              label={{
+                text: "Upload File",
+                htmlFor: "file-upload-id",
+              }}
+            />
           </TabPanel>
         </Tabs>
-        <hr />
-        <FileUpload
-          error={{
-            text: "Error: File must be smaller than 5MB.",
-          }}
-          id="file-upload-id"
-          label={{
-            text: "Upload File",
-            htmlFor: "file-upload-id",
-          }}
-        />
-        <hr />
-        <Tag text="Completed" type="info" />
       </Container>
       <Footer />
     </>

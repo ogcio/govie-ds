@@ -304,7 +304,7 @@ input[type='file' i] {
 }
 
 .gi-card-horizontal {
-  @apply gi-min-w-[668px] gi-max-w-[768px] gi-gap-4;
+  @apply gi-min-w-[auto] gi-max-w-[768px] gi-gap-4;
 }
 
 .gi-card-image {
