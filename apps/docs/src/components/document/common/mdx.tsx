@@ -84,7 +84,7 @@ const standardComponents: MDXComponents = {
         language={className}
         className="max-h-[300px] overflow-scroll"
       >
-        {children}
+        {children as string | string[]}
       </SyntaxHighlighter>
     ) : (
       <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs">
