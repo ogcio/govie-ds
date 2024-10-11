@@ -241,3 +241,55 @@ input[type='file' i] {
 }
 
 /* End Input File */
+
+/* Section Break */
+
+.gi-section-break-sm {
+  @apply gi-border-t-xs gi-border-gray-400 gi-m-0;
+}
+
+.gi-section-break-md {
+  @apply gi-border-t-xs gi-border-gray-400 gi-my-4;
+}
+
+.gi-section-break-lg {
+  @apply gi-border-t-xs gi-border-gray-400 gi-my-8;
+}
+
+.gi-section-break-xl {
+  @apply gi-border-t-xs gi-border-gray-400 gi-my-12;
+}
+
+/* End Section Break */
+
+/* Footer */
+
+.gi-footer {
+  @apply gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl;
+}
+
+.gi-footer div.footer-primary-nav-links {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-footer div.logo-container {
+  @apply gi-ml-auto gi-w-fit;
+}
+
+.gi-footer div.footer-primary-nav-links ul {
+  @apply gi-flex gi-gap-lg gi-grow;
+}
+
+.gi-footer div.footer-secondary-nav-links {
+  @apply gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl;
+}
+
+.gi-footer div.footer-secondary-nav-links ul li {
+  @apply gi-mb-xl;
+}
+
+.gi-footer a {
+  @apply gi-underline gi-underline-offset-sm;
+}
+
+/* End Footer */

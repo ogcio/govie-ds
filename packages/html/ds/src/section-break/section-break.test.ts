@@ -14,7 +14,7 @@ describe('govieSectionBreak', () => {
       size: SizeEnum.ExtraLarge,
     });
     const pElement = screen.getByTestId('govie-section-break');
-    expect(pElement.classList.contains('gi-my-12')).toBe(true);
+    expect(pElement.classList.contains('gi-section-break-xl')).toBe(true);
   });
 
   it('should have correct text size classes for "lg"', () => {
@@ -22,7 +22,7 @@ describe('govieSectionBreak', () => {
       size: SizeEnum.Large,
     });
     const pElement = screen.getByTestId('govie-section-break');
-    expect(pElement.classList.contains('gi-my-8')).toBe(true);
+    expect(pElement.classList.contains('gi-section-break-lg')).toBe(true);
   });
 
   it('should have correct text size classes for "md"', () => {
@@ -30,7 +30,7 @@ describe('govieSectionBreak', () => {
       size: SizeEnum.Medium,
     });
     const pElement = screen.getByTestId('govie-section-break');
-    expect(pElement.classList.contains('gi-my-4')).toBe(true);
+    expect(pElement.classList.contains('gi-section-break-md')).toBe(true);
   });
 
   it('should have correct text size classes for "sm"', () => {
@@ -38,7 +38,7 @@ describe('govieSectionBreak', () => {
       size: SizeEnum.Small,
     });
     const pElement = screen.getByTestId('govie-section-break');
-    expect(pElement.classList.contains('gi-m-0')).toBe(true);
+    expect(pElement.classList.contains('gi-section-break-sm')).toBe(true);
   });
 
   it('should pass axe accessibility tests', async () => {
