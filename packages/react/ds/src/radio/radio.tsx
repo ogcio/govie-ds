@@ -14,7 +14,7 @@ const getRadioSize = (size?: RadiosSizeEnum) => {
 };
 
 export const getRadioWidth = (size?: RadiosSizeEnum) => {
-  let widthClass = 'gi-w-[30px]';
+  let widthClass = 'gi-w-8';
   if (size === RadiosSizeEnum.Large) {
     widthClass = 'gi-w-11';
   }
@@ -22,17 +22,6 @@ export const getRadioWidth = (size?: RadiosSizeEnum) => {
     widthClass = 'gi-w-6';
   }
   return widthClass;
-};
-
-const getMarginClass = (size?: RadiosSizeEnum) => {
-  let marginClass = 'gi-w-11';
-  if (size === RadiosSizeEnum.Large) {
-    marginClass = 'gi-w-[58px]';
-  }
-  if (size === RadiosSizeEnum.Small) {
-    marginClass = 'gi-w-[38px]';
-  }
-  return marginClass;
 };
 
 const addConditionalDivider = (
@@ -58,7 +47,7 @@ export const Radio = ({
 }: RadioProps) => {
   return (
     <div className="gi-flex gi-flex-col">
-      <div className="gi-flex gi-items-center">
+      <div className="gi-gap-4 gi-flex gi-items-center">
         <input
           onChange={onChange}
           checked={checked}
@@ -70,15 +59,15 @@ export const Radio = ({
         />
         <label
           htmlFor={radioId}
-          className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5"
+          className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
         >
           {label}
         </label>
       </div>
       {(hint || conditionalInput) && (
-        <div className="gi-flex">
+        <div className="gi-flex gi-gap-4">
           <div
-            className={`${addConditionalDivider(checked, conditionalInput)} ${getMarginClass(size)}`}
+            className={`${addConditionalDivider(checked, conditionalInput)} ${getRadioWidth(size)}`}
           >
             <div
               className={`gi-h-full gi-flex gi-justify-center gi-mt-1.5 ${getRadioWidth(size)}`}

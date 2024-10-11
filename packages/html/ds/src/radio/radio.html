@@ -1,4 +1,4 @@
-{% from 'radio/helpers.html' import getRadioSize, getMarginClass, getRadioWidth %}
+{% from 'radio/helpers.html' import getRadioSize, getRadioWidth %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'text-input/text-input.html' import govieTextInput %}
 
@@ -6,7 +6,7 @@
   {% set hasConditionalInput = true if props.conditionalInput %}
 
   <div class="gi-flex gi-flex-col">
-    <div class="gi-flex gi-items-center">
+    <div class="gi-gap-4 gi-flex gi-items-center">
       <input
         name="{{ props.name }}"
         data-has-conditional-input="{{ hasConditionalInput }}"
@@ -19,16 +19,16 @@
       />
       <label
         for="{{ props.radioId }}"
-        class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-3.5 "
+        class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
       >
         {{ props.label }}
       </label>
     </div>
     {% if props.hint or props.conditionalInput %}
-      <div class="gi-flex">
+      <div class="gi-flex gi-gap-4">
         <div
           data-conditional-divider="{{ props.radioId }}"
-          class="{{ getMarginClass(props.size) | trim }} gi-invisible"
+          class="{{ getRadioWidth(props.size) | trim }} gi-invisible"
         >
           <div
             class="{{ getRadioWidth(props.size) | trim }} gi-h-full gi-flex gi-justify-center gi-mt-1.5"

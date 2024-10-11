@@ -226,3 +226,23 @@ export const withConditionalInput: Story = {
     fieldId: 'UniqueId7',
   },
 };
+
+export const withNoTitle: Story = {
+  args: {
+    fieldId: 'uniqueId8',
+    items: [
+      {
+        label: 'England',
+        value: 'england',
+      },
+      {
+        label: 'Scotland',
+        value: 'scotland',
+      },
+      {
+        label: 'Ireland',
+        value: 'ireland',
+      },
+    ],
+  },
+};
