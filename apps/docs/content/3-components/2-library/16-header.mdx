@@ -41,7 +41,193 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab11">        
     ```html
-    
+    <header id="GovieHeader" class="gi-header">
+        <ul class="gi-header-language-bar">
+            <li>
+            <a
+                data-testid="language-link-desktop-0"
+                class="gi-header-language-item"
+                href="#"
+            >
+                Gaeilge
+            </a>
+            </li>
+        </ul>
+
+        <div id="MenuContainer" class="gi-header-menu">
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
+            <img src="logo-desktop.svg" />
+            </a>
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
+            <img src="logo-mobile.svg" />
+            </a>
+
+            <div class="gi-header-title">Application title</div>
+
+            <ul id="links-container-desktop" class="gi-header-nav">
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-0" href="#">
+                News
+                </a>
+            </li>
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-1" href="#">
+                Departments
+                </a>
+            </li>
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-2" href="#">
+                Services
+                </a>
+            </li>
+            </ul>
+            <div class="gi-header-separator"></div>
+            <label htmlFor="SearchTrigger" class="gi-header-tool-item">
+            <input
+                class="gi-block gi-w-0 gi-absolute gi-h-0"
+                id="SearchTrigger"
+                type="checkbox"
+            />
+            <span class="">Search</span>
+            <div class="search-icon">
+                <span
+                data-testid="govie-icon"
+                role="presentation"
+                class="material-icons gi-block gi-text-[24px]"
+                >
+                search
+                </span>
+            </div>
+            <div class="gi-hidden close-icon">
+                <span
+                data-testid="govie-icon"
+                role="presentation"
+                class="material-icons gi-block gi-text-[24px]"
+                >
+                close
+                </span>
+            </div>
+            </label>
+            <a class="gi-header-tool-item" href="/item1">
+            <span class="">Apps</span>
+
+            <span
+                data-testid="govie-icon"
+                role="presentation"
+                class="material-icons gi-block gi-text-[24px]"
+            >
+                apps
+            </span>
+            </a>
+            <label htmlFor="MobileMenuTrigger" class="gi-header-tool-item sm:gi-hidden">
+            <input
+                class="gi-block gi-w-0 gi-absolute gi-h-0"
+                id="MobileMenuTrigger"
+                data-element="menu-icon"
+                type="checkbox"
+            />
+            <span class="">Menu</span>
+            <div data-element="menu-icon">
+                <span
+                data-testid="govie-icon"
+                role="presentation"
+                class="material-icons gi-block gi-text-[24px]"
+                >
+                menu
+                </span>
+            </div>
+            </label>
+        </div>
+        <div
+            id="SearchContainer"
+            class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
+        >
+            <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
+            <form action="/search_page">
+                <label htmlFor="search" class="gi-text-md gi-font-bold gi-mb-4">
+                Enter search term
+                </label>
+                <div class="gi-flex">
+                <input
+                    name="search_query"
+                    type="text"
+                    class="gi-px-3 gi-py-1 gi-grow gi-w-full"
+                    id="search"
+                />
+                <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
+                    <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                    >
+                    search
+                    </span>
+                </button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div
+            id="HeaderMenuContainer"
+            class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0"
+        >
+            <div class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
+            <div class="gi-flex gi-items-center">
+                <label
+                htmlFor="MobileMenuTriggera"
+                class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
+                >
+                <span class="gi-text-2md gi-font-bold">Close</span>
+
+                <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                >
+                    Close
+                </span>
+                </label>
+            </div>
+            </div>
+            <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">News</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">Departments</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">Services</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
+                >
+                <span class="gi-text-sm">Gaeilge</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+        <div class="gi-header-overlay" data-element="overlay-disabled"></div>
+        </header>
+
     ```
   </TabPanel>
   <TabPanel value="tab12">        
@@ -111,7 +297,18 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab21">        
     ```html
-    
+    <header id="GovieHeader" class="gi-header">
+        <div id="MenuContainer" class="gi-header-menu">
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
+                <img src="logo-desktop.svg" />
+            </a>
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
+                <img src="logo-mobile.svg" />
+            </a>
+            <div class="gi-header-title">Application title</div>
+        </div>    
+    </header>
+
     ```
   </TabPanel>
   <TabPanel value="tab22">        
@@ -140,7 +337,37 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab31">        
     ```html
-    
+    <header id="GovieHeader" class="gi-header">
+        <div id="MenuContainer" class="gi-header-menu">
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
+            <img src="logo-desktop.svg" />
+            </a>
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
+            <img src="logo-mobile.svg" />
+            </a>
+
+            <div class="gi-header-title"></div>
+
+            <ul id="links-container-desktop" class="gi-header-nav">
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-0" href="#">
+                News
+                </a>
+            </li>
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-1" href="#">
+                Departments
+                </a>
+            </li>
+            <li class="gi-flex">
+                <a data-testid="nav-link-desktop-2" href="#">
+                Services
+                </a>
+            </li>
+            </ul>
+        </div>
+    </header>
+
     ```
   </TabPanel>
   <TabPanel value="tab32">        
@@ -188,7 +415,30 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab41">        
     ```html
-    
+    <header id="GovieHeader" class="gi-header">
+        <ul class="gi-header-language-bar">
+            <li>
+            <a
+                data-testid="language-link-desktop-0"
+                class="gi-header-language-item"
+                href="#"
+            >
+                Gaeilge
+            </a>
+            </li>
+        </ul>
+
+        <div id="MenuContainer" class="gi-header-menu">
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
+            <img src="logo-desktop.svg" />
+            </a>
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
+            <img src="logo-mobile.svg" />
+            </a>
+
+            <div class="gi-header-title"></div>
+        </div>
+    </header>
     ```
   </TabPanel>
   <TabPanel value="tab42">        
@@ -239,7 +489,162 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab51">        
     ```html
-    
+    <header id="GovieHeader" class="gi-header">
+        <div id="MenuContainer" class="gi-header-menu">
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
+            <img src="logo-desktop.svg" />
+            </a>
+            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
+            <img src="logo-mobile.svg" />
+            </a>
+
+            <div class="gi-header-title"></div>
+            <label htmlFor="SearchTrigger" class="gi-header-tool-item">
+                <input
+                    class="gi-block gi-w-0 gi-absolute gi-h-0"
+                    id="SearchTrigger"
+                    type="checkbox"
+                />
+                <span class="">Search</span>
+                <div class="search-icon">
+                    <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                    >
+                    search
+                    </span>
+                </div>
+                <div class="gi-hidden close-icon">
+                    <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                    >
+                    close
+                    </span>
+                </div>
+            </label>
+            <a class="gi-header-tool-item" href="/item1">
+                <span class="">Apps</span>
+
+                <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                >
+                    apps
+                </span>
+            </a>
+            <label htmlFor="MobileMenuTrigger" class="gi-header-tool-item sm:gi-hidden">
+                <input
+                    class="gi-block gi-w-0 gi-absolute gi-h-0"
+                    id="MobileMenuTrigger"
+                    data-element="menu-icon"
+                    type="checkbox"
+                />
+                <span class="">Menu</span>
+                <div data-element="menu-icon">
+                    <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                    >
+                    menu
+                    </span>
+                </div>
+            </label>
+        </div>
+        <div
+            id="SearchContainer"
+            class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
+        >
+            <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
+            <form action="/search_page">
+                <label htmlFor="search" class="gi-text-md gi-font-bold gi-mb-4">
+                Enter search term
+                </label>
+                <div class="gi-flex">
+                <input
+                    name="search_query"
+                    type="text"
+                    class="gi-px-3 gi-py-1 gi-grow gi-w-full"
+                    id="search"
+                />
+                <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
+                    <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                    >
+                    search
+                    </span>
+                </button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div
+            id="HeaderMenuContainer"
+            class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0"
+        >
+            <div class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
+            <div class="gi-flex gi-items-center">
+                <label
+                htmlFor="MobileMenuTriggera"
+                class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
+                >
+                <span class="gi-text-2md gi-font-bold">Close</span>
+
+                <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-icons gi-block gi-text-[24px]"
+                >
+                    Close
+                </span>
+                </label>
+            </div>
+            </div>
+            <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">News</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">Departments</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+                >
+                <span class="gi-font-bold gi-text-sm">Services</span>
+                </a>
+            </li>
+            <li>
+                <a
+                href="#"
+                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
+                >
+                <span class="gi-text-sm">Gaeilge</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+        <div class="gi-header-overlay" data-element="overlay-disabled"></div>
+        </header>
+
     ```
   </TabPanel>
   <TabPanel value="tab52">        
@@ -265,7 +670,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```
   </TabPanel>
   <TabPanel value="tab53">
-    ```html
+    ```react
     import { Header } from '@govie-ds/react';
 
     <Header tools={{
