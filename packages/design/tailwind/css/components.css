@@ -129,7 +129,7 @@
 /* Header */
 
 .gi-header {
-  @apply gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-border-gold-500;
+  @apply gi-bg-emerald-800;
 }
 .gi-header-language-bar {
   @apply gi-hidden sm:gi-flex gi-bg-emerald-700 gi-h-10 gi-justify-end gi-items-center gi-gap-4 gi-pr-8;
