@@ -1,6 +1,6 @@
 import GovieLogo from '../assets/logos/logo-harp-gov.js';
 import { Container } from '../container/container.js';
-import { Heading } from '../heading/heading.js';
+import { SectionBreak } from '../section-break/section-break.js';
 
 type FooterLink = {
   label: string;
@@ -10,49 +10,31 @@ type FooterLink = {
 export type FooterProps = {
   links?: FooterLink[];
   secondaryNavLinks?: {
-    hasTwoCols?: boolean;
     heading: string;
     links: FooterLink[];
   }[];
 };
 
-function FooterLink({ href, label }: FooterLink) {
-  return (
-    <a className="gi-underline gi-underline-offset-sm" href={href}>
-      {label}
-    </a>
-  );
-}
-
 export function Footer({ links, secondaryNavLinks }: FooterProps) {
   return (
-    <footer
-      className={`gi-bg-gold-50 gi-border-solid gi-border-t-xs gi-border-gold-500 gi-pt-3xl gi-pb-2xl`}
-      data-module="gieds-footer"
-    >
+    <footer className="gi-footer" data-module="gieds-footer">
       <Container>
         {secondaryNavLinks && (
-          <div className="gi-grid sm:gi-grid-flow-col gi-grid-flow-row gi-gap-2xl">
+          <div className="footer-secondary-nav-links">
             {secondaryNavLinks.map((secondaryNav, navIndex) => (
-              <div
-                className={secondaryNav.hasTwoCols ? `sm:gi-col-span-2` : ``}
-              >
-                <Heading as="h2" size="lg">
-                  {secondaryNav.heading}
-                </Heading>
-                <ul
-                  className={`gi-border-solid gi-border-t gi-border-gold-500 gi-mt-2xl gi-pt-xl ${secondaryNav.hasTwoCols ? `sm:gi-columns-2` : ``} `}
-                >
+              <div>
+                <div className="gi-heading-md">{secondaryNav.heading}</div>
+                <SectionBreak size="md" />
+                <ul>
                   {secondaryNav.links.map((link, index) => (
-                    <li
-                      data-testid={`secondary-${navIndex}-${index}`}
-                      className="gi-mb-xl"
-                    >
-                      <FooterLink
+                    <li data-testid={`secondary-${navIndex}-${index}`}>
+                      <a
                         key={`secondary-${navIndex}-${index}`}
+                        className="footer-link"
                         href={link.href}
-                        label={link.label}
-                      />
+                      >
+                        {link.label}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -60,21 +42,23 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
             ))}
           </div>
         )}
-        <div className="gi-flex gi-items-center">
+        <div className="footer-primary-nav-links">
           {links && (
-            <ul className="gi-flex gi-gap-lg gi-grow">
+            <ul>
               {links.map((link, index) => (
                 <li data-testid={`main-link-${index}`}>
-                  <FooterLink
+                  <a
                     key={`main-link-${index}`}
+                    className="footer-link"
                     href={link.href}
-                    label={link.label}
-                  />
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
           )}
-          <div className="gi-ml-auto">
+          <div className="logo-container">
             <GovieLogo />
           </div>
         </div>
