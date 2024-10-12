@@ -35,7 +35,7 @@ jobs:
         run: |
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm run ds:build
+          pnpm run build
         env:
           NEXT_PUBLIC_SHOW_DRAFTS: true
           NEXT_EXPORT: true

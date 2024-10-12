@@ -7,10 +7,10 @@ const standardProps = {
   tools: {
     search: {
       action: '/search_page',
-      noJsSearchLink: '/search',
+      label: 'Search',
     },
     menu: {
-      noJsMenuLink: '/menu',
+      label: 'Menu',
     },
   },
   navLinks: [
@@ -47,12 +47,10 @@ describe('header', () => {
       logo: { href: '/home' },
       tools: {
         search: {
+          label: 'Search',
           action: '/search_page',
-          noJsSearchLink: '/search',
         },
-        menu: {
-          noJsMenuLink: '/menu',
-        },
+        menu: {},
       },
       navLinks: [
         {
@@ -100,20 +98,7 @@ describe('header', () => {
   it('should show the search button', () => {
     const screen = renderHeader(standardProps);
 
-    const searchElement = screen.getByTestId('search-container-desktop');
+    const searchElement = screen.getByTestId('SearchTrigger');
     expect(searchElement).toBeTruthy();
-  });
-
-  it('should show the search container on click', async () => {
-    const screen = renderHeader(standardProps);
-
-    const searchElement = screen.getByTestId('search-desktop-button');
-    const searchContainerElement = screen.getByTestId(
-      'search-container-desktop',
-    );
-
-    expect(searchContainerElement.classList.contains('xs:gi-h-0')).toBe(true);
-    searchElement.click();
-    expect(searchContainerElement.classList.contains('xs:gi-h-40')).toBe(true);
   });
 });

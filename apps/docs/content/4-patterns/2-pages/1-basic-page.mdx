@@ -1,0 +1,358 @@
+---
+title: Basic Page
+description: Basic Page
+draft: false
+status: stable
+---
+
+# Basic Page
+
+A template for a basic page
+
+<Link href="/templates/basic-page.html" external>Open in a new tab</Link>
+
+## Desktop
+
+<BasicPage size='lg' />
+
+## Tablet
+
+<BasicPage size='md' />
+
+## Mobile
+
+<BasicPage size='sm' />
+
+# Code example
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Page Template</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="GovieHeader" class="gi-header">
+      <ul class="gi-header-language-bar">
+        <li>
+          <a
+            data-testid="language-link-desktop-0"
+            class="gi-header-language-item"
+            href="#"
+            >Gaeilge</a
+          >
+        </li>
+      </ul>
+
+      <div id="MenuContainer" class="gi-header-menu">
+        <a
+          aria-label="Go to the home page"
+          href="/home"
+          class="gi-header-logo-lg"
+        >
+          <!-- LOGO HEADER DESKTOP -->
+        </a>
+        <a
+          aria-label="Go to the home page"
+          href="/home"
+          class="gi-header-logo-sm"
+        >
+          <!-- LOGO HEADER MOBILE -->
+        </a>
+
+        <div class="gi-header-title"></div>
+
+        <ul id="links-container-desktop" class="gi-header-nav">
+          <li class="gi-flex">
+            <a data-testid="nav-link-desktop-0" href="#">News</a>
+          </li>
+          <li class="gi-flex">
+            <a data-testid="nav-link-desktop-1" href="#">Departments</a>
+          </li>
+          <li class="gi-flex">
+            <a data-testid="nav-link-desktop-2" href="#">Services</a>
+          </li>
+        </ul>
+        <div class="gi-header-separator"></div>
+        <label for="SearchTrigger" class="gi-header-tool-item">
+          <input
+            class="gi-block gi-w-0 gi-absolute gi-h-0"
+            id="SearchTrigger"
+            type="checkbox"
+          />
+          <span class="">Search</span>
+          <div class="search-icon">
+            <span
+              data-testid="govie-icon"
+              role="presentation"
+              class="material-icons gi-block gi-text-[24px]"
+            >
+              search
+            </span>
+          </div>
+          <div class="gi-hidden close-icon">
+            <span
+              data-testid="govie-icon"
+              role="presentation"
+              class="material-icons gi-block gi-text-[24px]"
+            >
+              close
+            </span>
+          </div>
+        </label>
+        <a class="gi-header-tool-item" href="/item1">
+          <span class="">Apps</span>
+
+          <span
+            data-testid="govie-icon"
+            role="presentation"
+            class="material-icons gi-block gi-text-[24px]"
+          >
+            apps
+          </span>
+        </a>
+        <label
+          for="MobileMenuTrigger"
+          class="gi-header-tool-item sm:gi-hidden"
+        >
+          <input
+            class="gi-block gi-w-0 gi-absolute gi-h-0"
+            id="MobileMenuTrigger"
+            data-element="menu-icon"
+            type="checkbox"
+          />
+          <span class="">Menu</span>
+          <div data-element="menu-icon">
+            <span
+              data-testid="govie-icon"
+              role="presentation"
+              class="material-icons gi-block gi-text-[24px]"
+            >
+              menu
+            </span>
+          </div>
+        </label>
+      </div>
+      <div
+        id="SearchContainer"
+        class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
+      >
+        <div
+          class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8"
+        >
+          <form action="/search_page">
+            <label for="search" class="gi-text-md gi-font-bold gi-mb-4">
+              Enter search term
+            </label>
+            <div class="gi-flex">
+              <input
+                name="search_query"
+                type="text"
+                class="gi-px-3 gi-py-1 gi-grow gi-w-full"
+                id="search"
+              />
+              <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
+                <span
+                  data-testid="govie-icon"
+                  role="presentation"
+                  class="material-icons gi-block gi-text-[24px]"
+                >
+                  search
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div
+        id="HeaderMenuContainer"
+        class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0"
+      >
+        <div
+          class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
+        >
+          <div class="gi-flex gi-items-center">
+            <label
+              for="MobileMenuTrigger"
+              class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
+            >
+              <span class="gi-text-2md gi-font-bold">Close</span>
+
+              <span
+                data-testid="govie-icon"
+                role="presentation"
+                class="material-icons gi-block gi-text-[24px]"
+              >
+                close
+              </span>
+            </label>
+          </div>
+        </div>
+        <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm">News</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm">Departments</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm">Services</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
+            >
+              <span class="gi-text-sm">Gaeilge</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="gi-header-overlay" data-element="overlay-disabled"></div>
+    </header>
+
+    <main>
+      <div class="gi-layout-container">
+        <h1 class="gi-heading-lg">Basic Page Template</h1>
+
+        <div class="gi-layout-column-container">
+          <div class="gi-layout-column-2-3">
+            <p class="gi-paragraph-md">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+              erat nisl, imperdiet a finibus vitae, iaculis quis mauris.
+              Curabitur feugiat augue eu dui eleifend egestas. Quisque gravida
+              nisl ut arcu efficitur, nec feugiat lacus posuere. Quisque
+              convallis, tellus sit amet sodales sagittis, tellus metus
+              venenatis eros, in vulputate velit dui ac nunc. Sed imperdiet
+              ultrices sem at ultrices. Vestibulum leo neque, fringilla nec quam
+              nec, sollicitudin gravida odio. Vestibulum lobortis risus metus,
+              vel fringilla massa accumsan eget. Nunc gravida et metus non
+              gravida. Morbi ipsum purus, interdum nec ornare eget, rhoncus ac
+              turpis. Donec lectus nibh, venenatis ac lectus non, scelerisque
+              ullamcorper velit. Integer nec rutrum purus. Nullam semper
+              imperdiet bibendum. Nulla facilisi. Suspendisse vestibulum, nisi
+              ac ornare sodales, arcu justo ultricies arcu, quis ultricies massa
+              metus vel enim. Proin finibus justo sed lacus congue, vel auctor
+              elit pellentesque.
+            </p>
+            <p class="gi-paragraph-md">
+              Nulla egestas justo a tincidunt consequat. Nulla dapibus arcu in
+              finibus blandit. Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Suspendisse potenti. Quisque sit amet pretium
+              ante. Quisque vel risus bibendum, viverra elit a, fermentum felis.
+              Donec mollis, erat non facilisis consequat, nisi odio ultrices
+              massa, sed fringilla neque massa nec erat. Mauris efficitur
+              rhoncus rutrum. Aenean euismod ligula ac nisi euismod, id
+              tristique mauris iaculis. Quisque mattis auctor ligula at
+              pulvinar. Nunc tortor felis, finibus at laoreet eget, finibus ac
+              ligula. Donec sed rhoncus arcu, ut mattis dolor. Cras in efficitur
+              diam. Quisque pretium est risus, eget efficitur urna semper nec.
+            </p>
+            <p class="gi-paragraph-md">
+              Donec nec finibus mauris. Fusce dictum sodales tincidunt. Nullam
+              mollis ex ut consectetur rutrum. Donec tempus tincidunt dui et
+              ullamcorper. Ut cursus lacus ante, vitae malesuada libero maximus
+              in. Donec mattis accumsan faucibus. Curabitur feugiat mollis
+              turpis. Vestibulum lobortis tellus sem, vitae pellentesque lorem
+              interdum sit amet. In malesuada nisl augue, sollicitudin pharetra
+              ipsum rhoncus sit amet. Fusce rhoncus, ante nec bibendum luctus,
+              mi leo consequat risus, dapibus commodo ipsum dui in elit. Cras
+              facilisis congue turpis. Integer feugiat finibus tellus, eget
+              sodales quam ultrices nec. Phasellus eget nunc sed risus imperdiet
+              posuere in vitae urna. Nulla et libero sed quam lobortis hendrerit
+              vel quis metus. Phasellus ultrices lectus lacus, sit amet maximus
+              ex placerat quis.
+            </p>
+          </div>
+          <div class="gi-layout-column-1-3">
+            <p class="gi-span-xs">
+              <a href="#" class="gi-link">Link 1</a>
+            </p>
+            <p class="gi-span-xs">
+              <a href="#" class="gi-link">Link 2</a>
+            </p>
+            <p class="gi-span-xs">
+              <a href="#" class="gi-link">Link 3</a>
+            </p>
+            <p class="gi-span-xs">
+              <a href="#" class="gi-link">Link 4</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="gi-footer">
+      <div class="gi-layout-container">
+        <div class="footer-secondary-nav-links">
+          <div>
+            <div class="gi-heading-md">Heading</div>
+            <hr class="gi-section-break-md" />
+            <ul>
+              <li>
+                <a href="#">Link 1</a>
+              </li>
+              <li>
+                <a href="#">Link 2</a>
+              </li>
+              <li>
+                <a href="#">Link 3</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="gi-heading-md">Heading 2</div>
+            <hr class="gi-section-break-md" />
+            <ul>
+              <li>
+                <a href="#">Link 4</a>
+              </li>
+              <li>
+                <a href="#">Link 5</a>
+              </li>
+              <li>
+                <a href="#">Link 6</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-primary-nav-links">
+          <ul>
+            <li data-testid="main-link-0">
+              <a href="#">Link 1</a>
+            </li>
+            <li data-testid="main-link-1">
+              <a href="#">Link 2</a>
+            </li>
+            <li data-testid="main-link-2">
+              <a href="#">Link 3</a>
+            </li>
+          </ul>
+          <div class="logo-container">
+            <!-- LOGO FOOTER -->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+```

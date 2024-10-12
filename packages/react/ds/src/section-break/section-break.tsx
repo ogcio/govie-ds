@@ -1,23 +1,23 @@
 export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export function SectionBreak({ size = 'sm' }: { size?: SectionBreakSize }) {
-  let marginClass = 'gi-m-0';
+  let marginClass = 'gi-section-break-sm';
   switch (size) {
     case 'md': {
-      marginClass = 'gi-my-4';
+      marginClass = 'gi-section-break-md';
       break;
     }
     case 'lg': {
-      marginClass = 'gi-my-8';
+      marginClass = 'gi-section-break-lg';
       break;
     }
     case 'xl': {
-      marginClass = 'gi-my-12';
+      marginClass = 'gi-section-break-xl';
       break;
     }
     default: {
       break;
     }
   }
-  return <hr className={`gi-border-b-1 gi-border-gray-400 ${marginClass}`} />;
+  return <hr className={marginClass} />;
 }

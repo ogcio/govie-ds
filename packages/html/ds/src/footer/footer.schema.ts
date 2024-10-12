@@ -19,11 +19,6 @@ export const footerSchema = zod.object({
     ),
   secondaryNavLinks: zod
     .object({
-      hasTwoCols: zod
-        .boolean({
-          description: 'Enable two column grid for navigation links',
-        })
-        .optional(),
       heading: zod.string({
         description: 'Heading for the column of links',
       }),
