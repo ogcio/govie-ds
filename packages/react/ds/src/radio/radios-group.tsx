@@ -52,7 +52,7 @@ export const RadiosGroup = ({
           >
             {items.map((radio, index) => (
               <Radio
-                key={value}
+                key={`${value}-${index}`}
                 checked={value === radio.value}
                 onChange={onOptionChange}
                 name={fieldId}
