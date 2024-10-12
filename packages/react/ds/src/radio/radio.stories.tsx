@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import RadiosGroup from './radios-group.js';
+import { RadiosGroup } from './radios-group.js';
 import { RadiosGroupType } from './types.js';
 
 const standardProps: RadiosGroupType = {

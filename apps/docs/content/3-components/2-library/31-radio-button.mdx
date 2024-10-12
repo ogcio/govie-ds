@@ -2,13 +2,113 @@
 title: Radio Button
 description: Radio Button HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Radio Button
 
 <ComponentStatusBlock componentId="radio-button" />
 
+import { standardProps } from "@/components/form/radio";
+
+## Standard radio
+
+<RadiosGroup {...standardProps} />
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+<div class="govie-form-group "></div>
+  <legend class="govie-fieldset__legend govie-fieldset__legend--l">
+    <h1 class="govie-fieldset__heading">Where do you live?</h1>
+  </legend>
+  <div data-module="govie-radios" class="govie-radios govie-radios--large ">
+    <div class="govie-radios__item">
+      <input id="where-do-you-live-0" name="where-do-you-live" type="radio" value="england" class="govie-radios__input">
+      <label class="govie-label govie-radios__label" for="where-do-you-live-0">England</label>
+    </div>
+    <div class="govie-radios__item">
+      <input id="where-do-you-live-1" name="where-do-you-live" type="radio" value="scotland" class="govie-radios__input">
+      <label class="govie-label govie-radios__label" for="where-do-you-live-1">Scotland</label>
+    </div>
+    <div class="govie-radios__item">
+      <input id="where-do-you-live-2" name="where-do-you-live" type="radio" value="ireland" class="govie-radios__input">
+      <label class="govie-label govie-radios__label" for="where-do-you-live-2">Ireland</label>
+    </div>
+  </div>
+</div>
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  {{ govieRadiosGroup({
+    "fieldId": "uniqueId",
+    "title": {
+      "value": "Where do you live?",
+      "asHeading": {
+        "size": "md",
+        "tag": "h2"
+      }
+    },
+    "items": [
+      {
+        "label": "England",
+        "value": "england"
+      },
+      {
+        "label": "Scotland",
+        "value": "scotland"
+      },
+      {
+        "label": "Ireland",
+        "value": "ireland"
+      }
+    ]
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { RadiosGroup } from '@govie-ds/react';
+
+  <RadiosGroup
+  title={{
+    value: 'Where do you live?',
+    asHeading: {
+      size: 'md',
+      as: 'h2',
+    },
+  }}
+  items={[
+    {
+      label: 'England',
+      value: 'england',
+    },
+    {
+      label: 'Scotland',
+      value: 'scotland',
+    },
+    {
+      label: 'Ireland',
+      value: 'ireland',
+    },
+  ]}
+  fieldId="uniqueId"
+/>;
+
+  ```
+  </TabPanel>
+</Tabs>
+
 ## When to use this component
 
+Use the radios component when users can only select one option from a list.
+
 ## When not to use this component
+
+Do not use the radios component if users might need to select more than one option. In this case, you should use the checkboxes component instead.

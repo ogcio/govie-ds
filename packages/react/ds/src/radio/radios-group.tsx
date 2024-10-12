@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
@@ -5,7 +6,7 @@ import { HintText } from '../hint-text/hint-text.js';
 import { Radio, getRadioWidth } from './radio.js';
 import { RadiosGroupType } from './types.js';
 
-const RadiosGroup = ({
+export const RadiosGroup = ({
   fieldId,
   items,
   inline,
@@ -51,6 +52,7 @@ const RadiosGroup = ({
           >
             {items.map((radio, index) => (
               <Radio
+                key={value}
                 checked={value === radio.value}
                 onChange={onOptionChange}
                 name={fieldId}
@@ -90,5 +92,3 @@ const RadiosGroup = ({
     </div>
   );
 };
-
-export default RadiosGroup;

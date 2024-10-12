@@ -8,6 +8,7 @@ import {
   Link,
   Paragraph,
   PhaseBanner,
+  RadiosGroup,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -65,6 +66,30 @@ export default function Home() {
         <hr />
         <Paragraph as="span">Span paragraph</Paragraph>
         <hr />
+        <RadiosGroup
+          title={{
+            value: "Where do you live?",
+            asHeading: {
+              size: "md",
+              as: "h2",
+            },
+          }}
+          items={[
+            {
+              label: "England",
+              value: "england",
+            },
+            {
+              label: "Scotland",
+              value: "scotland",
+            },
+            {
+              label: "Ireland",
+              value: "ireland",
+            },
+          ]}
+          fieldId="uniqueId"
+        />
 
         <span className="material-icons">face</span>
       </Container>

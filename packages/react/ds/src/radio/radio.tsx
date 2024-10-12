@@ -1,3 +1,5 @@
+'use client'
+
 import { HintText } from '../hint-text/hint-text.js';
 import { TextInput, TextInputProps } from '../text-input/text-input.js';
 import { RadioProps, RadiosSizeEnum } from './types.js';
