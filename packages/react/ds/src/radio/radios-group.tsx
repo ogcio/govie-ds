@@ -45,7 +45,7 @@ export const RadiosGroup = ({
         )}
         <div className="gi-flex gi-flex-col gi-gap-2.5">
           {errorMessage && (
-            <ErrorText text={errorMessage} className='!gi-mb-0' />
+            <ErrorText text={errorMessage} className="!gi-mb-0" />
           )}
           <div
             className={`gi-flex ${inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5'}`}
