@@ -35,7 +35,7 @@ export const Card = (props: CardProps) => {
         </div>
       )}
       {icon && (
-        <div className="gi-card-image">
+        <div className="gi-card-icon">
           <a href={href}>
             {cloneElement(icon, {
               ariaLabel: undefined,

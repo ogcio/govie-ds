@@ -108,7 +108,7 @@ export const Horizontal: Story = {
     type: 'horizontal',
     title: 'Horizontal Card',
     href: '#',
-    img: 'https://via.placeholder.com/600',
+    img: 'https://via.placeholder.com/600x360',
     content:
       'Lorem ipsum dolor sit amet cons fectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     actions: [{ href: '#', text: 'Link' }],

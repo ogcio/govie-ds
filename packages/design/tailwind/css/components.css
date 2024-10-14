@@ -300,19 +300,23 @@ input[type='file' i] {
 }
 
 .gi-card-vertical {
-  @apply gi-flex-col gi-max-w-[348px] gi-min-w-[220px] gi-gap-3;
+  @apply gi-flex-col gi-max-w-[348px] gi-min-w-[220px] gi-gap-2 gi-w-full;
 }
 
 .gi-card-horizontal {
-  @apply gi-min-w-[auto] gi-max-w-[768px] gi-gap-4;
+  @apply gi-min-w-[auto] gi-max-w-[768px] gi-gap-2;
 }
 
 .gi-card-image {
-  @apply gi-flex gi-items-start gi-self-stretch;
+  @apply gi-flex gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+}
+
+.gi-card-icon {
+  @apply gi-flex gi-items-start gi-self-stretch gi-h-auto;
 }
 
 .gi-card-content {
-  @apply gi-flex gi-flex-col gi-items-start gi-gap-4;
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-2 gi-w-full;
 }
 
 .gi-card-paragraph {
