@@ -1,6 +1,6 @@
 import React, { cloneElement, ReactElement } from 'react';
-import { Link } from '../link/link.js';
 import { Heading } from '../heading/heading.js';
+import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 
 type Action = {
@@ -46,15 +46,9 @@ export const Card = (props: CardProps) => {
       )}
       <div className="gi-card-content">
         <div className="gi-card-heading">
-          {href ? (
-            <Heading as="h5" customClasses="!gi-mt-0 !gi-mb-0">
-              <Link href={href}>{title}</Link>
-            </Heading>
-          ) : (
-            <Heading as="h5" customClasses="!gi-mt-0 !gi-mb-0">
-              {title}
-            </Heading>
-          )}
+          <Heading as="h5" customClasses="!gi-my-0">
+            {href ? <Link href={href}>{title}</Link> : title}
+          </Heading>
         </div>
         <div className="gi-card-paragraph">
           <Paragraph size="sm">{content}</Paragraph>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from './card.js';
 import { Icon } from '../icon/icon.js';
+import { Card } from './card.js';
 
 const meta = {
   title: 'Components/Card',
@@ -70,7 +70,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Default card example
 export const Default: Story = {
   args: {
     type: 'vertical',
