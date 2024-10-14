@@ -28,10 +28,10 @@ export const RadiosGroup = ({
       )}
       <fieldset>
         {title && (
-          <legend className="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <legend className="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
             {title.asHeading ? (
               <Heading
-                customClasses="!gi-mb-0"
+                customClasses="!gi-mb-2"
                 size={title.asHeading.size}
                 as={title.asHeading.as}
               >
@@ -40,12 +40,12 @@ export const RadiosGroup = ({
             ) : (
               title.value
             )}
-            {title.hint && <HintText text={title.hint} className="!gi-mb-0" />}
+            {title.hint && <HintText text={title.hint} className="!gi-mb-2" />}
           </legend>
         )}
         <div className="gi-flex gi-flex-col gi-gap-2.5">
           {errorMessage && (
-            <ErrorText text={errorMessage} className='!gi-mb-0"' />
+            <ErrorText text={errorMessage} className='!gi-mb-0' />
           )}
           <div
             className={`gi-flex ${inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5'}`}

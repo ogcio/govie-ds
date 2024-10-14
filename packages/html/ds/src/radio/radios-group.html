@@ -14,14 +14,14 @@
       ></div>
     {% endif %}
     <fieldset>
-      <legend class="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
         {% if props.title.asHeading %}
           {{
             govieHeading({
               "size": props.title.asHeading.size,
               "tag": props.title.asHeading.tag,
               "text": props.title.value,
-              "customClasses": '!gi-mb-0'
+              "customClasses": '!gi-mb-2'
             })
           }}
         {% else %}
@@ -32,7 +32,7 @@
             {{
               govieHintText({
                 "content": props.title.hint,
-                "classNames": "!gi-mb-0"
+                "classNames": "!gi-mb-2"
               })
             }}
           </div>
@@ -46,7 +46,7 @@
           {{
             govieErrorText({
               "content": props.errorMessage,
-              "classNames": "!gi-mb-0"
+              "classNames": "!gi-mb-[0px]"
             })
           }}
         {% endif %}
