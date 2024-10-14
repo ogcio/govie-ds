@@ -8,12 +8,14 @@ name: Release Please
 jobs:
   release-please:
     environment: "prod"
-
+    runs-on: ubuntu-latest
     permissions:
       contents: write # to create release commit (google-github-actions/release-please-action)
       pull-requests: write # to create release PR (google-github-actions/release-please-action)
-
-    runs-on: ubuntu-latest
+    outputs:
+      storybook_html_released: ${{ steps.publish-outputs.outputs.storybook_html_released }}
+      storybook_react_released: ${{ steps.publish-outputs.outputs.storybook_react_released }}
+      docs_released: ${{ steps.publish-outputs.outputs.docs_released }}
     steps:
       - uses: google-github-actions/release-please-action@v4
         id: release
@@ -79,10 +81,25 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Tag Last Release
-        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] || steps.release.outputs['apps/docs--release_created'] }}
         run: |
           git tag -f last-release
           git push origin last-release --force
           git checkout latest-release
           git rebase origin/main
           git push origin --force
+
+      - name: Publish outputs
+        id: publish-outputs
+        run: |
+          echo "storybook_html_released=${{ steps.release.outputs['packages/html/ds--release_created'] }}" >> $GITHUB_OUTPUT
+          echo "storybook_react_released=${{ steps.release.outputs['packages/react/ds--release_created'] }}" >> $GITHUB_OUTPUT
+          echo "docs_released=${{ steps.release.outputs['apps/docs--release_created'] }}" >> $GITHUB_OUTPUT
+
+  deploy-docs-aws:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.docs_released == 'true' }}
+    uses: ./.github/workflows/deploy-docs-aws.yml
+    with:
+      environment: "prod"
+    secrets: inherit
