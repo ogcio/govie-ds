@@ -11,6 +11,7 @@ import {
   Tabs,
   Tag,
   RadiosGroup,
+  Card,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -150,6 +151,7 @@ const documentComponents: MDXComponents = {
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
   RadiosGroup: (props) => <RadiosGroup {...props} />,
+  Card: (props) => <Card {...props}>{props.children}</Card>,
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -169,7 +171,8 @@ export function Mdx({ code }: MdxProps) {
             key === 'Link' ||
             key === 'Heading' ||
             key === 'Icon' ||
-            key === 'Tag'
+            key === 'Tag' ||
+            key === 'Card'
           ) {
             return;
           }

@@ -87,3 +87,5 @@ standardProps
 asHeading
 fieldId
 hintsProps
+href
+img
