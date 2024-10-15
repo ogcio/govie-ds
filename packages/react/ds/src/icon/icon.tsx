@@ -14,7 +14,8 @@ export type IconId =
   | 'search'
   | 'menu'
   | 'home'
-  | 'logout';
+  | 'logout'
+  | 'download';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 

@@ -12,8 +12,9 @@
 {% from 'button/button.html' import govieButton %}
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'tag/tag.html' import govieTag %}
+{% from 'radio/radios-group.html' import govieRadiosGroup %}
 
-{% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps %}
+{% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +166,10 @@
     "content": 'Primary Button',
   }) }}
 
+  <h2>Radio</h2>
+
+  {{ govieRadiosGroup(radioProps) }}
+  
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>

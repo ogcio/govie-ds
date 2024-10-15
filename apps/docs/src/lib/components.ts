@@ -93,6 +93,31 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'card',
+      name: 'Card',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/components-card--docs',
+          },
+          status: 'alpha',
+        },
+      ],
+    },
+    {
       id: 'character-count',
       name: 'Character Count',
       statuses: [
@@ -263,14 +288,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-radio--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/form-radio--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },

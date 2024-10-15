@@ -1,6 +1,7 @@
 {% from 'heading/helpers.html' import getHeadingClasses %}
 
 {% macro govieHeading(props) %}
+  {% set combinedClasses = (getHeadingClasses(props.size, props.tag) ~ ' ' ~ (props.customClasses or '') ) | trim %}
 
   {% macro caption(value='') %}
     {% if value %}
@@ -12,7 +13,7 @@
 
   {{ caption(props.caption) }}
   {# prettier-ignore-start #}
-  <{{ props.tag }} class="{{ getHeadingClasses(props.size, props.tag) | trim }}">
+  <{{ props.tag }} class="{{ combinedClasses }}">
     {{ props.text }}
   </{{ props.tag }}>
   {# prettier-ignore-end #}

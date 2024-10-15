@@ -20,6 +20,8 @@ import {
   FileUpload,
   Tag,
   Modal,
+  RadiosGroup,
+  Card,
 } from "@govie-ds/react";
 
 export function App() {
@@ -51,7 +53,6 @@ export function App() {
       />
       <Container>
         <Heading>Design System </Heading>
-
         <Tabs id="tabs">
           <TabList>
             <TabItem value="tab1" checked>
@@ -85,13 +86,27 @@ export function App() {
             </Paragraph>
             <hr />
             <Paragraph as="span">Span paragraph</Paragraph>
+            <hr />
+            <Tag text="Completed" type="info" />
           </TabPanel>
           <TabPanel value="tab2">
             <PhaseBanner level="alpha">
               This is a pre-release version
             </PhaseBanner>
-
             <span className="material-icons">face</span>
+            <Card
+              actions={[
+                {
+                  href: "#",
+                  text: "Link",
+                },
+              ]}
+              content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+              href="#"
+              img="https://via.placeholder.com/300x180"
+              title="Vertical Card"
+              type="vertical"
+            />
           </TabPanel>
           <TabPanel value="tab3">
             <TextInput
@@ -139,21 +154,43 @@ export function App() {
                 },
               ]}
             />
+            <hr />
+            <FileUpload
+              error={{
+                text: "Error: File must be smaller than 5MB.",
+              }}
+              id="file-upload-id"
+              label={{
+                text: "Upload File",
+                htmlFor: "file-upload-id",
+              }}
+            />
           </TabPanel>
         </Tabs>
-        <hr />
-        <FileUpload
-          error={{
-            text: "Error: File must be smaller than 5MB.",
+        <RadiosGroup
+          title={{
+            value: "Where do you live?",
+            asHeading: {
+              size: "md",
+              as: "h2",
+            },
           }}
-          id="file-upload-id"
-          label={{
-            text: "Upload File",
-            htmlFor: "file-upload-id",
-          }}
+          items={[
+            {
+              label: "England",
+              value: "england",
+            },
+            {
+              label: "Scotland",
+              value: "scotland",
+            },
+            {
+              label: "Ireland",
+              value: "ireland",
+            },
+          ]}
+          fieldId="uniqueId"
         />
-        <hr />
-        <Tag text="Completed" type="info" />
         <Modal>
           <Heading>Title</Heading>
           <Paragraph>
