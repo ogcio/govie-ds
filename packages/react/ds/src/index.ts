@@ -31,3 +31,4 @@ export * from './tabs/tab-list.js';
 export * from './file-upload/file-upload.js';
 export * from './button/button.js';
 export * from './tag/tag.js';
+export * from './card/card.js';

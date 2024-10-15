@@ -293,3 +293,38 @@ input[type='file' i] {
 }
 
 /* End Footer */
+/* Card */
+
+.gi-card {
+  @apply gi-flex gi-items-start gi-w-full gi-mt-2 gi-mb-3;
+}
+
+.gi-card-vertical {
+  @apply gi-flex-col gi-max-w-[348px] gi-min-w-[220px] gi-gap-2 gi-w-full;
+}
+
+.gi-card-horizontal {
+  @apply gi-min-w-[auto] gi-max-w-[768px] gi-gap-2;
+}
+
+.gi-card-image {
+  @apply gi-flex gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+}
+
+.gi-card-icon {
+  @apply gi-flex gi-items-start gi-self-stretch gi-h-auto;
+}
+
+.gi-card-content {
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-2 gi-w-full;
+}
+
+.gi-card-paragraph {
+  @apply gi-flex gi-flex-col gi-gap-2;
+}
+
+.gi-card-heading {
+  @apply gi-flex gi-flex-col gi-gap-2;
+}
+
+/* End of Card */
