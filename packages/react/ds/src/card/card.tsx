@@ -1,6 +1,6 @@
 import React, { cloneElement, ReactElement } from 'react';
 import { Heading } from '../heading/heading.js';
-import { IconPropTypes } from '../icon/icon.js';
+import { Icon, IconPropTypes } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 
@@ -14,7 +14,7 @@ export type CardProps = {
   title?: string;
   href?: string;
   img?: string;
-  icon?: ReactElement<IconPropTypes>;
+  icon?: IconPropTypes;
   content?: string;
   actions?: Action[];
 };
@@ -38,10 +38,7 @@ export const Card = (props: CardProps) => {
       {icon && (
         <div className="gi-card-icon">
           <a href={href}>
-            {cloneElement(icon, {
-              ariaLabel: undefined,
-              ariaHidden: true,
-            })}
+            <Icon {...icon} />
           </a>
         </div>
       )}

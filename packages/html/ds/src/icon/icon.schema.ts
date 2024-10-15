@@ -9,6 +9,7 @@ export enum IconId {
   ThumbUp = 'thumb_up',
   OpenInNew = 'open_in_new',
   AttachFile = 'attach_file',
+  Download = 'download'
 }
 
 export enum IconSize {
@@ -52,6 +53,11 @@ export const iconSchema = zod.object({
   inline: zod
     .boolean({
       description: 'View as inline (block is default).',
+    })
+    .optional(),
+  className: zod
+    .string({
+      description: 'Custom classes',
     })
     .optional(),
 });

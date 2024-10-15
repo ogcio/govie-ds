@@ -1,74 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from './card.js';
+import { renderComponent } from '../storybook/storybook';
+import html from './card.html?raw';
+import { CardProps } from './card.schema';
+import { IconId, IconSize } from '../icon/icon.schema';
+
+const path = import.meta.url.split('/card')[0];
+
+const macro = { name: 'govieCard', html, path };
+
+const Card = renderComponent<CardProps>(macro);
 
 const meta = {
+  component: Card,
   title: 'Components/Card',
   parameters: {
+    macro,
     docs: {
       description: {
         component:
           'A card component that displays an image, title, content, and actions, with both horizontal and vertical layouts.',
-      },
-    },
-  },
-  component: Card,
-  argTypes: {
-    type: {
-      control: { type: 'select' },
-      options: ['horizontal', 'vertical'],
-      description: 'Controls the layout of the card.',
-      table: {
-        category: 'Layout',
-        type: { summary: 'horizontal | vertical' },
-      },
-    },
-    title: {
-      control: { type: 'text' },
-      description: 'The title of the card.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'string' },
-      },
-    },
-    href: {
-      control: { type: 'text' },
-      description: 'The link to which the card redirects.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'string' },
-      },
-    },
-    img: {
-      control: { type: 'text' },
-      description: 'The URL or path of the card image.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'string' },
-      },
-    },
-    icon: {
-      control: 'object',
-      description: 'Icon configuration for the card.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'Icon' },
-      },
-    },
-    content: {
-      control: { type: 'text' },
-      description: 'The content or description of the card.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'string' },
-      },
-    },
-    actions: {
-      control: { type: 'object' },
-      description:
-        'Array of actions that are displayed as links at the bottom of the card.',
-      table: {
-        category: 'Actions',
-        type: { summary: 'Array<{ href: string, text: string }>' },
       },
     },
   },
@@ -78,6 +28,65 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Controls the layout of the card.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'horizontal | vertical' },
+      },
+    },
+    title: {
+      control: 'text',
+      description: 'The title of the card.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'string' },
+      },
+    },
+    href: {
+      control: 'text',
+      description: 'The link to which the card redirects.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'string' },
+      },
+    },
+    img: {
+      control: 'text',
+      description: 'The URL or path of the card image.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'string' },
+      },
+    },
+    content: {
+      control: 'text',
+      description: 'The content or description of the card.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'string' },
+      },
+    },
+    actions: {
+      control: 'object',
+      description: 'Array of actions that are displayed as links at the bottom of the card.',
+      table: {
+        category: 'Actions',
+        type: { summary: 'Array<{ href: string, text: string }>' },
+      },
+    },
+    icon: {
+      control: 'object',
+      description: 'Icon configuration for the card.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'Object with icon, size, className, etc.' },
+      },
+    },
+  },
   args: {
     type: 'vertical',
     title: 'Card Title',
@@ -117,7 +126,7 @@ export const Horizontal: Story = {
     href: '#',
     img: 'https://via.placeholder.com/600x360',
     content:
-      'Lorem ipsum dolor sit amet cons fectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     actions: [{ href: '#', text: 'Link' }],
   },
 };
@@ -137,9 +146,9 @@ export const HorizontalWithIcon: Story = {
     type: 'horizontal',
     href: '#',
     icon: {
-      icon: 'download',
-      size: 'xl',
-      className: 'gi-text-gray-500',
+      icon: IconId.Download,
+      size: IconSize.ExtraLarge,
+      className: 'gi-text-gray-500'
     },
     title: 'Card With Icon',
     content:
