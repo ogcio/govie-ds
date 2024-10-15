@@ -9,7 +9,7 @@ export enum IconId {
   ThumbUp = 'thumb_up',
   OpenInNew = 'open_in_new',
   AttachFile = 'attach_file',
-  Download = 'download'
+  Download = 'download',
 }
 
 export enum IconSize {

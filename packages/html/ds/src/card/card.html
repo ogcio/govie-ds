@@ -13,11 +13,13 @@
   {% endmacro %}
 
   <div class="{{ getLayoutClass(props.type) | trim }}">
-
     {% if props.img and not props.icon %}
       <div class="gi-card-image">
         <a href="{{ props.href }}">
-          <img src="{{ props.img }}" alt="{{ props.title | default('Card image') }}" />
+          <img
+            src="{{ props.img }}"
+            alt="{{ props.title | default('Card image') }}"
+          />
         </a>
       </div>
     {% endif %}
@@ -25,7 +27,7 @@
     {% if props.icon %}
       <div class="gi-card-icon">
         <a href="{{ props.href }}">
-          {{ govieIcon({"icon": props.icon.icon, "size": props.icon.size, "className": props.icon.className  }) }} 
+          {{ govieIcon({"icon": props.icon.icon, "size": props.icon.size, "className": props.icon.className  }) }}
         </a>
       </div>
     {% endif %}
@@ -61,11 +63,12 @@
       {% if props.actions %}
         <div class="gi-card-actions">
           {% for action in props.actions %}
-            <a href="{{ action.href }}" class="gi-link gi-text-md">{{ action.text }}</a>
+            <a href="{{ action.href }}" class="gi-link gi-text-md"
+              >{{ action.text }}</a
+            >
           {% endfor %}
         </div>
       {% endif %}
     </div>
-
   </div>
 {% endmacro %}

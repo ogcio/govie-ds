@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
+import { IconId, IconSize } from '../icon/icon.schema';
 import html from './card.html?raw';
 import { CardProps } from './card.schema';
-import { IconId, IconSize } from '../icon/icon.schema';
 
 const path = import.meta.url.split('/card')[0];
 
@@ -72,7 +72,8 @@ export const Default: Story = {
     },
     actions: {
       control: 'object',
-      description: 'Array of actions that are displayed as links at the bottom of the card.',
+      description:
+        'Array of actions that are displayed as links at the bottom of the card.',
       table: {
         category: 'Actions',
         type: { summary: 'Array<{ href: string, text: string }>' },
@@ -148,7 +149,7 @@ export const HorizontalWithIcon: Story = {
     icon: {
       icon: IconId.Download,
       size: IconSize.ExtraLarge,
-      className: 'gi-text-gray-500'
+      className: 'gi-text-gray-500',
     },
     title: 'Card With Icon',
     content:

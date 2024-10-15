@@ -31,9 +31,7 @@ export const cardSchema = zod.object({
       description: 'Image URL for the card (if applicable)',
     })
     .optional(),
-  icon: iconSchema
-    .describe('Define icon properties')
-    .optional(),
+  icon: iconSchema.describe('Define icon properties').optional(),
   content: zod
     .string({
       description: 'Content or description of the card',
