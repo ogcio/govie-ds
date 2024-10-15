@@ -34,7 +34,7 @@ export const radiosSchema = zod.object({
       hint: zod
         .string({
           description:
-            'if there is additional text required in order to give the user more context',
+            'If there is additional text required in order to give the user more context',
         })
         .optional(),
       conditionalInput: textInputSchema
@@ -53,7 +53,7 @@ export const radiosSchema = zod.object({
   dividerOption: zod
     .object({
       label: zod.string({
-        description: 'the value of the divider radio label',
+        description: 'The value of the divider radio label',
       }),
       value: zod.string({
         description: 'The value associated with the divider radio input',
