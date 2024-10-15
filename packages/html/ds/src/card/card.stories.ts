@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
 import { IconId, IconSize } from '../icon/icon.schema';
+import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
 import { CardProps } from './card.schema';
 
