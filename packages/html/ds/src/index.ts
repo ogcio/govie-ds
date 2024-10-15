@@ -2,6 +2,7 @@ import { destroyAllInstances } from './common/instances.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
+import { initRadios } from './radio/radio.js';
 
 export * as properties from './dist/properties.js';
 
@@ -22,6 +23,7 @@ export function initGovIe() {
 
   initHeader();
   initCheckboxes();
+  initRadios();
 }
 
 export function destroyGovIe() {
@@ -37,3 +39,4 @@ componentEvents.init();
 
 export * from './header/header.js';
 export * from './checkbox/checkbox.js';
+export * from './radio/radio.js';

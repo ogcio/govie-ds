@@ -288,14 +288,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/form-radio--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/form-radio--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },

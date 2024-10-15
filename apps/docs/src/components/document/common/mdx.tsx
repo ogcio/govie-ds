@@ -10,6 +10,7 @@ import {
   TabPanel,
   Tabs,
   Tag,
+  RadiosGroup,
   Card,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -149,6 +150,7 @@ const documentComponents: MDXComponents = {
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
+  RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
 };
 

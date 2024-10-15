@@ -19,6 +19,7 @@ import {
   TabList,
   FileUpload,
   Tag,
+  RadiosGroup,
   Card,
 } from "@govie-ds/react";
 
@@ -51,7 +52,6 @@ export function App() {
       />
       <Container>
         <Heading>Design System </Heading>
-
         <Tabs id="tabs">
           <TabList>
             <TabItem value="tab1" checked>
@@ -166,6 +166,30 @@ export function App() {
             />
           </TabPanel>
         </Tabs>
+        <RadiosGroup
+          title={{
+            value: "Where do you live?",
+            asHeading: {
+              size: "md",
+              as: "h2",
+            },
+          }}
+          items={[
+            {
+              label: "England",
+              value: "england",
+            },
+            {
+              label: "Scotland",
+              value: "scotland",
+            },
+            {
+              label: "Ireland",
+              value: "ireland",
+            },
+          ]}
+          fieldId="uniqueId"
+        />
       </Container>
       <Footer />
     </>
