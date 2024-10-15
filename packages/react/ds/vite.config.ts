@@ -2,6 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
+import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
@@ -12,6 +13,7 @@ export default defineConfig({
     react(),
     libInjectCss(),
     dts({ include: ['src'], exclude: ['src/**/*.stories.tsx'] }),
+    preserveDirectives(),
   ],
   build: {
     copyPublicDir: false,

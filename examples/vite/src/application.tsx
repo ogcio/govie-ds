@@ -19,6 +19,7 @@ import {
   TabList,
   FileUpload,
   Tag,
+  Modal,
 } from "@govie-ds/react";
 
 export function App() {
@@ -153,6 +154,15 @@ export function App() {
         />
         <hr />
         <Tag text="Completed" type="info" />
+        <Modal>
+          <Heading>Title</Heading>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ipsam
+            suscipit sit veritatis quas reiciendis modi harum deserunt
+            consectetur, accusamus numquam quam sint similique eum! Recusandae
+            maiores deserunt dolore magni.
+          </Paragraph>
+        </Modal>
       </Container>
       <Footer />
     </>

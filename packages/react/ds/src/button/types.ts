@@ -23,4 +23,5 @@ export type ButtonProps = {
   size?: ButtonSize;
   label?: string;
   disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
