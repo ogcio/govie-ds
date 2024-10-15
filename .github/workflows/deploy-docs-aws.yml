@@ -1,6 +1,11 @@
 name: Deploy docs to AWS
 
 on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       environment:
