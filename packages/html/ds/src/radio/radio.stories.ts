@@ -53,7 +53,7 @@ export const Default: Story = {
     fieldId: {
       control: 'text',
       type: { name: 'string', required: true },
-      description: 'the unique value for the radios group',
+      description: 'The unique value for the radios group',
     },
     items: {
       control: 'object',
