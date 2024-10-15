@@ -2,6 +2,7 @@ import React, { cloneElement, ReactElement } from 'react';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import { IconPropTypes } from '../icon/icon.js';
 
 type Action = {
   href: string;
@@ -13,7 +14,7 @@ export type CardProps = {
   title?: string;
   href?: string;
   img?: string;
-  icon?: ReactElement;
+  icon?: ReactElement<IconPropTypes>;
   content?: string;
   actions?: Action[];
 };
