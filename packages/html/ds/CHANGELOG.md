@@ -50,6 +50,20 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.13.0](https://github.com/ogcio/govie-ds/compare/html-v0.12.0...html-v0.13.0) (2024-10-16)
+
+
+### Features
+
+* add react `Card` component ([#285](https://github.com/ogcio/govie-ds/issues/285)) ([151aeed](https://github.com/ogcio/govie-ds/commit/151aeeda980f9d7fe8032109614804e4ddda5320))
+* addition of `html` and `govieCard` card components ([#288](https://github.com/ogcio/govie-ds/issues/288)) ([c1e4b5c](https://github.com/ogcio/govie-ds/commit/c1e4b5c01a9908712e2516079ebded597f5751cf))
+* radio component ([#279](https://github.com/ogcio/govie-ds/issues/279)) ([1067f5c](https://github.com/ogcio/govie-ds/commit/1067f5c16df7a359db4df2718a8d318134087e2a))
+
+
+### Bug Fixes
+
+* html header in jinja ([#289](https://github.com/ogcio/govie-ds/issues/289)) ([db96cdc](https://github.com/ogcio/govie-ds/commit/db96cdce4cdb7f62d3c685a4a489b6e09805365d))
+
 ## [0.12.0](https://github.com/ogcio/govie-ds/compare/html-v0.11.1...html-v0.12.0) (2024-10-11)
 
 
