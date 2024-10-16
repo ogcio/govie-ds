@@ -22,6 +22,7 @@ import {
   Modal,
   RadiosGroup,
   Card,
+  Button,
 } from "@govie-ds/react";
 
 export function App() {
@@ -191,14 +192,18 @@ export function App() {
           ]}
           fieldId="uniqueId"
         />
-        <Modal>
+        <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading>Title</Heading>
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ipsam
-            suscipit sit veritatis quas reiciendis modi harum deserunt
-            consectetur, accusamus numquam quam sint similique eum! Recusandae
-            maiores deserunt dolore magni.
+            {" "}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            esse magnam quis sit soluta cupiditate at deserunt exercitationem
+            voluptas doloribus asperiores
           </Paragraph>
+          <div className="gi-flex gi-gap-3 gi-justify-between">
+            <Button>Primary action</Button>
+            <Button variant="secondary">Cancel action</Button>
+          </div>
         </Modal>
       </Container>
       <Footer />

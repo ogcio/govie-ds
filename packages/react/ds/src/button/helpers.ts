@@ -11,26 +11,26 @@ export const getVariantAppearanceClass = ({
 }) => {
   let classes;
   if (!disabled) {
-    if (variant === ButtonVariant.Secondary) {
-      if (appearance === ButtonAppearance.Dark) {
+    if (variant === 'secondary') {
+      if (appearance === 'dark') {
         classes = 'gi-btn-secondary-dark';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-secondary-light';
       } else {
         classes = 'gi-btn-secondary';
       }
-    } else if (variant === ButtonVariant.Flat) {
-      if (appearance === ButtonAppearance.Dark) {
+    } else if (variant === 'flat') {
+      if (appearance === 'dark') {
         classes = 'gi-btn-flat-dark';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-flat-light';
       } else {
         classes = 'gi-btn-flat';
       }
     } else {
-      if (appearance === ButtonAppearance.Dark) {
+      if (appearance === 'dark') {
         classes = 'gi-btn-primary-dark';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-primary-light';
       } else {
         classes = 'gi-btn-primary';
@@ -42,9 +42,9 @@ export const getVariantAppearanceClass = ({
 
 export const getSizeClass = (size?: ButtonSize) => {
   let classes;
-  if (size === ButtonSize.Small) {
+  if (size === 'small') {
     classes = 'gi-btn-small';
-  } else if (size === ButtonSize.Large) {
+  } else if (size === 'large') {
     classes = 'gi-btn-large';
   } else {
     classes = 'gi-btn-regular';
@@ -63,26 +63,26 @@ export const isButtonDisabled = ({
 }) => {
   let classes;
   if (disabled) {
-    if (variant === ButtonVariant.Secondary) {
-      if (appearance === ButtonAppearance.Dark) {
+    if (variant === 'secondary') {
+      if (appearance === 'dark') {
         classes = 'gi-btn-secondary-dark-disabled';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-secondary-light-disabled';
       } else {
         classes = 'gi-btn-secondary-disabled';
       }
-    } else if (variant === ButtonVariant.Flat) {
-      if (appearance === ButtonAppearance.Dark) {
+    } else if (variant === 'flat') {
+      if (appearance === 'dark') {
         classes = 'gi-btn-flat-dark-disabled';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-flat-light-disabled';
       } else {
         classes = 'gi-btn-flat-disabled';
       }
     } else {
-      if (appearance === ButtonAppearance.Dark) {
+      if (appearance === 'dark') {
         classes = 'gi-btn-primary-dark-disabled';
-      } else if (appearance === ButtonAppearance.Light) {
+      } else if (appearance === 'light') {
         classes = 'gi-btn-primary-light-disabled';
       } else {
         classes = 'gi-btn-primary-disabled';

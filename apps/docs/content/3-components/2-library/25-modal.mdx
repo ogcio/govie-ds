@@ -9,6 +9,97 @@ status: in-development
 
 <ComponentStatusBlock componentId="modal" />
 
+import { modalProps } from "@/components/navigation/modal"
+
+<Modal triggerButton={modalProps.triggerButton}  >
+{modalProps.children}
+</Modal>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+<div data-module="gieds-modal">
+  <div
+    data-testid="trigger-button-container"
+    data-element="trigger-button-container"
+  >
+    <button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>
+  </div>
+  <div data-testid="modal" data-element="modal" class="gi-modal gi-modal-close">
+    <div
+      data-testid="modal-container"
+      data-element="modal-container"
+      class="gi-modal-container"
+    >
+      <span
+        data-testid="govie-icon"
+        role="presentation"
+        class="material-icons gi-block gi-text-[32px] gi-modal-icon"
+      >
+        close
+      </span>
+
+      <div>
+        <h2 class="gi-heading-lg">Title</h2>
+        <p class="gi-paragraph-md">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+          molestias error accusantium non nobis excepturi doloremque dolorem
+          possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit,
+          commodi cupiditate sit minima veritatis.
+        </p>
+        <div class="gi-flex gi-gap-3 gi-justify-between">
+          <button class="gi-btn gi-btn-primary gi-btn-regular">
+            Primary Action
+          </button>
+          <button class="gi-btn gi-btn-secondary gi-btn-regular">
+            Cancel Action
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  {{ govieModal({
+    "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
+    "triggerButton": "<button>Open Modal</button>"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { Modal } from '@govie-ds/react';
+
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <Heading>Title</Heading>
+    <Paragraph>
+      {" "}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores
+    </Paragraph>
+    <div className="gi-flex gi-gap-3 gi-justify-between">
+      <Button>Primary action</Button>
+      <Button variant="secondary">Cancel action</Button>
+    </div>
+  </Modal>;
+  ```
+  </TabPanel>
+</Tabs>
+
 ## When to use this component
 
+Modals are best to use when trying to isolate an action by the user. By using a modal you capture the focus of the user and this allows to remove secondary distractions.
+
 ## When not to use this component
+
+Don't use modal dialogs for elements that should be linkable or searchable.

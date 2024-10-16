@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Button } from '../button/button.js';
-import { ButtonVariant } from '../button/types.js';
 import { Heading } from '../heading/heading.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Modal } from './modal.js';
@@ -52,7 +51,7 @@ export const Default: Story = {
         </Paragraph>
         <div className="gi-flex gi-gap-3 gi-justify-between">
           <Button>Primary action</Button>
-          <Button variant={ButtonVariant.Secondary}>Cancel action</Button>
+          <Button variant="secondary">Cancel action</Button>
         </div>
       </>
     ),
@@ -72,7 +71,7 @@ export const ModalOpen: Story = {
         </Paragraph>
         <div className="gi-flex gi-gap-3 gi-justify-between">
           <Button>Primary action</Button>
-          <Button variant={ButtonVariant.Secondary}>Cancel action</Button>
+          <Button variant="secondary">Cancel action</Button>
         </div>
       </>
     ),
