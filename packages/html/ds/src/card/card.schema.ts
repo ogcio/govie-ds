@@ -1,8 +1,8 @@
 import * as zod from 'zod';
-import { iconSchema } from '../icon/icon.schema';
-import { tagSchema } from '../tag/tag.schema';
 import { buttonSchema } from '../button/button-schema';
+import { iconSchema } from '../icon/icon.schema';
 import { linkSchema } from '../link/link.schema';
+import { tagSchema } from '../tag/tag.schema';
 
 const actionSchema = zod.union([
   buttonSchema.extend({

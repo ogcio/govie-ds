@@ -1,10 +1,10 @@
+import { Button } from '../button/button.js';
+import { ButtonProps } from '../button/types.js';
 import { Heading } from '../heading/heading.js';
 import { Icon, IconPropTypes } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagProps } from '../tag/tag.js';
-import { ButtonProps } from '../button/types.js';
-import { Button } from '../button/button.js';
 
 type Action =
   | (ButtonProps & { type: 'button' })

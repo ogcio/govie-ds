@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ButtonVariant } from '../button/button-schema';
 import { IconId, IconSize } from '../icon/icon.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
 import { CardProps } from './card.schema';
-import { ButtonVariant } from '../button/button-schema';
 
 const path = import.meta.url.split('/card')[0];
 
