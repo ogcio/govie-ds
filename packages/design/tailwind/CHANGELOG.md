@@ -15,6 +15,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.13.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.12.0...tailwind-v0.13.0) (2024-10-16)
+
+
+### Features
+
+* add react `Card` component ([#285](https://github.com/ogcio/govie-ds/issues/285)) ([151aeed](https://github.com/ogcio/govie-ds/commit/151aeeda980f9d7fe8032109614804e4ddda5320))
+* radio component ([#279](https://github.com/ogcio/govie-ds/issues/279)) ([1067f5c](https://github.com/ogcio/govie-ds/commit/1067f5c16df7a359db4df2718a8d318134087e2a))
+
 ## [0.12.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.11.0...tailwind-v0.12.0) (2024-10-11)
 
 

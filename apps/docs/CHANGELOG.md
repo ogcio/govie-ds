@@ -36,6 +36,20 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/docs-v0.24.0...docs-v0.25.0) (2024-10-16)
+
+
+### Features
+
+* add react `Card` component ([#285](https://github.com/ogcio/govie-ds/issues/285)) ([151aeed](https://github.com/ogcio/govie-ds/commit/151aeeda980f9d7fe8032109614804e4ddda5320))
+* addition of `html` and `govieCard` card components ([#288](https://github.com/ogcio/govie-ds/issues/288)) ([c1e4b5c](https://github.com/ogcio/govie-ds/commit/c1e4b5c01a9908712e2516079ebded597f5751cf))
+* radio component ([#279](https://github.com/ogcio/govie-ds/issues/279)) ([1067f5c](https://github.com/ogcio/govie-ds/commit/1067f5c16df7a359db4df2718a8d318134087e2a))
+
+
+### Bug Fixes
+
+* radio id on docs ([#287](https://github.com/ogcio/govie-ds/issues/287)) ([4356294](https://github.com/ogcio/govie-ds/commit/4356294427a72779cd01ae91b47d284e2b33dd57))
+
 ## [0.24.0](https://github.com/ogcio/govie-ds/compare/docs-v0.23.0...docs-v0.24.0) (2024-10-11)
 
 
