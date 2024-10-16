@@ -1,3 +1,7 @@
+{% from 'heading/heading.html' import govieHeading %}
+{% from 'paragraph/paragraph.html' import govieParagraph %}
+{% from 'button/button.html' import govieButton %}
+
 {% set footerProps = {
   "links": [
     {
@@ -157,5 +161,11 @@
       "value": "ireland"
     }
   ]
+} 
+%}
+
+{% set modalProps = {
+  "html": govieHeading({ "text" : "title", "tag": "h2"}) + govieParagraph({ "content": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam molestias error accusantium non nobis excepturi doloremque dolorem possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit, commodi cupiditate sit minima veritatis." }) + '<div class="gi-flex gi-gap-3 gi-justify-between">' | safe + govieButton({"content": "Primary Action"}) + govieButton({"content": "Cancel Action", "variant": "secondary"}) + '</div>' | safe,
+  "triggerButton": govieButton({ "content": "Open Modal" })
 } 
 %}
