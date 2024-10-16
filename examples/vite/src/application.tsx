@@ -24,6 +24,7 @@ import {
   Card,
   Button,
 } from "@govie-ds/react";
+import { ButtonVariant } from "../../../packages/react/ds/dist/button/types";
 
 export function App() {
   return (
@@ -99,16 +100,19 @@ export function App() {
             </PhaseBanner>
             <span className="material-icons">face</span>
             <Card
-              actions={[
-                {
-                  href: "#",
-                  text: "Link",
-                },
-              ]}
+              action={{
+                children: "Button",
+                type: "button",
+                variant: ButtonVariant.Secondary,
+              }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
-              href="#"
-              img="https://placeholderjs.com/300x180"
-              title="Vertical Card"
+              img="https://placeholderjs.com/400x300"
+              subTitle="Subheading"
+              tag={{
+                text: "New",
+                type: "info",
+              }}
+              title="Card Title"
               type="vertical"
             />
           </TabPanel>
