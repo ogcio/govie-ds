@@ -52,7 +52,7 @@ describe('govieCard', () => {
     const { container } = renderCard({
       type: 'vertical',
       title: 'Card with Image',
-      img: 'https://via.placeholder.com/150',
+      img: 'SOME_PATH',
       href: '#',
     });
 
@@ -60,7 +60,7 @@ describe('govieCard', () => {
 
     expect(imageElement).toBeTruthy();
     expect(imageElement.getAttribute('src')).toBe(
-      'https://via.placeholder.com/150',
+      'SOME_PATH',
     );
   });
 

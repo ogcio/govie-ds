@@ -91,7 +91,7 @@ export const Default: Story = {
   args: {
     type: 'vertical',
     title: 'Card Title',
-    img: 'https://via.placeholder.com/300x180',
+    img: 'https://placeholderjs.com/300x180',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     actions: [{ href: '#', text: 'Link' }],
@@ -113,7 +113,7 @@ export const VerticalWithLink: Story = {
     type: 'vertical',
     href: '#',
     title: 'Vertical Card',
-    img: 'https://via.placeholder.com/300x180',
+    img: 'https://placeholderjs.com/300x180',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     actions: [{ href: '#', text: 'Link' }],
@@ -125,7 +125,7 @@ export const Horizontal: Story = {
     type: 'horizontal',
     title: 'Horizontal Card',
     href: '#',
-    img: 'https://via.placeholder.com/600x360',
+    img: 'https://placeholderjs.com/600x360',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     actions: [{ href: '#', text: 'Link' }],
