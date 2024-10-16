@@ -84,12 +84,11 @@
         <div class="gi-card-actions">
           {% if props.action.type == 'link' %}
             {{ govieLink(props.action) }}
-          {% elseif props.action.type == 'button' %}
+            {% elseif props.action.type == 'button' %}
             {{ govieButton(props.action) }}
           {% endif %}
         </div>
       {% endif %}
     </div>
   </div>
-
 {% endmacro %}

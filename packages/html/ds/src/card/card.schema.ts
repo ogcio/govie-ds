@@ -44,8 +44,9 @@ export const cardSchema = zod.object({
       description: 'Content or description of the card',
     })
     .optional(),
-    action: actionSchema.describe('Defines the action for the card (either a button or link)').optional(),
-
+  action: actionSchema
+    .describe('Defines the action for the card (either a button or link)')
+    .optional(),
 });
 
 export type CardProps = zod.infer<typeof cardSchema>;

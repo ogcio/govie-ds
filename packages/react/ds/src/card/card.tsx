@@ -1,4 +1,3 @@
-import React, { act, cloneElement, ReactElement } from 'react';
 import { Heading } from '../heading/heading.js';
 import { Icon, IconPropTypes } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
