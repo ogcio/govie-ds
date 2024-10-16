@@ -39,6 +39,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.17.1](https://github.com/ogcio/govie-ds/compare/react-v0.17.0...react-v0.17.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* hide menu if navlinks is empty ([028c3bf](https://github.com/ogcio/govie-ds/commit/028c3bf74e73410b2016c7d69cb1cf5ba6331871))
+
 ## [0.17.0](https://github.com/ogcio/govie-ds/compare/react-v0.16.0...react-v0.17.0) (2024-10-16)
 
 
