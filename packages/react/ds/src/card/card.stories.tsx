@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './card.js';
+import { ButtonVariant } from '../button/types.js';
 
 const meta = {
   title: 'Components/Card',
@@ -25,6 +26,14 @@ const meta = {
     title: {
       control: { type: 'text' },
       description: 'The title of the card.',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'string' },
+      },
+    },
+    subTitle: {
+      control: { type: 'text' },
+      description: 'The subheading or subtitle of the card.',
       table: {
         category: 'Card Content',
         type: { summary: 'string' },
@@ -62,13 +71,20 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    actions: {
-      control: { type: 'object' },
-      description:
-        'Array of actions that are displayed as links at the bottom of the card.',
+    tag: {
+      control: 'object',
+      description: 'Tag configuration for the card (text and type).',
+      table: {
+        category: 'Card Content',
+        type: { summary: 'Tag' },
+      },
+    },
+    action: {
+      control: 'object',
+      description: 'The action button or link for the card.',
       table: {
         category: 'Actions',
-        type: { summary: 'Array<{ href: string, text: string }>' },
+        type: { summary: 'Button | Link' },
       },
     },
   },
@@ -81,10 +97,19 @@ export const Default: Story = {
   args: {
     type: 'vertical',
     title: 'Card Title',
-    img: 'https://placeholderjs.com/300x180',
+    subTitle: 'Subheading',
+    img: 'https://placeholderjs.com/400x300',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
-    actions: [{ href: '#', text: 'Link' }],
+    tag: {
+      text: 'New',
+      type: 'info',
+    },
+    action: {
+      type: 'button',
+      children: 'Button',
+      variant: ButtonVariant.Secondary,
+    },
   },
 };
 
@@ -95,6 +120,12 @@ export const VerticalWithoutImage: Story = {
     title: 'Vertical Card Without Image',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    action: {
+      type: 'link',
+      size: 'md',
+      href: '#',
+      children: 'Learn More',
+    },
   },
 };
 
@@ -103,10 +134,35 @@ export const VerticalWithLink: Story = {
     type: 'vertical',
     href: '#',
     title: 'Vertical Card',
-    img: 'https://placeholderjs.com/300x180',
+    img: 'https://placeholderjs.com/400x300',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
-    actions: [{ href: '#', text: 'Link' }],
+    tag: {
+      text: 'Featured',
+      type: 'info',
+    },
+    action: {
+      type: 'link',
+      size: 'md',
+      href: '#',
+      children: 'View More',
+    },
+  },
+};
+
+export const VerticalWithButton: Story = {
+  args: {
+    type: 'vertical',
+    href: '#',
+    title: 'Vertical Card',
+    img: 'https://placeholderjs.com/400x300',
+    content:
+      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    action: {
+      type: 'button',
+      children: 'Button',
+      variant: ButtonVariant.Secondary,
+    },
   },
 };
 
@@ -117,8 +173,13 @@ export const Horizontal: Story = {
     href: '#',
     img: 'https://placeholderjs.com/600x360',
     content:
-      'Lorem ipsum dolor sit amet cons fectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
-    actions: [{ href: '#', text: 'Link' }],
+      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    action: {
+      type: 'link',
+      size: 'md',
+      href: '#',
+      children: 'Link',
+    },
   },
 };
 
@@ -127,8 +188,15 @@ export const HorizontalWithoutImage: Story = {
     type: 'horizontal',
     href: '#',
     title: 'Horizontal Card Without Image',
+    subTitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    action: {
+      type: 'link',
+      size: 'md',
+      href: '#',
+      children: 'Learn More',
+    },
   },
 };
 
@@ -144,5 +212,10 @@ export const HorizontalWithIcon: Story = {
     title: 'Card With Icon',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    action: {
+      type: 'button',
+      children: 'Download',
+      variant: ButtonVariant.Secondary,
+    },
   },
 };

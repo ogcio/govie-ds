@@ -1,6 +1,8 @@
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'heading/heading.html' import govieHeading %}
 {% from 'link/link.html' import govieLink %}
+{% from 'tag/tag.html' import govieTag %}
+{% from 'button/button.html' import govieButton %}
 
 {% macro govieCard(props) %}
 
@@ -33,26 +35,44 @@
     {% endif %}
 
     <div class="gi-card-content">
-      <div class="gi-card-heading">
-        {% if props.href %}
-          {{
-            govieHeading({
-              "tag": 'h5',
-              "text": govieLink({
-                "href": props.href,
-                "label": props.title
-              }),
-              "customClasses": '!gi-my-0'
-            })
-          }}
-        {% else %}
-          {{
-            govieHeading({
-              "tag": 'h5',
-              "text": props.title,
-              "customClasses": '!gi-my-0'
-            })
-          }}
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          {% if props.href %}
+            {{
+              govieHeading({
+                "tag": 'h5',
+                "text": govieLink({
+                  "href": props.href,
+                  "label": props.title
+                }),
+                "customClasses": '!gi-my-0'
+              })
+            }}
+          {% else %}
+            {{
+              govieHeading({
+                "tag": 'h5',
+                "text": props.title,
+                "customClasses": '!gi-my-0'
+              })
+            }}
+          {% endif %}
+          {% if props.subTitle %}
+            {{
+              govieHeading({
+                "tag": 'h6',
+                "text": props.subTitle,
+                "customClasses": 'gi-text-gray-500 !gi-font-normal !gi-my-0',
+                "size": '2xs'
+              })
+            }}
+          {% endif %}
+        </div>
+
+        {% if props.tag and props.tag.text and props.tag.type %}
+          <div class="gi-card-tag">
+            {{ govieTag({"text": props.tag.text, "type": props.tag.type}) }}
+          </div>
         {% endif %}
       </div>
 
@@ -60,15 +80,16 @@
         <p class="gi-text-sm">{{ props.content | default('Card content') }}</p>
       </div>
 
-      {% if props.actions %}
+      {% if props.action %}
         <div class="gi-card-actions">
-          {% for action in props.actions %}
-            <a href="{{ action.href }}" class="gi-link gi-text-md"
-              >{{ action.text }}</a
-            >
-          {% endfor %}
+          {% if props.action.type == 'link' %}
+            {{ govieLink(props.action) }}
+          {% elseif props.action.type == 'button' %}
+            {{ govieButton(props.action) }}
+          {% endif %}
         </div>
       {% endif %}
     </div>
   </div>
+
 {% endmacro %}

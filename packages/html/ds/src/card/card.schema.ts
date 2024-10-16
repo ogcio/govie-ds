@@ -1,16 +1,17 @@
 import * as zod from 'zod';
 import { iconSchema } from '../icon/icon.schema';
+import { tagSchema } from '../tag/tag.schema';
+import { buttonSchema } from '../button/button-schema';
+import { linkSchema } from '../link/link.schema';
 
-const actionSchema = zod.object({
-  href: zod.string({
-    description: 'URL for the action link',
-    required_error: 'href is required for actions',
+const actionSchema = zod.union([
+  buttonSchema.extend({
+    type: zod.literal('button').describe('Type of action is a button'),
   }),
-  text: zod.string({
-    description: 'Text for the action link',
-    required_error: 'text is required for actions',
+  linkSchema.extend({
+    type: zod.literal('link').describe('Type of action is a link'),
   }),
-});
+]);
 
 export const cardSchema = zod.object({
   type: zod.enum(['vertical', 'horizontal'], {
@@ -19,6 +20,11 @@ export const cardSchema = zod.object({
   title: zod
     .string({
       description: 'Title of the card',
+    })
+    .optional(),
+  subTitle: zod
+    .string({
+      description: 'subTitle of the card',
     })
     .optional(),
   href: zod
@@ -31,17 +37,15 @@ export const cardSchema = zod.object({
       description: 'Image URL for the card (if applicable)',
     })
     .optional(),
+  tag: tagSchema.describe('Define tag properties').optional(),
   icon: iconSchema.describe('Define icon properties').optional(),
   content: zod
     .string({
       description: 'Content or description of the card',
     })
     .optional(),
-  actions: zod
-    .array(actionSchema, {
-      description: 'List of actions available for the card',
-    })
-    .optional(),
+    action: actionSchema.describe('Defines the action for the card (either a button or link)').optional(),
+
 });
 
 export type CardProps = zod.infer<typeof cardSchema>;
