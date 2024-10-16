@@ -15,27 +15,47 @@ status: stable
   actions={[{ href: '#', text: 'Link' }]}
   content="This is card."
   href="#"
-  img="https://via.placeholder.com/300x180"
+  img="/card_300x180_sample.png"
   title="Vertical Card"
   type="vertical"
 />
 
-<Tabs id="tab13">
+<Tabs id="tab1">
   <TabList>
-    <TabItem value="tab11" checked>
-      HTML
-    </TabItem>
+    <TabItem value="tab11" checked>HTML</TabItem>
     <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
   ```html
-    Under consideration 
+    <div class="gi-card gi-card-vertical">
+      <div class="gi-card-image">
+        <a href="">
+          <img src="IMAGE_PATH" alt="Card Title" />
+        </a>
+      </div>
+      <div class="gi-card-content">
+        <div class="gi-card-heading">
+          <h5 class="gi-heading-xs !gi-my-0">
+            Vertical Card
+          </h5>
+        </div>
+        <div class="gi-card-paragraph">
+          <p class="gi-text-sm">This is card.</p>
+        </div>
+      </div>
+    </div>
   ```
   </TabPanel>
   <TabPanel value="tab12">
   ```html
-    Under consideration 
+    {{ govieCard({
+      "type": "vertical",
+      "href": "#"
+      "title": "Vertical Card",
+      "img": "IMAGE_PATH",
+      "content": "This is card.",
+    }) }}
   ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -46,7 +66,7 @@ status: stable
       actions={[{ href: '#', text: 'Link' }]}
       content="This is card."
       href="#"
-      img="https://via.placeholder.com/300x180"
+      img="IMAGE_PATH"
       title="Vertical Card"
       type="vertical"
     />
@@ -61,27 +81,47 @@ status: stable
   actions={[{ href: '#', text: 'Link' }]}
   content="This is card."
   href="#"
-  img="https://via.placeholder.com/300x180"
+  img="/card_600x360_sample.png"
   title="Horizontal Card"
   type="horizontal"
 />
 
-<Tabs id="tab23">
+<Tabs id="tab2">
   <TabList>
-    <TabItem value="tab21" checked>
-      HTML
-    </TabItem>
+    <TabItem value="tab21" checked>HTML</TabItem>
     <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
   ```html
-    Under consideration 
+    <div class="gi-card gi-card-horizontal">
+      <div class="gi-card-image">
+        <a href="#">
+          <img src="IMAGE_PATH" alt="Horizontal Card" />
+        </a>
+      </div>
+      <div class="gi-card-content">
+        <div class="gi-card-heading">
+          <h5 class="gi-heading-xs !gi-my-0">
+            <a href="#" class="gi-link">Horizontal Card</a>
+          </h5>
+        </div>
+        <div class="gi-card-paragraph">
+          <p class="gi-text-sm">This is card.</p>
+        </div>
+      </div>
+    </div>
   ```
   </TabPanel>
   <TabPanel value="tab22">
   ```html
-    Under consideration 
+    {{ govieCard({
+      "type": "horizontal",
+      "href": "#"
+      "title": "Horizontal Card",
+      "img": "IMAGE_PATH",
+      "content": "This is card.",
+    }) }}
   ```
   </TabPanel>
   <TabPanel value="tab23">
@@ -92,7 +132,7 @@ status: stable
       actions={[{ href: '#', text: 'Link' }]}
       content="This is card."
       href="#"
-      img="https://via.placeholder.com/600x360"
+      img="IMAGE_PATH"
       title="Horizontal Card"
       type="horizontal"
     />

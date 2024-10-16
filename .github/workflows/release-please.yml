@@ -10,14 +10,14 @@ jobs:
     environment: "prod"
     runs-on: ubuntu-latest
     permissions:
-      contents: write # to create release commit (google-github-actions/release-please-action)
-      pull-requests: write # to create release PR (google-github-actions/release-please-action)
+      contents: write # to create release commit (googleapis/release-please-action)
+      pull-requests: write # to create release PR (googleapis/release-please-action)
     outputs:
       storybook_html_released: ${{ steps.publish-outputs.outputs.storybook_html_released }}
       storybook_react_released: ${{ steps.publish-outputs.outputs.storybook_react_released }}
       docs_released: ${{ steps.publish-outputs.outputs.docs_released }}
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         id: release
         with:
           token: ${{ secrets.REPO_PAT }}
@@ -101,5 +101,5 @@ jobs:
     if: ${{ needs.release-please.outputs.docs_released == 'true' }}
     uses: ./.github/workflows/deploy-docs-aws.yml
     with:
-      environment: "prod"
+      environment: prod
     secrets: inherit

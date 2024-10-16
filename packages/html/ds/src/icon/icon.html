@@ -63,8 +63,7 @@
       {{ getDisabled(props) | trim }}
       {{ getInline(props) | trim }}
       {{ getFontSize(props) | trim }}
-      {{ addClasses(props.classes) | trim }} 
-      "
+      {{ props.className | default('') | trim }}"
   >
     {{ props.icon }}
   </span>

@@ -105,8 +105,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/components-card--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
