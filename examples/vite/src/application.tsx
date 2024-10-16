@@ -102,7 +102,7 @@ export function App() {
               ]}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
               href="#"
-              img="https://via.placeholder.com/300x180"
+              img="https://placeholderjs.com/300x180"
               title="Vertical Card"
               type="vertical"
             />

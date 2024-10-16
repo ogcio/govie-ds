@@ -60,7 +60,8 @@
       {{ getIconStyle(props) | trim }}
       {{ getDisabled(props) | trim }}
       {{ getInline(props) | trim }}
-      {{ getFontSize(props) | trim }}"
+      {{ getFontSize(props) | trim }}
+      {{ props.className | default('') | trim }}"
   >
     {{ props.icon }}
   </span>
