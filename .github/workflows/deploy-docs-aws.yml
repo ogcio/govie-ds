@@ -3,7 +3,7 @@ name: Deploy docs to AWS
 on:
   workflow_call:
     inputs:
-      environment:
+      env:
         required: true
         type: string
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
       id-token: write
       contents: read
 
-    environment: ${{ github.event.inputs.environment }}
+    environment: ${{ github.event.inputs.environment || github.event.inputs.env }}
 
     steps:
       - name: Checkout code
@@ -40,7 +40,7 @@ jobs:
           node-version: 20
 
       - name: Set environment variable
-        run: echo "CONFIGURATION=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
+        run: echo "CONFIGURATION=${{ github.event.inputs.environment || github.event.inputs.env }}" >> $GITHUB_ENV
 
       - name: Build and test
         run: |
@@ -72,7 +72,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.ecr-sign-in.outputs.registry }}
           ECR_REPOSITORY: life-events-design-system
-          IMAGE_TAG: ${{ github.event.inputs.environment }}
+          IMAGE_TAG: ${{ github.event.inputs.environment || github.event.inputs.env }}
         run: |
           pnpm ds:deploy
 
