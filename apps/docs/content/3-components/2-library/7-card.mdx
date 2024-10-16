@@ -12,10 +12,19 @@ status: stable
 ## Vertical Card
 
 <Card
-  actions={[{ href: '#', text: 'Link' }]}
-  content="This is card."
+  action={{
+    children: 'View More',
+    href: '#',
+    size: 'md',
+    type: 'link',
+  }}
+  content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
   href="#"
-  img="/card_300x180_sample.png"
+  img="https://placeholderjs.com/400x300"
+  tag={{
+    text: 'Featured',
+    type: 'info',
+  }}
   title="Vertical Card"
   type="vertical"
 />
@@ -30,19 +39,48 @@ status: stable
   ```html
     <div class="gi-card gi-card-vertical">
       <div class="gi-card-image">
-        <a href="">
-          <img src="IMAGE_PATH" alt="Card Title" />
-        </a>
+          <a href="#">
+          <img
+            src="https://placeholderjs.com/400x300"
+            alt="Vertical Card"
+            />
+          </a>
       </div>
       <div class="gi-card-content">
-        <div class="gi-card-heading">
-          <h5 class="gi-heading-xs !gi-my-0">
-            Vertical Card
-          </h5>
-        </div>
-        <div class="gi-card-paragraph">
-          <p class="gi-text-sm">This is card.</p>
-        </div>
+          <div class="gi-card-header">
+            <div class="gi-card-heading">
+                <h5 class="gi-heading-xs
+                  !gi-my-0">
+                  <a
+                      href="#"
+                      class="
+                      gi-link
+                      "
+                      >Vertical Card</a>
+                </h5>
+                <h6 class="gi-heading-2xs
+                  gi-text-gray-500 !gi-font-normal !gi-my-0">
+                  Subtitle Here
+                </h6>
+            </div>
+            <div class="gi-card-tag">
+                <strong class="gi-tag gi-tag-info">
+                Featured
+                </strong>
+            </div>
+          </div>
+          <div class="gi-card-paragraph">
+            <p class="gi-text-sm">Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.</p>
+          </div>
+          <div class="gi-card-actions">
+            <a
+                href="#"
+                class="
+                gi-link
+                gi-link-md
+                "
+                >View More</a>
+          </div>
       </div>
     </div>
   ```
@@ -51,10 +89,21 @@ status: stable
   ```html
     {{ govieCard({
       "type": "vertical",
-      "href": "#"
+      "href": "#",
       "title": "Vertical Card",
-      "img": "IMAGE_PATH",
-      "content": "This is card.",
+      "img": "https://placeholderjs.com/400x300",
+      "subTitle": "Subtitle Here",
+      "content": "Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.",
+      "tag": {
+        "text": "Featured",
+        "type": "info"
+      },
+      "action": {
+        "type": "link",
+        "size": "md",
+        "href": "#",
+        "label": "View More"
+      }
     }) }}
   ```
   </TabPanel>
@@ -63,10 +112,19 @@ status: stable
     import { Card } from '@govie-ds/react';
 
     <Card
-      actions={[{ href: '#', text: 'Link' }]}
-      content="This is card."
+      action={{
+        children: 'View More',
+        href: '#',
+        size: 'md',
+        type: 'link'
+      }}
+      content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
       href="#"
-      img="IMAGE_PATH"
+      img="https://placeholderjs.com/400x300"
+      tag={{
+        text: 'Featured',
+        type: 'info'
+      }}
       title="Vertical Card"
       type="vertical"
     />
@@ -78,11 +136,19 @@ status: stable
 ## Horizontal Card
 
 <Card
-  actions={[{ href: '#', text: 'Link' }]}
-  content="This is card."
-  href="#"
-  img="/card_600x360_sample.png"
-  title="Horizontal Card"
+  action={{
+    children: 'Button',
+    type: 'button',
+    variant: 'secondary',
+  }}
+  content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+  img="https://placeholderjs.com/400x300"
+  subTitle="Subheading"
+  tag={{
+    text: 'New',
+    type: 'info',
+  }}
+  title="Card Title"
   type="horizontal"
 />
 
@@ -96,19 +162,44 @@ status: stable
   ```html
     <div class="gi-card gi-card-horizontal">
       <div class="gi-card-image">
-        <a href="#">
-          <img src="IMAGE_PATH" alt="Horizontal Card" />
-        </a>
+          <a href="">
+          <img
+            src="https://placeholderjs.com/400x300"
+            alt="Card Title"
+            />
+          </a>
       </div>
       <div class="gi-card-content">
-        <div class="gi-card-heading">
-          <h5 class="gi-heading-xs !gi-my-0">
-            <a href="#" class="gi-link">Horizontal Card</a>
-          </h5>
-        </div>
-        <div class="gi-card-paragraph">
-          <p class="gi-text-sm">This is card.</p>
-        </div>
+          <div class="gi-card-header">
+            <div class="gi-card-heading">
+                <h5 class="gi-heading-xs
+                  !gi-my-0">
+                  Card Title
+                </h5>
+                <h6 class="gi-heading-2xs
+                  gi-text-gray-500 !gi-font-normal !gi-my-0">
+                  Subheading
+                </h6>
+            </div>
+            <div class="gi-card-tag">
+                <strong class="gi-tag gi-tag-info">
+                New
+                </strong>
+            </div>
+          </div>
+          <div class="gi-card-paragraph">
+            <p class="gi-text-sm">Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.</p>
+          </div>
+          <div class="gi-card-actions">
+            <button
+                data-element="button-container"
+                data-module="gieds-button"
+                data-testid="govieButton-default-secondary-medium-notDisabled"
+                class="gi-btn gi-btn-secondary gi-btn-regular "
+                >
+            Button
+            </button>
+          </div>
       </div>
     </div>
   ```
@@ -117,10 +208,19 @@ status: stable
   ```html
     {{ govieCard({
       "type": "horizontal",
-      "href": "#"
-      "title": "Horizontal Card",
-      "img": "IMAGE_PATH",
-      "content": "This is card.",
+      "title": "Card Title",
+      "subTitle": "Subheading",
+      "img": "https://placeholderjs.com/400x300",
+      "content": "Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.",
+      "tag": {
+        "text": "New",
+        "type": "info"
+      },
+      "action": {
+        "type": "button",
+        "content": "Button",
+        "variant": "secondary"
+      }
     }) }}
   ```
   </TabPanel>
@@ -129,11 +229,19 @@ status: stable
     import { Card } from '@govie-ds/react';
 
     <Card
-      actions={[{ href: '#', text: 'Link' }]}
-      content="This is card."
-      href="#"
-      img="IMAGE_PATH"
-      title="Horizontal Card"
+      action={{
+        children: 'Button',
+        type: 'button',
+        variant: 'secondary'
+      }}
+      content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
+      img="https://placeholderjs.com/400x300"
+      subTitle="Subheading"
+      tag={{
+        text: 'New',
+        type: 'info'
+      }}
+      title="Card Title"
       type="horizontal"
     />
     ```
