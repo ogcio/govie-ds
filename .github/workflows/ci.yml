@@ -61,7 +61,7 @@ jobs:
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm nx affected --base=last-release -t format:check --parallel=3
-          pnpm nx affected --base=last-release -t build --parallel=3
+          pnpm build
           pnpm nx affected --base=last-release -t lint --parallel=3
           pnpm nx affected --base=last-release -t test --parallel=3
 

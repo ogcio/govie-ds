@@ -101,5 +101,5 @@ jobs:
     if: ${{ needs.release-please.outputs.docs_released == 'true' }}
     uses: ./.github/workflows/deploy-docs-aws.yml
     with:
-      environment: prod
+      env: prod
     secrets: inherit
