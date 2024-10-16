@@ -6,12 +6,12 @@
 
   <div data-module="gieds-modal">
     {% if props.triggerButton %}
-      <div data-element="trigger-button-container">
+      <div data-testid="trigger-button-container" data-element="trigger-button-container">
         {{ props.triggerButton | safe | trim | indent(2) }}
       </div>
     {% endif %}
-    <div data-element="modal"  class="gi-modal {{open}}">
-      <div data-element="modal-container" class="gi-modal-container">
+    <div data-testid="modal" data-element="modal"  class="gi-modal {{open}}">
+      <div data-testid="modal-container" data-element="modal-container" class="gi-modal-container">
         {{
           govieIcon({
               "size": "lg",
