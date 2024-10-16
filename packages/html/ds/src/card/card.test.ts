@@ -59,9 +59,7 @@ describe('govieCard', () => {
     const imageElement = container.querySelector('img')!;
 
     expect(imageElement).toBeTruthy();
-    expect(imageElement.getAttribute('src')).toBe(
-      'SOME_PATH',
-    );
+    expect(imageElement.getAttribute('src')).toBe('SOME_PATH');
   });
 
   it('should render an icon when "icon" prop is provided', () => {
