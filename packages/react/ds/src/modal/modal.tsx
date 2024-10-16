@@ -13,8 +13,6 @@ export const Modal = ({ triggerButton, children }: ModalProps) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log(open);
-
   return (
     <div>
       {triggerButton && cloneElement(triggerButton, { onClick: handleOpen })}

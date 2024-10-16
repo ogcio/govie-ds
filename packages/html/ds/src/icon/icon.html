@@ -1,3 +1,5 @@
+{% from 'helpers/helpers.html' import addClasses %}
+
 {% macro govieIcon(props) %}
   {% macro getIconStyle(props) %}
     {% if props.outlined %}
@@ -60,7 +62,9 @@
       {{ getIconStyle(props) | trim }}
       {{ getDisabled(props) | trim }}
       {{ getInline(props) | trim }}
-      {{ getFontSize(props) | trim }}"
+      {{ getFontSize(props) | trim }}
+      {{ addClasses(props.classes) | trim }} 
+      "
   >
     {{ props.icon }}
   </span>

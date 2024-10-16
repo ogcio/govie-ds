@@ -27,6 +27,16 @@ const ButtonDecorator = (arguments_, parameters) => {
   return classes;
 };
 
+// add decorators for modal
+const ModalDecorator = (_, parameters) => {
+  if (parameters.macro.name !== 'govieModal') {
+    return {};
+  }
+  return {
+    height: '400px',
+  };
+};
+
 export const decorators = [
   (Story, context) => {
     useEffect(() => {
@@ -44,6 +54,7 @@ export const decorators = [
     if (typeof storyResult === 'string') {
       return (
         <div
+          style={ModalDecorator(args, parameters)}
           className={ButtonDecorator(args, parameters)}
           dangerouslySetInnerHTML={{ __html: storyResult }}
         />
@@ -53,6 +64,7 @@ export const decorators = [
     const renderedMacro = renderMacro(parameters.macro)(args);
     return (
       <div
+        style={ModalDecorator(args, parameters)}
         className={ButtonDecorator(args, parameters)}
         dangerouslySetInnerHTML={{ __html: renderedMacro }}
       />
