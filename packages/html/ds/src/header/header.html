@@ -90,7 +90,7 @@
           </div>
         </label>
       {% endif %}
-      {% for item in props.tools.items %}
+      {% for item in props['tools']['items'] %}
         <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
           <span className="label">{{ item.label }}</span>
           {{ govieIcon({"icon": item.icon }) }}

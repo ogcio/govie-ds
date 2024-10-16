@@ -41,37 +41,44 @@
 %}
 
 {% set HeaderProps = {
-  "logo": { "href": '/home' },
-  "tools": {
-    "search": {
-      "action": '/search_page',
-      "noJsSearchLink": '/search',
+    "logo": { "href": '/home' },
+    "tools": {
+      "search": {
+        "action": '/search_page',
+        "label": 'Search',
+      },
+      "items": [
+        {
+          "href": '/item1',
+          "label": 'Apps',
+          "icon": 'apps',
+        },
+      ],
+      "menu": {
+        "label": 'Menu',
+      },
     },
-    "menu": {
-      "noJsMenuLink": '/menu',
-    },
-  },
-  "navLinks": [
-    {
-      "href": '#',
-      "label": 'News',
-    },
-    {
-      "href": '#',
-      "label": 'Departments',
-    },
-    {
-      "href": '#',
-      "label": 'Services',
-    },
-  ],
-  "languages": [
-    {
-      "href": '#',
-      "label": 'Gaeilge',
-    },
-  ],
-}
+    "navLinks": [
+      {
+        "href": '#',
+        "label": 'News',
+      },
+      {
+        "href": '#',
+        "label": 'Departments',
+      },
+      {
+        "href": '#',
+        "label": 'Services',
+      },
+    ],
+    "languages": [
+      {
+        "href": '#',
+        "label": 'Gaeilge',
+      },
+    ],
+  }
 %}
 
 {% set SelectProps = {
