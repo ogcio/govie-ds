@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { meta } from '@govie-ds/tokens';
 
 export type IconId =

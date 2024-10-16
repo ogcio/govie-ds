@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {
   isButtonDisabled,
   getSizeClass,
@@ -12,7 +12,7 @@ export const Button = ({
   size,
   disabled,
   children,
-  onClick
+  onClick,
 }: ButtonProps) => {
   return (
     <button
