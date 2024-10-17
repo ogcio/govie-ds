@@ -53,8 +53,10 @@ export default function Home() {
         </Link>
         <Icon icon="thumb_up" />
         <IconButton
-          icon={<Icon icon="send" variant="outlined" inline />}
-          ariaLabel="Send"
+          icon={{
+            icon: "send",
+            ariaLabel: "Send",
+          }}
         />
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -97,7 +99,6 @@ export default function Home() {
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading>Title</Heading>
           <Paragraph>
-            {" "}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             esse magnam quis sit soluta cupiditate at deserunt exercitationem
             voluptas doloribus asperiores

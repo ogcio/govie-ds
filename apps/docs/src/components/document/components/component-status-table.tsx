@@ -1,4 +1,6 @@
-import { Icon, IconButton, Paragraph } from '@govie-ds/react';
+'use client'
+import { IconButton, Paragraph } from '@govie-ds/react';
+import { useRouter } from 'next/navigation'
 import { Table, Td, Tr } from '../common/table';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -10,6 +12,7 @@ export function ComponentStatusPill({
   status: ComponentStatus;
   href?: string;
 }) {
+  const router = useRouter();
   return (
     <div className="flex gap-sm items-center">
       <div
@@ -33,9 +36,10 @@ export function ComponentStatusPill({
       </div>
       {href ? (
         <IconButton
-          icon={<Icon icon="open_in_new" size="sm" />}
-          href={href}
-          ariaLabel="Open"
+          icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
+          size="small"
+          variant='flat'
+          onClick={() => router.push(href)}
         />
       ) : null}
     </div>

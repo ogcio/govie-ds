@@ -73,8 +73,11 @@ export function App() {
             </Link>
             <Icon icon="thumb_up" />
             <IconButton
-              icon={<Icon icon="send" variant="outlined" />}
-              ariaLabel="Send"
+              icon={{
+                icon: "send",
+                ariaLabel: "send",
+              }}
+              variant="flat"
             />
             <Paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -195,7 +198,6 @@ export function App() {
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading>Title</Heading>
           <Paragraph>
-            {" "}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             esse magnam quis sit soluta cupiditate at deserunt exercitationem
             voluptas doloribus asperiores
