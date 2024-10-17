@@ -57,7 +57,6 @@ describe('govieCard', () => {
     });
 
     const imageElement = container.querySelector('img')!;
-
     expect(imageElement).toBeTruthy();
     expect(imageElement.getAttribute('src')).toBe('SOME_PATH');
   });
@@ -84,18 +83,13 @@ describe('govieCard', () => {
       type: 'vertical',
       title: 'Card with Actions',
       content: 'This is the card content with actions.',
-      actions: [
-        { href: '#', text: 'Action 1' },
-        { href: '#', text: 'Action 2' },
-      ],
+      action: { type: 'link', href: '#', label: 'Action 1' },
     });
 
     const actionLink1 = screen.getByText('Action 1');
-    const actionLink2 = screen.getByText('Action 2');
 
     expect(actionLink1).toBeTruthy();
     expect(actionLink1.getAttribute('href')).toBe('#');
-    expect(actionLink2).toBeTruthy();
   });
 
   it('should render a link if "href" prop is provided for title', () => {
@@ -109,6 +103,34 @@ describe('govieCard', () => {
     const linkElement = screen.getByText('Linked Title');
     expect(linkElement.tagName).toBe('A');
     expect(linkElement.getAttribute('href')).toBe('#');
+  });
+
+  it('should render a subtitle if "subTitle" prop is provided', () => {
+    const screen = renderCard({
+      type: 'vertical',
+      title: 'Card with Subtitle',
+      subTitle: 'This is the subtitle',
+      content: 'Content for a card with a subtitle.',
+    });
+
+    const subTitleElement = screen.getByText('This is the subtitle');
+    expect(subTitleElement.tagName).toBe('H6');
+    expect(subTitleElement.classList.contains('gi-text-gray-500')).toBe(true);
+  });
+
+  it('should render a tag if "tag" prop is provided', () => {
+    const screen = renderCard({
+      type: 'vertical',
+      title: 'Card with Tag',
+      content: 'Content for a card with a tag.',
+      tag: {
+        text: 'New',
+        type: 'success',
+      },
+    });
+
+    const tagElement = screen.getByText('New');
+    expect(tagElement).toBeTruthy();
   });
 
   it('should pass axe accessibility tests', async () => {

@@ -30,6 +30,11 @@ export const linkSchema = zod.object({
       description: 'To inherit color from parent.',
     })
     .optional(),
+  size: zod
+    .enum(['sm', 'md'], {
+      description: 'Size of the link',
+    })
+    .optional(),
 });
 
 export type LinkProps = zod.infer<typeof linkSchema>;
