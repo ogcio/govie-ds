@@ -4,7 +4,7 @@ export const standardProps = {
   hint: { text: 'Hint: This is a helpful hint' },
 };
 
-export const withMaxChars = {
+export const maximumCharactersProps = {
   ...standardProps,
   id: 'textarea-1',
   maxChars: 100,
