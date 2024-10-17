@@ -15,8 +15,8 @@ export class Textarea extends BaseComponent<TextareaProps> {
     this.getAllTextarea = document.querySelectorAll('textarea');
 
     this.calculateRemainingChars = () => {
-      try {
-        for (const textarea of this.getAllTextarea) {
+      for (const textarea of this.getAllTextarea) {
+        try {
           const { id, value, maxLength } = textarea;
           const remainingCharsContainer = document.querySelector(
             `div[data-remaining-chars-container=${id}]`,
@@ -28,9 +28,9 @@ export class Textarea extends BaseComponent<TextareaProps> {
               container.innerHTML = `You have ${maxLength - value.length} characters remaining`;
             }
           }
+        } catch {
+          // skip catch
         }
-      } catch {
-        // skip catch
       }
     };
   }
