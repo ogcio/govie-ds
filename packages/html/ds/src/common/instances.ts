@@ -12,7 +12,7 @@ const componentRegistry = {
   Header,
   Checkboxes,
   Radio,
-  Textarea
+  Textarea,
   // TODO: additional component classes
 } as const;
 

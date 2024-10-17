@@ -64,21 +64,21 @@
       cols="{{ props.cols or 100 }}"
       maxlength="{{ props.maxChars }}"
       autocomplete="{{ props.autoComplete or 'on' }}"
-      class="{% if isError %} gi-textarea-error {% else %} gi-textarea {% endif %} {{ widthClass }} "
+      class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
     ></textarea>
   </div>
 
   {% if props.maxChars %}
-  <div
-    data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
-    class="gi-textarea-remaining-chars"
-  >
-    {{
-      govieHintText({
-        "content": remainingText
-      }) | trim
-    }}
-  </div>
+    <div
+      data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
+      class="gi-textarea-remaining-chars"
+    >
+      {{
+        govieHintText({
+          "content": remainingText
+        }) | trim
+      }}
+    </div>
   {% endif %}
 
   {# Close the conditional wrapper div if isError is true #}

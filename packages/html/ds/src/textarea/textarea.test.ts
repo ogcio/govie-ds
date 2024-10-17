@@ -131,15 +131,16 @@ describe('govieTextArea', () => {
         content: 'Label for textarea',
         for: 'textarea-id',
       },
-      maxChars: 30
+      maxChars: 30,
     });
 
-    
     const textareaElement = screen.getByRole('textbox');
     expect(textareaElement.getAttribute('maxlength')).toBe('30');
 
-    const remainingElement = screen.getByText(/You have 30 characters remaining/);
-    expect(remainingElement).toBeInTheDocument()
+    const remainingElement = screen.getByText(
+      /You have 30 characters remaining/,
+    );
+    expect(remainingElement).toBeInTheDocument();
   });
 
   it('should not show remaining chars message when maxChars is not set', async () => {
@@ -147,10 +148,12 @@ describe('govieTextArea', () => {
       label: {
         content: 'Label for textarea',
         for: 'textarea-id',
-      }
+      },
     });
-    expect(screen.container.querySelectorAll('gi-textarea-remaining-chars').length).toBe(0);    
+    expect(
+      screen.container.querySelectorAll('gi-textarea-remaining-chars').length,
+    ).toBe(0);
     const remainingElement = screen.queryByText(/^You have/);
-    expect(remainingElement).not.toBeInTheDocument()
+    expect(remainingElement).not.toBeInTheDocument();
   });
 });

@@ -27,8 +27,7 @@ export const textAreaSchema = zod.object({
     .optional(),
   maxChars: zod
     .number({
-      description:
-      'Sets a number of characters allowed.',
+      description: 'Sets a number of characters allowed.',
     })
     .optional(),
   label: labelSchema.describe('Label for textarea').optional(),

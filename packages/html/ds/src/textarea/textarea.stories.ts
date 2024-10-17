@@ -175,4 +175,3 @@ export const WithMaxChars: Story = {
     id: 'textarea-id-5',
   },
 };
-
