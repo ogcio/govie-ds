@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import { IconButton, Paragraph } from '@govie-ds/react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { Table, Td, Tr } from '../common/table';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -38,7 +38,7 @@ export function ComponentStatusPill({
         <IconButton
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
           size="small"
-          variant='flat'
+          variant="flat"
           onClick={() => router.push(href)}
         />
       ) : null}
