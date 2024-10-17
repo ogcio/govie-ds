@@ -25,6 +25,11 @@ export const textAreaSchema = zod.object({
         'Sets the ID for the textarea, used for accessibility and to link with the label.',
     })
     .optional(),
+  maxChars: zod
+    .number({
+      description: 'Sets a number of characters allowed.',
+    })
+    .optional(),
   label: labelSchema.describe('Label for textarea').optional(),
   hint: hintTextSchema.describe('Hint for textarea').optional(),
   error: errorTextSchema

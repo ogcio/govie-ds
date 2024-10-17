@@ -1,20 +1,24 @@
-import React from 'react';
+'use client';
+import React, { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
 
 // Extend `React.TextareaHTMLAttributes<HTMLTextAreaElement>` so that
 // the component can accept all the standard attributes and events that a `<textarea>` element can handle.
-export type TextAreaProps =
-  React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-    ref?: React.Ref<HTMLTextAreaElement>;
-    rows?: number;
-    cols?: number;
-    autoComplete?: string;
-    error?: ErrorTextProps;
-    hint?: HintTextProps;
-    label?: LabelProps;
-  };
+export type TextAreaProps = React.DetailedHTMLProps<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+> & {
+  ref?: React.Ref<HTMLTextAreaElement>;
+  rows?: number;
+  cols?: number;
+  autoComplete?: string;
+  error?: ErrorTextProps;
+  hint?: HintTextProps;
+  label?: LabelProps;
+  maxChars?: number;
+};
 
 // Use React.forwardRef to support refs properly
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -23,6 +27,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       rows = 4, // default row count
       cols = 100, // default column count
       autoComplete = 'on', // default autoComplete behavior
+      maxChars,
       label,
       error,
       hint,
@@ -31,6 +36,19 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref,
   ) => {
+    const [remainingChars, setRemainingChars] = useState<undefined | number>(
+      maxChars,
+    );
+    const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+      const {
+        target: { value },
+      } = event;
+
+      if (maxChars) {
+        setRemainingChars(maxChars - (value as string)?.length || 0);
+      }
+    };
+
     return (
       <div
         className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
@@ -54,11 +72,21 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
             rows={rows}
             cols={cols}
             autoComplete={autoComplete}
-            className={`${error?.text ? 'gi-border-red-600' : 'gi-border-gray-950'} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10`}
+            className={`${error?.text ? 'gi-textarea-error' : 'gi-textarea'}`}
             ref={ref}
+            maxLength={maxChars}
+            onChange={handleOnChange}
             {...props}
           />
         </div>
+
+        {maxChars && (
+          <div className="gi-textarea-remaining-chars">
+            <HintText
+              text={`You have ${remainingChars} characters remaining`}
+            />
+          </div>
+        )}
       </div>
     );
   },

@@ -2,6 +2,7 @@ import { Checkboxes } from '../checkbox/checkbox';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
+import { Textarea } from '../textarea/textarea';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -12,6 +13,7 @@ const componentRegistry = {
   Header,
   Checkboxes,
   Radio,
+  Textarea,
   Modal,
   // TODO: additional component classes
 } as const;
