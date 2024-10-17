@@ -117,7 +117,7 @@ export const Default: Story = {
     action: {
       type: 'button',
       children: 'Button',
-      variant: ButtonVariant.Secondary,
+      variant: 'secondary',
     },
     inset: 'none',
   },
@@ -171,7 +171,7 @@ export const VerticalWithButton: Story = {
     action: {
       type: 'button',
       children: 'Button',
-      variant: ButtonVariant.Secondary,
+      variant: 'secondary',
     },
   },
 };
@@ -225,7 +225,7 @@ export const HorizontalWithIcon: Story = {
     action: {
       type: 'button',
       children: 'Download',
-      variant: ButtonVariant.Secondary,
+      variant: 'secondary',
     },
   },
 };

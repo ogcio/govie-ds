@@ -24,7 +24,6 @@ import {
   Card,
   Button,
 } from "@govie-ds/react";
-import { ButtonVariant } from "../../../packages/react/ds/dist/button/types";
 
 export function App() {
   return (
@@ -103,7 +102,7 @@ export function App() {
               action={{
                 children: "Button",
                 type: "button",
-                variant: ButtonVariant.Secondary,
+                variant: "secondary",
               }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
               img="https://placeholderjs.com/400x300"
