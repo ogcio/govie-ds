@@ -151,20 +151,23 @@ export function Header({
               {item.icon && <Icon icon={item.icon} />}
             </a>
           ))}
-        <label
-          htmlFor="MobileMenuTrigger"
-          className={`${toolItemClassNames} sm:gi-hidden`}
-        >
-          <input
-            className="gi-block gi-w-0 gi-absolute gi-h-0"
-            id="MobileMenuTrigger"
-            type="checkbox"
-          />
-          {tools?.menu?.label && (
-            <span className="label">{tools.menu.label}</span>
-          )}
-          <Icon icon={tools?.menu?.icon || 'menu'} />
-        </label>
+
+        {navLinks && (
+          <label
+            htmlFor="MobileMenuTrigger"
+            className={`${toolItemClassNames} sm:gi-hidden`}
+          >
+            <input
+              className="gi-block gi-w-0 gi-absolute gi-h-0"
+              id="MobileMenuTrigger"
+              type="checkbox"
+            />
+            {tools?.menu?.label && (
+              <span className="label">{tools.menu.label}</span>
+            )}
+            <Icon icon={tools?.menu?.icon || 'menu'} />
+          </label>
+        )}
       </div>
       {tools?.search && <HeaderSearch {...tools.search} />}
       <HeaderMenu

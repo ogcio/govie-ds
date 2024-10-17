@@ -42,7 +42,7 @@ jobs:
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm nx affected --base=last-release -t build --parallel=3
+          pnpm build
 
       - name: Publish DS React package
         if: ${{ steps.release.outputs['packages/react/ds--release_created'] }}
@@ -101,5 +101,5 @@ jobs:
     if: ${{ needs.release-please.outputs.docs_released == 'true' }}
     uses: ./.github/workflows/deploy-docs-aws.yml
     with:
-      environment: prod
+      env: prod
     secrets: inherit
