@@ -84,7 +84,7 @@ const meta = {
       description: 'The action button or link for the card.',
       table: {
         category: 'Actions',
-        type: { summary: 'Button | Link' },
+        type: { summary: '{ type: "button" | "link", ...Button | Link }' },
       },
     },
     inset: {
