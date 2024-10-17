@@ -34,6 +34,7 @@ export const Modal = ({ triggerButton, children }: ModalProps) => {
             onClick={handleIconClose}
             icon={{ icon: 'close' }}
             variant="flat"
+            appearance="dark"
           />
           {children}
         </div>
