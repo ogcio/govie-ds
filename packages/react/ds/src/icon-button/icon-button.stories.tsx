@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { Icon } from '../icon/icon.js';
 import { IconButton } from './icon-button.js';
 
 const meta = {
@@ -14,45 +13,84 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Small: Story = {
+export const Default: Story = {
+  argTypes: {
+    icon: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'The Icon component that the button will accept',
+    },
+    variant: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'flat'],
+      description: 'The variants of the button',
+    },
+    appearance: {
+      control: 'radio',
+      options: ['default', 'dark', 'light'],
+      description: 'The description of the button',
+      type: 'string',
+    },
+    size: {
+      control: 'radio',
+      options: ['medium', 'small', 'large'],
+      type: { name: 'string' },
+      description: 'The sizes of the button',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Specify if the button is disabled',
+      type: 'boolean',
+    },
+  },
   args: {
-    icon: <Icon icon="thumb_up" size="sm" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
   },
 };
 
-export const Default: Story = {
+export const Small: Story = {
   args: {
-    icon: <Icon icon="thumb_up" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
+    size: 'small',
   },
 };
 
 export const Large: Story = {
   args: {
-    icon: <Icon icon="thumb_up" size="lg" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
+    size: 'large',
   },
 };
 
-export const ExtraLarge: Story = {
+export const SecondaryButton: Story = {
   args: {
-    icon: <Icon icon="send" size="xl" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
+    variant: 'secondary',
   },
 };
 
-export const Outlined: Story = {
+export const FlatButton: Story = {
   args: {
-    icon: <Icon icon="thumb_up" variant="outlined" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
+    variant: 'flat',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    icon: <Icon icon="thumb_up" />,
-    ariaLabel: 'Thumbs up',
+    icon: {
+      icon: 'thumb_up',
+    },
     disabled: true,
   },
 };

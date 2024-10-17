@@ -98,6 +98,18 @@
   @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm;
 }
 
+/* Icon Button sizes */
+.gi-icon-btn-small {
+  @apply gi-p-2 gi-h-8 gi-w-8 gi-justify-center
+}
+
+.gi-icon-btn-large {
+  @apply gi-p-3 gi-h-12 gi-w-12 gi-justify-center
+}
+
+.gi-icon-btn-regular {
+  @apply gi-p-3 gi-h-10 gi-w-10 gi-justify-center
+}
 /* Tag */
 
 .gi-tag {
