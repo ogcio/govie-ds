@@ -8,6 +8,7 @@ import { Icon, IconPropTypes } from '../icon/icon.js';
 
 type IconButtonType = Omit<ButtonProps, 'children'> & {
   icon: Omit<IconPropTypes, 'size'>;
+  className?: string;
 };
 
 const getSizeClass = (size?: ButtonSize) => {
@@ -29,12 +30,13 @@ export const IconButton = ({
   size,
   disabled,
   onClick,
+  className = '',
 }: IconButtonType) => {
   const iconSize = size === 'large' ? 'md' : 'sm';
   return (
     <button
       onClick={onClick}
-      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
+      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })} ${className}`}
     >
       <Icon size={iconSize} {...icon} />
     </button>

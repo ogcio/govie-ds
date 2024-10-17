@@ -325,7 +325,7 @@ input[type='file' i] {
 }
 
 .gi-modal-icon {
-  @apply gi-cursor-pointer gi-absolute gi-right-0 gi-top-0
+  @apply gi-cursor-pointer gi-absolute gi-right-2 gi-top-2
 }
 
 /* End Modal */

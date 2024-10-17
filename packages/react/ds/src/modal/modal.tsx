@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, cloneElement } from 'react';
 import { ButtonProps } from '../button/types.js';
-import { Icon } from '../icon/icon.js';
+import { IconButton } from '../icon-button/icon-button.js';
 
 type ModalProps = {
   children: React.ReactNode;
@@ -28,11 +28,12 @@ export const Modal = ({ triggerButton, children }: ModalProps) => {
         data-element="modal"
       >
         <div className="gi-modal-container">
-          <Icon
-            size="lg"
+          <IconButton
+            size="large"
             className="gi-modal-icon"
             onClick={handleIconClose}
-            icon="close"
+            icon={{ icon: 'close' }}
+            variant="flat"
           />
           {children}
         </div>
