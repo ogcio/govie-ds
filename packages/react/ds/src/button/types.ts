@@ -9,7 +9,6 @@ export type ButtonProps = {
   variant?: ButtonVariant;
   appearance?: ButtonAppearance;
   size?: ButtonSize;
-  label?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
