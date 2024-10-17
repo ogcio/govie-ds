@@ -39,6 +39,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.18.0](https://github.com/ogcio/govie-ds/compare/react-v0.17.1...react-v0.18.0) (2024-10-17)
+
+
+### Features
+
+* add `modal`, `iconButton`  components ([#290](https://github.com/ogcio/govie-ds/issues/290)) ([42efc3a](https://github.com/ogcio/govie-ds/commit/42efc3a226a1eac09a1765d2b16e13af51ef5dab))
+
 ## [0.17.1](https://github.com/ogcio/govie-ds/compare/react-v0.17.0...react-v0.17.1) (2024-10-16)
 
 
