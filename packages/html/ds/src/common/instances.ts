@@ -1,5 +1,6 @@
 import { Checkboxes } from '../checkbox/checkbox';
 import { Header } from '../header/header';
+import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { BaseComponent, BaseComponentOptions } from './component';
 
@@ -11,6 +12,7 @@ const componentRegistry = {
   Header,
   Checkboxes,
   Radio,
+  Modal,
   // TODO: additional component classes
 } as const;
 

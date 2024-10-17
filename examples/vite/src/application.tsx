@@ -19,8 +19,10 @@ import {
   TabList,
   FileUpload,
   Tag,
+  Modal,
   RadiosGroup,
   Card,
+  Button,
 } from "@govie-ds/react";
 
 export function App() {
@@ -71,8 +73,11 @@ export function App() {
             </Link>
             <Icon icon="thumb_up" />
             <IconButton
-              icon={<Icon icon="send" variant="outlined" />}
-              ariaLabel="Send"
+              icon={{
+                icon: "send",
+                ariaLabel: "send",
+              }}
+              variant="flat"
             />
             <Paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -190,6 +195,20 @@ export function App() {
           ]}
           fieldId="uniqueId"
         />
+        <Modal triggerButton={<Button>Open Modal</Button>}>
+          <Heading as="h2">Title</Heading>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            esse magnam quis sit soluta cupiditate at deserunt exercitationem
+            voluptas doloribus asperiores
+          </Paragraph>
+          <div className="gi-flex gi-gap-6 gi-justify-end">
+            <Button variant="secondary" appearance="dark">
+              Cancel action
+            </Button>
+            <Button>Primary action</Button>
+          </div>
+        </Modal>
       </Container>
       <Footer />
     </>

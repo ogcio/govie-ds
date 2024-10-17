@@ -1,0 +1,37 @@
+{% from 'button/button.html' import govieButton %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
+
+{% macro govieModal(props) %}
+  {% set open = 'gi-modal-close' if props.triggerButton else 'gi-modal-open' %}
+
+  <div data-module="gieds-modal">
+    {% if props.triggerButton %}
+      <div
+        data-testid="trigger-button-container"
+        data-element="trigger-button-container"
+      >
+        {{ props.triggerButton | safe | trim | indent(2) }}
+      </div>
+    {% endif %}
+    <div data-testid="modal" data-element="modal" class="gi-modal {{ open }}">
+      <div
+        data-testid="modal-container"
+        data-element="modal-container"
+        class="gi-modal-container"
+      >
+        {{
+          govieIconButton({
+              "size": "lg",
+              "className": "gi-modal-icon",
+              "icon": {
+                "icon": "close"
+              },
+              "variant": "flat",
+              "appearance": "dark"
+          })
+        }}
+        {{ props.html | safe | trim | indent(2) }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -13,8 +13,10 @@
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'tag/tag.html' import govieTag %}
 {% from 'radio/radios-group.html' import govieRadiosGroup %}
+{% from 'modal/modal.html' import govieModal %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
 
-{% from 'vars.jinja' import footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
+{% from 'vars.jinja' import modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -169,6 +171,18 @@
   <h2>Radio</h2>
 
   {{ govieRadiosGroup(radioProps) }}
+
+  <h2>Modal</h2>
+
+  {{ govieModal(modalProps) }}
+
+  <h2>Icon Button</h2>
+
+  {{govieIconButton({
+    "icon": {
+      "icon": "thumb_up"
+    }
+  })}}
   
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
