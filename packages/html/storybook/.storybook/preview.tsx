@@ -18,7 +18,7 @@ import '../../ds/styles.css';
 // add decorators for button
 const ButtonDecorator = (arguments_, parameters) => {
   let classes = 'gi-p-4';
-  if (parameters.macro.name !== 'govieButton') {
+  if (parameters.macro.name !== 'govieButton' && parameters.macro.name !== 'govieIconButton' ) {
     return;
   }
   if (arguments_.appearance === 'light') {

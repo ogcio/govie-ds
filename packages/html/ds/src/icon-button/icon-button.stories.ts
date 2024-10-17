@@ -1,20 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { IconButton } from './icon-button.js';
+import { ButtonSize, ButtonVariant } from '../button/button-schema';
+import { IconId } from '../icon/icon.schema';
+import { renderComponent } from '../storybook/storybook';
+import html from './icon-button.html?raw';
+import { iconButtonProps } from './icon-button.schema';
+
+const path = import.meta.url.split('/icon-button')[0];
+
+const macro = { name: 'govieIconButton', html, path };
+
+const IconButton = renderComponent<iconButtonProps>(macro);
 
 const meta = {
-  title: 'components/IconButton',
-  decorators: (Story, context) => {
-    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
-    return (
-      <div className={`gi-p-4 ${isLight}`}>
-        <Story />
-      </div>
-    );
-  },
   component: IconButton,
-  args: {
-    onClick: fn(),
+  title: 'form/IconButton',
+  parameters: {
+    macro,
   },
 } satisfies Meta<typeof IconButton>;
 
@@ -53,7 +54,7 @@ export const Default: Story = {
   },
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
   },
 };
@@ -61,43 +62,43 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
-    size: 'small',
+    size: ButtonSize.Small,
   },
 };
 
 export const Large: Story = {
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
-    size: 'large',
+    size: ButtonSize.Large,
   },
 };
 
 export const SecondaryButton: Story = {
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
-    variant: 'secondary',
+    variant: ButtonVariant.Secondary,
   },
 };
 
 export const FlatButton: Story = {
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
-    variant: 'flat',
+    variant: ButtonVariant.Flat,
   },
 };
 
 export const Disabled: Story = {
   args: {
     icon: {
-      icon: 'thumb_up',
+      icon: IconId.ThumbUp,
     },
     disabled: true,
   },
