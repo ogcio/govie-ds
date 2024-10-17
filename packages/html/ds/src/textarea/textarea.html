@@ -5,7 +5,12 @@
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
-
+  {% if not isError and not isHint %}
+    {% set marginBottom = 'gi-mb-2' %}
+  {% endif %}
+  {% if props.maxChars %}
+    {% set remainingText = ["You have ", props.maxChars, " characters remaining"] | join %}
+  {% endif %}
   {% if props.fullFluid %}
     {% set widthClass = 'gi-w-full' %}
   {% elif props.halfFluid %}
@@ -52,15 +57,29 @@
     }}
   {% endif %}
 
-  <div class="gi-flex gi-items-center">
+  <div class="gi-flex gi-items-center" data-module="gieds-textarea">
     <textarea
       id="{{ props.id or 'textarea-id' }}"
       rows="{{ props.rows or 4 }}"
       cols="{{ props.cols or 100 }}"
+      maxlength="{{ props.maxChars }}"
       autocomplete="{{ props.autoComplete or 'on' }}"
-      class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10"
+      class="{% if isError %} gi-textarea-error {% else %} gi-textarea {% endif %} {{ widthClass }} "
     ></textarea>
   </div>
+
+  {% if props.maxChars %}
+  <div
+    data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
+    class="gi-textarea-remaining-chars"
+  >
+    {{
+      govieHintText({
+        "content": remainingText
+      }) | trim
+    }}
+  </div>
+  {% endif %}
 
   {# Close the conditional wrapper div if isError is true #}
   {# prettier-ignore-start #}

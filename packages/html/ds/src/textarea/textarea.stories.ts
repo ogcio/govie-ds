@@ -93,7 +93,7 @@ export const Default: Story = {
   args: {
     rows: 4,
     cols: 100,
-    id: 'textarea-id',
+    id: 'textarea-id-1',
     label: {
       content: 'Textarea Label',
       for: 'textarea-id',
@@ -119,11 +119,11 @@ export const WithLabel: Story = {
   args: {
     label: {
       content: 'Textarea Label',
-      for: 'textarea-id',
+      for: 'textarea-id-2',
     },
     rows: 4,
     cols: 100,
-    id: 'textarea-id',
+    id: 'textarea-id-2',
   },
 };
 
@@ -131,14 +131,14 @@ export const WithLabelAndHint: Story = {
   args: {
     label: {
       content: 'Textarea Label',
-      for: 'textarea-id',
+      for: 'textarea-id-3',
     },
     hint: {
       content: 'Hint text for textarea',
     },
     rows: 4,
     cols: 100,
-    id: 'textarea-id',
+    id: 'textarea-id-3',
   },
 };
 
@@ -146,7 +146,7 @@ export const WithLabelHintAndError: Story = {
   args: {
     label: {
       content: 'Textarea Label',
-      for: 'textarea-id',
+      for: 'textarea-id-4',
     },
     hint: {
       content: 'Hint text for textarea',
@@ -156,6 +156,23 @@ export const WithLabelHintAndError: Story = {
     },
     rows: 4,
     cols: 100,
-    id: 'textarea-id',
+    id: 'textarea-id-4',
   },
 };
+
+export const WithMaxChars: Story = {
+  args: {
+    label: {
+      content: 'Textarea Label',
+      for: 'textarea-id-5',
+    },
+    hint: {
+      content: 'Hint text for textarea',
+    },
+    maxChars: 30,
+    rows: 4,
+    cols: 100,
+    id: 'textarea-id-5',
+  },
+};
+

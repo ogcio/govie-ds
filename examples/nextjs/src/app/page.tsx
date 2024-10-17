@@ -9,6 +9,7 @@ import {
   Paragraph,
   PhaseBanner,
   RadiosGroup,
+  TextArea,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -89,6 +90,17 @@ export default function Home() {
             },
           ]}
           fieldId="uniqueId"
+        />
+        <TextArea
+          hint={{
+            text: "Hint: This is a helpful hint.",
+          }}
+          id="textarea-id"
+          maxChars={50}
+          label={{
+            text: "Textarea text",
+            htmlFor: "textarea-id",
+          }}
         />
 
         <span className="material-icons">face</span>

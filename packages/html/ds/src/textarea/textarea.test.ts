@@ -82,7 +82,7 @@ describe('govieTextArea', () => {
     });
     const textareaElement = screen.getByRole('textbox');
 
-    expect(textareaElement.classList.contains('gi-border-red-600')).toBe(true);
+    expect(textareaElement.classList.contains('gi-textarea-error')).toBe(true);
   });
 
   it('should associate the label with the textarea field using the "for" attribute', () => {
@@ -122,5 +122,35 @@ describe('govieTextArea', () => {
     });
 
     await screen.axe();
+  });
+
+  it('should show correctly remaining chars message according with maxChars', async () => {
+    const screen = renderTextArea({
+      id: 'textarea-0',
+      label: {
+        content: 'Label for textarea',
+        for: 'textarea-id',
+      },
+      maxChars: 30
+    });
+
+    
+    const textareaElement = screen.getByRole('textbox');
+    expect(textareaElement.getAttribute('maxlength')).toBe('30');
+
+    const remainingElement = screen.getByText(/You have 30 characters remaining/);
+    expect(remainingElement).toBeInTheDocument()
+  });
+
+  it('should not show remaining chars message when maxChars is not set', async () => {
+    const screen = renderTextArea({
+      label: {
+        content: 'Label for textarea',
+        for: 'textarea-id',
+      }
+    });
+    expect(screen.container.querySelectorAll('gi-textarea-remaining-chars').length).toBe(0);    
+    const remainingElement = screen.queryByText(/^You have/);
+    expect(remainingElement).not.toBeInTheDocument()
   });
 });

@@ -297,16 +297,16 @@ input[type='file' i] {
 /* Radio */
 
 .gi-radio-base {
-  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0  focus:gi-border-[4px] focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf]
+  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0  focus:gi-border-[4px] focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf];
 }
 .gi-radio-small {
-  @apply gi-radio-base gi-w-6 gi-h-6 checked:before:gi-border-[5px] checked:before:gi-translate-x-[5px] checked:before:gi-translate-y-[5px] focus:before:gi-translate-x-[3px] focus:before:gi-translate-y-[3px]
+  @apply gi-radio-base gi-w-6 gi-h-6 checked:before:gi-border-[5px] checked:before:gi-translate-x-[5px] checked:before:gi-translate-y-[5px] focus:before:gi-translate-x-[3px] focus:before:gi-translate-y-[3px];
 }
 .gi-radio-medium {
-  @apply gi-radio-base gi-w-8 gi-h-8 checked:before:gi-border-[7px] checked:before:gi-translate-x-[7px] checked:before:gi-translate-y-[7px] focus:before:gi-translate-x-[5px] focus:before:gi-translate-y-[5px]
+  @apply gi-radio-base gi-w-8 gi-h-8 checked:before:gi-border-[7px] checked:before:gi-translate-x-[7px] checked:before:gi-translate-y-[7px] focus:before:gi-translate-x-[5px] focus:before:gi-translate-y-[5px];
 }
 .gi-radio-large {
-  @apply gi-radio-base gi-w-11 gi-h-11 checked:before:gi-border-[10px] checked:before:gi-translate-x-[10px] checked:before:gi-translate-y-[10px] focus:before:gi-translate-x-[8px] focus:before:gi-translate-y-[8px]
+  @apply gi-radio-base gi-w-11 gi-h-11 checked:before:gi-border-[10px] checked:before:gi-translate-x-[10px] checked:before:gi-translate-y-[10px] focus:before:gi-translate-x-[8px] focus:before:gi-translate-y-[8px];
 }
 
 /* End Radio */
@@ -346,3 +346,19 @@ input[type='file' i] {
 }
 
 /* End of Card */
+
+/* TextArea */
+
+.gi-textarea,
+.gi-textarea-error {
+  @apply gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950;
+}
+
+.gi-textarea-error {
+  @apply gi-border-red-600;
+}
+
+.gi-textarea-remaining-chars {
+  @apply gi-mt-2;
+}
+/* TextArea */

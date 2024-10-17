@@ -130,6 +130,7 @@ export function App() {
                 text: "Hint: This is a helpful hint.",
               }}
               id="textarea-id"
+              maxChars={50}
               label={{
                 text: "Label",
                 htmlFor: "textarea-id",
