@@ -15,19 +15,21 @@ export class Textarea extends BaseComponent<TextareaProps> {
     this.getAllTextarea = document.querySelectorAll('textarea');
 
     this.calculateRemainingChars = () => {
-      for (const textarea of this.getAllTextarea) {
-        const { id, value, maxLength } = textarea;
-        const remainingCharsContainer = document.querySelector(
-          `div[data-remaining-chars-container=${id}]`,
-        );
+      try {
+        for (const textarea of this.getAllTextarea) {
+          const { id, value, maxLength } = textarea;
+          const remainingCharsContainer = document.querySelector(
+            `div[data-remaining-chars-container=${id}]`,
+          );
 
-        if (textarea?.maxLength > -1 && remainingCharsContainer) {
-          const container = remainingCharsContainer.firstElementChild;
-          if (container) {
-            container.innerHTML = `You have ${maxLength - value.length} characters remaining`;
+          if (textarea?.maxLength > -1 && remainingCharsContainer) {
+            const container = remainingCharsContainer.firstElementChild;
+            if (container) {
+              container.innerHTML = `You have ${maxLength - value.length} characters remaining`;
+            }
           }
         }
-      }
+      } catch {}
     };
   }
 

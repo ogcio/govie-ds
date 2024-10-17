@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react/jsx-runtime';
 import { Icon } from '../icon/icon.js';
 import { Button } from './button.js';
-import { ButtonAppearance, ButtonVariant, ButtonSize } from './types.js';
 
 const meta = {
   title: 'Form/Button',
@@ -36,18 +35,18 @@ export const Default: Story = {
     },
     variant: {
       control: 'radio',
-      options: Object.values(ButtonVariant),
+      options: ['primary', 'secondary', 'flat'],
       description: 'The variants of the button',
     },
     appearance: {
       control: 'radio',
-      options: Object.values(ButtonAppearance),
+      options: ['default', 'dark', 'light'],
       description: 'The description of the button',
       type: 'string',
     },
     size: {
       control: 'radio',
-      options: Object.values(ButtonSize),
+      options: ['medium', 'small', 'large'],
       type: { name: 'string' },
       description: 'The sizes of the button',
     },
@@ -59,7 +58,7 @@ export const Default: Story = {
   },
   args: {
     children: 'Button',
-    variant: ButtonVariant.Primary,
+    variant: 'primary',
   },
 };
 

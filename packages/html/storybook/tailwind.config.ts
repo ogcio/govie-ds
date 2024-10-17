@@ -3,7 +3,7 @@ import { Config } from 'tailwindcss';
 
 const config: Config = {
   prefix: 'gi-',
-  content: ['../ds/src/**/*.html', '../ds/src/**/*.ts'],
+  content: ['../ds/src/**/*.html', '../ds/src/**/*.ts', './.storybook/preview.tsx'],
   theme: createTheme(),
   plugins: [],
 };

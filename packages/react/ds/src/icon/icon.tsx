@@ -1,3 +1,4 @@
+'use client';
 import { meta } from '@govie-ds/tokens';
 
 export type IconId =
@@ -31,6 +32,7 @@ export type IconPropTypes = {
   ariaLabel?: string;
   inline?: boolean;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
 };
 
 export function Icon({
@@ -42,6 +44,7 @@ export function Icon({
   ariaLabel,
   inline = false,
   className = '',
+  onClick,
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
@@ -51,6 +54,7 @@ export function Icon({
 
   return (
     <span
+      onClick={onClick}
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}

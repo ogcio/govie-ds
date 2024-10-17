@@ -10,32 +10,34 @@ import {
   PhaseBanner,
   RadiosGroup,
   TextArea,
-} from "@govie-ds/react";
+  Modal,
+  Button,
+} from '@govie-ds/react';
 
 export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        logo={{ href: "/" }}
-        tools={{ search: { action: "/search-page" } }}
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
         navLinks={[
           {
-            href: "#",
-            label: "News",
+            href: '#',
+            label: 'News',
           },
           {
-            href: "#",
-            label: "Departments",
+            href: '#',
+            label: 'Departments',
           },
           {
-            href: "#",
-            label: "Services",
+            href: '#',
+            label: 'Services',
           },
         ]}
         languages={[
           {
-            href: "#",
-            label: "Gaeilge",
+            href: '#',
+            label: 'Gaeilge',
           },
         ]}
       />
@@ -52,8 +54,10 @@ export default function Home() {
         </Link>
         <Icon icon="thumb_up" />
         <IconButton
-          icon={<Icon icon="send" variant="outlined" inline />}
-          ariaLabel="Send"
+          icon={{
+            icon: 'send',
+            ariaLabel: 'Send',
+          }}
         />
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -69,41 +73,55 @@ export default function Home() {
         <hr />
         <RadiosGroup
           title={{
-            value: "Where do you live?",
+            value: 'Where do you live?',
             asHeading: {
-              size: "md",
-              as: "h2",
+              size: 'md',
+              as: 'h2',
             },
           }}
           items={[
             {
-              label: "England",
-              value: "england",
+              label: 'England',
+              value: 'england',
             },
             {
-              label: "Scotland",
-              value: "scotland",
+              label: 'Scotland',
+              value: 'scotland',
             },
             {
-              label: "Ireland",
-              value: "ireland",
+              label: 'Ireland',
+              value: 'ireland',
             },
           ]}
           fieldId="uniqueId"
         />
         <TextArea
           hint={{
-            text: "Hint: This is a helpful hint.",
+            text: 'Hint: This is a helpful hint.',
           }}
           id="textarea-id"
           maxChars={50}
           label={{
-            text: "Textarea text",
-            htmlFor: "textarea-id",
+            text: 'Textarea text',
+            htmlFor: 'textarea-id',
           }}
         />
 
         <span className="material-icons">face</span>
+        <Modal triggerButton={<Button>Open Modal</Button>}>
+          <Heading as="h2">Title</Heading>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            esse magnam quis sit soluta cupiditate at deserunt exercitationem
+            voluptas doloribus asperiores
+          </Paragraph>
+          <div className="gi-flex gi-gap-6 gi-justify-end">
+            <Button variant="secondary" appearance="dark">
+              Cancel action
+            </Button>
+            <Button>Primary action</Button>
+          </div>
+        </Modal>
       </Container>
       <Footer />
     </div>

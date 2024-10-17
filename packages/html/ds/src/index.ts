@@ -2,6 +2,7 @@ import { destroyAllInstances } from './common/instances.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
+import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
 import { initTextarea } from './textarea/textarea.js';
 
@@ -26,6 +27,7 @@ export function initGovIe() {
   initCheckboxes();
   initRadios();
   initTextarea();
+  initModal();
 }
 
 export function destroyGovIe() {

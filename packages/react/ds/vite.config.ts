@@ -13,7 +13,7 @@ export default defineConfig({
     react(),
     libInjectCss(),
     dts({ include: ['src'], exclude: ['src/**/*.stories.tsx'] }),
-    preserveDirectives()
+    preserveDirectives(),
   ],
   build: {
     copyPublicDir: false,
