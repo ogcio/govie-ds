@@ -13,19 +13,19 @@ status: stable
 
 <Card
   action={{
-    children: 'View More',
-    href: '#',
-    size: 'md',
-    type: 'link',
+    children: 'Button',
+    type: 'button',
+    variant: 'secondary',
   }}
   content="This is card."
-  href="#"
   img="https://placeholderjs.com/400x300"
+  inset="body"
+  subTitle="Subheading"
   tag={{
-    text: 'Featured',
+    text: 'New',
     type: 'info',
   }}
-  title="Vertical Card"
+  title="Card Title"
   type="vertical"
 />
 
@@ -37,72 +37,58 @@ status: stable
   </TabList>
   <TabPanel value="tab11">
   ```html
-    <div class="gi-card gi-card-vertical">
-      <div class="gi-card-image">
-          <a href="#">
-          <img
-            src="https://placeholderjs.com/400x300"
-            alt="Vertical Card"
-            />
-          </a>
+   <div class="gi-card gi-card-vertical">
+    <div class="gi-card-image">
+      <a href="">
+        <img src="https://placeholderjs.com/400x300" alt="Card Title" />
+      </a>
+    </div>
+    <div class="gi-card-content gi-card-content-inset">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <h5 class="gi-heading-xs !gi-my-0 !gi-mb-2">Card Title</h5>
+          <h6 class="gi-heading-2xs gi-text-gray-500 !gi-font-normal !gi-my-0">
+            Subheading
+          </h6>
+        </div>
+        <div class="gi-card-tag">
+          <strong class="gi-tag gi-tag-info">New</strong>
+        </div>
       </div>
-      <div class="gi-card-content">
-          <div class="gi-card-header">
-            <div class="gi-card-heading">
-                <h5 class="gi-heading-xs
-                  !gi-my-0">
-                  <a
-                      href="#"
-                      class="
-                      gi-link
-                      "
-                      >Vertical Card</a>
-                </h5>
-                <h6 class="gi-heading-2xs
-                  gi-text-gray-500 !gi-font-normal !gi-my-0">
-                  Subtitle Here
-                </h6>
-            </div>
-            <div class="gi-card-tag">
-                <strong class="gi-tag gi-tag-info">
-                Featured
-                </strong>
-            </div>
-          </div>
-          <div class="gi-card-paragraph">
-            <p class="gi-text-sm">This is card.</p>
-          </div>
-          <div class="gi-card-actions">
-            <a
-                href="#"
-                class="
-                gi-link
-                gi-link-md
-                "
-                >View More</a>
-          </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">This is card.</p>
+      </div>
+      <div class="gi-card-action">
+        <button
+          data-element="button-container"
+          data-module="gieds-button"
+          data-testid="govieButton-default-secondary-medium-notDisabled"
+          class="gi-btn gi-btn-secondary gi-btn-regular"
+        >
+          Button
+        </button>
       </div>
     </div>
+  </div>
   ```
   </TabPanel>
   <TabPanel value="tab12">
   ```html
     {{ govieCard({
       "type": "vertical",
-      "href": "#",
-      "title": "Vertical Card",
+      "title": "Card Title",
+      "subTitle": "Subheading",
+      "inset": "body",
       "img": "https://placeholderjs.com/400x300",
-      "subTitle": "Subtitle Here",
       "content": "This is card.",
       "tag": {
-        "text": "Featured",
+        "text": "New",
         "type": "info"
       },
       "action": {
-        "type": "link",
-        "size": "md",
-        "href": "#",
-        "label": "View More"
+        "type": "button",
+        "content": "Button",
+        "variant": "secondary"
       }
     }) }}
   ```
@@ -113,19 +99,19 @@ status: stable
 
     <Card
       action={{
-        children: 'View More',
-        href: '#',
-        size: 'md',
-        type: 'link'
+        children: 'Button',
+        type: 'button',
+        variant: 'secondary'
       }}
       content="This is card."
-      href="#"
       img="https://placeholderjs.com/400x300"
+      inset="body"
+      subTitle="Subheading"
       tag={{
-        text: 'Featured',
+        text: 'New',
         type: 'info'
       }}
-      title="Vertical Card"
+      title="Card Title"
       type="vertical"
     />
     ```
@@ -143,6 +129,7 @@ status: stable
   }}
   content="This is card."
   img="https://placeholderjs.com/400x300"
+  inset="body"
   subTitle="Subheading"
   tag={{
     text: 'New',
@@ -162,67 +149,62 @@ status: stable
   ```html
     <div class="gi-card gi-card-horizontal">
       <div class="gi-card-image">
-          <a href="">
-          <img
-            src="https://placeholderjs.com/400x300"
-            alt="Card Title"
-            />
-          </a>
+        <a href="">
+          <img src="https://placeholderjs.com/400x300" alt="Card Title" />
+        </a>
       </div>
-      <div class="gi-card-content">
-          <div class="gi-card-header">
-            <div class="gi-card-heading">
-                <h5 class="gi-heading-xs
-                  !gi-my-0">
-                  Card Title
-                </h5>
-                <h6 class="gi-heading-2xs
-                  gi-text-gray-500 !gi-font-normal !gi-my-0">
-                  Subheading
-                </h6>
-            </div>
-            <div class="gi-card-tag">
-                <strong class="gi-tag gi-tag-info">
-                New
-                </strong>
-            </div>
+
+      <div class="gi-card-content gi-card-content-inset">
+        <div class="gi-card-header">
+          <div class="gi-card-heading">
+            <h5 class="gi-heading-xs !gi-my-0 !gi-mb-2">Card Title</h5>
+            <h6 class="gi-heading-2xs gi-text-gray-500 !gi-font-normal !gi-my-0">
+              Subheading
+            </h6>
           </div>
-          <div class="gi-card-paragraph">
-            <p class="gi-text-sm">This is card.</p>
+          <div class="gi-card-tag">
+            <strong class="gi-tag gi-tag-info">New</strong>
           </div>
-          <div class="gi-card-actions">
-            <button
-                data-element="button-container"
-                data-module="gieds-button"
-                data-testid="govieButton-default-secondary-medium-notDisabled"
-                class="gi-btn gi-btn-secondary gi-btn-regular "
-                >
+        </div>
+        <div class="gi-card-paragraph">
+          <p class="gi-text-sm">This is card.</p>
+        </div>
+        <div class="gi-card-action">
+          <button
+            data-element="button-container"
+            data-module="gieds-button"
+            data-testid="govieButton-default-secondary-medium-notDisabled"
+            class="gi-btn gi-btn-secondary gi-btn-regular"
+          >
             Button
-            </button>
-          </div>
+          </button>
+        </div>
       </div>
     </div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-    {{ govieCard({
-      "type": "horizontal",
-      "title": "Card Title",
-      "subTitle": "Subheading",
-      "img": "https://placeholderjs.com/400x300",
-      "content": "This is card.",
-      "tag": {
-        "text": "New",
-        "type": "info"
-      },
-      "action": {
-        "type": "button",
-        "content": "Button",
-        "variant": "secondary"
-      }
-    }) }}
-  ```
+
+````
+</TabPanel>
+<TabPanel value="tab22">
+```html
+  {{ govieCard({
+    "type": "horizontal",
+    "title": "Card Title",
+    "subTitle": "Subheading",
+    "inset": "body",
+    "img": "https://placeholderjs.com/400x300",
+    "content": "This is card.",
+    "tag": {
+      "text": "New",
+      "type": "info"
+    },
+    "action": {
+      "type": "button",
+      "content": "Button",
+      "variant": "secondary"
+    }
+  }) }}
+````
+
   </TabPanel>
   <TabPanel value="tab23">
     ```html
@@ -236,6 +218,7 @@ status: stable
       }}
       content="This is card."
       img="https://placeholderjs.com/400x300"
+      inset="body"
       subTitle="Subheading"
       tag={{
         text: 'New',

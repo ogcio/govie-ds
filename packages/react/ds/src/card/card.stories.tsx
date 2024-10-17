@@ -87,6 +87,15 @@ const meta = {
         type: { summary: 'Button | Link' },
       },
     },
+    inset: {
+      control: 'select',
+      options: ['body', 'full'],
+      description: 'Defines where the content is inset (default is "body").',
+      table: {
+        category: 'Layout',
+        type: { summary: 'body | full' },
+      },
+    },
   },
 } satisfies Meta<typeof Card>;
 
@@ -95,7 +104,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    type: 'vertical',
+    type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
     img: 'https://placeholderjs.com/400x300',
@@ -110,6 +119,7 @@ export const Default: Story = {
       children: 'Button',
       variant: ButtonVariant.Secondary,
     },
+    inset: 'body',
   },
 };
 

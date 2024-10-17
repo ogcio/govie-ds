@@ -14,6 +14,14 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro getInsetClass(inset) %}
+    {% if inset == 'body' %}
+      gi-card-content-inset
+    {% else %}
+      ''
+    {% endif %}
+  {% endmacro %}
+
   <div class="{{ getLayoutClass(props.type) | trim }}">
     {% if props.img and not props.icon %}
       <div class="gi-card-image">
@@ -29,14 +37,18 @@
     {% if props.icon %}
       <div class="gi-card-icon">
         <a href="{{ props.href }}">
-          {{ govieIcon({"icon": props.icon.icon, "size": props.icon.size, "className": props.icon.className  }) }}
+          {{ govieIcon({"icon": props.icon.icon, "size": props.icon.size, "className": props.icon.className }) }}
         </a>
       </div>
     {% endif %}
 
-    <div class="gi-card-content">
+    <div class="gi-card-content {{ getInsetClass(props.inset) }}">
       <div class="gi-card-header">
         <div class="gi-card-heading">
+          {% set titleClasses = '!gi-my-0' %}
+          {% if props.subTitle %}
+            {% set titleClasses = titleClasses ~ ' !gi-mb-2' %}
+          {% endif %}
           {% if props.href %}
             {{
               govieHeading({
@@ -45,7 +57,7 @@
                   "href": props.href,
                   "label": props.title
                 }),
-                "customClasses": '!gi-my-0'
+                "customClasses": titleClasses
               })
             }}
           {% else %}
@@ -53,7 +65,7 @@
               govieHeading({
                 "tag": 'h5',
                 "text": props.title,
-                "customClasses": '!gi-my-0'
+                "customClasses": titleClasses
               })
             }}
           {% endif %}
@@ -68,7 +80,6 @@
             }}
           {% endif %}
         </div>
-
         {% if props.tag and props.tag.text and props.tag.type %}
           <div class="gi-card-tag">
             {{ govieTag({"text": props.tag.text, "type": props.tag.type}) }}
@@ -81,7 +92,7 @@
       </div>
 
       {% if props.action %}
-        <div class="gi-card-actions">
+        <div class="gi-card-action">
           {% if props.action.type == 'link' %}
             {{ govieLink(props.action) }}
             {% elseif props.action.type == 'button' %}

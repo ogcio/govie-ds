@@ -12,6 +12,7 @@ type Action =
 
 export type CardProps = {
   type: 'vertical' | 'horizontal';
+  inset?: 'body' | 'full';
   title?: string;
   subTitle?: string;
   href?: string;
@@ -26,6 +27,7 @@ export const Card = (props: CardProps) => {
   const {
     type = 'vertical',
     title,
+    inset,
     subTitle,
     img,
     icon,
@@ -38,6 +40,7 @@ export const Card = (props: CardProps) => {
     vertical: 'gi-card gi-card-vertical',
     horizontal: 'gi-card gi-card-horizontal',
   };
+  const insetClass = inset === 'body' ? 'gi-card-content-inset' : '';
 
   return (
     <div className={layoutClasses[type]}>
@@ -55,10 +58,13 @@ export const Card = (props: CardProps) => {
           </a>
         </div>
       )}
-      <div className="gi-card-content">
+      <div className={`gi-card-content ${insetClass}`}>
         <div className="gi-card-header">
           <div className="gi-card-heading">
-            <Heading as="h5" customClasses="!gi-my-0">
+            <Heading
+              as="h5"
+              customClasses={`!gi-my-0 ${subTitle ? '!gi-mb-2' : ''}`}
+            >
               {href ? <Link href={href}>{title}</Link> : title}
             </Heading>
             <Heading
@@ -78,7 +84,7 @@ export const Card = (props: CardProps) => {
         <div className="gi-card-paragraph">
           <Paragraph size="sm">{content}</Paragraph>
         </div>
-        {action && renderAction(action)}
+        <div className="gi-card-action">{action && renderAction(action)}</div>
       </div>
     </div>
   );

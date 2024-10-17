@@ -89,10 +89,11 @@ export const Default: Story = {
     },
     action: {
       control: 'object',
-      description: 'Single action button or link for the card.',
+      description:
+        'Single action for the card, either a button or link, determined by the "type" property.',
       table: {
         category: 'Actions',
-        type: { summary: '{ type: "link" | Button | Link }' },
+        type: { summary: '{ type: "button" | "link", ...Button | Link }' },
       },
     },
     icon: {
@@ -103,11 +104,21 @@ export const Default: Story = {
         type: { summary: 'Icon' },
       },
     },
+    inset: {
+      control: 'select',
+      options: ['body', 'full'],
+      description: 'Defines where the content is inset (default is "body").',
+      table: {
+        category: 'Layout',
+        type: { summary: 'body | full' },
+      },
+    },
   },
   args: {
-    type: 'vertical',
+    type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
+    inset: 'body',
     img: 'https://placeholderjs.com/400x300',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',

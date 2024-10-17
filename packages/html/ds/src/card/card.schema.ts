@@ -37,6 +37,11 @@ export const cardSchema = zod.object({
       description: 'Image URL for the card (if applicable)',
     })
     .optional(),
+  inset: zod
+    .enum(['body', 'full'], {
+      description: 'Defines where the content is inset',
+    })
+    .optional(),
   tag: tagSchema.describe('Define tag properties').optional(),
   icon: iconSchema.describe('Define icon properties').optional(),
   content: zod
