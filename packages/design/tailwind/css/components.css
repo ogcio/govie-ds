@@ -353,11 +353,11 @@ input[type='file' i] {
 }
 
 .gi-card-vertical {
-  @apply gi-flex-col gi-max-w-[300px] gi-min-w-[220px] gi-gap-4 gi-w-full;
+  @apply gi-flex-col gi-max-w-[300px] gi-min-w-[220px] gi-w-full;
 }
 
 .gi-card-horizontal {
-  @apply gi-min-w-[auto] gi-max-w-[768px] gi-gap-4;
+  @apply gi-min-w-[auto] gi-max-w-[768px];
 }
 
 .gi-card-header {
@@ -389,11 +389,25 @@ input[type='file' i] {
   @apply gi-flex gi-self-start;
 }
 
-.gi-card-content-inset {
+.gi-card-inset-body {
   @apply gi-p-4;
 }
 
-.gi-card-action {
+.gi-card-vertical.gi-card-inset-full,
+.gi-card-horizontal.gi-card-inset-full,
+.gi-card-vertical.gi-card-inset-none,
+.gi-card-horizontal.gi-card-inset-none {
+  @apply gi-gap-4;
+}
+
+.gi-card-vertical.gi-card-inset-body,
+.gi-card-horizontal.gi-card-inset-body {
+  @apply gi-p-0;
+}
+
+.gi-card-vertical.gi-card-inset-full,
+.gi-card-horizontal.gi-card-inset-full {
+  @apply gi-p-4;
 }
 
 /* End of Card */

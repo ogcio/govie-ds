@@ -106,11 +106,11 @@ export const Default: Story = {
     },
     inset: {
       control: 'select',
-      options: ['body', 'full'],
+      options: ['none', 'body', 'full'],
       description: 'Defines where the content is inset (default is "body").',
       table: {
         category: 'Layout',
-        type: { summary: 'body | full' },
+        type: { summary: 'none | body | full' },
       },
     },
   },
@@ -118,7 +118,7 @@ export const Default: Story = {
     type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
-    inset: 'body',
+    inset: 'none',
     img: 'https://placeholderjs.com/400x300',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',

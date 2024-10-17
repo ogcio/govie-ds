@@ -6,23 +6,25 @@
 
 {% macro govieCard(props) %}
 
-  {% macro getLayoutClass(type) %}
-    {% if type == 'horizontal' %}
-      gi-card gi-card-horizontal
-    {% else %}
-      gi-card gi-card-vertical
-    {% endif %}
-  {% endmacro %}
-
   {% macro getInsetClass(inset) %}
     {% if inset == 'body' %}
-      gi-card-content-inset
+      gi-card-inset-body
+    {% elseif inset == 'full' %}
+      gi-card-inset-full
     {% else %}
-      ''
+      gi-card-inset-none
     {% endif %}
   {% endmacro %}
 
-  <div class="{{ getLayoutClass(props.type) | trim }}">
+  {% macro getLayoutClass(type, inset) %}
+    {% if type == 'horizontal' %}
+      gi-card gi-card-horizontal {{ getInsetClass(inset) }}
+    {% else %}
+      gi-card gi-card-vertical {{ getInsetClass(inset) }}
+    {% endif %}
+  {% endmacro %}
+
+  <div class="{{ getLayoutClass(props.type, props.inset) | trim }}">
     {% if props.img and not props.icon %}
       <div class="gi-card-image">
         <a href="{{ props.href }}">
@@ -95,7 +97,7 @@
         <div class="gi-card-action">
           {% if props.action.type == 'link' %}
             {{ govieLink(props.action) }}
-            {% elseif props.action.type == 'button' %}
+          {% elseif props.action.type == 'button' %}
             {{ govieButton(props.action) }}
           {% endif %}
         </div>

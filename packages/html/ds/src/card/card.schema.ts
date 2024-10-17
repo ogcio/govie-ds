@@ -38,7 +38,7 @@ export const cardSchema = zod.object({
     })
     .optional(),
   inset: zod
-    .enum(['body', 'full'], {
+    .enum(['body', 'full', 'none'], {
       description: 'Defines where the content is inset',
     })
     .optional(),

@@ -89,11 +89,11 @@ const meta = {
     },
     inset: {
       control: 'select',
-      options: ['body', 'full'],
+      options: ['none', 'body', 'full'],
       description: 'Defines where the content is inset (default is "body").',
       table: {
         category: 'Layout',
-        type: { summary: 'body | full' },
+        type: { summary: 'none | body | full' },
       },
     },
   },
@@ -119,7 +119,7 @@ export const Default: Story = {
       children: 'Button',
       variant: ButtonVariant.Secondary,
     },
-    inset: 'body',
+    inset: 'none',
   },
 };
 
