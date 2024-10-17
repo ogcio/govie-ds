@@ -29,7 +29,9 @@ export class Textarea extends BaseComponent<TextareaProps> {
             }
           }
         }
-      } catch {}
+      } catch {
+        // skip catch
+      }
     };
   }
 
