@@ -1,38 +1,44 @@
-import { cloneElement } from 'react';
+'use client';
+import {
+  isButtonDisabled,
+  getVariantAppearanceClass,
+} from '../button/helpers.js';
+import { ButtonProps, ButtonSize } from '../button/types.js';
+import { Icon, IconPropTypes } from '../icon/icon.js';
 
-export function IconButton({
+type IconButtonType = Omit<ButtonProps, 'children'> & {
+  icon: Omit<IconPropTypes, 'size'>;
+  className?: string;
+};
+
+const getSizeClass = (size?: ButtonSize) => {
+  let classes;
+  if (size === 'small') {
+    classes = 'gi-icon-btn-small';
+  } else if (size === 'large') {
+    classes = 'gi-icon-btn-large';
+  } else {
+    classes = 'gi-icon-btn-regular';
+  }
+  return classes;
+};
+
+export const IconButton = ({
   icon,
+  variant,
+  appearance,
+  size,
+  disabled,
   onClick,
-  href,
-  ariaLabel,
-  disabled = false,
-}: {
-  icon: React.ReactElement;
-  onClick?: React.MouseEventHandler;
-  href?: string;
-  ariaLabel: string;
-  disabled?: boolean;
-}) {
-  const Component = href ? 'a' : 'button';
-
+  className = '',
+}: IconButtonType) => {
+  const iconSize = size === 'large' ? 'md' : 'sm';
   return (
-    <Component
-      className={`
-        gi-p-[var(--gieds-space-2)] 
-        gi-rounded-[var(--gieds-border-radius-200)]
-        enabled:cursor-pointer
-        enabled:hover:bg-gray-50
-        `}
-      onClick={href ? undefined : onClick}
-      disabled={disabled}
-      aria-label={ariaLabel}
-      href={href}
+    <button
+      onClick={onClick}
+      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })} ${className}`}
     >
-      {cloneElement(icon, {
-        ariaLabel: undefined,
-        ariaHidden: true,
-        color: disabled ? 'disabled' : undefined,
-      })}
-    </Component>
+      <Icon size={iconSize} {...icon} />
+    </button>
   );
-}
+};

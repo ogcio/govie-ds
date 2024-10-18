@@ -9,6 +9,8 @@ import {
   Paragraph,
   PhaseBanner,
   RadiosGroup,
+  Modal,
+  Button,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -51,8 +53,10 @@ export default function Home() {
         </Link>
         <Icon icon="thumb_up" />
         <IconButton
-          icon={<Icon icon="send" variant="outlined" inline />}
-          ariaLabel="Send"
+          icon={{
+            icon: "send",
+            ariaLabel: "Send",
+          }}
         />
         <Paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -92,6 +96,20 @@ export default function Home() {
         />
 
         <span className="material-icons">face</span>
+        <Modal triggerButton={<Button>Open Modal</Button>}>
+          <Heading as="h2">Title</Heading>
+          <Paragraph>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            esse magnam quis sit soluta cupiditate at deserunt exercitationem
+            voluptas doloribus asperiores
+          </Paragraph>
+          <div className="gi-flex gi-gap-6 gi-justify-end">
+            <Button variant="secondary" appearance="dark">
+              Cancel action
+            </Button>
+            <Button>Primary action</Button>
+          </div>
+        </Modal>
       </Container>
       <Footer />
     </div>

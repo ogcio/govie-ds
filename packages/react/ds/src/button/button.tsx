@@ -1,3 +1,4 @@
+'use client';
 import {
   isButtonDisabled,
   getSizeClass,
@@ -11,9 +12,11 @@ export const Button = ({
   size,
   disabled,
   children,
+  onClick,
 }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
     >
       {children}

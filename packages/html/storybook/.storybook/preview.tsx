@@ -18,13 +18,23 @@ import '../../ds/styles.css';
 // add decorators for button
 const ButtonDecorator = (arguments_, parameters) => {
   let classes = 'gi-p-4';
-  if (parameters.macro.name !== 'govieButton') {
+  if (parameters.macro.name !== 'govieButton' && parameters.macro.name !== 'govieIconButton' ) {
     return;
   }
   if (arguments_.appearance === 'light') {
     classes += ' gi-bg-black';
   }
   return classes;
+};
+
+// add decorators for modal
+const ModalDecorator = (_, parameters) => {
+  if (parameters.macro.name !== 'govieModal') {
+    return {};
+  }
+  return {
+    height: '400px',
+  };
 };
 
 export const decorators = [
@@ -44,6 +54,7 @@ export const decorators = [
     if (typeof storyResult === 'string') {
       return (
         <div
+          style={ModalDecorator(args, parameters)}
           className={ButtonDecorator(args, parameters)}
           dangerouslySetInnerHTML={{ __html: storyResult }}
         />
@@ -53,6 +64,7 @@ export const decorators = [
     const renderedMacro = renderMacro(parameters.macro)(args);
     return (
       <div
+        style={ModalDecorator(args, parameters)}
         className={ButtonDecorator(args, parameters)}
         dangerouslySetInnerHTML={{ __html: renderedMacro }}
       />
