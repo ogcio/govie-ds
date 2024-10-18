@@ -59,11 +59,11 @@ export const Links: Story = {
     items: [
       {
         href: '#',
-        label: 'Link without underline',
+        label: 'Link 1',
       },
       {
         href: '#',
-        label: 'Link without underline',
+        label: 'Link 2',
       },
     ],
   },

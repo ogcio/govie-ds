@@ -706,13 +706,13 @@ export function getComponents(): ComponentDetail[] {
           platform: {
             id: 'global',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },

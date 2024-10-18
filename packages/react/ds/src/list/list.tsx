@@ -1,25 +1,25 @@
-export type LinkProps = {
+export type ListProps = {
   items: Array<string | React.ReactElement>;
   spaced?: boolean;
   type?: 'bullet' | 'number' | 'normal';
 };
 
-const getListClass = ({
-  spaced,
-  type,
-}: Omit<LinkProps, 'as' | 'items' | 'link'>) => {
+const getListClass = ({ spaced, type }: Omit<ListProps, 'items' | 'link'>) => {
   const classes = [];
 
   switch (type) {
-    case 'bullet':
+    case 'bullet': {
       classes.push('gi-list-bullet');
       break;
-    case 'number':
+    }
+    case 'number': {
       classes.push('gi-list-number');
       break;
-    default:
+    }
+    default: {
       classes.push('gi-list');
       break;
+    }
   }
 
   if (spaced) {
@@ -29,12 +29,12 @@ const getListClass = ({
   return classes.join(' ');
 };
 
-export function List({ items, ...props }: LinkProps) {
+export function List({ items, ...props }: ListProps) {
   return (
     <ul className={getListClass(props)}>
-      {items.map((item, index) => (
-        <li key={`item-${index}`}>{item}</li>
-      ))}
+      {items.map((item, index) => {
+        return <li key={`listItem-${index}`}>{item}</li>;
+      })}
     </ul>
   );
 }

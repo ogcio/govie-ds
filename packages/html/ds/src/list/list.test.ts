@@ -15,7 +15,11 @@ describe('govieList', () => {
       items,
     });
     const listElement = screen.getByRole('list');
-    items.forEach((item) => expect(screen.getByText(item)).toBeInTheDocument());
+
+    for (const item of items) {
+      expect(screen.getByText(item)).toBeInTheDocument();
+    }
+
     expect(listElement).toBeInTheDocument();
   });
 
@@ -36,13 +40,14 @@ describe('govieList', () => {
     });
 
     const listElement = screen.getByRole('list');
-    items.forEach((item) => {
+
+    for (const item of items) {
       const links = screen.getAllByRole('link', { name: item.label });
       const linkWithHref = links.find(
         (link) => link.getAttribute('href') === item.href,
       );
       expect(linkWithHref).toBeInTheDocument();
-    });
+    }
     expect(listElement).toBeInTheDocument();
   });
 
@@ -52,63 +57,62 @@ describe('govieList', () => {
       items,
     });
 
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list')).toBe(true);
   });
 
   it('should have correct className when type is "number"', () => {
-    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Number
+      type: TypeEnum.Number,
     });
 
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list-number')).toBe(true);
   });
 
   it('should have correct className when type is "bullet"', () => {
-    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Bullet
+      type: TypeEnum.Bullet,
     });
 
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });
 
   it('should have correct className when type is "normal"', () => {
-    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Normal
+      type: TypeEnum.Normal,
     });
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list')).toBe(true);
   });
 
   it('should have correct className when is "spaced"', () => {
-    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      spaced: true
+      spaced: true,
     });
 
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list-spaced')).toBe(true);
   });
 
   it('should have correct "spaced" class combined with the "type" class', () => {
-    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
       spaced: true,
-      type: TypeEnum.Bullet
-      
+      type: TypeEnum.Bullet,
     });
 
-    const listContainer = screen.getByTestId('govieList')
+    const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list-spaced')).toBe(true);
     expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });

@@ -64,6 +64,7 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
+import { List } from '@/components/typography/list';
 
 export type MdxProps = {
   code: string;
@@ -154,6 +155,7 @@ const documentComponents: MDXComponents = {
   RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
+  List: (props) => <List {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

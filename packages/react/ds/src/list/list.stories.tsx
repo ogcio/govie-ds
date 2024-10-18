@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { List } from './list.js';
 import { Link } from '../link/link.js';
+import { List } from './list.js';
 
 const meta = {
-  title: 'typography/Lists',
+  title: 'typography/List',
   parameters: {
     docs: {
       description: {
