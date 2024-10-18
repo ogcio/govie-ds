@@ -2,23 +2,27 @@
 
 {% macro govieList(props) %}
   {% macro getListClass(type, spaced) %}
-  {% set classes = [] %}
-  {% if type == 'bullet' %}
-    {% set classes = classes.concat(['gi-list-bullet']) %}
-    {% elseif type == 'number' %}
-    {% set classes = classes.concat(['gi-list-number']) %}
-  {% else %}
-    {% set classes = classes.concat(['gi-list']) %}
-  {% endif %}
+    {% set classes = [] %}
+    {% if type == 'bullet' %}
+      {% set classes = classes.concat(['gi-list-bullet']) %}
+      {% elseif type == 'number' %}
+      {% set classes = classes.concat(['gi-list-number']) %}
+    {% else %}
+      {% set classes = classes.concat(['gi-list']) %}
+    {% endif %}
 
-  {% if spaced %}
-    {% set classes = classes.concat(['gi-list-spaced']) %}
-  {% endif %}
+    {% if spaced %}
+      {% set classes = classes.concat(['gi-list-spaced']) %}
+    {% endif %}
 
-  {{ classes | join(' ') }}
+    {{ classes | join(' ') }}
   {% endmacro %}
 
-  <ul class="{{ getListClass(props.type, props.spaced) | trim }}">
+  <ul
+    data-testid="govieList"
+    class="{{ getListClass(props.type, props.spaced) | trim }}"
+    data-element="list-container"
+  >
     {% for item in props.items %}
       <li>
         {% if item is string %}

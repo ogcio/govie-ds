@@ -1,98 +1,115 @@
 import { render } from '../common/render';
-import html from './paragraph.html?raw';
-import { AlignEnum, AsEnum, ParagraphProps, SizeEnum } from './list.schema';
+import html from './list.html?raw';
+import { ListProps, TypeEnum } from './list.schema';
 
-describe('govieParagraph', () => {
-  const renderParagraph = render<ParagraphProps>({
-    componentName: 'paragraph',
-    macroName: 'govieParagraph',
+describe('govieList', () => {
+  const renderList = render<ListProps>({
+    componentName: 'list',
+    macroName: 'govieList',
     html,
   });
 
-  it('should render a paragraph with the correct content when props.as is "p"', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: 'This is a paragraph',
-      size: SizeEnum.Medium,
+  it('should render a list correctly with items', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+    const screen = renderList({
+      items,
     });
-    const pElement = screen.getByText('This is a paragraph');
-    expect(pElement).toBeTruthy();
-    expect(pElement.tagName).toBe('P');
+    const listElement = screen.getByRole('list');
+    items.forEach((item) => expect(screen.getByText(item)).toBeInTheDocument());
+    expect(listElement).toBeInTheDocument();
   });
 
-  it('should render a span with the correct content when props.as is "span"', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Span,
-      content: 'This is a span',
-      size: SizeEnum.Large,
+  it('should render a list of links correctly', () => {
+    const items = [
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+    ];
+
+    const screen = renderList({
+      items,
     });
-    const sElement = screen.getByText('This is a span');
-    expect(sElement).toBeTruthy();
-    expect(sElement.tagName).toBe('SPAN');
+
+    const listElement = screen.getByRole('list');
+    items.forEach((item) => {
+      const links = screen.getAllByRole('link', { name: item.label });
+      const linkWithHref = links.find(
+        (link) => link.getAttribute('href') === item.href,
+      );
+      expect(linkWithHref).toBeInTheDocument();
+    });
+    expect(listElement).toBeInTheDocument();
   });
 
-  it('should have correct text size classes for "lg"', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: 'Large text',
-      size: SizeEnum.Large,
+  it('should have correct className for default type "normal"', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+    const screen = renderList({
+      items,
     });
-    const pElement = screen.getByText('Large text');
 
-    expect(pElement.classList.contains('gi-paragraph-lg')).toBe(true);
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list')).toBe(true);
   });
 
-  it('should have correct text size classes for "md"', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Span,
-      content: 'Medium text',
-      size: SizeEnum.Medium,
+  it('should have correct className when type is "number"', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const screen = renderList({
+      items,
+      type: TypeEnum.Number
     });
-    const spanElement = screen.getByText('Medium text');
 
-    expect(spanElement.classList.contains('gi-paragraph-md')).toBe(true);
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list-number')).toBe(true);
   });
 
-  it('should have correct text size classes for "sm"', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: 'Small text',
-      size: SizeEnum.Small,
+  it('should have correct className when type is "bullet"', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const screen = renderList({
+      items,
+      type: TypeEnum.Bullet
     });
-    const pElement = screen.getByText('Small text');
 
-    expect(pElement.classList.contains('gi-paragraph-sm')).toBe(true);
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });
 
-  it('should have aligned end', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: 'Small text',
-      align: AlignEnum.End,
+  it('should have correct className when type is "normal"', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const screen = renderList({
+      items,
+      type: TypeEnum.Normal
     });
-    const pElement = screen.getByText('Small text');
-    expect(pElement.classList.contains('gi-text-end')).toBe(true);
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list')).toBe(true);
   });
 
-  it('should safely render HTML content', () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: '<a href="#">Anchor tag</a>',
-      size: SizeEnum.Small,
+  it('should have correct className when is "spaced"', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const screen = renderList({
+      items,
+      spaced: true
     });
 
-    const pElement = screen.getByText('Anchor tag');
-    expect(pElement).toBeTruthy();
-    expect(pElement.innerHTML).toContain('Anchor tag');
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list-spaced')).toBe(true);
   });
 
-  it('should pass axe accessibility tests', async () => {
-    const screen = renderParagraph({
-      as: AsEnum.Paragraph,
-      content: 'Accessible paragraph',
-      size: SizeEnum.Medium,
+  it('should have correct "spaced" class combined with the "type" class', () => {
+    const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']
+    const screen = renderList({
+      items,
+      spaced: true,
+      type: TypeEnum.Bullet
+      
     });
 
-    await screen.axe();
+    const listContainer = screen.getByTestId('govieList')
+    expect(listContainer.classList.contains('gi-list-spaced')).toBe(true);
+    expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });
 });
