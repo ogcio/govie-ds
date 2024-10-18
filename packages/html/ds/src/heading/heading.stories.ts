@@ -4,7 +4,9 @@ import html from './heading.html?raw';
 import { Size, Tag } from './heading.schema';
 import { HeadingProps } from './heading.schema';
 
-const macro = { name: 'govieHeading', html };
+const path = import.meta.url.split('/heading')[0];
+
+const macro = { name: 'govieHeading', html, path };
 
 const Heading = renderComponent<HeadingProps>(macro);
 
