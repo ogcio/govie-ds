@@ -15,8 +15,9 @@
 {% from 'radio/radios-group.html' import govieRadiosGroup %}
 {% from 'modal/modal.html' import govieModal %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
+{% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
 
-{% from 'vars.jinja' import modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
+{% from 'vars.jinja' import cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +45,8 @@
   {{ govieHeading({ 'size': 'xl', 'tag': 'h1', 'text': 'Heading' }) }}
 
   <hr />
+
+  {{ govieCookieBanner(cookieBannerProps) }}
 
   <h2>Paragraph (Global)</h2>
   {% set paragraphContentWithLink = govieLink({ "href": "#", "label": "with Link", }) %}

@@ -385,7 +385,7 @@ input[type='file' i] {
 /* Cookie Banner */
 
 .gi-cookie-banner-container {
-  @apply gi-p-5 gi-bg-gray-100
+  @apply gi-bg-gray-100
 }
 
 .gi-cookie-banner-buttons {

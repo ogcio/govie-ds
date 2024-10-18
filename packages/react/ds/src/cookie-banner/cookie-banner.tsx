@@ -33,51 +33,53 @@ export const CookieBanner = ({
     <>
       {status === 'dismiss' ? null : (
         <div className="gi-cookie-banner-container">
-          <Container>
-            {/* default container of cookie banner   */}
-            {status === null && (
-              <>
-                {children}
-                <div className="gi-cookie-banner-buttons">
-                  {cloneElement(accept.triggerButton, {
-                    onClick: handleOpenBanner,
-                  })}
-                  {cloneElement(reject.triggerButton, {
-                    onClick: handleCloseBanner,
-                  })}
-                  {cookieLink && cookieLink}
-                </div>
-              </>
-            )}
-
-            {/* accepted container of cookie banner */}
-            {status === true && (
-              <>
-                {accept.children}
-                {dismissButton && (
-                  <>
-                    {cloneElement(dismissButton, {
-                      onClick: handleDismissBanner,
+          <div className="gi-py-5">
+            <Container>
+              {/* default container of cookie banner   */}
+              {status === null && (
+                <>
+                  {children}
+                  <div className="gi-cookie-banner-buttons">
+                    {cloneElement(accept.triggerButton, {
+                      onClick: handleOpenBanner,
                     })}
-                  </>
-                )}
-              </>
-            )}
-
-            {/* rejected container of cookie banner */}
-            {status === false && (
-              <>
-                {reject.children}
-                {dismissButton && (
-                  <>
-                    {cloneElement(dismissButton, {
-                      onClick: handleDismissBanner,
+                    {cloneElement(reject.triggerButton, {
+                      onClick: handleCloseBanner,
                     })}
-                  </>
-                )}
-              </>
-            )}
-          </Container>
+                    {cookieLink && cookieLink}
+                  </div>
+                </>
+              )}
+
+              {/* accepted container of cookie banner */}
+              {status === true && (
+                <>
+                  {accept.children}
+                  {dismissButton && (
+                    <>
+                      {cloneElement(dismissButton, {
+                        onClick: handleDismissBanner,
+                      })}
+                    </>
+                  )}
+                </>
+              )}
+
+              {/* rejected container of cookie banner */}
+              {status === false && (
+                <>
+                  {reject.children}
+                  {dismissButton && (
+                    <>
+                      {cloneElement(dismissButton, {
+                        onClick: handleDismissBanner,
+                      })}
+                    </>
+                  )}
+                </>
+              )}
+            </Container>
+          </div>
         </div>
       )}
     </>
