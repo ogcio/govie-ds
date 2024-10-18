@@ -13,7 +13,7 @@ import {
   RadiosGroup,
   Card,
   Modal,
-  CookieBanner
+  CookieBanner,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -155,7 +155,7 @@ const documentComponents: MDXComponents = {
   RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
-  CookieBanner: (props) => <CookieBanner {...props} />
+  CookieBanner: (props) => <CookieBanner {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -176,8 +176,7 @@ export function Mdx({ code }: MdxProps) {
             key === 'Heading' ||
             key === 'Icon' ||
             key === 'Tag' ||
-            key === 'Card' || 
-            key === 'CookieBanner'
+            key === 'Card'
           ) {
             return;
           }

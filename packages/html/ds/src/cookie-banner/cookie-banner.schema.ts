@@ -35,4 +35,4 @@ export const cookieBannerSchema = zod.object({
     .optional(),
 });
 
-export type CookieBannerProps = zod.infer<typeof cookieBannerSchema>
+export type CookieBannerProps = zod.infer<typeof cookieBannerSchema>;

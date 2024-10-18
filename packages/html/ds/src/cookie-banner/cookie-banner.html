@@ -2,7 +2,11 @@
 {% from 'link/link.html' import govieLink %}
 
 {% macro govieCookieBanner(props) %}
-  <div aria-label="Cookie banner" class="gi-cookie-banner-container" data-module="gieds-cookie-banner">
+  <div
+    aria-label="Cookie banner"
+    class="gi-cookie-banner-container"
+    data-module="gieds-cookie-banner"
+  >
     <div data-element="main-container" class="gi-py-5">
       <div class="gi-mx-auto gi-container">
         {# default container of cookie banner #}
@@ -22,19 +26,33 @@
           </div>
         </div>
         {# accepted container of cookie banner #}
-        <div data-testid="accepted-container" data-element="accepted-container" class="gi-hidden">
+        <div
+          data-testid="accepted-container"
+          data-element="accepted-container"
+          class="gi-hidden"
+        >
           {{ props.accept.children | safe | trim | indent(2) }}
           {% if props.dismissButton %}
-            <div data-testid="dismiss-btn-accepted" data-element="dismiss-btn-accepted">
+            <div
+              data-testid="dismiss-btn-accepted"
+              data-element="dismiss-btn-accepted"
+            >
               {{ govieButton(props.dismissButton) }}
             </div>
           {% endif %}
         </div>
         {# rejected container of cookie banner #}
-        <div data-testid="rejected-container" data-element="rejected-container" class="gi-hidden">
+        <div
+          data-testid="rejected-container"
+          data-element="rejected-container"
+          class="gi-hidden"
+        >
           {{ props.reject.children | safe | trim | indent(2) }}
           {% if props.dismissButton %}
-            <div data-testid="dismiss-btn-rejected" data-element="dismiss-btn-rejected">
+            <div
+              data-testid="dismiss-btn-rejected"
+              data-element="dismiss-btn-rejected"
+            >
               {{ govieButton(props.dismissButton) }}
             </div>
           {% endif %}

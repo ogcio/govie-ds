@@ -9,6 +9,155 @@ status: in-development
 
 <ComponentStatusBlock componentId="cookie-banner" />
 
+import { cookieBannerProps } from "@/components/document/cookie-banner/cookie-banner"
+
+<CookieBanner {...cookieBannerProps} />
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+<div data-element="main-container" class="gi-py-5">
+  <div class="gi-mx-auto gi-container">
+    <div>
+      <h3 class="gi-heading-md">Title</h3>
+      <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
+        We use some essential cookies to make this service work.<br /><br />We’d
+        also like to use analytics cookies so we can understand how you use the
+        service and make improvements.
+      </p>
+      <div class="gi-cookie-banner-buttons">
+        <div>
+          <button class="gi-btn gi-btn-primary gi-btn-regular">
+            Accept cookies
+          </button>
+        </div>
+        <div>
+          <button class="gi-btn gi-btn-primary gi-btn-regular">
+            Reject cookies
+          </button>
+        </div>
+
+        <a href="#" class="gi-link">See Cookies</a>
+      </div>
+    </div>
+
+    <div class="gi-hidden">
+      <h3 class="gi-heading-md">Accepted Title</h3>
+      <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
+        You’ve accepted analytics cookies. You can change your cookie settings
+        at any time.
+      </p>
+      <div>
+        <button class="gi-btn gi-btn-primary gi-btn-regular">
+          Hide this message
+        </button>
+      </div>
+    </div>
+
+    <div class="gi-hidden">
+      <h3 class="gi-heading-md">Rejected Title</h3>
+      <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
+        You’ve rejected analytics cookies. You can change your cookie settings
+        at any time.
+      </p>
+      <div>
+        <button class="gi-btn gi-btn-primary gi-btn-regular">
+          Hide this message
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  {{ govieCookieBanner({
+    "children": govieHeading({"text": "Title", "tag": "h3"}) + govieParagraph({ "content": "We use some essential cookies to make this service work.<br><br>We’d also like to use analytics cookies so we can understand how you use the service and make improvements." }),
+    "accept": {
+      "children": govieHeading({"text": "Accepted Title", "tag": "h3"}) + govieParagraph({ "content": "You’ve accepted analytics cookies. You can change your cookie settings at any time." }),
+      "triggerButton": {
+        "content": "Accept cookies"
+      }
+    },
+    "reject": {
+      "children": govieHeading({"text": "Rejected Title", "tag": "h3"}) + govieParagraph({ "content": "You’ve rejected analytics cookies. You can change your cookie settings at any time." }),
+      "triggerButton": {
+        "content": "Reject cookies"
+      }
+    },
+    "dismissButton": {
+      "content": "Hide this message"
+    },
+    "cookieLink": {
+      "label": "See cookies",
+      "href": "#"
+    }
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { CookieBanner } from '@govie-ds/react';
+
+ <CookieBanner
+  children={
+    <>
+      <Heading as="h3">Title</Heading>
+      <Paragraph>
+        We use some essential cookies to make this service work.
+        We’d also like to use analytics cookies so we can understand how you use
+        the service and make improvements.
+      </Paragraph>
+    </>
+  }
+  accept={{
+    children: (
+      <>
+        <Heading as="h3">Accepted Title</Heading>
+        <Paragraph>
+          You’ve accepted analytics cookies. You can change your cookie settings
+          at any time.
+        </Paragraph>
+      </>
+    ),
+    triggerButton: <Button>Accept cookies</Button>,
+  }}
+  reject={{
+    children: (
+      <>
+        <Heading as="h3">Rejected Title</Heading>
+        <Paragraph>
+          You’ve rejected analytics cookies. You can change your cookie settings
+          at any time.
+        </Paragraph>
+      </>
+    ),
+    triggerButton: <Button>Reject cookies</Button>,
+  }}
+  cookieLink={<Link href="#">See Cookies</Link>}
+  dismissButton={<Button>Hide this message</Button>}
+/>;
+
+  ```
+  </TabPanel>
+</Tabs>
+
 ## When to use this component
 
+Use this component if your service sets any cookies on a user’s device.
+
+This component page shows several options for using a cookie banner, based on the types of cookies you’re using in the service. We also tell you what to cover in your cookie banner, with some text examples.
+
 ## When not to use this component
+
+You can choose not to have a cookie banner if the service only sets essential or ‘strictly necessary’ cookies, as these do not need user consent.
+
+However, you must tell users that you set essential cookies. You can do this with a cookies page – link to this page in the footer.

@@ -14,7 +14,7 @@ const componentRegistry = {
   Checkboxes,
   Radio,
   Modal,
-  CookieBanner
+  CookieBanner,
   // TODO: additional component classes
 } as const;
 

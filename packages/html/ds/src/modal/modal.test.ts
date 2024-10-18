@@ -68,7 +68,7 @@ describe('modal', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderModal({html: htmlContent, triggerButton});
+    const screen = renderModal({ html: htmlContent, triggerButton });
 
     await screen.axe();
   });
