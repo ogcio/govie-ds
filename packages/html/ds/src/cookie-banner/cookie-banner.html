@@ -1,0 +1,47 @@
+{% from 'button/button.html' import govieButton %}
+{% from 'link/link.html' import govieLink %}
+
+{% macro govieCookieBanner(props) %}
+  {% set status = 'null' %}
+  <div data-module="gieds-cookie-banner">
+    <div
+      class="gi-mx-auto gi-container gi-cookie-banner-container"
+      data-element="main-container"
+    >
+      {# default container of cookie banner #}
+      <div data-element="default-container">
+        {{ props.children | safe | trim | indent(2) }}
+        <div class="gi-cookie-banner-buttons">
+          <div data-element="accept-btn">
+            {{ govieButton(props.accept.triggerButton) }}
+          </div>
+          <div data-element="reject-btn">
+            {{ govieButton(props.reject.triggerButton) }}
+          </div>
+
+          {% if props.cookieLink %}
+            {{ govieLink(props.cookieLink) }}
+          {% endif %}
+        </div>
+      </div>
+      {# accepted container of cookie banner #}
+      <div data-element="accepted-container" class="gi-hidden">
+        {{ props.accept.children | safe | trim | indent(2) }}
+        {% if props.dismissButton %}
+          <div data-element="dismiss-btn-accepted">
+            {{ govieButton(props.dismissButton) }}
+          </div>
+        {% endif %}
+      </div>
+      {# rejected container of cookie banner #}
+      <div data-element="rejected-container" class="gi-hidden">
+        {{ props.reject.children | safe | trim | indent(2) }}
+        {% if props.dismissButton %}
+          <div data-element="dismiss-btn-rejected">
+            {{ govieButton(props.dismissButton) }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

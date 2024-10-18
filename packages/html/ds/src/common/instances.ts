@@ -1,4 +1,5 @@
 import { Checkboxes } from '../checkbox/checkbox';
+import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
@@ -13,6 +14,7 @@ const componentRegistry = {
   Checkboxes,
   Radio,
   Modal,
+  CookieBanner
   // TODO: additional component classes
 } as const;
 
