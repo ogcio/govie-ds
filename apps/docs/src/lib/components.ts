@@ -395,14 +395,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-cookie-banner--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-cookie-banner--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
       ],
     },

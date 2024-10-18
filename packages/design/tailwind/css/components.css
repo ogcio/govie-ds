@@ -381,3 +381,15 @@ input[type='file' i] {
 }
 
 /* End of Card */
+
+/* Cookie Banner */
+
+.gi-cookie-banner-container {
+  @apply gi-p-5 gi-bg-gray-100
+}
+
+.gi-cookie-banner-buttons {
+  @apply gi-flex gi-gap-4 gi-items-center
+}
+
+/* End of Cookie Banner */
