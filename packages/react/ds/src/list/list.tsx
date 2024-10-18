@@ -1,5 +1,3 @@
-import { Link } from '../link/link.js';
-
 export type LinkProps = {
   items: Array<string | React.ReactElement>;
   spaced?: boolean;
@@ -32,10 +30,8 @@ const getListClass = ({
 };
 
 export function List({ items, ...props }: LinkProps) {
-  const listClasses = getListClass(props);
-
   return (
-    <ul className={listClasses}>
+    <ul className={getListClass(props)}>
       {items.map((item, index) => (
         <li key={`item-${index}`}>{item}</li>
       ))}

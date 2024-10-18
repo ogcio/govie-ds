@@ -87,10 +87,7 @@
   .gi-paragraph-xs,
   .gi-span-lg,
   .gi-span-md,
-  .gi-span-xs {
-    font: theme('typography.xs.css.p.font');
-  }
-
+  .gi-span-xs,
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
@@ -128,10 +125,7 @@
   .gi-paragraph-xs,
   .gi-span-lg,
   .gi-span-md,
-  .gi-span-xs {
-    font: theme('typography.md.css.p.font');
-  }
-
+  .gi-span-xs,
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
@@ -169,10 +163,7 @@
   .gi-paragraph-xs,
   .gi-span-lg,
   .gi-span-md,
-  .gi-span-xs {
-    font: theme('typography.xl.css.p.font');
-  }
-
+  .gi-span-xs,
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
