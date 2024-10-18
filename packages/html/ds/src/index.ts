@@ -1,4 +1,5 @@
 import { destroyAllInstances } from './common/instances.js';
+import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
@@ -26,6 +27,7 @@ export function initGovIe() {
   initCheckboxes();
   initRadios();
   initModal();
+  initCookieBanner();
 }
 
 export function destroyGovIe() {

@@ -90,3 +90,7 @@ hintsProps
 href
 img
 triggerButton
+CookieBanner
+cookieBannerProps
+cookieLink
+dismissButton

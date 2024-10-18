@@ -1,3 +1,4 @@
+import { CookieBannerProps } from "@/props";
 import {
   Container,
   Footer,
@@ -11,6 +12,7 @@ import {
   RadiosGroup,
   Modal,
   Button,
+  CookieBanner,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -40,6 +42,7 @@ export default function Home() {
           },
         ]}
       />
+      <CookieBanner {...CookieBannerProps} />
       <Container>
         <Heading>Heading</Heading>
         <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
