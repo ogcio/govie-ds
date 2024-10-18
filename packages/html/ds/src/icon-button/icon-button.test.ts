@@ -76,4 +76,14 @@ describe('icon-button', () => {
     expect(iconElement.classList.contains(iconClass)).toBeTruthy();
     expect(buttonElement.classList.contains(buttonClass)).toBeTruthy();
   });
+
+  it('should pass axe accessibility tests', async () => {
+    const screen = renderIconButton({
+      icon: {
+        icon: IconId.ThumbUp,
+      },
+    });
+
+    await screen.axe();
+  });
 });

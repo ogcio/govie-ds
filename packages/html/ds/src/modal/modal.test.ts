@@ -66,4 +66,10 @@ describe('modal', () => {
     // Modal Closed by modal overlay
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   });
+
+  it('should pass axe accessibility tests', async () => {
+    const screen = renderModal({html: htmlContent, triggerButton});
+
+    await screen.axe();
+  });
 });
