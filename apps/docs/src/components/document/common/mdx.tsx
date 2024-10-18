@@ -13,6 +13,7 @@ import {
   RadiosGroup,
   Card,
   Modal,
+  List,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -64,7 +65,6 @@ import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
-import { List } from '@/components/typography/list';
 
 export type MdxProps = {
   code: string;
