@@ -4,7 +4,7 @@ export type ListProps = {
   type?: 'bullet' | 'number' | 'normal';
 };
 
-const getListClass = ({ spaced, type }: Omit<ListProps, 'items' | 'link'>) => {
+const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
   const classes = [];
 
   switch (type) {

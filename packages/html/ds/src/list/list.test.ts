@@ -116,4 +116,24 @@ describe('govieList', () => {
     expect(listContainer.classList.contains('gi-list-spaced')).toBe(true);
     expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });
+
+  it('should pass axe accessibility tests', async () => {
+    const items = [
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+    ];
+    const screen = renderList({
+      items,
+      spaced: true,
+      type: TypeEnum.Number,
+    });
+
+    await screen.axe();
+  });
 });
