@@ -2,7 +2,7 @@ import * as zod from 'zod';
 import { linkSchema } from '../link/link.schema';
 
 export enum TypeEnum {
-  Normal = 'normal',
+  None = 'none',
   Bullet = 'bullet',
   Number = 'number',
 }

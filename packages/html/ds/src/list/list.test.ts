@@ -83,11 +83,11 @@ describe('govieList', () => {
     expect(listContainer.classList.contains('gi-list-bullet')).toBe(true);
   });
 
-  it('should have correct className when type is "normal"', () => {
+  it('should have correct className when type is "none"', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Normal,
+      type: TypeEnum.None,
     });
     const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list')).toBe(true);

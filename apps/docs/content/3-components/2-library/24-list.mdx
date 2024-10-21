@@ -69,9 +69,9 @@ The List component organises text and links in a simple vertical format, support
   </TabPanel>
   <TabPanel value="tab13">
     ```html
-    import { List } from '@govie-ds/list';
+    import { List, TypeEnum } from '@govie-ds/list';
 
-    <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
+    <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
     ```
 
   </TabPanel>
@@ -103,9 +103,9 @@ The List component organises text and links in a simple vertical format, support
   </TabPanel>
   <TabPanel value="tab13" key="tab13-0">
     ```html
-    import { List } from '@govie-ds/list';
+    import { List, TypeEnum } from '@govie-ds/list';
 
-    <List items={['Item 1', 'Item 2', 'Item 3']} type="number" />
+    <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Number} />
     ```
 
   </TabPanel>
@@ -200,7 +200,7 @@ The List component organises text and links in a simple vertical format, support
 
   <TabPanel value="tab43">        
     ```jsx
-    import { List } from '@govie-ds/list';
+    import { List, TypeEnum } from '@govie-ds/list';
     import { Link } from '@govie-ds/link';
 
     <List
@@ -210,7 +210,7 @@ The List component organises text and links in a simple vertical format, support
         <Link href="#">Link 3</Link>,
     ]}
     spaced
-    type="bullet"
+    type={TypeEnum.Bullet}
     />
 
 ```
@@ -221,7 +221,7 @@ The List component organises text and links in a simple vertical format, support
 ### When to use this component
 
 Use the List component when you need to display a series of related items, such as text or links, in an organized format.
-It's useful for lists where items can be plain text or link, and you can customize the list style with `type` options like bullet, number, or normal.
+It's useful for lists where items can be plain text or link, and you can customize the list style with `type` options like bullet, number, or none.
 If spacing between items is needed, the `spaced` option can be used.
 
 ### When not to use this component

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Link } from '../link/link.js';
-import { List } from './list.js';
+import { List, TypeEnum } from './list.js';
 
 const meta = {
   title: 'typography/List',
@@ -20,7 +20,7 @@ const meta = {
       defaultValue: ['Item 1', 'Item 2', 'Item 3'],
     },
     type: {
-      options: ['normal', 'bullet', 'number'],
+      options: [TypeEnum.None, TypeEnum.Bullet, TypeEnum.Number],
       control: { type: 'radio' },
       table: {
         defaultValue: { summary: 'normal' },
@@ -58,21 +58,21 @@ export const Links: Story = {
 
 export const Bullet: Story = {
   args: {
-    type: 'bullet',
+    type: TypeEnum.Bullet,
     items: ['apple', 'orange', 'pears'],
   },
 };
 
 export const Numbered: Story = {
   args: {
-    type: 'number',
+    type: TypeEnum.Number,
     items: ['Delivery address', 'Payment', 'Confirmation'],
   },
 };
 
 export const ExtraSpace: Story = {
   args: {
-    type: 'number',
+    type: TypeEnum.Number,
     spaced: true,
     items: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',
