@@ -1,5 +1,10 @@
 import * as zod from 'zod';
 
+export enum LinkSize {
+  SMALL = 'sm',
+  MEDIUM = 'md',
+}
+
 export const linkSchema = zod.object({
   href: zod.string({
     description: 'Hypertext reference',
@@ -31,7 +36,7 @@ export const linkSchema = zod.object({
     })
     .optional(),
   size: zod
-    .enum(['sm', 'md'], {
+    .nativeEnum(LinkSize, {
       description: 'Size of the link',
     })
     .optional(),

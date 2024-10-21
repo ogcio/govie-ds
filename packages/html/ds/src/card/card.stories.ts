@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ButtonVariant } from '../button/button-schema';
 import { IconId, IconSize } from '../icon/icon.schema';
+import { LinkSize } from '../link/link.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
 import { CardProps, CardType, InsetType } from './card.schema';
@@ -140,7 +141,7 @@ export const VerticalWithoutImage: Story = {
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: 'md',
+      size: LinkSize.MEDIUM,
       href: '#',
       label: 'Learn More',
     },
@@ -158,7 +159,7 @@ export const VerticalWithLink: Story = {
     tag: { text: 'Featured', type: 'info' },
     action: {
       type: 'link',
-      size: 'md',
+      size: LinkSize.MEDIUM,
       href: '#',
       label: 'View More',
     },
@@ -190,7 +191,7 @@ export const HorizontalWithoutImage: Story = {
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: 'md',
+      size: LinkSize.MEDIUM,
       href: '#',
       label: 'Learn More',
     },
