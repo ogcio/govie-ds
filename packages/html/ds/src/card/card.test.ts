@@ -114,7 +114,7 @@ describe('govieCard', () => {
     });
 
     const subTitleElement = screen.getByText('This is the subtitle');
-    expect(subTitleElement.tagName).toBe('H6');
+    expect(subTitleElement.tagName).toBe('P');
     expect(subTitleElement.classList.contains('gi-text-gray-500')).toBe(true);
   });
 
