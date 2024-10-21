@@ -126,7 +126,6 @@ export const Default: Story = {
 export const VerticalWithoutImage: Story = {
   args: {
     type: 'vertical',
-    href: '#',
     title: 'Vertical Card Without Image',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -142,7 +141,6 @@ export const VerticalWithoutImage: Story = {
 export const VerticalWithLink: Story = {
   args: {
     type: 'vertical',
-    href: '#',
     title: 'Vertical Card',
     img: 'https://placeholderjs.com/400x300',
     content:
@@ -163,7 +161,6 @@ export const VerticalWithLink: Story = {
 export const VerticalWithButton: Story = {
   args: {
     type: 'vertical',
-    href: '#',
     title: 'Vertical Card',
     img: 'https://placeholderjs.com/400x300',
     content:
@@ -180,7 +177,6 @@ export const Horizontal: Story = {
   args: {
     type: 'horizontal',
     title: 'Horizontal Card',
-    href: '#',
     img: 'https://placeholderjs.com/600x360',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -196,7 +192,6 @@ export const Horizontal: Story = {
 export const HorizontalWithoutImage: Story = {
   args: {
     type: 'horizontal',
-    href: '#',
     title: 'Horizontal Card Without Image',
     subTitle: 'Subtitle Here',
     content:
@@ -213,7 +208,6 @@ export const HorizontalWithoutImage: Story = {
 export const HorizontalWithIcon: Story = {
   args: {
     type: 'horizontal',
-    href: '#',
     icon: {
       icon: 'download',
       size: 'xl',

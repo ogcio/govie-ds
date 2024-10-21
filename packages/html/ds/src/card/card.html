@@ -70,14 +70,9 @@
             }}
           {% endif %}
           {% if props.subTitle %}
-            {{
-              govieHeading({
-                "tag": 'h6',
-                "text": props.subTitle,
-                "customClasses": 'gi-text-gray-500 !gi-font-normal !gi-my-0',
-                "size": '2xs'
-              })
-            }}
+            <p class="gi-text-sm gi-text-gray-500 !gi-font-normal !gi-my-0">
+              {{ props.subTitle }}
+            </p>
           {% endif %}
         </div>
         {% if props.tag and props.tag.text and props.tag.type %}

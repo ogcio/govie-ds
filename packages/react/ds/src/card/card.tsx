@@ -76,13 +76,12 @@ export const Card = (props: CardProps) => {
             >
               {href ? <Link href={href}>{title}</Link> : title}
             </Heading>
-            <Heading
-              as="h6"
-              size="2xs"
-              customClasses="gi-text-gray-500 !gi-font-normal !gi-my-0"
+            <Paragraph
+              size="sm"
+              className="gi-text-gray-500 !gi-font-normal !gi-my-0"
             >
               {subTitle}
-            </Heading>
+            </Paragraph>
           </div>
           {tag && tag.text && tag.type && (
             <div className="gi-card-tag">
