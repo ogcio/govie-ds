@@ -100,15 +100,15 @@
 
 /* Icon Button sizes */
 .gi-icon-btn-small {
-  @apply gi-p-2 gi-h-8 gi-w-8 gi-justify-center
+  @apply gi-p-2 gi-h-8 gi-w-8 gi-justify-center;
 }
 
 .gi-icon-btn-large {
-  @apply gi-p-3 gi-h-12 gi-w-12 gi-justify-center
+  @apply gi-p-3 gi-h-12 gi-w-12 gi-justify-center;
 }
 
 .gi-icon-btn-regular {
-  @apply gi-p-3 gi-h-10 gi-w-10 gi-justify-center
+  @apply gi-p-3 gi-h-10 gi-w-10 gi-justify-center;
 }
 /* Tag */
 
@@ -309,23 +309,23 @@ input[type='file' i] {
 /* Modal */
 
 .gi-modal {
-  @apply gi-bg-[rgba(37,37,38,0.4)]
+  @apply gi-bg-[rgba(37,37,38,0.4)];
 }
 
 .gi-modal-open {
-  @apply gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000
+  @apply gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
 }
 
 .gi-modal-close {
-  @apply gi-hidden
+  @apply gi-hidden;
 }
 
 .gi-modal-container {
-  @apply gi-p-8 gi-bg-white gi-absolute gi-left-2/4 gi-top-2/4 gi--translate-x-2/4 gi--translate-y-2/4
+  @apply gi-p-8 gi-bg-white gi-absolute gi-left-2/4 gi-top-2/4 gi--translate-x-2/4 gi--translate-y-2/4;
 }
 
 .gi-modal-icon {
-  @apply gi-cursor-pointer gi-absolute gi-right-2 gi-top-2
+  @apply gi-cursor-pointer gi-absolute gi-right-2 gi-top-2;
 }
 
 /* End Modal */
@@ -371,6 +371,16 @@ input[type='file' i] {
 
 .gi-card-paragraph {
   @apply gi-mb-4;
+}
+
+.gi-card-subheading {
+  @apply gi-text-gray-600 !gi-my-0;
+}
+
+.gi-card-paragraph p {
+  @apply gi-break-words;
+  /* Workaround solution */
+  word-break: break-word;
 }
 
 .gi-card-image {

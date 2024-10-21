@@ -4,6 +4,17 @@ import { iconSchema } from '../icon/icon.schema';
 import { linkSchema } from '../link/link.schema';
 import { tagSchema } from '../tag/tag.schema';
 
+export enum CardType {
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}
+
+export enum InsetType {
+  None = 'none',
+  Body = 'body',
+  Full = 'full',
+}
+
 const actionSchema = zod.union([
   buttonSchema.extend({
     type: zod.literal('button').describe('Type of action is a button'),
@@ -14,7 +25,7 @@ const actionSchema = zod.union([
 ]);
 
 export const cardSchema = zod.object({
-  type: zod.enum(['vertical', 'horizontal'], {
+  type: zod.nativeEnum(CardType, {
     description: 'Defines whether the card is vertical or horizontal',
   }),
   title: zod
@@ -38,7 +49,7 @@ export const cardSchema = zod.object({
     })
     .optional(),
   inset: zod
-    .enum(['body', 'full', 'none'], {
+    .nativeEnum(InsetType, {
       description: 'Defines where the content is inset',
     })
     .optional(),

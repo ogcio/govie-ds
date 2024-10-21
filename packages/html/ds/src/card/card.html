@@ -55,7 +55,7 @@
                 "tag": 'h5',
                 "text": govieLink({
                   "href": props.href,
-                  "label": props.title
+                  "label": props.title | truncate(60)
                 }),
                 "customClasses": titleClasses
               })
@@ -64,14 +64,14 @@
             {{
               govieHeading({
                 "tag": 'h5',
-                "text": props.title,
+                "text": props.title | truncate(60),
                 "customClasses": titleClasses
               })
             }}
           {% endif %}
           {% if props.subTitle %}
-            <p class="gi-text-sm gi-text-gray-600 !gi-font-normal !gi-my-0">
-              {{ props.subTitle }}
+            <p class="gi-text-sm gi-card-subheading">
+              {{ props.subTitle | truncate(60) }}
             </p>
           {% endif %}
         </div>
@@ -83,7 +83,7 @@
       </div>
 
       <div class="gi-card-paragraph">
-        <p class="gi-text-sm">{{ props.content | default('Card content') }}</p>
+        <p class="gi-text-sm">{{ props.content | truncate(120) }}</p>
       </div>
 
       {% if props.action %}

@@ -3,7 +3,7 @@ import { ButtonVariant } from '../button/button-schema';
 import { IconId, IconSize } from '../icon/icon.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
-import { CardProps } from './card.schema';
+import { CardProps, CardType, InsetType } from './card.schema';
 
 const path = import.meta.url.split('/card')[0];
 
@@ -106,8 +106,8 @@ export const Default: Story = {
     },
     inset: {
       control: 'select',
-      options: ['none', 'body', 'full'],
-      description: 'Defines where the content is inset (default is "body").',
+      options: Object.values(InsetType),
+      description: 'Defines where the content is inset.',
       table: {
         category: 'Layout',
         type: { summary: 'none | body | full' },
@@ -115,10 +115,10 @@ export const Default: Story = {
     },
   },
   args: {
-    type: 'horizontal',
+    type: CardType.Horizontal,
     title: 'Card Title',
     subTitle: 'Subheading',
-    inset: 'none',
+    inset: InsetType.None,
     img: 'https://placeholderjs.com/400x300',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -133,7 +133,7 @@ export const Default: Story = {
 
 export const VerticalWithoutImage: Story = {
   args: {
-    type: 'vertical',
+    type: CardType.Vertical,
     title: 'Vertical Card Without Image',
     subTitle: 'Subtitle Here',
     content:
@@ -149,7 +149,7 @@ export const VerticalWithoutImage: Story = {
 
 export const VerticalWithLink: Story = {
   args: {
-    type: 'vertical',
+    type: CardType.Vertical,
     title: 'Vertical Card',
     img: 'https://placeholderjs.com/400x300',
     subTitle: 'Subtitle Here',
@@ -167,7 +167,7 @@ export const VerticalWithLink: Story = {
 
 export const Horizontal: Story = {
   args: {
-    type: 'horizontal',
+    type: CardType.Horizontal,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
     img: 'https://placeholderjs.com/600x360',
@@ -183,7 +183,7 @@ export const Horizontal: Story = {
 
 export const HorizontalWithoutImage: Story = {
   args: {
-    type: 'horizontal',
+    type: CardType.Horizontal,
     title: 'Horizontal Card Without Image',
     subTitle: 'Subtitle Here',
     content:
@@ -199,7 +199,7 @@ export const HorizontalWithoutImage: Story = {
 
 export const HorizontalWithIcon: Story = {
   args: {
-    type: 'horizontal',
+    type: CardType.Horizontal,
     icon: {
       icon: IconId.Download,
       size: IconSize.ExtraLarge,

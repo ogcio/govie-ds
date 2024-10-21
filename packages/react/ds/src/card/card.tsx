@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
 import { Heading } from '../heading/heading.js';
@@ -23,86 +24,116 @@ export type CardProps = {
   action?: Action;
 };
 
-export const Card = (props: CardProps) => {
-  const {
-    type = 'vertical',
-    title,
-    inset,
-    subTitle,
-    img,
-    icon,
-    content,
-    action,
-    href,
-    tag,
-  } = props;
-
-  const getInsetClass = () => {
-    if (inset === 'body') {
-      return 'gi-card-inset-body';
-    } else if (inset === 'full') {
-      return 'gi-card-inset-full';
+// Memoized truncation utility
+const useTruncatedText = (text: string | undefined, maxLength: number) => {
+  return useMemo(() => {
+    if (!text) {
+      return '';
     }
-    return 'gi-card-inset-none';
-  };
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  }, [text, maxLength]);
+};
 
-  const layoutClasses = {
-    vertical: `gi-card gi-card-vertical ${getInsetClass()}`,
-    horizontal: `gi-card gi-card-horizontal ${getInsetClass()}`,
-  };
+const CONTENT_MAX_LENGTH = 120;
+const TITLE_MAX_LENGTH = 60;
 
-  return (
-    <div className={layoutClasses[type]}>
-      {img && !icon && (
+export const Card = ({
+  type = 'vertical',
+  title,
+  inset = 'none',
+  subTitle,
+  img,
+  icon,
+  content,
+  action,
+  href,
+  tag,
+}: CardProps) => {
+  const truncatedContent = useTruncatedText(content, CONTENT_MAX_LENGTH);
+  const truncatedTitle = useTruncatedText(title, TITLE_MAX_LENGTH);
+  const truncatedSubTitle = useTruncatedText(subTitle, TITLE_MAX_LENGTH);
+
+  const cardClasses = useMemo(() => {
+    const insetClass = `gi-card-inset-${inset}`;
+    return `gi-card gi-card-${type} ${insetClass}`;
+  }, [type, inset]);
+
+  const renderMedia = () => {
+    if (img && !icon) {
+      return (
         <div className="gi-card-image">
           <a href={href}>
             <img src={img} alt={title} />
           </a>
         </div>
-      )}
-      {icon && (
+      );
+    }
+
+    if (icon) {
+      return (
         <div className="gi-card-icon">
           <a href={href}>
             <Icon {...icon} />
           </a>
         </div>
-      )}
-      <div className={`gi-card-content ${getInsetClass()}`}>
+      );
+    }
+
+    return null;
+  };
+
+  const renderTitle = () => {
+    const titleContent = href ? (
+      <Link href={href}>{truncatedTitle}</Link>
+    ) : (
+      truncatedTitle
+    );
+
+    return (
+      <Heading
+        as="h5"
+        customClasses={`!gi-my-0 ${truncatedSubTitle ? '!gi-mb-2' : ''}`}
+      >
+        {titleContent}
+      </Heading>
+    );
+  };
+
+  const renderAction = (action: Action) => {
+    if (action.type === 'link') {
+      return <Link {...action}>{action.children}</Link>;
+    }
+    return <Button {...action}>{action.children}</Button>;
+  };
+
+  return (
+    <div className={cardClasses}>
+      {renderMedia()}
+      <div className={`gi-card-content gi-card-inset-${inset}`}>
         <div className="gi-card-header">
           <div className="gi-card-heading">
-            <Heading
-              as="h5"
-              customClasses={`!gi-my-0 ${subTitle ? '!gi-mb-2' : ''}`}
-            >
-              {href ? <Link href={href}>{title}</Link> : title}
-            </Heading>
-            <Paragraph
-              size="sm"
-              className="gi-text-gray-600 !gi-font-normal !gi-my-0"
-            >
-              {subTitle}
-            </Paragraph>
+            {renderTitle()}
+            {truncatedSubTitle && (
+              <Paragraph size="sm" className="gi-card-subheading">
+                {truncatedSubTitle}
+              </Paragraph>
+            )}
           </div>
-          {tag && tag.text && tag.type && (
+          {tag?.text && tag.type && (
             <div className="gi-card-tag">
               <Tag text={tag.text} type={tag.type} />
             </div>
           )}
         </div>
-        <div className="gi-card-paragraph">
-          <Paragraph size="sm">{content}</Paragraph>
-        </div>
-        <div className="gi-card-action">{action && renderAction(action)}</div>
+        {truncatedContent && (
+          <div className="gi-card-paragraph">
+            <Paragraph size="sm">{truncatedContent}</Paragraph>
+          </div>
+        )}
+        {action && <div className="gi-card-action">{renderAction(action)}</div>}
       </div>
     </div>
   );
-};
-
-const renderAction = (action: Action) => {
-  if (action.type === 'link') {
-    return <Link {...action}>{action.children}</Link>;
-  }
-  return <Button {...action}>{action.children}</Button>;
 };
 
 // Set the displayName for debugging purposes

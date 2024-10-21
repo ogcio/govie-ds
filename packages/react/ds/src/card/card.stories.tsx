@@ -90,7 +90,7 @@ const meta = {
     inset: {
       control: 'select',
       options: ['none', 'body', 'full'],
-      description: 'Defines where the content is inset (default is "body").',
+      description: 'Defines where the content is inset.',
       table: {
         category: 'Layout',
         type: { summary: 'none | body | full' },
