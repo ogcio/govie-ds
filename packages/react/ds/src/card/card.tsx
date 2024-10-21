@@ -78,7 +78,7 @@ export const Card = (props: CardProps) => {
             </Heading>
             <Paragraph
               size="sm"
-              className="gi-text-gray-500 !gi-font-normal !gi-my-0"
+              className="gi-text-gray-600 !gi-font-normal !gi-my-0"
             >
               {subTitle}
             </Paragraph>

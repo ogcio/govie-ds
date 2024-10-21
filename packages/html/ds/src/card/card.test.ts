@@ -115,7 +115,7 @@ describe('govieCard', () => {
 
     const subTitleElement = screen.getByText('This is the subtitle');
     expect(subTitleElement.tagName).toBe('P');
-    expect(subTitleElement.classList.contains('gi-text-gray-500')).toBe(true);
+    expect(subTitleElement.classList.contains('gi-text-gray-600')).toBe(true);
   });
 
   it('should render a tag if "tag" prop is provided', () => {
