@@ -176,7 +176,7 @@ export const Horizontal: Story = {
     action: {
       type: 'button',
       content: 'Click Me',
-      variant: ButtonVariant.Primary,
+      variant: ButtonVariant.Secondary,
     },
   },
 };
