@@ -389,7 +389,11 @@ input[type='file' i] {
 }
 
 .gi-cookie-banner-buttons {
-  @apply gi-flex gi-gap-4 gi-items-center
+  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row
+}
+
+.gi-cookie-banner-buttons button {
+  @apply gi-w-full gi-justify-center xs:gi-w-auto
 }
 
 /* End of Cookie Banner */
