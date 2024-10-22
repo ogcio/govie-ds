@@ -8,6 +8,7 @@ import {
   getByText,
   Matcher,
   MatcherOptions,
+  queryByText,
   SelectorMatcherOptions,
 } from '@testing-library/dom';
 import axe from 'axe-core';
@@ -69,6 +70,9 @@ export function render<TProps>({
       },
       getByTestId: (id: Matcher, options?: MatcherOptions) => {
         return getByTestId(div, id, options);
+      },
+      queryByText: (id: Matcher, options?: SelectorMatcherOptions) => {
+        return queryByText(div, id, options);
       },
       axe: async () => {
         const parser = new DOMParser();

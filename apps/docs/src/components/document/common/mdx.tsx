@@ -12,6 +12,7 @@ import {
   Tag,
   RadiosGroup,
   Card,
+  TextArea,
   Modal,
   List,
 } from '@govie-ds/react';
@@ -154,6 +155,7 @@ const documentComponents: MDXComponents = {
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
   RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
+  TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   List: (props) => <List {...props} />,
 };

@@ -9,36 +9,37 @@ import {
   Paragraph,
   PhaseBanner,
   RadiosGroup,
+  TextArea,
   Modal,
   Button,
-  List,
   TypeEnum,
+  List,
 } from "@govie-ds/react";
 
 export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        logo={{ href: "/" }}
-        tools={{ search: { action: "/search-page" } }}
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
         navLinks={[
           {
-            href: "#",
-            label: "News",
+            href: '#',
+            label: 'News',
           },
           {
-            href: "#",
-            label: "Departments",
+            href: '#',
+            label: 'Departments',
           },
           {
-            href: "#",
-            label: "Services",
+            href: '#',
+            label: 'Services',
           },
         ]}
         languages={[
           {
-            href: "#",
-            label: "Gaeilge",
+            href: '#',
+            label: 'Gaeilge',
           },
         ]}
       />
@@ -56,8 +57,8 @@ export default function Home() {
         <Icon icon="thumb_up" />
         <IconButton
           icon={{
-            icon: "send",
-            ariaLabel: "Send",
+            icon: 'send',
+            ariaLabel: 'Send',
           }}
         />
         <Paragraph>
@@ -74,27 +75,38 @@ export default function Home() {
         <hr />
         <RadiosGroup
           title={{
-            value: "Where do you live?",
+            value: 'Where do you live?',
             asHeading: {
-              size: "md",
-              as: "h2",
+              size: 'md',
+              as: 'h2',
             },
           }}
           items={[
             {
-              label: "England",
-              value: "england",
+              label: 'England',
+              value: 'england',
             },
             {
-              label: "Scotland",
-              value: "scotland",
+              label: 'Scotland',
+              value: 'scotland',
             },
             {
-              label: "Ireland",
-              value: "ireland",
+              label: 'Ireland',
+              value: 'ireland',
             },
           ]}
           fieldId="uniqueId"
+        />
+        <TextArea
+          hint={{
+            text: 'Hint: This is a helpful hint.',
+          }}
+          id="textarea-id"
+          maxChars={50}
+          label={{
+            text: 'Textarea text',
+            htmlFor: 'textarea-id',
+          }}
         />
 
         <span className="material-icons">face</span>
