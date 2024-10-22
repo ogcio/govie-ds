@@ -5,6 +5,7 @@ import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
+import { initTextarea } from './textarea/textarea.js';
 
 export * as properties from './dist/properties.js';
 
@@ -26,6 +27,7 @@ export function initGovIe() {
   initHeader();
   initCheckboxes();
   initRadios();
+  initTextarea();
   initModal();
   initCookieBanner();
 }

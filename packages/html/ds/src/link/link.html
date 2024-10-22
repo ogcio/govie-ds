@@ -4,21 +4,31 @@
       gi-link-no-underline
     {% endif %}
   {% endmacro %}
+
   {% macro getVisitedClass(noVisited) %}
     {% if noVisited %}
       visited:gi-text-blue-700
     {% endif %}
   {% endmacro %}
+
   {% macro getColorClass(noColor) %}
     {% if noColor %}
       gi-link-inherit
     {% endif %}
   {% endmacro %}
+
   {% macro getExternalAttribute(isExternal) %}
     {% if isExternal %}
       rel="noreferrer noopener" target="_blank"
     {% endif %}
   {% endmacro %}
+
+  {% macro getSizeClass(size) %}
+    {% if size %}
+      gi-link-{{ size }}
+    {% endif %}
+  {% endmacro %}
+
   <a
     href="{{ props.href }}"
     {{ getExternalAttribute(props.external) | trim }}
@@ -27,6 +37,7 @@
       {{ getColorClass(props.noColor) | trim }}
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited) | trim }}
+      {{ getSizeClass(props.size) | trim }}
     "
     >{{ props.label }}</a
   >

@@ -3,6 +3,7 @@ import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
+import { Textarea } from '../textarea/textarea';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -13,6 +14,7 @@ const componentRegistry = {
   Header,
   Checkboxes,
   Radio,
+  Textarea,
   Modal,
   CookieBanner,
   // TODO: additional component classes

@@ -10,9 +10,12 @@ import {
   Paragraph,
   PhaseBanner,
   RadiosGroup,
+  TextArea,
   Modal,
   Button,
   CookieBanner,
+  TypeEnum,
+  List,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -97,6 +100,17 @@ export default function Home() {
           ]}
           fieldId="uniqueId"
         />
+        <TextArea
+          hint={{
+            text: "Hint: This is a helpful hint.",
+          }}
+          id="textarea-id"
+          maxChars={50}
+          label={{
+            text: "Textarea text",
+            htmlFor: "textarea-id",
+          }}
+        />
 
         <span className="material-icons">face</span>
         <Modal triggerButton={<Button>Open Modal</Button>}>
@@ -113,7 +127,9 @@ export default function Home() {
             <Button>Primary action</Button>
           </div>
         </Modal>
+        <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
       </Container>
+
       <Footer />
     </div>
   );

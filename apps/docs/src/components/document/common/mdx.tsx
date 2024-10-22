@@ -12,8 +12,10 @@ import {
   Tag,
   RadiosGroup,
   Card,
+  TextArea,
   Modal,
   CookieBanner,
+  List,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -154,8 +156,10 @@ const documentComponents: MDXComponents = {
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
   RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
+  TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   CookieBanner: (props) => <CookieBanner {...props} />,
+  List: (props) => <List {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
