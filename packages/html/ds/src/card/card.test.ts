@@ -22,7 +22,7 @@ describe('govieCard', () => {
 
     expect(titleElement).toBeTruthy();
     expect(contentElement).toBeTruthy();
-    expect(titleElement.tagName).toBe('H5');
+    expect(titleElement.tagName).toBe('DIV');
     expect(contentElement.tagName).toBe('P');
   });
 
@@ -114,7 +114,7 @@ describe('govieCard', () => {
     });
 
     const subTitleElement = screen.getByText('This is the subtitle');
-    expect(subTitleElement.tagName).toBe('P');
+    expect(subTitleElement.tagName).toBe('DIV');
     expect(subTitleElement.classList.contains('gi-card-subheading')).toBe(true);
   });
 
