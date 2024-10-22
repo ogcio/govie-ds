@@ -4,7 +4,7 @@
 {% macro govieModal(props) %}
   {% set open = 'gi-modal-close' if props.triggerButton else 'gi-modal-open' %}
 
-  <div data-module="gieds-modal">
+  <div aria-label="modal" data-module="gieds-modal">
     {% if props.triggerButton %}
       <div
         data-testid="trigger-button-container"

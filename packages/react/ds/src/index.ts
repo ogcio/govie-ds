@@ -34,4 +34,5 @@ export * from './tag/tag.js';
 export * from './modal/modal.js';
 export * from './radio/radios-group.js';
 export * from './card/card.js';
+export * from './cookie-banner/cookie-banner.js';
 export * from './list/list.js';

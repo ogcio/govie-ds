@@ -36,6 +36,17 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.26.0](https://github.com/ogcio/govie-ds/compare/docs-v0.25.0...docs-v0.26.0) (2024-10-22)
+
+
+### Features
+
+* add `cookie banner` ([#296](https://github.com/ogcio/govie-ds/issues/296)) ([a100630](https://github.com/ogcio/govie-ds/commit/a100630fdae429b8fa9d4df63afa38665af06d66))
+* add `modal`, `iconButton`  components ([#290](https://github.com/ogcio/govie-ds/issues/290)) ([42efc3a](https://github.com/ogcio/govie-ds/commit/42efc3a226a1eac09a1765d2b16e13af51ef5dab))
+* add list ([#297](https://github.com/ogcio/govie-ds/issues/297)) ([192941f](https://github.com/ogcio/govie-ds/commit/192941fce9331cf6feb1936a988f182bd1eb0284))
+* maxChars prop for textarea ([#294](https://github.com/ogcio/govie-ds/issues/294)) ([0c69bf7](https://github.com/ogcio/govie-ds/commit/0c69bf7209bc2255b0e70daafab0bed78ab6d976))
+* update HTML and React Card component with Inset, Tag, Action and Subheading ([#293](https://github.com/ogcio/govie-ds/issues/293)) ([b82820d](https://github.com/ogcio/govie-ds/commit/b82820dfa7845940c750ea79e75d39913a1c5016))
+
 ## [0.25.0](https://github.com/ogcio/govie-ds/compare/docs-v0.24.0...docs-v0.25.0) (2024-10-16)
 
 

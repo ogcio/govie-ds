@@ -23,9 +23,11 @@ import {
   RadiosGroup,
   Card,
   Button,
+  CookieBanner,
   List,
   TypeEnum,
 } from "@govie-ds/react";
+import { CookieBannerProps } from "./props";
 
 export function App() {
   return (
@@ -54,6 +56,7 @@ export function App() {
           },
         ]}
       />
+      <CookieBanner {...CookieBannerProps} />
       <Container>
         <Heading>Design System </Heading>
         <Tabs id="tabs">

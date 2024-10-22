@@ -54,7 +54,13 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.closeIcon?.addEventListener('click', this.closeModalWithIcon);
   }
 
-  destroyComponent(): void {}
+  destroyComponent(): void {
+    if (this.triggerButtonContainer) {
+      this.triggerButtonContainer.removeEventListener('click', this.openModal);
+    }
+    this.modal.removeEventListener('click', this.closeModal);
+    this.closeIcon?.removeEventListener('click', this.closeModalWithIcon);
+  }
 }
 
 export const initModal = initialiseModule({
