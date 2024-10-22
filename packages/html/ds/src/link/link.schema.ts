@@ -1,5 +1,10 @@
 import * as zod from 'zod';
 
+export enum LinkSize {
+  SMALL = 'sm',
+  MEDIUM = 'md',
+}
+
 export const linkSchema = zod.object({
   href: zod.string({
     description: 'Hypertext reference',
@@ -28,6 +33,11 @@ export const linkSchema = zod.object({
   noColor: zod
     .boolean({
       description: 'To inherit color from parent.',
+    })
+    .optional(),
+  size: zod
+    .nativeEnum(LinkSize, {
+      description: 'Size of the link',
     })
     .optional(),
 });

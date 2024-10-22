@@ -49,10 +49,16 @@ export const Default: Story = {
       control: 'boolean',
       type: { name: 'boolean' },
     },
+    size: {
+      control: { type: 'select', options: ['sm', 'md'] },
+      description: 'Size of the link.',
+      type: { name: 'string', required: false },
+    },
   },
   args: {
     href: '#',
     label: 'Link',
+    size: 'md', // Default size can be set here, change to 'sm' if needed
   },
 };
 

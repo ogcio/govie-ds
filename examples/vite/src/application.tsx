@@ -101,16 +101,19 @@ export function App() {
             </PhaseBanner>
             <span className="material-icons">face</span>
             <Card
-              actions={[
-                {
-                  href: "#",
-                  text: "Link",
-                },
-              ]}
+              action={{
+                children: "Button",
+                type: "button",
+                variant: "secondary",
+              }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
-              href="#"
-              img="https://placeholderjs.com/300x180"
-              title="Vertical Card"
+              img="https://placeholderjs.com/400x300"
+              subTitle="Subheading"
+              tag={{
+                text: "New",
+                type: "info",
+              }}
+              title="Card Title"
               type="vertical"
             />
           </TabPanel>
