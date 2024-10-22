@@ -13,6 +13,7 @@ import {
   RadiosGroup,
   Card,
   Modal,
+  List,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -154,6 +155,7 @@ const documentComponents: MDXComponents = {
   RadiosGroup: (props) => <RadiosGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
+  List: (props) => <List {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
