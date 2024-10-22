@@ -425,3 +425,19 @@ input[type='file' i] {
 }
 
 /* End of Card */
+
+/* TextArea */
+
+.gi-textarea,
+.gi-textarea-error {
+  @apply focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-offset-0 focus:gi-shadow-[inset_0_0_0_2px] focus:gi-outline-yellow-400 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950;
+}
+
+.gi-textarea-error {
+  @apply gi-border-red-600;
+}
+
+.gi-textarea-remaining-chars {
+  @apply gi-mt-2;
+}
+/* TextArea */

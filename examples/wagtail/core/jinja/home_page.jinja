@@ -15,8 +15,9 @@
 {% from 'radio/radios-group.html' import govieRadiosGroup %}
 {% from 'modal/modal.html' import govieModal %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
+{% from 'list/list.html' import govieList %}
 
-{% from 'vars.jinja' import modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps %}
+{% from 'vars.jinja' import modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -143,6 +144,7 @@
     "error": {
       "content": "Error message for textarea"
     },
+    "maxChars": 30,
     "rows": 4,
     "cols": 100,
     "id": "textarea-id"
@@ -188,6 +190,9 @@
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>
   {{ govieFooter(footerProps) }}
+
+  <h2>List</h2>
+  {{ govieList(listProps) }}
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 

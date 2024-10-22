@@ -23,6 +23,8 @@ import {
   RadiosGroup,
   Card,
   Button,
+  List,
+  TypeEnum,
 } from "@govie-ds/react";
 
 export function App() {
@@ -138,6 +140,7 @@ export function App() {
                 text: "Hint: This is a helpful hint.",
               }}
               id="textarea-id"
+              maxChars={50}
               label={{
                 text: "Label",
                 htmlFor: "textarea-id",
@@ -212,6 +215,7 @@ export function App() {
             <Button>Primary action</Button>
           </div>
         </Modal>
+        <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
       </Container>
       <Footer />
     </>

@@ -2,11 +2,13 @@ import { renderMacro } from '@govie-ds/macro';
 import {
   ByRoleMatcher,
   ByRoleOptions,
+  getAllByRole,
   getByRole,
   getByTestId,
   getByText,
   Matcher,
   MatcherOptions,
+  queryByText,
   SelectorMatcherOptions,
 } from '@testing-library/dom';
 import axe from 'axe-core';
@@ -63,8 +65,14 @@ export function render<TProps>({
       getByRole: (role: ByRoleMatcher, options?: ByRoleOptions) => {
         return getByRole(div, role, options);
       },
+      getAllByRole: (role: ByRoleMatcher, options?: ByRoleOptions) => {
+        return getAllByRole(div, role, options);
+      },
       getByTestId: (id: Matcher, options?: MatcherOptions) => {
         return getByTestId(div, id, options);
+      },
+      queryByText: (id: Matcher, options?: SelectorMatcherOptions) => {
+        return queryByText(div, id, options);
       },
       axe: async () => {
         const parser = new DOMParser();
