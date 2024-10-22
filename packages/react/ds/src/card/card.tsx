@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
-import { Heading } from '../heading/heading.js';
 import { Icon, IconPropTypes } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -24,19 +23,6 @@ export type CardProps = {
   action?: Action;
 };
 
-// Memoized truncation utility
-const useTruncatedText = (text: string | undefined, maxLength: number) => {
-  return useMemo(() => {
-    if (!text) {
-      return '';
-    }
-    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-  }, [text, maxLength]);
-};
-
-const CONTENT_MAX_LENGTH = 120;
-const TITLE_MAX_LENGTH = 60;
-
 export const Card = ({
   type = 'vertical',
   title,
@@ -49,10 +35,6 @@ export const Card = ({
   href,
   tag,
 }: CardProps) => {
-  const truncatedContent = useTruncatedText(content, CONTENT_MAX_LENGTH);
-  const truncatedTitle = useTruncatedText(title, TITLE_MAX_LENGTH);
-  const truncatedSubTitle = useTruncatedText(subTitle, TITLE_MAX_LENGTH);
-
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset}`;
     return `gi-card gi-card-${type} ${insetClass}`;
@@ -83,19 +65,12 @@ export const Card = ({
   };
 
   const renderTitle = () => {
-    const titleContent = href ? (
-      <Link href={href}>{truncatedTitle}</Link>
-    ) : (
-      truncatedTitle
-    );
+    const titleContent = href ? <Link href={href}>{title}</Link> : title;
 
     return (
-      <Heading
-        as="h5"
-        customClasses={`!gi-my-0 ${truncatedSubTitle ? '!gi-mb-2' : ''}`}
-      >
+      <div className={`gi-card-title ${subTitle ? '!gi-mb-2' : ''}`}>
         {titleContent}
-      </Heading>
+      </div>
     );
   };
 
@@ -113,11 +88,7 @@ export const Card = ({
         <div className="gi-card-header">
           <div className="gi-card-heading">
             {renderTitle()}
-            {truncatedSubTitle && (
-              <Paragraph size="sm" className="gi-card-subheading">
-                {truncatedSubTitle}
-              </Paragraph>
-            )}
+            {subTitle && <div className="gi-card-subheading">{subTitle}</div>}
           </div>
           {tag?.text && tag.type && (
             <div className="gi-card-tag">
@@ -125,9 +96,9 @@ export const Card = ({
             </div>
           )}
         </div>
-        {truncatedContent && (
+        {content && (
           <div className="gi-card-paragraph">
-            <Paragraph size="sm">{truncatedContent}</Paragraph>
+            <Paragraph size="sm">{content}</Paragraph>
           </div>
         )}
         {action && <div className="gi-card-action">{renderAction(action)}</div>}

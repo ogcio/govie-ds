@@ -373,12 +373,16 @@ input[type='file' i] {
   @apply gi-mb-4;
 }
 
+.gi-card-title {
+  @apply gi-text-md gi-font-bold !gi-mb-2 gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
+}
+
 .gi-card-subheading {
-  @apply gi-text-gray-600 !gi-my-0;
+  @apply gi-text-gray-600 !gi-my-0 gi-text-sm gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
 }
 
 .gi-card-paragraph p {
-  @apply gi-break-words;
+  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
   /* Workaround solution */
   word-break: break-word;
 }

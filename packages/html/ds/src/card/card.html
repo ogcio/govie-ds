@@ -45,34 +45,26 @@
     <div class="gi-card-content {{ getInsetClass(props.inset) }}">
       <div class="gi-card-header">
         <div class="gi-card-heading">
-          {% set titleClasses = '!gi-my-0' %}
+          {% set titleClasses = 'gi-card-title' %}
           {% if props.subTitle %}
             {% set titleClasses = titleClasses ~ ' !gi-mb-2' %}
           {% endif %}
           {% if props.href %}
-            {{
-              govieHeading({
-                "tag": 'h5',
-                "text": govieLink({
+            <div class="{{ titleClasses }}">
+              {{
+                govieLink({
                   "href": props.href,
-                  "label": props.title | truncate(60)
-                }),
-                "customClasses": titleClasses
-              })
-            }}
+                  "label": props.title
+                })
+              }}
+            </div>
           {% else %}
-            {{
-              govieHeading({
-                "tag": 'h5',
-                "text": props.title | truncate(60),
-                "customClasses": titleClasses
-              })
-            }}
+            <div class="{{ titleClasses }}">{{ props.title }}</div>
           {% endif %}
           {% if props.subTitle %}
-            <p class="gi-text-sm gi-card-subheading">
-              {{ props.subTitle | truncate(60) }}
-            </p>
+            <div class="gi-text-sm gi-card-subheading">
+              {{ props.subTitle }}
+            </div>
           {% endif %}
         </div>
         {% if props.tag and props.tag.text and props.tag.type %}
@@ -83,7 +75,7 @@
       </div>
 
       <div class="gi-card-paragraph">
-        <p class="gi-text-sm">{{ props.content | truncate(120) }}</p>
+        <p class="gi-text-sm">{{ props.content }}</p>
       </div>
 
       {% if props.action %}
