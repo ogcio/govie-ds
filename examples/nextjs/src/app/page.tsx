@@ -12,7 +12,8 @@ import {
   TextArea,
   Modal,
   Button,
-} from '@govie-ds/react';
+  TypeEnum,
+} from "@govie-ds/react";
 
 export default function Home() {
   return (
@@ -122,7 +123,9 @@ export default function Home() {
             <Button>Primary action</Button>
           </div>
         </Modal>
+        <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
       </Container>
+
       <Footer />
     </div>
   );

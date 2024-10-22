@@ -2,6 +2,7 @@ import { renderMacro } from '@govie-ds/macro';
 import {
   ByRoleMatcher,
   ByRoleOptions,
+  getAllByRole,
   getByRole,
   getByTestId,
   getByText,
@@ -63,6 +64,9 @@ export function render<TProps>({
       },
       getByRole: (role: ByRoleMatcher, options?: ByRoleOptions) => {
         return getByRole(div, role, options);
+      },
+      getAllByRole: (role: ByRoleMatcher, options?: ByRoleOptions) => {
+        return getAllByRole(div, role, options);
       },
       getByTestId: (id: Matcher, options?: MatcherOptions) => {
         return getByTestId(div, id, options);
