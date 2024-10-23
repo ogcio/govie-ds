@@ -96,6 +96,11 @@ jobs:
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
 
+      - name: Upload Test results
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./packages/html/storybook/results/accessibility/accessibility-audit.html
+
       - name: Publish Global HTML Library to Chromatic
         uses: chromaui/action@latest
         with:
@@ -136,6 +141,11 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
+
+      - name: Upload Test results
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./packages/react/storybook/results/accessibility/accessibility-audit.html
 
       - name: Publish React Library to Chromatic
         uses: chromaui/action@latest
