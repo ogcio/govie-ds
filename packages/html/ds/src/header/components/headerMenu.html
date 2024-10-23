@@ -25,7 +25,9 @@
             href="{{ link.href }}"
             class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
           >
-            <span class="gi-font-bold gi-text-sm">{{ link.label }}</span>
+            <span class="gi-font-bold gi-text-sm gi-ml-1"
+              >{{ link.label }}</span
+            >
           </a>
         </li>
       {% endfor %}
@@ -35,7 +37,7 @@
             href="{{ link.href }}"
             class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
           >
-            <span class="gi-text-sm">{{ link.label }}</span>
+            <span class="gi-text-sm gi-ml-1">{{ link.label }}</span>
           </a>
         </li>
       {% endfor %}
