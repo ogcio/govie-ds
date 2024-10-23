@@ -226,7 +226,6 @@ input[type='text'] {
 
 /* Nav components focus state */
 .gi-header-tool-item,
-.gi-header-nav a,
 .gi-header-language-item,
 .gi-header-nav a {
   @apply gi-focus-state-outline gi-focus-within-state-outline
