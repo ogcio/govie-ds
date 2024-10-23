@@ -99,7 +99,7 @@ jobs:
       - name: Upload Test results
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./packages/html/storybook/results/accessibility/accessibility-audit.html
+          path: ./packages/html/storybook/results/
 
       - name: Publish Global HTML Library to Chromatic
         uses: chromaui/action@latest
@@ -145,7 +145,7 @@ jobs:
       - name: Upload Test results
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./packages/react/storybook/results/accessibility/accessibility-audit.html
+          path: ./packages/react/storybook/results/
 
       - name: Publish React Library to Chromatic
         uses: chromaui/action@latest
