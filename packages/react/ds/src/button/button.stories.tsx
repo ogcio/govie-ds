@@ -62,7 +62,7 @@ export const Default: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const WithIconLeft: Story = {
   args: {
     children: (
       <Fragment>
