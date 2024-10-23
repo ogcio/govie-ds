@@ -24,7 +24,7 @@ export type IconColor = 'default' | 'disabled';
 export type IconVariant = 'default' | 'outlined';
 
 export type IconPropTypes = {
-  icon: IconId;
+  icon: IconId | string;
   size?: IconSize;
   variant?: IconVariant;
   color?: IconColor;
