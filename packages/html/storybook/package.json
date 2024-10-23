@@ -23,8 +23,6 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
     "fs-extra": "^11.2.0",
     "glob": "^10.4.5",
     "nunjucks": "^3.2.4"
