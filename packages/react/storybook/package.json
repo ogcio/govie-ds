@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "test:local": "test-storybook",
+    "test:coverage": "test-storybook --coverage"
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
@@ -13,37 +15,22 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.6.1",
     "@fontsource/lato": "^5.0.21",
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/react": "workspace:*",
-    "@storybook/addon-a11y": "8.3.4",
-    "@storybook/addon-essentials": "8.3.4",
-    "@storybook/addon-interactions": "8.3.4",
-    "@storybook/addon-links": "8.3.4",
-    "@storybook/addon-onboarding": "8.3.4",
-    "@storybook/addon-viewport": "8.3.4",
-    "@storybook/blocks": "8.3.4",
-    "@storybook/react": "8.3.4",
-    "@storybook/react-vite": "8.3.4",
-    "@storybook/test": "8.3.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "chromatic": "^11.7.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "eslint-plugin-storybook": "^0.8.0",
-    "prettier": "^3.3.3",
-    "storybook": "8.3.4",
-    "tailwindcss": "^3.4.7",
-    "vite": "^5.3.6"
+    "prettier": "^3.3.3"
   },
   "peerDependencies": {
     "@babel/preset-env": "7.25.3"
