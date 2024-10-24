@@ -23,10 +23,10 @@
     "figma:build": "nx run @govie-ds/figma:build",
     "html:storybook": "nx run @govie-frontend/storybook:dev",
     "html:storybook:build": "nx run @govie-frontend/storybook:build",
-    "html:storybook:test:local": "nx run @govie-frontend/storybook:test:local",
+    "html:storybook:test": "nx run @govie-frontend/storybook:test",
     "react:storybook": "nx run @govie-react/storybook:dev",
     "react:storybook:build": "nx run @govie-react/storybook:build",
-    "react:storybook:test:local": "nx run @govie-react/storybook:test:local",
+    "react:storybook:test": "nx run @govie-react/storybook:test",
     "examples:vite": "nx run @govie-ds/examples-vite:dev",
     "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev"
   },

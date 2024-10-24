@@ -26,12 +26,7 @@ const config: TestRunnerConfig = {
         },
       },
       false,
-      'html',
-      {
-        outputDirPath: 'results',
-        outputDir: 'accessibility',
-        reportFileName: 'accessibility-audit.html',
-      },
+      'v2',
     );
   },
 };
