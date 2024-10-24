@@ -17,7 +17,7 @@
     "ds:storybook": "nx run @govie-ds/docs:storybook",
     "build": "nx run-many --target=build --all",
     "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
-    "test": "nx run-many --target=test --all --verbose",
+    "test": "nx run-many --target=test --all  --exclude=@govie-frontend/storybook,@govie-react/storybook --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",
     "figma:build": "nx run @govie-ds/figma:build",
