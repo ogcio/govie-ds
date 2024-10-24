@@ -136,6 +136,10 @@
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
 
+.gi-tag-counter {
+  @apply gi-bg-gray-950 gi-text-white;
+}
+
 /* End Tag */
 
 /* Header */

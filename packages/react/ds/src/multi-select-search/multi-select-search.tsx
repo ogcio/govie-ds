@@ -9,9 +9,9 @@ export const MultiSelectSearch = ({
   clearFilters,
 }: MultiSelectSearchProps) => {
   return (
-    <form className='gi-border-t' method={actionMethod} action={action}>
-      {dropdownItems.map(dropdown => (
-            <DropdownItem {...dropdown} />
+    <form className="gi-border-t" method={actionMethod} action={action}>
+      {dropdownItems.map((dropdown) => (
+        <DropdownItem {...dropdown} />
       ))}
       {clearFilters && clearFilters}
       {submitButton}

@@ -2,14 +2,12 @@ import { ButtonProps } from '../button/types.js';
 import { LinkProps } from '../link/link.js';
 
 export type DropdownItemType = {
+  label: string;
+  options: {
     label: string;
-   
-    
-    options: {
-        label: string;
-        value: string;
-    }[]
-    withSearch?: boolean;
+    value: string;
+  }[];
+  noSearch?: boolean;
 };
 
 export type MultiSelectSearchProps = {

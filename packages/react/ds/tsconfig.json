@@ -2,6 +2,6 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "lib": ["DOM", "ES2021"]
+    "lib": ["DOM", "ES2021", "DOM.Iterable"]
   }
 }
