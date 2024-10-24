@@ -3,22 +3,21 @@
 {%- macro tabListItem(props, item, index) %}
   {% set tabId = "tab-" + index|string -%}
   {% set tabLabelId = "tab-label-" + index|string -%}
-  <div className="tab-item">
-    <input
-      name="tabs"
-      type="radio"
-      id="{{ tabId }}"
-      aria-labelledby="{{ tabLabelId }}"
-      aria-roledescription="tab"
-      {%- if item.checked %}checked{% endif %}
-      class="gi-absolute gi-opacity-0"
-    />
-    <label
-      role="tab"
-      for="{{ tabId }}"
-      id="{{ tabLabelId }}"
-      aria-hidden="true"
-      class="gi-inline-block
+  <input
+    name="tabs"
+    type="radio"
+    id="{{ tabId }}"
+    aria-labelledby="{{ tabLabelId }}"
+    aria-roledescription="tab"
+    {%- if item.checked %}checked{% endif %}
+    class="tab-item gi-absolute gi-opacity-0"
+  />
+  <label
+    role="tab"
+    for="{{ tabId }}"
+    id="{{ tabLabelId }}"
+    aria-hidden="true"
+    class="gi-inline-block
           gi-cursor-pointer
           gi-px-5
           gi-py-2
@@ -29,15 +28,14 @@
           gi-text-md
           gi-underline
           gi-text-slate-300"
+  >
+    <a
+      {%- if item.href %}href="{{ item.href }}"{% endif %}
+      class="gi-decoration-xs"
     >
-      <a
-        {%- if item.href %}href="{{ item.href }}"{% endif %}
-        class="gi-decoration-xs"
-      >
-        {{ item.label }}
-      </a>
-    </label>
-  </div>
+      {{ item.label }}
+    </a>
+  </label>
 {% endmacro -%}
 
 {%- macro tabPanel(props, item, index) %}

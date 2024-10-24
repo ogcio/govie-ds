@@ -18,7 +18,7 @@ export function TabItem({
 }) {
   const valueSlug = slugify(value);
   return (
-    <div className="tab-item">
+    <>
       <input
         name={tabName}
         type="radio"
@@ -26,7 +26,7 @@ export function TabItem({
         aria-labelledby={`tab-label-${valueSlug}`}
         aria-roledescription="tab"
         defaultChecked={checked}
-        className="gi-absolute gi-opacity-0"
+        className="tab-item gi-absolute gi-opacity-0"
       />
       <label
         role="tab"
@@ -50,6 +50,6 @@ export function TabItem({
           {children}
         </a>
       </label>
-    </div>
+    </>
   );
 }
