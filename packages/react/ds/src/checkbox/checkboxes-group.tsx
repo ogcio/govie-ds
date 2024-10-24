@@ -12,7 +12,7 @@ type CheckboxesGroupType = {
     label?: string;
     hint?: string;
   }[];
-  title: {
+  title?: {
     value: string;
     asHeading?: {
       size: HeadingSize;
@@ -35,25 +35,27 @@ const CheckboxesGroup = ({
         <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
       )}
       <fieldset>
-        <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-          {title.asHeading ? (
-            <Heading
-              size={title.asHeading.size}
-              as={title.asHeading.tag}
-              customClasses="!gi-mb-[var(--gieds-space-2)]"
-            >
-              {title.value}
-            </Heading>
-          ) : (
-            title.value
-          )}
-          {title.hint && (
-            <HintText
-              text={title.hint}
-              className="!gi-mb-[var(--gieds-space-2)]"
-            />
-          )}
-        </legend>
+        {title && (
+          <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+            {title.asHeading ? (
+              <Heading
+                size={title.asHeading.size}
+                as={title.asHeading.tag}
+                customClasses="!gi-mb-[var(--gieds-space-2)]"
+              >
+                {title.value}
+              </Heading>
+            ) : (
+              title.value
+            )}
+            {title.hint && (
+              <HintText
+                text={title.hint}
+                className="!gi-mb-[var(--gieds-space-2)]"
+              />
+            )}
+          </legend>
+        )}
         <div className="gi-flex gi-flex-col gi-gap-2.5">
           {errorMessage && (
             <ErrorText text={errorMessage} className="gi-mb-0" />
