@@ -15,6 +15,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
+  className?: string;
   type?:
     | 'text'
     | 'date'
@@ -43,6 +44,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       error,
       id,
       type = 'text',
+      className,
       ...props
     },
     ref,
@@ -61,7 +63,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
 
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''} ${className && className}`}
       >
         {label?.text && (
           <Label
