@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    id: 'tab-story',
     children: '',
   },
   render: (arguments_) => {

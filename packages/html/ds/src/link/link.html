@@ -29,8 +29,15 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro getAriaLabel(props) %}
+    {% if props.ariaLabel %}
+      aria-label="{{ props.ariaLabel }}"
+    {% endif %}
+  {% endmacro %}
+
   <a
     href="{{ props.href }}"
+    {{ getAriaLabel(props) | trim }}
     {{ getExternalAttribute(props.external) | trim }}
     class="
       gi-link

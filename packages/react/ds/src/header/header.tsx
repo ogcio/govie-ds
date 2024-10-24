@@ -80,14 +80,22 @@ export function Header({
       <div id="MenuContainer" className={menuContainerClassNames}>
         {logo?.href ? (
           <>
-            <a href={logo.href} className={logoLargeClassNames}>
+            <a
+              href={logo.href}
+              className={logoLargeClassNames}
+              aria-label="Go to the home page"
+            >
               {logo.image ? (
                 <img className="gi-object-contain gi-h-12" src={logo.image} />
               ) : (
                 <GovieLogo />
               )}
             </a>
-            <a href={logo.href} className={logoSmallClassNames}>
+            <a
+              href={logo.href}
+              className={logoSmallClassNames}
+              aria-label="Go to the home page"
+            >
               {logo.image ? (
                 <img className="gi-object-contain gi-h-10" src={logo.image} />
               ) : (

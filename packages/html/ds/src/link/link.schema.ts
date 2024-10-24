@@ -14,6 +14,11 @@ export const linkSchema = zod.object({
     description: 'Label of link',
     required_error: 'label is required',
   }),
+  ariaLabel: zod
+    .string({
+      description: 'ARIA Label of link, default is label',
+    })
+    .optional(),
   noVisited: zod
     .boolean({
       description:
