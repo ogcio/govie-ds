@@ -205,41 +205,45 @@
 
 /* Tabs */
 
-.tab-item:checked + label {
+.tab-item {
+  @apply gi-inline;
+}
+
+.tab-item input:checked + label {
   @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline;
 }
 
-.tab-item:hover + label > * {
+.tab-item input:hover + label > * {
   @apply gi-decoration-lg;
 }
 
-.tab-item:focus + label > * {
+.tab-item input:focus + label > * {
   @apply gi-outline gi-outline-transparent gi-bg-yellow-400 gi-outline-2 gi-shadow gi-shadow-yellow-400;
 }
 
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(1):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(1) input:checked)
   [role='tabpanel']:nth-of-type(2),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(2):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(2) input:checked)
   [role='tabpanel']:nth-of-type(3),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(3):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(3) input:checked)
   [role='tabpanel']:nth-of-type(4),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(4):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(4) input:checked)
   [role='tabpanel']:nth-of-type(5),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(5):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(5) input:checked)
   [role='tabpanel']:nth-of-type(6),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(6):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(6) input:checked)
   [role='tabpanel']:nth-of-type(7),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(7):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(7) input:checked)
   [role='tabpanel']:nth-of-type(8),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(8):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(8) input:checked)
   [role='tabpanel']:nth-of-type(9),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(9):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(9) input:checked)
   [role='tabpanel']:nth-of-type(10),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(10):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(10) input:checked)
   [role='tabpanel']:nth-of-type(11),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(11):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(11) input:checked)
   [role='tabpanel']:nth-of-type(12),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(12):checked)
+div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(12) input:checked)
   [role='tabpanel']:nth-of-type(13) {
   display: block;
 }
