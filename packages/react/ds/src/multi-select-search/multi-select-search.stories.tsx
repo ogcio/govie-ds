@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button/button.js';
 import { MultiSelectSearch } from './multi-select-search.js';
 
 const meta = {
@@ -23,11 +22,11 @@ export const Default: Story = {
         label: 'Organisations',
         options: [
           {
-            label: ' An Bord Pleanála ',
+            label: 'An Bord Pleanála',
             value: '15431907-an-bord-pleanala',
           },
           {
-            label: ' An Garda Síochána ',
+            label: 'An Garda Síochána',
             value: 'an-garda-siochana',
           },
           {
@@ -39,11 +38,11 @@ export const Default: Story = {
             value: '7c2ea-capital-works-management-framework',
           },
           {
-            label: ' Carlow County Council ',
+            label: 'Carlow County Council',
             value: 'carlow-county-council',
           },
           {
-            label: ' Cavan County Council ',
+            label: 'Cavan County Council',
             value: 'cavan-county-council',
           },
           {
@@ -51,7 +50,7 @@ export const Default: Story = {
             value: '10032007-central-bank-of-ireland',
           },
           {
-            label: ' Central Statistics Office ',
+            label: 'Central Statistics Office',
             value: 'central-statistics-office',
           },
           {
@@ -59,11 +58,11 @@ export const Default: Story = {
             value: 'chief-state-solicitors-office',
           },
           {
-            label: ' Circulars ',
+            label: 'Circulars',
             value: '28448-circulars',
           },
           {
-            label: ' Civil Justice Review ',
+            label: 'Civil Justice Review',
             value: 'dff8b-civil-justice-review',
           },
           {
@@ -71,7 +70,7 @@ export const Default: Story = {
             value: '72752-civil-service-employee-assistance-service',
           },
           {
-            label: ' Clare County Council ',
+            label: 'Clare County Council',
             value: 'clare-county-council',
           },
           {
@@ -88,19 +87,19 @@ export const Default: Story = {
               '15341907-competition-and-consumer-protection-commission-ccpc',
           },
           {
-            label: ' Cork City Council ',
+            label: 'Cork City Council',
             value: 'cork-city-council',
           },
           {
-            label: ' Cork County Council ',
+            label: 'Cork County Council',
             value: 'cork-county-council',
           },
           {
-            label: ' Coroner ',
+            label: 'Coroner',
             value: 'da922-coroner',
           },
           {
-            label: ' Courts Service ',
+            label: 'Courts Service',
             value: 'the-courts-service',
           },
           {
@@ -126,11 +125,11 @@ export const Default: Story = {
               'department-of-children-equality-disability-integration-and-youth',
           },
           {
-            label: ' Department of Defence ',
+            label: 'Department of Defence',
             value: 'department-of-defence',
           },
           {
-            label: ' Department of Education ',
+            label: 'Department of Education',
             value: 'department-of-education',
           },
           {
@@ -138,7 +137,7 @@ export const Default: Story = {
             value: 'department-of-enterprise-trade-and-employment',
           },
           {
-            label: ' Department of Finance ',
+            label: 'Department of Finance',
             value: 'department-of-finance',
           },
           {
@@ -151,7 +150,7 @@ export const Default: Story = {
             value: 'department-of-higher-education-innovation-and-science',
           },
           {
-            label: ' Department of Health ',
+            label: 'Department of Health',
             value: 'department-of-health',
           },
           {
@@ -159,7 +158,7 @@ export const Default: Story = {
             value: 'department-of-housing-local-government-and-heritage',
           },
           {
-            label: ' Department of Justice ',
+            label: 'Department of Justice',
             value: 'department-of-justice',
           },
           {
@@ -189,7 +188,7 @@ export const Default: Story = {
               'department-of-tourism-culture-arts-gaeltacht-sport-and-media',
           },
           {
-            label: ' Department of Transport ',
+            label: 'Department of Transport',
             value: 'department-of-transport',
           },
           {
@@ -197,15 +196,15 @@ export const Default: Story = {
             value: '4e9b9-digital-hub-development-agency',
           },
           {
-            label: ' Digital postbox ',
+            label: 'Digital postbox',
             value: 'fc836-digital-postbox',
           },
           {
-            label: ' Donegal County Council ',
+            label: 'Donegal County Council',
             value: 'donegal-county-council',
           },
           {
-            label: ' Dublin City Council ',
+            label: 'Dublin City Council',
             value: 'dublin-city-council',
           },
           {
@@ -221,7 +220,7 @@ export const Default: Story = {
             value: '09082007-educational-research-centre-erc',
           },
           {
-            label: ' EGovernment Strategy ',
+            label: 'EGovernment Strategy',
             value: '021aa-egovernment-strategy',
           },
           {
@@ -229,7 +228,7 @@ export const Default: Story = {
             value: 'e6fbc-embassy-of-ireland-argentina',
           },
           {
-            label: ' Enterprise Ireland ',
+            label: 'Enterprise Ireland',
             value: '15331907-enterprise-ireland',
           },
           {
@@ -245,7 +244,7 @@ export const Default: Story = {
             value: '16481907-financial-services-and-pensions-ombudsman-fspo',
           },
           {
-            label: ' Fingal County Council ',
+            label: 'Fingal County Council',
             value: 'fingal-county-council',
           },
           {
@@ -253,15 +252,15 @@ export const Default: Story = {
             value: '07c21-forensic-science-ireland',
           },
           {
-            label: ' Freedom of Information ',
+            label: 'Freedom of Information',
             value: '57b45-freedom-of-information',
           },
           {
-            label: ' Galway City Council ',
+            label: 'Galway City Council',
             value: 'galway-city-council',
           },
           {
-            label: ' Galway County Council ',
+            label: 'Galway County Council',
             value: 'galway-county-council',
           },
           {
@@ -269,15 +268,15 @@ export const Default: Story = {
             value: 'dbd5e-gambling-regulatory-authority-of-ireland',
           },
           {
-            label: ' Garda Inspectorate ',
+            label: 'Garda Inspectorate',
             value: '04c91-garda-inspectorate',
           },
           {
-            label: ' Gender Equality ',
+            label: 'Gender Equality',
             value: 'f1304-gender-equality',
           },
           {
-            label: ' Gov.ie news ',
+            label: 'Gov.ie news',
             value: 'govie-news',
           },
           {
@@ -289,7 +288,7 @@ export const Default: Story = {
             value: '12361907-health-service-executive',
           },
           {
-            label: ' Healthy Ireland ',
+            label: 'Healthy Ireland',
             value: 'healthy-ireland-',
           },
           {
@@ -297,7 +296,7 @@ export const Default: Story = {
             value: '17191907-higher-education-authority',
           },
           {
-            label: ' IDA Ireland ',
+            label: 'IDA Ireland',
             value: '15301907-ida-ireland',
           },
           {
@@ -322,27 +321,27 @@ export const Default: Story = {
               '99896-irish-government-economic-and-evaluation-service-igees',
           },
           {
-            label: ' Irish Prison Service ',
+            label: 'Irish Prison Service',
             value: 'irish-prison-service',
           },
           {
-            label: ' Irish Treaty Series ',
+            label: 'Irish Treaty Series',
             value: '1bc60-irish-treaty-series',
           },
           {
-            label: ' Kerry County Council ',
+            label: 'Kerry County Council',
             value: 'kerry-county-council',
           },
           {
-            label: ' Kildare County Council ',
+            label: 'Kildare County Council',
             value: 'kildare-county-council',
           },
           {
-            label: ' Kilkenny County Council ',
+            label: 'Kilkenny County Council',
             value: 'kilkenny-county-council',
           },
           {
-            label: ' Laois County Council ',
+            label: 'Laois County Council',
             value: 'laois-county-council',
           },
           {
@@ -350,7 +349,7 @@ export const Default: Story = {
             value: '7a62c-legal-practitioners-disciplinary-tribunal',
           },
           {
-            label: ' Leitrim County Council ',
+            label: 'Leitrim County Council',
             value: 'leitrim-county-council',
           },
           {
@@ -362,23 +361,23 @@ export const Default: Story = {
             value: '15371907-local-government-management-agency-lgma',
           },
           {
-            label: ' Longford County Council ',
+            label: 'Longford County Council',
             value: 'longford-county-council',
           },
           {
-            label: ' Louth County Council ',
+            label: 'Louth County Council',
             value: 'louth-county-council',
           },
           {
-            label: ' Mayo County Council ',
+            label: 'Mayo County Council',
             value: 'mayo-county-council',
           },
           {
-            label: ' Meath County Council ',
+            label: 'Meath County Council',
             value: 'meath-county-council',
           },
           {
-            label: ' Monaghan County Council ',
+            label: 'Monaghan County Council',
             value: 'monaghan-county-council',
           },
           {
@@ -394,7 +393,7 @@ export const Default: Story = {
             value: '16411907-national-treasury-management-agency-ntma',
           },
           {
-            label: ' Offaly County Council ',
+            label: 'Offaly County Council',
             value: 'offaly-county-council',
           },
           {
@@ -406,7 +405,7 @@ export const Default: Story = {
             value: 'office-of-government-procurement',
           },
           {
-            label: ' Office of Public Works ',
+            label: 'Office of Public Works',
             value: 'office-of-public-works',
           },
           {
@@ -443,11 +442,11 @@ export const Default: Story = {
             value: '82e88-parliamentary-budget-office',
           },
           {
-            label: ' Parole Board ',
+            label: 'Parole Board',
             value: 'parole-board',
           },
           {
-            label: ' Pobal ',
+            label: 'Pobal',
             value: '15361907-pobal',
           },
           {
@@ -455,7 +454,7 @@ export const Default: Story = {
             value: 'presidents-establishment',
           },
           {
-            label: ' Probation Service ',
+            label: 'Probation Service',
             value: '25cc7-probation-service',
           },
           {
@@ -463,7 +462,7 @@ export const Default: Story = {
             value: 'public-appointments-service',
           },
           {
-            label: ' Public Consultations ',
+            label: 'Public Consultations',
             value: '2f69a-public-consultations',
           },
           {
@@ -483,15 +482,15 @@ export const Default: Story = {
             value: 'afaea-public-service-reform-plan',
           },
           {
-            label: ' Publicjobs ',
+            label: 'Publicjobs',
             value: 'aea02-publicjobs',
           },
           {
-            label: ' Roscommon County Council ',
+            label: 'Roscommon County Council',
             value: 'roscommon-county-council',
           },
           {
-            label: ' Safety on the Water ',
+            label: 'Safety on the Water',
             value: 'f6188-safety-on-the-water',
           },
           {
@@ -499,7 +498,7 @@ export const Default: Story = {
             value: 'e0a4f-single-public-service-pension-scheme',
           },
           {
-            label: ' Sligo County Council ',
+            label: 'Sligo County Council',
             value: 'sligo-county-council',
           },
           {
@@ -527,7 +526,7 @@ export const Default: Story = {
             value: 'eecd0-study-on-familicide-and-domestic-homicide-reviews',
           },
           {
-            label: ' Tailte Éireann ',
+            label: 'Tailte Éireann',
             value: '69ad4-tailte-eireann',
           },
           {
@@ -543,15 +542,15 @@ export const Default: Story = {
             value: '0f93b-the-future-of-media-commission',
           },
           {
-            label: ' The Housing Commission ',
+            label: 'The Housing Commission',
             value: 'c78a8-the-housing-commission',
           },
           {
-            label: ' The State Laboratory ',
+            label: 'The State Laboratory',
             value: '0cad3-state-laboratory',
           },
           {
-            label: ' Tipperary County Council ',
+            label: 'Tipperary County Council',
             value: 'tipperary-county-council',
           },
           {
@@ -563,15 +562,15 @@ export const Default: Story = {
             value: '14371907-western-development-commission-wdc',
           },
           {
-            label: ' Westmeath County Council ',
+            label: 'Westmeath County Council',
             value: 'westmeath-county-council',
           },
           {
-            label: ' Wexford County Council ',
+            label: 'Wexford County Council',
             value: 'wexford-county-council',
           },
           {
-            label: ' Wicklow County Council ',
+            label: 'Wicklow County Council',
             value: 'wicklow-county-council',
           },
         ],
@@ -580,96 +579,148 @@ export const Default: Story = {
         label: 'Categories',
         options: [
           {
-            label: ' Agencies ',
+            label: 'Agencies',
             value: 'agencies',
           },
           {
-            label: ' Aquaculture licences ',
+            label: 'Aquaculture licences',
             value: 'aquaculture_licence',
           },
           {
-            label: ' Biographies ',
+            label: 'Biographies',
             value: 'biographies',
           },
           {
-            label: ' Campaigns ',
+            label: 'Campaigns',
             value: 'campaigns',
           },
           {
-            label: ' Circulars ',
+            label: 'Circulars',
             value: 'circulars',
           },
           {
-            label: ' Collections ',
+            label: 'Collections',
             value: 'collections',
           },
           {
-            label: ' Consultations ',
+            label: 'Consultations',
             value: 'consultations',
           },
           {
-            label: ' Coroner cases ',
+            label: 'Coroner cases',
             value: 'coroner_cases',
           },
           {
-            label: ' Departments ',
+            label: 'Departments',
             value: 'departments',
           },
           {
-            label: ' Forms ',
+            label: 'Forms',
             value: 'forms',
           },
           {
-            label: ' IGEES Publications ',
+            label: 'IGEES Publications',
             value: 'igees_publication',
           },
           {
-            label: ' Local authorities ',
+            label: 'Local authorities',
             value: 'local_authorities',
           },
           {
-            label: ' News ',
+            label: 'News',
             value: 'news',
           },
           {
-            label: ' Organisation information ',
+            label: 'Organisation information',
             value: 'organisation_information',
           },
           {
-            label: ' Policies ',
+            label: 'Policies',
             value: 'policies',
           },
           {
-            label: ' Policy information ',
+            label: 'Policy information',
             value: 'policy_information',
           },
           {
-            label: ' Press releases ',
+            label: 'Press releases',
             value: 'press_releases',
           },
           {
-            label: ' Publications ',
+            label: 'Publications',
             value: 'general_publications',
           },
           {
-            label: ' Reports ',
+            label: 'Reports',
             value: 'reports',
           },
           {
-            label: ' Roles ',
+            label: 'Roles',
             value: 'roles',
           },
           {
-            label: ' Services ',
+            label: 'Services',
             value: 'services',
           },
           {
-            label: ' Speeches ',
+            label: 'Speeches',
             value: 'speeches',
           },
         ],
       },
+      {
+        label: 'Topic',
+        options: [
+          {
+            label: 'Brexit',
+            value: 'brexit',
+          },
+          {
+            label: 'Business and industry',
+            value: 'business-and-industry',
+          },
+          {
+            label: 'COVID-19',
+            value: 'covid-19',
+          },
+          {
+            label: 'Corporate information',
+            value: 'corporate-information',
+          },
+          {
+            label: 'Crime, justice and law',
+            value: 'crime-justice-and-law',
+          },
+          {
+            label: 'Defence and armed forces',
+            value: 'defence-and-armed-force',
+          },
+          {
+            label: 'Education, training and skills',
+            value: 'education-training-and-skills',
+          },
+          {
+            label: 'News',
+            value: 'news',
+          },
+          {
+            label: 'Organisation information',
+            value: 'organisation_information',
+          },
+          {
+            label: 'Policies',
+            value: 'policies',
+          },
+          {
+            label: 'Policy information',
+            value: 'policy_information',
+          },
+          {
+            label: 'Press releases',
+            value: 'press_releases',
+          },
+        ],
+      },
     ],
-    submitButton: <Button>Submit</Button>,
   },
 };

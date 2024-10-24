@@ -3,18 +3,15 @@ import { MultiSelectSearchProps } from './types.js';
 
 export const MultiSelectSearch = ({
   action,
-  actionMethod,
+  method,
   dropdownItems,
-  submitButton,
-  clearFilters,
+  id
 }: MultiSelectSearchProps) => {
   return (
-    <form className="gi-border-t" method={actionMethod} action={action}>
+    <form id={id} method={method} action={action}>
       {dropdownItems.map((dropdown) => (
         <DropdownItem {...dropdown} />
       ))}
-      {clearFilters && clearFilters}
-      {submitButton}
     </form>
   );
 };
