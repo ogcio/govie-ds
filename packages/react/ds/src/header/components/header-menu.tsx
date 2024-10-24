@@ -28,7 +28,7 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
-            className="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
+            className="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
           >
             <span className="gi-text-2md gi-font-bold">Close</span>
             <Icon icon={'close'} />
@@ -42,7 +42,9 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
             >
-              <span className="gi-text-sm gi-font-bold">{link.label}</span>
+              <span className="gi-text-sm gi-font-bold gi-ml-1">
+                {link.label}
+              </span>
             </a>
           </li>
         ))}
@@ -52,7 +54,7 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
               href={link.href}
               className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
             >
-              <span className="gi-text-sm">{link.label}</span>
+              <span className="gi-text-sm gi-ml-1">{link.label}</span>
             </a>
           </li>
         ))}
