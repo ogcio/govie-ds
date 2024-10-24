@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "node ./scripts/copy-macros.js && STORYBOOK_ENV=prod storybook build",
-    "test:local": "test-storybook",
-    "test:coverage": "test-storybook --coverage",
-    "test:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn test-storybook\""
+    "test": "pnpm build && npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook\""
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
