@@ -4,26 +4,26 @@ import { slugify } from '../utils.js';
 
 export type TabItemProps = {
   value: string;
-  index: number;
+  children: React.ReactNode;
   href?: string;
+  index?: number;
   checked?: boolean;
   ariaLabel?: string;
   ariaLabelledby?: string;
-  children: React.ReactNode;
-  onTabFocus: (event: React.FocusEvent<HTMLButtonElement, Element>) => void;
-  onTabClick: (index: number) => void;
-  onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onTabFocus?: (event: React.FocusEvent<HTMLButtonElement, Element>) => void;
+  onTabClick?: (index: number) => void;
+  onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 };
 
 export const TabItem = ({
   value,
   href,
-  index,
+  index = -1,
   checked = false,
   children,
-  onTabFocus,
-  onTabClick,
-  onTabKeyDown,
+  onTabFocus = () => {},
+  onTabClick = () => {},
+  onTabKeyDown = () => {},
 }: TabItemProps) => {
   const valueSlug = slugify(value);
 
