@@ -140,6 +140,10 @@
   @apply gi-bg-gray-950 gi-text-white;
 }
 
+.gi-tag-counter-warning {
+  @apply gi-bg-red-600 gi-text-white gi-rounded-full;
+}
+
 /* End Tag */
 
 /* Header */
@@ -490,7 +494,7 @@ input[type='file' i] {
   @apply gi-pl-3
 }
 .gi-combobox-search-icon {
-  @apply gi-absolute gi-right-5 gi-top-6 gi-z-100 gi-cursor-pointer
+  @apply gi-absolute gi-right-4 gi-top-5 gi-z-100 gi-cursor-pointer
 }
 .gi-combobox-checkbox-container {
   @apply gi-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2

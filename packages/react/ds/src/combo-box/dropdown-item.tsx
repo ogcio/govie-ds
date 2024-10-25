@@ -24,7 +24,6 @@ export const DropdownItem = ({
   useEffect(() => {
     let hiddenCheckboxes = 0;
     if (checkboxesRef.current) {
-      // apply the css global checkbox components and use it below
       const checkboxes = (
         checkboxesRef.current as HTMLElement
       ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
@@ -48,7 +47,6 @@ export const DropdownItem = ({
   const handleCheckbox = () => {
     let selectedCheckbox = 0;
     if (checkboxesRef.current) {
-      // apply the css global checkbox components and use it below
       const checkboxes = (
         checkboxesRef.current as HTMLElement
       ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
@@ -98,10 +96,15 @@ export const DropdownItem = ({
               onChange={(event) => setSearchInput(event.target.value)}
             />
             {searchInput && (
-              <Icon
+              <IconButton
+                variant='flat'
+                appearance='dark'
+                size='small'
                 className="gi-combobox-search-icon"
                 onClick={() => setSearchInput('')}
-                icon="close"
+                icon={{
+                  icon: 'close'
+                }}
               />
             )}
           </div>
@@ -113,8 +116,9 @@ export const DropdownItem = ({
               No results found.
             </Paragraph>
           )}
-          {options.map((checkbox) => (
+          {options.map((checkbox,index) => (
             <Checkbox
+              key={index}
               onChange={handleCheckbox}
               dataElement={checkbox.label}
               checkboxId={checkbox.label}

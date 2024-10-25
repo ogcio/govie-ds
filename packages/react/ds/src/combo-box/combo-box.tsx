@@ -9,8 +9,8 @@ export const Combobox = ({
 }: ComboboxProps) => {
   return (
     <form id={id} method={method} action={action}>
-      {dropdownItems.map((dropdown) => (
-        <DropdownItem {...dropdown} />
+      {dropdownItems.map((dropdown,index) => (
+        <DropdownItem key={index} {...dropdown} />
       ))}
     </form>
   );
