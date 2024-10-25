@@ -23,9 +23,7 @@ class TabsAutomatic {
     ] as HTMLInputElement[];
     this.tabPanels = [];
 
-    for (let index = 0; index < this.tabs.length; index += 1) {
-      const tab = this.tabs[index];
-
+    for (const tab of this.tabs) {
       if (!this.firstTab) {
         this.firstTab = tab;
       }
@@ -75,7 +73,6 @@ class TabsAutomatic {
     for (let index = 0; index < this.tabs.length; index += 1) {
       const tab = this.tabs[index];
       if (currentTab === tab) {
-        console.log(tab);
         tab.setAttribute('aria-selected', 'true');
         tab.removeAttribute('tabindex');
         tab.classList.add('gi-tab-item-checked');
@@ -155,7 +152,6 @@ class TabsAutomatic {
   }
 
   onClick(event: Event) {
-    console.log(event);
     this.setSelectedTab(event.currentTarget as HTMLInputElement);
   }
 }
@@ -175,7 +171,6 @@ export class Tabs extends BaseComponent<TabsOptions> {
   }
 
   initComponent() {
-    console.log(this.tabsAutomatedList.length);
     for (const tabsAutomated of this.tabsAutomatedList) {
       tabsAutomated.attachListeners();
     }
