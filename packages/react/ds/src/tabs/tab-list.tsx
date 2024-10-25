@@ -5,8 +5,8 @@ export const TabList = ({
   children,
   tabName,
 }: {
-  tabName: string;
-  children: React.ReactElement;
+  tabName?: string;
+  children: React.ReactNode;
 }) => {
   const [activeTab, setActiveTab] = useState(0);
   const tabCount = React.Children.count(children);
