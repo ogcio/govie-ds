@@ -59,7 +59,7 @@ export function App() {
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <Heading>Design System </Heading>
-        <Tabs id="tabs">
+        <Tabs id="tabs" ariaLabelledBy="">
           <TabList>
             <TabItem value="tab1" checked>
               Typography
