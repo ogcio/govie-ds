@@ -15,6 +15,7 @@ type CheckboxType = {
   label?: string;
   hint?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
 };
 
 const Checkbox = ({
@@ -24,11 +25,13 @@ const Checkbox = ({
   size = CheckboxSizeEnum.Medium,
   label,
   hint,
-  onChange
+  onChange,
+  className,
 }: CheckboxType) => {
   return (
-    <div className="gi-flex gi-items-start">
+    <div className={`gi-flex gi-items-center ${className && className}`}>
       <input
+        name={label}
         onChange={onChange}
         data-element={dataElement}
         id={checkboxId}

@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
 import Checkbox from '../checkbox/checkbox.js';
-import CheckboxesGroup from '../checkbox/checkboxes-group.js';
 import { Icon } from '../icon/icon.js';
+import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagType } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
@@ -21,14 +21,13 @@ export const DropdownItem = ({
   const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
   const checkboxesRef = useRef(null);
 
-  console.log(selectedCheckboxes);
   useEffect(() => {
     let hiddenCheckboxes = 0;
     if (checkboxesRef.current) {
       // apply the css global checkbox components and use it below
       const checkboxes = (
         checkboxesRef.current as HTMLElement
-      ).querySelectorAll<HTMLElement>('.gi-items-start');
+      ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
       for (const checkbox of checkboxes) {
         const label = checkbox.querySelector('label')?.textContent;
 
@@ -52,13 +51,19 @@ export const DropdownItem = ({
       // apply the css global checkbox components and use it below
       const checkboxes = (
         checkboxesRef.current as HTMLElement
-      ).querySelectorAll<HTMLElement>('.gi-items-start');
+      ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
 
       for (const checkbox of checkboxes) {
         const input = checkbox.querySelector('input');
+        const label = checkbox.querySelector('label');
 
         if (input?.checked) {
+          checkbox.classList.add('hover:gi-bg-gray-50');
+          label?.classList.add('gi-font-bold');
           selectedCheckbox++;
+        } else {
+          checkbox.classList.remove('hover:gi-bg-gray-50');
+          label?.classList.remove('gi-font-bold');
         }
       }
       setSelectedCheckboxes(selectedCheckbox);
@@ -67,12 +72,9 @@ export const DropdownItem = ({
 
   return (
     <div>
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer"
-      >
-        <div className="gi-flex">
-          <Paragraph size="sm">{label}</Paragraph>
+      <div onClick={() => setIsOpen(!isOpen)} className="gi-combobox-toggle">
+        <div className="gi-combobox-toggle-content">
+          <Paragraph size="md">{label}</Paragraph>
           {selectedCheckboxes !== 0 && (
             <Tag type={TagType.counter} text={selectedCheckboxes.toString()} />
           )}
@@ -85,28 +87,31 @@ export const DropdownItem = ({
       </div>
 
       <div
-        className={`gi-bg-gray-50 gi-py-4 gi-px-3 gi-relative ${isOpen ? 'gi-block' : 'gi-hidden'}`}
+        className={`${isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}`}
       >
         {!noSearch && (
-          <>
+          <div className='gi-combobox-search'>
             <TextInput
-              className="gi-pt-0 gi-pb-0"
+              placeholder="Search"
+              className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => setSearchInput(event.target.value)}
             />
             {searchInput && (
               <Icon
-                className="gi-absolute gi-right-6 gi-top-8 gi-z-100"
+                className="gi-combobox-search-icon"
                 onClick={() => setSearchInput('')}
                 icon="close"
               />
             )}
-          </>
+          </div>
         )}
 
-        <div className="gi-h-64 gi-overflow-scroll" ref={checkboxesRef}>
+        <div className="gi-combobox-checkbox-container" ref={checkboxesRef}>
           {noResults && (
-            <Paragraph className="!gi-text-center">No results found.</Paragraph>
+            <Paragraph className="gi-combobox-checkbox-paragraph">
+              No results found.
+            </Paragraph>
           )}
           {options.map((checkbox) => (
             <Checkbox
@@ -116,6 +121,7 @@ export const DropdownItem = ({
               size={CheckboxSizeEnum.Small}
               label={checkbox.label}
               value={checkbox.value}
+              className="gi-combobox-checkbox"
             />
           ))}
         </div>

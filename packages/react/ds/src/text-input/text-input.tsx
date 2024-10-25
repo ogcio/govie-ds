@@ -16,6 +16,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   hint?: HintTextProps;
   label?: LabelProps;
   className?: string;
+  placeholder?: string;
   type?:
     | 'text'
     | 'date'
@@ -45,6 +46,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       id,
       type = 'text',
       className,
+      placeholder,
       ...props
     },
     ref,
@@ -85,6 +87,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             </div>
           )}
           <input
+            placeholder={placeholder}
             id={id}
             type={type}
             style={widthStyle}

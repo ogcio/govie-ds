@@ -461,3 +461,46 @@ input[type='file' i] {
   @apply gi-mt-2;
 }
 /* TextArea */
+
+/* ComboBox */
+
+
+
+/* End of ComboBox */
+
+.gi-combobox-toggle {
+  @apply hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer
+}
+.gi-combobox-toggle-content {
+  @apply gi-flex gi-gap-2
+}
+.gi-combobox-toggle-content > p {
+  @apply gi-mb-0
+}
+.gi-combobox-dropdown-container-open {
+  @apply gi-bg-gray-50 gi-relative gi-block
+}
+.gi-combobox-search {
+  @apply gi-py-4 gi-px-3
+}
+.gi-combobox-search-input {
+  @apply gi-pt-0 gi-pb-0 gi-mb-0
+}
+.gi-combobox-search-input input {
+  @apply gi-pl-3
+}
+.gi-combobox-search-icon {
+  @apply gi-absolute gi-right-5 gi-top-6 gi-z-100 gi-cursor-pointer
+}
+.gi-combobox-checkbox-container {
+  @apply gi-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2
+}
+.gi-combobox-checkbox-paragraph {
+  @apply gi-text-center gi-w-full !gi-max-w-none
+}
+.gi-combobox-checkbox {
+  @apply gi-px-3 hover:gi-bg-gray-200
+}
+.gi-combobox-checkbox label {
+  @apply gi-w-full gi-py-2
+}

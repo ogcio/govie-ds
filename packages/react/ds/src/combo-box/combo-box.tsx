@@ -1,12 +1,12 @@
 import { DropdownItem } from './dropdown-item.js';
-import { MultiSelectSearchProps } from './types.js';
+import { ComboboxProps } from './types.js';
 
-export const MultiSelectSearch = ({
+export const Combobox = ({
   action,
   method,
   dropdownItems,
   id
-}: MultiSelectSearchProps) => {
+}: ComboboxProps) => {
   return (
     <form id={id} method={method} action={action}>
       {dropdownItems.map((dropdown) => (
@@ -16,4 +16,4 @@ export const MultiSelectSearch = ({
   );
 };
 
-export default MultiSelectSearch;
+export default Combobox;
