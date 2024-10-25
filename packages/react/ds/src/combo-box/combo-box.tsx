@@ -5,11 +5,11 @@ export const Combobox = ({
   action,
   method,
   dropdownItems,
-  id
+  id,
 }: ComboboxProps) => {
   return (
     <form id={id} method={method} action={action}>
-      {dropdownItems.map((dropdown,index) => (
+      {dropdownItems.map((dropdown, index) => (
         <DropdownItem key={index} {...dropdown} />
       ))}
     </form>

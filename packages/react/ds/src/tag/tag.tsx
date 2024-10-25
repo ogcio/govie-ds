@@ -5,7 +5,7 @@ export enum TagType {
   warning = 'warning',
   error = 'error',
   counter = 'counter',
-  counterWarning = 'counterWarning'
+  counterWarning = 'counterWarning',
 }
 
 export type TagProps = {
@@ -20,7 +20,7 @@ const tagClass = {
   [TagType.warning]: 'gi-tag-warning',
   [TagType.error]: 'gi-tag-error',
   [TagType.counter]: 'gi-tag-counter',
-  [TagType.counterWarning]: 'gi-tag-counter-warning '
+  [TagType.counterWarning]: 'gi-tag-counter-warning ',
 };
 
 export const Tag = ({ text, type = TagType.default }: TagProps) => {

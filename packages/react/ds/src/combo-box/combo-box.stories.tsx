@@ -27,23 +27,22 @@ export const Default: Story = {
         'The URL or function ( Server Actions ) for which the combobox is being submitted to',
       table: {
         category: 'Combobox',
-        
-      }  
+      },
     },
     method: {
       control: 'select',
       options: ['get', 'post'],
       description: 'The type of request for the submission',
       table: {
-        category: 'Combobox'
-      }
+        category: 'Combobox',
+      },
     },
     id: {
       control: 'text',
       description: 'The id of the combobox',
       table: {
-        category: 'Combobox'
-      }
+        category: 'Combobox',
+      },
     },
     dropdownItems: {
       control: 'object',
@@ -51,8 +50,9 @@ export const Default: Story = {
       table: {
         category: 'Combobox',
         type: {
-          detail: 'label: string;\nnoSearch: boolean;\noptions: {\n label: string; \n value: string; \n}[]',
-        }
+          detail:
+            'label: string;\nnoSearch: boolean;\noptions: {\n label: string; \n value: string; \n}[]',
+        },
       },
       type: {
         name: 'object',

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonVariant } from '../button/types.js';
 import { Card } from './card.js';
 
 const meta = {

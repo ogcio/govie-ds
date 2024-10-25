@@ -15,8 +15,8 @@ export type IconId =
   | 'menu'
   | 'home'
   | 'logout'
-  | 'download' 
-  | 'keyboard_arrow_down'
+  | 'download'
+  | 'keyboard_arrow_down';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 

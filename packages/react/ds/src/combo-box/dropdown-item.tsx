@@ -88,7 +88,7 @@ export const DropdownItem = ({
         className={`${isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}`}
       >
         {!noSearch && (
-          <div className='gi-combobox-search'>
+          <div className="gi-combobox-search">
             <TextInput
               placeholder="Search"
               className="gi-combobox-search-input"
@@ -97,13 +97,13 @@ export const DropdownItem = ({
             />
             {searchInput && (
               <IconButton
-                variant='flat'
-                appearance='dark'
-                size='small'
+                variant="flat"
+                appearance="dark"
+                size="small"
                 className="gi-combobox-search-icon"
                 onClick={() => setSearchInput('')}
                 icon={{
-                  icon: 'close'
+                  icon: 'close',
                 }}
               />
             )}
@@ -116,7 +116,7 @@ export const DropdownItem = ({
               No results found.
             </Paragraph>
           )}
-          {options.map((checkbox,index) => (
+          {options.map((checkbox, index) => (
             <Checkbox
               key={index}
               onChange={handleCheckbox}

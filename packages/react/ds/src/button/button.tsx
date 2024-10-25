@@ -15,7 +15,7 @@ export const Button = ({
   onClick,
   type,
   form,
-  value
+  value,
 }: ButtonProps) => {
   return (
     <button
