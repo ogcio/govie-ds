@@ -1,13 +1,13 @@
 import React from 'react';
+import { generateRandomId } from '../utils.js';
 
 export function Tabs({
-  id,
-  ariaLabel,
+  id = generateRandomId(),
+  ariaLabelledBy,
   children,
 }: {
-  id: string;
-  ariaLabel?: string;
-  ariaLabelledby?: string;
+  id?: string;
+  ariaLabelledBy: string;
   children: React.ReactNode;
 }) {
   const childrenWithName = React.Children.map(children, (element) => {
@@ -17,7 +17,7 @@ export function Tabs({
     return element;
   });
   return (
-    <div aria-label={ariaLabel} className="gi-tabs gi-flex gi-flex-wrap">
+    <div aria-labelledby={ariaLabelledBy} className="gi-tabs" id={id}>
       {childrenWithName}
     </div>
   );
