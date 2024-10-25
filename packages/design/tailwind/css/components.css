@@ -205,43 +205,28 @@
 
 /* Tabs */
 
-.tab-item:checked + label {
+.gi-tabs {
+  @apply gi-flex gi-flex-wrap;
+}
+
+.gi-tab-item {
+  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md gi-underline gi-text-gray-950;
+}
+
+.gi-tab-item-checked {
   @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline;
 }
 
-.tab-item:hover + label > * {
+.gi-tab-item:hover > * {
   @apply gi-decoration-lg;
 }
 
-.tab-item:focus + label > * {
+.gi-tab-item:focus > * {
   @apply gi-outline gi-outline-transparent gi-bg-yellow-400 gi-outline-2 gi-shadow gi-shadow-yellow-400;
 }
 
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(1):checked)
-  [role='tabpanel']:nth-of-type(2),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(2):checked)
-  [role='tabpanel']:nth-of-type(3),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(3):checked)
-  [role='tabpanel']:nth-of-type(4),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(4):checked)
-  [role='tabpanel']:nth-of-type(5),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(5):checked)
-  [role='tabpanel']:nth-of-type(6),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(6):checked)
-  [role='tabpanel']:nth-of-type(7),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(7):checked)
-  [role='tabpanel']:nth-of-type(8),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(8):checked)
-  [role='tabpanel']:nth-of-type(9),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(9):checked)
-  [role='tabpanel']:nth-of-type(10),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(10):checked)
-  [role='tabpanel']:nth-of-type(11),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(11):checked)
-  [role='tabpanel']:nth-of-type(12),
-div.gi-tabs:has([role='tablist'] .tab-item:nth-of-type(12):checked)
-  [role='tabpanel']:nth-of-type(13) {
-  display: block;
+.gi-tab-panel {
+  @apply gi-hidden gi-basis-full gi-border-xs gi-border-solid gi-border-gray-200 gi-bg-white gi-p-4;
 }
 
 /* End Tabs */

@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    ariaLabel: 'aria label',
+    ariaLabelledBy: 'tab-label-id',
     items: [
       {
         label: 'Tab 1',

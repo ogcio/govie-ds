@@ -2,10 +2,9 @@
   {% from 'tabs/helpers.html' import tabListItem, tabPanel %}
 
   <div
-    {% if props.ariaLabel %}
-      aria-label="{{ props.ariaLabel }}"
-    {% endif %}
-    class="gi-tabs gi-flex gi-flex-wrap"
+    class="gi-tabs"
+    data-module="gieds-tabs"
+    aria-labelledby="{{ props.ariaLabelledBy }}"
   >
     {% if props['items'] | length %}
       <div role="tablist" class="gi--mb-[1px]">
