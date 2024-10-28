@@ -29,7 +29,9 @@
   {# Generate a unique or provided ID for the input field #}
   {% set inputId = props.id or 'input-id' %}
 
-  <div class="gi-pt-2 gi-mb-4 {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}">
+  <div
+    class="gi-pt-2 gi-mb-4 {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}"
+  >
     {% if props.label %}
       {{
         govieLabel({
