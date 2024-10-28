@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Typography/HintText Default smoke-test 1`] = `
-<div>
-  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 ">
-    This is hint text
-  </p>
-</div>
-`;

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Typography/Tag Default smoke-test 1`] = `
-<div>
-  <strong class="gi-tag gi-tag-info">
-    Completed
-  </strong>
-</div>
-`;

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Typography/Blockquote Default smoke-test 1`] = `
-<div>
-  <blockquote class="gi-my-6 gi-p-4 gi-border-l-2xl gi-border-gray-400 gi-text-sm md:gi-text-md">
-    It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.
-  </blockquote>
-</div>
-`;

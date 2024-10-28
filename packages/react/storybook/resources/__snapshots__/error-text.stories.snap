@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Form/ErrorText Default smoke-test 1`] = `
-<div class="gi-text-md  gi-mb-3 gi-font-bold gi-text-red-600 ">
-  Error
-</div>
-`;
