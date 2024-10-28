@@ -48,7 +48,7 @@ export const decorators = [
     }, []);
     const { args, parameters } = context;
     const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-    if (isProd) {
+    if (isProd && parameters.macro) {
       parameters.macro.path = './macros';
     }
 
