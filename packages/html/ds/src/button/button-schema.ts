@@ -63,7 +63,7 @@ export const buttonSchema = zod.object({
     .optional(),
   value: zod.string({
     description: 'The value for the button sent in the request',
-  }),
+  }).optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;

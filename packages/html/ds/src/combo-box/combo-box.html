@@ -1,0 +1,16 @@
+{% from 'combo-box/dropdown-item.html' import govieDropdownItem %}
+
+{% macro govieComboBox(props) %}
+  <form
+    data-module="gieds-combobox"
+    id="{{ props.id }}"
+    method="{{ props.method }}"
+    action="{{ props.action }}"
+  >
+    {% for dropdown in props['dropdownItems'] %}
+      {{
+        govieDropdownItem(dropdown)
+      }}
+    {% endfor %}
+  </form>
+{% endmacro %}

@@ -15,7 +15,7 @@ export const cookieBannerSchema = zod.object({
     triggerButton: buttonSchema.describe(
       'The button that displays the accepted cookie banner',
     ),
-  }),
+  }).describe('Properties for the accepted cookie ( Button triger and content)'),
   reject: zod.object({
     children: zod.string({
       description: 'The content of the rejected cookie banner',
@@ -24,7 +24,7 @@ export const cookieBannerSchema = zod.object({
     triggerButton: buttonSchema.describe(
       'The button that displays the rejected cookie banner',
     ),
-  }),
+  }).describe('Properties for the accepted cookie ( Button triger and content'),
   dismissButton: buttonSchema
     .describe('The button that hides the cookie banner')
     .optional(),
