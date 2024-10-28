@@ -429,15 +429,15 @@ input[type='file' i] {
 /* Cookie Banner */
 
 .gi-cookie-banner-container {
-  @apply gi-bg-gray-100
+  @apply gi-bg-gray-100;
 }
 
 .gi-cookie-banner-buttons {
-  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row
+  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row;
 }
 
 .gi-cookie-banner-buttons button {
-  @apply gi-w-full gi-justify-center xs:gi-w-auto
+  @apply gi-w-full gi-justify-center xs:gi-w-auto;
 }
 
 /* End of Cookie Banner */
@@ -457,3 +457,9 @@ input[type='file' i] {
   @apply gi-mt-2;
 }
 /* TextArea */
+
+/* Chip */
+.gi-chip {
+  @apply gi-flex gi-items-center gi-gap-1 gi-pl-1.5 gi-pr-1 gi-py-0.5 gi-bg-gray-100 gi-w-fit gi-rounded-sm gi-cursor-default gi-text-xs hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-outline focus:gi-outline-gray-950 focus:gi-outline-[2px] focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)];
+}
+/* Chip */
