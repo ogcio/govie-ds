@@ -1,4 +1,4 @@
-import { CookieBannerProps } from "@/props";
+import { CookieBannerProps } from '@/props';
 import {
   Container,
   Footer,
@@ -16,7 +16,8 @@ import {
   CookieBanner,
   TypeEnum,
   List,
-} from "@govie-ds/react";
+  Chip,
+} from '@govie-ds/react';
 
 export default function Home() {
   return (
@@ -129,6 +130,8 @@ export default function Home() {
         </Modal>
         <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
       </Container>
+
+      <Chip label="Label" onClose={() => null} />
 
       <Footer />
     </div>

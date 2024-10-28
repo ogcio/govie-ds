@@ -1,3 +1,4 @@
+'use client';
 import { useId } from 'react';
 import { Icon } from '../icon/icon.js';
 
@@ -10,7 +11,7 @@ export type ChipProps = {
   ) => void;
 };
 
-export const Chip = ({ label, onClose }: ChipProps) => {
+export const Chip = ({ label, onClose = () => null }: ChipProps) => {
   const uniqueId = useId();
   const descriptionId = `chip-description-${uniqueId}`;
 
