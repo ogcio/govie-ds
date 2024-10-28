@@ -14,23 +14,38 @@ export const checkboxesSchema = zod.object({
   }),
   items: zod
     .object({
+      dataElement: zod.string({
+        description:
+          'A unique value used for binding the input element to a selector',
+      }),
+      checkboxId: zod.string({
+        description:
+          'A unique value used for binding the input to its respective label',
+      }),
+      value: zod.string({
+        description:
+          'The value associated with the input (this is also the value that is sent on submit)',
+        required_error: 'The value associated with the input is required',
+      }),
+      size: zod
+        .nativeEnum(CheckboxSizeEnum, {
+          description: 'Specifies the size of the checkbox',
+        })
+        .optional(),
       label: zod
         .string({
           description:
             'The value of the checkbox that will be displayed on the screen',
         })
         .optional(),
-      value: zod.string({
-        description:
-          'The value associated with the input (this is also the value that is sent on submit)',
-        required_error: 'The value associated with the input is required',
-      }),
+
       hint: zod
         .string({
           description:
             'if there is additional text required in order to give the user more context',
         })
         .optional(),
+      className: zod.string({ description: 'additional classes' }).optional(),
     })
     .describe(
       'Array of the checkboxes which include the label,value and hint properties',
@@ -87,7 +102,7 @@ export const checkboxesSchema = zod.object({
     .optional(),
   size: zod
     .nativeEnum(CheckboxSizeEnum, {
-      description: 'Specifies the size of the checkbox',
+      description: 'Specifies the size of the checkboxes as a group',
     })
     .optional(),
 });

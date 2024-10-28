@@ -7,6 +7,9 @@
   {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
 
   <button
+    type="{{ props.type }}"
+    form="{{ props.form }}"
+    value="{{ props.value }}"
     data-element="button-container"
     data-module="gieds-button"
     data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}"

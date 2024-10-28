@@ -2,6 +2,8 @@
   {% from 'label/label.html' import govieLabel %}
   {% from 'hint-text/hint-text.html' import govieHintText %}
   {% from 'error-text/error-text.html' import govieErrorText %}
+  {% from 'helpers/helpers.html' import addClasses %}
+
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
@@ -71,6 +73,7 @@
 
     <input
       id="{{ inputId }}"
+      placeholder="{{ props.placeholder }}"
       data-testid="textbox"
       {{ widthStyle | safe }}
       type="{{ props.type or 'text' }}"

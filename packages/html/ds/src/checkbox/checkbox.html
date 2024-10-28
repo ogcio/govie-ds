@@ -1,9 +1,11 @@
 {% from 'checkbox/helpers.html' import getTickSize, getSizeClass %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieCheckbox(props) %}
-  <div class="gi-flex gi-items-start">
+  <div class="gi-flex gi-items-start {{ addClasses(props.className) | trim }}">
     <input
+      name="{{ props.label }}"
       data-element="{{ props.dataElement }}"
       id="{{ props.checkboxId }}"
       value="{{ props.value }}"

@@ -6,6 +6,8 @@ export enum TagType {
   success = 'success',
   warning = 'warning',
   error = 'error',
+  counter = 'counter',
+  counterWarning = 'counterWarning',
 }
 
 export const tagSchema = zod.object({
