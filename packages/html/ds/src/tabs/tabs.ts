@@ -51,14 +51,14 @@ class TabsAutomatic {
     this.setSelectedTab(this.firstTab, false);
   }
 
-  attachListeners() {
+  initComponent() {
     for (const tab of this.tabs) {
       tab.addEventListener('keydown', this.onKeydown.bind(this));
       tab.addEventListener('click', this.onClick.bind(this));
     }
   }
 
-  detachListeners() {
+  destroyComponent() {
     for (const tab of this.tabs) {
       tab.removeEventListener('keydown', this.onKeydown);
       tab.removeEventListener('click', this.onClick);
@@ -172,13 +172,13 @@ export class Tabs extends BaseComponent<TabsOptions> {
 
   initComponent() {
     for (const tabsAutomated of this.tabsAutomatedList) {
-      tabsAutomated.attachListeners();
+      tabsAutomated.initComponent();
     }
   }
 
   destroyComponent(): void {
     for (const tabsAutomated of this.tabsAutomatedList) {
-      tabsAutomated.detachListeners();
+      tabsAutomated.destroyComponent();
     }
   }
 }

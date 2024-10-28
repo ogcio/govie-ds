@@ -1,6 +1,6 @@
 'use client';
 import { Heading } from '@govie-ds/react';
-import React, { Children, isValidElement, useState } from 'react';
+import { Children, isValidElement, useState } from 'react';
 import { useHash, useIsomorphicLayoutEffect } from 'react-use';
 import { PlatformSelection } from './platform-selection';
 
