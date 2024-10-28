@@ -1,15 +1,73 @@
 /* GOV.IE Components Stylesheets */
 
-/* Button */
-/* TODO: create separate focus classes once we get the variants for it */
-.gi-btn {
-  @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-items-center;
+/* General focus classes */
+.gi-focus-state-outline {
+  @apply focus:gi-outline
+  focus:gi-outline-[3px]
+  focus:gi-outline-yellow-400
+  focus:gi-outline-offset-0;
 }
+
+.gi-focus-within-state-outline {
+  @apply focus-within:gi-outline
+  focus-within:gi-outline-[3px]
+  focus-within:gi-outline-yellow-400
+  focus-within:gi-outline-offset-0;
+}
+
+.gi-focus-state-border {
+  @apply focus:gi-border-solid focus:gi-border-gray-950 focus:gi-border-md;
+}
+
+.gi-focus-state-border-sm {
+  @apply gi-focus-state-border focus:gi-border-sm;
+}
+
+.gi-focus-state-border-sm-rounded {
+  @apply gi-focus-state-border-sm focus:gi-rounded-sm;
+}
+/* General focus classes */
+
+/* Inputs focus state */
+input[type='text'] {
+  @apply gi-focus-state-outline gi-focus-state-border;
+}
+/* Inputs focus state*/
+
+/* Button */
+.gi-btn {
+  @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm gi-items-center gi-focus-state-outline gi-focus-state-border-sm-rounded;
+}
+
+/* Button Focus state */
+
+.gi-btn-primary,
+.gi-btn-primary-dark {
+  @apply focus:gi-bg-emerald-900 focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-white;
+}
+
+.gi-btn-primary-dark,
+.gi-btn-secondary-light,
+.gi-btn-flat-light {
+  @apply focus:gi-bg-gray-800;
+}
+
+.gi-btn-primary-light,
+.gi-btn-secondary-dark,
+.gi-btn-flat-dark {
+  @apply focus:gi-bg-gray-200;
+}
+
+.gi-btn-secondary,
+.gi-btn-flat {
+  @apply focus:gi-bg-emerald-50;
+}
+/* Button Focus state*/
 
 /* Button Primary */
 
 .gi-btn-primary {
-  @apply gi-border-transparent gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900 focus:gi-bg-emerald-900;
+  @apply gi-border-transparent gi-text-white gi-bg-emerald-800 hover:gi-bg-emerald-900;
 }
 
 .gi-btn-primary-disabled {
@@ -17,7 +75,7 @@
 }
 
 .gi-btn-primary-light {
-  @apply gi-border-transparent gi-text-gray-950 gi-bg-white hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-border-solid focus:gi-border-sm focus:gi-border-black;
+  @apply gi-border-transparent gi-text-gray-950 gi-bg-white hover:gi-bg-gray-200;
 }
 
 .gi-btn-primary-light-disabled {
@@ -25,7 +83,7 @@
 }
 
 .gi-btn-primary-dark {
-  @apply gi-border-transparent gi-text-white gi-bg-gray-950 hover:gi-bg-gray-800 focus:gi-bg-gray-800;
+  @apply gi-border-transparent gi-text-white gi-bg-gray-950 hover:gi-bg-gray-800;
 }
 
 .gi-btn-primary-dark-disabled {
@@ -43,7 +101,7 @@
 }
 
 .gi-btn-secondary-light {
-  @apply gi-text-white gi-border-white hover:gi-bg-gray-800 focus:gi-border-transparent;
+  @apply gi-text-white gi-border-white hover:gi-bg-gray-800;
 }
 
 .gi-btn-secondary-light-disabled {
@@ -61,7 +119,7 @@
 /* Button Flat */
 
 .gi-btn-flat {
-  @apply gi-border-transparent gi-text-emerald-800 hover:gi-bg-emerald-50 focus:gi-border-emerald-800;
+  @apply gi-border-transparent gi-text-emerald-800 hover:gi-bg-emerald-50;
 }
 
 .gi-btn-flat-disabled {
@@ -77,7 +135,7 @@
 }
 
 .gi-btn-flat-dark {
-  @apply gi-border-transparent gi-text-gray-950 hover:gi-bg-gray-200 focus:gi-border-emerald-800;
+  @apply gi-border-transparent gi-text-gray-950 hover:gi-bg-gray-200;
 }
 
 .gi-btn-flat-dark-disabled {
@@ -158,11 +216,17 @@
 .gi-header-logo-sm {
   @apply md:gi-hidden gi-block;
 }
+
+.gi-header-logo-sm,
+.gi-header-logo-lg {
+  @apply gi-focus-state-outline gi-rounded-sm;
+}
+
 .gi-header-title {
   @apply gi-heading-sm gi-tracking-wider gi-text-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow;
 }
 .gi-header-tool-item {
-  @apply gi-border gi-border-solid gi-border-transparent gi-text-white focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400 gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400;
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer;
 }
 .gi-header-tool-item span.label {
   @apply gi-hidden sm:gi-block gi-text-2md gi-font-bold gi-text-white;
@@ -171,8 +235,20 @@
   @apply gi-hidden sm:gi-flex gi-gap-4 gi-text-white;
 }
 .gi-header-nav a {
-  @apply gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400;
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2;
 }
+
+/* Nav components focus state */
+.gi-header-tool-item,
+.gi-header-language-item,
+.gi-header-nav a {
+  @apply gi-focus-state-outline gi-focus-within-state-outline
+   focus:gi-bg-black focus-within:gi-bg-black 
+   focus:gi-bg-opacity-20 focus-within:gi-bg-opacity-20
+   focus:gi-border focus-within:gi-border
+   focus:gi-border-solid focus-within:gi-border-solid;
+}
+
 .gi-header-separator {
   @apply gi-hidden sm:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6;
 }
@@ -199,6 +275,10 @@
 #MenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
   display: block;
   position: fixed;
+}
+
+#HeaderMenuContainer > ul > li > a {
+  @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
 }
 
 /* End Header */
@@ -317,7 +397,7 @@ input[type='file' i] {
 /* Radio */
 
 .gi-radio-base {
-  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0  focus:gi-border-[4px] focus:gi-outline-[3px] focus:gi-outline-yellow-400 focus:gi-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf];
+  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0 focus:gi-border-[4px] gi-focus-state-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf];
 }
 .gi-radio-small {
   @apply gi-radio-base gi-w-6 gi-h-6 checked:before:gi-border-[5px] checked:before:gi-translate-x-[5px] checked:before:gi-translate-y-[5px] focus:before:gi-translate-x-[3px] focus:before:gi-translate-y-[3px];
@@ -431,7 +511,7 @@ input[type='file' i] {
 
 .gi-textarea,
 .gi-textarea-error {
-  @apply focus:gi-outline focus:gi-outline-[3px] focus:gi-outline-offset-0 focus:gi-shadow-[inset_0_0_0_2px] focus:gi-outline-yellow-400 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950;
+  @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950;
 }
 
 .gi-textarea-error {

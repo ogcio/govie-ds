@@ -48,12 +48,8 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
             gi-border-sm
             gi-border-solid
             gi-box-border
-            focus:gi-outline
-            focus:gi-outline-[3px]
-            focus:gi-border-lg
-            focus:gi-border-gray-950
-            focus:gi-outline-yellow-400
-            focus:gi-outline-offset-0
+            gi-focus-state-border
+            gi-focus-state-outline
             gi-z-1"
           type="file"
           ref={ref}

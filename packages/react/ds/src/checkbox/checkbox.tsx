@@ -30,7 +30,19 @@ const Checkbox = ({
         data-element={dataElement}
         id={checkboxId}
         value={value}
-        className={`${getSizeClass(size)} ${getTickSize(size)} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black`}
+        className={`${getSizeClass(size)} ${getTickSize(size)}
+        gi-focus-state-outline
+        gi-cursor-pointer
+        gi-appearance-none
+        gi-border-md
+        gi-border-solid
+         gi-border-black
+         checked:before:gi-block
+         checked:before:gi--rotate-45
+         checked:before:gi-relative
+         checked:before:gi-border-l-lg
+         checked:before:gi-border-b-lg
+         checked:before:gi-border-black`}
         type="checkbox"
       />
       <label
