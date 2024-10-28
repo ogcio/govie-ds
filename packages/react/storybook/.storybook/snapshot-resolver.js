@@ -8,9 +8,10 @@ export default {
     const modifiedFileName = `${fileNameWithoutExtension}.snap`;
 
     // Configure Jest to generate snapshot files using the following convention (./src/test/__snapshots__/Button.stories.snap)
-    return path.join('./resources/__snapshots__', modifiedFileName);
+    return path.join('../../../assets/__snapshots__/react', modifiedFileName);
   },
   resolveTestPath: (snapshotFilePath, snapshotExtension) =>
     path.basename(snapshotFilePath, snapshotExtension),
-  testPathForConsistencyCheck: 'react',
+
+  testPathForConsistencyCheck: 'assets/__snapshots__/react/Button.stories.snap',
 };
