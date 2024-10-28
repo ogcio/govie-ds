@@ -96,7 +96,7 @@ export const Default: Story = {
     id: 'textarea-id-1',
     label: {
       content: 'Textarea Label',
-      for: 'textarea-id',
+      for: 'textarea-id-1',
     },
     error: {
       content: '',
@@ -109,6 +109,10 @@ export const Default: Story = {
 
 export const CustomSizeWith6RowsAnd50Cols: Story = {
   args: {
+    label: {
+      content: 'Textarea Label',
+      for: 'custom-size-textarea',
+    },
     rows: 6,
     cols: 50,
     id: 'custom-size-textarea',

@@ -11,7 +11,7 @@ describe('tabs', () => {
 
   it('should render tabs', () => {
     const screen = renderTabs({
-      ariaLabel: 'tabs',
+      ariaLabelledBy: 'tabs',
       items: [
         {
           label: 'Tab 1',
@@ -39,7 +39,7 @@ describe('tabs', () => {
 
   it('should render tabs', () => {
     const screen = renderTabs({
-      ariaLabel: 'tabs',
+      ariaLabelledBy: 'tabs',
       items: [
         {
           label: 'Tab 1',
@@ -67,7 +67,7 @@ describe('tabs', () => {
 
   it('should pass axe tests', async () => {
     const screen = renderTabs({
-      ariaLabel: 'tabs',
+      ariaLabelledBy: 'tabs',
       items: [
         {
           label: 'Tab 1',

@@ -48,7 +48,7 @@ export function IFrame({
       height={typeof height === 'number' ? `${height}px` : height}
       ref={setContentRef}
     >
-      {mountNode && createPortal(children, mountNode)}
+      {mountNode && createPortal(<>{children}</>, mountNode)}
     </iframe>
   );
 }

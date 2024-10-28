@@ -3,6 +3,7 @@ import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
+import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { BaseComponent, BaseComponentOptions } from './component';
 
@@ -17,6 +18,7 @@ const componentRegistry = {
   Textarea,
   Modal,
   CookieBanner,
+  Tabs,
   // TODO: additional component classes
 } as const;
 

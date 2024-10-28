@@ -77,6 +77,9 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
+    a11y: {
+      options: {},
+    },
     viewport: {
       viewports: {
         ...INITIAL_VIEWPORTS,

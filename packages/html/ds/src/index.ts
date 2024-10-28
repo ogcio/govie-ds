@@ -5,6 +5,7 @@ import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
+import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 
 export * as properties from './dist/properties.js';
@@ -30,6 +31,7 @@ export function initGovIe() {
   initTextarea();
   initModal();
   initCookieBanner();
+  initTabs();
 }
 
 export function destroyGovIe() {
@@ -46,3 +48,4 @@ componentEvents.init();
 export * from './header/header.js';
 export * from './checkbox/checkbox.js';
 export * from './radio/radio.js';
+export * from './tabs/tabs.js';
