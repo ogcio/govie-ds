@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Blockquote } from './blockquote.js';
 
 const meta = {
-  title: 'typography/Blockquote',
+  title: 'Typography/Blockquote',
   component: Blockquote,
 } satisfies Meta<typeof Blockquote>;
 

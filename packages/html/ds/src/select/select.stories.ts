@@ -12,7 +12,7 @@ const Select = renderComponent<SelectProps>(macro);
 
 const meta = {
   component: Select,
-  title: 'form/Select',
+  title: 'Form/Select',
   parameters: {
     macro,
   },

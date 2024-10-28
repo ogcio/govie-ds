@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SectionBreak } from './section-break.js';
 
 const meta = {
-  title: 'typography/SectionBreak',
+  title: 'Typography/SectionBreak',
   component: SectionBreak,
 } satisfies Meta<typeof SectionBreak>;
 

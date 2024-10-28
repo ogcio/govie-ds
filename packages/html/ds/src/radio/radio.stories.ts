@@ -39,7 +39,7 @@ const standardProps = {
 
 const meta = {
   component: Radios,
-  title: 'form/Radios',
+  title: 'Form/Radios',
   parameters: {
     macro,
   },

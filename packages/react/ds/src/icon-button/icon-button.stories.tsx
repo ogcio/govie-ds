@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 import { IconButton } from './icon-button.js';
 
 const meta = {
-  title: 'form/IconButton',
+  title: 'Form/IconButton',
   decorators: (Story, context) => {
     const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
     return (

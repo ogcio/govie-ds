@@ -9,7 +9,7 @@ const Icon = renderComponent<IconProps>(macro);
 
 const meta = {
   component: Icon,
-  title: 'components/Icon',
+  title: 'Components/Icon',
   parameters: {
     macro,
   },

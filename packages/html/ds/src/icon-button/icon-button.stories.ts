@@ -13,7 +13,7 @@ const IconButton = renderComponent<iconButtonProps>(macro);
 
 const meta = {
   component: IconButton,
-  title: 'form/IconButton',
+  title: 'Form/IconButton',
   parameters: {
     macro,
   },

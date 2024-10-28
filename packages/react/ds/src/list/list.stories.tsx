@@ -3,7 +3,7 @@ import { Link } from '../link/link.js';
 import { List, TypeEnum } from './list.js';
 
 const meta = {
-  title: 'typography/List',
+  title: 'Typography/List',
   parameters: {
     docs: {
       description: {

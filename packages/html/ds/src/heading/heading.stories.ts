@@ -12,7 +12,7 @@ const Heading = renderComponent<HeadingProps>(macro);
 
 const meta = {
   component: Heading,
-  title: 'typography/Heading',
+  title: 'Typography/Heading',
   parameters: {
     macro,
   },

@@ -14,7 +14,7 @@ const Button = renderComponent<ButtonProps>(macro);
 
 const meta = {
   component: Button,
-  title: 'form/Button',
+  title: 'Form/Button',
   parameters: {
     macro,
   },
