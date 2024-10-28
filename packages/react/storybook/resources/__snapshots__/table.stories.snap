@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Table Default smoke-test 1`] = `
+<table>
+  <caption>
+    This is caption
+  </caption>
+  <thead>
+    This is the table head
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        Header 1
+      </th>
+      <td>
+        Data 1
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Header 2
+      </th>
+      <td>
+        Data 2
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    This is a foot
+  </tfoot>
+</table>
+`;

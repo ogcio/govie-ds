@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography/Label Default smoke-test 1`] = `
+<div>
+  <label for="input-id"
+         class="gi-text-md gi-mb-1 gi-block "
+  >
+    Label Text
+  </label>
+</div>
+`;

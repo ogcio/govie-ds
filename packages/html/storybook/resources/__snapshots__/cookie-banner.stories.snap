@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography/CookieBanner Default smoke-test 1`] = `
+<div>
+  <div aria-label="Cookie banner"
+       class="gi-cookie-banner-container"
+       data-module="gieds-cookie-banner"
+  >
+    <div data-element="main-container"
+         class="gi-py-5"
+    >
+      <div class="gi-mx-auto gi-container">
+        <div data-testid="default-container"
+             data-element="default-container"
+        >
+          <h3 class="gi-heading-md">
+            Title
+          </h3>
+          <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">
+            We use some essential cookies to make this service work.
+            <br>
+            <br>
+            We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
+          </p>
+          <div class="gi-cookie-banner-buttons">
+            <div data-testid="accept-btn"
+                 data-element="accept-btn"
+            >
+              <button data-element="button-container"
+                      data-module="gieds-button"
+                      data-testid="govieButton-default-primary-medium-notDisabled"
+                      class="gi-btn gi-btn-primary gi-btn-regular "
+              >
+                Accept cookies
+              </button>
+            </div>
+            <div data-testid="reject-btn"
+                 data-element="reject-btn"
+            >
+              <button data-element="button-container"
+                      data-module="gieds-button"
+                      data-testid="govieButton-default-primary-medium-notDisabled"
+                      class="gi-btn gi-btn-primary gi-btn-regular "
+              >
+                Reject cookies
+              </button>
+            </div>
+            <a href="#"
+               class="
+      gi-link
+      
+      
+      
+      
+    "
+            >
+              See Cookies
+            </a>
+          </div>
+        </div>
+        <div data-testid="accepted-container"
+             data-element="accepted-container"
+             class="gi-hidden"
+        >
+          <h3 class="gi-heading-md">
+            Accepted Title
+          </h3>
+          <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">
+            You’ve accepted analytics cookies. You can change your cookie settings at any time.
+          </p>
+          <div data-testid="dismiss-btn-accepted"
+               data-element="dismiss-btn-accepted"
+          >
+            <button data-element="button-container"
+                    data-module="gieds-button"
+                    data-testid="govieButton-default-primary-medium-notDisabled"
+                    class="gi-btn gi-btn-primary gi-btn-regular "
+            >
+              Hide this message
+            </button>
+          </div>
+        </div>
+        <div data-testid="rejected-container"
+             data-element="rejected-container"
+             class="gi-hidden"
+        >
+          <h3 class="gi-heading-md">
+            Rejected Title
+          </h3>
+          <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">
+            You’ve rejected analytics cookies. You can change your cookie settings at any time.
+          </p>
+          <div data-testid="dismiss-btn-rejected"
+               data-element="dismiss-btn-rejected"
+          >
+            <button data-element="button-container"
+                    data-module="gieds-button"
+                    data-testid="govieButton-default-primary-medium-notDisabled"
+                    class="gi-btn gi-btn-primary gi-btn-regular "
+            >
+              Hide this message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

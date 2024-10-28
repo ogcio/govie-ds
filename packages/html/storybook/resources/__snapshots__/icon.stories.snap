@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Icon AriaHidden smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        aria-hidden
+        role="presentation"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[24px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon AriaLabel smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        aria-label="Thumbs"
+        up
+        role="img"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[24px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon Default smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[24px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon Disabled smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons
+      gi-text-gray-300
+      gi-block
+      gi-text-[24px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon ExtraLarge smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[49px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon Large smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[32px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon Outlined smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons-outlined
+      
+      gi-block
+      gi-text-[24px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;
+
+exports[`components/Icon Small smoke-test 1`] = `
+<div>
+  <span data-testid="govie-icon"
+        role="presentation"
+        class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+  >
+    thumb_up
+  </span>
+</div>
+`;

@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/TextInput CharacterWidth smoke-test 1`] = `
+<div>
+  <label for="character-width-input"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <input id="character-width-input"
+           data-testid="textbox"
+           style="width: 20em;"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-auto gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput DateInput smoke-test 1`] = `
+<div>
+  <label for="text-input-id"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <input id="text-input-id"
+           data-testid="textbox"
+           type="date"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-auto gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput Default smoke-test 1`] = `
+<div>
+  <label for="input-id"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <input id="input-id"
+           data-testid="textbox"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-full gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput HalfFluid smoke-test 1`] = `
+<div>
+  <label for="half-fluid-input"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <input id="half-fluid-input"
+           data-testid="textbox"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-1/2 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput WithLabel smoke-test 1`] = `
+<div>
+  <label for="label-input"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <input id="label-input"
+           data-testid="textbox"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-full gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput WithLabelAndHint smoke-test 1`] = `
+<div>
+  <label for="label-hint-input"
+         class="gi-text-md gi-mb-1 gi-block "
+  >
+    Label
+  </label>
+  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 ">
+    Hint
+  </p>
+  <div class="gi-flex gi-items-center ">
+    <input id="label-hint-input"
+           data-testid="textbox"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-full gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput WithLabelHintAndErrorText smoke-test 1`] = `
+<div>
+  <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
+    <label for="error-input"
+           class="gi-text-md gi-mb-1 gi-block "
+    >
+      Label
+    </label>
+    <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 ">
+      Hint
+    </p>
+    <p class="gi-text-md gi-font-bold gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] ">
+      Error
+    </p>
+    <div class="gi-flex gi-items-center ">
+      <input id="error-input"
+             data-testid="textbox"
+             type="text"
+             autocomplete="on"
+             class="gi-border-red-600 gi-w-full gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+      >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form/TextInput WithSuffix smoke-test 1`] = `
+<div>
+  <label for="suffix-input"
+         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+  >
+    Label
+  </label>
+  <div class="gi-flex gi-items-center ">
+    <div class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10">
+      KG
+    </div>
+    <input id="suffix-input"
+           data-testid="textbox"
+           type="text"
+           autocomplete="on"
+           class="gi-border-gray-950 gi-w-full gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5"
+    >
+    <div class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10">
+      per item
+    </div>
+  </div>
+</div>
+`;

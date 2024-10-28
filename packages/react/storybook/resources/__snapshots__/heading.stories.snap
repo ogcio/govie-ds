@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`typography/Heading Default smoke-test 1`] = `
+<h1 class="gi-heading-xl">
+  Heading
+</h1>
+`;

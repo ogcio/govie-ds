@@ -28,6 +28,10 @@ const config: TestRunnerConfig = {
       false,
       'v2',
     );
+
+    const elementHandler = await page.$('#storybook-root');
+    const innerHTML = await elementHandler?.innerHTML();
+    expect(innerHTML).toMatchSnapshot();
   },
 };
 

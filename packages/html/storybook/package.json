@@ -21,6 +21,7 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
+    "@types/jest": "^29.5.14",
     "fs-extra": "^11.2.0",
     "glob": "^10.4.5",
     "nunjucks": "^3.2.4"

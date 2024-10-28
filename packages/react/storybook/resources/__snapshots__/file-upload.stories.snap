@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/FileUpload Default smoke-test 1`] = `
+<div class="gi-pt-2 gi-mb-4 ">
+  <label class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+         for="file-upload-id"
+  >
+    Upload File
+  </label>
+  <input id="file-upload-id"
+         class="
+            xs:gi-text-md 
+            gi-text-sm 
+            gi-leading-10 
+            xs:!gi-leading-5 
+            gi-p-[3px]
+            gi-max-w-[100%]
+            gi-border-transparent
+            gi-flex-initial
+            gi-ml-[-5px]
+            gi-border-sm
+            gi-border-solid
+            gi-box-border
+            focus:gi-outline
+            focus:gi-outline-[3px]
+            focus:gi-border-lg
+            focus:gi-border-gray-950
+            focus:gi-outline-yellow-400
+            focus:gi-outline-offset-0
+            gi-z-1"
+         type="file"
+         accept="*/*"
+  >
+</div>
+`;
+
+exports[`Form/FileUpload WithLabelAndError smoke-test 1`] = `
+<div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
+  <label class="gi-text-md gi-mb-1 gi-block "
+         for="file-upload-id"
+  >
+    Upload File
+  </label>
+  <div class="gi-text-md  gi-mb-3 gi-font-bold gi-text-red-600 ">
+    Error: File must be smaller than 5MB.
+  </div>
+  <input id="file-upload-id"
+         class="
+            xs:gi-text-md 
+            gi-text-sm 
+            gi-leading-10 
+            xs:!gi-leading-5 
+            gi-p-[3px]
+            gi-max-w-[100%]
+            gi-border-transparent
+            gi-flex-initial
+            gi-ml-[-5px]
+            gi-border-sm
+            gi-border-solid
+            gi-box-border
+            focus:gi-outline
+            focus:gi-outline-[3px]
+            focus:gi-border-lg
+            focus:gi-border-gray-950
+            focus:gi-outline-yellow-400
+            focus:gi-outline-offset-0
+            gi-z-1"
+         type="file"
+         accept=".pdf, .docx"
+  >
+</div>
+`;
+
+exports[`Form/FileUpload WithLabelAndHint smoke-test 1`] = `
+<div class="gi-pt-2 gi-mb-4 ">
+  <label class="gi-text-md gi-mb-1 gi-block "
+         for="file-upload-id"
+  >
+    Upload File
+  </label>
+  <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700 ">
+    Hint: This is a helpful hint.
+  </div>
+  <input id="file-upload-id"
+         class="
+            xs:gi-text-md 
+            gi-text-sm 
+            gi-leading-10 
+            xs:!gi-leading-5 
+            gi-p-[3px]
+            gi-max-w-[100%]
+            gi-border-transparent
+            gi-flex-initial
+            gi-ml-[-5px]
+            gi-border-sm
+            gi-border-solid
+            gi-box-border
+            focus:gi-outline
+            focus:gi-outline-[3px]
+            focus:gi-border-lg
+            focus:gi-border-gray-950
+            focus:gi-outline-yellow-400
+            focus:gi-outline-offset-0
+            gi-z-1"
+         type="file"
+         accept="*/*"
+  >
+</div>
+`;
+
+exports[`Form/FileUpload WithPDFAndDocxOnly smoke-test 1`] = `
+<div class="gi-pt-2 gi-mb-4 ">
+  <label class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+         for="file-upload-id"
+  >
+    Upload File
+  </label>
+  <input id="file-upload-id"
+         class="
+            xs:gi-text-md 
+            gi-text-sm 
+            gi-leading-10 
+            xs:!gi-leading-5 
+            gi-p-[3px]
+            gi-max-w-[100%]
+            gi-border-transparent
+            gi-flex-initial
+            gi-ml-[-5px]
+            gi-border-sm
+            gi-border-solid
+            gi-box-border
+            focus:gi-outline
+            focus:gi-outline-[3px]
+            focus:gi-border-lg
+            focus:gi-border-gray-950
+            focus:gi-outline-yellow-400
+            focus:gi-outline-offset-0
+            gi-z-1"
+         type="file"
+         accept=".pdf, .docx"
+  >
+</div>
+`;
