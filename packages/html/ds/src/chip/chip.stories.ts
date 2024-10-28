@@ -17,8 +17,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    //@ts-expect-error Render function returns raw HTML string, not a React component
-  render: (_, {parameters}) => {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: (_, { parameters }) => {
     parameters.renderedHtml = html;
     return html;
   },
