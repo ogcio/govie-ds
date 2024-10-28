@@ -1,9 +1,9 @@
 import * as zod from 'zod';
 
 export const tabsSchema = zod.object({
-  ariaLabel: zod.string({
-    description: 'The aria-label of the tab',
-    required_error: 'The aria-label is required',
+  ariaLabelledBy: zod.string({
+    description: 'The label reference of the tab',
+    required_error: 'The aria-labelled-id is required',
   }),
   items: zod
     .array(

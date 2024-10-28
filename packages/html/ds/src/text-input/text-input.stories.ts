@@ -141,6 +141,10 @@ export const Default: Story = {
 
 export const WithSuffix: Story = {
   args: {
+    label: {
+      content: 'Label',
+      for: 'suffix-input',
+    },
     fullFluid: true,
     prefix: 'KG',
     suffix: 'per item',
@@ -150,6 +154,10 @@ export const WithSuffix: Story = {
 
 export const HalfFluid: Story = {
   args: {
+    label: {
+      content: 'Label',
+      for: 'half-width-input',
+    },
     halfFluid: true,
     id: 'half-fluid-input',
   },
@@ -157,6 +165,10 @@ export const HalfFluid: Story = {
 
 export const CharacterWidth: Story = {
   args: {
+    label: {
+      content: 'Label',
+      for: 'character-width-input',
+    },
     characterWidth: 20,
     id: 'character-width-input',
   },
@@ -206,7 +218,11 @@ export const WithLabelHintAndErrorText: Story = {
 
 export const DateInput: Story = {
   args: {
+    label: {
+      content: 'Label',
+      for: 'text-input-id',
+    },
     id: 'text-input-id',
-    type: 'date',
+    type: InputTypeEnum.Date,
   },
 };

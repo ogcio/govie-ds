@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within } from '@storybook/test';
 import { renderComponent } from '../storybook/storybook';
 import { ButtonAppearance, ButtonProps } from './button-schema';
 import { ButtonVariant, ButtonSize } from './button-schema';
@@ -55,6 +56,12 @@ export const Default: Story = {
   args: {
     content: 'Button',
     variant: ButtonVariant.Primary,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    await userEvent.hover(button);
+    await userEvent.click(button);
   },
 };
 

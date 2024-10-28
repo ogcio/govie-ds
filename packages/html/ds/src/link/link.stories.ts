@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './link.html?raw';
-import { LinkProps } from './link.schema';
+import { LinkProps, LinkSize } from './link.schema';
 
 const macro = { name: 'govieLink', html };
 
@@ -58,7 +58,7 @@ export const Default: Story = {
   args: {
     href: '#',
     label: 'Link',
-    size: 'md', // Default size can be set here, change to 'sm' if needed
+    size: LinkSize.MEDIUM, // Default size can be set here, change to 'sm' if needed
   },
 };
 

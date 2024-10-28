@@ -15,14 +15,9 @@ export function TabPanel({
     <div
       role="tabpanel"
       aria-labelledby={`tab-${valueSlug}`}
-      className="
-        gi-hidden 
-        gi-basis-full 
-        gi-border-xs
-        gi-border-solid 
-        gi-border-slate-200 
-        gi-bg-white 
-        gi-p-4"
+      id={`tab-panel-${valueSlug}`}
+      tabIndex={0}
+      className="gi-tab-panel"
     >
       {children}
     </div>
