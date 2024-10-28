@@ -25,7 +25,7 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.closeIcon = this.query.getByElement({
       name: 'modal-container',
     }).firstElementChild;
-    console.log(this.closeIcon);
+
     this.openModal = () => {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');

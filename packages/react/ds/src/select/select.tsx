@@ -38,10 +38,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       {error && <ErrorText text={error.text} size={error.size} />}
       <select
         className="
-          focus:gi-outline 
-          focus:gi-outline-[3px] 
-          focus:gi-outline-yellow-400 
-          focus:gi-outline-offset-0
+          gi-focus-state-outline
           gi-p-1.5
           gi-border-black
           gi-border-[3px]
