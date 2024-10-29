@@ -90,8 +90,9 @@ export const Default: Story = {
         options: categoryOptions,
       },
       {
-        label: 'Topic',
+        label: 'Topic (without search)',
         options: topicOptions,
+        noSearch: true,
       },
     ],
   },

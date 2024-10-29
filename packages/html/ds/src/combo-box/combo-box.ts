@@ -37,7 +37,6 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
     this.dropdownState = this.dropdowns.map((dropdown) => {
       return {
         elements: {
-          //   dropdownContainer: dropdown,
           dropdownToggle: dropdown.querySelector('.gi-combobox-toggle')!,
           dropdownContainer: dropdown.querySelector(
             'div[data-element="combobox-dropdown-container"]',
@@ -47,9 +46,13 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             '.gi-combobox-search-input input',
           ),
           checkboxes: dropdown.querySelectorAll('.gi-combobox-checkbox'),
-          resetSearchElement: dropdown.querySelector('.gi-combobox-search .gi-combobox-search-icon'),
-          noResultsElement: dropdown.querySelector('.gi-combobox-checkbox-paragraph')!,
-          tag: dropdown.querySelector('.gi-tag')!
+          resetSearchElement: dropdown.querySelector(
+            '.gi-combobox-search .gi-combobox-search-icon',
+          ),
+          noResultsElement: dropdown.querySelector(
+            '.gi-combobox-checkbox-paragraph',
+          )!,
+          tag: dropdown.querySelector('.gi-tag')!,
         },
         isOpen: false,
         searchInput: '',
@@ -57,8 +60,6 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         selectedCheckboxes: 0,
       };
     });
-
-    // console.log(this.dropdownState);
 
     this.handleOpenDropdown = (element: Element, state: dropdownStateType) => {
       state.isOpen = !state.isOpen;
@@ -70,39 +71,39 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
 
   initComponent() {
     for (const state of this.dropdownState) {
-      const { dropdownToggle } = state.elements;
-      const { dropdownContainer } = state.elements;
-      const { closeIcon } = state.elements;
-      const { searchInputElement } = state.elements;
-      const { checkboxes } = state.elements;
-      const {resetSearchElement} = state.elements
-      const {noResultsElement} = state.elements
-      const {tag} = state.elements
+      const {
+        dropdownToggle,
+        dropdownContainer,
+        closeIcon,
+        searchInputElement,
+        checkboxes,
+        resetSearchElement,
+        noResultsElement,
+        tag,
+      } = state.elements;
 
       for (const checkbox of checkboxes) {
         checkbox.addEventListener('change', () => {
-            const input = checkbox.querySelector('input');
-            const label = checkbox.querySelector('label'); 
-    
-            if (input?.checked) {
-                checkbox.classList.add('hover:gi-bg-gray-50');
-                label?.classList.add('gi-font-bold');
-                state.selectedCheckboxes++;
-              } else {
-                checkbox.classList.remove('hover:gi-bg-gray-50');
-                label?.classList.remove('gi-font-bold');
-                state.selectedCheckboxes--;
-              }
-            if (state.selectedCheckboxes) {
-                tag.classList.remove('!gi-hidden')
-                tag.textContent = state.selectedCheckboxes.toString()
-            }
-            else {
-                tag.classList.add('!gi-hidden')
-                tag.textContent = state.selectedCheckboxes.toString()
-            }  
-        })
-  
+          const input = checkbox.querySelector('input');
+          const label = checkbox.querySelector('label');
+
+          if (input?.checked) {
+            checkbox.classList.add('hover:gi-bg-gray-50');
+            label?.classList.add('gi-font-bold');
+            state.selectedCheckboxes++;
+          } else {
+            checkbox.classList.remove('hover:gi-bg-gray-50');
+            label?.classList.remove('gi-font-bold');
+            state.selectedCheckboxes--;
+          }
+          if (state.selectedCheckboxes) {
+            tag.classList.remove('!gi-hidden');
+            tag.textContent = state.selectedCheckboxes.toString();
+          } else {
+            tag.classList.add('!gi-hidden');
+            tag.textContent = state.selectedCheckboxes.toString();
+          }
+        });
       }
 
       dropdownToggle.addEventListener('click', () => {
@@ -117,25 +118,27 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
       });
 
       if (searchInputElement && resetSearchElement) {
-
         resetSearchElement.addEventListener('click', (event) => {
-            event.preventDefault()
-            state.searchInput = ''
-            searchInputElement.value = ''
-            for (const checkbox of checkboxes) {
-                checkbox.style.display = 'flex';
-            }
-        })
-        
+          event.preventDefault();
+          state.searchInput = '';
+          searchInputElement.value = '';
+          for (const checkbox of checkboxes) {
+            checkbox.style.display = 'flex';
+          }
+        });
+
         searchInputElement.addEventListener('input', (event) => {
           let hiddenCheckboxes = 0;
-          state.searchInput = event.target.value;
+          if (event.target) {
+            state.searchInput = (event.target as HTMLInputElement).value;
+          }
 
           for (const checkbox of checkboxes) {
             const label = checkbox.querySelector('label')?.textContent;
 
-            state.searchInput ? resetSearchElement.classList.remove('!gi-hidden') : resetSearchElement.classList.add('!gi-hidden')
-          
+            state.searchInput
+              ? resetSearchElement.classList.remove('!gi-hidden')
+              : resetSearchElement.classList.add('!gi-hidden');
 
             if (
               label?.toLowerCase().includes(state.searchInput.toLowerCase())
@@ -148,8 +151,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
           }
           hiddenCheckboxes === checkboxes.length
             ? noResultsElement.classList.remove('!gi-hidden')
-            : noResultsElement.classList.add('!gi-hidden')
-          console.log(state.noResults)  
+            : noResultsElement.classList.add('!gi-hidden');
         });
       }
     }

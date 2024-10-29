@@ -6,34 +6,21 @@
 {% from 'checkbox/checkbox.html' import govieCheckbox %}
 
 {% macro govieDropdownItem(props) %}
-  
-  
-  
-
-  <div
-    
-    data-module="gieds-dropdown-item"
-    
-  >
+  <div data-module="gieds-dropdown-item">
     <div class="gi-combobox-toggle">
       <div class="gi-combobox-toggle-content">
         {{ govieParagraph({"content": props.label}) }}
-          {{
-            govieTag({
-                "text": "0",
-                "type": "counter",
-                "className": "!gi-hidden"
-            })
-          }}
+        {{
+          govieTag({
+              "text": "0",
+              "type": "counter",
+              "className": "!gi-hidden"
+          })
+        }}
       </div>
-
       {{ govieIcon({"icon": "keyboard_arrow_down"}) }}
     </div>
-
-    <div
-      data-element="combobox-dropdown-container",
-      class="gi-hidden"
-    >
+    <div data-element="combobox-dropdown-container" , class="gi-hidden">
       {% if not props.noSearch %}
         <div class="gi-combobox-search">
           {{
@@ -43,31 +30,26 @@
             "fullFluid": true
             })
           }}
-          
-            {{
-              govieIconButton({
-                "variant": "flat",
-                "appearance": "dark",
-                "size": "small",
-                "className": "gi-combobox-search-icon !gi-hidden",
-                "icon": {
-                    "icon": "close"
-                }
-              })
-            }}
-          
-        </div>
-      {% endif %}
-
-      <div class="gi-combobox-checkbox-container">
-        
           {{
-            govieParagraph({
-                "className": "gi-combobox-checkbox-paragraph !gi-hidden",
-                "content": "No results found."
+            govieIconButton({
+              "variant": "flat",
+              "appearance": "dark",
+              "size": "small",
+              "className": "gi-combobox-search-icon !gi-hidden",
+              "icon": {
+                  "icon": "close"
+              }
             })
           }}
-       
+        </div>
+      {% endif %}
+      <div class="gi-combobox-checkbox-container">
+        {{
+          govieParagraph({
+              "className": "gi-combobox-checkbox-paragraph !gi-hidden",
+              "content": "No results found."
+          })
+        }}
         {% for option in props['options'] %}
           {{
             govieCheckbox({

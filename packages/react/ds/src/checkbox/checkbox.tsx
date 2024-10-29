@@ -29,31 +29,19 @@ const Checkbox = ({
   className,
 }: CheckboxType) => {
   return (
-    <div className={`gi-flex gi-items-center ${className && className}`}>
+    <div className={`gi-checkbox-container ${className && className}`}>
       <input
         name={label}
         onChange={onChange}
         data-element={dataElement}
         id={checkboxId}
         value={value}
-        className={`${getSizeClass(size)} ${getTickSize(size)}
-        gi-focus-state-outline
-        gi-cursor-pointer
-        gi-appearance-none
-        gi-border-md
-        gi-border-solid
-         gi-border-black
-         checked:before:gi-block
-         checked:before:gi--rotate-45
-         checked:before:gi-relative
-         checked:before:gi-border-l-lg
-         checked:before:gi-border-b-lg
-         checked:before:gi-border-black`}
+        className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
         type="checkbox"
       />
       <label
         htmlFor={checkboxId}
-        className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
+        className="gi-checkbox-label"
       >
         {label}
         {hint && <HintText text={hint} className="gi-mb-0" />}

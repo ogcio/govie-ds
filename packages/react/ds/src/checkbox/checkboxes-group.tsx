@@ -30,13 +30,13 @@ const CheckboxesGroup = ({
   size,
 }: CheckboxesGroupType) => {
   return (
-    <div className="gi-flex">
+    <div className="gi-checkbox-group-container">
       {errorMessage && (
-        <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
+        <div className="gi-checkbox-group-error"></div>
       )}
       <fieldset>
         {title && (
-          <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <legend className="gi-checkbox-group-title">
             {title.asHeading ? (
               <Heading
                 size={title.asHeading.size}
@@ -56,7 +56,7 @@ const CheckboxesGroup = ({
             )}
           </legend>
         )}
-        <div className="gi-flex gi-flex-col gi-gap-2.5">
+        <div className="gi-checkbox-group-checkboxes-container">
           {errorMessage && (
             <ErrorText text={errorMessage} className="gi-mb-0" />
           )}

@@ -8,7 +8,7 @@ export const Combobox = ({
   id,
 }: ComboboxProps) => {
   return (
-    <form id={id} method={method} action={action}>
+    <form className='gi-combobox-container' id={id} method={method} action={action}>
       {dropdownItems.map((dropdown, index) => (
         <DropdownItem key={index} {...dropdown} />
       ))}
