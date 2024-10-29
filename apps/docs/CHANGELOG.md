@@ -36,6 +36,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/docs-v0.26.0...docs-v0.27.0) (2024-10-28)
+
+
+### Features
+
+* adding focus state ([#300](https://github.com/ogcio/govie-ds/issues/300)) ([9b1b2c2](https://github.com/ogcio/govie-ds/commit/9b1b2c209522f8f1bd9f9383c86e327544c3a214))
+* improve accessibility tests ([#299](https://github.com/ogcio/govie-ds/issues/299)) ([6561fe8](https://github.com/ogcio/govie-ds/commit/6561fe842b6d5d28e32cf3aebe61526da4b1c5ef))
+
 ## [0.26.0](https://github.com/ogcio/govie-ds/compare/docs-v0.25.0...docs-v0.26.0) (2024-10-22)
 
 
