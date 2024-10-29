@@ -83,8 +83,14 @@ jobs:
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
 
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
       - name: Storybook build
         run: pnpm html:storybook:build
+
+      - name: Serve Storybook and run tests
+        run: pnpm html:storybook:test
 
       - name: Publish Global HTML Library to Chromatic
         uses: chromaui/action@latest
@@ -114,8 +120,14 @@ jobs:
           corepack enable
           pnpm install --frozen-lockfile --ignore-scripts
 
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
       - name: Storybook build
         run: pnpm react:storybook:build
+
+      - name: Serve Storybook and run tests
+        run: pnpm react:storybook:test
 
       - name: Publish React Library to Chromatic
         uses: chromaui/action@latest

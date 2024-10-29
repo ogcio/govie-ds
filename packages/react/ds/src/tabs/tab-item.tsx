@@ -1,55 +1,61 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
 import { slugify } from '../utils.js';
 
-export function TabItem({
-  value,
-  href,
-  checked = false,
-  children,
-  tabName,
-}: {
+export type TabItemProps = {
   value: string;
+  children: React.ReactNode;
   href?: string;
+  index?: number;
   checked?: boolean;
   ariaLabel?: string;
   ariaLabelledby?: string;
-  children: React.ReactNode;
-  tabName?: string;
-}) {
+  onTabFocus?: (event: React.FocusEvent<HTMLButtonElement, Element>) => void;
+  onTabClick?: (index: number) => void;
+  onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+};
+
+export const TabItem = ({
+  value,
+  href,
+  index = -1,
+  checked = false,
+  children,
+  onTabFocus = () => {},
+  onTabClick = () => {},
+  onTabKeyDown = () => {},
+}: TabItemProps) => {
   const valueSlug = slugify(value);
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (checked) {
+      buttonRef.current?.focus();
+    }
+  }, [checked]);
+
   return (
-    <>
-      <input
-        name={tabName}
-        type="radio"
-        id={`tab-${valueSlug}`}
-        aria-labelledby={`tab-label-${valueSlug}`}
-        aria-roledescription="tab"
-        defaultChecked={checked}
-        className="tab-item gi-absolute gi-opacity-0"
-      />
-      <label
-        role="tab"
-        htmlFor={`tab-${valueSlug}`}
-        id={`tab-label-${valueSlug}`}
-        aria-hidden="true"
-        className="
-          gi-inline-block 
-          gi-cursor-pointer
-          gi-px-5
-          gi-py-2
-          gi-relative
-          gi-mr-1
-          gi-bg-gray-50
-          gi-text-center 
-          gi-text-md
-          gi-underline
-          gi-text-slate-300"
-      >
+    <button
+      ref={buttonRef}
+      id={`tab-${valueSlug}`}
+      role="tab"
+      aria-roledescription="tab"
+      aria-selected={checked ? 'true' : 'false'}
+      aria-controls={`tab-panel-${valueSlug}`}
+      className={`gi-tab-item ${checked ? 'gi-tab-item-checked' : ''}`}
+      onClick={() => onTabClick(index)}
+      onKeyDown={(event) => {
+        onTabKeyDown(event);
+      }}
+      onFocus={(event) => onTabFocus(event)}
+    >
+      {href && (
         <a href={href} className="gi-decoration-xs">
           {children}
         </a>
-      </label>
-    </>
+      )}
+      {!href && <span className="gi-decoration-xs">{children}</span>}
+    </button>
   );
-}
+};

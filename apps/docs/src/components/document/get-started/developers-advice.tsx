@@ -36,7 +36,7 @@ function DevelopersAdviceInternal({ children }: { children: React.ReactNode }) {
     throw new Error(`Unknown platform '${platform}'.`);
   }
 
-  const childrenArray = Children.toArray(children);
+  const childrenArray = Children.toArray(<>{children}</>);
 
   const recommendation = platform
     ? childrenArray.find((child) => {
