@@ -98,7 +98,7 @@ export const Default: Story = {
       {
         label: 'Topic (without search)',
         options: topicOptions,
-        noSearch: true
+        noSearch: true,
       },
     ],
   },

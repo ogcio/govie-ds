@@ -55,11 +55,14 @@
   {% endmacro %}
 
   {% if props.as == 'span' %}
-    <span class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
+    <span
+      class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
       >{{ props.content | safe | trim }}</span
     >
   {% else %}
-    <p class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}">
+    <p
+      class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
+    >
       {{ props.content | safe | trim }}
     </p>
   {% endif %}

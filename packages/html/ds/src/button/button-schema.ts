@@ -61,9 +61,11 @@ export const buttonSchema = zod.object({
   form: zod
     .string({ description: 'The ID of the form that button is binded to ' })
     .optional(),
-  value: zod.string({
-    description: 'The value for the button sent in the request',
-  }).optional(),
+  value: zod
+    .string({
+      description: 'The value for the button sent in the request',
+    })
+    .optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;

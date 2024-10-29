@@ -12,10 +12,7 @@
       class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-checkbox-input"
       type="checkbox"
     />
-    <label
-      for="{{ props.checkboxId }}"
-      class="gi-checkbox-label"
-    >
+    <label for="{{ props.checkboxId }}" class="gi-checkbox-label">
       {{ props.label }}
       {% if props.hint %}
         {{

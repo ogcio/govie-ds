@@ -31,7 +31,7 @@ export const checkboxesSchema = zod.object({
             'if there is additional text required in order to give the user more context',
         })
         .optional(),
-      className: zod.string({description: "aditional classes"}).optional()  
+      className: zod.string({ description: 'aditional classes' }).optional(),
     })
     .describe(
       'Array of the checkboxes which include the label,value and hint properties',
