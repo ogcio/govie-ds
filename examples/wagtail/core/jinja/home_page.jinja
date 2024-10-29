@@ -17,8 +17,9 @@
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 {% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
 {% from 'list/list.html' import govieList %}
+{% from 'combo-box/combo-box.html' import govieComboBox %}
 
-{% from 'vars.jinja' import cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
+{% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -166,6 +167,10 @@
       "content": "Error: File must be smaller than 5MB."
     }
   }) }}
+
+  <h2>ComboBox</h2>
+
+  {{ govieComboBox(comboBoxProps) }}
 
   <h2>Button</h2>
 
