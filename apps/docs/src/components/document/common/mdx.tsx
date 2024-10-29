@@ -27,6 +27,7 @@ import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
+import { IconGridLayout } from '../resources/icon-grid-layout';
 import { Faq, Faqs } from '../faqs/faqs';
 import {
   DeveloperRecommendation,
@@ -162,6 +163,7 @@ const documentComponents: MDXComponents = {
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
   Chip: (props) => <Chip {...props} />,
+  IconGridLayout: (props) => <IconGridLayout {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
