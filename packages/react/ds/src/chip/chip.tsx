@@ -25,7 +25,7 @@ export const Chip = ({ label, onClose = () => null }: ChipProps) => {
 
   return (
     <div
-      className={'gi-chip'}
+      className="gi-chip"
       aria-label={`chip: ${label}`}
       aria-describedby={descriptionId}
       tabIndex={0}
