@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState, useRef } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
 import Checkbox from '../checkbox/checkbox.js';
@@ -7,8 +8,6 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagType } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { DropdownItemType } from './types.js';
-
-// Add focus
 
 export const DropdownItem = ({
   label,
