@@ -27,7 +27,6 @@ import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
-import { IconGridLayout } from '../resources/icon-grid-layout';
 import { Faq, Faqs } from '../faqs/faqs';
 import {
   DeveloperRecommendation,
@@ -41,6 +40,7 @@ import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
+import { IconGridLayout } from '../resources/icon-grid-layout';
 import { Logos } from '../resources/logos';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';

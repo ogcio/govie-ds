@@ -1,6 +1,6 @@
+import { Icon } from '@govie-ds/react';
 import React, { Fragment } from 'react';
 import { Card } from '../common/card';
-import { Icon } from '@govie-ds/react';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
 
 const icons = [
