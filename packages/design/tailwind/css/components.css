@@ -550,7 +550,7 @@ input[type='file' i] {
   @apply gi-bg-gray-50 gi-relative gi-block
 }
 .gi-combobox-search {
-  @apply gi-py-4 gi-px-3
+  @apply gi-py-4 gi-px-3 gi-relative
 }
 .gi-combobox-search-input {
   @apply gi-pt-0 gi-pb-0 gi-mb-0

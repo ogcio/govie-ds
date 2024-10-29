@@ -1,3 +1,5 @@
+{% from 'helpers/helpers.html' import addClasses %}
+
 {% macro govieTag(props) %}
   {# Mapping tag type to classes similar to React's tagClass structure #}
   {% macro getClasses(type) %}
@@ -15,7 +17,9 @@
     {{ tagClasses[type | default('info')] }}
   {% endmacro %}
 
-  <strong class="gi-tag {{ getClasses(props.type) | trim }}">
+  <strong
+    class="gi-tag {{ getClasses(props.type) | trim }} {{ addClasses(props.className) | trim }}"
+  >
     {{ props.text | safe | trim }}
   </strong>
 {% endmacro %}

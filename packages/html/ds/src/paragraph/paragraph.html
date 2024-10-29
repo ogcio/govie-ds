@@ -1,3 +1,5 @@
+{% from 'helpers/helpers.html' import addClasses %}
+
 {% macro govieParagraph(props) %}
   {% macro getSizeClass(size) %}
     {% if size == 'lg' %}
@@ -53,11 +55,11 @@
   {% endmacro %}
 
   {% if props.as == 'span' %}
-    <span class="{{ getCommonClasses(props) | trim }}"
+    <span class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
       >{{ props.content | safe | trim }}</span
     >
   {% else %}
-    <p class="{{ getCommonClasses(props) | trim }}">
+    <p class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}">
       {{ props.content | safe | trim }}
     </p>
   {% endif %}
