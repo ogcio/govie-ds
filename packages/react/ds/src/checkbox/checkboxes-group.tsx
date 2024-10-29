@@ -31,9 +31,7 @@ const CheckboxesGroup = ({
 }: CheckboxesGroupType) => {
   return (
     <div className="gi-checkbox-group-container">
-      {errorMessage && (
-        <div className="gi-checkbox-group-error"></div>
-      )}
+      {errorMessage && <div className="gi-checkbox-group-error"></div>}
       <fieldset>
         {title && (
           <legend className="gi-checkbox-group-title">

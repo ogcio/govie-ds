@@ -1,4 +1,5 @@
 {% from 'combo-box/dropdown-item.html' import govieDropdownItem %}
+{% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieComboBox(props) %}
   <form
@@ -6,7 +7,7 @@
     id="{{ props.id }}"
     method="{{ props.method }}"
     action="{{ props.action }}"
-    class="gi-combobox-container"
+    class="gi-combobox-container {{ addClasses(props.className) | trim }}"
   >
     {% for dropdown in props['dropdownItems'] %}
       {{ govieDropdownItem(dropdown) }}

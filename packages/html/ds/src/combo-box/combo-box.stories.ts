@@ -101,5 +101,6 @@ export const Default: Story = {
         noSearch: true,
       },
     ],
+    className: 'gi-mx-auto',
   },
 };

@@ -39,10 +39,7 @@ const Checkbox = ({
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
         type="checkbox"
       />
-      <label
-        htmlFor={checkboxId}
-        className="gi-checkbox-label"
-      >
+      <label htmlFor={checkboxId} className="gi-checkbox-label">
         {label}
         {hint && <HintText text={hint} className="gi-mb-0" />}
       </label>

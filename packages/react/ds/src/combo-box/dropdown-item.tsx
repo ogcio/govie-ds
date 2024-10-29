@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useEffect, useState, useRef } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
 import Checkbox from '../checkbox/checkbox.js';

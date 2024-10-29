@@ -13,4 +13,5 @@ export type ComboboxProps = {
   dropdownItems: DropdownItemType[];
   method?: 'get' | 'post';
   id?: string;
+  className?: string;
 };

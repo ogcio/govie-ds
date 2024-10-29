@@ -119,6 +119,8 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
 
       if (searchInputElement && resetSearchElement) {
         resetSearchElement.addEventListener('click', (event) => {
+          resetSearchElement.classList.add('!gi-hidden');
+          noResultsElement.classList.add('!gi-hidden');
           event.preventDefault();
           state.searchInput = '';
           searchInputElement.value = '';
