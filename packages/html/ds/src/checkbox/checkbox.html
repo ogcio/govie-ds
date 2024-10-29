@@ -3,7 +3,7 @@
 {% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieCheckbox(props) %}
-  <div class="gi-flex gi-items-start {{ addClasses(props.className) | trim }}">
+  <div class="gi-flex gi-items-center {{ addClasses(props.className) | trim }}">
     <input
       name="{{ props.label }}"
       data-element="{{ props.dataElement }}"

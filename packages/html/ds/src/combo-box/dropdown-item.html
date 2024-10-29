@@ -7,7 +7,7 @@
 
 {% macro govieDropdownItem(props) %}
   {% set selectedCheckboxes = "0" %}
-  {% set isOpen = true %}
+  {% set isOpen = 'false' %}
   {% set searchInput = '' %}
   {% set noResults = 'false' %}
 
@@ -35,7 +35,7 @@
     </div>
 
     <div
-      class="{% if isOpen %}gi-combobox-dropdown-container-open{% else %}gi-hidden{% endif %}"
+      class="{% if isOpen == 'true' %}gi-combobox-dropdown-container-open{% else %}gi-hidden{% endif %}"
     >
       {% if not props.noSearch %}
         <div class="gi-combobox-search">
@@ -43,7 +43,8 @@
             govieTextInput({
             "placeholder": "Search",
             "className": "gi-combobox-search-input",
-            "value": searchInput
+            "value": searchInput,
+            "fullFluid": true
             })
           }}
           {% if searchInput %}
@@ -63,7 +64,7 @@
       {% endif %}
 
       <div class="gi-combobox-checkbox-container">
-        {% if noResults %}
+        {% if not noResults == 'false' %}
           {{
             govieParagraph({
                 "className": "gi-combobox-checkbox-paragraph",
