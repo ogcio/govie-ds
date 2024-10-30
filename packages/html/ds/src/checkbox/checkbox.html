@@ -5,7 +5,7 @@
 {% macro govieCheckbox(props) %}
   <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
     <input
-      name="{{ props.label }}"
+      {% if props.label %}name="{{ props.label }}"{% endif %}
       data-element="{{ props.dataElement }}"
       id="{{ props.checkboxId }}"
       value="{{ props.value }}"

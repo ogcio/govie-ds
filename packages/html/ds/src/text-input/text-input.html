@@ -72,7 +72,7 @@
 
       <input
         id="{{ inputId }}"
-        placeholder="{{ props.placeholder }}"
+        {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
         data-testid="textbox"
         {{ widthStyle | safe }}
         type="{{ props.type or 'text' }}"

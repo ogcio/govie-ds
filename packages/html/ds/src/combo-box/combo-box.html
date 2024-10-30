@@ -4,8 +4,8 @@
 {% macro govieComboBox(props) %}
   <form
     data-module="gieds-combobox"
-    id="{{ props.id }}"
-    method="{{ props.method }}"
+    {% if props.id %}id="{{ props.id }}"{% endif %}
+    {% if props.method %}method="{{ props.method }}"{% endif %}
     action="{{ props.action }}"
     class="gi-combobox-container {{ addClasses(props.className) | trim }}"
   >
