@@ -8,7 +8,9 @@
 
   {% macro getInsetClass(inset) %}
     {% if inset == 'body' %}
-      gi-card-inset-body {% elif inset == 'full' %} gi-card-inset-full
+      gi-card-inset-body
+    {% elif inset == 'full' %}
+      gi-card-inset-full
     {% else %}
       gi-card-inset-none
     {% endif %}
@@ -82,7 +84,7 @@
         <div class="gi-card-action">
           {% if props.action.type == 'link' %}
             {{ govieLink(props.action) }}
-            {% elif props.action.type == 'button' %}
+          {% elif props.action.type == 'button' %}
             {{ govieButton(props.action) }}
           {% endif %}
         </div>
