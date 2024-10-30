@@ -7,7 +7,7 @@
 
 {% macro govieDropdownItem(props) %}
   <div data-module="gieds-dropdown-item">
-    <div class="gi-combobox-toggle">
+    <div data-testid="combobox-toggle" class="gi-combobox-toggle">
       <div class="gi-combobox-toggle-content">
         {{ govieParagraph({"content": props.label}) }}
         {{
@@ -20,7 +20,7 @@
       </div>
       {{ govieIcon({"icon": "keyboard_arrow_down"}) }}
     </div>
-    <div data-element="combobox-dropdown-container" , class="gi-hidden">
+    <div data-testid="combobox-dropdown-container" data-element="combobox-dropdown-container" class="gi-hidden">
       {% if not props.noSearch %}
         <div class="gi-combobox-search">
           {{
