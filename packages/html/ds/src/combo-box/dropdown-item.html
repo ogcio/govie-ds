@@ -20,7 +20,11 @@
       </div>
       {{ govieIcon({"icon": "keyboard_arrow_down"}) }}
     </div>
-    <div data-testid="combobox-dropdown-container" data-element="combobox-dropdown-container" class="gi-hidden">
+    <div
+      data-testid="combobox-dropdown-container"
+      data-element="combobox-dropdown-container"
+      class="gi-hidden"
+    >
       {% if not props.noSearch %}
         <div class="gi-combobox-search">
           {{
