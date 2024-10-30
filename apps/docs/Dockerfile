@@ -1,4 +1,4 @@
-FROM docker.io/node:20-alpine as base
+FROM docker.io/node:22-alpine as base
 
 # Build image (run from root)
 

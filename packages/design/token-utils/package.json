@@ -25,10 +25,7 @@
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
-    "@tsconfig/node20": "^20.1.4",
     "@types/lodash": "^4.17.7",
-    "eslint": "^9.8.0",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.4"
+    "eslint": "^9.8.0"
   }
 }
