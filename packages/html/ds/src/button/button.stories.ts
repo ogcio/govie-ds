@@ -65,7 +65,30 @@ export const Default: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const AllVariants: Story = {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () => `
+    <div class="gi-flex gi-flex-col gi-gap-4">
+      <div class="gi-flex gi-gap-4">
+        <button class="gi-btn gi-btn-primary gi-btn-regular">Primary</button>
+        <button class="gi-btn gi-btn-secondary gi-btn-regular">Secondary</button>
+        <button class="gi-btn gi-btn-flat gi-btn-regular">Flat</button>
+      </div>
+      <div class="gi-flex gi-gap-4">
+        <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
+        <button class="gi-btn gi-btn-secondary-dark gi-btn-regular">Secondary Dark</button>
+        <button class="gi-btn gi-btn-flat-dark gi-btn-regular">Flat Dark</button>
+      </div>
+      <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+        <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
+        <button class="gi-btn gi-btn-secondary-light gi-btn-regular">Secondary Light</button>
+        <button class="gi-btn gi-btn-flat-light gi-btn-regular">Flat Light</button>
+      </div>
+    </div>
+  `,
+};
+
+export const WithLeftIcon: Story = {
   args: {
     content: `<span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span> Button`,
   },

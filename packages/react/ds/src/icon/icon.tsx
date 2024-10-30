@@ -58,7 +58,7 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
-      className={`${className} ${iconStyle} ${iconColor} ${display} ${fontSize}`}
+      className={`${className} ${iconStyle} ${iconColor} ${display}`}
       style={{ fontSize }}
     >
       {icon as string}

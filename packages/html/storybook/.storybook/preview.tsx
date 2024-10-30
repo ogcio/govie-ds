@@ -19,8 +19,8 @@ import '../../ds/styles.css';
 const ButtonDecorator = (arguments_, parameters) => {
   let classes = 'gi-p-4';
   if (
-    parameters.macro.name !== 'govieButton' &&
-    parameters.macro.name !== 'govieIconButton'
+    parameters?.macro?.name !== 'govieButton' &&
+    parameters?.macro?.name !== 'govieIconButton'
   ) {
     return;
   }
@@ -32,7 +32,7 @@ const ButtonDecorator = (arguments_, parameters) => {
 
 // add decorators for modal
 const ModalDecorator = (_, parameters) => {
-  if (parameters.macro.name !== 'govieModal') {
+  if (parameters?.macro?.name !== 'govieModal') {
     return {};
   }
   return {
@@ -48,7 +48,7 @@ export const decorators = [
     }, []);
     const { args, parameters } = context;
     const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-    if (isProd) {
+    if (isProd && parameters.macro) {
       parameters.macro.path = './macros';
     }
 
@@ -98,12 +98,13 @@ const preview: Preview = {
         transform: (_, context) => {
           const { args, parameters } = context;
           const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-          if (isProd) {
+
+          if (isProd && parameters.macro) {
             parameters.macro.path = './macros';
           }
 
           if (!parameters.macro) {
-            throw new Error('No macro found in parameters.');
+            return parameters.renderedHtml || 'No content available';
           }
 
           if (!parameters.macro.html) {
@@ -115,7 +116,6 @@ const preview: Preview = {
           }
 
           const renderedMacro = renderMacro(parameters.macro)(args);
-
           const macroOptions = JSON.stringify(args, null, 2);
 
           const lines = [

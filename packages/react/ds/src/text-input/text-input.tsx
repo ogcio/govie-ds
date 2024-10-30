@@ -86,7 +86,22 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             id={id}
             type={type}
             style={widthStyle}
-            className={`${error?.text ? 'gi-border-red-600' : 'gi-border-gray-950'} ${widthClass} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 focus:gi-outline focus:gi-outline-[3px] focus:gi-border-lg focus:gi-border-gray-950 focus:gi-outline-yellow-400 focus:gi-outline-offset-0 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5`}
+            className={`${error?.text ? 'gi-border-red-600' : 'gi-border-gray-950'}
+               ${widthClass}
+               gi-focus-state-outline
+               gi-focus-state-border
+               gi-flex-initial 
+               gi-border-sm
+               gi-border-solid
+               gi-box-border
+               gi-h-10
+               gi-mt-0
+               gi-p-1
+               gi-z-1
+               xs:gi-text-md
+               gi-text-sm
+               gi-leading-10
+               xs:!gi-leading-5`}
             ref={ref}
             {...props}
           />

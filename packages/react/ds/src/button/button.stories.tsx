@@ -62,7 +62,50 @@ export const Default: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const AllVariants: Story = {
+  args: {
+    children: 'Button',
+  },
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-4">
+      <div className="gi-flex gi-gap-4">
+        <Button variant="primary" size="medium">
+          Primary
+        </Button>
+        <Button variant="secondary" size="medium">
+          Secondary
+        </Button>
+        <Button variant="flat" size="medium">
+          Flat
+        </Button>
+      </div>
+      <div className="gi-flex gi-gap-4">
+        <Button variant="primary" size="medium" appearance="dark">
+          Primary Dark
+        </Button>
+        <Button variant="secondary" size="medium" appearance="dark">
+          Secondary Dark
+        </Button>
+        <Button variant="flat" size="medium" appearance="dark">
+          Flat Dark
+        </Button>
+      </div>
+      <div className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+        <Button variant="primary" size="medium" appearance="light">
+          Primary Light
+        </Button>
+        <Button variant="secondary" size="medium" appearance="light">
+          Secondary Light
+        </Button>
+        <Button variant="flat" size="medium" appearance="light">
+          Flat Light
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+export const WithIconLeft: Story = {
   args: {
     children: (
       <Fragment>
