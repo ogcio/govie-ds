@@ -86,6 +86,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             id={id}
             type={type}
             style={widthStyle}
+            data-testid="textbox"
             className={`${error?.text ? 'gi-border-red-600' : 'gi-border-gray-950'}
                ${widthClass}
                gi-focus-state-outline

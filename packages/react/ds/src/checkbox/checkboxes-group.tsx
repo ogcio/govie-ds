@@ -3,7 +3,7 @@ import { Heading, HeadingAs, HeadingSize } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
 import Checkbox, { CheckboxSizeEnum } from './checkbox.js';
 
-type CheckboxesGroupType = {
+export type CheckboxesGroupType = {
   size?: CheckboxSizeEnum;
   fieldId: string;
   errorMessage?: string;
@@ -30,7 +30,7 @@ const CheckboxesGroup = ({
   size,
 }: CheckboxesGroupType) => {
   return (
-    <div className="gi-flex">
+    <div className="gi-flex" data-testid="govie-checkboxes">
       {errorMessage && (
         <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
       )}
@@ -49,6 +49,7 @@ const CheckboxesGroup = ({
           )}
           {title.hint && (
             <HintText
+              data-testid="title-hint"
               text={title.hint}
               className="!gi-mb-[var(--gieds-space-2)]"
             />

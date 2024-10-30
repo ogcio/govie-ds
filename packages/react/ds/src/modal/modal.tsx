@@ -3,7 +3,7 @@ import React, { useState, cloneElement } from 'react';
 import { ButtonProps } from '../button/types.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
-type ModalProps = {
+export type ModalProps = {
   children: React.ReactNode;
   triggerButton?: React.ReactElement<ButtonProps>;
 };
@@ -26,8 +26,9 @@ export const Modal = ({ triggerButton, children }: ModalProps) => {
         onClick={handleClose}
         className={`gi-modal ${open ? 'gi-modal-open' : 'gi-modal-close'}`}
         data-element="modal"
+        data-testid="modal"
       >
-        <div className="gi-modal-container">
+        <div className="gi-modal-container" data-testid="modal-container">
           <IconButton
             size="large"
             className="gi-modal-icon"
