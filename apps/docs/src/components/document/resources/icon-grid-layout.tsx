@@ -24,7 +24,7 @@ export function IconGridLayout() {
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 border-t border-l">
       {icons.map((icon) => (
         <Fragment key={icon}>
-          <div className="border-r border-b pt-2 pl-2 hover:bg-gray-50 transition-colors">
+          <div className="border-r border-b p-2 hover:bg-gray-50 transition-colors">
             <Card title={icon}>
               <div className="flex justify-center p-4">
                 <Icon icon={icon} size="lg" />
