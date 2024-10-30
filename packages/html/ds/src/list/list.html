@@ -4,18 +4,18 @@
   {% macro getListClass(type, spaced) %}
     {% set listClasses = [] %}
     {% if type == 'bullet' %}
-      {{ listClasses.append('gi-list-bullet') }}
+      {% set listClasses = (listClasses.push('gi-list-bullet'), listClasses) %}
     {% elif type == 'number' %}
-      {{ listClasses.append('gi-list-number') }}
+      {% set listClasses = (listClasses.push('gi-list-number'), listClasses) %}
     {% else %}
-      {{ listClasses.append('gi-list') }}
+      {% set listClasses = (listClasses.push('gi-list'), listClasses) %}
     {% endif %}
 
     {% if spaced %}
-      {{ listClasses.append('gi-list-spaced') }}
+      {% set listClasses = (listClasses.push('gi-list-spaced'), listClasses) %}
     {% endif %}
 
-    {{ classes | join(' ') }}
+    {{ listClasses | join(' ') }}
   {% endmacro %}
 
   <ul
