@@ -17,6 +17,7 @@ import {
   CookieBanner,
   List,
   Combobox,
+  Chip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -162,6 +163,7 @@ const documentComponents: MDXComponents = {
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
   ComboBox: (props) => <Combobox {...props} />,
+  Chip: (props) => <Chip {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

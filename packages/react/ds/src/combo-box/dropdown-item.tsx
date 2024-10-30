@@ -117,7 +117,7 @@ export const DropdownItem = ({
           )}
           {options.map((checkbox, index) => (
             <Checkbox
-              key={index}
+              key={`${index}_${checkbox.label}`}
               onChange={handleCheckbox}
               dataElement={checkbox.label}
               checkboxId={checkbox.label}
