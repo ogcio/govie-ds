@@ -171,6 +171,26 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'chip',
+      name: 'Chip',
+      statuses: [
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/components-chip--docs',
+          },
+          status: 'alpha',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/components-chip--docs',
+          },
+          status: 'alpha',
+        },
+      ],
+    },
+    {
       id: 'date-input',
       name: 'Date Input',
       statuses: [
