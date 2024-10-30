@@ -165,4 +165,9 @@ describe('comboBox', () => {
       expect(filteredCheckboxes.length).toBe(3);
     }
   });
+
+  it('should pass axe tests', async () => {
+    const screen = renderComboBox(standardProps);
+    await screen.axe();
+  });
 });

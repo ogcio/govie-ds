@@ -16,7 +16,9 @@ export const Combobox = ({
       action={action}
     >
       {dropdownItems.map((dropdown, index) => (
-        <DropdownItem key={index} {...dropdown} />
+        <div aria-label={`${dropdown.label} dropdown`}>
+          <DropdownItem key={index} {...dropdown} />
+        </div>
       ))}
     </form>
   );

@@ -422,10 +422,6 @@ export const organisationOptions = [
     value: '15361907-pobal',
   },
   {
-    label: " President's Establishment ",
-    value: 'presidents-establishment',
-  },
-  {
     label: 'Probation Service',
     value: '25cc7-probation-service',
   },
