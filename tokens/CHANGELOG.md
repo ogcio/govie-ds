@@ -6,6 +6,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.7.0](https://github.com/ogcio/govie-ds/compare/tokens-v0.6.0...tokens-v0.7.0) (2024-10-28)
+
+
+### Features
+
+* improve accessibility tests ([#299](https://github.com/ogcio/govie-ds/issues/299)) ([6561fe8](https://github.com/ogcio/govie-ds/commit/6561fe842b6d5d28e32cf3aebe61526da4b1c5ef))
+
 ## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.1-alpha.0...@govie-ds/tokens-0.4.1) (2024-09-09)
 
 ### Dependency Updates
