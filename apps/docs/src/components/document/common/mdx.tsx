@@ -40,6 +40,7 @@ import { PageNotFound } from '../patterns/page-not-found';
 import { ServiceUnavailable } from '../patterns/service-not-available';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
+import { IconGridLayout } from '../resources/icon-grid-layout';
 import { Logos } from '../resources/logos';
 import { ScreenSizeTable } from '../screen-size/screen-size-table';
 import { ShadowTable } from '../shadow/shadow-table';
@@ -162,6 +163,7 @@ const documentComponents: MDXComponents = {
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
   Chip: (props) => <Chip {...props} />,
+  IconGridLayout: (props) => <IconGridLayout {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
