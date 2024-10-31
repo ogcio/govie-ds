@@ -534,7 +534,7 @@ input[type='file' i] {
 /* ComboBox */
 
 .gi-combobox-container {
- @apply gi-max-w-[400px]
+ @apply gi-max-w-[400px] gi-border-t
 }
 .gi-combobox-toggle {
   @apply gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline
