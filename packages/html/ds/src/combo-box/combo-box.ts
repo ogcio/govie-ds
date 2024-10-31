@@ -106,13 +106,16 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         });
       }
 
-      dropdownToggle.addEventListener('click', () => {
+      dropdownToggle.addEventListener('click', (event) => {
+        event.preventDefault()
         state.isOpen = !state.isOpen;
         if (state.isOpen) {
-          dropdownContainer.classList.remove('gi-hidden');
+          dropdownToggle.classList.add('gi-combobox-toggle-open');
+          dropdownContainer.classList.remove('!gi-hidden');
           closeIcon.classList.add('gi-rotate-180');
         } else {
-          dropdownContainer.classList.add('gi-hidden');
+          dropdownToggle.classList.remove('gi-combobox-toggle-open');
+          dropdownContainer.classList.add('!gi-hidden');
           closeIcon.classList.remove('gi-rotate-180');
         }
       });

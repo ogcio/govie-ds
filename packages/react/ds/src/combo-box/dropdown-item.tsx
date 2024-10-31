@@ -69,7 +69,13 @@ export const DropdownItem = ({
 
   return (
     <div>
-      <div onClick={() => setIsOpen(!isOpen)} className="gi-combobox-toggle">
+      <button
+        onClick={(event) => {
+          event.preventDefault();
+          setIsOpen(!isOpen);
+        }}
+        className={`gi-combobox-toggle ${isOpen && 'gi-combobox-toggle-open'}`}
+      >
         <div className="gi-combobox-toggle-content">
           <Paragraph size="md">{label}</Paragraph>
           {selectedCheckboxes !== 0 && (
@@ -81,7 +87,7 @@ export const DropdownItem = ({
           className={`${isOpen && 'gi-rotate-180'}`}
           icon="keyboard_arrow_down"
         />
-      </div>
+      </button>
 
       <div
         className={`${isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}`}

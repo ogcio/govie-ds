@@ -537,16 +537,19 @@ input[type='file' i] {
  @apply gi-max-w-[400px]
 }
 .gi-combobox-toggle {
-  @apply hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer
+  @apply gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline
+}
+.gi-combobox-toggle-open {
+  @apply gi-border-b-0
 }
 .gi-combobox-toggle-content {
   @apply gi-flex gi-gap-2
 }
 .gi-combobox-toggle-content > p {
-  @apply gi-mb-0
+  @apply gi-mb-0 gi-leading-[1.3]
 }
 .gi-combobox-dropdown-container-open {
-  @apply gi-bg-gray-50 gi-relative gi-block
+  @apply gi-bg-gray-50 gi-relative gi-block gi-border-b
 }
 .gi-combobox-search {
   @apply gi-py-4 gi-px-3 gi-relative
@@ -556,6 +559,9 @@ input[type='file' i] {
 }
 .gi-combobox-search-input input {
   @apply gi-pl-3
+}
+.gi-combobox-search-input input::placeholder {
+  @apply gi-text-gray-600
 }
 .gi-combobox-search-icon {
   @apply gi-absolute gi-right-4 gi-top-5 gi-z-100 gi-cursor-pointer
