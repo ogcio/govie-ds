@@ -50,6 +50,20 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.16.0](https://github.com/ogcio/govie-ds/compare/html-v0.15.0...html-v0.16.0) (2024-10-31)
+
+
+### Features
+
+* add `ComboBox` ([#301](https://github.com/ogcio/govie-ds/issues/301)) ([8f1d37d](https://github.com/ogcio/govie-ds/commit/8f1d37da6c3b3a20fe3ae8328e2f485f818d5a6e))
+* chip component ([#303](https://github.com/ogcio/govie-ds/issues/303)) ([37a6697](https://github.com/ogcio/govie-ds/commit/37a66970ba43d208768c6294d20a867a8edcb373))
+
+
+### Bug Fixes
+
+* jinja macros and wagtail example ([88ba303](https://github.com/ogcio/govie-ds/commit/88ba303db9f125742cb92431dab3550969f6244f))
+* list html macro ([8a007d0](https://github.com/ogcio/govie-ds/commit/8a007d04ae645fffcf836698df57994a0744ff9a))
+
 ## [0.15.0](https://github.com/ogcio/govie-ds/compare/html-v0.14.0...html-v0.15.0) (2024-10-28)
 
 
