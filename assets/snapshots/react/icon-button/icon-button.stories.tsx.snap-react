@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/IconButton Default smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-icon-btn-regular undefined ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Disabled smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn undefined gi-icon-btn-regular gi-btn-primary-disabled ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton FlatButton smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-flat gi-icon-btn-regular undefined ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Large smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-icon-btn-large undefined ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 24px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton SecondaryButton smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-secondary gi-icon-btn-regular undefined ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Small smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-icon-btn-small undefined ">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;

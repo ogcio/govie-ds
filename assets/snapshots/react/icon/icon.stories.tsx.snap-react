@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Icon AriaHidden smoke-test 1`] = `
+<span aria-hidden="true"
+      role="presentation"
+      class=" material-icons  gi-block"
+      style="font-size: 24px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon AriaLabel smoke-test 1`] = `
+<span aria-label="Thumbs up"
+      role="img"
+      class=" material-icons  gi-block"
+      style="font-size: 24px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon Default smoke-test 1`] = `
+<span role="presentation"
+      class=" material-icons  gi-block"
+      style="font-size: 24px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon ExtraLarge smoke-test 1`] = `
+<span role="presentation"
+      class=" material-icons  gi-block"
+      style="font-size: 48px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon Large smoke-test 1`] = `
+<span role="presentation"
+      class=" material-icons  gi-block"
+      style="font-size: 32px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon Outlined smoke-test 1`] = `
+<span role="presentation"
+      class=" material-icons-outlined  gi-block"
+      style="font-size: 24px;"
+>
+  thumb_up
+</span>
+`;
+
+exports[`Components/Icon Small smoke-test 1`] = `
+<span role="presentation"
+      class=" material-icons  gi-block"
+      style="font-size: 16px;"
+>
+  thumb_up
+</span>
+`;

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/Button AllVariants smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <div class="gi-flex gi-flex-col gi-gap-4">
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-primary gi-btn-regular undefined">
+        Primary
+      </button>
+      <button class="gi-btn gi-btn-secondary gi-btn-regular undefined">
+        Secondary
+      </button>
+      <button class="gi-btn gi-btn-flat gi-btn-regular undefined">
+        Flat
+      </button>
+    </div>
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular undefined">
+        Primary Dark
+      </button>
+      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular undefined">
+        Secondary Dark
+      </button>
+      <button class="gi-btn gi-btn-flat-dark gi-btn-regular undefined">
+        Flat Dark
+      </button>
+    </div>
+    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+      <button class="gi-btn gi-btn-primary-light gi-btn-regular undefined">
+        Primary Light
+      </button>
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular undefined">
+        Secondary Light
+      </button>
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular undefined">
+        Flat Light
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form/Button Default smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-btn-regular undefined">
+    Button
+  </button>
+</div>
+`;
+
+exports[`Form/Button Disabled smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn undefined gi-btn-regular gi-btn-primary-disabled">
+    Button
+  </button>
+</div>
+`;
+
+exports[`Form/Button WithIconLeft smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-btn-regular undefined">
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 24px;"
+    >
+      thumb_up
+    </span>
+    Button
+  </button>
+</div>
+`;
+
+exports[`Form/Button WithIconRight smoke-test 1`] = `
+<div class="gi-p-4 false">
+  <button class="gi-btn gi-btn-primary gi-btn-regular undefined">
+    Button
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 24px;"
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;

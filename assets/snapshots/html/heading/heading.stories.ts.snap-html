@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography/Heading Caption smoke-test 1`] = `
+<div>
+  <span data-testid="govie-heading-caption"
+        class="gi-text-gray-500"
+  >
+    Caption Text
+  </span>
+  <h1 class="gi-heading-md">
+    Heading with h6
+  </h1>
+</div>
+`;
+
+exports[`Typography/Heading Default smoke-test 1`] = `
+<div>
+  <h1 class="gi-heading-xl">
+    Heading
+  </h1>
+</div>
+`;
+
+exports[`Typography/Heading ExtraLarge smoke-test 1`] = `
+<div>
+  <h1 class="gi-heading-xl">
+    Extra large heading
+  </h1>
+</div>
+`;
+
+exports[`Typography/Heading Large smoke-test 1`] = `
+<div>
+  <h1 class="gi-heading-lg">
+    Large heading
+  </h1>
+</div>
+`;
+
+exports[`Typography/Heading Medium smoke-test 1`] = `
+<div>
+  <h3 class="gi-heading-md">
+    Medium heading
+  </h3>
+</div>
+`;
+
+exports[`Typography/Heading Small smoke-test 1`] = `
+<div>
+  <h6 class="gi-heading-2xs">
+    Small heading
+  </h6>
+</div>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Chip Default smoke-test 1`] = `
+<div class="gi-chip"
+     aria-label="chip: Label"
+     aria-describedby="chip-description-:r0:"
+     tabindex="0"
+>
+  <span id="chip-description-:r0:">
+    Label
+  </span>
+  <div role="button"
+       aria-label="remove chip"
+  >
+    <span role="presentation"
+          class=" material-icons  gi-block"
+          style="font-size: 16px;"
+    >
+      close
+    </span>
+  </div>
+</div>
+`;

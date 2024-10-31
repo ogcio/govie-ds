@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography/List Bullet smoke-test 1`] = `
+<ul class="gi-list-bullet">
+  <li>
+    apple
+  </li>
+  <li>
+    orange
+  </li>
+  <li>
+    pears
+  </li>
+</ul>
+`;
+
+exports[`Typography/List Default smoke-test 1`] = `
+<ul class="gi-list">
+  <li>
+    Item 1
+  </li>
+  <li>
+    Item 2
+  </li>
+  <li>
+    Item 3
+  </li>
+</ul>
+`;
+
+exports[`Typography/List ExtraSpace smoke-test 1`] = `
+<ul class="gi-list-number gi-list-spaced">
+  <li>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
+  </li>
+  <li>
+    Curabitur ac felis arcu. Sed vehicula risus nec ligula tempor, vel euismod augue consectetur.
+  </li>
+  <li>
+    Fusce tincidunt mi ac augue ultricies, id cursus libero dapibus. Phasellus a urna eget justo.
+  </li>
+</ul>
+`;
+
+exports[`Typography/List Links smoke-test 1`] = `
+<ul class="gi-list">
+  <li>
+    <a href="#"
+       class="
+        gi-link
+        
+        
+        
+        "
+    >
+      link 1
+    </a>
+  </li>
+  <li>
+    <a href="#"
+       class="
+        gi-link
+        
+        
+        
+        "
+    >
+      link 2
+    </a>
+  </li>
+  <li>
+    <a href="#"
+       class="
+        gi-link
+        
+        
+        
+        "
+    >
+      link 3
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Typography/List Numbered smoke-test 1`] = `
+<ul class="gi-list-number">
+  <li>
+    Delivery address
+  </li>
+  <li>
+    Payment
+  </li>
+  <li>
+    Confirmation
+  </li>
+</ul>
+`;

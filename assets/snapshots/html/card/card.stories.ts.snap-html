@@ -1,0 +1,263 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Card Default smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-horizontal       gi-card-inset-none">
+    <div class="gi-card-image">
+      <a href>
+        <img src="https://placeholderjs.com/400x300"
+             alt="Card Title"
+        >
+      </a>
+    </div>
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Card Title
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subheading
+          </div>
+        </div>
+        <div class="gi-card-tag">
+          <strong class="gi-tag gi-tag-info">
+            New
+          </strong>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <button data-element="button-container"
+                data-module="gieds-button"
+                data-testid="govieButton-default-secondary-medium-notDisabled"
+                class="gi-btn gi-btn-secondary gi-btn-regular "
+        >
+          Button
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card Horizontal smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-horizontal       gi-card-inset-none">
+    <div class="gi-card-image">
+      <a href>
+        <img src="https://placeholderjs.com/600x360"
+             alt="Horizontal Card"
+        >
+      </a>
+    </div>
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Horizontal Card
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subtitle Here
+          </div>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <button data-element="button-container"
+                data-module="gieds-button"
+                data-testid="govieButton-default-secondary-medium-notDisabled"
+                class="gi-btn gi-btn-secondary gi-btn-regular "
+        >
+          Click Me
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card HorizontalWithIcon smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-horizontal       gi-card-inset-none">
+    <div class="gi-card-icon">
+      <a href>
+        <span data-testid="govie-icon"
+              role="presentation"
+              class="
+      material-icons
+      
+      gi-block
+      gi-text-[49px]
+      gi-text-gray-500"
+        >
+          download
+        </span>
+      </a>
+    </div>
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Card With Icon
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subtitle Here
+          </div>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <button data-element="button-container"
+                data-module="gieds-button"
+                data-testid="govieButton-default-secondary-medium-notDisabled"
+                class="gi-btn gi-btn-secondary gi-btn-regular "
+        >
+          Download
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card HorizontalWithoutImage smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-horizontal       gi-card-inset-none">
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Horizontal Card Without Image
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subtitle Here
+          </div>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <a href="#"
+           class="
+      gi-link
+      
+      
+      
+      gi-link-md
+    "
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card VerticalWithLink smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-vertical       gi-card-inset-none">
+    <div class="gi-card-image">
+      <a href>
+        <img src="https://placeholderjs.com/400x300"
+             alt="Vertical Card"
+        >
+      </a>
+    </div>
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Vertical Card
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subtitle Here
+          </div>
+        </div>
+        <div class="gi-card-tag">
+          <strong class="gi-tag gi-tag-info">
+            Featured
+          </strong>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <a href="#"
+           class="
+      gi-link
+      
+      
+      
+      gi-link-md
+    "
+        >
+          View More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card VerticalWithoutImage smoke-test 1`] = `
+<div>
+  <div class="gi-card gi-card-vertical       gi-card-inset-none">
+    <div class="gi-card-content       gi-card-inset-none
+">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">
+            Vertical Card Without Image
+          </div>
+          <div class="gi-text-sm gi-card-subheading">
+            Subtitle Here
+          </div>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">
+          Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+        </p>
+      </div>
+      <div class="gi-card-action">
+        <a href="#"
+           class="
+      gi-link
+      
+      
+      
+      gi-link-md
+    "
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

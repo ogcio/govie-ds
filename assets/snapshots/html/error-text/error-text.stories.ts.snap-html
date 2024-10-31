@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography/ErrorText Default smoke-test 1`] = `
+<div>
+  <p class="gi-text-md gi-font-bold gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] ">
+    This is error text
+  </p>
+</div>
+`;

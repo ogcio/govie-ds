@@ -1,17 +1,15 @@
-import path from 'node:path';
-
 export default {
   resolveSnapshotPath: (testPath) => {
-    const fileName = path.basename(testPath);
-    const fileNameWithoutExtension = fileName.replace(/\.[^./]+$/, '');
-    // Defines the file extension for the snapshot file
-    const modifiedFileName = `${fileNameWithoutExtension}.snap`;
-
-    // Configure Jest to generate snapshot files using the following convention (./src/test/__snapshots__/Button.stories.snap)
-    return path.join('../../../assets/__snapshots__/html', modifiedFileName);
+    return (
+      testPath.replace('packages/html/ds/src', 'assets/snapshots/html') +
+      '.snap-html'
+    );
   },
-  resolveTestPath: (snapshotFilePath, snapshotExtension) =>
-    path.basename(snapshotFilePath, snapshotExtension),
+  resolveTestPath: (snapshotFilePath) => {
+    return snapshotFilePath
+      .replace('assets/snapshots/html', 'packages/html/ds/src')
+      .replace('.snap-html', '');
+  },
 
-  testPathForConsistencyCheck: 'assets/__snapshots__/html/Button.stories.snap',
+  testPathForConsistencyCheck: 'example.ts',
 };

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout/Container Default smoke-test 1`] = `
+<div>
+  <div class="gi-mx-auto gi-container"
+       data-testid="govie-container"
+  >
+    <p>
+      Paragraph
+    </p>
+  </div>
+</div>
+`;

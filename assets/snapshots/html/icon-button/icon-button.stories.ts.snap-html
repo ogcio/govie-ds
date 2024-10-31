@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/IconButton Default smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-primary-medium-notDisabled"
+          class="gi-btn gi-btn-primary gi-icon-btn-regular  "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Disabled smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-primary-medium-disabled"
+          class="gi-btn  gi-icon-btn-regular gi-btn-primary-disabled "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton FlatButton smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-flat-medium-notDisabled"
+          class="gi-btn gi-btn-flat gi-icon-btn-regular  "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Large smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-primary-large-notDisabled"
+          class="gi-btn gi-btn-primary gi-icon-btn-large  "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[24px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton SecondaryButton smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-secondary-medium-notDisabled"
+          class="gi-btn gi-btn-secondary gi-icon-btn-regular  "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Form/IconButton Small smoke-test 1`] = `
+<div class="gi-p-4">
+  <button data-element="icon-button-container"
+          data-module="gieds-icon-button"
+          data-testid="govieIconButton-default-primary-small-notDisabled"
+          class="gi-btn gi-btn-primary gi-icon-btn-small  "
+  >
+    <span data-testid="govie-icon"
+          role="presentation"
+          class="
+      material-icons
+      
+      gi-block
+      gi-text-[16px]
+      "
+    >
+      thumb_up
+    </span>
+  </button>
+</div>
+`;

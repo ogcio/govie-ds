@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/HintText Default smoke-test 1`] = `
+<div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700 ">
+  Hint
+</div>
+`;

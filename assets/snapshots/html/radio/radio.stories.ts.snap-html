@@ -1,0 +1,721 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form/Radios Default smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Where do you live?
+        </h2>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId1"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId1-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId1-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId1"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId1-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId1-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId1"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="UniqueId1-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId1-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios inline smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Where do you live?
+        </h2>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-row gi-gap-4">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId2"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId2-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId2-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId2"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId2-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId2-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId2"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="UniqueId2-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId2-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withConditionalInput smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          How would you prefer to be contacted?
+        </h2>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId7"
+                     data-has-conditional-input="true"
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId7-0"
+                     value="email"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId7-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Email
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div data-conditional-divider="UniqueId7-0"
+                   class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0">
+                  </p>
+                </div>
+                <div data-conditional-container="UniqueId7-0"
+                     class="gi-hidden"
+                >
+                  <label for="input-id-email"
+                         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+                  >
+                    Email address
+                  </label>
+                  <div class="gi-flex gi-items-center ">
+                    <input id="input-id-email"
+                           data-testid="textbox"
+                           type="email"
+                           autocomplete="on"
+                           class="gi-border-gray-950 gi-w-auto gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId7"
+                     data-has-conditional-input="true"
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId7-1"
+                     value="phone"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId7-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Phone
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div data-conditional-divider="UniqueId7-1"
+                   class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0">
+                  </p>
+                </div>
+                <div data-conditional-container="UniqueId7-1"
+                     class="gi-hidden"
+                >
+                  <label for="input-id-phone"
+                         class="gi-text-md gi-mb-1 gi-block gi-mb-2"
+                  >
+                    Phone number
+                  </label>
+                  <div class="gi-flex gi-items-center ">
+                    <input id="input-id-phone"
+                           data-testid="textbox"
+                           type="tel"
+                           autocomplete="on"
+                           class="gi-border-gray-950 gi-w-auto gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withDividerOption smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Where do you live?
+        </h2>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId5"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId5-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId5-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId5"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId5-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId5-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId5"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="UniqueId5-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId5-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+          <p class="gi-w-8 gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+            or
+          </p>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId5"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio-divider-option"
+                     id="UniqueId5-3"
+                     value="none of the above"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId5-3"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                None of the above
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withError smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <div class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid">
+    </div>
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Where do you live?
+        </h2>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <p class="gi-text-md gi-font-bold gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] !gi-mb-[0px]">
+          Please select an option
+        </p>
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId6"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId6-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId6-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId6"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId6-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId6-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId6"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="UniqueId6-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId6-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withNoTitle smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="uniqueId8"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="uniqueId8-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="uniqueId8-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="uniqueId8"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="uniqueId8-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="uniqueId8-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="uniqueId8"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="uniqueId8-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="uniqueId8-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withOptionHints smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Have you changed your name?
+        </h2>
+        <div data-testid="title-hint">
+          <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-2">
+            This includes changing your last name or spelling your name differently.
+          </p>
+        </div>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId4"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId4-0"
+                     value="no"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId4-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Yes
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div data-conditional-divider="UniqueId4-0"
+                   class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0">
+                    Yes, I have changed my name
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId4"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId4-1"
+                     value="no"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId4-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                No
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div data-conditional-divider="UniqueId4-1"
+                   class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0">
+                    No, I didn't change my name
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Form/Radios withTitleHint smoke-test 1`] = `
+<div>
+  <div data-testid="govie-radios"
+       data-module="gieds-radios"
+       class="gi-flex"
+  >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md
+ !gi-mb-2">
+          Where do you live?
+        </h2>
+        <div data-testid="title-hint">
+          <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-2">
+            Specify the location where you live
+          </p>
+        </div>
+      </legend>
+      <div data-element="radio-container"
+           class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId3"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio0"
+                     id="UniqueId3-0"
+                     value="england"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId3-0"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId3"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio1"
+                     id="UniqueId3-1"
+                     value="scotland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId3-1"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
+          </div>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input name="UniqueId3"
+                     data-has-conditional-input
+                     data-primary="true"
+                     data-element="radio2"
+                     id="UniqueId3-2"
+                     value="ireland"
+                     class="gi-radio-medium gi-radio-base"
+                     type="radio"
+              >
+              <label for="UniqueId3-2"
+                     class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
