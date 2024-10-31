@@ -2,19 +2,182 @@
 title: Checkbox
 description: Checkbox HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Checkbox
 
 <ComponentStatusBlock componentId="checkbox" />
 
+<CheckboxesGroup
+  fieldId="UniqueID"
+  items={[
+    {
+      label: 'Employment Tribunal',
+      value: 'employment-tribunal',
+    },
+    {
+      label: 'Ministry of Defence',
+      value: 'ministry-of-defence',
+    },
+    {
+      label: 'Department for Transport',
+      value: 'department-for-transport',
+    },
+  ]}
+  title={{
+    asHeading: {
+      size: 'md',
+      tag: 'h1',
+    },
+    value: 'Organisation',
+  }}
+/>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html
+    <div
+      data-testid="govie-checkboxes"
+      data-module="gieds-checkboxes"
+      class="gi-flex"
+    >
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h1 class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] gi-heading-lg">
+          Organisation
+        </h1>
+      </legend>
+      <div
+        data-element="checkbox-container"
+        class="gi-flex gi-flex-col gi-gap-2.5"
+      >
+        <div class="gi-flex gi-items-start">
+          <input
+            data-element="checkbox0"
+            id="UniqueID-0"
+            value="employment-tribunal"
+            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1
+          checked:before:gi-top-1.5 gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
+            type="checkbox"
+          />
+          <label
+            for="UniqueID-0"
+            class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
+          >
+            Employment Tribunal
+          </label>
+        </div>
+        <div class="gi-flex gi-items-start">
+          <input
+            data-element="checkbox1"
+            id="UniqueID-1"
+            value="ministry-of-defence"
+            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1
+          checked:before:gi-top-1.5 gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
+            type="checkbox"
+          />
+          <label
+            for="UniqueID-1"
+            class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
+          >
+            Ministry of Defence
+          </label>
+        </div>
+        <div class="gi-flex gi-items-start">
+          <input
+            data-element="checkbox2"
+            id="UniqueID-2"
+            value="department-for-transport"
+            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1
+          checked:before:gi-top-1.5 gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
+            type="checkbox"
+          />
+          <label
+            for="UniqueID-2"
+            class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4">
+            Department for Transport
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```html
+    {{ govieCheckboxesGroup({
+      "fieldId": "UniqueID",
+      "items": [
+        {
+          "label": "Employment Tribunal",
+          "value": "employment-tribunal"
+        },
+        {
+          "label": "Ministry of Defence",
+          "value": "ministry-of-defence"
+        },
+        {
+          "label": "Department for Transport",
+          "value": "department-for-transport"
+        }
+      ],
+      "title": {
+        "value": "Organisation",
+        "asHeading": {
+          "size": "lg",
+          "tag": "h1"
+        }
+      }
+    }) }}
+    ```
+
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { CheckboxesGroup } from "@govie-ds/react";
+      
+    <CheckboxesGroup
+      fieldId="UniqueID"
+      items={[
+        {
+          label: 'Employment Tribunal',
+          value: 'employment-tribunal'
+        },
+        {
+          label: 'Ministry of Defence',
+          value: 'ministry-of-defence'
+        },
+        {
+          label: 'Department for Transport',
+          value: 'department-for-transport'
+        }
+      ]}
+      title={{
+        asHeading: {
+          size: 'md',
+          tag: 'h1'
+        },
+        value: 'Organisation'
+      }}
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
 ## When to use this component
 
-Use the checkboxes component when you need to help users:
-- select multiple options from a list
-- toggle a single option on or off
+- **Multiple Selections Needed**: Use the `Checkbox` component when users need to select multiple options from a list, such as categories, preferences, or filters.
+- **Independent Choices**: Ideal for situations where each option is independent, meaning selecting one doesn’t impact the availability or selection of others (e.g., selecting multiple interests or departments).
+- **Clear Action Confirmation**: If you want users to see a clear visual confirmation of selected options, checkboxes provide this by displaying a checkmark or visual indicator within each box.
 
 ## When not to use this component
 
-Do not use the checkboxes component if users can only choose one option from a selection. In this case, use the radios component.
+- **Single Choice Requirement**: Avoid using checkboxes if only one option can be selected. Instead, use radio buttons for single-choice selections.
+- **Binary Yes/No Options**: For simple yes/no or toggle options, use a switch component instead, as it’s more intuitive for on/off or true/false selections.
+- **Complex Dependencies**: If options are interdependent or if selecting one option impacts others, checkboxes may lead to confusion. In such cases, consider a different input structure, like a dropdown or conditional UI elements.

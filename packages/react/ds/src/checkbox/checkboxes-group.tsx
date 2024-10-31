@@ -30,7 +30,7 @@ export type CheckboxesGroupType = {
   onChange?: (items: string[]) => void;
 };
 
-const CheckboxesGroup = ({
+export const CheckboxesGroup = ({
   fieldId,
   errorMessage,
   title,
@@ -130,5 +130,3 @@ const CheckboxesGroup = ({
     </div>
   );
 };
-
-export default CheckboxesGroup;
