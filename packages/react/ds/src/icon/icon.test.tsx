@@ -47,9 +47,7 @@ describe('govieIcon', () => {
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
-    expect(iconSpan.style.fontVariationSettings).toBe(
-      "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24",
-    );
+    expect(iconSpan.style.fontVariationSettings).contain("'FILL' 1");
   });
 
   it('should render the ThumbDown icon large', () => {

@@ -43,15 +43,15 @@ describe('govieIcon', () => {
     expect(iconSpan.getAttribute('aria-label')).toBe('ARIA-LABEL');
   });
 
-  it('should render the ThumbDown outlined', () => {
+  it('should render the ThumbDown filled', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
       size: IconSize.Medium,
-      outlined: true,
+      filled: true,
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
-    expect(iconSpan.classList.contains('material-symbols-outlined')).toBe(true);
+    expect(iconSpan.style.fontVariationSettings).contain("'FILL' 1");
   });
 
   it('should render the ThumbDown icon large', () => {
