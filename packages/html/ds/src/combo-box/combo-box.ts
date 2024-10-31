@@ -107,7 +107,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
       }
 
       dropdownToggle.addEventListener('click', (event) => {
-        event.preventDefault()
+        event.preventDefault();
         state.isOpen = !state.isOpen;
         if (state.isOpen) {
           dropdownToggle.classList.add('gi-combobox-toggle-open');
