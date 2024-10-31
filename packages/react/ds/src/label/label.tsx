@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 export enum LabelSize {
   sm = 'sm',
@@ -8,7 +8,7 @@ export enum LabelSize {
 
 // Extend `React.LabelHTMLAttributes<HTMLLabelElement>` for correct label attributes
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
-  text: ReactNode;
+  text: string;
   size?: LabelSize;
 };
 

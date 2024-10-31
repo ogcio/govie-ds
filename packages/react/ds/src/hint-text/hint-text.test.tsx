@@ -36,21 +36,6 @@ describe('govieHintText', () => {
     expect(hintElement.classList.contains('gi-text-lg')).toBe(true);
   });
 
-  it('should safely render HTML content within hint text', () => {
-    const screen = renderHintText({
-      size: HintSize.md,
-      text: (
-        <>
-          <strong>Bold text</strong> as hint
-        </>
-      ),
-    });
-
-    const hintElement = screen.getByText('Bold text');
-    expect(hintElement).toBeTruthy();
-    expect(hintElement.innerHTML).toContain('Bold text');
-  });
-
   it('should pass axe accessibility tests', async () => {
     const screen = renderHintText({
       size: HintSize.md,

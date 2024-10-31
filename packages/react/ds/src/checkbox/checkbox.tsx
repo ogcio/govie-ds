@@ -7,29 +7,35 @@ export enum CheckboxSizeEnum {
   Small = 'sm',
 }
 
-type ChecboxType = {
+type CheckboxType = {
   dataElement: string;
   checkboxId: string;
   value: string;
   size?: CheckboxSizeEnum;
   label?: string;
   hint?: string;
+  checked?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const Checkbox = ({
   dataElement,
   checkboxId,
   value,
+  onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
   hint,
-}: ChecboxType) => {
+  checked,
+}: CheckboxType) => {
   return (
     <div className="gi-flex gi-items-start">
       <input
         data-element={dataElement}
         id={checkboxId}
         value={value}
+        checked={checked}
+        onChange={onChange}
         className={`${getSizeClass(size)} ${getTickSize(size)}
         gi-focus-state-outline
         gi-cursor-pointer

@@ -84,6 +84,28 @@ describe('checkboxes', () => {
     expect(errorElement).toBeTruthy();
   });
 
+  it('should render checkboxes with none option checkbox', () => {
+    const propsWithNoOption = {
+      ...standardProps,
+      noneOption: {
+        label: 'Label for none option',
+        value: 'value-for-none-option',
+        hint: 'Hint for none option',
+      },
+    };
+
+    const screen = renderCheckboxes(propsWithNoOption);
+    const noOptionLabelElement = screen.getByText('Label for none option');
+    const noOptionInputElement = screen
+      .getByText('Label for none option')
+      .previousElementSibling?.getAttribute('value');
+    const noOptionHintElement = screen.getByText('Hint for none option');
+
+    expect(noOptionLabelElement).toBeTruthy();
+    expect(noOptionInputElement).toBeTruthy();
+    expect(noOptionHintElement).toBeTruthy();
+  });
+
   it('should render small checkboxes', () => {
     const classes = 'gi-w-6 gi-h-6';
     const propsWithSmallCheckboxes = {
@@ -142,6 +164,11 @@ describe('checkboxes', () => {
         hint: 'Title hint',
       },
       errorMessage: 'Error message',
+      noneOption: {
+        label: 'Checkbox None',
+        hint: 'Hint for checkbox none',
+        value: 'checkbox-none',
+      },
       size: CheckboxSizeEnum.Large,
     });
 

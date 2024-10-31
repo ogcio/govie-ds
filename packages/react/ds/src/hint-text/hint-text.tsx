@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 export enum HintSize {
   sm = 'sm',
@@ -9,7 +9,7 @@ export enum HintSize {
 // Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
 export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
-  text: ReactNode;
+  text: string;
   size?: HintSize;
   className?: string;
 };

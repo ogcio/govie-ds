@@ -61,18 +61,6 @@ describe('govieLabel', () => {
     expect(labelElement.getAttribute('for')).toBe('test-input');
   });
 
-  it('should safely render HTML content', () => {
-    const screen = renderLabel({
-      text: <strong>Strong label</strong>,
-      size: LabelSize.md,
-      htmlFor: 'input-id',
-    });
-
-    const labelElement = screen.getByText('Strong label');
-    expect(labelElement).toBeTruthy();
-    expect(labelElement.innerHTML).toContain('Strong label');
-  });
-
   it('should pass axe accessibility tests', async () => {
     const screen = renderLabel({
       text: 'Accessible label',

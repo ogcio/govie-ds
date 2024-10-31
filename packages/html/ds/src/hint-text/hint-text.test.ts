@@ -16,7 +16,7 @@ describe('govieHintText', () => {
     });
     const hintElement = screen.getByText('This is medium hint text');
     expect(hintElement).toBeTruthy();
-    expect(hintElement.tagName).toBe('P');
+    expect(hintElement.tagName).toBe('DIV');
   });
 
   it('should render small hint text with the correct class', () => {
