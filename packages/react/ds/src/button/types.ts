@@ -4,6 +4,8 @@ export type ButtonAppearance = 'default' | 'dark' | 'light';
 
 export type ButtonSize = 'medium' | 'small' | 'large';
 
+export type ButtonType = 'submit' | 'reset' | 'button';
+
 export type ButtonProps = {
   children: React.ReactNode;
   variant?: ButtonVariant;
@@ -11,4 +13,7 @@ export type ButtonProps = {
   size?: ButtonSize;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type?: ButtonType;
+  form?: string;
+  value?: string;
 };

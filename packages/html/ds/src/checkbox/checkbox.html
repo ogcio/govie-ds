@@ -1,19 +1,18 @@
 {% from 'checkbox/helpers.html' import getTickSize, getSizeClass %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieCheckbox(props) %}
-  <div class="gi-flex gi-items-start">
+  <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
     <input
+      {% if props.label %}name="{{ props.label }}"{% endif %}
       data-element="{{ props.dataElement }}"
       id="{{ props.checkboxId }}"
       value="{{ props.value }}"
-      class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-cursor-pointer gi-appearance-none gi-border-[3px] gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-[4px] checked:before:gi-border-b-[4px] checked:before:gi-border-black"
+      class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-checkbox-input"
       type="checkbox"
     />
-    <label
-      for="{{ props.checkboxId }}"
-      class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
-    >
+    <label for="{{ props.checkboxId }}" class="gi-checkbox-label">
       {{ props.label }}
       {% if props.hint %}
         {{

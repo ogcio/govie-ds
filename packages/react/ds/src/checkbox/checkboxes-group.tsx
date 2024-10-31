@@ -14,7 +14,7 @@ export type CheckboxesGroupType = {
     label?: string;
     hint?: string;
   }[];
-  title: {
+  title?: {
     value: string;
     asHeading?: {
       size: HeadingSize;
@@ -63,32 +63,32 @@ const CheckboxesGroup = ({
   };
 
   return (
-    <div className="gi-flex" data-testid="govie-checkboxes">
-      {errorMessage && (
-        <div className="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"></div>
-      )}
+    <div className="gi-checkbox-group-container" data-testid="govie-checkboxes">
+      {errorMessage && <div className="gi-checkbox-group-error"></div>}
       <fieldset>
-        <legend className="gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-          {title.asHeading ? (
-            <Heading
-              size={title.asHeading.size}
-              as={title.asHeading.tag}
-              customClasses="!gi-mb-[var(--gieds-space-2)]"
-            >
-              {title.value}
-            </Heading>
-          ) : (
-            title.value
-          )}
-          {title.hint && (
-            <HintText
-              data-testid="title-hint"
-              text={title.hint}
-              className="!gi-mb-[var(--gieds-space-2)]"
-            />
-          )}
-        </legend>
-        <div className="gi-flex gi-flex-col gi-gap-2.5">
+        {title && (
+          <legend className="gi-checkbox-group-title">
+            {title.asHeading ? (
+              <Heading
+                size={title.asHeading.size}
+                as={title.asHeading.tag}
+                customClasses="!gi-mb-[var(--gieds-space-2)]"
+              >
+                {title.value}
+              </Heading>
+            ) : (
+              title.value
+            )}
+            {title.hint && (
+              <HintText
+                data-testid="title-hint"
+                text={title.hint}
+                className="!gi-mb-[var(--gieds-space-2)]"
+              />
+            )}
+          </legend>
+        )}
+        <div className="gi-checkbox-group-checkboxes-container">
           {errorMessage && (
             <ErrorText text={errorMessage} className="gi-mb-0" />
           )}

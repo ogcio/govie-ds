@@ -16,6 +16,7 @@ import {
   Modal,
   CookieBanner,
   List,
+  Combobox,
   Chip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -162,6 +163,7 @@ const documentComponents: MDXComponents = {
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
+  ComboBox: (props) => <Combobox {...props} />,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
 };
