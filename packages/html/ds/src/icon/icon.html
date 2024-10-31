@@ -1,9 +1,11 @@
 {% macro govieIcon(props) %}
   {% macro getIconStyle(props) %}
-    {% if props.outlined %}
-      material-icons-outlined
+    {% if props.filled %}
+      style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz'
+      24;"
     {% else %}
-      material-icons
+      style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz'
+      24;"
     {% endif %}
   {% endmacro %}
 
@@ -56,8 +58,9 @@
     {{ getAriaHidden(props) | trim }}
     {{ getAriaLabel(props) | trim }}
     {{ getAriaRole(props) | trim }}
+    {{ getIconStyle(props) | trim }}
     class="
-      {{ getIconStyle(props) | trim }}
+      material-symbols-outlined
       {{ getDisabled(props) | trim }}
       {{ getInline(props) | trim }}
       {{ getFontSize(props) | trim }}

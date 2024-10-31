@@ -51,7 +51,7 @@ describe('govieIcon', () => {
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
-    expect(iconSpan.classList.contains('material-icons-outlined')).toBe(true);
+    expect(iconSpan.classList.contains('material-symbols-outlined')).toBe(true);
   });
 
   it('should render the ThumbDown icon large', () => {

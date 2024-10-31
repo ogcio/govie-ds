@@ -33,9 +33,9 @@ export const iconSchema = zod.object({
       description: 'Specifies the Icon size',
     })
     .optional(),
-  outlined: zod
+  filled: zod
     .boolean({
-      description: 'Define icon style outlined',
+      description: 'Define icon style filled',
     })
     .optional(),
   disabled: zod

@@ -45,10 +45,10 @@ export const ExtraLarge: Story = {
   },
 };
 
-export const Outlined: Story = {
+export const Filled: Story = {
   args: {
     icon: IconId.ThumbUp,
-    outlined: true,
+    filled: true,
   },
 };
 
