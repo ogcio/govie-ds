@@ -22,6 +22,7 @@ export const Button = ({
       type={type}
       form={form}
       value={value}
+      data-testid={`govieButton-${appearance}-${variant}-${size}-${disabled ? 'disabled' : ''}`}
       onClick={onClick}
       className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
     >

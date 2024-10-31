@@ -1,5 +1,10 @@
 'use client';
-import React, { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
+import React, {
+  ChangeEvent,
+  TextareaHTMLAttributes,
+  useId,
+  useState,
+} from 'react';
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
@@ -39,6 +44,12 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const [remainingChars, setRemainingChars] = useState<undefined | number>(
       maxChars,
     );
+
+    const uniqueId = useId();
+    const labelId = `${uniqueId}-label`;
+    const hintId = hint?.text ? `${uniqueId}-hint` : undefined;
+    const errorId = error?.text ? `${uniqueId}-error` : undefined;
+
     const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const {
         target: { value },
@@ -58,13 +69,18 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
             text={label.text}
             size={label.size}
             htmlFor={id}
+            id={labelId}
             className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
           />
         )}
 
-        {hint?.text && <HintText text={hint.text} size={hint.size} />}
+        {hint?.text && (
+          <HintText text={hint.text} size={hint.size} id={hintId} />
+        )}
 
-        {error?.text && <ErrorText text={error.text} size={error.size} />}
+        {error?.text && (
+          <ErrorText text={error.text} size={error.size} id={errorId} />
+        )}
 
         <div className="gi-flex gi-items-center">
           <textarea
@@ -76,6 +92,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
             ref={ref}
             maxLength={maxChars}
             onChange={handleOnChange}
+            aria-labelledby={labelId}
+            aria-describedby={[hintId, errorId].filter(Boolean).join(' ')}
             {...props}
           />
         </div>

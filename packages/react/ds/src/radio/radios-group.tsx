@@ -22,7 +22,7 @@ export const RadiosGroup = ({
   };
 
   return (
-    <div className="gi-flex">
+    <div className="gi-flex" data-testid="govie-radios">
       {errorMessage && (
         <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
       )}
@@ -40,7 +40,13 @@ export const RadiosGroup = ({
             ) : (
               title.value
             )}
-            {title.hint && <HintText text={title.hint} className="!gi-mb-2" />}
+            {title.hint && (
+              <HintText
+                data-testid="title-hint"
+                text={title.hint}
+                className="!gi-mb-2"
+              />
+            )}
           </legend>
         )}
         <div className="gi-flex gi-flex-col gi-gap-2.5">

@@ -4,7 +4,7 @@ import { ButtonProps } from '../button/types.js';
 import { Container } from '../container/container.js';
 import { LinkProps } from '../link/link.js';
 
-type CookieBannerProps = {
+export type CookieBannerProps = {
   children: React.ReactNode;
   accept: {
     children: React.ReactNode;

@@ -537,7 +537,7 @@ input[type='file' i] {
  @apply gi-max-w-[400px] gi-border-t
 }
 .gi-combobox-toggle {
-  @apply gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline
+  @apply gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline gi-focus-state-border-sm focus:gi-bg-gray-200
 }
 .gi-combobox-toggle-open {
   @apply gi-border-b-0
@@ -577,6 +577,9 @@ input[type='file' i] {
 }
 .gi-combobox-checkbox {
   @apply gi-px-3 hover:gi-bg-gray-200
+}
+.gi-combobox-checkbox input {
+  @apply gi-min-w-6
 }
 .gi-combobox-checkbox label {
   @apply gi-w-full gi-py-2

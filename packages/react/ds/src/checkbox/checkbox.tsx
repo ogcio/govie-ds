@@ -16,17 +16,19 @@ type CheckboxType = {
   hint?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   className?: string;
+  checked?: boolean;
 };
 
 const Checkbox = ({
   dataElement,
   checkboxId,
   value,
+  onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
   hint,
-  onChange,
   className,
+  checked,
 }: CheckboxType) => {
   return (
     <div className={`gi-checkbox-container ${className && className}`}>
@@ -37,6 +39,7 @@ const Checkbox = ({
         id={checkboxId}
         value={value}
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
+        checked={checked}
         type="checkbox"
       />
       <label htmlFor={checkboxId} className="gi-checkbox-label">

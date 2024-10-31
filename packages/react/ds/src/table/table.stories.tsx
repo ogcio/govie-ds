@@ -21,7 +21,11 @@ export const Default: Story = {
     children: (
       <>
         <Caption>This is caption</Caption>
-        <TableHead>This is the table head</TableHead>
+        <TableHead>
+          <TableRow>
+            <TableHeader>This is the table head</TableHeader>
+          </TableRow>
+        </TableHead>
         <TableBody>
           <TableRow>
             <TableHeader>Header 1</TableHeader>
@@ -32,7 +36,11 @@ export const Default: Story = {
             <TableData>Data 2</TableData>
           </TableRow>
         </TableBody>
-        <TableFoot>This is a foot</TableFoot>
+        <TableFoot>
+          <TableRow>
+            <TableHeader>This is a foot</TableHeader>
+          </TableRow>
+        </TableFoot>
       </>
     ),
   },

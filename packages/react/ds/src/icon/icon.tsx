@@ -55,6 +55,7 @@ export function Icon({
 
   return (
     <span
+      data-testid="govie-icon"
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
