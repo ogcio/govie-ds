@@ -96,3 +96,10 @@ cookieLink
 dismissButton
 ComboBox
 ComboBoxProps
+CheckboxesGroup
+htmlFor
+halfFluid
+TextInput
+favoriting
+IconButton
+FileUpload
