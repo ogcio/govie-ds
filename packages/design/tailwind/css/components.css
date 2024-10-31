@@ -537,7 +537,7 @@ input[type='file' i] {
  @apply gi-max-w-[400px] gi-border-t
 }
 .gi-combobox-toggle {
-  @apply gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline gi-focus-state-border-sm focus:gi-bg-gray-200
+  @apply gi-border-t-transparent gi-border-t-sm gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline gi-focus-state-border-sm focus:gi-bg-gray-200
 }
 .gi-combobox-toggle-open {
   @apply gi-border-b-0
