@@ -39,11 +39,11 @@ describe('govieIcon', () => {
     expect(iconSpan.getAttribute('aria-label')).toBe('ARIA-LABEL');
   });
 
-  it('should render the ThumbDown outlined', () => {
+  it('should render the ThumbDown filled', () => {
     const screen = renderIcon({
       icon: 'thumb_down',
       size: 'md',
-      variant: 'outlined',
+      variant: 'filled',
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
