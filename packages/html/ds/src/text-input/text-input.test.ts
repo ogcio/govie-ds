@@ -69,7 +69,7 @@ describe('govieTextInput', () => {
     const hintElement = screen.getByText('This is a hint');
 
     expect(hintElement).toBeTruthy();
-    expect(hintElement.tagName).toBe('P'); // Assuming hint is rendered as a <p> tag
+    expect(hintElement.tagName).toBe('DIV'); // Assuming hint is rendered as a <div> tag
   });
 
   it('should render error text when hasError is true', () => {

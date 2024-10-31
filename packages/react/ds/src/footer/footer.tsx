@@ -22,18 +22,16 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
         {secondaryNavLinks && (
           <div className="footer-secondary-nav-links">
             {secondaryNavLinks.map((secondaryNav, navIndex) => (
-              <div>
+              <div key={`div-${navIndex}-${navIndex}`}>
                 <div className="gi-heading-md">{secondaryNav.heading}</div>
                 <SectionBreak size="md" />
                 <ul>
                   {secondaryNav.links.map((link, index) => (
-                    <li data-testid={`secondary-${navIndex}-${index}`}>
-                      <a
-                        key={`secondary-${navIndex}-${index}`}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </a>
+                    <li
+                      data-testid={`secondary-${navIndex}-${index}`}
+                      key={`secondary-${navIndex}-${index}`}
+                    >
+                      <a href={link.href}>{link.label}</a>
                     </li>
                   ))}
                 </ul>
@@ -45,10 +43,11 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
           {links && (
             <ul>
               {links.map((link, index) => (
-                <li data-testid={`main-link-${index}`}>
-                  <a key={`main-link-${index}`} href={link.href}>
-                    {link.label}
-                  </a>
+                <li
+                  data-testid={`main-link-${index}`}
+                  key={`main-link-${index}`}
+                >
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>

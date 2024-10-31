@@ -67,7 +67,11 @@ export function Header({
           {languages.map((link, index) => (
             <li key={index}>
               {link.href ? (
-                <a href={link.href} className={languageItemClassNames}>
+                <a
+                  data-testid={`language-link-desktop-${index}`}
+                  href={link.href}
+                  className={languageItemClassNames}
+                >
                   {link.label}
                 </a>
               ) : (
@@ -127,7 +131,9 @@ export function Header({
         <ul className={navLinkContainerClassNames}>
           {navLinks?.map((link, index) => (
             <li key={index}>
-              <a href={link.href}>{link.label}</a>
+              <a data-testid={`nav-link-desktop-${index}`} href={link.href}>
+                {link.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -139,6 +145,7 @@ export function Header({
             <input
               className="gi-block gi-w-0 gi-absolute gi-h-0"
               id="SearchTrigger"
+              data-testid="SearchTrigger"
               type="checkbox"
             />
             {tools.search.label && (

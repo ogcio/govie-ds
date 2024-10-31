@@ -6,7 +6,7 @@ import {
 import { ButtonProps, ButtonSize } from '../button/types.js';
 import { Icon, IconPropTypes } from '../icon/icon.js';
 
-type IconButtonType = Omit<ButtonProps, 'children'> & {
+export type IconButtonType = Omit<ButtonProps, 'children'> & {
   icon: Omit<IconPropTypes, 'size'>;
   className?: string;
 };
@@ -35,6 +35,7 @@ export const IconButton = ({
   const iconSize = size === 'large' ? 'md' : 'sm';
   return (
     <button
+      data-testid={`govieIconButton-${appearance}-${variant}-${size}-${disabled}`}
       onClick={onClick}
       className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })} ${className}`}
     >

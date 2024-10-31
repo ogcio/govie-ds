@@ -48,6 +48,25 @@ export const Default: Story = {
       type: { name: 'string' },
       description: 'The text of the error message',
     },
+    noneOption: {
+      control: 'object',
+      type: {
+        name: 'object',
+        value: {
+          label: {
+            name: 'string',
+          },
+          value: {
+            name: 'string',
+            required: true,
+          },
+          hint: {
+            name: 'string',
+          },
+        },
+      },
+      description: 'The label, value and hint of the none option checkbox',
+    },
     title: {
       control: 'object',
       type: {
@@ -154,5 +173,37 @@ export const withErrorMessage: Story = {
     },
     errorMessage:
       'Select if you are Irish, British or a citizen of a different country',
+  },
+};
+
+export const withNoneOption: Story = {
+  args: {
+    fieldId: 'govie-field-ID',
+    items: [
+      {
+        label: 'France',
+        value: 'france',
+      },
+      {
+        label: 'Portugal',
+        value: 'portugal',
+      },
+      {
+        label: 'Spain',
+        value: 'spain',
+      },
+    ],
+    title: {
+      value: 'Will you be travelling to any of these countries?',
+      asHeading: {
+        size: 'md',
+        tag: 'h1',
+      },
+      hint: 'Select all countries that apply',
+    },
+    noneOption: {
+      label: 'No, I will not be travelling to any of these countries',
+      value: 'no-travel',
+    },
   },
 };

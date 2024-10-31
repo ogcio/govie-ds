@@ -11,9 +11,9 @@
     {% endif %}
   {% endmacro %}
 
-  <p
+  <div
     class="{{ getSizeClass(props.size) | trim }} gi-font-normal gi-text-gray-600 {{ addClasses(props.classNames) | trim }}"
   >
     {{ props.content | safe | trim | indent(2) }}
-  </p>
+  </div>
 {% endmacro %}
