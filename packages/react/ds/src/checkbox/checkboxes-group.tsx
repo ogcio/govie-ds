@@ -81,7 +81,7 @@ const CheckboxesGroup = ({
             )}
             {title.hint && (
               <HintText
-              data-testid="title-hint"
+                data-testid="title-hint"
                 text={title.hint}
                 className="!gi-mb-[var(--gieds-space-2)]"
               />
