@@ -2,19 +2,19 @@ import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
 
-type Option = {
+export type Option = {
   label: string;
   value: string;
 };
 
-type GroupOption = {
+export type GroupOption = {
   groupName: string;
   items: Option[];
 };
 
 type options = (Option | GroupOption)[];
 
-type SelectProps = {
+export type SelectProps = {
   id: string;
   label?: LabelProps;
   options: options;
@@ -51,12 +51,16 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
         id={id}
         aria-label={ariaLabel}
       >
-        {options.map((option) => {
+        {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;
           return isGroupOption ? (
-            <optgroup label={option.groupName}>
-              {option.items.map((option) => (
+            <optgroup
+              label={option.groupName}
+              key={`optgroup-${option.groupName}-${index}`}
+            >
+              {option.items.map((option, index) => (
                 <option
+                  key={`option-${option.value}-${index}`}
                   className="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
                   value={option.value}
                 >
@@ -66,6 +70,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
             </optgroup>
           ) : (
             <option
+              key={`option-${option.value}-${index}`}
               className="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
               value={option.value}
             >

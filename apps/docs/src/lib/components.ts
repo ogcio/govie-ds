@@ -119,6 +119,32 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'combo-box',
+      name: 'ComboBox',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/navigation-combobox--docs',
+          },
+          status: 'alpha',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/navigation-combobox--docs',
+          },
+          status: 'alpha',
+        },
+      ],
+    },
+    {
       id: 'character-count',
       name: 'Character Count',
       statuses: [

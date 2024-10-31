@@ -8,38 +8,38 @@
   <div
     data-testid="govie-checkboxes"
     data-module="gieds-checkboxes"
-    class="gi-flex"
+    class="gi-checkbox-group-container"
   >
     {% if props.errorMessage %}
-      <div
-        class="gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid"
-      ></div>
+      <div class="gi-checkbox-group-error"></div>
     {% endif %}
     <fieldset>
-      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-        {% if props.title.asHeading %}
-          {# prettier-ignore-start #}
+      {% if props.title %}
+        <legend class="gi-checkbox-group-title">
+          {% if props.title.asHeading %}
+            {# prettier-ignore-start #}
         <{{ props.title.asHeading.tag }} class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] {{ getHeadingClasses(props.title.asHeading.size, props.title.asHeading.tag) | trim }}">
           {{ props.title.value }}
         </{{ props.title.asHeading.tag }}>
         {# prettier-ignore-end #}
-        {% else %}
-          {{ props.title.value }}
-        {% endif %}
-        {% if props.title.hint %}
-          <div data-testid="title-hint">
-            {{
-              govieHintText({
-                "content": props.title.hint,
-                "classNames": "!gi-mb-[var(--gieds-space-2)]"
-              })
-            }}
-          </div>
-        {% endif %}
-      </legend>
+          {% else %}
+            {{ props.title.value }}
+          {% endif %}
+          {% if props.title.hint %}
+            <div data-testid="title-hint">
+              {{
+                govieHintText({
+                  "content": props.title.hint,
+                  "classNames": "!gi-mb-[var(--gieds-space-2)]"
+                })
+              }}
+            </div>
+          {% endif %}
+        </legend>
+      {% endif %}
       <div
         data-element="checkbox-container"
-        class="gi-flex gi-flex-col gi-gap-2.5"
+        class="gi-checkbox-group-checkboxes-container"
       >
         {% if props.errorMessage %}
           {{

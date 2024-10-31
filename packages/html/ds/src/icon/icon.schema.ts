@@ -10,6 +10,7 @@ export enum IconId {
   OpenInNew = 'open_in_new',
   AttachFile = 'attach_file',
   Download = 'download',
+  Keyboard_Arrow_Down = 'keyboard_arrow_down',
 }
 
 export enum IconSize {

@@ -6,6 +6,8 @@ export enum TagType {
   success = 'success',
   warning = 'warning',
   error = 'error',
+  counter = 'counter',
+  counterWarning = 'counterWarning',
 }
 
 export const tagSchema = zod.object({
@@ -18,6 +20,7 @@ export const tagSchema = zod.object({
       description: 'Defines the visual style and color of the tag.',
     })
     .optional(),
+  className: zod.string({ description: 'Add additional classes' }).optional(),
 });
 
 export type TagProps = zod.infer<typeof tagSchema>;

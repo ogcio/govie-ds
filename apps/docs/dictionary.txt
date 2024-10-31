@@ -94,3 +94,5 @@ CookieBanner
 cookieBannerProps
 cookieLink
 dismissButton
+ComboBox
+ComboBoxProps

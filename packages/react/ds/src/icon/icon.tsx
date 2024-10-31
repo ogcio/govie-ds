@@ -15,7 +15,8 @@ export type IconId =
   | 'menu'
   | 'home'
   | 'logout'
-  | 'download';
+  | 'download'
+  | 'keyboard_arrow_down';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -56,6 +57,7 @@ export function Icon({
 
   return (
     <span
+      data-testid="govie-icon"
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}

@@ -7,48 +7,42 @@ export enum CheckboxSizeEnum {
   Small = 'sm',
 }
 
-type ChecboxType = {
+type CheckboxType = {
   dataElement: string;
   checkboxId: string;
   value: string;
   size?: CheckboxSizeEnum;
   label?: string;
   hint?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
+  checked?: boolean;
 };
 
 const Checkbox = ({
   dataElement,
   checkboxId,
   value,
+  onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
   hint,
-}: ChecboxType) => {
+  className,
+  checked,
+}: CheckboxType) => {
   return (
-    <div className="gi-flex gi-items-start">
+    <div className={`gi-checkbox-container ${className && className}`}>
       <input
+        name={label}
+        onChange={onChange}
         data-element={dataElement}
         id={checkboxId}
         value={value}
-        className={`${getSizeClass(size)} ${getTickSize(size)}
-        gi-focus-state-outline
-        gi-cursor-pointer
-        gi-appearance-none
-        gi-border-md
-        gi-border-solid
-         gi-border-black
-         checked:before:gi-block
-         checked:before:gi--rotate-45
-         checked:before:gi-relative
-         checked:before:gi-border-l-lg
-         checked:before:gi-border-b-lg
-         checked:before:gi-border-black`}
+        className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
+        checked={checked}
         type="checkbox"
       />
-      <label
-        htmlFor={checkboxId}
-        className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg gi-pl-4"
-      >
+      <label htmlFor={checkboxId} className="gi-checkbox-label">
         {label}
         {hint && <HintText text={hint} className="gi-mb-0" />}
       </label>

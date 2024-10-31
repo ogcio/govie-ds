@@ -154,7 +154,7 @@ export const withHints: Story = {
 
 export const withErrorMessage: Story = {
   args: {
-    fieldId: 'govie-field-ID',
+    fieldId: 'govie-field-ID-2',
     items: [
       {
         label: 'Irish',
@@ -184,7 +184,7 @@ export const withErrorMessage: Story = {
 
 export const withNoneOption: Story = {
   args: {
-    fieldId: 'govie-field-ID',
+    fieldId: 'govie-field-ID-3',
     items: [
       {
         label: 'France',

@@ -6,6 +6,7 @@ import {
   getByRole,
   getByTestId,
   getByText,
+  getAllByTestId,
   Matcher,
   MatcherOptions,
   queryByText,
@@ -70,6 +71,9 @@ export function render<TProps>({
       },
       getByTestId: (id: Matcher, options?: MatcherOptions) => {
         return getByTestId(div, id, options);
+      },
+      getAllByTestId: (id: Matcher, options?: MatcherOptions) => {
+        return getAllByTestId(div, id, options);
       },
       queryByText: (id: Matcher, options?: SelectorMatcherOptions) => {
         return queryByText(div, id, options);

@@ -1,5 +1,5 @@
 "use client";
-import { CookieBannerProps } from "@/props";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
 import {
   Container,
   Footer,
@@ -17,6 +17,7 @@ import {
   CookieBanner,
   TypeEnum,
   List,
+  Combobox,
   Chip,
 } from "@govie-ds/react";
 
@@ -67,6 +68,7 @@ export default function Home() {
               ariaLabel: "Send",
             }}
           />
+          <Combobox {...ComboBoxProps} />
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
