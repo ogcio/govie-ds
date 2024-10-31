@@ -10,7 +10,7 @@
     class="gi-combobox-container {{ addClasses(props.className) | trim }}"
   >
     {% for dropdown in props['dropdownItems'] %}
-      <div aria-label="{{ dropdown['label'] }} dropdown">
+      <div role="group" aria-label="{{ dropdown['label'] }} dropdown">
         {{ govieDropdownItem(dropdown) }}
       </div>
     {% endfor %}

@@ -19,6 +19,7 @@ export const Combobox = ({
         <div
           key={`${index}_${dropdown.label}`}
           aria-label={`${dropdown.label} dropdown`}
+          role="group"
         >
           <DropdownItem {...dropdown} />
         </div>
