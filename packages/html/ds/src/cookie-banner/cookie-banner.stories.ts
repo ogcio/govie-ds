@@ -19,9 +19,11 @@ const meta = {
   title: 'Typography/CookieBanner',
   parameters: {
     macro,
-    description: {
-      component:
-        'Component for cookies to inform and ask the users for their consent',
+    docs: {
+      description: {
+        component:
+          'Component for cookies to inform and ask the users for their consent',
+      },
     },
   },
 } satisfies Meta<typeof CookieBanner>;
