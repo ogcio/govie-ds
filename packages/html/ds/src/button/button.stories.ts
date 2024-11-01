@@ -17,6 +17,11 @@ const meta = {
   title: 'form/Button',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component: 'Button component to help users carry out an action like starting an application or saving their information.'
+      }
+    }
   },
 } satisfies Meta<typeof Button>;
 
@@ -28,7 +33,7 @@ export const Default: Story = {
     content: {
       control: 'text',
       type: { name: 'string' },
-      description: 'the raw HTML that the button will accept',
+      description: 'the HTML that the button will accept',
     },
     variant: {
       control: 'radio',

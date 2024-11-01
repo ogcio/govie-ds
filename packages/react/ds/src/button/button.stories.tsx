@@ -16,7 +16,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'use this button where it is appropiate',
+        component: 'Button component to help users carry out an action like starting an application or saving their information.',
       },
     },
   },
