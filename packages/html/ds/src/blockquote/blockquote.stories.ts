@@ -12,6 +12,11 @@ const meta = {
   title: 'Typography/Blockquote',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component: "Inset text component to differentiate a block of text from the content that surrounds it."
+      }
+    }
   },
 } satisfies Meta<typeof Blockquote>;
 
@@ -23,7 +28,7 @@ export const Default: Story = {
     content: {
       control: 'text',
       type: { name: 'string', required: true },
-      description: 'The text content of the blockquote.',
+      description: 'The text or component within the blockquote.',
     },
   },
   args: {

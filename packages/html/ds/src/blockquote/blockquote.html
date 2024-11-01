@@ -1,7 +1,5 @@
 {% macro govieBlockquote(props) %}
-  <blockquote
-    class="gi-my-6 gi-p-4 gi-border-l-2xl gi-border-gray-400 gi-text-sm md:gi-text-md"
-  >
+  <blockquote class="gi-blockquote">
     {{ props.content | safe | trim }}
   </blockquote>
 {% endmacro %}

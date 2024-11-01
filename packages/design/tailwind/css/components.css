@@ -34,6 +34,13 @@ input[type='text'] {
 }
 /* Inputs focus state*/
 
+/* Blockquote */
+.gi-blockquote {
+  @apply gi-my-6 gi-p-4 gi-border-l-2xl gi-border-gray-400 gi-text-sm md:gi-text-md
+}
+
+/* End Blockquote */
+
 /* Button */
 .gi-btn {
   @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm gi-items-center gi-focus-state-outline gi-focus-state-border-sm-rounded;
