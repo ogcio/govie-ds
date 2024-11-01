@@ -11,6 +11,20 @@ const meta = {
       },
     },
   },
+  argTypes: {
+    label: {
+      control: 'text',
+      name: 'label',
+      type: 'string',
+      description: "The content of the chip"
+    },
+    onClose: {
+      name: 'onClose',
+      type: 'function',
+      control: 'object',
+      description: "The event attached on closing the chip"
+    }
+  }
 } satisfies Meta;
 
 export default meta;
