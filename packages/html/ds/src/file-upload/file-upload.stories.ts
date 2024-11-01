@@ -83,6 +83,7 @@ export const Default: Story = {
     error: {
       content: '',
     },
+    accept: '*/*'
   },
 };
 
@@ -96,6 +97,7 @@ export const WithLabelAndHint: Story = {
     hint: {
       content: 'Hint: Please upload a file that is less than 5MB.',
     },
+    accept: '*/*'
   },
 };
 
@@ -109,16 +111,17 @@ export const WithLabelAndError: Story = {
     error: {
       content: 'Error: File must be smaller than 5MB.',
     },
+    accept: '.pdf, .docx'
   },
 };
 
-export const AcceptSpecificFileTypes: Story = {
+export const WithPDFAndDocxOnly: Story = {
   args: {
     id: 'file-upload-id',
     label: {
-      content: 'Upload Image',
+      content: 'Upload File',
       for: 'file-upload-id',
     },
-    accept: 'image/*',
+    accept: '.pdf, .docx',
   },
 };

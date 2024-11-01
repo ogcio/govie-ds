@@ -34,12 +34,29 @@ input[type='text'] {
 }
 /* Inputs focus state*/
 
+/* Error state */
+.gi-error-state {
+  @apply gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600
+}
+
+/* End of Error state */
+
 /* Blockquote */
 .gi-blockquote {
   @apply gi-my-6 gi-p-4 gi-border-l-2xl gi-border-gray-400 gi-text-sm md:gi-text-md
 }
 
 /* End Blockquote */
+
+/* File-upload */
+.gi-file-upload-container {
+  @apply gi-pt-2 gi-mb-4
+}
+.gi-file-upload-input {
+  @apply xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border gi-focus-state-outline gi-focus-state-border gi-z-1
+}
+
+/* End of File-upload */
 
 /* Button */
 .gi-btn {
