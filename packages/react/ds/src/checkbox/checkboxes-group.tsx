@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading, HeadingAs, HeadingSize } from '../heading/heading.js';
