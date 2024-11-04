@@ -15,12 +15,12 @@ For a question page, or pages with long headings, follow the usual hierarchy of 
 
 Write all headings in sentence case.
 
-<Heading as="h1">This is an h1</Heading>
-<Heading as="h2">This is an h2</Heading>
-<Heading as="h3">This is an h3</Heading>
-<Heading as="h4">This is an h4</Heading>
-<Heading as="h5">This is an h5</Heading>
-<Heading as="h6">This is an h6</Heading>
+<Heading as={HeadingAs.h1}>This is an h1</Heading>
+<Heading as={HeadingAs.h2}>This is an h2</Heading>
+<Heading as={HeadingAs.h3}>This is an h3</Heading>
+<Heading as={HeadingAs.h4}>This is an h4</Heading>
+<Heading as={HeadingAs.h5}>This is an h5</Heading>
+<Heading as={HeadingAs.h6}>This is an h6</Heading>
 
 <Tabs id="tab1">
   <TabList>
@@ -52,12 +52,12 @@ Write all headings in sentence case.
     ```html
     import { Paragraph } from '@govie-ds/react';
 
-    <Heading as="h1">This is an h1</Heading>
-    <Heading as="h2">This is an h2</Heading>
-    <Heading as="h3">This is an h3</Heading>
-    <Heading as="h4">This is an h4</Heading>
-    <Heading as="h5">This is an h5</Heading>
-    <Heading as="h6">This is an h6</Heading>
+    <Heading as={HeadingAs.h1}>This is an h1</Heading>
+    <Heading as={HeadingAs.h2}>This is an h2</Heading>
+    <Heading as={HeadingAs.h3}>This is an h3</Heading>
+    <Heading as={HeadingAs.h4}>This is an h4</Heading>
+    <Heading as={HeadingAs.h5}>This is an h5</Heading>
+    <Heading as={HeadingAs.h6}>This is an h6</Heading>
     ```
   </TabPanel>
 </Tabs>
@@ -92,7 +92,7 @@ Write all headings in sentence case.
     ```html
     import { Paragraph } from '@govie-ds/react';
 
-    <Heading as="h1" caption="This is a caption">This is a heading</Heading>
+    <Heading as={HeadingAs.h1} caption="This is a caption">This is a heading</Heading>
     ```
   </TabPanel>
 </Tabs>

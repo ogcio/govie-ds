@@ -1,4 +1,4 @@
-import { Heading, Header, Link, Paragraph } from '@govie-ds/react';
+import { Heading, HeadingAs, Header, Link, Paragraph } from '@govie-ds/react';
 import { Footer } from '@/components/footer/footer';
 
 export function ServiceUnavailable() {
@@ -9,7 +9,7 @@ export function ServiceUnavailable() {
         tools={{ search: { action: '/search-page' } }}
       />
       <main>
-        <Heading as="h2">Sorry, the service is unavailable</Heading>
+        <Heading as={HeadingAs.h2}>Sorry, the service is unavailable</Heading>
         <Paragraph>You will be able to use the service later.</Paragraph>
         <Paragraph>
           We saved your answers. They will be available for 30 days

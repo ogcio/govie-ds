@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, HeadingAs, Paragraph } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
@@ -50,7 +50,7 @@ function Benefit({
 }) {
   return (
     <li className="border-gray-50 border-sm rounded p-xl">
-      <Heading as="h3">{title}</Heading>
+      <Heading as={HeadingAs.h3}>{title}</Heading>
       <Paragraph>{description}</Paragraph>
     </li>
   );
@@ -59,7 +59,7 @@ function Benefit({
 function Benefits() {
   return (
     <div className="flex flex-col gap-4xl items-center">
-      <Heading as="h2">
+      <Heading as={HeadingAs.h2}>
         The Design System Building Block offers a wide range of benefits to both
         users and departments
       </Heading>
@@ -103,7 +103,7 @@ export default function HomePage() {
       </section>
       <Benefits />
       <Prose as="section">
-        <Heading as="h2">Get started</Heading>
+        <Heading as={HeadingAs.h2}>Get started</Heading>
         <Paragraph>
           Ready to elevate your design processes? Contact us to schedule a demo
           or learn more about how the Design System Building Block can benefit

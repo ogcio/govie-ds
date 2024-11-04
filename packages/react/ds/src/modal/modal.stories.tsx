@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Button } from '../button/button.js';
-import { Heading } from '../heading/heading.js';
+import { Heading, HeadingAs } from '../heading/heading.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Modal } from './modal.js';
 
@@ -42,7 +41,7 @@ export const Default: Story = {
     triggerButton: <Button>Open Modal</Button>,
     children: (
       <>
-        <Heading as="h2">Title</Heading>
+        <Heading as={HeadingAs.h2}>Title</Heading>
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
@@ -63,7 +62,7 @@ export const ModalOpen: Story = {
   args: {
     children: (
       <>
-        <Heading as="h2">Title</Heading>
+        <Heading as={HeadingAs.h2}>Title</Heading>
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas

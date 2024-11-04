@@ -1,9 +1,9 @@
-import { Button, Heading, Paragraph } from '@govie-ds/react';
+import { Button, Heading, HeadingAs, Paragraph } from '@govie-ds/react';
 
 export const modalProps = {
   children: (
     <>
-      <Heading as="h2">Title</Heading>
+      <Heading as={HeadingAs.h2}>Title</Heading>
       <Paragraph>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
         magnam quis sit soluta cupiditate at deserunt exercitationem voluptas

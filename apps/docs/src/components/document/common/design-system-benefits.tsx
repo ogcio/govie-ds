@@ -1,4 +1,4 @@
-import { Heading } from '@govie-ds/react';
+import { Heading, HeadingAs } from '@govie-ds/react';
 import { Fragment } from 'react';
 
 const benefits = [
@@ -26,7 +26,7 @@ function Benefit({
   return (
     <Fragment>
       <dt>
-        <Heading as="h3">{title}</Heading>
+        <Heading as={HeadingAs.h3}>{title}</Heading>
       </dt>
       <dd>{description}</dd>
     </Fragment>

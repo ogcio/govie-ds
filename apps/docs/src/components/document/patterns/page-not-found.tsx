@@ -1,4 +1,4 @@
-import { Heading, Header, Link, Paragraph } from '@govie-ds/react';
+import { Heading, HeadingAs, Header, Link, Paragraph } from '@govie-ds/react';
 import { Footer } from '@/components/footer/footer';
 
 export function PageNotFound() {
@@ -9,7 +9,7 @@ export function PageNotFound() {
         tools={{ search: { action: '/search-page' } }}
       />
       <main>
-        <Heading as="h2">Page not found</Heading>
+        <Heading as={HeadingAs.h2}>Page not found</Heading>
         <Paragraph>
           If you typed the web address, check it is correct.
         </Paragraph>

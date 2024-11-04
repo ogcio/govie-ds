@@ -36,19 +36,19 @@ const samples: TableSample[] = [
     id: '1',
     name: 'screen/xs',
     value: 'type-scale/heading/bold/700',
-    size: 'md',
+    size: HeadingSize.md,
   },
   {
     id: '2',
     name: 'screen/md',
     value: 'type-scale/heading/bold/800',
-    size: 'lg',
+    size: HeadingSize.lg,
   },
   {
     id: '3',
     name: 'screen/xl',
     value: 'type-scale/heading/bold/900',
-    size: 'xl',
+    size: HeadingSize.xl,
   },
 ];
 

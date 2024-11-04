@@ -1,4 +1,4 @@
-import { Heading } from '@govie-ds/react';
+import { Heading, HeadingAs } from '@govie-ds/react';
 import { Fragment } from 'react';
 import { Card } from '../common/card';
 import { Image } from '../common/image';
@@ -78,7 +78,7 @@ const logoGroups: LogoGroup[] = [
 function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
   return (
     <div>
-      <Heading as="h2">{name}</Heading>
+      <Heading as={HeadingAs.h2}>{name}</Heading>
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-xl">
         {logos.map((logo) => {
           return (

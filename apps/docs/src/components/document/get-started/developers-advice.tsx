@@ -1,5 +1,5 @@
 'use client';
-import { Heading } from '@govie-ds/react';
+import { Heading, HeadingAs } from '@govie-ds/react';
 import { Children, isValidElement, useState } from 'react';
 import { useHash, useIsomorphicLayoutEffect } from 'react-use';
 import { PlatformSelection } from './platform-selection';
@@ -61,7 +61,7 @@ function DevelopersAdviceInternal({ children }: { children: React.ReactNode }) {
         current={platform}
         onSelect={setHash}
       />
-      <Heading as="h2">Recommendation</Heading>
+      <Heading as={HeadingAs.h2}>Recommendation</Heading>
       {recommendation}
     </div>
   );

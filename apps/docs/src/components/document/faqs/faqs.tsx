@@ -1,5 +1,6 @@
-import { Heading } from '@govie-ds/react';
-import React, { Fragment } from 'react';
+import { Heading, HeadingAs } from '@govie-ds/react';
+import type React from 'react';
+import { Fragment } from 'react';
 import { Tabs } from '../common/tabs';
 
 const tabs = [
@@ -46,7 +47,7 @@ export function Faq({
 }) {
   return (
     <div>
-      <Heading as="h2" size="md">
+      <Heading as={HeadingAs.h2} size="md">
         {question}
       </Heading>
       <div>{children}</div>
