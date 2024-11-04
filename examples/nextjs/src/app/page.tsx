@@ -19,6 +19,8 @@ import {
   List,
   Combobox,
   Chip,
+  HeadingAs,
+  HeadingSize,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -85,8 +87,8 @@ export default function Home() {
             title={{
               value: "Where do you live?",
               asHeading: {
-                size: "md",
-                as: "h2",
+                size: HeadingSize.md,
+                as: HeadingAs.h2,
               },
             }}
             items={[
@@ -119,7 +121,7 @@ export default function Home() {
 
           <span className="material-symbols-outlined">face</span>
           <Modal triggerButton={<Button>Open Modal</Button>}>
-            <Heading as="h2">Title</Heading>
+            <Heading as={HeadingAs.h2}>Title</Heading>
             <Paragraph>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
               esse magnam quis sit soluta cupiditate at deserunt exercitationem

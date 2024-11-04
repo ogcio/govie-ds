@@ -27,6 +27,8 @@ import {
   List,
   TypeEnum,
   Combobox,
+  HeadingSize,
+  HeadingAs,
 } from "@govie-ds/react";
 import { CookieBannerProps, ComboBoxProps } from "./props";
 
@@ -186,8 +188,8 @@ export function App() {
           title={{
             value: "Where do you live?",
             asHeading: {
-              size: "md",
-              as: "h2",
+              size: HeadingSize.md,
+              as: HeadingAs.h3,
             },
           }}
           items={[
@@ -207,7 +209,7 @@ export function App() {
           fieldId="uniqueId"
         />
         <Modal triggerButton={<Button>Open Modal</Button>}>
-          <Heading as="h2">Title</Heading>
+          <Heading as={HeadingAs.h2}>Title</Heading>
           <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             esse magnam quis sit soluta cupiditate at deserunt exercitationem
