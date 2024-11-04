@@ -103,7 +103,7 @@ export function App() {
             <PhaseBanner level="alpha">
               This is a pre-release version
             </PhaseBanner>
-            <span className="material-icons">face</span>
+            <span className="material-symbols-outlined">face</span>
             <Card
               action={{
                 children: "Button",
