@@ -19,7 +19,12 @@ describe('Alert', () => {
   });
 
   it('should render different variants', () => {
-    const variants: AlertProps['variant'][] = ['info', 'success', 'warning', 'danger'];
+    const variants: AlertProps['variant'][] = [
+      'info',
+      'success',
+      'warning',
+      'danger',
+    ];
     for (const variant of variants) {
       const screen = renderAlert({
         variant,
