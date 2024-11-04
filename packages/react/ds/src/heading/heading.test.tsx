@@ -1,5 +1,10 @@
 import { render, cleanup } from '../test-utils.js';
-import { type HeadingProps, Heading, HeadingAs, HeadingSize } from './heading.js';
+import {
+  type HeadingProps,
+  Heading,
+  HeadingAs,
+  HeadingSize,
+} from './heading.js';
 
 describe('heading', () => {
   afterEach(cleanup);
