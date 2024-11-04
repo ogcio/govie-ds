@@ -1,4 +1,4 @@
-export enum HeadingSize {
+enum HeadingSize {
   xl = 'xl',
   lg = 'lg',
   md = 'md',
@@ -7,7 +7,7 @@ export enum HeadingSize {
   '2xs' = '2xs',
 }
 
-export enum HeadingAs {
+enum HeadingAs {
   h1 = 'h1',
   h2 = 'h2',
   h3 = 'h3',
@@ -16,7 +16,7 @@ export enum HeadingAs {
   h6 = 'h6',
 }
 
-export type HeadingProps = {
+type HeadingProps = {
   caption?: string;
   as?: keyof typeof HeadingAs;
   size?: keyof typeof HeadingSize;
@@ -42,7 +42,7 @@ const HeadingSizeToClassesMap = {
   '2xs': 'gi-heading-2xs',
 };
 
-export function Heading({
+function Heading({
   as: As = HeadingAs.h1,
   size,
   children,
@@ -64,3 +64,6 @@ export function Heading({
     </>
   );
 }
+
+export { Heading, HeadingSize, HeadingAs };
+export type { HeadingProps };
