@@ -36,6 +36,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.28.1](https://github.com/ogcio/govie-ds/compare/docs-v0.28.0...docs-v0.28.1) (2024-11-04)
+
+
+### Bug Fixes
+
+* update symbols font ([#309](https://github.com/ogcio/govie-ds/issues/309)) ([c2a6210](https://github.com/ogcio/govie-ds/commit/c2a6210f142524474518c977cb30f34b66319934))
+
 ## [0.28.0](https://github.com/ogcio/govie-ds/compare/docs-v0.27.0...docs-v0.28.0) (2024-10-31)
 
 
