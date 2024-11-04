@@ -3,7 +3,7 @@
     "packages/build/eslint-config": "1.0.0",
     "packages/build/prettier-config": "1.0.1",
     "packages/design/deepmerge": "1.0.0",
-    "packages/design/tailwind": "0.16.0",
+    "packages/design/tailwind": "0.16.1",
     "packages/html/ds": "0.16.1",
     "packages/react/ds": "0.20.1",
     "packages/themes/govie": "0.5.0",
