@@ -617,3 +617,52 @@ input[type='file' i] {
   @apply gi-flex gi-items-center gi-gap-1 gi-pl-1.5 gi-pr-1 gi-py-0.5 gi-bg-gray-100 gi-w-fit gi-rounded-sm gi-cursor-default gi-text-xs hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-outline focus:gi-outline-gray-950 focus:gi-outline-[2px] focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)];
 }
 /* Chip */
+
+/* Alert */
+.gi-alert {
+  @apply gi-flex-col gi-flex gi-space-y-4 gi-py-4 gi-px-6 gi-text-sm gi-border gi-border-[5px] gi-rounded-[6px] gi-border-solid
+}
+
+.gi-alert-title {
+  @apply !gi-mb-0 !gi-mt-0 gi-leading-loose
+}
+
+.gi-alert svg {
+  @apply gi-flex-shrink-0 gi-flex gi-size-8 gi-me-3
+}
+
+.gi-alert-dismiss {
+  @apply gi-ml-auto
+}
+
+.gi-alert-dismiss-info {
+  @apply gi-text-blue-700 hover:gi-bg-blue-100
+}
+
+.gi-alert-dismiss-success {
+  @apply gi-text-green-700 hover:gi-bg-green-100
+}
+
+.gi-alert-dismiss-warning {
+  @apply gi-text-yellow-700 hover:gi-bg-yellow-100
+}
+
+.gi-alert-dismiss-danger {
+  @apply gi-text-red-700 hover:gi-bg-red-100
+}
+
+.gi-alert-info {
+  @apply gi-bg-blue-50 gi-border-blue-700 gi-text-blue-700
+}
+
+.gi-alert-success {
+  @apply gi-bg-green-50 gi-border-green-700 gi-text-green-700
+}
+
+.gi-alert-warning {
+  @apply gi-bg-yellow-50 gi-border-yellow-700 gi-text-yellow-700
+}
+
+.gi-alert-danger {
+  @apply gi-bg-red-50 gi-border-red-700 gi-text-red-700
+}
