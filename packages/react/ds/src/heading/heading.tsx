@@ -49,7 +49,6 @@ export function Heading({
   caption,
   customClasses = '',
 }: HeadingProps) {
-  
   const defaultSize = (() => HeadingAsToSizeMap[As])();
   const sizeClasses = (() => HeadingSizeToClassesMap[size ?? defaultSize])();
   const combinedClasses = `${sizeClasses} ${customClasses}`.trim();
