@@ -21,7 +21,7 @@ type HeadingProps = {
   as?: keyof typeof HeadingAs;
   size?: keyof typeof HeadingSize;
   children: React.ReactNode;
-  customClasses?: string;
+  classNames?: string;
 };
 
 const HeadingAsToSizeMap = {
@@ -47,11 +47,11 @@ function Heading({
   size,
   children,
   caption,
-  customClasses = '',
+  classNames = '',
 }: HeadingProps) {
   const defaultSize = (() => HeadingAsToSizeMap[As])();
   const sizeClasses = (() => HeadingSizeToClassesMap[size ?? defaultSize])();
-  const combinedClasses = `${sizeClasses} ${customClasses}`.trim();
+  const combinedClasses = `${sizeClasses} ${classNames}`.trim();
 
   return (
     <>
