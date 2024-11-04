@@ -627,6 +627,14 @@ input[type='file' i] {
   @apply !gi-mb-0 !gi-mt-0 gi-leading-loose
 }
 
+.gi-alert-container {
+  @apply gi-flex gi-items-center
+}
+
+.gi-alert-description {
+  @apply !gi-mb-0
+}
+
 .gi-alert svg {
   @apply gi-flex-shrink-0 gi-flex gi-size-8 gi-me-3
 }

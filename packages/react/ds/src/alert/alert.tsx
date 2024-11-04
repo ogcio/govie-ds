@@ -1,16 +1,16 @@
 "use client";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cn } from "../cn";
-import { Heading } from "../heading/heading";
-import { Paragraph } from "../paragraph/paragraph";
 import { useState, type ReactNode } from "react";
-import { IconButton } from "../icon-button/icon-button";
+import { cn } from "../cn.js";
+import { Heading } from "../heading/heading.js";
+import { Paragraph } from "../paragraph/paragraph.js";
+import { IconButton } from "../icon-button/icon-button.js";
 
 const alertVariants = tv({
 	slots: {
 		base: "gi-alert",
-		message: "gi-flex gi-items-center",
-		description: "!gi-mb-0",
+		container: "gi-alert-container",
+		description: "gi-alert-description",
 		heading: "gi-alert-title",
 		dismiss: "gi-alert-dismiss",
 	},
@@ -53,7 +53,7 @@ function Alert({
 	className,
 	dismissable = true,
 }: AlertProps) {
-	const { base, heading, message, description, dismiss } = alertVariants({
+	const { base, heading, container, description, dismiss } = alertVariants({
 		variant,
 	});
     const [dismissed, setDismissed] = useState(false);
@@ -62,7 +62,7 @@ function Alert({
     }
 	return (
 		<div className={cn(base(), className)} role="alert">
-			<div className={cn(message())}>
+			<div className={cn(container())}>
 				<svg
 					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
