@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading, HeadingAs, HeadingSize } from '../heading/heading.js';
@@ -30,7 +31,7 @@ export type CheckboxesGroupType = {
   onChange?: (items: string[]) => void;
 };
 
-const CheckboxesGroup = ({
+export const CheckboxesGroup = ({
   fieldId,
   errorMessage,
   title,
@@ -130,5 +131,3 @@ const CheckboxesGroup = ({
     </div>
   );
 };
-
-export default CheckboxesGroup;

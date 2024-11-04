@@ -2,14 +2,54 @@
 title: Label
 description: Label HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Label
 
 <ComponentStatusBlock componentId="label" />
 
+<Label htmlFor="input-id" size="md" text="This is Label" />
+
 The `Label` component is used to associate a text label with a form input element, helping improve accessibility and user experience. The `size` prop allows you to adjust the label size based on the form's design requirements.
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html
+    <label
+      for="input-id"
+      class="gi-text-md gi-mb-1 gi-block">
+      Label Text
+    </label>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```html
+    {{ govieLabel({
+      "content": "Label Text",
+      "size": "md",
+      "for": "input-id"
+    }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { Label } from "@govie-ds/react";
+
+    <Label
+      htmlFor="input-id"
+      size="md"
+      text="Label"
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
 
 ## When to Use This Component
 
