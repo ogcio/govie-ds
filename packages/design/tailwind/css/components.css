@@ -58,6 +58,17 @@ input[type='text'] {
 
 /* End of Select */
 
+/* Phase banner */
+
+.gi-phase-banner-container {
+  @apply gi-flex gi-items-center gi-gap-2 gi-border-b-xs gi-py-2
+}
+.gi-phase-banner {
+  @apply gi-text-white gi-tracking-wider gi-bg-blue-600 gi-px-2 gi-rounded
+}
+
+/* End of Phase banner */
+
 /* Radio */
 
 .gi-radio-group-container {
