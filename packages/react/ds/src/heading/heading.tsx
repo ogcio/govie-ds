@@ -1,69 +1,57 @@
-export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type HeadingSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
+export enum HeadingSize {
+  xl = 'xl',
+  lg = 'lg',
+  md = 'md',
+  sm = 'sm',
+  xs = 'xs',
+  '2xs' = '2xs',
+}
+
+export enum HeadingAs {
+  h1 = 'h1',
+  h2 = 'h2',
+  h3 = 'h3',
+  h4 = 'h4',
+  h5 = 'h5',
+  h6 = 'h6',
+}
+
 export type HeadingProps = {
   caption?: string;
-  as?: HeadingAs;
-  size?: HeadingSize;
+  as?: keyof typeof HeadingAs;
+  size?: keyof typeof HeadingSize;
   children: React.ReactNode;
   customClasses?: string;
 };
 
+const HeadingAsToSizeMap = {
+  h1: HeadingSize.xl,
+  h2: HeadingSize.lg,
+  h3: HeadingSize.md,
+  h4: HeadingSize.sm,
+  h5: HeadingSize.xs,
+  h6: HeadingSize['2xs'],
+};
+
+const HeadingSizeToClassesMap = {
+  xl: 'gi-heading-xl',
+  lg: 'gi-heading-lg',
+  md: 'gi-heading-md',
+  sm: 'gi-heading-sm',
+  xs: 'gi-heading-xs',
+  '2xs': 'gi-heading-2xs',
+};
+
 export function Heading({
-  as: As = 'h1',
+  as: As = HeadingAs.h1,
   size,
   children,
   caption,
   customClasses = '',
 }: HeadingProps) {
-  const defaultSize = (() => {
-    switch (As) {
-      case 'h1': {
-        return 'xl';
-      }
-      case 'h2': {
-        return 'lg';
-      }
-      case 'h3': {
-        return 'md';
-      }
-      case 'h4': {
-        return 'sm';
-      }
-      case 'h5': {
-        return 'xs';
-      }
-      case 'h6': {
-        return '2xs';
-      }
-    }
-  })();
-
-  const sizeClasses = (() => {
-    switch (size || defaultSize) {
-      case 'xl': {
-        return 'gi-heading-xl';
-      }
-      case 'lg': {
-        return 'gi-heading-lg';
-      }
-      case 'md': {
-        return 'gi-heading-md';
-      }
-      case 'sm': {
-        return 'gi-heading-sm';
-      }
-      case 'xs': {
-        return 'gi-heading-xs';
-      }
-      case '2xs': {
-        return 'gi-heading-2xs';
-      }
-      default: {
-        return '';
-      }
-    }
-  })();
-
+  
+  const defaultSize = (() => HeadingAsToSizeMap[As])();
+  const sizeClasses = (() => HeadingSizeToClassesMap[size ?? defaultSize])();
   const combinedClasses = `${sizeClasses} ${customClasses}`.trim();
 
   return (
