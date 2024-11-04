@@ -15,7 +15,7 @@ export const Default: Story = {
   },
 };
 
-// @ts-expect-error
+// @ts-expect-error: we don't need args in this story
 export const WithSize: Story = {
   render: () => (
     <div className="flex flex-row gap-2">
