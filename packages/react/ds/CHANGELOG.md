@@ -39,6 +39,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.20.1](https://github.com/ogcio/govie-ds/compare/react-v0.20.0...react-v0.20.1) (2024-11-04)
+
+
+### Bug Fixes
+
+* update symbols font ([#309](https://github.com/ogcio/govie-ds/issues/309)) ([c2a6210](https://github.com/ogcio/govie-ds/commit/c2a6210f142524474518c977cb30f34b66319934))
+
 ## [0.20.0](https://github.com/ogcio/govie-ds/compare/react-v0.19.0...react-v0.20.0) (2024-10-31)
 
 
