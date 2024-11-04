@@ -45,20 +45,19 @@ We **strongly recommend** that you pin the GOV IE design system packages, so tha
 
 **Upgrades should be explicit version updates** in the `package.json` and then your application should be regression tested:
 
-```diff
+```json
 "dependencies": {
--  "@govie-ds/theme-govie": "^0.4.0",
-+  "@govie-ds/theme-govie": "0.4.0",
--  "@govie-ds/react": "^0.10.0",
-+  "@govie-ds/react": "0.10.0"
+   "@govie-ds/theme-govie": "0.4.0",
+   "@govie-ds/react": "0.10.0"
 ```
 
 ### Usage
 
 Import the GOV IE `theme.css` from the `@govie-ds/theme-govie` theme package at the entry point of your application, for example:
 
-```diff
-+import '@govie-ds/theme-govie/theme.css'
+```jsx
+import "@govie-ds/react/styles.css";
+import "@govie-ds/theme-govie/theme.css";
 
 export function App() {
   return (
@@ -99,8 +98,6 @@ function MyComponent() {
   );
 }
 ```
-
-The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
 
 ## Contribution
 
