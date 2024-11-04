@@ -1,6 +1,6 @@
 import { render, cleanup } from '../test-utils.js';
 import { CheckboxSizeEnum } from './checkbox.js';
-import CheckboxGroup, { CheckboxesGroupType } from './checkboxes-group.js';
+import { CheckboxesGroup, CheckboxesGroupType } from './checkboxes-group.js';
 
 const standardProps: CheckboxesGroupType = {
   fieldId: 'UniqueID',
@@ -28,7 +28,7 @@ describe('checkboxes', () => {
   afterEach(cleanup);
 
   const renderCheckboxes = (props: CheckboxesGroupType) =>
-    render(<CheckboxGroup {...props} />);
+    render(<CheckboxesGroup {...props} />);
 
   it('should render checkbox labels and inputs', () => {
     const screen = renderCheckboxes(standardProps);
@@ -44,7 +44,7 @@ describe('checkboxes', () => {
 
   it('should render the title', () => {
     const screen = renderCheckboxes(standardProps);
-    const titleElement = screen.getByText(standardProps.title.value);
+    const titleElement = screen.getByText('Title');
     expect(titleElement).toBeTruthy();
   });
 

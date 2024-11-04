@@ -1,5 +1,10 @@
-import { render as tlRender, RenderOptions } from '@testing-library/react';
+import {
+  render as tlRender,
+  RenderOptions,
+  RenderResult,
+} from '@testing-library/react';
 import axe from 'axe-core';
+import React from 'react';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations
@@ -14,7 +19,15 @@ function toAxeErrorMessage(violations: axe.Result[]) {
 }
 
 export * from '@testing-library/react';
-export function render(component: React.ReactNode, options?: RenderOptions) {
+
+interface CustomRenderResult extends RenderResult {
+  axe: () => Promise<void>;
+}
+
+export function render(
+  component: React.ReactNode,
+  options?: RenderOptions,
+): CustomRenderResult {
   const { container, ...renderRest } = tlRender(component, options);
 
   return {

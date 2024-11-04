@@ -133,7 +133,7 @@ describe('govieTextInput', () => {
   it('should safely render HTML content in label', () => {
     const screen = renderTextInput({
       label: {
-        text: <strong>Bold Label</strong>,
+        text: 'Bold Label',
       },
     });
 

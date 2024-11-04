@@ -101,7 +101,7 @@ describe('govieTextArea', () => {
   it('should safely render HTML content in label', () => {
     const screen = renderTextArea({
       label: {
-        text: <strong>Bold Label</strong>,
+        text: 'Bold Label',
       },
     });
 

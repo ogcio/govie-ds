@@ -282,8 +282,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/iconbutton--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {
@@ -571,8 +572,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=docs/typography-label--docs',
           },
-          status: 'considering',
+          status: 'alpha',
         },
         {
           platform: {

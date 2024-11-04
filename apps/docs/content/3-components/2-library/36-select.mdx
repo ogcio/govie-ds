@@ -2,12 +2,138 @@
 title: Select
 description: Select HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Select
 
 <ComponentStatusBlock componentId="select" />
+
+<Select
+  error={{
+    text: '',
+  }}
+  hint={{
+    text: '',
+  }}
+  id="unique-id"
+  label={{
+    text: 'Label',
+  }}
+  options={[
+    {
+      label: 'Option 1',
+      value: 'value-1',
+    },
+    {
+      label: 'Option 2',
+      value: 'value-2',
+    },
+    {
+      label: 'Option 3',
+      value: 'value-3',
+    },
+  ]}
+/>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html
+    <div data-module="gieds-select">
+      <label
+        for="unique-id"
+        class="gi-text-md gi-mb-1 gi-block gi-mb-2">
+        Label
+      </label>
+      <select
+        id="unique-id"
+        aria-label="Label"
+        class="gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-1">
+            Option 1
+          </option>
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-2">
+            Option 2
+          </option>
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-3">
+            Option 3
+          </option>
+      </select>
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```html
+    {{ govieSelect({
+      "id": "unique-id",
+      "label": {
+        "content": "Label"
+      },
+      "hint": {
+        "content": ""
+      },
+      "error": {
+        "content": ""
+      },
+      "options": [
+        {
+          "label": "Option 1",
+          "value": "value-1"
+        },
+        {
+          "label": "Option 2",
+          "value": "value-2"
+        },
+        {
+          "label": "Option 3",
+          "value": "value-3"
+        }
+      ]
+    }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html import { Select } from "@govie-ds/react";
+    <Select
+      error={{
+        text: '',
+      }}
+      hint={{
+        text: '',
+      }}
+      id="unique-id"
+      label={{
+        text: 'Label',
+      }}
+      options={[
+        {
+          label: 'Option 1',
+          value: 'value-1',
+        },
+        {
+          label: 'Option 2',
+          value: 'value-2',
+        },
+        {
+          label: 'Option 3',
+          value: 'value-3',
+        },
+      ]}
+    />
+    ```
+  </TabPanel>
+</Tabs>
 
 ## When to use this component
 

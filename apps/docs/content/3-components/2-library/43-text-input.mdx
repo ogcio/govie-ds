@@ -2,7 +2,7 @@
 title: Text Input
 description: Text Input HTML Component
 draft: false
-status: in-development
+status: stable
 ---
 
 # Text Input
@@ -10,6 +10,80 @@ status: in-development
 <ComponentStatusBlock componentId="text-input" />
 
 The `TextInput` component is used to allow users to enter single-line text, with options to adjust the width dynamically using `halfFluid`, `fullFluid`, or `characterWidth`. It can be used with prefixes, suffixes, and error states for flexible form input scenarios.
+
+<TextInput
+  error={{
+    text: '',
+  }}
+  halfFluid
+  hint={{
+    text: '',
+  }}
+  id="text-input-id"
+  label={{
+    htmlFor: 'text-input-id',
+    text: 'Input Label',
+  }}
+/>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">        
+    ```html
+    <label
+      for="input-id"
+      class="gi-text-md gi-mb-1 gi-block gi-mb-2">
+      Label
+    </label>
+    <div class="gi-flex gi-items-center ">
+      <input
+        id="input-id"
+        data-testid="textbox"
+        type="text"
+        autocomplete="on"
+        class="gi-border-gray-950 gi-w-1/2 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
+      />
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">        
+    ```html
+    {{ govieTextInput({
+      "label": {
+        "content": "Label",
+        "for": "character-width-input"
+      },
+      "halfFluid": true,
+      "characterWidth": 20,
+      "id": "character-width-input"
+    }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { TextInput } from "@govie-ds/react";
+    
+    <TextInput
+      error={{
+        text: ''
+      }}
+      halfFluid
+      hint={{
+        text: ''
+      }}
+      id="text-input-id"
+      label={{
+        htmlFor: 'text-input-id',
+        text: 'Input Label'
+      }}
+    />
+    ```
+  </TabPanel>
+</Tabs>
 
 ## When to Use This Component
 
