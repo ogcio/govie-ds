@@ -374,7 +374,7 @@ export function createTheme(
                 fontFamily: 'inherit',
               },
               h6: {
-                font: variables.semantic.typography.xs.heading.xs,
+                font: variables.semantic.typography.xs.heading['2xs'],
                 fontWeight: variables.primitive.font.weight['700'],
                 fontFamily: 'inherit',
               },
@@ -413,7 +413,7 @@ export function createTheme(
                 fontFamily: 'inherit',
               },
               h6: {
-                font: variables.semantic.typography.md.heading.xs,
+                font: variables.semantic.typography.md.heading['2xs'],
                 fontWeight: variables.primitive.font.weight['700'],
                 fontFamily: 'inherit',
               },
@@ -452,7 +452,7 @@ export function createTheme(
                 fontFamily: 'inherit',
               },
               h6: {
-                font: variables.semantic.typography.xl.heading.xs,
+                font: variables.semantic.typography.xl.heading['2xs'],
                 fontWeight: variables.primitive.font.weight['700'],
                 fontFamily: 'inherit',
               },
