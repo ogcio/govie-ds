@@ -21,13 +21,13 @@
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
-  {# Conditionally render the wrapper div only if error content is available #}
-  {# prettier-ignore-start #}
-  {% if isError %}
-  <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
-  {% endif %}
-  {# prettier-ignore-end #}
+  {% macro getErrorStyle(error) %}
+    {% if error %}
+      gi-error-state
+    {% endif %}
+  {% endmacro %}
 
+  <div class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}">
   {% if props.label %}
     {{
       govieLabel({
@@ -57,7 +57,7 @@
     }}
   {% endif %}
 
-  <div class="gi-flex gi-items-center" data-module="gieds-textarea">
+  <div class="gi-textarea-container" data-module="gieds-textarea">
     <textarea
       id="{{ props.id or 'textarea-id' }}"
       rows="{{ props.rows or 4 }}"
@@ -80,11 +80,5 @@
       }}
     </div>
   {% endif %}
-
-  {# Close the conditional wrapper div if isError is true #}
-  {# prettier-ignore-start #}
-  {% if isError %}
   </div>
-  {% endif %}
-  {# prettier-ignore-end #}
 {% endmacro %}

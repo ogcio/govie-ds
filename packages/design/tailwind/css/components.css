@@ -546,6 +546,14 @@ input[type='file' i] {
   @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950;
 }
 
+.gi-textarea-layout-container {
+  @apply gi-pt-2 gi-mb-4
+}
+
+.gi-textarea-container {
+  @apply gi-flex gi-items-center
+}
+
 .gi-textarea-error {
   @apply gi-border-red-600;
 }

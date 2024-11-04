@@ -21,42 +21,6 @@ const meta = {
   },
   component: TextArea,
   argTypes: {
-    rows: {
-      description: 'Sets the number of rows (height) of the textarea.',
-      control: 'number',
-      table: {
-        category: 'Size Control',
-        type: { summary: 'number' },
-        defaultValue: { summary: '4' },
-      },
-    },
-    cols: {
-      description: 'Sets the number of columns (width) of the textarea.',
-      control: 'number',
-      table: {
-        category: 'Size Control',
-        type: { summary: 'number' },
-        defaultValue: { summary: '100' },
-      },
-    },
-    autoComplete: {
-      description: 'Sets the autocomplete behavior for the textarea.',
-      control: 'text',
-      table: {
-        category: 'Behavior',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'on' },
-      },
-    },
-    id: {
-      description: 'Sets the ID for the textarea, used for accessibility.',
-      control: 'text',
-      table: {
-        category: 'Accessibility',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'textarea-id' },
-      },
-    },
     label: {
       description: 'Label associated with the textarea',
       control: 'object',
@@ -83,6 +47,43 @@ const meta = {
         type: { summary: 'ErrorText' },
       },
     },
+    rows: {
+      description: 'The number of visible text lines in the textarea.',
+      control: 'number',
+      table: {
+        category: 'Size Control',
+        type: { summary: 'number' },
+        defaultValue: { summary: '4' },
+      },
+    },
+    cols: {
+      description: 'The width of the textarea in terms of characters.',
+      control: 'number',
+      table: {
+        category: 'Size Control',
+        type: { summary: 'number' },
+        defaultValue: { summary: '100' },
+      },
+    },
+    autoComplete: {
+      description: 'Specifies whether the browser should provide auto-completion options for the textarea.',
+      control: 'text',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'on' },
+      },
+    },
+    id: {
+      description: 'Sets the ID for the textarea, used for accessibility.',
+      control: 'text',
+      table: {
+        category: 'Accessibility',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'textarea-id' },
+      },
+    },
+
   },
 } satisfies Meta<typeof TextArea>;
 
@@ -107,30 +108,6 @@ export const Default: Story = {
   },
 };
 
-export const CustomSizeWith6RowsAnd50Cols: Story = {
-  args: {
-    label: {
-      content: 'Textarea Label',
-      for: 'custom-size-textarea',
-    },
-    rows: 6,
-    cols: 50,
-    id: 'custom-size-textarea',
-  },
-};
-
-export const WithLabel: Story = {
-  args: {
-    label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-2',
-    },
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-2',
-  },
-};
-
 export const WithLabelAndHint: Story = {
   args: {
     label: {
@@ -146,14 +123,11 @@ export const WithLabelAndHint: Story = {
   },
 };
 
-export const WithLabelHintAndError: Story = {
+export const WithLabelAndError: Story = {
   args: {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-4',
-    },
-    hint: {
-      content: 'Hint text for textarea',
     },
     error: {
       content: 'Error message for textarea',
@@ -161,6 +135,36 @@ export const WithLabelHintAndError: Story = {
     rows: 4,
     cols: 100,
     id: 'textarea-id-4',
+  },
+};
+
+export const WithLabelHintAndError: Story = {
+  args: {
+    label: {
+      content: 'Textarea Label',
+      for: 'textarea-id-4',
+    },
+    hint: {
+      content: 'Hint: This is a helpful hint.',
+    },
+    error: {
+      content: 'Error message for textarea',
+    },
+    rows: 4,
+    cols: 100,
+    id: 'textarea-id-4',
+  },
+};
+
+export const CustomRowsAndColumns: Story = {
+  args: {
+    label: {
+      content: 'Textarea Label',
+      for: 'custom-size-textarea',
+    },
+    rows: 6,
+    cols: 40,
+    id: 'custom-size-textarea',
   },
 };
 
@@ -173,9 +177,7 @@ export const WithMaxChars: Story = {
     hint: {
       content: 'Hint text for textarea',
     },
-    maxChars: 30,
-    rows: 4,
-    cols: 100,
+    maxChars: 100,
     id: 'textarea-id-5',
   },
 };
