@@ -58,6 +58,14 @@ input[type='text'] {
 
 /* End of Select */
 
+/* Label */
+
+.gi-label {
+  @apply gi-mb-1 gi-block
+}
+
+/* End of Label */
+
 /* File-upload */
 .gi-file-upload-container {
   @apply gi-pt-2 gi-mb-4
