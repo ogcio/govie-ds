@@ -48,6 +48,16 @@ input[type='text'] {
 
 /* End Blockquote */
 
+/* Select */
+.gi-select {
+  @apply gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+}
+.gi-select-option {
+  @apply gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+}
+
+/* End of Select */
+
 /* File-upload */
 .gi-file-upload-container {
   @apply gi-pt-2 gi-mb-4

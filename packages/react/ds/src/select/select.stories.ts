@@ -6,7 +6,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'Use this select component where it is appropiate',
+        component: 'A select that component allows users to choose an option from a long list.',
       },
     },
   },
