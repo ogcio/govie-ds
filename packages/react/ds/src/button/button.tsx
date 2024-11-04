@@ -13,9 +13,16 @@ export const Button = ({
   disabled,
   children,
   onClick,
+  type,
+  form,
+  value,
 }: ButtonProps) => {
   return (
     <button
+      type={type}
+      form={form}
+      value={value}
+      data-testid={`govieButton-${appearance}-${variant}-${size}-${disabled ? 'disabled' : ''}`}
       onClick={onClick}
       className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
     >

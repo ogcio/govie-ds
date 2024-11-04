@@ -7,6 +7,16 @@ export type ParagraphWhitespace =
   | 'pre-wrap'
   | 'break-spaces';
 
+export type ParagraphProps = {
+  as?: ParagraphAs;
+  size?: ParagraphSize;
+  align?: ParagraphAlign;
+  whitespace?: ParagraphWhitespace;
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+};
+
 export function Paragraph({
   as: As = 'p',
   size = 'md',
@@ -15,15 +25,7 @@ export function Paragraph({
   children,
   style,
   className,
-}: {
-  as?: ParagraphAs;
-  size?: ParagraphSize;
-  align?: ParagraphAlign;
-  whitespace?: ParagraphWhitespace;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}) {
+}: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
       case 'lg': {

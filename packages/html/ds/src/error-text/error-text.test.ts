@@ -16,7 +16,7 @@ describe('govieErrorText', () => {
     });
     const errorElement = screen.getByText('This is an error message');
     expect(errorElement).toBeTruthy();
-    expect(errorElement.tagName).toBe('P');
+    expect(errorElement.tagName).toBe('DIV');
   });
 
   it('should render error text with "sm" size', () => {

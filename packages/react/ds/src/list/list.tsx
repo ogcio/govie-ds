@@ -37,7 +37,7 @@ const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
 
 export function List({ items, ...props }: ListProps) {
   return (
-    <ul className={getListClass(props)}>
+    <ul className={getListClass(props)} data-testid="govieList">
       {items.map((item, index) => {
         return <li key={`listItem-${index}`}>{item}</li>;
       })}

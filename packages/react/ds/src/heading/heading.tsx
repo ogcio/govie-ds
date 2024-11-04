@@ -1,5 +1,12 @@
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type HeadingSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
+export type HeadingProps = {
+  caption?: string;
+  as?: HeadingAs;
+  size?: HeadingSize;
+  children: React.ReactNode;
+  customClasses?: string;
+};
 
 export function Heading({
   as: As = 'h1',
@@ -7,13 +14,7 @@ export function Heading({
   children,
   caption,
   customClasses = '',
-}: {
-  caption?: string;
-  as?: HeadingAs;
-  size?: HeadingSize;
-  children: React.ReactNode;
-  customClasses?: string;
-}) {
+}: HeadingProps) {
   const defaultSize = (() => {
     switch (As) {
       case 'h1': {
@@ -67,7 +68,11 @@ export function Heading({
 
   return (
     <>
-      {caption && <span className="gi-text-gray-500">{caption}</span>}
+      {caption && (
+        <span className="gi-text-gray-500" data-testid="govie-heading-caption">
+          {caption}
+        </span>
+      )}
       <As className={combinedClasses}>{children}</As>
     </>
   );

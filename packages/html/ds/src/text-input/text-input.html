@@ -2,6 +2,7 @@
   {% from 'label/label.html' import govieLabel %}
   {% from 'hint-text/hint-text.html' import govieHintText %}
   {% from 'error-text/error-text.html' import govieErrorText %}
+  {% from 'helpers/helpers.html' import addClasses %}
   {% set widthStyle = '' %}
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
@@ -19,78 +20,73 @@
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
+  {% macro getErrorStyle(error) %}
+    {% if error %}
+      gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600
+    {% endif %}
+  {% endmacro %}
+
   {# Generate a unique or provided ID for the input field #}
   {% set inputId = props.id or 'input-id' %}
 
-  {# Conditionally render the wrapper div only if error content is available #}
-  {# prettier-ignore-start #}
-  {% if isError %}
-    <div
-      class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600"
-    >
-  {% endif %}
-  {# prettier-ignore-end #}
-
-  {% if props.label %}
-    {{
-      govieLabel({
-        "content": props.label.content,
-        "size": props.label.size or "md",
-        "for": inputId,
-        "classNames": marginBottom
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isHint %}
-    {{
-      govieHintText({
-        "content": props.hint.content,
-        "size": props.hint.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isError %}
-    {{
-      govieErrorText({
-        "content": props.error.content,
-        "size": props.error.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  <div class="gi-flex gi-items-center {{ marginTop }}">
-    {% if props.prefix %}
-      <div
-        class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10"
-      >
-        {{ props.prefix | safe }}
-      </div>
+  <div
+    class="gi-pt-2 gi-mb-4 {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}"
+  >
+    {% if props.label %}
+      {{
+        govieLabel({
+          "content": props.label.content,
+          "size": props.label.size or "md",
+          "for": inputId,
+          "classNames": marginBottom
+        }) | trim
+      }}
     {% endif %}
 
-    <input
-      id="{{ inputId }}"
-      data-testid="textbox"
-      {{ widthStyle | safe }}
-      type="{{ props.type or 'text' }}"
-      autocomplete="{{ props.autoComplete or 'on' }}"
-      class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
-    />
-
-    {% if props.suffix %}
-      <div
-        class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10"
-      >
-        {{ props.suffix | safe }}
-      </div>
+    {% if isHint %}
+      {{
+        govieHintText({
+          "content": props.hint.content,
+          "size": props.hint.size or "md"
+        }) | trim
+      }}
     {% endif %}
-  </div>
 
-  {# Close the conditional wrapper div if there's an error #}
-  {# prettier-ignore-start #}
-  {% if isError %}
+    {% if isError %}
+      {{
+        govieErrorText({
+          "content": props.error.content,
+          "size": props.error.size or "md"
+        }) | trim
+      }}
+    {% endif %}
+
+    <div class="gi-flex gi-items-center {{ marginTop }}">
+      {% if props.prefix %}
+        <div
+          class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10"
+        >
+          {{ props.prefix | safe }}
+        </div>
+      {% endif %}
+
+      <input
+        id="{{ inputId }}"
+        {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
+        data-testid="textbox"
+        {{ widthStyle | safe }}
+        type="{{ props.type or 'text' }}"
+        autocomplete="{{ props.autoComplete or 'on' }}"
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
+      />
+
+      {% if props.suffix %}
+        <div
+          class="xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10"
+        >
+          {{ props.suffix | safe }}
+        </div>
+      {% endif %}
+    </div>
   </div>
-  {% endif %}
-  {# prettier-ignore-end #}
 {% endmacro %}

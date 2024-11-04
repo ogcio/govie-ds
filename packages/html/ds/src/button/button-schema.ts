@@ -23,6 +23,14 @@ export enum IconPosition {
   End = 'end',
 }
 
+// export type ButtonType = 'submit' | 'reset' | 'button';
+
+export enum ButtonType {
+  Submit = 'submit',
+  Reset = 'reset',
+  Button = 'button',
+}
+
 export const buttonSchema = zod.object({
   content: zod.string({
     description: 'The raw HTML that will be inserted',
@@ -44,6 +52,19 @@ export const buttonSchema = zod.object({
     .optional(),
   disabled: zod
     .boolean({ description: 'Specify if the button should be disabled' })
+    .optional(),
+  type: zod
+    .nativeEnum(ButtonType, {
+      description: 'Select the action type of the button',
+    })
+    .optional(),
+  form: zod
+    .string({ description: 'The ID of the form that button is binded to ' })
+    .optional(),
+  value: zod
+    .string({
+      description: 'The value for the button sent in the request',
+    })
     .optional(),
 });
 

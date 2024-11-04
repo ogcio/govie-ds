@@ -26,8 +26,9 @@ import {
   CookieBanner,
   List,
   TypeEnum,
+  Combobox,
 } from "@govie-ds/react";
-import { CookieBannerProps } from "./props";
+import { CookieBannerProps, ComboBoxProps } from "./props";
 
 export function App() {
   return (
@@ -149,6 +150,7 @@ export function App() {
                 htmlFor: "textarea-id",
               }}
             />
+            <Combobox {...ComboBoxProps} />
             <Select
               id="unique-id"
               label={{ text: "Label" }}

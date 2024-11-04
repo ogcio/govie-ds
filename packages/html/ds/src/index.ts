@@ -3,6 +3,7 @@ import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
+import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import/order */
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
 import { initTabs } from './tabs/tabs.js';
@@ -32,6 +33,7 @@ export function initGovIe() {
   initModal();
   initCookieBanner();
   initTabs();
+  initComboBox();
 }
 
 export function destroyGovIe() {
