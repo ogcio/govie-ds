@@ -75,6 +75,22 @@ input[type='text'] {
 
 /* End of Hint Text */
 
+/* Error Text */
+.gi-error-text-md {
+  @apply gi-text-md  gi-mb-3
+}
+.gi-error-text-sm {
+  @apply gi-text-sm  gi-mb-2.5
+}
+.gi-error-text-lg {
+  @apply gi-text-lg  gi-mb-3.5
+}
+.gi-error-text {
+  @apply gi-font-bold gi-text-red-600
+}
+
+/* End of Error Text */
+
 /* Phase banner */
 
 .gi-phase-banner-container {
