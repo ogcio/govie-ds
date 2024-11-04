@@ -58,6 +58,23 @@ input[type='text'] {
 
 /* End of Select */
 
+/* Hint Text */
+
+.gi-hint-text-md {
+  @apply gi-text-md gi-mb-2
+}
+.gi-hint-text-sm {
+  @apply gi-text-sm gi-mb-1.5
+}
+.gi-hint-text-lg {
+  @apply gi-text-lg gi-mb-2.5
+}
+.gi-hint-text {
+  @apply gi-font-normal gi-text-gray-600
+}
+
+/* End of Hint Text */
+
 /* Phase banner */
 
 .gi-phase-banner-container {

@@ -28,6 +28,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
+    content: {
+      control: 'text',
+      table: {
+        category: 'Content',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'This is hint text' },
+      },
+    },
     size: {
       control: 'radio',
       options: ['sm', 'md', 'lg'],
@@ -35,14 +43,6 @@ export const Default: Story = {
         category: 'Appearance',
         type: { summary: 'Size of the hint text' },
         defaultValue: { summary: 'md' },
-      },
-    },
-    content: {
-      control: 'text',
-      table: {
-        category: 'Content',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'This is hint text' },
       },
     },
   },
