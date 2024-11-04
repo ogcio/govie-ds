@@ -34,10 +34,6 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/theme-builder": "workspace:*",
-    "@tsconfig/node20": "^20.1.4",
-    "eslint": "~9.5.0",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.4",
-    "tsx": "^4.16.5"
+    "eslint": "~9.5.0"
   }
 }

@@ -35,7 +35,7 @@ jobs:
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Build
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}

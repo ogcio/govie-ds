@@ -46,7 +46,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Set environment variable
         run: echo "CONFIGURATION=${{ github.event.inputs.environment || github.event.inputs.env }}" >> $GITHUB_ENV
