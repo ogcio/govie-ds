@@ -1,5 +1,5 @@
 import { render, cleanup } from '../test-utils.js';
-import { HeadingProps, Heading, HeadingAs, HeadingSize } from './heading.js';
+import { type HeadingProps, Heading, HeadingAs, HeadingSize } from './heading.js';
 
 describe('heading', () => {
   afterEach(cleanup);
@@ -8,8 +8,8 @@ describe('heading', () => {
   it('should render heading title', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h1',
+      size: HeadingSize.md,
+      as: HeadingAs.h1,
     });
     expect(screen.getByText('Heading Text')).toBeTruthy();
   });
@@ -17,8 +17,8 @@ describe('heading', () => {
   it('should render small heading', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'sm',
-      as: 'h1',
+      size: HeadingSize.sm,
+      as: HeadingAs.h1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -32,8 +32,8 @@ describe('heading', () => {
   it('should render medium heading', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h1',
+      size: HeadingSize.md,
+      as: HeadingAs.h1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -47,8 +47,8 @@ describe('heading', () => {
   it('should render large heading', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'lg',
-      as: 'h1',
+      size: HeadingSize.lg,
+      as: HeadingAs.h1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -62,8 +62,8 @@ describe('heading', () => {
   it('should render extra large heading', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'xl',
-      as: 'h1',
+      size: HeadingSize.xl,
+      as: HeadingAs.h1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -77,8 +77,8 @@ describe('heading', () => {
   it('should contain H1 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h1',
+      size: HeadingSize.md,
+      as: HeadingAs.h1,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H1');
@@ -87,8 +87,8 @@ describe('heading', () => {
   it('should contain H2 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h2',
+      size: HeadingSize.md,
+      as: HeadingAs.h2,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H2');
@@ -97,8 +97,8 @@ describe('heading', () => {
   it('should contain H3 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h3',
+      size: HeadingSize.md,
+      as: HeadingAs.h3,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H3');
@@ -107,8 +107,8 @@ describe('heading', () => {
   it('should contain H4 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h4',
+      size: HeadingSize.md,
+      as: HeadingAs.h4,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H4');
@@ -117,8 +117,8 @@ describe('heading', () => {
   it('should contain H5 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h5',
+      size: HeadingSize.md,
+      as: HeadingAs.h5,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H5');
@@ -127,8 +127,8 @@ describe('heading', () => {
   it('should contain H6 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h6',
+      size: HeadingSize.md,
+      as: HeadingAs.h6,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H6');
@@ -137,8 +137,8 @@ describe('heading', () => {
   it('should contain caption', () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h1',
+      size: HeadingSize.md,
+      as: HeadingAs.h1,
       caption: 'Caption text',
     });
 
@@ -148,8 +148,8 @@ describe('heading', () => {
   it('should pass axe tests', async () => {
     const screen = renderHeading({
       children: 'Heading Text',
-      size: 'md',
-      as: 'h1',
+      size: HeadingSize.md,
+      as: HeadingAs.h1,
     });
 
     await screen.axe();
