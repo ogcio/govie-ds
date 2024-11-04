@@ -15,6 +15,11 @@ const meta = {
   title: 'navigation/Tabs',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component: 'Tabs element navigation',
+      },
+    },
   },
 } satisfies Meta<typeof Tabs>;
 
