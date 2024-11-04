@@ -48,8 +48,8 @@ export const Radio = ({
   onChange,
 }: RadioProps) => {
   return (
-    <div className="gi-flex gi-flex-col">
-      <div className="gi-gap-4 gi-flex gi-items-center">
+    <div className="gi-radio-container">
+      <div className="gi-radio-input-container">
         <input
           onChange={onChange}
           checked={checked}
@@ -61,20 +61,20 @@ export const Radio = ({
         />
         <label
           htmlFor={radioId}
-          className="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+          className="gi-radio-label"
         >
           {label}
         </label>
       </div>
       {(hint || conditionalInput) && (
-        <div className="gi-flex gi-gap-4">
+        <div className="gi-radio-conditional-divider-container">
           <div
             className={`${addConditionalDivider(checked, conditionalInput)} ${getRadioWidth(size)}`}
           >
             <div
-              className={`gi-h-full gi-flex gi-justify-center gi-mt-1.5 ${getRadioWidth(size)}`}
+              className={`gi-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
             >
-              <div className="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+              <div className="gi-radio-conditional-divider-border"></div>
             </div>
           </div>
           <div>

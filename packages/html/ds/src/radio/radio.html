@@ -5,8 +5,8 @@
 {% macro govieRadio(props) %}
   {% set hasConditionalInput = true if props.conditionalInput %}
 
-  <div class="gi-flex gi-flex-col">
-    <div class="gi-gap-4 gi-flex gi-items-center">
+  <div class="gi-radio-container">
+    <div class="gi-radio-input-container">
       <input
         name="{{ props.name }}"
         data-has-conditional-input="{{ hasConditionalInput }}"
@@ -19,21 +19,21 @@
       />
       <label
         for="{{ props.radioId }}"
-        class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+        class="gi-radio-label"
       >
         {{ props.label }}
       </label>
     </div>
     {% if props.hint or props.conditionalInput %}
-      <div class="gi-flex gi-gap-4">
+      <div class="gi-radio-conditional-divider-container">
         <div
           data-conditional-divider="{{ props.radioId }}"
           class="{{ getRadioWidth(props.size) | trim }} gi-invisible"
         >
           <div
-            class="{{ getRadioWidth(props.size) | trim }} gi-h-full gi-flex gi-justify-center gi-mt-1.5"
+            class="{{ getRadioWidth(props.size) | trim }} gi-radio-conditional-divider-border-container"
           >
-            <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+            <div class="gi-radio-conditional-divider-border"></div>
           </div>
         </div>
         <div>

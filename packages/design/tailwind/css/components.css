@@ -58,6 +58,50 @@ input[type='text'] {
 
 /* End of Select */
 
+/* Radio */
+
+.gi-radio-group-container {
+  @apply gi-flex
+}
+.gi-radio-group-error {
+  @apply gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid
+}
+.gi-radio-group-legend {
+  @apply sm:gi-text-sm md:gi-text-md lg:gi-text-lg
+}
+.gi-radio-group-options-container {
+  @apply gi-flex gi-flex-col gi-gap-2.5
+}
+.gi-radio-group-options-inline {
+  @apply gi-flex gi-flex-row gi-gap-4
+}
+.gi-radio-group-options-stacked {
+  @apply gi-flex gi-flex-col gi-gap-2.5
+}
+.gi-radio-group-options-divider-text {
+  @apply gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+}
+.gi-radio-container {
+  @apply gi-flex gi-flex-col
+}
+.gi-radio-input-container {
+  @apply gi-gap-4 gi-flex gi-items-center
+}
+.gi-radio-label {
+  @apply gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg
+}
+.gi-radio-conditional-divider-container {
+  @apply gi-flex gi-gap-4
+}
+.gi-radio-conditional-divider-border-container {
+  @apply gi-h-full gi-flex gi-justify-center gi-mt-1.5
+}
+.gi-radio-conditional-divider-border {
+  @apply gi-h-full gi-w-1 gi-bg-gray-300
+}
+
+/* End of Radio */
+
 /* Label */
 
 .gi-label {

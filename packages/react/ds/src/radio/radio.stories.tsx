@@ -32,7 +32,8 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'use this radio component where it is appropiate',
+        component:
+          'Radio component when users can only select one option from a list.',
       },
     },
   },
@@ -47,7 +48,7 @@ export const Default: Story = {
     fieldId: {
       control: 'text',
       type: { name: 'string', required: true },
-      description: 'the unique value for the radios group',
+      description: 'The unique value for the radios group',
     },
     items: {
       control: 'object',
