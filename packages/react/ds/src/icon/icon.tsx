@@ -22,7 +22,7 @@ export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type IconColor = 'default' | 'disabled';
 
-export type IconVariant = 'default' | 'outlined';
+export type IconVariant = 'default' | 'filled';
 
 export type IconPropTypes = {
   icon: IconId | string;
@@ -49,7 +49,9 @@ export function Icon({
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle =
-    variant === 'outlined' ? 'material-icons-outlined' : 'material-icons';
+    variant === 'filled'
+      ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
+      : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
   const iconColor = color === 'disabled' ? 'gi-text-gray-300' : '';
   const display = inline ? '' : 'gi-block';
 
@@ -60,8 +62,11 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
-      className={`${className} ${iconStyle} ${iconColor} ${display}`}
-      style={{ fontSize }}
+      className={`material-symbols-outlined ${className} ${iconColor} ${display}`}
+      style={{
+        fontSize,
+        fontVariationSettings: iconStyle,
+      }}
     >
       {icon as string}
     </span>

@@ -18,6 +18,13 @@ import {
   List,
   Combobox,
   Chip,
+  TextInput,
+  SectionBreak,
+  Select,
+  Label,
+  IconButton,
+  FileUpload,
+  CheckboxesGroup,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -166,6 +173,13 @@ const documentComponents: MDXComponents = {
   ComboBox: (props) => <Combobox {...props} />,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
+  TextInput: (props) => <TextInput {...props} />,
+  SectionBreak: (props) => <SectionBreak {...props} />,
+  Select: (props) => <Select {...props} />,
+  Label: (props) => <Label {...props} />,
+  IconButton: (props) => <IconButton {...props} />,
+  FileUpload: (props) => <FileUpload {...props} />,
+  CheckboxesGroup: (props) => <CheckboxesGroup {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

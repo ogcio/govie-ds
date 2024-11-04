@@ -2,12 +2,45 @@
 title: Section Break
 description: Section Break HTML Component
 draft: false
-status: alpha
+status: stable
 ---
 
 # Section Break
 
 <ComponentStatusBlock componentId="section-break" />
 
+<SectionBreak size="md" />
+
 You can use the Section Break component to create a thematic break between sections of content.
 The section break has modifiers for different size margins.
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html
+    <hr
+      class="gi-section-break-md"
+      data-testid="govie-section-break"
+    />
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```html
+    {{ govieSectionBreak({
+      "size": "md"
+    }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { SectionBreak } from "@govie-ds/react";
+
+    <SectionBreak size="md" />
+    ```
+
+  </TabPanel>
+</Tabs>

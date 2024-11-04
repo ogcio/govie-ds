@@ -90,13 +90,13 @@ export const AllVariants: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    content: `<span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span> Button`,
+    content: `<span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span> Button`,
   },
 };
 
 export const WithIconRight: Story = {
   args: {
-    content: `Button <span data-testid="govie-icon" role="presentation" class="material-icons gi-block gi-text-[24px]">thumb_up</span>`,
+    content: `Button <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span>`,
   },
 };
 
