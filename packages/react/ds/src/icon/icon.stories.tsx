@@ -9,16 +9,48 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  argTypes: {
+    icon: {
+      control: 'text',
+      description: 'Specify the name of the icon',
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Specify the size of the icon',
+    },
+    outlined: {
+      control: 'boolean',
+      description: 'Specify if the icon has an outline style',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Specify if the icon is disabled',
+    },
+    ariaHidden: {
+      control: 'text',
+      description: 'Hide non-interactive content from the accessibility',
+    },
+    ariaLabel: {
+      control: 'text',
+      description:
+        'Define a string value that can be used to name an element (for accessibilty purposes)',
+    },
+    inline: {
+      control: 'boolean',
+      description: 'View the icon as inline',
+    },
+  },
+  args: {
+    icon: 'thumb_up',
+  },
+};
+
 export const Small: Story = {
   args: {
     icon: 'thumb_up',
     size: 'sm',
-  },
-};
-
-export const Default: Story = {
-  args: {
-    icon: 'thumb_up',
   },
 };
 
@@ -39,7 +71,14 @@ export const ExtraLarge: Story = {
 export const Outlined: Story = {
   args: {
     icon: 'thumb_up',
-    variant: 'outlined',
+    outlined: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    icon: 'thumb_up',
+    disabled: true,
   },
 };
 

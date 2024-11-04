@@ -20,15 +20,11 @@ export type IconId =
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type IconColor = 'default' | 'disabled';
-
-export type IconVariant = 'default' | 'outlined';
-
 export type IconPropTypes = {
   icon: IconId | string;
   size?: IconSize;
-  variant?: IconVariant;
-  color?: IconColor;
+  outlined?: boolean;
+  disabled?: boolean;
   ariaHidden?: boolean;
   ariaLabel?: string;
   inline?: boolean;
@@ -39,8 +35,8 @@ export type IconPropTypes = {
 export function Icon({
   icon,
   size = 'md',
-  variant = 'default',
-  color = 'default',
+  outlined,
+  disabled,
   ariaHidden,
   ariaLabel,
   inline = false,
@@ -48,9 +44,8 @@ export function Icon({
   onClick,
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
-  const iconStyle =
-    variant === 'outlined' ? 'material-icons-outlined' : 'material-icons';
-  const iconColor = color === 'disabled' ? 'gi-text-gray-300' : '';
+  const iconStyle = outlined ? 'material-icons-outlined' : 'material-icons';
+  const iconColor = disabled ? 'gi-text-gray-300' : '';
   const display = inline ? '' : 'gi-block';
 
   return (
