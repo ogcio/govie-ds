@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
+import type { headingVariants } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
 import Checkbox, { CheckboxSizeEnum } from './checkbox.js';
 import { getSizeClass } from './helpers.js';
-import type { headingVariants } from '../heading/heading.js';
 
 export type CheckboxesGroupType = {
   size?: CheckboxSizeEnum;
@@ -43,10 +43,7 @@ export const CheckboxesGroup = ({
 }: CheckboxesGroupType) => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
-  const handleCheckboxChange = (
-    value: string,
-    isNoneOption = false,
-  ) => {
+  const handleCheckboxChange = (value: string, isNoneOption = false) => {
     let newValues = [];
     if (isNoneOption) {
       newValues = selectedValues.includes(value) ? [] : [value];
@@ -66,7 +63,7 @@ export const CheckboxesGroup = ({
 
   return (
     <div className="gi-checkbox-group-container" data-testid="govie-checkboxes">
-      {errorMessage && <div className="gi-checkbox-group-error"/>}
+      {errorMessage && <div className="gi-checkbox-group-error" />}
       <fieldset>
         {title && (
           <legend className="gi-checkbox-group-title">

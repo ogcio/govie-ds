@@ -20,7 +20,10 @@ export const WithSize: Story = {
   render: () => (
     <div className="flex flex-row gap-2">
       {Object.keys(headingVariants.variants.size).map((size) => (
-        <Heading key={size} size={size as keyof typeof headingVariants.variants.size}>
+        <Heading
+          key={size}
+          size={size as keyof typeof headingVariants.variants.size}
+        >
           Heading {size}
         </Heading>
       ))}

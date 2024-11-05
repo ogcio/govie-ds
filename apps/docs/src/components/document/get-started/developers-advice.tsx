@@ -61,7 +61,7 @@ function DevelopersAdviceInternal({ children }: { children: React.ReactNode }) {
         current={platform}
         onSelect={setHash}
       />
-      <Heading as='h2'>Recommendation</Heading>
+      <Heading as="h2">Recommendation</Heading>
       {recommendation}
     </div>
   );

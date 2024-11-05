@@ -72,7 +72,7 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <Heading as='h3'>Title</Heading>
+        <Heading as="h3">Title</Heading>
         <Paragraph>
           We use some essential cookies to make this service work.
           <br />
@@ -85,7 +85,7 @@ export const Default: Story = {
     accept: {
       children: (
         <>
-          <Heading as='h3'>Accepted Title</Heading>
+          <Heading as="h3">Accepted Title</Heading>
           <Paragraph>
             You’ve accepted analytics cookies. You can change your cookie
             settings at any time.
@@ -97,7 +97,7 @@ export const Default: Story = {
     reject: {
       children: (
         <>
-          <Heading as='h3'>Rejected Title</Heading>
+          <Heading as="h3">Rejected Title</Heading>
           <Paragraph>
             You’ve rejected analytics cookies. You can change your cookie
             settings at any time.

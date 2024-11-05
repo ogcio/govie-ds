@@ -47,7 +47,7 @@ export function Faq({
 }) {
   return (
     <div>
-      <Heading as='h2' size="md">
+      <Heading as="h2" size="md">
         {question}
       </Heading>
       <div>{children}</div>

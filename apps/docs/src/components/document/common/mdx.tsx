@@ -83,12 +83,12 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  h1: ({ children }) => <Heading as='h1'>{children}</Heading>,
-  h2: ({ children }) => <Heading as='h2'>{children}</Heading>,
-  h3: ({ children }) => <Heading as='h3'>{children}</Heading>,
-  h4: ({ children }) => <Heading as='h4'>{children}</Heading>,
-  h5: ({ children }) => <Heading as='h5'>{children}</Heading>,
-  h6: ({ children }) => <Heading as='h6'>{children}</Heading>,
+  h1: ({ children }) => <Heading as="h1">{children}</Heading>,
+  h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+  h3: ({ children }) => <Heading as="h3">{children}</Heading>,
+  h4: ({ children }) => <Heading as="h4">{children}</Heading>,
+  h5: ({ children }) => <Heading as="h5">{children}</Heading>,
+  h6: ({ children }) => <Heading as="h6">{children}</Heading>,
   p: ({ children }) => <Paragraph>{children}</Paragraph>,
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>

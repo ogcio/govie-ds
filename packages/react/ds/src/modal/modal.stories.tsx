@@ -41,7 +41,7 @@ export const Default: Story = {
     triggerButton: <Button>Open Modal</Button>,
     children: (
       <>
-        <Heading as='h2'>Title</Heading>
+        <Heading as="h2">Title</Heading>
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
@@ -62,7 +62,7 @@ export const ModalOpen: Story = {
   args: {
     children: (
       <>
-        <Heading as='h2'>Title</Heading>
+        <Heading as="h2">Title</Heading>
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas

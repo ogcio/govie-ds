@@ -9,7 +9,7 @@ export function PageNotFound() {
         tools={{ search: { action: '/search-page' } }}
       />
       <main>
-        <Heading as='h2'>Page not found</Heading>
+        <Heading as="h2">Page not found</Heading>
         <Paragraph>
           If you typed the web address, check it is correct.
         </Paragraph>
