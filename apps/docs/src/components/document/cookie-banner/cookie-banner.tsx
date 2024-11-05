@@ -1,10 +1,10 @@
-import { Button, Heading, HeadingAs, Link, Paragraph } from '@govie-ds/react';
+import { Button, Heading, Link, Paragraph } from '@govie-ds/react';
 import React from 'react';
 
 export const cookieBannerProps = {
   children: (
     <>
-      <Heading as={HeadingAs.h3}>Title</Heading>
+      <Heading as='h3'>Title</Heading>
       <Paragraph>
         We use some essential cookies to make this service work.
         <br />
@@ -17,7 +17,7 @@ export const cookieBannerProps = {
   accept: {
     children: (
       <>
-        <Heading as={HeadingAs.h3}>Accepted Title</Heading>
+        <Heading as='h3'>Accepted Title</Heading>
         <Paragraph>
           You’ve accepted analytics cookies. You can change your cookie settings
           at any time.
@@ -29,7 +29,7 @@ export const cookieBannerProps = {
   reject: {
     children: (
       <>
-        <Heading as={HeadingAs.h3}>Rejected Title</Heading>
+        <Heading as='h3'>Rejected Title</Heading>
         <Paragraph>
           You’ve rejected analytics cookies. You can change your cookie settings
           at any time.

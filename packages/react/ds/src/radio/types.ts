@@ -1,5 +1,5 @@
-import { HeadingSize, HeadingAs } from '../heading/heading.js';
-import { TextInputProps } from '../text-input/text-input.js';
+import type { headingVariants } from '../heading/heading.js';
+import type { TextInputProps } from '../text-input/text-input.js';
 
 export enum RadiosSizeEnum {
   Large = 'lg',
@@ -39,8 +39,8 @@ export type RadiosGroupType = {
   title?: {
     value: string;
     asHeading?: {
-      size: HeadingSize;
-      as: HeadingAs;
+      size: keyof typeof headingVariants.variants.size;
+      tag: keyof typeof headingVariants.variants.as;
     };
     hint?: string;
   };

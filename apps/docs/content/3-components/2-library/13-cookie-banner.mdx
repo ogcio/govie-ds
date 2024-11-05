@@ -10,7 +10,6 @@ status: in-development
 <ComponentStatusBlock componentId="cookie-banner" />
 
 import { cookieBannerProps } from "@/components/document/cookie-banner/cookie-banner"
-import { HeadingAs } from '@govie-ds/react';
 
 <CookieBanner {...cookieBannerProps} />
 
@@ -111,7 +110,7 @@ import { HeadingAs } from '@govie-ds/react';
  <CookieBanner
   children={
     <>
-      <Heading as={HeadingAs.h3}>Title</Heading>
+      <Heading as='h3'>Title</Heading>
       <Paragraph>
         We use some essential cookies to make this service work.
         We’d also like to use analytics cookies so we can understand how you use
@@ -122,7 +121,7 @@ import { HeadingAs } from '@govie-ds/react';
   accept={{
     children: (
       <>
-        <Heading as={HeadingAs.h3}>Accepted Title</Heading>
+        <Heading as='h3'>Accepted Title</Heading>
         <Paragraph>
           You’ve accepted analytics cookies. You can change your cookie settings
           at any time.
@@ -134,7 +133,7 @@ import { HeadingAs } from '@govie-ds/react';
   reject={{
     children: (
       <>
-        <Heading as={HeadingAs.h3}>Rejected Title</Heading>
+        <Heading as='h3'>Rejected Title</Heading>
         <Paragraph>
           You’ve rejected analytics cookies. You can change your cookie settings
           at any time.

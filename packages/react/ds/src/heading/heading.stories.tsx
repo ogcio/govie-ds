@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Heading, HeadingSize } from './heading.js';
+import { Heading, headingVariants } from './heading.js';
 
 const meta = {
   title: 'typography/Heading',
@@ -19,8 +19,8 @@ export const Default: Story = {
 export const WithSize: Story = {
   render: () => (
     <div className="flex flex-row gap-2">
-      {Object.values(HeadingSize).map((size) => (
-        <Heading key={size} size={size}>
+      {Object.keys(headingVariants.variants.size).map((size) => (
+        <Heading key={size} size={size as keyof typeof headingVariants.variants.size}>
           Heading {size}
         </Heading>
       ))}

@@ -104,5 +104,4 @@ favoriting
 IconButton
 FileUpload
 HeadingResponsiveSizes
-HeadingSize
 sampleText
