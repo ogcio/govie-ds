@@ -173,21 +173,21 @@
 %}
 
 {% set modalProps = {
-  "html": govieHeading({ "text" : "title", "tag": "h2"}) + govieParagraph({ "content": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam molestias error accusantium non nobis excepturi doloremque dolorem possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit, commodi cupiditate sit minima veritatis." }) + '<div class="gi-flex gi-gap-6 gi-justify-end">' | safe + govieButton({"content": "Cancel Action", "variant": "secondary", "appearance": "dark"}) + govieButton({"content": "Primary Action"}) + '</div>' | safe,
+  "html": govieHeading({ "text" : "title", "as": "h2"}) + govieParagraph({ "content": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam molestias error accusantium non nobis excepturi doloremque dolorem possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit, commodi cupiditate sit minima veritatis." }) + '<div class="gi-flex gi-gap-6 gi-justify-end">' | safe + govieButton({"content": "Cancel Action", "variant": "secondary", "appearance": "dark"}) + govieButton({"content": "Primary Action"}) + '</div>' | safe,
   "triggerButton": govieButton({ "content": "Open Modal" })
 } 
 %}
 
 {% set cookieBannerProps = {
-  "children": govieHeading({"text": "Title", "tag": "h3"}) + govieParagraph({ "content": "We use some essential cookies to make this service work.<br><br>We’d also like to use analytics cookies so we can understand how you use the service and make improvements." }),
+  "children": govieHeading({"text": "Title", "as": "h3"}) + govieParagraph({ "content": "We use some essential cookies to make this service work.<br><br>We’d also like to use analytics cookies so we can understand how you use the service and make improvements." }),
   "accept": {
-    "children": govieHeading({"text": "Accepted Title", "tag": "h3"}) + govieParagraph({ "content": "You’ve accepted analytics cookies. You can change your cookie settings at any time." }),
+    "children": govieHeading({"text": "Accepted Title", "as": "h3"}) + govieParagraph({ "content": "You’ve accepted analytics cookies. You can change your cookie settings at any time." }),
     "triggerButton": {
       "content": "Accept cookies"
     }
   },
   "reject": {
-    "children": govieHeading({"text": "Rejected Title", "tag": "h3"}) + govieParagraph({ "content": "You’ve rejected analytics cookies. You can change your cookie settings at any time." }),
+    "children": govieHeading({"text": "Rejected Title", "as": "h3"}) + govieParagraph({ "content": "You’ve rejected analytics cookies. You can change your cookie settings at any time." }),
     "triggerButton": {
       "content": "Reject cookies"
     }

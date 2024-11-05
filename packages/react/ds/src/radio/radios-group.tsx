@@ -24,7 +24,7 @@ export const RadiosGroup = ({
   return (
     <div className="gi-flex" data-testid="govie-radios">
       {errorMessage && (
-        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"/>
+        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid" />
       )}
       <fieldset>
         {title && (

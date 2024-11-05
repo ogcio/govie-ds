@@ -9,7 +9,7 @@ status: stable
 
 <ComponentStatusBlock componentId="heading" />
 
-Use heading tags, such as `<h1>`, `<h2>` and so on, to tag the headings on a page. Style headings consistently to create a clear content structure throughout your service.
+Use heading as, such as `<h1>`, `<h2>` and so on, to tag the headings on a page. Style headings consistently to create a clear content structure throughout your service.
 
 For a question page, or pages with long headings, follow the usual hierarchy of heading levels and styles associated with them. For example, `<h1>`, followed by an `<h2>` and so on. In rare cases, you might want to alter how you use the headings hierarchy to achieve a better visual balance. An example of this is in the design system’s notification banner which uses heading levels in a different order to emphasise the most important information. If you do change the heading hierarchy in a similar way, it needs to go through accessibility testing before use.
 
@@ -40,12 +40,12 @@ Write all headings in sentence case.
   </TabPanel>
   <TabPanel value="tab12">        
     ```html
-    {{ govieHeading({ "tag": "h1", "text": "This is an h1" }) }}
-    {{ govieHeading({ "tag": "h2", "text": "This is an h2" }) }}
-    {{ govieHeading({ "tag": "h3", "text": "This is an h3" }) }}
-    {{ govieHeading({ "tag": "h4", "text": "This is an h4" }) }}
-    {{ govieHeading({ "tag": "h5", "text": "This is an h5" }) }}
-    {{ govieHeading({ "tag": "h6", "text": "This is an h6" }) }}
+    {{ govieHeading({ "as": "h1", "text": "This is an h1" }) }}
+    {{ govieHeading({ "as": "h2", "text": "This is an h2" }) }}
+    {{ govieHeading({ "as": "h3", "text": "This is an h3" }) }}
+    {{ govieHeading({ "as": "h4", "text": "This is an h4" }) }}
+    {{ govieHeading({ "as": "h5", "text": "This is an h5" }) }}
+    {{ govieHeading({ "as": "h6", "text": "This is an h6" }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">

@@ -1,6 +1,9 @@
 import { render, cleanup } from '../test-utils.js';
 import { CheckboxSizeEnum } from './checkbox.js';
-import { CheckboxesGroup, type CheckboxesGroupType } from './checkboxes-group.js';
+import {
+  CheckboxesGroup,
+  type CheckboxesGroupType,
+} from './checkboxes-group.js';
 
 const standardProps: CheckboxesGroupType = {
   fieldId: 'UniqueID',

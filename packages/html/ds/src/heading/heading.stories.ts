@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './heading.html?raw';
 import { Size, Tag } from './heading.schema';
-import { HeadingProps } from './heading.schema';
+import type { HeadingProps } from './heading.schema';
 
 const path = import.meta.url.split('/heading')[0];
 
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    tag: Tag.H1,
+    as: Tag.H1,
     text: 'Heading',
     caption: '',
   },
@@ -32,7 +32,7 @@ export const Default: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
@@ -41,7 +41,7 @@ export const Default: Story = {
 
 export const Small: Story = {
   args: {
-    tag: Tag.H6,
+    as: Tag.H6,
     text: 'Small heading',
   },
   argTypes: {
@@ -49,7 +49,7 @@ export const Small: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
@@ -59,7 +59,7 @@ export const Small: Story = {
 export const Medium: Story = {
   args: {
     size: Size.Medium,
-    tag: Tag.H3,
+    as: Tag.H3,
     text: 'Medium heading',
   },
   argTypes: {
@@ -67,7 +67,7 @@ export const Medium: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
@@ -77,7 +77,7 @@ export const Medium: Story = {
 export const Large: Story = {
   args: {
     size: Size.Large,
-    tag: Tag.H1,
+    as: Tag.H1,
     text: 'Large heading',
   },
   argTypes: {
@@ -85,7 +85,7 @@ export const Large: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
@@ -95,7 +95,7 @@ export const Large: Story = {
 export const ExtraLarge: Story = {
   args: {
     size: Size.ExtraLarge,
-    tag: Tag.H1,
+    as: Tag.H1,
     text: 'Extra large heading',
   },
   argTypes: {
@@ -103,7 +103,7 @@ export const ExtraLarge: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
@@ -113,7 +113,7 @@ export const ExtraLarge: Story = {
 export const Caption: Story = {
   args: {
     size: Size.Medium,
-    tag: Tag.H1,
+    as: Tag.H1,
     text: 'Heading with h6',
     caption: 'Caption Text',
   },
@@ -122,7 +122,7 @@ export const Caption: Story = {
       options: Object.values(Size),
       control: { type: 'radio' },
     },
-    tag: {
+    as: {
       options: Object.values(Tag),
       control: { type: 'radio' },
     },
