@@ -19,9 +19,10 @@ const meta = {
     macro,
     docs: {
       description: {
-        component: 'Button component to help users carry out an action like starting an application or saving their information.'
-      }
-    }
+        component:
+          'Button component to help users carry out an action like starting an application or saving their information.',
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 

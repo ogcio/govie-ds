@@ -6,9 +6,10 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "Inset text component to differentiate a block of text from the content that surrounds it."
-      }
-    }
+        component:
+          'Inset text component to differentiate a block of text from the content that surrounds it.',
+      },
+    },
   },
   component: Blockquote,
 } satisfies Meta<typeof Blockquote>;

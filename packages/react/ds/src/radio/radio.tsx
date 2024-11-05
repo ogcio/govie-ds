@@ -59,10 +59,7 @@ export const Radio = ({
           className={`gi-radio-base ${getRadioSize(size)}`}
           type="radio"
         />
-        <label
-          htmlFor={radioId}
-          className="gi-radio-label"
-        >
+        <label htmlFor={radioId} className="gi-radio-label">
           {label}
         </label>
       </div>

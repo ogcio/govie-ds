@@ -66,7 +66,8 @@ const meta = {
       },
     },
     autoComplete: {
-      description: 'Specifies whether the browser should provide auto-completion options for the textarea.',
+      description:
+        'Specifies whether the browser should provide auto-completion options for the textarea.',
       control: 'text',
       table: {
         category: 'Behavior',
@@ -83,7 +84,6 @@ const meta = {
         defaultValue: { summary: 'textarea-id' },
       },
     },
-
   },
 } satisfies Meta<typeof TextArea>;
 

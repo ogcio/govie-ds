@@ -14,9 +14,10 @@ const meta = {
     macro,
     docs: {
       description: {
-        component: "Inset text component to differentiate a block of text from the content that surrounds it."
-      }
-    }
+        component:
+          'Inset text component to differentiate a block of text from the content that surrounds it.',
+      },
+    },
   },
 } satisfies Meta<typeof Blockquote>;
 

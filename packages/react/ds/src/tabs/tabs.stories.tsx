@@ -23,7 +23,7 @@ export const Default: Story = {
   args: {
     id: 'tab-story',
     children: '',
-    ariaLabelledBy: 'tab-story'
+    ariaLabelledBy: 'tab-story',
   },
   render: (arguments_) => {
     return (

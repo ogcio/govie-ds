@@ -28,57 +28,57 @@
   {% endmacro %}
 
   <div class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}">
-  {% if props.label %}
-    {{
-      govieLabel({
-        "content": props.label.content,
-        "size": props.label.size or "md",
-        "for": props.label.for or "textarea-id",
-        "classNames": marginBottom
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isHint %}
-    {{
-      govieHintText({
-        "content": props.hint.content,
-        "size": props.hint.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isError %}
-    {{
-      govieErrorText({
-        "content": props.error.content,
-        "size": props.error.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  <div class="gi-textarea-container" data-module="gieds-textarea">
-    <textarea
-      id="{{ props.id or 'textarea-id' }}"
-      rows="{{ props.rows or 4 }}"
-      cols="{{ props.cols or 100 }}"
-      maxlength="{{ props.maxChars }}"
-      autocomplete="{{ props.autoComplete or 'on' }}"
-      class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
-    ></textarea>
-  </div>
-
-  {% if props.maxChars %}
-    <div
-      data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
-      class="gi-textarea-remaining-chars"
-    >
+    {% if props.label %}
       {{
-        govieHintText({
-          "content": remainingText
+        govieLabel({
+          "content": props.label.content,
+          "size": props.label.size or "md",
+          "for": props.label.for or "textarea-id",
+          "classNames": marginBottom
         }) | trim
       }}
+    {% endif %}
+
+    {% if isHint %}
+      {{
+        govieHintText({
+          "content": props.hint.content,
+          "size": props.hint.size or "md"
+        }) | trim
+      }}
+    {% endif %}
+
+    {% if isError %}
+      {{
+        govieErrorText({
+          "content": props.error.content,
+          "size": props.error.size or "md"
+        }) | trim
+      }}
+    {% endif %}
+
+    <div class="gi-textarea-container" data-module="gieds-textarea">
+      <textarea
+        id="{{ props.id or 'textarea-id' }}"
+        rows="{{ props.rows or 4 }}"
+        cols="{{ props.cols or 100 }}"
+        maxlength="{{ props.maxChars }}"
+        autocomplete="{{ props.autoComplete or 'on' }}"
+        class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
+      ></textarea>
     </div>
-  {% endif %}
+
+    {% if props.maxChars %}
+      <div
+        data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
+        class="gi-textarea-remaining-chars"
+      >
+        {{
+          govieHintText({
+            "content": remainingText
+          }) | trim
+        }}
+      </div>
+    {% endif %}
   </div>
 {% endmacro %}

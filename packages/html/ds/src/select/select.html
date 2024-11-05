@@ -49,19 +49,13 @@
         {% if option.groupName %}
           <optgroup label="{{ option.groupName }}">
             {% for option in option.items %}
-              <option
-                class="gi-select-option"
-                value="{{ option.value }}"
-              >
+              <option class="gi-select-option" value="{{ option.value }}">
                 {{ option.label }}
               </option>
             {% endfor %}
           </optgroup>
         {% else %}
-          <option
-            class="gi-select-option"
-            value="{{ option.value }}"
-          >
+          <option class="gi-select-option" value="{{ option.value }}">
             {{ option.label }}
           </option>
         {% endif %}

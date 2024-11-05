@@ -36,10 +36,7 @@ export const HintText: React.FC<HintTextProps> = ({
   })();
 
   return (
-    <div
-      className={`${sizeClass} gi-hint-text ${className || ''}`}
-      {...props}
-    >
+    <div className={`${sizeClass} gi-hint-text ${className || ''}`} {...props}>
       {text}
     </div>
   );

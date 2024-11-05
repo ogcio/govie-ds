@@ -23,9 +23,7 @@ export const RadiosGroup = ({
 
   return (
     <div className="gi-radio-group-container" data-testid="govie-radios">
-      {errorMessage && (
-        <div className="gi-radio-group-error"></div>
-      )}
+      {errorMessage && <div className="gi-radio-group-error"></div>}
       <fieldset>
         {title && (
           <legend className="gi-radio-group-legend">

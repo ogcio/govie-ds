@@ -178,7 +178,7 @@ export const VerticalWithButton: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.Secondary
+      variant: ButtonVariant.Secondary,
     },
   },
 };

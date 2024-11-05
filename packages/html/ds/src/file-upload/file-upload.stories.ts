@@ -83,7 +83,7 @@ export const Default: Story = {
     error: {
       content: '',
     },
-    accept: '*/*'
+    accept: '*/*',
   },
 };
 
@@ -97,7 +97,7 @@ export const WithLabelAndHint: Story = {
     hint: {
       content: 'Hint: Please upload a file that is less than 5MB.',
     },
-    accept: '*/*'
+    accept: '*/*',
   },
 };
 
@@ -111,7 +111,7 @@ export const WithLabelAndError: Story = {
     error: {
       content: 'Error: File must be smaller than 5MB.',
     },
-    accept: '.pdf, .docx'
+    accept: '.pdf, .docx',
   },
 };
 

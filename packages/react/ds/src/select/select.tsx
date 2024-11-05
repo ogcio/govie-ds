@@ -36,11 +36,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       )}
       {hint && <HintText text={hint.text} size={hint.size} />}
       {error && <ErrorText text={error.text} size={error.size} />}
-      <select
-        className="gi-select"
-        id={id}
-        aria-label={ariaLabel}
-      >
+      <select className="gi-select" id={id} aria-label={ariaLabel}>
         {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;
           return isGroupOption ? (

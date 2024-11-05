@@ -6,7 +6,8 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'Use the file upload component to allow users to upload files. It includes options for adding labels, hint text, and error messages.',
+        component:
+          'Use the file upload component to allow users to upload files. It includes options for adding labels, hint text, and error messages.',
       },
     },
   },
