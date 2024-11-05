@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/tailwind",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",
@@ -34,9 +34,6 @@
   },
   "devDependencies": {
     "@govie-ds/prettier-config": "workspace:*",
-    "@tsconfig/node20": "^20.1.4",
-    "eslint": "^9.8.0",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.4"
+    "eslint": "^9.8.0"
   }
 }

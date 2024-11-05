@@ -38,3 +38,5 @@ export * from './cookie-banner/cookie-banner.js';
 export * from './list/list.js';
 export * from './combo-box/combo-box.js';
 export * from './chip/chip.js';
+export * from './section-break/section-break.js';
+export * from './checkbox/checkboxes-group.js';

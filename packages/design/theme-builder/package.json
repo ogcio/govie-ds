@@ -30,11 +30,8 @@
   },
   "devDependencies": {
     "@govie-ds/prettier-config": "workspace:*",
-    "@tsconfig/node20": "^20.1.4",
     "@types/fs-extra": "^11.0.4",
     "eslint": "^9.8.0",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.4",
     "zod": "^3.23.8",
     "zod-to-ts": "^1.2.0"
   }

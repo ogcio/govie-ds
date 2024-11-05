@@ -15,6 +15,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.16.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.16.0...tailwind-v0.16.1) (2024-11-04)
+
+
+### Bug Fixes
+
+* heading h6 font size ([#312](https://github.com/ogcio/govie-ds/issues/312)) ([5f0baa6](https://github.com/ogcio/govie-ds/commit/5f0baa69db2f6384a5d9fff975237fb9f0e0b754))
+
 ## [0.16.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.15.0...tailwind-v0.16.0) (2024-10-31)
 
 

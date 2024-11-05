@@ -20,9 +20,9 @@ export const Default: Story = {
       options: ['sm', 'md', 'lg', 'xl'],
       description: 'Specify the size of the icon',
     },
-    outlined: {
+    filled: {
       control: 'boolean',
-      description: 'Specify if the icon has an outline style',
+      description: 'Specify if the icon has a filled style',
     },
     disabled: {
       control: 'boolean',
@@ -68,10 +68,10 @@ export const ExtraLarge: Story = {
   },
 };
 
-export const Outlined: Story = {
+export const Filled: Story = {
   args: {
     icon: 'thumb_up',
-    outlined: true,
+    filled: true,
   },
 };
 

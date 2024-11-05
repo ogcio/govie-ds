@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CheckboxesGroup from './checkboxes-group.js';
+import { CheckboxesGroup } from './checkboxes-group.js';
 
 const meta = {
   title: 'Form/Checkboxes',

@@ -50,6 +50,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.16.1](https://github.com/ogcio/govie-ds/compare/html-v0.16.0...html-v0.16.1) (2024-11-04)
+
+
+### Bug Fixes
+
+* update symbols font ([#309](https://github.com/ogcio/govie-ds/issues/309)) ([c2a6210](https://github.com/ogcio/govie-ds/commit/c2a6210f142524474518c977cb30f34b66319934))
+
 ## [0.16.0](https://github.com/ogcio/govie-ds/compare/html-v0.15.0...html-v0.16.0) (2024-10-31)
 
 

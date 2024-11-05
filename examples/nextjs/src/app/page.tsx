@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { ComboBoxProps, CookieBannerProps } from "@/props";
 import {
   Container,
@@ -71,8 +71,8 @@ export default function Home() {
           <Combobox {...ComboBoxProps} />
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
@@ -117,7 +117,7 @@ export default function Home() {
             }}
           />
 
-          <span className="material-icons">face</span>
+          <span className="material-symbols-outlined">face</span>
           <Modal triggerButton={<Button>Open Modal</Button>}>
             <Heading as="h2">Title</Heading>
             <Paragraph>
