@@ -20,7 +20,7 @@ export type CheckboxesGroupType = {
     value: string;
     asHeading?: {
       size: keyof typeof headingVariants.variants.size;
-      tag: keyof typeof headingVariants.variants.as;
+      as: keyof typeof headingVariants.variants.as;
     };
     hint?: string;
   };
@@ -70,7 +70,7 @@ export const CheckboxesGroup = ({
             {title.asHeading ? (
               <Heading
                 size={title.asHeading.size}
-                as={title.asHeading.tag}
+                as={title.asHeading.as}
                 className="!gi-mb-[var(--gieds-space-2)]"
               >
                 {title.value}

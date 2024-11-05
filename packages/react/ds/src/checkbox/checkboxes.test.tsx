@@ -1,6 +1,6 @@
 import { render, cleanup } from '../test-utils.js';
 import { CheckboxSizeEnum } from './checkbox.js';
-import { CheckboxesGroup, CheckboxesGroupType } from './checkboxes-group.js';
+import { CheckboxesGroup, type CheckboxesGroupType } from './checkboxes-group.js';
 
 const standardProps: CheckboxesGroupType = {
   fieldId: 'UniqueID',
@@ -159,7 +159,7 @@ describe('checkboxes', () => {
         value: 'Organisation',
         asHeading: {
           size: 'md',
-          tag: 'h1',
+          as: 'h1',
         },
         hint: 'Title hint',
       },

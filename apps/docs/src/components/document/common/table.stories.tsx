@@ -1,4 +1,4 @@
-import { Heading, HeadingSize } from '@govie-ds/react';
+import { Heading, type headingVariants } from '@govie-ds/react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';
@@ -28,7 +28,7 @@ type TableSample = {
   id: string;
   name: string;
   value: string;
-  size: HeadingSize;
+  size: keyof typeof headingVariants.variants.size;
 };
 
 const samples: TableSample[] = [
@@ -36,19 +36,19 @@ const samples: TableSample[] = [
     id: '1',
     name: 'screen/xs',
     value: 'type-scale/heading/bold/700',
-    size: HeadingSize.md,
+    size: 'md',
   },
   {
     id: '2',
     name: 'screen/md',
     value: 'type-scale/heading/bold/800',
-    size: HeadingSize.lg,
+    size: 'lg',
   },
   {
     id: '3',
     name: 'screen/xl',
     value: 'type-scale/heading/bold/900',
-    size: HeadingSize.xl,
+    size: 'xl',
   },
 ];
 

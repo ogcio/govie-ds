@@ -69,7 +69,7 @@ export const checkboxesSchema = zod.object({
             description: 'Options for the size of the heading',
             required_error: 'Option is required',
           }),
-          tag: zod.nativeEnum(Tag, {
+          as: zod.nativeEnum(Tag, {
             description: 'Options for the tag element of the heading',
             required_error: 'A tag element is required',
           }),

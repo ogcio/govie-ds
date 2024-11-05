@@ -4,7 +4,7 @@ import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Radio, getRadioWidth } from './radio.js';
-import { RadiosGroupType } from './types.js';
+import type { RadiosGroupType } from './types.js';
 
 export const RadiosGroup = ({
   fieldId,
@@ -24,14 +24,14 @@ export const RadiosGroup = ({
   return (
     <div className="gi-flex" data-testid="govie-radios">
       {errorMessage && (
-        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
+        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"/>
       )}
       <fieldset>
         {title && (
           <legend className="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
             {title.asHeading ? (
               <Heading
-                customClasses="!gi-mb-2"
+                className="!gi-mb-2"
                 size={title.asHeading.size}
                 as={title.asHeading.as}
               >

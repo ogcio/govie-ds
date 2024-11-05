@@ -40,7 +40,7 @@ export type RadiosGroupType = {
     value: string;
     asHeading?: {
       size: keyof typeof headingVariants.variants.size;
-      tag: keyof typeof headingVariants.variants.as;
+      as: keyof typeof headingVariants.variants.as;
     };
     hint?: string;
   };

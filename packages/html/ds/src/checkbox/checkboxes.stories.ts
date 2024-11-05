@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Size, Tag } from '../heading/heading.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './checkboxes-group.html?raw';
-import { CheckboxesProps } from './checkboxes.schema';
+import type { CheckboxesProps } from './checkboxes.schema';
 
 // Name of the folder the macro resides
 const path = import.meta.url.split('/checkbox')[0];
@@ -117,7 +117,7 @@ export const Default: Story = {
       value: 'Organisation',
       asHeading: {
         size: Size.Large,
-        tag: Tag.H1,
+        as: Tag.H1,
       },
     },
   },
@@ -145,7 +145,7 @@ export const withHints: Story = {
       value: 'What is your nationality?',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H1,
+        as: Tag.H1,
       },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
     },
@@ -173,7 +173,7 @@ export const withErrorMessage: Story = {
       value: 'What is your nationality?',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H3,
+        as: Tag.H3,
       },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
     },
@@ -203,7 +203,7 @@ export const withNoneOption: Story = {
       value: 'Will you be travelling to any of these countries?',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H1,
+        as: Tag.H1,
       },
       hint: 'Select all countries that apply',
     },

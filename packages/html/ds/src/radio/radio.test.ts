@@ -1,6 +1,6 @@
 import { render } from '../common/render';
 import { Size, Tag } from '../heading/heading.schema';
-import { RadiosProps, RadioSizeEnum } from './radio.schema';
+import { type RadiosProps, RadioSizeEnum } from './radio.schema';
 import html from './radios-group.html?raw';
 
 const standardProps = {
@@ -9,7 +9,7 @@ const standardProps = {
     value: 'Where do you live?',
     asHeading: {
       size: Size.Medium,
-      tag: Tag.H2,
+      as: Tag.H2,
     },
   },
   items: [
