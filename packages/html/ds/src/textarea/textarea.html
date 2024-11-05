@@ -21,70 +21,64 @@
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
-  {# Conditionally render the wrapper div only if error content is available #}
-  {# prettier-ignore-start #}
-  {% if isError %}
-  <div class="gi-pt-2 gi-mb-4 gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600">
-  {% endif %}
-  {# prettier-ignore-end #}
+  {% macro getErrorStyle(error) %}
+    {% if error %}
+      gi-error-state
+    {% endif %}
+  {% endmacro %}
 
-  {% if props.label %}
-    {{
-      govieLabel({
-        "content": props.label.content,
-        "size": props.label.size or "md",
-        "for": props.label.for or "textarea-id",
-        "classNames": marginBottom
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isHint %}
-    {{
-      govieHintText({
-        "content": props.hint.content,
-        "size": props.hint.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  {% if isError %}
-    {{
-      govieErrorText({
-        "content": props.error.content,
-        "size": props.error.size or "md"
-      }) | trim
-    }}
-  {% endif %}
-
-  <div class="gi-flex gi-items-center" data-module="gieds-textarea">
-    <textarea
-      id="{{ props.id or 'textarea-id' }}"
-      rows="{{ props.rows or 4 }}"
-      cols="{{ props.cols or 100 }}"
-      maxlength="{{ props.maxChars }}"
-      autocomplete="{{ props.autoComplete or 'on' }}"
-      class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
-    ></textarea>
-  </div>
-
-  {% if props.maxChars %}
-    <div
-      data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
-      class="gi-textarea-remaining-chars"
-    >
+  <div class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}">
+    {% if props.label %}
       {{
-        govieHintText({
-          "content": remainingText
+        govieLabel({
+          "content": props.label.content,
+          "size": props.label.size or "md",
+          "for": props.label.for or "textarea-id",
+          "classNames": marginBottom
         }) | trim
       }}
-    </div>
-  {% endif %}
+    {% endif %}
 
-  {# Close the conditional wrapper div if isError is true #}
-  {# prettier-ignore-start #}
-  {% if isError %}
+    {% if isHint %}
+      {{
+        govieHintText({
+          "content": props.hint.content,
+          "size": props.hint.size or "md"
+        }) | trim
+      }}
+    {% endif %}
+
+    {% if isError %}
+      {{
+        govieErrorText({
+          "content": props.error.content,
+          "size": props.error.size or "md"
+        }) | trim
+      }}
+    {% endif %}
+
+    <div class="gi-textarea-container" data-module="gieds-textarea">
+      <textarea
+        id="{{ props.id or 'textarea-id' }}"
+        rows="{{ props.rows or 4 }}"
+        cols="{{ props.cols or 100 }}"
+        maxlength="{{ props.maxChars }}"
+        autocomplete="{{ props.autoComplete or 'on' }}"
+        class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
+      ></textarea>
+    </div>
+
+    {% if props.maxChars %}
+      <div
+        data-remaining-chars-container="{{ props.id or 'textarea-id' }}"
+        class="gi-textarea-remaining-chars"
+      >
+        {{
+          govieHintText({
+            "content": remainingText
+          }) | trim
+        }}
+      </div>
+    {% endif %}
   </div>
-  {% endif %}
-  {# prettier-ignore-end #}
 {% endmacro %}

@@ -6,7 +6,8 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'Label element to wrap label-text and a form input.',
+        component:
+          'A Label component to wrap label text and associate it with a form input element.',
       },
     },
   },
@@ -18,37 +19,40 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    ref: {
-      control: false,
+    text: {
+      control: 'text',
+      description: 'Text content of the label',
       table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLLabelElement>' },
-        defaultValue: { summary: '-' },
-      },
-    },
-    size: {
-      control: 'radio',
-      options: Object.values(LabelSize),
-      table: {
-        category: 'Appearance',
-        type: { summary: 'Size of label' },
-        defaultValue: { summary: LabelSize.md },
+        category: 'Content',
+        type: { summary: 'text for label' },
+        defaultValue: { summary: 'Label' },
       },
     },
     htmlFor: {
       control: 'text',
+      description: 'ID of the associated form input',
       table: {
         category: 'Accessibility',
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
       },
     },
-    text: {
-      control: 'text',
+    size: {
+      control: 'radio',
+      options: Object.values(LabelSize),
+      description: 'Label size: small, medium, or large',
       table: {
-        category: 'Content',
-        type: { summary: 'text for label' },
-        defaultValue: { summary: 'Label' },
+        category: 'Appearance',
+        type: { summary: 'Size of label' },
+        defaultValue: { summary: LabelSize.md },
+      },
+    },
+    ref: {
+      control: false,
+      table: {
+        category: 'Ref',
+        type: { summary: 'React.Ref<HTMLLabelElement>' },
+        defaultValue: { summary: '-' },
       },
     },
   },

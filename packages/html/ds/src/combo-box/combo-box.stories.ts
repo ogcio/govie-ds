@@ -19,6 +19,11 @@ const meta = {
   title: 'Navigation/ComboBox',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component: 'Use this component to search through a list of options',
+      },
+    },
   },
 } satisfies Meta<typeof ComboBox>;
 

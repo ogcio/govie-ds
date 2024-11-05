@@ -16,6 +16,12 @@ const meta = {
   title: 'form/Checkboxes',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component:
+          'Checkboxes component when you need to help users select multiple options from a list or toggle a single option on or off',
+      },
+    },
   },
 } satisfies Meta<typeof Checkboxes>;
 
@@ -27,7 +33,7 @@ export const Default: Story = {
     fieldId: {
       control: 'text',
       type: { name: 'string', required: true },
-      description: 'the unique value for the checboxes group',
+      description: 'the unique value for the checkboxes group',
     },
     items: {
       control: 'object',

@@ -10,8 +10,43 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  argTypes: {
+    children: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'The text content of the paragraph.',
+    },
+    as: {
+      control: 'radio',
+      options: ['p', 'span'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the HTML element to render the component as.',
+    },
+    size: {
+      control: 'radio',
+      options: ['lg', 'md', 'sm'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the size of the paragraph.',
+    },
+    align: {
+      control: 'radio',
+      options: ['start', 'center', 'end', 'justify'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the alignment of the paragraph.',
+    },
+    whitespace: {
+      control: 'radio',
+      options: ['normal', 'pre', 'pre-wrap', 'break-spaces'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the whitespace property.',
+    },
+  },
   args: {
     children: 'Paragraph',
+    as: 'p',
+    size: 'md',
+    align: 'start',
+    whitespace: 'normal',
   },
 };
 

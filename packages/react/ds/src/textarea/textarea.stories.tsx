@@ -7,7 +7,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the TextArea component when users need to enter longer or multiline text, such as comments or feedback. The `rows` and `cols` properties control the size of the textarea.',
+          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `error` can indicate validation errors.',
       },
     },
   },

@@ -27,8 +27,7 @@ describe('govieContainer', () => {
     });
     const containerDiv = screen.getByTestId('govie-container');
     expect(containerDiv).toBeTruthy();
-    expect(containerDiv.classList.contains('gi-mx-auto')).toBe(true);
-    expect(containerDiv.classList.contains('gi-container')).toBe(true);
+    expect(containerDiv.classList.contains('gi-layout-container')).toBe(true);
   });
 
   it('should correctly handle and render indented HTML content', () => {

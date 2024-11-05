@@ -23,22 +23,19 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
   const sizeClass = (() => {
     switch (size) {
       case 'lg': {
-        return 'gi-text-lg  gi-mb-3.5';
+        return 'gi-error-text-lg';
       }
       case 'sm': {
-        return 'gi-text-sm  gi-mb-2.5';
+        return 'gi-error-text-sm';
       }
       default: {
-        return 'gi-text-md  gi-mb-3';
+        return 'gi-error-text-md';
       }
     }
   })();
 
   return (
-    <div
-      className={`${sizeClass} gi-font-bold gi-text-red-600 ${className || ''}`}
-      {...props}
-    >
+    <div className={`${sizeClass} gi-error-text ${className || ''}`} {...props}>
       {text}
     </div>
   );

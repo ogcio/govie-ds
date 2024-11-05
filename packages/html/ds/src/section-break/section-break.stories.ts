@@ -12,6 +12,14 @@ const meta = {
   title: 'Typography/SectionBreak',
   parameters: {
     macro,
+    docs: {
+      description: {
+        docs: {
+          component:
+            'Section Break component to create a thematic break between sections of content.',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof SectionBreak>;
 

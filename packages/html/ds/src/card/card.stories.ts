@@ -166,6 +166,23 @@ export const VerticalWithLink: Story = {
   },
 };
 
+export const VerticalWithButton: Story = {
+  args: {
+    type: CardType.Vertical,
+    title: 'Vertical Card',
+    img: 'https://placeholderjs.com/400x300',
+    subTitle: 'Subtitle Here',
+    content:
+      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    tag: { text: 'Featured', type: 'info' },
+    action: {
+      type: 'button',
+      content: 'Button',
+      variant: ButtonVariant.Secondary,
+    },
+  },
+};
+
 export const Horizontal: Story = {
   args: {
     type: CardType.Horizontal,
