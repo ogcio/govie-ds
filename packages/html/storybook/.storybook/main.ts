@@ -12,6 +12,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-onboarding',
     '@storybook/addon-viewport',
+    'storybook-addon-pseudo-states',
   ],
   framework: {
     name: '@storybook/react-vite',
