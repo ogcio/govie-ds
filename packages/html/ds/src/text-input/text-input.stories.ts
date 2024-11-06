@@ -116,6 +116,14 @@ const meta = {
         defaultValue: { summary: '-' },
       },
     },
+    disabled: {
+      description: 'Disable input',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -238,5 +246,66 @@ export const DateInput: Story = {
     },
     id: 'text-input-id',
     type: InputTypeEnum.Date,
+  },
+};
+
+export const DisabledInput: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'text-input-id',
+    },
+    id: 'text-input-id',
+    type: InputTypeEnum.Text,
+    disabled: true,
+  },
+};
+
+export const AllStates: Story = {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () => `
+  <div class="gi-gap-4">
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="default-input">Default</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="default-input"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input"
+      />
+    </div>
+  </div>
+
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="focus-input">Focus</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="focus-input"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input pseudo-focus"
+      />
+    </div>
+  </div>
+
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="input-disabled">Disabled</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="input-disabled"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input gi-text-input-disabled"
+        disabled
+      />
+    </div>
+  </div>
+</div>
+`,
+  parameters: {
+    pseudo: {
+      focus: '#focus-input',
+    },
   },
 };

@@ -84,6 +84,14 @@ const meta = {
         defaultValue: { summary: 'textarea-id' },
       },
     },
+    disabled: {
+      description: 'Disable textarea',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
+      },
+    },
   },
 } satisfies Meta<typeof TextArea>;
 
@@ -179,5 +187,77 @@ export const WithMaxChars: Story = {
     },
     maxChars: 100,
     id: 'textarea-id-5',
+  },
+};
+
+export const DisabledTextarea: Story = {
+  args: {
+    label: {
+      content: 'Textarea Label',
+      for: 'textarea-id-5',
+    },
+    hint: {
+      content: 'Hint text for textarea',
+    },
+    id: 'textarea-id-5',
+    disabled: true,
+  },
+};
+
+export const AllStates: Story = {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () => `
+  <div class="gi-gap-4">
+  <div class="gi-textarea-layout-container undefined">
+    <label class="gi-text-md gi-label gi-mb-2" for="default-textarea" id=":r7:-label">Default</label>
+    <div class="gi-textarea-container">
+      <textarea
+        id="default-textarea"
+        rows="4"
+        cols="100"
+        autocomplete="on"
+        class="gi-textarea"
+        aria-labelledby=":r7:-label"
+        aria-describedby=""
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="gi-textarea-layout-container undefined">
+    <label class="gi-text-md gi-label gi-mb-2" for="focus-textarea" id=":r8:-label">Focus</label>
+    <div class="gi-textarea-container">
+      <textarea
+        id="focus-textarea"
+        rows="4"
+        cols="100"
+        autocomplete="on"
+        class="gi-textarea pseudo-focus"
+        aria-labelledby=":r8:-label"
+        aria-describedby=""
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="gi-textarea-layout-container undefined">
+    <label class="gi-text-md gi-label gi-mb-2" for="textarea-disabled" id=":r9:-label">Disabled</label>
+    <div class="gi-textarea-container">
+      <textarea
+        id="textarea-disabled"
+        rows="4"
+        cols="100"
+        autocomplete="on"
+        class="gi-textarea gi-textarea-disabled"
+        aria-labelledby=":r9:-label"
+        aria-describedby=""
+        disabled
+      ></textarea>
+    </div>
+  </div>
+</div>
+`,
+  parameters: {
+    pseudo: {
+      focus: '#focus-textarea',
+    },
   },
 };
