@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, alertVariants } from './alert.js';
+import { Paragraph } from '../paragraph/paragraph.js';
+import { Alert } from './alert.js';
 
 const meta = {
   title: 'application/Alert',
@@ -16,19 +17,53 @@ export const Default: Story = {
   },
 };
 
-// @ts-expect-error: we don't need args for this story
-export const Variant: Story = {
-  render: () => (
-    <div className="gi-flex gi-flex-col gi-gap-4">
-      {Object.keys(alertVariants.variants.variant).map((variant) => (
-        <Alert
-          key={variant}
-          variant={variant as keyof typeof alertVariants.variants.variant}
-          title={variant}
-        >
-          Alert description
-        </Alert>
-      ))}
-    </div>
-  ),
+export const InfoAlert: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    children: (
+      <>
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
+};
+
+export const DangerAlert: Story = {
+  args: {
+    title: 'Danger Alert',
+    variant: 'danger',
+    children: (
+      <>
+        
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
+};
+
+export const SuccessAlert: Story = {
+  args: {
+    title: 'Success Alert',
+    variant: 'success',
+    children: (
+      <>
+        
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
+};
+
+export const WarningAlert: Story = {
+  args: {
+    title: 'Warning Alert',
+    variant: 'warning',
+    children: (
+      <>
+        
+        <Paragraph>Content</Paragraph>
+      </>
+    ),
+  },
 };

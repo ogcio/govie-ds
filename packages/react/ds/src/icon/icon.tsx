@@ -16,7 +16,10 @@ export type IconId =
   | 'home'
   | 'logout'
   | 'download'
-  | 'keyboard_arrow_down';
+  | 'keyboard_arrow_down'
+  | 'info'
+  | 'check_circle'
+  | 'error';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
