@@ -27,7 +27,7 @@ export function Spinner({ size = 'md', inline = false }: SpinnerPropTypes) {
 
   return (
     <svg
-      className={`gi-stroke-inherit ${display} ${sizeClass}`}
+      className={`${display} ${sizeClass}`}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
