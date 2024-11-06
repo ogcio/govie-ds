@@ -1,6 +1,6 @@
 import { render } from '../common/render';
+import { IconSize } from '../icon/icon.schema';
 import html from './spinner.html?raw';
-import { SpinnerSize } from './spinner.schema';
 
 describe('govieSpinner', () => {
   const renderSpinner = render({
@@ -11,7 +11,7 @@ describe('govieSpinner', () => {
 
   it('should pass axe tests', async () => {
     const screen = renderSpinner({
-      size: SpinnerSize.Large,
+      size: IconSize.Large,
     });
     await screen.axe();
   });
