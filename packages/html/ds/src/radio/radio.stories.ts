@@ -42,6 +42,12 @@ const meta = {
   title: 'form/Radios',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component:
+          'Radio component when users can only select one option from a list.',
+      },
+    },
   },
 } satisfies Meta<typeof Radios>;
 

@@ -22,13 +22,11 @@ export const RadiosGroup = ({
   };
 
   return (
-    <div className="gi-flex" data-testid="govie-radios">
-      {errorMessage && (
-        <div className="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"></div>
-      )}
+    <div className="gi-radio-group-container" data-testid="govie-radios">
+      {errorMessage && <div className="gi-radio-group-error"></div>}
       <fieldset>
         {title && (
-          <legend className="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <legend className="gi-radio-group-legend">
             {title.asHeading ? (
               <Heading
                 customClasses="!gi-mb-2"
@@ -49,12 +47,12 @@ export const RadiosGroup = ({
             )}
           </legend>
         )}
-        <div className="gi-flex gi-flex-col gi-gap-2.5">
+        <div className="gi-radio-group-options-container">
           {errorMessage && (
             <ErrorText text={errorMessage} className="!gi-mb-0" />
           )}
           <div
-            className={`gi-flex ${inline ? 'gi-flex-row gi-gap-4' : 'gi-flex-col gi-gap-2.5'}`}
+            className={`${inline ? 'gi-radio-group-options-inline' : 'gi-radio-group-options-stacked'}`}
           >
             {items.map((radio, index) => (
               <Radio
@@ -72,10 +70,10 @@ export const RadiosGroup = ({
             ))}
             {dividerOption && (
               <div
-                className={`gi-flex gi-gap-2.5 gi-flex-col ${inline ? '!gi-flex-row' : '!gi-flex-col'} `}
+                className={`gi-radio-group-options-stacked ${inline ? '!gi-flex-row' : '!gi-flex-col'} `}
               >
                 <p
-                  className={`gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg ${getRadioWidth(size)}`}
+                  className={`gi-radio-group-options-divider-text ${getRadioWidth(size)}`}
                 >
                   or
                 </p>

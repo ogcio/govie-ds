@@ -9,8 +9,10 @@ import { Combobox } from './combo-box.js';
 const meta = {
   title: 'Navigation/ComboBox',
   parameters: {
-    description: {
-      component: 'Use this component to search through a list of options',
+    docs: {
+      description: {
+        component: 'Use this component to search through a list of options',
+      },
     },
   },
   component: Combobox,

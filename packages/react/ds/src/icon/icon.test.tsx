@@ -18,7 +18,7 @@ describe('govieIcon', () => {
     const screen = renderIcon({
       icon: 'thumb_down',
       size: 'md',
-      color: 'disabled',
+      disabled: true,
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
@@ -43,7 +43,7 @@ describe('govieIcon', () => {
     const screen = renderIcon({
       icon: 'thumb_down',
       size: 'md',
-      variant: 'filled',
+      filled: true,
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');

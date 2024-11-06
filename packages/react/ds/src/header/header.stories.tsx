@@ -14,66 +14,38 @@ export const Default: Story = {
     title: {
       control: 'text',
       description: 'The title of the Header',
+      table: {
+        category: 'Header',
+      },
     },
     logo: {
       control: 'object',
-      type: {
-        name: 'object',
-        value: {
-          image: {
-            name: 'string',
-          },
-          href: {
-            name: 'string',
-          },
-        },
-      },
       description: 'The url and image for the logo',
+      table: {
+        category: 'Header',
+      },
     },
     tools: {
       control: 'object',
       description: 'Actionable items such as Search, Menu and additional CTA',
-      type: {
-        name: 'object',
-        value: {
-          search: {
-            name: 'object',
-            value: {
-              action: {
-                name: 'string',
-                required: true,
-              },
-              label: {
-                name: 'string',
-              },
-              icon: {
-                name: 'string',
-              },
-            },
-          },
-          items: {
-            name: 'object',
-            value: {
-              label: {
-                name: 'string',
-              },
-              icon: {
-                name: 'string',
-              },
-              href: {
-                name: 'string',
-                required: true,
-              },
-            },
-          },
+      table: {
+        category: 'Header',
+        type: {
+          summary: '{search?: {}; menu?: {}; items: {}[]}',
         },
       },
     },
     navLinks: {
       description: 'A list of navigation links',
+      table: {
+        category: 'Header',
+      },
     },
     languages: {
       description: 'A list of secondary navigation links',
+      table: {
+        category: 'Header',
+      },
     },
   },
   args: {

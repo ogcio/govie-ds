@@ -15,9 +15,12 @@ const meta = {
   title: 'Application/Modal',
   parameters: {
     macro,
-    description: {
-      component:
-        'A modal component that displays content on a button trigger or on page load',
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component:
+          'A modal component that displays content on a button trigger or on page load',
+      },
     },
   },
 } satisfies Meta<typeof Modal>;

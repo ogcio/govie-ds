@@ -3,16 +3,16 @@
 {% macro govieErrorText(props) %}
   {% macro getSizeClass(size) %}
     {% if size == 'lg' %}
-      gi-text-lg
+      gi-error-text-lg
     {% elif size == 'sm' %}
-      gi-text-sm
+      gi-error-text-sm
     {% else %}
-      gi-text-md
+      gi-error-text-md
     {% endif %}
   {% endmacro %}
 
   <div
-    class="{{ getSizeClass(props.size) | trim }} gi-font-bold gi-text-red-600 gi-clear-both gi-block !gi-mt-0 !gi-mb-[14px] {{ addClasses(props.classNames) | trim }}"
+    class="{{ getSizeClass(props.size) | trim }} gi-error-text {{ addClasses(props.classNames) | trim }}"
   >
     {{ props.content | safe | trim | indent(2) }}
   </div>

@@ -16,7 +16,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
   ({ label, hint, error, id, ...props }, ref) => {
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-file-upload-container ${error?.text && 'gi-error-state'}`}
       >
         {label?.text && (
           <Label
@@ -35,22 +35,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
 
         <input
           id={id}
-          className="
-            xs:gi-text-md 
-            gi-text-sm 
-            gi-leading-10 
-            xs:!gi-leading-5 
-            gi-p-[3px]
-            gi-max-w-[100%]
-            gi-border-transparent
-            gi-flex-initial
-            gi-ml-[-5px]
-            gi-border-sm
-            gi-border-solid
-            gi-box-border
-            gi-focus-state-border
-            gi-focus-state-outline
-            gi-z-1"
+          className="gi-file-upload-input"
           type="file"
           ref={ref}
           {...props}

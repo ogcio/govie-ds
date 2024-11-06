@@ -68,7 +68,7 @@ describe('govieTextArea', () => {
     const errorElement = screen.getByText('This is an error message');
 
     expect(errorElement).toBeTruthy();
-    expect(errorElement.classList.contains('gi-text-red-600')).toBe(true);
+    expect(errorElement.classList.contains('gi-error-text')).toBe(true);
   });
 
   it('should apply error styles to the textarea when hasError is true', () => {

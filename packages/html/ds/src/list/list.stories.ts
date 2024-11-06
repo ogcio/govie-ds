@@ -65,6 +65,10 @@ export const Links: Story = {
         href: '#',
         label: 'Link 2',
       },
+      {
+        href: '#',
+        label: 'Link 3',
+      },
     ],
   },
 };
