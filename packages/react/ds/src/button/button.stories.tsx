@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react/jsx-runtime';
 import { Icon } from '../icon/icon.js';
+import { Spinner } from '../spinner/spinner.js';
 import { Button } from './button.js';
 
 const meta = {
@@ -132,5 +133,17 @@ export const Disabled: Story = {
   args: {
     children: 'Button',
     disabled: true,
+  },
+};
+
+export const ButtonWithSpinner: Story = {
+  args: {
+    disabled: true,
+    children: (
+      <Fragment>
+        Button
+        <Spinner />
+      </Fragment>
+    ),
   },
 };
