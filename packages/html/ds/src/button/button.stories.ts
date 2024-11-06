@@ -93,7 +93,7 @@ export const AllVariants: Story = {
       <button class="gi-btn gi-btn-flat gi-btn-regular focus-selector">Flat Focus</button>
       <button class="gi-btn gi-btn-flat gi-btn-regular gi-btn-flat-disabled">Flat Disabled</button>
     </div>
-    <div class="gi-flex gi-gap-4>
+    <div class="gi-flex gi-gap-4">
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular hover-selector">Primary Dark Hover</button>
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular focus-selector">Primary Dark Focus</button>
