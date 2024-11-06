@@ -187,6 +187,7 @@ export const DisabledState: Story = {
       text: 'Hint: This is a helpful hint.',
     },
     disabled: true,
+    value: 'This field is disabled',
   },
 };
 
@@ -204,6 +205,7 @@ export const AllStates: Story = {
       <TextArea
         label={{ text: 'Disabled', htmlFor: 'textarea-disabled' }}
         id="textarea-disabled"
+        value="This field is disabled"
         disabled
       />
     </div>

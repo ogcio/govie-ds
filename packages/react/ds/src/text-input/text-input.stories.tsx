@@ -248,6 +248,7 @@ export const DisabledInput: Story = {
     },
     id: 'text-input-id',
     disabled: true,
+    value: 'This field is disabled',
   },
 };
 
@@ -266,6 +267,7 @@ export const AllStates: Story = {
       />
       <TextInput
         label={{ text: 'Disabled', htmlFor: 'input-disabled' }}
+        value="This field is disabled"
         type="text"
         id="input-disabled"
         disabled

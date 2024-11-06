@@ -17,6 +17,7 @@ type CheckboxType = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   className?: string;
   checked?: boolean;
+  disabled?: boolean;
 };
 
 const Checkbox = ({
@@ -29,6 +30,7 @@ const Checkbox = ({
   hint,
   className,
   checked,
+  disabled,
 }: CheckboxType) => {
   return (
     <div className={`gi-checkbox-container ${className && className}`}>
@@ -40,6 +42,7 @@ const Checkbox = ({
         value={value}
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
         checked={checked}
+        disabled={disabled}
         type="checkbox"
       />
       <label htmlFor={checkboxId} className="gi-checkbox-label">

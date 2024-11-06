@@ -43,7 +43,7 @@ input[type='text'] {
 
 /* General Input disable state */
 .gi-input-disabled-state {
-  @apply disabled:gi-bg-gray-200 disabled:gi-border-gray-400;
+  @apply disabled:gi-bg-gray-200 disabled:gi-border-gray-400 disabled:gi-text-gray-700 disabled:gi-cursor-not-allowed;
 }
 /* General Input disable state */
 
@@ -773,7 +773,7 @@ input[type='file' i] {
   @apply gi-flex gi-items-start;
 }
 .gi-checkbox-input {
-  @apply gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-md gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black;
+  @apply hover:gi-outline hover:gi-outline-[3px] hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-md gi-border-solid gi-border-black checked:before:gi-block  checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
 }
 .gi-checkbox-label {
   @apply gi-cursor-pointer gi-text-md gi-pl-4;
