@@ -1,6 +1,6 @@
 import { render } from '../common/render';
 import html from './heading.html?raw';
-import { HeadingProps } from './heading.schema';
+import type { HeadingProps } from './heading.schema';
 import { Size, Tag } from './heading.schema';
 
 describe('heading', () => {
@@ -14,7 +14,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
     expect(screen.getByText('Heading Text')).toBeTruthy();
   });
@@ -23,7 +23,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Small,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -38,7 +38,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -53,7 +53,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Large,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -68,7 +68,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.ExtraLarge,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     const headingElement = screen.getByRole('heading');
@@ -83,7 +83,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H1');
@@ -93,7 +93,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H2,
+      as: Tag.H2,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H2');
@@ -103,7 +103,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H3,
+      as: Tag.H3,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H3');
@@ -113,7 +113,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H4,
+      as: Tag.H4,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H4');
@@ -123,7 +123,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H5,
+      as: Tag.H5,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H5');
@@ -133,7 +133,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H6,
+      as: Tag.H6,
     });
 
     expect(screen.getByRole('heading').tagName).toBe('H6');
@@ -143,7 +143,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H1,
+      as: Tag.H1,
       caption: 'Caption text',
     });
 
@@ -154,7 +154,7 @@ describe('heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
       size: Size.Medium,
-      tag: Tag.H1,
+      as: Tag.H1,
     });
 
     await screen.axe();

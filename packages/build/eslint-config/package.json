@@ -13,6 +13,7 @@
   },
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
+    "eslint": "^8.56.0",
     "@eslint/compat": "^1.1.1",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.8.0",

@@ -25,9 +25,9 @@ export const headingSchema = zod.object({
       required_error: 'Option is required',
     })
     .optional(),
-  tag: zod.nativeEnum(Tag, {
+  as: zod.nativeEnum(Tag, {
     description: 'Options for the tag element of the heading',
-    required_error: 'A tag element is required',
+    required_error: 'An as property is required',
   }),
   text: zod.string({
     description: 'Title of the heading',

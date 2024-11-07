@@ -1,6 +1,6 @@
 import { render, cleanup } from '../test-utils.js';
 import { RadiosGroup } from './radios-group.js';
-import { RadiosGroupType, RadiosSizeEnum } from './types.js';
+import { type RadiosGroupType, RadiosSizeEnum } from './types.js';
 
 const standardProps: RadiosGroupType = {
   fieldId: 'uniqueId',

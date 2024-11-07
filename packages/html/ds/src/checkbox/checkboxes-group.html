@@ -18,9 +18,9 @@
         <legend class="gi-checkbox-group-title">
           {% if props.title.asHeading %}
             {# prettier-ignore-start #}
-        <{{ props.title.asHeading.tag }} class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] {{ getHeadingClasses(props.title.asHeading.size, props.title.asHeading.tag) | trim }}">
+        <{{ props.title.asHeading.as }} class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] {{ getHeadingClasses(props.title.asHeading.size, props.title.asHeading.as) | trim }}">
           {{ props.title.value }}
-        </{{ props.title.asHeading.tag }}>
+        </{{ props.title.asHeading.as }}>
         {# prettier-ignore-end #}
           {% else %}
             {{ props.title.value }}

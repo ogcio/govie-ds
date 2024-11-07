@@ -103,3 +103,5 @@ TextInput
 favoriting
 IconButton
 FileUpload
+HeadingResponsiveSizes
+sampleText
