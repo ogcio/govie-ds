@@ -75,3 +75,24 @@ export const NoVisited: Story = {
     noVisited: true,
   },
 };
+
+export const AllStates: Story = {
+  args: {
+    href: '#',
+    children: '',
+    noVisited: true,
+  },
+  render: () => (
+    <div className="gi-gap-4 gi-flex-col gi-flex gi-w-fit">
+      <Link href="#">Default</Link>
+      <Link href="#">Hover</Link>
+      <Link href="#">Focus</Link>
+    </div>
+  ),
+  parameters: {
+    pseudo: {
+      hover: '.gi-link:nth-child(2)',
+      focus: '.gi-link:nth-child(3)',
+    },
+  },
+};

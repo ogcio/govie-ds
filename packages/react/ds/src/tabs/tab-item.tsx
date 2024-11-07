@@ -10,7 +10,9 @@ export type TabItemProps = {
   checked?: boolean;
   ariaLabel?: string;
   ariaLabelledby?: string;
-  onTabFocus?: (event: React.FocusEvent<HTMLButtonElement, Element>) => void;
+  onTabSelected?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
   onTabClick?: (index: number) => void;
   onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 };
@@ -21,7 +23,7 @@ export const TabItem = ({
   index = -1,
   checked = false,
   children,
-  onTabFocus = () => {},
+  onTabSelected = () => {},
   onTabClick = () => {},
   onTabKeyDown = () => {},
 }: TabItemProps) => {
@@ -31,7 +33,7 @@ export const TabItem = ({
 
   useEffect(() => {
     if (checked) {
-      buttonRef.current?.focus();
+      buttonRef.current?.click();
     }
   }, [checked]);
 
@@ -44,11 +46,13 @@ export const TabItem = ({
       aria-selected={checked ? 'true' : 'false'}
       aria-controls={`tab-panel-${valueSlug}`}
       className={`gi-tab-item ${checked ? 'gi-tab-item-checked' : ''}`}
-      onClick={() => onTabClick(index)}
+      onClick={(event) => {
+        onTabClick(index);
+        onTabSelected(event);
+      }}
       onKeyDown={(event) => {
         onTabKeyDown(event);
       }}
-      onFocus={(event) => onTabFocus(event)}
     >
       {href && (
         <a href={href} className="gi-decoration-xs">

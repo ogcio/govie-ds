@@ -115,19 +115,19 @@ export const AllVariants: Story = {
       <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
       <button class="gi-btn gi-btn-primary-light gi-btn-regular hover-selector">Primary Light Hover</button>
       <button class="gi-btn gi-btn-primary-light gi-btn-regular focus-selector">Primary Light Focus</button>
-      <button class="gi-btn gi-btn-primary-light gi-btn-regular" disabled>Primary Light Disabled</button>
+      <button class="gi-btn gi-btn-regular gi-btn-primary-light-disabled">Primary Light Disabled</button>
     </div>
     <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
       <button class="gi-btn gi-btn-secondary-light gi-btn-regular">Secondary Light</button>
       <button class="gi-btn gi-btn-secondary-light gi-btn-regular hover-selector">Secondary Light Hover</button>
       <button class="gi-btn gi-btn-secondary-light gi-btn-regular focus-selector">Secondary Light Focus</button>
-      <button class="gi-btn gi-btn-secondary-light gi-btn-regular" disabled>Secondary Light Disabled</button>
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular gi-btn-secondary-light-disabled">Secondary Light Disabled</button>
     </div>
     <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
       <button class="gi-btn gi-btn-flat-light gi-btn-regular">Flat Light</button>
       <button class="gi-btn gi-btn-flat-light gi-btn-regular hover-selector">Flat Light Hover</button>
       <button class="gi-btn gi-btn-flat-light gi-btn-regular focus-selector">Flat Light Focus</button>
-      <button class="gi-btn gi-btn-flat-light gi-btn-regular" disabled>Flat Light Disabled</button>
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular gi-btn-flat-light-disabled">Flat Light Disabled</button>
     </div>
   </div>
 `,

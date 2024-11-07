@@ -42,3 +42,33 @@ export const Default: Story = {
     );
   },
 };
+
+export const AllStates: Story = {
+  args: {
+    id: 'tab-story-all-states',
+    children: '',
+    ariaLabelledBy: 'tab-story',
+  },
+  render: (arguments_) => {
+    return (
+      <Tabs {...arguments_}>
+        <TabList>
+          <TabItem value="tab11" checked>
+            Default
+          </TabItem>
+          <TabItem value="tab21">Hover</TabItem>
+          <TabItem value="tab31">Focus</TabItem>
+        </TabList>
+        <TabPanel value="tab11">Tab 1 Content</TabPanel>
+        <TabPanel value="tab21">Tab 2 Content</TabPanel>
+        <TabPanel value="tab31">Tab 3 Content</TabPanel>
+      </Tabs>
+    );
+  },
+  parameters: {
+    pseudo: {
+      hover: '#tab-tab21',
+      focus: '#tab-tab31',
+    },
+  },
+};
