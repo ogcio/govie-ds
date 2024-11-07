@@ -1,23 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Heading } from './heading.js';
+import { Heading, HeadingProps, headingVariants } from './heading.js';
 
-const meta = {
+export default {
   title: 'typography/Heading',
   component: Heading,
-} satisfies Meta<typeof Heading>;
+} satisfies Meta<HeadingProps>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<HeadingProps>;
 
 export const Default: Story = {
   argTypes: {
     size: {
-      options: Object.values(['xl', 'lg', 'md', 'sm', 'xs', '2xs']),
+      options: Object.keys(headingVariants.variants.size),
       description: 'Options for sizes',
       control: { type: 'radio' },
     },
     as: {
-      options: Object.values(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+      options: Object.keys(headingVariants.variants.as),
       description: 'Option for the Heading tag',
       control: { type: 'radio' },
     },
@@ -30,6 +29,22 @@ export const Default: Story = {
     children: 'Heading',
   },
 };
+
+export const WithSize: Story = () => {
+  return (
+    <div className="flex flex-row gap-2">
+      {Object.keys(headingVariants.variants.size).map((size) => (
+        <Heading
+          key={size}
+          size={size as keyof typeof headingVariants.variants.size}
+        >
+          Heading {size}
+        </Heading>
+      ))}
+    </div>
+  );
+};
+WithSize.args = {};
 
 export const Small: Story = {
   args: {

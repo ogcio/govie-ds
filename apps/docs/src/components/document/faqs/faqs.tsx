@@ -1,5 +1,6 @@
 import { Heading } from '@govie-ds/react';
-import React, { Fragment } from 'react';
+import type React from 'react';
+import { Fragment } from 'react';
 import { Tabs } from '../common/tabs';
 
 const tabs = [

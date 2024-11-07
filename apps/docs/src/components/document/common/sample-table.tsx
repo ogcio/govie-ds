@@ -1,5 +1,5 @@
-import { HeadingSize, ParagraphSize } from '@govie-ds/react';
-import { SampleToken } from './sample-token';
+import type { headingVariants, ParagraphSize } from '@govie-ds/react';
+import type { SampleToken } from './sample-token';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';
 
@@ -15,7 +15,7 @@ export function SampleTable<TValue>({
   tokens: SampleToken<TValue>[];
   renderValue: ({ value }: { value: TValue }) => React.ReactNode;
   renderSample: (props: {
-    id: string | ParagraphSize | HeadingSize;
+    id: string | ParagraphSize | keyof typeof headingVariants.variants.size;
     value: TValue;
   }) => React.ReactNode;
 }) {

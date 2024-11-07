@@ -1,6 +1,6 @@
 import {
   BaseComponent,
-  BaseComponentOptions,
+  type BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
 
