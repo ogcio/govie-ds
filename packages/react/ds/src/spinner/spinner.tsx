@@ -1,33 +1,29 @@
 'use client';
-import { IconSize } from '../index.js';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '../cn.js';
 
-export type SpinnerPropTypes = {
-  size?: IconSize;
+const spinnerVariants = tv({
+  variants: {
+    size: {
+      xl: 'gi-w-10 gi-h-10',
+      lg: 'gi-w-8 gi-h-8',
+      md: 'gi-w-6 gi-h-6',
+      sm: 'gi-w-4 gi-h-4',
+    },
+  },
+});
+
+type SpinnerProps = VariantProps<typeof spinnerVariants> & {
   inline?: boolean;
 };
 
-export function Spinner({ size = 'md', inline = false }: SpinnerPropTypes) {
-  const sizeClass = (() => {
-    switch (size) {
-      case 'sm': {
-        return 'gi-w-4 gi-h-4';
-      }
-      case 'lg': {
-        return 'gi-w-8 gi-h-8';
-      }
-      case 'xl': {
-        return 'gi-w-10 gi-h-10';
-      }
-      default: {
-        return 'gi-w-6 gi-h-6';
-      }
-    }
-  })();
+export function Spinner({ size = 'md', inline = false }: SpinnerProps) {
   const display = inline ? '' : 'gi-block';
+  const sizeClasses = spinnerVariants({ size });
 
   return (
     <svg
-      className={`${display} ${sizeClass}`}
+      className={cn(display, sizeClasses)}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
