@@ -10,7 +10,7 @@ const Spinner = renderComponent<SpinnerProps>(macro);
 
 const meta = {
   component: Spinner,
-  title: 'components/Spinner',
+  title: 'indicators/Spinner',
   parameters: {
     macro,
   },

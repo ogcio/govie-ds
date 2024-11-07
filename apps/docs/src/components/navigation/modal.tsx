@@ -1,4 +1,4 @@
-import { Button, Heading, Paragraph } from '@govie-ds/react';
+import { Button, Heading, Paragraph, Spinner } from '@govie-ds/react';
 
 export const modalProps = {
   children: (
@@ -14,6 +14,18 @@ export const modalProps = {
           Cancel action
         </Button>
         <Button>Primary action</Button>
+      </div>
+    </>
+  ),
+  triggerButton: <Button>Open Modal</Button>,
+};
+
+export const modalSpinnerProps = {
+  children: (
+    <>
+      <div className="grid gap-4 px-4 justify-items-center">
+        <Spinner size="xl" />
+        <span>Loading...</span>
       </div>
     </>
   ),

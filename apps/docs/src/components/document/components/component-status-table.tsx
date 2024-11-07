@@ -16,6 +16,7 @@ export function ComponentStatusPill({
       <div
         className={cn(
           'px-md py-sm rounded text-xs',
+          status === 'not-available' ? 'bg-gray-50 text-gray-800' : undefined,
           status === 'considering' ? 'bg-gray-50 text-gray-800' : undefined,
           status === 'under-review' ? 'bg-blue-50 text-blue-800' : undefined,
           status === 'alpha' ? 'bg-yellow-50 text-yellow-800' : undefined,

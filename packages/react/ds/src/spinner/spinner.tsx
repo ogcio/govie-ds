@@ -23,6 +23,7 @@ export function Spinner({ size = 'md', inline = false }: SpinnerProps) {
 
   return (
     <svg
+      role="status"
       className={cn(display, sizeClasses)}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +34,8 @@ export function Spinner({ size = 'md', inline = false }: SpinnerProps) {
           cy="12"
           r="9.5"
           fill="none"
-          stroke-width="3"
-          stroke-linecap="round"
+          strokeWidth="3"
+          strokeLinecap="round"
         >
           <animate
             attributeName="stroke-dasharray"
