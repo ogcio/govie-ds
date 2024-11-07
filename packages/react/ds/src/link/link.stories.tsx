@@ -83,7 +83,7 @@ export const AllStates: Story = {
     noVisited: true,
   },
   render: () => (
-    <div className="gi-gap-4 gi-flex-col gi-flex gi-w-fit">
+    <div className="gi-gap-4 gi-flex">
       <Link href="#">Default</Link>
       <Link href="#">Hover</Link>
       <Link href="#">Focus</Link>

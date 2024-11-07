@@ -93,7 +93,7 @@ export const AllStates: Story = {
   },
   //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () =>
-    `<div class="gi-gap-4 gi-flex-col gi-flex gi-w-fit">
+    `<div class="gi-gap-4 gi-flex">
       <a href="#" class="gi-link">Default</a>
       <a href="#" class="gi-link pseudo-hover">Hover</a>
       <a href="#" class="gi-link pseudo-focus">Focus</a>
