@@ -39,7 +39,7 @@ export function ComponentStatusPill({
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
           size="small"
           variant="flat"
-          onClick={() => router.push(href)}
+          onClick={() => window.open(href, '_blank')}
         />
       ) : null}
     </div>
