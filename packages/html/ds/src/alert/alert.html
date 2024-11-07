@@ -1,0 +1,30 @@
+{% from 'helpers/helpers.html' import addClasses %}
+{% from 'alert/helpers.html' import getIcon, getVariant %}
+{% from 'icon/icon.html' import govieIcon %}
+{% from 'heading/heading.html' import govieHeading %}
+
+{% macro govieAlert(props) %}
+  {% set icon = getIcon(props.variant) %}
+  <div
+    data-module="gieds-alert"
+    class="gi-alert {{ getVariant(props.variant) | trim }} {{ addClasses(props.className) | trim }}"
+    role="alert"
+  >
+    <div class="gi-alert-container">
+      {{
+        govieIcon({
+        "size": "lg",
+        "icon": icon
+        })
+      }}
+      {{
+        govieHeading({
+            "size": "sm",
+            "tag": "h2",
+            "text": props.title
+        })
+      }}
+    </div>
+    <div class="gi-alert-content">{{ props.children | safe | trim }}</div>
+  </div>
+{% endmacro %}

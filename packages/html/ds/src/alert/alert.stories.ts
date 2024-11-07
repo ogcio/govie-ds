@@ -1,11 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paragraph } from '../paragraph/paragraph.js';
-import { Alert } from './alert.js';
+import { renderComponent } from '../storybook/storybook';
+import { AlertProps, AlertVariant } from './alert-schema';
+import html from './alert.html?raw';
+
+// Name of the folder the macro resides
+const path = import.meta.url.split('/alert')[0];
+
+const macro = { name: 'govieAlert', html, path };
+
+const Alert = renderComponent<AlertProps>(macro);
 
 const meta = {
-  title: 'application/Alert',
   component: Alert,
+  title: 'Application/Alert',
   parameters: {
+    macro,
     docs: {
       description: {
         component:
@@ -36,47 +45,31 @@ type Story = StoryObj<typeof meta>;
 export const InfoAlert: Story = {
   args: {
     title: 'Info Alert',
-    variant: 'info',
-    children: (
-      <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
-      </>
-    ),
+    variant: AlertVariant.INFO,
+    children: '<p>Content</p>',
   },
 };
 
 export const DangerAlert: Story = {
   args: {
     title: 'Danger Alert',
-    variant: 'danger',
-    children: (
-      <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
-      </>
-    ),
+    variant: AlertVariant.DANGER,
+    children: '<p>Content</p>',
   },
 };
 
 export const SuccessAlert: Story = {
   args: {
     title: 'Success Alert',
-    variant: 'success',
-    children: (
-      <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
-      </>
-    ),
+    variant: AlertVariant.SUCCESS,
+    children: '<p>Content</p>',
   },
 };
 
 export const WarningAlert: Story = {
   args: {
     title: 'Warning Alert',
-    variant: 'warning',
-    children: (
-      <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
-      </>
-    ),
+    variant: AlertVariant.WARNING,
+    children: '<p>Content</p>',
   },
 };

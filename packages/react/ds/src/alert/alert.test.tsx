@@ -1,4 +1,4 @@
-import { render, fireEvent, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utils.js';
 import { type AlertProps, Alert } from './alert.js';
 
 describe('Alert', () => {
@@ -35,29 +35,6 @@ describe('Alert', () => {
       expect(alertElement).toHaveClass(`gi-alert-${variant}`);
       cleanup();
     }
-  });
-
-  it('should be dismissible when dismissable prop is true', () => {
-    const screen = renderAlert({
-      variant: 'info',
-      title: 'Dismissible Alert',
-      children: 'This alert can be dismissed',
-      dismissable: true,
-    });
-    const dismissButton = screen.getByRole('button');
-    expect(dismissButton).toBeTruthy();
-    fireEvent.click(dismissButton);
-    expect(screen.queryByRole('alert')).toBeNull();
-  });
-
-  it('should not be dismissible when dismissable prop is false', () => {
-    const screen = renderAlert({
-      variant: 'info',
-      title: 'Non-dismissible Alert',
-      children: 'This alert cannot be dismissed',
-      dismissable: false,
-    });
-    expect(screen.queryByRole('button')).toBeNull();
   });
 
   it('should pass axe accessibility tests', async () => {

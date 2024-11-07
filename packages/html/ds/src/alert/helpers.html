@@ -1,0 +1,21 @@
+{% macro getIcon(variant) %}
+  {% if variant == 'danger' or variant == 'warning' %}
+    error
+  {% elif variant == 'success' %}
+    check_circle
+  {% else %}
+    info
+  {% endif %}
+{% endmacro %}
+
+{% macro getVariant(variant) %}
+  {% if variant == 'danger' %}
+    gi-alert-danger
+  {% elif variant == 'success' %}
+    gi-alert-success
+  {% elif variant == 'warning' %}
+    gi-alert-warning
+  {% else %}
+    gi-alert-info
+  {% endif %}
+{% endmacro %}

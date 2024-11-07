@@ -789,32 +789,8 @@ input[type='file' i] {
   @apply gi-flex gi-items-center
 }
 
-.gi-alert-description {
+.gi-alert-content {
   @apply !gi-mb-0
-}
-
-.gi-alert svg {
-  @apply gi-flex-shrink-0 gi-flex gi-size-8 gi-me-3
-}
-
-.gi-alert-dismiss {
-  @apply gi-ml-auto
-}
-
-.gi-alert-dismiss-info {
-  @apply gi-text-blue-700 hover:gi-bg-blue-100
-}
-
-.gi-alert-dismiss-success {
-  @apply gi-text-green-700 hover:gi-bg-green-100
-}
-
-.gi-alert-dismiss-warning {
-  @apply gi-text-yellow-700 hover:gi-bg-yellow-100
-}
-
-.gi-alert-dismiss-danger {
-  @apply gi-text-red-700 hover:gi-bg-red-100
 }
 
 .gi-alert-info {
