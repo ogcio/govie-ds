@@ -74,7 +74,6 @@ describe('heading', () => {
     }
   });
 
-
   it('should render extra large heading with h6 tag', () => {
     const screen = renderHeading({
       children: 'Heading Text',
@@ -90,7 +89,7 @@ describe('heading', () => {
     for (const className of classNames) {
       expect(headingElement.classList.contains(className)).toBe(true);
     }
-  });  
+  });
 
   it('should contain H1 tag', () => {
     const screen = renderHeading({

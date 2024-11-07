@@ -45,9 +45,7 @@ function Heading({ as, size, children, caption, className }: HeadingProps) {
           {caption}
         </span>
       )}
-      <Slot className={cn(base(), className)}>
-        {children}
-      </Slot>
+      <Slot className={cn(base(), className)}>{children}</Slot>
     </>
   );
 }

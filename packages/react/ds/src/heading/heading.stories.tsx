@@ -42,7 +42,7 @@ export const WithSize: Story = () => {
         </Heading>
       ))}
     </div>
-  )
+  );
 };
 WithSize.args = {};
 
