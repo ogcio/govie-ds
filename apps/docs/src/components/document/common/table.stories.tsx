@@ -1,4 +1,4 @@
-import { Heading, HeadingSize } from '@govie-ds/react';
+import { Heading, type headingVariants } from '@govie-ds/react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, Td, Tr } from './table';
 import { TokenName } from './token-name';
@@ -28,7 +28,7 @@ type TableSample = {
   id: string;
   name: string;
   value: string;
-  size: HeadingSize;
+  size: keyof typeof headingVariants.variants.size;
 };
 
 const samples: TableSample[] = [

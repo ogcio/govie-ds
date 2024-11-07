@@ -1,7 +1,7 @@
 import { render } from '../common/render';
 import { Size, Tag } from '../heading/heading.schema';
 import html from './checkboxes-group.html?raw';
-import { CheckboxesProps, CheckboxSizeEnum } from './checkboxes.schema';
+import { type CheckboxesProps, CheckboxSizeEnum } from './checkboxes.schema';
 
 const standardProps = {
   fieldId: 'UniqueID',
@@ -161,7 +161,7 @@ describe('checkboxes', () => {
         value: 'Organisation',
         asHeading: {
           size: Size.Medium,
-          tag: Tag.H1,
+          as: Tag.H1,
         },
         hint: 'Title hint',
       },

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Size, Tag } from '../heading/heading.schema';
 import { renderComponent } from '../storybook/storybook';
 import { InputTypeEnum } from '../text-input/text-input.schema';
-import { RadiosProps } from './radio.schema';
+import type { RadiosProps } from './radio.schema';
 import html from './radios-group.html?raw';
 
 // Name of the folder the macro resides
@@ -18,7 +18,7 @@ const standardProps = {
     value: 'Where do you live?',
     asHeading: {
       size: Size.Medium,
-      tag: Tag.H2,
+      as: Tag.H2,
     },
   },
   items: [
@@ -142,7 +142,7 @@ export const withTitleHint: Story = {
       hint: 'Specify the location where you live',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H2,
+        as: Tag.H2,
       },
     },
     fieldId: 'UniqueId3',
@@ -156,7 +156,7 @@ export const withOptionHints: Story = {
       hint: 'This includes changing your last name or spelling your name differently.',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H2,
+        as: Tag.H2,
       },
     },
     items: [
@@ -200,7 +200,7 @@ export const withConditionalInput: Story = {
       value: 'How would you prefer to be contacted?',
       asHeading: {
         size: Size.Medium,
-        tag: Tag.H2,
+        as: Tag.H2,
       },
     },
     items: [
