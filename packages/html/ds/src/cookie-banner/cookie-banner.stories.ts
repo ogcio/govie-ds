@@ -16,7 +16,7 @@ const CookieBanner = renderComponent<CookieBannerProps>(macro);
 
 const meta = {
   component: CookieBanner,
-  title: 'Typography/CookieBanner',
+  title: 'application/CookieBanner',
   parameters: {
     macro,
     docs: {
