@@ -54,16 +54,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/form-button-primary-button--docs',
+            href: '?path=/docs/form-button--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/form-button-primary-button--docs',
+            href: '?path=/docs/form-button--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -107,14 +107,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/components-card--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/components-card--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -145,31 +145,6 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'character-count',
-      name: 'Character Count',
-      statuses: [
-        {
-          platform: {
-            id: 'local',
-            href: '?path=/docs/form-character-count--docs',
-          },
-          status: 'stable',
-        },
-        {
-          platform: {
-            id: 'global',
-          },
-          status: 'considering',
-        },
-        {
-          platform: {
-            id: 'react',
-          },
-          status: 'considering',
-        },
-      ],
-    },
-    {
       id: 'checkbox',
       name: 'Checkbox',
       statuses: [
@@ -185,14 +160,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/form-checkboxes--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/form-checkboxes--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -217,31 +192,6 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'date-input',
-      name: 'Date Input',
-      statuses: [
-        {
-          platform: {
-            id: 'local',
-            href: '?path=/docs/form-date-input--docs',
-          },
-          status: 'stable',
-        },
-        {
-          platform: {
-            id: 'global',
-          },
-          status: 'considering',
-        },
-        {
-          platform: {
-            id: 'react',
-          },
-          status: 'considering',
-        },
-      ],
-    },
-    {
       id: 'file-upload',
       name: 'File Upload',
       statuses: [
@@ -255,16 +205,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/form-file-upload--docs',
+            href: '?path=/docs/form-fileupload--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/form-file-upload--docs',
+            href: '?path=/docs/form-fileupload--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -282,16 +232,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/iconbutton--docs',
+            href: '?path=/docs/form-iconbutton--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/iconbutton--docs',
+            href: '?path=/docs/form-iconbutton--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -311,14 +261,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/form-textinput--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/form-textinput--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -336,16 +286,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/form-radio--docs',
+            href: '?path=/docs/form-radios--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/form-radio--docs',
+            href: '?path=/docs/form-radios--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -365,14 +315,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/form-select--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/form-select--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -392,14 +342,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/form-textarea--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/form-textarea--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -442,14 +392,14 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/typography-cookie-banner--docs',
+            href: '?path=/docs/typography-cookiebanner--docs',
           },
           status: 'alpha',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/typography-cookie-banner--docs',
+            href: '?path=/docs/typography-cookiebanner--docs',
           },
           status: 'alpha',
         },
@@ -470,14 +420,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/layout-container--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/layout-container--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -547,14 +497,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-blockquote--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-blockquote--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -574,14 +524,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=docs/typography-label--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=docs/typography-label--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -599,16 +549,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
-            href: '?path=/docs/typography-phase-banner--docs',
+            href: '?path=/docs/typography-phasebanner--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
         {
           platform: {
             id: 'react',
-            href: '?path=/docs/typography-phase-banner--docs',
+            href: '?path=/docs/typography-phasebanner--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
       ],
     },
@@ -678,14 +628,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-tag--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-tag--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
       ],
     },
@@ -755,14 +705,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/typography-list--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/typography-list--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -782,14 +734,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'beta',
+          status: 'stable',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-paragraph--docs',
           },
-          status: 'beta',
+          status: 'stable',
         },
       ],
     },
@@ -809,14 +761,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/typography-sectionbreak--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -934,14 +886,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/navigation-tabs--docs',
           },
-          status: 'considering',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/navigation-tabs--docs',
           },
-          status: 'considering',
+          status: 'beta',
         },
       ],
     },
@@ -961,14 +915,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'beta',
+          status: 'stable',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/navigation-link--docs',
           },
-          status: 'beta',
+          status: 'stable',
         },
       ],
     },
@@ -987,14 +941,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/components-icon--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/components-icon--docs',
           },
-          status: 'alpha',
+          status: 'stable',
         },
       ],
     },
@@ -1014,14 +968,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/layout-footer--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/layout-footer--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },
@@ -1041,14 +995,14 @@ export function getComponents(): ComponentDetail[] {
             id: 'global',
             href: '?path=/docs/layout-header--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
             href: '?path=/docs/layout-header--docs',
           },
-          status: 'alpha',
+          status: 'beta',
         },
       ],
     },

@@ -14,7 +14,7 @@ const Document = defineDocumentType(() => ({
       type: 'enum',
       options: ['coming-soon', 'in-development', 'stable'],
       required: false,
-      default: 'coming-soon',
+      default: 'stable',
     },
   },
   computedFields: {

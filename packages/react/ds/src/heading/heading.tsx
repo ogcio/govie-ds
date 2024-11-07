@@ -1,79 +1,54 @@
-export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type HeadingSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | '2xs';
-export type HeadingProps = {
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '../cn.js';
+
+const headingVariants = tv({
+  slots: {
+    text: 'gi-text-gray-500',
+    base: '',
+  },
+  variants: {
+    size: {
+      xl: 'gi-heading-xl',
+      lg: 'gi-heading-lg',
+      md: 'gi-heading-md',
+      sm: 'gi-heading-sm',
+      xs: 'gi-heading-xs',
+      '2xs': 'gi-heading-2xs',
+    },
+    as: {
+      h1: 'gi-heading-xl',
+      h2: 'gi-heading-lg',
+      h3: 'gi-heading-md',
+      h4: 'gi-heading-sm',
+      h5: 'gi-heading-xs',
+      h6: 'gi-heading-2xs',
+    },
+  },
+  defaultVariants: {
+    as: 'h1',
+  },
+});
+
+type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
-  as?: HeadingAs;
-  size?: HeadingSize;
+  className?: string;
   children: React.ReactNode;
-  customClasses?: string;
 };
 
-export function Heading({
-  as: As = 'h1',
-  size,
-  children,
-  caption,
-  customClasses = '',
-}: HeadingProps) {
-  const defaultSize = (() => {
-    switch (As) {
-      case 'h1': {
-        return 'xl';
-      }
-      case 'h2': {
-        return 'lg';
-      }
-      case 'h3': {
-        return 'md';
-      }
-      case 'h4': {
-        return 'sm';
-      }
-      case 'h5': {
-        return 'xs';
-      }
-      case 'h6': {
-        return '2xs';
-      }
-    }
-  })();
-
-  const sizeClasses = (() => {
-    switch (size || defaultSize) {
-      case 'xl': {
-        return 'gi-heading-xl';
-      }
-      case 'lg': {
-        return 'gi-heading-lg';
-      }
-      case 'md': {
-        return 'gi-heading-md';
-      }
-      case 'sm': {
-        return 'gi-heading-sm';
-      }
-      case 'xs': {
-        return 'gi-heading-xs';
-      }
-      case '2xs': {
-        return 'gi-heading-2xs';
-      }
-      default: {
-        return '';
-      }
-    }
-  })();
-
-  const combinedClasses = `${sizeClasses} ${customClasses}`.trim();
-
+function Heading({ as, size, children, caption, className }: HeadingProps) {
+  const Slot = as || 'h1';
+  const { text, base } = headingVariants({ as, size });
   return (
     <>
       {caption && (
-        <span className="gi-text-gray-500" data-testid="govie-heading-caption">
+        <span className={cn(text())} data-testid="govie-heading-caption">
           {caption}
         </span>
       )}
-      <As className={combinedClasses}>{children}</As>
+      <Slot className={cn(base(), className)}>{children}</Slot>
     </>
   );
 }
+
+export { Heading, headingVariants };
+export type { HeadingProps };

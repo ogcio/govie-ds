@@ -1,5 +1,5 @@
 import { render, cleanup } from '../test-utils.js';
-import { HeadingProps, Heading, HeadingAs, HeadingSize } from './heading.js';
+import { type HeadingProps, Heading } from './heading.js';
 
 describe('heading', () => {
   afterEach(cleanup);
@@ -67,6 +67,23 @@ describe('heading', () => {
     });
 
     const headingElement = screen.getByRole('heading');
+    const classNames = ['gi-heading-xl'];
+
+    for (const className of classNames) {
+      expect(headingElement.classList.contains(className)).toBe(true);
+    }
+  });
+
+  it('should render extra large heading with h6 tag', () => {
+    const screen = renderHeading({
+      children: 'Heading Text',
+      size: 'xl',
+      as: 'h6',
+    });
+
+    const headingElement = screen.getByRole('heading');
+    expect(headingElement.tagName).toBe('H6');
+
     const classNames = ['gi-heading-xl'];
 
     for (const className of classNames) {
