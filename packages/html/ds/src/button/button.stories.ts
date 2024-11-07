@@ -97,7 +97,7 @@ export const AllVariants: Story = {
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular hover-selector">Primary Dark Hover</button>
       <button class="gi-btn gi-btn-primary-dark gi-btn-regular focus-selector">Primary Dark Focus</button>
-      <button class="gi-btn gi-btn-primary-dark gi-btn-regular gi-btn-primary-disabled">Primary Dark Disabled</button>
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular gi-btn-primary-dark-disabled">Primary Dark Disabled</button>
     </div>
     <div class="gi-flex gi-gap-4">
       <button class="gi-btn gi-btn-secondary-dark gi-btn-regular">Secondary Dark</button>
@@ -109,7 +109,7 @@ export const AllVariants: Story = {
       <button class="gi-btn gi-btn-flat-dark gi-btn-regular">Flat Dark</button>
       <button class="gi-btn gi-btn-flat-dark gi-btn-regular hover-selector">Flat Dark Hover</button>
       <button class="gi-btn gi-btn-flat-dark gi-btn-regular focus-selector">Flat Dark Focus</button>
-      <button class="gi-btn gi-btn-flat-dark gi-btn-regular gi-btn-primary-disabled">Flat Dark Disabled</button>
+      <button class="gi-btn gi-btn-regular gi-btn-flat-dark-disabled">Flat Dark Disabled</button>
     </div>
     <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
       <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
