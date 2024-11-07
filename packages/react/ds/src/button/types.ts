@@ -16,4 +16,5 @@ export type ButtonProps = {
   type?: ButtonType;
   form?: string;
   value?: string;
+  className?: string;
 };

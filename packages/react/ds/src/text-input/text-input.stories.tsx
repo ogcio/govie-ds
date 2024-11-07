@@ -111,6 +111,14 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    disabled: {
+      description: 'Disable input',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
+      },
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -229,5 +237,46 @@ export const DateInput: Story = {
       htmlFor: 'text-input-id',
     },
     type: 'date',
+  },
+};
+
+export const DisabledInput: Story = {
+  args: {
+    label: {
+      text: 'Disabled',
+      htmlFor: 'text-input-id',
+    },
+    id: 'text-input-id',
+    disabled: true,
+    value: 'This field is disabled',
+  },
+};
+
+export const AllStates: Story = {
+  render: () => (
+    <div className="gi-gap-4">
+      <TextInput
+        label={{ text: 'Default', htmlFor: 'default-input' }}
+        type="text"
+        id="default-input"
+      />
+      <TextInput
+        label={{ text: 'Focus', htmlFor: 'focus-input' }}
+        type="text"
+        id="focus-input"
+      />
+      <TextInput
+        label={{ text: 'Disabled', htmlFor: 'input-disabled' }}
+        value="This field is disabled"
+        type="text"
+        id="input-disabled"
+        disabled
+      />
+    </div>
+  ),
+  parameters: {
+    pseudo: {
+      focus: '#focus-input',
+    },
   },
 };

@@ -67,13 +67,14 @@
       {% endif %}
 
       <input
+        {% if props.disabled %}disabled{% endif %}
         id="{{ inputId }}"
         {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
         data-testid="textbox"
         {{ widthStyle | safe }}
         type="{{ props.type or 'text' }}"
         autocomplete="{{ props.autoComplete or 'on' }}"
-        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-text-input"
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-text-input "
       />
 
       {% if props.suffix %}

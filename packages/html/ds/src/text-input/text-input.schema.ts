@@ -67,6 +67,7 @@ export const textInputSchema = zod.object({
   placeholder: zod
     .string({ description: 'The placeholder for the input element' })
     .optional(),
+  disabled: zod.boolean({ description: 'Disabled state' }).optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;
