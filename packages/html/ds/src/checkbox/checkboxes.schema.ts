@@ -32,6 +32,11 @@ export const checkboxesSchema = zod.object({
         })
         .optional(),
       className: zod.string({ description: 'aditional classes' }).optional(),
+      disabled: zod
+        .boolean({
+          description: 'Disable state for item',
+        })
+        .optional(),
     })
     .describe(
       'Array of the checkboxes which include the label,value and hint properties',

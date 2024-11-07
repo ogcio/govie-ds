@@ -96,6 +96,9 @@ importers:
       storybook:
         specifier: 8.3.6
         version: 8.3.6
+      storybook-addon-pseudo-states:
+        specifier: ^4.0.2
+        version: 4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6)
       tailwindcss:
         specifier: 3.4.14
         version: 3.4.14
@@ -8519,6 +8522,11 @@ packages:
   stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
     engines: {node: '>= 0.4'}
+
+  storybook-addon-pseudo-states@4.0.2:
+    resolution: {integrity: sha512-dTHkeq4VzqIrJfR8k2BHkX190cQ+aYBZUktWNZpDw3N5tJ8IwaRLzf6ZjHDHY6xwDshaNiTO5UkziRE0Ytukkw==}
+    peerDependencies:
+      storybook: ^8.2.0
 
   storybook@8.3.6:
     resolution: {integrity: sha512-9GVbtej6ZzPRUM7KRQ7848506FfHrUiJGqPuIQdoSJd09EmuEoLjmLAgEOmrHBQKgGYMaM7Vh9GsTLim6vwZTQ==}
@@ -19071,6 +19079,14 @@ snapshots:
   stop-iteration-iterator@1.0.0:
     dependencies:
       internal-slot: 1.0.7
+
+  storybook-addon-pseudo-states@4.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6):
+    dependencies:
+      '@storybook/icons': 1.2.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      storybook: 8.3.6
+    transitivePeerDependencies:
+      - react
+      - react-dom
 
   storybook@8.3.6:
     dependencies:
