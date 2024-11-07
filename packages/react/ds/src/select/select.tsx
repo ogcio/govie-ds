@@ -36,21 +36,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       )}
       {hint && <HintText text={hint.text} size={hint.size} />}
       {error && <ErrorText text={error.text} size={error.size} />}
-      <select
-        className="
-          gi-focus-state-outline
-          gi-p-1.5
-          gi-border-black
-          gi-border-[3px]
-          gi-border-solid
-          gi-min-w-56
-          gi-font-primary 
-          xs:gi-text-sm
-          md:gi-text-md
-          lg:gi-text-lg"
-        id={id}
-        aria-label={ariaLabel}
-      >
+      <select className="gi-select" id={id} aria-label={ariaLabel}>
         {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;
           return isGroupOption ? (
@@ -61,7 +47,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
               {option.items.map((option, index) => (
                 <option
                   key={`option-${option.value}-${index}`}
-                  className="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+                  className="gi-select-option"
                   value={option.value}
                 >
                   {option.label}
@@ -71,7 +57,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
           ) : (
             <option
               key={`option-${option.value}-${index}`}
-              className="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              className="gi-select-option"
               value={option.value}
             >
               {option.label}

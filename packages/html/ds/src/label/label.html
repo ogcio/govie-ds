@@ -14,7 +14,7 @@
     {% if props.for %}
       for="{{ props.for }}"
     {% endif %}
-    class="{{ getSizeClass(props.size) | trim }} gi-mb-1 gi-block {{ addClasses(props.classNames) | trim }}"
+    class="{{ getSizeClass(props.size) | trim }} gi-label {{ addClasses(props.classNames) | trim }}"
     >{{ props.content | safe | trim }}</label
   >
 {% endmacro %}

@@ -21,7 +21,7 @@ describe('govieErrorText', () => {
       size: ErrorSize.sm,
     });
     const errorElement = screen.getByText('Small error message');
-    expect(errorElement.classList.contains('gi-text-sm')).toBe(true);
+    expect(errorElement.classList.contains('gi-error-text-sm')).toBe(true);
   });
 
   it('should render error text with "lg" size', () => {
@@ -30,7 +30,7 @@ describe('govieErrorText', () => {
       size: ErrorSize.lg,
     });
     const errorElement = screen.getByText('Large error message');
-    expect(errorElement.classList.contains('gi-text-lg')).toBe(true);
+    expect(errorElement.classList.contains('gi-error-text-lg')).toBe(true);
   });
 
   it('should pass axe accessibility tests', async () => {

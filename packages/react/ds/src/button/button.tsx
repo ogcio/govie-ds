@@ -1,4 +1,5 @@
 'use client';
+import { cn } from '../cn.js';
 import {
   isButtonDisabled,
   getSizeClass,
@@ -16,6 +17,7 @@ export const Button = ({
   type,
   form,
   value,
+  className,
 }: ButtonProps) => {
   return (
     <button
@@ -24,7 +26,13 @@ export const Button = ({
       value={value}
       data-testid={`govieButton-${appearance}-${variant}-${size}-${disabled ? 'disabled' : ''}`}
       onClick={onClick}
-      className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })}`}
+      className={cn(
+        'gi-btn',
+        getVariantAppearanceClass({ disabled, variant, appearance }),
+        getSizeClass(size),
+        isButtonDisabled({ disabled, variant, appearance }),
+        className,
+      )}
     >
       {children}
     </button>

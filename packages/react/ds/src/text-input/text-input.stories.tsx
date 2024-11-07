@@ -14,7 +14,7 @@ const meta = {
   component: TextInput,
   argTypes: {
     label: {
-      description: 'Label associated with the input field',
+      description: 'Label associated with the input.',
       control: 'object',
       table: {
         category: 'Label',
@@ -22,7 +22,7 @@ const meta = {
       },
     },
     hint: {
-      description: 'Hint text for additional guidance.',
+      description: 'Hint text for the input to provide additional information.',
       control: 'object',
       table: {
         category: 'Hint',
@@ -30,7 +30,8 @@ const meta = {
       },
     },
     error: {
-      description: 'Error message displayed during validation errors.',
+      description:
+        'Error message for the input, displayed when there is a validation error.',
       control: 'object',
       table: {
         category: 'Error',
@@ -38,7 +39,8 @@ const meta = {
       },
     },
     prefix: {
-      description: 'Element or text displayed before the input (e.g., a unit).',
+      description:
+        'Element or text to display on the left side of the input, such as a unit or symbol.',
       control: 'text',
       table: {
         category: 'Content',
@@ -46,7 +48,8 @@ const meta = {
       },
     },
     suffix: {
-      description: 'Element or text displayed after the input (e.g., a unit).',
+      description:
+        'Element or text to display on the right side of the input, such as a unit or symbol.',
       control: 'text',
       table: {
         category: 'Content',
@@ -54,7 +57,8 @@ const meta = {
       },
     },
     halfFluid: {
-      description: 'Sets the width to 50% of available space.',
+      description:
+        'When `true`, the input width is set to 50% of the available space.',
       control: 'boolean',
       table: {
         category: 'Width Control',
@@ -62,7 +66,8 @@ const meta = {
       },
     },
     fullFluid: {
-      description: 'Sets the width to 100% of available space.',
+      description:
+        'When `true`, the input width is set to 100% of the available space.',
       control: 'boolean',
       table: {
         category: 'Width Control',
@@ -70,7 +75,8 @@ const meta = {
       },
     },
     characterWidth: {
-      description: 'Controls the width in characters.',
+      description:
+        'Sets the width of the input in terms of the number of characters it can contain.',
       control: 'number',
       table: {
         category: 'Width Control',
@@ -103,6 +109,14 @@ const meta = {
       table: {
         category: 'Content',
         type: { summary: 'string' },
+      },
+    },
+    disabled: {
+      description: 'Disable input',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
       },
     },
   },
@@ -223,5 +237,46 @@ export const DateInput: Story = {
       htmlFor: 'text-input-id',
     },
     type: 'date',
+  },
+};
+
+export const DisabledInput: Story = {
+  args: {
+    label: {
+      text: 'Disabled',
+      htmlFor: 'text-input-id',
+    },
+    id: 'text-input-id',
+    disabled: true,
+    value: 'This field is disabled',
+  },
+};
+
+export const AllStates: Story = {
+  render: () => (
+    <div className="gi-gap-4">
+      <TextInput
+        label={{ text: 'Default', htmlFor: 'default-input' }}
+        type="text"
+        id="default-input"
+      />
+      <TextInput
+        label={{ text: 'Focus', htmlFor: 'focus-input' }}
+        type="text"
+        id="focus-input"
+      />
+      <TextInput
+        label={{ text: 'Disabled', htmlFor: 'input-disabled' }}
+        value="This field is disabled"
+        type="text"
+        id="input-disabled"
+        disabled
+      />
+    </div>
+  ),
+  parameters: {
+    pseudo: {
+      focus: '#focus-input',
+    },
   },
 };

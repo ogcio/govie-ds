@@ -15,6 +15,7 @@ export type CheckboxesGroupType = {
     value: string;
     label?: string;
     hint?: string;
+    disabled?: boolean;
   }[];
   title?: {
     value: string;
@@ -100,6 +101,7 @@ export const CheckboxesGroup = ({
               hint={checkbox.hint}
               value={checkbox.value}
               label={checkbox.label}
+              disabled={checkbox.disabled}
               checked={selectedValues.includes(checkbox.value)}
               onChange={() => handleCheckboxChange(checkbox.value)}
             />

@@ -17,6 +17,12 @@ const meta = {
   title: 'form/Button',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component:
+          'Button component to help users carry out an action like starting an application or saving their information.',
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -28,7 +34,7 @@ export const Default: Story = {
     content: {
       control: 'text',
       type: { name: 'string' },
-      description: 'the raw HTML that the button will accept',
+      description: 'the HTML that the button will accept',
     },
     variant: {
       control: 'radio',
@@ -68,24 +74,69 @@ export const Default: Story = {
 export const AllVariants: Story = {
   //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () => `
-    <div class="gi-flex gi-flex-col gi-gap-4">
-      <div class="gi-flex gi-gap-4">
-        <button class="gi-btn gi-btn-primary gi-btn-regular">Primary</button>
-        <button class="gi-btn gi-btn-secondary gi-btn-regular">Secondary</button>
-        <button class="gi-btn gi-btn-flat gi-btn-regular">Flat</button>
-      </div>
-      <div class="gi-flex gi-gap-4">
-        <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
-        <button class="gi-btn gi-btn-secondary-dark gi-btn-regular">Secondary Dark</button>
-        <button class="gi-btn gi-btn-flat-dark gi-btn-regular">Flat Dark</button>
-      </div>
-      <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-        <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
-        <button class="gi-btn gi-btn-secondary-light gi-btn-regular">Secondary Light</button>
-        <button class="gi-btn gi-btn-flat-light gi-btn-regular">Flat Light</button>
-      </div>
+  <div class="gi-flex gi-flex-col gi-gap-4">
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-primary gi-btn-regular">Primary</button>
+      <button class="gi-btn gi-btn-primary gi-btn-regular hover-selector">Primary Hover</button>
+      <button class="gi-btn gi-btn-primary gi-btn-regular focus-selector">Primary Focus</button>
+      <button class="gi-btn gi-btn-primary gi-btn-regular gi-btn-primary-disabled">Primary Disabled</button>
     </div>
-  `,
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-secondary gi-btn-regular">Secondary</button>
+      <button class="gi-btn gi-btn-secondary gi-btn-regular hover-selector">Secondary Hover</button>
+      <button class="gi-btn gi-btn-secondary gi-btn-regular focus-selector">Secondary Focus</button>
+      <button class="gi-btn gi-btn-secondary gi-btn-regular gi-btn-secondary-disabled">Secondary Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-flat gi-btn-regular">Flat</button>
+      <button class="gi-btn gi-btn-flat gi-btn-regular hover-selector">Flat Hover</button>
+      <button class="gi-btn gi-btn-flat gi-btn-regular focus-selector">Flat Focus</button>
+      <button class="gi-btn gi-btn-flat gi-btn-regular gi-btn-flat-disabled">Flat Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular hover-selector">Primary Dark Hover</button>
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular focus-selector">Primary Dark Focus</button>
+      <button class="gi-btn gi-btn-primary-dark gi-btn-regular gi-btn-primary-disabled">Primary Dark Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular">Secondary Dark</button>
+      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular hover-selector">Secondary Dark Hover</button>
+      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular focus-selector">Secondary Dark Focus</button>
+      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular gi-btn-primary-disabled">Secondary Dark Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4">
+      <button class="gi-btn gi-btn-flat-dark gi-btn-regular">Flat Dark</button>
+      <button class="gi-btn gi-btn-flat-dark gi-btn-regular hover-selector">Flat Dark Hover</button>
+      <button class="gi-btn gi-btn-flat-dark gi-btn-regular focus-selector">Flat Dark Focus</button>
+      <button class="gi-btn gi-btn-flat-dark gi-btn-regular gi-btn-primary-disabled">Flat Dark Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+      <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
+      <button class="gi-btn gi-btn-primary-light gi-btn-regular hover-selector">Primary Light Hover</button>
+      <button class="gi-btn gi-btn-primary-light gi-btn-regular focus-selector">Primary Light Focus</button>
+      <button class="gi-btn gi-btn-primary-light gi-btn-regular" disabled>Primary Light Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular">Secondary Light</button>
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular hover-selector">Secondary Light Hover</button>
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular focus-selector">Secondary Light Focus</button>
+      <button class="gi-btn gi-btn-secondary-light gi-btn-regular" disabled>Secondary Light Disabled</button>
+    </div>
+    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular">Flat Light</button>
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular hover-selector">Flat Light Hover</button>
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular focus-selector">Flat Light Focus</button>
+      <button class="gi-btn gi-btn-flat-light gi-btn-regular" disabled>Flat Light Disabled</button>
+    </div>
+  </div>
+`,
+  parameters: {
+    pseudo: {
+      hover: '.hover-selector',
+      focus: '.focus-selector',
+    },
+  },
 };
 
 export const WithLeftIcon: Story = {

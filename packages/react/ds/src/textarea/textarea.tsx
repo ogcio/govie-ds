@@ -62,7 +62,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     return (
       <div
-        className={`gi-pt-2 gi-mb-4 ${error?.text ? 'gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600' : ''}`}
+        className={`gi-textarea-layout-container ${error?.text && 'gi-error-state'}`}
       >
         {label?.text && (
           <Label
@@ -82,7 +82,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           <ErrorText text={error.text} size={error.size} id={errorId} />
         )}
 
-        <div className="gi-flex gi-items-center">
+        <div className="gi-textarea-container">
           <textarea
             id={id}
             rows={rows}

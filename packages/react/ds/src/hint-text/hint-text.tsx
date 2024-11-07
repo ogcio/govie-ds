@@ -24,22 +24,19 @@ export const HintText: React.FC<HintTextProps> = ({
   const sizeClass = (() => {
     switch (size) {
       case 'lg': {
-        return 'gi-text-lg gi-mb-2.5';
+        return 'gi-hint-text-lg';
       }
       case 'sm': {
-        return 'gi-text-sm gi-mb-1.5';
+        return 'gi-hint-text-sm';
       }
       default: {
-        return 'gi-text-md gi-mb-2';
+        return 'gi-hint-text-md';
       }
     }
   })();
 
   return (
-    <div
-      className={`${sizeClass} gi-font-normal gi-text-gray-700 ${className || ''}`}
-      {...props}
-    >
+    <div className={`${sizeClass} gi-hint-text ${className || ''}`} {...props}>
       {text}
     </div>
   );

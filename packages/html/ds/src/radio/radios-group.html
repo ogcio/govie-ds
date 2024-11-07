@@ -5,16 +5,18 @@
 {% from 'radio/radio.html' import govieRadio %}
 
 {% macro govieRadiosGroup(props) %}
-  {% set isInline = 'gi-flex-row gi-gap-4' if props.inline else 'gi-flex-col gi-gap-2.5' %}
+  {% set isInline = 'gi-radio-group-options-inline' if props.inline else 'gi-radio-group-options-stacked' %}
 
-  <div data-testid="govie-radios" data-module="gieds-radios" class="gi-flex">
+  <div
+    data-testid="govie-radios"
+    data-module="gieds-radios"
+    class="gi-radio-group-container"
+  >
     {% if props.errorMessage %}
-      <div
-        class="gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid"
-      ></div>
+      <div class="gi-radio-group-error"></div>
     {% endif %}
     <fieldset>
-      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+      <legend class="gi-radio-group-legend">
         {% if props.title.asHeading %}
           {{
             govieHeading({
@@ -40,7 +42,7 @@
       </legend>
       <div
         data-element="radio-container"
-        class="gi-flex gi-flex-col gi-gap-2.5"
+        class="gi-radio-group-options-container"
       >
         {% if props.errorMessage %}
           {{
@@ -50,7 +52,7 @@
             })
           }}
         {% endif %}
-        <div class="gi-flex {{ isInline }}">
+        <div class="{{ isInline }}">
           {% for radio in props['items'] %}
             {{
               govieRadio({
@@ -67,7 +69,7 @@
           {% endfor %}
           {% if props.dividerOption %}
             <p
-              class="{{ getRadioWidth(props.size) | trim }} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              class="{{ getRadioWidth(props.size) | trim }} gi-radio-group-options-divider-text"
             >
               or
             </p>

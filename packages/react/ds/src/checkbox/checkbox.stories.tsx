@@ -6,7 +6,8 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'use this checkbox text where it is appropiate',
+        component:
+          'Checkboxes component when you need to help users select multiple options from a list or toggle a single option on or off',
       },
     },
   },
@@ -21,7 +22,7 @@ export const Default: Story = {
     fieldId: {
       control: 'text',
       type: { name: 'string', required: true },
-      description: 'the unique value for the checboxes group',
+      description: 'the unique value for the checkboxes group',
     },
     items: {
       control: 'object',
@@ -105,6 +106,11 @@ export const Default: Story = {
       {
         label: 'Department for Transport',
         value: 'department-for-transport',
+      },
+      {
+        label: 'Others',
+        value: 'others',
+        disabled: true,
       },
     ],
     title: {
@@ -204,6 +210,65 @@ export const withNoneOption: Story = {
     noneOption: {
       label: 'No, I will not be travelling to any of these countries',
       value: 'no-travel',
+    },
+  },
+};
+
+export const AllStates: Story = {
+  args: {
+    fieldId: 'govie-field-ID',
+    items: [
+      {
+        label: '',
+        value: '',
+      },
+    ],
+  },
+  render: () => (
+    <div className="gi-flex gi-gap-4 gi-flex-col">
+      <CheckboxesGroup
+        items={[
+          {
+            label: 'Default',
+            value: 'default',
+          },
+        ]}
+        fieldId="default-checkbox"
+      />
+      <CheckboxesGroup
+        items={[
+          {
+            label: 'Hover',
+            value: 'hover',
+          },
+        ]}
+        fieldId="hover-checkbox"
+      />
+      <CheckboxesGroup
+        items={[
+          {
+            label: 'Focus',
+            value: 'focus',
+          },
+        ]}
+        fieldId="focus-checkbox"
+      />
+      <CheckboxesGroup
+        items={[
+          {
+            label: 'Disabled',
+            value: 'disabled',
+            disabled: true,
+          },
+        ]}
+        fieldId="disabled-checkbox"
+      />
+    </div>
+  ),
+  parameters: {
+    pseudo: {
+      hover: '#hover-checkbox-0',
+      focus: '#focus-checkbox-0',
     },
   },
 };

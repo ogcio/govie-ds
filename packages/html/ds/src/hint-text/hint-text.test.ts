@@ -26,7 +26,7 @@ describe('govieHintText', () => {
     });
     const hintElement = screen.getByText('This is small hint text');
     expect(hintElement).toBeTruthy();
-    expect(hintElement.classList.contains('gi-text-sm')).toBe(true);
+    expect(hintElement.classList.contains('gi-hint-text-sm')).toBe(true);
   });
 
   it('should render large hint text with the correct class', () => {
@@ -36,7 +36,7 @@ describe('govieHintText', () => {
     });
     const hintElement = screen.getByText('This is large hint text');
     expect(hintElement).toBeTruthy();
-    expect(hintElement.classList.contains('gi-text-lg')).toBe(true);
+    expect(hintElement.classList.contains('gi-hint-text-lg')).toBe(true);
   });
 
   it('should safely render HTML content within hint text', () => {

@@ -7,7 +7,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use the TextArea component when users need to enter longer or multiline text, such as comments or feedback. The `rows` and `cols` properties control the size of the textarea.',
+          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `error` can indicate validation errors.',
       },
     },
   },
@@ -72,6 +72,14 @@ const meta = {
       table: {
         category: 'Ref',
         type: { summary: 'React.Ref<HTMLTextAreaElement>' },
+      },
+    },
+    disabled: {
+      description: 'Disable textarea',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
       },
     },
   },
@@ -165,5 +173,46 @@ export const WithMaxChars: Story = {
       text: 'Hint: This is a helpful hint.',
     },
     maxChars: 100,
+  },
+};
+
+export const DisabledState: Story = {
+  args: {
+    id: 'textarea-id-5',
+    label: {
+      text: 'Label',
+      htmlFor: 'textarea-id-5',
+    },
+    hint: {
+      text: 'Hint: This is a helpful hint.',
+    },
+    disabled: true,
+    value: 'This field is disabled',
+  },
+};
+
+export const AllStates: Story = {
+  render: () => (
+    <div className="gi-gap-4">
+      <TextArea
+        label={{ text: 'Default', htmlFor: 'default-textarea' }}
+        id="default-textarea"
+      />
+      <TextArea
+        label={{ text: 'Focus', htmlFor: 'focus-textarea' }}
+        id="focus-textarea"
+      />
+      <TextArea
+        label={{ text: 'Disabled', htmlFor: 'textarea-disabled' }}
+        id="textarea-disabled"
+        value="This field is disabled"
+        disabled
+      />
+    </div>
+  ),
+  parameters: {
+    pseudo: {
+      focus: '#focus-textarea',
+    },
   },
 };

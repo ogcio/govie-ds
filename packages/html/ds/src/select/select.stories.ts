@@ -15,6 +15,12 @@ const meta = {
   title: 'form/Select',
   parameters: {
     macro,
+    docs: {
+      description: {
+        component:
+          'A select that component allows users to choose an option from a long list.',
+      },
+    },
   },
 } satisfies Meta<typeof Select>;
 

@@ -21,6 +21,31 @@ const meta = {
   },
   component: TextInput,
   argTypes: {
+    label: {
+      description: 'Label associated with the input.',
+      control: 'object',
+      table: {
+        category: 'Label',
+        type: { summary: 'Label' },
+      },
+    },
+    hint: {
+      description: 'Hint text for the input to provide additional information.',
+      control: 'object',
+      table: {
+        category: 'Hint',
+        type: { summary: 'HintText' },
+      },
+    },
+    error: {
+      description:
+        'Error message for the input, displayed when there is a validation error.',
+      control: 'object',
+      table: {
+        category: 'Error',
+        type: { summary: 'ErrorText' },
+      },
+    },
     prefix: {
       description:
         'Element or text to display on the left side of the input, such as a unit or symbol.',
@@ -80,31 +105,6 @@ const meta = {
         defaultValue: { summary: 'input-id' },
       },
     },
-    label: {
-      description: 'Label associated with the input',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-    hint: {
-      description: 'Hint text for the input to provide additional information.',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    error: {
-      description:
-        'Error message for the input, displayed when there is a validation error.',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
     type: {
       control: 'select',
       options: Object.values(InputTypeEnum),
@@ -114,6 +114,14 @@ const meta = {
         category: 'Content',
         type: { summary: 'string' },
         defaultValue: { summary: '-' },
+      },
+    },
+    disabled: {
+      description: 'Disable input',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
       },
     },
   },
@@ -139,7 +147,52 @@ export const Default: Story = {
   },
 };
 
-export const WithSuffix: Story = {
+export const WithLabelAndHint: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'label-hint-input',
+    },
+    hint: {
+      content: 'Hint',
+    },
+    fullFluid: true,
+    id: 'label-hint-input',
+  },
+};
+
+export const WithLabelAndError: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'label-hint-input',
+    },
+    error: {
+      content: 'Error: Please correct this issue.',
+    },
+    fullFluid: true,
+    id: 'label-hint-input',
+  },
+};
+
+export const WithLabelHintAndError: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'error-input',
+    },
+    hint: {
+      content: 'Hint',
+    },
+    error: {
+      content: 'Error',
+    },
+    fullFluid: true,
+    id: 'error-input',
+  },
+};
+
+export const WithLabelAndPrefixSuffix: Story = {
   args: {
     label: {
       content: 'Label',
@@ -163,6 +216,17 @@ export const HalfFluid: Story = {
   },
 };
 
+export const FullFluid: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'full-width-input',
+    },
+    fullFluid: true,
+    id: 'full-fluid-input',
+  },
+};
+
 export const CharacterWidth: Story = {
   args: {
     label: {
@@ -174,48 +238,6 @@ export const CharacterWidth: Story = {
   },
 };
 
-export const WithLabel: Story = {
-  args: {
-    label: {
-      content: 'Label',
-      for: 'label-input',
-    },
-    fullFluid: true,
-    id: 'label-input',
-  },
-};
-
-export const WithLabelAndHint: Story = {
-  args: {
-    label: {
-      content: 'Label',
-      for: 'label-hint-input',
-    },
-    hint: {
-      content: 'Hint',
-    },
-    fullFluid: true,
-    id: 'label-hint-input',
-  },
-};
-
-export const WithLabelHintAndErrorText: Story = {
-  args: {
-    label: {
-      content: 'Label',
-      for: 'error-input',
-    },
-    hint: {
-      content: 'Hint',
-    },
-    error: {
-      content: 'Error',
-    },
-    fullFluid: true,
-    id: 'error-input',
-  },
-};
-
 export const DateInput: Story = {
   args: {
     label: {
@@ -224,5 +246,66 @@ export const DateInput: Story = {
     },
     id: 'text-input-id',
     type: InputTypeEnum.Date,
+  },
+};
+
+export const DisabledInput: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'text-input-id',
+    },
+    id: 'text-input-id',
+    type: InputTypeEnum.Text,
+    disabled: true,
+  },
+};
+
+export const AllStates: Story = {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () => `
+  <div class="gi-gap-4">
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="default-input">Default</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="default-input"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input"
+      />
+    </div>
+  </div>
+
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="focus-input">Focus</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="focus-input"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input pseudo-focus"
+      />
+    </div>
+  </div>
+
+  <div class="gi-text-input-container">
+    <label class="gi-text-md gi-label gi-mb-2" for="input-disabled">Disabled</label>
+    <div class="gi-text-input-container-inner">
+      <input
+        id="input-disabled"
+        type="text"
+        data-testid="textbox"
+        class="gi-border-gray-950 gi-w-full gi-text-input gi-text-input-disabled"
+        disabled
+      />
+    </div>
+  </div>
+</div>
+`,
+  parameters: {
+    pseudo: {
+      focus: '#focus-input',
+    },
   },
 };

@@ -43,25 +43,19 @@
     <select
       id="{{ props.id }}"
       aria-label="{{ ariaLabel }}"
-      class="gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg {{ marginTop }}"
+      class="gi-select {{ marginTop }}"
     >
       {% for option in props.options %}
         {% if option.groupName %}
           <optgroup label="{{ option.groupName }}">
             {% for option in option.items %}
-              <option
-                class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-                value="{{ option.value }}"
-              >
+              <option class="gi-select-option" value="{{ option.value }}">
                 {{ option.label }}
               </option>
             {% endfor %}
           </optgroup>
         {% else %}
-          <option
-            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            value="{{ option.value }}"
-          >
+          <option class="gi-select-option" value="{{ option.value }}">
             {{ option.label }}
           </option>
         {% endif %}

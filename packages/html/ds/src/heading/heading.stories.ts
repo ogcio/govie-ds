@@ -30,11 +30,17 @@ export const Default: Story = {
   argTypes: {
     size: {
       options: Object.values(Size),
+      description: 'Options for sizes',
       control: { type: 'radio' },
     },
     as: {
       options: Object.values(Tag),
+      description: 'Option for the Heading tag',
       control: { type: 'radio' },
+    },
+    caption: {
+      control: 'text',
+      description: 'Caption for the heading',
     },
   },
 };
