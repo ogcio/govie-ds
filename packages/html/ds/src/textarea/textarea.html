@@ -64,6 +64,7 @@
         cols="{{ props.cols or 100 }}"
         maxlength="{{ props.maxChars }}"
         autocomplete="{{ props.autoComplete or 'on' }}"
+        {% if props.disabled %}disabled{% endif %}
         class="{% if isError %}gi-textarea-error{% else %}gi-textarea{% endif %} {{ widthClass }} "
       ></textarea>
     </div>

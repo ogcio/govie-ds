@@ -6,6 +6,7 @@
   <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
     <input
       {% if props.label %}name="{{ props.label }}"{% endif %}
+      {% if props.disabled %}disabled{% endif %}
       data-element="{{ props.dataElement }}"
       id="{{ props.checkboxId }}"
       value="{{ props.value }}"

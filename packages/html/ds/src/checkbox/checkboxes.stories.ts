@@ -118,6 +118,11 @@ export const Default: Story = {
         label: 'Department for Transport',
         value: 'department-for-transport',
       },
+      {
+        label: 'Others',
+        value: 'others',
+        disabled: true,
+      },
     ],
     title: {
       value: 'Organisation',
@@ -218,4 +223,79 @@ export const withNoneOption: Story = {
       value: 'no-travel',
     },
   },
+};
+
+export const AllStates: Story = {
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () =>
+    `<div class="gi-flex gi-gap-4 gi-flex-col">
+      <div class="gi-checkbox-group-checkboxes-container">
+        <div class="gi-checkbox-container">
+          <input
+            name="Default"
+            data-element="checkbox0"
+            id="default-checkbox-0"
+            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
+            type="checkbox"
+            value="default"
+          />
+          <label for="default-checkbox-0" class="gi-checkbox-label">Default</label>
+        </div>
+    </div>
+    <div class="gi-checkbox-group-container">
+      <fieldset>
+        <div class="gi-checkbox-group-checkboxes-container">
+          <div class="gi-checkbox-container">
+            <input
+              name="Hover"
+              data-element="checkbox0"
+              id="hover-checkbox-0"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input pseudo-hover"
+              type="checkbox"
+              value="hover"
+            />
+            <label for="hover-checkbox-0" class="gi-checkbox-label">Hover</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  
+    <div class="gi-checkbox-group-container">
+      <fieldset>
+        <div class="gi-checkbox-group-checkboxes-container">
+          <div class="gi-checkbox-container">
+            <input
+              name="Focus"
+              data-element="checkbox0"
+              id="focus-checkbox-0"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input pseudo-focus"
+              type="checkbox"
+              value="focus"
+            />
+            <label for="focus-checkbox-0" class="gi-checkbox-label">Focus</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  
+    <div class="gi-checkbox-group-container">
+      <fieldset>
+        <div class="gi-checkbox-group-checkboxes-container">
+          <div class="gi-checkbox-container">
+            <input
+              name="Disabled"
+              data-element="checkbox0"
+              id="disabled-checkbox-0"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
+              disabled
+              type="checkbox"
+              value="disabled"
+            />
+            <label for="disabled-checkbox-0" class="gi-checkbox-label">Disabled</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  `,
 };
