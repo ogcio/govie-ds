@@ -2,6 +2,10 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
 const headingVariants = tv({
+  slots: {
+    text: 'gi-text-gray-500',
+    base: '',
+  },
   variants: {
     size: {
       xl: 'gi-heading-xl',
@@ -33,14 +37,15 @@ type HeadingProps = VariantProps<typeof headingVariants> & {
 
 function Heading({ as, size, children, caption, className }: HeadingProps) {
   const Slot = as || 'h1';
+  const { text, base } = headingVariants({ as, size });
   return (
     <>
       {caption && (
-        <span className="gi-text-gray-500" data-testid="govie-heading-caption">
+        <span className={cn(text())} data-testid="govie-heading-caption">
           {caption}
         </span>
       )}
-      <Slot className={cn(headingVariants({ as, size }), className)}>
+      <Slot className={cn(base(), className)}>
         {children}
       </Slot>
     </>
