@@ -454,17 +454,11 @@ input[type='text'] {
 }
 
 .gi-tab-item {
-  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md 
-  gi-underline gi-text-gray-950 hover:gi-bg-gray-200 focus:gi-bg-gray-200
-  gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-border-transparent;
+  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md gi-underline gi-text-gray-950 hover:gi-bg-gray-200 focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-border-transparent;
 }
 
 .gi-tab-item-checked {
-  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-[1px]
-   gi-border-b-transparent gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline
-   focus:gi-shadow-[inset_0_0_0_1px] 
-   focus:gi-border-[1px]
-   focus:gi-border-gray-950;
+  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-[1px] gi-border-b-transparent gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-[1px] focus:gi-border-gray-950;
 }
 
 .gi-tab-item:hover > * {
