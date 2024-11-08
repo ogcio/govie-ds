@@ -6,6 +6,7 @@ export type ComponentStatus =
   | 'stable'
   | 'under-review' // default status for HTML components
   | 'considering' // default status for Figma and React components
+  | 'not-available'
   | 'deprecated';
 
 export type ComponentPlatformId = 'figma' | 'local' | 'global' | 'react';
@@ -1184,7 +1185,7 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
-      id: 'Tooltip',
+      id: 'tooltip',
       name: 'Tooltip',
       statuses: [
         {
@@ -1205,6 +1206,32 @@ export function getComponents(): ComponentDetail[] {
             id: 'react',
           },
           status: 'considering',
+        },
+      ],
+    },
+    {
+      id: 'spinner',
+      name: 'Spinner',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'not-available',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/indicators-spinner--docs',
+          },
+          status: 'beta',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/indicators-spinner--docs',
+          },
+          status: 'beta',
         },
       ],
     },
