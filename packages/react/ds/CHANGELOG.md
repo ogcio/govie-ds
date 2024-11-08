@@ -39,6 +39,20 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.21.0](https://github.com/ogcio/govie-ds/compare/react-v0.20.1...react-v0.21.0) (2024-11-08)
+
+
+### Features
+
+* add spinner component ([#317](https://github.com/ogcio/govie-ds/issues/317)) ([8f68d8f](https://github.com/ogcio/govie-ds/commit/8f68d8f8512dcd12e13c5249a960e3c2981630d3))
+* sync sb sync classes ([#315](https://github.com/ogcio/govie-ds/issues/315)) ([efa41df](https://github.com/ogcio/govie-ds/commit/efa41dfaa7419a81e9f18f5fb7220da350cec1c3))
+* use variants for heading ([#311](https://github.com/ogcio/govie-ds/issues/311)) ([0a3914a](https://github.com/ogcio/govie-ds/commit/0a3914a7e450d9dadef4ca60da36b8b165031a1d))
+
+
+### Bug Fixes
+
+* height overflows on header ([#319](https://github.com/ogcio/govie-ds/issues/319)) ([7fd55c4](https://github.com/ogcio/govie-ds/commit/7fd55c4b1bc687a115b33db54490622a9438b82a))
+
 ## [0.20.1](https://github.com/ogcio/govie-ds/compare/react-v0.20.0...react-v0.20.1) (2024-11-04)
 
 
