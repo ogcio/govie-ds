@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
+import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
-import { Breakpoint, useBreakpoint } from '../hooks/useBreakpoint.js';
 
 export type PaginationProps = {
   currentPage: number;
@@ -26,15 +26,25 @@ const calculateDisplayedPages = (
 ): (number | -1 | -2)[] => {
   const displayedPages: (number | -1 | -2)[] = [];
 
-  if (currentPage > 3) displayedPages.push(1);
-  if (currentPage > 4) displayedPages.push(-1);
-
-  for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-    if (i >= 1 && i <= totalPages) displayedPages.push(i);
+  if (currentPage > 3) {
+    displayedPages.push(1);
+  }
+  if (currentPage > 4) {
+    displayedPages.push(-1);
   }
 
-  if (currentPage < totalPages - 3) displayedPages.push(-2);
-  if (currentPage < totalPages - 2) displayedPages.push(totalPages);
+  for (let index = currentPage - 2; index <= currentPage + 2; index++) {
+    if (index >= 1 && index <= totalPages) {
+      displayedPages.push(index);
+    }
+  }
+
+  if (currentPage < totalPages - 3) {
+    displayedPages.push(-2);
+  }
+  if (currentPage < totalPages - 2) {
+    displayedPages.push(totalPages);
+  }
 
   return displayedPages;
 };
