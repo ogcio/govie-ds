@@ -41,12 +41,13 @@ export const Radio = ({
   label,
   value,
   hint,
-  radioId,
+  id,
   size,
   conditionalInput,
   checked,
   onChange,
 }: RadioProps) => {
+  const radioId = id ?? value;
   return (
     <div className="gi-radio-container">
       <div className="gi-radio-input-container">
@@ -66,7 +67,7 @@ export const Radio = ({
       {(hint || conditionalInput) && (
         <div className="gi-radio-conditional-divider-container">
           <div
-            className={`${addConditionalDivider(checked, conditionalInput)} ${getRadioWidth(size)}`}
+            className={`${addConditionalDivider((checked = false), conditionalInput)} ${getRadioWidth(size)}`}
           >
             <div
               className={`gi-radio-conditional-divider-border-container ${getRadioWidth(size)}`}

@@ -4,22 +4,26 @@
 
 {% macro govieRadio(props) %}
   {% set hasConditionalInput = true if props.conditionalInput %}
+  {% set radioId = props.radioId or props.id or props.value %}
 
   <div class="gi-radio-container">
     <div class="gi-radio-input-container">
       <input
-        name="{{ props.name }}"
-        data-has-conditional-input="{{ hasConditionalInput }}"
+        {% if props.checked %}checked="{{ props.checked }}"{% endif %}
+        {% if props.name %}name="{{ props.name }}"{% endif %}
+        {% if props.conditionalInput %}data-has-conditional-input="{{ hasConditionalInput }}"{% endif %}
         data-primary="true"
-        data-element="{{ props.dataElement }}"
-        id="{{ props.radioId }}"
+        {% if props.dataElement %}data-element="{{ props.dataElement }}"{% endif %}
+        id="{{ radioId }}"
         value="{{ props.value }}"
         class="{{ getRadioSize(props.size) | trim }} gi-radio-base"
         type="radio"
       />
-      <label for="{{ props.radioId }}" class="gi-radio-label">
-        {{ props.label }}
-      </label>
+      {% if props.label %}
+        <label for="{{ radioId }}" class="gi-radio-label">
+          {{ props.label }}
+        </label>
+      {% endif %}
     </div>
     {% if props.hint or props.conditionalInput %}
       <div class="gi-radio-conditional-divider-container">

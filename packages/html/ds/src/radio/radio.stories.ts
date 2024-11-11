@@ -1,254 +1,94 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Size, Tag } from '../heading/heading.schema';
 import { renderComponent } from '../storybook/storybook';
-import { InputTypeEnum } from '../text-input/text-input.schema';
-import type { RadiosProps } from './radio.schema';
-import html from './radios-group.html?raw';
+import html from './radio.html?raw';
+import type { RadioProps } from './radio.schema';
 
 // Name of the folder the macro resides
 const path = import.meta.url.split('/radio')[0];
 
-const macro = { name: 'govieRadiosGroup', html, path };
+const macro = { name: 'govieRadio', html, path };
 
-const Radios = renderComponent<RadiosProps>(macro);
-
-const standardProps = {
-  fieldId: 'uniqueId',
-  title: {
-    value: 'Where do you live?',
-    asHeading: {
-      size: Size.Medium,
-      as: Tag.H2,
-    },
-  },
-  items: [
-    {
-      label: 'England',
-      value: 'england',
-    },
-    {
-      label: 'Scotland',
-      value: 'scotland',
-    },
-    {
-      label: 'Ireland',
-      value: 'ireland',
-    },
-  ],
-};
+const Radio = renderComponent<RadioProps>(macro);
 
 const meta = {
-  component: Radios,
-  title: 'form/Radios',
+  component: Radio,
+  title: 'form/Radio/Radio',
   parameters: {
     macro,
     docs: {
       description: {
-        component:
-          'Radio component when users can only select one option from a list.',
+        component: 'Radio component',
       },
     },
   },
-} satisfies Meta<typeof Radios>;
+} satisfies Meta<typeof Radio>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    fieldId: {
+    value: {
       control: 'text',
-      type: { name: 'string', required: true },
-      description: 'The unique value for the radios group',
+      type: 'string',
+      description: 'The value of the Component',
     },
-    items: {
-      control: 'object',
-      type: {
-        name: 'object',
-        required: true,
-        value: {
-          label: {
-            name: 'string',
-          },
-          value: {
-            name: 'string',
-            required: true,
-          },
-          hint: {
-            name: 'string',
-          },
-          conditionalInput: {
-            name: 'other',
-            value:
-              'Conditional input associated with the radio (see text input component)',
-          },
-        },
-      },
+    name: {
+      control: 'text',
+      type: 'string',
+      description: 'Name attribute of the input element',
+    },
+    label: {
+      control: 'text',
+      type: 'string',
+      description: 'The label associated with the Radio',
+    },
+    hint: {
+      control: 'text',
+      type: 'string',
       description:
-        'A list of the label, values, hint and conditional for the radios',
+        'Additional text to inform the user about the Radio component',
     },
-    inline: {
-      control: 'boolean',
-      description: 'Specify if the radios should be inline',
-    },
-    errorMessage: {
+    id: {
       control: 'text',
-      type: { name: 'string' },
-      description: 'The text of the error message',
-    },
-    title: {
-      control: 'object',
-      type: {
-        name: 'object',
-        value: {
-          value: {
-            name: 'string',
-          },
-          asHeading: {
-            name: 'boolean',
-          },
-          hint: {
-            name: 'string',
-          },
-        },
-      },
-      description: 'The label, hint and option the make the title a heading',
+      type: 'string',
+      description: 'The id of the Radio',
     },
     size: {
       control: 'radio',
       options: ['lg', 'md', 'sm'],
-      description: 'The sizes of the checkboxes',
+      description: 'The sizes for the Radio',
+    },
+
+    checked: {
+      control: 'boolean',
+      description: 'if true the component is checked',
     },
   },
   args: {
-    ...standardProps,
-    fieldId: 'UniqueId1',
+    value: 'radio-value',
+    label: 'Radio',
   },
 };
 
-export const inline: Story = {
+export const withHint: Story = {
   args: {
-    ...standardProps,
-    fieldId: 'UniqueId2',
-    inline: true,
+    value: 'radio-with-hint',
+    label: 'With hint',
+    hint: 'This is a hint',
   },
 };
 
-export const withTitleHint: Story = {
+export const withDefaultChecked: Story = {
   args: {
-    ...standardProps,
-    title: {
-      value: 'Where do you live?',
-      hint: 'Specify the location where you live',
-      asHeading: {
-        size: Size.Medium,
-        as: Tag.H2,
-      },
-    },
-    fieldId: 'UniqueId3',
+    value: 'radio-with-default-checked',
+    label: 'Default checked',
+    checked: true,
   },
 };
 
-export const withOptionHints: Story = {
+export const withoutLabel: Story = {
   args: {
-    title: {
-      value: 'Have you changed your name?',
-      hint: 'This includes changing your last name or spelling your name differently.',
-      asHeading: {
-        size: Size.Medium,
-        as: Tag.H2,
-      },
-    },
-    items: [
-      {
-        label: 'Yes',
-        value: 'no',
-        hint: 'Yes, I have changed my name',
-      },
-      {
-        label: 'No',
-        value: 'no',
-        hint: "No, I didn't change my name",
-      },
-    ],
-    fieldId: 'UniqueId4',
-  },
-};
-
-export const withDividerOption: Story = {
-  args: {
-    ...standardProps,
-    dividerOption: {
-      label: 'None of the above',
-      value: 'none of the above',
-    },
-    fieldId: 'UniqueId5',
-  },
-};
-
-export const withError: Story = {
-  args: {
-    ...standardProps,
-    errorMessage: 'Please select an option',
-    fieldId: 'UniqueId6',
-  },
-};
-
-export const withConditionalInput: Story = {
-  args: {
-    title: {
-      value: 'How would you prefer to be contacted?',
-      asHeading: {
-        size: Size.Medium,
-        as: Tag.H2,
-      },
-    },
-    items: [
-      {
-        label: 'Email',
-        value: 'email',
-        conditionalInput: {
-          id: 'input-id-email',
-          label: {
-            content: 'Email address',
-            for: 'input-id-email',
-          },
-          type: InputTypeEnum.Email,
-        },
-      },
-      {
-        label: 'Phone',
-        value: 'phone',
-        conditionalInput: {
-          id: 'input-id-phone',
-          label: {
-            content: 'Phone number',
-            for: 'input-id-phone',
-          },
-          type: InputTypeEnum.Tel,
-        },
-      },
-    ],
-    fieldId: 'UniqueId7',
-  },
-};
-
-export const withNoTitle: Story = {
-  args: {
-    fieldId: 'uniqueId8',
-    items: [
-      {
-        label: 'England',
-        value: 'england',
-      },
-      {
-        label: 'Scotland',
-        value: 'scotland',
-      },
-      {
-        label: 'Ireland',
-        value: 'ireland',
-      },
-    ],
+    value: 'radio-without-label',
   },
 };

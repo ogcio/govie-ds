@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
@@ -7,18 +7,28 @@ import { Radio, getRadioWidth } from './radio.js';
 import type { RadiosGroupType } from './types.js';
 
 export const RadiosGroup = ({
-  fieldId,
+  groupId,
   items,
   inline,
   size,
   errorMessage,
   dividerOption,
   title,
+  onChange,
 }: RadiosGroupType) => {
   const [value, setValue] = useState<null | string>(null);
 
+  useEffect(() => {
+    for (const radio of items) {
+      if (radio.checked) {
+        setValue(radio.value);
+      }
+    }
+  }, []);
+
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
+    onChange && onChange(event);
   };
 
   return (
@@ -59,11 +69,11 @@ export const RadiosGroup = ({
                 key={`${value}-${index}`}
                 checked={value === radio.value}
                 onChange={onOptionChange}
-                name={fieldId}
+                name={groupId}
                 label={radio.label}
                 value={radio.value}
                 hint={radio.hint}
-                radioId={`${fieldId}-${index}`}
+                id={`${groupId}-${index}`}
                 size={size}
                 conditionalInput={radio.conditionalInput}
               />
@@ -80,11 +90,11 @@ export const RadiosGroup = ({
                 <Radio
                   checked={value === dividerOption.value}
                   onChange={onOptionChange}
-                  name={fieldId}
+                  name={groupId}
                   label={dividerOption.label}
                   value={dividerOption.value}
                   hint={dividerOption.hint}
-                  radioId={`${fieldId}-${items.length}`}
+                  id={`${groupId}-${items.length}`}
                   size={size}
                   conditionalInput={dividerOption.conditionalInput}
                 />
