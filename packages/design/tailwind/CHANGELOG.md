@@ -15,6 +15,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.17.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.16.1...tailwind-v0.17.0) (2024-11-08)
+
+
+### Features
+
+* add spinner component ([#317](https://github.com/ogcio/govie-ds/issues/317)) ([8f68d8f](https://github.com/ogcio/govie-ds/commit/8f68d8f8512dcd12e13c5249a960e3c2981630d3))
+* sync sb sync classes ([#315](https://github.com/ogcio/govie-ds/issues/315)) ([efa41df](https://github.com/ogcio/govie-ds/commit/efa41dfaa7419a81e9f18f5fb7220da350cec1c3))
+
 ## [0.16.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.16.0...tailwind-v0.16.1) (2024-11-04)
 
 

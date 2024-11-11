@@ -36,6 +36,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.29.0](https://github.com/ogcio/govie-ds/compare/docs-v0.28.1...docs-v0.29.0) (2024-11-08)
+
+
+### Features
+
+* add spinner component ([#317](https://github.com/ogcio/govie-ds/issues/317)) ([8f68d8f](https://github.com/ogcio/govie-ds/commit/8f68d8f8512dcd12e13c5249a960e3c2981630d3))
+* use variants for heading ([#311](https://github.com/ogcio/govie-ds/issues/311)) ([0a3914a](https://github.com/ogcio/govie-ds/commit/0a3914a7e450d9dadef4ca60da36b8b165031a1d))
+
 ## [0.28.1](https://github.com/ogcio/govie-ds/compare/docs-v0.28.0...docs-v0.28.1) (2024-11-04)
 
 
