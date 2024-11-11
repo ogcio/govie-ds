@@ -31,7 +31,7 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
           text={label.text}
           htmlFor={id}
           size={label.size}
-          className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+          className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
         />
       )}
       {hint?.text && <HintText text={hint.text} size={hint.size} />}

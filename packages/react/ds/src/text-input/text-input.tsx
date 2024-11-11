@@ -72,7 +72,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             text={label.text}
             size={label.size}
             htmlFor={id}
-            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
           />
         )}
 
