@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 
 export enum Breakpoint {
@@ -17,17 +18,19 @@ const getBreakpoint = (width: number): Breakpoint => {
 };
 
 export const useBreakpoint = (): Breakpoint => {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>(
-    getBreakpoint(window.innerWidth),
-  );
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>(Breakpoint.XS);
 
   useEffect(() => {
-    const handleResize = () => {
-      setBreakpoint(getBreakpoint(window.innerWidth));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setBreakpoint(getBreakpoint(window.innerWidth));
+      };
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   return breakpoint;

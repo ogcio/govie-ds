@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
 import { Icon } from '../icon/icon.js';
@@ -38,7 +39,7 @@ const calculateDisplayedPages = (
   return displayedPages;
 };
 
-const Pagination: React.FC<PaginationProps> = ({
+export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
@@ -115,5 +116,3 @@ const Pagination: React.FC<PaginationProps> = ({
     </div>
   );
 };
-
-export default Pagination;
