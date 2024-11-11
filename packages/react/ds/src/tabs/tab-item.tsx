@@ -49,17 +49,19 @@ export const TabItem = ({
       onClick={(event) => {
         onTabClick(index);
         onTabSelected(event);
+        buttonRef.current?.blur();
       }}
       onKeyDown={(event) => {
         onTabKeyDown(event);
       }}
     >
-      {href && (
+      {href ? (
         <a href={href} className="gi-decoration-xs">
           {children}
         </a>
+      ) : (
+        <span className="gi-decoration-xs">{children}</span>
       )}
-      {!href && <span className="gi-decoration-xs">{children}</span>}
     </button>
   );
 };

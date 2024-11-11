@@ -56,10 +56,10 @@ input[type='text'] {
 
 /* Select */
 .gi-select {
-  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
+  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md;
 }
 .gi-select-option {
-  @apply gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
+  @apply gi-font-primary xs:gi-text-sm md:gi-text-md;
 }
 
 /* End of Select */
@@ -175,7 +175,7 @@ input[type='text'] {
 /* Label */
 
 .gi-label {
-  @apply gi-mb-1 gi-block;
+  @apply gi-block;
 }
 
 /* End of Label */

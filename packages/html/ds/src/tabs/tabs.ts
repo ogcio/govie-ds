@@ -39,7 +39,6 @@ class TabsAutomatic {
       ) as HTMLElement;
 
       if (tabpanel) {
-        tab.tabIndex = -1;
         tab.setAttribute('aria-selected', 'false');
         this.tabPanels.push(tabpanel);
 
@@ -48,7 +47,7 @@ class TabsAutomatic {
       }
     }
 
-    this.setSelectedTab(this.firstTab, false);
+    this.setSelectedTab(this.firstTab);
   }
 
   initComponent() {
@@ -65,24 +64,16 @@ class TabsAutomatic {
     }
   }
 
-  setSelectedTab(currentTab: HTMLInputElement, setFocus = true) {
-    if (typeof setFocus !== 'boolean') {
-      setFocus = true;
-    }
-
+  setSelectedTab(currentTab: HTMLInputElement) {
     for (let index = 0; index < this.tabs.length; index += 1) {
       const tab = this.tabs[index];
       if (currentTab === tab) {
         tab.setAttribute('aria-selected', 'true');
-        tab.removeAttribute('tabindex');
         tab.classList.add('gi-tab-item-checked');
         this.tabPanels[index].classList.add('!gi-block');
-        if (setFocus) {
-          tab.focus();
-        }
+        tab.blur();
       } else {
         tab.setAttribute('aria-selected', 'false');
-        tab.tabIndex = -1;
         tab.classList.remove('gi-tab-item-checked');
         this.tabPanels[index].classList.remove('!gi-block');
       }
