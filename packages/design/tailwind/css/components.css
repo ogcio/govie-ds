@@ -820,3 +820,5 @@ input[type='file' i] {
 .gi-alert-danger {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
+
+/* End of Pagination */
