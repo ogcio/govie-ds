@@ -1,5 +1,13 @@
 import { render, fireEvent, cleanup } from '../test-utils.js';
 import { Pagination, PaginationProps } from './pagination.js';
+<<<<<<< HEAD
+=======
+
+vi.mock('../hooks/use-breakpoint.js');
+
+const mockUseBreakpoint = vi.mocked(useBreakpoint);
+
+>>>>>>> 13749f3 (feat: update test and add minor comment to component css)
 const standardProps = {
   currentPage: 5,
   totalPages: 10,
