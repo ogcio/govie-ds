@@ -5,7 +5,7 @@
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
   {% set inputId = props.id or 'file-upload-id' %}
-  {% set marginBottom = '' %}
+  {% set marginBottom = 'gi-mb-1' %}
   {% if not isError and not isHint %}
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
