@@ -1,6 +1,6 @@
 {% macro getIcon(variant) %}
-  {% if variant == 'danger' or variant == 'warning' %}
-    error
+  {% if variant == 'danger' %}
+    warning
   {% elif variant == 'success' %}
     check_circle
   {% else %}

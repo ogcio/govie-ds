@@ -1,30 +1,36 @@
 {% from 'helpers/helpers.html' import addClasses %}
 {% from 'alert/helpers.html' import getIcon, getVariant %}
 {% from 'icon/icon.html' import govieIcon %}
-{% from 'heading/heading.html' import govieHeading %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
 
 {% macro govieAlert(props) %}
   {% set icon = getIcon(props.variant) %}
   <div
     data-module="gieds-alert"
-    class="gi-alert {{ getVariant(props.variant) | trim }} {{ addClasses(props.className) | trim }}"
+    class="gi-alert-base {{ getVariant(props.variant) | trim }} {{ addClasses(props.className) | trim }}"
     role="alert"
   >
+    {{
+      govieIcon({
+      "size": "lg",
+      "icon": icon
+      })
+    }}
     <div class="gi-alert-container">
-      {{
-        govieIcon({
-        "size": "lg",
-        "icon": icon
-        })
-      }}
-      {{
-        govieHeading({
-            "size": "sm",
-            "as": "h2",
-            "text": props.title
-        })
-      }}
+      <p class="gi-alert-title">{{ props.title }}</p>
+      <div class="gi-alert-content">{{ props.children | safe | trim }}</div>
     </div>
-    <div class="gi-alert-content">{{ props.children | safe | trim }}</div>
+    {% if props.dismissible %}
+      {{
+        govieIconButton({
+          "className": "gi-alert-dismiss",
+          "appearance": "dark",
+          "variant": "flat",
+          "icon": {
+            "icon": "close"
+          }
+        })
+      }}
+    {% endif %}
   </div>
 {% endmacro %}

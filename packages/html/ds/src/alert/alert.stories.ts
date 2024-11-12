@@ -32,6 +32,11 @@ const meta = {
       control: 'text',
       description: 'Specify the title of the alert component',
     },
+    dismissible: {
+      type: 'boolean',
+      control: 'boolean',
+      description: 'Specify if the alert is dismissible',
+    },
     children: {
       control: 'text',
       description: 'Specify the HTML for the content in the alert component',
@@ -70,6 +75,15 @@ export const WarningAlert: Story = {
   args: {
     title: 'Warning Alert',
     variant: AlertVariant.WARNING,
+    children: '<p>Content</p>',
+  },
+};
+
+export const isDismissible: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: AlertVariant.INFO,
+    dismissible: true,
     children: '<p>Content</p>',
   },
 };

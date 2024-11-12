@@ -1,3 +1,4 @@
+import { Alert } from '../alert/alert';
 import { Checkboxes } from '../checkbox/checkbox';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
@@ -21,6 +22,7 @@ const componentRegistry = {
   CookieBanner,
   Tabs,
   ComboBox,
+  Alert,
   // TODO: additional component classes
 } as const;
 

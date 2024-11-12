@@ -15,6 +15,9 @@ export const alertSchema = zod.object({
   children: zod
     .string({ description: 'The HTML that will be inserted in the alert' })
     .optional(),
+  dismissible: zod
+    .boolean({ description: 'Specify if the alert is dismissible' })
+    .optional(),
   className: zod.string({ description: 'Additional classes' }).optional(),
 });
 

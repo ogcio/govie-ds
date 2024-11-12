@@ -787,34 +787,38 @@ input[type='file' i] {
 /* Chip */
 
 /* Alert */
-.gi-alert {
-  @apply gi-flex-col gi-flex gi-space-y-4 gi-py-4 gi-px-6 gi-text-sm gi-border gi-border-[5px] gi-rounded-[6px] gi-border-solid
+.gi-alert-base {
+  @apply gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2
 }
 
 .gi-alert-title {
-  @apply !gi-mb-0 !gi-mt-0 gi-leading-loose
+  @apply gi-text-2md gi-font-bold
 }
 
 .gi-alert-container {
-  @apply gi-flex gi-items-center
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow
 }
 
 .gi-alert-content {
   @apply !gi-mb-0
 }
 
+.gi-alert-dismiss {
+  @apply gi-relative gi-bottom-2
+}
+
 .gi-alert-info {
-  @apply gi-bg-blue-50 gi-border-blue-700 gi-text-blue-700
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700
 }
 
 .gi-alert-success {
-  @apply gi-bg-green-50 gi-border-green-700 gi-text-green-700
+  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700
 }
 
 .gi-alert-warning {
-  @apply gi-bg-yellow-50 gi-border-yellow-700 gi-text-yellow-700
+  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700
 }
 
 .gi-alert-danger {
-  @apply gi-bg-red-50 gi-border-red-700 gi-text-red-700
+  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700
 }

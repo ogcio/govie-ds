@@ -1,16 +1,17 @@
 'use client';
-import { type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../cn.js';
-import { Heading } from '../heading/heading.js';
 import { Icon } from '../icon/icon.js';
+import { IconButton } from '../icon-button/icon-button.js';
 
 const alertVariants = tv({
   slots: {
-    base: 'gi-alert',
+    base: 'gi-alert-base',
     container: 'gi-alert-container',
     content: 'gi-alert-content',
     heading: 'gi-alert-title',
+    dismiss: 'gi-alert-dismiss',
   },
   variants: {
     variant: {
@@ -38,14 +39,14 @@ type AlertProps = {
   title: string;
   children?: ReactNode;
   className?: string;
+  dismissible?: boolean;
 };
 
 const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
   let icon;
   switch (variant) {
-    case 'danger':
     case 'warning': {
-      icon = 'error';
+      icon = 'warning';
       break;
     }
     case 'success': {
@@ -59,20 +60,38 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
   return icon;
 };
 
-function Alert({ title, children, variant = 'info', className }: AlertProps) {
-  const { base, heading, container, content } = alertVariants({
+function Alert({
+  title,
+  children,
+  variant = 'info',
+  dismissible,
+  className,
+}: AlertProps) {
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  const { base, heading, container, content, dismiss } = alertVariants({
     variant,
   });
 
+  if (isDismissed) {
+    return null;
+  }
   return (
     <div className={cn(base(), className)} role="alert">
-      <div className={cn(container())}>
-        <Icon size="lg" icon={icon({ variant })} />
-        <Heading size="sm" as="h2" customClasses={heading()}>
-          {title}
-        </Heading>
+      <Icon icon={icon({ variant })} />
+      <div className={container()}>
+        <p className={heading()}>{title}</p>
+        <div className={content()}>{children}</div>
       </div>
-      <div className={content()}>{children}</div>
+      {dismissible && (
+        <IconButton
+          onClick={() => setIsDismissed(true)}
+          className={dismiss()}
+          appearance="dark"
+          variant="flat"
+          icon={{ icon: 'close' }}
+        />
+      )}
     </div>
   );
 }

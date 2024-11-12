@@ -23,6 +23,10 @@ const meta = {
       control: 'text',
       description: 'Specify the title of the alert component',
     },
+    dismissible: {
+      control: 'boolean',
+      description: 'Specify if the alert is dismissible',
+    },
     children: {
       control: 'text',
       description: 'Specify the HTML for the content in the alert component',
@@ -73,6 +77,19 @@ export const WarningAlert: Story = {
   args: {
     title: 'Warning Alert',
     variant: 'warning',
+    children: (
+      <>
+        <Paragraph className="!gi-mb-0">Content</Paragraph>
+      </>
+    ),
+  },
+};
+
+export const isDismissible: Story = {
+  args: {
+    title: 'Info Alert',
+    variant: 'info',
+    dismissible: true,
     children: (
       <>
         <Paragraph className="!gi-mb-0">Content</Paragraph>
