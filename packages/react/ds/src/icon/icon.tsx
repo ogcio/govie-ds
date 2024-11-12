@@ -19,7 +19,8 @@ export type IconId =
   | 'keyboard_arrow_down'
   | 'info'
   | 'check_circle'
-  | 'error';
+  | 'error'
+  | 'warning';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
