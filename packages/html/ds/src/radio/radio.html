@@ -18,6 +18,7 @@
         value="{{ props.value }}"
         class="{{ getRadioSize(props.size) | trim }} gi-radio-base"
         type="radio"
+        aria-label="{{ radioId }}"
       />
       {% if props.label %}
         <label for="{{ radioId }}" class="gi-radio-label">
