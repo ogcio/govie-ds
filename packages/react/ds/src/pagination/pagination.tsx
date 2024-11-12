@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
-import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 
 export type PaginationProps = {
@@ -49,23 +48,15 @@ const calculateDisplayedPages = (
   return displayedPages;
 };
 
+// TODO Devise localisation
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-  previousLabel = 'Previous',
-  nextLabel = 'Next',
 }) => {
-  const breakpoint = useBreakpoint();
-  const isResponsive = breakpoint === Breakpoint.XS;
-
   const displayedPages = calculateDisplayedPages(currentPage, totalPages);
 
   const renderPaginationBtns = () => {
-    if (isResponsive) {
-      return [];
-    }
-
     return displayedPages.map((page, index) =>
       page === -1 || page === -2 ? (
         <React.Fragment key={`ellipsis-${index}`}>
@@ -75,7 +66,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <Button
           key={page}
           variant={page === currentPage ? 'primary' : 'flat'}
-          size="medium"
+          size="large"
           appearance="dark"
           onClick={() => onPageChange(page)}
         >
@@ -85,20 +76,17 @@ export const Pagination: React.FC<PaginationProps> = ({
     );
   };
 
-  // TODO Devise localisation
   const renderPaginationLabel = () => (
-    <span>
+    <span className="gi-text-md">
       Page {currentPage} of {totalPages}
     </span>
   );
 
   return (
-    <div
-      className={isResponsive ? 'gi-pagination-responsive' : 'gi-pagination'}
-    >
+    <div className="gi-pagination">
       <Button
         variant="flat"
-        size="medium"
+        size="large"
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
@@ -106,19 +94,23 @@ export const Pagination: React.FC<PaginationProps> = ({
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
-        {!isResponsive && previousLabel}
+        <span className="gi-pagination-btn-label">Previous</span>
       </Button>
 
-      {isResponsive ? renderPaginationLabel() : renderPaginationBtns()}
+      <div className="gi-pagination-layout-label">
+        {renderPaginationLabel()}
+      </div>
+
+      <div className="gi-pagination-layout-btn">{renderPaginationBtns()}</div>
 
       <Button
         disabled={currentPage === totalPages}
         variant="flat"
-        size="medium"
+        size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
       >
-        {!isResponsive && nextLabel}
+        <span className="gi-pagination-btn-label">Next</span>
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>

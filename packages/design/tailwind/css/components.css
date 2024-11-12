@@ -821,4 +821,22 @@ input[type='file' i] {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
 
+/* Pagination */
+
+.gi-pagination {
+  @apply gi-flex gi-items-center gi-justify-center gi-gap-2 xs:gi-w-auto gi-w-[280px];
+}
+
+.gi-pagination-layout-label {
+  @apply gi-block xs:gi-hidden;
+}
+
+.gi-pagination-layout-btn {
+  @apply gi-hidden xs:gi-flex gi-items-center gi-justify-center gi-gap-2;
+}
+
+.gi-pagination-btn-label {
+  @apply gi-hidden xs:gi-inline;
+}
+
 /* End of Pagination */
