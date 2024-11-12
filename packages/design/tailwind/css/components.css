@@ -788,7 +788,7 @@ input[type='file' i] {
 
 /* Alert */
 .gi-alert-base {
-  @apply gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2
+  @apply gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
 }
 
 .gi-alert-title {

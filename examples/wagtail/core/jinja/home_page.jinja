@@ -18,6 +18,7 @@
 {% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
 {% from 'list/list.html' import govieList %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
+{% from 'alert/alert.html' import govieAlert %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -193,6 +194,12 @@
       "icon": "thumb_up"
     }
   })}}
+
+  <h2>Alert</h2>
+  {{ govieAlert({
+    "title": "Info Alert",
+    "children": "<div>Content</div>"
+  }) }}
   
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
