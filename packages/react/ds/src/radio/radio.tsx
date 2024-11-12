@@ -27,10 +27,10 @@ export const getRadioWidth = (size?: RadiosSizeEnum) => {
 };
 
 const addConditionalDivider = (
-  checked: boolean,
   conditionalInput: TextInputProps | undefined,
+  checked?: boolean,
 ) => {
-  if (conditionalInput) {
+  if (conditionalInput && checked) {
     return checked ? 'gi-block' : 'gi-invisible';
   }
   return 'gi-invisible';
@@ -67,7 +67,7 @@ export const Radio = ({
       {(hint || conditionalInput) && (
         <div className="gi-radio-conditional-divider-container">
           <div
-            className={`${addConditionalDivider((checked = false), conditionalInput)} ${getRadioWidth(size)}`}
+            className={`${addConditionalDivider(conditionalInput, checked)} ${getRadioWidth(size)}`}
           >
             <div
               className={`gi-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
