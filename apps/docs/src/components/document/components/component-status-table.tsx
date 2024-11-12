@@ -1,6 +1,5 @@
 'use client';
 import { IconButton, Paragraph } from '@govie-ds/react';
-import { useRouter } from 'next/navigation';
 import { Table, Td, Tr } from '../common/table';
 import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -12,12 +11,12 @@ export function ComponentStatusPill({
   status: ComponentStatus;
   href?: string;
 }) {
-  const router = useRouter();
   return (
     <div className="flex gap-sm items-center">
       <div
         className={cn(
           'px-md py-sm rounded text-xs',
+          status === 'not-available' ? 'bg-gray-50 text-gray-800' : undefined,
           status === 'considering' ? 'bg-gray-50 text-gray-800' : undefined,
           status === 'under-review' ? 'bg-blue-50 text-blue-800' : undefined,
           status === 'alpha' ? 'bg-yellow-50 text-yellow-800' : undefined,
@@ -39,7 +38,7 @@ export function ComponentStatusPill({
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
           size="small"
           variant="flat"
-          onClick={() => router.push(href)}
+          onClick={() => window.open(href, '_blank')}
         />
       ) : null}
     </div>

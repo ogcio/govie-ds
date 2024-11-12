@@ -6,7 +6,7 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { CookieBanner } from './cookie-banner.js';
 
 const meta = {
-  title: 'Typography/CookieBanner',
+  title: 'application/CookieBanner',
   parameters: {
     docs: {
       description: {

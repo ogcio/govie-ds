@@ -15,6 +15,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.0.0...eslint-config-v1.1.0) (2024-11-08)
+
+
+### Features
+
+* use variants for heading ([#311](https://github.com/ogcio/govie-ds/issues/311)) ([0a3914a](https://github.com/ogcio/govie-ds/commit/0a3914a7e450d9dadef4ca60da36b8b165031a1d))
+
 ## [0.1.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.1...@govie-ds/eslint-config-0.1.2) (2024-07-31)
 
 

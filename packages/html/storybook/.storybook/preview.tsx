@@ -6,28 +6,25 @@ import {
 } from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
-import '@fontsource/lato/100.css';
-import '@fontsource/lato/300.css';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/900.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
 
 // add decorators for button
-const ButtonDecorator = (arguments_, parameters) => {
-  let classes = 'gi-p-4';
+const Decorator = (arguments_, parameters) => {
   if (
-    parameters?.macro?.name !== 'govieButton' &&
-    parameters?.macro?.name !== 'govieIconButton'
+    parameters?.macro?.name === 'govieButton' ||
+    parameters?.macro?.name === 'govieIconButton'
   ) {
-    return;
+    let classes = 'gi-p-4';
+    if (arguments_.appearance === 'light') {
+      classes += ' gi-bg-black';
+    }
+    return classes;
   }
-  if (arguments_.appearance === 'light') {
-    classes += ' gi-bg-black';
+  if (parameters?.macro?.name === 'govieSpinner') {
+    return 'gi-stroke-gray-950';
   }
-  return classes;
 };
 
 // add decorators for modal
@@ -58,7 +55,7 @@ export const decorators = [
       return (
         <div
           style={ModalDecorator(args, parameters)}
-          className={ButtonDecorator(args, parameters)}
+          className={Decorator(args, parameters)}
           dangerouslySetInnerHTML={{ __html: storyResult }}
         />
       );
@@ -68,7 +65,7 @@ export const decorators = [
     return (
       <div
         style={ModalDecorator(args, parameters)}
-        className={ButtonDecorator(args, parameters)}
+        className={Decorator(args, parameters)}
         dangerouslySetInnerHTML={{ __html: renderedMacro }}
       />
     );

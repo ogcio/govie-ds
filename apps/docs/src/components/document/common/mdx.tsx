@@ -25,6 +25,7 @@ import {
   IconButton,
   FileUpload,
   CheckboxesGroup,
+  Spinner,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -93,8 +94,9 @@ const standardComponents: MDXComponents = {
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
-  ul: ({ children }) => <ul className="list-disc ml-xl">{children}</ul>,
-  li: ({ children }) => <li className="text-md mb-sm">{children}</li>,
+  ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
+  ol: ({ children }) => <ol className="gi-list-number">{children}</ol>,
+  li: ({ children }) => <li>{children}</li>,
   code: ({ children, className }) =>
     className ? (
       <SyntaxHighlighter
@@ -180,6 +182,12 @@ const documentComponents: MDXComponents = {
   IconButton: (props) => <IconButton {...props} />,
   FileUpload: (props) => <FileUpload {...props} />,
   CheckboxesGroup: (props) => <CheckboxesGroup {...props} />,
+  Spinner: (props) => <Spinner {...props} />,
+  ButtonWithSpinner: () => (
+    <Button disabled={true}>
+      Loading... <Spinner inline={true} />
+    </Button>
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -213,5 +221,5 @@ export function Mdx({ code }: MdxProps) {
 }
 
 function MarginBottom({ children }: { children: React.ReactNode }) {
-  return <div className="mb-2xl">{children}</div>;
+  return <div className="mb-2xl stroke-gray-950">{children}</div>;
 }
