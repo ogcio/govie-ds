@@ -1,5 +1,5 @@
-"use client";
-import { ComboBoxProps, CookieBannerProps } from "@/props";
+'use client';
+import { ComboBoxProps, CookieBannerProps } from '@/props';
 import {
   Container,
   Footer,
@@ -19,32 +19,33 @@ import {
   List,
   Combobox,
   Chip,
-} from "@govie-ds/react";
+  Stack,
+} from '@govie-ds/react';
 
 export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        logo={{ href: "/" }}
-        tools={{ search: { action: "/search-page" } }}
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
         navLinks={[
           {
-            href: "#",
-            label: "News",
+            href: '#',
+            label: 'News',
           },
           {
-            href: "#",
-            label: "Departments",
+            href: '#',
+            label: 'Departments',
           },
           {
-            href: "#",
-            label: "Services",
+            href: '#',
+            label: 'Services',
           },
         ]}
         languages={[
           {
-            href: "#",
-            label: "Gaeilge",
+            href: '#',
+            label: 'Gaeilge',
           },
         ]}
       />
@@ -64,8 +65,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: "send",
-              ariaLabel: "Send",
+              icon: 'send',
+              ariaLabel: 'Send',
             }}
           />
           <Combobox {...ComboBoxProps} />
@@ -83,7 +84,7 @@ export default function Home() {
           <hr />
           <RadiosGroup
             title={{
-              value: "Where do you live?",
+              value: 'Where do you live?',
               asHeading: {
                 size: 'md',
                 as: 'h2',
@@ -91,35 +92,35 @@ export default function Home() {
             }}
             items={[
               {
-                label: "England",
-                value: "england",
+                label: 'England',
+                value: 'england',
               },
               {
-                label: "Scotland",
-                value: "scotland",
+                label: 'Scotland',
+                value: 'scotland',
               },
               {
-                label: "Ireland",
-                value: "ireland",
+                label: 'Ireland',
+                value: 'ireland',
               },
             ]}
             fieldId="uniqueId"
           />
           <TextArea
             hint={{
-              text: "Hint: This is a helpful hint.",
+              text: 'Hint: This is a helpful hint.',
             }}
             id="textarea-id"
             maxChars={50}
             label={{
-              text: "Textarea text",
-              htmlFor: "textarea-id",
+              text: 'Textarea text',
+              htmlFor: 'textarea-id',
             }}
           />
 
           <span className="material-symbols-outlined">face</span>
           <Modal triggerButton={<Button>Open Modal</Button>}>
-            <Heading as='h2'>Title</Heading>
+            <Heading as="h2">Title</Heading>
             <Paragraph>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
               esse magnam quis sit soluta cupiditate at deserunt exercitationem
@@ -132,8 +133,27 @@ export default function Home() {
               <Button>Primary action</Button>
             </div>
           </Modal>
-          <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
+          <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
+            <Stack
+              direction={{ md: 'column', xs: 'row' }}
+              itemsAlignment="start"
+              itemsDistribution="start"
+              gap={2}
+              hasDivider
+            >
+              <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">
+                Item 1
+              </div>
+              <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">
+                Item 2
+              </div>
+              <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">
+                Item 3
+              </div>
+            </Stack>
+          </div>
         </div>
       </Container>
 
