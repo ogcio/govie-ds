@@ -9,7 +9,6 @@ const alertVariants = tv({
   slots: {
     base: 'gi-alert-base',
     container: 'gi-alert-container',
-    content: 'gi-alert-content',
     heading: 'gi-alert-title',
     dismiss: 'gi-alert-dismiss',
   },
@@ -53,6 +52,10 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
       icon = 'check_circle';
       break;
     }
+    case 'danger': {
+      icon = 'error';
+      break;
+    }
     default: {
       icon = 'info';
     }
@@ -69,7 +72,7 @@ function Alert({
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
-  const { base, heading, container, content, dismiss } = alertVariants({
+  const { base, heading, container, dismiss } = alertVariants({
     variant,
   });
 
@@ -81,7 +84,7 @@ function Alert({
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
-        <div className={content()}>{children}</div>
+        {children}
       </div>
       {dismissible && (
         <IconButton

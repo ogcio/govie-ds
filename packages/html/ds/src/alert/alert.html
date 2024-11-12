@@ -18,7 +18,7 @@
     }}
     <div class="gi-alert-container">
       <p class="gi-alert-title">{{ props.title }}</p>
-      <div class="gi-alert-content">{{ props.children | safe | trim }}</div>
+      {{ props.children | safe | trim }}
     </div>
     {% if props.dismissible %}
       {{
