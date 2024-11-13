@@ -31,11 +31,11 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
           text={label.text}
           htmlFor={id}
           size={label.size}
-          className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+          className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
         />
       )}
-      {hint && <HintText text={hint.text} size={hint.size} />}
-      {error && <ErrorText text={error.text} size={error.size} />}
+      {hint?.text && <HintText text={hint.text} size={hint.size} />}
+      {error?.text && <ErrorText text={error.text} size={error.size} />}
       <select className="gi-select" id={id} aria-label={ariaLabel}>
         {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;

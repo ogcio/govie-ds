@@ -6,7 +6,7 @@
   {% set ariaLabel = props.label.content or props.id %}
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
-  {% set marginBottom = '' %}
+  {% set marginBottom = 'gi-mb-1' %}
   {% if not isError and not isHint %}
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
