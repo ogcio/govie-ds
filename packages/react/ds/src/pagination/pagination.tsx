@@ -1,7 +1,9 @@
 'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
+import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
+import { getDisplayPages } from '../utils/utils.js';
 
 export type PaginationProps = {
   currentPage: number;
@@ -11,50 +13,18 @@ export type PaginationProps = {
   previousLabel?: string;
 };
 
-/**
- * Helper function to generate an array of page numbers and ellipses for pagination.
- *
- * @param {number} currentPage - The current active page in the pagination.
- * @param {number} totalPages - The total number of pages.
- *
- * @returns {(number | -1 | -2)[]} - Array representing pages to be displayed, with ellipses as placeholders.
- */
-const calculateDisplayedPages = (
-  currentPage: number,
-  totalPages: number,
-): (number | -1 | -2)[] => {
-  const displayedPages: (number | -1 | -2)[] = [];
-
-  if (currentPage > 3) {
-    displayedPages.push(1);
-  }
-  if (currentPage > 4) {
-    displayedPages.push(-1);
-  }
-
-  for (let index = currentPage - 2; index <= currentPage + 2; index++) {
-    if (index >= 1 && index <= totalPages) {
-      displayedPages.push(index);
-    }
-  }
-
-  if (currentPage < totalPages - 3) {
-    displayedPages.push(-2);
-  }
-  if (currentPage < totalPages - 2) {
-    displayedPages.push(totalPages);
-  }
-
-  return displayedPages;
-};
-
 // TODO Devise localisation
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
 }) => {
-  const displayedPages = calculateDisplayedPages(currentPage, totalPages);
+  const breakpoint = useBreakpoint();
+  const isXSView = breakpoint === Breakpoint.XS;
+  const isSMView = breakpoint === Breakpoint.SM;
+  const isMDView = breakpoint === Breakpoint.MD;
+
+  const displayedPages = getDisplayPages(currentPage, totalPages, breakpoint);
 
   const renderPaginationBtns = () => {
     return displayedPages.map((page, index) =>
@@ -94,14 +64,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
-        <span className="gi-pagination-btn-label">Previous</span>
+        {!isXSView && !isSMView && 'Previous'}
       </Button>
 
-      <div className="gi-pagination-layout-label">
-        {renderPaginationLabel()}
-      </div>
-
-      <div className="gi-pagination-layout-btn">{renderPaginationBtns()}</div>
+      {isXSView ? renderPaginationLabel() : renderPaginationBtns()}
 
       <Button
         disabled={currentPage === totalPages}
@@ -110,7 +76,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
       >
-        <span className="gi-pagination-btn-label">Next</span>
+        {!isXSView && !isSMView && 'Next'}
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>

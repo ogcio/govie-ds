@@ -823,17 +823,8 @@ input[type='file' i] {
 
 /* Pagination */
 
-.gi-pagination,
-.gi-pagination-responsive {
-  @apply gi-flex gi-items-center gi-justify-center gi-gap-2;
-}
-
 .gi-pagination {
-  @apply gi-flex gi-items-center gi-justify-center gi-gap-2 xs:gi-w-auto gi-w-[280px];
-}
-
-.gi-pagination-layout-label {
-  @apply gi-block xs:gi-hidden;
+  @apply gi-flex gi-items-center gi-justify-between xs:gi-justify-center gi-gap-2;
 }
 
 /* End of Pagination */
