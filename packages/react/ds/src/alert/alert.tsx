@@ -42,6 +42,7 @@ type AlertProps = {
   title: string;
   children?: ReactNode;
   dismissible?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
@@ -66,7 +67,13 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
   return icon;
 };
 
-function Alert({ title, children, variant = 'info', dismissible }: AlertProps) {
+function Alert({
+  title,
+  children,
+  variant = 'info',
+  dismissible,
+  onClick,
+}: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
   const { base, heading, container, dismiss, baseDismissible } = alertVariants({
@@ -87,7 +94,10 @@ function Alert({ title, children, variant = 'info', dismissible }: AlertProps) {
       </div>
       {dismissible && (
         <IconButton
-          onClick={() => setIsDismissed(true)}
+          onClick={(event) => {
+            onClick?.(event);
+            setIsDismissed(true);
+          }}
           className={dismiss()}
           size="small"
           appearance="dark"

@@ -800,7 +800,7 @@ input[type='file' i] {
 }
 
 .gi-alert-container {
-  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2
 }
 
 .gi-alert-content {
