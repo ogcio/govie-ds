@@ -36,6 +36,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.29.1](https://github.com/ogcio/govie-ds/compare/docs-v0.29.0...docs-v0.29.1) (2024-11-13)
+
+
+### Bug Fixes
+
+* radio feedback fixes ([#324](https://github.com/ogcio/govie-ds/issues/324)) ([ed5d897](https://github.com/ogcio/govie-ds/commit/ed5d897ba4af2a7727c33916c06df38eb274a558))
+
 ## [0.29.0](https://github.com/ogcio/govie-ds/compare/docs-v0.28.1...docs-v0.29.0) (2024-11-08)
 
 
