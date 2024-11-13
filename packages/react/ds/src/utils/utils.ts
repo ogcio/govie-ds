@@ -30,8 +30,8 @@ export const getDisplayPages = (
   if (breakpoint === Breakpoint.SM || breakpoint === Breakpoint.MD) {
     const displayedPages: DisplayPage[] = [];
     if (totalPages <= 3) {
-      for (let i = 1; i <= totalPages; i++) {
-        displayedPages.push(i);
+      for (let index = 1; index <= totalPages; index++) {
+        displayedPages.push(index);
       }
       return displayedPages;
     }
