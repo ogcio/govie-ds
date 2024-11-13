@@ -280,8 +280,8 @@ export const withDefaultChecked: Story = {
       {
         label: 'Ireland',
         value: 'ireland',
-        checked: true,
       },
     ],
+    defaultValue: 'ireland',
   },
 };

@@ -7,15 +7,25 @@ import {
 export type RadioOptions = BaseComponentOptions;
 
 export class Radio extends BaseComponent<RadioOptions> {
+  container: HTMLElement;
   getAllRadioInputs: NodeListOf<HTMLInputElement>;
+  defaultValue: string | undefined;
   renderConditionalInput: () => void;
 
   constructor(options: RadioOptions) {
     super(options);
+    this.container = this.options.element as HTMLElement;
+    this.defaultValue = this.container.dataset.defaultValue;
 
-    this.getAllRadioInputs = document.querySelectorAll(
+    this.getAllRadioInputs = this.container.querySelectorAll(
       'input[data-primary="true"]',
     );
+
+    for (const radio of this.getAllRadioInputs) {
+      if (radio.value === this.defaultValue) {
+        radio.checked = true;
+      }
+    }
 
     this.renderConditionalInput = () => {
       for (const radio of this.getAllRadioInputs) {

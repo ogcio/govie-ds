@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
@@ -15,20 +15,15 @@ export const RadiosGroup = ({
   dividerOption,
   title,
   onChange,
+  defaultValue,
 }: RadiosGroupType) => {
-  const [value, setValue] = useState<null | string>(null);
-
-  useEffect(() => {
-    for (const radio of items) {
-      if (radio.checked) {
-        setValue(radio.value);
-      }
-    }
-  }, []);
+  const initialValue =
+    items.find((radio) => radio.value === defaultValue)?.value ?? null;
+  const [value, setValue] = useState<null | string>(initialValue);
 
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    onChange && onChange(event);
+    onChange?.(event);
   };
 
   return (

@@ -9,7 +9,7 @@
   <div class="gi-radio-container">
     <div class="gi-radio-input-container">
       <input
-        {% if props.checked %}checked="{{ props.checked }}"{% endif %}
+        {% if props.checked %}readonly checked{% endif %}
         {% if props.name %}name="{{ props.name }}"{% endif %}
         {% if props.conditionalInput %}data-has-conditional-input="{{ hasConditionalInput }}"{% endif %}
         data-primary="true"

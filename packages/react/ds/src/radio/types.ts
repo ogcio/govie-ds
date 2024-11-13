@@ -26,8 +26,8 @@ export type RadiosGroupType = {
     label?: string;
     hint?: string;
     conditionalInput?: TextInputProps;
-    checked?: boolean;
   }[];
+  defaultValue?: string;
   inline?: boolean;
   size?: RadiosSizeEnum;
   errorMessage?: string;

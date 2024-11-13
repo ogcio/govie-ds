@@ -56,6 +56,11 @@ export const radiosSchema = zod.object({
       description: 'specify if the radios are inline',
     })
     .optional(),
+  defaultValue: zod
+    .string({
+      description: 'Specify the value of the radio that should be checked',
+    })
+    .optional(),
   items: zod
     .object({
       label: zod
@@ -77,9 +82,6 @@ export const radiosSchema = zod.object({
         .optional(),
       conditionalInput: textInputSchema
         .describe('Add a conditional input if neccessary')
-        .optional(),
-      checked: zod
-        .boolean({ description: 'if true the radio is checked' })
         .optional(),
     })
     .describe(

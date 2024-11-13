@@ -1,8 +1,8 @@
 'use client';
 
 import { HintText } from '../hint-text/hint-text.js';
-import { TextInput, TextInputProps } from '../text-input/text-input.js';
-import { RadioProps, RadiosSizeEnum } from './types.js';
+import { TextInput, type TextInputProps } from '../text-input/text-input.js';
+import { type RadioProps, RadiosSizeEnum } from './types.js';
 
 const getRadioSize = (size?: RadiosSizeEnum) => {
   let sizeClass = 'gi-radio-medium';
@@ -52,6 +52,7 @@ export const Radio = ({
     <div className="gi-radio-container">
       <div className="gi-radio-input-container">
         <input
+          readOnly={checked}
           onChange={onChange}
           checked={checked}
           name={name}
@@ -73,7 +74,7 @@ export const Radio = ({
             <div
               className={`gi-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
             >
-              <div className="gi-radio-conditional-divider-border"></div>
+              <div className="gi-radio-conditional-divider-border" />
             </div>
           </div>
           <div>
