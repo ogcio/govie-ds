@@ -1,4 +1,4 @@
-{% from 'alert/helpers.html' import getIcon, getVariant %}
+{% from 'alert/helpers.html' import getIcon, getVariant, getBaseAlertClass %}
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 
@@ -6,7 +6,7 @@
   {% set icon = getIcon(props.variant) %}
   <div
     data-module="gieds-alert"
-    class="gi-alert-base {{ getVariant(props.variant) | trim }}"
+    class="{{ getBaseAlertClass(props.dismissible) | trim }} {{ getVariant(props.variant) | trim }}"
     role="alert"
   >
     {{
@@ -23,6 +23,7 @@
       {{
         govieIconButton({
           "className": "gi-alert-dismiss",
+          "size": "small",
           "appearance": "dark",
           "variant": "flat",
           "icon": {

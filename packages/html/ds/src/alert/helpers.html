@@ -21,3 +21,11 @@
     gi-alert-info
   {% endif %}
 {% endmacro %}
+
+{% macro getBaseAlertClass(dismissible) %}
+  {% if dismissible %}
+    gi-alert-base-dismissible
+  {% else %}
+    gi-alert-base
+  {% endif %}
+{% endmacro %}

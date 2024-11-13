@@ -788,7 +788,11 @@ input[type='file' i] {
 
 /* Alert */
 .gi-alert-base {
-  @apply gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
+  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
+}
+
+.gi-alert-base-dismissible {
+  @apply gi-alert-base !gi-pr-8
 }
 
 .gi-alert-title {
@@ -804,7 +808,7 @@ input[type='file' i] {
 }
 
 .gi-alert-dismiss {
-  @apply gi-relative gi-bottom-2
+  @apply gi-absolute gi-top-2 gi-right-2
 }
 
 .gi-alert-info {
