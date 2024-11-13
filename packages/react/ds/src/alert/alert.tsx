@@ -1,7 +1,6 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
@@ -37,7 +36,6 @@ type AlertProps = {
   variant?: VariantProps<typeof alertVariants>['variant'];
   title: string;
   children?: ReactNode;
-  className?: string;
   dismissible?: boolean;
 };
 
@@ -63,13 +61,7 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
   return icon;
 };
 
-function Alert({
-  title,
-  children,
-  variant = 'info',
-  dismissible,
-  className,
-}: AlertProps) {
+function Alert({ title, children, variant = 'info', dismissible }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
   const { base, heading, container, dismiss } = alertVariants({
@@ -80,7 +72,7 @@ function Alert({
     return null;
   }
   return (
-    <div className={cn(base(), className)} role="alert">
+    <div className={base()} role="alert">
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>

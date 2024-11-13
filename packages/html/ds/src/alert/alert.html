@@ -1,4 +1,3 @@
-{% from 'helpers/helpers.html' import addClasses %}
 {% from 'alert/helpers.html' import getIcon, getVariant %}
 {% from 'icon/icon.html' import govieIcon %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
@@ -7,7 +6,7 @@
   {% set icon = getIcon(props.variant) %}
   <div
     data-module="gieds-alert"
-    class="gi-alert-base {{ getVariant(props.variant) | trim }} {{ addClasses(props.className) | trim }}"
+    class="gi-alert-base {{ getVariant(props.variant) | trim }}"
     role="alert"
   >
     {{
