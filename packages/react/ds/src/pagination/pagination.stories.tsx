@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Pagination } from './pagination.js';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'components/Pagination', // Title for the component
+  title: 'components/Pagination',
   component: Pagination,
   parameters: {
     docs: {
@@ -39,24 +39,6 @@ It helps users navigate through content pages and is customizable to match the d
       table: {
         category: 'Callbacks',
         type: { summary: '(page: number) => void' },
-      },
-    },
-    previousLabel: {
-      control: 'text',
-      description: 'Custom label for the "Previous" button.',
-      table: {
-        category: 'Labels',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Previous' },
-      },
-    },
-    nextLabel: {
-      control: 'text',
-      description: 'Custom label for the "Next" button.',
-      table: {
-        category: 'Labels',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Next' },
       },
     },
   },
