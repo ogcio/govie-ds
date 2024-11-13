@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "prettier": "@govie-ds/prettier-config",
   "dependencies": {
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/react": "workspace:*",
