@@ -777,3 +777,44 @@ input[type='file' i] {
   @apply gi-flex gi-items-center gi-gap-1 gi-pl-1.5 gi-pr-1 gi-py-0.5 gi-bg-gray-100 gi-w-fit gi-rounded-sm gi-cursor-default gi-text-xs hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-outline focus:gi-outline-gray-950 focus:gi-outline-[2px] focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)];
 }
 /* Chip */
+
+/* Alert */
+.gi-alert-base {
+  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
+}
+
+.gi-alert-base-dismissible {
+  @apply gi-alert-base !gi-pr-8
+}
+
+.gi-alert-title {
+  @apply gi-text-2md gi-font-bold
+}
+
+.gi-alert-container {
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2
+}
+
+.gi-alert-content {
+  @apply !gi-mb-0
+}
+
+.gi-alert-dismiss {
+  @apply gi-absolute gi-top-2 gi-right-2
+}
+
+.gi-alert-info {
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700
+}
+
+.gi-alert-success {
+  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700
+}
+
+.gi-alert-warning {
+  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700
+}
+
+.gi-alert-danger {
+  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700
+}
