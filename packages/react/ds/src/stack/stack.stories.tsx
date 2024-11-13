@@ -98,18 +98,19 @@ export const CenteredItemsWithGap: Story = {
   },
 };
 
-export const StretchedDistributionWithDivider: Story = {
+export const AroundDistributionWithDivider: Story = {
   args: {
     direction: { sm: 'column', lg: 'row' },
     itemsAlignment: 'center',
     itemsDistribution: 'around',
     gap: { sm: 1, lg: 5 },
     hasDivider: true,
+    fixedHeight: '100px',
     children,
   },
 };
 
-export const BaselineAlignment: Story = {
+export const CenterDistribution: Story = {
   args: {
     direction: { sm: 'row', md: 'column' },
     itemsAlignment: 'start',

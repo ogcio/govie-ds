@@ -46,9 +46,11 @@ export type StackProps = {
   children: ReactNode;
 };
 
-const getDirectionBreakpointFlags = (
-  direction: Exclude<Direction, SimpleDirection>,
-) => {
+const getDirectionBreakpointFlags = (direction: Direction) => {
+  if (typeof direction === 'string') {
+    return {};
+  }
+
   return {
     isBaseColumn: direction.base === 'column',
     isBaseRow: direction.base === 'row',
@@ -208,16 +210,15 @@ const getItemsGapClasses = (gap: Gap) => {
     return `gi-gap-${gap}`;
   }
 
-  const tClasses: string[] = [];
-  for (const [breakpoint, value] of Object.entries(gap)) {
-    const gapClass =
+  const gapClasses = Object.entries(gap)
+    .map(([breakpoint, value]) =>
       breakpoint === 'base'
         ? `gi-gap-${value}`
-        : `${breakpoint}:gi-gap-${value}`;
-    tClasses.push(gapClass);
-  }
+        : `${breakpoint}:gi-gap-${value}`,
+    )
+    .join(' ');
 
-  return tClasses.join(' ');
+  return gapClasses;
 };
 
 const Divider = ({ direction }: { direction: Direction }) => {
@@ -226,14 +227,14 @@ const Divider = ({ direction }: { direction: Direction }) => {
 };
 
 export const Stack: React.FC<StackProps> = ({
+  children,
   direction = 'column',
+  fixedHeight = '100%',
+  gap = 0,
+  hasDivider,
   itemsAlignment = 'start',
   itemsDistribution = 'start',
-  gap = 0,
   wrap = false,
-  fixedHeight = '100%',
-  hasDivider,
-  children,
 }) => {
   const stackClasses = cn(
     'gi-flex',
@@ -256,6 +257,7 @@ export const Stack: React.FC<StackProps> = ({
               'data-testid': `govie-stack-item-${index}`,
             })
           : child}
+
         {hasDivider && index < childrenComponent.length - 1 && (
           <Divider direction={direction} />
         )}
