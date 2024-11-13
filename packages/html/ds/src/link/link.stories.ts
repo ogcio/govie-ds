@@ -85,3 +85,24 @@ export const NoVisited: Story = {
     noVisited: true,
   },
 };
+
+export const AllStates: Story = {
+  args: {
+    href: '#',
+    label: '',
+  },
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () =>
+    `<div class="gi-gap-4 gi-flex">
+      <a href="#" class="gi-link">Default</a>
+      <a href="#" class="gi-link pseudo-hover">Hover</a>
+      <a href="#" class="gi-link pseudo-focus">Focus</a>
+     </div>
+    `,
+  parameters: {
+    pseudo: {
+      hover: '.gi-link:nth-child(2)',
+      focus: '.gi-link:nth-child(3)',
+    },
+  },
+};

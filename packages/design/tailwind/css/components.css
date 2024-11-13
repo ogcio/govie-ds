@@ -30,7 +30,7 @@
 
 /* Inputs focus state */
 input[type='text'] {
-  @apply gi-focus-state-outline gi-focus-state-border;
+  @apply gi-focus-state-outline gi-focus-state-border focus:gi-rounded-md;
 }
 /* Inputs focus state*/
 
@@ -56,10 +56,10 @@ input[type='text'] {
 
 /* Select */
 .gi-select {
-  @apply gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
+  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-sm gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md;
 }
 .gi-select-option {
-  @apply gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
+  @apply gi-font-primary xs:gi-text-sm md:gi-text-md;
 }
 
 /* End of Select */
@@ -73,13 +73,13 @@ input[type='text'] {
   @apply gi-flex gi-items-center;
 }
 .gi-text-input-prefix {
-  @apply xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input-suffix {
-  @apply xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input {
-  @apply gi-focus-state-outline gi-focus-state-border gi-flex-initial  gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-input-disabled-state;
+  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial  gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-input-disabled-state;
 }
 
 /* End of Text Input */
@@ -175,7 +175,7 @@ input[type='text'] {
 /* Label */
 
 .gi-label {
-  @apply gi-mb-1 gi-block;
+  @apply gi-block;
 }
 
 /* End of Label */
@@ -185,7 +185,7 @@ input[type='text'] {
   @apply gi-pt-2 gi-mb-4;
 }
 .gi-file-upload-input {
-  @apply xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border gi-focus-state-outline gi-focus-state-border gi-z-1;
+  @apply gi-rounded-sm xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border gi-focus-state-outline gi-focus-state-border gi-z-1;
 }
 
 /* End of File-upload */
@@ -454,23 +454,19 @@ input[type='text'] {
 }
 
 .gi-tab-item {
-  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md gi-underline gi-text-gray-950 gi-stroke-gray-950;
+  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md gi-underline gi-text-gray-950 gi-stroke-gray-950 hover:gi-bg-gray-200 focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-border-transparent;
 }
 
 .gi-tab-item-checked {
-  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-0 gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline;
+  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-[1px] gi-border-b-transparent gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-[1px] focus:gi-border-gray-950;
 }
 
 .gi-tab-item:hover > * {
   @apply gi-decoration-lg;
 }
 
-.gi-tab-item:focus > * {
-  @apply gi-outline gi-outline-transparent gi-bg-yellow-400 gi-outline-2 gi-shadow gi-shadow-yellow-400;
-}
-
 .gi-tab-panel {
-  @apply gi-hidden gi-basis-full gi-border-xs gi-border-solid gi-border-gray-200 gi-bg-white gi-p-4;
+  @apply gi-hidden gi-basis-full gi-border-xs gi-border-solid gi-border-gray-200 gi-bg-white gi-p-4 focus-visible:gi-outline-none;
 }
 
 /* End Tabs */
@@ -675,7 +671,7 @@ input[type='file' i] {
 
 .gi-textarea,
 .gi-textarea-error {
-  @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+  @apply gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
 }
 
 .gi-textarea-layout-container {
@@ -693,10 +689,6 @@ input[type='file' i] {
 .gi-textarea-remaining-chars {
   @apply gi-mt-2;
 }
-
-.gi-textarea-disabled {
-  @apply gi-bg-gray-200 gi-border-gray-400;
-}
 /* TextArea */
 
 /* ComboBox */
@@ -705,7 +697,7 @@ input[type='file' i] {
   @apply gi-max-w-[400px] gi-border-t;
 }
 .gi-combobox-toggle {
-  @apply gi-border-t-transparent gi-border-t-sm gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline gi-focus-state-border-sm focus:gi-bg-gray-200;
+  @apply gi-border-t-transparent gi-border-t-sm gi-relative gi-z-1 hover:gi-bg-gray-200 gi-border-b gi-px-2 gi-py-4 gi-flex gi-justify-between gi-cursor-pointer gi-w-full gi-focus-state-outline gi-focus-state-border-sm-rounded focus:gi-bg-gray-200;
 }
 .gi-combobox-toggle-open {
   @apply gi-border-b-0;
@@ -773,7 +765,7 @@ input[type='file' i] {
   @apply gi-flex gi-items-start;
 }
 .gi-checkbox-input {
-  @apply hover:gi-outline hover:gi-outline-[3px] hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-md gi-border-solid gi-border-black checked:before:gi-block  checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
+  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-[3px] hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
 }
 .gi-checkbox-label {
   @apply gi-cursor-pointer gi-text-md gi-pl-4;
@@ -785,3 +777,44 @@ input[type='file' i] {
   @apply gi-flex gi-items-center gi-gap-1 gi-pl-1.5 gi-pr-1 gi-py-0.5 gi-bg-gray-100 gi-w-fit gi-rounded-sm gi-cursor-default gi-text-xs hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-outline focus:gi-outline-gray-950 focus:gi-outline-[2px] focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)];
 }
 /* Chip */
+
+/* Alert */
+.gi-alert-base {
+  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
+}
+
+.gi-alert-base-dismissible {
+  @apply gi-alert-base !gi-pr-8
+}
+
+.gi-alert-title {
+  @apply gi-text-2md gi-font-bold
+}
+
+.gi-alert-container {
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2
+}
+
+.gi-alert-content {
+  @apply !gi-mb-0
+}
+
+.gi-alert-dismiss {
+  @apply gi-absolute gi-top-2 gi-right-2
+}
+
+.gi-alert-info {
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700
+}
+
+.gi-alert-success {
+  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700
+}
+
+.gi-alert-warning {
+  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700
+}
+
+.gi-alert-danger {
+  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700
+}

@@ -23,7 +23,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
             text={label.text}
             size={label.size}
             htmlFor={id}
-            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
           >
             {label.children}
           </Label>
