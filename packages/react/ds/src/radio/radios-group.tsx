@@ -61,7 +61,7 @@ export const RadiosGroup = ({
           >
             {items.map((radio, index) => (
               <Radio
-                key={`${value}-${index}`}
+                key={`${groupId}-${index}`}
                 checked={value === radio.value}
                 onChange={onOptionChange}
                 name={groupId}
@@ -83,6 +83,7 @@ export const RadiosGroup = ({
                   or
                 </p>
                 <Radio
+                  key={`${groupId}-${items.length}`}
                   checked={value === dividerOption.value}
                   onChange={onOptionChange}
                   name={groupId}
