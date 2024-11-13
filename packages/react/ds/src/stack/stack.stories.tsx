@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '../button/button.js';
+import { Link } from '../link/link.js';
 import { Stack } from './stack.js';
 
 const meta = {
@@ -8,7 +10,7 @@ const meta = {
     direction: {
       control: 'object',
       description:
-        'Sets the direction of the stack items. Accepts responsive breakpoints.',
+        'Sets stack direction, supporting responsive breakpoints (e.g., `{ base: "column", md: "row" }`).',
       defaultValue: 'column',
     },
     itemsAlignment: {
@@ -26,7 +28,7 @@ const meta = {
     gap: {
       control: 'object',
       description:
-        'Sets the gap between items. Accepts a fixed number or responsive breakpoints.',
+        'Sets the gap between items, supporting responsive breakpoints (e.g., `{ base: 3, sm: 2, md: 1 }`)',
       defaultValue: 1,
     },
     hasDivider: {
@@ -34,10 +36,15 @@ const meta = {
       description: 'If true, renders a divider between items.',
       defaultValue: false,
     },
+    wrap: {
+      control: 'boolean',
+      description: 'If true, wrap items',
+      defaultValue: false,
+    },
   },
   decorators: [
     (Story) => (
-      <div className="gi-p-4 gi-h-[300px] gi-bg-gray-50 gi-overflow-auto">
+      <div className="gi-p-4 gi-bg-gray-50">
         <Story />
       </div>
     ),
@@ -47,42 +54,37 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const itemClasses =
+  'gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center';
+const children = [<div>Item 1</div>, <div>Item 2</div>, <div>Item 3</div>];
+
 export const Default: Story = {
   args: {
-    direction: { sm: 'column' },
+    direction: 'column',
     itemsAlignment: 'start',
     itemsDistribution: 'start',
-    gap: 1,
+    gap: 2,
     hasDivider: false,
-  },
-  render: (args) => {
-    const itemClasses =
-      'gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center';
-    return (
-      <Stack {...args}>
-        <div className={itemClasses}>Item 1</div>
-        <div className={itemClasses}>Item 2</div>
-        <div className={itemClasses}>Item 3</div>
-      </Stack>
-    );
+    wrap: false,
+    fixedHeight: '300px',
+    children: [
+      <div className={itemClasses}>Item 1</div>,
+      <div className={itemClasses}>Item 2</div>,
+      <div className={itemClasses}>Item 3</div>,
+    ],
   },
 };
 
 export const ResponsiveDirectionWithDivider: Story = {
   args: {
-    direction: { sm: 'column' },
+    direction: { base: 'row', sm: 'row', md: 'column' },
     itemsAlignment: 'center',
     itemsDistribution: 'between',
     gap: 1,
     hasDivider: true,
+    fixedHeight: '150px',
+    children,
   },
-  render: (args) => (
-    <Stack {...args}>
-      <div>Item A</div>
-      <div>Item B</div>
-      <div>Item C</div>
-    </Stack>
-  ),
 };
 
 export const CenteredItemsWithGap: Story = {
@@ -92,14 +94,8 @@ export const CenteredItemsWithGap: Story = {
     itemsDistribution: 'center',
     gap: { sm: 3, md: 6 },
     hasDivider: false,
+    children,
   },
-  render: (args) => (
-    <Stack {...args}>
-      <div>Content 1</div>
-      <div>Content 2</div>
-      <div>Content 3</div>
-    </Stack>
-  ),
 };
 
 export const StretchedDistributionWithDivider: Story = {
@@ -109,14 +105,8 @@ export const StretchedDistributionWithDivider: Story = {
     itemsDistribution: 'around',
     gap: { sm: 1, lg: 5 },
     hasDivider: true,
+    children,
   },
-  render: (args) => (
-    <Stack {...args}>
-      <div>Element 1</div>
-      <div>Element 2</div>
-      <div>Element 3</div>
-    </Stack>
-  ),
 };
 
 export const BaselineAlignment: Story = {
@@ -125,13 +115,21 @@ export const BaselineAlignment: Story = {
     itemsAlignment: 'start',
     itemsDistribution: 'center',
     gap: 4,
-    hasDivider: false,
+    children,
   },
-  render: (args) => (
-    <Stack {...args}>
-      <div>Baseline Item 1</div>
-      <div>Baseline Item 2</div>
-      <div>Baseline Item 3</div>
-    </Stack>
-  ),
+};
+
+export const WithComponents: Story = {
+  args: {
+    direction: { sm: 'row', md: 'column' },
+    itemsAlignment: 'center',
+    itemsDistribution: 'around',
+    gap: 4,
+    fixedHeight: '300px',
+    children: [
+      <Button>Button 1</Button>,
+      <Link href="#">Link 1</Link>,
+      <Button>Button 2</Button>,
+    ],
+  },
 };

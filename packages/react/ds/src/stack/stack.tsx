@@ -6,6 +6,7 @@ import { cn } from '../cn.js';
 type Gap =
   | number
   | {
+      base?: number;
       xs?: number;
       sm?: number;
       md?: number;
@@ -14,6 +15,7 @@ type Gap =
       '2xl'?: number;
     };
 type SimpleDirection = 'column' | 'row';
+
 export type Alignment = 'start' | 'center' | 'end';
 export type Distribution =
   | 'start'
@@ -25,6 +27,7 @@ export type Distribution =
 export type Direction =
   | SimpleDirection
   | {
+      base?: SimpleDirection;
       xs?: SimpleDirection;
       sm?: SimpleDirection;
       md?: SimpleDirection;
@@ -33,27 +36,172 @@ export type Direction =
       '2xl'?: SimpleDirection;
     };
 export type StackProps = {
-  direction: Direction;
-  itemsAlignment: Alignment;
-  itemsDistribution: Distribution;
+  direction?: Direction;
+  itemsAlignment?: Alignment;
+  itemsDistribution?: Distribution;
   gap?: Gap;
   hasDivider?: boolean;
-  children?: ReactNode;
+  wrap?: boolean;
+  fixedHeight?: string;
+  children: ReactNode;
+};
+
+const getDirectionBreakpointFlags = (
+  direction: Exclude<Direction, SimpleDirection>,
+) => {
+  return {
+    isBaseColumn: direction.base === 'column',
+    isBaseRow: direction.base === 'row',
+    isXsColumn: direction.xs === 'column',
+    isXsRow: direction.xs === 'row',
+    isSmColumn: direction.sm === 'column',
+    isSmRow: direction.sm === 'row',
+    isMdColumn: direction.md === 'column',
+    isMdRow: direction.md === 'row',
+    isLgColumn: direction.lg === 'column',
+    isLgRow: direction.lg === 'row',
+    isXlColumn: direction.xl === 'column',
+    isXlRow: direction.xl === 'row',
+    is2xlColumn: direction['2xl'] === 'column',
+    is2xlRow: direction['2xl'] === 'row',
+  };
 };
 
 const getDirectionClasses = (direction: Direction) => {
   if (typeof direction === 'string') {
-    return direction === 'row' ? 'gi-flex-row' : 'gi-flex-col';
+    return {
+      'gi-flex-row': direction === 'row',
+      'gi-flex-col': direction === 'column',
+    };
   }
+  const {
+    isBaseColumn,
+    isBaseRow,
+    isXsColumn,
+    isXsRow,
+    isSmColumn,
+    isSmRow,
+    isMdColumn,
+    isMdRow,
+    isLgColumn,
+    isLgRow,
+    isXlColumn,
+    isXlRow,
+    is2xlColumn,
+    is2xlRow,
+  } = getDirectionBreakpointFlags(direction);
 
-  const directionClasses: string[] = [];
-  for (const [breakpoint, dir] of Object.entries(direction)) {
-    const tClass = dir === 'row' ? 'gi-flex-row' : 'gi-flex-col';
-    directionClasses.push(`${breakpoint}:${tClass}`);
-  }
+  return {
+    'gi-flex-row': isBaseRow,
+    'gi-flex-col': isBaseColumn,
 
-  return directionClasses.join(' ');
+    'xs:gi-flex-row': isXsRow,
+    'xs:gi-flex-col': isXsColumn,
+
+    'sm:gi-flex-row': isSmRow,
+    'sm:gi-flex-col': isSmColumn,
+
+    'md:gi-flex-row': isMdRow,
+    'md:gi-flex-col': isMdColumn,
+
+    'lg:gi-flex-row': isLgRow,
+    'lg:gi-flex-col': isLgColumn,
+
+    'xl:gi-flex-row': isXlRow,
+    'xl:gi-flex-col': isXlColumn,
+
+    '2xl:gi-flex-row': is2xlRow,
+    '2xl:gi-flex-col': is2xlColumn,
+  };
 };
+
+const getDividerClasses = (direction: Direction) => {
+  if (typeof direction === 'string') {
+    return {
+      'gi-w-full': direction === 'column',
+      'gi-h-[1px]': direction === 'column',
+      'gi-h-full': direction === 'row',
+      'gi-w-[1px]': direction === 'row',
+    };
+  }
+  const {
+    isBaseColumn,
+    isBaseRow,
+    isXsColumn,
+    isXsRow,
+    isSmColumn,
+    isSmRow,
+    isMdColumn,
+    isMdRow,
+    isLgColumn,
+    isLgRow,
+    isXlColumn,
+    isXlRow,
+    is2xlColumn,
+    is2xlRow,
+  } = getDirectionBreakpointFlags(direction);
+
+  return {
+    'gi-w-full': isBaseColumn,
+    'gi-h-[1px]': isBaseColumn,
+    'gi-h-full': isBaseRow,
+    'gi-w-[1px]': isBaseRow,
+
+    'xs:gi-w-full': isXsColumn,
+    'xs:gi-h-[1px]': isXsColumn,
+    'xs:gi-h-full': isXsRow,
+    'xs:gi-w-[1px]': isXsRow,
+
+    'sm:gi-w-full': isSmColumn,
+    'sm:gi-h-[1px]': isSmColumn,
+    'sm:gi-h-full': isSmRow,
+    'sm:gi-w-[1px]': isSmRow,
+
+    'md:gi-w-full': isMdColumn,
+    'md:gi-h-[1px]': isMdColumn,
+    'md:gi-h-full': isMdRow,
+    'md:gi-w-[1px]': isMdRow,
+
+    'lg:gi-w-full': isLgColumn,
+    'lg:gi-h-[1px]': isLgColumn,
+    'lg:gi-h-full': isLgRow,
+    'lg:gi-w-[1px]': isLgRow,
+
+    'xl:gi-w-full': isXlColumn,
+    'xl:gi-h-[1px]': isXlColumn,
+    'xl:gi-h-full': isXlRow,
+    'xl:gi-w-[1px]': isXlRow,
+
+    '2xl:gi-w-full': is2xlColumn,
+    '2xl:gi-h-[1px]': is2xlColumn,
+    '2xl:gi-h-full': is2xlRow,
+    '2xl:gi-w-[1px]': is2xlRow,
+  };
+};
+
+const getAlignmentClasses = (itemsAlignment: Alignment) => {
+  return {
+    'gi-items-start': itemsAlignment === 'start',
+    'gi-items-center': itemsAlignment === 'center',
+    'gi-items-end': itemsAlignment === 'end',
+  };
+};
+
+const getDistributionClasses = (itemsDistribution: Distribution) => {
+  return {
+    'gi-justify-start': itemsDistribution === 'start',
+    'gi-justify-center': itemsDistribution === 'center',
+    'gi-justify-end': itemsDistribution === 'end',
+    'gi-justify-between': itemsDistribution === 'between',
+    'gi-justify-around': itemsDistribution === 'around',
+    'gi-justify-evenly': itemsDistribution === 'evenly',
+  };
+};
+
+const getWrapClass = (wrap: boolean) => ({
+  'gi-flex-wrap': wrap,
+  'gi-flex-nowrap': !wrap,
+});
 
 const getItemsGapClasses = (gap: Gap) => {
   if (typeof gap === 'number' && !!gap) {
@@ -62,73 +210,70 @@ const getItemsGapClasses = (gap: Gap) => {
 
   const tClasses: string[] = [];
   for (const [breakpoint, value] of Object.entries(gap)) {
-    tClasses.push(`${breakpoint}:gi-gap-${value}`);
+    const gapClass =
+      breakpoint === 'base'
+        ? `gi-gap-${value}`
+        : `${breakpoint}:gi-gap-${value}`;
+    tClasses.push(gapClass);
   }
 
   return tClasses.join(' ');
 };
 
 const Divider = ({ direction }: { direction: Direction }) => {
-  const defaultColumnClasses = ['gi-w-full', 'gi-h-[1px]', 'gi-bg-gray-200'];
-  const defaultRowClasses = ['gi-h-full', 'gi-w-[1px]', 'gi-bg-gray-200'];
-
-  if (typeof direction === 'string') {
-    return (
-      <div
-        className={
-          direction === 'column'
-            ? defaultColumnClasses.join(' ')
-            : defaultRowClasses.join(' ')
-        }
-      />
-    );
-  }
-
-  const dividerClasses = [];
-  for (const [breakpoint, dir] of Object.entries(direction)) {
-    if (dir) {
-      dividerClasses.push(
-        ...(dir === 'column' ? defaultColumnClasses : defaultRowClasses).map(
-          (columnClass) =>
-            breakpoint === 'xs' ? columnClass : `${breakpoint}:${columnClass}`,
-        ),
-      );
-    }
-  }
-
-  return <div className={dividerClasses.join(' ')} />;
+  const dividerClasses = getDividerClasses(direction);
+  return <div className={`${cn(dividerClasses)} gi-bg-gray-400`} />;
 };
 
 export const Stack: React.FC<StackProps> = ({
-  direction = 'row',
+  direction = 'column',
   itemsAlignment = 'start',
   itemsDistribution = 'start',
   gap = 0,
+  wrap = false,
+  fixedHeight = '100%',
   hasDivider,
   children,
 }) => {
   const stackClasses = cn(
     'gi-flex',
-    `gi-items-${itemsAlignment}`,
-    `gi-justify-${itemsDistribution}`,
-    'gi-h-full',
+    'gi-overflow-auto',
+    `gi-h-[${fixedHeight}]`,
+    getDistributionClasses(itemsDistribution),
+    getAlignmentClasses(itemsAlignment),
     getDirectionClasses(direction),
     getItemsGapClasses(gap),
+    getWrapClass(wrap),
   );
 
   const renderChildren = () => {
-    const childrenArray = React.Children.toArray(children);
-    return childrenArray.map((child, index) => (
+    const childrenComponent = React.Children.toArray(children);
+    return childrenComponent.map((child, index) => (
       <React.Fragment key={`item_${index}`}>
-        {child}
-        {hasDivider && index < childrenArray.length - 1 && (
+        {React.isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement, {
+              role: 'listitem',
+              'data-testid': `govie-stack-item-${index}`,
+            })
+          : child}
+        {hasDivider && index < childrenComponent.length - 1 && (
           <Divider direction={direction} />
         )}
       </React.Fragment>
     ));
   };
 
-  return <div className={stackClasses}>{renderChildren()}</div>;
+  return (
+    <div
+      className={stackClasses}
+      role="list"
+      aria-label="Items Stacked"
+      data-testid="govie-stack"
+      style={{ height: fixedHeight }}
+    >
+      {renderChildren()}
+    </div>
+  );
 };
 
 Stack.displayName = 'Stack';

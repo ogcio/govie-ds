@@ -137,13 +137,13 @@ export default function Home() {
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ md: 'column', xs: 'row' }}
+              direction={{ sm: 'column', base: 'row' }}
               itemsAlignment="start"
               itemsDistribution="start"
-              gap={2}
+              gap={5}
               hasDivider
             >
-              <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">
+              <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center sm:gi-text-red-500">
                 Item 1
               </div>
               <div className="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">
