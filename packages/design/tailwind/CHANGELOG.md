@@ -15,6 +15,18 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.18.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.17.0...tailwind-v0.18.0) (2024-11-13)
+
+
+### Features
+
+* alert component ([#320](https://github.com/ogcio/govie-ds/issues/320)) ([7322952](https://github.com/ogcio/govie-ds/commit/732295279d8cc388c2bb0c522c7fc3200978f6e3))
+
+
+### Bug Fixes
+
+* adding rounded border for input fields ([#322](https://github.com/ogcio/govie-ds/issues/322)) ([959f269](https://github.com/ogcio/govie-ds/commit/959f269694f218aa0f25aa8ae750259749a300b5))
+
 ## [0.17.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.16.1...tailwind-v0.17.0) (2024-11-08)
 
 
