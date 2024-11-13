@@ -31,7 +31,7 @@ const meta = {
       control: 'text',
       description: 'Specify the HTML for the content in the alert component',
     },
-    onClick: {
+    onClose: {
       control: 'object',
       description: 'Callback fired when the component is dismissed',
     },

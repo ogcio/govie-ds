@@ -42,7 +42,7 @@ type AlertProps = {
   title: string;
   children?: ReactNode;
   dismissible?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
@@ -72,7 +72,7 @@ function Alert({
   children,
   variant = 'info',
   dismissible,
-  onClick,
+  onClose,
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -95,8 +95,8 @@ function Alert({
       {dismissible && (
         <IconButton
           onClick={(event) => {
-            onClick?.(event);
             setIsDismissed(true);
+            onClose?.(event);
           }}
           className={dismiss()}
           size="small"
