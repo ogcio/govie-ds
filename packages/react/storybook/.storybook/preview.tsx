@@ -2,14 +2,35 @@ import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  Controls,
+  Stories,
+} from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../../ds/styles.css';
+import React from 'react';
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories includePrimary={false} />
+        </>
+      ),
+    },
     a11y: {
       options: {},
     },

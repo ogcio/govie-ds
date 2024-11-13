@@ -104,7 +104,7 @@ export default function Home() {
                 value: "ireland",
               },
             ]}
-            fieldId="uniqueId"
+            groupId="uniqueId"
           />
           <TextArea
             hint={{

@@ -4,7 +4,7 @@ import { type RadiosProps, RadioSizeEnum } from './radio.schema';
 import html from './radios-group.html?raw';
 
 const standardProps = {
-  fieldId: 'uniqueId',
+  groupId: 'uniqueId',
   title: {
     value: 'Where do you live?',
     asHeading: {

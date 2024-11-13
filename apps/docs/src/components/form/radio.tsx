@@ -1,5 +1,5 @@
 export const standardProps = {
-  fieldId: 'uniqueId-1',
+  groupId: 'uniqueId-1',
   title: {
     value: 'Where do you live?',
     asHeading: {
@@ -25,12 +25,12 @@ export const standardProps = {
 
 export const inlineProps = {
   ...standardProps,
-  fieldId: 'uniqueId-2',
+  groupId: 'uniqueId-2',
   inline: true,
 };
 
 export const hintsProps = {
-  fieldId: 'uniqueId-3',
+  groupId: 'uniqueId-3',
   title: {
     value: 'Have you changed your name?',
     hint: 'This includes changing your last name or spelling your name differently.',

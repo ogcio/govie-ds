@@ -27,6 +27,7 @@ import {
   List,
   TypeEnum,
   Combobox,
+  Radio,
   Alert,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
@@ -205,8 +206,10 @@ export function App() {
               value: 'ireland',
             },
           ]}
-          fieldId="uniqueId"
+          groupId="uniqueId1"
         />
+        <Heading size="sm">Single Radio</Heading>
+        <Radio value="single-radio" label="Single Radio" />
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading as="h2">Title</Heading>
           <Paragraph>

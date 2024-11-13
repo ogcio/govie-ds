@@ -3,7 +3,7 @@ import { RadiosGroup } from './radios-group.js';
 import { type RadiosGroupType, RadiosSizeEnum } from './types.js';
 
 const standardProps: RadiosGroupType = {
-  fieldId: 'uniqueId',
+  groupId: 'uniqueId',
   title: {
     value: 'Where do you live?',
     asHeading: {

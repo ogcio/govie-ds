@@ -6,8 +6,9 @@
 
 {% macro govieRadiosGroup(props) %}
   {% set isInline = 'gi-radio-group-options-inline' if props.inline else 'gi-radio-group-options-stacked' %}
-
+  {% set defaultValue = props.defaultValue if props.defaultValue else 'null' %}
   <div
+    data-default-value="{{ defaultValue }}"
     data-testid="govie-radios"
     data-module="gieds-radios"
     class="gi-radio-group-container"
@@ -56,11 +57,12 @@
           {% for radio in props['items'] %}
             {{
               govieRadio({
-              "name": props.fieldId,
+              "checked": radio.checked,
+              "name": props.groupId,
               "label": radio.label,
               "value": radio.value,
               "hint": radio.hint,
-              "radioId": props.fieldId + "-" + loop.index0 | string,
+              "radioId": props.groupId + "-" + loop.index0 | string,
               "size": props.size,
               "dataElement": "radio" + loop.index0 | string,
               "conditionalInput": radio.conditionalInput
@@ -75,11 +77,12 @@
             </p>
             {{
               govieRadio({
-                "name": props.fieldId,
+                "checked": props.dividerOption.checked,
+                "name": props.groupId,
                 "label": props.dividerOption.label,
                 "value": props.dividerOption.value,
                 "hint": props.dividerOption.hint,
-                "radioId": props.fieldId + "-" + props.items.length | string,
+                "radioId": props.groupId + "-" + props.items.length | string,
                 "size": props.size,
                 "dataElement": "radio-divider-option",
                 "conditionalInput": props.dividerOption.conditionalInput
