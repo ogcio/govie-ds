@@ -84,12 +84,12 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  h1: ({ children }) => <Heading as="h1">{children}</Heading>,
-  h2: ({ children }) => <Heading as="h2">{children}</Heading>,
-  h3: ({ children }) => <Heading as="h3">{children}</Heading>,
-  h4: ({ children }) => <Heading as="h4">{children}</Heading>,
-  h5: ({ children }) => <Heading as="h5">{children}</Heading>,
-  h6: ({ children }) => <Heading as="h6">{children}</Heading>,
+  // h1: ({ children }) => <Heading as="h1">{children}</Heading>,
+  // h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+  // h3: ({ children }) => <Heading as="h3">{children}</Heading>,
+  // h4: ({ children }) => <Heading as="h4">{children}</Heading>,
+  // h5: ({ children }) => <Heading as="h5">{children}</Heading>,
+  // h6: ({ children }) => <Heading as="h6">{children}</Heading>,
   p: ({ children }) => <Paragraph>{children}</Paragraph>,
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
@@ -102,12 +102,12 @@ const standardComponents: MDXComponents = {
       <SyntaxHighlighter
         wrapLongLines
         language={className}
-        className="max-h-[300px] overflow-scroll"
+        className="max-h-[300px] overflow-scroll gi-font-tertiary text-2xs"
       >
         {children as string | string[]}
       </SyntaxHighlighter>
     ) : (
-      <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs">
+      <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs gi-font-tertiary">
         {children}
       </code>
     ),

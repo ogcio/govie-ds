@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import { getDocumentDetails } from './src/lib/documents/document-details';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 const Document = defineDocumentType(() => ({
   name: 'Doc',
@@ -38,4 +40,8 @@ const Document = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: './content',
   documentTypes: [Document],
+  mdx: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeSlug],
+  },
 });

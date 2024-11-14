@@ -11,6 +11,7 @@ const config: Config = {
     { pattern: /col-./ },
     { pattern: /row-./ },
     { pattern: /gap-./ },
+    { pattern: /font-./ },
   ],
 };
 

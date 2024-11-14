@@ -39,9 +39,11 @@ export default function DocumentLayoutProps({
   }
 
   return (
-    <article className="flex gap-5xl">
-      <SideNavigationConnected />
-      {children}
-    </article>
+    <div className="w-full grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div className="w-full hidden md:block p-4">
+        <SideNavigationConnected />
+      </div>
+      <div className="w-full md:col-span-4">{children}</div>
+    </div>
   );
 }
