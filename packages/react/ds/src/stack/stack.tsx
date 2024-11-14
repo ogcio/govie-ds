@@ -271,7 +271,6 @@ export const Stack: React.FC<StackProps> = ({
       role="list"
       aria-label="Items Stacked"
       data-testid="govie-stack"
-      style={{ height: fixedHeight }}
     >
       {renderChildren()}
     </div>
