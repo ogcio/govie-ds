@@ -105,3 +105,6 @@ IconButton
 FileUpload
 HeadingResponsiveSizes
 sampleText
+itemsAlignment
+itemsDistribution
+fixedHeight
