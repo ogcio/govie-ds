@@ -1,4 +1,6 @@
-import { Icon, IconId } from '../../icon/icon.js';
+import { IconId } from '../../icon/icon.js';
+import { IconButton } from '../../icon-button/icon-button.js';
+import { TextInput } from '../../text-input/text-input.js';
 
 function HeaderSearch({
   action,
@@ -17,21 +19,19 @@ function HeaderSearch({
       id="SearchContainer"
       className={`gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8 ${className}`}
     >
-      <div className="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
+      <div className="gi-w-fit gi-mx-auto gi-flex-col gi-my-8">
         <form action={ActionType}>
-          <label htmlFor="search" className="gi-text-md gi-font-bold gi-mb-4">
-            Enter search term
-          </label>
-          <div className="gi-flex">
-            <input
+          <div className="gi-flex gi-items-end">
+            <TextInput
+              label={{ text: 'Enter search term' }}
               name="search_query"
               type="text"
-              className="gi-px-3 gi-py-1 gi-grow gi-w-full"
-              id="search"
             />
-            <button className="gi-bg-emerald-800 gi-text-white gi-p-md">
-              <Icon icon={icon} />
-            </button>
+            <IconButton
+              icon={{ icon, ariaLabel: 'Open' }}
+              size="medium"
+              className="gi-mb-4 gi-ml-1"
+            />
           </div>
         </form>
       </div>

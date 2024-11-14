@@ -68,6 +68,7 @@ export const Default: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
+        icon: 'search',
       },
       items: [
         {

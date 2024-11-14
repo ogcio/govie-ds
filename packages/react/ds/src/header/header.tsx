@@ -84,8 +84,8 @@ export function Header({
           </ul>
         </div>
       )}
-      <Container>
-        <div id="MenuContainer" className={menuContainerClassNames}>
+      <Container id="HeaderMenuContainer">
+        <div className={menuContainerClassNames}>
           {logo?.href ? (
             <>
               <a

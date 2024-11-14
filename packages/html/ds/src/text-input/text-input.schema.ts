@@ -18,6 +18,11 @@ export enum InputTypeEnum {
 }
 
 export const textInputSchema = zod.object({
+  name: zod
+    .string({
+      description: 'Sets the unique ID for the input field.',
+    })
+    .optional(),
   prefix: zod
     .string({
       description:

@@ -35,8 +35,8 @@
         </ul>
       </div>
     {% endif %}
-    <div class="gi-layout-container">
-      <div id="MenuContainer" class="{{ menuContainerClassNames }}">
+    <div id="HeaderMenuContainer" class="gi-layout-container">
+      <div class="{{ menuContainerClassNames }}">
         {% if props.logo.href %}
           <a
             aria-label="Go to the home page"
@@ -123,7 +123,7 @@
       </div>
     </div>
     {% if props.tools.search %}
-      {{ HeaderSearchContainer({"searchUrl": props.tools.search.action}) }}
+      {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "icon": props.tools.search.icon or "search"}) }}
     {% endif %}
     {{ headerMenu(props) }}
     <div
