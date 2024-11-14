@@ -2,17 +2,30 @@ import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { render, fireEvent, cleanup } from '../test-utils.js';
 import { Pagination, PaginationProps } from './pagination.js';
 
-vi.mock('../hooks/use-breakpoint.js');
+vi.mock('../hooks/use-breakpoint.js', async () => {
+  const actual = await vi.importActual('../hooks/use-breakpoint.js');
+  return {
+    ...actual,
+    useBreakpoint: vi.fn(),
+  };
+});
 
 const mockUseBreakpoint = vi.mocked(useBreakpoint);
 
-const standardProps = {
+const standardProps: PaginationProps = {
   currentPage: 5,
   totalPages: 10,
   onPageChange: vi.fn(),
 };
 
 describe('Pagination', () => {
+  beforeEach(() => {
+    mockUseBreakpoint.mockReturnValue({
+      breakpoint: Breakpoint.LG,
+      width: 1024,
+    });
+  });
+
   afterEach(() => {
     cleanup();
     vi.restoreAllMocks();
@@ -31,7 +44,10 @@ describe('Pagination', () => {
   });
 
   it('should render pagination buttons and page numbers when not on XS breakpoint', () => {
-    mockUseBreakpoint.mockReturnValue(Breakpoint.XS);
+    mockUseBreakpoint.mockReturnValue({
+      breakpoint: Breakpoint.XS,
+      width: 480,
+    });
 
     const screen = renderPagination(standardProps);
     const pageButtons = screen.getAllByRole('button');
@@ -40,8 +56,11 @@ describe('Pagination', () => {
     expect(screen.getByText('Page 5 of 10')).toBeInTheDocument();
   });
 
-  it('should render page number buttons correctly', () => {
-    mockUseBreakpoint.mockReturnValue(Breakpoint.LG);
+  it('should render page number buttons correctly on large breakpoints', () => {
+    mockUseBreakpoint.mockReturnValue({
+      breakpoint: Breakpoint.LG,
+      width: 1024,
+    });
 
     const screen = renderPagination(standardProps);
 
@@ -51,17 +70,23 @@ describe('Pagination', () => {
   });
 
   it('should hide pagination buttons on XS breakpoint', () => {
-    mockUseBreakpoint.mockReturnValue(Breakpoint.XS);
+    mockUseBreakpoint.mockReturnValue({
+      breakpoint: Breakpoint.XS,
+      width: 400,
+    });
 
     const screen = renderPagination(standardProps);
     const pageButtons = screen.queryAllByRole('button');
 
-    expect(pageButtons.length).toBe(2); // Count of 2 buttons, previous and next button
+    expect(pageButtons.length).toBe(2); // Count of 2 buttons: previous and next buttons
     expect(screen.queryByText('Page 5 of 10')).toBeInTheDocument();
   });
 
   it('should call onPageChange when a page button is clicked', () => {
-    mockUseBreakpoint.mockReturnValue(Breakpoint.LG);
+    mockUseBreakpoint.mockReturnValue({
+      breakpoint: Breakpoint.LG,
+      width: 1024,
+    });
 
     const screen = renderPagination(standardProps);
     const pageButton = screen.getByText('3');
@@ -71,7 +96,7 @@ describe('Pagination', () => {
     expect(standardProps.onPageChange).toHaveBeenCalledWith(3);
   });
 
-  it('should disable previous button on first page', () => {
+  it('should disable previous button on the first page', () => {
     const props = { ...standardProps, currentPage: 1 };
     const screen = renderPagination(props);
     const previousButton = screen.getByText('Previous');
@@ -79,7 +104,7 @@ describe('Pagination', () => {
     expect(previousButton).toBeDisabled();
   });
 
-  it('should disable next button on last page', () => {
+  it('should disable next button on the last page', () => {
     const props = { ...standardProps, currentPage: 10 };
     const screen = renderPagination(props);
     const nextButton = screen.getByText('Next');
@@ -97,7 +122,7 @@ describe('Pagination', () => {
     expect(moreHorizIcon).toBeInTheDocument();
   });
 
-  it('should pass axe tests', async () => {
+  it('should pass accessibility tests', async () => {
     const screen = renderPagination(standardProps);
     await screen.axe();
   });
