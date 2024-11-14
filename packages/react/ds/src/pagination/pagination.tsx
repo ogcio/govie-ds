@@ -46,7 +46,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const renderPaginationLabel = () => (
     <span className="gi-text-md">
-      Page {currentPage} of {totalPages}
+      <span className="gi-font-bold">Page {currentPage}</span> of {totalPages}
     </span>
   );
 
