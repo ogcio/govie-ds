@@ -20,18 +20,20 @@
 
   <header id="GovieHeader" class="{{ headerClassNames }}">
     {% if props.languages %}
-      <ul class="{{ languageBarClassNames }}">
-        {% for link in props.languages %}
-          <li>
-            <a
-              data-testid="language-link-desktop-{{ loop.index0 }}"
-              class="{{ languageItemClassNames }}"
-              href="{{ link.href }}"
-              >{{ link.label }}</a
-            >
-          </li>
-        {% endfor %}
-      </ul>
+      <div class="{{ languageBarClassNames }}">
+        <ul>
+          {% for link in props.languages %}
+            <li>
+              <a
+                data-testid="language-link-desktop-{{ loop.index0 }}"
+                class="{{ languageItemClassNames }}"
+                href="{{ link.href }}"
+                >{{ link.label }}</a
+              >
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
     <div class="gi-layout-container">
       <div id="MenuContainer" class="{{ menuContainerClassNames }}">

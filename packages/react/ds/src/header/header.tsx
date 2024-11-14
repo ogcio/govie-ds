@@ -63,9 +63,9 @@ export function Header({
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
-      <Container>
-        {languages && (
-          <ul className={languageBarClassNames}>
+      {languages && (
+        <div className={languageBarClassNames}>
+          <ul>
             {languages.map((link, index) => (
               <li key={index}>
                 {link.href ? (
@@ -82,7 +82,9 @@ export function Header({
               </li>
             ))}
           </ul>
-        )}
+        </div>
+      )}
+      <Container>
         <div id="MenuContainer" className={menuContainerClassNames}>
           {logo?.href ? (
             <>
