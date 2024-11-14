@@ -85,7 +85,7 @@
               data-testid="SearchTrigger"
             />
             {% if props.tools.search.label %}
-              <span className="label">{{ props.tools.search.label }}</span>
+              <span class="label">{{ props.tools.search.label }}</span>
             {% endif %}
             <div class="search-icon">
               {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
@@ -97,7 +97,7 @@
         {% endif %}
         {% for item in props['tools']['items'] %}
           <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-            <span className="label">{{ item.label }}</span>
+            <span class="label">{{ item.label }}</span>
             {{ govieIcon({"icon": item.icon }) }}
           </a>
         {% endfor %}

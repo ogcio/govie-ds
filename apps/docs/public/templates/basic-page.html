@@ -21,11 +21,11 @@
           </li>
         </ul>
       </div>
-      <div class="gi-layout-container">
-        <div id="MenuContainer" class="gi-header-menu">
+      <div id="HeaderMenuContainer" class="gi-layout-container">
+        <div class="gi-header-menu">
           <a
             aria-label="Go to the home page"
-            href="/home"
+            href="/link"
             class="gi-header-logo-lg"
           >
             <svg
@@ -79,7 +79,7 @@
           </a>
           <a
             aria-label="Go to the home page"
-            href="/home"
+            href="/link"
             class="gi-header-logo-sm"
           >
             <svg
@@ -142,12 +142,20 @@
               class="gi-block gi-w-0 gi-absolute gi-h-0"
               id="SearchTrigger"
               type="checkbox"
+              data-testid="SearchTrigger"
             />
-            <span class="">Search</span>
+            <span class="label">Search</span>
             <div class="search-icon">
               <span
                 data-testid="govie-icon"
                 role="presentation"
+                style="
+                  font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                "
                 class="material-symbols-outlined gi-block gi-text-[24px]"
               >
                 search
@@ -157,6 +165,13 @@
               <span
                 data-testid="govie-icon"
                 role="presentation"
+                style="
+                  font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                "
                 class="material-symbols-outlined gi-block gi-text-[24px]"
               >
                 close
@@ -164,131 +179,147 @@
             </div>
           </label>
           <a class="gi-header-tool-item" href="/item1">
-            <span class="">Apps</span>
+            <span class="label">Home</span>
 
             <span
               data-testid="govie-icon"
               role="presentation"
+              style="
+                font-variation-settings:
+                  'FILL' 0,
+                  'wght' 400,
+                  'GRAD' 0,
+                  'opsz' 24;
+              "
               class="material-symbols-outlined gi-block gi-text-[24px]"
             >
-              apps
+              home
             </span>
           </a>
-          <label
-            for="MobileMenuTrigger"
-            class="gi-header-tool-item sm:gi-hidden"
-          >
-            <input
-              class="gi-block gi-w-0 gi-absolute gi-h-0"
-              id="MobileMenuTrigger"
-              data-element="menu-icon"
-              type="checkbox"
-            />
-            <span class="">Menu</span>
-            <div data-element="menu-icon">
-              <span
-                data-testid="govie-icon"
-                role="presentation"
-                class="material-symbols-outlined gi-block gi-text-[24px]"
-              >
-                menu
-              </span>
-            </div>
-          </label>
         </div>
-        <div
-          id="SearchContainer"
-          class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
-        >
-          <div
-            class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8"
-          >
-            <form action="/search_page">
-              <label for="search" class="gi-text-md gi-font-bold gi-mb-4">
-                Enter search term
-              </label>
-              <div class="gi-flex">
-                <input
-                  name="search_query"
-                  type="text"
-                  class="gi-px-3 gi-py-1 gi-grow gi-w-full"
-                  id="search"
-                />
-                <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
-                  <span
-                    data-testid="govie-icon"
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >
-                    search
-                  </span>
-                </button>
+      </div>
+      <div
+        id="SearchContainer"
+        data-testid="SearchContainer"
+        class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
+      >
+        <div class="gi-w-fit gi-mx-auto gi-flex-col gi-my-8">
+          <form action="/search_page">
+            <div class="gi-flex gi-items-end">
+              <div class="gi-text-input-container">
+                <label for="search" class="gi-text-md gi-label gi-mb-2"
+                  >Enter search term</label
+                >
+
+                <div class="gi-text-input-container-inner">
+                  <input
+                    id="search"
+                    data-testid="textbox"
+                    type="text"
+                    autocomplete="on"
+                    class="gi-border-gray-950 gi-w-auto gi-text-input"
+                  />
+                </div>
               </div>
-            </form>
-          </div>
-        </div>
 
-        <div
-          id="HeaderMenuContainer"
-          class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0"
-        >
-          <div
-            class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
-          >
-            <div class="gi-flex gi-items-center">
-              <label
-                for="MobileMenuTrigger"
-                class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 focus-within:gi-outline-offset-0 focus-within:gi-outline-none focus-within:gi-border focus-within:gi-border-solid focus-within:gi-border-yellow-400"
+              <button
+                data-element="icon-button-container"
+                data-module="gieds-icon-button"
+                data-testid="govieIconButton-default-primary-medium-notDisabled"
+                class="gi-btn gi-btn-primary gi-icon-btn-regular gi-mb-4 gi-ml-1"
               >
-                <span class="gi-text-2md gi-font-bold">Close</span>
-
                 <span
                   data-testid="govie-icon"
                   role="presentation"
-                  class="material-symbols-outlined gi-block gi-text-[24px]"
+                  style="
+                    font-variation-settings:
+                      'FILL' 0,
+                      'wght' 400,
+                      'GRAD' 0,
+                      'opsz' 24;
+                  "
+                  class="material-symbols-outlined gi-block gi-text-[16px]"
                 >
-                  close
+                  search
                 </span>
-              </label>
+              </button>
             </div>
-          </div>
-          <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
-            <li>
-              <a
-                href="#"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-              >
-                <span class="gi-font-bold gi-text-sm">News</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-              >
-                <span class="gi-font-bold gi-text-sm">Departments</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-              >
-                <span class="gi-font-bold gi-text-sm">Services</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
-              >
-                <span class="gi-text-sm">Gaeilge</span>
-              </a>
-            </li>
-          </ul>
+          </form>
         </div>
       </div>
-      <div class="gi-header-overlay" data-element="overlay-disabled"></div>
+
+      <div
+        id="HeaderMenuContainer"
+        class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen"
+      >
+        <div
+          class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
+        >
+          <div class="gi-flex gi-items-center">
+            <label
+              for="MobileMenuTrigger"
+              class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+            >
+              <span class="gi-text-2md gi-font-bold">Close</span>
+
+              <span
+                data-testid="govie-icon"
+                role="presentation"
+                style="
+                  font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                "
+                class="material-symbols-outlined gi-block gi-text-[24px]"
+              >
+                close
+              </span>
+            </label>
+          </div>
+        </div>
+        <ul class="gi-bg-white gi-px-4 sm:gi-px-8">
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm gi-ml-1">News</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm gi-ml-1">Departments</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+            >
+              <span class="gi-font-bold gi-text-sm gi-ml-1">Services</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
+            >
+              <span class="gi-text-sm gi-ml-1">Gaeilge</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        id="HeaderOverlayContainer"
+        class="gi-header-overlay"
+        data-element="overlay-disabled"
+      ></div>
     </header>
 
     <main>
