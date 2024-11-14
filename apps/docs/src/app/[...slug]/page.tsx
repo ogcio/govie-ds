@@ -53,7 +53,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
       </div>
       {document.status !== 'coming-soon' || document.draft ? (
         <div className="gi-layout-column-container">
-          <div className="gi-layout-column-2-3 px-4 prose">
+          <div className="gi-layout-column-2-3 px-4">
             <Mdx code={document.body.code} />
           </div>
           <div className="gi-layout-column-1-3 hidden md:block not-prose p-4">
