@@ -239,7 +239,6 @@ export const Stack: React.FC<StackProps> = ({
   const stackClasses = cn(
     'gi-flex',
     'gi-overflow-auto',
-    `gi-h-[${fixedHeight}]`,
     getDistributionClasses(itemsDistribution),
     getAlignmentClasses(itemsAlignment),
     getDirectionClasses(direction),
@@ -271,6 +270,7 @@ export const Stack: React.FC<StackProps> = ({
       role="list"
       aria-label="Items Stacked"
       data-testid="govie-stack"
+      style={{ height: fixedHeight }}
     >
       {renderChildren()}
     </div>
