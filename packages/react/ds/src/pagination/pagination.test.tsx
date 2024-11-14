@@ -53,7 +53,8 @@ describe('Pagination', () => {
     const pageButtons = screen.getAllByRole('button');
 
     expect(pageButtons.length).toBeGreaterThan(0); // Ensures there are page buttons
-    expect(screen.getByText('Page 5 of 10')).toBeInTheDocument();
+    expect(screen.getByText('Page 5')).toBeInTheDocument();
+    expect(screen.getByText('of 10')).toBeInTheDocument();
   });
 
   it('should render page number buttons correctly on large breakpoints', () => {
@@ -79,7 +80,8 @@ describe('Pagination', () => {
     const pageButtons = screen.queryAllByRole('button');
 
     expect(pageButtons.length).toBe(2); // Count of 2 buttons: previous and next buttons
-    expect(screen.queryByText('Page 5 of 10')).toBeInTheDocument();
+    expect(screen.getByText('Page 5')).toBeInTheDocument();
+    expect(screen.getByText('of 10')).toBeInTheDocument();
   });
 
   it('should call onPageChange when a page button is clicked', () => {
