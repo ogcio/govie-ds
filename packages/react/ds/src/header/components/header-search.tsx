@@ -23,8 +23,9 @@ function HeaderSearch({
         <form action={ActionType}>
           <div className="gi-flex gi-items-end">
             <TextInput
-              label={{ text: 'Enter search term' }}
+              label={{ text: 'Enter search term', htmlFor: 'search' }}
               name="search_query"
+              id="search"
               type="text"
             />
             <IconButton
