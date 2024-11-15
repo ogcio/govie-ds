@@ -6,7 +6,7 @@
   <div id="SearchContainer" class="gi-hidden gi-bg-gray-50 gi-p-4">
     <form action="{{ props.searchUrl }}">
       <div class="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
-        {{ govieTextInput({"label": {"content": "Enter search term"}, "name": "search_query", "id": "search", "className": "gi-flex-auto"}) }}
+        {{ govieTextInput({"label": {"content": "Enter search term"}, "name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto"}) }}
 
         {{
           govieIconButton({
