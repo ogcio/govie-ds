@@ -822,6 +822,17 @@ input[type='file' i] {
 /* End of Alert */
 
 /* Toast */
+
+/* Native notyf classes */
+.notyf__toast {
+ @apply !gi-m-0 !gi-p-0 
+}
+.notyf__wrapper {
+ @apply !gi-m-0 !gi-p-0 
+}
+
+/* End of Native notyf classes */
+
 .gi-toast-base {
   @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px]
 }

@@ -1,36 +1,50 @@
 import 'notyf/notyf.min.css';
-import { useContext, useEffect, useState } from 'react';
+import { INotyfPosition } from 'notyf';
+import { cloneElement, useContext, useEffect, type ReactNode } from 'react';
 import { renderToString } from 'react-dom/server';
-import { Alert } from '../alert/alert.js';
-import { Button } from '../button/button.js';
-import { Paragraph } from '../paragraph/paragraph.js';
+import { type VariantProps } from 'tailwind-variants';
+import { type ButtonProps } from '../button/types.js';
+import { Toast as DSToast, toastVariants } from './ds-toast.js';
 import toastConfig from './toast-context.js';
 
-// type Props = {}
+type ToastProps = {
+  variant?: VariantProps<typeof toastVariants>['variant'];
+  title: string;
+  children?: ReactNode;
+  dismissible?: boolean;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  duration?: number;
+  position?: INotyfPosition;
+  trigger?: React.ReactElement<ButtonProps>;
+};
 
-export const Toast = () => {
+export const Toast = (props: ToastProps) => {
   const notyf = useContext(toastConfig);
-  const [withTrigger, setWithTrigger] = useState(false);
-  const html = renderToString(
-    <Alert title="Info Alert">
-      <Paragraph>This is the content</Paragraph>
-    </Alert>,
-  );
 
   useEffect(() => {
-    if (!withTrigger) {
-      notyf.open({ type: 'test', message: html });
+    const notyfContainer = document.querySelectorAll('.notyf .notyf__toast');
+    console.log(notyfContainer);
+
+    for (const toast of notyfContainer) {
+      toast
+        .querySelector('.gi-toast-dismiss')
+        ?.addEventListener('click', (event) => {
+          //   props.onClose(event);
+          toast.classList.add('!gi-hidden');
+        });
     }
   }, []);
 
-  if (!withTrigger) {
-    return null;
+  const renderNotyf = () => {
+    const { duration, position } = props;
+    const html = renderToString(<DSToast {...props} />);
+    notyf.open({ type: 'open', message: html, duration, position });
+  };
+
+  if (props.trigger) {
+    return cloneElement(props.trigger, { onClick: renderNotyf });
   }
-  return (
-    <Button onClick={() => notyf.success('THIS IS A SUCCESS TOAST')}>
-      Toast
-    </Button>
-  );
+  renderNotyf();
 };
 
 export default Toast;
