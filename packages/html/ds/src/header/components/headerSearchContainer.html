@@ -3,29 +3,18 @@
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 
 {% macro HeaderSearchContainer(props) %}
-  <div
-    id="SearchContainer"
-    data-testid="SearchContainer"
-    class="gi-flex
-          gi-h-0
-          gi-bg-gray-50
-          gi-overflow-hidden
-          gi-px-4
-          xs:gi-px-8"
-  >
-    <div class="gi-w-fit gi-mx-auto gi-flex-col gi-my-8">
-      <form action="{{ props.searchUrl }}">
-        <div class="gi-flex gi-items-end">
-          {{ govieTextInput({"label": {"content": "Enter search term"}, "name": "search_query", "id": "search"}) }}
+  <div id="SearchContainer" class="gi-hidden gi-bg-gray-50 gi-p-4">
+    <form action="{{ props.searchUrl }}">
+      <div class="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
+        {{ govieTextInput({"label": {"content": "Enter search term"}, "name": "search_query", "id": "search", "className": "gi-flex-auto"}) }}
 
-          {{
-            govieIconButton({
-              "className": "gi-mb-4 gi-ml-1",
-              "icon": { "icon": props.icon }
-            })
-          }}
-        </div>
-      </form>
-    </div>
+        {{
+          govieIconButton({
+            "className": "gi-mb-4 gi-ml-1 gi-flex-none",
+            "icon": { "icon": props.icon }
+          })
+        }}
+      </div>
+    </form>
   </div>
 {% endmacro %}
