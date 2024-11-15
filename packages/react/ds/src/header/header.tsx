@@ -84,10 +84,7 @@ export function Header({
           </ul>
         </div>
       )}
-      <div
-        id="HeaderMenuContainer"
-        className="gi-layout-container xs:!gi-max-w-full"
-      >
+      <div id="HeaderMenuContainer" className="gi-header-container">
         <div className={menuContainerClassNames}>
           {logo?.href ? (
             <>
