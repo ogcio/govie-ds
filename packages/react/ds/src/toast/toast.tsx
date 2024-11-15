@@ -1,11 +1,11 @@
 import 'notyf/notyf.min.css';
 import { INotyfPosition } from 'notyf';
-import { cloneElement, useContext, useEffect, type ReactNode } from 'react';
+import { Notyf } from 'notyf';
+import { cloneElement, createContext, useContext, useEffect, type ReactNode } from 'react';
 import { renderToString } from 'react-dom/server';
 import { type VariantProps } from 'tailwind-variants';
 import { type ButtonProps } from '../button/types.js';
 import { Toast as DSToast, toastVariants } from './ds-toast.js';
-import toastConfig from './toast-context.js';
 
 type ToastProps = {
   variant?: VariantProps<typeof toastVariants>['variant'];
@@ -18,8 +18,10 @@ type ToastProps = {
   trigger?: React.ReactElement<ButtonProps>;
 };
 
+const notyfContext = createContext(new Notyf());  
+
 export const Toast = (props: ToastProps) => {
-  const notyf = useContext(toastConfig);
+  const notyf = useContext(notyfContext);
 
   useEffect(() => {
     const notyfContainer = document.querySelectorAll('.notyf .notyf__toast');
