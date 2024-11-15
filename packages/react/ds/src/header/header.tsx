@@ -84,7 +84,10 @@ export function Header({
           </ul>
         </div>
       )}
-      <Container id="HeaderMenuContainer">
+      <div
+        id="HeaderMenuContainer"
+        className="gi-layout-container xs:!gi-max-w-full"
+      >
         <div className={menuContainerClassNames}>
           {logo?.href ? (
             <>
@@ -188,7 +191,7 @@ export function Header({
             </label>
           )}
         </div>
-      </Container>
+      </div>
       {tools?.search && <HeaderSearch {...tools.search} />}
       <HeaderMenu
         searchProps={tools?.search}
