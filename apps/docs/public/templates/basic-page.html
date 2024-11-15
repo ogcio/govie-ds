@@ -198,54 +198,48 @@
           </a>
         </div>
       </div>
-      <div
-        id="SearchContainer"
-        data-testid="SearchContainer"
-        class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
-      >
-        <div class="gi-w-fit gi-mx-auto gi-flex-col gi-my-8">
-          <form action="/search_page">
-            <div class="gi-flex gi-items-end">
-              <div class="gi-text-input-container">
-                <label for="search" class="gi-text-md gi-label gi-mb-2"
-                  >Enter search term</label
-                >
-
-                <div class="gi-text-input-container-inner">
-                  <input
-                    id="search"
-                    data-testid="textbox"
-                    type="text"
-                    autocomplete="on"
-                    class="gi-border-gray-950 gi-w-auto gi-text-input"
-                  />
-                </div>
-              </div>
-
-              <button
-                data-element="icon-button-container"
-                data-module="gieds-icon-button"
-                data-testid="govieIconButton-default-primary-medium-notDisabled"
-                class="gi-btn gi-btn-primary gi-icon-btn-regular gi-mb-4 gi-ml-1"
+      <div id="SearchContainer" class="gi-hidden gi-bg-gray-50 gi-p-4">
+        <form action="/search_page">
+          <div class="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
+            <div class="gi-text-input-container gi-flex-auto">
+              <label for="search" class="gi-text-md gi-label gi-mb-2"
+                >Enter search term</label
               >
-                <span
-                  data-testid="govie-icon"
-                  role="presentation"
-                  style="
-                    font-variation-settings:
-                      'FILL' 0,
-                      'wght' 400,
-                      'GRAD' 0,
-                      'opsz' 24;
-                  "
-                  class="material-symbols-outlined gi-block gi-text-[16px]"
-                >
-                  search
-                </span>
-              </button>
+
+              <div class="gi-text-input-container-inner">
+                <input
+                  id="search"
+                  data-testid="textbox"
+                  type="text"
+                  autocomplete="on"
+                  class="gi-border-gray-950 gi-w-full gi-text-input"
+                />
+              </div>
             </div>
-          </form>
-        </div>
+
+            <button
+              data-element="icon-button-container"
+              data-module="gieds-icon-button"
+              data-testid="govieIconButton-default-primary-medium-notDisabled"
+              class="gi-btn gi-btn-primary gi-icon-btn-regular gi-mb-4 gi-ml-1 gi-flex-none"
+            >
+              <span
+                data-testid="govie-icon"
+                role="presentation"
+                style="
+                  font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+                "
+                class="material-symbols-outlined gi-block gi-text-[16px]"
+              >
+                search
+              </span>
+            </button>
+          </div>
+        </form>
       </div>
 
       <div
