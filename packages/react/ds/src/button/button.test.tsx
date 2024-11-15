@@ -100,7 +100,9 @@ describe('button', () => {
     };
     const screen = renderButton(propsDisabledButton);
     const buttonElement = screen.getByTestId('disabled', { exact: false });
+
     expect(buttonElement).toBeTruthy();
+    expect(buttonElement).toBeDisabled();
   });
 
   it('should render a button with icon', () => {

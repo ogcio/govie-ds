@@ -775,7 +775,9 @@ input[type='file' i] {
 }
 
 /* End of Checkbox */
+
 /* Chip */
+
 .gi-chip {
   @apply gi-flex gi-items-center gi-gap-1 gi-pl-1.5 gi-pr-1 gi-py-0.5 gi-bg-gray-100 gi-w-fit gi-rounded-sm gi-cursor-default gi-text-xs hover:gi-bg-gray-200 focus:gi-bg-gray-200 focus:gi-outline focus:gi-outline-gray-950 focus:gi-outline-[2px] focus:gi-shadow-[inset_0_0_0_1px_white,0_0_0_5px_var(--gieds-color-yellow-400)];
 }
@@ -821,3 +823,17 @@ input[type='file' i] {
 .gi-alert-danger {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
+
+/* Pagination */
+
+.gi-pagination {
+  @apply gi-flex gi-items-center gi-justify-between gi-gap-2;
+}
+
+/* Custom breakpoint for 524px */
+@media (min-width: 524px) {
+  .gi-pagination {
+    @apply gi-justify-center;
+  }
+}
+/* End of Pagination */
