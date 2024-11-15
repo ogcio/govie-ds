@@ -9,8 +9,6 @@ export type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-  nextLabel?: string;
-  previousLabel?: string;
 };
 
 // TODO Devise localisation
