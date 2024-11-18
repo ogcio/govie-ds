@@ -21,6 +21,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      disabled={disabled}
       type={type}
       form={form}
       value={value}

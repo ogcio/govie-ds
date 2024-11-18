@@ -1,33 +1,20 @@
 {% from 'icon/icon.html' import govieIcon %}
+{% from 'text-input/text-input.html' import govieTextInput %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
 
 {% macro HeaderSearchContainer(props) %}
-  <div
-    id="SearchContainer"
-    data-testid="SearchContainer"
-    class="gi-flex
-          gi-h-0
-          gi-bg-gray-50
-          gi-overflow-hidden
-          gi-px-4
-          xs:gi-px-8"
-  >
-    <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
-      <form action="{{ props.searchUrl }}">
-        <label for="search" class="gi-text-md gi-font-bold gi-mb-4">
-          Enter search term
-        </label>
-        <div class="gi-flex">
-          <input
-            name="search_query"
-            type="text"
-            class="gi-px-3 gi-py-1 gi-grow gi-w-full"
-            id="search"
-          />
-          <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
-            {{ govieIcon({"icon": "search"}) }}
-          </button>
-        </div>
-      </form>
-    </div>
+  <div id="SearchContainer" class="gi-hidden gi-bg-gray-50 gi-p-4">
+    <form action="{{ props.searchUrl }}">
+      <div class="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
+        {{ govieTextInput({"label": {"content": "Enter search term"}, "name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto"}) }}
+
+        {{
+          govieIconButton({
+            "className": "gi-mb-4 gi-ml-1 gi-flex-none",
+            "icon": { "icon": props.icon }
+          })
+        }}
+      </div>
+    </form>
   </div>
 {% endmacro %}

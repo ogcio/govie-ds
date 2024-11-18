@@ -1,40 +1,35 @@
-import { Icon, IconId } from '../../icon/icon.js';
+import { IconId } from '../../icon/icon.js';
+import { IconButton } from '../../icon-button/icon-button.js';
+import { TextInput } from '../../text-input/text-input.js';
 
 function HeaderSearch({
   action,
   serverAction,
-  className,
   icon = 'search',
 }: {
   action?: string;
   serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  className?: string;
   icon?: IconId;
 }) {
   const ActionType = action || serverAction;
   return (
-    <div
-      id="SearchContainer"
-      className={`gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8 ${className}`}
-    >
-      <div className="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
-        <form action={ActionType}>
-          <label htmlFor="search" className="gi-text-md gi-font-bold gi-mb-4">
-            Enter search term
-          </label>
-          <div className="gi-flex">
-            <input
-              name="search_query"
-              type="text"
-              className="gi-px-3 gi-py-1 gi-grow gi-w-full"
-              id="search"
-            />
-            <button className="gi-bg-emerald-800 gi-text-white gi-p-md">
-              <Icon icon={icon} />
-            </button>
-          </div>
-        </form>
-      </div>
+    <div id="SearchContainer" className={`gi-hidden gi-bg-gray-50 gi-p-4`}>
+      <form action={ActionType}>
+        <div className="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
+          <TextInput
+            label={{ text: 'Enter search term', htmlFor: 'search' }}
+            name="search_query"
+            id="search"
+            type="text"
+            className="gi-flex-auto"
+          />
+          <IconButton
+            icon={{ icon, ariaLabel: 'Open' }}
+            size="medium"
+            className="gi-mb-4 gi-ml-1 gi-flex-none"
+          />
+        </div>
+      </form>
     </div>
   );
 }
