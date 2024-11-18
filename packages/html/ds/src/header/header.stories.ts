@@ -68,6 +68,7 @@ export const Default: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
+        icon: 'search',
       },
       items: [
         {
@@ -78,10 +79,6 @@ export const Default: Story = {
       ],
     },
     navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
       {
         href: '#',
         label: 'Departments',

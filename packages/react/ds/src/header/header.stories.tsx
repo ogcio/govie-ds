@@ -68,10 +68,6 @@ export const Default: Story = {
     navLinks: [
       {
         href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
         label: 'Departments',
       },
       {
