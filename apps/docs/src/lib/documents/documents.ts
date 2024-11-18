@@ -42,17 +42,15 @@ export function getMeta({ slug }: { slug: string[] }): MetaDocument {
     return {
       title: getTitle('Page not found'),
       description: 'The requested URL was not found',
-      headings: [],
     };
   }
 
-  const { description, status, title, headings } = document;
+  const { description, status, title } = document;
   const titleWithSuffix = getTitle(title);
 
   return {
     title: titleWithSuffix,
     description,
     status,
-    headings,
   };
 }
