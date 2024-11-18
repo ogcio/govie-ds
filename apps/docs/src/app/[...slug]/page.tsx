@@ -44,15 +44,15 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <section className="flex flex-col grow">
-      <div className="flex justify-between items-center">
-        {document.status === 'stable' ? null : (
-          <DocumentStatus status={document.status} />
-        )}
-        {document.draft ? <Draft /> : null}
-      </div>
       {document.status !== 'coming-soon' || document.draft ? (
         <div className="gi-layout-column-container">
           <div className="gi-layout-column-2-3 px-4">
+            <div className="flex justify-between items-center py-2">
+              {document.status === 'stable' ? null : (
+                <DocumentStatus status={document.status} />
+              )}
+              {document.draft ? <Draft /> : null}
+            </div>
             <Mdx code={document.body.code} />
           </div>
           <div className="gi-layout-column-1-3 hidden md:block not-prose p-4">
