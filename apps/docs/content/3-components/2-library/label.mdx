@@ -18,6 +18,10 @@ libraries:
 
 <ComponentStatusBlock componentId="label" />
 
+## Variants
+
+### Default
+
 <ComponentContainer>
   <Label htmlFor="input-id" size="md" text="This is Label" />
 </ComponentContainer>
@@ -62,14 +66,18 @@ The `Label` component is used to associate a text label with a form input elemen
   </TabPanel>
 </Tabs>
 
-## When to Use This Component
+## Usage
+
+### Best Practices
+
+### When to Use This Component
 
 - **Form Labels**: Use this component whenever you need to label form elements like text inputs, dropdowns, checkboxes, or radio buttons to improve accessibility and usability.
 - **Responsive Text**: Use the `size` prop to control the text size, making it larger or smaller based on the context of the form or layout.
 
 - **Accessibility**: The `htmlFor` prop ensures the label is properly associated with the corresponding input element, which improves accessibility for users who rely on screen readers.
 
-## When Not to Use This Component
+### When Not to Use This Component
 
 - **Standalone Text**: If you need a simple text element that’s not associated with a form control, use a standard text component rather than `Label`.
 

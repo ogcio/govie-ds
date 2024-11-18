@@ -1,8 +1,8 @@
-import { Button, Heading, Paragraph, PhaseBanner } from '@govie-ds/react';
+import { Heading, Paragraph, PhaseBanner } from '@govie-ds/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
+import { Button } from '@/components/form/button';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 import { Prose } from '@/components/typography/prose';
 import { config } from '@/lib/config';
@@ -74,7 +74,6 @@ function Benefits() {
 }
 
 export default function HomePage() {
-  const router = useRouter();
   return (
     <article className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow">
       <PhaseBanner level="alpha">
@@ -99,8 +98,8 @@ export default function HomePage() {
             customisable, the Design System Building Block allows departments to
             create cohesive digital experiences effortlessly.
           </p>
-          <Button onClick={() => router.push(config.signUpFormUrl)}>
-            Sign up to learn more <RightArrowIcon />
+          <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+            Sign up to learn more
           </Button>
         </Prose>
         <div>
@@ -120,8 +119,8 @@ export default function HomePage() {
           or learn more about how the Design System Building Block can benefit
           your department.
         </Paragraph>
-        <Button onClick={() => router.push(config.signUpFormUrl)}>
-          Sign up to learn more <RightArrowIcon />
+        <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+          Sign up to learn more
         </Button>
       </Prose>
     </article>

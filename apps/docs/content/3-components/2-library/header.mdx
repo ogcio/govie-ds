@@ -20,6 +20,10 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 <ComponentStatusBlock componentId="header" />
 
+## Variants
+
+### Default
+
 <ComponentContainer>
   <Header 
     title={'Application title'}
@@ -296,7 +300,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-## Header with title
+### Header with only title
 
 <ComponentContainer>
   <Header title={'Application title'} />
@@ -338,7 +342,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-## Header with links
+### Header with links
 
 <ComponentContainer>
   <Header navLinks={[{ href: '', label: 'News' },{ href: '', label: 'Departments' },{ href: '', label: 'Services' }]} />
@@ -418,7 +422,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-## Header with language switch
+### Header with language switch
 
 <ComponentContainer>
   <Header languages={[{ href: '', label: 'Gaeilge' }]}/>
@@ -479,7 +483,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-## Header with tools
+### Header with tools
 
 <ComponentContainer>
   <Header tools={{
@@ -713,16 +717,20 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-## When to use this component
+## Usage
+
+### Best Practices
+
+### When to use this component
 
 You must use the GOV.IE header component at the top of every page. The Service Manual explains why it’s important for you to make your service look like GOV.IE.
 
-## When not to use this component
+### When not to use this component
 
 If your service is not hosted on one of the GOV.IE domains outlined, you must not use the GOV.IE header component as it’s not considered part of GOV.IE.
 You can still build from this component, but you’ll need to make some changes to make sure users do not confuse your website with GOV.IE.
 
-## How it works
+### How it works
 
 The GOV.IE header component ensure users get a consistent experience on GOV.IE.
 

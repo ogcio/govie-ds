@@ -20,7 +20,9 @@ The `Textarea` component allows users to input multi-line text. It’s ideal for
 
 <ComponentStatusBlock componentId="textarea" />
 
-## Standard textarea
+## Variants
+
+### Default textarea
 
 <ComponentContainer>
   <TextArea {...{
@@ -76,12 +78,11 @@ The `Textarea` component allows users to input multi-line text. It’s ideal for
   hint={{ text: 'Hint: This is a helpful hint' }}
 />
 
-````
+```
 </TabPanel>
 </Tabs>
 
-
-## With Character limit
+### With Character limit
 
 <ComponentContainer>
   <TextArea {...{
@@ -149,7 +150,11 @@ The `Textarea` component allows users to input multi-line text. It’s ideal for
 </TabPanel>
 </Tabs>
 
-## When to use this component
+## Usage
+
+### Best Practices
+
+### When to use this component
 
 - **Multi-line input**: Use `Textarea` when the input requires multiple lines of text, such as:
 - Feedback forms, comments, or reviews
@@ -159,7 +164,7 @@ The `Textarea` component allows users to input multi-line text. It’s ideal for
 - **Custom size control**: Use `rows` and `cols` to control the visible size of the text box, tailoring the component to your layout needs.
 - **Character limit**: Use `maxChars` to limit the number of characters allowed.
 
-## When not to use this component
+### When not to use this component
 
 - **Single-line input**: If you only expect short, single-line inputs (e.g., names, email addresses), use the `TextInput` component instead.
 - **Structured data input**: For specialised inputs like dates, numbers, or selections from predefined options, use components like `DateInput`, `NumberInput`, or `Select` instead of `Textarea`.

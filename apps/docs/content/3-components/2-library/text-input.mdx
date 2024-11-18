@@ -20,6 +20,10 @@ The `TextInput` component is used to allow users to enter single-line text, with
 
 <ComponentStatusBlock componentId="text-input" />
 
+## Variants
+
+### Default
+
 <ComponentContainer>
   <TextInput
     error={{
@@ -96,7 +100,11 @@ The `TextInput` component is used to allow users to enter single-line text, with
   </TabPanel>
 </Tabs>
 
-## When to Use This Component
+## Usage
+
+### Best Practices
+
+### When to Use This Component
 
 - **Single-Line Text Inputs**: Use this component for short, single-line inputs such as names, email addresses, phone numbers, and short codes (e.g., postal codes).
 
@@ -106,7 +114,7 @@ The `TextInput` component is used to allow users to enter single-line text, with
 
 - **Custom Prefixes or Suffixes**: This component supports adding contextual information next to the input (e.g., units, symbols) using `prefix` and `suffix` props.
 
-## When Not to Use This Component
+### When Not to Use This Component
 
 - **Multi-Line Text Fields**: If your input requires multiple lines (such as a message box), use a `textarea` instead of `TextInput`.
 - **Input with Formatting Requirements**: If input masking or format validation (like date pickers or rich text editors) is necessary, consider using a specialised component.

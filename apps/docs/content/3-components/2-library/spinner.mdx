@@ -19,6 +19,10 @@ A spinner is a rotating circle that indicates the status or state of completion 
 
 <ComponentStatusBlock componentId="spinner" />
 
+## Variants
+
+### Default
+
 <ComponentContainer>
   <Spinner />
 </ComponentContainer>
@@ -91,7 +95,7 @@ A spinner is a rotating circle that indicates the status or state of completion 
   </TabPanel>
 </Tabs>
 
-## Button with a spinner
+### Button with a spinner
 
 <ComponentContainer>
   <ButtonWithSpinner />
@@ -174,7 +178,7 @@ A spinner is a rotating circle that indicates the status or state of completion 
   </TabPanel>
 </Tabs>
 
-## Modal with a spinner
+### Modal with a spinner
 
 <ComponentContainer>
   <Modal triggerButton={<Button>Open Modal</Button>}  >
@@ -271,7 +275,9 @@ A spinner is a rotating circle that indicates the status or state of completion 
   </TabPanel>
 </Tabs>
 
-## Usage best practices
+## Usage
+
+### Best Practices
 
 Here are some best practices for the usage of a Spinner component:
 1. Use spinners for short wait times (under 10 seconds):
@@ -296,3 +302,7 @@ Here are some best practices for the usage of a Spinner component:
 7. Avoid overuse:
     - Don't use multiple spinners on the same page - use a single global indicator instead.
     - For component-level loading (e.g. in cards/dropdowns), consider skeleton loaders instead of spinners.
+
+### When to use this component
+
+### When not to use this component
