@@ -20,27 +20,29 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 <ComponentStatusBlock componentId="header" />
 
-<Header 
+<ComponentContainer>
+  <Header 
     title={'Application title'}
-    languages={[{ href: '#', label: 'Gaeilge' }]}
-    navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]}
+    languages={[{ href: '', label: 'Gaeilge' }]}
+    navLinks={[{ href: '', label: 'News' },{ href: '', label: 'Departments' },{ href: '', label: 'Services' }]}
     tools={{
-      search: {
-        label: 'Search',
-        action: '/search-page',
+    search: {
+      label: 'Search',
+      action: '/search-page',
+    },
+    items: [
+      {
+        href: '/item1',
+        label: 'Home',
+        icon: 'home',
       },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-      ],
-      menu: {
-        label: 'Menu'
-      }
+    ],
+    menu: {
+      label: 'Menu'
+    }
     }} 
-/>
+  />
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -56,7 +58,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             <a
                 data-testid="language-link-desktop-0"
                 class="gi-header-language-item"
-                href="#"
+                href="/"
             >
                 Gaeilge
             </a>
@@ -75,17 +77,17 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
             <ul id="links-container-desktop" class="gi-header-nav">
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-0" href="#">
+                <a data-testid="nav-link-desktop-0" href="/">
                 News
                 </a>
             </li>
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-1" href="#">
+                <a data-testid="nav-link-desktop-1" href="/">
                 Departments
                 </a>
             </li>
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-2" href="#">
+                <a data-testid="nav-link-desktop-2" href="/">
                 Services
                 </a>
             </li>
@@ -202,7 +204,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">News</span>
@@ -210,7 +212,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">Departments</span>
@@ -218,7 +220,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">Services</span>
@@ -226,7 +228,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
                 >
                 <span class="gi-text-sm">Gaeilge</span>
@@ -243,8 +245,8 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```html
     {{ govieHeader({
         "title":"Application title"
-        "languages":[{ "href": "#", "label": "Gaeilge" }]
-        "navLinks":[{ "href": "#", "label": "News" },{ "href": "#", "label": "Departments" },{ "href": "#", "label": "Services" }]
+        "languages":[{ "href": "/", "label": "Gaeilge" }]
+        "navLinks":[{ "href": "/", "label": "News" },{ "href": "/", "label": "Departments" },{ "href": "/", "label": "Services" }]
         "tools":{
             "search": {
                 "label": "Search",
@@ -271,8 +273,8 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     <Header 
         title={'Application title'}
-        languages={[{ href: '#', label: 'Gaeilge' }]}
-        navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]}
+        languages={[{ href: '/', label: 'Gaeilge' }]}
+        navLinks={[{ href: '/', label: 'News' },{ href: '/', label: 'Departments' },{ href: '/', label: 'Services' }]}
         tools={
             search: {
                 label: 'Search',
@@ -296,7 +298,9 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 ## Header with title
 
-<Header title={'Application title'} />
+<ComponentContainer>
+  <Header title={'Application title'} />
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -336,7 +340,9 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 ## Header with links
 
-<Header navLinks={[{ href: '#', label: 'News' },{ href: '#', label: 'Departments' },{ href: '#', label: 'Services' }]} />
+<ComponentContainer>
+  <Header navLinks={[{ href: '', label: 'News' },{ href: '', label: 'Departments' },{ href: '', label: 'Services' }]} />
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
@@ -359,17 +365,17 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
             <ul id="links-container-desktop" class="gi-header-nav">
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-0" href="#">
+                <a data-testid="nav-link-desktop-0" href="/">
                 News
                 </a>
             </li>
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-1" href="#">
+                <a data-testid="nav-link-desktop-1" href="/">
                 Departments
                 </a>
             </li>
             <li class="gi-flex">
-                <a data-testid="nav-link-desktop-2" href="#">
+                <a data-testid="nav-link-desktop-2" href="/">
                 Services
                 </a>
             </li>
@@ -384,15 +390,15 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     {{ govieHeader({
         "navLinks": [
             { 
-                "href": "#", 
+                "href": "/", 
                 "label": "News" 
             },
             { 
-                "href": "#", 
+                "href": "/", 
                 "label": "Departments" 
             },
             { 
-                "href": "#", 
+                "href": "/", 
                 "label": "Services"
             }
         ]}) 
@@ -404,9 +410,9 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     import { Header } from '@govie-ds/react';
 
     <Header navLinks={[
-                { href: '#', label: 'News' },
-                { href: '#', label: 'Departments' },
-                { href: '#', label: 'Services' }
+                { href: '/', label: 'News' },
+                { href: '/', label: 'Departments' },
+                { href: '/', label: 'Services' }
             ]}/>
     ```
   </TabPanel>
@@ -414,7 +420,9 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 ## Header with language switch
 
-<Header languages={[{ href: '#', label: 'Gaeilge' }]}/>
+<ComponentContainer>
+  <Header languages={[{ href: '', label: 'Gaeilge' }]}/>
+</ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
@@ -430,7 +438,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             <a
                 data-testid="language-link-desktop-0"
                 class="gi-header-language-item"
-                href="#"
+                href="/"
             >
                 Gaeilge
             </a>
@@ -455,7 +463,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     {{ govieHeader({
         "languages": [
             { 
-                "href": "#", 
+                "href": "/", 
                 "label": "Gaeilge" 
             }
         ]}) 
@@ -466,29 +474,31 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```html
     import { Header } from '@govie-ds/react';
 
-    <Header languages={[{ href: '#', label: 'Gaeilge' }]}/>
+    <Header languages={[{ href: '/', label: 'Gaeilge' }]}/>
     ```
   </TabPanel>
 </Tabs>
 
 ## Header with tools
 
-<Header tools={{
-      search: {
-        label: 'Search',
-        action: '/search-page',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
+<ComponentContainer>
+  <Header tools={{
+        search: {
+          label: 'Search',
+          action: '/search-page',
         },
-      ],
-      menu: {
-        label: 'Menu'
-      }
-    }} />
+        items: [
+          {
+            href: '/item1',
+            label: 'Home',
+            icon: 'home',
+          },
+        ],
+        menu: {
+          label: 'Menu'
+        }
+      }} />
+</ComponentContainer>
 
 <Tabs id="tab5">
   <TabList>
@@ -619,7 +629,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">News</span>
@@ -627,7 +637,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">Departments</span>
@@ -635,7 +645,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
                 >
                 <span class="gi-font-bold gi-text-sm">Services</span>
@@ -643,7 +653,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             </li>
             <li>
                 <a
-                href="#"
+                href="/"
                 class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
                 >
                 <span class="gi-text-sm">Gaeilge</span>

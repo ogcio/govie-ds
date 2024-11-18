@@ -1,6 +1,7 @@
 function Logo() {
   return (
     <svg
+      className="gi-stroke-none"
       width="136"
       height="48"
       viewBox="0 0 136 48"

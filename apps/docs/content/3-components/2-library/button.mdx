@@ -20,7 +20,9 @@ libraries:
 
 ## Primary buttons
 
-<Button>Primary Button</Button>
+<ComponentContainer>
+  <Button>Primary Button</Button>
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -51,7 +53,9 @@ libraries:
 
 ## Secondary buttons
 
+<ComponentContainer>
 <Button variant="secondary">Secondary Button</Button>
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -83,7 +87,9 @@ libraries:
 
 ## Flat buttons
 
-<Button variant="flat">Flat Button</Button>
+<ComponentContainer>
+  <Button variant="flat">Flat Button</Button>
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
@@ -115,10 +121,12 @@ libraries:
 
 ## Buttons with icons and label
 
-<Button>
-  <Icon icon="thumb_up" />
-  <span>button</span>
-</Button>
+<ComponentContainer>
+  <Button>
+    <Icon icon="thumb_up" />
+    <span>button</span>
+  </Button>
+</ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
@@ -156,9 +164,11 @@ libraries:
 
 ## Icon Buttons
 
-<Button>
-  <Icon icon="thumb_up" />
-</Button>
+<ComponentContainer>
+  <Button>
+    <Icon icon="thumb_up" />
+  </Button>
+</ComponentContainer>
 
 <Tabs id="tab5">
   <TabList>
@@ -191,9 +201,11 @@ libraries:
 
 ## Disabled buttons
 
-<Button disabled={true}>
-  <span>Disabled Button</span>
-</Button>
+<ComponentContainer>
+  <Button disabled={true}>
+    <span>Disabled Button</span>
+  </Button>
+</ComponentContainer>
 
 <Tabs id="tab6">
   <TabList>
@@ -227,11 +239,11 @@ libraries:
 
 ## Buttons on dark backgrounds
 
-<div style={{marginBottom: "32px"}} className="gi-bg-black gi-p-4">
+<ComponentContainer className="gi-bg-black gi-p-4">
   <Button appearance="light">
     <span>Dark Button</span>
   </Button>
-</div>
+</ComponentContainer>
 
 <Tabs id="tab7">
   <TabList>

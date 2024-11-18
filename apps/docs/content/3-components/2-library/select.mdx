@@ -18,32 +18,34 @@ libraries:
 
 <ComponentStatusBlock componentId="select" />
 
-<Select
-  error={{
-    text: '',
-  }}
-  hint={{
-    text: '',
-  }}
-  id="unique-id"
-  label={{
-    text: 'Label',
-  }}
-  options={[
-    {
-      label: 'Option 1',
-      value: 'value-1',
-    },
-    {
-      label: 'Option 2',
-      value: 'value-2',
-    },
-    {
-      label: 'Option 3',
-      value: 'value-3',
-    },
-  ]}
-/>
+<ComponentContainer>
+  <Select
+    error={{
+      text: '',
+    }}
+    hint={{
+      text: '',
+    }}
+    id="unique-id"
+    label={{
+      text: 'Label',
+    }}
+    options={[
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ]}
+  />
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>

@@ -16,18 +16,19 @@ libraries:
 
 # Textarea
 
-<ComponentStatusBlock componentId="textarea" />
-
-import {
-  standardProps,
-  maximumCharactersProps,
-} from '@/components/form/textarea';
-
 The `Textarea` component allows users to input multi-line text. It’s ideal for longer text fields, such as descriptions, messages, or comments, and offers flexibility in terms of size using `rows` and `cols` props. Additionally, it provides the option to set a character limit using the `maxChars` prop for better control over user input length.
+
+<ComponentStatusBlock componentId="textarea" />
 
 ## Standard textarea
 
- <TextArea {...standardProps}  />
+<ComponentContainer>
+  <TextArea {...{
+    id: 'textarea-0',
+    label: { text: 'Textarea Label' },
+    hint: { text: 'Hint: This is a helpful hint' },
+  }}  />
+</ComponentContainer>
           
 <Tabs id="tab1">
   <TabList>
@@ -82,8 +83,14 @@ The `Textarea` component allows users to input multi-line text. It’s ideal for
 
 ## With Character limit
 
-<TextArea {...maximumCharactersProps} />
-
+<ComponentContainer>
+  <TextArea {...{
+    id: 'textarea-1',
+    label: { text: 'Textarea Label' },
+    hint: { text: 'Hint: This is a helpful hint' },
+    maxChars: 100,
+  }} />
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>

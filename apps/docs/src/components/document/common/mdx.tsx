@@ -1,32 +1,34 @@
 import {
+  Blockquote,
   Button,
+  Card,
+  CheckboxesGroup,
+  Chip,
+  Combobox,
+  CookieBanner,
+  FileUpload,
   Footer,
   Header,
   Heading,
   Icon,
+  IconButton,
+  Label,
+  List,
+  Modal,
+  Pagination,
   Paragraph,
+  PhaseBanner,
+  RadiosGroup,
+  SectionBreak,
+  Select,
+  Spinner,
   TabItem,
   TabList,
   TabPanel,
   Tabs,
   Tag,
-  RadiosGroup,
-  Card,
   TextArea,
-  Modal,
-  CookieBanner,
-  List,
-  Combobox,
-  Chip,
   TextInput,
-  SectionBreak,
-  Select,
-  Label,
-  IconButton,
-  FileUpload,
-  CheckboxesGroup,
-  Spinner,
-  Pagination,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -74,11 +76,10 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
-import { wrapComponents } from './wrap-components';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
+import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
@@ -136,11 +137,10 @@ const standardComponents: MDXComponents = {
         {children}
       </code>
     ),
-  blockquote: ({ children }) => <Highlight>{children}</Highlight>,
+  blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
 };
 
 const documentComponents: MDXComponents = {
-  Highlight: ({ children }) => <Highlight>{children}</Highlight>,
   Image: (props) => <DocumentImage {...props} />,
   ColorPrimitives: () => <ColorPrimitives />,
   FontFamilyTable: () => <FontFamilyTable />,
@@ -214,6 +214,11 @@ const documentComponents: MDXComponents = {
     </Button>
   ),
   Pagination: (props) => <Pagination {...props} />,
+  PhaseBanner: (props) => <PhaseBanner {...props} />,
+  Blockquote: (props) => <Blockquote {...props} />,
+  ComponentContainer: (props) => (
+    <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {
@@ -223,29 +228,8 @@ export function Mdx({ code }: MdxProps) {
     <Component
       components={{
         ...standardComponents,
-        ...wrapComponents(documentComponents, ({ key }) => {
-          if (key === 'Tabs') {
-            return [MarginBottom];
-          }
-          if (
-            key === 'DeveloperRecommendation' ||
-            key.includes('Tab') ||
-            key === 'Link' ||
-            key === 'Heading' ||
-            key === 'Icon' ||
-            key === 'Tag' ||
-            key === 'Card'
-          ) {
-            return;
-          }
-
-          return [MarginBottom];
-        }),
+        ...documentComponents,
       }}
     />
   );
-}
-
-function MarginBottom({ children }: { children: React.ReactNode }) {
-  return <div className="mb-2xl stroke-gray-950">{children}</div>;
 }

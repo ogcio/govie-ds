@@ -19,7 +19,9 @@ A spinner is a rotating circle that indicates the status or state of completion 
 
 <ComponentStatusBlock componentId="spinner" />
 
-<Spinner />
+<ComponentContainer>
+  <Spinner />
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -91,7 +93,9 @@ A spinner is a rotating circle that indicates the status or state of completion 
 
 ## Button with a spinner
 
-<ButtonWithSpinner />
+<ComponentContainer>
+  <ButtonWithSpinner />
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -172,12 +176,14 @@ A spinner is a rotating circle that indicates the status or state of completion 
 
 ## Modal with a spinner
 
-<Modal triggerButton={<Button>Open Modal</Button>}  >
+<ComponentContainer>
+  <Modal triggerButton={<Button>Open Modal</Button>}  >
     <div className="grid gap-4 px-4 justify-items-center">
         <Spinner size="xl" />
         <span>Loading...</span>
     </div>
-</Modal>
+  </Modal>
+</ComponentContainer>
 
 <Tabs id="tab31">
   <TabList>

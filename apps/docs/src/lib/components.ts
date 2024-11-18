@@ -5,8 +5,7 @@ export type ComponentStatus =
   | 'alpha'
   | 'beta'
   | 'stable'
-  | 'under-review' // default status for HTML components
-  | 'considering' // default status for Figma and React components
+  | 'considering'
   | 'not-available'
   | 'deprecated';
 
@@ -42,26 +41,29 @@ const localHtmlStorybookBaseUrl =
 export function getComponents(): ComponentDetail[] {
   const componentsDocument = getAll().filter((document) => document.libraries);
 
-  const components = componentsDocument.map((component) => ({
-    id: component.id,
-    name: component.title,
-    statuses:
-      component.libraries?.map((status) => {
-        let baseUrl = globalHtmlStorybookBaseUrl;
-        if (status.platform === 'local') {
-          baseUrl = localHtmlStorybookBaseUrl;
-        } else if (status.platform === 'react') {
-          baseUrl = reactStorybookBaseUrl;
-        }
-        return {
-          status: status.status,
-          platform: {
-            id: status.platform,
-            href: status.link ? `${baseUrl}${status.link}` : undefined,
-          },
-        };
-      }) || [],
-  }));
+  const components = componentsDocument.map(
+    (component) =>
+      ({
+        id: component.id,
+        name: component.title,
+        statuses:
+          component.libraries?.map((status) => {
+            let baseUrl = globalHtmlStorybookBaseUrl;
+            if (status.platform === 'local') {
+              baseUrl = localHtmlStorybookBaseUrl;
+            } else if (status.platform === 'react') {
+              baseUrl = reactStorybookBaseUrl;
+            }
+            return {
+              status: status.status,
+              platform: {
+                id: status.platform,
+                href: status.link ? `${baseUrl}${status.link}` : undefined,
+              },
+            } as ComponentPlatformStatus;
+          }) || [],
+      }) as ComponentDetail,
+  );
 
   return sortBy(components, 'name');
 }

@@ -1,7 +1,6 @@
 'use client';
-import { IconButton, Paragraph } from '@govie-ds/react';
+import { IconButton, Paragraph, Tag } from '@govie-ds/react';
 import { Table, Td, Tr } from '../common/table';
-import { cn } from '@/lib/cn';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
 export function ComponentStatusPill({
@@ -13,26 +12,12 @@ export function ComponentStatusPill({
 }) {
   return (
     <div className="flex gap-sm items-center">
-      <div
-        className={cn(
-          'px-md py-sm rounded text-xs',
-          status === 'not-available' ? 'bg-gray-50 text-gray-800' : undefined,
-          status === 'considering' ? 'bg-gray-50 text-gray-800' : undefined,
-          status === 'under-review' ? 'bg-blue-50 text-blue-800' : undefined,
-          status === 'alpha' ? 'bg-yellow-50 text-yellow-800' : undefined,
-        )}
-      >
-        {(() => {
-          switch (status) {
-            case 'under-review': {
-              return 'under review';
-            }
-            default: {
-              return status;
-            }
-          }
-        })()}
-      </div>
+      {status === 'not-available' && <Tag text="N/A" type="default" />}
+      {status === 'considering' && <Tag text="Considering" type="default" />}
+      {status === 'alpha' && <Tag text="Alpha" type="warning" />}
+      {status === 'beta' && <Tag text="Beta" type="info" />}
+      {status === 'stable' && <Tag text="Stable" type="success" />}
+      {status === 'deprecated' && <Tag text="Deprecated" type="error" />}
       {href ? (
         <IconButton
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
@@ -72,11 +57,11 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
           href: figmaPlatform?.platform?.href,
         },
         local: {
-          status: localPlatform?.status ?? 'under-review',
+          status: localPlatform?.status ?? 'considering',
           href: localPlatform?.platform?.href,
         },
         global: {
-          status: globalPlatform?.status ?? 'under-review',
+          status: globalPlatform?.status ?? 'considering',
           href: globalPlatform?.platform?.href,
         },
         react: {

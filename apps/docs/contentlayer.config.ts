@@ -26,7 +26,6 @@ const componentLibrary = defineNestedType(() => ({
         'alpha',
         'beta',
         'stable',
-        'under-review',
         'considering',
         'not-available',
         'deprecated',

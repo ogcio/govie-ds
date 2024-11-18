@@ -20,7 +20,9 @@ libraries:
 
 The List component organises text and links in a simple vertical format, supporting bullets, numbers, and spacing options.
 
-<List items={['Item 1', 'Item 2', 'Item 3']} />
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} />
+</ComponentContainer>
 
 <Tabs id="tab0">
   <TabList>
@@ -54,7 +56,9 @@ The List component organises text and links in a simple vertical format, support
 
 ## Bullet
 
-<List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -88,7 +92,9 @@ The List component organises text and links in a simple vertical format, support
 
 ## Number
 
-<List items={['Item 1', 'Item 2', 'Item 3']} type="number" />
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} type="number" />
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -122,14 +128,16 @@ The List component organises text and links in a simple vertical format, support
 
 ## Spaced
 
-<List
-  items={[
-    'constructing, altering or repairing',
-    'pipelines, reservoirs, water mains or wells',
-    'painting or decorating the inside or the external surfaces',
-  ]}
-  spaced
-/>
+<ComponentContainer>
+  <List
+    items={[
+      'constructing, altering or repairing',
+      'pipelines, reservoirs, water mains or wells',
+      'painting or decorating the inside or the external surfaces',
+    ]}
+    spaced
+  />
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
@@ -170,15 +178,17 @@ The List component organises text and links in a simple vertical format, support
 
 ## Links
 
-<List
-  items={[
-    <Link href="#">Link 1</Link>,
-    <Link href="#">Link 2</Link>,
-    <Link href="#">Link 3</Link>,
-  ]}
-  spaced
-  type="bullet"
-/>
+<ComponentContainer>
+  <List
+    items={[
+      <Link href="/">Link 1</Link>,
+      <Link href="/">Link 2</Link>,
+      <Link href="/">Link 3</Link>,
+    ]}
+    spaced
+    type="bullet"
+  />
+</ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
@@ -199,7 +209,7 @@ The List component organises text and links in a simple vertical format, support
   <TabPanel value="tab42">        
     ```html
     {{ govieList({ 
-        "items": [{"href": "#", "label": "Link 1"}, {"href": "#", "label": "Link 2"}, {"href": "#", "label": "Link 3"}], 
+        "items": [{"href": "/", "label": "Link 1"}, {"href": "/", "label": "Link 2"}, {"href": "/", "label": "Link 3"}], 
         "spaced": true,
         "type": "bullet"
      })
@@ -214,9 +224,9 @@ The List component organises text and links in a simple vertical format, support
 
     <List
     items={[
-        <Link href="#">Link 1</Link>,
-        <Link href="#">Link 2</Link>,
-        <Link href="#">Link 3</Link>,
+        <Link href="/">Link 1</Link>,
+        <Link href="/">Link 2</Link>,
+        <Link href="/">Link 3</Link>,
     ]}
     spaced
     type={TypeEnum.Bullet}

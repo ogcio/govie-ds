@@ -18,30 +18,32 @@ libraries:
 
 <ComponentStatusBlock componentId="checkbox" />
 
-<CheckboxesGroup
-  fieldId="UniqueID"
-  items={[
-    {
-      label: 'Employment Tribunal',
-      value: 'employment-tribunal',
-    },
-    {
-      label: 'Ministry of Defence',
-      value: 'ministry-of-defence',
-    },
-    {
-      label: 'Department for Transport',
-      value: 'department-for-transport',
-    },
-  ]}
-  title={{
-    asHeading: {
-      size: 'md',
-      as: 'h1',
-    },
-    value: 'Organisation',
-  }}
-/>
+<ComponentContainer>
+  <CheckboxesGroup
+    fieldId="UniqueID"
+    items={[
+      {
+        label: 'Employment Tribunal',
+        value: 'employment-tribunal',
+      },
+      {
+        label: 'Ministry of Defence',
+        value: 'ministry-of-defence',
+      },
+      {
+        label: 'Department for Transport',
+        value: 'department-for-transport',
+      },
+    ]}
+    title={{
+      asHeading: {
+        size: 'md',
+        as: 'h1',
+      },
+      value: 'Organisation',
+    }}
+  />
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>

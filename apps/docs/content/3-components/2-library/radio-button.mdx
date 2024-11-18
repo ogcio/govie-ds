@@ -18,11 +18,34 @@ libraries:
 
 <ComponentStatusBlock componentId="radio-button" />
 
-import { standardProps, inlineProps, hintsProps } from "@/components/form/radio";
-
 ## Standard radio
 
-<RadiosGroup {...standardProps} />
+<ComponentContainer>
+  <RadiosGroup {...{
+    groupId: 'uniqueId-1',
+    title: {
+      value: 'Where do you live?',
+      asHeading: {
+        size: 'md',
+        as: 'h2',
+      },
+    },
+    items: [
+      {
+        label: 'England',
+        value: 'england',
+      },
+      {
+        label: 'Scotland',
+        value: 'scotland',
+      },
+      {
+        label: 'Ireland',
+        value: 'ireland',
+      },
+    ],
+  }} />
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -167,7 +190,33 @@ import { standardProps, inlineProps, hintsProps } from "@/components/form/radio"
 
 ## Inline radio
 
-<RadiosGroup {...inlineProps} />
+<ComponentContainer>
+  <RadiosGroup {...{
+    groupId: 'uniqueId-2',
+    inline: true,
+    title: {
+      value: 'Where do you live?',
+      asHeading: {
+        size: 'md',
+        as: 'h2',
+      },
+    },
+    items: [
+      {
+        label: 'England',
+        value: 'england',
+      },
+      {
+        label: 'Scotland',
+        value: 'scotland',
+      },
+      {
+        label: 'Ireland',
+        value: 'ireland',
+      },
+    ],
+  }} />
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -317,7 +366,31 @@ import { standardProps, inlineProps, hintsProps } from "@/components/form/radio"
 
 ## Radios with hints
 
-<RadiosGroup {...hintsProps} />
+<ComponentContainer>
+  <RadiosGroup {...{
+    groupId: 'uniqueId-3',
+    title: {
+      value: 'Have you changed your name?',
+      hint: 'This includes changing your last name or spelling your name differently.',
+      asHeading: {
+        size: 'md',
+        as: 'h2',
+      },
+    },
+    items: [
+      {
+        label: 'Yes',
+        value: 'yes',
+        hint: 'Yes, I have changed my name',
+      },
+      {
+        label: 'No',
+        value: 'no',
+        hint: "No, I didn't change my name",
+      },
+    ],
+  }} />
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
