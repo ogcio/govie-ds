@@ -128,9 +128,15 @@ export const WithComponents: Story = {
     gap: 4,
     fixedHeight: '300px',
     children: [
-      <Button>Button 1</Button>,
-      <Link href="#">Link 1</Link>,
-      <Button>Button 2</Button>,
+      <div>
+        <Button>Button 1</Button>
+      </div>,
+      <div>
+        <Link href="#">Link 1</Link>
+      </div>,
+      <div>
+        <Button>Button 2</Button>
+      </div>,
     ],
   },
 };
