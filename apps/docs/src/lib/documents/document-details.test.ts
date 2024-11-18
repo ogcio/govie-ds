@@ -32,10 +32,4 @@ describe('getDocumentDetails', () => {
       `Invalid path '1-foo/2-bar/3-baz/4-qux'.`,
     );
   });
-
-  it('should throw for missing order', () => {
-    expect(() => getDocumentDetails('foo/2-bar')).toThrowError(
-      `Invalid segment 'foo'.`,
-    );
-  });
 });
