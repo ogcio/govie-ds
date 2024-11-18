@@ -830,6 +830,19 @@ input[type='file' i] {
 .notyf__wrapper {
  @apply !gi-m-0 !gi-p-0 
 }
+.notyf__toast:has(.gi-toast-info) {
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
+ }
+ .notyf__toast:has(.gi-toast-success) {
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
+ }
+ .notyf__toast:has(.gi-toast-warning) {
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
+ }
+ .notyf__toast:has(.gi-toast-danger) {
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
+  
+ }
 
 /* End of Native notyf classes */
 

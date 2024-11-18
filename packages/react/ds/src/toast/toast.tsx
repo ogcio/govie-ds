@@ -1,18 +1,18 @@
+'use client';
 import 'notyf/notyf.min.css';
 import { INotyfPosition } from 'notyf';
 import { Notyf } from 'notyf';
-import { cloneElement, createContext, useContext, useEffect, type ReactNode } from 'react';
+import {
+  cloneElement,
+  createContext,
+  useEffect,
+  useContext,
+} from 'react';
 import { renderToString } from 'react-dom/server';
-import { type VariantProps } from 'tailwind-variants';
 import { type ButtonProps } from '../button/types.js';
-import { Toast as DSToast, toastVariants } from './ds-toast.js';
+import { Toast as DSToast, type DSToastProps } from './ds-toast.js';
 
-type ToastProps = {
-  variant?: VariantProps<typeof toastVariants>['variant'];
-  title: string;
-  children?: ReactNode;
-  dismissible?: boolean;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+type ToastProps = DSToastProps & {
   duration?: number;
   position?: INotyfPosition;
   trigger?: React.ReactElement<ButtonProps>;
@@ -25,13 +25,11 @@ export const Toast = (props: ToastProps) => {
 
   useEffect(() => {
     const notyfContainer = document.querySelectorAll('.notyf .notyf__toast');
-    console.log(notyfContainer);
 
     for (const toast of notyfContainer) {
       toast
         .querySelector('.gi-toast-dismiss')
-        ?.addEventListener('click', (event) => {
-          //   props.onClose(event);
+        ?.addEventListener('click', () => {
           toast.classList.add('!gi-hidden');
         });
     }

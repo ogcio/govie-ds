@@ -33,7 +33,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const WithTrigger: Story = {
   args: {
     title: 'Toast Triggered',
     trigger: <Button>Trigger Toast</Button>,
@@ -47,19 +47,10 @@ export const Dismissible: Story = {
   },
 };
 
-export const withDuration: Story = {
+export const withLongerDuration: Story = {
   args: {
     title: 'WithDuration',
     duration: 8000,
-  },
-};
-
-export const DangerToast: Story = {
-  args: {
-    title: 'Danger Toast',
-    duration: 8000,
-    dismissible: true,
-    variant: 'danger',
   },
 };
 

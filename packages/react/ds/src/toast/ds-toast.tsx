@@ -37,7 +37,7 @@ const toastVariants = tv({
   },
 });
 
-type ToastProps = {
+type DSToastProps = {
   variant?: VariantProps<typeof toastVariants>['variant'];
   title: string;
   children?: ReactNode;
@@ -73,7 +73,7 @@ function Toast({
   variant = 'info',
   dismissible,
   onClose,
-}: ToastProps) {
+}: DSToastProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
   const { base, heading, container, dismiss, baseDismissible } = toastVariants({
@@ -110,4 +110,4 @@ function Toast({
 }
 
 export { Toast, toastVariants };
-export type { ToastProps };
+export type { DSToastProps };
