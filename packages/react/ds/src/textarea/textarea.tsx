@@ -70,7 +70,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
             size={label.size}
             htmlFor={id}
             id={labelId}
-            className={!hint?.text && !error?.text ? 'gi-mb-2' : ''}
+            className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
           />
         )}
 

@@ -1,0 +1,36 @@
+{% from 'alert/helpers.html' import getIcon, getVariant, getBaseAlertClass %}
+{% from 'icon/icon.html' import govieIcon %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
+
+{% macro govieAlert(props) %}
+  {% set icon = getIcon(props.variant) %}
+  <div
+    data-module="gieds-alert"
+    class="{{ getBaseAlertClass(props.dismissible) | trim }} {{ getVariant(props.variant) | trim }}"
+    role="alert"
+  >
+    {{
+      govieIcon({
+      "size": "lg",
+      "icon": icon
+      })
+    }}
+    <div class="gi-alert-container">
+      <p class="gi-alert-title">{{ props.title }}</p>
+      {{ props.children | safe | trim }}
+    </div>
+    {% if props.dismissible %}
+      {{
+        govieIconButton({
+          "className": "gi-alert-dismiss",
+          "size": "small",
+          "appearance": "dark",
+          "variant": "flat",
+          "icon": {
+            "icon": "close"
+          }
+        })
+      }}
+    {% endif %}
+  </div>
+{% endmacro %}

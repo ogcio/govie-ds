@@ -8,25 +8,26 @@ export enum RadiosSizeEnum {
 }
 
 export type RadioProps = {
-  name: string;
-  label?: string;
   value: string;
+  name?: string;
+  label?: string;
   hint?: string;
-  radioId: string;
+  id?: string;
   size?: RadiosSizeEnum;
   conditionalInput?: TextInputProps;
-  checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type RadiosGroupType = {
-  fieldId: string;
+  groupId: string;
   items: {
     value: string;
     label?: string;
     hint?: string;
     conditionalInput?: TextInputProps;
   }[];
+  defaultValue?: string;
   inline?: boolean;
   size?: RadiosSizeEnum;
   errorMessage?: string;
@@ -44,4 +45,5 @@ export type RadiosGroupType = {
     };
     hint?: string;
   };
+  onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 };

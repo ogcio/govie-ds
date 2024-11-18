@@ -1,5 +1,5 @@
-import "@govie-ds/react/styles.css";
-import "@govie-ds/theme-govie/theme.css";
+import '@govie-ds/react/styles.css';
+import '@govie-ds/theme-govie/theme.css';
 import {
   Header,
   Heading,
@@ -27,33 +27,38 @@ import {
   List,
   TypeEnum,
   Combobox,
-} from "@govie-ds/react";
-import { CookieBannerProps, ComboBoxProps } from "./props";
+  Radio,
+  Alert,
+  Pagination,
+} from '@govie-ds/react';
+import { CookieBannerProps, ComboBoxProps } from './props';
+import { useState } from 'react';
 
 export function App() {
+  const [currentPage, setCurrentPage] = useState(5);
   return (
     <>
       <Header
-        logo={{ href: "/" }}
-        tools={{ search: { action: "/search-page" } }}
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
         navLinks={[
           {
-            href: "#",
-            label: "News",
+            href: '#',
+            label: 'News',
           },
           {
-            href: "#",
-            label: "Departments",
+            href: '#',
+            label: 'Departments',
           },
           {
-            href: "#",
-            label: "Services",
+            href: '#',
+            label: 'Services',
           },
         ]}
         languages={[
           {
-            href: "#",
-            label: "Gaeilge",
+            href: '#',
+            label: 'Gaeilge',
           },
         ]}
       />
@@ -80,8 +85,8 @@ export function App() {
             <Icon icon="thumb_up" />
             <IconButton
               icon={{
-                icon: "send",
-                ariaLabel: "send",
+                icon: 'send',
+                ariaLabel: 'send',
               }}
               variant="flat"
             />
@@ -106,16 +111,16 @@ export function App() {
             <span className="material-symbols-outlined">face</span>
             <Card
               action={{
-                children: "Button",
-                type: "button",
-                variant: "secondary",
+                children: 'Button',
+                type: 'button',
+                variant: 'secondary',
               }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
               img="https://placeholderjs.com/400x300"
               subTitle="Subheading"
               tag={{
-                text: "New",
-                type: "info",
+                text: 'New',
+                type: 'info',
               }}
               title="Card Title"
               type="vertical"
@@ -125,66 +130,71 @@ export function App() {
             <TextInput
               id="text-input-id"
               error={{
-                text: "Error: Please correct this issue.",
+                text: 'Error: Please correct this issue.',
               }}
               hint={{
-                text: "Hint: This is a helpful hint.",
+                text: 'Hint: This is a helpful hint.',
               }}
               label={{
-                text: "Label",
-                htmlFor: "text-input-id",
+                text: 'Label',
+                htmlFor: 'text-input-id',
               }}
               suffix="KG"
             />
             <TextArea
               error={{
-                text: "Error: Please correct this issue.",
+                text: 'Error: Please correct this issue.',
               }}
               hint={{
-                text: "Hint: This is a helpful hint.",
+                text: 'Hint: This is a helpful hint.',
               }}
               id="textarea-id"
               maxChars={50}
               label={{
-                text: "Label",
-                htmlFor: "textarea-id",
+                text: 'Label',
+                htmlFor: 'textarea-id',
               }}
             />
             <Combobox {...ComboBoxProps} />
             <Select
               id="unique-id"
-              label={{ text: "Label" }}
+              label={{ text: 'Label' }}
               options={[
                 {
-                  label: "Option 1",
-                  value: "value-1",
+                  label: 'Option 1',
+                  value: 'value-1',
                 },
                 {
-                  label: "Option 2",
-                  value: "value-2",
+                  label: 'Option 2',
+                  value: 'value-2',
                 },
                 {
-                  label: "Option 3",
-                  value: "value-3",
+                  label: 'Option 3',
+                  value: 'value-3',
                 },
               ]}
             />
             <hr />
             <FileUpload
               error={{
-                text: "Error: File must be smaller than 5MB.",
+                text: 'Error: File must be smaller than 5MB.',
               }}
               id="file-upload-id"
               label={{
-                text: "Upload File",
-                htmlFor: "file-upload-id",
+                text: 'Upload File',
+                htmlFor: 'file-upload-id',
               }}
+            />
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+              totalPages={10}
             />
           </TabPanel>
         </Tabs>
         <RadiosGroup
           title={{
-            value: "Where do you live?",
+            value: 'Where do you live?',
             asHeading: {
               size: 'md',
               as: 'h3',
@@ -192,22 +202,24 @@ export function App() {
           }}
           items={[
             {
-              label: "England",
-              value: "england",
+              label: 'England',
+              value: 'england',
             },
             {
-              label: "Scotland",
-              value: "scotland",
+              label: 'Scotland',
+              value: 'scotland',
             },
             {
-              label: "Ireland",
-              value: "ireland",
+              label: 'Ireland',
+              value: 'ireland',
             },
           ]}
-          fieldId="uniqueId"
+          groupId="uniqueId1"
         />
+        <Heading size="sm">Single Radio</Heading>
+        <Radio value="single-radio" label="Single Radio" />
         <Modal triggerButton={<Button>Open Modal</Button>}>
-          <Heading as='h2'>Title</Heading>
+          <Heading as="h2">Title</Heading>
           <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             esse magnam quis sit soluta cupiditate at deserunt exercitationem
@@ -220,7 +232,10 @@ export function App() {
             <Button>Primary action</Button>
           </div>
         </Modal>
-        <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
+        <Alert title="Info Alert" dismissible>
+          <Paragraph>This is the content</Paragraph>
+        </Alert>
+        <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
       </Container>
       <Footer />
     </>

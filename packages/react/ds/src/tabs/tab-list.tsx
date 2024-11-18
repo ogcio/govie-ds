@@ -11,7 +11,9 @@ export const TabList = ({
   const [activeTab, setActiveTab] = useState(0);
   const tabCount = React.Children.count(children);
 
-  const onTabFocus = (event: React.FocusEvent<HTMLButtonElement, Element>) => {
+  const onTabSelected = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
     const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
 
     const tabPanels: HTMLElement[] = [
@@ -78,8 +80,8 @@ export const TabList = ({
       React.isValidElement<{
         index: number;
         checked: boolean;
-        onTabFocus: (
-          event: React.FocusEvent<HTMLButtonElement, Element>,
+        onTabSelected: (
+          event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
         ) => void;
         onTabClick: (index: number) => void;
         onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
@@ -88,8 +90,8 @@ export const TabList = ({
       return React.cloneElement<{
         index: number;
         checked: boolean;
-        onTabFocus: (
-          event: React.FocusEvent<HTMLButtonElement, Element>,
+        onTabSelected: (
+          event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
         ) => void;
         onTabClick: (index: number) => void;
         onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
@@ -98,7 +100,7 @@ export const TabList = ({
         checked: activeTab === index,
         onTabClick,
         onTabKeyDown,
-        onTabFocus,
+        onTabSelected,
       });
     }
     return element;

@@ -39,6 +39,19 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.22.0](https://github.com/ogcio/govie-ds/compare/react-v0.21.0...react-v0.22.0) (2024-11-13)
+
+
+### Features
+
+* alert component ([#320](https://github.com/ogcio/govie-ds/issues/320)) ([7322952](https://github.com/ogcio/govie-ds/commit/732295279d8cc388c2bb0c522c7fc3200978f6e3))
+
+
+### Bug Fixes
+
+* adding rounded border for input fields ([#322](https://github.com/ogcio/govie-ds/issues/322)) ([959f269](https://github.com/ogcio/govie-ds/commit/959f269694f218aa0f25aa8ae750259749a300b5))
+* radio feedback fixes ([#324](https://github.com/ogcio/govie-ds/issues/324)) ([ed5d897](https://github.com/ogcio/govie-ds/commit/ed5d897ba4af2a7727c33916c06df38eb274a558))
+
 ## [0.21.0](https://github.com/ogcio/govie-ds/compare/react-v0.20.1...react-v0.21.0) (2024-11-08)
 
 

@@ -27,6 +27,7 @@ import {
   CheckboxesGroup,
   Spinner,
   Stack,
+  Pagination,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -190,6 +191,7 @@ const documentComponents: MDXComponents = {
     </Button>
   ),
   Stack: (props) => <Stack {...props} />,
+  Pagination: (props) => <Pagination {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

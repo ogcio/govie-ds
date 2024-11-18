@@ -7,18 +7,23 @@ import { Radio, getRadioWidth } from './radio.js';
 import type { RadiosGroupType } from './types.js';
 
 export const RadiosGroup = ({
-  fieldId,
+  groupId,
   items,
   inline,
   size,
   errorMessage,
   dividerOption,
   title,
+  onChange,
+  defaultValue,
 }: RadiosGroupType) => {
-  const [value, setValue] = useState<null | string>(null);
+  const initialValue =
+    items.find((radio) => radio.value === defaultValue)?.value ?? null;
+  const [value, setValue] = useState<null | string>(initialValue);
 
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
+    onChange?.(event);
   };
 
   return (
@@ -56,14 +61,14 @@ export const RadiosGroup = ({
           >
             {items.map((radio, index) => (
               <Radio
-                key={`${value}-${index}`}
+                key={`${groupId}-${index}`}
                 checked={value === radio.value}
                 onChange={onOptionChange}
-                name={fieldId}
+                name={groupId}
                 label={radio.label}
                 value={radio.value}
                 hint={radio.hint}
-                radioId={`${fieldId}-${index}`}
+                id={`${groupId}-${index}`}
                 size={size}
                 conditionalInput={radio.conditionalInput}
               />
@@ -78,13 +83,14 @@ export const RadiosGroup = ({
                   or
                 </p>
                 <Radio
+                  key={`${groupId}-${items.length}`}
                   checked={value === dividerOption.value}
                   onChange={onOptionChange}
-                  name={fieldId}
+                  name={groupId}
                   label={dividerOption.label}
                   value={dividerOption.value}
                   hint={dividerOption.hint}
-                  radioId={`${fieldId}-${items.length}`}
+                  id={`${groupId}-${items.length}`}
                   size={size}
                   conditionalInput={dividerOption.conditionalInput}
                 />

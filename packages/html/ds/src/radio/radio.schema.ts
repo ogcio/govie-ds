@@ -8,14 +8,57 @@ export enum RadioSizeEnum {
   Small = 'sm',
 }
 
+export const radioSchema = zod.object({
+  value: zod.string({
+    description:
+      'The value associated with the input (this is also the value that is sent on submit)',
+    required_error: 'The value associated with the input is required',
+  }),
+  name: zod
+    .string({
+      description: 'Name attribute of the input element',
+    })
+    .optional(),
+  label: zod
+    .string({
+      description:
+        'The value of the radio that will be displayed on the screen',
+    })
+    .optional(),
+  hint: zod
+    .string({
+      description:
+        'If there is additional text required in order to give the user more context',
+    })
+    .optional(),
+  id: zod
+    .string({
+      description: 'The id of the Radio',
+    })
+    .optional(),
+  size: zod
+    .nativeEnum(RadioSizeEnum, {
+      description: 'Specifies the size of the radio',
+    })
+    .optional(),
+  checked: zod
+    .boolean({ description: 'if true the component is checked' })
+    .optional(),
+});
+
 export const radiosSchema = zod.object({
-  fieldId: zod.string({
+  groupId: zod.string({
     description: 'An unique ID given to the group of radios',
     required_error: 'The unique ID is required',
   }),
   inline: zod
     .boolean({
       description: 'specify if the radios are inline',
+    })
+    .optional(),
+  defaultValue: zod
+    .string({
+      description: 'Specify the value of the radio that should be checked',
     })
     .optional(),
   items: zod
@@ -63,6 +106,9 @@ export const radiosSchema = zod.object({
           description: 'The value of additional text of the divider radio',
         })
         .optional(),
+      checked: zod
+        .boolean({ description: 'if true the radio is checked' })
+        .optional(),
     })
     .describe('if a radio is required with a separation from the other options')
     .optional(),
@@ -102,3 +148,4 @@ export const radiosSchema = zod.object({
 });
 
 export type RadiosProps = zod.infer<typeof radiosSchema>;
+export type RadioProps = zod.infer<typeof radioSchema>;
