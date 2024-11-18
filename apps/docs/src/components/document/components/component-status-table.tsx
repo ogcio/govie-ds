@@ -199,9 +199,7 @@ export function ComponentStatusTable() {
 
           return (
             <Tr key={id}>
-              <Td>
-                <Paragraph>{componentStatus.name}</Paragraph>
-              </Td>
+              <Td>{componentStatus.name}</Td>
               <Td>
                 <ComponentStatusPill
                   status={componentStatus.figma.status}

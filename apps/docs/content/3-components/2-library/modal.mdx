@@ -1,17 +1,35 @@
 ---
 title: Modal
 description: Modal HTML Component
-draft: false
+status: stable
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/application-modal--docs'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/application-modal--docs'
+    status: 'alpha'
+  - platform: 'react'
+    link: '?path=/docs/application-modal--docs'
+    status: 'alpha'
 ---
 
 # Modal
 
 <ComponentStatusBlock componentId="modal" />
 
-import { modalProps } from "@/components/navigation/modal"
 
-<Modal triggerButton={modalProps.triggerButton}  >
-{modalProps.children}
+<Modal triggerButton={<Button>Open Modal</Button>}  >
+  <Heading as="h2">Title</Heading>
+  <Paragraph>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+    magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+    doloribus asperiores
+  </Paragraph>
+  <div className="gi-flex gi-gap-6 gi-justify-end">
+    <Button variant="secondary" appearance="dark">Cancel action</Button>
+    <Button>Primary action</Button>
+  </div>
 </Modal>
 
 <Tabs id="tab1">

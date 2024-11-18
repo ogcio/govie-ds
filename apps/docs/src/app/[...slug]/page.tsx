@@ -1,10 +1,8 @@
+import { Heading, Tag } from '@govie-ds/react';
 import { notFound } from 'next/navigation';
-import { DocumentStatus } from '@/components/document/common/document-status';
-import { Draft } from '@/components/document/common/draft';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
 import { slugify } from '@/lib/slugify';
-import { Heading } from '@govie-ds/react';
 
 type DocumentPageProps = {
   params: {
@@ -44,40 +42,45 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <section className="flex flex-col grow">
-      {document.status !== 'coming-soon' || document.draft ? (
-        <div className="gi-layout-column-container">
-          <div className="gi-layout-column-2-3 px-4">
+      <div className="gi-layout-column-container">
+        <div className="gi-layout-column-2-3 px-4">
+          {document.status !== 'stable' && (
             <div className="flex justify-between items-center py-2">
-              {document.status === 'stable' ? null : (
-                <DocumentStatus status={document.status} />
+              {document.status === 'in-review' && (
+                <Tag text="In Review" type="info" />
               )}
-              {document.draft ? <Draft /> : null}
+              {document.status === 'draft' && (
+                <Tag text="Draft" type="warning" />
+              )}
             </div>
-            <Mdx code={document.body.code} />
-          </div>
-          <div className="gi-layout-column-1-3 hidden md:block not-prose p-4">
-            {tocItems?.length > 0 && (
-              <>
-                <Heading as="h4">On this page</Heading>
-                <ul className="gi-list p-0">
-                  {tocItems
-                    .filter((item) => item.depth > 1)
-                    .map((item) => (
-                      <li style={{ marginLeft: `${(item.depth - 2) * 20}px` }}>
-                        <a
-                          className="gi-link gi-link-sm gi-link-no-underline gi-link-no-visited"
-                          href={`#${item.slug}`}
-                        >
-                          {item.text}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-              </>
-            )}
-          </div>
+          )}
+          <Mdx code={document.body.code} />
         </div>
-      ) : null}
+        <div className="gi-layout-column-1-3 hidden md:block not-prose p-4">
+          {tocItems?.length > 0 && (
+            <>
+              <Heading as="h4">On this page</Heading>
+              <ul className="gi-list p-0">
+                {tocItems
+                  .filter((item) => item.depth > 1)
+                  .map((item) => (
+                    <li
+                      key={item.slug}
+                      style={{ marginLeft: `${(item.depth - 2) * 20}px` }}
+                    >
+                      <a
+                        className="gi-link gi-link-sm gi-link-no-underline gi-link-no-visited"
+                        href={`#${item.slug}`}
+                      >
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

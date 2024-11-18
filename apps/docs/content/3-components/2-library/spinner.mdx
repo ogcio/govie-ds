@@ -1,7 +1,16 @@
 ---
 title: Spinner
 description: Progress circles indicate a background activity
-draft: false
+status: stable
+libraries:
+  - platform: 'local'
+    status: 'not-available'
+  - platform: 'global'
+    link: '?path=/docs/indicators-spinner--docs'
+    status: 'beta'
+  - platform: 'react'
+    link: '?path=/docs/indicators-spinner--docs'
+    status: 'beta'
 ---
 
 # Spinner
@@ -163,10 +172,11 @@ A spinner is a rotating circle that indicates the status or state of completion 
 
 ## Modal with a spinner
 
-import { modalSpinnerProps } from "@/components/navigation/modal"
-
-<Modal triggerButton={modalSpinnerProps.triggerButton}  >
-{modalSpinnerProps.children}
+<Modal triggerButton={<Button>Open Modal</Button>}  >
+    <div className="grid gap-4 px-4 justify-items-center">
+        <Spinner size="xl" />
+        <span>Loading...</span>
+    </div>
 </Modal>
 
 <Tabs id="tab31">
