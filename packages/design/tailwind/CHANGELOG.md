@@ -15,6 +15,18 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.19.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.18.0...tailwind-v0.19.0) (2024-11-18)
+
+
+### Features
+
+* add react pagination component ([#323](https://github.com/ogcio/govie-ds/issues/323)) ([56eaf79](https://github.com/ogcio/govie-ds/commit/56eaf792baa2b373f282e2d7153dee875b55f2a5))
+
+
+### Bug Fixes
+
+* add container for header ([#327](https://github.com/ogcio/govie-ds/issues/327)) ([34c67c6](https://github.com/ogcio/govie-ds/commit/34c67c64ff877f0150d4b58b974e2c13eb4065ad))
+
 ## [0.18.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.17.0...tailwind-v0.18.0) (2024-11-13)
 
 
