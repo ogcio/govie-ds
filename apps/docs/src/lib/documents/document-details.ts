@@ -2,7 +2,7 @@ export function getSegmentDetails(segment: string) {
   const segmentParts = segment.match(/^(\d+)-(.*)/);
 
   if (!segmentParts || segmentParts.length < 3) {
-    throw new Error(`Invalid segment '${segment}'.`);
+    return { id: segment, order: 0 };
   }
 
   return { id: segmentParts[2], order: Number(segmentParts[1]) };

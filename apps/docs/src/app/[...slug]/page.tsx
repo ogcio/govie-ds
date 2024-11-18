@@ -41,7 +41,6 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   }
 
   const tocItems = extractHeadingsFromMdx(document.body.raw);
-  console.log(tocItems);
 
   return (
     <section className="flex flex-col grow">

@@ -1,7 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import { getDocumentDetails } from './src/lib/documents/document-details';
 import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { getDocumentDetails } from './src/lib/documents/document-details';
 
 const Document = defineDocumentType(() => ({
   name: 'Doc',

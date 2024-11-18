@@ -51,9 +51,14 @@ function getDocumentHierarchyInternal(
     for (let index = 0; index < parts.length; index++) {
       const part = parts[index];
 
-      const id = parent.id
-        ? `${parent.id}/${part.order}-${part.id}`
-        : `${part.order}-${part.id}`;
+      let id;
+      if (part.order > 0) {
+        id = parent.id
+          ? `${parent.id}/${part.order}-${part.id}`
+          : `${part.order}-${part.id}`;
+      } else {
+        id = parent.id ? `${parent.id}/${part.id}` : `${part.id}`;
+      }
 
       const existing = parent.children.find((child) => child.id === id);
 
