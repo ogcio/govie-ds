@@ -34,7 +34,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   const components = getComponents();
 
   const componentStatuses = components
-    .filter((component) => component.id === componentId)
+    .filter((component) => component.id.split('/').at(-1) === componentId)
     .map((component) => {
       const figmaPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'figma',
@@ -50,7 +50,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
       );
 
       return {
-        id: component.id,
+        id: component.id.split('/').at(-1),
         name: component.name,
         figma: {
           status: figmaPlatform?.status ?? 'considering',
@@ -71,51 +71,52 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
       };
     });
 
+  const componentStatus = componentStatuses.find(
+    (componentStatus) => componentStatus.id === componentId,
+  );
+
+  if (!componentStatus) {
+    throw new Error(`Component status not found '${componentId}'.`);
+  }
   return (
-    <div>
-      <Table
-        headers={['Figma Library', 'Local HTML', 'Global HTML', 'React']}
-        ids={componentStatuses.map((componentStatus) => componentStatus.id)}
-        renderRow={(id) => {
-          const componentStatus = componentStatuses.find(
-            (componentStatus) => componentStatus.id === id,
-          );
-
-          if (!componentStatus) {
-            throw new Error(`Component status not found '${id}'.`);
-          }
-
-          return (
-            <Tr key={id}>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.figma.status}
-                  href={componentStatus.figma.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.local.status}
-                  href={componentStatus.local.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.global.status}
-                  href={componentStatus.global.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.react.status}
-                  href={componentStatus.react.href}
-                />
-              </Td>
-            </Tr>
-          );
-        }}
-      />
-    </div>
+    <table className="table-fixed">
+      <tr>
+        <td className="p-2">Figma Library</td>
+        <td>
+          <ComponentStatusPill
+            status={componentStatus.figma.status}
+            href={componentStatus.figma.href}
+          />
+        </td>
+      </tr>
+      <tr>
+        <td className="p-2">Local HTML</td>
+        <td>
+          <ComponentStatusPill
+            status={componentStatus.local.status}
+            href={componentStatus.local.href}
+          />
+        </td>
+      </tr>
+      <tr>
+        <td className="p-2">Global HTML</td>
+        <td>
+          <ComponentStatusPill
+            status={componentStatus.global.status}
+            href={componentStatus.global.href}
+          />
+        </td>
+      </tr>
+      <tr>
+        <td className="p-2">Global React</td>
+        <td>
+          <ComponentStatusPill
+            status={componentStatus.react.status}
+            href={componentStatus.react.href}
+          />
+        </td>
+      </tr>
+    </table>
   );
 }
 
