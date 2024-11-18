@@ -42,7 +42,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <section className="flex flex-col grow">
-      <div className="gi-layout-column-container">
+      <div className="gi-layout-column-container mb-6">
         <div className="gi-layout-column-2-3 px-4">
           {document.status !== 'stable' && (
             <div className="flex justify-between items-center py-2">
@@ -57,7 +57,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
           <Mdx code={document.body.code} />
         </div>
         <div className="gi-layout-column-1-3 hidden md:block not-prose p-4">
-          {tocItems?.length > 0 && (
+          {tocItems?.filter((item) => item.depth > 1).length > 0 && (
             <>
               <Heading as="h4">On this page</Heading>
               <ul className="gi-list p-0">
