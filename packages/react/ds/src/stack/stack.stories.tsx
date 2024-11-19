@@ -42,13 +42,6 @@ const meta = {
       defaultValue: false,
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="gi-p-4 gi-bg-gray-50">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Stack>;
 
 export default meta;
@@ -138,5 +131,36 @@ export const WithComponents: Story = {
         <Button>Button 2</Button>
       </div>,
     ],
+  },
+};
+
+export const NestedStack: Story = {
+  args: {
+    children: null,
+  },
+  render: () => {
+    return (
+      <Stack gap={5}>
+        <Stack direction="row">
+          <div className="gi-h-[80px] gi-w-full gi-bg-gray-200"></div>
+        </Stack>
+        <Stack direction="row" gap={5}>
+          <Stack direction="column" gap={5}>
+            <div className="gi-h-[200px] gi-w-full gi-bg-gray-200"></div>
+          </Stack>
+          <Stack direction="row" gap={5} wrap>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
+          </Stack>
+        </Stack>
+      </Stack>
+    );
   },
 };

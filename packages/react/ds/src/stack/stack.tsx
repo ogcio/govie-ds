@@ -239,6 +239,7 @@ export const Stack: React.FC<StackProps> = ({
   const stackClasses = cn(
     'gi-flex',
     'gi-overflow-auto',
+    'gi-w-full',
     getDistributionClasses(itemsDistribution),
     getAlignmentClasses(itemsAlignment),
     getDirectionClasses(direction),
