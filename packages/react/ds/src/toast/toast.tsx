@@ -1,5 +1,4 @@
 'use client';
-import 'notyf/notyf.min.css';
 import { INotyfPosition } from 'notyf';
 import { Notyf } from 'notyf';
 import { cloneElement, createContext, useEffect, useContext } from 'react';
