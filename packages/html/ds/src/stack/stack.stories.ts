@@ -1,11 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button/button.js';
-import { Link } from '../link/link.js';
-import { Stack } from './stack.js';
+import { renderComponent } from '../storybook/storybook';
+import html from './stack.html?raw';
+import { StackProps } from './stack.schema';
+
+// Name of the folder the macro resides
+const path = import.meta.url.split('/stack')[0];
+
+const macro = { name: 'govieStack', html, path };
+
+const Stack = renderComponent<StackProps>(macro);
 
 const meta = {
+  component: Stack,
   title: 'layout/Stack',
   parameters: {
+    macro,
     docs: {
       description: {
         component:
@@ -13,7 +22,18 @@ const meta = {
       },
     },
   },
-  component: Stack,
+} satisfies Meta<typeof Stack>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const children = [
+  '<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 1</div>',
+  '<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 2</div>',
+  '<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 3</div>',
+];
+
+export const Default: Story = {
   argTypes: {
     direction: {
       control: 'object',
@@ -50,16 +70,6 @@ const meta = {
       defaultValue: false,
     },
   },
-} satisfies Meta<typeof Stack>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-const itemClasses =
-  'gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center';
-const children = [<div>Item 1</div>, <div>Item 2</div>, <div>Item 3</div>];
-
-export const Default: Story = {
   args: {
     direction: 'column',
     itemsAlignment: 'start',
@@ -68,23 +78,19 @@ export const Default: Story = {
     hasDivider: false,
     wrap: false,
     fixedHeight: '300px',
-    children: [
-      <div className={itemClasses}>Item 1</div>,
-      <div className={itemClasses}>Item 2</div>,
-      <div className={itemClasses}>Item 3</div>,
-    ],
+    children,
   },
 };
 
 export const ResponsiveDirectionWithDivider: Story = {
   args: {
-    direction: { base: 'row', sm: 'row', md: 'column' },
+    direction: { sm: 'row', md: 'column' },
     itemsAlignment: 'center',
     itemsDistribution: 'between',
     gap: 1,
     hasDivider: true,
     fixedHeight: '150px',
-    children,
+    children: ['Item 1', 'Item 2', 'Item 3'],
   },
 };
 
@@ -93,9 +99,9 @@ export const CenteredItemsWithGap: Story = {
     direction: 'column',
     itemsAlignment: 'center',
     itemsDistribution: 'center',
-    gap: { sm: 3, md: 6 },
+    gap: { sm: 4, md: 6 },
     hasDivider: false,
-    children,
+    children: ['Item 1', 'Item 2', 'Item 3'],
   },
 };
 
@@ -107,7 +113,7 @@ export const AroundDistributionWithDivider: Story = {
     gap: { sm: 1, lg: 5 },
     hasDivider: true,
     fixedHeight: '100px',
-    children,
+    children: ['Item 1', 'Item 2', 'Item 3'],
   },
 };
 
@@ -117,58 +123,21 @@ export const CenterDistribution: Story = {
     itemsAlignment: 'start',
     itemsDistribution: 'center',
     gap: 4,
-    children,
+    children: ['Item 1', 'Item 2', 'Item 3'],
   },
 };
 
 export const WithComponents: Story = {
   args: {
-    direction: { sm: 'row', md: 'column' },
-    itemsAlignment: 'center',
-    itemsDistribution: 'around',
-    gap: 4,
-    fixedHeight: '300px',
-    children: [
-      <div>
-        <Button>Button 1</Button>
-      </div>,
-      <div>
-        <Link href="#">Link 1</Link>
-      </div>,
-      <div>
-        <Button>Button 2</Button>
-      </div>,
-    ],
+    children: [],
   },
-};
-
-export const NestedStack: Story = {
-  args: {
-    children: null,
-  },
-  render: () => {
-    return (
-      <Stack gap={5}>
-        <Stack direction="row">
-          <div className="gi-h-[80px] gi-w-full gi-bg-gray-200"></div>
-        </Stack>
-        <Stack direction="row" gap={5}>
-          <Stack direction="column" gap={5}>
-            <div className="gi-h-[200px] gi-w-full gi-bg-gray-200"></div>
-          </Stack>
-          <Stack direction="row" gap={5} wrap>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-            <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
-          </Stack>
-        </Stack>
-      </Stack>
-    );
-  },
+  //@ts-expect-error Render function returns raw HTML string, not a React component
+  render: () =>
+    `
+    <div class="gi-flex gi-overflow-auto gi-w-full gi-justify-around gi-items-center sm:gi-flex-row md:gi-flex-col gi-gap-4 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 300px;">
+      <button class="gi-btn gi-btn-primary gi-btn-regular">Button 1</button>
+      <a href="#" class="gi-link">Link 1</a>
+      <button class="gi-btn gi-btn-primary gi-btn-regular">Button 2</button>
+    </div>
+    `,
 };
