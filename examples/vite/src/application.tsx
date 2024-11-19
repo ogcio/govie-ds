@@ -30,10 +30,13 @@ import {
   Radio,
   Alert,
   Toast,
+  Pagination,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
+import { useState } from 'react';
 
 export function App() {
+  const [currentPage, setCurrentPage] = useState(5);
   return (
     <>
       <Header
@@ -186,6 +189,11 @@ export function App() {
                 text: 'Upload File',
                 htmlFor: 'file-upload-id',
               }}
+            />
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+              totalPages={10}
             />
           </TabPanel>
         </Tabs>
