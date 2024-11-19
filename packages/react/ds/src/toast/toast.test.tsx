@@ -11,7 +11,7 @@ describe('Toast', () => {
   it('should render toast with title and message', async () => {
     const screen = renderToast({
       title: 'Toast Title',
-      children: 'This is the toast content',
+      description: 'This is the toast content',
     });
 
     expect(await screen.findByText('Toast Title')).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('Toast', () => {
       const screen = renderToast({
         variant,
         title: `${variant} Toast`,
-        children: `This is a ${variant} toast`,
+        description: `This is a ${variant} toast`,
       });
 
       const toastElement = screen.getByText(`${variant} Toast`);
@@ -47,7 +47,7 @@ describe('Toast', () => {
     const screen = renderToast({
       variant: 'success',
       title: 'Accessible Toast',
-      children: 'This toast should be accessible',
+      description: 'This toast should be accessible',
     });
     await screen.axe();
   });
@@ -55,7 +55,7 @@ describe('Toast', () => {
   it('should render toast on button trigger', async () => {
     const screen = renderToast({
       title: 'Toast with Trigger',
-      children: 'Toast has been triggered',
+      description: 'Toast has been triggered',
       trigger: <Button>Click Me</Button>,
     });
 

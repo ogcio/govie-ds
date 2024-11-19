@@ -1,8 +1,10 @@
 'use client';
-import { useState, type ReactNode } from 'react';
+import { cloneElement, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { LinkProps } from '../link/link.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 
 const toastVariants = tv({
   slots: {
@@ -40,7 +42,8 @@ const toastVariants = tv({
 type DSToastProps = {
   variant?: VariantProps<typeof toastVariants>['variant'];
   title: string;
-  children?: ReactNode;
+  description?: string;
+  action?: React.ReactElement<LinkProps>;
   dismissible?: boolean;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
@@ -69,7 +72,8 @@ const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
 
 function Toast({
   title,
-  children,
+  description,
+  action,
   variant = 'info',
   dismissible,
   onClose,
@@ -90,7 +94,12 @@ function Toast({
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
-        {children}
+        <Paragraph className="!gi-mb-0">{description}</Paragraph>
+        {action && (
+          <div className="gi-toast-action">
+            {cloneElement(action, { noColor: true })}
+          </div>
+        )}
       </div>
       {dismissible && (
         <IconButton

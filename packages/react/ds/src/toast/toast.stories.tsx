@@ -7,6 +7,7 @@ import {
 } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
+import { Link } from '../link/link.js';
 import Toast from './toast.js';
 
 const meta = {
@@ -25,9 +26,13 @@ const meta = {
       control: 'boolean',
       description: 'Specify if the toast is dismissible',
     },
-    children: {
+    description: {
       control: 'text',
-      description: 'Specify the HTML for the content in the toast component',
+      description: 'Specify the content in the toast component',
+    },
+    action: {
+      control: 'object',
+      description: 'Specify a link for the toast component',
     },
     duration: {
       control: 'number',
@@ -73,13 +78,23 @@ type Story = StoryObj<typeof meta>;
 export const WithTrigger: Story = {
   args: {
     title: 'Toast Triggered',
+    description: 'This is some content',
     trigger: <Button>Trigger Toast</Button>,
+  },
+};
+
+export const WithAction: Story = {
+  args: {
+    title: 'Dismissible',
+    description: 'This is some content',
+    action: <Link href="#">Go to link</Link>,
   },
 };
 
 export const Dismissible: Story = {
   args: {
     title: 'Dismissible',
+    description: 'This is some content',
     dismissible: true,
   },
 };
@@ -87,6 +102,7 @@ export const Dismissible: Story = {
 export const withLongerDuration: Story = {
   args: {
     title: 'WithDuration',
+    description: 'This is some content',
     duration: 8000,
   },
 };
@@ -94,6 +110,7 @@ export const withLongerDuration: Story = {
 export const withPositionChange: Story = {
   args: {
     title: 'withPositionChange',
+    description: 'This is some content',
     position: {
       x: 'left',
       y: 'bottom',

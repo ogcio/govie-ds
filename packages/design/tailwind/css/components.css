@@ -832,8 +832,11 @@ input[type='file' i] {
 /* Toast */
 
 /* Native notyf classes */
+.notyf {
+  @apply !gi-gap-6
+ }
 .notyf__toast {
- @apply !gi-m-0 !gi-p-0 
+ @apply !gi-m-0 !gi-p-0 gi-max-w-[460px]
 }
 .notyf__wrapper {
  @apply !gi-m-0 !gi-p-0 
@@ -892,6 +895,9 @@ input[type='file' i] {
 
 .gi-toast-danger {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700
+}
+.gi-toast-action {
+  @apply gi-text-gray-950
 }
 
 /* End of Toast */
