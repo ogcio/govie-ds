@@ -253,7 +253,6 @@ export const Stack: React.FC<StackProps> = ({
       <React.Fragment key={`item_${index}`}>
         {React.isValidElement(child)
           ? React.cloneElement(child as React.ReactElement, {
-              role: 'listitem',
               'data-testid': `govie-stack-item-${index}`,
             })
           : child}
@@ -268,7 +267,7 @@ export const Stack: React.FC<StackProps> = ({
   return (
     <div
       className={stackClasses}
-      role="list"
+      role="region"
       aria-label="Items Stacked"
       data-testid="govie-stack"
       style={{ height: fixedHeight }}
