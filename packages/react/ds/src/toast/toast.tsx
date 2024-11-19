@@ -2,23 +2,19 @@
 import 'notyf/notyf.min.css';
 import { INotyfPosition } from 'notyf';
 import { Notyf } from 'notyf';
-import {
-  cloneElement,
-  createContext,
-  useEffect,
-  useContext,
-} from 'react';
+import { cloneElement, createContext, useEffect, useContext } from 'react';
 import { renderToString } from 'react-dom/server';
 import { type ButtonProps } from '../button/types.js';
 import { Toast as DSToast, type DSToastProps } from './ds-toast.js';
 
-type ToastProps = DSToastProps & {
+export type ToastProps = DSToastProps & {
   duration?: number;
   position?: INotyfPosition;
   trigger?: React.ReactElement<ButtonProps>;
 };
 
-const notyfContext = createContext(new Notyf());  
+const isClientSide = typeof window === 'undefined' ? null : new Notyf();
+const notyfContext = createContext(isClientSide);
 
 export const Toast = (props: ToastProps) => {
   const notyf = useContext(notyfContext);
@@ -38,7 +34,7 @@ export const Toast = (props: ToastProps) => {
   const renderNotyf = () => {
     const { duration, position } = props;
     const html = renderToString(<DSToast {...props} />);
-    notyf.open({ type: 'open', message: html, duration, position });
+    notyf && notyf.open({ type: 'open', message: html, duration, position });
   };
 
   if (props.trigger) {

@@ -86,7 +86,7 @@ function Alert({
     return null;
   }
   return (
-    <div className={baseVariant()} role="alert">
+    <div className={baseVariant()} data-testid="alert" role="alert">
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
