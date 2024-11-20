@@ -117,3 +117,7 @@ typography-blockquote
 typography-cookiebanner
 typography-phasebanner
 typography-sectionbreak
+itemsAlignment
+itemsDistribution
+fixedHeight
+groupId

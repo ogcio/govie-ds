@@ -29,6 +29,7 @@ import {
   Combobox,
   Radio,
   Alert,
+  Toast,
   Pagination,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
@@ -156,6 +157,10 @@ export function App() {
               }}
             />
             <Combobox {...ComboBoxProps} />
+            <Toast
+              title="Toast Triggered"
+              trigger={<Button>Trigger Toast</Button>}
+            />
             <Select
               id="unique-id"
               label={{ text: 'Label' }}

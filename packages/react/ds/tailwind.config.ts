@@ -10,8 +10,8 @@ const config: Config = {
     { pattern: /grid-./ },
     { pattern: /col-./ },
     { pattern: /row-./ },
-    { pattern: /gap-./ },
     { pattern: /font-./ },
+    { pattern: /gap-./, variants: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] },
   ],
 };
 

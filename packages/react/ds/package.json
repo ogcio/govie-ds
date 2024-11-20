@@ -40,6 +40,7 @@
   "dependencies": {
     "@govie-ds/tokens": "workspace:*",
     "clsx": "^2.1.1",
+    "notyf": "^3.10.0",
     "rollup-preserve-directives": "^1.1.2"
   },
   "devDependencies": {

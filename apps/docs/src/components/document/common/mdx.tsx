@@ -1,4 +1,5 @@
 import {
+  Alert,
   Blockquote,
   Button,
   Card,
@@ -22,6 +23,7 @@ import {
   SectionBreak,
   Select,
   Spinner,
+  Stack,
   TabItem,
   TabList,
   TabPanel,
@@ -213,12 +215,14 @@ const documentComponents: MDXComponents = {
       Loading... <Spinner inline={true} />
     </Button>
   ),
+  Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
   ComponentContainer: (props) => (
     <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
   ),
+  Alert: (props) => <Alert {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
