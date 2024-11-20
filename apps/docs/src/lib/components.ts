@@ -321,6 +321,32 @@ export function getComponents(): ComponentDetail[] {
       ],
     },
     {
+      id: 'stack',
+      name: 'Stack',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/layout-stack--docs',
+          },
+          status: 'beta',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/layout-stack--docs',
+          },
+          status: 'beta',
+        },
+      ],
+    },
+    {
       id: 'select',
       name: 'Select',
       statuses: [

@@ -13,7 +13,7 @@ const spinnerVariants = tv({
   },
 });
 
-type SpinnerProps = VariantProps<typeof spinnerVariants> & {
+export type SpinnerProps = VariantProps<typeof spinnerVariants> & {
   inline?: boolean;
 };
 
