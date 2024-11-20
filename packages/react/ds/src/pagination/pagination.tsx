@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
-import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
+import { useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utils.js';
 

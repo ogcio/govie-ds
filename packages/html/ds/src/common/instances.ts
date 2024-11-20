@@ -4,6 +4,7 @@ import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
+import { Pagination } from '../pagination/pagination';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
@@ -23,6 +24,7 @@ const componentRegistry = {
   Tabs,
   ComboBox,
   Alert,
+  Pagination,
   // TODO: additional component classes
 } as const;
 

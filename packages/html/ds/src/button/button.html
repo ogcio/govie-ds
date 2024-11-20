@@ -5,14 +5,16 @@
   {% set variant = props.variant or 'primary' %}
   {% set size = props.size or 'medium' %}
   {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
+  {% set testId = props.testId or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
+
 
   <button
     {% if props.type %}type="{{ props.type }}"{% endif %}
     {% if props.form %}form="{{ props.form }}"{% endif %}
     {% if props.value %}value="{{ props.value }}"{% endif %}
+    data-testid="{{ testId }}"
     data-element="button-container"
     data-module="gieds-button"
-    data-testid="govieButton-{{ appearance }}-{{ variant }}-{{ size }}-{{ isDisabled }}"
     class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
   >
     {{ props.content | safe | trim }}

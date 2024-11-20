@@ -9,6 +9,7 @@ import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
 import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
+import { initPagination } from './pagination/pagination.js';
 
 export * as properties from './dist/properties.js';
 
@@ -36,6 +37,7 @@ export function initGovIe() {
   initTabs();
   initComboBox();
   initAlert();
+  initPagination()
 }
 
 export function destroyGovIe() {
