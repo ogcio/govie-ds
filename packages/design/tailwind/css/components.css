@@ -836,8 +836,12 @@ input[type='file' i] {
   @apply !gi-gap-6
  }
 .notyf__toast {
- @apply !gi-m-0 !gi-p-0 gi-max-w-[460px]
+ @apply !gi-m-0 !gi-p-0 gi-max-w-[460px];
+ animation-delay: 0s !important;
 }
+.notyf__message {
+ animation-delay: 0s !important;
+ }
 .notyf__wrapper {
  @apply !gi-m-0 !gi-p-0 
 }
