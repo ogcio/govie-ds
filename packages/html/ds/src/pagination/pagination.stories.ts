@@ -11,7 +11,7 @@ const Pagination = renderComponent<PaginationProps>(macro);
 
 const meta = {
   component: Pagination,
-  title: 'Components/Pagination',
+  title: 'Navigation/Pagination',
   parameters: {
     macro,
     docs: {
@@ -28,22 +28,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   argTypes: {
     currentPage: {
-      control: { type: 'number' },
+      type: { name: 'number', required: true },
       description: 'The current active page displayed in the pagination.',
-      table: {
-        category: 'Controls',
-        type: { summary: 'number' },
-        defaultValue: { summary: '1' },
-      },
     },
     totalPages: {
-      control: { type: 'number' },
+      type: { name: 'number', required: true },
       description: 'The total number of pages available.',
-      table: {
-        category: 'Controls',
-        type: { summary: 'number' },
-        defaultValue: { summary: '1' },
-      },
     },
   },
   args: {
@@ -51,3 +41,4 @@ export const Default: Story = {
     currentPage: 10,
   },
 };
+

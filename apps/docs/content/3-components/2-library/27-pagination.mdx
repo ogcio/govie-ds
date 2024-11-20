@@ -26,12 +26,39 @@ status: stable
   </TabPanel>
   <TabPanel value="tab12">
   ```html
-    TBD
+    <div
+      class="gi-pagination"
+      data-current-page="10"
+      data-total-pages="100"
+      data-testid="govie-pagination"
+      data-module="gieds-pagination"
+    >
+      <button
+        data-testid="govie-pagination-prev-btn"
+        data-element="button-container"
+        data-module="gieds-button"
+        class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+        <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span> Previous
+      </button>
+      <div class="gi-pagination gi-pagination-numbers" data-testid="govie-pagination-numbers"></div>
+      <button
+        data-testid="govie-pagination-next-btn"
+        data-element="button-container"
+        data-module="gieds-button"
+        class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+        Next <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
+      </button>
+    </div>
   ```
   </TabPanel>
   <TabPanel value="tab13">
   ```html
-    TBD
+    {{ goviePagination({
+      "totalPages": 100,
+      "currentPage": 10
+    }) }}
   ```
   </TabPanel>
 </Tabs>

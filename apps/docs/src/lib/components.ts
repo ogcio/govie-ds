@@ -908,8 +908,9 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/navigation-pagination--docs',
           },
-          status: 'considering',
+          status: 'beta',
         },
         {
           platform: {
