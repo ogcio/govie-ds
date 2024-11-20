@@ -42,6 +42,26 @@ const localHtmlStorybookBaseUrl =
 export function getComponents(): ComponentDetail[] {
   let components: ComponentDetail[] = [
     {
+      id: 'alert',
+      name: 'Alert',
+      statuses: [
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/application-alert--docs',
+          },
+          status: 'beta',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=//docs/application-alert--docs',
+          },
+          status: 'beta',
+        },
+      ],
+    },
+    {
       id: 'button',
       name: 'Button',
       statuses: [

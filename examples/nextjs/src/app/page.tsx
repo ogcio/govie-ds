@@ -21,6 +21,7 @@ import {
   Chip,
   Stack,
   Alert,
+  Toast,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -52,6 +53,12 @@ export default function Home() {
       />
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <Toast title="This is a toast" />
+        <Toast
+          title="Toast triggered"
+          variant="success"
+          trigger={<Button>Trigger Toast</Button>}
+        />
         <div className="flex flex-col gap-4 my-4">
           <Heading>Heading</Heading>
           <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
