@@ -82,6 +82,12 @@ export const Default: Story = {
   },
 };
 
+export const WithDefaultProps: Story = {
+  args: {
+    children: ['<div>Item 1</div>', '<div>Item 2</div>', '<div>Item 3</div>'],
+  },
+};
+
 export const ResponsiveDirectionWithDivider: Story = {
   args: {
     direction: { sm: 'row', md: 'column' },

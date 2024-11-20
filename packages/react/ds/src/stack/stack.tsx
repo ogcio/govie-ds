@@ -1,50 +1,14 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { cn } from '../cn.js';
-
-type Gap =
-  | number
-  | {
-      base?: number;
-      xs?: number;
-      sm?: number;
-      md?: number;
-      lg?: number;
-      xl?: number;
-      '2xl'?: number;
-    };
-type SimpleDirection = 'column' | 'row';
-
-export type Alignment = 'start' | 'center' | 'end';
-export type Distribution =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'between'
-  | 'around'
-  | 'evenly';
-export type Direction =
-  | SimpleDirection
-  | {
-      base?: SimpleDirection;
-      xs?: SimpleDirection;
-      sm?: SimpleDirection;
-      md?: SimpleDirection;
-      lg?: SimpleDirection;
-      xl?: SimpleDirection;
-      '2xl'?: SimpleDirection;
-    };
-export type StackProps = {
-  direction?: Direction;
-  itemsAlignment?: Alignment;
-  itemsDistribution?: Distribution;
-  gap?: Gap;
-  hasDivider?: boolean;
-  wrap?: boolean;
-  fixedHeight?: string;
-  children: ReactNode;
-};
+import type {
+  Alignment,
+  Direction,
+  Distribution,
+  Gap,
+  StackProps,
+} from './types.js';
 
 const getDirectionBreakpointFlags = (direction: Direction) => {
   if (typeof direction === 'string') {
