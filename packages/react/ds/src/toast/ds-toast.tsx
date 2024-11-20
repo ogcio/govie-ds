@@ -97,7 +97,7 @@ function Toast({
         <Paragraph className="!gi-mb-0">{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
-            {cloneElement(action, { noColor: true })}
+            {cloneElement(action, { noColor: true, size: 'md' })}
           </div>
         )}
       </div>
