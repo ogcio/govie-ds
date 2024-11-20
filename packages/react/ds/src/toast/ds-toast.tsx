@@ -1,34 +1,36 @@
 'use client';
-import { useState, type ReactNode } from 'react';
+import { cloneElement, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { LinkProps } from '../link/link.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 
-const alertVariants = tv({
+const toastVariants = tv({
   slots: {
-    base: 'gi-alert-base',
-    baseDismissible: 'gi-alert-base-dismissible',
-    container: 'gi-alert-container',
-    heading: 'gi-alert-title',
-    dismiss: 'gi-alert-dismiss',
+    base: 'gi-toast-base',
+    baseDismissible: 'gi-toast-base-dismissible',
+    container: 'gi-toast-container',
+    heading: 'gi-toast-title',
+    dismiss: 'gi-toast-dismiss',
   },
   variants: {
     variant: {
       info: {
-        base: 'gi-alert-info',
-        baseDismissible: 'gi-alert-info',
+        base: 'gi-toast-info',
+        baseDismissible: 'gi-toast-info',
       },
       danger: {
-        base: 'gi-alert-danger',
-        baseDismissible: 'gi-alert-danger',
+        base: 'gi-toast-danger',
+        baseDismissible: 'gi-toast-danger',
       },
       success: {
-        base: 'gi-alert-success',
-        baseDismissible: 'gi-alert-success',
+        base: 'gi-toast-success',
+        baseDismissible: 'gi-toast-success',
       },
       warning: {
-        base: 'gi-alert-warning',
-        baseDismissible: 'gi-alert-success',
+        base: 'gi-toast-warning',
+        baseDismissible: 'gi-toast-success',
       },
     },
   },
@@ -37,15 +39,16 @@ const alertVariants = tv({
   },
 });
 
-type AlertProps = {
-  variant?: VariantProps<typeof alertVariants>['variant'];
+type DSToastProps = {
+  variant?: VariantProps<typeof toastVariants>['variant'];
   title: string;
-  children?: ReactNode;
+  description?: string;
+  action?: React.ReactElement<LinkProps>;
   dismissible?: boolean;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
+const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
   let icon;
   switch (variant) {
     case 'warning': {
@@ -67,16 +70,17 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
   return icon;
 };
 
-function Alert({
+function Toast({
   title,
-  children,
+  description,
+  action,
   variant = 'info',
   dismissible,
   onClose,
-}: AlertProps) {
+}: DSToastProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
-  const { base, heading, container, dismiss, baseDismissible } = alertVariants({
+  const { base, heading, container, dismiss, baseDismissible } = toastVariants({
     variant,
   });
 
@@ -86,11 +90,16 @@ function Alert({
     return null;
   }
   return (
-    <div className={baseVariant()} data-testid="alert" role="alert">
+    <div className={baseVariant()} role="alert">
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
-        {children}
+        <Paragraph className="!gi-mb-0">{description}</Paragraph>
+        {action && (
+          <div className="gi-toast-action">
+            {cloneElement(action, { noColor: true, size: 'md' })}
+          </div>
+        )}
       </div>
       {dismissible && (
         <IconButton
@@ -109,5 +118,5 @@ function Alert({
   );
 }
 
-export { Alert, alertVariants };
-export type { AlertProps };
+export { Toast, toastVariants };
+export type { DSToastProps };
