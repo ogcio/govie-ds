@@ -664,6 +664,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      notyf:
+        specifier: ^3.10.0
+        version: 3.10.0
       rollup-preserve-directives:
         specifier: ^1.1.2
         version: 1.1.2(rollup@4.24.3)
@@ -7905,6 +7908,9 @@ packages:
   normalize-range@0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
+
+  notyf@3.10.0:
+    resolution: {integrity: sha512-Mtnp+0qiZxgrH+TzVlzhWyZceHdAZ/UWK0/ju9U0HQeDpap1mZ8cC7H5wSI5mwgni6yeAjaxsTw0sbMK+aSuHw==}
 
   npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
@@ -18968,6 +18974,8 @@ snapshots:
   normalize-path@3.0.0: {}
 
   normalize-range@0.1.2: {}
+
+  notyf@3.10.0: {}
 
   npm-run-path@4.0.1:
     dependencies:
