@@ -20,6 +20,7 @@ import {
   Combobox,
   Chip,
   Alert,
+  Breadcrumbs,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -52,6 +53,22 @@ export default function Home() {
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <div className="flex flex-col gap-4 my-4">
+          <Breadcrumbs
+            links={[
+              {
+                href: '#',
+                label: 'Home',
+              },
+              {
+                href: '#',
+                label: 'Passport',
+              },
+              {
+                href: '#',
+                label: 'Travel',
+              },
+            ]}
+          />
           <Heading>Heading</Heading>
           <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
           <Link

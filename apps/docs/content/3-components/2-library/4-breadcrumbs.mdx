@@ -9,6 +9,39 @@ status: in-development
 
 <ComponentStatusBlock componentId="breadcrumbs" />
 
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+    <nav aria-label="Breadcrumbs" class="gi-breadcrumbs" data-testid="govie-breadcrumb">
+        <ol role="list">
+            <li role="listitem">
+            <a href="/" class="gi-link gi-link-no-visited">Home</a>
+            </li>
+            <li role="listitem">
+            <a href="#" class="gi-link gi-link-no-visited">Passports</a>
+            </li>
+            <li role="listitem">
+            <a href="#" class="gi-link gi-link-no-visited">Travel abroad</a>
+            </li>
+        </ol>
+    </nav>
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```react
+    import { Breadcrumbs } from '@govie-ds/react';
+
+    <Breadcrumbs links={[{ href: '/', label: 'Home' }, { href: '#', label: 'Passports' }, { href: '#', label: 'Travel abroad' },]} />
+
+  ```
+  </TabPanel>
+  </Tabs>
+
 ## When to use this component
 
 ## When not to use this component
+

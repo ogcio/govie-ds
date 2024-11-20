@@ -44,3 +44,4 @@ export * from './checkbox/checkboxes-group.js';
 export * from './spinner/spinner.js';
 export { Alert } from './alert/alert.js';
 export * from './pagination/pagination.js';
+export * from './breadcrumbs/breadcrumbs.js';
