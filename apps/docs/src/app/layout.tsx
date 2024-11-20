@@ -90,7 +90,7 @@ export default function RootLayout({
       >
         <Header {...headerProps} />
         {children}
-        <Footer links={footerLinks} />;
+        <Footer links={footerLinks} />
       </body>
     </html>
   );
