@@ -8,7 +8,7 @@ import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
-import '../../ds/styles.css';
+import '../../ds/dist/styles.css';
 
 // add decorators for button
 const Decorator = (arguments_, parameters) => {

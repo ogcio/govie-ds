@@ -28,7 +28,20 @@ status: stable
   </TabList>
   <TabPanel value="tab11">
     ```html
-   
+      {{ govieStack({
+        "direction": "column",
+        "itemsAlignment": "start",
+        "itemsDistribution": "start",
+        "gap": 2,
+        "hasDivider": false,
+        "wrap": false,
+        "fixedHeight": "300px",
+        "children": [
+          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 1</div>",
+          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 2</div>",
+          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 3</div>"
+        ]
+      }) }}
     ```
   </TabPanel>
   <TabPanel value="tab12">
@@ -58,5 +71,3 @@ Use the Stack component to arrange items vertically or horizontally with consist
 ## When not to use this component
 
 Avoid using the Stack component for complex grid layouts or when precise control over individual item positioning is required.
-
-```

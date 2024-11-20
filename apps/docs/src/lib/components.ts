@@ -306,6 +306,12 @@ export function getComponents(): ComponentDetail[] {
       statuses: [
         {
           platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
             id: 'global',
             href: '?path=/docs/layout-stack--docs',
           },
