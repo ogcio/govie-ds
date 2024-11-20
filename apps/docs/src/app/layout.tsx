@@ -88,11 +88,9 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${lato.className} transition duration-500 bg-white h-full`}
       >
-        <div className="flex flex-col h-full">
-          <Header {...headerProps} />
-          {children}
-          <Footer links={footerLinks} />;
-        </div>
+        <Header {...headerProps} />
+        {children}
+        <Footer links={footerLinks} />;
       </body>
     </html>
   );
