@@ -27,6 +27,7 @@ import {
   CheckboxesGroup,
   Spinner,
   Pagination,
+  Breadcrumbs,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -190,6 +191,7 @@ const documentComponents: MDXComponents = {
     </Button>
   ),
   Pagination: (props) => <Pagination {...props} />,
+  Breadcrumbs: (props) => <Breadcrumbs {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

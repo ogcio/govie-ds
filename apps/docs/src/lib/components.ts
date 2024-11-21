@@ -837,14 +837,16 @@ export function getComponents(): ComponentDetail[] {
         {
           platform: {
             id: 'global',
+            href: '?path=/docs/navigation-breadcrumbs--docs',
           },
-          status: 'considering',
+          status: 'beta',
         },
         {
           platform: {
             id: 'react',
+            href: '?path=/docs/navigation-breadcrumbs--docs',
           },
-          status: 'considering',
+          status: 'beta',
         },
       ],
     },
