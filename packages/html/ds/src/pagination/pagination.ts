@@ -7,7 +7,6 @@ import {
   Breakpoint,
   BreakpointObserver,
 } from '../util/breakpoint-observer.util';
-import { getDisplayPages } from './pagination.util';
 
 type PaginationOptions = BaseComponentOptions;
 
@@ -15,7 +14,6 @@ export class Pagination extends BaseComponent<PaginationOptions> {
   private currentPage: number;
   private totalPages: number;
   private breakpointObserver: BreakpointObserver;
-  private breakpoint: Breakpoint;
   private isCompactView: boolean;
 
   constructor(options: PaginationOptions) {
@@ -29,7 +27,6 @@ export class Pagination extends BaseComponent<PaginationOptions> {
     this.totalPages = Number(element.dataset.totalPages);
 
     this.breakpointObserver = new BreakpointObserver();
-    this.breakpoint = Breakpoint.XL;
     this.isCompactView = window.innerWidth < 524; // Initialize compact view based on width.
 
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
@@ -39,7 +36,7 @@ export class Pagination extends BaseComponent<PaginationOptions> {
   protected initComponent(): void {
     this.breakpointObserver.init(this.onBreakpointChange);
     window.addEventListener('resize', this.updateCompactView); // Listen to resize events.
-    this.renderNumbers();
+    this.renderCompactView();
   }
 
   protected destroyComponent(): void {
@@ -72,71 +69,27 @@ export class Pagination extends BaseComponent<PaginationOptions> {
           : `Next <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>`;
       }
 
-      this.renderNumbers(); // Re-render numbers to reflect compact view changes.
+      this.renderCompactView(); // Re-render numbers to reflect compact view changes.
     }
   }
 
-  private renderNumbers(): void {
+  private renderCompactView(): void {
     const numbersContainer = document.querySelector('.gi-pagination-numbers');
-    if (!numbersContainer) return;
+
+    if (!numbersContainer) {
+      return
+    };
   
-    // Compact view logic
-    if (this.isCompactView) {
-      numbersContainer.innerHTML = `
+    numbersContainer.innerHTML = `
         <span class="gi-text-md">
           <span class="gi-font-bold">Page ${this.currentPage}</span> of ${this.totalPages}
         </span>
       `;
-      return; // Skip rendering buttons in compact view.
-    }
-  
-    // Get the current URL and its search parameters
-    const currentUrl = new URL(window.location.href);
-    const currentParams = new URLSearchParams(currentUrl.search);
-  
-    // Render dynamic page numbers
-    const displayedPages = getDisplayPages(
-      this.currentPage,
-      this.totalPages,
-      this.breakpoint,
-    );
-  
-    const pageButtonsHTML = displayedPages
-      .map((page) => {
-        if (page === -1 || page === -2) {
-          return `<span class="material-symbols-outlined gi-gray-700">more_horiz</span>`;
-        }
-  
-        // Create a copy of the current query parameters and update with the new page
-        const pageParams = new URLSearchParams(currentParams.toString());
-        pageParams.set('currentPage', page.toString());
-        pageParams.set('totalPages', this.totalPages.toString());
-  
-        // Create the URL with the updated query parameters
-        const pageUrl = `${currentUrl.pathname}?${pageParams.toString()}`;
-  
-        const isActive = page === this.currentPage;
-        return `
-        <a
-          href="${pageUrl}"
-          data-element="button-container"
-          data-module="gieds-button"
-          data-testid="govieButton-dark-flat-large-notDisabled"
-          class="gi-btn ${isActive ? 'gi-btn-primary-dark' : 'gi-btn-flat-dark'} gi-btn-large"
-        >
-          ${page}
-        </a>
-        `;
-      })
-      .join('');
-  
-    numbersContainer.innerHTML = pageButtonsHTML;
   }
   
 
   private onBreakpointChange(breakpoint: Breakpoint, width: number): void {
-    this.breakpoint = breakpoint;
-    this.renderNumbers();
+    this.renderCompactView();
   }
 }
 

@@ -1,7 +1,30 @@
 {% from 'button/button.html' import govieButton %}
+
 {% macro goviePagination(props) %}
-  {% set display_pages = get_display_pages(props.currentPage, props.totalPages) %}
-  
+  {%- set display_pages = [] -%}
+      
+  {% if props.currentPage > 3 %}
+    {% set display_pages = (display_pages.push(1), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage > 4 %}
+    {% set display_pages = (display_pages.push(-1), display_pages) %}
+  {% endif %}
+
+  {% for index in range(props.currentPage - 2, props.currentPage + 3) %}
+    {% if index >= 1 and index <= props.totalPages %}
+      {% set display_pages = (display_pages.push(index), display_pages) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if props.currentPage < props.totalPages - 3 %}
+    {% set display_pages = (display_pages.push(-2), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage < props.totalPages - 2 %}
+    {% set display_pages = (display_pages.push(props.totalPages), display_pages) %}
+  {% endif %}
+
   <div
     class="gi-pagination"
     data-current-page="{{ props.currentPage }}"
@@ -12,7 +35,7 @@
     {# Previous Button #}
     {{ 
       govieButton({
-        "content": "<span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_left_alt</span> Previous",
+        "content": "<span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_left_alt</span> <span class='xs:gi-block gi-hidden'>Previous</span>",
         "variant": "flat",
         "size": "large",
         "appearance": "dark",
@@ -24,31 +47,36 @@
       }) 
     }}
 
-    {# Dynamically render page buttons #}
-    {% for page in display_pages %}
-      {% if page == -1 or page == -2 %}
-        {# Ellipsis for skipped pages #}
-        <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
-      {% else %}
-        {# Page number buttons #}
-        {{ 
-          govieButton({
-            "content": page|string,
-            "variant": "flat" if page != props.currentPage else "flat-dark",
-            "size": "large",
-            "appearance": "dark",
-            "href": "#", 
-            "target": "_self",
-            "data-page": page
-          }) 
-        }}
-      {% endif %}
-    {% endfor %}
+    {# Pagination - Compact View (visible on small screens only) #}
+    <div class="gi-text-md xs:gi-hidden gi-block">
+      <span class="gi-font-bold">Page {{ props.currentPage }}</span> of {{ props.totalPages }}
+    </div>
+
+    {# Pagination - Buttons (visible on larger screens) #}
+    <div class="xs:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
+      {% for page in display_pages %}
+        {% if page == -1 or page == -2 %}
+          <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+        {% else %}
+          {{ 
+            govieButton({
+              "content": page|string,
+              "variant": "flat" if page != props.currentPage else "flat-dark",
+              "size": "large",
+              "appearance": "dark",
+              "href": "#", 
+              "target": "_self",
+              "data-page": page
+            }) 
+          }}
+        {% endif %}
+      {% endfor %}
+    </div>
 
     {# Next Button #}
     {{ 
       govieButton({
-        "content": "Next <span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_right_alt</span>",
+        "content": "<span class='xs:gi-block gi-hidden'>Next</span> <span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_right_alt</span>",
         "variant": "flat",
         "size": "large",
         "appearance": "dark",
@@ -60,32 +88,4 @@
       }) 
     }}
   </div>
-{% endmacro %}
-
-{% macro get_display_pages(current_page, total_pages) %}
-  {%- set displayed_pages = [] -%}
-  
-  {% if current_page > 3 %}
-    {% set displayed_pages = (displayed_pages.push(1), displayed_pages) %}
-  {% endif %}
-  
-  {% if current_page > 4 %}
-    {% set displayed_pages = (displayed_pages.push(-1), displayed_pages) %}
-  {% endif %}
-  
-  {% for index in range(current_page - 2, current_page + 3) %}
-    {% if index >= 1 and index <= total_pages %}
-      {% set displayed_pages = (displayed_pages.push(index), displayed_pages) %}
-    {% endif %}
-  {% endfor %}
-  
-  {% if current_page < total_pages - 3 %}
-    {% set displayed_pages = (displayed_pages.push(-2), displayed_pages) %}
-  {% endif %}
-  
-  {% if current_page < total_pages - 2 %}
-    {% set displayed_pages = (displayed_pages.push(total_pages), displayed_pages) %}
-  {% endif %}
-  
-  {{ displayed_pages }}
 {% endmacro %}
