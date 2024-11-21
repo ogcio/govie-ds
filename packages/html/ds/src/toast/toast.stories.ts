@@ -72,8 +72,8 @@ export const WithTrigger: Story = {
     title: 'Toast Triggered',
     description: 'This is some content',
     trigger: {
-      content: 'Trigger Toast'
-    }
+      content: 'Trigger Toast',
+    },
   },
 };
 

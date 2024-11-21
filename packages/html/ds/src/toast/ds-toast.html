@@ -19,18 +19,22 @@
     }}
     <div class="gi-toast-container">
       <p class="gi-toast-title">{{ props.title }}</p>
-      {{ govieParagraph({
-        "content": props.description,
-        "className": "!gi-mb-0"
-      }) }}
+      {{
+        govieParagraph({
+          "content": props.description,
+          "className": "!gi-mb-0"
+        })
+      }}
       {% if props.action %}
         <div class="gi-toast-action">
-            {{ govieLink({
+          {{
+            govieLink({
                 "noColor": true,
                 "size": "md",
                 "href": props.action.href,
                 "label": props.action.label
-            }) }}
+            })
+          }}
         </div>
       {% endif %}
     </div>

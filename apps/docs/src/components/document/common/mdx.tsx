@@ -28,6 +28,7 @@ import {
   Spinner,
   Pagination,
   Alert,
+  Toast,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -192,6 +193,7 @@ const documentComponents: MDXComponents = {
   ),
   Pagination: (props) => <Pagination {...props} />,
   Alert: (props) => <Alert {...props} />,
+  Toast: (props) => <Toast {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
