@@ -20,7 +20,12 @@ export const Breadcrumbs = ({ links = [] }: BreadcrumbProps) => {
             key={`breadcrumb_item_${index}`}
             data-testid={`breadcrumb_item_${index}`}
           >
-            <Link href={href} noVisited={!!(links.length - 1)}>
+            <Link
+              href={href}
+              {...(window.location.pathname === href
+                ? { 'aria-current': 'page' }
+                : {})}
+            >
               {label}
             </Link>
           </li>
