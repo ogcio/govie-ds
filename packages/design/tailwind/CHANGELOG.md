@@ -15,6 +15,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.20.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.19.0...tailwind-v0.20.0) (2024-11-20)
+
+
+### Features
+
+* toast component ([#331](https://github.com/ogcio/govie-ds/issues/331)) ([1ca741e](https://github.com/ogcio/govie-ds/commit/1ca741e609763ba847f24cfd259a8b727d87a498))
+
 ## [0.19.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.18.0...tailwind-v0.19.0) (2024-11-18)
 
 

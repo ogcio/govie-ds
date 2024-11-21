@@ -50,6 +50,13 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.19.0](https://github.com/ogcio/govie-ds/compare/html-v0.18.1...html-v0.19.0) (2024-11-20)
+
+
+### Features
+
+* stack component ([#328](https://github.com/ogcio/govie-ds/issues/328)) ([fe06a57](https://github.com/ogcio/govie-ds/commit/fe06a57b46512fecb8c8c0f1c99d422714b1d6b8))
+
 ## [0.18.1](https://github.com/ogcio/govie-ds/compare/html-v0.18.0...html-v0.18.1) (2024-11-18)
 
 
