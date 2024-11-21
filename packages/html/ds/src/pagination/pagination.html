@@ -1,34 +1,91 @@
 {% from 'button/button.html' import govieButton %}
-
 {% macro goviePagination(props) %}
-<div
-  class="gi-pagination"
-  data-current-page="{{ props.currentPage }}"
-  data-total-pages="{{ props.totalPages }}"
-  data-testid="govie-pagination"
-  data-module="gieds-pagination"
->
-  {# Previous Button - Static Rendering #}
-  {{ govieButton({
-    "content": "<span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_left_alt</span> Previous",
-    "variant": "flat",
-    "size": "large",
-    "appearance": "dark",
-    "disabled": props.currentPage == 1,
-    "testId": "govie-pagination-prev-btn"
-  }) }}
+  {% set display_pages = get_display_pages(props.currentPage, props.totalPages) %}
+  
+  <div
+    class="gi-pagination"
+    data-current-page="{{ props.currentPage }}"
+    data-total-pages="{{ props.totalPages }}"
+    data-testid="govie-pagination"
+    data-module="gieds-pagination"
+  >
+    {# Previous Button #}
+    {{ 
+      govieButton({
+        "content": "<span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_left_alt</span> Previous",
+        "variant": "flat",
+        "size": "large",
+        "appearance": "dark",
+        "disabled": props.currentPage == 1,
+        "href": "#", 
+        "target": "_self",
+        "testId": "govie-pagination-prev-btn",
+        "data-current-page": props.currentPage - 1
+      }) 
+    }}
 
-  {# Placeholder for Pagination Numbers - Will Be Filled Dynamically by JavaScript #}
-  <div class="gi-pagination gi-pagination-numbers" data-testid="govie-pagination-numbers"></div>
+    {# Dynamically render page buttons #}
+    {% for page in display_pages %}
+      {% if page == -1 or page == -2 %}
+        {# Ellipsis for skipped pages #}
+        <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      {% else %}
+        {# Page number buttons #}
+        {{ 
+          govieButton({
+            "content": page|string,
+            "variant": "flat" if page != props.currentPage else "flat-dark",
+            "size": "large",
+            "appearance": "dark",
+            "href": "#", 
+            "target": "_self",
+            "data-page": page
+          }) 
+        }}
+      {% endif %}
+    {% endfor %}
 
-  {# Next Button - Static Rendering #}
-  {{ govieButton({
-    "content": "Next <span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_right_alt</span>",
-    "variant": "flat",
-    "size": "large",
-    "appearance": "dark",
-    "disabled": props.currentPage == props.totalPages,
-    "testId": "govie-pagination-next-btn"
-  }) }}
-</div>
+    {# Next Button #}
+    {{ 
+      govieButton({
+        "content": "Next <span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_right_alt</span>",
+        "variant": "flat",
+        "size": "large",
+        "appearance": "dark",
+        "href": "#",
+        "target": "_self",
+        "disabled": props.currentPage == props.totalPages,
+        "testId": "govie-pagination-next-btn",
+        "data-current-page": props.currentPage + 1
+      }) 
+    }}
+  </div>
+{% endmacro %}
+
+{% macro get_display_pages(current_page, total_pages) %}
+  {%- set displayed_pages = [] -%}
+  
+  {% if current_page > 3 %}
+    {% set displayed_pages = (displayed_pages.push(1), displayed_pages) %}
+  {% endif %}
+  
+  {% if current_page > 4 %}
+    {% set displayed_pages = (displayed_pages.push(-1), displayed_pages) %}
+  {% endif %}
+  
+  {% for index in range(current_page - 2, current_page + 3) %}
+    {% if index >= 1 and index <= total_pages %}
+      {% set displayed_pages = (displayed_pages.push(index), displayed_pages) %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if current_page < total_pages - 3 %}
+    {% set displayed_pages = (displayed_pages.push(-2), displayed_pages) %}
+  {% endif %}
+  
+  {% if current_page < total_pages - 2 %}
+    {% set displayed_pages = (displayed_pages.push(total_pages), displayed_pages) %}
+  {% endif %}
+  
+  {{ displayed_pages }}
 {% endmacro %}

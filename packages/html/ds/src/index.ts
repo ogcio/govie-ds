@@ -37,7 +37,7 @@ export function initGovIe() {
   initTabs();
   initComboBox();
   initAlert();
-  initPagination()
+  // initPagination();
 }
 
 export function destroyGovIe() {

@@ -60,11 +60,11 @@ export class BreakpointObserver {
     }
   }
 
-  getWidth(): number  {
-    return this.width
+  getWidth(): number {
+    return this.width;
   }
 
-  getBreakpoint(): Breakpoint  {
+  getBreakpoint(): Breakpoint {
     return this.breakpoint;
   }
 

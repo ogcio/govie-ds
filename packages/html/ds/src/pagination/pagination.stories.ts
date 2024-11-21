@@ -16,7 +16,8 @@ const meta = {
     macro,
     docs: {
       description: {
-        component: "A pagination component that displays page numbers, ellipses, and navigation controls ('Previous' and 'Next'). It helps users navigate through content pages and is customizable to match the desired page structure.",
+        component:
+          "A pagination component that displays page numbers, ellipses, and navigation controls ('Previous' and 'Next'). It helps users navigate through content pages and is customizable to match the desired page structure.",
       },
     },
   },
@@ -37,8 +38,7 @@ export const Default: Story = {
     },
   },
   args: {
-    totalPages: 100,
-    currentPage: 10,
+    totalPages: 10,
+    currentPage: 5,
   },
 };
-

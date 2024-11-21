@@ -1,4 +1,4 @@
-import { Breakpoint } from "../util/breakpoint-observer.util";
+import { Breakpoint } from '../util/breakpoint-observer.util';
 
 type DisplayPage = number | -1 | -2;
 

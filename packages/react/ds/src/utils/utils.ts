@@ -27,35 +27,35 @@ export const getDisplayPages = (
   totalPages: number,
   breakpoint: Breakpoint,
 ): DisplayPage[] => {
-  if (breakpoint === Breakpoint.SM || breakpoint === Breakpoint.MD) {
-    const displayedPages: DisplayPage[] = [];
-    if (totalPages <= 3) {
-      for (let index = 1; index <= totalPages; index++) {
-        displayedPages.push(index);
-      }
-      return displayedPages;
-    }
+  // if (breakpoint === Breakpoint.SM || breakpoint === Breakpoint.MD) {
+  //   const displayedPages: DisplayPage[] = [];
+  //   if (totalPages <= 3) {
+  //     for (let index = 1; index <= totalPages; index++) {
+  //       displayedPages.push(index);
+  //     }
+  //     return displayedPages;
+  //   }
 
-    displayedPages.push(1);
+  //   displayedPages.push(1);
 
-    if (currentPage > 2) {
-      displayedPages.push(-1);
-    }
+  //   if (currentPage > 2) {
+  //     displayedPages.push(-1);
+  //   }
 
-    if (currentPage > 1 && currentPage < totalPages) {
-      displayedPages.push(currentPage);
-    }
+  //   if (currentPage > 1 && currentPage < totalPages) {
+  //     displayedPages.push(currentPage);
+  //   }
 
-    if (currentPage < totalPages - 1) {
-      displayedPages.push(-2);
-    }
+  //   if (currentPage < totalPages - 1) {
+  //     displayedPages.push(-2);
+  //   }
 
-    if (totalPages > 1) {
-      displayedPages.push(totalPages);
-    }
+  //   if (totalPages > 1) {
+  //     displayedPages.push(totalPages);
+  //   }
 
-    return displayedPages;
-  }
+  //   return displayedPages;
+  // }
 
   const displayedPages: DisplayPage[] = [];
 
