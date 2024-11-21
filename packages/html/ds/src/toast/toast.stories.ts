@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
-import html from './ds-toast.html?raw';
+import html from './toast.html?raw';
 import { ToastProps } from './toast.schema';
 
 // Name of the folder the macro resides
 const path = import.meta.url.split('/toast')[0];
 
-const macro = { name: 'govieDsToast', html, path };
+const macro = { name: 'govieToast', html, path };
 
 const Toast = renderComponent<ToastProps>(macro);
 
@@ -71,7 +71,9 @@ export const WithTrigger: Story = {
   args: {
     title: 'Toast Triggered',
     description: 'This is some content',
-    // trigger: <Button>Trigger Toast</Button>,
+    trigger: {
+      content: 'Trigger Toast'
+    }
   },
 };
 

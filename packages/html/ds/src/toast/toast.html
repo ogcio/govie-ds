@@ -1,3 +1,23 @@
-{% macro govieToast(props) %}
+{% from 'toast/ds-toast.html' import govieDsToast %}
+{% from 'button/button.html' import govieButton %}
 
+{% macro govieToast(props) %}
+  {% set duration = props.duration %}
+  {% set positionX = props.position.x %}
+  {% set positionY = props.position.y %}
+  <!-- {% set hasTrigger = 'true' if props.trigger %} -->
+
+  <div
+    data-has-trigger="{{ hasTrigger }}"
+    data-duration="{{ duration }}"
+    data-position-x="{{ positionX }}"
+    data-position-y="{{ positionY }}"
+    data-module="gieds-toast"
+    role="alert"
+  >
+    {% if props.trigger %}
+        {{govieButton(props.trigger)}}
+    {% endif %}
+  </div>
+  <div class="gi-hidden">{{ govieDsToast(props) }}</div>
 {% endmacro %}
