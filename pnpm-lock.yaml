@@ -526,6 +526,10 @@ importers:
         version: 9.8.0
 
   packages/html/ds:
+    dependencies:
+      notyf:
+        specifier: ^3.10.0
+        version: 3.10.0
     devDependencies:
       '@govie-ds/eslint-config':
         specifier: workspace:*

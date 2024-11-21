@@ -1,0 +1,31 @@
+{% macro getIcon(variant) %}
+  {% if variant == 'warning' %}
+    warning
+  {% elif variant == 'success' %}
+    check_circle
+  {% elif variant == 'danger' %}
+    error
+  {% else %}
+    info
+  {% endif %}
+{% endmacro %}
+
+{% macro getVariant(variant) %}
+  {% if variant == 'danger' %}
+    gi-toast-danger
+  {% elif variant == 'success' %}
+    gi-toast-success
+  {% elif variant == 'warning' %}
+    gi-toast-warning
+  {% else %}
+    gi-toast-info
+  {% endif %}
+{% endmacro %}
+
+{% macro getBaseToastClass(dismissible) %}
+  {% if dismissible %}
+    gi-toast-base-dismissible
+  {% else %}
+    gi-toast-base
+  {% endif %}
+{% endmacro %}

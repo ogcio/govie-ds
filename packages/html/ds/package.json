@@ -38,9 +38,9 @@
   "license": "MIT",
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
+    "@govie-ds/macro": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
-    "@govie-ds/macro": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
@@ -60,5 +60,8 @@
     "tsx": "^4.16.5",
     "vite-plugin-dts": "^3.9.1",
     "zod": "^3.23.8"
+  },
+  "dependencies": {
+    "notyf": "^3.10.0"
   }
 }
