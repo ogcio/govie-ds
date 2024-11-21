@@ -62,9 +62,9 @@ describe('Toast', () => {
     const buttonElement = screen.container.querySelector('button');
     buttonElement && userEvent.click(buttonElement);
 
-    expect(await screen.findByText('Toast Title')).toBeInTheDocument();
+    expect(await screen.findByText('Toast with Trigger')).toBeInTheDocument();
     expect(
-      await screen.findByText('This is the toast content'),
+      await screen.findByText('Toast has been triggered'),
     ).toBeInTheDocument();
   });
 });

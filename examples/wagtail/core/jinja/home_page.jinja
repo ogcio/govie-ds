@@ -20,6 +20,7 @@
 {% from 'list/list.html' import govieList %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
+{% from 'toast/toast.html' import govieToast %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -194,6 +195,22 @@
   <h2>Modal</h2>
 
   {{ govieModal(modalProps) }}
+
+  <h2>Toast with Trigger</h2>
+
+  {{ govieToast({
+    "title": "Toast Triggered",
+    "description": "This is some content",
+    "trigger": {
+      "content": "Trigger Toast"
+    }
+  }) }}
+
+  {{ govieToast({
+    "title": "Success",
+    "description": "This is a success toast",
+    "variant": "success"
+  }) }}
 
   <h2>Icon Button</h2>
 

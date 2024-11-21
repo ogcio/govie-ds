@@ -29,10 +29,10 @@ export const toastSchema = zod.object({
     .describe('Set the duration of the toast appearing on screen')
     .optional(),
   trigger: buttonSchema
-    .optional()
     .describe(
       'If specified the toast will be triggered by the click event of this React Button Component',
-    ),
+    )
+    .optional(),
   variant: zod
     .nativeEnum(ToastVariant, { description: 'Toast variant' })
     .optional(),
@@ -43,7 +43,6 @@ export const toastSchema = zod.object({
     .string({ description: 'Specify the content in the toast component' })
     .optional(),
   action: linkSchema
-    .optional()
     .describe('Specify a link for the toast component')
     .optional(),
   dismissible: zod

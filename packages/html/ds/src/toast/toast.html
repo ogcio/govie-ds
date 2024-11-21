@@ -2,10 +2,9 @@
 {% from 'button/button.html' import govieButton %}
 
 {% macro govieToast(props) %}
-  {% set duration = props.duration %}
-  {% set positionX = props.position.x %}
-  {% set positionY = props.position.y %}
-  <!-- {% set hasTrigger = 'true' if props.trigger %} -->
+  {% set duration = props.duration if props.duration %}
+  {% set positionX = props.position.x if props.position %}
+  {% set positionY = props.position.y if props.position %}
 
   <div
     data-has-trigger="{{ hasTrigger }}"
