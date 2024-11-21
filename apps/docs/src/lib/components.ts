@@ -42,6 +42,26 @@ const localHtmlStorybookBaseUrl =
 export function getComponents(): ComponentDetail[] {
   let components: ComponentDetail[] = [
     {
+      id: 'alert',
+      name: 'Alert',
+      statuses: [
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/application-alert--docs',
+          },
+          status: 'beta',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=//docs/application-alert--docs',
+          },
+          status: 'beta',
+        },
+      ],
+    },
+    {
       id: 'button',
       name: 'Button',
       statuses: [
@@ -295,6 +315,32 @@ export function getComponents(): ComponentDetail[] {
           platform: {
             id: 'react',
             href: '?path=/docs/form-radios--docs',
+          },
+          status: 'beta',
+        },
+      ],
+    },
+    {
+      id: 'stack',
+      name: 'Stack',
+      statuses: [
+        {
+          platform: {
+            id: 'local',
+          },
+          status: 'considering',
+        },
+        {
+          platform: {
+            id: 'global',
+            href: '?path=/docs/layout-stack--docs',
+          },
+          status: 'beta',
+        },
+        {
+          platform: {
+            id: 'react',
+            href: '?path=/docs/layout-stack--docs',
           },
           status: 'beta',
         },

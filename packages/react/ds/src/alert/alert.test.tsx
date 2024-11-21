@@ -12,7 +12,7 @@ describe('Alert', () => {
       title: 'Information',
       children: 'This is an info alert',
     });
-    const alertElement = screen.getByRole('alert');
+    const alertElement = screen.getByTestId('alert');
     expect(alertElement).toBeTruthy();
     expect(screen.getByText('Information')).toBeTruthy();
     expect(screen.getByText('This is an info alert')).toBeTruthy();
@@ -31,7 +31,7 @@ describe('Alert', () => {
         title: `${variant} alert`,
         children: `This is a ${variant} alert`,
       });
-      const alertElement = screen.getByRole('alert');
+      const alertElement = screen.getByTestId('alert');
       expect(alertElement).toHaveClass(`gi-alert-${variant}`);
       cleanup();
     }

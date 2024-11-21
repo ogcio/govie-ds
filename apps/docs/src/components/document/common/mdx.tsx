@@ -26,8 +26,10 @@ import {
   FileUpload,
   CheckboxesGroup,
   Spinner,
+  Stack,
   Pagination,
   Breadcrumbs,
+  Alert,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -190,8 +192,10 @@ const documentComponents: MDXComponents = {
       Loading... <Spinner inline={true} />
     </Button>
   ),
+  Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
   Breadcrumbs: (props) => <Breadcrumbs {...props} />,
+  Alert: (props) => <Alert {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
