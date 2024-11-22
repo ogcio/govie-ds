@@ -23,7 +23,7 @@
     }}
 
     {# Compact View #}
-    {{ goviePagintationCompactView(props) }}
+    {{ goviePaginationCompactView(props) }}
 
     {# Pagination Buttons (screen width less than 524px) #}
     {{ goviePaginationButtonsCompactView(props) }}
@@ -47,7 +47,7 @@
   </div>
 {% endmacro %}
 
-{% macro goviePagintationCompactView(props) %}
+{% macro goviePaginationCompactView(props) %}
   <div class="xs:gi-hidden gi-block gi-text-md">
     <span class="gi-font-bold">Page {{ props.currentPage }}</span> of
     {{ props.totalPages }}
