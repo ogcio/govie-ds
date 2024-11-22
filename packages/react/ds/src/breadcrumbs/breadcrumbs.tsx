@@ -1,8 +1,8 @@
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
 
-export const BreadcrumbEllipses = () => (
-  <div className="gi-breadcrumb-ellipses" aria-hidden="true">
+export const BreadcrumbEllipsis = () => (
+  <div className="gi-breadcrumb-ellipsis" aria-hidden="true">
     <div />
     <div />
     <div />

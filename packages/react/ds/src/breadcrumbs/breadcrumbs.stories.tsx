@@ -3,7 +3,7 @@ import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
   BreadcrumbLink,
-  BreadcrumbEllipses,
+  BreadcrumbEllipsis,
 } from './breadcrumbs.js';
 
 const meta = {
@@ -26,7 +26,7 @@ export const Default: Story = {
   args: {
     children: [
       <BreadcrumbLink href="/home">Home</BreadcrumbLink>,
-      <BreadcrumbEllipses />,
+      <BreadcrumbEllipsis />,
       <BreadcrumbLink href="/travel">Travel</BreadcrumbLink>,
       <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>,
     ],

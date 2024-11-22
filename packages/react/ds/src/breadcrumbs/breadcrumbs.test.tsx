@@ -3,7 +3,7 @@ import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
   BreadcrumbLink,
-  BreadcrumbEllipses,
+  BreadcrumbEllipsis,
 } from './breadcrumbs.js';
 
 describe('govieBreadcrumbs', () => {
@@ -12,7 +12,7 @@ describe('govieBreadcrumbs', () => {
     const { getByRole, getAllByRole } = render(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
-        <BreadcrumbEllipses />
+        <BreadcrumbEllipsis />
         <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
       </Breadcrumbs>,
     );
@@ -34,22 +34,22 @@ describe('govieBreadcrumbs', () => {
     const { container } = render(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
-        <BreadcrumbEllipses />
+        <BreadcrumbEllipsis />
         <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
         <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
       </Breadcrumbs>,
     );
 
-    const listItem = container.querySelector('li .gi-breadcrumb-ellipses');
+    const listItem = container.querySelector('li .gi-breadcrumb-ellipsis');
     expect(listItem).toBeInTheDocument();
-    expect(listItem).toHaveClass('gi-breadcrumb-ellipses');
+    expect(listItem).toHaveClass('gi-breadcrumb-ellipsis');
   });
 
   it('should pass axe accessibility tests', async () => {
     const { axe } = render(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
-        <BreadcrumbEllipses />
+        <BreadcrumbEllipsis />
         <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
       </Breadcrumbs>,
     );

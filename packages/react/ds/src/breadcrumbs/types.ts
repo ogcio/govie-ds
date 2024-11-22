@@ -1,7 +1,7 @@
 import type { LinkProps } from '../link/link.js';
 import {
   BreadcrumbCurrentLink,
-  BreadcrumbEllipses,
+  BreadcrumbEllipsis,
   BreadcrumbLink,
 } from './breadcrumbs.js';
 
@@ -12,6 +12,6 @@ export type BreadcrumbProps = {
   children: React.ReactElement<
     | typeof BreadcrumbLink
     | typeof BreadcrumbCurrentLink
-    | typeof BreadcrumbEllipses
+    | typeof BreadcrumbEllipsis
   >[];
 };

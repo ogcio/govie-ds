@@ -24,7 +24,7 @@ import {
   Breadcrumbs,
   Toast,
   BreadcrumbCurrentLink,
-  BreadcrumbEllipses,
+  BreadcrumbEllipsis,
   BreadcrumbLink,
 } from '@govie-ds/react';
 
@@ -66,10 +66,8 @@ export default function Home() {
         <div className="flex flex-col gap-4 my-4">
           <Breadcrumbs>
             <BreadcrumbLink href="/home">Home</BreadcrumbLink>
-            <BreadcrumbEllipses />
-            <BreadcrumbLink href="/documentation">
-              Documentation
-            </BreadcrumbLink>
+            <BreadcrumbEllipsis />
+            <BreadcrumbLink href="/documentation">Documentation</BreadcrumbLink>
             <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
           </Breadcrumbs>
           <Heading>Heading</Heading>
