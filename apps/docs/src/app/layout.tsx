@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 };
 
 const headerProps = {
+  fullWidth: true,
   title: 'Design System',
   logo: {
     href: '/',

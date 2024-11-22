@@ -80,42 +80,44 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   }
   return (
     <table className="table-fixed">
-      <tr>
-        <td className="p-2">Figma Library</td>
-        <td>
-          <ComponentStatusPill
-            status={componentStatus.figma.status}
-            href={componentStatus.figma.href}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td className="p-2">Local HTML</td>
-        <td>
-          <ComponentStatusPill
-            status={componentStatus.local.status}
-            href={componentStatus.local.href}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td className="p-2">Global HTML</td>
-        <td>
-          <ComponentStatusPill
-            status={componentStatus.global.status}
-            href={componentStatus.global.href}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td className="p-2">Global React</td>
-        <td>
-          <ComponentStatusPill
-            status={componentStatus.react.status}
-            href={componentStatus.react.href}
-          />
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td className="p-2">Figma Library</td>
+          <td>
+            <ComponentStatusPill
+              status={componentStatus.figma.status}
+              href={componentStatus.figma.href}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td className="p-2">Local HTML</td>
+          <td>
+            <ComponentStatusPill
+              status={componentStatus.local.status}
+              href={componentStatus.local.href}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td className="p-2">Global HTML</td>
+          <td>
+            <ComponentStatusPill
+              status={componentStatus.global.status}
+              href={componentStatus.global.href}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td className="p-2">Global React</td>
+          <td>
+            <ComponentStatusPill
+              status={componentStatus.react.status}
+              href={componentStatus.react.href}
+            />
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 }

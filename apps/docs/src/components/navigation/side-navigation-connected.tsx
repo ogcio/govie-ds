@@ -10,7 +10,7 @@ export function SideNavigationConnected() {
   }
 
   return (
-    <aside className="hidden sm:block">
+    <aside className="hidden sm:block w-full max-w-48">
       <SideNavigation items={sideNavigationItems} />
     </aside>
   );

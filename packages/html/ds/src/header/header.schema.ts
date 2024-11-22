@@ -6,6 +6,11 @@ export const headerSchema = zod.object({
       description: 'The application title',
     })
     .optional(),
+  fullWidth: zod
+    .boolean({
+      description: 'Select a full width header for full width layouts',
+    })
+    .default(false),
   logo: zod
     .object({
       image: zod
