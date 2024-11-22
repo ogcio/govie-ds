@@ -20,6 +20,7 @@
 {% from 'list/list.html' import govieList %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
+{% from 'pagination/pagination.html' import goviePagination %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -216,6 +217,12 @@
 
   <h2>List</h2>
   {{ govieList(listProps) }}
+
+  <h2>Pagination</h2>
+  {{ goviePagination({
+    "totalPages": 10,
+    "currentPage": 5
+  }) }}
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 

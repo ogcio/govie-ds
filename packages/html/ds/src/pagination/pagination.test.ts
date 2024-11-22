@@ -67,18 +67,20 @@ describe('goviePagination', () => {
     );
 
     expect(moreHorizIcon).toBeInTheDocument();
+
     const elements1 = screen.getAllByText('1');
-    elements1.forEach((element) => {
-      expect(element).toBeInTheDocument();
-    });
     const elements2 = screen.getAllByText('3');
-    elements2.forEach((element) => {
-      expect(element).toBeInTheDocument();
-    });
     const elements3 = screen.getAllByText('10');
-    elements3.forEach((element) => {
+
+    for (const element of elements1) {
       expect(element).toBeInTheDocument();
-    });
+    }
+    for (const element of elements2) {
+      expect(element).toBeInTheDocument();
+    }
+    for (const element of elements3) {
+      expect(element).toBeInTheDocument();
+    }
   });
 
   it('should handle edge cases for pagination buttons', () => {
@@ -108,7 +110,7 @@ describe('goviePagination', () => {
       totalPages: 10,
     });
 
-    const compactView = screen.getByText(/Page 5/i).closest('div'); // Locate the compact view container
+    const compactView = screen.getByText(/page 5/i).closest('div'); // Locate the compact view container
     expect(compactView).toHaveClass('xs:gi-hidden');
   });
 
