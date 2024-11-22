@@ -33,6 +33,7 @@ import {
   BreadcrumbEllipsis,
   BreadcrumbLink,
   Alert,
+  Toast,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -202,6 +203,7 @@ const documentComponents: MDXComponents = {
   BreadcrumbEllipsis: (props) => <BreadcrumbEllipsis {...props} />,
   BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   Alert: (props) => <Alert {...props} />,
+  Toast: (props) => <Toast {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
