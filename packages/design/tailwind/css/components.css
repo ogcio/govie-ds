@@ -940,11 +940,11 @@ input[type='file' i] {
   @apply gi-block
     gi-absolute
     gi-bottom-0
-  gi-left-[-17px]
-  gi-text-gray-500
-  gi-font-bold
-  gi-text-sm;
-  content: '/';
+    gi-left-[-17px]
+    gi-text-gray-500
+    gi-font-bold
+    gi-text-sm;
+    content: '/';
 }
 
 .gi-breadcrumb-ellipses {
