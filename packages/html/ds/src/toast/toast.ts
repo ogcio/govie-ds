@@ -1,11 +1,14 @@
-import { Notyf, NotyfHorizontalPosition, NotyfVerticalPosition } from 'notyf';
 import {
   BaseComponent,
   type BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
+// @ts-expect-error The TS error is necessary as we are integrating the notyf library within our repo and thus no longer the libraries declarations
+import { Notyf } from './assets/notyf.min.js';
 
 export type ToastOptions = BaseComponentOptions;
+type NotyfVerticalPosition = 'center' | 'top' | 'bottom';
+type NotyfHorizontalPosition = 'left' | 'center' | 'right';
 
 const notyf = new Notyf();
 
@@ -24,6 +27,18 @@ export class Toast extends BaseComponent<ToastOptions> {
     this.dsToastContainer = this.container.nextElementSibling;
     this.triggerButton = this.container.querySelector(':scope > button');
     this.notyf = notyf;
+
+    setTimeout(() => {
+      const notyfContainer = document.querySelectorAll('.notyf .notyf__toast');
+
+      for (const toast of notyfContainer) {
+        toast
+          .querySelector('.gi-toast-dismiss')
+          ?.addEventListener('click', () => {
+            toast.classList.add('!gi-hidden');
+          });
+      }
+    });
 
     this.renderNotyf = () => {
       const duration = this.container.dataset.duration

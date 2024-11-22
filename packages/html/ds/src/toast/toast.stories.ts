@@ -100,7 +100,7 @@ export const withLongerDuration: Story = {
   args: {
     title: 'WithDuration',
     description: 'This is some content',
-    duration: 8000,
+    duration: 0,
   },
 };
 

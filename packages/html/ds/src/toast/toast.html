@@ -2,7 +2,7 @@
 {% from 'button/button.html' import govieButton %}
 
 {% macro govieToast(props) %}
-  {% set duration = props.duration if props.duration %}
+  {% set duration = props.duration %}
   {% set positionX = props.position.x if props.position %}
   {% set positionY = props.position.y if props.position %}
 
