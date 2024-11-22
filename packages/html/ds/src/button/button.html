@@ -7,22 +7,31 @@
   {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
   {% set testId = props.testId or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
 
-  <{{ 'a' if props.href else 'button' }}
-    {% if props.href %} href="{{ props.href }}" {% endif %}
-    {% if props.href and props.target %} target="{{ props.target }}"{% endif %}
-    {% if props.href and props.rel %} rel="{{ props.rel }}"
-    {% elseif props.href and not props.disabled and props.target == '_blank' %} rel="noopener noreferrer" {% endif %}
-    {% if not props.href or props.disabled %}
-      {% if props.type %}type="{{ props.type }}" {% endif %}
-      {% if props.form %}form="{{ props.form }}" {% endif %}
-      {% if props.value %}value="{{ props.value }}" {% endif %}
+  {% if props.href %}
+    <a
+      href="{{ props.href }}"
+      {% if props.target %}target="{{ props.target }}"{% endif %}
+      {% if props.rel %}rel="{{ props.rel }}"{% elseif props.target == '_blank' and not props.disabled %}
+      rel="noopener noreferrer"{% endif %}
+      data-testid="{{ testId }}"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
+    >
+      {{ props.content | safe | trim }}
+    </a>
+  {% else %}
+    <button
+      {% if props.type %}type="{{ props.type }}"{% endif %}
+      {% if props.form %}form="{{ props.form }}"{% endif %}
+      {% if props.value %}value="{{ props.value }}"{% endif %}
       {% if props.disabled %}disabled{% endif %}
-    {% endif %}
-    data-testid="{{ testId }}"
-    data-element="button-container"
-    data-module="gieds-button"
-    class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
-  >
-    {{ props.content | safe | trim }}
-  </{{ 'a' if props.href else 'button' }}>
+      data-testid="{{ testId }}"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
+    >
+      {{ props.content | safe | trim }}
+    </button>
+  {% endif %}
 {% endmacro %}
