@@ -32,25 +32,25 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <Header
-        logo={{ href: '/' }}
-        tools={{ search: { action: '/search-page' } }}
+        logo={{ href: "/" }}
+        tools={{ search: { action: "/search-page" } }}
         navLinks={[
           {
-            href: '#',
-            label: 'News',
+            href: "#",
+            label: "News",
           },
           {
-            href: '#',
-            label: 'Departments',
+            href: "#",
+            label: "Departments",
           },
           {
-            href: '#',
-            label: 'Services',
+            href: "#",
+            label: "Services",
           },
         ]}
         languages={[
           {
-            href: '#',
+            href: "#",
             label: 'Gaeilge',
           },
         ]}
@@ -85,8 +85,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Combobox {...ComboBoxProps} />
@@ -104,37 +104,37 @@ export default function Home() {
           <hr />
           <RadiosGroup
             title={{
-              value: 'Where do you live?',
+              value: "Where do you live?",
               asHeading: {
-                size: 'md',
-                as: 'h2',
+                size: "md",
+                as: "h2",
               },
             }}
             items={[
               {
-                label: 'England',
-                value: 'england',
+                label: "England",
+                value: "england",
               },
               {
-                label: 'Scotland',
-                value: 'scotland',
+                label: "Scotland",
+                value: "scotland",
               },
               {
-                label: 'Ireland',
-                value: 'ireland',
+                label: "Ireland",
+                value: "ireland",
               },
             ]}
             groupId="uniqueId"
           />
           <TextArea
             hint={{
-              text: 'Hint: This is a helpful hint.',
+              text: "Hint: This is a helpful hint.",
             }}
             id="textarea-id"
             maxChars={50}
             label={{
-              text: 'Textarea text',
-              htmlFor: 'textarea-id',
+              text: "Textarea text",
+              htmlFor: "textarea-id",
             }}
           />
 
@@ -153,11 +153,11 @@ export default function Home() {
               <Button>Primary action</Button>
             </div>
           </Modal>
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}
