@@ -60,8 +60,5 @@
     "tsx": "^4.16.5",
     "vite-plugin-dts": "^3.9.1",
     "zod": "^3.23.8"
-  },
-  "dependencies": {
-    "notyf": "^3.10.0"
   }
 }
