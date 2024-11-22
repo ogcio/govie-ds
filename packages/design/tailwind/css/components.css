@@ -857,7 +857,6 @@ input[type='file' i] {
  }
  .notyf__toast:has(.gi-toast-danger) {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
-  
  }
 
 /* End of Native notyf classes */
@@ -926,7 +925,7 @@ input[type='file' i] {
 }
 
 .gi-breadcrumbs > ol {
-  @apply gi-inline-flex gi-list-none gi-gap-5;
+  @apply gi-inline-flex gi-list-none gi-gap-7;
 }
 
 .gi-breadcrumbs > ol > :not([hidden]) ~ :not([hidden]) {
@@ -940,16 +939,21 @@ input[type='file' i] {
 .gi-breadcrumbs > ol > li:not(:first-child)::before {
   @apply gi-block
     gi-absolute
-    gi-top-1
     gi-bottom-0
-    gi-left-[-15px]
-    gi-w-[6px]
-    gi-h-[6px]
-    gi-m-auto
-    gi-border-t-[1px]
-    gi-border-r-[1px]
-    gi-border-gray-500
-    gi-rotate-45;
-  content: '';
+  gi-left-[-17px]
+  gi-text-gray-500
+  gi-font-bold
+  gi-text-sm;
+  content: '/';
 }
+
+.gi-breadcrumb-ellipses {
+  @apply gi-flex gi-h-full gi-w-full gi-items-center;
+}
+
+.gi-breadcrumb-ellipses > div {
+  @apply gi-bg-gray-500 gi-w-2 gi-h-2;
+  clip-path: ellipse(2px 2px at center);
+}
+
 /* End of Breadcrumbs */

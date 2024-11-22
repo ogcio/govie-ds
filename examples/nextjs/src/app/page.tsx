@@ -23,6 +23,9 @@ import {
   Alert,
   Breadcrumbs,
   Toast,
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipses,
+  BreadcrumbLink,
 } from '@govie-ds/react';
 
 export default function Home() {
@@ -61,22 +64,14 @@ export default function Home() {
           trigger={<Button>Trigger Toast</Button>}
         />
         <div className="flex flex-col gap-4 my-4">
-          <Breadcrumbs
-            links={[
-              {
-                href: '#',
-                label: 'Home',
-              },
-              {
-                href: '#',
-                label: 'Passport',
-              },
-              {
-                href: '#',
-                label: 'Travel',
-              },
-            ]}
-          />
+          <Breadcrumbs>
+            <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+            <BreadcrumbEllipses />
+            <BreadcrumbLink href="/documentation">
+              Documentation
+            </BreadcrumbLink>
+            <BreadcrumbCurrentLink href="/travel">Travel</BreadcrumbCurrentLink>
+          </Breadcrumbs>
           <Heading>Heading</Heading>
           <PhaseBanner level="alpha">This is a pre-release version</PhaseBanner>
           <Link

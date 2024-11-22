@@ -1,18 +1,29 @@
-<nav
-  aria-label="Breadcrumbs"
-  class="gi-breadcrumbs"
-  data-testid="govie-breadcrumb"
->
+<nav aria-label="Breadcrumbs" class="gi-breadcrumbs">
   <ol role="list">
     <li role="listitem">
-      <a href="/" class="gi-link gi-link-no-visited">Home</a>
+      <a href="/home" class="gi-link gi-link-inherit" aria-label="Home page"
+        >Home</a
+      >
     </li>
     <li role="listitem">
-      <a href="#" class="gi-link gi-link-no-visited">Passports</a>
+      <div class="gi-breadcrumb-ellipses" aria-hidden="true">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </li>
     <li role="listitem">
-      <a href="#" class="gi-link gi-link-no-visited" aria-current="page"
-        >Travel abroad</a
+      <a href="/travel" class="gi-link gi-link-inherit" aria-label="Travel page"
+        >Travel</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        href="/docs"
+        class="gi-link gi-link-inherit"
+        aria-label="Documentation page"
+        aria-current="page"
+        >Documentation</a
       >
     </li>
   </ol>

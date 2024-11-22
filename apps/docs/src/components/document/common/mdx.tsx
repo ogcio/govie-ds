@@ -29,6 +29,9 @@ import {
   Stack,
   Pagination,
   Breadcrumbs,
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipses,
+  BreadcrumbLink,
   Alert,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -195,6 +198,9 @@ const documentComponents: MDXComponents = {
   Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
   Breadcrumbs: (props) => <Breadcrumbs {...props} />,
+  BreadcrumbCurrentLink: (props) => <BreadcrumbCurrentLink {...props} />,
+  BreadcrumbEllipses: (props) => <BreadcrumbEllipses {...props} />,
+  BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   Alert: (props) => <Alert {...props} />,
 };
 

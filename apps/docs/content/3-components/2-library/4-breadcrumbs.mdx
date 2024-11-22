@@ -9,7 +9,12 @@ status: in-development
 
 <ComponentStatusBlock componentId="breadcrumbs" />
 
-<Breadcrumbs links={[{ href: '/', label: 'Home' }, { href: '#', label: 'Passports' }, { href: '#', label: 'Travel abroad' }]} />
+<Breadcrumbs>
+  <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+  <BreadcrumbEllipses />
+  <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+  <BreadcrumbCurrentLink href="/travel">Travel abroad</BreadcrumbCurrentLink>
+</Breadcrumbs>
 
 <Tabs id="tab1">
   <TabList>
@@ -18,30 +23,42 @@ status: in-development
   </TabList>
   <TabPanel value="tab11">
   ```html
-    <nav aria-label="Breadcrumbs" class="gi-breadcrumbs" data-testid="govie-breadcrumb">
-        <ol role="list">
+   <nav aria-label="Breadcrumbs" class="gi-breadcrumbs">
+      <ol role="list">
+        <li role="listitem">
+          <a href="/home" class="gi-link gi-link-inherit" aria-label="Home page">Home</a>
+        </li>
             <li role="listitem">
-            <a href="/" class="gi-link gi-link-no-visited">Home</a>
+              <div class="gi-breadcrumb-ellipses">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </li>
-            <li role="listitem">
-            <a href="#" class="gi-link gi-link-no-visited">Passports</a>
-            </li>
-            <li role="listitem">
-            <a href="#" class="gi-link gi-link-no-visited">Travel abroad</a>
-            </li>
-        </ol>
+        <li role="listitem">
+          <a href="/docs" class="gi-link gi-link-inherit" aria-label="Documentation page">Documentation</a>
+        </li>
+        <li role="listitem">
+          <a href="/travel" class="gi-link gi-link-inherit" aria-label="Travel page" aria-current="page">Travel abroad</a>
+        </li>
+      </ol>
     </nav>
   ```
   </TabPanel>
   <TabPanel value="tab13">
   ```react
-    import { Breadcrumbs } from '@govie-ds/react';
+    import { Breadcrumbs, BreadcrumbLink, BreadcrumbEllipses, BreadcrumbCurrentLink } from '@govie-ds/react';
 
-    <Breadcrumbs links={[{ href: '/', label: 'Home' }, { href: '#', label: 'Passports' }, { href: '#', label: 'Travel abroad' }]} />
+    <Breadcrumbs>
+      <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+      <BreadcrumbEllipses />
+      <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+      <BreadcrumbCurrentLink href="/travel">Travel abroad</BreadcrumbCurrentLink>
+    </Breadcrumbs>
 
-  ```
-  </TabPanel>
-  </Tabs>
+```
+</TabPanel>
+</Tabs>
 
 ## When to use this component
 Use breadcrumbs to help users understand their location within a website or application hierarchy and navigate back to higher levels easily.
@@ -49,3 +66,4 @@ Use breadcrumbs to help users understand their location within a website or appl
 ## When not to use this component
 Avoid breadcrumbs on websites or applications with a flat structure, where there is no clear hierarchy or depth (e.g., single-page applications or sites with only top-level pages)
 
+```

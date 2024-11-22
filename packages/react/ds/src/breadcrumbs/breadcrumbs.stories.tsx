@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Breadcrumbs } from './breadcrumbs.js';
+import {
+  Breadcrumbs,
+  BreadcrumbCurrentLink,
+  BreadcrumbLink,
+  BreadcrumbEllipses,
+} from './breadcrumbs.js';
 
 const meta = {
   title: 'Navigation/Breadcrumbs',
@@ -18,23 +23,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {
-    links: {
-      control: 'object',
-      description:
-        'Array of breadcrumb links, each with `href` and `label` properties.',
-      table: {
-        type: {
-          summary: 'Array<{ href: string; label: string }>',
-        },
-      },
-    },
-  },
   args: {
-    links: [
-      { href: '/', label: 'Home' },
-      { href: '#', label: 'Passports' },
-      { href: '#', label: 'Travel abroad' },
+    children: [
+      <BreadcrumbLink href="/home">Home</BreadcrumbLink>,
+      <BreadcrumbEllipses />,
+      <BreadcrumbLink href="/travel">Travel</BreadcrumbLink>,
+      <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>,
     ],
+  },
+  argTypes: {
+    children: {
+      description: 'The breadcrumb items: link, current link, and back link.',
+    },
   },
 };

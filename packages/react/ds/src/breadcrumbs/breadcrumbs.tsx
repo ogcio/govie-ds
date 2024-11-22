@@ -1,33 +1,40 @@
-import React from 'react';
 import { Link } from '../link/link.js';
+import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
 
-export type BreadcrumbProps = {
-  links: { label: string; href: string }[];
-};
+export const BreadcrumbEllipses = () => (
+  <div className="gi-breadcrumb-ellipses" aria-hidden="true">
+    <div />
+    <div />
+    <div />
+  </div>
+);
 
-export const Breadcrumbs = ({ links = [] }: BreadcrumbProps) => {
+export const BreadcrumbLink = ({
+  href,
+  children,
+  ...ariaProps
+}: BreadcrumbLinkProps) => (
+  <Link noColor href={href} aria-label={`${children} page`} {...ariaProps}>
+    {children}
+  </Link>
+);
+
+export const BreadcrumbCurrentLink = ({
+  href,
+  children,
+}: BreadcrumbLinkProps) => (
+  <BreadcrumbLink href={href} aria-current="page">
+    {children}
+  </BreadcrumbLink>
+);
+
+export const Breadcrumbs = ({ children }: BreadcrumbProps) => {
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className="gi-breadcrumbs"
-      data-testid="govie-breadcrumbs"
-    >
+    <nav aria-label="Breadcrumbs" className="gi-breadcrumbs">
       <ol role="list">
-        {links.map(({ href, label }, index) => (
-          <li
-            role="listitem"
-            aria-label={`${label} page`}
-            key={`breadcrumb_item_${index}`}
-            data-testid={`breadcrumb_item_${index}`}
-          >
-            <Link
-              href={href}
-              {...(window.location.pathname === href
-                ? { 'aria-current': 'page' }
-                : {})}
-            >
-              {label}
-            </Link>
+        {children.map((Component, index) => (
+          <li role="listitem" key={`breadcrumb_item_${index}`}>
+            {Component}
           </li>
         ))}
       </ol>
