@@ -17,7 +17,6 @@
 {% from 'modal/modal.html' import govieModal %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 {% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
-{% from 'list/list.html' import govieList %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
@@ -48,6 +47,12 @@
   <hr />
 
   {{ govieHeading({ 'size': 'xl', 'as': 'h1', 'text': 'Heading' }) }}
+
+  <hr />
+
+  <h2>Breadcrumbs</h2>
+  {% include "breadcrumbs/breadcrumbs.html" %}
+  <br />
 
   <hr />
 
@@ -231,8 +236,6 @@
   <h2>Footer (Global)</h2>
   {{ govieFooter(footerProps) }}
 
-  <h2>List</h2>
-  {{ govieList(listProps) }}
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 
