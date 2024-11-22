@@ -26,6 +26,7 @@ import {
   FileUpload,
   CheckboxesGroup,
   Spinner,
+  Stack,
   Pagination,
   Alert,
   Toast,
@@ -191,6 +192,7 @@ const documentComponents: MDXComponents = {
       Loading... <Spinner inline={true} />
     </Button>
   ),
+  Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,
