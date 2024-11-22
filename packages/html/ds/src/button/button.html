@@ -11,8 +11,10 @@
     <a
       href="{{ props.href }}"
       {% if props.target %}target="{{ props.target }}"{% endif %}
-      {% if props.rel %}rel="{{ props.rel }}"{% elseif props.target == '_blank' and not props.disabled %}
-      rel="noopener noreferrer"{% endif %}
+      {% if props.rel %}
+        rel="{{ props.rel }}"{% elseif props.target == '_blank' and not props.disabled %}
+        rel="noopener noreferrer"
+      {% endif %}
       data-testid="{{ testId }}"
       data-element="button-container"
       data-module="gieds-button"

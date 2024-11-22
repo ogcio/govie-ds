@@ -65,7 +65,7 @@ describe('goviePagination', () => {
     const moreHorizIcon = iconSpans.find(
       (icon) => icon.textContent === 'more_horiz',
     );
-    
+
     expect(moreHorizIcon).toBeInTheDocument();
     const elements1 = screen.getAllByText('1');
     elements1.forEach((element) => {
@@ -102,12 +102,12 @@ describe('goviePagination', () => {
   it('should apply gi-hidden class to goviePagintationCompactView for screen size of 478px', () => {
     window.innerWidth = 478;
     window.dispatchEvent(new Event('resize'));
-  
+
     const screen = renderPagination({
       currentPage: 5,
       totalPages: 10,
     });
-  
+
     const compactView = screen.getByText(/Page 5/i).closest('div'); // Locate the compact view container
     expect(compactView).toHaveClass('xs:gi-hidden');
   });

@@ -85,7 +85,11 @@
   >
     {% for page in display_pages %}
       {% if page == -1 or page == -2 %}
-        <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+        <span
+          data-testid="govie-icon"
+          class="material-symbols-outlined gi-gray-700"
+          >more_horiz</span
+        >
       {% else %}
         {{
           govieButton({
@@ -131,7 +135,11 @@
   <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
     {% for page in display_pages %}
       {% if page == -1 or page == -2 %}
-        <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+        <span
+          data-testid="govie-icon"
+          class="material-symbols-outlined gi-gray-700"
+          >more_horiz</span
+        >
       {% else %}
         {{
           govieButton({
