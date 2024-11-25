@@ -29,7 +29,6 @@ function toType(typeName: string): MacroPropertyType {
     case 'ZodEnum': {
       return 'array';
     }
-
     case 'ZodUnion':
     case 'ZodObject': {
       return 'object';

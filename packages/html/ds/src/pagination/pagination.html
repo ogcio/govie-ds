@@ -1,0 +1,158 @@
+{% from 'button/button.html' import govieButton %}
+
+{% macro goviePagination(props) %}
+  <div
+    class="gi-pagination"
+    data-current-page="{{ props.currentPage }}"
+    data-total-pages="{{ props.totalPages }}"
+    data-testid="govie-pagination"
+    data-module="gieds-pagination"
+  >
+    {{
+      govieButton({
+        "content": "<span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_left_alt</span> <span class='sm:gi-block gi-hidden'>Previous</span>",
+        "variant": "flat",
+        "size": "large",
+        "appearance": "dark",
+        "disabled": props.currentPage == 1,
+        "href": "#",
+        "target": "_self",
+        "testId": "govie-pagination-prev-btn",
+        "data-current-page": props.currentPage - 1
+      })
+    }}
+
+    {# Compact View #}
+    {{ goviePaginationCompactView(props) }}
+
+    {# Pagination Buttons (screen width less than 524px) #}
+    {{ goviePaginationButtonsCompactView(props) }}
+
+    {# Pagination Buttons #}
+    {{ goviePaginationButtons(props) }}
+
+    {{
+      govieButton({
+        "content": "<span class='sm:gi-block gi-hidden'>Next</span> <span data-testid=\"govie-icon\" role=\"presentation\" class=\"material-symbols-outlined gi-block gi-text-[24px]\">arrow_right_alt</span>",
+        "variant": "flat",
+        "size": "large",
+        "appearance": "dark",
+        "href": "#",
+        "target": "_self",
+        "disabled": props.currentPage == props.totalPages,
+        "testId": "govie-pagination-next-btn",
+        "data-current-page": props.currentPage + 1
+      })
+    }}
+  </div>
+{% endmacro %}
+
+{% macro goviePaginationCompactView(props) %}
+  <div class="xs:gi-hidden gi-block gi-text-md">
+    <span class="gi-font-bold">Page {{ props.currentPage }}</span> of
+    {{ props.totalPages }}
+  </div>
+{% endmacro %}
+
+{% macro goviePaginationButtonsCompactView(props) %}
+  {%- set display_pages = [1] -%}
+
+  {% if props.currentPage > 2 %}
+    {% set display_pages = (display_pages.push(-1), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage > 1 and props.currentPage < props.totalPages %}
+    {% set display_pages = (display_pages.push(props.currentPage), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage < props.totalPages - 1 %}
+    {% set display_pages = (display_pages.push(-2), display_pages) %}
+  {% endif %}
+
+  {% if props.totalPages > 1 %}
+    {% set display_pages = (display_pages.push(props.totalPages), display_pages) %}
+  {% endif %}
+
+  {% if props.totalPages <= 3 %}
+    {% set display_pages = [] %}
+    {% for index in range(1, props.totalPages + 1) %}
+      {% set display_pages = (display_pages.push(index), display_pages) %}
+    {% endfor %}
+  {% endif %}
+
+  <div
+    class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden"
+  >
+    {% for page in display_pages %}
+      {% if page == -1 or page == -2 %}
+        <span
+          data-testid="govie-icon"
+          class="material-symbols-outlined gi-gray-700"
+          >more_horiz</span
+        >
+      {% else %}
+        {{
+          govieButton({
+            "content": page|string,
+            "variant": "flat" if page != props.currentPage else "flat-dark",
+            "size": "large",
+            "appearance": "dark",
+            "href": "#",
+            "target": "_self",
+            "data-page": page
+          })
+        }}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro goviePaginationButtons(props) %}
+  {%- set display_pages = [] -%}
+
+  {% if props.currentPage > 3 %}
+    {% set display_pages = (display_pages.push(1), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage > 4 %}
+    {% set display_pages = (display_pages.push(-1), display_pages) %}
+  {% endif %}
+
+  {% for index in range(props.currentPage - 2, props.currentPage + 3) %}
+    {% if index >= 1 and index <= props.totalPages %}
+      {% set display_pages = (display_pages.push(index), display_pages) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if props.currentPage < props.totalPages - 3 %}
+    {% set display_pages = (display_pages.push(-2), display_pages) %}
+  {% endif %}
+
+  {% if props.currentPage < props.totalPages - 2 %}
+    {% set display_pages = (display_pages.push(props.totalPages), display_pages) %}
+  {% endif %}
+
+  <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
+    {% for page in display_pages %}
+      {% if page == -1 or page == -2 %}
+        <span
+          data-testid="govie-icon"
+          class="material-symbols-outlined gi-gray-700"
+          >more_horiz</span
+        >
+      {% else %}
+        {{
+          govieButton({
+            "content": page|string,
+            "variant": "flat" if page != props.currentPage else "flat-dark",
+            "size": "large",
+            "appearance": "dark",
+            "href": "#",
+            "target": "_self",
+            "data-page": page
+          })
+        }}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
