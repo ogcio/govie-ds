@@ -121,3 +121,5 @@ itemsAlignment
 itemsDistribution
 fixedHeight
 groupId
+hideToc
+Dismissible
