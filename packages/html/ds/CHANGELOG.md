@@ -50,6 +50,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.20.0](https://github.com/ogcio/govie-ds/compare/html-v0.19.0...html-v0.20.0) (2024-11-25)
+
+
+### Features
+
+* html pagination component ([#332](https://github.com/ogcio/govie-ds/issues/332)) ([aae921f](https://github.com/ogcio/govie-ds/commit/aae921ff7bb799be6bfc75acaf7664272f755841))
+* html toast component ([#335](https://github.com/ogcio/govie-ds/issues/335)) ([0afc349](https://github.com/ogcio/govie-ds/commit/0afc349177d051e799d3b06dc56176419256b16f))
+
 ## [0.19.0](https://github.com/ogcio/govie-ds/compare/html-v0.18.1...html-v0.19.0) (2024-11-20)
 
 

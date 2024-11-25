@@ -26,12 +26,155 @@ status: stable
   </TabPanel>
   <TabPanel value="tab12">
   ```html
-    TBD
+  <div
+   class="gi-pagination"
+   data-current-page="5"
+   data-total-pages="10"
+   data-testid="govie-pagination"
+   data-module="gieds-pagination"
+  >
+   <a
+      href="#"
+      target="_self"
+      data-testid="govie-pagination-prev-btn"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn gi-btn-flat-dark gi-btn-large"
+   >
+      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span>
+      <span class="sm:gi-block gi-hidden">Previous</span>
+   </a>
+   <div class="xs:gi-hidden gi-block gi-text-md">
+      <span class="gi-font-bold">Page 5</span> of 10
+   </div>
+   <div class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden">
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         1
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-dark-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-primary-dark gi-btn-large"
+      >
+         5
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         10
+      </a>
+   </div>
+   <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         1
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         3
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         4
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-dark-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-primary-dark gi-btn-large"
+      >
+         5
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         6
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         7
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         10
+      </a>
+   </div>
+   <a
+      href="#"
+      target="_self"
+      data-testid="govie-pagination-next-btn"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn gi-btn-flat-dark gi-btn-large"
+   >
+      <span class="sm:gi-block gi-hidden">Next</span>
+      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
+   </a>
+  </div>
   ```
   </TabPanel>
   <TabPanel value="tab13">
   ```html
-    TBD
+    {{ goviePagination({
+      "totalPages": 100,
+      "currentPage": 10
+    }) }}
   ```
   </TabPanel>
 </Tabs>
