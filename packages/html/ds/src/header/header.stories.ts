@@ -61,6 +61,7 @@ export const Default: Story = {
     },
   },
   args: {
+    fullWidth: false,
     logo: {
       href: '/link',
     },
@@ -98,11 +99,12 @@ export const Default: Story = {
 };
 
 export const NoLinks: Story = {
-  args: {},
+  args: { fullWidth: false },
 };
 
 export const WithMainLinks: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: '/path',
     },
@@ -131,6 +133,7 @@ export const WithMainLinks: Story = {
 
 export const WithNoSearch: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: '/path',
     },
@@ -153,6 +156,7 @@ export const WithNoSearch: Story = {
 
 export const WithSecondaryLinks: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: '/path',
     },
@@ -177,6 +181,7 @@ export const WithSecondaryLinks: Story = {
 
 export const withMainAndSecondaryLinks: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: 'path',
     },
@@ -215,6 +220,7 @@ export const withMainAndSecondaryLinks: Story = {
 
 export const withTitle: Story = {
   args: {
+    fullWidth: false,
     title: 'Life Events',
     logo: {
       href: 'path',
@@ -249,6 +255,7 @@ export const withTitle: Story = {
 
 export const NoLabelSearch: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: 'path',
     },
@@ -292,6 +299,7 @@ export const tabletView: Story = {
     },
   },
   args: {
+    fullWidth: false,
     logo: {
       href: 'path',
     },
@@ -335,6 +343,7 @@ export const mobileView: Story = {
     },
   },
   args: {
+    fullWidth: false,
     logo: {
       href: 'path',
     },
@@ -372,6 +381,7 @@ export const mobileView: Story = {
 
 export const WithExtraButtons: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: '/path',
     },
@@ -406,6 +416,7 @@ export const WithExtraButtons: Story = {
 
 export const WithExtraButtonsAndLabels: Story = {
   args: {
+    fullWidth: false,
     logo: {
       href: '/path',
     },
