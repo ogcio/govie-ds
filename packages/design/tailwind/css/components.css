@@ -909,7 +909,7 @@ input[type='file' i] {
 /* Pagination */
 
 .gi-pagination {
-  @apply gi-flex sm:gi-justify-center gi-items-center gi-justify-between gi-gap-2;
+  @apply gi-flex xs:gi-justify-center gi-justify-between gi-items-center  gi-gap-2;
 }
 
 /* End of Pagination */

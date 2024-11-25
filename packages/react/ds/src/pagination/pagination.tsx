@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Button } from '../button/button.js';
-import { useBreakpoint } from '../hooks/use-breakpoint.js';
+import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utils.js';
 
@@ -18,7 +18,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   const { breakpoint, width } = useBreakpoint();
-  const isCompactView = width < 524; // Custom breakpoint for compact view.
+  const isCompactView = breakpoint === Breakpoint.XS; // Custom breakpoint for compact view.
+  const showLabel = width < 639;
 
   const displayedPages = getDisplayPages(currentPage, totalPages, breakpoint);
 
@@ -60,7 +61,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
-        {!isCompactView && 'Previous'}
+        {!showLabel && 'Previous'}
       </Button>
 
       {isCompactView ? renderPaginationLabel() : renderPaginationBtns()}
@@ -72,7 +73,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
       >
-        {!isCompactView && 'Next'}
+        {!showLabel && 'Next'}
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>
