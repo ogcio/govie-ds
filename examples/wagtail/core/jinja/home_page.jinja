@@ -20,6 +20,7 @@
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
+{% from 'breadcrumbs/breadcrumbs.html' import govieBreadcrumbs %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -51,7 +52,12 @@
   <hr />
 
   <h2>Breadcrumbs</h2>
-  {% include "breadcrumbs/breadcrumbs.html" %}
+    {{ govieBreadcrumbs({ "navItems": [
+        { "label": "Home", "href": "/" },
+        { "ellipsis": true },
+        { "label": "Travel", "href": "/travel" },
+        { "label": "Documentation", "href": "/docs", "currentPage": true }
+    ]}) }}
   <br />
 
   <hr />

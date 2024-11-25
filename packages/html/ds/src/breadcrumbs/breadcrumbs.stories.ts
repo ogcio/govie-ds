@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    items: [
+    navItems: [
       { label: 'Home', href: '/' },
       { ellipsis: true },
       { label: 'Travel', href: '/travel' },
@@ -39,7 +39,7 @@ export const Default: Story = {
 
 export const WithoutEllipsis: Story = {
   args: {
-    items: [
+    navItems: [
       { label: 'Home', href: '/' },
       { label: 'Travel', href: '/travel' },
       { label: 'Passport', href: '/passport' },
@@ -50,9 +50,6 @@ export const WithoutEllipsis: Story = {
 
 export const SingleItem: Story = {
   args: {
-    items: [
-      { label: 'Back to [Previous page]', href: '/' },
-    ],
+    navItems: [{ label: 'Back to [Previous Page]', href: '/' }],
   },
 };
-

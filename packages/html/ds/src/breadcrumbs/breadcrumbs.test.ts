@@ -8,7 +8,7 @@ describe('govieBreadcrumbs', () => {
     macroName: 'govieBreadcrumbs',
     html,
   });
-  const items = [
+  const navItems = [
     { label: 'Home', href: '/' },
     {
       ellipsis: true,
@@ -22,7 +22,7 @@ describe('govieBreadcrumbs', () => {
 
   it('should render Breadcrumbs', () => {
     const { getByRole, getAllByRole } = renderBreadcrumbs({
-      items,
+      navItems,
     });
 
     const breadcrumbNav = getByRole('navigation', {
@@ -40,7 +40,7 @@ describe('govieBreadcrumbs', () => {
 
   it('should pass axe tests', async () => {
     const { axe } = renderBreadcrumbs({
-      items,
+      navItems,
     });
 
     await axe();

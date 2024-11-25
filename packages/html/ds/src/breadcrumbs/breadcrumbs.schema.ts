@@ -1,6 +1,5 @@
 import * as zod from 'zod';
 
-// Breadcrumb item schema
 export const BreadcrumbsItemSchema = zod
   .object({
     label: zod
@@ -30,7 +29,9 @@ export const BreadcrumbsItemSchema = zod
   );
 
 export const BreadcrumbsArraySchema = zod.object({
-  items: zod.array(BreadcrumbsItemSchema),
+  navItems: zod.array(BreadcrumbsItemSchema, {
+    description: 'List of nav items',
+  }),
 });
 
 export type BreadcrumbsProps = zod.infer<typeof BreadcrumbsArraySchema>;
