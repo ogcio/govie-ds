@@ -3,31 +3,35 @@ title: Stack
 description: Stack Component
 status: in-review
 libraries:
-  - platform: 'local'
-    status: 'not-available'
-  - platform: 'global'
-    href: '?path=/docs/layout-stack--docs'
-    status: 'beta'
-  - platform: 'react'
-    href: '?path=/docs/layout-stack--docs'
-    status: 'beta'
+    - platform: 'local'
+      status: 'not-available'
+    - platform: 'global'
+      link: '?path=/docs/layout-stack--docs'
+      status: 'beta'
+    - platform: 'react'
+      link: '?path=/docs/layout-stack--docs'
+      status: 'beta'
 ---
 
 # Stack
 
-<ComponentStatusBlock componentId="stack" />
+## Variants
 
-<Stack
-  direction={{ base: 'column', sm: 'row', md: 'column' }}
-  itemsAlignment="center"
-  itemsDistribution="center"
-  gap={{ base: 5, md: 3 }}
-  fixedHeight="200px"
->
-  <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
-  <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
-  <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
-</Stack>
+### Default
+
+<ComponentContainer>
+  <Stack
+    direction={{ base: 'column', sm: 'row', md: 'column' }}
+    itemsAlignment="center"
+    itemsDistribution="center"
+    gap={{ base: 5, md: 3 }}
+    fixedHeight="200px"
+  >
+    <div className="gi-bg-gray-300 gi-p-2">Item 1</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 2</div>
+    <div className="gi-bg-gray-300 gi-p-2">Item 3</div>
+  </Stack>
+</ComponentContainer>
 
 <Tabs id="tab1">
    <TabList>
@@ -72,10 +76,18 @@ libraries:
   </TabPanel>
 </Tabs>
 
-## When to use this component
+## Usage
+
+### Best Practices
+
+### When to use this component
 
 Use the Stack component to arrange items vertically or horizontally with consistent spacing, alignment, and responsive layout options. It’s ideal for stacking related elements, like buttons, cards, or form fields, in a flexible and organised way.
 
-## When not to use this component
+### When not to use this component
 
 Avoid using the Stack component for complex grid layouts or when precise control over individual item positioning is required.
+
+## Status
+
+<ComponentStatusBlock componentId="stack" />

@@ -3,24 +3,27 @@ title: Alert
 description: Alert HTML Component
 status: in-review
 libraries:
-  - platform: 'local'
-    status: 'not-available'
-  - platform: 'global'
-    href: '?path=/docs/application-alert--docs'
-    status: 'beta'
-  - platform: 'react'
-    href: '?path=/docs/application-alert--docs'
-    status: 'beta'
+    - platform: 'local'
+      status: 'not-available'
+    - platform: 'global'
+      link: '?path=/docs/application-alert--docs'
+      status: 'beta'
+    - platform: 'react'
+      link: '?path=/docs/application-alert--docs'
+      status: 'beta'
 ---
 
 # Alert
 
-<ComponentStatusBlock componentId="alert" />
+## Variants
 
-## Info Alert
-<Alert title="Info">
-    <Paragraph>This is a info Alert</Paragraph>
-</Alert>
+### Info Alert
+
+<ComponentContainer>
+  <Alert title="Info">
+      <Paragraph>This is a info Alert</Paragraph>
+  </Alert>
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -51,10 +54,14 @@ libraries:
   ```
   </TabPanel>
 </Tabs>
-## Success Alert
-<Alert title="Success" variant="success">
-    <Paragraph>This is a success Alert</Paragraph>
-</Alert>
+
+### Success Alert
+
+<ComponentContainer>
+  <Alert title="Success" variant="success">
+      <Paragraph>This is a success Alert</Paragraph>
+  </Alert>
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -86,10 +93,14 @@ libraries:
   ```
   </TabPanel>
 </Tabs>
-## Error Alert
-<Alert title="Error" variant="danger">
-    <Paragraph>This is an error Alert</Paragraph>
-</Alert>
+
+### Error Alert
+
+<ComponentContainer>
+  <Alert title="Error" variant="danger">
+      <Paragraph>This is an error Alert</Paragraph>
+  </Alert>
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
@@ -121,10 +132,14 @@ libraries:
   ```
   </TabPanel>
 </Tabs>
-## Warning Alert
-<Alert title="Warning" variant="warning">
-    <Paragraph>This is a warning Alert</Paragraph>
-</Alert>
+
+### Warning Alert
+
+<ComponentContainer>
+  <Alert title="Warning" variant="warning">
+      <Paragraph>This is a warning Alert</Paragraph>
+  </Alert>
+</ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
@@ -156,10 +171,14 @@ libraries:
   ```
   </TabPanel>
 </Tabs>
-## Dismissible Alert
-<Alert title="Dismissible" dismissible>
-    <Paragraph>This is a dismissible Alert</Paragraph>
-</Alert>
+
+### Dismissible Alert
+
+<ComponentContainer>
+  <Alert title="Dismissible" dismissible>
+      <Paragraph>This is a dismissible Alert</Paragraph>
+  </Alert>
+</ComponentContainer>
 
 <Tabs id="tab5">
   <TabList>
@@ -192,10 +211,22 @@ libraries:
   </TabPanel>
 </Tabs>
 
-## When to use this component
+## Usage
+
+### Best Practices
+
+### When to use this component
 
 An alert may be a notification that keeps people informed of the status of the system and may or may not require the user to respond. Such notifications may be errors, warnings, and general updates.
+This component replace the following components in local library:
+- [Error Summary](https://storybook.design-system.ogcio.gov.ie/?path=/docs/typography-error-summary--docs)
+- [Warning Text](https://storybook.design-system.ogcio.gov.ie/?path=/docs/typography-warning-text--docs)
+- [Notification Panel](https://storybook.design-system.ogcio.gov.ie/?path=/docs/layout-notification-panel--docs)
 
-## When not to use this component
+### When not to use this component
 
 On long forms, always include in-line validation in addition to any error messages that appear at the top of the form.
+
+## Status
+
+<ComponentStatusBlock componentId="alert" />

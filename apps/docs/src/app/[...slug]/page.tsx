@@ -54,7 +54,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
         )}
         <Mdx code={document.body.code} />
       </div>
-      {hideToc && (
+      {!hideToc && (
         <aside className="w-full max-w-48 hidden md:block flex-auto">
           {tocItems?.filter((item) => item.depth > 1).length > 0 && (
             <>
