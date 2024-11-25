@@ -9,7 +9,7 @@
   {% set commonClasses = getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim %}
   {% set sizeClasses = getSizeClass(props.size) | trim %}
   {% set disabledClasses = isButtonDisabled(props.disabled, props.variant, props.appearance) | trim %}
-  {% set allClasses = (props.className or '') ~ ' ' ~ 'gi-btn ' ~ commonClasses ~ ' ' ~ sizeClasses ~ ' ' ~ disabledClasses  %}
+  {% set allClasses = (props.className or '') ~ ' ' ~ 'gi-btn ' ~ commonClasses ~ ' ' ~ sizeClasses ~ ' ' ~ disabledClasses %}
 
   {% if props.href %}
     <a
