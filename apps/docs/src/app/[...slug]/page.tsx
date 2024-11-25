@@ -54,30 +54,32 @@ export default function DocumentPage({ params }: DocumentPageProps) {
         )}
         <Mdx code={document.body.code} />
       </div>
-      <aside className="w-full max-w-48 hidden md:block flex-auto">
-        {!hideToc && tocItems?.filter((item) => item.depth > 1).length > 0 && (
-          <>
-            <Heading as="h4">On this page</Heading>
-            <ul className="gi-list p-0">
-              {tocItems
-                .filter((item) => item.depth > 1)
-                .map((item) => (
-                  <li
-                    key={item.slug}
-                    style={{ marginLeft: `${(item.depth - 2) * 20}px` }}
-                  >
-                    <a
-                      className="gi-link gi-link-sm gi-link-no-underline gi-link-no-visited"
-                      href={`#${item.slug}`}
+      {hideToc && (
+        <aside className="w-full max-w-48 hidden md:block flex-auto">
+          {tocItems?.filter((item) => item.depth > 1).length > 0 && (
+            <>
+              <Heading as="h4">On this page</Heading>
+              <ul className="gi-list p-0">
+                {tocItems
+                  .filter((item) => item.depth > 1)
+                  .map((item) => (
+                    <li
+                      key={item.slug}
+                      style={{ marginLeft: `${(item.depth - 2) * 20}px` }}
                     >
-                      {item.text}
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </>
-        )}
-      </aside>
+                      <a
+                        className="gi-link gi-link-sm gi-link-no-underline gi-link-no-visited"
+                        href={`#${item.slug}`}
+                      >
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
+        </aside>
+      )}
     </>
   );
 }

@@ -1,6 +1,5 @@
 'use client';
 import { IconButton, Paragraph, Tag, TagType } from '@govie-ds/react';
-import { Table, Td, Tr } from '../common/table';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
 export function TagFromStatus(status: ComponentStatus) {
@@ -189,7 +188,63 @@ export function ComponentStatusTable() {
         There are currently <strong>{components.length}</strong> components
         under consideration for the design system.
       </Paragraph>
-      <Table
+      <div className="grid grid-cols-2 lg:grid-cols-5">
+        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
+          Component
+        </div>
+        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+          Figma Library
+        </div>
+        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+          Local HTML
+        </div>
+        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+          Global HTML
+        </div>
+        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+          React
+        </div>
+
+        {componentStatuses.map((componentStatus) => {
+          return (
+            <>
+              <div className="row-span-4 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
+                {componentStatus.name}
+              </div>
+              <div className="flex p-2">
+                <div className="w-32 block lg:hidden">Figma Library</div>
+                <ComponentStatusPill
+                  status={componentStatus.figma.status}
+                  href={componentStatus.figma.href}
+                />
+              </div>
+              <div className="flex p-2">
+                <div className="w-32 block lg:hidden">Local HTML</div>
+                <ComponentStatusPill
+                  status={componentStatus.local.status}
+                  href={componentStatus.local.href}
+                />
+              </div>
+              <div className="flex p-2">
+                <div className="w-32 block lg:hidden">Global HTML</div>
+                <ComponentStatusPill
+                  status={componentStatus.global.status}
+                  href={componentStatus.global.href}
+                />
+              </div>
+              <div className="flex p-2">
+                <div className="w-32 block lg:hidden">React</div>
+                <ComponentStatusPill
+                  status={componentStatus.react.status}
+                  href={componentStatus.react.href}
+                />
+              </div>
+              <hr className="block lg:hidden col-span-2" />
+            </>
+          );
+        })}
+      </div>
+      {/* <Table
         headers={[
           'Component',
           'Figma Library',
@@ -237,7 +292,7 @@ export function ComponentStatusTable() {
             </Tr>
           );
         }}
-      />
+      /> */}
     </div>
   );
 }
