@@ -18,8 +18,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   const { breakpoint, width } = useBreakpoint();
-  const isCompactView = breakpoint === Breakpoint.XS; // Custom breakpoint for compact view.
-  const showLabel = width < 639;
+  const isCompactView = breakpoint === Breakpoint.XS;
+  const isSMWidth = width < 639;
+  const showLabel = isSMWidth;
 
   const displayedPages = getDisplayPages(currentPage, totalPages, breakpoint);
 
@@ -57,6 +58,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
+        className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
@@ -72,6 +74,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
+        className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         {!showLabel && 'Next'}
         <React.Fragment key="next-btn-pagination">
