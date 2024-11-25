@@ -14,7 +14,7 @@ export function BasicPage({ size }: { size: 'lg' | 'md' | 'sm' }) {
   })();
   return (
     <iframe
-      src="/templates/basic-page.html"
+      src="/templates/search-page.html"
       className={`h-[50vh] ${widthClass} border-solid border-gray-300 border overflow-hidden`}
     ></iframe>
   );

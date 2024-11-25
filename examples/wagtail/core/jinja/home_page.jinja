@@ -41,7 +41,7 @@
   {{ govieHeader(HeaderProps) }}
   <div class="gi-container">
     {{ govieHeading({ 'size': 'lg', 'as': 'h1', 'text': 'Search Results' }) }}
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-4 gap-4">
       <div>
         {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
         {{ govieComboBox(comboBoxProps) }}
@@ -49,7 +49,7 @@
           {{ govieButton({"content": 'Apply filters', "appearance":"dark"}) }}
         </div>
       </div>
-      <div class="col-span-2">
+      <div class="col-span-3">
         <div class="mb-6 flex justify-between items-center">
           {{ govieSelect(SelectProps) }}
           {{ govieParagraph({'content': '49357 Results', 'className': '!gi-mb-0'}) }}
