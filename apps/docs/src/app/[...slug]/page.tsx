@@ -17,7 +17,7 @@ type MarkdownHeading = {
 };
 
 const extractHeadingsFromMdx = (raw: string): MarkdownHeading[] => {
-  const regXHeader = /#{1,6}.+/g;
+  const regXHeader = /#{1,6}\s.+/g;
 
   return (
     raw.match(regXHeader)?.map((item) => {
