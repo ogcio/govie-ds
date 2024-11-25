@@ -4,6 +4,7 @@ import { HeaderProps } from './header.schema';
 
 const standardProps = {
   logo: { href: '/home' },
+  fullWidth: false,
   tools: {
     search: {
       action: '/search_page',
@@ -45,6 +46,7 @@ describe('header', () => {
   it('should pass axe tests', async () => {
     const screen = renderHeader({
       logo: { href: '/home' },
+      fullWidth: false,
       tools: {
         search: {
           label: 'Search',

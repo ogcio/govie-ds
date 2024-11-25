@@ -1,0 +1,73 @@
+---
+title: Chip
+description: Chip HTML Component
+status: in-review
+libraries:
+    - platform: "local"
+      status: "not-available"
+    - platform: "global"
+      link: "?path=/docs/components-chip--docs"
+      status: "alpha"
+    - platform: "react"
+      link: "?path=/docs/components-chip--docs"
+      status: "alpha"
+---
+
+# Chip
+
+A Chip is a compact UI element that displays information, can be removed via a close button, and is ideal for tags, filters, or selection indicators.
+It allow users to close the chip using keyboard interactions. For accessibility, users can press the `Enter` or `Space` key to close the chip when it is focused.
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Chip label="Label 1" />
+  <Chip label="Label 2" />
+  <Chip label="Label 3" />
+</ComponentContainer>
+
+<Tabs id="tab0">
+  <TabList>
+    <TabItem value="tab01" checked>HTML</TabItem>
+    <TabItem value="tab02">React</TabItem>
+  </TabList>
+  <TabPanel value="tab01">        
+    ```html
+    <div class="gi-chip" aria-label="chip: Label 1" aria-describedby="chip-description" tabindex="0">
+        <span id="chip-description">Label 1</span>
+        <div role="button" aria-label="remove chip">
+            <span role="presentation" class="material-symbols-outlined gi-block" style="font-size:16px">close</span>
+        </div>
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab02">        
+    ```html
+    import { Chip } from '@govie-ds/list';
+
+    const handleClose = () => {}
+
+    <Chip label="Label 1" onClose={handleClose} />
+    ```
+
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Use the Chip component to display concise information, such as tags or selected items, that users can easily identify and remove. Ideal for filtering, categorizing, or indicating selections in forms and lists.
+
+### When not to use this component
+
+Avoid using the Chip component for lengthy content, essential actions, or complex user interactions. It’s best suited for simple tags and removable items.
+
+## Status
+
+<ComponentStatusBlock componentId="chip" />
+

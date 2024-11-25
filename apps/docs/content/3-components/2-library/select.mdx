@@ -1,0 +1,168 @@
+---
+title: Select
+description: Select HTML Component
+status: in-review
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/form-select--docs'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/form-select--docs'
+    status: 'beta'
+  - platform: 'react'
+    link: '?path=/docs/form-select--docs'
+    status: 'beta'
+---
+
+# Select
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Select
+    error={{
+      text: '',
+    }}
+    hint={{
+      text: '',
+    }}
+    id="unique-id"
+    label={{
+      text: 'Label',
+    }}
+    options={[
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ]}
+  />
+</ComponentContainer>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html
+    <div data-module="gieds-select">
+      <label
+        for="unique-id"
+        class="gi-text-md gi-mb-1 gi-block gi-mb-2">
+        Label
+      </label>
+      <select
+        id="unique-id"
+        aria-label="Label"
+        class="gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-[3px] gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg">
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-1">
+            Option 1
+          </option>
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-2">
+            Option 2
+          </option>
+          <option
+            class="gi-font-primary xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+            value="value-3">
+            Option 3
+          </option>
+      </select>
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```html
+    {{ govieSelect({
+      "id": "unique-id",
+      "label": {
+        "content": "Label"
+      },
+      "hint": {
+        "content": ""
+      },
+      "error": {
+        "content": ""
+      },
+      "options": [
+        {
+          "label": "Option 1",
+          "value": "value-1"
+        },
+        {
+          "label": "Option 2",
+          "value": "value-2"
+        },
+        {
+          "label": "Option 3",
+          "value": "value-3"
+        }
+      ]
+    }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html import { Select } from "@govie-ds/react";
+    <Select
+      error={{
+        text: '',
+      }}
+      hint={{
+        text: '',
+      }}
+      id="unique-id"
+      label={{
+        text: 'Label',
+      }}
+      options={[
+        {
+          label: 'Option 1',
+          value: 'value-1',
+        },
+        {
+          label: 'Option 2',
+          value: 'value-2',
+        },
+        {
+          label: 'Option 3',
+          value: 'value-3',
+        },
+      ]}
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+The select component should only be used as a last resort in public-facing services because research shows that some users find selects very difficult to use.
+
+### When not to use this component
+
+The select component allows users to choose an option from a long list. Before using the select component, try asking users questions which will allow you to present them with fewer options.
+
+Asking questions means you’re less likely to need to use the select component, and can consider using a different solution, such as radios.
+
+## Status
+
+<ComponentStatusBlock componentId="select" />
+

@@ -1,0 +1,231 @@
+---
+title: Pagination
+description: Pagination Component
+status: in-review
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/navigation-pagination--docs'
+    status: 'stable'
+  - platform: 'global'
+    status: 'considering'
+  - platform: 'react'
+    link: '?path=/docs/navigation-pagination--docs'
+    status: 'beta'
+---
+
+# Pagination
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Pagination currentPage={5} totalPages={10} />
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>React</TabItem>
+    <TabItem value="tab12">HTML</TabItem>
+    <TabItem value="tab13">Macro</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+    ```html
+    import { Pagination } from '@govie-ds/react';
+    
+    <Pagination currentPage={5} totalPages={10} />
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  <div
+   class="gi-pagination"
+   data-current-page="5"
+   data-total-pages="10"
+   data-testid="govie-pagination"
+   data-module="gieds-pagination"
+  >
+   <a
+      href="#"
+      target="_self"
+      data-testid="govie-pagination-prev-btn"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn gi-btn-flat-dark gi-btn-large"
+   >
+      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span>
+      <span class="sm:gi-block gi-hidden">Previous</span>
+   </a>
+   <div class="xs:gi-hidden gi-block gi-text-md">
+      <span class="gi-font-bold">Page 5</span> of 10
+   </div>
+   <div class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden">
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         1
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-dark-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-primary-dark gi-btn-large"
+      >
+         5
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         10
+      </a>
+   </div>
+   <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         1
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         3
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         4
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-dark-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-primary-dark gi-btn-large"
+      >
+         5
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         6
+      </a>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         7
+      </a>
+      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+      <a
+         href="#"
+         target="_self"
+         data-testid="govieButton-dark-flat-large-notDisabled"
+         data-element="button-container"
+         data-module="gieds-button"
+         class="gi-btn gi-btn-flat-dark gi-btn-large"
+      >
+         10
+      </a>
+   </div>
+   <a
+      href="#"
+      target="_self"
+      data-testid="govie-pagination-next-btn"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="gi-btn gi-btn-flat-dark gi-btn-large"
+   >
+      <span class="sm:gi-block gi-hidden">Next</span>
+      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
+   </a>
+  </div>
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+    {{ goviePagination({
+      "totalPages": 100,
+      "currentPage": 10
+    }) }}
+  ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+- Pagination in a blog or article listing.
+- Navigating between pages in search results.
+- Handling large datasets in dashboards or analytics platforms.
+
+### When to use this component
+
+Use the `Pagination` component when you need to display a set of paginated content across multiple pages. It’s especially useful for content-heavy applications, where users need to navigate between pages of results or items. It helps to:
+
+- Break down large sets of data or content into smaller, more manageable chunks.
+- Provide intuitive and clear navigation controls, such as "Previous", "Next", and specific page numbers.
+- Dynamically adjust the number of pages based on the total content available.
+
+### When not to use this component
+
+Avoid using the `Pagination` component when:
+
+- The content is not split into multiple pages, and all data can be shown at once without performance concerns.
+- Your design requires infinite scrolling or loading data dynamically as the user scrolls, instead of dividing it into fixed page numbers.
+- You don't want to provide manual control to navigate between pages (e.g., for very simple content where only a single page is required).
+
+Consider other navigation or layout patterns when:
+
+- The number of pages is so large that pagination becomes cumbersome.
+- You have complex filtering or sorting systems that could be better navigated using a different UI paradigm (e.g., a side navigation bar or collapsible sections).
+
+### Accessibility Considerations
+
+- Ensure that screen readers can properly announce the active page and total pages.
+- Provide clear visual indicators of the current page, using styles or ARIA roles to enhance accessibility.
+
+## Status
+
+<ComponentStatusBlock componentId="pagination" />
+

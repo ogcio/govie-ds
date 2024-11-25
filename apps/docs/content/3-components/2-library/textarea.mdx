@@ -1,0 +1,174 @@
+---
+title: Textarea
+description: Textarea HTML Component
+status: in-review
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/form-textarea--docs'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/form-textarea--docs'
+    status: 'beta'
+  - platform: 'react'
+    link: '?path=/docs/form-textarea--docs'
+    status: 'beta'
+---
+
+# Textarea
+
+The `Textarea` component allows users to input multi-line text. It’s ideal for longer text fields, such as descriptions, messages, or comments, and offers flexibility in terms of size using `rows` and `cols` props. Additionally, it provides the option to set a character limit using the `maxChars` prop for better control over user input length.
+
+## Variants
+
+### Default textarea
+
+<ComponentContainer>
+  <TextArea {...{
+    id: 'textarea-0',
+    label: { text: 'Textarea Label' },
+    hint: { text: 'Hint: This is a helpful hint' },
+  }}  />
+</ComponentContainer>
+          
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+    <div class="gi-pt-2 gi-mb-4" >
+      <label class="gi-text-md gi-mb-1 gi-block" for="textarea-id">
+          Textarea Label
+      </label>
+      <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700">
+          Hint: This is a helpful hint.
+      </div>
+      <div class="gi-flex gi-items-center" data-module="gieds-textarea">
+          <textarea id="textarea-id" rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="100" />
+      </div>
+    </div>
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  {{ govieTextArea({
+    "id": "textarea-id"
+    "label": {
+      "content": "Textarea Label",
+      "for": "textarea-id"
+    },
+    "hint": {
+      "content": "Hint text for textarea"
+    },
+    "rows": 4,
+    "cols": 100,
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { TextArea } from '@govie-ds/textarea';
+
+<TextArea
+  label={{ text: 'Comments' }}
+  hint={{ text: 'Hint: This is a helpful hint' }}
+/>
+
+```
+</TabPanel>
+</Tabs>
+
+### With Character limit
+
+<ComponentContainer>
+  <TextArea {...{
+    id: 'textarea-1',
+    label: { text: 'Textarea Label' },
+    hint: { text: 'Hint: This is a helpful hint' },
+    maxChars: 100,
+  }} />
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+    <div class="gi-pt-2 gi-mb-4" >
+      <label class="gi-text-md gi-mb-1 gi-block" for="textarea-id">
+          Textarea Label
+      </label>
+      <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700">
+          Hint: This is a helpful hint.
+      </div>
+      <div class="gi-flex gi-items-center" data-module="gieds-textarea">
+          <textarea id="textarea-id" rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="100" />
+      </div>
+      <div class="gi-textarea-remaining-chars">
+        <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700 ">
+            You have 100 characters remaining
+        </div>
+      </div>
+    </div>
+````
+
+  </TabPanel>
+  <TabPanel value="tab22">
+  ```html
+  {{ govieTextArea({
+    "id": "textarea-id"
+    "label": {
+      "content": "Textarea Label",
+      "for": "textarea-id"
+    },
+    "hint": {
+      "content": "Hint text for textarea"
+    },
+    "maxChars": 30,
+    "rows": 4,
+    "cols": 100,
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab23">
+  ```html
+  import { TextArea } from '@govie-ds/textarea';
+  
+  <TextArea
+  label={{ text: 'Comments' }}
+  hint={{ text: 'Hint: This is a helpful hint' }}
+  maxChars={100}
+  />
+```
+</TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+- **Multi-line input**: Use `Textarea` when the input requires multiple lines of text, such as:
+- Feedback forms, comments, or reviews
+- Messages, descriptions, or instructions
+- Long-form text fields like addresses or notes
+- **Variable text length**: Use it when you cannot predict how long the user's input will be, but expect it to exceed a single line.
+- **Custom size control**: Use `rows` and `cols` to control the visible size of the text box, tailoring the component to your layout needs.
+- **Character limit**: Use `maxChars` to limit the number of characters allowed.
+
+### When not to use this component
+
+- **Single-line input**: If you only expect short, single-line inputs (e.g., names, email addresses), use the `TextInput` component instead.
+- **Structured data input**: For specialised inputs like dates, numbers, or selections from predefined options, use components like `DateInput`, `NumberInput`, or `Select` instead of `Textarea`.
+- **Large text area**: If the input area becomes too large (like for editing full documents or code), consider a more robust solution, such as a dedicated text editor component or even a rich text editor.
+
+## Status
+
+<ComponentStatusBlock componentId="textarea" />
+

@@ -31,11 +31,11 @@ const headingVariants = tv({
 
 type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
-  className?: string;
   children: React.ReactNode;
+  id?: string;
 };
 
-function Heading({ as, size, children, caption, className }: HeadingProps) {
+function Heading({ as, size, children, caption, id }: HeadingProps) {
   const Slot = as || 'h1';
   const { text, base } = headingVariants({ as, size });
   return (
@@ -45,7 +45,9 @@ function Heading({ as, size, children, caption, className }: HeadingProps) {
           {caption}
         </span>
       )}
-      <Slot className={cn(base(), className)}>{children}</Slot>
+      <Slot className={cn(base())} id={id}>
+        {children}
+      </Slot>
     </>
   );
 }

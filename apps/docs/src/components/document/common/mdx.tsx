@@ -1,38 +1,40 @@
 import {
+  Alert,
+  Blockquote,
+  Breadcrumbs,
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipsis,
+  BreadcrumbLink,
   Button,
+  Card,
+  CheckboxesGroup,
+  Chip,
+  Combobox,
+  CookieBanner,
+  FileUpload,
   Footer,
   Header,
   Heading,
   Icon,
+  IconButton,
+  Label,
+  List,
+  Modal,
+  Pagination,
   Paragraph,
+  PhaseBanner,
+  RadiosGroup,
+  SectionBreak,
+  Select,
+  Spinner,
+  Stack,
   TabItem,
   TabList,
   TabPanel,
   Tabs,
   Tag,
-  RadiosGroup,
-  Card,
   TextArea,
-  Modal,
-  CookieBanner,
-  List,
-  Combobox,
-  Chip,
   TextInput,
-  SectionBreak,
-  Select,
-  Label,
-  IconButton,
-  FileUpload,
-  CheckboxesGroup,
-  Spinner,
-  Stack,
-  Pagination,
-  Breadcrumbs,
-  BreadcrumbCurrentLink,
-  BreadcrumbEllipsis,
-  BreadcrumbLink,
-  Alert,
   Toast,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -81,23 +83,46 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
-import { wrapComponents } from './wrap-components';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { Highlight } from '@/components/typography/highlight';
 import { Link } from '@/components/typography/link';
+import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
 };
 
 const standardComponents: MDXComponents = {
-  h1: ({ children }) => <Heading as="h1">{children}</Heading>,
-  h2: ({ children }) => <Heading as="h2">{children}</Heading>,
-  h3: ({ children }) => <Heading as="h3">{children}</Heading>,
-  h4: ({ children }) => <Heading as="h4">{children}</Heading>,
-  h5: ({ children }) => <Heading as="h5">{children}</Heading>,
-  h6: ({ children }) => <Heading as="h6">{children}</Heading>,
+  h1: ({ children, id }) => (
+    <Heading as="h1" id={id}>
+      {children}
+    </Heading>
+  ),
+  h2: ({ children, id }) => (
+    <Heading as="h2" id={id}>
+      {children}
+    </Heading>
+  ),
+  h3: ({ children, id }) => (
+    <Heading as="h3" id={id}>
+      {children}
+    </Heading>
+  ),
+  h4: ({ children, id }) => (
+    <Heading as="h4" id={id}>
+      {children}
+    </Heading>
+  ),
+  h5: ({ children, id }) => (
+    <Heading as="h5" id={id}>
+      {children}
+    </Heading>
+  ),
+  h6: ({ children, id }) => (
+    <Heading as="h6" id={id}>
+      {children}
+    </Heading>
+  ),
   p: ({ children }) => <Paragraph>{children}</Paragraph>,
   span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
@@ -110,20 +135,19 @@ const standardComponents: MDXComponents = {
       <SyntaxHighlighter
         wrapLongLines
         language={className}
-        className="max-h-[300px] overflow-scroll"
+        className="max-h-[300px] overflow-scroll gi-font-tertiary text-2xs"
       >
         {children as string | string[]}
       </SyntaxHighlighter>
     ) : (
-      <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs">
+      <code className="rounded-sm bg-gray-50 border-gray-100 border-xs p-xs text-gray-600 text-center text-2xs gi-font-tertiary">
         {children}
       </code>
     ),
-  blockquote: ({ children }) => <Highlight>{children}</Highlight>,
+  blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
 };
 
 const documentComponents: MDXComponents = {
-  Highlight: ({ children }) => <Highlight>{children}</Highlight>,
   Image: (props) => <DocumentImage {...props} />,
   ColorPrimitives: () => <ColorPrimitives />,
   FontFamilyTable: () => <FontFamilyTable />,
@@ -202,6 +226,11 @@ const documentComponents: MDXComponents = {
   BreadcrumbCurrentLink: (props) => <BreadcrumbCurrentLink {...props} />,
   BreadcrumbEllipsis: (props) => <BreadcrumbEllipsis {...props} />,
   BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
+  PhaseBanner: (props) => <PhaseBanner {...props} />,
+  Blockquote: (props) => <Blockquote {...props} />,
+  ComponentContainer: (props) => (
+    <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
+  ),
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,
 };
@@ -213,21 +242,8 @@ export function Mdx({ code }: MdxProps) {
     <Component
       components={{
         ...standardComponents,
-        ...wrapComponents(documentComponents, ({ key }) => {
-          const regexSkipMb =
-            /^(Tabs|DeveloperRecommendation|Link|Heading|Icon|Tag|Card|BreadcrumbLink|BreadcrumbEllipsis|BreadcrumbCurrentLink|.*Tab.*)$/;
-
-          if (regexSkipMb.test(key) && key !== 'Tabs') {
-            return;
-          }
-
-          return [MarginBottom];
-        }),
+        ...documentComponents,
       }}
     />
   );
-}
-
-function MarginBottom({ children }: { children: React.ReactNode }) {
-  return <div className="mb-2xl stroke-gray-950">{children}</div>;
 }
