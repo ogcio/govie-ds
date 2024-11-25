@@ -11,6 +11,7 @@ import {
   MatcherOptions,
   queryByText,
   SelectorMatcherOptions,
+  getAllByText,
 } from '@testing-library/dom';
 import axe from 'axe-core';
 import { initGovIe } from '..';
@@ -62,6 +63,9 @@ export function render<TProps>({
       container: div,
       getByText: (id: Matcher, options?: SelectorMatcherOptions) => {
         return getByText(div, id, options);
+      },
+      getAllByText: (id: Matcher, options?: SelectorMatcherOptions) => {
+        return getAllByText(div, id, options);
       },
       getByRole: (role: ByRoleMatcher, options?: ByRoleOptions) => {
         return getByRole(div, role, options);

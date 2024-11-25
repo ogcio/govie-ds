@@ -908,15 +908,9 @@ input[type='file' i] {
 /* Pagination */
 
 .gi-pagination {
-  @apply gi-flex gi-items-center gi-justify-between gi-gap-2;
+  @apply gi-flex xs:gi-justify-center gi-justify-between gi-items-center  gi-gap-2;
 }
 
-/* Custom breakpoint for 524px */
-@media (min-width: 524px) {
-  .gi-pagination {
-    @apply gi-justify-center;
-  }
-}
 /* End of Pagination */
 
 /* Breadcrumbs */
