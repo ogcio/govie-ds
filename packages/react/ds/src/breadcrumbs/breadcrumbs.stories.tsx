@@ -31,9 +31,4 @@ export const Default: Story = {
       <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>,
     ],
   },
-  argTypes: {
-    children: {
-      description: 'The breadcrumb items: link, current link, and back link.',
-    },
-  },
 };
