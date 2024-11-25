@@ -836,8 +836,8 @@ input[type='file' i] {
   @apply !gi-gap-6;
 }
 .notyf__toast {
- @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
- animation-delay: 0s !important;
+  @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
+  animation-delay: 0s !important;
 }
 .notyf__message {
   @apply !gi-w-full;
@@ -945,15 +945,6 @@ input[type='file' i] {
     gi-font-bold
     gi-text-sm;
   content: '/';
-}
-
-.gi-breadcrumb-ellipsis {
-  @apply gi-flex gi-h-full gi-w-full gi-items-center;
-}
-
-.gi-breadcrumb-ellipsis > div {
-  @apply gi-bg-gray-500 gi-w-2 gi-h-2;
-  clip-path: ellipse(2px 2px at center);
 }
 
 /* End of Breadcrumbs */

@@ -224,7 +224,10 @@ export function Mdx({ code }: MdxProps) {
             key === 'Heading' ||
             key === 'Icon' ||
             key === 'Tag' ||
-            key === 'Card'
+            key === 'Card' ||
+            key === 'BreadcrumbLink' ||
+            key === 'BreadcrumbEllipsis' ||
+            key === 'BreadcrumbCurrentLink'
           ) {
             return;
           }

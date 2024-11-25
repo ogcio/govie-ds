@@ -1,11 +1,10 @@
+import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
 
 export const BreadcrumbEllipsis = () => (
-  <div className="gi-breadcrumb-ellipsis" aria-hidden="true">
-    <div />
-    <div />
-    <div />
+  <div aria-hidden="true">
+    <Icon className="gi-text-gray-700" icon="more_horiz" />
   </div>
 );
 

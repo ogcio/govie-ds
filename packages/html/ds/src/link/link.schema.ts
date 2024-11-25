@@ -19,6 +19,11 @@ export const linkSchema = zod.object({
       description: 'ARIA Label of link, default is label',
     })
     .optional(),
+  ariaCurrent: zod
+    .string({
+      description: 'ARIA current attribute',
+    })
+    .optional(),
   noVisited: zod
     .boolean({
       description:

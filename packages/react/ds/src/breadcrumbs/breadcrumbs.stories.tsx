@@ -32,3 +32,22 @@ export const Default: Story = {
     ],
   },
 };
+
+export const WithoutEllipsis: Story = {
+  args: {
+    children: [
+      <BreadcrumbLink href="/home">Home</BreadcrumbLink>,
+      <BreadcrumbLink href="/travel">Travel</BreadcrumbLink>,
+      <BreadcrumbLink href="/passport">Passport</BreadcrumbLink>,
+      <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>,
+    ],
+  },
+};
+
+export const SingleItem: Story = {
+  args: {
+    children: [
+      <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
+    ],
+  },
+};

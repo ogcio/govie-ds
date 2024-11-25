@@ -40,9 +40,9 @@ describe('govieBreadcrumbs', () => {
       </Breadcrumbs>,
     );
 
-    const listItem = container.querySelector('li .gi-breadcrumb-ellipsis');
-    expect(listItem).toBeInTheDocument();
-    expect(listItem).toHaveClass('gi-breadcrumb-ellipsis');
+    const ellipsisDiv = container.querySelector('div[aria-hidden="true"]');
+    expect(ellipsisDiv).toBeInTheDocument();
+    expect(ellipsisDiv).toHaveTextContent('more_horiz');
   });
 
   it('should pass axe accessibility tests', async () => {

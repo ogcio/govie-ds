@@ -1,30 +1,49 @@
-<nav aria-label="Breadcrumbs" class="gi-breadcrumbs">
-  <ol role="list">
-    <li role="listitem">
-      <a href="/home" class="gi-link gi-link-inherit" aria-label="Home page"
-        >Home</a
-      >
-    </li>
-    <li role="listitem">
-      <div class="gi-breadcrumb-ellipsis" aria-hidden="true">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </li>
-    <li role="listitem">
-      <a href="/travel" class="gi-link gi-link-inherit" aria-label="Travel page"
-        >Travel</a
-      >
-    </li>
-    <li role="listitem">
-      <a
-        href="/docs"
-        class="gi-link gi-link-inherit"
-        aria-label="Documentation page"
-        aria-current="page"
-        >Documentation</a
-      >
-    </li>
-  </ol>
-</nav>
+{% from 'link/link.html' import govieLink %}
+{% from 'icon/icon.html' import govieIcon %}
+
+{% macro govieBreadcrumbs(props) %}
+  <nav
+    aria-label="Breadcrumbs"
+    data-element="breadcrumbs-container"
+    data-module="gieds-breadcrumbs"
+    class="gi-breadcrumbs"
+  >
+    <ol role="list">
+      {% for item in props.items %}
+        <li
+          role="listitem"
+          {% if item.currentPage %}aria-current="page"{% endif %}
+        >
+          {% if item.ellipsis %}
+            <div aria-hidden="true">
+              {{
+                govieIcon({
+                "icon": "more_horiz",
+                "className": "gi-text-gray-700"
+                })
+              }}
+            </div>
+          {% elif item.currentPage %}
+            {{
+              govieLink({
+                  "noColor": true,
+                  "href": item.href,
+                  "label": item.label,
+                  "ariaCurrent": "page"
+              })
+            }}
+          {% else %}
+            {{
+              govieLink({
+                  "noColor": true,
+                  "href": item.href,
+                  "label": item.label,
+                  "ariaLabel": item.label + " page"
+              })
+            }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endmacro %}
