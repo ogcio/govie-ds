@@ -192,16 +192,16 @@ export function ComponentStatusTable() {
         <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Component
         </div>
-        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Figma Library
         </div>
-        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Local HTML
         </div>
-        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Global HTML
         </div>
-        <div className="hidden lg:block bg-gray-50 py-2 text-sm text-gray-600">
+        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           React
         </div>
 
