@@ -834,7 +834,7 @@ input[type='file' i] {
   @apply !gi-gap-6
  }
 .notyf__toast {
- @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px] !gi-overflow-auto;
+ @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
  animation-delay: 0s !important;
 }
 .notyf__message {
@@ -907,13 +907,7 @@ input[type='file' i] {
 /* Pagination */
 
 .gi-pagination {
-  @apply gi-flex gi-items-center gi-justify-between gi-gap-2;
+  @apply gi-flex xs:gi-justify-center gi-justify-between gi-items-center  gi-gap-2;
 }
 
-/* Custom breakpoint for 524px */
-@media (min-width: 524px) {
-  .gi-pagination {
-    @apply gi-justify-center;
-  }
-}
 /* End of Pagination */

@@ -39,6 +39,22 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/react-v0.24.0...react-v0.25.0) (2024-11-25)
+
+
+### Features
+
+* html pagination component ([#332](https://github.com/ogcio/govie-ds/issues/332)) ([aae921f](https://github.com/ogcio/govie-ds/commit/aae921ff7bb799be6bfc75acaf7664272f755841))
+* html toast component ([#335](https://github.com/ogcio/govie-ds/issues/335)) ([0afc349](https://github.com/ogcio/govie-ds/commit/0afc349177d051e799d3b06dc56176419256b16f))
+
+## [0.24.0](https://github.com/ogcio/govie-ds/compare/react-v0.23.0...react-v0.24.0) (2024-11-20)
+
+
+### Features
+
+* stack component ([#328](https://github.com/ogcio/govie-ds/issues/328)) ([fe06a57](https://github.com/ogcio/govie-ds/commit/fe06a57b46512fecb8c8c0f1c99d422714b1d6b8))
+* toast component ([#331](https://github.com/ogcio/govie-ds/issues/331)) ([1ca741e](https://github.com/ogcio/govie-ds/commit/1ca741e609763ba847f24cfd259a8b727d87a498))
+
 ## [0.23.0](https://github.com/ogcio/govie-ds/compare/react-v0.22.0...react-v0.23.0) (2024-11-18)
 
 

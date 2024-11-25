@@ -31,6 +31,7 @@ import {
   Tag,
   TextArea,
   TextInput,
+  Toast,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -223,6 +224,7 @@ const documentComponents: MDXComponents = {
     <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
   ),
   Alert: (props) => <Alert {...props} />,
+  Toast: (props) => <Toast {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
