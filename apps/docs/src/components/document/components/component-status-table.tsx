@@ -1,7 +1,33 @@
 'use client';
-import { IconButton, Paragraph, Tag } from '@govie-ds/react';
+import { IconButton, Paragraph, Tag, TagType } from '@govie-ds/react';
 import { Table, Td, Tr } from '../common/table';
 import { ComponentStatus, getComponents } from '@/lib/components';
+
+export function TagFromStatus(status: ComponentStatus) {
+  switch (status) {
+    case 'not-available': {
+      return { text: 'N/A', type: TagType.default };
+    }
+    case 'considering': {
+      return { text: 'Considering', type: TagType.default };
+    }
+    case 'alpha': {
+      return { text: 'Alpha', type: TagType.warning };
+    }
+    case 'beta': {
+      return { text: 'Beta', type: TagType.info };
+    }
+    case 'deprecated': {
+      return { text: 'Deprecated', type: TagType.error };
+    }
+    case 'stable': {
+      return { text: 'Stable', type: TagType.success };
+    }
+    default: {
+      return;
+    }
+  }
+}
 
 export function ComponentStatusPill({
   status,
@@ -10,14 +36,10 @@ export function ComponentStatusPill({
   status: ComponentStatus;
   href?: string;
 }) {
+  const tagProps = TagFromStatus(status);
   return (
     <div className="flex gap-sm items-center">
-      {status === 'not-available' && <Tag text="N/A" type="default" />}
-      {status === 'considering' && <Tag text="Considering" type="default" />}
-      {status === 'alpha' && <Tag text="Alpha" type="warning" />}
-      {status === 'beta' && <Tag text="Beta" type="info" />}
-      {status === 'stable' && <Tag text="Stable" type="success" />}
-      {status === 'deprecated' && <Tag text="Deprecated" type="error" />}
+      {tagProps && <Tag {...tagProps} />}
       {href ? (
         <IconButton
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}

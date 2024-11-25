@@ -39,10 +39,11 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   }
 
   const tocItems = extractHeadingsFromMdx(document.body.raw);
+  const hideToc = document.hideToc;
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full flex-auto">
         {document.status !== 'stable' && (
           <div className="flex justify-between items-center py-2">
             {document.status === 'in-review' && (
@@ -53,8 +54,8 @@ export default function DocumentPage({ params }: DocumentPageProps) {
         )}
         <Mdx code={document.body.code} />
       </div>
-      <aside className="w-full max-w-48 hidden md:block">
-        {tocItems?.filter((item) => item.depth > 1).length > 0 && (
+      <aside className="w-full max-w-48 hidden md:block flex-auto">
+        {!hideToc && tocItems?.filter((item) => item.depth > 1).length > 0 && (
           <>
             <Heading as="h4">On this page</Heading>
             <ul className="gi-list p-0">

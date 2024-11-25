@@ -37,6 +37,7 @@ const Document = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     navigation: { type: 'string', required: false },
+    hideToc: { type: 'boolean', required: false, default: false },
     description: { type: 'string', required: true },
     status: {
       type: 'enum',
