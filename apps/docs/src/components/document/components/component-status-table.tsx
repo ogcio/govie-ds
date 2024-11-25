@@ -97,7 +97,6 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   );
 
   if (!componentStatus) {
-    console.log({ componentStatuses });
     throw new Error(`Component status not found '${componentId}'.`);
   }
   return (
