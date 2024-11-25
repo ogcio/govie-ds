@@ -214,21 +214,10 @@ export function Mdx({ code }: MdxProps) {
       components={{
         ...standardComponents,
         ...wrapComponents(documentComponents, ({ key }) => {
-          if (key === 'Tabs') {
-            return [MarginBottom];
-          }
-          if (
-            key === 'DeveloperRecommendation' ||
-            key.includes('Tab') ||
-            key === 'Link' ||
-            key === 'Heading' ||
-            key === 'Icon' ||
-            key === 'Tag' ||
-            key === 'Card' ||
-            key === 'BreadcrumbLink' ||
-            key === 'BreadcrumbEllipsis' ||
-            key === 'BreadcrumbCurrentLink'
-          ) {
+          const regexSkipMb =
+            /^(Tabs|DeveloperRecommendation|Link|Heading|Icon|Tag|Card|BreadcrumbLink|BreadcrumbEllipsis|BreadcrumbCurrentLink|.*Tab.*)$/;
+
+          if (regexSkipMb.test(key) && key !== 'Tabs') {
             return;
           }
 
