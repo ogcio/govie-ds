@@ -1,0 +1,421 @@
+---
+title: ComboBox
+description: ComboBox Component
+status: in-review
+libraries:
+    - platform: "local"
+      status: "not-available"
+    - platform: "global"
+      link: "?path=/docs/navigation-combobox--docs"
+      status: "alpha"
+    - platform: "react"
+      link: "?path=/docs/navigation-combobox--docs"
+      status: "alpha"
+---
+
+# Combo Box
+
+## Variants
+
+### With search
+
+<ComponentContainer>
+  <ComboBox {...{
+    action: '#',
+    id: 'ComboBoxId',
+    dropdownItems: [
+      {
+        label: 'Organisations',
+        options: [
+          {
+            label: 'An Bord Pleanála',
+            value: '15431907-an-bord-pleanala',
+          },
+          {
+            label: 'An Garda Síochána',
+            value: 'an-garda-siochana',
+          },
+          {
+            label: 'Bord Bia (Irish Food Board)',
+            value: '14061907-bord-bia-irish-food-board',
+          },
+          {
+            label: 'Capital Works Management Framework',
+            value: '7c2ea-capital-works-management-framework',
+          },
+          {
+            label: 'Carlow County Council',
+            value: 'carlow-county-council',
+          },
+          {
+            label: 'Cavan County Council',
+            value: 'cavan-county-council',
+          },
+          {
+            label: 'Central Bank of Ireland',
+            value: '10032007-central-bank-of-ireland',
+          },
+        ],
+      },
+      {
+        label: 'Category',
+        options: [
+          {
+            label: 'Agencies',
+            value: 'agencies',
+          },
+          {
+            label: 'Aquaculture licences',
+            value: 'aquaculture_licence',
+          },
+          {
+            label: 'Biographies',
+            value: 'biographies',
+          },
+          {
+            label: 'Campaigns',
+            value: 'campaigns',
+          },
+          {
+            label: 'Circulars',
+            value: 'circulars',
+          },
+          {
+            label: 'Collections',
+            value: 'collections',
+          },
+          {
+            label: 'Consultations',
+            value: 'consultations',
+          },
+          {
+            label: 'Coroner cases',
+            value: 'coroner_cases',
+          },
+          {
+            label: 'Departments',
+            value: 'departments',
+          },
+          {
+            label: 'Forms',
+            value: 'forms',
+          },
+          {
+            label: 'IGEES Publications',
+            value: 'igees_publication',
+          },
+          {
+            label: 'Local authorities',
+            value: 'local_authorities',
+          },
+          {
+            label: 'News',
+            value: 'news',
+          },
+        ],
+      },
+      {
+        label: 'Topic',
+        options: [
+          {
+            label: 'Brexit',
+            value: 'brexit',
+          },
+          {
+            label: 'Business and industry',
+            value: 'business-and-industry',
+          },
+          {
+            label: 'COVID-19',
+            value: 'covid-19',
+          },
+          {
+            label: 'Corporate information',
+            value: 'corporate-information',
+          },
+          {
+            label: 'Crime, justice and law',
+            value: 'crime-justice-and-law',
+          },
+          {
+            label: 'Defence and armed forces',
+            value: 'defence-and-armed-force',
+          },
+          {
+            label: 'Education, training and skills',
+            value: 'education-training-and-skills',
+          },
+          {
+            label: 'News',
+            value: 'news',
+          },
+          {
+            label: 'Organisation information',
+            value: 'organisation_information',
+          },
+          {
+            label: 'Policies',
+            value: 'policies',
+          },
+          {
+            label: 'Policy information',
+            value: 'policy_information',
+          },
+          {
+            label: 'Press releases',
+            value: 'press_releases',
+          },
+        ],
+      },
+    ],
+  }} />
+</ComponentContainer>
+
+<Tabs id="tab1">
+   <TabList>
+    <TabItem value="tab11" checked>Macro</TabItem>
+    <TabItem value="tab12">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+    ```html
+    {{ govieComboBox({
+    "action": "#",
+    "dropdownItems": [{
+    "label": "Organisations",
+    "options": [
+      {
+        "label": 'An Bord Pleanála',
+        "value": '15431907-an-bord-pleanala',
+      },
+      {
+        "label": 'An Garda Síochána',
+        "value": 'an-garda-siochana',
+      },
+      {
+        "label": 'Bord Bia (Irish Food Board)',
+        "value": '14061907-bord-bia-irish-food-board',
+      },
+      {
+        "label": 'Capital Works Management Framework',
+        "value": '7c2ea-capital-works-management-framework',
+      },
+      {
+        "label": 'Carlow County Council',
+        "value": 'carlow-county-council',
+      },
+      {
+        "label": 'Cavan County Council',
+        "value": 'cavan-county-council',
+      },
+      {
+        "label": 'Central Bank of Ireland',
+        "value": '10032007-central-bank-of-ireland',
+      },
+      {
+        "label": 'Central Statistics Office',
+        "value": 'central-statistics-office',
+      },
+      {
+        "label": 'Chief State Solicitor’s Office',
+        "value": 'chief-state-solicitors-office',
+      },
+      {
+        "label": 'Circulars',
+        "value": '28448-circulars',
+      },
+      {
+        "label": 'Civil Justice Review',
+        "value": 'dff8b-civil-justice-review',
+      },
+      {
+        "label": 'Civil Service Employee Assistance Service',
+        "value": '72752-civil-service-employee-assistance-service',
+      },
+      {
+        "label": 'Clare County Council',
+        "value": 'clare-county-council',
+      },
+      {
+        "label": 'Commission on Taxation and Welfare',
+        "value": 'c526e-commission-on-taxation-and-welfare',
+      },
+      {
+        "label": 'Commission on the Defence Forces',
+        "value": '20d04-commission-of-the-defence-forces',
+      }]
+    }, 
+    {
+      "label": "Category",
+      "options": [
+      {
+        "label": 'Agencies',
+        "value": 'agencies',
+      },
+      {
+        "label": 'Aquaculture licences',
+        "value": 'aquaculture_licence',
+      },
+      {
+        "label": 'Biographies',
+        "value": 'biographies',
+      },
+      {
+        "label": 'Campaigns',
+        "value": 'campaigns',
+      },
+      {
+        "label": 'Circulars',
+        "value": 'circulars',
+      },
+      {
+        "label": 'Collections',
+        "value": 'collections',
+      },
+      {
+        "label": 'Consultations',
+        "value": 'consultations',
+      },
+      {
+        "label": 'Coroner cases',
+        "value": 'coroner_cases',
+      }]
+    }, 
+    {
+      "label": "Topic",
+      "options": [
+      {
+        "label": 'Brexit',
+        "value": 'brexit',
+      },
+      {
+        "label": 'Business and industry',
+        "value": 'business-and-industry',
+      },
+      {
+        "label": 'COVID-19',
+        "value": 'covid-19',
+      },
+      {
+        "label": 'Corporate information',
+        "value": 'corporate-information',
+      }]
+    }]
+  }) 
+  }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  <Combobox
+  action="#"
+  id="ComboBoxId"
+  dropdownItems={[
+    {
+      label: "Organisations",
+      options: [
+        {
+          label: "An Bord Pleanála",
+          value: "15431907-an-bord-pleanala",
+        },
+        {
+          label: "An Garda Síochána",
+          value: "an-garda-siochana",
+        },
+        {
+          label: "Bord Bia (Irish Food Board)",
+          value: "14061907-bord-bia-irish-food-board",
+        },
+        {
+          label: "Capital Works Management Framework",
+          value: "7c2ea-capital-works-management-framework",
+        },
+        {
+          label: "Carlow County Council",
+          value: "carlow-county-council",
+        },
+        {
+          label: "Cavan County Council",
+          value: "cavan-county-council",
+        },
+        {
+          label: "Central Bank of Ireland",
+          value: "10032007-central-bank-of-ireland",
+        },
+      ],
+    },
+    {
+      label: "Category",
+      options: [
+        {
+          label: "Agencies",
+          value: "agencies",
+        },
+        {
+          label: "Aquaculture licences",
+          value: "aquaculture_licence",
+        },
+        {
+          label: "IGEES Publications",
+          value: "igees_publication",
+        },
+        {
+          label: "Local authorities",
+          value: "local_authorities",
+        },
+        {
+          label: "News",
+          value: "news",
+        },
+      ],
+    },
+    {
+      label: "Topic",
+      options: [
+        {
+          label: "Brexit",
+          value: "brexit",
+        },
+        {
+          label: "Business and industry",
+          value: "business-and-industry",
+        },
+        {
+          label: "Organisation information",
+          value: "organisation_information",
+        },
+        {
+          label: "Policies",
+          value: "policies",
+        },
+        {
+          label: "Policy information",
+          value: "policy_information",
+        },
+        {
+          label: "Press releases",
+          value: "press_releases",
+        },
+      ],
+    },
+  ]}
+/>;
+  ```
+
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Use this component when you have to do a complex search that requires a long list of options, categories and a search filter.
+
+### When not to use this component
+
+Do not use this component if you have a small amount of options. Use a checkbox group instead.
+
+## Status
+
+<ComponentStatusBlock componentId="combo-box" />

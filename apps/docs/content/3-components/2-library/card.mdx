@@ -1,0 +1,259 @@
+---
+title: Card
+description: Card HTML Component
+status: in-review
+libraries:
+    - platform: "local"
+      status: "not-available"
+    - platform: "global"
+      link: "?path=/docs/components-card--docs"
+      status: "beta"
+    - platform: "react"
+      link: "?path=/docs/components-card--docs"
+      status: "beta"
+---
+
+# Card
+
+## Variants
+
+### Vertical Card
+
+<ComponentContainer>
+  <Card
+    action={{
+      children: 'Button',
+      type: 'button',
+      variant: 'secondary',
+    }}
+    content="This is card."
+    img="https://placeholderjs.com/400x300"
+    inset="body"
+    subTitle="Subheading"
+    tag={{
+      text: 'New',
+      type: 'info',
+    }}
+    title="Card Title"
+    type="vertical"
+  />
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+   <div class="gi-card gi-card-vertical">
+    <div class="gi-card-image">
+      <a href="">
+        <img src="https://placeholderjs.com/400x300" alt="Card Title" />
+      </a>
+    </div>
+    <div class="gi-card-content gi-card-content-inset">
+      <div class="gi-card-header">
+        <div class="gi-card-heading">
+          <div class="gi-card-title !gi-mb-2">Card Title</div>
+          <div class="gi-card-subheading">Subheading</div>
+        </div>
+        <div class="gi-card-tag">
+          <strong class="gi-tag gi-tag-info">New</strong>
+        </div>
+      </div>
+      <div class="gi-card-paragraph">
+        <p class="gi-text-sm">This is card.</p>
+      </div>
+      <div class="gi-card-action">
+        <button
+          data-element="button-container"
+          data-module="gieds-button"
+          data-testid="govieButton-default-secondary-medium-notDisabled"
+          class="gi-btn gi-btn-secondary gi-btn-regular"
+        >
+          Button
+        </button>
+      </div>
+    </div>
+  </div>
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+    {{ govieCard({
+      "type": "vertical",
+      "title": "Card Title",
+      "subTitle": "Subheading",
+      "inset": "body",
+      "img": "https://placeholderjs.com/400x300",
+      "content": "This is card.",
+      "tag": {
+        "text": "New",
+        "type": "info"
+      },
+      "action": {
+        "type": "button",
+        "content": "Button",
+        "variant": "secondary"
+      }
+    }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```html
+    import { Card } from '@govie-ds/react';
+
+    <Card
+      action={{
+        children: 'Button',
+        type: 'button',
+        variant: 'secondary'
+      }}
+      content="This is card."
+      img="https://placeholderjs.com/400x300"
+      inset="body"
+      subTitle="Subheading"
+      tag={{
+        text: 'New',
+        type: 'info'
+      }}
+      title="Card Title"
+      type="vertical"
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
+
+### Horizontal Card
+
+<ComponentContainer>
+  <Card
+    action={{
+      children: 'Button',
+      type: 'button',
+      variant: 'secondary',
+    }}
+    content="This is card."
+    img="https://placeholderjs.com/400x300"
+    inset="body"
+    subTitle="Subheading"
+    tag={{
+      text: 'New',
+      type: 'info',
+    }}
+    title="Card Title"
+    type="horizontal"
+  />
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+    <div class="gi-card gi-card-horizontal">
+      <div class="gi-card-image">
+        <a href="">
+          <img src="https://placeholderjs.com/400x300" alt="Card Title" />
+        </a>
+      </div>
+
+      <div class="gi-card-content gi-card-content-inset">
+        <div class="gi-card-header">
+          <div class="gi-card-heading">
+             <div class="gi-card-heading">
+              <div class="gi-card-title !gi-mb-2">Card Title</div>
+              <div class="gi-card-subheading">Subheading</div>
+            </div>
+          </div>
+          <div class="gi-card-tag">
+            <strong class="gi-tag gi-tag-info">New</strong>
+          </div>
+        </div>
+        <div class="gi-card-paragraph">
+          <p class="gi-text-sm">This is card.</p>
+        </div>
+        <div class="gi-card-action">
+          <button
+            data-element="button-container"
+            data-module="gieds-button"
+            data-testid="govieButton-default-secondary-medium-notDisabled"
+            class="gi-btn gi-btn-secondary gi-btn-regular"
+          >
+            Button
+          </button>
+        </div>
+      </div>
+    </div>
+
+````
+</TabPanel>
+<TabPanel value="tab22">
+```html
+  {{ govieCard({
+    "type": "horizontal",
+    "title": "Card Title",
+    "subTitle": "Subheading",
+    "inset": "body",
+    "img": "https://placeholderjs.com/400x300",
+    "content": "This is card.",
+    "tag": {
+      "text": "New",
+      "type": "info"
+    },
+    "action": {
+      "type": "button",
+      "content": "Button",
+      "variant": "secondary"
+    }
+  }) }}
+````
+
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```html
+    import { Card } from '@govie-ds/react';
+
+    <Card
+      action={{
+        children: 'Button',
+        type: 'button',
+        variant: 'secondary'
+      }}
+      content="This is card."
+      img="https://placeholderjs.com/400x300"
+      inset="body"
+      subTitle="Subheading"
+      tag={{
+        text: 'New',
+        type: 'info'
+      }}
+      title="Card Title"
+      type="horizontal"
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Use the **Card** component to display content and actions on a single topic. Cards are useful for breaking up content into smaller, digestible pieces.
+
+### When not to use this component
+
+Avoid using cards when displaying continuous, long-form content. Consider using a different component like **List** for simpler content without heavy structure.
+
+## Status
+
+<ComponentStatusBlock componentId="card" />
