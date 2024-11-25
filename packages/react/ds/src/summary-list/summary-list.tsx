@@ -1,27 +1,51 @@
-import React from 'react';
-import type { SummaryListProps } from './types.js';
+import { cloneElement, ReactElement } from 'react';
+import type {
+  SummaryListActionProps,
+  SummaryListProps,
+  SummaryListTitleProps,
+  SummaryListValueProps,
+  SummaryListRowProps,
+} from './types.js';
 import { Link } from '../link/link.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 
-const SummaryList = ({ items }: SummaryListProps) => {
+export const SummaryListTitle = ({ children }: SummaryListTitleProps) => (
+  <dt>{children}</dt>
+);
+
+export const SummaryListValue = ({ children }: SummaryListValueProps) => (
+  <dd className="gi-summary-list-value">
+    {Array.isArray(children)
+      ? children.map((label, i) => <p key={`${label}_${i}`}>{label}</p>)
+      : children}
+  </dd>
+);
+
+export const SummaryListAction = ({
+  href,
+  children,
+}: SummaryListActionProps) => (
+  <dd className="gi-summary-list-actions">
+    <Link href={href}>{children}</Link>
+  </dd>
+);
+
+export const SummaryListRow = ({
+  children,
+  withBorder,
+  ...props
+}: SummaryListRowProps) => {
   return (
-    <dl className="gi-summary-list">
-      {items.map(({ key, value, actionText, actionHref }, index) => (
-        <div className="gi-summary-list-row" key={index}>
-          <dt className="gi-summary-list-key">{key}</dt>
-          <dd className="gi-summary-list-value">
-            {Array.isArray(value)
-              ? value.map((val, i) => <p key={`${val}_${i}`}>{val}</p>)
-              : value}
-          </dd>
-          {actionText && actionHref && (
-            <dd className="gi-summary-list-actions">
-              <Link href={actionHref}>{actionText}</Link>
-            </dd>
-          )}
-        </div>
-      ))}
+    <dl data-border={withBorder?.toString()} {...props} role="listitem">
+      {children}
     </dl>
+  );
+};
+
+const SummaryList = ({ children }: SummaryListProps) => {
+  return (
+    <div className="gi-summary-list" role="list">
+      {children}
+    </div>
   );
 };
 

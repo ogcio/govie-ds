@@ -251,21 +251,23 @@ Summary List
   @apply gi-table gi-w-full gi-table-fixed gi-border-collapse gi-mb-8;
 }
 
-.gi-summary-list-row {
-  @apply gi-border-b-gray-400 gi-border-b gi-table-row;
+.gi-summary-list > dl {
+  @apply gi-table-row;
 }
 
-.gi-summary-list-key {
+.gi-summary-list > dl[data-border='true'] {
+  @apply gi-border-b-gray-400 gi-border-b;
+}
+
+.gi-summary-list > dl > dt {
   @apply gi-w-[30%] gi-mb-1 gi-font-bold;
 }
 
-.gi-summary-list-key,
-.gi-summary-list-value,
-.gi-summary-list-actions {
+.gi-summary-list > dl > dd,
+.gi-summary-list > dl > dl {
   @apply gi-pt-2 gi-pr-5 gi-pb-2 gi-m-0 gi-table-cell;
 }
-
-.gi-summary-list-value {
+` .gi-summary-list-value {
   @apply gi-table-cell gi-break-words;
 }
 
@@ -273,9 +275,6 @@ Summary List
   @apply gi-pr-0 gi-w-[20%] gi-text-right;
 }
 
-.gi-summary-list-value > p {
-  @apply gi-mb-2;
-}
 /*
 End of Summary List
 */
