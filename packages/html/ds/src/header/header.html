@@ -38,16 +38,18 @@
         </div>
       </div>
     {% endif %}
-    <div id="HeaderMenuContainer" class="{{ containerClassName }}">
+    <div id="HeaderContainer" class="{{ containerClassName }}">
       <div class="{{ menuContainerClassNames }}">
         {% if props.logo.href %}
           <a
+            alt="{{ props.logo.alt }}"
             aria-label="Go to the home page"
             href="{{ props.logo.href }}"
             class="{{ logoLargeClassNames }}"
             >{{ govieLogo() }}</a
           >
           <a
+            alt="{{ props.logo.alt }}"
             aria-label="Go to the home page"
             href="{{ props.logo.href }}"
             class="{{ logoSmallClassNames }}"

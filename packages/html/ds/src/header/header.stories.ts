@@ -71,6 +71,9 @@ export const Default: Story = {
         label: 'Search',
         icon: 'search',
       },
+      menu: {
+        label: 'Menu',
+      },
       items: [
         {
           href: '/item1',

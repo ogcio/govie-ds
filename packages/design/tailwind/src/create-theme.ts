@@ -30,7 +30,6 @@ export function createTheme(
   const defaultTheme: Partial<CustomThemeConfig> = {
     ...tailwindTheme,
     container: {
-      center: true,
       padding: {
         DEFAULT: '16px', // TODO: use tokens
         md: '24px',

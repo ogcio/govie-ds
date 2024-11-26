@@ -19,6 +19,11 @@ export const headerSchema = zod.object({
             'The application logo, a GOV.IE default one will be used if missing',
         })
         .optional(),
+      alt: zod
+        .string({
+          description: 'The application logo alt text',
+        })
+        .optional(),
       href: zod
         .string({
           description: 'The link applied to the logo',

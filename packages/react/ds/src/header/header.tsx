@@ -11,6 +11,7 @@ export type HeaderProps = {
   logo?: {
     image?: string;
     href?: string;
+    alt?: string;
   };
   tools?: {
     search?: {
@@ -91,7 +92,7 @@ export function Header({
           </div>
         </div>
       )}
-      <div id="HeaderMenuContainer" className={containerClassName}>
+      <div id="HeaderContainer" className={containerClassName}>
         <div className={menuContainerClassNames}>
           {logo?.href ? (
             <>
@@ -101,7 +102,11 @@ export function Header({
                 aria-label="Go to the home page"
               >
                 {logo.image ? (
-                  <img className="gi-object-contain gi-h-12" src={logo.image} />
+                  <img
+                    alt={logo.alt}
+                    className="gi-object-contain gi-h-12"
+                    src={logo.image}
+                  />
                 ) : (
                   <GovieLogo />
                 )}
@@ -112,7 +117,11 @@ export function Header({
                 aria-label="Go to the home page"
               >
                 {logo.image ? (
-                  <img className="gi-object-contain gi-h-10" src={logo.image} />
+                  <img
+                    alt={logo.alt}
+                    className="gi-object-contain gi-h-10"
+                    src={logo.image}
+                  />
                 ) : (
                   <GovieLogoSmall />
                 )}
