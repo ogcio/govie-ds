@@ -48,7 +48,5 @@ export const useBreakpoint = (): { breakpoint: Breakpoint; width: number } => {
     }
   }, []);
 
-  console.log({ breakpoint, width });
-
   return { breakpoint, width };
 };

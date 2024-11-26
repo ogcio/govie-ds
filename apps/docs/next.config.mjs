@@ -15,6 +15,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // TODO: review image optimisation
   },
+  publicRuntimeConfig: {
+    basePath: prefix,
+  },
 };
 
 export default withContentlayer(nextConfig);
