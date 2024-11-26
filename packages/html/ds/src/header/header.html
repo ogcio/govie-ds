@@ -40,25 +40,21 @@
     {% endif %}
     <div id="HeaderContainer" class="{{ containerClassName }}">
       <div class="{{ menuContainerClassNames }}">
-        {% if props.logo.href %}
-          <a
-            alt="{{ props.logo.alt }}"
-            aria-label="Go to the home page"
-            href="{{ props.logo.href }}"
-            class="{{ logoLargeClassNames }}"
-            >{{ govieLogo() }}</a
-          >
-          <a
-            alt="{{ props.logo.alt }}"
-            aria-label="Go to the home page"
-            href="{{ props.logo.href }}"
-            class="{{ logoSmallClassNames }}"
-            >{{ govieLogoSmall() }}</a
-          >
-        {% else %}
-          <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-          <span class="{{ logoSmallClassNames }}">{{ govieLogoSmall() }}</span>
-        {% endif %}
+        <div class="gi-header-logo">
+          {% if props.logo.href %}
+            <a href="{logo.href}" aria-label="Go to the home page">
+              <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
+              <span class="{{ logoSmallClassNames }}"
+                >{{ govieLogoSmall() }}</span
+              >
+            </a>
+          {% else %}
+            <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
+            <span class="{{ logoSmallClassNames }}"
+              >{{ govieLogoSmall() }}</span
+            >
+          {% endif %}
+        </div>
 
         <div class="{{ appTitleClassNames }}">
           {% if props.title %}{{ props.title }}{% endif %}
