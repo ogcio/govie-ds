@@ -17,9 +17,9 @@
 {% from 'modal/modal.html' import govieModal %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 {% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
-{% from 'list/list.html' import govieList %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
+{% from 'toast/toast.html' import govieToast %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -195,6 +195,22 @@
 
   {{ govieModal(modalProps) }}
 
+  <h2>Toast with Trigger</h2>
+
+  {{ govieToast({
+    "title": "Toast Triggered",
+    "description": "This is some content",
+    "trigger": {
+      "content": "Trigger Toast"
+    }
+  }) }}
+
+  {{ govieToast({
+    "title": "Success",
+    "description": "This is a success toast",
+    "variant": "success"
+  }) }}
+
   <h2>Icon Button</h2>
 
   {{govieIconButton({
@@ -214,8 +230,6 @@
   <h2>Footer (Global)</h2>
   {{ govieFooter(footerProps) }}
 
-  <h2>List</h2>
-  {{ govieList(listProps) }}
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>
 

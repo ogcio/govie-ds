@@ -7,6 +7,7 @@ import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
+import { Toast } from '../toast/toast';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -23,6 +24,7 @@ const componentRegistry = {
   Tabs,
   ComboBox,
   Alert,
+  Toast,
   // TODO: additional component classes
 } as const;
 

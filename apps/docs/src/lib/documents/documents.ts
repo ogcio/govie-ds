@@ -4,7 +4,7 @@ import { allDocs } from 'contentlayer/generated';
 
 export function getAll() {
   if (!config.showDrafts()) {
-    return allDocs.filter((document) => !document.draft);
+    return allDocs.filter((document) => document.status !== 'draft');
   }
 
   return allDocs;
@@ -13,7 +13,7 @@ export function getAll() {
 export function getById({ id }: { id: string }) {
   const document = allDocs.find((document) => document.id === id);
 
-  if (!config.showDrafts() && document?.draft) {
+  if (!config.showDrafts() && document?.status === 'draft') {
     return;
   }
 
@@ -23,7 +23,7 @@ export function getById({ id }: { id: string }) {
 export function getBySlug({ slug }: { slug: string[] }) {
   const document = allDocs.find((document) => document.slug === slug.join('/'));
 
-  if (!config.showDrafts() && document?.draft) {
+  if (!config.showDrafts() && document?.status === 'draft') {
     return;
   }
 
@@ -42,16 +42,17 @@ export function getMeta({ slug }: { slug: string[] }): MetaDocument {
     return {
       title: getTitle('Page not found'),
       description: 'The requested URL was not found',
+      hideToc: true,
     };
   }
 
-  const { description, draft, status, title } = document;
+  const { description, status, title, hideToc } = document;
   const titleWithSuffix = getTitle(title);
 
   return {
     title: titleWithSuffix,
     description,
-    draft,
     status,
+    hideToc,
   };
 }

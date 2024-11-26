@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/docs",
-  "version": "0.31.0",
+  "version": "0.32.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -24,11 +24,11 @@
   "prettier": "@govie-ds/prettier-config",
   "dependencies": {
     "@govie-ds/deepmerge": "workspace:*",
+    "@govie-ds/react": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/theme-hse": "workspace:*",
     "@govie-ds/tokens": "workspace:*",
-    "@govie-ds/react": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.1",
     "@tailwindcss/typography": "^0.5.13",
     "camelcase": "^8.0.0",
@@ -67,6 +67,7 @@
     "eslint": "^9.8.0",
     "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8.4.40",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "rehype-slug": "^6.0.0"
   }
 }

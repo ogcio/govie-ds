@@ -103,13 +103,13 @@ describe('getDocumentHierarchy', () => {
   it('should return hierarchy for multiple nested paths with different parents', () => {
     expect(
       getDocumentHierarchy([
-        '1-get-started/0-index',
+        '1-get-started/index',
         '1-get-started/1-designers',
         '1-get-started/2-developers',
-        '2-foundations/0-index',
-        '3-components/0-index',
-        '4-patterns/0-index',
-        '5-resources/0-index',
+        '2-foundations/index',
+        '3-components/index',
+        '4-patterns/index',
+        '5-resources/index',
         '2-foundations/2-content/1-tone',
         '2-foundations/1-styles/1-design-tokens',
         '2-foundations/1-styles/2-colors',
@@ -126,7 +126,7 @@ describe('getDocumentHierarchy', () => {
           slug: 'get-started',
           children: [
             {
-              id: '1-get-started/0-index',
+              id: '1-get-started/index',
               order: 0,
               slug: 'get-started',
               children: [],
@@ -151,7 +151,7 @@ describe('getDocumentHierarchy', () => {
           slug: 'foundations',
           children: [
             {
-              id: '2-foundations/0-index',
+              id: '2-foundations/index',
               order: 0,
               slug: 'foundations',
               children: [],
@@ -202,7 +202,7 @@ describe('getDocumentHierarchy', () => {
           slug: 'components',
           children: [
             {
-              id: '3-components/0-index',
+              id: '3-components/index',
               order: 0,
               slug: 'components',
               children: [],
@@ -215,7 +215,7 @@ describe('getDocumentHierarchy', () => {
           slug: 'patterns',
           children: [
             {
-              id: '4-patterns/0-index',
+              id: '4-patterns/index',
               order: 0,
               slug: 'patterns',
               children: [],
@@ -228,7 +228,7 @@ describe('getDocumentHierarchy', () => {
           slug: 'resources',
           children: [
             {
-              id: '5-resources/0-index',
+              id: '5-resources/index',
               order: 0,
               slug: 'resources',
               children: [],
@@ -237,11 +237,5 @@ describe('getDocumentHierarchy', () => {
         },
       ],
     });
-  });
-
-  it('should throw for missing order', () => {
-    expect(() => getDocumentHierarchy(['foo/2-bar'])).toThrowError(
-      `Invalid segment 'foo'.`,
-    );
   });
 });

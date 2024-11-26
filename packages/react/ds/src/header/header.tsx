@@ -38,6 +38,7 @@ export type HeaderProps = {
     href: string;
     label: string;
   }[];
+  fullWidth?: boolean;
 };
 
 export function Header({
@@ -46,9 +47,13 @@ export function Header({
   logo,
   languages,
   navLinks,
+  fullWidth = false,
 }: HeaderProps) {
   const hasDivider = tools?.items || tools?.search;
 
+  const containerClassName = fullWidth
+    ? 'gi-layout-container-full-width'
+    : 'gi-layout-container';
   const headerClassNames = 'gi-header';
   const languageBarClassNames = 'gi-header-language-bar';
   const languageItemClassNames = 'gi-header-language-item';
@@ -65,26 +70,28 @@ export function Header({
     <header id="GovieHeader" className={headerClassNames}>
       {languages && (
         <div className={languageBarClassNames}>
-          <ul>
-            {languages.map((link, index) => (
-              <li key={index}>
-                {link.href ? (
-                  <a
-                    data-testid={`language-link-desktop-${index}`}
-                    href={link.href}
-                    className={languageItemClassNames}
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <span className={languageItemClassNames}>{link.label}</span>
-                )}
-              </li>
-            ))}
-          </ul>
+          <div className={containerClassName}>
+            <ul>
+              {languages.map((link, index) => (
+                <li key={index}>
+                  {link.href ? (
+                    <a
+                      data-testid={`language-link-desktop-${index}`}
+                      href={link.href}
+                      className={languageItemClassNames}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <span className={languageItemClassNames}>{link.label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
-      <div id="HeaderMenuContainer" className="gi-header-container">
+      <div id="HeaderMenuContainer" className={containerClassName}>
         <div className={menuContainerClassNames}>
           {logo?.href ? (
             <>

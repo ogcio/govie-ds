@@ -1,0 +1,172 @@
+---
+title: Paragraph
+description: Paragraph HTML Component
+status: in-review
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/typography-paragraph--docs'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/typography-paragraph--docs'
+    status: 'stable'
+  - platform: 'react'
+    link: '?path=/docs/typography-paragraph--docs'
+    status: 'stable'
+---
+
+# Paragraph
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Paragraph>This is a paragraph</Paragraph>
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">        
+    ```html
+    <p class="gi-paragraph-md">This is a paragraph</p>
+
+    <span class="gi-span-md">This is an inline paragraph</span>
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">        
+    ```html
+    {{ govieParagraph({"content": "This is a paragraph"}) }}
+
+    {{ govieParagraph({"content": "This is an inline paragraph", "as":"span"}) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```html
+    import { Paragraph } from '@govie-ds/react';
+
+    <Paragraph>This is a paragraph</Paragraph>
+
+    <Paragraph as="span">This is an inline paragraph</Paragraph>
+    ```
+  </TabPanel>
+</Tabs>
+
+### Small text
+
+<ComponentContainer>
+  <Paragraph size="sm">This is a paragraph</Paragraph>
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">        
+    ```html
+    <p class="gi-paragraph-sm">This is a paragraph</p>
+
+    <span class="gi-span-sm">This is an inline paragraph</span>
+    ```
+  </TabPanel>
+  <TabPanel value="tab22">        
+    ```html
+    {{ govieParagraph({
+      "content": "This is a paragraph", 
+      "size": "sm"
+      })
+    }}
+
+    {{ govieParagraph({
+      "content": "This is an inline paragraph", 
+      "size": "sm",
+      "as": "span"
+      })
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```html
+    import { Paragraph } from '@govie-ds/react';
+
+    <Paragraph size="sm">This is a paragraph</Paragraph>
+
+    <Paragraph size="sm" as="span">This is an inline paragraph</Paragraph>
+    ```
+  </TabPanel>
+</Tabs>
+
+### Large text
+
+<ComponentContainer>
+  <Paragraph size="lg">This is a paragraph</Paragraph>
+</ComponentContainer>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">Macro</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">        
+    ```html
+    <p class="gi-paragraph-lg">This is a paragraph</p>
+
+    <span class="gi-span-lg">This is an inline paragraph</span>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">        
+    ```html
+    {{ govieParagraph({
+      "content": "This is a paragraph", 
+      "size": "lg"
+      })
+    }}
+
+    {{ govieParagraph({
+      "content": "This is an inline paragraph", 
+      "size": "lg",
+      "as": "span"
+      })
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```html
+    import { Paragraph } from '@govie-ds/react';
+
+    <Paragraph size="lg">This is a paragraph</Paragraph>
+
+    <Paragraph size="lg" as="span">This is an inline paragraph</Paragraph>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Use the Paragraph component when you need to display text content with consistent styling across your web application.
+It is designed to handle various text elements, such as paragraphs (`<p>`) or inline text (`<span>`),
+with responsive typography that adjusts based on the screen size (`xs`, `md`, `xl`).
+This component is ideal for creating readable, well-spaced text blocks that adhere to your design system guidelines, ensuring a cohesive look and feel.
+Additionally, it allows for quick customisation of text size through the size property (`lg`, `md`, `sm`), making it versatile for different use cases, such as headings, subheadings, or standard text content.
+
+### When not to use this component
+
+Avoid using the Paragraph component when you need highly customised text styles or content structures that go beyond the component's capabilities.
+This component is not suitable for scenarios where advanced typography or layout features are required, such as complex text formatting, animations, or interactions.
+Additionally, if you need to apply specific styles not covered by the predefined class options or need more flexibility in structuring the text, consider using custom HTML and CSS instead.
+This component is also not intended for use in non-responsive or print-oriented designs where the predefined responsive classes may not apply effectively.
+
+## Status
+
+<ComponentStatusBlock componentId="paragraph" />
+
