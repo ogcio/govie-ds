@@ -16,13 +16,13 @@ A component is a modular, reusable piece of a user interface that can be indepen
 
 The design system provides a set of components detailed on the [component status](/components/) page. The components are under design review and detailed component guidelines will be provided on this documentation site as each component is reviewed.
 
-Component implementations are provided that includes vanilla [HTML components](/components/html/) that are **local** and stable and an alpha library of [React components](/components/react/) currently under development.
+Component implementations are provided that includes vanilla [HTML components](/components/get-started/html/) that are **local** and stable and an alpha library of [React components](/components/get-started/react/) currently under development.
 
 </Faq>
 
 <Faq question="What are local components?">
 
-The existing [HTML components](/components/html/) are described as **local** because they are tailored for usage within a gov.ie context. The components are styled for specific use cases, so may not be suitable for your needs.
+The existing [HTML components](/components/get-started/html/) are described as **local** because they are tailored for usage within a gov.ie context. The components are styled for specific use cases, so may not be suitable for your needs.
 The design system team is in the process of **globalising** the components.
 
 </Faq>
@@ -44,7 +44,7 @@ In particular, global components:
 
 <Faq question="How will the local components be globalised?">
 
-The existing [HTML component](/components/html/) implementations are undergoing the following globalisation process, converting a single HTML component at a time from local to global based on priority:
+The existing [HTML component](/components/get-started/html/) implementations are undergoing the following globalisation process, converting a single HTML component at a time from local to global based on priority:
 
 - Review design of the component
 - Define semantic design tokens
@@ -118,7 +118,7 @@ This provides a piecemeal migration path from a local component to the equivalen
 
 <Faq question="Why are the HTML components not Web Components?">
 
-The [HTML components](/components/html/) are **data-driven** components (also known as **attribute-driven** components).
+The [HTML components](/components/get-started/html/) are **data-driven** components (also known as **attribute-driven** components).
 This means that they use standard HTML tags with `data-` attributes. Any behaviour is attached to the component via JavaScript running on the client by querying the DOM for the appropriate `data-` attribute.
 
 [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) are a suite of technologies that provide a standard component model for the web, with wide browser support. Users can define new HTML tags that encapsulate appearance and behaviour.

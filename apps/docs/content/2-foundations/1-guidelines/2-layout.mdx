@@ -18,7 +18,9 @@ Never make assumptions about what devices people are using. Design for different
 
 ### Two-thirds
 
-<TwoThirds>This is a test content</TwoThirds>
+<ComponentContainer>
+  <TwoThirds>This is a test content</TwoThirds>
+</ComponentContainer>
 
 ```html
 <div className="gi-layout-container-3-column">
@@ -28,13 +30,15 @@ Never make assumptions about what devices people are using. Design for different
 
 ### Two-thirds and one-third
 
-<TwoThirdsOneThird 
+<ComponentContainer>
+  <TwoThirdsOneThird 
     left={
         <>This is a test content</>
     }
     right={
         <>This is a side content</>
     } />
+</ComponentContainer>
 
 ```html
 <div className="gi-layout-container-3-column">
