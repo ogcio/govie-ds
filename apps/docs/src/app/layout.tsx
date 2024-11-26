@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 const getLink = (path: string) =>
-  `${publicRuntimeConfig.basePath || ''}${path}`;
+  `${publicRuntimeConfig?.basePath || ''}${path}`;
 
 export default function RootLayout({
   children,
