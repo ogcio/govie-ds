@@ -46,3 +46,4 @@ export * from './stack/stack.js';
 export { Alert } from './alert/alert.js';
 export * from './toast/toast.js';
 export * from './pagination/pagination.js';
+export * from './summary-list/summary-list.js';

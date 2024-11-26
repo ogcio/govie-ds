@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SummaryList, {
+import {
+  SummaryList,
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,

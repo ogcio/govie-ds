@@ -32,19 +32,19 @@ export const SummaryListRow = ({
   ...props
 }: SummaryListRowProps) => {
   return (
-    <dl data-border={withBorder?.toString()} role="listitem" {...props}>
+    <dl data-border={withBorder?.toString()} {...props}>
       <dt>{label}</dt>
       {children}
     </dl>
   );
 };
 
-const SummaryList = ({ children }: SummaryListProps) => {
+export const SummaryList = ({ children }: SummaryListProps) => {
   return (
-    <div className="gi-summary-list" role="list" aria-label="Summary list">
+    <div className="gi-summary-list" aria-label="Summary list">
       {children}
     </div>
   );
 };
 
-export default SummaryList;
+SummaryListRow.displayName = 'SummaryList';
