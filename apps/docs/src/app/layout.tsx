@@ -2,8 +2,11 @@ import { Footer, Header } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
+import getConfig from 'next/config';
 import { Lato } from 'next/font/google';
 import './globals.css';
+
+const { publicRuntimeConfig } = getConfig();
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -18,68 +21,71 @@ export const metadata: Metadata = {
   description: 'Design System',
 };
 
-const headerProps = {
-  fullWidth: true,
-  title: 'Design System',
-  logo: {
-    href: '/',
-  },
-  navLinks: [
-    {
-      href: '/get-started',
-      label: 'Get Started',
-    },
-    {
-      href: '/foundations',
-      label: 'Foundations',
-    },
-    {
-      href: '/components',
-      label: 'Components',
-    },
-    {
-      href: '/patterns',
-      label: 'Patterns',
-    },
-    {
-      href: '/resources',
-      label: 'Resources',
-    },
-  ],
-};
-
-const footerLinks = [
-  {
-    label: 'Help',
-    href: '/help/',
-  },
-  {
-    label: 'Privacy Policy',
-    href: '/privacy-policy/',
-  },
-  {
-    label: 'Cookies Policy',
-    href: '/cookies-policy/',
-  },
-  {
-    label: 'Accessibility statement',
-    href: '/accessibility-statement/',
-  },
-  {
-    label: 'Contact',
-    href: '/contact/',
-  },
-  {
-    label: 'Government digital service',
-    href: '/government-digital-service/',
-  },
-];
+const getLink = (path: string) =>
+  `${publicRuntimeConfig.basePath || ''}${path}`;
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerProps = {
+    fullWidth: true,
+    title: 'Design System',
+    logo: {
+      href: getLink('/'),
+    },
+    navLinks: [
+      {
+        href: getLink('/get-started'),
+        label: 'Get Started',
+      },
+      {
+        href: getLink('/foundations'),
+        label: 'Foundations',
+      },
+      {
+        href: getLink('/components'),
+        label: 'Components',
+      },
+      {
+        href: getLink('/patterns'),
+        label: 'Patterns',
+      },
+      {
+        href: getLink('/resources'),
+        label: 'Resources',
+      },
+    ],
+  };
+
+  const footerLinks = [
+    {
+      label: 'Help',
+      href: getLink('/help'),
+    },
+    {
+      label: 'Privacy Policy',
+      href: getLink('/privacy-policy'),
+    },
+    {
+      label: 'Cookies Policy',
+      href: getLink('/cookies-policy'),
+    },
+    {
+      label: 'Accessibility statement',
+      href: getLink('/accessibility-statement'),
+    },
+    {
+      label: 'Contact',
+      href: getLink('/contact'),
+    },
+    {
+      label: 'Government digital service',
+      href: getLink('/government-digital-service'),
+    },
+  ];
+
   return (
     <html
       lang="en"
