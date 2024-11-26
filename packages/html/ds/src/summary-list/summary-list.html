@@ -1,0 +1,38 @@
+{% from 'link/link.html' import govieLink %}
+
+{% macro govieSummaryList(props) %}
+  <div class="gi-summary-list" aria-label="Summary list">
+    {% for row in props.rows %}
+      {% set label = row.label %}
+      {% set value = row.value %}
+      {% set action = row.action %}
+
+      <dl
+        class="gi-summary-list-row"
+        {% if row.withBorder %}data-border="true"{% endif %}
+      >
+        <dt>{{ label }}</dt>
+
+        {% if value is string %}
+          <dd class="gi-summary-list-value">{{ value }}</dd>
+        {% elif value is iterable %}
+          <dd class="gi-summary-list-value">
+            {{ value | join('<br />') | safe }}
+          </dd>
+        {% endif %}
+
+        {% if action %}
+          <dd class="gi-summary-list-actions">
+            {{
+              govieLink({
+                "href": action.href,
+                "label": action.label,
+                "ariaLabel": "Link action: " ~ action.label
+              })
+            }}
+          </dd>
+        {% endif %}
+      </dl>
+    {% endfor %}
+  </div>
+{% endmacro %}

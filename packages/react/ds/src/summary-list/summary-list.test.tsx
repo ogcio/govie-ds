@@ -14,7 +14,7 @@ describe('govieSummaryList', () => {
     render(<SummaryList {...props} />);
 
   it('should render SummaryList and its rows correctly', () => {
-    const screen = renderSummaryList({
+    const { getByText } = renderSummaryList({
       children: [
         <SummaryListRow label="Name" key="1">
           <SummaryListValue>John Smith</SummaryListValue>
@@ -29,17 +29,17 @@ describe('govieSummaryList', () => {
       ],
     });
 
-    expect(screen.getByText('Name')).toBeInTheDocument();
-    expect(screen.getByText('John Smith')).toBeInTheDocument();
-    expect(screen.getByText('Change name')).toBeInTheDocument();
+    expect(getByText('Name')).toBeInTheDocument();
+    expect(getByText('John Smith')).toBeInTheDocument();
+    expect(getByText('Change name')).toBeInTheDocument();
 
-    expect(screen.getByText('Date of Birth')).toBeInTheDocument();
-    expect(screen.getByText('8 November 1982')).toBeInTheDocument();
-    expect(screen.getByText('Change date of birth')).toBeInTheDocument();
+    expect(getByText('Date of Birth')).toBeInTheDocument();
+    expect(getByText('8 November 1982')).toBeInTheDocument();
+    expect(getByText('Change date of birth')).toBeInTheDocument();
   });
 
   it('should render correctly a row without an action', () => {
-    const screen = renderSummaryList({
+    const { getByText } = renderSummaryList({
       children: [
         <SummaryListRow label="Address" key="1">
           <SummaryListValue>
@@ -49,14 +49,14 @@ describe('govieSummaryList', () => {
       ],
     });
 
-    expect(screen.getByText('Address')).toBeInTheDocument();
-    expect(screen.getByText('72 Guild Street')).toBeInTheDocument();
-    expect(screen.getByText('London')).toBeInTheDocument();
-    expect(screen.getByText('SE23 6FH')).toBeInTheDocument();
+    expect(getByText('Address')).toBeInTheDocument();
+    expect(getByText('72 Guild Street', { exact: false })).toBeInTheDocument();
+    expect(getByText('London', { exact: false })).toBeInTheDocument();
+    expect(getByText('SE23 6FH', { exact: false })).toBeInTheDocument();
   });
 
   it('should render correctly with `withBorder` prop', () => {
-    const screen = renderSummaryList({
+    const { getByText } = renderSummaryList({
       children: [
         <SummaryListRow label="Contact Details" withBorder key="1">
           <SummaryListValue>
@@ -66,12 +66,12 @@ describe('govieSummaryList', () => {
       ],
     });
 
-    const row = screen.getByText('Contact Details').closest('dl');
+    const row = getByText('Contact Details').closest('dl');
     expect(row).toHaveAttribute('data-border', 'true');
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderSummaryList({
+    const { axe } = renderSummaryList({
       children: [
         <SummaryListRow label="Name" key="1">
           <SummaryListValue>John Smith</SummaryListValue>
@@ -80,6 +80,6 @@ describe('govieSummaryList', () => {
       ],
     });
 
-    await screen.axe();
+    await axe();
   });
 });
