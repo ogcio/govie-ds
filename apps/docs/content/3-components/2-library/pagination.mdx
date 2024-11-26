@@ -44,22 +44,24 @@ libraries:
    data-total-pages="10"
    data-testid="govie-pagination"
    data-module="gieds-pagination"
-  >
+   >
    <a
       href="#"
       target="_self"
       data-testid="govie-pagination-prev-btn"
       data-element="button-container"
       data-module="gieds-button"
-      class="gi-btn gi-btn-flat-dark gi-btn-large"
+      class="gi-pagination-prev-btn gi-btn gi-btn-flat-dark gi-btn-large"
    >
-      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span>
-      <span class="sm:gi-block gi-hidden">Previous</span>
+      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span> <span class='sm:gi-block gi-hidden'>Previous</span>
    </a>
    <div class="xs:gi-hidden gi-block gi-text-md">
-      <span class="gi-font-bold">Page 5</span> of 10
+   <span class="gi-font-bold">Page 5</span> of 10
    </div>
-   <div class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden">
+
+   <div
+      class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden"
+   >
       <a
          href="#"
          target="_self"
@@ -70,7 +72,14 @@ libraries:
       >
          1
       </a>
-      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+
+      <span
+         data-testid="govie-icon"
+         class="material-symbols-outlined gi-gray-700"
+      >
+         more_horiz
+      </span>
+
       <a
          href="#"
          target="_self"
@@ -81,7 +90,14 @@ libraries:
       >
          5
       </a>
-      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+
+      <span
+         data-testid="govie-icon"
+         class="material-symbols-outlined gi-gray-700"
+      >
+         more_horiz
+      </span>
+
       <a
          href="#"
          target="_self"
@@ -92,7 +108,9 @@ libraries:
       >
          10
       </a>
+
    </div>
+
    <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
       <a
          href="#"
@@ -104,7 +122,14 @@ libraries:
       >
          1
       </a>
-      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+
+      <span
+         data-testid="govie-icon"
+         class="material-symbols-outlined gi-gray-700"
+      >
+         more_horiz
+      </span>
+
       <a
          href="#"
          target="_self"
@@ -115,6 +140,7 @@ libraries:
       >
          3
       </a>
+
       <a
          href="#"
          target="_self"
@@ -125,6 +151,7 @@ libraries:
       >
          4
       </a>
+
       <a
          href="#"
          target="_self"
@@ -135,6 +162,7 @@ libraries:
       >
          5
       </a>
+
       <a
          href="#"
          target="_self"
@@ -145,6 +173,7 @@ libraries:
       >
          6
       </a>
+
       <a
          href="#"
          target="_self"
@@ -155,7 +184,14 @@ libraries:
       >
          7
       </a>
-      <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
+
+      <span
+         data-testid="govie-icon"
+         class="material-symbols-outlined gi-gray-700"
+      >
+         more_horiz
+      </span>
+
       <a
          href="#"
          target="_self"
@@ -166,19 +202,20 @@ libraries:
       >
          10
       </a>
+
    </div>
+
    <a
       href="#"
       target="_self"
       data-testid="govie-pagination-next-btn"
       data-element="button-container"
       data-module="gieds-button"
-      class="gi-btn gi-btn-flat-dark gi-btn-large"
+      class="gi-pagination-next-btn gi-btn gi-btn-flat-dark gi-btn-large"
    >
-      <span class="sm:gi-block gi-hidden">Next</span>
-      <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
+      <span class='sm:gi-block gi-hidden'>Next</span> <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
    </a>
-  </div>
+   </div>
   ```
   </TabPanel>
   <TabPanel value="tab13">
