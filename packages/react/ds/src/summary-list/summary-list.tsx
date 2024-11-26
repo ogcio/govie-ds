@@ -1,21 +1,15 @@
-import { cloneElement, ReactElement } from 'react';
+import { Link } from '../link/link.js';
 import type {
   SummaryListActionProps,
   SummaryListProps,
-  SummaryListTitleProps,
   SummaryListValueProps,
   SummaryListRowProps,
 } from './types.js';
-import { Link } from '../link/link.js';
-
-export const SummaryListTitle = ({ children }: SummaryListTitleProps) => (
-  <dt>{children}</dt>
-);
 
 export const SummaryListValue = ({ children }: SummaryListValueProps) => (
   <dd className="gi-summary-list-value">
     {Array.isArray(children)
-      ? children.map((label, i) => <p key={`${label}_${i}`}>{label}</p>)
+      ? children.map((label, index) => <p key={`${label}_${index}`}>{label}</p>)
       : children}
   </dd>
 );
@@ -25,17 +19,21 @@ export const SummaryListAction = ({
   children,
 }: SummaryListActionProps) => (
   <dd className="gi-summary-list-actions">
-    <Link href={href}>{children}</Link>
+    <Link href={href} aria-label={`Link action: ${children}`}>
+      {children}
+    </Link>
   </dd>
 );
 
 export const SummaryListRow = ({
   children,
+  label,
   withBorder,
   ...props
 }: SummaryListRowProps) => {
   return (
-    <dl data-border={withBorder?.toString()} {...props} role="listitem">
+    <dl data-border={withBorder?.toString()} role="listitem" {...props}>
+      <dt>{label}</dt>
       {children}
     </dl>
   );
@@ -43,7 +41,7 @@ export const SummaryListRow = ({
 
 const SummaryList = ({ children }: SummaryListProps) => {
   return (
-    <div className="gi-summary-list" role="list">
+    <div className="gi-summary-list" role="list" aria-label="Summary list">
       {children}
     </div>
   );

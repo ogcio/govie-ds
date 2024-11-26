@@ -248,11 +248,12 @@ Summary List
 */
 
 .gi-summary-list {
-  @apply gi-table gi-w-full gi-table-fixed gi-border-collapse gi-mb-8;
+  @apply gi-text-sm md:gi-w-full md:gi-table-fixed gi-antialiased
+  md:gi-table md:gi-border-collapse;
 }
 
 .gi-summary-list > dl {
-  @apply gi-table-row;
+  @apply gi-w-full gi-mb-7 gi-mb-4 md:gi-table-row md:gi-text-md md:gi-mb-1;
 }
 
 .gi-summary-list > dl[data-border='true'] {
@@ -260,19 +261,20 @@ Summary List
 }
 
 .gi-summary-list > dl > dt {
-  @apply gi-w-[30%] gi-mb-1 gi-font-bold;
+  @apply gi-mb-1 gi-font-bold;
 }
 
 .gi-summary-list > dl > dd,
 .gi-summary-list > dl > dl {
-  @apply gi-pt-2 gi-pr-5 gi-pb-2 gi-m-0 gi-table-cell;
+  @apply gi-block gi-mb-4 md:gi-pt-2 md:gi-pb-2 md:gi-m-0  md:gi-table-cell;
 }
-` .gi-summary-list-value {
-  @apply gi-table-cell gi-break-words;
+
+.gi-summary-list-value {
+  @apply md:gi-break-words;
 }
 
 .gi-summary-list-actions {
-  @apply gi-pr-0 gi-w-[20%] gi-text-right;
+  @apply md:gi-text-right;
 }
 
 /*
