@@ -18,7 +18,8 @@
         "href": "#",
         "target": "_self",
         "testId": "govie-pagination-prev-btn",
-        "data-current-page": props.currentPage - 1
+        "data-current-page": props.currentPage - 1,
+        "className": "gi-pagination-prev-btn"
       })
     }}
 
@@ -41,7 +42,8 @@
         "target": "_self",
         "disabled": props.currentPage == props.totalPages,
         "testId": "govie-pagination-next-btn",
-        "data-current-page": props.currentPage + 1
+        "data-current-page": props.currentPage + 1,
+        "className": "gi-pagination-next-btn"
       })
     }}
   </div>

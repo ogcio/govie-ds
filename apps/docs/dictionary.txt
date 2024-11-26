@@ -123,3 +123,7 @@ fixedHeight
 groupId
 hideToc
 Dismissible
+gi-pagination-next-btn
+gi-btn
+gi-btn-flat-dark
+gi-btn-large

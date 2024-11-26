@@ -6,6 +6,10 @@
   {% set size = props.size or 'medium' %}
   {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
   {% set testId = props.testId or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
+  {% set commonClasses = getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim %}
+  {% set sizeClasses = getSizeClass(props.size) | trim %}
+  {% set disabledClasses = isButtonDisabled(props.disabled, props.variant, props.appearance) | trim %}
+  {% set allClasses = (props.className or '') ~ ' ' ~ 'gi-btn ' ~ commonClasses ~ ' ' ~ sizeClasses ~ ' ' ~ disabledClasses %}
 
   {% if props.href %}
     <a
@@ -19,7 +23,7 @@
       data-testid="{{ testId }}"
       data-element="button-container"
       data-module="gieds-button"
-      class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
+      class="{{ allClasses | trim }}"
     >
       {{ props.content | safe | trim }}
     </a>
@@ -32,7 +36,7 @@
       data-testid="{{ testId }}"
       data-element="button-container"
       data-module="gieds-button"
-      class="gi-btn {{ getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim }} {{ getSizeClass(props.size) | trim }} {{ isButtonDisabled(props.disabled, props.variant, props.appearance) | trim }}"
+      class="{{ allClasses | trim }}"
     >
       {{ props.content | safe | trim }}
     </button>
