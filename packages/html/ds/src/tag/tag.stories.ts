@@ -3,7 +3,9 @@ import { renderComponent } from '../storybook/storybook';
 import html from './tag.html?raw';
 import { TagProps, TagType } from './tag.schema';
 
-const macro = { name: 'govieTag', html };
+const path = import.meta.url.split('/tag')[0];
+
+const macro = { name: 'govieTag', html, path };
 
 const Tag = renderComponent<TagProps>(macro);
 
