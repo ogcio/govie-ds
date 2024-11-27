@@ -9,7 +9,9 @@ import {
   WhitespaceEnum,
 } from './paragraph.schema';
 
-const macro = { name: 'govieParagraph', html };
+const path = import.meta.url.split('/paragraph')[0];
+
+const macro = { name: 'govieParagraph', html, path };
 
 const Paragraph = renderComponent<ParagraphProps>(macro);
 

@@ -2,38 +2,26 @@
 
 .gi-heading-xl {
   font: theme('typography.DEFAULT.css.h1.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-lg {
   font: theme('typography.DEFAULT.css.h2.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-md {
   font: theme('typography.DEFAULT.css.h3.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-sm {
   font: theme('typography.DEFAULT.css.h4.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-xs {
   font: theme('typography.DEFAULT.css.h5.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-2xs {
   font: theme('typography.DEFAULT.css.h6.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 /* End Paragraph */
@@ -44,8 +32,7 @@
 .gi-paragraph-md,
 .gi-paragraph-xs {
   font: theme('typography.DEFAULT.css.p.font');
-  margin-bottom: 2em;
-  @apply gi-mt-0 gi-max-w-prose;
+  @apply gi-max-w-prose;
 }
 
 .gi-span-lg,
