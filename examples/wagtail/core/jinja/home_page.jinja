@@ -21,6 +21,7 @@
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
 {% from 'card/card.html' import govieCard %}
+{% from 'pagination/pagination.html' import goviePagination %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -38,9 +39,17 @@
 </head>
 
 <body>
-  {{ govieHeader(HeaderProps) }}
-  <div class="gi-container">
-    {{ govieHeading({ 'size': 'lg', 'as': 'h1', 'text': 'Search Results' }) }}
+    <div class="gi-bg-gray-50">
+      <div class="gi-container">
+        {{ govieLink({'href': '#', 'label': 'Home'}) }}
+        <div class="">
+          {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
+          {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="gi-container">
     <div class="grid grid-cols-4 gap-4">
       <div>
         {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
