@@ -13,7 +13,9 @@
       >
         <dt>{{ label }}</dt>
 
-        <dd class="gi-summary-list-value">{{ value | safe }}</dd>
+        {% if value %}
+          <dd class="gi-summary-list-value">{{ value | safe }}</dd>
+        {% endif %}
 
         {% if action %}
           <dd class="gi-summary-list-actions">
