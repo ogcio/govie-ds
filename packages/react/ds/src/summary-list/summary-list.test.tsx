@@ -43,7 +43,11 @@ describe('govieSummaryList', () => {
       children: [
         <SummaryListRow label="Address" key="1">
           <SummaryListValue>
-            {['72 Guild Street', 'London', 'SE23 6FH']}
+            72 Guild Street
+            <br />
+            London
+            <br />
+            SE23 6FH
           </SummaryListValue>
         </SummaryListRow>,
       ],
@@ -60,7 +64,9 @@ describe('govieSummaryList', () => {
       children: [
         <SummaryListRow label="Contact Details" withBorder key="1">
           <SummaryListValue>
-            {['07700 900900', 'john.smith@example.com']}
+            07700 900900
+            <br />
+            john.smith@example.com
           </SummaryListValue>
         </SummaryListRow>,
       ],

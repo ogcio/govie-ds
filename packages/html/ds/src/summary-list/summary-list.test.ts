@@ -24,7 +24,7 @@ describe('govieSummaryList', () => {
         },
         {
           label: 'Address',
-          value: ['72 Guild Street', 'London', 'SE23 6FH'],
+          value: '72 Guild Street London <br/> SE23 6FH',
           action: { href: '/change-address', label: 'Change address' },
         },
       ],
@@ -57,7 +57,7 @@ describe('govieSummaryList', () => {
         },
         {
           label: 'Address',
-          value: ['72 Guild Street', 'London', 'SE23 6FH'],
+          value: '72 Guild Street London <br/> SE23 6FH',
           action: { href: '/change-address', label: 'Change address' },
         },
       ],

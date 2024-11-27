@@ -12,7 +12,7 @@ export type SummaryListItem = {
 };
 
 export type SummaryListValueProps = {
-  children: string | string[];
+  children: React.ReactNode;
 };
 
 export type SummaryListActionProps = Pick<LinkProps, 'children' | 'href'>;

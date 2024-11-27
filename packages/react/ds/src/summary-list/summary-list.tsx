@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Link } from '../link/link.js';
 import type {
   SummaryListActionProps,
@@ -8,17 +7,7 @@ import type {
 } from './types.js';
 
 export const SummaryListValue = ({ children }: SummaryListValueProps) => (
-  <dd className="gi-summary-list-value">
-    {Array.isArray(children)
-      ? children.reduce<React.ReactNode[]>((previous, label, index) => {
-          if (index > 0) {
-            previous.push(<br key={`br_${index}`} />);
-          }
-          previous.push(<Fragment key={`${label}_${index}`}>{label}</Fragment>);
-          return previous;
-        }, [])
-      : children}
-  </dd>
+  <dd className="gi-summary-list-value">{children}</dd>
 );
 
 export const SummaryListAction = ({

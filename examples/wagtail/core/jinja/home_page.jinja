@@ -228,15 +228,13 @@
 
   <h2>Summary List</h2>
   <br />
-    <div className="gi-w-[500px]">
       {{ govieSummaryList(
           { "rows": [
             { "label": "Name", "value": "John Smith", "action": { "href": "/change-name", "label": "Change name" } },
             { "label": "Date of Birth", "value": "8 November 1982", "action": { "href": "/change-dob", "label": "Change date of birth" } },
-            { "label": "Address", "value": ["72 Guild Street", "London", "SE23 6FH"], "action": { "href": "/change-address", "label": "Change address" } 
+            { "label": "Address", "value": "72 Guild Street <br/> London <br/> SE23 6FH", "action": { "href": "/change-address", "label": "Change address" } 
           }]})
       }} 
-    </div>
   <br />
   
   <h2>Footer (Local)</h2>

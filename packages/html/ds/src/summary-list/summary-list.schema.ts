@@ -9,24 +9,9 @@ export const SummaryListActionSchema = zod.object({
   }),
 });
 
-export const SummaryListValueSchema = zod.union(
-  [
-    zod.string({
-      description: 'Value as a single string.',
-    }),
-    zod.array(
-      zod.string({
-        description: 'Array of strings representing multiple lines.',
-      }),
-      {
-        description: 'Value as an array of strings.',
-      },
-    ),
-  ],
-  {
-    description: 'The value associated with a summary list row.',
-  },
-);
+export const SummaryListValueSchema = zod.string({
+  description: 'Raw HTML that will be wrapped',
+});
 
 export const SummaryListRowSchema = zod.object({
   label: zod.string({

@@ -41,13 +41,13 @@ export const Default: Story = {
       },
       {
         label: 'Address',
-        value: ['72 Guild Street', 'London', 'SE23 6FH'],
+        value: '72 Guild Street <br/> London <br/> SE23 6FH',
         action: { href: '/change', label: 'Change' },
         withBorder: true,
       },
       {
         label: 'Contact details',
-        value: ['07700 864523', 'john.smith@example.com'],
+        value: '07700 864523 <br/> john.smith@example.com',
         action: { href: '/change', label: 'Change' },
         withBorder: true,
       },
@@ -72,7 +72,7 @@ export const WithMixedBorders: Story = {
       },
       {
         label: 'Address',
-        value: ['72 Guild Street', 'London', 'SE23 6FH'],
+        value: '72 Guild Street <br/> London <br/> SE23 6FH',
         action: { href: '/change', label: 'Change' },
         withBorder: true,
       },
@@ -96,7 +96,7 @@ export const WithMixedActions: Story = {
       },
       {
         label: 'Address',
-        value: ['72 Guild Street', 'London', 'SE23 6FH'],
+        value: '72 Guild Street <br/> London <br/> SE23 6FH',
         action: { href: '/change', label: 'Change' },
         withBorder: true,
       },
@@ -117,7 +117,7 @@ export const WithoutBorders: Story = {
       },
       {
         label: 'Address',
-        value: ['72 Guild Street', 'London', 'SE23 6FH'],
+        value: '72 Guild Street <br/> London <br/> SE23 6FH',
       },
     ],
   },

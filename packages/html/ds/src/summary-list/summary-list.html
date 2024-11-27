@@ -13,13 +13,7 @@
       >
         <dt>{{ label }}</dt>
 
-        {% if value is string %}
-          <dd class="gi-summary-list-value">{{ value }}</dd>
-        {% elif value is iterable %}
-          <dd class="gi-summary-list-value">
-            {{ value | join('<br />') | safe }}
-          </dd>
-        {% endif %}
+        <dd class="gi-summary-list-value">{{ value | safe }}</dd>
 
         {% if action %}
           <dd class="gi-summary-list-actions">

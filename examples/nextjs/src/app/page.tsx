@@ -183,7 +183,11 @@ export default function Home() {
             </SummaryListRow>
             <SummaryListRow label="Address">
               <SummaryListValue>
-                {['72 Guild Street', 'London', 'SE23 6FH']}
+                72 Guild Street 
+                <br/>
+                London
+                <br/>
+                SE23 6FH
               </SummaryListValue>
               <SummaryListAction href="/change-address">
                 Change address

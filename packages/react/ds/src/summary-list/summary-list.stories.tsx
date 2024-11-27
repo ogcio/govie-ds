@@ -21,15 +21,6 @@ const meta = {
     children: {
       description:
         'An array of `SummaryListRow` components, each representing a row in the summary list. Each row includes `SummaryListValue`, and/or `SummaryListAction`.',
-      table: {
-        type: {
-          summary: 'SummaryListRow[]',
-          detail: `
-            Each SummaryListRow contains:
-              - SummaryListValue: The value for the row cell (string | string[])
-              - SummaryListAction: An action link for the row cell`,
-        },
-      },
     },
   },
 } satisfies Meta<typeof SummaryList>;
@@ -50,13 +41,19 @@ export const Default: Story = {
       </SummaryListRow>,
       <SummaryListRow key="3" withBorder label="Address">
         <SummaryListValue>
-          {['72 Guild Street', 'London', 'SE23 6FH']}
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
         </SummaryListValue>
         <SummaryListAction href="/change">Change</SummaryListAction>
       </SummaryListRow>,
       <SummaryListRow key="4" withBorder label="Contact details">
         <SummaryListValue>
-          {['07700 864523', 'john.smith@example.com']}
+          07700 864523
+          <br />
+          john.smith@example.com
         </SummaryListValue>
         <SummaryListAction href="/change">Change</SummaryListAction>
       </SummaryListRow>,
@@ -77,7 +74,11 @@ export const WithMixedBorders: Story = {
       </SummaryListRow>,
       <SummaryListRow key="3" withBorder label="Address">
         <SummaryListValue>
-          {['72 Guild Street', 'London', 'SE23 6FH']}
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
         </SummaryListValue>
         <SummaryListAction href="/change">Change</SummaryListAction>
       </SummaryListRow>,
@@ -97,7 +98,11 @@ export const WithMixedActions: Story = {
       </SummaryListRow>,
       <SummaryListRow key="3" withBorder label="Address">
         <SummaryListValue>
-          {['72 Guild Street', 'London', 'SE23 6FH']}
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
         </SummaryListValue>
         <SummaryListAction href="/change">Change</SummaryListAction>
       </SummaryListRow>,
@@ -116,7 +121,11 @@ export const WithoutBorders: Story = {
       </SummaryListRow>,
       <SummaryListRow key="3" label="Address">
         <SummaryListValue>
-          {['72 Guild Street', 'London', 'SE23 6FH']}
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
         </SummaryListValue>
       </SummaryListRow>,
     ],
