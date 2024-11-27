@@ -1,5 +1,34 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from 'contentlayer/source-files';
+import rehypeSlug from 'rehype-slug';
 import { getDocumentDetails } from './src/lib/documents/document-details';
+
+const componentLibrary = defineNestedType(() => ({
+  fields: {
+    link: { type: 'string' },
+    platform: {
+      type: 'enum',
+      options: ['figma', 'local', 'global', 'react'],
+      required: true,
+    },
+    status: {
+      type: 'enum',
+      options: [
+        'alpha',
+        'beta',
+        'stable',
+        'considering',
+        'not-available',
+        'deprecated',
+      ],
+      required: false,
+      default: 'not-available',
+    },
+  },
+}));
 
 const Document = defineDocumentType(() => ({
   name: 'Doc',
@@ -8,13 +37,18 @@ const Document = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     navigation: { type: 'string', required: false },
+    hideToc: { type: 'boolean', required: false, default: false },
     description: { type: 'string', required: true },
-    draft: { type: 'boolean', required: true },
     status: {
       type: 'enum',
-      options: ['coming-soon', 'in-development', 'stable'],
+      options: ['draft', 'in-review', 'stable'],
+      required: true,
+      default: 'draft',
+    },
+    libraries: {
+      type: 'list',
+      of: componentLibrary,
       required: false,
-      default: 'stable',
     },
   },
   computedFields: {
@@ -38,4 +72,8 @@ const Document = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: './content',
   documentTypes: [Document],
+  mdx: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeSlug],
+  },
 });

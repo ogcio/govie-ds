@@ -26,7 +26,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full">
+    <>
       <Header
         logo={{ href: "/" }}
         tools={{ search: { action: "/search-page" } }}
@@ -169,6 +169,6 @@ export default function Home() {
       </Container>
 
       <Footer />
-    </div>
+    </>
   );
 }

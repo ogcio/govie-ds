@@ -1,8 +1,7 @@
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, Paragraph, PhaseBanner } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
-import { Feedback } from '@/components/chrome/feedback';
 import { Button } from '@/components/form/button';
 import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 import { Prose } from '@/components/typography/prose';
@@ -76,8 +75,19 @@ function Benefits() {
 
 export default function HomePage() {
   return (
-    <article className="flex flex-col sm:pb-2xl gap-5xl grow">
-      <Feedback />
+    <article className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow">
+      <PhaseBanner level="alpha">
+        <p className="text-gray-700 text-xs sm:text-md">
+          This is a new service - your{' '}
+          <a
+            className="underline text-blue-700 hover:decoration-md"
+            href={config.feedbackFormUrl}
+          >
+            feedback
+          </a>{' '}
+          will help us to improve it.
+        </p>
+      </PhaseBanner>
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
         <Prose>
           <h1 className="leading-none sm:leading-normal">Design System</h1>

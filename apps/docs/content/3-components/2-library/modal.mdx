@@ -1,0 +1,120 @@
+---
+title: Modal
+description: Modal HTML Component
+status: in-review
+libraries:
+  - platform: 'local'
+    link: '?path=/docs/application-modal--docs'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/application-modal--docs'
+    status: 'alpha'
+  - platform: 'react'
+    link: '?path=/docs/application-modal--docs'
+    status: 'alpha'
+---
+
+# Modal
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Modal triggerButton={<Button>Open Modal</Button>}  >
+    <Heading as="h2">Title</Heading>
+    <Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores
+    </Paragraph>
+    <div className="gi-flex gi-gap-6 gi-justify-end">
+      <Button variant="secondary" appearance="dark">Cancel action</Button>
+      <Button>Primary action</Button>
+    </div>
+  </Modal>
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+<div>
+  <div>
+    <button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>
+  </div>
+  <div class="gi-modal gi-modal-close">
+    <div class="gi-modal-container">
+      <span
+        role="presentation"
+        class="material-symbols-outlined gi-block gi-text-[32px] gi-modal-icon"
+      >
+        close
+      </span>
+      <div>
+        <h2 class="gi-heading-lg">Title</h2>
+        <p class="gi-paragraph-md">
+          Not far stuff she think the jokes. Going as by do known noise he wrote round leave. Warmly put branch people narrow see. Winding its waiting yet parlours married own feeling. Marry fruit do spite jokes a times. Whether at it unknown warrant herself winding if.
+        </p>
+        <div class="gi-flex gi-gap-3 gi-justify-between">
+          <button class="gi-btn gi-btn-primary gi-btn-regular">
+            Primary Action
+          </button>
+          <button class="gi-btn gi-btn-secondary gi-btn-regular">
+            Cancel Action
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  ```
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```html
+  {{ govieModal({
+    "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
+    "triggerButton": "<button>Open Modal</button>"
+  }) }}
+  ```
+  </TabPanel>
+  <TabPanel value="tab13">
+  ```html
+  import { Modal } from '@govie-ds/react';
+
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <Heading>Title</Heading>
+    <Paragraph>
+      {" "}
+      Not far stuff she think the jokes. Going as by do known noise he wrote round leave. Warmly put branch people narrow see. Winding its waiting yet parlours married own feeling. Marry fruit do spite jokes a times. Whether at it unknown warrant herself winding if.
+    </Paragraph>
+    <div className="gi-flex gi-gap-3 gi-justify-between">
+      <Button>Primary action</Button>
+      <Button variant="secondary">Cancel action</Button>
+    </div>
+  </Modal>;
+  ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Modals are best to use when trying to isolate an action by the user. By using a modal you capture the focus of the user and this allows to remove secondary distractions.
+
+### When not to use this component
+
+Don't use modal dialogs for elements that should be linkable or searchable.
+
+## Status
+
+<ComponentStatusBlock componentId="modal" />
+

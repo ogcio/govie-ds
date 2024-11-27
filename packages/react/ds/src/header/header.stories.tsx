@@ -430,3 +430,41 @@ export const WithExtraButtonsAndLabels: Story = {
     ],
   },
 };
+
+export const FullWidth: Story = {
+  args: {
+    fullWidth: true,
+    logo: {
+      href: '/link',
+    },
+    tools: {
+      search: {
+        action: '/search_page',
+        label: 'Search',
+      },
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
+        },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'Departments',
+      },
+      {
+        href: '#',
+        label: 'Services',
+      },
+    ],
+    languages: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  },
+};

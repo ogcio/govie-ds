@@ -12,12 +12,12 @@ const links = [
     icon: <DesignTokensIcon />,
   },
   {
-    href: '/components/html/',
+    href: '/components/setup-guides/html/',
     label: 'HTML components',
     icon: <HtmlIcon />,
   },
   {
-    href: '/components/react/',
+    href: '/components/setup-guides/react/',
     label: 'React components',
     icon: <ReactIcon />,
   },
