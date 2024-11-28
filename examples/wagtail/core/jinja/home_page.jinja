@@ -20,6 +20,7 @@
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
+{% from 'pagination/pagination.html' import goviePagination %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -224,6 +225,9 @@
     "title": "Info Alert",
     "children": "<div>Content</div>"
   }) }}
+
+  <h2>Pagination</h2>
+  {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
   
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
