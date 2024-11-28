@@ -40,16 +40,20 @@
 
 <body>
     <div class="gi-bg-gray-50">
-      <div class="gi-container">
-        {{ govieLink({'href': '#', 'label': 'Home'}) }}
-        <div class="">
-          {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
-          {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
+      <div class="gi-container py-14">
+        <div class="gi-flex gi-flex-col gi-gap-7">
+          <div class="gi-flex gi-gap-7 justify-center items-end">
+            <div class="max-w-[777px] grow gap-4 flex flex-col">
+              {{ govieLink({'href': '#', 'label': 'Home', 'noColor': true}) }}
+              {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Search Results' }) }}
+              {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
+            </div>
+            {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="gi-container">
+    <div class="gi-container mt-6">
     <div class="grid grid-cols-4 gap-4">
       <div>
         {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
@@ -70,9 +74,6 @@
       </div>
     </div> 
   </div>
-
-  
-  
 
   {{ govieFooter(footerProps) }}
 
