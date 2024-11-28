@@ -2,25 +2,26 @@
 
 {% macro govieList(props) %}
   {% macro getListClass(type, spaced) %}
-    {% set listClasses = [] %}
+    {% set listClasses = '' %}
+
     {% if type == 'bullet' %}
-      {% set listClasses = (listClasses.push('gi-list-bullet'), listClasses) %}
+      {% set listClasses = listClasses + ' gi-list-bullet' %}
     {% elif type == 'number' %}
-      {% set listClasses = (listClasses.push('gi-list-number'), listClasses) %}
+      {% set listClasses = listClasses + ' gi-list-number' %}
     {% else %}
-      {% set listClasses = (listClasses.push('gi-list'), listClasses) %}
+      {% set listClasses = listClasses + ' gi-list' %}
     {% endif %}
 
     {% if spaced %}
-      {% set listClasses = (listClasses.push('gi-list-spaced'), listClasses) %}
+      {% set listClasses = listClasses + ' gi-list-spaced' %}
     {% endif %}
 
-    {{ listClasses | join(' ') }}
+    {{ listClasses | trim }}
   {% endmacro %}
 
   <ul
     data-testid="govieList"
-    class="{{ getListClass(props.type, props.spaced) | trim }}"
+    class="{{ getListClass(props.type, props.spaced) }}"
     data-element="list-container"
   >
     {% for item in props['items'] %}
