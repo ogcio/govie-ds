@@ -22,6 +22,10 @@ import {
   Stack,
   Alert,
   Toast,
+  SummaryListRow,
+  SummaryList,
+  SummaryListAction,
+  SummaryListValue,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -165,6 +169,31 @@ export default function Home() {
           <Alert title="Info Alert" dismissible>
             <Paragraph>This is the content</Paragraph>
           </Alert>
+
+          <SummaryList>
+            <SummaryListRow label="Name">
+              <SummaryListValue>John Smith</SummaryListValue>
+              <SummaryListAction href="/change-name">Change name</SummaryListAction>
+            </SummaryListRow>
+            <SummaryListRow label="Date of Birth">
+              <SummaryListValue>8 November 1982</SummaryListValue>
+              <SummaryListAction href="/change-dob">
+                Change date of birth
+              </SummaryListAction>
+            </SummaryListRow>
+            <SummaryListRow label="Address">
+              <SummaryListValue>
+                72 Guild Street 
+                <br/>
+                London
+                <br/>
+                SE23 6FH
+              </SummaryListValue>
+              <SummaryListAction href="/change-address">
+                Change address
+              </SummaryListAction>
+            </SummaryListRow>
+          </SummaryList>
         </div>
       </Container>
 
