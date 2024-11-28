@@ -60,25 +60,25 @@
   {%- set display_pages = [1] -%}
 
   {% if props.currentPage > 2 %}
-    {% set display_pages = (display_pages.push(-1), display_pages) %}
+    {% set temp = display_pages.append(-1) %}
   {% endif %}
 
   {% if props.currentPage > 1 and props.currentPage < props.totalPages %}
-    {% set display_pages = (display_pages.push(props.currentPage), display_pages) %}
+    {% set temp = display_pages.append(props.currentPage) %}
   {% endif %}
 
   {% if props.currentPage < props.totalPages - 1 %}
-    {% set display_pages = (display_pages.push(-2), display_pages) %}
+    {% set temp = display_pages.append(-2) %}
   {% endif %}
 
   {% if props.totalPages > 1 %}
-    {% set display_pages = (display_pages.push(props.totalPages), display_pages) %}
+    {% set temp = display_pages.append(props.totalPages) %}
   {% endif %}
 
   {% if props.totalPages <= 3 %}
     {% set display_pages = [] %}
     {% for index in range(1, props.totalPages + 1) %}
-      {% set display_pages = (display_pages.push(index), display_pages) %}
+      {% set temp = display_pages.append(index) %}
     {% endfor %}
   {% endif %}
 
@@ -113,25 +113,25 @@
   {%- set display_pages = [] -%}
 
   {% if props.currentPage > 3 %}
-    {% set display_pages = (display_pages.push(1), display_pages) %}
+    {% set temp = display_pages.append(1) %}
   {% endif %}
 
   {% if props.currentPage > 4 %}
-    {% set display_pages = (display_pages.push(-1), display_pages) %}
+    {% set temp = display_pages.append(-1) %}
   {% endif %}
 
   {% for index in range(props.currentPage - 2, props.currentPage + 3) %}
     {% if index >= 1 and index <= props.totalPages %}
-      {% set display_pages = (display_pages.push(index), display_pages) %}
+      {% set temp = display_pages.append(index) %}
     {% endif %}
   {% endfor %}
 
   {% if props.currentPage < props.totalPages - 3 %}
-    {% set display_pages = (display_pages.push(-2), display_pages) %}
+    {% set temp = display_pages.append(-2) %}
   {% endif %}
 
   {% if props.currentPage < props.totalPages - 2 %}
-    {% set display_pages = (display_pages.push(props.totalPages), display_pages) %}
+    {% set temp = display_pages.append(props.totalPages) %}
   {% endif %}
 
   <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">

@@ -21,6 +21,7 @@
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
 {% from 'summary-list/summary-list.html' import govieSummaryList %}
+{% from 'pagination/pagination.html' import goviePagination %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -236,6 +237,8 @@
           }]})
       }} 
   <br />
+  <h2>Pagination</h2>
+  {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
   
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
