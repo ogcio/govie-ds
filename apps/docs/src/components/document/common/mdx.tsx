@@ -32,6 +32,10 @@ import {
   TextArea,
   TextInput,
   Toast,
+  SummaryList,
+  SummaryListRow,
+  SummaryListValue,
+  SummaryListAction,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -225,6 +229,10 @@ const documentComponents: MDXComponents = {
   ),
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,
+  SummaryList: (props) => <SummaryList {...props} />,
+  SummaryListRow: (props) => <SummaryListRow {...props} />,
+  SummaryListAction: (props) => <SummaryListAction {...props} />,
+  SummaryListValue: (props) => <SummaryListValue {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

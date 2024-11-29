@@ -821,76 +821,75 @@ input[type='file' i] {
 
 /* Native notyf classes */
 .notyf {
-  @apply !gi-gap-6
- }
+  @apply !gi-gap-6;
+}
 .notyf__toast {
- @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
- animation-delay: 0s !important;
+  @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
+  animation-delay: 0s !important;
 }
 .notyf__message {
- @apply !gi-w-full;
- animation-delay: 0s !important;
- }
+  @apply !gi-w-full;
+  animation-delay: 0s !important;
+}
 .notyf__wrapper {
- @apply !gi-m-0 !gi-p-0; 
+  @apply !gi-m-0 !gi-p-0;
 }
 .notyf__toast:has(.gi-toast-info) {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
- }
- .notyf__toast:has(.gi-toast-success) {
+}
+.notyf__toast:has(.gi-toast-success) {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
- }
- .notyf__toast:has(.gi-toast-warning) {
+}
+.notyf__toast:has(.gi-toast-warning) {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
- }
- .notyf__toast:has(.gi-toast-danger) {
+}
+.notyf__toast:has(.gi-toast-danger) {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
-  
- }
+}
 
 /* End of Native notyf classes */
 
 .gi-toast-base {
-  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2
+  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2;
 }
 
 .gi-toast-base-dismissible {
-  @apply gi-toast-base !gi-pr-10
+  @apply gi-toast-base !gi-pr-10;
 }
 
 .gi-toast-title {
-  @apply gi-text-2md gi-font-bold
+  @apply gi-text-2md gi-font-bold;
 }
 
 .gi-toast-container {
-  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-0
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-0;
 }
 
 .gi-toast-content {
-  @apply !gi-mb-0
+  @apply !gi-mb-0;
 }
 
 .gi-toast-dismiss {
-  @apply gi-absolute gi-top-2 gi-right-2
+  @apply gi-absolute gi-top-2 gi-right-2;
 }
 
 .gi-toast-info {
-  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700;
 }
 
 .gi-toast-success {
-  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700
+  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700;
 }
 
 .gi-toast-warning {
-  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700
+  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700;
 }
 
 .gi-toast-danger {
-  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700
+  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
 .gi-toast-action {
-  @apply gi-text-gray-950 gi-mt-2
+  @apply gi-text-gray-950 gi-mt-2;
 }
 
 /* End of Toast */
