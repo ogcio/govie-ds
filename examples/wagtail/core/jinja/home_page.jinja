@@ -20,7 +20,8 @@
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
-{% from 'card/card.html' import govieCard %}
+{% from 'summary-list/summary-list.html' import govieSummaryList %}
+{% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
@@ -35,57 +36,222 @@
   <link rel="stylesheet" href="{{ static('css/theme.css') }}">
   <link rel="stylesheet" href="{{ static('css/styles.css') }}">
   <link rel="stylesheet" href="{{ static('css/ogcio-ds-0.4.4.min.css') }}">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    {{ govieHeader(HeaderProps) }}
-    <div class="gi-bg-gray-50">
-      <div class="gi-container py-14">
-        <div class="gi-flex gi-flex-col gi-gap-7">
-          <div class="gi-flex sm:gi-gap-7 justify-center items-end">
-            <div class="max-w-[777px] grow gap-4 flex flex-col">
-              {{ govieLink({'href': '#', 'label': 'Home', 'noColor': true}) }}
-              {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Search Results' }) }}
-              {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
-            </div>
-            <div class="hidden sm:block">
-              {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
-            </div>
-            <div class="block sm:hidden">
-              {{ govieIconButton({'icon': {'icon': 'search'}, 'appearance':'dark' }) }}
-            </div>
-          </div>
-        </div>
-      </div>
+  <h2>Header (Global)</h2>
+  {{ govieHeader(HeaderProps) }}
+
+  <h2>Header (Local)</h2>
+  <header data-module="govie-header" class="govie-header">
+    <h2>Application Title</h2>
+  </header>
+
+  <hr />
+
+  {{ govieHeading({ 'size': 'xl', 'as': 'h1', 'text': 'Heading' }) }}
+
+  <hr />
+
+  {{ govieCookieBanner(cookieBannerProps) }}
+
+  <h2>Paragraph (Global)</h2>
+  {% set paragraphContentWithLink = govieLink({ "href": "#", "label": "with Link", }) %}
+  {% set paragraphContent = "This is the paragraph content " ~ paragraphContentWithLink %}
+  {{ govieParagraph({
+    "content": paragraphContent,
+    "as": "p",
+    "size": "lg"
+  }) }}
+  
+  <h2>Paragraph (Local)</h2>
+  <p class="govie-body">We have sent you a confirmation email.</p>
+
+  <hr />
+  <h2>Container (Global)</h2>
+  {{ govieContainer({
+    "html": govieHeading({ 'size': 'md', 'as': 'h1', 'text': 'Heading Under Container' })
+  }) }}
+
+  <hr />
+
+  <h2>Link (Global)</h2>
+  {{ govieLink({
+    "href": "#",
+    "label": "Link for testing",
+  }) }}
+  
+  <h2>Link (Local)</h2>
+  <a class="govie-link" href="#">Link for testing</a>
+
+  <hr />
+
+  <h2>Typography - Tags</h2>
+  {{ govieTag({
+    "text": "Completed",
+    "type": "info"
+  }) }}
+
+  <hr />
+  <h2>Form - Select (Global)</h2>
+  {{ govieSelect(SelectProps) }}
+
+  <hr />
+  <h2>Tabs (Local)</h2>
+  <div class="govie-tabs" data-module="govie-tabs">
+    <h2 class="govie-tabs__title">Contents</h2>
+    <ul class="govie-tabs__list">
+      <li class="govie-tabs__list-item govie-tabs__list-item--selected">
+        <a class="govie-tabs__tab" href="#tab-1">Tab 1</a>
+      </li>
+      <li class="govie-tabs__list-item ">
+        <a class="govie-tabs__tab" href="#tab-2">Tab 2</a>
+      </li>
+    </ul>
+    <div class="govie-tabs__panel " id="tab-1">
+      <h2 class="govie-heading-s">Tab 1 content</h2>
     </div>
-    <div class="gi-container mt-6">
-    <div class="sm:grid sm:grid-cols-4 sm:gap-4">
-      <div class="flex flex-col gap-8">
-        {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
-        {{ govieComboBox(comboBoxProps) }}
-        <div>
-          {{ govieButton({"content": 'Apply filters', "appearance":"dark"}) }}
-        </div>
-      </div>
-      <div class="col-span-3 sm:mt-0 mt-6">
-        <div class="mb-6 flex justify-between items-center">
-          {{ govieSelect(SelectProps) }}
-          <div class="hidden sm:block">
-            {{ govieParagraph({'content': '49357 Results'}) }}
-          </div>
-        </div>
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 1', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 2', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 3', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 4', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          <div class="my-6">
-          {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
-          </div>
-      </div>
-    </div> 
+    <div class="govie-tabs__panel govie-tabs__panel--hidden" id="tab-2">
+      <h2 class="govie-heading-s">Tab 2 content</h2>
+    </div>
   </div>
 
+  <h2 id="tabs-label">Tabs (Global)</h2>
+  {{ govieTabs(tabsProps) }}
+
+  <hr />
+
+  <h2>Form - Text Input</h2>
+  {{ govieTextInput({
+    "label": {
+      "content": "Label",
+      "for": "error-input"
+    },
+    "hint": {
+      "content": "Hint"
+    },
+    "error": {
+      "content": "Error"
+    },
+    "fullFluid": true,
+    "id": "error-input",
+    "prefix": "KG",
+    "suffix": "per item"
+  }) }}
+
+  <hr />
+
+  <h2>Form - TextArea</h2>
+  {{ govieTextArea({
+    "label": {
+      "content": "Textarea Label",
+      "for": "textarea-id"
+    },
+    "hint": {
+      "content": "Hint text for textarea"
+    },
+    "error": {
+      "content": "Error message for textarea"
+    },
+    "maxChars": 30,
+    "rows": 4,
+    "cols": 100,
+    "id": "textarea-id"
+  }) }}
+
+  <hr />
+
+  <h2>Form - File Upload</h2>
+  {{ govieFileUpload({
+    "id": "file-upload-id",
+    "label": {
+      "content": "Upload File",
+      "for": "file-upload-id"
+    },
+    "error": {
+      "content": "Error: File must be smaller than 5MB."
+    }
+  }) }}
+
+  <h2>ComboBox</h2>
+
+  {{ govieComboBox(comboBoxProps) }}
+
+  <h2>Button</h2>
+
+  {{ govieButton({
+    "content": 'Primary Button',
+  }) }}
+
+  <h2>Radio Group Component</h2>
+
+  {{ govieRadiosGroup(radioProps) }}
+
+  <h2>Radio</h2>
+
+  {{ govieRadio({
+    "value": "Radio",
+    "label": 'This is a single Radio Component'
+  }) }}
+
+  <h2>Modal</h2>
+
+  {{ govieModal(modalProps) }}
+
+  <h2>Toast with Trigger</h2>
+
+  {{ govieToast({
+    "title": "Toast Triggered",
+    "description": "This is some content",
+    "trigger": {
+      "content": "Trigger Toast"
+    }
+  }) }}
+
+  {{ govieToast({
+    "title": "Success",
+    "description": "This is a success toast",
+    "variant": "success"
+  }) }}
+
+  <h2>Icon Button</h2>
+
+  {{govieIconButton({
+    "icon": {
+      "icon": "thumb_up"
+    }
+  })}}
+
+  <h2>Alert</h2>
+  {{ govieAlert({
+    "title": "Info Alert",
+    "children": "<div>Content</div>"
+  }) }}
+
+  <h2>Summary List</h2>
+  <br />
+      {{ govieSummaryList(
+          { "rows": [
+            { "label": "Name", "value": "John Smith", "action": { "href": "/change-name", "label": "Change name" } },
+            { "label": "Date of Birth", "value": "8 November 1982", "action": { "href": "/change-dob", "label": "Change date of birth" } },
+            { "label": "Address", "value": "72 Guild Street <br/> London <br/> SE23 6FH", "action": { "href": "/change-address", "label": "Change address" } 
+          }]})
+      }} 
+  <br />
+  <h2>Pagination</h2>
+  {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
+  
+  <h2>List</h2>
+  {{ govieList({
+    "items": [
+      "Item 1",
+      "Item 2",
+      "Item 3"
+    ]
+  }) }}
+  <h2>Footer (Local)</h2>
+  <footer class="govie-footer"></footer>
+  <h2>Footer (Global)</h2>
   {{ govieFooter(footerProps) }}
 
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>

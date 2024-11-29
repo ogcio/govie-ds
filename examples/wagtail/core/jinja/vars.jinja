@@ -7,35 +7,47 @@
   "links": [
     {
       "href": "#",
-      "label": "Help",
+      "label": "Link 1",
     },
     {
       "href": "#",
-      "label": "Privacy policy",
+      "label": "Link 2",
     },
     {
       "href": "#",
-      "label": "Cookies policy",
+      "label": "Link 3",
     },
+  ],
+  "secondaryNavLinks": [
     {
-      "href": "#",
-      "label": "Accessibility statement",
+      "heading": "Heading",
+      "hasTwoCols": true,
+      "links": [
+        {
+          "href": "#",
+          "label": "Nav Link 1",
+        },
+        {
+          "href": "#",
+          "label": "Nav Link 2",
+        },
+        {
+          "href": "#",
+          "label": "Nav Link 3",
+        },
+        {
+          "href": "#",
+          "label": "Nav Link 4",
+        },
+      ],
     },
-    {
-      "href": "#",
-      "label": "Contact",
-    },
-    {
-      "href": "#",
-      "label": "Government digital service",
-    }
-  ]
+  ],
 }
 %}
 
 {% set HeaderProps = {
     "logo": { "href": '/home' },
-    "fullWidth": "false",
+    "fullWidth": false,
     "tools": {
       "search": {
         "action": '/search_page',
@@ -78,7 +90,7 @@
 {% set SelectProps = {
   "id": "unique-id",
   "label": {
-    "content": "Sort by"
+    "content": "Default Select"
     },
   "options": [
     {
