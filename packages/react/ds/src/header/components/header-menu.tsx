@@ -122,7 +122,10 @@ function HeaderMenu({
             <MenuListItem href={link.href} label={link.label} />
           </li>
         ))}
-        {tools?.items?.map(({ href, label, slot }, index) => {
+        {tools?.items?.map(({ href, label, slot, keepOnMobile }, index) => {
+          if (slot && !keepOnMobile) {
+            return null;
+          }
           return (
             <li key={`${label}-${index}`}>
               {slot ? (

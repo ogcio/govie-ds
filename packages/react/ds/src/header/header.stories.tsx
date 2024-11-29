@@ -16,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const SlotExample = () => (
+const SlotExample1 = () => (
   <Container>
     <div className="gi-text-sm">
       <Stack gap={2}>
@@ -38,6 +38,24 @@ const SlotExample = () => (
     </div>
   </Container>
 );
+
+const SlotExample2 = () => {
+  return (
+    <Container>
+      <div className="gi-max-w-[250px]">
+        <Stack direction="column" gap={3}>
+          <Paragraph>Name</Paragraph>
+          <TextInput className="gi-w-full" disabled value="Joe Doe" />
+          <Paragraph>Passport Number</Paragraph>
+          <TextInput className="gi-w-full" disabled value="XX9999999999" />
+          <Stack direction="column" itemsAlignment="end">
+            <Button>Edit</Button>
+          </Stack>
+        </Stack>
+      </div>
+    </Container>
+  );
+};
 
 export const Default: Story = {
   argTypes: {
@@ -101,32 +119,16 @@ export const Default: Story = {
           href: '#',
           label: 'Links',
           icon: 'thumb_up',
-          slot: <SlotExample />,
+          keepOnMobile: true,
+          slot: <SlotExample1 />,
         },
 
         {
           href: '#',
           label: 'Profile',
           icon: 'info',
-          slot: (
-            <Container>
-              <div className="gi-max-w-[250px]">
-                <Stack direction="column" gap={3}>
-                  <Paragraph>Name</Paragraph>
-                  <TextInput className="gi-w-full" disabled value="Joe Doe" />
-                  <Paragraph>Passport Number</Paragraph>
-                  <TextInput
-                    className="gi-w-full"
-                    disabled
-                    value="XX9999999999"
-                  />
-                  <Stack direction="column" itemsAlignment="end">
-                    <Button>Edit</Button>
-                  </Stack>
-                </Stack>
-              </div>
-            </Container>
-          ),
+          keepOnMobile: true,
+          slot: <SlotExample2 />,
         },
       ],
     },
@@ -146,6 +148,37 @@ export const Default: Story = {
         label: 'Gaeilge',
       },
     ],
+  },
+};
+
+export const WithSlotsOnly: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    tools: {
+      items: [
+        {
+          label: 'Slot 1',
+          icon: 'download',
+          href: '#',
+          slot: <SlotExample1 />,
+        },
+        {
+          label: 'Slot 2',
+          icon: 'info',
+          href: '#',
+          slot: <SlotExample2 />,
+        },
+        {
+          label: 'Keep in mobile',
+          icon: 'edit',
+          href: '#',
+          keepOnMobile: true,
+          slot: <Container>Empty container show in mobile</Container>,
+        },
+      ],
+    },
   },
 };
 
