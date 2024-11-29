@@ -1,4 +1,14 @@
-export function BasicPage({ size }: { size: 'lg' | 'md' | 'sm' }) {
+export enum Pages {
+  BASIC = 'basic-page.html',
+  SEARCH = 'search-page.html',
+}
+
+type renderPage = {
+  size: 'lg' | 'md' | 'sm';
+  page?: Pages;
+};
+
+export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
   const widthClass = (() => {
     switch (size) {
       case 'sm': {
@@ -14,7 +24,7 @@ export function BasicPage({ size }: { size: 'lg' | 'md' | 'sm' }) {
   })();
   return (
     <iframe
-      src="/templates/basic-page.html"
+      src={`/templates/${page}`}
       className={`h-[50vh] ${widthClass} border-solid border-gray-300 border overflow-hidden`}
     ></iframe>
   );
