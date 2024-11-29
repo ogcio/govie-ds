@@ -7,24 +7,142 @@ libraries:
     link: '?path=/docs/typography-summary-list--docs'
     status: 'stable'
   - platform: 'global'
-    status: 'considering'
+    link: '?path=/docs/typography-summary-list--docs'
+    status: 'beta'
   - platform: 'react'
-    status: 'considering'
+    link: '?path=/docs/typography-summary-list--docs'
+    status: 'beta'
 ---
 
 # Summary List
 
 ## Variants
 
+### Default
+
+<ComponentContainer className="gi-p-2">
+  <SummaryList>
+    <SummaryListRow label="Name">
+      <SummaryListValue>John Smith</SummaryListValue>
+      <SummaryListAction href="/change-name">Change name</SummaryListAction>
+    </SummaryListRow>
+    <SummaryListRow label="Date of Birth">
+      <SummaryListValue>8 November 1982</SummaryListValue>
+      <SummaryListAction href="/change-dob">
+        Change date of birth
+      </SummaryListAction>
+    </SummaryListRow>
+    <SummaryListRow label="Address">
+      <SummaryListValue>
+        72 Guild Street
+        <br />
+        London
+        <br />
+        SE23 6FH
+      </SummaryListValue>
+      <SummaryListAction href="/change-address">
+        Change address
+      </SummaryListAction>
+    </SummaryListRow>
+  </SummaryList>
+</ComponentContainer>
+
+<Tabs id="summary-list-default">
+  <TabList>
+    <TabItem value="html" checked>HTML</TabItem>
+    <TabItem value="macro">Macro</TabItem>
+    <TabItem value="react">React</TabItem>
+  </TabList>
+  <TabPanel value="html">
+  ```html
+  <div class="gi-summary-list" role="list" aria-label="Summary list">
+    <dl>
+      <dt>Name</dt>
+      <dd class="gi-summary-list-value">John Smith</dd>
+      <dd class="gi-summary-list-actions">
+        <a href="/change-name" aria-label="Link action: Change name">Change name</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Date of Birth</dt>
+      <dd class="gi-summary-list-value">8 November 1982</dd>
+      <dd class="gi-summary-list-actions">
+        <a href="/change-dob" aria-label="Link action: Change date of birth">Change date of birth</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Address</dt>
+      <dd class="gi-summary-list-value">
+        72 Guild Street
+        <br/>
+        London
+        <br/>
+        SE23 6FH
+        <br/>
+      </dd>
+      <dd class="gi-summary-list-actions">
+        <a href="/change-address" aria-label="Link action: Change address">Change address</a>
+      </dd>
+    </dl>
+  </div>
+  ```
+  </TabPanel>
+  <TabPanel value="macro"> 
+    ```html 
+        {{ govieSummaryList({ "rows":
+          [ { "label": "Name", "value": "John Smith", "action": { "href": "/change-name", "label": "Change name" } },
+            { "label": "Date of Birth", "value": "8 November 1982", "action": { "href": "/change-dob", "label": "Change date of birth" } },
+            { "label": "Address", "value": "72 Guild Street <br/> London <br/> SE23 6FH", "action": { "href": "/change-address", "label": "Change address" } } 
+          ]})
+        }} 
+    ```
+  </TabPanel>
+  <TabPanel value="react">
+    ```react
+        import { SummaryList, SummaryListRow, SummaryListValue, SummaryListAction } from '@govie-ds/react';
+        
+        <SummaryList>
+          <SummaryListRow label="Name">
+            <SummaryListValue>John Smith</SummaryListValue>
+            <SummaryListAction href="/change-name">Change name</SummaryListAction>
+          </SummaryListRow>
+          <SummaryListRow label="Date of Birth">
+              <SummaryListValue>8 November 1982</SummaryListValue>
+              <SummaryListAction href="/change-dob">Change date of birth</SummaryListAction>
+          </SummaryListRow>
+          <SummaryListRow label="Address">
+            <SummaryListValue>
+              72 Guild Street 
+              <br/>
+              London
+              <br/>
+              SE23 6FH
+            </SummaryListValue>
+            <SummaryListAction href="/change-address">Change address</SummaryListAction>
+          </SummaryListRow>
+        </SummaryList>
+      ```
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### Best Practices
 
+- Use `<SummaryList>` to display structured summary information.
+- Include meaningful row `labels` and `values` for clarity and accessibility.
+- Add action links sparingly to ensure users can quickly interpret and act on the data.
+
 ### When to use this component
 
+- To summarise structured data, such as personal details or settings.
+- When there’s a need to display information concisely with optional actions for each item.
+
 ### When not to use this component
+
+- For presenting unstructured content or a long list of items.
+- When the primary purpose is navigation. Use a table or card component instead.
 
 ## Status
 
 <ComponentStatusBlock componentId="summary-list" />
-
