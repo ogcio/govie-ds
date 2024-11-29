@@ -215,7 +215,7 @@
 }
 
 .gi-list-bullet {
-  @apply gi-pl-4 gi-list-disc;
+  @apply gi-pl-5 gi-list-disc;
 }
 
 .gi-list-number {

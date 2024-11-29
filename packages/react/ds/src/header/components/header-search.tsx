@@ -13,24 +13,22 @@ function HeaderSearch({
 }) {
   const ActionType = action || serverAction;
   return (
-    <div id="SearchContainer" className={`gi-hidden gi-bg-gray-50 gi-p-4`}>
-      <form action={ActionType}>
-        <div className="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
-          <TextInput
-            label={{ text: 'Enter search term', htmlFor: 'search' }}
-            name="search_query"
-            id="search"
-            type="text"
-            className="gi-flex-auto"
-          />
-          <IconButton
-            icon={{ icon, ariaLabel: 'Open' }}
-            size="medium"
-            className="gi-ml-1 gi-flex-none"
-          />
-        </div>
-      </form>
-    </div>
+    <form action={ActionType}>
+      <div className="gi-flex gi-items-end gi-max-w-md gi-mx-auto">
+        <TextInput
+          label={{ text: 'Enter search term', htmlFor: 'search' }}
+          name="search_query"
+          id="search"
+          type="text"
+          className="gi-flex-auto"
+        />
+        <IconButton
+          icon={{ icon, ariaLabel: 'Open' }}
+          size="medium"
+          className="gi-ml-1 gi-flex-none"
+        />
+      </div>
+    </form>
   );
 }
 

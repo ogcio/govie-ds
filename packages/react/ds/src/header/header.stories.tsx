@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Header } from './header.js';
+import { Stack } from '../stack/stack.js';
+import { Paragraph } from '../paragraph/paragraph.js';
+import { Button } from '../button/button.js';
+import { Container } from '../container/container.js';
+import { TextInput } from '../text-input/text-input.js';
+import { Link } from '../link/link.js';
+import { List, TypeEnum } from '../list/list.js';
 
 const meta = {
   title: 'layout/Header',
@@ -8,6 +15,29 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+const SlotExample = () => (
+  <Container>
+    <div className="gi-text-sm">
+      <Stack gap={2}>
+        <List
+          type={TypeEnum.Bullet}
+          items={[
+            <Link size="sm" href="#">
+              Citizens Information - Services and Rights
+            </Link>,
+            <Link size="sm" href="#">
+              Revenue - Taxes and Payments
+            </Link>,
+            <Link size="sm" href="#">
+              Department of Social Protection
+            </Link>,
+          ]}
+        ></List>
+      </Stack>
+    </div>
+  </Container>
+);
 
 export const Default: Story = {
   argTypes: {
@@ -53,6 +83,10 @@ export const Default: Story = {
       href: '/link',
     },
     tools: {
+      menu: {
+        icon: 'menu',
+        label: 'Menu',
+      },
       search: {
         action: '/search_page',
         label: 'Search',
@@ -62,6 +96,37 @@ export const Default: Story = {
           href: '/item1',
           label: 'Home',
           icon: 'home',
+        },
+        {
+          href: '#',
+          label: 'Links',
+          icon: 'thumb_up',
+          slot: <SlotExample />,
+        },
+
+        {
+          href: '#',
+          label: 'Profile',
+          icon: 'info',
+          slot: (
+            <Container>
+              <div className="gi-max-w-[250px]">
+                <Stack direction="column" gap={3}>
+                  <Paragraph>Name</Paragraph>
+                  <TextInput className="gi-w-full" disabled value="Joe Doe" />
+                  <Paragraph>Passport Number</Paragraph>
+                  <TextInput
+                    className="gi-w-full"
+                    disabled
+                    value="XX9999999999"
+                  />
+                  <Stack direction="column" itemsAlignment="end">
+                    <Button>Edit</Button>
+                  </Stack>
+                </Stack>
+              </div>
+            </Container>
+          ),
         },
       ],
     },

@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
 import { Icon, IconId } from '../../icon/icon.js';
+import { HeaderProps } from '../header.js';
 import HeaderSearch from './header-search.js';
+import { cn } from '../../cn.js';
 
 type HeaderMenuProps = {
   navLinks?: {
@@ -16,9 +19,87 @@ type HeaderMenuProps = {
     label?: string;
     icon?: IconId;
   };
+} & Pick<HeaderProps, 'tools'>;
+
+type MenuItemAccordionProps = {
+  index: number;
+  item: { label?: string; slot: React.ReactNode };
 };
 
-function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
+const MenuListItem = ({ href = '#', label = '', bold = true }) => (
+  <a
+    aria-label={label || 'link with no label'}
+    href={href}
+    className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+  >
+    <span className={cn('gi-text-sm', 'gi-ml-1', { 'gi-font-bold': bold })}>
+      {label}
+    </span>
+  </a>
+);
+
+export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
+  useEffect(() => {
+    const accordionItemContainer = document.getElementById(
+      `Accordion-item-${index}`,
+    );
+    const toggleLink = accordionItemContainer?.querySelector(
+      '.gi-accordion-item-toggle',
+    );
+
+    const handleOnClick =
+      (accordionItemContainer: HTMLElement) => (e: Event) => {
+        const slotContainer = accordionItemContainer.querySelector(
+          '.gi-accordion-item-slot',
+        );
+
+        e.preventDefault();
+
+        const isOpen = slotContainer?.classList.contains('gi-block');
+        slotContainer?.classList.toggle('gi-block', !isOpen);
+        slotContainer?.classList.toggle('gi-hidden', isOpen);
+
+        accordionItemContainer.setAttribute('data-open', (!isOpen).toString());
+      };
+
+    if (accordionItemContainer) {
+      toggleLink?.addEventListener(
+        'click',
+        handleOnClick(accordionItemContainer),
+      );
+    }
+  }, [index]);
+
+  return (
+    <div
+      key={`Accordion-item-${index}`}
+      id={`Accordion-item-${index}`}
+      className="gi-accordion-item-container"
+      data-open="false"
+    >
+      <div
+        aria-label={item.label}
+        className="gi-accordion-item-toggle hover:gi-no-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+      >
+        <div className="gi-full-width gi-flex gi-justify-between">
+          <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
+          <Icon icon="chevron_right" className="gi-accordion-item-icon" />
+        </div>
+      </div>
+
+      <div className="gi-accordion-item-slot gi-hidden gi-bg-gray-50 gi-p-4">
+        {item.slot}
+      </div>
+    </div>
+  );
+};
+
+function HeaderMenu({
+  languages,
+  navLinks,
+  searchProps,
+  tools,
+}: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
@@ -38,29 +119,28 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8">
         {navLinks?.map((link, index) => (
           <li key={index}>
-            <a
-              href={link.href}
-              className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-            >
-              <span className="gi-text-sm gi-font-bold gi-ml-1">
-                {link.label}
-              </span>
-            </a>
+            <MenuListItem href={link.href} label={link.label} />
           </li>
         ))}
+        {tools?.items?.map(({ href, label, slot }, index) => {
+          return (
+            <li key={`${label}-${index}`}>
+              {slot ? (
+                <MenuItemAccordion index={index} item={{ label, slot }} />
+              ) : (
+                <MenuListItem href={href} label={label} />
+              )}
+            </li>
+          );
+        })}
         {languages?.map((link, index) => (
           <li key={index}>
-            <a
-              href={link.href}
-              className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
-            >
-              <span className="gi-text-sm gi-ml-1">{link.label}</span>
-            </a>
+            <MenuListItem href={link.href} label={link.label} bold={false} />
           </li>
         ))}
         {searchProps && (
-          <li className="xs:gi-hidden gi-mt-8">
-            <HeaderSearch {...searchProps} className="!gi-h-40" />
+          <li className="gi-mt-8">
+            <HeaderSearch {...searchProps} />
           </li>
         )}
       </ul>
