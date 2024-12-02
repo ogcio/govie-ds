@@ -26,7 +26,7 @@ function HeaderSearch({
           <IconButton
             icon={{ icon, ariaLabel: 'Open' }}
             size="medium"
-            className="gi-mb-4 gi-ml-1 gi-flex-none"
+            className="gi-ml-1 gi-flex-none"
           />
         </div>
       </form>
