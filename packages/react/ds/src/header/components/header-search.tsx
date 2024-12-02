@@ -23,6 +23,7 @@ function HeaderSearch({
         <div className="gi-flex gi-items-end gi-mt-4">
           <TextInput
             name="search_query"
+            aria-label="Search the website"
             id="search"
             type="text"
             className="gi-flex-auto"

@@ -11,7 +11,7 @@
     <form action="{{ props.searchUrl }}" class="gi-max-w-md gi-mx-auto">
       {{ govieHeading({"text": "Search the website", "as": "h4"}) }}
       <div class="gi-flex gi-items-end gi-mt-4">
-        {{ govieTextInput({"name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto"}) }}
+        {{ govieTextInput({"name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto", "placeholder": "Search the website"}) }}
 
         {{
           govieButton({
