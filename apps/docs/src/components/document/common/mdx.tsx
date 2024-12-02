@@ -1,6 +1,10 @@
 import {
   Alert,
   Blockquote,
+  Breadcrumbs,
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipsis,
+  BreadcrumbLink,
   Button,
   Card,
   CheckboxesGroup,
@@ -222,6 +226,10 @@ const documentComponents: MDXComponents = {
   ),
   Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
+  Breadcrumbs: (props) => <Breadcrumbs {...props} />,
+  BreadcrumbCurrentLink: (props) => <BreadcrumbCurrentLink {...props} />,
+  BreadcrumbEllipsis: (props) => <BreadcrumbEllipsis {...props} />,
+  BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
   ComponentContainer: (props) => (

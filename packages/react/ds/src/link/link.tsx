@@ -7,7 +7,7 @@ export type LinkProps = {
   noColor?: boolean;
   external?: boolean;
   size?: 'sm' | 'md';
-};
+} & React.AriaAttributes;
 
 export function Link({
   as: Component = 'a',
@@ -18,6 +18,7 @@ export function Link({
   noVisited = false,
   noColor = false,
   external = false,
+  ...ariaProps
 }: LinkProps) {
   return (
     <Component
@@ -30,6 +31,7 @@ export function Link({
         ${noUnderline ? 'gi-link-no-underline' : ''}
         ${noVisited ? 'gi-link-no-visited' : ''}
         ${noColor ? 'gi-link-inherit' : ''}`}
+      {...ariaProps}
     >
       {children}
     </Component>
