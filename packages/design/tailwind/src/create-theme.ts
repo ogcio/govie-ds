@@ -307,6 +307,7 @@ export function createTheme(
                 fontWeight: variables.primitive.font.weight['400'],
                 fontFamily: variables.primitive.font.family.primary,
                 'margin-bottom': '2em',
+                'max-width': '65ch',
               },
               h1: {
                 font: variables.semantic.typography.default.heading.xl,
@@ -359,6 +360,7 @@ export function createTheme(
                 fontWeight: variables.primitive.font.weight['400'],
                 fontFamily: variables.primitive.font.family.primary,
                 'margin-bottom': '2em',
+                'max-width': '65ch',
               },
               h1: {
                 font: variables.semantic.typography.xs.heading.xl,
@@ -411,6 +413,7 @@ export function createTheme(
                 fontWeight: variables.primitive.font.weight['400'],
                 fontFamily: variables.primitive.font.family.primary,
                 'margin-bottom': '2em',
+                'max-width': '65ch',
               },
               h1: {
                 font: variables.semantic.typography.md.heading.xl,
@@ -463,6 +466,7 @@ export function createTheme(
                 fontWeight: variables.primitive.font.weight['400'],
                 fontFamily: variables.primitive.font.family.primary,
                 'margin-bottom': '2em',
+                'max-width': '65ch',
               },
               h1: {
                 font: variables.semantic.typography.xl.heading.xl,

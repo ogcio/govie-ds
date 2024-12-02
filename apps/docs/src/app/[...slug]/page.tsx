@@ -43,7 +43,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <>
-      <div className="w-full flex-auto prose">
+      <div className="w-full flex-auto prose max-w-none">
         {document.status !== 'stable' && (
           <div className="flex justify-between items-center py-2">
             {document.status === 'in-review' && (
