@@ -6,7 +6,9 @@ const getElements = () => {
     "[id^='ItemActionTrigger-']",
   );
   const slotContainers = document.querySelectorAll("[id^='SlotContainer-']");
-  const searchTrigger = document.getElementById(`SearchTrigger`);
+  const searchTrigger = document.querySelector(
+    `#SearchTrigger`,
+  ) as HTMLInputElement;
 
   return {
     itemSlotActions,
@@ -15,14 +17,36 @@ const getElements = () => {
   };
 };
 
+const closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
+  const { itemSlotActions } = getElements();
+
+  if (searchTarget.checked) {
+    for (const container of itemSlotActions) {
+      const item = container as HTMLInputElement;
+      item.checked = false;
+      item.dispatchEvent(
+        new CustomEvent('change', {
+          detail: {
+            forceClose: true,
+          },
+        }),
+      );
+    }
+  }
+};
+
+const handleSearchChange = (event: Event) => {
+  closeAllSlotContainers(event.target as HTMLInputElement);
+};
+
 export const attachEventsToItemActionTriggers = () => {
   const { itemSlotActions, slotContainers, searchTrigger } = getElements();
 
-  if (itemSlotActions.length) {
+  if (itemSlotActions.length > 0) {
     const handleToggleSlot = (index: string, forceClose: boolean) => {
-      // we should show the current one and hide the others
-      slotContainers.forEach((container) => {
-        const containerIndex = container.getAttribute('data-index') || '';
+      for (const container of slotContainers) {
+        const containerIndex =
+          (container as HTMLInputElement).dataset.index || '';
 
         if (containerIndex === index) {
           if (container.classList.contains(hidden) && !forceClose) {
@@ -33,19 +57,19 @@ export const attachEventsToItemActionTriggers = () => {
             container.classList.add(hidden);
           }
         }
-      });
+      }
     };
 
     const toggleIcons = (
       currentTrigger: HTMLInputElement,
       forceClose: boolean,
     ) => {
-      const index = currentTrigger.getAttribute('data-index') || '';
-      const icon = document.getElementById(
-        `ItemIconActionTrigger-${index}`,
+      const index = currentTrigger.dataset.index || '';
+      const icon = document.querySelector(
+        `#ItemIconActionTrigger-${index}`,
       ) as HTMLInputElement;
-      const closeIcon = document.getElementById(
-        `ItemCloseTrigger-${index}`,
+      const closeIcon = document.querySelector(
+        `#ItemCloseTrigger-${index}`,
       ) as HTMLInputElement;
       const { itemSlotActions } = getElements();
 
@@ -63,85 +87,59 @@ export const attachEventsToItemActionTriggers = () => {
         return;
       }
 
-      const filteredItems = Array.from(itemSlotActions).filter(
+      const filteredItems = [...itemSlotActions].filter(
         (element) =>
           (element as HTMLInputElement).checked &&
           element.id !== currentTrigger.id,
       );
 
-      filteredItems.forEach((element) => {
+      for (const element of filteredItems) {
         (element as HTMLInputElement).checked = false;
-        element?.dispatchEvent(
+        element.dispatchEvent(
           new CustomEvent('change', {
             detail: {
               forceClose: true,
             },
           }),
         );
-      });
+      }
     };
 
-    const onChange = (e: Event) => {
-      const customEvent = e as CustomEvent;
+    const handleChange = (event: Event) => {
+      const customEvent = event as CustomEvent;
       const forceClose = customEvent?.detail?.forceClose;
-      const target = e.target as HTMLInputElement;
+      const target = event.target as HTMLInputElement;
 
       toggleIcons(target, forceClose);
 
-      if ((searchTrigger as HTMLInputElement).checked && target?.checked) {
-        (searchTrigger as HTMLInputElement).checked = false;
-        searchTrigger?.dispatchEvent(new Event('change', { bubbles: true }));
+      if (searchTrigger.checked && target?.checked) {
+        searchTrigger.checked = false;
+        searchTrigger.dispatchEvent(new Event('change', { bubbles: true }));
       }
     };
 
-    itemSlotActions.forEach((container) => {
-      if (container) {
-        container.addEventListener('change', onChange);
-      }
-    });
+    for (const container of itemSlotActions) {
+      container?.addEventListener('change', handleChange);
+    }
 
     return () => {
-      itemSlotActions.forEach((container) => {
-        if (container) {
-          container.removeEventListener('change', onChange);
-        }
-      });
+      for (const container of itemSlotActions) {
+        container?.removeEventListener('change', handleChange);
+      }
     };
   }
 };
 
 export const attachEventsToSearchTrigger = () => {
-  const closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
-    const { itemSlotActions } = getElements();
-
-    if (searchTarget.checked) {
-      itemSlotActions.forEach((container) => {
-        const item = container as HTMLInputElement;
-        item.checked = false;
-        item.dispatchEvent(
-          new CustomEvent('change', {
-            detail: {
-              forceClose: true,
-            },
-          }),
-        );
-      });
-    }
-  };
-
-  const handleOnChange = (e: Event) => {
-    closeAllSlotContainers(e.target as HTMLInputElement);
-  };
-
-  const searchTrigger = document.getElementById(`SearchTrigger`);
+  const searchTrigger = document.querySelector(`#SearchTrigger`); // Prefer querySelector
 
   if (searchTrigger) {
-    searchTrigger.addEventListener('change', handleOnChange);
+    searchTrigger.addEventListener('change', handleSearchChange);
   }
 
   return () => {
     if (searchTrigger) {
-      searchTrigger.removeEventListener('change', handleOnChange);
+      searchTrigger.removeEventListener('change', handleSearchChange);
     }
   };
 };

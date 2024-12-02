@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Header } from './header.js';
-import { Stack } from '../stack/stack.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { Button } from '../button/button.js';
 import { Container } from '../container/container.js';
-import { TextInput } from '../text-input/text-input.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
+import { Paragraph } from '../paragraph/paragraph.js';
+import { Stack } from '../stack/stack.js';
+import { TextInput } from '../text-input/text-input.js';
+import { Header } from './header.js';
 
 const meta = {
   title: 'layout/Header',

@@ -1,36 +1,41 @@
 import { useEffect } from 'react';
-import { Icon } from '../../icon/icon.js';
 import ReactDOMClient from 'react-dom/client';
+import { Icon } from '../../icon/icon.js';
 
 type SloTProps = {
-  item: any;
+  item: {
+    slot: React.ReactNode;
+    label?: string;
+    icon?: string;
+  };
   index: number;
 };
 
 export const addNewGovieHeaderSlotElement = ({ index, item }: SloTProps) => {
-  const parent = document.getElementById('GovieHeader');
+  const parent = document.querySelector('#GovieHeader');
 
   if (parent) {
     const childNode = document.createElement('div');
     childNode.id = `SlotContainer-${index}`;
-    childNode.setAttribute('data-index', index.toString());
+    childNode.dataset.index = index.toString();
     childNode.className = 'gi-hidden gi-bg-gray-50 gi-p-4';
 
-    parent.appendChild(childNode);
+    parent.append(childNode);
     const root = ReactDOMClient.createRoot(childNode);
     root.render(item.slot);
 
     return () => {
       root.unmount();
-      parent.removeChild(childNode);
+      childNode.remove();
     };
   }
 };
 
 const SlotContainer = ({ index, item }: SloTProps) => {
   useEffect(() => {
-    addNewGovieHeaderSlotElement({ index, item });
-  }, []);
+    const cleanup = addNewGovieHeaderSlotElement({ index, item });
+    return cleanup;
+  }, [index, item]);
 
   return null;
 };
@@ -39,7 +44,7 @@ const SlotAction = ({ item, index }: SloTProps) => {
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
-      className={'gi-header-tool-item'}
+      className="gi-header-tool-item"
     >
       <input
         data-testid={`ItemActionTrigger-${index}`}

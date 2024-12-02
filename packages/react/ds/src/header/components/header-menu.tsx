@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
+import { cn } from '../../cn.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { HeaderProps } from '../header.js';
 import HeaderSearch from './header-search.js';
-import { cn } from '../../cn.js';
 
 type HeaderMenuProps = {
   navLinks?: {
@@ -40,32 +40,32 @@ const MenuListItem = ({ href = '#', label = '', bold = true }) => (
 
 export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
   useEffect(() => {
-    const accordionItemContainer = document.getElementById(
-      `Accordion-item-${index}`,
+    const accordionItemContainer = document.querySelector(
+      `#Accordion-item-${index}`,
     );
     const toggleLink = accordionItemContainer?.querySelector(
       '.gi-accordion-item-toggle',
     );
 
     const handleOnClick =
-      (accordionItemContainer: HTMLElement) => (e: Event) => {
+      (accordionItemContainer: HTMLElement) => (event: Event) => {
         const slotContainer = accordionItemContainer.querySelector(
           '.gi-accordion-item-slot',
         );
 
-        e.preventDefault();
+        event.preventDefault();
 
         const isOpen = slotContainer?.classList.contains('gi-block');
         slotContainer?.classList.toggle('gi-block', !isOpen);
         slotContainer?.classList.toggle('gi-hidden', isOpen);
 
-        accordionItemContainer.setAttribute('data-open', (!isOpen).toString());
+        accordionItemContainer.dataset.open = (!isOpen).toString();
       };
 
     if (accordionItemContainer) {
       toggleLink?.addEventListener(
         'click',
-        handleOnClick(accordionItemContainer),
+        handleOnClick(accordionItemContainer as HTMLInputElement),
       );
     }
   }, [index]);
@@ -103,13 +103,13 @@ function HeaderMenu({
   return (
     <div
       id="HeaderMenuContainer"
-      className="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen"
+      className="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen md:gi-hidden"
     >
       <div className="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
-            className="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+            className="gi-border gi-border-solid gi-border-transparent md:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
           >
             <span className="gi-text-2md gi-font-bold">Close</span>
             <Icon icon={'close'} />

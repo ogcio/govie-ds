@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
@@ -6,11 +7,11 @@ import { Icon } from '../icon/icon.js';
 import { IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
+import { Slot } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
 } from './helper.js';
-import { Slot } from './components/header-slot.js';
 
 export type HeaderProps = {
   title?: string;
@@ -35,7 +36,7 @@ export type HeaderProps = {
       icon?: IconId;
       href: string;
       slot?: React.ReactNode;
-      keepOnMobile?: boolean;
+      keepOnMobile?: boolean; // optional, default false to not show on mobile.
     }[];
   };
   languages?: {
@@ -97,6 +98,7 @@ export function Header({
                 <li key={index}>
                   {link.href ? (
                     <a
+                      aria-label={link.label}
                       data-testid={`language-link-desktop-${index}`}
                       href={link.href}
                       className={languageItemClassNames}
@@ -161,7 +163,11 @@ export function Header({
           <ul className={navLinkContainerClassNames}>
             {navLinks?.map((link, index) => (
               <li key={index}>
-                <a data-testid={`nav-link-desktop-${index}`} href={link.href}>
+                <a
+                  data-testid={`nav-link-desktop-${index}`}
+                  href={link.href}
+                  aria-label={link.label}
+                >
                   {link.label}
                 </a>
               </li>
@@ -170,65 +176,75 @@ export function Header({
           {navLinks && hasDivider && (
             <div className={menuDividerClassNames}></div>
           )}
-          {tools?.search && (
-            <div className="gi-hidden md:gi-flex">
+          <div className="gi-flex">
+            {tools?.search && (
+              <div className="gi-hidden sm:gi-flex">
+                <label
+                  htmlFor="SearchTrigger"
+                  className={`${toolItemClassNames}`}
+                >
+                  <input
+                    className="gi-block gi-w-0 gi-absolute gi-h-0"
+                    id="SearchTrigger"
+                    data-testid="SearchTrigger"
+                    type="checkbox"
+                  />
+                  {tools.search.label && (
+                    <span className="label">{tools.search.label}</span>
+                  )}
+                  <Icon
+                    className="search-icon"
+                    icon={tools.search.icon || 'search'}
+                  />
+                  <Icon className="gi-hidden close-icon" icon="close" />
+                </label>
+              </div>
+            )}
+            {tools?.items &&
+              tools?.items.map((item, index) => {
+                return (
+                  <div className="gi-hidden md:gi-flex">
+                    {item.slot ? (
+                      <Slot index={index} item={item} />
+                    ) : (
+                      <a
+                        className={toolItemClassNames}
+                        href={item.href}
+                        aria-label={item.label || `link ${index}`}
+                      >
+                        {item.label && (
+                          <span className="label">{item.label}</span>
+                        )}
+                        {item.icon && <Icon icon={item.icon} />}
+                      </a>
+                    )}
+                  </div>
+                );
+              })}
+            {showMobileMenu && (
               <label
-                htmlFor="SearchTrigger"
-                className={`${toolItemClassNames}`}
+                htmlFor="MobileMenuTrigger"
+                className={`${toolItemClassNames} md:gi-hidden`}
               >
                 <input
                   className="gi-block gi-w-0 gi-absolute gi-h-0"
-                  id="SearchTrigger"
-                  data-testid="SearchTrigger"
+                  id="MobileMenuTrigger"
                   type="checkbox"
                 />
-                {tools.search.label && (
-                  <span className="label">{tools.search.label}</span>
+                {tools?.menu?.label && (
+                  <span className="label">{tools.menu.label}</span>
                 )}
-                <Icon
-                  className="search-icon"
-                  icon={tools.search.icon || 'search'}
-                />
-                <Icon className="gi-hidden close-icon" icon="close" />
+                <Icon icon={tools?.menu?.icon || 'menu'} />
               </label>
-            </div>
-          )}
-          {tools?.items &&
-            tools?.items.map((item, index) => {
-              return (
-                <div className="gi-hidden md:gi-flex">
-                  {item.slot ? (
-                    <Slot index={index} item={item} />
-                  ) : (
-                    <a className={toolItemClassNames} href={item.href}>
-                      {item.label && (
-                        <span className="label">{item.label}</span>
-                      )}
-                      {item.icon && <Icon icon={item.icon} />}
-                    </a>
-                  )}
-                </div>
-              );
-            })}
-          {showMobileMenu && (
-            <label
-              htmlFor="MobileMenuTrigger"
-              className={`${toolItemClassNames} sm:gi-hidden`}
-            >
-              <input
-                className="gi-block gi-w-0 gi-absolute gi-h-0"
-                id="MobileMenuTrigger"
-                type="checkbox"
-              />
-              {tools?.menu?.label && (
-                <span className="label">{tools.menu.label}</span>
-              )}
-              <Icon icon={tools?.menu?.icon || 'menu'} />
-            </label>
-          )}
+            )}
+          </div>
         </div>
       </div>
-      {tools?.search && <HeaderSearch {...tools.search} />}
+      {tools?.search && (
+        <div id="SearchContainer" className={`gi-hidden gi-bg-gray-50 gi-p-4`}>
+          <HeaderSearch {...tools.search} />
+        </div>
+      )}
       <HeaderMenu
         tools={tools}
         searchProps={tools?.search}
