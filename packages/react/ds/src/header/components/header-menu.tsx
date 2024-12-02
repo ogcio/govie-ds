@@ -22,7 +22,7 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
-      className="hidden gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen"
+      className="gi-hidden gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen"
     >
       <div className="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
         <div className="gi-flex gi-items-center">
