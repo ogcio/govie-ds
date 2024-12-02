@@ -9,11 +9,12 @@ export type ComboBoxOptions = BaseComponentOptions;
 type dropdownStateType = {
   elements: {
     dropdownToggle: Element;
-    dropdownContainer: Element;
+    dropdownContainer: HTMLElement;
     closeIcon: HTMLSpanElement;
     checkboxes: NodeListOf<HTMLInputElement>;
     noResultsElement: HTMLParagraphElement;
-    tag: Element;
+    tag: HTMLElement;
+    tagContainer?: HTMLElement | null;
     searchInputElement: HTMLInputElement | null;
     resetSearchElement: Element | null;
   };
@@ -53,6 +54,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             '.gi-combobox-checkbox-paragraph',
           )!,
           tag: dropdown.querySelector('.gi-tag')!,
+          tagContainer: dropdown.querySelector('.gi-tag')?.parentElement,
         },
         isOpen: false,
         searchInput: '',
@@ -80,6 +82,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         resetSearchElement,
         noResultsElement,
         tag,
+        tagContainer,
       } = state.elements;
 
       for (const checkbox of checkboxes) {
@@ -97,10 +100,10 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             state.selectedCheckboxes--;
           }
           if (state.selectedCheckboxes) {
-            tag.classList.remove('!gi-hidden');
+            tagContainer && tagContainer.classList.remove('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           } else {
-            tag.classList.add('!gi-hidden');
+            tagContainer && tagContainer.classList.add('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           }
         });
@@ -111,11 +114,13 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         state.isOpen = !state.isOpen;
         if (state.isOpen) {
           dropdownToggle.classList.add('gi-combobox-toggle-open');
-          dropdownContainer.classList.remove('!gi-hidden');
+          dropdownContainer.classList.remove('gi-combobox-dropdown-container-close');
+          dropdownContainer.classList.add('gi-combobox-dropdown-container-open');
           closeIcon.classList.add('gi-rotate-180');
         } else {
           dropdownToggle.classList.remove('gi-combobox-toggle-open');
-          dropdownContainer.classList.add('!gi-hidden');
+          dropdownContainer.classList.add('gi-combobox-dropdown-container-close');
+          dropdownContainer.classList.remove('gi-combobox-dropdown-container-open');
           closeIcon.classList.remove('gi-rotate-180');
         }
       });

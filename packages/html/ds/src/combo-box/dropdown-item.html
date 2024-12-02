@@ -10,20 +10,21 @@
     <button data-testid="combobox-toggle" class="gi-combobox-toggle">
       <div class="gi-combobox-toggle-content">
         {{ govieParagraph({"content": props.label}) }}
-        {{
-          govieTag({
+        <div class="gi-hidden">
+          {{
+            govieTag({
               "text": "0",
-              "type": "counter",
-              "className": "!gi-hidden"
-          })
-        }}
+              "type": "counter"
+            })
+          }}
+        </div>
       </div>
       {{ govieIcon({"icon": "keyboard_arrow_down"}) }}
     </button>
     <div
       data-testid="combobox-dropdown-container"
       data-element="combobox-dropdown-container"
-      class="gi-combobox-dropdown-container-open !gi-hidden"
+      class="gi-combobox-dropdown-container-close"
     >
       {% if not props.noSearch %}
         <div class="gi-combobox-search">
@@ -34,17 +35,19 @@
             "fullFluid": true
             })
           }}
-          {{
-            govieIconButton({
-              "variant": "flat",
-              "appearance": "dark",
-              "size": "small",
-              "className": "gi-combobox-search-icon !gi-hidden",
-              "icon": {
+          <div class="gi-hidden">
+            {{
+              govieIconButton({
+                "variant": "flat",
+                "appearance": "dark",
+                "size": "small",
+                "className": "gi-combobox-search-icon",
+                "icon": {
                   "icon": "close"
-              }
-            })
-          }}
+                }
+              })
+            }}
+          </div>
         </div>
       {% endif %}
       <div class="gi-combobox-checkbox-container">

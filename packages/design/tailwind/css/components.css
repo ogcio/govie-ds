@@ -703,7 +703,10 @@ input[type='file' i] {
   @apply gi-mb-0 gi-leading-[1.3];
 }
 .gi-combobox-dropdown-container-open {
-  @apply gi-bg-gray-50 gi-relative gi-block gi-border-b;
+  @apply gi-bg-gray-50 gi-relative gi-border-b gi-block;
+}
+.gi-combobox-dropdown-container-close {
+  @apply gi-bg-gray-50 gi-relative gi-border-b gi-hidden;
 }
 .gi-combobox-search {
   @apply gi-py-4 gi-px-3 gi-relative;
