@@ -20,6 +20,7 @@
 {% from 'combo-box/combo-box.html' import govieComboBox %}
 {% from 'alert/alert.html' import govieAlert %}
 {% from 'toast/toast.html' import govieToast %}
+{% from 'breadcrumbs/breadcrumbs.html' import govieBreadcrumbs %}
 {% from 'summary-list/summary-list.html' import govieSummaryList %}
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
@@ -50,6 +51,17 @@
   <hr />
 
   {{ govieHeading({ 'size': 'xl', 'as': 'h1', 'text': 'Heading' }) }}
+
+  <hr />
+
+  <h2>Breadcrumbs</h2>
+    {{ govieBreadcrumbs({ "navItems": [
+        { "label": "Home", "href": "/" },
+        { "ellipsis": true },
+        { "label": "Travel", "href": "/travel" },
+        { "label": "Documentation", "href": "/docs", "currentPage": true }
+    ]}) }}
+  <br />
 
   <hr />
 
