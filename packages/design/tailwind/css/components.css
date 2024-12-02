@@ -911,3 +911,32 @@ input[type='file' i] {
 }
 /* End of Pagination */
 
+/* Breadcrumbs */
+.gi-breadcrumbs {
+  @apply gi-flex gi-items-center;
+}
+
+.gi-breadcrumbs > ol {
+  @apply gi-inline-flex gi-list-none gi-gap-7;
+}
+
+.gi-breadcrumbs > ol > :not([hidden]) ~ :not([hidden]) {
+  @apply gi-mx-0;
+}
+
+.gi-breadcrumbs > ol > li {
+  @apply gi-relative;
+}
+
+.gi-breadcrumbs > ol > li:not(:first-child)::before {
+  @apply gi-block
+    gi-absolute
+    gi-bottom-0
+    gi-left-[-17px]
+    gi-text-gray-500
+    gi-font-bold
+    gi-text-sm;
+  content: '/';
+}
+
+/* End of Breadcrumbs */
