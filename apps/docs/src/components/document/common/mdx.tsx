@@ -1,6 +1,10 @@
 import {
   Alert,
   Blockquote,
+  Breadcrumbs,
+  BreadcrumbCurrentLink,
+  BreadcrumbEllipsis,
+  BreadcrumbLink,
   Button,
   Card,
   CheckboxesGroup,
@@ -32,6 +36,10 @@ import {
   TextArea,
   TextInput,
   Toast,
+  SummaryList,
+  SummaryListRow,
+  SummaryListValue,
+  SummaryListAction,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -49,9 +57,9 @@ import {
 } from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
-import { BasicPage } from '../patterns/basic-page';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
+import { RenderPage } from '../patterns/render-page';
 import { ServiceUnavailable } from '../patterns/service-not-available';
 import { Favicons } from '../resources/favicons';
 import { Fonts } from '../resources/fonts';
@@ -176,7 +184,7 @@ const documentComponents: MDXComponents = {
   Vision: () => <Vision />,
   DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
-  BasicPage: (props) => <BasicPage {...props} />,
+  RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
@@ -218,6 +226,10 @@ const documentComponents: MDXComponents = {
   ),
   Stack: (props) => <Stack {...props} />,
   Pagination: (props) => <Pagination {...props} />,
+  Breadcrumbs: (props) => <Breadcrumbs {...props} />,
+  BreadcrumbCurrentLink: (props) => <BreadcrumbCurrentLink {...props} />,
+  BreadcrumbEllipsis: (props) => <BreadcrumbEllipsis {...props} />,
+  BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
   ComponentContainer: (props) => (
@@ -225,6 +237,10 @@ const documentComponents: MDXComponents = {
   ),
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,
+  SummaryList: (props) => <SummaryList {...props} />,
+  SummaryListRow: (props) => <SummaryListRow {...props} />,
+  SummaryListAction: (props) => <SummaryListAction {...props} />,
+  SummaryListValue: (props) => <SummaryListValue {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

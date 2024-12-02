@@ -96,12 +96,14 @@
             </div>
           </label>
         {% endif %}
-        {% for item in props['tools']['items'] %}
-          <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-            <span class="label">{{ item.label }}</span>
-            {{ govieIcon({"icon": item.icon }) }}
-          </a>
-        {% endfor %}
+        {% if props['tools']['items'] == true %}
+          {% for item in props['tools']['items'] %}
+            <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
+              <span class="label">{{ item.label }}</span>
+              {{ govieIcon({"icon": item.icon }) }}
+            </a>
+          {% endfor %}
+        {% endif %}
         {% if props.tools.menu %}
           <label
             for="MobileMenuTrigger"

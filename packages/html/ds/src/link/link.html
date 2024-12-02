@@ -35,9 +35,16 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro getAriaCurrent(props) %}
+    {% if props.ariaCurrent %}
+      aria-current="{{ props.ariaCurrent }}"
+    {% endif %}
+  {% endmacro %}
+
   <a
     href="{{ props.href }}"
     {{ getAriaLabel(props) | trim }}
+    {{ getAriaCurrent(props) | trim }}
     {{ getExternalAttribute(props.external) | trim }}
     class="
       gi-link

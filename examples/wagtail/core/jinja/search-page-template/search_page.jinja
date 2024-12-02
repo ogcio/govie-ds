@@ -1,0 +1,82 @@
+{% from 'header/header.html' import govieHeader %}
+{% from 'link/link.html' import govieLink %}
+{% from 'footer/footer.html' import govieFooter %}
+{% from 'heading/heading.html' import govieHeading %}
+{% from 'paragraph/paragraph.html' import govieParagraph %}
+{% from 'select/select.html' import govieSelect %}
+{% from 'text-input/text-input.html' import govieTextInput %}
+{% from 'button/button.html' import govieButton %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
+{% from 'combo-box/combo-box.html' import govieComboBox %}
+{% from 'card/card.html' import govieCard %}
+{% from 'pagination/pagination.html' import goviePagination %}
+
+{% from 'vars.jinja' import comboBoxProps, footerProps, HeaderProps, SelectProps %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ static('css/theme.css') }}">
+  <link rel="stylesheet" href="{{ static('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ static('css/ogcio-ds-0.4.4.min.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    {{ govieHeader(HeaderProps) }}
+    <div class="gi-bg-gray-50">
+      <div class="gi-container py-14">
+        <div class="gi-flex gi-flex-col gi-gap-7">
+          <div class="gi-flex sm:gi-gap-7 justify-center items-end">
+            <div class="max-w-[777px] grow gap-4 flex flex-col">
+              {{ govieLink({'href': '#', 'label': 'Home', 'noColor': true}) }}
+              {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Search Results' }) }}
+              {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
+            </div>
+            <div class="hidden sm:block">
+              {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
+            </div>
+            <div class="block sm:hidden">
+              {{ govieIconButton({'icon': {'icon': 'search'}, 'appearance':'dark' }) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gi-container mt-6">
+    <div class="sm:grid sm:grid-cols-4 sm:gap-4">
+      <div class="flex flex-col gap-8">
+        {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
+        {{ govieComboBox(comboBoxProps) }}
+        <div>
+          {{ govieButton({"content": 'Apply filters', "appearance":"dark"}) }}
+        </div>
+      </div>
+      <div class="col-span-3 sm:mt-0 mt-6">
+        <div class="mb-6 flex justify-between items-center">
+          {{ govieSelect(SelectProps) }}
+          <div class="hidden sm:block">
+            {{ govieParagraph({'content': '49357 Results'}) }}
+          </div>
+        </div>
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 1', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 2', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 3', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 4', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          <div class="my-6">
+          {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
+          </div>
+      </div>
+    </div> 
+  </div>
+
+  {{ govieFooter(footerProps) }}
+
+  <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
+</body>
+
+</html>

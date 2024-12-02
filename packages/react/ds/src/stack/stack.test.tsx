@@ -1,5 +1,6 @@
 import { render, cleanup } from '../test-utils.js';
-import { Stack, type StackProps } from './stack.js';
+import { Stack } from './stack.js';
+import type { StackProps } from './types.js';
 
 describe('govieStack', () => {
   afterEach(cleanup);

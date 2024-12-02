@@ -2,38 +2,26 @@
 
 .gi-heading-xl {
   font: theme('typography.DEFAULT.css.h1.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-lg {
   font: theme('typography.DEFAULT.css.h2.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-md {
   font: theme('typography.DEFAULT.css.h3.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-sm {
   font: theme('typography.DEFAULT.css.h4.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-xs {
   font: theme('typography.DEFAULT.css.h5.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 .gi-heading-2xs {
   font: theme('typography.DEFAULT.css.h6.font');
-  margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 
 /* End Paragraph */
@@ -44,8 +32,7 @@
 .gi-paragraph-md,
 .gi-paragraph-xs {
   font: theme('typography.DEFAULT.css.p.font');
-  margin-bottom: 2em;
-  @apply gi-mt-0 gi-max-w-prose;
+  @apply gi-max-w-prose;
 }
 
 .gi-span-lg,
@@ -177,19 +164,26 @@
   @apply gi-decoration-xs
   gi-underline
   gi-underline-offset-[0.2em]
-  gi-text-blue-700
-  hover:gi-text-blue-800
-  visited:gi-text-purple-700
-  hover:gi-decoration-lg
+  gi-text-blue-700;
+}
+
+.gi-link:not([aria-current='page']) {
+  @apply hover:gi-decoration-lg
   focus:gi-no-underline
   focus:gi-rounded-sm
-  focus:gi-text-blue-800
   focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
   focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
-  focus-visible:gi-text-blue-800
   focus-visible:gi-no-underline
   focus-visible:gi-rounded-sm
   focus-visible:gi-outline-none;
+}
+
+.gi-link[aria-current='page'] {
+  @apply gi-text-gray-700 gi-pointer-events-none gi-no-underline focus-visible:gi-outline-none focus-visible:gi-shadow-none;
+}
+
+.gi-link:not(.gi-link-inherit) {
+  @apply hover:gi-text-blue-800 visited:gi-text-purple-700 focus:gi-text-blue-800 focus-visible:gi-text-blue-800;
 }
 
 .gi-link-sm {
@@ -242,3 +236,40 @@
 }
 
 /* End List */
+
+/*
+Summary List
+*/
+
+.gi-summary-list {
+  @apply gi-text-sm md:gi-w-full md:gi-table-fixed gi-antialiased md:gi-table md:gi-border-collapse;
+}
+
+.gi-summary-list > dl {
+  @apply gi-w-full gi-mb-7 gi-mb-4 md:gi-table-row md:gi-text-md md:gi-mb-1;
+}
+
+.gi-summary-list > dl[data-border='true'] {
+  @apply gi-border-b-gray-400 gi-border-b;
+}
+
+.gi-summary-list > dl > dt {
+  @apply gi-mb-1 gi-font-bold;
+}
+
+.gi-summary-list > dl > dd,
+.gi-summary-list > dl > dl {
+  @apply gi-block gi-mb-4 md:gi-pt-2 md:gi-pb-2 md:gi-m-0 md:gi-table-cell md:gi-text-md;
+}
+
+.gi-summary-list-value {
+  @apply md:gi-break-words;
+}
+
+.gi-summary-list-actions {
+  @apply md:gi-text-right;
+}
+
+/*
+End of Summary List
+*/

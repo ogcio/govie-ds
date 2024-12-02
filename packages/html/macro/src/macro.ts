@@ -12,6 +12,10 @@ function validateProperties(
 }
 
 function createNunjucksEnvironment(path = '') {
+  // @ts-expect-error add a custom 'append' method to simulate the behaviour of python's append
+  Array.prototype.append = function (value) {
+    this.push(value);
+  };
   const environment = nunjucks.configure(path, {
     autoescape: true,
     noCache: true,
