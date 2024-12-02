@@ -106,7 +106,7 @@ export function Header({
           </div>
         </div>
       )}
-      <div id="HeaderMenuContainer" className={containerClassName}>
+      <div id="HeaderContainer" className={containerClassName}>
         <div className={menuContainerClassNames}>
           <div className="gi-header-logo">
             {logo?.href && (
