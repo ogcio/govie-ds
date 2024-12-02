@@ -940,3 +940,16 @@ input[type='file' i] {
 }
 
 /* End of Breadcrumbs */
+
+/* Table */
+
+.gi-table {
+  @apply gi-w-full gi-border-spacing-0 gi-border-collapse gi-text-md;
+}
+
+.gi-table-th,
+.gi-table-td {
+  @apply gi-text-left gi-align-top gi-pl-0 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle;
+}
+
+/* End of Table */
