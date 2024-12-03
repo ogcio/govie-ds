@@ -93,6 +93,7 @@ export const Dismissible: Story = {
     title: 'Dismissible',
     description: 'This is some content',
     dismissible: true,
+    duration: 0
   },
 };
 
