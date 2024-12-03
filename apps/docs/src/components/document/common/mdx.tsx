@@ -201,7 +201,10 @@ const documentComponents: MDXComponents = {
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
   ComponentContainer: (props) => (
-    <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
+    <div
+      {...props}
+      className={cn('my-xl stroke-gray-950 not-prose', props.className)}
+    />
   ),
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,
