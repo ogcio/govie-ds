@@ -18,10 +18,10 @@
   {% set menuDividerClassNames = "gi-header-separator" %}
   {% set overlayClassNames = "gi-header-overlay" %}
   {% set containerClassName = "gi-layout-container-full-width" if props.fullWidth else "gi-layout-container" %}
-  {% set toolItems = [] %}}
+  {% set toolItems = [] %}
   {% if 'tools' in props %}
     {% if 'items' in props.tools %}
-      {% set toolItems = props.tools['items'] %}}
+      {% set toolItems = props.tools['items'] %}
     {% endif %}
   {% endif %}
 
