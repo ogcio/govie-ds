@@ -24,6 +24,7 @@ function HeaderSearch({
           <TextInput
             name="search_query"
             aria-label="Search the website"
+            placeholder="Enter search term"
             id="search"
             type="text"
             className="gi-flex-auto"
