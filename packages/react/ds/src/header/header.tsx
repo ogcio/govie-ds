@@ -1,8 +1,6 @@
 import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
-import { Container } from '../container/container.js';
-import { Icon } from '../icon/icon.js';
-import { IconId } from '../icon/icon.js';
+import { Icon, IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 
@@ -11,6 +9,7 @@ export type HeaderProps = {
   logo?: {
     image?: string;
     href?: string;
+    alt?: string;
   };
   tools?: {
     search?: {
@@ -41,6 +40,24 @@ export type HeaderProps = {
   fullWidth?: boolean;
 };
 
+function getLogo({ logo }: HeaderProps) {
+  const logoLargeClassNames = 'gi-header-logo-lg';
+  const logoSmallClassNames = 'gi-header-logo-sm';
+
+  return logo?.image ? (
+    <img
+      alt={logo.alt}
+      className="gi-object-contain gi-h-10 lg:gi-h-12"
+      src={logo.image}
+    />
+  ) : (
+    <>
+      <GovieLogo className={logoLargeClassNames} />
+      <GovieLogoSmall className={logoSmallClassNames} />
+    </>
+  );
+}
+
 export function Header({
   title,
   tools,
@@ -58,8 +75,6 @@ export function Header({
   const languageBarClassNames = 'gi-header-language-bar';
   const languageItemClassNames = 'gi-header-language-item';
   const menuContainerClassNames = 'gi-header-menu';
-  const logoLargeClassNames = 'gi-header-logo-lg';
-  const logoSmallClassNames = 'gi-header-logo-sm';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
   const navLinkContainerClassNames = 'gi-header-nav';
@@ -91,51 +106,16 @@ export function Header({
           </div>
         </div>
       )}
-      <div id="HeaderMenuContainer" className={containerClassName}>
+      <div id="HeaderContainer" className={containerClassName}>
         <div className={menuContainerClassNames}>
-          {logo?.href ? (
-            <>
-              <a
-                href={logo.href}
-                className={logoLargeClassNames}
-                aria-label="Go to the home page"
-              >
-                {logo.image ? (
-                  <img className="gi-object-contain gi-h-12" src={logo.image} />
-                ) : (
-                  <GovieLogo />
-                )}
+          <div className="gi-header-logo">
+            {logo?.href && (
+              <a href={logo.href} aria-label="Go to the home page">
+                {getLogo({ logo })}
               </a>
-              <a
-                href={logo.href}
-                className={logoSmallClassNames}
-                aria-label="Go to the home page"
-              >
-                {logo.image ? (
-                  <img className="gi-object-contain gi-h-10" src={logo.image} />
-                ) : (
-                  <GovieLogoSmall />
-                )}
-              </a>
-            </>
-          ) : (
-            <>
-              <span className={logoLargeClassNames}>
-                {logo?.image ? (
-                  <img className="gi-object-contain gi-h-12" src={logo.image} />
-                ) : (
-                  <GovieLogo />
-                )}
-              </span>
-              <span className={logoSmallClassNames}>
-                {logo?.image ? (
-                  <img className="gi-object-contain gi-h-10" src={logo.image} />
-                ) : (
-                  <GovieLogoSmall />
-                )}
-              </span>
-            </>
-          )}
+            )}
+            {!logo?.href && getLogo({ logo })}
+          </div>
 
           <div className={appTitleClassNames}>{title}</div>
 
