@@ -136,6 +136,7 @@ export const Default: Story = {
           <TableRow key={`row-${row.id}`}>
             <TableData>
               <Checkbox
+                label=" "
                 checkboxId={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
                 dataElement={`checkbox-id-${row.id}`}
@@ -205,6 +206,7 @@ export const TableWithFooter: Story = {
           <TableRow key={`row-${row.id}`}>
             <TableData>
               <Checkbox
+                label=" "
                 checkboxId={`project-select-${row.id}`}
                 value={row.id.toString()}
                 dataElement={`project-checkbox-${row.id}`}
