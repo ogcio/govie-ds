@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button/button.js';
 import { Container } from '../container/container.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
-import { Paragraph } from '../paragraph/paragraph.js';
+import { Select } from '../select/select.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from '../text-input/text-input.js';
+import HeaderSearch from './components/header-search.js';
 import { Header } from './header.js';
 
 const meta = {
@@ -18,23 +17,21 @@ type Story = StoryObj<typeof meta>;
 
 const SlotExample1 = () => (
   <Container>
-    <div className="gi-text-sm">
-      <Stack gap={2}>
-        <List
-          type={TypeEnum.Bullet}
-          items={[
-            <Link size="sm" href="#">
-              Citizens Information - Services and Rights
-            </Link>,
-            <Link size="sm" href="#">
-              Revenue - Taxes and Payments
-            </Link>,
-            <Link size="sm" href="#">
-              Department of Social Protection
-            </Link>,
-          ]}
-        ></List>
-      </Stack>
+    <div className="gi-max-w-[250px]">
+      <List
+        type={TypeEnum.Bullet}
+        items={[
+          <Link size="sm" href="#">
+            Citizens Information - Services and Rights
+          </Link>,
+          <Link size="sm" href="#">
+            Revenue - Taxes and Payments
+          </Link>,
+          <Link size="sm" href="#">
+            Department of Social Protection
+          </Link>,
+        ]}
+      />
     </div>
   </Container>
 );
@@ -42,17 +39,36 @@ const SlotExample1 = () => (
 const SlotExample2 = () => {
   return (
     <Container>
-      <div className="gi-max-w-[250px]">
-        <Stack direction="column" gap={3}>
-          <Paragraph>Name</Paragraph>
-          <TextInput className="gi-w-full" disabled value="Joe Doe" />
-          <Paragraph>Passport Number</Paragraph>
-          <TextInput className="gi-w-full" disabled value="XX9999999999" />
-          <Stack direction="column" itemsAlignment="end">
-            <Button>Edit</Button>
-          </Stack>
-        </Stack>
-      </div>
+      <Stack direction="column" gap={3}>
+        <Select
+          id="slot-example-2"
+          options={[
+            {
+              label: 'Languages',
+              value: 'languages',
+              groupName: 'Languages',
+              items: [
+                {
+                  label: 'Gaeilge',
+                  value: 'gaeilge',
+                },
+                {
+                  label: 'English',
+                  value: 'english',
+                },
+                {
+                  label: 'Spanish',
+                  value: 'spanish',
+                },
+                {
+                  label: 'Italian',
+                  value: 'italian',
+                },
+              ],
+            },
+          ]}
+        />
+      </Stack>
     </Container>
   );
 };
@@ -105,10 +121,6 @@ export const Default: Story = {
         icon: 'menu',
         label: 'Menu',
       },
-      search: {
-        action: '/search_page',
-        label: 'Search',
-      },
       items: [
         {
           href: '/item1',
@@ -117,16 +129,22 @@ export const Default: Story = {
         },
         {
           href: '#',
-          label: 'Links',
-          icon: 'thumb_up',
+          label: 'Faq',
+          icon: 'info',
           keepOnMobile: true,
           slot: <SlotExample1 />,
+        },
+        {
+          href: '/search_page',
+          label: 'Search',
+          keepOnMobile: true,
+          slot: <HeaderSearch />,
         },
 
         {
           href: '#',
-          label: 'Profile',
-          icon: 'info',
+          label: 'Languages',
+          icon: 'mic',
           keepOnMobile: true,
           slot: <SlotExample2 />,
         },
@@ -148,37 +166,6 @@ export const Default: Story = {
         label: 'Gaeilge',
       },
     ],
-  },
-};
-
-export const WithSlotsOnly: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    tools: {
-      items: [
-        {
-          label: 'Slot 1',
-          icon: 'download',
-          href: '#',
-          slot: <SlotExample1 />,
-        },
-        {
-          label: 'Slot 2',
-          icon: 'info',
-          href: '#',
-          slot: <SlotExample2 />,
-        },
-        {
-          label: 'Keep in mobile',
-          icon: 'edit',
-          href: '#',
-          keepOnMobile: true,
-          slot: <Container>Empty container show in mobile</Container>,
-        },
-      ],
-    },
   },
 };
 

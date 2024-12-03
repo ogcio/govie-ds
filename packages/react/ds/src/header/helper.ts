@@ -131,7 +131,7 @@ export const attachEventsToItemActionTriggers = () => {
 };
 
 export const attachEventsToSearchTrigger = () => {
-  const searchTrigger = document.querySelector(`#SearchTrigger`); // Prefer querySelector
+  const searchTrigger = document.querySelector(`#SearchTrigger`);
 
   if (searchTrigger) {
     searchTrigger.addEventListener('change', handleSearchChange);

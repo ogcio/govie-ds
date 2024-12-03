@@ -11,7 +11,10 @@ type SloTProps = {
   index: number;
 };
 
-export const addNewGovieHeaderSlotElement = ({ index, item }: SloTProps) => {
+export const addNewGovieHeaderSlotElement = (
+  index: number,
+  { slot }: { slot: React.ReactNode },
+) => {
   const parent = document.querySelector('#GovieHeader');
 
   if (parent) {
@@ -22,7 +25,7 @@ export const addNewGovieHeaderSlotElement = ({ index, item }: SloTProps) => {
 
     parent.append(childNode);
     const root = ReactDOMClient.createRoot(childNode);
-    root.render(item.slot);
+    root.render(slot);
 
     return () => {
       root.unmount();
@@ -33,14 +36,14 @@ export const addNewGovieHeaderSlotElement = ({ index, item }: SloTProps) => {
 
 const SlotContainer = ({ index, item }: SloTProps) => {
   useEffect(() => {
-    const cleanup = addNewGovieHeaderSlotElement({ index, item });
+    const cleanup = addNewGovieHeaderSlotElement(index, item);
     return cleanup;
   }, [index, item]);
 
   return null;
 };
 
-const SlotAction = ({ item, index }: SloTProps) => {
+const SlotItemAction = ({ item: { label, icon }, index }: SloTProps) => {
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
@@ -53,11 +56,8 @@ const SlotAction = ({ item, index }: SloTProps) => {
         data-index={index}
         type="checkbox"
       />
-      {item.label && <span className="label">{item.label}</span>}
-      <Icon
-        icon={item.icon || 'search'}
-        id={`ItemIconActionTrigger-${index}`}
-      />
+      {label && <span className="label">{label}</span>}
+      <Icon icon={icon || 'search'} id={`ItemIconActionTrigger-${index}`} />
       <Icon
         className="gi-hidden close-icon"
         id={`ItemCloseTrigger-${index}`}
@@ -67,10 +67,10 @@ const SlotAction = ({ item, index }: SloTProps) => {
   );
 };
 
-export const Slot = ({ ...props }: SloTProps) => {
+export const SlotItem = ({ ...props }: SloTProps) => {
   return (
     <>
-      <SlotAction {...props} />
+      <SlotItemAction {...props} />
       <SlotContainer {...props} />
     </>
   );

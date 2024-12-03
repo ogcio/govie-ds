@@ -7,7 +7,7 @@ import { Icon } from '../icon/icon.js';
 import { IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
-import { Slot } from './components/header-slot.js';
+import { SlotItem } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
@@ -201,21 +201,19 @@ export function Header({
               </div>
             )}
             {tools?.items &&
-              tools?.items.map((item, index) => {
+              tools?.items.map(({ href, icon, label, slot }, index) => {
                 return (
                   <div className="gi-hidden md:gi-flex">
-                    {item.slot ? (
-                      <Slot index={index} item={item} />
+                    {slot ? (
+                      <SlotItem index={index} item={{ slot, icon, label }} />
                     ) : (
                       <a
                         className={toolItemClassNames}
-                        href={item.href}
-                        aria-label={item.label || `link ${index}`}
+                        href={href}
+                        aria-label={label || `link ${index}`}
                       >
-                        {item.label && (
-                          <span className="label">{item.label}</span>
-                        )}
-                        {item.icon && <Icon icon={item.icon} />}
+                        {label && <span className="label">{label}</span>}
+                        {icon && <Icon icon={icon} />}
                       </a>
                     )}
                   </div>
