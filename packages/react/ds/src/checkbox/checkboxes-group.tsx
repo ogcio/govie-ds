@@ -69,11 +69,9 @@ export const CheckboxesGroup = ({
         {title && (
           <legend className="gi-checkbox-group-title">
             {title.asHeading ? (
-              <div className="gi-mb-2">
-                <Heading size={title.asHeading.size} as={title.asHeading.as}>
-                  {title.value}
-                </Heading>
-              </div>
+              <Heading size={title.asHeading.size} as={title.asHeading.as}>
+                {title.value}
+              </Heading>
             ) : (
               title.value
             )}
