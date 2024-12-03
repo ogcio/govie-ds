@@ -51,12 +51,14 @@
         </div>
       {% endif %}
       <div class="gi-combobox-checkbox-container">
-        {{
-          govieParagraph({
-              "className": "gi-combobox-checkbox-paragraph !gi-hidden",
-              "content": "No results found."
-          })
-        }}
+        <div class="gi-hidden">
+          {{
+            govieParagraph({
+                "className": "gi-combobox-checkbox-paragraph",
+                "content": "No results found."
+            })
+          }}
+        </div>
         {% for option in props['options'] %}
           {{
             govieCheckbox({
