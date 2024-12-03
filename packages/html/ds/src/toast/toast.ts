@@ -29,7 +29,9 @@ export class Toast extends BaseComponent<ToastOptions> {
     this.notyf = notyf;
 
     setTimeout(() => {
-      const notyfContainer = document.querySelectorAll('.notyf .notyf__toast') as NodeListOf<HTMLElement>;
+      const notyfContainer = document.querySelectorAll(
+        '.notyf .notyf__toast',
+      ) as NodeListOf<HTMLElement>;
 
       for (const toast of notyfContainer) {
         toast

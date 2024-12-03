@@ -60,7 +60,7 @@ function HeaderMenu({ languages, navLinks, searchProps }: HeaderMenuProps) {
         ))}
         {searchProps && (
           <li className="xs:gi-hidden gi-mt-8">
-            <HeaderSearch {...searchProps} className="!gi-h-40" />
+            <HeaderSearch {...searchProps} />
           </li>
         )}
       </ul>
