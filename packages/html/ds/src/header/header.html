@@ -18,6 +18,12 @@
   {% set menuDividerClassNames = "gi-header-separator" %}
   {% set overlayClassNames = "gi-header-overlay" %}
   {% set containerClassName = "gi-layout-container-full-width" if props.fullWidth else "gi-layout-container" %}
+  {% set toolItems = [] %}}
+  {% if 'tools' in props %}
+    {% if 'items' in props.tools %}
+      {% set toolItems = props.tools['items'] %}}
+    {% endif %}
+  {% endif %}
 
   <header id="GovieHeader" class="{{ headerClassNames }}">
     {% if props.languages %}
@@ -96,7 +102,7 @@
             </div>
           </label>
         {% endif %}
-        {% for item in props['tools']['items'] %}
+        {% for item in toolItems %}
           <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
             <span class="label">{{ item.label }}</span>
             {{ govieIcon({"icon": item.icon }) }}
