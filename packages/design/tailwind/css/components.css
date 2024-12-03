@@ -76,7 +76,7 @@ input[type='text'] {
   @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input {
-  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 gi-grid gi-place-content-center gi-input-disabled-state;
+  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
 }
 
 /* End of Text Input */
