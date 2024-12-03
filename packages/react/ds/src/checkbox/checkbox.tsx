@@ -18,6 +18,7 @@ type CheckboxType = {
   className?: string;
   checked?: boolean;
   disabled?: boolean;
+  ariaLabel?: string;
 };
 
 const Checkbox = ({
@@ -31,6 +32,7 @@ const Checkbox = ({
   className,
   checked,
   disabled,
+  ariaLabel,
 }: CheckboxType) => {
   return (
     <div className={`gi-checkbox-container ${className && className}`}>
@@ -42,6 +44,7 @@ const Checkbox = ({
         value={value}
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
         checked={checked}
+        aria-label={ariaLabel}
         disabled={disabled}
         type="checkbox"
       />
