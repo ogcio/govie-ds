@@ -97,38 +97,6 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  h1: ({ children, id }) => (
-    <Heading as="h1" id={id}>
-      {children}
-    </Heading>
-  ),
-  h2: ({ children, id }) => (
-    <Heading as="h2" id={id}>
-      {children}
-    </Heading>
-  ),
-  h3: ({ children, id }) => (
-    <Heading as="h3" id={id}>
-      {children}
-    </Heading>
-  ),
-  h4: ({ children, id }) => (
-    <Heading as="h4" id={id}>
-      {children}
-    </Heading>
-  ),
-  h5: ({ children, id }) => (
-    <Heading as="h5" id={id}>
-      {children}
-    </Heading>
-  ),
-  h6: ({ children, id }) => (
-    <Heading as="h6" id={id}>
-      {children}
-    </Heading>
-  ),
-  p: ({ children }) => <Paragraph>{children}</Paragraph>,
-  span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
   ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
