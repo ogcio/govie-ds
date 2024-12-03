@@ -1,5 +1,14 @@
 import React from 'react';
 
-export function TableData(props: React.PropsWithChildren) {
-  return <td className="gi-table-td">{props.children}</td>;
+interface TableDataProps extends React.PropsWithChildren {
+  className?: string;
+  colSpan?: number;
+}
+
+export function TableData({ children, className, colSpan }: TableDataProps) {
+  return (
+    <td className={`gi-table-td ${className || ''}`} colSpan={colSpan}>
+      {children}
+    </td>
+  );
 }
