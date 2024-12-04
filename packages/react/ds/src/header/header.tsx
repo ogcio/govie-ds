@@ -91,7 +91,9 @@ export function Header({
   const overlayClassNames = 'gi-header-overlay';
 
   const showMobileMenu =
-    navLinks || tools?.items?.some((item) => item.slot && item.keepOnMobile);
+    navLinks ||
+    tools?.items?.some((item) => item.slot && item.keepOnMobile) ||
+    !!tools?.search;
 
   useEffect(() => {
     attachEventsToItemActionTriggers();
@@ -184,7 +186,7 @@ export function Header({
             {tools?.items &&
               tools?.items.map(({ href, icon, label, slot }, index) => {
                 return (
-                  <div className="gi-hidden md:gi-flex">
+                  <div className="gi-hidden lg:gi-flex">
                     {slot ? (
                       <SlotItem index={index} item={{ slot, icon, label }} />
                     ) : (
@@ -203,7 +205,7 @@ export function Header({
             {showMobileMenu && (
               <label
                 htmlFor="MobileMenuTrigger"
-                className={`${toolItemClassNames} md:gi-hidden`}
+                className={`${toolItemClassNames} lg:gi-hidden`}
               >
                 <input
                   className="gi-block gi-w-0 gi-absolute gi-h-0"
@@ -220,7 +222,10 @@ export function Header({
         </div>
       </div>
       {tools?.search && (
-        <div id="SearchContainer" className={`gi-hidden gi-bg-gray-50 gi-p-4`}>
+        <div
+          id="SearchContainer"
+          className={`gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800`}
+        >
           <HeaderSearch {...tools.search} />
         </div>
       )}

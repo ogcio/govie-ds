@@ -103,13 +103,13 @@ function HeaderMenu({
   return (
     <div
       id="HeaderMenuContainer"
-      className="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen md:gi-hidden"
+      className="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen lg:gi-hidden"
     >
       <div className="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
-            className="gi-border gi-border-solid gi-border-transparent md:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+            className="gi-border gi-border-solid gi-border-transparent lg:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
           >
             <span className="gi-text-2md gi-font-bold">Close</span>
             <Icon icon={'close'} />
@@ -142,7 +142,7 @@ function HeaderMenu({
           </li>
         ))}
         {searchProps && (
-          <li className="gi-mt-8">
+          <li className="gi-mt-8 sm:gi-hidden">
             <HeaderSearch {...searchProps} />
           </li>
         )}

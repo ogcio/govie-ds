@@ -21,7 +21,8 @@ export const addNewGovieHeaderSlotElement = (
     const childNode = document.createElement('div');
     childNode.id = `SlotContainer-${index}`;
     childNode.dataset.index = index.toString();
-    childNode.className = 'gi-hidden gi-bg-gray-50 gi-p-4';
+    childNode.className =
+      'gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800';
 
     parent.append(childNode);
     const root = ReactDOMClient.createRoot(childNode);

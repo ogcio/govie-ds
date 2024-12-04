@@ -360,7 +360,7 @@ export const tabletView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
-      defaultViewport: 'pixel',
+      defaultViewport: 'ipad',
     },
   },
   args: {
@@ -370,6 +370,7 @@ export const tabletView: Story = {
     tools: {
       search: {
         action: '/search-page',
+        label: 'Search',
       },
     },
     navLinks: [
