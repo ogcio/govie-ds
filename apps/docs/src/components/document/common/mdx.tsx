@@ -51,10 +51,6 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Faq, Faqs } from '../faqs/faqs';
-import {
-  DeveloperRecommendation,
-  DevelopersAdvice,
-} from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
@@ -150,12 +146,10 @@ const documentComponents: MDXComponents = {
   Faq: (props) => <Faq {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
-  DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
   RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
-  DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
