@@ -21,7 +21,7 @@ export const TabList = ({
     ] as HTMLElement[];
 
     for (const tabPanel of tabPanels) {
-      tabPanel.classList.remove('!gi-block');
+      tabPanel.style.display = 'none';
     }
     const ariaControlAttribute =
       event.currentTarget.getAttribute('aria-controls');
@@ -33,7 +33,7 @@ export const TabList = ({
       `#${ariaControlAttribute}`,
     ) as HTMLElement;
 
-    tabpanel.classList.add('!gi-block');
+    tabpanel.style.display = 'block';
   };
 
   const onTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {

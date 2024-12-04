@@ -70,12 +70,12 @@ class TabsAutomatic {
       if (currentTab === tab) {
         tab.setAttribute('aria-selected', 'true');
         tab.classList.add('gi-tab-item-checked');
-        this.tabPanels[index].classList.add('!gi-block');
+        this.tabPanels[index].style.display = 'block';
         tab.blur();
       } else {
         tab.setAttribute('aria-selected', 'false');
         tab.classList.remove('gi-tab-item-checked');
-        this.tabPanels[index].classList.remove('!gi-block');
+        this.tabPanels[index].style.display = 'none';
       }
     }
   }

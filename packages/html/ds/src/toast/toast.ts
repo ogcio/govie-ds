@@ -29,13 +29,15 @@ export class Toast extends BaseComponent<ToastOptions> {
     this.notyf = notyf;
 
     setTimeout(() => {
-      const notyfContainer = document.querySelectorAll('.notyf .notyf__toast');
+      const notyfContainer = document.querySelectorAll(
+        '.notyf .notyf__toast',
+      ) as NodeListOf<HTMLElement>;
 
       for (const toast of notyfContainer) {
         toast
           .querySelector('.gi-toast-dismiss')
           ?.addEventListener('click', () => {
-            toast.classList.add('!gi-hidden');
+            toast.style.display = 'none';
           });
       }
     });

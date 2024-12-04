@@ -70,13 +70,13 @@ input[type='text'] {
   @apply gi-flex gi-items-center;
 }
 .gi-text-input-prefix {
-  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input-suffix {
-  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-leading-5 xs:!gi-leading-5 gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input {
-  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial  gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-input-disabled-state;
+  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
 }
 
 /* End of Text Input */
@@ -179,7 +179,7 @@ input[type='text'] {
 
 /* File-upload */
 .gi-file-upload-input {
-  @apply gi-rounded-sm xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border gi-focus-state-outline gi-focus-state-border gi-z-1;
+  @apply gi-rounded-sm xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-p-[3px] gi-max-w-[100%] gi-border-transparent gi-flex-initial gi-ml-[-5px] gi-border-sm gi-border-solid gi-box-border gi-focus-state-outline gi-focus-state-border gi-z-1;
 }
 
 /* End of File-upload */
@@ -384,7 +384,7 @@ input[type='text'] {
 }
 
 .gi-header-title {
-  @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white !gi-m-0 !gi-ml-4 md:!gi-ml-6 lg:!gi-ml-12 gi-grow gi-hidden lg:gi-block;
+  @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow gi-hidden lg:gi-block;
 }
 .gi-header-tool-item {
   @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer;
@@ -597,11 +597,11 @@ input[type='file' i] {
 }
 
 .gi-card-title {
-  @apply gi-text-md gi-font-bold !gi-mb-2 gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
+  @apply gi-text-md gi-font-bold gi-mb-2 gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
 }
 
 .gi-card-subheading {
-  @apply gi-text-gray-600 gi-stroke-gray-600 !gi-my-0 gi-text-sm gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
+  @apply gi-text-gray-600 gi-stroke-gray-600 gi-text-sm gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
 }
 
 .gi-card-paragraph p {
@@ -703,7 +703,10 @@ input[type='file' i] {
   @apply gi-mb-0 gi-leading-[1.3];
 }
 .gi-combobox-dropdown-container-open {
-  @apply gi-bg-gray-50 gi-relative gi-block gi-border-b;
+  @apply gi-bg-gray-50 gi-relative gi-border-b gi-block;
+}
+.gi-combobox-dropdown-container-close {
+  @apply gi-bg-gray-50 gi-relative gi-border-b gi-hidden;
 }
 .gi-combobox-search {
   @apply gi-py-4 gi-px-3 gi-relative;
@@ -727,7 +730,7 @@ input[type='file' i] {
   @apply gi-items-center;
 }
 .gi-combobox-checkbox-paragraph {
-  @apply gi-text-center gi-w-full !gi-max-w-none;
+  @apply gi-text-center gi-w-full;
 }
 .gi-combobox-checkbox {
   @apply gi-px-3 hover:gi-bg-gray-200;
@@ -780,7 +783,7 @@ input[type='file' i] {
 }
 
 .gi-alert-base-dismissible {
-  @apply gi-alert-base !gi-pr-8;
+  @apply gi-alert-base;
 }
 
 .gi-alert-title {
@@ -789,10 +792,6 @@ input[type='file' i] {
 
 .gi-alert-container {
   @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2;
-}
-
-.gi-alert-content {
-  @apply !gi-mb-0;
 }
 
 .gi-alert-dismiss {
@@ -821,29 +820,37 @@ input[type='file' i] {
 
 /* Native notyf classes */
 .notyf {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-gap-6;
 }
 .notyf__toast {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
   animation-delay: 0s !important;
 }
 .notyf__message {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-w-full;
   animation-delay: 0s !important;
 }
 .notyf__wrapper {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-m-0 !gi-p-0;
 }
 .notyf__toast:has(.gi-toast-info) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
 }
 .notyf__toast:has(.gi-toast-success) {
+  /* The important classes are needed since we need to overide the notyf library package  styles */
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
 }
 .notyf__toast:has(.gi-toast-warning) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
 }
 .notyf__toast:has(.gi-toast-danger) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
 }
 
@@ -854,7 +861,7 @@ input[type='file' i] {
 }
 
 .gi-toast-base-dismissible {
-  @apply gi-toast-base !gi-pr-10;
+  @apply gi-toast-base;
 }
 
 .gi-toast-title {
@@ -863,10 +870,6 @@ input[type='file' i] {
 
 .gi-toast-container {
   @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-0;
-}
-
-.gi-toast-content {
-  @apply !gi-mb-0;
 }
 
 .gi-toast-dismiss {

@@ -3,6 +3,7 @@
 {% from 'heading/helpers.html' import getHeadingClasses %}
 {% from 'hint-text/hint-text.html' import govieHintText %}
 {% from 'error-text/error-text.html' import govieErrorText %}
+{% from 'heading/heading.html' import govieHeading %}
 
 {% macro govieCheckboxesGroup(props) %}
   <div
@@ -17,20 +18,23 @@
       {% if props.title %}
         <legend class="gi-checkbox-group-title">
           {% if props.title.asHeading %}
-            {# prettier-ignore-start #}
-        <{{ props.title.asHeading.as }} class="!gi-mt-0 !gi-mb-[var(--gieds-space-2)] {{ getHeadingClasses(props.title.asHeading.size, props.title.asHeading.as) | trim }}">
-          {{ props.title.value }}
-        </{{ props.title.asHeading.as }}>
-        {# prettier-ignore-end #}
+            <div class="gi-mb-2">
+              {{
+                govieHeading({
+                  "size": props.title.asHeading.size,
+                  "as": props.title.asHeading.as,
+                  "text": props.title.value
+                })
+              }}
+            </div>
           {% else %}
             {{ props.title.value }}
           {% endif %}
           {% if props.title.hint %}
-            <div data-testid="title-hint">
+            <div class="gi-mb-2" data-testid="title-hint">
               {{
                 govieHintText({
-                  "content": props.title.hint,
-                  "classNames": "!gi-mb-[var(--gieds-space-2)]"
+                  "content": props.title.hint
                 })
               }}
             </div>
@@ -44,8 +48,7 @@
         {% if props.errorMessage %}
           {{
             govieErrorText({
-              "content": props.errorMessage,
-              "classNames": "!gi-mb-0"
+              "content": props.errorMessage
             })
           }}
         {% endif %}
