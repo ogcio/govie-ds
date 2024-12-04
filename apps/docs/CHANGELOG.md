@@ -36,6 +36,24 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.33.0](https://github.com/ogcio/govie-ds/compare/docs-v0.32.0...docs-v0.33.0) (2024-12-04)
+
+
+### Features
+
+* breadcrumbs component ([#334](https://github.com/ogcio/govie-ds/issues/334)) ([8d21c6a](https://github.com/ogcio/govie-ds/commit/8d21c6afbe622df24c4c2f3353f00a72aed1840b))
+* search pattern ([#344](https://github.com/ogcio/govie-ds/issues/344)) ([ee312ee](https://github.com/ogcio/govie-ds/commit/ee312eed3453e6d80b75e3b619580a6f72799f5c))
+* summary list component ([#339](https://github.com/ogcio/govie-ds/issues/339)) ([f6682be](https://github.com/ogcio/govie-ds/commit/f6682be105126afff5dd41cc1ddcc0d5d58cdef9))
+
+
+### Bug Fixes
+
+* adjust routes for iframes ([#346](https://github.com/ogcio/govie-ds/issues/346)) ([a03aa87](https://github.com/ogcio/govie-ds/commit/a03aa870fa64521c8b0ba6547093ceb32698f617))
+* change order of scripts ([#345](https://github.com/ogcio/govie-ds/issues/345)) ([6069bf9](https://github.com/ogcio/govie-ds/commit/6069bf92db5f18ffc515d2a92cdcbda5fa9fc67e))
+* js import search template ([#347](https://github.com/ogcio/govie-ds/issues/347)) ([1d57480](https://github.com/ogcio/govie-ds/commit/1d574806298e0ffe49f51399cbd12c9ccc69cc56))
+* pagination consistent width across html and react platforms ([#337](https://github.com/ogcio/govie-ds/issues/337)) ([0d8cef1](https://github.com/ogcio/govie-ds/commit/0d8cef1d4a66507f31ebf995c9bc23ab8143b73e))
+* use prose for margins ([#348](https://github.com/ogcio/govie-ds/issues/348)) ([0a542ea](https://github.com/ogcio/govie-ds/commit/0a542eaf149259268cd440b47490399672fb96d5))
+
 ## [0.32.0](https://github.com/ogcio/govie-ds/compare/docs-v0.31.0...docs-v0.32.0) (2024-11-25)
 
 
