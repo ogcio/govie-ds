@@ -8,7 +8,7 @@ interface TableDataProps extends React.PropsWithChildren {
 
 export function TableData({ children, className, colSpan }: TableDataProps) {
   return (
-    <td className={cn('gi-table-td', className || '')} colSpan={colSpan}>
+    <td className={cn('gi-table-td', className)} colSpan={colSpan}>
       {children}
     </td>
   );
