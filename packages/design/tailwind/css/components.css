@@ -943,3 +943,43 @@ input[type='file' i] {
 }
 
 /* End of Breadcrumbs */
+
+/* Begin Progress Stepper */
+
+.gi-progress-stepper {
+  @apply gi-w-full gi-flex gi-items-start;
+}
+
+.gi-progress-stepper-step {
+  @apply gi-text-white 
+  gi-rounded-full 
+  gi-w-10
+   gi-h-10
+    gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg;
+}
+
+.gi-progress-stepper-step-connector {
+  @apply gi-absolute
+  
+   gi-flex-1 gi-top-[20px] gi-left-[calc(-50%_+_20px)] gi-right-[calc(50%_+_20px)];
+}
+
+.gi-progress-stepper-step-connector > span {
+  @apply gi-border-t-sm
+  gi-block
+  gi-border-t-emerald-800;
+}
+
+.gi-progress-stepper-step[data-current='true'],
+.gi-progress-stepper-step[data-completed='true'] {
+  @apply gi-bg-emerald-800;
+}
+
+.gi-progress-stepper-step[data-next='true'] {
+  @apply gi-bg-gray-700;
+}
+
+.gi-progress-stepper-step[data-current='true'] {
+  @apply gi-shadow-[0_0_0_8px_rgba(0,77,68,0.2)];
+}
+/*End Progress Stepper */
