@@ -36,6 +36,7 @@ const iconProps: any = {
   },
   onClick: () => {},
   variant: 'flat',
+  appearance: 'dark',
   size: 'large',
 };
 
@@ -226,12 +227,14 @@ export const TableWithFooter: Story = {
                   icon={{ icon: 'edit' }}
                   onClick={() => alert(`Edit project ${row.id}`)}
                   variant="flat"
+                  appearance="dark"
                   size="large"
                 />
                 <IconButton
                   icon={{ icon: 'delete' }}
                   onClick={() => alert(`Delete project ${row.id}`)}
                   variant="flat"
+                  appearance="dark"
                   size="large"
                 />
               </div>
