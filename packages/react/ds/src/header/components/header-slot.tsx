@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import { Icon } from '../../icon/icon.js';
 
-type SloTProps = {
+type SlotProps = {
   item: {
     slot: React.ReactNode;
     label?: string;
@@ -35,7 +35,7 @@ export const addNewGovieHeaderSlotElement = (
   }
 };
 
-const SlotContainer = ({ index, item }: SloTProps) => {
+const SlotContainer = ({ index, item }: SlotProps) => {
   useEffect(() => {
     const cleanup = addNewGovieHeaderSlotElement(index, item);
     return cleanup;
@@ -44,7 +44,7 @@ const SlotContainer = ({ index, item }: SloTProps) => {
   return null;
 };
 
-const SlotItemAction = ({ item: { label, icon }, index }: SloTProps) => {
+const SlotItemAction = ({ item: { label, icon }, index }: SlotProps) => {
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
@@ -68,7 +68,7 @@ const SlotItemAction = ({ item: { label, icon }, index }: SloTProps) => {
   );
 };
 
-export const SlotItem = ({ ...props }: SloTProps) => {
+export const SlotItem = ({ ...props }: SlotProps) => {
   return (
     <>
       <SlotItemAction {...props} />

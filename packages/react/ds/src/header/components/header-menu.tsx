@@ -26,7 +26,17 @@ type MenuItemAccordionProps = {
   item: { label?: string; slot: React.ReactNode };
 };
 
-const MenuListItem = ({ href = '#', label = '', bold = true }) => (
+type MenuListItemProps = {
+  href?: string;
+  label?: string;
+  bold?: boolean;
+};
+
+const MenuListItem = ({
+  href = '#',
+  label = '',
+  bold = true,
+}: MenuListItemProps) => (
   <a
     aria-label={label || 'link with no label'}
     href={href}
