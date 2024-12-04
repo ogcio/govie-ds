@@ -3,7 +3,7 @@
 /* Layout */
 
 .gi-layout-container {
-  @apply gi-container;
+  @apply gi-w-full gi-px-4 md:gi-container md:gi-mx-auto;
 }
 
 .gi-layout-container-full-width {

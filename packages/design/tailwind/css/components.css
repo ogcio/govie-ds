@@ -370,18 +370,17 @@ input[type='text'] {
   @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
 }
 .gi-header-menu {
-  @apply gi-h-20 gi-justify-between gi-items-center gi-flex gi-bg-emerald-800 gi-relative gi-py-3 sm:gi-py-4;
+  @apply gi-h-20 gi-items-center gi-justify-end gi-flex gi-flex-row gi-flex-nowrap gi-bg-emerald-800 gi-py-3 sm:gi-py-4;
 }
+.gi-header-logo {
+  @apply gi-flex-auto lg:gi-flex-none gi-focus-state-outline gi-rounded-sm;
+}
+
 .gi-header-logo-lg {
   @apply md:gi-block gi-hidden;
 }
 .gi-header-logo-sm {
   @apply md:gi-hidden gi-block;
-}
-
-.gi-header-logo-sm,
-.gi-header-logo-lg {
-  @apply gi-focus-state-outline gi-rounded-sm;
 }
 
 .gi-header-title {
@@ -418,7 +417,7 @@ input[type='text'] {
   @apply gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20;
 }
 
-#HeaderMenuContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
+#HeaderContainer:has(#SearchTrigger:checked) ~ #SearchContainer {
   @apply gi-block;
 }
 
@@ -430,16 +429,17 @@ input[type='text'] {
   @apply gi-block;
 }
 
-#HeaderMenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
+#HeaderContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
   transform: translateX(0);
+  display: block;
 }
 
-#HeaderMenuContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
+#HeaderContainer:has(#MobileMenuTrigger:checked) ~ #HeaderOverlayContainer {
   display: block;
   position: fixed;
 }
 
-#HeaderMenuContainer > ul > li > a {
+#HeaderContainer > ul > li > a {
   @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
 }
 
