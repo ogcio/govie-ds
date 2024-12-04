@@ -51,10 +51,6 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Faq, Faqs } from '../faqs/faqs';
-import {
-  DeveloperRecommendation,
-  DevelopersAdvice,
-} from '../get-started/developers-advice';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
@@ -97,38 +93,6 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  h1: ({ children, id }) => (
-    <Heading as="h1" id={id}>
-      {children}
-    </Heading>
-  ),
-  h2: ({ children, id }) => (
-    <Heading as="h2" id={id}>
-      {children}
-    </Heading>
-  ),
-  h3: ({ children, id }) => (
-    <Heading as="h3" id={id}>
-      {children}
-    </Heading>
-  ),
-  h4: ({ children, id }) => (
-    <Heading as="h4" id={id}>
-      {children}
-    </Heading>
-  ),
-  h5: ({ children, id }) => (
-    <Heading as="h5" id={id}>
-      {children}
-    </Heading>
-  ),
-  h6: ({ children, id }) => (
-    <Heading as="h6" id={id}>
-      {children}
-    </Heading>
-  ),
-  p: ({ children }) => <Paragraph>{children}</Paragraph>,
-  span: ({ children }) => <Paragraph as="span">{children}</Paragraph>,
   a: ({ children, href }) =>
     href ? <Link href={href}>{children}</Link> : null,
   ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
@@ -182,12 +146,10 @@ const documentComponents: MDXComponents = {
   Faq: (props) => <Faq {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
-  DevelopersAdvice: (props) => <DevelopersAdvice {...props} />,
   PageNotFound: (props) => <PageNotFound {...props} />,
   RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
-  DeveloperRecommendation: (props) => <DeveloperRecommendation {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
@@ -233,7 +195,10 @@ const documentComponents: MDXComponents = {
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
   ComponentContainer: (props) => (
-    <div {...props} className={cn('my-xl stroke-gray-950', props.className)} />
+    <div
+      {...props}
+      className={cn('my-xl stroke-gray-950 not-prose', props.className)}
+    />
   ),
   Alert: (props) => <Alert {...props} />,
   Toast: (props) => <Toast {...props} />,

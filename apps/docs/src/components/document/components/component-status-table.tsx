@@ -100,7 +100,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
     throw new Error(`Component status not found '${componentId}'.`);
   }
   return (
-    <table className="table-fixed">
+    <table className="table-fixed max-w-prose">
       <tbody>
         <tr>
           <td className="p-2">Figma Library</td>

@@ -7,20 +7,20 @@ import {
 export type AlertOptions = BaseComponentOptions;
 
 export class Alert extends BaseComponent<AlertOptions> {
-  container: Element;
+  container: HTMLElement;
   iconButton: Element | null;
   handleDissmissAlert: () => void;
 
   constructor(options: AlertOptions) {
     super(options);
-    this.container = options.element;
+    this.container = options.element as HTMLElement;
     this.iconButton = this.container.querySelector(
       'button[data-element="icon-button-container"]',
     );
 
     this.handleDissmissAlert = () => {
       if (this.iconButton) {
-        this.container.classList.add('!gi-hidden');
+        this.container.style.display = 'none';
       }
     };
   }

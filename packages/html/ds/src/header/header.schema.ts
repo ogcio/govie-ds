@@ -10,13 +10,18 @@ export const headerSchema = zod.object({
     .boolean({
       description: 'Select a full width header for full width layouts',
     })
-    .default(false),
+    .optional(),
   logo: zod
     .object({
       image: zod
         .string({
           description:
             'The application logo, a GOV.IE default one will be used if missing',
+        })
+        .optional(),
+      alt: zod
+        .string({
+          description: 'The application logo alt text',
         })
         .optional(),
       href: zod
