@@ -50,6 +50,26 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
+## [0.21.0](https://github.com/ogcio/govie-ds/compare/html-v0.20.0...html-v0.21.0) (2024-12-04)
+
+
+### Features
+
+* breadcrumbs component ([#334](https://github.com/ogcio/govie-ds/issues/334)) ([8d21c6a](https://github.com/ogcio/govie-ds/commit/8d21c6afbe622df24c4c2f3353f00a72aed1840b))
+* remove margins ([#341](https://github.com/ogcio/govie-ds/issues/341)) ([7bf3b69](https://github.com/ogcio/govie-ds/commit/7bf3b6985d84ad3079fb9eae417dd37378b07360))
+* search pattern ([#344](https://github.com/ogcio/govie-ds/issues/344)) ([ee312ee](https://github.com/ogcio/govie-ds/commit/ee312eed3453e6d80b75e3b619580a6f72799f5c))
+* summary list component ([#339](https://github.com/ogcio/govie-ds/issues/339)) ([f6682be](https://github.com/ogcio/govie-ds/commit/f6682be105126afff5dd41cc1ddcc0d5d58cdef9))
+
+
+### Bug Fixes
+
+* header improvements ([#338](https://github.com/ogcio/govie-ds/issues/338)) ([cd5b246](https://github.com/ogcio/govie-ds/commit/cd5b2462eebcef1f18c59b9b6d964b3be29a31a0))
+* jinja macro - list error on home page example ([#342](https://github.com/ogcio/govie-ds/issues/342)) ([252f330](https://github.com/ogcio/govie-ds/commit/252f330f317222986f4fdac5e998207ef173b8a7))
+* js import search template ([#347](https://github.com/ogcio/govie-ds/issues/347)) ([1d57480](https://github.com/ogcio/govie-ds/commit/1d574806298e0ffe49f51399cbd12c9ccc69cc56))
+* pagination consistent width across html and react platforms ([#337](https://github.com/ogcio/govie-ds/issues/337)) ([0d8cef1](https://github.com/ogcio/govie-ds/commit/0d8cef1d4a66507f31ebf995c9bc23ab8143b73e))
+* remove !important classes ([#352](https://github.com/ogcio/govie-ds/issues/352)) ([98efd7c](https://github.com/ogcio/govie-ds/commit/98efd7cc5b7b01b9d42a57d923a6dcfa7ea3512c))
+* replace push method with append ([#343](https://github.com/ogcio/govie-ds/issues/343)) ([a65482b](https://github.com/ogcio/govie-ds/commit/a65482bf0480df8f2e977979c0fb90de6b063870))
+
 ## [0.20.0](https://github.com/ogcio/govie-ds/compare/html-v0.19.0...html-v0.20.0) (2024-11-25)
 
 

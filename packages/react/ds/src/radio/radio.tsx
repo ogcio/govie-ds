@@ -78,7 +78,7 @@ export const Radio = ({
             </div>
           </div>
           <div>
-            {hint && <HintText text={hint} className="!gi-mb-0" />}
+            {hint && <HintText text={hint} />}
             {conditionalInput && (
               <div className={`${!checked && 'gi-hidden'}`}>
                 <TextInput {...conditionalInput} />

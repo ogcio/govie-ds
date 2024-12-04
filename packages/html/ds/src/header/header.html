@@ -18,6 +18,12 @@
   {% set menuDividerClassNames = "gi-header-separator" %}
   {% set overlayClassNames = "gi-header-overlay" %}
   {% set containerClassName = "gi-layout-container-full-width" if props.fullWidth else "gi-layout-container" %}
+  {% set toolItems = [] %}
+  {% if 'tools' in props %}
+    {% if 'items' in props.tools %}
+      {% set toolItems = props.tools['items'] %}
+    {% endif %}
+  {% endif %}
 
   <header id="GovieHeader" class="{{ headerClassNames }}">
     {% if props.languages %}
@@ -38,25 +44,23 @@
         </div>
       </div>
     {% endif %}
-    <div id="HeaderMenuContainer" class="{{ containerClassName }}">
+    <div id="HeaderContainer" class="{{ containerClassName }}">
       <div class="{{ menuContainerClassNames }}">
-        {% if props.logo.href %}
-          <a
-            aria-label="Go to the home page"
-            href="{{ props.logo.href }}"
-            class="{{ logoLargeClassNames }}"
-            >{{ govieLogo() }}</a
-          >
-          <a
-            aria-label="Go to the home page"
-            href="{{ props.logo.href }}"
-            class="{{ logoSmallClassNames }}"
-            >{{ govieLogoSmall() }}</a
-          >
-        {% else %}
-          <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-          <span class="{{ logoSmallClassNames }}">{{ govieLogoSmall() }}</span>
-        {% endif %}
+        <div class="gi-header-logo">
+          {% if props.logo.href %}
+            <a href="{logo.href}" aria-label="Go to the home page">
+              <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
+              <span class="{{ logoSmallClassNames }}"
+                >{{ govieLogoSmall() }}</span
+              >
+            </a>
+          {% else %}
+            <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
+            <span class="{{ logoSmallClassNames }}"
+              >{{ govieLogoSmall() }}</span
+            >
+          {% endif %}
+        </div>
 
         <div class="{{ appTitleClassNames }}">
           {% if props.title %}{{ props.title }}{% endif %}
@@ -98,14 +102,12 @@
             </div>
           </label>
         {% endif %}
-        {% if props['tools']['items'] == true %}
-          {% for item in props['tools']['items'] %}
-            <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-              <span class="label">{{ item.label }}</span>
-              {{ govieIcon({"icon": item.icon }) }}
-            </a>
-          {% endfor %}
-        {% endif %}
+        {% for item in toolItems %}
+          <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
+            <span class="label">{{ item.label }}</span>
+            {{ govieIcon({"icon": item.icon }) }}
+          </a>
+        {% endfor %}
         {% if props.tools.menu %}
           <label
             for="MobileMenuTrigger"

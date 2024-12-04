@@ -11,66 +11,55 @@ This is through a set of detailed [guidelines](/foundations/) and components as 
 
 If you an engineer looking to get started with the design system, select your technology stack below for more information:
 
-<DevelopersAdvice>
+<Tabs id="devTabs">
+  <TabList>
+    <TabItem value="devTab1" checked>HTML</TabItem>
+    <TabItem value="devTab2">HTML with Jinja</TabItem>
+    <TabItem value="devTab3">HTML with Nunjucks</TabItem>
+    <TabItem value="devTab4">React</TabItem>
+    <TabItem value="devTab5">Guidelines</TabItem>
+  </TabList>
+  <TabPanel value="devTab1">
+    Use the **HTML components** with HTML markup.
 
-<DeveloperRecommendation platform="html">
+    If you are using plain HTML files with no server side technology, we recommend using the [HTML components](/components/get-started/html/) with the HTML markup directly.
 
-Use the **HTML components** with HTML markup.
+    You should favour global components where available over local components. Local components are marked as deprecated in the HTML components Storybook when a global equivalent is available.
+  </TabPanel>
+  <TabPanel value="devTab2">
+    Use the **HTML components** with Jinja macros.
 
-If you are using plain HTML files with no server side technology, we recommend using the [HTML components](/components/get-started/html/) with the HTML markup directly.
+    If you are using Python based server side technology such as Django or Wagtail, we recommend using the [HTML components](/components/get-started/html/) and favouring global components over local components where possible.
 
-You should favour global components where available over local components. Local components are marked as deprecated in the HTML components Storybook when a global equivalent is available.
+    Global components provide macros that are compatible with [Jinja](https://jinja.palletsprojects.com/en/3.1.x/).
+    You should configure your environment to use Jinja templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
 
-</DeveloperRecommendation>
+    For local components, you must use the HTML markup directly.
+  </TabPanel>
+  <TabPanel value="devTab3">
+    Use the **HTML components** with Nunjucks macros.
 
-<DeveloperRecommendation platform="html-jinja">
+    If you are using Node, we recommend using the [HTML components](/components/get-started/html/) and favouring global components over local components where possible.
 
-Use the **HTML components** with Jinja macros.
+    Global components provide macros that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/).
+    You should configure your environment to use Nunjucks templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
 
-If you are using Python based server side technology such as Django or Wagtail, we recommend using the [HTML components](/components/get-started/html/)
-and favouring global components over local components where possible.
+    For local components, you must use the HTML markup directly.
+  </TabPanel>
+  <TabPanel value="devTab4">
+    Use the **React components**.
 
-Global components provide macros that are compatible with [Jinja](https://jinja.palletsprojects.com/en/3.1.x/).
-You should configure your environment to use Jinja templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
+    If you are building React applications with Next.js or Vite, then you should use the [React components](/components/get-started/react/).
 
-For local components, you must use the HTML markup directly.
+    The components are in early development, so the set available will expand over time as we go through the component globalisation process.
+  </TabPanel>
+  <TabPanel value="devTab5">
+    Use the **guidelines**.
 
-</DeveloperRecommendation>
+    You are using a technology stack that is currently not supported. We recommend that you investigate the [HTML components](/components/get-started/html/) to see if they may be appropriate for your use case.
 
-<DeveloperRecommendation platform="html-nunjucks">
+    Alternatively, you may decide to develop your own set of components directly, in which case they should follow the [guidelines](/foundations/) available to ensure consistency with the design system.
 
-Use the **HTML components** with Nunjucks macros.
-
-If you are using Node, we recommend using the [HTML components](/components/get-started/html/)
-and favouring global components over local components where possible.
-
-Global components provide macros that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/).
-You should configure your environment to use Nunjucks templates. The global HTML components can then be imported as macros which provides an abstraction over the underlying HTML markup.
-
-For local components, you must use the HTML markup directly.
-
-</DeveloperRecommendation>
-
-<DeveloperRecommendation platform="react">
-
-Use the **React components**.
-
-If you are building React applications with Next.js or Vite, then you should use the [React components](/components/get-started/react/).
-
-The components are in early development, so the set available will expand over time as we go through the component globalisation process.
-
-</DeveloperRecommendation>
-
-<DeveloperRecommendation platform="guidelines">
-
-Use the **guidelines**.
-
-You are using a technology stack that is currently not supported. We recommend that you investigate the [HTML components](/components/get-started/html/) to see if they may be appropriate for your use case.
-
-Alternatively, you may decide to develop your own set of components directly, in which case they should follow the [guidelines](/foundations/) available to ensure consistency with the design system.
-
-If you believe your technology stack should be supported by the design system, then please [contact the design system team](/contact/).
-
-</DeveloperRecommendation>
-
-</DevelopersAdvice>
+    If you believe your technology stack should be supported by the design system, then please [contact the design system team](/contact/).
+  </TabPanel>
+</Tabs>

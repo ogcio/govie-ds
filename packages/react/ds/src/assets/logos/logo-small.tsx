@@ -1,10 +1,12 @@
-function LogoSmall() {
+import { cn } from '../../cn.js';
+
+function LogoSmall({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="26"
       height="40"
-      className="gi-stroke-none"
+      className={cn(className, `gi-stroke-none`)}
       viewBox="0 0 26 40"
       fill="none"
     >
