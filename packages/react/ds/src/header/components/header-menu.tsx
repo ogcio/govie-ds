@@ -118,7 +118,7 @@ function HeaderMenu({
       </div>
       <ul className="gi-bg-white gi-px-4 sm:gi-px-8">
         {navLinks?.map((link, index) => (
-          <li key={index}>
+          <li key={`navLink-${link.label}-${index}`}>
             <MenuListItem href={link.href} label={link.label} />
           </li>
         ))}
@@ -127,7 +127,7 @@ function HeaderMenu({
             return null;
           }
           return (
-            <li key={`${label}-${index}`}>
+            <li key={`toolItems-${label}-${index}`}>
               {slot ? (
                 <MenuItemAccordion index={index} item={{ label, slot }} />
               ) : (
@@ -137,7 +137,7 @@ function HeaderMenu({
           );
         })}
         {languages?.map((link, index) => (
-          <li key={index}>
+          <li key={`language-${link.label}-${index}`}>
             <MenuListItem href={link.href} label={link.label} bold={false} />
           </li>
         ))}

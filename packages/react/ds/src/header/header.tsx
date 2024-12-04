@@ -112,7 +112,7 @@ export function Header({
           <div className={containerClassName}>
             <ul>
               {languages.map((link, index) => (
-                <li key={index}>
+                <li key={`language-${link.label}-${index}`}>
                   {link.href ? (
                     <a
                       aria-label={link.label}
@@ -145,7 +145,7 @@ export function Header({
           <div className={appTitleClassNames}>{title}</div>
           <ul className={navLinkContainerClassNames}>
             {navLinks?.map((link, index) => (
-              <li key={index}>
+              <li key={`navLink-${link.label}-${index}`}>
                 <a
                   data-testid={`nav-link-desktop-${index}`}
                   href={link.href}
@@ -186,7 +186,10 @@ export function Header({
             {tools?.items &&
               tools?.items.map(({ href, icon, label, slot }, index) => {
                 return (
-                  <div className="gi-hidden lg:gi-flex">
+                  <div
+                    className="gi-hidden lg:gi-flex"
+                    key={`toolItem-${label}-${index}`}
+                  >
                     {slot ? (
                       <SlotItem index={index} item={{ slot, icon, label }} />
                     ) : (

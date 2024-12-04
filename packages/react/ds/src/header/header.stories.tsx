@@ -17,22 +17,20 @@ type Story = StoryObj<typeof meta>;
 
 const SlotExample1 = () => (
   <Container>
-    <div className="gi-max-w-[250px]">
-      <List
-        type={TypeEnum.Bullet}
-        items={[
-          <Link size="sm" href="#">
-            Citizens Information - Services and Rights
-          </Link>,
-          <Link size="sm" href="#">
-            Revenue - Taxes and Payments
-          </Link>,
-          <Link size="sm" href="#">
-            Department of Social Protection
-          </Link>,
-        ]}
-      />
-    </div>
+    <List
+      type={TypeEnum.Bullet}
+      items={[
+        <Link size="sm" href="#">
+          Citizens Information - Services and Rights
+        </Link>,
+        <Link size="sm" href="#">
+          Revenue - Taxes and Payments
+        </Link>,
+        <Link size="sm" href="#">
+          Department of Social Protection
+        </Link>,
+      ]}
+    />
   </Container>
 );
 
