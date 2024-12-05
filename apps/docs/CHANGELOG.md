@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.33.1](https://github.com/ogcio/govie-ds/compare/docs-v0.33.0...docs-v0.33.1) (2024-12-05)
+
+
+### Bug Fixes
+
+* tailwind typography configuration ([#354](https://github.com/ogcio/govie-ds/issues/354)) ([cb0ae07](https://github.com/ogcio/govie-ds/commit/cb0ae0744e440befcb2fd95defa1f74300c3d97e))
+* update search page template ([#353](https://github.com/ogcio/govie-ds/issues/353)) ([f848a1a](https://github.com/ogcio/govie-ds/commit/f848a1af5c973fea1313cc31858e238650c6ffa6))
+
 ## [0.33.0](https://github.com/ogcio/govie-ds/compare/docs-v0.32.0...docs-v0.33.0) (2024-12-04)
 
 
