@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.1](https://github.com/ogcio/govie-ds/compare/html-v0.21.0...html-v0.21.1) (2024-12-05)
+
+
+### Bug Fixes
+
+* tailwind typography configuration ([#354](https://github.com/ogcio/govie-ds/issues/354)) ([cb0ae07](https://github.com/ogcio/govie-ds/commit/cb0ae0744e440befcb2fd95defa1f74300c3d97e))
+
 ## [0.21.0](https://github.com/ogcio/govie-ds/compare/html-v0.20.0...html-v0.21.0) (2024-12-04)
 
 
