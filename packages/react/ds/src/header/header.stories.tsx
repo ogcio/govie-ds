@@ -3,7 +3,6 @@ import { Container } from '../container/container.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
-import { Stack } from '../stack/stack.js';
 import HeaderSearch from './components/header-search.js';
 import { Header } from './header.js';
 
@@ -37,36 +36,34 @@ const SlotExample1 = () => (
 const SlotExample2 = () => {
   return (
     <Container>
-      <Stack direction="column" gap={3}>
-        <Select
-          id="slot-example-2"
-          options={[
-            {
-              label: 'Languages',
-              value: 'languages',
-              groupName: 'Languages',
-              items: [
-                {
-                  label: 'Gaeilge',
-                  value: 'gaeilge',
-                },
-                {
-                  label: 'English',
-                  value: 'english',
-                },
-                {
-                  label: 'Spanish',
-                  value: 'spanish',
-                },
-                {
-                  label: 'Italian',
-                  value: 'italian',
-                },
-              ],
-            },
-          ]}
-        />
-      </Stack>
+      <Select
+        id="slot-example-2"
+        options={[
+          {
+            label: 'Languages',
+            value: 'languages',
+            groupName: 'Languages',
+            items: [
+              {
+                label: 'Gaeilge',
+                value: 'gaeilge',
+              },
+              {
+                label: 'English',
+                value: 'english',
+              },
+              {
+                label: 'Spanish',
+                value: 'spanish',
+              },
+              {
+                label: 'Italian',
+                value: 'italian',
+              },
+            ],
+          },
+        ]}
+      />
     </Container>
   );
 };
