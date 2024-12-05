@@ -1,9 +1,5 @@
 # Changelog
 
-This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
-
-# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.1...@govie-ds/tokens-0.5.0) (2024-09-10)
-
 
 
 ## [0.7.0](https://github.com/ogcio/govie-ds/compare/tokens-v0.6.0...tokens-v0.7.0) (2024-10-28)
@@ -13,18 +9,18 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 * improve accessibility tests ([#299](https://github.com/ogcio/govie-ds/issues/299)) ([6561fe8](https://github.com/ogcio/govie-ds/commit/6561fe842b6d5d28e32cf3aebe61526da4b1c5ef))
 
-## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.1-alpha.0...@govie-ds/tokens-0.4.1) (2024-09-09)
+
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.1...@govie-ds/tokens-0.5.0) (2024-09-10)
+
+
+## [0.4.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.0...@govie-ds/tokens-0.4.1) (2024-09-09)
 
 ### Dependency Updates
 
 * `@govie-ds/tokens-builder` updated to version `0.1.0`
 
 
-## [0.4.1-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.4.0...@govie-ds/tokens-0.4.1-alpha.0) (2024-09-06)
-
-
-
-# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.3.4...@govie-ds/tokens-0.4.0) (2024-08-06)
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.3.4...@govie-ds/tokens-0.4.0) (2024-08-06)
 
 ### Dependency Updates
 
@@ -63,7 +59,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * `@govie-ds/tokens-builder` updated to version `0.1.0`
 
 
-# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.2.0...@govie-ds/tokens-0.3.0) (2024-07-01)
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.2.0...@govie-ds/tokens-0.3.0) (2024-07-01)
 
 
 ### Features
@@ -72,7 +68,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.1.5...@govie-ds/tokens-0.2.0) (2024-07-01)
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tokens-0.1.5...@govie-ds/tokens-0.2.0) (2024-07-01)
 
 ### Dependency Updates
 
