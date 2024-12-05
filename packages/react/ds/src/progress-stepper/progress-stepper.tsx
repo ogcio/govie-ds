@@ -5,25 +5,46 @@ import { cn } from '../cn.js';
 export type ProgressStepperProps = {
   steps: string[];
   currentStepIndex: number;
-  onStepChange: (index: number) => void;
+  orientation?: 'vertical' | 'horizontal';
 };
 
-const Step = ({ children, isCurrentStep, isCompleted, stepNumber }) => {
+export type StepProps = {
+  children: string;
+  isCurrentStep: boolean;
+  isCompleted: boolean;
+  stepNumber: number;
+  isVertical: boolean;
+};
+
+const Step = ({
+  children,
+  isCurrentStep,
+  isCompleted,
+  stepNumber,
+  isVertical,
+}: StepProps) => {
   return (
-    <div className="gi-flex gi-relative gi-flex-1">
-      <div className="gi-gap-4 gi-flex gi-flex-col gi-flex-1 gi-items-center">
-        <div
-          className="gi-progress-stepper-step gi-relative"
-          data-current={isCurrentStep}
-          data-completed={isCompleted}
-          data-next={!isCompleted && !isCurrentStep}
-        >
+    <div className="gi-flex gi-relative gi-flex-1 gi-min-h-20">
+      <div
+        className={cn('gi-progress-stepper-step-container', {
+          'gi-flex-col': !isVertical,
+        })}
+        data-current={isCurrentStep}
+        data-completed={isCompleted}
+        data-next={!isCompleted && !isCurrentStep}
+      >
+        <div className="gi-progress-stepper-step">
           {isCompleted ? <Icon icon="check" /> : <div>{stepNumber}</div>}
         </div>
         {children}
       </div>
       {stepNumber > 1 ? (
-        <div className="gi-progress-stepper-step-connector">
+        <div
+          className={cn({
+            'gi-progress-stepper-step-connector': !isVertical,
+            'gi-progress-stepper-step-connector-vertical': isVertical,
+          })}
+        >
           <span />
         </div>
       ) : null}
@@ -34,15 +55,23 @@ const Step = ({ children, isCurrentStep, isCompleted, stepNumber }) => {
 export const ProgressStepper = ({
   steps,
   currentStepIndex,
+  orientation = 'horizontal',
 }: ProgressStepperProps) => {
+  const isVertical = orientation === 'vertical';
   return (
-    <div className="gi-progress-stepper">
+    <div
+      data-testid="progress-stepper"
+      className={cn('gi-progress-stepper', {
+        'gi-flex-col': isVertical,
+      })}
+    >
       {steps.map((step, index) => (
         <Step
           key={`progress-stepper-step-${index}`}
           stepNumber={index + 1}
           isCurrentStep={currentStepIndex === index}
           isCompleted={index < currentStepIndex && index !== currentStepIndex}
+          isVertical={isVertical}
         >
           {step}
         </Step>

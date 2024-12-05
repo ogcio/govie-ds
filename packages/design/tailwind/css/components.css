@@ -953,33 +953,61 @@ input[type='file' i] {
 .gi-progress-stepper-step {
   @apply gi-text-white 
   gi-rounded-full 
+  gi-relative
   gi-w-10
-   gi-h-10
-    gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg;
+  gi-h-10
+  gi-flex 
+  gi-flex-col
+  gi-justify-center
+  gi-items-center
+  gi-relative
+  gi-text-lg;
 }
 
 .gi-progress-stepper-step-connector {
   @apply gi-absolute
-  
-   gi-flex-1 gi-top-[20px] gi-left-[calc(-50%_+_20px)] gi-right-[calc(50%_+_20px)];
+  gi-flex-1
+  gi-top-[20px]
+  gi-left-[calc(-50%_+_20px)]
+  gi-right-[calc(50%_+_20px)];
 }
 
+.gi-progress-stepper-step-connector-vertical {
+  @apply gi-absolute
+  gi-transform
+  gi-rotate-90
+  gi-flex-1
+  gi-top-auto
+  gi-left-[calc(-50%_+_45px)]
+  gi-right-[calc(50%_+_5px)];
+}
+
+.gi-progress-stepper-step-connector-vertical > span,
 .gi-progress-stepper-step-connector > span {
-  @apply gi-border-t-sm
-  gi-block
-  gi-border-t-emerald-800;
+  @apply gi-border-t-sm gi-block gi-border-t-emerald-800;
 }
 
-.gi-progress-stepper-step[data-current='true'],
-.gi-progress-stepper-step[data-completed='true'] {
+.gi-progress-stepper-step-container[data-current='true']
+  > .gi-progress-stepper-step,
+.gi-progress-stepper-step-container[data-completed='true']
+  > .gi-progress-stepper-step {
   @apply gi-bg-emerald-800;
 }
 
-.gi-progress-stepper-step[data-next='true'] {
+.gi-progress-stepper-step-container[data-next='true']
+  > .gi-progress-stepper-step {
   @apply gi-bg-gray-700;
 }
+.gi-progress-stepper-step-container[data-next='true'] {
+  @apply gi-text-gray-700;
+}
 
-.gi-progress-stepper-step[data-current='true'] {
+.gi-progress-stepper-step-container[data-current='true']
+  > .gi-progress-stepper-step {
   @apply gi-shadow-[0_0_0_8px_rgba(0,77,68,0.2)];
+}
+
+.gi-progress-stepper-step-container {
+  @apply gi-gap-4 gi-flex gi-flex-1 gi-items-center;
 }
 /*End Progress Stepper */
