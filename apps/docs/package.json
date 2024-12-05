@@ -30,7 +30,6 @@
     "@govie-ds/theme-hse": "workspace:*",
     "@govie-ds/tokens": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.1",
-    "@tailwindcss/typography": "^0.5.13",
     "camelcase": "^8.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
