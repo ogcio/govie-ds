@@ -44,19 +44,17 @@ export const Default: Story = {
   },
 };
 
-
 export const WithVerticalOrientation: Story = {
-    argTypes: {
-      currentStepIndex: {
-        control: 'number',
-        type: { name: 'number', required: true },
-        description: 'The initial active step (zero-based index).',
-      },
+  argTypes: {
+    currentStepIndex: {
+      control: 'number',
+      type: { name: 'number', required: true },
+      description: 'The initial active step (zero-based index).',
     },
-    args: {
-      currentStepIndex: 1,
-      steps: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
-      orientation: 'vertical',
-    },
-  };
-  
+  },
+  args: {
+    currentStepIndex: 1,
+    steps: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
+    orientation: 'vertical',
+  },
+};

@@ -1,8 +1,7 @@
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieProgressStepper(props) %}
-
-    {% set isVertical = props.orientation == 'vertical'%}
+  {% set isVertical = props.orientation == 'vertical' %}
 
   <div
     data-testid="progress-stepper"
@@ -18,7 +17,7 @@
         >
           <div class="gi-progress-stepper-step">
             {% if loop.index0 < props.currentStepIndex %}
-                {{ govieIcon({"icon": "check"}) }}
+              {{ govieIcon({"icon": "check"}) }}
             {% else %}
               <div>{{ loop.index }}</div>
             {% endif %}
@@ -27,7 +26,7 @@
         </div>
         {% if loop.index0 > 0 %}
           <div
-            class="gi-progress-stepper-step-connector {% if isVertical %} gi-progress-stepper-step-connector-vertical {% endif %}"
+            class="gi-progress-stepper-step-connector {% if isVertical %}gi-progress-stepper-step-connector-vertical{% endif %}"
           >
             <span></span>
           </div>

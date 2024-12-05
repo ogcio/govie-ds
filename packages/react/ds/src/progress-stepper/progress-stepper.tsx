@@ -1,5 +1,5 @@
-import { Icon } from '../icon/icon.js';
 import { cn } from '../cn.js';
+import { Icon } from '../icon/icon.js';
 
 export type ProgressStepperProps = {
   steps: string[];
@@ -39,10 +39,11 @@ const Step = ({
       </div>
       {stepNumber > 1 ? (
         <div
-          className={cn({
-            'gi-progress-stepper-step-connector': !isVertical,
-            'gi-progress-stepper-step-connector-vertical': isVertical,
-          })}
+          className={
+            isVertical
+              ? 'gi-progress-stepper-step-connector-vertical'
+              : 'gi-progress-stepper-step-connector'
+          }
         >
           <span />
         </div>
