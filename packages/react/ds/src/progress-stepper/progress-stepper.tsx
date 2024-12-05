@@ -1,4 +1,3 @@
-import { MouseEventHandler, useState } from 'react';
 import { Icon } from '../icon/icon.js';
 import { cn } from '../cn.js';
 
