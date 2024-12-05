@@ -274,10 +274,7 @@ export const EmptyState: Story = {
       </TableHead>
       <TableBody>
         <TableRow>
-          <TableData
-            colSpan={headers.length}
-            className="!gi-text-center !gi-border-0 !gi-py-8 !gi-px-4"
-          >
+          <TableData colSpan={headers.length} className="gi-table-no-data">
             No data to display
           </TableData>
         </TableRow>

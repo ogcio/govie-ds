@@ -949,8 +949,11 @@ input[type='file' i] {
 
 .gi-table-th,
 .gi-table-td {
-  @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle;
-  @apply gi-max-w-[25ch] gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
+  @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle gi-max-w-[25ch] gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
+}
+
+.gi-table-no-data {
+  @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
 
 /* End of Table */
