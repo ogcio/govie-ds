@@ -1,27 +1,27 @@
 /* GOV.IE Typography Stylesheets */
 
 .gi-heading-xl {
-  font: theme('typography.DEFAULT.css.h1.font');
+  font: var(--gieds-typography-default-heading-xl);
 }
 
 .gi-heading-lg {
-  font: theme('typography.DEFAULT.css.h2.font');
+  font: var(--gieds-typography-default-heading-lg);
 }
 
 .gi-heading-md {
-  font: theme('typography.DEFAULT.css.h3.font');
+  font: var(--gieds-typography-default-heading-md);
 }
 
 .gi-heading-sm {
-  font: theme('typography.DEFAULT.css.h4.font');
+  font: var(--gieds-typography-default-heading-sm);
 }
 
 .gi-heading-xs {
-  font: theme('typography.DEFAULT.css.h5.font');
+  font: var(--gieds-typography-default-heading-xs);
 }
 
 .gi-heading-2xs {
-  font: theme('typography.DEFAULT.css.h6.font');
+  font: var(--gieds-typography-default-heading-2xs);
 }
 
 /* End Paragraph */
@@ -31,130 +31,162 @@
 .gi-paragraph-lg,
 .gi-paragraph-md,
 .gi-paragraph-xs {
-  font: theme('typography.DEFAULT.css.p.font');
   @apply gi-max-w-prose;
 }
 
-.gi-span-lg,
-.gi-span-md,
-.gi-span-xs {
-  font: theme('typography.DEFAULT.css.p.font');
+.gi-paragraph-md,
+.gi-span-md {
+  font: var(--gieds-typography-default-text-md);
+}
+
+.gi-paragraph-lg,
+.gi-span-lg {
+  font: var(--gieds-typography-default-text-lg);
+}
+
+.gi-paragraph-sm,
+.gi-span-sm {
+  font: var(--gieds-typography-default-text-sm);
 }
 
 @media screen(sm) {
   .gi-heading-xl {
-    font: theme('typography.xs.css.h1.font');
+    font: var(--gieds-typography-xs-heading-xl);
   }
 
   .gi-heading-lg {
-    font: theme('typography.xs.css.h2.font');
+    font: var(--gieds-typography-xs-heading-lg);
   }
 
   .gi-heading-md {
-    font: theme('typography.xs.css.h3.font');
+    font: var(--gieds-typography-xs-heading-md);
   }
 
   .gi-heading-sm {
-    font: theme('typography.xs.css.h4.font');
+    font: var(--gieds-typography-xs-heading-sm);
   }
 
   .gi-heading-xs {
-    font: theme('typography.xs.css.h5.font');
+    font: var(--gieds-typography-xs-heading-xs);
   }
 
   .gi-heading-2xs {
-    font: theme('typography.xs.css.h6.font');
-  }
-
-  .gi-paragraph-lg {
-    font: theme('typography.xs.css.p.font');
+    font: var(--gieds-typography-xs-heading-2xs);
   }
 
   .gi-paragraph-md,
-  .gi-paragraph-xs,
-  .gi-span-lg,
-  .gi-span-md,
-  .gi-span-xs,
+  .gi-span-md {
+    font: var(--gieds-typography-xs-text-md);
+  }
+
+  .gi-paragraph-lg,
+  .gi-span-lg {
+    font: var(--gieds-typography-xs-text-lg);
+  }
+
+  .gi-paragraph-sm,
+  .gi-span-sm {
+    font: var(--gieds-typography-xs-text-sm);
+  }
+
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
-    font: theme('typography.xs.css.p.font');
+    font: var(--gieds-typography-xs-text-md);
   }
 }
 
 @media screen(md) {
   .gi-heading-xl {
-    font: theme('typography.md.css.h1.font');
+    font: var(--gieds-typography-md-heading-xl);
   }
 
   .gi-heading-lg {
-    font: theme('typography.md.css.h2.font');
+    font: var(--gieds-typography-md-heading-lg);
   }
 
   .gi-heading-md {
-    font: theme('typography.md.css.h3.font');
+    font: var(--gieds-typography-md-heading-md);
   }
 
   .gi-heading-sm {
-    font: theme('typography.md.css.h4.font');
+    font: var(--gieds-typography-md-heading-sm);
   }
 
   .gi-heading-xs {
-    font: theme('typography.md.css.h5.font');
+    font: var(--gieds-typography-md-heading-xs);
   }
 
   .gi-heading-2xs {
-    font: theme('typography.md.css.h6.font');
+    font: var(--gieds-typography-md-heading-2xs);
+  }
+
+  .gi-paragraph-md,
+  .gi-span-md {
+    font: var(--gieds-typography-md-text-md);
   }
 
   .gi-paragraph-lg,
-  .gi-paragraph-md,
-  .gi-paragraph-xs,
-  .gi-span-lg,
-  .gi-span-md,
-  .gi-span-xs,
+  .gi-span-lg {
+    font: var(--gieds-typography-md-text-lg);
+  }
+
+  .gi-paragraph-sm,
+  .gi-span-sm {
+    font: var(--gieds-typography-md-text-sm);
+  }
+
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
-    font: theme('typography.md.css.p.font');
+    font: var(--gieds-typography-md-text-md);
   }
 }
 
 @media screen(xl) {
   .gi-heading-xl {
-    font: theme('typography.xl.css.h1.font');
+    font: var(--gieds-typography-xl-heading-xl);
   }
 
   .gi-heading-lg {
-    font: theme('typography.xl.css.h2.font');
+    font: var(--gieds-typography-xl-heading-xl);
   }
 
   .gi-heading-md {
-    font: theme('typography.xl.css.h3.font');
+    font: var(--gieds-typography-xl-heading-md);
   }
 
   .gi-heading-sm {
-    font: theme('typography.xl.css.h4.font');
+    font: var(--gieds-typography-xl-heading-sm);
   }
 
   .gi-heading-xs {
-    font: theme('typography.xl.css.h5.font');
+    font: var(--gieds-typography-xl-heading-xs);
   }
 
   .gi-heading-2xs {
-    font: theme('typography.xl.css.h6.font');
+    font: var(--gieds-typography-xl-heading-2xs);
+  }
+
+  .gi-paragraph-md,
+  .gi-span-md {
+    font: var(--gieds-typography-xl-text-md);
   }
 
   .gi-paragraph-lg,
-  .gi-paragraph-md,
-  .gi-paragraph-xs,
-  .gi-span-lg,
-  .gi-span-md,
-  .gi-span-xs,
+  .gi-span-lg {
+    font: var(--gieds-typography-xl-text-lg);
+  }
+
+  .gi-paragraph-sm,
+  .gi-span-sm {
+    font: var(--gieds-typography-xl-text-sm);
+  }
+
   .gi-list,
   .gi-list-bullet,
   .gi-list-number {
-    font: theme('typography.xl.css.p.font');
+    font: var(--gieds-typography-xl-text-md);
   }
 }
 

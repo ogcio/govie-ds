@@ -10,7 +10,12 @@ export function Prose({
   className?: string;
 }) {
   return (
-    <As className={cn('prose xs:prose-xs md:prose-md xl:prose-xl', className)}>
+    <As
+      className={cn(
+        'gi-prose xs:gi-prose-xs md:gi-prose-md xl:gi-prose-xl',
+        className,
+      )}
+    >
       {children}
     </As>
   );

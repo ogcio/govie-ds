@@ -1,19 +1,12 @@
 # Changelog
 
-This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-# [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0...@govie-ds/tailwind-0.7.0) (2024-09-20)
-
-
-### Features
-
-* implement header component ([#208](https://github.com/ogcio/govie-ds/issues/208)) ([4641b63](https://github.com/ogcio/govie-ds/commit/4641b6323a2ceb6ad852a7fb2f63682e2180fac6))
+## [0.22.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.0...tailwind-v0.22.1) (2024-12-05)
 
 
+### Bug Fixes
 
-# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.3...@govie-ds/tailwind-0.6.0) (2024-09-10)
-
-
+* tailwind typography configuration ([#354](https://github.com/ogcio/govie-ds/issues/354)) ([cb0ae07](https://github.com/ogcio/govie-ds/commit/cb0ae0744e440befcb2fd95defa1f74300c3d97e))
 
 ## [0.22.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.21.0...tailwind-v0.22.0) (2024-12-04)
 
@@ -167,31 +160,27 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 * add tabs for react ([#228](https://github.com/ogcio/govie-ds/issues/228)) ([8f676ee](https://github.com/ogcio/govie-ds/commit/8f676eeeb269e90ec1ddb1dff4a3c1915f234496))
 
-## [0.5.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.3...@govie-ds/tailwind-0.5.3) (2024-09-10)
+## [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0...@govie-ds/tailwind-0.7.0) (2024-09-20)
+
+
+### Features
+
+* implement header component ([#208](https://github.com/ogcio/govie-ds/issues/208)) ([4641b63](https://github.com/ogcio/govie-ds/commit/4641b6323a2ceb6ad852a7fb2f63682e2180fac6))
 
 
 
-# [0.6.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.2...@govie-ds/tailwind-0.6.0-alpha.3) (2024-09-10)
+## [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.3...@govie-ds/tailwind-0.6.0) (2024-09-10)
 
 
+## [0.5.3](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.2...@govie-ds/tailwind-0.5.3) (2024-09-10)
 
-## [0.5.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.2...@govie-ds/tailwind-0.5.2) (2024-09-09)
+
+## [0.5.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.0...@govie-ds/tailwind-0.5.2) (2024-09-09)
 
 ### Dependency Updates
 
 * `@govie-ds/deepmerge` updated to version `0.3.1`
 * `@govie-ds/tokens` updated to version `0.4.1`
-
-
-# [0.6.0-alpha.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.1...@govie-ds/tailwind-0.6.0-alpha.2) (2024-09-06)
-
-
-
-# [0.6.0-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.6.0-alpha.0...@govie-ds/tailwind-0.6.0-alpha.1) (2024-09-05)
-
-
-
-# [0.6.0-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.5.0...@govie-ds/tailwind-0.6.0-alpha.0) (2024-09-04)
 
 
 ### Features
@@ -200,7 +189,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.3...@govie-ds/tailwind-0.5.0) (2024-08-06)
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.4.3...@govie-ds/tailwind-0.5.0) (2024-08-06)
 
 ### Dependency Updates
 
@@ -238,7 +227,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * `@govie-ds/tokens` updated to version `0.3.3`
 
 
-# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.3.3...@govie-ds/tailwind-0.4.0) (2024-07-30)
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.3.3...@govie-ds/tailwind-0.4.0) (2024-07-30)
 
 
 ### Features
@@ -268,7 +257,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * `@govie-ds/tokens` updated to version `0.3.1`
 
 
-# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.2.1...@govie-ds/tailwind-0.3.0) (2024-07-02)
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.2.1...@govie-ds/tailwind-0.3.0) (2024-07-02)
 
 
 ### Features
@@ -284,7 +273,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * `@govie-ds/tokens` updated to version `0.3.0`
 
 
-# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.1.2...@govie-ds/tailwind-0.2.0) (2024-07-01)
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/tailwind-0.1.2...@govie-ds/tailwind-0.2.0) (2024-07-01)
 
 ### Dependency Updates
 
