@@ -1,6 +1,6 @@
 {% set HeaderProps = {
     "logo": { "href": '/home' },
-    "fullWidth": "false",
+    "fullWidth": true,
     "tools": {
       "search": {
         "action": '/search_page',
@@ -167,21 +167,19 @@
 
 {% set SelectProps = {
   "id": "unique-id",
-  "label": {
-    "content": "Sort by"
-    },
+
   "options": [
     {
-      "label": "Option 1",
+      "label": "Sort: Recent",
       "value": "value-1"
     },
       {
-      "label": "Option 2",
+      "label": "Sort: Oldest",
       "value": "value-2"
     },
       {
-      "label": "Option 3",
-      "value": "value-4"
+      "label": "Sort: Alphabetical",
+      "value": "value-3"
     },
   ]
 }
