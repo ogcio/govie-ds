@@ -1,5 +1,16 @@
 import React from 'react';
+import { cn } from '../cn.js';
 
-export function TableData(props: React.PropsWithChildren) {
-  return <td>{props.children}</td>;
+interface TableDataProps extends React.PropsWithChildren {
+  className?: string;
+  colSpan?: number;
+}
+
+export function TableData({ children, className, colSpan }: TableDataProps) {
+  const baseClasses = 'gi-table-td';
+  return (
+    <td className={cn(baseClasses, className)} colSpan={colSpan}>
+      {children}
+    </td>
+  );
 }
