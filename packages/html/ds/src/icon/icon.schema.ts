@@ -26,8 +26,11 @@ export const iconSchema = zod.object({
       zod.nativeEnum(IconId, {
         description: 'Specifies the Icon name to show',
       }),
-      zod.string().min(1, { message: 'Custom string for any other icon' }),
+      zod
+        .string({ description: 'Custom string for any other icon' })
+        .min(1, { message: 'Custom string for any other icon' }),
     ])
+    .describe('Icon reference')
     .optional(),
   size: zod
     .nativeEnum(IconSize, {

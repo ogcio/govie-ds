@@ -34,10 +34,7 @@ const config: Config = {
   //     },
   //   },
   // },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animatecss'),
-  ],
+  plugins: [require('tailwindcss-animatecss')],
 };
 
 export default config;

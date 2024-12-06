@@ -1,43 +1,12 @@
 # Changelog
 
-This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-# [0.11.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.10.0...@govie-react/ds-0.11.0) (2024-09-20)
+## [0.26.1](https://github.com/ogcio/govie-ds/compare/react-v0.26.0...react-v0.26.1) (2024-12-05)
 
-### Dependency Updates
-
-* `@govie-ds/tailwind` updated to version `0.7.0`
 
 ### Bug Fixes
 
-* phase banner component ([#220](https://github.com/ogcio/govie-ds/issues/220)) ([924d565](https://github.com/ogcio/govie-ds/commit/924d565be724426a1231c3dbaf7754add0e601aa))
-* update paragraph font sizes after review ([#214](https://github.com/ogcio/govie-ds/issues/214)) ([5ac3adb](https://github.com/ogcio/govie-ds/commit/5ac3adb5a3139297a52514ee8c9c66be9bdc51ea))
-
-
-### Features
-
-* add blockquote component ([#218](https://github.com/ogcio/govie-ds/issues/218)) ([756487d](https://github.com/ogcio/govie-ds/commit/756487d9daffc9528505d65b90906d28a9f091f0))
-* add react textarea component ([#226](https://github.com/ogcio/govie-ds/issues/226)) ([a14c21c](https://github.com/ogcio/govie-ds/commit/a14c21c72959306e1aa7990f8f1d9acbc4117a71))
-* add section break component ([#219](https://github.com/ogcio/govie-ds/issues/219)) ([5dffc20](https://github.com/ogcio/govie-ds/commit/5dffc201c67308b873880c197c3a63bbcc920809))
-* add text input along with label, hint-text, error-text and form-group components. ([#212](https://github.com/ogcio/govie-ds/issues/212)) ([4ce451f](https://github.com/ogcio/govie-ds/commit/4ce451f3b295c1e2e6284a3cc93a401abfd02ad0))
-* paragraph improvements ([#223](https://github.com/ogcio/govie-ds/issues/223)) ([e835d53](https://github.com/ogcio/govie-ds/commit/e835d5320fe8e4a2c91381437294bb2b5e803f39))
-* react header component ([#210](https://github.com/ogcio/govie-ds/issues/210)) ([7ea90ef](https://github.com/ogcio/govie-ds/commit/7ea90ef549327d10b6e954d0b1bf8c3e4d3a2966))
-* react table components ([#215](https://github.com/ogcio/govie-ds/issues/215)) ([fe6a143](https://github.com/ogcio/govie-ds/commit/fe6a143b2650993f01b3cce7307c4bc3e9ff22ab))
-
-
-
-# [0.10.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0...@govie-react/ds-0.10.0) (2024-09-13)
-
-
-### Features
-
-* use icon font from material design ([#209](https://github.com/ogcio/govie-ds/issues/209)) ([41a4b18](https://github.com/ogcio/govie-ds/commit/41a4b189c68625707c4886038dc3e091481b86c9))
-
-
-
-# [0.9.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.2...@govie-react/ds-0.9.0) (2024-09-10)
-
-
+* tailwind typography configuration ([#354](https://github.com/ogcio/govie-ds/issues/354)) ([cb0ae07](https://github.com/ogcio/govie-ds/commit/cb0ae0744e440befcb2fd95defa1f74300c3d97e))
 
 ## [0.26.0](https://github.com/ogcio/govie-ds/compare/react-v0.25.0...react-v0.26.0) (2024-12-04)
 
@@ -266,48 +235,57 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * set default font family and colour ([#239](https://github.com/ogcio/govie-ds/issues/239)) ([aeaeda0](https://github.com/ogcio/govie-ds/commit/aeaeda0d55e4ad969d5eba8df48ac5cacb8123bf))
 * update react logo ([#229](https://github.com/ogcio/govie-ds/issues/229)) ([e5dcd18](https://github.com/ogcio/govie-ds/commit/e5dcd182518face44698b09ca9786d88cf969b18))
 
-## [0.8.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.4...@govie-react/ds-0.8.2) (2024-09-10)
+
+## [0.11.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.10.0...@govie-react/ds-0.11.0) (2024-09-20)
+
+### Dependency Updates
+
+* `@govie-ds/tailwind` updated to version `0.7.0`
+
+### Bug Fixes
+
+* phase banner component ([#220](https://github.com/ogcio/govie-ds/issues/220)) ([924d565](https://github.com/ogcio/govie-ds/commit/924d565be724426a1231c3dbaf7754add0e601aa))
+* update paragraph font sizes after review ([#214](https://github.com/ogcio/govie-ds/issues/214)) ([5ac3adb](https://github.com/ogcio/govie-ds/commit/5ac3adb5a3139297a52514ee8c9c66be9bdc51ea))
+
+
+### Features
+
+* add blockquote component ([#218](https://github.com/ogcio/govie-ds/issues/218)) ([756487d](https://github.com/ogcio/govie-ds/commit/756487d9daffc9528505d65b90906d28a9f091f0))
+* add react textarea component ([#226](https://github.com/ogcio/govie-ds/issues/226)) ([a14c21c](https://github.com/ogcio/govie-ds/commit/a14c21c72959306e1aa7990f8f1d9acbc4117a71))
+* add section break component ([#219](https://github.com/ogcio/govie-ds/issues/219)) ([5dffc20](https://github.com/ogcio/govie-ds/commit/5dffc201c67308b873880c197c3a63bbcc920809))
+* add text input along with label, hint-text, error-text and form-group components. ([#212](https://github.com/ogcio/govie-ds/issues/212)) ([4ce451f](https://github.com/ogcio/govie-ds/commit/4ce451f3b295c1e2e6284a3cc93a401abfd02ad0))
+* paragraph improvements ([#223](https://github.com/ogcio/govie-ds/issues/223)) ([e835d53](https://github.com/ogcio/govie-ds/commit/e835d5320fe8e4a2c91381437294bb2b5e803f39))
+* react header component ([#210](https://github.com/ogcio/govie-ds/issues/210)) ([7ea90ef](https://github.com/ogcio/govie-ds/commit/7ea90ef549327d10b6e954d0b1bf8c3e4d3a2966))
+* react table components ([#215](https://github.com/ogcio/govie-ds/issues/215)) ([fe6a143](https://github.com/ogcio/govie-ds/commit/fe6a143b2650993f01b3cce7307c4bc3e9ff22ab))
+
+
+
+## [0.10.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0...@govie-react/ds-0.10.0) (2024-09-13)
+
+
+### Features
+
+* use icon font from material design ([#209](https://github.com/ogcio/govie-ds/issues/209)) ([41a4b18](https://github.com/ogcio/govie-ds/commit/41a4b189c68625707c4886038dc3e091481b86c9))
+
+
+
+## [0.9.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.2...@govie-react/ds-0.9.0) (2024-09-10)
+
+
+## [0.8.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.1...@govie-react/ds-0.8.2) (2024-09-10)
 
 ### Dependency Updates
 
 * `@govie-ds/tailwind` updated to version `0.5.3`
 
 
-# [0.9.0-alpha.4](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.1...@govie-react/ds-0.9.0-alpha.4) (2024-09-09)
 
-
-
-## [0.8.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.3...@govie-react/ds-0.8.1) (2024-09-09)
+## [0.8.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.0...@govie-react/ds-0.8.1) (2024-09-09)
 
 ### Dependency Updates
 
 * `@govie-ds/tailwind` updated to version `0.5.2`
 * `@govie-ds/tokens` updated to version `0.4.1`
-
-
-# [0.9.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.2...@govie-react/ds-0.9.0-alpha.3) (2024-09-06)
-
-
-
-# [0.9.0-alpha.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.2...@govie-react/ds-0.9.0-alpha.3) (2024-09-06)
-
-
-
-# [0.9.0-alpha.2](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.1...@govie-react/ds-0.9.0-alpha.2) (2024-09-05)
-
-
-
-# [0.9.0-alpha.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.9.0-alpha.0...@govie-react/ds-0.9.0-alpha.1) (2024-09-04)
-
-
-### Features
-
-* enable tailwind in react components ([#186](https://github.com/ogcio/govie-ds/issues/186)) ([f97f8b2](https://github.com/ogcio/govie-ds/commit/f97f8b2c5a370b580bd22246787cd6eea0d06997))
-
-
-
-# [0.9.0-alpha.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.0...@govie-react/ds-0.9.0-alpha.0) (2024-09-04)
-
 
 ### Features
 
@@ -315,7 +293,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.8.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.7...@govie-react/ds-0.8.0) (2024-08-06)
+## [0.8.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.7...@govie-react/ds-0.8.0) (2024-08-06)
 
 ### Dependency Updates
 
@@ -387,7 +365,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.6.1...@govie-react/ds-0.7.0) (2024-07-17)
+## [0.7.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.6.1...@govie-react/ds-0.7.0) (2024-07-17)
 
 
 ### Features
@@ -405,7 +383,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.3...@govie-react/ds-0.6.0) (2024-07-15)
+## [0.6.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.5.3...@govie-react/ds-0.6.0) (2024-07-15)
 
 
 ### Features
@@ -439,7 +417,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.4.0...@govie-react/ds-0.5.0) (2024-07-02)
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.4.0...@govie-react/ds-0.5.0) (2024-07-02)
 
 
 ### Features
@@ -448,7 +426,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.3.0...@govie-react/ds-0.4.0) (2024-07-02)
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.3.0...@govie-react/ds-0.4.0) (2024-07-02)
 
 
 ### Features
@@ -457,7 +435,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.2.1...@govie-react/ds-0.3.0) (2024-07-02)
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.2.1...@govie-react/ds-0.3.0) (2024-07-02)
 
 
 ### Features
@@ -473,7 +451,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * `@govie-ds/tokens` updated to version `0.3.0`
 
 
-# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.1.8...@govie-react/ds-0.2.0) (2024-07-01)
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.1.8...@govie-react/ds-0.2.0) (2024-07-01)
 
 ### Dependency Updates
 
