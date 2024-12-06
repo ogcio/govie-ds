@@ -14,8 +14,7 @@ const meta = {
     macro,
     docs: {
       description: {
-        component:
-          `A flexible table component that supports dynamic rows, headers, and custom captions.
+        component: `A flexible table component that supports dynamic rows, headers, and custom captions.
           Each cell can include various interactive elements like checkboxes, buttons, and tags.`,
       },
     },

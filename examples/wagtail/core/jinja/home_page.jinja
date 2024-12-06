@@ -25,6 +25,7 @@
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
 {% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
+{% from 'table/table.html' import govieTable %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -270,6 +271,33 @@
     }}
   <br />
 
+  <h2>Basic Table</h2>
+  {{ govieTable({
+    "captionText": "Default Table Example",
+    "headers": [
+      "Name",
+      "Email",
+      "Role"
+    ],
+    "rows": [
+      [
+        "John Doe",
+        "john.doe@example.com",
+        "Admin"
+      ],
+      [
+        "Jane Smith",
+        "jane.smith@example.com",
+        "User"
+      ],
+      [
+        "Sam Lee",
+        "sam.lee@example.com",
+        "Editor"
+      ]
+    ]
+  }) }}
+  <br />
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>
