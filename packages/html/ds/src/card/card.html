@@ -47,12 +47,8 @@
     <div class="gi-card-content {{ getInsetClass(props.inset) }}">
       <div class="gi-card-header">
         <div class="gi-card-heading">
-          {% set titleClasses = 'gi-card-title' %}
-          {% if props.subTitle %}
-            {% set titleClasses = titleClasses ~ ' !gi-mb-2' %}
-          {% endif %}
           {% if props.href %}
-            <div class="{{ titleClasses }}">
+            <div class="gi-card-title">
               {{
                 govieLink({
                   "href": props.href,
@@ -61,7 +57,7 @@
               }}
             </div>
           {% else %}
-            <div class="{{ titleClasses }}">{{ props.title }}</div>
+            <div class="gi-card-title">{{ props.title }}</div>
           {% endif %}
           {% if props.subTitle %}
             <div class="gi-text-sm gi-card-subheading">

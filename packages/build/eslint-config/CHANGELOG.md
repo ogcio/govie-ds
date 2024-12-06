@@ -1,19 +1,5 @@
 # Changelog
 
-This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
-
-# [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.2.0...@govie-ds/eslint-config-0.3.0) (2024-09-10)
-
-
-
-# [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.2...@govie-ds/eslint-config-0.2.0) (2024-08-06)
-
-
-### Features
-
-* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
-
-
 
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.0.0...eslint-config-v1.1.0) (2024-11-08)
 
@@ -21,6 +7,18 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 ### Features
 
 * use variants for heading ([#311](https://github.com/ogcio/govie-ds/issues/311)) ([0a3914a](https://github.com/ogcio/govie-ds/commit/0a3914a7e450d9dadef4ca60da36b8b165031a1d))
+
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.2.0...@govie-ds/eslint-config-0.3.0) (2024-09-10)
+
+
+
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.2...@govie-ds/eslint-config-0.2.0) (2024-08-06)
+
+
+### Features
+
+* add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
+
 
 ## [0.1.2](https://github.com/ogcio/govie-ds/compare/@govie-ds/eslint-config-0.1.1...@govie-ds/eslint-config-0.1.2) (2024-07-31)
 
@@ -35,7 +33,7 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 
 
-# 0.1.0 (2024-06-26)
+## 0.1.0 (2024-06-26)
 
 
 ### Features

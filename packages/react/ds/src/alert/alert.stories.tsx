@@ -47,7 +47,7 @@ export const InfoAlert: Story = {
     variant: 'info',
     children: (
       <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
+        <Paragraph>Content</Paragraph>
       </>
     ),
   },
@@ -59,7 +59,7 @@ export const DangerAlert: Story = {
     variant: 'danger',
     children: (
       <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
+        <Paragraph>Content</Paragraph>
       </>
     ),
   },
@@ -71,7 +71,7 @@ export const SuccessAlert: Story = {
     variant: 'success',
     children: (
       <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
+        <Paragraph>Content</Paragraph>
       </>
     ),
   },
@@ -83,7 +83,7 @@ export const WarningAlert: Story = {
     variant: 'warning',
     children: (
       <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
+        <Paragraph>Content</Paragraph>
       </>
     ),
   },
@@ -96,7 +96,7 @@ export const isDismissible: Story = {
     dismissible: true,
     children: (
       <>
-        <Paragraph className="!gi-mb-0">Content</Paragraph>
+        <Paragraph>Content</Paragraph>
       </>
     ),
   },

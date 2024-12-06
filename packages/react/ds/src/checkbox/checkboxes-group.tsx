@@ -69,29 +69,21 @@ export const CheckboxesGroup = ({
         {title && (
           <legend className="gi-checkbox-group-title">
             {title.asHeading ? (
-              <Heading
-                size={title.asHeading.size}
-                as={title.asHeading.as}
-                className="!gi-mb-[var(--gieds-space-2)]"
-              >
+              <Heading size={title.asHeading.size} as={title.asHeading.as}>
                 {title.value}
               </Heading>
             ) : (
               title.value
             )}
             {title.hint && (
-              <HintText
-                data-testid="title-hint"
-                text={title.hint}
-                className="!gi-mb-[var(--gieds-space-2)]"
-              />
+              <div className="gi-mb-2">
+                <HintText data-testid="title-hint" text={title.hint} />
+              </div>
             )}
           </legend>
         )}
         <div className="gi-checkbox-group-checkboxes-container">
-          {errorMessage && (
-            <ErrorText text={errorMessage} className="gi-mb-0" />
-          )}
+          {errorMessage && <ErrorText text={errorMessage} />}
           {items.map((checkbox, index) => (
             <Checkbox
               key={`checkbox-${index}-${checkbox.value}`}

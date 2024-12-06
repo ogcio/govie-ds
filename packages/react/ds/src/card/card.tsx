@@ -67,11 +67,7 @@ export const Card = ({
   const renderTitle = () => {
     const titleContent = href ? <Link href={href}>{title}</Link> : title;
 
-    return (
-      <div className={`gi-card-title ${subTitle ? '!gi-mb-2' : ''}`}>
-        {titleContent}
-      </div>
-    );
+    return <div className="gi-card-title">{titleContent}</div>;
   };
 
   const renderAction = (action: Action) => {

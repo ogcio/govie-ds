@@ -94,7 +94,7 @@ function Toast({
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
-        <Paragraph className="!gi-mb-0">{description}</Paragraph>
+        <Paragraph>{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
             {cloneElement(action, { noColor: true, size: 'md' })}

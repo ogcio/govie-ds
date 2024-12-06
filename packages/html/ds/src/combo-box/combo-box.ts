@@ -9,13 +9,14 @@ export type ComboBoxOptions = BaseComponentOptions;
 type dropdownStateType = {
   elements: {
     dropdownToggle: Element;
-    dropdownContainer: Element;
+    dropdownContainer: HTMLElement;
     closeIcon: HTMLSpanElement;
     checkboxes: NodeListOf<HTMLInputElement>;
-    noResultsElement: HTMLParagraphElement;
-    tag: Element;
+    noResultsElement?: HTMLElement | null;
+    tag: HTMLElement;
+    tagContainer?: HTMLElement | null;
     searchInputElement: HTMLInputElement | null;
-    resetSearchElement: Element | null;
+    resetSearchElement?: HTMLElement | null;
   };
   isOpen: boolean;
   searchInput: string;
@@ -48,11 +49,12 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
           checkboxes: dropdown.querySelectorAll('.gi-combobox-checkbox'),
           resetSearchElement: dropdown.querySelector(
             '.gi-combobox-search .gi-combobox-search-icon',
-          ),
+          )?.parentElement,
           noResultsElement: dropdown.querySelector(
             '.gi-combobox-checkbox-paragraph',
-          )!,
+          )?.parentElement,
           tag: dropdown.querySelector('.gi-tag')!,
+          tagContainer: dropdown.querySelector('.gi-tag')?.parentElement,
         },
         isOpen: false,
         searchInput: '',
@@ -80,6 +82,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         resetSearchElement,
         noResultsElement,
         tag,
+        tagContainer,
       } = state.elements;
 
       for (const checkbox of checkboxes) {
@@ -97,10 +100,10 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             state.selectedCheckboxes--;
           }
           if (state.selectedCheckboxes) {
-            tag.classList.remove('!gi-hidden');
+            tagContainer && tagContainer.classList.remove('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           } else {
-            tag.classList.add('!gi-hidden');
+            tagContainer && tagContainer.classList.add('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           }
         });
@@ -111,19 +114,29 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         state.isOpen = !state.isOpen;
         if (state.isOpen) {
           dropdownToggle.classList.add('gi-combobox-toggle-open');
-          dropdownContainer.classList.remove('!gi-hidden');
+          dropdownContainer.classList.remove(
+            'gi-combobox-dropdown-container-close',
+          );
+          dropdownContainer.classList.add(
+            'gi-combobox-dropdown-container-open',
+          );
           closeIcon.classList.add('gi-rotate-180');
         } else {
           dropdownToggle.classList.remove('gi-combobox-toggle-open');
-          dropdownContainer.classList.add('!gi-hidden');
+          dropdownContainer.classList.add(
+            'gi-combobox-dropdown-container-close',
+          );
+          dropdownContainer.classList.remove(
+            'gi-combobox-dropdown-container-open',
+          );
           closeIcon.classList.remove('gi-rotate-180');
         }
       });
 
       if (searchInputElement && resetSearchElement) {
         resetSearchElement.addEventListener('click', (event) => {
-          resetSearchElement.classList.add('!gi-hidden');
-          noResultsElement.classList.add('!gi-hidden');
+          resetSearchElement.classList.add('gi-hidden');
+          noResultsElement?.classList.add('gi-hidden');
           event.preventDefault();
           state.searchInput = '';
           searchInputElement.value = '';
@@ -142,8 +155,8 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             const label = checkbox.querySelector('label')?.textContent;
 
             state.searchInput
-              ? resetSearchElement.classList.remove('!gi-hidden')
-              : resetSearchElement.classList.add('!gi-hidden');
+              ? resetSearchElement.classList.remove('gi-hidden')
+              : resetSearchElement.classList.add('gi-hidden');
 
             if (
               label?.toLowerCase().includes(state.searchInput.toLowerCase())
@@ -155,8 +168,8 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             }
           }
           hiddenCheckboxes === checkboxes.length
-            ? noResultsElement.classList.remove('!gi-hidden')
-            : noResultsElement.classList.add('!gi-hidden');
+            ? noResultsElement?.classList.remove('gi-hidden')
+            : noResultsElement?.classList.add('gi-hidden');
         });
       }
     }
