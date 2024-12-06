@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.23.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.1...tailwind-v0.23.0) (2024-12-06)
+
+
+### Features
+
+* react table component ([#351](https://github.com/ogcio/govie-ds/issues/351)) ([18191a7](https://github.com/ogcio/govie-ds/commit/18191a77668a7464b17c0be76b3f78953760dd30))
+
 ## [0.22.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.0...tailwind-v0.22.1) (2024-12-05)
 
 
