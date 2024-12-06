@@ -1,10 +1,11 @@
-import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
+
+type Orientation = 'vertical' | 'horizontal';
 
 export type ProgressStepperProps = {
   steps: string[];
   currentStepIndex: number;
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: Orientation;
 };
 
 export type StepProps = {
@@ -12,7 +13,7 @@ export type StepProps = {
   isCurrentStep: boolean;
   isCompleted: boolean;
   stepNumber: number;
-  isVertical: boolean;
+  orientation?: Orientation;
 };
 
 const Step = ({
@@ -20,17 +21,17 @@ const Step = ({
   isCurrentStep,
   isCompleted,
   stepNumber,
-  isVertical,
+  orientation,
 }: StepProps) => {
+  const isNextStep = !isCompleted && !isCurrentStep;
   return (
-    <div className="gi-flex gi-relative gi-flex-1 gi-min-h-20">
+    <div className="gi-flex gi-relative gi-flex-1 gi-min-h-20 gi-min-w-20">
       <div
-        className={cn('gi-progress-stepper-step-container', {
-          'gi-flex-col': !isVertical,
-        })}
+        className="gi-progress-stepper-step-container"
+        data-orientation={orientation}
         data-current={isCurrentStep}
         data-completed={isCompleted}
-        data-next={!isCompleted && !isCurrentStep}
+        data-next={isNextStep}
       >
         <div className="gi-progress-stepper-step">
           {isCompleted ? <Icon icon="check" /> : <div>{stepNumber}</div>}
@@ -39,11 +40,9 @@ const Step = ({
       </div>
       {stepNumber > 1 ? (
         <div
-          className={
-            isVertical
-              ? 'gi-progress-stepper-step-connector-vertical'
-              : 'gi-progress-stepper-step-connector'
-          }
+          data-orientation={orientation}
+          data-next={isNextStep}
+          className="gi-progress-stepper-step-connector"
         >
           <span />
         </div>
@@ -57,13 +56,11 @@ export const ProgressStepper = ({
   currentStepIndex,
   orientation = 'horizontal',
 }: ProgressStepperProps) => {
-  const isVertical = orientation === 'vertical';
   return (
     <div
       data-testid="progress-stepper"
-      className={cn('gi-progress-stepper', {
-        'gi-flex-col': isVertical,
-      })}
+      className={'gi-progress-stepper'}
+      data-orientation={orientation}
     >
       {steps.map((step, index) => (
         <Step
@@ -71,7 +68,7 @@ export const ProgressStepper = ({
           stepNumber={index + 1}
           isCurrentStep={currentStepIndex === index}
           isCompleted={index < currentStepIndex && index !== currentStepIndex}
-          isVertical={isVertical}
+          orientation={orientation}
         >
           {step}
         </Step>

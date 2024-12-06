@@ -11,7 +11,7 @@ const ProgressStepper = renderComponent<ProgressStepperProps>(macro);
 
 const meta = {
   component: ProgressStepper,
-  title: 'Navigation/ProgressStepper',
+  title: 'Application/ProgressStepper',
   parameters: {
     macro,
   },
@@ -38,7 +38,15 @@ export const Default: Story = {
     },
   },
   args: {
-    steps: ['Step 1', 'Step 2', 'Step 3'],
+    steps: [
+      'Step 1',
+      'Step 2',
+      'Step 3',
+      'Step 4',
+      'Step 5',
+      'Step 6',
+      'Step 7',
+    ],
     currentStepIndex: 1,
     orientation: 'horizontal',
   },

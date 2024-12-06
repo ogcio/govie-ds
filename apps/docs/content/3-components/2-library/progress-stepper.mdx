@@ -112,7 +112,7 @@ libraries:
   <TabPanel value="tab12">
     ```html
       {{
-        govieProgressStepper({ steps: [ "Step 1", "Step 2", "Step 3"], currentStepIndex: 1 })
+        govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3"], "currentStepIndex": 1, "orientation": "horizontal" })
       }}
     ```
   </TabPanel>
@@ -120,7 +120,7 @@ libraries:
     ```react 
         import { ProgressStepper } from '@govie-ds/react';
         
-        <ProgressStepper steps={['Step 1', 'Step 2', 'Step 3']} currentStepIndex={1} />
+        <ProgressStepper steps={['Step 1', 'Step 2', 'Step 3']} currentStepIndex={1} orientation="horizontal" />
     ```
     </TabPanel>
 </Tabs>

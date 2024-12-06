@@ -17,9 +17,10 @@ describe('govieProgressStepper', () => {
       ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
     ] as HTMLElement[];
     expect(steps.length).toBe(3);
-    expect(steps[0].dataset['data-completed']).toBe('true');
-    expect(steps[1].dataset['data-current']).toBe('true');
-    expect(steps[2].dataset['data-next']).toBe('true');
+
+    expect(steps[0].dataset.completed).toBe('true');
+    expect(steps[1].dataset.current).toBe('true');
+    expect(steps[2].dataset.next).toBe('true');
   });
 
   it('should render a vertical progress stepper correctly', () => {
@@ -33,7 +34,7 @@ describe('govieProgressStepper', () => {
       ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
     ] as HTMLElement[];
 
-    expect(steps[2].dataset['data-current']).toBe('true');
+    expect(steps[2].dataset.current).toBe('true');
   });
 
   it('should pass axe accessibility tests', async () => {
