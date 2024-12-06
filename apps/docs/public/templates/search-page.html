@@ -574,25 +574,6 @@
             </div>
           </label>
 
-          <a class="gi-header-tool-item" href="/item1">
-            <span class="label">Apps</span>
-
-            <span
-              data-testid="govie-icon"
-              role="presentation"
-              style="
-                font-variation-settings:
-                  'FILL' 0,
-                  'wght' 400,
-                  'GRAD' 0,
-                  'opsz' 24;
-              "
-              class="material-symbols-outlined gi-block gi-text-[24px]"
-            >
-              apps
-            </span>
-          </a>
-
           <label
             for="MobileMenuTrigger"
             class="gi-header-tool-item sm:gi-hidden"
@@ -751,1101 +732,1133 @@
       ></div>
     </header>
 
-    <div class="gi-bg-gray-50">
-      <div class="gi-container py-14">
-        <div class="gi-flex gi-flex-col gi-gap-7">
-          <div class="gi-flex sm:gi-gap-7 justify-center items-end">
-            <div class="max-w-[777px] grow gap-4 flex flex-col">
-              <a href="#" class="gi-link gi-link-inherit">Home</a>
+    <div class="gi-container gi-mx-auto max-w-[1024px]">
+      <div class="border-b-gray-150 border-b border-solid">
+        <div class="py-14">
+          <div class="gi-flex gi-flex-col gi-gap-7">
+            <div class="gi-flex sm:gi-gap-5 items-end">
+              <div class="max-w-[477px] grow gap-4 flex flex-col">
+                <h2 class="gi-heading-lg">Search</h2>
 
-              <h2 class="gi-heading-lg">Search Results</h2>
-
-              <div class="gi-text-input-container">
-                <div class="gi-text-input-container-inner {{ marginTop }}">
-                  <input
-                    id="search-input"
-                    data-testid="textbox"
-                    type="text"
-                    autocomplete="on"
-                    class="gi-border-gray-950 gi-w-full gi-text-input"
-                  />
+                <div class="gi-text-input-container">
+                  <div class="gi-text-input-container-inner {{ marginTop }}">
+                    <input
+                      id="search-input"
+                      data-testid="textbox"
+                      type="text"
+                      autocomplete="on"
+                      class="gi-border-gray-950 gi-w-full gi-text-input"
+                    />
+                  </div>
                 </div>
               </div>
+              <div class="hidden sm:block">
+                <button
+                  data-testid="govieButton-default-primary-medium-notDisabled"
+                  data-element="button-container"
+                  data-module="gieds-button"
+                  class="gi-btn gi-btn-primary gi-btn-regular"
+                >
+                  Search
+                </button>
+              </div>
+              <div class="block sm:hidden">
+                <button
+                  data-element="icon-button-container"
+                  data-module="gieds-icon-button"
+                  data-testid="govieIconButton-default-primary-medium-notDisabled"
+                  class="gi-btn gi-btn-primary gi-icon-btn-regular"
+                >
+                  <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    style="
+                      font-variation-settings:
+                        'FILL' 0,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24;
+                    "
+                    class="material-symbols-outlined gi-block gi-text-[16px]"
+                  >
+                    search
+                  </span>
+                </button>
+              </div>
             </div>
-            <div class="hidden sm:block">
+          </div>
+        </div>
+      </div>
+      <div class="mt-6">
+        <div class="sm:grid sm:grid-cols-4 sm:gap-12">
+          <div class="flex flex-col gap-8">
+            <h2 class="gi-heading-lg">Filters</h2>
+
+            <form
+              data-module="gieds-combobox"
+              action="#"
+              class="gi-combobox-container"
+            >
+              <div role="group" aria-label="Organisations dropdown">
+                <div data-module="gieds-dropdown-item">
+                  <button
+                    data-testid="combobox-toggle"
+                    class="gi-combobox-toggle"
+                  >
+                    <div class="gi-combobox-toggle-content">
+                      <p
+                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
+                      >
+                        Organisations
+                      </p>
+
+                      <div class="gi-hidden">
+                        <strong class="gi-tag gi-tag-counter"> 0 </strong>
+                      </div>
+                    </div>
+
+                    <span
+                      data-testid="govie-icon"
+                      role="presentation"
+                      style="
+                        font-variation-settings:
+                          'FILL' 0,
+                          'wght' 400,
+                          'GRAD' 0,
+                          'opsz' 24;
+                      "
+                      class="material-symbols-outlined gi-block gi-text-[24px]"
+                    >
+                      keyboard_arrow_down
+                    </span>
+                  </button>
+                  <div
+                    data-testid="combobox-dropdown-container"
+                    data-element="combobox-dropdown-container"
+                    class="gi-combobox-dropdown-container-close"
+                  >
+                    <div class="gi-combobox-search">
+                      <div
+                        class="gi-text-input-container gi-combobox-search-input"
+                      >
+                        <div
+                          class="gi-text-input-container-inner {{ marginTop }}"
+                        >
+                          <input
+                            id="input-id"
+                            placeholder="Search"
+                            data-testid="textbox"
+                            type="text"
+                            autocomplete="on"
+                            class="gi-border-gray-950 gi-w-full gi-text-input"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="gi-hidden">
+                        <button
+                          data-element="icon-button-container"
+                          data-module="gieds-icon-button"
+                          data-testid="govieIconButton-dark-flat-small-notDisabled"
+                          class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
+                        >
+                          <span
+                            data-testid="govie-icon"
+                            role="presentation"
+                            style="
+                              font-variation-settings:
+                                'FILL' 0,
+                                'wght' 400,
+                                'GRAD' 0,
+                                'opsz' 24;
+                            "
+                            class="material-symbols-outlined gi-block gi-text-[16px]"
+                          >
+                            close
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="gi-combobox-checkbox-container">
+                      <div class="gi-hidden">
+                        <p
+                          class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
+                        >
+                          No results found.
+                        </p>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="An Bord Pleanála"
+                          data-element="An Bord Pleanála"
+                          id="An Bord Pleanála"
+                          value="15431907-an-bord-pleanala"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="An Bord Pleanála" class="gi-checkbox-label">
+                          An Bord Pleanála
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="An Garda Síochána"
+                          data-element="An Garda Síochána"
+                          id="An Garda Síochána"
+                          value="an-garda-siochana"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="An Garda Síochána"
+                          class="gi-checkbox-label"
+                        >
+                          An Garda Síochána
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Bord Bia (Irish Food Board)"
+                          data-element="Bord Bia (Irish Food Board)"
+                          id="Bord Bia (Irish Food Board)"
+                          value="14061907-bord-bia-irish-food-board"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Bord Bia (Irish Food Board)"
+                          class="gi-checkbox-label"
+                        >
+                          Bord Bia (Irish Food Board)
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Capital Works Management Framework"
+                          data-element="Capital Works Management Framework"
+                          id="Capital Works Management Framework"
+                          value="7c2ea-capital-works-management-framework"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Capital Works Management Framework"
+                          class="gi-checkbox-label"
+                        >
+                          Capital Works Management Framework
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Carlow County Council"
+                          data-element="Carlow County Council"
+                          id="Carlow County Council"
+                          value="carlow-county-council"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Carlow County Council"
+                          class="gi-checkbox-label"
+                        >
+                          Carlow County Council
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Cavan County Council"
+                          data-element="Cavan County Council"
+                          id="Cavan County Council"
+                          value="cavan-county-council"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Cavan County Council"
+                          class="gi-checkbox-label"
+                        >
+                          Cavan County Council
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Central Bank of Ireland"
+                          data-element="Central Bank of Ireland"
+                          id="Central Bank of Ireland"
+                          value="10032007-central-bank-of-ireland"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Central Bank of Ireland"
+                          class="gi-checkbox-label"
+                        >
+                          Central Bank of Ireland
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Central Statistics Office"
+                          data-element="Central Statistics Office"
+                          id="Central Statistics Office"
+                          value="central-statistics-office"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Central Statistics Office"
+                          class="gi-checkbox-label"
+                        >
+                          Central Statistics Office
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Chief State Solicitor’s Office"
+                          data-element="Chief State Solicitor’s Office"
+                          id="Chief State Solicitor’s Office"
+                          value="chief-state-solicitors-office"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Chief State Solicitor’s Office"
+                          class="gi-checkbox-label"
+                        >
+                          Chief State Solicitor’s Office
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Circulars"
+                          data-element="Circulars"
+                          id="Circulars"
+                          value="28448-circulars"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Circulars" class="gi-checkbox-label">
+                          Circulars
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Civil Justice Review"
+                          data-element="Civil Justice Review"
+                          id="Civil Justice Review"
+                          value="dff8b-civil-justice-review"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Civil Justice Review"
+                          class="gi-checkbox-label"
+                        >
+                          Civil Justice Review
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Civil Service Employee Assistance Service"
+                          data-element="Civil Service Employee Assistance Service"
+                          id="Civil Service Employee Assistance Service"
+                          value="72752-civil-service-employee-assistance-service"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Civil Service Employee Assistance Service"
+                          class="gi-checkbox-label"
+                        >
+                          Civil Service Employee Assistance Service
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Clare County Council"
+                          data-element="Clare County Council"
+                          id="Clare County Council"
+                          value="clare-county-council"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Clare County Council"
+                          class="gi-checkbox-label"
+                        >
+                          Clare County Council
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Commission on Taxation and Welfare"
+                          data-element="Commission on Taxation and Welfare"
+                          id="Commission on Taxation and Welfare"
+                          value="c526e-commission-on-taxation-and-welfare"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Commission on Taxation and Welfare"
+                          class="gi-checkbox-label"
+                        >
+                          Commission on Taxation and Welfare
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Commission on the Defence Forces"
+                          data-element="Commission on the Defence Forces"
+                          id="Commission on the Defence Forces"
+                          value="20d04-commission-of-the-defence-forces"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Commission on the Defence Forces"
+                          class="gi-checkbox-label"
+                        >
+                          Commission on the Defence Forces
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div role="group" aria-label="Category dropdown">
+                <div data-module="gieds-dropdown-item">
+                  <button
+                    data-testid="combobox-toggle"
+                    class="gi-combobox-toggle"
+                  >
+                    <div class="gi-combobox-toggle-content">
+                      <p
+                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
+                      >
+                        Category
+                      </p>
+
+                      <div class="gi-hidden">
+                        <strong class="gi-tag gi-tag-counter"> 0 </strong>
+                      </div>
+                    </div>
+
+                    <span
+                      data-testid="govie-icon"
+                      role="presentation"
+                      style="
+                        font-variation-settings:
+                          'FILL' 0,
+                          'wght' 400,
+                          'GRAD' 0,
+                          'opsz' 24;
+                      "
+                      class="material-symbols-outlined gi-block gi-text-[24px]"
+                    >
+                      keyboard_arrow_down
+                    </span>
+                  </button>
+                  <div
+                    data-testid="combobox-dropdown-container"
+                    data-element="combobox-dropdown-container"
+                    class="gi-combobox-dropdown-container-close"
+                  >
+                    <div class="gi-combobox-search">
+                      <div
+                        class="gi-text-input-container gi-combobox-search-input"
+                      >
+                        <div
+                          class="gi-text-input-container-inner {{ marginTop }}"
+                        >
+                          <input
+                            id="input-id"
+                            placeholder="Search"
+                            data-testid="textbox"
+                            type="text"
+                            autocomplete="on"
+                            class="gi-border-gray-950 gi-w-full gi-text-input"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="gi-hidden">
+                        <button
+                          data-element="icon-button-container"
+                          data-module="gieds-icon-button"
+                          data-testid="govieIconButton-dark-flat-small-notDisabled"
+                          class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
+                        >
+                          <span
+                            data-testid="govie-icon"
+                            role="presentation"
+                            style="
+                              font-variation-settings:
+                                'FILL' 0,
+                                'wght' 400,
+                                'GRAD' 0,
+                                'opsz' 24;
+                            "
+                            class="material-symbols-outlined gi-block gi-text-[16px]"
+                          >
+                            close
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="gi-combobox-checkbox-container">
+                      <div class="gi-hidden">
+                        <p
+                          class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
+                        >
+                          No results found.
+                        </p>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Agencies"
+                          data-element="Agencies"
+                          id="Agencies"
+                          value="agencies"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Agencies" class="gi-checkbox-label">
+                          Agencies
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Aquaculture licences"
+                          data-element="Aquaculture licences"
+                          id="Aquaculture licences"
+                          value="aquaculture_licence"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Aquaculture licences"
+                          class="gi-checkbox-label"
+                        >
+                          Aquaculture licences
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Biographies"
+                          data-element="Biographies"
+                          id="Biographies"
+                          value="biographies"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Biographies" class="gi-checkbox-label">
+                          Biographies
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Campaigns"
+                          data-element="Campaigns"
+                          id="Campaigns"
+                          value="campaigns"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Campaigns" class="gi-checkbox-label">
+                          Campaigns
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Circulars"
+                          data-element="Circulars"
+                          id="Circulars"
+                          value="circulars"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Circulars" class="gi-checkbox-label">
+                          Circulars
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Collections"
+                          data-element="Collections"
+                          id="Collections"
+                          value="collections"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Collections" class="gi-checkbox-label">
+                          Collections
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Consultations"
+                          data-element="Consultations"
+                          id="Consultations"
+                          value="consultations"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Consultations" class="gi-checkbox-label">
+                          Consultations
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Coroner cases"
+                          data-element="Coroner cases"
+                          id="Coroner cases"
+                          value="coroner_cases"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Coroner cases" class="gi-checkbox-label">
+                          Coroner cases
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div role="group" aria-label="Topic dropdown">
+                <div data-module="gieds-dropdown-item">
+                  <button
+                    data-testid="combobox-toggle"
+                    class="gi-combobox-toggle"
+                  >
+                    <div class="gi-combobox-toggle-content">
+                      <p
+                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
+                      >
+                        Topic
+                      </p>
+
+                      <div class="gi-hidden">
+                        <strong class="gi-tag gi-tag-counter"> 0 </strong>
+                      </div>
+                    </div>
+
+                    <span
+                      data-testid="govie-icon"
+                      role="presentation"
+                      style="
+                        font-variation-settings:
+                          'FILL' 0,
+                          'wght' 400,
+                          'GRAD' 0,
+                          'opsz' 24;
+                      "
+                      class="material-symbols-outlined gi-block gi-text-[24px]"
+                    >
+                      keyboard_arrow_down
+                    </span>
+                  </button>
+                  <div
+                    data-testid="combobox-dropdown-container"
+                    data-element="combobox-dropdown-container"
+                    class="gi-combobox-dropdown-container-close"
+                  >
+                    <div class="gi-combobox-search">
+                      <div
+                        class="gi-text-input-container gi-combobox-search-input"
+                      >
+                        <div
+                          class="gi-text-input-container-inner {{ marginTop }}"
+                        >
+                          <input
+                            id="input-id"
+                            placeholder="Search"
+                            data-testid="textbox"
+                            type="text"
+                            autocomplete="on"
+                            class="gi-border-gray-950 gi-w-full gi-text-input"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="gi-hidden">
+                        <button
+                          data-element="icon-button-container"
+                          data-module="gieds-icon-button"
+                          data-testid="govieIconButton-dark-flat-small-notDisabled"
+                          class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
+                        >
+                          <span
+                            data-testid="govie-icon"
+                            role="presentation"
+                            style="
+                              font-variation-settings:
+                                'FILL' 0,
+                                'wght' 400,
+                                'GRAD' 0,
+                                'opsz' 24;
+                            "
+                            class="material-symbols-outlined gi-block gi-text-[16px]"
+                          >
+                            close
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="gi-combobox-checkbox-container">
+                      <div class="gi-hidden">
+                        <p
+                          class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
+                        >
+                          No results found.
+                        </p>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Brexit"
+                          data-element="Brexit"
+                          id="Brexit"
+                          value="brexit"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="Brexit" class="gi-checkbox-label">
+                          Brexit
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Business and industry"
+                          data-element="Business and industry"
+                          id="Business and industry"
+                          value="business-and-industry"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Business and industry"
+                          class="gi-checkbox-label"
+                        >
+                          Business and industry
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="COVID-19"
+                          data-element="COVID-19"
+                          id="COVID-19"
+                          value="covid-19"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label for="COVID-19" class="gi-checkbox-label">
+                          COVID-19
+                        </label>
+                      </div>
+
+                      <div class="gi-checkbox-container gi-combobox-checkbox">
+                        <input
+                          name="Corporate information"
+                          data-element="Corporate information"
+                          id="Corporate information"
+                          value="corporate-information"
+                          class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                          type="checkbox"
+                        />
+                        <label
+                          for="Corporate information"
+                          class="gi-checkbox-label"
+                        >
+                          Corporate information
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <div>
               <button
                 data-testid="govieButton-dark-primary-medium-notDisabled"
                 data-element="button-container"
                 data-module="gieds-button"
                 class="gi-btn gi-btn-primary-dark gi-btn-regular"
               >
-                Search gov.ie
+                Apply filters
               </button>
             </div>
-            <div class="block sm:hidden">
-              <button
-                data-element="icon-button-container"
-                data-module="gieds-icon-button"
-                data-testid="govieIconButton-dark-primary-medium-notDisabled"
-                class="gi-btn gi-btn-primary-dark gi-icon-btn-regular"
-              >
-                <span
-                  data-testid="govie-icon"
-                  role="presentation"
-                  style="
-                    font-variation-settings:
-                      'FILL' 0,
-                      'wght' 400,
-                      'GRAD' 0,
-                      'opsz' 24;
-                  "
-                  class="material-symbols-outlined gi-block gi-text-[16px]"
-                >
-                  search
-                </span>
-              </button>
-            </div>
+
+            <a href="#" class="gi-link visited:gi-text-blue-700">Clear All</a>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="gi-container mt-6">
-      <div class="sm:grid sm:grid-cols-4 sm:gap-4">
-        <div class="flex flex-col gap-8">
-          <h2 class="gi-heading-lg">Filters</h2>
+          <div class="col-span-3 sm:mt-0 mt-6">
+            <div class="mb-6 flex justify-between items-center">
+              <div class="hidden sm:block">
+                <h4 class="gi-heading-sm">49357 Results</h4>
+              </div>
 
-          <form
-            data-module="gieds-combobox"
-            action="#"
-            class="gi-combobox-container"
-          >
-            <div role="group" aria-label="Organisations dropdown">
-              <div data-module="gieds-dropdown-item">
-                <button
-                  data-testid="combobox-toggle"
-                  class="gi-combobox-toggle"
+              <div data-module="gieds-select">
+                <select
+                  id="unique-id"
+                  aria-label="unique-id"
+                  class="gi-select {{ marginTop }}"
                 >
-                  <div class="gi-combobox-toggle-content">
-                    <p
-                      class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
-                    >
-                      Organisations
-                    </p>
+                  <option class="gi-select-option" value="value-1">
+                    Sort: Recent
+                  </option>
 
-                    <div class="gi-hidden">
-                      <strong class="gi-tag gi-tag-counter"> 0 </strong>
-                    </div>
-                  </div>
+                  <option class="gi-select-option" value="value-2">
+                    Sort: Oldest
+                  </option>
 
+                  <option class="gi-select-option" value="value-3">
+                    Sort: Alphabetical
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="gi-flex gi-gap-4 mb-6">
+              <div class="gi-chip">
+                <span id="chip-description">Environment</span>
+                <div role="button" aria-label="remove chip">
                   <span
-                    data-testid="govie-icon"
                     role="presentation"
-                    style="
-                      font-variation-settings:
-                        'FILL' 0,
-                        'wght' 400,
-                        'GRAD' 0,
-                        'opsz' 24;
-                    "
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >
-                    keyboard_arrow_down
+                    class="material-symbols-outlined gi-block"
+                    style="font-size: 16px"
+                    >close
                   </span>
-                </button>
-                <div
-                  data-testid="combobox-dropdown-container"
-                  data-element="combobox-dropdown-container"
-                  class="gi-combobox-dropdown-container-close"
-                >
-                  <div class="gi-combobox-search">
-                    <div
-                      class="gi-text-input-container gi-combobox-search-input"
-                    >
-                      <div
-                        class="gi-text-input-container-inner {{ marginTop }}"
-                      >
-                        <input
-                          id="input-id"
-                          placeholder="Search"
-                          data-testid="textbox"
-                          type="text"
-                          autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="gi-hidden">
-                      <button
-                        data-element="icon-button-container"
-                        data-module="gieds-icon-button"
-                        data-testid="govieIconButton-dark-flat-small-notDisabled"
-                        class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
-                      >
-                        <span
-                          data-testid="govie-icon"
-                          role="presentation"
-                          style="
-                            font-variation-settings:
-                              'FILL' 0,
-                              'wght' 400,
-                              'GRAD' 0,
-                              'opsz' 24;
-                          "
-                          class="material-symbols-outlined gi-block gi-text-[16px]"
-                        >
-                          close
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="gi-combobox-checkbox-container">
-                    <div class="gi-hidden">
-                      <p
-                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
-                      >
-                        No results found.
-                      </p>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="An Bord Pleanála"
-                        data-element="An Bord Pleanála"
-                        id="An Bord Pleanála"
-                        value="15431907-an-bord-pleanala"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="An Bord Pleanála" class="gi-checkbox-label">
-                        An Bord Pleanála
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="An Garda Síochána"
-                        data-element="An Garda Síochána"
-                        id="An Garda Síochána"
-                        value="an-garda-siochana"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="An Garda Síochána" class="gi-checkbox-label">
-                        An Garda Síochána
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Bord Bia (Irish Food Board)"
-                        data-element="Bord Bia (Irish Food Board)"
-                        id="Bord Bia (Irish Food Board)"
-                        value="14061907-bord-bia-irish-food-board"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Bord Bia (Irish Food Board)"
-                        class="gi-checkbox-label"
-                      >
-                        Bord Bia (Irish Food Board)
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Capital Works Management Framework"
-                        data-element="Capital Works Management Framework"
-                        id="Capital Works Management Framework"
-                        value="7c2ea-capital-works-management-framework"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Capital Works Management Framework"
-                        class="gi-checkbox-label"
-                      >
-                        Capital Works Management Framework
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Carlow County Council"
-                        data-element="Carlow County Council"
-                        id="Carlow County Council"
-                        value="carlow-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Carlow County Council"
-                        class="gi-checkbox-label"
-                      >
-                        Carlow County Council
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Cavan County Council"
-                        data-element="Cavan County Council"
-                        id="Cavan County Council"
-                        value="cavan-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Cavan County Council"
-                        class="gi-checkbox-label"
-                      >
-                        Cavan County Council
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Central Bank of Ireland"
-                        data-element="Central Bank of Ireland"
-                        id="Central Bank of Ireland"
-                        value="10032007-central-bank-of-ireland"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Central Bank of Ireland"
-                        class="gi-checkbox-label"
-                      >
-                        Central Bank of Ireland
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Central Statistics Office"
-                        data-element="Central Statistics Office"
-                        id="Central Statistics Office"
-                        value="central-statistics-office"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Central Statistics Office"
-                        class="gi-checkbox-label"
-                      >
-                        Central Statistics Office
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Chief State Solicitor’s Office"
-                        data-element="Chief State Solicitor’s Office"
-                        id="Chief State Solicitor’s Office"
-                        value="chief-state-solicitors-office"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Chief State Solicitor’s Office"
-                        class="gi-checkbox-label"
-                      >
-                        Chief State Solicitor’s Office
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Circulars"
-                        data-element="Circulars"
-                        id="Circulars"
-                        value="28448-circulars"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Circulars" class="gi-checkbox-label">
-                        Circulars
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Civil Justice Review"
-                        data-element="Civil Justice Review"
-                        id="Civil Justice Review"
-                        value="dff8b-civil-justice-review"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Civil Justice Review"
-                        class="gi-checkbox-label"
-                      >
-                        Civil Justice Review
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Civil Service Employee Assistance Service"
-                        data-element="Civil Service Employee Assistance Service"
-                        id="Civil Service Employee Assistance Service"
-                        value="72752-civil-service-employee-assistance-service"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Civil Service Employee Assistance Service"
-                        class="gi-checkbox-label"
-                      >
-                        Civil Service Employee Assistance Service
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Clare County Council"
-                        data-element="Clare County Council"
-                        id="Clare County Council"
-                        value="clare-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Clare County Council"
-                        class="gi-checkbox-label"
-                      >
-                        Clare County Council
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Commission on Taxation and Welfare"
-                        data-element="Commission on Taxation and Welfare"
-                        id="Commission on Taxation and Welfare"
-                        value="c526e-commission-on-taxation-and-welfare"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Commission on Taxation and Welfare"
-                        class="gi-checkbox-label"
-                      >
-                        Commission on Taxation and Welfare
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Commission on the Defence Forces"
-                        data-element="Commission on the Defence Forces"
-                        id="Commission on the Defence Forces"
-                        value="20d04-commission-of-the-defence-forces"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Commission on the Defence Forces"
-                        class="gi-checkbox-label"
-                      >
-                        Commission on the Defence Forces
-                      </label>
-                    </div>
-                  </div>
                 </div>
               </div>
-            </div>
-
-            <div role="group" aria-label="Category dropdown">
-              <div data-module="gieds-dropdown-item">
-                <button
-                  data-testid="combobox-toggle"
-                  class="gi-combobox-toggle"
-                >
-                  <div class="gi-combobox-toggle-content">
-                    <p
-                      class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
-                    >
-                      Category
-                    </p>
-
-                    <div class="gi-hidden">
-                      <strong class="gi-tag gi-tag-counter"> 0 </strong>
-                    </div>
-                  </div>
-
+              <div class="gi-chip">
+                <span id="chip-description">Marine</span>
+                <div role="button" aria-label="remove chip">
                   <span
-                    data-testid="govie-icon"
                     role="presentation"
-                    style="
-                      font-variation-settings:
-                        'FILL' 0,
-                        'wght' 400,
-                        'GRAD' 0,
-                        'opsz' 24;
-                    "
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >
-                    keyboard_arrow_down
+                    class="material-symbols-outlined gi-block"
+                    style="font-size: 16px"
+                    >close
                   </span>
-                </button>
-                <div
-                  data-testid="combobox-dropdown-container"
-                  data-element="combobox-dropdown-container"
-                  class="gi-combobox-dropdown-container-close"
-                >
-                  <div class="gi-combobox-search">
-                    <div
-                      class="gi-text-input-container gi-combobox-search-input"
-                    >
-                      <div
-                        class="gi-text-input-container-inner {{ marginTop }}"
-                      >
-                        <input
-                          id="input-id"
-                          placeholder="Search"
-                          data-testid="textbox"
-                          type="text"
-                          autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="gi-hidden">
-                      <button
-                        data-element="icon-button-container"
-                        data-module="gieds-icon-button"
-                        data-testid="govieIconButton-dark-flat-small-notDisabled"
-                        class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
-                      >
-                        <span
-                          data-testid="govie-icon"
-                          role="presentation"
-                          style="
-                            font-variation-settings:
-                              'FILL' 0,
-                              'wght' 400,
-                              'GRAD' 0,
-                              'opsz' 24;
-                          "
-                          class="material-symbols-outlined gi-block gi-text-[16px]"
-                        >
-                          close
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="gi-combobox-checkbox-container">
-                    <div class="gi-hidden">
-                      <p
-                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
-                      >
-                        No results found.
-                      </p>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Agencies"
-                        data-element="Agencies"
-                        id="Agencies"
-                        value="agencies"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Agencies" class="gi-checkbox-label">
-                        Agencies
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Aquaculture licences"
-                        data-element="Aquaculture licences"
-                        id="Aquaculture licences"
-                        value="aquaculture_licence"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Aquaculture licences"
-                        class="gi-checkbox-label"
-                      >
-                        Aquaculture licences
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Biographies"
-                        data-element="Biographies"
-                        id="Biographies"
-                        value="biographies"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Biographies" class="gi-checkbox-label">
-                        Biographies
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Campaigns"
-                        data-element="Campaigns"
-                        id="Campaigns"
-                        value="campaigns"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Campaigns" class="gi-checkbox-label">
-                        Campaigns
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Circulars"
-                        data-element="Circulars"
-                        id="Circulars"
-                        value="circulars"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Circulars" class="gi-checkbox-label">
-                        Circulars
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Collections"
-                        data-element="Collections"
-                        id="Collections"
-                        value="collections"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Collections" class="gi-checkbox-label">
-                        Collections
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Consultations"
-                        data-element="Consultations"
-                        id="Consultations"
-                        value="consultations"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Consultations" class="gi-checkbox-label">
-                        Consultations
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Coroner cases"
-                        data-element="Coroner cases"
-                        id="Coroner cases"
-                        value="coroner_cases"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Coroner cases" class="gi-checkbox-label">
-                        Coroner cases
-                      </label>
-                    </div>
-                  </div>
                 </div>
               </div>
-            </div>
-
-            <div role="group" aria-label="Topic dropdown">
-              <div data-module="gieds-dropdown-item">
-                <button
-                  data-testid="combobox-toggle"
-                  class="gi-combobox-toggle"
-                >
-                  <div class="gi-combobox-toggle-content">
-                    <p
-                      class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
-                    >
-                      Topic
-                    </p>
-
-                    <div class="gi-hidden">
-                      <strong class="gi-tag gi-tag-counter"> 0 </strong>
-                    </div>
-                  </div>
-
+              <div class="gi-chip">
+                <span id="chip-description">Water Industry</span>
+                <div role="button" aria-label="remove chip">
                   <span
-                    data-testid="govie-icon"
                     role="presentation"
-                    style="
-                      font-variation-settings:
-                        'FILL' 0,
-                        'wght' 400,
-                        'GRAD' 0,
-                        'opsz' 24;
-                    "
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >
-                    keyboard_arrow_down
+                    class="material-symbols-outlined gi-block"
+                    style="font-size: 16px"
+                    >close
                   </span>
-                </button>
-                <div
-                  data-testid="combobox-dropdown-container"
-                  data-element="combobox-dropdown-container"
-                  class="gi-combobox-dropdown-container-close"
-                >
-                  <div class="gi-combobox-search">
-                    <div
-                      class="gi-text-input-container gi-combobox-search-input"
-                    >
-                      <div
-                        class="gi-text-input-container-inner {{ marginTop }}"
-                      >
-                        <input
-                          id="input-id"
-                          placeholder="Search"
-                          data-testid="textbox"
-                          type="text"
-                          autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="gi-hidden">
-                      <button
-                        data-element="icon-button-container"
-                        data-module="gieds-icon-button"
-                        data-testid="govieIconButton-dark-flat-small-notDisabled"
-                        class="gi-btn gi-btn-flat-dark gi-icon-btn-small gi-combobox-search-icon"
-                      >
-                        <span
-                          data-testid="govie-icon"
-                          role="presentation"
-                          style="
-                            font-variation-settings:
-                              'FILL' 0,
-                              'wght' 400,
-                              'GRAD' 0,
-                              'opsz' 24;
-                          "
-                          class="material-symbols-outlined gi-block gi-text-[16px]"
-                        >
-                          close
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="gi-combobox-checkbox-container">
-                    <div class="gi-hidden">
-                      <p
-                        class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose gi-combobox-checkbox-paragraph"
-                      >
-                        No results found.
-                      </p>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Brexit"
-                        data-element="Brexit"
-                        id="Brexit"
-                        value="brexit"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="Brexit" class="gi-checkbox-label">
-                        Brexit
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Business and industry"
-                        data-element="Business and industry"
-                        id="Business and industry"
-                        value="business-and-industry"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Business and industry"
-                        class="gi-checkbox-label"
-                      >
-                        Business and industry
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="COVID-19"
-                        data-element="COVID-19"
-                        id="COVID-19"
-                        value="covid-19"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label for="COVID-19" class="gi-checkbox-label">
-                        COVID-19
-                      </label>
-                    </div>
-
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
-                      <input
-                        name="Corporate information"
-                        data-element="Corporate information"
-                        id="Corporate information"
-                        value="corporate-information"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
-                        type="checkbox"
-                      />
-                      <label
-                        for="Corporate information"
-                        class="gi-checkbox-label"
-                      >
-                        Corporate information
-                      </label>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-          </form>
 
-          <div>
-            <button
-              data-testid="govieButton-dark-primary-medium-notDisabled"
-              data-element="button-container"
-              data-module="gieds-button"
-              class="gi-btn gi-btn-primary-dark gi-btn-regular"
-            >
-              Apply filters
-            </button>
-          </div>
-        </div>
-        <div class="col-span-3 sm:mt-0 mt-6">
-          <div class="mb-6 flex justify-between items-center">
-            <div data-module="gieds-select">
-              <label for="unique-id" class="gi-text-md gi-label gi-mb-2"
-                >Default Select</label
-              >
+            <div class="gi-card gi-card-horizontal gi-card-inset-none">
+              <div class="gi-card-content gi-card-inset-none">
+                <div class="gi-card-header">
+                  <div class="gi-card-heading">
+                    <div class="gi-card-title">Passport Result 1</div>
 
-              <select
-                id="unique-id"
-                aria-label="Default Select"
-                class="gi-select {{ marginTop }}"
-              >
-                <option class="gi-select-option" value="value-1">
-                  Option 1
-                </option>
-
-                <option class="gi-select-option" value="value-2">
-                  Option 2
-                </option>
-
-                <option class="gi-select-option" value="value-4">
-                  Option 3
-                </option>
-              </select>
-            </div>
-
-            <div class="hidden sm:block">
-              <p
-                class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose"
-              >
-                49357 Results
-              </p>
-            </div>
-          </div>
-
-          <div class="gi-card gi-card-horizontal gi-card-inset-none">
-            <div class="gi-card-content gi-card-inset-none">
-              <div class="gi-card-header">
-                <div class="gi-card-heading">
-                  <div class="gi-card-title">Passport Result 1</div>
-
-                  <div class="gi-text-sm gi-card-subheading">
-                    Updated: DD/MM/YYY
+                    <div class="gi-text-sm gi-card-subheading">
+                      Updated: DD/MM/YYY
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="gi-card-paragraph">
-                <p class="gi-text-sm">
-                  Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
-                  purus ac. Sollicitudin. Lorem ipsum dolor sit amet
-                  consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="gi-card gi-card-horizontal gi-card-inset-none">
-            <div class="gi-card-content gi-card-inset-none">
-              <div class="gi-card-header">
-                <div class="gi-card-heading">
-                  <div class="gi-card-title">Passport Result 2</div>
-
-                  <div class="gi-text-sm gi-card-subheading">
-                    Updated: DD/MM/YYY
-                  </div>
+                <div class="gi-card-paragraph">
+                  <p class="gi-text-sm">
+                    Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
+                    purus ac. Sollicitudin. Lorem ipsum dolor sit amet
+                    consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+                  </p>
                 </div>
               </div>
-
-              <div class="gi-card-paragraph">
-                <p class="gi-text-sm">
-                  Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
-                  purus ac. Sollicitudin. Lorem ipsum dolor sit amet
-                  consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
-                </p>
-              </div>
             </div>
-          </div>
 
-          <div class="gi-card gi-card-horizontal gi-card-inset-none">
-            <div class="gi-card-content gi-card-inset-none">
-              <div class="gi-card-header">
-                <div class="gi-card-heading">
-                  <div class="gi-card-title">Passport Result 3</div>
+            <div class="gi-card gi-card-horizontal gi-card-inset-none">
+              <div class="gi-card-content gi-card-inset-none">
+                <div class="gi-card-header">
+                  <div class="gi-card-heading">
+                    <div class="gi-card-title">Passport Result 2</div>
 
-                  <div class="gi-text-sm gi-card-subheading">
-                    Updated: DD/MM/YYY
+                    <div class="gi-text-sm gi-card-subheading">
+                      Updated: DD/MM/YYY
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="gi-card-paragraph">
-                <p class="gi-text-sm">
-                  Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
-                  purus ac. Sollicitudin. Lorem ipsum dolor sit amet
-                  consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="gi-card gi-card-horizontal gi-card-inset-none">
-            <div class="gi-card-content gi-card-inset-none">
-              <div class="gi-card-header">
-                <div class="gi-card-heading">
-                  <div class="gi-card-title">Passport Result 4</div>
-
-                  <div class="gi-text-sm gi-card-subheading">
-                    Updated: DD/MM/YYY
-                  </div>
+                <div class="gi-card-paragraph">
+                  <p class="gi-text-sm">
+                    Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
+                    purus ac. Sollicitudin. Lorem ipsum dolor sit amet
+                    consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+                  </p>
                 </div>
               </div>
+            </div>
 
-              <div class="gi-card-paragraph">
-                <p class="gi-text-sm">
-                  Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
-                  purus ac. Sollicitudin. Lorem ipsum dolor sit amet
-                  consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
-                </p>
+            <div class="gi-card gi-card-horizontal gi-card-inset-none">
+              <div class="gi-card-content gi-card-inset-none">
+                <div class="gi-card-header">
+                  <div class="gi-card-heading">
+                    <div class="gi-card-title">Passport Result 3</div>
+
+                    <div class="gi-text-sm gi-card-subheading">
+                      Updated: DD/MM/YYY
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gi-card-paragraph">
+                  <p class="gi-text-sm">
+                    Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
+                    purus ac. Sollicitudin. Lorem ipsum dolor sit amet
+                    consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="my-6">
-            <div
-              class="gi-pagination"
-              data-current-page="5"
-              data-total-pages="10"
-              data-testid="govie-pagination"
-              data-module="gieds-pagination"
-            >
-              <a
-                href="#"
-                target="_self"
-                data-testid="govie-pagination-prev-btn"
-                data-element="button-container"
-                data-module="gieds-button"
-                class="gi-pagination-prev-btn gi-btn gi-btn-flat-dark gi-btn-large"
-              >
-                <span
-                  data-testid="govie-icon"
-                  role="presentation"
-                  class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >arrow_left_alt</span
-                >
-                <span class="sm:gi-block gi-hidden">Previous</span>
-              </a>
+            <div class="gi-card gi-card-horizontal gi-card-inset-none">
+              <div class="gi-card-content gi-card-inset-none">
+                <div class="gi-card-header">
+                  <div class="gi-card-heading">
+                    <div class="gi-card-title">Passport Result 4</div>
 
-              <div class="xs:gi-hidden gi-block gi-text-md">
-                <span class="gi-font-bold">Page 5</span> of 10
+                    <div class="gi-text-sm gi-card-subheading">
+                      Updated: DD/MM/YYY
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gi-card-paragraph">
+                  <p class="gi-text-sm">
+                    Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi
+                    purus ac. Sollicitudin. Lorem ipsum dolor sit amet
+                    consectetur. Lectus aliquam morbi purus ac. Sollicitudin.
+                  </p>
+                </div>
               </div>
+            </div>
 
+            <div class="my-6">
               <div
-                class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden"
+                class="gi-pagination"
+                data-current-page="5"
+                data-total-pages="10"
+                data-testid="govie-pagination"
+                data-module="gieds-pagination"
               >
                 <a
                   href="#"
                   target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
+                  data-testid="govie-pagination-prev-btn"
                   data-element="button-container"
                   data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  class="gi-pagination-prev-btn gi-btn gi-btn-flat-dark gi-btn-large"
                 >
-                  1
+                  <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-symbols-outlined gi-block gi-text-[24px]"
+                    >arrow_left_alt</span
+                  >
+                  <span class="sm:gi-block gi-hidden">Previous</span>
                 </a>
 
-                <span
-                  data-testid="govie-icon"
-                  class="material-symbols-outlined gi-gray-700"
-                  >more_horiz</span
+                <div class="xs:gi-hidden gi-block gi-text-md">
+                  <span class="gi-font-bold">Page 5</span> of 10
+                </div>
+
+                <div
+                  class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden"
                 >
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    1
+                  </a>
+
+                  <span
+                    data-testid="govie-icon"
+                    class="material-symbols-outlined gi-gray-700"
+                    >more_horiz</span
+                  >
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-dark-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-primary-dark gi-btn-large"
+                  >
+                    5
+                  </a>
+
+                  <span
+                    data-testid="govie-icon"
+                    class="material-symbols-outlined gi-gray-700"
+                    >more_horiz</span
+                  >
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    10
+                  </a>
+                </div>
+
+                <div
+                  class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden"
+                >
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    1
+                  </a>
+
+                  <span
+                    data-testid="govie-icon"
+                    class="material-symbols-outlined gi-gray-700"
+                    >more_horiz</span
+                  >
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    3
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    4
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-dark-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-primary-dark gi-btn-large"
+                  >
+                    5
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    6
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    7
+                  </a>
+
+                  <span
+                    data-testid="govie-icon"
+                    class="material-symbols-outlined gi-gray-700"
+                    >more_horiz</span
+                  >
+
+                  <a
+                    href="#"
+                    target="_self"
+                    data-testid="govieButton-dark-flat-large-notDisabled"
+                    data-element="button-container"
+                    data-module="gieds-button"
+                    class="gi-btn gi-btn-flat-dark gi-btn-large"
+                  >
+                    10
+                  </a>
+                </div>
 
                 <a
                   href="#"
                   target="_self"
-                  data-testid="govieButton-dark-flat-dark-large-notDisabled"
+                  data-testid="govie-pagination-next-btn"
                   data-element="button-container"
                   data-module="gieds-button"
-                  class="gi-btn gi-btn-primary-dark gi-btn-large"
+                  class="gi-pagination-next-btn gi-btn gi-btn-flat-dark gi-btn-large"
                 >
-                  5
-                </a>
-
-                <span
-                  data-testid="govie-icon"
-                  class="material-symbols-outlined gi-gray-700"
-                  >more_horiz</span
-                >
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  10
+                  <span class="sm:gi-block gi-hidden">Next</span>
+                  <span
+                    data-testid="govie-icon"
+                    role="presentation"
+                    class="material-symbols-outlined gi-block gi-text-[24px]"
+                    >arrow_right_alt</span
+                  >
                 </a>
               </div>
-
-              <div
-                class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden"
-              >
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  1
-                </a>
-
-                <span
-                  data-testid="govie-icon"
-                  class="material-symbols-outlined gi-gray-700"
-                  >more_horiz</span
-                >
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  3
-                </a>
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  4
-                </a>
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-dark-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-primary-dark gi-btn-large"
-                >
-                  5
-                </a>
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  6
-                </a>
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  7
-                </a>
-
-                <span
-                  data-testid="govie-icon"
-                  class="material-symbols-outlined gi-gray-700"
-                  >more_horiz</span
-                >
-
-                <a
-                  href="#"
-                  target="_self"
-                  data-testid="govieButton-dark-flat-large-notDisabled"
-                  data-element="button-container"
-                  data-module="gieds-button"
-                  class="gi-btn gi-btn-flat-dark gi-btn-large"
-                >
-                  10
-                </a>
-              </div>
-
-              <a
-                href="#"
-                target="_self"
-                data-testid="govie-pagination-next-btn"
-                data-element="button-container"
-                data-module="gieds-button"
-                class="gi-pagination-next-btn gi-btn gi-btn-flat-dark gi-btn-large"
-              >
-                <span class="sm:gi-block gi-hidden">Next</span>
-                <span
-                  data-testid="govie-icon"
-                  role="presentation"
-                  class="material-symbols-outlined gi-block gi-text-[24px]"
-                  >arrow_right_alt</span
-                >
-              </a>
             </div>
           </div>
         </div>
@@ -1854,44 +1867,32 @@
 
     <footer class="gi-footer" data-module="gieds-footer">
       <div class="gi-layout-container">
-        <div class="footer-secondary-nav-links">
-          <div>
-            <div class="gi-heading-md">Heading</div>
-
-            <hr class="gi-section-break-md" data-testid="govie-section-break" />
-
-            <ul>
-              <li>
-                <a href="#"> Nav Link 1 </a>
-              </li>
-
-              <li>
-                <a href="#"> Nav Link 2 </a>
-              </li>
-
-              <li>
-                <a href="#"> Nav Link 3 </a>
-              </li>
-
-              <li>
-                <a href="#"> Nav Link 4 </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <div class="footer-secondary-nav-links"></div>
 
         <div class="footer-primary-nav-links">
           <ul>
             <li data-testid="main-link-0">
-              <a href="#"> Link 1 </a>
+              <a href="#"> Help </a>
             </li>
 
             <li data-testid="main-link-1">
-              <a href="#"> Link 2 </a>
+              <a href="#"> Privacy policy </a>
             </li>
 
             <li data-testid="main-link-2">
-              <a href="#"> Link 3 </a>
+              <a href="#"> Cookies policy </a>
+            </li>
+
+            <li data-testid="main-link-3">
+              <a href="#"> Accessibility statement </a>
+            </li>
+
+            <li data-testid="main-link-4">
+              <a href="#"> Contact </a>
+            </li>
+
+            <li data-testid="main-link-5">
+              <a href="#"> Government digital service </a>
             </li>
           </ul>
           <div class="logo-container">

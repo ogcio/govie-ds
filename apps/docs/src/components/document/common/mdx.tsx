@@ -198,7 +198,7 @@ const documentComponents: MDXComponents = {
   ComponentContainer: (props) => (
     <div
       {...props}
-      className={cn('my-xl stroke-gray-950 not-prose', props.className)}
+      className={cn('my-xl stroke-gray-950 gi-not-prose', props.className)}
     />
   ),
   Alert: (props) => <Alert {...props} />,
