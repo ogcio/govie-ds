@@ -7,7 +7,7 @@ type CaptionProps = {
 
 export function Caption({ children, size = 'lg' }: CaptionProps) {
   return (
-    <caption className={`gi-text-left gi-mb-4 gi-font-bold gi-text-${size}`}>
+    <caption className={`gi-table-caption-text gi-text-${size}`}>
       {children}
     </caption>
   );

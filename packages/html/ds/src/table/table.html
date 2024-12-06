@@ -1,0 +1,37 @@
+{% macro govieTable(props) %}
+  <table class="gi-table {{ props.className | default('') }}">
+    {% if props.captionText %}
+      <caption class="gi-table-caption-text gi-text-lg">{{ props.captionText }}</caption>
+    {% endif %}
+    {% if props.headers %}
+      <thead>
+        <tr>
+          {% for header in props.headers %}
+            <th class="gi-table-th">{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+    {% endif %}
+    {% if props.rows and props.rows | length > 0 %}
+      <tbody>
+        {% for row in props.rows %}
+          <tr>
+            {% for cell in row %}
+              <td class="gi-table-td">
+                {{ cell | safe }}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    {% else %}
+      <tbody>
+        <tr>
+          <td colspan="{{ props.headers | length }}" class="gi-table-no-data">
+            No data to display
+          </td>
+        </tr>
+      </tbody>
+    {% endif %}
+  </table>
+{% endmacro %}
