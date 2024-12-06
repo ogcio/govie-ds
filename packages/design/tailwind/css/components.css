@@ -944,6 +944,88 @@ input[type='file' i] {
 
 /* End of Breadcrumbs */
 
+/* Begin Progress Stepper */
+
+.gi-progress-stepper {
+  @apply gi-w-full gi-flex gi-items-start gi-overflow-y-auto;
+}
+
+.gi-progress-stepper[data-orientation='vertical'] {
+  @apply gi-flex-col;
+}
+
+.gi-progress-stepper-step {
+  @apply gi-text-white 
+  gi-rounded-full 
+  gi-relative
+  gi-w-10
+  gi-h-10
+  gi-flex 
+  gi-flex-col
+  gi-justify-center
+  gi-items-center
+  gi-relative
+  gi-text-lg
+  gi-mt-2
+  gi-z-1;
+}
+
+.gi-progress-stepper-step-connector {
+  @apply gi-absolute
+  gi-flex-1
+  gi-top-[28px]
+  gi-left-[calc(-50%_+_20px)]
+  gi-right-[calc(50%_+_20px)];
+}
+
+.gi-progress-stepper-step-connector[data-orientation='vertical'] {
+  @apply gi-transform
+  gi-rotate-90
+  gi-top-auto
+  gi-left-[calc(-50%_+_58px)]
+  gi-right-[50%];
+}
+
+.gi-progress-stepper-step-connector[data-next='true' i] > span {
+  @apply gi-border-t-gray-300;
+}
+
+.gi-progress-stepper-step-connector > span {
+  @apply gi-border-t-sm gi-block gi-border-t-emerald-800;
+}
+
+.gi-progress-stepper-step-container[data-current='true' i]
+  > .gi-progress-stepper-step,
+.gi-progress-stepper-step-container[data-completed='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-bg-emerald-800;
+}
+
+.gi-progress-stepper-step-container[data-next='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-bg-gray-700;
+}
+.gi-progress-stepper-step-container[data-next='true' i] {
+  @apply gi-text-gray-700;
+}
+
+.gi-progress-stepper-step-container[data-current='true' i]
+  > .gi-progress-stepper-step {
+  @apply gi-shadow-[0_0_0_8px_rgba(0,77,68,0.2)];
+}
+
+.gi-progress-stepper-step-container[data-orientation='horizontal'] {
+  @apply gi-flex-col;
+}
+
+.gi-progress-stepper-step-container[data-orientation='vertical'] {
+  @apply gi-ml-2;
+}
+
+.gi-progress-stepper-step-container {
+  @apply gi-gap-4 gi-flex gi-flex-1 gi-items-center;
+}
+/*End Progress Stepper */
 /* Table */
 
 .gi-table {

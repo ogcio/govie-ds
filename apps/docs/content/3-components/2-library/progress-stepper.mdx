@@ -7,24 +7,137 @@ libraries:
     link: '?path=/docs/application-progress-stepper--docs'
     status: 'stable'
   - platform: 'global'
-    status: 'considering'
+    link: '?path=/docs/application-progress-stepper--docs'
+    status: 'beta'
   - platform: 'react'
-    status: 'considering'
+    link: '?path=/docs/application-progress-stepper--docs'
+    status: 'beta'
 ---
 
-# Progress Stepper
+# ProgressStepper
 
 ## Variants
+
+### Default
+
+<ComponentContainer>
+  <ProgressStepper
+    steps={[
+      'Step 1',
+      'Step 2',
+      'Step 3',
+      'Step 4',
+      'Step 5',
+      'Step 6',
+      'Step 7',
+    ]}
+    currentStepIndex={3}
+  />
+</ComponentContainer>
+
+### Vertically
+
+<ComponentContainer>
+  <ProgressStepper
+    orientation="vertical"
+    steps={['Step 1', 'Step 2', 'Step 3', 'Step 4']}
+    currentStepIndex={2}
+  />
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  ```html
+    <div class="gi-progress-stepper">
+      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
+        <div
+          class="gi-progress-stepper-step-container gi-flex-col"
+          data-current="false"
+          data-completed="true"
+          data-next="false"
+        >
+          <div class="gi-progress-stepper-step">
+            <span
+              data-testid="govie-icon"
+              role="presentation"
+              class="material-symbols-outlined gi-block"
+              style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
+            >
+              check
+            </span>
+          </div>
+          Step 1
+        </div>
+      </div>
+      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
+        <div
+          class="gi-progress-stepper-step-container gi-flex-col"
+          data-current="true"
+          data-completed="false"
+          data-next="false"
+        >
+          <div class="gi-progress-stepper-step">
+            <div>2</div>
+          </div>
+          Step 2
+        </div>
+        <div class="gi-progress-stepper-step-connector">
+          <span></span>
+        </div>
+      </div>
+      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
+        <div
+          class="gi-progress-stepper-step-container gi-flex-col"
+          data-current="false"
+          data-completed="false"
+          data-next="true"
+        >
+          <div class="gi-progress-stepper-step">
+            <div>3</div>
+          </div>
+          Step 3
+        </div>
+        <div class="gi-progress-stepper-step-connector">
+          <span></span>
+        </div>
+      </div>
+    </div>
+  ```
+</TabPanel>
+  <TabPanel value="tab12">
+    ```html
+      {{
+        govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3"], "currentStepIndex": 1, "orientation": "horizontal" })
+      }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```react 
+        import { ProgressStepper } from '@govie-ds/react';
+        
+        <ProgressStepper steps={['Step 1', 'Step 2', 'Step 3']} currentStepIndex={1} orientation="horizontal" />
+    ```
+    </TabPanel>
+</Tabs>
 
 ## Usage
 
 ### Best Practices
 
-### When to use this component
+- Use Progress Stepper to guide users through a linear workflow or process.
+- Display clear labels for each step to provide context and direction.
 
-### When not to use this component
+## When to use this component
 
-## Status
+- Use Progress Stepper when guiding users through a multi-step process (e.g., filling out forms, completing onboarding steps, or navigating a wizard).
+
+## When not to use this component
+
+- Avoid using Progress Stepper when the steps do not follow a sequential flow or are non-linear.
 
 <ComponentStatusBlock componentId="progress-stepper" />
-

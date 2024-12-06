@@ -20,7 +20,8 @@ export type IconId =
   | 'info'
   | 'check_circle'
   | 'error'
-  | 'warning';
+  | 'warning'
+  | 'check';
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
