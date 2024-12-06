@@ -360,7 +360,7 @@ input[type='text'] {
   @apply gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-w-full gi-font-primary;
 }
 .gi-header-language-bar {
-  @apply gi-hidden lg:gi-block gi-bg-emerald-700 gi-h-10;
+  @apply gi-hidden lg:gi-flex gi-bg-emerald-700 gi-h-10 gi-items-center;
 }
 
 .gi-header-language-bar ul {
@@ -373,7 +373,7 @@ input[type='text'] {
   @apply gi-h-20 gi-items-center gi-justify-end gi-flex gi-flex-row gi-flex-nowrap gi-bg-emerald-800 gi-py-3 sm:gi-py-4;
 }
 .gi-header-logo {
-  @apply gi-flex-auto lg:gi-flex-none gi-focus-state-outline gi-rounded-sm;
+  @apply gi-flex-auto lg:gi-flex-none gi-focus-state-outline gi-rounded-sm gi-focus-within-state-outline;
 }
 
 .gi-header-logo-lg {
