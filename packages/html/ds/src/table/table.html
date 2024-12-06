@@ -1,7 +1,9 @@
 {% macro govieTable(props) %}
   <table class="gi-table {{ props.className | default('') }}">
     {% if props.captionText %}
-      <caption class="gi-table-caption-text gi-text-lg">{{ props.captionText }}</caption>
+      <caption class="gi-table-caption-text gi-text-lg">
+        {{ props.captionText }}
+      </caption>
     {% endif %}
     {% if props.headers %}
       <thead>
@@ -17,9 +19,7 @@
         {% for row in props.rows %}
           <tr>
             {% for cell in row %}
-              <td class="gi-table-td">
-                {{ cell | safe }}
-              </td>
+              <td class="gi-table-td">{{ cell | safe }}</td>
             {% endfor %}
           </tr>
         {% endfor %}

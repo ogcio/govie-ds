@@ -40,6 +40,13 @@ import {
   SummaryListRow,
   SummaryListValue,
   SummaryListAction,
+  Table,
+  Caption,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableData,
+  TableBody,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -206,6 +213,13 @@ const documentComponents: MDXComponents = {
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
+  Table: (props) => <Table {...props} />,
+  Caption: (props) => <Caption {...props} />,
+  TableHead: (props) => <TableHead {...props} />,
+  TableHeader: (props) => <TableHeader {...props} />,
+  TableRow: (props) => <TableRow {...props} />,
+  TableData: (props) => <TableData {...props} />,
+  TableBody: (props) => <TableBody {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
