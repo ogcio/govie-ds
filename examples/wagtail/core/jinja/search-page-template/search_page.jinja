@@ -11,7 +11,7 @@
 {% from 'card/card.html' import govieCard %}
 {% from 'pagination/pagination.html' import goviePagination %}
 
-{% from 'vars.jinja' import comboBoxProps, footerProps, HeaderProps, SelectProps %}
+{% from 'search-page-template/vars.jinja' import comboBoxProps, footerProps, HeaderProps, SelectProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,53 +27,91 @@
 </head>
 
 <body>
-    {{ govieHeader(HeaderProps) }}
-    <div class="gi-bg-gray-50">
-      <div class="gi-container py-14">
+  {{ govieHeader(HeaderProps) }}
+  <div class="gi-container gi-mx-auto max-w-[1024px]">
+    <div class="border-b-gray-150 border-b border-solid">
+      <div class="py-14">
         <div class="gi-flex gi-flex-col gi-gap-7">
-          <div class="gi-flex sm:gi-gap-7 justify-center items-end">
-            <div class="max-w-[777px] grow gap-4 flex flex-col">
-              {{ govieLink({'href': '#', 'label': 'Home', 'noColor': true}) }}
-              {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Search Results' }) }}
+          <div class="gi-flex sm:gi-gap-5 items-end">
+            <div class="max-w-[477px] grow gap-4 flex flex-col">
+              {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Search' }) }}
               {{ govieTextInput({ 'id': 'search-input', 'fullFluid': 'true' }) }}
             </div>
             <div class="hidden sm:block">
-              {{ govieButton({'content': 'Search gov.ie', 'appearance':'dark'}) }}
+              {{ govieButton({'content': 'Search'}) }}
             </div>
             <div class="block sm:hidden">
-              {{ govieIconButton({'icon': {'icon': 'search'}, 'appearance':'dark' }) }}
+              {{ govieIconButton({'icon': {'icon': 'search'} }) }}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="gi-container mt-6">
-    <div class="sm:grid sm:grid-cols-4 sm:gap-4">
-      <div class="flex flex-col gap-8">
-        {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
-        {{ govieComboBox(comboBoxProps) }}
-        <div>
-          {{ govieButton({"content": 'Apply filters', "appearance":"dark"}) }}
-        </div>
-      </div>
-      <div class="col-span-3 sm:mt-0 mt-6">
-        <div class="mb-6 flex justify-between items-center">
-          {{ govieSelect(SelectProps) }}
-          <div class="hidden sm:block">
-            {{ govieParagraph({'content': '49357 Results'}) }}
+    <div class="mt-6">
+      <div class="sm:grid sm:grid-cols-4 sm:gap-12">
+        <div class="flex flex-col gap-8">
+          {{ govieHeading({ 'size': 'lg', 'as': 'h2', 'text': 'Filters' }) }}
+          {{ govieComboBox(comboBoxProps) }}
+          <div>
+            {{ govieButton({"content": 'Apply filters', "appearance":"dark"}) }}
           </div>
+          {{ govieLink({"href": "/", "label": "Clear All", "noVisited": true}) }}
         </div>
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 1', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 2', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 3', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
-          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 4', 'subTitle': 'Updated: DD/MM/YYY', 'content': 'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+        <div class="col-span-3 sm:mt-0 mt-6">
+          <div class="mb-6 flex justify-between items-center">
+            <div class="hidden sm:block">
+              {{ govieHeading({'text': '49357 Results', 'as': 'h4'}) }}
+            </div>
+            {{ govieSelect(SelectProps) }}
+          </div>
+          <div class="gi-flex gi-gap-4 mb-6">
+            <div class="gi-chip">
+              <span id="chip-description">Environment</span>
+              <div role="button" aria-label="remove chip">
+                <span role="presentation" class="material-symbols-outlined gi-block" style="font-size:16px">close
+                </span>
+              </div>
+            </div>
+            <div class="gi-chip">
+              <span id="chip-description">Marine</span>
+              <div role="button" aria-label="remove chip">
+                <span role="presentation" class="material-symbols-outlined gi-block" style="font-size:16px">close
+                </span>
+              </div>
+            </div>
+            <div class="gi-chip">
+              <span id="chip-description">Water Industry</span>
+              <div role="button" aria-label="remove chip">
+                <span role="presentation" class="material-symbols-outlined gi-block" style="font-size:16px">close
+                </span>
+              </div>
+            </div>
+          </div>
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 1', 'subTitle': 'Updated: DD/MM/YYY', 'content':
+          'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit
+          amet
+          consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 2', 'subTitle': 'Updated: DD/MM/YYY', 'content':
+          'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit
+          amet
+          consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 3', 'subTitle': 'Updated: DD/MM/YYY', 'content':
+          'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit
+          amet
+          consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
+          {{ govieCard({'type': 'horizontal', 'title': 'Passport Result 4', 'subTitle': 'Updated: DD/MM/YYY', 'content':
+          'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin. Lorem ipsum dolor sit
+          amet
+          consectetur. Lectus aliquam morbi purus ac. Sollicitudin.'}) }}
           <div class="my-6">
-          {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
+            {{ goviePagination({'totalPages': 10, 'currentPage': 5}) }}
           </div>
+        </div>
       </div>
-    </div> 
-  </div>
+    </div>
 
+
+  </div>
   {{ govieFooter(footerProps) }}
 
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
