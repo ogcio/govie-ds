@@ -77,7 +77,7 @@ export const ProgressStepper = ({
   return (
     <div
       data-testid="progress-stepper"
-      className={'gi-progress-stepper'}
+      className="gi-progress-stepper"
       data-orientation={orientation}
     >
       {steps.map((step, index) => (
