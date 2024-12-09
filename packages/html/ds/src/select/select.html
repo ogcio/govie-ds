@@ -3,7 +3,7 @@
 {% from 'error-text/error-text.html' import govieErrorText %}
 
 {% macro govieSelect(props) %}
-  {% set ariaLabel = props.label.content or props.id %}
+  {% set ariaLabel =  props.label.content if props.label else props.id %}
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
   {% set marginBottom = 'gi-mb-1' %}
