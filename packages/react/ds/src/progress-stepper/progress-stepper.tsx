@@ -70,8 +70,9 @@ const Step = ({
 
 export const ProgressStepper = ({
   steps,
-  currentStepIndex,
+  currentStepIndex = 0,
   orientation = 'horizontal',
+  completeAll,
 }: ProgressStepperProps) => {
   return (
     <div
@@ -83,8 +84,11 @@ export const ProgressStepper = ({
         <Step
           key={`progress-stepper-step-${index}`}
           stepNumber={index + 1}
-          isCurrentStep={currentStepIndex === index}
-          isCompleted={index < currentStepIndex && index !== currentStepIndex}
+          isCurrentStep={!completeAll && currentStepIndex === index}
+          isCompleted={
+            completeAll ||
+            (index < currentStepIndex && index !== currentStepIndex)
+          }
           orientation={orientation}
         >
           {step}

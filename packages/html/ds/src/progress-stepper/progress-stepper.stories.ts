@@ -36,6 +36,10 @@ export const Default: Story = {
       type: { name: 'string', required: false },
       description: 'Orientation of the progress stepper.',
     },
+    completeAll: {
+      type: { name: 'boolean', required: false },
+      description: 'Complete all steps',
+    },
   },
   args: {
     steps: [

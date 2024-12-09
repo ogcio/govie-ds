@@ -2,8 +2,9 @@ type Orientation = 'vertical' | 'horizontal';
 
 export type ProgressStepperProps = {
   steps: string[];
-  currentStepIndex: number;
+  currentStepIndex?: number;
   orientation?: Orientation;
+  completeAll?: boolean;
 };
 
 export type StepProps = {

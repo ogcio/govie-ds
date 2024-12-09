@@ -17,6 +17,10 @@ export const Default: Story = {
       type: { name: 'number', required: true },
       description: 'The initial active step (zero-based index).',
     },
+    completeAll: {
+      type: { name: 'boolean', required: false },
+      description: 'Complete all steps',
+    },
   },
   args: {
     currentStepIndex: 2,
