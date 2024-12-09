@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.2](https://github.com/ogcio/govie-ds/compare/docs-v0.33.1...docs-v0.33.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* search page template fixes ([#357](https://github.com/ogcio/govie-ds/issues/357)) ([17448d2](https://github.com/ogcio/govie-ds/commit/17448d22ccc0c7a3f1677d0ac8bb206433330cd2))
+
 ## [0.33.1](https://github.com/ogcio/govie-ds/compare/docs-v0.33.0...docs-v0.33.1) (2024-12-05)
 
 
