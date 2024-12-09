@@ -49,3 +49,4 @@ export * from './toast/toast.js';
 export * from './pagination/pagination.js';
 export * from './breadcrumbs/breadcrumbs.js';
 export * from './summary-list/summary-list.js';
+export * from './progress-stepper/progress-stepper.js';

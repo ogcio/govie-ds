@@ -24,6 +24,7 @@
 {% from 'summary-list/summary-list.html' import govieSummaryList %}
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
+{% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -261,6 +262,14 @@
       "Item 3"
     ]
   }) }}
+
+  <br />
+  <h2>Progress Stepper</h2>
+   {{
+        govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6", "Step 7"], "currentStepIndex": 3, "orientation": "horizontal" })
+    }}
+  <br />
+
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>
