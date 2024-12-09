@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
+    "test-sb": "vitest --project=storybook",
+    "coverage": "vitest --project=storybook --coverage",
     "test": "pnpm build && npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook\""
   },
   "prettier": "@govie-ds/prettier-config",
@@ -16,11 +18,12 @@
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
+    "@govie-ds/react": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
-    "@govie-ds/react": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "@vitest/coverage-v8": "2.1.8",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.9",
