@@ -1,7 +1,7 @@
 import { z as zod } from 'zod';
 
 export enum IconId {
-  Copy = 'copy',
+  Copy = 'content_copy',
   Edit = 'edit',
   Mic = 'mic',
   Send = 'send',
@@ -11,6 +11,16 @@ export enum IconId {
   AttachFile = 'attach_file',
   Download = 'download',
   Keyboard_Arrow_Down = 'keyboard_arrow_down',
+  Close = 'close',
+  Search = 'search',
+  Menu = 'menu',
+  Home = 'home',
+  Logout = 'logout',
+  Info = 'info',
+  CheckCircle = 'check_circle',
+  Check = 'check',
+  Error = 'error',
+  Warning = 'warning',
 }
 
 export enum IconSize {
