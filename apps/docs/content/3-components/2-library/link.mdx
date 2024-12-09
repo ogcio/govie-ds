@@ -211,6 +211,45 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabPanel>
 </Tabs>
 
+### With Icon
+
+<ComponentContainer>
+  <Link href="#"><Icon icon="chevron_left" inline size="sm" /> Back</Link>
+</ComponentContainer>
+
+<Tabs id="tab6">
+  <TabList>
+    <TabItem value="tab61" checked>HTML</TabItem>
+    <TabItem value="tab62">Macro</TabItem>
+    <TabItem value="tab63">React</TabItem>
+  </TabList>
+  <TabPanel value="tab61">        
+    ```html
+    <a href="#" class="gi-link">
+      <span role="presentation" class="material-symbols-outlined gi-text-[16px]">chevron_left</span> Back
+    </a>
+    ```
+  </TabPanel>
+  <TabPanel value="tab62">        
+  ```html
+    {{ 
+      govieLink({
+        "href": "#", 
+        "label": govieIcon({"icon": "chevron_left"}) + ' Back', 
+        }) 
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab63">
+    ```html
+    import { Icon, Link } from '@govie-ds/react';
+
+    <Link href="#"><Icon icon="chevron_left" inline size="md" /> Back</Link>
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### Best Practices
