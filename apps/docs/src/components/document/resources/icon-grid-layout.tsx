@@ -1,23 +1,9 @@
-import { Icon } from '@govie-ds/react';
+import { Icon, Icons } from '@govie-ds/react';
 import React, { Fragment } from 'react';
 import { Card } from '../common/card';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
 
-const icons = [
-  'edit',
-  'mic',
-  'send',
-  'thumb_down',
-  'thumb_up',
-  'open_in_new',
-  'attach_file',
-  'close',
-  'search',
-  'menu',
-  'home',
-  'logout',
-  'download',
-];
+const icons = [...Icons.sort()];
 
 export function IconGridLayout() {
   return (
