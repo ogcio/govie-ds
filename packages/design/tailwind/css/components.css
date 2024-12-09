@@ -960,3 +960,37 @@ input[type='file' i] {
 }
 
 /* End of Table */
+
+/* Progress bar */
+.gi-progress-bar-container {
+  @apply gi-w-full gi-bg-gray-200 gi-rounded-lg gi-overflow-hidden;
+}
+
+.gi-progress-bar-container > div {
+  @apply gi-rounded-lg gi-transition-all;
+}
+
+.gi-progress-bar-indeterminate {
+  @apply gi-relative gi-overflow-hidden gi-w-[25%];
+  animation: gi-indeterminate-progress 1s linear infinite;
+}
+
+@keyframes gi-indeterminate-progress {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: 0%;
+  }
+  50% {
+    left: 25%;
+  }
+  75% {
+    left: 50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* End of Progress bar*/
