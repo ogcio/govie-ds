@@ -15,14 +15,16 @@ libraries:
 
 # Toast
 
-<ComponentStatusBlock componentId="toast" />
+## Variants
 
-## Toast without trigger
+### Toast without trigger
 
 This toast will automatically appear when the page loads. \
 *Refresh the current to see the toast being rendered*
 
-<Toast title="Toast" description="This toast has rendered on page load" />
+<ComponentContainer>
+  <Toast title="Toast" description="This toast has rendered on page load" />
+</ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
@@ -48,8 +50,12 @@ This toast will automatically appear when the page loads. \
   ```
   </TabPanel>
 </Tabs>
-## Info Toast with trigger
-<Toast title="Toast Triggered" description="This is an info toast" trigger={<Button>Trigger Toast</Button>}/>
+
+### Info Toast with trigger
+
+<ComponentContainer>
+  <Toast title="Toast Triggered" description="This is an info toast" trigger={<Button>Trigger Toast</Button>}/>
+</ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
@@ -79,8 +85,12 @@ This toast will automatically appear when the page loads. \
   ```
   </TabPanel>
 </Tabs>
-## Success Toast with trigger
-<Toast title="Toast Triggered" variant="success" description="This is a success toast" trigger={<Button>Trigger Toast</Button>}/>
+
+### Success Toast with trigger
+
+<ComponentContainer>
+  <Toast title="Toast Triggered" variant="success" description="This is a success toast" trigger={<Button>Trigger Toast</Button>}/>
+</ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
@@ -112,8 +122,12 @@ This toast will automatically appear when the page loads. \
   ```
   </TabPanel>
 </Tabs>
-## Error Toast with trigger
-<Toast title="Toast Triggered" variant="danger" description="This is an error toast" trigger={<Button>Trigger Toast</Button>}/>
+
+### Error Toast with trigger
+
+<ComponentContainer>
+  <Toast title="Toast Triggered" variant="danger" description="This is an error toast" trigger={<Button>Trigger Toast</Button>}/>
+</ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
@@ -145,8 +159,12 @@ This toast will automatically appear when the page loads. \
   ```
   </TabPanel>
 </Tabs>
-## Warning Toast with trigger
-<Toast title="Toast Triggered" variant="warning" description="This is a warning toast" trigger={<Button>Trigger Toast</Button>}/>
+
+### Warning Toast with trigger
+
+<ComponentContainer>
+  <Toast title="Toast Triggered" variant="warning" description="This is a warning toast" trigger={<Button>Trigger Toast</Button>}/>
+</ComponentContainer>
 
 <Tabs id="tab5">
   <TabList>
@@ -178,3 +196,16 @@ This toast will automatically appear when the page loads. \
   ```
   </TabPanel>
 </Tabs>
+
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+### When not to use this component
+
+## Status
+
+<ComponentStatusBlock componentId="toast" />
