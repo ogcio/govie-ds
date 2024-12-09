@@ -1,5 +1,5 @@
 {
-    "apps/docs": "0.33.2",
+    "apps/docs": "0.33.3",
     "packages/build/eslint-config": "1.1.0",
     "packages/build/prettier-config": "1.0.1",
     "packages/design/deepmerge": "1.0.0",
