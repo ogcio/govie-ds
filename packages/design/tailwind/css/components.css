@@ -932,13 +932,7 @@ input[type='file' i] {
 }
 
 .gi-breadcrumbs > ol > li:not(:first-child)::before {
-  @apply gi-block
-    gi-absolute
-    gi-bottom-0
-    gi-left-[-17px]
-    gi-text-gray-500
-    gi-font-bold
-    gi-text-sm;
+  @apply gi-block gi-absolute gi-bottom-0 gi-left-[-17px] gi-text-gray-500 gi-font-bold gi-text-sm;
   content: '/';
 }
 
@@ -955,35 +949,15 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step {
-  @apply gi-text-white 
-  gi-rounded-full 
-  gi-relative
-  gi-w-10
-  gi-h-10
-  gi-flex 
-  gi-flex-col
-  gi-justify-center
-  gi-items-center
-  gi-relative
-  gi-text-lg
-  gi-mt-2
-  gi-z-1;
+  @apply gi-text-white gi-rounded-full gi-relative gi-w-10 gi-h-10 gi-flex  gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-mt-2 gi-z-1;
 }
 
 .gi-progress-stepper-step-connector {
-  @apply gi-absolute
-  gi-flex-1
-  gi-top-[28px]
-  gi-left-[calc(-50%_+_20px)]
-  gi-right-[calc(50%_+_20px)];
+  @apply gi-absolute gi-flex-1 gi-top-[28px] gi-left-[calc(-50%_+_20px)] gi-right-[calc(50%_+_20px)];
 }
 
 .gi-progress-stepper-step-connector[data-orientation='vertical'] {
-  @apply gi-transform
-  gi-rotate-90
-  gi-top-auto
-  gi-left-[calc(-50%_+_58px)]
-  gi-right-[50%];
+  @apply gi-transform gi-rotate-90 gi-top-auto gi-left-[calc(-50%_+_58px)] gi-right-[50%];
 }
 
 .gi-progress-stepper-step-connector[data-next='true' i] > span {
