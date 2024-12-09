@@ -2,6 +2,7 @@ import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
+import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import/order */
 import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
 import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import/order */
 import { initAlert } from './alert/alert.js'; /* eslint-disable-line import/order */
@@ -38,6 +39,7 @@ export function initGovIe() {
   initComboBox();
   initAlert();
   initToast();
+  initAccordion();
 }
 
 export function destroyGovIe() {

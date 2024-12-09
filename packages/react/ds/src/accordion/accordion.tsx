@@ -1,11 +1,7 @@
 type Props = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-export const Accordion = ({children}: Props) => {
-  return (
-    <div className="gi-max-w-[700px]">
-        {children}
-    </div>
-  )
-}
+export const Accordion = ({ children }: Props) => {
+  return <div className="gi-max-w-[700px]">{children}</div>;
+};

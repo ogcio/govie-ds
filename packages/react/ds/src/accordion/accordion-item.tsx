@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon';
+import { Icon } from '../icon/icon.js';
 
 type Props = {
   children: React.ReactNode;
