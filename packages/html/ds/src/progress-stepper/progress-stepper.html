@@ -1,36 +1,54 @@
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieProgressStepper(props) %}
-  {% set isVertical = props.orientation == 'vertical' %}
-
+  {% set orientation = props.orientation | default('horizontal') %}
   <div
     data-testid="progress-stepper"
-    data-orientation="{{ props.orientation }}"
+    data-orientation="{{ orientation }}"
     class="gi-progress-stepper"
   >
+    {% set isVertical = orientation == "vertical" %}
+    {% set isHorizontal = orientation == "horizontal" %}
+
     {% for step in props.steps %}
+      {% set isCompleted = loop.index0 < props.currentStepIndex and loop.index0 != props.currentStepIndex %}
+      {% set isCurrentStep = loop.index0 == props.currentStepIndex %}
+      {% set isNextStep = not isCompleted and (not isCurrentStep) %}
+
       <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
         <div
           class="gi-progress-stepper-step-container"
-          data-orientation="{{ props.orientation }}"
-          data-current="{{ loop.index0 == props.currentStepIndex }}"
-          data-completed="{{ loop.index0 < props.currentStepIndex }}"
-          data-next="{{ loop.index0 > props.currentStepIndex }}"
+          data-orientation="{{ orientation }}"
+          data-current="{{ isCurrentStep }}"
+          data-completed="{{ isCompleted }}"
+          data-next="{{ isNextStep }}"
         >
-          <div class="gi-progress-stepper-step">
-            {% if loop.index0 < props.currentStepIndex %}
+          <div class="gi-progress-stepper-step gi-relative">
+            {% if isCompleted %}
               {{ govieIcon({"icon": "check"}) }}
             {% else %}
               <div>{{ loop.index }}</div>
             {% endif %}
+
+            {% if isVertical and loop.index0 > 0 %}
+              <div
+                data-orientation="{{ orientation }}"
+                data-next="{{ isNextStep }}"
+                class="gi-progress-stepper-step-connector"
+              >
+                <span></span>
+              </div>
+            {% endif %}
           </div>
-          {{ step | safe | trim }}
+          <div class="gi-progress-stepper-step-label">
+            {{ step | safe | trim }}
+          </div>
         </div>
-        {% if loop.index0 > 0 %}
+        {% if isHorizontal and loop.index0 > 0 %}
           <div
+            data-orientation="{{ orientation }}"
+            data-next="{{ isNextStep }}"
             class="gi-progress-stepper-step-connector"
-            data-next="{{ loop.index0 > props.currentStepIndex }}"
-            data-orientation="{{ props.orientation }}"
           >
             <span></span>
           </div>

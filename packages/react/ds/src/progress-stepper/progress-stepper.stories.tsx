@@ -46,3 +46,15 @@ export const WithVerticalOrientation: Story = {
     orientation: 'vertical',
   },
 };
+
+export const WithLongText: Story = {
+  args: {
+    currentStepIndex: 1,
+    steps: [
+      'This step is for requesting information, this is the first step the user needs to finish.',
+      'This step is for requesting documentation, this second step the user needs to finish.',
+      'This step is for analysis.',
+      'This is a long step text.',
+    ],
+  },
+};

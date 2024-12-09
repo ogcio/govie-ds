@@ -949,7 +949,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step {
-  @apply gi-text-white gi-rounded-full gi-relative gi-w-10 gi-h-10 gi-flex  gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-mt-2 gi-z-1;
+  @apply gi-text-white gi-rounded-full gi-relative gi-w-10 gi-h-10 gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-z-1;
 }
 
 .gi-progress-stepper-step-connector {
@@ -957,7 +957,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step-connector[data-orientation='vertical'] {
-  @apply gi-transform gi-rotate-90 gi-top-auto gi-left-[calc(-50%_+_58px)] gi-right-[50%];
+  @apply gi-h-0 gi-w-10 gi-transform gi-rotate-90 gi-top-[-20px] gi-left-0 gi-right-0;
 }
 
 .gi-progress-stepper-step-connector[data-next='true' i] > span {
@@ -992,13 +992,24 @@ input[type='file' i] {
   @apply gi-flex-col;
 }
 
-.gi-progress-stepper-step-container[data-orientation='vertical'] {
+.gi-progress-stepper-step-container[data-orientation='vertical']
+  > .gi-progress-stepper-step {
   @apply gi-ml-2;
+}
+
+.gi-progress-stepper-step-container[data-orientation='horizontal']
+  > .gi-progress-stepper-step {
+  @apply gi-mt-2;
 }
 
 .gi-progress-stepper-step-container {
   @apply gi-gap-4 gi-flex gi-flex-1 gi-items-center;
 }
+
+.gi-progress-stepper-step-label {
+  @apply gi-text-center gi-overflow-hidden gi-text-ellipsis gi-whitespace-normal gi-break-words gi-line-clamp-2 gi-mr-2;
+}
+
 /*End Progress Stepper */
 /* Table */
 

@@ -1,19 +1,28 @@
 import { Icon } from '../icon/icon.js';
+import type {
+  ConnectorProps,
+  ProgressStepperProps,
+  StepProps,
+} from './types.js';
 
-type Orientation = 'vertical' | 'horizontal';
+const Connector = ({
+  stepNumber,
+  isNextStep,
+  orientation = 'horizontal',
+}: ConnectorProps) => {
+  if (stepNumber > 1) {
+    return (
+      <div
+        data-orientation={orientation}
+        data-next={isNextStep}
+        className="gi-progress-stepper-step-connector"
+      >
+        <span />
+      </div>
+    );
+  }
 
-export type ProgressStepperProps = {
-  steps: string[];
-  currentStepIndex: number;
-  orientation?: Orientation;
-};
-
-export type StepProps = {
-  children: string;
-  isCurrentStep: boolean;
-  isCompleted: boolean;
-  stepNumber: number;
-  orientation?: Orientation;
+  return null;
 };
 
 const Step = ({
@@ -24,6 +33,9 @@ const Step = ({
   orientation,
 }: StepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
+  const isVertical = orientation === 'vertical';
+  const isHorizontal = orientation === 'horizontal';
+
   return (
     <div className="gi-flex gi-relative gi-flex-1 gi-min-h-20 gi-min-w-20">
       <div
@@ -33,19 +45,24 @@ const Step = ({
         data-completed={isCompleted}
         data-next={isNextStep}
       >
-        <div className="gi-progress-stepper-step">
+        <div className="gi-progress-stepper-step gi-relative">
           {isCompleted ? <Icon icon="check" /> : <div>{stepNumber}</div>}
+          {isVertical ? (
+            <Connector
+              isNextStep={isNextStep}
+              orientation={orientation}
+              stepNumber={stepNumber}
+            />
+          ) : null}
         </div>
-        {children}
+        <div className="gi-progress-stepper-step-label">{children}</div>
       </div>
-      {stepNumber > 1 ? (
-        <div
-          data-orientation={orientation}
-          data-next={isNextStep}
-          className="gi-progress-stepper-step-connector"
-        >
-          <span />
-        </div>
+      {isHorizontal ? (
+        <Connector
+          isNextStep={isNextStep}
+          orientation={orientation}
+          stepNumber={stepNumber}
+        />
       ) : null}
     </div>
   );
