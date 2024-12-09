@@ -17,7 +17,8 @@ export enum IconId {
   Home = 'home',
   Logout = 'logout',
   Info = 'info',
-  Check = 'check_circle',
+  CheckCircle = 'check_circle',
+  Check = 'check',
   Error = 'error',
   Warning = 'warning',
 }

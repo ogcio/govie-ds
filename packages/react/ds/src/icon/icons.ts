@@ -18,6 +18,7 @@ export const iconIds = [
   'check_circle',
   'error',
   'warning',
+  'check',
 ] as const;
 
 export const Icons = [...iconIds];
