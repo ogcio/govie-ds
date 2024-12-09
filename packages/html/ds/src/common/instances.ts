@@ -1,3 +1,4 @@
+import { Accordion } from '../accordion/accordion';
 import { Alert } from '../alert/alert';
 import { Checkboxes } from '../checkbox/checkbox';
 import { ComboBox } from '../combo-box/combo-box';
@@ -25,6 +26,7 @@ const componentRegistry = {
   ComboBox,
   Alert,
   Toast,
+  Accordion,
   // TODO: additional component classes
 } as const;
 
