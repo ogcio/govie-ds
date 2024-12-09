@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://github.com/ogcio/govie-ds/compare/docs-v0.33.3...docs-v0.34.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
 ## [0.33.3](https://github.com/ogcio/govie-ds/compare/docs-v0.33.2...docs-v0.33.3) (2024-12-09)
 
 
