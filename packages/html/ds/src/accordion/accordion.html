@@ -1,0 +1,67 @@
+{% from 'icon/icon.html' import govieIcon %}
+
+{% macro getDisabledOpacity(disabled) %}
+  {% if disabled %}
+    gi-opacity-30
+  {% endif %}
+{% endmacro %}
+
+{% macro getDisabledCursor(disabled) %}
+  {% if disabled %}
+    gi-cursor-not-allowed
+  {% else %}
+    gi-cursor-pointer
+  {% endif %}
+{% endmacro %}
+
+{% macro getDefaultExpanded(expanded) %}
+  {% if expanded %}
+    gi-block
+  {% else %}
+    gi-hidden
+  {% endif %}
+{% endmacro %}
+
+{% macro getIcon(expanded) %}
+  {% if expanded %}
+    keyboard_arrow_up
+  {% else %}
+    keyboard_arrow_down
+  {% endif %}
+{% endmacro %}
+
+{% macro getIconPosition(iconStart) %}
+  {% if iconStart %}
+    gi-flex gi-flex-row-reverse gi-justify-end
+  {% else %}
+    gi-flex gi-justify-between
+  {% endif %}
+{% endmacro %}
+
+{% macro govieAccordion(props) %}
+  <div data-module="gieds-accordion" class="gi-max-w-prose">
+    {% for item in props['items'] %}
+      <div
+        data-disabled="{{ item.disabled }}"
+        data-default-expanded="{{ item.defaultExpanded }}"
+        class="gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid {{ getDisabledOpacity(item.disabled) | trim }}"
+      >
+        <div
+          class="{{ getIconPosition(props.iconStart) | trim }} {{ getDisabledCursor(item.disabled) | trim }}"
+        >
+          {{ item.label }}
+          {{
+            govieIcon({
+              "icon": getIcon(item.defaultExpanded) | trim | safe
+            })
+          }}
+        </div>
+        <div
+          class="gi-pt-4 {{ getDefaultExpanded(item.defaultExpanded) | trim }}"
+        >
+          {{ item.content | safe | trim }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
