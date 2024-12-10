@@ -1022,6 +1022,10 @@ input[type='file' i] {
   @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle gi-max-w-[25ch] gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
 }
 
+.gi-table-caption-text {
+  @apply gi-text-left gi-mb-4 gi-font-bold;
+}
+
 .gi-table-no-data {
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
