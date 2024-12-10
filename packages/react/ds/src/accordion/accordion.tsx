@@ -7,7 +7,7 @@ type Props = {
 
 export const Accordion = ({ children, iconStart }: Props) => {
   return (
-    <div data-icon-start={iconStart} className="gi-max-w-[700px]">
+    <div data-icon-start={iconStart} className="gi-max-w-prose">
       {children}
     </div>
   );

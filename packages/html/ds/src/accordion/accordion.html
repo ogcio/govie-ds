@@ -39,7 +39,7 @@
 {% endmacro %}
 
 {% macro govieAccordion(props) %}
-  <div data-module="gieds-accordion" class="gi-max-w-[700px]">
+  <div data-module="gieds-accordion" class="gi-max-w-prose">
     {% for item in props['items'] %}
       <div
         data-disabled="{{ item.disabled }}"
