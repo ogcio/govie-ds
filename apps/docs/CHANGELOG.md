@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.34.0](https://github.com/ogcio/govie-ds/compare/docs-v0.33.3...docs-v0.34.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
+## [0.33.3](https://github.com/ogcio/govie-ds/compare/docs-v0.33.2...docs-v0.33.3) (2024-12-09)
+
+
+### Bug Fixes
+
+* update header search page ([#361](https://github.com/ogcio/govie-ds/issues/361)) ([4d4fc21](https://github.com/ogcio/govie-ds/commit/4d4fc21731bdfec4043c5c0cba745401db91e89d))
+
 ## [0.33.2](https://github.com/ogcio/govie-ds/compare/docs-v0.33.1...docs-v0.33.2) (2024-12-06)
 
 
