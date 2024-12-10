@@ -24,6 +24,7 @@ export * from './table/table-head.js';
 export * from './table/table-header.js';
 export * from './table/table-row.js';
 export * from './table/table.js';
+export * from './table/caption.js';
 export * from './tabs/tabs.js';
 export * from './tabs/tab-item.js';
 export * from './tabs/tab-panel.js';
