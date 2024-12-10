@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.35.0](https://github.com/ogcio/govie-ds/compare/docs-v0.34.0...docs-v0.35.0) (2024-12-10)
+
+
+### Features
+
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
+
+### Bug Fixes
+
+* icon resources ([#364](https://github.com/ogcio/govie-ds/issues/364)) ([2f1b1a9](https://github.com/ogcio/govie-ds/commit/2f1b1a9477d16e0c805ff4b8ff815cbc7c2b4477))
+
 ## [0.34.0](https://github.com/ogcio/govie-ds/compare/docs-v0.33.3...docs-v0.34.0) (2024-12-09)
 
 

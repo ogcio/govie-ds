@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.24.0...tailwind-v0.25.0) (2024-12-10)
+
+
+### Features
+
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
 ## [0.24.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.23.0...tailwind-v0.24.0) (2024-12-09)
 
 
