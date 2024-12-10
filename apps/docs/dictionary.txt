@@ -138,3 +138,4 @@ Garda
 Bia
 Carlow
 Cavan
+components-progressbar

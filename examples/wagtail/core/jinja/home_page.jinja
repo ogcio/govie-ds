@@ -24,6 +24,7 @@
 {% from 'summary-list/summary-list.html' import govieSummaryList %}
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
+{% from 'progress-bar/progress-bar.html' import govieProgressBar%}
 
 {% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -261,6 +262,11 @@
       "Item 3"
     ]
   }) }}
+
+
+  <h2>Progress bar</h2>
+  {{ govieProgressBar({"label": "Loading...", "size": "md", "color": "green", "currentValue": 50 }) }}
+  
   <h2>Footer (Local)</h2>
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>

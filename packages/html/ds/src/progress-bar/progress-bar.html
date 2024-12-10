@@ -1,0 +1,43 @@
+{% macro govieProgressBar(props) %}
+  {% set widthStyle = '' %}
+  {% set finalValue = props.finalValue if props.finalValue else 100 %}
+  {% set fillPercentage = (props.currentValue|int * 100) / finalValue %}
+
+  {% if not props.isIndeterminate %}
+    {% set widthStyle = 'style="width: ' ~ fillPercentage ~ '%;"' %}
+  {% endif %}
+
+  {% if props.size == 'md' %}
+    {% set sizeClass = 'gi-h-4' %}
+  {% elif props.size == 'lg' %}
+    {% set sizeClass = 'gi-h-6' %}
+  {% else %}
+    {% set sizeClass = 'gi-h-2' %}
+  {% endif %}
+
+  {% if props.color == 'green' %}
+    {% set colorClass = 'gi-bg-emerald-800' %}
+  {% else %}
+    {% set colorClass = 'gi-bg-blue-500' %}
+  {% endif %}
+
+  <div class="gi-progress-bar-container">
+    <div
+      role="progressbar"
+      aria-valuenow="{{ props.currentValue if not props.isIndeterminate else '' }}"
+      aria-valuemin="0"
+      aria-valuemax="{{ props.finalValue if not props.isIndeterminate else '' }}"
+      aria-label="Progress bar"
+      data-testid="progress-bar"
+      class="gi-progress-bar {{ sizeClass | safe }}"
+    >
+      <div
+        class="{{ 'gi-progress-bar-indeterminate' if props.isIndeterminate else '' }} {{ sizeClass | safe }} {{ colorClass | safe }}"
+        {% if not props.isIndeterminate %}{{ widthStyle | safe }}{% endif %}
+      ></div>
+    </div>
+    {% if props.label %}
+      <span>{{ props.label | safe }}</span>
+    {% endif %}
+  </div>
+{% endmacro %}

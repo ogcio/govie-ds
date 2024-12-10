@@ -1,6 +1,6 @@
+import { useId } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
-import { useId } from 'react';
 
 export type ProgressBarProps = {
   finalValue?: number;
@@ -55,7 +55,7 @@ export function ProgressBar({
           className={cn(progressBarStyles({ color, size }), {
             'gi-progress-bar-indeterminate': isIndeterminate,
           })}
-          style={!isIndeterminate ? { width: `${fillPercentage}%` } : {}}
+          style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}
         />
       </div>
       {label ? <span>{label}</span> : null}
