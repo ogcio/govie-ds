@@ -39,9 +39,9 @@ export default function DocumentLayoutProps({
   }
 
   return (
-    <div className="gi-layout-container-full-width flex flex-row gap-4 lg:gap-6 py-6 lg:py-8 content-stretch">
+    <main className="gi-layout-container-full-width flex flex-row gap-4 lg:gap-6 py-6 lg:py-8 content-stretch">
       <SideNavigationConnected />
       {children}
-    </div>
+    </main>
   );
 }

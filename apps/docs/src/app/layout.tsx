@@ -87,14 +87,13 @@ export default function RootLayout({
   ];
 
   return (
-    <html
-      lang="en"
-      className="h-full overflow-y-scroll"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${lato.variable} ${lato.className} transition duration-500 bg-white h-full`}
       >
+        <a href="#main" className="sr-only">
+          Skip to main content
+        </a>
         <Header {...headerProps} />
         {children}
         <Footer links={footerLinks} />
