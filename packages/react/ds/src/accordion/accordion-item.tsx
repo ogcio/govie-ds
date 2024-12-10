@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 
@@ -16,9 +16,18 @@ export const AccordionItem = ({
   disabled,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [iconStart, setIconStart] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      setIconStart(Boolean(ref.current.parentElement?.dataset.iconStart));
+    }
+  }, []);
 
   return (
     <div
+      ref={ref}
       className={cn(
         'gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid',
         disabled && 'gi-opacity-30',
@@ -27,7 +36,9 @@ export const AccordionItem = ({
       <div
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         className={cn(
-          'gi-flex gi-justify-between',
+          iconStart
+            ? 'gi-flex gi-flex-row-reverse gi-justify-end'
+            : 'gi-flex gi-justify-between',
           disabled ? 'gi-cursor-not-allowed' : 'gi-cursor-pointer',
         )}
       >

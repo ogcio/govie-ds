@@ -17,6 +17,11 @@ const accordionItemSchema = zod.object({
 });
 
 export const accordionSchema = zod.object({
+  iconStart: zod
+    .boolean({
+      description: 'specify if the icon should be on the start of the trigger',
+    })
+    .optional(),
   items: zod
     .array(accordionItemSchema)
     .describe('Array of the accordion items'),

@@ -30,6 +30,14 @@
   {% endif %}
 {% endmacro %}
 
+{% macro getIconPosition(iconStart) %}
+  {% if iconStart %}
+    gi-flex gi-flex-row-reverse gi-justify-end
+  {% else %}
+    gi-flex gi-justify-between
+  {% endif %}
+{% endmacro %}
+
 {% macro govieAccordion(props) %}
   <div data-module="gieds-accordion" class="gi-max-w-[700px]">
     {% for item in props['items'] %}
@@ -39,7 +47,7 @@
         class="gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid {{ getDisabledOpacity(item.disabled) | trim }}"
       >
         <div
-          class="gi-flex gi-justify-between {{ getDisabledCursor(item.disabled) | trim }}"
+          class="{{ getIconPosition(props.iconStart) | trim }} {{ getDisabledCursor(item.disabled) | trim }}"
         >
           {{ item.label }}
           {{
