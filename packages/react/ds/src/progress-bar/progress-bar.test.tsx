@@ -9,7 +9,7 @@ describe('ProgressBar', () => {
 
   it('should render a progress bar with a specified value', () => {
     const screen = renderProgressBar({
-      value: 50,
+      currentValue: 50,
       size: 'md',
       color: 'blue',
     });
@@ -23,11 +23,11 @@ describe('ProgressBar', () => {
     expect(progressBarInner).toHaveClass('gi-bg-blue-500', 'gi-h-4');
   });
 
-  it('should render an indeterminate progress bar', () => {
+  it('should render an indeterminate progress bar correctly', () => {
     const screen = renderProgressBar({
-      indeterminate: true,
+      isIndeterminate: true,
       size: 'lg',
-      color: 'gray',
+      color: 'green',
     });
 
     const progressBar = screen.getByTestId('progress-bar');
@@ -37,15 +37,32 @@ describe('ProgressBar', () => {
     expect(progressBarInner).toBeTruthy();
     expect(progressBarInner).toHaveClass(
       'gi-progress-bar-indeterminate',
-      'gi-bg-gray-500',
+      'gi-bg-emerald-800',
       'gi-h-6',
     );
-    expect(progressBarInner).not.toHaveStyle('width: 50%'); // Indeterminate should not have a fixed width
+  });
+
+  it('should render progress bar with final value set', () => {
+    const screen = renderProgressBar({
+      finalValue: 500,
+      currentValue: 200,
+      size: 'lg',
+      color: 'green',
+    });
+
+    const progressBar = screen.getByTestId('progress-bar');
+    expect(progressBar).toBeTruthy();
+
+    const progressBarInner = progressBar.firstElementChild;
+
+    console.log(progressBarInner);
+    expect(progressBarInner).toBeTruthy();
+    expect(progressBarInner).toHaveStyle('width: 40%');
   });
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderProgressBar({
-      value: 75,
+      currentValue: 75,
       size: 'sm',
       color: 'green',
     });

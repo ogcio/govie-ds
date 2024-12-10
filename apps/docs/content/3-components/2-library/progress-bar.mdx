@@ -1,0 +1,58 @@
+---
+title: Progress Bar
+description: Progress Bar HTML Component
+status: in-review
+libraries:
+  - platform: 'global'
+    link: '?path=/docs/components-progressbar--docs'
+    status: 'beta'
+  - platform: 'react'
+    link: '?path=/docs/components-progressbar--docs'
+    status: 'beta'
+---
+
+# Progress Bar
+
+Use the progress bar component to visually represent the progress of a task or operation.
+
+## Variants
+
+### Determinate Progress
+
+<ComponentContainer>
+  <ProgressBar currentValue="40" finalValue="100" size="sm" />
+</ComponentContainer>
+
+### Indeterminate Progress
+
+<ComponentContainer>
+  <ProgressBar
+    isIndeterminate="true"
+    label="Loading..."
+    size="sm"
+    color="blue"
+  />
+</ComponentContainer>
+
+## Usage
+
+### Best Practices
+
+#### When to use this component
+
+- Use a determinate progress bar when the progress of a task can be measured (e.g., file upload, form completion).
+- Use an indeterminate progress bar when the duration of a task is unknown but progress should be indicated (e.g., loading state).
+
+#### When not to use this component
+
+- Avoid using a progress bar for static values that do not visually indicate progress.
+- Do not use a progress bar if the task completion time is very short, as it might appear unresponsive to the user.
+
+### Accessibility
+
+- Always include an appropriate label for screen readers to describe the task being performed.
+- For determinate progress, ensure the current value and total value are conveyed to assistive technologies.
+
+## Status
+
+<ComponentStatusBlock componentId="progress-bar" />

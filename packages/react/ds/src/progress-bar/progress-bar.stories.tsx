@@ -11,27 +11,45 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    value: {
-      control: { type: 'range', min: 0, max: 100 },
-      type: { name: 'number', required: true },
-      description: 'The progress value as a percentage (0 to 100).',
+    currentValue: {
+      type: { name: 'number' },
+      description: 'The current value of the progress bar.',
+    },
+    finalValue: {
+      type: { name: 'number' },
+      description: 'The final value of the progress bar.',
     },
     size: {
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
-      type: { name: 'string', required: false },
+      type: { name: 'string' },
       description: 'The size of the progress bar.',
     },
     color: {
       control: { type: 'select' },
-      options: ['blue', 'gray', 'green'],
-      type: { name: 'string', required: false },
+      options: ['blue', 'green'],
+      type: { name: 'string' },
       description: 'The color of the progress bar.',
+    },
+    isIndeterminate: {
+      type: { name: 'boolean' },
+      description: 'Set infinite progress for the progress bar',
+    },
+    label: {
+      type: { name: 'string' },
+      description: 'Set custom label for the progress bars',
     },
   },
   args: {
-    value: 50,
+    currentValue: 50,
     size: 'md',
     color: 'blue',
+  },
+};
+
+export const WithLabelIndeterminate = {
+  args: {
+    isIndeterminate: true,
+    label: 'Loading...',
   },
 };

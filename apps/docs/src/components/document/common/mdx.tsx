@@ -40,6 +40,7 @@ import {
   SummaryListRow,
   SummaryListValue,
   SummaryListAction,
+  ProgressBar,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -206,6 +207,7 @@ const documentComponents: MDXComponents = {
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
+  ProgressBar: (props) => <ProgressBar {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

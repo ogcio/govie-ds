@@ -962,12 +962,21 @@ input[type='file' i] {
 /* End of Table */
 
 /* Progress bar */
+
 .gi-progress-bar-container {
-  @apply gi-w-full gi-bg-gray-200 gi-rounded-lg gi-overflow-hidden;
+  @apply gi-flex gi-items-center gi-flex-col;
 }
 
-.gi-progress-bar-container > div {
-  @apply gi-rounded-lg gi-transition-all;
+.gi-progress-bar-container > span {
+  @apply gi-mt-2 gi-text-sm gi-text-gray-700;
+}
+
+.gi-progress-bar {
+  @apply gi-w-full gi-bg-gray-200 gi-overflow-hidden;
+}
+
+.gi-progress-bar > div {
+  @apply gi-transition-all;
 }
 
 .gi-progress-bar-indeterminate {
