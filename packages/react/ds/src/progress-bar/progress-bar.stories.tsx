@@ -42,8 +42,7 @@ export const Default: Story = {
   },
   args: {
     currentValue: 50,
-    size: 'md',
-    color: 'blue',
+    size: 'sm',
   },
 };
 

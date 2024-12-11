@@ -24,8 +24,8 @@ const progressBarStyles = tv({
     },
   },
   defaultVariants: {
-    size: 'md',
-    color: 'green',
+    size: 'sm',
+    color: 'blue',
   },
 });
 
@@ -46,7 +46,6 @@ export function ProgressBar({
         aria-valuenow={isIndeterminate ? undefined : currentValue}
         aria-valuemin={0}
         aria-valuemax={finalValue}
-        aria-labelledby={`progress-bar-${useId()}`}
         aria-label="Progress bar"
         data-testid="progress-bar"
         className={cn('gi-progress-bar', progressBarStyles({ size }))}

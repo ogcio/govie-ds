@@ -30,6 +30,7 @@ import {
   SummaryList,
   SummaryListAction,
   SummaryListValue,
+  ProgressBar,
 } from '@govie-ds/react';
 
 export default function Home() {
@@ -206,6 +207,8 @@ export default function Home() {
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
+
+          <ProgressBar currentValue={50} label="Loading..." />
         </div>
       </Container>
 
