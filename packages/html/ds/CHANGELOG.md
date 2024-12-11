@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.22.0](https://github.com/ogcio/govie-ds/compare/html-v0.21.2...html-v0.22.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
+## [0.21.2](https://github.com/ogcio/govie-ds/compare/html-v0.21.1...html-v0.21.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* search page template fixes ([#357](https://github.com/ogcio/govie-ds/issues/357)) ([17448d2](https://github.com/ogcio/govie-ds/commit/17448d22ccc0c7a3f1677d0ac8bb206433330cd2))
+
 ## [0.21.1](https://github.com/ogcio/govie-ds/compare/html-v0.21.0...html-v0.21.1) (2024-12-05)
 
 

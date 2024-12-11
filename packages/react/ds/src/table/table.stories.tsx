@@ -14,14 +14,7 @@ import { TableRow } from './table-row.js';
 import { Table } from './table.js';
 
 interface TableRowData {
-  id: number | string;
-  county: string;
-  description: string;
-  total: string;
-  status: {
-    text: string;
-    type: TagType;
-  };
+  [key: string]: any; // Allows any key with any value type
 }
 
 interface TableStoryProps extends React.ComponentProps<typeof Table> {
@@ -157,6 +150,53 @@ export const Default: Story = {
             <TableData>
               <IconButton {...iconProps} />
             </TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+export const BasicTable: Story = {
+  args: {
+    captionText: 'User Information',
+    headers: ['Name', 'Email', 'Role'],
+    rows: [
+      {
+        id: 1,
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        role: 'Admin',
+      },
+      {
+        id: 2,
+        name: 'Jane Smith',
+        email: 'jane.smith@example.com',
+        role: 'User',
+      },
+      {
+        id: 3,
+        name: 'Sam Lee',
+        email: 'sam.lee@example.com',
+        role: 'Editor',
+      },
+    ],
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>{row.name}</TableData>
+            <TableData>{row.email}</TableData>
+            <TableData>{row.role}</TableData>
           </TableRow>
         ))}
       </TableBody>

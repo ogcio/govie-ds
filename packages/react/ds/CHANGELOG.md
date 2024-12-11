@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [0.28.0](https://github.com/ogcio/govie-ds/compare/react-v0.27.0...react-v0.28.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/react-v0.26.1...react-v0.27.0) (2024-12-06)
+
+
+### Features
+
+* react table component ([#351](https://github.com/ogcio/govie-ds/issues/351)) ([18191a7](https://github.com/ogcio/govie-ds/commit/18191a77668a7464b17c0be76b3f78953760dd30))
+
 ## [0.26.1](https://github.com/ogcio/govie-ds/compare/react-v0.26.0...react-v0.26.1) (2024-12-05)
 
 

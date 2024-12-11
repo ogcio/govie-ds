@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [0.24.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.23.0...tailwind-v0.24.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
+## [0.23.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.1...tailwind-v0.23.0) (2024-12-06)
+
+
+### Features
+
+* react table component ([#351](https://github.com/ogcio/govie-ds/issues/351)) ([18191a7](https://github.com/ogcio/govie-ds/commit/18191a77668a7464b17c0be76b3f78953760dd30))
+
 ## [0.22.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.0...tailwind-v0.22.1) (2024-12-05)
 
 
