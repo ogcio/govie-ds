@@ -48,6 +48,7 @@ import {
   TableRow,
   TableData,
   TableBody,
+  Link,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -93,7 +94,6 @@ import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
 
 export type MdxProps = {

@@ -16,9 +16,11 @@ export const linkSchema = zod.object({
     .omit({ content: true })
     .optional()
     .describe('Specify if the link should look like a button'),
-  href: zod.string({
-    description: 'Hypertext reference',
-  }).optional(),
+  href: zod
+    .string({
+      description: 'Hypertext reference',
+    })
+    .optional(),
   label: zod.string({
     description: 'Label of link',
     required_error: 'label is required',
