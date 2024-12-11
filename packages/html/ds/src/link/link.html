@@ -1,4 +1,8 @@
+{% from 'button/button.html' import govieButton %}
+
 {% macro govieLink(props) %}
+  {% set as = props.as or 'a' %}
+
   {% macro getUnderlineClass(noUnderline) %}
     {% if noUnderline %}
       gi-link-no-underline
@@ -41,7 +45,24 @@
     {% endif %}
   {% endmacro %}
 
-  <a
+  {% macro renderContent(props) %}
+    {% if props.asButton %}
+      {{ govieButton({
+        "content": props.label,
+        "variant": props.asButton.variant,
+        "appearance": props.asButton.appearance,
+        "size": props.asButton.size,
+        "disabled": props.asButton.disabled,
+        "type": props.asButton.type,
+        "form": props.asButton.form,
+        "value": props.asButton.value
+      }) }}
+    {% else %}
+      {{ props.label }}
+    {% endif %}
+  {% endmacro %}
+
+  <{{ as }}
     href="{{ props.href }}"
     {{ getAriaLabel(props) | trim }}
     {{ getAriaCurrent(props) | trim }}
@@ -53,6 +74,6 @@
       {{ getVisitedClass(props.noVisited) | trim }}
       {{ getSizeClass(props.size) | trim }}
     "
-    >{{ props.label }}</a
+    >{{ renderContent(props) }}</{{ as }}
   >
 {% endmacro %}

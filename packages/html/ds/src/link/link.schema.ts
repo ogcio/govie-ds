@@ -1,15 +1,24 @@
 import * as zod from 'zod';
+import { buttonSchema } from '../button/button-schema';
 
 export enum LinkSize {
   SMALL = 'sm',
   MEDIUM = 'md',
 }
 
+const linkTypeSchema = zod.union([zod.literal('a'), zod.literal('button')]);
+
 export const linkSchema = zod.object({
+  as: linkTypeSchema
+    .optional()
+    .describe('Specify if the component should be a button or a link'),
+  asButton: buttonSchema
+    .omit({ content: true })
+    .optional()
+    .describe('Specify if the link should look like a button'),
   href: zod.string({
     description: 'Hypertext reference',
-    required_error: 'href is required',
-  }),
+  }).optional(),
   label: zod.string({
     description: 'Label of link',
     required_error: 'label is required',
