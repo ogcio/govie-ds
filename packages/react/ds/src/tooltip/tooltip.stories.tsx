@@ -92,8 +92,7 @@ export const RightPosition: Story = {
 
 export const WithLongLabel: Story = {
   args: {
-    label:
-      'This is a very long tooltip label that tests the tooltip display and its styling when the label spans multiple lines.',
+    label: 'This is a very long tooltip label that tests the tooltip display.',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },
