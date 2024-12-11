@@ -9,22 +9,70 @@ libraries:
   - platform: 'global'
     status: 'considering'
   - platform: 'react'
-    status: 'considering'
+    status: 'beta'
+    link: ?path=/docs/application-tooltip--docs'
 ---
 
 # Tooltip
 
-## Variants
+## Default
+
+<Tooltip label="Default Tooltip" position="top">
+  <Button variant="primary">Hover me (Top)</Button>
+</Tooltip>
 
 ## Usage
 
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11">HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+  TBD
+  </TabPanel>
+  <TabPanel value="tab12">
+  TBD
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```jsx
+    import { Tooltip, Button } from '@govie-ds/react';
+
+    <Tooltip
+      label="Default Tooltip"
+      position="top"
+    >
+      <Button variant="primary">
+        Hover me (Top)
+      </Button>
+    </Tooltip>
+
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ### Best Practices
+
+- Keep the tooltip content concise and relevant. Tooltips are meant for brief contextual information.
+- Avoid overloading tooltips with large amounts of text or complex HTML structures.
+- Ensure the tooltip is accessible by providing appropriate ARIA attributes (`aria-label`, `aria-describedby`).
+- Use tooltips sparingly to avoid overwhelming users with excessive hover points.
+- Test tooltips on touch devices to ensure they don't obstruct essential UI elements.
 
 ### When to use this component
 
+- Use tooltips to provide additional information or context for UI elements without cluttering the interface.
+- Ideal for explaining icons, abbreviations, or buttons that might not be immediately clear to the user.
+- When information is supplementary and doesn’t require the user's immediate action.
+
 ### When not to use this component
+
+- Do not use tooltips for essential information critical to completing a task. Place such information directly in the UI.
+- Avoid using tooltips on elements that users interact with on touch devices, as hover actions are less intuitive or non-functional.
+- Refrain from placing tooltips in rapid action areas where users might not have time to hover over elements.
 
 ## Status
 
 <ComponentStatusBlock componentId="tooltip" />
-
