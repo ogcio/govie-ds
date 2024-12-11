@@ -43,7 +43,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <>
-      <div className="w-full flex-auto gi-prose gi-max-w-none">
+      <article id="main" className="w-full flex-auto gi-prose gi-max-w-none">
         {document.status !== 'stable' && (
           <div className="flex justify-between items-center py-2">
             {document.status === 'in-review' && (
@@ -53,9 +53,12 @@ export default function DocumentPage({ params }: DocumentPageProps) {
           </div>
         )}
         <Mdx code={document.body.code} />
-      </div>
+      </article>
       {!hideToc && (
-        <aside className="w-full max-w-48 hidden md:block flex-auto">
+        <aside
+          aria-label="table of content"
+          className="w-full max-w-48 hidden md:block flex-auto"
+        >
           {tocItems?.filter((item) => item.depth > 1).length > 0 && (
             <>
               <Heading as="h4">On this page</Heading>

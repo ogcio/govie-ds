@@ -75,7 +75,10 @@ function Benefits() {
 
 export default function HomePage() {
   return (
-    <article className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow">
+    <main
+      id="main"
+      className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow"
+    >
       <PhaseBanner level="alpha">
         <p className="text-gray-700 text-xs sm:text-md">
           This is a new service - your{' '}
@@ -123,6 +126,6 @@ export default function HomePage() {
           Sign up to learn more
         </Button>
       </Prose>
-    </article>
+    </main>
   );
 }

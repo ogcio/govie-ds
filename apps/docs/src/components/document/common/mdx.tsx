@@ -41,6 +41,14 @@ import {
   SummaryListValue,
   SummaryListAction,
   ProgressBar,
+  ProgressStepper,
+  Table,
+  Caption,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableData,
+  TableBody,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -198,7 +206,11 @@ const documentComponents: MDXComponents = {
   ComponentContainer: (props) => (
     <div
       {...props}
-      className={cn('my-xl stroke-gray-950 gi-not-prose', props.className)}
+      className={cn(
+        'my-xl stroke-gray-950 gi-not-prose',
+        props.fullWidth ? '' : 'max-w-prose',
+        props.className,
+      )}
     />
   ),
   Alert: (props) => <Alert {...props} />,
@@ -208,6 +220,14 @@ const documentComponents: MDXComponents = {
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
   ProgressBar: (props) => <ProgressBar {...props} />,
+  ProgressStepper: (props) => <ProgressStepper {...props} />,
+  Table: (props) => <Table {...props} />,
+  Caption: (props) => <Caption {...props} />,
+  TableHead: (props) => <TableHead {...props} />,
+  TableHeader: (props) => <TableHeader {...props} />,
+  TableRow: (props) => <TableRow {...props} />,
+  TableData: (props) => <TableData {...props} />,
+  TableBody: (props) => <TableBody {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
