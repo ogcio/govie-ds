@@ -1,4 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Container } from '../container/container.js';
+import { Link } from '../link/link.js';
+import { List, TypeEnum } from '../list/list.js';
+import { Select } from '../select/select.js';
+import HeaderSearch from './components/header-search.js';
 import { Header } from './header.js';
 
 const meta = {
@@ -8,6 +13,60 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+const SlotExample1 = () => (
+  <Container>
+    <List
+      type={TypeEnum.Bullet}
+      items={[
+        <Link size="sm" href="#">
+          Citizens Information - Services and Rights
+        </Link>,
+        <Link size="sm" href="#">
+          Revenue - Taxes and Payments
+        </Link>,
+        <Link size="sm" href="#">
+          Department of Social Protection
+        </Link>,
+      ]}
+    />
+  </Container>
+);
+
+const SlotExample2 = () => {
+  return (
+    <Container>
+      <Select
+        id="slot-example-2"
+        options={[
+          {
+            label: 'Languages',
+            value: 'languages',
+            groupName: 'Languages',
+            items: [
+              {
+                label: 'Gaeilge',
+                value: 'gaeilge',
+              },
+              {
+                label: 'English',
+                value: 'english',
+              },
+              {
+                label: 'Spanish',
+                value: 'spanish',
+              },
+              {
+                label: 'Italian',
+                value: 'italian',
+              },
+            ],
+          },
+        ]}
+      />
+    </Container>
+  );
+};
 
 export const Default: Story = {
   argTypes: {
@@ -53,15 +112,36 @@ export const Default: Story = {
       href: '/link',
     },
     tools: {
-      search: {
-        action: '/search_page',
-        label: 'Search',
+      menu: {
+        icon: 'menu',
+        label: 'Menu',
       },
       items: [
         {
           href: '/item1',
           label: 'Home',
           icon: 'home',
+        },
+        {
+          href: '#',
+          label: 'Faq',
+          icon: 'info',
+          keepOnMobile: true,
+          slot: <SlotExample1 />,
+        },
+        {
+          href: '/search_page',
+          label: 'Search',
+          keepOnMobile: true,
+          slot: <HeaderSearch />,
+        },
+
+        {
+          href: '#',
+          label: 'Languages',
+          icon: 'mic',
+          keepOnMobile: true,
+          slot: <SlotExample2 />,
         },
       ],
     },
@@ -275,7 +355,7 @@ export const tabletView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
-      defaultViewport: 'pixel',
+      defaultViewport: 'ipad',
     },
   },
   args: {
@@ -285,6 +365,7 @@ export const tabletView: Story = {
     tools: {
       search: {
         action: '/search-page',
+        label: 'Search',
       },
     },
     navLinks: [

@@ -91,6 +91,37 @@ describe('header', () => {
     }
   });
 
+  it('should render header menu slots', () => {
+    const screen = renderHeader({
+      ...standardProps,
+      tools: {
+        ...standardProps.tools,
+        items: [
+          {
+            href: '#',
+            icon: 'thumb_up',
+            slot: <div>Here is a slot component</div>,
+            label: 'Slot',
+          },
+          {
+            href: '#',
+            icon: 'info',
+            slot: <div>Here is a slot component 2</div>,
+            label: 'Slot 2',
+          },
+        ],
+      },
+    });
+
+    const slotMenu = screen.getByTestId('ItemActionTrigger-0');
+    expect(slotMenu).toBeInTheDocument();
+    expect(screen.getByText('Slot'));
+
+    const slotMenu1 = screen.getByTestId('ItemActionTrigger-1');
+    expect(slotMenu1).toBeInTheDocument();
+    expect(screen.getByText('Slot 2'));
+  });
+
   it('should show the search button', () => {
     const screen = renderHeader(standardProps);
 

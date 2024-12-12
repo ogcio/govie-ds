@@ -6,7 +6,7 @@ export type IconId = (typeof iconIds)[number];
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type IconPropTypes = {
+export type IconPropTypes = React.HTMLAttributes<HTMLSpanElement> & {
   icon: IconId | string;
   size?: IconSize;
   filled?: boolean;
@@ -28,6 +28,7 @@ export function Icon({
   inline = false,
   className = '',
   onClick,
+  ...props
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle = filled
@@ -38,6 +39,7 @@ export function Icon({
 
   return (
     <span
+      {...props}
       data-testid="govie-icon"
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}

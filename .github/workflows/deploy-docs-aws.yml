@@ -3,7 +3,7 @@ name: Deploy docs to AWS
 on:
   workflow_call:
     inputs:
-      env:
+      environment:
         required: true
         type: string
         default: prod
@@ -35,7 +35,7 @@ jobs:
       id-token: write
       contents: read
 
-    environment: ${{ github.event.inputs.environment || github.event.inputs.env }}
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout code
@@ -49,15 +49,7 @@ jobs:
           node-version: 22
 
       - name: Set environment variable
-        run: echo "CONFIGURATION=${{ github.event.inputs.environment || github.event.inputs.env }}" >> $GITHUB_ENV
-
-      - name: Build and test
-        run: |
-          corepack enable          
-          pnpm install --frozen-lockfile --ignore-scripts
-          pnpm format:check
-          pnpm build
-          pnpm test
+        run: echo "CONFIGURATION=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
 
       - name: Setup AWS Credentials
         if: github.ref == 'refs/heads/main'
@@ -66,6 +58,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
+
+      - name: Build and test
+        run: |
+          corepack enable          
+          pnpm install --frozen-lockfile --ignore-scripts
+          pnpm format:check
+          pnpm build
+          pnpm test
 
       - name: Sign in to Amazon ECR
         if: github.ref == 'refs/heads/main'

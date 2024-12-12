@@ -141,3 +141,6 @@ Carlow
 Cavan
 components-progressbar
 summarisable
+tooltip
+tooltips
+Tooltips
