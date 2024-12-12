@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
@@ -57,7 +56,7 @@ export function ProgressBar({
           style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}
         />
       </div>
-      {label ? <span>{label}</span> : null}
+      {label && <span>{label}</span>}
     </div>
   );
 }

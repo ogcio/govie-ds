@@ -69,3 +69,9 @@ export const WithLabelIndeterminate: Story = {
     color: 'blue',
   },
 };
+
+export const Completed = {
+  args: {
+    currentValue: 100,
+  },
+};

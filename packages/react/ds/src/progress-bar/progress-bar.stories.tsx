@@ -52,3 +52,9 @@ export const WithLabelIndeterminate = {
     label: 'Loading...',
   },
 };
+
+export const Completed = {
+  args: {
+    currentValue: 100,
+  },
+};
