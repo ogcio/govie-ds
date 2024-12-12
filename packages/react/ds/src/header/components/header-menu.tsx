@@ -40,7 +40,7 @@ const MenuListItem = ({
   <a
     aria-label={label || 'link with no label'}
     href={href}
-    className="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
+    className="gi-header-menu-list-item"
   >
     <span className={cn('gi-text-sm', 'gi-ml-1', { 'gi-font-bold': bold })}>
       {label}
@@ -54,7 +54,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       `#Accordion-item-${index}`,
     );
     const toggleLink = accordionItemContainer?.querySelector(
-      '.gi-accordion-item-toggle',
+      '.gi-header-accordion-item-toggle',
     );
 
     const handleOnClick =
@@ -87,10 +87,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       className="gi-accordion-item-container"
       data-open="false"
     >
-      <div
-        aria-label={item.label}
-        className="gi-accordion-item-toggle hover:gi-no-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-      >
+      <div aria-label={item.label} className="gi-header-accordion-item-toggle">
         <div className="gi-full-width gi-flex gi-justify-between">
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
           <Icon icon="chevron_right" className="gi-accordion-item-icon" />

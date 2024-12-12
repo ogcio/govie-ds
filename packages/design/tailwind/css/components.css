@@ -451,6 +451,14 @@ input[type='text'] {
   transform: rotate(90deg);
 }
 
+.gi-header-accordion-item-toggle {
+  @apply hover:gi-no-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
+}
+
+.gi-header-menu-list-item {
+  @apply hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
+}
+
 /* End Header */
 
 /* Tabs */
