@@ -140,3 +140,6 @@ Bia
 Carlow
 Cavan
 summarisable
+tooltip
+tooltips
+Tooltips
