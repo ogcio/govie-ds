@@ -5,7 +5,6 @@ export type ProgressBarProps = {
   max?: number;
   value?: number;
   size?: 'sm' | 'md' | 'lg';
-  color?: 'blue' | 'green';
   isIndeterminate?: boolean;
   label?: string;
 };
@@ -16,10 +15,6 @@ const progressBarStyles = tv({
       sm: 'gi-h-2',
       md: 'gi-h-4',
       lg: 'gi-h-6',
-    },
-    color: {
-      blue: 'gi-bg-blue-500',
-      green: 'gi-bg-emerald-800',
     },
   },
   defaultVariants: {
@@ -32,7 +27,6 @@ export function ProgressBar({
   value = 0,
   max = 100,
   size = 'sm',
-  color = 'blue',
   isIndeterminate,
   label,
 }: ProgressBarProps) {
@@ -50,7 +44,7 @@ export function ProgressBar({
         className={cn('gi-progress-bar', progressBarStyles({ size }))}
       >
         <div
-          className={cn(progressBarStyles({ color, size }), {
+          className={cn(progressBarStyles({ size }), 'gi-bg-gray-700', {
             'gi-progress-bar-indeterminate': isIndeterminate,
           })}
           style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}

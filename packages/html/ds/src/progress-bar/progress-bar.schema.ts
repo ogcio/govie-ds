@@ -5,22 +5,15 @@ export const progressBarSchema = zod.object({
     .number({
       description: 'The current value of the progress bar.',
     })
-    .min(0, { message: 'Current value cannot be negative.' })
     .optional(),
   max: zod
     .number({
       description: 'The maximum value of the progress bar.',
     })
-    .min(1, { message: 'Maximum value must be at least 1.' })
     .optional(),
   size: zod
     .enum(['sm', 'md', 'lg'], {
       description: 'Specifies the size of the progress bar.',
-    })
-    .optional(),
-  color: zod
-    .enum(['blue', 'green'], {
-      description: 'Specifies the color of the progress bar.',
     })
     .optional(),
   isIndeterminate: zod

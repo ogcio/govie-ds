@@ -25,12 +25,6 @@ export const Default: Story = {
       type: { name: 'string' },
       description: 'The size of the progress bar.',
     },
-    color: {
-      control: { type: 'select' },
-      options: ['blue', 'green'],
-      type: { name: 'string' },
-      description: 'The color of the progress bar.',
-    },
     isIndeterminate: {
       type: { name: 'boolean' },
       description: 'Set infinite progress for the progress bar',

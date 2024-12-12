@@ -11,7 +11,6 @@ describe('ProgressBar', () => {
     const screen = renderProgressBar({
       value: 50,
       size: 'md',
-      color: 'blue',
     });
 
     const progressBar = screen.getByTestId('progress-bar');
@@ -20,14 +19,13 @@ describe('ProgressBar', () => {
     const progressBarInner = progressBar.firstElementChild;
     expect(progressBarInner).toBeTruthy();
     expect(progressBarInner).toHaveStyle('width: 50%');
-    expect(progressBarInner).toHaveClass('gi-bg-blue-500', 'gi-h-4');
+    expect(progressBarInner).toHaveClass('gi-bg-gray-700', 'gi-h-4');
   });
 
   it('should render an indeterminate progress bar correctly', () => {
     const screen = renderProgressBar({
       isIndeterminate: true,
       size: 'lg',
-      color: 'green',
     });
 
     const progressBar = screen.getByTestId('progress-bar');
@@ -37,7 +35,7 @@ describe('ProgressBar', () => {
     expect(progressBarInner).toBeTruthy();
     expect(progressBarInner).toHaveClass(
       'gi-progress-bar-indeterminate',
-      'gi-bg-emerald-800',
+      'gi-bg-gray-700',
       'gi-h-6',
     );
   });
@@ -47,7 +45,6 @@ describe('ProgressBar', () => {
       max: 500,
       value: 200,
       size: 'lg',
-      color: 'green',
     });
 
     const progressBar = screen.getByTestId('progress-bar');
@@ -64,7 +61,6 @@ describe('ProgressBar', () => {
     const screen = renderProgressBar({
       value: 75,
       size: 'sm',
-      color: 'green',
     });
 
     await screen.axe();

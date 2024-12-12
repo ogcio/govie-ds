@@ -36,12 +36,6 @@ export const Default: Story = {
       type: { name: 'string', required: false },
       description: 'The size of the progress bar.',
     },
-    color: {
-      control: 'select',
-      options: ['blue', 'green'],
-      type: { name: 'string', required: false },
-      description: 'The color of the progress bar.',
-    },
     isIndeterminate: {
       control: 'boolean',
       type: { name: 'boolean', required: false },
@@ -57,7 +51,6 @@ export const Default: Story = {
     value: 50,
     max: 100,
     size: 'sm',
-    color: 'blue',
   },
 };
 
@@ -66,7 +59,6 @@ export const WithLabelIndeterminate: Story = {
     isIndeterminate: true,
     label: 'Loading...',
     size: 'sm',
-    color: 'blue',
   },
 };
 

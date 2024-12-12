@@ -25,17 +25,6 @@ Use the progress bar component to visually represent the progress of a task or o
   <ProgressBar value="40" max="100" size="sm" />
 </ComponentContainer>
 
-### Indeterminate Progress Bar
-
-<ComponentContainer>
-  <ProgressBar
-    isIndeterminate="true"
-    label="Loading..."
-    size="sm"
-    color="blue"
-  />
-</ComponentContainer>
-
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
@@ -45,8 +34,8 @@ Use the progress bar component to visually represent the progress of a task or o
   <TabPanel value="tab11">        
     ```html
       <div class="gi-progress-bar-container">
-        <div role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-labelledby="progress-bar-:S1:" aria-label="Progress bar" class="gi-progress-bar gi-h-2 gi-bg-emerald-800">
-          <div class="gi-h-2 gi-bg-blue-500" style="width: 40%;">
+        <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-labelledby="progress-bar-:S1:" aria-label="Progress bar" class="gi-progress-bar gi-h-2">
+          <div class="gi-h-2 gi-bg-gray-700" style="width: 50%;">
           </div>
         </div>
       </div>
@@ -54,16 +43,51 @@ Use the progress bar component to visually represent the progress of a task or o
   </TabPanel>
   <TabPanel value="tab12">        
     ```html
-      {{ govieProgressBar({"label": "Loading...", "size": "md", "color": "green", "value": 50 }) }}
+      {{ govieProgressBar({"value": 50 }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
     ```html
       import { ProgressBar } from '@govie-ds/react';
 
-      <ProgressBar label="Loading..." size="sm" value="30" />
+      <ProgressBar value={50} />
+    ```
 
-      <ProgressBar isIndeterminate />
+  </TabPanel>
+</Tabs>
+
+### Indeterminate Progress Bar
+
+<ComponentContainer>
+  <ProgressBar isIndeterminate="true" label="Loading..." />
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">Macro</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">        
+    ```html
+    <div class="gi-progress-bar-container">
+      <div role="progressbar" aria-label="Progress bar" data-testid="progress-bar" class="gi-progress-bar gi-h-2">
+        <div class="gi-h-2 gi-bg-gray-700 gi-progress-bar-indeterminate"></div>
+      </div>
+      <span>Loading...</span>
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab22">        
+    ```html
+      {{ govieProgressBar({"label": "Loading...", "isIndeterminate": true }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```html
+      import { ProgressBar } from '@govie-ds/react';
+
+      <ProgressBar isIndeterminate label="Loading..." />
     ```
 
   </TabPanel>

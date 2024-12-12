@@ -1,7 +1,7 @@
 {% macro govieProgressBar(props) %}
   {% set widthStyle = '' %}
   {% set max = props.max if props.max else 100 %}
-  {% set fillPercentage = (props.value|int * 100) / max %}
+  {% set fillPercentage = (props.value|int * 100) / max if props.value else 0 %}
 
   {% if not props.isIndeterminate %}
     {% set widthStyle = 'style="width: ' ~ fillPercentage ~ '%;"' %}
@@ -15,12 +15,6 @@
     {% set sizeClass = 'gi-h-2' %}
   {% endif %}
 
-  {% if props.color == 'green' %}
-    {% set colorClass = 'gi-bg-emerald-800' %}
-  {% else %}
-    {% set colorClass = 'gi-bg-blue-500' %}
-  {% endif %}
-
   <div class="gi-progress-bar-container">
     <div
       role="progressbar"
@@ -32,7 +26,7 @@
       class="gi-progress-bar {{ sizeClass | safe }}"
     >
       <div
-        class="{{ 'gi-progress-bar-indeterminate' if props.isIndeterminate else '' }} {{ sizeClass | safe }} {{ colorClass | safe }}"
+        class="{{ 'gi-progress-bar-indeterminate' if props.isIndeterminate else '' | safe }} {{ sizeClass | safe }} gi-bg-gray-700"
         {% if not props.isIndeterminate %}{{ widthStyle | safe }}{% endif %}
       ></div>
     </div>
