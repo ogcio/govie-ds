@@ -1,5 +1,6 @@
 'use client';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useId } from 'react';
+import { tv } from 'tailwind-variants';
 
 type TooltipProps = {
   label: string;
@@ -7,8 +8,25 @@ type TooltipProps = {
   children: ReactNode;
 };
 
-export const Tooltip = (props: TooltipProps) => {
+const tooltipTv = tv({
+  base: 'gi-tooltip',
+  variants: {
+    position: {
+      left: `gi-tooltip-left`,
+      right: `gi-tooltip-right`,
+      top: `gi-tooltip-top`,
+      bottom: `gi-tooltip-bottom`,
+    },
+  },
+});
+
+export const Tooltip = ({
+  label,
+  position = 'top',
+  children,
+}: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const describedById = useId();
 
   const showTooltip = () => setIsVisible(true);
   const hideTooltip = () => setIsVisible(false);
@@ -18,11 +36,17 @@ export const Tooltip = (props: TooltipProps) => {
       className="gi-tooltip-wrapper"
       onMouseEnter={showTooltip}
       onMouseLeave={hideTooltip}
+      aria-describedby={isVisible ? describedById : undefined}
     >
-      {props.children}
+      {children}
       {isVisible && (
-        <span className={`gi-tooltip gi-tooltip-${props.position}`}>
-          {props.label}
+        <span
+          id={describedById}
+          role="tooltip"
+          className={tooltipTv({ position })}
+          aria-hidden="false"
+        >
+          {label}
         </span>
       )}
     </span>
