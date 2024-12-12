@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ButtonSize, ButtonVariant } from '../button/button-schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './link.html?raw';
 import { LinkProps, LinkSize } from './link.schema';
 
-const macro = { name: 'govieLink', html };
+// Name of the folder the macro resides
+const path = import.meta.url.split('/link')[0];
+
+const macro = { name: 'govieLink', html, path };
 
 const Link = renderComponent<LinkProps>(macro);
 
@@ -83,6 +87,24 @@ export const NoVisited: Story = {
     href: '#',
     label: 'Link',
     noVisited: true,
+  },
+};
+
+export const styledAsButton: Story = {
+  args: {
+    href: '#',
+    asButton: {
+      variant: ButtonVariant.Primary,
+      size: ButtonSize.Medium,
+    },
+    label: 'Link',
+  },
+};
+
+export const asButton: Story = {
+  args: {
+    as: 'button',
+    label: 'Link',
   },
 };
 
