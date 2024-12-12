@@ -49,6 +49,7 @@ import {
   TableData,
   TableBody,
   Link,
+  Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -226,6 +227,7 @@ const documentComponents: MDXComponents = {
   TableRow: (props) => <TableRow {...props} />,
   TableData: (props) => <TableData {...props} />,
   TableBody: (props) => <TableBody {...props} />,
+  Tooltip: (props) => <Tooltip {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
