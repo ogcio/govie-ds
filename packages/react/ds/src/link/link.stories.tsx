@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link } from './link.js';
+import { Link, LinkType } from './link.js';
 
 const meta = {
   title: 'Navigation/Link',
@@ -73,6 +73,25 @@ export const NoVisited: Story = {
     href: '#',
     children: 'Link',
     noVisited: true,
+  },
+};
+
+export const styledAsButton: Story = {
+  args: {
+    asButton: {
+      variant: 'primary',
+      size: 'medium',
+    },
+    href: '#',
+    children: 'Link',
+  },
+};
+
+export const asButton: Story = {
+  args: {
+    as: LinkType.BUTTON,
+    onClick: () => alert('Button Clicked'),
+    children: 'Click me',
   },
 };
 
