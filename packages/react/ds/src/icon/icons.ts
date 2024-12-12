@@ -19,6 +19,7 @@ export const iconIds = [
   'error',
   'warning',
   'check',
+  'arrow_forward',
 ] as const;
 
 export const Icons = [...iconIds];

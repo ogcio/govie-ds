@@ -1,4 +1,4 @@
-import { Link } from '@/components/typography/link';
+import { Link } from '@govie-ds/react';
 import { cn } from '@/lib/cn';
 
 export function Card({

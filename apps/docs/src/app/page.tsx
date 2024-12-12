@@ -1,9 +1,7 @@
-import { Heading, Paragraph, PhaseBanner } from '@govie-ds/react';
+import { Heading, Icon, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
-import { Button } from '@/components/form/button';
-import { RightArrowIcon } from '@/components/icons/right-arrow-icon';
 import { Prose } from '@/components/typography/prose';
 import { config } from '@/lib/config';
 
@@ -101,9 +99,14 @@ export default function HomePage() {
             customisable, the Design System Building Block allows departments to
             create cohesive digital experiences effortlessly.
           </p>
-          <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+          <Link
+            noUnderline
+            href={config.signUpFormUrl}
+            asButton={{ variant: 'primary' }}
+          >
             Sign up to learn more
-          </Button>
+            <Icon icon="arrow_forward" />
+          </Link>
         </Prose>
         <div>
           <Image
@@ -122,9 +125,14 @@ export default function HomePage() {
           or learn more about how the Design System Building Block can benefit
           your department.
         </Paragraph>
-        <Button href={config.signUpFormUrl} icon={<RightArrowIcon />}>
+        <Link
+          noUnderline
+          href={config.signUpFormUrl}
+          asButton={{ variant: 'primary' }}
+        >
           Sign up to learn more
-        </Button>
+          <Icon icon="arrow_forward" />
+        </Link>
       </Prose>
     </main>
   );
