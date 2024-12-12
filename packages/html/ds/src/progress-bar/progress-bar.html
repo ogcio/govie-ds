@@ -1,7 +1,7 @@
 {% macro govieProgressBar(props) %}
   {% set widthStyle = '' %}
-  {% set finalValue = props.finalValue if props.finalValue else 100 %}
-  {% set fillPercentage = (props.currentValue|int * 100) / finalValue %}
+  {% set max = props.max if props.max else 100 %}
+  {% set fillPercentage = (props.value|int * 100) / max %}
 
   {% if not props.isIndeterminate %}
     {% set widthStyle = 'style="width: ' ~ fillPercentage ~ '%;"' %}
@@ -24,9 +24,9 @@
   <div class="gi-progress-bar-container">
     <div
       role="progressbar"
-      aria-valuenow="{{ props.currentValue if not props.isIndeterminate else '' }}"
+      aria-valuenow="{{ props.value if not props.isIndeterminate else '' }}"
       aria-valuemin="0"
-      aria-valuemax="{{ props.finalValue if not props.isIndeterminate else '' }}"
+      aria-valuemax="{{ props.max if not props.isIndeterminate else '' }}"
       aria-label="Progress bar"
       data-testid="progress-bar"
       class="gi-progress-bar {{ sizeClass | safe }}"

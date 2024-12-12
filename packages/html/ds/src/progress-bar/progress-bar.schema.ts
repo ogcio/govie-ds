@@ -1,17 +1,17 @@
 import * as zod from 'zod';
 
 export const progressBarSchema = zod.object({
-  currentValue: zod
+  value: zod
     .number({
       description: 'The current value of the progress bar.',
     })
     .min(0, { message: 'Current value cannot be negative.' })
     .optional(),
-  finalValue: zod
+  max: zod
     .number({
-      description: 'The final or maximum value of the progress bar.',
+      description: 'The maximum value of the progress bar.',
     })
-    .min(1, { message: 'Final value must be at least 1.' })
+    .min(1, { message: 'Maximum value must be at least 1.' })
     .optional(),
   size: zod
     .enum(['sm', 'md', 'lg'], {

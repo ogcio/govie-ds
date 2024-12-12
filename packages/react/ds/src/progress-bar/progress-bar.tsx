@@ -2,8 +2,8 @@ import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
 export type ProgressBarProps = {
-  finalValue?: number;
-  currentValue?: number;
+  max?: number;
+  value?: number;
   size?: 'sm' | 'md' | 'lg';
   color?: 'blue' | 'green';
   isIndeterminate?: boolean;
@@ -29,22 +29,22 @@ const progressBarStyles = tv({
 });
 
 export function ProgressBar({
-  currentValue = 0,
-  finalValue = 100,
+  value = 0,
+  max = 100,
   size = 'sm',
   color = 'blue',
   isIndeterminate,
   label,
 }: ProgressBarProps) {
-  const fillPercentage = (currentValue * 100) / finalValue;
+  const fillPercentage = (value * 100) / max;
 
   return (
     <div className="gi-progress-bar-container">
       <div
         role="progressbar"
-        aria-valuenow={isIndeterminate ? undefined : currentValue}
+        aria-valuenow={isIndeterminate ? undefined : value}
         aria-valuemin={0}
-        aria-valuemax={finalValue}
+        aria-valuemax={max}
         aria-label="Progress bar"
         data-testid="progress-bar"
         className={cn('gi-progress-bar', progressBarStyles({ size }))}

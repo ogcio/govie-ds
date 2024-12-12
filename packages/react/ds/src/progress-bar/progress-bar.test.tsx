@@ -9,7 +9,7 @@ describe('ProgressBar', () => {
 
   it('should render a progress bar with a specified value', () => {
     const screen = renderProgressBar({
-      currentValue: 50,
+      value: 50,
       size: 'md',
       color: 'blue',
     });
@@ -44,8 +44,8 @@ describe('ProgressBar', () => {
 
   it('should render progress bar with final value set', () => {
     const screen = renderProgressBar({
-      finalValue: 500,
-      currentValue: 200,
+      max: 500,
+      value: 200,
       size: 'lg',
       color: 'green',
     });
@@ -62,7 +62,7 @@ describe('ProgressBar', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderProgressBar({
-      currentValue: 75,
+      value: 75,
       size: 'sm',
       color: 'green',
     });

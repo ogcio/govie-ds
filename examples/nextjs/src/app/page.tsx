@@ -209,7 +209,7 @@ export default function Home() {
             </SummaryListRow>
           </SummaryList>
 
-          <ProgressBar currentValue={50} label="Loading..." />
+          <ProgressBar value={50} label="Loading..." />
 
           <ProgressStepper
             currentStepIndex={3}

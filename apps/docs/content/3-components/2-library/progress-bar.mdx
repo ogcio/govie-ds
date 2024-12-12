@@ -22,7 +22,7 @@ Use the progress bar component to visually represent the progress of a task or o
 ### Progress Bar
 
 <ComponentContainer>
-  <ProgressBar currentValue="40" finalValue="100" size="sm" />
+  <ProgressBar value="40" max="100" size="sm" />
 </ComponentContainer>
 
 ### Indeterminate Progress Bar
@@ -54,14 +54,14 @@ Use the progress bar component to visually represent the progress of a task or o
   </TabPanel>
   <TabPanel value="tab12">        
     ```html
-      {{ govieProgressBar({"label": "Loading...", "size": "md", "color": "green", "currentValue": 50 }) }}
+      {{ govieProgressBar({"label": "Loading...", "size": "md", "color": "green", "value": 50 }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
     ```html
       import { ProgressBar } from '@govie-ds/react';
 
-      <ProgressBar label="Loading..." size="sm" />
+      <ProgressBar label="Loading..." size="sm" value="30" />
 
       <ProgressBar isIndeterminate />
     ```

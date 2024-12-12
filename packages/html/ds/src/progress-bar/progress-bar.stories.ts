@@ -20,12 +20,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    currentValue: {
+    value: {
       control: 'number',
       type: { name: 'number', required: false },
       description: 'The current value of the progress bar.',
     },
-    finalValue: {
+    max: {
       control: 'number',
       type: { name: 'number', required: false },
       description: 'The final value of the progress bar.',
@@ -54,8 +54,8 @@ export const Default: Story = {
     },
   },
   args: {
-    currentValue: 50,
-    finalValue: 100,
+    value: 50,
+    max: 100,
     size: 'sm',
     color: 'blue',
   },
@@ -72,6 +72,6 @@ export const WithLabelIndeterminate: Story = {
 
 export const Completed = {
   args: {
-    currentValue: 100,
+    value: 100,
   },
 };
