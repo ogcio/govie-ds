@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/react",
-  "version": "0.28.0",
+  "version": "0.29.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",

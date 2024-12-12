@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.23.0](https://github.com/ogcio/govie-ds/compare/html-v0.22.0...html-v0.23.0) (2024-12-12)
+
+
+### Features
+
+* accordion component ([#360](https://github.com/ogcio/govie-ds/issues/360)) ([dc49ba6](https://github.com/ogcio/govie-ds/commit/dc49ba64903a0efd1160045a113b5a129b32339c))
+* button and links ([#368](https://github.com/ogcio/govie-ds/issues/368)) ([b9659de](https://github.com/ogcio/govie-ds/commit/b9659ded59099aca2227bf32489c6afc6d5eef6f))
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
+
+### Bug Fixes
+
+* icon resources ([#364](https://github.com/ogcio/govie-ds/issues/364)) ([2f1b1a9](https://github.com/ogcio/govie-ds/commit/2f1b1a9477d16e0c805ff4b8ff815cbc7c2b4477))
+
 ## [0.22.0](https://github.com/ogcio/govie-ds/compare/html-v0.21.2...html-v0.22.0) (2024-12-09)
 
 
