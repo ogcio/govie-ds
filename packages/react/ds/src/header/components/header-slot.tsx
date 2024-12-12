@@ -29,8 +29,10 @@ export const addNewGovieHeaderSlotElement = (
     root.render(slot);
 
     return () => {
-      root.unmount();
-      childNode.remove();
+      queueMicrotask(() => {
+        root.unmount();
+        childNode.remove();
+      });
     };
   }
 };

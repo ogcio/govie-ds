@@ -128,4 +128,23 @@ describe('header', () => {
     const searchElement = screen.getByTestId('SearchTrigger');
     expect(searchElement).toBeTruthy();
   });
+
+  it('should show menu when mobile when having just languages props', () => {
+    const screen = renderHeader({
+      logo: { href: '/home' },
+      languages: [
+        {
+          href: '#',
+          label: 'Gaeilge',
+        },
+        {
+          href: '#',
+          label: 'English',
+        },
+      ],
+    });
+
+    const mobileMenu = screen.getByTestId('header-mobile-menu');
+    expect(mobileMenu).toBeInTheDocument();
+  });
 });

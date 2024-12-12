@@ -5,6 +5,11 @@ import type { StackProps } from './types.js';
 describe('govieStack', () => {
   afterEach(cleanup);
   const renderStack = (props: StackProps) => render(<Stack {...props} />);
+  const children = [
+    <div key="stack_1">item 1</div>,
+    <div key="stack_2">item 2</div>,
+    <div key="stack_3">item 3</div>,
+  ];
 
   it('should Stack items render correctly', () => {
     const screen = renderStack({
@@ -12,7 +17,7 @@ describe('govieStack', () => {
       itemsAlignment: 'center',
       itemsDistribution: 'end',
       gap: 1,
-      children: [<div>item 1</div>, <div>item 2</div>, <div>item 3</div>],
+      children,
     });
     expect(screen.getByTestId('govie-stack')).toBeInTheDocument();
     expect(screen.getByTestId('govie-stack-item-0')).toBeInTheDocument();
@@ -33,7 +38,7 @@ describe('govieStack', () => {
       },
       itemsAlignment: 'start',
       itemsDistribution: 'start',
-      children: [<div>item 1</div>, <div>item 2</div>, <div>item 3</div>],
+      children,
     });
     expect(screen.getByTestId('govie-stack')).toBeInTheDocument();
     expect(screen.getByTestId('govie-stack-item-0')).toBeInTheDocument();
@@ -46,7 +51,7 @@ describe('govieStack', () => {
       direction: 'column',
       itemsAlignment: 'start',
       itemsDistribution: 'start',
-      children: [<div>item 1</div>, <div>item 2</div>, <div>item 3</div>],
+      children,
     });
 
     await screen.axe();
