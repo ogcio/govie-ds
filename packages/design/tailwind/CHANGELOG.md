@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.24.0...tailwind-v0.25.0) (2024-12-12)
+
+
+### Features
+
+* add react tooltip component ([#367](https://github.com/ogcio/govie-ds/issues/367)) ([708f1e6](https://github.com/ogcio/govie-ds/commit/708f1e66995c180ba93d69997f1a5fa8887a82a6))
+* slot items for Header component (react) ([#350](https://github.com/ogcio/govie-ds/issues/350)) ([3615649](https://github.com/ogcio/govie-ds/commit/3615649cd0e6a8884f21636a0e787ac5922c9337))
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
+## [0.24.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.23.0...tailwind-v0.24.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
 ## [0.23.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.22.1...tailwind-v0.23.0) (2024-12-06)
 
 

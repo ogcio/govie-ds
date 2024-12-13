@@ -40,6 +40,16 @@ import {
   SummaryListRow,
   SummaryListValue,
   SummaryListAction,
+  ProgressStepper,
+  Table,
+  Caption,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableData,
+  TableBody,
+  Link,
+  Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -85,7 +95,6 @@ import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { Link } from '@/components/typography/link';
 import { cn } from '@/lib/cn';
 
 export type MdxProps = {
@@ -197,7 +206,11 @@ const documentComponents: MDXComponents = {
   ComponentContainer: (props) => (
     <div
       {...props}
-      className={cn('my-xl stroke-gray-950 gi-not-prose', props.className)}
+      className={cn(
+        'my-xl stroke-gray-950 gi-not-prose',
+        props.fullWidth ? '' : 'max-w-prose',
+        props.className,
+      )}
     />
   ),
   Alert: (props) => <Alert {...props} />,
@@ -206,6 +219,15 @@ const documentComponents: MDXComponents = {
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
+  ProgressStepper: (props) => <ProgressStepper {...props} />,
+  Table: (props) => <Table {...props} />,
+  Caption: (props) => <Caption {...props} />,
+  TableHead: (props) => <TableHead {...props} />,
+  TableHeader: (props) => <TableHeader {...props} />,
+  TableRow: (props) => <TableRow {...props} />,
+  TableData: (props) => <TableData {...props} />,
+  TableBody: (props) => <TableBody {...props} />,
+  Tooltip: (props) => <Tooltip {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

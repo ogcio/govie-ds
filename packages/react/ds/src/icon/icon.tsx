@@ -1,30 +1,12 @@
 'use client';
 import { meta } from '@govie-ds/tokens';
+import { iconIds } from './icons.js';
 
-export type IconId =
-  | 'copy'
-  | 'edit'
-  | 'mic'
-  | 'send'
-  | 'thumb_down'
-  | 'thumb_up'
-  | 'open_in_new'
-  | 'attach_file'
-  | 'close'
-  | 'search'
-  | 'menu'
-  | 'home'
-  | 'logout'
-  | 'download'
-  | 'keyboard_arrow_down'
-  | 'info'
-  | 'check_circle'
-  | 'error'
-  | 'warning';
+export type IconId = (typeof iconIds)[number];
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type IconPropTypes = {
+export type IconPropTypes = React.HTMLAttributes<HTMLSpanElement> & {
   icon: IconId | string;
   size?: IconSize;
   filled?: boolean;
@@ -46,6 +28,7 @@ export function Icon({
   inline = false,
   className = '',
   onClick,
+  ...props
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle = filled
@@ -56,6 +39,7 @@ export function Icon({
 
   return (
     <span
+      {...props}
       data-testid="govie-icon"
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}

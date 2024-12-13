@@ -1,6 +1,29 @@
 # Changelog
 
 
+## [0.29.0](https://github.com/ogcio/govie-ds/compare/react-v0.28.0...react-v0.29.0) (2024-12-12)
+
+
+### Features
+
+* accordion component ([#360](https://github.com/ogcio/govie-ds/issues/360)) ([dc49ba6](https://github.com/ogcio/govie-ds/commit/dc49ba64903a0efd1160045a113b5a129b32339c))
+* add react tooltip component ([#367](https://github.com/ogcio/govie-ds/issues/367)) ([708f1e6](https://github.com/ogcio/govie-ds/commit/708f1e66995c180ba93d69997f1a5fa8887a82a6))
+* button and links ([#368](https://github.com/ogcio/govie-ds/issues/368)) ([b9659de](https://github.com/ogcio/govie-ds/commit/b9659ded59099aca2227bf32489c6afc6d5eef6f))
+* slot items for Header component (react) ([#350](https://github.com/ogcio/govie-ds/issues/350)) ([3615649](https://github.com/ogcio/govie-ds/commit/3615649cd0e6a8884f21636a0e787ac5922c9337))
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
+
+### Bug Fixes
+
+* icon resources ([#364](https://github.com/ogcio/govie-ds/issues/364)) ([2f1b1a9](https://github.com/ogcio/govie-ds/commit/2f1b1a9477d16e0c805ff4b8ff815cbc7c2b4477))
+
+## [0.28.0](https://github.com/ogcio/govie-ds/compare/react-v0.27.0...react-v0.28.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
 ## [0.27.0](https://github.com/ogcio/govie-ds/compare/react-v0.26.1...react-v0.27.0) (2024-12-06)
 
 

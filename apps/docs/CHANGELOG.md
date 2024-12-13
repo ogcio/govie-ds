@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.35.0](https://github.com/ogcio/govie-ds/compare/docs-v0.34.0...docs-v0.35.0) (2024-12-12)
+
+
+### Features
+
+* add react tooltip component ([#367](https://github.com/ogcio/govie-ds/issues/367)) ([708f1e6](https://github.com/ogcio/govie-ds/commit/708f1e66995c180ba93d69997f1a5fa8887a82a6))
+* button and links ([#368](https://github.com/ogcio/govie-ds/issues/368)) ([b9659de](https://github.com/ogcio/govie-ds/commit/b9659ded59099aca2227bf32489c6afc6d5eef6f))
+* table component html and macro implementation ([#359](https://github.com/ogcio/govie-ds/issues/359)) ([1b7601e](https://github.com/ogcio/govie-ds/commit/1b7601e11030f2784c79dece0ed169d69ac30780))
+
+
+### Bug Fixes
+
+* icon resources ([#364](https://github.com/ogcio/govie-ds/issues/364)) ([2f1b1a9](https://github.com/ogcio/govie-ds/commit/2f1b1a9477d16e0c805ff4b8ff815cbc7c2b4477))
+
+## [0.34.0](https://github.com/ogcio/govie-ds/compare/docs-v0.33.3...docs-v0.34.0) (2024-12-09)
+
+
+### Features
+
+* Progress Stepper component ([#356](https://github.com/ogcio/govie-ds/issues/356)) ([e461069](https://github.com/ogcio/govie-ds/commit/e461069cf98e4d655fa14ed2b216741f409f9f20))
+
+## [0.33.3](https://github.com/ogcio/govie-ds/compare/docs-v0.33.2...docs-v0.33.3) (2024-12-09)
+
+
+### Bug Fixes
+
+* update header search page ([#361](https://github.com/ogcio/govie-ds/issues/361)) ([4d4fc21](https://github.com/ogcio/govie-ds/commit/4d4fc21731bdfec4043c5c0cba745401db91e89d))
+
 ## [0.33.2](https://github.com/ogcio/govie-ds/compare/docs-v0.33.1...docs-v0.33.2) (2024-12-06)
 
 
