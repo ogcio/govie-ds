@@ -3,9 +3,8 @@ import { renderComponent } from '../storybook/storybook';
 import html from './textarea.html?raw';
 import { TextareaProps } from './textarea.schema';
 
-const path = import.meta.url.split('/textarea')[0];
+const macro = { name: 'govieTextArea', html };
 
-const macro = { name: 'govieTextArea', html, path };
 const TextArea = renderComponent<TextareaProps>(macro);
 
 const meta = {

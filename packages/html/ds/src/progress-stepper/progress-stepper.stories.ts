@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './progress-stepper.html?raw';
 import { ProgressStepperProps } from './progress-stepper.schema';
 
-const path = import.meta.url.split('/progress-stepper')[0];
-
-const macro = { name: 'govieProgressStepper', html, path };
+const macro = { name: 'govieProgressStepper', html };
 
 const ProgressStepper = renderComponent<ProgressStepperProps>(macro);
 

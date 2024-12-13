@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './list.html?raw';
 import { TypeEnum, ListProps } from './list.schema';
 
-const path = import.meta.url.split('/list')[0];
-
-const macro = { name: 'govieList', html, path };
+const macro = { name: 'govieList', html };
 
 const List = renderComponent<ListProps>(macro);
 

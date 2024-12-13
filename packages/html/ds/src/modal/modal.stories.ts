@@ -4,9 +4,7 @@ import { htmlContent, triggerButton } from './modal.content';
 import html from './modal.html?raw';
 import { ModalProps } from './modal.schema';
 
-const path = import.meta.url.split('/modal')[0];
-
-const macro = { name: 'govieModal', html, path };
+const macro = { name: 'govieModal', html };
 
 const Modal = renderComponent<ModalProps>(macro);
 

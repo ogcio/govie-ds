@@ -3,8 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './summary-list.html?raw';
 import { SummaryListProps } from './summary-list.schema';
 
-const path = import.meta.url.split('/summary-list')[0];
-const macro = { name: 'govieSummaryList', html, path };
+const macro = { name: 'govieSummaryList', html };
 const SummaryList = renderComponent<SummaryListProps>(macro);
 
 const meta = {

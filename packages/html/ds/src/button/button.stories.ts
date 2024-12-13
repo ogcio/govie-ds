@@ -5,10 +5,7 @@ import { ButtonAppearance, ButtonProps } from './button-schema';
 import { ButtonVariant, ButtonSize } from './button-schema';
 import html from './button.html?raw';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/button')[0];
-
-const macro = { name: 'govieButton', html, path };
+const macro = { name: 'govieButton', html };
 
 const Button = renderComponent<ButtonProps>(macro);
 

@@ -1,7 +1,8 @@
+import path from 'node:path';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../../ds/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 
   addons: [
     '@chromatic-com/storybook',
@@ -15,19 +16,12 @@ const config: StorybookConfig = {
     '@storybook/experimental-addon-test',
   ],
 
-  build: {
-    test: {
-      disabledAddons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-essentials/docs',
-      ],
-    },
-  },
-
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
+
+  staticDirs: ['../macros/nunjucks/dev/govie'],
 
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite');
@@ -41,6 +35,15 @@ const config: StorybookConfig = {
         watch: {
           usePolling: true,
           interval: 1000,
+        },
+      },
+      resolve: {
+        alias: {
+          '@govie-ds/html': path.resolve(
+            // eslint-disable-next-line unicorn/prefer-module
+            __dirname,
+            '../src/index.ts',
+          ),
         },
       },
     });

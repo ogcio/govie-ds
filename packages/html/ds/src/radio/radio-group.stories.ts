@@ -5,10 +5,7 @@ import { InputTypeEnum } from '../text-input/text-input.schema';
 import type { RadiosProps } from './radio.schema';
 import html from './radios-group.html?raw';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/radio')[0];
-
-const macro = { name: 'govieRadiosGroup', html, path };
+const macro = { name: 'govieRadiosGroup', html };
 
 const Radios = renderComponent<RadiosProps>(macro);
 

@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './text-input.html?raw';
 import { InputTypeEnum, TextInputProps } from './text-input.schema';
 
-const path = import.meta.url.split('/text-input')[0];
-
-const macro = { name: 'govieTextInput', html, path };
+const macro = { name: 'govieTextInput', html };
 const TextInput = renderComponent<TextInputProps>(macro);
 
 const meta = {

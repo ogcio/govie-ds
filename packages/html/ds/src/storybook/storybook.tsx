@@ -9,7 +9,7 @@ export function renderComponent<TProps = unknown>({
 }) {
   return function (props: TProps) {
     const path = import.meta.url.split('/storybook')[0];
-    const renderedMacro = renderMacro({ name, html, path })(props);
+    const renderedMacro = renderMacro({ name, html })(props);
     return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   };
 }

@@ -5,9 +5,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './icon-button.html?raw';
 import { iconButtonProps } from './icon-button.schema';
 
-const path = import.meta.url.split('/icon-button')[0];
-
-const macro = { name: 'govieIconButton', html, path };
+const macro = { name: 'govieIconButton', html };
 
 const IconButton = renderComponent<iconButtonProps>(macro);
 

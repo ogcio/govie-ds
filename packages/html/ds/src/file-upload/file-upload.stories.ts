@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './file-upload.html?raw';
 import { FileUploadProps } from './file-upload.schema';
 
-const path = import.meta.url.split('/file-upload')[0];
-
-const macro = { name: 'govieFileUpload', html, path };
+const macro = { name: 'govieFileUpload', html };
 const FileUpload = renderComponent<FileUploadProps>(macro);
 
 const meta = {

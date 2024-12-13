@@ -6,6 +6,22 @@ export default defineWorkspace([
   'vite.config.ts',
   {
     extends: 'vite.config.ts',
+    test: {
+      name: 'unit',
+      globals: true,
+      environment: 'jsdom',
+      css: true,
+      pool: 'threads',
+      poolOptions: {
+        threads: {
+          singleThread: true,
+        },
+      },
+      setupFiles: ['./vitest.setup.ts'],
+    },
+  },
+  {
+    extends: 'vite.config.ts',
     plugins: [
       // The plugin will run tests for the stories defined in your Storybook config
       // See options at: https://storybook.js.org/docs/writing-tests/vitest-plugin#storybooktest

@@ -1,3 +1,4 @@
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { processMacrosPlugin } from './scripts/process-macros-plugin';
@@ -7,6 +8,7 @@ export default defineConfig({
   plugins: [
     dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
     processMacrosPlugin(),
+    react(),
   ],
   build: {
     copyPublicDir: false,

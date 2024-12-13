@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import { AccordionProps } from './accordion-schema';
 import html from './accordion.html?raw';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/accordion')[0];
-
-const macro = { name: 'govieAccordion', html, path };
+const macro = { name: 'govieAccordion', html };
 
 const Accordion = renderComponent<AccordionProps>(macro);
 

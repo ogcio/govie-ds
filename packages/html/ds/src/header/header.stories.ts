@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './header.html?raw';
 import { HeaderProps } from './header.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/header')[0];
-
-const macro = { name: 'govieHeader', html, path };
+const macro = { name: 'govieHeader', html };
 
 const Header = renderComponent<HeaderProps>(macro);
 

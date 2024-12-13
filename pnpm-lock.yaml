@@ -542,6 +542,9 @@ importers:
       '@govie-ds/tailwind':
         specifier: workspace:*
         version: link:../../design/tailwind
+      '@govie-ds/theme-govie':
+        specifier: workspace:*
+        version: link:../../themes/govie
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -554,6 +557,9 @@ importers:
       '@types/nunjucks':
         specifier: ^3.2.6
         version: 3.2.6
+      '@vitest/coverage-istanbul':
+        specifier: 2.1.8
+        version: 2.1.8(vitest@2.1.8)
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.40)
@@ -698,12 +704,6 @@ importers:
       '@vitest/coverage-istanbul':
         specifier: 2.1.8
         version: 2.1.8(vitest@2.1.8)
-      '@vitest/coverage-v8':
-        specifier: 2.1.8
-        version: 2.1.8(@vitest/browser@2.1.8)(vitest@2.1.8)
-      '@vitest/ui':
-        specifier: ^2.1.8
-        version: 2.1.8(vitest@2.1.8)
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.40)
@@ -737,58 +737,6 @@ importers:
       vite-plugin-lib-inject-css:
         specifier: ^2.1.1
         version: 2.1.1(vite@5.4.10(@types/node@22.8.4)(terser@5.31.3))
-
-  packages/react/storybook:
-    dependencies:
-      '@babel/preset-env':
-        specifier: 7.25.3
-        version: 7.25.3(@babel/core@7.25.2)
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
-    devDependencies:
-      '@govie-ds/eslint-config':
-        specifier: workspace:*
-        version: link:../../build/eslint-config
-      '@govie-ds/prettier-config':
-        specifier: workspace:*
-        version: link:../../build/prettier-config
-      '@govie-ds/react':
-        specifier: workspace:*
-        version: link:../ds
-      '@govie-ds/tailwind':
-        specifier: workspace:*
-        version: link:../../design/tailwind
-      '@govie-ds/theme-govie':
-        specifier: workspace:*
-        version: link:../../themes/govie
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.18.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.6.3))(eslint@8.57.0)(typescript@5.6.3)
-      '@typescript-eslint/parser':
-        specifier: ^7.18.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.6.3)
-      '@vitest/coverage-v8':
-        specifier: 2.1.8
-        version: 2.1.8(@vitest/browser@2.1.8)(vitest@2.1.8)
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.0
-        version: 4.6.2(eslint@8.57.0)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.9
-        version: 0.4.9(eslint@8.57.0)
-      eslint-plugin-storybook:
-        specifier: ^0.8.0
-        version: 0.8.0(eslint@8.57.0)(typescript@5.6.3)
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
 
   packages/themes/govie:
     devDependencies:
@@ -4351,15 +4299,6 @@ packages:
     resolution: {integrity: sha512-cSaCd8KcWWvgDwEJSXm0NEWZ1YTiJzjicKHy+zOEbUm0gjbbkz+qJf1p8q71uBzSlS7vdnZA8wRLeiwVE3fFTA==}
     peerDependencies:
       vitest: 2.1.8
-
-  '@vitest/coverage-v8@2.1.8':
-    resolution: {integrity: sha512-2Y7BPlKH18mAZYAW1tYByudlCYrQyl5RGvnnDYJKW5tCiO5qg3KSAy3XAxcxKz900a0ZXxWtKrMuZLe3lKBpJw==}
-    peerDependencies:
-      '@vitest/browser': 2.1.8
-      vitest: 2.1.8
-    peerDependenciesMeta:
-      '@vitest/browser':
-        optional: true
 
   '@vitest/expect@2.0.5':
     resolution: {integrity: sha512-yHZtwuP7JZivj65Gxoi8upUN2OzHTi3zVfjwdpu2WrvCZPLwsJ2Ey5ILIPccoW23dd/zQBlJ4/dhi7DWNyXCpA==}
@@ -14251,21 +14190,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@5.62.0(eslint@8.57.0)(typescript@5.6.3)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
-      '@types/json-schema': 7.0.15
-      '@types/semver': 7.5.8
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.6.3)
-      eslint: 8.57.0
-      eslint-scope: 5.1.1
-      semver: 7.6.3
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   '@typescript-eslint/utils@5.62.0(eslint@9.8.0)(typescript@5.6.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.8.0)
@@ -14352,26 +14276,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@2.1.8(@vitest/browser@2.1.8)(vitest@2.1.8)':
-    dependencies:
-      '@ampproject/remapping': 2.3.0
-      '@bcoe/v8-coverage': 0.2.3
-      debug: 4.3.7
-      istanbul-lib-coverage: 3.2.2
-      istanbul-lib-report: 3.0.1
-      istanbul-lib-source-maps: 5.0.6
-      istanbul-reports: 3.1.7
-      magic-string: 0.30.12
-      magicast: 0.3.5
-      std-env: 3.8.0
-      test-exclude: 7.0.1
-      tinyrainbow: 1.2.0
-      vitest: 2.1.8(@types/node@22.8.4)(@vitest/browser@2.1.8)(@vitest/ui@2.1.8)(jsdom@25.0.1(canvas@2.11.2))(msw@2.6.8(@types/node@22.8.4)(typescript@5.6.3))(terser@5.31.3)
-    optionalDependencies:
-      '@vitest/browser': 2.1.8(@types/node@22.8.4)(playwright@1.48.1)(typescript@5.6.3)(vite@5.4.10(@types/node@22.8.4)(terser@5.31.3))(vitest@2.1.8)
-    transitivePeerDependencies:
-      - supports-color
-
   '@vitest/expect@2.0.5':
     dependencies:
       '@vitest/spy': 2.0.5
@@ -14436,6 +14340,7 @@ snapshots:
       tinyglobby: 0.2.10
       tinyrainbow: 1.2.0
       vitest: 2.1.8(@types/node@22.8.4)(@vitest/browser@2.1.8)(@vitest/ui@2.1.8)(jsdom@25.0.1(canvas@2.11.2))(msw@2.6.8(@types/node@22.8.4)(typescript@5.6.3))(terser@5.31.3)
+    optional: true
 
   '@vitest/utils@2.0.5':
     dependencies:
@@ -16347,17 +16252,6 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.11
 
-  eslint-plugin-storybook@0.8.0(eslint@8.57.0)(typescript@5.6.3):
-    dependencies:
-      '@storybook/csf': 0.0.1
-      '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.6.3)
-      eslint: 8.57.0
-      requireindex: 1.2.0
-      ts-dedent: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   eslint-plugin-storybook@0.8.0(eslint@9.8.0)(typescript@5.6.3):
     dependencies:
       '@storybook/csf': 0.0.1
@@ -16717,7 +16611,8 @@ snapshots:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
 
-  fflate@0.8.2: {}
+  fflate@0.8.2:
+    optional: true
 
   figures@3.2.0:
     dependencies:
