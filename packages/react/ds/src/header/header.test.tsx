@@ -129,7 +129,7 @@ describe('header', () => {
     expect(searchElement).toBeTruthy();
   });
 
-  it('should show menu when mobile when having just languages props', () => {
+  it('should display the hamburger menu on mobile devices when only the languages prop is provided.', () => {
     const screen = renderHeader({
       logo: { href: '/home' },
       languages: [
