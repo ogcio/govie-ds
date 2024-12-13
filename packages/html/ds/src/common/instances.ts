@@ -8,6 +8,7 @@ import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
+import { Tooltip } from '../tooltip/tooltip';
 import { Toast } from '../toast/toast';
 import { BaseComponent, BaseComponentOptions } from './component';
 
@@ -20,6 +21,7 @@ const componentRegistry = {
   Checkboxes,
   Radio,
   Textarea,
+  Tooltip,
   Modal,
   CookieBanner,
   Tabs,

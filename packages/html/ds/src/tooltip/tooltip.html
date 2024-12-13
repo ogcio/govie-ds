@@ -1,0 +1,17 @@
+{% macro govieTooltip(props) %}
+    <span
+      class="gi-tooltip-wrapper"
+      {% if props.ariaDescribedBy %} aria-describedby="{{ props.ariaDescribedBy }}"{% endif %}
+    >
+        {% if props.content %}
+            {{ props.content | safe }}
+        {% endif %}
+        <span 
+          role="tooltip" 
+          class="gi-tooltip gi-tooltip-{{ props.position }}"
+          aria-hidden="true"
+        >
+            {{ props.text }}
+        </span>
+    </span>
+{% endmacro %}
