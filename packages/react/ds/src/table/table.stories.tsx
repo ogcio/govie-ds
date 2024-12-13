@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import Checkbox from '../checkbox/checkbox.js';
+import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
 import { Tag, TagType } from '../tag/tag.js';
@@ -133,7 +133,6 @@ export const Default: Story = {
                 ariaLabel={`checkbox-id-${row.id}`}
                 checkboxId={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
-                dataElement={`checkbox-id-${row.id}`}
               />
             </TableData>
             <TableData>{row.id}</TableData>
@@ -250,7 +249,6 @@ export const TableWithFooter: Story = {
                 ariaLabel={`checkbox-id-${row.id}`}
                 checkboxId={`project-select-${row.id}`}
                 value={row.id.toString()}
-                dataElement={`project-checkbox-${row.id}`}
               />
             </TableData>
             <TableData>{row.county}</TableData>

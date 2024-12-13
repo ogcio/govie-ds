@@ -8,38 +8,33 @@ export enum CheckboxSizeEnum {
 }
 
 type CheckboxType = {
-  dataElement: string;
   checkboxId: string;
   value: string;
   size?: CheckboxSizeEnum;
   label?: string;
   hint?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  className?: string;
   checked?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
 };
 
-const Checkbox = ({
-  dataElement,
+export const Checkbox = ({
   checkboxId,
   value,
   onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
   hint,
-  className,
   checked,
   disabled,
   ariaLabel,
 }: CheckboxType) => {
   return (
-    <div className={`gi-checkbox-container ${className && className}`}>
+    <div className="gi-checkbox-container">
       <input
         name={label}
         onChange={onChange}
-        data-element={dataElement}
         id={checkboxId}
         value={value}
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
@@ -50,10 +45,8 @@ const Checkbox = ({
       />
       <label htmlFor={checkboxId} className="gi-checkbox-label">
         {label}
-        {hint && <HintText text={hint} className="gi-mb-0" />}
+        {hint && <HintText text={hint} />}
       </label>
     </div>
   );
 };
-
-export default Checkbox;

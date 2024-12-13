@@ -4,12 +4,12 @@ import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import type { headingVariants } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
-import Checkbox, { CheckboxSizeEnum } from './checkbox.js';
+import { Checkbox, CheckboxSizeEnum } from './checkbox.js';
 import { getSizeClass } from './helpers.js';
 
 export type CheckboxesGroupType = {
   size?: CheckboxSizeEnum;
-  fieldId: string;
+  groupId: string;
   errorMessage?: string;
   items: {
     value: string;
@@ -34,7 +34,7 @@ export type CheckboxesGroupType = {
 };
 
 export const CheckboxesGroup = ({
-  fieldId,
+  groupId,
   errorMessage,
   title,
   items,
@@ -87,9 +87,8 @@ export const CheckboxesGroup = ({
           {items.map((checkbox, index) => (
             <Checkbox
               key={`checkbox-${index}-${checkbox.value}`}
-              dataElement={`checkbox${index}`}
               size={size}
-              checkboxId={`${fieldId}-${index}`}
+              checkboxId={`${groupId}-${index}`}
               hint={checkbox.hint}
               value={checkbox.value}
               label={checkbox.label}
@@ -107,9 +106,8 @@ export const CheckboxesGroup = ({
                 or
               </p>
               <Checkbox
-                dataElement="checkbox-none-option"
                 size={size}
-                checkboxId={`${fieldId}-${items.length}`}
+                checkboxId={`${groupId}-${items.length}`}
                 hint={noneOption.hint}
                 value={noneOption.value}
                 label={noneOption.label}
