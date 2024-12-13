@@ -51,8 +51,6 @@ describe('ProgressBar', () => {
     expect(progressBar).toBeTruthy();
 
     const progressBarInner = progressBar.firstElementChild;
-
-    console.log(progressBarInner);
     expect(progressBarInner).toBeTruthy();
     expect(progressBarInner).toHaveStyle('width: 40%');
   });
