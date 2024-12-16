@@ -86,6 +86,17 @@ export const headerSchema = zod.object({
             description: 'The url (href) of the item',
             required_error: 'The url is required',
           }),
+          slot: zod
+          .any({
+            description: 'The slot content for the item, optional React node',
+          })
+          .optional(),
+        keepOnMobile: zod
+          .boolean({
+            description:
+              'Flag to determine if the item should be shown on mobile, default false',
+          })
+          .optional()
         })
         .array()
         .describe('List of tool items')

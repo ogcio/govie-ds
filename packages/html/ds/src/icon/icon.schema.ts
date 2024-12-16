@@ -77,6 +77,11 @@ export const iconSchema = zod.object({
       description: 'Custom classes',
     })
     .optional(),
+  id: zod
+    .string({
+      description: 'custom icon id',
+    })
+    .optional(),
 });
 
 export type IconProps = zod.infer<typeof iconSchema>;
