@@ -21,8 +21,8 @@ export class Tooltip extends BaseComponent<TooltipProps> {
     const tooltip = wrapper.querySelector('[role="tooltip"]');
 
     if (!wrapper || !tooltip) {
-      return
-    };
+      return;
+    }
 
     if (event.type === 'mouseenter') {
       tooltip.setAttribute('aria-hidden', 'false');
