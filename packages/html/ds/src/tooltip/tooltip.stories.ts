@@ -9,7 +9,7 @@ const macro = { name: 'govieTooltip', html, path };
 const Tooltip = renderComponent<TooltipProps>(macro);
 
 const meta = {
-  title: 'Components/Tooltip',
+  title: 'Application/Tooltip',
   parameters: {
     macro,
     docs: {
