@@ -1,6 +1,7 @@
 {% macro govieTooltip(props) %}
     <span
       class="gi-tooltip-wrapper"
+      data-module="gieds-tooltip"
       {% if props.ariaDescribedBy %} aria-describedby="{{ props.ariaDescribedBy }}"{% endif %}
     >
         {% if props.content %}
