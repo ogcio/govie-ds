@@ -27,7 +27,7 @@ describe('govieTooltip', () => {
       text: 'Tooltip text',
       position: 'bottom',
     });
-  
+
     const tooltip = screen.getByText('Tooltip text');
     expect(tooltip).toBeTruthy();
     expect(tooltip.classList.contains('gi-tooltip-bottom')).toBe(true);
@@ -50,7 +50,9 @@ describe('govieTooltip', () => {
       ariaDescribedBy: 'described-by-id',
     });
 
-    const wrapper = screen.getByText('Tooltip text').closest('.gi-tooltip-wrapper');
+    const wrapper = screen
+      .getByText('Tooltip text')
+      .closest('.gi-tooltip-wrapper');
     expect(wrapper?.getAttribute('aria-describedby')).toBe('described-by-id');
   });
 
@@ -60,7 +62,9 @@ describe('govieTooltip', () => {
       position: 'top',
     });
 
-    const wrapper = screen.getByText('Tooltip text').closest('.gi-tooltip-wrapper');
+    const wrapper = screen
+      .getByText('Tooltip text')
+      .closest('.gi-tooltip-wrapper');
     expect(wrapper?.hasAttribute('aria-describedby')).toBe(false);
   });
 

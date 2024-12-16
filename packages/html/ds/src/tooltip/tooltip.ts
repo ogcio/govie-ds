@@ -10,7 +10,6 @@ export class Tooltip extends BaseComponent<TooltipProps> {
   getAllTooltips: NodeListOf<HTMLElement>;
 
   constructor(options: TooltipProps) {
-
     super(options);
     this.getAllTooltips = document.querySelectorAll('.gi-tooltip-wrapper');
 
@@ -21,7 +20,9 @@ export class Tooltip extends BaseComponent<TooltipProps> {
     const wrapper = event.currentTarget as HTMLElement;
     const tooltip = wrapper.querySelector('[role="tooltip"]');
 
-    if (!wrapper || !tooltip) return;
+    if (!wrapper || !tooltip) {
+      return
+    };
 
     if (event.type === 'mouseenter') {
       tooltip.setAttribute('aria-hidden', 'false');
@@ -32,22 +33,30 @@ export class Tooltip extends BaseComponent<TooltipProps> {
 
   initComponent() {
     for (const tooltipWrapper of this.getAllTooltips) {
-      tooltipWrapper.addEventListener('mouseenter', this.handleTooltipVisibility, false);
-      tooltipWrapper.addEventListener('mouseleave', this.handleTooltipVisibility, false);
+      tooltipWrapper.addEventListener(
+        'mouseenter',
+        this.handleTooltipVisibility,
+        false,
+      );
+      tooltipWrapper.addEventListener(
+        'mouseleave',
+        this.handleTooltipVisibility,
+        false,
+      );
     }
   }
 
   destroyComponent(): void {
     for (const tooltipWrapper of this.getAllTooltips) {
       tooltipWrapper.removeEventListener(
-        'mouseenter', 
-        this.handleTooltipVisibility, 
-        false
+        'mouseenter',
+        this.handleTooltipVisibility,
+        false,
       );
       tooltipWrapper.removeEventListener(
-        'mouseleave', 
-        this.handleTooltipVisibility, 
-        false
+        'mouseleave',
+        this.handleTooltipVisibility,
+        false,
       );
     }
   }

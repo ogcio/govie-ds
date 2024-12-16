@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './tooltip.html?raw';
 import { TooltipProps } from './tooltip.schema';
-import { useEffect } from 'react';
-import { destroyGovIe, initGovIe } from '..';
 
 const path = import.meta.url.split('/tooltip')[0];
 
@@ -49,7 +47,6 @@ const meta = {
     },
   },
   component: Tooltip,
-  
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
@@ -67,7 +64,7 @@ export const Default: Story = {
       class="gi-btn gi-btn-primary gi-btn-regular"
     >
       Default (Hover me)
-    </button>`
+    </button>`,
   },
 };
 

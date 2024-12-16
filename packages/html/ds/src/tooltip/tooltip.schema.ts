@@ -1,10 +1,9 @@
 import * as zod from 'zod';
 
 export const tooltipSchema = zod.object({
-  text: zod
-    .string({
-      description: 'The main text or content of the tooltip.',
-    }),
+  text: zod.string({
+    description: 'The main text or content of the tooltip.',
+  }),
   content: zod
     .union([
       zod.string({
@@ -15,7 +14,8 @@ export const tooltipSchema = zod.object({
     .optional(),
   position: zod
     .enum(['top', 'bottom', 'left', 'right'], {
-      description: 'Defines the position of the tooltip relative to the target element.',
+      description:
+        'Defines the position of the tooltip relative to the target element.',
     })
     .default('top'),
   id: zod
@@ -30,7 +30,8 @@ export const tooltipSchema = zod.object({
     .optional(),
   ariaDescribedBy: zod
     .string({
-      description: 'Provides an accessible aria described by property for the tooltip.',
+      description:
+        'Provides an accessible aria described by property for the tooltip.',
     })
     .optional(),
 });
