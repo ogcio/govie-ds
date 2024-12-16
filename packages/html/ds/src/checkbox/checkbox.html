@@ -7,6 +7,8 @@
     <input
       {% if props.label %}name="{{ props.label }}"{% endif %}
       {% if props.disabled %}disabled{% endif %}
+      {% if props.ariaLabel %}aria-label="{{ props.ariaLabel }}"{% endif %}
+      {% if props.checked %}checked{% endif %}
       data-element="{{ props.dataElement }}"
       id="{{ props.checkboxId }}"
       value="{{ props.value }}"

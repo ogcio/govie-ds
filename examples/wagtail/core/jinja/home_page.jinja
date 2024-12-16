@@ -26,8 +26,10 @@
 {% from 'pagination/pagination.html' import goviePagination %}
 {% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
 {% from 'table/table.html' import govieTable %}
+{% from 'checkbox/checkbox.html' import govieCheckbox %}
+{% from 'checkbox/checkboxes-group.html' import govieCheckboxesGroup %}
 
-{% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
+{% from 'vars.jinja' import checkboxesProps, comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -227,6 +229,18 @@
     "description": "This is a success toast",
     "variant": "success"
   }) }}
+
+  <h2>Checkbox</h2>
+
+  {{ govieCheckbox({
+    "checkboxId": "checkbox-id-1",
+    "value": "value",
+    "label": "Checkbox",
+  }) }}
+
+  <h2>Checkboxes Group</h2>
+
+  {{ govieCheckboxesGroup(checkboxesProps) }}
 
   <h2>Icon Button</h2>
 
