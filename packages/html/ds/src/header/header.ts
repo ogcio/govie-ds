@@ -9,28 +9,40 @@ export type HeaderOptions = BaseComponentOptions;
 const hidden = 'gi-hidden';
 const block = 'gi-block';
 
+const addClass = (element: HTMLInputElement, className: string) => {
+  if (element && element.classList) {
+    element.classList.add(className);
+  }
+};
+
+const removeClass = (element: HTMLInputElement, className: string) => {
+  if (element && element.classList) {
+    element.classList.remove(className);
+  }
+};
+
 export class Header extends BaseComponent<HeaderOptions> {
-  getElements: any
-  closeAllSlotContainers: any
-  handleSearchChange: any
-  attachEventsToSearchTrigger: any
-  attachEventsToItemActionTriggers: any
-  addNewGovieHeaderSlotElement: any
-  handleSlotItemChange: any
+  getElements: any;
+  closeAllSlotContainers: (target: HTMLInputElement) => void;
+  handleSearchChange: (event: Event) => void;
+  attachEventsToSearchTrigger: () => void;
+  attachEventsToItemActionTriggers: () => void;
+  handleSlotItemChange: (event: Event) => void;
 
   constructor(options: HeaderOptions) {
     super(options);
 
-    /* Slots */
-    this.getElements = () =>  {
+    this.getElements = () => {
       const itemSlotActions = document.querySelectorAll(
         "[id^='ItemActionTrigger-']",
       );
-      const slotContainers = document.querySelectorAll("[id^='SlotContainer-']");
+      const slotContainers = document.querySelectorAll(
+        "[id^='SlotContainer-']",
+      );
       const searchTrigger = document.querySelector(
         `#SearchTrigger`,
       ) as HTMLInputElement;
-    
+
       return {
         itemSlotActions,
         slotContainers,
@@ -40,7 +52,7 @@ export class Header extends BaseComponent<HeaderOptions> {
 
     this.closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
       const { itemSlotActions } = this.getElements();
-    
+
       if (searchTarget.checked) {
         for (const container of itemSlotActions) {
           const item = container as HTMLInputElement;
@@ -84,31 +96,18 @@ export class Header extends BaseComponent<HeaderOptions> {
           `#SlotContainer-${index}`,
         ) as HTMLInputElement;
 
-        const addClass = (element: any, className: string) => {
-          if (element && element.classList) {
-            element.classList.add(className);
-          }
-        };
-
-        const removeClass = (element: any, className: string) => {
-          if (element && element.classList) {
-            element.classList.remove(className);
-          }
-        };
-  
         if (!fromFilteredItems || fromSearchTrigger) {
           for (const container of slotContainers) {
             removeClass(container, block);
             addClass(container, hidden);
           }
         }
-  
+
         if (currentTrigger.checked && !fromFilteredItems) {
           addClass(icon, hidden);
-          console.log(icon, hidden, `#ItemIconActionTrigger-${index}`)
           addClass(closeIcon, block);
           removeClass(closeIcon, hidden);
-    
+
           removeClass(slot, hidden);
           addClass(slot, block);
         } else {
@@ -118,13 +117,13 @@ export class Header extends BaseComponent<HeaderOptions> {
           removeClass(icon, hidden);
           return;
         }
-  
+
         const filteredItems = [...itemSlotActions].filter(
           (element) =>
             (element as HTMLInputElement).checked &&
             element.id !== currentTrigger.id,
         );
-  
+
         for (const element of filteredItems) {
           (element as HTMLInputElement).checked = false;
           element.dispatchEvent(
@@ -147,7 +146,7 @@ export class Header extends BaseComponent<HeaderOptions> {
 
     this.attachEventsToSearchTrigger = () => {
       const searchTrigger = document.querySelector(`#SearchTrigger`);
-    
+
       if (searchTrigger) {
         searchTrigger.addEventListener('change', this.handleSearchChange);
       }
@@ -162,49 +161,15 @@ export class Header extends BaseComponent<HeaderOptions> {
         }
       }
     };
-
-    this.addNewGovieHeaderSlotElement = (
-      index: number,
-      slotHtml : any,
-    ) => {
-      const parent = document.querySelector('#GovieHeader');
-
-      if (parent) {
-        const childNode = document.createElement('div');
-        childNode.id = `SlotContainer-${index}`;
-        childNode.dataset.index = index.toString();
-        childNode.className =
-          'gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800';
-
-        parent.appendChild(childNode);
-
-        if (typeof slotHtml === 'string') {
-          childNode.innerHTML = slotHtml;
-        }
-
-        /*return () => {
-          queueMicrotask(() => {
-            if (childNode.parentNode) {
-              childNode.parentNode.removeChild(childNode);
-            }
-          });
-        };*/
-      }
-
-      return null;
-    };
-
-
-    /* Slots */
   }
 
   initComponent() {
-    this.attachEventsToItemActionTriggers()
+    this.attachEventsToItemActionTriggers();
 
-    const {searchTrigger} = this.getElements()
+    const { searchTrigger } = this.getElements();
 
-    if(searchTrigger){
-      this.attachEventsToSearchTrigger()
+    if (searchTrigger) {
+      this.attachEventsToSearchTrigger();
     }
   }
 
@@ -217,7 +182,7 @@ export class Header extends BaseComponent<HeaderOptions> {
     for (const container of itemSlotActions) {
       container?.removeEventListener('change', this.handleSlotItemChange);
     }
-  }  
+  }
 }
 
 export const initHeader = initialiseModule({

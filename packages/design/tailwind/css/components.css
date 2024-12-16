@@ -459,6 +459,10 @@ input[type='text'] {
   @apply hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
 }
 
+.gi-header-slot-container {
+  @apply gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800;
+}
+
 /* End Header */
 
 /* Tabs */

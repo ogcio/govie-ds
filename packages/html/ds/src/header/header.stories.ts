@@ -84,7 +84,7 @@ const slotExample2 = () => `
       </button>
     </div>
   </form>
-`
+`;
 
 const slotExample3 = () => `
   <select
@@ -102,87 +102,6 @@ const slotExample3 = () => `
 `;
 
 export const Default: Story = {
-  argTypes: {
-    title: {
-      control: 'text',
-      description: 'The title of the Header',
-      table: {
-        category: 'Header',
-      },
-    },
-    logo: {
-      control: 'object',
-      description: 'The url and image for the logo',
-      table: {
-        category: 'Header',
-      },
-    },
-    tools: {
-      control: 'object',
-      description: 'Actionable items such as Search, Menu and additional CTA',
-      table: {
-        category: 'Header',
-        type: {
-          summary: '{search?: {}; menu?: {}; items: {}[]}',
-        },
-      },
-    },
-    navLinks: {
-      description: 'A list of navigation links',
-      table: {
-        category: 'Header',
-      },
-    },
-    languages: {
-      description: 'A list of secondary navigation links',
-      table: {
-        category: 'Header',
-      },
-    },
-  },
-  args: {
-    fullWidth: false,
-    logo: {
-      href: '/link',
-    },
-    tools: {
-      search: {
-        action: '/search_page',
-        label: 'Search',
-        icon: 'search',
-      },
-      menu: {
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-      ],
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
-  },
-};
-
-
-export const WithSlots: Story = {
   args: {
     logo: {
       href: '/link',

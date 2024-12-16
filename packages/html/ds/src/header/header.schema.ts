@@ -1,5 +1,18 @@
 import * as zod from 'zod';
 
+const ariaAttributes = zod.object({
+  label: zod
+    .string({
+      description: 'Aria label for the element',
+    })
+    .optional(),
+  describedBy: zod
+    .string({
+      description: 'ID of the element that describes this element',
+    })
+    .optional(),
+});
+
 export const headerSchema = zod.object({
   title: zod
     .string({
@@ -29,6 +42,7 @@ export const headerSchema = zod.object({
           description: 'The link applied to the logo',
         })
         .optional(),
+      aria: ariaAttributes.optional(),
     })
     .describe('Application logo')
     .optional(),
@@ -51,6 +65,7 @@ export const headerSchema = zod.object({
               description: 'The search icon, default is icon "search"',
             })
             .optional(),
+          aria: ariaAttributes.optional(),
         })
         .describe('Search tool options')
         .optional(),
@@ -66,6 +81,7 @@ export const headerSchema = zod.object({
               description: 'The menu icon, default is icon "icon-hamburger"',
             })
             .optional(),
+          aria: ariaAttributes.optional(),
         })
         .describe('Menu tool options')
         .optional(),
@@ -87,16 +103,17 @@ export const headerSchema = zod.object({
             required_error: 'The url is required',
           }),
           slot: zod
-          .any({
-            description: 'The slot content for the item, optional React node',
-          })
-          .optional(),
-        keepOnMobile: zod
-          .boolean({
-            description:
-              'Flag to determine if the item should be shown on mobile, default false',
-          })
-          .optional()
+            .any({
+              description: 'The slot content for the item, optional React node',
+            })
+            .optional(),
+          keepOnMobile: zod
+            .boolean({
+              description:
+                'Flag to determine if the item should be shown on mobile, default false',
+            })
+            .optional(),
+          aria: ariaAttributes.optional(),
         })
         .array()
         .describe('List of tool items')
@@ -114,6 +131,7 @@ export const headerSchema = zod.object({
         description: 'The url (href) of the link',
         required_error: 'The url is required',
       }),
+      aria: ariaAttributes.optional(),
     })
     .array()
     .describe('List of the navigation links')
@@ -128,6 +146,7 @@ export const headerSchema = zod.object({
         description: 'The url (href) of the language page',
         required_error: 'The url is required',
       }),
+      aria: ariaAttributes.optional(),
     })
     .array()
     .describe('List of secondary navigation links')

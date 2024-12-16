@@ -1,11 +1,7 @@
 {% from 'icon/icon.html' import govieIcon %}
 
-
 {% macro govieSlotItemAction(item, index) %}
-  <label
-    for="ItemActionTrigger-{{ index }}"
-    class="gi-header-tool-item"
-  >
+  <label for="ItemActionTrigger-{{ index }}" class="gi-header-tool-item">
     <input
       data-testid="ItemActionTrigger-{{ index }}"
       class="gi-block gi-w-0 gi-absolute gi-h-0"
@@ -30,4 +26,3 @@
     {{ slot | safe }}
   </div>
 {% endmacro %}
-
