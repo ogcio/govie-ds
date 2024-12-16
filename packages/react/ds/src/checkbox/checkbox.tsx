@@ -8,7 +8,7 @@ export enum CheckboxSizeEnum {
 }
 
 type CheckboxType = {
-  checkboxId: string;
+  id: string;
   value: string;
   size?: CheckboxSizeEnum;
   label?: string;
@@ -20,7 +20,7 @@ type CheckboxType = {
 };
 
 export const Checkbox = ({
-  checkboxId,
+  id,
   value,
   onChange = () => null,
   size = CheckboxSizeEnum.Medium,
@@ -30,20 +30,21 @@ export const Checkbox = ({
   disabled,
   ariaLabel,
 }: CheckboxType) => {
+  const CheckboxId = id ?? value;
   return (
     <div className="gi-checkbox-container">
       <input
         name={label}
         onChange={onChange}
-        id={checkboxId}
+        id={CheckboxId}
         value={value}
         className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
         checked={checked}
-        aria-label={ariaLabel}
+        aria-label={ariaLabel || CheckboxId}
         disabled={disabled}
         type="checkbox"
       />
-      <label htmlFor={checkboxId} className="gi-checkbox-label">
+      <label htmlFor={CheckboxId} className="gi-checkbox-label">
         {label}
         {hint && <HintText text={hint} />}
       </label>

@@ -109,7 +109,7 @@ export default function Home() {
           />
           <br />
           <h2>Checkbox</h2>
-          <Checkbox checkboxId="checkbox-id" value="value-1" label="Checkbox" />
+          <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

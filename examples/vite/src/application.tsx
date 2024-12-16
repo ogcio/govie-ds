@@ -213,7 +213,7 @@ export function App() {
         />
         <br />
         <h2>Checkbox</h2>
-        <Checkbox checkboxId="checkbox-id" value="value-1" label="Checkbox" />
+        <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
         <RadiosGroup
           title={{
             value: 'Where do you live?',

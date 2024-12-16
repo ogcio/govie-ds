@@ -88,7 +88,7 @@ export const CheckboxesGroup = ({
             <Checkbox
               key={`checkbox-${index}-${checkbox.value}`}
               size={size}
-              checkboxId={`${groupId}-${index}`}
+              id={`${groupId}-${index}`}
               hint={checkbox.hint}
               value={checkbox.value}
               label={checkbox.label}
@@ -107,7 +107,7 @@ export const CheckboxesGroup = ({
               </p>
               <Checkbox
                 size={size}
-                checkboxId={`${groupId}-${items.length}`}
+                id={`${groupId}-${items.length}`}
                 hint={noneOption.hint}
                 value={noneOption.value}
                 label={noneOption.label}

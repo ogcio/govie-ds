@@ -131,7 +131,7 @@ export const Default: Story = {
             <TableData>
               <Checkbox
                 ariaLabel={`checkbox-id-${row.id}`}
-                checkboxId={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
               />
             </TableData>
@@ -247,7 +247,7 @@ export const TableWithFooter: Story = {
             <TableData>
               <Checkbox
                 ariaLabel={`checkbox-id-${row.id}`}
-                checkboxId={`project-select-${row.id}`}
+                id={`project-select-${row.id}`}
                 value={row.id.toString()}
               />
             </TableData>

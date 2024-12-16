@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    checkboxId: {
+    id: {
       control: 'text',
       type: { name: 'string', required: true },
       description: 'the unique value for the checkbox component',
@@ -63,7 +63,7 @@ export const Default: Story = {
     },
   },
   args: {
-    checkboxId: 'checkbox-id-1',
+    id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -71,7 +71,7 @@ export const Default: Story = {
 
 export const withHint: Story = {
   args: {
-    checkboxId: 'checkbox-id-1',
+    id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
     hint: 'This is a hint',
@@ -80,7 +80,7 @@ export const withHint: Story = {
 
 export const withDefaultChecked: Story = {
   args: {
-    checkboxId: 'checkbox-id-1',
+    id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
     checked: true,
@@ -89,7 +89,7 @@ export const withDefaultChecked: Story = {
 
 export const withoutLabel: Story = {
   args: {
-    checkboxId: 'checkbox-id-1',
+    id: 'checkbox-id-1',
     value: 'value-1',
   },
 };

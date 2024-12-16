@@ -126,7 +126,7 @@ export const DropdownItem = ({
               <Checkbox
                 key={`${index}_${checkbox.label}`}
                 onChange={handleCheckbox}
-                checkboxId={checkbox.label}
+                id={checkbox.label}
                 size={CheckboxSizeEnum.Small}
                 label={checkbox.label}
                 value={checkbox.value}
