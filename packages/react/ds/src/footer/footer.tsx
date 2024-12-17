@@ -1,4 +1,4 @@
-import GovieLogo from '../assets/logos/logo-harp-gov.js';
+import LogoGovOfIreland from '../assets/logos/gov-of-ireland.js';
 import { Container } from '../container/container.js';
 import { SectionBreak } from '../section-break/section-break.js';
 
@@ -53,7 +53,7 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
             </ul>
           )}
           <div className="logo-container">
-            <GovieLogo />
+            <LogoGovOfIreland />
           </div>
         </div>
       </Container>

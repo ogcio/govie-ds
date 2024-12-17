@@ -376,13 +376,6 @@ input[type='text'] {
   @apply gi-flex-auto lg:gi-flex-none gi-focus-state-outline gi-rounded-sm gi-focus-within-state-outline;
 }
 
-.gi-header-logo-lg {
-  @apply lg:gi-block gi-hidden;
-}
-.gi-header-logo-sm {
-  @apply lg:gi-hidden gi-block;
-}
-
 .gi-header-title {
   @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow gi-hidden lg:gi-block;
 }
