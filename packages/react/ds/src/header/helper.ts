@@ -27,7 +27,7 @@ const closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
       item.dispatchEvent(
         new CustomEvent('change', {
           detail: {
-            forceClose: true,
+            fromSearchTrigger: true,
           },
         }),
       );
@@ -43,26 +43,10 @@ export const attachEventsToItemActionTriggers = () => {
   const { itemSlotActions, slotContainers, searchTrigger } = getElements();
 
   if (itemSlotActions.length > 0) {
-    const handleToggleSlot = (index: string, forceClose: boolean) => {
-      for (const container of slotContainers) {
-        const containerIndex =
-          (container as HTMLInputElement).dataset.index || '';
-
-        if (containerIndex === index) {
-          if (container.classList.contains(hidden) && !forceClose) {
-            container.classList.remove(hidden);
-            container.classList.add(block);
-          } else {
-            container.classList.remove(block);
-            container.classList.add(hidden);
-          }
-        }
-      }
-    };
-
     const toggleIcons = (
       currentTrigger: HTMLInputElement,
-      forceClose: boolean,
+      fromFilteredItems: boolean,
+      fromSearchTrigger: boolean,
     ) => {
       const index = currentTrigger.dataset.index || '';
       const icon = document.querySelector(
@@ -72,13 +56,24 @@ export const attachEventsToItemActionTriggers = () => {
         `#ItemCloseTrigger-${index}`,
       ) as HTMLInputElement;
       const { itemSlotActions } = getElements();
+      const slot = document.querySelector(
+        `#SlotContainer-${index}`,
+      ) as HTMLInputElement;
 
-      handleToggleSlot(index, forceClose);
+      if (!fromFilteredItems || fromSearchTrigger) {
+        for (const container of slotContainers) {
+          container.classList.remove(block);
+          container.classList.add(hidden);
+        }
+      }
 
-      if (currentTrigger.checked && !forceClose) {
+      if (currentTrigger.checked && !fromFilteredItems) {
         icon.classList.add(hidden);
         closeIcon.classList.add(block);
         closeIcon.classList.remove(hidden);
+
+        slot.classList.remove(hidden);
+        slot.classList.add(block);
       } else {
         closeIcon.classList.add(hidden);
         closeIcon.classList.remove(block);
@@ -98,7 +93,7 @@ export const attachEventsToItemActionTriggers = () => {
         element.dispatchEvent(
           new CustomEvent('change', {
             detail: {
-              forceClose: true,
+              fromFilteredItems: true,
             },
           }),
         );
@@ -107,10 +102,11 @@ export const attachEventsToItemActionTriggers = () => {
 
     const handleChange = (event: Event) => {
       const customEvent = event as CustomEvent;
-      const forceClose = customEvent?.detail?.forceClose;
+      const fromFilteredItems = customEvent?.detail?.fromFilteredItems;
+      const fromSearchTrigger = customEvent?.detail?.fromSearchTrigger;
       const target = event.target as HTMLInputElement;
 
-      toggleIcons(target, forceClose);
+      toggleIcons(target, fromFilteredItems, fromSearchTrigger);
 
       if (searchTrigger.checked && target?.checked) {
         searchTrigger.checked = false;

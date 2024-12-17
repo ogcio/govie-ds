@@ -93,7 +93,8 @@ export function Header({
   const showMobileMenu =
     navLinks ||
     tools?.items?.some((item) => item.slot && item.keepOnMobile) ||
-    !!tools?.search;
+    !!tools?.search ||
+    languages?.length;
 
   useEffect(() => {
     attachEventsToItemActionTriggers();
@@ -214,6 +215,7 @@ export function Header({
                   className="gi-block gi-w-0 gi-absolute gi-h-0"
                   id="MobileMenuTrigger"
                   type="checkbox"
+                  data-testid="header-mobile-menu"
                 />
                 {tools?.menu?.label && (
                   <span className="label">{tools.menu.label}</span>
