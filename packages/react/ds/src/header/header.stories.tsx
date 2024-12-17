@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect, userEvent } from '@storybook/test';
 import { Container } from '../container/container.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import HeaderSearch from './components/header-search.js';
 import { Header } from './header.js';
+import '../test-utils/storybook/custom-matchers.js';
 
 const meta = {
   title: 'layout/Header',
@@ -571,5 +573,103 @@ export const ShowMobileMenuForLanguages: Story = {
         label: 'English',
       },
     ],
+  },
+};
+
+export const withExternalLinks: Story = {
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    tools: {
+      items: [
+        { href: '#', label: 'Internal Tool' },
+        { href: '#', label: 'External Tool', external: true },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'Internal Nav',
+      },
+      {
+        href: '#',
+        label: 'External Nav',
+        external: true,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await expect(canvas.getByTestId('logo-link')).toBeExternalLink();
+
+    await expect(
+      canvas.getByRole('link', { name: 'Internal Nav' }),
+    ).not.toBeExternalLink();
+    await expect(
+      canvas.getByRole('link', { name: 'External Nav' }),
+    ).toBeExternalLink();
+
+    await expect(
+      canvas.getByRole('link', { name: 'External Tool' }),
+    ).toBeExternalLink();
+    await expect(
+      canvas.getByRole('link', { name: 'Internal Tool' }),
+    ).not.toBeExternalLink();
+  },
+};
+
+export const mobileWithExternalLinks: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    tools: {
+      items: [
+        { href: '#', label: 'Internal Tool' },
+        { href: '#', label: 'External Tool', external: true },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'Internal Nav',
+      },
+      {
+        href: '#',
+        label: 'External Nav',
+        external: true,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await expect(canvas.getByTestId('logo-link')).toBeExternalLink();
+
+    await userEvent.click(canvas.getByTestId('header-mobile-menu'));
+
+    await expect(
+      canvas.getByRole('link', { name: 'Internal Nav' }),
+    ).not.toBeExternalLink();
+    await expect(
+      canvas.getByRole('link', { name: 'External Nav' }),
+    ).toBeExternalLink();
+
+    await expect(
+      canvas.getByRole('link', { name: 'External Tool' }),
+    ).toBeExternalLink();
+    await expect(
+      canvas.getByRole('link', { name: 'Internal Tool' }),
+    ).not.toBeExternalLink();
   },
 };
