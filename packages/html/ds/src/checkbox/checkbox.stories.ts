@@ -1,16 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './checkbox.js';
+import { renderComponent } from '../storybook/storybook';
+import html from './checkbox.html?raw';
+import type { CheckboxProps } from './checkboxes.schema';
+
+// Name of the folder the macro resides
+const path = import.meta.url.split('/checkbox')[0];
+
+const macro = { name: 'govieCheckbox', html, path };
+
+const Checkbox = renderComponent<CheckboxProps>(macro);
 
 const meta = {
-  title: 'Form/Checkbox/Checkbox',
+  component: Checkbox,
+  title: 'form/Checkbox/Checkbox',
   parameters: {
+    macro,
     docs: {
       description: {
-        component: 'Checkbox component',
+        component: 'Checkboxes component',
       },
     },
   },
-  component: Checkbox,
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -18,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    id: {
+    checkboxId: {
       control: 'text',
       type: { name: 'string', required: true },
       description: 'the unique value for the checkbox component',
@@ -44,26 +54,13 @@ export const Default: Story = {
       description:
         'Additional text to inform the user about the Checkbox component',
     },
-    onChange: {
-      control: 'object',
-      type: 'function',
-      description: 'Callback fired when the checkbox component is selected.',
-    },
-    checked: {
-      control: 'boolean',
-      description: 'if true the component is checked',
-    },
     disabled: {
       control: 'boolean',
       description: 'if true the component is disabled',
     },
-    ariaLabel: {
-      control: 'text',
-      description: 'the default accessible name of the element',
-    },
   },
   args: {
-    id: 'checkbox-id-1',
+    checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
   },
@@ -71,7 +68,7 @@ export const Default: Story = {
 
 export const withHint: Story = {
   args: {
-    id: 'checkbox-id-1',
+    checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
     hint: 'This is a hint',
@@ -80,7 +77,7 @@ export const withHint: Story = {
 
 export const withDefaultChecked: Story = {
   args: {
-    id: 'checkbox-id-1',
+    checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
     checked: true,
@@ -89,7 +86,7 @@ export const withDefaultChecked: Story = {
 
 export const withoutLabel: Story = {
   args: {
-    id: 'checkbox-id-1',
+    checkboxId: 'checkbox-id-1',
     value: 'value-1',
   },
 };

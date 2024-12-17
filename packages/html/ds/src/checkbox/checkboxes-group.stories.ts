@@ -13,7 +13,7 @@ const Checkboxes = renderComponent<CheckboxesProps>(macro);
 
 const meta = {
   component: Checkboxes,
-  title: 'form/Checkboxes',
+  title: 'form/Checkbox/CheckboxesGroup',
   parameters: {
     macro,
     docs: {

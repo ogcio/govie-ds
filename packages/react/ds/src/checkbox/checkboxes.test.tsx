@@ -6,7 +6,7 @@ import {
 } from './checkboxes-group.js';
 
 const standardProps: CheckboxesGroupType = {
-  fieldId: 'UniqueID',
+  groupId: 'UniqueID',
   items: [
     {
       label: 'Checkbox 1',
@@ -143,7 +143,7 @@ describe('checkboxes', () => {
 
   it('should pass axe tests', async () => {
     const screen = renderCheckboxes({
-      fieldId: 'UniqueID',
+      groupId: 'UniqueID',
       items: [
         {
           label: 'Checkbox 1',
