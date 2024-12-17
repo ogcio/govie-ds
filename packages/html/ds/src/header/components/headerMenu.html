@@ -61,7 +61,7 @@
             {% if item.slot %}
               {{ govieMenuItemAccordion(loop.index0, item.label, item.slot) }}
             {% else %}
-              {{ govieMenuListItem(item.href, item.label, false) }}
+              {{ govieMenuListItem(item.href, item.label, true) }}
             {% endif %}
           </li>
         {% endif %}

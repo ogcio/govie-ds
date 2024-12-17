@@ -5,6 +5,15 @@
 {% from "header/components/headerMenu.html" import headerMenu %}
 {% from "header/components/headerSlot.html" import govieSlotItemAction, govieSlotContainer %}
 
+{% macro showMobileMenu(navLinks, tools, languages) %}
+  {% set hasNavLinks = navLinks | length > 0 %}
+  {% set hasMobileSlots = tools.items | selectattr("slot") | selectattr("keepOnMobile") | list | length > 0 %}
+  {% set hasSearch = tools.search is defined %}
+  {% set hasLanguages = languages | length > 0 %}
+
+  {{ hasNavLinks or hasMobileSlots or hasSearch or hasLanguages }}
+{% endmacro %}
+
 {% macro govieHeader(props) %}
   {% set headerClassNames = "gi-header" %}
   {% set languageBarClassNames = "gi-header-language-bar" %}
@@ -146,10 +155,10 @@
             </div>
           {% endfor %}
 
-          {% if props.tools and props.tools.menu %}
+          {% if showMobileMenu(props.navLinks, props.tools, props.languages) %}
             <label
               for="MobileMenuTrigger"
-              class="{{ toolItemClassNames }} sm:gi-hidden"
+              class="{{ toolItemClassNames }} lg:gi-hidden"
             >
               <input
                 id="MobileMenuTrigger"
