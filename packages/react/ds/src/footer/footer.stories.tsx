@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from '@storybook/test';
 import { Footer } from './footer.js';
+import '../test-utils/storybook/custom-matchers.js';
 
 const meta = {
   title: 'layout/Footer',
@@ -149,6 +151,7 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
       {
         href: '#',
         label: 'Link 3',
+        external: true,
       },
     ],
     secondaryNavLinks: [
@@ -166,6 +169,7 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
           {
             href: '#',
             label: 'Link 3',
+            external: true,
           },
         ],
       },
@@ -183,9 +187,34 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
           {
             href: '#',
             label: 'Link 6',
+            external: true,
           },
         ],
       },
     ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await expect(
+      canvas.getByTestId('main-link-0').firstChild,
+    ).not.toBeExternalLink();
+    await expect(
+      canvas.getByTestId('main-link-2').firstChild,
+    ).toBeExternalLink();
+
+    await expect(
+      canvas.getByTestId('secondary-0-0').firstChild,
+    ).not.toBeExternalLink();
+    await expect(
+      canvas.getByTestId('secondary-0-2').firstChild,
+    ).toBeExternalLink();
+
+    await expect(
+      canvas.getByTestId('secondary-1-0').firstChild,
+    ).not.toBeExternalLink();
+    await expect(
+      canvas.getByTestId('secondary-1-2').firstChild,
+    ).toBeExternalLink();
   },
 };
