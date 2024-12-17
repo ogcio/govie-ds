@@ -191,4 +191,4 @@ function LogoGovOfIreland() {
   );
 }
 
-export default Logo;
+export default LogoGovOfIreland;
