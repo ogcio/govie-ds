@@ -52,15 +52,17 @@
             })
           }}
         {% endif %}
-        {% for checkbox in props.items %}
+        {% for checkbox in props["items"] %}
           {{
             govieCheckbox({
               "label": checkbox.label,
+              "ariaLabel": checkbox.ariaLabel,
+              "checked": checkbox.checked,
               "value": checkbox.value,
               "hint": checkbox.hint,
-              "checkboxId": props.fieldId + "-" + loop.index0,
+              "checkboxId": props.fieldId + "-" + loop.index0 | string,
               "size": props.size,
-              "dataElement": "checkbox" + loop.index0,
+              "dataElement": "checkbox" + loop.index0 | string,
               "disabled": checkbox.disabled
             })
           }}
