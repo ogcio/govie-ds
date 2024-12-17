@@ -9,13 +9,19 @@ export type HeaderOptions = BaseComponentOptions;
 const hidden = 'gi-hidden';
 const block = 'gi-block';
 
-const addClass = (element: HTMLInputElement, className: string) => {
+const addClass = (
+  element: HTMLInputElement | HTMLElement | Element,
+  className: string,
+) => {
   if (element && element.classList) {
     element.classList.add(className);
   }
 };
 
-const removeClass = (element: HTMLInputElement, className: string) => {
+const removeClass = (
+  element: HTMLInputElement | HTMLElement | Element,
+  className: string,
+) => {
   if (element && element.classList) {
     element.classList.remove(className);
   }
@@ -26,8 +32,10 @@ export class Header extends BaseComponent<HeaderOptions> {
   closeAllSlotContainers: (target: HTMLInputElement) => void;
   handleSearchChange: (event: Event) => void;
   attachEventsToSearchTrigger: () => void;
+  attachEventsToAccordion: () => void;
   attachEventsToItemActionTriggers: () => void;
   handleSlotItemChange: (event: Event) => void;
+  handleOnAAccordionItemClick: (element: HTMLElement) => (event: Event) => void;
 
   constructor(options: HeaderOptions) {
     super(options);
@@ -43,10 +51,15 @@ export class Header extends BaseComponent<HeaderOptions> {
         `#SearchTrigger`,
       ) as HTMLInputElement;
 
+      const accordionContainers = document.querySelectorAll(
+        "[id^='Accordion-item-']",
+      );
+
       return {
         itemSlotActions,
         slotContainers,
         searchTrigger,
+        accordionContainers,
       };
     };
 
@@ -144,6 +157,40 @@ export class Header extends BaseComponent<HeaderOptions> {
       }
     };
 
+    this.handleOnAAccordionItemClick =
+      (accordionItemContainer: HTMLElement) => (event: Event) => {
+        const slotContainer = accordionItemContainer.querySelector(
+          '.gi-accordion-item-slot',
+        ) as HTMLElement;
+
+        event.preventDefault();
+
+        if (slotContainer) {
+          const isOpen = slotContainer.classList.contains(block);
+
+          if (isOpen) {
+            removeClass(slotContainer, block);
+            addClass(slotContainer, hidden);
+          } else {
+            addClass(slotContainer, block);
+            removeClass(slotContainer, hidden);
+          }
+
+          accordionItemContainer.dataset.open = (!isOpen).toString();
+
+          const toggleIcon = accordionItemContainer.querySelector(
+            '.gi-accordion-item-icon',
+          );
+          if (toggleIcon) {
+            if (isOpen) {
+              removeClass(toggleIcon, 'gi-rotate-90');
+            } else {
+              addClass(toggleIcon, 'gi-rotate-90');
+            }
+          }
+        }
+      };
+
     this.attachEventsToSearchTrigger = () => {
       const searchTrigger = document.querySelector(`#SearchTrigger`);
 
@@ -161,10 +208,30 @@ export class Header extends BaseComponent<HeaderOptions> {
         }
       }
     };
+
+    this.attachEventsToAccordion = () => {
+      const { accordionContainers } = this.getElements();
+
+      for (const accordionItemContainer of accordionContainers) {
+        const toggleLink = accordionItemContainer.querySelector(
+          '.gi-header-accordion-item-toggle',
+        );
+
+        if (toggleLink) {
+          toggleLink.addEventListener(
+            'click',
+            this.handleOnAAccordionItemClick(
+              accordionItemContainer as HTMLElement,
+            ),
+          );
+        }
+      }
+    };
   }
 
   initComponent() {
     this.attachEventsToItemActionTriggers();
+    this.attachEventsToAccordion();
 
     const { searchTrigger } = this.getElements();
 
