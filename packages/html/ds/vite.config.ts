@@ -6,9 +6,9 @@ import { processMacrosPlugin } from './scripts/process-macros-plugin';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    react(),
     dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
     processMacrosPlugin(),
-    react(),
   ],
   build: {
     copyPublicDir: false,

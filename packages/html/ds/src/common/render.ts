@@ -1,4 +1,3 @@
-import { renderMacro } from '@govie-ds/macro';
 import {
   ByRoleMatcher,
   ByRoleOptions,
@@ -16,6 +15,7 @@ import {
 import axe from 'axe-core';
 import { initGovIe } from '..';
 import { addMacroValidation } from './validation';
+import { renderMacro } from '../macro';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations

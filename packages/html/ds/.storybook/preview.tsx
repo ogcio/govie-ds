@@ -1,10 +1,10 @@
-import { renderMacro } from '@govie-ds/macro';
 import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
+import { renderMacro } from '../src/macro';
 import { destroyGovIe, initGovIe } from '@govie-ds/html';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
@@ -37,7 +37,7 @@ const ModalDecorator = (_, parameters) => {
   };
 };
 
-export const decorators = [
+const decorators = [
   (Story, context) => {
     useEffect(() => {
       destroyGovIe();
@@ -45,23 +45,24 @@ export const decorators = [
     }, []);
     const { args, parameters } = context;
     const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-    if (isProd && parameters.macro) {
-      parameters.macro.path = './macros';
-    }
+    // if (isProd && parameters.macro) {
+    // parameters.macro.path = './';
+    // }
 
-    const storyResult = Story(context);
+    // const storyResult = Story(context);
+    // if (typeof storyResult === 'string') {
+    // return (
+    //   <div
+    //     style={ModalDecorator(args, parameters)}
+    //     className={Decorator(args, parameters)}
+    //     dangerouslySetInnerHTML={{ __html: storyResult }}
+    //   />
+    // );
+    // }
 
-    if (typeof storyResult === 'string') {
-      return (
-        <div
-          style={ModalDecorator(args, parameters)}
-          className={Decorator(args, parameters)}
-          dangerouslySetInnerHTML={{ __html: storyResult }}
-        />
-      );
-    }
-
+    console.log('renderMacro decorator');
     const renderedMacro = renderMacro(parameters.macro)(args);
+    console.log('parameters', parameters);
     return (
       <div
         style={ModalDecorator(args, parameters)}
@@ -128,6 +129,7 @@ const preview: Preview = {
       },
     },
   },
+  decorators,
   tags: ['autodocs'],
 };
 
