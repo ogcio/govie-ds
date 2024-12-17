@@ -32,22 +32,29 @@ export const Checkbox = ({
 }: CheckboxType) => {
   const CheckboxId = id ?? value;
   return (
-    <div className="gi-checkbox-container">
-      <input
-        name={label}
-        onChange={onChange}
-        id={CheckboxId}
-        value={value}
-        className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
-        checked={checked}
-        aria-label={ariaLabel || CheckboxId}
-        disabled={disabled}
-        type="checkbox"
-      />
-      <label htmlFor={CheckboxId} className="gi-checkbox-label">
-        {label}
-        {hint && <HintText text={hint} />}
-      </label>
-    </div>
+    <>
+      <div className="gi-checkbox-container">
+        <input
+          name={label}
+          onChange={onChange}
+          id={CheckboxId}
+          value={value}
+          className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
+          checked={checked}
+          aria-label={ariaLabel || CheckboxId}
+          disabled={disabled}
+          type="checkbox"
+        />
+        <label htmlFor={CheckboxId} className="gi-checkbox-label">
+          {label}
+        </label>
+      </div>
+      {hint && (
+        <div className="gi-checkbox-hint-container">
+          <div className={getSizeClass(size)} />
+          <HintText text={hint} />
+        </div>
+      )}
+    </>
   );
 };
