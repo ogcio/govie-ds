@@ -50,8 +50,6 @@
                   data-testid="language-link-desktop-{{ loop.index0 }}"
                   class="{{ languageItemClassNames }}"
                   href="{{ link.href }}"
-                  aria-label="{{ link.aria.label if link.aria and link.aria.label else '' }}"
-                  aria-describedby="{{ link.aria.describedBy if link.aria and link.aria.describedBy else '' }}"
                 >
                   {{ link.label }}
                 </a>
@@ -66,11 +64,7 @@
       <div class="{{ menuContainerClassNames }}">
         <div class="gi-header-logo">
           {% if props.logo and props.logo.href %}
-            <a
-              href="{{ props.logo.href }}"
-              aria-label="{{ props.logo.aria.label if props.logo.aria and props.logo.aria.label else 'Go to the home page' }}"
-              aria-describedby="{{ props.logo.aria.describedBy if props.logo.aria and props.logo.aria.describedBy else '' }}"
-            >
+            <a href="{{ props.logo.href }}">
               <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
               <span class="{{ logoSmallClassNames }}"
                 >{{ govieLogoSmall() }}</span
@@ -97,8 +91,6 @@
               <a
                 href="{{ link.href }}"
                 data-testid="nav-link-desktop-{{ loop.index0 }}"
-                aria-label="{{ link.aria.label if link.aria and link.aria.label else '' }}"
-                aria-describedby="{{ link.aria.describedBy if link.aria and link.aria.describedBy else '' }}"
               >
                 {{ link.label }}
               </a>
@@ -118,8 +110,6 @@
                 type="checkbox"
                 class="gi-block gi-w-0 gi-absolute gi-h-0"
                 data-testid="SearchTrigger"
-                aria-label="{{ props.tools.search.aria.label if props.tools.search.aria and props.tools.search.aria.label else '' }}"
-                aria-describedby="{{ props.tools.search.aria.describedBy if props.tools.search.aria and props.tools.search.aria.describedBy else '' }}"
               />
               {% if props.tools.search.label %}
                 <span class="label">{{ props.tools.search.label }}</span>
@@ -138,12 +128,7 @@
               {% if toolItem.slot %}
                 {{ govieSlotItemAction(toolItem, loop.index0) }}
               {% else %}
-                <a
-                  href="{{ toolItem.href }}"
-                  class="{{ toolItemClassNames }}"
-                  aria-label="{{ toolItem.aria.label if toolItem.aria and toolItem.aria.label else toolItem.label }}"
-                  aria-describedby="{{ toolItem.aria.describedBy if toolItem.aria and toolItem.aria.describedBy else '' }}"
-                >
+                <a href="{{ toolItem.href }}" class="{{ toolItemClassNames }}">
                   {% if toolItem.label %}
                     <span class="label">{{ toolItem.label }}</span>
                   {% endif %}
@@ -164,8 +149,6 @@
                 id="MobileMenuTrigger"
                 type="checkbox"
                 class="gi-block gi-w-0 gi-absolute gi-h-0"
-                aria-label="{{ props.tools.menu.aria.label if props.tools.menu.aria and props.tools.menu.aria.label else '' }}"
-                aria-expanded="{{ props.tools.menu.aria.expanded if props.tools.menu.aria and props.tools.menu.aria.expanded else '' }}"
               />
               {% if props.tools.menu.label %}
                 <span class="label">{{ props.tools.menu.label }}</span>
