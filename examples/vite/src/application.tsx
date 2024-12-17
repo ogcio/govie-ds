@@ -31,6 +31,8 @@ import {
   Alert,
   Toast,
   Pagination,
+  Checkbox,
+  CheckboxesGroup,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
@@ -197,6 +199,21 @@ export function App() {
             />
           </TabPanel>
         </Tabs>
+        <h2>Checkboxes Group</h2>
+        <CheckboxesGroup
+          groupId="field-Id"
+          items={[
+            { label: 'Irish', value: 'irish' },
+            { label: 'British', value: 'british' },
+            {
+              label: 'Citizen of another country',
+              value: 'citizen-of-another-country',
+            },
+          ]}
+        />
+        <br />
+        <h2>Checkbox</h2>
+        <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
         <RadiosGroup
           title={{
             value: 'Where do you live?',
