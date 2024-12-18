@@ -6,10 +6,35 @@
 {% from "header/components/headerSlot.html" import govieSlotItemAction, govieSlotContainer %}
 
 {% macro showMobileMenu(navLinks, tools, languages) %}
-  {% set hasNavLinks = navLinks | length > 0 %}
-  {% set hasMobileSlots = tools.items | selectattr("slot") | selectattr("keepOnMobile") | list | length > 0 %}
-  {% set hasSearch = tools.search is defined %}
-  {% set hasLanguages = languages | length > 0 %}
+  {% set hasNavLinks = false %}
+  {% set hasMobileSlots = false %}
+  {% set hasSearch = false %}
+  {% set hasLanguages = false %}
+  {% set toolItems = [] %}
+
+  {% if navLinks is defined and navLinks | length > 0 %}
+    {% set hasNavLinks = true %}
+  {% endif %}
+
+  {% if tools is defined %}
+    {% if 'items' in tools %}
+      {% set toolItems = tools['items'] %}
+    {% endif %}
+
+    {% if 'search' in tools %}
+      {% set hasSearch = true %}
+    {% endif %}
+  {% endif %}
+
+  {% if languages is defined and languages | length > 0 %}
+    {% set hasLanguages = true %}
+  {% endif %}
+
+  {% for item in toolItems %}
+    {% if item.slot is defined and item.keepOnMobile is defined and item.keepOnMobile %}
+      {% set hasMobileSlots = true %}
+    {% endif %}
+  {% endfor %}
 
   {{ hasNavLinks or hasMobileSlots or hasSearch or hasLanguages }}
 {% endmacro %}

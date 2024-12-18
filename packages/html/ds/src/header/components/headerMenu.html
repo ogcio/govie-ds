@@ -34,6 +34,12 @@
 {% endmacro %}
 
 {% macro headerMenu(props) %}
+  {% if 'tools' in props %}
+    {% if 'items' in props.tools %}
+      {% set toolItems = props.tools['items'] %}
+    {% endif %}
+  {% endif %}
+
   <div
     id="HeaderMenuContainer"
     class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen lg:gi-hidden"
@@ -55,7 +61,7 @@
       {% for link in props.navLinks %}
         <li>{{ govieMenuListItem(link.href, link.label, true) }}</li>
       {% endfor %}
-      {% for item in props.tools.items %}
+      {% for item in toolItems %}
         {% if not item.slot or item.keepOnMobile %}
           <li>
             {% if item.slot %}
