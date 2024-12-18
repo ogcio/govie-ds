@@ -7,10 +7,11 @@ libraries:
     link: '?path=/docs/application-tooltip--docs'
     status: 'stable'
   - platform: 'global'
-    status: 'considering'
+    status: 'beta'
+    link: '?path=/docs/application-tooltip--docs'
   - platform: 'react'
     status: 'beta'
-    link: ?path=/docs/application-tooltip--docs'
+    link: '?path=/docs/application-tooltip--docs'
 ---
 
 # Tooltip
@@ -27,15 +28,42 @@ libraries:
 
 <Tabs id="tab1">
   <TabList>
-    <TabItem value="tab11">HTML</TabItem>
+    <TabItem value="tab11" checked>HTML</TabItem>
     <TabItem value="tab12">Macro</TabItem>
-    <TabItem value="tab13" checked>React</TabItem>
+    <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
-  TBD
+  ```html
+    <span
+      class="gi-tooltip-wrapper"
+      data-module="gieds-tooltip"
+    >        
+      <button
+        data-testid="govieButton-default-primary-medium-notDisabled"
+        data-element="button-container"
+        data-module="gieds-button"
+        class="gi-btn gi-btn-primary gi-btn-regular"
+      >
+        Default (Hover me)
+      </button>
+      <span 
+        role="tooltip" 
+        class="gi-tooltip gi-tooltip-top"
+        aria-hidden="true"
+      >
+        Tooltip right.
+      </span>
+    </span>
+  ```
   </TabPanel>
   <TabPanel value="tab12">
-  TBD
+    ```html
+    {{ govieTooltip({
+      "position": "top",
+      "text": "Tooltip right.",
+      "content": "\n    <button\n      data-testid=\"govieButton-default-primary-medium-notDisabled\"\n      data-element=\"button-container\"\n      data-module=\"gieds-button\"\n      class=\"gi-btn gi-btn-primary gi-btn-regular\"\n    >\n      Default (Hover me)\n    </button>"
+    }) }}
+    ```
   </TabPanel>
   <TabPanel value="tab13">
     ```jsx

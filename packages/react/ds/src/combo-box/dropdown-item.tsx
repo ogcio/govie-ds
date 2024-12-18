@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
-import Checkbox from '../checkbox/checkbox.js';
+import { Checkbox } from '../checkbox/checkbox.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -122,16 +122,16 @@ export const DropdownItem = ({
             </Paragraph>
           )}
           {options.map((checkbox, index) => (
-            <Checkbox
-              key={`${index}_${checkbox.label}`}
-              onChange={handleCheckbox}
-              dataElement={checkbox.label}
-              checkboxId={checkbox.label}
-              size={CheckboxSizeEnum.Small}
-              label={checkbox.label}
-              value={checkbox.value}
-              className="gi-combobox-checkbox"
-            />
+            <div className="gi-combobox-checkbox">
+              <Checkbox
+                key={`${index}_${checkbox.label}`}
+                onChange={handleCheckbox}
+                id={checkbox.label}
+                size={CheckboxSizeEnum.Small}
+                label={checkbox.label}
+                value={checkbox.value}
+              />
+            </div>
           ))}
         </div>
       </div>

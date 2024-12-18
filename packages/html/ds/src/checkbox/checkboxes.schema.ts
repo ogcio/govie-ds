@@ -7,6 +7,46 @@ export enum CheckboxSizeEnum {
   Small = 'sm',
 }
 
+export const checkboxSchema = zod.object({
+  checkboxId: zod.string({
+    description: 'An unique ID given to the checkbox',
+    required_error: 'The ID is required',
+  }),
+  value: zod.string({
+    description:
+      'The value associated with the input (this is also the value that is sent on submit)',
+    required_error: 'The value associated with the input is required',
+  }),
+  label: zod
+    .string({
+      description:
+        'The value of the checkbox that will be displayed on the screen',
+    })
+    .optional(),
+  ariaLabel: zod
+    .string({ description: 'the default accessible name of the element' })
+    .optional(),
+  hint: zod
+    .string({
+      description:
+        'if there is additional text required in order to give the user more context',
+    })
+    .optional(),
+  checked: zod
+    .boolean({ description: 'if true the component is checked' })
+    .optional(),
+  size: zod
+    .nativeEnum(CheckboxSizeEnum, {
+      description: 'Specifies the size of the checkbox',
+    })
+    .optional(),
+  disabled: zod
+    .boolean({
+      description: 'Disable state for item',
+    })
+    .optional(),
+});
+
 export const checkboxesSchema = zod.object({
   fieldId: zod.string({
     description: 'An unique ID given to the group of checkboxes',
@@ -20,6 +60,9 @@ export const checkboxesSchema = zod.object({
             'The value of the checkbox that will be displayed on the screen',
         })
         .optional(),
+      ariaLabel: zod
+        .string({ description: 'the default accessible name of the element' })
+        .optional(),
       value: zod.string({
         description:
           'The value associated with the input (this is also the value that is sent on submit)',
@@ -30,6 +73,9 @@ export const checkboxesSchema = zod.object({
           description:
             'if there is additional text required in order to give the user more context',
         })
+        .optional(),
+      checked: zod
+        .boolean({ description: 'if true the component is checked' })
         .optional(),
       className: zod.string({ description: 'aditional classes' }).optional(),
       disabled: zod
@@ -99,3 +145,4 @@ export const checkboxesSchema = zod.object({
 });
 
 export type CheckboxesProps = zod.infer<typeof checkboxesSchema>;
+export type CheckboxProps = zod.infer<typeof checkboxSchema>;
