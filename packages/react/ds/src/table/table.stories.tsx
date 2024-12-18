@@ -4,6 +4,7 @@ import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
 import { Tag, TagType } from '../tag/tag.js';
+import { Tooltip } from '../tooltip/tooltip.js';
 import { Caption } from './caption.js';
 import { TableBody } from './table-body.js';
 import { TableData } from './table-data.js';
@@ -12,7 +13,6 @@ import { TableHead } from './table-head.js';
 import { TableHeader } from './table-header.js';
 import { TableRow } from './table-row.js';
 import { Table } from './table.js';
-import { Tooltip } from '../tooltip/tooltip.js';
 
 interface TableRowData {
   [key: string]: any; // Allows any key with any value type
