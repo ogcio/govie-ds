@@ -23,8 +23,9 @@
     "lint": "eslint 'src/**/*.{ts,html}'",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles",
+    "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles && pnpm build:assets",
     "build:properties": "tsx scripts/build-properties.ts",
+    "build:assets": "tsx scripts/copy-assets.ts",
     "build:ts": "vite build",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "postbuild": "zip -r govie-frontend.zip dist macros"

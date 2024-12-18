@@ -1,4 +1,4 @@
-function Logo() {
+function LogoGovOfIreland() {
   return (
     <svg
       className="gi-stroke-none"
@@ -8,7 +8,7 @@ function Logo() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_175_13114)">
+      <g clip-path="url(#clip0_175_13114)">
         <path
           d="M6.85634 13.2101C7.24105 13.2101 7.55305 12.8981 7.55305 12.5134C7.55305 12.1286 7.24105 11.8166 6.85634 11.8166C6.47162 11.8166 6.15962 12.1286 6.15962 12.5134C6.15998 12.8979 6.47162 13.2097 6.85634 13.2101Z"
           fill="#A39161"
@@ -191,4 +191,4 @@ function Logo() {
   );
 }
 
-export default Logo;
+export default LogoGovOfIreland;
