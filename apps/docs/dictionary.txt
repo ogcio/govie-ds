@@ -139,6 +139,7 @@ Garda
 Bia
 Carlow
 Cavan
+components-progressbar
 summarisable
 tooltip
 tooltips
