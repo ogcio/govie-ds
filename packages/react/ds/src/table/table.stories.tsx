@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import Checkbox from '../checkbox/checkbox.js';
+import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
 import { Tag, TagType } from '../tag/tag.js';
+import { Tooltip } from '../tooltip/tooltip.js';
 import { Caption } from './caption.js';
 import { TableBody } from './table-body.js';
 import { TableData } from './table-data.js';
@@ -131,9 +132,8 @@ export const Default: Story = {
             <TableData>
               <Checkbox
                 ariaLabel={`checkbox-id-${row.id}`}
-                checkboxId={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
-                dataElement={`checkbox-id-${row.id}`}
               />
             </TableData>
             <TableData>{row.id}</TableData>
@@ -248,9 +248,8 @@ export const TableWithFooter: Story = {
             <TableData>
               <Checkbox
                 ariaLabel={`checkbox-id-${row.id}`}
-                checkboxId={`project-select-${row.id}`}
+                id={`project-select-${row.id}`}
                 value={row.id.toString()}
-                dataElement={`project-checkbox-${row.id}`}
               />
             </TableData>
             <TableData>{row.county}</TableData>
@@ -263,20 +262,24 @@ export const TableWithFooter: Story = {
             </TableData>
             <TableData>
               <div className="gi-flex">
-                <IconButton
-                  icon={{ icon: 'edit' }}
-                  onClick={() => alert(`Edit project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
-                <IconButton
-                  icon={{ icon: 'delete' }}
-                  onClick={() => alert(`Delete project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
+                <Tooltip text="Edit the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'edit' }}
+                    onClick={() => alert(`Edit project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
+                <Tooltip text="Delete the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'delete' }}
+                    onClick={() => alert(`Delete project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
               </div>
             </TableData>
           </TableRow>

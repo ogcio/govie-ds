@@ -43,6 +43,7 @@ export * from './combo-box/combo-box.js';
 export * from './chip/chip.js';
 export * from './section-break/section-break.js';
 export * from './checkbox/checkboxes-group.js';
+export { Checkbox } from './checkbox/checkbox.js';
 export * from './spinner/spinner.js';
 export * from './stack/stack.js';
 export { Alert } from './alert/alert.js';

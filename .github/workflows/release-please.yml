@@ -95,14 +95,3 @@ jobs:
           echo "storybook_html_released=${{ steps.release.outputs['packages/html/ds--release_created'] }}" >> $GITHUB_OUTPUT
           echo "storybook_react_released=${{ steps.release.outputs['packages/react/ds--release_created'] }}" >> $GITHUB_OUTPUT
           echo "docs_released=${{ steps.release.outputs['apps/docs--release_created'] }}" >> $GITHUB_OUTPUT
-
-  deploy-docs-aws:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.docs_released == 'true' }}
-    uses: ./.github/workflows/deploy-docs-aws.yml
-    with:
-      environment: prod
-    secrets:
-      REPO_PAT: ${{ secrets.REPO_PAT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

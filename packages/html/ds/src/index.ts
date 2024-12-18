@@ -11,6 +11,7 @@ import { initRadios } from './radio/radio.js';
 import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
+import { initTooltip } from './tooltip/tooltip.js';
 
 export * as properties from './dist/properties.js';
 
@@ -33,6 +34,7 @@ export function initGovIe() {
   initCheckboxes();
   initRadios();
   initTextarea();
+  initTooltip();
   initModal();
   initCookieBanner();
   initTabs();

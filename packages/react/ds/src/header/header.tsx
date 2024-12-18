@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon, IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
@@ -50,9 +49,6 @@ export type HeaderProps = {
 };
 
 function getLogo({ logo }: HeaderProps) {
-  const logoLargeClassNames = 'gi-header-logo-lg';
-  const logoSmallClassNames = 'gi-header-logo-sm';
-
   return logo?.image ? (
     <img
       alt={logo.alt}
@@ -61,8 +57,7 @@ function getLogo({ logo }: HeaderProps) {
     />
   ) : (
     <>
-      <GovieLogo className={logoLargeClassNames} />
-      <GovieLogoSmall className={logoSmallClassNames} />
+      <GovieLogo />
     </>
   );
 }
@@ -93,7 +88,8 @@ export function Header({
   const showMobileMenu =
     navLinks ||
     tools?.items?.some((item) => item.slot && item.keepOnMobile) ||
-    !!tools?.search;
+    !!tools?.search ||
+    languages?.length;
 
   useEffect(() => {
     attachEventsToItemActionTriggers();
@@ -214,6 +210,7 @@ export function Header({
                   className="gi-block gi-w-0 gi-absolute gi-h-0"
                   id="MobileMenuTrigger"
                   type="checkbox"
+                  data-testid="header-mobile-menu"
                 />
                 {tools?.menu?.label && (
                   <span className="label">{tools.menu.label}</span>

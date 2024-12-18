@@ -27,8 +27,11 @@
 {% from 'progress-bar/progress-bar.html' import govieProgressBar%}
 {% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
 {% from 'table/table.html' import govieTable %}
+{% from 'checkbox/checkbox.html' import govieCheckbox %}
+{% from 'checkbox/checkboxes-group.html' import govieCheckboxesGroup %}
+{% from 'tooltip/tooltip.html' import govieTooltip %}
 
-{% from 'vars.jinja' import comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
+{% from 'vars.jinja' import checkboxesProps, comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -229,6 +232,18 @@
     "variant": "success"
   }) }}
 
+  <h2>Checkbox</h2>
+
+  {{ govieCheckbox({
+    "checkboxId": "checkbox-id-1",
+    "value": "value",
+    "label": "Checkbox",
+  }) }}
+
+  <h2>Checkboxes Group</h2>
+
+  {{ govieCheckboxesGroup(checkboxesProps) }}
+
   <h2>Icon Button</h2>
 
   {{govieIconButton({
@@ -277,6 +292,13 @@
         govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6", "Step 7"], "currentStepIndex": 3, "orientation": "horizontal" })
     }}
   <br />
+
+  <h2>Tooltip (top)</h2>
+  {{ govieTooltip({
+    "position": "top",
+    "text": "Tooltip right.",
+    "content": "\n    <button\n      data-testid=\"govieButton-default-primary-medium-notDisabled\"\n      data-element=\"button-container\"\n      data-module=\"gieds-button\"\n      class=\"gi-btn gi-btn-primary gi-btn-regular\"\n    >\n      Default (Hover me)\n    </button>"
+  }) }}
 
   <h2>Basic Table</h2>
   {{ govieTable({

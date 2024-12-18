@@ -3,25 +3,34 @@
 {% from 'helpers/helpers.html' import addClasses %}
 
 {% macro govieCheckbox(props) %}
-  <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
-    <input
-      {% if props.label %}name="{{ props.label }}"{% endif %}
-      {% if props.disabled %}disabled{% endif %}
-      data-element="{{ props.dataElement }}"
-      id="{{ props.checkboxId }}"
-      value="{{ props.value }}"
-      class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-checkbox-input"
-      type="checkbox"
-    />
-    <label for="{{ props.checkboxId }}" class="gi-checkbox-label">
-      {{ props.label }}
-      {% if props.hint %}
+  {% set checkboxId = props.checkboxId or props.value %}
+  {% set ariaLabel = props.ariaLabel or checkboxId %}
+  <div>
+    <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
+      <input
+        {% if props.label %}name="{{ props.label }}"{% endif %}
+        {% if props.disabled %}disabled{% endif %}
+        aria-label="{{ ariaLabel }}"
+        {% if props.checked %}checked{% endif %}
+        data-element="{{ props.dataElement }}"
+        id="{{ checkboxId }}"
+        value="{{ props.value }}"
+        class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-checkbox-input"
+        type="checkbox"
+      />
+      <label for="{{ checkboxId }}" class="gi-checkbox-label">
+        {{ props.label }}
+      </label>
+    </div>
+    {% if props.hint %}
+      <div class="gi-checkbox-hint-container">
+        <div class="{{ getSizeClass(props.size) | trim }}"></div>
         {{
           govieHintText({
             "content": props.hint
           })
         }}
-      {% endif %}
-    </label>
+      </div>
+    {% endif %}
   </div>
 {% endmacro %}

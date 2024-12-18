@@ -549,3 +549,27 @@ export const FullWidth: Story = {
     ],
   },
 };
+
+export const ShowMobileMenuForLanguages: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    languages: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ],
+  },
+};
