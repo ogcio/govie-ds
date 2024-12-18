@@ -6,7 +6,6 @@ import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import HeaderSearch from './components/header-search.js';
 import { Header } from './header.js';
-import '../test-utils/storybook/custom-matchers.js';
 
 const meta = {
   title: 'layout/Header',
@@ -603,21 +602,29 @@ export const withExternalLinks: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await expect(canvas.getByTestId('logo-link')).toBeExternalLink();
+    const logoLink = canvas.getByTestId('logo-link');
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
 
-    await expect(
-      canvas.getByRole('link', { name: 'Internal Nav' }),
-    ).not.toBeExternalLink();
-    await expect(
-      canvas.getByRole('link', { name: 'External Nav' }),
-    ).toBeExternalLink();
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noopener noreferrer');
 
-    await expect(
-      canvas.getByRole('link', { name: 'External Tool' }),
-    ).toBeExternalLink();
-    await expect(
-      canvas.getByRole('link', { name: 'Internal Tool' }),
-    ).not.toBeExternalLink();
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noopener noreferrer',
+    );
   },
 };
 
@@ -654,22 +661,32 @@ export const mobileWithExternalLinks: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await expect(canvas.getByTestId('logo-link')).toBeExternalLink();
+    const logoLink = canvas.getByTestId('logo-link');
+    const headerMobileMenu = canvas.getByTestId('header-mobile-menu');
 
-    await userEvent.click(canvas.getByTestId('header-mobile-menu'));
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
 
-    await expect(
-      canvas.getByRole('link', { name: 'Internal Nav' }),
-    ).not.toBeExternalLink();
-    await expect(
-      canvas.getByRole('link', { name: 'External Nav' }),
-    ).toBeExternalLink();
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noopener noreferrer');
 
-    await expect(
-      canvas.getByRole('link', { name: 'External Tool' }),
-    ).toBeExternalLink();
-    await expect(
-      canvas.getByRole('link', { name: 'Internal Tool' }),
-    ).not.toBeExternalLink();
+    await userEvent.click(headerMobileMenu);
+
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noopener noreferrer',
+    );
   },
 };
