@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import GovieLogoSmall from '../assets/logos/logo-small.js';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon, IconId } from '../icon/icon.js';
 import HeaderMenu from './components/header-menu.js';
@@ -50,9 +49,6 @@ export type HeaderProps = {
 };
 
 function getLogo({ logo }: HeaderProps) {
-  const logoLargeClassNames = 'gi-header-logo-lg';
-  const logoSmallClassNames = 'gi-header-logo-sm';
-
   return logo?.image ? (
     <img
       alt={logo.alt}
@@ -61,8 +57,7 @@ function getLogo({ logo }: HeaderProps) {
     />
   ) : (
     <>
-      <GovieLogo className={logoLargeClassNames} />
-      <GovieLogoSmall className={logoSmallClassNames} />
+      <GovieLogo />
     </>
   );
 }
