@@ -777,11 +777,11 @@ input[type='file' i] {
   @apply gi-cursor-pointer gi-text-md gi-pl-4;
 }
 .gi-checkbox-hint-container {
-  @apply gi-flex gi-gap-4
+  @apply gi-flex gi-gap-4;
 }
 
 .gi-checkbox-hint-container > div {
-  @apply gi-h-auto
+  @apply gi-h-auto;
 }
 
 /* End of Checkbox */
@@ -1035,7 +1035,7 @@ input[type='file' i] {
 
 .gi-table-th,
 .gi-table-td {
-  @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle gi-max-w-[25ch] gi-overflow-hidden gi-text-ellipsis gi-whitespace-nowrap;
+  @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid gi-align-middle gi-max-w-[25ch] gi-text-ellipsis gi-whitespace-nowrap;
 }
 
 .gi-table-caption-text {

@@ -9,12 +9,12 @@ const meta = {
     docs: {
       description: {
         component:
-          'The Tooltip component displays a label when the user hovers over the wrapped element. The `label` prop defines the text, and the `position` prop specifies the tooltip position (`top`, `bottom`, `left`, or `right`).',
+          'The Tooltip component displays a text when the user hovers over the wrapped element. The `text` prop defines the text, and the `position` prop specifies the tooltip position (`top`, `bottom`, `left`, or `right`).',
       },
     },
   },
   argTypes: {
-    label: {
+    text: {
       description: 'The text displayed in the tooltip.',
       control: 'text',
       table: {
@@ -52,7 +52,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Default Tooltip',
+    text: 'Default Tooltip',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },
@@ -60,7 +60,7 @@ export const Default: Story = {
 
 export const TopPosition: Story = {
   args: {
-    label: 'This is a tooltip at the top.',
+    text: 'This is a tooltip at the top.',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },
@@ -68,7 +68,7 @@ export const TopPosition: Story = {
 
 export const BottomPosition: Story = {
   args: {
-    label: 'This is a tooltip at the bottom.',
+    text: 'This is a tooltip at the bottom.',
     position: 'bottom',
     children: <Button variant="primary">Hover me (Bottom)</Button>,
   },
@@ -76,7 +76,7 @@ export const BottomPosition: Story = {
 
 export const LeftPosition: Story = {
   args: {
-    label: 'This is a tooltip on the left.',
+    text: 'This is a tooltip on the left.',
     position: 'left',
     children: <Button variant="primary">Hover me (Left)</Button>,
   },
@@ -84,15 +84,15 @@ export const LeftPosition: Story = {
 
 export const RightPosition: Story = {
   args: {
-    label: 'This is a tooltip on the right.',
+    text: 'This is a tooltip on the right.',
     position: 'right',
     children: <Button variant="primary">Hover me (Right)</Button>,
   },
 };
 
-export const WithLongLabel: Story = {
+export const WithLongText: Story = {
   args: {
-    label: 'This is a very long tooltip label that tests the tooltip display.',
+    text: 'This is a very long tooltip text that tests the tooltip display.',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },
