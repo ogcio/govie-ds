@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [0.30.0](https://github.com/ogcio/govie-ds/compare/react-v0.29.0...react-v0.30.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
+
+### Bug Fixes
+
+* assets and logo ([#374](https://github.com/ogcio/govie-ds/issues/374)) ([86cf4dc](https://github.com/ogcio/govie-ds/commit/86cf4dcc66aa09bcc252100b0d3fc95687a55021))
+* checkbox feedback fixes ([#372](https://github.com/ogcio/govie-ds/issues/372)) ([842c48d](https://github.com/ogcio/govie-ds/commit/842c48dcf9c75ab45cdcd490371e20387c847c57))
+* show mobile menu for languages  ([#370](https://github.com/ogcio/govie-ds/issues/370)) ([0f258e1](https://github.com/ogcio/govie-ds/commit/0f258e161530e8cce7f2ae9a2e58b2c70fb61e27))
+
 ## [0.29.0](https://github.com/ogcio/govie-ds/compare/react-v0.28.0...react-v0.29.0) (2024-12-12)
 
 
