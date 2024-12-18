@@ -44,18 +44,75 @@ export const WithInteractiveElements: Story = {
       [
         'Apple',
         '5',
-        '<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Edit</button>',
+        `<span
+          class="gi-tooltip-wrapper"
+          data-module="gieds-tooltip"
+        >
+          <button
+            data-testid="govieButton-default-primary-medium-notDisabled"
+            data-element="button-container"
+            data-module="gieds-button"
+            class="gi-btn gi-btn-primary gi-btn-regular"
+          >
+            Edit
+          </button>
+          <span
+            role="tooltip"
+            class="gi-tooltip gi-tooltip-right"
+            aria-hidden="true"
+          >
+            Edit.
+          </span>
+        </span>`
       ],
       [
         'Banana',
         '10',
-        '<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Edit</button>',
+        `<span
+          class="gi-tooltip-wrapper"
+          data-module="gieds-tooltip"
+        >
+          <button
+            data-testid="govieButton-default-primary-medium-notDisabled"
+            data-element="button-container"
+            data-module="gieds-button"
+            class="gi-btn gi-btn-primary gi-btn-regular"
+          >
+            Edit
+          </button>
+          <span
+            role="tooltip"
+            class="gi-tooltip gi-tooltip-right"
+            aria-hidden="true"
+          >
+            Edit.
+          </span>
+        </span>`
       ],
       [
         'Cherry',
         '20',
-        '<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Edit</button>',
-      ],
+        `<span
+          class="gi-tooltip-wrapper"
+          data-module="gieds-tooltip"
+        >
+          <button
+            data-testid="govieButton-default-primary-medium-notDisabled"
+            data-element="button-container"
+            data-module="gieds-button"
+            class="gi-btn gi-btn-primary gi-btn-regular"
+          >
+            Edit
+          </button>
+          <span
+            role="tooltip"
+            class="gi-tooltip gi-tooltip-right"
+            aria-hidden="true"
+          >
+            Edit.
+          </span>
+        </span>`
+    ],
     ],
   },
 };

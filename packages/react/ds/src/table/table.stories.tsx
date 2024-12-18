@@ -12,6 +12,7 @@ import { TableHead } from './table-head.js';
 import { TableHeader } from './table-header.js';
 import { TableRow } from './table-row.js';
 import { Table } from './table.js';
+import { Tooltip } from '../tooltip/tooltip.js';
 
 interface TableRowData {
   [key: string]: any; // Allows any key with any value type
@@ -261,20 +262,24 @@ export const TableWithFooter: Story = {
             </TableData>
             <TableData>
               <div className="gi-flex">
-                <IconButton
-                  icon={{ icon: 'edit' }}
-                  onClick={() => alert(`Edit project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
-                <IconButton
-                  icon={{ icon: 'delete' }}
-                  onClick={() => alert(`Delete project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
+                <Tooltip text="Edit the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'edit' }}
+                    onClick={() => alert(`Edit project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
+                <Tooltip text="Delete the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'delete' }}
+                    onClick={() => alert(`Delete project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
               </div>
             </TableData>
           </TableRow>
