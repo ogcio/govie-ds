@@ -23,7 +23,7 @@ export const Default = {
   render: () => (
     <>
       <Label text="Label" />
-      <Select>
+      <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -37,7 +37,7 @@ export const WithHint = {
     <>
       <Label text="Label" />
       <HintText text="This is a hint" />
-      <Select>
+      <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -51,7 +51,7 @@ export const withError = {
     <>
       <Label text="Label" />
       <ErrorText text="This is an error" />
-      <Select>
+      <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -62,7 +62,7 @@ export const withError = {
 
 export const withoutLabel = {
   render: () => (
-    <Select>
+    <Select aria-label="Select">
       <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
       <SelectItem value="value-3">Option 3</SelectItem>
@@ -72,7 +72,7 @@ export const withoutLabel = {
 
 export const withGroups = {
   render: () => (
-    <Select>
+    <Select aria-label="Select">
       <SelectGroupItem label="Group 1">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
