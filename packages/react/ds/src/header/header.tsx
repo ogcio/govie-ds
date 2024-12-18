@@ -207,8 +207,8 @@ export function Header({
                 className={`${toolItemClassNames} lg:gi-hidden`}
               >
                 <input
-                  className="gi-header-mobile-menu-trigger"
                   id="MobileMenuTrigger"
+                  className="gi-header-mobile-menu-trigger"
                   type="checkbox"
                   data-testid="header-mobile-menu"
                 />

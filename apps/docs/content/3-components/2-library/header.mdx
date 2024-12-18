@@ -23,26 +23,30 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 ### Default
 
 <ComponentContainer fullWidth>
-  <Header 
+  <Header
     title={'Application title'}
     languages={[{ href: '', label: 'Gaeilge' }]}
-    navLinks={[{ href: '', label: 'News' },{ href: '', label: 'Departments' },{ href: '', label: 'Services' }]}
+    navLinks={[
+      { href: '', label: 'News' },
+      { href: '', label: 'Departments' },
+      { href: '', label: 'Services' },
+    ]}
     tools={{
-    search: {
-      label: 'Search',
-      action: '/search-page',
-    },
-    items: [
-      {
-        href: '/item1',
-        label: 'Home',
-        icon: 'home',
+      search: {
+        label: 'Search',
+        action: '/search-page',
       },
-    ],
-    menu: {
-      label: 'Menu'
-    }
-    }} 
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
+        },
+      ],
+      menu: {
+        label: 'Menu',
+      },
+    }}
   />
 </ComponentContainer>
 
@@ -242,6 +246,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
         </header>
 
     ```
+
   </TabPanel>
   <TabPanel value="tab12">        
     ```html
@@ -273,7 +278,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```html
     import { Header } from '@govie-ds/react';
 
-    <Header 
+    <Header
         title={'Application title'}
         languages={[{ href: '/', label: 'Gaeilge' }]}
         navLinks={[{ href: '/', label: 'News' },{ href: '/', label: 'Departments' },{ href: '/', label: 'Services' }]}
@@ -292,9 +297,10 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             menu: {
                 label: 'Menu'
             }
-        } 
+        }
     />
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -325,6 +331,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     </header>
 
     ```
+
   </TabPanel>
   <TabPanel value="tab22">        
     ```html
@@ -337,13 +344,20 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     <Header title={'Application title'}/>
     ```
+
   </TabPanel>
 </Tabs>
 
 ### Header with links
 
 <ComponentContainer fullWidth>
-  <Header navLinks={[{ href: '', label: 'News' },{ href: '', label: 'Departments' },{ href: '', label: 'Services' }]} />
+  <Header
+    navLinks={[
+      { href: '', label: 'News' },
+      { href: '', label: 'Departments' },
+      { href: '', label: 'Services' },
+    ]}
+  />
 </ComponentContainer>
 
 <Tabs id="tab3">
@@ -386,6 +400,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     </header>
 
     ```
+
   </TabPanel>
   <TabPanel value="tab32">        
     ```html
@@ -417,13 +432,14 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
                 { href: '/', label: 'Services' }
             ]}/>
     ```
+
   </TabPanel>
 </Tabs>
 
 ### Header with language switch
 
 <ComponentContainer fullWidth>
-  <Header languages={[{ href: '', label: 'Gaeilge' }]}/>
+  <Header languages={[{ href: '', label: 'Gaeilge' }]} />
 </ComponentContainer>
 
 <Tabs id="tab4">
@@ -459,6 +475,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
         </div>
     </header>
     ```
+
   </TabPanel>
   <TabPanel value="tab42">        
     ```html
@@ -478,28 +495,59 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     <Header languages={[{ href: '/', label: 'Gaeilge' }]}/>
     ```
+
   </TabPanel>
 </Tabs>
 
 ### Header with tools
 
 <ComponentContainer fullWidth>
-  <Header tools={{
-        search: {
-          label: 'Search',
-          action: '/search-page',
+  <Header
+    tools={{
+      search: {
+        label: 'Search',
+        action: '/search-page',
+      },
+      items: [
+        {
+          href: '/item1',
+          label: 'Home',
+          icon: 'home',
         },
-        items: [
-          {
-            href: '/item1',
-            label: 'Home',
-            icon: 'home',
-          },
-        ],
-        menu: {
-          label: 'Menu'
-        }
-      }} />
+        {
+          href: '#',
+          label: 'Faq',
+          icon: 'info',
+          keepOnMobile: true,
+          slot: (
+            <List
+              type={'bullet'}
+              items={[
+                <Link
+                  size="sm"
+                  href="#"
+                  children="Citizens Information - Services and Rights"
+                />,
+                <Link
+                  size="sm"
+                  href="#"
+                  children="Revenue - Taxes and Payments"
+                />,
+                <Link
+                  size="sm"
+                  href="#"
+                  children="Department of Social Protection"
+                />,
+              ]}
+            />
+          ),
+        },
+      ],
+      menu: {
+        label: 'Menu',
+      },
+    }}
+  />
 </ComponentContainer>
 
 <Tabs id="tab5">
@@ -510,6 +558,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabList>
   <TabPanel value="tab51">        
     ```html
+    /* Does not support 'slots' feature */
     <header id="GovieHeader" class="gi-header">
         <div id="MenuContainer" class="gi-header-menu">
             <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
@@ -667,6 +716,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
         </header>
 
     ```
+
   </TabPanel>
   <TabPanel value="tab52">        
     ```html
@@ -678,9 +728,16 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             },
             items: [
                 {
-                href: '/item1',
-                label: 'Home',
-                icon: 'home',
+                    href: '/item1',
+                    label: 'Home',
+                    icon: 'home',
+                },
+                {
+                    href: '#',
+                    label: 'Faq',
+                    icon: 'info',
+                    keepOnMobile: true,
+                    slot:  "<ul class='gi-list-bullet'><li><a href='#' class='gi-link gi-link-sm'>Citizens Information - Services and Rights</a></li><li><a href='#' class='gi-link gi-link-sm'>Revenue - Taxes and Payments</a></li><li><a href='#' class='gi-link gi-link-sm'>Department of Social Protection</a></li></ul>",
                 },
             ],
             menu: {
@@ -701,10 +758,38 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
         },
         items: [
             {
-            href: '/item1',
-            label: 'Home',
-            icon: 'home',
+                href: '/item1',
+                label: 'Home',
+                icon: 'home',
             },
+            {
+                href: '#',
+                label: 'Faq',
+                icon: 'info',
+                keepOnMobile: true,
+                slot: (
+                    <List
+                    type={'bullet'}
+                    items={[
+                        <Link
+                        size="sm"
+                        href="#"
+                        children="Citizens Information - Services and Rights"
+                        />,
+                        <Link
+                        size="sm"
+                        href="#"
+                        children="Revenue - Taxes and Payments"
+                        />,
+                        <Link
+                        size="sm"
+                        href="#"
+                        children="Department of Social Protection"
+                        />,
+                    ]}
+                    />
+                ),
+        },
         ],
         menu: {
             label: 'Menu'
@@ -723,10 +808,14 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 You must use the GOV.IE header component at the top of every page. The Service Manual explains why it’s important for you to make your service look like GOV.IE.
 
+Additionally, the header now includes a "slots" feature, allowing you to render specific components below the header. This is useful for adding custom elements like navigation aids, search boxes, or additional contextual information that complements the header's main functionality.
+
 ### When not to use this component
 
 If your service is not hosted on one of the GOV.IE domains outlined, you must not use the GOV.IE header component as it’s not considered part of GOV.IE.
 You can still build from this component, but you’ll need to make some changes to make sure users do not confuse your website with GOV.IE.
+
+The slots feature lets you add unique, context-specific content directly below the header to support user navigation and service-specific functionality. Examples include displaying language selectors, search input fields, or quick links for frequently accessed features.
 
 ### How it works
 
@@ -736,7 +825,8 @@ This also assures users that they’re in the right place to use your service an
 
 For guidance on how to plan your header and navigation, see the Help users navigate a service pattern.
 
+The slots can be used to augment this pattern by including additional, user-friendly navigation to your service's needs.
+
 ## Status
 
 <ComponentStatusBlock componentId="header" />
-

@@ -65,7 +65,7 @@
       {% for link in props.languages %}
         <li>{{ govieMenuListItem(link.href, link.label, false) }}</li>
       {% endfor %}
-      {% if props.searchUrl %}
+      {% if props.tools and props.tools.search %}
         <li class="gi-mt-8 sm:gi-hidden">
           {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
         </li>

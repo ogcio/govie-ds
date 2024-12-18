@@ -122,23 +122,25 @@
 
         <div class="gi-flex">
           {% if props.tools and props.tools.search %}
-            <label for="SearchTrigger" class="{{ toolItemClassNames }}">
-              <input
-                id="SearchTrigger"
-                type="checkbox"
-                class="gi-header-mobile-menu-trigger"
-                data-testid="SearchTrigger"
-              />
-              {% if props.tools.search.label %}
-                <span class="label">{{ props.tools.search.label }}</span>
-              {% endif %}
-              <div class="search-icon">
-                {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
-              </div>
-              <div class="gi-hidden close-icon">
-                {{ govieIcon({"icon": "close"}) }}
-              </div>
-            </label>
+            <div class="gi-hidden sm:gi-flex">
+              <label for="SearchTrigger" class="{{ toolItemClassNames }}">
+                <input
+                  id="SearchTrigger"
+                  type="checkbox"
+                  class="gi-header-mobile-menu-trigger"
+                  data-testid="SearchTrigger"
+                />
+                {% if props.tools.search.label %}
+                  <span class="label">{{ props.tools.search.label }}</span>
+                {% endif %}
+                <div class="search-icon">
+                  {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
+                </div>
+                <div class="gi-hidden close-icon">
+                  {{ govieIcon({"icon": "close"}) }}
+                </div>
+              </label>
+            </div>
           {% endif %}
 
           {% for toolItem in toolItems %}
@@ -165,8 +167,9 @@
             >
               <input
                 id="MobileMenuTrigger"
+                class="gi-header-mobile-menu-trigger"
                 type="checkbox"
-                class="gi-block gi-w-0 gi-absolute gi-h-0"
+                data-testid="header-mobile-menu"
               />
               {% if props.tools.menu.label %}
                 <span class="label">{{ props.tools.menu.label }}</span>
