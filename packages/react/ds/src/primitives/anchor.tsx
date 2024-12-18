@@ -1,7 +1,7 @@
 import React from 'react';
 
 type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  external?: boolean; // Se `true`, indica un link esterno
+  external?: boolean;
 };
 
 const Anchor = ({
