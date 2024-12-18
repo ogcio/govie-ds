@@ -1,5 +1,4 @@
 {% from "header/assets/logo.html" import govieLogo %}
-{% from "header/assets/logoSmall.html" import govieLogoSmall %}
 {% from "icon/icon.html" import govieIcon %}
 {% from "header/components/headerSearchContainer.html" import HeaderSearchContainer %}
 {% from "header/components/headerMenu.html" import headerMenu %}
@@ -88,18 +87,12 @@
     <div id="HeaderContainer" class="{{ containerClassName }}">
       <div class="{{ menuContainerClassNames }}">
         <div class="gi-header-logo">
-          {% if props.logo and props.logo.href %}
-            <a href="{{ props.logo.href }}">
-              <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-              <span class="{{ logoSmallClassNames }}"
-                >{{ govieLogoSmall() }}</span
-              >
+          {% if props.logo.href %}
+            <a href="{logo.href}" aria-label="Go to the home page">
+              <div>{{ govieLogo() }}</div>
             </a>
           {% else %}
-            <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-            <span class="{{ logoSmallClassNames }}"
-              >{{ govieLogoSmall() }}</span
-            >
+            <div>{{ govieLogo() }}</div>
           {% endif %}
         </div>
 

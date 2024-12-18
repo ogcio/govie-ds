@@ -9,6 +9,7 @@ import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { Toast } from '../toast/toast';
+import { Tooltip } from '../tooltip/tooltip';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -20,6 +21,7 @@ const componentRegistry = {
   Checkboxes,
   Radio,
   Textarea,
+  Tooltip,
   Modal,
   CookieBanner,
   Tabs,
