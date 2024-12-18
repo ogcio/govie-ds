@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from '@storybook/test';
 import { Footer } from './footer.js';
-import '../test-utils/storybook/custom-matchers.js';
 
 const meta = {
   title: 'layout/Footer',
@@ -196,25 +195,29 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await expect(
-      canvas.getByTestId('main-link-0').firstChild,
-    ).not.toBeExternalLink();
-    await expect(
-      canvas.getByTestId('main-link-2').firstChild,
-    ).toBeExternalLink();
+    const mainLink0 = canvas.getByTestId('main-link-0').firstChild;
+    const mainLink2 = canvas.getByTestId('main-link-2').firstChild;
+    const secondary00 = canvas.getByTestId('secondary-0-0').firstChild;
+    const secondary02 = canvas.getByTestId('secondary-0-2').firstChild;
+    const secondary10 = canvas.getByTestId('secondary-1-0').firstChild;
+    const secondary12 = canvas.getByTestId('secondary-1-2').firstChild;
 
-    await expect(
-      canvas.getByTestId('secondary-0-0').firstChild,
-    ).not.toBeExternalLink();
-    await expect(
-      canvas.getByTestId('secondary-0-2').firstChild,
-    ).toBeExternalLink();
+    await expect(mainLink0).not.toHaveAttribute('target', '_blank');
+    await expect(mainLink0).not.toHaveAttribute('rel', 'noopener noreferrer');
 
-    await expect(
-      canvas.getByTestId('secondary-1-0').firstChild,
-    ).not.toBeExternalLink();
-    await expect(
-      canvas.getByTestId('secondary-1-2').firstChild,
-    ).toBeExternalLink();
+    await expect(mainLink2).toHaveAttribute('target', '_blank');
+    await expect(mainLink2).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(secondary00).not.toHaveAttribute('target', '_blank');
+    await expect(secondary00).not.toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(secondary02).toHaveAttribute('target', '_blank');
+    await expect(secondary02).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(secondary10).not.toHaveAttribute('target', '_blank');
+    await expect(secondary10).not.toHaveAttribute('rel', 'noopener noreferrer');
+
+    await expect(secondary12).toHaveAttribute('target', '_blank');
+    await expect(secondary12).toHaveAttribute('rel', 'noopener noreferrer');
   },
 };
