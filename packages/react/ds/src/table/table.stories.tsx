@@ -4,6 +4,7 @@ import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
 import { Tag, TagType } from '../tag/tag.js';
+import { Tooltip } from '../tooltip/tooltip.js';
 import { Caption } from './caption.js';
 import { TableBody } from './table-body.js';
 import { TableData } from './table-data.js';
@@ -261,20 +262,24 @@ export const TableWithFooter: Story = {
             </TableData>
             <TableData>
               <div className="gi-flex">
-                <IconButton
-                  icon={{ icon: 'edit' }}
-                  onClick={() => alert(`Edit project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
-                <IconButton
-                  icon={{ icon: 'delete' }}
-                  onClick={() => alert(`Delete project ${row.id}`)}
-                  variant="flat"
-                  appearance="dark"
-                  size="large"
-                />
+                <Tooltip text="Edit the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'edit' }}
+                    onClick={() => alert(`Edit project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
+                <Tooltip text="Delete the project" position="top">
+                  <IconButton
+                    icon={{ icon: 'delete' }}
+                    onClick={() => alert(`Delete project ${row.id}`)}
+                    variant="flat"
+                    appearance="dark"
+                    size="large"
+                  />
+                </Tooltip>
               </div>
             </TableData>
           </TableRow>
