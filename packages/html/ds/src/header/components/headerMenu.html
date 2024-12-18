@@ -20,16 +20,14 @@
     data-open="false"
   >
     <div aria-label="{{ label }}" class="gi-header-accordion-item-toggle">
-      <div class="gi-full-width gi-flex gi-justify-between">
+      <div>
         <span class="gi-text-sm gi-font-bold gi-ml-1"> {{ label }} </span>
         <span class="gi-accordion-item-icon">
           {{ govieIcon({"icon": "chevron_right"}) }}
         </span>
       </div>
     </div>
-    <div class="gi-accordion-item-slot gi-hidden gi-bg-gray-50 gi-p-4">
-      {{ slot | safe }}
-    </div>
+    <div class="gi-accordion-item-slot gi-hidden">{{ slot | safe }}</div>
   </div>
 {% endmacro %}
 
@@ -40,24 +38,16 @@
     {% endif %}
   {% endif %}
 
-  <div
-    id="HeaderMenuContainer"
-    class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen lg:gi-hidden"
-  >
-    <div
-      class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
-    >
+  <div id="HeaderMenuContainer" class="gi-header-menu-container lg:gi-hidden">
+    <div>
       <div class="gi-flex gi-items-center">
-        <label
-          for="MobileMenuTrigger"
-          class="gi-border gi-border-solid gi-border-transparent lg:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
-        >
-          <span class="gi-text-2md gi-font-bold">Close</span>
+        <label for="MobileMenuTrigger" class="gi-header-menu-mobile-trigger">
+          <span>Close</span>
           {{ govieIcon({"icon": "close"}) }}
         </label>
       </div>
     </div>
-    <ul class="gi-bg-white gi-px-4 sm:gi-px-8">
+    <ul>
       {% for link in props.navLinks %}
         <li>{{ govieMenuListItem(link.href, link.label, true) }}</li>
       {% endfor %}

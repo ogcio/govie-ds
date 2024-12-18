@@ -126,7 +126,7 @@
               <input
                 id="SearchTrigger"
                 type="checkbox"
-                class="gi-block gi-w-0 gi-absolute gi-h-0"
+                class="gi-header-mobile-menu-trigger"
                 data-testid="SearchTrigger"
               />
               {% if props.tools.search.label %}
@@ -181,10 +181,7 @@
     </div>
 
     {% if props.tools and props.tools.search %}
-      <div
-        id="SearchContainer"
-        class="gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800"
-      >
+      <div id="SearchContainer" class="gi-header-tool-container">
         {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "icon": props.tools.search.icon or "search"}) }}
       </div>
     {% endif %}
