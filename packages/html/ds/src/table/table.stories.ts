@@ -63,7 +63,7 @@ export const WithInteractiveElements: Story = {
           >
             Edit.
           </span>
-        </span>`
+        </span>`,
       ],
       [
         'Banana',
@@ -87,7 +87,7 @@ export const WithInteractiveElements: Story = {
           >
             Edit.
           </span>
-        </span>`
+        </span>`,
       ],
       [
         'Cherry',
@@ -111,8 +111,8 @@ export const WithInteractiveElements: Story = {
           >
             Edit.
           </span>
-        </span>`
-    ],
+        </span>`,
+      ],
     ],
   },
 };
