@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.31.0](https://github.com/ogcio/govie-ds/compare/react-v0.30.0...react-v0.31.0) (2024-12-19)
+
+
+### Features
+
+* select composable ([#376](https://github.com/ogcio/govie-ds/issues/376)) ([8c212b0](https://github.com/ogcio/govie-ds/commit/8c212b02400d66ef8c86c751147275564efefb33))
+
 ## [0.30.0](https://github.com/ogcio/govie-ds/compare/react-v0.29.0...react-v0.30.0) (2024-12-18)
 
 
