@@ -38,6 +38,7 @@ import {
 export default function Home() {
   return (
     <>
+      {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
         logo={{ href: "/" }}
         tools={{ search: { action: "/search-page" } }}
@@ -64,6 +65,7 @@ export default function Home() {
       />
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        {/* TODO: Investigate the issue regarding the Toast component when running the application */}
         <Toast title="This is a toast" />
         <Toast
           title="Toast triggered"
