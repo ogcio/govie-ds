@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon, IconId } from '../icon/icon.js';
+import Anchor from '../primitives/anchor.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 import { SlotItem } from './components/header-slot.js';
@@ -15,6 +16,7 @@ export type HeaderProps = {
   logo?: {
     image?: string;
     href?: string;
+    external?: boolean;
     alt?: string;
   };
   tools?: {
@@ -33,6 +35,7 @@ export type HeaderProps = {
       label?: string;
       icon?: IconId;
       href: string;
+      external?: boolean;
       slot?: React.ReactNode;
       keepOnMobile?: boolean; // optional, default false to not show on mobile.
     }[];
@@ -44,6 +47,7 @@ export type HeaderProps = {
   navLinks?: {
     href: string;
     label: string;
+    external?: boolean;
   }[];
   fullWidth?: boolean;
 };
@@ -131,9 +135,14 @@ export function Header({
         <div className={menuContainerClassNames}>
           <div className="gi-header-logo">
             {logo?.href && (
-              <a href={logo.href} aria-label="Go to the home page">
+              <Anchor
+                href={logo.href}
+                aria-label="Go to the home page"
+                data-testid={`logo-link`}
+                external={logo.external}
+              >
                 {getLogo({ logo })}
-              </a>
+              </Anchor>
             )}
             {!logo?.href && getLogo({ logo })}
           </div>
@@ -142,13 +151,14 @@ export function Header({
           <ul className={navLinkContainerClassNames}>
             {navLinks?.map((link, index) => (
               <li key={`navLink-${link.label}-${index}`}>
-                <a
+                <Anchor
                   data-testid={`nav-link-desktop-${index}`}
                   href={link.href}
                   aria-label={link.label}
+                  external={link.external}
                 >
                   {link.label}
-                </a>
+                </Anchor>
               </li>
             ))}
           </ul>
@@ -180,27 +190,31 @@ export function Header({
               </div>
             )}
             {tools?.items &&
-              tools?.items.map(({ href, icon, label, slot }, index) => {
-                return (
-                  <div
-                    className="gi-hidden lg:gi-flex"
-                    key={`toolItem-${label}-${index}`}
-                  >
-                    {slot ? (
-                      <SlotItem index={index} item={{ slot, icon, label }} />
-                    ) : (
-                      <a
-                        className={toolItemClassNames}
-                        href={href}
-                        aria-label={label || `link ${index}`}
-                      >
-                        {label && <span className="label">{label}</span>}
-                        {icon && <Icon icon={icon} />}
-                      </a>
-                    )}
-                  </div>
-                );
-              })}
+              tools?.items.map(
+                ({ href, icon, label, slot, external }, index) => {
+                  return (
+                    <div
+                      className="gi-hidden lg:gi-flex"
+                      key={`toolItem-${label}-${index}`}
+                    >
+                      {slot ? (
+                        <SlotItem index={index} item={{ slot, icon, label }} />
+                      ) : (
+                        <Anchor
+                          className={toolItemClassNames}
+                          href={href}
+                          aria-label={label || `link ${index}`}
+                          data-testid={`tool-link-desktop-${index}`}
+                          external={external}
+                        >
+                          {label && <span className="label">{label}</span>}
+                          {icon && <Icon icon={icon} />}
+                        </Anchor>
+                      )}
+                    </div>
+                  );
+                },
+              )}
             {showMobileMenu && (
               <label
                 htmlFor="MobileMenuTrigger"
