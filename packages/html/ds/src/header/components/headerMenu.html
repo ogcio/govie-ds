@@ -1,48 +1,72 @@
 {% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
 {% from 'icon/icon.html' import govieIcon %}
-{% macro headerMenu(props) %}
-  <div
-    id="HeaderMenuContainer"
-    class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen"
+
+{% macro govieMenuListItem(href, label, isBold) %}
+  <a
+    aria-label="{{ label or '' }}"
+    href="{{ href }}"
+    class="gi-header-menu-list-item"
   >
-    <div
-      class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4"
-    >
+    <span class="gi-text-sm gi-ml-1 {{ 'gi-font-bold' if isBold }}">
+      {{ label | safe }}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro govieMenuItemAccordion(index, label, slot) %}
+  <div
+    id="Accordion-item-{{ index }}"
+    class="gi-accordion-item-container"
+    data-open="false"
+  >
+    <div aria-label="{{ label }}" class="gi-header-accordion-item-toggle">
+      <div>
+        <span class="gi-text-sm gi-font-bold gi-ml-1"> {{ label }} </span>
+        <span class="gi-accordion-item-icon">
+          {{ govieIcon({"icon": "chevron_right"}) }}
+        </span>
+      </div>
+    </div>
+    <div class="gi-accordion-item-slot gi-hidden">{{ slot | safe }}</div>
+  </div>
+{% endmacro %}
+
+{% macro headerMenu(props) %}
+  {% if 'tools' in props %}
+    {% if 'items' in props.tools %}
+      {% set toolItems = props.tools['items'] %}
+    {% endif %}
+  {% endif %}
+
+  <div id="HeaderMenuContainer" class="gi-header-menu-container lg:gi-hidden">
+    <div>
       <div class="gi-flex gi-items-center">
-        <label
-          for="MobileMenuTrigger"
-          class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
-        >
-          <span class="gi-text-2md gi-font-bold">Close</span>
+        <label for="MobileMenuTrigger" class="gi-header-menu-mobile-trigger">
+          <span>Close</span>
           {{ govieIcon({"icon": "close"}) }}
         </label>
       </div>
     </div>
-    <ul class="gi-bg-white gi-px-4 sm:gi-px-8">
+    <ul>
       {% for link in props.navLinks %}
-        <li>
-          <a
-            href="{{ link.href }}"
-            class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-          >
-            <span class="gi-font-bold gi-text-sm gi-ml-1"
-              >{{ link.label }}</span
-            >
-          </a>
-        </li>
+        <li>{{ govieMenuListItem(link.href, link.label, true) }}</li>
+      {% endfor %}
+      {% for item in toolItems %}
+        {% if not item.slot or item.keepOnMobile %}
+          <li>
+            {% if item.slot %}
+              {{ govieMenuItemAccordion(loop.index0, item.label, item.slot) }}
+            {% else %}
+              {{ govieMenuListItem(item.href, item.label, true) }}
+            {% endif %}
+          </li>
+        {% endif %}
       {% endfor %}
       {% for link in props.languages %}
-        <li>
-          <a
-            href="{{ link.href }}"
-            class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
-          >
-            <span class="gi-text-sm gi-ml-1">{{ link.label }}</span>
-          </a>
-        </li>
+        <li>{{ govieMenuListItem(link.href, link.label, false) }}</li>
       {% endfor %}
-      {% if props.searchUrl %}
-        <li class="xs:gi-hidden gi-mt-8">
+      {% if props.tools and props.tools.search %}
+        <li class="gi-mt-8 sm:gi-hidden">
           {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
         </li>
       {% endif %}

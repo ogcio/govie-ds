@@ -6,190 +6,249 @@ import {
 
 export type HeaderOptions = BaseComponentOptions;
 
-export class Header extends BaseComponent<HeaderOptions> {
-  searchIconDesktop: Element;
-  searchIconMobile: Element;
-  menuIcon: Element;
-  closeMenuIcon: HTMLButtonElement;
-  searchContainer: Element;
-  searchContainerSmall: Element;
-  menuContainer: Element;
-  overlayDisabledContainer: Element;
+const hidden = 'gi-hidden';
+const block = 'gi-block';
 
-  searchIconHandler: EventListenerOrEventListenerObject;
-  menuIconHandler: EventListenerOrEventListenerObject;
-  closeMenuHandler: EventListenerOrEventListenerObject;
-  searchIconHandlerMobile: EventListenerOrEventListenerObject;
-  isLinkActive: () => void;
+const addClass = (
+  element: HTMLInputElement | HTMLElement | Element,
+  className: string,
+) => {
+  if (element && element.classList) {
+    element.classList.add(className);
+  }
+};
+
+const removeClass = (
+  element: HTMLInputElement | HTMLElement | Element,
+  className: string,
+) => {
+  if (element && element.classList) {
+    element.classList.remove(className);
+  }
+};
+
+export class Header extends BaseComponent<HeaderOptions> {
+  getElements: any;
+  closeAllSlotContainers: (target: HTMLInputElement) => void;
+  handleSearchChange: (event: Event) => void;
+  attachEventsToSearchTrigger: () => void;
+  attachEventsToAccordion: () => void;
+  attachEventsToItemActionTriggers: () => void;
+  handleSlotItemChange: (event: Event) => void;
+  handleOnAAccordionItemClick: (element: HTMLElement) => (event: Event) => void;
 
   constructor(options: HeaderOptions) {
     super(options);
 
-    this.searchIconDesktop = this.query.getByElement({
-      name: 'search-desktop',
-    });
+    this.getElements = () => {
+      const itemSlotActions = document.querySelectorAll(
+        "[id^='ItemActionTrigger-']",
+      );
+      const slotContainers = document.querySelectorAll(
+        "[id^='SlotContainer-']",
+      );
+      const searchTrigger = document.querySelector(
+        `#SearchTrigger`,
+      ) as HTMLInputElement;
 
-    this.searchIconMobile = this.query.getByElement({ name: 'search-mobile' });
+      const accordionContainers = document.querySelectorAll(
+        "[id^='Accordion-item-']",
+      );
 
-    this.menuIcon = this.query.getByElement({ name: 'menu-icon' });
+      return {
+        itemSlotActions,
+        slotContainers,
+        searchTrigger,
+        accordionContainers,
+      };
+    };
 
-    this.closeMenuIcon = document.querySelector(
-      '[data-element="close-menu-icon"]',
-    )!;
+    this.closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
+      const { itemSlotActions } = this.getElements();
 
-    this.searchContainerSmall = this.query.getByElement({
-      name: 'search-container-small',
-    });
-
-    this.searchContainer = this.query.getByElement({
-      name: 'search-container',
-    });
-
-    this.overlayDisabledContainer = this.query.getByElement({
-      name: 'overlay-disabled',
-    });
-
-    this.searchIconHandler = (event: Event) => {
-      event.stopPropagation();
-
-      const classList = this.searchContainer.classList;
-
-      const classListSearchIcon = this.query.getByElement({
-        name: 'search-icon',
-      }).classList;
-      const classListCloseIcon = this.query.getByElement({
-        name: 'search-close-icon',
-      }).classList;
-
-      classList.toggle('xs:gi-h-40');
-      classList.toggle('xs:gi-h-0');
-
-      if (classList.contains('xs:gi-h-40')) {
-        this.searchContainer.querySelector('input')?.focus();
-        classListSearchIcon.add('gi-hidden');
-        classListCloseIcon.remove('gi-hidden');
-      } else {
-        classListSearchIcon.remove('gi-hidden');
-        classListCloseIcon.add('gi-hidden');
+      if (searchTarget.checked) {
+        for (const container of itemSlotActions) {
+          const item = container as HTMLInputElement;
+          item.checked = false;
+          item.dispatchEvent(
+            new CustomEvent('change', {
+              detail: {
+                fromSearchTrigger: true,
+              },
+            }),
+          );
+        }
       }
     };
 
-    this.searchIconHandlerMobile = (event: Event) => {
-      event.stopPropagation();
-
-      const classList = this.searchContainerSmall.classList;
-      const classListSearchIcon = this.query.getByElement({
-        name: 'search-mobile-search-icon',
-      }).classList;
-      const classListCloseIcon = this.query.getByElement({
-        name: 'search-mobile-close-icon',
-      }).classList;
-
-      classList.toggle('xs:gi-h-40');
-      classList.toggle('xs:gi-h-0');
-
-      if (classList.contains('xs:gi-h-40')) {
-        this.searchContainerSmall.querySelector('input')?.focus();
-        classListSearchIcon.add('gi-hidden');
-        classListCloseIcon.remove('gi-hidden');
-      } else {
-        classListSearchIcon.remove('gi-hidden');
-        classListCloseIcon.add('gi-hidden');
-      }
+    this.handleSearchChange = (event: Event) => {
+      this.closeAllSlotContainers(event.target as HTMLInputElement);
     };
 
-    this.menuContainer = this.query.getByElement({
-      name: 'menu-container',
-    });
+    this.handleSlotItemChange = (event: Event) => {
+      const { slotContainers, searchTrigger } = this.getElements();
+      const customEvent = event as CustomEvent;
+      const fromFilteredItems = customEvent?.detail?.fromFilteredItems;
+      const fromSearchTrigger = customEvent?.detail?.fromSearchTrigger;
+      const target = event.target as HTMLInputElement;
 
-    this.menuIconHandler = (event: Event) => {
-      event.stopPropagation();
-      this.closeMenuIcon.focus();
+      const toggleIcons = (
+        currentTrigger: HTMLInputElement,
+        fromFilteredItems: boolean,
+        fromSearchTrigger: boolean,
+      ) => {
+        const index = currentTrigger.dataset.index || '';
+        const icon = document.querySelector(
+          `#ItemIconActionTrigger-${index}`,
+        ) as HTMLInputElement;
+        const closeIcon = document.querySelector(
+          `#ItemCloseTrigger-${index}`,
+        ) as HTMLInputElement;
+        const { itemSlotActions } = this.getElements();
+        const slot = document.querySelector(
+          `#SlotContainer-${index}`,
+        ) as HTMLInputElement;
 
-      const classList = this.menuContainer.classList;
-      const bodyElement = document.querySelector('body');
-      const overlayContainerClassList = this.overlayDisabledContainer.classList;
-
-      classList.remove('gi-translate-x-full');
-      bodyElement?.classList.add('gi-overflow-hidden');
-      overlayContainerClassList.remove('gi-hidden');
-      overlayContainerClassList.add('gi-fixed');
-    };
-
-    this.closeMenuHandler = (event: Event) => {
-      event.stopPropagation();
-
-      const classList = this.menuContainer.classList;
-      const overlayContainerClassList = this.overlayDisabledContainer.classList;
-      const bodyElement = document.querySelector('body');
-
-      classList.add('gi-translate-x-full');
-      bodyElement?.classList.remove('gi-overflow-hidden');
-      overlayContainerClassList.add('gi-hidden');
-      overlayContainerClassList.remove('gi-fixed');
-    };
-
-    this.isLinkActive = () => {
-      if (window) {
-        const URL = window.location.href;
-        const linksDesktop = document.querySelectorAll<HTMLAnchorElement>(
-          `#links-container-desktop a`,
-        );
-        for (const link of linksDesktop) {
-          if (link.href === URL) {
-            link.classList.add('gi-underline', 'gi-underline-offset-sm');
+        if (!fromFilteredItems || fromSearchTrigger) {
+          for (const container of slotContainers) {
+            removeClass(container, block);
+            addClass(container, hidden);
           }
         }
 
-        const linksMobile = document.querySelectorAll<HTMLAnchorElement>(
-          `#links-container-mobile a`,
+        if (currentTrigger.checked && !fromFilteredItems) {
+          addClass(icon, hidden);
+          addClass(closeIcon, block);
+          removeClass(closeIcon, hidden);
+
+          removeClass(slot, hidden);
+          addClass(slot, block);
+        } else {
+          addClass(closeIcon, hidden);
+          removeClass(closeIcon, block);
+          addClass(icon, block);
+          removeClass(icon, hidden);
+          return;
+        }
+
+        const filteredItems = [...itemSlotActions].filter(
+          (element) =>
+            (element as HTMLInputElement).checked &&
+            element.id !== currentTrigger.id,
         );
-        for (const link of linksMobile) {
-          if (link.href === URL) {
-            link.classList.add('gi-underline', 'gi-underline-offset-sm');
+
+        for (const element of filteredItems) {
+          (element as HTMLInputElement).checked = false;
+          element.dispatchEvent(
+            new CustomEvent('change', {
+              detail: {
+                fromFilteredItems: true,
+              },
+            }),
+          );
+        }
+      };
+
+      toggleIcons(target, fromFilteredItems, fromSearchTrigger);
+
+      if (searchTrigger?.checked && target?.checked) {
+        searchTrigger.checked = false;
+        searchTrigger.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    };
+
+    this.handleOnAAccordionItemClick =
+      (accordionItemContainer: HTMLElement) => (event: Event) => {
+        const slotContainer = accordionItemContainer.querySelector(
+          '.gi-accordion-item-slot',
+        ) as HTMLElement;
+
+        event.preventDefault();
+
+        if (slotContainer) {
+          const isOpen = slotContainer.classList.contains(block);
+
+          if (isOpen) {
+            removeClass(slotContainer, block);
+            addClass(slotContainer, hidden);
+          } else {
+            addClass(slotContainer, block);
+            removeClass(slotContainer, hidden);
           }
+
+          accordionItemContainer.dataset.open = (!isOpen).toString();
+
+          const toggleIcon = accordionItemContainer.querySelector(
+            '.gi-accordion-item-icon',
+          );
+          if (toggleIcon) {
+            if (isOpen) {
+              removeClass(toggleIcon, 'gi-rotate-90');
+            } else {
+              addClass(toggleIcon, 'gi-rotate-90');
+            }
+          }
+        }
+      };
+
+    this.attachEventsToSearchTrigger = () => {
+      const searchTrigger = document.querySelector(`#SearchTrigger`);
+
+      if (searchTrigger) {
+        searchTrigger.addEventListener('change', this.handleSearchChange);
+      }
+    };
+
+    this.attachEventsToItemActionTriggers = () => {
+      const { itemSlotActions } = this.getElements();
+
+      if (itemSlotActions.length > 0) {
+        for (const container of itemSlotActions) {
+          container.addEventListener('change', this.handleSlotItemChange);
+        }
+      }
+    };
+
+    this.attachEventsToAccordion = () => {
+      const { accordionContainers } = this.getElements();
+
+      for (const accordionItemContainer of accordionContainers) {
+        const toggleLink = accordionItemContainer.querySelector(
+          '.gi-header-accordion-item-toggle',
+        );
+
+        if (toggleLink) {
+          toggleLink.addEventListener(
+            'click',
+            this.handleOnAAccordionItemClick(
+              accordionItemContainer as HTMLElement,
+            ),
+          );
         }
       }
     };
   }
 
   initComponent() {
-    const isSearchEnabled = this.searchIconDesktop && this.searchIconMobile;
-    if (isSearchEnabled) {
-      this.searchIconDesktop.addEventListener('click', this.searchIconHandler);
-      this.searchIconMobile.addEventListener(
-        'click',
-        this.searchIconHandlerMobile,
-      );
+    this.attachEventsToItemActionTriggers();
+    this.attachEventsToAccordion();
+
+    const { searchTrigger } = this.getElements();
+
+    if (searchTrigger) {
+      this.attachEventsToSearchTrigger();
     }
-    this.menuIcon.addEventListener('click', this.menuIconHandler);
-    this.closeMenuIcon.addEventListener('click', this.closeMenuHandler);
-    this.overlayDisabledContainer.addEventListener(
-      'click',
-      this.closeMenuHandler,
-    );
-    this.isLinkActive();
   }
 
   destroyComponent(): void {
-    const isSearchEnabled = this.searchIconDesktop && this.searchIconMobile;
-    if (isSearchEnabled) {
-      this.searchIconDesktop.removeEventListener(
-        'click',
-        this.searchIconHandler,
-      );
-      this.searchIconMobile.removeEventListener(
-        'click',
-        this.searchIconHandlerMobile,
-      );
+    const { itemSlotActions, searchTrigger } = this.getElements();
+    if (searchTrigger) {
+      searchTrigger.removeEventListener('change', this.handleSearchChange);
     }
-    this.menuIcon.removeEventListener('click', this.menuIconHandler);
-    this.closeMenuIcon.removeEventListener('click', this.closeMenuHandler);
-    this.overlayDisabledContainer.removeEventListener(
-      'click',
-      this.closeMenuHandler,
-    );
-    this.isLinkActive();
+
+    for (const container of itemSlotActions) {
+      container?.removeEventListener('change', this.handleSlotItemChange);
+    }
   }
 }
 
