@@ -4,22 +4,17 @@
 {% from 'heading/heading.html' import govieHeading %}
 
 {% macro HeaderSearchContainer(props) %}
-  <div
-    id="SearchContainer"
-    class="gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800"
-  >
-    <form action="{{ props.searchUrl }}" class="gi-max-w-md gi-mx-auto">
-      {{ govieHeading({"text": "Search the website", "as": "h4"}) }}
-      <div class="gi-flex gi-items-end gi-mt-4">
-        {{ govieTextInput({"name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto", "placeholder": "Enter search term"}) }}
+  <form action="{{ props.searchUrl }}" class="gi-max-w-md gi-mx-auto">
+    {{ govieHeading({"text": "Search the website", "as": "h4"}) }}
+    <div class="gi-flex gi-items-end gi-mt-4">
+      {{ govieTextInput({"name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto", "placeholder": "Enter search term"}) }}
 
-        {{
-          govieButton({
-            "content": 'Search' + govieIcon({"icon": props.icon}),
-            "className": "gi-ml-1 gi-flex-none"
-          })
-        }}
-      </div>
-    </form>
-  </div>
+      {{
+        govieButton({
+          "content": 'Search' + govieIcon({"icon": props.icon}),
+          "className": "gi-ml-1 gi-flex-none"
+        })
+      }}
+    </div>
+  </form>
 {% endmacro %}

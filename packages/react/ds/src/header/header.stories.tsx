@@ -155,12 +155,6 @@ export const Default: Story = {
         label: 'Services',
       },
     ],
-    languages: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
   },
 };
 
