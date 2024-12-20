@@ -1,5 +1,5 @@
-"use client";
-import { ComboBoxProps, CookieBannerProps } from "@/props";
+'use client';
+import { ComboBoxProps, CookieBannerProps } from '@/props';
 import {
   Container,
   Footer,
@@ -22,7 +22,7 @@ import {
   Stack,
   Alert,
   Breadcrumbs,
-  Toast,
+  //Toast,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -33,45 +33,46 @@ import {
   ProgressStepper,
   Checkbox,
   CheckboxesGroup,
-} from "@govie-ds/react";
+} from '@govie-ds/react';
 
 export default function Home() {
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: "/" }}
-        tools={{ search: { action: "/search-page" } }}
+        logo={{ href: '/' }}
+        tools={{ search: { action: '/search-page' } }}
         navLinks={[
           {
-            href: "#",
-            label: "News",
+            href: '#',
+            label: 'News',
           },
           {
-            href: "#",
-            label: "Departments",
+            href: '#',
+            label: 'Departments',
           },
           {
-            href: "#",
-            label: "Services",
+            href: '#',
+            label: 'Services',
           },
         ]}
         languages={[
           {
-            href: "#",
-            label: "Gaeilge",
+            href: '#',
+            label: 'Gaeilge',
           },
         ]}
       />
+
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        {/* TODO: Investigate the issue regarding the Toast component when running the application */}
+        {/* TODO: Investigate the issue regarding the Toast component when running the application 
         <Toast title="This is a toast" />
         <Toast
           title="Toast triggered"
           variant="success"
           trigger={<Button>Trigger Toast</Button>}
-        />
+        />*/}
         <div className="flex flex-col gap-4 my-4">
           <Breadcrumbs>
             <BreadcrumbLink href="/home">Home</BreadcrumbLink>
@@ -92,8 +93,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: "send",
-              ariaLabel: "Send",
+              icon: 'send',
+              ariaLabel: 'Send',
             }}
           />
           <Combobox {...ComboBoxProps} />
@@ -101,11 +102,11 @@ export default function Home() {
           <CheckboxesGroup
             groupId="field-Id"
             items={[
-              { label: "Irish", value: "irish" },
-              { label: "British", value: "british" },
+              { label: 'Irish', value: 'irish' },
+              { label: 'British', value: 'british' },
               {
-                label: "Citizen of another country",
-                value: "citizen-of-another-country",
+                label: 'Citizen of another country',
+                value: 'citizen-of-another-country',
               },
             ]}
           />
@@ -126,37 +127,37 @@ export default function Home() {
           <hr />
           <RadiosGroup
             title={{
-              value: "Where do you live?",
+              value: 'Where do you live?',
               asHeading: {
-                size: "md",
-                as: "h2",
+                size: 'md',
+                as: 'h2',
               },
             }}
             items={[
               {
-                label: "England",
-                value: "england",
+                label: 'England',
+                value: 'england',
               },
               {
-                label: "Scotland",
-                value: "scotland",
+                label: 'Scotland',
+                value: 'scotland',
               },
               {
-                label: "Ireland",
-                value: "ireland",
+                label: 'Ireland',
+                value: 'ireland',
               },
             ]}
             groupId="uniqueId"
           />
           <TextArea
             hint={{
-              text: "Hint: This is a helpful hint.",
+              text: 'Hint: This is a helpful hint.',
             }}
             id="textarea-id"
             maxChars={50}
             label={{
-              text: "Textarea text",
-              htmlFor: "textarea-id",
+              text: 'Textarea text',
+              htmlFor: 'textarea-id',
             }}
           />
 
@@ -175,11 +176,11 @@ export default function Home() {
               <Button>Primary action</Button>
             </div>
           </Modal>
-          <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: "column", base: "row" }}
+              direction={{ sm: 'column', base: 'row' }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}
@@ -230,13 +231,13 @@ export default function Home() {
           <ProgressStepper
             currentStepIndex={3}
             steps={[
-              "Step 1",
-              "Step 2",
-              "Step 3",
-              "Step 4",
-              "Step 5",
-              "Step 6",
-              "Step 7",
+              'Step 1',
+              'Step 2',
+              'Step 3',
+              'Step 4',
+              'Step 5',
+              'Step 6',
+              'Step 7',
             ]}
           />
         </div>
