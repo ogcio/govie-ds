@@ -20,13 +20,9 @@ libraries:
 ### With search
 
 <ComponentContainer>
-  <ComboBox {...{
-    action: '#',
-    id: 'ComboBoxId',
-    dropdownItems: [
-      {
-        label: 'Organisations',
-        options: [
+  <Form>
+    <ComboBox>
+      <DropdownItem options={[
           {
             label: 'An Bord Pleanála',
             value: '15431907-an-bord-pleanala',
@@ -55,11 +51,10 @@ libraries:
             label: 'Central Bank of Ireland',
             value: '10032007-central-bank-of-ireland',
           },
-        ],
-      },
-      {
-        label: 'Category',
-        options: [
+        ]}>
+        <b style={{fontWeight: 400}}>Organisations</b>
+      </DropdownItem>
+      <DropdownItem options={[
           {
             label: 'Agencies',
             value: 'agencies',
@@ -112,11 +107,10 @@ libraries:
             label: 'News',
             value: 'news',
           },
-        ],
-      },
-      {
-        label: 'Topic',
-        options: [
+        ]}>
+        <b style={{fontWeight: 400}}>Category</b>
+      </DropdownItem>
+      <DropdownItem options={[
           {
             label: 'Brexit',
             value: 'brexit',
@@ -165,10 +159,11 @@ libraries:
             label: 'Press releases',
             value: 'press_releases',
           },
-        ],
-      },
-    ],
-  }} />
+        ]}>
+        <b style={{fontWeight: 400}}>Topic</b>
+      </DropdownItem>
+    </ComboBox>
+  </Form>
 </ComponentContainer>
 
 <Tabs id="tab1">

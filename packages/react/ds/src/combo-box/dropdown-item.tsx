@@ -10,7 +10,7 @@ import { TextInput } from '../text-input/text-input.js';
 import { DropdownItemType } from './types.js';
 
 export const DropdownItem = ({
-  label,
+  children,
   noSearch,
   options,
 }: DropdownItemType) => {
@@ -68,7 +68,7 @@ export const DropdownItem = ({
   };
 
   return (
-    <div>
+    <div role="group" aria-label={`${children} dropdown`}>
       <button
         onClick={(event) => {
           event.preventDefault();
@@ -77,7 +77,7 @@ export const DropdownItem = ({
         className={`gi-combobox-toggle ${isOpen && 'gi-combobox-toggle-open'}`}
       >
         <div className="gi-combobox-toggle-content">
-          <Paragraph size="md">{label}</Paragraph>
+          <Paragraph size="md">{children}</Paragraph>
           {selectedCheckboxes !== 0 && (
             <Tag type={TagType.counter} text={selectedCheckboxes.toString()} />
           )}

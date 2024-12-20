@@ -1,31 +1,8 @@
-import { DropdownItem } from './dropdown-item.js';
+import { cn } from '../cn.js';
 import { ComboboxProps } from './types.js';
 
-export const Combobox = ({
-  action,
-  method,
-  dropdownItems,
-  id,
-  className,
-}: ComboboxProps) => {
+export const Combobox = ({ children, className }: ComboboxProps) => {
   return (
-    <form
-      className={`gi-combobox-container ${className}`}
-      id={id}
-      method={method}
-      action={action}
-    >
-      {dropdownItems.map((dropdown, index) => (
-        <div
-          key={`${index}_${dropdown.label}`}
-          aria-label={`${dropdown.label} dropdown`}
-          role="group"
-        >
-          <DropdownItem {...dropdown} />
-        </div>
-      ))}
-    </form>
+    <div className={cn('gi-combobox-container', className)}>{children}</div>
   );
 };
-
-export default Combobox;
