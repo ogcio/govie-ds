@@ -150,16 +150,6 @@ export const Default: Story = {
         label: 'Services',
       },
     ],
-    languages: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ],
   },
 };
 
