@@ -66,8 +66,8 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        {/* TODO: Investigate the issue regarding the Toast component when running the application 
         <Toast title="This is a toast" />
+        {/* TODO: Investigate the issue regarding the Toast component when running the application 
         <Toast
           title="Toast triggered"
           variant="success"
