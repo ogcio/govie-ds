@@ -29,6 +29,8 @@ export default defineWorkspace([
     ],
     test: {
       name: 'storybook',
+      globals: true,
+      css: true,
       browser: {
         enabled: true,
         headless: true,

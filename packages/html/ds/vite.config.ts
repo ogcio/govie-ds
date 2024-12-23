@@ -28,15 +28,6 @@ export default defineConfig({
       },
       name: 'GovieFrontend',
     },
-    // rollupOptions: {
-    //   external: [],
-    //   input: 'src/index.ts',
-    //   output: {
-    //     assetFileNames: 'assets/[name][extname]',
-    //     entryFileNames: 'govie-frontend.js',
-    //     format: 'umd',
-    //   },
-    // },
     sourcemap: true,
   },
 });

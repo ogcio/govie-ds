@@ -40,7 +40,7 @@ const meta = {
       control: 'object',
       table: {
         type: {
-          summary: `x: ['left', 'center', 'right'] y: ['top', 'cented', 'bottom']`,
+          summary: `x: ['left', 'center', 'right'] y: ['top', 'center', 'bottom']`,
         },
       },
       description: 'Specify the position of the toast',

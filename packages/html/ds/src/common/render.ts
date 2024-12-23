@@ -14,8 +14,8 @@ import {
 } from '@testing-library/dom';
 import axe from 'axe-core';
 import { initGovIe } from '..';
-import { addMacroValidation } from './validation';
 import { renderMacro } from '../macro';
+import { addMacroValidation } from './validation';
 
 function toAxeErrorMessage(violations: axe.Result[]) {
   return violations
