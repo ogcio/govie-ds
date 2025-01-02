@@ -31,12 +31,14 @@ export enum ButtonType {
   Button = 'button',
 }
 
- export const ariaSchema = zod.record(
-  zod.string({
-    description: 'ARIA attributes key-value pairs',
-  }),
-  { description: 'An object of ARIA attributes' }
-).optional();
+export const ariaSchema = zod
+  .record(
+    zod.string({
+      description: 'ARIA attributes key-value pairs',
+    }),
+    { description: 'An object of ARIA attributes' },
+  )
+  .optional();
 
 export const buttonSchema = zod.object({
   content: zod.string({
@@ -73,7 +75,7 @@ export const buttonSchema = zod.object({
       description: 'The value for the button sent in the request',
     })
     .optional(),
-  aria: ariaSchema
+  aria: ariaSchema,
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;

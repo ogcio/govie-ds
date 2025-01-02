@@ -141,12 +141,12 @@ describe('button', () => {
         controls: 'menu1',
       },
     };
-    
+
     const screen = renderButton(propsWithAria);
-    
+
     // Check if ARIA attributes are rendered correctly
     const buttonElement = screen.getByText(standardProps.content);
-    
+
     expect(buttonElement).toHaveAttribute('aria-disabled', 'true');
     expect(buttonElement).toHaveAttribute('aria-expanded', 'false');
     expect(buttonElement).toHaveAttribute('aria-controls', 'menu1');
