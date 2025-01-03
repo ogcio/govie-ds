@@ -609,21 +609,21 @@ export const withExternalLinks: Story = {
     const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
 
     await expect(logoLink).toHaveAttribute('target', '_blank');
-    await expect(logoLink).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
-    await expect(internalNav).not.toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(externalNav).toHaveAttribute('target', '_blank');
-    await expect(externalNav).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(externalTool).toHaveAttribute('target', '_blank');
-    await expect(externalTool).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(internalTool).not.toHaveAttribute('target', '_blank');
     await expect(internalTool).not.toHaveAttribute(
       'rel',
-      'noopener noreferrer',
+      'noreferrer noopener',
     );
   },
 };
@@ -670,23 +670,23 @@ export const mobileWithExternalLinks: Story = {
     const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
 
     await expect(logoLink).toHaveAttribute('target', '_blank');
-    await expect(logoLink).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
 
     await userEvent.click(headerMobileMenu);
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
-    await expect(internalNav).not.toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(externalNav).toHaveAttribute('target', '_blank');
-    await expect(externalNav).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(externalTool).toHaveAttribute('target', '_blank');
-    await expect(externalTool).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(internalTool).not.toHaveAttribute('target', '_blank');
     await expect(internalTool).not.toHaveAttribute(
       'rel',
-      'noopener noreferrer',
+      'noreferrer noopener',
     );
   },
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   external?: boolean;
 };
 
@@ -11,7 +11,7 @@ const Anchor = ({
 }: React.PropsWithChildren<AnchorProps>) => {
   const externalProps = external && {
     target: '_blank',
-    rel: 'noopener noreferrer',
+    rel: 'noreferrer noopener',
   };
 
   return (

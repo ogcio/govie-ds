@@ -203,21 +203,21 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
     const secondary12 = canvas.getByTestId('secondary-1-2').firstChild;
 
     await expect(mainLink0).not.toHaveAttribute('target', '_blank');
-    await expect(mainLink0).not.toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(mainLink0).not.toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(mainLink2).toHaveAttribute('target', '_blank');
-    await expect(mainLink2).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(mainLink2).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(secondary00).not.toHaveAttribute('target', '_blank');
-    await expect(secondary00).not.toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(secondary00).not.toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(secondary02).toHaveAttribute('target', '_blank');
-    await expect(secondary02).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(secondary02).toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(secondary10).not.toHaveAttribute('target', '_blank');
-    await expect(secondary10).not.toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(secondary10).not.toHaveAttribute('rel', 'noreferrer noopener');
 
     await expect(secondary12).toHaveAttribute('target', '_blank');
-    await expect(secondary12).toHaveAttribute('rel', 'noopener noreferrer');
+    await expect(secondary12).toHaveAttribute('rel', 'noreferrer noopener');
   },
 };
