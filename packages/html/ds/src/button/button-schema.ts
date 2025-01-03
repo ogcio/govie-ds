@@ -31,13 +31,12 @@ export enum ButtonType {
   Button = 'button',
 }
 
-export const ariaSchema = zod
-  .record(
-    zod.string({
-      description: 'ARIA attributes key-value pairs',
-    }),
-    { description: 'An object of ARIA attributes' },
-  );
+export const ariaSchema = zod.record(
+  zod.string({
+    description: 'ARIA attributes key-value pairs',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
 
 export const buttonSchema = zod.object({
   content: zod.string({
