@@ -45,6 +45,11 @@ export const checkboxSchema = zod.object({
       description: 'Disable state for item',
     })
     .optional(),
+  name: zod
+    .string({
+      description: 'The name associated with the input',
+    })
+    .optional(),
 });
 
 export const checkboxesSchema = zod.object({
