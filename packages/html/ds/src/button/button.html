@@ -1,3 +1,4 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
 {% from 'button/helpers.html' import getVariantAppearanceClass, getSizeClass, isButtonDisabled %}
 
 {% macro govieButton(props) %}
@@ -29,6 +30,7 @@
     </a>
   {% else %}
     <button
+      {{ commonAriaAttributes(props) }}
       {% if props.type %}type="{{ props.type }}"{% endif %}
       {% if props.form %}form="{{ props.form }}"{% endif %}
       {% if props.value %}value="{{ props.value }}"{% endif %}
