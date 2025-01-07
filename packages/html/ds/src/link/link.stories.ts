@@ -104,7 +104,32 @@ export const styledAsButton: Story = {
 export const asButton: Story = {
   args: {
     as: 'button',
+    label: 'Link'
+  },
+};
+
+export const asButtonDisabled: Story = {
+  args: {
+    as: 'button',
     label: 'Link',
+    asButton: {
+      disabled: true,
+      aria: {
+        'aria-disabled': 'true'
+      }
+    }
+  },
+};
+
+export const withAriaAttributes: Story = {
+  args: {
+    href: '#',
+    label: 'Link',
+    size: LinkSize.MEDIUM,
+    aria: {
+      'aria-current': '2',
+      'aria-disabled': 'false',
+    }
   },
 };
 
