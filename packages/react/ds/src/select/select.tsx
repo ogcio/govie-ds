@@ -1,6 +1,11 @@
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
+import {
+  Select as SelectComposable,
+  SelectGroupItem,
+  SelectItem,
+} from '../select-composable/select.js';
 
 export type Option = {
   label: string;
@@ -36,35 +41,33 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       )}
       {hint?.text && <HintText text={hint.text} size={hint.size} />}
       {error?.text && <ErrorText text={error.text} size={error.size} />}
-      <select className="gi-select" id={id} aria-label={ariaLabel}>
+      <SelectComposable id={id} aria-label={ariaLabel}>
         {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;
           return isGroupOption ? (
-            <optgroup
+            <SelectGroupItem
               label={option.groupName}
               key={`optgroup-${option.groupName}-${index}`}
             >
               {option.items.map((option, index) => (
-                <option
+                <SelectItem
                   key={`option-${option.value}-${index}`}
-                  className="gi-select-option"
                   value={option.value}
                 >
                   {option.label}
-                </option>
+                </SelectItem>
               ))}
-            </optgroup>
+            </SelectGroupItem>
           ) : (
-            <option
+            <SelectItem
               key={`option-${option.value}-${index}`}
-              className="gi-select-option"
               value={option.value}
             >
               {option.label}
-            </option>
+            </SelectItem>
           );
         })}
-      </select>
+      </SelectComposable>
     </div>
   );
 }
