@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect, userEvent } from '@storybook/test';
 import { Container } from '../container/container.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
@@ -571,5 +572,121 @@ export const ShowMobileMenuForLanguages: Story = {
         label: 'English',
       },
     ],
+  },
+};
+
+export const withExternalLinks: Story = {
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    tools: {
+      items: [
+        { href: '#', label: 'Internal Tool' },
+        { href: '#', label: 'External Tool', external: true },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'Internal Nav',
+      },
+      {
+        href: '#',
+        label: 'External Nav',
+        external: true,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const logoLink = canvas.getByTestId('logo-link');
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noreferrer noopener',
+    );
+  },
+};
+
+export const mobileWithExternalLinks: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    tools: {
+      items: [
+        { href: '#', label: 'Internal Tool' },
+        { href: '#', label: 'External Tool', external: true },
+      ],
+    },
+    navLinks: [
+      {
+        href: '#',
+        label: 'Internal Nav',
+      },
+      {
+        href: '#',
+        label: 'External Nav',
+        external: true,
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const logoLink = canvas.getByTestId('logo-link');
+    const headerMobileMenu = canvas.getByTestId('header-mobile-menu');
+
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await userEvent.click(headerMobileMenu);
+
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noreferrer noopener',
+    );
   },
 };

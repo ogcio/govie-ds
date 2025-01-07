@@ -1,10 +1,12 @@
 import LogoGovOfIreland from '../assets/logos/gov-of-ireland.js';
 import { Container } from '../container/container.js';
+import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
 
 type FooterLink = {
   label: string;
   href: string;
+  external?: boolean;
 };
 
 export type FooterProps = {
@@ -31,7 +33,9 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
                       data-testid={`secondary-${navIndex}-${index}`}
                       key={`secondary-${navIndex}-${index}`}
                     >
-                      <a href={link.href}>{link.label}</a>
+                      <Anchor href={link.href} external={link.external}>
+                        {link.label}
+                      </Anchor>
                     </li>
                   ))}
                 </ul>
@@ -47,7 +51,9 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
                   data-testid={`main-link-${index}`}
                   key={`main-link-${index}`}
                 >
-                  <a href={link.href}>{link.label}</a>
+                  <Anchor href={link.href} external={link.external}>
+                    {link.label}
+                  </Anchor>
                 </li>
               ))}
             </ul>
