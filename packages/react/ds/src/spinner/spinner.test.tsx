@@ -8,11 +8,4 @@ describe('govieSpinner', () => {
   testVariantsAxe(Reflect.ownKeys(sizeVariants) as string[], (variant) =>
     renderSpinner({ size: variant }),
   );
-
-  it('should pass axe tests', async () => {
-    const screen = renderSpinner({
-      size: 'lg',
-    });
-    await screen.axe();
-  });
 });
