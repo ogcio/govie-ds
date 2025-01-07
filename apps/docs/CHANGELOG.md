@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.36.0](https://github.com/ogcio/govie-ds/compare/docs-v0.35.0...docs-v0.36.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
 ## [0.35.0](https://github.com/ogcio/govie-ds/compare/docs-v0.34.0...docs-v0.35.0) (2024-12-12)
 
 

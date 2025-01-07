@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './select.js';
 
 const meta = {
-  title: 'Form/Select',
+  title: 'Form/Select/Select',
   parameters: {
     docs: {
       description: {
         component:
-          'A select that component allows users to choose an option from a long list.',
+          'A select component that allows users to choose an option from a long list.',
       },
     },
   },

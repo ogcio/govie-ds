@@ -15,6 +15,11 @@ export * from './error-text/error-text.js';
 export * from './blockquote/blockquote.js';
 export * from './textarea/textarea.js';
 export * from './select/select.js';
+export {
+  Select as SelectComposable,
+  SelectGroupItem,
+  SelectItem,
+} from './select-composable/select.js';
 export * from './table/caption.js';
 export * from './table/column-group.js';
 export * from './table/column.js';
