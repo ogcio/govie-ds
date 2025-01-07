@@ -136,9 +136,9 @@ describe('button', () => {
     const propsWithAria = {
       ...standardProps,
       aria: {
-        disabled: 'true',
-        expanded: 'false',
-        controls: 'menu1',
+        'aria-disabled': 'true',
+        'aria-expanded': 'false',
+        'aria-controls': 'menu1',
       },
     };
 

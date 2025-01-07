@@ -31,9 +31,21 @@ export enum ButtonType {
   Button = 'button',
 }
 
+const validAriaProps = [
+  'aria-disabled',
+  'aria-label',
+  'aria-hidden',
+  'aria-expanded',
+  'aria-checked',
+  'aria-required',
+] as const;
+
 export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
   zod.string({
-    description: 'ARIA attributes key-value pairs',
+    description: 'ARIA attributes value',
   }),
   { description: 'An object of ARIA attributes' },
 );

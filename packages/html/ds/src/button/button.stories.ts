@@ -156,7 +156,7 @@ export const Disabled: Story = {
     disabled: true,
     content: `Button`,
     aria: {
-      disabled: 'true',
+      'aria-disabled': 'true',
     },
   },
 };
