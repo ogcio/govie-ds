@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
 import { getTickSize, getSizeClass } from './helpers.js';
 
@@ -17,7 +18,7 @@ type CheckboxType = {
   checked?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
-};
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Checkbox = ({
   id,
@@ -25,6 +26,7 @@ export const Checkbox = ({
   onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
+  name,
   hint,
   checked,
   disabled,
@@ -35,7 +37,7 @@ export const Checkbox = ({
     <>
       <div className="gi-checkbox-container">
         <input
-          name={label}
+          name={name || label}
           onChange={onChange}
           id={CheckboxId}
           value={value}

@@ -34,6 +34,8 @@ import {
   ProgressStepper,
   Checkbox,
   CheckboxesGroup,
+  DropdownItem,
+  Form,
 } from "@govie-ds/react";
 
 export default function Home() {
@@ -95,7 +97,19 @@ export default function Home() {
               ariaLabel: "Send",
             }}
           />
-          <Combobox {...ComboBoxProps} />
+          <Form>
+            <Combobox>
+              <DropdownItem options={ComboBoxProps.organisationOptions}>
+                Organisations
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.categoryOptions}>
+                Category
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.topicOptions}>
+                Topic
+              </DropdownItem>
+            </Combobox>
+          </Form>
           <h2>Checkboxes Group</h2>
           <CheckboxesGroup
             groupId="field-Id"

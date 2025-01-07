@@ -63,11 +63,12 @@
           {{
             govieCheckbox({
                 "dataElement": option.label,
-                "checkboxId": option.label,
+                "checkboxId": "cb_" ~ loop.index0 ~ "_" ~ props['label'] ~ "_" ~ option.value,
                 "size": "sm",
                 "label": option.label,
                 "value": option.value,
-                "className": "gi-combobox-checkbox"
+                "className": "gi-combobox-checkbox",
+                "name": loop.index0 ~ "_" ~ props['label'] ~ "_" ~ option.value
             })
           }}
         {% endfor %}

@@ -51,6 +51,8 @@ import {
   TableBody,
   Link,
   Tooltip,
+  DropdownItem,
+  Form,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -126,6 +128,10 @@ const standardComponents: MDXComponents = {
 };
 
 const documentComponents: MDXComponents = {
+  DropdownItem: (props) => (
+    <DropdownItem {...props}>{props.children}</DropdownItem>
+  ),
+  Form: (props) => <Form {...props}>{props.children}</Form>,
   Image: (props) => <DocumentImage {...props} />,
   ColorPrimitives: () => <ColorPrimitives />,
   FontFamilyTable: () => <FontFamilyTable />,
@@ -180,7 +186,7 @@ const documentComponents: MDXComponents = {
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
-  ComboBox: (props) => <Combobox {...props} />,
+  ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
   TextInput: (props) => <TextInput {...props} />,
