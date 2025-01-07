@@ -1,14 +1,11 @@
 import { useEffect } from 'react';
 import { cn } from '../../cn.js';
 import { Icon, IconId } from '../../icon/icon.js';
+import Anchor from '../../primitives/anchor.js';
 import { HeaderProps } from '../header.js';
 import HeaderSearch from './header-search.js';
 
 type HeaderMenuProps = {
-  navLinks?: {
-    href: string;
-    label: string;
-  }[];
   languages?: {
     href: string;
     label: string;
@@ -19,7 +16,7 @@ type HeaderMenuProps = {
     label?: string;
     icon?: IconId;
   };
-} & Pick<HeaderProps, 'tools'>;
+} & Pick<HeaderProps, 'tools' | 'navLinks'>;
 
 type MenuItemAccordionProps = {
   index: number;
@@ -30,22 +27,25 @@ type MenuListItemProps = {
   href?: string;
   label?: string;
   bold?: boolean;
+  external?: boolean;
 };
 
 const MenuListItem = ({
   href = '#',
   label = '',
   bold = true,
+  external,
 }: MenuListItemProps) => (
-  <a
+  <Anchor
     aria-label={label || 'link with no label'}
     href={href}
     className="gi-header-menu-list-item"
+    external={external}
   >
     <span className={cn('gi-text-sm', 'gi-ml-1', { 'gi-font-bold': bold })}>
       {label}
     </span>
-  </a>
+  </Anchor>
 );
 
 export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
@@ -124,23 +124,29 @@ function HeaderMenu({
       <ul>
         {navLinks?.map((link, index) => (
           <li key={`navLink-${link.label}-${index}`}>
-            <MenuListItem href={link.href} label={link.label} />
+            <MenuListItem
+              href={link.href}
+              label={link.label}
+              external={link.external}
+            />
           </li>
         ))}
-        {tools?.items?.map(({ href, label, slot, keepOnMobile }, index) => {
-          if (slot && !keepOnMobile) {
-            return null;
-          }
-          return (
-            <li key={`toolItems-${label}-${index}`}>
-              {slot ? (
-                <MenuItemAccordion index={index} item={{ label, slot }} />
-              ) : (
-                <MenuListItem href={href} label={label} />
-              )}
-            </li>
-          );
-        })}
+        {tools?.items?.map(
+          ({ href, label, slot, keepOnMobile, external }, index) => {
+            if (slot && !keepOnMobile) {
+              return null;
+            }
+            return (
+              <li key={`toolItems-${label}-${index}`}>
+                {slot ? (
+                  <MenuItemAccordion index={index} item={{ label, slot }} />
+                ) : (
+                  <MenuListItem href={href} label={label} external={external} />
+                )}
+              </li>
+            );
+          },
+        )}
         {languages?.map((link, index) => (
           <li key={`language-${link.label}-${index}`}>
             <MenuListItem href={link.href} label={link.label} bold={false} />
