@@ -57,6 +57,7 @@ export * from './toast/toast.js';
 export * from './pagination/pagination.js';
 export * from './breadcrumbs/breadcrumbs.js';
 export * from './summary-list/summary-list.js';
+export * from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
 export * from './tooltip/tooltip.js';
 export * from './common/form.js';

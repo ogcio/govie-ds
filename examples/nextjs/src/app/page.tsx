@@ -30,6 +30,7 @@ import {
   SummaryList,
   SummaryListAction,
   SummaryListValue,
+  ProgressBar,
   ProgressStepper,
   Checkbox,
   CheckboxesGroup,
@@ -238,6 +239,8 @@ export default function Home() {
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
+
+          <ProgressBar value={50} label="Loading..." />
 
           <ProgressStepper
             currentStepIndex={3}

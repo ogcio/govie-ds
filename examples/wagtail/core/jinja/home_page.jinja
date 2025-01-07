@@ -24,6 +24,7 @@
 {% from 'summary-list/summary-list.html' import govieSummaryList %}
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
+{% from 'progress-bar/progress-bar.html' import govieProgressBar%}
 {% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
 {% from 'table/table.html' import govieTable %}
 {% from 'checkbox/checkbox.html' import govieCheckbox %}
@@ -279,6 +280,12 @@
     ]
   }) }}
 
+
+  <h2>Progress bar</h2>
+  {{ govieProgressBar({"label": "Loading...", "size": "md", "color": "green", "value": 50 }) }}
+
+  {{ govieProgressBar({ "isIndeterminate": true }) }}
+  
   <br />
   <h2>Progress Stepper</h2>
    {{
