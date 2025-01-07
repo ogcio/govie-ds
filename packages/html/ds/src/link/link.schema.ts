@@ -8,6 +8,25 @@ export enum LinkSize {
 
 const linkTypeSchema = zod.union([zod.literal('a'), zod.literal('button')]);
 
+const validAriaProps = [
+  'aria-disabled',
+  'aria-label',
+  'aria-hidden',
+  'aria-current',
+  'aria-labelledby',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
+
 export const linkSchema = zod.object({
   as: linkTypeSchema
     .optional()
@@ -61,6 +80,7 @@ export const linkSchema = zod.object({
       description: 'Size of the link',
     })
     .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type LinkProps = zod.infer<typeof linkSchema>;
