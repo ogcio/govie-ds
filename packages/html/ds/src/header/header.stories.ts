@@ -350,7 +350,7 @@ export const tabletView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
-      defaultViewport: 'pixel',
+      defaultViewport: 'ipad',
     },
   },
   args: {
