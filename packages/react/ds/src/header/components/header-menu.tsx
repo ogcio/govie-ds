@@ -88,15 +88,13 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       data-open="false"
     >
       <div aria-label={item.label} className="gi-header-accordion-item-toggle">
-        <div className="gi-full-width gi-flex gi-justify-between">
+        <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
           <Icon icon="chevron_right" className="gi-accordion-item-icon" />
         </div>
       </div>
 
-      <div className="gi-accordion-item-slot gi-hidden gi-bg-gray-50 gi-p-4">
-        {item.slot}
-      </div>
+      <div className="gi-accordion-item-slot gi-hidden">{item.slot}</div>
     </div>
   );
 };
@@ -110,20 +108,20 @@ function HeaderMenu({
   return (
     <div
       id="HeaderMenuContainer"
-      className="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen lg:gi-hidden"
+      className="gi-header-menu-container lg:gi-hidden"
     >
-      <div className="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
+      <div>
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
-            className="gi-border gi-border-solid gi-border-transparent lg:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
+            className="gi-header-menu-mobile-trigger"
           >
-            <span className="gi-text-2md gi-font-bold">Close</span>
+            <span>Close</span>
             <Icon icon={'close'} />
           </label>
         </div>
       </div>
-      <ul className="gi-bg-white gi-px-4 sm:gi-px-8">
+      <ul>
         {navLinks?.map((link, index) => (
           <li key={`navLink-${link.label}-${index}`}>
             <MenuListItem

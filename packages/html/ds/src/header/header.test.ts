@@ -103,4 +103,54 @@ describe('header', () => {
     const searchElement = screen.getByTestId('SearchTrigger');
     expect(searchElement).toBeTruthy();
   });
+
+  it('should render header menu slots', () => {
+    const screen = renderHeader({
+      ...standardProps,
+      tools: {
+        ...standardProps.tools,
+        items: [
+          {
+            href: '#',
+            icon: 'thumb_up',
+            slot: '<div>Here is a slot component</div>',
+            label: 'Slot',
+          },
+          {
+            href: '#',
+            icon: 'info',
+            slot: '<div>Here is a slot component 2</div>',
+            label: 'Slot 2',
+          },
+        ],
+      },
+    });
+
+    const slotMenu = screen.getByTestId('ItemActionTrigger-0');
+    expect(slotMenu).toBeInTheDocument();
+    expect(screen.getByText('Slot'));
+
+    const slotMenu1 = screen.getByTestId('ItemActionTrigger-1');
+    expect(slotMenu1).toBeInTheDocument();
+    expect(screen.getByText('Slot 2'));
+  });
+
+  it('should display the hamburger menu on mobile devices when only the languages prop is provided.', () => {
+    const screen = renderHeader({
+      logo: { href: '/home' },
+      languages: [
+        {
+          href: '#',
+          label: 'Gaeilge',
+        },
+        {
+          href: '#',
+          label: 'English',
+        },
+      ],
+    });
+
+    const mobileMenu = screen.getByTestId('header-mobile-menu');
+    expect(mobileMenu).toBeInTheDocument();
+  });
 });

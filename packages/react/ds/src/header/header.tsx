@@ -173,7 +173,7 @@ export function Header({
                   className={`${toolItemClassNames}`}
                 >
                   <input
-                    className="gi-block gi-w-0 gi-absolute gi-h-0"
+                    className="gi-header-mobile-menu-trigger"
                     id="SearchTrigger"
                     data-testid="SearchTrigger"
                     type="checkbox"
@@ -221,8 +221,8 @@ export function Header({
                 className={`${toolItemClassNames} lg:gi-hidden`}
               >
                 <input
-                  className="gi-block gi-w-0 gi-absolute gi-h-0"
                   id="MobileMenuTrigger"
+                  className="gi-header-mobile-menu-trigger"
                   type="checkbox"
                   data-testid="header-mobile-menu"
                 />
@@ -236,10 +236,7 @@ export function Header({
         </div>
       </div>
       {tools?.search && (
-        <div
-          id="SearchContainer"
-          className={`gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800`}
-        >
+        <div id="SearchContainer" className="gi-header-tool-container">
           <HeaderSearch {...tools.search} />
         </div>
       )}
