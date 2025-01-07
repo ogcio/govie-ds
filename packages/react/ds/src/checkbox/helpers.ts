@@ -6,7 +6,7 @@ export const getTickSize = (size: CheckboxSizeEnum): string => {
       return 'checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2';
     }
     case CheckboxSizeEnum.Small: {
-      return 'checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1';
+      return 'checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1';
     }
     default: {
       return 'checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5';

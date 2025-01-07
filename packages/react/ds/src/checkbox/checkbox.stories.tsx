@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './checkbox.js';
+import { Checkbox, CheckboxSizeEnum } from './checkbox.js';
 
 const meta = {
   title: 'Form/Checkbox/Checkbox',
@@ -91,5 +91,32 @@ export const withoutLabel: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
+  },
+};
+
+export const smallCheckbox: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Small,
+  },
+};
+
+export const mediumCheckbox: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Medium,
+  },
+};
+
+export const largeCheckbox: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Large,
   },
 };
