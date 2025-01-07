@@ -3,14 +3,14 @@ title: ComboBox
 description: ComboBox Component
 status: in-review
 libraries:
-    - platform: "local"
-      status: "not-available"
-    - platform: "global"
-      link: "?path=/docs/navigation-combobox--docs"
-      status: "alpha"
-    - platform: "react"
-      link: "?path=/docs/navigation-combobox--docs"
-      status: "alpha"
+  - platform: 'local'
+    status: 'not-available'
+  - platform: 'global'
+    link: '?path=/docs/navigation-combobox--docs'
+    status: 'alpha'
+  - platform: 'react'
+    link: '?path=/docs/navigation-combobox--docs'
+    status: 'alpha'
 ---
 
 # Combo Box
@@ -20,13 +20,10 @@ libraries:
 ### With search
 
 <ComponentContainer>
-  <ComboBox {...{
-    action: '#',
-    id: 'ComboBoxId',
-    dropdownItems: [
-      {
-        label: 'Organisations',
-        options: [
+  <Form>
+    <ComboBox>
+      <DropdownItem
+        options={[
           {
             label: 'An Bord Pleanála',
             value: '15431907-an-bord-pleanala',
@@ -55,11 +52,12 @@ libraries:
             label: 'Central Bank of Ireland',
             value: '10032007-central-bank-of-ireland',
           },
-        ],
-      },
-      {
-        label: 'Category',
-        options: [
+        ]}
+      >
+        <b style={{ fontWeight: 400 }}>Organisations</b>
+      </DropdownItem>
+      <DropdownItem
+        options={[
           {
             label: 'Agencies',
             value: 'agencies',
@@ -112,11 +110,12 @@ libraries:
             label: 'News',
             value: 'news',
           },
-        ],
-      },
-      {
-        label: 'Topic',
-        options: [
+        ]}
+      >
+        <b style={{ fontWeight: 400 }}>Category</b>
+      </DropdownItem>
+      <DropdownItem
+        options={[
           {
             label: 'Brexit',
             value: 'brexit',
@@ -165,10 +164,12 @@ libraries:
             label: 'Press releases',
             value: 'press_releases',
           },
-        ],
-      },
-    ],
-  }} />
+        ]}
+      >
+        <b style={{ fontWeight: 400 }}>Topic</b>
+      </DropdownItem>
+    </ComboBox>
+  </Form>
 </ComponentContainer>
 
 <Tabs id="tab1">
@@ -305,103 +306,102 @@ libraries:
     ```
   </TabPanel>
   <TabPanel value="tab12">
-  ```html
-  <Combobox
-  action="#"
-  id="ComboBoxId"
-  dropdownItems={[
-    {
-      label: "Organisations",
-      options: [
+  ```html 
+      <Combobox
+      action="#"
+      id="ComboBoxId"
+      dropdownItems={[
         {
-          label: "An Bord Pleanála",
-          value: "15431907-an-bord-pleanala",
+          label: "Organisations",
+          options: [
+            {
+              label: "An Bord Pleanála",
+              value: "15431907-an-bord-pleanala",
+            },
+            {
+              label: "An Garda Síochána",
+              value: "an-garda-siochana",
+            },
+            {
+              label: "Bord Bia (Irish Food Board)",
+              value: "14061907-bord-bia-irish-food-board",
+            },
+            {
+              label: "Capital Works Management Framework",
+              value: "7c2ea-capital-works-management-framework",
+            },
+            {
+              label: "Carlow County Council",
+              value: "carlow-county-council",
+            },
+            {
+              label: "Cavan County Council",
+              value: "cavan-county-council",
+            },
+            {
+              label: "Central Bank of Ireland",
+              value: "10032007-central-bank-of-ireland",
+            },
+          ],
         },
         {
-          label: "An Garda Síochána",
-          value: "an-garda-siochana",
+          label: "Category",
+          options: [
+            {
+              label: "Agencies",
+              value: "agencies",
+            },
+            {
+              label: "Aquaculture licences",
+              value: "aquaculture_licence",
+            },
+            {
+              label: "IGEES Publications",
+              value: "igees_publication",
+            },
+            {
+              label: "Local authorities",
+              value: "local_authorities",
+            },
+            {
+              label: "News",
+              value: "news",
+            },
+          ],
         },
         {
-          label: "Bord Bia (Irish Food Board)",
-          value: "14061907-bord-bia-irish-food-board",
+          label: "Topic",
+          options: [
+            {
+              label: "Brexit",
+              value: "brexit",
+            },
+            {
+              label: "Business and industry",
+              value: "business-and-industry",
+            },
+            {
+              label: "Organisation information",
+              value: "organisation_information",
+            },
+            {
+              label: "Policies",
+              value: "policies",
+            },
+            {
+              label: "Policy information",
+              value: "policy_information",
+            },
+            {
+              label: "Press releases",
+              value: "press_releases",
+            },
+          ],
         },
-        {
-          label: "Capital Works Management Framework",
-          value: "7c2ea-capital-works-management-framework",
-        },
-        {
-          label: "Carlow County Council",
-          value: "carlow-county-council",
-        },
-        {
-          label: "Cavan County Council",
-          value: "cavan-county-council",
-        },
-        {
-          label: "Central Bank of Ireland",
-          value: "10032007-central-bank-of-ireland",
-        },
-      ],
-    },
-    {
-      label: "Category",
-      options: [
-        {
-          label: "Agencies",
-          value: "agencies",
-        },
-        {
-          label: "Aquaculture licences",
-          value: "aquaculture_licence",
-        },
-        {
-          label: "IGEES Publications",
-          value: "igees_publication",
-        },
-        {
-          label: "Local authorities",
-          value: "local_authorities",
-        },
-        {
-          label: "News",
-          value: "news",
-        },
-      ],
-    },
-    {
-      label: "Topic",
-      options: [
-        {
-          label: "Brexit",
-          value: "brexit",
-        },
-        {
-          label: "Business and industry",
-          value: "business-and-industry",
-        },
-        {
-          label: "Organisation information",
-          value: "organisation_information",
-        },
-        {
-          label: "Policies",
-          value: "policies",
-        },
-        {
-          label: "Policy information",
-          value: "policy_information",
-        },
-        {
-          label: "Press releases",
-          value: "press_releases",
-        },
-      ],
-    },
-  ]}
-/>;
+      ]}
+    />;
   ```
-
-  </TabPanel>
+</TabPanel>
 </Tabs>
 
 ## Usage
