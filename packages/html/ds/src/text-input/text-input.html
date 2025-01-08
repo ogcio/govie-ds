@@ -1,3 +1,5 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+
 {% macro govieTextInput(props) %}
   {% from 'label/label.html' import govieLabel %}
   {% from 'hint-text/hint-text.html' import govieHintText %}
@@ -67,6 +69,7 @@
       {% endif %}
 
       <input
+        {{ commonAriaAttributes(props) }}
         {% if props.disabled %}disabled{% endif %}
         id="{{ inputId }}"
         {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}

@@ -26,7 +26,6 @@ export const ariaSchema = zod.record(
   { description: 'An object of ARIA attributes' },
 );
 
-
 export const linkSchema = zod.object({
   as: linkTypeSchema
     .optional()

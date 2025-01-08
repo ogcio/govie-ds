@@ -104,7 +104,7 @@ export const styledAsButton: Story = {
 export const asButton: Story = {
   args: {
     as: 'button',
-    label: 'Link'
+    label: 'Link',
   },
 };
 
@@ -115,9 +115,9 @@ export const asButtonDisabled: Story = {
     asButton: {
       disabled: true,
       aria: {
-        'aria-disabled': 'true'
-      }
-    }
+        'aria-disabled': 'true',
+      },
+    },
   },
 };
 
@@ -129,7 +129,7 @@ export const withAriaAttributes: Story = {
     aria: {
       'aria-current': '2',
       'aria-disabled': 'false',
-    }
+    },
   },
 };
 
