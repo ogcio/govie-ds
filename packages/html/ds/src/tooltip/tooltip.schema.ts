@@ -1,5 +1,21 @@
 import * as zod from 'zod';
 
+const validAriaProps = [
+  'aria-describedby',
+  'aria-live',
+  'aria-label',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const tooltipSchema = zod.object({
   text: zod.string({
     description: 'The main text or content of the tooltip.',
@@ -23,17 +39,7 @@ export const tooltipSchema = zod.object({
       description: 'Sets the ID for the tooltip, used for accessibility.',
     })
     .optional(),
-  ariaLabel: zod
-    .string({
-      description: 'Provides an accessible name for the tooltip.',
-    })
-    .optional(),
-  ariaDescribedBy: zod
-    .string({
-      description:
-        'Provides an accessible aria described by property for the tooltip.',
-    })
-    .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type TooltipProps = zod.infer<typeof tooltipSchema>;
