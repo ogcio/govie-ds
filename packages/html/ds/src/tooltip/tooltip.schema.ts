@@ -1,10 +1,6 @@
 import * as zod from 'zod';
 
-const validAriaProps = [
-  'aria-describedby',
-  'aria-live',
-  'aria-label',
-] as const;
+const validAriaProps = ['aria-describedby', 'aria-live', 'aria-label'] as const;
 
 export const ariaSchema = zod.record(
   zod.enum(validAriaProps, {

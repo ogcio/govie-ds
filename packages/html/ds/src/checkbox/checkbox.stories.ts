@@ -125,7 +125,7 @@ export const checkboxWithAriaAttributes: Story = {
     label: 'Checkbox',
     size: CheckboxSizeEnum.Medium,
     aria: {
-      "aria-checked": "false"
-    }
+      'aria-checked': 'false',
+    },
   },
 };

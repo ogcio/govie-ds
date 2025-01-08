@@ -158,7 +158,7 @@ export const WithAriaAttribute: Story = {
     text: 'This is a tooltip at the top.',
     position: 'top',
     aria: {
-      'aria-label': 'Aria label'
+      'aria-label': 'Aria label',
     },
     content: `
       <button

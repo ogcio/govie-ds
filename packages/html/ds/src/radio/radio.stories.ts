@@ -98,7 +98,7 @@ export const withAriaAttributes: Story = {
     value: 'radio-without-label',
     label: 'Radio',
     aria: {
-      "aria-checked": "false"
-    }
+      'aria-checked': 'false',
+    },
   },
 };
