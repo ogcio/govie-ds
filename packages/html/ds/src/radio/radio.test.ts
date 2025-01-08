@@ -17,22 +17,22 @@ const standardProps = {
       label: 'England',
       value: 'england',
       aria: {
-        "aria-checked": "false"
-      }
+        'aria-checked': 'false',
+      },
     },
     {
       label: 'Scotland',
       value: 'scotland',
       aria: {
-        "aria-checked": "false"
-      }
+        'aria-checked': 'false',
+      },
     },
     {
       label: 'Ireland',
       value: 'ireland',
       aria: {
-        "aria-checked": "false"
-      }
+        'aria-checked': 'false',
+      },
     },
   ],
 };
@@ -160,13 +160,13 @@ describe('radios', () => {
 
   it('should update aria-checked attribute on selection', () => {
     const screen = renderRadios(standardProps);
-    
+
     for (const radio of standardProps.items) {
       const labelElement = screen.getByText(radio.label);
       const inputElementValue = screen
         .getByText(radio.label)
         .previousElementSibling?.getAttribute('aria-checked');
-        
+
       expect(labelElement).toBeTruthy();
       expect(inputElementValue).toEqual('false');
     }

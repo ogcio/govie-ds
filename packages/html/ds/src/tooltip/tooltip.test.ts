@@ -48,7 +48,7 @@ describe('govieTooltip', () => {
       text: 'Tooltip text',
       position: 'right',
       aria: {
-        'aria-describedby': 'described-by-id'
+        'aria-describedby': 'described-by-id',
       },
     });
 
