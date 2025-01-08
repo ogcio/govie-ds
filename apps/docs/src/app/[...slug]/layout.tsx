@@ -10,17 +10,22 @@ export async function generateStaticParams() {
 
 type DocumentLayoutProps = {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 };
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string[] };
+  params: Promise<{
+    slug: string[];
+  }>;
 }) {
-  const { title, description } = documents.getMeta({ slug: params.slug });
+  const resolvedParameters = await params;
+  const { title, description } = documents.getMeta({
+    slug: resolvedParameters.slug,
+  });
 
   return {
     title,
@@ -28,11 +33,9 @@ export async function generateMetadata({
   };
 }
 
-export default function DocumentLayoutProps({
-  children,
-  params,
-}: DocumentLayoutProps) {
-  const document = documents.getBySlug({ slug: params.slug });
+export default async function DocumentLayoutProps({ children, params }: any) {
+  const resolvedParameters = await params;
+  const document = documents.getBySlug({ slug: resolvedParameters.slug });
 
   if (!document) {
     notFound();

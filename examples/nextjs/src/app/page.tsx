@@ -22,7 +22,7 @@ import {
   Stack,
   Alert,
   Breadcrumbs,
-  //Toast,
+  Toast,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -69,13 +69,12 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        {/*<Toast title="This is a toast" />
-         TODO: Investigate the issue regarding the Toast component when running the application 
+        <Toast title="This is a toast" />
         <Toast
           title="Toast triggered"
           variant="success"
           trigger={<Button>Trigger Toast</Button>}
-        />*/}
+        />
         <div className="flex flex-col gap-4 my-4">
           <Breadcrumbs>
             <BreadcrumbLink href="/home">Home</BreadcrumbLink>
