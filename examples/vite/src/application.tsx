@@ -33,6 +33,8 @@ import {
   Pagination,
   Checkbox,
   CheckboxesGroup,
+  Form,
+  DropdownItem,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
@@ -158,7 +160,19 @@ export function App() {
                 htmlFor: 'textarea-id',
               }}
             />
-            <Combobox {...ComboBoxProps} />
+            <Form>
+              <Combobox>
+                <DropdownItem options={ComboBoxProps.organisationOptions}>
+                  Organisations
+                </DropdownItem>
+                <DropdownItem options={ComboBoxProps.categoryOptions}>
+                  Category
+                </DropdownItem>
+                <DropdownItem options={ComboBoxProps.topicOptions}>
+                  Topic
+                </DropdownItem>
+              </Combobox>
+            </Form>
             <Toast
               title="Toast Triggered"
               trigger={<Button>Trigger Toast</Button>}

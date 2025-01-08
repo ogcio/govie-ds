@@ -159,7 +159,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
               : resetSearchElement.classList.add('gi-hidden');
 
             if (
-              label?.toLowerCase().includes(state.searchInput.toLowerCase())
+              label?.toLowerCase()?.includes(state.searchInput?.toLowerCase())
             ) {
               checkbox.style.display = 'flex';
             } else {

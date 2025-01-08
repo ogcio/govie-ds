@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
 import html from './checkbox.html?raw';
-import type { CheckboxProps } from './checkboxes.schema';
+import { CheckboxSizeEnum, type CheckboxProps } from './checkboxes.schema';
 
 // Name of the folder the macro resides
 const path = import.meta.url.split('/checkbox')[0];
@@ -88,5 +88,32 @@ export const withoutLabel: Story = {
   args: {
     checkboxId: 'checkbox-id-1',
     value: 'value-1',
+  },
+};
+
+export const smallCheckbox: Story = {
+  args: {
+    checkboxId: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Small,
+  },
+};
+
+export const mediumCheckbox: Story = {
+  args: {
+    checkboxId: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Medium,
+  },
+};
+
+export const largeCheckbox: Story = {
+  args: {
+    checkboxId: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Large,
   },
 };

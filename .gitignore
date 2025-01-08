@@ -10,3 +10,5 @@ govie-frontend.zip
 /packages/html/storybook/static/
 coverage
 accessibility-audit.html
+.vscode
+!.vscode/extensions.json

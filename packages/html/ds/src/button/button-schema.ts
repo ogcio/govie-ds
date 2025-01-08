@@ -31,6 +31,25 @@ export enum ButtonType {
   Button = 'button',
 }
 
+const validAriaProps = [
+  'aria-disabled',
+  'aria-label',
+  'aria-hidden',
+  'aria-expanded',
+  'aria-checked',
+  'aria-required',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const buttonSchema = zod.object({
   content: zod.string({
     description: 'The raw HTML that will be inserted',
@@ -66,6 +85,7 @@ export const buttonSchema = zod.object({
       description: 'The value for the button sent in the request',
     })
     .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type ButtonProps = zod.infer<typeof buttonSchema>;
