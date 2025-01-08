@@ -309,3 +309,25 @@ export const AllStates: Story = {
     },
   },
 };
+
+export const TextInputWithAriaAttributes: Story = {
+  args: {
+    fullFluid: true,
+    id: 'input-id',
+    label: {
+      content: 'Label',
+      for: 'input-id',
+    },
+    error: {
+      content: '',
+    },
+    hint: {
+      content: '',
+    },
+    aria: {
+      'aria-required': 'true',
+      'aria-autocomplete': 'false',
+      'aria-placeholder': 'Placeholder',
+    },
+  },
+};

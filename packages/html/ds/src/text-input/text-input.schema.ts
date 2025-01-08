@@ -17,6 +17,25 @@ export enum InputTypeEnum {
   Week = 'week',
 }
 
+const validAriaProps = [
+  'aria-required',
+  'aria-invalid',
+  'aria-describedby',
+  'aria-labelledby',
+  'aria-autocomplete',
+  'aria-placeholder',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const textInputSchema = zod.object({
   name: zod
     .string({
@@ -73,6 +92,7 @@ export const textInputSchema = zod.object({
     .string({ description: 'The placeholder for the input element' })
     .optional(),
   disabled: zod.boolean({ description: 'Disabled state' }).optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;

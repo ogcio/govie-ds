@@ -83,7 +83,7 @@ describe('link', () => {
       label: 'Example Link',
       aria: { 'aria-disabled': 'true' },
     });
-  
+
     const linkElement = screen.getByRole('link');
     expect(linkElement.getAttribute('aria-disabled')).toBe('true');
   });
