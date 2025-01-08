@@ -92,3 +92,13 @@ export const withoutLabel: Story = {
     value: 'radio-without-label',
   },
 };
+
+export const withAriaAttributes: Story = {
+  args: {
+    value: 'radio-without-label',
+    label: 'Radio',
+    aria: {
+      "aria-checked": "false"
+    }
+  },
+};

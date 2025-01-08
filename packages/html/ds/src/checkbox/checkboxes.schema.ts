@@ -24,7 +24,6 @@ export const ariaSchema = zod.record(
   { description: 'An object of ARIA attributes' },
 );
 
-
 export const checkboxSchema = zod.object({
   checkboxId: zod.string({
     description: 'An unique ID given to the checkbox',
