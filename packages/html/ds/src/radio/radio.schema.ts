@@ -8,6 +8,23 @@ export enum RadioSizeEnum {
   Small = 'sm',
 }
 
+const validAriaProps = [
+  'aria-disabled',
+  'aria-checked',
+  'aria-describedby',
+  'aria-labelledby',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const radioSchema = zod.object({
   value: zod.string({
     description:
@@ -44,6 +61,7 @@ export const radioSchema = zod.object({
   checked: zod
     .boolean({ description: 'if true the component is checked' })
     .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export const radiosSchema = zod.object({
