@@ -117,3 +117,15 @@ export const largeCheckbox: Story = {
     size: CheckboxSizeEnum.Large,
   },
 };
+
+export const checkboxWithAriaAttributes: Story = {
+  args: {
+    checkboxId: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    size: CheckboxSizeEnum.Medium,
+    aria: {
+      "aria-checked": "false"
+    }
+  },
+};
