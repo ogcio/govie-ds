@@ -56,7 +56,9 @@ describe('govieTooltip', () => {
     const screen = renderTooltip({
       text: 'Tooltip text',
       position: 'right',
-      ariaDescribedBy: 'described-by-id',
+      aria: {
+        'aria-describedby': 'described-by-id'
+      },
     });
 
     const wrapper = screen

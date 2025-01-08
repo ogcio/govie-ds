@@ -152,3 +152,23 @@ export const WithLongLabel: Story = {
     `,
   },
 };
+
+export const WithAriaAttribute: Story = {
+  args: {
+    text: 'This is a tooltip at the top.',
+    position: 'top',
+    aria: {
+      'aria-label': 'Aria label'
+    },
+    content: `
+      <button
+        data-testid="govieButton-top-primary-medium-notDisabled"
+        data-element="button-container"
+        data-module="gieds-button"
+        class="gi-btn gi-btn-primary gi-btn-regular"
+      >
+        Hover me (Top)
+      </button>
+    `,
+  },
+};
