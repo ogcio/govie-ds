@@ -1,4 +1,5 @@
-export type ButtonVariant = 'primary' | 'secondary' | 'flat';
+export const ButtonVariants = ['primary', 'secondary', 'flat'] as const;
+export type ButtonVariant = (typeof ButtonVariants)[number];
 
 export type ButtonAppearance = 'default' | 'dark' | 'light';
 
