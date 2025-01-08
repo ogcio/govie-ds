@@ -432,6 +432,34 @@ input[type='text'] {
   position: fixed;
 }
 
+.gi-header-mobile-menu-trigger {
+  @apply gi-block gi-w-0 gi-absolute gi-h-0;
+}
+
+.gi-header-tool-container {
+  @apply gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800;
+}
+
+.gi-header-menu-container {
+  @apply gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen;
+}
+
+.gi-header-menu-container > div {
+  @apply gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4;
+}
+
+.gi-header-menu-container > ul {
+  @apply gi-bg-white gi-px-4 sm:gi-px-8;
+}
+
+.gi-header-menu-mobile-trigger {
+  @apply gi-border gi-border-solid gi-border-transparent lg:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer;
+}
+
+.gi-header-menu-mobile-trigger > span {
+  @apply gi-text-2md gi-font-bold;
+}
+
 #HeaderContainer > ul > li > a {
   @apply gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
 }
@@ -448,8 +476,20 @@ input[type='text'] {
   @apply hover:gi-no-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
 }
 
+.gi-header-accordion-item-toggle > div {
+  @apply gi-w-full gi-flex gi-justify-between;
+}
+
+.gi-accordion-item-slot {
+  @apply gi-bg-gray-50 gi-p-4;
+}
+
 .gi-header-menu-list-item {
   @apply hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
+}
+
+.gi-header-slot-container {
+  @apply gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800;
 }
 
 /* End Header */
@@ -1047,6 +1087,49 @@ input[type='file' i] {
 }
 
 /* End of Table */
+
+/* Progress bar */
+
+.gi-progress-bar-container {
+  @apply gi-flex gi-items-center gi-flex-col;
+}
+
+.gi-progress-bar-container > span {
+  @apply gi-mt-2 gi-text-sm gi-text-gray-700;
+}
+
+.gi-progress-bar {
+  @apply gi-w-full gi-bg-gray-200 gi-overflow-hidden;
+}
+
+.gi-progress-bar > div {
+  @apply gi-transition-all;
+}
+
+.gi-progress-bar-indeterminate {
+  @apply gi-relative gi-overflow-hidden gi-w-[25%];
+  animation: gi-indeterminate-progress 1s linear infinite;
+}
+
+@keyframes gi-indeterminate-progress {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: 0%;
+  }
+  50% {
+    left: 25%;
+  }
+  75% {
+    left: 50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* End of Progress bar*/
 .gi-tooltip-wrapper {
   @apply gi-relative gi-inline-block gi-overflow-visible gi-text-lg;
 }

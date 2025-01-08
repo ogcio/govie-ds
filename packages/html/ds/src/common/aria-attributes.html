@@ -1,0 +1,7 @@
+{% macro commonAriaAttributes(props) %}
+  {% if props.aria %}
+    {% for key, value in props.aria %}
+      {{ key }}="{{ value }}"
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

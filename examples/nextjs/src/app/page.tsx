@@ -30,9 +30,12 @@ import {
   SummaryList,
   SummaryListAction,
   SummaryListValue,
+  ProgressBar,
   ProgressStepper,
   Checkbox,
   CheckboxesGroup,
+  DropdownItem,
+  Form,
 } from '@govie-ds/react';
 
 export default function Home() {
@@ -66,8 +69,8 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        <Toast title="This is a toast" />
-        {/* TODO: Investigate the issue regarding the Toast component when running the application 
+        {/*<Toast title="This is a toast" />
+         TODO: Investigate the issue regarding the Toast component when running the application 
         <Toast
           title="Toast triggered"
           variant="success"
@@ -97,7 +100,19 @@ export default function Home() {
               ariaLabel: 'Send',
             }}
           />
-          <Combobox {...ComboBoxProps} />
+          <Form>
+            <Combobox>
+              <DropdownItem options={ComboBoxProps.organisationOptions}>
+                Organisations
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.categoryOptions}>
+                Category
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.topicOptions}>
+                Topic
+              </DropdownItem>
+            </Combobox>
+          </Form>
           <h2>Checkboxes Group</h2>
           <CheckboxesGroup
             groupId="field-Id"
@@ -227,6 +242,8 @@ export default function Home() {
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
+
+          <ProgressBar value={50} label="Loading..." />
 
           <ProgressStepper
             currentStepIndex={3}

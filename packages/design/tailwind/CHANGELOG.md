@@ -1,6 +1,32 @@
 # Changelog
 
 
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.26.0...tailwind-v0.27.0) (2025-01-07)
+
+
+### Features
+
+* adding slots feature in govieHeader macro ([#373](https://github.com/ogcio/govie-ds/issues/373)) ([95fd203](https://github.com/ogcio/govie-ds/commit/95fd2034aef907084e067628dae18f600b1482b8))
+* Progress Bar component ([#369](https://github.com/ogcio/govie-ds/issues/369)) ([83add63](https://github.com/ogcio/govie-ds/commit/83add6397dedf6db84ab18a3f4aa0fc99eb4eebe))
+
+
+### Bug Fixes
+
+* heading lg size ([a7b690d](https://github.com/ogcio/govie-ds/commit/a7b690dc05cbe9c55ed6dfaa8577e9e540950a3d))
+
+## [0.26.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.25.0...tailwind-v0.26.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
+
+### Bug Fixes
+
+* assets and logo ([#374](https://github.com/ogcio/govie-ds/issues/374)) ([86cf4dc](https://github.com/ogcio/govie-ds/commit/86cf4dcc66aa09bcc252100b0d3fc95687a55021))
+* checkbox feedback fixes ([#372](https://github.com/ogcio/govie-ds/issues/372)) ([842c48d](https://github.com/ogcio/govie-ds/commit/842c48dcf9c75ab45cdcd490371e20387c847c57))
+
 ## [0.25.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.24.0...tailwind-v0.25.0) (2024-12-12)
 
 
