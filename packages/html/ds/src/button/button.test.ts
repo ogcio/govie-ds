@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import buttonHtml from '../icon/icon.html?raw';
 import { IconId, IconProps } from '../icon/icon.schema';
 import {
@@ -20,6 +21,11 @@ describe('button', () => {
     macroName: 'govieButton',
     html,
   });
+
+  testVariantsAxe(
+    [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
+    (variant: ButtonVariant) => renderButton({ ...standardProps, variant }),
+  );
 
   const renderIcon = render<IconProps>({
     componentName: 'icon',

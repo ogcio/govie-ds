@@ -2,9 +2,13 @@
 import { ReactNode, useState, useId } from 'react';
 import { tv } from 'tailwind-variants';
 
+export const positionVariants = ['top', 'bottom', 'left', 'right'];
+
+export type Position = 'top' | 'bottom' | 'left' | 'right';
+
 type TooltipProps = {
   text: string;
-  position: 'top' | 'bottom' | 'left' | 'right';
+  position: Position;
   children: ReactNode;
 };
 

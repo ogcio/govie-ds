@@ -1,12 +1,20 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '../test-utils.js';
-import { Tooltip } from './tooltip.js';
+import { cleanup, render, fireEvent, testVariantsAxe } from '../test-utils.js';
+import { positionVariants, Tooltip } from './tooltip.js';
 
 describe('govieTooltip', () => {
   afterEach(cleanup);
 
   const renderTooltip = (props: React.ComponentProps<typeof Tooltip>) =>
     render(<Tooltip {...props}>Hover me</Tooltip>);
+
+  testVariantsAxe(Reflect.ownKeys(positionVariants), (position) =>
+    renderTooltip({
+      text: 'Tooltip Text',
+      position,
+      children: <button>Hover me</button>,
+    }),
+  );
 
   it('should render the child component', () => {
     const screen = renderTooltip({

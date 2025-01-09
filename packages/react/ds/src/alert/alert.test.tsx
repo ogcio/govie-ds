@@ -1,10 +1,25 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
 import { type AlertProps, Alert } from './alert.js';
+
+const variants: AlertProps['variant'][] = [
+  'info',
+  'success',
+  'warning',
+  'danger',
+];
 
 describe('Alert', () => {
   afterEach(cleanup);
 
   const renderAlert = (props: AlertProps) => render(<Alert {...props} />);
+
+  testVariantsAxe(Reflect.ownKeys(variants), (variant) =>
+    renderAlert({
+      variant,
+      title: 'Information',
+      children: 'This is an info alert',
+    }),
+  );
 
   it('should render alert with title and message', () => {
     const screen = renderAlert({
@@ -19,12 +34,6 @@ describe('Alert', () => {
   });
 
   it('should render different variants', () => {
-    const variants: AlertProps['variant'][] = [
-      'info',
-      'success',
-      'warning',
-      'danger',
-    ];
     for (const variant of variants) {
       const screen = renderAlert({
         variant,

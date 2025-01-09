@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import html from './tooltip.html?raw';
 import { TooltipProps } from './tooltip.schema';
 
@@ -8,6 +9,14 @@ describe('govieTooltip', () => {
     macroName: 'govieTooltip',
     html,
   });
+
+  testVariantsAxe(['top', 'bottom', 'left', 'right'], (position) =>
+    renderTooltip({
+      text: 'Tooltip Text',
+      position,
+      content: '<button>Hover me</button>',
+    }),
+  );
 
   it('should render the tooltip wrapper', () => {
     const screen = renderTooltip({
