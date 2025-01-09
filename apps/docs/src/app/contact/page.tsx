@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, Link, Paragraph } from '@govie-ds/react';
 import { Metadata } from 'next';
 import { config } from '@/lib/config';
 import { getTitle } from '@/lib/documents';
@@ -10,20 +10,15 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div>
+    <main className="gi-layout-container py-6 lg:py-8">
       <Heading>Contact</Heading>
-      <Paragraph>
+      <Paragraph className="mt-2">
         You can contact the design system team using{' '}
-        {/* TODO: replace the a tag with <Link> when target prop is implemented */}
-        <a
-          target="_blank"
-          className="underline text-blue-700 hover:decoration-md"
-          href={config.signUpFormUrl}
-        >
+        <Link external href={config.signUpFormUrl}>
           this form
-        </a>
+        </Link>
         .
       </Paragraph>
-    </div>
+    </main>
   );
 }

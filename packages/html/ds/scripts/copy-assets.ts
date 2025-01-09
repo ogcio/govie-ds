@@ -9,7 +9,11 @@ async function copyAssets() {
   const sourcePath = path.resolve(currentDirectory, '../../../../assets');
   const destinationPath = path.resolve(currentDirectory, '../dist/assets/');
 
-  fs.cpSync(sourcePath, destinationPath, { recursive: true });
+  try {
+    fs.cpSync(sourcePath, destinationPath, { recursive: true });
+  } catch (error) {
+    console.log('Assets not copied: ', error);
+  }
 
   console.log('Assets copied');
 }

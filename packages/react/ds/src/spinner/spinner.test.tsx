@@ -1,14 +1,11 @@
-import { render, cleanup } from '../test-utils.js';
-import { Spinner, type SpinnerProps } from './spinner.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import { sizeVariants, Spinner, type SpinnerProps } from './spinner.js';
 
 describe('govieSpinner', () => {
   afterEach(cleanup);
   const renderSpinner = (props: SpinnerProps) => render(<Spinner {...props} />);
 
-  it('should pass axe tests', async () => {
-    const screen = renderSpinner({
-      size: 'lg',
-    });
-    await screen.axe();
-  });
+  testVariantsAxe(Reflect.ownKeys(sizeVariants) as string[], (variant) =>
+    renderSpinner({ size: variant }),
+  );
 });

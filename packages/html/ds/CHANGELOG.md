@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/html-v0.24.0...html-v0.25.0) (2025-01-07)
+
+
+### Features
+
+* adding slots feature in govieHeader macro ([#373](https://github.com/ogcio/govie-ds/issues/373)) ([95fd203](https://github.com/ogcio/govie-ds/commit/95fd2034aef907084e067628dae18f600b1482b8))
+* composable combo box ([#381](https://github.com/ogcio/govie-ds/issues/381)) ([6d21aa5](https://github.com/ogcio/govie-ds/commit/6d21aa5631903d5faccd400ad27f72e6e78bff20))
+* Progress Bar component ([#369](https://github.com/ogcio/govie-ds/issues/369)) ([83add63](https://github.com/ogcio/govie-ds/commit/83add6397dedf6db84ab18a3f4aa0fc99eb4eebe))
+
+
+### Bug Fixes
+
+* small checkbox alignment ([#383](https://github.com/ogcio/govie-ds/issues/383)) ([7c972a7](https://github.com/ogcio/govie-ds/commit/7c972a76e6c2e5535af579e05f67780d6b48a9fa))
+
 ## [0.24.0](https://github.com/ogcio/govie-ds/compare/html-v0.23.0...html-v0.24.0) (2024-12-18)
 
 

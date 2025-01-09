@@ -1,5 +1,6 @@
 import { userEvent } from '@testing-library/user-event';
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import html from '../toast/toast.html?raw';
 import { ToastProps, ToastVariant } from './toast.schema';
 
@@ -8,12 +9,27 @@ const standardProps = {
   description: 'This is the toast content',
 };
 
+const variants: ToastProps['variant'][] = [
+  ToastVariant.INFO,
+  ToastVariant.SUCCESS,
+  ToastVariant.WARNING,
+  ToastVariant.DANGER,
+];
+
 describe('toast', () => {
   const renderToast = render<ToastProps>({
     componentName: 'toast',
     macroName: 'govieToast',
     html,
   });
+
+  testVariantsAxe(variants, (variant) =>
+    renderToast({
+      title: 'Axe test',
+      description: 'axe test',
+      variant,
+    }),
+  );
 
   it('should render toast with title and message', () => {
     const screen = renderToast(standardProps);
@@ -23,13 +39,6 @@ describe('toast', () => {
   });
 
   it('should render all different variants', () => {
-    const variants: ToastProps['variant'][] = [
-      ToastVariant.INFO,
-      ToastVariant.SUCCESS,
-      ToastVariant.WARNING,
-      ToastVariant.DANGER,
-    ];
-
     for (const variant of variants) {
       const screen = renderToast({
         variant,

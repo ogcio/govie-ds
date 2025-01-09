@@ -1,7 +1,7 @@
 import { Icon } from '../icon/icon.js';
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
 import { Button } from './button.js';
-import { ButtonProps } from './types.js';
+import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
 const standardProps: ButtonProps = {
   children: 'Button Label',
@@ -12,6 +12,10 @@ describe('button', () => {
   afterEach(cleanup);
   const renderButton = ({ children, ...props }: ButtonProps) =>
     render(<Button {...props}>{children}</Button>);
+
+  testVariantsAxe(ButtonVariants, (variant: ButtonVariant) =>
+    renderButton({ ...standardProps, variant }),
+  );
 
   it('should render the label', () => {
     const screen = renderButton(standardProps);

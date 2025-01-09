@@ -2,14 +2,16 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
+export const sizeVariants = {
+  xl: 'gi-w-10 gi-h-10',
+  lg: 'gi-w-8 gi-h-8',
+  md: 'gi-w-6 gi-h-6',
+  sm: 'gi-w-4 gi-h-4',
+};
+
 const spinnerVariants = tv({
   variants: {
-    size: {
-      xl: 'gi-w-10 gi-h-10',
-      lg: 'gi-w-8 gi-h-8',
-      md: 'gi-w-6 gi-h-6',
-      sm: 'gi-w-4 gi-h-4',
-    },
+    size: sizeVariants,
   },
 });
 

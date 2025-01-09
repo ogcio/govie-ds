@@ -42,3 +42,15 @@ export function render(
     },
   };
 }
+
+export const testVariantsAxe = (
+  variants: any,
+  renderFunction: (variant: any) => CustomRenderResult,
+) => {
+  for (const variant of variants) {
+    test(`axe accessibility test for variant: ${variant}`, async () => {
+      const { axe } = renderFunction(variant);
+      await axe();
+    });
+  }
+};

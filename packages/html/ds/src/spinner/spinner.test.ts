@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import { IconSize } from '../icon/icon.schema';
 import html from './spinner.html?raw';
 
@@ -9,10 +10,8 @@ describe('govieSpinner', () => {
     html,
   });
 
-  it('should pass axe tests', async () => {
-    const screen = renderSpinner({
-      size: IconSize.Large,
-    });
-    await screen.axe();
-  });
+  testVariantsAxe(
+    [IconSize.ExtraLarge, IconSize.Large, IconSize.Medium, IconSize.Small],
+    (variant) => renderSpinner({ size: variant }),
+  );
 });

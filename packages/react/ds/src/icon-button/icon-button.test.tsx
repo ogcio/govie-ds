@@ -1,10 +1,20 @@
-import { render, cleanup } from '../test-utils.js';
+import { ButtonVariants } from '../button/types.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
 import { IconButtonType, IconButton } from './icon-button.js';
 
 describe('icon-button', () => {
   afterEach(cleanup);
   const renderIconButton = (props: IconButtonType) =>
     render(<IconButton {...props} />);
+
+  testVariantsAxe(ButtonVariants, (variant) =>
+    renderIconButton({
+      icon: {
+        icon: 'thumb_up',
+      },
+      variant,
+    }),
+  );
 
   it('should render the icon', () => {
     const screen = renderIconButton({

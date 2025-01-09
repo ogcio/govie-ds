@@ -1,5 +1,6 @@
-import { ButtonSize } from '../button/button-schema';
+import { ButtonSize, ButtonVariant } from '../button/button-schema';
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import { IconId } from '../icon/icon.schema';
 import html from './icon-button.html?raw';
 import { iconButtonProps } from './icon-button.schema';
@@ -10,6 +11,17 @@ describe('icon-button', () => {
     macroName: 'govieIconButton',
     html,
   });
+
+  testVariantsAxe(
+    [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
+    (variant) =>
+      renderIconButton({
+        icon: {
+          icon: 'thumb_up',
+        },
+        variant,
+      }),
+  );
 
   it('should render the icon', () => {
     const screen = renderIconButton({

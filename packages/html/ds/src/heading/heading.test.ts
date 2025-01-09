@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import html from './heading.html?raw';
 import type { HeadingProps } from './heading.schema';
 import { Size, Tag } from './heading.schema';
@@ -9,6 +10,25 @@ describe('heading', () => {
     macroName: 'govieHeading',
     html,
   });
+
+  // "size" variant
+  testVariantsAxe(
+    [
+      Size.Medium,
+      Size.ExtraLarge,
+      Size.ExtraSmall,
+      Size.Large,
+      Size.Small,
+      Size.Smallest,
+    ],
+    (variant) =>
+      renderHeading({ as: Tag.H1, text: 'Axe tests', size: variant }),
+  );
+
+  // "as" variant
+  testVariantsAxe([Tag.H1, Tag.H2, Tag.H3, Tag.H4, Tag.H5, Tag.H6], (variant) =>
+    renderHeading({ text: 'Axe tests', as: variant }),
+  );
 
   it('should render heading title', () => {
     const screen = renderHeading({
