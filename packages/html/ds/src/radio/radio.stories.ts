@@ -92,8 +92,8 @@ export const withoutLabel: Story = {
     id: 'without-label-radio',
     value: 'radio-without-label',
     aria: {
-      'aria-label': 'without-label-radio'
-    }
+      'aria-label': 'without-label-radio',
+    },
   },
 };
 
