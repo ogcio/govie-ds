@@ -28,25 +28,26 @@
     {% if media and media.type == 'image' %}
       <div class="gi-card-image">
         <a href="{{ props.href }}">
-          <img src="{{ media.config.src }}" alt="{{ media.config.alt | default(props.title) }}" />
+          <img
+            src="{{ media.config.src }}"
+            alt="{{ media.config.alt | default(props.title) }}"
+          />
         </a>
       </div>
     {% elif media and media.type == 'icon' %}
       <div class="gi-card-icon">
-        <a href="{{ props.href }}">
-          {{ govieIcon(media.config) }}
-        </a>
+        <a href="{{ props.href }}"> {{ govieIcon(media.config) }} </a>
       </div>
     {% elif media and media.type == 'iframe' %}
       <div class="gi-card-iframe">
-        <iframe 
-          src="{{ media.config.src }}" 
+        <iframe
+          src="{{ media.config.src }}"
           title="{{ media.config.title | default(props.title | default('Embedded content')) }}"
           {% if media.config.allow %}
-          allow="{{ media.config.allow }}"
+            allow="{{ media.config.allow }}"
           {% endif %}
           {% if media.config.allowFullScreen %}
-          allowfullscreen
+            allowfullscreen
           {% endif %}
         ></iframe>
       </div>

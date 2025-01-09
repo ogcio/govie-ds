@@ -65,10 +65,12 @@ export const Card = ({
   }, [type, inset]);
 
   const renderMedia = () => {
-    if (!media) return null;
+    if (!media) {
+      return null;
+    }
 
     switch (media.type) {
-      case 'image':
+      case 'image': {
         return (
           <div className="gi-card-image">
             <a href={href}>
@@ -76,7 +78,8 @@ export const Card = ({
             </a>
           </div>
         );
-      case 'icon':
+      }
+      case 'icon': {
         return (
           <div className="gi-card-icon">
             <a href={href}>
@@ -84,7 +87,8 @@ export const Card = ({
             </a>
           </div>
         );
-      case 'iframe':
+      }
+      case 'iframe': {
         return (
           <div className="gi-card-iframe">
             <iframe
@@ -98,8 +102,10 @@ export const Card = ({
             />
           </div>
         );
-      default:
+      }
+      default: {
         return null;
+      }
     }
   };
 

@@ -115,8 +115,8 @@ export const Default: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300'
-      }
+        src: 'https://placeholderjs.com/400x300',
+      },
     },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -152,8 +152,8 @@ export const VerticalWithLink: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300'
-      }
+        src: 'https://placeholderjs.com/400x300',
+      },
     },
     subTitle: 'Subtitle Here',
     content:
@@ -175,8 +175,8 @@ export const VerticalWithButton: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300'
-      }
+        src: 'https://placeholderjs.com/400x300',
+      },
     },
     subTitle: 'Subtitle Here',
     content:
@@ -198,8 +198,8 @@ export const Horizontal: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/600x360'
-      }
+        src: 'https://placeholderjs.com/600x360',
+      },
     },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -236,7 +236,7 @@ export const HorizontalWithIcon: Story = {
         icon: IconId.Download,
         size: IconSize.ExtraLarge,
         className: 'gi-text-gray-500',
-      }
+      },
     },
     title: 'Card With Icon',
     subTitle: 'Subtitle Here',
