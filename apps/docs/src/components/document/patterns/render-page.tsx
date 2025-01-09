@@ -19,7 +19,7 @@ export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
         return 'w-[414px]';
       }
       case 'md': {
-        return 'w-[600px]';
+        return 'w-[768px]';
       }
       default: {
         return 'w-full';
