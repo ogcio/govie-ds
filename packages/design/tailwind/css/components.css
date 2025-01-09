@@ -667,6 +667,10 @@ input[type='file' i] {
   @apply gi-flex gi-items-start gi-self-stretch gi-h-auto;
 }
 
+.gi-card-iframe {
+  @apply gi-flex gi-items-start gi-self-stretch gi-h-auto;
+}
+
 .gi-card-content {
   @apply gi-flex gi-flex-col gi-items-start gi-w-full;
 }

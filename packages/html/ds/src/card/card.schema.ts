@@ -15,7 +15,37 @@ export enum InsetType {
   Full = 'full',
 }
 
-const actionSchema = zod.union([
+// Define the base schemas for different media types
+const imagePropsSchema = zod.object({
+  src: zod.string().describe('Source URL for the image'),
+  alt: zod.string().optional().describe('Alt text for the image'),
+});
+
+const iframePropsSchema = zod.object({
+  src: zod.string().describe('Source URL for the iframe'),
+  title: zod.string().optional().describe('Title for the iframe'),
+  allowFullScreen: zod.boolean().optional().describe('Allow fullscreen mode'),
+  allow: zod.string().optional().describe('Permissions for the iframe'),
+});
+
+// Define the media content discriminated union
+const mediaContentSchema = zod.discriminatedUnion('type', [
+  zod.object({
+    type: zod.literal('image'),
+    config: imagePropsSchema,
+  }),
+  zod.object({
+    type: zod.literal('icon'),
+    config: iconSchema,
+  }),
+  zod.object({
+    type: zod.literal('iframe'),
+    config: iframePropsSchema,
+  }),
+]);
+
+// Define the action schema as a discriminated union
+const actionSchema = zod.discriminatedUnion('type', [
   buttonSchema.extend({
     type: zod.literal('button').describe('Type of action is a button'),
   }),
@@ -24,6 +54,7 @@ const actionSchema = zod.union([
   }),
 ]);
 
+// Updated card schema
 export const cardSchema = zod.object({
   type: zod.nativeEnum(CardType, {
     description: 'Defines whether the card is vertical or horizontal',
@@ -43,10 +74,8 @@ export const cardSchema = zod.object({
       description: 'URL for the card title link (if applicable)',
     })
     .optional(),
-  img: zod
-    .string({
-      description: 'Image URL for the card (if applicable)',
-    })
+  media: mediaContentSchema
+    .describe('Media content for the card (image, icon, or iframe)')
     .optional(),
   inset: zod
     .nativeEnum(InsetType, {
@@ -54,7 +83,6 @@ export const cardSchema = zod.object({
     })
     .optional(),
   tag: tagSchema.describe('Define tag properties').optional(),
-  icon: iconSchema.describe('Define icon properties').optional(),
   content: zod
     .string({
       description: 'Content or description of the card',
