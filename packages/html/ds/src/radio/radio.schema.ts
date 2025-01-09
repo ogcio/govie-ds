@@ -9,6 +9,7 @@ export enum RadioSizeEnum {
 }
 
 const validAriaProps = [
+  'aria-label',
   'aria-disabled',
   'aria-checked',
   'aria-describedby',

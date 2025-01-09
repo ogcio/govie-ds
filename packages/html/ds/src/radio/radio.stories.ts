@@ -89,7 +89,11 @@ export const withDefaultChecked: Story = {
 
 export const withoutLabel: Story = {
   args: {
+    id: 'without-label-radio',
     value: 'radio-without-label',
+    aria: {
+      'aria-label': 'without-label-radio'
+    }
   },
 };
 
