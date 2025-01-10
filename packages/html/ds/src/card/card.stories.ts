@@ -117,7 +117,7 @@ export const Default: Story = {
       type: 'image',
       config: {
         src: 'https://placeholderjs.com/400x300',
-        alt: '400x300'
+        alt: '400x300',
       },
     },
     content:
@@ -156,7 +156,7 @@ export const VerticalWithLink: Story = {
       type: 'image',
       config: {
         src: 'https://placeholderjs.com/400x300',
-        alt: '400x300'
+        alt: '400x300',
       },
     },
     subTitle: 'Subtitle Here',
@@ -181,7 +181,7 @@ export const VerticalWithButton: Story = {
       type: 'image',
       config: {
         src: 'https://placeholderjs.com/400x300',
-        alt: '400x300'
+        alt: '400x300',
       },
     },
     subTitle: 'Subtitle Here',
@@ -206,7 +206,7 @@ export const Horizontal: Story = {
       type: 'image',
       config: {
         src: 'https://placeholderjs.com/600x360',
-        alt: '600x360'
+        alt: '600x360',
       },
     },
     content:
