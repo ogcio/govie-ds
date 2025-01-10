@@ -14,8 +14,8 @@
   "dependencies": {
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/react": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.18.0",

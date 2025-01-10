@@ -5,7 +5,7 @@ import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
-import { SlotItem } from './components/header-slot.js';
+import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
@@ -198,7 +198,10 @@ export function Header({
                       key={`toolItem-${label}-${index}`}
                     >
                       {slot ? (
-                        <SlotItem index={index} item={{ slot, icon, label }} />
+                        <SlotItemAction
+                          index={index}
+                          item={{ slot, icon, label }}
+                        />
                       ) : (
                         <Anchor
                           className={toolItemClassNames}
@@ -235,6 +238,15 @@ export function Header({
           </div>
         </div>
       </div>
+      {tools?.items
+        ?.filter((item) => item.slot)
+        ?.map(({ slot }, index) => (
+          <SlotContainer
+            key={`slot-container-${index}`}
+            slot={slot}
+            index={index}
+          />
+        ))}
       {tools?.search && (
         <div id="SearchContainer" className="gi-header-tool-container">
           <HeaderSearch {...tools.search} />

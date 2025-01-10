@@ -1,5 +1,6 @@
 'use client';
 import { IconButton, Paragraph, Tag, TagType } from '@govie-ds/react';
+import { Fragment } from 'react';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
 export function TagFromStatus(status: ComponentStatus) {
@@ -207,7 +208,7 @@ export function ComponentStatusTable() {
 
         {componentStatuses.map((componentStatus) => {
           return (
-            <>
+            <Fragment key={componentStatus.id}>
               <div className="row-span-4 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
                 {componentStatus.name}
               </div>
@@ -240,59 +241,10 @@ export function ComponentStatusTable() {
                 />
               </div>
               <hr className="block lg:hidden col-span-2" />
-            </>
+            </Fragment>
           );
         })}
       </div>
-      {/* <Table
-        headers={[
-          'Component',
-          'Figma Library',
-          'Local HTML',
-          'Global HTML',
-          'React',
-        ]}
-        ids={componentStatuses.map((componentStatus) => componentStatus.id)}
-        renderRow={(id) => {
-          const componentStatus = componentStatuses.find(
-            (componentStatus) => componentStatus.id === id,
-          );
-
-          if (!componentStatus) {
-            throw new Error(`Component status not found '${id}'.`);
-          }
-
-          return (
-            <Tr key={id}>
-              <Td>{componentStatus.name}</Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.figma.status}
-                  href={componentStatus.figma.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.local.status}
-                  href={componentStatus.local.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.global.status}
-                  href={componentStatus.global.href}
-                />
-              </Td>
-              <Td>
-                <ComponentStatusPill
-                  status={componentStatus.react.status}
-                  href={componentStatus.react.href}
-                />
-              </Td>
-            </Tr>
-          );
-        }}
-      /> */}
     </div>
   );
 }
