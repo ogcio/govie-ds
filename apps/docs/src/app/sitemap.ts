@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import getConfig from 'next/config';
 import { getAll } from '../lib/documents';
 
+export const revalidate = 1;
+
 const { publicRuntimeConfig } = getConfig();
 const isGitHubPages = Boolean(process.env.GITHUB_PAGES);
 

@@ -5,7 +5,7 @@ import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import HeaderMenu from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
-import { SlotItem } from './components/header-slot.js';
+import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
@@ -193,6 +193,24 @@ export function Header({
                   </label>
                 </div>
               )}
+
+              {showMobileMenu && (
+                <label
+                  htmlFor="MobileMenuTrigger"
+                  className={`${toolItemClassNames} lg:gi-hidden`}
+                >
+                  <input
+                    id="MobileMenuTrigger"
+                    className="gi-header-mobile-menu-trigger"
+                    type="checkbox"
+                    data-testid="header-mobile-menu"
+                  />
+                  {tools?.menu?.label && (
+                    <span className="label">{tools.menu.label}</span>
+                  )}
+                  <Icon icon={tools?.menu?.icon || 'menu'} />
+                </label>
+              )}
               {tools?.items &&
                 tools?.items.map(
                   ({ href, icon, label, slot, external }, index) => {
@@ -202,7 +220,7 @@ export function Header({
                         key={`toolItem-${label}-${index}`}
                       >
                         {slot ? (
-                          <SlotItem
+                          <SlotItemAction
                             index={index}
                             item={{ slot, icon, label }}
                           />
@@ -222,27 +240,19 @@ export function Header({
                     );
                   },
                 )}
-              {showMobileMenu && (
-                <label
-                  htmlFor="MobileMenuTrigger"
-                  className={`${toolItemClassNames} lg:gi-hidden`}
-                >
-                  <input
-                    id="MobileMenuTrigger"
-                    className="gi-header-mobile-menu-trigger"
-                    type="checkbox"
-                    data-testid="header-mobile-menu"
-                  />
-                  {tools?.menu?.label && (
-                    <span className="label">{tools.menu.label}</span>
-                  )}
-                  <Icon icon={tools?.menu?.icon || 'menu'} />
-                </label>
-              )}
             </div>
           </div>
         </div>
       </div>
+      {tools?.items
+        ?.filter((item) => item.slot)
+        ?.map(({ slot }, index) => (
+          <SlotContainer
+            key={`slot-container-${index}`}
+            slot={slot}
+            index={index}
+          />
+        ))}
       {tools?.search && (
         <div id="SearchContainer" className="gi-header-tool-container">
           <HeaderSearch {...tools.search} />
