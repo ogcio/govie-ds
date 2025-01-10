@@ -521,6 +521,9 @@ export const FullWidth: Story = {
         action: '/search_page',
         label: 'Search',
       },
+      menu: {
+        label: 'Menu',
+      },
       items: [
         {
           href: '/item1',
