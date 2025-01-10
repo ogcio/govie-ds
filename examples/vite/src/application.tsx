@@ -121,7 +121,12 @@ export function App() {
                 variant: 'secondary',
               }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
-              img="https://placeholderjs.com/400x300"
+              media={{
+                type: 'image',
+                config: {
+                  src: 'https://placeholderjs.com/400x300',
+                },
+              }}
               subTitle="Subheading"
               tag={{
                 text: 'New',

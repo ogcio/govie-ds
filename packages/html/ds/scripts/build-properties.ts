@@ -30,6 +30,7 @@ function toType(typeName: string): MacroPropertyType {
       return 'array';
     }
     case 'ZodUnion':
+    case 'ZodDiscriminatedUnion':
     case 'ZodRecord':
     case 'ZodObject': {
       return 'object';

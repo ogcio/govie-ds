@@ -667,6 +667,14 @@ input[type='file' i] {
   @apply gi-flex gi-items-start gi-self-stretch gi-h-auto;
 }
 
+.gi-card-iframe {
+  @apply gi-flex gi-items-start gi-self-stretch gi-h-auto gi-max-w-[500px] gi-w-full gi-mx-auto;
+}
+
+.gi-card-iframe iframe {
+  @apply gi-w-full gi-h-auto gi-aspect-[4/3];
+}
+
 .gi-card-content {
   @apply gi-flex gi-flex-col gi-items-start gi-w-full;
 }

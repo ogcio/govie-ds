@@ -64,12 +64,12 @@ export const Default: Story = {
         type: { summary: 'string' },
       },
     },
-    img: {
-      control: 'text',
-      description: 'The URL or path of the card image.',
+    media: {
+      control: 'object',
+      description: 'Media content for the card (image, icon, or iframe).',
       table: {
         category: 'Card Content',
-        type: { summary: 'string' },
+        type: { summary: 'MediaContent' },
       },
     },
     content: {
@@ -97,14 +97,6 @@ export const Default: Story = {
         type: { summary: '{ type: "button" | "link", ...Button | Link }' },
       },
     },
-    icon: {
-      control: 'object',
-      description: 'Icon configuration for the card.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'Icon' },
-      },
-    },
     inset: {
       control: 'select',
       options: Object.values(InsetType),
@@ -120,7 +112,14 @@ export const Default: Story = {
     title: 'Card Title',
     subTitle: 'Subheading',
     inset: InsetType.None,
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: '400x300',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: { text: 'New', type: 'info' },
@@ -152,7 +151,14 @@ export const VerticalWithLink: Story = {
   args: {
     type: CardType.Vertical,
     title: 'Vertical Card',
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: '400x300',
+      },
+    },
     subTitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -170,7 +176,14 @@ export const VerticalWithButton: Story = {
   args: {
     type: CardType.Vertical,
     title: 'Vertical Card',
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: '400x300',
+      },
+    },
     subTitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
@@ -188,7 +201,14 @@ export const Horizontal: Story = {
     type: CardType.Horizontal,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
-    img: 'https://placeholderjs.com/600x360',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/600x360',
+        alt: '600x360',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -218,10 +238,13 @@ export const HorizontalWithoutImage: Story = {
 export const HorizontalWithIcon: Story = {
   args: {
     type: CardType.Horizontal,
-    icon: {
-      icon: IconId.Download,
-      size: IconSize.ExtraLarge,
-      className: 'gi-text-gray-500',
+    media: {
+      type: 'icon',
+      config: {
+        icon: IconId.Download,
+        size: IconSize.ExtraLarge,
+        className: 'gi-text-gray-500',
+      },
     },
     title: 'Card With Icon',
     subTitle: 'Subtitle Here',
@@ -232,5 +255,35 @@ export const HorizontalWithIcon: Story = {
       content: 'Download',
       variant: ButtonVariant.Secondary,
     },
+  },
+};
+
+export const WithIframeEmbed: Story = {
+  args: {
+    type: CardType.Horizontal,
+    title: 'Featured Video',
+    href: '#',
+    media: {
+      type: 'iframe',
+      config: {
+        src: 'https://www.youtube.com/embed/K4TOrB7at0Y',
+        title: 'Sample YouTube Video',
+        allowFullScreen: true,
+        allow:
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+      },
+    },
+    content:
+      'This card demonstrates embedding a YouTube video using an iframe.',
+    tag: {
+      text: 'Video',
+      type: 'info',
+    },
+    action: {
+      type: 'button',
+      content: 'Watch Later',
+      variant: ButtonVariant.Secondary,
+    },
+    inset: InsetType.None,
   },
 };
