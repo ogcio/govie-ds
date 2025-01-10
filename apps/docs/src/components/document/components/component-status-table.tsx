@@ -1,7 +1,7 @@
 'use client';
 import { IconButton, Paragraph, Tag, TagType } from '@govie-ds/react';
-import { ComponentStatus, getComponents } from '@/lib/components';
 import { Fragment } from 'react';
+import { ComponentStatus, getComponents } from '@/lib/components';
 
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {
