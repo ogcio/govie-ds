@@ -362,6 +362,9 @@ export const tabletView: Story = {
         action: '/search-page',
         label: 'Search',
       },
+      menu: {
+        label: 'Menu',
+      },
     },
     navLinks: [
       {
@@ -517,6 +520,9 @@ export const FullWidth: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
+      },
+      menu: {
+        label: 'Menu',
       },
       items: [
         {
