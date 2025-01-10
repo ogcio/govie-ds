@@ -255,6 +255,8 @@ export const WithIframeEmbed: Story = {
         src: 'https://www.youtube.com/embed/K4TOrB7at0Y',
         title: 'Sample YouTube Video',
         allowFullScreen: true,
+        allow:
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
       },
     },
     content:

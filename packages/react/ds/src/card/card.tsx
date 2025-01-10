@@ -91,15 +91,7 @@ export const Card = ({
       case 'iframe': {
         return (
           <div className="gi-card-iframe">
-            <iframe
-              src={media.config.src}
-              title={media.config.title || title || 'Embedded content'}
-              allow={
-                media.config.allow ||
-                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              }
-              allowFullScreen={media.config.allowFullScreen}
-            />
+            <iframe {...media.config} />
           </div>
         );
       }

@@ -195,6 +195,8 @@ export const Horizontal: Story = {
     type: CardType.Horizontal,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
+
+    href: 'https://placeholderjs.com/400x300',
     media: {
       type: 'image',
       config: {
@@ -260,6 +262,8 @@ export const WithIframeEmbed: Story = {
         src: 'https://www.youtube.com/embed/K4TOrB7at0Y',
         title: 'Sample YouTube Video',
         allowFullScreen: true,
+        allow:
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
       },
     },
     content:
