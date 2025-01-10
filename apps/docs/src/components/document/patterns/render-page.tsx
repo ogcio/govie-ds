@@ -28,6 +28,9 @@ export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
   })();
   return (
     <iframe
+      style={{
+        zoom: 0.9,
+      }}
       src={isDevelopment ? `/govie-ds/templates/${page}` : `/templates/${page}`}
       className={`h-[50vh] ${widthClass} border-solid border-gray-300 border overflow-hidden`}
     ></iframe>
