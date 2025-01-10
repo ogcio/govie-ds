@@ -24,6 +24,9 @@ export class Radio extends BaseComponent<RadioOptions> {
     for (const radio of this.getAllRadioInputs) {
       if (radio.value === this.defaultValue) {
         radio.checked = true;
+        radio.setAttribute('aria-checked', 'true');
+      } else {
+        radio.setAttribute('aria-checked', 'false');
       }
     }
 
@@ -40,11 +43,13 @@ export class Radio extends BaseComponent<RadioOptions> {
         const { hasConditionalInput } = radio.dataset;
 
         if (isChecked) {
+          radio.setAttribute('aria-checked', 'true');
           getConditionalContainer?.classList.remove('gi-hidden');
           if (hasConditionalInput) {
             getConditionalDivider?.classList.remove('gi-invisible');
           }
         } else {
+          radio.setAttribute('aria-checked', 'false');
           getConditionalContainer?.classList.add('gi-hidden');
           if (hasConditionalInput) {
             getConditionalDivider?.classList.add('gi-invisible');

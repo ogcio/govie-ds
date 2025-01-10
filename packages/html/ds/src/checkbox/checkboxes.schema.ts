@@ -7,6 +7,23 @@ export enum CheckboxSizeEnum {
   Small = 'sm',
 }
 
+const validAriaProps = [
+  'aria-disabled',
+  'aria-checked',
+  'aria-hidden',
+  'aria-labelledby',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const checkboxSchema = zod.object({
   checkboxId: zod.string({
     description: 'An unique ID given to the checkbox',
@@ -50,6 +67,7 @@ export const checkboxSchema = zod.object({
       description: 'The name associated with the input',
     })
     .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export const checkboxesSchema = zod.object({

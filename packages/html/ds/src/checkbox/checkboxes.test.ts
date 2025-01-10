@@ -176,4 +176,35 @@ describe('checkboxes', () => {
 
     await screen.axe();
   });
+
+  it('should update aria-checked attribute correctly', () => {
+    const propsWithAria = {
+      ...standardProps,
+      noneOption: {
+        label: 'None',
+        value: 'none-option',
+      },
+    };
+
+    const screen = renderCheckboxes(propsWithAria);
+    const noneCheckbox = screen.getByText('None')
+      .previousElementSibling as HTMLInputElement;
+
+    const checkbox1 = screen.getByText('Checkbox 1')
+      .previousElementSibling as HTMLInputElement;
+    const checkbox2 = screen.getByText('Checkbox 2')
+      .previousElementSibling as HTMLInputElement;
+
+    // Simulate clicking on Checkbox 1
+    checkbox1.click();
+    expect(checkbox1.getAttribute('aria-checked')).toBe('true');
+    expect(checkbox2.getAttribute('aria-checked')).toBe('false');
+    expect(noneCheckbox.getAttribute('aria-checked')).toBe('false');
+
+    // Simulate clicking on "None" checkbox
+    noneCheckbox.click();
+    expect(noneCheckbox.getAttribute('aria-checked')).toBe('true');
+    expect(checkbox1.getAttribute('aria-checked')).toBe('false');
+    expect(checkbox2.getAttribute('aria-checked')).toBe('false');
+  });
 });

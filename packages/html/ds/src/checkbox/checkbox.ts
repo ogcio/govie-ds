@@ -30,6 +30,10 @@ export class Checkboxes extends BaseComponent<CheckboxesOptions> {
     this.noneCheckboxHandler = () => {
       for (const checkbox of this.checkboxes) {
         checkbox.checked = false;
+        checkbox.setAttribute('aria-checked', 'false');
+      }
+      if (this.noneCheckbox) {
+        this.noneCheckbox.setAttribute('aria-checked', 'true');
       }
     };
 
@@ -39,6 +43,10 @@ export class Checkboxes extends BaseComponent<CheckboxesOptions> {
         .some(Boolean);
       if (CheckboxesChecked && this.noneCheckbox) {
         this.noneCheckbox.checked = false;
+        this.noneCheckbox.setAttribute('aria-checked', 'false');
+      }
+      for (const checkbox of this.checkboxes) {
+        checkbox.setAttribute('aria-checked', checkbox.checked.toString());
       }
     };
   }

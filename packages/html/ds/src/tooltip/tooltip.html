@@ -1,8 +1,10 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+
 {% macro govieTooltip(props) %}
   <span
     class="gi-tooltip-wrapper"
     data-module="gieds-tooltip"
-    {% if props.ariaDescribedBy %}aria-describedby="{{ props.ariaDescribedBy }}"{% endif %}
+    {{ commonAriaAttributes(props) }}
   >
     {% if props.content %}
       {{ props.content | safe }}

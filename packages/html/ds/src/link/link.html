@@ -1,3 +1,4 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
 {% from 'button/button.html' import govieButton %}
 
 {% macro govieLink(props) %}
@@ -33,18 +34,6 @@
     {% endif %}
   {% endmacro %}
 
-  {% macro getAriaLabel(props) %}
-    {% if props.ariaLabel %}
-      aria-label="{{ props.ariaLabel }}"
-    {% endif %}
-  {% endmacro %}
-
-  {% macro getAriaCurrent(props) %}
-    {% if props.ariaCurrent %}
-      aria-current="{{ props.ariaCurrent }}"
-    {% endif %}
-  {% endmacro %}
-
   {% macro renderContent(props) %}
     {% if props.asButton %}
       {{
@@ -56,7 +45,8 @@
           "disabled": props.asButton.disabled,
           "type": props.asButton.type,
           "form": props.asButton.form,
-          "value": props.asButton.value
+          "value": props.asButton.value,
+          "aria": props.asButton.aria
         })
       }}
     {% else %}
@@ -65,9 +55,8 @@
   {% endmacro %}
   {# prettier-ignore-start #}
   <{{ as }}
+    {{ commonAriaAttributes(props) }}
     href="{{ props.href }}"
-    {{ getAriaLabel(props) | trim }}
-    {{ getAriaCurrent(props) | trim }}
     {{ getExternalAttribute(props.external) | trim }}
     class="
       gi-link
