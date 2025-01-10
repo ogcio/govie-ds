@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useId } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { Icon } from '../icon/icon.js';
@@ -7,7 +7,7 @@ import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagType } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
-import { generateRandomId, slugify } from '../utils.js';
+import { slugify } from '../utils.js';
 import { DropdownItemType } from './types.js';
 
 export const DropdownItem = ({
@@ -19,10 +19,9 @@ export const DropdownItem = ({
   const [searchInput, setSearchInput] = useState('');
   const [noResults, setNoResults] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
-  const dropdownCustomClass = useMemo(
-    () => (children ? `${slugify(`${children}__${generateRandomId()}`)}` : ''),
-    [children],
-  );
+  const dropdownCustomClass = children
+    ? `${slugify(`${children}-${useId()}`)}`
+    : '';
 
   const getCheckboxes = () => [
     ...window.document.querySelectorAll<HTMLElement>(
@@ -132,7 +131,7 @@ export const DropdownItem = ({
                 <Checkbox
                   key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                   onChange={handleCheckbox}
-                  id={`${index}_${dropdownCustomClass}_${generateRandomId()}`}
+                  id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                   size={CheckboxSizeEnum.Small}
                   label={checkbox.label}
                   name={`${index}_${checkbox.label}_${dropdownCustomClass}`}

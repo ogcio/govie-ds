@@ -28,7 +28,8 @@
     "react:storybook:build": "nx run @govie-react/storybook:build",
     "react:storybook:test": "nx run @govie-react/storybook:test",
     "examples:vite": "nx run @govie-ds/examples-vite:dev",
-    "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev"
+    "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev",
+    "cleandep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
@@ -49,8 +50,8 @@
     "@tailwindcss/typography": "^0.5.15",
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "22.10.5",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.3",
     "@vitest/browser": "^2.1.4",
     "axe-playwright": "2.0.3",
@@ -62,8 +63,8 @@
     "prettier": "^3.3.3",
     "storybook": "8.4.2",
     "storybook-addon-pseudo-states": "^4.0.2",
-    "tailwindcss": "3.4.14",
     "tailwind-variants": "^0.2.1",
+    "tailwindcss": "3.4.14",
     "tsup": "^8.2.5",
     "tsx": "^4.19.2",
     "typescript": "5.6.3",

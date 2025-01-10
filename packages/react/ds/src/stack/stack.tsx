@@ -216,9 +216,12 @@ export const Stack: React.FC<StackProps> = ({
     return childrenComponent.map((child, index) => (
       <React.Fragment key={`item_${index}`}>
         {React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement, {
-              'data-testid': `govie-stack-item-${index}`,
-            })
+          ? React.cloneElement(
+              child as React.ReactElement,
+              {
+                'data-testid': `govie-stack-item-${index}`,
+              } as { 'data-testid': string },
+            )
           : child}
 
         {hasDivider && index < childrenComponent.length - 1 && (
@@ -236,7 +239,7 @@ export const Stack: React.FC<StackProps> = ({
       data-testid="govie-stack"
       style={{ height: fixedHeight }}
     >
-      {renderChildren()}
+      {renderChildren() as React.ReactElement[]}
     </div>
   );
 };
