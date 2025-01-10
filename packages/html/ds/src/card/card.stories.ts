@@ -112,7 +112,7 @@ export const Default: Story = {
     title: 'Card Title',
     subTitle: 'Subheading',
     inset: InsetType.None,
-    href: "#",
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -150,7 +150,7 @@ export const VerticalWithLink: Story = {
   args: {
     type: CardType.Vertical,
     title: 'Vertical Card',
-    href: "#",
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -174,7 +174,7 @@ export const VerticalWithButton: Story = {
   args: {
     type: CardType.Vertical,
     title: 'Vertical Card',
-    href: "#",
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -198,7 +198,7 @@ export const Horizontal: Story = {
     type: CardType.Horizontal,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
-    href: "#",
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -258,7 +258,7 @@ export const WithIframeEmbed: Story = {
   args: {
     type: CardType.Horizontal,
     title: 'Featured Video',
-    href: "#",
+    href: '#',
     media: {
       type: 'iframe',
       config: {
