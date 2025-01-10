@@ -89,11 +89,7 @@ export const Card = ({
         );
       }
       case 'iframe': {
-        return (
-          <div className="gi-card-iframe">
-            <iframe {...media.config} />
-          </div>
-        );
+        return <iframe className="gi-card-iframe" {...media.config} />;
       }
       default: {
         return null;

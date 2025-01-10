@@ -27,7 +27,7 @@
   {% macro renderMedia(media) %}
     {% if media and media.type == 'image' %}
       <div class="gi-card-image">
-        <a href="{{ props.href }}">
+        <a href="{{ props.href }}" aria-label="{{ props.title }}">
           <img
             src="{{ media.config.src }}"
             alt="{{ media.config.alt | default(props.title) }}"
@@ -39,18 +39,17 @@
         <a href="{{ props.href }}"> {{ govieIcon(media.config) }} </a>
       </div>
     {% elif media and media.type == 'iframe' %}
-      <div class="gi-card-iframe">
-        <iframe
-          src="{{ media.config.src }}"
-          title="{{ media.config.title | default(props.title | default('Embedded content')) }}"
-          {% if media.config.allow %}
-            allow="{{ media.config.allow }}"
-          {% endif %}
-          {% if media.config.allowFullScreen %}
-            allowfullscreen
-          {% endif %}
-        ></iframe>
-      </div>
+      <iframe
+        class="gi-card-iframe"
+        src="{{ media.config.src }}"
+        title="{{ media.config.title | default(props.title | default('Embedded content')) }}"
+        {% if media.config.allow %}
+          allow="{{ media.config.allow }}"
+        {% endif %}
+        {% if media.config.allowFullScreen %}
+          allowfullscreen
+        {% endif %}
+      ></iframe>
     {% endif %}
   {% endmacro %}
 

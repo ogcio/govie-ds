@@ -101,6 +101,7 @@ export const Default: Story = {
     type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -127,6 +128,7 @@ export const VerticalWithoutImage: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card Without Image',
+    href: '#',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -142,6 +144,7 @@ export const VerticalWithLink: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card',
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -168,6 +171,7 @@ export const VerticalWithButton: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card',
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -189,6 +193,7 @@ export const Horizontal: Story = {
   args: {
     type: 'horizontal',
     title: 'Horizontal Card',
+    href: '#',
     media: {
       type: 'image',
       config: {
@@ -249,6 +254,7 @@ export const WithIframeEmbed: Story = {
   args: {
     type: 'horizontal',
     title: 'Featured Video',
+    href: '#',
     media: {
       type: 'iframe',
       config: {
