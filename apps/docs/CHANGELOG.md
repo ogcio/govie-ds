@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.0](https://github.com/ogcio/govie-ds/compare/docs-v0.37.0...docs-v0.38.0) (2025-01-10)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
 ## [0.37.0](https://github.com/ogcio/govie-ds/compare/docs-v0.36.0...docs-v0.37.0) (2025-01-07)
 
 
