@@ -1,25 +1,30 @@
 import { z as zod } from 'zod';
 
 export enum IconId {
+  Arrow_Forward = 'arrow_forward',
+  Arrow_Left_Alt = 'arrow_left_alt',
+  Arrow_Right_Alt = 'arrow_right_alt',
+  AttachFile = 'attach_file',
+  Check = 'check',
+  CheckCircle = 'check_circle',
+  Close = 'close',
   Copy = 'content_copy',
+  Delete = 'delete',
+  Download = 'download',
   Edit = 'edit',
+  Error = 'error',
+  Home = 'home',
+  Info = 'info',
+  Keyboard_Arrow_Down = 'keyboard_arrow_down',
+  Logout = 'logout',
+  Menu = 'menu',
   Mic = 'mic',
+  More_Horizontal = 'more_horiz',
+  OpenInNew = 'open_in_new',
+  Search = 'search',
   Send = 'send',
   ThumbDown = 'thumb_down',
   ThumbUp = 'thumb_up',
-  OpenInNew = 'open_in_new',
-  AttachFile = 'attach_file',
-  Download = 'download',
-  Keyboard_Arrow_Down = 'keyboard_arrow_down',
-  Close = 'close',
-  Search = 'search',
-  Menu = 'menu',
-  Home = 'home',
-  Logout = 'logout',
-  Info = 'info',
-  CheckCircle = 'check_circle',
-  Check = 'check',
-  Error = 'error',
   Warning = 'warning',
 }
 
@@ -32,14 +37,9 @@ export enum IconSize {
 
 export const iconSchema = zod.object({
   icon: zod
-    .union([
-      zod.nativeEnum(IconId, {
-        description: 'Specifies the Icon name to show',
-      }),
-      zod
-        .string({ description: 'Custom string for any other icon' })
-        .min(1, { message: 'Custom string for any other icon' }),
-    ])
+    .nativeEnum(IconId, {
+      description: 'Specifies the Icon name to show',
+    })
     .describe('Icon reference')
     .optional(),
   size: zod
