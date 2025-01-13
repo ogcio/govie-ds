@@ -89,7 +89,7 @@
         <div>
           <div class="gi-header-logo">
             {% if props.logo.href %}
-              <a href="{logo.href}" aria-label="Go to the home page">
+              <a href="{{ props.logo.href }}" aria-label="Go to the home page">
                 <div>{{ govieLogo() }}</div>
               </a>
             {% else %}
