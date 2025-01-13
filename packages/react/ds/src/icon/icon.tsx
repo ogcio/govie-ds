@@ -7,7 +7,7 @@ export type IconId = (typeof iconIds)[number];
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type IconPropTypes = React.HTMLAttributes<HTMLSpanElement> & {
-  icon: IconId | string;
+  icon: IconId;
   size?: IconSize;
   filled?: boolean;
   disabled?: boolean;
