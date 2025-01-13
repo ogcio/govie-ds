@@ -10,15 +10,40 @@ type Action =
   | (ButtonProps & { type: 'button' })
   | (LinkProps & { type: 'link' });
 
+type ImagePropTypes = {
+  src: string;
+  alt?: string;
+};
+
+type IframePropTypes = {
+  src: string;
+  title?: string;
+  allowFullScreen?: boolean;
+  allow?: string;
+};
+
+type MediaContent =
+  | {
+      type: 'image';
+      config: ImagePropTypes;
+    }
+  | {
+      type: 'icon';
+      config: IconPropTypes;
+    }
+  | {
+      type: 'iframe';
+      config: IframePropTypes;
+    };
+
 export type CardProps = {
   type: 'vertical' | 'horizontal';
   inset?: 'body' | 'full' | 'none';
   title?: string;
   subTitle?: string;
   href?: string;
-  img?: string;
+  media?: MediaContent;
   tag?: TagProps;
-  icon?: IconPropTypes;
   content?: string;
   action?: Action;
 };
@@ -28,8 +53,7 @@ export const Card = ({
   title,
   inset = 'none',
   subTitle,
-  img,
-  icon,
+  media,
   content,
   action,
   href,
@@ -41,32 +65,44 @@ export const Card = ({
   }, [type, inset]);
 
   const renderMedia = () => {
-    if (img && !icon) {
-      return (
-        <div className="gi-card-image">
-          <a href={href}>
-            <img src={img} alt={title} />
-          </a>
-        </div>
-      );
+    if (!media) {
+      return null;
     }
 
-    if (icon) {
-      return (
-        <div className="gi-card-icon">
-          <a href={href}>
-            <Icon {...icon} />
-          </a>
-        </div>
-      );
+    switch (media.type) {
+      case 'image': {
+        return (
+          <div className="gi-card-image">
+            <a href={href}>
+              <img src={media.config.src} alt={media.config.alt || title} />
+            </a>
+          </div>
+        );
+      }
+      case 'icon': {
+        return (
+          <div className="gi-card-icon">
+            <a href={href}>
+              <Icon {...media.config} />
+            </a>
+          </div>
+        );
+      }
+      case 'iframe': {
+        return (
+          <div className="gi-card-iframe">
+            <iframe {...media.config} />
+          </div>
+        );
+      }
+      default: {
+        return null;
+      }
     }
-
-    return null;
   };
 
   const renderTitle = () => {
     const titleContent = href ? <Link href={href}>{title}</Link> : title;
-
     return <div className="gi-card-title">{titleContent}</div>;
   };
 
