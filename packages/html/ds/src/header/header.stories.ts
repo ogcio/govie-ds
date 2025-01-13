@@ -480,6 +480,9 @@ export const WithExtraButtonsAndLabels: Story = {
         label: 'Search',
         action: 'search_page',
       },
+      menu: {
+        label: 'Menu',
+      },
       items: [
         {
           href: '/home',
