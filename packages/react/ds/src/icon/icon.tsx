@@ -32,8 +32,8 @@ export function Icon({
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
   const iconStyle = filled
-    ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
-    : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+    ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' " + fontSize
+    : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' " + fontSize;
   const iconColor = disabled ? 'gi-text-gray-300' : '';
   const display = inline ? '' : 'gi-block';
 
