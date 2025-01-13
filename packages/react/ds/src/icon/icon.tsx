@@ -34,7 +34,7 @@ export function Icon({
   const iconStyle = filled
     ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' " + fontSize
     : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' " + fontSize;
-  const iconColor = disabled ? 'gi-text-gray-300' : '';
+  const iconColor = disabled ? 'gi-text-gray-700' : '';
   const display = inline ? '' : 'gi-block';
 
   return (
