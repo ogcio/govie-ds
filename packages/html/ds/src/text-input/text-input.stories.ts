@@ -326,7 +326,6 @@ export const TextInputWithAriaAttributes: Story = {
     },
     aria: {
       'aria-required': 'true',
-      'aria-autocomplete': 'false',
       'aria-placeholder': 'Placeholder',
     },
   },
