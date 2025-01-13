@@ -1,6 +1,24 @@
 # Changelog
 
 
+## [0.33.0](https://github.com/ogcio/govie-ds/compare/react-v0.32.0...react-v0.33.0) (2025-01-13)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
+
+### Bug Fixes
+
+* add iframe media type to card component ([#387](https://github.com/ogcio/govie-ds/issues/387)) ([fcaed1f](https://github.com/ogcio/govie-ds/commit/fcaed1f16ade1a899b27265dc6d789782ca2b7d9))
+* icon font weight ([#391](https://github.com/ogcio/govie-ds/issues/391)) ([2da8fca](https://github.com/ogcio/govie-ds/commit/2da8fca864442218703ac1328a47bbdfabee08ac))
+
+
+### Performance Improvements
+
+* fix flaky tests ([#389](https://github.com/ogcio/govie-ds/issues/389)) ([c22af0b](https://github.com/ogcio/govie-ds/commit/c22af0b783b951ef8c831d7b79080c9312beb323))
+
 ## [0.32.0](https://github.com/ogcio/govie-ds/compare/react-v0.31.0...react-v0.32.0) (2025-01-07)
 
 
