@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, userEvent } from '@storybook/test';
-import { Container } from '../container/container.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
@@ -16,56 +15,52 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const SlotExample1 = () => (
-  <Container>
-    <List
-      type={TypeEnum.Bullet}
-      items={[
-        <Link size="sm" href="#">
-          Citizens Information - Services and Rights
-        </Link>,
-        <Link size="sm" href="#">
-          Revenue - Taxes and Payments
-        </Link>,
-        <Link size="sm" href="#">
-          Department of Social Protection
-        </Link>,
-      ]}
-    />
-  </Container>
+  <List
+    type={TypeEnum.Bullet}
+    items={[
+      <Link size="sm" href="#">
+        Citizens Information - Services and Rights
+      </Link>,
+      <Link size="sm" href="#">
+        Revenue - Taxes and Payments
+      </Link>,
+      <Link size="sm" href="#">
+        Department of Social Protection
+      </Link>,
+    ]}
+  />
 );
 
 const SlotExample2 = () => {
   return (
-    <Container>
-      <Select
-        id="slot-example-2"
-        options={[
-          {
-            label: 'Languages',
-            value: 'languages',
-            groupName: 'Languages',
-            items: [
-              {
-                label: 'Gaeilge',
-                value: 'gaeilge',
-              },
-              {
-                label: 'English',
-                value: 'english',
-              },
-              {
-                label: 'Spanish',
-                value: 'spanish',
-              },
-              {
-                label: 'Italian',
-                value: 'italian',
-              },
-            ],
-          },
-        ]}
-      />
-    </Container>
+    <Select
+      id="slot-example-2"
+      options={[
+        {
+          label: 'Languages',
+          value: 'languages',
+          groupName: 'Languages',
+          items: [
+            {
+              label: 'Gaeilge',
+              value: 'gaeilge',
+            },
+            {
+              label: 'English',
+              value: 'english',
+            },
+            {
+              label: 'Spanish',
+              value: 'spanish',
+            },
+            {
+              label: 'Italian',
+              value: 'italian',
+            },
+          ],
+        },
+      ]}
+    />
   );
 };
 
@@ -362,6 +357,9 @@ export const tabletView: Story = {
         action: '/search-page',
         label: 'Search',
       },
+      menu: {
+        label: 'Menu',
+      },
     },
     navLinks: [
       {
@@ -477,6 +475,9 @@ export const WithExtraButtonsAndLabels: Story = {
         label: 'Search',
         action: 'search_page',
       },
+      menu: {
+        label: 'Menu',
+      },
       items: [
         {
           href: '/home',
@@ -517,6 +518,9 @@ export const FullWidth: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
+      },
+      menu: {
+        label: 'Menu',
       },
       items: [
         {
@@ -580,6 +584,9 @@ export const withExternalLinks: Story = {
         { href: '#', label: 'Internal Tool' },
         { href: '#', label: 'External Tool', external: true },
       ],
+      menu: {
+        label: 'Menu',
+      },
     },
     navLinks: [
       {

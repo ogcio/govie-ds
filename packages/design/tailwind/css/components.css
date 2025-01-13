@@ -369,9 +369,15 @@ input[type='text'] {
 .gi-header-language-item {
   @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
 }
+
 .gi-header-menu {
-  @apply gi-h-20 gi-items-center gi-justify-end gi-flex gi-flex-row gi-flex-nowrap gi-bg-emerald-800 gi-py-3 sm:gi-py-4;
+  @apply gi-h-20 gi-items-center gi-justify-between gi-flex gi-flex-row gi-flex-nowrap gi-bg-emerald-800 gi-py-3 sm:gi-py-4;
 }
+
+.gi-header-menu > div {
+  @apply gi-flex gi-items-center;
+}
+
 .gi-header-logo {
   @apply gi-flex-auto lg:gi-flex-none gi-focus-state-outline gi-rounded-sm gi-focus-within-state-outline;
 }

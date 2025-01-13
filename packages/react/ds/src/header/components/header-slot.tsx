@@ -17,7 +17,7 @@ export const SlotContainer = ({ index, slot }: SlotContainerProps) => (
   <div
     id={`SlotContainer-${index + 1}`}
     data-index={index}
-    className="gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800"
+    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800"
   >
     {slot}
   </div>
