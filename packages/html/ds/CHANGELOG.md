@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.1](https://github.com/ogcio/govie-ds/compare/html-v0.26.0...html-v0.26.1) (2025-01-13)
+
+
+### Bug Fixes
+
+* add aria attributes for text-input, checkbox, radio, button, link and tooltip ([#386](https://github.com/ogcio/govie-ds/issues/386)) ([a02972e](https://github.com/ogcio/govie-ds/commit/a02972ed1567dbf3c0cd80964ea00954815431c7))
+
 ## [0.26.0](https://github.com/ogcio/govie-ds/compare/html-v0.25.0...html-v0.26.0) (2025-01-13)
 
 
