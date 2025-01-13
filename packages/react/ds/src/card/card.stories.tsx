@@ -46,20 +46,15 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    img: {
-      control: { type: 'text' },
-      description: 'The URL or path of the card image.',
-      table: {
-        category: 'Card Content',
-        type: { summary: 'string' },
-      },
-    },
-    icon: {
+    media: {
       control: 'object',
-      description: 'Icon configuration for the card.',
+      description: 'Media configuration for the card (image, icon, or iframe).',
       table: {
         category: 'Card Content',
-        type: { summary: 'Icon' },
+        type: {
+          summary:
+            '{ type: "image" | "icon" | "iframe", config: ImagePropTypes | IconPropTypes | IframePropTypes }',
+        },
       },
     },
     content: {
@@ -106,7 +101,14 @@ export const Default: Story = {
     type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: 'Card Title',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
@@ -126,6 +128,7 @@ export const VerticalWithoutImage: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card Without Image',
+    href: '#',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -141,7 +144,14 @@ export const VerticalWithLink: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card',
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: 'Vertical Card',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     tag: {
@@ -161,7 +171,14 @@ export const VerticalWithButton: Story = {
   args: {
     type: 'vertical',
     title: 'Vertical Card',
-    img: 'https://placeholderjs.com/400x300',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/400x300',
+        alt: 'Vertical Card',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -176,7 +193,14 @@ export const Horizontal: Story = {
   args: {
     type: 'horizontal',
     title: 'Horizontal Card',
-    img: 'https://placeholderjs.com/600x360',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/600x360',
+        alt: 'Horizontal Card',
+      },
+    },
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
@@ -207,10 +231,13 @@ export const HorizontalWithoutImage: Story = {
 export const HorizontalWithIcon: Story = {
   args: {
     type: 'horizontal',
-    icon: {
-      icon: 'download',
-      size: 'xl',
-      className: 'gi-text-gray-500',
+    media: {
+      type: 'icon',
+      config: {
+        icon: 'download',
+        size: 'xl',
+        className: 'gi-text-gray-500',
+      },
     },
     title: 'Card With Icon',
     content:
@@ -220,5 +247,35 @@ export const HorizontalWithIcon: Story = {
       children: 'Download',
       variant: 'secondary',
     },
+  },
+};
+
+export const WithIframeEmbed: Story = {
+  args: {
+    type: 'horizontal',
+    title: 'Featured Video',
+    href: '#',
+    media: {
+      type: 'iframe',
+      config: {
+        src: 'https://www.youtube.com/embed/K4TOrB7at0Y',
+        title: 'Sample YouTube Video',
+        allowFullScreen: true,
+        allow:
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+      },
+    },
+    content:
+      'This card demonstrates embedding a YouTube video using an iframe.',
+    tag: {
+      text: 'Video',
+      type: 'info',
+    },
+    action: {
+      type: 'button',
+      children: 'Watch Later',
+      variant: 'secondary',
+    },
+    inset: 'none',
   },
 };
