@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.27.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.0...tailwind-v0.27.1) (2025-01-13)
+
+
+### Bug Fixes
+
+* add iframe media type to card component ([#387](https://github.com/ogcio/govie-ds/issues/387)) ([fcaed1f](https://github.com/ogcio/govie-ds/commit/fcaed1f16ade1a899b27265dc6d789782ca2b7d9))
+
 ## [0.27.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.26.0...tailwind-v0.27.0) (2025-01-07)
 
 

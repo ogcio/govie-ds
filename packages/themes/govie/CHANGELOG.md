@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/ogcio/govie-ds/compare/theme-govie-v0.5.0...theme-govie-v0.6.0) (2025-01-13)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
 ## [0.4.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/theme-govie-0.3.4...@govie-ds/theme-govie-0.4.0) (2024-09-10)
 
 

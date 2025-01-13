@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&icon_names=arrow_forward,arrow_left_alt,arrow_right_alt,attach_file,check,check_circle,close,content_copy,delete,download,edit,error,home,info,keyboard_arrow_down,logout,menu,mic,more_horiz,open_in_new,search,send,thumb_down,thumb_up,warning');
 
 @import 'node_modules/@govie-ds/tailwind/css/layout.css';
 @import 'node_modules/@govie-ds/tailwind/css/components.css';
@@ -26,4 +26,3 @@
     @apply gi-text-gray-950 gi-font-primary;
   }
 }
-
