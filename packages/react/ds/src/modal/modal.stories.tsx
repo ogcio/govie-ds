@@ -1,13 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
-import { Heading } from '../heading/heading.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Modal } from './modal.js';
+
+import {
+  ModalClose,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+  ModalWrapper,
+} from './modal.js';
 
 const meta = {
   title: 'Application/Modal',
   decorators: (Story) => (
-    <div className="gi-h-[400px]">
+    <div className="gi-h-[600px]">
       <Story />
     </div>
   ),
@@ -20,61 +26,70 @@ const meta = {
       },
     },
   },
-  component: Modal,
-} satisfies Meta<typeof Modal>;
+  component: ModalWrapper,
+} satisfies Meta<typeof ModalWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    children: {
-      control: 'text',
-      description: 'The content that will be inserted in the modal component',
-    },
-    triggerButton: {
-      control: 'text',
-      description: 'The button that will trigger the modal component',
+    position: {
+      control: 'radio',
+      options: ['center', 'left', 'right'],
+      description: 'Positioning of the modal content.',
     },
   },
   args: {
-    triggerButton: <Button>Open Modal</Button>,
-    children: (
-      <>
-        <Heading as="h2">Title</Heading>
+    position: 'center',
+    ModalTriggerComponent: <Button>Open modal</Button>,
+    className: 'gi-w-[600px]',
+    children: [
+      <ModalClose key="close" aria-label="Close modal" />,
+      <ModalTitle key="title">Title</ModalTitle>,
+      <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores
+          doloribus asperiores.
         </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
         <div className="gi-flex gi-gap-6 gi-justify-end">
           <Button variant="secondary" appearance="dark">
-            Cancel action
+            Cancel
           </Button>
-          <Button>Primary action</Button>
+          <Button>Primary</Button>
         </div>
-      </>
-    ),
+      </ModalFooter>,
+    ],
   },
 };
 
 export const ModalOpen: Story = {
   args: {
-    children: (
-      <>
-        <Heading as="h2">Title</Heading>
+    position: 'center',
+    className: 'gi-w-[600px]',
+    startsOpen: true,
+    ModalTriggerComponent: <Button>Open modal</Button>,
+    children: [
+      <ModalClose key="close" aria-label="Close modal" />,
+      <ModalTitle key="title">Title</ModalTitle>,
+      <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores
+          doloribus asperiores.
         </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
         <div className="gi-flex gi-gap-6 gi-justify-end">
           <Button variant="secondary" appearance="dark">
-            Cancel action
+            Cancel
           </Button>
-          <Button>Primary action</Button>
+          <Button>Primary</Button>
         </div>
-      </>
-    ),
+      </ModalFooter>,
+    ],
   },
 };

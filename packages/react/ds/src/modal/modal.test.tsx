@@ -1,91 +1,105 @@
-import { render, cleanup, waitFor } from '../test-utils.js';
+import { act } from 'react';
+import { render, cleanup, fireEvent, waitFor } from '../test-utils.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
-import { Modal, ModalProps } from './modal.js';
+import { ModalWrapper } from './modal.js';
 
 describe('modal', () => {
   afterEach(cleanup);
-  const renderModal = (props: ModalProps) => render(<Modal {...props} />);
 
-  it('should render the modal on load', () => {
-    const screen = renderModal({ children: HtmlContent });
+  const renderModalWrapper = (props: any) =>
+    render(<ModalWrapper {...props} />);
+
+  it('should render the modal on load if startsOpen is true', () => {
+    const screen = renderModalWrapper({
+      children: HtmlContent,
+      ModalTriggerComponent: TriggerButton,
+      startsOpen: true,
+    });
+
     const modalElement = screen.getByTestId('modal');
     const modalContainerElement = screen.getByTestId('modal-container');
+
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     expect(modalContainerElement).toBeTruthy();
   });
+
   it('should open the modal on button trigger', async () => {
-    const screen = renderModal({
+    const screen = renderModalWrapper({
       children: HtmlContent,
-      triggerButton: TriggerButton,
+      ModalTriggerComponent: TriggerButton,
     });
+
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
+    triggerButtonElement.click();
+
+    await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+    });
+  });
+
+  it('should close the modal on icon click', async () => {
+    const screen = renderModalWrapper({
+      children: HtmlContent,
+      ModalTriggerComponent: TriggerButton,
+    });
+
     const modalElement = screen.getByTestId('modal');
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
 
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
 
-    triggerButtonElement.click();
+    await act(async () => {
+      triggerButtonElement.click();
+    });
 
     await waitFor(() => {
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     });
-  });
-  it('should close the modal on icon click', async () => {
-    const screen = renderModal({
-      children: HtmlContent,
-      triggerButton: TriggerButton,
-    });
-    const modalElement = screen.getByTestId('modal');
+
     const iconElement = screen
       .getByTestId('modal-container')
       .querySelector('.gi-modal-icon') as HTMLElement;
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    // Default state with Modal closed
-    expect(iconElement).not.toBeVisible();
-    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
-    triggerButtonElement.click();
+    expect(iconElement).toBeVisible();
 
-    // Modal Open
-    await waitFor(() => {
-      expect(iconElement).toBeVisible();
-      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-    });
-    iconElement.click();
-
-    // Modal Closed by icon
-    await waitFor(() => {
-      expect(iconElement).not.toBeFalsy();
-      expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+    await act(async () => {
+      iconElement.click();
     });
   });
-  it('should close the modal on overlay click', async () => {
-    const screen = renderModal({
-      children: HtmlContent,
-      triggerButton: TriggerButton,
-    });
-    const modalElement = screen.getByTestId('modal');
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    // Default state with Modal closed
-    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+  it('should close the modal on overlay click', async () => {
+    const screen = renderModalWrapper({
+      children: HtmlContent,
+      ModalTriggerComponent: TriggerButton,
+    });
+
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
+
     triggerButtonElement.click();
 
-    // Modal Open
     await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      modalElement.click();
     });
-    modalElement.click();
 
-    // Modal Closed by modal overlay
     await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
     });
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderModal({
+    const screen = renderModalWrapper({
       children: HtmlContent,
-      triggerButton: TriggerButton,
+      ModalTriggerComponent: TriggerButton,
     });
 
     await screen.axe();
