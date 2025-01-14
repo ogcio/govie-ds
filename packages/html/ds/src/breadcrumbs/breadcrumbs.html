@@ -29,7 +29,9 @@
                   "noColor": true,
                   "href": item.href,
                   "label": item.label,
-                  "ariaCurrent": "page"
+                  "aria": {
+                    "aria-current": "page"
+                  }
               })
             }}
           {% else %}
@@ -38,7 +40,9 @@
                   "noColor": true,
                   "href": item.href,
                   "label": item.label,
-                  "ariaLabel": item.label + " page"
+                  "aria": {
+                    "aria-label": item.label + " page"
+                  }
               })
             }}
           {% endif %}
