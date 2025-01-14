@@ -22,7 +22,7 @@ describe('govieIcon', () => {
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
-    expect(iconSpan.classList.contains('gi-text-gray-300')).toBe(true);
+    expect(iconSpan.classList.contains('gi-text-gray-700')).toBe(true);
   });
 
   it('should render the ThumbDown with ARIA', () => {
