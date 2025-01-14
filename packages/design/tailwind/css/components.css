@@ -585,11 +585,11 @@ input[type='file' i] {
 }
 
 .gi-modal-body {
-  @apply gi-pt-2 gi-pb-8;
+  @apply gi-pt-2 gi-pb-8 gi-flex-1;
 }
 
 .gi-modal-open {
-  @apply gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
+  @apply gi-flex gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
 }
 
 .gi-modal-close {
@@ -598,10 +598,6 @@ input[type='file' i] {
 
 .gi-modal-container {
   @apply gi-p-8 gi-bg-white gi-absolute gi-left-2/4 gi-top-2/4 gi--translate-x-2/4 gi--translate-y-2/4;
-}
-
-.gi-modal-react {
-  @apply gi-flex;
 }
 
 .gi-modal-container-center {

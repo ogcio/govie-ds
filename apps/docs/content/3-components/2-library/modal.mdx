@@ -21,17 +21,20 @@ libraries:
 ### Default
 
 <ComponentContainer>
-  <Modal triggerButton={<Button>Open Modal</Button>}  >
-    <Heading as="h2">Title</Heading>
-    <Paragraph>
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <ModalCloseButton />
+    <ModalTitle>Title</ModalTitle>
+    <ModalBody>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-      doloribus asperiores
-    </Paragraph>
-    <div className="gi-flex gi-gap-6 gi-justify-end">
-      <Button variant="secondary" appearance="dark">Cancel action</Button>
-      <Button>Primary action</Button>
-    </div>
+    </ModalBody>
+    <ModalFooter>
+      <div className="gi-flex gi-gap-6 gi-justify-end">
+        <Button variant="secondary" appearance="dark">
+          Cancel action
+        </Button>
+        <Button>Primary action</Button>
+      </div>
+    </ModalFooter>
   </Modal>
 </ComponentContainer>
 
@@ -73,15 +76,16 @@ libraries:
   </div>
 </div>
 
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieModal({
-    "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
-    "triggerButton": "<button>Open Modal</button>"
-  }) }}
-  ```
+````
+</TabPanel>
+<TabPanel value="tab12">
+```html
+{{ govieModal({
+  "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
+  "triggerButton": "<button>Open Modal</button>"
+}) }}
+````
+
   </TabPanel>
   <TabPanel value="tab13">
   ```html
@@ -117,4 +121,3 @@ Don't use modal dialogs for elements that should be linkable or searchable.
 ## Status
 
 <ComponentStatusBlock componentId="modal" />
-

@@ -20,6 +20,10 @@ import {
   Label,
   List,
   Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalFooter,
+  ModalTitle,
   Pagination,
   Paragraph,
   PhaseBanner,
@@ -184,6 +188,12 @@ const documentComponents: MDXComponents = {
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
+  ModalTitle: (props) => <ModalTitle>{props.children}</ModalTitle>,
+  ModalBody: (props) => <ModalBody>{props.children}</ModalBody>,
+  ModalCloseButton,
+  ModalFooter: (props) => (
+    <ModalFooter {...props}>{props.children}</ModalFooter>
+  ),
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
   ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,

@@ -3,11 +3,12 @@ import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 
 import {
-  ModalClose,
+  ModalCloseButton,
   ModalTitle,
   ModalBody,
   ModalFooter,
   ModalWrapper,
+  Modal,
 } from './modal.js';
 
 const meta = {
@@ -26,26 +27,19 @@ const meta = {
       },
     },
   },
-  component: ModalWrapper,
-} satisfies Meta<typeof ModalWrapper>;
+  component: Modal,
+} satisfies Meta<typeof Modal>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {
-    position: {
-      control: 'radio',
-      options: ['center', 'left', 'right'],
-      description: 'Positioning of the modal content.',
-    },
-  },
+  argTypes: {},
   args: {
-    position: 'center',
-    ModalTriggerComponent: <Button>Open modal</Button>,
+    triggerButton: <Button>Open modal</Button>,
     className: 'gi-w-[600px]',
     children: [
-      <ModalClose key="close" aria-label="Close modal" />,
+      <ModalCloseButton key="close" aria-label="Close modal" label="Close" />,
       <ModalTitle key="title">Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>
@@ -68,12 +62,11 @@ export const Default: Story = {
 
 export const ModalOpen: Story = {
   args: {
-    position: 'center',
     className: 'gi-w-[600px]',
     startsOpen: true,
-    ModalTriggerComponent: <Button>Open modal</Button>,
+    triggerButton: <Button>Open modal</Button>,
     children: [
-      <ModalClose key="close" aria-label="Close modal" />,
+      <ModalCloseButton key="close" aria-label="Close modal" />,
       <ModalTitle key="title">Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>

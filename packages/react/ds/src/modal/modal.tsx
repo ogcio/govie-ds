@@ -7,69 +7,65 @@ import {
   ReactElement,
   useState,
 } from 'react';
-import { IconButton, IconButtonType } from '../icon-button/icon-button.js';
+import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading } from '../heading/heading.js';
+import { Icon } from '../icon/icon.js';
+import type {
+  ModalCloseButtonProps,
+  ModalProps,
+  ModalWrapperProps,
+} from './types.js';
 
-export type ModalChildren =
-  | ReactElement<typeof ModalClose>
-  | ReactElement<typeof ModalTitle>
-  | ReactElement<typeof ModalBody>
-  | ReactElement<typeof ModalFooter>
-  | Array<
-      ReactElement<
-        | typeof ModalClose
-        | typeof ModalTitle
-        | typeof ModalBody
-        | typeof ModalFooter
-      >
-    >;
-
-type ModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  position?: 'center' | 'left' | 'right';
-  className?: string;
-  children: ModalChildren;
-};
-
-export type ModalWrapperProps = {
-  position?: 'center' | 'left' | 'right';
-  className?: string;
-  ModalTriggerComponent: any;
-  children: ModalChildren;
-  startsOpen?: boolean;
-};
-
-export type ModalCloseProps = Omit<
-  IconButtonType,
-  'size' | 'className' | 'icon' | 'variant' | 'appearance'
->;
-
-export const ModalClose = (props: ModalCloseProps) => (
-  <IconButton
-    size="large"
-    className="gi-modal-icon"
+export const ModalCloseButton = ({
+  label,
+  ...props
+}: ModalCloseButtonProps) => (
+  <Button
     onClick={props.onClick}
-    icon={{ icon: 'close' }}
     variant="flat"
+    size="large"
     appearance="dark"
+    className="gi-modal-icon"
     {...props}
-  />
+  >
+    <>
+      {label}
+      <Icon icon="close" />
+    </>
+  </Button>
 );
+ModalCloseButton.id = Symbol('ModalCloseButton');
 
-export const Modal = ({
+export const ModalWrapper = ({
   isOpen,
   onClose,
   position = 'center',
   className,
   children,
-}: ModalProps) => {
-  const renderChildren = Children.map(children, (child) => {
-    if (isValidElement(child) && child.type === ModalClose) {
-      return cloneElement(child as ReactElement<ModalCloseProps | any>, {
-        onClick: onClose,
-      });
+}: ModalWrapperProps) => {
+  let closeButton = null;
+
+  const sortedChildren = Children.toArray(children).sort((a, b) => {
+    if (!isValidElement(a) || !isValidElement(b)) {
+      return 0;
+    }
+    const typeOrder = [ModalTitle, ModalBody, ModalFooter];
+    const indexA = typeOrder.indexOf(a.type as any);
+    const indexB = typeOrder.indexOf(b.type as any);
+
+    return indexA - indexB;
+  });
+
+  const renderChildren = Children.map(sortedChildren, (child) => {
+    if (isValidElement(child) && child.type?.id === ModalCloseButton.id) {
+      closeButton = cloneElement(
+        child as ReactElement<ModalCloseButtonProps | any>,
+        {
+          onClick: onClose,
+        },
+      );
+      return null;
     }
     return child;
   });
@@ -77,14 +73,13 @@ export const Modal = ({
   return (
     <div
       className={cn('gi-modal', {
-        'gi-modal-react': isOpen,
         'gi-modal-open': isOpen,
         'gi-modal-close': !isOpen,
       })}
       data-testid="modal"
       data-element="modal"
-      onClick={(e) => {
-        const target = e.target as HTMLDivElement;
+      onClick={(event) => {
+        const target = event.target as HTMLDivElement;
         if (target.dataset.element === 'modal') {
           onClose();
         }
@@ -98,7 +93,8 @@ export const Modal = ({
           'gi-modal-container-right': position === 'right',
         })}
       >
-        {renderChildren}
+        {closeButton}
+        <div className="gi-flex gi-flex-col gi-h-full">{renderChildren}</div>
       </div>
     </div>
   );
@@ -120,37 +116,33 @@ export const ModalFooter = ({
   className?: string;
 }) => <div className={className}>{children}</div>;
 
-export const ModalWrapper = ({
+export const Modal = ({
   children,
-  position = 'center',
-  ModalTriggerComponent,
+  triggerButton,
   className,
   startsOpen,
-}: ModalWrapperProps) => {
+}: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-  const renderCloneTrigger = cloneElement(
-    ModalTriggerComponent as ReactElement<any>,
-    {
-      'data-testid': 'modal-trigger-button-container',
-      onClick: handleOpen,
-    },
-  );
+  const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
+    'data-testid': 'modal-trigger-button-container',
+    onClick: handleOpen,
+  });
 
   return (
     <>
       {renderCloneTrigger}
-      <Modal
+      <ModalWrapper
         isOpen={isOpen}
         onClose={handleClose}
-        position={position}
+        position={'center'}
         className={className}
       >
         {children}
-      </Modal>
+      </ModalWrapper>
     </>
   );
 };

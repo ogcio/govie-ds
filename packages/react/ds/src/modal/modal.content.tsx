@@ -1,8 +1,13 @@
-import { ModalClose, ModalTitle, ModalBody, ModalFooter } from './modal.js';
+import {
+  ModalCloseButton,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+} from './modal.js';
 
 export const HtmlContent = (
   <>
-    <ModalClose aria-label="Close modal" />
+    <ModalCloseButton aria-label="Close modal" />
     <ModalTitle>Modal Title</ModalTitle>
     <ModalBody>
       <p className="gi-paragraph-md">

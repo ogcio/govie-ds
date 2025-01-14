@@ -1,18 +1,17 @@
 import { act } from 'react';
-import { render, cleanup, fireEvent, waitFor } from '../test-utils.js';
+import { render, cleanup, waitFor } from '../test-utils.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
-import { ModalWrapper } from './modal.js';
+import { Modal } from './modal.js';
 
 describe('modal', () => {
   afterEach(cleanup);
 
-  const renderModalWrapper = (props: any) =>
-    render(<ModalWrapper {...props} />);
+  const renderModal = (props: any) => render(<Modal {...props} />);
 
   it('should render the modal on load if startsOpen is true', () => {
-    const screen = renderModalWrapper({
+    const screen = renderModal({
       children: HtmlContent,
-      ModalTriggerComponent: TriggerButton,
+      triggerButton: TriggerButton,
       startsOpen: true,
     });
 
@@ -24,9 +23,9 @@ describe('modal', () => {
   });
 
   it('should open the modal on button trigger', async () => {
-    const screen = renderModalWrapper({
+    const screen = renderModal({
       children: HtmlContent,
-      ModalTriggerComponent: TriggerButton,
+      triggerButton: TriggerButton,
     });
 
     const triggerButtonElement = screen.getByTestId(
@@ -41,9 +40,9 @@ describe('modal', () => {
   });
 
   it('should close the modal on icon click', async () => {
-    const screen = renderModalWrapper({
+    const screen = renderModal({
       children: HtmlContent,
-      ModalTriggerComponent: TriggerButton,
+      triggerButton: TriggerButton,
     });
 
     const modalElement = screen.getByTestId('modal');
@@ -73,9 +72,9 @@ describe('modal', () => {
   });
 
   it('should close the modal on overlay click', async () => {
-    const screen = renderModalWrapper({
+    const screen = renderModal({
       children: HtmlContent,
-      ModalTriggerComponent: TriggerButton,
+      triggerButton: TriggerButton,
     });
 
     const triggerButtonElement = screen.getByTestId(
@@ -97,9 +96,9 @@ describe('modal', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderModalWrapper({
+    const screen = renderModal({
       children: HtmlContent,
-      ModalTriggerComponent: TriggerButton,
+      triggerButton: TriggerButton,
     });
 
     await screen.axe();
