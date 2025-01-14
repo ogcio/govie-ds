@@ -10,6 +10,24 @@ export enum TagType {
   counterWarning = 'counterWarning',
 }
 
+const validAriaProps = [
+  'aria-label',
+  'aria-describedby',
+  'aria-hidden',
+  'aria-live',
+  'aria-role'
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const tagSchema = zod.object({
   text: zod.string({
     description: 'Content for tag',
@@ -21,6 +39,7 @@ export const tagSchema = zod.object({
     })
     .optional(),
   className: zod.string({ description: 'Add additional classes' }).optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type TagProps = zod.infer<typeof tagSchema>;
