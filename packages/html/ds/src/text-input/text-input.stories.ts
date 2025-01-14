@@ -262,7 +262,6 @@ export const DisabledInput: Story = {
 };
 
 export const AllStates: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () => `
   <div class="gi-gap-4">
   <div class="gi-text-input-container">

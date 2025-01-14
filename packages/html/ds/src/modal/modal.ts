@@ -29,6 +29,7 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.openModal = () => {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
+      this.modal.setAttribute('aria-hidden', 'false');
     };
 
     this.closeModal = (event) => {
@@ -37,12 +38,14 @@ export class Modal extends BaseComponent<ModalOptions> {
       if (targetElement.dataset.element === 'modal') {
         this.modal.classList.remove('gi-modal-open');
         this.modal.classList.add('gi-modal-close');
+        this.modal.setAttribute('aria-hidden', 'true');
       }
     };
 
     this.closeModalWithIcon = () => {
       this.modal.classList.remove('gi-modal-open');
       this.modal.classList.add('gi-modal-close');
+      this.modal.setAttribute('aria-hidden', 'true');
     };
   }
 

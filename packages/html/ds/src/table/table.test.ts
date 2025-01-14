@@ -68,6 +68,27 @@ describe('govieTable', () => {
     expect(noDataMessage).toHaveAttribute('colspan', '3');
   });
 
+  it('should apply aria-rowcount and aria-colcount attributes', () => {
+    const { getByRole } = renderTable({
+      captionText: 'Aria Attributes Table',
+      headers: ['Header1', 'Header2', 'Header3'],
+      rows: [
+        ['Cell1', 'Cell2', 'Cell3'],
+        ['Cell4', 'Cell5', 'Cell6'],
+      ],
+      aria: {
+        'aria-rowcount': '3',
+        'aria-colcount': '3',
+      },
+    });
+  
+    const table = getByRole('table');
+    expect(table).toBeInTheDocument();
+    expect(table.getAttribute('aria-rowcount')).toBe('3');
+    expect(table.getAttribute('aria-colcount')).toBe('3');
+  });
+  
+
   it('should pass axe tests', async () => {
     const screen = renderTable({
       captionText: 'Accessible Table',
