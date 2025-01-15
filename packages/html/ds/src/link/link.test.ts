@@ -77,6 +77,17 @@ describe('link', () => {
     );
   });
 
+  it('should have correct aria attributes', () => {
+    const screen = renderLink({
+      href: 'https://example.com',
+      label: 'Example Link',
+      aria: { 'aria-disabled': 'true' },
+    });
+
+    const linkElement = screen.getByRole('link');
+    expect(linkElement.getAttribute('aria-disabled')).toBe('true');
+  });
+
   it('should pass axe tests', async () => {
     const screen = renderLink({
       href: 'https://example.com',
