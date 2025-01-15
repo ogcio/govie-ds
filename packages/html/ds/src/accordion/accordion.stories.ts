@@ -57,7 +57,7 @@ export const WithIconStart: Story = {
   args: {
     iconStart: true,
     aria: {
-      "aria-label": "Accordion"
+      'aria-label': 'Accordion',
     },
     items: [
       {
@@ -77,7 +77,7 @@ export const WithIconStart: Story = {
       },
       {
         aria: {
-          "aria-disabled": "true"
+          'aria-disabled': 'true',
         },
         disabled: true,
         label: 'Label 4',

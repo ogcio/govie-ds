@@ -1,8 +1,6 @@
 import * as zod from 'zod';
 
-const accordionValidAriaProps = [
-  'aria-label',
-] as const;
+const accordionValidAriaProps = ['aria-label'] as const;
 
 const accordionItemValidAriaProps = [
   'aria-expanded',
@@ -45,7 +43,9 @@ const accordionItemSchema = zod.object({
       description: 'Specify if the accordion item should be disabled',
     })
     .optional(),
-  aria: accordionItemAriaSchema.describe('Defines the aria attributes').optional(),
+  aria: accordionItemAriaSchema
+    .describe('Defines the aria attributes')
+    .optional(),
 });
 
 export const accordionSchema = zod.object({

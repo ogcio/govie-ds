@@ -6,7 +6,7 @@ const validAriaProps = [
   'aria-labelledby',
   'aria-describedby',
   'aria-live',
-  'aria-label'
+  'aria-label',
 ] as const;
 
 export const ariaSchema = zod.record(

@@ -76,13 +76,14 @@ describe('modal', () => {
         'aria-describedby': 'modal-description',
       },
     });
-  
+
     const modalElement = screen.getByTestId('modal');
-  
+
     expect(modalElement.getAttribute('aria-labelledby')).toBe('modal-title');
-    expect(modalElement.getAttribute('aria-describedby')).toBe('modal-description');
+    expect(modalElement.getAttribute('aria-describedby')).toBe(
+      'modal-description',
+    );
   });
-  
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderModal({ html: htmlContent, triggerButton });

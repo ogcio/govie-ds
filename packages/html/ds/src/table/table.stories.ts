@@ -128,7 +128,7 @@ export const NoHeaders: Story = {
     aria: {
       'aria-rowcount': '3',
       'aria-colcount': '3',
-    }
+    },
   },
 };
 

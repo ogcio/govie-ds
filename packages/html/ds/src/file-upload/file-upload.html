@@ -53,8 +53,7 @@
       name="{{ props.name or 'file' }}"
       accept="{{ props.accept or '*/*' }}"
       {% if isError %}
-        aria-invalid="true"
-        aria-errormessage="{{ inputId }}-error"
+        aria-invalid="true" aria-errormessage="{{ inputId }}-error"
       {% endif %}
       {% if isHint %}
         aria-describedby="{{ inputId }}-hint"

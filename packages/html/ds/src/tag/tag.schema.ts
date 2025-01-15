@@ -15,7 +15,7 @@ const validAriaProps = [
   'aria-describedby',
   'aria-hidden',
   'aria-live',
-  'aria-role'
+  'aria-role',
 ] as const;
 
 export const ariaSchema = zod.record(

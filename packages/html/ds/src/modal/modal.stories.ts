@@ -51,6 +51,6 @@ export const ModalOpen: Story = {
     aria: {
       'aria-labelledby': 'modal-title',
       'aria-describedby': 'modal-title',
-    }
+    },
   },
 };

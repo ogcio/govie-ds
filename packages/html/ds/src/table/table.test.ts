@@ -81,13 +81,12 @@ describe('govieTable', () => {
         'aria-colcount': '3',
       },
     });
-  
+
     const table = getByRole('table');
     expect(table).toBeInTheDocument();
     expect(table.getAttribute('aria-rowcount')).toBe('3');
     expect(table.getAttribute('aria-colcount')).toBe('3');
   });
-  
 
   it('should pass axe tests', async () => {
     const screen = renderTable({
