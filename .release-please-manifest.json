@@ -4,8 +4,8 @@
     "packages/build/prettier-config": "1.0.1",
     "packages/design/deepmerge": "1.0.0",
     "packages/design/tailwind": "0.27.1",
-    "packages/html/ds": "0.26.0",
-    "packages/react/ds": "0.33.0",
+    "packages/html/ds": "0.26.1",
+    "packages/react/ds": "0.33.1",
     "packages/themes/govie": "0.6.0",
     "tokens": "0.7.0"
 }
