@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.33.1](https://github.com/ogcio/govie-ds/compare/react-v0.33.0...react-v0.33.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* add missing icons ([1899f67](https://github.com/ogcio/govie-ds/commit/1899f676db5480992e4e4c39735ede59a03091dd))
+* add missing icons ([#394](https://github.com/ogcio/govie-ds/issues/394)) ([551aecb](https://github.com/ogcio/govie-ds/commit/551aecb094dfe106024d3c4f748c675a70ba2f7e))
+
 ## [0.33.0](https://github.com/ogcio/govie-ds/compare/react-v0.32.0...react-v0.33.0) (2025-01-13)
 
 
