@@ -133,108 +133,114 @@ export function Header({
       )}
       <div id="HeaderContainer" className={containerClassName}>
         <div className={menuContainerClassNames}>
-          <div className="gi-header-logo">
-            {logo?.href && (
-              <Anchor
-                href={logo.href}
-                aria-label="Go to the home page"
-                data-testid={`logo-link`}
-                external={logo.external}
-              >
-                {getLogo({ logo })}
-              </Anchor>
-            )}
-            {!logo?.href && getLogo({ logo })}
-          </div>
-
-          <div className={appTitleClassNames}>{title}</div>
-          <ul className={navLinkContainerClassNames}>
-            {navLinks?.map((link, index) => (
-              <li key={`navLink-${link.label}-${index}`}>
+          <div>
+            <div className="gi-header-logo">
+              {logo?.href && (
                 <Anchor
-                  data-testid={`nav-link-desktop-${index}`}
-                  href={link.href}
-                  aria-label={link.label}
-                  external={link.external}
+                  href={logo.href}
+                  aria-label="Go to the home page"
+                  data-testid={`logo-link`}
+                  external={logo.external}
                 >
-                  {link.label}
+                  {getLogo({ logo })}
                 </Anchor>
-              </li>
-            ))}
-          </ul>
-          {navLinks && hasDivider && (
-            <div className={menuDividerClassNames}></div>
-          )}
-          <div className="gi-flex">
-            {tools?.search && (
-              <div className="gi-hidden sm:gi-flex">
+              )}
+              {!logo?.href && getLogo({ logo })}
+            </div>
+
+            <div className={appTitleClassNames}>{title}</div>
+          </div>
+          <div>
+            <ul className={navLinkContainerClassNames}>
+              {navLinks?.map((link, index) => (
+                <li key={`navLink-${link.label}-${index}`}>
+                  <Anchor
+                    data-testid={`nav-link-desktop-${index}`}
+                    href={link.href}
+                    aria-label={link.label}
+                    external={link.external}
+                  >
+                    {link.label}
+                  </Anchor>
+                </li>
+              ))}
+            </ul>
+
+            {navLinks && hasDivider && (
+              <div className={menuDividerClassNames}></div>
+            )}
+            <div className="gi-flex gi-gap-2">
+              {tools?.search && (
+                <div className="gi-hidden sm:gi-flex">
+                  <label
+                    htmlFor="SearchTrigger"
+                    className={`${toolItemClassNames}`}
+                  >
+                    <input
+                      className="gi-header-mobile-menu-trigger"
+                      id="SearchTrigger"
+                      data-testid="SearchTrigger"
+                      type="checkbox"
+                    />
+                    {tools.search.label && (
+                      <span className="label">{tools.search.label}</span>
+                    )}
+                    <Icon
+                      className="search-icon"
+                      icon={tools.search.icon || 'search'}
+                    />
+                    <Icon className="gi-hidden close-icon" icon="close" />
+                  </label>
+                </div>
+              )}
+
+              {showMobileMenu && (
                 <label
-                  htmlFor="SearchTrigger"
-                  className={`${toolItemClassNames}`}
+                  htmlFor="MobileMenuTrigger"
+                  className={`${toolItemClassNames} lg:gi-hidden`}
                 >
                   <input
+                    id="MobileMenuTrigger"
                     className="gi-header-mobile-menu-trigger"
-                    id="SearchTrigger"
-                    data-testid="SearchTrigger"
                     type="checkbox"
+                    data-testid="header-mobile-menu"
                   />
-                  {tools.search.label && (
-                    <span className="label">{tools.search.label}</span>
+                  {tools?.menu?.label && (
+                    <span className="label">{tools.menu.label}</span>
                   )}
-                  <Icon
-                    className="search-icon"
-                    icon={tools.search.icon || 'search'}
-                  />
-                  <Icon className="gi-hidden close-icon" icon="close" />
+                  <Icon icon={tools?.menu?.icon || 'menu'} />
                 </label>
-              </div>
-            )}
-            {tools?.items &&
-              tools?.items.map(
-                ({ href, icon, label, slot, external }, index) => {
-                  return (
-                    <div
-                      className="gi-hidden lg:gi-flex"
-                      key={`toolItem-${label}-${index}`}
-                    >
-                      {slot ? (
-                        <SlotItemAction
-                          index={index}
-                          item={{ slot, icon, label }}
-                        />
-                      ) : (
-                        <Anchor
-                          className={toolItemClassNames}
-                          href={href}
-                          aria-label={label || `link ${index}`}
-                          data-testid={`tool-link-desktop-${index}`}
-                          external={external}
-                        >
-                          {label && <span className="label">{label}</span>}
-                          {icon && <Icon icon={icon} />}
-                        </Anchor>
-                      )}
-                    </div>
-                  );
-                },
               )}
-            {showMobileMenu && (
-              <label
-                htmlFor="MobileMenuTrigger"
-                className={`${toolItemClassNames} lg:gi-hidden`}
-              >
-                <input
-                  id="MobileMenuTrigger"
-                  className="gi-header-mobile-menu-trigger"
-                  type="checkbox"
-                  data-testid="header-mobile-menu"
-                />
-                {tools?.menu?.label && (
-                  <span className="label">{tools.menu.label}</span>
+              {tools?.items &&
+                tools?.items.map(
+                  ({ href, icon, label, slot, external }, index) => {
+                    return (
+                      <div
+                        className="gi-hidden lg:gi-flex"
+                        key={`toolItem-${label}-${index}`}
+                      >
+                        {slot ? (
+                          <SlotItemAction
+                            index={index}
+                            item={{ slot, icon, label }}
+                          />
+                        ) : (
+                          <Anchor
+                            className={toolItemClassNames}
+                            href={href}
+                            aria-label={label || `link ${index}`}
+                            data-testid={`tool-link-desktop-${index}`}
+                            external={external}
+                          >
+                            {label && <span className="label">{label}</span>}
+                            {icon && <Icon icon={icon} />}
+                          </Anchor>
+                        )}
+                      </div>
+                    );
+                  },
                 )}
-                <Icon icon={tools?.menu?.icon || 'menu'} />
-              </label>
-            )}
+            </div>
           </div>
         </div>
       </div>

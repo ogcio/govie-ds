@@ -480,6 +480,9 @@ export const WithExtraButtonsAndLabels: Story = {
         label: 'Search',
         action: 'search_page',
       },
+      menu: {
+        label: 'Menu',
+      },
       items: [
         {
           href: '/home',
@@ -520,6 +523,9 @@ export const FullWidth: Story = {
       search: {
         action: '/search_page',
         label: 'Search',
+      },
+      menu: {
+        label: 'Menu',
       },
       items: [
         {
