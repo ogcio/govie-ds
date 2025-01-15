@@ -48,11 +48,20 @@ export function getComponents(): ComponentDetail[] {
         name: component.title,
         statuses:
           component.libraries?.map((status) => {
-            let baseUrl = globalHtmlStorybookBaseUrl;
-            if (status.platform === 'local') {
-              baseUrl = localHtmlStorybookBaseUrl;
-            } else if (status.platform === 'react') {
-              baseUrl = reactStorybookBaseUrl;
+            let baseUrl = '';
+            switch (status.platform) {
+              case 'local': {
+                baseUrl = localHtmlStorybookBaseUrl;
+                break;
+              }
+              case 'react': {
+                baseUrl = reactStorybookBaseUrl;
+                break;
+              }
+              case 'global': {
+                baseUrl = globalHtmlStorybookBaseUrl;
+                break;
+              }
             }
             return {
               status: status.status,

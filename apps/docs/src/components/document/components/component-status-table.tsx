@@ -61,9 +61,6 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
       const figmaPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'figma',
       );
-      const localPlatform = component.statuses.find(
-        (platformStatus) => platformStatus.platform.id === 'local',
-      );
       const globalPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'global',
       );
@@ -77,10 +74,6 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
         figma: {
           status: figmaPlatform?.status ?? 'considering',
           href: figmaPlatform?.platform?.href,
-        },
-        local: {
-          status: localPlatform?.status ?? 'considering',
-          href: localPlatform?.platform?.href,
         },
         global: {
           status: globalPlatform?.status ?? 'considering',
@@ -109,15 +102,6 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
             <ComponentStatusPill
               status={componentStatus.figma.status}
               href={componentStatus.figma.href}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td className="p-2">Local HTML</td>
-          <td>
-            <ComponentStatusPill
-              status={componentStatus.local.status}
-              href={componentStatus.local.href}
             />
           </td>
         </tr>
@@ -151,9 +135,6 @@ export function ComponentStatusTable() {
     const figmaPlatform = component.statuses.find(
       (platformStatus) => platformStatus.platform.id === 'figma',
     );
-    const localPlatform = component.statuses.find(
-      (platformStatus) => platformStatus.platform.id === 'local',
-    );
     const globalPlatform = component.statuses.find(
       (platformStatus) => platformStatus.platform.id === 'global',
     );
@@ -167,10 +148,6 @@ export function ComponentStatusTable() {
       figma: {
         status: figmaPlatform?.status ?? 'considering',
         href: figmaPlatform?.platform?.href,
-      },
-      local: {
-        status: localPlatform?.status ?? 'stable',
-        href: localPlatform?.platform?.href,
       },
       global: {
         status: globalPlatform?.status ?? 'considering',
@@ -189,15 +166,12 @@ export function ComponentStatusTable() {
         There are currently <strong>{components.length}</strong> components
         under consideration for the design system.
       </Paragraph>
-      <div className="grid grid-cols-2 lg:grid-cols-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4">
         <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Component
         </div>
         <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Figma Library
-        </div>
-        <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
-          Local HTML
         </div>
         <div className="hidden lg:block bg-gray-50 p-2 text-sm text-gray-600">
           Global HTML
@@ -209,7 +183,7 @@ export function ComponentStatusTable() {
         {componentStatuses.map((componentStatus) => {
           return (
             <Fragment key={componentStatus.id}>
-              <div className="row-span-4 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
+              <div className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
                 {componentStatus.name}
               </div>
               <div className="flex p-2">
@@ -217,13 +191,6 @@ export function ComponentStatusTable() {
                 <ComponentStatusPill
                   status={componentStatus.figma.status}
                   href={componentStatus.figma.href}
-                />
-              </div>
-              <div className="flex p-2">
-                <div className="w-32 block lg:hidden">Local HTML</div>
-                <ComponentStatusPill
-                  status={componentStatus.local.status}
-                  href={componentStatus.local.href}
                 />
               </div>
               <div className="flex p-2">
