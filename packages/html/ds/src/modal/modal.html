@@ -1,3 +1,4 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
 {% from 'button/button.html' import govieButton %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 
@@ -13,7 +14,12 @@
         {{ props.triggerButton | safe | trim | indent(2) }}
       </div>
     {% endif %}
-    <div data-testid="modal" data-element="modal" class="gi-modal {{ open }}">
+    <div
+      data-testid="modal"
+      data-element="modal"
+      class="gi-modal {{ open }}"
+      {{ commonAriaAttributes(props) }}
+    >
       <div
         data-testid="modal-container"
         data-element="modal-container"

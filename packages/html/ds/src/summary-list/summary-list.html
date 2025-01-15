@@ -23,7 +23,9 @@
               govieLink({
                 "href": action.href,
                 "label": action.label,
-                "ariaLabel": "Link action: " ~ action.label
+                "aria": {
+                  "aria-label": "Link action: " ~ action.label
+                }
               })
             }}
           </dd>

@@ -67,6 +67,24 @@ describe('modal', () => {
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   });
 
+  it('should apply aria attributes correctly', () => {
+    const screen = renderModal({
+      html: htmlContent,
+      triggerButton,
+      aria: {
+        'aria-labelledby': 'modal-title',
+        'aria-describedby': 'modal-description',
+      },
+    });
+
+    const modalElement = screen.getByTestId('modal');
+
+    expect(modalElement.getAttribute('aria-labelledby')).toBe('modal-title');
+    expect(modalElement.getAttribute('aria-describedby')).toBe(
+      'modal-description',
+    );
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderModal({ html: htmlContent, triggerButton });
 

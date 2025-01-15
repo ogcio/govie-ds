@@ -48,5 +48,9 @@ export const Default: Story = {
 export const ModalOpen: Story = {
   args: {
     html: htmlContent,
+    aria: {
+      'aria-labelledby': 'modal-title',
+      'aria-describedby': 'modal-title',
+    },
   },
 };

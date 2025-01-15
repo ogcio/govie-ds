@@ -43,6 +43,18 @@ describe('govieTag', () => {
     },
   );
 
+  it('should apply the correct ARIA attributes', () => {
+    const screen = renderTag({
+      text: 'Completed tag',
+      type: TagType.default,
+      aria: { 'aria-label': 'Completed tag' },
+    });
+
+    const tagElement = screen.getByText('Completed tag');
+
+    expect(tagElement).toHaveAttribute('aria-label', 'Completed tag');
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderTag({
       text: 'Accessible tag',
