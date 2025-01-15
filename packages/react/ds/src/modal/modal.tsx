@@ -17,10 +17,7 @@ import type {
   ModalWrapperProps,
 } from './types.js';
 
-export const ModalCloseButton = ({
-  label,
-  ...props
-}: ModalCloseButtonProps) => (
+const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) => (
   <Button
     onClick={props.onClick}
     variant="flat"
@@ -35,18 +32,16 @@ export const ModalCloseButton = ({
     </>
   </Button>
 );
-ModalCloseButton.id = Symbol('ModalCloseButton');
 
 export const ModalWrapper = ({
   isOpen,
   onClose,
   position = 'center',
+  closeButtonLabel,
   className,
   children,
 }: ModalWrapperProps) => {
-  let closeButton = null;
-
-  const sortedChildren = Children.toArray(children).sort((a, b) => {
+  const renderChildren = Children.toArray(children).sort((a, b) => {
     if (!isValidElement(a) || !isValidElement(b)) {
       return 0;
     }
@@ -55,19 +50,6 @@ export const ModalWrapper = ({
     const indexB = typeOrder.indexOf(b.type as any);
 
     return indexA - indexB;
-  });
-
-  const renderChildren = Children.map(sortedChildren, (child) => {
-    if (isValidElement(child) && child.type?.id === ModalCloseButton.id) {
-      closeButton = cloneElement(
-        child as ReactElement<ModalCloseButtonProps | any>,
-        {
-          onClick: onClose,
-        },
-      );
-      return null;
-    }
-    return child;
   });
 
   return (
@@ -93,7 +75,7 @@ export const ModalWrapper = ({
           'gi-modal-container-right': position === 'right',
         })}
       >
-        {closeButton}
+        <ModalCloseButton onClick={onClose} label={closeButtonLabel} />
         <div className="gi-flex gi-flex-col gi-h-full">{renderChildren}</div>
       </div>
     </div>
@@ -114,13 +96,14 @@ export const ModalFooter = ({
 }: {
   children: ReactNode;
   className?: string;
-}) => <div className={className}>{children}</div>;
+}) => <div className={cn('modal-footer', className)}>{children}</div>;
 
 export const Modal = ({
   children,
   triggerButton,
   className,
   startsOpen,
+  closeButtonLabel,
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -140,6 +123,7 @@ export const Modal = ({
         onClose={handleClose}
         position={'center'}
         className={className}
+        closeButtonLabel={closeButtonLabel}
       >
         {children}
       </ModalWrapper>

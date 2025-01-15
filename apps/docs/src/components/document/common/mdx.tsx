@@ -21,7 +21,6 @@ import {
   List,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalFooter,
   ModalTitle,
   Pagination,
@@ -190,7 +189,6 @@ const documentComponents: MDXComponents = {
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   ModalTitle: (props) => <ModalTitle>{props.children}</ModalTitle>,
   ModalBody: (props) => <ModalBody>{props.children}</ModalBody>,
-  ModalCloseButton,
   ModalFooter: (props) => (
     <ModalFooter {...props}>{props.children}</ModalFooter>
   ),

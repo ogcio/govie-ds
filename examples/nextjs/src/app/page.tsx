@@ -16,7 +16,6 @@ import {
   ModalTitle,
   ModalBody,
   ModalFooter,
-  ModalCloseButton,
   Button,
   CookieBanner,
   TypeEnum,
@@ -182,7 +181,6 @@ export default function Home() {
           <span className="material-symbols-outlined">face</span>
           <div>
             <Modal triggerButton={<Button>Open Modal</Button>}>
-              <ModalCloseButton />
               <ModalTitle>Title</ModalTitle>
               <ModalBody>
                 <Paragraph>

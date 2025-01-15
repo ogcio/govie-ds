@@ -2,14 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 
-import {
-  ModalCloseButton,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  ModalWrapper,
-  Modal,
-} from './modal.js';
+import { ModalTitle, ModalBody, ModalFooter, Modal } from './modal.js';
 
 const meta = {
   title: 'Application/Modal',
@@ -39,7 +32,6 @@ export const Default: Story = {
     triggerButton: <Button>Open modal</Button>,
     className: 'gi-w-[600px]',
     children: [
-      <ModalCloseButton key="close" aria-label="Close modal" label="Close" />,
       <ModalTitle key="title">Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>
@@ -66,7 +58,6 @@ export const ModalOpen: Story = {
     startsOpen: true,
     triggerButton: <Button>Open modal</Button>,
     children: [
-      <ModalCloseButton key="close" aria-label="Close modal" />,
       <ModalTitle key="title">Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>
