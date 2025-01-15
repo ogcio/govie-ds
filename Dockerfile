@@ -25,7 +25,6 @@ RUN pnpm build
 
 # Production image
 
-
 FROM ghcr.io/nginxinc/nginx-unprivileged:1.26.1-bookworm-perl
 
 # Remove default nginx static assets
