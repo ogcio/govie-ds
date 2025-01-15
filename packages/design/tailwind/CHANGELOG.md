@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.27.2](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.1...tailwind-v0.27.2) (2025-01-15)
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+* update radio min width and height ([#396](https://github.com/ogcio/govie-ds/issues/396)) ([6a4b12f](https://github.com/ogcio/govie-ds/commit/6a4b12f2a7776673c7a820164748dad69369d412))
+
 ## [0.27.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.0...tailwind-v0.27.1) (2025-01-13)
 
 
