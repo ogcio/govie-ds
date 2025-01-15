@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.1](https://github.com/ogcio/govie-ds/compare/docs-v0.38.0...docs-v0.38.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+
 ## [0.38.0](https://github.com/ogcio/govie-ds/compare/docs-v0.37.0...docs-v0.38.0) (2025-01-13)
 
 
