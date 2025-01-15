@@ -11,27 +11,41 @@ import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading } from '../heading/heading.js';
 import { Icon } from '../icon/icon.js';
+import { IconButton } from '../icon-button/icon-button.js';
 import type {
   ModalCloseButtonProps,
   ModalProps,
   ModalWrapperProps,
 } from './types.js';
 
-const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) => (
-  <Button
-    onClick={props.onClick}
-    variant="flat"
-    size="large"
-    appearance="dark"
-    className="gi-modal-icon"
-    {...props}
-  >
-    <>
-      {label}
-      <Icon icon="close" />
-    </>
-  </Button>
-);
+const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) =>
+  label ? (
+    <Button
+      onClick={props.onClick}
+      variant="flat"
+      size="large"
+      appearance="dark"
+      className="gi-modal-icon"
+      {...props}
+    >
+      <>
+        {label}
+        <Icon icon="close" />
+      </>
+    </Button>
+  ) : (
+    <IconButton
+      icon={{
+        icon: 'close',
+      }}
+      onClick={props.onClick}
+      variant="flat"
+      size="large"
+      appearance="dark"
+      className="gi-modal-icon"
+      {...props}
+    />
+  );
 
 export const ModalWrapper = ({
   isOpen,

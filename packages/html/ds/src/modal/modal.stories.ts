@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { renderComponent } from '../storybook/storybook';
-import { htmlContent, triggerButton } from './modal.content';
+import {
+  modalBody,
+  modalFooter,
+  modalTitle,
+  triggerButton,
+} from './modal.content';
 import html from './modal.html?raw';
 import { ModalProps } from './modal.schema';
 
@@ -30,23 +35,37 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   argTypes: {
-    html: {
+    title: {
       control: 'text',
       description: 'The content that will be inserted in the modal component',
     },
+    body: {
+      control: 'text',
+      description: 'The content that will be inserted in the modal body',
+    },
+    footer: {
+      control: 'text',
+      description: 'The content that will be inserted in the modal footer',
+    },
+
     triggerButton: {
       control: 'text',
       description: 'The button that will trigger the modal component',
     },
   },
   args: {
-    html: htmlContent,
+    title: modalTitle,
+    body: modalBody,
+    footer: modalFooter,
     triggerButton,
   },
 };
 
 export const ModalOpen: Story = {
   args: {
-    html: htmlContent,
+    title: modalTitle,
+    body: modalBody,
+    footer: modalFooter,
+    isOpen: true,
   },
 };

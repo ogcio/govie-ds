@@ -71,10 +71,23 @@ libraries:
 </TabPanel>
 <TabPanel value="tab12">
 ```html
-{{ govieModal({
-  "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
-  "triggerButton": "<button>Open Modal</button>"
-}) }}
+  {{ govieModal({
+    triggerButton: '<button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>',
+    title: 'Title',
+    body: `
+      <div class="gi-w-[500px]">
+        <p class="gi-paragraph-md">
+          This is the main body of the modal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+        </p>
+      </div>
+    `,
+    footer: `
+      <div class="gi-flex gi-gap-6 gi-justify-end">
+        <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">Cancel</button>
+        <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
+      </div>
+    `,
+  }) }}
 ````
 
   </TabPanel>
