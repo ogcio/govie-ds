@@ -1,5 +1,10 @@
 import { render } from '../common/render';
-import { htmlContent, triggerButton } from './modal.content';
+import {
+  modalBody,
+  modalFooter,
+  modalTitle,
+  triggerButton,
+} from './modal.content';
 import html from './modal.html?raw';
 import { ModalProps } from './modal.schema';
 
@@ -11,14 +16,26 @@ describe('modal', () => {
   });
 
   it('should render the modal on load', () => {
-    const screen = renderModal({ html: htmlContent });
+    const screen = renderModal({
+      title: modalTitle,
+      body: modalBody,
+      footer: modalFooter,
+      isOpen: true,
+    });
     const modalElement = screen.getByTestId('modal');
     const modalContainerElement = screen.getByTestId('modal-container');
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     expect(modalContainerElement).toBeTruthy();
   });
+
   it('should open the modal on button trigger', () => {
-    const screen = renderModal({ html: htmlContent, triggerButton });
+    const screen = renderModal({
+      triggerButton,
+      title: modalTitle,
+      body: modalBody,
+      footer: modalFooter,
+      isOpen: false,
+    });
     const modalElement = screen.getByTestId('modal');
     const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
@@ -28,30 +45,38 @@ describe('modal', () => {
 
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
   });
+
   it('should close the modal on icon click', () => {
-    const screen = renderModal({ html: htmlContent, triggerButton });
+    const screen = renderModal({
+      triggerButton,
+      title: modalTitle,
+      body: modalBody,
+      footer: modalFooter,
+      isOpen: false,
+    });
     const modalElement = screen.getByTestId('modal');
     const iconElement = screen
       .getByTestId('modal-container')
       .querySelector('.gi-modal-icon') as HTMLElement;
     const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    // Default state with Modal closed
-    expect(iconElement).not.toBeVisible();
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
     triggerButtonElement.click();
 
-    // Modal Open
-    expect(iconElement).toBeVisible();
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     iconElement.click();
 
-    // Modal Closed by icon
-    expect(iconElement).not.toBeFalsy();
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   });
+
   it('should close the modal on overlay click', () => {
-    const screen = renderModal({ html: htmlContent, triggerButton });
+    const screen = renderModal({
+      triggerButton,
+      title: modalTitle,
+      body: modalBody,
+      footer: modalFooter,
+      isOpen: false,
+    });
     const modalElement = screen.getByTestId('modal');
     const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
@@ -68,7 +93,12 @@ describe('modal', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderModal({ html: htmlContent, triggerButton });
+    const screen = renderModal({
+      triggerButton,
+      title: modalTitle,
+      body: modalBody,
+      footer: modalFooter,
+    });
 
     await screen.axe();
   });

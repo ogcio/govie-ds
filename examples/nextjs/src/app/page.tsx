@@ -13,6 +13,9 @@ import {
   RadiosGroup,
   TextArea,
   Modal,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
   Button,
   CookieBanner,
   TypeEnum,
@@ -176,20 +179,26 @@ export default function Home() {
           />
 
           <span className="material-symbols-outlined">face</span>
-          <Modal triggerButton={<Button>Open Modal</Button>}>
-            <Heading as="h2">Title</Heading>
-            <Paragraph>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-              esse magnam quis sit soluta cupiditate at deserunt exercitationem
-              voluptas doloribus asperiores
-            </Paragraph>
-            <div className="gi-flex gi-gap-6 gi-justify-end">
-              <Button variant="secondary" appearance="dark">
-                Cancel action
-              </Button>
-              <Button>Primary action</Button>
-            </div>
-          </Modal>
+          <div>
+            <Modal triggerButton={<Button>Open Modal</Button>}>
+              <ModalTitle>Title</ModalTitle>
+              <ModalBody>
+                <Paragraph>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Incidunt esse magnam quis sit soluta cupiditate at deserunt
+                  exercitationem voluptas doloribus asperiores
+                </Paragraph>
+              </ModalBody>
+              <ModalFooter>
+                <div className="gi-flex gi-gap-6 gi-justify-end">
+                  <Button variant="secondary" appearance="dark">
+                    Cancel action
+                  </Button>
+                  <Button>Primary action</Button>
+                </div>
+              </ModalFooter>
+            </Modal>
+          </div>
           <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
