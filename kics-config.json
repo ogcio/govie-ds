@@ -2,5 +2,6 @@
     "log-file": true,
     "type": "Dockerfile,Kubernetes,Terraform",
     "output-path": "results",
-    "exclude-severities": "info,trace,low"
+    "exclude-severities": "info,trace,low",
+    "exclude-paths": "examples"
 }
