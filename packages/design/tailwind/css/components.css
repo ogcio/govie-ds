@@ -587,7 +587,7 @@ input[type='file' i] {
 /* Modal */
 
 .gi-modal {
-  @apply gi-bg-[rgba(37,37,38,0.4)];
+  @apply gi-bg-[rgba(11,12,12,0.6)];
 }
 
 .gi-modal-body {
