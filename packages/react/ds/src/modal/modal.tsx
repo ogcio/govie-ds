@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
-import { Heading } from '../heading/heading.js';
+import { Heading, HeadingProps } from '../heading/heading.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import type {
@@ -96,8 +96,10 @@ export const ModalWrapper = ({
   );
 };
 
-export const ModalTitle = ({ children }: { children: string }) => (
-  <Heading as="h2">{children}</Heading>
+export const ModalTitle = ({ children, as = 'h2', ...props }: HeadingProps) => (
+  <Heading as={as} {...props}>
+    {children}
+  </Heading>
 );
 
 export const ModalBody = ({ children }: { children: ReactNode }) => (
@@ -135,7 +137,7 @@ export const Modal = ({
       <ModalWrapper
         isOpen={isOpen}
         onClose={handleClose}
-        position={'center'}
+        position="center"
         className={className}
         closeButtonLabel={closeButtonLabel}
       >
