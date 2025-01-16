@@ -1,5 +1,7 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+
 {% macro govieTable(props) %}
-  <table class="gi-table">
+  <table {{ commonAriaAttributes(props) }} class="gi-table">
     {% if props.captionText %}
       <caption class="gi-table-caption-text gi-text-lg">
         {{ props.captionText }}

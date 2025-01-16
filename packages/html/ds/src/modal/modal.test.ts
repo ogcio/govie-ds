@@ -17,7 +17,7 @@ describe('modal', () => {
 
   it('should render the modal on load', () => {
     const screen = renderModal({
-      title: modalTitle,
+      title: { text: modalTitle },
       body: modalBody,
       footer: modalFooter,
       isOpen: true,
@@ -31,7 +31,7 @@ describe('modal', () => {
   it('should open the modal on button trigger', () => {
     const screen = renderModal({
       triggerButton,
-      title: modalTitle,
+      title: { text: modalTitle },
       body: modalBody,
       footer: modalFooter,
       isOpen: false,
@@ -49,7 +49,7 @@ describe('modal', () => {
   it('should close the modal on icon click', () => {
     const screen = renderModal({
       triggerButton,
-      title: modalTitle,
+      title: { text: modalTitle },
       body: modalBody,
       footer: modalFooter,
       isOpen: false,
@@ -72,7 +72,7 @@ describe('modal', () => {
   it('should close the modal on overlay click', () => {
     const screen = renderModal({
       triggerButton,
-      title: modalTitle,
+      title: { text: modalTitle },
       body: modalBody,
       footer: modalFooter,
       isOpen: false,
@@ -92,10 +92,30 @@ describe('modal', () => {
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   });
 
+  it('should apply aria attributes correctly', () => {
+    const screen = renderModal({
+      title: { text: modalTitle },
+      body: modalBody,
+      footer: modalFooter,
+      triggerButton,
+      aria: {
+        'aria-labelledby': 'modal-title',
+        'aria-describedby': 'modal-description',
+      },
+    });
+
+    const modalElement = screen.getByTestId('modal');
+
+    expect(modalElement.getAttribute('aria-labelledby')).toBe('modal-title');
+    expect(modalElement.getAttribute('aria-describedby')).toBe(
+      'modal-description',
+    );
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderModal({
       triggerButton,
-      title: modalTitle,
+      title: { text: modalTitle },
       body: modalBody,
       footer: modalFooter,
     });

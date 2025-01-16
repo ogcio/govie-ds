@@ -36,8 +36,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   argTypes: {
     title: {
-      control: 'text',
-      description: 'The content that will be inserted in the modal component',
+      control: 'object',
+      description:
+        'The heading props for the modal title, including text, size, and caption.',
     },
     body: {
       control: 'text',
@@ -52,20 +53,29 @@ export const Default: Story = {
       control: 'text',
       description: 'The button that will trigger the modal component',
     },
+    closeButtonLabel: {
+      control: 'text',
+      description: 'The close button label',
+    },
   },
   args: {
-    title: modalTitle,
+    title: { text: modalTitle },
     body: modalBody,
     footer: modalFooter,
     triggerButton,
+    closeButtonLabel: 'Close',
   },
 };
 
 export const ModalOpen: Story = {
   args: {
-    title: modalTitle,
+    title: { text: modalTitle },
     body: modalBody,
     footer: modalFooter,
     isOpen: true,
+    aria: {
+      'aria-labelledby': 'modal-title',
+      'aria-describedby': 'modal-title',
+    },
   },
 };

@@ -125,6 +125,10 @@ export const NoHeaders: Story = {
       ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
       ['Row 3, Cell 1', 'Row 3, Cell 2', 'Row 3, Cell 3'],
     ],
+    aria: {
+      'aria-rowcount': '3',
+      'aria-colcount': '3',
+    },
   },
 };
 

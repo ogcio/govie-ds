@@ -35,22 +35,18 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   initModalState() {
-    if (this.isOpen) {
-      this.modal.classList.add('gi-modal-open');
-      this.modal.classList.remove('gi-modal-close');
-    } else {
-      this.modal.classList.add('gi-modal-close');
-      this.modal.classList.remove('gi-modal-open');
-    }
+    this.toggleModalState(this.isOpen);
   }
 
   toggleModalState(isOpen: boolean) {
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
+      this.modal.setAttribute('aria-hidden', 'false');
     } else {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
+      this.modal.setAttribute('aria-hidden', 'true');
     }
   }
 

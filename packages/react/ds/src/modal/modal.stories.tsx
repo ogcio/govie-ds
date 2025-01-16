@@ -54,7 +54,7 @@ export const Default: Story = {
 
 export const ModalOpen: Story = {
   args: {
-    className: 'gi-w-[600px]',
+    className: 'gi-w-[600px] gi-bg-gray-500',
     startsOpen: true,
     triggerButton: <Button>Open modal</Button>,
     children: [

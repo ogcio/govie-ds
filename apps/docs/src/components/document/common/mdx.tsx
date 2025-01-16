@@ -218,13 +218,13 @@ const documentComponents: MDXComponents = {
   BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
-  ComponentContainer: (props) => (
+  ComponentContainer: ({ fullWidth, className, ...props }) => (
     <div
       {...props}
       className={cn(
         'my-xl stroke-gray-950 gi-not-prose',
-        props.fullWidth ? '' : 'max-w-prose',
-        props.className,
+        fullWidth ? '' : 'max-w-prose',
+        className,
       )}
     />
   ),

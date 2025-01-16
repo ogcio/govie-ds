@@ -83,11 +83,14 @@ export const ModalWrapper = ({
     >
       <div
         data-testid="modal-container"
-        className={cn(className, {
-          'gi-modal-container-center': position === 'center',
-          'gi-modal-container-left': position === 'left',
-          'gi-modal-container-right': position === 'right',
-        })}
+        className={cn(
+          {
+            'gi-modal-container-center': position === 'center',
+            'gi-modal-container-left': position === 'left',
+            'gi-modal-container-right': position === 'right',
+          },
+          className,
+        )}
       >
         <ModalCloseButton onClick={onClose} label={closeButtonLabel} />
         <div className="gi-flex gi-flex-col gi-h-full">{renderChildren}</div>

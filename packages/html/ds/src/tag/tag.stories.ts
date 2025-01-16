@@ -56,5 +56,8 @@ export const Default: Story = {
   args: {
     text: 'Completed',
     type: TagType.info,
+    aria: {
+      'aria-label': 'Completed',
+    },
   },
 };

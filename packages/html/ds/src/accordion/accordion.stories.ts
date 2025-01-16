@@ -56,6 +56,9 @@ export const Default: Story = {
 export const WithIconStart: Story = {
   args: {
     iconStart: true,
+    aria: {
+      'aria-label': 'Accordion',
+    },
     items: [
       {
         label: 'Label 1',
@@ -73,6 +76,9 @@ export const WithIconStart: Story = {
         content: `<h2 class="gi-heading-xs">This is the content heading</h2><button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
       },
       {
+        aria: {
+          'aria-disabled': 'true',
+        },
         disabled: true,
         label: 'Label 4',
         content: `<h2 class="gi-heading-xs">This is the content heading</h2><button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,

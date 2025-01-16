@@ -1,3 +1,4 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
 {% from 'button/button.html' import govieButton %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 {% from 'heading/heading.html' import govieHeading %}
@@ -33,6 +34,7 @@
       {% if props.isOpen %}
         data-open="true"
       {% endif %}
+      {{ commonAriaAttributes(props) }}
     >
       <div
         data-testid="modal-container"
@@ -64,7 +66,7 @@
         {% endif %}
         <div class="gi-flex gi-flex-col gi-h-full">
           {% if props.title %}
-            {{ govieHeading({ "text" : props.title, "as": "h2"}) }}
+            {{ govieHeading({ "text": props.title.text, "size": props.title.size, "as": "h2"  }) }}
           {% endif %}
           <div class="gi-modal-body">
             {{ props.body | safe | trim | indent(2) }}
