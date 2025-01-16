@@ -84,6 +84,7 @@ export const ModalWrapper = ({
       <div
         data-testid="modal-container"
         className={cn(
+          'gi-modal-container',
           {
             'gi-modal-container-center': position === 'center',
             'gi-modal-container-left': position === 'left',
@@ -105,9 +106,13 @@ export const ModalTitle = ({ children, as = 'h2', ...props }: HeadingProps) => (
   </Heading>
 );
 
-export const ModalBody = ({ children }: { children: ReactNode }) => (
-  <div className="gi-modal-body">{children}</div>
-);
+export const ModalBody = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => <div className={cn('gi-modal-body', className)}>{children}</div>;
 
 export const ModalFooter = ({
   children,

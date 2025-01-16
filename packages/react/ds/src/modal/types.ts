@@ -1,15 +1,17 @@
-import { ReactElement } from 'react';
+import { Fragment, ReactElement } from 'react';
 import { IconButtonType } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
-export type ModalChildren = Array<
-  ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>
->;
+export type ModalChildren =
+  | Array<
+      ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>
+    >
+  | ReactElement<typeof Fragment>;
 
 export type ModalWrapperProps = {
   isOpen: boolean;
   onClose: () => void;
-  position?: 'center' | 'left' | 'right';
+  position?: 'center' | 'left' | 'right' | 'bottom';
   closeButtonLabel?: string;
   className?: string;
   children: ModalChildren;

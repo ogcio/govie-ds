@@ -2,11 +2,12 @@ import { act } from 'react';
 import { render, cleanup, waitFor } from '../test-utils.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
 import { Modal } from './modal.js';
+import { ModalProps } from './types.js';
 
 describe('modal', () => {
   afterEach(cleanup);
 
-  const renderModal = (props: any) => render(<Modal {...props} />);
+  const renderModal = (props: ModalProps) => render(<Modal {...props} />);
 
   it('should render the modal on load if startsOpen is true', () => {
     const screen = renderModal({

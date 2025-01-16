@@ -584,6 +584,17 @@ input[type='file' i] {
 
 /* End Footer */
 
+/* Drawer */
+
+.gi-drawer {
+}
+
+.gi-drawer-body {
+  @apply gi-mt-4;
+}
+
+/* End Drawer */
+
 /* Modal */
 
 .gi-modal {
@@ -595,7 +606,7 @@ input[type='file' i] {
 }
 
 .gi-modal-open {
-  @apply gi-flex gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
+  @apply gi-flex gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000 gi-h-full;
 }
 
 .gi-modal-close {
@@ -603,7 +614,7 @@ input[type='file' i] {
 }
 
 .gi-modal-container {
-  @apply gi-p-8 gi-bg-white gi-absolute gi-left-2/4 gi-top-2/4 gi--translate-x-2/4 gi--translate-y-2/4;
+  @apply gi-p-8 gi-bg-white gi-absolute;
 }
 
 .gi-modal-container-center {
@@ -611,11 +622,11 @@ input[type='file' i] {
 }
 
 .gi-modal-container-left {
-  @apply gi-absolute gi-left-0 gi-top-0 gi-h-full gi-p-8 gi-bg-white gi-shadow-lg gi-w-1/3 gi-rounded-r-md;
+  @apply gi-left-0 gi-top-0 gi-h-full gi-w-full xs:gi-w-3/5;
 }
 
 .gi-modal-container-right {
-  @apply gi-absolute gi-right-0 gi-top-0 gi-h-full gi-p-8 gi-bg-white gi-shadow-lg gi-w-1/3 gi-rounded-l-md;
+  @apply gi-right-0 gi-top-0 gi-h-full  gi-w-full xs:gi-w-3/5;
 }
 
 .gi-modal-icon {
