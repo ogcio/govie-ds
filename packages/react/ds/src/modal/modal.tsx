@@ -89,6 +89,7 @@ export const ModalWrapper = ({
             'gi-modal-container-center': position === 'center',
             'gi-modal-container-left': position === 'left',
             'gi-modal-container-right': position === 'right',
+            'gi-modal-container-bottom': position === 'bottom',
           },
           className,
         )}

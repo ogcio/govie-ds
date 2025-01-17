@@ -1,5 +1,7 @@
+import { act } from 'react';
 import { Button } from '../button/button.js';
 import { render, cleanup, waitFor } from '../test-utils.js';
+import { HtmlContent, TriggerButton } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
 
 describe('drawer', () => {
@@ -15,39 +17,97 @@ describe('drawer', () => {
       </Drawer>,
     );
 
-  it('should render the drawer open on load if isOpen is true', () => {
+  it('should render the drawer on load if startsOpen is true', () => {
     const screen = renderDrawer({
-      isOpen: true,
-      position: 'right',
+      children: HtmlContent,
+      triggerButton: TriggerButton,
+      startsOpen: true,
     });
 
-    const drawerElement = screen.getByTestId('modal');
-    const drawerContainerElement = screen.getByTestId('modal-container');
+    const modalElement = screen.getByTestId('modal');
+    const modalContainerElement = screen.getByTestId('modal-container');
 
-    expect(drawerElement.classList.contains('gi-modal-open')).toBe(true);
-    expect(drawerContainerElement).toBeTruthy();
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+    expect(modalContainerElement).toBeTruthy();
+  });
+
+  it('should open the drawer on button trigger', async () => {
+    const screen = renderDrawer({
+      children: HtmlContent,
+      triggerButton: TriggerButton,
+    });
+
+    const triggerButtonElement = screen.getByTestId(
+      'drawer-trigger-button-container',
+    );
+    triggerButtonElement.click();
+
+    await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+    });
+  });
+
+  it('should close the drawer on icon click', async () => {
+    const screen = renderDrawer({
+      children: HtmlContent,
+      triggerButton: TriggerButton,
+    });
+
+    const modalElement = screen.getByTestId('modal');
+    const triggerButtonElement = screen.getByTestId(
+      'drawer-trigger-button-container',
+    );
+
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+
+    await act(async () => {
+      triggerButtonElement.click();
+    });
+
+    await waitFor(() => {
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+    });
+
+    const iconElement = screen
+      .getByTestId('modal-container')
+      .querySelector('.gi-modal-icon') as HTMLElement;
+
+    expect(iconElement).toBeVisible();
+
+    await act(async () => {
+      iconElement.click();
+    });
   });
 
   it('should close the drawer on overlay click', async () => {
-    const onClose = vitest.fn();
-    const screen = renderDrawer({ isOpen: true, onClose, position: 'right' });
+    const screen = renderDrawer({
+      children: HtmlContent,
+      triggerButton: TriggerButton,
+    });
 
-    const drawerElement = screen.getByTestId('modal');
+    const triggerButtonElement = screen.getByTestId(
+      'drawer-trigger-button-container',
+    );
+
+    triggerButtonElement.click();
 
     await waitFor(() => {
-      expect(drawerElement.classList.contains('gi-modal-open')).toBe(true);
-      drawerElement.click();
+      const modalElement = screen.getByTestId('modal');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      modalElement.click();
     });
 
     await waitFor(() => {
-      expect(onClose).toHaveBeenCalledTimes(1);
+      const modalElement = screen.getByTestId('modal');
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
     });
   });
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderDrawer({
-      isOpen: true,
-      position: 'right',
+      children: HtmlContent,
+      triggerButton: TriggerButton,
     });
 
     await screen.axe();

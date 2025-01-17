@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../button/button.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
 
 const meta = {
@@ -21,87 +22,55 @@ const meta = {
   component: Drawer,
 } satisfies Meta<typeof Drawer>;
 
-const DrawerExample = ({ position = 'right', ...props }: any) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
-
-  return (
-    <div className="gi-drawer-controller">
-      <Button variant="primary" onClick={handleOpen}>
-        Open Drawer
-      </Button>
-
-      <Drawer
-        onClose={handleClose}
-        position={position}
-        {...props}
-        isOpen={isOpen}
-      >
-        <DrawerBody>
-          <p>This is the body of the drawer. Add your content here.</p>
-        </DrawerBody>
-        <DrawerFooter>
-          <div className="gi-flex gi-justify-end">
-            <Button variant="secondary">Logout</Button>
-          </div>
-        </DrawerFooter>
-      </Drawer>
-    </div>
-  );
-};
-
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {
-    position: {
-      control: 'radio',
-      options: ['left', 'right', 'bottom'],
-      table: {
-        category: 'Appearance',
-        type: { summary: 'Position of the Drawer' },
-        defaultValue: { summary: 'right' },
-      },
-    },
-    className: {
-      control: 'text',
-      table: {
-        category: 'Appearance',
-        type: { summary: 'Additional class names' },
-      },
-    },
-    onClose: {
-      table: {
-        category: 'Events',
-        type: {
-          summary:
-            'Callback when the Drawer closed button or overlay is clicked',
-        },
-      },
-    },
+  argTypes: {},
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    className: 'gi-w-[600px]',
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
   },
-  render: (props: any) => <DrawerExample {...props} />,
 } as unknown as Story;
 
 export const DrawerOpen: Story = {
   args: {
-    position: 'right',
-    isOpen: true,
-    onClose: () => {},
-    children: (
-      <>
-        <DrawerBody>
-          <p>Here is the body content of the drawer.</p>
-        </DrawerBody>
-        <DrawerFooter>
-          <div className="gi-flex gi-justify-end">
-            <Button variant="secondary">Logout</Button>
-          </div>
-        </DrawerFooter>
-      </>
-    ),
+    className: 'gi-w-[600px] gi-bg-gray-500',
+    startsOpen: true,
+    triggerButton: <Button>Open modal</Button>,
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
   },
 };
