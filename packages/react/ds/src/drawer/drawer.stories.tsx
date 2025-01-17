@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
+import { DrawerMenuExample } from './drawer.content.js';
 
 const meta = {
   title: 'Application/Drawer',
@@ -133,6 +133,58 @@ export const DrawerOpen: Story = {
           magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
           doloribus asperiores.
         </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DrawerMenuTablet: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'ipad',
+    },
+  },
+  args: {
+    triggerButton: <Button>Open drawer</Button>,
+    closeButtonLabel: 'Close',
+    children: [
+      <DrawerBody key="body" className="gi-border-t-xs gi-border-t-gray-100">
+        <DrawerMenuExample />
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DrawerMenuMobile: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    triggerButton: <Button>Open drawer</Button>,
+    closeButtonLabel: 'Close',
+    children: [
+      <DrawerBody key="body" className="gi-border-t-xs gi-border-t-gray-100">
+        <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
         <div className="gi-flex gi-gap-6 gi-justify-end">

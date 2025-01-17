@@ -30,7 +30,7 @@ type MenuListItemProps = {
   external?: boolean;
 };
 
-const MenuListItem = ({
+export const MenuListItem = ({
   href = '#',
   label = '',
   bold = true,
