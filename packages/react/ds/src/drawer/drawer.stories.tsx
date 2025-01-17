@@ -12,6 +12,7 @@ const meta = {
     </div>
   ),
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
@@ -28,8 +29,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   argTypes: {},
   args: {
-    triggerButton: <Button>Open modal</Button>,
-    className: 'gi-w-[600px]',
+    triggerButton: <Button>Open drawer</Button>,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -50,11 +50,82 @@ export const Default: Story = {
   },
 } as unknown as Story;
 
+export const DrawerLeft: Story = {
+  args: {
+    position: 'left',
+    triggerButton: <Button>Open drawer</Button>,
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DrawerRight: Story = {
+  args: {
+    position: 'right',
+    triggerButton: <Button>Open drawer</Button>,
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DrawerBottom: Story = {
+  args: {
+    position: 'bottom',
+    triggerButton: <Button>Open drawer</Button>,
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel
+          </Button>
+          <Button>Primary</Button>
+        </div>
+      </DrawerFooter>,
+    ],
+  },
+};
+
 export const DrawerOpen: Story = {
   args: {
-    className: 'gi-w-[600px] gi-bg-gray-500',
     startsOpen: true,
-    triggerButton: <Button>Open modal</Button>,
+    triggerButton: <Button>Open drawer</Button>,
     children: [
       <DrawerBody key="body">
         <Paragraph>

@@ -5,7 +5,6 @@ import {
   Fragment,
   ReactElement,
   ReactNode,
-  useEffect,
   useState,
 } from 'react';
 import { cn } from '../cn.js';
@@ -35,22 +34,6 @@ export const DrawerWrapper = ({
   className,
   ...props
 }: DrawerWrapperProps) => {
-  const [currentOverflowValue, setCurrentOverflowValue] = useState('');
-  useEffect(() => {
-    if (props.isOpen) {
-      setCurrentOverflowValue(document.body.style.overflow);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow =
-        currentOverflowValue || document.body.style.overflow;
-    }
-
-    return () => {
-      document.body.style.overflow =
-        currentOverflowValue || document.body.style.overflow;
-    };
-  }, [props.isOpen]);
-
   return (
     <ModalWrapper className={cn('gi-drawer', className)} {...props}>
       {children}

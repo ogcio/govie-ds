@@ -39,35 +39,38 @@
       <div
         data-testid="modal-container"
         data-element="modal-container"
-        class="gi-modal-container-{{ position }}"
+        class="gi-modal-container gi-modal-container-{{ position }}"
       >
-        {% if props.closeButtonLabel %}
-          {{
-            govieButton({
-              "onClick": props.onClick,
-              "variant": "flat",
-              "size": "large",
-              "appearance": "dark",
-              "className": "gi-modal-icon",
-              "content": props.closeButtonLabel ~ ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">close</span>'
-            })
-          }}
-        {% else %}
-          {{
-            govieIconButton({
-              "icon": { "icon": "close" },
-              "onClick": props.onClick,
-              "variant": "flat",
-              "size": "large",
-              "appearance": "dark",
-              "className": "gi-modal-icon"
-            })
-          }}
-        {% endif %}
-        <div class="gi-flex gi-flex-col gi-h-full">
+        <div>
           {% if props.title %}
             {{ govieHeading({ "text": props.title.text, "size": props.title.size, "as": "h2"  }) }}
           {% endif %}
+
+          {% if props.closeButtonLabel %}
+            {{
+              govieButton({
+                "onClick": props.onClick,
+                "variant": "flat",
+                "size": "small",
+                "appearance": "dark",
+                "className": "gi-modal-icon",
+                "content": props.closeButtonLabel ~ ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[16px]">close</span>'
+              })
+            }}
+          {% else %}
+            {{
+              govieIconButton({
+                "icon": { "icon": "close" },
+                "onClick": props.onClick,
+                "variant": "flat",
+                "size": "small",
+                "appearance": "dark",
+                "className": "gi-modal-icon"
+              })
+            }}
+          {% endif %}
+        </div>
+        <div>
           <div class="gi-modal-body">
             {{ props.body | safe | trim | indent(2) }}
           </div>

@@ -586,13 +586,6 @@ input[type='file' i] {
 
 /* Drawer */
 
-.gi-drawer {
-}
-
-.gi-drawer-body {
-  @apply gi-mt-4;
-}
-
 /* End Drawer */
 
 /* Modal */
@@ -602,7 +595,11 @@ input[type='file' i] {
 }
 
 .gi-modal-body {
-  @apply gi-pt-2 gi-pb-8 gi-flex-1;
+  @apply gi-px-6 gi-flex-1;
+}
+
+.gi-modal-footer {
+  @apply gi-p-6;
 }
 
 .gi-modal-open {
@@ -614,11 +611,19 @@ input[type='file' i] {
 }
 
 .gi-modal-container {
-  @apply gi-p-8 gi-bg-white gi-absolute;
+  @apply gi-bg-white gi-absolute;
+}
+
+.gi-modal-container > :first-child {
+  @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-py-4 gi-px-6;
+}
+
+.gi-modal-container > :nth-child(2) {
+  @apply gi-flex gi-flex-col gi-h-[calc(100%-64px)];
 }
 
 .gi-modal-container-center {
-  @apply gi-p-8 gi-bg-white gi-relative gi-m-auto;
+  @apply gi-bg-white gi-relative gi-m-auto;
 }
 
 .gi-modal-container-left {
@@ -632,7 +637,7 @@ input[type='file' i] {
 }
 
 .gi-modal-container-bottom {
-  @apply gi-left-0 gi-bottom-0 gi-w-full gi-transition-transform gi-transform gi-translate-y-full;
+  @apply gi-left-0 gi-bottom-0 gi-w-full;
   animation: gi-slide-in-bottom 0.5s ease-out forwards;
 }
 
@@ -665,10 +670,6 @@ input[type='file' i] {
   100% {
     transform: translateY(0);
   }
-}
-
-.gi-modal-icon {
-  @apply gi-cursor-pointer gi-absolute gi-right-2 gi-top-2;
 }
 
 /* End Modal */
