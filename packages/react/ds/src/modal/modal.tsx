@@ -23,29 +23,38 @@ const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) =>
     <Button
       onClick={props.onClick}
       variant="flat"
-      size="large"
+      size="small"
       appearance="dark"
       className="gi-modal-icon"
       {...props}
     >
       <>
         {label}
-        <Icon icon="close" />
+        <Icon icon="close" size="sm" />
       </>
     </Button>
   ) : (
     <IconButton
+      className="gi-modal-icon"
       icon={{
         icon: 'close',
       }}
       onClick={props.onClick}
       variant="flat"
-      size="large"
+      size="small"
       appearance="dark"
-      className="gi-modal-icon"
       {...props}
     />
   );
+
+const isModalTitle = (child: any): boolean => {
+  if (!isValidElement(child)) {
+    return false;
+  }
+  const childType = child.type as any;
+  // @ts-expect-error The TS error says there is no _owner but there is
+  return childType === ModalTitle || child?._owner?.name === 'ModalTitle';
+};
 
 export const ModalWrapper = ({
   isOpen,
@@ -55,16 +64,10 @@ export const ModalWrapper = ({
   className,
   children,
 }: ModalWrapperProps) => {
-  const renderChildren = Children.toArray(children).sort((a, b) => {
-    if (!isValidElement(a) || !isValidElement(b)) {
-      return 0;
-    }
-    const typeOrder = [ModalTitle, ModalBody, ModalFooter];
-    const indexA = typeOrder.indexOf(a.type as any);
-    const indexB = typeOrder.indexOf(b.type as any);
+  const childrenArray = Children.toArray(children);
 
-    return indexA - indexB;
-  });
+  const modalTitle = childrenArray.find((child) => isModalTitle(child));
+  const otherChildren = childrenArray.filter((child) => !isModalTitle(child));
 
   return (
     <div
@@ -84,6 +87,7 @@ export const ModalWrapper = ({
       <div
         data-testid="modal-container"
         className={cn(
+          'gi-modal-container',
           {
             'gi-modal-container-center': position === 'center',
             'gi-modal-container-left': position === 'left',
@@ -92,14 +96,17 @@ export const ModalWrapper = ({
           className,
         )}
       >
-        <ModalCloseButton onClick={onClose} label={closeButtonLabel} />
-        <div className="gi-flex gi-flex-col gi-h-full">{renderChildren}</div>
+        <div>
+          {modalTitle}
+          <ModalCloseButton onClick={onClose} label={closeButtonLabel} />
+        </div>
+        <div>{otherChildren}</div>
       </div>
     </div>
   );
 };
 
-export const ModalTitle = ({ children, as = 'h2', ...props }: HeadingProps) => (
+export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
   <Heading as={as} {...props}>
     {children}
   </Heading>
@@ -115,7 +122,7 @@ export const ModalFooter = ({
 }: {
   children: ReactNode;
   className?: string;
-}) => <div className={cn('modal-footer', className)}>{children}</div>;
+}) => <div className={cn('gi-modal-footer', className)}>{children}</div>;
 
 export const Modal = ({
   children,

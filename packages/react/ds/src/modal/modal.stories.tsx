@@ -32,7 +32,7 @@ export const Default: Story = {
     triggerButton: <Button>Open modal</Button>,
     className: 'gi-w-[600px]',
     children: [
-      <ModalTitle key="title">Title</ModalTitle>,
+      <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
@@ -57,6 +57,7 @@ export const ModalOpen: Story = {
     className: 'gi-w-[600px] gi-bg-gray-500',
     startsOpen: true,
     triggerButton: <Button>Open modal</Button>,
+    closeButtonLabel: 'Close',
     children: [
       <ModalTitle key="title">Title</ModalTitle>,
       <ModalBody key="body">
