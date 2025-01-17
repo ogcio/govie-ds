@@ -3,13 +3,14 @@ import { useEffect } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
-import HeaderMenu from './components/header-menu.js';
+import HeaderMenu, { HeaderMenuItems } from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
 } from './helper.js';
+import { Drawer, DrawerBody } from '../drawer/drawer.js';
 
 export type HeaderProps = {
   title?: string;
@@ -195,21 +196,34 @@ export function Header({
               )}
 
               {showMobileMenu && (
-                <label
-                  htmlFor="MobileMenuTrigger"
-                  className={`${toolItemClassNames} lg:gi-hidden`}
+                <Drawer
+                  triggerButton={
+                    <label
+                      htmlFor="MobileMenuTrigger"
+                      className={`${toolItemClassNames} lg:gi-hidden`}
+                    >
+                      <input
+                        id="MobileMenuTrigger"
+                        className="gi-header-mobile-menu-trigger"
+                        type="checkbox"
+                        data-testid="header-mobile-menu"
+                      />
+                      {tools?.menu?.label && (
+                        <span className="label">{tools.menu.label}</span>
+                      )}
+                      <Icon icon={tools?.menu?.icon || 'menu'} />
+                    </label>
+                  }
                 >
-                  <input
-                    id="MobileMenuTrigger"
-                    className="gi-header-mobile-menu-trigger"
-                    type="checkbox"
-                    data-testid="header-mobile-menu"
-                  />
-                  {tools?.menu?.label && (
-                    <span className="label">{tools.menu.label}</span>
-                  )}
-                  <Icon icon={tools?.menu?.icon || 'menu'} />
-                </label>
+                  <DrawerBody className="gi-border-t-xs gi-border-t-gray-100">
+                    <HeaderMenuItems
+                      tools={tools}
+                      searchProps={tools?.search}
+                      languages={languages}
+                      navLinks={navLinks}
+                    />
+                  </DrawerBody>
+                </Drawer>
               )}
               {tools?.items &&
                 tools?.items.map(
@@ -258,12 +272,7 @@ export function Header({
           <HeaderSearch {...tools.search} />
         </div>
       )}
-      <HeaderMenu
-        tools={tools}
-        searchProps={tools?.search}
-        languages={languages}
-        navLinks={navLinks}
-      />
+
       <div id="HeaderOverlayContainer" className={overlayClassNames}></div>
     </header>
   );

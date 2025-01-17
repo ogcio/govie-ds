@@ -99,12 +99,54 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
   );
 };
 
-function HeaderMenu({
-  languages,
+export const HeaderMenuItems = ({
   navLinks,
-  searchProps,
   tools,
-}: HeaderMenuProps) {
+  languages,
+  searchProps,
+}: any) => {
+  return (
+    <ul>
+      {navLinks?.map((link, index) => (
+        <li key={`navLink-${link.label}-${index}`}>
+          <MenuListItem
+            href={link.href}
+            label={link.label}
+            external={link.external}
+          />
+        </li>
+      ))}
+      {tools?.items?.map(
+        ({ href, label, slot, keepOnMobile, external }, index) => {
+          if (slot && !keepOnMobile) {
+            return null;
+          }
+          return (
+            <li key={`toolItems-${label}-${index}`}>
+              {slot ? (
+                <MenuItemAccordion index={index} item={{ label, slot }} />
+              ) : (
+                <MenuListItem href={href} label={label} external={external} />
+              )}
+            </li>
+          );
+        },
+      )}
+      {languages?.map((link, index) => (
+        <li key={`language-${link.label}-${index}`}>
+          <MenuListItem href={link.href} label={link.label} bold={false} />
+        </li>
+      ))}
+      {searchProps && (
+        <li className="gi-mt-8 sm:gi-hidden">
+          <HeaderSearch {...searchProps} />
+        </li>
+      )}
+    </ul>
+  );
+};
+
+function HeaderMenu({ ...props }: HeaderMenuProps) {
   return (
     <div
       id="HeaderMenuContainer"
@@ -121,43 +163,7 @@ function HeaderMenu({
           </label>
         </div>
       </div>
-      <ul>
-        {navLinks?.map((link, index) => (
-          <li key={`navLink-${link.label}-${index}`}>
-            <MenuListItem
-              href={link.href}
-              label={link.label}
-              external={link.external}
-            />
-          </li>
-        ))}
-        {tools?.items?.map(
-          ({ href, label, slot, keepOnMobile, external }, index) => {
-            if (slot && !keepOnMobile) {
-              return null;
-            }
-            return (
-              <li key={`toolItems-${label}-${index}`}>
-                {slot ? (
-                  <MenuItemAccordion index={index} item={{ label, slot }} />
-                ) : (
-                  <MenuListItem href={href} label={label} external={external} />
-                )}
-              </li>
-            );
-          },
-        )}
-        {languages?.map((link, index) => (
-          <li key={`language-${link.label}-${index}`}>
-            <MenuListItem href={link.href} label={link.label} bold={false} />
-          </li>
-        ))}
-        {searchProps && (
-          <li className="gi-mt-8 sm:gi-hidden">
-            <HeaderSearch {...searchProps} />
-          </li>
-        )}
-      </ul>
+      <HeaderMenuItems {...props} />
     </div>
   );
 }

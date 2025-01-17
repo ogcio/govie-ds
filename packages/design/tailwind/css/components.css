@@ -428,6 +428,7 @@ input[type='text'] {
   @apply gi-block;
 }
 
+/*
 #HeaderContainer:has(#MobileMenuTrigger:checked) ~ #HeaderMenuContainer {
   transform: translateX(0);
   display: block;
@@ -437,6 +438,7 @@ input[type='text'] {
   display: block;
   position: fixed;
 }
+*/
 
 .gi-header-mobile-menu-trigger {
   @apply gi-block gi-w-0 gi-absolute gi-h-0;
