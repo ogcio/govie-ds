@@ -54,12 +54,11 @@ export const Default: Story = {
 
 export const ModalOpen: Story = {
   args: {
-    className: 'gi-w-[600px] gi-bg-gray-500',
+    className: 'gi-w-[600px]',
     startsOpen: true,
     triggerButton: <Button>Open modal</Button>,
-    closeButtonLabel: 'Close',
     children: [
-      <ModalTitle key="title">Title</ModalTitle>,
+      <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
         <Paragraph>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
