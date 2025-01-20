@@ -26,4 +26,12 @@
   @apply gi-w-full;
 }
 
+.gi-layout-container-2-column {
+  @apply gi-grid gi-grid-cols-1 md:gi-grid-cols-2 gi-gap-4;
+}
+
+.gi-layout-column-1-2 {
+  @apply gi-w-full md:gi-col-span-1;
+}
+
 /* End Layout */
