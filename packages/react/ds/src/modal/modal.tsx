@@ -107,9 +107,11 @@ export const ModalWrapper = ({
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <Heading as={as} {...props}>
-    {children}
-  </Heading>
+  <div className="gi-flex-1">
+    <Heading as={as} {...props}>
+      {children}
+    </Heading>
+  </div>
 );
 
 export const ModalBody = ({ children }: { children: ReactNode }) => (

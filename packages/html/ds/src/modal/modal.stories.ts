@@ -63,7 +63,6 @@ export const Default: Story = {
     body: modalBody,
     footer: modalFooter,
     triggerButton,
-    closeButtonLabel: 'Close',
   },
 };
 
