@@ -595,11 +595,11 @@ input[type='file' i] {
 }
 
 .gi-modal-body {
-  @apply gi-px-6 gi-flex-1;
+  @apply gi-px-4 gi-flex-1 xs:gi-px-6;
 }
 
 .gi-modal-footer {
-  @apply gi-p-6;
+  @apply gi-p-4 xs:gi-p-6;
 }
 
 .gi-modal-open {
@@ -615,7 +615,7 @@ input[type='file' i] {
 }
 
 .gi-modal-container > :first-child {
-  @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-py-4 gi-px-6;
+  @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-py-3 gi-px-4 xs:gi-py-4 xs:gi-px-6;
 }
 
 .gi-modal-container > :nth-child(2) {
