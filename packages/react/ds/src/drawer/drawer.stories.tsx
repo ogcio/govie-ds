@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
 import { DrawerMenuExample } from './drawer.content.js';
+import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
 
 const meta = {
   title: 'Application/Drawer',
