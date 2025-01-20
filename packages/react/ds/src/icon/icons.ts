@@ -1,4 +1,3 @@
-// must be sorted alphabetically
 export const iconIds = [
   'accessibility_new', // Accessibility new
   'add_circle', // Add Circle outline
@@ -61,6 +60,11 @@ export const iconIds = [
   'visibility_off', // Visibility off
   'warning', // Warning
   'work', // Work
+  'social_facebook',
+  'social_instagram',
+  'social_linkedin',
+  'social_x',
+  'social_youtube',
 ] as const;
 
 export const Icons = [...iconIds];
