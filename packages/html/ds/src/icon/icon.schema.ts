@@ -2,8 +2,8 @@ import { z as zod } from 'zod';
 
 export enum IconId {
   Arrow_Forward = 'arrow_forward',
-  Arrow_Left_Alt = 'arrow_left_alt',
-  Arrow_Right_Alt = 'arrow_right_alt',
+  Arrow_Left_Alt = 'arrow_back',
+  Arrow_Right_Alt = 'arrow_forward',
   AttachFile = 'attach_file',
   Call = 'call',
   Candlestick_Chart = 'candlestick_chart',

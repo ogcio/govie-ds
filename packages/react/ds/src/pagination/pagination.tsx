@@ -60,7 +60,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         <React.Fragment key="previous-btn-pagination">
-          <Icon icon="arrow_left_alt" />
+          <Icon icon="arrow_back" />
         </React.Fragment>
         {!isSMWidth && 'Previous'}
       </Button>
@@ -77,7 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       >
         {!isSMWidth && 'Next'}
         <React.Fragment key="next-btn-pagination">
-          <Icon icon="arrow_right_alt" />
+          <Icon icon="arrow_forward" />
         </React.Fragment>
       </Button>
     </div>

@@ -11,3 +11,8 @@ export function slugify(value?: string) {
     .replaceAll(/-+/g, '-');
   return slug;
 }
+
+export const titleCase = (value: string) =>
+  value
+    .replace(/^[_-]*(.)/, (_, c) => c.toUpperCase())
+    .replace(/[_-]+(.)/g, (_, c) => ' ' + c.toUpperCase());
