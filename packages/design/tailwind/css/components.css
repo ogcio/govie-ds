@@ -627,7 +627,7 @@ input[type='file' i] {
 }
 
 .gi-modal-container-left {
-  @apply gi-left-0 gi-top-0 gi-h-full gi-w-full xs:gi-w-3/5 gi-transition-transform gi-transform gi--translate-x-full;
+  @apply gi-left-0 gi-top-0 gi-h-full gi-w-full xs:gi-w-[420px];
   animation: gi-slide-in-left 0.5s ease-out forwards;
 }
 
