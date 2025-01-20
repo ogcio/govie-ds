@@ -3,6 +3,7 @@ import { config } from '@/lib/config';
 export enum Pages {
   BASIC = 'basic-page.html',
   SEARCH = 'search-page.html',
+  LAYOUT = 'layout-page.html',
 }
 
 type renderPage = {
@@ -26,6 +27,7 @@ export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
       }
     }
   })();
+
   return (
     <iframe
       style={{
