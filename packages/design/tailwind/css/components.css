@@ -632,7 +632,7 @@ input[type='file' i] {
 }
 
 .gi-modal-container-right {
-  @apply gi-right-0 gi-top-0 gi-h-full gi-w-full xs:gi-w-3/5;
+  @apply gi-right-0 gi-top-0 gi-h-full gi-w-full xs:gi-w-[420px];
   animation: gi-slide-in-right 0.5s ease-out forwards;
 }
 
