@@ -1,16 +1,16 @@
 'use client';
 import { useEffect } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
+import { Drawer, DrawerBody } from '../drawer/drawer.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
-import HeaderMenu, { HeaderMenuItems } from './components/header-menu.js';
+import { HeaderMenuItems } from './components/header-menu.js';
 import HeaderSearch from './components/header-search.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import {
   attachEventsToItemActionTriggers,
   attachEventsToSearchTrigger,
 } from './helper.js';
-import { Drawer, DrawerBody } from '../drawer/drawer.js';
 
 export type HeaderProps = {
   title?: string;
@@ -199,11 +199,11 @@ export function Header({
                 <Drawer
                   triggerButton={
                     <label
-                      htmlFor="MobileMenuTrigger"
+                      htmlFor="MobileDrawerMenuTrigger"
                       className={`${toolItemClassNames} lg:gi-hidden`}
                     >
                       <input
-                        id="MobileMenuTrigger"
+                        id="MobileDrawerMenuTrigger"
                         className="gi-header-mobile-menu-trigger"
                         type="checkbox"
                         data-testid="header-mobile-menu"
@@ -214,6 +214,7 @@ export function Header({
                       <Icon icon={tools?.menu?.icon || 'menu'} />
                     </label>
                   }
+                  closeButtonLabel="Close"
                 >
                   <DrawerBody className="gi-border-t-xs gi-border-t-gray-100">
                     <HeaderMenuItems

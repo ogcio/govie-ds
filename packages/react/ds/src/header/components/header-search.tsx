@@ -3,15 +3,17 @@ import { Heading } from '../../heading/heading.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { TextInput } from '../../text-input/text-input.js';
 
+export type HeaderSearchProps = {
+  action?: string;
+  serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  icon?: IconId;
+};
+
 function HeaderSearch({
   action,
   serverAction,
   icon = 'search',
-}: {
-  action?: string;
-  serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  icon?: IconId;
-}) {
+}: HeaderSearchProps) {
   const ActionType = action || serverAction;
   return (
     <form action={ActionType} className="gi-max-w-md gi-mx-auto">

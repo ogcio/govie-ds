@@ -3,20 +3,11 @@ import { cn } from '../../cn.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import Anchor from '../../primitives/anchor.js';
 import { HeaderProps } from '../header.js';
-import HeaderSearch from './header-search.js';
+import HeaderSearch, { HeaderSearchProps } from './header-search.js';
 
 type HeaderMenuProps = {
-  languages?: {
-    href: string;
-    label: string;
-  }[];
-  searchProps?: {
-    action?: string;
-    serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-    label?: string;
-    icon?: IconId;
-  };
-} & Pick<HeaderProps, 'tools' | 'navLinks'>;
+  searchProps?: HeaderSearchProps;
+} & Pick<HeaderProps, 'tools' | 'navLinks' | 'languages'>;
 
 type MenuItemAccordionProps = {
   index: number;
@@ -104,7 +95,7 @@ export const HeaderMenuItems = ({
   tools,
   languages,
   searchProps,
-}: any) => {
+}: HeaderMenuProps) => {
   return (
     <ul>
       {navLinks?.map((link, index) => (
@@ -146,6 +137,7 @@ export const HeaderMenuItems = ({
   );
 };
 
+// TODO: remove when stable. keeping this for now but is not used anymore.
 function HeaderMenu({ ...props }: HeaderMenuProps) {
   return (
     <div
