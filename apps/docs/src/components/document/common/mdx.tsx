@@ -56,6 +56,10 @@ import {
   Tooltip,
   DropdownItem,
   Form,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -244,6 +248,10 @@ const documentComponents: MDXComponents = {
   TableData: (props) => <TableData {...props} />,
   TableBody: (props) => <TableBody {...props} />,
   Tooltip: (props) => <Tooltip {...props} />,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
 };
 
 export function Mdx({ code }: MdxProps) {

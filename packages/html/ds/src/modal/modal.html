@@ -43,7 +43,9 @@
       >
         <div>
           {% if props.title %}
-            {{ govieHeading({ "text": props.title.text, "size": props.title.size, "as": "h2"  }) }}
+            <div class="gi-flex-1">
+              {{ govieHeading({ "text": props.title.text, "size": props.title.size, "as": "h4"  }) }}
+            </div>
           {% endif %}
 
           {% if props.closeButtonLabel %}
