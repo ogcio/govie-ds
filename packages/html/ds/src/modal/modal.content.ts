@@ -1,11 +1,17 @@
-export const htmlContent = `
-<div>
-    <h2 class="gi-heading-lg">Title</h2>
-    <p class="gi-paragraph-md">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam molestias error accusantium non nobis excepturi doloremque dolorem possimus corrupti. Nostrum quisquam est voluptate! Iure suscipit, commodi cupiditate sit minima veritatis.</p>
-    <div class="gi-flex gi-gap-6 gi-justify-end">
-      <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular ">Cancel Action</button>    
-      <button class="gi-btn gi-btn-primary gi-btn-regular">Primary Action</button>   
-    </div>
+export const modalTitle = 'Modal Title';
+
+export const modalBody = `
+  <div>
+    <p class="gi-paragraph-md">
+        This is the main body of the modal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+    </p>
+  </div>
+`;
+
+export const modalFooter = `
+<div class="gi-flex gi-gap-6 gi-justify-end">
+    <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">Cancel</button>
+    <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
 </div>
 `;
 
