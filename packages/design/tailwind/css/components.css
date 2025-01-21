@@ -603,7 +603,7 @@ input[type='file' i] {
 }
 
 .gi-modal-open {
-  @apply gi-flex gi-z-1000 gi-w-full gi-h-full;
+  @apply gi-flex gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
 }
 
 .gi-modal-close {
