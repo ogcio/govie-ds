@@ -61,7 +61,7 @@ export function Icon({
     return (
       <Instagram
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -69,7 +69,7 @@ export function Icon({
     return (
       <Linkedin
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -77,7 +77,7 @@ export function Icon({
     return (
       <Threads
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -85,7 +85,7 @@ export function Icon({
     return (
       <Tiktok
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -93,7 +93,7 @@ export function Icon({
     return (
       <X
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -101,7 +101,7 @@ export function Icon({
     return (
       <Youtube
         size={fontSize}
-        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+        className={cn({ 'gi-block': !inline, 'gi-stroke-gray-700': disabled })}
       />
     );
   }
@@ -119,7 +119,7 @@ export function Icon({
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
       className={cn(
-        { 'gi-block': inline, 'gi-text-gray-700': disabled },
+        { 'gi-block': !inline, 'gi-text-gray-700': disabled },
         'material-symbols-outlined',
         className,
       )}
