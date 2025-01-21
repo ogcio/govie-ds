@@ -40,33 +40,70 @@ export function Icon({
   ...props
 }: IconPropTypes) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
-  const display = inline ? '' : 'gi-block';
-  const strokeColor = disabled ? 'gi-stroke-gray-700' : '';
-  const iconColor = disabled ? 'gi-text-gray-700' : '';
 
   if (icon === 'social_bluesky') {
-    return <Bluesky size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Bluesky
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_facebook') {
-    return <Facebook size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Facebook
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_instagram') {
-    return <Instagram size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Instagram
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_linkedin') {
-    return <Linkedin size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Linkedin
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_threads') {
-    return <Threads size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Threads
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_tiktok') {
-    return <Tiktok size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Tiktok
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_x') {
-    return <X size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <X
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
   if (icon === 'social_youtube') {
-    return <Youtube size={fontSize} className={cn(display, strokeColor)} />;
+    return (
+      <Youtube
+        size={fontSize}
+        className={cn({ 'gi-block': inline, 'gi-stroke-gray-700': disabled })}
+      />
+    );
   }
 
   const iconStyle = filled
@@ -81,7 +118,11 @@ export function Icon({
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
-      className={`material-symbols-outlined ${className} ${iconColor} ${display}`}
+      className={cn(
+        { 'gi-block': inline, 'gi-text-gray-700': disabled },
+        'material-symbols-outlined',
+        className,
+      )}
       style={{
         fontSize,
         fontVariationSettings: iconStyle,
