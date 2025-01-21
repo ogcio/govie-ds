@@ -5,7 +5,9 @@ export const iconIds = [
   'arrow_back', // Arrow back
   'arrow_downward', // Arrow downward
   'arrow_forward', // Arrow forward
+  'arrow_left_alt', // Arrow left
   'arrow_outward', // Arrow outward
+  'arrow_right_alt', // Arrow right
   'arrow_upward', // Arrow upward
   'attach_file', // Attach file
   'block', // Block

@@ -7,7 +7,9 @@ export enum IconId {
   Arrow_Back = 'arrow_back', // Arrow back
   Arrow_Downward = 'arrow_downward', // Arrow downward
   Arrow_Forward = 'arrow_forward', // Arrow forward
+  Arrow_left = 'arrow_left_alt', // Arrow left
   Arrow_Outward = 'arrow_outward', // Arrow outward
+  Arrow_Right = 'arrow_right_alt', // Arrow right
   Arrow_Upward = 'arrow_upward', // Arrow upward
   Attach_File = 'attach_file', // Attach file
   Block = 'block', // Block
