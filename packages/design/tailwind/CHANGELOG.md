@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [0.28.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.1...tailwind-v0.28.0) (2025-01-21)
+
+
+### Features
+
+* add layout page example ([#400](https://github.com/ogcio/govie-ds/issues/400)) ([8abcbc3](https://github.com/ogcio/govie-ds/commit/8abcbc33334ccd478d02599d8fad276ae6f35ce7))
+* Modal enhancements ([#393](https://github.com/ogcio/govie-ds/issues/393)) ([96818e1](https://github.com/ogcio/govie-ds/commit/96818e1ac3c5e9c87e6e4ce990371ba774fbfbaa))
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+* update radio min width and height ([#396](https://github.com/ogcio/govie-ds/issues/396)) ([6a4b12f](https://github.com/ogcio/govie-ds/commit/6a4b12f2a7776673c7a820164748dad69369d412))
+
 ## [0.27.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.0...tailwind-v0.27.1) (2025-01-13)
 
 

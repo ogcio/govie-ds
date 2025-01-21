@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/html-v0.26.1...html-v0.27.0) (2025-01-21)
+
+
+### Features
+
+* add social network icons ([#401](https://github.com/ogcio/govie-ds/issues/401)) ([e797dba](https://github.com/ogcio/govie-ds/commit/e797dbaa94026fe521f92ac946db0f5b1aa303eb))
+* Modal enhancements ([#393](https://github.com/ogcio/govie-ds/issues/393)) ([96818e1](https://github.com/ogcio/govie-ds/commit/96818e1ac3c5e9c87e6e4ce990371ba774fbfbaa))
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+
 ## [0.26.1](https://github.com/ogcio/govie-ds/compare/html-v0.26.0...html-v0.26.1) (2025-01-15)
 
 
