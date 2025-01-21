@@ -33,7 +33,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function DocumentLayoutProps({ children, params }: any) {
+export default async function DocumentLayoutProps({
+  children,
+  params,
+}: DocumentLayoutProps) {
   const resolvedParameters = await params;
   const document = documents.getBySlug({ slug: resolvedParameters.slug });
 

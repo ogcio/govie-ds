@@ -9,7 +9,7 @@ export function IconGridLayout() {
   return (
     <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
       {icons.map((icon) => {
-        const iconName = titleCase(icon).replace(' Alt', '');
+        const iconName = titleCase(icon).replaceAll(' Alt', '');
         return (
           <li key={icon} className="inline-block w-32 h-32">
             <div className="border rounded-md hover:bg-gray-50 transition-colors relative">

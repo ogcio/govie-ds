@@ -1,10 +1,10 @@
-import { Icon } from '../../icon/icon.js';
+import { Icon, IconId } from '../../icon/icon.js';
 
 type SlotProps = {
   item: {
     slot: React.ReactNode;
     label?: string;
-    icon?: string;
+    icon?: IconId;
   };
   index: number;
 };

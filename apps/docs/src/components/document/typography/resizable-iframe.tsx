@@ -4,7 +4,6 @@ import { IFrame } from './iframe';
 
 export function ResizableIFrame({
   title,
-  width,
   height,
   styleSelector,
   children,
