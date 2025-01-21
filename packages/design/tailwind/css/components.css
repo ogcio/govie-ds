@@ -587,23 +587,43 @@ input[type='file' i] {
 /* Modal */
 
 .gi-modal {
-  @apply gi-bg-[rgba(37,37,38,0.4)];
+  @apply gi-bg-[rgba(11,12,12,0.6)];
+}
+
+.gi-modal-body {
+  @apply gi-px-4 gi-flex-1 xs:gi-px-6;
+}
+
+.gi-modal-footer {
+  @apply gi-p-4 xs:gi-p-6;
 }
 
 .gi-modal-open {
-  @apply gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
+  @apply gi-flex gi-fixed gi-w-full gi-h-full gi-left-0 gi-top-0 gi-z-1000;
 }
 
 .gi-modal-close {
   @apply gi-hidden;
 }
 
-.gi-modal-container {
-  @apply gi-p-8 gi-bg-white gi-absolute gi-left-2/4 gi-top-2/4 gi--translate-x-2/4 gi--translate-y-2/4;
+.gi-modal-container > :first-child {
+  @apply gi-flex gi-justify-between gi-items-center gi-w-full gi-py-3 gi-px-4 xs:gi-py-4 xs:gi-px-6;
 }
 
-.gi-modal-icon {
-  @apply gi-cursor-pointer gi-absolute gi-right-2 gi-top-2;
+.gi-modal-container > :nth-child(2) {
+  @apply gi-flex gi-flex-col gi-h-full;
+}
+
+.gi-modal-container-center {
+  @apply gi-bg-white gi-relative gi-m-auto;
+}
+
+.gi-modal-container-left {
+  @apply gi-absolute gi-left-0 gi-top-0 gi-h-full gi-p-8 gi-bg-white gi-shadow-lg gi-w-1/3 gi-rounded-r-md;
+}
+
+.gi-modal-container-right {
+  @apply gi-absolute gi-right-0 gi-top-0 gi-h-full gi-p-8 gi-bg-white gi-shadow-lg gi-w-1/3 gi-rounded-l-md;
 }
 
 /* End Modal */

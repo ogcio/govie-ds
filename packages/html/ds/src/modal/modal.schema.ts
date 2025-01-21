@@ -1,4 +1,5 @@
 import * as zod from 'zod';
+import { headingSchema } from '../heading/heading.schema';
 
 const validAriaProps = [
   'aria-modal',
@@ -8,6 +9,8 @@ const validAriaProps = [
   'aria-live',
   'aria-label',
 ] as const;
+
+export const titleSchema = headingSchema.omit({ as: true });
 
 export const ariaSchema = zod.record(
   zod.enum(validAriaProps, {
@@ -20,13 +23,28 @@ export const ariaSchema = zod.record(
 );
 
 export const modalSchema = zod.object({
-  html: zod.string({
-    description: 'The content of the modal',
-    required_error: 'The content is required',
-  }),
   triggerButton: zod
     .string({
       description: 'The button used for opening the modal',
+    })
+    .optional(),
+  closeButtonLabel: zod
+    .string({
+      description: 'The custom label for close button',
+    })
+    .optional(),
+  title: titleSchema.optional(),
+  body: zod.string({
+    description: 'The main content or body of the modal',
+  }),
+  footer: zod
+    .string({
+      description: 'The footer content of the modal',
+    })
+    .optional(),
+  isOpen: zod
+    .boolean({
+      description: 'Set the modal to open',
     })
     .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),

@@ -21,17 +21,19 @@ libraries:
 ### Default
 
 <ComponentContainer>
-  <Modal triggerButton={<Button>Open Modal</Button>}  >
-    <Heading as="h2">Title</Heading>
-    <Paragraph>
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <ModalTitle>Title</ModalTitle>
+    <ModalBody>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-      doloribus asperiores
-    </Paragraph>
-    <div className="gi-flex gi-gap-6 gi-justify-end">
-      <Button variant="secondary" appearance="dark">Cancel action</Button>
-      <Button>Primary action</Button>
-    </div>
+    </ModalBody>
+    <ModalFooter>
+      <div className="gi-flex gi-gap-6 gi-justify-end">
+        <Button variant="secondary" appearance="dark">
+          Cancel action
+        </Button>
+        <Button>Primary action</Button>
+      </div>
+    </ModalFooter>
   </Modal>
 </ComponentContainer>
 
@@ -44,62 +46,72 @@ libraries:
   <TabPanel value="tab11">
   ```html
 <div>
-  <div>
-    <button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>
-  </div>
-  <div class="gi-modal gi-modal-close">
-    <div class="gi-modal-container">
-      <span
-        role="presentation"
-        class="material-symbols-outlined gi-block gi-text-[32px] gi-modal-icon"
-      >
-        close
-      </span>
-      <div>
-        <h2 class="gi-heading-lg">Title</h2>
-        <p class="gi-paragraph-md">
-          Not far stuff she think the jokes. Going as by do known noise he wrote round leave. Warmly put branch people narrow see. Winding its waiting yet parlours married own feeling. Marry fruit do spite jokes a times. Whether at it unknown warrant herself winding if.
-        </p>
-        <div class="gi-flex gi-gap-3 gi-justify-between">
-          <button class="gi-btn gi-btn-primary gi-btn-regular">
-            Primary Action
+   <button  class="gi-btn gi-btn-primary gi-btn-regular">Open modal</button>
+   <div class="gi-modal gi-modal-close" data-element="modal">
+      <div data-testid="modal-container" class="gi-modal-container-center">
+         <button  class="gi-btn gi-btn-flat-dark gi-btn-large gi-modal-icon">
+            <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px;">close</span>
           </button>
-          <button class="gi-btn gi-btn-secondary gi-btn-regular">
-            Cancel Action
-          </button>
-        </div>
+         <div class="gi-flex gi-flex-col gi-h-full">
+            <h2 class="gi-heading-lg">Title</h2>
+            <div class="gi-modal-body">
+               <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.</p>
+            </div>
+            <div class="modal-footer">
+               <div class="gi-flex gi-gap-6 gi-justify-end">
+                <button  class="gi-btn gi-btn-secondary-dark gi-btn-regular">Cancel</button>
+                <button data-testid="govieButton-undefined-undefined-undefined-" class="gi-btn gi-btn-primary gi-btn-regular">Primary</button></div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
 
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
+````
+</TabPanel>
+<TabPanel value="tab12">
+```html
   {{ govieModal({
-    "html": "<div><h2>Title of the Modal</h2><p>Content of the modal</p></div>",
-    "triggerButton": "<button>Open Modal</button>"
+    triggerButton: '<button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>',
+    title: 'Title',
+    body: `
+      <div class="gi-w-[500px]">
+        <p class="gi-paragraph-md">
+          This is the main body of the modal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+        </p>
+      </div>
+    `,
+    footer: `
+      <div class="gi-flex gi-gap-6 gi-justify-end">
+        <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">Cancel</button>
+        <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
+      </div>
+    `,
   }) }}
-  ```
+````
+
   </TabPanel>
   <TabPanel value="tab13">
   ```html
-  import { Modal } from '@govie-ds/react';
+    import { Modal } from '@govie-ds/react';
 
-  <Modal triggerButton={<Button>Open Modal</Button>}>
-    <Heading>Title</Heading>
-    <Paragraph>
-      {" "}
-      Not far stuff she think the jokes. Going as by do known noise he wrote round leave. Warmly put branch people narrow see. Winding its waiting yet parlours married own feeling. Marry fruit do spite jokes a times. Whether at it unknown warrant herself winding if.
-    </Paragraph>
-    <div className="gi-flex gi-gap-3 gi-justify-between">
-      <Button>Primary action</Button>
-      <Button variant="secondary">Cancel action</Button>
-    </div>
-  </Modal>;
-  ```
-  </TabPanel>
+    <Modal triggerButton={<Button>Open Modal</Button>}>
+      <ModalTitle>Title</ModalTitle>
+      <ModalBody>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      </ModalBody>
+      <ModalFooter>
+        <div className="gi-flex gi-gap-6 gi-justify-end">
+          <Button variant="secondary" appearance="dark">
+            Cancel action
+          </Button>
+          <Button>Primary action</Button>
+        </div>
+      </ModalFooter>
+    </Modal>;
+
+```
+</TabPanel>
 </Tabs>
 
 ## Usage
@@ -117,4 +129,3 @@ Don't use modal dialogs for elements that should be linkable or searchable.
 ## Status
 
 <ComponentStatusBlock componentId="modal" />
-
