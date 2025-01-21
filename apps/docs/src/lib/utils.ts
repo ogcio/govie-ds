@@ -14,5 +14,5 @@ export function slugify(value?: string) {
 
 export const titleCase = (value: string) =>
   value
-    .replaceAll(/^[_-]*(.)/, (_, c) => c.toUpperCase())
+    .replaceAll(/^[_-]*(.)/g, (_, c) => c.toUpperCase())
     .replaceAll(/[_-]+(.)/g, (_, c) => ' ' + c.toUpperCase());
