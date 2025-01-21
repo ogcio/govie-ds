@@ -60,9 +60,12 @@ export const iconIds = [
   'visibility_off', // Visibility off
   'warning', // Warning
   'work', // Work
+  'social_bluesky',
   'social_facebook',
   'social_instagram',
   'social_linkedin',
+  'social_threads',
+  'social_tiktok',
   'social_x',
   'social_youtube',
 ] as const;

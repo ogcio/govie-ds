@@ -1,12 +1,15 @@
 'use client';
 import { meta } from '@govie-ds/tokens';
+import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
-import Facebook from './svgs/Facebook.js';
+import Bluesky from './svgs/bluesky.js';
+import Facebook from './svgs/facebook.js';
 import Instagram from './svgs/instagram.js';
 import Linkedin from './svgs/linkedin.js';
+import Threads from './svgs/threads.js';
+import Tiktok from './svgs/tiktok.js';
 import X from './svgs/x.js';
 import Youtube from './svgs/youtube.js';
-import { cn } from '../cn.js';
 
 export type IconId = (typeof iconIds)[number];
 
@@ -41,6 +44,9 @@ export function Icon({
   const strokeColor = disabled ? 'gi-stroke-gray-700' : '';
   const iconColor = disabled ? 'gi-text-gray-700' : '';
 
+  if (icon === 'social_bluesky') {
+    return <Bluesky size={fontSize} className={cn(display, strokeColor)} />;
+  }
   if (icon === 'social_facebook') {
     return <Facebook size={fontSize} className={cn(display, strokeColor)} />;
   }
@@ -49,6 +55,12 @@ export function Icon({
   }
   if (icon === 'social_linkedin') {
     return <Linkedin size={fontSize} className={cn(display, strokeColor)} />;
+  }
+  if (icon === 'social_threads') {
+    return <Threads size={fontSize} className={cn(display, strokeColor)} />;
+  }
+  if (icon === 'social_tiktok') {
+    return <Tiktok size={fontSize} className={cn(display, strokeColor)} />;
   }
   if (icon === 'social_x') {
     return <X size={fontSize} className={cn(display, strokeColor)} />;
