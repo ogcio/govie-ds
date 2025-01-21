@@ -1,13 +1,10 @@
 import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
-import { Dictionary, groupBy } from 'lodash';
-import { Fragment } from 'react';
+import { groupBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
 import { SampleTable } from '../common/sample-table';
 import { SampleToken } from '../common/sample-token';
-import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
-import { TypographyValueComposite } from './typography-value-composite';
 
 type TypographyScreenAliasValue = {
   fontFamily: string[];

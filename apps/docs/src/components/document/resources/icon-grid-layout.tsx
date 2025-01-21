@@ -1,27 +1,31 @@
-import { Icon, Icons } from '@govie-ds/react';
-import React, { Fragment } from 'react';
-import { Card } from '../common/card';
+'use client';
+import { Icon, Icons, Paragraph } from '@govie-ds/react';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
+import { titleCase } from '@/lib/utils';
 
 const icons = [...Icons.sort()];
 
 export function IconGridLayout() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 border-t border-l">
-      {icons.map((icon) => (
-        <Fragment key={icon}>
-          <div className="border-r border-b hover:bg-gray-50 transition-colors">
-            <Card title={icon}>
-              <div className="flex justify-center p-4">
+    <ul className="flex flex-wrap gap-2 p-0 gi-not-prose">
+      {icons.map((icon) => {
+        const iconName = titleCase(icon).replaceAll(' Alt', '');
+        return (
+          <li key={icon} className="inline-block w-32 h-32">
+            <div className="border rounded-md hover:bg-gray-50 transition-colors relative">
+              <div className="flex justify-center p-6">
                 <Icon icon={icon} size="lg" />
               </div>
-              <div className="flex justify-end mt-2">
+              <div className="absolute bottom-1 right-2">
                 <CopyToClipboardButton text={icon} />
               </div>
-            </Card>
-          </div>
-        </Fragment>
-      ))}
-    </div>
+            </div>
+            <Paragraph size="sm" className="text-center">
+              {iconName}
+            </Paragraph>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
