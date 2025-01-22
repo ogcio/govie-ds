@@ -24,9 +24,15 @@ export const Default: Story = {
       type: { name: 'string', required: true },
       description: 'The text or component within the blockquote.',
     },
+    cite: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'The source URL or description for the quotation.',
+    },
   },
   args: {
     children:
       'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
+    cite: 'https://example.com/source',
   },
 };
