@@ -36,6 +36,7 @@ export const AccordionItem = ({
       )}
     >
       <div
+        onClick={() => !disabled && setIsExpanded(!isExpanded)}
         role="heading"
         aria-controls={panelId}
         aria-expanded={isExpanded}
