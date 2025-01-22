@@ -179,8 +179,8 @@ export function Header({
                   <div
                     className={cn({
                       'gi-block': showItemMode === 'always',
-                      'gi-block md:gi-hidden': showItemMode === 'mobile-only',
-                      'gi-hidden md:gi-block': showItemMode === 'desktop-only',
+                      'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
+                      'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
                     })}
                     key={`item-${label}-${index}`}
                   >

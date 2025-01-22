@@ -24,8 +24,8 @@ export function CopyToClipboardButton({ text }: { text: string }) {
         setCopied(true);
       }}
       className={cn(
-        'hidden md:inline-flex',
-        'bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-600 rounded items-center justify-center w-[40px] h-[40px]',
+        'inline',
+        'bg-white hover:bg-gray-100 border border-gray-300 hover:border-gray-600 rounded items-center justify-center w-4 h-3',
         'appearance-none border-none outline-none cursor-pointer relative',
         'transition ease-in delay-50',
       )}
@@ -47,9 +47,9 @@ export function CopyToClipboardButton({ text }: { text: string }) {
 }
 
 function Clippy({ className }: { className?: string }) {
-  return <Icon icon="content_copy" size="md" className={className} />;
+  return <Icon icon="content_copy" size="sm" className={className} />;
 }
 
 function Check({ className }: { className?: string }) {
-  return <Icon icon="check" size="md" className={className} />;
+  return <Icon icon="check" size="sm" className={className} />;
 }

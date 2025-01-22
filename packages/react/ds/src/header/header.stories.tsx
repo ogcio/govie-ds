@@ -6,6 +6,8 @@ import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header, HeaderProps } from './header.js';
+import { Heading } from '../heading/heading.js';
+import { Button } from '../button/button.js';
 
 const meta = {
   title: 'layout/Header',
@@ -16,20 +18,35 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const SlotExample1 = () => (
-  <List
-    type={TypeEnum.Bullet}
-    items={[
-      <Link size="sm" href="#">
-        Citizens Information - Services and Rights
-      </Link>,
-      <Link size="sm" href="#">
-        Revenue - Taxes and Payments
-      </Link>,
-      <Link size="sm" href="#">
-        Department of Social Protection
-      </Link>,
-    ]}
-  />
+  <div className="gi-pt-4 gi-flex gi-justify-between gi-flex-col gi-gap-6 gi-h-full">
+    <div className="gi-flex gi-flex-col gi-gap-6">
+      <Heading as="h2">Faq</Heading>
+      <List
+        type={TypeEnum.Bullet}
+        items={[
+          <Link size="sm" href="#">
+            Citizens Information - Services and Rights
+          </Link>,
+          <Link size="sm" href="#">
+            Revenue - Taxes and Payments
+          </Link>,
+          <Link size="sm" href="#">
+            Department of Social Protection
+          </Link>,
+        ]}
+      />
+    </div>
+    <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row gi-p-4 xs:gi-p-6">
+      <Button
+        variant="secondary"
+        appearance="dark"
+        className="gi-justify-center xs:gi-justify-start"
+      >
+        Cancel
+      </Button>
+      <Button className="gi-justify-center xs:gi-justify-start">Primary</Button>
+    </div>
+  </div>
 );
 
 const SlotExample2 = () => {
@@ -102,7 +119,7 @@ const headerProps: HeaderProps = {
       itemType: 'slot',
       details: {
         component: <SlotExample1 />,
-        slotAppearance: 'dropdown',
+        slotAppearance: 'drawer',
       },
       showItemMode: 'desktop-only',
     },
