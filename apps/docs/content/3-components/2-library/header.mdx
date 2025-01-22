@@ -25,29 +25,10 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <ComponentContainer fullWidth>
   <Header
     title={'Application title'}
-    languages={[{ href: '', label: 'Gaeilge' }]}
-    navLinks={[
-      { href: '', label: 'News' },
-      { href: '', label: 'Departments' },
-      { href: '', label: 'Services' },
-    ]}
-    tools={{
-      search: {
-        label: 'Search',
-        action: '/search-page',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-      ],
-      menu: {
-        label: 'Menu',
-      },
-    }}
-  />
+    items={[{ label: 'Departments', itemType: 'link', details: { href: '#' } }, { label: 'Services', itemType: 'link', details: { href: '#' } }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', details: { component: <HeaderSearch />, slotAppearance: 'dropdown' } }, { label: 'Home', icon: 'home', itemType: 'link', details: { href: '/item1' } }, { label: 'Menu', icon: 'menu', itemType: 'slot', details: { component: null, slotAppearance: 'drawer' }, showItemMode: 'mobile-only' }]}
+    secondaryLinks={[{ href: '', label: 'Gaeilge' }]}
+/>
+
 </ComponentContainer>
 
 <Tabs id="tab1">

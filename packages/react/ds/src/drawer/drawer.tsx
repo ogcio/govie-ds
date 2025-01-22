@@ -56,7 +56,18 @@ export const Drawer = ({
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
     'data-testid': 'drawer-trigger-button-container',
-    onClick: handleOpen,
+    onClick: (event: React.MouseEvent) => {
+      const existingOnClick =
+        typeof (triggerButton as ReactElement<any>)?.props?.onClick ===
+        'function'
+          ? (triggerButton as ReactElement<any>)?.props?.onClick
+          : undefined;
+
+      if (existingOnClick) {
+        existingOnClick(event);
+      }
+      handleOpen();
+    },
   });
 
   return (

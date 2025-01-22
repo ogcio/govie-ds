@@ -60,6 +60,7 @@ import {
   DrawerBody,
   DrawerFooter,
   DrawerWrapper,
+  HeaderSearch,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -252,6 +253,7 @@ const documentComponents: MDXComponents = {
   DrawerBody,
   DrawerFooter,
   DrawerWrapper,
+  HeaderSearch,
 };
 
 export function Mdx({ code }: MdxProps) {

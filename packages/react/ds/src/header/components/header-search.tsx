@@ -9,7 +9,7 @@ export type HeaderSearchProps = {
   icon?: IconId;
 };
 
-function HeaderSearch({
+export function HeaderSearch({
   action,
   serverAction,
   icon = 'search',
@@ -35,5 +35,3 @@ function HeaderSearch({
     </form>
   );
 }
-
-export default HeaderSearch;

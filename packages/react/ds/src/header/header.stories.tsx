@@ -3,8 +3,9 @@ import { within, expect, userEvent } from '@storybook/test';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
-import HeaderSearch from './components/header-search.js';
-import { Header } from './header.js';
+import { MobileHeaderMenuItems } from './components/header-menu.js';
+import { HeaderSearch } from './components/header-search.js';
+import { Header, HeaderProps } from './header.js';
 
 const meta = {
   title: 'layout/Header',
@@ -64,6 +65,81 @@ const SlotExample2 = () => {
   );
 };
 
+const headerProps: HeaderProps = {
+  items: [
+    {
+      label: 'Departments',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Services',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Home',
+      icon: 'home',
+      itemType: 'link',
+      details: {
+        href: '/item1',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Faq',
+      icon: 'info',
+      itemType: 'slot',
+      details: {
+        component: <SlotExample1 />,
+        slotAppearance: 'dropdown',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
+      details: {
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Languages',
+      icon: 'mic',
+      itemType: 'slot',
+      details: {
+        component: <SlotExample2 />,
+        slotAppearance: 'dropdown',
+      },
+      showItemMode: 'desktop-only',
+    },
+  ],
+};
+
+const mobileMenu = {
+  label: 'Menu',
+  icon: 'menu',
+  itemType: 'slot',
+  details: {
+    component: <MobileHeaderMenuItems items={headerProps.items} />,
+    slotAppearance: 'drawer',
+  },
+  showItemMode: 'mobile-only',
+};
+
 export const Default: Story = {
   argTypes: {
     title: {
@@ -80,23 +156,18 @@ export const Default: Story = {
         category: 'Header',
       },
     },
-    tools: {
+    items: {
       control: 'object',
-      description: 'Actionable items such as Search, Menu and additional CTA',
+      description: 'Actionable items such as CTAs, links, slots, or dividers',
       table: {
         category: 'Header',
         type: {
-          summary: '{search?: {}; menu?: {}; items: {}[]}',
+          summary:
+            '{label?: string; icon?: IconId; type: { name: "slot" | "link" | "divider"; element: Link | Slot | Divider }; showItemMode?: ItemMode;}[]',
         },
       },
     },
-    navLinks: {
-      description: 'A list of navigation links',
-      table: {
-        category: 'Header',
-      },
-    },
-    languages: {
+    secondaryLinks: {
       description: 'A list of secondary navigation links',
       table: {
         category: 'Header',
@@ -107,48 +178,24 @@ export const Default: Story = {
     logo: {
       href: '/link',
     },
-    tools: {
-      menu: {
-        icon: 'menu',
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-        {
-          href: '#',
-          label: 'Faq',
-          icon: 'info',
-          keepOnMobile: true,
-          slot: <SlotExample1 />,
-        },
-        {
-          href: '/search_page',
-          label: 'Search',
-          keepOnMobile: true,
-          slot: <HeaderSearch />,
-        },
+    items: [...(headerProps.items as any), mobileMenu],
+  },
+};
 
-        {
-          href: '#',
-          label: 'Languages',
-          icon: 'mic',
-          keepOnMobile: true,
-          slot: <SlotExample2 />,
-        },
-      ],
+export const DesktopDrawerMenu: Story = {
+  args: {
+    logo: {
+      href: '/link',
     },
-    navLinks: [
+    items: [
       {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        details: {
+          component: <MobileHeaderMenuItems items={headerProps.items} />,
+          slotAppearance: 'drawer',
+        },
       },
     ],
   },
@@ -158,51 +205,37 @@ export const NoLinks: Story = {
   args: {},
 };
 
-export const WithMainLinks: Story = {
+export const WithMainLinksDesktopOnly: Story = {
   args: {
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: '/search_page',
-      },
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
         label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-  },
-};
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
 
-export const WithNoSearch: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Departments',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
       },
     ],
   },
@@ -213,13 +246,7 @@ export const WithSecondaryLinks: Story = {
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: 'search_page',
-      },
-    },
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -227,37 +254,28 @@ export const WithSecondaryLinks: Story = {
       {
         href: '#',
         label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        details: {
+          component: <HeaderSearch />,
+          slotAppearance: 'dropdown',
+        },
       },
     ],
   },
 };
 
-export const withMainAndSecondaryLinks: Story = {
+export const withMainAndSecondaryLinksDesktopOnly: Story = {
   args: {
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -267,8 +285,110 @@ export const withMainAndSecondaryLinks: Story = {
         label: 'Gaeilge',
       },
     ],
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+
+        showItemMode: 'desktop-only',
+      },
+    ],
   },
 };
+const defaultHeaderItems = (external?: boolean) => [
+  {
+    label: 'Departments',
+    itemType: 'link',
+    details: {
+      href: '#',
+      external,
+    },
+    showItemMode: 'desktop-only',
+  },
+  {
+    label: 'Services',
+    itemType: 'link',
+    details: {
+      href: '#',
+      external,
+    },
+    showItemMode: 'desktop-only',
+  },
+  {
+    itemType: 'divider',
+  },
+  {
+    icon: 'search',
+    label: 'Search',
+    itemType: 'slot',
+    details: {
+      component: <HeaderSearch />,
+      slotAppearance: 'dropdown',
+    },
+  },
+];
+
+const defaultHeaderProps = (external?: boolean) =>
+  ({
+    items: [
+      ...(defaultHeaderItems(external) as any),
+      {
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        details: {
+          component: (
+            <MobileHeaderMenuItems
+              secondaryLinks={[
+                {
+                  href: '#',
+                  label: 'English',
+                },
+                {
+                  href: '#',
+                  label: 'Gaeilge',
+                },
+              ]}
+              items={defaultHeaderItems(external) as any}
+            />
+          ),
+          slotAppearance: 'drawer',
+        },
+        showItemMode: 'mobile-only',
+      },
+    ],
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  }) as HeaderProps;
 
 export const withTitle: Story = {
   args: {
@@ -276,31 +396,6 @@ export const withTitle: Story = {
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
   },
 };
 
@@ -309,26 +404,45 @@ export const NoLabelSearch: Story = {
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
         label: 'News',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Departments',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+      },
+      {
+        icon: 'search',
+        itemType: 'slot',
+        details: {
+          component: <HeaderSearch />,
+          slotAppearance: 'dropdown',
+        },
       },
     ],
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -352,39 +466,7 @@ export const tabletView: Story = {
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-        label: 'Search',
-      },
-      menu: {
-        label: 'Menu',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    items: [mobileMenu as any],
   },
 };
 
@@ -399,35 +481,7 @@ export const mobileView: Story = {
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    items: [mobileMenu as any],
   },
 };
 
@@ -436,73 +490,148 @@ export const WithExtraButtons: Story = {
     logo: {
       href: '/path',
     },
-    tools: {
-      items: [
-        {
-          href: '/home',
-          icon: 'home',
-        },
-        {
-          href: '/logout',
-          icon: 'logout',
-        },
-      ],
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
+        icon: 'home',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'always',
+      },
+      {
+        icon: 'logout',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'always',
+      },
+      {
         label: 'News',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
       },
     ],
   },
 };
+
+const withExtraButtonsAndLabelsItems = [
+  {
+    icon: 'search',
+    itemType: 'slot',
+    details: {
+      component: <HeaderSearch />,
+      slotAppearance: 'dropdown',
+    },
+  },
+  {
+    icon: 'home',
+    itemType: 'link',
+    details: {
+      href: '#',
+    },
+  },
+  {
+    icon: 'logout',
+    itemType: 'link',
+    details: {
+      href: '#',
+    },
+  },
+  {
+    label: 'News',
+    itemType: 'link',
+    details: {
+      href: '#',
+    },
+    showItemMode: 'desktop-only',
+  },
+  {
+    label: 'Services',
+    itemType: 'link',
+    details: {
+      href: '#',
+    },
+    showItemMode: 'desktop-only',
+  },
+];
 
 export const WithExtraButtonsAndLabels: Story = {
   args: {
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: 'search_page',
-      },
-      menu: {
+    items: [
+      ...(withExtraButtonsAndLabelsItems as any),
+      {
         label: 'Menu',
-      },
-      items: [
-        {
-          href: '/home',
-          icon: 'home',
-          label: 'Home',
+        icon: 'menu',
+        itemType: 'slot',
+        details: {
+          component: (
+            <MobileHeaderMenuItems
+              items={
+                [
+                  {
+                    icon: 'home',
+                    label: 'Home',
+                    itemType: 'link',
+                    details: {
+                      href: '#',
+                    },
+                  },
+                  {
+                    icon: 'search',
+                    itemType: 'slot',
+                    label: 'Search',
+                    details: {
+                      component: <HeaderSearch />,
+                      slotAppearance: 'dropdown',
+                    },
+                  },
+                  {
+                    label: 'News',
+                    itemType: 'link',
+                    details: {
+                      href: '#',
+                    },
+                    showItemMode: 'desktop-only',
+                  },
+                  {
+                    label: 'Services',
+                    itemType: 'link',
+                    details: {
+                      href: '#',
+                    },
+                    showItemMode: 'desktop-only',
+                  },
+                  {
+                    icon: 'logout',
+                    itemType: 'link',
+                    label: 'Logout',
+                    details: {
+                      href: '#',
+                    },
+                  },
+                ] as any
+              }
+            />
+          ),
+          slotAppearance: 'drawer',
         },
-        {
-          href: '/logout',
-          icon: 'logout',
-          label: 'Logout',
-        },
-      ],
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
+        showItemMode: 'mobile-only',
       },
     ],
   },
@@ -514,38 +643,7 @@ export const FullWidth: Story = {
     logo: {
       href: '/link',
     },
-    tools: {
-      search: {
-        action: '/search_page',
-        label: 'Search',
-      },
-      menu: {
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-      ],
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    ...defaultHeaderProps(),
   },
 };
 
@@ -560,7 +658,32 @@ export const ShowMobileMenuForLanguages: Story = {
     logo: {
       href: '/link',
     },
-    languages: [
+    items: [
+      {
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        details: {
+          component: (
+            <MobileHeaderMenuItems
+              secondaryLinks={[
+                {
+                  href: '#',
+                  label: 'English',
+                },
+                {
+                  href: '#',
+                  label: 'Gaeilge',
+                },
+              ]}
+            />
+          ),
+          slotAppearance: 'drawer',
+        },
+        showItemMode: 'mobile-only',
+      },
+    ],
+    secondaryLinks: [
       {
         href: '#',
         label: 'Gaeilge',
@@ -574,29 +697,31 @@ export const ShowMobileMenuForLanguages: Story = {
 };
 
 export const withExternalLinks: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   args: {
     logo: {
       href: 'path',
       external: true,
     },
-    tools: {
-      items: [
-        { href: '#', label: 'Internal Tool' },
-        { href: '#', label: 'External Tool', external: true },
-      ],
-      menu: {
-        label: 'Menu',
-      },
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
         label: 'Internal Nav',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
+        itemType: 'link',
+        details: {
+          href: '#',
+          external: true,
+        },
         label: 'External Nav',
-        external: true,
+        showItemMode: 'desktop-only',
       },
     ],
   },
@@ -641,21 +766,53 @@ export const mobileWithExternalLinks: Story = {
       href: 'path',
       external: true,
     },
-    tools: {
-      items: [
-        { href: '#', label: 'Internal Tool' },
-        { href: '#', label: 'External Tool', external: true },
-      ],
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
         label: 'Internal Nav',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
+        itemType: 'link',
+        details: {
+          href: '#',
+          external: true,
+        },
         label: 'External Nav',
-        external: true,
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        details: {
+          component: (
+            <MobileHeaderMenuItems
+              items={[
+                {
+                  itemType: 'link',
+                  details: {
+                    href: '#',
+                  },
+                  label: 'Internal Tool',
+                },
+                {
+                  itemType: 'link',
+                  details: {
+                    href: '#',
+                    external: true,
+                  },
+                  label: 'External Tool',
+                },
+              ]}
+            />
+          ),
+          slotAppearance: 'drawer',
+        },
+        showItemMode: 'mobile-only',
       },
     ],
   },

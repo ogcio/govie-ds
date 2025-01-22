@@ -1,16 +1,34 @@
 'use client';
 import { useEffect } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
-import { Drawer, DrawerBody } from '../drawer/drawer.js';
+import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
-import { HeaderMenuItems } from './components/header-menu.js';
-import HeaderSearch from './components/header-search.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
-import {
-  attachEventsToItemActionTriggers,
-  attachEventsToSearchTrigger,
-} from './helper.js';
+import { attachEventsToItemActionTriggers } from './helper.js';
+
+export type ItemMode = 'always' | 'mobile-only' | 'desktop-only';
+export type ItemAppearance = 'dropdown' | 'drawer';
+
+export type HeaderLinkItemType = {
+  href: string;
+  external?: boolean;
+};
+
+export type HeaderSlotItemType = {
+  component: React.ReactNode;
+  slotAppearance: ItemAppearance;
+};
+
+export type ItemType = 'slot' | 'divider' | 'link';
+
+export type Item = {
+  label?: string;
+  icon?: IconId;
+  itemType: ItemType;
+  details?: HeaderLinkItemType | HeaderSlotItemType;
+  showItemMode?: ItemMode;
+};
 
 export type HeaderProps = {
   title?: string;
@@ -20,35 +38,10 @@ export type HeaderProps = {
     external?: boolean;
     alt?: string;
   };
-  tools?: {
-    search?: {
-      action?: string;
-      // Temporary solution to include the usage of Server Actions, as the types of react allow only strings | undefined. The types/react package will eventually get allow this and a more permanent solution will be implemented
-      serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-      label?: string;
-      icon?: IconId;
-    };
-    menu?: {
-      label?: string; // optional, default hide
-      icon?: IconId; // optional, default icon-hamburger
-    };
-    items?: {
-      label?: string;
-      icon?: IconId;
-      href: string;
-      external?: boolean;
-      slot?: React.ReactNode;
-      keepOnMobile?: boolean; // optional, default false to not show on mobile.
-    }[];
-  };
-  languages?: {
+  items?: Item[];
+  secondaryLinks?: {
     href: string;
     label: string;
-  }[];
-  navLinks?: {
-    href: string;
-    label: string;
-    external?: boolean;
   }[];
   fullWidth?: boolean;
 };
@@ -69,14 +62,11 @@ function getLogo({ logo }: HeaderProps) {
 
 export function Header({
   title,
-  tools,
+  items,
   logo,
-  languages,
-  navLinks,
+  secondaryLinks,
   fullWidth = false,
 }: HeaderProps) {
-  const hasDivider = tools?.items || tools?.search;
-
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
     : 'gi-layout-container';
@@ -86,33 +76,62 @@ export function Header({
   const menuContainerClassNames = 'gi-header-menu';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
-  const navLinkContainerClassNames = 'gi-header-nav';
-  const menuDividerClassNames = 'gi-header-separator';
-  const overlayClassNames = 'gi-header-overlay';
-
-  const showMobileMenu =
-    navLinks ||
-    tools?.items?.some((item) => item.slot && item.keepOnMobile) ||
-    !!tools?.search ||
-    languages?.length;
+  const menuDividerClassNames = 'gi-header-divider';
 
   useEffect(() => {
     attachEventsToItemActionTriggers();
   }, []);
 
-  useEffect(() => {
-    if (tools?.search) {
-      attachEventsToSearchTrigger();
+  const ItemTypeComponent = ({
+    item: { itemType, details, icon, label },
+    index,
+  }: {
+    item: Item;
+    index: number;
+  }) => {
+    switch (itemType) {
+      case 'slot': {
+        return (
+          <SlotItemAction
+            index={index}
+            item={{
+              slot: {
+                component: (details as HeaderSlotItemType)?.component,
+                slotAppearance: (details as HeaderSlotItemType)?.slotAppearance,
+              },
+              icon,
+              label,
+            }}
+          />
+        );
+      }
+      case 'link': {
+        return (
+          <Anchor
+            className={toolItemClassNames}
+            href={(details as HeaderLinkItemType).href}
+            aria-label={label || `link ${index}`}
+            data-testid={`item-link-${index}`}
+            external={(details as HeaderLinkItemType).external}
+          >
+            {label && <span className="label">{label}</span>}
+            {icon && <Icon icon={icon} />}
+          </Anchor>
+        );
+      }
+      default: {
+        return <div className={menuDividerClassNames}></div>;
+      }
     }
-  }, [tools?.search]);
+  };
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
-      {languages && (
+      {secondaryLinks && (
         <div className={languageBarClassNames}>
           <div className={containerClassName}>
             <ul>
-              {languages.map((link, index) => (
+              {secondaryLinks.map((link, index) => (
                 <li key={`language-${link.label}-${index}`}>
                   {link.href ? (
                     <a
@@ -151,130 +170,36 @@ export function Header({
 
             <div className={appTitleClassNames}>{title}</div>
           </div>
-          <div>
-            <ul className={navLinkContainerClassNames}>
-              {navLinks?.map((link, index) => (
-                <li key={`navLink-${link.label}-${index}`}>
-                  <Anchor
-                    data-testid={`nav-link-desktop-${index}`}
-                    href={link.href}
-                    aria-label={link.label}
-                    external={link.external}
-                  >
-                    {link.label}
-                  </Anchor>
-                </li>
-              ))}
-            </ul>
+          <div className="gi-gap-2 md:gi-gap-4">
+            {items &&
+              items.map((item, index) => {
+                const { label, showItemMode = 'desktop-only' } = item;
 
-            {navLinks && hasDivider && (
-              <div className={menuDividerClassNames}></div>
-            )}
-            <div className="gi-flex gi-gap-2">
-              {tools?.search && (
-                <div className="gi-hidden sm:gi-flex">
-                  <label
-                    htmlFor="SearchTrigger"
-                    className={`${toolItemClassNames}`}
+                return (
+                  <div
+                    className={cn({
+                      'gi-block': showItemMode === 'always',
+                      'gi-block md:gi-hidden': showItemMode === 'mobile-only',
+                      'gi-hidden md:gi-block': showItemMode === 'desktop-only',
+                    })}
+                    key={`item-${label}-${index}`}
                   >
-                    <input
-                      className="gi-header-mobile-menu-trigger"
-                      id="SearchTrigger"
-                      data-testid="SearchTrigger"
-                      type="checkbox"
-                    />
-                    {tools.search.label && (
-                      <span className="label">{tools.search.label}</span>
-                    )}
-                    <Icon
-                      className="search-icon"
-                      icon={tools.search.icon || 'search'}
-                    />
-                    <Icon className="gi-hidden close-icon" icon="close" />
-                  </label>
-                </div>
-              )}
-
-              {showMobileMenu && (
-                <Drawer
-                  triggerButton={
-                    <label
-                      htmlFor="MobileDrawerMenuTrigger"
-                      className={`${toolItemClassNames} lg:gi-hidden`}
-                    >
-                      <input
-                        id="MobileDrawerMenuTrigger"
-                        className="gi-header-mobile-menu-trigger"
-                        type="checkbox"
-                        data-testid="header-mobile-menu"
-                      />
-                      {tools?.menu?.label && (
-                        <span className="label">{tools.menu.label}</span>
-                      )}
-                      <Icon icon={tools?.menu?.icon || 'menu'} />
-                    </label>
-                  }
-                  closeButtonLabel="Close"
-                >
-                  <DrawerBody className="gi-border-t-xs gi-border-t-gray-100">
-                    <HeaderMenuItems
-                      tools={tools}
-                      searchProps={tools?.search}
-                      languages={languages}
-                      navLinks={navLinks}
-                    />
-                  </DrawerBody>
-                </Drawer>
-              )}
-              {tools?.items &&
-                tools?.items.map(
-                  ({ href, icon, label, slot, external }, index) => {
-                    return (
-                      <div
-                        className="gi-hidden lg:gi-flex"
-                        key={`toolItem-${label}-${index}`}
-                      >
-                        {slot ? (
-                          <SlotItemAction
-                            index={index}
-                            item={{ slot, icon, label }}
-                          />
-                        ) : (
-                          <Anchor
-                            className={toolItemClassNames}
-                            href={href}
-                            aria-label={label || `link ${index}`}
-                            data-testid={`tool-link-desktop-${index}`}
-                            external={external}
-                          >
-                            {label && <span className="label">{label}</span>}
-                            {icon && <Icon icon={icon} />}
-                          </Anchor>
-                        )}
-                      </div>
-                    );
-                  },
-                )}
-            </div>
+                    <ItemTypeComponent item={item} index={index} />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
-      {tools?.items
-        ?.filter((item) => item.slot)
-        ?.map(({ slot }, index) => (
+      {items?.map(({ itemType, details }, index) =>
+        itemType === 'slot' && (details as HeaderSlotItemType)?.component ? (
           <SlotContainer
             key={`slot-container-${index}`}
-            slot={slot}
+            slot={(details as HeaderSlotItemType)?.component}
             index={index}
           />
-        ))}
-      {tools?.search && (
-        <div id="SearchContainer" className="gi-header-tool-container">
-          <HeaderSearch {...tools.search} />
-        </div>
+        ) : null,
       )}
-
-      <div id="HeaderOverlayContainer" className={overlayClassNames}></div>
     </header>
   );
 }
