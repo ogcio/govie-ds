@@ -1,5 +1,14 @@
 'use client';
-import { IconButton, Paragraph, Tag, TagType } from '@govie-ds/react';
+import {
+  IconButton,
+  Paragraph,
+  Table,
+  TableBody,
+  TableData,
+  TableRow,
+  Tag,
+  TagType,
+} from '@govie-ds/react';
 import { Fragment } from 'react';
 import { ComponentStatus, getComponents } from '@/lib/components';
 
@@ -162,6 +171,41 @@ export function ComponentStatusTable() {
 
   return (
     <div>
+      <div className="max-w-prose overflow-auto gi-not-prose">
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableData className="border-none">
+                <Tag text="alpha" type="warning" />
+              </TableData>
+              <TableData className="border-none text-wrap">
+                The design and/or the implementation of the component is not
+                definitive yet. The component can be subject to major
+                refactoring.
+              </TableData>
+            </TableRow>
+            <TableRow>
+              <TableData className="border-none">
+                <Tag text="beta" type="info" />
+              </TableData>
+              <TableData className="border-none text-wrap">
+                The component has an approved design on Figma and is
+                implemented. There can be changes due to feedback from early
+                adopters or minor refactoring.
+              </TableData>
+            </TableRow>
+            <TableRow>
+              <TableData className="border-none">
+                <Tag text="stable" type="success" />
+              </TableData>
+              <TableData className="border-none text-wrap">
+                The component will not have design changes or major refactoring.
+              </TableData>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+
       <Paragraph>
         There are currently <strong>{components.length}</strong> components
         under consideration for the design system.
