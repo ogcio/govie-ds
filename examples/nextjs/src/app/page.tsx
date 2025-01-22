@@ -39,6 +39,9 @@ import {
   CheckboxesGroup,
   DropdownItem,
   Form,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
 } from '@govie-ds/react';
 
 export default function Home() {
@@ -199,6 +202,28 @@ export default function Home() {
               </ModalFooter>
             </Modal>
           </div>
+
+          <br />
+          <div>
+            <Drawer triggerButton={<Button>Open Drawer</Button>}>
+              <DrawerBody>
+                <Paragraph>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Incidunt esse magnam quis sit soluta cupiditate at deserunt
+                  exercitationem voluptas doloribus asperiores
+                </Paragraph>
+              </DrawerBody>
+              <DrawerFooter>
+                <div className="gi-flex gi-gap-6 gi-justify-end">
+                  <Button variant="secondary" appearance="dark">
+                    Cancel action
+                  </Button>
+                  <Button>Primary action</Button>
+                </div>
+              </DrawerFooter>
+            </Drawer>
+          </div>
+
           <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">

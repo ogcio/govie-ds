@@ -61,3 +61,10 @@ export * from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
 export * from './tooltip/tooltip.js';
 export * from './common/form.js';
+export {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
+} from './drawer/drawer.js';
+export type { DrawerProps, DrawerWrapperProps } from './drawer/drawer.js';

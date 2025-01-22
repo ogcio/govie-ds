@@ -1,16 +1,24 @@
 import { act } from 'react';
+import { Button } from '../button/button.js';
 import { render, cleanup, waitFor } from '../test-utils.js';
-import { HtmlContent, TriggerButton } from './modal.content.js';
-import { Modal } from './modal.js';
-import { ModalProps } from './types.js';
+import { HtmlContent, TriggerButton } from './drawer.content.js';
+import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
 
-describe('modal', () => {
+describe('drawer', () => {
   afterEach(cleanup);
 
-  const renderModal = (props: ModalProps) => render(<Modal {...props} />);
+  const renderDrawer = (props: any) =>
+    render(
+      <Drawer {...props}>
+        <DrawerBody>Here is the body content of the drawer.</DrawerBody>
+        <DrawerFooter>
+          <Button>Close Drawer</Button>
+        </DrawerFooter>
+      </Drawer>,
+    );
 
-  it('should render the modal on load if startsOpen is true', () => {
-    const screen = renderModal({
+  it('should render the drawer on load if startsOpen is true', () => {
+    const screen = renderDrawer({
       children: HtmlContent,
       triggerButton: TriggerButton,
       startsOpen: true,
@@ -23,14 +31,14 @@ describe('modal', () => {
     expect(modalContainerElement).toBeTruthy();
   });
 
-  it('should open the modal on button trigger', async () => {
-    const screen = renderModal({
+  it('should open the drawer on button trigger', async () => {
+    const screen = renderDrawer({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
 
     const triggerButtonElement = screen.getByTestId(
-      'modal-trigger-button-container',
+      'drawer-trigger-button-container',
     );
     triggerButtonElement.click();
 
@@ -40,15 +48,15 @@ describe('modal', () => {
     });
   });
 
-  it('should close the modal on icon click', async () => {
-    const screen = renderModal({
+  it('should close the drawer on icon click', async () => {
+    const screen = renderDrawer({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
 
     const modalElement = screen.getByTestId('modal');
     const triggerButtonElement = screen.getByTestId(
-      'modal-trigger-button-container',
+      'drawer-trigger-button-container',
     );
 
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
@@ -72,14 +80,14 @@ describe('modal', () => {
     });
   });
 
-  it('should close the modal on overlay click', async () => {
-    const screen = renderModal({
+  it('should close the drawer on overlay click', async () => {
+    const screen = renderDrawer({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
 
     const triggerButtonElement = screen.getByTestId(
-      'modal-trigger-button-container',
+      'drawer-trigger-button-container',
     );
 
     triggerButtonElement.click();
@@ -97,7 +105,7 @@ describe('modal', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderModal({
+    const screen = renderDrawer({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
