@@ -12,7 +12,7 @@ async function copyAssets() {
   try {
     fs.cpSync(sourcePath, destinationPath, { recursive: true });
   } catch (error) {
-    console.log('Assets not copied: ', error);
+    console.log('Assets not copied:', error);
   }
 
   console.log('Assets copied');

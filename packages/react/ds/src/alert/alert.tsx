@@ -1,7 +1,7 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
 const alertVariants = tv({
@@ -64,7 +64,7 @@ const icon = ({ variant }: VariantProps<typeof alertVariants>) => {
       icon = 'info';
     }
   }
-  return icon;
+  return icon as IconId;
 };
 
 function Alert({

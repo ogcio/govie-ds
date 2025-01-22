@@ -1,7 +1,7 @@
 'use client';
 import { cloneElement, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -67,7 +67,7 @@ const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
       icon = 'info';
     }
   }
-  return icon;
+  return icon as IconId;
 };
 
 function Toast({

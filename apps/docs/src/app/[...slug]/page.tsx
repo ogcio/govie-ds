@@ -2,7 +2,7 @@ import { Heading, Tag } from '@govie-ds/react';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
-import { slugify } from '@/lib/slugify';
+import { slugify } from '@/lib/utils';
 
 type DocumentPageProps = {
   params: Promise<{
