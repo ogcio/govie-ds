@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect, userEvent } from '@storybook/test';
+import { Button } from '../button/button.js';
+import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header, HeaderProps } from './header.js';
-import { Heading } from '../heading/heading.js';
-import { Button } from '../button/button.js';
 
 const meta = {
   title: 'layout/Header',
