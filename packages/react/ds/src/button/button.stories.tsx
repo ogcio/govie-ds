@@ -33,7 +33,7 @@ export const Default: Story = {
     children: {
       control: 'text',
       type: { name: 'string' },
-      description: 'the React Node that the button will accept',
+      description: 'The React Node that the button will accept',
     },
     variant: {
       control: 'radio',
@@ -43,7 +43,7 @@ export const Default: Story = {
     appearance: {
       control: 'radio',
       options: ['default', 'dark', 'light'],
-      description: 'The description of the button',
+      description: 'The appearance of the button',
       type: 'string',
     },
     size: {
@@ -57,10 +57,28 @@ export const Default: Story = {
       description: 'Specify if the button is disabled',
       type: 'boolean',
     },
+    ariaLabel: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'Accessible name for the button',
+    },
+    ariaDescribedBy: {
+      control: 'text',
+      type: { name: 'string' },
+      description: 'ID of an element that describes the button',
+    },
+    ariaPressed: {
+      control: 'boolean',
+      description: 'Indicates the toggle state of the button',
+      type: 'boolean',
+    },
   },
   args: {
     children: 'Button',
     variant: 'primary',
+    ariaLabel: 'Accessible button label',
+    ariaDescribedBy: undefined,
+    ariaPressed: undefined,
   },
 };
 

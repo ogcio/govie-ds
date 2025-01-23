@@ -18,4 +18,7 @@ export type ButtonProps = {
   form?: string;
   value?: string;
   className?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  ariaPressed?: boolean;
 };

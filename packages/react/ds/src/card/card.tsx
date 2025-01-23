@@ -139,5 +139,4 @@ export const Card = ({
   );
 };
 
-// Set the displayName for debugging purposes
 Card.displayName = 'Card';
