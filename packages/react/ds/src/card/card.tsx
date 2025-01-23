@@ -72,7 +72,11 @@ export const Card = ({
     switch (media.type) {
       case 'image': {
         return (
-          <div className="gi-card-image">
+          <div
+            className="gi-card-image"
+            role="img"
+            aria-label={media.config.alt || title}
+          >
             <a href={href}>
               <img src={media.config.src} alt={media.config.alt || title} />
             </a>
@@ -81,7 +85,7 @@ export const Card = ({
       }
       case 'icon': {
         return (
-          <div className="gi-card-icon">
+          <div className="gi-card-icon" role="img" aria-hidden="true">
             <a href={href}>
               <Icon {...media.config} />
             </a>
@@ -102,28 +106,53 @@ export const Card = ({
   };
 
   const renderTitle = () => {
-    const titleContent = href ? <Link href={href}>{title}</Link> : title;
+    const titleContent = href ? (
+      <Link href={href} aria-label={`Card link: ${title}`}>
+        {title}
+      </Link>
+    ) : (
+      title
+    );
     return <div className="gi-card-title">{titleContent}</div>;
   };
 
   const renderAction = (action: Action) => {
     if (action.type === 'link') {
-      return <Link {...action}>{action.children}</Link>;
+      return (
+        <Link {...action} aria-label={`Action link: ${action.children}`}>
+          {action.children}
+        </Link>
+      );
     }
-    return <Button {...action}>{action.children}</Button>;
+    return (
+      <Button {...action} aria-label={`Action button: ${action.children}`}>
+        {action.children}
+      </Button>
+    );
   };
 
   return (
-    <div className={cardClasses}>
+    <div
+      className={cardClasses}
+      role="region"
+      aria-labelledby={title ? 'card-title' : undefined}
+    >
       {renderMedia()}
       <div className={`gi-card-content gi-card-inset-${inset}`}>
         <div className="gi-card-header">
           <div className="gi-card-heading">
             {renderTitle()}
-            {subTitle && <div className="gi-card-subheading">{subTitle}</div>}
+            {subTitle && (
+              <div
+                className="gi-card-subheading"
+                aria-label={`Subtitle: ${subTitle}`}
+              >
+                {subTitle}
+              </div>
+            )}
           </div>
           {tag?.text && tag.type && (
-            <div className="gi-card-tag">
+            <div className="gi-card-tag" aria-label={`Tag: ${tag.text}`}>
               <Tag text={tag.text} type={tag.type} />
             </div>
           )}
