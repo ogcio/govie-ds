@@ -44,7 +44,6 @@ import {
   DrawerFooter,
   HeaderSearch,
   HeaderProps,
-  MobileHeaderMenuItems,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {
@@ -101,38 +100,14 @@ const headerProps: HeaderProps = {
   ],
 };
 
-const mobileMenu = {
-  label: 'Menu',
-  icon: 'menu',
-  itemType: 'slot',
-  details: {
-    component: (
-      <MobileHeaderMenuItems
-        items={headerProps.items}
-        secondaryLinks={[
-          {
-            href: '#',
-            label: 'English',
-          },
-          {
-            href: '#',
-            label: 'Gaeilge',
-          },
-        ]}
-      />
-    ),
-    slotAppearance: 'drawer',
-  },
-  showItemMode: 'mobile-only',
-};
-
 export default function Home() {
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
         logo={{ href: '/' }}
-        items={[...(headerProps.items as any), mobileMenu]}
+        items={headerProps.items}
+        addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
       />
 
