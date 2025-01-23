@@ -70,7 +70,7 @@ function getLogo({ logo }: HeaderProps) {
         media="(min-width: 640px)"
       />
       <img
-        className={'gi-h-10 sm:gi-h-12'}
+        className={'gi-h-10 sm:gi-h-14'}
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || 'Gov.ie logo'}
       />

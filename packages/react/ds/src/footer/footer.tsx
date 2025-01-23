@@ -1,4 +1,4 @@
-import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.svg';
+import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import { Container } from '../container/container.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
