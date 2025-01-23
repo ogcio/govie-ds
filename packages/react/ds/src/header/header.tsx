@@ -1,6 +1,8 @@
 'use client';
 import { useEffect } from 'react';
-import GovieLogo from '../assets/logos/logo.js';
+import { renderToStaticMarkup } from 'react-dom/server';
+import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.svg';
+import GovieLogoHarp from '../assets/logos/harp/harp-white.svg';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import HeaderMenu from './components/header-menu.js';
@@ -53,16 +55,15 @@ export type HeaderProps = {
 };
 
 function getLogo({ logo }: HeaderProps) {
-  return logo?.image ? (
+  const svgString = encodeURIComponent(renderToStaticMarkup(<GovieLogoHarp />));
+  const dataUri = `url("data:image/svg+xml,${svgString}")`;
+
+  return (
     <img
-      alt={logo.alt}
+      alt={logo?.alt || 'Gov.ie logo'}
       className="gi-object-contain gi-h-10 lg:gi-h-12"
-      src={logo.image}
+      src={logo?.image || dataUri}
     />
-  ) : (
-    <>
-      <GovieLogo />
-    </>
   );
 }
 
