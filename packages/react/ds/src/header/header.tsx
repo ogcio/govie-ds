@@ -1,8 +1,8 @@
 'use client';
 import { useEffect } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.svg';
-import GovieLogoHarp from '../assets/logos/harp/harp-white.svg';
+import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
+import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import HeaderMenu from './components/header-menu.js';
@@ -16,7 +16,8 @@ import {
 export type HeaderProps = {
   title?: string;
   logo?: {
-    image?: string;
+    imageSmall?: string;
+    imageLarge?: string;
     href?: string;
     external?: boolean;
     alt?: string;
@@ -55,17 +56,25 @@ export type HeaderProps = {
 };
 
 function getLogo({ logo }: HeaderProps) {
-  const svgString = btoa(
-    encodeURIComponent(renderToStaticMarkup(<GovieLogoHarp />)),
+  const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
+  const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
+  const svgDesktopString = btoa(
+    renderToStaticMarkup(<GovieLogoHarpWithText />),
   );
-  const dataUri = `url("data:image/svg+xml,${svgString}")`;
+  const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
 
   return (
-    <img
-      alt={logo?.alt || 'Gov.ie logo'}
-      className="gi-object-contain gi-h-10 lg:gi-h-12"
-      src={logo?.image || dataUri}
-    />
+    <picture className={'gi-object-contain gi-h-10 lg:gi-h-12'}>
+      <source
+        srcSet={logo?.imageLarge || svgDataUriDesktop}
+        media="(min-width: 640px)"
+      />
+      <img
+        className={'gi-object-contain gi-h-10 lg:gi-h-12'}
+        src={logo?.imageSmall || svgDataUriMobile}
+        alt={logo?.alt || 'Gov.ie logo'}
+      />
+    </picture>
   );
 }
 
