@@ -64,13 +64,13 @@ function getLogo({ logo }: HeaderProps) {
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
 
   return (
-    <picture className={'gi-object-contain gi-h-10 lg:gi-h-12'}>
+    <picture>
       <source
         srcSet={logo?.imageLarge || svgDataUriDesktop}
         media="(min-width: 640px)"
       />
       <img
-        className={'gi-object-contain gi-h-10 lg:gi-h-12'}
+        className={'gi-h-10 sm:gi-h-12'}
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || 'Gov.ie logo'}
       />
