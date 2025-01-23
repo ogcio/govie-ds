@@ -55,7 +55,9 @@ export type HeaderProps = {
 };
 
 function getLogo({ logo }: HeaderProps) {
-  const svgString = encodeURIComponent(renderToStaticMarkup(<GovieLogoHarp />));
+  const svgString = btoa(
+    encodeURIComponent(renderToStaticMarkup(<GovieLogoHarp />)),
+  );
   const dataUri = `url("data:image/svg+xml,${svgString}")`;
 
   return (
