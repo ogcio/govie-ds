@@ -1,14 +1,16 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
 import { cn } from '../cn.js';
+import { DrawerPosition } from '../drawer/drawer.js';
 import { Icon, IconId } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
+import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
 
-export type ItemMode = 'always' | 'mobile-only' | 'desktop-only';
-export type ItemAppearance = 'dropdown' | 'drawer';
+export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
+export type HeaderItemAppearance = 'dropdown' | 'drawer';
 
 export type HeaderLinkItemType = {
   href: string;
@@ -17,17 +19,18 @@ export type HeaderLinkItemType = {
 
 export type HeaderSlotItemType = {
   component: React.ReactNode;
-  slotAppearance: ItemAppearance;
+  slotAppearance?: HeaderItemAppearance;
+  drawerPosition?: DrawerPosition;
 };
 
-export type ItemType = 'slot' | 'divider' | 'link';
+export type HeaderItemType = 'slot' | 'divider' | 'link';
 
-export type Item = {
+export type HeaderItem = {
   label?: string;
   icon?: IconId;
-  itemType: ItemType;
+  itemType: HeaderItemType;
   details?: HeaderLinkItemType | HeaderSlotItemType;
-  showItemMode?: ItemMode;
+  showItemMode?: HeaderItemMode;
 };
 
 export type HeaderProps = {
@@ -38,7 +41,8 @@ export type HeaderProps = {
     external?: boolean;
     alt?: string;
   };
-  items?: Item[];
+  addDefaultMobileMenu?: boolean;
+  items?: HeaderItem[];
   secondaryLinks?: {
     href: string;
     label: string;
@@ -60,12 +64,36 @@ function getLogo({ logo }: HeaderProps) {
   );
 }
 
+const buildDefaultMobileMenu = (
+  items: HeaderItem[],
+  secondaryLinks: {
+    href: string;
+    label: string;
+  }[],
+) => {
+  const mobileMenu: HeaderItem = {
+    label: 'Menu',
+    icon: 'menu',
+    itemType: 'slot',
+    details: {
+      component: (
+        <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />
+      ),
+      slotAppearance: 'drawer',
+    },
+    showItemMode: 'mobile-only',
+  };
+
+  return [mobileMenu, ...items];
+};
+
 export function Header({
   title,
   items,
   logo,
   secondaryLinks,
   fullWidth = false,
+  addDefaultMobileMenu,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -86,19 +114,17 @@ export function Header({
     item: { itemType, details, icon, label },
     index,
   }: {
-    item: Item;
+    item: HeaderItem;
     index: number;
   }) => {
     switch (itemType) {
       case 'slot': {
+        const slot = details as HeaderSlotItemType;
         return (
           <SlotItemAction
             index={index}
             item={{
-              slot: {
-                component: (details as HeaderSlotItemType)?.component,
-                slotAppearance: (details as HeaderSlotItemType)?.slotAppearance,
-              },
+              slot,
               icon,
               label,
             }}
@@ -120,10 +146,22 @@ export function Header({
         );
       }
       default: {
+        // Divider
         return <div className={menuDividerClassNames}></div>;
       }
     }
   };
+
+  const finalItems = useMemo(() => {
+    const newItems = items || [];
+    return addDefaultMobileMenu
+      ? buildDefaultMobileMenu(newItems, secondaryLinks || [])
+      : newItems;
+  }, [addDefaultMobileMenu]);
+
+  if (finalItems.length === 0) {
+    return null;
+  }
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
@@ -171,35 +209,45 @@ export function Header({
             <div className={appTitleClassNames}>{title}</div>
           </div>
           <div className="gi-gap-2 md:gi-gap-4">
-            {items &&
-              items.map((item, index) => {
-                const { label, showItemMode = 'desktop-only' } = item;
+            {finalItems.map((item, index) => {
+              const { label, showItemMode = 'desktop-only' } = item;
 
-                return (
-                  <div
-                    className={cn({
-                      'gi-block': showItemMode === 'always',
-                      'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
-                      'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
-                    })}
-                    key={`item-${label}-${index}`}
-                  >
-                    <ItemTypeComponent item={item} index={index} />
-                  </div>
-                );
-              })}
+              return (
+                <div
+                  aria-label={label}
+                  data-testid={`header-item-${index}`}
+                  className={cn({
+                    'gi-block': showItemMode === 'always',
+                    'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
+                    'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
+                  })}
+                  key={`item-${label}-${index}`}
+                >
+                  <ItemTypeComponent item={item} index={index} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-      {items?.map(({ itemType, details }, index) =>
-        itemType === 'slot' && (details as HeaderSlotItemType)?.component ? (
-          <SlotContainer
-            key={`slot-container-${index}`}
-            slot={(details as HeaderSlotItemType)?.component}
-            index={index}
-          />
-        ) : null,
-      )}
+      {finalItems?.map(({ itemType, details }, index) => {
+        if (itemType === 'slot') {
+          const slot = details as HeaderSlotItemType;
+          const renderOnlyForDropdown =
+            slot.component && slot.slotAppearance !== 'drawer';
+
+          if (renderOnlyForDropdown) {
+            return (
+              <SlotContainer
+                key={`slot-container-${index}`}
+                slot={(details as HeaderSlotItemType)?.component}
+                index={index}
+              />
+            );
+          }
+          return null;
+        }
+      })}
     </header>
   );
 }

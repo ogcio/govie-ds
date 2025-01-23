@@ -7,7 +7,7 @@ import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
-import { Header, HeaderProps } from './header.js';
+import { Header, HeaderItem, HeaderProps } from './header.js';
 
 const meta = {
   title: 'layout/Header',
@@ -146,17 +146,6 @@ const headerProps: HeaderProps = {
   ],
 };
 
-const mobileMenu = {
-  label: 'Menu',
-  icon: 'menu',
-  itemType: 'slot',
-  details: {
-    component: <MobileHeaderMenuItems items={headerProps.items} />,
-    slotAppearance: 'drawer',
-  },
-  showItemMode: 'mobile-only',
-};
-
 export const Default: Story = {
   argTypes: {
     title: {
@@ -179,8 +168,7 @@ export const Default: Story = {
       table: {
         category: 'Header',
         type: {
-          summary:
-            '{label?: string; icon?: IconId; type: { name: "slot" | "link" | "divider"; element: Link | Slot | Divider }; showItemMode?: ItemMode;}[]',
+          summary: 'HeaderItem[]',
         },
       },
     },
@@ -190,16 +178,25 @@ export const Default: Story = {
         category: 'Header',
       },
     },
+    addDefaultMobileMenu: {
+      control: 'boolean',
+      description:
+        'If true, adds a default mobile menu to the header according with your "items" ',
+      table: {
+        category: 'Header',
+      },
+    },
   },
   args: {
     logo: {
       href: '/link',
     },
-    items: [...(headerProps.items as any), mobileMenu],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
   },
 };
 
-export const DesktopDrawerMenu: Story = {
+export const DesktopDrawerDefaultMenu: Story = {
   args: {
     logo: {
       href: '/link',
@@ -213,6 +210,47 @@ export const DesktopDrawerMenu: Story = {
           component: <MobileHeaderMenuItems items={headerProps.items} />,
           slotAppearance: 'drawer',
         },
+      },
+    ],
+  },
+};
+
+export const DesktopDrawerCustom: Story = {
+  args: {
+    logo: {
+      href: '/link',
+    },
+    items: [
+      {
+        icon: 'chevron_left',
+        itemType: 'slot',
+        details: {
+          component: <div className="gi-py-4">Left</div>,
+          slotAppearance: 'drawer',
+          drawerPosition: 'left',
+        },
+        showItemMode: 'always',
+      },
+      {
+        icon: 'chevron_right',
+        itemType: 'slot',
+        details: {
+          component: <div className="gi-py-4">Right</div>,
+          slotAppearance: 'drawer',
+          drawerPosition: 'right',
+        },
+        showItemMode: 'always',
+      },
+      {
+        label: 'Bottom',
+        icon: 'work',
+        itemType: 'slot',
+        details: {
+          component: <div className="gi-py-4">Bottom</div>,
+          slotAppearance: 'drawer',
+          drawerPosition: 'bottom',
+        },
+        showItemMode: 'always',
       },
     ],
   },
@@ -368,33 +406,8 @@ const defaultHeaderItems = (external?: boolean) => [
 
 const defaultHeaderProps = (external?: boolean) =>
   ({
-    items: [
-      ...(defaultHeaderItems(external) as any),
-      {
-        label: 'Menu',
-        icon: 'menu',
-        itemType: 'slot',
-        details: {
-          component: (
-            <MobileHeaderMenuItems
-              secondaryLinks={[
-                {
-                  href: '#',
-                  label: 'English',
-                },
-                {
-                  href: '#',
-                  label: 'Gaeilge',
-                },
-              ]}
-              items={defaultHeaderItems(external) as any}
-            />
-          ),
-          slotAppearance: 'drawer',
-        },
-        showItemMode: 'mobile-only',
-      },
-    ],
+    items: [...(defaultHeaderItems(external) as any)],
+    addDefaultMobileMenu: true,
     secondaryLinks: [
       {
         href: '#',
@@ -483,7 +496,8 @@ export const tabletView: Story = {
     logo: {
       href: 'path',
     },
-    items: [mobileMenu as any],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
   },
 };
 
@@ -498,7 +512,8 @@ export const mobileView: Story = {
     logo: {
       href: 'path',
     },
-    items: [mobileMenu as any],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
   },
 };
 
@@ -544,7 +559,7 @@ export const WithExtraButtons: Story = {
   },
 };
 
-const withExtraButtonsAndLabelsItems = [
+const withExtraButtonsAndLabelsItems: HeaderItem[] = [
   {
     icon: 'search',
     itemType: 'slot',
@@ -590,67 +605,8 @@ export const WithExtraButtonsAndLabels: Story = {
     logo: {
       href: '/path',
     },
-    items: [
-      ...(withExtraButtonsAndLabelsItems as any),
-      {
-        label: 'Menu',
-        icon: 'menu',
-        itemType: 'slot',
-        details: {
-          component: (
-            <MobileHeaderMenuItems
-              items={
-                [
-                  {
-                    icon: 'home',
-                    label: 'Home',
-                    itemType: 'link',
-                    details: {
-                      href: '#',
-                    },
-                  },
-                  {
-                    icon: 'search',
-                    itemType: 'slot',
-                    label: 'Search',
-                    details: {
-                      component: <HeaderSearch />,
-                      slotAppearance: 'dropdown',
-                    },
-                  },
-                  {
-                    label: 'News',
-                    itemType: 'link',
-                    details: {
-                      href: '#',
-                    },
-                    showItemMode: 'desktop-only',
-                  },
-                  {
-                    label: 'Services',
-                    itemType: 'link',
-                    details: {
-                      href: '#',
-                    },
-                    showItemMode: 'desktop-only',
-                  },
-                  {
-                    icon: 'logout',
-                    itemType: 'link',
-                    label: 'Logout',
-                    details: {
-                      href: '#',
-                    },
-                  },
-                ] as any
-              }
-            />
-          ),
-          slotAppearance: 'drawer',
-        },
-        showItemMode: 'mobile-only',
-      },
-    ],
+    items: withExtraButtonsAndLabelsItems,
+    addDefaultMobileMenu: true,
   },
 };
 
@@ -675,31 +631,6 @@ export const ShowMobileMenuForLanguages: Story = {
     logo: {
       href: '/link',
     },
-    items: [
-      {
-        label: 'Menu',
-        icon: 'menu',
-        itemType: 'slot',
-        details: {
-          component: (
-            <MobileHeaderMenuItems
-              secondaryLinks={[
-                {
-                  href: '#',
-                  label: 'English',
-                },
-                {
-                  href: '#',
-                  label: 'Gaeilge',
-                },
-              ]}
-            />
-          ),
-          slotAppearance: 'drawer',
-        },
-        showItemMode: 'mobile-only',
-      },
-    ],
     secondaryLinks: [
       {
         href: '#',
@@ -710,6 +641,7 @@ export const ShowMobileMenuForLanguages: Story = {
         label: 'English',
       },
     ],
+    addDefaultMobileMenu: true,
   },
 };
 
@@ -738,6 +670,28 @@ export const withExternalLinks: Story = {
           external: true,
         },
         label: 'External Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+      },
+      {
+        itemType: 'link',
+        icon: 'attach_file',
+        details: {
+          href: '#',
+        },
+        label: 'Internal Tool',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'arrow_outward',
+        details: {
+          href: '#',
+          external: true,
+        },
+        label: 'External Tool',
         showItemMode: 'desktop-only',
       },
     ],
@@ -802,42 +756,32 @@ export const mobileWithExternalLinks: Story = {
         showItemMode: 'desktop-only',
       },
       {
-        label: 'Menu',
-        icon: 'menu',
-        itemType: 'slot',
+        itemType: 'link',
+        icon: 'attach_file',
         details: {
-          component: (
-            <MobileHeaderMenuItems
-              items={[
-                {
-                  itemType: 'link',
-                  details: {
-                    href: '#',
-                  },
-                  label: 'Internal Tool',
-                },
-                {
-                  itemType: 'link',
-                  details: {
-                    href: '#',
-                    external: true,
-                  },
-                  label: 'External Tool',
-                },
-              ]}
-            />
-          ),
-          slotAppearance: 'drawer',
+          href: '#',
         },
-        showItemMode: 'mobile-only',
+        label: 'Internal Tool',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'arrow_outward',
+        details: {
+          href: '#',
+          external: true,
+        },
+        label: 'External Tool',
+        showItemMode: 'desktop-only',
       },
     ],
+    addDefaultMobileMenu: true,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     const logoLink = canvas.getByTestId('logo-link');
-    const headerMobileMenu = canvas.getByTestId('header-mobile-menu');
+    const headerMobileMenu = canvas.getByTestId('ItemActionDrawerTrigger-0');
 
     const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
     const externalNav = canvas.getByRole('link', { name: 'External Nav' });

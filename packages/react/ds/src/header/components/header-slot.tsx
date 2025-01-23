@@ -4,7 +4,7 @@ import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { HeaderSlotItemType } from '../header.js';
 
-type SlotProps = {
+type HeaderSlotProps = {
   item: {
     slot: HeaderSlotItemType;
     label?: string;
@@ -12,12 +12,12 @@ type SlotProps = {
   };
   index: number;
 };
-type SlotContainerProps = {
+type HeaderSlotContainerProps = {
   slot: React.ReactNode;
   index: number;
 };
 
-export const SlotContainer = ({ index, slot }: SlotContainerProps) => (
+export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
     data-index={index}
@@ -27,7 +27,15 @@ export const SlotContainer = ({ index, slot }: SlotContainerProps) => (
   </div>
 );
 
-const DrawerTrigger = ({ index, label, icon, component, ...props }: any) => {
+const DrawerTrigger = ({
+  index,
+  item: {
+    slot: { component, drawerPosition },
+    icon,
+    label,
+  },
+  ...props
+}: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -68,7 +76,7 @@ const DrawerTrigger = ({ index, label, icon, component, ...props }: any) => {
       <DrawerWrapper
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        position="right"
+        position={drawerPosition || 'right'}
         closeButtonLabel="Close"
       >
         <DrawerBody>{component}</DrawerBody>
@@ -80,24 +88,18 @@ const DrawerTrigger = ({ index, label, icon, component, ...props }: any) => {
 export const SlotItemAction = ({
   item: { label, icon, slot },
   index,
-}: SlotProps) => {
-  const { slotAppearance = 'dropdown', component } = slot;
+}: HeaderSlotProps) => {
+  const { slotAppearance = 'dropdown' } = slot;
 
   if (slotAppearance === 'drawer') {
-    return (
-      <DrawerTrigger
-        index={index}
-        label={label}
-        icon={icon}
-        component={component}
-      />
-    );
+    return <DrawerTrigger index={index} item={{ label, icon, slot }} />;
   }
 
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
       className="gi-header-tool-item"
+      data-label-index={index}
     >
       <input
         data-testid={`ItemActionTrigger-${index}`}

@@ -15,8 +15,10 @@ type DrawerChildren =
   | Array<ReactElement<typeof DrawerBody | typeof DrawerBody>>
   | ReactElement<typeof Fragment>;
 
+export type DrawerPosition = 'left' | 'right' | 'bottom';
+
 export type DrawerProps = ModalProps & {
-  position?: 'left' | 'right' | 'bottom';
+  position?: DrawerPosition;
   children: DrawerChildren;
 };
 

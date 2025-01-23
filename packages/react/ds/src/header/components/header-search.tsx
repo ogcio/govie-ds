@@ -16,7 +16,11 @@ export function HeaderSearch({
 }: HeaderSearchProps) {
   const ActionType = action || serverAction;
   return (
-    <form action={ActionType} className="gi-max-w-md gi-mx-auto">
+    <form
+      action={ActionType}
+      className="gi-max-w-md gi-mx-auto"
+      data-testid="header-search-form"
+    >
       <Heading as="h4">Search the website</Heading>
       <div className="gi-flex gi-items-end gi-mt-4">
         <TextInput
