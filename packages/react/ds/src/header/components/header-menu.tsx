@@ -8,7 +8,7 @@ import {
   HeaderProps,
   HeaderLinkItemType,
   HeaderSlotItemType,
-} from '../header.js';
+} from '../types.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,

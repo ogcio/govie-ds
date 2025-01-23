@@ -2,53 +2,17 @@
 import { useEffect, useMemo } from 'react';
 import GovieLogo from '../assets/logos/logo.js';
 import { cn } from '../cn.js';
-import { DrawerPosition } from '../drawer/drawer.js';
-import { Icon, IconId } from '../icon/icon.js';
+import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-
-export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
-export type HeaderItemAppearance = 'dropdown' | 'drawer';
-
-export type HeaderLinkItemType = {
-  href: string;
-  external?: boolean;
-};
-
-export type HeaderSlotItemType = {
-  component: React.ReactNode;
-  slotAppearance?: HeaderItemAppearance;
-  drawerPosition?: DrawerPosition;
-};
-
-export type HeaderItemType = 'slot' | 'divider' | 'link';
-
-export type HeaderItem = {
-  label?: string;
-  icon?: IconId;
-  itemType: HeaderItemType;
-  details?: HeaderLinkItemType | HeaderSlotItemType;
-  showItemMode?: HeaderItemMode;
-};
-
-export type HeaderProps = {
-  title?: string;
-  logo?: {
-    image?: string;
-    href?: string;
-    external?: boolean;
-    alt?: string;
-  };
-  addDefaultMobileMenu?: boolean;
-  items?: HeaderItem[];
-  secondaryLinks?: {
-    href: string;
-    label: string;
-  }[];
-  fullWidth?: boolean;
-};
+import type {
+  HeaderItem,
+  HeaderLinkItemType,
+  HeaderProps,
+  HeaderSlotItemType,
+} from './types.js';
 
 function getLogo({ logo }: HeaderProps) {
   return logo?.image ? (

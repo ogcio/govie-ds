@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
 import { Icon, IconId } from '../../icon/icon.js';
-import { HeaderSlotItemType } from '../header.js';
+import { HeaderSlotItemType } from '../types.js';
 
 type HeaderSlotProps = {
   item: {

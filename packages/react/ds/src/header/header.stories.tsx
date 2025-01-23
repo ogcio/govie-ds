@@ -7,7 +7,8 @@ import { List, TypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
-import { Header, HeaderItem, HeaderProps } from './header.js';
+import { Header } from './header.js';
+import { HeaderItem, HeaderProps } from './types.js';
 
 const meta = {
   title: 'layout/Header',
@@ -783,15 +784,15 @@ export const mobileWithExternalLinks: Story = {
     const logoLink = canvas.getByTestId('logo-link');
     const headerMobileMenu = canvas.getByTestId('ItemActionDrawerTrigger-0');
 
-    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
-    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
-    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
-    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
-
     await expect(logoLink).toHaveAttribute('target', '_blank');
     await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
 
     await userEvent.click(headerMobileMenu);
+
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
     await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
