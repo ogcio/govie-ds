@@ -2,9 +2,13 @@
 import { ReactNode, useState, useId } from 'react';
 import { tv } from 'tailwind-variants';
 
+export const positionVariants = ['top', 'bottom', 'left', 'right'];
+
+export type Position = 'top' | 'bottom' | 'left' | 'right';
+
 type TooltipProps = {
-  label: string;
-  position: 'top' | 'bottom' | 'left' | 'right';
+  text: string;
+  position: Position;
   children: ReactNode;
 };
 
@@ -20,11 +24,7 @@ const tooltipTv = tv({
   },
 });
 
-export const Tooltip = ({
-  label,
-  position = 'top',
-  children,
-}: TooltipProps) => {
+export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const describedById = useId();
 
@@ -46,7 +46,7 @@ export const Tooltip = ({
           className={tooltipTv({ position })}
           aria-hidden="false"
         >
-          {label}
+          {text}
         </span>
       )}
     </span>

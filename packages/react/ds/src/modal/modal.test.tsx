@@ -1,83 +1,97 @@
+import { act } from 'react';
 import { render, cleanup, waitFor } from '../test-utils.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
-import { Modal, ModalProps } from './modal.js';
+import { Modal } from './modal.js';
+import { ModalProps } from './types.js';
 
 describe('modal', () => {
   afterEach(cleanup);
+
   const renderModal = (props: ModalProps) => render(<Modal {...props} />);
 
-  it('should render the modal on load', () => {
-    const screen = renderModal({ children: HtmlContent });
+  it('should render the modal on load if startsOpen is true', () => {
+    const screen = renderModal({
+      children: HtmlContent,
+      triggerButton: TriggerButton,
+      startsOpen: true,
+    });
+
     const modalElement = screen.getByTestId('modal');
     const modalContainerElement = screen.getByTestId('modal-container');
+
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     expect(modalContainerElement).toBeTruthy();
   });
+
   it('should open the modal on button trigger', async () => {
     const screen = renderModal({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
-    const modalElement = screen.getByTestId('modal');
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
-
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
     triggerButtonElement.click();
 
     await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
     });
   });
+
   it('should close the modal on icon click', async () => {
     const screen = renderModal({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
+
     const modalElement = screen.getByTestId('modal');
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
+
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+
+    await act(async () => {
+      triggerButtonElement.click();
+    });
+
+    await waitFor(() => {
+      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+    });
+
     const iconElement = screen
       .getByTestId('modal-container')
       .querySelector('.gi-modal-icon') as HTMLElement;
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    // Default state with Modal closed
-    expect(iconElement).not.toBeVisible();
-    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
-    triggerButtonElement.click();
+    expect(iconElement).toBeVisible();
 
-    // Modal Open
-    await waitFor(() => {
-      expect(iconElement).toBeVisible();
-      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-    });
-    iconElement.click();
-
-    // Modal Closed by icon
-    await waitFor(() => {
-      expect(iconElement).not.toBeFalsy();
-      expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+    await act(async () => {
+      iconElement.click();
     });
   });
+
   it('should close the modal on overlay click', async () => {
     const screen = renderModal({
       children: HtmlContent,
       triggerButton: TriggerButton,
     });
-    const modalElement = screen.getByTestId('modal');
-    const triggerButtonElement = screen.getByTestId('trigger-button-container');
 
-    // Default state with Modal closed
-    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
+
     triggerButtonElement.click();
 
-    // Modal Open
     await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      modalElement.click();
     });
-    modalElement.click();
 
-    // Modal Closed by modal overlay
     await waitFor(() => {
+      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
     });
   });

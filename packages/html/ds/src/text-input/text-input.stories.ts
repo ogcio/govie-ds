@@ -260,7 +260,6 @@ export const DisabledInput: Story = {
 };
 
 export const AllStates: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () => `
   <div class="gi-gap-4">
   <div class="gi-text-input-container">
@@ -304,6 +303,27 @@ export const AllStates: Story = {
   parameters: {
     pseudo: {
       focus: '#focus-input',
+    },
+  },
+};
+
+export const TextInputWithAriaAttributes: Story = {
+  args: {
+    fullFluid: true,
+    id: 'input-id',
+    label: {
+      content: 'Label',
+      for: 'input-id',
+    },
+    error: {
+      content: '',
+    },
+    hint: {
+      content: '',
+    },
+    aria: {
+      'aria-required': 'true',
+      'aria-placeholder': 'Placeholder',
     },
   },
 };

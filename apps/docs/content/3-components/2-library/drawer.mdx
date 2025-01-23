@@ -1,0 +1,191 @@
+---
+title: Drawer
+description: Drawer HTML Component
+status: in-review
+libraries:
+  - platform: 'local'
+    status: 'not-available'
+  - platform: 'global'
+    status: 'not-available'
+  - platform: 'react'
+    link: '?path=/docs/application-drawer--docs'
+    status: 'alpha'
+---
+
+# Drawer
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Drawer triggerButton={<Button>Open Drawer</Button>} position="right">
+    <DrawerBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+    </DrawerBody>
+    <DrawerFooter key="footer">
+      <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
+      </div>
+    </DrawerFooter>
+  </Drawer>
+</ComponentContainer>
+
+### Left Position
+
+<ComponentContainer>
+  <Drawer triggerButton={<Button>Open Left Drawer</Button>} position="left">
+    <DrawerBody>This drawer opens from the left.</DrawerBody>
+    <DrawerFooter key="footer">
+      <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
+      </div>
+    </DrawerFooter>
+  </Drawer>
+</ComponentContainer>
+
+### Bottom Position
+
+<ComponentContainer>
+  <Drawer triggerButton={<Button>Open Bottom Drawer</Button>} position="bottom">
+    <DrawerBody>This drawer slides in from the bottom.</DrawerBody>
+    <DrawerFooter key="footer">
+      <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
+      </div>
+    </DrawerFooter>
+  </Drawer>
+</ComponentContainer>
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab12">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+    ```html
+    <div class="gi-modal gi-modal-open" data-testid="modal" data-element="modal">
+      <div data-testid="modal-container" class="gi-modal-container gi-modal-container-right gi-drawer">
+        <div>
+          <button data-testid="govieButton-dark-flat-small-" class="gi-btn gi-btn-flat-dark gi-btn-small gi-modal-icon">
+            Close
+            <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block" style="font-size: 16px;">close</span>
+          </button>
+        </div>
+        <div>
+          <div class="gi-modal-body gi-drawer-body gi-border-t-xs gi-border-t-gray-100">
+            <ul>
+              <li>
+                <a aria-label="News" href="#" class="gi-header-menu-list-item">
+                  <span class="gi-text-sm gi-ml-1 gi-font-bold">News</span>
+                </a>
+              </li>
+              <li>
+                <a aria-label="Departments" href="#" class="gi-header-menu-list-item">
+                  <span class="gi-text-sm gi-ml-1 gi-font-bold">Departments</span>
+                </a>
+              </li>
+              <li>
+                <a aria-label="Services" href="#" class="gi-header-menu-list-item">
+                  <span class="gi-text-sm gi-ml-1 gi-font-bold">Services</span>
+                </a>
+              </li>
+              <li>
+                <a aria-label="English" href="#" class="gi-header-menu-list-item">
+                  <span class="gi-text-sm gi-ml-1">English</span>
+                </a>
+              </li>
+              <li>
+                <a aria-label="Gaeilge" href="#" class="gi-header-menu-list-item">
+                  <span class="gi-text-sm gi-ml-1">Gaeilge</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="gi-modal-footer gi-drawer-footer">
+            <div class="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+              <button data-testid="govieButton-dark-secondary-undefined-" class="gi-btn gi-btn-secondary-dark gi-btn-regular gi-justify-center xs:gi-justify-start">
+                Cancel
+              </button>
+              <button data-testid="govieButton-undefined-undefined-undefined-" class="gi-btn gi-btn-primary gi-btn-regular gi-justify-center xs:gi-justify-start">
+                Primary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    ```
+
+  </TabPanel>
+  <TabPanel value="tab12">
+    ```html import {Drawer} from '@govie-ds/react';
+    <Drawer triggerButton={<Button>Open Drawer</Button>}>
+      <DrawerBody>
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+        </Paragraph>
+      </DrawerBody>
+      <DrawerFooter key="footer">
+        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
+          <Button
+            variant="secondary"
+            appearance="dark"
+            className="gi-justify-center xs:gi-justify-start"
+          >
+            Cancel
+          </Button>
+          <Button className="gi-justify-center xs:gi-justify-start">
+            Primary
+          </Button>
+        </div>
+      </DrawerFooter>
+    </Drawer>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+### When to use this component
+
+Drawers are best used to display additional content or actions without navigating away from the main interface. They allow the user to focus on specific content without losing context.
+
+### When not to use this component
+
+Avoid using drawers for critical actions or information that requires immediate attention, as they may be dismissed unintentionally.
+
+## Status
+
+<ComponentStatusBlock componentId="drawer" />

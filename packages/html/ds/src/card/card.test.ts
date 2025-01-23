@@ -48,27 +48,34 @@ describe('govieCard', () => {
     expect(cardElement).toBeTruthy();
   });
 
-  it('should render an image when "img" prop is provided', () => {
+  it('should render an image when media.type is "image"', () => {
     const { container } = renderCard({
       type: CardType.Vertical,
       title: 'Card with Image',
-      img: 'SOME_PATH',
+      media: {
+        type: 'image',
+        config: { src: 'SOME_PATH', alt: 'Alt text for image' },
+      },
       href: '#',
     });
 
     const imageElement = container.querySelector('img')!;
     expect(imageElement).toBeTruthy();
     expect(imageElement.getAttribute('src')).toBe('SOME_PATH');
+    expect(imageElement.getAttribute('alt')).toBe('Alt text for image');
   });
 
-  it('should render an icon when "icon" prop is provided', () => {
+  it('should render an icon when media.type is "icon"', () => {
     const screen = renderCard({
       type: CardType.Horizontal,
       title: 'Card with Icon',
-      icon: {
-        icon: IconId.Download,
-        size: IconSize.Medium,
-        className: 'gi-text-gray-500',
+      media: {
+        type: 'icon',
+        config: {
+          icon: IconId.Download,
+          size: IconSize.Medium,
+          className: 'gi-text-gray-500',
+        },
       },
     });
 
@@ -76,6 +83,25 @@ describe('govieCard', () => {
     expect(iconElement).toBeTruthy();
     expect(iconElement.textContent?.trim()).toBe('download');
     expect(iconElement.classList.contains('gi-text-gray-500')).toBe(true);
+  });
+
+  it('should render an iframe when media.type is "iframe"', () => {
+    const { container } = renderCard({
+      type: CardType.Vertical,
+      title: 'Card with Iframe',
+      media: {
+        type: 'iframe',
+        config: {
+          src: 'https://example.com',
+          title: 'Iframe Example',
+        },
+      },
+    });
+
+    const iframeElement = container.querySelector('iframe')!;
+    expect(iframeElement).toBeTruthy();
+    expect(iframeElement.getAttribute('src')).toBe('https://example.com');
+    expect(iframeElement.getAttribute('title')).toBe('Iframe Example');
   });
 
   it('should render actions if actions prop is provided', () => {

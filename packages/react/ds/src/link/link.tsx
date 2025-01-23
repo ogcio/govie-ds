@@ -1,6 +1,7 @@
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
+import Anchor from '../primitives/anchor.js';
 
 export enum LinkType {
   LINK = 'a',
@@ -21,7 +22,7 @@ export type LinkProps = {
 } & React.AriaAttributes;
 
 export function Link({
-  as: Component = LinkType.LINK,
+  as,
   asButton,
   href,
   children,
@@ -33,12 +34,13 @@ export function Link({
   onClick,
   ...ariaProps
 }: LinkProps) {
+  const Component = as === LinkType.BUTTON ? LinkType.BUTTON : Anchor;
+
   return (
     <Component
       href={href}
       onClick={onClick}
-      {...(external ? { rel: 'noreferrer noopener' } : {})}
-      {...(external ? { target: '_blank' } : {})}
+      external={external}
       className={cn(`
         gi-link
         ${size ? `gi-link-${size}` : ''}

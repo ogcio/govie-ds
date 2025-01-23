@@ -165,4 +165,13 @@ describe('govieTextInput', () => {
 
     await screen.axe();
   });
+
+  it('should have correct aria attributes', () => {
+    const screen = renderTextInput({
+      aria: { 'aria-required': 'true' },
+    });
+
+    const inputElement = screen.getByRole('textbox');
+    expect(inputElement.getAttribute('aria-required')).toBe('true');
+  });
 });

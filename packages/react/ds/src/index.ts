@@ -15,6 +15,11 @@ export * from './error-text/error-text.js';
 export * from './blockquote/blockquote.js';
 export * from './textarea/textarea.js';
 export * from './select/select.js';
+export {
+  Select as SelectComposable,
+  SelectGroupItem,
+  SelectItem,
+} from './select-composable/select.js';
 export * from './table/caption.js';
 export * from './table/column-group.js';
 export * from './table/column.js';
@@ -40,9 +45,11 @@ export * from './card/card.js';
 export * from './cookie-banner/cookie-banner.js';
 export * from './list/list.js';
 export * from './combo-box/combo-box.js';
+export * from './combo-box/dropdown-item.js';
 export * from './chip/chip.js';
 export * from './section-break/section-break.js';
 export * from './checkbox/checkboxes-group.js';
+export { Checkbox } from './checkbox/checkbox.js';
 export * from './spinner/spinner.js';
 export * from './stack/stack.js';
 export { Alert } from './alert/alert.js';
@@ -50,5 +57,14 @@ export * from './toast/toast.js';
 export * from './pagination/pagination.js';
 export * from './breadcrumbs/breadcrumbs.js';
 export * from './summary-list/summary-list.js';
+export * from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
 export * from './tooltip/tooltip.js';
+export * from './common/form.js';
+export {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
+} from './drawer/drawer.js';
+export type { DrawerProps, DrawerWrapperProps } from './drawer/drawer.js';

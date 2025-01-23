@@ -1,9 +1,24 @@
-import { render, cleanup } from '../test-utils.js';
-import { type HeadingProps, Heading } from './heading.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import {
+  type HeadingProps,
+  asVariants,
+  Heading,
+  sizeVariants,
+} from './heading.js';
 
 describe('heading', () => {
   afterEach(cleanup);
   const renderHeading = (props: HeadingProps) => render(<Heading {...props} />);
+
+  // "size" variant
+  testVariantsAxe(Reflect.ownKeys(sizeVariants), (variant) =>
+    renderHeading({ children: 'Axe tests', size: variant }),
+  );
+
+  // "as" variant
+  testVariantsAxe(Reflect.ownKeys(asVariants), (variant) =>
+    renderHeading({ children: 'Axe tests', as: variant }),
+  );
 
   it('should render heading title', () => {
     const screen = renderHeading({

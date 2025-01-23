@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '../test-utils.js';
-import { Tooltip } from './tooltip.js';
+import { cleanup, render, fireEvent, testVariantsAxe } from '../test-utils.js';
+import { positionVariants, Tooltip } from './tooltip.js';
 
 describe('govieTooltip', () => {
   afterEach(cleanup);
@@ -8,9 +8,17 @@ describe('govieTooltip', () => {
   const renderTooltip = (props: React.ComponentProps<typeof Tooltip>) =>
     render(<Tooltip {...props}>Hover me</Tooltip>);
 
+  testVariantsAxe(Reflect.ownKeys(positionVariants), (position) =>
+    renderTooltip({
+      text: 'Tooltip Text',
+      position,
+      children: <button>Hover me</button>,
+    }),
+  );
+
   it('should render the child component', () => {
     const screen = renderTooltip({
-      label: 'Tooltip Text',
+      text: 'Tooltip Text',
       position: 'top',
       children: <button>Hover me</button>,
     });
@@ -21,7 +29,7 @@ describe('govieTooltip', () => {
 
   it('should not show tooltip initially', () => {
     const screen = renderTooltip({
-      label: 'Tooltip Text',
+      text: 'Tooltip Text',
       position: 'top',
       children: <button>Hover me</button>,
     });
@@ -32,7 +40,7 @@ describe('govieTooltip', () => {
 
   it('should show tooltip on mouse enter', () => {
     const screen = renderTooltip({
-      label: 'Tooltip Text',
+      text: 'Tooltip Text',
       position: 'top',
       children: <button>Hover me</button>,
     });
@@ -46,7 +54,7 @@ describe('govieTooltip', () => {
 
   it('should hide tooltip on mouse leave', () => {
     const screen = renderTooltip({
-      label: 'Tooltip Text',
+      text: 'Tooltip Text',
       position: 'top',
       children: <button>Hover me</button>,
     });
@@ -64,7 +72,7 @@ describe('govieTooltip', () => {
     'should apply correct position class for %s position',
     (position) => {
       const screen = renderTooltip({
-        label: 'Tooltip Text',
+        text: 'Tooltip Text',
         position,
         children: <button>Hover me</button>,
       });
@@ -79,7 +87,7 @@ describe('govieTooltip', () => {
   it('should render tooltip with correct text', () => {
     const tooltipText = 'Test Tooltip Content';
     const screen = renderTooltip({
-      label: tooltipText,
+      text: tooltipText,
       position: 'top',
       children: <button>Hover me</button>,
     });
@@ -92,7 +100,7 @@ describe('govieTooltip', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderTooltip({
-      label: 'Accessibility Tooltip',
+      text: 'Accessibility Tooltip',
       position: 'top',
       children: <button>Hover me</button>,
     });

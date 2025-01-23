@@ -1,50 +1,29 @@
-import { useEffect } from 'react';
-import ReactDOMClient from 'react-dom/client';
-import { Icon } from '../../icon/icon.js';
+import { Icon, IconId } from '../../icon/icon.js';
 
 type SlotProps = {
   item: {
     slot: React.ReactNode;
     label?: string;
-    icon?: string;
+    icon?: IconId;
   };
   index: number;
 };
-
-export const addNewGovieHeaderSlotElement = (
-  index: number,
-  { slot }: { slot: React.ReactNode },
-) => {
-  const parent = document.querySelector('#GovieHeader');
-
-  if (parent) {
-    const childNode = document.createElement('div');
-    childNode.id = `SlotContainer-${index}`;
-    childNode.dataset.index = index.toString();
-    childNode.className =
-      'gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-emerald-800';
-
-    parent.append(childNode);
-    const root = ReactDOMClient.createRoot(childNode);
-    root.render(slot);
-
-    return () => {
-      root.unmount();
-      childNode.remove();
-    };
-  }
+type SlotContainerProps = {
+  slot: React.ReactNode;
+  index: number;
 };
 
-const SlotContainer = ({ index, item }: SlotProps) => {
-  useEffect(() => {
-    const cleanup = addNewGovieHeaderSlotElement(index, item);
-    return cleanup;
-  }, [index, item]);
+export const SlotContainer = ({ index, slot }: SlotContainerProps) => (
+  <div
+    id={`SlotContainer-${index + 1}`}
+    data-index={index}
+    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800"
+  >
+    {slot}
+  </div>
+);
 
-  return null;
-};
-
-const SlotItemAction = ({ item: { label, icon }, index }: SlotProps) => {
+export const SlotItemAction = ({ item: { label, icon }, index }: SlotProps) => {
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
@@ -65,14 +44,5 @@ const SlotItemAction = ({ item: { label, icon }, index }: SlotProps) => {
         icon="close"
       />
     </label>
-  );
-};
-
-export const SlotItem = ({ ...props }: SlotProps) => {
-  return (
-    <>
-      <SlotItemAction {...props} />
-      <SlotContainer {...props} />
-    </>
   );
 };

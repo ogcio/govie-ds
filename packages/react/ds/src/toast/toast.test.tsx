@@ -1,12 +1,27 @@
 import { userEvent } from '@testing-library/user-event';
 import { Button } from '../button/button.js';
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utils.js';
 import { type ToastProps, Toast } from './toast.js';
+
+const variants: ToastProps['variant'][] = [
+  'info',
+  'success',
+  'warning',
+  'danger',
+];
 
 describe('Toast', () => {
   afterEach(cleanup);
 
   const renderToast = (props: ToastProps) => render(<Toast {...props} />);
+
+  testVariantsAxe(variants, (variant) =>
+    renderToast({
+      title: 'Axe test',
+      description: 'axe test',
+      variant,
+    }),
+  );
 
   it('should render toast with title and message', async () => {
     const screen = renderToast({
@@ -21,13 +36,6 @@ describe('Toast', () => {
   });
 
   it('should render all different variants', async () => {
-    const variants: ToastProps['variant'][] = [
-      'info',
-      'success',
-      'warning',
-      'danger',
-    ];
-
     for (const variant of variants) {
       const screen = renderToast({
         variant,

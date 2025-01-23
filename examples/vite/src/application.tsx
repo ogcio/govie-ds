@@ -31,6 +31,10 @@ import {
   Alert,
   Toast,
   Pagination,
+  Checkbox,
+  CheckboxesGroup,
+  Form,
+  DropdownItem,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
@@ -117,7 +121,12 @@ export function App() {
                 variant: 'secondary',
               }}
               content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
-              img="https://placeholderjs.com/400x300"
+              media={{
+                type: 'image',
+                config: {
+                  src: 'https://placeholderjs.com/400x300',
+                },
+              }}
               subTitle="Subheading"
               tag={{
                 text: 'New',
@@ -156,7 +165,19 @@ export function App() {
                 htmlFor: 'textarea-id',
               }}
             />
-            <Combobox {...ComboBoxProps} />
+            <Form>
+              <Combobox>
+                <DropdownItem options={ComboBoxProps.organisationOptions}>
+                  Organisations
+                </DropdownItem>
+                <DropdownItem options={ComboBoxProps.categoryOptions}>
+                  Category
+                </DropdownItem>
+                <DropdownItem options={ComboBoxProps.topicOptions}>
+                  Topic
+                </DropdownItem>
+              </Combobox>
+            </Form>
             <Toast
               title="Toast Triggered"
               trigger={<Button>Trigger Toast</Button>}
@@ -197,6 +218,21 @@ export function App() {
             />
           </TabPanel>
         </Tabs>
+        <h2>Checkboxes Group</h2>
+        <CheckboxesGroup
+          groupId="field-Id"
+          items={[
+            { label: 'Irish', value: 'irish' },
+            { label: 'British', value: 'british' },
+            {
+              label: 'Citizen of another country',
+              value: 'citizen-of-another-country',
+            },
+          ]}
+        />
+        <br />
+        <h2>Checkbox</h2>
+        <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
         <RadiosGroup
           title={{
             value: 'Where do you live?',

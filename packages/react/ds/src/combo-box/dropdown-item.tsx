@@ -1,16 +1,17 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useMemo, useId } from 'react';
 import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
-import Checkbox from '../checkbox/checkbox.js';
+import { Checkbox } from '../checkbox/checkbox.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagType } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
+import { slugify } from '../utils.js';
 import { DropdownItemType } from './types.js';
 
 export const DropdownItem = ({
-  label,
+  children,
   noSearch,
   options,
 }: DropdownItemType) => {
@@ -18,57 +19,57 @@ export const DropdownItem = ({
   const [searchInput, setSearchInput] = useState('');
   const [noResults, setNoResults] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
-  const checkboxesRef = useRef(null);
+  const dropdownCustomClass = children
+    ? `${slugify(`${children}-${useId()}`)}`
+    : '';
+
+  const getCheckboxes = () => [
+    ...window.document.querySelectorAll<HTMLElement>(
+      `div.gi-combobox-checkbox.gi-combobox-key-${dropdownCustomClass}`,
+    ),
+  ];
 
   useEffect(() => {
     let hiddenCheckboxes = 0;
-    if (checkboxesRef.current) {
-      const checkboxes = (
-        checkboxesRef.current as HTMLElement
-      ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
-      for (const checkbox of checkboxes) {
-        const label = checkbox.querySelector('label')?.textContent;
+    const checkboxes = getCheckboxes();
+    for (const checkbox of checkboxes) {
+      const label = checkbox.querySelector('label')?.textContent;
 
-        if (label?.toLowerCase().includes(searchInput.toLowerCase())) {
-          checkbox.style.display = 'flex';
-        } else {
-          checkbox.style.display = 'none';
-          hiddenCheckboxes++;
-        }
+      if (label?.toLowerCase()?.includes(searchInput?.toLowerCase())) {
+        checkbox.style.display = 'flex';
+      } else {
+        checkbox.style.display = 'none';
+        hiddenCheckboxes++;
       }
-
-      hiddenCheckboxes === options.length
-        ? setNoResults(true)
-        : setNoResults(false);
     }
+
+    hiddenCheckboxes === options.length
+      ? setNoResults(true)
+      : setNoResults(false);
   }, [searchInput]);
 
   const handleCheckbox = () => {
     let selectedCheckbox = 0;
-    if (checkboxesRef.current) {
-      const checkboxes = (
-        checkboxesRef.current as HTMLElement
-      ).querySelectorAll<HTMLElement>('.gi-combobox-checkbox');
+    const checkboxes = getCheckboxes();
 
-      for (const checkbox of checkboxes) {
-        const input = checkbox.querySelector('input');
-        const label = checkbox.querySelector('label');
+    for (const checkbox of checkboxes) {
+      const input = checkbox.querySelector('input');
+      const label = checkbox.querySelector('label');
 
-        if (input?.checked) {
-          checkbox.classList.add('hover:gi-bg-gray-50');
-          label?.classList.add('gi-font-bold');
-          selectedCheckbox++;
-        } else {
-          checkbox.classList.remove('hover:gi-bg-gray-50');
-          label?.classList.remove('gi-font-bold');
-        }
+      if (input?.checked) {
+        checkbox.classList.add('hover:gi-bg-gray-50');
+        label?.classList.add('gi-font-bold');
+        selectedCheckbox++;
+      } else {
+        checkbox.classList.remove('hover:gi-bg-gray-50');
+        label?.classList.remove('gi-font-bold');
       }
-      setSelectedCheckboxes(selectedCheckbox);
     }
+    setSelectedCheckboxes(selectedCheckbox);
   };
 
   return (
-    <div>
+    <div role="group" aria-label={`${children} dropdown`}>
       <button
         onClick={(event) => {
           event.preventDefault();
@@ -77,7 +78,7 @@ export const DropdownItem = ({
         className={`gi-combobox-toggle ${isOpen && 'gi-combobox-toggle-open'}`}
       >
         <div className="gi-combobox-toggle-content">
-          <Paragraph size="md">{label}</Paragraph>
+          <Paragraph size="md">{children}</Paragraph>
           {selectedCheckboxes !== 0 && (
             <Tag type={TagType.counter} text={selectedCheckboxes.toString()} />
           )}
@@ -115,24 +116,30 @@ export const DropdownItem = ({
           </div>
         )}
 
-        <div className="gi-combobox-checkbox-container" ref={checkboxesRef}>
+        <div className="gi-combobox-checkbox-container">
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
               No results found.
             </Paragraph>
           )}
-          {options.map((checkbox, index) => (
-            <Checkbox
-              key={`${index}_${checkbox.label}`}
-              onChange={handleCheckbox}
-              dataElement={checkbox.label}
-              checkboxId={checkbox.label}
-              size={CheckboxSizeEnum.Small}
-              label={checkbox.label}
-              value={checkbox.value}
-              className="gi-combobox-checkbox"
-            />
-          ))}
+          {options.map((checkbox, index) => {
+            return (
+              <div
+                key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
+                className={`gi-combobox-checkbox gi-combobox-key-${dropdownCustomClass}`}
+              >
+                <Checkbox
+                  key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
+                  onChange={handleCheckbox}
+                  id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
+                  size={CheckboxSizeEnum.Small}
+                  label={checkbox.label}
+                  name={`${index}_${checkbox.label}_${dropdownCustomClass}`}
+                  value={checkbox.value}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

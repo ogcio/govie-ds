@@ -20,6 +20,9 @@ import {
   Label,
   List,
   Modal,
+  ModalBody,
+  ModalFooter,
+  ModalTitle,
   Pagination,
   Paragraph,
   PhaseBanner,
@@ -40,6 +43,7 @@ import {
   SummaryListRow,
   SummaryListValue,
   SummaryListAction,
+  ProgressBar,
   ProgressStepper,
   Table,
   Caption,
@@ -50,6 +54,12 @@ import {
   TableBody,
   Link,
   Tooltip,
+  DropdownItem,
+  Form,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -125,6 +135,10 @@ const standardComponents: MDXComponents = {
 };
 
 const documentComponents: MDXComponents = {
+  DropdownItem: (props) => (
+    <DropdownItem {...props}>{props.children}</DropdownItem>
+  ),
+  Form: (props) => <Form {...props}>{props.children}</Form>,
   Image: (props) => <DocumentImage {...props} />,
   ColorPrimitives: () => <ColorPrimitives />,
   FontFamilyTable: () => <FontFamilyTable />,
@@ -177,9 +191,14 @@ const documentComponents: MDXComponents = {
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
+  ModalTitle: (props) => <ModalTitle>{props.children}</ModalTitle>,
+  ModalBody: (props) => <ModalBody>{props.children}</ModalBody>,
+  ModalFooter: (props) => (
+    <ModalFooter {...props}>{props.children}</ModalFooter>
+  ),
   CookieBanner: (props) => <CookieBanner {...props} />,
   List: (props) => <List {...props} />,
-  ComboBox: (props) => <Combobox {...props} />,
+  ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
   TextInput: (props) => <TextInput {...props} />,
@@ -203,13 +222,13 @@ const documentComponents: MDXComponents = {
   BreadcrumbLink: (props) => <BreadcrumbLink {...props} />,
   PhaseBanner: (props) => <PhaseBanner {...props} />,
   Blockquote: (props) => <Blockquote {...props} />,
-  ComponentContainer: (props) => (
+  ComponentContainer: ({ fullWidth, className, ...props }) => (
     <div
       {...props}
       className={cn(
         'my-xl stroke-gray-950 gi-not-prose',
-        props.fullWidth ? '' : 'max-w-prose',
-        props.className,
+        fullWidth ? '' : 'max-w-prose',
+        className,
       )}
     />
   ),
@@ -219,6 +238,7 @@ const documentComponents: MDXComponents = {
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
+  ProgressBar: (props) => <ProgressBar {...props} />,
   ProgressStepper: (props) => <ProgressStepper {...props} />,
   Table: (props) => <Table {...props} />,
   Caption: (props) => <Caption {...props} />,
@@ -228,6 +248,10 @@ const documentComponents: MDXComponents = {
   TableData: (props) => <TableData {...props} />,
   TableBody: (props) => <TableBody {...props} />,
   Tooltip: (props) => <Tooltip {...props} />,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerWrapper,
 };
 
 export function Mdx({ code }: MdxProps) {

@@ -24,25 +24,38 @@
     {% endif %}
   {% endmacro %}
 
-  <div class="{{ getLayoutClass(props.type, props.inset) | trim }}">
-    {% if props.img and not props.icon %}
+  {% macro renderMedia(media) %}
+    {% if media and media.type == 'image' %}
       <div class="gi-card-image">
-        <a href="{{ props.href }}">
+        <a href="{{ props.href }}" aria-label="{{ props.title }}">
           <img
-            src="{{ props.img }}"
-            alt="{{ props.title | default('Card image') }}"
+            src="{{ media.config.src }}"
+            alt="{{ media.config.alt | default(props.title) }}"
           />
         </a>
       </div>
-    {% endif %}
-
-    {% if props.icon %}
+    {% elif media and media.type == 'icon' %}
       <div class="gi-card-icon">
-        <a href="{{ props.href }}">
-          {{ govieIcon({"icon": props.icon.icon, "size": props.icon.size, "className": props.icon.className }) }}
-        </a>
+        <a href="{{ props.href }}"> {{ govieIcon(media.config) }} </a>
+      </div>
+    {% elif media and media.type == 'iframe' %}
+      <div class="gi-card-iframe">
+        <iframe
+          src="{{ media.config.src }}"
+          title="{{ media.config.title | default(props.title | default('Embedded content')) }}"
+          {% if media.config.allow %}
+            allow="{{ media.config.allow }}"
+          {% endif %}
+          {% if media.config.allowFullScreen %}
+            allowfullscreen
+          {% endif %}
+        ></iframe>
       </div>
     {% endif %}
+  {% endmacro %}
+
+  <div class="{{ getLayoutClass(props.type, props.inset) | trim }}">
+    {{ renderMedia(props.media) }}
 
     <div class="gi-card-content {{ getInsetClass(props.inset) }}">
       <div class="gi-card-header">

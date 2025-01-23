@@ -13,6 +13,9 @@ import {
   RadiosGroup,
   TextArea,
   Modal,
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
   Button,
   CookieBanner,
   TypeEnum,
@@ -30,12 +33,21 @@ import {
   SummaryList,
   SummaryListAction,
   SummaryListValue,
+  ProgressBar,
   ProgressStepper,
+  Checkbox,
+  CheckboxesGroup,
+  DropdownItem,
+  Form,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
 } from '@govie-ds/react';
 
 export default function Home() {
   return (
     <>
+      {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
         logo={{ href: '/' }}
         tools={{ search: { action: '/search-page' } }}
@@ -60,6 +72,7 @@ export default function Home() {
           },
         ]}
       />
+
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <Toast title="This is a toast" />
@@ -92,7 +105,34 @@ export default function Home() {
               ariaLabel: 'Send',
             }}
           />
-          <Combobox {...ComboBoxProps} />
+          <Form>
+            <Combobox>
+              <DropdownItem options={ComboBoxProps.organisationOptions}>
+                Organisations
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.categoryOptions}>
+                Category
+              </DropdownItem>
+              <DropdownItem options={ComboBoxProps.topicOptions}>
+                Topic
+              </DropdownItem>
+            </Combobox>
+          </Form>
+          <h2>Checkboxes Group</h2>
+          <CheckboxesGroup
+            groupId="field-Id"
+            items={[
+              { label: 'Irish', value: 'irish' },
+              { label: 'British', value: 'british' },
+              {
+                label: 'Citizen of another country',
+                value: 'citizen-of-another-country',
+              },
+            ]}
+          />
+          <br />
+          <h2>Checkbox</h2>
+          <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -142,20 +182,48 @@ export default function Home() {
           />
 
           <span className="material-symbols-outlined">face</span>
-          <Modal triggerButton={<Button>Open Modal</Button>}>
-            <Heading as="h2">Title</Heading>
-            <Paragraph>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-              esse magnam quis sit soluta cupiditate at deserunt exercitationem
-              voluptas doloribus asperiores
-            </Paragraph>
-            <div className="gi-flex gi-gap-6 gi-justify-end">
-              <Button variant="secondary" appearance="dark">
-                Cancel action
-              </Button>
-              <Button>Primary action</Button>
-            </div>
-          </Modal>
+          <div>
+            <Modal triggerButton={<Button>Open Modal</Button>}>
+              <ModalTitle>Title</ModalTitle>
+              <ModalBody>
+                <Paragraph>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Incidunt esse magnam quis sit soluta cupiditate at deserunt
+                  exercitationem voluptas doloribus asperiores
+                </Paragraph>
+              </ModalBody>
+              <ModalFooter>
+                <div className="gi-flex gi-gap-6 gi-justify-end">
+                  <Button variant="secondary" appearance="dark">
+                    Cancel action
+                  </Button>
+                  <Button>Primary action</Button>
+                </div>
+              </ModalFooter>
+            </Modal>
+          </div>
+
+          <br />
+          <div>
+            <Drawer triggerButton={<Button>Open Drawer</Button>}>
+              <DrawerBody>
+                <Paragraph>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Incidunt esse magnam quis sit soluta cupiditate at deserunt
+                  exercitationem voluptas doloribus asperiores
+                </Paragraph>
+              </DrawerBody>
+              <DrawerFooter>
+                <div className="gi-flex gi-gap-6 gi-justify-end">
+                  <Button variant="secondary" appearance="dark">
+                    Cancel action
+                  </Button>
+                  <Button>Primary action</Button>
+                </div>
+              </DrawerFooter>
+            </Drawer>
+          </div>
+
           <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
@@ -207,6 +275,8 @@ export default function Home() {
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
+
+          <ProgressBar value={50} label="Loading..." />
 
           <ProgressStepper
             currentStepIndex={3}

@@ -1,5 +1,72 @@
 # Changelog
 
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/html-v0.26.1...html-v0.27.0) (2025-01-21)
+
+
+### Features
+
+* add social network icons ([#401](https://github.com/ogcio/govie-ds/issues/401)) ([e797dba](https://github.com/ogcio/govie-ds/commit/e797dbaa94026fe521f92ac946db0f5b1aa303eb))
+* Modal enhancements ([#393](https://github.com/ogcio/govie-ds/issues/393)) ([96818e1](https://github.com/ogcio/govie-ds/commit/96818e1ac3c5e9c87e6e4ce990371ba774fbfbaa))
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+
+## [0.26.1](https://github.com/ogcio/govie-ds/compare/html-v0.26.0...html-v0.26.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* add aria attributes for text-input, checkbox, radio, button, link and tooltip ([#386](https://github.com/ogcio/govie-ds/issues/386)) ([a02972e](https://github.com/ogcio/govie-ds/commit/a02972ed1567dbf3c0cd80964ea00954815431c7))
+* add missing icons ([1899f67](https://github.com/ogcio/govie-ds/commit/1899f676db5480992e4e4c39735ede59a03091dd))
+* add missing icons ([#394](https://github.com/ogcio/govie-ds/issues/394)) ([551aecb](https://github.com/ogcio/govie-ds/commit/551aecb094dfe106024d3c4f748c675a70ba2f7e))
+
+## [0.26.0](https://github.com/ogcio/govie-ds/compare/html-v0.25.0...html-v0.26.0) (2025-01-13)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
+
+### Bug Fixes
+
+* add iframe media type to card component ([#387](https://github.com/ogcio/govie-ds/issues/387)) ([fcaed1f](https://github.com/ogcio/govie-ds/commit/fcaed1f16ade1a899b27265dc6d789782ca2b7d9))
+* icon font weight ([#391](https://github.com/ogcio/govie-ds/issues/391)) ([2da8fca](https://github.com/ogcio/govie-ds/commit/2da8fca864442218703ac1328a47bbdfabee08ac))
+
+
+### Performance Improvements
+
+* fix flaky tests ([#389](https://github.com/ogcio/govie-ds/issues/389)) ([c22af0b](https://github.com/ogcio/govie-ds/commit/c22af0b783b951ef8c831d7b79080c9312beb323))
+
+## [0.25.0](https://github.com/ogcio/govie-ds/compare/html-v0.24.0...html-v0.25.0) (2025-01-07)
+
+
+### Features
+
+* adding slots feature in govieHeader macro ([#373](https://github.com/ogcio/govie-ds/issues/373)) ([95fd203](https://github.com/ogcio/govie-ds/commit/95fd2034aef907084e067628dae18f600b1482b8))
+* composable combo box ([#381](https://github.com/ogcio/govie-ds/issues/381)) ([6d21aa5](https://github.com/ogcio/govie-ds/commit/6d21aa5631903d5faccd400ad27f72e6e78bff20))
+* Progress Bar component ([#369](https://github.com/ogcio/govie-ds/issues/369)) ([83add63](https://github.com/ogcio/govie-ds/commit/83add6397dedf6db84ab18a3f4aa0fc99eb4eebe))
+
+
+### Bug Fixes
+
+* small checkbox alignment ([#383](https://github.com/ogcio/govie-ds/issues/383)) ([7c972a7](https://github.com/ogcio/govie-ds/commit/7c972a76e6c2e5535af579e05f67780d6b48a9fa))
+
+## [0.24.0](https://github.com/ogcio/govie-ds/compare/html-v0.23.0...html-v0.24.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
+
+### Bug Fixes
+
+* assets and logo ([#374](https://github.com/ogcio/govie-ds/issues/374)) ([86cf4dc](https://github.com/ogcio/govie-ds/commit/86cf4dcc66aa09bcc252100b0d3fc95687a55021))
+* checkbox feedback fixes ([#372](https://github.com/ogcio/govie-ds/issues/372)) ([842c48d](https://github.com/ogcio/govie-ds/commit/842c48dcf9c75ab45cdcd490371e20387c847c57))
+
 ## [0.23.0](https://github.com/ogcio/govie-ds/compare/html-v0.22.0...html-v0.23.0) (2024-12-12)
 
 

@@ -1,5 +1,47 @@
 # Changelog
 
+## [0.39.0](https://github.com/ogcio/govie-ds/compare/docs-v0.38.0...docs-v0.39.0) (2025-01-21)
+
+
+### Features
+
+* add layout page example ([#400](https://github.com/ogcio/govie-ds/issues/400)) ([8abcbc3](https://github.com/ogcio/govie-ds/commit/8abcbc33334ccd478d02599d8fad276ae6f35ce7))
+* add social network icons ([#401](https://github.com/ogcio/govie-ds/issues/401)) ([e797dba](https://github.com/ogcio/govie-ds/commit/e797dbaa94026fe521f92ac946db0f5b1aa303eb))
+* Modal enhancements ([#393](https://github.com/ogcio/govie-ds/issues/393)) ([96818e1](https://github.com/ogcio/govie-ds/commit/96818e1ac3c5e9c87e6e4ce990371ba774fbfbaa))
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+
+## [0.38.0](https://github.com/ogcio/govie-ds/compare/docs-v0.37.0...docs-v0.38.0) (2025-01-13)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
+
+### Bug Fixes
+
+* add iframe media type to card component ([#387](https://github.com/ogcio/govie-ds/issues/387)) ([fcaed1f](https://github.com/ogcio/govie-ds/commit/fcaed1f16ade1a899b27265dc6d789782ca2b7d9))
+
+## [0.37.0](https://github.com/ogcio/govie-ds/compare/docs-v0.36.0...docs-v0.37.0) (2025-01-07)
+
+
+### Features
+
+* adding slots feature in govieHeader macro ([#373](https://github.com/ogcio/govie-ds/issues/373)) ([95fd203](https://github.com/ogcio/govie-ds/commit/95fd2034aef907084e067628dae18f600b1482b8))
+* composable combo box ([#381](https://github.com/ogcio/govie-ds/issues/381)) ([6d21aa5](https://github.com/ogcio/govie-ds/commit/6d21aa5631903d5faccd400ad27f72e6e78bff20))
+* Progress Bar component ([#369](https://github.com/ogcio/govie-ds/issues/369)) ([83add63](https://github.com/ogcio/govie-ds/commit/83add6397dedf6db84ab18a3f4aa0fc99eb4eebe))
+
+## [0.36.0](https://github.com/ogcio/govie-ds/compare/docs-v0.35.0...docs-v0.36.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
 ## [0.35.0](https://github.com/ogcio/govie-ds/compare/docs-v0.34.0...docs-v0.35.0) (2024-12-12)
 
 

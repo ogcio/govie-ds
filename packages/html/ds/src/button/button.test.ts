@@ -1,4 +1,5 @@
 import { render } from '../common/render';
+import { testVariantsAxe } from '../helpers/test-helpers';
 import buttonHtml from '../icon/icon.html?raw';
 import { IconId, IconProps } from '../icon/icon.schema';
 import {
@@ -20,6 +21,11 @@ describe('button', () => {
     macroName: 'govieButton',
     html,
   });
+
+  testVariantsAxe(
+    [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
+    (variant: ButtonVariant) => renderButton({ ...standardProps, variant }),
+  );
 
   const renderIcon = render<IconProps>({
     componentName: 'icon',
@@ -130,6 +136,26 @@ describe('button', () => {
     const buttonScreen = renderButton(propsIconButton);
     const buttonElement = buttonScreen.getByTestId('govie-icon');
     expect(buttonElement).toBeTruthy();
+  });
+
+  it('should render aria attributes correctly', () => {
+    const propsWithAria = {
+      ...standardProps,
+      aria: {
+        'aria-disabled': 'true',
+        'aria-expanded': 'false',
+        'aria-controls': 'menu1',
+      },
+    };
+
+    const screen = renderButton(propsWithAria);
+
+    // Check if ARIA attributes are rendered correctly
+    const buttonElement = screen.getByText(standardProps.content);
+
+    expect(buttonElement).toHaveAttribute('aria-disabled', 'true');
+    expect(buttonElement).toHaveAttribute('aria-expanded', 'false');
+    expect(buttonElement).toHaveAttribute('aria-controls', 'menu1');
   });
 
   it('should pass axe tests', async () => {

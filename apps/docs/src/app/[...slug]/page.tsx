@@ -2,12 +2,12 @@ import { Heading, Tag } from '@govie-ds/react';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
-import { slugify } from '@/lib/slugify';
+import { slugify } from '@/lib/utils';
 
 type DocumentPageProps = {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 };
 
 type MarkdownHeading = {
@@ -31,8 +31,9 @@ const extractHeadingsFromMdx = (raw: string): MarkdownHeading[] => {
   );
 };
 
-export default function DocumentPage({ params }: DocumentPageProps) {
-  const document = documents.getBySlug({ slug: params.slug });
+export default async function DocumentPage({ params }: DocumentPageProps) {
+  const resolvedParameters = await params;
+  const document = documents.getBySlug({ slug: resolvedParameters.slug });
 
   if (!document) {
     notFound();

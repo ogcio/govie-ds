@@ -1,6 +1,53 @@
 # Changelog
 
 
+## [0.28.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.1...tailwind-v0.28.0) (2025-01-21)
+
+
+### Features
+
+* add layout page example ([#400](https://github.com/ogcio/govie-ds/issues/400)) ([8abcbc3](https://github.com/ogcio/govie-ds/commit/8abcbc33334ccd478d02599d8fad276ae6f35ce7))
+* Modal enhancements ([#393](https://github.com/ogcio/govie-ds/issues/393)) ([96818e1](https://github.com/ogcio/govie-ds/commit/96818e1ac3c5e9c87e6e4ce990371ba774fbfbaa))
+
+
+### Bug Fixes
+
+* fixing Header component and templates ([#388](https://github.com/ogcio/govie-ds/issues/388)) ([f7bc2ad](https://github.com/ogcio/govie-ds/commit/f7bc2ad61354b95338d3161c6e1ff6834a6ce8b1))
+* update radio min width and height ([#396](https://github.com/ogcio/govie-ds/issues/396)) ([6a4b12f](https://github.com/ogcio/govie-ds/commit/6a4b12f2a7776673c7a820164748dad69369d412))
+
+## [0.27.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.27.0...tailwind-v0.27.1) (2025-01-13)
+
+
+### Bug Fixes
+
+* add iframe media type to card component ([#387](https://github.com/ogcio/govie-ds/issues/387)) ([fcaed1f](https://github.com/ogcio/govie-ds/commit/fcaed1f16ade1a899b27265dc6d789782ca2b7d9))
+
+## [0.27.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.26.0...tailwind-v0.27.0) (2025-01-07)
+
+
+### Features
+
+* adding slots feature in govieHeader macro ([#373](https://github.com/ogcio/govie-ds/issues/373)) ([95fd203](https://github.com/ogcio/govie-ds/commit/95fd2034aef907084e067628dae18f600b1482b8))
+* Progress Bar component ([#369](https://github.com/ogcio/govie-ds/issues/369)) ([83add63](https://github.com/ogcio/govie-ds/commit/83add6397dedf6db84ab18a3f4aa0fc99eb4eebe))
+
+
+### Bug Fixes
+
+* heading lg size ([a7b690d](https://github.com/ogcio/govie-ds/commit/a7b690dc05cbe9c55ed6dfaa8577e9e540950a3d))
+
+## [0.26.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.25.0...tailwind-v0.26.0) (2024-12-18)
+
+
+### Features
+
+* add html and macro for tooltip ([#371](https://github.com/ogcio/govie-ds/issues/371)) ([adebe40](https://github.com/ogcio/govie-ds/commit/adebe405318eb44503817356a429105cc9c0c024))
+
+
+### Bug Fixes
+
+* assets and logo ([#374](https://github.com/ogcio/govie-ds/issues/374)) ([86cf4dc](https://github.com/ogcio/govie-ds/commit/86cf4dcc66aa09bcc252100b0d3fc95687a55021))
+* checkbox feedback fixes ([#372](https://github.com/ogcio/govie-ds/issues/372)) ([842c48d](https://github.com/ogcio/govie-ds/commit/842c48dcf9c75ab45cdcd490371e20387c847c57))
+
 ## [0.25.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.24.0...tailwind-v0.25.0) (2024-12-12)
 
 

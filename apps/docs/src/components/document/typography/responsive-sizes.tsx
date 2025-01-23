@@ -1,13 +1,10 @@
 import { meta } from '@govie-ds/tokens';
 import kebabCase from 'kebab-case';
-import { Dictionary, groupBy } from 'lodash';
-import { Fragment } from 'react';
+import { groupBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
 import { SampleTable } from '../common/sample-table';
 import { SampleToken } from '../common/sample-token';
-import { TokenAlias } from '../common/token-alias';
 import { TokenName } from '../common/token-name';
-import { TypographyValueComposite } from './typography-value-composite';
 
 type TypographyScreenAliasValue = {
   fontFamily: string[];
@@ -176,61 +173,6 @@ function TypographyResponsiveSizes({
       }
     />
   );
-}
-
-function TypographySizesDetailed({
-  typographySizesGrouped,
-  screenSizes,
-}: {
-  typographySizesGrouped: Dictionary<TypographySize[]>;
-  screenSizes: string[];
-}) {
-  return objectKeys(typographySizesGrouped).map((headingToken, index) => {
-    return (
-      <div className="grid grid-cols-4 gap-x-md gap-y-xl border-y-xs border-gray-50 py-xl">
-        {index === 0 ? (
-          <Fragment>
-            <div />
-            {screenSizes.map((size) => (
-              <Fragment key={size}>
-                <div className="flex justify-center">
-                  <TokenName name={`screen/${size}`} />
-                </div>
-              </Fragment>
-            ))}
-          </Fragment>
-        ) : null}
-
-        <Fragment key={headingToken}>
-          <div className="flex flex-col items-start">
-            <TokenName name={headingToken} />
-          </div>
-
-          {screenSizes.map((screenSize) => {
-            const typographySize = typographySizesGrouped[headingToken].find(
-              (typographySize) => typographySize.screenSize === screenSize,
-            );
-
-            if (!typographySize) {
-              throw new Error(`There was no typography size found.`);
-            }
-
-            return (
-              <div key={screenSize} className="flex flex-col gap-lg">
-                <TypographyValueComposite
-                  fontSize={typographySize.alias.value.fontSize}
-                  lineHeight={typographySize.alias.value.lineHeight}
-                />
-                <div className="hidden xl:flex justify-center">
-                  <TokenAlias name={typographySize.alias.name} />
-                </div>
-              </div>
-            );
-          })}
-        </Fragment>
-      </div>
-    );
-  });
 }
 
 export function HeadingResponsiveSizes({

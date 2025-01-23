@@ -1,31 +1,69 @@
 {% from "header/assets/logo.html" import govieLogo %}
-{% from 'header/assets/logoSmall.html' import govieLogoSmall %}
-{% from 'icon/icon.html' import govieIcon %}
-{% from 'header/assets/logo.html' import govieLogo %}
-{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
-{% from 'header/components/headerMenu.html' import headerMenu %}
+{% from "icon/icon.html" import govieIcon %}
+{% from "header/components/headerSearchContainer.html" import HeaderSearchContainer %}
+{% from "header/components/headerMenu.html" import headerMenu %}
+{% from "header/components/headerSlot.html" import govieSlotItemAction, govieSlotContainer %}
+
+{% macro showMobileMenu(navLinks, tools, languages) %}
+  {% set hasNavLinks = false %}
+  {% set hasMobileSlots = false %}
+  {% set hasSearch = false %}
+  {% set hasLanguages = false %}
+  {% set toolItems = [] %}
+
+  {% if navLinks is defined and navLinks | length > 0 %}
+    {% set hasNavLinks = true %}
+  {% endif %}
+
+  {% if tools is defined %}
+    {% if 'items' in tools %}
+      {% set toolItems = tools['items'] %}
+    {% endif %}
+
+    {% if 'search' in tools %}
+      {% set hasSearch = true %}
+    {% endif %}
+  {% endif %}
+
+  {% if languages is defined and languages | length > 0 %}
+    {% set hasLanguages = true %}
+  {% endif %}
+
+  {% for item in toolItems %}
+    {% if item.slot is defined and item.keepOnMobile is defined and item.keepOnMobile %}
+      {% set hasMobileSlots = true %}
+    {% endif %}
+  {% endfor %}
+
+  {{ hasNavLinks or hasMobileSlots or hasSearch or hasLanguages }}
+{% endmacro %}
 
 {% macro govieHeader(props) %}
   {% set headerClassNames = "gi-header" %}
-  {% set languageBarClassNames ="gi-header-language-bar" %}
-  {% set languageItemClassNames ="gi-header-language-item" %}
-  {% set menuContainerClassNames ="gi-header-menu" %}
+  {% set languageBarClassNames = "gi-header-language-bar" %}
+  {% set languageItemClassNames = "gi-header-language-item" %}
+  {% set menuContainerClassNames = "gi-header-menu" %}
   {% set logoLargeClassNames = "gi-header-logo-lg" %}
   {% set logoSmallClassNames = "gi-header-logo-sm" %}
   {% set appTitleClassNames = "gi-header-title" %}
-  {% set toolItemClassNames ="gi-header-tool-item" %}
+  {% set toolItemClassNames = "gi-header-tool-item" %}
   {% set navLinkContainerClassNames = "gi-header-nav" %}
   {% set menuDividerClassNames = "gi-header-separator" %}
   {% set overlayClassNames = "gi-header-overlay" %}
   {% set containerClassName = "gi-layout-container-full-width" if props.fullWidth else "gi-layout-container" %}
   {% set toolItems = [] %}
+
   {% if 'tools' in props %}
     {% if 'items' in props.tools %}
       {% set toolItems = props.tools['items'] %}
     {% endif %}
   {% endif %}
 
-  <header id="GovieHeader" class="{{ headerClassNames }}">
+  <header
+    id="GovieHeader"
+    class="{{ headerClassNames }}"
+    data-module="gieds-header"
+  >
     {% if props.languages %}
       <div class="{{ languageBarClassNames }}">
         <div class="{{ containerClassName }}">
@@ -36,107 +74,139 @@
                   data-testid="language-link-desktop-{{ loop.index0 }}"
                   class="{{ languageItemClassNames }}"
                   href="{{ link.href }}"
-                  >{{ link.label }}</a
                 >
+                  {{ link.label }}
+                </a>
               </li>
             {% endfor %}
           </ul>
         </div>
       </div>
     {% endif %}
+
     <div id="HeaderContainer" class="{{ containerClassName }}">
       <div class="{{ menuContainerClassNames }}">
-        <div class="gi-header-logo">
-          {% if props.logo.href %}
-            <a href="{logo.href}" aria-label="Go to the home page">
-              <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-              <span class="{{ logoSmallClassNames }}"
-                >{{ govieLogoSmall() }}</span
-              >
-            </a>
-          {% else %}
-            <span class="{{ logoLargeClassNames }}">{{ govieLogo() }}</span>
-            <span class="{{ logoSmallClassNames }}"
-              >{{ govieLogoSmall() }}</span
-            >
-          {% endif %}
-        </div>
-
-        <div class="{{ appTitleClassNames }}">
-          {% if props.title %}{{ props.title }}{% endif %}
-        </div>
-
-        <ul
-          id="links-container-desktop"
-          class="{{ navLinkContainerClassNames }}"
-        >
-          {% for link in props.navLinks %}
-            <li class="gi-flex">
-              <a
-                data-testid="nav-link-desktop-{{ loop.index0 }}"
-                href="{{ link.href }}"
-                >{{ link.label }}</a
-              >
-            </li>
-          {% endfor %}
-        </ul>
-        {% if props.navLinks and (props.tools.search or props.tools.items) %}
-          <div class="{{ menuDividerClassNames }}"></div>
-        {% endif %}
-        {% if props.tools.search %}
-          <label for="SearchTrigger" class="{{ toolItemClassNames }}">
-            <input
-              class="gi-block gi-w-0 gi-absolute gi-h-0"
-              id="SearchTrigger"
-              type="checkbox"
-              data-testid="SearchTrigger"
-            />
-            {% if props.tools.search.label %}
-              <span class="label">{{ props.tools.search.label }}</span>
+        <div>
+          <div class="gi-header-logo">
+            {% if props.logo.href %}
+              <a href="{{ props.logo.href }}" aria-label="Go to the home page">
+                <div>{{ govieLogo() }}</div>
+              </a>
+            {% else %}
+              <div>{{ govieLogo() }}</div>
             {% endif %}
-            <div class="search-icon">
-              {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
-            </div>
-            <div class="gi-hidden close-icon">
-              {{ govieIcon({"icon": "close"}) }}
-            </div>
-          </label>
-        {% endif %}
-        {% for item in toolItems %}
-          <a class="{{ toolItemClassNames }}" href="{{ item.href }}">
-            <span class="label">{{ item.label }}</span>
-            {{ govieIcon({"icon": item.icon }) }}
-          </a>
-        {% endfor %}
-        {% if props.tools.menu %}
-          <label
-            for="MobileMenuTrigger"
-            class="{{ toolItemClassNames }} sm:gi-hidden"
+          </div>
+
+          <div class="{{ appTitleClassNames }}">
+            {% if props.title %}{{ props.title }}{% endif %}
+          </div>
+        </div>
+        <div>
+          <ul
+            id="links-container-desktop"
+            class="{{ navLinkContainerClassNames }}"
           >
-            <input
-              class="gi-block gi-w-0 gi-absolute gi-h-0"
-              id="MobileMenuTrigger"
-              data-element="menu-icon"
-              type="checkbox"
-            />
-            {% if props.tools.menu.label %}
-              <span class="label">{{ props.tools.menu.label }}</span>
+            {% for link in props.navLinks %}
+              <li class="gi-flex">
+                <a
+                  href="{{ link.href }}"
+                  data-testid="nav-link-desktop-{{ loop.index0 }}"
+                >
+                  {{ link.label }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+
+          {% if props.navLinks and (props.tools.search or props.tools.items) %}
+            <div class="{{ menuDividerClassNames }}"></div>
+          {% endif %}
+
+          <div class="gi-flex gi-gap-2">
+            {% if props.tools and props.tools.search %}
+              <div class="gi-hidden sm:gi-flex">
+                <label for="SearchTrigger" class="{{ toolItemClassNames }}">
+                  <input
+                    id="SearchTrigger"
+                    type="checkbox"
+                    class="gi-header-mobile-menu-trigger"
+                    data-testid="SearchTrigger"
+                  />
+                  {% if props.tools.search.label %}
+                    <span class="label">{{ props.tools.search.label }}</span>
+                  {% endif %}
+                  <div class="search-icon">
+                    {{ govieIcon({"icon": props.tools.search.icon or "search" }) }}
+                  </div>
+                  <div class="gi-hidden close-icon">
+                    {{ govieIcon({"icon": "close"}) }}
+                  </div>
+                </label>
+              </div>
             {% endif %}
-            <div data-element="menu-icon">
-              {{ govieIcon({"icon": props.tools.menu.icon or "menu" }) }}
-            </div>
-          </label>
-        {% endif %}
+
+            {% for toolItem in toolItems %}
+              <div class="gi-hidden lg:gi-flex">
+                {% if toolItem.slot %}
+                  {{ govieSlotItemAction(toolItem, loop.index0) }}
+                {% else %}
+                  <a
+                    href="{{ toolItem.href }}"
+                    class="{{ toolItemClassNames }}"
+                  >
+                    {% if toolItem.label %}
+                      <span class="label">{{ toolItem.label }}</span>
+                    {% endif %}
+                    {% if toolItem.icon %}
+                      {{ govieIcon({"icon": toolItem.icon}) }}
+                    {% endif %}
+                  </a>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            {% if showMobileMenu(props.navLinks, props.tools, props.languages) %}
+              <label
+                for="MobileMenuTrigger"
+                class="{{ toolItemClassNames }} lg:gi-hidden"
+              >
+                <input
+                  id="MobileMenuTrigger"
+                  class="gi-header-mobile-menu-trigger"
+                  type="checkbox"
+                  data-testid="header-mobile-menu"
+                />
+                {% if props.tools.menu.label %}
+                  <span class="label">{{ props.tools.menu.label }}</span>
+                {% endif %}
+                <div>
+                  {{ govieIcon({"icon": props.tools.menu.icon or "menu"}) }}
+                </div>
+              </label>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
-    {% if props.tools.search %}
-      {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "icon": props.tools.search.icon or "search"}) }}
+
+    {% if props.tools and props.tools.search %}
+      <div id="SearchContainer" class="gi-header-tool-container">
+        {{ HeaderSearchContainer({"searchUrl": props.tools.search.action, "icon": props.tools.search.icon or "search"}) }}
+      </div>
     {% endif %}
+
     {{ headerMenu(props) }}
+
     <div
       id="HeaderOverlayContainer"
       class="{{ overlayClassNames }}"
       data-element="overlay-disabled"
     ></div>
+
+    {% for toolItem in toolItems %}
+      {% if toolItem.slot %}
+        {{ govieSlotContainer(loop.index0, toolItem.slot) }}
+      {% endif %}
+    {% endfor %}
   </header>
 {% endmacro %}

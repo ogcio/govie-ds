@@ -7,16 +7,18 @@ import {
 export type ModalOptions = BaseComponentOptions;
 
 export class Modal extends BaseComponent<ModalOptions> {
-  triggerButtonContainer: Element;
   modal: Element;
   closeIcon: Element | null;
-
-  openModal: EventListenerOrEventListenerObject;
-  closeModal: EventListenerOrEventListenerObject;
-  closeModalWithIcon: EventListenerOrEventListenerObject;
+  position: string;
+  isOpen: boolean;
+  triggerButtonContainer: Element | null;
 
   constructor(options: ModalOptions) {
     super(options);
+
+    this.triggerButtonEventLister = this.triggerButtonEventLister.bind(this);
+    this.modalEventListener = this.modalEventListener.bind(this);
+    this.closeButtonListener = this.closeButtonListener.bind(this);
 
     this.triggerButtonContainer = this.query.getByElement({
       name: 'trigger-button-container',
@@ -26,40 +28,60 @@ export class Modal extends BaseComponent<ModalOptions> {
       name: 'modal-container',
     }).firstElementChild;
 
-    this.openModal = () => {
+    this.position = (this.modal as HTMLElement).dataset?.position || 'center';
+    this.isOpen = !!(this.modal as HTMLElement).dataset?.open;
+
+    this.initModalState();
+  }
+
+  initModalState() {
+    this.toggleModalState(this.isOpen);
+  }
+
+  toggleModalState(isOpen: boolean) {
+    if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
-    };
-
-    this.closeModal = (event) => {
-      const targetElement = event.target as HTMLElement;
-
-      if (targetElement.dataset.element === 'modal') {
-        this.modal.classList.remove('gi-modal-open');
-        this.modal.classList.add('gi-modal-close');
-      }
-    };
-
-    this.closeModalWithIcon = () => {
-      this.modal.classList.remove('gi-modal-open');
+      this.modal.setAttribute('aria-hidden', 'false');
+    } else {
       this.modal.classList.add('gi-modal-close');
-    };
+      this.modal.classList.remove('gi-modal-open');
+      this.modal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  triggerButtonEventLister() {
+    this.toggleModalState(true);
+  }
+
+  modalEventListener(event: any) {
+    const targetElement = event.target as HTMLElement;
+
+    if (targetElement.dataset.element === 'modal') {
+      this.toggleModalState(false);
+    }
+  }
+
+  closeButtonListener() {
+    this.toggleModalState(false);
   }
 
   initComponent() {
-    if (this.triggerButtonContainer) {
-      this.triggerButtonContainer.addEventListener('click', this.openModal);
-    }
-    this.modal.addEventListener('click', this.closeModal);
-    this.closeIcon?.addEventListener('click', this.closeModalWithIcon);
+    this.triggerButtonContainer?.addEventListener(
+      'click',
+      this.triggerButtonEventLister,
+    );
+    this.modal.addEventListener('click', this.modalEventListener);
+    this.closeIcon?.addEventListener('click', this.closeButtonListener);
   }
 
   destroyComponent(): void {
-    if (this.triggerButtonContainer) {
-      this.triggerButtonContainer.removeEventListener('click', this.openModal);
-    }
-    this.modal.removeEventListener('click', this.closeModal);
-    this.closeIcon?.removeEventListener('click', this.closeModalWithIcon);
+    this.triggerButtonContainer?.removeEventListener(
+      'click',
+      this.triggerButtonEventLister,
+    );
+    this.modal.removeEventListener('click', this.modalEventListener);
+    this.closeIcon?.removeEventListener('click', this.closeButtonListener);
   }
 }
 

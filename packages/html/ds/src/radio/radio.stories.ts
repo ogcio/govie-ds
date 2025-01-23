@@ -86,6 +86,20 @@ export const withDefaultChecked: Story = {
 
 export const withoutLabel: Story = {
   args: {
+    id: 'without-label-radio',
     value: 'radio-without-label',
+    aria: {
+      'aria-label': 'without-label-radio',
+    },
+  },
+};
+
+export const withAriaAttributes: Story = {
+  args: {
+    value: 'radio-without-label',
+    label: 'Radio',
+    aria: {
+      'aria-checked': 'false',
+    },
   },
 };

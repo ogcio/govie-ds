@@ -22,6 +22,11 @@ const Decorator = (arguments_, parameters) => {
     }
     return classes;
   }
+
+  if (parameters?.macro?.name === 'govieTooltip') {
+    return 'gi-flex gi-justify-center gi-py-5 gi-px-5';
+  }
+
   if (parameters?.macro?.name === 'govieSpinner') {
     return 'gi-stroke-gray-950';
   }

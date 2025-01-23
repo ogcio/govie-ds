@@ -1,5 +1,7 @@
+import { DropdownItem } from './dropdown-item.js';
+
 export type DropdownItemType = {
-  label: string;
+  children: string;
   options: {
     label: string;
     value: string;
@@ -8,10 +10,8 @@ export type DropdownItemType = {
 };
 
 export type ComboboxProps = {
-  // use any in order to use ServerActions for NextJs applications
-  action: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-  dropdownItems: DropdownItemType[];
-  method?: 'get' | 'post';
-  id?: string;
+  children:
+    | React.ReactElement<typeof DropdownItem>[]
+    | React.ReactElement<typeof DropdownItem>;
   className?: string;
 };

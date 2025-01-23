@@ -1,5 +1,21 @@
 import * as zod from 'zod';
 
+const validAriaProps = [
+  'aria-rowcount',
+  'aria-colcount',
+  'aria-labelledby',
+] as const;
+
+export const ariaSchema = zod.record(
+  zod.enum(validAriaProps, {
+    description: 'Valid ARIA attributes key',
+  }),
+  zod.string({
+    description: 'ARIA attributes value',
+  }),
+  { description: 'An object of ARIA attributes' },
+);
+
 export const tableSchema = zod.object({
   captionText: zod
     .string({
@@ -22,6 +38,7 @@ export const tableSchema = zod.object({
       },
     )
     .optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type TableProps = zod.infer<typeof tableSchema>;
