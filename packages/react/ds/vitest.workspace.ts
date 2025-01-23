@@ -11,12 +11,6 @@ export default defineWorkspace([
       globals: true,
       environment: 'jsdom',
       css: true,
-      pool: 'threads',
-      poolOptions: {
-        threads: {
-          singleThread: true,
-        },
-      },
       setupFiles: ['./vitest.setup.ts'],
     },
   },
