@@ -92,6 +92,7 @@ export const DropdownItem = ({
 
       <div
         className={`${isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}`}
+        id={`${dropdownCustomClass}-search`}
       >
         {!noSearch && (
           <div className="gi-combobox-search">
