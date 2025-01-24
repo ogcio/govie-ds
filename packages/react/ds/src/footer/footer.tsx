@@ -19,21 +19,32 @@ export type FooterProps = {
 
 export function Footer({ links, secondaryNavLinks }: FooterProps) {
   return (
-    <footer className="gi-footer" data-module="gieds-footer">
+    <footer
+      className="gi-footer"
+      data-module="gieds-footer"
+      role="contentinfo"
+      aria-label="Footer"
+    >
       <Container>
         {secondaryNavLinks && (
           <div className="footer-secondary-nav-links">
             {secondaryNavLinks.map((secondaryNav, navIndex) => (
               <div key={`div-${navIndex}-${navIndex}`}>
-                <div className="gi-heading-md">{secondaryNav.heading}</div>
+                <div className="gi-heading-md" id={`secondary-nav-${navIndex}`}>
+                  {secondaryNav.heading}
+                </div>
                 <SectionBreak size="md" />
-                <ul>
+                <ul aria-labelledby={`secondary-nav-${navIndex}`}>
                   {secondaryNav.links.map((link, index) => (
                     <li
                       data-testid={`secondary-${navIndex}-${index}`}
                       key={`secondary-${navIndex}-${index}`}
                     >
-                      <Anchor href={link.href} external={link.external}>
+                      <Anchor
+                        aria-label={link.label}
+                        href={link.href}
+                        external={link.external}
+                      >
                         {link.label}
                       </Anchor>
                     </li>
@@ -51,7 +62,11 @@ export function Footer({ links, secondaryNavLinks }: FooterProps) {
                   data-testid={`main-link-${index}`}
                   key={`main-link-${index}`}
                 >
-                  <Anchor href={link.href} external={link.external}>
+                  <Anchor
+                    href={link.href}
+                    external={link.external}
+                    aria-label={link.label}
+                  >
                     {link.label}
                   </Anchor>
                 </li>

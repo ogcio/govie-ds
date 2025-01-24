@@ -19,6 +19,16 @@ export type LinkProps = {
   external?: boolean;
   size?: 'sm' | 'md';
   onClick?: React.MouseEventHandler<HTMLElement>;
+  ariaLabel?: string;
+  ariaCurrent?:
+    | 'page'
+    | 'step'
+    | 'location'
+    | 'date'
+    | 'time'
+    | 'true'
+    | 'false';
+  ariaDescribedBy?: string;
 } & React.AriaAttributes;
 
 export function Link({
@@ -31,6 +41,9 @@ export function Link({
   noVisited = false,
   noColor = false,
   external = false,
+  ariaLabel,
+  ariaCurrent,
+  ariaDescribedBy,
   onClick,
   ...ariaProps
 }: LinkProps) {
@@ -41,6 +54,9 @@ export function Link({
       href={href}
       onClick={onClick}
       external={external}
+      aria-label={ariaLabel}
+      aria-current={ariaCurrent}
+      aria-describedby={ariaDescribedBy}
       className={cn(`
         gi-link
         ${size ? `gi-link-${size}` : ''}

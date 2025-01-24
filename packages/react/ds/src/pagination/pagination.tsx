@@ -27,7 +27,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     return displayedPages.map((page, index) =>
       page === -1 || page === -2 ? (
         <React.Fragment key={`ellipsis-${index}`}>
-          <Icon className="gi-text-gray-700" icon="more_horiz" />
+          <Icon
+            role="presentation"
+            className="gi-text-gray-700"
+            icon="more_horiz"
+          />
         </React.Fragment>
       ) : (
         <Button
@@ -36,6 +40,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="large"
           appearance="dark"
           onClick={() => onPageChange(page)}
+          aria-label={`Go to page ${page}`}
         >
           {page}
         </Button>
@@ -44,19 +49,20 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const renderPaginationLabel = () => (
-    <span className="gi-text-md">
+    <span className="gi-text-md" aria-live="polite">
       <span className="gi-font-bold">Page {currentPage}</span> of {totalPages}
     </span>
   );
 
   return (
-    <div className="gi-pagination">
+    <div className="gi-pagination" role="navigation" aria-label="Pagination">
       <Button
         variant="flat"
         size="large"
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
+        aria-label="Go to previous page"
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         <React.Fragment key="previous-btn-pagination">
@@ -73,6 +79,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
+        aria-label="Go to next page"
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         {!isSMWidth && 'Next'}
