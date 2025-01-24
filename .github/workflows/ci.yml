@@ -56,13 +56,22 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Build and test
+      - name: Install dependencies
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm nx affected --base=last-release -t format:check --parallel=3
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Format and Lint
+        run: |
+          pnpm format:check
+          pnpm lint
+
+      - name: Build and test
+        run: |
           pnpm build
-          pnpm nx affected --base=last-release -t lint --parallel=3
           pnpm test
 
       - name: Create Figma tokens flat artifact

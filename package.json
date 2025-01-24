@@ -29,7 +29,7 @@
     "react:storybook:test": "nx run @govie-react/storybook:test",
     "examples:vite": "nx run @govie-ds/examples-vite:dev",
     "examples:nextjs": "nx run @govie-ds/examples-nextjs:dev",
-    "cleandep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
+    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm -r exec rm -rf dist"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.4",
