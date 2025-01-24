@@ -106,15 +106,6 @@ const headerProps: HeaderProps = {
       showItemMode: 'desktop-only',
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      details: {
-        href: '/item1',
-      },
-      showItemMode: 'desktop-only',
-    },
-    {
       label: 'Faq',
       icon: 'info',
       itemType: 'slot',

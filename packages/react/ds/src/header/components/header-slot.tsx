@@ -76,6 +76,7 @@ const DrawerTrigger = ({
         onClose={() => setIsOpen(false)}
         position={drawerPosition || 'right'}
         closeButtonLabel="Close"
+        closeButtonSize="large"
       >
         <DrawerBody>{component}</DrawerBody>
       </DrawerWrapper>

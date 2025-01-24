@@ -7,6 +7,7 @@ import {
   ReactNode,
   useState,
 } from 'react';
+import { ButtonSize } from '../button/types.js';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -19,6 +20,7 @@ export type DrawerPosition = 'left' | 'right' | 'bottom';
 
 export type DrawerProps = ModalProps & {
   position?: DrawerPosition;
+  closeButtonSize?: ButtonSize;
   children: DrawerChildren;
 };
 
@@ -50,6 +52,7 @@ export const Drawer = ({
   closeButtonLabel,
   position = 'right',
   className,
+  closeButtonSize,
 }: DrawerProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -82,6 +85,7 @@ export const Drawer = ({
         className={className}
         isOpen={isOpen}
         onClose={handleClose}
+        closeButtonSize={closeButtonSize}
       />
     </>
   );
