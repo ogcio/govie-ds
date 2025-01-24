@@ -25,7 +25,8 @@
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:test": "vitest --project=storybook",
-    "storybook:coverage": "vitest --project=storybook --coverage"
+    "storybook:coverage": "vitest --project=storybook --coverage",
+    "unit:test": "vitest --project=unit"
   },
   "prettier": "@govie-ds/prettier-config",
   "sideEffects": [
