@@ -35,7 +35,11 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
   })();
 
   return (
-    <div className={`${sizeClass} gi-error-text ${className || ''}`} {...props}>
+    <div
+      role="alert"
+      className={`${sizeClass} gi-error-text ${className || ''}`}
+      {...props}
+    >
       {text}
     </div>
   );
