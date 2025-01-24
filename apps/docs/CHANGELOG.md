@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.40.0](https://github.com/ogcio/govie-ds/compare/docs-v0.39.0...docs-v0.40.0) (2025-01-24)
+
+
+### Features
+
+* drawer component - reactjs ([#402](https://github.com/ogcio/govie-ds/issues/402)) ([ff53fa7](https://github.com/ogcio/govie-ds/commit/ff53fa71e32e8a44d292bbcad1463ac5bb2c92ae))
+* header support custom drawer content - reactjs ([#406](https://github.com/ogcio/govie-ds/issues/406)) ([328ae5d](https://github.com/ogcio/govie-ds/commit/328ae5d386f421cec767d8d92a676280cb73bf8c))
+
 ## [0.39.0](https://github.com/ogcio/govie-ds/compare/docs-v0.38.0...docs-v0.39.0) (2025-01-21)
 
 

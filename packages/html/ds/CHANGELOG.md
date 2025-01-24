@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://github.com/ogcio/govie-ds/compare/html-v0.27.0...html-v0.27.1) (2025-01-24)
+
+
+### Bug Fixes
+
+* change default logo ([#408](https://github.com/ogcio/govie-ds/issues/408)) ([eb8587a](https://github.com/ogcio/govie-ds/commit/eb8587a3150242e63bf026ce2864cf1116aa481c))
+
 ## [0.27.0](https://github.com/ogcio/govie-ds/compare/html-v0.26.1...html-v0.27.0) (2025-01-21)
 
 
