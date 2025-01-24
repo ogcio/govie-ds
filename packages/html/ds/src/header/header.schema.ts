@@ -13,10 +13,16 @@ export const headerSchema = zod.object({
     .optional(),
   logo: zod
     .object({
-      image: zod
+      imageSmall: zod
         .string({
           description:
-            'The application logo, a GOV.IE default one will be used if missing',
+            'The application logo, a GOV.IE default one will be used if missing for mobile screen',
+        })
+        .optional(),
+      imageLarge: zod
+        .string({
+          description:
+            'The application logo, a GOV.IE default one will be used if missing for larger screen',
         })
         .optional(),
       alt: zod

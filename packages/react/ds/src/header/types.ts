@@ -28,7 +28,8 @@ export type HeaderItem = {
 export type HeaderProps = {
   title?: string;
   logo?: {
-    image?: string;
+    imageSmall?: string;
+    imageLarge?: string;
     href?: string;
     external?: boolean;
     alt?: string;
