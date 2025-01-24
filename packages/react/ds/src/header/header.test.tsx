@@ -1,32 +1,50 @@
 import { render, cleanup } from '../test-utils.js';
-import { HeaderProps, Header } from './header.js';
+import { HeaderSearch } from './components/header-search.js';
+import { Header } from './header.js';
+import { HeaderProps } from './types.js';
 
-const standardProps = {
-  logo: { href: '/home' },
-  tools: {
-    search: {
-      action: '/search_page',
+const standardProps: HeaderProps = {
+  items: [
+    {
       label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
+      details: {
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+      showItemMode: 'desktop-only',
     },
-    menu: {
-      label: 'Menu',
-    },
-  },
-  navLinks: [
     {
-      href: '#link-1',
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
+    },
+    {
       label: 'News',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
     },
     {
-      href: '#link-2',
       label: 'Departments',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
     },
     {
-      href: '#link-3',
       label: 'Services',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
     },
   ],
-  languages: [
+  secondaryLinks: [
     {
       href: '#',
       label: 'Gaeilge',
@@ -41,33 +59,7 @@ describe('header', () => {
   it('should pass axe tests', async () => {
     const screen = renderHeader({
       logo: { href: '/home' },
-      tools: {
-        search: {
-          label: 'Search',
-          action: '/search_page',
-        },
-        menu: {},
-      },
-      navLinks: [
-        {
-          href: '#link-1',
-          label: 'News',
-        },
-        {
-          href: '#link-2',
-          label: 'Departments',
-        },
-        {
-          href: '#link-3',
-          label: 'Services',
-        },
-      ],
-      languages: [
-        {
-          href: '#',
-          label: 'Gaeilge',
-        },
-      ],
+      ...standardProps,
     });
 
     await screen.axe();
@@ -76,8 +68,8 @@ describe('header', () => {
   it('should show the nav link', () => {
     const screen = renderHeader(standardProps);
 
-    for (const index of standardProps.navLinks.keys()) {
-      const linkElement = screen.getByTestId(`nav-link-desktop-${index}`);
+    for (const index of standardProps?.items?.keys() || []) {
+      const linkElement = screen.getByTestId(`header-item-${index}`);
       expect(linkElement).toBeTruthy();
     }
   });
@@ -85,7 +77,7 @@ describe('header', () => {
   it('should show the language links', () => {
     const screen = renderHeader(standardProps);
 
-    for (const index of standardProps.languages.keys()) {
+    for (const index of standardProps?.secondaryLinks?.keys() || []) {
       const linkElement = screen.getByTestId(`language-link-desktop-${index}`);
       expect(linkElement).toBeTruthy();
     }
@@ -94,23 +86,27 @@ describe('header', () => {
   it('should render header menu slots', () => {
     const screen = renderHeader({
       ...standardProps,
-      tools: {
-        ...standardProps.tools,
-        items: [
-          {
-            href: '#',
-            icon: 'thumb_up',
-            slot: <div>Here is a slot component</div>,
-            label: 'Slot',
+      items: [
+        {
+          itemType: 'slot',
+          icon: 'thumb_up',
+          label: 'Slot',
+          details: {
+            component: <div>Here is a slot component</div>,
+            slotAppearance: 'dropdown',
           },
-          {
-            href: '#',
-            icon: 'info',
-            slot: <div>Here is a slot component 2</div>,
-            label: 'Slot 2',
+        },
+        {
+          itemType: 'slot',
+          label: 'Slot 2',
+          icon: 'info',
+          details: {
+            component: <div>Here is a slot component 2</div>,
+            slotAppearance: 'dropdown',
           },
-        ],
-      },
+        },
+        ...(standardProps?.items || []),
+      ],
     });
 
     const slotMenu = screen.getByTestId('ItemActionTrigger-0');
@@ -125,26 +121,7 @@ describe('header', () => {
   it('should show the search button', () => {
     const screen = renderHeader(standardProps);
 
-    const searchElement = screen.getByTestId('SearchTrigger');
+    const searchElement = screen.getByTestId('header-search-form');
     expect(searchElement).toBeTruthy();
-  });
-
-  it('should display the hamburger menu on mobile devices when only the languages prop is provided.', () => {
-    const screen = renderHeader({
-      logo: { href: '/home' },
-      languages: [
-        {
-          href: '#',
-          label: 'Gaeilge',
-        },
-        {
-          href: '#',
-          label: 'English',
-        },
-      ],
-    });
-
-    const mobileMenu = screen.getByTestId('header-mobile-menu');
-    expect(mobileMenu).toBeInTheDocument();
   });
 });

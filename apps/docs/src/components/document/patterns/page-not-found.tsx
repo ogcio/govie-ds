@@ -1,11 +1,26 @@
-import { Heading, Header, Link, Paragraph, Footer } from '@govie-ds/react';
+import {
+  Heading,
+  Header,
+  Link,
+  Paragraph,
+  Footer,
+  HeaderSearch,
+} from '@govie-ds/react';
 
 export function PageNotFound() {
   return (
     <>
       <Header
         logo={{ href: '/' }}
-        tools={{ search: { action: '/search-page' } }}
+        items={[
+          {
+            itemType: 'slot',
+            details: {
+              component: <HeaderSearch />,
+              slotAppearance: 'dropdown',
+            },
+          },
+        ]}
       />
       <main>
         <Heading as="h2">Page not found</Heading>

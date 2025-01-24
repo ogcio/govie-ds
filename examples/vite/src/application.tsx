@@ -35,9 +35,65 @@ import {
   CheckboxesGroup,
   Form,
   DropdownItem,
+  HeaderProps,
+  HeaderSearch,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
+
+const headerProps: HeaderProps = {
+  items: [
+    {
+      label: 'Departments',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Services',
+      itemType: 'link',
+      details: {
+        href: '#',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Home',
+      icon: 'home',
+      itemType: 'link',
+      details: {
+        href: '/item1',
+      },
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
+      details: {
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+      showItemMode: 'desktop-only',
+    },
+  ],
+  secondaryLinks: [
+    {
+      href: '#',
+      label: 'English',
+    },
+    {
+      href: '#',
+      label: 'Gaeilge',
+    },
+  ],
+};
 
 export function App() {
   const [currentPage, setCurrentPage] = useState(5);
@@ -45,27 +101,9 @@ export function App() {
     <>
       <Header
         logo={{ href: '/' }}
-        tools={{ search: { action: '/search-page' } }}
-        navLinks={[
-          {
-            href: '#',
-            label: 'News',
-          },
-          {
-            href: '#',
-            label: 'Departments',
-          },
-          {
-            href: '#',
-            label: 'Services',
-          },
-        ]}
-        languages={[
-          {
-            href: '#',
-            label: 'Gaeilge',
-          },
-        ]}
+        items={headerProps.items}
+        addDefaultMobileMenu
+        secondaryLinks={headerProps.secondaryLinks}
       />
       <CookieBanner {...CookieBannerProps} />
       <Container>

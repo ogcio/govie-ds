@@ -108,7 +108,7 @@ export const attachEventsToItemActionTriggers = () => {
 
       toggleIcons(target, fromFilteredItems, fromSearchTrigger);
 
-      if (searchTrigger.checked && target?.checked) {
+      if (searchTrigger?.checked && target?.checked) {
         searchTrigger.checked = false;
         searchTrigger.dispatchEvent(new Event('change', { bubbles: true }));
       }

@@ -7,6 +7,7 @@ import {
   ReactNode,
   useState,
 } from 'react';
+import { ButtonSize } from '../button/types.js';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -15,8 +16,11 @@ type DrawerChildren =
   | Array<ReactElement<typeof DrawerBody | typeof DrawerBody>>
   | ReactElement<typeof Fragment>;
 
+export type DrawerPosition = 'left' | 'right' | 'bottom';
+
 export type DrawerProps = ModalProps & {
-  position?: 'left' | 'right' | 'bottom';
+  position?: DrawerPosition;
+  closeButtonSize?: ButtonSize;
   children: DrawerChildren;
 };
 
@@ -48,6 +52,7 @@ export const Drawer = ({
   closeButtonLabel,
   position = 'right',
   className,
+  closeButtonSize,
 }: DrawerProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -56,7 +61,18 @@ export const Drawer = ({
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
     'data-testid': 'drawer-trigger-button-container',
-    onClick: handleOpen,
+    onClick: (event: React.MouseEvent) => {
+      const existingOnClick =
+        typeof (triggerButton as ReactElement<any>)?.props?.onClick ===
+        'function'
+          ? (triggerButton as ReactElement<any>)?.props?.onClick
+          : undefined;
+
+      if (existingOnClick) {
+        existingOnClick(event);
+      }
+      handleOpen();
+    },
   });
 
   return (
@@ -69,6 +85,7 @@ export const Drawer = ({
         className={className}
         isOpen={isOpen}
         onClose={handleClose}
+        closeButtonSize={closeButtonSize}
       />
     </>
   );

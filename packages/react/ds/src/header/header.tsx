@@ -1,81 +1,77 @@
 'use client';
-import { useEffect } from 'react';
-import GovieLogo from '../assets/logos/logo.js';
-import { Icon, IconId } from '../icon/icon.js';
+import { useEffect, useMemo } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
+import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
+import { cn } from '../cn.js';
+import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
-import HeaderMenu from './components/header-menu.js';
-import HeaderSearch from './components/header-search.js';
+import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
-import {
-  attachEventsToItemActionTriggers,
-  attachEventsToSearchTrigger,
-} from './helper.js';
-
-export type HeaderProps = {
-  title?: string;
-  logo?: {
-    image?: string;
-    href?: string;
-    external?: boolean;
-    alt?: string;
-  };
-  tools?: {
-    search?: {
-      action?: string;
-      // Temporary solution to include the usage of Server Actions, as the types of react allow only strings | undefined. The types/react package will eventually get allow this and a more permanent solution will be implemented
-      serverAction?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-      label?: string;
-      icon?: IconId;
-    };
-    menu?: {
-      label?: string; // optional, default hide
-      icon?: IconId; // optional, default icon-hamburger
-    };
-    items?: {
-      label?: string;
-      icon?: IconId;
-      href: string;
-      external?: boolean;
-      slot?: React.ReactNode;
-      keepOnMobile?: boolean; // optional, default false to not show on mobile.
-    }[];
-  };
-  languages?: {
-    href: string;
-    label: string;
-  }[];
-  navLinks?: {
-    href: string;
-    label: string;
-    external?: boolean;
-  }[];
-  fullWidth?: boolean;
-};
+import { attachEventsToItemActionTriggers } from './helper.js';
+import type {
+  HeaderItem,
+  HeaderLinkItemType,
+  HeaderProps,
+  HeaderSlotItemType,
+} from './types.js';
 
 function getLogo({ logo }: HeaderProps) {
-  return logo?.image ? (
-    <img
-      alt={logo.alt}
-      className="gi-object-contain gi-h-10 lg:gi-h-12"
-      src={logo.image}
-    />
-  ) : (
-    <>
-      <GovieLogo />
-    </>
+  const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
+  const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
+  const svgDesktopString = btoa(
+    renderToStaticMarkup(<GovieLogoHarpWithText />),
+  );
+  const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
+
+  return (
+    <picture>
+      <source
+        srcSet={logo?.imageLarge || svgDataUriDesktop}
+        media="(min-width: 640px)"
+      />
+      <img
+        className={'gi-h-10 sm:gi-h-14'}
+        src={logo?.imageSmall || svgDataUriMobile}
+        alt={logo?.alt || 'Gov.ie logo'}
+      />
+    </picture>
   );
 }
 
+const buildDefaultMobileMenu = (
+  mobileMenuLabel: string,
+  items: HeaderItem[],
+  secondaryLinks: {
+    href: string;
+    label: string;
+  }[],
+) => {
+  const mobileMenu: HeaderItem = {
+    label: mobileMenuLabel,
+    icon: 'menu',
+    itemType: 'slot',
+    details: {
+      component: (
+        <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />
+      ),
+      slotAppearance: 'drawer',
+    },
+    showItemMode: 'mobile-only',
+  };
+
+  return [mobileMenu, ...items];
+};
+
 export function Header({
   title,
-  tools,
+  items,
   logo,
-  languages,
-  navLinks,
+  secondaryLinks,
   fullWidth = false,
+  addDefaultMobileMenu,
+  mobileMenuLabel,
 }: HeaderProps) {
-  const hasDivider = tools?.items || tools?.search;
-
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
     : 'gi-layout-container';
@@ -85,33 +81,72 @@ export function Header({
   const menuContainerClassNames = 'gi-header-menu';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
-  const navLinkContainerClassNames = 'gi-header-nav';
-  const menuDividerClassNames = 'gi-header-separator';
-  const overlayClassNames = 'gi-header-overlay';
-
-  const showMobileMenu =
-    navLinks ||
-    tools?.items?.some((item) => item.slot && item.keepOnMobile) ||
-    !!tools?.search ||
-    languages?.length;
+  const menuDividerClassNames = 'gi-header-divider';
 
   useEffect(() => {
     attachEventsToItemActionTriggers();
   }, []);
 
-  useEffect(() => {
-    if (tools?.search) {
-      attachEventsToSearchTrigger();
+  const ItemTypeComponent = ({
+    item: { itemType, details, icon, label },
+    index,
+  }: {
+    item: HeaderItem;
+    index: number;
+  }) => {
+    switch (itemType) {
+      case 'slot': {
+        const slot = details as HeaderSlotItemType;
+        return (
+          <SlotItemAction
+            index={index}
+            item={{
+              slot,
+              icon,
+              label,
+            }}
+          />
+        );
+      }
+      case 'link': {
+        return (
+          <Anchor
+            className={toolItemClassNames}
+            href={(details as HeaderLinkItemType).href}
+            aria-label={label || `link ${index}`}
+            data-testid={`item-link-${index}`}
+            external={(details as HeaderLinkItemType).external}
+          >
+            {label && <span className="label">{label}</span>}
+            {icon && <Icon icon={icon} />}
+          </Anchor>
+        );
+      }
+      default: {
+        // Divider
+        return <div className={menuDividerClassNames}></div>;
+      }
     }
-  }, [tools?.search]);
+  };
+
+  const finalItems = useMemo(() => {
+    const newItems = items || [];
+    return addDefaultMobileMenu
+      ? buildDefaultMobileMenu(
+          mobileMenuLabel || '',
+          newItems,
+          secondaryLinks || [],
+        )
+      : newItems;
+  }, [addDefaultMobileMenu]);
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
-      {languages && (
+      {secondaryLinks && (
         <div className={languageBarClassNames}>
           <div className={containerClassName}>
             <ul>
-              {languages.map((link, index) => (
+              {secondaryLinks.map((link, index) => (
                 <li key={`language-${link.label}-${index}`}>
                   {link.href ? (
                     <a
@@ -150,121 +185,46 @@ export function Header({
 
             <div className={appTitleClassNames}>{title}</div>
           </div>
-          <div>
-            <ul className={navLinkContainerClassNames}>
-              {navLinks?.map((link, index) => (
-                <li key={`navLink-${link.label}-${index}`}>
-                  <Anchor
-                    data-testid={`nav-link-desktop-${index}`}
-                    href={link.href}
-                    aria-label={link.label}
-                    external={link.external}
-                  >
-                    {link.label}
-                  </Anchor>
-                </li>
-              ))}
-            </ul>
+          <div className="gi-gap-2 md:gi-gap-4">
+            {finalItems?.map((item, index) => {
+              const { label, showItemMode = 'desktop-only' } = item;
 
-            {navLinks && hasDivider && (
-              <div className={menuDividerClassNames}></div>
-            )}
-            <div className="gi-flex gi-gap-2">
-              {tools?.search && (
-                <div className="gi-hidden sm:gi-flex">
-                  <label
-                    htmlFor="SearchTrigger"
-                    className={`${toolItemClassNames}`}
-                  >
-                    <input
-                      className="gi-header-mobile-menu-trigger"
-                      id="SearchTrigger"
-                      data-testid="SearchTrigger"
-                      type="checkbox"
-                    />
-                    {tools.search.label && (
-                      <span className="label">{tools.search.label}</span>
-                    )}
-                    <Icon
-                      className="search-icon"
-                      icon={tools.search.icon || 'search'}
-                    />
-                    <Icon className="gi-hidden close-icon" icon="close" />
-                  </label>
-                </div>
-              )}
-
-              {showMobileMenu && (
-                <label
-                  htmlFor="MobileMenuTrigger"
-                  className={`${toolItemClassNames} lg:gi-hidden`}
+              return (
+                <div
+                  aria-label={label}
+                  data-testid={`header-item-${index}`}
+                  className={cn({
+                    'gi-block': showItemMode === 'always',
+                    'gi-block lg:gi-hidden': showItemMode === 'mobile-only',
+                    'gi-hidden lg:gi-block': showItemMode === 'desktop-only',
+                  })}
+                  key={`item-${label}-${index}`}
                 >
-                  <input
-                    id="MobileMenuTrigger"
-                    className="gi-header-mobile-menu-trigger"
-                    type="checkbox"
-                    data-testid="header-mobile-menu"
-                  />
-                  {tools?.menu?.label && (
-                    <span className="label">{tools.menu.label}</span>
-                  )}
-                  <Icon icon={tools?.menu?.icon || 'menu'} />
-                </label>
-              )}
-              {tools?.items &&
-                tools?.items.map(
-                  ({ href, icon, label, slot, external }, index) => {
-                    return (
-                      <div
-                        className="gi-hidden lg:gi-flex"
-                        key={`toolItem-${label}-${index}`}
-                      >
-                        {slot ? (
-                          <SlotItemAction
-                            index={index}
-                            item={{ slot, icon, label }}
-                          />
-                        ) : (
-                          <Anchor
-                            className={toolItemClassNames}
-                            href={href}
-                            aria-label={label || `link ${index}`}
-                            data-testid={`tool-link-desktop-${index}`}
-                            external={external}
-                          >
-                            {label && <span className="label">{label}</span>}
-                            {icon && <Icon icon={icon} />}
-                          </Anchor>
-                        )}
-                      </div>
-                    );
-                  },
-                )}
-            </div>
+                  <ItemTypeComponent item={item} index={index} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-      {tools?.items
-        ?.filter((item) => item.slot)
-        ?.map(({ slot }, index) => (
-          <SlotContainer
-            key={`slot-container-${index}`}
-            slot={slot}
-            index={index}
-          />
-        ))}
-      {tools?.search && (
-        <div id="SearchContainer" className="gi-header-tool-container">
-          <HeaderSearch {...tools.search} />
-        </div>
-      )}
-      <HeaderMenu
-        tools={tools}
-        searchProps={tools?.search}
-        languages={languages}
-        navLinks={navLinks}
-      />
-      <div id="HeaderOverlayContainer" className={overlayClassNames}></div>
+      {finalItems?.map(({ itemType, details }, index) => {
+        if (itemType === 'slot') {
+          const slot = details as HeaderSlotItemType;
+          const renderOnlyForDropdown =
+            slot.component && slot.slotAppearance !== 'drawer';
+
+          if (renderOnlyForDropdown) {
+            return (
+              <SlotContainer
+                key={`slot-container-${index}`}
+                slot={(details as HeaderSlotItemType)?.component}
+                index={index}
+              />
+            );
+          }
+          return null;
+        }
+      })}
     </header>
   );
 }

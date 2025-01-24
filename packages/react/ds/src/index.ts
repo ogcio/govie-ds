@@ -68,3 +68,11 @@ export {
   DrawerWrapper,
 } from './drawer/drawer.js';
 export type { DrawerProps, DrawerWrapperProps } from './drawer/drawer.js';
+export * from './header/components/header-search.js';
+export { MobileHeaderMenuItems } from './header/components/header-menu.js';
+export type {
+  HeaderItem,
+  HeaderLinkItemType,
+  HeaderProps,
+  HeaderSlotItemType,
+} from './header/types.js';

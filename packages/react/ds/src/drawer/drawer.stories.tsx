@@ -31,6 +31,7 @@ export const Default: Story = {
     layout: 'fullscreen',
   },
   args: {
+    closeButtonSize: 'large',
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
