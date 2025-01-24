@@ -30,6 +30,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     permissions:
       id-token: write
@@ -88,6 +89,8 @@ jobs:
 
   determine-affected:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     needs: build
     outputs:
       html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
@@ -117,7 +120,7 @@ jobs:
       - name: Set environment output if HTML package is affected
         id: check-html-affected
         run: |
-          if grep -q "@govie-frontend/storybook" affected.txt; then
+          if grep -q "@govie-frontend/ds" affected.txt; then
             echo "html_affected=true" >> "$GITHUB_OUTPUT"
           else
             echo "html_affected=false" >> $GITHUB_OUTPUT
@@ -125,7 +128,7 @@ jobs:
       - name: Set environment output if React package is affected
         id: check-react-affected
         run: |
-          if grep -q "@govie-react/storybook" affected.txt; then
+          if grep -q "@govie-react/ds" affected.txt; then
             echo "react_affected=true" >> $GITHUB_OUTPUT
           else
             echo "react_affected=false" >> $GITHUB_OUTPUT
@@ -133,6 +136,8 @@ jobs:
 
   chromatic-html:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     environment: dev
     needs: determine-affected
     if: ${{ needs.determine-affected.outputs.html_affected == 'true' }}
@@ -162,11 +167,13 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
-          storybookBuildDir: packages/html/storybook/storybook-static
+          storybookBuildDir: packages/html/ds/storybook-static
           autoAcceptChanges: "main"
 
   chromatic-react:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     environment: dev
     needs: determine-affected
     if: ${{ needs.determine-affected.outputs.react_affected == 'true' }}
@@ -196,5 +203,5 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
-          storybookBuildDir: packages/react/storybook/storybook-static
+          storybookBuildDir: packages/react/ds/storybook-static
           autoAcceptChanges: "main"

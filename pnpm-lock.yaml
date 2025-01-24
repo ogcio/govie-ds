@@ -606,22 +606,6 @@ importers:
         specifier: ^3.23.8
         version: 3.24.1
 
-  packages/html/macro:
-    dependencies:
-      nunjucks:
-        specifier: ^3.2.4
-        version: 3.2.4(chokidar@3.6.0)
-    devDependencies:
-      '@govie-ds/eslint-config':
-        specifier: workspace:*
-        version: link:../../build/eslint-config
-      '@govie-ds/prettier-config':
-        specifier: workspace:*
-        version: link:../../build/prettier-config
-      '@types/nunjucks':
-        specifier: ^3.2.6
-        version: 3.2.6
-
   packages/react/ds:
     dependencies:
       '@govie-ds/tokens':
