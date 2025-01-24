@@ -76,6 +76,8 @@ export const Default: Story = {
   args: {
     children: 'Button',
     variant: 'primary',
+    appearance: 'default',
+    size: 'medium',
     ariaLabel: 'Accessible button label',
     ariaDescribedBy: undefined,
     ariaPressed: undefined,
