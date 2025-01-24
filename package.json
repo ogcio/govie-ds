@@ -15,7 +15,7 @@
     "ds:build:prod": "nx run @govie-ds/docs:build:prod",
     "ds:deploy": "nx run @govie-ds/docs:docker --parallel=1 --configuration=$CONFIGURATION",
     "ds:storybook": "nx run @govie-ds/docs:storybook",
-    "build": "nx run-many --target=build --all",
+    "build": "nx run-many --target=build --all --exclude=@govie-ds/examples-wagtail,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
     "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
     "test": "nx run-many --target=test --all --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",

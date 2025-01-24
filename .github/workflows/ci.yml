@@ -161,7 +161,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Storybook build
-        run: pnpm html:storybook:build
+        run: |
+          pnpm build:libs
+          pnpm html:storybook:build
 
       - name: Publish Global HTML Library to Chromatic
         uses: chromaui/action@latest
@@ -197,7 +199,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Storybook build
-        run: pnpm react:storybook:build
+        run: |
+          pnpm build:libs
+          pnpm react:storybook:build
 
       - name: Publish React Library to Chromatic
         uses: chromaui/action@latest
