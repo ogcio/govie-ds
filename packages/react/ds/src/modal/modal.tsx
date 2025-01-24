@@ -10,7 +10,7 @@ import {
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import type {
   ModalCloseButtonProps,
@@ -18,19 +18,29 @@ import type {
   ModalWrapperProps,
 } from './types.js';
 
-const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) =>
-  label ? (
+const ModalCloseButton = ({
+  label,
+  size = 'small',
+  ...props
+}: ModalCloseButtonProps) => {
+  let iconSize: IconSize = 'sm';
+
+  if (size === 'large' || size === 'medium') {
+    iconSize = 'md';
+  }
+
+  return label ? (
     <Button
       onClick={props.onClick}
       variant="flat"
-      size="small"
+      size={size}
       appearance="dark"
       className="gi-modal-icon"
       {...props}
     >
       <>
         {label}
-        <Icon icon="close" size="sm" />
+        <Icon icon="close" size={iconSize} />
       </>
     </Button>
   ) : (
@@ -41,11 +51,12 @@ const ModalCloseButton = ({ label, ...props }: ModalCloseButtonProps) =>
       }}
       onClick={props.onClick}
       variant="flat"
-      size="small"
+      size={size}
       appearance="dark"
       {...props}
     />
   );
+};
 
 const isModalTitle = (child: any): boolean => {
   if (!isValidElement(child)) {
@@ -63,6 +74,7 @@ export const ModalWrapper = ({
   closeButtonLabel,
   className,
   children,
+  closeButtonSize,
 }: ModalWrapperProps) => {
   const childrenArray = Children.toArray(children);
 
@@ -99,7 +111,11 @@ export const ModalWrapper = ({
       >
         <div>
           {modalTitle}
-          <ModalCloseButton onClick={onClose} label={closeButtonLabel} />
+          <ModalCloseButton
+            onClick={onClose}
+            label={closeButtonLabel}
+            size={closeButtonSize}
+          />
         </div>
         <div>{otherChildren}</div>
       </div>

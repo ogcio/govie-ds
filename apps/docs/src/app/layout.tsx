@@ -1,4 +1,4 @@
-import { Footer, Header } from '@govie-ds/react';
+import { Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -29,32 +29,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerProps = {
+  const headerProps: HeaderProps = {
     fullWidth: true,
     title: 'Design System',
     logo: {
       href: getLink('/'),
     },
-    navLinks: [
+    items: [
       {
-        href: getLink('/get-started'),
         label: 'Get Started',
+        itemType: 'link',
+        details: {
+          href: getLink('/get-started'),
+        },
       },
       {
-        href: getLink('/foundations'),
         label: 'Foundations',
+        itemType: 'link',
+        details: {
+          href: getLink('/foundations'),
+        },
       },
       {
-        href: getLink('/components'),
         label: 'Components',
+        itemType: 'link',
+        details: {
+          href: getLink('/components'),
+        },
       },
       {
-        href: getLink('/patterns'),
         label: 'Patterns',
+        itemType: 'link',
+        details: {
+          href: getLink('/patterns'),
+        },
       },
       {
-        href: getLink('/resources'),
         label: 'Resources',
+        itemType: 'link',
+        details: {
+          href: getLink('/resources'),
+        },
       },
     ],
   };
@@ -94,7 +109,7 @@ export default function RootLayout({
         <a href="#main" className="sr-only">
           Skip to main content
         </a>
-        <Header {...headerProps} />
+        <Header {...headerProps} addDefaultMobileMenu />
         {children}
         <Footer links={footerLinks} />
       </body>
