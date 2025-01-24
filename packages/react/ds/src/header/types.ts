@@ -34,6 +34,7 @@ export type HeaderProps = {
     alt?: string;
   };
   addDefaultMobileMenu?: boolean;
+  mobileMenuLabel?: string;
   items?: HeaderItem[];
   secondaryLinks?: {
     href: string;

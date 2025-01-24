@@ -34,7 +34,6 @@ const DrawerTrigger = ({
     icon,
     label,
   },
-  ...props
 }: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +43,6 @@ const DrawerTrigger = ({
         htmlFor={`ItemActionDrawerTrigger-${index}`}
         className="gi-header-tool-item"
         onClick={() => setIsOpen(true)}
-        {...props}
       >
         <input
           data-testid={`ItemActionDrawerTrigger-${index}`}

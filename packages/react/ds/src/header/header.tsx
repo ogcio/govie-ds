@@ -29,6 +29,7 @@ function getLogo({ logo }: HeaderProps) {
 }
 
 const buildDefaultMobileMenu = (
+  mobileMenuLabel: string,
   items: HeaderItem[],
   secondaryLinks: {
     href: string;
@@ -36,7 +37,7 @@ const buildDefaultMobileMenu = (
   }[],
 ) => {
   const mobileMenu: HeaderItem = {
-    label: 'Menu',
+    label: mobileMenuLabel,
     icon: 'menu',
     itemType: 'slot',
     details: {
@@ -58,6 +59,7 @@ export function Header({
   secondaryLinks,
   fullWidth = false,
   addDefaultMobileMenu,
+  mobileMenuLabel,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -119,13 +121,13 @@ export function Header({
   const finalItems = useMemo(() => {
     const newItems = items || [];
     return addDefaultMobileMenu
-      ? buildDefaultMobileMenu(newItems, secondaryLinks || [])
+      ? buildDefaultMobileMenu(
+          mobileMenuLabel || '',
+          newItems,
+          secondaryLinks || [],
+        )
       : newItems;
   }, [addDefaultMobileMenu]);
-
-  if (finalItems.length === 0) {
-    return null;
-  }
 
   return (
     <header id="GovieHeader" className={headerClassNames}>
@@ -173,7 +175,7 @@ export function Header({
             <div className={appTitleClassNames}>{title}</div>
           </div>
           <div className="gi-gap-2 md:gi-gap-4">
-            {finalItems.map((item, index) => {
+            {finalItems?.map((item, index) => {
               const { label, showItemMode = 'desktop-only' } = item;
 
               return (

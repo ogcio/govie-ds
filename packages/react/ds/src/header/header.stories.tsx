@@ -187,6 +187,14 @@ export const Default: Story = {
         category: 'Header',
       },
     },
+    mobileMenuLabel: {
+      control: 'text',
+      description:
+        'Change the mobile menu label when "addDefaultMobileMenu" is set',
+      table: {
+        category: 'Header',
+      },
+    },
   },
   args: {
     logo: {
@@ -194,6 +202,7 @@ export const Default: Story = {
     },
     items: headerProps.items,
     addDefaultMobileMenu: true,
+    mobileMenuLabel: 'Menu',
   },
 };
 
@@ -607,7 +616,6 @@ export const WithExtraButtonsAndLabels: Story = {
       href: '/path',
     },
     items: withExtraButtonsAndLabelsItems,
-    addDefaultMobileMenu: true,
   },
 };
 

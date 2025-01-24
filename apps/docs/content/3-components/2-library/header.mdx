@@ -25,7 +25,8 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <ComponentContainer fullWidth>
   <Header
     title={'Application title'}
-    items={[{ label: 'Departments', itemType: 'link', details: { href: '#' } }, { label: 'Services', itemType: 'link', details: { href: '#' } }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', details: { component: <HeaderSearch />, slotAppearance: 'dropdown' } }, { label: 'Home', icon: 'home', itemType: 'link', details: { href: '/item1' } }, { label: 'Menu', icon: 'menu', itemType: 'slot', details: { component: null, slotAppearance: 'drawer' }, showItemMode: 'mobile-only' }]}
+    addDefaultMobileMenu
+    items={[{ label: 'Departments', itemType: 'link', details: { href: '#' } }, { label: 'Services', itemType: 'link', details: { href: '#' } }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', details: { component: <HeaderSearch />, slotAppearance: 'dropdown' } }, { label: 'Home', icon: 'home', itemType: 'link', details: { href: '/item1' } }]}
     secondaryLinks={[{ href: '', label: 'Gaeilge' }]}
 />
 
@@ -257,28 +258,76 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
   <TabPanel value="tab13">
     ```html
-    import { Header } from '@govie-ds/react';
+    import { Header, HeaderProps, HeaderSearch } from '@govie-ds/react';
 
-    <Header
-        title={'Application title'}
-        languages={[{ href: '/', label: 'Gaeilge' }]}
-        navLinks={[{ href: '/', label: 'News' },{ href: '/', label: 'Departments' },{ href: '/', label: 'Services' }]}
-        tools={
-            search: {
-                label: 'Search',
-                action: '/search-page',
+    const headerProps: HeaderProps = {
+        items: [
+            {
+                label: 'Departments',
+                itemType: 'link',
+                details: {
+                    href: '#',
+                },
+                showItemMode: 'desktop-only',
             },
-            items: [
-                {
-                href: '/item1',
+            {
+                label: 'Services',
+                itemType: 'link',
+                details: {
+                    href: '#',
+                },
+                showItemMode: 'desktop-only',
+            },
+            {
+                itemType: 'divider',
+                showItemMode: 'desktop-only',
+            },
+            {
                 label: 'Home',
                 icon: 'home',
+                itemType: 'link',
+                details: {
+                    href: '/item1',
                 },
-            ],
-            menu: {
-                label: 'Menu'
-            }
-        }
+                showItemMode: 'desktop-only',
+            },
+            {
+                label: 'Faq',
+                icon: 'info',
+                itemType: 'slot',
+                details: {
+                    component: <div>Example drawer</div>,
+                    slotAppearance: 'drawer',
+                },
+                showItemMode: 'desktop-only',
+            },
+            {
+                label: 'Search',
+                icon: 'search',
+                itemType: 'slot',
+                details: {
+                    component: <HeaderSearch />,
+                    slotAppearance: 'dropdown',
+                },
+                showItemMode: 'desktop-only',
+            },
+            {
+                label: 'Languages',
+                icon: 'mic',
+                itemType: 'slot',
+                details: {
+                    component: <div>Example slot</div>
+                    slotAppearance: 'dropdown',
+                },
+                showItemMode: 'desktop-only',
+            },
+        ],
+    };
+
+    <Header
+        items={headerProps.items}
+        addDefaultMobileMenu
+        secondaryLinks={[{href: '#', label: 'English'}, { href: '#', label: 'Gaeilge'}]}
     />
     ```
 
@@ -288,7 +337,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 ### Header with only title
 
 <ComponentContainer fullWidth>
-  <Header title={'Application title'} />
+  <Header title="Application title" />
 </ComponentContainer>
 
 <Tabs id="tab2">
@@ -333,10 +382,24 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 <ComponentContainer fullWidth>
   <Header
-    navLinks={[
-      { href: '', label: 'News' },
-      { href: '', label: 'Departments' },
-      { href: '', label: 'Services' },
+    addDefaultMobileMenu
+    items={[
+      {
+        label: 'Departments',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        details: {
+          href: '#',
+        },
+        showItemMode: 'desktop-only',
+      },
     ]}
   />
 </ComponentContainer>
@@ -407,11 +470,27 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```html
     import { Header } from '@govie-ds/react';
 
-    <Header navLinks={[
-                { href: '/', label: 'News' },
-                { href: '/', label: 'Departments' },
-                { href: '/', label: 'Services' }
-            ]}/>
+    <Header items={
+            [
+                {
+                    label: 'Departments',
+                    itemType: 'link',
+                    details: {
+                        href: '#',
+                    },
+                    showItemMode: 'desktop-only',
+                },
+                {
+                    label: 'Services',
+                    itemType: 'link',
+                    details: {
+                        href: '#',
+                    },
+                    showItemMode: 'desktop-only',
+                }
+            ]
+        }
+    />
     ```
 
   </TabPanel>
@@ -420,7 +499,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 ### Header with language switch
 
 <ComponentContainer fullWidth>
-  <Header languages={[{ href: '', label: 'Gaeilge' }]} />
+  <Header secondaryLinks={[{ href: '', label: 'Gaeilge' }]} />
 </ComponentContainer>
 
 <Tabs id="tab4">
@@ -474,33 +553,39 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```html
     import { Header } from '@govie-ds/react';
 
-    <Header languages={[{ href: '/', label: 'Gaeilge' }]}/>
+    <Header secondaryLinks={[
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ]}/>
     ```
 
   </TabPanel>
 </Tabs>
 
-### Header with tools
+### Header with slots
 
 <ComponentContainer fullWidth>
   <Header
-    tools={{
-      search: {
-        label: 'Search',
-        action: '/search-page',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-        {
+    items={[
+      {
+        icon: 'home',
+        itemType: 'link',
+        details: {
           href: '#',
-          label: 'Faq',
-          icon: 'info',
-          keepOnMobile: true,
-          slot: (
+        },
+      },
+      {
+        label: 'Faq',
+        icon: 'info',
+        itemType: 'slot',
+        details: {
+          component: (
             <List
               type={'bullet'}
               items={[
@@ -522,12 +607,11 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
               ]}
             />
           ),
+          slotAppearance: 'drawer',
         },
-      ],
-      menu: {
-        label: 'Menu',
       },
-    }}
+    ]}
+    addDefaultMobileMenu
   />
 </ComponentContainer>
 
@@ -730,52 +814,56 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
   <TabPanel value="tab53">
     ```react
-    import { Header } from '@govie-ds/react';
+    import { Header, HeaderSearch } from '@govie-ds/react';
 
-    <Header tools={{
-        search: {
-            label: 'Search'
-            action: '/search-page',
-        },
-        items: [
-            {
-                href: '/item1',
-                label: 'Home',
+    <Header
+        addDefaultMobileMenu
+        items={[
+              {
+                label: 'Search',
+                icon: 'search',
+                itemType: 'slot',
+                details: {
+                    component: <HeaderSearch />,
+                    slotAppearance: 'dropdown',
+                },
+            },
+           {
                 icon: 'home',
+                itemType: 'link',
+                details: {
+                    href: '#',
+                },
             },
             {
-                href: '#',
                 label: 'Faq',
                 icon: 'info',
-                keepOnMobile: true,
-                slot: (
+                itemType: 'slot',
+                details: {
+                component: (
                     <List
-                    type={'bullet'}
-                    items={[
-                        <Link
-                        size="sm"
-                        href="#"
-                        children="Citizens Information - Services and Rights"
-                        />,
-                        <Link
-                        size="sm"
-                        href="#"
-                        children="Revenue - Taxes and Payments"
-                        />,
-                        <Link
-                        size="sm"
-                        href="#"
-                        children="Department of Social Protection"
-                        />,
-                    ]}
+                        type={'bullet'}
+                        items={[
+                            <Link
+                                size="sm"
+                                href="#"
+                                children="Citizens Information - Services and Rights"
+                            />,
+                            <Link
+                                size="sm"
+                                href="#"
+                                children="Revenue - Taxes and Payments"
+                            />,
+                            <Link
+                                size="sm"
+                                href="#"
+                                children="Department of Social Protection"
+                            />,
+                        ]}
                     />
-                ),
-        },
-        ],
-        menu: {
-            label: 'Menu'
-        }
-    }} />
+                )
+            }
+        ]} />
     ```
 
   </TabPanel>
