@@ -20,8 +20,7 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  staticDirs: [{ from: '../macros/nunjucks/dev/govie', to: '/static/macros' }],
-  // staticDirs: ['../macros/nunjucks/dev/govie'],
+  staticDirs: [{ from: '../macros/nunjucks/dev/govie', to: '/macros' }],
 
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite');
