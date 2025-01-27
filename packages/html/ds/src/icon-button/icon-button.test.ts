@@ -17,7 +17,7 @@ describe('icon-button', () => {
     (variant) =>
       renderIconButton({
         icon: {
-          icon: 'thumb_up',
+          icon: IconId.ThumbUp,
         },
         variant,
       }),
