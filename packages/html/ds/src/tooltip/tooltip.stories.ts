@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './tooltip.html?raw';
 import { TooltipProps } from './tooltip.schema';
 
-const path = import.meta.url.split('/tooltip')[0];
-
-const macro = { name: 'govieTooltip', html, path };
+const macro = { name: 'govieTooltip', html };
 const Tooltip = renderComponent<TooltipProps>(macro);
 
 const meta = {
