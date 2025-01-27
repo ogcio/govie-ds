@@ -30,7 +30,7 @@
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "postbuild": "zip -r govie-frontend.zip dist macros",
     "storybook:dev": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "STORYBOOK_ENV=prod storybook build",
     "storybook:test": "vitest --project=storybook --reporter=basic --disable-console-intercept",
     "storybook:coverage": "vitest --project=storybook --coverage"
   },
