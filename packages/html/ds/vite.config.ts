@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
-    processMacrosPlugin(),
+    // processMacrosPlugin(),
   ],
   build: {
     copyPublicDir: false,

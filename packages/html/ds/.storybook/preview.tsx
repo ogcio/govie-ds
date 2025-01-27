@@ -46,7 +46,7 @@ const decorators = [
     const { args, parameters } = context;
     const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
     if (isProd && parameters.macro) {
-      parameters.macro.path = './';
+      parameters.macro.path = './macros';
     }
     const renderedMacro = renderMacro(parameters.macro)(args);
 
