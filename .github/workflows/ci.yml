@@ -47,20 +47,22 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT }}
 
-      - name: Use Node.js
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Configure git
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-      - name: Install dependencies
-        run: |
-          corepack enable          
-          pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Install Playwright
         run: npx playwright install --with-deps
@@ -101,15 +103,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: |
-          corepack enable
-          pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install
 
       - name: Determine affected projects
         id: affected
@@ -147,15 +151,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: |
-          corepack enable
-          pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install
 
       - name: Storybook build
         run: |
@@ -182,15 +188,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: |
-          corepack enable
-          pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install
 
       - name: Storybook build
         run: |

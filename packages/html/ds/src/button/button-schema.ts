@@ -23,8 +23,6 @@ export enum IconPosition {
   End = 'end',
 }
 
-// export type ButtonType = 'submit' | 'reset' | 'button';
-
 export enum ButtonType {
   Submit = 'submit',
   Reset = 'reset',
