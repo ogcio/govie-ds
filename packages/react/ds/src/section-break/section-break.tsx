@@ -20,5 +20,12 @@ export function SectionBreak({ size = 'sm' }: SectionBreakProps) {
       break;
     }
   }
-  return <hr data-testid="govie-section-break" className={marginClass} />;
+  return (
+    <hr
+      data-testid="govie-section-break"
+      className={marginClass}
+      role="separator"
+      aria-label="Section break"
+    />
+  );
 }

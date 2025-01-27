@@ -37,19 +37,24 @@ type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
   children: React.ReactNode;
   id?: string;
+  ariaLabel?: string;
 };
 
-function Heading({ as, size, children, caption, id }: HeadingProps) {
+function Heading({ as, size, children, caption, id, ariaLabel }: HeadingProps) {
   const Slot = as || 'h1';
   const { text, base } = headingVariants({ as, size });
   return (
     <>
       {caption && (
-        <span className={cn(text())} data-testid="govie-heading-caption">
+        <span
+          className={cn(text())}
+          data-testid="govie-heading-caption"
+          aria-hidden="true"
+        >
           {caption}
         </span>
       )}
-      <Slot className={cn(base())} id={id}>
+      <Slot className={cn(base())} id={id} aria-label={ariaLabel}>
         {children}
       </Slot>
     </>

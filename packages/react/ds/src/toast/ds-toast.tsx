@@ -90,11 +90,20 @@ function Toast({
     return null;
   }
   return (
-    <div className={baseVariant()} role="alert">
+    <div
+      className={baseVariant()}
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      aria-labelledby="toast-title"
+      aria-describedby="toast-description"
+    >
       <Icon icon={icon({ variant })} />
       <div className={container()}>
-        <p className={heading()}>{title}</p>
-        <Paragraph>{description}</Paragraph>
+        <p id="toast-title" className={heading()}>
+          {title}
+        </p>
+        <Paragraph id="toast-description">{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
             {cloneElement(action, { noColor: true, size: 'md' })}
@@ -112,6 +121,7 @@ function Toast({
           appearance="dark"
           variant="flat"
           icon={{ icon: 'close' }}
+          aria-label="Close toast"
         />
       )}
     </div>

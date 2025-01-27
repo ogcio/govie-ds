@@ -24,7 +24,11 @@ const tagClass = {
 };
 
 export const Tag = ({ text, type = TagType.default }: TagProps) => {
-  return <strong className={`gi-tag ${tagClass[type]}`}>{text}</strong>;
+  return (
+    <strong className={`gi-tag ${tagClass[type]}`} aria-label={text}>
+      {text}
+    </strong>
+  );
 };
 
 // Set the displayName for debugging purposes

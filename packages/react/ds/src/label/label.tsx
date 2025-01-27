@@ -10,16 +10,21 @@ export enum LabelSize {
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   text: string;
   size?: LabelSize;
+  ariaLabel?: string;
 };
 
 // Use React.forwardRef to support refs properly
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ text, size = LabelSize.md, htmlFor, className, ...props }, ref) => {
+  (
+    { text, size = LabelSize.md, htmlFor, className, ariaLabel, ...props },
+    ref,
+  ) => {
     return (
       <label
         className={`gi-text-${size} gi-label ${className || ''}`}
         ref={ref}
         htmlFor={htmlFor}
+        aria-label={ariaLabel || text}
         id={htmlFor ? `${htmlFor}-label` : undefined}
         {...props}
       >

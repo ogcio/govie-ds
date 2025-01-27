@@ -29,9 +29,13 @@ export const RadiosGroup = ({
   return (
     <div className="gi-radio-group-container" data-testid="govie-radios">
       {errorMessage && <div className="gi-radio-group-error"></div>}
-      <fieldset>
+      <fieldset aria-labelledby={`${groupId}-legend`}>
         {title && (
-          <legend className="gi-radio-group-legend">
+          <legend
+            id={`${groupId}-legend`}
+            aria-hidden={title.asHeading ? 'true' : 'false'}
+            className="gi-radio-group-legend"
+          >
             {title.asHeading ? (
               <Heading size={title.asHeading.size} as={title.asHeading.as}>
                 {title.value}
@@ -46,9 +50,14 @@ export const RadiosGroup = ({
             )}
           </legend>
         )}
-        <div className="gi-radio-group-options-container">
+        <div
+          className="gi-radio-group-options-container"
+          aria-describedby={errorMessage ? 'error-message' : undefined}
+        >
           {errorMessage && <ErrorText text={errorMessage} />}
           <div
+            role="radiogroup"
+            aria-labelledby={`${groupId}-legend`}
             className={`${inline ? 'gi-radio-group-options-inline' : 'gi-radio-group-options-stacked'}`}
           >
             {items.map((radio, index) => (

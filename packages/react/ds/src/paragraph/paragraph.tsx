@@ -15,6 +15,8 @@ export type ParagraphProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  ariaLabel?: string;
+  id?: string;
 };
 
 export function Paragraph({
@@ -25,6 +27,8 @@ export function Paragraph({
   children,
   style,
   className,
+  id,
+  ariaLabel,
 }: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
@@ -77,7 +81,9 @@ export function Paragraph({
   return (
     <As
       className={`${sizeClass} ${alignClass} ${whitespaceClass} ${className || ''}`}
+      aria-label={ariaLabel}
       style={style}
+      id={id}
     >
       {children}
     </As>

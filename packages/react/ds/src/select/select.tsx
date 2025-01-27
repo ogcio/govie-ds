@@ -41,7 +41,13 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       )}
       {hint?.text && <HintText text={hint.text} size={hint.size} />}
       {error?.text && <ErrorText text={error.text} size={error.size} />}
-      <SelectComposable id={id} aria-label={ariaLabel}>
+      <SelectComposable
+        id={id}
+        aria-label={ariaLabel}
+        role="listbox"
+        aria-labelledby={label?.text ? id : undefined}
+        aria-describedby={hint?.text ? `${id}-hint` : undefined}
+      >
         {options.map((option, index) => {
           const isGroupOption = 'groupName' in option;
           return isGroupOption ? (
