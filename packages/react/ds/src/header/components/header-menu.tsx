@@ -54,9 +54,18 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       id={`Accordion-item-${index}`}
       className="gi-accordion-item-container"
       data-open={isOpen.toString()}
+      role="region"
+      aria-labelledby={`Accordion-header-${index}`}
       onClick={() => setIsOpen(!isOpen)}
     >
-      <div aria-label={item.label} className="gi-header-accordion-item-toggle">
+      <div
+        aria-label={item.label}
+        id={`Accordion-header-${index}`}
+        role="button"
+        aria-expanded="false"
+        aria-controls={`Accordion-slot-${index}`}
+        className="gi-header-accordion-item-toggle"
+      >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>
           <Icon icon="chevron_right" className="gi-accordion-item-icon" />
@@ -64,6 +73,8 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       </div>
 
       <div
+        id={`Accordion-slot-${index}`}
+        role="region"
         className={cn('gi-accordion-item-slot', {
           'gi-hidden': !isOpen,
         })}
@@ -125,12 +136,14 @@ function HeaderMenu({ ...props }: MobileHeaderMenuProps) {
     <div
       id="HeaderMenuContainer"
       className="gi-header-menu-container lg:gi-hidden"
+      aria-label="Mobile Navigation Menu"
     >
       <div>
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
             className="gi-header-menu-mobile-trigger"
+            aria-label="Close Mobile Menu"
           >
             <span>Close</span>
             <Icon icon={'close'} />

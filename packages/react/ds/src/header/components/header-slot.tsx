@@ -21,6 +21,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
     data-index={index}
+    aria-label={`Slot Container ${index + 1}`}
     className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800"
   >
     {slot}
@@ -97,6 +98,7 @@ export const SlotItemAction = ({
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
+      aria-label={`Toggle item action for ${label || `item ${index + 1}`}`}
       className="gi-header-tool-item"
       data-label-index={index}
     >
@@ -105,12 +107,21 @@ export const SlotItemAction = ({
         className="gi-block gi-w-0 gi-absolute gi-h-0"
         id={`ItemActionTrigger-${index}`}
         data-index={index}
+        aria-expanded="false"
+        aria-controls={`SlotContainer-${index + 1}`}
         type="checkbox"
       />
       {label && <span className="label">{label}</span>}
-      {icon && <Icon icon={icon} id={`ItemIconActionTrigger-${index}`} />}
+      {icon && (
+        <Icon
+          icon={icon}
+          aria-hidden="true"
+          id={`ItemIconActionTrigger-${index}`}
+        />
+      )}
       <Icon
         className="gi-hidden close-icon"
+        aria-hidden="true"
         id={`ItemCloseTrigger-${index}`}
         icon="close"
       />
