@@ -169,13 +169,6 @@ jobs:
           storybookBuildDir: packages/html/ds/storybook-static
           autoAcceptChanges: "main"
 
-      - name: Copy storybook static
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: storybook-static
-          path: packages/html/ds/storybook-static
-
   chromatic-react:
     runs-on: ubuntu-latest
     timeout-minutes: 10
