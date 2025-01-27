@@ -1,0 +1,117 @@
+---
+title: Details
+description: Details HTML Component
+status: alpha
+libraries:
+  - platform: 'local'
+    status: '?path=/docs/typography-details--default'
+  - platform: 'global'
+    status: 'not-available'
+  - platform: 'react'
+    link: '?path=/docs/typography-details--default'
+    status: 'alpha'
+---
+
+# Details
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <Details
+    label="Help with Nationality"
+    name="nationality-help"
+    startsOpen={false}
+  >
+    We need to know your nationality so we can work out which elections you’re
+    entitled to vote in. If you cannot provide your nationality, you’ll have to
+    send copies of identity documents through the post.
+  </Details>
+</ComponentContainer>
+
+### Open by Default
+
+<ComponentContainer>
+  <Details label="Help with Residency" name="residency-help" startsOpen={true}>
+    Residency information is necessary to assign you to the correct electoral
+    district. Please ensure it is accurate and up to date.
+  </Details>
+</ComponentContainer>
+
+### Multiple Details with Same Name
+
+<ComponentContainer>
+  <Details label="Help with Nationality" name="group1" startsOpen={false}>
+    We need to know your nationality so we can work out which elections you’re
+    entitled to vote in. If you cannot provide your nationality, you’ll have to
+    send copies of identity documents through the post.
+  </Details>
+  <Details
+    label="More Information on Nationality"
+    name="group1"
+    startsOpen={false}
+  >
+    Your nationality helps us determine your eligibility for specific voting
+    rights. Without it, you may need to submit additional documentation.
+  </Details>
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab12">Macro</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+    ```html
+    <details data-testid="govie-details" class="gi-details" data-module="gi-details" open>
+      <summary class="gi-details-summary" data-testid="govie-details-summary">
+        <span class="gi-details-summary-text">Help with Nationality</span>
+      </summary>
+      <div class="gi-details-text">
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+      </div>
+    </details>
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">
+    ```html
+    {{ 
+      govieDetails({ 
+        "label": "Help with Nationality", 
+        "name": "nationality-help", 
+        "startsOpen": false, 
+        "content": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post." 
+      }) 
+    }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```jsx
+    import { Details } from '@govie-ds/react';
+    <Details label="Help with Nationality" startsOpen={true}>
+      We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+    </Details>
+    ```
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### Best Practices
+
+#### When to use this component
+
+The `Details` component is best used for displaying content that users can optionally reveal or hide, such as:
+
+- Additional information or explanations.
+- Technical details that are not immediately required but may help the user.
+
+#### When not to use this component
+
+Avoid using the `Details` component for critical information that must always be visible. If the content is crucial for the user to proceed, consider placing it directly on the page instead.
+
+## Status
+
+<ComponentStatusBlock componentId="details" />
