@@ -209,6 +209,7 @@ export const withConditionalInput: Story = {
           label: {
             content: 'Email address',
             for: 'input-id-email',
+            size: 'md',
           },
           type: InputTypeEnum.Email,
         },
@@ -221,6 +222,7 @@ export const withConditionalInput: Story = {
           label: {
             content: 'Phone number',
             for: 'input-id-phone',
+            size: 'md',
           },
           type: InputTypeEnum.Tel,
         },

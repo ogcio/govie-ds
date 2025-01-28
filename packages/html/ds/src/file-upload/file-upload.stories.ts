@@ -74,6 +74,7 @@ export const Default: Story = {
     label: {
       content: 'Upload File',
       for: 'file-upload-id',
+      size: 'md',
     },
     hint: {
       content: '',
@@ -91,6 +92,7 @@ export const WithLabelAndHint: Story = {
     label: {
       content: 'Upload File',
       for: 'file-upload-id',
+      size: 'md',
     },
     hint: {
       content: 'Hint: Please upload a file that is less than 5MB.',
@@ -105,6 +107,7 @@ export const WithLabelAndError: Story = {
     label: {
       content: 'Upload File',
       for: 'file-upload-id',
+      size: 'md',
     },
     error: {
       content: 'Error: File must be smaller than 5MB.',
@@ -119,6 +122,7 @@ export const WithPDFAndDocxOnly: Story = {
     label: {
       content: 'Upload File',
       for: 'file-upload-id',
+      size: 'md',
     },
     accept: '.pdf, .docx',
   },

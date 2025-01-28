@@ -87,7 +87,7 @@ export const textInputSchema = zod.object({
   error: errorTextSchema
     .describe('Set error boundaries for text-input')
     .optional(),
-  className: zod.string({ description: 'Add aditional classes' }).optional(),
+  className: zod.string({ description: 'Add additional classes' }).optional(),
   placeholder: zod
     .string({ description: 'The placeholder for the input element' })
     .optional(),

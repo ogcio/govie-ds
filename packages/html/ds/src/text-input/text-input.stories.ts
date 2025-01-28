@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { LabelSize } from '../label/label.schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './text-input.html?raw';
 import { InputTypeEnum, TextInputProps } from './text-input.schema';
@@ -135,6 +136,7 @@ export const Default: Story = {
     label: {
       content: 'Label',
       for: 'input-id',
+      size: LabelSize.md,
     },
     error: {
       content: '',
@@ -150,6 +152,7 @@ export const WithLabelAndHint: Story = {
     label: {
       content: 'Label',
       for: 'label-hint-input',
+      size: LabelSize.md,
     },
     hint: {
       content: 'Hint',
@@ -164,6 +167,7 @@ export const WithLabelAndError: Story = {
     label: {
       content: 'Label',
       for: 'label-hint-input',
+      size: LabelSize.md,
     },
     error: {
       content: 'Error: Please correct this issue.',
@@ -178,6 +182,7 @@ export const WithLabelHintAndError: Story = {
     label: {
       content: 'Label',
       for: 'error-input',
+      size: LabelSize.md,
     },
     hint: {
       content: 'Hint',
@@ -195,6 +200,7 @@ export const WithLabelAndPrefixSuffix: Story = {
     label: {
       content: 'Label',
       for: 'suffix-input',
+      size: LabelSize.md,
     },
     fullFluid: true,
     prefix: 'KG',
@@ -208,6 +214,7 @@ export const HalfFluid: Story = {
     label: {
       content: 'Label',
       for: 'half-width-input',
+      size: LabelSize.md,
     },
     halfFluid: true,
     id: 'half-fluid-input',
@@ -219,6 +226,7 @@ export const FullFluid: Story = {
     label: {
       content: 'Label',
       for: 'full-width-input',
+      size: LabelSize.md,
     },
     fullFluid: true,
     id: 'full-fluid-input',
@@ -230,6 +238,7 @@ export const CharacterWidth: Story = {
     label: {
       content: 'Label',
       for: 'character-width-input',
+      size: LabelSize.md,
     },
     characterWidth: 20,
     id: 'character-width-input',
@@ -241,6 +250,7 @@ export const DateInput: Story = {
     label: {
       content: 'Label',
       for: 'text-input-id',
+      size: LabelSize.md,
     },
     id: 'text-input-id',
     type: InputTypeEnum.Date,
@@ -252,6 +262,7 @@ export const DisabledInput: Story = {
     label: {
       content: 'Label',
       for: 'text-input-id',
+      size: LabelSize.md,
     },
     id: 'text-input-id',
     type: InputTypeEnum.Text,
@@ -259,53 +270,53 @@ export const DisabledInput: Story = {
   },
 };
 
-export const AllStates: Story = {
-  render: () => `
-  <div class="gi-gap-4">
-  <div class="gi-text-input-container">
-    <label class="gi-text-md gi-label gi-mb-2" for="default-input">Default</label>
-    <div class="gi-text-input-container-inner">
-      <input
-        id="default-input"
-        type="text"
-        data-testid="textbox"
-        class="gi-border-gray-950 gi-w-full gi-text-input"
-      />
-    </div>
-  </div>
+// export const AllStates: Story = {
+//   render: () => `
+//   <div class="gi-gap-4">
+//   <div class="gi-text-input-container">
+//     <label class="gi-text-md gi-label gi-mb-2" for="default-input">Default</label>
+//     <div class="gi-text-input-container-inner">
+//       <input
+//         id="default-input"
+//         type="text"
+//         data-testid="textbox"
+//         class="gi-border-gray-950 gi-w-full gi-text-input"
+//       />
+//     </div>
+//   </div>
 
-  <div class="gi-text-input-container">
-    <label class="gi-text-md gi-label gi-mb-2" for="focus-input">Focus</label>
-    <div class="gi-text-input-container-inner">
-      <input
-        id="focus-input"
-        type="text"
-        data-testid="textbox"
-        class="gi-border-gray-950 gi-w-full gi-text-input pseudo-focus"
-      />
-    </div>
-  </div>
+//   <div class="gi-text-input-container">
+//     <label class="gi-text-md gi-label gi-mb-2" for="focus-input">Focus</label>
+//     <div class="gi-text-input-container-inner">
+//       <input
+//         id="focus-input"
+//         type="text"
+//         data-testid="textbox"
+//         class="gi-border-gray-950 gi-w-full gi-text-input pseudo-focus"
+//       />
+//     </div>
+//   </div>
 
-  <div class="gi-text-input-container">
-    <label class="gi-text-md gi-label gi-mb-2" for="input-disabled">Disabled</label>
-    <div class="gi-text-input-container-inner">
-      <input
-        id="input-disabled"
-        type="text"
-        data-testid="textbox"
-        class="gi-border-gray-950 gi-w-full gi-text-input gi-text-input-disabled"
-        disabled
-      />
-    </div>
-  </div>
-</div>
-`,
-  parameters: {
-    pseudo: {
-      focus: '#focus-input',
-    },
-  },
-};
+//   <div class="gi-text-input-container">
+//     <label class="gi-text-md gi-label gi-mb-2" for="input-disabled">Disabled</label>
+//     <div class="gi-text-input-container-inner">
+//       <input
+//         id="input-disabled"
+//         type="text"
+//         data-testid="textbox"
+//         class="gi-border-gray-950 gi-w-full gi-text-input gi-text-input-disabled"
+//         disabled
+//       />
+//     </div>
+//   </div>
+// </div>
+// `,
+//   parameters: {
+//     pseudo: {
+//       focus: '#focus-input',
+//     },
+//   },
+// };
 
 export const TextInputWithAriaAttributes: Story = {
   args: {
@@ -314,6 +325,7 @@ export const TextInputWithAriaAttributes: Story = {
     label: {
       content: 'Label',
       for: 'input-id',
+      size: LabelSize.md,
     },
     error: {
       content: '',

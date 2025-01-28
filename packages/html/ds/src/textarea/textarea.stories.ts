@@ -105,6 +105,7 @@ export const Default: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-1',
+      size: 'md',
     },
     error: {
       content: '',
@@ -120,6 +121,7 @@ export const WithLabelAndHint: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-3',
+      size: 'md',
     },
     hint: {
       content: 'Hint text for textarea',
@@ -135,6 +137,7 @@ export const WithLabelAndError: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-4',
+      size: 'md',
     },
     error: {
       content: 'Error message for textarea',
@@ -150,6 +153,7 @@ export const WithLabelHintAndError: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-4',
+      size: 'md',
     },
     hint: {
       content: 'Hint: This is a helpful hint.',
@@ -168,6 +172,7 @@ export const CustomRowsAndColumns: Story = {
     label: {
       content: 'Textarea Label',
       for: 'custom-size-textarea',
+      size: 'md',
     },
     rows: 6,
     cols: 40,
@@ -180,6 +185,7 @@ export const WithMaxChars: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-5',
+      size: 'md',
     },
     hint: {
       content: 'Hint text for textarea',
@@ -194,6 +200,7 @@ export const DisabledTextarea: Story = {
     label: {
       content: 'Textarea Label',
       for: 'textarea-id-5',
+      size: 'md',
     },
     hint: {
       content: 'Hint text for textarea',

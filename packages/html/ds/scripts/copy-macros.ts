@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
+import { glob } from 'glob';
 
 async function copyMacros() {
   const currentPath = fileURLToPath(import.meta.url);
@@ -12,10 +13,14 @@ async function copyMacros() {
   );
   const destinationPath = path.resolve(currentDirectory, '../static/macros');
 
-  try {
-    fs.cpSync(sourcePath, destinationPath, { recursive: true });
-  } catch (error) {
-    console.log('Macros not copied:', error);
+  for (const file of glob.sync('**/*.html', { cwd: sourcePath })) {
+    const sourceFilePath = path.resolve(sourcePath, file);
+    const fileDirectory = path.resolve(destinationPath, path.dirname(file));
+    const fileDestination = path.resolve(destinationPath, file);
+
+    await fs.mkdir(destinationPath, { recursive: true });
+    await fs.mkdir(fileDirectory, { recursive: true });
+    await fs.copyFile(sourceFilePath, fileDestination);
   }
 
   console.log('Macros copied');
