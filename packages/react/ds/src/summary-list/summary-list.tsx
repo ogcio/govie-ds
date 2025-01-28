@@ -43,4 +43,6 @@ export const SummaryList = ({ children }: SummaryListProps) => {
   );
 };
 
-SummaryListRow.displayName = 'SummaryList';
+SummaryList.displayName = 'SummaryList';
+SummaryListRow.displayName = 'SummaryRow';
+SummaryListAction.displayName = 'SummaryListAction';
