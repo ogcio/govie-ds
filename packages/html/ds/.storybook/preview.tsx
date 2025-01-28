@@ -1,4 +1,4 @@
-import { destroyGovIe, initGovIe } from '@govie-ds/html';
+import '@govie-ds/theme-govie/theme.css';
 import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
@@ -6,9 +6,9 @@ import {
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
 import { renderMacro } from '../src/macro';
-import '@govie-ds/theme-govie/theme.css';
-import './global.css';
+import { destroyGovIe, initGovIe } from '@govie-ds/html';
 import '../styles.css';
+import './global.css';
 
 // add decorators for button
 const Decorator = (arguments_, parameters) => {
@@ -44,10 +44,24 @@ const decorators = [
       initGovIe();
     }, []);
     const { args, parameters } = context;
-    const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-    if (isProd && parameters.macro) {
-      parameters.macro.path = './macros';
+
+    const storyResult = Story(context);
+
+    if (typeof storyResult === 'string') {
+      return (
+        <div
+          style={ModalDecorator(args, parameters)}
+          className={Decorator(args, parameters)}
+          dangerouslySetInnerHTML={{ __html: storyResult }}
+        />
+      );
     }
+
+    const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
+    parameters.macro.path = isProd
+      ? './macros'
+      : import.meta.env.STORYBOOK_DEV_MACRO_URL;
+
     const renderedMacro = renderMacro(parameters.macro)(args);
 
     return (
@@ -83,10 +97,9 @@ const preview: Preview = {
         transform: (_, context) => {
           const { args, parameters } = context;
           const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-
-          if (isProd && parameters.macro) {
-            parameters.macro.path = './macros';
-          }
+          parameters.macro.path = isProd
+            ? './macros'
+            : import.meta.env.STORYBOOK_DEV_MACRO_URL;
 
           if (!parameters.macro) {
             return parameters.renderedHtml || 'No content available';
