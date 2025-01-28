@@ -14,10 +14,6 @@ import '../../ds/dist/styles.css';
 const Decorator = (arguments_, parameters) => {
   const { macro } = parameters || {};
 
-  console.log({
-    name: macro.name,
-  });
-
   if (!macro?.name) return '';
 
   switch (macro.name) {
