@@ -25,6 +25,10 @@ function createNunjucksEnvironment(path = '') {
 
   environment.addGlobal('validateProperties', validateProperties);
 
+  environment.addFilter('items', function (obj) {
+    return Object.entries(obj);
+  });
+
   return environment;
 }
 
