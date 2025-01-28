@@ -6,7 +6,8 @@ libraries:
   - platform: 'local'
     status: '?path=/docs/typography-details--default'
   - platform: 'global'
-    status: 'not-available'
+    link: '?path=/docs/typography-details--default'
+    status: 'alpha'
   - platform: 'react'
     link: '?path=/docs/typography-details--default'
     status: 'alpha'
@@ -19,11 +20,7 @@ libraries:
 ### Default
 
 <ComponentContainer>
-  <Details
-    label="Help with Nationality"
-    name="nationality-help"
-    startsOpen={false}
-  >
+  <Details label="Help with Nationality" name="nationality-help">
     We need to know your nationality so we can work out which elections you’re
     entitled to vote in. If you cannot provide your nationality, you’ll have to
     send copies of identity documents through the post.
@@ -47,11 +44,7 @@ libraries:
     entitled to vote in. If you cannot provide your nationality, you’ll have to
     send copies of identity documents through the post.
   </Details>
-  <Details
-    label="More Information on Nationality"
-    name="group1"
-    startsOpen={false}
-  >
+  <Details label="More Information on Nationality" name="group1">
     Your nationality helps us determine your eligibility for specific voting
     rights. Without it, you may need to submit additional documentation.
   </Details>
@@ -80,9 +73,9 @@ libraries:
     {{ 
       govieDetails({ 
         "label": "Help with Nationality", 
-        "name": "nationality-help", 
-        "startsOpen": false, 
-        "content": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post." 
+        "name": "nationality-help",
+        "startsOpen": true,
+        "children": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post." 
       }) 
     }}
     ```
@@ -103,10 +96,13 @@ libraries:
 
 #### When to use this component
 
-The `Details` component is best used for displaying content that users can optionally reveal or hide, such as:
+The Details component is best used for displaying content that users can optionally reveal or hide, such as:
 
 - Additional information or explanations.
 - Technical details that are not immediately required but may help the user.
+
+The user can also set the "open" attribute on the "details" html element to control whether the component starts in an open state.
+This allows you to highlight important content or pre-expand relevant sections for your users.
 
 #### When not to use this component
 
