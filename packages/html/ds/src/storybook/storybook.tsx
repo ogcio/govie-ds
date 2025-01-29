@@ -10,7 +10,6 @@ export function renderComponent<TProps = unknown>({
   path?: string;
 }) {
   return function (props: TProps) {
-    console.log('renderComponent');
     const renderedMacro = renderMacro({ name, html, path })(props);
     return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   };
