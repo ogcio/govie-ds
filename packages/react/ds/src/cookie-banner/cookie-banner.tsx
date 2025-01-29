@@ -29,16 +29,22 @@ export const CookieBanner = ({
   const handleOpenBanner = () => setStatus(true);
   const handleCloseBanner = () => setStatus(false);
   const handleDismissBanner = () => setStatus('dismiss');
+
   return (
     <>
       {status === 'dismiss' ? null : (
-        <div className="gi-cookie-banner-container" role="dialog">
+        <div
+          className="gi-cookie-banner-container"
+          role="dialog"
+          aria-labelledby="cookie-banner-title"
+          aria-describedby="cookie-banner-description"
+        >
           <div className="gi-py-5">
             <Container>
-              {/* default container of cookie banner   */}
+              {/* default container of cookie banner */}
               {status === null && (
                 <>
-                  {children}
+                  <div id="cookie-banner-description">{children}</div>
                   <div className="gi-cookie-banner-buttons">
                     {cloneElement(accept.triggerButton, {
                       ariaLabel: 'Accept cookies',
@@ -56,7 +62,7 @@ export const CookieBanner = ({
               {/* accepted container of cookie banner */}
               {status === true && (
                 <>
-                  {accept.children}
+                  <div id="cookie-banner-description">{accept.children}</div>
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {
@@ -71,7 +77,7 @@ export const CookieBanner = ({
               {/* rejected container of cookie banner */}
               {status === false && (
                 <>
-                  {reject.children}
+                  <div id="cookie-banner-description">{reject.children}</div>
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {

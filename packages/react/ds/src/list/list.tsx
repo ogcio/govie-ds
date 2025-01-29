@@ -44,7 +44,7 @@ export function List({
   ariaDescribedBy,
   ariaLive = 'off',
   type = TypeEnum.None,
-  ...props
+  spaced,
 }: ListProps) {
   return (
     <ul
@@ -52,7 +52,7 @@ export function List({
       aria-describedby={ariaDescribedBy}
       aria-live={ariaLive}
       role={type === TypeEnum.None ? 'list' : undefined}
-      className={getListClass(props)}
+      className={getListClass({ spaced, type })}
       data-testid="govieList"
     >
       {items.map((item, index) => {

@@ -44,7 +44,6 @@ export function Select({ id, label, options, hint, error }: SelectProps) {
       <SelectComposable
         id={id}
         aria-label={ariaLabel}
-        role="listbox"
         aria-labelledby={label?.text ? id : undefined}
         aria-describedby={hint?.text ? `${id}-hint` : undefined}
       >
