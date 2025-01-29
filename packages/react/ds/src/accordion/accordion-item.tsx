@@ -35,10 +35,9 @@ export const AccordionItem = ({
         disabled && 'gi-opacity-30',
       )}
     >
+      {/* TODO Replace the following tag (div) with button */}
       <div
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
-        role="heading"
-        aria-controls={panelId}
         aria-expanded={isExpanded}
         className={cn(
           iconStart

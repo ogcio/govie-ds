@@ -72,11 +72,7 @@ export const Card = ({
     switch (media.type) {
       case 'image': {
         return (
-          <div
-            className="gi-card-image"
-            role="img"
-            aria-label={media.config.alt || title}
-          >
+          <div className="gi-card-image" aria-label={media.config.alt || title}>
             <a href={href}>
               <img src={media.config.src} alt={media.config.alt || title} />
             </a>
@@ -85,7 +81,7 @@ export const Card = ({
       }
       case 'icon': {
         return (
-          <div className="gi-card-icon" role="img" aria-hidden="true">
+          <div className="gi-card-icon" aria-hidden="true">
             <a href={href}>
               <Icon {...media.config} />
             </a>
