@@ -1,8 +1,8 @@
 'use client';
 import { INotyfPosition } from 'notyf';
 import { Notyf } from 'notyf';
-import { createRoot } from 'react-dom/client';
 import { cloneElement, createContext, useEffect, useContext } from 'react';
+import { createRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 import { type ButtonProps } from '../button/types.js';
 import { Toast as DSToast, type DSToastProps } from './ds-toast.js';
@@ -50,18 +50,20 @@ const ensureToastContainer = () => {
   if (!toastContainer) {
     toastContainer = document.createElement('div');
     toastContainer.id = 'toast-container';
-    document.body.appendChild(toastContainer);
+    document.body.append(toastContainer);
   }
 };
 
 export const toaster = {
   create: (props: ToastProps) => {
-    if (!notyfInstance) return;
+    if (!notyfInstance) {
+      return;
+    }
 
     ensureToastContainer();
 
     const toastWrapper = document.createElement('div');
-    toastContainer!.appendChild(toastWrapper);
+    toastContainer!.append(toastWrapper);
 
     const root = createRoot(toastWrapper);
     root.render(<DSToast {...props} />);

@@ -44,7 +44,6 @@ import {
   DrawerFooter,
   HeaderSearch,
   HeaderProps,
-  createToast,
   toaster,
 } from '@govie-ds/react';
 
@@ -105,7 +104,9 @@ const headerProps: HeaderProps = {
 export default function Home() {
   const handleCreateToast = () =>
     toaster.create({
-      title: 'example toast',
+      title: 'Success',
+      description: 'This is a toast notification.',
+      variant: 'success',
       position: {
         x: 'right',
         y: 'bottom',
@@ -125,7 +126,9 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        <Button onClick={handleCreateToast}>Callback Toast</Button>
+        <br />
+        <Button onClick={handleCreateToast}>Trigger Toast via callback</Button>
+        <br />
         <Toast title="This is a toast" />
         <Toast
           title="Toast triggered"
