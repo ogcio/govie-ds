@@ -44,6 +44,8 @@ import {
   DrawerFooter,
   HeaderSearch,
   HeaderProps,
+  createToast,
+  toaster,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {
@@ -101,6 +103,16 @@ const headerProps: HeaderProps = {
 };
 
 export default function Home() {
+  const handleCreateToast = () =>
+    toaster.create({
+      title: 'example toast',
+      position: {
+        x: 'right',
+        y: 'bottom',
+      },
+      duration: 3000,
+    });
+
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
@@ -113,6 +125,7 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <Button onClick={handleCreateToast}>Callback Toast</Button>
         <Toast title="This is a toast" />
         <Toast
           title="Toast triggered"

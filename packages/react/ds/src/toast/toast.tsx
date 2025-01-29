@@ -1,6 +1,7 @@
 'use client';
 import { INotyfPosition } from 'notyf';
 import { Notyf } from 'notyf';
+import { createRoot } from 'react-dom/client';
 import { cloneElement, createContext, useEffect, useContext } from 'react';
 import { renderToString } from 'react-dom/server';
 import { type ButtonProps } from '../button/types.js';
@@ -12,8 +13,8 @@ export type ToastProps = DSToastProps & {
   trigger?: React.ReactElement<ButtonProps>;
 };
 
-const isClientSide = typeof window === 'undefined' ? null : new Notyf();
-const notyfContext = createContext(isClientSide);
+const notyfInstance = typeof window === 'undefined' ? null : new Notyf();
+const notyfContext = createContext(notyfInstance);
 
 export const Toast = (props: ToastProps) => {
   const notyf = useContext(notyfContext);
@@ -42,6 +43,42 @@ export const Toast = (props: ToastProps) => {
     return cloneElement(props.trigger, { onClick: renderNotyf });
   }
   renderNotyf();
+};
+
+let toastContainer: HTMLElement | null = null;
+const ensureToastContainer = () => {
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toast-container';
+    document.body.appendChild(toastContainer);
+  }
+};
+
+export const toaster = {
+  create: (props: ToastProps) => {
+    if (!notyfInstance) return;
+
+    ensureToastContainer();
+
+    const toastWrapper = document.createElement('div');
+    toastContainer!.appendChild(toastWrapper);
+
+    const root = createRoot(toastWrapper);
+    root.render(<DSToast {...props} />);
+
+    setTimeout(() => {
+      notyfInstance.open({
+        type: 'open',
+        message: toastWrapper.innerHTML,
+        duration: props.duration,
+        position: props.position,
+      });
+
+      setTimeout(() => {
+        toastWrapper.remove();
+      }, props.duration);
+    }, 0);
+  },
 };
 
 export default Toast;
