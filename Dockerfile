@@ -18,13 +18,14 @@ COPY packages/ ./packages
 COPY tokens/ ./tokens
 
 ENV NEXT_EXPORT=true
+ENV NX_DAEMON=false
 
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
-RUN pnpm build:libs --verbose
-RUN pnpm ds:build:export --verbose
-RUN pnpm html:storybook:build --verbose
-RUN pnpm react:storybook:build --verbose
+RUN pnpm build:libs
+RUN pnpm ds:build
+RUN pnpm html:storybook:build
+RUN pnpm react:storybook:build
 
 # Production image
 
