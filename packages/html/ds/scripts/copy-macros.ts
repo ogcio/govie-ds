@@ -3,12 +3,15 @@ import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
 import { glob } from 'glob';
 
-(async function copyMacrosPlugin() {
+async function copyMacros() {
   const currentPath = fileURLToPath(import.meta.url);
   const currentDirectory = path.dirname(currentPath);
 
-  const sourcePath = path.resolve(currentDirectory, '../../ds/src/');
-  const destinationPath = path.resolve(currentDirectory, '../static/macros/');
+  const sourcePath = path.resolve(
+    currentDirectory,
+    '../macros/nunjucks/prod/govie',
+  );
+  const destinationPath = path.resolve(currentDirectory, '../static/macros');
 
   for (const file of glob.sync('**/*.html', { cwd: sourcePath })) {
     const sourceFilePath = path.resolve(sourcePath, file);
@@ -20,5 +23,7 @@ import { glob } from 'glob';
     await fs.copyFile(sourceFilePath, fileDestination);
   }
 
-  console.log('FILES COPIED');
-})();
+  console.log('Macros copied');
+}
+
+await copyMacros();

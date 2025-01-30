@@ -7,6 +7,7 @@ import {
   getDocumentHierarchy,
 } from '@/lib/documents/document-hierarchy';
 import * as documents from '@/lib/documents/documents';
+// eslint-disable-next-line import/order
 import { Doc } from 'contentlayer/generated';
 
 // TODO: generic solution for navigation titles for folders

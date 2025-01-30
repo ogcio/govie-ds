@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './tabs.html?raw';
 import { TabsProps } from './tabs.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/tabs')[0];
-
-const macro = { name: 'govieTabs', html, path };
+const macro = { name: 'govieTabs', html };
 
 const Tabs = renderComponent<TabsProps>(macro);
 

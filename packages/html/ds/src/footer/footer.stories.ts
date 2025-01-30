@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './footer.html?raw';
 import { FooterProps } from './footer.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/footer')[0];
-
-const macro = { name: 'govieFooter', html, path };
+const macro = { name: 'govieFooter', html };
 
 const Footer = renderComponent<FooterProps>(macro);
 

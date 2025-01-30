@@ -21,14 +21,18 @@
     "format": "prettier 'src/**/*.{ts,html}' --write",
     "format:check": "prettier 'src/**/*.{ts,html}' --check",
     "lint": "eslint 'src/**/*.{ts,html}'",
-    "test": "vitest run",
+    "test": "vitest run --project=unit",
     "test:watch": "vitest",
     "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles && pnpm build:assets",
     "build:properties": "tsx scripts/build-properties.ts",
     "build:assets": "tsx scripts/copy-assets.ts",
     "build:ts": "vite build",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
-    "postbuild": "zip -r govie-frontend.zip dist macros"
+    "postbuild": "zip -r govie-frontend.zip dist macros",
+    "storybook:dev": "STORYBOOK_DEV_MACRO_URL=\"http://localhost:6006/@fs$(pwd)/src\" storybook dev -p 6006",
+    "storybook:build": "tsx scripts/copy-macros.ts && STORYBOOK_ENV=prod storybook build",
+    "storybook:test": "vitest --project=storybook --reporter=basic --disable-console-intercept",
+    "storybook:coverage": "vitest --project=storybook --coverage"
   },
   "files": [
     "dist",
@@ -39,19 +43,21 @@
   "license": "MIT",
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
-    "@govie-ds/macro": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
+    "@govie-ds/theme-govie": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
     "@types/nunjucks": "^3.2.6",
+    "@vitest/coverage-istanbul": "2.1.8",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
     "eslint": "^9.8.0",
     "fs-extra": "^11.2.0",
     "glob": "^10.4.5",
     "jsdom": "^25.0.1",
+    "nunjucks": "^3.2.4",
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
@@ -60,6 +66,6 @@
     "react-dom": "19.0.0",
     "tsx": "^4.16.5",
     "vite-plugin-dts": "^3.9.1",
-    "zod": "^3.23.8"
+    "zod": "3.24.1"
   }
 }

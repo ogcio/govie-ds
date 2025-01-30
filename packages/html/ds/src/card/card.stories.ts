@@ -6,9 +6,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
 import { CardProps, CardType, InsetType } from './card.schema';
 
-const path = import.meta.url.split('/card')[0];
-
-const macro = { name: 'govieCard', html, path };
+const macro = { name: 'govieCard', html };
 
 const Card = renderComponent<CardProps>(macro);
 

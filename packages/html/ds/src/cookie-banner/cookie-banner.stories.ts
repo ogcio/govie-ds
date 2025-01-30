@@ -8,9 +8,7 @@ import {
 import html from './cookie-banner.html?raw';
 import { CookieBannerProps } from './cookie-banner.schema';
 
-const path = import.meta.url.split('/cookie-banner')[0];
-
-const macro = { name: 'govieCookieBanner', html, path };
+const macro = { name: 'govieCookieBanner', html };
 
 const CookieBanner = renderComponent<CookieBannerProps>(macro);
 

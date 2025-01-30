@@ -1,20 +1,22 @@
-import { destroyGovIe, initGovIe } from '@govie-ds/html';
-import { renderMacro } from '@govie-ds/macro';
+import '@govie-ds/theme-govie/theme.css';
 import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
-import '@govie-ds/theme-govie/theme.css';
+import { renderMacro } from '../src/macro';
+import { destroyGovIe, initGovIe } from '@govie-ds/html';
+import '../styles.css';
 import './global.css';
-import '../../ds/dist/styles.css';
 
 // add decorators for button
 const Decorator = (arguments_, parameters) => {
   const { macro } = parameters || {};
 
-  if (!macro?.name) return '';
+  if (!macro?.name) {
+    return '';
+  }
 
   switch (macro.name) {
     case 'govieButton':
@@ -26,17 +28,21 @@ const Decorator = (arguments_, parameters) => {
       return classes;
     }
 
-    case 'govieTooltip':
+    case 'govieTooltip': {
       return 'gi-flex gi-justify-center gi-py-5 gi-px-5';
+    }
 
-    case 'govieSpinner':
+    case 'govieSpinner': {
       return 'gi-stroke-gray-950';
+    }
 
-    case 'govieDetails':
+    case 'govieDetails': {
       return 'gi-pl-6 gi-pt-6 gi-h-[200px]';
+    }
 
-    default:
+    default: {
       return '';
+    }
   }
 };
 
@@ -50,17 +56,13 @@ const ModalDecorator = (_, parameters) => {
   };
 };
 
-export const decorators = [
+const decorators = [
   (Story, context) => {
     useEffect(() => {
       destroyGovIe();
       initGovIe();
     }, []);
     const { args, parameters } = context;
-    const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-    if (isProd && parameters.macro) {
-      parameters.macro.path = './macros';
-    }
 
     const storyResult = Story(context);
 
@@ -74,7 +76,13 @@ export const decorators = [
       );
     }
 
+    const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
+    parameters.macro.path = isProd
+      ? './macros'
+      : import.meta.env.STORYBOOK_DEV_MACRO_URL;
+
     const renderedMacro = renderMacro(parameters.macro)(args);
+
     return (
       <div
         style={ModalDecorator(args, parameters)}
@@ -108,10 +116,9 @@ const preview: Preview = {
         transform: (_, context) => {
           const { args, parameters } = context;
           const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
-
-          if (isProd && parameters.macro) {
-            parameters.macro.path = './macros';
-          }
+          parameters.macro.path = isProd
+            ? './macros'
+            : import.meta.env.STORYBOOK_DEV_MACRO_URL;
 
           if (!parameters.macro) {
             return parameters.renderedHtml || 'No content available';
@@ -141,6 +148,7 @@ const preview: Preview = {
       },
     },
   },
+  decorators,
   tags: ['autodocs'],
 };
 

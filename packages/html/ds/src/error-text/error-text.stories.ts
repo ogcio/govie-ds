@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './error-text.html?raw';
 import { ErrorSize, ErrorTextProps } from './error-text.schema';
 
-const path = import.meta.url.split('/error-text')[0];
-
-const macro = { name: 'govieErrorText', html, path };
+const macro = { name: 'govieErrorText', html };
 
 const ErrorText = renderComponent<ErrorTextProps>(macro);
 

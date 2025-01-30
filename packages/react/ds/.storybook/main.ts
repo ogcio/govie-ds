@@ -1,18 +1,19 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ['../../ds/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
   addons: [
     '@chromatic-com/storybook',
     '@storybook/addon-a11y',
     '@storybook/addon-coverage',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
     '@storybook/addon-links',
-    '@storybook/addon-onboarding',
     '@storybook/addon-viewport',
     'storybook-addon-pseudo-states',
+    '@storybook/experimental-addon-test',
   ],
+
   build: {
     test: {
       disabledAddons: [
@@ -21,10 +22,12 @@ const config: StorybookConfig = {
       ],
     },
   },
+
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
+
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite');
 
@@ -40,6 +43,12 @@ const config: StorybookConfig = {
         },
       },
     });
+  },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 };
 
