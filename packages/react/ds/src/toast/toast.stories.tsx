@@ -6,10 +6,9 @@ import {
   Controls,
 } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Toast, toaster, ToastProvider } from './toast.js';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
-import { source } from 'axe-core';
+import { Toast, toaster, ToastProvider } from './toast.js';
 
 const meta: Meta<typeof Toast> = {
   title: 'Application/Toast',
@@ -80,10 +79,10 @@ export const Default: Story = {
     title: 'Default',
     description: 'This is some content',
   },
-  render: (args) => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button onClick={() => toaster.create(args)}>Trigger Toast</Button>
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
     </>
   ),
 };

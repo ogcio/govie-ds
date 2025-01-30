@@ -1,11 +1,11 @@
 'use client';
-import { cloneElement, useState } from 'react';
+import { cloneElement } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { cn } from '../cn.js';
 
 const toastVariants = tv({
   slots: {

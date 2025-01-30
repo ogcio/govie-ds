@@ -16,7 +16,7 @@ const TOAST_TEMPLATE = `
     </p>
   </div>
 </div>
-`
+`;
 
 const getIcon = (variant: string) => {
   switch (variant) {
@@ -42,16 +42,17 @@ export function createToastByTemplate({
 }: ToastProps) {
   const toastWrapper = document.createElement('div');
   const replacements = {
-    "{{variant}}": variant,
-    "{{icon}}": getIcon(variant),
-    "{{title}}": title,
-    "{{description}}": description,
+    '{{variant}}': variant,
+    '{{icon}}': getIcon(variant),
+    '{{title}}': title,
+    '{{description}}': description,
   } as any;
-  
+
   let toastHTML = TOAST_TEMPLATE;
-  Object.keys(replacements).forEach(key => {
+  for (const key of Object.keys(replacements)) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     toastHTML = toastHTML.replace(new RegExp(key, 'g'), replacements[key]);
-  });
+  }
 
   toastWrapper.innerHTML = toastHTML;
 

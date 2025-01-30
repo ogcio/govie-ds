@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Toast as DSToast } from './ds-toast.js';
 import { cn } from '../cn.js';
-import { ToastPosition, ToastProps } from './types.js';
+import { Toast as DSToast } from './ds-toast.js';
+import type { ToastPosition, ToastProps } from './types.js';
 
 const positions: ToastPosition[] = [
   { x: 'left', y: 'top' },
@@ -23,11 +23,12 @@ export const ToastProvider = () => {
   useEffect(() => {
     const handleToastEvent = (event: Event) => {
       const customEvent = event as CustomEvent<ToastProps>;
-      setToastStack((prev) => [...prev, customEvent.detail]);
+      setToastStack((previous) => [...previous, customEvent.detail]);
     };
 
-    window.addEventListener('add-toast', handleToastEvent);
-    return () => window.removeEventListener('add-toast', handleToastEvent);
+    window.addEventListener('govie:add-toast', handleToastEvent);
+    return () =>
+      window.removeEventListener('govie:add-toast', handleToastEvent);
   }, []);
 
   return (
@@ -41,7 +42,8 @@ export const ToastProvider = () => {
 
         return createPortal(
           <div
-            key={`${position.x}-${position.y}`}
+            id={`notifications-portal-${position.x}-${position.y}`}
+            key={`notifications-${position.x}-${position.y}`}
             role="region"
             aria-label={`Notifications-${position.y}-${position.x}`}
             className={cn('gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100', {
@@ -54,7 +56,7 @@ export const ToastProvider = () => {
             })}
           >
             {filteredToasts.map((toast, index) => (
-              <Toast key={index} {...toast} />
+              <Toast key={`toast-${index}`} {...toast} />
             ))}
           </div>,
           document.body,
@@ -66,14 +68,15 @@ export const ToastProvider = () => {
 
 export const toaster = {
   create: (props: ToastProps) => {
-    const toastCopy: ToastProps = {
-      ...props,
-      position: {
-        x: props?.position?.x || 'right',
-        y: props?.position?.y || 'top',
+    const event = new CustomEvent('govie:add-toast', {
+      detail: {
+        ...props,
+        position: {
+          x: props?.position?.x || 'right',
+          y: props?.position?.y || 'top',
+        },
       },
-    };
-    const event = new CustomEvent('add-toast', { detail: toastCopy });
+    });
     window.dispatchEvent(event);
   },
 };
@@ -111,6 +114,7 @@ export const Toast = ({
 
   return (
     <div
+      data-testid={`${title}-${variant}`}
       className={cn('notyf__toast notyf__toast--lower', {
         'notyf__toast--disappear': !isOpen,
       })}
