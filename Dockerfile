@@ -22,6 +22,8 @@ ENV NEXT_EXPORT=true
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
+RUN pnpm html:storybook:build
+RUN pnpm react:storybook:build
 
 # Production image
 
