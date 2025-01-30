@@ -8,9 +8,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './combo-box.html?raw';
 import { ComboBoxProps } from './combo-box.schema';
 
-const path = import.meta.url.split('/combo-box')[0];
-
-const macro = { name: 'govieComboBox', html, path };
+const macro = { name: 'govieComboBox', html };
 
 const ComboBox = renderComponent<ComboBoxProps>(macro);
 

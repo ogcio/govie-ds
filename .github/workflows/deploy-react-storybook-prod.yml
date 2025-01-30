@@ -41,7 +41,7 @@ jobs:
       - name: Set environment output if HTML package is affected
         id: check-affected
         run: |
-          if grep -q "@govie-react/storybook" affected.txt; then
+          if grep -q "@govie-react/ds" affected.txt; then
             echo "react_affected=true" >> $GITHUB_OUTPUT
           else
             echo "react_affected=false" >> $GITHUB_OUTPUT
@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: packages/react/storybook/storybook-static
+          path: packages/react/ds/storybook-static
 
   deploy:
     name: Deploy to Amazon S3

@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './breadcrumbs.html?raw';
 import { BreadcrumbsProps } from './breadcrumbs.schema';
 
-const path = import.meta.url.split('/breadcrumbs')[0];
-
-const macro = { name: 'govieBreadcrumbs', html, path };
+const macro = { name: 'govieBreadcrumbs', html };
 
 const Breadcrumbs = renderComponent<BreadcrumbsProps>(macro);
 

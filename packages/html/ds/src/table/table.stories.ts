@@ -3,8 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './table.html?raw';
 import { TableProps } from './table.schema';
 
-const path = import.meta.url.split('/table')[0];
-const macro = { name: 'govieTable', html, path };
+const macro = { name: 'govieTable', html };
 const Table = renderComponent<TableProps>(macro);
 
 const meta = {

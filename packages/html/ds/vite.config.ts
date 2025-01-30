@@ -1,3 +1,4 @@
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { processMacrosPlugin } from './scripts/process-macros-plugin';
@@ -5,6 +6,7 @@ import { processMacrosPlugin } from './scripts/process-macros-plugin';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    react(),
     dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
     processMacrosPlugin(),
   ],
@@ -26,15 +28,6 @@ export default defineConfig({
       },
       name: 'GovieFrontend',
     },
-    // rollupOptions: {
-    //   external: [],
-    //   input: 'src/index.ts',
-    //   output: {
-    //     assetFileNames: 'assets/[name][extname]',
-    //     entryFileNames: 'govie-frontend.js',
-    //     format: 'umd',
-    //   },
-    // },
     sourcemap: true,
   },
 });

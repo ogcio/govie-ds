@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import { AlertProps, AlertVariant } from './alert-schema';
 import html from './alert.html?raw';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/alert')[0];
-
-const macro = { name: 'govieAlert', html, path };
+const macro = { name: 'govieAlert', html };
 
 const Alert = renderComponent<AlertProps>(macro);
 

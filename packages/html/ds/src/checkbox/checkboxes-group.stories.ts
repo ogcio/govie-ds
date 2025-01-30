@@ -4,10 +4,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './checkboxes-group.html?raw';
 import type { CheckboxesProps } from './checkboxes.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/checkbox')[0];
-
-const macro = { name: 'govieCheckboxesGroup', html, path };
+const macro = { name: 'govieCheckboxesGroup', html };
 
 const Checkboxes = renderComponent<CheckboxesProps>(macro);
 

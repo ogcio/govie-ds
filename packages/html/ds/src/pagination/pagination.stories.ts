@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './pagination.html?raw';
 import { PaginationProps } from './pagination.schema';
 
-const path = import.meta.url.split('/pagination')[0];
-
-const macro = { name: 'goviePagination', html, path };
+const macro = { name: 'goviePagination', html };
 
 const Pagination = renderComponent<PaginationProps>(macro);
 

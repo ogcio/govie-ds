@@ -4,10 +4,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './link.html?raw';
 import { LinkProps, LinkSize } from './link.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/link')[0];
-
-const macro = { name: 'govieLink', html, path };
+const macro = { name: 'govieLink', html };
 
 const Link = renderComponent<LinkProps>(macro);
 

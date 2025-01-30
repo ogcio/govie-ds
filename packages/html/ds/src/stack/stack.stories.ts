@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './stack.html?raw';
 import { StackProps } from './stack.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/stack')[0];
-
-const macro = { name: 'govieStack', html, path };
+const macro = { name: 'govieStack', html };
 
 const Stack = renderComponent<StackProps>(macro);
 

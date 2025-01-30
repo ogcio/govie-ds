@@ -18,13 +18,6 @@ export enum ButtonSize {
   Large = 'large',
 }
 
-export enum IconPosition {
-  Start = 'start',
-  End = 'end',
-}
-
-// export type ButtonType = 'submit' | 'reset' | 'button';
-
 export enum ButtonType {
   Submit = 'submit',
   Reset = 'reset',
@@ -78,7 +71,7 @@ export const buttonSchema = zod.object({
     })
     .optional(),
   form: zod
-    .string({ description: 'The ID of the form that button is binded to ' })
+    .string({ description: 'The ID of the form that button is bond to ' })
     .optional(),
   value: zod
     .string({
