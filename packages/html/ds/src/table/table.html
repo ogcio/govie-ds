@@ -1,7 +1,17 @@
 {% from 'common/aria-attributes.html' import commonAriaAttributes %}
 
 {% macro govieTable(props) %}
-  <table {{ commonAriaAttributes(props) }} class="gi-table">
+  {% macro getLayoutClass(props) %}
+    {% if props.layout == 'fixed' %}
+      gi-table-fixed
+    {% else %}
+      gi-table-auto
+    {% endif %}
+  {% endmacro %}
+  <table
+    {{ commonAriaAttributes(props) }}
+    class="{{ getLayoutClass(props) | trim }} gi-table"
+  >
     {% if props.captionText %}
       <caption class="gi-table-caption-text gi-text-lg">
         {{ props.captionText }}

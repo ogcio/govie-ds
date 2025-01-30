@@ -29,6 +29,7 @@ export const tableSchema = zod.object({
         'An array of strings representing column headers for the table.',
     })
     .optional(),
+  layout: zod.enum(['auto', 'fixed']).default('auto'),
   rows: zod
     .array(
       zod.any(), // Allows flexibility for HTML elements, text, or other types
