@@ -12,6 +12,7 @@
     "graph": "nx graph",
     "ds": "nx run @govie-ds/docs:dev",
     "ds:build": "nx run @govie-ds/docs:build",
+    "ds:build:export": "nx run @govie-ds/docs:build:export",
     "ds:build:prod": "nx run @govie-ds/docs:build:prod",
     "ds:deploy": "nx run @govie-ds/docs:docker --parallel=1 --configuration=$CONFIGURATION",
     "ds:storybook": "nx run @govie-ds/docs:storybook",
@@ -56,9 +57,8 @@
     "@vitest/browser": "^2.1.8",
     "axe-playwright": "2.0.3",
     "chromatic": "11.25.1",
-    "concurrently": "^9.0.1",
     "http-server": "^14.1.1",
-    "nx": "^19.5.6",
+    "nx": "^20.4.0",
     "playwright": "^1.50.0",
     "prettier": "^3.3.3",
     "storybook": "8.5.1",
@@ -69,8 +69,7 @@
     "tsx": "^4.19.2",
     "typescript": "5.6.3",
     "vite": "5.4.10",
-    "vitest": "2.1.8",
-    "wait-on": "^8.0.1"
+    "vitest": "2.1.8"
   },
   "peerDependencies": {
     "@vitest/spy": "2.1.3"
