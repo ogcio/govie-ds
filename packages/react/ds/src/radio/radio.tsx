@@ -61,8 +61,11 @@ export const Radio = ({
           className={`gi-radio-base ${getRadioSize(size)}`}
           type="radio"
           aria-label={radioId}
+          aria-checked={checked}
+          aria-describedby={hint ? `${radioId}-hint` : undefined}
+          aria-required={conditionalInput ? 'true' : 'false'}
         />
-        <label htmlFor={radioId} className="gi-radio-label">
+        <label htmlFor={radioId} className="gi-radio-label" aria-hidden="true">
           {label}
         </label>
       </div>

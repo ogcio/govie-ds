@@ -1,6 +1,8 @@
 export const ChildrenDefault = (
   <>
-    <h3 className="gi-heading-md">Title</h3>
+    <h3 id="cookie-banner-title" className="gi-heading-md">
+      Title
+    </h3>
     <p className="gi-paragraph-md gi-text-start gi-whitespace-normal ">
       We use some essential cookies to make this service work.
       <br />

@@ -187,7 +187,12 @@ const getItemsGapClasses = (gap: Gap) => {
 
 const Divider = ({ direction }: { direction: Direction }) => {
   const dividerClasses = getDividerClasses(direction);
-  return <div className={`${cn(dividerClasses)} gi-bg-gray-400`} />;
+  return (
+    <div
+      className={`${cn(dividerClasses)} gi-bg-gray-400`}
+      aria-hidden="true"
+    />
+  );
 };
 
 export const Stack: React.FC<StackProps> = ({

@@ -44,17 +44,23 @@ export const Checkbox = ({
           className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
           checked={checked}
           aria-label={ariaLabel || CheckboxId}
+          aria-labelledby={label ? `${CheckboxId}-label` : undefined}
+          aria-describedby={hint ? `${CheckboxId}-hint` : undefined}
           disabled={disabled}
           type="checkbox"
         />
-        <label htmlFor={CheckboxId} className="gi-checkbox-label">
+        <label
+          id={`${CheckboxId}-label`}
+          htmlFor={CheckboxId}
+          className="gi-checkbox-label"
+        >
           {label}
         </label>
       </div>
       {hint && (
         <div className="gi-checkbox-hint-container">
           <div className={getSizeClass(size)} />
-          <HintText text={hint} />
+          <HintText id={`${CheckboxId}-hint`} text={hint} />
         </div>
       )}
     </>

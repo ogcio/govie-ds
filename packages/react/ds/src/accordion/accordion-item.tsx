@@ -18,6 +18,8 @@ export const AccordionItem = ({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [iconStart, setIconStart] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const buttonId = `${label}-button`;
+  const panelId = `${label}-panel`;
 
   useEffect(() => {
     if (ref.current) {
@@ -33,8 +35,10 @@ export const AccordionItem = ({
         disabled && 'gi-opacity-30',
       )}
     >
+      {/* TODO Replace the following tag (div) with button */}
       <div
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
+        aria-expanded={isExpanded}
         className={cn(
           iconStart
             ? 'gi-flex gi-flex-row-reverse gi-justify-end'
@@ -45,7 +49,12 @@ export const AccordionItem = ({
         {label}{' '}
         <Icon icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
       </div>
-      <div className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-pt-4')}>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-pt-4')}
+      >
         {children}
       </div>
     </div>

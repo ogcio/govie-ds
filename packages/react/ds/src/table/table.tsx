@@ -1,5 +1,24 @@
 import React from 'react';
 
-export function Table(props: React.PropsWithChildren) {
-  return <table className="gi-table">{props.children}</table>;
+type TableProps = {
+  ariaRowCount?: number;
+  ariaColCount?: number;
+};
+
+export function Table({
+  ariaRowCount,
+  ariaColCount,
+  children,
+}: React.PropsWithChildren<TableProps>) {
+  return (
+    <table
+      className="gi-table"
+      role="table"
+      aria-label="Table"
+      aria-rowcount={ariaRowCount}
+      aria-colcount={ariaColCount}
+    >
+      {children}
+    </table>
+  );
 }

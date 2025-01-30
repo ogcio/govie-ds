@@ -141,7 +141,11 @@ export function Header({
   }, [addDefaultMobileMenu]);
 
   return (
-    <header id="GovieHeader" className={headerClassNames}>
+    <header
+      id="GovieHeader"
+      aria-label="Site Header"
+      className={headerClassNames}
+    >
       {secondaryLinks && (
         <div className={languageBarClassNames}>
           <div className={containerClassName}>

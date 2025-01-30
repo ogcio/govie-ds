@@ -63,11 +63,17 @@ export const CheckboxesGroup = ({
   };
 
   return (
-    <div className="gi-checkbox-group-container" data-testid="govie-checkboxes">
-      {errorMessage && <div className="gi-checkbox-group-error" />}
+    <div
+      className="gi-checkbox-group-container"
+      data-testid="govie-checkboxes"
+      role="group"
+    >
+      {errorMessage && (
+        <div className="gi-checkbox-group-error" id={`${groupId}-error`} />
+      )}
       <fieldset>
         {title && (
-          <legend className="gi-checkbox-group-title">
+          <legend className="gi-checkbox-group-title" id={`${groupId}-title`}>
             {title.asHeading ? (
               <Heading size={title.asHeading.size} as={title.asHeading.as}>
                 {title.value}
@@ -77,7 +83,11 @@ export const CheckboxesGroup = ({
             )}
             {title.hint && (
               <div className="gi-mb-2">
-                <HintText data-testid="title-hint" text={title.hint} />
+                <HintText
+                  data-testid="title-hint"
+                  text={title.hint}
+                  id={`${groupId}-title-hint`}
+                />
               </div>
             )}
           </legend>
@@ -95,6 +105,9 @@ export const CheckboxesGroup = ({
               disabled={checkbox.disabled}
               checked={selectedValues.includes(checkbox.value)}
               onChange={() => handleCheckboxChange(checkbox.value)}
+              aria-describedby={
+                checkbox.hint ? `${groupId}-${index}-hint` : undefined
+              }
             />
           ))}
 
@@ -113,6 +126,11 @@ export const CheckboxesGroup = ({
                 label={noneOption.label}
                 checked={selectedValues.includes(noneOption.value)}
                 onChange={() => handleCheckboxChange(noneOption.value, true)}
+                aria-describedby={
+                  noneOption.hint
+                    ? `${groupId}-${items.length}-hint`
+                    : undefined
+                }
               />
             </>
           )}

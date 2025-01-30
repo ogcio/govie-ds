@@ -72,7 +72,9 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <Heading as="h3">Title</Heading>
+        <Heading as="h3" id="cookie-banner-title">
+          Title
+        </Heading>
         <Paragraph>
           We use some essential cookies to make this service work.
           <br />

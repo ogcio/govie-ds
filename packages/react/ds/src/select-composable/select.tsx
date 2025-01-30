@@ -18,16 +18,31 @@ type SelectGroupItemProps = React.DetailedHTMLProps<
 export const SelectGroupItem = ({
   children,
   ...props
-}: SelectGroupItemProps) => <optgroup {...props}>{children}</optgroup>;
+}: SelectGroupItemProps) => (
+  <optgroup {...props} role="group" aria-labelledby={props.label || ''}>
+    {children}
+  </optgroup>
+);
 
 export const SelectItem = ({ children, ...props }: SelectItemProps) => (
-  <option className={cn('gi-select-option', props.className)} {...props}>
+  <option
+    className={cn('gi-select-option', props.className)}
+    aria-selected={props.selected ? 'true' : 'false'}
+    {...props}
+  >
     {children}
   </option>
 );
 
-export const Select = ({ children, ...props }: SelectProps) => (
-  <select className={cn('gi-select', props.className)} {...props}>
-    {children}
-  </select>
-);
+export const Select = ({ children, ...props }: SelectProps) => {
+  const ariaLabel = props['aria-label'] || props['aria-labelledby'] || '';
+  return (
+    <select
+      className={cn('gi-select', props.className)}
+      {...props}
+      aria-label={ariaLabel}
+    >
+      {children}
+    </select>
+  );
+};

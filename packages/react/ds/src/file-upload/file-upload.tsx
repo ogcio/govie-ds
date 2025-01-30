@@ -38,6 +38,8 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
           className="gi-file-upload-input"
           type="file"
           ref={ref}
+          aria-invalid={!!error?.text}
+          aria-describedby={`${id}-hint`}
           {...props}
         />
       </div>
