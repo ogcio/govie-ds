@@ -305,3 +305,36 @@ Summary List
 /*
 End of Summary List
 */
+
+/*
+Details
+*/
+
+.gi-details {
+  @apply gi-block gi-text-md gi-text-gray-950;
+}
+
+.gi-details-summary {
+  @apply gi-relative gi-mb-1 gi-cursor-pointer gi-text-blue-700 gi-w-fit focus-visible:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-950)] focus-visible:gi-bg-yellow-400 focus-visible:gi-text-gray-950 focus-visible:gi-decoration-none focus-visible:gi-outline focus-visible:gi-outline-[3px] focus-visible:gi-outline-transparent hover:gi-text-blue-800;
+}
+
+.gi-details-summary:focus-visible > .gi-details-summary-text {
+  text-decoration: none;
+}
+
+.gi-details-summary:hover > .gi-details-summary-text {
+  text-decoration-thickness: max(3px);
+  text-decoration-skip-ink: none;
+}
+
+.gi-details-summary-text {
+  @apply gi-underline gi-underline-offset-[0.1rem];
+}
+
+.gi-details-text {
+  @apply gi-py-4 gi-pl-5 gi-border-l-[5px] gi-border-solid gi-border-l-gray-200;
+}
+
+/*
+End of Details
+*/

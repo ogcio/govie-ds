@@ -12,18 +12,37 @@ import './global.css';
 
 // add decorators for button
 const Decorator = (arguments_, parameters) => {
-  if (
-    parameters?.macro?.name === 'govieButton' ||
-    parameters?.macro?.name === 'govieIconButton'
-  ) {
-    let classes = 'gi-p-4';
-    if (arguments_.appearance === 'light') {
-      classes += ' gi-bg-black';
-    }
-    return classes;
+  const { macro } = parameters || {};
+
+  if (!macro?.name) {
+    return '';
   }
-  if (parameters?.macro?.name === 'govieSpinner') {
-    return 'gi-stroke-gray-950';
+
+  switch (macro.name) {
+    case 'govieButton':
+    case 'govieIconButton': {
+      let classes = 'gi-p-4';
+      if (arguments_.appearance === 'light') {
+        classes += ' gi-bg-black';
+      }
+      return classes;
+    }
+
+    case 'govieTooltip': {
+      return 'gi-flex gi-justify-center gi-py-5 gi-px-5';
+    }
+
+    case 'govieSpinner': {
+      return 'gi-stroke-gray-950';
+    }
+
+    case 'govieDetails': {
+      return 'gi-pl-6 gi-pt-6 gi-h-[200px]';
+    }
+
+    default: {
+      return '';
+    }
   }
 };
 
