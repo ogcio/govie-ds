@@ -171,7 +171,7 @@ export function ComponentStatusTable() {
 
   return (
     <div>
-      <div className="max-w-prose overflow-auto gi-not-prose">
+      <div className="max-w-prose gi-not-prose">
         <Table>
           <TableBody>
             <TableRow>
