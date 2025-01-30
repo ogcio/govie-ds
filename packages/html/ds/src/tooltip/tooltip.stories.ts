@@ -53,7 +53,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     position: 'top',
-    text: 'Tooltip right.',
+    text: 'Tooltip top with a very large text. Help me out her to figure out the max width. Maybe try reading the ticket information',
     content: `
     <button
       data-testid="govieButton-default-primary-medium-notDisabled"

@@ -1229,8 +1229,15 @@ input[type='file' i] {
 }
 
 /* End of Progress bar*/
+
+/* Tooltip */
 .gi-tooltip-wrapper {
   @apply gi-relative gi-inline-block gi-overflow-visible gi-text-lg;
+}
+
+/* Focus ring for the wrapper or its focusable children */
+.gi-tooltip-wrapper:focus-within {
+  @apply gi-ring-2 gi-ring-blue-500 gi-ring-offset-2 gi-rounded-sm;
 }
 
 .gi-tooltip {
@@ -1245,12 +1252,14 @@ input[type='file' i] {
   @apply gi-block;
 }
 
+/* Position variants */
 .gi-tooltip-wrapper .gi-tooltip-top {
   @apply gi-bottom-full gi-left-1/2 gi-translate-x-[-50%] gi-translate-y-[-0.75rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-top::after {
-  @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] gi-border-x-[9px] gi-border-x-transparent gi-border-t-[9px] gi-border-t-gray-900 gi-bottom-[-0.45rem];
+  @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] 
+         gi-border-x-[9px] gi-border-x-transparent gi-border-t-[9px] gi-border-t-gray-900 gi-bottom-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-bottom {
@@ -1258,7 +1267,8 @@ input[type='file' i] {
 }
 
 .gi-tooltip-wrapper .gi-tooltip-bottom::after {
-  @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] gi-border-x-[9px] gi-border-x-transparent gi-border-b-[9px] gi-border-b-gray-900 gi-top-[-0.45rem];
+  @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] 
+         gi-border-x-[9px] gi-border-x-transparent gi-border-b-[9px] gi-border-b-gray-900 gi-top-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-left {
@@ -1266,7 +1276,8 @@ input[type='file' i] {
 }
 
 .gi-tooltip-wrapper .gi-tooltip-left::after {
-  @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] gi-border-y-[9px] gi-border-y-transparent gi-border-l-[9px] gi-border-l-gray-900 gi-right-[-0.45rem];
+  @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] 
+         gi-border-y-[9px] gi-border-y-transparent gi-border-l-[9px] gi-border-l-gray-900 gi-right-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-right {
@@ -1274,7 +1285,7 @@ input[type='file' i] {
 }
 
 .gi-tooltip-wrapper .gi-tooltip-right::after {
-  @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-gray-900 gi-left-[-0.45rem];
+  @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] 
+         gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-gray-900 gi-left-[-0.45rem];
 }
-
 /* End of Tooltip */
