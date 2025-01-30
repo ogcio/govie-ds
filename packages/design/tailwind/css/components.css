@@ -1009,6 +1009,14 @@ input[type='file' i] {
   @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
 }
 
+.notyf__toast--disappear {
+  transform: translateY(0);
+  -webkit-animation: notyf-fadeoutdown 0.3s forwards;
+  animation: notyf-fadeoutdown 0.3s forwards;
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+}
+
 /* End of Native notyf classes */
 
 .gi-toast-base {

@@ -5,6 +5,7 @@ import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import { cn } from '../cn.js';
 
 const toastVariants = tv({
   slots: {
@@ -78,19 +79,14 @@ function Toast({
   dismissible,
   onClose,
 }: DSToastProps) {
-  const [isDismissed, setIsDismissed] = useState(false);
-
   const { base, heading, container, dismiss, baseDismissible } = toastVariants({
     variant,
   });
 
   const baseVariant = dismissible ? baseDismissible : base;
 
-  if (isDismissed) {
-    return null;
-  }
   return (
-    <div className={baseVariant()} role="alert">
+    <div className={cn(baseVariant(), 'ds-toast')} role="alert">
       <Icon icon={icon({ variant })} />
       <div className={container()}>
         <p className={heading()}>{title}</p>
@@ -103,10 +99,7 @@ function Toast({
       </div>
       {dismissible && (
         <IconButton
-          onClick={(event) => {
-            setIsDismissed(true);
-            onClose?.(event);
-          }}
+          onClick={onClose}
           className={dismiss()}
           size="small"
           appearance="dark"

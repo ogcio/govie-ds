@@ -1,86 +1,132 @@
 'use client';
-import { INotyfPosition } from 'notyf';
-import { Notyf } from 'notyf';
-import { cloneElement, createContext, useEffect, useContext } from 'react';
-import { createRoot } from 'react-dom/client';
-import { renderToString } from 'react-dom/server';
-import { type ButtonProps } from '../button/types.js';
-import { Toast as DSToast, type DSToastProps } from './ds-toast.js';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Toast as DSToast } from './ds-toast.js';
+import { cn } from '../cn.js';
+import { ToastPosition, ToastProps } from './types.js';
 
-export type ToastProps = DSToastProps & {
-  duration?: number;
-  position?: INotyfPosition;
-  trigger?: React.ReactElement<ButtonProps>;
-};
+const positions: ToastPosition[] = [
+  { x: 'left', y: 'top' },
+  { x: 'left', y: 'center' },
+  { x: 'left', y: 'bottom' },
+  { x: 'center', y: 'top' },
+  { x: 'center', y: 'center' },
+  { x: 'center', y: 'bottom' },
+  { x: 'right', y: 'top' },
+  { x: 'right', y: 'center' },
+  { x: 'right', y: 'bottom' },
+];
 
-const notyfInstance = typeof window === 'undefined' ? null : new Notyf();
-const notyfContext = createContext(notyfInstance);
-
-export const Toast = (props: ToastProps) => {
-  const notyf = useContext(notyfContext);
+export const ToastProvider = () => {
+  const [toastStack, setToastStack] = useState<ToastProps[]>([]);
 
   useEffect(() => {
-    const notyfContainer = document.querySelectorAll(
-      '.notyf .notyf__toast',
-    ) as NodeListOf<HTMLElement>;
+    const handleToastEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<ToastProps>;
+      setToastStack((prev) => [...prev, customEvent.detail]);
+    };
 
-    for (const toast of notyfContainer) {
-      toast
-        .querySelector('.gi-toast-dismiss')
-        ?.addEventListener('click', () => {
-          toast.style.display = 'none';
-        });
-    }
+    window.addEventListener('add-toast', handleToastEvent);
+    return () => window.removeEventListener('add-toast', handleToastEvent);
   }, []);
 
-  const renderNotyf = () => {
-    const { duration, position } = props;
-    const html = renderToString(<DSToast {...props} />);
-    notyf && notyf.open({ type: 'open', message: html, duration, position });
-  };
+  return (
+    <>
+      {positions.map((position) => {
+        const filteredToasts = toastStack.filter(
+          (toast) =>
+            toast.position?.x === position.x &&
+            toast.position?.y === position.y,
+        );
 
-  if (props.trigger) {
-    return cloneElement(props.trigger, { onClick: renderNotyf });
-  }
-  renderNotyf();
-};
-
-let toastContainer: HTMLElement | null = null;
-const ensureToastContainer = () => {
-  if (!toastContainer) {
-    toastContainer = document.createElement('div');
-    toastContainer.id = 'toast-container';
-    document.body.append(toastContainer);
-  }
+        return createPortal(
+          <div
+            key={`${position.x}-${position.y}`}
+            role="region"
+            aria-label={`Notifications-${position.y}-${position.x}`}
+            className={cn('gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100', {
+              'gi-top-4': position.y === 'top',
+              'gi-bottom-4': position.y === 'bottom',
+              'gi-left-4': position.x === 'left',
+              'gi-right-4': position.x === 'right',
+              'gi-left-1/2 gi-translate-x-[-50%]': position.x === 'center',
+              'gi-top-1/2 gi-translate-y-[-50%]': position.y === 'center',
+            })}
+          >
+            {filteredToasts.map((toast, index) => (
+              <Toast key={index} {...toast} />
+            ))}
+          </div>,
+          document.body,
+        );
+      })}
+    </>
+  );
 };
 
 export const toaster = {
   create: (props: ToastProps) => {
-    if (!notyfInstance) {
-      return;
-    }
-
-    ensureToastContainer();
-
-    const toastWrapper = document.createElement('div');
-    toastContainer!.append(toastWrapper);
-
-    const root = createRoot(toastWrapper);
-    root.render(<DSToast {...props} />);
-
-    setTimeout(() => {
-      notyfInstance.open({
-        type: 'open',
-        message: toastWrapper.innerHTML,
-        duration: props.duration,
-        position: props.position,
-      });
-
-      setTimeout(() => {
-        toastWrapper.remove();
-      }, props.duration);
-    }, 0);
+    const toastCopy: ToastProps = {
+      ...props,
+      position: {
+        x: props?.position?.x || 'right',
+        y: props?.position?.y || 'top',
+      },
+    };
+    const event = new CustomEvent('add-toast', { detail: toastCopy });
+    window.dispatchEvent(event);
   },
 };
 
-export default Toast;
+export const Toast = ({
+  variant,
+  title,
+  description,
+  action,
+  dismissible,
+  duration = 5000,
+}: ToastProps) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleOnClose();
+    }, duration);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setHide(true);
+      }, 150);
+    }
+  }, [isOpen]);
+
+  const handleOnClose = () => setIsOpen(false);
+
+  if (hide) {
+    return null;
+  }
+
+  return (
+    <div
+      className={cn('notyf__toast notyf__toast--lower', {
+        'notyf__toast--disappear': !isOpen,
+      })}
+    >
+      <div className="notyf__wrapper">
+        <div className={'notyf__message'}>
+          <DSToast
+            onClose={handleOnClose}
+            title={title}
+            action={action}
+            variant={variant}
+            description={description}
+            dismissible={dismissible}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -6,12 +6,14 @@ import {
   Controls,
 } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Toast, toaster, ToastProvider } from './toast.js';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
-import Toast from './toast.js';
+import { source } from 'axe-core';
 
-const meta = {
+const meta: Meta<typeof Toast> = {
   title: 'Application/Toast',
+  component: Toast,
   argTypes: {
     variant: {
       control: 'radio',
@@ -42,17 +44,13 @@ const meta = {
       control: 'object',
       table: {
         type: {
-          summary: `x: ['left', 'center', 'right'] y: ['top', 'cented', 'bottom']`,
+          summary: `x: ['left', 'center', 'right'] y: ['top', 'center', 'bottom']`,
         },
       },
       description: 'Specify the position of the toast',
     },
-    trigger: {
-      control: 'object',
-      description:
-        'If specified the toast will be triggered by the click event of this React Button Component',
-    },
   },
+
   parameters: {
     docs: {
       page: () => (
@@ -67,53 +65,113 @@ const meta = {
       description: {
         component: 'Toast component',
       },
+      source: {
+        type: 'code',
+      },
     },
   },
-  component: Toast,
 } satisfies Meta<typeof Toast>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const WithTrigger: Story = {
+export const Default: Story = {
   args: {
-    title: 'Toast Triggered',
+    title: 'Default',
     description: 'This is some content',
-    trigger: <Button>Trigger Toast</Button>,
   },
+  render: (args) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(args)}>Trigger Toast</Button>
+    </>
+  ),
 };
 
 export const WithAction: Story = {
   args: {
-    title: 'Dismissible',
-    description: 'This is some content',
-    action: <Link href="#">Go to link</Link>,
+    title: '',
   },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'With Action',
+            description: 'This is some content',
+            action: <Link href="#">Go to link</Link>,
+          })
+        }
+      >
+        Show Toast with Action
+      </Button>
+    </>
+  ),
 };
 
 export const Dismissible: Story = {
   args: {
-    title: 'Dismissible',
-    description: 'This is some content',
-    dismissible: true,
+    title: '',
   },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'Dismissible',
+            description: 'This is some content',
+            dismissible: true,
+          })
+        }
+      >
+        Show Dismissible Toast
+      </Button>
+    </>
+  ),
 };
 
-export const withLongerDuration: Story = {
+export const WithLongerDuration: Story = {
   args: {
-    title: 'WithDuration',
-    description: 'This is some content',
-    duration: 8000,
+    title: '',
   },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'With Duration',
+            description: 'This is some content',
+            duration: 8000,
+          })
+        }
+      >
+        Show Toast with Longer Duration
+      </Button>
+    </>
+  ),
 };
 
-export const withPositionChange: Story = {
+export const WithPositionChange: Story = {
   args: {
-    title: 'withPositionChange',
-    description: 'This is some content',
-    position: {
-      x: 'left',
-      y: 'bottom',
-    },
+    title: '',
   },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'With Position Change',
+            description: 'This is some content',
+            position: { x: 'left', y: 'bottom' },
+          })
+        }
+      >
+        Show Toast at Bottom Left
+      </Button>
+    </>
+  ),
 };
