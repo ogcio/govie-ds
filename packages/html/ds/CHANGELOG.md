@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.28.0](https://github.com/ogcio/govie-ds/compare/html-v0.27.1...html-v0.28.0) (2025-01-30)
+
+
+### Features
+
+* Details component ([#416](https://github.com/ogcio/govie-ds/issues/416)) ([93ea9a1](https://github.com/ogcio/govie-ds/commit/93ea9a1cb39d786df429a81310beea50e9bdade5))
+
+
+### Bug Fixes
+
+* add fixed table layout ([#418](https://github.com/ogcio/govie-ds/issues/418)) ([2b4359a](https://github.com/ogcio/govie-ds/commit/2b4359a70a74706a3ca0bc24dfad7979f8c9dfa7))
+* update common aria attributes ([#417](https://github.com/ogcio/govie-ds/issues/417)) ([cda1b5e](https://github.com/ogcio/govie-ds/commit/cda1b5e2f566ba201a00e0f1da0f27a4fb25ed79))
+
 ## [0.27.1](https://github.com/ogcio/govie-ds/compare/html-v0.27.0...html-v0.27.1) (2025-01-24)
 
 
