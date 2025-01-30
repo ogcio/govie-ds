@@ -54,7 +54,7 @@ export * from './spinner/spinner.js';
 export * from './stack/stack.js';
 export { Alert } from './alert/alert.js';
 export { toaster, ToastProvider } from './toast/toast.js';
-export {
+export type {
   ToastHorizontalPosition,
   ToastPosition,
   ToastProps,

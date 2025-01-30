@@ -45,6 +45,8 @@ import {
   HeaderProps,
   toaster,
   Details,
+  ToastVariant,
+  ToastProvider,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {
@@ -102,7 +104,7 @@ const headerProps: HeaderProps = {
 };
 
 export default function Home() {
-  const handleCreateToast = (title: string, variant: any) =>
+  const handleCreateToast = (title: string, variant: ToastVariant) =>
     toaster.create({
       title,
       variant,
@@ -364,6 +366,7 @@ export default function Home() {
       </Container>
 
       <Footer />
+      <ToastProvider />
     </>
   );
 }

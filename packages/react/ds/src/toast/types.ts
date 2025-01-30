@@ -4,12 +4,12 @@ export type ToastHorizontalPosition = 'left' | 'center' | 'right';
 export type ToastVerticalPosition = 'top' | 'center' | 'bottom';
 export type ToastVariant = 'success' | 'info' | 'warning' | 'danger';
 
-export interface ToastPosition {
+export type ToastPosition = {
   x: ToastHorizontalPosition;
   y: ToastVerticalPosition;
-}
+};
 
-export interface ToastProps {
+export type ToastProps = {
   title: string;
   variant?: ToastVariant;
   description?: string;
@@ -18,4 +18,4 @@ export interface ToastProps {
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   duration?: number;
   position?: ToastPosition;
-}
+};
