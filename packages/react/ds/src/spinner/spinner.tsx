@@ -2,7 +2,7 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
-export const sizeVariants = {
+export const spinnerSizeVariants = {
   xl: 'gi-w-10 gi-h-10',
   lg: 'gi-w-8 gi-h-8',
   md: 'gi-w-6 gi-h-6',
@@ -11,7 +11,7 @@ export const sizeVariants = {
 
 const spinnerVariants = tv({
   variants: {
-    size: sizeVariants,
+    size: spinnerSizeVariants,
   },
 });
 

@@ -16,6 +16,7 @@ const Connector = ({
         data-orientation={orientation}
         data-next={isNextStep}
         className="gi-progress-stepper-step-connector"
+        aria-hidden="true"
       >
         <span />
       </div>
@@ -44,6 +45,8 @@ const Step = ({
         data-current={isCurrentStep}
         data-completed={isCompleted}
         data-next={isNextStep}
+        role="listitem"
+        aria-labelledby={`step-label-${stepNumber}`}
       >
         <div className="gi-progress-stepper-step gi-relative">
           {isCompleted ? <Icon icon="check" /> : <div>{stepNumber}</div>}
@@ -55,7 +58,12 @@ const Step = ({
             />
           ) : null}
         </div>
-        <div className="gi-progress-stepper-step-label">{children}</div>
+        <div
+          className="gi-progress-stepper-step-label"
+          id={`step-label-${stepNumber}`}
+        >
+          {children}
+        </div>
       </div>
       {isHorizontal ? (
         <Connector
@@ -79,6 +87,8 @@ export const ProgressStepper = ({
       data-testid="progress-stepper"
       className="gi-progress-stepper"
       data-orientation={orientation}
+      role="list"
+      aria-live="polite"
     >
       {steps.map((step, index) => (
         <Step

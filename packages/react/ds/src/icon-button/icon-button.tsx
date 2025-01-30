@@ -35,6 +35,8 @@ export const IconButton = ({
   const iconSize = size === 'large' ? 'md' : 'sm';
   return (
     <button
+      aria-disabled={disabled}
+      role="button"
       data-testid={`govieIconButton-${appearance}-${variant}-${size}-${disabled}`}
       onClick={onClick}
       className={`gi-btn ${getVariantAppearanceClass({ disabled, variant, appearance })} ${getSizeClass(size)} ${isButtonDisabled({ disabled, variant, appearance })} ${className}`}

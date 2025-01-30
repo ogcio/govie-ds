@@ -18,6 +18,9 @@ export const Button = ({
   form,
   value,
   className,
+  ariaLabel,
+  ariaDescribedBy,
+  ariaPressed,
 }: ButtonProps) => {
   return (
     <button
@@ -25,6 +28,9 @@ export const Button = ({
       type={type}
       form={form}
       value={value}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedBy}
+      aria-pressed={ariaPressed}
       data-testid={`govieButton-${appearance}-${variant}-${size}-${disabled ? 'disabled' : ''}`}
       onClick={onClick}
       className={cn(

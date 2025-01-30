@@ -1,14 +1,15 @@
-import { renderMacro } from '@govie-ds/macro';
+import { renderMacro } from '../macro';
 
 export function renderComponent<TProps = unknown>({
   name,
   html,
+  path,
 }: {
   name: string;
   html: string;
+  path?: string;
 }) {
   return function (props: TProps) {
-    const path = import.meta.url.split('/storybook')[0];
     const renderedMacro = renderMacro({ name, html, path })(props);
     return <div dangerouslySetInnerHTML={{ __html: renderedMacro }} />;
   };

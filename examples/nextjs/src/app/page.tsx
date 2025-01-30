@@ -25,7 +25,6 @@ import {
   Stack,
   Alert,
   Breadcrumbs,
-  Toast,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -45,6 +44,7 @@ import {
   HeaderSearch,
   HeaderProps,
   toaster,
+  Details,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {
@@ -144,14 +144,6 @@ export default function Home() {
           Trigger Warning Toast via callback
         </Button>
         <br />
-        <Toast title="This is a toast" />
-        <Toast
-          title="Toast triggered"
-          variant="success"
-          dismissible={true}
-          duration={500000}
-          trigger={<Button>Trigger Toast</Button>}
-        />
         <div className="flex flex-col gap-4 my-4">
           <Breadcrumbs>
             <BreadcrumbLink href="/home">Home</BreadcrumbLink>
@@ -361,6 +353,13 @@ export default function Home() {
               'Step 7',
             ]}
           />
+
+          <br />
+          <Details label="Help with Nationality">
+            We need to know your nationality so we can work out which elections
+            you’re entitled to vote in. If you cannot provide your nationality,
+            you’ll have to send copies of identity documents through the post.
+          </Details>
         </div>
       </Container>
 

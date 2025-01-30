@@ -86,8 +86,13 @@ function Alert({
     return null;
   }
   return (
-    <div className={baseVariant()} data-testid="alert" role="alert">
-      <Icon icon={icon({ variant })} />
+    <div
+      className={baseVariant()}
+      data-testid="alert"
+      role="alert"
+      aria-live="assertive"
+    >
+      <Icon icon={icon({ variant })} ariaHidden />
       <div className={container()}>
         <p className={heading()}>{title}</p>
         {children}
@@ -103,6 +108,7 @@ function Alert({
           appearance="dark"
           variant="flat"
           icon={{ icon: 'close' }}
+          aria-label="Dismiss alert"
         />
       )}
     </div>

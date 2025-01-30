@@ -3,9 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './label.html?raw';
 import { LabelProps } from './label.schema';
 
-const path = import.meta.url.split('/label')[0];
-
-const macro = { name: 'govieLabel', html, path };
+const macro = { name: 'govieLabel', html };
 
 // Component created using renderComponent and LabelProps
 const Label = renderComponent<LabelProps>(macro);

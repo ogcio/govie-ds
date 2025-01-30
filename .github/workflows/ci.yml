@@ -30,6 +30,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     permissions:
       id-token: write
@@ -46,23 +47,34 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT }}
 
-      - name: Use Node.js
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Configure git
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Format and Lint
+        run: |
+          pnpm format:check
+          pnpm lint
+
       - name: Build and test
         run: |
-          corepack enable          
-          pnpm install --frozen-lockfile --ignore-scripts
-          pnpm nx affected --base=last-release -t format:check --parallel=3
           pnpm build
-          pnpm nx affected --base=last-release -t lint --parallel=3
           pnpm test
 
       - name: Create Figma tokens flat artifact
@@ -76,3 +88,128 @@ jobs:
         with:
           name: figma-tokens-flat
           path: packages/design/figma/dist/tokens-flat
+
+  determine-affected:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    needs: build
+    outputs:
+      html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
+      react_affected: ${{ steps.check-react-affected.outputs.react_affected }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Determine affected projects
+        id: affected
+        run: |
+          pnpm nx show projects --affected --base=origin/main~1 --head=HEAD > affected.txt
+          cat affected.txt
+
+      - name: Set environment output if HTML package is affected
+        id: check-html-affected
+        run: |
+          if grep -q "@govie-ds/html" affected.txt; then
+            echo "html_affected=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "html_affected=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Set environment output if React package is affected
+        id: check-react-affected
+        run: |
+          if grep -q "@govie-ds/react" affected.txt; then
+            echo "react_affected=true" >> $GITHUB_OUTPUT
+          else
+            echo "react_affected=false" >> $GITHUB_OUTPUT
+          fi
+
+  chromatic-html:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment: dev
+    needs: determine-affected
+    if: ${{ needs.determine-affected.outputs.html_affected == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Storybook build
+        run: |
+          pnpm build:libs
+          pnpm html:storybook:build
+
+      - name: Publish Global HTML Library to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
+          storybookBuildDir: packages/html/ds/storybook-static
+          autoAcceptChanges: "main"
+          exitOnceUploaded: true
+
+  chromatic-react:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment: dev
+    needs: determine-affected
+    if: ${{ needs.determine-affected.outputs.react_affected == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Storybook build
+        run: |
+          pnpm build:libs
+          pnpm react:storybook:build
+
+      - name: Publish React Library to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
+          storybookBuildDir: packages/react/ds/storybook-static
+          autoAcceptChanges: "main"
+          exitOnceUploaded: true

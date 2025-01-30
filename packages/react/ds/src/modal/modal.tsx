@@ -36,6 +36,7 @@ const ModalCloseButton = ({
       size={size}
       appearance="dark"
       className="gi-modal-icon"
+      aria-label={label}
       {...props}
     >
       <>
@@ -49,6 +50,7 @@ const ModalCloseButton = ({
       icon={{
         icon: 'close',
       }}
+      aria-label="Close modal"
       onClick={props.onClick}
       variant="flat"
       size={size}
@@ -89,6 +91,10 @@ export const ModalWrapper = ({
       })}
       data-testid="modal"
       data-element="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={modalTitle ? 'gi-modal-title' : undefined}
+      aria-describedby="gi-modal-body"
       onClick={(event) => {
         const target = event.target as HTMLDivElement;
         if (target.dataset.element === 'modal') {
@@ -124,7 +130,7 @@ export const ModalWrapper = ({
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <div className="gi-flex-1">
+  <div className="gi-flex-1" id="gi-modal-title">
     <Heading as={as} {...props}>
       {children}
     </Heading>
@@ -137,7 +143,11 @@ export const ModalBody = ({
 }: {
   children: ReactNode;
   className?: string;
-}) => <div className={cn('gi-modal-body', className)}>{children}</div>;
+}) => (
+  <div id="gi-modal-body" className={cn('gi-modal-body', className)}>
+    {children}
+  </div>
+);
 
 export const ModalFooter = ({
   children,
@@ -161,6 +171,7 @@ export const Modal = ({
 
   const renderCloneTrigger = cloneElement(triggerButton as ReactElement<any>, {
     'data-testid': 'modal-trigger-button-container',
+    'aria-haspopup': 'dialog',
     onClick: handleOpen,
   });
 

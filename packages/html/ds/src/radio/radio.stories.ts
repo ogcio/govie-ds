@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './radio.html?raw';
 import type { RadioProps } from './radio.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/radio')[0];
-
-const macro = { name: 'govieRadio', html, path };
+const macro = { name: 'govieRadio', html };
 
 const Radio = renderComponent<RadioProps>(macro);
 

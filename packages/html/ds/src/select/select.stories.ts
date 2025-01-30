@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './select.html?raw';
 import { SelectProps } from './select.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/select')[0];
-
-const macro = { name: 'govieSelect', html, path };
+const macro = { name: 'govieSelect', html };
 
 const Select = renderComponent<SelectProps>(macro);
 

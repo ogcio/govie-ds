@@ -30,6 +30,7 @@
 {% from 'checkbox/checkbox.html' import govieCheckbox %}
 {% from 'checkbox/checkboxes-group.html' import govieCheckboxesGroup %}
 {% from 'tooltip/tooltip.html' import govieTooltip %}
+{% from 'details/details.html' import govieDetails %}
 
 {% from 'vars.jinja' import checkboxesProps, comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
@@ -349,6 +350,11 @@
   <footer class="govie-footer"></footer>
   <h2>Footer (Global)</h2>
   {{ govieFooter(footerProps) }}
+  <h2>Details</h2>
+  {{ govieDetails({
+    "label": "Help with Nationality",
+    "children": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.",
+  }) }}
 
   <script src="{{ static('js/govie-frontend.umd.js') }}"></script>
 </body>

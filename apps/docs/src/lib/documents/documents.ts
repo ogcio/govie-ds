@@ -1,5 +1,6 @@
 import { config } from '../config';
 import { MetaDocument } from './types';
+// eslint-disable-next-line import/order
 import { allDocs } from 'contentlayer/generated';
 
 export function getAll() {

@@ -76,3 +76,4 @@ export type {
   HeaderProps,
   HeaderSlotItemType,
 } from './header/types.js';
+export * from './details/details.js';

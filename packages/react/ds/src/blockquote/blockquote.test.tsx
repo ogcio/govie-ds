@@ -10,6 +10,16 @@ describe('govieBlockquote', () => {
     expect(pElement.tagName.toLowerCase()).toBe('blockquote');
   });
 
+  it('should render a blockquote with the cite attribute when provided', () => {
+    const citeUrl = 'https://example.com/source';
+    const { container } = render(
+      <Blockquote cite={citeUrl}>This is a blockquote</Blockquote>,
+    );
+    const blockquoteElement = container.querySelector('blockquote');
+    expect(blockquoteElement).toBeTruthy();
+    expect(blockquoteElement?.getAttribute('cite')).toBe(citeUrl);
+  });
+
   it('should pass axe accessibility tests', async () => {
     const { axe } = render(<Blockquote>This is a blockquote</Blockquote>);
     await axe();

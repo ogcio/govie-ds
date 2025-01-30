@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './checkbox.html?raw';
 import { CheckboxSizeEnum, type CheckboxProps } from './checkboxes.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/checkbox')[0];
-
-const macro = { name: 'govieCheckbox', html, path };
+const macro = { name: 'govieCheckbox', html };
 
 const Checkbox = renderComponent<CheckboxProps>(macro);
 

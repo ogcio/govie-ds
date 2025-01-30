@@ -3,10 +3,7 @@ import { renderComponent } from '../storybook/storybook';
 import html from './toast.html?raw';
 import { ToastProps } from './toast.schema';
 
-// Name of the folder the macro resides
-const path = import.meta.url.split('/toast')[0];
-
-const macro = { name: 'govieToast', html, path };
+const macro = { name: 'govieToast', html };
 
 const Toast = renderComponent<ToastProps>(macro);
 
@@ -43,7 +40,7 @@ const meta = {
       control: 'object',
       table: {
         type: {
-          summary: `x: ['left', 'center', 'right'] y: ['top', 'cented', 'bottom']`,
+          summary: `x: ['left', 'center', 'right'] y: ['top', 'center', 'bottom']`,
         },
       },
       description: 'Specify the position of the toast',

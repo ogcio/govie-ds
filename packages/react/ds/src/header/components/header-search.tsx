@@ -20,6 +20,7 @@ export function HeaderSearch({
       action={ActionType}
       className="gi-max-w-md gi-mx-auto"
       data-testid="header-search-form"
+      aria-label="Search Form"
     >
       <Heading as="h4">Search the website</Heading>
       <div className="gi-flex gi-items-end gi-mt-4">
@@ -31,9 +32,9 @@ export function HeaderSearch({
           type="text"
           className="gi-flex-auto"
         />
-        <Button className="gi-ml-1 gi-flex-none">
+        <Button className="gi-ml-1 gi-flex-none" aria-label="Submit search">
           Search
-          <Icon icon={icon} ariaLabel="Search" />
+          <Icon icon={icon} ariaLabel="Search" aria-hidden="true" />
         </Button>
       </div>
     </form>
