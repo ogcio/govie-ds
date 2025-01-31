@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../cn.js';
 import { Toast as DSToast } from './ds-toast.js';
@@ -19,7 +19,6 @@ const positions: ToastPosition[] = [
 
 export const ToastProvider = () => {
   const [toastStack, setToastStack] = useState<ToastProps[]>([]);
-  const isMounted = useRef(false);
 
   useEffect(() => {
     const handleToastEvent = (event: Event) => {
@@ -28,7 +27,6 @@ export const ToastProvider = () => {
     };
 
     window.addEventListener('govie:add-toast', handleToastEvent);
-    isMounted.current = true;
     return () =>
       window.removeEventListener('govie:add-toast', handleToastEvent);
   }, []);
@@ -67,24 +65,19 @@ export const ToastProvider = () => {
     </>
   );
 };
-ToastProvider.isMounted = false;
 
 export const toaster = {
   create: (props: ToastProps) => {
-    if (ToastProvider.isMounted) {
-      const event = new CustomEvent('govie:add-toast', {
-        detail: {
-          ...props,
-          position: {
-            x: props?.position?.x || 'right',
-            y: props?.position?.y || 'bottom',
-          },
+    const event = new CustomEvent('govie:add-toast', {
+      detail: {
+        ...props,
+        position: {
+          x: props?.position?.x || 'right',
+          y: props?.position?.y || 'top',
         },
-      });
-      window.dispatchEvent(event);
-    } else {
-      console.warn('ToastProvider not found. Cannot dispatch toast event.');
-    }
+      },
+    });
+    window.dispatchEvent(event);
   },
 };
 
