@@ -10,7 +10,7 @@
 @import 'node_modules/@govie-ds/tailwind/css/components.css';
 @import 'node_modules/@govie-ds/tailwind/css/typography.css';
 
-@import 'notyf/notyf.min.css';
+/*@import 'notyf/notyf.min.css'; */
 
 .gieds-js .js\:gi-hidden {
   display: none;
