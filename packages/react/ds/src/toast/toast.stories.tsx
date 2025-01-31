@@ -19,6 +19,12 @@ const meta: Meta<typeof Toast> = {
       description: 'Specify the variant of the toast component',
       options: ['info', 'danger', 'success', 'warning'],
     },
+
+    animation: {
+      control: 'radio',
+      description: 'Specify the toast animation."',
+      options: ['fadeinup', 'fadeinleft', 'fadeinright'],
+    },
     title: {
       control: 'text',
       description: 'Specify the title of the toast component',
@@ -78,6 +84,12 @@ export const Default: Story = {
   args: {
     title: 'Default',
     description: 'This is some content',
+    animation: 'fadeinup',
+    variant: 'info',
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
   },
   render: (props) => (
     <>

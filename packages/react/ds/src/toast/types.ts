@@ -3,6 +3,7 @@ import { LinkProps } from '../link/link.js';
 export type ToastHorizontalPosition = 'left' | 'center' | 'right';
 export type ToastVerticalPosition = 'top' | 'center' | 'bottom';
 export type ToastVariant = 'success' | 'info' | 'warning' | 'danger';
+export type ToastAnimation = 'fadeinup' | 'fadeinleft' | 'fadeinright';
 
 export type ToastPosition = {
   x: ToastHorizontalPosition;
@@ -12,6 +13,7 @@ export type ToastPosition = {
 export type ToastProps = {
   title: string;
   variant?: ToastVariant;
+  animation?: ToastAnimation;
   description?: string;
   action?: React.ReactElement<LinkProps>;
   dismissible?: boolean;

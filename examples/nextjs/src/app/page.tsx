@@ -43,8 +43,8 @@ import {
   DrawerFooter,
   HeaderSearch,
   HeaderProps,
-  toaster,
   Details,
+  toaster,
   ToastVariant,
   ToastProvider,
 } from '@govie-ds/react';

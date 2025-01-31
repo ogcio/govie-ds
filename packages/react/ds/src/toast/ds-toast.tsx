@@ -6,6 +6,7 @@ import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import { Description } from '@storybook/blocks';
 
 const toastVariants = tv({
   slots: {
@@ -87,19 +88,16 @@ function Toast({
 
   return (
     <div
-      className={cn(baseVariant(), 'ds-toast')}
+      className={baseVariant()}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-      aria-labelledby="toast-title"
-      aria-describedby="toast-description"
+      aria-label={title}
     >
       <Icon icon={icon({ variant })} />
       <div className={container()}>
-        <p id="toast-title" className={heading()}>
-          {title}
-        </p>
-        <Paragraph id="toast-description">{description}</Paragraph>
+        <p className={heading()}>{title}</p>
+        <Paragraph ariaLabel={description}>{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
             {cloneElement(action, { noColor: true, size: 'md' })}
