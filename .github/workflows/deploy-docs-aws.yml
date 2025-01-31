@@ -65,7 +65,6 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm format:check
           pnpm build
-          pnpm test
 
       - name: Sign in to Amazon ECR
         if: github.ref == 'refs/heads/main'

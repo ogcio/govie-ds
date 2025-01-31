@@ -6,6 +6,11 @@ const validAriaProps = [
   'aria-labelledby',
 ] as const;
 
+export enum LayoutVariant {
+  Auto = 'auto',
+  Fixed = 'fixed',
+}
+
 export const ariaSchema = zod.record(
   zod.enum(validAriaProps, {
     description: 'Valid ARIA attributes key',
@@ -29,6 +34,7 @@ export const tableSchema = zod.object({
         'An array of strings representing column headers for the table.',
     })
     .optional(),
+  layout: zod.nativeEnum(LayoutVariant).optional(),
   rows: zod
     .array(
       zod.any(), // Allows flexibility for HTML elements, text, or other types

@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [0.36.0](https://github.com/ogcio/govie-ds/compare/react-v0.35.0...react-v0.36.0) (2025-01-30)
+
+
+### Features
+
+* Details component ([#416](https://github.com/ogcio/govie-ds/issues/416)) ([93ea9a1](https://github.com/ogcio/govie-ds/commit/93ea9a1cb39d786df429a81310beea50e9bdade5))
+
+
+### Bug Fixes
+
+* add fixed table layout ([#418](https://github.com/ogcio/govie-ds/issues/418)) ([2b4359a](https://github.com/ogcio/govie-ds/commit/2b4359a70a74706a3ca0bc24dfad7979f8c9dfa7))
+
 ## [0.35.0](https://github.com/ogcio/govie-ds/compare/react-v0.34.0...react-v0.35.0) (2025-01-24)
 
 
