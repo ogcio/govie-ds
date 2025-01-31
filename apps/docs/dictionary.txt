@@ -145,3 +145,5 @@ tooltip
 tooltips
 Tooltips
 pre-expand
+dismissible
+center

@@ -233,6 +233,24 @@
     "variant": "success"
   }) }}
 
+<br />
+<button onclick="GOVIE.toaster.create({ title: 'Success', description: 'This is a toast notification.', variant: 'success' })">
+  Trigger Success Toast via callback
+</button>
+<br />
+<button onclick="GOVIE.toaster.create({ title: 'Error', description: 'This is a toast notification.', variant: 'danger' })">
+  Trigger Danger Toast via callback
+</button>
+<br />
+<button onclick="GOVIE.toaster.create({ title: 'Info', description: 'This is a toast notification.', variant: 'info' })">
+  Trigger Info Toast via callback
+</button>
+<br />
+<button onclick="GOVIE.toaster.create({ title: 'Error', description: 'This is a toast notification.', variant: 'warning' })">
+  Trigger Warning Toast via callback
+</button>
+
+
   <h2>Checkbox</h2>
 
   {{ govieCheckbox({
