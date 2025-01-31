@@ -40,7 +40,9 @@ export const ToastProvider = () => {
     };
   }, []);
 
-  if (!isClient) return null;
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <>
@@ -53,11 +55,11 @@ export const ToastProvider = () => {
 
         return createPortal(
           <div
-            id={`notifications-portal-${position.x}-${position.y}`}
-            key={`notifications-${position.x}-${position.y}`}
+            id={`toast-portal-${position.x}-${position.y}`}
+            key={`toast-${position.x}-${position.y}`}
             role="region"
-            aria-label={`Notifications-${position.y}-${position.x}`}
-            className={cn('gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100', {
+            aria-label={`Toasts-${position.y}-${position.x}`}
+            className={cn('gi-toast-portal', {
               'gi-top-4': position.y === 'top',
               'gi-bottom-4': position.y === 'bottom',
               'gi-left-4': position.x === 'left',

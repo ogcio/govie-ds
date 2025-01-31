@@ -1,12 +1,10 @@
 'use client';
 import { cloneElement } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Description } from '@storybook/blocks';
+import { ToastProps } from './types.js';
 
 const toastVariants = tv({
   slots: {
@@ -41,15 +39,6 @@ const toastVariants = tv({
   },
 });
 
-type DSToastProps = {
-  variant?: VariantProps<typeof toastVariants>['variant'];
-  title: string;
-  description?: string;
-  action?: React.ReactElement<LinkProps>;
-  dismissible?: boolean;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
 const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
   let icon;
   switch (variant) {
@@ -79,7 +68,7 @@ function Toast({
   variant = 'info',
   dismissible,
   onClose,
-}: DSToastProps) {
+}: ToastProps) {
   const { base, heading, container, dismiss, baseDismissible } = toastVariants({
     variant,
   });
@@ -120,4 +109,3 @@ function Toast({
 }
 
 export { Toast, toastVariants };
-export type { DSToastProps };
