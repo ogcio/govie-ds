@@ -1,3 +1,4 @@
+// @ts-expect-error The TS error is necessary as we are integrating the notyf library within our repo and thus no longer the libraries declarations
 import { Notyf } from './assets/notyf.min.js';
 import { ToastProps, ToastVariant } from './toast.schema.js';
 
