@@ -1016,7 +1016,7 @@ input[type='file' i] {
   @apply gi-m-0 gi-p-0 gi-min-w-[340px] gi-max-w-[460px] gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0];
 }
 
-.git-toast-portal {
+.gi-toast-portal {
   @apply gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100;
 }
 
