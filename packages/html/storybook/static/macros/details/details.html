@@ -1,0 +1,29 @@
+{% macro govieDetails(props) %}
+  <details
+    data-testid="govie-details"
+    class="gi-details"
+    data-module="gi-details"
+    {% if props.startsOpen %}open{% endif %}
+    {% if props.name %}name="{{ props.name }}"{% endif %}
+    aria-expanded="{{ 'true' if props.startsOpen else 'false' }}"
+    aria-details="details-content"
+  >
+    <summary
+      class="gi-details-summary"
+      data-testid="govie-details-summary"
+      role="button"
+      aria-controls="details-content"
+      aria-expanded="{{ 'true' if props.startsOpen else 'false' }}"
+      tabindex="0"
+    >
+      <span class="gi-details-summary-text">{{ props.label }}</span>
+    </summary>
+    <div
+      id="details-content"
+      class="gi-details-text"
+      aria-hidden="{{ 'false' if props.startsOpen else 'true' }}"
+    >
+      {{ props.children | safe | trim | indent(2) }}
+    </div>
+  </details>
+{% endmacro %}

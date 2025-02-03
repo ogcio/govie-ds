@@ -1,0 +1,86 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+{% from 'button/button.html' import govieButton %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
+{% from 'heading/heading.html' import govieHeading %}
+
+{% macro govieModal(props) %}
+  {% set openClass = 'gi-modal-open' if props.isOpen else 'gi-modal-close' %}
+
+  {% if props.position %}
+    {% set position = props.position %}
+  {% else %}
+    {% set position = 'center' %}
+  {% endif %}
+
+  <div data-module="gieds-modal">
+    {% if props.triggerButton %}
+      <div
+        data-testid="trigger-button-container"
+        data-element="trigger-button-container"
+        class="gi-contents"
+      >
+        {{ props.triggerButton | safe | trim | indent(2) }}
+      </div>
+    {% endif %}
+
+    <div
+      aria-label="modal"
+      role="dialog"
+      aria-modal="true"
+      class="gi-modal {{ openClass }}"
+      data-element="modal"
+      data-position="{{ props.position or 'center' }}"
+      data-testid="modal"
+      {% if props.isOpen %}
+        data-open="true"
+      {% endif %}
+      {{ commonAriaAttributes(props) }}
+    >
+      <div
+        data-testid="modal-container"
+        data-element="modal-container"
+        class="gi-modal-container gi-modal-container-{{ position }}"
+      >
+        <div>
+          {% if props.title %}
+            <div class="gi-flex-1">
+              {{ govieHeading({ "text": props.title.text, "size": props.title.size, "as": "h4"  }) }}
+            </div>
+          {% endif %}
+
+          {% if props.closeButtonLabel %}
+            {{
+              govieButton({
+                "onClick": props.onClick,
+                "variant": "flat",
+                "size": "small",
+                "appearance": "dark",
+                "className": "gi-modal-icon",
+                "content": props.closeButtonLabel ~ ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[16px]">close</span>'
+              })
+            }}
+          {% else %}
+            {{
+              govieIconButton({
+                "icon": { "icon": "close" },
+                "onClick": props.onClick,
+                "variant": "flat",
+                "size": "small",
+                "appearance": "dark",
+                "className": "gi-modal-icon"
+              })
+            }}
+          {% endif %}
+        </div>
+        <div>
+          <div class="gi-modal-body">
+            {{ props.body | safe | trim | indent(2) }}
+          </div>
+          <div class="gi-modal-footer">
+            {{ props.footer | safe | trim | indent(2) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

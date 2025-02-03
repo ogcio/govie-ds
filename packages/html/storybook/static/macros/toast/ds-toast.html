@@ -1,0 +1,54 @@
+{% from 'toast/helpers.html' import getIcon, getVariant, getBaseToastClass %}
+{% from 'icon/icon.html' import govieIcon %}
+{% from 'icon-button/icon-button.html' import govieIconButton %}
+{% from 'paragraph/paragraph.html' import govieParagraph %}
+{% from 'link/link.html' import govieLink %}
+
+{% macro govieDsToast(props) %}
+  {% set icon = getIcon(props.variant) %}
+  <div
+    data-module="gieds-dsToast"
+    class="{{ getBaseToastClass(props.dismissible) | trim }} {{ getVariant(props.variant) | trim }}"
+    role="alert"
+  >
+    {{
+      govieIcon({
+      "size": "lg",
+      "icon": icon
+      })
+    }}
+    <div class="gi-toast-container">
+      <p class="gi-toast-title">{{ props.title }}</p>
+      {{
+        govieParagraph({
+          "content": props.description
+        })
+      }}
+      {% if props.action %}
+        <div class="gi-toast-action">
+          {{
+            govieLink({
+                "noColor": true,
+                "size": "md",
+                "href": props.action.href,
+                "label": props.action.label
+            })
+          }}
+        </div>
+      {% endif %}
+    </div>
+    {% if props.dismissible %}
+      {{
+        govieIconButton({
+          "className": "gi-toast-dismiss",
+          "size": "small",
+          "appearance": "dark",
+          "variant": "flat",
+          "icon": {
+            "icon": "close"
+          }
+        })
+      }}
+    {% endif %}
+  </div>
+{% endmacro %}

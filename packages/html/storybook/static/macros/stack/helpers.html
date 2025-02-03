@@ -1,0 +1,96 @@
+{% macro getDirectionClasses(direction) %}
+  {% if direction is string %}
+    {% if direction == 'row' %}
+      gi-flex-row
+    {% elif direction == 'column' %}
+      gi-flex-col
+    {% endif %}
+  {% else %}
+    {{
+      (direction.base == 'row' and 'gi-flex-row' or direction.base == 'column' and 'gi-flex-col' or '') ~ ' ' ~
+      (direction.xs == 'row' and 'xs:gi-flex-row' or direction.xs == 'column' and 'xs:gi-flex-col' or '') ~ ' ' ~
+      (direction.sm == 'row' and 'sm:gi-flex-row' or direction.sm == 'column' and 'sm:gi-flex-col' or '') ~ ' ' ~
+      (direction.md == 'row' and 'md:gi-flex-row' or direction.md == 'column' and 'md:gi-flex-col' or '') ~ ' ' ~
+      (direction.lg == 'row' and 'lg:gi-flex-row' or direction.lg == 'column' and 'lg:gi-flex-col' or '') ~ ' ' ~
+      (direction.xl == 'row' and 'xl:gi-flex-row' or direction.xl == 'column' and 'xl:gi-flex-col' or '') ~ ' ' ~
+      (direction['2xl'] == 'row' and '2xl:gi-flex-row' or direction['2xl'] == 'column' and '2xl:gi-flex-col' or '')
+    }}
+  {% endif %}
+{% endmacro %}
+
+{% macro getItemsGapClasses(gap) %}
+  {% if gap is number %}
+    gi-gap-{{ gap }}
+  {% else %}
+    {% set classes = '' %}
+    {% if gap.base %}
+      {% set classes = classes + 'gi-gap-' ~ gap.base ~ ' ' %}
+    {% endif %}
+    {% if gap.sm %}
+      {% set classes = classes + 'sm:gi-gap-' ~ gap.sm ~ ' ' %}
+    {% endif %}
+    {% if gap.md %}
+      {% set classes = classes + 'md:gi-gap-' ~ gap.md ~ ' ' %}
+    {% endif %}
+    {% if gap.lg %}
+      {% set classes = classes + 'lg:gi-gap-' ~ gap.lg ~ ' ' %}
+    {% endif %}
+    {% if gap.xl %}
+      {% set classes = classes + 'xl:gi-gap-' ~ gap.xl ~ ' ' %}
+    {% endif %}
+    {% if gap['2xl'] %}
+      {% set classes = classes + '2xl:gi-gap-' ~ gap['2xl'] %}
+    {% endif %}
+    {{ classes | trim }}
+  {% endif %}
+{% endmacro %}
+
+{% macro getAlignmentClasses(itemsAlignment) %}
+  {% if itemsAlignment == 'start' %}
+    gi-items-start
+  {% elif itemsAlignment == 'center' %}
+    gi-items-center
+  {% elif itemsAlignment == 'end' %}
+    gi-items-end
+  {% endif %}
+{% endmacro %}
+
+{% macro getDistributionClasses(itemsDistribution) %}
+  {% if itemsDistribution == 'start' %}
+    gi-justify-start
+  {% elif itemsDistribution == 'center' %}
+    gi-justify-center
+  {% elif itemsDistribution == 'end' %}
+    gi-justify-end
+  {% elif itemsDistribution == 'between' %}
+    gi-justify-between
+  {% elif itemsDistribution == 'around' %}
+    gi-justify-around
+  {% elif itemsDistribution == 'evenly' %}
+    gi-justify-evenly
+  {% endif %}
+{% endmacro %}
+
+{% macro getWrapClass(wrap) %}
+  {% if wrap %}gi-flex-wrap{% else %}gi-flex-nowrap{% endif %}
+{% endmacro %}
+
+{% macro getDividerClasses(direction) %}
+  {% if direction is string %}
+    {% if direction == 'column' %}
+      gi-w-full gi-h-[1px]
+    {% elif direction == 'row' %}
+      gi-h-full gi-w-[1px]
+    {% endif %}
+  {% else %}
+    {{
+      (direction.base == 'column' and 'gi-w-full gi-h-[1px]' or direction.base == 'row' and 'gi-h-full gi-w-[1px]' or '') ~ ' ' ~
+      (direction.xs == 'column' and 'xs:gi-w-full xs:gi-h-[1px]' or direction.xs == 'row' and 'xs:gi-h-full xs:gi-w-[1px]' or '') ~ ' ' ~
+      (direction.sm == 'column' and 'sm:gi-w-full sm:gi-h-[1px]' or direction.sm == 'row' and 'sm:gi-h-full sm:gi-w-[1px]' or '') ~ ' ' ~
+      (direction.md == 'column' and 'md:gi-w-full md:gi-h-[1px]' or direction.md == 'row' and 'md:gi-h-full md:gi-w-[1px]' or '') ~ ' ' ~
+      (direction.lg == 'column' and 'lg:gi-w-full lg:gi-h-[1px]' or direction.lg == 'row' and 'lg:gi-h-full lg:gi-w-[1px]' or '') ~ ' ' ~
+      (direction.xl == 'column' and 'xl:gi-w-full xl:gi-h-[1px]' or direction.xl == 'row' and 'xl:gi-h-full xl:gi-w-[1px]' or '') ~ ' ' ~
+      (direction['2xl'] == 'column' and '2xl:gi-w-full 2xl:gi-h-[1px]' or direction['2xl'] == 'row' and '2xl:gi-h-full 2xl:gi-w-[1px]' or '')
+    }}
+  {% endif %}
+{% endmacro %}

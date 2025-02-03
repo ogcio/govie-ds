@@ -1,0 +1,48 @@
+{% macro govieFooter(props) %}
+  {% from 'heading/heading.html' import govieHeading %}
+  {% from 'section-break/section-break.html' import govieSectionBreak %}
+  {% from 'assets/logos/gov-of-ireland/harp-gold.html' import Logo %}
+
+  <footer class="gi-footer" data-module="gieds-footer">
+    <div class="gi-layout-container">
+      {# secondary nav links #}
+      <div class="footer-secondary-nav-links">
+        {% if props.secondaryNavLinks %}
+          {% for linkObj in props.secondaryNavLinks %}
+            <div>
+              <div class="gi-heading-md">{{ linkObj.heading }}</div>
+              {{ govieSectionBreak({"size": "md"}) }}
+              <ul>
+                {% for link in linkObj.links %}
+                  <li>
+                    <a href="{{ link.href }}"> {{ link.label }} </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {# main links #}
+      <div class="footer-primary-nav-links">
+        <ul>
+          {% if props.links %}
+            {% for link in props.links %}
+              <li data-testid="main-link-{{ loop.index0 }}">
+                <a href="{{ link.href }}"> {{ link.label }} </a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+        <div class="logo-container">
+          {{
+            Logo({
+              "width": "190",
+              "height": "66"
+            })
+          }}
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endmacro %}

@@ -1,0 +1,82 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+{% from 'icon/icon.html' import govieIcon %}
+
+{% macro getDisabledOpacity(disabled) %}
+  {% if disabled %}
+    gi-opacity-30
+  {% endif %}
+{% endmacro %}
+
+{% macro getDisabledCursor(disabled) %}
+  {% if disabled %}
+    gi-cursor-not-allowed
+  {% else %}
+    gi-cursor-pointer
+  {% endif %}
+{% endmacro %}
+
+{% macro getDefaultExpanded(expanded) %}
+  {% if expanded %}
+    gi-block
+  {% else %}
+    gi-hidden
+  {% endif %}
+{% endmacro %}
+
+{% macro getIcon(expanded) %}
+  {% if expanded %}
+    keyboard_arrow_up
+  {% else %}
+    keyboard_arrow_down
+  {% endif %}
+{% endmacro %}
+
+{% macro getIconPosition(iconStart) %}
+  {% if iconStart %}
+    gi-flex gi-flex-row-reverse gi-justify-end
+  {% else %}
+    gi-flex gi-justify-between gi-w-full
+  {% endif %}
+{% endmacro %}
+
+{% macro govieAccordion(props) %}
+  <div
+    data-module="gieds-accordion"
+    class="gi-max-w-prose"
+    role="region"
+    {{ commonAriaAttributes(props) }}
+  >
+    {% for item in props['items'] %}
+      <div
+        data-disabled="{{ item.disabled }}"
+        data-default-expanded="{{ item.defaultExpanded }}"
+        class="gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid {{ getDisabledOpacity(item.disabled) | trim }}"
+        role="group"
+      >
+        <div
+          class="{{ getIconPosition(props.iconStart) | trim }} {{ getDisabledCursor(item.disabled) | trim }}"
+          {% if item.aria['aria-disabled'] %}aria-disabled="{{ item.aria['aria-disabled'] }}"{% endif %}
+          {% if item.aria['aria-expanded'] %}aria-expanded="{{ item.aria['aria-expanded'] }}"{% endif %}
+          {% if item.aria['aria-controls'] %}aria-controls="{{ item.aria['aria-controls'] }}"{% endif %}
+          id="accordion-header-{{ loop.index }}"
+        >
+          {{ item.label }}
+          {{
+            govieIcon({
+              "icon": getIcon(item.defaultExpanded) | trim | safe
+            })
+          }}
+        </div>
+        <div
+          class="gi-pt-4 {{ getDefaultExpanded(item.defaultExpanded) | trim }}"
+          id="accordion-panel-{{ loop.index }}"
+          role="region"
+          {% if item.aria['aria-labelledby'] %}aria-labelledby="{{ item.aria['aria-labelledby'] }}"{% endif %}
+          {% if item.aria['aria-hidden'] %}aria-hidden="{{ item.aria['aria-hidden'] }}"{% endif %}
+        >
+          {{ item.content | safe | trim }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}

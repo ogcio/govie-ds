@@ -1,0 +1,9 @@
+{% macro getSizeClass(size) %}
+  {% if size == 'small' %}
+    gi-icon-btn-small
+  {% elif size == 'large' %}
+    gi-icon-btn-large
+  {% else %}
+    gi-icon-btn-regular
+  {% endif %}
+{% endmacro %}

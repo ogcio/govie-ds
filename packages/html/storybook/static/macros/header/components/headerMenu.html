@@ -1,0 +1,75 @@
+{% from 'header/components/headerSearchContainer.html' import HeaderSearchContainer %}
+{% from 'icon/icon.html' import govieIcon %}
+
+{% macro govieMenuListItem(href, label, isBold) %}
+  <a
+    aria-label="{{ label or '' }}"
+    href="{{ href }}"
+    class="gi-header-menu-list-item"
+  >
+    <span class="gi-text-sm gi-ml-1 {{ 'gi-font-bold' if isBold }}">
+      {{ label | safe }}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro govieMenuItemAccordion(index, label, slot) %}
+  <div
+    id="Accordion-item-{{ index }}"
+    class="gi-accordion-item-container"
+    data-open="false"
+  >
+    <div aria-label="{{ label }}" class="gi-header-accordion-item-toggle">
+      <div>
+        <span class="gi-text-sm gi-font-bold gi-ml-1"> {{ label }} </span>
+        <span class="gi-accordion-item-icon">
+          {{ govieIcon({"icon": "chevron_right"}) }}
+        </span>
+      </div>
+    </div>
+    <div class="gi-accordion-item-slot gi-hidden">{{ slot | safe }}</div>
+  </div>
+{% endmacro %}
+
+{% macro headerMenu(props) %}
+  {% if 'tools' in props %}
+    {% if 'items' in props.tools %}
+      {% set toolItems = props.tools['items'] %}
+    {% endif %}
+  {% endif %}
+
+  <div id="HeaderMenuContainer" class="gi-header-menu-container lg:gi-hidden">
+    <div>
+      <div class="gi-flex gi-items-center">
+        <label for="MobileMenuTrigger" class="gi-header-menu-mobile-trigger">
+          <span>Close</span>
+          {{ govieIcon({"icon": "close"}) }}
+        </label>
+      </div>
+    </div>
+    <ul>
+      {% for link in props.navLinks %}
+        <li>{{ govieMenuListItem(link.href, link.label, true) }}</li>
+      {% endfor %}
+      {% for item in toolItems %}
+        {% if not item.slot or item.keepOnMobile %}
+          <li>
+            {% if item.slot %}
+              {{ govieMenuItemAccordion(loop.index0, item.label, item.slot) }}
+            {% else %}
+              {{ govieMenuListItem(item.href, item.label, true) }}
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+      {% for link in props.languages %}
+        <li>{{ govieMenuListItem(link.href, link.label, false) }}</li>
+      {% endfor %}
+      {% if props.tools and props.tools.search %}
+        <li class="gi-mt-8 sm:gi-hidden">
+          {{ HeaderSearchContainer({"searchUrl": props.searchUrl, "dataElement": "search-container-mobile" , "dataTestId": "search-container-mobile"}) }}
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+{% endmacro %}

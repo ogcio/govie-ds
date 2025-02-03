@@ -1,0 +1,74 @@
+{% from 'label/label.html' import govieLabel %}
+{% from 'hint-text/hint-text.html' import govieHintText %}
+{% from 'error-text/error-text.html' import govieErrorText %}
+
+{% macro govieSelect(props) %}
+  {% set ariaLabel = props.label.content if props.label else props.id %}
+  {% set isError = props.error and props.error.content %}
+  {% set isHint = props.hint and props.hint.content %}
+  {% set marginBottom = 'gi-mb-1' %}
+  {% if not isError and not isHint %}
+    {% set marginBottom = 'gi-mb-2' %}
+  {% endif %}
+
+  <div data-module="gieds-select">
+    {% if props.label %}
+      {{
+        govieLabel({
+          "content": props.label.content,
+          "size": props.label.size,
+          "for": props.id,
+          "classNames": marginBottom
+        })
+      }}
+    {% endif %}
+    {% if isHint %}
+      {{
+        govieHintText({
+          "content": props.hint.content,
+          "size": props.hint.size,
+          "classNames": props.hint.classNames
+        })
+      }}
+    {% endif %}
+    {% if isError %}
+      {{
+        govieErrorText({
+          "content": props.error.content,
+          "size": props.error.size,
+          "classNames": props.error.classNames
+        })
+      }}
+    {% endif %}
+    <select
+      id="{{ props.id }}"
+      aria-label="{{ ariaLabel }}"
+      {% if isError %}
+        aria-invalid="true"
+      {% endif %}
+      {% if isHint %}
+        aria-describedby="{{ props.id }}-hint"
+      {% endif %}
+      {% if isError %}
+        aria-errormessage="{{ props.id }}-error"
+      {% endif %}
+      class="gi-select {{ marginTop }}"
+    >
+      {% for option in props.options %}
+        {% if option.groupName %}
+          <optgroup label="{{ option.groupName }}">
+            {% for option in option.items %}
+              <option class="gi-select-option" value="{{ option.value }}">
+                {{ option.label }}
+              </option>
+            {% endfor %}
+          </optgroup>
+        {% else %}
+          <option class="gi-select-option" value="{{ option.value }}">
+            {{ option.label }}
+          </option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+{% endmacro %}

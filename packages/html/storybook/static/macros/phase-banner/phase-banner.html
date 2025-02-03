@@ -1,0 +1,6 @@
+{% macro goviePhaseBanner(props) %}
+  <div data-testid="phase-banner" class="gi-phase-banner-container">
+    <div class="gi-phase-banner">{{ props.level }}</div>
+    <div>{{ props.content | safe | trim }}</div>
+  </div>
+{% endmacro %}
