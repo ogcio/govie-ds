@@ -42,7 +42,9 @@ libraries:
   </TabPanel>
   <TabPanel value="tab22">
   ```react
-  import { toaster, ToastProvider } from '@govie-ds/react';<ToastProvider />
+  import { toaster, ToastProvider } from '@govie-ds/react';
+  
+  <ToastProvider />
     <Button
       onClick={() => {
         toaster.create({
@@ -65,6 +67,7 @@ libraries:
     title="Toast Triggered"
     variant="danger"
     description="This is an error toast"
+    duration={900000}
   />
 </ComponentContainer>
 

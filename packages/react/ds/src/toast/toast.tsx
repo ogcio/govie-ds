@@ -59,14 +59,8 @@ export const ToastProvider = () => {
             key={`toast-${position.x}-${position.y}`}
             role="region"
             aria-label={`Toasts-${position.y}-${position.x}`}
-            className={cn('gi-toast-portal', {
-              'gi-top-4': position.y === 'top',
-              'gi-bottom-4': position.y === 'bottom',
-              'gi-left-4': position.x === 'left',
-              'gi-right-4': position.x === 'right',
-              'gi-left-1/2 gi-translate-x-[-50%]': position.x === 'center',
-              'gi-top-1/2 gi-translate-y-[-50%]': position.y === 'center',
-            })}
+            data-position={`${position.y}-${position.x}`}
+            className="gi-toast-portal"
           >
             {filteredToasts.map((toast, index) => (
               <Toast key={`toast-${index}`} {...toast} />
@@ -80,14 +74,14 @@ export const ToastProvider = () => {
 };
 
 export const toaster = {
-  create: (props: ToastProps) => {
+  create: ({ position, ...props }: ToastProps) => {
     if (toastProviderState.isMounted) {
       const event = new CustomEvent('govie:add-toast', {
         detail: {
           ...props,
           position: {
-            x: props?.position?.x || 'right',
-            y: props?.position?.y || 'bottom',
+            x: position?.x || 'right',
+            y: position?.y || 'bottom',
           },
         },
       });

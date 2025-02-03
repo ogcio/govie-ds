@@ -86,6 +86,7 @@ export const Default: Story = {
     description: 'This is some content',
     animation: 'fadeinup',
     variant: 'info',
+    duration: 5000,
     position: {
       x: 'right',
       y: 'bottom',
@@ -182,6 +183,62 @@ export const WithPositionChange: Story = {
         }
       >
         Show Toast at Bottom Left
+      </Button>
+    </>
+  ),
+};
+
+export const tabletView: Story = {
+  args: {
+    title: '',
+  },
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'ipad',
+    },
+  },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'Tablet Position Change',
+            description: 'This toast appears on a tablet',
+            position: { x: 'right', y: 'bottom' },
+          })
+        }
+      >
+        Show Toast at Bottom Right (Tablet)
+      </Button>
+    </>
+  ),
+};
+
+export const mobileView: Story = {
+  args: {
+    title: '',
+  },
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  render: () => (
+    <>
+      <ToastProvider />
+      <Button
+        onClick={() =>
+          toaster.create({
+            title: 'Mobile Position Change',
+            description: 'This toast appears on a mobile',
+            position: { x: 'right', y: 'bottom' },
+          })
+        }
+      >
+        Show Toast full width (Mobile)
       </Button>
     </>
   ),

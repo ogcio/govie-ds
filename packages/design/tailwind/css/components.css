@@ -1013,11 +1013,31 @@ input[type='file' i] {
 }
 
 .gi-toast {
-  @apply gi-m-0 gi-p-0 gi-min-w-[340px] gi-max-w-[460px] gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0];
+  @apply gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0];
 }
 
 .gi-toast-portal {
-  @apply gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100;
+  @apply gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100 gi-w-full gi-max-w-[calc(100%_-_var(--gieds-space-8))] md:gi-w-auto;
+}
+
+.gi-toast-portal[data-position='top-right'] {
+  @apply gi-top-4 gi-right-4;
+}
+
+.gi-toast-portal[data-position='top-left'] {
+  @apply gi-top-4 gi-left-4;
+}
+
+.gi-toast-portal[data-position='center-center'] {
+  @apply gi-top-1/2 gi-left-1/2 gi-translate-x-[-50%] gi-translate-y-[-50%];
+}
+
+.gi-toast-portal[data-position='bottom-right'] {
+  @apply gi-bottom-4 gi-right-4;
+}
+
+.gi-toast-portal[data-position='bottom-left'] {
+  @apply gi-bottom-4 gi-left-4;
 }
 
 .gi-toast[data-animation='fadeinup'] {
@@ -1058,23 +1078,23 @@ input[type='file' i] {
 }
 
 .gi-toast-message {
-  @apply !gi-w-full;
-  animation-delay: 0s !important;
+  @apply gi-w-full;
+  animation-delay: 0s;
 }
 .gi-toast-wrapper {
-  @apply !gi-m-0 !gi-p-0;
+  @apply gi-m-0 !gi-p-0;
 }
 .gi-oast:has(.gi-toast-info) {
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
 }
 .gi-toast:has(.gi-toast-success) {
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
 }
 .gi-toast:has(.gi-toast-warning) {
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
 }
 .gi-toast:has(.gi-toast-danger) {
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
 }
 
 /* Keyframes for fade-in animations */
