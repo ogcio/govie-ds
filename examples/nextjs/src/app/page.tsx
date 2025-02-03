@@ -113,7 +113,7 @@ export default function Home() {
         x: 'right',
         y: 'bottom',
       },
-      duration: 30000,
+      duration: 3000,
       dismissible: true,
     });
 
