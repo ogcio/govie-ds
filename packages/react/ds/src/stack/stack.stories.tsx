@@ -52,7 +52,6 @@ const meta = {
     className: {
       control: 'text',
       description: 'Custom classNames added into the stack container',
-      defaultValue: false,
     },
   },
 } satisfies Meta<typeof Stack>;
