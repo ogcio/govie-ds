@@ -204,10 +204,11 @@ export const Stack: React.FC<StackProps> = ({
   itemsAlignment = 'start',
   itemsDistribution = 'start',
   wrap = false,
+  className,
 }) => {
   const stackClasses = cn(
+    className,
     'gi-flex',
-    'gi-overflow-auto',
     'gi-w-full',
     getDistributionClasses(itemsDistribution),
     getAlignmentClasses(itemsAlignment),

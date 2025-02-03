@@ -219,7 +219,6 @@ export default function Home() {
               htmlFor: 'textarea-id',
             }}
           />
-
           <span className="material-symbols-outlined">face</span>
           <div>
             <Modal triggerButton={<Button>Open Modal</Button>}>
@@ -241,7 +240,6 @@ export default function Home() {
               </ModalFooter>
             </Modal>
           </div>
-
           <br />
           <div>
             <Drawer triggerButton={<Button>Open Drawer</Button>}>
@@ -287,7 +285,6 @@ export default function Home() {
           <Alert title="Info Alert" dismissible>
             <Paragraph>This is the content</Paragraph>
           </Alert>
-
           <SummaryList>
             <SummaryListRow label="Name">
               <SummaryListValue>John Smith</SummaryListValue>
@@ -314,9 +311,7 @@ export default function Home() {
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
-
           <ProgressBar value={50} label="Loading..." />
-
           <ProgressStepper
             currentStepIndex={3}
             steps={[
@@ -329,7 +324,6 @@ export default function Home() {
               'Step 7',
             ]}
           />
-
           <br />
           <Details label="Help with Nationality">
             We need to know your nationality so we can work out which elections
