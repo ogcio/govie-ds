@@ -4,6 +4,7 @@
   <span
     class="gi-tooltip-wrapper"
     data-module="gieds-tooltip"
+    data-testid="dti-tooltip-wrapper"
     {{ commonAriaAttributes(props) }}
   >
     {% if props.content %}
@@ -12,6 +13,7 @@
     <span
       role="tooltip"
       class="gi-tooltip gi-tooltip-{{ props.position }}"
+      data-testid="dti-tooltip-content-{{ props.position }}"
       aria-hidden="true"
     >
       {{ props.text }}
