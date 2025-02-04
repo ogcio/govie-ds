@@ -68,6 +68,7 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
       }}
       role="button"
       aria-describedby={isVisible ? describedById : undefined}
+      data-testid="dti-tooltip-wrapper"
     >
       {children}
       {isVisible && (
@@ -76,6 +77,7 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
           role="tooltip"
           className={tooltipTv({ position })}
           aria-hidden={!isVisible}
+          data-testid={`dti-tooltip-content-${position}`}
         >
           {text.length > 100 ? text.slice(0, 100) + '...' : text}
         </span>
