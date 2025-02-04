@@ -71,6 +71,7 @@ export function Header({
   fullWidth = false,
   addDefaultMobileMenu,
   mobileMenuLabel,
+  showTitleOnMobile,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -186,8 +187,13 @@ export function Header({
               )}
               {!logo?.href && getLogo({ logo })}
             </div>
-
-            <div className={appTitleClassNames}>{title}</div>
+            <div
+              className={cn(appTitleClassNames, {
+                'gi-hidden': !showTitleOnMobile,
+              })}
+            >
+              {title}
+            </div>
           </div>
           <div className="gi-gap-2 md:gi-gap-4">
             {finalItems?.map((item, index) => {

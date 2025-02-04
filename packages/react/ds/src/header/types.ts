@@ -42,4 +42,5 @@ export type HeaderProps = {
     label: string;
   }[];
   fullWidth?: boolean;
+  showTitleOnMobile?: boolean;
 };

@@ -97,7 +97,11 @@
             {% endif %}
           </div>
 
-          <div class="{{ appTitleClassNames }}">
+          <div
+            class="{{ appTitleClassNames }} 
+            {% if not props.showTitleOnMobile %}{{ "gi-hidden" }}{% endif %} 
+          "
+          >
             {% if props.title %}{{ props.title }}{% endif %}
           </div>
         </div>

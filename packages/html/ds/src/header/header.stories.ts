@@ -574,3 +574,29 @@ export const ShowMobileMenuForLanguages: Story = {
     ],
   },
 };
+
+export const ShowTitleOnMobile: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    title: 'Title in mobile',
+    showTitleOnMobile: true,
+    logo: {
+      href: '/link',
+    },
+    languages: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ],
+  },
+};
