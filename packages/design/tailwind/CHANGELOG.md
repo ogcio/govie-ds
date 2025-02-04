@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [0.30.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.29.0...tailwind-v0.30.0) (2025-01-30)
+
+
+### Features
+
+* Details component ([#416](https://github.com/ogcio/govie-ds/issues/416)) ([93ea9a1](https://github.com/ogcio/govie-ds/commit/93ea9a1cb39d786df429a81310beea50e9bdade5))
+
+
+### Bug Fixes
+
+* drawer height ([#411](https://github.com/ogcio/govie-ds/issues/411)) ([8de0451](https://github.com/ogcio/govie-ds/commit/8de0451824f6caa7b0be90fef5406341c39fbcff))
+
 ## [0.29.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.28.0...tailwind-v0.29.0) (2025-01-24)
 
 

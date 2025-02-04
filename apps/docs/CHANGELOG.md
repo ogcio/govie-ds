@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.41.0](https://github.com/ogcio/govie-ds/compare/docs-v0.40.0...docs-v0.41.0) (2025-01-30)
+
+
+### Features
+
+* Details component ([#416](https://github.com/ogcio/govie-ds/issues/416)) ([93ea9a1](https://github.com/ogcio/govie-ds/commit/93ea9a1cb39d786df429a81310beea50e9bdade5))
+
 ## [0.40.0](https://github.com/ogcio/govie-ds/compare/docs-v0.39.0...docs-v0.40.0) (2025-01-24)
 
 
