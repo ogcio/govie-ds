@@ -583,7 +583,7 @@ export const ShowTitleOnMobile: Story = {
     },
   },
   args: {
-    title: 'Title in mobile',
+    title: 'Title on mobile',
     showTitleOnMobile: true,
     logo: {
       href: '/link',
