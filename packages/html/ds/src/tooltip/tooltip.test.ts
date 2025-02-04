@@ -98,7 +98,9 @@ describe('govieTooltip', () => {
       position: 'top',
     });
 
-    const tooltip = screen.getByText('Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip tex...');
+    const tooltip = screen.getByText(
+      'Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip tex...',
+    );
     expect(tooltip).toBeTruthy();
   });
 

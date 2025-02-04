@@ -55,7 +55,9 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
       className="gi-tooltip-wrapper"
       onMouseEnter={showTooltip}
       onMouseLeave={() => {
-        if (!isFocused) hideTooltip();
+        if (!isFocused) {
+          hideTooltip();
+        }
       }}
       onFocus={() => {
         setIsFocused(true);
@@ -81,5 +83,3 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
     </span>
   );
 };
-
-export default Tooltip;

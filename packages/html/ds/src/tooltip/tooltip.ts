@@ -29,13 +29,18 @@ export class Tooltip extends BaseComponent<TooltipProps> {
 
     if (event.type === 'mouseenter') {
       tooltip.setAttribute('aria-hidden', 'false');
-    } else if (event.type === 'mouseleave' && !wrapper.contains(document.activeElement)) {
+    } else if (
+      event.type === 'mouseleave' &&
+      !wrapper.contains(document.activeElement)
+    ) {
       tooltip.setAttribute('aria-hidden', 'true');
     }
   }
 
   handleFocus(event: FocusEvent) {
-    const wrapper = (event.target as HTMLElement).closest('.gi-tooltip-wrapper');
+    const wrapper = (event.target as HTMLElement).closest(
+      '.gi-tooltip-wrapper',
+    );
     const tooltip = wrapper?.querySelector('[role="tooltip"]');
 
     if (wrapper && tooltip) {
@@ -44,9 +49,11 @@ export class Tooltip extends BaseComponent<TooltipProps> {
   }
 
   handleBlur(event: FocusEvent) {
-    const wrapper = (event.target as HTMLElement).closest('.gi-tooltip-wrapper');
+    const wrapper = (event.target as HTMLElement).closest(
+      '.gi-tooltip-wrapper',
+    );
     const tooltip = wrapper?.querySelector('[role="tooltip"]');
-    
+
     const relatedTarget = event.relatedTarget as HTMLElement;
     if (wrapper && tooltip && !wrapper.contains(relatedTarget)) {
       tooltip.setAttribute('aria-hidden', 'true');
@@ -55,58 +62,52 @@ export class Tooltip extends BaseComponent<TooltipProps> {
 
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      // Find all visible tooltips and hide them
-      this.getAllTooltips.forEach(wrapper => {
+      for (const wrapper of this.getAllTooltips) {
         const tooltip = wrapper.querySelector('[role="tooltip"]');
         if (tooltip && tooltip.getAttribute('aria-hidden') === 'false') {
           tooltip.setAttribute('aria-hidden', 'true');
-          
-          // If the wrapper is focused, keep the focus but hide the tooltip
+
           if (wrapper.contains(document.activeElement)) {
             (document.activeElement as HTMLElement).focus();
           }
         }
-      });
+      }
     }
   }
 
   hideAllTooltips() {
-    this.getAllTooltips.forEach(wrapper => {
+    for (const wrapper of this.getAllTooltips) {
       const tooltip = wrapper.querySelector('[role="tooltip"]');
       if (tooltip) {
         tooltip.setAttribute('aria-hidden', 'true');
       }
-    });
+    }
   }
 
   private truncateText(text: string): string {
-    return text.length > 100 
-      ? text.substring(0, 100).trim() + '...'
-      : text;
+    return text.length > 100 ? text.slice(0, 100).trim() + '...' : text;
   }
 
   initComponent() {
-    this.getAllTooltips.forEach(wrapper => {
+    for (const wrapper of this.getAllTooltips) {
       const tooltipElement = wrapper.querySelector('[role="tooltip"]');
       if (tooltipElement) {
         const originalText = tooltipElement.textContent || '';
         tooltipElement.textContent = this.truncateText(originalText);
       }
-    });
+    }
 
     for (const tooltipWrapper of this.getAllTooltips) {
-      // Mouse events
       tooltipWrapper.addEventListener(
         'mouseenter',
         this.handleTooltipVisibility,
-        false
+        false,
       );
       tooltipWrapper.addEventListener(
         'mouseleave',
         this.handleTooltipVisibility,
-        false
+        false,
       );
-
       tooltipWrapper.addEventListener('focusin', this.handleFocus, false);
       tooltipWrapper.addEventListener('focusout', this.handleBlur, false);
     }
@@ -119,12 +120,12 @@ export class Tooltip extends BaseComponent<TooltipProps> {
       tooltipWrapper.removeEventListener(
         'mouseenter',
         this.handleTooltipVisibility,
-        false
+        false,
       );
       tooltipWrapper.removeEventListener(
         'mouseleave',
         this.handleTooltipVisibility,
-        false
+        false,
       );
       tooltipWrapper.removeEventListener('focusin', this.handleFocus, false);
       tooltipWrapper.removeEventListener('focusout', this.handleBlur, false);
