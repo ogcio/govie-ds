@@ -64,27 +64,7 @@
     class="{{ headerClassNames }}"
     data-module="gieds-header"
   >
-    {% if props.languages %}
-      <div class="{{ languageBarClassNames }}">
-        <div class="{{ containerClassName }}">
-          <ul>
-            {% for link in props.languages %}
-              <li>
-                <a
-                  data-testid="language-link-desktop-{{ loop.index0 }}"
-                  class="{{ languageItemClassNames }}"
-                  href="{{ link.href }}"
-                >
-                  {{ link.label }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-    {% endif %}
-
-    <div id="HeaderContainer" class="{{ containerClassName }}">
+    <div id="HeaderContainer" class="{{ containerClassName }} gi-order-2">
       <div class="{{ menuContainerClassNames }}">
         <div>
           <div class="gi-header-logo">
@@ -192,6 +172,26 @@
         </div>
       </div>
     </div>
+
+    {% if props.languages %}
+      <div class="{{ languageBarClassNames }}">
+        <div class="{{ containerClassName }}">
+          <ul>
+            {% for link in props.languages %}
+              <li>
+                <a
+                  data-testid="language-link-desktop-{{ loop.index0 }}"
+                  class="{{ languageItemClassNames }}"
+                  href="{{ link.href }}"
+                >
+                  {{ link.label }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
 
     {% if props.tools and props.tools.search %}
       <div id="SearchContainer" class="gi-header-tool-container">

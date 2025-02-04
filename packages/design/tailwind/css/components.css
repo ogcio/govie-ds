@@ -357,7 +357,7 @@ input[type='text'] {
 /* Header */
 
 .gi-header {
-  @apply gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-w-full gi-font-primary;
+  @apply gi-grid gi-relative gi-overflow-x-clip gi-bg-emerald-800 gi-w-full gi-font-primary;
 }
 .gi-header-language-bar {
   @apply gi-hidden lg:gi-flex gi-bg-emerald-700 gi-h-10 gi-items-center;
