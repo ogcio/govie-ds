@@ -98,6 +98,23 @@ describe('govieTooltip', () => {
     expect(tooltipTextElement).toBeInTheDocument();
   });
 
+  it('should render ellipis with long tooltip text', () => {
+    const tooltipText =
+      'Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip text.';
+    const screen = renderTooltip({
+      text: tooltipText,
+      position: 'top',
+      children: <button>Hover me</button>,
+    });
+
+    fireEvent.mouseEnter(screen.getByText('Hover me'));
+
+    const tooltipTextElement = screen.getByText(
+      'Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip text. Very...',
+    );
+    expect(tooltipTextElement).toBeInTheDocument();
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderTooltip({
       text: 'Accessibility Tooltip',

@@ -75,7 +75,7 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
           className={tooltipTv({ position })}
           aria-hidden={!isVisible}
         >
-          {text}
+          {text.length > 100 ? text.slice(0, 100) + '...' : text}
         </span>
       )}
     </span>

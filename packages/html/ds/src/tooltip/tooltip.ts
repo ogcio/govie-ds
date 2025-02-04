@@ -79,7 +79,21 @@ export class Tooltip extends BaseComponent<TooltipProps> {
     });
   }
 
+  private truncateText(text: string): string {
+    return text.length > 100 
+      ? text.substring(0, 100).trim() + '...'
+      : text;
+  }
+
   initComponent() {
+    this.getAllTooltips.forEach(wrapper => {
+      const tooltipElement = wrapper.querySelector('[role="tooltip"]');
+      if (tooltipElement) {
+        const originalText = tooltipElement.textContent || '';
+        tooltipElement.textContent = this.truncateText(originalText);
+      }
+    });
+
     for (const tooltipWrapper of this.getAllTooltips) {
       // Mouse events
       tooltipWrapper.addEventListener(
