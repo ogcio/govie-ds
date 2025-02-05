@@ -49,6 +49,10 @@ const meta = {
       description: 'If true, wrap items',
       defaultValue: false,
     },
+    className: {
+      control: 'text',
+      description: 'Custom classNames added into the stack container',
+    },
   },
 } satisfies Meta<typeof Stack>;
 
