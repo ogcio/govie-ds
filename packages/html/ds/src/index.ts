@@ -1,5 +1,6 @@
 import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
+import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
 import { initHeader } from './header/header.js';
 import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import/order */
@@ -36,6 +37,7 @@ export function initGovIe() {
   initTextarea();
   initTooltip();
   initModal();
+  initDrawer();
   initCookieBanner();
   initTabs();
   initComboBox();

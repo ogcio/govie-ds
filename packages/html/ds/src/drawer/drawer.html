@@ -1,0 +1,31 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+{% from 'modal/modal.html' import govieModal %}
+
+{% macro govieDrawer(props) %}
+  {% set openClass = 'gi-drawer-open' if props.startsOpen else 'gi-drawer-close' %}
+  {% set position = props.position or 'right' %}
+
+  <div data-module="gieds-drawer">
+    {% if props.triggerButton %}
+      <div
+        data-testid="drawer-trigger-button-container"
+        data-element="drawer-trigger-button-container"
+        class="gi-contents"
+      >
+        {{ props.triggerButton | safe | trim | indent(2) }}
+      </div>
+    {% endif %}
+
+    {{
+      govieModal({
+        "isOpen": props.startsOpen,
+        "closeButtonLabel": props.closeButtonLabel,
+        "className": "gi-drawer",
+        "body": props.body,
+        "footer": props.footer,
+        "aria": props.aria,
+        "position": position
+      })
+    }}
+  </div>
+{% endmacro %}

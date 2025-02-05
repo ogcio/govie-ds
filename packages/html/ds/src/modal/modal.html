@@ -39,7 +39,8 @@
       <div
         data-testid="modal-container"
         data-element="modal-container"
-        class="gi-modal-container gi-modal-container-{{ position }}"
+        class="gi-modal-container gi-modal-container-{{ position }} 
+        {% if props.className and props.className | trim %}{{ props.className | trim }}{% endif %}"
       >
         <div>
           {% if props.title %}
