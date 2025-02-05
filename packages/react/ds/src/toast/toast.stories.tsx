@@ -7,7 +7,6 @@ import {
 } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
-import { Link } from '../link/link.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
 
 const meta: Meta<typeof Toast> = {
@@ -112,7 +111,10 @@ export const WithAction: Story = {
           toaster.create({
             title: 'With Action',
             description: 'This is some content',
-            action: <Link href="#">Go to link</Link>,
+            action: {
+              href: '#',
+              label: 'Go to link',
+            },
           })
         }
       >

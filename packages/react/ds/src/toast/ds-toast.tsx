@@ -1,8 +1,8 @@
 'use client';
-import { cloneElement } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { ToastProps } from './types.js';
 
@@ -89,7 +89,9 @@ function Toast({
         <Paragraph ariaLabel={description}>{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
-            {cloneElement(action, { noColor: true, size: 'md' })}
+            <Link href={action.href} noColor size="md">
+              {action.label}
+            </Link>
           </div>
         )}
       </div>

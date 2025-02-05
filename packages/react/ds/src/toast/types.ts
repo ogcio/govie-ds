@@ -1,5 +1,3 @@
-import { LinkProps } from '../link/link.js';
-
 export type ToastHorizontalPosition = 'left' | 'center' | 'right';
 export type ToastVerticalPosition = 'top' | 'center' | 'bottom';
 export type ToastVariant = 'success' | 'info' | 'warning' | 'danger';
@@ -15,7 +13,10 @@ export type ToastProps = {
   variant?: ToastVariant;
   animation?: ToastAnimation;
   description?: string;
-  action?: React.ReactElement<LinkProps>;
+  action?: {
+    href: string;
+    label: string;
+  };
   dismissible?: boolean;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   duration?: number;
