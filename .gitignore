@@ -8,7 +8,6 @@ storybook-static
 theme.zip
 govie-frontend.zip
 /packages/html/ds/static/
-/packages/html/storybook/static
 coverage
 accessibility-audit.html
 .vscode
