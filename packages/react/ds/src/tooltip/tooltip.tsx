@@ -9,7 +9,7 @@ type TooltipProps = {
   text: string;
   position?: Position;
   children: ReactNode;
-  testId?: string;
+  dataTestid?: string;
 };
 
 const tooltipTv = tv({
@@ -27,7 +27,7 @@ const tooltipTv = tv({
 export const Tooltip = ({
   text,
   position = 'top',
-  testId,
+  dataTestid,
   children,
 }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,7 +74,7 @@ export const Tooltip = ({
       }}
       role="button"
       aria-describedby={isVisible ? describedById : undefined}
-      data-testid={testId}
+      data-testid={dataTestid}
     >
       {children}
       {isVisible && (

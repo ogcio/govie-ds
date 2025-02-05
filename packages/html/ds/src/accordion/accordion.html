@@ -44,6 +44,7 @@
     data-module="gieds-accordion"
     class="gi-max-w-prose"
     role="region"
+    data-testid="{{ props.dataTestid }}"
     {{ commonAriaAttributes(props) }}
   >
     {% for item in props['items'] %}
@@ -54,6 +55,7 @@
         role="group"
       >
         <div
+        data-testid="{{ item.dataTestid }}"
           class="{{ getIconPosition(props.iconStart) | trim }} {{ getDisabledCursor(item.disabled) | trim }}"
           {% if item.aria['aria-disabled'] %}aria-disabled="{{ item.aria['aria-disabled'] }}"{% endif %}
           {% if item.aria['aria-expanded'] %}aria-expanded="{{ item.aria['aria-expanded'] }}"{% endif %}

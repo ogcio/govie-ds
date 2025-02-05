@@ -7,6 +7,7 @@ type Props = {
   label: string;
   defaultExpanded?: boolean;
   disabled?: boolean;
+  dataTestid?: string;
 };
 
 export const AccordionItem = ({
@@ -14,6 +15,7 @@ export const AccordionItem = ({
   children,
   label,
   disabled,
+  dataTestid,
 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [iconStart, setIconStart] = useState(false);
@@ -34,6 +36,7 @@ export const AccordionItem = ({
         'gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid',
         disabled && 'gi-opacity-30',
       )}
+      data-testid={dataTestid}
     >
       {/* TODO Replace the following tag (div) with button */}
       <div
