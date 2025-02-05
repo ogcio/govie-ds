@@ -71,6 +71,7 @@ export function Header({
   fullWidth = false,
   addDefaultMobileMenu,
   mobileMenuLabel,
+  showTitleOnMobile,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -146,31 +147,10 @@ export function Header({
       aria-label="Site Header"
       className={headerClassNames}
     >
-      {secondaryLinks && (
-        <div className={languageBarClassNames}>
-          <div className={containerClassName}>
-            <ul>
-              {secondaryLinks.map((link, index) => (
-                <li key={`language-${link.label}-${index}`}>
-                  {link.href ? (
-                    <a
-                      aria-label={link.label}
-                      data-testid={`language-link-desktop-${index}`}
-                      href={link.href}
-                      className={languageItemClassNames}
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <span className={languageItemClassNames}>{link.label}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-      <div id="HeaderContainer" className={containerClassName}>
+      <div
+        id="HeaderContainer"
+        className={cn(containerClassName, 'gi-order-2')}
+      >
         <div className={menuContainerClassNames}>
           <div>
             <div className="gi-header-logo">
@@ -186,8 +166,13 @@ export function Header({
               )}
               {!logo?.href && getLogo({ logo })}
             </div>
-
-            <div className={appTitleClassNames}>{title}</div>
+            <div
+              className={cn(appTitleClassNames, {
+                'gi-hidden': !showTitleOnMobile,
+              })}
+            >
+              {title}
+            </div>
           </div>
           <div className="gi-gap-2 md:gi-gap-4">
             {finalItems?.map((item, index) => {
@@ -211,6 +196,32 @@ export function Header({
           </div>
         </div>
       </div>
+
+      {secondaryLinks && (
+        <div className={cn(languageBarClassNames, 'gi-order-1')}>
+          <div className={containerClassName}>
+            <ul>
+              {secondaryLinks.map((link, index) => (
+                <li key={`language-${link.label}-${index}`}>
+                  {link.href ? (
+                    <a
+                      aria-label={link.label}
+                      data-testid={`language-link-desktop-${index}`}
+                      href={link.href}
+                      className={languageItemClassNames}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <span className={languageItemClassNames}>{link.label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
       {finalItems?.map(({ itemType, details }, index) => {
         if (itemType === 'slot') {
           const slot = details as HeaderSlotItemType;

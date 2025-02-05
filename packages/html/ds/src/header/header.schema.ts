@@ -11,6 +11,11 @@ export const headerSchema = zod.object({
       description: 'Select a full width header for full width layouts',
     })
     .optional(),
+  showTitleOnMobile: zod
+    .boolean({
+      description: 'Show title on mobile',
+    })
+    .optional(),
   logo: zod
     .object({
       imageSmall: zod
