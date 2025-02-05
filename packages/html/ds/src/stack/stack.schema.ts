@@ -68,6 +68,11 @@ export const StackSchema = zod.object({
       description: 'Fixed height for the stack container.',
     })
     .optional(),
+  className: zod
+    .string({
+      description: 'Custom classNames added into the stack container',
+    })
+    .optional(),
   hasDivider: zod
     .boolean({
       description: 'Dividers between items.',
