@@ -172,7 +172,7 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
-          storybookBuildDir: packages/html/storybook/storybook-static
+          storybookBuildDir: packages/html/ds/storybook-static
           autoAcceptChanges: 'main'
           exitOnceUploaded: true
 
