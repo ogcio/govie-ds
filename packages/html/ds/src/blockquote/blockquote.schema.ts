@@ -5,9 +5,11 @@ export const blockquoteSchema = zod.object({
     description: 'Content for blockquote.',
     required_error: 'Content is required',
   }),
-  dataTestid: zod.string({
-    description: 'Test id for the component.',
-  }).optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type BlockquoteProps = zod.infer<typeof blockquoteSchema>;

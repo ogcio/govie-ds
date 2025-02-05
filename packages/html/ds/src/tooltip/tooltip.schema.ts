@@ -35,9 +35,11 @@ export const tooltipSchema = zod.object({
       description: 'Sets the ID for the tooltip, used for accessibility.',
     })
     .optional(),
-  dataTestid: zod.string({
+  dataTestid: zod
+    .string({
       description: 'Test id for the component.',
-    }).optional(),
+    })
+    .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 

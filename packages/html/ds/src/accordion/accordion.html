@@ -55,7 +55,7 @@
         role="group"
       >
         <div
-        data-testid="{{ item.dataTestid }}"
+          data-testid="{{ item.dataTestid }}"
           class="{{ getIconPosition(props.iconStart) | trim }} {{ getDisabledCursor(item.disabled) | trim }}"
           {% if item.aria['aria-disabled'] %}aria-disabled="{{ item.aria['aria-disabled'] }}"{% endif %}
           {% if item.aria['aria-expanded'] %}aria-expanded="{{ item.aria['aria-expanded'] }}"{% endif %}

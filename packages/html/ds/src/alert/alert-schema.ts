@@ -18,9 +18,11 @@ export const alertSchema = zod.object({
   dismissible: zod
     .boolean({ description: 'Specify if the alert is dismissible' })
     .optional(),
-  dataTestid: zod.string({
+  dataTestid: zod
+    .string({
       description: 'Test id for the component.',
-    }).optional(),
+    })
+    .optional(),
 });
 
 export type AlertProps = zod.infer<typeof alertSchema>;

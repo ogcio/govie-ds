@@ -46,9 +46,11 @@ const accordionItemSchema = zod.object({
   aria: accordionItemAriaSchema
     .describe('Defines the aria attributes')
     .optional(),
-  dataTestid: zod.string({
-    description: 'Test id for the component.',
-  }).optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export const accordionSchema = zod.object({
@@ -57,9 +59,11 @@ export const accordionSchema = zod.object({
       description: 'specify if the icon should be on the start of the trigger',
     })
     .optional(),
-  dataTestid: zod.string({
-    description: 'Test id for the component.',
-  }).optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
   items: zod
     .array(accordionItemSchema)
     .describe('Array of the accordion items'),
