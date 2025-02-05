@@ -88,7 +88,10 @@ libraries:
     <TabItem value="tab11" checked>
       HTML
     </TabItem>
-    <TabItem value="tab12">React</TabItem>
+    <TabItem value="tab12">
+      Macro
+    </TabItem>
+    <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
     ```html
@@ -148,6 +151,16 @@ libraries:
 
   </TabPanel>
   <TabPanel value="tab12">
+    ```html
+        {{ govieDrawer({
+          "triggerButton": "<button class=\"gi-btn gi-btn-primary gi-btn-regular\">Open Modal</button>",
+          "body": "<div>This is the body of the modal.</div>",
+          footer: "<div>This is the footer of the modal.</div>",
+          "position": "bottom"
+        }) }}
+    ```
+  </TabPanel>
+  <TabPanel value="tab13">
     ```html import {Drawer} from '@govie-ds/react';
     <Drawer triggerButton={<Button>Open Drawer</Button>}>
       <DrawerBody>
