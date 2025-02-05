@@ -91,6 +91,19 @@ describe('govieTooltip', () => {
     expect(button.textContent).toBe('Hover me');
   });
 
+  it('should render ellipsis for long text', () => {
+    const screen = renderTooltip({
+      content: '<button>Hover me</button>',
+      text: 'Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip text.',
+      position: 'top',
+    });
+
+    const tooltip = screen.getByText(
+      'Very long tooltip text. Very long tooltip text. Very long tooltip text. Very long tooltip tex...',
+    );
+    expect(tooltip).toBeTruthy();
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderTooltip({
       content: '<button>Hover me</button>',
