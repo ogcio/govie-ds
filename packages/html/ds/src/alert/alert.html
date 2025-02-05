@@ -5,6 +5,7 @@
 {% macro govieAlert(props) %}
   {% set icon = getIcon(props.variant) %}
   <div
+    data-testid="{{ props.dataTestid }}"
     data-module="gieds-alert"
     class="{{ getBaseAlertClass(props.dismissible) | trim }} {{ getVariant(props.variant) | trim }}"
     role="alert"

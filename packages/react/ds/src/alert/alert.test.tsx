@@ -26,6 +26,7 @@ describe('Alert', () => {
       variant: 'info',
       title: 'Information',
       children: 'This is an info alert',
+      dataTestid: 'alert',
     });
     const alertElement = screen.getByTestId('alert');
     expect(alertElement).toBeTruthy();
@@ -39,6 +40,7 @@ describe('Alert', () => {
         variant,
         title: `${variant} alert`,
         children: `This is a ${variant} alert`,
+        dataTestid: 'alert',
       });
       const alertElement = screen.getByTestId('alert');
       expect(alertElement).toHaveClass(`gi-alert-${variant}`);
