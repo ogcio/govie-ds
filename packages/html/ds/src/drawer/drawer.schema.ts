@@ -33,9 +33,11 @@ export const drawerSchema = zod.object({
       description: 'Custom label for the close button',
     })
     .optional(),
-  triggerButton: zod.string({
-    description: 'The button used for opening the drawer (HTML string)',
-  }),
+  triggerButton: zod
+    .string({
+      description: 'The button used for opening the drawer (HTML string)',
+    })
+    .optional(),
   startsOpen: zod
     .boolean({
       description: 'Determines if the drawer is initially open',
