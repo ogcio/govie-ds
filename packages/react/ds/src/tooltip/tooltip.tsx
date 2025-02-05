@@ -9,6 +9,7 @@ type TooltipProps = {
   text: string;
   position?: Position;
   children: ReactNode;
+  testId?: string;
 };
 
 const tooltipTv = tv({
@@ -23,7 +24,12 @@ const tooltipTv = tv({
   },
 });
 
-export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
+export const Tooltip = ({
+  text,
+  position = 'top',
+  testId,
+  children,
+}: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const describedById = useId();
@@ -68,7 +74,7 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
       }}
       role="button"
       aria-describedby={isVisible ? describedById : undefined}
-      data-testid="dti-tooltip-wrapper"
+      data-testid={testId}
     >
       {children}
       {isVisible && (
