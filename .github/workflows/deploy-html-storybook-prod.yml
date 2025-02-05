@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: packages/html/storybook/storybook-static
+          path: packages/html/ds/storybook-static
 
   deploy:
     name: Deploy to Amazon S3
