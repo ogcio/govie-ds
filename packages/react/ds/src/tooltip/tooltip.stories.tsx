@@ -41,7 +41,7 @@ const meta = {
     },
   },
   decorators: (Story) => (
-    <div className="gi-flex gi-justify-center gi-py-5 gi-px-5">
+    <div className="gi-flex gi-justify-center gi-my-20 gi-mx-20">
       <Story />
     </div>
   ),
@@ -52,7 +52,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: 'Default Tooltip',
+    text: 'This is a tooltip at the top.',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },
@@ -92,7 +92,7 @@ export const RightPosition: Story = {
 
 export const WithLongText: Story = {
   args: {
-    text: 'This is a very long tooltip text that tests the tooltip display.',
+    text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
     position: 'top',
     children: <Button variant="primary">Hover me (Top)</Button>,
   },

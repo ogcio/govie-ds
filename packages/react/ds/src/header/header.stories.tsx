@@ -186,6 +186,14 @@ export const Default: Story = {
         category: 'Header',
       },
     },
+    showTitleOnMobile: {
+      control: 'boolean',
+      description:
+        'If true, the title will be shown on mobile, if false it will be hidden',
+      table: {
+        category: 'Header',
+      },
+    },
   },
   args: {
     logo: {
@@ -807,5 +815,31 @@ export const mobileWithExternalLinks: Story = {
       'rel',
       'noreferrer noopener',
     );
+  },
+};
+
+export const ShowTitleOnMobile: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    title: 'Title on mobile',
+    showTitleOnMobile: true,
+    logo: {
+      href: '/link',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ],
   },
 };

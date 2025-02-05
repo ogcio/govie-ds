@@ -53,7 +53,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     position: 'top',
-    text: 'Tooltip right.',
+    text: 'This is a tooltip at the top.',
     content: `
     <button
       data-testid="govieButton-default-primary-medium-notDisabled"
@@ -136,8 +136,8 @@ export const RightPosition: Story = {
 
 export const WithLongLabel: Story = {
   args: {
-    text: 'This is a very long tooltip label that tests the tooltip display.',
-    position: 'top',
+    text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
+    position: 'right',
     content: `
       <button
         data-testid="govieButton-long-primary-medium-notDisabled"
@@ -145,7 +145,7 @@ export const WithLongLabel: Story = {
         data-module="gieds-button"
         class="gi-btn gi-btn-primary gi-btn-regular"
       >
-        Hover me (Top)
+        Hover me (Right)
       </button>
     `,
   },

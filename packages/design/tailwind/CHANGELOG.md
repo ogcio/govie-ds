@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.30.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.30.0...tailwind-v0.30.1) (2025-02-05)
+
+
+### Bug Fixes
+
+* Header "order" items for accessbility and Adding "showTitleOnMobile" prop in Header ([#423](https://github.com/ogcio/govie-ds/issues/423)) ([21c1d17](https://github.com/ogcio/govie-ds/commit/21c1d176056bf78c4dcc8d40ba4d53f6fcdb1cfe))
+* update tooltip with escape and focus functionality ([#419](https://github.com/ogcio/govie-ds/issues/419)) ([5409e6e](https://github.com/ogcio/govie-ds/commit/5409e6ebe29c3ff50b90dc65f4e11c63fef3d5de))
+
 ## [0.30.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.29.0...tailwind-v0.30.0) (2025-01-30)
 
 
