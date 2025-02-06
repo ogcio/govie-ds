@@ -41,4 +41,5 @@ export type StackProps = {
   wrap?: boolean;
   fixedHeight?: string;
   children: ReactNode;
+  className?: string;
 };

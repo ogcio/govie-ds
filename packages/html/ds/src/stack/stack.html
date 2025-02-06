@@ -9,21 +9,15 @@
   {% set heightStyle = 'style="height: ' ~ (props.fixedHeight if props.fixedHeight else '100%') ~ ';"' %}
   {% set hasDivider = props.hasDivider or false %}
   {% set children = props.children or [] %}
-  {%
-    set stackClasses = [
-      'gi-flex',
-      'gi-overflow-auto',
-      'gi-w-full',
-      getDistributionClasses(itemsDistribution) | trim,
-      getAlignmentClasses(itemsAlignment) | trim,
-      getDirectionClasses(direction) | trim,
-      getItemsGapClasses(gap) | trim,
-      getWrapClass(wrap) | trim
-    ] | join(' ')
-  %}
 
   <div
-    class="{{ stackClasses }}"
+    class="gi-flex gi-w-full
+      {{ getDistributionClasses(itemsDistribution) | trim }}
+      {{ getAlignmentClasses(itemsAlignment) | trim }}
+      {{ getDirectionClasses(direction) | trim }}
+      {{ getItemsGapClasses(gap) | trim }}
+      {{ getWrapClass(wrap) | trim }}
+      {% if props.className and props.className | trim %}{{ props.className | trim }}{% endif %}"
     role="region"
     aria-label="Items Stacked"
     data-testid="govie-stack"

@@ -1,14 +1,13 @@
 'use client';
-import { ReactNode, useState, useId } from 'react';
+import { ReactNode, useState, useId, useEffect, useCallback } from 'react';
 import { tv } from 'tailwind-variants';
 
 export const positionVariants = ['top', 'bottom', 'left', 'right'];
-
 export type Position = 'top' | 'bottom' | 'left' | 'right';
 
 type TooltipProps = {
   text: string;
-  position: Position;
+  position?: Position;
   children: ReactNode;
 };
 
@@ -26,16 +25,48 @@ const tooltipTv = tv({
 
 export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const describedById = useId();
 
   const showTooltip = () => setIsVisible(true);
-  const hideTooltip = () => setIsVisible(false);
+  const hideTooltip = useCallback(() => {
+    setIsVisible(false);
+    setIsFocused(false);
+  }, []);
+
+  const handleEscapeKey = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        hideTooltip();
+      }
+    },
+    [hideTooltip],
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [handleEscapeKey]);
 
   return (
     <span
       className="gi-tooltip-wrapper"
       onMouseEnter={showTooltip}
-      onMouseLeave={hideTooltip}
+      onMouseLeave={() => {
+        if (!isFocused) {
+          hideTooltip();
+        }
+      }}
+      onFocus={() => {
+        setIsFocused(true);
+        showTooltip();
+      }}
+      onBlur={() => {
+        hideTooltip();
+      }}
+      role="button"
       aria-describedby={isVisible ? describedById : undefined}
     >
       {children}
@@ -44,9 +75,9 @@ export const Tooltip = ({ text, position = 'top', children }: TooltipProps) => {
           id={describedById}
           role="tooltip"
           className={tooltipTv({ position })}
-          aria-hidden="false"
+          aria-hidden={!isVisible}
         >
-          {text}
+          {text.length > 100 ? text.slice(0, 100) + '...' : text}
         </span>
       )}
     </span>

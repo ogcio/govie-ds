@@ -31,16 +31,20 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.REPO_PAT }}
 
-      - name: Use Node.js
+      - name: Install pnpm
+        if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
 
       - name: Build
         if: ${{ steps.release.outputs['packages/html/ds--release_created'] || steps.release.outputs['packages/react/ds--release_created'] || steps.release.outputs['packages/themes/govie--release_created'] || steps.release.outputs['tokens--release_created'] }}
         run: |
-          corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm build
 
