@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Stack } from '../stack/stack.js';
 import { TextInput } from './text-input.js';
 
 const meta = {
@@ -54,24 +55,6 @@ const meta = {
       table: {
         category: 'Content',
         type: { summary: 'React.ReactNode' },
-      },
-    },
-    halfFluid: {
-      description:
-        'When `true`, the input width is set to 50% of the available space.',
-      control: 'boolean',
-      table: {
-        category: 'Width Control',
-        type: { summary: 'boolean' },
-      },
-    },
-    fullFluid: {
-      description:
-        'When `true`, the input width is set to 100% of the available space.',
-      control: 'boolean',
-      table: {
-        category: 'Width Control',
-        type: { summary: 'boolean' },
       },
     },
     characterWidth: {
@@ -141,6 +124,56 @@ export const Default: Story = {
   },
 };
 
+export const ResponsiveWidth: Story = {
+  args: {
+    id: 'text-input-id',
+    label: {
+      text: 'Input Label',
+      htmlFor: 'text-input-id',
+    },
+  },
+  render: (props) => {
+    return (
+      <div className="md:gi-w-2/3 gi-w-full">
+        <Stack direction={{ base: 'column' }} gap={3}>
+          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+            <TextInput {...props} id="text-1" label={{ text: 'Fluid width' }} />
+            <TextInput
+              {...props}
+              id="text-2"
+              label={{
+                text: 'Input custom width',
+              }}
+              inputCustomClassName="gi-w-full sm:gi-w-[200px]"
+            />
+          </Stack>
+          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+            <TextInput
+              {...props}
+              label={{
+                text: 'Custom width',
+              }}
+              id="text-4"
+              inputCustomClassName="gi-w-full sm:gi-w-[100px]"
+            />
+          </Stack>
+          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+            <TextInput
+              {...props}
+              label={{
+                text: 'Char Width',
+              }}
+              id="text-4"
+              maxLength={5}
+              characterWidth={5}
+            />
+          </Stack>
+        </Stack>
+      </div>
+    );
+  },
+};
+
 export const WithLabelAndHint: Story = {
   args: {
     id: 'text-input-id',
@@ -203,7 +236,6 @@ export const HalfFluid: Story = {
       text: 'Half Fluid Input',
       htmlFor: 'text-input-id',
     },
-    halfFluid: true,
   },
 };
 
@@ -214,7 +246,6 @@ export const FullFluid: Story = {
       text: 'Full Fluid Input',
       htmlFor: 'text-input-id',
     },
-    fullFluid: true,
   },
 };
 
@@ -226,6 +257,7 @@ export const CharacterWidth: Story = {
       htmlFor: 'text-input-id',
     },
     characterWidth: 4,
+    maxLength: 4,
   },
 };
 
