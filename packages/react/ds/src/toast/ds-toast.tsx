@@ -30,7 +30,7 @@ const toastVariants = tv({
       },
       warning: {
         base: 'gi-toast-warning',
-        baseDismissible: 'gi-toast-success',
+        baseDismissible: 'gi-toast-warning',
       },
     },
   },

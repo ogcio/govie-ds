@@ -120,18 +120,21 @@ export const WithAction: Story = {
 
 export const Dismissible: Story = {
   args: {
+    variant: 'info',
     title: 'Dismissible',
     description: 'This is some content',
     dismissible: true,
   },
-  render: (props) => (
-    <>
-      <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Dismissible Toast
-      </Button>
-    </>
-  ),
+  render: (props) => {
+    return (
+      <>
+        <ToastProvider />
+        <Button onClick={() => toaster.create(props)}>
+          Show Dismissible Toast
+        </Button>
+      </>
+    );
+  },
 };
 
 export const WithLongerDuration: Story = {
