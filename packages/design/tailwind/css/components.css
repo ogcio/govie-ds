@@ -1009,7 +1009,7 @@ input[type='file' i] {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
 .gi-toast-action {
-  @apply gi-text-gray-950 gi-mt-2;
+  @apply gi-text-gray-950 gi-mt-1;
 }
 
 .gi-toast {
@@ -1084,7 +1084,7 @@ input[type='file' i] {
 .gi-toast-wrapper {
   @apply gi-m-0 !gi-p-0;
 }
-.gi-oast:has(.gi-toast-info) {
+.gi-toast:has(.gi-toast-info) {
   @apply gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
 }
 .gi-toast:has(.gi-toast-success) {
