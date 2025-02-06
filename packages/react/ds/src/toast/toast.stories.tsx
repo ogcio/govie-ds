@@ -101,23 +101,17 @@ export const Default: Story = {
 
 export const WithAction: Story = {
   args: {
-    title: '',
+    title: 'With Action',
+    description: 'This is some content',
+    action: {
+      href: '#',
+      label: 'Go to link',
+    },
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'With Action',
-            description: 'This is some content',
-            action: {
-              href: '#',
-              label: 'Go to link',
-            },
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Toast with Action
       </Button>
     </>
@@ -126,20 +120,14 @@ export const WithAction: Story = {
 
 export const Dismissible: Story = {
   args: {
-    title: '',
+    title: 'Dismissible',
+    description: 'This is some content',
+    dismissible: true,
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'Dismissible',
-            description: 'This is some content',
-            dismissible: true,
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Dismissible Toast
       </Button>
     </>
@@ -148,20 +136,14 @@ export const Dismissible: Story = {
 
 export const WithLongerDuration: Story = {
   args: {
-    title: '',
+    title: 'With Duration',
+    description: 'This is some content',
+    duration: 8000,
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'With Duration',
-            description: 'This is some content',
-            duration: 8000,
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Toast with Longer Duration
       </Button>
     </>
@@ -170,20 +152,14 @@ export const WithLongerDuration: Story = {
 
 export const WithPositionChange: Story = {
   args: {
-    title: '',
+    title: 'With Position Change',
+    description: 'This is some content',
+    position: { x: 'left', y: 'bottom' },
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'With Position Change',
-            description: 'This is some content',
-            position: { x: 'left', y: 'bottom' },
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Toast at Bottom Left
       </Button>
     </>
@@ -192,7 +168,9 @@ export const WithPositionChange: Story = {
 
 export const tabletView: Story = {
   args: {
-    title: '',
+    title: 'Tablet Position Change',
+    description: 'This toast appears on a tablet',
+    position: { x: 'right', y: 'bottom' },
   },
   parameters: {
     layout: 'fullscreen',
@@ -200,18 +178,10 @@ export const tabletView: Story = {
       defaultViewport: 'ipad',
     },
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'Tablet Position Change',
-            description: 'This toast appears on a tablet',
-            position: { x: 'right', y: 'bottom' },
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Toast at Bottom Right (Tablet)
       </Button>
     </>
@@ -220,7 +190,9 @@ export const tabletView: Story = {
 
 export const mobileView: Story = {
   args: {
-    title: '',
+    title: 'Mobile Position Change',
+    description: 'This toast appears on a mobile',
+    position: { x: 'right', y: 'bottom' },
   },
   parameters: {
     layout: 'fullscreen',
@@ -228,18 +200,10 @@ export const mobileView: Story = {
       defaultViewport: 'mobile2',
     },
   },
-  render: () => (
+  render: (props) => (
     <>
       <ToastProvider />
-      <Button
-        onClick={() =>
-          toaster.create({
-            title: 'Mobile Position Change',
-            description: 'This toast appears on a mobile',
-            position: { x: 'right', y: 'bottom' },
-          })
-        }
-      >
+      <Button onClick={() => toaster.create(props)}>
         Show Toast full width (Mobile)
       </Button>
     </>

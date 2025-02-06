@@ -1,7 +1,6 @@
-import { createToast } from '../toast/helpers.js';
-
 export function initUtils() {
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    const { createToast } = await import('../toast/helpers.js');
     const GOVIE = ((window as any).GOVIE = (window as any).GOVIE || {});
 
     GOVIE.toaster = {
