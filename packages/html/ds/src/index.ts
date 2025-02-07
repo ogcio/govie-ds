@@ -12,6 +12,7 @@ import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
+import { initUtils } from './utils/utils.js';
 
 export * as properties from './dist/properties.js';
 
@@ -42,6 +43,7 @@ export function initGovIe() {
   initAlert();
   initToast();
   initAccordion();
+  initUtils();
 }
 
 export function destroyGovIe() {

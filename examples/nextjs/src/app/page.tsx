@@ -25,7 +25,6 @@ import {
   Stack,
   Alert,
   Breadcrumbs,
-  Toast,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -45,6 +44,9 @@ import {
   HeaderSearch,
   HeaderProps,
   Details,
+  toaster,
+  ToastVariant,
+  ToastProvider,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {
@@ -102,6 +104,19 @@ const headerProps: HeaderProps = {
 };
 
 export default function Home() {
+  const handleCreateToast = (title: string, variant: ToastVariant) =>
+    toaster.create({
+      title,
+      variant,
+      description: 'This is a toast notification.',
+      position: {
+        x: 'right',
+        y: 'bottom',
+      },
+      duration: 3000,
+      dismissible: true,
+    });
+
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
@@ -114,12 +129,23 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        <Toast title="This is a toast" />
-        <Toast
-          title="Toast triggered"
-          variant="success"
-          trigger={<Button>Trigger Toast</Button>}
-        />
+        <br />
+        <Button onClick={() => handleCreateToast('Success', 'success')}>
+          Trigger Success Toast via callback
+        </Button>
+        <br />
+        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+          Trigger Danger Toast via callback
+        </Button>
+        <br />
+        <Button onClick={() => handleCreateToast('Info', 'info')}>
+          Trigger Info Toast via callback
+        </Button>
+        <br />
+        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+          Trigger Warning Toast via callback
+        </Button>
+        <br />
         <div className="flex flex-col gap-4 my-4">
           <Breadcrumbs>
             <BreadcrumbLink href="/home">Home</BreadcrumbLink>
@@ -340,6 +366,7 @@ export default function Home() {
       </Container>
 
       <Footer />
+      <ToastProvider />
     </>
   );
 }
