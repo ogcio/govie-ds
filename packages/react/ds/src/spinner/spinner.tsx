@@ -17,9 +17,14 @@ const spinnerVariants = tv({
 
 export type SpinnerProps = VariantProps<typeof spinnerVariants> & {
   inline?: boolean;
+  dataTestid?: string;
 };
 
-export function Spinner({ size = 'md', inline = false }: SpinnerProps) {
+export function Spinner({
+  size = 'md',
+  inline = false,
+  dataTestid,
+}: SpinnerProps) {
   const display = inline ? '' : 'gi-block';
   const sizeClasses = spinnerVariants({ size });
 
@@ -29,6 +34,7 @@ export function Spinner({ size = 'md', inline = false }: SpinnerProps) {
       className={cn(display, sizeClasses)}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid={dataTestid}
     >
       <g>
         <circle

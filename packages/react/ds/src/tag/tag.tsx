@@ -11,6 +11,7 @@ export enum TagType {
 export type TagProps = {
   text: string;
   type?: TagType | keyof typeof TagType;
+  dataTestid?: string;
 };
 
 const tagClass = {
@@ -23,9 +24,13 @@ const tagClass = {
   [TagType.counterWarning]: 'gi-tag-counter-warning',
 };
 
-export const Tag = ({ text, type = TagType.default }: TagProps) => {
+export const Tag = ({ text, type = TagType.default, dataTestid }: TagProps) => {
   return (
-    <strong className={`gi-tag ${tagClass[type]}`} aria-label={text}>
+    <strong
+      className={`gi-tag ${tagClass[type]}`}
+      data-testid={dataTestid}
+      aria-label={text}
+    >
       {text}
     </strong>
   );
