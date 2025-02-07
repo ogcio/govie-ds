@@ -143,6 +143,11 @@ export const headerSchema = zod.object({
     .array()
     .describe('List of secondary navigation links')
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type HeaderProps = zod.infer<typeof headerSchema>;

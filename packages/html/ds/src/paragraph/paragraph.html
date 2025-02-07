@@ -57,11 +57,13 @@
   {% if props.as == 'span' %}
     <span
       class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
+      data-testid="{{ props.dataTestid }}"
       >{{ props.content | safe | trim }}</span
     >
   {% else %}
     <p
       class="{{ getCommonClasses(props) | trim }} {{ addClasses(props.className) | trim }}"
+      data-testid="{{ props.dataTestid }}"
     >
       {{ props.content | safe | trim }}
     </p>

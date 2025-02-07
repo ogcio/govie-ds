@@ -1,7 +1,10 @@
 export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
-export type SectionBreakProps = { size?: SectionBreakSize };
+export type SectionBreakProps = {
+  size?: SectionBreakSize;
+  dataTestid?: string;
+};
 
-export function SectionBreak({ size = 'sm' }: SectionBreakProps) {
+export function SectionBreak({ size = 'sm', dataTestid }: SectionBreakProps) {
   let marginClass = 'gi-section-break-sm';
   switch (size) {
     case 'md': {
@@ -22,7 +25,7 @@ export function SectionBreak({ size = 'sm' }: SectionBreakProps) {
   }
   return (
     <hr
-      data-testid="govie-section-break"
+      data-testid={dataTestid}
       className={marginClass}
       role="separator"
       aria-label="Section break"

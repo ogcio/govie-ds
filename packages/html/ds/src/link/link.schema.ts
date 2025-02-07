@@ -80,6 +80,11 @@ export const linkSchema = zod.object({
     })
     .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type LinkProps = zod.infer<typeof linkSchema>;

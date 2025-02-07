@@ -50,6 +50,11 @@ export const paragraphSchema = zod.object({
       description: 'Specifies the whitespace behavior.',
     })
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type ParagraphProps = zod.infer<typeof paragraphSchema>;

@@ -27,6 +27,11 @@ export const labelSchema = zod.object({
       description: 'Add additional classes',
     })
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type LabelProps = zod.infer<typeof labelSchema>;
