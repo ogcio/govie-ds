@@ -9,14 +9,16 @@ export type FileUploadProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
+  dataTestid?: string;
 };
 
 // Use React.forwardRef to support refs properly
 export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
-  ({ label, hint, error, id, ...props }, ref) => {
+  ({ label, hint, error, id, dataTestid, ...props }, ref) => {
     return (
       <div
         className={`gi-file-upload-container ${error?.text && 'gi-error-state'}`}
+        data-testid={dataTestid}
       >
         {label?.text && (
           <Label

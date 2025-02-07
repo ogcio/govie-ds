@@ -43,6 +43,11 @@ export const footerSchema = zod.object({
     .describe(
       'Array of secondaryNavLink object which includes heading, the ability to display the link on two columns and the navigation links',
     ),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type FooterProps = zod.infer<typeof footerSchema>;
