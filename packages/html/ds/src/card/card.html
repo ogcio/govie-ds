@@ -54,7 +54,10 @@
     {% endif %}
   {% endmacro %}
 
-  <div class="{{ getLayoutClass(props.type, props.inset) | trim }}" data-testid="{{ props.dataTestid }}">
+  <div
+    class="{{ getLayoutClass(props.type, props.inset) | trim }}"
+    data-testid="{{ props.dataTestid }}"
+  >
     {{ renderMedia(props.media) }}
 
     <div class="gi-card-content {{ getInsetClass(props.inset) }}">
