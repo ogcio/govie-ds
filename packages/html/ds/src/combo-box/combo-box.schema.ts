@@ -32,6 +32,11 @@ export const ComboBoxSchema = zod.object({
     .describe('Array of dropdown item used in the combo box'),
   id: zod.string({ description: 'The id of the combobox' }).optional(),
   className: zod.string({ description: 'Additional classes' }).optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type ComboBoxProps = zod.infer<typeof ComboBoxSchema>;

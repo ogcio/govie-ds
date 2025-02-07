@@ -39,6 +39,11 @@ export const cookieBannerSchema = zod.object({
       'Additional Link in order to redirect the user to the cookies page',
     )
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type CookieBannerProps = zod.infer<typeof cookieBannerSchema>;

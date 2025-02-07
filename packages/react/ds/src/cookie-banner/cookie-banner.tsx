@@ -16,6 +16,7 @@ export type CookieBannerProps = {
   };
   dismissButton?: React.ReactElement<ButtonProps>;
   cookieLink?: React.ReactElement<LinkProps>;
+  dataTestid?: string;
 };
 
 export const CookieBanner = ({
@@ -24,6 +25,7 @@ export const CookieBanner = ({
   reject,
   cookieLink,
   dismissButton,
+  dataTestid,
 }: CookieBannerProps) => {
   const [status, setStatus] = useState<null | boolean | 'dismiss'>(null);
   const handleOpenBanner = () => setStatus(true);
@@ -38,6 +40,7 @@ export const CookieBanner = ({
           role="dialog"
           aria-labelledby="cookie-banner-title"
           aria-describedby="cookie-banner-description"
+          data-testid={dataTestid}
         >
           <div className="gi-py-5">
             <Container>
