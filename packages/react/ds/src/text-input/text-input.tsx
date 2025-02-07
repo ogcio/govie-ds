@@ -24,6 +24,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'time'
     | 'url'
     | 'week';
+  dataTestid?: string;
 };
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
@@ -37,6 +38,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       id,
       type = 'text',
       placeholder,
+      dataTestid,
       ...props
     },
     ref,
@@ -48,6 +50,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           'gi-error-state': !!error?.text,
         })}
         aria-labelledby={`${id}-label`}
+        data-testid={dataTestid}
       >
         {label?.text && (
           <Label

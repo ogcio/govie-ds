@@ -21,4 +21,5 @@ export type ToastProps = {
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   duration?: number;
   position?: ToastPosition;
+  dataTestid?: string;
 };

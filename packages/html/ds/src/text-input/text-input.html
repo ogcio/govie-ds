@@ -25,6 +25,7 @@
 
   <div
     class="gi-text-input-container {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}"
+    data-testid="{{ props.dataTestid }}"
   >
     {% if props.label %}
       {{

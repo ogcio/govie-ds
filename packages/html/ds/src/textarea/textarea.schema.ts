@@ -36,6 +36,11 @@ export const textAreaSchema = zod.object({
     .describe('Set error boundaries for texarea')
     .optional(),
   disabled: zod.boolean({ description: 'Disabled state' }).optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type TextareaProps = zod.infer<typeof textAreaSchema>;

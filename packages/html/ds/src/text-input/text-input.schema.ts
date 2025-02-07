@@ -106,6 +106,11 @@ export const textInputSchema = zod.object({
   error: errorTextSchema
     .describe('Set error boundaries for text-input')
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;
