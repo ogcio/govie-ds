@@ -16,6 +16,7 @@ export type CheckboxesGroupType = {
     label?: string;
     hint?: string;
     disabled?: boolean;
+    dataTestid?: string;
   }[];
   title?: {
     value: string;
@@ -31,6 +32,7 @@ export type CheckboxesGroupType = {
     value: string;
   };
   onChange?: (items: string[]) => void;
+  dataTestid?: string;
 };
 
 export const CheckboxesGroup = ({
@@ -41,6 +43,7 @@ export const CheckboxesGroup = ({
   size,
   noneOption,
   onChange = () => null,
+  dataTestid,
 }: CheckboxesGroupType) => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
@@ -65,7 +68,7 @@ export const CheckboxesGroup = ({
   return (
     <div
       className="gi-checkbox-group-container"
-      data-testid="govie-checkboxes"
+      data-testid={dataTestid}
       role="group"
     >
       {errorMessage && (
@@ -108,6 +111,7 @@ export const CheckboxesGroup = ({
               aria-describedby={
                 checkbox.hint ? `${groupId}-${index}-hint` : undefined
               }
+              data-testid={checkbox.dataTestid}
             />
           ))}
 

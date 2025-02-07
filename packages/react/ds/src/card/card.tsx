@@ -46,6 +46,7 @@ export type CardProps = {
   tag?: TagProps;
   content?: string;
   action?: Action;
+  dataTestid?: string;
 };
 
 export const Card = ({
@@ -58,6 +59,7 @@ export const Card = ({
   action,
   href,
   tag,
+  dataTestid,
 }: CardProps) => {
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset}`;
@@ -132,6 +134,7 @@ export const Card = ({
       className={cardClasses}
       role="region"
       aria-labelledby={title ? 'card-title' : undefined}
+      data-testid={dataTestid}
     >
       {renderMedia()}
       <div className={`gi-card-content gi-card-inset-${inset}`}>
