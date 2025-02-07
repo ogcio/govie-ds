@@ -8,11 +8,9 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   ref?: React.Ref<HTMLInputElement>;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  characterWidth?: number;
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
-  inputCustomClassName?: string;
   placeholder?: string;
   type?:
     | 'text'
@@ -33,22 +31,16 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     {
       prefix,
       suffix,
-      characterWidth,
       label,
       hint,
       error,
       id,
       type = 'text',
       placeholder,
-      inputCustomClassName,
       ...props
     },
     ref,
   ) => {
-    const widthStyle = characterWidth
-      ? { width: `${characterWidth * 1.2}ch` }
-      : {};
-
     return (
       <div
         role="group"
@@ -84,12 +76,10 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             placeholder={placeholder}
             id={id}
             type={type}
-            style={widthStyle}
             data-testid="textbox"
             aria-invalid={!!error?.text}
             aria-placeholder={placeholder}
-            className={cn('gi-text-input', inputCustomClassName, {
-              'gi-w-full': !inputCustomClassName,
+            className={cn('gi-text-input', {
               'gi-border-red-600': !!error?.text,
               'gi-border-gray-950': !error?.text,
             })}

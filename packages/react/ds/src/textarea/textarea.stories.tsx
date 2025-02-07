@@ -130,7 +130,6 @@ export const ResponsiveWidthWithTextInput: Story = {
         text: 'Input Label',
         htmlFor: 'text-input-id',
       },
-      className: 'gi-w-full',
     };
     return (
       <div className="gi-w-full md:gi-w-1/2">

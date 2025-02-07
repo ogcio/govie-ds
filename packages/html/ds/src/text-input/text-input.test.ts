@@ -17,33 +17,6 @@ describe('govieTextInput', () => {
     expect(inputElement.tagName).toBe('INPUT');
   });
 
-  it('should render with the correct width class for fullFluid', () => {
-    const screen = renderTextInput({
-      fullFluid: true,
-    });
-    const inputElement = screen.getByRole('textbox');
-
-    expect(inputElement.classList.contains('gi-w-full')).toBe(true);
-  });
-
-  it('should render with the correct width class for halfFluid', () => {
-    const screen = renderTextInput({
-      halfFluid: true,
-    });
-    const inputElement = screen.getByRole('textbox');
-
-    expect(inputElement.classList.contains('gi-w-1/2')).toBe(true);
-  });
-
-  it('should apply custom width when characterWidth is set', () => {
-    const screen = renderTextInput({
-      characterWidth: 20,
-    });
-    const inputElement = screen.getByRole('textbox');
-
-    expect(inputElement.getAttribute('style')).toContain('width: 20em;');
-  });
-
   it('should render a label if provided', () => {
     const screen = renderTextInput({
       label: {
