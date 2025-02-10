@@ -65,36 +65,6 @@ const meta = {
         defaultValue: { summary: '-' },
       },
     },
-    halfFluid: {
-      description:
-        'When `true`, the input width is set to 50% of the available space.',
-      control: 'boolean',
-      table: {
-        category: 'Width Control',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
-    fullFluid: {
-      description:
-        'When `true`, the input width is set to 100% of the available space.',
-      control: 'boolean',
-      table: {
-        category: 'Width Control',
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
-      },
-    },
-    characterWidth: {
-      description:
-        'Sets the width of the input in terms of the number of characters it can contain.',
-      control: 'number',
-      table: {
-        category: 'Width Control',
-        type: { summary: 'number' },
-        defaultValue: { summary: '-' },
-      },
-    },
     id: {
       description: 'Sets the unique ID for the input field.',
       control: 'text',
@@ -131,7 +101,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    fullFluid: true,
     id: 'input-id',
     label: {
       content: 'Label',
@@ -147,6 +116,62 @@ export const Default: Story = {
   },
 };
 
+export const ResponsiveLayout: Story = {
+  render: () => `
+  <div class="md:gi-w-2/3 gi-w-full">
+   <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+         <div role="group" class="gi-text-input-container" aria-labelledby="text-1-label">
+            <label class="gi-text-md gi-label gi-mb-1" for="text-1" aria-label="First Name" id="text-1-label">First Name</label>
+            <div class="gi-hint-text-md gi-hint-text " aria-label="Your first name." id="text-1-hint">Your first name.</div>
+            <div class="gi-text-input-container-inner"><input id="text-1" type="text" data-testid="govie-stack-item-0" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
+         </div>
+         <div role="group" class="gi-text-input-container" aria-labelledby="text-2-label">
+            <label class="gi-text-md gi-label gi-mb-1" for="text-2" aria-label="Last Name" id="text-2-label">Last Name</label>
+            <div class="gi-hint-text-md gi-hint-text " aria-label="Your last name." id="text-2-hint">Your last name.</div>
+            <div class="gi-text-input-container-inner"><input id="text-2" type="text" data-testid="govie-stack-item-1" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
+         </div>
+      </div>
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+         <div role="group" class="gi-text-input-container" aria-labelledby="text-4-label">
+            <label class="gi-text-md gi-label gi-mb-1" for="text-4" aria-label="Address" id="text-4-label">Address</label>
+            <div class="gi-hint-text-md gi-hint-text " aria-label="Where you live." id="text-4-hint">Where you live.</div>
+            <div class="gi-text-input-container-inner"><input id="text-4" type="text" data-testid="govie-stack-item-0" aria-invalid="false" class="gi-text-input gi-border-gray-950" maxlength="5"></div>
+         </div>
+      </div>
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+         <div role="group" class="gi-text-input-container" aria-labelledby="text-input-id-label">
+            <label class="gi-text-md gi-label gi-mb-1" for="text-input-id" aria-label="Date of birth" id="text-input-id-label">Date of birth</label>
+            <div class="gi-hint-text-md gi-hint-text " aria-label="Your date of birth." id="text-input-id-hint">Your date of birth.</div>
+            <div class="gi-text-input-container-inner"><input id="text-input-id" type="date" data-testid="govie-stack-item-0" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
+         </div>
+         <div role="group" class="gi-text-input-container" aria-labelledby="text-input-id-label">
+            <label class="gi-text-md gi-label gi-mb-1" for="text-input-id" aria-label="Height" id="text-input-id-label">Height</label>
+            <div class="gi-hint-text-md gi-hint-text " aria-label="Your height" id="text-input-id-hint">Your height</div>
+            <div class="gi-text-input-container-inner">
+               <div class="gi-text-input-prefix">cm</div>
+               <input id="text-input-id" type="text" data-testid="govie-stack-item-1" aria-invalid="false" class="gi-text-input gi-border-gray-950">
+            </div>
+         </div>
+         <div class="gi-w-full sm:gi-w-[80px] gi-flex-none" data-testid="govie-stack-item-2">
+            <div role="group" class="gi-text-input-container" aria-labelledby="text-4-label">
+               <label class="gi-text-md gi-label gi-mb-1" for="text-4" aria-label="Age" id="text-4-label">Age</label>
+               <div class="gi-hint-text-md gi-hint-text " aria-label="Your Age." id="text-4-hint">Your Age.</div>
+               <div class="gi-text-input-container-inner"><input id="text-4" type="text" data-testid="textbox" aria-invalid="false" class="gi-text-input gi-border-gray-950" maxlength="3"></div>
+            </div>
+         </div>
+      </div>
+      <div role="group" class="gi-text-input-container gi-error-state" aria-labelledby="text-4-label">
+         <label class="gi-text-md gi-label gi-mb-1" for="text-4" aria-label="Phone Number" id="text-4-label">Phone Number</label>
+         <div class="gi-hint-text-md gi-hint-text " aria-label="Your phone number." id="text-4-hint">Your phone number.</div>
+         <div role="alert" class="gi-error-text-md gi-error-text " id="text-4-error">Error: Please correct this issue.</div>
+         <div class="gi-text-input-container-inner"><input id="text-4" type="text" data-testid="govie-stack-item-3" aria-invalid="true" class="gi-text-input gi-border-red-600" pattern="d*" maxlength="10"></div>
+      </div>
+   </div>
+</div>
+`,
+};
+
 export const WithLabelAndHint: Story = {
   args: {
     label: {
@@ -157,7 +182,6 @@ export const WithLabelAndHint: Story = {
     hint: {
       content: 'Hint',
     },
-    fullFluid: true,
     id: 'label-hint-input',
   },
 };
@@ -172,7 +196,6 @@ export const WithLabelAndError: Story = {
     error: {
       content: 'Error: Please correct this issue.',
     },
-    fullFluid: true,
     id: 'label-hint-input',
   },
 };
@@ -190,7 +213,6 @@ export const WithLabelHintAndError: Story = {
     error: {
       content: 'Error',
     },
-    fullFluid: true,
     id: 'error-input',
   },
 };
@@ -202,45 +224,20 @@ export const WithLabelAndPrefixSuffix: Story = {
       for: 'suffix-input',
       size: LabelSize.md,
     },
-    fullFluid: true,
     prefix: 'KG',
     suffix: 'per item',
     id: 'suffix-input',
   },
 };
 
-export const HalfFluid: Story = {
-  args: {
-    label: {
-      content: 'Label',
-      for: 'half-width-input',
-      size: LabelSize.md,
-    },
-    halfFluid: true,
-    id: 'half-fluid-input',
-  },
-};
-
-export const FullFluid: Story = {
-  args: {
-    label: {
-      content: 'Label',
-      for: 'full-width-input',
-      size: LabelSize.md,
-    },
-    fullFluid: true,
-    id: 'full-fluid-input',
-  },
-};
-
-export const CharacterWidth: Story = {
+export const InputLength: Story = {
   args: {
     label: {
       content: 'Label',
       for: 'character-width-input',
       size: LabelSize.md,
     },
-    characterWidth: 20,
+    maxLength: 20,
     id: 'character-width-input',
   },
 };
@@ -320,7 +317,6 @@ export const DisabledInput: Story = {
 
 export const TextInputWithAriaAttributes: Story = {
   args: {
-    fullFluid: true,
     id: 'input-id',
     label: {
       content: 'Label',
