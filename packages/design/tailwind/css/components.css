@@ -1416,7 +1416,7 @@ input[type='file' i] {
 }
 
 .gi-tooltip {
-  @apply gi-absolute gi-z-[100] gi-bg-gray-900 gi-text-sm gi-text-white gi-px-4 gi-py-2 gi-rounded-[10px] gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-center gi-max-w-[300px];
+  @apply gi-absolute gi-z-[100] gi-bg-gray-900 gi-text-sm gi-text-white gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
 }
 
 .gi-tooltip[aria-hidden='true'] {
