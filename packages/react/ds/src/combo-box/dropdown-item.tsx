@@ -1,7 +1,7 @@
 'use client';
-import { useEffect, useState, useMemo, useId } from 'react';
-import { CheckboxSizeEnum } from '../checkbox/checkbox.js';
+import { useEffect, useState, useId } from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
+import { CheckboxSizeEnum } from '../checkbox/types.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';

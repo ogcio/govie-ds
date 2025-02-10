@@ -1,25 +1,6 @@
-import { InputHTMLAttributes } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
 import { getTickSize, getSizeClass } from './helpers.js';
-
-export enum CheckboxSizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
-
-type CheckboxType = {
-  id: string;
-  value: string;
-  size?: CheckboxSizeEnum;
-  label?: string;
-  hint?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  checked?: boolean;
-  disabled?: boolean;
-  ariaLabel?: string;
-  dataTestid?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+import { CheckboxSizeEnum, type CheckboxType } from './types.js';
 
 export const Checkbox = ({
   id,
