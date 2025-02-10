@@ -3,6 +3,7 @@ import React from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
+import { Spinner } from '../spinner/spinner.js';
 import { Tag, TagType } from '../tag/tag.js';
 import { Tooltip } from '../tooltip/tooltip.js';
 import { Caption } from './caption.js';
@@ -319,6 +320,38 @@ export const EmptyState: Story = {
         <TableRow>
           <TableData colSpan={headers.length} className="gi-table-no-data">
             No data to display
+          </TableData>
+        </TableRow>
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const LoadingState: Story = {
+  args: {
+    captionText: 'Loading State',
+    headers: ['ID', 'Name', 'Status'],
+    rows: [],
+  },
+  render: ({ captionText, headers = [] }) => (
+    <Table>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData
+            colSpan={headers.length}
+            className="gi-table-loading gi-justify-items-center"
+          >
+            <div className="gi-stroke-gray-950">
+              <Spinner size="xl" />
+            </div>
           </TableData>
         </TableRow>
       </TableBody>

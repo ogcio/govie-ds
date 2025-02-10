@@ -1360,7 +1360,8 @@ input[type='file' i] {
   @apply gi-text-left gi-mb-4 gi-font-bold;
 }
 
-.gi-table-no-data {
+.gi-table-no-data,
+.gi-table-loading {
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
 
