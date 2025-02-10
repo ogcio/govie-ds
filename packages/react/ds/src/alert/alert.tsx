@@ -42,6 +42,7 @@ type AlertProps = {
   title: string;
   children?: ReactNode;
   dismissible?: boolean;
+  dataTestid?: string;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -73,6 +74,7 @@ function Alert({
   variant = 'info',
   dismissible,
   onClose,
+  dataTestid,
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -88,7 +90,7 @@ function Alert({
   return (
     <div
       className={baseVariant()}
-      data-testid="alert"
+      data-testid={dataTestid}
       role="alert"
       aria-live="assertive"
     >

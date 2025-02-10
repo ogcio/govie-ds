@@ -54,24 +54,6 @@ export const textInputSchema = zod.object({
         'Element or text to display on the right side of the input, such as a unit or symbol.',
     })
     .optional(),
-  halfFluid: zod
-    .boolean({
-      description:
-        'When `true`, the input width is set to 50% of the available space.',
-    })
-    .optional(),
-  fullFluid: zod
-    .boolean({
-      description:
-        'When `true`, the input width is set to 100% of the available space.',
-    })
-    .optional(),
-  characterWidth: zod
-    .number({
-      description:
-        'Sets the width of the input in terms of the number of characters it can contain.',
-    })
-    .optional(),
   id: zod
     .string({
       description: 'Sets the unique ID for the input field.',
@@ -82,17 +64,53 @@ export const textInputSchema = zod.object({
       description: 'Specifies the input type.',
     })
     .optional(),
+  value: zod.string().optional().describe('The input value'),
+  defaultValue: zod.string().optional().describe('The default input value'),
+  placeholder: zod
+    .string({ description: 'The placeholder for the input element' })
+    .optional(),
+  disabled: zod.boolean({ description: 'Disabled state' }).optional(),
+  readOnly: zod.boolean({ description: 'Readonly state' }).optional(),
+  required: zod
+    .boolean({ description: 'Marks the input as required' })
+    .optional(),
+  autoFocus: zod
+    .boolean({ description: 'Autofocuses the input field' })
+    .optional(),
+  maxLength: zod.number().optional().describe('Max character length'),
+  minLength: zod.number().optional().describe('Min character length'),
+  min: zod
+    .union([zod.string(), zod.number()])
+    .optional()
+    .describe('Minimum value for number inputs'),
+  max: zod
+    .union([zod.string(), zod.number()])
+    .optional()
+    .describe('Maximum value for number inputs'),
+  step: zod
+    .union([zod.string(), zod.number()])
+    .optional()
+    .describe('Step size for number inputs'),
+  pattern: zod
+    .string()
+    .optional()
+    .describe('Regex pattern for input validation'),
+  autoComplete: zod
+    .string()
+    .optional()
+    .describe('Autocomplete attribute for input'),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
+  className: zod.string({ description: 'Add additional classes' }).optional(),
   label: labelSchema.describe('Label for text-input').optional(),
   hint: hintTextSchema.describe('Hint for text-input').optional(),
   error: errorTextSchema
     .describe('Set error boundaries for text-input')
     .optional(),
-  className: zod.string({ description: 'Add additional classes' }).optional(),
-  placeholder: zod
-    .string({ description: 'The placeholder for the input element' })
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
     .optional(),
-  disabled: zod.boolean({ description: 'Disabled state' }).optional(),
-  aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
 export type TextInputProps = zod.infer<typeof textInputSchema>;

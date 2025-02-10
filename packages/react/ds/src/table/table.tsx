@@ -15,12 +15,14 @@ const tableVariants = tv({
 export type TableProps = VariantProps<typeof tableVariants> & {
   ariaRowCount?: number;
   ariaColCount?: number;
+  dataTestid?: string;
 };
 
 export function Table({
   layout = 'auto',
   ariaRowCount,
   ariaColCount,
+  dataTestid,
   children,
 }: React.PropsWithChildren<TableProps>) {
   const layoutClasses = tableVariants({ layout });
@@ -31,6 +33,7 @@ export function Table({
       aria-label="Table"
       aria-rowcount={ariaRowCount}
       aria-colcount={ariaColCount}
+      data-testid={dataTestid}
     >
       {children}
     </table>

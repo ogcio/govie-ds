@@ -25,12 +25,20 @@ export type SelectProps = {
   options: options;
   hint?: HintTextProps;
   error?: ErrorTextProps;
+  dataTestid?: string;
 };
 
-export function Select({ id, label, options, hint, error }: SelectProps) {
+export function Select({
+  id,
+  label,
+  options,
+  hint,
+  error,
+  dataTestid,
+}: SelectProps) {
   const ariaLabel = label?.text || id;
   return (
-    <div>
+    <div data-testid={dataTestid}>
       {label?.text && (
         <Label
           text={label.text}

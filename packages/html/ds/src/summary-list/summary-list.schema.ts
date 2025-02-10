@@ -23,6 +23,11 @@ export const SummaryListRowSchema = zod.object({
       description: 'Indicates if the row has a border.',
     })
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export const SummaryListSchema = zod.object({

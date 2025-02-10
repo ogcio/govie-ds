@@ -15,6 +15,7 @@
       for="{{ props.for }}"
     {% endif %}
     class="{{ getSizeClass(props.size) | trim }} gi-label {{ addClasses(props.classNames) | trim }}"
+    data-testid="{{ props.dataTestid }}"
     >{{ props.content | safe | trim }}</label
   >
 {% endmacro %}

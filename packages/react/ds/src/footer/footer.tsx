@@ -15,15 +15,17 @@ export type FooterProps = {
     heading: string;
     links: FooterLink[];
   }[];
+  dataTestid?: string;
 };
 
-export function Footer({ links, secondaryNavLinks }: FooterProps) {
+export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
   return (
     <footer
       className="gi-footer"
       data-module="gieds-footer"
       role="contentinfo"
       aria-label="Footer"
+      data-testid={dataTestid}
     >
       <Container>
         {secondaryNavLinks && (

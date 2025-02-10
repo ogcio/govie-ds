@@ -8,11 +8,6 @@
   {% if props.maxChars %}
     {% set remainingText = ["You have ", props.maxChars, " characters remaining"] | join %}
   {% endif %}
-  {% if props.fullFluid %}
-    {% set widthClass = 'gi-w-full' %}
-  {% elif props.halfFluid %}
-    {% set widthClass = 'gi-w-1/2' %}
-  {% endif %}
   {% set marginBottom = 'gi-mb-1' %}
   {% if not isError and not isHint %}
     {% set marginBottom = 'gi-mb-2' %}
@@ -24,7 +19,10 @@
     {% endif %}
   {% endmacro %}
 
-  <div class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}">
+  <div
+    class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}"
+    data-testid="{{ props.dataTestid }}"
+  >
     {% if props.label %}
       {{
         govieLabel({

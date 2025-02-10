@@ -5,6 +5,11 @@ export const tabsSchema = zod.object({
     description: 'The label reference of the tab',
     required_error: 'The aria-labelled-id is required',
   }),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
   items: zod
     .array(
       zod.object({

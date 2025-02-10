@@ -18,6 +18,7 @@ type CheckboxType = {
   checked?: boolean;
   disabled?: boolean;
   ariaLabel?: string;
+  dataTestid?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export const Checkbox = ({
@@ -31,11 +32,12 @@ export const Checkbox = ({
   checked,
   disabled,
   ariaLabel,
+  dataTestid,
 }: CheckboxType) => {
   const CheckboxId = id ?? value;
   return (
     <>
-      <div className="gi-checkbox-container">
+      <div className="gi-checkbox-container" data-testid={dataTestid}>
         <input
           name={name || label}
           onChange={onChange}

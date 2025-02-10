@@ -46,7 +46,8 @@
           "type": props.asButton.type,
           "form": props.asButton.form,
           "value": props.asButton.value,
-          "aria": props.aria
+          "aria": props.aria,
+          "testId": props.dataTestid
         })
       }}
     {% else %}
@@ -58,6 +59,7 @@
     {{ commonAriaAttributes(props) }}
     href="{{ props.href }}"
     {{ getExternalAttribute(props.external) | trim }}
+    data-testid="{{ props.dataTestid }}"
     class="
       gi-link
       {{ getColorClass(props.noColor) | trim }}

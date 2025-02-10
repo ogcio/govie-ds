@@ -1,47 +1,149 @@
 'use client';
-import { INotyfPosition } from 'notyf';
-import { Notyf } from 'notyf';
-import { cloneElement, createContext, useEffect, useContext } from 'react';
-import { renderToString } from 'react-dom/server';
-import { type ButtonProps } from '../button/types.js';
-import { Toast as DSToast, type DSToastProps } from './ds-toast.js';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { cn } from '../cn.js';
+import { Toast as DSToast } from './ds-toast.js';
+import type { ToastPosition, ToastProps } from './types.js';
 
-export type ToastProps = DSToastProps & {
-  duration?: number;
-  position?: INotyfPosition;
-  trigger?: React.ReactElement<ButtonProps>;
+const positions: ToastPosition[] = [
+  { x: 'left', y: 'top' },
+  { x: 'left', y: 'center' },
+  { x: 'left', y: 'bottom' },
+  { x: 'center', y: 'top' },
+  { x: 'center', y: 'center' },
+  { x: 'center', y: 'bottom' },
+  { x: 'right', y: 'top' },
+  { x: 'right', y: 'center' },
+  { x: 'right', y: 'bottom' },
+];
+
+const toastProviderState = {
+  isMounted: false,
 };
 
-const isClientSide = typeof window === 'undefined' ? null : new Notyf();
-const notyfContext = createContext(isClientSide);
-
-export const Toast = (props: ToastProps) => {
-  const notyf = useContext(notyfContext);
+export const ToastProvider = () => {
+  const [toastStack, setToastStack] = useState<ToastProps[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const notyfContainer = document.querySelectorAll(
-      '.notyf .notyf__toast',
-    ) as NodeListOf<HTMLElement>;
+    setIsClient(true);
+    const handleToastEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<ToastProps>;
+      setToastStack((previous) => [...previous, customEvent.detail]);
+    };
 
-    for (const toast of notyfContainer) {
-      toast
-        .querySelector('.gi-toast-dismiss')
-        ?.addEventListener('click', () => {
-          toast.style.display = 'none';
-        });
-    }
+    window.addEventListener('govie:add-toast', handleToastEvent);
+    toastProviderState.isMounted = true;
+    return () => {
+      window.removeEventListener('govie:add-toast', handleToastEvent);
+      toastProviderState.isMounted = false;
+    };
   }, []);
 
-  const renderNotyf = () => {
-    const { duration, position } = props;
-    const html = renderToString(<DSToast {...props} />);
-    notyf && notyf.open({ type: 'open', message: html, duration, position });
-  };
-
-  if (props.trigger) {
-    return cloneElement(props.trigger, { onClick: renderNotyf });
+  if (!isClient) {
+    return null;
   }
-  renderNotyf();
+
+  return (
+    <>
+      {positions.map((position) => {
+        const filteredToasts = toastStack.filter(
+          (toast) =>
+            toast.position?.x === position.x &&
+            toast.position?.y === position.y,
+        );
+
+        return createPortal(
+          <div
+            id={`toast-portal-${position.x}-${position.y}`}
+            key={`toast-${position.x}-${position.y}`}
+            role="region"
+            aria-label={`Toasts-${position.y}-${position.x}`}
+            data-position={`${position.y}-${position.x}`}
+            className="gi-toast-portal"
+          >
+            {filteredToasts.map((toast, index) => (
+              <Toast key={`toast-${index}`} {...toast} />
+            ))}
+          </div>,
+          document.body,
+        );
+      })}
+    </>
+  );
 };
 
-export default Toast;
+export const toaster = {
+  create: ({ position, ...props }: ToastProps) => {
+    if (toastProviderState.isMounted) {
+      const event = new CustomEvent('govie:add-toast', {
+        detail: {
+          ...props,
+          position: {
+            x: position?.x || 'right',
+            y: position?.y || 'bottom',
+          },
+        },
+      });
+      window.dispatchEvent(event);
+    } else {
+      console.warn('ToastProvider not found. Cannot dispatch toast event.');
+    }
+  },
+};
+
+export const Toast = ({
+  variant,
+  title,
+  description,
+  action,
+  dismissible,
+  duration = 5000,
+  animation = 'fadeinup',
+}: ToastProps) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const [hide, setHide] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleOnClose();
+    }, duration);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setHide(true);
+      }, 300);
+    }
+  }, [isOpen]);
+
+  const handleOnClose = () => setIsOpen(false);
+
+  if (hide) {
+    return null;
+  }
+
+  return (
+    <div
+      data-testid={`${title}-${variant || 'info'}`}
+      data-animation={animation || 'no-animation'}
+      className={cn('gi-toast gi-toast-lower', {
+        'gi-toast-disappear': !isOpen,
+      })}
+    >
+      <div className="gi-wrapper">
+        <div className={'gi-message'}>
+          <DSToast
+            onClose={handleOnClose}
+            title={title}
+            action={action}
+            variant={variant}
+            description={description}
+            dismissible={dismissible}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

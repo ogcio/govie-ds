@@ -68,6 +68,11 @@ export const checkboxSchema = zod.object({
     })
     .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export const checkboxesSchema = zod.object({
@@ -163,6 +168,11 @@ export const checkboxesSchema = zod.object({
   size: zod
     .nativeEnum(CheckboxSizeEnum, {
       description: 'Specifies the size of the checkbox',
+    })
+    .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
     })
     .optional(),
 });

@@ -29,6 +29,7 @@ export type LinkProps = {
     | 'true'
     | 'false';
   ariaDescribedBy?: string;
+  dataTestid?: string;
 } & React.AriaAttributes;
 
 export function Link({
@@ -45,12 +46,14 @@ export function Link({
   ariaCurrent,
   ariaDescribedBy,
   onClick,
+  dataTestid,
   ...ariaProps
 }: LinkProps) {
   const Component = as === LinkType.BUTTON ? LinkType.BUTTON : Anchor;
 
   return (
     <Component
+      data-testid={dataTestid}
       href={href}
       onClick={onClick}
       external={external}

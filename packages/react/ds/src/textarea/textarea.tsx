@@ -5,12 +5,10 @@ import React, {
   useId,
   useState,
 } from 'react';
+import { cn } from '../cn.js';
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
-
-// Extend `React.TextareaHTMLAttributes<HTMLTextAreaElement>` so that
-// the component can accept all the standard attributes and events that a `<textarea>` element can handle.
 
 export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -24,18 +22,20 @@ export type TextAreaProps = React.DetailedHTMLProps<
   hint?: HintTextProps;
   label?: LabelProps;
   maxChars?: number;
+  dataTestid?: string;
 };
 
 export const TextArea = ({
-  rows = 4, // default row count
-  cols = 100, // default column count
-  autoComplete = 'on', // default autoComplete behavior
+  rows = 4,
+  cols = 100,
+  autoComplete = 'on',
   maxChars,
   label,
   error,
   hint,
   id,
   ref,
+  dataTestid,
   ...props
 }: TextAreaProps) => {
   const [remainingChars, setRemainingChars] = useState<undefined | number>(
@@ -59,7 +59,10 @@ export const TextArea = ({
 
   return (
     <div
-      className={`gi-textarea-layout-container ${error?.text && 'gi-error-state'}`}
+      className={cn('gi-textarea-layout-container', {
+        'gi-error-state': !!error?.text,
+      })}
+      data-testid={dataTestid}
     >
       {label?.text && (
         <Label
@@ -67,12 +70,14 @@ export const TextArea = ({
           size={label.size}
           htmlFor={id}
           id={labelId}
-          className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
+          className={cn({
+            'gi-mb-2': !hint?.text && !error?.text,
+            'gi-mb-1': hint?.text || error?.text,
+          })}
         />
       )}
 
       {hint?.text && <HintText text={hint.text} size={hint.size} id={hintId} />}
-
       {error?.text && (
         <ErrorText text={error.text} size={error.size} id={errorId} />
       )}
@@ -83,7 +88,7 @@ export const TextArea = ({
           rows={rows}
           cols={cols}
           autoComplete={autoComplete}
-          className={`${error?.text ? 'gi-textarea-error' : 'gi-textarea'}`}
+          className={cn('gi-textarea', { 'gi-textarea-error': !!error?.text })}
           ref={ref}
           maxLength={maxChars}
           onChange={handleOnChange}
@@ -102,5 +107,4 @@ export const TextArea = ({
   );
 };
 
-// Set the displayName for debugging purposes
 TextArea.displayName = 'TextArea';

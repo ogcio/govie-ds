@@ -29,4 +29,5 @@ export type SummaryListProps = {
   children:
     | React.ReactElement<typeof SummaryListRow>[]
     | React.ReactElement<typeof SummaryListRow>;
+  dataTestid?: string;
 };

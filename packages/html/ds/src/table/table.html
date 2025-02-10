@@ -11,6 +11,7 @@
   <table
     {{ commonAriaAttributes(props) }}
     class="{{ getLayoutClass(props) | trim }} gi-table"
+    data-testid="{{ props.dataTestid }}"
   >
     {% if props.captionText %}
       <caption class="gi-table-caption-text gi-text-lg">

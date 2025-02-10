@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Stack } from '../stack/stack.js';
+import { TextInput } from '../text-input/text-input.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -103,6 +105,42 @@ export const Default: Story = {
     hint: {
       text: '',
     },
+  },
+};
+
+export const ResponsiveWidthWithTextInput: Story = {
+  args: {
+    rows: 4,
+    cols: 100,
+    id: 'textarea-id-0',
+    label: {
+      text: 'Textarea Label',
+      htmlFor: 'textarea-id-0',
+    },
+    error: {
+      text: '',
+    },
+    hint: {
+      text: '',
+    },
+  },
+  render: (props) => {
+    const textProps = {
+      label: {
+        text: 'Input Label',
+        htmlFor: 'text-input-id',
+      },
+    };
+    return (
+      <div className="gi-w-full md:gi-w-1/2">
+        <Stack direction={{ base: 'column' }} gap={3}>
+          <TextInput {...textProps} id="text-1" />
+          <TextArea {...props} />
+          <TextInput {...textProps} id="text-2" />
+          <TextArea {...props} />
+        </Stack>
+      </div>
+    );
   },
 };
 

@@ -1,21 +1,16 @@
 import React from 'react';
+import { cn } from '../cn.js';
 import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
 import { HintText, HintTextProps } from '../hint-text/hint-text.js';
 import { Label, LabelProps } from '../label/label.js';
 
-// Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
-// the component can accept all the standard attributes and events that an `<input>` element can handle.
 export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   ref?: React.Ref<HTMLInputElement>;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  halfFluid?: boolean;
-  fullFluid?: boolean;
-  characterWidth?: number;
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
-  className?: string;
   placeholder?: string;
   type?:
     | 'text'
@@ -29,45 +24,33 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'time'
     | 'url'
     | 'week';
+  dataTestid?: string;
 };
 
-// Use React.forwardRef to support refs properly
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       prefix,
       suffix,
-      halfFluid,
-      fullFluid = true,
-      characterWidth,
       label,
       hint,
       error,
       id,
       type = 'text',
-      className,
       placeholder,
+      dataTestid,
       ...props
     },
     ref,
   ) => {
-    // Determine width style dynamically for `characterWidth`
-    const widthStyle = characterWidth ? { width: `${characterWidth}em` } : {};
-
-    // Determine static width class (for cases like fullFluid and halfFluid)
-    let widthClass = 'gi-w-auto'; // Default width
-
-    if (fullFluid && !halfFluid && !characterWidth) {
-      widthClass = 'gi-w-full';
-    } else if (halfFluid) {
-      widthClass = 'gi-w-1/2';
-    }
-
     return (
       <div
         role="group"
-        className={`gi-text-input-container ${error?.text ? 'gi-error-state' : ''} ${className && className}`}
-        aria-labelledby={label?.text ? `${id}-label` : undefined}
+        className={cn('gi-text-input-container', {
+          'gi-error-state': !!error?.text,
+        })}
+        aria-labelledby={`${id}-label`}
+        data-testid={dataTestid}
       >
         {label?.text && (
           <Label
@@ -75,7 +58,10 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             size={label.size}
             htmlFor={id}
             id={`${id}-label`}
-            className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
+            className={cn({
+              'gi-mb-2': !hint?.text && !error?.text,
+              'gi-mb-1': hint?.text || error?.text,
+            })}
           />
         )}
 
@@ -93,11 +79,13 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             placeholder={placeholder}
             id={id}
             type={type}
-            style={widthStyle}
             data-testid="textbox"
             aria-invalid={!!error?.text}
-            aria-placeholder={placeholder || undefined}
-            className={`${error?.text ? 'gi-border-red-600' : 'gi-border-gray-950'} ${widthClass} gi-text-input`}
+            aria-placeholder={placeholder}
+            className={cn('gi-text-input', {
+              'gi-border-red-600': !!error?.text,
+              'gi-border-gray-950': !error?.text,
+            })}
             ref={ref}
             {...props}
           />
@@ -108,5 +96,4 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-// Set the displayName for debugging purposes
 TextInput.displayName = 'TextInput';

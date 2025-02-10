@@ -36,7 +36,7 @@ input[type='text'] {
 
 /* Error state */
 .gi-error-state {
-  @apply gi-px-4 gi-border-solid gi-border-l-lg gi-border-red-600;
+  @apply gi-pl-4 gi-border-solid gi-border-l-lg gi-border-red-600;
 }
 
 /* End of Error state */
@@ -66,8 +66,12 @@ input[type='text'] {
 
 /* Text Input */
 
+.gi-text-input-container {
+  @apply gi-w-full;
+}
+
 .gi-text-input-container-inner {
-  @apply gi-flex gi-items-center;
+  @apply gi-w-full gi-flex gi-items-center;
 }
 .gi-text-input-prefix {
   @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
@@ -76,7 +80,7 @@ input[type='text'] {
   @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input {
-  @apply gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
 }
 
 /* End of Text Input */
@@ -817,7 +821,11 @@ input[type='file' i] {
 
 .gi-textarea,
 .gi-textarea-error {
-  @apply gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+}
+
+.gi-textarea-layout-container {
+  @apply gi-w-full;
 }
 
 .gi-textarea-container {
@@ -973,44 +981,6 @@ input[type='file' i] {
 
 /* Toast */
 
-/* Native notyf classes */
-.notyf {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-gap-6;
-}
-.notyf__toast {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
-  animation-delay: 0s !important;
-}
-.notyf__message {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-w-full;
-  animation-delay: 0s !important;
-}
-.notyf__wrapper {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-m-0 !gi-p-0;
-}
-.notyf__toast:has(.gi-toast-info) {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
-}
-.notyf__toast:has(.gi-toast-success) {
-  /* The important classes are needed since we need to overide the notyf library package  styles */
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
-}
-.notyf__toast:has(.gi-toast-warning) {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
-}
-.notyf__toast:has(.gi-toast-danger) {
-  /* The important classes are needed since we need to overide the notyf library package styles */
-  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
-}
-
-/* End of Native notyf classes */
-
 .gi-toast-base {
   @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2;
 }
@@ -1047,8 +1017,217 @@ input[type='file' i] {
   @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
 }
 .gi-toast-action {
-  @apply gi-text-gray-950 gi-mt-2;
+  @apply gi-text-gray-950 gi-mt-1;
 }
+
+.gi-toast {
+  @apply gi-m-0 gi-p-0 md:gi-min-w-[320px] md:gi-max-w-[460px] gi-w-full gi-block gi-overflow-hidden gi-pointer-events-auto gi-relative gi-rounded-sm gi-box-border gi-shrink-[0];
+}
+
+.gi-toast-portal {
+  @apply gi-fixed gi-flex gi-flex-col gi-gap-5 gi-z-100 gi-w-full gi-max-w-[calc(100%_-_var(--gieds-space-8))] md:gi-w-auto;
+}
+
+.gi-toast-portal[data-position='top-right'] {
+  @apply gi-top-4 gi-right-4;
+}
+
+.gi-toast-portal[data-position='top-left'] {
+  @apply gi-top-4 gi-left-4;
+}
+
+.gi-toast-portal[data-position='center-center'] {
+  @apply gi-top-1/2 gi-left-1/2 gi-translate-x-[-50%] gi-translate-y-[-50%];
+}
+
+.gi-toast-portal[data-position='bottom-right'] {
+  @apply gi-bottom-4 gi-right-4;
+}
+
+.gi-toast-portal[data-position='bottom-left'] {
+  @apply gi-bottom-4 gi-left-4;
+}
+
+.gi-toast[data-animation='fadeinup'] {
+  animation: toast-fadeinup 0.3s ease-in forwards;
+}
+
+.gi-toast[data-animation='fadeinleft'] {
+  animation: toast-fadeinleft 0.3s ease-in forwards;
+}
+
+.gi-toast[data-animation='fadeinright'] {
+  animation: toast-fadeinright 0.3s ease-in forwards;
+}
+
+.gi-toast[data-animation='fadeoutright'] {
+  animation: toast-fadeoutright 0.3s ease-in forwards;
+}
+
+.gi-toast[data-animation='fadeoutdown'] {
+  animation: toast-fadeoutdown 0.3s ease-in forwards;
+}
+
+.gi-toast-disappear {
+  transform: translateY(0);
+  animation-delay: 0.25s;
+}
+
+.gi-toast-disappear[data-animation='fadeinleft'] {
+  animation: toast-fadeoutleft 0.3s forwards;
+}
+
+.gi-toast-disappear[data-animation='fadeinup'] {
+  animation: toast-fadeoutup 0.3s forwards;
+}
+
+.gi-toast-disappear[data-animation='fadeinright'] {
+  animation: toast-fadeoutright 0.3s forwards;
+}
+
+.gi-toast-message {
+  @apply gi-w-full;
+  animation-delay: 0s;
+}
+.gi-toast-wrapper {
+  @apply gi-m-0 !gi-p-0;
+}
+.gi-toast:has(.gi-toast-info) {
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
+}
+.gi-toast:has(.gi-toast-success) {
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
+}
+.gi-toast:has(.gi-toast-warning) {
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
+}
+.gi-toast:has(.gi-toast-danger) {
+  @apply gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
+}
+
+/* Keyframes for fade-in animations */
+@keyframes toast-fadeinup {
+  0% {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-fadeinleft {
+  0% {
+    opacity: 0;
+    transform: translateX(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-fadeinright {
+  0% {
+    opacity: 0;
+    transform: translateX(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-fadeoutright {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(25%);
+  }
+}
+
+@keyframes toast-fadeoutdown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+}
+
+@keyframes toast-fadeoutleft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes toast-fadeoutup {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+}
+
+/* Native notyf classes */
+.notyf {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-gap-6;
+}
+.notyf__toast {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-m-0 !gi-p-0 !gi-min-w-[340px] !gi-max-w-[460px];
+  animation-delay: 0s !important;
+}
+.notyf__message {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-w-full;
+  animation-delay: 0s !important;
+}
+.notyf__wrapper {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-m-0 !gi-p-0;
+}
+.notyf__toast:has(.gi-toast-info) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(7,33,85,0.15)];
+}
+.notyf__toast:has(.gi-toast-success) {
+  /* The important classes are needed since we need to overide the notyf library package  styles */
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(0,61,33,0.15)];
+}
+.notyf__toast:has(.gi-toast-warning) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(62,41,25,0.15)];
+}
+.notyf__toast:has(.gi-toast-danger) {
+  /* The important classes are needed since we need to overide the notyf library package styles */
+  @apply !gi-shadow-[0px_0px_25px_-5px_rgba(76,11,0,0.15)];
+}
+
+.notyf__toast--disappear {
+  transform: translateY(0);
+  -webkit-animation: notyf-fadeoutdown 0.3s forwards;
+  animation: notyf-fadeoutdown 0.3s forwards;
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+}
+
+/* End of Native notyf classes */
 
 /* End of Toast */
 
@@ -1181,7 +1360,8 @@ input[type='file' i] {
   @apply gi-text-left gi-mb-4 gi-font-bold;
 }
 
-.gi-table-no-data {
+.gi-table-no-data,
+.gi-table-loading {
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
 
@@ -1236,7 +1416,7 @@ input[type='file' i] {
 }
 
 .gi-tooltip {
-  @apply gi-absolute gi-z-[100] gi-bg-gray-900 gi-text-sm gi-text-white gi-px-4 gi-py-2 gi-rounded-[10px] gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-center gi-max-w-[300px];
+  @apply gi-absolute gi-z-[100] gi-bg-gray-900 gi-text-sm gi-text-white gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
 }
 
 .gi-tooltip[aria-hidden='true'] {
