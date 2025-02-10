@@ -19,6 +19,7 @@ describe('drawer', () => {
       body: drawerBody,
       footer: drawerFooter,
       startsOpen: true,
+      dataTestid: 'drawer-trigger-button-container',
     });
 
     const modalElement = screen.getByTestId('modal');
@@ -33,6 +34,7 @@ describe('drawer', () => {
       body: drawerBody,
       footer: drawerFooter,
       startsOpen: false,
+      dataTestid: 'drawer-trigger-button-container',
     });
 
     const triggerButtonElement = screen.getByTestId(
@@ -50,6 +52,7 @@ describe('drawer', () => {
       body: drawerBody,
       footer: drawerFooter,
       startsOpen: false,
+      dataTestid: 'drawer-trigger-button-container',
     });
 
     const modalElement = screen.getByTestId('modal');
@@ -78,6 +81,7 @@ describe('drawer', () => {
       body: drawerBody,
       footer: drawerFooter,
       startsOpen: false,
+      dataTestid: 'drawer-trigger-button-container',
     });
 
     const triggerButtonElement = screen.getByTestId(
@@ -99,6 +103,7 @@ describe('drawer', () => {
       body: drawerBody,
       footer: drawerFooter,
       startsOpen: false,
+      dataTestid: 'drawer-trigger-button-container',
     });
 
     await screen.axe();
