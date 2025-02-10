@@ -9,14 +9,6 @@
   {% set widthClass = 'gi-w-auto' %}
   {% set isError = props.error and props.error.content %}
   {% set isHint = props.hint and props.hint.content %}
-
-  {% if props.fullFluid %}
-    {% set widthClass = 'gi-w-full' %}
-  {% elif props.halfFluid %}
-    {% set widthClass = 'gi-w-1/2' %}
-  {% elif props.characterWidth %}
-    {% set widthStyle = 'style="width: ' ~ props.characterWidth ~ 'em;"' %}
-  {% endif %}
   {% set marginBottom = 'gi-mb-1' %}
   {% if not isError and not isHint %}
     {% set marginBottom = 'gi-mb-2' %}
@@ -70,14 +62,25 @@
 
       <input
         {{ commonAriaAttributes(props) }}
-        {% if props.disabled %}disabled{% endif %}
         id="{{ inputId }}"
-        {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
-        data-testid="textbox"
-        {{ widthStyle | safe }}
         type="{{ props.type or 'text' }}"
         autocomplete="{{ props.autoComplete or 'on' }}"
-        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} {{ widthClass }} gi-text-input "
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} gi-text-input "
+        {% if props.disabled %}disabled{% endif %}
+        {% if props.readOnly %}readonly{% endif %}
+        {% if props.required %}required{% endif %}
+        {% if props.autoFocus %}autofocus{% endif %}
+        {% if props.multiple %}multiple{% endif %}
+        {% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
+        {% if props.value %}value="{{ props.value }}"{% endif %}
+        {% if props.defaultValue %}value="{{ props.defaultValue }}"{% endif %}
+        {% if props.maxLength %}maxlength="{{ props.maxLength }}"{% endif %}
+        {% if props.minLength %}minlength="{{ props.minLength }}"{% endif %}
+        {% if props.min %}min="{{ props.min }}"{% endif %}
+        {% if props.max %}max="{{ props.max }}"{% endif %}
+        {% if props.step %}step="{{ props.step }}"{% endif %}
+        {% if props.pattern %}pattern="{{ props.pattern }}"{% endif %}
+        data-testid="textbox"
       />
 
       {% if props.suffix %}

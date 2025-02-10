@@ -18,44 +18,10 @@ libraries:
 
 ## Variants
 
-### Toast without trigger
-
-This toast will automatically appear when the page loads. \
-*Refresh the current to see the toast being rendered*
-
-<ComponentContainer>
-  <Toast title="Toast" description="This toast has rendered on page load" />
-</ComponentContainer>
-
-<Tabs id="tab1">
-  <TabList>
-    <TabItem value="tab11" checked>Macro</TabItem>
-    <TabItem value="tab12">React</TabItem>
-  </TabList>
-  <TabPanel value="tab11">
-  ```html
-  {{ govieToast({
-    "title": "Toast",
-    "description": "This toast has rendered on page load",
-  }) }}
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```react
-  import { Toast } from '@govie-ds/react';
-
-  <Toast 
-   title="Toast" 
-   description="This toast has rendered on page load" 
-  />
-  ```
-  </TabPanel>
-</Tabs>
-
 ### Info Toast with trigger
 
 <ComponentContainer>
-  <Toast title="Toast Triggered" description="This is an info toast" trigger={<Button>Trigger Toast</Button>}/>
+  <Toast title="Toast Triggered" description="This is an info toast" />
 </ComponentContainer>
 
 <Tabs id="tab2">
@@ -76,50 +42,20 @@ This toast will automatically appear when the page loads. \
   </TabPanel>
   <TabPanel value="tab22">
   ```react
-  import { Toast } from '@govie-ds/react';
-
-  <Toast 
-   title="Toast Triggered" 
-   description="This is an info toast" 
-   trigger={<Button>Trigger Toast</Button>}
-  />
-  ```
-  </TabPanel>
-</Tabs>
-
-### Success Toast with trigger
-
-<ComponentContainer>
-  <Toast title="Toast Triggered" variant="success" description="This is a success toast" trigger={<Button>Trigger Toast</Button>}/>
-</ComponentContainer>
-
-<Tabs id="tab3">
-  <TabList>
-    <TabItem value="tab31" checked>Macro</TabItem>
-    <TabItem value="tab32">React</TabItem>
-  </TabList>
-  <TabPanel value="tab31">
-  ```html
-  {{ govieToast({
-    "title": "Toast Triggered",
-    "description": "This is a success toast",
-    "variant": "success",
-    "trigger": {
-      "content": "Trigger Toast"
-    }
-  }) }}
-  ```
-  </TabPanel>
-  <TabPanel value="tab32">
-  ```react
-  import { Toast } from '@govie-ds/react';
-
-  <Toast 
-   title="Toast Triggered" 
-   variant="success" 
-   description="This is a success toast" 
-   trigger={<Button>Trigger Toast</Button>}
-  />
+  import { toaster, ToastProvider } from '@govie-ds/react';
+  
+  <ToastProvider />
+    <Button
+      onClick={() => {
+        toaster.create({
+          title: 'Toast Triggered',
+          variant: 'info',
+          description: 'This is an info toast',
+        });
+      }}
+    >
+      Toast Triggered
+    </Button>
   ```
   </TabPanel>
 </Tabs>
@@ -127,85 +63,252 @@ This toast will automatically appear when the page loads. \
 ### Error Toast with trigger
 
 <ComponentContainer>
-  <Toast title="Toast Triggered" variant="danger" description="This is an error toast" trigger={<Button>Trigger Toast</Button>}/>
+  <Toast
+    title="Toast Triggered"
+    variant="danger"
+    description="This is an error toast"
+    duration={900000}
+  />
 </ComponentContainer>
 
 <Tabs id="tab4">
-  <TabList>
-    <TabItem value="tab41" checked>Macro</TabItem>
-    <TabItem value="tab42">React</TabItem>
-  </TabList>
-  <TabPanel value="tab41">
-  ```html
-  {{ govieToast({
-    "title": "Toast Triggered",
-    "description": "This is an error toast",
-    "variant": "danger",
-    "trigger": {
-      "content": "Trigger Toast"
-    }
-  }) }}
-  ```
+<TabList>
+  <TabItem value="tab41" checked>Macro</TabItem>
+  <TabItem value="tab42">React</TabItem>
+</TabList>
+<TabPanel value="tab41">
+```html
+{{ govieToast({
+  "title": "Toast Triggered",
+  "description": "This is an error toast",
+  "variant": "danger",
+  "trigger": {
+    "content": "Trigger Toast"
+  }
+}) }}
+```
   </TabPanel>
   <TabPanel value="tab42">
   ```react
-  import { Toast } from '@govie-ds/react';
+    import { toaster, ToastProvider } from '@govie-ds/react';
 
-  <Toast 
-   title="Toast Triggered" 
-   variant="danger" 
-   description="This is an error toast" 
-   trigger={<Button>Trigger Toast</Button>}
-  />
-  ```
-  </TabPanel>
+    <ToastProvider />
+    <Button onClick={() => {
+        toaster.create({
+          title: 'Toast Triggered',
+          variant: 'danger',
+          description: 'This is an error toast',
+        })
+      }}
+    >
+    Toast Triggered
+    </Button>
+    ```
+
+</TabPanel>
 </Tabs>
 
 ### Warning Toast with trigger
 
 <ComponentContainer>
-  <Toast title="Toast Triggered" variant="warning" description="This is a warning toast" trigger={<Button>Trigger Toast</Button>}/>
+  <Toast
+    title="Toast Triggered"
+    variant="warning"
+    description="This is a warning toast"
+  />
 </ComponentContainer>
 
 <Tabs id="tab5">
-  <TabList>
-    <TabItem value="tab51" checked>Macro</TabItem>
-    <TabItem value="tab52">React</TabItem>
-  </TabList>
-  <TabPanel value="tab51">
-  ```html
-  {{ govieToast({
-    "title": "Toast Triggered",
-    "description": "This is a warning toast",
-    "variant": "warning",
-    "trigger": {
-      "content": "Trigger Toast"
-    }
-  }) }}
-  ```
+<TabList>
+  <TabItem value="tab51" checked>Macro</TabItem>
+  <TabItem value="tab52">React</TabItem>
+</TabList>
+<TabPanel value="tab51">
+```html
+{{ govieToast({
+  "title": "Toast Triggered",
+  "description": "This is a warning toast",
+  "variant": "warning",
+  "trigger": {
+    "content": "Trigger Toast"
+  }
+}) }}
+```
+
   </TabPanel>
   <TabPanel value="tab52">
   ```react
-  import { Toast } from '@govie-ds/react';
+    import { toaster, ToastProvider } from '@govie-ds/react';
 
-  <Toast 
-   title="Toast Triggered" 
-   variant="warning" 
-   description="This is a warning toast" 
-   trigger={<Button>Trigger Toast</Button>}
-  />
-  ```
-  </TabPanel>
+    <ToastProvider />
+    <Button onClick={() => {
+        toaster.create({
+        title: 'Toast Triggered',
+        variant: 'warning',
+        description: 'This is a warning toast',
+      })
+    }}>
+      Trigger Warning
+    </Button>
+    ```
+
+</TabPanel>
 </Tabs>
 
+### Toast with Custom Position
+
+<ComponentContainer>
+  <Toast
+    title="Toast top-left"
+    description="This is a toast"
+    position={{ x: 'left', y: 'top' }}
+  />
+</ComponentContainer>
+
+<Tabs id="tab6">
+  <TabList>
+    <TabItem value="tab61" checked>Macro</TabItem>
+    <TabItem value="tab62" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab61">
+  ```html
+    {{ govieToast({
+      "title": "Toast Triggered",
+      "description": "This is a warning toast",
+      "variant": "warning",
+      "trigger": {
+        "content": "Trigger Toast"
+      },
+      "position": {
+        { "x": "left", y: "top" }
+      }
+    }) }}
+    ```
+
+</TabPanel>
+  <TabPanel value="tab62">
+  ```react  
+    import { toaster, ToastProvider } from '@govie-ds/react';
+
+    <ToastProvider />
+    <Button
+      onClick={() => {
+        toaster.create({
+          title: 'Toast at Top Left',
+          description: 'This toast appears at the top-left corner',
+          position: { x: 'left', y: 'top' },
+        });
+      }}
+    >
+      Trigger Top-Left
+    </Button>
+    ```
+
+</TabPanel>
+</Tabs>
+
+### Dismissible Toast
+
+<ComponentContainer>
+  <Toast
+    title="Dismissible Toast"
+    description="This toast can be dismissed manually"
+    dismissible={true}
+  />
+</ComponentContainer>
+
+<Tabs id="tab7">
+  <TabList>
+    <TabItem value="tab71" checked>Macro</TabItem>
+    <TabItem value="tab72" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab71">
+    ```html
+      {{ govieToast({
+        "title": "Toast Triggered",
+        "description": "This is a warning toast",
+        "variant": "warning",
+        "trigger": {
+          "content": "Trigger Toast"
+        }
+        dismissed: true
+      }) }}
+      ```
+</TabPanel>
+  <TabPanel value="tab72">
+  ```react  
+    import { toaster, ToastProvider } from '@govie-ds/react';
+
+    <ToastProvider />
+    <Button
+        onClick={() => {
+          toaster.create({
+            title: 'Dismissible Toast',
+            description: 'This toast can be dismissed manually',
+            dismissible: true,
+          });
+        }}
+      >
+      Trigger Dismissible
+    </Button>
+    ```
+
+</TabPanel>
+</Tabs>
+
+### Toast with Animation
+
+<ComponentContainer>
+  <Toast
+    title="Toast top-left"
+    description="This toast fades in from the right"
+    animation="fadeinright"
+  />
+</ComponentContainer>
+
+<Tabs id="tab8">
+  <TabList>
+    <TabItem value="tab81" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab81">
+  ```react  
+    import { toaster, ToastProvider } from '@govie-ds/react';
+
+    <ToastProvider />
+    <Button
+      onClick={() => {
+        toaster.create({
+          title: 'Toast with Animation',
+          description: 'This toast fades in from the right',
+          animation: 'fadeinright',
+        });
+      }}
+    >
+      Trigger Top-Left
+    </Button>
+    ```
+
+</TabPanel>
+</Tabs>
 
 ## Usage
 
 ### Best Practices
 
+- Use dismissible toasts when the message is not critical.
+- Keep animations smooth and consistent with UI interactions.
+- Positioning matters: Important alerts should appear in prominent areas like top-right or center.
+
 ### When to use this component
 
+- System notifications (e.g., "Form submitted successfully.")
+- Warnings & Errors that require user attention.
+- Temporary alerts that disappear automatically.
+
 ### When not to use this component
+
+- Permanent messages → Use modals or banners instead.
+- Multiple simultaneous alerts → Can overwhelm users.
 
 ## Status
 

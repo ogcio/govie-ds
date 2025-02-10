@@ -1,10 +1,10 @@
 'use client';
-import { cloneElement, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { LinkProps } from '../link/link.js';
+import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import { ToastProps } from './types.js';
 
 const toastVariants = tv({
   slots: {
@@ -30,7 +30,7 @@ const toastVariants = tv({
       },
       warning: {
         base: 'gi-toast-warning',
-        baseDismissible: 'gi-toast-success',
+        baseDismissible: 'gi-toast-warning',
       },
     },
   },
@@ -38,15 +38,6 @@ const toastVariants = tv({
     variant: 'info',
   },
 });
-
-type DSToastProps = {
-  variant?: VariantProps<typeof toastVariants>['variant'];
-  title: string;
-  description?: string;
-  action?: React.ReactElement<LinkProps>;
-  dismissible?: boolean;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
 
 const icon = ({ variant }: VariantProps<typeof toastVariants>) => {
   let icon;
@@ -77,45 +68,36 @@ function Toast({
   variant = 'info',
   dismissible,
   onClose,
-}: DSToastProps) {
-  const [isDismissed, setIsDismissed] = useState(false);
-
+}: ToastProps) {
   const { base, heading, container, dismiss, baseDismissible } = toastVariants({
     variant,
   });
 
   const baseVariant = dismissible ? baseDismissible : base;
 
-  if (isDismissed) {
-    return null;
-  }
   return (
     <div
       className={baseVariant()}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-      aria-labelledby="toast-title"
-      aria-describedby="toast-description"
+      aria-label={title}
     >
       <Icon icon={icon({ variant })} />
       <div className={container()}>
-        <p id="toast-title" className={heading()}>
-          {title}
-        </p>
-        <Paragraph id="toast-description">{description}</Paragraph>
+        <p className={heading()}>{title}</p>
+        <Paragraph ariaLabel={description}>{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
-            {cloneElement(action, { noColor: true, size: 'md' })}
+            <Link href={action.href} noColor size="md">
+              {action.label}
+            </Link>
           </div>
         )}
       </div>
       {dismissible && (
         <IconButton
-          onClick={(event) => {
-            setIsDismissed(true);
-            onClose?.(event);
-          }}
+          onClick={onClose}
           className={dismiss()}
           size="small"
           appearance="dark"
@@ -129,4 +111,3 @@ function Toast({
 }
 
 export { Toast, toastVariants };
-export type { DSToastProps };
