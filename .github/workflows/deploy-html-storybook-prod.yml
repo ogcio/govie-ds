@@ -7,9 +7,9 @@ on:
   workflow_dispatch: # Allow manual deployment trigger
     inputs:
       deploy_reason:
-        description: "Select deployment type"
+        description: 'Select deployment type'
         required: true
-        default: "Manual Trigger"
+        default: 'Manual Trigger'
 
 jobs:
   determine-affected:

@@ -1,7 +1,6 @@
-import { userEvent } from '@testing-library/user-event';
-import { Button } from '../button/button.js';
-import { render, cleanup, testVariantsAxe } from '../test-utils.js';
-import { type ToastProps, Toast } from './toast.js';
+import { render, cleanup, waitFor } from '../test-utils.js';
+import { ToastProvider, toaster } from './toast.js';
+import type { ToastProps } from './types.js';
 
 const variants: ToastProps['variant'][] = [
   'info',
@@ -13,22 +12,18 @@ const variants: ToastProps['variant'][] = [
 describe('Toast', () => {
   afterEach(cleanup);
 
-  const renderToast = (props: ToastProps) => render(<Toast {...props} />);
+  const triggerToast = (props: ToastProps) => {
+    const screen = render(<ToastProvider />);
+    toaster.create(props);
 
-  testVariantsAxe(variants, (variant) =>
-    renderToast({
-      title: 'Axe test',
-      description: 'axe test',
-      variant,
-    }),
-  );
+    return screen;
+  };
 
   it('should render toast with title and message', async () => {
-    const screen = renderToast({
+    const screen = triggerToast({
       title: 'Toast Title',
       description: 'This is the toast content',
     });
-
     expect(await screen.findByText('Toast Title')).toBeInTheDocument();
     expect(
       await screen.findByText('This is the toast content'),
@@ -36,43 +31,29 @@ describe('Toast', () => {
   });
 
   it('should render all different variants', async () => {
+    const screen = render(<ToastProvider />);
     for (const variant of variants) {
-      const screen = renderToast({
+      const title = `Toast`;
+
+      toaster.create({
         variant,
-        title: `${variant} Toast`,
-        description: `This is a ${variant} toast`,
+        title,
+        description: `This is a Toast`,
       });
 
-      const toastElement = screen.getByText(`${variant} Toast`);
-
-      expect(toastElement.parentElement?.parentElement).toHaveClass(
-        `gi-toast-${variant}`,
-      );
+      await waitFor(() => {
+        const toastElement = screen.getByTestId(`${title}-${variant}`);
+        expect(toastElement).not.toBeNull();
+      });
     }
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = renderToast({
+    const screen = triggerToast({
       variant: 'success',
       title: 'Accessible Toast',
       description: 'This toast should be accessible',
     });
     await screen.axe();
-  });
-
-  it('should render toast on button trigger', async () => {
-    const screen = renderToast({
-      title: 'Toast with Trigger',
-      description: 'Toast has been triggered',
-      trigger: <Button>Click Me</Button>,
-    });
-
-    const buttonElement = screen.container.querySelector('button');
-    buttonElement && userEvent.click(buttonElement);
-
-    expect(await screen.findByText('Toast with Trigger')).toBeInTheDocument();
-    expect(
-      await screen.findByText('Toast has been triggered'),
-    ).toBeInTheDocument();
   });
 });

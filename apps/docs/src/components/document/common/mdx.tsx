@@ -38,7 +38,6 @@ import {
   Tag,
   TextArea,
   TextInput,
-  Toast,
   SummaryList,
   SummaryListRow,
   SummaryListValue,
@@ -68,10 +67,12 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
+
 import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
+import { Toast } from '../components/toast';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
@@ -235,7 +236,6 @@ const documentComponents: MDXComponents = {
     />
   ),
   Alert: (props) => <Alert {...props} />,
-  Toast: (props) => <Toast {...props} />,
   SummaryList: (props) => <SummaryList {...props} />,
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
@@ -256,6 +256,7 @@ const documentComponents: MDXComponents = {
   DrawerWrapper,
   HeaderSearch,
   Details,
+  Toast: (props) => <Toast {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {
