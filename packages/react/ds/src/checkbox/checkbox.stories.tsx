@@ -51,7 +51,8 @@ export const Default: Story = {
     },
     checked: {
       control: 'boolean',
-      description: 'if true the component is checked',
+      description:
+        'if true the component is checked for controlled components via state, for uncontrolled components use "defaultChecked"',
     },
     disabled: {
       control: 'boolean',
@@ -79,6 +80,15 @@ export const withHint: Story = {
 };
 
 export const withDefaultChecked: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    defaultChecked: true,
+  },
+};
+
+export const withChecked: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
