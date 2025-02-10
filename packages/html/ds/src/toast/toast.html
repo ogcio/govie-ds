@@ -7,6 +7,7 @@
   {% set positionY = props.position.y if props.position %}
 
   <div
+    data-testid="{{ props.dataTestid }}"
     data-has-trigger="{{ hasTrigger }}"
     data-duration="{{ duration }}"
     data-position-x="{{ positionX }}"

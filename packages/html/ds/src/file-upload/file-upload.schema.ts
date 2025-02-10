@@ -25,6 +25,11 @@ export const fileUploadSchema = zod.object({
         'Specifies the name of the file input field, used for form submission identification.',
     })
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type FileUploadProps = zod.infer<typeof fileUploadSchema>;

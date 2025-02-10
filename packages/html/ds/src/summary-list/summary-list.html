@@ -1,7 +1,11 @@
 {% from 'link/link.html' import govieLink %}
 
 {% macro govieSummaryList(props) %}
-  <div class="gi-summary-list" aria-label="Summary list">
+  <div
+    class="gi-summary-list"
+    aria-label="Summary list"
+    data-testid="{{ props.dataTestid }}"
+  >
     {% for row in props.rows %}
       {% set label = row.label %}
       {% set value = row.value %}

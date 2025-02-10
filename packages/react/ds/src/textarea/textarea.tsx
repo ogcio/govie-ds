@@ -22,6 +22,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   hint?: HintTextProps;
   label?: LabelProps;
   maxChars?: number;
+  dataTestid?: string;
 };
 
 export const TextArea = ({
@@ -34,6 +35,7 @@ export const TextArea = ({
   hint,
   id,
   ref,
+  dataTestid,
   ...props
 }: TextAreaProps) => {
   const [remainingChars, setRemainingChars] = useState<undefined | number>(
@@ -60,6 +62,7 @@ export const TextArea = ({
       className={cn('gi-textarea-layout-container', {
         'gi-error-state': !!error?.text,
       })}
+      data-testid={dataTestid}
     >
       {label?.text && (
         <Label

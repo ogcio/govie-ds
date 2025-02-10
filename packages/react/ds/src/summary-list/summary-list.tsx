@@ -35,9 +35,13 @@ export const SummaryListRow = ({
   );
 };
 
-export const SummaryList = ({ children }: SummaryListProps) => {
+export const SummaryList = ({ children, dataTestid }: SummaryListProps) => {
   return (
-    <div className="gi-summary-list" aria-label="Summary list">
+    <div
+      className="gi-summary-list"
+      aria-label="Summary list"
+      data-testid={dataTestid}
+    >
       {children}
     </div>
   );

@@ -72,6 +72,7 @@ export function Header({
   addDefaultMobileMenu,
   mobileMenuLabel,
   showTitleOnMobile,
+  dataTestid,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -146,6 +147,7 @@ export function Header({
       id="GovieHeader"
       aria-label="Site Header"
       className={headerClassNames}
+      data-testid={dataTestid}
     >
       <div
         id="HeaderContainer"

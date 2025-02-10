@@ -48,6 +48,11 @@ export const toastSchema = zod.object({
   dismissible: zod
     .boolean({ description: 'Specify if the toast is dismissible' })
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type ToastProps = zod.infer<typeof toastSchema>;

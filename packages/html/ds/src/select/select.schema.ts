@@ -34,6 +34,11 @@ export const selectSchema = zod.object({
   error: errorTextSchema
     .describe('Properties for the error component')
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type SelectProps = zod.infer<typeof selectSchema>;

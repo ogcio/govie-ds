@@ -4,12 +4,14 @@ import { generateRandomId } from '../utils.js';
 export type TabsProps = {
   id?: string;
   ariaLabelledBy: string;
+  dataTestid?: string;
   children: React.ReactNode;
 };
 
 export function Tabs({
   id = generateRandomId(),
   ariaLabelledBy,
+  dataTestid,
   children,
 }: TabsProps) {
   const childrenWithName = React.Children.map(children, (element) => {
@@ -19,7 +21,12 @@ export function Tabs({
     return element;
   });
   return (
-    <div aria-labelledby={ariaLabelledBy} className="gi-tabs" id={id}>
+    <div
+      aria-labelledby={ariaLabelledBy}
+      className="gi-tabs"
+      id={id}
+      data-testid={dataTestid}
+    >
       {childrenWithName}
     </div>
   );

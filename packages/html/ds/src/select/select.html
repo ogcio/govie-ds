@@ -11,7 +11,7 @@
     {% set marginBottom = 'gi-mb-2' %}
   {% endif %}
 
-  <div data-module="gieds-select">
+  <div data-module="gieds-select" data-testid="{{ props.dataTestid }}">
     {% if props.label %}
       {{
         govieLabel({

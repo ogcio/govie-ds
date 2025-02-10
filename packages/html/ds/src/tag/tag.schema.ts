@@ -40,6 +40,11 @@ export const tagSchema = zod.object({
     .optional(),
   className: zod.string({ description: 'Add additional classes' }).optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type TagProps = zod.infer<typeof tagSchema>;

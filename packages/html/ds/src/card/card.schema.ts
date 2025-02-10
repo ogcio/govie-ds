@@ -91,6 +91,11 @@ export const cardSchema = zod.object({
   action: actionSchema
     .describe('Defines the action for the card (either a button or link)')
     .optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type CardProps = zod.infer<typeof cardSchema>;

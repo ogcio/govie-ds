@@ -13,6 +13,7 @@
 
   <div
     class="{{ getSizeClass(props.size) | trim }} gi-hint-text {{ addClasses(props.classNames) | trim }}"
+    data-testid="{{ props.dataTestid }}"
   >
     {{ props.content | safe | trim | indent(2) }}
   </div>

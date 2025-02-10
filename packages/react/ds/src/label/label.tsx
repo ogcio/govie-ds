@@ -11,12 +11,21 @@ export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   text: string;
   size?: LabelSize;
   ariaLabel?: string;
+  dataTestid?: string;
 };
 
 // Use React.forwardRef to support refs properly
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   (
-    { text, size = LabelSize.md, htmlFor, className, ariaLabel, ...props },
+    {
+      text,
+      size = LabelSize.md,
+      htmlFor,
+      className,
+      ariaLabel,
+      dataTestid,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -26,6 +35,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         htmlFor={htmlFor}
         aria-label={ariaLabel || text}
         id={htmlFor ? `${htmlFor}-label` : undefined}
+        data-testid={dataTestid}
         {...props}
       >
         {text}

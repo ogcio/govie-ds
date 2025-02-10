@@ -9,7 +9,10 @@
   {% set name = props.name or props.label %}
 
   <div>
-    <div class="gi-checkbox-container {{ addClasses(props.className) | trim }}">
+    <div
+      class="gi-checkbox-container {{ addClasses(props.className) | trim }}"
+      data-testid="{{ props.dataTestid }}"
+    >
       <input
         {{ commonAriaAttributes(props) }}
         {% if props.disabled %}disabled{% endif %}

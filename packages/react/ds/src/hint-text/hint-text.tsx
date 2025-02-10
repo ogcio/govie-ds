@@ -13,6 +13,7 @@ export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
   size?: HintSize;
   className?: string;
   ariaLabel?: string;
+  dataTestid?: string;
 };
 
 // Use React.forwardRef to support refs properly
@@ -21,6 +22,7 @@ export const HintText: React.FC<HintTextProps> = ({
   className,
   size,
   ariaLabel,
+  dataTestid,
   ...props
 }) => {
   const sizeClass = (() => {
@@ -41,6 +43,7 @@ export const HintText: React.FC<HintTextProps> = ({
     <div
       className={`${sizeClass} gi-hint-text ${className || ''}`}
       aria-label={ariaLabel || text}
+      data-testid={dataTestid}
       {...props}
     >
       {text}

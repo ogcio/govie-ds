@@ -17,6 +17,7 @@ export type ParagraphProps = {
   className?: string;
   ariaLabel?: string;
   id?: string;
+  dataTestid?: string;
 };
 
 export function Paragraph({
@@ -29,6 +30,7 @@ export function Paragraph({
   className,
   id,
   ariaLabel,
+  dataTestid,
 }: ParagraphProps) {
   const sizeClass = (() => {
     switch (size) {
@@ -84,6 +86,7 @@ export function Paragraph({
       aria-label={ariaLabel}
       style={style}
       id={id}
+      data-testid={dataTestid}
     >
       {children}
     </As>

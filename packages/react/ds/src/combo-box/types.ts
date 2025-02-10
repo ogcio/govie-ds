@@ -14,4 +14,5 @@ export type ComboboxProps = {
     | React.ReactElement<typeof DropdownItem>[]
     | React.ReactElement<typeof DropdownItem>;
   className?: string;
+  dataTestid?: string;
 };

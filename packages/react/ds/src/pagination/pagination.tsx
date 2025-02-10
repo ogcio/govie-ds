@@ -9,6 +9,7 @@ export type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  dataTestid?: string;
 };
 
 // TODO Devise localisation
@@ -16,6 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
+  dataTestid,
 }) => {
   const { breakpoint, width } = useBreakpoint();
   const isCompactView = breakpoint === Breakpoint.XS;
@@ -55,7 +57,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
 
   return (
-    <div className="gi-pagination" role="navigation" aria-label="Pagination">
+    <div
+      className="gi-pagination"
+      role="navigation"
+      aria-label="Pagination"
+      data-testid={dataTestid}
+    >
       <Button
         variant="flat"
         size="large"

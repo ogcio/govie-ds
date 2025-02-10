@@ -19,7 +19,10 @@
     {% endif %}
   {% endmacro %}
 
-  <div class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}">
+  <div
+    class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}"
+    data-testid="{{ props.dataTestid }}"
+  >
     {% if props.label %}
       {{
         govieLabel({

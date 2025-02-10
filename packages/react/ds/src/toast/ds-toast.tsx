@@ -68,6 +68,7 @@ function Toast({
   variant = 'info',
   dismissible,
   onClose,
+  dataTestid,
 }: ToastProps) {
   const { base, heading, container, dismiss, baseDismissible } = toastVariants({
     variant,
@@ -82,6 +83,7 @@ function Toast({
       aria-live="assertive"
       aria-atomic="true"
       aria-label={title}
+      data-testid={dataTestid}
     >
       <Icon icon={icon({ variant })} />
       <div className={container()}>

@@ -12,6 +12,11 @@ export const paginationSchema = zod.object({
     .int()
     .positive('Total pages must be positive')
     .describe('Total number of available pages'),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type PaginationProps = zod.infer<typeof paginationSchema>;
