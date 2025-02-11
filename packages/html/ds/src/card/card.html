@@ -31,6 +31,10 @@
           <img
             src="{{ media.config.src }}"
             alt="{{ media.config.alt | default(props.title) }}"
+            {% if media.config.aspectRatio %}
+              style="aspect-ratio: {{ media.config.aspectRatio }}"
+              class="gi-w-full"
+            {% endif %}
           />
         </a>
       </div>

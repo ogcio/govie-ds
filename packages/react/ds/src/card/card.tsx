@@ -13,6 +13,7 @@ type Action =
 type ImagePropTypes = {
   src: string;
   alt?: string;
+  aspectRatio?: string; // New aspect ratio prop, e.g., "16/9"
 };
 
 type IframePropTypes = {
@@ -73,10 +74,16 @@ export const Card = ({
 
     switch (media.type) {
       case 'image': {
+        const { src, alt, aspectRatio } = media.config;
         return (
-          <div className="gi-card-image" aria-label={media.config.alt || title}>
+          <div className="gi-card-image" aria-label={alt || title}>
             <a href={href}>
-              <img src={media.config.src} alt={media.config.alt || title} />
+              <img
+                src={src}
+                alt={alt || title}
+                style={aspectRatio ? { aspectRatio } : undefined}
+                className={aspectRatio ? 'gi-w-full' : undefined}
+              />
             </a>
           </div>
         );

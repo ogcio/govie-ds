@@ -747,7 +747,7 @@ input[type='file' i] {
 }
 
 .gi-card-vertical {
-  @apply gi-flex-col gi-max-w-[300px] gi-min-w-[220px] gi-w-full;
+  @apply gi-flex-col gi-min-w-[220px] gi-w-full;
 }
 
 .gi-card-horizontal {
