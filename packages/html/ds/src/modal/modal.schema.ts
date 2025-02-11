@@ -42,6 +42,11 @@ export const modalSchema = zod.object({
       description: 'The footer content of the modal',
     })
     .optional(),
+  className: zod
+    .string({
+      description: 'Custom class name for modal styling',
+    })
+    .optional(),
   isOpen: zod
     .boolean({
       description: 'Set the modal to open',

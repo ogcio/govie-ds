@@ -14,6 +14,7 @@ export const Checkbox = ({
   disabled,
   ariaLabel,
   dataTestid,
+  ...props
 }: CheckboxType) => {
   const CheckboxId = id ?? value;
   return (
@@ -31,6 +32,7 @@ export const Checkbox = ({
           aria-describedby={hint ? `${CheckboxId}-hint` : undefined}
           disabled={disabled}
           type="checkbox"
+          {...props}
         />
         <label
           id={`${CheckboxId}-label`}
