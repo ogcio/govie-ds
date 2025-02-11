@@ -19,7 +19,7 @@ type CheckboxType = {
   disabled?: boolean;
   ariaLabel?: string;
   dataTestid?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'>;
 
 export const Checkbox = ({
   id,
@@ -33,6 +33,7 @@ export const Checkbox = ({
   disabled,
   ariaLabel,
   dataTestid,
+  ...props
 }: CheckboxType) => {
   const CheckboxId = id ?? value;
   return (
@@ -50,6 +51,7 @@ export const Checkbox = ({
           aria-describedby={hint ? `${CheckboxId}-hint` : undefined}
           disabled={disabled}
           type="checkbox"
+          {...props}
         />
         <label
           id={`${CheckboxId}-label`}

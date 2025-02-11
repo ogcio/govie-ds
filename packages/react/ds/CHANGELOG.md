@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [0.37.0](https://github.com/ogcio/govie-ds/compare/react-v0.36.1...react-v0.37.0) (2025-02-11)
+
+
+### Features
+
+* new Toast component ([#420](https://github.com/ogcio/govie-ds/issues/420)) ([b2a53b2](https://github.com/ogcio/govie-ds/commit/b2a53b2b62fc0ade3ef7137e7406c1f90c774e3b))
+
+
+### Bug Fixes
+
+* CheckBox defaultChecked  ([#432](https://github.com/ogcio/govie-ds/issues/432)) ([d35fb02](https://github.com/ogcio/govie-ds/commit/d35fb02adca8c717c71e5a35b92492051f4a0286))
+* fixes for textarea and input ([#427](https://github.com/ogcio/govie-ds/issues/427)) ([550c5c3](https://github.com/ogcio/govie-ds/commit/550c5c3546b4d208dfa2bbec7604bf47b155df90))
+
 ## [0.36.1](https://github.com/ogcio/govie-ds/compare/react-v0.36.0...react-v0.36.1) (2025-02-05)
 
 

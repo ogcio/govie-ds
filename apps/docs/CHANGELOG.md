@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.42.0](https://github.com/ogcio/govie-ds/compare/docs-v0.41.0...docs-v0.42.0) (2025-02-11)
+
+
+### Features
+
+* new Toast component ([#420](https://github.com/ogcio/govie-ds/issues/420)) ([b2a53b2](https://github.com/ogcio/govie-ds/commit/b2a53b2b62fc0ade3ef7137e7406c1f90c774e3b))
+
 ## [0.41.0](https://github.com/ogcio/govie-ds/compare/docs-v0.40.0...docs-v0.41.0) (2025-01-30)
 
 
