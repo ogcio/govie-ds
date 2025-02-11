@@ -297,7 +297,7 @@ export const MediaImageWithAspectRatio: Story = {
       config: {
         src: 'https://placeholderjs.com/400x300',
         alt: '4 / 3 aspect ratio image',
-        aspectRatio: "4/3",
+        aspectRatio: '4/3',
       },
     },
     content:

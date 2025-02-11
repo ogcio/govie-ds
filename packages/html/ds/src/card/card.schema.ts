@@ -22,10 +22,11 @@ const imagePropsSchema = zod.object({
   aspectRatio: zod
     .string()
     .refine((value) => /^\d+\/\d+$/.test(value), {
-      message: "Aspect ratio must be in 'width/height' format (e.g., '16/9', '4/3')",
+      message:
+        "Aspect ratio must be in 'width/height' format (e.g., '16/9', '4/3')",
     })
     .optional()
-    .describe("Aspect ratio for the image")
+    .describe('Aspect ratio for the image'),
 });
 
 const iframePropsSchema = zod.object({
