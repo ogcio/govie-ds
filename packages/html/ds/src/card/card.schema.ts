@@ -19,6 +19,7 @@ export enum InsetType {
 const imagePropsSchema = zod.object({
   src: zod.string().describe('Source URL for the image'),
   alt: zod.string().optional().describe('Alt text for the image'),
+  aspectRatio: zod.string().optional().describe('Aspect ratio for the image'),
 });
 
 const iframePropsSchema = zod.object({
