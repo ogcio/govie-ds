@@ -5,7 +5,7 @@ import { CheckboxSizeEnum } from '../checkbox/types.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Tag, TagType } from '../tag/tag.js';
+import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utils.js';
 import { DropdownItemType } from './types.js';
@@ -80,7 +80,10 @@ export const DropdownItem = ({
         <div className="gi-combobox-toggle-content">
           <Paragraph size="md">{children}</Paragraph>
           {selectedCheckboxes !== 0 && (
-            <Tag type={TagType.counter} text={selectedCheckboxes.toString()} />
+            <Tag
+              type={TagTypeEnum.counter}
+              text={selectedCheckboxes.toString()}
+            />
           )}
         </div>
 

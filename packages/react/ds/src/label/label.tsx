@@ -1,15 +1,17 @@
 import React from 'react';
 
-export enum LabelSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const LabelSize = {
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+} as const;
+
+export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
 
 // Extend `React.LabelHTMLAttributes<HTMLLabelElement>` for correct label attributes
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   text: string;
-  size?: LabelSize;
+  size?: LabelSizeType;
   ariaLabel?: string;
   dataTestid?: string;
 };

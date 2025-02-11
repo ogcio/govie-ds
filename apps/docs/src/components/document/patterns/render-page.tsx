@@ -1,14 +1,16 @@
 import { config } from '@/lib/config';
 
-export enum Pages {
-  BASIC = 'basic-page.html',
-  SEARCH = 'search-page.html',
-  LAYOUT = 'layout-page.html',
-}
+export const Pages = {
+  BASIC: 'basic-page.html',
+  SEARCH: 'search-page.html',
+  LAYOUT: 'layout-page.html',
+};
+
+type PagesType = (typeof Pages)[keyof typeof Pages];
 
 type renderPage = {
   size: 'lg' | 'md' | 'sm';
-  page?: Pages;
+  page?: PagesType;
 };
 
 export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
