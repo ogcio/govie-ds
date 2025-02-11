@@ -80,7 +80,7 @@ describe('govieCard', () => {
 
     const imageElement = container.querySelector('img')!;
     expect(imageElement).toBeTruthy();
-    expect(imageElement.getAttribute('style')).toBe('aspect-ratio: 16/9');
+    expect(imageElement.getAttribute('style')).toBe('aspect-ratio: 16/9;');
   });
 
   it('should render an icon when media type is "icon"', () => {
