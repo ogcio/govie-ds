@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.29.0](https://github.com/ogcio/govie-ds/compare/html-v0.28.1...html-v0.29.0) (2025-02-11)
+
+
+### Features
+
+* new Toast component ([#420](https://github.com/ogcio/govie-ds/issues/420)) ([b2a53b2](https://github.com/ogcio/govie-ds/commit/b2a53b2b62fc0ade3ef7137e7406c1f90c774e3b))
+
+
+### Bug Fixes
+
+* fixes for textarea and input ([#427](https://github.com/ogcio/govie-ds/issues/427)) ([550c5c3](https://github.com/ogcio/govie-ds/commit/550c5c3546b4d208dfa2bbec7604bf47b155df90))
+
 ## [0.28.1](https://github.com/ogcio/govie-ds/compare/html-v0.28.0...html-v0.28.1) (2025-02-05)
 
 
