@@ -13,7 +13,7 @@ type Action =
 type ImagePropTypes = {
   src: string;
   alt?: string;
-  aspectRatio?: `${number}/${number}`;
+  aspectRatio?: '4/3' | '1/1' | `${number}/${number}`;
 };
 
 type IframePropTypes = {
