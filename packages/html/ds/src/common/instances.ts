@@ -3,6 +3,7 @@ import { Alert } from '../alert/alert';
 import { Checkboxes } from '../checkbox/checkbox';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
+import { Drawer } from '../drawer/drawer';
 import { Header } from '../header/header';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
@@ -29,6 +30,7 @@ const componentRegistry = {
   Alert,
   Toast,
   Accordion,
+  Drawer,
   // TODO: additional component classes
 } as const;
 

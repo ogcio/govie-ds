@@ -15,6 +15,7 @@
 {% from 'radio/radios-group.html' import govieRadiosGroup %}
 {% from 'radio/radio.html' import govieRadio %}
 {% from 'modal/modal.html' import govieModal %}
+{% from 'drawer/drawer.html' import govieDrawer %}
 {% from 'icon-button/icon-button.html' import govieIconButton %}
 {% from 'cookie-banner/cookie-banner.html' import govieCookieBanner %}
 {% from 'combo-box/combo-box.html' import govieComboBox %}
@@ -32,7 +33,7 @@
 {% from 'tooltip/tooltip.html' import govieTooltip %}
 {% from 'details/details.html' import govieDetails %}
 
-{% from 'vars.jinja' import checkboxesProps, comboBoxProps, cookieBannerProps, modalProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
+{% from 'vars.jinja' import checkboxesProps, comboBoxProps, cookieBannerProps, modalProps, drawerProps, footerProps, HeaderProps, SelectProps, tabsProps, radioProps, listProps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -216,6 +217,10 @@
   <h2>Modal</h2>
 
   {{ govieModal(modalProps) }}
+
+  <h2>Drawer</h2>
+
+  {{ govieDrawer(drawerProps) }}
 
   <h2>Toast with Trigger</h2>
 
