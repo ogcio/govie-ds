@@ -25,6 +25,7 @@
   {% endmacro %}
 
   {% macro renderMedia(media) %}
+    {% set imageStyle = 'style="aspect-ratio: ' ~ (media.config.aspectRatio if media.config.aspectRatio else '') ~ ';"' %}
     {% if media and media.type == 'image' %}
       <div class="gi-card-image">
         <a href="{{ props.href }}" aria-label="{{ props.title }}">
@@ -32,7 +33,7 @@
             src="{{ media.config.src }}"
             alt="{{ media.config.alt | default(props.title) }}"
             {% if media.config.aspectRatio %}
-              style="aspect-ratio: {{ media.config.aspectRatio }}"
+              {{ imageStyle | safe }}
               class="gi-w-full"
             {% endif %}
           />
