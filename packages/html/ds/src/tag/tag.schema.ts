@@ -1,14 +1,15 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum TagType {
-  default = 'default',
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'error',
-  counter = 'counter',
-  counterWarning = 'counterWarning',
-}
+export const TagType = {
+  default: 'default',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+  counter: 'counter',
+  counterWarning: 'counterWarning',
+} as const;
 
 const validAriaProps = [
   'aria-label',
@@ -34,7 +35,7 @@ export const tagSchema = zod.object({
     required_error: 'content is required',
   }),
   type: zod
-    .string({
+    .enum(getEnumValues(TagType), {
       description: 'Defines the visual style and color of the tag.',
     })
     .optional(),

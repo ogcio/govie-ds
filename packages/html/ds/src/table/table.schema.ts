@@ -1,15 +1,17 @@
 import * as zod from 'zod';
 
+import { getEnumValues } from '../helpers';
+
 const validAriaProps = [
   'aria-rowcount',
   'aria-colcount',
   'aria-labelledby',
 ] as const;
 
-export enum LayoutVariant {
-  Auto = 'auto',
-  Fixed = 'fixed',
-}
+export const LayoutVariant = {
+  Auto: 'auto',
+  Fixed: 'fixed',
+} as const;
 
 export const ariaSchema = zod.record(
   zod.enum(validAriaProps, {
@@ -34,15 +36,12 @@ export const tableSchema = zod.object({
         'An array of strings representing column headers for the table.',
     })
     .optional(),
-  layout: zod.nativeEnum(LayoutVariant).optional(),
+  layout: zod.enum(getEnumValues(LayoutVariant)).optional(),
   rows: zod
-    .array(
-      zod.any(), // Allows flexibility for HTML elements, text, or other types
-      {
-        description:
-          'An array representing rows of the table. Each row can contain HTML elements, text, or any other type.',
-      },
-    )
+    .array(zod.any(), {
+      description:
+        'An array representing rows of the table. Each row can contain HTML elements, text, or any other type.',
+    })
     .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
   dataTestid: zod

@@ -1,9 +1,10 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum LevelEnum {
-  Alpha = 'alpha',
-  Beta = 'beta',
-}
+export const LevelEnum = {
+  Alpha: 'alpha',
+  Beta: 'beta',
+} as const;
 
 export const phaseBannerSchema = zod.object({
   content: zod.string({
@@ -11,7 +12,7 @@ export const phaseBannerSchema = zod.object({
     required_error: 'Content is required',
   }),
   level: zod
-    .nativeEnum(LevelEnum, {
+    .enum(getEnumValues(LevelEnum), {
       description: 'Specifies the level.',
     })
     .optional(),

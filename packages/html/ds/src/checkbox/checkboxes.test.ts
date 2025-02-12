@@ -1,7 +1,7 @@
 import { render } from '../common/render';
 import { Size, Tag } from '../heading/heading.schema';
 import html from './checkboxes-group.html?raw';
-import { type CheckboxesProps, CheckboxSizeEnum } from './checkboxes.schema';
+import { type CheckboxesProps, CheckboxSize } from './checkboxes.schema';
 
 const standardProps = {
   fieldId: 'UniqueID',
@@ -22,7 +22,7 @@ const standardProps = {
   title: {
     value: 'Title',
   },
-  size: CheckboxSizeEnum.Medium,
+  size: CheckboxSize.Medium,
 };
 
 describe('checkboxes', () => {
@@ -112,7 +112,7 @@ describe('checkboxes', () => {
     const classes = 'gi-w-6 gi-h-6';
     const propsWithSmallCheckboxes = {
       ...standardProps,
-      size: CheckboxSizeEnum.Small,
+      size: CheckboxSize.Small,
     };
 
     const screen = renderCheckboxes(propsWithSmallCheckboxes);
@@ -128,7 +128,7 @@ describe('checkboxes', () => {
     const classes = 'gi-w-11 gi-h-11';
     const propsWithBigCheckboxes = {
       ...standardProps,
-      size: CheckboxSizeEnum.Large,
+      size: CheckboxSize.Large,
     };
 
     const screen = renderCheckboxes(propsWithBigCheckboxes);
@@ -171,7 +171,7 @@ describe('checkboxes', () => {
         hint: 'Hint for checkbox none',
         value: 'checkbox-none',
       },
-      size: CheckboxSizeEnum.Large,
+      size: CheckboxSize.Large,
     });
 
     await screen.axe();
