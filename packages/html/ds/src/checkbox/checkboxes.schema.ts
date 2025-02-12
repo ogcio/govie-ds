@@ -2,7 +2,7 @@ import * as zod from 'zod';
 import { Size, Tag } from '../heading/heading.schema';
 import { getEnumValues } from '../helpers';
 
-export const CheckboxSize = {
+export const CheckboxSizeEnum = {
   Large: 'lg',
   Medium: 'md',
   Small: 'sm',
@@ -54,7 +54,7 @@ export const checkboxSchema = zod.object({
     .boolean({ description: 'if true the component is checked' })
     .optional(),
   size: zod
-    .enum(getEnumValues(CheckboxSize), {
+    .enum(getEnumValues(CheckboxSizeEnum), {
       description: 'Specifies the size of the checkbox',
     })
     .optional(),
@@ -168,7 +168,7 @@ export const checkboxesSchema = zod.object({
     )
     .optional(),
   size: zod
-    .enum(getEnumValues(CheckboxSize), {
+    .enum(getEnumValues(CheckboxSizeEnum), {
       description: 'Specifies the size of the checkbox',
     })
     .optional(),
