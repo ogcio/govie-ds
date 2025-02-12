@@ -295,18 +295,18 @@ export const MediaImageWithAspectRatio: Story = {
     media: {
       type: 'image',
       config: {
-        src: 'https://placeholderjs.com/400x300',
-        alt: '4 / 3 aspect ratio image',
-        aspectRatio: '4/3',
+        src: 'https://placeholderjs.com/600x400',
+        alt: '16 / 9 aspect ratio image',
+        aspectRatio: '16 / 9',
       },
     },
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
+    content: 'Card with 16 / 9 aspect ratio media',
     action: {
       type: 'button',
       content: 'Button',
       variant: ButtonVariant.Secondary,
     },
+    tag: { text: 'Featured', type: 'info' },
     inset: InsetType.None,
   },
 };
