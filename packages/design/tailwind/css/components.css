@@ -8,6 +8,13 @@
   focus:gi-outline-offset-0;
 }
 
+.gi-focus-visible-state-outline {
+  @apply focus-visible:gi-outline
+  focus-visible:gi-outline-[3px]
+  focus-visible:gi-outline-yellow-400
+  focus-visible:gi-outline-offset-0;
+}
+
 .gi-focus-within-state-outline {
   @apply focus-within:gi-outline
   focus-within:gi-outline-[3px]
@@ -15,8 +22,20 @@
   focus-within:gi-outline-offset-0;
 }
 
+.gi-focus-visible-state-outline-inner-shadow-sm {
+  @apply gi-focus-visible-state-outline focus-visible:gi-shadow-[inset_0_0_0_2px] focus-visible:gi-shadow-gray-950 focus-visible:gi-rounded-sm focus-visible:gi-bg-gray-200;
+}
+
+.gi-focus-state-outline-inner-shadow-sm {
+  @apply focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
+}
+
 .gi-focus-state-border {
   @apply focus:gi-border-solid focus:gi-border-gray-950 focus:gi-border-md;
+}
+
+.gi-focus-visible-state-border {
+  @apply focus-visible:gi-border-solid focus-visible:gi-border-gray-950 focus-visible:gi-border-md;
 }
 
 .gi-focus-state-border-sm {
@@ -25,6 +44,14 @@
 
 .gi-focus-state-border-sm-rounded {
   @apply gi-focus-state-border-sm focus:gi-rounded-sm;
+}
+
+.gi-focus-visible-state-border-sm {
+  @apply gi-focus-visible-state-border focus-visible:gi-border-sm;
+}
+
+.gi-focus-visible-state-border-sm-rounded {
+  @apply gi-focus-visible-state-border-sm focus-visible:gi-rounded-sm;
 }
 /* General focus classes */
 

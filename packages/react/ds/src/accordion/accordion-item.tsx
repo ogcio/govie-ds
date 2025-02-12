@@ -1,14 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 
-type Props = {
+export type AccordionItemProps = {
   children: React.ReactNode;
   label: string;
   defaultExpanded?: boolean;
   disabled?: boolean;
   dataTestid?: string;
+  iconStart?: boolean;
+  variant?: 'default' | 'small';
 };
+
+const accordionVariants = tv({
+  variants: {
+    variant: {
+      default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
+      small: 'gi-py-2 gi-px-2 gi-text-sm',
+    },
+  },
+});
 
 export const AccordionItem = ({
   defaultExpanded,
@@ -16,37 +28,35 @@ export const AccordionItem = ({
   label,
   disabled,
   dataTestid,
-}: Props) => {
+  iconStart,
+  variant = 'default',
+}: AccordionItemProps) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
-  const [iconStart, setIconStart] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const buttonId = `${label}-button`;
   const panelId = `${label}-panel`;
 
-  useEffect(() => {
-    if (ref.current) {
-      setIconStart(Boolean(ref.current.parentElement?.dataset.iconStart));
-    }
-  }, []);
-
   return (
     <div
       ref={ref}
-      className={cn(
-        'gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid',
-        disabled && 'gi-opacity-30',
-      )}
+      className={cn('gi-border-b-gray-150', {
+        'gi-opacity-30': disabled,
+      })}
       data-testid={dataTestid}
     >
-      {/* TODO Replace the following tag (div) with button */}
       <div
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
+        tabIndex={0}
         className={cn(
-          iconStart
-            ? 'gi-flex gi-flex-row-reverse gi-justify-end'
-            : 'gi-flex gi-justify-between',
-          disabled ? 'gi-cursor-not-allowed' : 'gi-cursor-pointer',
+          accordionVariants({ variant }),
+          'hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm gi-focus-visible-state-outline-inner-shadow-sm',
+          {
+            'gi-flex gi-flex-row-reverse gi-justify-end': iconStart,
+            'gi-flex gi-justify-between': !iconStart,
+            'gi-cursor-not-allowed': disabled,
+            'gi-cursor-pointer': !disabled,
+          },
         )}
       >
         {label}{' '}
@@ -56,7 +66,7 @@ export const AccordionItem = ({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-pt-4')}
+        className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-p-3')}
       >
         {children}
       </div>
