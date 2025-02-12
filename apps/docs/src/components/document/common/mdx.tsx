@@ -76,6 +76,7 @@ import { Toast } from '../components/toast';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { Addresses } from '../patterns/addresses';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
 import { RenderPage } from '../patterns/render-page';
@@ -176,6 +177,7 @@ const documentComponents: MDXComponents = {
   RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
+  Addresses: (props) => <Addresses {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
