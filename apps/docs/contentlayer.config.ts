@@ -2,7 +2,7 @@ import {
   defineDocumentType,
   defineNestedType,
   makeSource,
-} from 'contentlayer/source-files';
+} from 'contentlayer2/source-files';
 import rehypeSlug from 'rehype-slug';
 import { getDocumentDetails } from './src/lib/documents/document-details';
 
