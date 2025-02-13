@@ -65,7 +65,7 @@ import {
   Details,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
