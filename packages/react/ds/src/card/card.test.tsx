@@ -63,6 +63,26 @@ describe('govieCard', () => {
     expect(imageElement.getAttribute('alt')).toBe('Test image');
   });
 
+  it('should render an image with aspect ratio when provided', () => {
+    const { container } = renderCard({
+      type: 'vertical',
+      title: 'Card with Image',
+      media: {
+        type: 'image',
+        config: {
+          src: 'SOME_PATH',
+          alt: 'Test image',
+          aspectRatio: '16/9',
+        },
+      },
+      href: '#',
+    });
+
+    const imageElement = container.querySelector('img')!;
+    expect(imageElement).toBeTruthy();
+    expect(imageElement.getAttribute('style')).toBe('aspect-ratio: 16/9;');
+  });
+
   it('should render an icon when media type is "icon"', () => {
     const screen = renderCard({
       type: 'horizontal',
