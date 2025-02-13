@@ -54,7 +54,7 @@ export const AccordionItem = ({
         onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
         tabIndex={0}
-        className={'gi-accordion'}
+        className="gi-accordion"
       >
         <div
           className={cn('gi-accordion-header', accordionVariants({ variant }))}
