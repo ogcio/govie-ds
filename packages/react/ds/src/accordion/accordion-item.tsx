@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
@@ -36,40 +37,42 @@ export const AccordionItem = ({
   const buttonId = `${label}-button`;
   const panelId = `${label}-panel`;
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !disabled) {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
   return (
-    <div
-      ref={ref}
-      className={cn('gi-border-b-gray-150', {
-        'gi-opacity-30': disabled,
-      })}
-      data-testid={dataTestid}
-    >
+    <>
       <div
+        ref={ref}
+        data-testid={dataTestid}
+        data-disabled={!!disabled}
+        data-icon-start={!!iconStart}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
+        onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
         tabIndex={0}
-        className={cn(
-          accordionVariants({ variant }),
-          'hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm gi-focus-visible-state-outline-inner-shadow-sm',
-          {
-            'gi-flex gi-flex-row-reverse gi-justify-end': iconStart,
-            'gi-flex gi-justify-between': !iconStart,
-            'gi-cursor-not-allowed': disabled,
-            'gi-cursor-pointer': !disabled,
-          },
-        )}
+        className={'gi-accordion'}
       >
-        {label}{' '}
-        <Icon icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
+        <div
+          className={cn('gi-accordion-header', accordionVariants({ variant }))}
+        >
+          {label}{' '}
+          <Icon
+            icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+          />
+        </div>
       </div>
       <div
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-p-3')}
+        className={cn({ 'gi-block': isExpanded, 'gi-hidden': !isExpanded })}
       >
         {children}
       </div>
-    </div>
+    </>
   );
 };

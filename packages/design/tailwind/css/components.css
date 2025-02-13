@@ -1025,7 +1025,7 @@ input[type='file' i] {
 }
 
 .gi-toast-dismiss {
-  @apply gi-absolute gi-top-2 gi-right-2;
+  @apply gi-h-full gi-relative gi-top-[-8px];
 }
 
 .gi-toast-info {
@@ -1491,3 +1491,31 @@ input[type='file' i] {
          gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-gray-900 gi-left-[-0.45rem];
 }
 /* End of Tooltip */
+
+/* Accordion */
+
+.gi-accordion {
+  @apply gi-focus-visible-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion[data-disabled='false'] {
+  @apply hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion[data-disabled='false'] .gi-accordion-header {
+  @apply gi-cursor-pointer;
+}
+
+.gi-accordion[data-disabled='true'] .gi-accordion-header {
+  @apply gi-cursor-not-allowed gi-text-gray-600;
+}
+
+.gi-accordion[data-icon-start='false'] .gi-accordion-header {
+  @apply gi-flex gi-justify-between;
+}
+
+.gi-accordion[data-icon-start='true'] .gi-accordion-header {
+  @apply gi-flex gi-flex-row-reverse gi-justify-end gi-gap-2;
+}
+
+/* End of Accordion */

@@ -17,13 +17,11 @@ export const Accordion = ({
   variant = 'default',
 }: AccordionProps) => {
   return (
-    <>
-      <div
-        data-testid={dataTestid}
-        data-icon-start={iconStart}
-        className="gi-max-w-prose"
-        role="presentation"
-      ></div>
+    <div
+      data-testid={dataTestid}
+      data-icon-start={iconStart}
+      role="presentation"
+    >
       {React.Children.map(children, (child, index) => {
         const isLastChild = index === React.Children.count(children) - 1;
 
@@ -40,6 +38,6 @@ export const Accordion = ({
           </div>
         ) : null;
       })}
-    </>
+    </div>
   );
 };

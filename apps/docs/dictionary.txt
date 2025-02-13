@@ -147,3 +147,4 @@ Tooltips
 pre-expand
 dismissible
 center
+iconStart
