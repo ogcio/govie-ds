@@ -20,10 +20,10 @@ COPY tokens/ ./tokens
 ENV NEXT_EXPORT=true
 ENV NX_DAEMON=false
 
+RUN npm install -g corepack@latest
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
-RUN pnpm build:libs
-RUN pnpm ds:build
+RUN pnpm build
 RUN pnpm html:storybook:build
 RUN pnpm react:storybook:build
 
