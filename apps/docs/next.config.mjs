@@ -1,4 +1,4 @@
-import { withContentlayer } from 'next-contentlayer';
+import { withContentlayer } from 'next-contentlayer2';
 
 const isGitHubPages = Boolean(process.env.GITHUB_PAGES);
 const isNextExport = Boolean(process.env.NEXT_EXPORT);
