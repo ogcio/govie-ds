@@ -1,16 +1,18 @@
 import React from 'react';
 
-export enum ErrorSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const ErrorSize = {
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+} as const;
+
+export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
 
 // Extend `React.HTMLAttributes<HTMLParagraphElement>` so that
 // the component can accept all the standard attributes and events that a `<p>` element can handle.
 export type ErrorTextProps = React.HTMLAttributes<HTMLParagraphElement> & {
   text: string;
-  size?: ErrorSize;
+  size?: ErrorSizeType;
   className?: string;
   dataTestid?: string;
 };

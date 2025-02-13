@@ -1,10 +1,11 @@
 import * as zod from 'zod';
 import { buttonSchema } from '../button/button-schema';
+import { getEnumValues } from '../helpers';
 
-export enum LinkSize {
-  SMALL = 'sm',
-  MEDIUM = 'md',
-}
+export const LinkSize = {
+  SMALL: 'sm',
+  MEDIUM: 'md',
+} as const;
 
 const linkTypeSchema = zod.union([zod.literal('a'), zod.literal('button')]);
 
@@ -75,7 +76,7 @@ export const linkSchema = zod.object({
     })
     .optional(),
   size: zod
-    .nativeEnum(LinkSize, {
+    .enum(getEnumValues(LinkSize), {
       description: 'Size of the link',
     })
     .optional(),

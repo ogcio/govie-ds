@@ -1,13 +1,15 @@
 import * as zod from 'zod';
+
 import { buttonSchema } from '../button/button-schema';
+import { getEnumValues } from '../helpers';
 import { linkSchema } from '../link/link.schema';
 
-export enum ToastVariant {
-  INFO = 'info',
-  DANGER = 'danger',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-}
+export const ToastVariant = {
+  INFO: 'info',
+  DANGER: 'danger',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+} as const;
 
 export const toastSchema = zod.object({
   duration: zod
@@ -34,7 +36,7 @@ export const toastSchema = zod.object({
     )
     .optional(),
   variant: zod
-    .nativeEnum(ToastVariant, { description: 'Toast variant' })
+    .enum(getEnumValues(ToastVariant), { description: 'Toast variant' })
     .optional(),
   title: zod.string({
     description: 'Specify the title of the toast component',

@@ -1,29 +1,30 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum AsEnum {
-  Paragraph = 'p',
-  Span = 'span',
-}
+export const AsEnum = {
+  Paragraph: 'p',
+  Span: 'span',
+} as const;
 
-export enum SizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
+export const SizeEnum = {
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+} as const;
 
-export enum AlignEnum {
-  Start = 'start',
-  Center = 'center',
-  End = 'end',
-  Justify = 'justify',
-}
+export const AlignEnum = {
+  Start: 'start',
+  Center: 'center',
+  End: 'end',
+  Justify: 'justify',
+} as const;
 
-export enum WhitespaceEnum {
-  Normal = 'normal',
-  Pre = 'pre',
-  PreWrap = 'pre-wrap',
-  BreakSpaces = 'break-spaces',
-}
+export const WhitespaceEnum = {
+  Normal: 'normal',
+  Pre: 'pre',
+  PreWrap: 'pre-wrap',
+  BreakSpaces: 'break-spaces',
+} as const;
 
 export const paragraphSchema = zod.object({
   content: zod.string({
@@ -31,22 +32,22 @@ export const paragraphSchema = zod.object({
     required_error: 'Content is required',
   }),
   as: zod
-    .nativeEnum(AsEnum, {
+    .enum(getEnumValues(AsEnum), {
       description: 'Specifies the HTML element to render the component as.',
     })
     .optional(),
   size: zod
-    .nativeEnum(SizeEnum, {
+    .enum(getEnumValues(SizeEnum), {
       description: 'Specifies the size of the paragraph or span.',
     })
     .optional(),
   align: zod
-    .nativeEnum(AlignEnum, {
+    .enum(getEnumValues(AlignEnum), {
       description: 'Specifies the alignment of the text.',
     })
     .optional(),
   whitespace: zod
-    .nativeEnum(WhitespaceEnum, {
+    .enum(getEnumValues(WhitespaceEnum), {
       description: 'Specifies the whitespace behavior.',
     })
     .optional(),

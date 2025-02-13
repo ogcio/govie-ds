@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox, CheckboxSizeEnum } from './checkbox.js';
+import { Checkbox } from './checkbox.js';
+import { CheckboxSizeEnum } from './types.js';
 
 const meta = {
   title: 'Form/Checkbox/Checkbox',

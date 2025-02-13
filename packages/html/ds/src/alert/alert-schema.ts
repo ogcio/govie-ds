@@ -1,15 +1,18 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum AlertVariant {
-  INFO = 'info',
-  DANGER = 'danger',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-}
+export const AlertVariant = {
+  INFO: 'info',
+  DANGER: 'danger',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+} as const;
 
 export const alertSchema = zod.object({
   variant: zod
-    .nativeEnum(AlertVariant, { description: 'Alert variant' })
+    .enum(getEnumValues(AlertVariant), {
+      description: 'Alert variant',
+    })
     .optional(),
   title: zod.string({ description: 'The title of the variant' }),
   children: zod

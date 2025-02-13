@@ -1,15 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-export enum Breakpoint {
-  XS = 'xs',
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
-  XL = 'xl',
-}
+export const Breakpoint = {
+  XS: 'xs',
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
+} as const;
 
-const getBreakpoint = (width: number): Breakpoint => {
+export type BreakpointType = (typeof Breakpoint)[keyof typeof Breakpoint];
+
+const getBreakpoint = (width: number): BreakpointType => {
   if (width < 480) {
     return Breakpoint.XS;
   }
@@ -25,8 +27,11 @@ const getBreakpoint = (width: number): Breakpoint => {
   return Breakpoint.XL;
 };
 
-export const useBreakpoint = (): { breakpoint: Breakpoint; width: number } => {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>(Breakpoint.XS);
+export const useBreakpoint = (): {
+  breakpoint: BreakpointType;
+  width: number;
+} => {
+  const [breakpoint, setBreakpoint] = useState<BreakpointType>(Breakpoint.XS);
   const [width, setWidth] = useState<number>(
     typeof window === 'undefined' ? 0 : window.innerWidth,
   );
