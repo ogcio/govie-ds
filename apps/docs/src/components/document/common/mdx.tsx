@@ -1,5 +1,7 @@
 import {
   Alert,
+  Accordion,
+  AccordionItem,
   Blockquote,
   Breadcrumbs,
   BreadcrumbCurrentLink,
@@ -138,6 +140,8 @@ const standardComponents: MDXComponents = {
 };
 
 const documentComponents: MDXComponents = {
+  Accordion,
+  AccordionItem,
   DropdownItem: (props) => (
     <DropdownItem {...props}>{props.children}</DropdownItem>
   ),
