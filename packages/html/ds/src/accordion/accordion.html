@@ -10,7 +10,7 @@
     {{ commonAriaAttributes(props) }}
   >
     {% for item in props['items'] %}
-      {% set borderClass = 'gi-border-t gi-border-b' if loop.index0 === loop.length - 1 else 'gi-border-t' %}
+      {% set borderClass = "gi-border-t gi-border-b" if loop.index0 === loop.length - 1 else 'gi-border-t' %}
 
       <div class="{{ borderClass }}">
         <div
