@@ -3,21 +3,21 @@
 /* General focus classes */
 .gi-focus-state-outline {
   @apply focus:gi-outline
-  focus:gi-outline-[3px]
+  focus:gi-outline-sm
   focus:gi-outline-yellow-400
   focus:gi-outline-offset-0;
 }
 
 .gi-focus-visible-state-outline {
   @apply focus-visible:gi-outline
-  focus-visible:gi-outline-[3px]
+  focus-visible:gi-outline-sm
   focus-visible:gi-outline-yellow-400
   focus-visible:gi-outline-offset-0;
 }
 
 .gi-focus-within-state-outline {
   @apply focus-within:gi-outline
-  focus-within:gi-outline-[3px]
+  focus-within:gi-outline-sm
   focus-within:gi-outline-yellow-400
   focus-within:gi-outline-offset-0;
 }
@@ -945,7 +945,7 @@ input[type='file' i] {
   @apply gi-flex gi-items-center;
 }
 .gi-checkbox-input {
-  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-[3px] hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
+  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
 }
 .gi-checkbox-label {
   @apply gi-cursor-pointer gi-text-md gi-pl-4;
