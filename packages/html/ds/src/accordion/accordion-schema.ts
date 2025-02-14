@@ -9,6 +9,11 @@ const accordionItemValidAriaProps = [
   'aria-labelledby',
 ] as const;
 
+export const AccordionVariant = {
+  small: 'small',
+  default: 'default',
+} as const;
+
 export const accordionAriaSchema = zod.record(
   zod.enum(accordionValidAriaProps, {
     description: 'Valid ARIA attributes key',
@@ -68,6 +73,9 @@ export const accordionSchema = zod.object({
     .array(accordionItemSchema)
     .describe('Array of the accordion items'),
   aria: accordionAriaSchema.describe('Defines the aria attributes').optional(),
+  variant: zod.enum(Object.values(AccordionVariant) as any, {
+    description: 'Defines if is a small or default accordion size',
+  }),
 });
 
 export type AccordionProps = zod.infer<typeof accordionSchema>;

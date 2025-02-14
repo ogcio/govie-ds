@@ -1498,6 +1498,10 @@ input[type='file' i] {
   @apply gi-focus-visible-state-outline-inner-shadow-sm;
 }
 
+.gi-accordion-header {
+  @apply gi-items-center;
+}
+
 .gi-accordion[data-disabled='false'] {
   @apply hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm;
 }
