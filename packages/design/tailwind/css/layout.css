@@ -38,3 +38,5 @@
 .gi-layout-column-1-2 {
   @apply gi-w-full md:gi-col-span-1;
 }
+
+/* End Layout */
