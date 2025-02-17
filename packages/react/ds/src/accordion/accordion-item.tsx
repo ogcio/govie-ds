@@ -18,7 +18,7 @@ const accordionVariants = tv({
   variants: {
     variant: {
       default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
-      small: 'gi-py-2 gi-px-2 gi-text-sm',
+      small: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold',
     },
   },
 });
