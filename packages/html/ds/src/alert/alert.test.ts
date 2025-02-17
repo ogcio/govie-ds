@@ -8,7 +8,7 @@ const standardProps = {
   children: '<p>Content</p>',
 };
 
-const variants: AlertVariant[] = [
+const variants: (typeof AlertVariant)[keyof typeof AlertVariant][] = [
   AlertVariant.INFO,
   AlertVariant.SUCCESS,
   AlertVariant.WARNING,

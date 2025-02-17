@@ -1,15 +1,16 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum SizeEnum {
-  ExtraLarge = 'xl',
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
+export const SizeEnum = {
+  ExtraLarge: 'xl',
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+} as const;
 
 export const sectionBreakSchema = zod.object({
   size: zod
-    .nativeEnum(SizeEnum, {
+    .enum(getEnumValues(SizeEnum), {
       description: 'Specifies the size of the Section Break.',
     })
     .optional(),

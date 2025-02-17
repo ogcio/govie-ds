@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Link, LinkType } from './link.js';
+import { Link, LinkAs } from './link.js';
 
 const meta = {
   title: 'Navigation/Link',
@@ -89,7 +89,7 @@ export const styledAsButton: Story = {
 
 export const asButton: Story = {
   args: {
-    as: LinkType.BUTTON,
+    as: LinkAs.BUTTON,
     onClick: () => alert('Button Clicked'),
     children: 'Click me',
   },

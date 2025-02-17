@@ -1,11 +1,12 @@
 import * as zod from 'zod';
 import { Size, Tag } from '../heading/heading.schema';
+import { getEnumValues } from '../helpers';
 
-export enum CheckboxSizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
+export const CheckboxSizeEnum = {
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+} as const;
 
 const validAriaProps = [
   'aria-disabled',
@@ -53,7 +54,7 @@ export const checkboxSchema = zod.object({
     .boolean({ description: 'if true the component is checked' })
     .optional(),
   size: zod
-    .nativeEnum(CheckboxSizeEnum, {
+    .enum(getEnumValues(CheckboxSizeEnum), {
       description: 'Specifies the size of the checkbox',
     })
     .optional(),
@@ -75,6 +76,7 @@ export const checkboxSchema = zod.object({
     .optional(),
 });
 
+// Checkboxes schema definition
 export const checkboxesSchema = zod.object({
   fieldId: zod.string({
     description: 'An unique ID given to the group of checkboxes',
@@ -105,7 +107,7 @@ export const checkboxesSchema = zod.object({
       checked: zod
         .boolean({ description: 'if true the component is checked' })
         .optional(),
-      className: zod.string({ description: 'aditional classes' }).optional(),
+      className: zod.string({ description: 'additional classes' }).optional(),
       disabled: zod
         .boolean({
           description: 'Disable state for item',
@@ -166,7 +168,7 @@ export const checkboxesSchema = zod.object({
     )
     .optional(),
   size: zod
-    .nativeEnum(CheckboxSizeEnum, {
+    .enum(getEnumValues(CheckboxSizeEnum), {
       description: 'Specifies the size of the checkbox',
     })
     .optional(),

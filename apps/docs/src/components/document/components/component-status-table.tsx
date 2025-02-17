@@ -7,7 +7,7 @@ import {
   TableData,
   TableRow,
   Tag,
-  TagType,
+  TagTypeEnum,
 } from '@govie-ds/react';
 import { Fragment } from 'react';
 import { ComponentStatus, getComponents } from '@/lib/components';
@@ -15,22 +15,22 @@ import { ComponentStatus, getComponents } from '@/lib/components';
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {
     case 'not-available': {
-      return { text: 'N/A', type: TagType.default };
+      return { text: 'N/A', type: TagTypeEnum.default };
     }
     case 'considering': {
-      return { text: 'Considering', type: TagType.default };
+      return { text: 'Considering', type: TagTypeEnum.default };
     }
     case 'alpha': {
-      return { text: 'Alpha', type: TagType.warning };
+      return { text: 'Alpha', type: TagTypeEnum.warning };
     }
     case 'beta': {
-      return { text: 'Beta', type: TagType.info };
+      return { text: 'Beta', type: TagTypeEnum.info };
     }
     case 'deprecated': {
-      return { text: 'Deprecated', type: TagType.error };
+      return { text: 'Deprecated', type: TagTypeEnum.error };
     }
     case 'stable': {
-      return { text: 'Stable', type: TagType.success };
+      return { text: 'Stable', type: TagTypeEnum.success };
     }
     default: {
       return;

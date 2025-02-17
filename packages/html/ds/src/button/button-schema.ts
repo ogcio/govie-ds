@@ -1,28 +1,29 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum ButtonVariant {
-  Primary = 'primary',
-  Secondary = 'secondary',
-  Flat = 'flat',
-}
+export const ButtonVariant = {
+  Primary: 'primary',
+  Secondary: 'secondary',
+  Flat: 'flat',
+} as const;
 
-export enum ButtonAppearance {
-  Default = 'default',
-  Dark = 'dark',
-  Light = 'light',
-}
+export const ButtonAppearance = {
+  Default: 'default',
+  Dark: 'dark',
+  Light: 'light',
+} as const;
 
-export enum ButtonSize {
-  Medium = 'medium',
-  Small = 'small',
-  Large = 'large',
-}
+export const ButtonSize = {
+  Medium: 'medium',
+  Small: 'small',
+  Large: 'large',
+} as const;
 
-export enum ButtonType {
-  Submit = 'submit',
-  Reset = 'reset',
-  Button = 'button',
-}
+export const ButtonType = {
+  Submit: 'submit',
+  Reset: 'reset',
+  Button: 'button',
+} as const;
 
 const validAriaProps = [
   'aria-disabled',
@@ -48,17 +49,17 @@ export const buttonSchema = zod.object({
     description: 'The raw HTML that will be inserted',
   }),
   variant: zod
-    .nativeEnum(ButtonVariant, {
+    .enum(getEnumValues(ButtonVariant), {
       description: 'Button variants',
     })
     .optional(),
   appearance: zod
-    .nativeEnum(ButtonAppearance, {
+    .enum(getEnumValues(ButtonAppearance), {
       description: 'Choose the appearance of the button',
     })
     .optional(),
   size: zod
-    .nativeEnum(ButtonSize, {
+    .enum(getEnumValues(ButtonSize), {
       description: 'Button sizes',
     })
     .optional(),
@@ -66,12 +67,12 @@ export const buttonSchema = zod.object({
     .boolean({ description: 'Specify if the button should be disabled' })
     .optional(),
   type: zod
-    .nativeEnum(ButtonType, {
+    .enum(getEnumValues(ButtonType), {
       description: 'Select the action type of the button',
     })
     .optional(),
   form: zod
-    .string({ description: 'The ID of the form that button is bond to ' })
+    .string({ description: 'The ID of the form that button is bound to ' })
     .optional(),
   value: zod
     .string({

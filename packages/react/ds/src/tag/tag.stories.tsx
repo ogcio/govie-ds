@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tag, TagType } from './tag.js';
+import { Tag, TagTypeEnum } from './tag.js';
 
 const meta = {
   title: 'Typography/Tag',
@@ -34,7 +34,7 @@ export const Default: Story = {
       control: {
         type: 'select',
       },
-      options: Object.values(TagType),
+      options: Object.values(TagTypeEnum),
       description:
         'Defines the visual style and color of the tag. Select from predefined options like default, grey, green, blue, etc.',
       table: {
@@ -46,6 +46,6 @@ export const Default: Story = {
   },
   args: {
     text: 'Completed',
-    type: TagType.info,
+    type: TagTypeEnum.info,
   },
 };
