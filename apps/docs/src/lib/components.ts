@@ -29,14 +29,15 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const globalHtmlStorybookBaseUrl =
-  'https://storybook-html.design-system.blocks.gov.ie/';
+const isDevelopmentEnvironment = process.env.DEPLOY_ENV === 'dev';
 
-const reactStorybookBaseUrl =
-  'https://storybook-react.design-system.blocks.gov.ie/';
+const globalHtmlStorybookBaseUrl = isDevelopmentEnvironment
+  ? 'https://ds.dev.services.gov.ie/storybook-html/'
+  : 'https://storybook-html.design-system.blocks.gov.ie/';
 
-const localHtmlStorybookBaseUrl =
-  'https://storybook.design-system.ogcio.gov.ie/';
+const reactStorybookBaseUrl = isDevelopmentEnvironment
+  ? 'https://ds.dev.services.gov.ie/storybook-react/'
+  : 'https://storybook-react.design-system.blocks.gov.ie/';
 
 export function getComponents(): ComponentDetail[] {
   const componentsDocument = getAll().filter((document) => document.libraries);
@@ -50,10 +51,6 @@ export function getComponents(): ComponentDetail[] {
           component.libraries?.map((status) => {
             let baseUrl = '';
             switch (status.platform) {
-              case 'local': {
-                baseUrl = localHtmlStorybookBaseUrl;
-                break;
-              }
               case 'react': {
                 baseUrl = reactStorybookBaseUrl;
                 break;
