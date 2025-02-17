@@ -33,14 +33,16 @@ export function Addresses() {
               hint={{ text: 'Your country' }}
             />
           </Stack>
-          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-            <TextInput
-              id="postcode"
-              label={{ text: 'Postcode' }}
-              hint={{ text: 'Your postcode or ZIP code' }}
-              maxLength={10}
-            />
-          </Stack>
+          <div className="gi-w-1/2">
+            <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+              <TextInput
+                id="postcode"
+                label={{ text: 'Postcode' }}
+                hint={{ text: 'Your postcode or ZIP code' }}
+                maxLength={10}
+              />
+            </Stack>
+          </div>
         </Stack>
       </div>
     </>
