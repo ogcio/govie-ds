@@ -1491,6 +1491,7 @@ input[type='file' i] {
          gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-gray-900 gi-left-[-0.45rem];
 }
 /* End of Tooltip */
+<<<<<<< HEAD
 
 /* Accordion */
 
@@ -1523,3 +1524,5 @@ input[type='file' i] {
 }
 
 /* End of Accordion */
+=======
+>>>>>>> abe6c4fc (fix: add container max xl class limited to 1280px)

@@ -6,11 +6,7 @@ export function Container({
   id?: string;
 }) {
   return (
-    <div
-      data-testid="govie-container"
-      className="gi-layout-container gi-container-full"
-      id={id}
-    >
+    <div data-testid="govie-container" className="gi-layout-container" id={id}>
       {children}
     </div>
   );
