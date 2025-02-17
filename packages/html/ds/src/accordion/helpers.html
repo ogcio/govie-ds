@@ -43,3 +43,12 @@
     gi-px-2 gi-py-4 gi-text-md gi-font-bold
   {% endif %}
 {% endmacro %}
+
+
+{% macro getTextSize(variant) %}
+  {% if variant == 'small' %}
+    gi-text-sm
+  {% else %}
+    gi-text-md
+  {% endif %}
+{% endmacro %}

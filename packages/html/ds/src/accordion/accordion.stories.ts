@@ -26,50 +26,26 @@ type Story = StoryObj<typeof meta>;
 const items = [
   {
     label: 'What is the Citizens Information Service?',
-    content: `
-      <div class="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
-        <h2 class="gi-heading-xs">Citizens Information Service Overview</h2>
-        <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
-          The Citizens Information Service provides information on public services and entitlements.
-          It helps citizens access services like social welfare, health services, and more.
-        </p>
-      </div>
-    `,
+    content:
+      'The Citizens Information Service provides information on public services and entitlements.',
   },
   {
     label: 'How can I apply for social welfare benefits?',
-    content: `
-      <div class="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
-        <h2 class="gi-heading-xs">Applying for Social Welfare</h2>
-        
-        <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
-          To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation,
-          and submit it online or at your local office.
-        </p>
-      </div>
-    `,
+    content:
+      'To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation,     and submit it online or at your local office.',
   },
   {
     label: 'How do I get a public service card?',
-    content: `
-      <div class="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
-        <h2 class="gi-heading-xs">Public Service Card Process</h2>
-        <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">
-          To obtain a public service card, you need to visit a local service center with identification documents and proof of address.
-        </p>
-      </div>
-    `,
+    content:
+      'To obtain a public service card, you need to visit a local service center with identification documents and proof of address.',
   },
   {
     disabled: true,
     label: 'Can I get financial assistance during a crisis?',
     content: `
-      <div class="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
-        <h2 class="gi-heading-xs">Financial Assistance During Crises</h2>
         <button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">
           Learn More About Financial Assistance
         </button>
-      </div>
     `,
   },
 ];
@@ -123,19 +99,17 @@ export const WithIconStart: Story = {
     items: [
       {
         label: 'Label 1',
-        content: `<h2 class="gi-heading-xs">This is the content heading</h2><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is a content paragraph paragraph</p>`,
+        content: `This is a content paragraph paragraph`,
       },
       {
         label: 'Label 2',
-        content: `<h2 class="gi-heading-xs">This is the content heading</h2>
-        <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores
-          minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste
-          voluptatum omnis harum quaerat eius praesentium a at perferendis
-          quisquam hic.</p>`,
+        content:
+          'Minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.',
       },
       {
         label: 'Label 3',
-        content: `<h2 class="gi-heading-xs">This is the content heading</h2><button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
+        content:
+          'Minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.',
       },
       {
         aria: {
@@ -143,7 +117,7 @@ export const WithIconStart: Story = {
         },
         disabled: true,
         label: 'Label 4',
-        content: `<h2 class="gi-heading-xs">This is the content heading</h2><button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
+        content: `<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
       },
     ],
   },

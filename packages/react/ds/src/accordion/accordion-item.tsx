@@ -69,7 +69,12 @@ export const AccordionItem = ({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn({ 'gi-block': isExpanded, 'gi-hidden': !isExpanded })}
+        className={cn('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
+          'gi-block': isExpanded,
+          'gi-hidden': !isExpanded,
+          'gi-text-md': variant === 'default',
+          'gi-text-sm': variant === 'small',
+        })}
       >
         {children}
       </div>

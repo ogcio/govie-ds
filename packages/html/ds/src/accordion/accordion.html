@@ -1,5 +1,5 @@
 {% from 'common/aria-attributes.html' import commonAriaAttributes %}
-{% from 'accordion/helpers.html' import getDisabledOpacity, getVariant, getDisabledCursor, getDefaultExpanded, getIcon, getIconPosition %}
+{% from 'accordion/helpers.html' import getDisabledOpacity, getVariant, getDisabledCursor, getDefaultExpanded, getIcon, getIconPosition, getTextSize %}
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieAccordion(props) %}
@@ -38,7 +38,10 @@
           </div>
         </div>
         <div
-          class="{{ getDefaultExpanded(item.defaultExpanded) | trim }}"
+          class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal 
+          {{ getDefaultExpanded(item.defaultExpanded) | trim }}
+           {{ getTextSize(props.variant) | trim }}
+          "
           id="accordion-panel-{{ loop.index }}"
           role="region"
           {% if item.aria['aria-labelledby'] %}aria-labelledby="{{ item.aria['aria-labelledby'] }}"{% endif %}
