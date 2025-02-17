@@ -30,6 +30,7 @@ export class Accordion extends BaseComponent<AccordionOptions> {
     ] as HTMLElement[];
 
     this.accordionItemsState = this.accordionItems.map((item) => {
+      const innerContainer = item.querySelector(':scope > div') as any;
       return {
         elements: {
           mainContainer: item,
@@ -37,16 +38,18 @@ export class Accordion extends BaseComponent<AccordionOptions> {
           contentContainer: item.querySelector(':scope > div:last-child'),
           iconContainer: item.querySelector(':scope > div:first-child span')!,
         },
-        expanded: Boolean(item.dataset.defaultExpanded),
-        disabled: Boolean(item.dataset.disabled),
+        expanded: innerContainer?.dataset?.defaultExpanded === 'true',
+        disabled: innerContainer?.dataset?.disabled === 'true',
       };
     });
   }
 
   initComponent() {
+    console.log(this.accordionItemsState);
     for (const item of this.accordionItemsState) {
       const { triggerContainer, contentContainer, iconContainer } =
         item.elements;
+
       if (!item.disabled) {
         triggerContainer?.addEventListener('click', () => {
           item.expanded = !item.expanded;

@@ -91,8 +91,10 @@ describe('govieAccordion', () => {
       </Accordion>,
     );
 
-    const labelDiv = container.querySelector('div.gi-flex-row-reverse');
-    expect(labelDiv).toBeInTheDocument();
+    const accordion = container.querySelector('.gi-accordion');
+    const dataIconStart = accordion?.getAttribute('data-icon-start');
+
+    expect(dataIconStart).toBe('true');
   });
 
   it('should not apply iconStart styling when iconStart is false', () => {
