@@ -29,7 +29,6 @@ import {
   Combobox,
   Radio,
   Alert,
-  Toast,
   Pagination,
   Checkbox,
   CheckboxesGroup,
@@ -37,9 +36,24 @@ import {
   DropdownItem,
   HeaderProps,
   HeaderSearch,
+  ToastProvider,
+  toaster,
+  ToastProps,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
+
+const toastProps: ToastProps = {
+  title: 'Default',
+  description: 'This is some content',
+  animation: 'fadeinup',
+  variant: 'info',
+  duration: 5000,
+  position: {
+    x: 'right',
+    y: 'bottom',
+  },
+};
 
 const headerProps: HeaderProps = {
   items: [
@@ -216,10 +230,10 @@ export function App() {
                 </DropdownItem>
               </Combobox>
             </Form>
-            <Toast
-              title="Toast Triggered"
-              trigger={<Button>Trigger Toast</Button>}
-            />
+            <ToastProvider />
+            <Button onClick={() => toaster.create(toastProps)}>
+              Trigger Toast
+            </Button>
             <Select
               id="unique-id"
               label={{ text: 'Label' }}
