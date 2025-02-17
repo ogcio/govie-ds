@@ -1,0 +1,72 @@
+{% macro govieIcon(props) %}
+  {% macro getIconStyle(props) %}
+    {% if props.filled %}
+      style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz'
+      24;"
+    {% else %}
+      style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz'
+      24;"
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getDisabled(props) %}
+    {% if props.disabled %}
+      gi-text-gray-700
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getAriaRole(props) %}
+    {% if props.ariaLabel %}
+      role="img"
+    {% else %}
+      role="presentation"
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getAriaLabel(props) %}
+    {% if props.ariaLabel %}
+      aria-label={{ props.ariaLabel }}
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getAriaHidden(props) %}
+    {% if props.ariaHidden %}
+      aria-hidden
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getInline(props) %}
+    {% if not props.inline %}
+      gi-block
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getFontSize(props) %}
+    {% if props.size == 'sm' %}
+      gi-text-[16px]
+    {% elif props.size == 'lg' %}
+      gi-text-[32px]
+    {% elif props.size == 'xl' %}
+      gi-text-[49px]
+    {% else %}
+      gi-text-[24px]
+    {% endif %}
+  {% endmacro %}
+
+  <span
+    data-testid="govie-icon"
+    id="{{ props.id or undefined }}"
+    {{ getAriaHidden(props) | trim }}
+    {{ getAriaLabel(props) | trim }}
+    {{ getAriaRole(props) | trim }}
+    {{ getIconStyle(props) | trim }}
+    class="
+      material-symbols-outlined
+      {{ getDisabled(props) | trim }}
+      {{ getInline(props) | trim }}
+      {{ getFontSize(props) | trim }}
+      {{ props.className | default('') | trim }}"
+  >
+    {{ props.icon }}
+  </span>
+{% endmacro %}

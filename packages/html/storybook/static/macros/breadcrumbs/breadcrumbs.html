@@ -1,0 +1,53 @@
+{% from 'link/link.html' import govieLink %}
+{% from 'icon/icon.html' import govieIcon %}
+
+{% macro govieBreadcrumbs(props) %}
+  <nav
+    aria-label="Breadcrumbs"
+    data-element="breadcrumbs-container"
+    data-module="gieds-breadcrumbs"
+    class="gi-breadcrumbs"
+  >
+    <ol role="list">
+      {% for item in props.navItems %}
+        <li
+          role="listitem"
+          {% if item.currentPage %}aria-current="page"{% endif %}
+        >
+          {% if item.ellipsis %}
+            <div aria-hidden="true">
+              {{
+                govieIcon({
+                "icon": "more_horiz",
+                "className": "gi-text-gray-700"
+                })
+              }}
+            </div>
+          {% elif item.currentPage %}
+            {{
+              govieLink({
+                  "noColor": true,
+                  "href": item.href,
+                  "label": item.label,
+                  "aria": {
+                    "aria-current": "page"
+                  }
+              })
+            }}
+          {% else %}
+            {{
+              govieLink({
+                  "noColor": true,
+                  "href": item.href,
+                  "label": item.label,
+                  "aria": {
+                    "aria-label": item.label + " page"
+                  }
+              })
+            }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endmacro %}

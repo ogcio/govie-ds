@@ -1,0 +1,47 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+{% from 'button/helpers.html' import getVariantAppearanceClass, getSizeClass, isButtonDisabled %}
+
+{% macro govieButton(props) %}
+  {% set appearance = props.appearance or 'default' %}
+  {% set variant = props.variant or 'primary' %}
+  {% set size = props.size or 'medium' %}
+  {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
+  {% set testId = props.testId or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
+  {% set commonClasses = getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim %}
+  {% set sizeClasses = getSizeClass(props.size) | trim %}
+  {% set disabledClasses = isButtonDisabled(props.disabled, props.variant, props.appearance) | trim %}
+  {% set allClasses = (props.className or '') ~ ' ' ~ 'gi-btn ' ~ commonClasses ~ ' ' ~ sizeClasses ~ ' ' ~ disabledClasses %}
+
+  {% if props.href %}
+    <a
+      {{ commonAriaAttributes(props) }}
+      href="{{ props.href }}"
+      {% if props.target %}target="{{ props.target }}"{% endif %}
+      {% if props.rel %}
+        rel="{{ props.rel }}"
+      {% elif props.target == '_blank' and not props.disabled %}
+        rel="noopener noreferrer"
+      {% endif %}
+      data-testid="{{ testId }}"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="{{ allClasses | trim }}"
+    >
+      {{ props.content | safe | trim }}
+    </a>
+  {% else %}
+    <button
+      {{ commonAriaAttributes(props) }}
+      {% if props.type %}type="{{ props.type }}"{% endif %}
+      {% if props.form %}form="{{ props.form }}"{% endif %}
+      {% if props.value %}value="{{ props.value }}"{% endif %}
+      {% if props.disabled %}disabled{% endif %}
+      data-testid="{{ testId }}"
+      data-element="button-container"
+      data-module="gieds-button"
+      class="{{ allClasses | trim }}"
+    >
+      {{ props.content | safe | trim }}
+    </button>
+  {% endif %}
+{% endmacro %}

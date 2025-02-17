@@ -1,0 +1,20 @@
+{% from 'icon/icon.html' import govieIcon %}
+{% from 'text-input/text-input.html' import govieTextInput %}
+{% from 'button/button.html' import govieButton %}
+{% from 'heading/heading.html' import govieHeading %}
+
+{% macro HeaderSearchContainer(props) %}
+  <form action="{{ props.searchUrl }}" class="gi-max-w-md gi-mx-auto">
+    {{ govieHeading({"text": "Search the website", "as": "h4"}) }}
+    <div class="gi-flex gi-items-end gi-mt-4">
+      {{ govieTextInput({"name": "search_query", "id": "search", "fullFluid": true, "className": "gi-flex-auto", "placeholder": "Enter search term"}) }}
+
+      {{
+        govieButton({
+          "content": 'Search' + govieIcon({"icon": props.icon}),
+          "className": "gi-ml-1 gi-flex-none"
+        })
+      }}
+    </div>
+  </form>
+{% endmacro %}

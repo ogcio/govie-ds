@@ -1,0 +1,71 @@
+{% from 'common/aria-attributes.html' import commonAriaAttributes %}
+{% from 'button/button.html' import govieButton %}
+
+{% macro govieLink(props) %}
+  {% set as = props.as or 'a' %}
+
+  {% macro getUnderlineClass(noUnderline) %}
+    {% if noUnderline %}
+      gi-link-no-underline
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getVisitedClass(noVisited) %}
+    {% if noVisited %}
+      visited:gi-text-blue-700
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getColorClass(noColor) %}
+    {% if noColor %}
+      gi-link-inherit
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getExternalAttribute(isExternal) %}
+    {% if isExternal %}
+      rel="noreferrer noopener" target="_blank"
+    {% endif %}
+  {% endmacro %}
+
+  {% macro getSizeClass(size) %}
+    {% if size %}
+      gi-link-{{ size }}
+    {% endif %}
+  {% endmacro %}
+
+  {% macro renderContent(props) %}
+    {% if props.asButton %}
+      {{
+        govieButton({
+          "content": props.label,
+          "variant": props.asButton.variant,
+          "appearance": props.asButton.appearance,
+          "size": props.asButton.size,
+          "disabled": props.asButton.disabled,
+          "type": props.asButton.type,
+          "form": props.asButton.form,
+          "value": props.asButton.value,
+          "aria": props.aria
+        })
+      }}
+    {% else %}
+      {{ props.label }}
+    {% endif %}
+  {% endmacro %}
+  {# prettier-ignore-start #}
+  <{{ as }}
+    {{ commonAriaAttributes(props) }}
+    href="{{ props.href }}"
+    {{ getExternalAttribute(props.external) | trim }}
+    class="
+      gi-link
+      {{ getColorClass(props.noColor) | trim }}
+      {{ getUnderlineClass(props.noUnderline) | trim }}
+      {{ getVisitedClass(props.noVisited) | trim }}
+      {{ getSizeClass(props.size) | trim }}
+    "
+    >{{ renderContent(props) }}</{{ as }}
+  >
+  {# prettier-ignore-end #}
+{% endmacro %}

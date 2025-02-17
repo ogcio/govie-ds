@@ -1,0 +1,38 @@
+{% from 'paragraph/paragraph.html' import govieParagraph %}
+
+{%- macro tabListItem(props, item, index) %}
+  {% set tabId = "tab-" + index|string -%}
+  {% set tabPanelId = "tab-panel-" + index|string -%}
+  <button
+    id="{{ tabId }}"
+    role="tab"
+    aria-roledescription="tab"
+    aria-selected="{%- if item.checked %}true{% else %}false{% endif %}"
+    aria-controls="{{ tabPanelId }}"
+    class="gi-tab-item"
+  >
+    {% if item.href %}
+      <a href="{{ item.href }}" class="gi-decoration-xs"> {{ item.label }} </a>
+    {% else %}
+      <span class="gi-decoration-xs"> {{ item.label }} </span>
+    {% endif %}
+  </button>
+{% endmacro -%}
+
+{%- macro tabPanel(props, item, index) %}
+  {% set tabPanelId = "tab-panel-" + index|string -%}
+  {% set tabId = "tab-" + index|string -%}
+  <div
+    id="{{ tabPanelId }}"
+    role="tabpanel"
+    tabindex="0"
+    aria-labelledby="{{ tabId }}"
+    class="gi-tab-panel"
+  >
+    {% if item.panel.html %}
+      {{ item.panel.html | safe | trim | indent(2) }}
+    {% elif item.panel.text %}
+      {{ govieParagraph({ "content": item.panel.text }) }}
+    {% endif %}
+  </div>
+{% endmacro -%}

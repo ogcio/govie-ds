@@ -1,0 +1,37 @@
+{% from 'link/link.html' import govieLink %}
+
+{% macro govieList(props) %}
+  {% macro getListClass(type, spaced) %}
+    {% set listClasses = '' %}
+
+    {% if type == 'bullet' %}
+      {% set listClasses = listClasses + ' gi-list-bullet' %}
+    {% elif type == 'number' %}
+      {% set listClasses = listClasses + ' gi-list-number' %}
+    {% else %}
+      {% set listClasses = listClasses + ' gi-list' %}
+    {% endif %}
+
+    {% if spaced %}
+      {% set listClasses = listClasses + ' gi-list-spaced' %}
+    {% endif %}
+
+    {{ listClasses | trim }}
+  {% endmacro %}
+
+  <ul
+    data-testid="govieList"
+    class="{{ getListClass(props.type, props.spaced) }}"
+    data-element="list-container"
+  >
+    {% for item in props['items'] %}
+      <li>
+        {% if item is string %}
+          {{ item }}
+        {% else %}
+          {{ govieLink(item) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
