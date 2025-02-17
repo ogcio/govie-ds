@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.43.0](https://github.com/ogcio/govie-ds/compare/docs-v0.42.0...docs-v0.43.0) (2025-02-17)
+
+
+### Features
+
+* adding "Drawer" macro ([#426](https://github.com/ogcio/govie-ds/issues/426)) ([d4c4663](https://github.com/ogcio/govie-ds/commit/d4c46635538cd7ed068a85480b8f78e61b605757))
+
 ## [0.42.0](https://github.com/ogcio/govie-ds/compare/docs-v0.41.0...docs-v0.42.0) (2025-02-11)
 
 
