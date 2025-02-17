@@ -13,6 +13,7 @@ const toastVariants = tv({
     container: 'gi-toast-container',
     heading: 'gi-toast-title',
     dismiss: 'gi-toast-dismiss',
+    innerContainer: 'gi-flex gi-justify-between gi-w-full',
   },
   variants: {
     variant: {
@@ -70,9 +71,10 @@ function Toast({
   onClose,
   dataTestid,
 }: ToastProps) {
-  const { base, heading, container, dismiss, baseDismissible } = toastVariants({
-    variant,
-  });
+  const { base, heading, container, innerContainer, dismiss, baseDismissible } =
+    toastVariants({
+      variant,
+    });
 
   const baseVariant = dismissible ? baseDismissible : base;
 
@@ -87,7 +89,21 @@ function Toast({
     >
       <Icon icon={icon({ variant })} />
       <div className={container()}>
-        <p className={heading()}>{title}</p>
+        <div className={innerContainer()}>
+          <p className={heading()}>{title}</p>
+          {dismissible && (
+            <div className={dismiss()}>
+              <IconButton
+                onClick={onClose}
+                size="small"
+                appearance="dark"
+                variant="flat"
+                icon={{ icon: 'close' }}
+                aria-label="Close toast"
+              />
+            </div>
+          )}
+        </div>
         <Paragraph ariaLabel={description}>{description}</Paragraph>
         {action && (
           <div className="gi-toast-action">
@@ -97,17 +113,6 @@ function Toast({
           </div>
         )}
       </div>
-      {dismissible && (
-        <IconButton
-          onClick={onClose}
-          className={dismiss()}
-          size="small"
-          appearance="dark"
-          variant="flat"
-          icon={{ icon: 'close' }}
-          aria-label="Close toast"
-        />
-      )}
     </div>
   );
 }

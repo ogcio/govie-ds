@@ -84,3 +84,8 @@ export type {
   HeaderSlotItemType,
 } from './header/types.js';
 export * from './details/details.js';
+export { Accordion, type AccordionProps } from './accordion/accordion.js';
+export {
+  AccordionItem,
+  type AccordionItemProps,
+} from './accordion/accordion-item.js';

@@ -1,14 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+'use client';
+import React, { useState, useRef } from 'react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 
-type Props = {
+export type AccordionItemProps = {
   children: React.ReactNode;
   label: string;
   defaultExpanded?: boolean;
   disabled?: boolean;
   dataTestid?: string;
+  iconStart?: boolean;
+  variant?: 'default' | 'small';
 };
+
+const accordionVariants = tv({
+  variants: {
+    variant: {
+      default: 'gi-px-2 gi-py-4 gi-text-md gi-font-bold',
+      small: 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold',
+    },
+  },
+});
 
 export const AccordionItem = ({
   defaultExpanded,
@@ -16,50 +29,55 @@ export const AccordionItem = ({
   label,
   disabled,
   dataTestid,
-}: Props) => {
+  iconStart,
+  variant = 'default',
+}: AccordionItemProps) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
-  const [iconStart, setIconStart] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const buttonId = `${label}-button`;
   const panelId = `${label}-panel`;
 
-  useEffect(() => {
-    if (ref.current) {
-      setIconStart(Boolean(ref.current.parentElement?.dataset.iconStart));
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !disabled) {
+      setIsExpanded(!isExpanded);
     }
-  }, []);
+  };
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        'gi-py-4 gi-border-b-gray-150 gi-border-b gi-border-solid',
-        disabled && 'gi-opacity-30',
-      )}
-      data-testid={dataTestid}
-    >
-      {/* TODO Replace the following tag (div) with button */}
+    <>
       <div
+        ref={ref}
+        data-testid={dataTestid}
+        data-disabled={!!disabled}
+        data-icon-start={!!iconStart}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
+        onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
-        className={cn(
-          iconStart
-            ? 'gi-flex gi-flex-row-reverse gi-justify-end'
-            : 'gi-flex gi-justify-between',
-          disabled ? 'gi-cursor-not-allowed' : 'gi-cursor-pointer',
-        )}
+        tabIndex={0}
+        className="gi-accordion"
       >
-        {label}{' '}
-        <Icon icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
+        <div
+          className={cn('gi-accordion-header', accordionVariants({ variant }))}
+        >
+          {label}{' '}
+          <Icon
+            icon={isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+          />
+        </div>
       </div>
       <div
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={cn(isExpanded ? 'gi-block' : 'gi-hidden', 'gi-pt-4')}
+        className={cn('gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal', {
+          'gi-block': isExpanded,
+          'gi-hidden': !isExpanded,
+          'gi-text-md': variant === 'default',
+          'gi-text-sm': variant === 'small',
+        })}
       >
         {children}
       </div>
-    </div>
+    </>
   );
 };

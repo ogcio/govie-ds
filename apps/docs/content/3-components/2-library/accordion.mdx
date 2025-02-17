@@ -4,26 +4,186 @@ description: Accordion HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    status: 'considering'
-  - platform: 'global'
-    link: '?path=/docs/layout-accordion--docs'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4500-3185'
     status: 'alpha'
+  - platform: 'global'
+    status: 'not-available'
   - platform: 'react'
     link: '?path=/docs/layout-accordion--docs'
-    status: 'alpha'
+    status: 'beta'
 ---
 
 # Accordion
 
 ## Variants
 
+### Default
+
+<ComponentContainer>
+  <Accordion>
+    <AccordionItem label="What is the Citizens Information Service?">
+      <div className="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
+        <Heading size="xs" as="h2">
+          Citizens Information Service Overview
+        </Heading>
+        <Paragraph>
+          The Citizens Information Service provides information on public
+          services and entitlements. It helps citizens access services like
+          social welfare, health services, and more.
+        </Paragraph>
+      </div>
+    </AccordionItem>
+    <AccordionItem label="How can I apply for social welfare benefits?">
+      <div className="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
+        <Heading size="xs" as="h2">
+          Applying for Social Welfare
+        </Heading>
+        <Paragraph>
+          To apply for social welfare benefits, you need to fill out an
+          application form, provide necessary documentation, and submit it
+          online or at your local office.
+        </Paragraph>
+      </div>
+    </AccordionItem>
+  </Accordion>
+</ComponentContainer>
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab12" checked>
+      React
+    </TabItem>
+  </TabList>
+  <TabPanel value="tab12">
+    ```html import {(Accordion, AccordionItem)} from '@govie-ds/react';
+    <Accordion>
+      <AccordionItem label="What is the Citizens Information Service?">
+        <div className="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
+          <Heading size="xs" as="h2">
+            Citizens Information Service Overview
+          </Heading>
+          <Paragraph>
+            The Citizens Information Service provides information on public
+            services and entitlements...
+          </Paragraph>
+        </div>
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+        <div className="gi-px-3 gi-py-3 gi-gap-3 gi-flex gi-flex-col">
+          <Heading size="xs" as="h2">
+            Applying for Social Welfare
+          </Heading>
+          <Paragraph>
+            To apply for social welfare benefits, you need to fill out an
+            application form...
+          </Paragraph>
+        </div>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </TabPanel>
+</Tabs>
+
+### Accordion with Icon on the Left
+
+<ComponentContainer>
+  <Accordion iconStart>
+    <AccordionItem label="Label1">
+      <Heading size="xs" as="h2">
+        This is the content Heading
+      </Heading>
+      <Paragraph>This is a content paragraph</Paragraph>
+    </AccordionItem>
+    <AccordionItem label="Label2">
+      <Heading size="xs" as="h2">
+        This is the content Heading
+      </Heading>
+      <Link href="#">This is a link</Link>
+      <Paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
+        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
+        voluptatum omnis harum quaerat eius praesentium a at perferendis
+        quisquam hic.
+      </Paragraph>
+    </AccordionItem>
+  </Accordion>
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem checked value="tab21">
+      React
+    </TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+    ```html import {(Accordion, AccordionItem)} from '@govie-ds/react';
+    <Accordion iconStart={true}>
+      <AccordionItem label="Label1">
+        <Heading size="xs" as="h2">
+          This is the content Heading
+        </Heading>
+        <Paragraph>This is a content paragraph</Paragraph>
+      </AccordionItem>
+      <AccordionItem label="Label2">
+        <Heading size="xs" as="h2">
+          This is the content Heading
+        </Heading>
+        <Link href="#">This is a link</Link>
+        <Paragraph>Lorem ipsum dolor sit amet...</Paragraph>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </TabPanel>
+</Tabs>
+
+### Accordion with disabled item
+
+<ComponentContainer>
+  <Accordion>
+    <AccordionItem disabled label="Disabled Accordion">
+      <Heading size="xs" as="h2">
+        This is the content Heading
+      </Heading>
+      <Button>This is a button</Button>
+    </AccordionItem>
+  </Accordion>
+</ComponentContainer> <Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>
+      React
+    </TabItem>
+  </TabList>
+  <TabPanel value="tab31">
+    ```html import {(Accordion, AccordionItem)} from '@govie-ds/react';
+    <Accordion>
+      <AccordionItem disabled label="Disabled Accordion">
+        <Heading size="xs" as="h2">
+          This is the content Heading
+        </Heading>
+        <Button>This is a button</Button>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### Best Practices
 
+- Use the Accordion for organising large chunks of content that can be expanded and collapsed.
+- Keep Accordion items focused and concise, with clear labels and descriptions.
+- Use iconStart to make it easier for users to visually distinguish different items.
+
 ### When to use this component
 
+- Organising content where only one section should be visible at a time.
+- Presenting FAQs, help topics, or other collapsible content.
+
 ### When not to use this component
+
+- For static content that doesn’t need to be collapsed.
+- For content that requires persistent visibility.
 
 ## Status
 

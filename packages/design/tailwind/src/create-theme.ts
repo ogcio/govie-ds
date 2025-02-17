@@ -513,6 +513,12 @@ export function createTheme(
           },
         };
       },
+      spacing: {
+        'outline-sm': '3px',
+      },
+      outlineWidth: {
+        sm: '3px',
+      },
     },
   };
 
