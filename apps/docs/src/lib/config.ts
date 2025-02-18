@@ -51,17 +51,6 @@ function getConfiguration(
   );
 }
 
-function getDeployEnvironment(): DocumentSiteEnvironment {
-  switch (process.env.DEPLOY_ENV) {
-    case 'prod': {
-      return 'prod';
-    }
-    default: {
-      return 'dev';
-    }
-  }
-}
-
 export const config: DocumentSiteConfiguration = getConfiguration(
-  getDeployEnvironment(),
+  isProduction() ? 'prod' : 'dev',
 );

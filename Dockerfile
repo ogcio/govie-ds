@@ -38,7 +38,7 @@ COPY --from=builder --chown=nginx /build/packages/html/ds/storybook-static /usr/
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-ENV DEPLOY_ENV=${DEPLOY_ENV}
+ENV NODE_ENV=${DEPLOY_ENV}
 
 USER nginx
 

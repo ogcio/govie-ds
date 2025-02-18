@@ -5,9 +5,9 @@ export const revalidate = 1;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.DEPLOY_ENV === 'dev'
-      ? `https://ds.dev.services.gov.ie/`
-      : `https://ds.services.gov.ie/`;
+    process.env.NODE_ENV === 'production'
+      ? `https://ds.services.gov.ie/`
+      : `https://ds.dev.services.gov.ie/`;
 
   const documents = getAll().map((document) => {
     return {

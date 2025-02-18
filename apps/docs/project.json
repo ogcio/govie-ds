@@ -1,27 +1,5 @@
 {
   "name": "@govie-ds/docs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "targets": {
-    "docker": {
-      "executor": "@nx-tools/nx-container:build",
-      "defaultConfiguration": "dev",
-      "options": {
-        "engine": "docker",
-        "context": ".",
-        "file": "apps/docs/Dockerfile"
-      },
-      "configurations": {
-        "prod": {
-          "push": true,
-          "build-args": [
-            "DEPLOY_ENV=prod"
-          ],
-          "tags": [
-            "891377307993.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:prd",
-            "891377307993.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
-          ]
-        }
-      }
-    }
-  }
+  "targets": {}
 }
