@@ -780,7 +780,7 @@ input[type='file' i] {
 }
 
 .gi-card-image {
-  @apply gi-flex gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+  @apply gi-table gi-items-start gi-self-stretch gi-w-full gi-h-auto;
 }
 
 .gi-card-image img {
