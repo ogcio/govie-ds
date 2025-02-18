@@ -29,15 +29,8 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const isDevelopmentEnvironment = process.env.NEXT_PUBLIC_DEPLOY_ENV === 'dev';
-
-const globalHtmlStorybookBaseUrl = isDevelopmentEnvironment
-  ? 'https://ds.dev.services.gov.ie/storybook-html/'
-  : 'https://storybook-html.design-system.blocks.gov.ie/';
-
-const reactStorybookBaseUrl = isDevelopmentEnvironment
-  ? 'https://ds.dev.services.gov.ie/storybook-react/'
-  : 'https://storybook-react.design-system.blocks.gov.ie/';
+const globalHtmlStorybookBaseUrl = '/storybook-html/';
+const reactStorybookBaseUrl = '/storybook-react/';
 
 export function getComponents(): ComponentDetail[] {
   const componentsDocument = getAll().filter((document) => document.libraries);
