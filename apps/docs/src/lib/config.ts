@@ -54,7 +54,7 @@ function getConfiguration(
 }
 
 function getDeployEnvironment(): DocumentSiteEnvironment {
-  switch (process.env.NEXT_ENVIRONMENT) {
+  switch (process.env.NEXT_PUBLIC_DEPLOY_ENV) {
     case 'prod': {
       return 'prod';
     }

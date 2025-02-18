@@ -18,7 +18,7 @@
     "lint:spelling": "spellchecker -l en-GB -d dictionary.txt -f '**/*.mdx'",
     "test": "vitest run",
     "test:watch": "vitest",
-    "docker:local": "docker build -f Dockerfile ../.. --build-arg=DEPLOY_ENV=production",
+    "docker:local": "docker build -f Dockerfile ../.. --build-arg=DEPLOY_ENV=prod",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },

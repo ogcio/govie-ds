@@ -6,7 +6,7 @@ FROM base as builder
 
 ARG DEPLOY_ENV
 
-ENV DEPLOY_ENV=${DEPLOY_ENV}
+ENV NEXT_PUBLIC_DEPLOY_ENV=${DEPLOY_ENV}
 
 RUN apk add --no-cache libc6-compat zip
 
