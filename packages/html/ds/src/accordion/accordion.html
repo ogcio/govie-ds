@@ -10,7 +10,7 @@
     {{ commonAriaAttributes(props) }}
   >
     {% for item in props['items'] %}
-      {% set borderClass = "gi-border-t gi-border-b" if loop.index0 === loop.length - 1 else 'gi-border-t' %}
+      {% set borderClass = "gi-border-t gi-border-b" if loop.index0 == loop.length - 1 else 'gi-border-t' %}
 
       <div class="{{ borderClass }}">
         <div
@@ -24,9 +24,11 @@
           <div
             data-testid="{{ item.dataTestid }}"
             class="gi-accordion-header {{ getVariant(props.variant) | trim }}"
-            {% if item.aria['aria-disabled'] %}aria-disabled="{{ item.aria['aria-disabled'] }}"{% endif %}
-            {% if item.aria['aria-expanded'] %}aria-expanded="{{ item.aria['aria-expanded'] }}"{% endif %}
-            {% if item.aria['aria-controls'] %}aria-controls="{{ item.aria['aria-controls'] }}"{% endif %}
+            {% if item.aria is defined %}
+              {% if item.aria['aria-disabled'] is defined %}aria-disabled="{{ item.aria['aria-disabled'] }}"{% endif %}
+              {% if item.aria['aria-expanded'] is defined %}aria-expanded="{{ item.aria['aria-expanded'] }}"{% endif %}
+              {% if item.aria['aria-controls'] is defined %}aria-controls="{{ item.aria['aria-controls'] }}"{% endif %}
+            {% endif %}
             id="accordion-header-{{ loop.index }}"
           >
             {{ item.label }}
@@ -44,8 +46,10 @@
           "
           id="accordion-panel-{{ loop.index }}"
           role="region"
-          {% if item.aria['aria-labelledby'] %}aria-labelledby="{{ item.aria['aria-labelledby'] }}"{% endif %}
-          {% if item.aria['aria-hidden'] %}aria-hidden="{{ item.aria['aria-hidden'] }}"{% endif %}
+          {% if item.aria is defined %}
+            {% if item.aria['aria-labelledby'] is defined %}aria-labelledby="{{ item.aria['aria-labelledby'] }}"{% endif %}
+            {% if item.aria['aria-hidden'] is defined %}aria-hidden="{{ item.aria['aria-hidden'] }}"{% endif %}
+          {% endif %}
         >
           {{ item.content | safe | trim }}
         </div>
