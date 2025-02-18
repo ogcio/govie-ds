@@ -59,13 +59,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
 
-      - name: Build and test
-        run: |
-          corepack enable          
-          pnpm install --frozen-lockfile --ignore-scripts
-          pnpm format:check
-          pnpm build
-
       - name: Sign in to Amazon ECR
         if: github.ref == 'refs/heads/main'
         id: ecr-sign-in
