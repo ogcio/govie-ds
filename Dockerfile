@@ -18,6 +18,7 @@ COPY packages/ ./packages
 COPY tokens/ ./tokens
 
 ENV NEXT_EXPORT=true
+ENV NEXT_ENVIRONMENT=${DEPLOY_ENV}
 ENV NX_DAEMON=false
 
 RUN npm install -g corepack@latest

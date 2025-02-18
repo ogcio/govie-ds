@@ -12,7 +12,7 @@ export type DocumentSiteConfiguration = {
   signUpFormUrl: string;
 };
 
-type DocumentSiteEnvironment = 'development' | 'staging' | 'uat' | 'production';
+type DocumentSiteEnvironment = 'dev' | 'prod';
 
 type Configurations = Record<
   DocumentSiteEnvironment,
@@ -39,14 +39,8 @@ function getConfiguration(
   };
 
   const configurationOverrides: Configurations = {
-    development: {},
-    staging: {
-      buildingBlocksHomeUrl: 'https://sta.blocks.gov.ie/en/',
-    },
-    uat: {
-      buildingBlocksHomeUrl: 'https://uat.blocks.gov.ie/en/',
-    },
-    production: {
+    dev: {},
+    prod: {
       buildingBlocksHomeUrl: 'https://blocks.gov.ie/en/',
       feedbackFormUrl: 'https://www.forms.gov.ie/en/664ccbdb0700c50024c53899',
       signUpFormUrl: 'https://www.forms.gov.ie/en/664ccbf2b644d000246cfd78',
@@ -60,18 +54,12 @@ function getConfiguration(
 }
 
 function getDeployEnvironment(): DocumentSiteEnvironment {
-  switch (process.env.DEPLOY_ENV) {
-    case 'production': {
-      return 'production';
-    }
-    case 'staging': {
-      return 'staging';
-    }
-    case 'uat': {
-      return 'uat';
+  switch (process.env.NEXT_ENVIRONMENT) {
+    case 'prod': {
+      return 'prod';
     }
     default: {
-      return 'development';
+      return 'dev';
     }
   }
 }

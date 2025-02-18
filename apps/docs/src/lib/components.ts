@@ -29,7 +29,7 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const isDevelopmentEnvironment = process.env.DEPLOY_ENV === 'dev';
+const isDevelopmentEnvironment = process.env.NEXT_ENVIRONMENT === 'dev';
 
 const globalHtmlStorybookBaseUrl = isDevelopmentEnvironment
   ? 'https://ds.dev.services.gov.ie/storybook-html/'
