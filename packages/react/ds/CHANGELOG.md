@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.37.1](https://github.com/ogcio/govie-ds/compare/react-v0.37.0...react-v0.37.1) (2025-02-18)
+
+
+### Bug Fixes
+
+* Accordion styles ([#437](https://github.com/ogcio/govie-ds/issues/437)) ([d74d286](https://github.com/ogcio/govie-ds/commit/d74d28623a3d67be86c647ffbb8aabee817fe469))
+
 ## [0.37.0](https://github.com/ogcio/govie-ds/compare/react-v0.36.1...react-v0.37.0) (2025-02-11)
 
 

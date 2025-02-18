@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.30.0](https://github.com/ogcio/govie-ds/compare/html-v0.29.0...html-v0.30.0) (2025-02-18)
+
+
+### Features
+
+* adding "Drawer" macro ([#426](https://github.com/ogcio/govie-ds/issues/426)) ([d4c4663](https://github.com/ogcio/govie-ds/commit/d4c46635538cd7ed068a85480b8f78e61b605757))
+
+
+### Bug Fixes
+
+* Accordion styles ([#437](https://github.com/ogcio/govie-ds/issues/437)) ([d74d286](https://github.com/ogcio/govie-ds/commit/d74d28623a3d67be86c647ffbb8aabee817fe469))
+* dropdown init causing an error ([cba6b34](https://github.com/ogcio/govie-ds/commit/cba6b34955f346a845841220c57b04b1d04f4fda))
+* Updating accordion docs and macro fixes ([#441](https://github.com/ogcio/govie-ds/issues/441)) ([094f6c7](https://github.com/ogcio/govie-ds/commit/094f6c7499407858771d3b58ea142a94aaedd72e))
+
 ## [0.29.0](https://github.com/ogcio/govie-ds/compare/html-v0.28.1...html-v0.29.0) (2025-02-11)
 
 
