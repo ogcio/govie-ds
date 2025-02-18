@@ -767,7 +767,7 @@ input[type='file' i] {
 }
 
 .gi-card-title {
-  @apply gi-text-md gi-font-bold gi-mb-2 gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-w-full;
+  @apply gi-text-md gi-font-bold gi-mb-2 gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
 }
 
 .gi-card-subheading {
@@ -775,7 +775,7 @@ input[type='file' i] {
 }
 
 .gi-card-paragraph p {
-  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-w-full;
+  @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
   word-break: break-word;
 }
 
