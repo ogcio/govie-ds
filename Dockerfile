@@ -6,8 +6,6 @@ FROM base as builder
 
 ARG DEPLOY_ENV
 
-ENV DEPLOY_ENV=${DEPLOY_ENV}
-
 RUN apk add --no-cache libc6-compat zip
 
 WORKDIR /build
@@ -17,8 +15,8 @@ COPY apps/ ./apps
 COPY packages/ ./packages
 COPY tokens/ ./tokens
 
+ENV NEXT_PUBLIC_DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
-ENV NEXT_ENVIRONMENT=${DEPLOY_ENV}
 ENV NX_DAEMON=false
 
 RUN npm install -g corepack@latest
