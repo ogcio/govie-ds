@@ -741,13 +741,12 @@ input[type='file' i] {
 /* End Radio */
 
 /* Card */
-
 .gi-card {
   @apply gi-flex gi-items-start gi-w-full;
 }
 
 .gi-card-vertical {
-  @apply gi-flex-col gi-max-w-[300px] gi-min-w-[220px] gi-w-full;
+  @apply gi-flex-col gi-min-w-[220px] gi-max-w-fit;
 }
 
 .gi-card-horizontal {
@@ -777,12 +776,15 @@ input[type='file' i] {
 
 .gi-card-paragraph p {
   @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
-  /* Workaround solution */
   word-break: break-word;
 }
 
 .gi-card-image {
-  @apply gi-flex gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+  @apply gi-table gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+}
+
+.gi-card-image img {
+  @apply gi-w-full gi-h-auto;
 }
 
 .gi-card-icon {
@@ -825,7 +827,6 @@ input[type='file' i] {
 .gi-card-horizontal.gi-card-inset-full {
   @apply gi-p-4;
 }
-
 /* End of Card */
 
 /* Cookie Banner */

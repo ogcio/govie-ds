@@ -107,6 +107,7 @@ export const Default: Story = {
       config: {
         src: 'https://placeholderjs.com/400x300',
         alt: 'Card Title',
+        aspectRatio: '4 / 3',
       },
     },
     content:
@@ -275,6 +276,34 @@ export const WithIframeEmbed: Story = {
       type: 'button',
       children: 'Watch Later',
       variant: 'secondary',
+    },
+    inset: 'none',
+  },
+};
+
+export const MediaImageWithAspectRatio: Story = {
+  args: {
+    type: 'vertical',
+    title: 'Card Title',
+    subTitle: 'Subheading',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/600x400',
+        alt: '16 / 9 aspect ratio image',
+        aspectRatio: '16 / 9',
+      },
+    },
+    content: 'Card with 16 / 9 aspect ratio media',
+    action: {
+      type: 'button',
+      children: 'Button',
+      variant: 'secondary',
+    },
+    tag: {
+      text: 'Featured',
+      type: 'info',
     },
     inset: 'none',
   },
