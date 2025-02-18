@@ -15,7 +15,7 @@ COPY apps/ ./apps
 COPY packages/ ./packages
 COPY tokens/ ./tokens
 
-ENV NEXT_PUBLIC_DEPLOY_ENV=${DEPLOY_ENV}
+ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
 ENV NX_DAEMON=false
 
@@ -37,6 +37,8 @@ COPY --from=builder --chown=nginx /build/packages/html/ds/storybook-static /usr/
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+
+ENV DEPLOY_ENV=${DEPLOY_ENV}
 
 USER nginx
 
