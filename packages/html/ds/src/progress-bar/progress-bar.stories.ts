@@ -30,12 +30,6 @@ export const Default: Story = {
       type: { name: 'number', required: false },
       description: 'The final value of the progress bar.',
     },
-    size: {
-      control: 'radio',
-      options: ['sm', 'md', 'lg'],
-      type: { name: 'string', required: false },
-      description: 'The size of the progress bar.',
-    },
     isIndeterminate: {
       control: 'boolean',
       type: { name: 'boolean', required: false },
@@ -50,7 +44,7 @@ export const Default: Story = {
   args: {
     value: 50,
     max: 100,
-    size: 'sm',
+    label: 'Label',
   },
 };
 
@@ -58,7 +52,6 @@ export const WithLabelIndeterminate: Story = {
   args: {
     isIndeterminate: true,
     label: 'Loading...',
-    size: 'sm',
   },
 };
 

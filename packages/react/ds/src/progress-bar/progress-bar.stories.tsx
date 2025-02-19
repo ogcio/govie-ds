@@ -19,12 +19,6 @@ export const Default: Story = {
       type: { name: 'number' },
       description: 'The max value of the progress bar.',
     },
-    size: {
-      control: { type: 'radio' },
-      options: ['sm', 'md', 'lg'],
-      type: { name: 'string' },
-      description: 'The size of the progress bar.',
-    },
     isIndeterminate: {
       type: { name: 'boolean' },
       description: 'Set infinite progress for the progress bar',
@@ -36,7 +30,7 @@ export const Default: Story = {
   },
   args: {
     value: 50,
-    size: 'sm',
+    label: 'Label',
   },
 };
 
