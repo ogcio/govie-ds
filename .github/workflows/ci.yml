@@ -76,7 +76,6 @@ jobs:
   determine-affected:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    if: ${{ !contains(fromJSON('["main", "release-please"]'), github.ref) }}
     needs: build
     outputs:
       html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
