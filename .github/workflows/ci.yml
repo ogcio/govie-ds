@@ -156,6 +156,8 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_HTML }}
           storybookBuildDir: packages/html/ds/storybook-static
+          storybookBaseDir: packages/html/ds
+          storybookConfigDir: packages/html/ds/.storybook
           autoAcceptChanges: "main"
           exitOnceUploaded: true
           onlyChanged: true
@@ -195,6 +197,8 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
           storybookBuildDir: packages/react/ds/storybook-static
+          storybookBaseDir: packages/react/ds
+          storybookConfigDir: packages/react/ds/.storybook
           autoAcceptChanges: "main"
           exitOnceUploaded: true
           onlyChanged: true
