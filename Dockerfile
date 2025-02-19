@@ -14,6 +14,7 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
 COPY apps/ ./apps
 COPY packages/ ./packages
 COPY tokens/ ./tokens
+COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production
 
 ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
@@ -37,8 +38,6 @@ COPY --from=builder --chown=nginx /build/packages/html/ds/storybook-static /usr/
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
-
-ENV NODE_ENV=${DEPLOY_ENV}
 
 USER nginx
 

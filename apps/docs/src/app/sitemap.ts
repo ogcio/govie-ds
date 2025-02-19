@@ -4,10 +4,7 @@ import { getAll } from '../lib/documents';
 export const revalidate = 1;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NODE_ENV === 'production'
-      ? `https://ds.services.gov.ie/`
-      : `https://ds.dev.services.gov.ie/`;
+  const baseUrl = process.env.BASE_URL;
 
   const documents = getAll().map((document) => {
     return {

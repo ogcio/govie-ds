@@ -4,7 +4,7 @@ import { MetaDocument } from './types';
 import { allDocs } from 'contentlayer/generated';
 
 export function getAll() {
-  if (!config.showDrafts()) {
+  if (!config.showDrafts) {
     return allDocs.filter((document) => document.status !== 'draft');
   }
 
@@ -14,7 +14,7 @@ export function getAll() {
 export function getById({ id }: { id: string }) {
   const document = allDocs.find((document) => document.id === id);
 
-  if (!config.showDrafts() && document?.status === 'draft') {
+  if (!config.showDrafts && document?.status === 'draft') {
     return;
   }
 
@@ -24,7 +24,7 @@ export function getById({ id }: { id: string }) {
 export function getBySlug({ slug }: { slug: string[] }) {
   const document = allDocs.find((document) => document.slug === slug.join('/'));
 
-  if (!config.showDrafts() && document?.status === 'draft') {
+  if (!config.showDrafts && document?.status === 'draft') {
     return;
   }
 
