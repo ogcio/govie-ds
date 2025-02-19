@@ -1,22 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Select deployment environment"
-        required: true
-        type: choice
-        options:
-          - prod
-          - dev
-        default: dev
+on: push
 
 permissions:
   contents: write
@@ -36,9 +20,9 @@ jobs:
       id-token: write
       contents: read
 
-    environment: ${{ github.event.inputs.environment || 'dev' }}
+    environment: "dev"
     env:
-      environment: ${{ github.event.inputs.environment || 'dev' }}
+      environment: "dev"
 
     steps:
       - name: Checkout code
@@ -92,7 +76,7 @@ jobs:
   determine-affected:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
+    if: contains(fromJSON('["main", "release-please"]'), github.ref) == false
     needs: build
     outputs:
       html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
@@ -175,6 +159,7 @@ jobs:
           storybookBuildDir: packages/html/ds/storybook-static
           autoAcceptChanges: "main"
           exitOnceUploaded: true
+          onlyChanged: true
 
   chromatic-react:
     runs-on: ubuntu-latest
@@ -213,3 +198,4 @@ jobs:
           storybookBuildDir: packages/react/ds/storybook-static
           autoAcceptChanges: "main"
           exitOnceUploaded: true
+          onlyChanged: true
