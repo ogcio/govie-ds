@@ -20,7 +20,7 @@ const Connector = ({
       data-next={isNextStep}
       data-completed={isCompleted}
       data-current={isCurrentStep}
-      className={cn('gi-progress-stepper-step-connector')}
+      className="gi-progress-stepper-step-connector"
       aria-hidden="true"
     >
       <span />
@@ -51,9 +51,6 @@ const Step = ({
   indicator = 'hashtag',
 }: StepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
-  const isHorizontal = orientation === 'horizontal';
-  const isVertical = !isHorizontal;
-
   const { current, completed, next } = getIndicatorClasses(
     indicator || ProgressStepperIndicator.hashtag,
   );
@@ -62,10 +59,9 @@ const Step = ({
     if (isCompleted) {
       return completed;
     } else if (isCurrentStep) {
-      return <div>{current}</div>;
-    } else {
-      return <div>{next}</div>;
+      return current;
     }
+    return next;
   };
 
   return (
@@ -88,7 +84,7 @@ const Step = ({
           {children}
         </div>
       </div>
-      {isVertical && !isLastStep ? (
+      {isLastStep ? null : (
         <Connector
           isCurrentStep={isCurrentStep}
           isNextStep={isNextStep}
@@ -96,16 +92,7 @@ const Step = ({
           orientation={orientation}
           stepNumber={stepNumber}
         />
-      ) : null}
-      {isHorizontal && !isLastStep ? (
-        <Connector
-          isCurrentStep={isCurrentStep}
-          isNextStep={isNextStep}
-          isCompleted={isCompleted}
-          orientation={orientation}
-          stepNumber={stepNumber}
-        />
-      ) : null}
+      )}
     </div>
   );
 };
