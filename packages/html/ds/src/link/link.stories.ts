@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonSize, ButtonVariant } from '../button/button-schema';
+import {
+  ButtonAppearance,
+  ButtonSize,
+  ButtonVariant,
+} from '../button/button-schema';
 import { renderComponent } from '../storybook/storybook';
 import html from './link.html?raw';
 import { LinkProps, LinkSize } from './link.schema';
@@ -93,6 +97,7 @@ export const styledAsButton: Story = {
     asButton: {
       variant: ButtonVariant.Primary,
       size: ButtonSize.Medium,
+      appearance: ButtonAppearance.Default,
     },
     label: 'Link',
   },

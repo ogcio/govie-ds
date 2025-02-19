@@ -61,7 +61,7 @@
     {{ getExternalAttribute(props.external) | trim }}
     data-testid="{{ props.dataTestid }}"
     class="
-      gi-link
+      {% if not props.asButton %} gi-link {% endif %}
       {{ getColorClass(props.noColor) | trim }}
       {{ getUnderlineClass(props.noUnderline) | trim }}
       {{ getVisitedClass(props.noVisited) | trim }}
