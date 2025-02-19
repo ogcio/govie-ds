@@ -92,7 +92,7 @@ jobs:
   determine-affected:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
+    if: contains(fromJSON('["main", "release-please", "pull"]'), github.ref) == false
     needs: build
     outputs:
       html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
@@ -175,6 +175,7 @@ jobs:
           storybookBuildDir: packages/html/ds/storybook-static
           autoAcceptChanges: "main"
           exitOnceUploaded: true
+          onlyChanged: true
 
   chromatic-react:
     runs-on: ubuntu-latest
@@ -213,3 +214,4 @@ jobs:
           storybookBuildDir: packages/react/ds/storybook-static
           autoAcceptChanges: "main"
           exitOnceUploaded: true
+          onlyChanged: true
