@@ -1,4 +1,5 @@
 import { sortBy } from 'lodash';
+import { config } from './config';
 import { getAll } from './documents';
 
 export type ComponentStatus =
@@ -29,8 +30,8 @@ export type ComponentDetail = {
   statuses: ComponentPlatformStatus[];
 };
 
-const globalHtmlStorybookBaseUrl = '/storybook-html/';
-const reactStorybookBaseUrl = '/storybook-react/';
+const globalHtmlStorybookBaseUrl = config.baseUrl + 'storybook-html/';
+const reactStorybookBaseUrl = config.baseUrl + 'storybook-react/';
 
 export function getComponents(): ComponentDetail[] {
   const componentsDocument = getAll().filter((document) => document.libraries);
