@@ -8,7 +8,7 @@ export type ComboBoxOptions = BaseComponentOptions;
 
 type dropdownStateType = {
   elements: {
-    dropdownToggle: Element;
+    dropdownToggle?: Element;
     dropdownContainer: HTMLElement;
     closeIcon: HTMLSpanElement;
     checkboxes: NodeListOf<HTMLInputElement>;
@@ -109,7 +109,7 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
         });
       }
 
-      dropdownToggle.addEventListener('click', (event) => {
+      dropdownToggle?.addEventListener('click', (event) => {
         event.preventDefault();
         state.isOpen = !state.isOpen;
         if (state.isOpen) {

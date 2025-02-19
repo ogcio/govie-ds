@@ -74,7 +74,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           <ErrorText id={`${id}-error`} text={error.text} size={error.size} />
         )}
 
-        <div className="gi-text-input-container-inner">
+        <div className={cn(className, 'gi-text-input-container-inner')}>
           {prefix && <div className="gi-text-input-prefix">{prefix}</div>}
           <input
             placeholder={placeholder}

@@ -1,57 +1,5 @@
 {
   "name": "@govie-ds/docs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "targets": {
-    "docker": {
-      "executor": "@nx-tools/nx-container:build",
-      "defaultConfiguration": "dev",
-      "options": {
-        "engine": "docker",
-        "context": ".",
-        "file": "apps/docs/Dockerfile"
-      },
-      "configurations": {
-        "dev": {
-          "push": true,
-          "build-args": [
-            "DEPLOY_ENV=development"
-          ],
-          "tags": [
-            "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:dev",
-            "730335224023.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
-          ]
-        },
-        "staging": {
-          "push": true,
-          "build-args": [
-            "DEPLOY_ENV=staging"
-          ],
-          "tags": [
-            "975050122570.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:sta",
-            "975050122570.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
-          ]
-        },
-        "uat": {
-          "push": true,
-          "build-args": [
-            "DEPLOY_ENV=uat"
-          ],
-          "tags": [
-            "339713032391.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:uat",
-            "339713032391.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
-          ]
-        },
-        "prod": {
-          "push": true,
-          "build-args": [
-            "DEPLOY_ENV=production"
-          ],
-          "tags": [
-            "891377307993.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:prd",
-            "891377307993.dkr.ecr.eu-west-1.amazonaws.com/life-events-design-system:latest"
-          ]
-        }
-      }
-    }
-  }
+  "targets": {}
 }

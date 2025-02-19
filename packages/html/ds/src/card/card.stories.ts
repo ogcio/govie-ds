@@ -285,3 +285,28 @@ export const WithIframeEmbed: Story = {
     inset: InsetType.None,
   },
 };
+
+export const MediaImageWithAspectRatio: Story = {
+  args: {
+    type: CardType.Vertical,
+    title: 'Card Title',
+    subTitle: 'Subheading',
+    href: '#',
+    media: {
+      type: 'image',
+      config: {
+        src: 'https://placeholderjs.com/600x400',
+        alt: '16 / 9 aspect ratio image',
+        aspectRatio: '16 / 9',
+      },
+    },
+    content: 'Card with 16 / 9 aspect ratio media',
+    action: {
+      type: 'button',
+      content: 'Button',
+      variant: ButtonVariant.Secondary,
+    },
+    tag: { text: 'Featured', type: 'info' },
+    inset: InsetType.None,
+  },
+};

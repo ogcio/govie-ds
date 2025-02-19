@@ -2,11 +2,8 @@ import { Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
-import getConfig from 'next/config';
 import { Lato } from 'next/font/google';
 import './globals.css';
-
-const { publicRuntimeConfig } = getConfig();
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -21,9 +18,6 @@ export const metadata: Metadata = {
   description: 'Design System',
 };
 
-const getLink = (path: string) =>
-  `${publicRuntimeConfig?.basePath || ''}${path}`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,42 +27,42 @@ export default function RootLayout({
     fullWidth: true,
     title: 'Design System',
     logo: {
-      href: getLink('/'),
+      href: '/',
     },
     items: [
       {
         label: 'Get Started',
         itemType: 'link',
         details: {
-          href: getLink('/get-started'),
+          href: '/get-started/',
         },
       },
       {
         label: 'Foundations',
         itemType: 'link',
         details: {
-          href: getLink('/foundations'),
+          href: '/foundations/',
         },
       },
       {
         label: 'Components',
         itemType: 'link',
         details: {
-          href: getLink('/components'),
+          href: '/components/',
         },
       },
       {
         label: 'Patterns',
         itemType: 'link',
         details: {
-          href: getLink('/patterns'),
+          href: '/patterns/',
         },
       },
       {
         label: 'Resources',
         itemType: 'link',
         details: {
-          href: getLink('/resources'),
+          href: '/resources/',
         },
       },
     ],
@@ -77,27 +71,27 @@ export default function RootLayout({
   const footerLinks = [
     {
       label: 'Help',
-      href: getLink('/help'),
+      href: '/help/',
     },
     {
       label: 'Privacy Policy',
-      href: getLink('/privacy-policy'),
+      href: '/privacy-policy/',
     },
     {
       label: 'Cookies Policy',
-      href: getLink('/cookies-policy'),
+      href: '/cookies-policy/',
     },
     {
       label: 'Accessibility statement',
-      href: getLink('/accessibility-statement'),
+      href: '/accessibility-statement/',
     },
     {
       label: 'Contact',
-      href: getLink('/contact'),
+      href: '/contact/',
     },
     {
       label: 'Government digital service',
-      href: getLink('/government-digital-service'),
+      href: '/government-digital-service/',
     },
   ];
 

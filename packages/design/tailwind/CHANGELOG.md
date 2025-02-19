@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.31.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.0...tailwind-v0.31.1) (2025-02-18)
+
+
+### Bug Fixes
+
+* Accordion styles ([#437](https://github.com/ogcio/govie-ds/issues/437)) ([d74d286](https://github.com/ogcio/govie-ds/commit/d74d28623a3d67be86c647ffbb8aabee817fe469))
+* update container max width ([#439](https://github.com/ogcio/govie-ds/issues/439)) ([45db245](https://github.com/ogcio/govie-ds/commit/45db245a8e58d6634d07fb680b36bc8da5c5dd43))
+
 ## [0.31.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.30.1...tailwind-v0.31.0) (2025-02-11)
 
 

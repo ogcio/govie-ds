@@ -1,16 +1,10 @@
 import type { MetadataRoute } from 'next';
-import getConfig from 'next/config';
 import { getAll } from '../lib/documents';
 
 export const revalidate = 1;
 
-const { publicRuntimeConfig } = getConfig();
-const isGitHubPages = Boolean(process.env.GITHUB_PAGES);
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = isGitHubPages
-    ? `https://ogcio.github.io/govie-ds/${publicRuntimeConfig.prefix}/`
-    : `https://ds.blocks.gov.ie/`;
+  const baseUrl = process.env.BASE_URL;
 
   const documents = getAll().map((document) => {
     return {
