@@ -29,7 +29,7 @@ export const Default: Story = {
       'Personal Information',
       'Eligibility Check',
       'Documents Submission',
-      'Review Your Application',
+      'Review',
       'Complete & Submit',
     ],
   },

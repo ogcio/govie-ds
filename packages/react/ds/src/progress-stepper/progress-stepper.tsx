@@ -1,4 +1,3 @@
-import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import {
   ProgressStepperIndicator,
@@ -79,6 +78,7 @@ const Step = ({
         <div className="gi-progress-stepper-step">{getProgressIconStep()}</div>
         <div
           className="gi-progress-stepper-step-label"
+          data-orientation={orientation}
           id={`step-label-${stepNumber}`}
         >
           {children}

@@ -1303,7 +1303,7 @@ input[type='file' i] {
 /* Begin Progress Stepper */
 
 .gi-progress-stepper {
-  @apply gi-w-full gi-flex gi-items-start gi-max-w-screen-md gi-w-full gi-items-center;
+  @apply gi-w-full gi-flex gi-items-start gi-max-w-screen-md gi-w-full gi-items-start;
 }
 
 .gi-progress-stepper[data-orientation='vertical'] {
@@ -1402,7 +1402,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step-container[data-orientation='vertical'] {
-  @apply gi-items-center gi-h-10 gi-gap-2;
+  @apply gi-h-9 gi-gap-2 gi-mt-1;
 }
 
 .gi-progress-stepper-step-container {
@@ -1411,6 +1411,10 @@ input[type='file' i] {
 
 .gi-progress-stepper-step-label {
   @apply gi-text-left gi-overflow-hidden gi-text-sm gi-text-ellipsis gi-whitespace-normal gi-break-words gi-line-clamp-2 gi-max-w-[108px];
+}
+
+.gi-progress-stepper-step-label[data-orientation='vertical'] {
+  @apply gi-mt-1;
 }
 
 /*End Progress Stepper */
