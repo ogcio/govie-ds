@@ -11,11 +11,6 @@ export const progressBarSchema = zod.object({
       description: 'The maximum value of the progress bar.',
     })
     .optional(),
-  size: zod
-    .enum(['sm', 'md', 'lg'], {
-      description: 'Specifies the size of the progress bar.',
-    })
-    .optional(),
   isIndeterminate: zod
     .boolean({
       description: 'Determines if the progress bar is in indeterminate mode.',

@@ -1447,15 +1447,15 @@ input[type='file' i] {
 }
 
 .gi-progress-bar-container > span {
-  @apply gi-mt-2 gi-text-sm gi-text-gray-700;
+  @apply gi-mt-2 gi-text-sm gi-text-gray-950;
 }
 
 .gi-progress-bar {
-  @apply gi-w-full gi-bg-gray-200 gi-overflow-hidden;
+  @apply gi-w-full gi-bg-gray-400 gi-overflow-hidden gi-rounded-sm gi-h-1;
 }
 
 .gi-progress-bar > div {
-  @apply gi-transition-all;
+  @apply gi-transition-all gi-bg-gray-950 gi-h-1 gi-rounded-sm;
 }
 
 .gi-progress-bar-indeterminate {
