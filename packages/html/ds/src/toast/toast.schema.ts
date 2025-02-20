@@ -5,10 +5,10 @@ import { getEnumValues } from '../helpers';
 import { linkSchema } from '../link/link.schema';
 
 export const ToastVariant = {
-  INFO: 'info',
-  DANGER: 'danger',
-  SUCCESS: 'success',
-  WARNING: 'warning',
+  Info: 'info',
+  Danger: 'danger',
+  Success: 'success',
+  Warning: 'warning',
 } as const;
 
 export const toastSchema = zod.object({

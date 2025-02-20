@@ -45,7 +45,7 @@ export const Default: Story = {
     },
   },
   args: {
-    size: ErrorSize.md,
+    size: ErrorSize.Medium,
     content: 'This is error text',
   },
 };

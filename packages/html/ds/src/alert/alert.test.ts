@@ -9,10 +9,10 @@ const standardProps = {
 };
 
 const variants: (typeof AlertVariant)[keyof typeof AlertVariant][] = [
-  AlertVariant.INFO,
-  AlertVariant.SUCCESS,
-  AlertVariant.WARNING,
-  AlertVariant.DANGER,
+  AlertVariant.Info,
+  AlertVariant.Success,
+  AlertVariant.Warning,
+  AlertVariant.Danger,
 ];
 
 describe('alert', () => {

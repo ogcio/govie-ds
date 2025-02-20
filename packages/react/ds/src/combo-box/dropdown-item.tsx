@@ -81,7 +81,7 @@ export const DropdownItem = ({
           <Paragraph size="md">{children}</Paragraph>
           {selectedCheckboxes !== 0 && (
             <Tag
-              type={TagTypeEnum.COUNTER}
+              type={TagTypeEnum.Counter}
               text={selectedCheckboxes.toString()}
             />
           )}
@@ -136,7 +136,7 @@ export const DropdownItem = ({
                   key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                   onChange={handleCheckbox}
                   id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
-                  size={CheckboxSizeEnum.SMALL}
+                  size={CheckboxSizeEnum.Small}
                   label={checkbox.label}
                   name={`${index}_${checkbox.label}_${dropdownCustomClass}`}
                   value={checkbox.value}

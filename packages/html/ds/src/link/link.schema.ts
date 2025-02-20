@@ -3,8 +3,8 @@ import { buttonSchema } from '../button/button-schema';
 import { getEnumValues } from '../helpers';
 
 export const LinkSize = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
+  Small: 'sm',
+  Medium: 'md',
 } as const;
 
 const linkTypeSchema = zod.union([zod.literal('a'), zod.literal('button')]);

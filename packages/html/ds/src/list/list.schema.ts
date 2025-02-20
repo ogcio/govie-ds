@@ -3,9 +3,9 @@ import { getEnumValues } from '../helpers';
 import { linkSchema } from '../link/link.schema';
 
 export const TypeEnum = {
-  NONE: 'none',
-  BULLET: 'bullet',
-  NUMBER: 'number',
+  None: 'none',
+  Bullet: 'bullet',
+  Number: 'number',
 } as const;
 
 export const linkPropsSchema = zod.object({

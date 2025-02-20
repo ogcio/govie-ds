@@ -8,7 +8,7 @@ const standardProps = {
   title: {
     value: 'Where do you live?',
     asHeading: {
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H2,
     },
   },
@@ -124,7 +124,7 @@ describe('radios', () => {
     const classes = 'gi-radio-small';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: RadioSizeEnum.SMALL,
+      size: RadioSizeEnum.Small,
     };
 
     const screen = renderRadios(propsWithSmallRadios);
@@ -140,7 +140,7 @@ describe('radios', () => {
     const classes = 'gi-radio-large';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: RadioSizeEnum.LARGE,
+      size: RadioSizeEnum.Large,
     };
 
     const screen = renderRadios(propsWithSmallRadios);

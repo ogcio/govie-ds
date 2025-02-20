@@ -2,9 +2,9 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const HintSize = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
 } as const;
 
 export const hintTextSchema = zod.object({

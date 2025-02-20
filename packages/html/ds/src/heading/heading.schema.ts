@@ -2,12 +2,12 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const Size = {
-  SMALLEST: '2xs',
-  EXTRA_SMALL: 'xs',
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
-  EXTRA_LARGE: 'xl',
+  Smallest: '2xs',
+  ExtraSmall: 'xs',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+  ExtraLarge: 'xl',
 } as const;
 
 export const Tag = {

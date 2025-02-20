@@ -7,14 +7,14 @@ import { linkSchema } from '../link/link.schema';
 import { tagSchema } from '../tag/tag.schema';
 
 export const CardType = {
-  VERTICAL: 'vertical',
-  HORIZONTAL: 'horizontal',
+  Vertical: 'vertical',
+  Horizontal: 'horizontal',
 } as const;
 
 export const InsetType = {
-  NONE: 'none',
-  BODY: 'body',
-  FULL: 'full',
+  None: 'none',
+  Body: 'body',
+  Full: 'full',
 } as const;
 
 const imagePropsSchema = zod.object({

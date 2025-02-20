@@ -124,7 +124,7 @@ export const Default: Story = {
     title: {
       value: 'Organisation',
       asHeading: {
-        size: Size.LARGE,
+        size: Size.Large,
         as: Tag.H1,
       },
     },
@@ -152,7 +152,7 @@ export const withHints: Story = {
     title: {
       value: 'What is your nationality?',
       asHeading: {
-        size: Size.MEDIUM,
+        size: Size.Medium,
         as: Tag.H1,
       },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
@@ -180,7 +180,7 @@ export const withErrorMessage: Story = {
     title: {
       value: 'What is your nationality?',
       asHeading: {
-        size: Size.MEDIUM,
+        size: Size.Medium,
         as: Tag.H3,
       },
       hint: 'If you have dual nationality, select all options that are relevant to you.',
@@ -210,7 +210,7 @@ export const withNoneOption: Story = {
     title: {
       value: 'Will you be travelling to any of these countries?',
       asHeading: {
-        size: Size.MEDIUM,
+        size: Size.Medium,
         as: Tag.H1,
       },
       hint: 'Select all countries that apply',

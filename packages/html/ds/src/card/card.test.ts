@@ -12,7 +12,7 @@ describe('govieCard', () => {
 
   it('should render a card with title and content', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card Title',
       content: 'This is the card content.',
     });
@@ -28,7 +28,7 @@ describe('govieCard', () => {
 
   it('should render a horizontal card layout', () => {
     const screen = renderCard({
-      type: CardType.HORIZONTAL,
+      type: CardType.Horizontal,
       title: 'Horizontal Card',
       content: 'This is the content of a horizontal card.',
     });
@@ -39,7 +39,7 @@ describe('govieCard', () => {
 
   it('should render a vertical card layout', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Vertical Card',
       content: 'This is the content of a vertical card.',
     });
@@ -50,7 +50,7 @@ describe('govieCard', () => {
 
   it('should render an image when media.type is "image"', () => {
     const { container } = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Image',
       media: {
         type: 'image',
@@ -67,7 +67,7 @@ describe('govieCard', () => {
 
   it('should render an icon when media.type is "icon"', () => {
     const screen = renderCard({
-      type: CardType.HORIZONTAL,
+      type: CardType.Horizontal,
       title: 'Card with Icon',
       media: {
         type: 'icon',
@@ -87,7 +87,7 @@ describe('govieCard', () => {
 
   it('should render an iframe when media.type is "iframe"', () => {
     const { container } = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Iframe',
       media: {
         type: 'iframe',
@@ -106,7 +106,7 @@ describe('govieCard', () => {
 
   it('should render an image with aspect ratio when provided', () => {
     const { container } = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Image',
       media: {
         type: 'image',
@@ -126,7 +126,7 @@ describe('govieCard', () => {
 
   it('should render actions if actions prop is provided', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Actions',
       content: 'This is the card content with actions.',
       action: { type: 'link', href: '#', label: 'Action 1' },
@@ -140,7 +140,7 @@ describe('govieCard', () => {
 
   it('should render a link if "href" prop is provided for title', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Linked Title',
       href: '#',
       content: 'Content for a card with a link.',
@@ -153,7 +153,7 @@ describe('govieCard', () => {
 
   it('should render a subtitle if "subTitle" prop is provided', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Subtitle',
       subTitle: 'This is the subtitle',
       content: 'Content for a card with a subtitle.',
@@ -166,7 +166,7 @@ describe('govieCard', () => {
 
   it('should render a tag if "tag" prop is provided', () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Card with Tag',
       content: 'Content for a card with a tag.',
       tag: {
@@ -181,7 +181,7 @@ describe('govieCard', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderCard({
-      type: CardType.VERTICAL,
+      type: CardType.Vertical,
       title: 'Accessible Card',
       content: 'Accessible content for the card.',
     });

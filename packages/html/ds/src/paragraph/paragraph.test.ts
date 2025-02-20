@@ -16,9 +16,9 @@ describe('govieParagraph', () => {
 
   it('should render a paragraph with the correct content when props.as is "p"', () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: 'This is a paragraph',
-      size: SizeEnum.MEDIUM,
+      size: SizeEnum.Medium,
     });
     const pElement = screen.getByText('This is a paragraph');
     expect(pElement).toBeTruthy();
@@ -27,9 +27,9 @@ describe('govieParagraph', () => {
 
   it('should render a span with the correct content when props.as is "span"', () => {
     const screen = renderParagraph({
-      as: AsEnum.SPAN,
+      as: AsEnum.Span,
       content: 'This is a span',
-      size: SizeEnum.LARGE,
+      size: SizeEnum.Large,
     });
     const sElement = screen.getByText('This is a span');
     expect(sElement).toBeTruthy();
@@ -38,9 +38,9 @@ describe('govieParagraph', () => {
 
   it('should have correct text size classes for "lg"', () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: 'Large text',
-      size: SizeEnum.LARGE,
+      size: SizeEnum.Large,
     });
     const pElement = screen.getByText('Large text');
 
@@ -49,9 +49,9 @@ describe('govieParagraph', () => {
 
   it('should have correct text size classes for "md"', () => {
     const screen = renderParagraph({
-      as: AsEnum.SPAN,
+      as: AsEnum.Span,
       content: 'Medium text',
-      size: SizeEnum.MEDIUM,
+      size: SizeEnum.Medium,
     });
     const spanElement = screen.getByText('Medium text');
 
@@ -60,9 +60,9 @@ describe('govieParagraph', () => {
 
   it('should have correct text size classes for "sm"', () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: 'Small text',
-      size: SizeEnum.SMALL,
+      size: SizeEnum.Small,
     });
     const pElement = screen.getByText('Small text');
 
@@ -71,9 +71,9 @@ describe('govieParagraph', () => {
 
   it('should have aligned end', () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: 'Small text',
-      align: AlignEnum.END,
+      align: AlignEnum.End,
     });
     const pElement = screen.getByText('Small text');
     expect(pElement.classList.contains('gi-text-end')).toBe(true);
@@ -81,9 +81,9 @@ describe('govieParagraph', () => {
 
   it('should safely render HTML content', () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: '<a href="#">Anchor tag</a>',
-      size: SizeEnum.SMALL,
+      size: SizeEnum.Small,
     });
 
     const pElement = screen.getByText('Anchor tag');
@@ -93,9 +93,9 @@ describe('govieParagraph', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderParagraph({
-      as: AsEnum.PARAGRAPH,
+      as: AsEnum.Paragraph,
       content: 'Accessible paragraph',
-      size: SizeEnum.MEDIUM,
+      size: SizeEnum.Medium,
     });
 
     await screen.axe();

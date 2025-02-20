@@ -5,9 +5,9 @@ import { getEnumValues } from '../helpers';
 import { textInputSchema } from '../text-input/text-input.schema';
 
 export const RadioSizeEnum = {
-  LARGE: 'lg',
-  MEDIUM: 'md',
-  SMALL: 'sm',
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
 } as const;
 
 const validAriaProps = [

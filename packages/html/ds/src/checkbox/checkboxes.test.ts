@@ -22,7 +22,7 @@ const standardProps = {
   title: {
     value: 'Title',
   },
-  size: CheckboxSizeEnum.MEDIUM,
+  size: CheckboxSizeEnum.Medium,
 };
 
 describe('checkboxes', () => {
@@ -112,7 +112,7 @@ describe('checkboxes', () => {
     const classes = 'gi-w-6 gi-h-6';
     const propsWithSmallCheckboxes = {
       ...standardProps,
-      size: CheckboxSizeEnum.SMALL,
+      size: CheckboxSizeEnum.Small,
     };
 
     const screen = renderCheckboxes(propsWithSmallCheckboxes);
@@ -128,7 +128,7 @@ describe('checkboxes', () => {
     const classes = 'gi-w-11 gi-h-11';
     const propsWithBigCheckboxes = {
       ...standardProps,
-      size: CheckboxSizeEnum.LARGE,
+      size: CheckboxSizeEnum.Large,
     };
 
     const screen = renderCheckboxes(propsWithBigCheckboxes);
@@ -160,7 +160,7 @@ describe('checkboxes', () => {
       title: {
         value: 'Organisation',
         asHeading: {
-          size: Size.MEDIUM,
+          size: Size.Medium,
           as: Tag.H1,
         },
         hint: 'Title hint',
@@ -171,7 +171,7 @@ describe('checkboxes', () => {
         hint: 'Hint for checkbox none',
         value: 'checkbox-none',
       },
-      size: CheckboxSizeEnum.LARGE,
+      size: CheckboxSizeEnum.Large,
     });
 
     await screen.axe();

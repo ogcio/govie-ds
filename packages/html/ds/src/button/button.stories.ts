@@ -58,10 +58,10 @@ export const Default: Story = {
   },
   args: {
     content: 'Button',
-    variant: ButtonVariant.PRIMARY,
-    appearance: ButtonAppearance.DEFAULT,
-    size: ButtonSize.MEDIUM,
-    type: ButtonType.BUTTON,
+    variant: ButtonVariant.Primary,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    type: ButtonType.Button,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -144,18 +144,18 @@ export const AllVariants: Story = {
 export const WithLeftIcon: Story = {
   args: {
     content: `<span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span> Button`,
-    appearance: ButtonAppearance.DEFAULT,
-    size: ButtonSize.MEDIUM,
-    type: ButtonType.BUTTON,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    type: ButtonType.Button,
   },
 };
 
 export const WithIconRight: Story = {
   args: {
     content: `Button <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span>`,
-    appearance: ButtonAppearance.DEFAULT,
-    size: ButtonSize.MEDIUM,
-    type: ButtonType.BUTTON,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    type: ButtonType.Button,
   },
 };
 
@@ -166,18 +166,18 @@ export const Disabled: Story = {
     aria: {
       'aria-disabled': 'true',
     },
-    appearance: ButtonAppearance.DEFAULT,
-    size: ButtonSize.MEDIUM,
-    type: ButtonType.BUTTON,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    type: ButtonType.Button,
   },
 };
 
 export const ButtonWithSpinner: Story = {
   args: {
     disabled: true,
-    appearance: ButtonAppearance.DEFAULT,
-    size: ButtonSize.MEDIUM,
-    type: ButtonType.BUTTON,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    type: ButtonType.Button,
     content: `Button <svg
     class="gi-w-6 gi-h-6"
     viewBox="0 0 24 24"

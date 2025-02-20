@@ -2,10 +2,10 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const AlertVariant = {
-  INFO: 'info',
-  DANGER: 'danger',
-  SUCCESS: 'success',
-  WARNING: 'warning',
+  Info: 'info',
+  Danger: 'danger',
+  Success: 'success',
+  Warning: 'warning',
 } as const;
 
 export const alertSchema = zod.object({

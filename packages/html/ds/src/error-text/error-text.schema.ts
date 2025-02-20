@@ -2,9 +2,9 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const ErrorSize = {
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
 } as const;
 
 export const errorTextSchema = zod.object({

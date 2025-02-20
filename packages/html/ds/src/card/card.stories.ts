@@ -106,10 +106,10 @@ export const Default: Story = {
     },
   },
   args: {
-    type: CardType.HORIZONTAL,
+    type: CardType.Horizontal,
     title: 'Card Title',
     subTitle: 'Subheading',
-    inset: InsetType.NONE,
+    inset: InsetType.None,
     href: '#',
     media: {
       type: 'image',
@@ -124,21 +124,21 @@ export const Default: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
   },
 };
 
 export const VerticalWithoutImage: Story = {
   args: {
-    type: CardType.VERTICAL,
+    type: CardType.Vertical,
     title: 'Vertical Card Without Image',
     subTitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'Learn More',
     },
@@ -147,7 +147,7 @@ export const VerticalWithoutImage: Story = {
 
 export const VerticalWithLink: Story = {
   args: {
-    type: CardType.VERTICAL,
+    type: CardType.Vertical,
     title: 'Vertical Card',
     href: '#',
     media: {
@@ -163,7 +163,7 @@ export const VerticalWithLink: Story = {
     tag: { text: 'Featured', type: 'info' },
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'View More',
     },
@@ -172,7 +172,7 @@ export const VerticalWithLink: Story = {
 
 export const VerticalWithButton: Story = {
   args: {
-    type: CardType.VERTICAL,
+    type: CardType.Vertical,
     title: 'Vertical Card',
     href: '#',
     media: {
@@ -189,14 +189,14 @@ export const VerticalWithButton: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
   },
 };
 
 export const Horizontal: Story = {
   args: {
-    type: CardType.HORIZONTAL,
+    type: CardType.Horizontal,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
     href: '#',
@@ -212,21 +212,21 @@ export const Horizontal: Story = {
     action: {
       type: 'button',
       content: 'Click Me',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
   },
 };
 
 export const HorizontalWithoutImage: Story = {
   args: {
-    type: CardType.HORIZONTAL,
+    type: CardType.Horizontal,
     title: 'Horizontal Card Without Image',
     subTitle: 'Subtitle Here',
     content:
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'Learn More',
     },
@@ -235,7 +235,7 @@ export const HorizontalWithoutImage: Story = {
 
 export const HorizontalWithIcon: Story = {
   args: {
-    type: CardType.HORIZONTAL,
+    type: CardType.Horizontal,
     media: {
       type: 'icon',
       config: {
@@ -251,14 +251,14 @@ export const HorizontalWithIcon: Story = {
     action: {
       type: 'button',
       content: 'Download',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
   },
 };
 
 export const WithIframeEmbed: Story = {
   args: {
-    type: CardType.HORIZONTAL,
+    type: CardType.Horizontal,
     title: 'Featured Video',
     href: '#',
     media: {
@@ -280,15 +280,15 @@ export const WithIframeEmbed: Story = {
     action: {
       type: 'button',
       content: 'Watch Later',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
-    inset: InsetType.NONE,
+    inset: InsetType.None,
   },
 };
 
 export const MediaImageWithAspectRatio: Story = {
   args: {
-    type: CardType.VERTICAL,
+    type: CardType.Vertical,
     title: 'Card Title',
     subTitle: 'Subheading',
     href: '#',
@@ -304,9 +304,9 @@ export const MediaImageWithAspectRatio: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.SECONDARY,
+      variant: ButtonVariant.Secondary,
     },
     tag: { text: 'Featured', type: 'info' },
-    inset: InsetType.NONE,
+    inset: InsetType.None,
   },
 };

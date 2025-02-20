@@ -2,8 +2,8 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const LevelEnum = {
-  ALPHA: 'alpha',
-  BETA: 'beta',
+  Alpha: 'alpha',
+  Beta: 'beta',
 } as const;
 
 export const phaseBannerSchema = zod.object({

@@ -45,7 +45,7 @@ export const Default: Story = {
     },
   },
   args: {
-    size: HintSize.MEDIUM,
+    size: HintSize.Medium,
     content: 'This is hint text',
   },
 };

@@ -14,12 +14,12 @@ describe('heading', () => {
   // "size" variant
   testVariantsAxe(
     [
-      Size.MEDIUM,
-      Size.EXTRA_LARGE,
-      Size.EXTRA_SMALL,
-      Size.LARGE,
-      Size.SMALL,
-      Size.SMALLEST,
+      Size.Medium,
+      Size.ExtraLarge,
+      Size.ExtraSmall,
+      Size.Large,
+      Size.Small,
+      Size.Smallest,
     ],
     (variant) =>
       renderHeading({ as: Tag.H1, text: 'Axe tests', size: variant }),
@@ -33,7 +33,7 @@ describe('heading', () => {
   it('should render heading title', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H1,
     });
     expect(screen.getByText('Heading Text')).toBeTruthy();
@@ -42,7 +42,7 @@ describe('heading', () => {
   it('should render small heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.SMALL,
+      size: Size.Small,
       as: Tag.H1,
     });
 
@@ -57,7 +57,7 @@ describe('heading', () => {
   it('should render medium heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H1,
     });
 
@@ -72,7 +72,7 @@ describe('heading', () => {
   it('should render large heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.LARGE,
+      size: Size.Large,
       as: Tag.H1,
     });
 
@@ -87,7 +87,7 @@ describe('heading', () => {
   it('should render extra large heading', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.EXTRA_LARGE,
+      size: Size.ExtraLarge,
       as: Tag.H1,
     });
 
@@ -102,7 +102,7 @@ describe('heading', () => {
   it('should contain H1 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H1,
     });
 
@@ -112,7 +112,7 @@ describe('heading', () => {
   it('should contain H2 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H2,
     });
 
@@ -122,7 +122,7 @@ describe('heading', () => {
   it('should contain H3 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H3,
     });
 
@@ -132,7 +132,7 @@ describe('heading', () => {
   it('should contain H4 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H4,
     });
 
@@ -142,7 +142,7 @@ describe('heading', () => {
   it('should contain H5 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H5,
     });
 
@@ -152,7 +152,7 @@ describe('heading', () => {
   it('should contain H6 tag', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H6,
     });
 
@@ -162,7 +162,7 @@ describe('heading', () => {
   it('should contain caption', () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H1,
       caption: 'Caption text',
     });
@@ -173,7 +173,7 @@ describe('heading', () => {
   it('should pass axe tests', async () => {
     const screen = renderHeading({
       text: 'Heading Text',
-      size: Size.MEDIUM,
+      size: Size.Medium,
       as: Tag.H1,
     });
 

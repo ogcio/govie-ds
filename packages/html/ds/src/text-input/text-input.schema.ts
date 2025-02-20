@@ -6,17 +6,17 @@ import { hintTextSchema } from '../hint-text/hint-text.schema';
 import { labelSchema } from '../label/label.schema';
 
 export const InputTypeEnum = {
-  TEXT: 'text',
-  DATE: 'date',
-  DATETIME_LOCAL: 'datetime-local',
-  EMAIL: 'email',
-  MONTH: 'month',
-  NUMBER: 'number',
-  PASSWORD: 'password',
-  TEL: 'tel',
-  TIME: 'time',
-  URL: 'url',
-  WEEK: 'week',
+  Text: 'text',
+  Date: 'date',
+  DatetimeLocal: 'datetime-local',
+  Email: 'email',
+  Month: 'month',
+  Number: 'number',
+  Password: 'password',
+  Tel: 'tel',
+  Time: 'time',
+  Url: 'url',
+  Week: 'week',
 } as const;
 
 const validAriaProps = [

@@ -119,7 +119,7 @@ describe('govieTextInput', () => {
 
   it('should render date input', () => {
     const screen = renderTextInput({
-      type: InputTypeEnum.DATE,
+      type: InputTypeEnum.Date,
     });
     const inputElement = screen.getByTestId('textbox');
 

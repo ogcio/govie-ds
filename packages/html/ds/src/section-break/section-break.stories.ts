@@ -36,6 +36,6 @@ export const Default: Story = {
     },
   },
   args: {
-    size: SizeEnum.MEDIUM,
+    size: SizeEnum.Medium,
   },
 };

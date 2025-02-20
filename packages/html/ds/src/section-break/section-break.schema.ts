@@ -2,10 +2,10 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const SizeEnum = {
-  EXTRA_LARGE: 'xl',
-  LARGE: 'lg',
-  MEDIUM: 'md',
-  SMALL: 'sm',
+  ExtraLarge: 'xl',
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
 } as const;
 
 export const sectionBreakSchema = zod.object({

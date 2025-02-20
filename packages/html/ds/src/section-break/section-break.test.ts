@@ -11,7 +11,7 @@ describe('govieSectionBreak', () => {
 
   it('should have correct text size classes for "xl"', () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.EXTRA_LARGE,
+      size: SizeEnum.ExtraLarge,
       dataTestid: 'govie-section-break',
     });
     const pElement = screen.getByTestId('govie-section-break');
@@ -20,7 +20,7 @@ describe('govieSectionBreak', () => {
 
   it('should have correct text size classes for "lg"', () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.LARGE,
+      size: SizeEnum.Large,
       dataTestid: 'govie-section-break',
     });
     const pElement = screen.getByTestId('govie-section-break');
@@ -29,7 +29,7 @@ describe('govieSectionBreak', () => {
 
   it('should have correct text size classes for "md"', () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.MEDIUM,
+      size: SizeEnum.Medium,
       dataTestid: 'govie-section-break',
     });
     const pElement = screen.getByTestId('govie-section-break');
@@ -38,7 +38,7 @@ describe('govieSectionBreak', () => {
 
   it('should have correct text size classes for "sm"', () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.SMALL,
+      size: SizeEnum.Small,
       dataTestid: 'govie-section-break',
     });
     const pElement = screen.getByTestId('govie-section-break');
@@ -47,7 +47,7 @@ describe('govieSectionBreak', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderSectionBreak({
-      size: SizeEnum.MEDIUM,
+      size: SizeEnum.Medium,
     });
 
     await screen.axe();
