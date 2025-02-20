@@ -1,11 +1,11 @@
 {
-    "apps/docs": "0.43.0",
+    "apps/docs": "0.43.1",
     "packages/build/eslint-config": "1.1.0",
     "packages/build/prettier-config": "1.0.1",
     "packages/design/deepmerge": "1.0.0",
-    "packages/design/tailwind": "0.31.1",
-    "packages/html/ds": "0.30.0",
-    "packages/react/ds": "0.37.1",
+    "packages/design/tailwind": "0.31.2",
+    "packages/html/ds": "0.30.1",
+    "packages/react/ds": "0.37.2",
     "packages/themes/govie": "0.6.0",
     "tokens": "0.7.0"
 }
