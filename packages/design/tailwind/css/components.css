@@ -3,20 +3,39 @@
 /* General focus classes */
 .gi-focus-state-outline {
   @apply focus:gi-outline
-  focus:gi-outline-[3px]
+  focus:gi-outline-sm
   focus:gi-outline-yellow-400
   focus:gi-outline-offset-0;
 }
 
+.gi-focus-visible-state-outline {
+  @apply focus-visible:gi-outline
+  focus-visible:gi-outline-sm
+  focus-visible:gi-outline-yellow-400
+  focus-visible:gi-outline-offset-0;
+}
+
 .gi-focus-within-state-outline {
   @apply focus-within:gi-outline
-  focus-within:gi-outline-[3px]
+  focus-within:gi-outline-sm
   focus-within:gi-outline-yellow-400
   focus-within:gi-outline-offset-0;
 }
 
+.gi-focus-visible-state-outline-inner-shadow-sm {
+  @apply gi-focus-visible-state-outline focus-visible:gi-shadow-[inset_0_0_0_2px] focus-visible:gi-shadow-gray-950 focus-visible:gi-rounded-sm focus-visible:gi-bg-gray-200;
+}
+
+.gi-focus-state-outline-inner-shadow-sm {
+  @apply focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-gray-950 focus:gi-rounded-sm;
+}
+
 .gi-focus-state-border {
   @apply focus:gi-border-solid focus:gi-border-gray-950 focus:gi-border-md;
+}
+
+.gi-focus-visible-state-border {
+  @apply focus-visible:gi-border-solid focus-visible:gi-border-gray-950 focus-visible:gi-border-md;
 }
 
 .gi-focus-state-border-sm {
@@ -25,6 +44,14 @@
 
 .gi-focus-state-border-sm-rounded {
   @apply gi-focus-state-border-sm focus:gi-rounded-sm;
+}
+
+.gi-focus-visible-state-border-sm {
+  @apply gi-focus-visible-state-border focus-visible:gi-border-sm;
+}
+
+.gi-focus-visible-state-border-sm-rounded {
+  @apply gi-focus-visible-state-border-sm focus-visible:gi-rounded-sm;
 }
 /* General focus classes */
 
@@ -714,13 +741,12 @@ input[type='file' i] {
 /* End Radio */
 
 /* Card */
-
 .gi-card {
   @apply gi-flex gi-items-start gi-w-full;
 }
 
 .gi-card-vertical {
-  @apply gi-flex-col gi-max-w-[300px] gi-min-w-[220px] gi-w-full;
+  @apply gi-flex-col gi-min-w-[220px] gi-max-w-fit;
 }
 
 .gi-card-horizontal {
@@ -750,12 +776,15 @@ input[type='file' i] {
 
 .gi-card-paragraph p {
   @apply gi-break-words gi-overflow-hidden gi-text-ellipsis gi-line-clamp-2 gi-max-w-[60ch];
-  /* Workaround solution */
   word-break: break-word;
 }
 
 .gi-card-image {
-  @apply gi-flex gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+  @apply gi-table gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+}
+
+.gi-card-image img {
+  @apply gi-w-full gi-h-auto;
 }
 
 .gi-card-icon {
@@ -798,7 +827,6 @@ input[type='file' i] {
 .gi-card-horizontal.gi-card-inset-full {
   @apply gi-p-4;
 }
-
 /* End of Card */
 
 /* Cookie Banner */
@@ -918,7 +946,7 @@ input[type='file' i] {
   @apply gi-flex gi-items-center;
 }
 .gi-checkbox-input {
-  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-[3px] hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
+  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
 }
 .gi-checkbox-label {
   @apply gi-cursor-pointer gi-text-md gi-pl-4;
@@ -998,7 +1026,7 @@ input[type='file' i] {
 }
 
 .gi-toast-dismiss {
-  @apply gi-absolute gi-top-2 gi-right-2;
+  @apply gi-h-full gi-relative gi-top-[-8px];
 }
 
 .gi-toast-info {
@@ -1464,3 +1492,35 @@ input[type='file' i] {
          gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-gray-900 gi-left-[-0.45rem];
 }
 /* End of Tooltip */
+
+/* Accordion */
+
+.gi-accordion {
+  @apply gi-focus-visible-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion-header {
+  @apply gi-items-center;
+}
+
+.gi-accordion[data-disabled='false'] {
+  @apply hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion[data-disabled='false'] .gi-accordion-header {
+  @apply gi-cursor-pointer;
+}
+
+.gi-accordion[data-disabled='true'] .gi-accordion-header {
+  @apply gi-cursor-not-allowed gi-text-gray-600;
+}
+
+.gi-accordion[data-icon-start='false'] .gi-accordion-header {
+  @apply gi-flex gi-justify-between;
+}
+
+.gi-accordion[data-icon-start='true'] .gi-accordion-header {
+  @apply gi-flex gi-flex-row-reverse gi-justify-end gi-gap-2;
+}
+
+/* End of Accordion */

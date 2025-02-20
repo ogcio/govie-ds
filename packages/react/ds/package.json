@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/react",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "storybook build --stats-json",
     "storybook:test": "vitest --project=storybook",
     "storybook:coverage": "vitest --project=storybook --coverage"
   },

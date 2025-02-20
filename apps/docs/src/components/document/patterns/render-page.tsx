@@ -1,5 +1,3 @@
-import { config } from '@/lib/config';
-
 export const Pages = {
   BASIC: 'basic-page.html',
   SEARCH: 'search-page.html',
@@ -14,8 +12,6 @@ type renderPage = {
 };
 
 export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
-  const isDevelopment = config.isGitHubPages();
-
   const widthClass = (() => {
     switch (size) {
       case 'sm': {
@@ -35,7 +31,7 @@ export function RenderPage({ size, page = Pages.BASIC }: renderPage) {
       style={{
         zoom: 0.9,
       }}
-      src={isDevelopment ? `/govie-ds/templates/${page}` : `/templates/${page}`}
+      src={`/templates/${page}`}
       className={`h-[50vh] ${widthClass} border-solid border-gray-300 border overflow-hidden`}
     ></iframe>
   );

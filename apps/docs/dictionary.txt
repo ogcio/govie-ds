@@ -147,3 +147,6 @@ Tooltips
 pre-expand
 dismissible
 center
+iconStart
+1280px
+2xl

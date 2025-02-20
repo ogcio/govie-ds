@@ -1,5 +1,7 @@
 import {
   Alert,
+  Accordion,
+  AccordionItem,
   Blockquote,
   Breadcrumbs,
   BreadcrumbCurrentLink,
@@ -63,7 +65,7 @@ import {
   Details,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
@@ -76,6 +78,7 @@ import { Toast } from '../components/toast';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
+import { Addresses } from '../patterns/addresses';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
 import { RenderPage } from '../patterns/render-page';
@@ -138,6 +141,8 @@ const standardComponents: MDXComponents = {
 };
 
 const documentComponents: MDXComponents = {
+  Accordion,
+  AccordionItem,
   DropdownItem: (props) => (
     <DropdownItem {...props}>{props.children}</DropdownItem>
   ),
@@ -176,6 +181,7 @@ const documentComponents: MDXComponents = {
   RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
+  Addresses: (props) => <Addresses {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,

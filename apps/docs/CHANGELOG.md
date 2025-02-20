@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.43.0](https://github.com/ogcio/govie-ds/compare/docs-v0.42.0...docs-v0.43.0) (2025-02-18)
+
+
+### Features
+
+* adding "Drawer" macro ([#426](https://github.com/ogcio/govie-ds/issues/426)) ([d4c4663](https://github.com/ogcio/govie-ds/commit/d4c46635538cd7ed068a85480b8f78e61b605757))
+
+
+### Bug Fixes
+
+* Accordion styles ([#437](https://github.com/ogcio/govie-ds/issues/437)) ([d74d286](https://github.com/ogcio/govie-ds/commit/d74d28623a3d67be86c647ffbb8aabee817fe469))
+* update container max width ([#439](https://github.com/ogcio/govie-ds/issues/439)) ([45db245](https://github.com/ogcio/govie-ds/commit/45db245a8e58d6634d07fb680b36bc8da5c5dd43))
+* Updating accordion docs and macro fixes ([#441](https://github.com/ogcio/govie-ds/issues/441)) ([094f6c7](https://github.com/ogcio/govie-ds/commit/094f6c7499407858771d3b58ea142a94aaedd72e))
+
 ## [0.42.0](https://github.com/ogcio/govie-ds/compare/docs-v0.41.0...docs-v0.42.0) (2025-02-11)
 
 

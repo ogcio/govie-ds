@@ -46,7 +46,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14.0
 
       - name: Set environment variable
         run: echo "CONFIGURATION=${{ github.event.inputs.environment }}" >> $GITHUB_ENV
@@ -63,8 +63,6 @@ jobs:
         run: |
           corepack enable          
           pnpm install --frozen-lockfile --ignore-scripts
-          pnpm format:check
-          pnpm build
 
       - name: Sign in to Amazon ECR
         if: github.ref == 'refs/heads/main'

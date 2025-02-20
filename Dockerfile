@@ -6,8 +6,6 @@ FROM base as builder
 
 ARG DEPLOY_ENV
 
-ENV DEPLOY_ENV=${DEPLOY_ENV}
-
 RUN apk add --no-cache libc6-compat zip
 
 WORKDIR /build
@@ -16,14 +14,16 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
 COPY apps/ ./apps
 COPY packages/ ./packages
 COPY tokens/ ./tokens
+COPY apps/docs/.env.${DEPLOY_ENV} ./apps/docs/.env.production
 
+ENV DEPLOY_ENV=${DEPLOY_ENV}
 ENV NEXT_EXPORT=true
 ENV NX_DAEMON=false
 
+RUN npm install -g corepack@latest
 RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
-RUN pnpm build:libs
-RUN pnpm ds:build
+RUN pnpm build
 RUN pnpm html:storybook:build
 RUN pnpm react:storybook:build
 
