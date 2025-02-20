@@ -9,7 +9,7 @@ const ProgressBar = renderComponent<ProgressBarProps>(macro);
 
 const meta = {
   component: ProgressBar,
-  title: 'Components/ProgressBar',
+  title: 'indicators/ProgressBar',
   parameters: {
     macro,
   },
