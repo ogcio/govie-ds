@@ -47,7 +47,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     return (
       <div
         role="group"
-        className={cn('gi-text-input-container', {
+        className={cn(className, 'gi-text-input-container', {
           'gi-error-state': !!error?.text,
         })}
         aria-labelledby={`${id}-label`}
