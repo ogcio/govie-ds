@@ -2,10 +2,10 @@ import { CheckboxSizeEnum, type CheckboxSizeEnumType } from './types.js';
 
 export const getTickSize = (size: CheckboxSizeEnumType): string => {
   switch (size) {
-    case CheckboxSizeEnum.LARGE: {
+    case CheckboxSizeEnum.Large: {
       return 'checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2';
     }
-    case CheckboxSizeEnum.SMALL: {
+    case CheckboxSizeEnum.Small: {
       return 'checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1';
     }
     default: {
@@ -16,10 +16,10 @@ export const getTickSize = (size: CheckboxSizeEnumType): string => {
 
 export const getSizeClass = (size: CheckboxSizeEnumType): string => {
   switch (size) {
-    case CheckboxSizeEnum.LARGE: {
+    case CheckboxSizeEnum.Large: {
       return 'gi-w-11 gi-h-11';
     }
-    case CheckboxSizeEnum.SMALL: {
+    case CheckboxSizeEnum.Small: {
       return 'gi-w-6 gi-h-6';
     }
     default: {

@@ -25,7 +25,7 @@ export const Default: Story = {
       table: {
         category: 'Appearance',
         type: { summary: 'Size of label' },
-        defaultValue: { summary: ErrorSize.MEDIUM },
+        defaultValue: { summary: ErrorSize.Medium },
       },
     },
     text: {
@@ -39,6 +39,6 @@ export const Default: Story = {
   },
   args: {
     text: 'Error',
-    size: ErrorSize.MEDIUM,
+    size: ErrorSize.Medium,
   },
 };

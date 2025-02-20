@@ -8,7 +8,7 @@ describe('govieLabel', () => {
   it('should render a label with the correct content', () => {
     const screen = renderLabel({
       text: 'This is a label',
-      size: LabelSize.MEDIUM,
+      size: LabelSize.Medium,
       htmlFor: 'input-id',
     });
     const labelElement = screen.getByText('This is a label');
@@ -20,7 +20,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "lg"', () => {
     const screen = renderLabel({
       text: 'Large label',
-      size: LabelSize.LARGE,
+      size: LabelSize.Large,
       htmlFor: 'input-id',
     });
     const labelElement = screen.getByText('Large label');
@@ -31,7 +31,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "md"', () => {
     const screen = renderLabel({
       text: 'Medium label',
-      size: LabelSize.MEDIUM,
+      size: LabelSize.Medium,
       htmlFor: 'input-id',
     });
     const labelElement = screen.getByText('Medium label');
@@ -42,7 +42,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "sm"', () => {
     const screen = renderLabel({
       text: 'Small label',
-      size: LabelSize.SMALL,
+      size: LabelSize.Small,
       htmlFor: 'input-id',
     });
     const labelElement = screen.getByText('Small label');
@@ -53,7 +53,7 @@ describe('govieLabel', () => {
   it('should associate the label with the correct input field using "for"', () => {
     const screen = renderLabel({
       text: 'Label for input',
-      size: LabelSize.MEDIUM,
+      size: LabelSize.Medium,
       htmlFor: 'test-input',
     });
     const labelElement = screen.getByText('Label for input');
@@ -64,7 +64,7 @@ describe('govieLabel', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderLabel({
       text: 'Accessible label',
-      size: LabelSize.MEDIUM,
+      size: LabelSize.Medium,
       htmlFor: 'input-id',
     });
 

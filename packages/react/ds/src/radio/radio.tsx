@@ -10,10 +10,10 @@ import {
 
 const getRadioSize = (size?: RadiosSizeType) => {
   let sizeClass = 'gi-radio-medium';
-  if (size === RadiosSizeEnum.LARGE) {
+  if (size === RadiosSizeEnum.Large) {
     sizeClass = 'gi-radio-large';
   }
-  if (size === RadiosSizeEnum.SMALL) {
+  if (size === RadiosSizeEnum.Small) {
     sizeClass = 'gi-radio-small';
   }
   return sizeClass;
@@ -21,10 +21,10 @@ const getRadioSize = (size?: RadiosSizeType) => {
 
 export const getRadioWidth = (size?: RadiosSizeType) => {
   let widthClass = 'gi-w-8';
-  if (size === RadiosSizeEnum.LARGE) {
+  if (size === RadiosSizeEnum.Large) {
     widthClass = 'gi-w-11';
   }
-  if (size === RadiosSizeEnum.SMALL) {
+  if (size === RadiosSizeEnum.Small) {
     widthClass = 'gi-w-6';
   }
   return widthClass;

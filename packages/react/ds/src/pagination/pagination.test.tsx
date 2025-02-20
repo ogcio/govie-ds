@@ -21,7 +21,7 @@ const standardProps: PaginationProps = {
 describe('Pagination', () => {
   beforeEach(() => {
     mockUseBreakpoint.mockReturnValue({
-      breakpoint: Breakpoint.LARGE,
+      breakpoint: Breakpoint.Large,
       width: 1024,
     });
   });
@@ -45,7 +45,7 @@ describe('Pagination', () => {
 
   it('should render pagination buttons and page numbers when not on XS breakpoint', () => {
     mockUseBreakpoint.mockReturnValue({
-      breakpoint: Breakpoint.EXTRA_SMALL,
+      breakpoint: Breakpoint.ExtraSmall,
       width: 480,
     });
 
@@ -59,7 +59,7 @@ describe('Pagination', () => {
 
   it('should render page number buttons correctly on large breakpoints', () => {
     mockUseBreakpoint.mockReturnValue({
-      breakpoint: Breakpoint.LARGE,
+      breakpoint: Breakpoint.Large,
       width: 1024,
     });
 
@@ -72,7 +72,7 @@ describe('Pagination', () => {
 
   it('should hide pagination buttons on XS breakpoint', () => {
     mockUseBreakpoint.mockReturnValue({
-      breakpoint: Breakpoint.EXTRA_SMALL,
+      breakpoint: Breakpoint.ExtraSmall,
       width: 400,
     });
 
@@ -86,7 +86,7 @@ describe('Pagination', () => {
 
   it('should call onPageChange when a page button is clicked', () => {
     mockUseBreakpoint.mockReturnValue({
-      breakpoint: Breakpoint.LARGE,
+      breakpoint: Breakpoint.Large,
       width: 1024,
     });
 

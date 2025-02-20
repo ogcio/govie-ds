@@ -1,7 +1,7 @@
 type Orientation = 'vertical' | 'horizontal';
 
 export const ProgressStepperIndicator = {
-  HASHTAG: 'hashtag',
+  Hashtag: 'hashtag',
 } as const;
 
 export type ProgressStepperIndicatorType =

@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const LabelSize = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
 } as const;
 
 export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
@@ -21,7 +21,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   (
     {
       text,
-      size = LabelSize.MEDIUM,
+      size = LabelSize.Medium,
       htmlFor,
       className,
       ariaLabel,

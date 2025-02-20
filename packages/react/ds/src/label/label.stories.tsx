@@ -44,7 +44,7 @@ export const Default: Story = {
       table: {
         category: 'Appearance',
         type: { summary: 'Size of label' },
-        defaultValue: { summary: LabelSize.MEDIUM },
+        defaultValue: { summary: LabelSize.Medium },
       },
     },
     ref: {
@@ -58,7 +58,7 @@ export const Default: Story = {
   },
   args: {
     htmlFor: 'input-id',
-    size: LabelSize.MEDIUM,
+    size: LabelSize.Medium,
     text: 'Label',
   },
 };

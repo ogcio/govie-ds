@@ -25,7 +25,7 @@ export const Default: Story = {
       table: {
         category: 'Appearance',
         type: { summary: 'Size of label' },
-        defaultValue: { summary: HintSize.MEDIUM },
+        defaultValue: { summary: HintSize.Medium },
       },
     },
     text: {
@@ -39,6 +39,6 @@ export const Default: Story = {
   },
   args: {
     text: 'Hint',
-    size: HintSize.MEDIUM,
+    size: HintSize.Medium,
   },
 };

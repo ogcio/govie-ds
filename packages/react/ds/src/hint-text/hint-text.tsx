@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const HintSize = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
 } as const;
 
 export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];

@@ -112,7 +112,7 @@ describe('radios', () => {
     const classes = 'gi-radio-small';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: RadiosSizeEnum.SMALL,
+      size: RadiosSizeEnum.Small,
     };
 
     const screen = renderRadios(propsWithSmallRadios);
@@ -128,7 +128,7 @@ describe('radios', () => {
     const classes = 'gi-radio-large';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: RadiosSizeEnum.LARGE,
+      size: RadiosSizeEnum.Large,
     };
 
     const screen = renderRadios(propsWithSmallRadios);

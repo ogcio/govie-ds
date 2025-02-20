@@ -20,7 +20,7 @@ const meta = {
       defaultValue: ['Item 1', 'Item 2', 'Item 3'],
     },
     type: {
-      options: [ListTypeEnum.NONE, ListTypeEnum.BULLET, ListTypeEnum.NUMBER],
+      options: [ListTypeEnum.None, ListTypeEnum.Bullet, ListTypeEnum.Number],
       control: { type: 'radio' },
       table: {
         defaultValue: { summary: 'normal' },
@@ -58,21 +58,21 @@ export const Links: Story = {
 
 export const Bullet: Story = {
   args: {
-    type: ListTypeEnum.BULLET,
+    type: ListTypeEnum.Bullet,
     items: ['apple', 'orange', 'pears'],
   },
 };
 
 export const Numbered: Story = {
   args: {
-    type: ListTypeEnum.NUMBER,
+    type: ListTypeEnum.Number,
     items: ['Delivery address', 'Payment', 'Confirmation'],
   },
 };
 
 export const ExtraSpace: Story = {
   args: {
-    type: ListTypeEnum.NUMBER,
+    type: ListTypeEnum.Number,
     spaced: true,
     items: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',

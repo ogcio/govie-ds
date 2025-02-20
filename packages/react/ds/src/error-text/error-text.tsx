@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const ErrorSize = {
-  SMALL: 'sm',
-  MEDIUM: 'md',
-  LARGE: 'lg',
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
 } as const;
 
 export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
@@ -20,7 +20,7 @@ export type ErrorTextProps = React.HTMLAttributes<HTMLParagraphElement> & {
 export const ErrorText: React.FC<ErrorTextProps> = ({
   text,
   className,
-  size = ErrorSize.MEDIUM,
+  size = ErrorSize.Medium,
   dataTestid,
   ...props
 }) => {
