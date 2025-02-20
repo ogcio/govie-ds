@@ -1,8 +1,6 @@
-import {
-  MenuItemAccordion,
-  MenuListItem,
-} from '../header/components/header-menu.js';
+import { MenuItemAccordion } from '../header/components/header-menu.js';
 import { HeaderSearch } from '../header/components/header-search.js';
+import { ListItem } from '../list-item/list-item.js';
 import { DrawerBody, DrawerFooter } from './drawer.js';
 
 export const HtmlContent = (
@@ -75,7 +73,7 @@ export const DrawerMenuExample = () => {
     <ul>
       {navLinks?.map((link: any, index: number) => (
         <li key={`navLink-${link.label}-${index}`}>
-          <MenuListItem
+          <ListItem
             href={link.href}
             label={link.label}
             external={link.external}
@@ -92,7 +90,7 @@ export const DrawerMenuExample = () => {
               {slot ? (
                 <MenuItemAccordion index={index} item={{ label, slot }} />
               ) : (
-                <MenuListItem href={href} label={label} external={external} />
+                <ListItem href={href} label={label} external={external} />
               )}
             </li>
           );
@@ -100,7 +98,7 @@ export const DrawerMenuExample = () => {
       )}
       {languages?.map((link: any, index: number) => (
         <li key={`language-${link.label}-${index}`}>
-          <MenuListItem href={link.href} label={link.label} bold={false} />
+          <ListItem href={link.href} label={link.label} bold={false} />
         </li>
       ))}
       {searchProps && (
