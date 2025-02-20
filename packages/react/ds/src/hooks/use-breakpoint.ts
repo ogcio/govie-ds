@@ -2,36 +2,38 @@
 import { useState, useEffect } from 'react';
 
 export const Breakpoint = {
-  XS: 'xs',
-  SM: 'sm',
-  MD: 'md',
-  LG: 'lg',
-  XL: 'xl',
+  EXTRA_SMALL: 'xs',
+  SMALL: 'sm',
+  MEDIUM: 'md',
+  LARGE: 'lg',
+  EXTRA_LARGE: 'xl',
 } as const;
 
 export type BreakpointType = (typeof Breakpoint)[keyof typeof Breakpoint];
 
 const getBreakpoint = (width: number): BreakpointType => {
   if (width < 480) {
-    return Breakpoint.XS;
+    return Breakpoint.EXTRA_SMALL;
   }
   if (width < 640) {
-    return Breakpoint.SM;
+    return Breakpoint.SMALL;
   }
   if (width < 768) {
-    return Breakpoint.MD;
+    return Breakpoint.MEDIUM;
   }
   if (width < 1024) {
-    return Breakpoint.LG;
+    return Breakpoint.LARGE;
   }
-  return Breakpoint.XL;
+  return Breakpoint.EXTRA_LARGE;
 };
 
 export const useBreakpoint = (): {
   breakpoint: BreakpointType;
   width: number;
 } => {
-  const [breakpoint, setBreakpoint] = useState<BreakpointType>(Breakpoint.XS);
+  const [breakpoint, setBreakpoint] = useState<BreakpointType>(
+    Breakpoint.EXTRA_SMALL,
+  );
   const [width, setWidth] = useState<number>(
     typeof window === 'undefined' ? 0 : window.innerWidth,
   );

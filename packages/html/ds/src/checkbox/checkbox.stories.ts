@@ -93,7 +93,7 @@ export const smallCheckbox: Story = {
     checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Small,
+    size: CheckboxSizeEnum.SMALL,
   },
 };
 
@@ -102,7 +102,7 @@ export const mediumCheckbox: Story = {
     checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Medium,
+    size: CheckboxSizeEnum.MEDIUM,
   },
 };
 
@@ -111,7 +111,7 @@ export const largeCheckbox: Story = {
     checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Large,
+    size: CheckboxSizeEnum.LARGE,
   },
 };
 
@@ -120,7 +120,7 @@ export const checkboxWithAriaAttributes: Story = {
     checkboxId: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Medium,
+    size: CheckboxSizeEnum.MEDIUM,
     aria: {
       'aria-checked': 'false',
     },

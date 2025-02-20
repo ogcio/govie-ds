@@ -8,7 +8,7 @@ describe('govieTag', () => {
   it('should render a tag with the correct content', () => {
     const screen = renderTag({
       text: 'This is a tag',
-      type: TagTypeEnum.default,
+      type: TagTypeEnum.DEFAULT,
     });
     const tagElement = screen.getByText('This is a tag');
     expect(tagElement).toBeTruthy();
@@ -16,11 +16,11 @@ describe('govieTag', () => {
   });
 
   const tagTypeClasses = {
-    [TagTypeEnum.info]: 'gi-tag-info',
-    [TagTypeEnum.default]: 'gi-tag-default',
-    [TagTypeEnum.success]: 'gi-tag-success',
-    [TagTypeEnum.warning]: 'gi-tag-warning',
-    [TagTypeEnum.error]: 'gi-tag-error',
+    [TagTypeEnum.INFO]: 'gi-tag-info',
+    [TagTypeEnum.DEFAULT]: 'gi-tag-default',
+    [TagTypeEnum.SUCCESS]: 'gi-tag-success',
+    [TagTypeEnum.WARNING]: 'gi-tag-warning',
+    [TagTypeEnum.ERROR]: 'gi-tag-error',
   };
 
   describe.each(Object.entries(tagTypeClasses))(
@@ -42,7 +42,7 @@ describe('govieTag', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderTag({
       text: 'Accessible tag',
-      type: TagTypeEnum.info,
+      type: TagTypeEnum.INFO,
     });
 
     await screen.axe();

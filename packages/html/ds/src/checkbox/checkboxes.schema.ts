@@ -3,9 +3,9 @@ import { Size, Tag } from '../heading/heading.schema';
 import { getEnumValues } from '../helpers';
 
 export const CheckboxSizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
+  LARGE: 'lg',
+  MEDIUM: 'md',
+  SMALL: 'sm',
 } as const;
 
 const validAriaProps = [

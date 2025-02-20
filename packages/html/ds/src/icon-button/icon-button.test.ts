@@ -13,7 +13,7 @@ describe('icon-button', () => {
   });
 
   testVariantsAxe(
-    [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
+    [ButtonVariant.FLAT, ButtonVariant.PRIMARY, ButtonVariant.SECONDARY],
     (variant) =>
       renderIconButton({
         icon: {
@@ -40,7 +40,7 @@ describe('icon-button', () => {
       icon: {
         icon: IconId.ThumbUp,
       },
-      size: ButtonSize.Small,
+      size: ButtonSize.SMALL,
     });
 
     const iconElement = screen.getByTestId('govie-icon');
@@ -59,7 +59,7 @@ describe('icon-button', () => {
       icon: {
         icon: IconId.ThumbUp,
       },
-      size: ButtonSize.Large,
+      size: ButtonSize.LARGE,
     });
 
     const iconElement = screen.getByTestId('govie-icon');

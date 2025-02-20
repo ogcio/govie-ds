@@ -9,8 +9,8 @@ const validAriaProps = [
 ] as const;
 
 export const LayoutVariant = {
-  Auto: 'auto',
-  Fixed: 'fixed',
+  AUTO: 'auto',
+  FIXED: 'fixed',
 } as const;
 
 export const ariaSchema = zod.record(

@@ -34,6 +34,6 @@ export const Default: Story = {
   },
   args: {
     content: 'This is a phase banner.',
-    level: LevelEnum.Alpha,
+    level: LevelEnum.ALPHA,
   },
 };

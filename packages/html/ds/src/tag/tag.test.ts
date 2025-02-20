@@ -12,7 +12,7 @@ describe('govieTag', () => {
   it('should render a tag with the correct content', () => {
     const screen = renderTag({
       text: 'This is a tag',
-      type: TagType.default,
+      type: TagType.DEFAULT,
     });
     const tagElement = screen.getByText('This is a tag');
     expect(tagElement).toBeTruthy();
@@ -20,11 +20,11 @@ describe('govieTag', () => {
   });
 
   const tagTypeClasses = {
-    [TagType.info]: 'gi-tag-info',
-    [TagType.default]: 'gi-tag-default',
-    [TagType.success]: 'gi-tag-success',
-    [TagType.warning]: 'gi-tag-warning',
-    [TagType.error]: 'gi-tag-error',
+    [TagType.INFO]: 'gi-tag-info',
+    [TagType.DEFAULT]: 'gi-tag-default',
+    [TagType.SUCCESS]: 'gi-tag-success',
+    [TagType.WARNING]: 'gi-tag-warning',
+    [TagType.ERROR]: 'gi-tag-error',
   };
 
   describe.each(Object.entries(tagTypeClasses))(
@@ -46,7 +46,7 @@ describe('govieTag', () => {
   it('should apply the correct ARIA attributes', () => {
     const screen = renderTag({
       text: 'Completed tag',
-      type: TagType.default,
+      type: TagType.DEFAULT,
       aria: { 'aria-label': 'Completed tag' },
     });
 
@@ -58,7 +58,7 @@ describe('govieTag', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderTag({
       text: 'Accessible tag',
-      type: TagType.info,
+      type: TagType.INFO,
     });
 
     await screen.axe();

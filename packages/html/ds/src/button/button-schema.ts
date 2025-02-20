@@ -2,27 +2,27 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const ButtonVariant = {
-  Primary: 'primary',
-  Secondary: 'secondary',
-  Flat: 'flat',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  FLAT: 'flat',
 } as const;
 
 export const ButtonAppearance = {
-  Default: 'default',
-  Dark: 'dark',
-  Light: 'light',
+  DEFAULT: 'default',
+  DARK: 'dark',
+  LIGHT: 'light',
 } as const;
 
 export const ButtonSize = {
-  Medium: 'medium',
-  Small: 'small',
-  Large: 'large',
+  MEDIUM: 'medium',
+  SMALL: 'small',
+  LARGE: 'large',
 } as const;
 
 export const ButtonType = {
-  Submit: 'submit',
-  Reset: 'reset',
-  Button: 'button',
+  SUBMIT: 'submit',
+  RESET: 'reset',
+  BUTTON: 'button',
 } as const;
 
 const validAriaProps = [

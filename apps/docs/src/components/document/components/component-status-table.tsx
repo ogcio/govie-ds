@@ -15,22 +15,22 @@ import { ComponentStatus, getComponents } from '@/lib/components';
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {
     case 'not-available': {
-      return { text: 'N/A', type: TagTypeEnum.default };
+      return { text: 'N/A', type: TagTypeEnum.DEFAULT };
     }
     case 'considering': {
-      return { text: 'Considering', type: TagTypeEnum.default };
+      return { text: 'Considering', type: TagTypeEnum.DEFAULT };
     }
     case 'alpha': {
-      return { text: 'Alpha', type: TagTypeEnum.warning };
+      return { text: 'Alpha', type: TagTypeEnum.WARNING };
     }
     case 'beta': {
-      return { text: 'Beta', type: TagTypeEnum.info };
+      return { text: 'Beta', type: TagTypeEnum.INFO };
     }
     case 'deprecated': {
-      return { text: 'Deprecated', type: TagTypeEnum.error };
+      return { text: 'Deprecated', type: TagTypeEnum.ERROR };
     }
     case 'stable': {
-      return { text: 'Stable', type: TagTypeEnum.success };
+      return { text: 'Stable', type: TagTypeEnum.SUCCESS };
     }
     default: {
       return;

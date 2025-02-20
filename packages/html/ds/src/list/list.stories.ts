@@ -33,7 +33,7 @@ export const Default: Story = {
       defaultValue: ['Item 1', 'Item 2', 'Item 3'],
     },
     type: {
-      options: ['normal', TypeEnum.Bullet, TypeEnum.Number],
+      options: ['normal', TypeEnum.BULLET, TypeEnum.NUMBER],
       control: { type: 'radio' },
       table: {
         defaultValue: { summary: 'normal' },
@@ -73,21 +73,21 @@ export const Links: Story = {
 
 export const Bullet: Story = {
   args: {
-    type: TypeEnum.Bullet,
+    type: TypeEnum.BULLET,
     items: ['apple', 'orange', 'pears'],
   },
 };
 
 export const Numbered: Story = {
   args: {
-    type: TypeEnum.Number,
+    type: TypeEnum.NUMBER,
     items: ['Delivery address', 'Payment', 'Confirmation'],
   },
 };
 
 export const ExtraSpace: Story = {
   args: {
-    type: TypeEnum.Number,
+    type: TypeEnum.NUMBER,
     spaced: true,
     items: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',

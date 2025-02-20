@@ -1,9 +1,9 @@
 import { InputHTMLAttributes } from 'react';
 
 export const CheckboxSizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
+  LARGE: 'lg',
+  MEDIUM: 'md',
+  SMALL: 'sm',
 } as const;
 
 export type CheckboxSizeEnumType =

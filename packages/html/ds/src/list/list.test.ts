@@ -65,7 +65,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Number,
+      type: TypeEnum.NUMBER,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -76,7 +76,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Bullet,
+      type: TypeEnum.BULLET,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -87,7 +87,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.None,
+      type: TypeEnum.NONE,
     });
     const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list')).toBe(true);
@@ -109,7 +109,7 @@ describe('govieList', () => {
     const screen = renderList({
       items,
       spaced: true,
-      type: TypeEnum.Bullet,
+      type: TypeEnum.BULLET,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -131,7 +131,7 @@ describe('govieList', () => {
     const screen = renderList({
       items,
       spaced: true,
-      type: TypeEnum.Number,
+      type: TypeEnum.NUMBER,
     });
 
     await screen.axe();

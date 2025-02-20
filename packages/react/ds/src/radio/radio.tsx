@@ -2,25 +2,29 @@
 
 import { HintText } from '../hint-text/hint-text.js';
 import { TextInput, type TextInputProps } from '../text-input/text-input.js';
-import { type RadioProps, RadiosSizeEnum } from './types.js';
+import {
+  type RadioProps,
+  type RadiosSizeType,
+  RadiosSizeEnum,
+} from './types.js';
 
-const getRadioSize = (size?: RadiosSizeEnum) => {
+const getRadioSize = (size?: RadiosSizeType) => {
   let sizeClass = 'gi-radio-medium';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadiosSizeEnum.LARGE) {
     sizeClass = 'gi-radio-large';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadiosSizeEnum.SMALL) {
     sizeClass = 'gi-radio-small';
   }
   return sizeClass;
 };
 
-export const getRadioWidth = (size?: RadiosSizeEnum) => {
+export const getRadioWidth = (size?: RadiosSizeType) => {
   let widthClass = 'gi-w-8';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadiosSizeEnum.LARGE) {
     widthClass = 'gi-w-11';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadiosSizeEnum.SMALL) {
     widthClass = 'gi-w-6';
   }
   return widthClass;

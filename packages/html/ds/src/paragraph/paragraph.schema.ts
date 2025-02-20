@@ -2,28 +2,28 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const AsEnum = {
-  Paragraph: 'p',
-  Span: 'span',
+  PARAGRAPH: 'p',
+  SPAN: 'span',
 } as const;
 
 export const SizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
+  LARGE: 'lg',
+  MEDIUM: 'md',
+  SMALL: 'sm',
 } as const;
 
 export const AlignEnum = {
-  Start: 'start',
-  Center: 'center',
-  End: 'end',
-  Justify: 'justify',
+  START: 'start',
+  CENTER: 'center',
+  END: 'end',
+  JUSTIFY: 'justify',
 } as const;
 
 export const WhitespaceEnum = {
-  Normal: 'normal',
-  Pre: 'pre',
-  PreWrap: 'pre-wrap',
-  BreakSpaces: 'break-spaces',
+  NORMAL: 'normal',
+  PRE: 'pre',
+  PRE_WRAP: 'pre-wrap',
+  BREAK_SPACES: 'break-spaces',
 } as const;
 
 export const paragraphSchema = zod.object({

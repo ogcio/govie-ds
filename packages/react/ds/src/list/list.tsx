@@ -1,7 +1,7 @@
 export const ListTypeEnum = {
-  None: 'none',
-  Bullet: 'bullet',
-  Number: 'number',
+  NONE: 'none',
+  BULLET: 'bullet',
+  NUMBER: 'number',
 } as const;
 
 export type ListType = (typeof ListTypeEnum)[keyof typeof ListTypeEnum];
@@ -19,11 +19,11 @@ const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
   const classes = [];
 
   switch (type) {
-    case ListTypeEnum.Bullet: {
+    case ListTypeEnum.BULLET: {
       classes.push('gi-list-bullet');
       break;
     }
-    case ListTypeEnum.Number: {
+    case ListTypeEnum.NUMBER: {
       classes.push('gi-list-number');
       break;
     }
@@ -45,7 +45,7 @@ export function List({
   ariaLabel,
   ariaDescribedBy,
   ariaLive = 'off',
-  type = ListTypeEnum.None,
+  type = ListTypeEnum.NONE,
   spaced,
 }: ListProps) {
   return (
@@ -53,7 +53,7 @@ export function List({
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
       aria-live={ariaLive}
-      role={type === ListTypeEnum.None ? 'list' : undefined}
+      role={type === ListTypeEnum.NONE ? 'list' : undefined}
       className={getListClass({ spaced, type })}
       data-testid="govieList"
     >

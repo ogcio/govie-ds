@@ -12,7 +12,7 @@ import html from './button.html?raw';
 
 const standardProps = {
   content: 'Button Label',
-  variant: ButtonVariant.Primary,
+  variant: ButtonVariant.PRIMARY,
 };
 
 describe('button', () => {
@@ -23,7 +23,7 @@ describe('button', () => {
   });
 
   testVariantsAxe(
-    [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
+    [ButtonVariant.FLAT, ButtonVariant.PRIMARY, ButtonVariant.SECONDARY],
     (variant: (typeof ButtonVariant)[keyof typeof ButtonVariant]) =>
       renderButton({ ...standardProps, variant }),
   );
@@ -49,7 +49,7 @@ describe('button', () => {
   it('should render a secondary button', () => {
     const propsSecondaryButton = {
       ...standardProps,
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     };
     const screen = renderButton(propsSecondaryButton);
     const buttonElement = screen.getByTestId('secondary', { exact: false });
@@ -59,7 +59,7 @@ describe('button', () => {
   it('should render a flat button', () => {
     const propsFlatButton = {
       ...standardProps,
-      variant: ButtonVariant.Flat,
+      variant: ButtonVariant.FLAT,
     };
     const screen = renderButton(propsFlatButton);
     const buttonElement = screen.getByTestId('flat', { exact: false });
@@ -69,7 +69,7 @@ describe('button', () => {
   it('should render a button with default appearance', () => {
     const propsDefaultAppearance = {
       ...standardProps,
-      appearance: ButtonAppearance.Default,
+      appearance: ButtonAppearance.DEFAULT,
     };
     const screen = renderButton(propsDefaultAppearance);
     const buttonElement = screen.getByTestId('default', { exact: false });
@@ -79,7 +79,7 @@ describe('button', () => {
   it('should render a button with light appearance', () => {
     const propsLightAppearance = {
       ...standardProps,
-      appearance: ButtonAppearance.Light,
+      appearance: ButtonAppearance.LIGHT,
     };
     const screen = renderButton(propsLightAppearance);
     const buttonElement = screen.getByTestId('light', { exact: false });
@@ -89,7 +89,7 @@ describe('button', () => {
   it('should render a button with dark appearance', () => {
     const propsDarkAppearance = {
       ...standardProps,
-      appearance: ButtonAppearance.Dark,
+      appearance: ButtonAppearance.DARK,
     };
     const screen = renderButton(propsDarkAppearance);
     const buttonElement = screen.getByTestId('dark', { exact: false });
@@ -99,7 +99,7 @@ describe('button', () => {
   it('should render a small button', () => {
     const propsSmallButton = {
       ...standardProps,
-      size: ButtonSize.Small,
+      size: ButtonSize.SMALL,
     };
     const screen = renderButton(propsSmallButton);
     const buttonElement = screen.getByTestId('small', { exact: false });
@@ -109,7 +109,7 @@ describe('button', () => {
   it('should render a large button', () => {
     const propsLargeButton = {
       ...standardProps,
-      size: ButtonSize.Large,
+      size: ButtonSize.LARGE,
     };
     const screen = renderButton(propsLargeButton);
     const buttonElement = screen.getByTestId('large', { exact: false });

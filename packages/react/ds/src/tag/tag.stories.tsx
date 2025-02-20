@@ -46,6 +46,6 @@ export const Default: Story = {
   },
   args: {
     text: 'Completed',
-    type: TagTypeEnum.info,
+    type: TagTypeEnum.INFO,
   },
 };

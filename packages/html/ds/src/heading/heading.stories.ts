@@ -62,7 +62,7 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    size: Size.Medium,
+    size: Size.MEDIUM,
     as: Tag.H3,
     text: 'Medium heading',
   },
@@ -80,7 +80,7 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    size: Size.Large,
+    size: Size.LARGE,
     as: Tag.H1,
     text: 'Large heading',
   },
@@ -98,7 +98,7 @@ export const Large: Story = {
 
 export const ExtraLarge: Story = {
   args: {
-    size: Size.ExtraLarge,
+    size: Size.EXTRA_LARGE,
     as: Tag.H1,
     text: 'Extra large heading',
   },
@@ -116,7 +116,7 @@ export const ExtraLarge: Story = {
 
 export const Caption: Story = {
   args: {
-    size: Size.Medium,
+    size: Size.MEDIUM,
     as: Tag.H1,
     text: 'Heading with h6',
     caption: 'Caption Text',

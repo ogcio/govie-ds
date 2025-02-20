@@ -68,10 +68,10 @@ export const IconId = {
 } as const;
 
 export const IconSize = {
-  Small: 'sm',
-  Medium: 'md',
-  Large: 'lg',
-  ExtraLarge: 'xl',
+  SMALL: 'sm',
+  MEDIUM: 'md',
+  LARGE: 'lg',
+  EXTRA_LARGE: 'xl',
 } as const;
 
 export const iconSchema = zod.object({

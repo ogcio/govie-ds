@@ -2,7 +2,7 @@ export const Pages = {
   BASIC: 'basic-page.html',
   SEARCH: 'search-page.html',
   LAYOUT: 'layout-page.html',
-};
+} as const;
 
 type PagesType = (typeof Pages)[keyof typeof Pages];
 

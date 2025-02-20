@@ -6,7 +6,7 @@ export const Checkbox = ({
   id,
   value,
   onChange = () => null,
-  size = CheckboxSizeEnum.Medium,
+  size = CheckboxSizeEnum.MEDIUM,
   label,
   name,
   hint,

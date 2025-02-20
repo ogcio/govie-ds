@@ -58,19 +58,19 @@ export const Default: Story = {
   },
   args: {
     content: 'This is a paragraph.',
-    as: AsEnum.Paragraph,
-    size: SizeEnum.Medium,
-    align: AlignEnum.Start,
-    whitespace: WhitespaceEnum.Normal,
+    as: AsEnum.PARAGRAPH,
+    size: SizeEnum.MEDIUM,
+    align: AlignEnum.START,
+    whitespace: WhitespaceEnum.NORMAL,
   },
 };
 
 export const RightAlignment: Story = {
   args: {
     content: 'This is a paragraph.',
-    as: AsEnum.Paragraph,
-    size: SizeEnum.Medium,
-    align: AlignEnum.End,
+    as: AsEnum.PARAGRAPH,
+    size: SizeEnum.MEDIUM,
+    align: AlignEnum.END,
   },
 };
 
@@ -81,8 +81,8 @@ export const WhitespacePre: Story = {
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
 You will never know.`,
-    as: AsEnum.Paragraph,
-    whitespace: WhitespaceEnum.Pre,
+    as: AsEnum.PARAGRAPH,
+    whitespace: WhitespaceEnum.PRE,
   },
 };
 
@@ -93,8 +93,8 @@ export const WhitespacePreWrap: Story = {
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
 You will never know.`,
-    as: AsEnum.Paragraph,
-    whitespace: WhitespaceEnum.PreWrap,
+    as: AsEnum.PARAGRAPH,
+    whitespace: WhitespaceEnum.PRE_WRAP,
   },
 };
 
@@ -105,7 +105,7 @@ export const WhitespaceBreakSpaces: Story = {
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
 You will never know.`,
-    as: AsEnum.Paragraph,
-    whitespace: WhitespaceEnum.BreakSpaces,
+    as: AsEnum.PARAGRAPH,
+    whitespace: WhitespaceEnum.BREAK_SPACES,
   },
 };

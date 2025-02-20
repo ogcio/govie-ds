@@ -8,7 +8,7 @@ describe('govieHintText', () => {
 
   it('should render hint text with the correct content for size "md"', () => {
     const screen = renderHintText({
-      size: HintSize.md,
+      size: HintSize.MEDIUM,
       text: 'This is medium hint text',
     });
     const hintElement = screen.getByText('This is medium hint text');
@@ -18,7 +18,7 @@ describe('govieHintText', () => {
 
   it('should render small hint text with the correct class', () => {
     const screen = renderHintText({
-      size: HintSize.sm,
+      size: HintSize.SMALL,
       text: 'This is small hint text',
     });
     const hintElement = screen.getByText('This is small hint text');
@@ -28,7 +28,7 @@ describe('govieHintText', () => {
 
   it('should render large hint text with the correct class', () => {
     const screen = renderHintText({
-      size: HintSize.lg,
+      size: HintSize.LARGE,
       text: 'This is large hint text',
     });
     const hintElement = screen.getByText('This is large hint text');
@@ -38,7 +38,7 @@ describe('govieHintText', () => {
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderHintText({
-      size: HintSize.md,
+      size: HintSize.MEDIUM,
       text: 'Accessible hint text',
     });
 

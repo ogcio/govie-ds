@@ -119,7 +119,7 @@ export const CheckboxesGroup = ({
           {noneOption && (
             <>
               <p
-                className={`${getSizeClass(size || CheckboxSizeEnum.Medium)} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg`}
+                className={`${getSizeClass(size || CheckboxSizeEnum.MEDIUM)} gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg`}
               >
                 or
               </p>

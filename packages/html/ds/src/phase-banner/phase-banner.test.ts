@@ -12,7 +12,7 @@ describe('goviePhaseBanner', () => {
   it('should render a phase-banner with alpha level', () => {
     const screen = renderPhaseBanner({
       content: 'This is a phase-banner',
-      level: LevelEnum.Alpha,
+      level: LevelEnum.ALPHA,
     });
     const pElement = screen.getByTestId('phase-banner');
     expect(pElement).toBeTruthy();
@@ -22,7 +22,7 @@ describe('goviePhaseBanner', () => {
   it('should render a span with the correct content when props.as is "span"', () => {
     const screen = renderPhaseBanner({
       content: 'This is a span',
-      level: LevelEnum.Beta,
+      level: LevelEnum.BETA,
     });
     const pElement = screen.getByTestId('phase-banner');
     expect(pElement).toBeTruthy();
@@ -32,7 +32,7 @@ describe('goviePhaseBanner', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderPhaseBanner({
       content: 'Accessible phase-banner',
-      level: LevelEnum.Alpha,
+      level: LevelEnum.ALPHA,
     });
 
     await screen.axe();

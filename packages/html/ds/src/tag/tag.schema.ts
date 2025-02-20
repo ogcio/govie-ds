@@ -2,13 +2,13 @@ import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
 
 export const TagType = {
-  default: 'default',
-  info: 'info',
-  success: 'success',
-  warning: 'warning',
-  error: 'error',
-  counter: 'counter',
-  counterWarning: 'counterWarning',
+  DEFAULT: 'default',
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  COUNTER: 'counter',
+  COUNTER_WARNING: 'counterWarning',
 } as const;
 
 const validAriaProps = [

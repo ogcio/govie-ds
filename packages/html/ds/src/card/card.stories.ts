@@ -106,10 +106,10 @@ export const Default: Story = {
     },
   },
   args: {
-    type: CardType.Horizontal,
+    type: CardType.HORIZONTAL,
     title: 'Card Title',
     subTitle: 'Subheading',
-    inset: InsetType.None,
+    inset: InsetType.NONE,
     href: '#',
     media: {
       type: 'image',
@@ -124,14 +124,14 @@ export const Default: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
   },
 };
 
 export const VerticalWithoutImage: Story = {
   args: {
-    type: CardType.Vertical,
+    type: CardType.VERTICAL,
     title: 'Vertical Card Without Image',
     subTitle: 'Subtitle Here',
     content:
@@ -147,7 +147,7 @@ export const VerticalWithoutImage: Story = {
 
 export const VerticalWithLink: Story = {
   args: {
-    type: CardType.Vertical,
+    type: CardType.VERTICAL,
     title: 'Vertical Card',
     href: '#',
     media: {
@@ -172,7 +172,7 @@ export const VerticalWithLink: Story = {
 
 export const VerticalWithButton: Story = {
   args: {
-    type: CardType.Vertical,
+    type: CardType.VERTICAL,
     title: 'Vertical Card',
     href: '#',
     media: {
@@ -189,14 +189,14 @@ export const VerticalWithButton: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
   },
 };
 
 export const Horizontal: Story = {
   args: {
-    type: CardType.Horizontal,
+    type: CardType.HORIZONTAL,
     title: 'Horizontal Card',
     subTitle: 'Subtitle Here',
     href: '#',
@@ -212,14 +212,14 @@ export const Horizontal: Story = {
     action: {
       type: 'button',
       content: 'Click Me',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
   },
 };
 
 export const HorizontalWithoutImage: Story = {
   args: {
-    type: CardType.Horizontal,
+    type: CardType.HORIZONTAL,
     title: 'Horizontal Card Without Image',
     subTitle: 'Subtitle Here',
     content:
@@ -235,12 +235,12 @@ export const HorizontalWithoutImage: Story = {
 
 export const HorizontalWithIcon: Story = {
   args: {
-    type: CardType.Horizontal,
+    type: CardType.HORIZONTAL,
     media: {
       type: 'icon',
       config: {
         icon: IconId.Download,
-        size: IconSize.ExtraLarge,
+        size: IconSize.EXTRA_LARGE,
         className: 'gi-text-gray-500',
       },
     },
@@ -251,14 +251,14 @@ export const HorizontalWithIcon: Story = {
     action: {
       type: 'button',
       content: 'Download',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
   },
 };
 
 export const WithIframeEmbed: Story = {
   args: {
-    type: CardType.Horizontal,
+    type: CardType.HORIZONTAL,
     title: 'Featured Video',
     href: '#',
     media: {
@@ -280,15 +280,15 @@ export const WithIframeEmbed: Story = {
     action: {
       type: 'button',
       content: 'Watch Later',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
-    inset: InsetType.None,
+    inset: InsetType.NONE,
   },
 };
 
 export const MediaImageWithAspectRatio: Story = {
   args: {
-    type: CardType.Vertical,
+    type: CardType.VERTICAL,
     title: 'Card Title',
     subTitle: 'Subheading',
     href: '#',
@@ -304,9 +304,9 @@ export const MediaImageWithAspectRatio: Story = {
     action: {
       type: 'button',
       content: 'Button',
-      variant: ButtonVariant.Secondary,
+      variant: ButtonVariant.SECONDARY,
     },
     tag: { text: 'Featured', type: 'info' },
-    inset: InsetType.None,
+    inset: InsetType.NONE,
   },
 };

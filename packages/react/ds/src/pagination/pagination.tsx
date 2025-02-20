@@ -20,7 +20,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   dataTestid,
 }) => {
   const { breakpoint, width } = useBreakpoint();
-  const isCompactView = breakpoint === Breakpoint.XS;
+  const isCompactView = breakpoint === Breakpoint.EXTRA_SMALL;
   const isSMWidth = width < 639;
 
   const displayedPages = getDisplayPages(currentPage, totalPages, breakpoint);

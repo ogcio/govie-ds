@@ -105,7 +105,7 @@ export const Default: Story = {
     label: {
       content: 'Label',
       for: 'input-id',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     error: {
       content: '',
@@ -177,7 +177,7 @@ export const WithLabelAndHint: Story = {
     label: {
       content: 'Label',
       for: 'label-hint-input',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     hint: {
       content: 'Hint',
@@ -191,7 +191,7 @@ export const WithLabelAndError: Story = {
     label: {
       content: 'Label',
       for: 'label-hint-input',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     error: {
       content: 'Error: Please correct this issue.',
@@ -205,7 +205,7 @@ export const WithLabelHintAndError: Story = {
     label: {
       content: 'Label',
       for: 'error-input',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     hint: {
       content: 'Hint',
@@ -222,7 +222,7 @@ export const WithLabelAndPrefixSuffix: Story = {
     label: {
       content: 'Label',
       for: 'suffix-input',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     prefix: 'KG',
     suffix: 'per item',
@@ -235,7 +235,7 @@ export const InputLength: Story = {
     label: {
       content: 'Label',
       for: 'character-width-input',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     maxLength: 20,
     id: 'character-width-input',
@@ -247,10 +247,10 @@ export const DateInput: Story = {
     label: {
       content: 'Label',
       for: 'text-input-id',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     id: 'text-input-id',
-    type: InputTypeEnum.Date,
+    type: InputTypeEnum.DATE,
   },
 };
 
@@ -259,10 +259,10 @@ export const DisabledInput: Story = {
     label: {
       content: 'Label',
       for: 'text-input-id',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     id: 'text-input-id',
-    type: InputTypeEnum.Text,
+    type: InputTypeEnum.TEXT,
     disabled: true,
   },
 };
@@ -321,7 +321,7 @@ export const TextInputWithAriaAttributes: Story = {
     label: {
       content: 'Label',
       for: 'input-id',
-      size: LabelSize.md,
+      size: LabelSize.MEDIUM,
     },
     error: {
       content: '',

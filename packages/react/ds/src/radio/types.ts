@@ -2,9 +2,9 @@ import type { headingVariants } from '../heading/heading.js';
 import type { TextInputProps } from '../text-input/text-input.js';
 
 export const RadiosSizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
+  LARGE: 'lg',
+  MEDIUM: 'md',
+  SMALL: 'sm',
 } as const;
 
 export type RadiosSizeType =

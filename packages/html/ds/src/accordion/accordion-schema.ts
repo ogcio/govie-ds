@@ -10,8 +10,8 @@ const accordionItemValidAriaProps = [
 ] as const;
 
 export const AccordionVariant = {
-  small: 'small',
-  default: 'default',
+  SMALL: 'small',
+  DEFAULT: 'default',
 } as const;
 
 export const accordionAriaSchema = zod.record(
