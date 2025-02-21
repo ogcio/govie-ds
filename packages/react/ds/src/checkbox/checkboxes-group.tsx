@@ -4,11 +4,12 @@ import { ErrorText } from '../error-text/error-text.js';
 import { Heading } from '../heading/heading.js';
 import type { headingVariants } from '../heading/heading.js';
 import { HintText } from '../hint-text/hint-text.js';
-import { Checkbox, CheckboxSizeEnum } from './checkbox.js';
+import { Checkbox } from './checkbox.js';
 import { getSizeClass } from './helpers.js';
+import { CheckboxSizeEnum, type CheckboxSizeEnumType } from './types.js';
 
 export type CheckboxesGroupType = {
-  size?: CheckboxSizeEnum;
+  size?: CheckboxSizeEnumType;
   groupId: string;
   errorMessage?: string;
   items: {

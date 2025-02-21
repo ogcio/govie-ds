@@ -47,7 +47,7 @@ type Story = StoryObj<typeof meta>;
 export const InfoAlert: Story = {
   args: {
     title: 'Info Alert',
-    variant: AlertVariant.INFO,
+    variant: AlertVariant.Info,
     children: '<p>Content</p>',
   },
 };
@@ -55,7 +55,7 @@ export const InfoAlert: Story = {
 export const DangerAlert: Story = {
   args: {
     title: 'Danger Alert',
-    variant: AlertVariant.DANGER,
+    variant: AlertVariant.Danger,
     children: '<p>Content</p>',
   },
 };
@@ -63,7 +63,7 @@ export const DangerAlert: Story = {
 export const SuccessAlert: Story = {
   args: {
     title: 'Success Alert',
-    variant: AlertVariant.SUCCESS,
+    variant: AlertVariant.Success,
     children: '<p>Content</p>',
   },
 };
@@ -71,7 +71,7 @@ export const SuccessAlert: Story = {
 export const WarningAlert: Story = {
   args: {
     title: 'Warning Alert',
-    variant: AlertVariant.WARNING,
+    variant: AlertVariant.Warning,
     children: '<p>Content</p>',
   },
 };
@@ -79,7 +79,7 @@ export const WarningAlert: Story = {
 export const isDismissible: Story = {
   args: {
     title: 'Info Alert',
-    variant: AlertVariant.INFO,
+    variant: AlertVariant.Info,
     dismissible: true,
     children: '<p>Content</p>',
   },

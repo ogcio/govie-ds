@@ -3,13 +3,15 @@ import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
 import Anchor from '../primitives/anchor.js';
 
-export enum LinkType {
-  LINK = 'a',
-  BUTTON = 'button',
-}
+export const LinkAs = {
+  LINK: 'a',
+  BUTTON: 'button',
+};
+
+export type LinkType = (typeof LinkAs)[keyof typeof LinkAs];
 
 export type LinkProps = {
-  as?: React.ElementType<object, LinkType>;
+  as?: LinkType | React.ElementType;
   asButton?: Omit<ButtonProps, 'children' | 'onClick'>;
   href?: string;
   children: React.ReactNode;
@@ -49,7 +51,7 @@ export function Link({
   dataTestid,
   ...ariaProps
 }: LinkProps) {
-  const Component = as === LinkType.BUTTON ? LinkType.BUTTON : Anchor;
+  const Component = as === LinkAs.BUTTON ? LinkAs.BUTTON : Anchor;
 
   return (
     <Component

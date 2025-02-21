@@ -3,7 +3,7 @@ import { within, expect, userEvent } from '@storybook/test';
 import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
-import { List, TypeEnum } from '../list/list.js';
+import { List, ListTypeEnum } from '../list/list.js';
 import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
@@ -23,7 +23,7 @@ const SlotExample1 = () => (
     <div className="gi-flex gi-flex-col gi-gap-6">
       <Heading as="h2">Faq</Heading>
       <List
-        type={TypeEnum.Bullet}
+        type={ListTypeEnum.Bullet}
         items={[
           <Link size="sm" href="#">
             Citizens Information - Services and Rights

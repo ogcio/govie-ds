@@ -14,7 +14,7 @@ const standardProps = {
   title: {
     value: 'Where do you live?',
     asHeading: {
-      size: Size.Medium,
+      size: Size.MEDIUM,
       as: Tag.H2,
     },
   },
@@ -138,7 +138,7 @@ export const withTitleHint: Story = {
       value: 'Where do you live?',
       hint: 'Specify the location where you live',
       asHeading: {
-        size: Size.Medium,
+        size: Size.MEDIUM,
         as: Tag.H2,
       },
     },
@@ -152,7 +152,7 @@ export const withOptionHints: Story = {
       value: 'Have you changed your name?',
       hint: 'This includes changing your last name or spelling your name differently.',
       asHeading: {
-        size: Size.Medium,
+        size: Size.MEDIUM,
         as: Tag.H2,
       },
     },
@@ -196,7 +196,7 @@ export const withConditionalInput: Story = {
     title: {
       value: 'How would you prefer to be contacted?',
       asHeading: {
-        size: Size.Medium,
+        size: Size.MEDIUM,
         as: Tag.H2,
       },
     },
@@ -211,7 +211,7 @@ export const withConditionalInput: Story = {
             for: 'input-id-email',
             size: 'md',
           },
-          type: InputTypeEnum.Email,
+          type: InputTypeEnum.EMAIL,
         },
       },
       {
@@ -224,7 +224,7 @@ export const withConditionalInput: Story = {
             for: 'input-id-phone',
             size: 'md',
           },
-          type: InputTypeEnum.Tel,
+          type: InputTypeEnum.TEL,
         },
       },
     ],
