@@ -13,7 +13,7 @@ import html from './button.html?raw';
 const standardProps = {
   content: 'Button Label',
   variant: ButtonVariant.Primary,
-  dataTestid: 'govie-button'
+  dataTestid: 'govie-button',
 };
 
 describe('button', () => {
@@ -62,7 +62,7 @@ describe('button', () => {
       variant: ButtonVariant.Flat,
     };
     const screen = renderButton(propsFlatButton);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -72,7 +72,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Default,
     };
     const screen = renderButton(propsDefaultAppearance);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -82,7 +82,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Light,
     };
     const screen = renderButton(propsLightAppearance);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -92,7 +92,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Dark,
     };
     const screen = renderButton(propsDarkAppearance);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -102,7 +102,7 @@ describe('button', () => {
       size: ButtonSize.Small,
     };
     const screen = renderButton(propsSmallButton);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -112,7 +112,7 @@ describe('button', () => {
       size: ButtonSize.Large,
     };
     const screen = renderButton(propsLargeButton);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -122,7 +122,7 @@ describe('button', () => {
       disabled: true,
     };
     const screen = renderButton(propsDisabledButton);
-    const buttonElement = screen.getByTestId('govie-button');;
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 

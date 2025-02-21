@@ -78,7 +78,7 @@ export const buttonSchema = zod.object({
       description: 'The value for the button sent in the request',
     })
     .optional(),
-  dataTestid: zod.string({ description: 'Data test id for button'}).optional(),
+  dataTestid: zod.string({ description: 'Data test id for button' }).optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
 });
 
