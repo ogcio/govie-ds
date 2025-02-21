@@ -16,7 +16,16 @@ export type ExtendedButtonProps =
 
 export const Button = React.forwardRef<HTMLButtonElement, ExtendedButtonProps>(
   (
-    { variant, appearance, size, disabled, className, children, ...props },
+    {
+      variant,
+      appearance,
+      size,
+      disabled,
+      className,
+      dataTestid,
+      children,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -24,7 +33,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ExtendedButtonProps>(
         {...props}
         ref={ref}
         disabled={disabled}
-        data-testid={`govieButton-${appearance}-${variant}-${size}-${disabled ? 'disabled' : ''}`}
+        data-testid={dataTestid}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),
