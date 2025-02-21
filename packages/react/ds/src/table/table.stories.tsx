@@ -4,7 +4,7 @@ import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
 import { Spinner } from '../spinner/spinner.js';
-import { Tag, TagType } from '../tag/tag.js';
+import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { Tooltip } from '../tooltip/tooltip.js';
 import { Caption } from './caption.js';
 import { TableBody } from './table-body.js';
@@ -52,28 +52,28 @@ const defaultValueRows = [
     county: 'Cork',
     description: 'Lorem ipsum',
     total: '€900,000',
-    status: { text: 'Approved', type: TagType.success },
+    status: { text: 'Approved', type: TagTypeEnum.success },
   },
   {
     id: 2,
     county: 'Limerick',
     description: 'Lorem ipsum',
     total: '€100,000',
-    status: { text: 'Approved', type: TagType.success },
+    status: { text: 'Approved', type: TagTypeEnum.success },
   },
   {
     id: 3,
     county: 'Dublin',
     description: 'Lorem ipsum Lorem ipsum Lorem ipsum',
     total: '€500,000',
-    status: { text: 'Rejected', type: TagType.error },
+    status: { text: 'Rejected', type: TagTypeEnum.error },
   },
   {
     id: 4,
     county: 'Donegal',
     description: 'Lorem ipsum Lorem ipsum Lorem ipsum',
     total: '€400,000',
-    status: { text: 'Pending', type: TagType.info },
+    status: { text: 'Pending', type: TagTypeEnum.info },
   },
 ];
 
@@ -215,21 +215,21 @@ export const TableWithFooter: Story = {
         county: 'Digital Transformation',
         description: 'Enterprise-wide system upgrade',
         total: '€1,500,000',
-        status: { text: 'On Track', type: TagType.success },
+        status: { text: 'On Track', type: TagTypeEnum.success },
       },
       {
         id: 2,
         county: 'Customer Experience',
         description: 'UX redesign and implementation',
         total: '€750,000',
-        status: { text: 'At Risk', type: TagType.warning },
+        status: { text: 'At Risk', type: TagTypeEnum.warning },
       },
       {
         id: 3,
         county: 'Sustainability Initiative',
         description: 'Carbon neutrality program',
         total: '€2,250,000',
-        status: { text: 'Behind Schedule', type: TagType.error },
+        status: { text: 'Behind Schedule', type: TagTypeEnum.error },
       },
     ],
   },

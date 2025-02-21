@@ -223,7 +223,10 @@ export const withNoneOption: Story = {
 };
 
 export const AllStates: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
+  args: {
+    fieldId: '',
+    items: [],
+  },
   render: () =>
     `<div class="gi-flex gi-gap-4 gi-flex-col">
       <div class="gi-checkbox-group-checkboxes-container">

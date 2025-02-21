@@ -1,12 +1,14 @@
 import * as zod from 'zod';
+
 import { Size, Tag } from '../heading/heading.schema';
+import { getEnumValues } from '../helpers';
 import { textInputSchema } from '../text-input/text-input.schema';
 
-export enum RadioSizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
+export const RadioSizeEnum = {
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+} as const;
 
 const validAriaProps = [
   'aria-label',
@@ -55,7 +57,7 @@ export const radioSchema = zod.object({
     })
     .optional(),
   size: zod
-    .nativeEnum(RadioSizeEnum, {
+    .enum(getEnumValues(RadioSizeEnum), {
       description: 'Specifies the size of the radio',
     })
     .optional(),
@@ -100,7 +102,7 @@ export const radiosSchema = zod.object({
         })
         .optional(),
       conditionalInput: textInputSchema
-        .describe('Add a conditional input if neccessary')
+        .describe('Add a conditional input if necessary')
         .optional(),
     })
     .describe(
@@ -160,7 +162,7 @@ export const radiosSchema = zod.object({
     )
     .optional(),
   size: zod
-    .nativeEnum(RadioSizeEnum, {
+    .enum(getEnumValues(RadioSizeEnum), {
       description: 'Specifies the size of the radio',
     })
     .optional(),

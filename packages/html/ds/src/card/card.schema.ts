@@ -1,21 +1,22 @@
 import * as zod from 'zod';
+
 import { buttonSchema } from '../button/button-schema';
+import { getEnumValues } from '../helpers';
 import { iconSchema } from '../icon/icon.schema';
 import { linkSchema } from '../link/link.schema';
 import { tagSchema } from '../tag/tag.schema';
 
-export enum CardType {
-  Vertical = 'vertical',
-  Horizontal = 'horizontal',
-}
+export const CardType = {
+  Vertical: 'vertical',
+  Horizontal: 'horizontal',
+} as const;
 
-export enum InsetType {
-  None = 'none',
-  Body = 'body',
-  Full = 'full',
-}
+export const InsetType = {
+  None: 'none',
+  Body: 'body',
+  Full: 'full',
+} as const;
 
-// Define the base schemas for different media types
 const imagePropsSchema = zod.object({
   src: zod.string().describe('Source URL for the image'),
   alt: zod.string().optional().describe('Alt text for the image'),
@@ -36,7 +37,6 @@ const iframePropsSchema = zod.object({
   allow: zod.string().optional().describe('Permissions for the iframe'),
 });
 
-// Define the media content discriminated union
 const mediaContentSchema = zod.discriminatedUnion('type', [
   zod.object({
     type: zod.literal('image'),
@@ -52,7 +52,6 @@ const mediaContentSchema = zod.discriminatedUnion('type', [
   }),
 ]);
 
-// Define the action schema as a discriminated union
 const actionSchema = zod.discriminatedUnion('type', [
   buttonSchema.extend({
     type: zod.literal('button').describe('Type of action is a button'),
@@ -62,9 +61,8 @@ const actionSchema = zod.discriminatedUnion('type', [
   }),
 ]);
 
-// Updated card schema
 export const cardSchema = zod.object({
-  type: zod.nativeEnum(CardType, {
+  type: zod.enum(getEnumValues(CardType), {
     description: 'Defines whether the card is vertical or horizontal',
   }),
   title: zod
@@ -86,7 +84,7 @@ export const cardSchema = zod.object({
     .describe('Media content for the card (image, icon, or iframe)')
     .optional(),
   inset: zod
-    .nativeEnum(InsetType, {
+    .enum(getEnumValues(InsetType), {
       description: 'Defines where the content is inset',
     })
     .optional(),

@@ -1,11 +1,14 @@
 import type { headingVariants } from '../heading/heading.js';
 import type { TextInputProps } from '../text-input/text-input.js';
 
-export enum RadiosSizeEnum {
-  Large = 'lg',
-  Medium = 'md',
-  Small = 'sm',
-}
+export const RadiosSizeEnum = {
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+} as const;
+
+export type RadiosSizeType =
+  (typeof RadiosSizeEnum)[keyof typeof RadiosSizeEnum];
 
 export type RadioProps = {
   value: string;
@@ -13,7 +16,7 @@ export type RadioProps = {
   label?: string;
   hint?: string;
   id?: string;
-  size?: RadiosSizeEnum;
+  size?: RadiosSizeType;
   conditionalInput?: TextInputProps;
   checked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -29,7 +32,7 @@ export type RadiosGroupType = {
   }[];
   defaultValue?: string;
   inline?: boolean;
-  size?: RadiosSizeEnum;
+  size?: RadiosSizeType;
   errorMessage?: string;
   dividerOption?: {
     value: string;

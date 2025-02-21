@@ -1,6 +1,6 @@
-import { CheckboxSizeEnum } from './checkbox.js';
+import { CheckboxSizeEnum, type CheckboxSizeEnumType } from './types.js';
 
-export const getTickSize = (size: CheckboxSizeEnum): string => {
+export const getTickSize = (size: CheckboxSizeEnumType): string => {
   switch (size) {
     case CheckboxSizeEnum.Large: {
       return 'checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2';
@@ -14,7 +14,7 @@ export const getTickSize = (size: CheckboxSizeEnum): string => {
   }
 };
 
-export const getSizeClass = (size: CheckboxSizeEnum): string => {
+export const getSizeClass = (size: CheckboxSizeEnumType): string => {
   switch (size) {
     case CheckboxSizeEnum.Large: {
       return 'gi-w-11 gi-h-11';

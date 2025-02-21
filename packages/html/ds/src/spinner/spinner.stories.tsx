@@ -36,18 +36,18 @@ export const Default: Story = {
 
 export const Small: Story = {
   args: {
-    size: IconSize.Small,
+    size: IconSize.SMALL,
   },
 };
 
 export const Large: Story = {
   args: {
-    size: IconSize.Large,
+    size: IconSize.LARGE,
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    size: IconSize.ExtraLarge,
+    size: IconSize.EXTRA_LARGE,
   },
 };

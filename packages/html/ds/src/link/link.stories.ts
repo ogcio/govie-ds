@@ -59,7 +59,7 @@ export const Default: Story = {
   args: {
     href: '#',
     label: 'Link',
-    size: LinkSize.MEDIUM, // Default size can be set here, change to 'sm' if needed
+    size: LinkSize.Medium, // Default size can be set here, change to 'sm' if needed
   },
 };
 
@@ -122,7 +122,7 @@ export const withAriaAttributes: Story = {
   args: {
     href: '#',
     label: 'Link',
-    size: LinkSize.MEDIUM,
+    size: LinkSize.Medium,
     aria: {
       'aria-current': '2',
       'aria-disabled': 'false',
@@ -135,7 +135,6 @@ export const AllStates: Story = {
     href: '#',
     label: '',
   },
-  //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () =>
     `<div class="gi-gap-4 gi-flex">
       <a href="#" class="gi-link">Default</a>

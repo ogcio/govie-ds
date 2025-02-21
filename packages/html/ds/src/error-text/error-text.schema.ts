@@ -1,10 +1,11 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum ErrorSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const ErrorSize = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+} as const;
 
 export const errorTextSchema = zod.object({
   content: zod.string({
@@ -12,7 +13,7 @@ export const errorTextSchema = zod.object({
     required_error: 'content is required',
   }),
   size: zod
-    .nativeEnum(ErrorSize, {
+    .enum(getEnumValues(ErrorSize), {
       description: 'Size of the error text.',
     })
     .optional(),
