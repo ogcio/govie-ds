@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { Icon } from '../../icon/icon.js';
-import Anchor from '../../primitives/anchor.js';
+import { ListItem } from '../../list-item/list-item.js';
 import {
-  HeaderProps,
   HeaderLinkItemType,
+  HeaderProps,
   HeaderSlotItemType,
 } from '../types.js';
 
@@ -19,31 +19,6 @@ type MenuItemAccordionProps = {
   index: number;
   item: { label?: string; slot: React.ReactNode };
 };
-
-type MenuListItemProps = {
-  href?: string;
-  label?: string;
-  bold?: boolean;
-  external?: boolean;
-};
-
-export const MenuListItem = ({
-  href = '#',
-  label = '',
-  bold = true,
-  external,
-}: MenuListItemProps) => (
-  <Anchor
-    aria-label={label || 'link with no label'}
-    href={href}
-    className="gi-header-menu-list-item"
-    external={external}
-  >
-    <span className={cn('gi-text-sm', 'gi-ml-1', { 'gi-font-bold': bold })}>
-      {label}
-    </span>
-  </Anchor>
-);
 
 export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,16 +66,19 @@ export const MobileHeaderMenuItems = ({
 }: MobileHeaderMenuProps) => {
   return (
     <ul>
-      {items?.map(({ itemType, ...item }, index) => {
+      {items?.map(({ itemType, label, ...item }, index) => {
         const [isLink, isSlot] = [itemType === 'link', itemType === 'slot'];
+        if (!label) {
+          return null;
+        }
 
         if (isLink) {
           const linkDetails = item.details as HeaderLinkItemType;
           return (
-            <li key={`navLink-${item.label}-${index}`}>
-              <MenuListItem
+            <li key={`navLink-${label}-${index}`}>
+              <ListItem
                 href={linkDetails?.href}
-                label={item.label}
+                label={label}
                 external={linkDetails?.external}
               />
             </li>
@@ -108,11 +86,11 @@ export const MobileHeaderMenuItems = ({
         } else if (isSlot) {
           const slotDetails = item.details as HeaderSlotItemType;
           return (
-            <li key={`toolItems-${item.label}-${index}`}>
+            <li key={`toolItems-${label}-${index}`}>
               <MenuItemAccordion
                 index={index}
                 item={{
-                  label: item.label,
+                  label,
                   slot: slotDetails?.component,
                 }}
               />
@@ -123,7 +101,7 @@ export const MobileHeaderMenuItems = ({
 
       {secondaryLinks?.map((link, index) => (
         <li key={`secondary-${link.label}-${index}`}>
-          <MenuListItem href={link.href} label={link.label} bold={false} />
+          <ListItem href={link.href} label={link.label} bold={false} />
         </li>
       ))}
     </ul>

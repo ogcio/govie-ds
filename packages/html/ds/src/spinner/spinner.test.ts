@@ -11,7 +11,7 @@ describe('govieSpinner', () => {
   });
 
   testVariantsAxe(
-    [IconSize.ExtraLarge, IconSize.Large, IconSize.Medium, IconSize.Small],
+    [IconSize.EXTRA_LARGE, IconSize.LARGE, IconSize.MEDIUM, IconSize.SMALL],
     (variant) => renderSpinner({ size: variant }),
   );
 });

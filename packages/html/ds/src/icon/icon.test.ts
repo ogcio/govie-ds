@@ -12,7 +12,7 @@ describe('govieIcon', () => {
   it('should render the ThumbDown icon', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Medium,
+      size: IconSize.MEDIUM,
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
@@ -21,7 +21,7 @@ describe('govieIcon', () => {
   it('should render the ThumbDown disabled', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Medium,
+      size: IconSize.MEDIUM,
       disabled: true,
     });
     const iconSpan = screen.getByTestId('govie-icon');
@@ -32,7 +32,7 @@ describe('govieIcon', () => {
   it('should render the ThumbDown with ARIA', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Medium,
+      size: IconSize.MEDIUM,
       ariaHidden: true,
       ariaLabel: 'ARIA-LABEL',
     });
@@ -46,7 +46,7 @@ describe('govieIcon', () => {
   it('should render the ThumbDown filled', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Medium,
+      size: IconSize.MEDIUM,
       filled: true,
     });
     const iconSpan = screen.getByTestId('govie-icon');
@@ -57,7 +57,7 @@ describe('govieIcon', () => {
   it('should render the ThumbDown icon large', () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Large,
+      size: IconSize.LARGE,
     });
     const iconSpan = screen.getByTestId('govie-icon');
     expect(iconSpan.textContent?.trim()).toBe('thumb_down');
@@ -67,7 +67,7 @@ describe('govieIcon', () => {
   it('should pass axe tests', async () => {
     const screen = renderIcon({
       icon: IconId.ThumbDown,
-      size: IconSize.Large,
+      size: IconSize.LARGE,
       ariaLabel: 'ARIA-LABEL',
     });
     await screen.axe();

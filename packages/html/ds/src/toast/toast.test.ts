@@ -10,10 +10,10 @@ const standardProps = {
 };
 
 const variants: ToastProps['variant'][] = [
-  ToastVariant.INFO,
-  ToastVariant.SUCCESS,
-  ToastVariant.WARNING,
-  ToastVariant.DANGER,
+  ToastVariant.Info,
+  ToastVariant.Success,
+  ToastVariant.Warning,
+  ToastVariant.Danger,
 ];
 
 describe('toast', () => {
@@ -55,7 +55,7 @@ describe('toast', () => {
   });
   it('should pass axe accessibility tests', async () => {
     const screen = renderToast({
-      variant: ToastVariant.SUCCESS,
+      variant: ToastVariant.Success,
       title: 'Accessible Toast',
       description: 'This toast should be accessible',
     });

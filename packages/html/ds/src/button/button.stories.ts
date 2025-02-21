@@ -72,7 +72,9 @@ export const Default: Story = {
 };
 
 export const AllVariants: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
+  args: {
+    content: '',
+  },
   render: () => `
   <div class="gi-flex gi-flex-col gi-gap-4">
     <div class="gi-flex gi-gap-4">

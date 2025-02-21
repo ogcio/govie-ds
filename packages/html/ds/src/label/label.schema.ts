@@ -1,10 +1,11 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum LabelSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const LabelSize = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+} as const;
 
 export const labelSchema = zod.object({
   content: zod.string({
@@ -12,7 +13,7 @@ export const labelSchema = zod.object({
     required_error: 'content is required',
   }),
   size: zod
-    .string({
+    .enum(getEnumValues(LabelSize), {
       description: 'Size of label.',
     })
     .optional(),

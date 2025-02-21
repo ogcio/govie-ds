@@ -51,6 +51,14 @@ export const eslintConfig = [
     },
     plugins: { import: legacyPlugin('eslint-plugin-import', 'import') },
     rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'TSEnumDeclaration', // Restrict enum usage
+          message:
+            'Enums are not allowed, use const objects or string literals instead.',
+        },
+      ],
       curly: ['error', 'all'],
       'object-shorthand': ['error', 'always'],
       '@typescript-eslint/no-explicit-any': 'warn',

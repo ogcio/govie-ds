@@ -69,7 +69,11 @@ function getSchemaProperties(schema) {
           description,
           type: toType(zodType),
           required,
-          values: zodEnums,
+          values: zodEnums
+            ? Object.fromEntries(
+                zodEnums.map((tag: string) => [tag.toUpperCase(), tag]),
+              )
+            : zodEnums,
         });
 
         if (value instanceof z.ZodObject) {

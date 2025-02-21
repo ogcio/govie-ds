@@ -138,7 +138,7 @@ export const VerticalWithoutImage: Story = {
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'Learn More',
     },
@@ -163,7 +163,7 @@ export const VerticalWithLink: Story = {
     tag: { text: 'Featured', type: 'info' },
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'View More',
     },
@@ -226,7 +226,7 @@ export const HorizontalWithoutImage: Story = {
       'Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin.',
     action: {
       type: 'link',
-      size: LinkSize.MEDIUM,
+      size: LinkSize.Medium,
       href: '#',
       label: 'Learn More',
     },
@@ -240,7 +240,7 @@ export const HorizontalWithIcon: Story = {
       type: 'icon',
       config: {
         icon: IconId.Download,
-        size: IconSize.ExtraLarge,
+        size: IconSize.EXTRA_LARGE,
         className: 'gi-text-gray-500',
       },
     },

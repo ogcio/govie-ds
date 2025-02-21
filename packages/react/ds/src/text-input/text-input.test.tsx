@@ -19,7 +19,7 @@ describe('govieTextInput', () => {
     const screen = renderTextInput({
       label: {
         text: 'Text Input Label',
-        size: LabelSize.md,
+        size: LabelSize.Medium,
         htmlFor: 'input-id',
       },
       id: 'input-id', // Ensure the input has the correct ID
@@ -90,7 +90,7 @@ describe('govieTextInput', () => {
     const screen = renderTextInput({
       label: {
         text: 'Label for input',
-        size: LabelSize.md,
+        size: LabelSize.Medium,
         htmlFor: 'input-id',
       },
       id: 'input-id', // Ensure the input has the correct ID

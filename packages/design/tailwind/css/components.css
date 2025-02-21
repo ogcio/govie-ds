@@ -525,7 +525,7 @@ input[type='text'] {
   @apply gi-bg-gray-50 gi-p-4;
 }
 
-.gi-header-menu-list-item {
+.gi-list-item {
   @apply hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid
   focus:gi-no-underline
   focus:gi-rounded-sm

@@ -1,15 +1,17 @@
 import React from 'react';
 
-export enum LabelSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const LabelSize = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+} as const;
+
+export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
 
 // Extend `React.LabelHTMLAttributes<HTMLLabelElement>` for correct label attributes
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   text: string;
-  size?: LabelSize;
+  size?: LabelSizeType;
   ariaLabel?: string;
   dataTestid?: string;
 };
@@ -19,7 +21,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
   (
     {
       text,
-      size = LabelSize.md,
+      size = LabelSize.Medium,
       htmlFor,
       className,
       ariaLabel,

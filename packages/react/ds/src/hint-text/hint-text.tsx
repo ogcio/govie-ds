@@ -1,16 +1,18 @@
 import React from 'react';
 
-export enum HintSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const HintSize = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+} as const;
+
+export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];
 
 // Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
 export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
   text: string;
-  size?: HintSize;
+  size?: HintSizeType;
   className?: string;
   ariaLabel?: string;
   dataTestid?: string;

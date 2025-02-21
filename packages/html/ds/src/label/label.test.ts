@@ -12,7 +12,7 @@ describe('govieLabel', () => {
   it('should render a label with the correct content', () => {
     const screen = renderLabel({
       content: 'This is a label',
-      size: LabelSize.md,
+      size: LabelSize.Medium,
       for: 'input-id',
     });
     const labelElement = screen.getByText('This is a label');
@@ -24,7 +24,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "lg"', () => {
     const screen = renderLabel({
       content: 'Large label',
-      size: LabelSize.lg,
+      size: LabelSize.Large,
       for: 'input-id',
     });
     const labelElement = screen.getByText('Large label');
@@ -35,7 +35,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "md"', () => {
     const screen = renderLabel({
       content: 'Medium label',
-      size: LabelSize.md,
+      size: LabelSize.Medium,
       for: 'input-id',
     });
     const labelElement = screen.getByText('Medium label');
@@ -46,7 +46,7 @@ describe('govieLabel', () => {
   it('should have the correct size class for "sm"', () => {
     const screen = renderLabel({
       content: 'Small label',
-      size: LabelSize.sm,
+      size: LabelSize.Small,
       for: 'input-id',
     });
     const labelElement = screen.getByText('Small label');
@@ -57,7 +57,7 @@ describe('govieLabel', () => {
   it('should associate the label with the correct input field using "for"', () => {
     const screen = renderLabel({
       content: 'Label for input',
-      size: LabelSize.md,
+      size: LabelSize.Medium,
       for: 'test-input',
     });
     const labelElement = screen.getByText('Label for input');
@@ -68,7 +68,7 @@ describe('govieLabel', () => {
   it('should safely render HTML content', () => {
     const screen = renderLabel({
       content: '<strong>Strong label</strong>',
-      size: LabelSize.md,
+      size: LabelSize.Medium,
       for: 'input-id',
     });
 
@@ -80,7 +80,7 @@ describe('govieLabel', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderLabel({
       content: 'Accessible label',
-      size: LabelSize.md,
+      size: LabelSize.Medium,
       for: 'input-id',
     });
 

@@ -1,30 +1,36 @@
-export enum TagType {
-  default = 'default',
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'error',
-  counter = 'counter',
-  counterWarning = 'counterWarning',
-}
+export const TagTypeEnum = {
+  Default: 'default',
+  Info: 'info',
+  Success: 'success',
+  Warning: 'warning',
+  Error: 'error',
+  Counter: 'counter',
+  CounterWarning: 'counterWarning',
+} as const;
+
+export type TagType = (typeof TagTypeEnum)[keyof typeof TagTypeEnum];
 
 export type TagProps = {
   text: string;
-  type?: TagType | keyof typeof TagType;
+  type?: TagType;
   dataTestid?: string;
 };
 
 const tagClass = {
-  [TagType.default]: 'gi-tag-default',
-  [TagType.info]: 'gi-tag-info',
-  [TagType.success]: 'gi-tag-success',
-  [TagType.warning]: 'gi-tag-warning',
-  [TagType.error]: 'gi-tag-error',
-  [TagType.counter]: 'gi-tag-counter',
-  [TagType.counterWarning]: 'gi-tag-counter-warning',
+  [TagTypeEnum.Default]: 'gi-tag-default',
+  [TagTypeEnum.Info]: 'gi-tag-info',
+  [TagTypeEnum.Success]: 'gi-tag-success',
+  [TagTypeEnum.Warning]: 'gi-tag-warning',
+  [TagTypeEnum.Error]: 'gi-tag-error',
+  [TagTypeEnum.Counter]: 'gi-tag-counter',
+  [TagTypeEnum.CounterWarning]: 'gi-tag-counter-warning',
 };
 
-export const Tag = ({ text, type = TagType.default, dataTestid }: TagProps) => {
+export const Tag = ({
+  text,
+  type = TagTypeEnum.Default,
+  dataTestid,
+}: TagProps) => {
   return (
     <strong
       className={`gi-tag ${tagClass[type]}`}

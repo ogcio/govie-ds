@@ -2,11 +2,7 @@
 {% from 'icon/icon.html' import govieIcon %}
 
 {% macro govieMenuListItem(href, label, isBold) %}
-  <a
-    aria-label="{{ label or '' }}"
-    href="{{ href }}"
-    class="gi-header-menu-list-item"
-  >
+  <a aria-label="{{ label or '' }}" href="{{ href }}" class="gi-list-item">
     <span class="gi-text-sm gi-ml-1 {{ 'gi-font-bold' if isBold }}">
       {{ label | safe }}
     </span>

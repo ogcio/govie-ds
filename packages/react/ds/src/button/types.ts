@@ -21,4 +21,5 @@ export type ButtonProps = {
   ariaLabel?: string;
   ariaDescribedBy?: string;
   ariaPressed?: boolean;
+  dataTestid?: string;
 };

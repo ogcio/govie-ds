@@ -59,21 +59,21 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     icon: IconId.ThumbUp,
-    size: IconSize.Small,
+    size: IconSize.SMALL,
   },
 };
 
 export const Large: Story = {
   args: {
     icon: IconId.ThumbUp,
-    size: IconSize.Large,
+    size: IconSize.LARGE,
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
     icon: IconId.ThumbUp,
-    size: IconSize.ExtraLarge,
+    size: IconSize.EXTRA_LARGE,
   },
 };
 

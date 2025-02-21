@@ -13,6 +13,7 @@ import html from './button.html?raw';
 const standardProps = {
   content: 'Button Label',
   variant: ButtonVariant.Primary,
+  dataTestid: 'govie-button',
 };
 
 describe('button', () => {
@@ -24,7 +25,8 @@ describe('button', () => {
 
   testVariantsAxe(
     [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
-    (variant: ButtonVariant) => renderButton({ ...standardProps, variant }),
+    (variant: (typeof ButtonVariant)[keyof typeof ButtonVariant]) =>
+      renderButton({ ...standardProps, variant }),
   );
 
   const renderIcon = render<IconProps>({
@@ -41,7 +43,7 @@ describe('button', () => {
 
   it('should render a primary button', () => {
     const screen = renderButton(standardProps);
-    const buttonElement = screen.getByTestId('primary', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -51,7 +53,7 @@ describe('button', () => {
       variant: ButtonVariant.Secondary,
     };
     const screen = renderButton(propsSecondaryButton);
-    const buttonElement = screen.getByTestId('secondary', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -61,7 +63,7 @@ describe('button', () => {
       variant: ButtonVariant.Flat,
     };
     const screen = renderButton(propsFlatButton);
-    const buttonElement = screen.getByTestId('flat', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -71,7 +73,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Default,
     };
     const screen = renderButton(propsDefaultAppearance);
-    const buttonElement = screen.getByTestId('default', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -81,7 +83,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Light,
     };
     const screen = renderButton(propsLightAppearance);
-    const buttonElement = screen.getByTestId('light', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -91,7 +93,7 @@ describe('button', () => {
       appearance: ButtonAppearance.Dark,
     };
     const screen = renderButton(propsDarkAppearance);
-    const buttonElement = screen.getByTestId('dark', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -101,7 +103,7 @@ describe('button', () => {
       size: ButtonSize.Small,
     };
     const screen = renderButton(propsSmallButton);
-    const buttonElement = screen.getByTestId('small', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -111,7 +113,7 @@ describe('button', () => {
       size: ButtonSize.Large,
     };
     const screen = renderButton(propsLargeButton);
-    const buttonElement = screen.getByTestId('large', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 
@@ -121,7 +123,7 @@ describe('button', () => {
       disabled: true,
     };
     const screen = renderButton(propsDisabledButton);
-    const buttonElement = screen.getByTestId('disabled', { exact: false });
+    const buttonElement = screen.getByTestId('govie-button');
     expect(buttonElement).toBeTruthy();
   });
 

@@ -39,7 +39,7 @@ const getIcon = (variant: string) => {
 export function createToastByTemplate({
   title,
   description = '',
-  variant = ToastVariant.SUCCESS,
+  variant = ToastVariant.Success,
 }: ToastProps) {
   const toastWrapper = document.createElement('div');
   const replacements = {

@@ -1,6 +1,6 @@
 import { Link } from '../link/link.js';
 import { render, cleanup } from '../test-utils.js';
-import { ListProps, TypeEnum, List } from './list.js';
+import { ListProps, ListTypeEnum, List } from './list.js';
 
 describe('govieList', () => {
   afterEach(cleanup);
@@ -52,7 +52,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Number,
+      type: ListTypeEnum.Number,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -63,7 +63,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.Bullet,
+      type: ListTypeEnum.Bullet,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -74,7 +74,7 @@ describe('govieList', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
     const screen = renderList({
       items,
-      type: TypeEnum.None,
+      type: ListTypeEnum.None,
     });
     const listContainer = screen.getByTestId('govieList');
     expect(listContainer.classList.contains('gi-list')).toBe(true);
@@ -96,7 +96,7 @@ describe('govieList', () => {
     const screen = renderList({
       items,
       spaced: true,
-      type: TypeEnum.Bullet,
+      type: ListTypeEnum.Bullet,
     });
 
     const listContainer = screen.getByTestId('govieList');
@@ -109,7 +109,7 @@ describe('govieList', () => {
     const screen = renderList({
       items,
       spaced: true,
-      type: TypeEnum.Number,
+      type: ListTypeEnum.Number,
     });
 
     await screen.axe();
