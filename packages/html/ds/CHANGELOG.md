@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.30.1](https://github.com/ogcio/govie-ds/compare/html-v0.30.0...html-v0.30.1) (2025-02-20)
+
+
+### Bug Fixes
+
+* Progress bar new style ([#444](https://github.com/ogcio/govie-ds/issues/444)) ([0e1327b](https://github.com/ogcio/govie-ds/commit/0e1327bd7d117667c974fda723baaf14477f42ec))
+* Progress stepper new style ([#442](https://github.com/ogcio/govie-ds/issues/442)) ([cbfb6dc](https://github.com/ogcio/govie-ds/commit/cbfb6dc05ccf0b9eec59cf389bc8048f5f143a44))
+
 ## [0.30.0](https://github.com/ogcio/govie-ds/compare/html-v0.29.0...html-v0.30.0) (2025-02-18)
 
 

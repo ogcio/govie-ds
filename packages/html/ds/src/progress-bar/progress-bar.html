@@ -7,14 +7,6 @@
     {% set widthStyle = 'style="width: ' ~ fillPercentage ~ '%;"' %}
   {% endif %}
 
-  {% if props.size == 'md' %}
-    {% set sizeClass = 'gi-h-4' %}
-  {% elif props.size == 'lg' %}
-    {% set sizeClass = 'gi-h-6' %}
-  {% else %}
-    {% set sizeClass = 'gi-h-2' %}
-  {% endif %}
-
   <div class="gi-progress-bar-container">
     <div
       role="progressbar"
@@ -23,7 +15,7 @@
       aria-valuemax="{{ props.max if not props.isIndeterminate else '' }}"
       aria-label="Progress bar"
       data-testid="progress-bar"
-      class="gi-progress-bar {{ sizeClass | safe }}"
+      class="gi-progress-bar"
     >
       <div
         class="{{ 'gi-progress-bar-indeterminate' if props.isIndeterminate else '' | safe }} {{ sizeClass | safe }} gi-bg-gray-700"

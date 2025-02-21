@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.43.1](https://github.com/ogcio/govie-ds/compare/docs-v0.43.0...docs-v0.43.1) (2025-02-20)
+
+
+### Bug Fixes
+
+* env variable name ([f68f5ee](https://github.com/ogcio/govie-ds/commit/f68f5ee0247a5df7926355bb260f2f8d19a561a6))
+* Progress bar new style ([#444](https://github.com/ogcio/govie-ds/issues/444)) ([0e1327b](https://github.com/ogcio/govie-ds/commit/0e1327bd7d117667c974fda723baaf14477f42ec))
+* Progress stepper new style ([#442](https://github.com/ogcio/govie-ds/issues/442)) ([cbfb6dc](https://github.com/ogcio/govie-ds/commit/cbfb6dc05ccf0b9eec59cf389bc8048f5f143a44))
+* storybook urls ([c19020f](https://github.com/ogcio/govie-ds/commit/c19020fea8fb1cfc6efa4663424dc013f02c697c))
+
 ## [0.43.0](https://github.com/ogcio/govie-ds/compare/docs-v0.42.0...docs-v0.43.0) (2025-02-18)
 
 

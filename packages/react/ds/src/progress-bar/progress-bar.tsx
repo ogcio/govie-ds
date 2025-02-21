@@ -1,32 +1,15 @@
-import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
 export type ProgressBarProps = {
   max?: number;
   value?: number;
-  size?: 'sm' | 'md' | 'lg';
   isIndeterminate?: boolean;
   label?: string;
 };
 
-const progressBarStyles = tv({
-  variants: {
-    size: {
-      sm: 'gi-h-2',
-      md: 'gi-h-4',
-      lg: 'gi-h-6',
-    },
-  },
-  defaultVariants: {
-    size: 'sm',
-    color: 'blue',
-  },
-});
-
 export function ProgressBar({
   value = 0,
   max = 100,
-  size = 'sm',
   isIndeterminate,
   label,
 }: ProgressBarProps) {
@@ -41,10 +24,10 @@ export function ProgressBar({
         aria-valuemax={max}
         aria-label="Progress bar"
         data-testid="progress-bar"
-        className={cn('gi-progress-bar', progressBarStyles({ size }))}
+        className="gi-progress-bar"
       >
         <div
-          className={cn(progressBarStyles({ size }), 'gi-bg-gray-700', {
+          className={cn({
             'gi-progress-bar-indeterminate': isIndeterminate,
           })}
           style={isIndeterminate ? {} : { width: `${fillPercentage}%` }}

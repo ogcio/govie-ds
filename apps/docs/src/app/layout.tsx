@@ -34,35 +34,35 @@ export default function RootLayout({
         label: 'Get Started',
         itemType: 'link',
         details: {
-          href: '/get-started',
+          href: '/get-started/',
         },
       },
       {
         label: 'Foundations',
         itemType: 'link',
         details: {
-          href: '/foundations',
+          href: '/foundations/',
         },
       },
       {
         label: 'Components',
         itemType: 'link',
         details: {
-          href: '/components',
+          href: '/components/',
         },
       },
       {
         label: 'Patterns',
         itemType: 'link',
         details: {
-          href: '/patterns',
+          href: '/patterns/',
         },
       },
       {
         label: 'Resources',
         itemType: 'link',
         details: {
-          href: '/resources',
+          href: '/resources/',
         },
       },
     ],
@@ -71,27 +71,27 @@ export default function RootLayout({
   const footerLinks = [
     {
       label: 'Help',
-      href: '/help',
+      href: '/help/',
     },
     {
       label: 'Privacy Policy',
-      href: '/privacy-policy',
+      href: '/privacy-policy/',
     },
     {
       label: 'Cookies Policy',
-      href: '/cookies-policy',
+      href: '/cookies-policy/',
     },
     {
       label: 'Accessibility statement',
-      href: '/accessibility-statement',
+      href: '/accessibility-statement/',
     },
     {
       label: 'Contact',
-      href: '/contact',
+      href: '/contact/',
     },
     {
       label: 'Government digital service',
-      href: '/government-digital-service',
+      href: '/government-digital-service/',
     },
   ];
 
