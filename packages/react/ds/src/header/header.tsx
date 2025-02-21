@@ -1,6 +1,10 @@
 'use client';
 import { useEffect, useMemo } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import {
+  Link as ReactRouterLink,
+  LinkProps as ReactRouterLinkProps,
+} from 'react-router';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
@@ -115,6 +119,7 @@ export function Header({
           <Anchor
             className={toolItemClassNames}
             href={(details as HeaderLinkItemType).href}
+            onClick={(details as HeaderLinkItemType).onClick}
             aria-label={label || `link ${index}`}
             data-testid={`item-link-${index}`}
             external={(details as HeaderLinkItemType).external}
@@ -122,6 +127,17 @@ export function Header({
             {label && <span className="label">{label}</span>}
             {icon && <Icon icon={icon} />}
           </Anchor>
+        );
+      }
+      case 'react-router-link': {
+        return (
+          <ReactRouterLink
+            className={toolItemClassNames}
+            {...(details as ReactRouterLinkProps)}
+          >
+            {label && <span className="label">{label}</span>}
+            {icon && <Icon icon={icon} />}
+          </ReactRouterLink>
         );
       }
       default: {
