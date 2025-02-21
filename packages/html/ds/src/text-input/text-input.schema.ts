@@ -1,21 +1,23 @@
 import * as zod from 'zod';
+
 import { errorTextSchema } from '../error-text/error-text.schema';
+import { getEnumValues } from '../helpers';
 import { hintTextSchema } from '../hint-text/hint-text.schema';
 import { labelSchema } from '../label/label.schema';
 
-export enum InputTypeEnum {
-  Text = 'text',
-  Date = 'date',
-  Datetime = 'datetime-local',
-  Email = 'email',
-  Month = 'month',
-  Number = 'number',
-  Password = 'password',
-  Tel = 'tel',
-  Time = 'time',
-  Url = 'url',
-  Week = 'week',
-}
+export const InputTypeEnum = {
+  Text: 'text',
+  Date: 'date',
+  DatetimeLocal: 'datetime-local',
+  Email: 'email',
+  Month: 'month',
+  Number: 'number',
+  Password: 'password',
+  Tel: 'tel',
+  Time: 'time',
+  Url: 'url',
+  Week: 'week',
+} as const;
 
 const validAriaProps = [
   'aria-required',
@@ -60,7 +62,7 @@ export const textInputSchema = zod.object({
     })
     .optional(),
   type: zod
-    .nativeEnum(InputTypeEnum, {
+    .enum(getEnumValues(InputTypeEnum), {
       description: 'Specifies the input type.',
     })
     .optional(),

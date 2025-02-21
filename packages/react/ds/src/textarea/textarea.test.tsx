@@ -37,7 +37,7 @@ describe('govieTextArea', () => {
     const screen = renderTextArea({
       label: {
         text: 'Textarea Label',
-        size: LabelSize.md,
+        size: LabelSize.Medium,
         htmlFor: 'textarea-id',
       },
     });
@@ -86,7 +86,7 @@ describe('govieTextArea', () => {
     const screen = renderTextArea({
       label: {
         text: 'Label for textarea',
-        size: LabelSize.md,
+        size: LabelSize.Medium,
         htmlFor: 'textarea-id',
       },
     });

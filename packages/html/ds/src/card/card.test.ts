@@ -73,7 +73,7 @@ describe('govieCard', () => {
         type: 'icon',
         config: {
           icon: IconId.Download,
-          size: IconSize.Medium,
+          size: IconSize.MEDIUM,
           className: 'gi-text-gray-500',
         },
       },

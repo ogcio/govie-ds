@@ -30,7 +30,7 @@ const Connector = ({
 
 const getIndicatorClasses = (indicator: ProgressStepperIndicatorType) => {
   const indicatorClasses = {
-    [ProgressStepperIndicator.hashtag]: {
+    [ProgressStepperIndicator.Hashtag]: {
       completed: <Icon icon="check" />,
       current: '#',
       next: '#',
@@ -51,7 +51,7 @@ const Step = ({
 }: StepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const { current, completed, next } = getIndicatorClasses(
-    indicator || ProgressStepperIndicator.hashtag,
+    indicator || ProgressStepperIndicator.Hashtag,
   );
 
   const getProgressIconStep = () => {

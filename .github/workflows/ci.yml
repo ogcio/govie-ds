@@ -1,6 +1,11 @@
 name: CI
 
-on: push
+on:
+  push:
+    tags-ignore:
+      - "**"
+    branches-ignore:
+      - "latest-release"
 
 permissions:
   contents: write

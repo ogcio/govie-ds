@@ -1,10 +1,11 @@
 import * as zod from 'zod';
+import { getEnumValues } from '../helpers';
 
-export enum HintSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+export const HintSize = {
+  Small: 'sm',
+  Medium: 'md',
+  Large: 'lg',
+} as const;
 
 export const hintTextSchema = zod.object({
   content: zod.string({
@@ -12,7 +13,7 @@ export const hintTextSchema = zod.object({
     required_error: 'content is required',
   }),
   size: zod
-    .nativeEnum(HintSize, {
+    .enum(getEnumValues(HintSize), {
       description: 'Size of the hint text.',
     })
     .optional(),

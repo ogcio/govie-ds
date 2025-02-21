@@ -1,4 +1,4 @@
-import { Breakpoint } from '../hooks/use-breakpoint.js';
+import { Breakpoint, BreakpointType } from '../hooks/use-breakpoint.js';
 
 type DisplayPage = number | -1 | -2;
 
@@ -25,9 +25,9 @@ type DisplayPage = number | -1 | -2;
 export const getDisplayPages = (
   currentPage: number,
   totalPages: number,
-  breakpoint: Breakpoint,
+  breakpoint: BreakpointType,
 ): DisplayPage[] => {
-  if (breakpoint === Breakpoint.SM || breakpoint === Breakpoint.MD) {
+  if (breakpoint === Breakpoint.Small || breakpoint === Breakpoint.Medium) {
     const displayedPages: DisplayPage[] = [];
     if (totalPages <= 3) {
       for (let index = 1; index <= totalPages; index++) {

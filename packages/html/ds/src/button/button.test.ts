@@ -24,7 +24,8 @@ describe('button', () => {
 
   testVariantsAxe(
     [ButtonVariant.Flat, ButtonVariant.Primary, ButtonVariant.Secondary],
-    (variant: ButtonVariant) => renderButton({ ...standardProps, variant }),
+    (variant: (typeof ButtonVariant)[keyof typeof ButtonVariant]) =>
+      renderButton({ ...standardProps, variant }),
   );
 
   const renderIcon = render<IconProps>({

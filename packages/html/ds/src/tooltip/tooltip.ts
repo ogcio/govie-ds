@@ -11,7 +11,7 @@ export class Tooltip extends BaseComponent<TooltipProps> {
 
   constructor(options: TooltipProps) {
     super(options);
-    this.getAllTooltips = document.querySelectorAll('.gi-tooltip-wrapper');
+    this.getAllTooltips = document?.querySelectorAll('.gi-tooltip-wrapper');
 
     this.handleTooltipVisibility = this.handleTooltipVisibility.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -31,7 +31,7 @@ export class Tooltip extends BaseComponent<TooltipProps> {
       tooltip.setAttribute('aria-hidden', 'false');
     } else if (
       event.type === 'mouseleave' &&
-      !wrapper.contains(document.activeElement)
+      !wrapper.contains(document?.activeElement)
     ) {
       tooltip.setAttribute('aria-hidden', 'true');
     }
@@ -67,8 +67,8 @@ export class Tooltip extends BaseComponent<TooltipProps> {
         if (tooltip && tooltip.getAttribute('aria-hidden') === 'false') {
           tooltip.setAttribute('aria-hidden', 'true');
 
-          if (wrapper.contains(document.activeElement)) {
-            (document.activeElement as HTMLElement).focus();
+          if (wrapper.contains(document?.activeElement)) {
+            (document?.activeElement as HTMLElement).focus();
           }
         }
       }
