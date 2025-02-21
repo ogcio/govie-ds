@@ -13,8 +13,14 @@ export const BreadcrumbLink = ({
   children,
   ...ariaProps
 }: BreadcrumbLinkProps) => (
-  <Link noColor href={href} aria-label={`${children} page`} {...ariaProps}>
-    {children}
+  <Link
+    noColor
+    href={href}
+    aria-label={`${children} page`}
+    size="sm"
+    {...ariaProps}
+  >
+    <span className="gi-breadcrumbs-link">{children}</span>
   </Link>
 );
 
@@ -27,15 +33,22 @@ export const BreadcrumbCurrentLink = ({
   </BreadcrumbLink>
 );
 
-export const Breadcrumbs = ({ children }: BreadcrumbProps) => {
+export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   return (
     <nav aria-label="Breadcrumbs" className="gi-breadcrumbs">
+      {iconStart && (
+        <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
+      )}
       <ol role="list">
-        {children.map((Component, index) => (
-          <li role="listitem" key={`breadcrumb_item_${index}`}>
-            {Component}
-          </li>
-        ))}
+        {Array.isArray(children) ? (
+          children.map((Component, index) => (
+            <li role="listitem" key={`breadcrumb_item_${index}`}>
+              {Component}
+            </li>
+          ))
+        ) : (
+          <li role="listitem">{children}</li>
+        )}
       </ol>
     </nav>
   );

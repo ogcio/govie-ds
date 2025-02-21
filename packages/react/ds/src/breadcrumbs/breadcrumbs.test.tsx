@@ -45,6 +45,17 @@ describe('govieBreadcrumbs', () => {
     expect(ellipsisDiv).toHaveTextContent('more_horiz');
   });
 
+  it('should show left chevron icon when iconStart is true', () => {
+    const { container } = render(
+      <Breadcrumbs iconStart>
+        <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>
+      </Breadcrumbs>,
+    );
+
+    const iconElement = container.querySelector('div > nav > span');
+    expect(iconElement?.textContent).toBe('chevron_left');
+  });
+
   it('should pass axe accessibility tests', async () => {
     const { axe } = render(
       <Breadcrumbs>

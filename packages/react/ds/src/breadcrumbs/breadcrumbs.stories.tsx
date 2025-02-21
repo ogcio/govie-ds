@@ -44,8 +44,9 @@ export const WithoutEllipsis: Story = {
   },
 };
 
-export const SingleItem: Story = {
+export const WithSingleItemAndIconStart: Story = {
   args: {
+    iconStart: true,
     children: [
       <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
     ],
