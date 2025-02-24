@@ -89,3 +89,4 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export * from './tooltip/tooltip.js';
+export * from './i18n/config.js';
