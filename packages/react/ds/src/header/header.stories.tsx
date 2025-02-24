@@ -88,17 +88,13 @@ const headerProps: HeaderProps = {
     {
       label: 'Departments',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Services',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
@@ -109,30 +105,24 @@ const headerProps: HeaderProps = {
       label: 'Faq',
       icon: 'info',
       itemType: 'slot',
-      details: {
-        component: <SlotExample1 />,
-        slotAppearance: 'drawer',
-      },
+      component: <SlotExample1 />,
+      slotAppearance: 'drawer',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Search',
       icon: 'search',
       itemType: 'slot',
-      details: {
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
+      component: <HeaderSearch />,
+      slotAppearance: 'dropdown',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Languages',
       icon: 'mic',
       itemType: 'slot',
-      details: {
-        component: <SlotExample2 />,
-        slotAppearance: 'dropdown',
-      },
+      component: <SlotExample2 />,
+      slotAppearance: 'dropdown',
       showItemMode: 'desktop-only',
     },
   ],
@@ -215,10 +205,8 @@ export const DesktopDrawerDefaultMenu: Story = {
         label: 'Menu',
         icon: 'menu',
         itemType: 'slot',
-        details: {
-          component: <MobileHeaderMenuItems items={headerProps.items} />,
-          slotAppearance: 'drawer',
-        },
+        component: <MobileHeaderMenuItems items={headerProps.items} />,
+        slotAppearance: 'drawer',
       },
     ],
   },
@@ -233,32 +221,26 @@ export const DesktopDrawerCustom: Story = {
       {
         icon: 'chevron_left',
         itemType: 'slot',
-        details: {
-          component: <div className="gi-py-4">Left</div>,
-          slotAppearance: 'drawer',
-          drawerPosition: 'left',
-        },
+        component: <div className="gi-py-4">Left</div>,
+        slotAppearance: 'drawer',
+        drawerPosition: 'left',
         showItemMode: 'always',
       },
       {
         icon: 'chevron_right',
         itemType: 'slot',
-        details: {
-          component: <div className="gi-py-4">Right</div>,
-          slotAppearance: 'drawer',
-          drawerPosition: 'right',
-        },
+        component: <div className="gi-py-4">Right</div>,
+        slotAppearance: 'drawer',
+        drawerPosition: 'right',
         showItemMode: 'always',
       },
       {
         label: 'Bottom',
         icon: 'work',
         itemType: 'slot',
-        details: {
-          component: <div className="gi-py-4">Bottom</div>,
-          slotAppearance: 'drawer',
-          drawerPosition: 'bottom',
-        },
+        component: <div className="gi-py-4">Bottom</div>,
+        slotAppearance: 'drawer',
+        drawerPosition: 'bottom',
         showItemMode: 'always',
       },
     ],
@@ -278,27 +260,19 @@ export const WithMainLinksDesktopOnly: Story = {
       {
         label: 'News',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Departments',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'desktop-only',
       },
     ],
@@ -325,10 +299,8 @@ export const WithSecondaryLinks: Story = {
         icon: 'search',
         label: 'Search',
         itemType: 'slot',
-        details: {
-          component: <HeaderSearch />,
-          slotAppearance: 'dropdown',
-        },
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
       },
     ],
   },
@@ -353,28 +325,19 @@ export const withMainAndSecondaryLinksDesktopOnly: Story = {
       {
         label: 'News',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Departments',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
     ],
@@ -447,26 +410,19 @@ export const NoLabelSearch: Story = {
       {
         label: 'News',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
-
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Departments',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
@@ -475,10 +431,8 @@ export const NoLabelSearch: Story = {
       {
         icon: 'search',
         itemType: 'slot',
-        details: {
-          component: <HeaderSearch />,
-          slotAppearance: 'dropdown',
-        },
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
       },
     ],
     secondaryLinks: [
@@ -535,33 +489,25 @@ export const WithExtraButtons: Story = {
       {
         icon: 'home',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'always',
       },
       {
         icon: 'logout',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'always',
       },
       {
         label: 'News',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         showItemMode: 'desktop-only',
       },
     ],
@@ -572,39 +518,29 @@ const withExtraButtonsAndLabelsItems: HeaderItem[] = [
   {
     icon: 'search',
     itemType: 'slot',
-    details: {
-      component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-    },
+    component: <HeaderSearch />,
+    slotAppearance: 'dropdown',
   },
   {
     icon: 'home',
     itemType: 'link',
-    details: {
-      href: '#',
-    },
+    href: '#',
   },
   {
     icon: 'logout',
     itemType: 'link',
-    details: {
-      href: '#',
-    },
+    href: '#',
   },
   {
     label: 'News',
     itemType: 'link',
-    details: {
-      href: '#',
-    },
+    href: '#',
     showItemMode: 'desktop-only',
   },
   {
     label: 'Services',
     itemType: 'link',
-    details: {
-      href: '#',
-    },
+    href: '#',
     showItemMode: 'desktop-only',
   },
 ];
@@ -665,18 +601,14 @@ export const withExternalLinks: Story = {
     items: [
       {
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         label: 'Internal Nav',
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'link',
-        details: {
-          href: '#',
-          external: true,
-        },
+        href: '#',
+        external: true,
         label: 'External Nav',
         showItemMode: 'desktop-only',
       },
@@ -686,19 +618,15 @@ export const withExternalLinks: Story = {
       {
         itemType: 'link',
         icon: 'attach_file',
-        details: {
-          href: '#',
-        },
+        href: '#',
         label: 'Internal Tool',
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'link',
         icon: 'arrow_outward',
-        details: {
-          href: '#',
-          external: true,
-        },
+        href: '#',
+        external: true,
         label: 'External Tool',
         showItemMode: 'desktop-only',
       },
@@ -748,37 +676,29 @@ export const mobileWithExternalLinks: Story = {
     items: [
       {
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href: '#',
         label: 'Internal Nav',
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'link',
-        details: {
-          href: '#',
-          external: true,
-        },
+        href: '#',
+        external: true,
         label: 'External Nav',
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'link',
         icon: 'attach_file',
-        details: {
-          href: '#',
-        },
+        href: '#',
         label: 'Internal Tool',
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'link',
         icon: 'arrow_outward',
-        details: {
-          href: '#',
-          external: true,
-        },
+        href: '#',
+        external: true,
         label: 'External Tool',
         showItemMode: 'desktop-only',
       },

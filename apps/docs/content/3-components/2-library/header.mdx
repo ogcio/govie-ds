@@ -489,6 +489,66 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
+### Header with React Router Links
+
+<ComponentContainer fullWidth>
+  <Header
+    addDefaultMobileMenu
+    items={[
+      {
+        label: 'Departments',
+        itemType: 'react-router-link',
+        details: {
+          to: '/department',
+        },
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'react-router-link',
+        details: {
+          to: '/services',
+        },
+        showItemMode: 'desktop-only',
+      },
+    ]}
+  />
+</ComponentContainer>
+
+<Tabs id="tab6">
+  <TabList>
+    <TabItem value="tab63" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab63">
+    ```html
+    import { Header } from '@govie-ds/react';
+
+    <Header items={
+      [
+        {
+          label: 'Departments',
+          itemType: 'react-router-link',
+          details: {
+            to: '/department',
+          },
+          showItemMode: 'desktop-only',
+        },
+        {
+          label: 'Services',
+          itemType: 'react-router-link',
+          details: {
+            to: '/services',
+          },
+          showItemMode: 'desktop-only',
+        }
+      ]
+    }
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ### Header with language switch
 
 <ComponentContainer fullWidth>
