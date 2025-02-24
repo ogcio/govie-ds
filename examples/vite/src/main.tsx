@@ -1,7 +1,7 @@
+import { initI18n } from '@govie-ds/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './application.tsx';
-import { initI18n } from '@govie-ds/react';
 
 // Initialize i18next before rendering the app
 initI18n({

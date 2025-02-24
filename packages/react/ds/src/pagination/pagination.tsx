@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
 import { t } from 'i18next';
+import React from 'react';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';

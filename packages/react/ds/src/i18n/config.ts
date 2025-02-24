@@ -1,5 +1,7 @@
 import i18next from 'i18next';
 
+export { default as i18next } from 'i18next';
+
 export const initI18n = (config: {
   resources: Record<string, any>;
   lng?: string;
@@ -12,5 +14,3 @@ export const initI18n = (config: {
     debug: true,
   });
 };
-
-export { i18next };
