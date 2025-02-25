@@ -8,10 +8,13 @@ import {
 export type BreadcrumbLinkProps = Pick<LinkProps, 'href' | 'children'> &
   React.AriaAttributes;
 
+type BreadcrumbChildrenType = React.ReactElement<
+  | typeof BreadcrumbLink
+  | typeof BreadcrumbCurrentLink
+  | typeof BreadcrumbEllipsis
+>;
+
 export type BreadcrumbProps = {
-  children: React.ReactElement<
-    | typeof BreadcrumbLink
-    | typeof BreadcrumbCurrentLink
-    | typeof BreadcrumbEllipsis
-  >[];
+  iconStart?: boolean;
+  children: BreadcrumbChildrenType[] | BreadcrumbChildrenType;
 };
