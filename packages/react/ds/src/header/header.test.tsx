@@ -9,10 +9,8 @@ const standardProps: HeaderProps = {
       label: 'Search',
       icon: 'search',
       itemType: 'slot',
-      details: {
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
+      component: <HeaderSearch />,
+      slotAppearance: 'dropdown',
       showItemMode: 'desktop-only',
     },
     {
@@ -22,25 +20,19 @@ const standardProps: HeaderProps = {
     {
       label: 'News',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Departments',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Services',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
   ],
@@ -91,19 +83,15 @@ describe('header', () => {
           itemType: 'slot',
           icon: 'thumb_up',
           label: 'Slot',
-          details: {
-            component: <div>Here is a slot component</div>,
-            slotAppearance: 'dropdown',
-          },
+          component: <div>Here is a slot component</div>,
+          slotAppearance: 'dropdown',
         },
         {
           itemType: 'slot',
           label: 'Slot 2',
           icon: 'info',
-          details: {
-            component: <div>Here is a slot component 2</div>,
-            slotAppearance: 'dropdown',
-          },
+          component: <div>Here is a slot component 2</div>,
+          slotAppearance: 'dropdown',
         },
         ...(standardProps?.items || []),
       ],

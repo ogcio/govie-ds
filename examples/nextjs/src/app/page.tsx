@@ -1,5 +1,5 @@
-'use client';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
+"use client";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
 import {
   Container,
   Footer,
@@ -47,58 +47,50 @@ import {
   toaster,
   ToastVariant,
   ToastProvider,
-} from '@govie-ds/react';
+} from "@govie-ds/react";
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: 'Departments',
-      itemType: 'link',
-      details: {
-        href: '#',
-      },
-      showItemMode: 'desktop-only',
+      label: "Departments",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Services',
-      itemType: 'link',
-      details: {
-        href: '#',
-      },
-      showItemMode: 'desktop-only',
+      label: "Services",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
+      itemType: "divider",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      details: {
-        href: '/item1',
-      },
-      showItemMode: 'desktop-only',
+      label: "Home",
+      icon: "home",
+      itemType: "link",
+      href: "/item1",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
-      details: {
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-      showItemMode: 'desktop-only',
+      label: "Search",
+      icon: "search",
+      itemType: "slot",
+      component: <HeaderSearch />,
+      slotAppearance: "dropdown",
+      showItemMode: "desktop-only",
     },
   ],
   secondaryLinks: [
     {
-      href: '#',
-      label: 'English',
+      href: "#",
+      label: "English",
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      href: "#",
+      label: "Gaeilge",
     },
   ],
 };
@@ -108,10 +100,10 @@ export default function Home() {
     toaster.create({
       title,
       variant,
-      description: 'This is a toast notification.',
+      description: "This is a toast notification.",
       position: {
-        x: 'right',
-        y: 'bottom',
+        x: "right",
+        y: "bottom",
       },
       duration: 3000,
       dismissible: true,
@@ -121,7 +113,7 @@ export default function Home() {
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: '/' }}
+        logo={{ href: "/" }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -130,19 +122,19 @@ export default function Home() {
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <br />
-        <Button onClick={() => handleCreateToast('Success', 'success')}>
+        <Button onClick={() => handleCreateToast("Success", "success")}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+        <Button onClick={() => handleCreateToast("Error", "danger")}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Info', 'info')}>
+        <Button onClick={() => handleCreateToast("Info", "info")}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+        <Button onClick={() => handleCreateToast("Warning", "warning")}>
           Trigger Warning Toast via callback
         </Button>
         <br />
@@ -166,8 +158,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Form>
@@ -187,11 +179,11 @@ export default function Home() {
           <CheckboxesGroup
             groupId="field-Id"
             items={[
-              { label: 'Irish', value: 'irish' },
-              { label: 'British', value: 'british' },
+              { label: "Irish", value: "irish" },
+              { label: "British", value: "british" },
               {
-                label: 'Citizen of another country',
-                value: 'citizen-of-another-country',
+                label: "Citizen of another country",
+                value: "citizen-of-another-country",
               },
             ]}
           />
@@ -212,37 +204,37 @@ export default function Home() {
           <hr />
           <RadiosGroup
             title={{
-              value: 'Where do you live?',
+              value: "Where do you live?",
               asHeading: {
-                size: 'md',
-                as: 'h2',
+                size: "md",
+                as: "h2",
               },
             }}
             items={[
               {
-                label: 'England',
-                value: 'england',
+                label: "England",
+                value: "england",
               },
               {
-                label: 'Scotland',
-                value: 'scotland',
+                label: "Scotland",
+                value: "scotland",
               },
               {
-                label: 'Ireland',
-                value: 'ireland',
+                label: "Ireland",
+                value: "ireland",
               },
             ]}
             groupId="uniqueId"
           />
           <TextArea
             hint={{
-              text: 'Hint: This is a helpful hint.',
+              text: "Hint: This is a helpful hint.",
             }}
             id="textarea-id"
             maxChars={50}
             label={{
-              text: 'Textarea text',
-              htmlFor: 'textarea-id',
+              text: "Textarea text",
+              htmlFor: "textarea-id",
             }}
           />
 
@@ -289,11 +281,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={TypeEnum.Bullet} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}
@@ -346,13 +338,13 @@ export default function Home() {
           <ProgressStepper
             currentStepIndex={3}
             steps={[
-              'Step 1',
-              'Step 2',
-              'Step 3',
-              'Step 4',
-              'Step 5',
-              'Step 6',
-              'Step 7',
+              "Step 1",
+              "Step 2",
+              "Step 3",
+              "Step 4",
+              "Step 5",
+              "Step 6",
+              "Step 7",
             ]}
           />
 
