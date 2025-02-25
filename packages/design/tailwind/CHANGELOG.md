@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [0.32.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.2...tailwind-v0.32.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+
+
+### Bug Fixes
+
+* Breadcrumbs new styles ([#448](https://github.com/ogcio/govie-ds/issues/448)) ([7c7a266](https://github.com/ogcio/govie-ds/commit/7c7a266e78c2159417b698168beda7d4b0261d27))
+
 ## [0.31.2](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.1...tailwind-v0.31.2) (2025-02-20)
 
 
