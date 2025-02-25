@@ -24,8 +24,8 @@ import {
   Card,
   Button,
   CookieBanner,
-  List,
-  TypeEnum,
+  // List,
+  // TypeEnum,
   Combobox,
   Radio,
   Alert,
@@ -328,7 +328,7 @@ export function App() {
         <Alert title="Info Alert" dismissible>
           <Paragraph>This is the content</Paragraph>
         </Alert>
-        <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+        {/* <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} /> */}
       </Container>
       <Footer />
     </>
