@@ -110,7 +110,7 @@ input[type='text'] {
   @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
 }
 
-.gi-text-input-half-width {
+.gi-input-half-width {
   @apply gi-w-1/2;
 }
 

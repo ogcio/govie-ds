@@ -270,7 +270,7 @@ export const DisabledInput: Story = {
 export const WithHalfWidth: Story = {
   args: {
     id: 'input-id',
-    className: 'gi-text-input-half-width',
+    className: 'gi-input-half-width',
   },
 };
 
