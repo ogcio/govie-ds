@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0](https://github.com/ogcio/govie-ds/compare/html-v0.30.1...html-v0.31.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+
 ## [0.30.1](https://github.com/ogcio/govie-ds/compare/html-v0.30.0...html-v0.30.1) (2025-02-20)
 
 
