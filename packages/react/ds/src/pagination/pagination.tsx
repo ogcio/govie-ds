@@ -1,10 +1,19 @@
 'use client';
-import { t } from 'i18next';
+import i18next, { t as i18nextT } from 'i18next';
 import React from 'react';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utils.js';
+
+// Handle case for where the project has not initialised i18next.
+// TODO make helper fn for this
+const t = (key: string, options?: Record<string, any>) => {
+  if (i18next.isInitialized) {
+    return i18nextT(key, options);
+  }
+  return options?.defaultValue || key; // Use defaultValue or fallback to key
+};
 
 export type PaginationProps = {
   currentPage: number;
