@@ -233,13 +233,6 @@ export const WithLabelAndHint: Story = {
   },
 };
 
-export const WithHalfWidth: Story = {
-  args: {
-    id: 'text-input-id',
-    halfFluid: true,
-  },
-};
-
 export const WithLabelAndError: Story = {
   args: {
     id: 'text-input-id',
@@ -327,6 +320,13 @@ export const DisabledInput: Story = {
     id: 'text-input-id',
     disabled: true,
     value: 'This field is disabled',
+  },
+};
+
+export const WithHalfWidth: Story = {
+  args: {
+    id: 'text-input-id',
+    halfFluid: true,
   },
 };
 
