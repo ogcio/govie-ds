@@ -233,6 +233,13 @@ export const WithLabelAndHint: Story = {
   },
 };
 
+export const WithHalfWidth: Story = {
+  args: {
+    id: 'text-input-id',
+    halfFluid: true,
+  },
+};
+
 export const WithLabelAndError: Story = {
   args: {
     id: 'text-input-id',

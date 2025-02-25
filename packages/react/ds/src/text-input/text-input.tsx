@@ -25,6 +25,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'url'
     | 'week';
   dataTestid?: string;
+  halfFluid?: boolean;
 };
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
@@ -37,6 +38,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       error,
       id,
       type = 'text',
+      halfFluid = false,
       placeholder,
       dataTestid,
       className,
@@ -86,6 +88,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             className={cn('gi-text-input', {
               'gi-border-red-600': !!error?.text,
               'gi-border-gray-950': !error?.text,
+              'gi-w-1/2': halfFluid,
             })}
             ref={ref}
             {...props}
