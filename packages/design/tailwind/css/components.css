@@ -1290,7 +1290,7 @@ input[type='file' i] {
 }
 
 .gi-breadcrumbs > ol > li {
-  @apply gi-relative;
+  @apply gi-relative gi-inline-flex;
 }
 
 .gi-breadcrumbs > ol > li:not(:first-child)::before {
