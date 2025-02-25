@@ -63,7 +63,7 @@ export function Link({
       aria-current={ariaCurrent}
       aria-describedby={ariaDescribedBy}
       className={cn(`
-        gi-link
+        ${asButton ? '' : 'gi-link'}
         ${size ? `gi-link-${size}` : ''}
         ${noUnderline ? 'gi-link-no-underline' : ''}
         ${noVisited ? 'gi-link-no-visited' : ''}
