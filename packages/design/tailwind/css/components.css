@@ -111,7 +111,7 @@ input[type='text'] {
 }
 
 .gi-input-half-width {
-  @apply gi-w-1/2;
+  @apply !gi-w-1/2;
 }
 
 /* End of Text Input */
