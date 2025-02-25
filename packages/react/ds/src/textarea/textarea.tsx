@@ -92,7 +92,7 @@ export const TextArea = ({
           autoComplete={autoComplete}
           className={cn('gi-textarea', {
             'gi-textarea-error': !!error?.text,
-            'gi-input-half-width': halfFluid,
+            '!gi-input-half-width': halfFluid,
           })}
           ref={ref}
           maxLength={maxChars}
