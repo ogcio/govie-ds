@@ -347,19 +347,15 @@ const defaultHeaderItems = (external?: boolean) => [
   {
     label: 'Departments',
     itemType: 'link',
-    details: {
-      href: '#',
-      external,
-    },
+    href: '#',
+    external,
     showItemMode: 'desktop-only',
   },
   {
     label: 'Services',
     itemType: 'link',
-    details: {
-      href: '#',
-      external,
-    },
+    href: '#',
+    external,
     showItemMode: 'desktop-only',
   },
   {
@@ -369,10 +365,8 @@ const defaultHeaderItems = (external?: boolean) => [
     icon: 'search',
     label: 'Search',
     itemType: 'slot',
-    details: {
-      component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-    },
+    component: <HeaderSearch />,
+    slotAppearance: 'dropdown',
   },
 ];
 

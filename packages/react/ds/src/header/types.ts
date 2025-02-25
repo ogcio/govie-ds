@@ -1,38 +1,9 @@
-import { LinkProps as ReactRouterLinkProps } from 'react-router';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
 
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';
-
-// export type HeaderLinkItemType = {
-//   href?: string;
-//   external?: boolean;
-//   onClick?: React.MouseEventHandler<HTMLElement>;
-// };
-
-// export type HeaderSlotItemType = {
-//   component: React.ReactNode;
-//   slotAppearance?: HeaderItemAppearance;
-//   drawerPosition?: DrawerPosition;
-// };
-
-// export type HeaderCustomLinkItemType = {
-//   component: React.ReactNode;
-// };
-
 export type HeaderItemType = 'slot' | 'divider' | 'link' | 'custom-link';
-
-// export type HeaderItem = {
-//   label?: string;
-//   icon?: IconId;
-//   itemType: HeaderItemType;
-//   details?:
-//     | HeaderLinkItemType
-//     | HeaderSlotItemType
-//     | ReactRouterLinkProps
-//     | HeaderCustomLinkItemType;
-// };
 
 type CommonProps = { showItemMode?: HeaderItemMode };
 
