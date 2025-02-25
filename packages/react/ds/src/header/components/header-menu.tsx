@@ -73,25 +73,23 @@ export const MobileHeaderMenuItems = ({
         }
 
         if (isLink) {
-          const linkDetails = item.details as HeaderLinkItemType;
           return (
             <li key={`navLink-${label}-${index}`}>
               <ListItem
-                href={linkDetails?.href}
+                href={item?.href}
                 label={label}
-                external={linkDetails?.external}
+                external={item?.external}
               />
             </li>
           );
         } else if (isSlot) {
-          const slotDetails = item.details as HeaderSlotItemType;
           return (
             <li key={`toolItems-${label}-${index}`}>
               <MenuItemAccordion
                 index={index}
                 item={{
                   label,
-                  slot: slotDetails?.component,
+                  slot: item?.component,
                 }}
               />
             </li>

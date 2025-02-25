@@ -250,6 +250,28 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabPanel>
 </Tabs>
 
+### With Other Router
+
+It's possible to use the Link component as a React Router Link or NextLink.
+
+<ComponentContainer>
+  <Link asChild><NextLink href="/components">Next Link</NextLink></Link>
+</ComponentContainer>
+
+<Tabs id="tab7">
+  <TabList>
+    <TabItem value="tab7">React</TabItem>
+  </TabList>
+  <TabPanel value="tab7">
+    ```html
+    import { Link } from '@govie-ds/react';
+    import NextLink from 'next/link';
+
+    <Link asChild><NextLink href="/other-page" /></Link>
+    ```
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### Best Practices

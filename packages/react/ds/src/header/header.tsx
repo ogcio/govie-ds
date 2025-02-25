@@ -9,12 +9,7 @@ import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import type {
-  HeaderItem,
-  HeaderLinkItemType,
-  HeaderProps,
-  HeaderSlotItemType,
-} from './types.js';
+import type { HeaderItem, HeaderProps } from './types.js';
 
 function getLogo({ logo }: HeaderProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
@@ -51,12 +46,10 @@ const buildDefaultMobileMenu = (
     label: mobileMenuLabel,
     icon: 'menu',
     itemType: 'slot',
-    details: {
-      component: (
-        <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />
-      ),
-      slotAppearance: 'drawer',
-    },
+    component: (
+      <MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />
+    ),
+    slotAppearance: 'drawer',
     showItemMode: 'mobile-only',
   };
 
@@ -90,37 +83,35 @@ export function Header({
   }, []);
 
   const ItemTypeComponent = ({
-    item: { itemType, details, icon, label },
+    item,
     index,
   }: {
     item: HeaderItem;
     index: number;
   }) => {
-    switch (itemType) {
+    switch (item.itemType) {
       case 'slot': {
-        const slot = details as HeaderSlotItemType;
-        return (
-          <SlotItemAction
-            index={index}
-            item={{
-              slot,
-              icon,
-              label,
-            }}
-          />
-        );
+        return <SlotItemAction index={index} item={item} />;
       }
       case 'link': {
         return (
           <Anchor
             className={toolItemClassNames}
-            href={(details as HeaderLinkItemType).href}
-            aria-label={label || `link ${index}`}
+            href={item.href}
+            onClick={item.onClick}
+            aria-label={item.label || `link ${index}`}
             data-testid={`item-link-${index}`}
-            external={(details as HeaderLinkItemType).external}
+            external={item.external}
           >
-            {label && <span className="label">{label}</span>}
-            {icon && <Icon icon={icon} />}
+            {item.label && item.label}
+            {item.icon && <Icon icon={item.icon} />}
+          </Anchor>
+        );
+      }
+      case 'custom-link': {
+        return (
+          <Anchor asChild className={toolItemClassNames}>
+            {item.component}
           </Anchor>
         );
       }
@@ -224,17 +215,16 @@ export function Header({
         </div>
       )}
 
-      {finalItems?.map(({ itemType, details }, index) => {
+      {finalItems?.map(({ itemType, component, slotAppearance }, index) => {
         if (itemType === 'slot') {
-          const slot = details as HeaderSlotItemType;
           const renderOnlyForDropdown =
-            slot.component && slot.slotAppearance !== 'drawer';
+            component && slotAppearance !== 'drawer';
 
           if (renderOnlyForDropdown) {
             return (
               <SlotContainer
                 key={`slot-container-${index}`}
-                slot={(details as HeaderSlotItemType)?.component}
+                slot={component}
                 index={index}
               />
             );

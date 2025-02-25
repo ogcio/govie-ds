@@ -15,10 +15,8 @@ export function ServiceUnavailable() {
         items={[
           {
             itemType: 'slot',
-            details: {
-              component: <HeaderSearch />,
-              slotAppearance: 'dropdown',
-            },
+            component: <HeaderSearch />,
+            slotAppearance: 'dropdown',
           },
         ]}
       />
