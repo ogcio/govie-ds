@@ -16,6 +16,7 @@ import './global.css';
 import '../styles.css';
 import React from 'react';
 import i18n from 'i18next';
+import enTranslations from '../src/i18n/translations/en.json';
 
 // Initialize i18next globally for Storybook
 i18n.init({
@@ -23,17 +24,7 @@ i18n.init({
   fallbackLng: 'en',
   debug: true,
   resources: {
-    en: {
-      // TODO add the following to constants file
-      translation: {
-        'pagination.previous': 'Previous',
-        'pagination.next': 'Next',
-        'pagination.page': 'Page {{currentPage}} of {{totalPages}}',
-        'pagination.goToPage': 'Go to page {{page}}',
-        'pagination.goToPrevious': 'Go to previous',
-        'pagination.goToNext': 'Go to next',
-      },
-    },
+    ...enTranslations,
   },
   interpolation: { escapeValue: false }, // Prevent escaping of values
 });
