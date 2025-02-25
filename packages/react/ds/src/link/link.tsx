@@ -1,76 +1,78 @@
-import { Button } from '../button/button.js';
-import { ButtonProps } from '../button/types.js';
+import { Slot } from '@radix-ui/react-slot';
+import React from 'react';
+import { getSizeClass, getVariantAppearanceClass } from '../button/helpers.js';
+import {
+  ButtonAppearance,
+  ButtonSize,
+  ButtonVariant,
+} from '../button/types.js';
 import { cn } from '../cn.js';
-import Anchor from '../primitives/anchor.js';
+import Anchor, { AnchorProps } from '../primitives/anchor.js';
 
-export const LinkAs = {
-  LINK: 'a',
-  BUTTON: 'button',
-};
-
-export type LinkType = (typeof LinkAs)[keyof typeof LinkAs];
-
-export type LinkProps = {
-  as?: LinkType | React.ElementType;
-  asButton?: Omit<ButtonProps, 'children' | 'onClick'>;
+export type LinkProps = AnchorProps & {
   href?: string;
-  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  asChild?: boolean;
   noVisited?: boolean;
   noUnderline?: boolean;
   noColor?: boolean;
   external?: boolean;
   size?: 'sm' | 'md';
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  ariaLabel?: string;
-  ariaCurrent?:
-    | 'page'
-    | 'step'
-    | 'location'
-    | 'date'
-    | 'time'
-    | 'true'
-    | 'false';
-  ariaDescribedBy?: string;
   dataTestid?: string;
-} & React.AriaAttributes;
+  asButton?: {
+    variant?: ButtonVariant;
+    appearance?: ButtonAppearance;
+    size?: ButtonSize;
+  };
+};
 
-export function Link({
-  as,
-  asButton,
-  href,
+export const Link: React.FC<LinkProps> = ({
+  asChild,
+  className,
   children,
-  size,
-  noUnderline = false,
-  noVisited = false,
-  noColor = false,
-  external = false,
-  ariaLabel,
-  ariaCurrent,
-  ariaDescribedBy,
-  onClick,
   dataTestid,
-  ...ariaProps
-}: LinkProps) {
-  const Component = as === LinkAs.BUTTON ? LinkAs.BUTTON : Anchor;
+  noVisited,
+  noUnderline,
+  noColor,
+  external,
+  size,
+  asButton,
+  ...props
+}) => {
+  const buttonVariant =
+    asButton &&
+    getVariantAppearanceClass({
+      disabled: false,
+      variant: asButton?.variant,
+      appearance: asButton?.appearance,
+    });
+  const buttonSize = asButton && getSizeClass(asButton?.size);
+
+  const linkClasses = cn(
+    {
+      'gi-link': !asButton,
+      'gi-link-no-underline': !asButton && noUnderline,
+      'gi-link-no-visited': !asButton && noVisited,
+      'gi-link-inherit': !asButton && noColor,
+      'gi-btn': asButton,
+      '!gi-inline-flex': asButton,
+    },
+    size ? `gi-link-${size}` : '',
+    buttonVariant,
+    buttonSize,
+    className,
+  );
+
+  const Component = asChild ? Slot : Anchor;
 
   return (
     <Component
+      {...props}
       data-testid={dataTestid}
-      href={href}
-      onClick={onClick}
+      className={linkClasses}
       external={external}
-      aria-label={ariaLabel}
-      aria-current={ariaCurrent}
-      aria-describedby={ariaDescribedBy}
-      className={cn(`
-        gi-link
-        ${size ? `gi-link-${size}` : ''}
-        ${noUnderline ? 'gi-link-no-underline' : ''}
-        ${noVisited ? 'gi-link-no-visited' : ''}
-        ${noColor ? 'gi-link-inherit' : ''}`)}
-      {...ariaProps}
     >
-      {asButton ? <Button {...asButton}>{children}</Button> : children}
+      {children}
     </Component>
   );
-}
+};

@@ -80,12 +80,9 @@ export default function HomePage() {
       <PhaseBanner level="alpha">
         <p className="text-gray-700 text-xs sm:text-md">
           This is a new service - your{' '}
-          <a
-            className="underline text-blue-700 hover:decoration-md"
-            href={config.feedbackFormUrl}
-          >
+          <Link href={config.feedbackFormUrl} noVisited>
             feedback
-          </a>{' '}
+          </Link>{' '}
           will help us to improve it.
         </p>
       </PhaseBanner>
@@ -100,7 +97,7 @@ export default function HomePage() {
             create cohesive digital experiences effortlessly.
           </p>
           <Link
-            noUnderline
+            className="gi-not-prose"
             href={config.signUpFormUrl}
             asButton={{ variant: 'primary' }}
           >
@@ -126,7 +123,7 @@ export default function HomePage() {
           your department.
         </Paragraph>
         <Link
-          noUnderline
+          className="gi-not-prose"
           href={config.signUpFormUrl}
           asButton={{ variant: 'primary' }}
         >

@@ -1,11 +1,14 @@
+import { Slot } from '@radix-ui/react-slot';
 import React from 'react';
 
 export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   external?: boolean;
+  asChild?: boolean;
 };
 
 const Anchor = ({
   external = false,
+  asChild,
   children,
   ...props
 }: React.PropsWithChildren<AnchorProps>) => {
@@ -14,10 +17,12 @@ const Anchor = ({
     rel: 'noreferrer noopener',
   };
 
+  const Component = asChild ? Slot : 'a';
+
   return (
-    <a {...props} {...externalProps}>
+    <Component {...props} {...externalProps}>
       {children}
-    </a>
+    </Component>
   );
 };
 
