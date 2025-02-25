@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.44.0](https://github.com/ogcio/govie-ds/compare/docs-v0.43.1...docs-v0.44.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+* add support to react router ([#451](https://github.com/ogcio/govie-ds/issues/451)) ([830fa90](https://github.com/ogcio/govie-ds/commit/830fa9024af9c0d9d4c32d417748341c972df523))
+
 ## [0.43.1](https://github.com/ogcio/govie-ds/compare/docs-v0.43.0...docs-v0.43.1) (2025-02-20)
 
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.31.0](https://github.com/ogcio/govie-ds/compare/html-v0.30.1...html-v0.31.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+
+
+### Bug Fixes
+
+* restore half width on input ([#453](https://github.com/ogcio/govie-ds/issues/453)) ([fe13467](https://github.com/ogcio/govie-ds/commit/fe13467dfc7effe0a7fcd84e727cf39700773951))
+
 ## [0.30.1](https://github.com/ogcio/govie-ds/compare/html-v0.30.0...html-v0.30.1) (2025-02-20)
 
 
