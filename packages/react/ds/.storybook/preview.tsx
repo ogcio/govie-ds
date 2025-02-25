@@ -18,7 +18,6 @@ import React from 'react';
 import i18n from 'i18next';
 import enTranslations from '../src/i18n/translations/en.json';
 
-// Initialize i18next globally for Storybook
 i18n.init({
   lng: 'en',
   fallbackLng: 'en',
@@ -26,7 +25,7 @@ i18n.init({
   resources: {
     ...enTranslations,
   },
-  interpolation: { escapeValue: false }, // Prevent escaping of values
+  interpolation: { escapeValue: false },
 });
 
 const preview: Preview = {

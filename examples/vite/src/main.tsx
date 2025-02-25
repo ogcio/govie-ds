@@ -34,7 +34,6 @@ initI18n({
   lng: 'fr', // Toggle here for debugging.
 });
 
-// Render the React app
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

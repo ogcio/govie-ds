@@ -12,7 +12,7 @@ const t = (key: string, options?: Record<string, any>) => {
   if (i18next.isInitialized) {
     return i18nextT(key, options);
   }
-  return options?.defaultValue || key; // Use defaultValue or fallback to key
+  return options?.defaultValue || key;
 };
 
 export type PaginationProps = {
