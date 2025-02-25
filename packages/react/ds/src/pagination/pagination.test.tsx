@@ -10,6 +10,20 @@ vi.mock('../hooks/use-breakpoint.js', async () => {
   };
 });
 
+vi.mock('i18next', () => ({
+  t: (key: string, params?: Record<string, any>) => {
+    const translations: Record<string, string> = {
+      'pagination.previous': 'Previous',
+      'pagination.next': 'Next',
+      'pagination.page': `Page ${params?.currentPage} of ${params?.totalPages}`,
+      'pagination.goToPage': `Go to page ${params?.page}`,
+      'pagination.goToPrevious': 'Go to previous',
+      'pagination.goToNext': 'Go to next',
+    };
+    return translations[key] || key; // Fallback to returning the key if not found
+  },
+}));
+
 const mockUseBreakpoint = vi.mocked(useBreakpoint);
 
 const standardProps: PaginationProps = {
@@ -53,8 +67,7 @@ describe('Pagination', () => {
     const pageButtons = screen.getAllByRole('button');
 
     expect(pageButtons.length).toBeGreaterThan(0); // Ensures there are page buttons
-    expect(screen.getByText('Page 5')).toBeInTheDocument();
-    expect(screen.getByText('of 10')).toBeInTheDocument();
+    expect(screen.getByText('Page 5 of 10')).toBeInTheDocument();
   });
 
   it('should render page number buttons correctly on large breakpoints', () => {
@@ -80,8 +93,7 @@ describe('Pagination', () => {
     const pageButtons = screen.queryAllByRole('button');
 
     expect(pageButtons.length).toBe(2); // Count of 2 buttons: previous and next buttons
-    expect(screen.getByText('Page 5')).toBeInTheDocument();
-    expect(screen.getByText('of 10')).toBeInTheDocument();
+    expect(screen.getByText('Page 5 of 10')).toBeInTheDocument();
   });
 
   it('should call onPageChange when a page button is clicked', () => {
