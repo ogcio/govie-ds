@@ -1278,7 +1278,7 @@ input[type='file' i] {
 
 /* Breadcrumbs */
 .gi-breadcrumbs {
-  @apply gi-flex gi-items-center;
+  @apply gi-flex gi-items-center gi-gap-1;
 }
 
 .gi-breadcrumbs > ol {
@@ -1290,12 +1290,16 @@ input[type='file' i] {
 }
 
 .gi-breadcrumbs > ol > li {
-  @apply gi-relative;
+  @apply gi-relative gi-inline-flex;
 }
 
 .gi-breadcrumbs > ol > li:not(:first-child)::before {
   @apply gi-block gi-absolute gi-bottom-0 gi-left-[-17px] gi-text-gray-500 gi-font-bold gi-text-sm;
   content: '/';
+}
+
+.gi-breadcrumbs-link {
+  @apply gi-text-ellipsis gi-whitespace-normal gi-line-clamp-1;
 }
 
 /* End of Breadcrumbs */
