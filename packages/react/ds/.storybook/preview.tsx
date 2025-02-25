@@ -15,6 +15,28 @@ import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../styles.css';
 import React from 'react';
+import i18n from 'i18next';
+
+// Initialize i18next globally for Storybook
+i18n.init({
+  lng: 'en',
+  fallbackLng: 'en',
+  debug: true,
+  resources: {
+    en: {
+      // TODO add the following to constants file
+      translation: {
+        'pagination.previous': 'Previous',
+        'pagination.next': 'Next',
+        'pagination.page': 'Page {{currentPage}} of {{totalPages}}',
+        'pagination.goToPage': 'Go to page {{page}}',
+        'pagination.goToPrevious': 'Go to previous',
+        'pagination.goToNext': 'Go to next',
+      },
+    },
+  },
+  interpolation: { escapeValue: false }, // Prevent escaping of values
+});
 
 const preview: Preview = {
   parameters: {
