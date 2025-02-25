@@ -42,7 +42,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="large"
           appearance="dark"
           onClick={() => onPageChange(page)}
-          aria-label={t('pagination.goToPage', { page })}
+          aria-label={t('pagination.goToPage', {
+            page,
+            defaultValue: `Go to page ${page}`,
+          })}
         >
           {page}
         </Button>
@@ -53,7 +56,11 @@ export const Pagination: React.FC<PaginationProps> = ({
   const renderPaginationLabel = () => (
     <span className="gi-text-md" aria-live="polite">
       <span className="gi-font-bold">
-        {t('pagination.page', { currentPage, totalPages })}
+        {t('pagination.page', {
+          currentPage,
+          totalPages,
+          defaultValue: `Page ${currentPage} of ${totalPages}`,
+        })}
       </span>
     </span>
   );
@@ -62,7 +69,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     <div
       className="gi-pagination"
       role="navigation"
-      aria-label={t('pagination.page', { currentPage, totalPages })}
+      aria-label={t('pagination.page', {
+        currentPage,
+        totalPages,
+        defaultValue: `Page ${currentPage} of ${totalPages}`,
+      })}
       data-testid={dataTestid}
     >
       <Button
@@ -71,13 +82,15 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label={t('pagination.goToPrevious')}
+        aria-label={t('pagination.goToPrevious', {
+          defaultValue: 'Go to previous',
+        })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
-        {!isSMWidth && t('pagination.previous')}
+        {!isSMWidth && t('pagination.previous', { defaultValue: 'Previous' })}
       </Button>
 
       {isCompactView ? renderPaginationLabel() : renderPaginationBtns()}
@@ -88,10 +101,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label={t('pagination.goToNext')}
+        aria-label={t('pagination.goToNext', { defaultValue: 'Go to next' })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
-        {!isSMWidth && t('pagination.next')}
+        {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>

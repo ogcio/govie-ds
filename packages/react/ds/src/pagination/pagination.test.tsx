@@ -20,7 +20,7 @@ vi.mock('i18next', () => ({
       'pagination.goToPrevious': 'Go to previous',
       'pagination.goToNext': 'Go to next',
     };
-    return translations[key] || key; // Fallback to returning the key if not found
+    return translations[key] || key;
   },
 }));
 
