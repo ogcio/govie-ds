@@ -469,22 +469,23 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   </TabPanel>
 </Tabs>
 
-### Header with React Router Links
+### Header with Custom Links
+
+You can also use custom links components with the header component. 
+For instance, you can use the `react-router-link` or `next/link` component to link to a specific route in your application. 
 
 <ComponentContainer fullWidth>
   <Header
     addDefaultMobileMenu
     items={[
       {
-        label: 'Departments',
         itemType: 'custom-link',
-        to: '/department',
+        component: (<NextLink href="/departments">Departments</NextLink>),
         showItemMode: 'desktop-only',
       },
       {
-        label: 'Services',
         itemType: 'custom-link',
-        to: '/services',
+        component: (<NextLink href="/services">Services</NextLink>),
         showItemMode: 'desktop-only',
       },
     ]}
@@ -498,21 +499,20 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   <TabPanel value="tab63">
     ```html
     import { Header } from '@govie-ds/react';
+    import NextLink from 'next/link';
 
     <Header items={
       [
         {
-          label: 'Departments',
-          itemType: 'react-router-link',
-          to: '/department',
+          itemType: 'custom-link',
+          component: (<NextLink href="/departments">Departments</NextLink>),
           showItemMode: 'desktop-only',
         },
         {
-          label: 'Services',
-          itemType: 'react-router-link',
-          to: '/services',
+          itemType: 'custom-link',
+          component: (<NextLink href="/services">Services</NextLink>),
           showItemMode: 'desktop-only',
-        }
+        },
       ]
     }
     />
