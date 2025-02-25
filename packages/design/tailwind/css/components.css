@@ -420,7 +420,7 @@ input[type='text'] {
   @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer;
 }
 .gi-header-tool-item:first-child {
-  @apply lg:gi-block gi-text-md gi-font-bold gi-text-white gi-stroke-white;
+  @apply lg:gi-flex gi-text-md gi-font-bold gi-text-white gi-stroke-white;
 }
 .gi-header-nav {
   @apply gi-hidden lg:gi-flex gi-gap-4 gi-text-white gi-stroke-white;
