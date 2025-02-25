@@ -229,6 +229,14 @@ export const DisabledState: Story = {
   },
 };
 
+export const WithHalfWidth: Story = {
+  args: {
+    id: 'textarea-id-5',
+    halfFluid: true,
+    value: 'This field is disabled',
+  },
+};
+
 export const AllStates: Story = {
   render: () => (
     <div className="gi-gap-4">
