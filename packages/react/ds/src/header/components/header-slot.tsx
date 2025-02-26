@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
-import { Icon, IconId } from '../../icon/icon.js';
-import { HeaderSlotItemType } from '../types.js';
+import { Icon } from '../../icon/icon.js';
+import { HeaderItem } from '../types.js';
 
 type HeaderSlotProps = {
-  item: {
-    slot: HeaderSlotItemType;
-    label?: string;
-    icon?: IconId;
-  };
+  item: HeaderItem;
   index: number;
 };
 type HeaderSlotContainerProps = {
@@ -30,11 +26,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
 
 const DrawerTrigger = ({
   index,
-  item: {
-    slot: { component, drawerPosition },
-    icon,
-    label,
-  },
+  item: { component, drawerPosition, icon, label },
 }: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -85,20 +77,15 @@ const DrawerTrigger = ({
   );
 };
 
-export const SlotItemAction = ({
-  item: { label, icon, slot },
-  index,
-}: HeaderSlotProps) => {
-  const { slotAppearance = 'dropdown' } = slot;
-
-  if (slotAppearance === 'drawer') {
-    return <DrawerTrigger index={index} item={{ label, icon, slot }} />;
+export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
+  if (item.slotAppearance === 'drawer') {
+    return <DrawerTrigger index={index} item={item} />;
   }
 
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
-      aria-label={`Toggle item action for ${label || `item ${index + 1}`}`}
+      aria-label={`Toggle item action for ${item.label || `item ${index + 1}`}`}
       className="gi-header-tool-item"
       data-label-index={index}
     >
@@ -111,10 +98,10 @@ export const SlotItemAction = ({
         aria-controls={`SlotContainer-${index + 1}`}
         type="checkbox"
       />
-      {label && <span className="label">{label}</span>}
-      {icon && (
+      {item.label && <span className="label">{item.label}</span>}
+      {item.icon && (
         <Icon
-          icon={icon}
+          icon={item.icon}
           aria-hidden="true"
           id={`ItemIconActionTrigger-${index}`}
         />

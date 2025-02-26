@@ -60,17 +60,13 @@ const headerProps: HeaderProps = {
     {
       label: 'Departments',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Services',
       itemType: 'link',
-      details: {
-        href: '#',
-      },
+      href: '#',
       showItemMode: 'desktop-only',
     },
     {
@@ -81,19 +77,15 @@ const headerProps: HeaderProps = {
       label: 'Home',
       icon: 'home',
       itemType: 'link',
-      details: {
-        href: '/item1',
-      },
+      href: '/item1',
       showItemMode: 'desktop-only',
     },
     {
       label: 'Search',
       icon: 'search',
       itemType: 'slot',
-      details: {
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
+      component: <HeaderSearch />,
+      slotAppearance: 'dropdown',
       showItemMode: 'desktop-only',
     },
   ],

@@ -6,7 +6,7 @@
   {% set variant = props.variant or 'primary' %}
   {% set size = props.size or 'medium' %}
   {% set isDisabled = 'disabled' if props.disabled else 'notDisabled' %}
-  {% set testId = props.testId or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
+  {% set testId = props.dataTestid or 'govieButton-' ~ appearance ~ '-' ~ variant ~ '-' ~ size ~ '-' ~ isDisabled %}
   {% set commonClasses = getVariantAppearanceClass(props.disabled, props.variant, props.appearance) | trim %}
   {% set sizeClasses = getSizeClass(props.size) | trim %}
   {% set disabledClasses = isButtonDisabled(props.disabled, props.variant, props.appearance) | trim %}

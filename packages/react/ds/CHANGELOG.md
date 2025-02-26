@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [0.38.0](https://github.com/ogcio/govie-ds/compare/react-v0.37.2...react-v0.38.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+* add support to react router ([#451](https://github.com/ogcio/govie-ds/issues/451)) ([830fa90](https://github.com/ogcio/govie-ds/commit/830fa9024af9c0d9d4c32d417748341c972df523))
+
+
+### Bug Fixes
+
+* Breadcrumbs new styles ([#448](https://github.com/ogcio/govie-ds/issues/448)) ([7c7a266](https://github.com/ogcio/govie-ds/commit/7c7a266e78c2159417b698168beda7d4b0261d27))
+* restore half width on input ([#453](https://github.com/ogcio/govie-ds/issues/453)) ([fe13467](https://github.com/ogcio/govie-ds/commit/fe13467dfc7effe0a7fcd84e727cf39700773951))
+* update Facebook icon ([a6e4525](https://github.com/ogcio/govie-ds/commit/a6e4525cc76d5cddb75dacda0daefaf13ed72776))
+
 ## [0.37.2](https://github.com/ogcio/govie-ds/compare/react-v0.37.1...react-v0.37.2) (2025-02-20)
 
 

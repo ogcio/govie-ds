@@ -23,6 +23,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   label?: LabelProps;
   maxChars?: number;
   dataTestid?: string;
+  halfFluid?: boolean;
 };
 
 export const TextArea = ({
@@ -36,6 +37,7 @@ export const TextArea = ({
   id,
   ref,
   dataTestid,
+  halfFluid = false,
   ...props
 }: TextAreaProps) => {
   const [remainingChars, setRemainingChars] = useState<undefined | number>(
@@ -88,7 +90,10 @@ export const TextArea = ({
           rows={rows}
           cols={cols}
           autoComplete={autoComplete}
-          className={cn('gi-textarea', { 'gi-textarea-error': !!error?.text })}
+          className={cn('gi-textarea', {
+            'gi-textarea-error': !!error?.text,
+            'gi-input-half-width': halfFluid,
+          })}
           ref={ref}
           maxLength={maxChars}
           onChange={handleOnChange}

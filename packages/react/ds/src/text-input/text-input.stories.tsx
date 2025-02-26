@@ -323,6 +323,13 @@ export const DisabledInput: Story = {
   },
 };
 
+export const WithHalfWidth: Story = {
+  args: {
+    id: 'text-input-id',
+    halfFluid: true,
+  },
+};
+
 export const AllStates: Story = {
   render: () => (
     <div className="gi-gap-4">

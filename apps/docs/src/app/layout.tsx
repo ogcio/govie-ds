@@ -33,37 +33,27 @@ export default function RootLayout({
       {
         label: 'Get Started',
         itemType: 'link',
-        details: {
-          href: '/get-started/',
-        },
+        href: '/get-started/',
       },
       {
         label: 'Foundations',
         itemType: 'link',
-        details: {
-          href: '/foundations/',
-        },
+        href: '/foundations/',
       },
       {
         label: 'Components',
         itemType: 'link',
-        details: {
-          href: '/components/',
-        },
+        href: '/components/',
       },
       {
         label: 'Patterns',
         itemType: 'link',
-        details: {
-          href: '/patterns/',
-        },
+        href: '/patterns/',
       },
       {
         label: 'Resources',
         itemType: 'link',
-        details: {
-          href: '/resources/',
-        },
+        href: '/resources/',
       },
     ],
   };

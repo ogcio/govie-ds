@@ -26,7 +26,7 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   <Header
     title={'Application title'}
     addDefaultMobileMenu
-    items={[{ label: 'Departments', itemType: 'link', details: { href: '#' } }, { label: 'Services', itemType: 'link', details: { href: '#' } }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', details: { component: <HeaderSearch />, slotAppearance: 'dropdown' } }, { label: 'Home', icon: 'home', itemType: 'link', details: { href: '/item1' } }]}
+    items={[{ label: 'Departments', itemType: 'link', href: '#' }, { label: 'Services', itemType: 'link', href: '#' }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', component: <HeaderSearch />, slotAppearance: 'dropdown' }, { label: 'Home', icon: 'home', itemType: 'link', href: '/item1' }]}
     secondaryLinks={[{ href: '', label: 'Gaeilge' }]}
 />
 
@@ -258,17 +258,13 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
             {
                 label: 'Departments',
                 itemType: 'link',
-                details: {
-                    href: '#',
-                },
+                href: '#',
                 showItemMode: 'desktop-only',
             },
             {
                 label: 'Services',
                 itemType: 'link',
-                details: {
-                    href: '#',
-                },
+                href: '#',
                 showItemMode: 'desktop-only',
             },
             {
@@ -279,39 +275,31 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
                 label: 'Home',
                 icon: 'home',
                 itemType: 'link',
-                details: {
-                    href: '/item1',
-                },
+                href: '/item1',
                 showItemMode: 'desktop-only',
             },
             {
                 label: 'Faq',
                 icon: 'info',
                 itemType: 'slot',
-                details: {
-                    component: <div>Example drawer</div>,
-                    slotAppearance: 'drawer',
-                },
+                component: <div>Example drawer</div>,
+                slotAppearance: 'drawer',
                 showItemMode: 'desktop-only',
             },
             {
                 label: 'Search',
                 icon: 'search',
                 itemType: 'slot',
-                details: {
-                    component: <HeaderSearch />,
-                    slotAppearance: 'dropdown',
-                },
+                component: <HeaderSearch />,
+                slotAppearance: 'dropdown',
                 showItemMode: 'desktop-only',
             },
             {
                 label: 'Languages',
                 icon: 'mic',
                 itemType: 'slot',
-                details: {
-                    component: <div>Example slot</div>
-                    slotAppearance: 'dropdown',
-                },
+                component: <div>Example slot</div>
+                slotAppearance: 'dropdown',
                 showItemMode: 'desktop-only',
             },
         ],
@@ -380,17 +368,13 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
       {
         label: 'Departments',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href:'#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href:'#',
         showItemMode: 'desktop-only',
       },
     ]}
@@ -468,21 +452,69 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
                 {
                     label: 'Departments',
                     itemType: 'link',
-                    details: {
-                        href: '#',
-                    },
+                    href: '#',
                     showItemMode: 'desktop-only',
                 },
                 {
                     label: 'Services',
                     itemType: 'link',
-                    details: {
-                        href: '#',
-                    },
+                    href: '#',
                     showItemMode: 'desktop-only',
                 }
             ]
         }
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
+
+### Header with Custom Links
+
+You can also use custom links components with the header component. 
+For instance, you can use the `react-router-link` or `next/link` component to link to a specific route in your application. 
+
+<ComponentContainer fullWidth>
+  <Header
+    addDefaultMobileMenu
+    items={[
+      {
+        itemType: 'custom-link',
+        component: (<NextLink href="/departments">Departments</NextLink>),
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'custom-link',
+        component: (<NextLink href="/services">Services</NextLink>),
+        showItemMode: 'desktop-only',
+      },
+    ]}
+  />
+</ComponentContainer>
+
+<Tabs id="tab6">
+  <TabList>
+    <TabItem value="tab63" checked>React</TabItem>
+  </TabList>
+  <TabPanel value="tab63">
+    ```html
+    import { Header } from '@govie-ds/react';
+    import NextLink from 'next/link';
+
+    <Header items={
+      [
+        {
+          itemType: 'custom-link',
+          component: (<NextLink href="/departments">Departments</NextLink>),
+          showItemMode: 'desktop-only',
+        },
+        {
+          itemType: 'custom-link',
+          component: (<NextLink href="/services">Services</NextLink>),
+          showItemMode: 'desktop-only',
+        },
+      ]
+    }
     />
     ```
 
@@ -568,39 +600,35 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
       {
         icon: 'home',
         itemType: 'link',
-        details: {
-          href: '#',
-        },
+        href:'#',
       },
       {
         label: 'Faq',
         icon: 'info',
         itemType: 'slot',
-        details: {
-          component: (
-            <List
-              type={'bullet'}
-              items={[
-                <Link
-                  size="sm"
-                  href="#"
-                  children="Citizens Information - Services and Rights"
-                />,
-                <Link
-                  size="sm"
-                  href="#"
-                  children="Revenue - Taxes and Payments"
-                />,
-                <Link
-                  size="sm"
-                  href="#"
-                  children="Department of Social Protection"
-                />,
-              ]}
-            />
-          ),
-          slotAppearance: 'drawer',
-        },
+        component: (
+          <List
+            type={'bullet'}
+            items={[
+              <Link
+                size="sm"
+                href="#"
+                children="Citizens Information - Services and Rights"
+              />,
+              <Link
+                size="sm"
+                href="#"
+                children="Revenue - Taxes and Payments"
+              />,
+              <Link
+                size="sm"
+                href="#"
+                children="Department of Social Protection"
+              />,
+            ]}
+          />
+        ),
+        slotAppearance: 'drawer',
       },
     ]}
     addDefaultMobileMenu
@@ -803,53 +831,48 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     import { Header, HeaderSearch } from '@govie-ds/react';
 
     <Header
-        addDefaultMobileMenu
-        items={[
-              {
-                label: 'Search',
-                icon: 'search',
-                itemType: 'slot',
-                details: {
-                    component: <HeaderSearch />,
-                    slotAppearance: 'dropdown',
-                },
-            },
-           {
-                icon: 'home',
-                itemType: 'link',
-                details: {
-                    href: '#',
-                },
-            },
-            {
-                label: 'Faq',
-                icon: 'info',
-                itemType: 'slot',
-                details: {
-                component: (
-                    <List
-                        type={'bullet'}
-                        items={[
-                            <Link
-                                size="sm"
-                                href="#"
-                                children="Citizens Information - Services and Rights"
-                            />,
-                            <Link
-                                size="sm"
-                                href="#"
-                                children="Revenue - Taxes and Payments"
-                            />,
-                            <Link
-                                size="sm"
-                                href="#"
-                                children="Department of Social Protection"
-                            />,
-                        ]}
-                    />
-                )
-            }
-        ]} />
+      addDefaultMobileMenu
+      items={[
+        {
+          label: 'Search',
+          icon: 'search',
+          itemType: 'slot',
+          component: <HeaderSearch />,
+          slotAppearance: 'dropdown',
+        },
+        {
+          icon: 'home',
+          itemType: 'link',
+          href: '#',
+        },
+        {
+          label: 'Faq',
+          icon: 'info',
+          itemType: 'slot',
+          component: (
+              <List
+                type={'bullet'}
+                items={[
+                  <Link
+                    size="sm"
+                    href="#"
+                    children="Citizens Information - Services and Rights"
+                  />,
+                  <Link
+                    size="sm"
+                    href="#"
+                    children="Revenue - Taxes and Payments"
+                  />,
+                  <Link
+                    size="sm"
+                    href="#"
+                    children="Department of Social Protection"
+                  />,
+                ]}
+              />
+        )
+        }
+      ]} />
     ```
 
   </TabPanel>

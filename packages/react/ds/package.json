@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/react",
-  "version": "0.37.2",
+  "version": "0.38.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@govie-ds/tokens": "workspace:*",
+    "@radix-ui/react-slot": "^1.1.2",
     "clsx": "^2.1.1",
     "rollup-preserve-directives": "^1.1.2"
   },
@@ -60,7 +61,7 @@
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
     "eslint": "^9.8.0",
-    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-storybook": "^0.11.3",
     "glob": "^10.4.5",
     "i18next": "^24.2.2",
     "postcss": "^8.4.40",
