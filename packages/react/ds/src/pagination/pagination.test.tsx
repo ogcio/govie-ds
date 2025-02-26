@@ -13,19 +13,21 @@ vi.mock('../hooks/use-breakpoint.js', async () => {
 vi.mock('i18next', async (importOriginal) => {
   const actual: any = await importOriginal();
 
-  const translations: Record<string, (params?: Record<string, any>) => string> =
-    {
-      'pagination.previous': () => 'Previous',
-      'pagination.next': () => 'Next',
-      'pagination.page': (params) =>
-        `Page ${params?.currentPage} of ${params?.totalPages}`,
-      'pagination.goToPage': (params) => `Go to page ${params?.page}`,
-      'pagination.goToPrevious': () => 'Go to previous',
-      'pagination.goToNext': () => 'Go to next',
-    };
+  const translations: Record<
+    string,
+    (parameters?: Record<string, any>) => string
+  > = {
+    'pagination.previous': () => 'Previous',
+    'pagination.next': () => 'Next',
+    'pagination.page': (parameters) =>
+      `Page ${parameters?.currentPage} of ${parameters?.totalPages}`,
+    'pagination.goToPage': (parameters) => `Go to page ${parameters?.page}`,
+    'pagination.goToPrevious': () => 'Go to previous',
+    'pagination.goToNext': () => 'Go to next',
+  };
 
-  const mockTranslate = (key: string, params?: Record<string, any>) => {
-    return translations[key]?.(params) || key;
+  const mockTranslate = (key: string, parameters?: Record<string, any>) => {
+    return translations[key]?.(parameters) || key;
   };
 
   return {
