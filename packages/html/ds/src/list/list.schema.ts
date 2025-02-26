@@ -1,6 +1,5 @@
 import * as zod from 'zod';
 import { getEnumValues } from '../helpers';
-import { linkSchema } from '../link/link.schema';
 
 export const TypeEnum = {
   None: 'none',
@@ -9,7 +8,7 @@ export const TypeEnum = {
 } as const;
 
 export const linkPropsSchema = zod.object({
-  items: zod.array(zod.union([zod.string(), linkSchema]), {
+  items: zod.array(zod.string(), {
     description: 'Array of items that can be either strings or links.',
   }),
   spaced: zod
@@ -22,6 +21,11 @@ export const linkPropsSchema = zod.object({
     .describe(
       'Optional enum to define the type of the list (bullet, number, none).',
     ),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type ListProps = zod.infer<typeof linkPropsSchema>;
