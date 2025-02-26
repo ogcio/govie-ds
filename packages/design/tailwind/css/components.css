@@ -1434,7 +1434,7 @@ input[type='file' i] {
 
 .gi-table-th,
 .gi-table-td {
-  @apply gi-text-left gi-align-top gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid;
+  @apply gi-text-left gi-align-middle gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid;
 }
 
 .gi-table-caption-text {
