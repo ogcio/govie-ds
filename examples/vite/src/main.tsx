@@ -1,6 +1,38 @@
+import { initI18n } from '@govie-ds/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './application.tsx';
+
+// Initialize i18next before rendering the app
+initI18n({
+  resources: {
+    en: {
+      translation: {
+        pagination: {
+          previous: 'Previous',
+          next: 'Next',
+          page: 'Page {{currentPage}} of {{totalPages}}',
+          goToPage: 'Go to page {{page}}',
+          goToPrevious: 'Go to previous page',
+          goToNext: 'Go to next page',
+        },
+      },
+    },
+    fr: {
+      translation: {
+        pagination: {
+          previous: 'Précédent',
+          next: 'Suivant',
+          page: 'Page {{currentPage}} sur {{totalPages}}',
+          goToPage: 'Aller à la page {{page}}',
+          goToPrevious: 'Aller à la page précédente',
+          goToNext: 'Aller à la page suivante',
+        },
+      },
+    },
+  },
+  lng: 'fr', // Toggle here for debugging.
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
