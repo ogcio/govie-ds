@@ -1,29 +1,64 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './summary-list.html?raw';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { SummaryListProps } from './summary-list.schema';
 
-const macro = { name: 'govieSummaryList', html };
-const SummaryList = renderComponent<SummaryListProps>(macro);
-
-const meta = {
-  component: SummaryList,
-  title: 'typography/SummaryList',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'The Summary List component presents data concisely in labeled rows, optionally with actions for each row.',
-      },
-    },
-  },
-} satisfies Meta<typeof SummaryList>;
+const meta: Meta<SummaryListProps> = {
+  title: 'Typography/SummaryList',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<SummaryListProps>;
+
+const createSummaryList = (arguments_: SummaryListProps) => {
+  const container = document.createElement('div');
+
+  const component = document.createElement('div');
+  component.className = 'gi-summary-list';
+  component.dataset.testid = arguments_.dataTestid ?? 'paragraph';
+
+  for (const row of arguments_.rows) {
+    const rowItem = document.createElement('dl');
+    rowItem.className = 'gi-summary-list-row';
+    if (row.withBorder) {
+      rowItem.dataset.border = 'true';
+    }
+
+    const dt = document.createElement('dt');
+    dt.textContent = row.label;
+    rowItem.append(dt);
+
+    if (row.value) {
+      const dd = document.createElement('dd');
+      dd.innerHTML = row.value;
+      dd.className = 'gi-summary-list-value';
+
+      rowItem.append(dd);
+    }
+
+    if (row.action) {
+      const dd = document.createElement('dd');
+      dd.innerHTML =
+        '<a href="' +
+        row.action.href +
+        '" class="gi-link">' +
+        row.action.label +
+        '</a>';
+      dd.className = 'gi-summary-list-actions';
+
+      rowItem.append(dd);
+    }
+
+    component.append(rowItem);
+  }
+
+  container.append(component);
+
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
+  render: (arguments_) => createSummaryList(arguments_),
   args: {
     rows: [
       {
@@ -55,6 +90,7 @@ export const Default: Story = {
 };
 
 export const WithMixedBorders: Story = {
+  render: (arguments_) => createSummaryList(arguments_),
   args: {
     rows: [
       {
@@ -80,6 +116,7 @@ export const WithMixedBorders: Story = {
 };
 
 export const WithMixedActions: Story = {
+  render: (arguments_) => createSummaryList(arguments_),
   args: {
     rows: [
       {
@@ -104,6 +141,7 @@ export const WithMixedActions: Story = {
 };
 
 export const WithoutBorders: Story = {
+  render: (arguments_) => createSummaryList(arguments_),
   args: {
     rows: [
       {
