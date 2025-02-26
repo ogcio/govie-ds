@@ -20,7 +20,7 @@ const Anchor = ({
   const Component = asChild ? Slot : 'a';
 
   return (
-    <Component {...props} {...externalProps}>
+    <Component {...props} {...externalProps} tabIndex={1}>
       {children}
     </Component>
   );

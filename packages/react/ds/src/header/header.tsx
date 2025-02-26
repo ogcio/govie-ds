@@ -201,6 +201,7 @@ export function Header({
                       aria-label={link.label}
                       data-testid={`language-link-desktop-${index}`}
                       href={link.href}
+                      tabIndex={0}
                       className={languageItemClassNames}
                     >
                       {link.label}
