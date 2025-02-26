@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.32.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.0...tailwind-v0.32.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([#455](https://github.com/ogcio/govie-ds/issues/455)) ([eabdf6e](https://github.com/ogcio/govie-ds/commit/eabdf6ec6ef8599e16d026f4dc3dd9e8a113b10e))
+* table vertical alignment ([4be9476](https://github.com/ogcio/govie-ds/commit/4be9476b705bfb7f106b6558c27049286203f61a))
+
 ## [0.32.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.2...tailwind-v0.32.0) (2025-02-25)
 
 
