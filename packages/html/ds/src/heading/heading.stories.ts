@@ -5,7 +5,7 @@ import type { HeadingProps } from './heading.schema';
 import { Size, Tag } from './heading.schema';
 
 const meta: Meta<HeadingProps> = {
-  title: 'typography/Heading',
+  title: 'Typography/Heading',
 };
 
 export default meta;
