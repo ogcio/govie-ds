@@ -1,14 +1,20 @@
 'use client';
 import {
+  Button,
+  Checkbox,
   Table as DSTable,
   Icon,
+  IconButton,
   Pagination,
+  SelectComposable,
+  SelectItem,
   TableBody,
   TableData,
   TableHead,
   TableHeader,
   TableRow,
   TextInput,
+  Tooltip,
 } from '@govie-ds/react';
 import {
   compareItems,
@@ -16,9 +22,7 @@ import {
   rankItem,
 } from '@tanstack/match-sorter-utils';
 import {
-  Column,
   ColumnDef,
-  ColumnFiltersState,
   FilterFn,
   flexRender,
   getCoreRowModel,
@@ -77,6 +81,31 @@ export function DataGridSample() {
   const columns = React.useMemo<ColumnDef<Person>[]>(
     () => [
       {
+        id: 'select',
+        header: ({ table }) => (
+          <div className="px-[3px]">
+            <Checkbox
+              id={'all'}
+              value={'all'}
+              {...{
+                checked: table.getIsAllRowsSelected(),
+                onChange: table.getToggleAllRowsSelectedHandler(),
+              }}
+            />
+          </div>
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            id={row.id}
+            value={row.id}
+            {...{
+              checked: row.getIsSelected(),
+              onChange: row.getToggleSelectedHandler(),
+            }}
+          />
+        ),
+      },
+      {
         accessorFn: (row) => `${row.firstName} ${row.lastName}`,
         id: 'fullName',
         header: 'Full Name',
@@ -105,11 +134,36 @@ export function DataGridSample() {
       },
       {
         accessorKey: 'status',
-        header: 'Request Status',
+        header: 'Status',
         footer: (props) => props.column.id,
         meta: {
           filterVariant: 'select',
         },
+      },
+      {
+        id: 'actions',
+        cell: () => (
+          <div className="flex gap-1">
+            <Tooltip text={'Show Profile'}>
+              <IconButton
+                icon={{
+                  icon: 'visibility',
+                }}
+                size="large"
+                appearance="light"
+              />
+            </Tooltip>
+            <Tooltip text={'Menu'}>
+              <IconButton
+                icon={{
+                  icon: 'more_vert',
+                }}
+                size="large"
+                appearance="light"
+              />
+            </Tooltip>
+          </div>
+        ),
       },
     ],
     [],
@@ -168,7 +222,7 @@ function DataGridTable({
 
   return (
     <div className="p-2">
-      <div>
+      <div className="flex gap-2">
         <DebouncedInput
           value={globalFilter ?? ''}
           onChange={(value) => {
@@ -180,9 +234,31 @@ function DataGridTable({
             }
           }}
         />
+        <div className="grow">
+          <Button>Search</Button>
+        </div>
+        <div>
+          <SelectComposable
+            id={'filter-status'}
+            onChange={(event) => {
+              table.setColumnFilters([
+                {
+                  id: 'status',
+                  value: event.target.value.replaceAll('-', ' '),
+                },
+              ]);
+            }}
+          >
+            <SelectItem value={''}>All</SelectItem>
+            <SelectItem value={'pending'}>Pending</SelectItem>
+            <SelectItem value={'in progress'}>In Progress</SelectItem>
+            <SelectItem value={'accepted'}>Accepted</SelectItem>
+            <SelectItem value={'declined'}>Declined</SelectItem>
+          </SelectComposable>
+        </div>
       </div>
-      <div className="h-2" />
-      <DSTable layout="auto">
+
+      <DSTable layout="auto" className="my-4">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -274,7 +350,7 @@ function DebouncedInput({
     <TextInput
       {...props}
       value={value}
-      halfFluid
+      className="w-64 justify-self-stretch"
       placeholder="Search all columns..."
       onChange={(event) => setValue(event.target.value)}
     />
