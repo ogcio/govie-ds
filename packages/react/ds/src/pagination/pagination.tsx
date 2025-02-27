@@ -1,9 +1,19 @@
 'use client';
+import i18next, { t as i18nextT } from 'i18next';
 import React from 'react';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utils.js';
+
+// Handle case for where the project has not initialised i18next.
+// TODO make helper fn for this
+const t = (key: string, options?: Record<string, any>) => {
+  if (i18next.isInitialized) {
+    return i18nextT(key, options);
+  }
+  return options?.defaultValue || key;
+};
 
 export type PaginationProps = {
   currentPage: number;
@@ -12,7 +22,6 @@ export type PaginationProps = {
   dataTestid?: string;
 };
 
-// TODO Devise localisation
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
@@ -42,7 +51,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           size="large"
           appearance="dark"
           onClick={() => onPageChange(page)}
-          aria-label={`Go to page ${page}`}
+          aria-label={t('pagination.goToPage', {
+            page,
+            defaultValue: `Go to page ${page}`,
+          })}
         >
           {page}
         </Button>
@@ -52,7 +64,13 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const renderPaginationLabel = () => (
     <span className="gi-text-md" aria-live="polite">
-      <span className="gi-font-bold">Page {currentPage}</span> of {totalPages}
+      <span className="gi-font-bold">
+        {t('pagination.page', {
+          currentPage,
+          totalPages,
+          defaultValue: `Page ${currentPage} of ${totalPages}`,
+        })}
+      </span>
     </span>
   );
 
@@ -60,7 +78,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     <div
       className="gi-pagination"
       role="navigation"
-      aria-label="Pagination"
+      aria-label={t('pagination.page', {
+        currentPage,
+        totalPages,
+        defaultValue: `Page ${currentPage} of ${totalPages}`,
+      })}
       data-testid={dataTestid}
     >
       <Button
@@ -69,13 +91,15 @@ export const Pagination: React.FC<PaginationProps> = ({
         appearance="dark"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label="Go to previous page"
+        aria-label={t('pagination.goToPrevious', {
+          defaultValue: 'Go to previous',
+        })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
         </React.Fragment>
-        {!isSMWidth && 'Previous'}
+        {!isSMWidth && t('pagination.previous', { defaultValue: 'Previous' })}
       </Button>
 
       {isCompactView ? renderPaginationLabel() : renderPaginationBtns()}
@@ -86,10 +110,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         size="large"
         appearance="dark"
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label="Go to next page"
+        aria-label={t('pagination.goToNext', { defaultValue: 'Go to next' })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
       >
-        {!isSMWidth && 'Next'}
+        {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">
           <Icon icon="arrow_right_alt" />
         </React.Fragment>
