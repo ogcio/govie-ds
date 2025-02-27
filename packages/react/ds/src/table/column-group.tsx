@@ -1,5 +1,8 @@
 import React from 'react';
 
-export function ColumnGroup(props: React.PropsWithChildren) {
-  return <colgroup>{props.children}</colgroup>;
+export function ColumnGroup({
+  children,
+  ...props
+}: React.PropsWithChildren<React.TableHTMLAttributes<HTMLTableColElement>>) {
+  return <colgroup {...props}>{children}</colgroup>;
 }

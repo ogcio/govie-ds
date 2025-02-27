@@ -113,6 +113,7 @@ import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { cn } from '@/lib/cn';
+import { DataGridSample } from '../data-grid/data-grid-sample';
 
 export type MdxProps = {
   code: string;
@@ -265,6 +266,11 @@ const documentComponents: MDXComponents = {
   Details,
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
+  DataGridSample: () => (
+    <div className="gi-not-prose">
+      <DataGridSample />
+    </div>
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {
