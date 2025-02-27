@@ -4,7 +4,6 @@
   <label for="ItemActionTrigger-{{ index }}" class="gi-header-tool-item">
     <input
       data-testid="ItemActionTrigger-{{ index }}"
-      class="gi-block gi-w-0 gi-absolute gi-h-0"
       id="ItemActionTrigger-{{ index }}"
       data-index="{{ index }}"
       type="checkbox"
@@ -21,7 +20,7 @@
   <div
     id="SlotContainer-{{ index }}"
     data-index="{{ index }}"
-    class="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800"
+    class="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3"
   >
     {{ slot | safe }}
   </div>

@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [0.38.1](https://github.com/ogcio/govie-ds/compare/react-v0.38.0...react-v0.38.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([#455](https://github.com/ogcio/govie-ds/issues/455)) ([eabdf6e](https://github.com/ogcio/govie-ds/commit/eabdf6ec6ef8599e16d026f4dc3dd9e8a113b10e))
+
 ## [0.38.0](https://github.com/ogcio/govie-ds/compare/react-v0.37.2...react-v0.38.0) (2025-02-25)
 
 

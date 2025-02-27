@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.1](https://github.com/ogcio/govie-ds/compare/html-v0.31.0...html-v0.31.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([0af9b29](https://github.com/ogcio/govie-ds/commit/0af9b2983d0d68a81e05769789e262e57ca0d1e2))
+
 ## [0.31.0](https://github.com/ogcio/govie-ds/compare/html-v0.30.1...html-v0.31.0) (2025-02-25)
 
 
