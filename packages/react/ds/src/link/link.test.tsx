@@ -71,6 +71,22 @@ describe('link', () => {
     expect(linkElement.classList.contains('gi-link-no-visited')).toBe(true);
   });
 
+  it('should not gi-link if styled as button', () => {
+    const screen = renderLink({
+      href: 'https://example.com',
+      children: 'Example Link',
+      asButton: {
+        variant: 'primary',
+        size: 'medium',
+        appearance: 'default',
+      },
+    });
+
+    const linkElement = screen.getByRole('link');
+
+    expect(linkElement.classList.contains('gi-link')).toBe(false);
+  });
+
   it('should pass axe tests', async () => {
     const screen = renderLink({
       href: 'https://example.com',

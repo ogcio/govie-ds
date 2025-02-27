@@ -54,7 +54,7 @@ Links are blue and underlined by default. If your link is at the end of a senten
 
 <ComponentContainer>
   <Link href="#" noColor>
-    Link with inherited color
+    <span>Link with inherited color</span>
   </Link>
 </ComponentContainer>
 
@@ -94,7 +94,7 @@ Links are blue and underlined by default. If your link is at the end of a senten
 
 <ComponentContainer>
   <Link href="#" noUnderline>
-    Link with no underline
+    <span>Link with no underline</span>
   </Link>
 </ComponentContainer>
 
@@ -214,7 +214,10 @@ Links are blue and underlined by default. If your link is at the end of a senten
 ### With Icon
 
 <ComponentContainer>
-  <Link href="#"><Icon icon="chevron_left" inline size="sm" /> Back</Link>
+  <Link href="#">
+    <Icon icon="chevron_left" inline size="sm" />
+    <span>Back</span>
+  </Link>
 </ComponentContainer>
 
 <Tabs id="tab6">
@@ -292,4 +295,3 @@ If your design requires additional elements (like icons) or more intricate hover
 ## Status
 
 <ComponentStatusBlock componentId="link" />
-
