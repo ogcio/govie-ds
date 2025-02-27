@@ -81,6 +81,7 @@ export const styledAsButton: Story = {
     asButton: {
       variant: 'primary',
       size: 'medium',
+      appearance: 'default',
     },
     href: '#',
     children: 'Link',
