@@ -258,7 +258,7 @@ function DataGridTable({
         </div>
       </div>
 
-      <DSTable layout="auto" className="my-4">
+      <DSTable layout="auto" className="my-4 w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
