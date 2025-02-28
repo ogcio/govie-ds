@@ -76,6 +76,7 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Toast } from '../components/toast';
+import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
@@ -113,7 +114,6 @@ import { DocumentImage } from './document-image';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { cn } from '@/lib/cn';
-import { DataGridSample } from '../data-grid/data-grid-sample';
 
 export type MdxProps = {
   code: string;
