@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.2](https://github.com/ogcio/govie-ds/compare/html-v0.31.1...html-v0.31.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* update link as button classes ([#445](https://github.com/ogcio/govie-ds/issues/445)) ([35e1019](https://github.com/ogcio/govie-ds/commit/35e10196ab205dde48be2233058cd52a42acc5ee))
+
 ## [0.31.1](https://github.com/ogcio/govie-ds/compare/html-v0.31.0...html-v0.31.1) (2025-02-26)
 
 
