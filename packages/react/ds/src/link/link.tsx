@@ -51,7 +51,7 @@ export const Link: React.FC<LinkProps> = ({
   const linkClasses = cn(
     {
       'gi-link': !asButton,
-      'gi-link-no-underline': !asButton && noUnderline,
+      'gi-link-no-underline': asButton || noUnderline,
       'gi-link-no-visited': !asButton && noVisited,
       'gi-link-inherit': !asButton && noColor,
       'gi-btn': asButton,
