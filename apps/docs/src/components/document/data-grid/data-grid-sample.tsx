@@ -234,9 +234,7 @@ function DataGridTable({
             }
           }}
         />
-        <div className="grow">
-          <Button>Search</Button>
-        </div>
+        <div className="grow"></div>
         <div>
           <SelectComposable
             id={'filter-status'}
