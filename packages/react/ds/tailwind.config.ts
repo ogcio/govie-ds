@@ -13,6 +13,7 @@ const config: Config = {
     'gi-max-w-none',
     'gi-grid',
     'gi-stroke-gray-950',
+    { pattern: /align-./ },
     { pattern: /grid-./ },
     { pattern: /col-./ },
     { pattern: /row-./ },
