@@ -13,27 +13,22 @@ const tableVariants = tv({
 });
 
 export type TableProps = VariantProps<typeof tableVariants> & {
-  ariaRowCount?: number;
-  ariaColCount?: number;
   dataTestid?: string;
-};
+} & React.TableHTMLAttributes<HTMLTableElement>;
 
 export function Table({
   layout = 'auto',
-  ariaRowCount,
-  ariaColCount,
   dataTestid,
   children,
+  ...props
 }: React.PropsWithChildren<TableProps>) {
   const layoutClasses = tableVariants({ layout });
   return (
     <table
       className={cn(layoutClasses)}
       role="table"
-      aria-label="Table"
-      aria-rowcount={ariaRowCount}
-      aria-colcount={ariaColCount}
       data-testid={dataTestid}
+      {...props}
     >
       {children}
     </table>

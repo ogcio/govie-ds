@@ -76,6 +76,7 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Toast } from '../components/toast';
+import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
@@ -265,6 +266,11 @@ const documentComponents: MDXComponents = {
   Details,
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
+  DataGridSample: () => (
+    <div className="gi-not-prose">
+      <DataGridSample />
+    </div>
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {

@@ -1,15 +1,13 @@
 import React from 'react';
 import { cn } from '../cn.js';
 
-interface TableDataProps extends React.PropsWithChildren {
-  className?: string;
-  colSpan?: number;
-}
-
-export function TableData({ children, className, colSpan }: TableDataProps) {
+export function TableData({
+  children,
+  ...props
+}: React.PropsWithChildren<React.TableHTMLAttributes<HTMLTableCellElement>>) {
   const baseClasses = 'gi-table-td';
   return (
-    <td className={cn(baseClasses, className)} colSpan={colSpan}>
+    <td className={cn(baseClasses, props.className)} {...props}>
       {children}
     </td>
   );
