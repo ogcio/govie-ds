@@ -21,28 +21,25 @@ libraries:
 ### Default
 
 <ComponentContainer>
-  <ProgressStepper
-    steps={[
-      'Step 1',
-      'Step 2',
-      'Step 3',
-      'Step 4',
-      'Step 5',
-      'Step 6',
-      'Step 7',
-    ]}
-    currentStepIndex={3}
-  />
+  <ProgressStepper currentStepIndex={3}>
+    <StepItem label="Step 1" />
+    <StepItem label="Step 2" />
+    <StepItem label="Step 3" />
+    <StepItem label="Step 4" />
+    <StepItem label="Step 5" />
+  </ProgressStepper>
 </ComponentContainer>
 
 ### Vertically
 
 <ComponentContainer>
-  <ProgressStepper
-    orientation="vertical"
-    steps={['Step 1', 'Step 2', 'Step 3', 'Step 4']}
-    currentStepIndex={2}
-  />
+  <ProgressStepper currentStepIndex={3} orientation="vertical">
+    <StepItem label="Step 1" />
+    <StepItem label="Step 2" />
+    <StepItem label="Step 3" />
+    <StepItem label="Step 4" />
+    <StepItem label="Step 5" />
+  </ProgressStepper>
 </ComponentContainer>
 
 <Tabs id="tab1">
