@@ -32,9 +32,10 @@ export * from './header/components/header-search.js';
 export * from './header/header.js';
 export type {
   HeaderItem,
-  HeaderLinkItemType,
+  HeaderItemType,
   HeaderProps,
-  HeaderSlotItemType,
+  HeaderItemMode,
+  HeaderItemAppearance,
 } from './header/types.js';
 export * from './heading/heading.js';
 export * from './hint-text/hint-text.js';
