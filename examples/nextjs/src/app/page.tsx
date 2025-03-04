@@ -10,7 +10,7 @@ import {
   Link,
   Paragraph,
   PhaseBanner,
-  RadiosGroup,
+  RadioGroup,
   TextArea,
   Modal,
   ModalTitle,
@@ -202,7 +202,7 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <RadiosGroup
+          <RadioGroup
             title={{
               value: "Where do you live?",
               asHeading: {

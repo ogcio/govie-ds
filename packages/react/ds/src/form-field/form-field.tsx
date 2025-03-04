@@ -18,7 +18,7 @@ export const FormField = ({
   children,
 }: React.PropsWithChildren<FormFieldProps>) => {
   return (
-    <div className={cn({ 'gi-error-state': error })}>
+    <fieldset className={cn({ 'gi-error-state': error })}>
       {label?.text && (
         <Label
           text={label.text}
@@ -34,6 +34,6 @@ export const FormField = ({
       {error?.text && <ErrorText text={error.text} size={error.size} />}
 
       <Slottable>{children}</Slottable>
-    </div>
+    </fieldset>
   );
 };

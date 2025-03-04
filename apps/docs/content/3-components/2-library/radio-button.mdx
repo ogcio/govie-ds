@@ -21,7 +21,7 @@ libraries:
 ### Standard radio
 
 <ComponentContainer>
-  <RadiosGroup {...{
+  <RadioGroup {...{
     groupId: 'uniqueId-1',
     title: {
       value: 'Where do you live?',
@@ -129,7 +129,7 @@ libraries:
   </TabPanel>
   <TabPanel value="tab12">
   ```html
-  {{ govieRadiosGroup({
+  {{ govieRadioGroup({
     "groupId": "uniqueId",
     "title": {
       "value": "Where do you live?",
@@ -157,9 +157,9 @@ libraries:
   </TabPanel>
   <TabPanel value="tab13">
   ```html
-  import { RadiosGroup } from '@govie-ds/react';
+  import { RadioGroup } from '@govie-ds/react';
 
-  <RadiosGroup
+  <RadioGroup
   title={{
     value: 'Where do you live?',
     asHeading: {
@@ -191,7 +191,7 @@ libraries:
 ### Inline radio
 
 <ComponentContainer>
-  <RadiosGroup {...{
+  <RadioGroup {...{
     groupId: 'uniqueId-2',
     inline: true,
     title: {
@@ -303,7 +303,7 @@ libraries:
   </TabPanel>
   <TabPanel value="tab22">
   ```html
-  {{ govieRadiosGroup({
+  {{ govieRadioGroup({
     "groupId": "uniqueId",
     "inline": true,
     "title": {
@@ -332,9 +332,9 @@ libraries:
   </TabPanel>
   <TabPanel value="tab23">
   ```html
-  import { RadiosGroup } from '@govie-ds/react';
+  import { RadioGroup } from '@govie-ds/react';
 
-  <RadiosGroup
+  <RadioGroup
   title={{
     value: 'Where do you live?',
     asHeading: {
@@ -367,7 +367,7 @@ libraries:
 ### Radios with hints
 
 <ComponentContainer>
-  <RadiosGroup {...{
+  <RadioGroup {...{
     groupId: 'uniqueId-3',
     title: {
       value: 'Have you changed your name?',
@@ -501,7 +501,7 @@ libraries:
   </TabPanel>
   <TabPanel value="tab32">
   ```html
-  {{ govieRadiosGroup({
+  {{ govieRadioGroup({
     "groupId": "uniqueId",
     "title": {
       "value": "Have you changed your name?",
@@ -528,9 +528,9 @@ libraries:
   </TabPanel>
   <TabPanel value="tab33">
   ```html
-  import { RadiosGroup } from '@govie-ds/react';
+  import { RadioGroup } from '@govie-ds/react';
 
-  <RadiosGroup
+  <RadioGroup
   title={{
     value: 'Have you changed your name?',
     hint: 'This includes changing your last name or spelling your name differently.'

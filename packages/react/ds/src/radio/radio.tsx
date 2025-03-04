@@ -2,29 +2,25 @@
 
 import { HintText } from '../hint-text/hint-text.js';
 import { TextInput, type TextInputProps } from '../text-input/text-input.js';
-import {
-  type RadioProps,
-  type RadiosSizeType,
-  RadiosSizeEnum,
-} from './types.js';
+import { type RadioProps, type RadioSizeType, RadioSizeEnum } from './types.js';
 
-const getRadioSize = (size?: RadiosSizeType) => {
+const getRadioSize = (size?: RadioSizeType) => {
   let sizeClass = 'gi-radio-medium';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadioSizeEnum.Large) {
     sizeClass = 'gi-radio-large';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadioSizeEnum.Small) {
     sizeClass = 'gi-radio-small';
   }
   return sizeClass;
 };
 
-export const getRadioWidth = (size?: RadiosSizeType) => {
+export const getRadioWidth = (size?: RadioSizeType) => {
   let widthClass = 'gi-w-8';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadioSizeEnum.Large) {
     widthClass = 'gi-w-11';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadioSizeEnum.Small) {
     widthClass = 'gi-w-6';
   }
   return widthClass;
@@ -56,7 +52,6 @@ export const Radio = ({
     <div className="gi-radio-container">
       <div className="gi-radio-input-container">
         <input
-          readOnly={checked}
           onChange={onChange}
           checked={checked}
           name={name}

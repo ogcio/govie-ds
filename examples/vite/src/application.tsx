@@ -20,7 +20,7 @@ import {
   FileUpload,
   Tag,
   Modal,
-  RadiosGroup,
+  RadioGroup,
   Card,
   Button,
   CookieBanner,
@@ -277,7 +277,7 @@ export function App() {
         <br />
         <h2>Checkbox</h2>
         <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <RadiosGroup
+        <RadioGroup
           title={{
             value: 'Where do you live?',
             asHeading: {

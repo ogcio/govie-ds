@@ -1,0 +1,48 @@
+'use client';
+import React, { useState } from 'react';
+import type { RadioGroupType } from './types.js';
+
+export const RadioGroup = ({
+  inline,
+  onChange,
+  children,
+}: React.PropsWithChildren<RadioGroupType>) => {
+  const [value, setValue] = useState<null | string>();
+
+  const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+    onChange?.(event);
+  };
+
+  const childrenWithOnChange = React.Children.map(children, (element) => {
+    if (
+      React.isValidElement<{
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+        checked: boolean;
+        value: string;
+      }>(element)
+    ) {
+      return React.cloneElement<{
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+        checked: boolean;
+        value: string;
+      }>(element, {
+        onChange: onOptionChange,
+        checked: value === element.props.value,
+      });
+    }
+    return element;
+  });
+  return (
+    <div className="gi-radio-group-container">
+      <div className="gi-radio-group-options-container">
+        <div
+          role="radiogroup"
+          className={`${inline ? 'gi-radio-group-options-inline' : 'gi-radio-group-options-stacked'}`}
+        >
+          {childrenWithOnChange}
+        </div>
+      </div>
+    </div>
+  );
+};

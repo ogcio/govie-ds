@@ -66,7 +66,20 @@ input[type='text'] {
   @apply gi-pl-4 gi-border-solid gi-border-l-lg gi-border-red-600;
 }
 
-.gi-error-state input, .gi-error-state textarea {
+.gi-error-state input[type='text'],
+.gi-error-state input[type='password'],
+.gi-error-state input[type='email'],
+.gi-error-state input[type='number'],
+.gi-error-state input[type='tel'],
+.gi-error-state input[type='url'],
+.gi-error-state input[type='search'],
+.gi-error-state input[type='date'],
+.gi-error-state input[type='datetime-local'],
+.gi-error-state input[type='color'],
+.gi-error-state input[type='file'],
+.gi-error-state input[type='range'],
+.gi-error-state select,
+.gi-error-state textarea {
   @apply gi-border-red-600;
 }
 

@@ -82,7 +82,7 @@ caseworking
 dropdowns
 breakpoint
 TwoThirdsOneThird
-RadiosGroup
+RadioGroup
 standardProps
 asHeading
 fieldId

@@ -47,7 +47,7 @@ export * from './phase-banner/phase-banner.js';
 export * from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
 export { Radio } from './radio/radio.js';
-export * from './radio/radios-group.js';
+export * from './radio/radio-group.js';
 export * from './section-break/section-break.js';
 export { Select, SelectGroupItem, SelectItem } from './select/select.js';
 export * from './select/select.js';
