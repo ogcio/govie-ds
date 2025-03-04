@@ -1,5 +1,5 @@
 import { cleanup, render } from '../test-utils.js';
-import { ProgressStepper } from './progress-stepper.js';
+import { ProgressStepper, StepItem } from './progress-stepper.js'; // Import StepItem as well
 import type { ProgressStepperProps } from './types.js';
 
 describe('govieProgressStepper', () => {
@@ -10,57 +10,99 @@ describe('govieProgressStepper', () => {
 
   it('should render a horizontal progress stepper correctly', () => {
     const screen = renderProgressStepper({
-      steps: ['Step 1', 'Step 2', 'Step 3'],
+      children: [
+        <StepItem label="Step 1" key="step-1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2" key="step-2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3" key="step-3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
       currentStepIndex: 1,
     });
+
     const stepperElement = screen.getByTestId('progress-stepper');
-    const steps = [
+    const stepElements = [
       ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
     ] as HTMLElement[];
-    expect(steps.length).toBe(3);
 
-    expect(steps[0].dataset.completed).toBe('true');
-    expect(steps[1].dataset.current).toBe('true');
-    expect(steps[2].dataset.next).toBe('true');
+    expect(stepElements.length).toBe(3);
+    expect(stepElements[0].dataset.completed).toBe('true');
+    expect(stepElements[1].dataset.current).toBe('true');
+    expect(stepElements[2].dataset.next).toBe('true');
   });
 
   it('should render a vertical progress stepper correctly', () => {
     const screen = renderProgressStepper({
-      steps: ['Step 1', 'Step 2', 'Step 3'],
+      children: [
+        <StepItem label="Step 1" key="step-1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2" key="step-2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3" key="step-3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
       currentStepIndex: 2,
       orientation: 'vertical',
     });
+
     const stepperElement = screen.getByTestId('progress-stepper');
-    const steps = [
+    const stepElements = [
       ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
     ] as HTMLElement[];
 
-    expect(steps[2].dataset.current).toBe('true');
+    expect(stepElements[2].dataset.current).toBe('true');
   });
 
   it('should mark all steps as completed when completeAll is true', () => {
     const screen = renderProgressStepper({
-      steps: ['Step 1', 'Step 2', 'Step 3'],
+      children: [
+        <StepItem label="Step 1" key="step-1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2" key="step-2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3" key="step-3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
       completeAll: true,
     });
 
     const stepperElement = screen.getByTestId('progress-stepper');
-    const steps = [
+    const stepElements = [
       ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
     ] as HTMLElement[];
 
-    for (const step of steps) {
+    for (const step of stepElements) {
       expect(step.dataset.completed).toBe('true');
       expect(step.dataset.current).not.toBe('true');
       expect(step.dataset.next).not.toBe('true');
     }
 
-    expect(steps.length).toBe(3);
+    expect(stepElements.length).toBe(3);
   });
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderProgressStepper({
-      steps: ['Step 1', 'Step 2', 'Step 3'],
+      children: [
+        <StepItem label="Step 1" key="step-1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2" key="step-2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3" key="step-3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
       currentStepIndex: 0,
     });
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon } from '../icon/icon.js';
 import {
   ProgressStepperIndicator,
@@ -97,42 +98,57 @@ const Step = ({
   );
 };
 
+type StepItemProps = {
+  label: string;
+  children?: React.ReactNode;
+};
+
+// Component used just to pick the props on ProgressStepper component
+export const StepItem: React.FC<StepItemProps> = () => null;
+
 export const ProgressStepper = ({
-  steps,
+  children,
   currentStepIndex = 0,
   orientation = 'horizontal',
   completeAll,
 }: ProgressStepperProps) => {
+  const slot = children[currentStepIndex]?.props?.children;
+
   return (
-    <div
-      data-testid="progress-stepper"
-      className="gi-progress-stepper"
-      data-orientation={orientation}
-      role="list"
-      aria-live="polite"
-    >
-      {steps.map((step, index) => {
-        const [isCurrentStep, isLastStep, isCompleted] = [
-          !completeAll && currentStepIndex === index,
-          index === steps.length - 1,
-          completeAll ||
-            (index < currentStepIndex && index !== currentStepIndex),
-        ];
-        return (
-          <div className="gi-w-full">
-            <Step
-              key={`progress-stepper-step-${index}`}
-              stepNumber={index + 1}
-              isCurrentStep={isCurrentStep}
-              isCompleted={isCompleted}
-              orientation={orientation}
-              isLastStep={isLastStep}
-            >
-              {step}
-            </Step>
-          </div>
-        );
-      })}
+    <div className="gi-w-full">
+      <div
+        data-testid="progress-stepper"
+        className="gi-progress-stepper"
+        data-orientation={orientation}
+        role="list"
+        aria-live="polite"
+      >
+        {React.Children.map(children, (child, index) => {
+          const { label } = child.props as any;
+          const [isCurrentStep, isLastStep, isCompleted] = [
+            !completeAll && currentStepIndex === index,
+            index === children.length - 1,
+            completeAll ||
+              (index < currentStepIndex && index !== currentStepIndex),
+          ];
+
+          return (
+            <div className="gi-w-full">
+              <Step
+                key={`progress-stepper-step-${index}`}
+                stepNumber={index + 1}
+                isCurrentStep={isCurrentStep}
+                isCompleted={isCompleted}
+                orientation={orientation}
+                isLastStep={isLastStep}
+              >
+                {label}
+              </Step>
+            </div>
+          );
+        })}
+      </div>
+      {slot}
     </div>
   );
 };

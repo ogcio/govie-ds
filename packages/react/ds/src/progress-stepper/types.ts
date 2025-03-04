@@ -7,8 +7,13 @@ export const ProgressStepperIndicator = {
 export type ProgressStepperIndicatorType =
   (typeof ProgressStepperIndicator)[keyof typeof ProgressStepperIndicator];
 
+export type Step = {
+  label: string;
+  slot: React.ReactElement;
+};
+
 export type ProgressStepperProps = {
-  steps: string[];
+  children: React.ReactElement<StepProps>[];
   currentStepIndex?: number;
   orientation?: Orientation;
   completeAll?: boolean;
