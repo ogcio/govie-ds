@@ -1,3 +1,4 @@
+'use client';
 import { HintText } from '../hint-text/hint-text.js';
 import { getTickSize, getSizeClass } from './helpers.js';
 import { CheckboxSizeEnum, type CheckboxType } from './types.js';

@@ -27,13 +27,15 @@ export const Default: Story = {
       description: 'Specify if the radios should be inline',
     },
   },
-  args: {},
+  args: {
+    groupId: 'city',
+  },
   render: (arguments_) => (
     <FormField label={{ text: 'Where do you live?' }}>
       <RadioGroup {...arguments_}>
-        <Radio name="city" value={'dublin'} label={'Dublin'} />
-        <Radio name="city" value={'cork'} label={'Cork'} />
-        <Radio name="city" value={'galway'} label={'Galway'} />
+        <Radio value={'dublin'} label={'Dublin'} />
+        <Radio value={'cork'} label={'Cork'} />
+        <Radio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
@@ -42,36 +44,41 @@ export const Default: Story = {
 export const inline: Story = {
   args: {
     inline: true,
+    groupId: 'city2',
   },
   render: (arguments_) => (
     <FormField label={{ text: 'Where do you live?' }}>
       <RadioGroup {...arguments_} inline>
-        <Radio name="city2" value={'dublin'} label={'Dublin'} />
-        <Radio name="city2" value={'cork'} label={'Cork'} />
-        <Radio name="city2" value={'galway'} label={'Galway'} />
+        <Radio value={'dublin'} label={'Dublin'} />
+        <Radio value={'cork'} label={'Cork'} />
+        <Radio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
 };
 
 export const withTitleHint: Story = {
-  args: {},
+  args: {
+    groupId: 'city3',
+  },
   render: (arguments_) => (
     <FormField
       label={{ text: 'Where do you live?' }}
       hint={{ text: 'Select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio name="city3" value={'dublin'} label={'Dublin'} />
-        <Radio name="city3" value={'cork'} label={'Cork'} />
-        <Radio name="city3" value={'galway'} label={'Galway'} />
+        <Radio value={'dublin'} label={'Dublin'} />
+        <Radio value={'cork'} label={'Cork'} />
+        <Radio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
 };
 
 export const withOptionHints: Story = {
-  args: {},
+  args: {
+    groupId: 'login',
+  },
   render: (arguments_) => (
     <FormField
       label={{ text: 'How do you want to sign in?' }}
@@ -81,13 +88,11 @@ export const withOptionHints: Story = {
     >
       <RadioGroup {...arguments_}>
         <Radio
-          name="login"
           value={'val1'}
           label={'Sign in with Username and Password'}
           hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
         />
         <Radio
-          name="login"
           value={'val2'}
           label={'Sign in with MyGovID'}
           hint="If you don't have a MyGovID Login, you can create one"
@@ -98,25 +103,29 @@ export const withOptionHints: Story = {
 };
 
 export const withDividerOption: Story = {
-  args: {},
+  args: {
+    groupId: 'city5',
+  },
   render: (arguments_) => (
     <FormField
       label={{ text: 'Where do you live?' }}
       hint={{ text: 'Select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio name="city5" value={'dublin'} label={'Dublin'} />
-        <Radio name="city5" value={'cork'} label={'Cork'} />
-        <Radio name="city5" value={'galway'} label={'Galway'} />
+        <Radio value={'dublin'} label={'Dublin'} />
+        <Radio value={'cork'} label={'Cork'} />
+        <Radio value={'galway'} label={'Galway'} />
         <Paragraph>or</Paragraph>
-        <Radio name="city5" value={'none'} label={'Non of above'} />
+        <Radio value={'none'} label={'Non of above'} />
       </RadioGroup>
     </FormField>
   ),
 };
 
 export const withError: Story = {
-  args: {},
+  args: {
+    groupId: 'city6',
+  },
   render: (arguments_) => (
     <FormField
       label={{ text: 'Where do you live?' }}
@@ -124,27 +133,27 @@ export const withError: Story = {
       error={{ text: 'Please select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio name="city6" value={'dublin'} label={'Dublin'} />
-        <Radio name="city6" value={'cork'} label={'Cork'} />
-        <Radio name="city6" value={'galway'} label={'Galway'} />
+        <Radio value={'dublin'} label={'Dublin'} />
+        <Radio value={'cork'} label={'Cork'} />
+        <Radio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
 };
 
 export const withConditionalInput: Story = {
-  args: {},
+  args: {
+    groupId: 'contact',
+  },
   render: (arguments_) => (
     <FormField label={{ text: 'How would you prefer to be contacted?' }}>
       <RadioGroup {...arguments_}>
         <Radio
-          name="contact"
           value={'email'}
           label={'email'}
           conditionalInput={{ id: 'email', placeholder: 'Email address' }}
         />
         <Radio
-          name="contact"
           value={'phone'}
           label={'Phone'}
           conditionalInput={{ id: 'phone', placeholder: 'Phone number' }}

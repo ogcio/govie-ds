@@ -96,7 +96,7 @@ cookieLink
 dismissButton
 ComboBox
 ComboBoxProps
-CheckboxesGroup
+CheckboxGroup
 htmlFor
 halfFluid
 TextInput

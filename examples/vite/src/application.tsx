@@ -31,7 +31,7 @@ import {
   Alert,
   Pagination,
   Checkbox,
-  CheckboxesGroup,
+  CheckboxGroup,
   Form,
   DropdownItem,
   HeaderProps,
@@ -263,7 +263,7 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <CheckboxesGroup
+        <CheckboxGroup
           groupId="field-Id"
           items={[
             { label: 'Irish', value: 'irish' },

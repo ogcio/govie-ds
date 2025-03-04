@@ -10,7 +10,8 @@ import {
   Button,
   Caption,
   Card,
-  CheckboxesGroup,
+  Checkbox,
+  CheckboxGroup,
   Chip,
   Combobox,
   CookieBanner,
@@ -23,6 +24,7 @@ import {
   FileUpload,
   Footer,
   Form,
+  FormField,
   Header,
   HeaderSearch,
   Heading,
@@ -40,6 +42,7 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
+  Radio,
   RadioGroup,
   SectionBreak,
   Select,
@@ -65,7 +68,6 @@ import {
   Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
-
 import NextLink from 'next/link';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -217,7 +219,7 @@ const documentComponents: MDXComponents = {
   Label: (props) => <Label {...props} />,
   IconButton: (props) => <IconButton {...props} />,
   FileUpload: (props) => <FileUpload {...props} />,
-  CheckboxesGroup: (props) => <CheckboxesGroup {...props} />,
+  CheckboxGroup: (props) => <CheckboxGroup {...props} />,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
     <Button disabled={true}>
@@ -265,6 +267,9 @@ const documentComponents: MDXComponents = {
   Details,
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
+  FormField: (props) => <FormField {...props} />,
+  Radio: (props) => <Radio {...props} />,
+  Checkbox: (props) => <Checkbox {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

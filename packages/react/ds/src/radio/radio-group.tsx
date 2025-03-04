@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import type { RadioGroupType } from './types.js';
 
 export const RadioGroup = ({
+  groupId,
   inline,
   onChange,
   children,
@@ -20,15 +21,18 @@ export const RadioGroup = ({
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
+        name: string;
       }>(element)
     ) {
       return React.cloneElement<{
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
+        name: string;
       }>(element, {
         onChange: onOptionChange,
         checked: value === element.props.value,
+        name: groupId,
       });
     }
     return element;

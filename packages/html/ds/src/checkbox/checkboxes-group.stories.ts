@@ -4,13 +4,13 @@ import { renderComponent } from '../storybook/storybook';
 import html from './checkboxes-group.html?raw';
 import type { CheckboxesProps } from './checkboxes.schema';
 
-const macro = { name: 'govieCheckboxesGroup', html };
+const macro = { name: 'govieCheckboxGroup', html };
 
 const Checkboxes = renderComponent<CheckboxesProps>(macro);
 
 const meta = {
   component: Checkboxes,
-  title: 'form/Checkbox/CheckboxesGroup',
+  title: 'form/Checkbox/CheckboxGroup',
   parameters: {
     macro,
     docs: {

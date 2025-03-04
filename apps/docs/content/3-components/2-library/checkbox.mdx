@@ -21,36 +21,36 @@ libraries:
 ### Default
 
 <ComponentContainer>
-  <CheckboxesGroup
-    fieldId="UniqueID"
-    items={[
-      {
-        label: 'Employment Tribunal',
-        value: 'employment-tribunal',
-      },
-      {
-        label: 'Ministry of Defence',
-        value: 'ministry-of-defence',
-      },
-      {
-        label: 'Department for Transport',
-        value: 'department-for-transport',
-      },
-    ]}
-    title={{
-      asHeading: {
-        size: 'md',
-        as: 'h1',
-      },
-      value: 'Organisation',
-    }}
-  />
+  <FormField label={{ text: 'Organization' }}>
+      <CheckboxGroup groupId={'uniqueid1'} >
+        <Checkbox
+          value={'employment-tribunal'}
+          label={'Employment Tribunal'}
+          id={'uniqueid1-check1'}
+        />
+        <Checkbox
+          value={'ministry-of-defence'}
+          label={'Ministry of Defence'}
+          id={'uniqueid1-check2'}
+        />
+        <Checkbox
+          value={'department-for-transport'}
+          label={'Department for Transport'}
+          id={'uniqueid1-check3'}
+        />
+        <Checkbox
+          value={'others'}
+          label={'Others'}
+          id={'uniqueid1-check4'}
+          disabled
+        />
+      </CheckboxGroup>
+    </FormField>
 </ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
@@ -121,63 +121,35 @@ libraries:
   </div>
     ```
   </TabPanel>
-  <TabPanel value="tab32">
-    ```html
-    {{ govieCheckboxesGroup({
-      "fieldId": "UniqueID",
-      "items": [
-        {
-          "label": "Employment Tribunal",
-          "value": "employment-tribunal"
-        },
-        {
-          "label": "Ministry of Defence",
-          "value": "ministry-of-defence"
-        },
-        {
-          "label": "Department for Transport",
-          "value": "department-for-transport"
-        }
-      ],
-      "title": {
-        "value": "Organisation",
-        "asHeading": {
-          "size": "lg",
-          "as": "h1"
-        }
-      }
-    }) }}
-    ```
-
-  </TabPanel>
   <TabPanel value="tab33">
-    ```html
-    import { CheckboxesGroup } from "@govie-ds/react";
+    ```jsx
+    import { CheckboxGroup, FormField, Checkbox } from "@govie-ds/react";
       
-    <CheckboxesGroup
-      fieldId="UniqueID"
-      items={[
-        {
-          label: 'Employment Tribunal',
-          value: 'employment-tribunal'
-        },
-        {
-          label: 'Ministry of Defence',
-          value: 'ministry-of-defence'
-        },
-        {
-          label: 'Department for Transport',
-          value: 'department-for-transport'
-        }
-      ]}
-      title={{
-        asHeading: {
-          size: 'md',
-          as: 'h1'
-        },
-        value: 'Organisation'
-      }}
-    />
+    <FormField label={{ text: 'Organization' }}>
+      <CheckboxGroup groupId={'uniqueid1'} >
+        <Checkbox
+          value={'employment-tribunal'}
+          label={'Employment Tribunal'}
+          id={'uniqueid1-check1'}
+        />
+        <Checkbox
+          value={'ministry-of-defence'}
+          label={'Ministry of Defence'}
+          id={'uniqueid1-check2'}
+        />
+        <Checkbox
+          value={'department-for-transport'}
+          label={'Department for Transport'}
+          id={'uniqueid1-check3'}
+        />
+        <Checkbox
+          value={'others'}
+          label={'Others'}
+          id={'uniqueid1-check4'}
+          disabled
+        />
+      </CheckboxGroup>
+    </FormField>
     ```
   </TabPanel>
 </Tabs>

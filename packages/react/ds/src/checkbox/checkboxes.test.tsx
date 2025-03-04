@@ -1,11 +1,11 @@
 // import { render, cleanup } from '../test-utils.js';
 // import {
-//   CheckboxesGroup,
-//   type CheckboxesGroupType,
+//   CheckboxGroup,
+//   type CheckboxGroupType,
 // } from './checkboxes-group.js';
 // import { CheckboxSizeEnum } from './types.js';
 
-// const standardProps: CheckboxesGroupType = {
+// const standardProps: CheckboxGroupType = {
 //   groupId: 'UniqueID',
 //   items: [
 //     {
@@ -30,8 +30,8 @@
 // describe('checkboxes', () => {
 //   afterEach(cleanup);
 
-//   const renderCheckboxes = (props: CheckboxesGroupType) =>
-//     render(<CheckboxesGroup {...props} />);
+//   const renderCheckboxes = (props: CheckboxGroupType) =>
+//     render(<CheckboxGroup {...props} />);
 
 //   it('should render checkbox labels and inputs', () => {
 //     const screen = renderCheckboxes(standardProps);

@@ -21,6 +21,7 @@ export type RadioProps = {
 };
 
 export type RadioGroupType = {
+  groupId: string;
   inline?: boolean;
   onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 };

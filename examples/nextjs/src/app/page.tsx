@@ -35,7 +35,7 @@ import {
   ProgressBar,
   ProgressStepper,
   Checkbox,
-  CheckboxesGroup,
+  CheckboxGroup,
   DropdownItem,
   Form,
   Drawer,
@@ -176,7 +176,7 @@ export default function Home() {
             </Combobox>
           </Form>
           <h2>Checkboxes Group</h2>
-          <CheckboxesGroup
+          <CheckboxGroup
             groupId="field-Id"
             items={[
               { label: "Irish", value: "irish" },

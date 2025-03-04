@@ -21,30 +21,13 @@ libraries:
 ### Standard radio
 
 <ComponentContainer>
-  <RadioGroup {...{
-    groupId: 'uniqueId-1',
-    title: {
-      value: 'Where do you live?',
-      asHeading: {
-        size: 'md',
-        as: 'h2',
-      },
-    },
-    items: [
-      {
-        label: 'England',
-        value: 'england',
-      },
-      {
-        label: 'Scotland',
-        value: 'scotland',
-      },
-      {
-        label: 'Ireland',
-        value: 'ireland',
-      },
-    ],
-  }} />
+  <FormField label={{ text: 'Where do you live?' }}>
+    <RadioGroup groupId={'city'}>
+      <Radio value={'dublin'} label={'Dublin'} />
+      <Radio value={'cork'} label={'Cork'} />
+      <Radio value={'galway'} label={'Galway'} />
+    </RadioGroup>
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab1">
@@ -55,135 +38,89 @@ libraries:
   </TabList>
   <TabPanel value="tab11">
   ```html
-<div data-module="gieds-radios" class="gi-flex">
-  <fieldset>
-    <legend class="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-      <h2 class="gi-heading-md !gi-mb-0">Where do you live?</h2>
-    </legend>
-    <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-      <div class="gi-flex gi-flex-col gi-gap-2.5">
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-primary="true"
-              data-element="radio0"
-              id="UniqueId1-0"
-              value="england"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-0"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              England
-            </label>
+  <div data-module="gieds-radios" class="gi-flex">
+    <fieldset>
+      <legend class="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md !gi-mb-0">Where do you live?</h2>
+      </legend>
+      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-primary="true"
+                data-element="radio0"
+                id="UniqueId1-0"
+                value="england"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-0"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
           </div>
-        </div>
 
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-primary="true"
-              data-element="radio1"
-              id="UniqueId1-1"
-              value="scotland"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-1"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              Scotland
-            </label>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-primary="true"
+                data-element="radio1"
+                id="UniqueId1-1"
+                value="scotland"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-1"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
           </div>
-        </div>
 
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-primary="true"
-              data-element="radio2"
-              id="UniqueId1-2"
-              value="ireland"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-2"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              Ireland
-            </label>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-primary="true"
+                data-element="radio2"
+                id="UniqueId1-2"
+                value="ireland"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-2"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </fieldset>
-</div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieRadioGroup({
-    "groupId": "uniqueId",
-    "title": {
-      "value": "Where do you live?",
-      "asHeading": {
-        "size": "md",
-        "as": "h2"
-      }
-    },
-    "items": [
-      {
-        "label": "England",
-        "value": "england"
-      },
-      {
-        "label": "Scotland",
-        "value": "scotland"
-      },
-      {
-        "label": "Ireland",
-        "value": "ireland"
-      }
-    ]
-  }) }}
+    </fieldset>
+  </div>
   ```
   </TabPanel>
   <TabPanel value="tab13">
-  ```html
-  import { RadioGroup } from '@govie-ds/react';
+  ```jsx
+  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
 
-  <RadioGroup
-  title={{
-    value: 'Where do you live?',
-    asHeading: {
-      size: 'md',
-      as: 'h2',
-    },
-  }}
-  items={[
-    {
-      label: 'England',
-      value: 'england',
-    },
-    {
-      label: 'Scotland',
-      value: 'scotland',
-    },
-    {
-      label: 'Ireland',
-      value: 'ireland',
-    },
-  ]}
-  groupId="uniqueId"
-/>;
-
+  <FormField label={{ text: 'Where do you live?' }}>
+    <RadioGroup groupId={'city'}>
+      <Radio value={'dublin'} label={'Dublin'} />
+      <Radio value={'cork'} label={'Cork'} />
+      <Radio value={'galway'} label={'Galway'} />
+    </RadioGroup>
+  </FormField>
   ```
   </TabPanel>
 </Tabs>
@@ -191,175 +128,108 @@ libraries:
 ### Inline radio
 
 <ComponentContainer>
-  <RadioGroup {...{
-    groupId: 'uniqueId-2',
-    inline: true,
-    title: {
-      value: 'Where do you live?',
-      asHeading: {
-        size: 'md',
-        as: 'h2',
-      },
-    },
-    items: [
-      {
-        label: 'England',
-        value: 'england',
-      },
-      {
-        label: 'Scotland',
-        value: 'scotland',
-      },
-      {
-        label: 'Ireland',
-        value: 'ireland',
-      },
-    ],
-  }} />
+  <FormField label={{ text: 'Where do you live?' }}>
+    <RadioGroup groupId={'city'} inline>
+      <Radio value={'dublin'} label={'Dublin'} />
+      <Radio value={'cork'} label={'Cork'} />
+      <Radio value={'galway'} label={'Galway'} />
+    </RadioGroup>
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
-    <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
-    <TabItem value="tab23">React</TabItem>
-  </TabList>
-  <TabPanel value="tab21">
-  ```html
-<div data-module="gieds-radios" class="gi-flex">
-  <fieldset>
-    <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-      <h2 class="gi-heading-md !gi-mb-2">Where do you live?</h2>
-    </legend>
-    <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-      <div class="gi-flex gi-flex-row gi-gap-4">
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-has-conditional-input=""
-              data-primary="true"
-              data-element="radio0"
-              id="UniqueId1-0"
-              value="england"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-0"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              England
-            </label>
+      <TabItem value="tab21" checked>HTML</TabItem>
+      <TabItem value="tab23">React</TabItem>
+    </TabList>
+    <TabPanel value="tab21">
+    ```html
+  <div data-module="gieds-radios" class="gi-flex">
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md !gi-mb-2">Where do you live?</h2>
+      </legend>
+      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
+        <div class="gi-flex gi-flex-row gi-gap-4">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-has-conditional-input=""
+                data-primary="true"
+                data-element="radio0"
+                id="UniqueId1-0"
+                value="england"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-0"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                England
+              </label>
+            </div>
           </div>
-        </div>
 
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-has-conditional-input=""
-              data-primary="true"
-              data-element="radio1"
-              id="UniqueId1-1"
-              value="scotland"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-1"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              Scotland
-            </label>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-has-conditional-input=""
+                data-primary="true"
+                data-element="radio1"
+                id="UniqueId1-1"
+                value="scotland"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-1"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Scotland
+              </label>
+            </div>
           </div>
-        </div>
 
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-has-conditional-input=""
-              data-primary="true"
-              data-element="radio2"
-              id="UniqueId1-2"
-              value="ireland"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-2"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              Ireland
-            </label>
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-has-conditional-input=""
+                data-primary="true"
+                data-element="radio2"
+                id="UniqueId1-2"
+                value="ireland"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-2"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Ireland
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </fieldset>
-</div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-  {{ govieRadioGroup({
-    "groupId": "uniqueId",
-    "inline": true,
-    "title": {
-      "value": "Where do you live?",
-      "asHeading": {
-        "size": "md",
-        "as": "h2"
-      }
-    },
-    "items": [
-      {
-        "label": "England",
-        "value": "england"
-      },
-      {
-        "label": "Scotland",
-        "value": "scotland"
-      },
-      {
-        "label": "Ireland",
-        "value": "ireland"
-      }
-    ]
-  }) }}
+    </fieldset>
+  </div>
   ```
   </TabPanel>
   <TabPanel value="tab23">
-  ```html
-  import { RadioGroup } from '@govie-ds/react';
+  ```jsx
+  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
 
-  <RadioGroup
-  title={{
-    value: 'Where do you live?',
-    asHeading: {
-      size: 'md',
-      as: 'h2',
-    },
-  }}
-  inline={true}
-  items={[
-    {
-      label: 'England',
-      value: 'england',
-    },
-    {
-      label: 'Scotland',
-      value: 'scotland',
-    },
-    {
-      label: 'Ireland',
-      value: 'ireland',
-    },
-  ]}
-  groupId="uniqueId"
-/>;
-
+  <FormField label={{ text: 'Where do you live?' }}>
+    <RadioGroup groupId={'city'} inline>
+      <Radio value={'dublin'} label={'Dublin'} />
+      <Radio value={'cork'} label={'Cork'} />
+      <Radio value={'galway'} label={'Galway'} />
+    </RadioGroup>
+  </FormField>
   ```
   </TabPanel>
 </Tabs>
@@ -367,194 +237,156 @@ libraries:
 ### Radios with hints
 
 <ComponentContainer>
-  <RadioGroup {...{
-    groupId: 'uniqueId-3',
-    title: {
-      value: 'Have you changed your name?',
-      hint: 'This includes changing your last name or spelling your name differently.',
-      asHeading: {
-        size: 'md',
-        as: 'h2',
-      },
-    },
-    items: [
-      {
-        label: 'Yes',
-        value: 'yes',
-        hint: 'Yes, I have changed my name',
-      },
-      {
-        label: 'No',
-        value: 'no',
-        hint: "No, I didn't change my name",
-      },
-    ],
-  }} />
+  <FormField
+    label={{ text: 'How do you want to sign in?' }}
+    hint={{
+      text: "You'll need an account to prove your identity and complete your Self Assessment",
+    }}
+  >
+    <RadioGroup groupId={'withhint'}>
+      <Radio
+        value={'val1'}
+        label={'Sign in with Username and Password'}
+        hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
+      />
+      <Radio
+        value={'val2'}
+        label={'Sign in with MyGovID'}
+        hint="If you don't have a MyGovID Login, you can create one"
+      />
+    </RadioGroup>
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
   ```html
-<div data-module="gieds-radios" class="gi-flex">
-  <fieldset>
-    <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-      <h2 class="gi-heading-md !gi-mb-2">Have you changed your name?</h2>
+  <div data-module="gieds-radios" class="gi-flex">
+    <fieldset>
+      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
+        <h2 class="gi-heading-md !gi-mb-2">Have you changed your name?</h2>
 
-      <div>
-        <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-2">
-          This includes changing your last name or spelling your name
-          differently.
-        </p>
-      </div>
-    </legend>
-    <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-      <div class="gi-flex gi-flex-col gi-gap-2.5">
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-has-conditional-input=""
-              data-primary="true"
-              data-element="radio0"
-              id="UniqueId1-0"
-              value="no"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-0"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              Yes
-            </label>
-          </div>
-          <div class="gi-flex gi-gap-4">
-            <div
-              data-conditional-divider="UniqueId1-0"
-              class="gi-w-8 gi-invisible"
-            >
-              <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
-                <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+        <div>
+          <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-2">
+            This includes changing your last name or spelling your name
+            differently.
+          </p>
+        </div>
+      </legend>
+      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
+        <div class="gi-flex gi-flex-col gi-gap-2.5">
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-has-conditional-input=""
+                data-primary="true"
+                data-element="radio0"
+                id="UniqueId1-0"
+                value="no"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-0"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                Yes
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div
+                data-conditional-divider="UniqueId1-0"
+                class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p
+                    class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
+                  >
+                    Yes, I have changed my name
+                  </p>
+                </div>
               </div>
             </div>
-            <div>
+          </div>
+
+          <div class="gi-flex gi-flex-col">
+            <div class="gi-gap-4 gi-flex gi-items-center">
+              <input
+                name="UniqueId1"
+                data-has-conditional-input=""
+                data-primary="true"
+                data-element="radio1"
+                id="UniqueId1-1"
+                value="no"
+                class="gi-radio-medium gi-radio-base"
+                type="radio"
+              />
+              <label
+                for="UniqueId1-1"
+                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
+              >
+                No
+              </label>
+            </div>
+            <div class="gi-flex gi-gap-4">
+              <div
+                data-conditional-divider="UniqueId1-1"
+                class="gi-w-8 gi-invisible"
+              >
+                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
+                  <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
+                </div>
+              </div>
               <div>
-                <p
-                  class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
-                >
-                  Yes, I have changed my name
-                </p>
+                <div>
+                  <p
+                    class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
+                  >
+                    No, I didn't change my name
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="gi-flex gi-flex-col">
-          <div class="gi-gap-4 gi-flex gi-items-center">
-            <input
-              name="UniqueId1"
-              data-has-conditional-input=""
-              data-primary="true"
-              data-element="radio1"
-              id="UniqueId1-1"
-              value="no"
-              class="gi-radio-medium gi-radio-base"
-              type="radio"
-            />
-            <label
-              for="UniqueId1-1"
-              class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-            >
-              No
-            </label>
-          </div>
-          <div class="gi-flex gi-gap-4">
-            <div
-              data-conditional-divider="UniqueId1-1"
-              class="gi-w-8 gi-invisible"
-            >
-              <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
-                <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
-              </div>
-            </div>
-            <div>
-              <div>
-                <p
-                  class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
-                >
-                  No, I didn't change my name
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-  </fieldset>
-</div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab32">
-  ```html
-  {{ govieRadioGroup({
-    "groupId": "uniqueId",
-    "title": {
-      "value": "Have you changed your name?",
-      "hint": "This includes changing your last name or spelling your name differently."
-      "asHeading": {
-        "size": "md",
-        "as": "h2"
-      }
-    },
-    "items": [
-      {
-        "label": "Yes",
-        "value": "yes",
-        hint: "Yes, I have changed my name"
-      },
-      {
-        "label": "No",
-        "value": "no",
-        hint: "No, I didn't change my name"
-      }
-    ]
-  }) }}
+    </fieldset>
+  </div>
   ```
   </TabPanel>
   <TabPanel value="tab33">
-  ```html
-  import { RadioGroup } from '@govie-ds/react';
+  ```jsx
+  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
 
-  <RadioGroup
-  title={{
-    value: 'Have you changed your name?',
-    hint: 'This includes changing your last name or spelling your name differently.'
-    asHeading: {
-      size: 'md',
-      as: 'h2',
-    },
-  }}
-  inline={true}
-  items={[
-    {
-      label: 'Yes',
-      value: 'yes',
-      hint: 'Yes, I have changed my name',
-    },
-    {
-      label: 'No',
-      value: 'no',
-      hint: "No, I didn't change my name",
-    },
-  ]}
-  groupId="uniqueId"
-/>;
-
+  <FormField
+      label={{ text: 'How do you want to sign in?' }}
+      hint={{
+        text: "You'll need an account to prove your identity and complete your Self Assessment",
+      }}
+    >
+      <RadioGroup groupId={'withhint'}>
+        <Radio
+          value={'val1'}
+          label={'Sign in with Username and Password'}
+          hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
+        />
+        <Radio
+          value={'val2'}
+          label={'Sign in with MyGovID'}
+          hint="If you don't have a MyGovID Login, you can create one"
+        />
+      </RadioGroup>
+    </FormField>
   ```
   </TabPanel>
 </Tabs>
