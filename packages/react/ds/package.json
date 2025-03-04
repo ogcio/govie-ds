@@ -25,7 +25,8 @@
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
     "storybook:test": "vitest --project=storybook",
-    "storybook:coverage": "vitest --project=storybook --coverage"
+    "storybook:coverage": "vitest --project=storybook --coverage",
+    "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml"
   },
   "prettier": "@govie-ds/prettier-config",
   "sideEffects": [
@@ -53,6 +54,8 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
+    "@percy/cli": "^1.30.7",
+    "@percy/storybook": "^6.0.3",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
