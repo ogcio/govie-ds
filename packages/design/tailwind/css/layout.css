@@ -40,3 +40,23 @@
 }
 
 /* End Layout */
+
+/* Column Grid */
+
+.gi-12-column-grid {
+  @apply gi-mx-8 lg:gi-mx-8 gi-grid gi-grid-cols-12 gi-gap-6;
+}
+
+.gi-8-column-grid {
+  @apply gi-mx-6 gi-grid gi-grid-cols-8 gi-gap-6;
+}
+
+.gi-4-column-grid {
+  @apply gi-mx-4 gi-grid gi-grid-cols-4 gi-gap-4;
+}
+
+.gi-12-column-responsive-grid {
+  @apply gi-mx-4 md:gi-mx-6 lg:gi-mx-8 gi-grid gi-grid-cols-4 md:gi-grid-cols-8 lg:gi-grid-cols-12 gi-gap-4 md:gi-gap-6 lg:gi-gap-6;
+}
+
+/* End of Column Grid */

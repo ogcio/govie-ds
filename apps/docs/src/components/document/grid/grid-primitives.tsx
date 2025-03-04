@@ -19,11 +19,13 @@ export function GridPrimitives() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-4">12-Column Grid (Desktop)</h2>
+        <h2 className="text-xl font-bold mb-4">
+          12-Column Grid (Desktop) <pre>gi-12-column-grid</pre>
+        </h2>
         <div className="p-8 border border-gray-300">
-          <div className="mx-8 lg:mx-8 grid grid-cols-12 gap-6">
+          <div className="gi-12-column-grid">
             {generateColumns(12).map((col) => (
-              <div key={col} className={`bg-gold-200 p-4 shadow-sm`}>
+              <div key={col} className="bg-gold-200 p-4 shadow-sm">
                 <p className="text-center font-medium">{col}</p>
               </div>
             ))}
@@ -32,9 +34,11 @@ export function GridPrimitives() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-4">8-Column Grid (Tablet)</h2>
+        <h2 className="text-xl font-bold mb-4">
+          8-Column Grid (Tablet) <pre>gi-8-column-grid</pre>
+        </h2>
         <div className="p-8 border border-gray-300">
-          <div className="mx-6 grid grid-cols-8 gap-6">
+          <div className="gi-8-column-grid">
             {generateColumns(8).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -45,9 +49,11 @@ export function GridPrimitives() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-4">4-Column Grid (Mobile)</h2>
+        <h2 className="text-xl font-bold mb-4">
+          4-Column Grid (Mobile) <pre>gi-4-column-grid</pre>
+        </h2>
         <div className="p-8 border border-gray-300">
-          <div className="mx-4 grid grid-cols-4 gap-4">
+          <div className="gi-4-column-grid">
             {generateColumns(4).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -58,9 +64,11 @@ export function GridPrimitives() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-4">Responsive Grid Example</h2>
+        <h2 className="text-xl font-bold mb-4">
+          Responsive Grid Example <pre>gi-12-column-responsive-grid</pre>
+        </h2>
         <div className="p-8 border border-gray-300">
-          <div className="mx-4 md:mx-6 lg:mx-8 grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4 md:gap-6 lg:gap-6">
+          <div className="gi-12-column-responsive-grid">
             {generateColumns(12).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -72,11 +80,11 @@ export function GridPrimitives() {
 
       <section>
         <h2 className="text-xl font-bold mb-4">Alternative Columns</h2>
+        <p className="mb-2">
+          Different column spans in a 12-column grid system
+        </p>
         <div className="p-8 border border-gray-300">
           <div className="space-y-6">
-            <p className="font-semibold mb-2">
-              Different column spans in a 12-column grid system
-            </p>
             <div className="mx-4 md:mx-6 lg:mx-8 grid grid-cols-12 gap-4 md:gap-6 lg:gap-6">
               {generateColumns(12).map((index) => (
                 <div
@@ -125,7 +133,7 @@ export function GridPrimitives() {
                 <p className="text-center font-medium">4</p>
               </div>
               <div className="col-span-12 bg-gold-200 p-4 shadow-sm">
-                <p className="text-center font-medium">12</p>
+                <p className="text-center max-w-none font-medium">12</p>
               </div>
             </div>
           </div>
