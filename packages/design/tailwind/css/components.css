@@ -83,7 +83,8 @@ input[type='text'] {
 
 /* Select */
 .gi-select {
-  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-sm gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md;
+  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-sm gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md gi-appearance-none gi-relative gi-bg-no-repeat gi-bg-right;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='var(--gieds-color-gray-950)' height='24' viewBox='0 -960 960 960' width='24px' xmlns='http://www.w3.org/2000/svg'><path d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z' /></svg>");
 }
 .gi-select-option {
   @apply gi-font-primary xs:gi-text-sm md:gi-text-md;
@@ -107,7 +108,7 @@ input[type='text'] {
   @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-50 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
 }
 .gi-text-input {
-  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-gray-950;
 }
 
 .gi-input-half-width {
@@ -859,8 +860,7 @@ input[type='file' i] {
 
 /* TextArea */
 
-.gi-textarea,
-.gi-textarea-error {
+.gi-textarea {
   @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
 }
 

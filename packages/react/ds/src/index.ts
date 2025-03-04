@@ -30,12 +30,7 @@ export * from './footer/footer.js';
 export { MobileHeaderMenuItems } from './header/components/header-menu.js';
 export * from './header/components/header-search.js';
 export * from './header/header.js';
-export type {
-  HeaderItem,
-  HeaderLinkItemType,
-  HeaderProps,
-  HeaderSlotItemType,
-} from './header/types.js';
+export type { HeaderItem, HeaderProps } from './header/types.js';
 export * from './heading/heading.js';
 export * from './hint-text/hint-text.js';
 export * from './icon-button/icon-button.js';
@@ -54,11 +49,7 @@ export * from './progress-stepper/progress-stepper.js';
 export { Radio } from './radio/radio.js';
 export * from './radio/radios-group.js';
 export * from './section-break/section-break.js';
-export {
-  Select as SelectComposable,
-  SelectGroupItem,
-  SelectItem,
-} from './select-composable/select.js';
+export { Select, SelectGroupItem, SelectItem } from './select/select.js';
 export * from './select/select.js';
 export * from './spinner/spinner.js';
 export * from './stack/stack.js';
