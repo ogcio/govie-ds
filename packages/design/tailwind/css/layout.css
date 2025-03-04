@@ -43,19 +43,19 @@
 
 /* Column Grid */
 
-.gi-12-column-grid {
+.gi-grid-12-column {
   @apply gi-mx-8 lg:gi-mx-8 gi-grid gi-grid-cols-12 gi-gap-6;
 }
 
-.gi-8-column-grid {
+.gi-grid-8-column {
   @apply gi-mx-6 gi-grid gi-grid-cols-8 gi-gap-6;
 }
 
-.gi-4-column-grid {
+.gi-grid-4-column {
   @apply gi-mx-4 gi-grid gi-grid-cols-4 gi-gap-4;
 }
 
-.gi-12-column-responsive-grid {
+.gi-grid-responsive {
   @apply gi-mx-4 md:gi-mx-6 lg:gi-mx-8 gi-grid gi-grid-cols-4 md:gi-grid-cols-8 lg:gi-grid-cols-12 gi-gap-4 md:gi-gap-6 lg:gi-gap-6;
 }
 

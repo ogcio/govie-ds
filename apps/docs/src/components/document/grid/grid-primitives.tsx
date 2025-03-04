@@ -20,10 +20,10 @@ export function GridPrimitives() {
 
       <section>
         <h2 className="text-xl font-bold mb-4">
-          12-Column Grid (Desktop) <pre>gi-12-column-grid</pre>
+          12-Column Grid (Desktop) <pre>gi-grid-12-column</pre>
         </h2>
         <div className="p-8 border border-gray-300">
-          <div className="gi-12-column-grid">
+          <div className="gi-grid-12-column">
             {generateColumns(12).map((col) => (
               <div key={col} className="bg-gold-200 p-4 shadow-sm">
                 <p className="text-center font-medium">{col}</p>
@@ -35,10 +35,10 @@ export function GridPrimitives() {
 
       <section>
         <h2 className="text-xl font-bold mb-4">
-          8-Column Grid (Tablet) <pre>gi-8-column-grid</pre>
+          8-Column Grid (Tablet) <pre>gi-grid-8-column</pre>
         </h2>
         <div className="p-8 border border-gray-300">
-          <div className="gi-8-column-grid">
+          <div className="gi-grid-8-column">
             {generateColumns(8).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -50,10 +50,10 @@ export function GridPrimitives() {
 
       <section>
         <h2 className="text-xl font-bold mb-4">
-          4-Column Grid (Mobile) <pre>gi-4-column-grid</pre>
+          4-Column Grid (Mobile) <pre>gi-grid-4-column</pre>
         </h2>
         <div className="p-8 border border-gray-300">
-          <div className="gi-4-column-grid">
+          <div className="gi-grid-4-column">
             {generateColumns(4).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -65,10 +65,10 @@ export function GridPrimitives() {
 
       <section>
         <h2 className="text-xl font-bold mb-4">
-          Responsive Grid Example <pre>gi-12-column-responsive-grid</pre>
+          Responsive Grid Example <pre>gi-grid-responsive</pre>
         </h2>
         <div className="p-8 border border-gray-300">
-          <div className="gi-12-column-responsive-grid">
+          <div className="gi-grid-responsive">
             {generateColumns(12).map((col) => (
               <div key={col} className={'bg-gold-200 p-4 shadow-sm'}>
                 <p className="text-center font-medium">{col}</p>
@@ -126,15 +126,89 @@ export function GridPrimitives() {
                   <p className="text-center font-medium">6</p>
                 </div>
               ))}
-              <div className="col-span-8 bg-gold-200 p-4 shadow-sm">
-                <p className="text-center font-medium">8</p>
-              </div>
-              <div className="col-span-4 bg-gold-200 p-4 shadow-sm">
-                <p className="text-center font-medium">4</p>
-              </div>
               <div className="col-span-12 bg-gold-200 p-4 shadow-sm">
                 <p className="text-center max-w-none font-medium">12</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-bold mb-4">Sidebar Layout (desktop)</h2>
+        <div className="p-8 border border-gray-300">
+          <div className="gi-grid-12-column h-[400px]">
+            {generateColumns(3).map((col) => (
+              <div
+                key={`sidebar-${col}`}
+                className="bg-blue-200 p-4 shadow-sm"
+              ></div>
+            ))}
+            {generateColumns(9).map((col) => (
+              <div
+                key={`content-${col}`}
+                className="bg-gold-200 p-4 shadow-sm"
+              ></div>
+            ))}
+          </div>
+          <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-blue-200"></div>
+              <span>Sidebar</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-gold-200"></div>
+              <span>Content</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-bold mb-4">Sidebar Layout (tablet)</h2>
+        <div className="p-8 border border-gray-300">
+          <div className="gi-grid-8-column h-[400px]">
+            {generateColumns(2).map((col) => (
+              <div
+                key={`sidebar-${col}`}
+                className="bg-blue-200 p-4 shadow-sm"
+              ></div>
+            ))}
+            {generateColumns(6).map((col) => (
+              <div
+                key={`content-${col}`}
+                className="bg-gold-200 p-4 shadow-sm"
+              ></div>
+            ))}
+          </div>
+          <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-blue-200"></div>
+              <span>Sidebar</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-gold-200"></div>
+              <span>Content</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-bold mb-4">Sidebar Layout (mobile)</h2>
+        <div className="p-8 border border-gray-300">
+          <div className="gi-grid-4-column h-[400px]">
+            {generateColumns(4).map((col) => (
+              <div
+                key={`sidebar-${col}`}
+                className="bg-gold-200 p-4 shadow-sm"
+              ></div>
+            ))}
+          </div>
+          <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-gold-200"></div>
+              <span>Content</span>
             </div>
           </div>
         </div>
