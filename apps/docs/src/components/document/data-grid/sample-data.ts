@@ -17,8 +17,6 @@ const range = (length_: number) => {
   return array;
 };
 
-// const ieFaker = new Faker({ locale: [en_IE] });
-
 const createRandomCitizen = (): Person => {
   return {
     firstName: faker.person.firstName(),
