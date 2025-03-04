@@ -258,7 +258,9 @@ export const WithLabelHintAndError: Story = {
     const canvas = within(canvasElement);
 
     const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
-    expect(textInput).toHaveClass('gi-border-red-600');
+    expect(window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
+    );
 
     const label = canvas.getByText('Label');
     expect(label).toBeTruthy();

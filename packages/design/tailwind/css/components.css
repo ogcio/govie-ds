@@ -66,6 +66,10 @@ input[type='text'] {
   @apply gi-pl-4 gi-border-solid gi-border-l-lg gi-border-red-600;
 }
 
+.gi-error-state input, .gi-error-state textarea {
+  @apply gi-border-red-600;
+}
+
 /* End of Error state */
 
 /* General Input disable state */
