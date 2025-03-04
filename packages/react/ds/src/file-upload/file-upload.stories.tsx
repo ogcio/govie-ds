@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../form-field/form-field.js';
+import { FormField } from '../forms/form-field.js';
 import { FileUpload } from './file-upload.js';
 
 const meta = {

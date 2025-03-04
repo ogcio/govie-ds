@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../form-field/form-field.js';
+import { FormField } from '../forms/form-field.js';
 import { Label } from '../label/label.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 

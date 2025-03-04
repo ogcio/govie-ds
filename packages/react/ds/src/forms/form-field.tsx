@@ -30,8 +30,12 @@ export const FormField = ({
         </Label>
       )}
 
-      {hint?.text && <HintText text={hint.text} size={hint.size} />}
-      {error?.text && <ErrorText text={error.text} size={error.size} />}
+      {hint?.text && (
+        <HintText text={hint.text} size={hint.size} className="gi-mb-1" />
+      )}
+      {error?.text && (
+        <ErrorText text={error.text} size={error.size} className="gi-mb-1" />
+      )}
 
       <Slottable>{children}</Slottable>
     </fieldset>

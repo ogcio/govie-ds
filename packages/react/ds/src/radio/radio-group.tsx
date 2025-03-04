@@ -34,11 +34,11 @@ export const RadioGroup = ({
     return element;
   });
   return (
-    <div className="gi-radio-group-container">
-      <div className="gi-radio-group-options-container">
+    <div className="gi-input-group-container">
+      <div className="gi-input-group-options-container">
         <div
           role="radiogroup"
-          className={`${inline ? 'gi-radio-group-options-inline' : 'gi-radio-group-options-stacked'}`}
+          className={`${inline ? 'gi-input-group-options-inline' : 'gi-input-group-options-stacked'}`}
         >
           {childrenWithOnChange}
         </div>

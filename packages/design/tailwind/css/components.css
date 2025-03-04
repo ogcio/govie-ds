@@ -178,25 +178,30 @@ input[type='text'] {
 
 /* End of Phase banner */
 
-/* Radio */
+/* Input Group */
 
-.gi-radio-group-container {
+.gi-input-group-container {
   @apply gi-flex;
 }
-.gi-radio-group-error {
-  @apply gi-w-5 gi-border-l-[5px] gi-border-l-red-600 gi-border-solid;
+.gi-input-group-error {
+  @apply gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid;
 }
-.gi-radio-group-legend {
-  @apply sm:gi-text-sm md:gi-text-md lg:gi-text-lg;
-}
-.gi-radio-group-options-container {
+.gi-input-group-options-container {
   @apply gi-flex gi-flex-col gi-gap-2.5;
 }
-.gi-radio-group-options-inline {
+.gi-input-group-options-inline {
   @apply gi-flex gi-flex-row gi-gap-4;
 }
-.gi-radio-group-options-stacked {
+
+.gi-input-group-options-stacked {
   @apply gi-flex gi-flex-col gi-gap-2.5;
+}
+/*  */
+
+/* Radio */
+
+.gi-radio-group-legend {
+  @apply sm:gi-text-sm md:gi-text-md lg:gi-text-lg;
 }
 .gi-radio-group-options-divider-text {
   @apply gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
@@ -959,17 +964,8 @@ input[type='file' i] {
 
 /* Checkbox group */
 
-.gi-checkbox-group-container {
-  @apply gi-flex;
-}
-.gi-checkbox-group-error {
-  @apply gi-w-4 gi-border-l-lg gi-border-l-red-600 gi-border-solid;
-}
 .gi-checkbox-group-title {
   @apply gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg;
-}
-.gi-checkbox-group-checkboxes-container {
-  @apply gi-flex gi-flex-col gi-gap-2.5;
 }
 .gi-checkbox-container {
   @apply gi-flex gi-items-center;

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../form-field/form-field.js';
+import { FormField } from '../forms/form-field.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { RadioGroup } from './radio-group.js';
 import { Radio } from './radio.js';
