@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [0.39.0](https://github.com/ogcio/govie-ds/compare/react-v0.38.1...react-v0.39.0) (2025-03-03)
+
+
+### Features
+
+* localisation ([#452](https://github.com/ogcio/govie-ds/issues/452)) ([3b65eed](https://github.com/ogcio/govie-ds/commit/3b65eeddb4da1b55e508e201b4f0f08cd9edd39e))
+
+
+### Bug Fixes
+
+* update link as button classes ([#445](https://github.com/ogcio/govie-ds/issues/445)) ([35e1019](https://github.com/ogcio/govie-ds/commit/35e10196ab205dde48be2233058cd52a42acc5ee))
+
+## [0.38.1](https://github.com/ogcio/govie-ds/compare/react-v0.38.0...react-v0.38.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([#455](https://github.com/ogcio/govie-ds/issues/455)) ([eabdf6e](https://github.com/ogcio/govie-ds/commit/eabdf6ec6ef8599e16d026f4dc3dd9e8a113b10e))
+
 ## [0.38.0](https://github.com/ogcio/govie-ds/compare/react-v0.37.2...react-v0.38.0) (2025-02-25)
 
 

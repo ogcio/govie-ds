@@ -11,6 +11,11 @@
   @apply gi-w-full gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] xl:gi-max-w-[1280px] md:gi-mx-auto;
 }
 
+/* Similar to gi-container class but limited to max-width to 1024px */
+.gi-layout-container-max-lg {
+  @apply gi-w-full gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] md:gi-mx-auto;
+}
+
 .gi-layout-container-full-width {
   @apply gi-w-full gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto;
 }

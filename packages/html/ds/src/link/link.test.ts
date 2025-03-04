@@ -1,3 +1,8 @@
+import {
+  ButtonAppearance,
+  ButtonSize,
+  ButtonVariant,
+} from '../button/button-schema';
 import { render } from '../common/render';
 import html from './link.html?raw';
 import { LinkProps } from './link.schema';
@@ -75,6 +80,22 @@ describe('link', () => {
     expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
       true,
     );
+  });
+
+  it('should not gi-link if styled as button', () => {
+    const screen = renderLink({
+      href: 'https://example.com',
+      label: 'Example Link',
+      asButton: {
+        variant: ButtonVariant.Primary,
+        size: ButtonSize.Medium,
+        appearance: ButtonAppearance.Default,
+      },
+    });
+
+    const linkElement = screen.getByRole('link');
+
+    expect(linkElement.classList.contains('gi-link')).toBe(false);
   });
 
   it('should have correct aria attributes', () => {

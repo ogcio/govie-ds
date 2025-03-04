@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.44.1](https://github.com/ogcio/govie-ds/compare/docs-v0.44.0...docs-v0.44.1) (2025-03-03)
+
+
+### Bug Fixes
+
+* update link as button classes ([#445](https://github.com/ogcio/govie-ds/issues/445)) ([35e1019](https://github.com/ogcio/govie-ds/commit/35e10196ab205dde48be2233058cd52a42acc5ee))
+
 ## [0.44.0](https://github.com/ogcio/govie-ds/compare/docs-v0.43.1...docs-v0.44.0) (2025-02-25)
 
 

@@ -196,7 +196,7 @@
   @apply gi-decoration-xs
   gi-underline
   gi-underline-offset-[0.2em]
-  gi-text-blue-700;
+  gi-text-blue-700 gi-inline-block;
 }
 
 .gi-link:not([aria-current='page']) {
