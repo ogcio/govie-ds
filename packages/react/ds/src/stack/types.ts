@@ -1,5 +1,3 @@
-import { ReactHTMLElement } from 'react';
-
 export type Gap =
   | number
   | {
