@@ -19,7 +19,7 @@ export const SelectGroupItem = ({
   children,
   ...props
 }: SelectGroupItemProps) => (
-  <optgroup {...props} role="group" aria-labelledby={props.label || ''}>
+  <optgroup {...props} role="group">
     {children}
   </optgroup>
 );
@@ -35,13 +35,8 @@ export const SelectItem = ({ children, ...props }: SelectItemProps) => (
 );
 
 export const Select = ({ children, ...props }: SelectProps) => {
-  const ariaLabel = props['aria-label'] || props['aria-labelledby'] || '';
   return (
-    <select
-      className={cn('gi-select', props.className)}
-      {...props}
-      aria-label={ariaLabel}
-    >
+    <select className={cn('gi-select', props.className)} {...props}>
       {children}
     </select>
   );

@@ -30,7 +30,6 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         <input
           type={type}
           className={cn('gi-text-input', {
-            // 'gi-border-red-600': !!error?.text,
             'gi-input-half-width': halfFluid,
           })}
           ref={ref}

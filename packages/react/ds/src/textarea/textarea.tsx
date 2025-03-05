@@ -1,10 +1,5 @@
 'use client';
-import React, {
-  ChangeEvent,
-  TextareaHTMLAttributes,
-  useId,
-  useState,
-} from 'react';
+import React, { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 
@@ -25,7 +20,6 @@ export const TextArea = ({
   cols = 100,
   autoComplete = 'on',
   maxChars,
-  id,
   ref,
   halfFluid = false,
   ...props
@@ -48,7 +42,6 @@ export const TextArea = ({
     <div className={cn('gi-textarea-layout-container')}>
       <div className="gi-textarea-container">
         <textarea
-          id={id}
           rows={rows}
           cols={cols}
           autoComplete={autoComplete}

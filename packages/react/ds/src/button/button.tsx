@@ -13,16 +13,7 @@ import { ButtonProps } from './types.js';
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      variant,
-      appearance,
-      size,
-      disabled,
-      className,
-      dataTestid,
-      children,
-      ...props
-    },
+    { variant, appearance, size, disabled, className, children, ...props },
     ref,
   ) => {
     return (
@@ -30,7 +21,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         ref={ref}
         disabled={disabled}
-        data-testid={dataTestid}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),

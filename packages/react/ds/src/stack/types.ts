@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactHTMLElement } from 'react';
 
 export type Gap =
   | number
@@ -32,6 +32,7 @@ export type Direction =
       xl?: SimpleDirection;
       '2xl'?: SimpleDirection;
     };
+
 export type StackProps = {
   direction?: Direction;
   itemsAlignment?: Alignment;
@@ -40,6 +41,5 @@ export type StackProps = {
   hasDivider?: boolean;
   wrap?: boolean;
   fixedHeight?: string;
-  children: ReactNode;
   className?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;

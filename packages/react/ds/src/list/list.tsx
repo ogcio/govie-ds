@@ -10,10 +10,7 @@ export type ListProps = {
   items: Array<string | React.ReactElement>;
   spaced?: boolean;
   type?: ListType;
-  ariaLabel?: string;
-  ariaDescribedBy?: string;
-  ariaLive?: 'polite' | 'assertive' | 'off';
-};
+} & React.HTMLAttributes<HTMLUListElement>;
 
 const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
   const classes = [];
@@ -42,20 +39,15 @@ const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
 
 export function List({
   items,
-  ariaLabel,
-  ariaDescribedBy,
-  ariaLive = 'off',
   type = ListTypeEnum.None,
   spaced,
+  ...props
 }: ListProps) {
   return (
     <ul
-      aria-label={ariaLabel}
-      aria-describedby={ariaDescribedBy}
-      aria-live={ariaLive}
       role={type === ListTypeEnum.None ? 'list' : undefined}
       className={getListClass({ spaced, type })}
-      data-testid="govieList"
+      {...props}
     >
       {items.map((item, index) => {
         return <li key={`listItem-${index}`}>{item}</li>;

@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'react';
 import type { TextInputProps } from '../text-input/text-input.js';
 
 export const RadioSizeEnum = {
@@ -9,16 +10,11 @@ export const RadioSizeEnum = {
 export type RadioSizeType = (typeof RadioSizeEnum)[keyof typeof RadioSizeEnum];
 
 export type RadioProps = {
-  value: string;
-  name?: string;
   label?: string;
   hint?: string;
-  id?: string;
   size?: RadioSizeType;
   conditionalInput?: TextInputProps;
-  checked?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export type RadioGroupProps = {
   groupId: string;

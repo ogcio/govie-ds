@@ -84,9 +84,3 @@ export const withDefaultChecked: Story = {
     checked: true,
   },
 };
-
-export const withoutLabel: Story = {
-  args: {
-    value: 'radio-without-label',
-  },
-};

@@ -1,4 +1,5 @@
 'use client';
+import { useId } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
 import {
   CheckboxSizeEnum,
@@ -33,34 +34,20 @@ export const getCheckboxWidth = (size?: CheckboxSizeEnumType) => {
 
 export const Checkbox = ({
   id,
-  value,
-  onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
-  name,
   hint,
-  checked,
-  disabled,
-  ariaLabel,
-  dataTestid,
   ...props
 }: CheckboxProps) => {
-  const CheckboxId = id ?? value;
+  const CheckboxId = id || useId();
   return (
     <>
-      <div className="gi-checkbox-container" data-testid={dataTestid}>
+      <div className="gi-checkbox-container">
         <input
-          name={name || label}
-          onChange={onChange}
-          id={CheckboxId}
-          value={value}
-          className={getSizeClass(size)}
-          checked={checked}
-          aria-label={ariaLabel || CheckboxId}
-          aria-labelledby={label ? `${CheckboxId}-label` : undefined}
-          aria-describedby={hint ? `${CheckboxId}-hint` : undefined}
-          disabled={disabled}
           type="checkbox"
+          id={CheckboxId}
+          className={getSizeClass(size)}
+          aria-labelledby={label ? `${CheckboxId}-label` : undefined}
           {...props}
         />
         <label id={`${CheckboxId}-label`} htmlFor={CheckboxId}>

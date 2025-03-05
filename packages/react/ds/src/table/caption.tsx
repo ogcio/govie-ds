@@ -2,7 +2,6 @@ import React from 'react';
 import { cn } from '../cn.js';
 
 export type CaptionProps = {
-  children: React.ReactNode;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & React.HTMLAttributes<HTMLTableCaptionElement>;
 

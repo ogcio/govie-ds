@@ -3,8 +3,6 @@ import React from 'react';
 export function TableBody({
   children,
   ...props
-}: React.PropsWithChildren<
-  React.TableHTMLAttributes<HTMLTableSectionElement>
->) {
+}: React.TableHTMLAttributes<HTMLTableSectionElement>) {
   return <tbody {...props}>{children}</tbody>;
 }

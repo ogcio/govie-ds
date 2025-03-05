@@ -297,8 +297,17 @@ export const WithHalfWidth: Story = {
   args: {
     id: 'textarea-id-5',
     halfFluid: true,
-    value: 'This field is disabled',
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-5',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const AllStates: Story = {

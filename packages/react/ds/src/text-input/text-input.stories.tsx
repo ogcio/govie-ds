@@ -81,16 +81,14 @@ export const Default: Story = {
     id: 'text-input-id',
   },
   render: (props) => (
-    <>
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'text-input-id',
-        }}
-      >
-        <TextInput {...props} data-testid="text-input-id" />
-      </FormField>
-    </>
+    <FormField
+      label={{
+        text: 'Input Label',
+        htmlFor: 'text-input-id',
+      }}
+    >
+      <TextInput {...props} data-testid="text-input-id" />
+    </FormField>
   ),
 };
 
@@ -100,9 +98,17 @@ export const ResponsiveLayout: Story = {
   },
   render: (props) => {
     return (
-      <div className="md:gi-w-2/3 gi-w-full">
-        <Stack direction={{ base: 'column' }} gap={3}>
-          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+      <div
+        className="md:gi-w-2/3 gi-w-full"
+        role="presentation"
+        aria-label="example"
+      >
+        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block1"
+          >
             <FormField
               label={{ text: 'First Name', htmlFor: 'text-1' }}
               hint={{
@@ -120,10 +126,15 @@ export const ResponsiveLayout: Story = {
               <TextInput {...props} id="text-2" />
             </FormField>
           </Stack>
-          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block2"
+          >
             <FormField
               label={{
                 text: 'Address',
+                htmlFor: 'text-4',
               }}
               hint={{
                 text: 'Where you live.',
@@ -133,46 +144,52 @@ export const ResponsiveLayout: Story = {
             </FormField>
           </Stack>
 
-          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block3"
+          >
             <FormField
               label={{
-                htmlFor: 'text-input-id',
+                htmlFor: 'text-input-birth',
                 text: 'Date of birth',
               }}
               hint={{
                 text: 'Your date of birth.',
               }}
             >
-              <TextInput id="text-input-id" type="date" />
+              <TextInput id="text-input-birth" type="date" />
             </FormField>
 
             <FormField
               label={{
-                htmlFor: 'text-input-id',
+                htmlFor: 'text-input-height',
                 text: 'Height',
               }}
               hint={{
                 text: 'Your height',
               }}
             >
-              <TextInput id="text-input-id" prefix="cm" />
+              <TextInput id="text-input-height" prefix="cm" />
             </FormField>
             <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
               <FormField
                 label={{
                   text: 'Age',
+                  htmlFor: 'text-input-age',
                 }}
                 hint={{
                   text: 'Your Age.',
                 }}
               >
-                <TextInput {...props} maxLength={3} id="text-4" />
+                <TextInput {...props} maxLength={3} id="text-input-age" />
               </FormField>
             </div>
           </Stack>
           <FormField
             label={{
               text: 'Phone Number',
+              htmlFor: 'text-phone',
             }}
             hint={{
               text: 'Your phone number.',
@@ -181,7 +198,12 @@ export const ResponsiveLayout: Story = {
               text: 'Error: Please correct this issue.',
             }}
           >
-            <TextInput {...props} id="text-4" pattern="\d*" maxLength={10} />
+            <TextInput
+              {...props}
+              id="text-phone"
+              pattern="\d*"
+              maxLength={10}
+            />
           </FormField>
         </Stack>
       </div>
@@ -194,19 +216,17 @@ export const WithLabelAndHint: Story = {
     id: 'text-input-id',
   },
   render: (props) => (
-    <>
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'text-input-id',
-        }}
-        hint={{
-          text: 'Hint: This is a helpful hint.',
-        }}
-      >
-        <TextInput {...props} data-testid="text-input-id" />
-      </FormField>
-    </>
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'text-input-id',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+    >
+      <TextInput {...props} data-testid="text-input-id" />
+    </FormField>
   ),
 };
 
@@ -215,19 +235,17 @@ export const WithLabelAndError: Story = {
     id: 'text-input-id',
   },
   render: (props) => (
-    <>
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'text-input-id',
-        }}
-        error={{
-          text: 'Error: Please correct this issue.',
-        }}
-      >
-        <TextInput {...props} data-testid="text-input-id" />
-      </FormField>
-    </>
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'text-input-id',
+      }}
+      error={{
+        text: 'Error: Please correct this issue.',
+      }}
+    >
+      <TextInput {...props} data-testid="text-input-id" />
+    </FormField>
   ),
 };
 
@@ -237,22 +255,20 @@ export const WithLabelHintAndError: Story = {
     suffix: 'KG',
   },
   render: (props) => (
-    <>
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'text-input-id',
-        }}
-        hint={{
-          text: 'Hint: This is a helpful hint.',
-        }}
-        error={{
-          text: 'Error: Please correct this issue.',
-        }}
-      >
-        <TextInput {...props} data-testid="text-input-id" />
-      </FormField>
-    </>
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'text-input-id',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+      error={{
+        text: 'Error: Please correct this issue.',
+      }}
+    >
+      <TextInput {...props} data-testid="text-input-id" />
+    </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -284,16 +300,14 @@ export const WithLabelAndPrefixSuffix: Story = {
     suffix: 'per item',
   },
   render: (props) => (
-    <>
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'text-input-id',
-        }}
-      >
-        <TextInput {...props} data-testid="text-input-id" />
-      </FormField>
-    </>
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'text-input-id',
+      }}
+    >
+      <TextInput {...props} data-testid="text-input-id" />
+    </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -321,7 +335,7 @@ export const InputLength: Story = {
           htmlFor: 'text-input-id',
         }}
       >
-        <TextInput {...props} maxLength={4} id="text-4" />
+        <TextInput {...props} maxLength={4} />
       </FormField>
     );
   },
@@ -340,7 +354,7 @@ export const DateInput: Story = {
           htmlFor: 'text-input-id',
         }}
       >
-        <TextInput {...props} id="text-4" />
+        <TextInput {...props} />
       </FormField>
     );
   },
@@ -363,7 +377,7 @@ export const DisabledInput: Story = {
           text: 'Hint: This is a helpful hint.',
         }}
       >
-        <TextInput {...props} id="text-4" />
+        <TextInput {...props} />
       </FormField>
     );
   },
@@ -373,6 +387,18 @@ export const WithHalfWidth: Story = {
   args: {
     id: 'text-input-id',
     halfFluid: true,
+  },
+  render: (props) => {
+    return (
+      <FormField
+        label={{
+          text: 'Half width',
+          htmlFor: 'text-input-id',
+        }}
+      >
+        <TextInput {...props} />
+      </FormField>
+    );
   },
 };
 

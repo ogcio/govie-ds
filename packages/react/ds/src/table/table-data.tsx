@@ -4,7 +4,7 @@ import { cn } from '../cn.js';
 export function TableData({
   children,
   ...props
-}: React.PropsWithChildren<React.TableHTMLAttributes<HTMLTableCellElement>>) {
+}: React.TdHTMLAttributes<HTMLTableCellElement>) {
   const baseClasses = 'gi-table-td';
   return (
     <td className={cn(baseClasses, props.className)} {...props}>
