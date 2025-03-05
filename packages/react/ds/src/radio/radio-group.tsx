@@ -42,7 +42,11 @@ export const RadioGroup = ({
       <div className="gi-input-group-options-container">
         <div
           role="radiogroup"
-          className={`${inline ? 'gi-input-group-options-inline' : 'gi-input-group-options-stacked'}`}
+          className={
+            inline
+              ? 'gi-input-group-options-inline'
+              : 'gi-input-group-options-stacked'
+          }
         >
           {childrenWithOnChange}
         </div>

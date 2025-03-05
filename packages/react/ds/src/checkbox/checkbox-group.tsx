@@ -52,7 +52,11 @@ export const CheckboxGroup = ({
     <div className="gi-input-group-container">
       <div className="gi-input-group-options-container">
         <div
-          className={`${inline ? 'gi-input-group-options-inline' : 'gi-input-group-options-stacked'}`}
+          className={
+            inline
+              ? 'gi-input-group-options-inline'
+              : 'gi-input-group-options-stacked'
+          }
         >
           {childrenWithOnChange}
         </div>
