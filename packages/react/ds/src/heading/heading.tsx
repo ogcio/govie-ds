@@ -19,7 +19,7 @@ export const asVariants = {
   h6: 'gi-heading-2xs',
 };
 
-const headingVariants = tv({
+export const headingVariants = tv({
   slots: {
     text: 'gi-text-gray-500',
     base: '',
