@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/ogcio/govie-ds/compare/html-v0.31.2...html-v1.0.0) (2025-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461))
+
+### Features
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461)) ([448b15c](https://github.com/ogcio/govie-ds/commit/448b15cd530b78787920e409fa64fdee85692122))
+
 ## [0.31.2](https://github.com/ogcio/govie-ds/compare/html-v0.31.1...html-v0.31.2) (2025-03-03)
 
 
