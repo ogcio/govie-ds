@@ -20,11 +20,15 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
-  ({ prefix, suffix, halfFluid = false, className, ...props }, ref) => {
+  (
+    { prefix, suffix, halfFluid = false, className, type = 'text', ...props },
+    ref,
+  ) => {
     return (
       <div className={cn(className, 'gi-text-input-container-inner')}>
         {prefix && <div className="gi-text-input-prefix">{prefix}</div>}
         <input
+          type={type}
           className={cn('gi-text-input', {
             // 'gi-border-red-600': !!error?.text,
             'gi-input-half-width': halfFluid,
