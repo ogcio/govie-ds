@@ -34,6 +34,7 @@ RadioGroup
 Roadmap
 SEO
 SSR
+Tanstack
 Textarea
 Theming
 Tooltip
