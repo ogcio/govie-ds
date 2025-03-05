@@ -5,7 +5,7 @@
 {% from 'radio/radio.html' import govieRadio %}
 
 {% macro govieRadioGroup(props) %}
-  {% set isInline = 'gi-radio-group-options-inline' if props.inline else 'gi-radio-group-options-stacked' %}
+  {% set isInline = 'gi-input-group-options-inline' if props.inline else 'gi-input-group-options-stacked' %}
   {% set defaultValue = props.defaultValue if props.defaultValue else 'null' %}
   <div
     data-default-value="{{ defaultValue }}"
