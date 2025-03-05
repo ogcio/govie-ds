@@ -200,9 +200,6 @@ input[type='text'] {
 
 /* Radio */
 
-.gi-radio-group-legend {
-  @apply sm:gi-text-sm md:gi-text-md lg:gi-text-lg;
-}
 .gi-radio-group-options-divider-text {
   @apply gi-text-center xs:gi-text-sm md:gi-text-md lg:gi-text-lg;
 }
@@ -964,9 +961,6 @@ input[type='file' i] {
 
 /* Checkbox group */
 
-.gi-checkbox-group-title {
-  @apply gi-mb-3.5 sm:gi-text-sm md:gi-text-md lg:gi-text-lg;
-}
 .gi-checkbox-container {
   @apply gi-flex gi-items-center;
 }
