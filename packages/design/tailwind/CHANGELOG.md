@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [0.32.2](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.1...tailwind-v0.32.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* add max width container variant to 1024px ([bd4d423](https://github.com/ogcio/govie-ds/commit/bd4d42300f715a5e1b1b755f457861801bb6c5a7))
+* link focus state ([#459](https://github.com/ogcio/govie-ds/issues/459)) ([2761b30](https://github.com/ogcio/govie-ds/commit/2761b300020300e2cb9a142a8b326acfb48fc349))
+
 ## [0.32.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.0...tailwind-v0.32.1) (2025-02-26)
 
 
