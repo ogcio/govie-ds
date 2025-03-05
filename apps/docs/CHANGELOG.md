@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0](https://github.com/ogcio/govie-ds/compare/docs-v0.44.1...docs-v1.0.0) (2025-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461))
+
+### Features
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461)) ([448b15c](https://github.com/ogcio/govie-ds/commit/448b15cd530b78787920e409fa64fdee85692122))
+* add data grid example ([#457](https://github.com/ogcio/govie-ds/issues/457)) ([c6864b1](https://github.com/ogcio/govie-ds/commit/c6864b1021e52315a761f13595ea62352a3de6df))
+
 ## [0.44.1](https://github.com/ogcio/govie-ds/compare/docs-v0.44.0...docs-v0.44.1) (2025-03-03)
 
 
