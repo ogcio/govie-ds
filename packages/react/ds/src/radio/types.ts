@@ -1,52 +1,23 @@
-import type { headingVariants } from '../heading/heading.js';
+import { InputHTMLAttributes } from 'react';
 import type { TextInputProps } from '../text-input/text-input.js';
 
-export const RadiosSizeEnum = {
+export const RadioSizeEnum = {
   Large: 'lg',
   Medium: 'md',
   Small: 'sm',
 } as const;
 
-export type RadiosSizeType =
-  (typeof RadiosSizeEnum)[keyof typeof RadiosSizeEnum];
+export type RadioSizeType = (typeof RadioSizeEnum)[keyof typeof RadioSizeEnum];
 
 export type RadioProps = {
-  value: string;
-  name?: string;
   label?: string;
   hint?: string;
-  id?: string;
-  size?: RadiosSizeType;
+  size?: RadioSizeType;
   conditionalInput?: TextInputProps;
-  checked?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export type RadiosGroupType = {
+export type RadioGroupProps = {
   groupId: string;
-  items: {
-    value: string;
-    label?: string;
-    hint?: string;
-    conditionalInput?: TextInputProps;
-  }[];
-  defaultValue?: string;
   inline?: boolean;
-  size?: RadiosSizeType;
-  errorMessage?: string;
-  dividerOption?: {
-    value: string;
-    label?: string;
-    hint?: string;
-    conditionalInput?: TextInputProps;
-  };
-  title?: {
-    value: string;
-    asHeading?: {
-      size: keyof typeof headingVariants.variants.size;
-      as: keyof typeof headingVariants.variants.as;
-    };
-    hint?: string;
-  };
   onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 };

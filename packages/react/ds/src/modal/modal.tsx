@@ -93,6 +93,7 @@ export const ModalWrapper = ({
       data-element="modal"
       role="dialog"
       aria-modal="true"
+      aria-label={modalTitle ? undefined : 'modal'}
       aria-labelledby={modalTitle ? 'gi-modal-title' : undefined}
       aria-describedby="gi-modal-body"
       onClick={(event) => {

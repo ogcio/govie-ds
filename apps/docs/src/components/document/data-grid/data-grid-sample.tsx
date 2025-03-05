@@ -6,7 +6,7 @@ import {
   Icon,
   IconButton,
   Pagination,
-  SelectComposable,
+  Select,
   SelectItem,
   TableBody,
   TableData,
@@ -236,7 +236,7 @@ function DataGridTable({
         />
         <div className="grow"></div>
         <div>
-          <SelectComposable
+          <Select
             id={'filter-status'}
             onChange={(event) => {
               table.setColumnFilters([
@@ -252,7 +252,7 @@ function DataGridTable({
             <SelectItem value={'in progress'}>In Progress</SelectItem>
             <SelectItem value={'accepted'}>Accepted</SelectItem>
             <SelectItem value={'declined'}>Declined</SelectItem>
-          </SelectComposable>
+          </Select>
         </div>
       </div>
 

@@ -15,7 +15,7 @@ export type IconId = (typeof iconIds)[number];
 
 export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type IconPropTypes = React.HTMLAttributes<HTMLSpanElement> & {
+export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   icon: IconId;
   size?: IconSize;
   filled?: boolean;
@@ -38,7 +38,7 @@ export function Icon({
   className = '',
   onClick,
   ...props
-}: IconPropTypes) {
+}: IconProps) {
   const fontSize = meta.light.resolved.primitive.size[size].$value;
 
   if (icon === 'social_bluesky') {

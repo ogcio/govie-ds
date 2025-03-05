@@ -16,6 +16,7 @@
     "lint": "pnpm lint:code && pnpm lint:spelling",
     "lint:code": "eslint '**/*.{ts,tsx}'",
     "lint:spelling": "spellchecker -l en-GB -d dictionary.txt -f '**/*.mdx'",
+    "lint:spelling:update": "spellchecker -l en-GB --generate-dictionary dictionary.txt -f '**/*.mdx'",
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
