@@ -46,7 +46,7 @@ export const WithLabelAndHint = {
 export const withLabelHintAndError = {
   render: () => (
     <FormField
-      label={{ text: 'Label' }}
+      label={{ text: 'Label', htmlFor: 'select' }}
       hint={{ text: 'This is a hint' }}
       error={{ text: 'This is an error' }}
     >
