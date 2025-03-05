@@ -11,6 +11,5 @@ export const initI18n = (config: {
     resources: config.resources,
     lng: config.lng || 'en',
     fallbackLng: config.fallbackLng || 'en',
-    debug: true,
   });
 };
