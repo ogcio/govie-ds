@@ -359,6 +359,9 @@ export const DisabledInput: Story = {
           text: 'Disabled',
           htmlFor: 'text-input-id',
         }}
+        hint={{
+          text: 'Hint: This is a helpful hint.',
+        }}
       >
         <TextInput {...props} id="text-4" />
       </FormField>
@@ -376,17 +379,37 @@ export const WithHalfWidth: Story = {
 export const AllStates: Story = {
   render: () => (
     <div className="gi-gap-4">
-      <TextInput placeholder="Default" type="text" id="default-input" />
+      <FormField
+        label={{
+          text: 'Default',
+          htmlFor: 'default-input',
+        }}
+      >
+        <TextInput type="text" id="default-input" />
+      </FormField>
       <br />
-      <TextInput placeholder="Focused" type="text" id="focus-input" />
+      <FormField
+        label={{
+          text: 'Focused',
+          htmlFor: 'focus-input',
+        }}
+      >
+        <TextInput type="text" id="focus-input" />
+      </FormField>
       <br />
-      <TextInput
-        placeholder="Disabled"
-        value="This field is disabled"
-        type="text"
-        id="input-disabled"
-        disabled
-      />
+      <FormField
+        label={{
+          text: 'Disabled',
+          htmlFor: 'input-disabled',
+        }}
+      >
+        <TextInput
+          value="This field is disabled"
+          type="text"
+          id="input-disabled"
+          disabled
+        />
+      </FormField>
     </div>
   ),
   parameters: {
