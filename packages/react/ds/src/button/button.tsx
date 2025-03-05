@@ -11,10 +11,7 @@ import { ButtonProps } from './types.js';
 // Extend `React.InputHTMLAttributes<HTMLButtonElement>` so that
 // the component can accept all the standard attributes and events that an `<button>` element can handle.
 
-export type ExtendedButtonProps =
-  React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps;
-
-export const Button = React.forwardRef<HTMLButtonElement, ExtendedButtonProps>(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant,

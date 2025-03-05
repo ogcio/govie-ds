@@ -1,14 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { RadioSizeType } from '../radio/types.js';
-import { CheckboxSizeEnumType } from './types.js';
-
-export type CheckboxGroupType = {
-  size?: CheckboxSizeEnumType;
-  groupId: string;
-  inline?: boolean;
-  onChange?: (items: string[]) => void;
-};
+import { CheckboxGroupProps, CheckboxSizeEnumType } from './types.js';
 
 export const CheckboxGroup = ({
   size,
@@ -16,7 +9,7 @@ export const CheckboxGroup = ({
   inline,
   onChange,
   children,
-}: React.PropsWithChildren<CheckboxGroupType>) => {
+}: React.PropsWithChildren<CheckboxGroupProps>) => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
   const handleCheckboxChange = (value: string) => {

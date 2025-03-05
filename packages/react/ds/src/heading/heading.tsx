@@ -33,7 +33,7 @@ const headingVariants = tv({
   },
 });
 
-type HeadingProps = VariantProps<typeof headingVariants> & {
+export type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
   children: React.ReactNode;
   id?: string;

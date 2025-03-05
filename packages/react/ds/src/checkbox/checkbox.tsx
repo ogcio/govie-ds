@@ -1,7 +1,7 @@
 'use client';
 import { HintText } from '../hint-text/hint-text.js';
 import { getTickSize, getSizeClass } from './helpers.js';
-import { CheckboxSizeEnum, type CheckboxType } from './types.js';
+import { CheckboxSizeEnum, type CheckboxProps } from './types.js';
 
 export const Checkbox = ({
   id,
@@ -16,7 +16,7 @@ export const Checkbox = ({
   ariaLabel,
   dataTestid,
   ...props
-}: CheckboxType) => {
+}: CheckboxProps) => {
   const CheckboxId = id ?? value;
   return (
     <>

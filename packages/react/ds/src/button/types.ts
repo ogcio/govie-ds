@@ -7,7 +7,7 @@ export type ButtonSize = 'medium' | 'small' | 'large';
 
 export type ButtonType = 'submit' | 'reset' | 'button';
 
-export type ButtonProps = {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   variant?: ButtonVariant;
   appearance?: ButtonAppearance;

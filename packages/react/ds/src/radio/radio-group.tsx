@@ -1,13 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import type { RadioGroupType } from './types.js';
+import type { RadioGroupProps } from './types.js';
 
 export const RadioGroup = ({
   groupId,
   inline,
   onChange,
   children,
-}: React.PropsWithChildren<RadioGroupType>) => {
+}: React.PropsWithChildren<RadioGroupProps>) => {
   const [value, setValue] = useState<null | string>();
 
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {

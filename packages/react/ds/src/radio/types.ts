@@ -20,7 +20,7 @@ export type RadioProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export type RadioGroupType = {
+export type RadioGroupProps = {
   groupId: string;
   inline?: boolean;
   onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
