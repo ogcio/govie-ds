@@ -1,3 +1,6 @@
+import { useMeasure } from '@uidotdev/usehooks';
+import React from 'react';
+import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import {
   ProgressStepperIndicator,
@@ -12,6 +15,8 @@ const Connector = ({
   orientation = 'horizontal',
   isCurrentStep,
   isCompleted,
+  slotHeight,
+  startsOpen,
 }: ConnectorProps) => {
   return (
     <div
@@ -19,8 +24,11 @@ const Connector = ({
       data-next={isNextStep}
       data-completed={isCompleted}
       data-current={isCurrentStep}
-      className="gi-progress-stepper-step-connector"
+      className={cn('gi-progress-stepper-step-connector')}
       aria-hidden="true"
+      style={{
+        height: isCurrentStep || startsOpen ? `${slotHeight + 66}px` : '54px',
+      }}
     >
       <span />
       {isCurrentStep ? <span /> : null}
@@ -48,7 +56,10 @@ const Step = ({
   orientation,
   children,
   indicator = 'hashtag',
+  slot,
+  startsOpen,
 }: StepProps) => {
+  const [ref, { height }] = useMeasure();
   const isNextStep = !isCompleted && !isCurrentStep;
   const { current, completed, next } = getIndicatorClasses(
     indicator || ProgressStepperIndicator.Hashtag,
@@ -91,48 +102,77 @@ const Step = ({
           isCompleted={isCompleted}
           orientation={orientation}
           stepNumber={stepNumber}
+          slotHeight={height}
+          startsOpen={startsOpen}
         />
+      )}
+      {orientation === 'vertical' && (isCurrentStep || startsOpen) && (
+        <div className="gi-ml-10" ref={ref}>
+          {slot}
+        </div>
       )}
     </div>
   );
 };
 
+type StepItemProps = {
+  label: string;
+  startsOpen?: boolean;
+  children?: React.ReactNode;
+};
+
+// Component used just to pick the props on ProgressStepper component
+export const StepItem: React.FC<StepItemProps> = () => null;
+
 export const ProgressStepper = ({
-  steps,
+  children,
   currentStepIndex = 0,
   orientation = 'horizontal',
   completeAll,
 }: ProgressStepperProps) => {
+  const slot = children[currentStepIndex]?.props?.children;
+
   return (
     <div
-      data-testid="progress-stepper"
-      className="gi-progress-stepper"
-      data-orientation={orientation}
-      role="list"
-      aria-live="polite"
-    >
-      {steps.map((step, index) => {
-        const [isCurrentStep, isLastStep, isCompleted] = [
-          !completeAll && currentStepIndex === index,
-          index === steps.length - 1,
-          completeAll ||
-            (index < currentStepIndex && index !== currentStepIndex),
-        ];
-        return (
-          <div className="gi-w-full">
-            <Step
-              key={`progress-stepper-step-${index}`}
-              stepNumber={index + 1}
-              isCurrentStep={isCurrentStep}
-              isCompleted={isCompleted}
-              orientation={orientation}
-              isLastStep={isLastStep}
-            >
-              {step}
-            </Step>
-          </div>
-        );
+      className={cn('gi-w-full', {
+        'gi-flex': orientation === 'vertical',
       })}
+    >
+      <div
+        data-testid="progress-stepper"
+        className="gi-progress-stepper"
+        data-orientation={orientation}
+        role="list"
+        aria-live="polite"
+      >
+        {React.Children.map(children, (child, index) => {
+          const { label, startsOpen } = child.props as any;
+          const [isCurrentStep, isLastStep, isCompleted] = [
+            !completeAll && currentStepIndex === index,
+            index === children.length - 1,
+            completeAll ||
+              (index < currentStepIndex && index !== currentStepIndex),
+          ];
+
+          return (
+            <div className="gi-w-full">
+              <Step
+                key={`progress-stepper-step-${index}`}
+                stepNumber={index + 1}
+                isCurrentStep={isCurrentStep}
+                isCompleted={isCompleted}
+                orientation={orientation}
+                isLastStep={isLastStep}
+                slot={children[index]?.props?.children}
+                startsOpen={startsOpen}
+              >
+                {label}
+              </Step>
+            </div>
+          );
+        })}
+      </div>
+      {orientation === 'horizontal' && <div className="gi-h-full">{slot}</div>}
     </div>
   );
 };

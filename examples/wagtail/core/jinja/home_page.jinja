@@ -26,7 +26,6 @@
 {% from 'list/list.html' import govieList %}
 {% from 'pagination/pagination.html' import goviePagination %}
 {% from 'progress-bar/progress-bar.html' import govieProgressBar%}
-{% from 'progress-stepper/progress-stepper.html' import govieProgressStepper %}
 {% from 'table/table.html' import govieTable %}
 {% from 'checkbox/checkbox.html' import govieCheckbox %}
 {% from 'checkbox/checkboxes-group.html' import govieCheckboxesGroup %}
@@ -311,11 +310,6 @@
 
   {{ govieProgressBar({ "isIndeterminate": true }) }}
   
-  <br />
-  <h2>Progress Stepper</h2>
-   {{
-        govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6", "Step 7"], "currentStepIndex": 3, "orientation": "horizontal" })
-    }}
   <br />
 
   <h2>Tooltip (top)</h2>
