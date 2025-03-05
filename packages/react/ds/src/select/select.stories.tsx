@@ -21,51 +21,41 @@ export default meta;
 
 export const Default = {
   render: () => (
-    <>
-      <Label text="Label" />
+    <FormField label={{ text: 'Label' }}>
       <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
-    </>
+    </FormField>
   ),
 };
 
 export const WithLabelAndHint = {
   render: () => (
-    <>
-      <FormField
-        label={{ text: 'Label' }}
-        hint={{ text: 'This is a hint' }}
-        id="select"
-      >
-        <Select aria-label="Select">
-          <SelectItem value="value-1">Option 1</SelectItem>
-          <SelectItem value="value-2">Option 2</SelectItem>
-          <SelectItem value="value-3">Option 3</SelectItem>
-        </Select>
-      </FormField>
-    </>
+    <FormField label={{ text: 'Label' }} hint={{ text: 'This is a hint' }}>
+      <Select aria-label="Select">
+        <SelectItem value="value-1">Option 1</SelectItem>
+        <SelectItem value="value-2">Option 2</SelectItem>
+        <SelectItem value="value-3">Option 3</SelectItem>
+      </Select>
+    </FormField>
   ),
 };
 
 export const withLabelHintAndError = {
   render: () => (
-    <>
-      <FormField
-        label={{ text: 'Label' }}
-        hint={{ text: 'This is a hint' }}
-        error={{ text: 'This is an error' }}
-        id="select"
-      >
-        <Select aria-label="Select" data-testid="select" id="select">
-          <SelectItem value="value-1">Option 1</SelectItem>
-          <SelectItem value="value-2">Option 2</SelectItem>
-          <SelectItem value="value-3">Option 3</SelectItem>
-        </Select>
-      </FormField>
-    </>
+    <FormField
+      label={{ text: 'Label' }}
+      hint={{ text: 'This is a hint' }}
+      error={{ text: 'This is an error' }}
+    >
+      <Select aria-label="Select" data-testid="select" id="select">
+        <SelectItem value="value-1">Option 1</SelectItem>
+        <SelectItem value="value-2">Option 2</SelectItem>
+        <SelectItem value="value-3">Option 3</SelectItem>
+      </Select>
+    </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
