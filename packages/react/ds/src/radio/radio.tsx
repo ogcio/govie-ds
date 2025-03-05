@@ -48,22 +48,22 @@ export const Radio = ({
 }: RadioProps) => {
   const radioId = id ?? value;
   return (
-    <div className="gi-radio-container">
-      <div className="gi-radio-input-container">
+    <>
+      <div className="gi-radio-container">
         <input
           onChange={onChange}
           checked={checked}
           name={name}
           id={radioId}
           value={value}
-          className={`gi-radio-base ${getRadioSize(size)}`}
+          className={getRadioSize(size)}
           type="radio"
           aria-label={radioId}
           aria-checked={checked}
           aria-describedby={hint ? `${radioId}-hint` : undefined}
           aria-required={conditionalInput ? 'true' : 'false'}
         />
-        <label htmlFor={radioId} className="gi-radio-label" aria-hidden="true">
+        <label htmlFor={radioId} aria-hidden="true">
           {label}
         </label>
       </div>
@@ -88,6 +88,6 @@ export const Radio = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
