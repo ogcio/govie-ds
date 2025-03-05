@@ -81,6 +81,7 @@ import { Toast } from '../components/toast';
 import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
+import { GridPrimitives } from '../grid/grid-primitives';
 import { OpacityTable } from '../opacity/opacity-table';
 import { Addresses } from '../patterns/addresses';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
@@ -186,6 +187,7 @@ const documentComponents: MDXComponents = {
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   Addresses: (props) => <Addresses {...props} />,
+  GridPrimitives: (props) => <GridPrimitives {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
