@@ -33,81 +33,36 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
   ```html
-  <div data-module="gieds-radios" class="gi-flex">
-    <fieldset>
-      <legend class="gi-mb-2 sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-        <h2 class="gi-heading-md !gi-mb-0">Where do you live?</h2>
-      </legend>
-      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-        <div class="gi-flex gi-flex-col gi-gap-2.5">
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-primary="true"
-                data-element="radio0"
-                id="UniqueId1-0"
-                value="england"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-0"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                England
-              </label>
+  <fieldset data-module="gieds-radios">
+    <label class="gi-text-md gi-label gi-mb-2" aria-label="Where do you live?">Where do you live?</label>
+    <div class="gi-input-group-container">
+        <div class="gi-input-group-options-container">
+            <div role="radiogroup" class="gi-input-group-options-stacked">
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="dublin" class="gi-radio-base gi-radio-medium"
+                            aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin"
+                            name="city"><label for="dublin" class="gi-radio-label" aria-hidden="true">Dublin</label>
+                    </div>
+                </div>
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="cork" class="gi-radio-base gi-radio-medium"
+                            aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork"
+                            name="city"><label for="cork" class="gi-radio-label" aria-hidden="true">Cork</label></div>
+                </div>
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="galway" class="gi-radio-base gi-radio-medium"
+                            aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway"
+                            name="city"><label for="galway" class="gi-radio-label" aria-hidden="true">Galway</label>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-primary="true"
-                data-element="radio1"
-                id="UniqueId1-1"
-                value="scotland"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-1"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                Scotland
-              </label>
-            </div>
-          </div>
-
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-primary="true"
-                data-element="radio2"
-                id="UniqueId1-2"
-                value="ireland"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-2"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                Ireland
-              </label>
-            </div>
-          </div>
         </div>
-      </div>
-    </fieldset>
-  </div>
+    </div>
+  </fieldset>
   ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -141,82 +96,36 @@ libraries:
   <TabList>
       <TabItem value="tab21" checked>HTML</TabItem>
       <TabItem value="tab23">React</TabItem>
-    </TabList>
-    <TabPanel value="tab21">
-    ```html
-  <div data-module="gieds-radios" class="gi-flex">
-    <fieldset>
-      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-        <h2 class="gi-heading-md !gi-mb-2">Where do you live?</h2>
-      </legend>
-      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-        <div class="gi-flex gi-flex-row gi-gap-4">
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-has-conditional-input=""
-                data-primary="true"
-                data-element="radio0"
-                id="UniqueId1-0"
-                value="england"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-0"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                England
-              </label>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+  <fieldset data-module="gieds-radios">
+    <label class="gi-text-md gi-label gi-mb-2" aria-label="Where do you live?">Where do you live?</label>
+    <div class="gi-input-group-container">
+        <div class="gi-input-group-options-container">
+            <div role="radiogroup" class="gi-input-group-options-inline">
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="dublin" class="gi-radio-base gi-radio-medium"
+                            aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin"
+                            name="city"><label for="dublin" class="gi-radio-label" aria-hidden="true">Dublin</label>
+                    </div>
+                </div>
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="cork" class="gi-radio-base gi-radio-medium"
+                            aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork"
+                            name="city"><label for="cork" class="gi-radio-label" aria-hidden="true">Cork</label></div>
+                </div>
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="galway" class="gi-radio-base gi-radio-medium"
+                            aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway"
+                            name="city"><label for="galway" class="gi-radio-label" aria-hidden="true">Galway</label>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-has-conditional-input=""
-                data-primary="true"
-                data-element="radio1"
-                id="UniqueId1-1"
-                value="scotland"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-1"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                Scotland
-              </label>
-            </div>
-          </div>
-
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-has-conditional-input=""
-                data-primary="true"
-                data-element="radio2"
-                id="UniqueId1-2"
-                value="ireland"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-2"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                Ireland
-              </label>
-            </div>
-          </div>
         </div>
-      </div>
-    </fieldset>
-  </div>
+    </div>
+</fieldset>
+
   ```
   </TabPanel>
   <TabPanel value="tab23">
@@ -265,103 +174,56 @@ libraries:
   </TabList>
   <TabPanel value="tab31">
   ```html
-  <div data-module="gieds-radios" class="gi-flex">
-    <fieldset>
-      <legend class="sm:gi-text-sm md:gi-text-md lg:gi-text-lg">
-        <h2 class="gi-heading-md !gi-mb-2">Have you changed your name?</h2>
-
-        <div>
-          <p class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-2">
-            This includes changing your last name or spelling your name
-            differently.
-          </p>
+  <fieldset data-module="gieds-radios">
+    <label class="gi-text-md gi-label gi-mb-1" aria-label="How do you want to sign in?">How do you want
+        to sign in?</label>
+    <div class="gi-hint-text-md gi-hint-text gi-mb-1"
+        aria-label="You'll need an account to prove your identity and complete your Self Assessment">You'll need an
+        account to prove your identity and complete your Self Assessment</div>
+    <div class="gi-input-group-container">
+        <div class="gi-input-group-options-container">
+            <div role="radiogroup" class="gi-input-group-options-stacked">
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="val1" class="gi-radio-base gi-radio-medium"
+                            type="radio" aria-label="val1" aria-checked="false" aria-describedby="val1-hint"
+                            aria-required="false" name="withhint" value="val1"><label for="val1" class="gi-radio-label"
+                            aria-hidden="true">Sign in with Username and Password</label></div>
+                    <div class="gi-radio-conditional-divider-container">
+                        <div class="gi-invisible gi-w-8">
+                            <div class="gi-radio-conditional-divider-border-container gi-w-8">
+                                <div class="gi-radio-conditional-divider-border"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="gi-hint-text-md gi-hint-text "
+                                aria-label="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before">
+                                You'll have a user ID if you've registered for Self Assessment or filed a tax return
+                                online before</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gi-radio-container">
+                    <div class="gi-radio-input-container"><input id="val2" class="gi-radio-base gi-radio-medium"
+                            type="radio" aria-label="val2" aria-checked="false" aria-describedby="val2-hint"
+                            aria-required="false" name="withhint" value="val2"><label for="val2" class="gi-radio-label"
+                            aria-hidden="true">Sign in with MyGovID</label></div>
+                    <div class="gi-radio-conditional-divider-container">
+                        <div class="gi-invisible gi-w-8">
+                            <div class="gi-radio-conditional-divider-border-container gi-w-8">
+                                <div class="gi-radio-conditional-divider-border"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="gi-hint-text-md gi-hint-text "
+                                aria-label="If you don't have a MyGovID Login, you can create one">If you don't have a
+                                MyGovID Login, you can create one</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </legend>
-      <div data-element="radio-container" class="gi-flex gi-flex-col gi-gap-2.5">
-        <div class="gi-flex gi-flex-col gi-gap-2.5">
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-has-conditional-input=""
-                data-primary="true"
-                data-element="radio0"
-                id="UniqueId1-0"
-                value="no"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-0"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                Yes
-              </label>
-            </div>
-            <div class="gi-flex gi-gap-4">
-              <div
-                data-conditional-divider="UniqueId1-0"
-                class="gi-w-8 gi-invisible"
-              >
-                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
-                  <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <p
-                    class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
-                  >
-                    Yes, I have changed my name
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="gi-flex gi-flex-col">
-            <div class="gi-gap-4 gi-flex gi-items-center">
-              <input
-                name="UniqueId1"
-                data-has-conditional-input=""
-                data-primary="true"
-                data-element="radio1"
-                id="UniqueId1-1"
-                value="no"
-                class="gi-radio-medium gi-radio-base"
-                type="radio"
-              />
-              <label
-                for="UniqueId1-1"
-                class="gi-cursor-pointer xs:gi-text-sm md:gi-text-md lg:gi-text-lg"
-              >
-                No
-              </label>
-            </div>
-            <div class="gi-flex gi-gap-4">
-              <div
-                data-conditional-divider="UniqueId1-1"
-                class="gi-w-8 gi-invisible"
-              >
-                <div class="gi-w-8 gi-h-full gi-flex gi-justify-center gi-mt-1.5">
-                  <div class="gi-h-full gi-w-1 gi-bg-gray-300"></div>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <p
-                    class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-600 !gi-mb-0"
-                  >
-                    No, I didn't change my name
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-  </div>
+    </div>
+  </fieldset>
   ```
   </TabPanel>
   <TabPanel value="tab33">
