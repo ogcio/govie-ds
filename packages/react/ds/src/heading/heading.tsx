@@ -39,7 +39,13 @@ export type HeadingProps = VariantProps<typeof headingVariants> & {
   id?: string;
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
-function Heading({ as, size, children, caption, ...props }: HeadingProps) {
+export function Heading({
+  as,
+  size,
+  children,
+  caption,
+  ...props
+}: HeadingProps) {
   const Slot = as || 'h1';
   const { text, base } = headingVariants({ as, size });
   return (
@@ -55,6 +61,3 @@ function Heading({ as, size, children, caption, ...props }: HeadingProps) {
     </>
   );
 }
-
-export { Heading, headingVariants };
-export type { HeadingProps };

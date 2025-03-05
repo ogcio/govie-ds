@@ -59,7 +59,13 @@ export { Icons } from './icon/icons.js';
 export { Link, type LinkProps } from './link/link.js';
 export { ListItem, type ListItemProps } from './list-item/list-item.js';
 export { List, type ListProps } from './list/list.js';
-export { Modal, ModalBody, ModalFooter, ModalWrapper } from './modal/modal.js';
+export {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalWrapper,
+  ModalTitle,
+} from './modal/modal.js';
 export type { ModalProps, ModalWrapperProps } from './modal/types.js';
 export { Pagination, type PaginationProps } from './pagination/pagination.js';
 export { Paragraph, type ParagraphProps } from './paragraph/paragraph.js';
@@ -109,7 +115,7 @@ export { TabItem, type TabItemProps } from './tabs/tab-item.js';
 export { TabList } from './tabs/tab-list.js';
 export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs, type TabsProps } from './tabs/tabs.js';
-export { Tag, type TagProps } from './tag/tag.js';
+export { Tag, type TagProps, TagTypeEnum, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
 export { toaster, ToastProvider } from './toast/toast.js';
