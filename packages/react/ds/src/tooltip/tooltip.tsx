@@ -72,7 +72,6 @@ export const Tooltip = ({
       onBlur={() => {
         hideTooltip();
       }}
-      role="button"
       aria-describedby={isVisible ? describedById : undefined}
       data-testid={dataTestid}
     >

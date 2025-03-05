@@ -21,7 +21,7 @@ export const asVariants = {
 
 export const headingVariants = tv({
   slots: {
-    text: 'gi-text-gray-500',
+    text: 'gi-text-gray-600',
     base: '',
   },
   variants: {
@@ -35,7 +35,6 @@ export const headingVariants = tv({
 
 export type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
-  children: React.ReactNode;
   id?: string;
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
