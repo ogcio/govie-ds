@@ -78,6 +78,7 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Toast } from '../components/toast';
+import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { OpacityTable } from '../opacity/opacity-table';
@@ -270,6 +271,11 @@ const documentComponents: MDXComponents = {
   FormField: (props) => <FormField {...props} />,
   Radio: (props) => <Radio {...props} />,
   Checkbox: (props) => <Checkbox {...props} />,
+  DataGridSample: () => (
+    <div className="gi-not-prose">
+      <DataGridSample />
+    </div>
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {
