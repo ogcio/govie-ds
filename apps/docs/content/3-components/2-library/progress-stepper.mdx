@@ -30,6 +30,190 @@ libraries:
   </ProgressStepper>
 </ComponentContainer>
 
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab12">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">
+    ```html
+    <div data-testid="progress-stepper" class="gi-progress-stepper" data-orientation="horizontal" role="list" aria-live="polite">
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="true" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-1">
+            <div class="gi-progress-stepper-step"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">check</span></div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-1">Start Your Application</div>
+         </div>
+         <div data-orientation="horizontal" data-next="false" data-completed="true" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+      </div>
+   </div>
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="true" data-completed="false" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-2">
+            <div class="gi-progress-stepper-step">#</div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-2">Personal Information</div>
+         </div>
+         <div data-orientation="horizontal" data-next="false" data-completed="false" data-current="true" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span><span></span></div>
+      </div>
+   </div>
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-3">
+            <div class="gi-progress-stepper-step">#</div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-3">Eligibility Check</div>
+         </div>
+         <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+      </div>
+   </div>
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-4">
+            <div class="gi-progress-stepper-step">#</div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-4">Documents Submission</div>
+         </div>
+         <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+      </div>
+   </div>
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-5">
+            <div class="gi-progress-stepper-step">#</div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-5">Review</div>
+         </div>
+         <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+      </div>
+   </div>
+   <div class="gi-w-full">
+      <div class="gi-relative">
+         <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-6">
+            <div class="gi-progress-stepper-step">#</div>
+            <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-6">Complete &amp; Submit</div>
+         </div>
+      </div>
+   </div>
+</div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab12">
+    ```react 
+    import {ProgressStepper, StepItem} from '@govie-ds/react';
+
+    <ProgressStepper currentStepIndex={3}>
+      <StepItem label="Step 1" />
+      <StepItem label="Step 2" />
+      <StepItem label="Step 3" />
+      <StepItem label="Step 4" />
+      <StepItem label="Step 5" />
+    </ProgressStepper>
+    ```
+
+  </TabPanel>
+</Tabs>
+
+### With content
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={3}>
+    <StepItem label="Step 1">Here is the Step 1</StepItem>
+    <StepItem label="Step 2">Here is the Step 2</StepItem>
+    <StepItem label="Step 3">Here is the Step 3</StepItem>
+    <StepItem label="Step 4">Here is the Step 4</StepItem>
+    <StepItem label="Step 5">Here is the Step 5</StepItem>
+  </ProgressStepper>
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab22">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+    ```html
+   <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+    <div class="gi-w-full">
+        <div data-testid="progress-stepper" class="gi-progress-stepper" data-orientation="horizontal" role="list" aria-live="polite">
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="true" data-completed="false" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-1">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-1">Start Your Application</div>
+                </div>
+                <div data-orientation="horizontal" data-next="false" data-completed="false" data-current="true" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span><span></span></div>
+              </div>
+          </div>
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-2">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-2">Personal Information</div>
+                </div>
+                <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+              </div>
+          </div>
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-3">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-3">Eligibility Check</div>
+                </div>
+                <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+              </div>
+          </div>
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-4">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-4">Documents Submission</div>
+                </div>
+                <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+              </div>
+          </div>
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-5">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-5">Review</div>
+                </div>
+                <div data-orientation="horizontal" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+              </div>
+          </div>
+          <div class="gi-w-full">
+              <div class="gi-relative">
+                <div class="gi-progress-stepper-step-container" data-orientation="horizontal" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-6">
+                    <div class="gi-progress-stepper-step">#</div>
+                    <div class="gi-progress-stepper-step-label" data-orientation="horizontal" id="step-label-6">Complete &amp; Submit</div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="gi-h-full">
+          <div class="gi-pt-2 gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">Begin your application by filling in basic details.</div>
+        </div>
+    </div>
+    <div class="gi-pt-3 gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;"><button class="gi-btn gi-btn-primary gi-btn-regular">Next</button></div>
+  </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab22">
+    ```react 
+    import {ProgressStepper, StepItem} from '@govie-ds/react';
+
+    <ProgressStepper currentStepIndex={3}>
+       <StepItem label="Step 1">Here is the Step 1</StepItem>
+      <StepItem label="Step 2">Here is the Step 2</StepItem>
+      <StepItem label="Step 3">Here is the Step 3</StepItem>
+      <StepItem label="Step 4">Here is the Step 4</StepItem>
+      <StepItem label="Step 5">Here is the Step 5</StepItem>
+    </ProgressStepper>
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ### Vertically
 
 <ComponentContainer>
@@ -42,83 +226,77 @@ libraries:
   </ProgressStepper>
 </ComponentContainer>
 
-<Tabs id="tab1">
+<Tabs id="tab3">
   <TabList>
-    <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
-    <TabItem value="tab13">React</TabItem>
+    <TabItem value="tab31" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab32">React</TabItem>
   </TabList>
-  <TabPanel value="tab11">
-  ```html
-    <div class="gi-progress-stepper">
-      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
-        <div
-          class="gi-progress-stepper-step-container gi-flex-col"
-          data-current="false"
-          data-completed="true"
-          data-next="false"
-        >
-          <div class="gi-progress-stepper-step">
-            <span
-              role="presentation"
-              class="material-symbols-outlined gi-block"
-              style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
-            >
-              check
-            </span>
-          </div>
-          Step 1
-        </div>
-      </div>
-      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
-        <div
-          class="gi-progress-stepper-step-container gi-flex-col"
-          data-current="true"
-          data-completed="false"
-          data-next="false"
-        >
-          <div class="gi-progress-stepper-step">
-            <div>2</div>
-          </div>
-          Step 2
-        </div>
-        <div class="gi-progress-stepper-step-connector">
-          <span></span>
-        </div>
-      </div>
-      <div class="gi-flex gi-relative gi-flex-1 gi-min-h-20">
-        <div
-          class="gi-progress-stepper-step-container gi-flex-col"
-          data-current="false"
-          data-completed="false"
-          data-next="true"
-        >
-          <div class="gi-progress-stepper-step">
-            <div>3</div>
-          </div>
-          Step 3
-        </div>
-        <div class="gi-progress-stepper-step-connector">
-          <span></span>
-        </div>
-      </div>
-    </div>
-  ```
-</TabPanel>
-  <TabPanel value="tab12">
+  <TabPanel value="tab31">
     ```html
-      {{
-        govieProgressStepper({ "steps": [ "Step 1", "Step 2", "Step 3"], "currentStepIndex": 1, "orientation": "horizontal" })
-      }}
+   <div data-testid="progress-stepper" class="gi-progress-stepper" data-orientation="vertical" role="list" aria-live="polite">
+    <div class="gi-w-full">
+        <div class="gi-relative">
+          <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="true" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-1">
+              <div class="gi-progress-stepper-step"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">check</span></div>
+              <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-1">Step 1</div>
+          </div>
+          <div data-orientation="vertical" data-next="false" data-completed="true" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+        </div>
+    </div>
+    <div class="gi-w-full">
+        <div class="gi-relative">
+          <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="true" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-2">
+              <div class="gi-progress-stepper-step"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">check</span></div>
+              <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-2">Step 2</div>
+          </div>
+          <div data-orientation="vertical" data-next="false" data-completed="true" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+        </div>
+    </div>
+    <div class="gi-w-full">
+        <div class="gi-relative">
+          <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="true" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-3">
+              <div class="gi-progress-stepper-step"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">check</span></div>
+              <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-3">Step 3</div>
+          </div>
+          <div data-orientation="vertical" data-next="false" data-completed="true" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+        </div>
+    </div>
+    <div class="gi-w-full">
+        <div class="gi-relative">
+          <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="true" data-completed="false" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-4">
+              <div class="gi-progress-stepper-step">#</div>
+              <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-4">Step 4</div>
+          </div>
+          <div data-orientation="vertical" data-next="false" data-completed="false" data-current="true" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span><span></span></div>
+        </div>
+    </div>
+    <div class="gi-w-full">
+        <div class="gi-relative">
+          <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-5">
+              <div class="gi-progress-stepper-step">#</div>
+              <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-5">Step 5</div>
+          </div>
+        </div>
+    </div>
+  </div>
     ```
   </TabPanel>
-  <TabPanel value="tab13">
+  <TabPanel value="tab32">
     ```react 
-        import { ProgressStepper } from '@govie-ds/react';
-        
-        <ProgressStepper steps={['Step 1', 'Step 2', 'Step 3']} currentStepIndex={1} orientation="horizontal" />
+    import {ProgressStepper, StepItem} from '@govie-ds/react';
+
+    <ProgressStepper currentStepIndex={3} orientation="vertical">
+      <StepItem label="Step 1" />
+      <StepItem label="Step 2" />
+      <StepItem label="Step 3" />
+      <StepItem label="Step 4" />
+      <StepItem label="Step 5" />
+    </ProgressStepper>
     ```
-    </TabPanel>
+
+  </TabPanel>
 </Tabs>
 
 ## Usage

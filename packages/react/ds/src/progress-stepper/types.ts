@@ -27,6 +27,8 @@ export type StepProps = {
   stepNumber: number;
   orientation?: Orientation;
   indicator?: ProgressStepperIndicatorType;
+  slot?: React.ReactNode;
+  startsOpen?: boolean;
 };
 
 export type ConnectorProps = {
@@ -35,4 +37,6 @@ export type ConnectorProps = {
   isCurrentStep: boolean;
   isCompleted: boolean;
   orientation?: Orientation;
+  slotHeight: any;
+  startsOpen?: boolean;
 };

@@ -48,68 +48,48 @@ export const WithStepContent: Story = {
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
 
     return (
-      <ProgressStepper currentStepIndex={currentIndex}>
-        <StepItem label="Start Your Application">
-          <Stack gap={2} className="gi-pt-2">
-            Begin your application by filling in basic details.
-            <Button onClick={handleNextButton}>Next</Button>
-          </Stack>
-        </StepItem>
-        <StepItem label="Personal Information">
-          <Stack gap={2} className="gi-pt-2">
-            Provide your personal information, such as name, age, etc.
-            <Stack direction={'row'} gap={3}>
-              <Button variant="secondary" onClick={handlePreviousButton}>
-                Previous
-              </Button>
-              <Button onClick={handleNextButton}>Next</Button>
+      <Stack>
+        <ProgressStepper currentStepIndex={currentIndex}>
+          <StepItem label="Start Your Application">
+            <Stack gap={2} className="gi-pt-2">
+              Begin your application by filling in basic details.
             </Stack>
-          </Stack>
-        </StepItem>
-        <StepItem label="Eligibility Check">
-          <Stack gap={2} className="gi-pt-2">
-            Ensure that you meet the eligibility criteria for the application.
-            <Stack direction={'row'} gap={3}>
-              <Button variant="secondary" onClick={handlePreviousButton}>
-                Previous
-              </Button>
-              <Button onClick={handleNextButton}>Next</Button>
+          </StepItem>
+          <StepItem label="Personal Information">
+            <Stack gap={2} className="gi-pt-2">
+              Provide your personal information, such as name, age, etc.
             </Stack>
-          </Stack>
-        </StepItem>
-        <StepItem label="Documents Submission">
-          <Stack gap={2} className="gi-pt-2">
-            Upload all required documents to proceed with the application.
-            <Stack direction={'row'} gap={3}>
-              <Button variant="secondary" onClick={handlePreviousButton}>
-                Previous
-              </Button>
-              <Button onClick={handleNextButton}>Next</Button>
+          </StepItem>
+          <StepItem label="Eligibility Check">
+            <Stack gap={2} className="gi-pt-2">
+              Ensure that you meet the eligibility criteria for the application.
             </Stack>
-          </Stack>
-        </StepItem>
-        <StepItem label="Review">
-          <Stack gap={2} className="gi-pt-2">
-            Review all the information you’ve provided before submitting.
-            <Stack direction={'row'} gap={3}>
-              <Button variant="secondary" onClick={handlePreviousButton}>
-                Previous
-              </Button>
-              <Button onClick={handleNextButton}>Next</Button>
+          </StepItem>
+          <StepItem label="Documents Submission">
+            <Stack gap={2} className="gi-pt-2">
+              Upload all required documents to proceed with the application.
             </Stack>
-          </Stack>
-        </StepItem>
-        <StepItem label="Complete & Submit">
-          <Stack gap={2} className="gi-pt-2">
-            Once everything is confirmed, submit your application.
-            <Stack direction={'row'} gap={3}>
-              <Button variant="secondary" onClick={handlePreviousButton}>
-                Previous
-              </Button>
+          </StepItem>
+          <StepItem label="Review">
+            <Stack gap={2} className="gi-pt-2">
+              Review all the information you’ve provided before submitting.
             </Stack>
-          </Stack>
-        </StepItem>
-      </ProgressStepper>
+          </StepItem>
+          <StepItem label="Complete & Submit">
+            <Stack gap={2} className="gi-pt-2">
+              Once everything is confirmed, submit your application.
+            </Stack>
+          </StepItem>
+        </ProgressStepper>
+        <Stack direction={'row'} gap={3} className="gi-pt-3">
+          {currentIndex > 0 && (
+            <Button variant="secondary" onClick={handlePreviousButton}>
+              Previous
+            </Button>
+          )}
+          {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
+        </Stack>
+      </Stack>
     );
   },
 };
@@ -132,6 +112,70 @@ export const WithVerticalOrientation: Story = {
       <StepItem label="Step 5" />,
     ],
     orientation: 'vertical',
+  },
+};
+const PreviousNextContainerVertical = () => null;
+export const WithStepContentVertical: Story = {
+  args: {
+    children: [],
+  },
+  render: () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
+    const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
+    /*(
+      <Stack direction="row" gap={3} className="gi-pt-3">
+        {currentIndex > 0 && (
+          <Button variant="secondary" onClick={handlePreviousButton}>
+            Previous
+          </Button>
+        )}
+        {currentIndex < 5 && <Button onClick={handleNextButton}>Next</Button>}
+      </Stack>
+    );*/
+
+    return (
+      <Stack>
+        <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
+          <StepItem label="Start Your Application" startsOpen>
+            <Stack gap={2} className="gi-mt-5">
+              Begin your application by filling in basic details.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+          <StepItem label="Personal Information" startsOpen>
+            <Stack gap={2} className="gi-mt-5">
+              Provide your personal information, such as name, age, etc.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+          <StepItem label="Eligibility Check" startsOpen>
+            <Stack gap={2} className="gi-mt-5">
+              Ensure that you meet the eligibility criteria for the application.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+          <StepItem label="Documents Submission" startsOpen>
+            <Stack gap={2} className="gi-mt-5">
+              Upload all required documents to proceed with the application.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+          <StepItem label="Review" startsOpen>
+            <Stack gap={2}>
+              Review all the information you’ve provided before submitting.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+          <StepItem label="Complete & Submit">
+            <Stack gap={2}>
+              Once everything is confirmed, submit your application.
+            </Stack>
+            <PreviousNextContainerVertical />
+          </StepItem>
+        </ProgressStepper>
+      </Stack>
+    );
   },
 };
 

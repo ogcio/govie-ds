@@ -1347,7 +1347,8 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step-connector[data-orientation='vertical'] {
-  @apply gi-h-14 gi-w-[2px] gi-top-full gi-left-4;
+  /*@apply gi-h-14 gi-w-[2px] gi-top-full gi-left-4;*/
+  @apply gi-w-[2px] gi-left-4;
 }
 
 .gi-progress-stepper-step-connector[data-next='true' i][data-orientation='vertical']
