@@ -16,136 +16,133 @@ libraries:
 
 # Textarea
 
-The `Textarea` component allows users to input multi-line text. It’s ideal for longer text fields, such as descriptions, messages, or comments, and offers flexibility in terms of size using `rows` and `cols` props. Additionally, it provides the option to set a character limit using the `maxChars` prop for better control over user input length.
+The `Textarea` component allows users to input multi-line text. It's ideal for longer text fields, such as descriptions, messages, or comments, and offers flexibility in terms of size using `rows` and `cols` props. Additionally, it provides the option to set a character limit using the `maxChars` prop for better control over user input length.
 
 ## Variants
 
 ### Default textarea
 
 <ComponentContainer>
-  <TextArea {...{
-    id: 'textarea-0',
-    label: { text: 'Textarea Label' },
-    hint: { text: 'Hint: This is a helpful hint' },
-  }}  />
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.'
+    }}
+    label={{
+      htmlFor: 'textarea-id-1',
+      text: 'Textarea Label'
+    }}
+  >
+    <TextArea
+      id="textarea-id-1"
+      cols={100}
+      rows={4}
+    />
+  </FormField>
 </ComponentContainer>
           
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
   ```html
-    <div class="gi-pt-2 gi-mb-4" >
-      <label class="gi-text-md gi-mb-1 gi-block" for="textarea-id">
-          Textarea Label
-      </label>
-      <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700">
-          Hint: This is a helpful hint.
-      </div>
-      <div class="gi-flex gi-items-center" data-module="gieds-textarea">
-          <textarea id="textarea-id" rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="100" />
+  <fieldset>
+    <label class="gi-text-md gi-label gi-mb-1" for="textarea-id-1">Label</label>
+    <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
+    <div class="gi-textarea-layout-container">
+      <div class="gi-textarea-container">
+        <textarea rows="4" cols="100" autocomplete="on" class="gi-textarea" id="textarea-id-1"></textarea>
       </div>
     </div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieTextArea({
-    "id": "textarea-id"
-    "label": {
-      "content": "Textarea Label",
-      "for": "textarea-id"
-    },
-    "hint": {
-      "content": "Hint text for textarea"
-    },
-    "rows": 4,
-    "cols": 100,
-  }) }}
+  </fieldset>
   ```
   </TabPanel>
   <TabPanel value="tab13">
-  ```html
-  import { TextArea } from '@govie-ds/textarea';
+  ```jsx
+  import { FormField, TextArea } from '@govie-ds/textarea';
 
-<TextArea
-  label={{ text: 'Comments' }}
-  hint={{ text: 'Hint: This is a helpful hint' }}
-/>
-
-```
-</TabPanel>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.'
+    }}
+    label={{
+      htmlFor: 'textarea-id-1',
+      text: 'Textarea Label'
+    }}
+  >
+    <TextArea
+      id="textarea-id-1"
+      cols={100}
+      rows={4}
+    />
+  </FormField>
+  ```
+  </TabPanel>
 </Tabs>
 
 ### With Character limit
 
 <ComponentContainer>
-  <TextArea {...{
-    id: 'textarea-1',
-    label: { text: 'Textarea Label' },
-    hint: { text: 'Hint: This is a helpful hint' },
-    maxChars: 100,
-  }} />
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.'
+    }}
+    label={{
+      htmlFor: 'textarea-id-5',
+      text: 'Label'
+    }}
+  >
+    <TextArea
+      data-testid="textarea-id-5"
+      id="textarea-id-5"
+      maxChars={30}
+    />
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
   ```html
-    <div class="gi-pt-2 gi-mb-4" >
-      <label class="gi-text-md gi-mb-1 gi-block" for="textarea-id">
-          Textarea Label
-      </label>
-      <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700">
-          Hint: This is a helpful hint.
-      </div>
-      <div class="gi-flex gi-items-center" data-module="gieds-textarea">
-          <textarea id="textarea-id" rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="100" />
+  <fieldset class="">
+    <label class="gi-text-md gi-label gi-mb-1" for="textarea-id-5">Label</label>
+    <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
+    <div class="gi-textarea-layout-container">
+      <div class="gi-textarea-container" data-module="gieds-textarea">
+        <textarea rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="30" id="textarea-id-5" data-testid="textarea-id-5"></textarea>
       </div>
       <div class="gi-textarea-remaining-chars">
-        <div class="gi-text-md gi-mb-2 gi-font-normal gi-text-gray-700 ">
-            You have 100 characters remaining
-        </div>
+        <div class="gi-hint-text-md gi-hint-text">You have 30 characters remaining</div>
       </div>
     </div>
-````
-
-  </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-  {{ govieTextArea({
-    "id": "textarea-id"
-    "label": {
-      "content": "Textarea Label",
-      "for": "textarea-id"
-    },
-    "hint": {
-      "content": "Hint text for textarea"
-    },
-    "maxChars": 30,
-    "rows": 4,
-    "cols": 100,
-  }) }}
+  </fieldset>
   ```
   </TabPanel>
   <TabPanel value="tab23">
-  ```html
-  import { TextArea } from '@govie-ds/textarea';
+  ```jsx
+  import { FormField, TextArea } from '@govie-ds/textarea';
   
-  <TextArea
-  label={{ text: 'Comments' }}
-  hint={{ text: 'Hint: This is a helpful hint' }}
-  maxChars={100}
-  />
-```
-</TabPanel>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.'
+    }}
+    label={{
+      htmlFor: 'textarea-id-5',
+      text: 'Label'
+    }}
+  >
+    <TextArea
+      data-testid="textarea-id-5"
+      id="textarea-id-5"
+      maxChars={30}
+    />
+  </FormField>
+  ```
+  </TabPanel>
 </Tabs>
 
 ## Usage
