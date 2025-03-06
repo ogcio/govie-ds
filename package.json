@@ -71,8 +71,5 @@
   },
   "peerDependencies": {
     "@vitest/spy": "2.1.3"
-  },
-  "dependencies": {
-    "@uidotdev/usehooks": "^2.4.1"
   }
 }

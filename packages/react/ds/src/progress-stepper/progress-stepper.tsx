@@ -1,4 +1,3 @@
-import { useMeasure } from '@uidotdev/usehooks';
 import React from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
@@ -15,8 +14,6 @@ const Connector = ({
   orientation = 'horizontal',
   isCurrentStep,
   isCompleted,
-  slotHeight,
-  startsOpen,
 }: ConnectorProps) => {
   return (
     <div
@@ -26,9 +23,6 @@ const Connector = ({
       data-current={isCurrentStep}
       className={cn('gi-progress-stepper-step-connector')}
       aria-hidden="true"
-      style={{
-        height: isCurrentStep || startsOpen ? `${slotHeight + 66}px` : '54px',
-      }}
     >
       <span />
       {isCurrentStep ? <span /> : null}
@@ -56,14 +50,15 @@ const Step = ({
   orientation,
   children,
   indicator = 'hashtag',
-  slot,
-  startsOpen,
+  verticalSlot,
+  defaultOpen,
 }: StepProps) => {
-  const [ref, { height }] = useMeasure();
   const isNextStep = !isCompleted && !isCurrentStep;
   const { current, completed, next } = getIndicatorClasses(
     indicator || ProgressStepperIndicator.Hashtag,
   );
+  const showVerticalSlots =
+    orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
 
   const getProgressIconStep = () => {
     if (isCompleted) {
@@ -102,26 +97,20 @@ const Step = ({
           isCompleted={isCompleted}
           orientation={orientation}
           stepNumber={stepNumber}
-          slotHeight={height}
-          startsOpen={startsOpen}
         />
       )}
-      {orientation === 'vertical' && (isCurrentStep || startsOpen) && (
-        <div className="gi-ml-10" ref={ref}>
-          {slot}
-        </div>
-      )}
+      {showVerticalSlots && <div className="gi-ml-10">{verticalSlot}</div>}
     </div>
   );
 };
 
 type StepItemProps = {
   label: string;
-  startsOpen?: boolean;
+  defaultOpen?: boolean;
   children?: React.ReactNode;
 };
 
-// Component used just to pick the props on ProgressStepper component
+// Component needed to pick the props inside ProgressStepper component
 export const StepItem: React.FC<StepItemProps> = () => null;
 
 export const ProgressStepper = ({
@@ -131,6 +120,7 @@ export const ProgressStepper = ({
   completeAll,
 }: ProgressStepperProps) => {
   const slot = children[currentStepIndex]?.props?.children;
+  const showHorizontalSlot = orientation === 'horizontal' && slot;
 
   return (
     <div
@@ -146,7 +136,8 @@ export const ProgressStepper = ({
         aria-live="polite"
       >
         {React.Children.map(children, (child, index) => {
-          const { label, startsOpen } = child.props as any;
+          const { label, defaultOpen } =
+            child.props as unknown as StepItemProps;
           const [isCurrentStep, isLastStep, isCompleted] = [
             !completeAll && currentStepIndex === index,
             index === children.length - 1,
@@ -163,8 +154,8 @@ export const ProgressStepper = ({
                 isCompleted={isCompleted}
                 orientation={orientation}
                 isLastStep={isLastStep}
-                slot={children[index]?.props?.children}
-                startsOpen={startsOpen}
+                verticalSlot={children[index]?.props?.children}
+                defaultOpen={defaultOpen}
               >
                 {label}
               </Step>
@@ -172,7 +163,7 @@ export const ProgressStepper = ({
           );
         })}
       </div>
-      {orientation === 'horizontal' && <div className="gi-h-full">{slot}</div>}
+      {showHorizontalSlot && <div className="gi-h-full">{slot}</div>}
     </div>
   );
 };
