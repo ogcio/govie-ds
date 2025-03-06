@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from 'react';
 import { ButtonSize } from '../button/types.js';
-import { IconButtonType } from '../icon-button/icon-button.js';
+import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
 export type ModalChildren =
@@ -29,4 +29,4 @@ export type ModalProps = {
 
 export type ModalCloseButtonProps = {
   label?: string;
-} & Omit<IconButtonType, 'className' | 'icon' | 'variant' | 'appearance'>;
+} & Omit<IconButtonProps, 'className' | 'icon' | 'variant' | 'appearance'>;

@@ -59,10 +59,6 @@ export const Default: Story = {
       control: 'boolean',
       description: 'if true the component is disabled',
     },
-    ariaLabel: {
-      control: 'text',
-      description: 'the default accessible name of the element',
-    },
   },
   args: {
     id: 'checkbox-id-1',
@@ -95,13 +91,6 @@ export const withChecked: Story = {
     value: 'value-1',
     label: 'Checkbox',
     checked: true,
-  },
-};
-
-export const withoutLabel: Story = {
-  args: {
-    id: 'checkbox-id-1',
-    value: 'value-1',
   },
 };
 

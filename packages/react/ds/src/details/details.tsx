@@ -5,7 +5,12 @@ export type DetailsProps = {
   children: string;
 };
 
-const Details = ({ label, name, children, startsOpen }: DetailsProps) => {
+export const Details = ({
+  label,
+  name,
+  children,
+  startsOpen,
+}: DetailsProps) => {
   return (
     <details
       data-testid="govie-details"
@@ -35,5 +40,3 @@ const Details = ({ label, name, children, startsOpen }: DetailsProps) => {
     </details>
   );
 };
-
-export { Details };

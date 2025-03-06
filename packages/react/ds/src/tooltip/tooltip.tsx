@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants';
 export const positionVariants = ['top', 'bottom', 'left', 'right'];
 export type Position = 'top' | 'bottom' | 'left' | 'right';
 
-type TooltipProps = {
+export type TooltipProps = {
   text: string;
   position?: Position;
   children: ReactNode;
@@ -72,7 +72,6 @@ export const Tooltip = ({
       onBlur={() => {
         hideTooltip();
       }}
-      role="button"
       aria-describedby={isVisible ? describedById : undefined}
       data-testid={dataTestid}
     >

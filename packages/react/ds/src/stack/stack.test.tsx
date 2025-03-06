@@ -4,7 +4,8 @@ import type { StackProps } from './types.js';
 
 describe('govieStack', () => {
   afterEach(cleanup);
-  const renderStack = (props: StackProps) => render(<Stack {...props} />);
+  const renderStack = (props: StackProps) =>
+    render(<Stack {...props} data-testid="govie-stack" />);
   const children = [
     <div key="stack_1">item 1</div>,
     <div key="stack_2">item 2</div>,

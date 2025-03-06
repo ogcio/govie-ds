@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
+import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { TextInput } from '../text-input/text-input.js';
 import { TextArea } from './textarea.js';
@@ -15,32 +17,6 @@ const meta = {
   },
   component: TextArea,
   argTypes: {
-    label: {
-      description: 'Label associated with the textarea',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-    hint: {
-      description:
-        'Hint text for the textarea to provide additional information.',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    error: {
-      description:
-        'Error message for the textarea, displayed when there is a validation error.',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
     rows: {
       description: 'The number of visible text lines in the textarea.',
       control: 'number',
@@ -69,13 +45,6 @@ const meta = {
         defaultValue: { summary: 'on' },
       },
     },
-    ref: {
-      control: false,
-      table: {
-        category: 'Ref',
-        type: { summary: 'React.Ref<HTMLTextAreaElement>' },
-      },
-    },
     disabled: {
       description: 'Disable textarea',
       control: 'boolean',
@@ -95,16 +64,28 @@ export const Default: Story = {
     rows: 4,
     cols: 100,
     id: 'textarea-id-0',
-    label: {
-      text: 'Textarea Label',
-      htmlFor: 'textarea-id-0',
-    },
-    error: {
-      text: '',
-    },
-    hint: {
-      text: '',
-    },
+  },
+  render: (props) => (
+    <FormField
+      id="textarea-id-0"
+      label={{
+        text: 'Textarea Label',
+        htmlFor: 'textarea-id-0',
+      }}
+    >
+      <TextArea {...props} data-testid="textarea-id-0" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByTestId('textarea-id-0') as HTMLTextAreaElement;
+    expect(textarea).toBeTruthy();
+    expect(textarea.tagName).toBe('TEXTAREA');
+    expect(textarea.cols).toBe(100);
+    expect(textarea.rows).toBe(4);
+
+    const remainingElement = canvas.queryByText(/^You have/);
+    expect(remainingElement).not.toBeInTheDocument();
   },
 };
 
@@ -113,16 +94,6 @@ export const ResponsiveWidthWithTextInput: Story = {
     rows: 4,
     cols: 100,
     id: 'textarea-id-0',
-    label: {
-      text: 'Textarea Label',
-      htmlFor: 'textarea-id-0',
-    },
-    error: {
-      text: '',
-    },
-    hint: {
-      text: '',
-    },
   },
   render: (props) => {
     const textProps = {
@@ -134,10 +105,38 @@ export const ResponsiveWidthWithTextInput: Story = {
     return (
       <div className="gi-w-full md:gi-w-1/2">
         <Stack direction={{ base: 'column' }} gap={3}>
-          <TextInput {...textProps} id="text-1" />
-          <TextArea {...props} />
-          <TextInput {...textProps} id="text-2" />
-          <TextArea {...props} />
+          <FormField
+            label={{
+              text: 'Input Label',
+              htmlFor: 'text-1',
+            }}
+          >
+            <TextInput {...textProps} id="text-1" />
+          </FormField>
+          <FormField
+            label={{
+              text: 'Textarea Label',
+              htmlFor: 'textarea-1',
+            }}
+          >
+            <TextArea {...props} id="textarea-1" />
+          </FormField>
+          <FormField
+            label={{
+              text: 'Input Label',
+              htmlFor: 'text-2',
+            }}
+          >
+            <TextInput {...textProps} id="text-2" />
+          </FormField>
+          <FormField
+            label={{
+              text: 'Textarea Label',
+              htmlFor: 'textarea-2',
+            }}
+          >
+            <TextArea {...props} id="textarea-2" />
+          </FormField>
         </Stack>
       </div>
     );
@@ -147,113 +146,203 @@ export const ResponsiveWidthWithTextInput: Story = {
 export const WithLabelAndHint: Story = {
   args: {
     id: 'textarea-id-1',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-1',
-    },
-    hint: {
-      text: 'Hint: This is a helpful hint.',
-    },
     rows: 4,
     cols: 100,
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-1',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const WithLabelAndError: Story = {
   args: {
     id: 'textarea-id-2',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-2',
-    },
-    error: {
-      text: 'Error: Please correct this issue.',
-    },
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-2',
+      }}
+      error={{ text: 'Error: Please correct this issue.' }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const WithLabelHintAndError: Story = {
   args: {
     id: 'textarea-id-3',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-3',
-    },
-    hint: {
-      text: 'Hint: This is a helpful hint.',
-    },
-    error: {
-      text: 'Error: Please correct this issue.',
-    },
+  },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-3',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+      error={{ text: 'Error: Please correct this issue.' }}
+    >
+      <TextArea {...props} data-testid="textarea-id-3" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId('textarea-id-3') as HTMLTextAreaElement;
+    expect(window.getComputedStyle(textarea).borderColor).toBe(
+      'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
+    );
+
+    const label = canvas.getByText('Label');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(textarea.getAttribute('id'));
+
+    const hint = canvas.getByText('Hint: This is a helpful hint.');
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
+
+    const error = canvas.getByText('Error: Please correct this issue.');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
   },
 };
 
 export const CustomRowsAndColumns: Story = {
   args: {
     id: 'textarea-id-4',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-4',
-    },
     rows: 6,
     cols: 40,
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-4',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const WithMaxChars: Story = {
   args: {
     id: 'textarea-id-5',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-5',
-    },
-    hint: {
-      text: 'Hint: This is a helpful hint.',
-    },
-    maxChars: 100,
+    maxChars: 30,
+  },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-5',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+    >
+      <TextArea {...props} data-testid="textarea-id-5" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId('textarea-id-5') as HTMLTextAreaElement;
+
+    expect(textarea.maxLength).toBe(30);
+
+    const remainingElement = canvas.getByText(
+      /You have 30 characters remaining/,
+    );
+    expect(remainingElement).toBeInTheDocument();
   },
 };
 
 export const DisabledState: Story = {
   args: {
     id: 'textarea-id-5',
-    label: {
-      text: 'Label',
-      htmlFor: 'textarea-id-5',
-    },
-    hint: {
-      text: 'Hint: This is a helpful hint.',
-    },
     disabled: true,
     value: 'This field is disabled',
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-5',
+      }}
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const WithHalfWidth: Story = {
   args: {
     id: 'textarea-id-5',
     halfFluid: true,
-    value: 'This field is disabled',
   },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-5',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };
 
 export const AllStates: Story = {
   render: () => (
     <div className="gi-gap-4">
-      <TextArea
-        label={{ text: 'Default', htmlFor: 'default-textarea' }}
-        id="default-textarea"
-      />
-      <TextArea
-        label={{ text: 'Focus', htmlFor: 'focus-textarea' }}
-        id="focus-textarea"
-      />
-      <TextArea
-        label={{ text: 'Disabled', htmlFor: 'textarea-disabled' }}
-        id="textarea-disabled"
-        value="This field is disabled"
-        disabled
-      />
+      <FormField
+        label={{
+          text: 'Default',
+          htmlFor: 'default-textarea',
+        }}
+      >
+        <TextArea id="default-textarea" />
+      </FormField>
+      <br />
+      <FormField
+        label={{
+          text: 'Focus',
+          htmlFor: 'focus-textarea',
+        }}
+      >
+        <TextArea id="focus-textarea" />
+      </FormField>
+      <br />
+      <FormField
+        label={{
+          text: 'Disabled',
+          htmlFor: 'textarea-disabled',
+        }}
+      >
+        <TextArea
+          id="textarea-disabled"
+          value="This field is disabled"
+          disabled
+        />
+      </FormField>
     </div>
   ),
   parameters: {

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
+import { FormField } from '../forms/form-field.js';
 import { FileUpload } from './file-upload.js';
 
 const meta = {
@@ -13,30 +15,6 @@ const meta = {
   },
   component: FileUpload,
   argTypes: {
-    label: {
-      description: 'Label associated with the input field',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-    hint: {
-      description: 'Hint text for additional guidance.',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    error: {
-      description: 'Error message displayed during validation errors.',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
     accept: {
       description:
         'Defines the file types that the input should accept. For example: ".png, .jpg, image/*".',
@@ -63,55 +41,116 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     id: 'file-upload-id',
-    label: {
-      text: 'Upload File',
-      htmlFor: 'file-upload-id',
-    },
-    hint: {
-      text: '',
-    },
-    error: {
-      text: '',
-    },
     accept: '*/*',
+  },
+  render: (arguments_) => (
+    <>
+      <FormField
+        id="file-upload-id"
+        label={{
+          text: 'Upload File',
+          htmlFor: 'file-upload-id',
+        }}
+      >
+        <FileUpload {...arguments_} />
+      </FormField>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
   },
 };
 
 export const WithLabelAndHint: Story = {
   args: {
     id: 'file-upload-id',
-    label: {
-      text: 'Upload File',
-      htmlFor: 'file-upload-id',
-    },
-    hint: {
-      text: 'Hint: This is a helpful hint.',
-    },
     accept: '*/*',
+  },
+  render: (arguments_) => (
+    <>
+      <FormField
+        id="file-upload-id"
+        label={{
+          text: 'Upload File',
+          htmlFor: 'file-upload-id',
+        }}
+        hint={{
+          text: 'Hint: This is a helpful hint.',
+        }}
+      >
+        <FileUpload {...arguments_} />
+      </FormField>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+
+    const hint = canvas.getByText('Hint: This is a helpful hint.');
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
   },
 };
 
 export const WithLabelAndError: Story = {
   args: {
     id: 'file-upload-id',
-    label: {
-      text: 'Upload File',
-      htmlFor: 'file-upload-id',
-    },
-    error: {
-      text: 'Error: File must be smaller than 5MB.',
-    },
     accept: '.pdf, .docx',
+  },
+  render: (arguments_) => (
+    <>
+      <FormField
+        id="file-upload-id"
+        label={{
+          text: 'Upload File',
+          htmlFor: 'file-upload-id',
+        }}
+        error={{
+          text: 'Error: File must be smaller than 5MB.',
+        }}
+      >
+        <FileUpload {...arguments_} />
+      </FormField>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+
+    const error = canvas.getByText('Error: File must be smaller than 5MB.');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
   },
 };
 
 export const WithPDFAndDocxOnly: Story = {
   args: {
     id: 'file-upload-id',
-    label: {
-      text: 'Upload File',
-      htmlFor: 'file-upload-id',
-    },
     accept: '.pdf, .docx',
+  },
+  render: (arguments_) => (
+    <>
+      <FormField
+        id="file-upload-id"
+        label={{
+          text: 'Upload File',
+          htmlFor: 'file-upload-id',
+        }}
+      >
+        <FileUpload data-testid={'file-upload-id'} {...arguments_} />
+      </FormField>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const fileInput = canvas.getByTestId('file-upload-id') as HTMLInputElement;
+    expect(fileInput.accept).toBe('.pdf, .docx');
   },
 };

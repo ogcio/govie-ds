@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CheckboxesGroup } from './checkboxes-group.js';
+import { FormField } from '../forms/form-field.js';
+import { CheckboxGroup } from './checkbox-group.js';
+import { Checkbox } from './checkbox.js';
 
 const meta = {
-  title: 'Form/Checkbox/CheckboxesGroup',
+  title: 'Form/Checkbox/CheckboxGroup',
   parameters: {
     docs: {
       description: {
@@ -11,8 +13,8 @@ const meta = {
       },
     },
   },
-  component: CheckboxesGroup,
-} satisfies Meta<typeof CheckboxesGroup>;
+  component: CheckboxGroup,
+} satisfies Meta<typeof CheckboxGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -24,68 +26,6 @@ export const Default: Story = {
       type: { name: 'string', required: true },
       description: 'the unique value for the checkboxes group',
     },
-    items: {
-      control: 'object',
-      type: {
-        name: 'object',
-        required: true,
-        value: {
-          label: {
-            name: 'string',
-          },
-          value: {
-            name: 'string',
-            required: true,
-          },
-          hint: {
-            name: 'string',
-          },
-        },
-      },
-      description: 'A list of the label, values and hint for the checkboxes',
-    },
-    errorMessage: {
-      control: 'text',
-      type: { name: 'string' },
-      description: 'The text of the error message',
-    },
-    noneOption: {
-      control: 'object',
-      type: {
-        name: 'object',
-        value: {
-          label: {
-            name: 'string',
-          },
-          value: {
-            name: 'string',
-            required: true,
-          },
-          hint: {
-            name: 'string',
-          },
-        },
-      },
-      description: 'The label, value and hint of the none option checkbox',
-    },
-    title: {
-      control: 'object',
-      type: {
-        name: 'object',
-        value: {
-          value: {
-            name: 'string',
-          },
-          asHeading: {
-            name: 'boolean',
-          },
-          hint: {
-            name: 'string',
-          },
-        },
-      },
-      description: 'The label, hint and option the make the title a heading',
-    },
     size: {
       control: 'radio',
       options: ['lg', 'md', 'sm'],
@@ -94,181 +34,93 @@ export const Default: Story = {
   },
   args: {
     groupId: 'UniqueID',
-    items: [
-      {
-        label: 'Employment Tribunal',
-        value: 'employment-tribunal',
-      },
-      {
-        label: 'Ministry of Defence',
-        value: 'ministry-of-defence',
-      },
-      {
-        label: 'Department for Transport',
-        value: 'department-for-transport',
-      },
-      {
-        label: 'Others',
-        value: 'others',
-        disabled: true,
-      },
-    ],
-    title: {
-      value: 'Organisation',
-      asHeading: {
-        size: 'md',
-        as: 'h1',
-      },
-    },
   },
+  render: (arguments_) => (
+    <FormField label={{ text: 'Organization' }}>
+      <CheckboxGroup {...arguments_}>
+        <Checkbox
+          value={'employment-tribunal'}
+          label={'Employment Tribunal'}
+          id={'UniqueID-check1'}
+        />
+        <Checkbox
+          value={'ministry-of-defence'}
+          label={'Ministry of Defence'}
+          id={'UniqueID-check2'}
+        />
+        <Checkbox
+          value={'department-for-transport'}
+          label={'Department for Transport'}
+          id={'UniqueID-check3'}
+        />
+        <Checkbox
+          value={'others'}
+          label={'Others'}
+          id={'UniqueID-check4'}
+          disabled
+        />
+      </CheckboxGroup>
+    </FormField>
+  ),
 };
 
 export const withHints: Story = {
   args: {
     groupId: 'govie-field-ID',
-    items: [
-      {
-        label: 'Irish',
-        value: 'irish',
-      },
-      {
-        label: 'British',
-        value: 'british',
-        hint: 'including English, Scottish, Welsh and Northern Irish',
-      },
-      {
-        label: 'Citizen of another country',
-        value: 'citizen-of-another-country',
-      },
-    ],
-    title: {
-      value: 'What is your nationality?',
-      asHeading: {
-        size: 'md',
-        as: 'h1',
-      },
-      hint: 'If you have dual nationality, select all options that are relevant to you.',
-    },
   },
+  render: (arguments_) => (
+    <FormField
+      label={{ text: 'What is your nationality?' }}
+      hint={{
+        text: 'If you have dual nationality, select all options that are relevant to you.',
+      }}
+    >
+      <CheckboxGroup {...arguments_}>
+        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <Checkbox
+          value={'british'}
+          label={'British'}
+          hint="including English, Scottish, Welsh and Northern Irish"
+          id={'govie-field-ID-check2'}
+        />
+        <Checkbox
+          value={'citizen-of-another-country'}
+          label={'Citizen of another country'}
+          id={'govie-field-ID-check3'}
+        />
+      </CheckboxGroup>
+    </FormField>
+  ),
 };
 
 export const withErrorMessage: Story = {
   args: {
-    groupId: 'govie-field-ID',
-    items: [
-      {
-        label: 'Irish',
-        value: 'irish',
-      },
-      {
-        label: 'British',
-        value: 'british',
-      },
-      {
-        label: 'Citizen of another country',
-        value: 'citizen-of-another-country',
-      },
-    ],
-    title: {
-      value: 'What is your nationality?',
-      asHeading: {
-        size: 'md',
-        as: 'h1',
-      },
-      hint: 'If you have dual nationality, select all options that are relevant to you.',
-    },
-    errorMessage:
-      'Select if you are Irish, British or a citizen of a different country',
+    groupId: 'govie-field-ID2',
   },
-};
-
-export const withNoneOption: Story = {
-  args: {
-    groupId: 'govie-field-ID',
-    items: [
-      {
-        label: 'France',
-        value: 'france',
-      },
-      {
-        label: 'Portugal',
-        value: 'portugal',
-      },
-      {
-        label: 'Spain',
-        value: 'spain',
-      },
-    ],
-    title: {
-      value: 'Will you be travelling to any of these countries?',
-      asHeading: {
-        size: 'md',
-        as: 'h1',
-      },
-      hint: 'Select all countries that apply',
-    },
-    noneOption: {
-      label: 'No, I will not be travelling to any of these countries',
-      value: 'no-travel',
-    },
-  },
-};
-
-export const AllStates: Story = {
-  args: {
-    groupId: 'govie-field-ID',
-    items: [
-      {
-        label: '',
-        value: '',
-      },
-    ],
-  },
-  render: () => (
-    <div className="gi-flex gi-gap-4 gi-flex-col">
-      <CheckboxesGroup
-        items={[
-          {
-            label: 'Default',
-            value: 'default',
-          },
-        ]}
-        groupId="default-checkbox"
-      />
-      <CheckboxesGroup
-        items={[
-          {
-            label: 'Hover',
-            value: 'hover',
-          },
-        ]}
-        groupId="hover-checkbox"
-      />
-      <CheckboxesGroup
-        items={[
-          {
-            label: 'Focus',
-            value: 'focus',
-          },
-        ]}
-        groupId="focus-checkbox"
-      />
-      <CheckboxesGroup
-        items={[
-          {
-            label: 'Disabled',
-            value: 'disabled',
-            disabled: true,
-          },
-        ]}
-        groupId="disabled-checkbox"
-      />
-    </div>
+  render: (arguments_) => (
+    <FormField
+      label={{ text: 'What is your nationality?' }}
+      hint={{
+        text: 'If you have dual nationality, select all options that are relevant to you.',
+      }}
+      error={{
+        text: 'Select if you are Irish, British or a citizen of a different country',
+      }}
+    >
+      <CheckboxGroup {...arguments_}>
+        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <Checkbox
+          value={'british'}
+          label={'British'}
+          hint="including English, Scottish, Welsh and Northern Irish"
+          id={'govie-field-ID2-check2'}
+        />
+        <Checkbox
+          value={'citizen-of-another-country'}
+          label={'Citizen of another country'}
+          id={'govie-field-ID2-check3'}
+        />
+      </CheckboxGroup>
+    </FormField>
   ),
-  parameters: {
-    pseudo: {
-      hover: '#hover-checkbox-0',
-      focus: '#focus-checkbox-0',
-    },
-  },
 };

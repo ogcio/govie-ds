@@ -1,14 +1,7 @@
 'use client';
-import React, {
-  ChangeEvent,
-  TextareaHTMLAttributes,
-  useId,
-  useState,
-} from 'react';
+import React, { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
 import { cn } from '../cn.js';
-import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
-import { HintText, HintTextProps } from '../hint-text/hint-text.js';
-import { Label, LabelProps } from '../label/label.js';
+import { HintText } from '../hint-text/hint-text.js';
 
 export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -18,11 +11,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   rows?: number;
   cols?: number;
   autoComplete?: string;
-  error?: ErrorTextProps;
-  hint?: HintTextProps;
-  label?: LabelProps;
   maxChars?: number;
-  dataTestid?: string;
   halfFluid?: boolean;
 };
 
@@ -31,23 +20,13 @@ export const TextArea = ({
   cols = 100,
   autoComplete = 'on',
   maxChars,
-  label,
-  error,
-  hint,
-  id,
   ref,
-  dataTestid,
   halfFluid = false,
   ...props
 }: TextAreaProps) => {
   const [remainingChars, setRemainingChars] = useState<undefined | number>(
     maxChars,
   );
-
-  const uniqueId = useId();
-  const labelId = `${uniqueId}-label`;
-  const hintId = hint?.text ? `${uniqueId}-hint` : undefined;
-  const errorId = error?.text ? `${uniqueId}-error` : undefined;
 
   const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const {
@@ -60,45 +39,18 @@ export const TextArea = ({
   };
 
   return (
-    <div
-      className={cn('gi-textarea-layout-container', {
-        'gi-error-state': !!error?.text,
-      })}
-      data-testid={dataTestid}
-    >
-      {label?.text && (
-        <Label
-          text={label.text}
-          size={label.size}
-          htmlFor={id}
-          id={labelId}
-          className={cn({
-            'gi-mb-2': !hint?.text && !error?.text,
-            'gi-mb-1': hint?.text || error?.text,
-          })}
-        />
-      )}
-
-      {hint?.text && <HintText text={hint.text} size={hint.size} id={hintId} />}
-      {error?.text && (
-        <ErrorText text={error.text} size={error.size} id={errorId} />
-      )}
-
+    <div className={cn('gi-textarea-layout-container')}>
       <div className="gi-textarea-container">
         <textarea
-          id={id}
           rows={rows}
           cols={cols}
           autoComplete={autoComplete}
           className={cn('gi-textarea', {
-            'gi-textarea-error': !!error?.text,
             'gi-input-half-width': halfFluid,
           })}
           ref={ref}
           maxLength={maxChars}
           onChange={handleOnChange}
-          aria-labelledby={labelId}
-          aria-describedby={[hintId, errorId].filter(Boolean).join(' ')}
           {...props}
         />
       </div>
