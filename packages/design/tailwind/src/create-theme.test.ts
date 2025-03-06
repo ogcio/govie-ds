@@ -32,7 +32,6 @@ describe('createTheme', () => {
   it('uses meta screen values if use variables if false', () => {
     expect(
       createTheme({
-        useVariables: false,
         meta: {
           light: {
             resolved: {
@@ -105,6 +104,26 @@ describe('createTheme', () => {
                   lg: { $type: 'dimension', $value: '400px' },
                   xl: { $type: 'dimension', $value: '500px' },
                   '2xl': { $type: 'dimension', $value: '600px' },
+                },
+              },
+              surface: {
+                primary: {
+                  default: {
+                    $type: 'color',
+                    $value: '{primitive.color.emerald.800}',
+                  },
+                  subtle: {
+                    $type: 'color',
+                    $value: '{primitive.color.emerald.700}',
+                  },
+                  disabled: {
+                    $type: 'color',
+                    $value: '{primitive.color.gray.200}',
+                  },
+                  hover: {
+                    $type: 'color',
+                    $value: '{primitive.color.emerald.900}',
+                  },
                 },
               },
             },
