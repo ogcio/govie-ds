@@ -69,9 +69,10 @@ eGovernment
 favicon
 favoriting
 flexbox-based
-form-checkboxes
+form-checkbox-checkboxgroup
 form-fileupload
 form-iconbutton
+form-radio-radiogroup
 form-textarea
 form-textinput
 gi-btn
@@ -82,6 +83,7 @@ groupId
 h1
 hideToc
 href
+htmlFor
 iconStart
 inclusivity
 indexable
