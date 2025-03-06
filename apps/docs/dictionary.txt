@@ -47,6 +47,8 @@ WCAG
 WebAIM
 YAML
 analyze
+application-cookiebanner
+application-progressstepper
 application-tooltip
 breakpoint
 caseworking
@@ -108,9 +110,9 @@ theming
 tooltip
 tooltips
 typography-blockquote
-typography-cookiebanner
 typography-phasebanner
 typography-sectionbreak
+typography-summarylist
 user-centric
 viewport
 webpage
