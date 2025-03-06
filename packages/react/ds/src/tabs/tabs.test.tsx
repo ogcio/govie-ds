@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup, fireEvent } from '../test-utils.js';
 import { TabsContent } from './tabs-content.js';
 import { TabsProps, Tabs } from './tabs.js';
 
@@ -22,6 +22,22 @@ describe('tabs', () => {
       children: TabsContent,
     });
     expect(screen.getByText('Tab 2 Content')).toBeTruthy();
+  });
+
+  it('should allow selecting a tab', () => {
+    const screen = renderTabs({
+      ariaLabelledBy: 'tabs',
+      id: 'tab-1',
+      children: TabsContent,
+    });
+
+    const tabButtons = screen.getAllByRole('tab');
+
+    fireEvent.click(tabButtons[1]);
+
+    expect(tabButtons[1]).toHaveAttribute('aria-selected', 'true');
+    expect(tabButtons[0]).toHaveAttribute('aria-selected', 'false');
+    expect(screen.getByText('Tab 2 Content')).toBeVisible();
   });
 
   it('should pass axe tests', async () => {
