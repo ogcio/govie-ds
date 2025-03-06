@@ -299,6 +299,153 @@ libraries:
   </TabPanel>
 </Tabs>
 
+### With Slots open
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={2} orientation="vertical">
+    <StepItem label="Start Your Application" defaultOpen>
+      <Stack className="gi-mt-5">
+        Begin your application by filling in basic details.
+      </Stack>
+    </StepItem>
+    <StepItem label="Personal Information" defaultOpen>
+      <Stack className="gi-mt-5">
+        Provide your personal information, such as name, age, etc.
+      </Stack>
+    </StepItem>
+    <StepItem label="Eligibility Check" defaultOpen>
+      <Stack className="gi-mt-5">
+        Ensure that you meet the eligibility criteria for the application.
+      </Stack>
+    </StepItem>
+    <StepItem label="Documents Submission" defaultOpen>
+      <Stack className="gi-mt-5">
+        Upload all required documents to proceed with the application.
+      </Stack>
+    </StepItem>
+    <StepItem label="Review" defaultOpen>
+      <Stack>
+        Review all the information you’ve provided before submitting.
+      </Stack>
+    </StepItem>
+    <StepItem label="Complete & Submit" defaultOpen>
+      <Stack className="gi-mt-5">
+        Once everything is confirmed, submit your application.
+      </Stack>
+    </StepItem>
+  </ProgressStepper>
+</ComponentContainer>
+
+<Tabs id="tab4">
+  <TabList>
+    <TabItem value="tab41" checked>
+      HTML
+    </TabItem>
+    <TabItem value="tab42">React</TabItem>
+  </TabList>
+  <TabPanel value="tab41">
+    ```html
+      <div data-testid="progress-stepper" class="gi-progress-stepper" data-orientation="vertical" role="list" aria-live="polite">
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="true" data-completed="false" data-next="false" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-1">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-1">Start Your Application</div>
+              </div>
+              <div data-orientation="vertical" data-next="false" data-completed="false" data-current="true" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span><span></span></div>
+              <div class="gi-ml-10">
+                  <div class="gi-mt-5 gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-flex-nowrap" role="region" style="height: 100%;">Begin your application by filling in basic details.</div>
+              </div>
+            </div>
+        </div>
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-2">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-2">Personal Information</div>
+              </div>
+              <div data-orientation="vertical" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+            </div>
+        </div>
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-3">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-3">Eligibility Check</div>
+              </div>
+              <div data-orientation="vertical" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+            </div>
+        </div>
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-4">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-4">Documents Submission</div>
+              </div>
+              <div data-orientation="vertical" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+            </div>
+        </div>
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-5">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-5">Review</div>
+              </div>
+              <div data-orientation="vertical" data-next="true" data-completed="false" data-current="false" class="gi-progress-stepper-step-connector" aria-hidden="true"><span></span></div>
+            </div>
+        </div>
+        <div class="gi-w-full">
+            <div class="gi-relative">
+              <div class="gi-progress-stepper-step-container" data-orientation="vertical" data-current="false" data-completed="false" data-next="true" data-indicator="hashtag" role="listitem" aria-labelledby="step-label-6">
+                  <div class="gi-progress-stepper-step">#</div>
+                  <div class="gi-progress-stepper-step-label" data-orientation="vertical" id="step-label-6">Complete &amp; Submit</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab42">
+    ```react 
+    import {ProgressStepper, StepItem} from '@govie-ds/react';
+
+    <ProgressStepper currentStepIndex={2} orientation="vertical">
+      <StepItem label="Start Your Application" defaultOpen>
+        <Stack className="gi-mt-5">
+          Begin your application by filling in basic details.
+        </Stack>
+      </StepItem>
+      <StepItem label="Personal Information" defaultOpen>
+        <Stack className="gi-mt-5">
+          Provide your personal information, such as name, age, etc.
+        </Stack>
+      </StepItem>
+      <StepItem label="Eligibility Check" defaultOpen>
+        <Stack className="gi-mt-5">
+          Ensure that you meet the eligibility criteria for the application.
+        </Stack>
+      </StepItem>
+      <StepItem label="Documents Submission" defaultOpen>
+        <Stack className="gi-mt-5">
+          Upload all required documents to proceed with the application.
+        </Stack>
+      </StepItem>
+      <StepItem label="Review" defaultOpen>
+        <Stack>
+          Review all the information you’ve provided before submitting.
+        </Stack>
+      </StepItem>
+      <StepItem label="Complete & Submit" defaultOpen>
+        <Stack className="gi-mt-5">
+          Once everything is confirmed, submit your application.
+        </Stack>
+      </StepItem>
+    </ProgressStepper>
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### Best Practices

@@ -145,32 +145,32 @@ export const WithContentStepVertical: Story = {
       <Stack>
         <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
           <StepItem label="Start Your Application">
-            <Stack gap={2} className="gi-mt-5">
+            <Stack className="gi-mt-5">
               Begin your application by filling in basic details.
             </Stack>
           </StepItem>
           <StepItem label="Personal Information">
-            <Stack gap={2} className="gi-mt-5">
+            <Stack className="gi-mt-5">
               Provide your personal information, such as name, age, etc.
             </Stack>
           </StepItem>
           <StepItem label="Eligibility Check">
-            <Stack gap={2} className="gi-mt-5">
+            <Stack className="gi-mt-5">
               Ensure that you meet the eligibility criteria for the application.
             </Stack>
           </StepItem>
           <StepItem label="Documents Submission">
-            <Stack gap={2} className="gi-mt-5">
+            <Stack className="gi-mt-5">
               Upload all required documents to proceed with the application.
             </Stack>
           </StepItem>
           <StepItem label="Review">
-            <Stack gap={2}>
+            <Stack>
               Review all the information you’ve provided before submitting.
             </Stack>
           </StepItem>
           <StepItem label="Complete & Submit">
-            <Stack gap={2} className="gi-mt-5">
+            <Stack className="gi-mt-5">
               Once everything is confirmed, submit your application.
             </Stack>
           </StepItem>
