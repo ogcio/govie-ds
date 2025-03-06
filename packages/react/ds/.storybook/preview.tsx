@@ -14,14 +14,13 @@ import type { Preview } from '@storybook/react';
 import '@govie-ds/theme-govie/theme.css';
 import './global.css';
 import '../styles.css';
-import React from 'react';
 import i18n from 'i18next';
+import React from 'react';
 import enTranslations from '../src/i18n/translations/en.json';
 
 i18n.init({
   lng: 'en',
   fallbackLng: 'en',
-  debug: true,
   resources: {
     ...enTranslations,
   },

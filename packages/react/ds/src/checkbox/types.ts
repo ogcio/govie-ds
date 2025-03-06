@@ -9,15 +9,15 @@ export const CheckboxSizeEnum = {
 export type CheckboxSizeEnumType =
   (typeof CheckboxSizeEnum)[keyof typeof CheckboxSizeEnum];
 
-export type CheckboxType = {
-  id: string;
-  value: string;
+export type CheckboxProps = {
   size?: CheckboxSizeEnumType;
   label?: string;
   hint?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  checked?: boolean;
-  disabled?: boolean;
-  ariaLabel?: string;
-  dataTestid?: string;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+
+export type CheckboxGroupProps = {
+  size?: CheckboxSizeEnumType;
+  groupId: string;
+  inline?: boolean;
+  onChange?: (items: string[]) => void;
+};

@@ -23,76 +23,56 @@ The `TextInput` component is used to allow users to enter single-line text, with
 ### Default
 
 <ComponentContainer>
-  <TextInput
-    error={{
-      text: '',
-    }}
-    halfFluid
+  <FormField
     hint={{
-      text: '',
+      text: 'Hint: This is a helpful hint.'
     }}
-    id="text-input-id"
     label={{
       htmlFor: 'text-input-id',
-      text: 'Input Label',
+      text: 'Input Label'
     }}
-  />
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+    />
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">        
     ```html
-    <label
-      for="input-id"
-      class="gi-text-md gi-mb-1 gi-block gi-mb-2">
-      Label
-    </label>
-    <div class="gi-flex gi-items-center ">
-      <input
-        id="input-id"
-        type="text"
-        autocomplete="on"
-        class="gi-border-gray-950 gi-w-1/2 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:!gi-leading-5 gi-focus-state-outline gi-focus-state-border gi-focus-state-outline gi-focus-state-border"
-      />
-    </div>
-    ```
-  </TabPanel>
-  <TabPanel value="tab32">        
-    ```html
-    {{ govieTextInput({
-      "label": {
-        "content": "Label",
-        "for": "character-width-input"
-      },
-      "halfFluid": true,
-      "characterWidth": 20,
-      "id": "character-width-input"
-    }) }}
+    <fieldset>
+      <label class="gi-text-md gi-label gi-mb-1" for="text-input-id">Label</label>
+      <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
+      <div class="gi-text-input-container-inner">
+        <input type="text" class="gi-text-input" id="text-input-id"data-testid="text-input-id">
+      </div>
+    </fieldset>
     ```
   </TabPanel>
   <TabPanel value="tab33">
-    ```html
-    import { TextInput } from "@govie-ds/react";
+    ```jsx
+    import { FormField, TextInput } from "@govie-ds/react";
     
-    <TextInput
-      error={{
-        text: ''
-      }}
-      halfFluid
+    <FormField
       hint={{
-        text: ''
+        text: 'Hint: This is a helpful hint.'
       }}
-      id="text-input-id"
       label={{
         htmlFor: 'text-input-id',
         text: 'Input Label'
       }}
-    />
+    >
+      <TextInput
+        data-testid="text-input-id"
+        id="text-input-id"
+      />
+    </FormField>
     ```
   </TabPanel>
 </Tabs>

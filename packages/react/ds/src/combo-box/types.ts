@@ -1,6 +1,6 @@
 import { DropdownItem } from './dropdown-item.js';
 
-export type DropdownItemType = {
+export type DropdownItemProps = {
   children: string;
   options: {
     label: string;

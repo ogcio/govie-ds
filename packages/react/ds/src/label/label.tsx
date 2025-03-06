@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../cn.js';
 
 export const LabelSize = {
   Small: 'sm',
@@ -12,32 +13,15 @@ export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
 export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   text: string;
   size?: LabelSizeType;
-  ariaLabel?: string;
-  dataTestid?: string;
 };
 
 // Use React.forwardRef to support refs properly
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  (
-    {
-      text,
-      size = LabelSize.Medium,
-      htmlFor,
-      className,
-      ariaLabel,
-      dataTestid,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ text, size = LabelSize.Medium, className, ...props }, ref) => {
     return (
       <label
-        className={`gi-text-${size} gi-label ${className || ''}`}
+        className={cn(`gi-text-${size}`, 'gi-label', className)}
         ref={ref}
-        htmlFor={htmlFor}
-        aria-label={ariaLabel || text}
-        id={htmlFor ? `${htmlFor}-label` : undefined}
-        data-testid={dataTestid}
         {...props}
       >
         {text}

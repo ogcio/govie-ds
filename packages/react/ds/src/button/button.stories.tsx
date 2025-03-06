@@ -57,30 +57,12 @@ export const Default: Story = {
       description: 'Specify if the button is disabled',
       type: 'boolean',
     },
-    ariaLabel: {
-      control: 'text',
-      type: { name: 'string' },
-      description: 'Accessible name for the button',
-    },
-    ariaDescribedBy: {
-      control: 'text',
-      type: { name: 'string' },
-      description: 'ID of an element that describes the button',
-    },
-    ariaPressed: {
-      control: 'boolean',
-      description: 'Indicates the toggle state of the button',
-      type: 'boolean',
-    },
   },
   args: {
     children: 'Button',
     variant: 'primary',
     appearance: 'default',
     size: 'medium',
-    ariaLabel: 'Accessible button label',
-    ariaDescribedBy: undefined,
-    ariaPressed: undefined,
   },
 };
 

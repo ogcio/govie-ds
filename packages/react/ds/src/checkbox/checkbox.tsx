@@ -1,50 +1,62 @@
+'use client';
+import { useId } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
-import { getTickSize, getSizeClass } from './helpers.js';
-import { CheckboxSizeEnum, type CheckboxType } from './types.js';
+import {
+  CheckboxSizeEnum,
+  CheckboxSizeEnumType,
+  type CheckboxProps,
+} from './types.js';
+
+const getSizeClass = (size: CheckboxSizeEnumType): string => {
+  switch (size) {
+    case CheckboxSizeEnum.Large: {
+      return 'gi-checkbox-large';
+    }
+    case CheckboxSizeEnum.Small: {
+      return 'gi-checkbox-small';
+    }
+    default: {
+      return 'gi-checkbox-medium';
+    }
+  }
+};
+
+export const getCheckboxWidth = (size?: CheckboxSizeEnumType) => {
+  let widthClass = 'gi-w-8';
+  if (size === CheckboxSizeEnum.Large) {
+    widthClass = 'gi-w-11';
+  }
+  if (size === CheckboxSizeEnum.Small) {
+    widthClass = 'gi-w-6';
+  }
+  return widthClass;
+};
 
 export const Checkbox = ({
   id,
-  value,
-  onChange = () => null,
   size = CheckboxSizeEnum.Medium,
   label,
-  name,
   hint,
-  checked,
-  disabled,
-  ariaLabel,
-  dataTestid,
   ...props
-}: CheckboxType) => {
-  const CheckboxId = id ?? value;
+}: CheckboxProps) => {
+  const CheckboxId = id || useId();
   return (
     <>
-      <div className="gi-checkbox-container" data-testid={dataTestid}>
+      <div className="gi-checkbox-container">
         <input
-          name={name || label}
-          onChange={onChange}
-          id={CheckboxId}
-          value={value}
-          className={`${getSizeClass(size)} ${getTickSize(size)} gi-checkbox-input`}
-          checked={checked}
-          aria-label={ariaLabel || CheckboxId}
-          aria-labelledby={label ? `${CheckboxId}-label` : undefined}
-          aria-describedby={hint ? `${CheckboxId}-hint` : undefined}
-          disabled={disabled}
           type="checkbox"
+          id={CheckboxId}
+          className={getSizeClass(size)}
+          aria-labelledby={label ? `${CheckboxId}-label` : undefined}
           {...props}
         />
-        <label
-          id={`${CheckboxId}-label`}
-          htmlFor={CheckboxId}
-          className="gi-checkbox-label"
-        >
+        <label id={`${CheckboxId}-label`} htmlFor={CheckboxId}>
           {label}
         </label>
       </div>
       {hint && (
         <div className="gi-checkbox-hint-container">
-          <div className={getSizeClass(size)} />
+          <div className={getCheckboxWidth(size)} />
           <HintText id={`${CheckboxId}-hint`} text={hint} />
         </div>
       )}
