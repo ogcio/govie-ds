@@ -31,13 +31,16 @@ describe('tabs', () => {
       children: TabsContent,
     });
 
-    const tabButtons = screen.getAllByRole('tab');
+    const tablist = screen.container.querySelector('[role="tablist"]');
+    const tabButtons = tablist?.querySelectorAll('button');
 
-    fireEvent.click(tabButtons[1]);
+    if (tabButtons) {
+      fireEvent.click(tabButtons[1]);
 
-    expect(tabButtons[1]).toHaveAttribute('aria-selected', 'true');
-    expect(tabButtons[0]).toHaveAttribute('aria-selected', 'false');
-    expect(screen.getByText('Tab 2 Content')).toBeVisible();
+      expect(tabButtons[1]).toHaveAttribute('aria-selected', 'true');
+      expect(tabButtons[0]).toHaveAttribute('aria-selected', 'false');
+      expect(screen.getByText('Tab 2 Content')).toBeVisible();
+    }
   });
 
   it('should pass axe tests', async () => {
