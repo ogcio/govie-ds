@@ -30,7 +30,7 @@ export const TabList = ({
     });
 
     setActiveTab(foundCheckedTab ? checkedIndex : 0);
-  }, [children, tabName]);
+  }, []);
 
   const onTabSelected = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
