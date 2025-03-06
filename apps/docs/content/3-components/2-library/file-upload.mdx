@@ -23,80 +23,49 @@ The **File Upload** component allows users to upload one or multiple files from 
 ### Default
 
 <ComponentContainer>
-  <FileUpload
-    accept="*/*"
-    error={{
-      text: '',
-    }}
-    hint={{
-      text: '',
-    }}
+  <FormField
     id="file-upload-id"
     label={{
       htmlFor: 'file-upload-id',
-      text: 'Upload File',
+      text: 'Upload File'
     }}
-  />
+  >
+    <FileUpload
+      accept="*/*"
+      id="file-upload-id"
+    />
+  </FormField>
 </ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
     ```html
-    <label
-      for="file-upload-id"
-      class="gi-text-md gi-mb-1 gi-label">
-      Upload File
-    </label>
-    <input
-      id="file-upload-id"
-      class="gi-file-upload-input"
-      type="file"
-      name="file"
-      accept="*/*"
-    />
+    <fieldset>
+      <label class="gi-text-md gi-label gi-mb-2" for="file-upload-id">Upload File</label>
+      <input class="gi-file-upload-input" type="file" id="file-upload-id" accept="*/*">
+    </fieldset>
     ```
-  </TabPanel>
-  <TabPanel value="tab32">
-    ```html
-    {{ govieFileUpload({
-      "id": "file-upload-id",
-      "label": {
-        "content": "Upload File",
-        "for": "file-upload-id"
-      },
-      "hint": {
-        "content": ""
-      },
-      "error": {
-        "content": ""
-      }
-    }) }}
-    ```
-
   </TabPanel>
   <TabPanel value="tab33">
-    ```html
-    import { FileUpload } from "@govie-ds/react";
+    ```jsx
+    import { FormField, FileUpload } from "@govie-ds/react";
     
-    <FileUpload
-      accept="*/*"
-      error={{
-        text: ''
-      }}
-      hint={{
-        text: ''
-      }}
+    <FormField
       id="file-upload-id"
       label={{
         htmlFor: 'file-upload-id',
         text: 'Upload File'
       }}
-    />
+    >
+      <FileUpload
+        accept="*/*"
+        id="file-upload-id"
+      />
+    </FormField>
     ```
   </TabPanel>
 </Tabs>

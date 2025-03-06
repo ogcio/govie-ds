@@ -96,14 +96,14 @@ export default function HomePage() {
             customisable, the Design System Building Block allows departments to
             create cohesive digital experiences effortlessly.
           </p>
-          <Link
+          {/* <Link
             className="gi-not-prose"
             href={config.signUpFormUrl}
             asButton={{ variant: 'primary' }}
           >
             Sign up to learn more
             <Icon icon="arrow_forward" />
-          </Link>
+          </Link> */}
         </Prose>
         <div>
           <Image
@@ -122,14 +122,14 @@ export default function HomePage() {
           or learn more about how the Design System Building Block can benefit
           your department.
         </Paragraph>
-        <Link
+        {/* <Link
           className="gi-not-prose"
           href={config.signUpFormUrl}
           asButton={{ variant: 'primary' }}
         >
           Sign up to learn more
           <Icon icon="arrow_forward" />
-        </Link>
+        </Link> */}
       </Prose>
     </main>
   );

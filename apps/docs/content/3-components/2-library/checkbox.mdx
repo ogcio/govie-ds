@@ -7,10 +7,10 @@ libraries:
     link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4008-3279&t=x9tccZ94Zz8w2Tvu-4'
     status: 'alpha'
   - platform: 'global'
-    link: '?path=/docs/form-checkboxes--docs'
+    link: '?path=/docs/form-checkbox-checkboxgroup--docs'
     status: 'alpha'
   - platform: 'react'
-    link: '?path=/docs/form-checkboxes--docs'
+    link: '?path=/docs/form-checkbox-checkboxgroup--docs'
     status: 'alpha'
 ---
 
@@ -54,37 +54,33 @@ libraries:
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
-    ```html
-    <fieldset class="" data-module="gieds-checkboxes">
-      <label class="gi-text-md gi-label gi-mb-2" aria-label="Organization">Organization</label>
+  ```html
+  <fieldset data-module="gieds-checkboxes">
+    <label class="gi-text-md gi-label gi-mb-2">Organization</label>
       <div class="gi-input-group-container">
         <div class="gi-input-group-options-container">
-            <div class="gi-input-group-options-stacked">
-                <div class="gi-checkbox-container"><input id="uniqueid1-check1"
-                        class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
-                        aria-label="uniqueid1-check1" aria-labelledby="uniqueid1-check1-label" type="checkbox"
-                        value="employment-tribunal" name="uniqueid1"><label id="uniqueid1-check1-label"
-                        for="uniqueid1-check1" class="gi-checkbox-label">Employment Tribunal</label></div>
-                <div class="gi-checkbox-container"><input id="uniqueid1-check2"
-                        class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
-                        aria-label="uniqueid1-check2" aria-labelledby="uniqueid1-check2-label" type="checkbox"
-                        value="ministry-of-defence" name="uniqueid1"><label id="uniqueid1-check2-label"
-                        for="uniqueid1-check2" class="gi-checkbox-label">Ministry of Defence</label></div>
-                <div class="gi-checkbox-container"><input id="uniqueid1-check3"
-                        class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
-                        aria-label="uniqueid1-check3" aria-labelledby="uniqueid1-check3-label" type="checkbox"
-                        value="department-for-transport" name="uniqueid1"><label id="uniqueid1-check3-label"
-                        for="uniqueid1-check3" class="gi-checkbox-label">Department for Transport</label></div>
-                <div class="gi-checkbox-container"><input id="uniqueid1-check4"
-                        class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
-                        aria-label="uniqueid1-check4" aria-labelledby="uniqueid1-check4-label" disabled=""
-                        type="checkbox" value="others" name="uniqueid1"><label id="uniqueid1-check4-label"
-                        for="uniqueid1-check4" class="gi-checkbox-label">Others</label></div>
+          <div class="gi-input-group-options-stacked">
+            <div class="gi-checkbox-container">
+              <input type="checkbox" id="UniqueID-check1" class="gi-checkbox-medium" aria-labelledby="UniqueID-check1-label" name="UniqueID" value="employment-tribunal">
+              <label id="UniqueID-check1-label" for="UniqueID-check1">Employment Tribunal</label>
             </div>
+            <div class="gi-checkbox-container">
+              <input type="checkbox" id="UniqueID-check2" class="gi-checkbox-medium" aria-labelledby="UniqueID-check2-label" name="UniqueID" value="ministry-of-defence">
+              <label id="UniqueID-check2-label" for="UniqueID-check2">Ministry of Defence</label>
+            </div>
+            <div class="gi-checkbox-container">
+              <input type="checkbox" id="UniqueID-check3" class="gi-checkbox-medium" aria-labelledby="UniqueID-check3-label" name="UniqueID" value="department-for-transport">
+              <label id="UniqueID-check3-label" for="UniqueID-check3">Department for Transport</label>
+            </div>
+            <div class="gi-checkbox-container">
+              <input type="checkbox" id="UniqueID-check4" class="gi-checkbox-medium" aria-labelledby="UniqueID-check4-label" disabled="" name="UniqueID" value="others">
+              <label id="UniqueID-check4-label" for="UniqueID-check4">Others</label>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
   </fieldset>
-    ```
+  ```
   </TabPanel>
   <TabPanel value="tab33">
     ```jsx
