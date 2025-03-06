@@ -37,7 +37,7 @@ const alertVariants = tv({
   },
 });
 
-type AlertProps = {
+export type AlertProps = {
   variant?: VariantProps<typeof alertVariants>['variant'];
   title: string;
   children?: ReactNode;

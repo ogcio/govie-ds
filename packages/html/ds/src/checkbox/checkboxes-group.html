@@ -5,18 +5,18 @@
 {% from 'error-text/error-text.html' import govieErrorText %}
 {% from 'heading/heading.html' import govieHeading %}
 
-{% macro govieCheckboxesGroup(props) %}
+{% macro govieCheckboxGroup(props) %}
   <div
     data-testid="{{ props.dataTestid }}"
     data-module="gieds-checkboxes"
-    class="gi-checkbox-group-container"
+    class="gi-input-group-container"
   >
     {% if props.errorMessage %}
-      <div class="gi-checkbox-group-error"></div>
+      <div class="gi-input-group-error"></div>
     {% endif %}
     <fieldset>
       {% if props.title %}
-        <legend class="gi-checkbox-group-title">
+        <legend class="gi-input-group-title">
           {% if props.title.asHeading %}
             <div class="gi-mb-2">
               {{

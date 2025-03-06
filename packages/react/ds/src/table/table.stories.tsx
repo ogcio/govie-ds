@@ -52,28 +52,28 @@ const defaultValueRows = [
     county: 'Cork',
     description: 'Lorem ipsum',
     total: '€900,000',
-    status: { text: 'Approved', type: TagTypeEnum.success },
+    status: { text: 'Approved', type: TagTypeEnum.Success },
   },
   {
     id: 2,
     county: 'Limerick',
     description: 'Lorem ipsum',
     total: '€100,000',
-    status: { text: 'Approved', type: TagTypeEnum.success },
+    status: { text: 'Approved', type: TagTypeEnum.Success },
   },
   {
     id: 3,
     county: 'Dublin',
     description: 'Lorem ipsum Lorem ipsum Lorem ipsum',
     total: '€500,000',
-    status: { text: 'Rejected', type: TagTypeEnum.error },
+    status: { text: 'Rejected', type: TagTypeEnum.Error },
   },
   {
     id: 4,
     county: 'Donegal',
     description: 'Lorem ipsum Lorem ipsum Lorem ipsum',
     total: '€400,000',
-    status: { text: 'Pending', type: TagTypeEnum.info },
+    status: { text: 'Pending', type: TagTypeEnum.Info },
   },
 ];
 
@@ -132,7 +132,7 @@ export const Default: Story = {
           <TableRow key={`row-${row.id}`}>
             <TableData>
               <Checkbox
-                ariaLabel={`checkbox-id-${row.id}`}
+                aria-label={`checkbox-id-${row.id}`}
                 id={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
               />
@@ -215,21 +215,21 @@ export const TableWithFooter: Story = {
         county: 'Digital Transformation',
         description: 'Enterprise-wide system upgrade',
         total: '€1,500,000',
-        status: { text: 'On Track', type: TagTypeEnum.success },
+        status: { text: 'On Track', type: TagTypeEnum.Success },
       },
       {
         id: 2,
         county: 'Customer Experience',
         description: 'UX redesign and implementation',
         total: '€750,000',
-        status: { text: 'At Risk', type: TagTypeEnum.warning },
+        status: { text: 'At Risk', type: TagTypeEnum.Warning },
       },
       {
         id: 3,
         county: 'Sustainability Initiative',
         description: 'Carbon neutrality program',
         total: '€2,250,000',
-        status: { text: 'Behind Schedule', type: TagTypeEnum.error },
+        status: { text: 'Behind Schedule', type: TagTypeEnum.Error },
       },
     ],
   },
@@ -248,7 +248,7 @@ export const TableWithFooter: Story = {
           <TableRow key={`row-${row.id}`}>
             <TableData>
               <Checkbox
-                ariaLabel={`checkbox-id-${row.id}`}
+                aria-label={`checkbox-id-${row.id}`}
                 id={`project-select-${row.id}`}
                 value={row.id.toString()}
               />

@@ -1,11 +1,11 @@
 import type { Meta } from '@storybook/react';
-import { ErrorText } from '../error-text/error-text.js';
-import { HintText } from '../hint-text/hint-text.js';
+import { expect, within } from '@storybook/test';
+import { FormField } from '../forms/form-field.js';
 import { Label } from '../label/label.js';
-import { Select, SelectItem, SelectGroupItem } from './select.js';
+import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {
-  title: 'Form/Select/SelectComposable',
+  title: 'Form/Select',
   parameters: {
     docs: {
       description: {
@@ -21,43 +21,60 @@ export default meta;
 
 export const Default = {
   render: () => (
-    <>
-      <Label text="Label" />
+    <FormField label={{ text: 'Label' }}>
       <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
-    </>
+    </FormField>
   ),
 };
 
-export const WithHint = {
+export const WithLabelAndHint = {
   render: () => (
-    <>
-      <Label text="Label" />
-      <HintText text="This is a hint" />
+    <FormField label={{ text: 'Label' }} hint={{ text: 'This is a hint' }}>
       <Select aria-label="Select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
-    </>
+    </FormField>
   ),
 };
 
-export const withError = {
+export const withLabelHintAndError = {
   render: () => (
-    <>
-      <Label text="Label" />
-      <ErrorText text="This is an error" />
-      <Select aria-label="Select">
+    <FormField
+      label={{ text: 'Label', htmlFor: 'select' }}
+      hint={{ text: 'This is a hint' }}
+      error={{ text: 'This is an error' }}
+    >
+      <Select aria-label="Select" data-testid="select" id="select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
-    </>
+    </FormField>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const select = canvas.getByTestId('select');
+
+    const label = canvas.getByText('Label');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
+
+    const hint = canvas.getByText('This is a hint');
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
+
+    const error = canvas.getByText('This is an error');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
+  },
 };
 
 export const withoutLabel = {
@@ -72,8 +89,8 @@ export const withoutLabel = {
 
 export const withGroups = {
   render: () => (
-    <Select aria-label="Select">
-      <SelectGroupItem label="Group 1">
+    <Select aria-label="Select" data-testid="select">
+      <SelectGroupItem label="Group 1" data-testid="select-group">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -92,4 +109,15 @@ export const withGroups = {
       </SelectGroupItem>
     </Select>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const select = canvas.getByTestId('select') as HTMLSelectElement;
+    expect(select.options.length).toBe(9);
+
+    const optGroup1 = canvas.getByTestId('select-group');
+    expect(optGroup1).toBeTruthy();
+    expect(optGroup1).toHaveAttribute('role', 'group');
+    expect(optGroup1.tagName).toBe('OPTGROUP');
+  },
 };

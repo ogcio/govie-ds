@@ -8,13 +8,13 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utils.js';
-import { DropdownItemType } from './types.js';
+import { DropdownItemProps } from './types.js';
 
 export const DropdownItem = ({
   children,
   noSearch,
   options,
-}: DropdownItemType) => {
+}: DropdownItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [noResults, setNoResults] = useState(false);

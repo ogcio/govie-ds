@@ -28,7 +28,7 @@ const standardProps = {
 describe('checkboxes', () => {
   const renderCheckboxes = render<CheckboxesProps>({
     componentName: 'checkboxes',
-    macroName: 'govieCheckboxesGroup',
+    macroName: 'govieCheckboxGroup',
     html,
   });
 

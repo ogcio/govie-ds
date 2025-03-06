@@ -53,7 +53,7 @@ const meta = {
         category: 'Card Content',
         type: {
           summary:
-            '{ type: "image" | "icon" | "iframe", config: ImagePropTypes | IconPropTypes | IframePropTypes }',
+            '{ type: "image" | "icon" | "iframe", config: ImagePropTypes | IconProps | IframePropTypes }',
         },
       },
     },

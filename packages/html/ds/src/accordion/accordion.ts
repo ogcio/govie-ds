@@ -45,7 +45,6 @@ export class Accordion extends BaseComponent<AccordionOptions> {
   }
 
   initComponent() {
-    console.log(this.accordionItemsState);
     for (const item of this.accordionItemsState) {
       const { triggerContainer, contentContainer, iconContainer } =
         item.elements;

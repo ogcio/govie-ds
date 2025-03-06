@@ -4,10 +4,10 @@ import {
   getVariantAppearanceClass,
 } from '../button/helpers.js';
 import { ButtonProps, ButtonSize } from '../button/types.js';
-import { Icon, IconPropTypes } from '../icon/icon.js';
+import { Icon, IconProps } from '../icon/icon.js';
 
-export type IconButtonType = Omit<ButtonProps, 'children'> & {
-  icon: Omit<IconPropTypes, 'size'>;
+export type IconButtonProps = Omit<ButtonProps, 'children'> & {
+  icon: Omit<IconProps, 'size'>;
   className?: string;
 };
 
@@ -31,7 +31,7 @@ export const IconButton = ({
   disabled,
   onClick,
   className = '',
-}: IconButtonType) => {
+}: IconButtonProps) => {
   const iconSize = size === 'large' ? 'md' : 'sm';
   return (
     <button

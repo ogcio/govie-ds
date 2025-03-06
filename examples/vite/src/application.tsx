@@ -20,7 +20,7 @@ import {
   FileUpload,
   Tag,
   Modal,
-  RadiosGroup,
+  RadioGroup,
   Card,
   Button,
   CookieBanner,
@@ -31,7 +31,7 @@ import {
   Alert,
   Pagination,
   Checkbox,
-  CheckboxesGroup,
+  CheckboxGroup,
   Form,
   DropdownItem,
   HeaderProps,
@@ -263,7 +263,7 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <CheckboxesGroup
+        <CheckboxGroup
           groupId="field-Id"
           items={[
             { label: 'Irish', value: 'irish' },
@@ -277,7 +277,7 @@ export function App() {
         <br />
         <h2>Checkbox</h2>
         <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <RadiosGroup
+        <RadioGroup
           title={{
             value: 'Where do you live?',
             asHeading: {

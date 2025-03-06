@@ -8,7 +8,7 @@ status: stable
 
 This guidance is for government teams creating online address forms for digital services.
 
-### Default
+## Address form
 
 <Addresses />
 
@@ -21,93 +21,108 @@ This guidance is for government teams creating online address forms for digital 
   </TabList>
   <TabPanel value="tab31">        
   ```html
-    <div class="md:gi-w-2/3 gi-w-full">
-      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
-          <div role="group" class="gi-text-input-container" aria-labelledby="address-line-1-label">
-              <label class="gi-text-md gi-label gi-mb-1" for="address-line-1" aria-label="Address Line 1" id="address-line-1-label">Address Line 1</label>
-              <div class="gi-hint-text-md gi-hint-text " aria-label="Street address, P.O. box, company name, c/o" id="address-line-1-hint">Street address, P.O. box, company name, c/o</div>
-              <div class="gi-text-input-container-inner"><input id="address-line-1" type="text" data-testid="govie-stack-item-0" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
-          </div>
+  <div class="md:gi-w-2/3 gi-w-full">
+    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-3 gi-flex-nowrap" role="region"
+        aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap"
+            role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+            <fieldset class="" data-testid="govie-stack-item-0"><label class="gi-text-md gi-label gi-mb-1"
+                    aria-label="Address Line 1">Address Line 1</label>
+                <div class="gi-hint-text-md gi-hint-text gi-mb-1"
+                    aria-label="Street address, P.O. box, company name, c/o">Street address, P.O. box, company name, c/o
+                </div>
+                <div class="gi-text-input-container-inner"><input class="gi-text-input" id="address-line-1"></div>
+            </fieldset>
         </div>
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
-          <div role="group" class="gi-text-input-container" aria-labelledby="address-line-2-label">
-              <label class="gi-text-md gi-label gi-mb-1" for="address-line-2" aria-label="Address Line 2" id="address-line-2-label">Address Line 2</label>
-              <div class="gi-hint-text-md gi-hint-text " aria-label="Apartment, suite, unit, building, floor, etc. (optional)" id="address-line-2-hint">Apartment, suite, unit, building, floor, etc. (optional)</div>
-              <div class="gi-text-input-container-inner"><input id="address-line-2" type="text" data-testid="govie-stack-item-1" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
-          </div>
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap"
+            role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+            <fieldset class="" data-testid="govie-stack-item-0"><label class="gi-text-md gi-label gi-mb-1"
+                    aria-label="Address Line 2">Address Line 2</label>
+                <div class="gi-hint-text-md gi-hint-text gi-mb-1"
+                    aria-label="Apartment, suite, unit, building, floor, etc. (optional)">Apartment, suite, unit,
+                    building, floor, etc. (optional)</div>
+                <div class="gi-text-input-container-inner"><input class="gi-text-input" id="address-line-2"></div>
+            </fieldset>
         </div>
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
-          <div role="group" class="gi-text-input-container" aria-labelledby="town-city-label">
-              <label class="gi-text-md gi-label gi-mb-1" for="town-city" aria-label="Town or City" id="town-city-label">Town or City</label>
-              <div class="gi-hint-text-md gi-hint-text " aria-label="Your town or city" id="town-city-hint">Your town or city</div>
-              <div class="gi-text-input-container-inner"><input id="town-city" type="text" data-testid="govie-stack-item-2" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
-          </div>
-          <div role="group" class="gi-text-input-container" aria-labelledby="country-label">
-              <label class="gi-text-md gi-label gi-mb-1" for="country" aria-label="Country" id="country-label">Country</label>
-              <div class="gi-hint-text-md gi-hint-text " aria-label="Your country" id="country-hint">Your country</div>
-              <div class="gi-text-input-container-inner"><input id="country" type="text" data-testid="govie-stack-item-3" aria-invalid="false" class="gi-text-input gi-border-gray-950"></div>
-          </div>
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap"
+            role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+            <fieldset class="" data-testid="govie-stack-item-0"><label class="gi-text-md gi-label gi-mb-1"
+                    aria-label="Town or City">Town or City</label>
+                <div class="gi-hint-text-md gi-hint-text gi-mb-1" aria-label="Your town or city">Your town or city</div>
+                <div class="gi-text-input-container-inner"><input class="gi-text-input" id="town-city"></div>
+            </fieldset>
+            <fieldset class="" data-testid="govie-stack-item-1"><label class="gi-text-md gi-label gi-mb-1"
+                    aria-label="Country">Country</label>
+                <div class="gi-hint-text-md gi-hint-text gi-mb-1" aria-label="Your country">Your country</div>
+                <div class="gi-text-input-container-inner"><input class="gi-text-input" id="country"></div>
+            </fieldset>
         </div>
-        <div class="gi-w-1/2">
-          <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap" role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
-            <div role="group" class="gi-text-input-container" aria-labelledby="postcode-label">
-                <label class="gi-text-md gi-label gi-mb-1" for="postcode" aria-label="Postcode" id="postcode-label">Postcode</label>
-                <div class="gi-hint-text-md gi-hint-text " aria-label="Your postcode or ZIP code" id="postcode-hint">Your postcode or ZIP code</div>
-                <div class="gi-text-input-container-inner"><input id="postcode" type="text" data-testid="govie-stack-item-4" aria-invalid="false" class="gi-text-input gi-border-gray-950" maxlength="10"></div>
+        <div class="gi-w-1/2" data-testid="govie-stack-item-3">
+            <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col md:gi-flex-row gi-gap-3 gi-flex-nowrap"
+                role="region" aria-label="Items Stacked" data-testid="govie-stack" style="height: 100%;">
+                <fieldset class="" data-testid="govie-stack-item-0"><label class="gi-text-md gi-label gi-mb-1"
+                        aria-label="Postcode">Postcode</label>
+                    <div class="gi-hint-text-md gi-hint-text gi-mb-1" aria-label="Your postcode or ZIP code">Your
+                        postcode or ZIP code</div>
+                    <div class="gi-text-input-container-inner"><input class="gi-text-input" id="postcode"
+                            maxlength="10"></div>
+                </fieldset>
             </div>
-          </div>
         </div>
     </div>
   </div>
   ```
   </TabPanel>
   <TabPanel value="tab32">
-    ```html
+    ```jsx
     import { Stack, TextInput } from '@govie-ds/react';
 
     <div className="md:gi-w-2/3 gi-w-full">
-      <Stack direction={{ base: 'column' }} gap={3}>
-        <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-          <TextInput
-            id="address-line-1"
-            label={{ text: 'Address Line 1' }}
-            hint={{ text: 'Street address, P.O. box, company name, c/o' }}
-          />
-        </Stack>
-        <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-          <TextInput
-            id="address-line-2"
-            label={{ text: 'Address Line 2' }}
-            hint={{
-              text: 'Apartment, suite, unit, building, floor, etc. (optional)',
-            }}
-          />
-        </Stack>
-        <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-          <TextInput
-            id="town-city"
-            label={{ text: 'Town or City' }}
-            hint={{ text: 'Your town or city' }}
-          />
-          <TextInput
-            id="country"
-            label={{ text: 'Country' }}
-            hint={{ text: 'Your country' }}
-          />
-        </Stack>
-        <div className="gi-w-1/2">
+        <Stack direction={{ base: 'column' }} gap={3}>
           <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-            <TextInput
-              id="postcode"
-              label={{ text: 'Postcode' }}
-              hint={{ text: 'Your postcode or ZIP code' }}
-              maxLength={10}
-            />
+            <FormField
+              label={{ text: 'Address Line 1' }}
+              hint={{ text: 'Street address, P.O. box, company name, c/o' }}
+            >
+              <TextInput id="address-line-1" />
+            </FormField>
           </Stack>
-        </div>
-      </Stack>
-    </div>
+          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+            <FormField
+              label={{ text: 'Address Line 2' }}
+              hint={{
+                text: 'Apartment, suite, unit, building, floor, etc. (optional)',
+              }}
+            >
+              <TextInput id="address-line-2" />
+            </FormField>
+          </Stack>
+          <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+            <FormField
+              label={{ text: 'Town or City' }}
+              hint={{ text: 'Your town or city' }}
+            >
+              <TextInput id="town-city" />
+            </FormField>
+            <FormField
+              label={{ text: 'Country' }}
+              hint={{ text: 'Your country' }}
+            >
+              <TextInput id="country" />
+            </FormField>
+          </Stack>
+          <div className="gi-w-1/2">
+            <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
+              <FormField
+                label={{ text: 'Postcode' }}
+                hint={{ text: 'Your postcode or ZIP code' }}
+              >
+                <TextInput id="postcode" maxLength={10} />
+              </FormField>
+            </Stack>
+          </div>
+        </Stack>
+      </div>
     ```
   </TabPanel>
 </Tabs>

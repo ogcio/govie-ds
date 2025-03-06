@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../cn.js';
 
 export const HintSize = {
   Small: 'sm',
@@ -10,12 +11,9 @@ export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];
 
 // Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
 // the component can accept all the standard attributes and events that an `<input>` element can handle.
-export type HintTextProps = React.HTMLAttributes<HTMLInputElement> & {
+export type HintTextProps = React.HTMLAttributes<HTMLElement> & {
   text: string;
   size?: HintSizeType;
-  className?: string;
-  ariaLabel?: string;
-  dataTestid?: string;
 };
 
 // Use React.forwardRef to support refs properly
@@ -23,8 +21,6 @@ export const HintText: React.FC<HintTextProps> = ({
   text,
   className,
   size,
-  ariaLabel,
-  dataTestid,
   ...props
 }) => {
   const sizeClass = (() => {
@@ -42,12 +38,7 @@ export const HintText: React.FC<HintTextProps> = ({
   })();
 
   return (
-    <div
-      className={`${sizeClass} gi-hint-text ${className || ''}`}
-      aria-label={ariaLabel || text}
-      data-testid={dataTestid}
-      {...props}
-    >
+    <div className={cn(sizeClass, 'gi-hint-text', className)} {...props}>
       {text}
     </div>
   );

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
-import { Icon, IconPropTypes } from '../icon/icon.js';
+import { Icon, IconProps } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagProps } from '../tag/tag.js';
@@ -30,7 +30,7 @@ type MediaContent =
     }
   | {
       type: 'icon';
-      config: IconPropTypes;
+      config: IconProps;
     }
   | {
       type: 'iframe';
