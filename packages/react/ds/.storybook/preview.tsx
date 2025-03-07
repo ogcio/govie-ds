@@ -1,4 +1,4 @@
-import '@govie-ds/theme-govie/light.css';
+import '@govie-ds/theme-govie/theme.css';
 import '@govie-ds/theme-doete/light.css';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import {
@@ -33,10 +33,10 @@ const preview: Preview = {
   decorators: [
     withThemeByDataAttribute({
       themes: {
-        govie: 'govie-light',
+        govie: '',
         doete: 'doete-light',
       },
-      defaultTheme: 'govie-light',
+      defaultTheme: '',
       attributeName: 'data-theme',
     }),
   ],
