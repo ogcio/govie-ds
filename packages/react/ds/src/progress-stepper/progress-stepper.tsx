@@ -1,114 +1,7 @@
 import React from 'react';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
-import {
-  ProgressStepperIndicator,
-  type ConnectorProps,
-  type ProgressStepperIndicatorType,
-  type ProgressStepperProps,
-  type StepProps,
-} from './types.js';
-
-const Connector = ({
-  isNextStep,
-  orientation = 'horizontal',
-  isCurrentStep,
-  isCompleted,
-}: ConnectorProps) => {
-  return (
-    <div
-      data-orientation={orientation}
-      data-next={isNextStep}
-      data-completed={isCompleted}
-      data-current={isCurrentStep}
-      className={cn('gi-progress-stepper-step-connector')}
-      aria-hidden="true"
-    >
-      <span />
-      {isCurrentStep ? <span /> : null}
-    </div>
-  );
-};
-
-const getIndicatorClasses = (indicator: ProgressStepperIndicatorType) => {
-  const indicatorClasses = {
-    [ProgressStepperIndicator.Hashtag]: {
-      completed: <Icon icon="check" />,
-      current: '#',
-      next: '#',
-    },
-  };
-
-  return indicatorClasses[indicator];
-};
-
-const Step = ({
-  isCurrentStep,
-  isCompleted,
-  isLastStep,
-  stepNumber,
-  orientation,
-  children,
-  indicator = 'hashtag',
-  verticalSlot,
-  defaultOpen,
-}: StepProps) => {
-  const isNextStep = !isCompleted && !isCurrentStep;
-  const { current, completed, next } = getIndicatorClasses(
-    indicator || ProgressStepperIndicator.Hashtag,
-  );
-  const showVerticalSlots =
-    orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
-
-  const getProgressIconStep = () => {
-    if (isCompleted) {
-      return completed;
-    } else if (isCurrentStep) {
-      return current;
-    }
-    return next;
-  };
-
-  return (
-    <div className="gi-relative">
-      <div
-        className="gi-progress-stepper-step-container"
-        data-orientation={orientation}
-        data-current={isCurrentStep}
-        data-completed={isCompleted}
-        data-next={isNextStep}
-        data-indicator={indicator}
-        role="listitem"
-        aria-labelledby={`step-label-${stepNumber}`}
-      >
-        <div className="gi-progress-stepper-step">{getProgressIconStep()}</div>
-        <div
-          className="gi-progress-stepper-step-label"
-          data-orientation={orientation}
-          id={`step-label-${stepNumber}`}
-        >
-          {children}
-        </div>
-      </div>
-      {isLastStep ? null : (
-        <Connector
-          isCurrentStep={isCurrentStep}
-          isNextStep={isNextStep}
-          isCompleted={isCompleted}
-          orientation={orientation}
-          stepNumber={stepNumber}
-        />
-      )}
-      {showVerticalSlots && <div className="gi-ml-10">{verticalSlot}</div>}
-    </div>
-  );
-};
-
-type StepItemProps = {
-  label: string;
-  defaultOpen?: boolean;
-  children?: React.ReactNode;
-};
+import { Step } from './Step.js';
+import { type ProgressStepperProps, type StepItemProps } from './types.js';
 
 // Component needed to pick the props inside ProgressStepper component
 export const StepItem: React.FC<StepItemProps> = () => null;
@@ -118,6 +11,7 @@ export const ProgressStepper = ({
   currentStepIndex = 0,
   orientation = 'horizontal',
   completeAll,
+  dataTestId,
 }: ProgressStepperProps) => {
   const slot = children[currentStepIndex]?.props?.children;
   const showHorizontalSlot = orientation === 'horizontal' && slot;
@@ -148,7 +42,7 @@ export const ProgressStepper = ({
           return (
             <div className="gi-w-full">
               <Step
-                key={`progress-stepper-step-${index}`}
+                key={dataTestId || `progress-stepper-step-${index}`}
                 stepNumber={index + 1}
                 isCurrentStep={isCurrentStep}
                 isCompleted={isCompleted}
@@ -163,7 +57,14 @@ export const ProgressStepper = ({
           );
         })}
       </div>
-      {showHorizontalSlot && <div className="gi-h-full">{slot}</div>}
+      {showHorizontalSlot && (
+        <div
+          className="gi-h-full"
+          data-testId={`horizontal-step-slot-${currentStepIndex}`}
+        >
+          {slot}
+        </div>
+      )}
     </div>
   );
 };

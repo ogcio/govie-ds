@@ -144,35 +144,23 @@ export const WithContentStepVertical: Story = {
     return (
       <Stack>
         <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
-          <StepItem label="Start Your Application">
-            <Stack className="gi-mt-5">
-              Begin your application by filling in basic details.
-            </Stack>
+          <StepItem label="Step 1">
+            <Stack>Here are the content for Step 1</Stack>
           </StepItem>
-          <StepItem label="Personal Information">
-            <Stack className="gi-mt-5">
-              Provide your personal information, such as name, age, etc.
-            </Stack>
+          <StepItem label="Step 2">
+            <Stack>Here are the content for Step 2</Stack>
           </StepItem>
-          <StepItem label="Eligibility Check">
-            <Stack className="gi-mt-5">
-              Ensure that you meet the eligibility criteria for the application.
-            </Stack>
+          <StepItem label="Step 3">
+            <Stack>Here are the content for Step 3</Stack>
           </StepItem>
-          <StepItem label="Documents Submission">
-            <Stack className="gi-mt-5">
-              Upload all required documents to proceed with the application.
-            </Stack>
+          <StepItem label="Step 4">
+            <Stack>Here are the content for Step 4</Stack>
           </StepItem>
-          <StepItem label="Review">
-            <Stack>
-              Review all the information you’ve provided before submitting.
-            </Stack>
+          <StepItem label="Step 5">
+            <Stack>Here are the content for Step 5</Stack>
           </StepItem>
-          <StepItem label="Complete & Submit">
-            <Stack className="gi-mt-5">
-              Once everything is confirmed, submit your application.
-            </Stack>
+          <StepItem label="Step 6">
+            <Stack>Here are the content for Step 6</Stack>
           </StepItem>
         </ProgressStepper>
         <PreviousNextContainerVertical />

@@ -12,14 +12,21 @@ export type Step = {
   slot: React.ReactElement;
 };
 
+export type StepItemProps = {
+  label: string;
+  children?: React.ReactNode;
+  defaultOpen?: boolean;
+};
+
 export type ProgressStepperProps = {
-  children: React.ReactElement<StepProps>[];
+  children: React.ReactElement<InnerStepProps>[];
   currentStepIndex?: number;
   orientation?: Orientation;
   completeAll?: boolean;
+  dataTestId?: string;
 };
 
-export type StepProps = {
+export type InnerStepProps = {
   children: string;
   isCurrentStep: boolean;
   isLastStep: boolean;

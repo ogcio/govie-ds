@@ -89,6 +89,81 @@ describe('govieProgressStepper', () => {
 
     expect(stepElements.length).toBe(3);
   });
+  it('should show slot content for the current and previous step index when vertical orientation', async () => {
+    const screen = renderProgressStepper({
+      currentStepIndex: 1,
+      children: [
+        <StepItem label="Step 1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
+      orientation: 'vertical',
+    });
+
+    const stepperElement1 = screen.getByTestId('vertical-step-slot-0');
+    const stepperElement2 = screen.getByTestId('vertical-step-slot-1');
+    const stepperElement3 = screen.queryByTestId('vertical-step-slot-2');
+
+    expect(stepperElement1).toBeInTheDocument();
+    expect(stepperElement2).toBeInTheDocument();
+    expect(stepperElement3).toBeNull();
+  });
+
+  it('should show slot content for the current step index', async () => {
+    const screen = renderProgressStepper({
+      currentStepIndex: 0,
+      children: [
+        <StepItem label="Step 1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
+    });
+
+    const stepperElement1 = screen.getByTestId('horizontal-step-slot-0');
+    const stepperElement2 = screen.queryByTestId('horizontal-step-slot-1');
+    const stepperElement3 = screen.queryByTestId('horizontal-step-slot-2');
+
+    expect(stepperElement1).toBeInTheDocument();
+    expect(stepperElement2).toBeNull();
+    expect(stepperElement3).toBeNull();
+  });
+
+  it('should default open slot content while vertical orientation when "defaultOpen" is true', () => {
+    const screen = renderProgressStepper({
+      children: [
+        <StepItem label="Step 1" defaultOpen>
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2" defaultOpen>
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3" defaultOpen>
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
+      orientation: 'vertical',
+    });
+
+    const stepperElement1 = screen.getByTestId('vertical-step-slot-0');
+    const stepperElement2 = screen.getByTestId('vertical-step-slot-1');
+    const stepperElement3 = screen.getByTestId('vertical-step-slot-2');
+
+    expect(stepperElement1).toBeInTheDocument();
+    expect(stepperElement2).toBeInTheDocument();
+    expect(stepperElement3).toBeInTheDocument();
+  });
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderProgressStepper({
