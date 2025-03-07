@@ -9,6 +9,7 @@ export type FormFieldProps = {
   error?: ErrorTextProps;
   hint?: HintTextProps;
   label?: LabelProps;
+  className?: string;
 };
 
 export const FormField = ({
@@ -16,9 +17,10 @@ export const FormField = ({
   hint,
   error,
   children,
+  className,
 }: React.PropsWithChildren<FormFieldProps>) => {
   return (
-    <fieldset className={cn({ 'gi-error-state': error })}>
+    <fieldset className={cn({ 'gi-error-state': error }, className)}>
       {label?.text && (
         <Label
           text={label.text}

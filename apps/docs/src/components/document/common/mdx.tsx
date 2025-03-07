@@ -66,6 +66,7 @@ import {
   TextArea,
   TextInput,
   Tooltip,
+  StepItem,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import NextLink from 'next/link';
@@ -268,6 +269,7 @@ const documentComponents: MDXComponents = {
   DrawerWrapper,
   HeaderSearch,
   Details,
+  StepItem,
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
   FormField: (props) => <FormField {...props} />,
