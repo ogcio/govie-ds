@@ -40,7 +40,7 @@ const standardProps = {
 describe('radios', () => {
   const renderRadios = render<RadiosProps>({
     componentName: 'radios',
-    macroName: 'govieRadiosGroup',
+    macroName: 'govieRadioGroup',
     html,
   });
 

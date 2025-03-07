@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.31.2](https://github.com/ogcio/govie-ds/compare/html-v0.31.1...html-v0.31.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* update link as button classes ([#445](https://github.com/ogcio/govie-ds/issues/445)) ([35e1019](https://github.com/ogcio/govie-ds/commit/35e10196ab205dde48be2233058cd52a42acc5ee))
+
+## [0.31.1](https://github.com/ogcio/govie-ds/compare/html-v0.31.0...html-v0.31.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([0af9b29](https://github.com/ogcio/govie-ds/commit/0af9b2983d0d68a81e05769789e262e57ca0d1e2))
+
+## [0.31.0](https://github.com/ogcio/govie-ds/compare/html-v0.30.1...html-v0.31.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+
+
+### Bug Fixes
+
+* restore half width on input ([#453](https://github.com/ogcio/govie-ds/issues/453)) ([fe13467](https://github.com/ogcio/govie-ds/commit/fe13467dfc7effe0a7fcd84e727cf39700773951))
+
 ## [0.30.1](https://github.com/ogcio/govie-ds/compare/html-v0.30.0...html-v0.30.1) (2025-02-20)
 
 

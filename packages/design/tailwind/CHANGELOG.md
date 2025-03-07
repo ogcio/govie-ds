@@ -1,6 +1,36 @@
 # Changelog
 
 
+## [0.32.2](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.1...tailwind-v0.32.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* add max width container variant to 1024px ([bd4d423](https://github.com/ogcio/govie-ds/commit/bd4d42300f715a5e1b1b755f457861801bb6c5a7))
+* link focus state ([#459](https://github.com/ogcio/govie-ds/issues/459)) ([2761b30](https://github.com/ogcio/govie-ds/commit/2761b300020300e2cb9a142a8b326acfb48fc349))
+
+## [0.32.1](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.0...tailwind-v0.32.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* focus for firefox and safari ([#455](https://github.com/ogcio/govie-ds/issues/455)) ([eabdf6e](https://github.com/ogcio/govie-ds/commit/eabdf6ec6ef8599e16d026f4dc3dd9e8a113b10e))
+* table vertical alignment ([4be9476](https://github.com/ogcio/govie-ds/commit/4be9476b705bfb7f106b6558c27049286203f61a))
+
+## [0.32.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.2...tailwind-v0.32.0) (2025-02-25)
+
+
+### Features
+
+* add list item component ([#446](https://github.com/ogcio/govie-ds/issues/446)) ([9188407](https://github.com/ogcio/govie-ds/commit/91884071bacffeecc5c6dbbaa631356667631285))
+* add support to react router ([#451](https://github.com/ogcio/govie-ds/issues/451)) ([830fa90](https://github.com/ogcio/govie-ds/commit/830fa9024af9c0d9d4c32d417748341c972df523))
+
+
+### Bug Fixes
+
+* Breadcrumbs new styles ([#448](https://github.com/ogcio/govie-ds/issues/448)) ([7c7a266](https://github.com/ogcio/govie-ds/commit/7c7a266e78c2159417b698168beda7d4b0261d27))
+* restore half width on input ([#453](https://github.com/ogcio/govie-ds/issues/453)) ([fe13467](https://github.com/ogcio/govie-ds/commit/fe13467dfc7effe0a7fcd84e727cf39700773951))
+
 ## [0.31.2](https://github.com/ogcio/govie-ds/compare/tailwind-v0.31.1...tailwind-v0.31.2) (2025-02-20)
 
 

@@ -20,18 +20,18 @@ import {
   FileUpload,
   Tag,
   Modal,
-  RadiosGroup,
+  RadioGroup,
   Card,
   Button,
   CookieBanner,
-  List,
-  TypeEnum,
+  // List,
+  // TypeEnum,
   Combobox,
   Radio,
   Alert,
   Pagination,
   Checkbox,
-  CheckboxesGroup,
+  CheckboxGroup,
   Form,
   DropdownItem,
   HeaderProps,
@@ -263,7 +263,7 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <CheckboxesGroup
+        <CheckboxGroup
           groupId="field-Id"
           items={[
             { label: 'Irish', value: 'irish' },
@@ -277,7 +277,7 @@ export function App() {
         <br />
         <h2>Checkbox</h2>
         <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <RadiosGroup
+        <RadioGroup
           title={{
             value: 'Where do you live?',
             asHeading: {
@@ -320,7 +320,7 @@ export function App() {
         <Alert title="Info Alert" dismissible>
           <Paragraph>This is the content</Paragraph>
         </Alert>
-        <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+        {/* <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} /> */}
       </Container>
       <Footer />
     </>

@@ -1,5 +1,8 @@
 import React from 'react';
 
-export function TableBody(props: React.PropsWithChildren) {
-  return <tbody>{props.children}</tbody>;
+export function TableBody({
+  children,
+  ...props
+}: React.TableHTMLAttributes<HTMLTableSectionElement>) {
+  return <tbody {...props}>{children}</tbody>;
 }

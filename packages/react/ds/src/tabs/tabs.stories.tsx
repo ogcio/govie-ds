@@ -29,9 +29,7 @@ export const Default: Story = {
     return (
       <Tabs {...arguments_}>
         <TabList>
-          <TabItem value="tab1" checked>
-            Tab 1
-          </TabItem>
+          <TabItem value="tab1">Tab 1</TabItem>
           <TabItem value="tab2">Tab 2</TabItem>
           <TabItem value="tab3">Tab 3</TabItem>
         </TabList>
@@ -70,5 +68,29 @@ export const AllStates: Story = {
       hover: '#tab-tab21',
       focus: '#tab-tab31',
     },
+  },
+};
+
+export const CheckedTab: Story = {
+  args: {
+    id: 'tab-story',
+    children: '',
+    ariaLabelledBy: 'tab-story',
+  },
+  render: (arguments_) => {
+    return (
+      <Tabs {...arguments_}>
+        <TabList>
+          <TabItem value="tab1">Tab 1</TabItem>
+          <TabItem value="tab2" checked>
+            Tab 2
+          </TabItem>
+          <TabItem value="tab3">Tab 3</TabItem>
+        </TabList>
+        <TabPanel value="tab1">Tab 1 Content</TabPanel>
+        <TabPanel value="tab2">Tab 2 Content (checked)</TabPanel>
+        <TabPanel value="tab3">Tab 3 Content</TabPanel>
+      </Tabs>
+    );
   },
 };

@@ -1,30 +1,26 @@
 'use client';
-
+import { useId } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
 import { TextInput, type TextInputProps } from '../text-input/text-input.js';
-import {
-  type RadioProps,
-  type RadiosSizeType,
-  RadiosSizeEnum,
-} from './types.js';
+import { type RadioProps, type RadioSizeType, RadioSizeEnum } from './types.js';
 
-const getRadioSize = (size?: RadiosSizeType) => {
+const getRadioSize = (size?: RadioSizeType) => {
   let sizeClass = 'gi-radio-medium';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadioSizeEnum.Large) {
     sizeClass = 'gi-radio-large';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadioSizeEnum.Small) {
     sizeClass = 'gi-radio-small';
   }
   return sizeClass;
 };
 
-export const getRadioWidth = (size?: RadiosSizeType) => {
+export const getRadioWidth = (size?: RadioSizeType) => {
   let widthClass = 'gi-w-8';
-  if (size === RadiosSizeEnum.Large) {
+  if (size === RadioSizeEnum.Large) {
     widthClass = 'gi-w-11';
   }
-  if (size === RadiosSizeEnum.Small) {
+  if (size === RadioSizeEnum.Small) {
     widthClass = 'gi-w-6';
   }
   return widthClass;
@@ -41,37 +37,28 @@ const addConditionalDivider = (
 };
 
 export const Radio = ({
-  name,
   label,
-  value,
   hint,
   id,
   size,
   conditionalInput,
   checked,
-  onChange,
+  ...props
 }: RadioProps) => {
-  const radioId = id ?? value;
+  const radioId = id ?? useId();
   return (
-    <div className="gi-radio-container">
-      <div className="gi-radio-input-container">
+    <>
+      <div className="gi-radio-container">
         <input
-          readOnly={checked}
-          onChange={onChange}
-          checked={checked}
-          name={name}
-          id={radioId}
-          value={value}
-          className={`gi-radio-base ${getRadioSize(size)}`}
           type="radio"
-          aria-label={radioId}
-          aria-checked={checked}
+          id={radioId}
+          checked={checked}
+          className={getRadioSize(size)}
           aria-describedby={hint ? `${radioId}-hint` : undefined}
           aria-required={conditionalInput ? 'true' : 'false'}
+          {...props}
         />
-        <label htmlFor={radioId} className="gi-radio-label" aria-hidden="true">
-          {label}
-        </label>
+        <label htmlFor={radioId}>{label}</label>
       </div>
       {(hint || conditionalInput) && (
         <div className="gi-radio-conditional-divider-container">
@@ -94,6 +81,6 @@ export const Radio = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };

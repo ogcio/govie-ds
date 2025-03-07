@@ -11,6 +11,11 @@
   @apply gi-w-full gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] xl:gi-max-w-[1280px] md:gi-mx-auto;
 }
 
+/* Similar to gi-container class but limited to max-width to 1024px */
+.gi-layout-container-max-lg {
+  @apply gi-w-full gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] md:gi-mx-auto;
+}
+
 .gi-layout-container-full-width {
   @apply gi-w-full gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto;
 }
@@ -40,3 +45,23 @@
 }
 
 /* End Layout */
+
+/* Column Grid */
+
+.gi-grid-12-column {
+  @apply gi-mx-8 lg:gi-mx-8 gi-grid gi-grid-cols-12 gi-gap-6;
+}
+
+.gi-grid-8-column {
+  @apply gi-mx-6 gi-grid gi-grid-cols-8 gi-gap-6;
+}
+
+.gi-grid-4-column {
+  @apply gi-mx-4 gi-grid gi-grid-cols-4 gi-gap-4;
+}
+
+.gi-grid-responsive {
+  @apply gi-mx-4 md:gi-mx-6 lg:gi-mx-8 gi-grid gi-grid-cols-4 md:gi-grid-cols-8 lg:gi-grid-cols-12 gi-gap-4 md:gi-gap-6 lg:gi-gap-6;
+}
+
+/* End of Column Grid */

@@ -97,7 +97,7 @@ export const DrawerMenuExample = () => {
         },
       )}
       {languages?.map((link: any, index: number) => (
-        <li key={`language-${link.label}-${index}`}>
+        <li key={`secondary-${link.label}-${index}`}>
           <ListItem href={link.href} label={link.label} bold={false} />
         </li>
       ))}

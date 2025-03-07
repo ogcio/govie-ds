@@ -4,7 +4,8 @@ import { ListProps, ListTypeEnum, List } from './list.js';
 
 describe('govieList', () => {
   afterEach(cleanup);
-  const renderList = (props: ListProps) => render(<List {...props} />);
+  const renderList = (props: ListProps) =>
+    render(<List {...props} data-testid="govieList" />);
 
   it('should render a list correctly with items', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];

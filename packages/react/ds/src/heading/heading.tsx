@@ -19,9 +19,9 @@ export const asVariants = {
   h6: 'gi-heading-2xs',
 };
 
-const headingVariants = tv({
+export const headingVariants = tv({
   slots: {
-    text: 'gi-text-gray-500',
+    text: 'gi-text-gray-600',
     base: '',
   },
   variants: {
@@ -33,33 +33,30 @@ const headingVariants = tv({
   },
 });
 
-type HeadingProps = VariantProps<typeof headingVariants> & {
+export type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
-  children: React.ReactNode;
   id?: string;
-  ariaLabel?: string;
-};
+} & React.HTMLAttributes<HTMLHeadingElement>;
 
-function Heading({ as, size, children, caption, id, ariaLabel }: HeadingProps) {
+export function Heading({
+  as,
+  size,
+  children,
+  caption,
+  ...props
+}: HeadingProps) {
   const Slot = as || 'h1';
   const { text, base } = headingVariants({ as, size });
   return (
     <>
       {caption && (
-        <span
-          className={cn(text())}
-          data-testid="govie-heading-caption"
-          aria-hidden="true"
-        >
+        <span className={cn(text())} aria-hidden="true">
           {caption}
         </span>
       )}
-      <Slot className={cn(base())} id={id} aria-label={ariaLabel}>
+      <Slot className={cn(base())} {...props}>
         {children}
       </Slot>
     </>
   );
 }
-
-export { Heading, headingVariants };
-export type { HeadingProps };

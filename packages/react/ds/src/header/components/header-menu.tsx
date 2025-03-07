@@ -4,11 +4,7 @@ import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { Icon } from '../../icon/icon.js';
 import { ListItem } from '../../list-item/list-item.js';
-import {
-  HeaderLinkItemType,
-  HeaderProps,
-  HeaderSlotItemType,
-} from '../types.js';
+import { HeaderProps } from '../types.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,

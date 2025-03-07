@@ -1,22 +1,45 @@
+import '@govie-ds/theme-govie/theme.css';
+import '@govie-ds/theme-doete/light.css';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
 import {
-  Title,
-  Subtitle,
+  Controls,
   Description,
   Primary,
-  Controls,
   Stories,
+  Subtitle,
+  Title,
 } from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
-import '@govie-ds/theme-govie/theme.css';
-import './global.css';
-import '../styles.css';
+import i18n from 'i18next';
 import React from 'react';
+import enTranslations from '../src/i18n/translations/en.json';
+import '../styles.css';
+import './global.css';
+
+i18n.init({
+  lng: 'en',
+  fallbackLng: 'en',
+  resources: {
+    ...enTranslations,
+  },
+  interpolation: { escapeValue: false },
+});
 
 const preview: Preview = {
+  decorators: [
+    withThemeByDataAttribute({
+      themes: {
+        govie: '',
+        doete: 'doete-light',
+      },
+      defaultTheme: '',
+      attributeName: 'data-theme',
+    }),
+  ],
   parameters: {
     docs: {
       page: () => (

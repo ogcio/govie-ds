@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Form } from '../common/form.js';
+import { Form } from '../forms/form.js';
 import {
   organisationOptions,
   categoryOptions,

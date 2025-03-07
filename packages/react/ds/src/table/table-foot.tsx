@@ -1,5 +1,8 @@
 import React from 'react';
 
-export function TableFoot(props: React.PropsWithChildren) {
-  return <tfoot>{props.children}</tfoot>;
+export function TableFoot({
+  children,
+  ...props
+}: React.TableHTMLAttributes<HTMLTableSectionElement>) {
+  return <tfoot {...props}>{children}</tfoot>;
 }

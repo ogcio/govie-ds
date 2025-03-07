@@ -205,6 +205,7 @@ export const Stack: React.FC<StackProps> = ({
   itemsDistribution = 'start',
   wrap = false,
   className,
+  ...props
 }) => {
   const stackClasses = cn(
     className,
@@ -241,9 +242,8 @@ export const Stack: React.FC<StackProps> = ({
     <div
       className={stackClasses}
       role="region"
-      aria-label="Items Stacked"
-      data-testid="govie-stack"
       style={{ height: fixedHeight }}
+      {...props}
     >
       {renderChildren() as React.ReactElement[]}
     </div>

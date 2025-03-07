@@ -10,7 +10,8 @@ import {
   Button,
   Caption,
   Card,
-  CheckboxesGroup,
+  Checkbox,
+  CheckboxGroup,
   Chip,
   Combobox,
   CookieBanner,
@@ -23,12 +24,12 @@ import {
   FileUpload,
   Footer,
   Form,
+  FormField,
   Header,
   HeaderSearch,
   Heading,
   Icon,
   IconButton,
-  Label,
   Link,
   List,
   Modal,
@@ -40,9 +41,11 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  RadiosGroup,
+  Radio,
+  RadioGroup,
   SectionBreak,
   Select,
+  SelectItem,
   Spinner,
   Stack,
   SummaryList,
@@ -65,7 +68,6 @@ import {
   Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
-
 import NextLink from 'next/link';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -76,8 +78,10 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { Toast } from '../components/toast';
+import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
+import { GridPrimitives } from '../grid/grid-primitives';
 import { OpacityTable } from '../opacity/opacity-table';
 import { Addresses } from '../patterns/addresses';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
@@ -183,6 +187,7 @@ const documentComponents: MDXComponents = {
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
   Addresses: (props) => <Addresses {...props} />,
+  GridPrimitives: (props) => <GridPrimitives {...props} />,
   TwoThirds: (props) => <TwoThirds {...props} />,
   TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
   Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
@@ -197,7 +202,7 @@ const documentComponents: MDXComponents = {
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
-  RadiosGroup: (props) => <RadiosGroup {...props} />,
+  RadioGroup: (props) => <RadioGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
@@ -214,10 +219,10 @@ const documentComponents: MDXComponents = {
   TextInput: (props) => <TextInput {...props} />,
   SectionBreak: (props) => <SectionBreak {...props} />,
   Select: (props) => <Select {...props} />,
-  Label: (props) => <Label {...props} />,
+  SelectItem: (props) => <SelectItem {...props} />,
   IconButton: (props) => <IconButton {...props} />,
   FileUpload: (props) => <FileUpload {...props} />,
-  CheckboxesGroup: (props) => <CheckboxesGroup {...props} />,
+  CheckboxGroup: (props) => <CheckboxGroup {...props} />,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
     <Button disabled={true}>
@@ -265,6 +270,14 @@ const documentComponents: MDXComponents = {
   Details,
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
+  FormField: (props) => <FormField {...props} />,
+  Radio: (props) => <Radio {...props} />,
+  Checkbox: (props) => <Checkbox {...props} />,
+  DataGridSample: () => (
+    <div className="gi-not-prose">
+      <DataGridSample />
+    </div>
+  ),
 };
 
 export function Mdx({ code }: MdxProps) {

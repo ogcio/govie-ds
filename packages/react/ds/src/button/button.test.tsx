@@ -6,13 +6,16 @@ import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 const standardProps: ButtonProps = {
   children: 'Button Label',
   variant: 'primary',
-  dataTestid: 'govie-button',
 };
 
 describe('button', () => {
   afterEach(cleanup);
   const renderButton = ({ children, ...props }: ButtonProps) =>
-    render(<Button {...props}>{children}</Button>);
+    render(
+      <Button {...props} data-testid={'govie-button'}>
+        {children}
+      </Button>,
+    );
 
   testVariantsAxe(ButtonVariants, (variant: ButtonVariant) =>
     renderButton({ ...standardProps, variant }),

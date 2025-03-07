@@ -18,7 +18,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
     id={`SlotContainer-${index}`}
     data-index={index}
     aria-label={`Slot Container ${index + 1}`}
-    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800"
+    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3"
   >
     {slot}
   </div>
@@ -91,7 +91,6 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
     >
       <input
         data-testid={`ItemActionTrigger-${index}`}
-        className="gi-block gi-w-0 gi-absolute gi-h-0"
         id={`ItemActionTrigger-${index}`}
         data-index={index}
         aria-expanded="false"
