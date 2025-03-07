@@ -1,0 +1,35 @@
+{
+  "name": "@govie-ds/theme-doete",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./theme.css": "./dist/theme.css",
+    "./light.css": "./dist/light.css",
+    "./dark.css": "./dist/dark.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "format": "prettier 'src/**/*.ts' --write",
+    "format:check": "prettier 'src/**/*.ts' --check",
+    "lint": "eslint 'src/**/*.ts'",
+    "build": "pnpm build:tokens && pnpm build:source",
+    "build:tokens": "tsx scripts/build.ts",
+    "build:source": "tsup"
+  },
+  "prettier": "@govie-ds/prettier-config",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@govie-ds/eslint-config": "workspace:*",
+    "@govie-ds/prettier-config": "workspace:*",
+    "@govie-ds/theme-builder": "workspace:*",
+    "eslint": "~9.5.0"
+  }
+}
