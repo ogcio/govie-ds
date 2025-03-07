@@ -10,6 +10,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-links',
     '@storybook/addon-viewport',
+    '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/experimental-addon-test',
   ],

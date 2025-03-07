@@ -40,8 +40,8 @@
 
 {% macro govieHeader(props) %}
   {% set headerClassNames = "gi-header" %}
-  {% set languageBarClassNames = "gi-header-language-bar" %}
-  {% set languageItemClassNames = "gi-header-language-item" %}
+  {% set languageBarClassNames = "gi-header-secondary-bar" %}
+  {% set languageItemClassNames = "gi-header-secondary-item" %}
   {% set menuContainerClassNames = "gi-header-menu" %}
   {% set logoLargeClassNames = "gi-header-logo-lg" %}
   {% set logoSmallClassNames = "gi-header-logo-sm" %}
@@ -181,7 +181,7 @@
             {% for link in props.languages %}
               <li>
                 <a
-                  data-testid="language-link-desktop-{{ loop.index0 }}"
+                  data-testid="secondary-link-desktop-{{ loop.index0 }}"
                   class="{{ languageItemClassNames }}"
                   href="{{ link.href }}"
                 >

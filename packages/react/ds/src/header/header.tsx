@@ -71,8 +71,8 @@ export function Header({
     ? 'gi-layout-container-full-width'
     : 'gi-layout-container';
   const headerClassNames = 'gi-header';
-  const languageBarClassNames = 'gi-header-language-bar';
-  const languageItemClassNames = 'gi-header-language-item';
+  const secondaryBarClassNames = 'gi-header-secondary-bar';
+  const secondaryItemClassNames = 'gi-header-secondary-item';
   const menuContainerClassNames = 'gi-header-menu';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
@@ -191,22 +191,24 @@ export function Header({
       </div>
 
       {secondaryLinks && (
-        <div className={cn(languageBarClassNames, 'gi-order-1')}>
+        <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
           <div className={containerClassName}>
             <ul>
               {secondaryLinks.map((link, index) => (
-                <li key={`language-${link.label}-${index}`}>
+                <li key={`secondary-${link.label}-${index}`}>
                   {link.href ? (
                     <a
                       aria-label={link.label}
-                      data-testid={`language-link-desktop-${index}`}
+                      data-testid={`secondary-link-desktop-${index}`}
                       href={link.href}
-                      className={languageItemClassNames}
+                      className={secondaryItemClassNames}
                     >
                       {link.label}
                     </a>
                   ) : (
-                    <span className={languageItemClassNames}>{link.label}</span>
+                    <span className={secondaryItemClassNames}>
+                      {link.label}
+                    </span>
                   )}
                 </li>
               ))}
