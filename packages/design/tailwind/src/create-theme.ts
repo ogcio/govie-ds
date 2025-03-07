@@ -297,6 +297,13 @@ export function createTheme(
       xl: '8px',
     },
     extend: {
+      colors: {
+        primary: {
+          ...(meta
+            ? convertColors(meta.light.resolved.semantic.surface.primary)
+            : variables.semantic.surface.primary),
+        },
+      },
       typography: () => {
         return {
           DEFAULT: {
