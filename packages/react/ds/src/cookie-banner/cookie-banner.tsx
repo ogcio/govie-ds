@@ -50,11 +50,11 @@ export const CookieBanner = ({
                   <div id="cookie-banner-description">{children}</div>
                   <div className="gi-cookie-banner-buttons">
                     {cloneElement(accept.triggerButton, {
-                      ariaLabel: 'Accept cookies',
+                      'aria-label': 'Accept cookies',
                       onClick: handleOpenBanner,
                     })}
                     {cloneElement(reject.triggerButton, {
-                      ariaLabel: 'Reject cookies',
+                      'aria-label': 'Reject cookies',
                       onClick: handleCloseBanner,
                     })}
                     {cookieLink && cookieLink}
@@ -69,7 +69,7 @@ export const CookieBanner = ({
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {
-                        ariaLabel: 'Dismiss cookie banner',
+                        'aria-label': 'Dismiss cookie banner',
                         onClick: handleDismissBanner,
                       })}
                     </>
@@ -84,7 +84,7 @@ export const CookieBanner = ({
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {
-                        ariaLabel: 'Dismiss cookie banner',
+                        'aria-label': 'Dismiss cookie banner',
                         onClick: handleDismissBanner,
                       })}
                     </>

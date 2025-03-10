@@ -35,7 +35,6 @@ export const headingVariants = tv({
 
 export type HeadingProps = VariantProps<typeof headingVariants> & {
   caption?: string;
-  id?: string;
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
 export function Heading({
