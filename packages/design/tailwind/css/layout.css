@@ -7,7 +7,7 @@
 }
 
 .gi-layout-container-inset {
-  @apply gi-w-full xl:gi-p-8 md:gi-p-6 gi-p-4;
+  @apply lg:gi-p-8 sm:gi-p-6 gi-p-4;
 }
 
 /* Similar to gi-container class but limited to max-width to 1280px */

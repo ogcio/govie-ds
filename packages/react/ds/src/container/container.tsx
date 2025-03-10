@@ -10,9 +10,8 @@ export function Container({ children, id, inset }: ContainerProps) {
   return (
     <div
       data-testid="govie-container"
-      className={cn({
+      className={cn('gi-layout-container', {
         'gi-layout-container-inset': inset,
-        'gi-layout-container': !inset,
       })}
       id={id}
     >
