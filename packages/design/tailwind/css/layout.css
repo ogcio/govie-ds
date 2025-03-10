@@ -6,6 +6,10 @@
   @apply gi-w-full gi-px-4 md:gi-container md:gi-mx-auto;
 }
 
+.gi-layout-container-inset {
+  @apply gi-w-full xl:gi-p-8 md:gi-p-6 gi-p-4;
+}
+
 /* Similar to gi-container class but limited to max-width to 1280px */
 .gi-layout-container-max-xl {
   @apply gi-w-full gi-px-6 lg:gi-px-8 gi-mx-auto sm:gi-max-w-[640px] md:gi-max-w-[768px] lg:gi-max-w-[1024px] xl:gi-max-w-[1280px] md:gi-mx-auto;

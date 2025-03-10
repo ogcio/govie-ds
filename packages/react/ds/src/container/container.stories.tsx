@@ -29,3 +29,17 @@ export const Default: Story = {
     children: `Paragraph`,
   },
 };
+
+export const WithInset: Story = {
+  argTypes: {
+    children: {
+      control: 'text',
+      description:
+        'HTML content or other components to be rendered inside the container.',
+    },
+  },
+  args: {
+    children: <div className="gi-border-sm gi-border-black">Paragram</div>,
+    inset: true,
+  },
+};
