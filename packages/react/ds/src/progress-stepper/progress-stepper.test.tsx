@@ -1,5 +1,5 @@
 import { cleanup, render } from '../test-utils.js';
-import { ProgressStepper, StepItem } from './progress-stepper.js'; // Import StepItem as well
+import { ProgressStepper, StepItem } from './progress-stepper.js';
 import type { ProgressStepperProps } from './types.js';
 
 describe('govieProgressStepper', () => {
