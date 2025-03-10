@@ -1,6 +1,12 @@
 ## Description
 
-<!-- A brief description of the feature made -->
+<!-- A brief description of the feature made. -->
+
+## Type of Issue
+
+- [ ] 🚀 Feature
+- [ ] 🐛 Bug
+- [ ] 🔧 Chore
 
 ## Checklist
 
@@ -11,7 +17,7 @@
 
 ## Related Issues
 
-<!-- List any related issues or pull requests (e.g., "Fixes #123") -->
+<!-- List any related issues or pull requests (e.g., "Fixes #123"). -->
 
 ## Additional Notes
 
