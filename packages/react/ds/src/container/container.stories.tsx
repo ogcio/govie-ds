@@ -29,3 +29,10 @@ export const Default: Story = {
     children: `Paragraph`,
   },
 };
+
+export const WithInset: Story = {
+  args: {
+    children: 'Paragraph',
+    inset: true,
+  },
+};
