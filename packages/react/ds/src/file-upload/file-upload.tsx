@@ -11,6 +11,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
       <input
         className="gi-file-upload-input"
         type="file"
+        multiple
         ref={ref}
         {...props}
       />
