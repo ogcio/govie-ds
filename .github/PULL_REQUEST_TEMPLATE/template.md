@@ -1,12 +1,12 @@
+## Description
+
+<!-- A brief description of the feature made. -->
+
 ## Type of Issue
 
 - [ ] Feature.
 - [ ] Bug.
 - [ ] Chore.
-
-## Description
-
-<!-- A brief description of the feature made. -->
 
 ## Checklist
 
