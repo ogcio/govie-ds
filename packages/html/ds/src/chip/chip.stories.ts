@@ -1,41 +1,42 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import html from './chip.html?raw';
 
-const meta = {
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { ChipProps } from './chip.schema';
+
+const meta: Meta<ChipProps> = {
   title: 'Components/Chip',
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'A Chip is a compact UI element that displays information, can be removed via a close button, and is ideal for tags, filters, or selection indicators.',
-      },
-    },
-  },
-  argTypes: {
-    label: {
-      control: 'text',
-      name: 'label',
-      type: 'string',
-      description: 'The content of the chip',
-    },
-    onClose: {
-      name: 'onClose',
-      type: 'function',
-      control: 'object',
-      description: 'The event attached on closing the chip',
-    },
-  },
-} satisfies Meta;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ChipProps>;
+
+const createElement = (arguments_: ChipProps) => {
+  const container = document.createElement('div');
+  container.className = 'gi-chip';
+
+  const label = document.createElement('span');
+  label.textContent = arguments_.label;
+
+  const close = document.createElement('div');
+  close.role = 'button';
+  const closeIcon = document.createElement('span');
+  closeIcon.role = 'presentation';
+  closeIcon.className = 'material-symbols-outlined gi-block';
+  closeIcon.style.fontSize = '16px';
+  closeIcon.textContent = 'close';
+  close.append(closeIcon);
+
+  container.append(label);
+  container.append(close);
+
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
-  render: (_, { parameters }) => {
-    parameters.renderedHtml = html;
-    return html;
+  args: {
+    label: 'Label',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const AllStates: Story = {
