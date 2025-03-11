@@ -214,7 +214,7 @@ export const AllStates: Story = {
   //@ts-expect-error Render function returns raw HTML string, not a React component
   render: () => `
   <div class="gi-gap-4">
-  <div class="gi-textarea-layout-container undefined">
+  <div class="undefined">
     <label class="gi-text-md gi-label gi-mb-2" for="default-textarea" id=":r7:-label">Default</label>
     <div class="gi-textarea-container">
       <textarea
@@ -229,7 +229,7 @@ export const AllStates: Story = {
     </div>
   </div>
 
-  <div class="gi-textarea-layout-container undefined">
+  <div class="undefined">
     <label class="gi-text-md gi-label gi-mb-2" for="focus-textarea" id=":r8:-label">Focus</label>
     <div class="gi-textarea-container">
       <textarea
@@ -244,7 +244,7 @@ export const AllStates: Story = {
     </div>
   </div>
 
-  <div class="gi-textarea-layout-container undefined">
+  <div class="undefined">
     <label class="gi-text-md gi-label gi-mb-2" for="textarea-disabled" id=":r9:-label">Disabled</label>
     <div class="gi-textarea-container">
       <textarea

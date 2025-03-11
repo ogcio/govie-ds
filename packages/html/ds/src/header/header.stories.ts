@@ -52,7 +52,7 @@ const slotExample2 = () => `
     <h4 class="gi-heading-sm">Search the website</h4>
     <div class="gi-flex gi-items-end gi-mt-4">
       <div class="gi-text-input-container gi-flex-auto">
-        <div class="gi-text-input-container-inner">
+        <div class="gi-text-input-container">
           <input
             placeholder="Enter search term"
             id="search"

@@ -56,7 +56,9 @@ export const Checkbox = ({
       </div>
       {hint && (
         <div className="gi-checkbox-hint-container">
-          <div className={getCheckboxWidth(size)} />
+          <div>
+            <div className={getCheckboxWidth(size)} />
+          </div>
           <HintText id={`${CheckboxId}-hint`} text={hint} />
         </div>
       )}

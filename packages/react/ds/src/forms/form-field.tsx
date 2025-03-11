@@ -10,7 +10,7 @@ export type FormFieldProps = {
   hint?: HintTextProps;
   label?: LabelProps;
   className?: string;
-};
+} & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const FormField = ({
   label,
@@ -18,7 +18,7 @@ export const FormField = ({
   error,
   children,
   className,
-}: React.PropsWithChildren<FormFieldProps>) => {
+}: FormFieldProps) => {
   return (
     <fieldset className={cn({ 'gi-error-state': error }, className)}>
       {label?.text && (
