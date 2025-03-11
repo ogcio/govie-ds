@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { LabelSize } from '../label/label.schema';
 import { beautifyHtmlNode, createFormField } from '../storybook/storybook';
-import { InputTypeEnum, TextInputProps } from './text-input.schema';
+import { TextInputProps } from './text-input.schema';
 
 const meta: Meta<TextInputProps> = {
   title: 'Form/TextInput',
@@ -26,7 +26,6 @@ const createTextInput = (arguments_: TextInputProps) => {
   }
 
   const input = document.createElement('input') as HTMLInputElement;
-  input.className = 'gi-text-input-input';
   input.type = arguments_.type || 'text';
   input.className =
     `gi-text-input ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
@@ -116,13 +115,23 @@ export const Default: Story = {
     },
     type: {
       control: 'select',
-      options: Object.values(InputTypeEnum),
-      type: { name: 'string', required: false },
       description: 'Specifies the input type.',
+      options: [
+        'text',
+        'date',
+        'datetime-local',
+        'email',
+        'month',
+        'number',
+        'password',
+        'tel',
+        'time',
+        'url',
+        'week',
+      ],
       table: {
         category: 'Content',
         type: { summary: 'string' },
-        defaultValue: { summary: '-' },
       },
     },
     disabled: {
@@ -265,7 +274,7 @@ export const DateInput: Story = {
       size: LabelSize.Medium,
     },
     id: 'text-input-id',
-    type: InputTypeEnum.Date,
+    type: 'date',
   },
   render: (arguments_) => createTextInput(arguments_),
 };
@@ -278,7 +287,6 @@ export const DisabledInput: Story = {
       size: LabelSize.Medium,
     },
     id: 'text-input-id',
-    type: InputTypeEnum.Text,
     disabled: true,
     dataTestId: 'text-input-id',
   },
@@ -292,6 +300,11 @@ export const DisabledInput: Story = {
 
 export const WithHalfWidth: Story = {
   args: {
+    label: {
+      content: 'Label',
+      for: 'input-id',
+      size: LabelSize.Medium,
+    },
     id: 'input-id',
     className: 'gi-input-half-width',
     dataTestId: 'text-input-id',

@@ -1,8 +1,8 @@
 import { html as beautify } from 'js-beautify';
-import { renderMacro } from '../macro';
-import { LabelProps } from '../label/label.schema';
-import { HintTextProps } from '../hint-text/hint-text.schema';
 import { ErrorTextProps } from '../error-text/error-text.schema';
+import { HintTextProps } from '../hint-text/hint-text.schema';
+import { LabelProps } from '../label/label.schema';
+import { renderMacro } from '../macro';
 
 export function renderComponent<TProps = unknown>({
   name,
@@ -35,7 +35,7 @@ export const beautifyHtmlNode = (node: HTMLElement) => {
 export const createLabel = (labelProps: LabelProps) => {
   const label = document.createElement('label');
   label.className =
-    `gi-text-${labelProps.size} gi-label ${labelProps.className}`.trim();
+    `gi-text-${labelProps.size} gi-label ${labelProps.className || ''}`.trim();
   label.textContent = labelProps.content;
   if (labelProps.for) {
     label.htmlFor = labelProps.for;
@@ -46,7 +46,7 @@ export const createLabel = (labelProps: LabelProps) => {
 export const createHint = (hintProps: HintTextProps) => {
   const label = document.createElement('div');
   label.className =
-    `gi-hint-text-${hintProps.size} gi-hint-text ${hintProps.className}`.trim();
+    `gi-hint-text-${hintProps.size} gi-hint-text ${hintProps.className || ''}`.trim();
   label.textContent = hintProps.content;
 
   return label;
@@ -55,7 +55,7 @@ export const createHint = (hintProps: HintTextProps) => {
 export const createErrorText = (errorProps: ErrorTextProps) => {
   const errorText = document.createElement('div');
   errorText.className =
-    `gi-error-text-${errorProps.size} gi-error-text ${errorProps.className}`.trim();
+    `gi-error-text-${errorProps.size} gi-error-text ${errorProps.className || ''}`.trim();
   errorText.textContent = errorProps.content;
   errorText.role = 'alert';
 

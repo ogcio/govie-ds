@@ -3,17 +3,12 @@ import React, { ChangeEvent, TextareaHTMLAttributes, useState } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 
-export type TextAreaProps = React.DetailedHTMLProps<
-  TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> & {
-  ref?: React.Ref<HTMLTextAreaElement>;
-  rows?: number;
-  cols?: number;
-  autoComplete?: string;
-  maxChars?: number;
-  halfFluid?: boolean;
-};
+export type TextAreaProps =
+  React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+    ref?: React.Ref<HTMLTextAreaElement>;
+    maxChars?: number;
+    halfFluid?: boolean;
+  };
 
 export const TextArea = ({
   rows = 4,
