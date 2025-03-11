@@ -112,10 +112,6 @@ input[type='text'] {
 /* Text Input */
 
 .gi-text-input-container {
-  @apply gi-w-full;
-}
-
-.gi-text-input-container-inner {
   @apply gi-w-full gi-flex gi-items-center;
 }
 .gi-text-input-prefix {
@@ -878,10 +874,6 @@ input[type='file' i] {
 
 .gi-textarea {
   @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
-}
-
-.gi-textarea-layout-container {
-  @apply gi-w-full;
 }
 
 .gi-textarea-container {

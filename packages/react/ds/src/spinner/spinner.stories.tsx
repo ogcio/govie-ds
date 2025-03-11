@@ -24,50 +24,22 @@ export const Default: Story = {
   args: {
     inline: false,
   },
-  decorators: [
-    (Story) => (
-      <div className="gi-stroke-gray-950">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const Small: Story = {
   args: {
     size: 'sm',
   },
-  decorators: [
-    (Story) => (
-      <div className="gi-stroke-gray-950">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const Large: Story = {
   args: {
     size: 'lg',
   },
-  decorators: [
-    (Story) => (
-      <div className="gi-stroke-gray-950">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const ExtraLarge: Story = {
   args: {
     size: 'xl',
   },
-  decorators: [
-    (Story) => (
-      <div className="gi-stroke-gray-950">
-        <Story />
-      </div>
-    ),
-  ],
 };

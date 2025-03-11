@@ -1,11 +1,11 @@
 import { act } from 'react';
 import { render, cleanup, waitFor } from '../test-utils.js';
-import { Details } from './details.js';
+import { Details, DetailsProps } from './details.js';
 
 describe('Details', () => {
   afterEach(cleanup);
 
-  const renderDetails = (props: any) =>
+  const renderDetails = (props: DetailsProps) =>
     render(
       <Details {...props}>
         Here is the body content of the details element.
@@ -15,7 +15,7 @@ describe('Details', () => {
   it('should render the details element with the correct label', () => {
     const screen = renderDetails({
       label: 'Help with Details',
-      startsOpen: false,
+      open: false,
     });
 
     const detailsElement = screen.getByTestId('govie-details');
@@ -25,10 +25,10 @@ describe('Details', () => {
     expect(summaryElement.textContent).toBe('Help with Details');
   });
 
-  it('should render with startsOpen set to true', () => {
+  it('should render with open set to true', () => {
     const screen = renderDetails({
       label: 'Help with Details',
-      startsOpen: true,
+      open: true,
     });
 
     const detailsElement = screen.getByTestId('govie-details');
@@ -38,7 +38,7 @@ describe('Details', () => {
   it('should toggle open state on summary click', async () => {
     const screen = renderDetails({
       label: 'Help with Details',
-      startsOpen: false,
+      open: false,
     });
 
     const detailsElement = screen.getByTestId('govie-details');
@@ -66,7 +66,7 @@ describe('Details', () => {
   it('should render the children inside the details element', () => {
     const screen = renderDetails({
       label: 'Help with Details',
-      startsOpen: true,
+      open: true,
     });
 
     const contentElement = screen.getByText(
@@ -79,7 +79,7 @@ describe('Details', () => {
   it('should pass axe accessibility tests', async () => {
     const screen = renderDetails({
       label: 'Help with Details',
-      startsOpen: false,
+      open: false,
     });
     await screen.axe();
   });

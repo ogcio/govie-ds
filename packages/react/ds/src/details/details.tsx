@@ -1,24 +1,16 @@
 export type DetailsProps = {
   label: string;
-  name?: string;
-  startsOpen?: boolean;
-  children: string;
-};
+} & React.DetailsHTMLAttributes<HTMLDetailsElement>;
 
-export const Details = ({
-  label,
-  name,
-  children,
-  startsOpen,
-}: DetailsProps) => {
+export const Details = ({ label, name, children, open }: DetailsProps) => {
   return (
     <details
       data-testid="govie-details"
       className="gi-details"
       data-module="gi-details"
-      open={startsOpen}
+      open={open}
       name={name}
-      aria-expanded={startsOpen ? 'true' : 'false'}
+      aria-expanded={open ? 'true' : 'false'}
       aria-details="details-content"
     >
       <summary
@@ -26,14 +18,14 @@ export const Details = ({
         data-testid="govie-details-summary"
         role="button"
         aria-controls="details-content"
-        aria-expanded={startsOpen ? 'true' : 'false'}
+        aria-expanded={open ? 'true' : 'false'}
       >
         <span className="gi-details-summary-text">{label}</span>
       </summary>
       <div
         id="details-content"
         className="gi-details-text"
-        aria-hidden={startsOpen ? 'false' : 'true'}
+        aria-hidden={open ? 'false' : 'true'}
       >
         {children}
       </div>
