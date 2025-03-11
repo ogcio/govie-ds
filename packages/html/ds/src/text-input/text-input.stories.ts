@@ -27,13 +27,23 @@ const createTextInput = (arguments_: TextInputProps) => {
 
   const input = document.createElement('input') as HTMLInputElement;
   input.className = 'gi-text-input-input';
-  if (arguments_.id) {
-    input.id = arguments_.id;
-  }
   input.type = arguments_.type || 'text';
   input.className =
     `gi-text-input ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
-  input.dataset.testid = arguments_.dataTestId;
+
+  if (arguments_.id) {
+    input.id = arguments_.id;
+  }
+  if (arguments_.placeholder) {
+    input.placeholder = arguments_.placeholder;
+  }
+  if (arguments_.dataTestId) {
+    input.dataset.testid = arguments_.dataTestId;
+  }
+  if (arguments_.disabled) {
+    input.disabled = true;
+  }
+
   container.append(input);
 
   if (arguments_.suffix) {
@@ -270,32 +280,26 @@ export const DisabledInput: Story = {
     id: 'text-input-id',
     type: InputTypeEnum.Text,
     disabled: true,
+    dataTestId: 'text-input-id',
   },
   render: (arguments_) => createTextInput(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(textInput).toBeDisabled();
+  },
 };
 
 export const WithHalfWidth: Story = {
   args: {
     id: 'input-id',
     className: 'gi-input-half-width',
+    dataTestId: 'text-input-id',
   },
   render: (arguments_) => createTextInput(arguments_),
-};
-
-export const TextInputWithAriaAttributes: Story = {
-  args: {
-    id: 'input-id',
-    label: {
-      content: 'Label',
-      for: 'input-id',
-      size: LabelSize.Medium,
-    },
-    error: {
-      content: '',
-    },
-    hint: {
-      content: '',
-    },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(textInput.parentElement).toHaveClass('gi-input-half-width');
   },
-  render: (arguments_) => createTextInput(arguments_),
 };
