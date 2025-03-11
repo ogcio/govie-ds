@@ -11,14 +11,15 @@ export type Gap =
     };
 type SimpleDirection = 'column' | 'row';
 
-export type Alignment = 'start' | 'center' | 'end';
+export type Alignment = 'start' | 'center' | 'end' | 'stretch';
 export type Distribution =
   | 'start'
   | 'center'
   | 'end'
   | 'between'
   | 'around'
-  | 'evenly';
+  | 'evenly'
+  | 'stretch';
 export type Direction =
   | SimpleDirection
   | {
