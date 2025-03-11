@@ -7,7 +7,35 @@
 }
 
 .gi-layout-container-inset {
-  @apply lg:gi-p-8 sm:gi-p-6 gi-p-4;
+  @apply gi-w-full gi-container gi-mx-auto;
+}
+
+.gi-layout-container-inset[data-inset-top='none'] {
+  @apply gi-pt-0;
+}
+.gi-layout-container-inset[data-inset-bottom='none'] {
+  @apply gi-pt-0;
+}
+
+.gi-layout-container-inset[data-inset-top='md'] {
+  @apply lg:gi-pt-8 md:gi-pt-6 gi-pt-4;
+}
+.gi-layout-container-inset[data-inset-bottom='md'] {
+  @apply lg:gi-pb-8 md:gi-pb-6 gi-pb-4;
+}
+
+.gi-layout-container-inset[data-inset-top='lg'] {
+  @apply lg:gi-pt-12 md:gi-pt-9 gi-pt-6;
+}
+.gi-layout-container-inset[data-inset-bottom='lg'] {
+  @apply lg:gi-pb-12 md:gi-pb-9 gi-pb-6;
+}
+
+.gi-layout-container-inset[data-inset-top='xl'] {
+  @apply lg:gi-pt-16 md:gi-pt-12 gi-pt-8;
+}
+.gi-layout-container-inset[data-inset-bottom='xl'] {
+  @apply lg:gi-pb-16 md:gi-pb-12 gi-pb-8;
 }
 
 /* Similar to gi-container class but limited to max-width to 1280px */
