@@ -1,28 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './error-text.html?raw';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode, createErrorText } from '../storybook/storybook';
 import { ErrorSize, ErrorTextProps } from './error-text.schema';
 
-const macro = { name: 'govieErrorText', html };
-
-const ErrorText = renderComponent<ErrorTextProps>(macro);
-
-const meta = {
-  component: ErrorText,
+const meta: Meta<ErrorTextProps> = {
   title: 'Typography/ErrorText',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Error text is used to display error messages beneath form fields or other UI components when validation fails.',
-      },
-    },
-  },
-} satisfies Meta<typeof ErrorText>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ErrorTextProps>;
+
+const createElement = (arguments_: ErrorTextProps) => {
+  const error = createErrorText(arguments_);
+  return beautifyHtmlNode(error);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -47,5 +38,37 @@ export const Default: Story = {
   args: {
     size: ErrorSize.Medium,
     content: 'This is error text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: ErrorSize.Large,
+    content: 'This is error text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-lg');
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: ErrorSize.Small,
+    content: 'This is error text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-sm');
   },
 };

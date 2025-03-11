@@ -1,28 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './hint-text.html?raw';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode, createHint } from '../storybook/storybook';
 import { HintSize, HintTextProps } from './hint-text.schema';
 
-const macro = { name: 'govieHintText', html };
-
-const HintText = renderComponent<HintTextProps>(macro);
-
-const meta = {
-  component: HintText,
+const meta: Meta<HintTextProps> = {
   title: 'Typography/HintText',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Hint text used to provide additional context or help under form fields or other UI elements.',
-      },
-    },
-  },
-} satisfies Meta<typeof HintText>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<HintTextProps>;
+
+const createElement = (arguments_: HintTextProps) => {
+  const label = createHint(arguments_);
+  return beautifyHtmlNode(label);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -47,5 +38,37 @@ export const Default: Story = {
   args: {
     size: HintSize.Medium,
     content: 'This is hint text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: HintSize.Large,
+    content: 'This is hint text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-lg');
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: HintSize.Small,
+    content: 'This is hint text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-sm');
   },
 };
