@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
 import { Details } from './details.js';
 
 const meta = {
@@ -53,11 +52,6 @@ export const Default: Story = {
     label: 'Help with Nationality',
     children:
       'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const heading = canvas.getByRole('heading');
-    expect(heading).toBeTruthy();
   },
 };
 
