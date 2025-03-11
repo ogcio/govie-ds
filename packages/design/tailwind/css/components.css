@@ -112,10 +112,6 @@ input[type='text'] {
 /* Text Input */
 
 .gi-text-input-container {
-  @apply gi-w-full;
-}
-
-.gi-text-input-container-inner {
   @apply gi-w-full gi-flex gi-items-center;
 }
 .gi-text-input-prefix {
@@ -880,10 +876,6 @@ input[type='file' i] {
   @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
 }
 
-.gi-textarea-layout-container {
-  @apply gi-w-full;
-}
-
 .gi-textarea-container {
   @apply gi-flex gi-items-center;
 }
@@ -973,15 +965,15 @@ input[type='file' i] {
   @apply gi-checkbox-input gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
 }
 
-.gi-checkbox-small~label {
+.gi-checkbox-small ~ label {
   @apply gi-cursor-pointer gi-text-sm;
 }
 
-.gi-checkbox-medium~label {
+.gi-checkbox-medium ~ label {
   @apply gi-cursor-pointer gi-text-md;
 }
 
-.gi-checkbox-large~label {
+.gi-checkbox-large ~ label {
   @apply gi-cursor-pointer gi-text-lg;
 }
 .gi-checkbox-container {
@@ -1358,7 +1350,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step-connector {
-  @apply gi-absolute gi-flex-1;
+  @apply gi-absolute gi-flex-1 gi-h-[calc(100%_+_var(--gieds-space-5))];
 }
 
 .gi-progress-stepper-step-connector > span {
@@ -1370,7 +1362,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper-step-connector[data-orientation='vertical'] {
-  @apply gi-h-14 gi-w-[2px] gi-top-full gi-left-4;
+  @apply gi-w-[2px] gi-left-4;
 }
 
 .gi-progress-stepper-step-connector[data-next='true' i][data-orientation='vertical']

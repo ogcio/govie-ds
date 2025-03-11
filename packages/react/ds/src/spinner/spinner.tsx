@@ -31,7 +31,7 @@ export function Spinner({
   return (
     <svg
       role="status"
-      className={cn(display, sizeClasses)}
+      className={cn('gi-stroke-gray-950', display, sizeClasses)}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       data-testid={dataTestid}

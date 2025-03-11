@@ -286,7 +286,7 @@ Summary List
 }
 
 .gi-summary-list > dl > dt {
-  @apply gi-mb-1 gi-font-bold;
+  @apply gi-py-2 gi-font-bold;
 }
 
 .gi-summary-list > dl > dd,

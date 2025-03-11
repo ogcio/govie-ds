@@ -1,25 +1,10 @@
 import React from 'react';
 
-export type BlockquoteProps = {
-  children: React.ReactNode;
-  cite?: string;
-  ariaLabel?: string;
-  dataTestid?: string;
-};
+export type BlockquoteProps = React.QuoteHTMLAttributes<HTMLQuoteElement>;
 
-export function Blockquote({
-  children,
-  cite,
-  ariaLabel,
-  dataTestid,
-}: BlockquoteProps) {
+export function Blockquote({ children, cite, ...props }: BlockquoteProps) {
   return (
-    <blockquote
-      data-testid={dataTestid}
-      className="gi-blockquote"
-      cite={cite}
-      aria-label={ariaLabel}
-    >
+    <blockquote className="gi-blockquote" cite={cite} {...props}>
       {children}
     </blockquote>
   );

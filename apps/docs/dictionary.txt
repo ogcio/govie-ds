@@ -119,3 +119,7 @@ webpage
 webpages
 xl
 xs
+currentStepIndex
+completeAll
+StepItem
+defaultOpen

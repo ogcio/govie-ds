@@ -20,7 +20,7 @@
   {% endmacro %}
 
   <div
-    class="gi-textarea-layout-container {{ getErrorStyle(isError) | trim }}"
+    class="{{ getErrorStyle(isError) | trim }}"
     data-testid="{{ props.dataTestid }}"
   >
     {% if props.label %}
