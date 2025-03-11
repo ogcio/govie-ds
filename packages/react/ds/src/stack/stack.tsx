@@ -150,6 +150,7 @@ const getAlignmentClasses = (itemsAlignment: Alignment) => {
     'gi-items-start': itemsAlignment === 'start',
     'gi-items-center': itemsAlignment === 'center',
     'gi-items-end': itemsAlignment === 'end',
+    'gi-items-stretch': itemsAlignment === 'stretch',
   };
 };
 
@@ -161,6 +162,7 @@ const getDistributionClasses = (itemsDistribution: Distribution) => {
     'gi-justify-between': itemsDistribution === 'between',
     'gi-justify-around': itemsDistribution === 'around',
     'gi-justify-evenly': itemsDistribution === 'evenly',
+    'gi-justify-stretch': itemsDistribution === 'stretch',
   };
 };
 
@@ -201,8 +203,8 @@ export const Stack: React.FC<StackProps> = ({
   fixedHeight = '100%',
   gap = 0,
   hasDivider,
-  itemsAlignment = 'start',
-  itemsDistribution = 'start',
+  itemsAlignment = 'stretch',
+  itemsDistribution = 'stretch',
   wrap = false,
   className,
   ...props
