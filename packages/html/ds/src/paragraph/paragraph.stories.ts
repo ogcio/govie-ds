@@ -54,7 +54,7 @@ const createParagraph = (arguments_: ParagraphProps) => {
   component.className =
     `${classSize} ${alignClass} ${whitespaceClass} gi-max-w-prose`.trim();
   component.textContent = arguments_.content;
-  component.dataset.testid = arguments_.dataTestid ?? 'paragraph';
+  component.dataset.testid = arguments_.dataTestid;
 
   container.append(component);
 
