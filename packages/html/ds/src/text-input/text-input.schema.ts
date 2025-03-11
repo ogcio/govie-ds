@@ -19,25 +19,6 @@ export const InputTypeEnum = {
   Week: 'week',
 } as const;
 
-const validAriaProps = [
-  'aria-required',
-  'aria-invalid',
-  'aria-describedby',
-  'aria-labelledby',
-  'aria-autocomplete',
-  'aria-placeholder',
-] as const;
-
-export const ariaSchema = zod.record(
-  zod.enum(validAriaProps, {
-    description: 'Valid ARIA attributes key',
-  }),
-  zod.string({
-    description: 'ARIA attributes value',
-  }),
-  { description: 'An object of ARIA attributes' },
-);
-
 export const textInputSchema = zod.object({
   name: zod
     .string({
@@ -72,13 +53,6 @@ export const textInputSchema = zod.object({
     .string({ description: 'The placeholder for the input element' })
     .optional(),
   disabled: zod.boolean({ description: 'Disabled state' }).optional(),
-  readOnly: zod.boolean({ description: 'Readonly state' }).optional(),
-  required: zod
-    .boolean({ description: 'Marks the input as required' })
-    .optional(),
-  autoFocus: zod
-    .boolean({ description: 'Autofocuses the input field' })
-    .optional(),
   maxLength: zod.number().optional().describe('Max character length'),
   minLength: zod.number().optional().describe('Min character length'),
   min: zod
@@ -97,22 +71,33 @@ export const textInputSchema = zod.object({
     .string()
     .optional()
     .describe('Regex pattern for input validation'),
-  autoComplete: zod
-    .string()
-    .optional()
-    .describe('Autocomplete attribute for input'),
-  aria: ariaSchema.describe('Defines the aria attributes').optional(),
   className: zod.string({ description: 'Add additional classes' }).optional(),
   label: labelSchema.describe('Label for text-input').optional(),
   hint: hintTextSchema.describe('Hint for text-input').optional(),
   error: errorTextSchema
     .describe('Set error boundaries for text-input')
     .optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
-    })
-    .optional(),
+  halfFluid: zod.boolean({ description: 'Half container width' }).optional(),
 });
 
-export type TextInputProps = zod.infer<typeof textInputSchema>;
+export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label?: any;
+  hint?: any;
+  error?: any;
+  prefix?: string;
+  suffix?: string;
+  type?:
+    | 'text'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'tel'
+    | 'time'
+    | 'url'
+    | 'week';
+  halfFluid?: boolean;
+  dataTestId?: string;
+};

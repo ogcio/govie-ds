@@ -23,14 +23,9 @@ export const labelSchema = zod.object({
         'Ensures the label is properly associated with the corresponding input element.',
     })
     .optional(),
-  classNames: zod
+  className: zod
     .string({
       description: 'Add additional classes',
-    })
-    .optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
     })
     .optional(),
 });
