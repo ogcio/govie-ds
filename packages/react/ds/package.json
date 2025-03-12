@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/react",
-  "version": "0.39.0",
+  "version": "1.0.0",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -54,6 +54,7 @@
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
     "@govie-ds/theme-govie": "workspace:*",
+    "@govie-ds/theme-doete": "workspace:*",
     "@percy/cli": "^1.30.7",
     "@percy/storybook": "^6.0.3",
     "@testing-library/jest-dom": "^6.4.8",

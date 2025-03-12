@@ -39,7 +39,7 @@ export const TextArea = ({
   };
 
   return (
-    <div className={cn('gi-textarea-layout-container')}>
+    <>
       <div className="gi-textarea-container">
         <textarea
           rows={rows}
@@ -60,7 +60,7 @@ export const TextArea = ({
           <HintText text={`You have ${remainingChars} characters remaining`} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

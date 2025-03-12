@@ -127,7 +127,7 @@ export function GridPrimitives() {
                 </div>
               ))}
               <div className="col-span-12 bg-gold-200 p-4 shadow-sm">
-                <p className="text-center max-w-none font-medium">12</p>
+                <p className="text-center !max-w-none font-medium">12</p>
               </div>
             </div>
           </div>

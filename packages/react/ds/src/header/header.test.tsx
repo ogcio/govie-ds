@@ -70,7 +70,7 @@ describe('header', () => {
     const screen = renderHeader(standardProps);
 
     for (const index of standardProps?.secondaryLinks?.keys() || []) {
-      const linkElement = screen.getByTestId(`language-link-desktop-${index}`);
+      const linkElement = screen.getByTestId(`secondary-link-desktop-${index}`);
       expect(linkElement).toBeTruthy();
     }
   });

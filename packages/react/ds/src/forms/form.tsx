@@ -1,9 +1,6 @@
 import React from 'react';
 
-type FormType = React.DetailedHTMLProps<
-  React.FormHTMLAttributes<HTMLFormElement>,
-  HTMLFormElement
->;
+type FormType = React.FormHTMLAttributes<HTMLFormElement>;
 
 export const Form = ({ children, ...props }: FormType) => {
   return <form {...props}>{children}</form>;

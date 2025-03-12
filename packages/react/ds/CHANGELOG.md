@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [1.0.0](https://github.com/ogcio/govie-ds/compare/react-v0.39.0...react-v1.0.0) (2025-03-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461))
+
+### Features
+
+* add `FormField` wrapper for input ([#461](https://github.com/ogcio/govie-ds/issues/461)) ([448b15c](https://github.com/ogcio/govie-ds/commit/448b15cd530b78787920e409fa64fdee85692122))
+* add data grid example ([#457](https://github.com/ogcio/govie-ds/issues/457)) ([c6864b1](https://github.com/ogcio/govie-ds/commit/c6864b1021e52315a761f13595ea62352a3de6df))
+* Composable ProgressStepper ([#462](https://github.com/ogcio/govie-ds/issues/462)) ([a7cba84](https://github.com/ogcio/govie-ds/commit/a7cba842249dd8d52189470ca9a99059e1188927))
+
+
+### Bug Fixes
+
+* support multiple file upload ([d8543af](https://github.com/ogcio/govie-ds/commit/d8543affb78eb60103e0163442d4d489ed915251))
+* update tab list checked state ([#465](https://github.com/ogcio/govie-ds/issues/465)) ([6b5eb37](https://github.com/ogcio/govie-ds/commit/6b5eb37703f8f2016d3229b16e015699aae55e38))
+
 ## [0.39.0](https://github.com/ogcio/govie-ds/compare/react-v0.38.1...react-v0.39.0) (2025-03-03)
 
 

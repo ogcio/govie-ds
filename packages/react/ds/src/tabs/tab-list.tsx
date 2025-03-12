@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { TabItemProps } from './tab-item.js';
 
 export const TabList = ({
   children,
@@ -8,8 +9,28 @@ export const TabList = ({
   tabName?: string;
   children: React.ReactNode;
 }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState<number | null>(null);
   const tabCount = React.Children.count(children);
+
+  useEffect(() => {
+    // Initialize the active tab based on children
+    // Find if any child is checked
+    let foundCheckedTab = false;
+    let checkedIndex = 0;
+
+    React.Children.forEach(children, (child, index) => {
+      if (
+        React.isValidElement<TabItemProps>(child) &&
+        'checked' in child.props &&
+        child.props.checked === true
+      ) {
+        checkedIndex = index;
+        foundCheckedTab = true;
+      }
+    });
+
+    setActiveTab(foundCheckedTab ? checkedIndex : 0);
+  }, []);
 
   const onTabSelected = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -41,7 +62,7 @@ export const TabList = ({
 
     switch (event.key) {
       case 'ArrowLeft': {
-        let newTab = activeTab - 1;
+        let newTab = (activeTab ?? 0) - 1;
         if (newTab < 0) {
           newTab = 0;
         }
@@ -51,7 +72,7 @@ export const TabList = ({
       }
 
       case 'ArrowRight': {
-        let newTab = activeTab + 1;
+        let newTab = (activeTab ?? 0) + 1;
         if (newTab >= tabCount) {
           newTab = tabCount - 1;
         }
@@ -105,6 +126,7 @@ export const TabList = ({
     }
     return element;
   });
+
   return (
     <div role="tablist" className="gi--mb-[1px]">
       {childrenWithName}
