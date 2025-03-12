@@ -33,6 +33,25 @@ export const WithLinks: Story = {
   },
 };
 
+export const WithUtilityLinks: Story = {
+  args: {
+    utilityLinks: [
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+      {
+        href: '#',
+        label: 'Link 2',
+      },
+      {
+        href: '#',
+        label: 'Link 3',
+      },
+    ],
+  },
+};
+
 export const WithSecondaryNavigation: Story = {
   args: {
     secondaryNavLinks: [
@@ -136,7 +155,7 @@ export const WithSecondaryNavigationAndLinks: Story = {
   },
 };
 
-export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
+export const WithPrimarySecondaryAndUtilityLinks: Story = {
   args: {
     links: [
       {
@@ -189,6 +208,20 @@ export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
             external: true,
           },
         ],
+      },
+    ],
+    utilityLinks: [
+      {
+        href: '#',
+        label: 'Link 1',
+      },
+      {
+        href: '#',
+        label: 'Link 2',
+      },
+      {
+        href: '#',
+        label: 'Link 3',
       },
     ],
   },

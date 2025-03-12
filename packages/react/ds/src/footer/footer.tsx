@@ -15,10 +15,16 @@ export type FooterProps = {
     heading: string;
     links: FooterLink[];
   }[];
+  utilityLinks?: FooterLink[];
   dataTestid?: string;
 };
 
-export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
+export function Footer({
+  links,
+  secondaryNavLinks,
+  utilityLinks,
+  dataTestid,
+}: FooterProps) {
   return (
     <footer
       className="gi-footer"
@@ -27,7 +33,7 @@ export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
       aria-label="Footer"
       data-testid={dataTestid}
     >
-      <Container>
+      <div className="gi-footer-container">
         {secondaryNavLinks && (
           <div className="footer-secondary-nav-links">
             {secondaryNavLinks.map((secondaryNav, navIndex) => (
@@ -35,7 +41,7 @@ export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
                 <div className="gi-heading-md" id={`secondary-nav-${navIndex}`}>
                   {secondaryNav.heading}
                 </div>
-                <SectionBreak size="md" />
+                <SectionBreak color="gi-border-gray-100" size="md" />
                 <ul aria-labelledby={`secondary-nav-${navIndex}`}>
                   {secondaryNav.links.map((link, index) => (
                     <li
@@ -56,6 +62,7 @@ export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
             ))}
           </div>
         )}
+        <SectionBreak color="gi-border-gray-100" size="md" />
         <div className="footer-primary-nav-links">
           {links && (
             <ul>
@@ -79,7 +86,26 @@ export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
             <GovieLogoHarpWithText />
           </div>
         </div>
-      </Container>
+      </div>
+      {utilityLinks && (
+        <div className="gi-footer-utility-links">
+          <ul>
+            {utilityLinks.map((link, index) => (
+              <li data-testid={`main-link-${index}`} key={`main-link-${index}`}>
+                <Anchor
+                  href={link.href}
+                  external={link.external}
+                  aria-label={link.label}
+                >
+                  {link.label}
+                </Anchor>
+              </li>
+            ))}
+            {/* TODO update with translation */}
+            <span>Government of Ireland Design System</span>
+          </ul>
+        </div>
+      )}
     </footer>
   );
 }
