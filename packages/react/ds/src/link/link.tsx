@@ -7,7 +7,7 @@ import {
   ButtonVariant,
 } from '../button/types.js';
 import { cn } from '../cn.js';
-import Anchor, { AnchorProps } from '../primitives/anchor.js';
+import { Anchor, AnchorProps } from '../primitives/anchor.js';
 
 export type LinkProps = AnchorProps & {
   href?: string;

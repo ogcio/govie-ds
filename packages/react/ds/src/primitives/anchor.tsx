@@ -6,7 +6,7 @@ export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   asChild?: boolean;
 };
 
-const Anchor = ({
+export const Anchor = ({
   external = false,
   asChild,
   children,
@@ -25,5 +25,3 @@ const Anchor = ({
     </Component>
   );
 };
-
-export default Anchor;

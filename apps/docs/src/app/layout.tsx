@@ -1,10 +1,9 @@
-import { Footer, Header, HeaderProps } from '@govie-ds/react';
+import { Anchor, Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-import Anchor from 'node_modules/@govie-ds/react/dist/primitives/anchor';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],

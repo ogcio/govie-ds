@@ -5,7 +5,7 @@ import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js'
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
-import Anchor from '../primitives/anchor.js';
+import { Anchor } from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
