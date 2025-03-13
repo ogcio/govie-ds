@@ -4,6 +4,7 @@ import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
+import Anchor from 'node_modules/@govie-ds/react/dist/primitives/anchor';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -95,7 +96,34 @@ export default function RootLayout({
         </a>
         <Header {...headerProps} addDefaultMobileMenu />
         {children}
-        <Footer links={footerLinks} />
+        <Footer
+          secondarySlot={
+            <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
+              <Anchor aria-label="About Us" href="/about-us">
+                About Us
+              </Anchor>
+              <Anchor aria-label="Contact" href="/contact">
+                Contact
+              </Anchor>
+              <Anchor aria-label="Sitemap" href="/sitemap">
+                Sitemap
+              </Anchor>
+            </div>
+          }
+          utilitySlot={
+            <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
+              <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
+                <Anchor aria-label="Privacy Policy" href="/privacy-policy">
+                  Privacy Policy
+                </Anchor>
+                <Anchor aria-label="Accessibility" href="/accessibility">
+                  Accessibility
+                </Anchor>
+                <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+              </div>
+            </div>
+          }
+        />
       </body>
     </html>
   );
