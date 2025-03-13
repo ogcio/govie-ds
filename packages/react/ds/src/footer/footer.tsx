@@ -1,6 +1,6 @@
+import { ReactNode } from 'react';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import { SectionBreak } from '../section-break/section-break.js';
-import { ReactNode } from 'react';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
@@ -45,16 +45,12 @@ export function Footer({
             aria-label="Secondary footer navigation"
           >
             <div className="gi-footer-secondary-content">{secondarySlot}</div>
-            <div className="gi-footer-logo" aria-label="Government of Ireland">
-              {logoComponent}
-            </div>
+            <div className="gi-footer-logo">{logoComponent}</div>
           </div>
         )}
 
         {!secondarySlot && (
-          <div className="gi-footer-logo" aria-label="Government of Ireland">
-            {logoComponent}
-          </div>
+          <div className="gi-footer-logo">{logoComponent}</div>
         )}
       </div>
       {utilitySlot && (
