@@ -47,94 +47,110 @@ export const CompleteFooter: Story = {
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <List
-            items={[
+          <ul className="gi-space-y-2">
+            <li>
               <Anchor
                 href="/services/public-services"
                 aria-label="Public Services"
               >
                 Public Services
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor
                 href="/services/business-services"
                 aria-label="Business Services"
               >
                 Business Services
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor
                 href="/services/online-services"
                 aria-label="Online Services"
               >
                 Online Services
-              </Anchor>,
-            ]}
-          />
+              </Anchor>
+            </li>
+          </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <List
-            items={[
+          <ul className="gi-space-y-2">
+            <li>
               <Anchor
                 href="/departments/health"
                 aria-label="Department of Health"
               >
                 Department of Health
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor
                 href="/departments/education"
                 aria-label="Department of Education"
               >
                 Department of Education
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor
                 href="/departments/finance"
                 aria-label="Department of Finance"
               >
                 Department of Finance
-              </Anchor>,
-            ]}
-          />
+              </Anchor>
+            </li>
+          </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <List
-            items={[
+          <ul className="gi-space-y-2">
+            <li>
               <Anchor href="/publications/reports" aria-label="Reports">
                 Reports
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor href="/publications/statistics" aria-label="Statistics">
                 Statistics
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor href="/publications/legislation" aria-label="Legislation">
                 Legislation
-              </Anchor>,
-            ]}
-          />
+              </Anchor>
+            </li>
+          </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <List
-            items={[
+          <ul className="gi-space-y-2">
+            <li>
               <Anchor
                 href="/contact/find-an-office"
                 aria-label="Find an Office"
               >
                 Find an Office
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor
                 href="/contact/phone-directory"
                 aria-label="Phone Directory"
               >
                 Phone Directory
-              </Anchor>,
+              </Anchor>
+            </li>
+            <li>
               <Anchor href="/contact/feedback" aria-label="Feedback">
                 Feedback
-              </Anchor>,
-            ]}
-          />
+              </Anchor>
+            </li>
+          </ul>
         </div>
       </div>
     ),
