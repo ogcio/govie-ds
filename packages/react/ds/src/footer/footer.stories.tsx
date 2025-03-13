@@ -155,7 +155,7 @@ export const CompleteFooter: Story = {
       </div>
     ),
     utilitySlot: (
-      <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
+      <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
           <Anchor href="/privacy-policy" aria-label="Privacy Policy">
             Privacy Policy
@@ -194,7 +194,7 @@ export const SimpleFooter: Story = {
       </div>
     ),
     utilitySlot: (
-      <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
+      <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
           <Anchor href="/privacy-policy" aria-label="Privacy Policy">
             Privacy Policy
@@ -214,7 +214,7 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
+      <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
           <Anchor
             href="https://www.gov.ie/privacy/"
