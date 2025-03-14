@@ -1,9 +1,25 @@
 {
   "component": {
     "button": {
-      "primary-background-color-default": {
-        "$type": "color",
-        "$value": "{semantic.surface.primary}"
+      "primary": {
+        "default": {
+          "background-color": {
+            "$type": "color",
+            "$value": "{semantic.surface.primary}"
+          }
+        },
+        "light": {
+          "background-color": {
+            "$type": "color",
+            "$value": "{semantic.surface.primary}"
+          }
+        },
+        "dark": {
+          "background-color": {
+            "$type": "color",
+            "$value": "{semantic.surface.primary}"
+          }
+        }
       }
     }
   }
