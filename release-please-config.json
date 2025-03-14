@@ -17,8 +17,7 @@
             "extra-files": [
                 "tokens/light/semantic/heading.json",
                 "tokens/light/semantic/surface.json",
-                "tokens/light/semantic/text.json",
-                "tokens/light/semantic/component/button.json"
+                "tokens/light/semantic/text.json"
             ]
         }
     },
