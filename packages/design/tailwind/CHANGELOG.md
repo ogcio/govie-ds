@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/tailwind-v1.0.0...tailwind-v1.1.0) (2025-03-14)
+
+
+### Features
+
+* Adding inset prop in Container ([#471](https://github.com/ogcio/govie-ds/issues/471)) ([b6fb040](https://github.com/ogcio/govie-ds/commit/b6fb0409d184f76f1c845744116958a9838677be))
+
 ## [1.0.0](https://github.com/ogcio/govie-ds/compare/tailwind-v0.32.2...tailwind-v1.0.0) (2025-03-10)
 
 
