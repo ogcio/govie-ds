@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/docs-v1.0.0...docs-v1.1.0) (2025-03-14)
+
+
+### Features
+
+* Adding inset prop in Container ([#471](https://github.com/ogcio/govie-ds/issues/471)) ([b6fb040](https://github.com/ogcio/govie-ds/commit/b6fb0409d184f76f1c845744116958a9838677be))
+
 ## [1.0.0](https://github.com/ogcio/govie-ds/compare/docs-v0.44.1...docs-v1.0.0) (2025-03-10)
 
 
