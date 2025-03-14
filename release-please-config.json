@@ -12,7 +12,13 @@
         "packages/html/ds": {},
         "packages/react/ds": {},
         "packages/themes/govie": {},
-        "tokens": {}
+        "tokens": {
+            "extra-files": [
+                "tokens/tokens/light/semantic/heading.json",
+                "tokens/tokens/light/semantic/surface.json",
+                "tokens/tokens/light/semantic/text.json"
+            ]
+        }
     },
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
