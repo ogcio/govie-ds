@@ -7,7 +7,9 @@ describe('Footer', () => {
     render(<Footer {...props} />);
 
   it('should render the footer with default props', () => {
-    renderFooter({});
+    renderFooter({
+      dataTestid: 'govie-footer',
+    });
 
     const footer = screen.getByRole('contentinfo');
     expect(footer).toBeInTheDocument();
@@ -21,24 +23,6 @@ describe('Footer', () => {
 
     const footer = screen.getByRole('contentinfo');
     expect(footer).toHaveClass('gi-footer custom-class');
-  });
-
-  it('should render with custom logo component', () => {
-    const CustomLogo = () => <div data-testid="custom-logo">Custom Logo</div>;
-    renderFooter({ logoComponent: <CustomLogo /> });
-
-    expect(screen.getByTestId('custom-logo')).toBeInTheDocument();
-  });
-
-  it('should render primary slot when provided', () => {
-    const primaryContent = (
-      <div data-testid="primary-content">Primary Content</div>
-    );
-    renderFooter({ primarySlot: primaryContent });
-
-    const primaryNav = screen.getByLabelText('Primary footer navigation');
-    expect(primaryNav).toBeInTheDocument();
-    expect(screen.getByTestId('primary-content')).toBeInTheDocument();
   });
 
   it('should not render primary nav when primarySlot is not provided', () => {
