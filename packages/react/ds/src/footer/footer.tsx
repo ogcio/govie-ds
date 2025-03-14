@@ -31,7 +31,7 @@ function getLogo({ logo }: FooterProps) {
         media="(min-width: 640px)"
       />
       <img
-        className={'gi-h-10 sm:gi-h-14'}
+        className="gi-h-10 sm:gi-h-14"
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || 'Gov.ie logo'}
       />
@@ -77,8 +77,8 @@ export function Footer({
       <div className="gi-footer-container">
         {primarySlot && (
           <div
-            className="gi-footer-primary-nav"
-            aria-label="Primary footer navigation"
+            className="gi-footer-primary-slot"
+            aria-label="Primary footer slot"
           >
             {primarySlot}
           </div>
@@ -88,10 +88,10 @@ export function Footer({
 
         {secondarySlot && (
           <div
-            className="gi-footer-secondary-nav"
-            aria-label="Secondary footer navigation"
+            className="gi-footer-secondary-slot"
+            aria-label="Secondary footer slot"
           >
-            <div className="gi-footer-secondary-content">{secondarySlot}</div>
+            <div>{secondarySlot}</div>
             <div className="gi-footer-logo">{renderLogo()}</div>
           </div>
         )}
