@@ -9,19 +9,18 @@ const meta: Meta<typeof Footer> = {
   argTypes: {
     primarySlot: {
       control: 'object',
-      description: 'Primary navigation links - typically main site sections',
+      description: 'Primary slot - typically main site sections',
     },
     secondarySlot: {
       control: 'object',
-      description:
-        'Secondary navigation links - typically department/org specific links',
+      description: 'Secondary slot - typically department/org specific links',
     },
     utilitySlot: {
       control: 'object',
       description:
-        'Utility links - typically copyright, privacy policy, accessibility, etc.',
+        'Utility stot - typically copyright, privacy policy, accessibility, etc.',
     },
-    logoComponent: {
+    logo: {
       control: 'object',
       description: 'Optional custom logo component',
     },
@@ -41,8 +40,9 @@ type Story = StoryObj<typeof Footer>;
 
 export const CompleteFooter: Story = {
   args: {
+    dataTestid: 'gi-footer',
     primarySlot: (
-      <div className="!gi-ml-0 !gi-mr-0 gi-grid-responsive">
+      <div className="gi-grid-responsive">
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
