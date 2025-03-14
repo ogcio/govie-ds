@@ -638,15 +638,15 @@ input[type='file' i] {
 /* Footer */
 
 .gi-footer-logo {
-  @apply gi-ml-auto gi-w-fit;
-}
-
-.gi-footer a {
-  @apply gi-underline gi-underline-offset-sm;
+  @apply lg:gi-ml-auto gi-w-fit lg:gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline;
 }
 
 .gi-footer-container {
   @apply gi-py-10 gi-px-8;
+}
+
+.gi-footer-secondary-slot {
+  @apply gi-flex md:gi-flex-row sm:gi-flex-col md:gi-justify-between md:gi-items-center gi-flex-wrap gi-gap-8 lg:gi-gap-32;
 }
 
 .gi-footer-utility {
