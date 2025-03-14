@@ -1,28 +1,47 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './list.html?raw';
-import { TypeEnum, ListProps } from './list.schema';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { ListProps, TypeEnum } from './list.schema';
 
-const macro = { name: 'govieList', html };
-
-const List = renderComponent<ListProps>(macro);
-
-const meta = {
-  component: List,
+const meta: Meta<ListProps> = {
   title: 'Typography/List',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Use lists to make blocks of text easier to read, and to break information into manageable chunks.',
-      },
-    },
-  },
-} satisfies Meta<typeof List>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ListProps>;
+
+const createList = (arguments_: ListProps) => {
+  const container = document.createElement('div');
+
+  let classType = '';
+  if (arguments_.type == 'bullet') {
+    classType = 'gi-list-bullet';
+  } else if (arguments_.type == 'number') {
+    classType = 'gi-list-number';
+  } else {
+    classType = 'gi-list';
+  }
+
+  if (arguments_.spaced) {
+    classType += ' gi-list-spaced';
+  }
+
+  const component = document.createElement('ul');
+  component.className = classType;
+  component.dataset.testid = arguments_.dataTestid;
+  component.dataset.element = 'list-container';
+
+  for (const item of arguments_.items) {
+    const li = document.createElement('li');
+    li.innerHTML = item;
+
+    component.append(li);
+  }
+
+  container.append(component);
+
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -49,32 +68,38 @@ export const Default: Story = {
   },
   args: {
     items: ['Item 1', 'Item 2', 'Item 3'],
+    dataTestid: 'list',
+  },
+  render: (arguments_) => createList(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list');
   },
 };
 
 export const Links: Story = {
   args: {
     items: [
-      {
-        href: '#',
-        label: 'Link 1',
-      },
-      {
-        href: '#',
-        label: 'Link 2',
-      },
-      {
-        href: '#',
-        label: 'Link 3',
-      },
+      "<a href='#' class='gi-link'>Link 1</a>",
+      "<a href='#' class='gi-link'>Link 2</a>",
+      "<a href='#' class='gi-link'>Link 3</a>",
     ],
   },
+  render: (arguments_) => createList(arguments_),
 };
 
 export const Bullet: Story = {
   args: {
     type: TypeEnum.Bullet,
     items: ['apple', 'orange', 'pears'],
+    dataTestid: 'list',
+  },
+  render: (arguments_) => createList(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-bullet');
   },
 };
 
@@ -82,6 +107,13 @@ export const Numbered: Story = {
   args: {
     type: TypeEnum.Number,
     items: ['Delivery address', 'Payment', 'Confirmation'],
+    dataTestid: 'list',
+  },
+  render: (arguments_) => createList(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-number');
   },
 };
 
@@ -94,5 +126,12 @@ export const ExtraSpace: Story = {
       'Curabitur ac felis arcu. Sed vehicula risus nec ligula tempor, vel euismod augue consectetur.',
       'Fusce tincidunt mi ac augue ultricies, id cursus libero dapibus. Phasellus a urna eget justo.',
     ],
+    dataTestid: 'list',
+  },
+  render: (arguments_) => createList(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-spaced');
   },
 };

@@ -17,14 +17,9 @@ export const errorTextSchema = zod.object({
       description: 'Size of the error text.',
     })
     .optional(),
-  classNames: zod
+  className: zod
     .string({
       description: 'Add additional classes',
-    })
-    .optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
     })
     .optional(),
 });

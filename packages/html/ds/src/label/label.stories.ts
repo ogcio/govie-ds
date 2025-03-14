@@ -1,29 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './label.html?raw';
-import { LabelProps } from './label.schema';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode, createLabel } from '../storybook/storybook';
+import { LabelProps, LabelSize } from './label.schema';
 
-const macro = { name: 'govieLabel', html };
-
-// Component created using renderComponent and LabelProps
-const Label = renderComponent<LabelProps>(macro);
-
-const meta = {
-  component: Label,
+const meta: Meta<LabelProps> = {
   title: 'Typography/Label',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'A Label component to wrap label text and associate it with a form input element.',
-      },
-    },
-  },
-} satisfies Meta<typeof Label>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<LabelProps>;
+
+const createElement = (arguments_: LabelProps) => {
+  const label = createLabel(arguments_);
+  return beautifyHtmlNode(label);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -49,8 +39,40 @@ export const Default: Story = {
     },
   },
   args: {
-    content: 'Label Text',
+    content: 'This is label text',
     size: 'md',
     for: 'input-id',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: LabelSize.Large,
+    content: 'This is label text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-lg');
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: LabelSize.Small,
+    content: 'This is label text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-sm');
   },
 };

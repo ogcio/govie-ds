@@ -1,27 +1,79 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './textarea.html?raw';
-import { TextareaProps } from './textarea.schema';
+import { expect, within } from '@storybook/test';
+import { LabelSize } from '../label/label.schema';
+import {
+  beautifyHtmlNode,
+  createFormField,
+  createHint,
+} from '../storybook/storybook';
+import { TextAreaProps } from './textarea.schema';
 
-const macro = { name: 'govieTextArea', html };
+const meta: Meta<TextAreaProps> = {
+  title: 'Form/Textarea',
+};
 
-const TextArea = renderComponent<TextareaProps>(macro);
+export default meta;
+type Story = StoryObj<TextAreaProps>;
 
-const meta = {
-  title: 'Form/TextArea',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Use the textarea component when you need to let users enter multi-line text, such as comments or a description. The `rows` and `cols` properties control the size of the textarea, while `error` can indicate validation errors.',
-      },
-    },
-  },
-  component: TextArea,
+const createElement = (arguments_: TextAreaProps) => {
+  const formField = createFormField(arguments_);
+
+  const container = document.createElement('div');
+  container.className =
+    `${arguments_.className || ''} gi-textarea-container`.trim();
+
+  const textarea = document.createElement('textarea');
+  textarea.dataset.module = 'gieds-textarea';
+
+  textarea.className =
+    `gi-textarea ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
+
+  if (arguments_.id) {
+    textarea.id = arguments_.id;
+  }
+  if (arguments_.placeholder) {
+    textarea.placeholder = arguments_.placeholder;
+  }
+  if (arguments_.dataTestId) {
+    textarea.dataset.testid = arguments_.dataTestId;
+  }
+  if (arguments_.disabled) {
+    textarea.disabled = true;
+  }
+  if (arguments_.maxChars) {
+    textarea.maxLength = arguments_.maxChars;
+  }
+  if (arguments_.rows) {
+    textarea.rows = arguments_.rows;
+  }
+  if (arguments_.cols) {
+    textarea.cols = arguments_.cols;
+  }
+
+  container.append(textarea);
+
+  formField.append(container);
+
+  if (arguments_.maxChars) {
+    const remainingChars = document.createElement('div');
+    remainingChars.className = 'gi-textarea-remaining-chars';
+    remainingChars.dataset['remainingcharscontainer'] = textarea.id;
+
+    const remainingCharsHint = createHint({
+      content: `You have ${arguments_.maxChars} characters remaining`,
+    });
+
+    remainingChars.append(remainingCharsHint);
+    formField.append(remainingChars);
+  }
+
+  return beautifyHtmlNode(formField);
+};
+
+export const Default: Story = {
   argTypes: {
     label: {
-      description: 'Label associated with the textarea',
+      description: 'Label associated with the textarea.',
       control: 'object',
       table: {
         category: 'Label',
@@ -29,8 +81,7 @@ const meta = {
       },
     },
     hint: {
-      description:
-        'Hint text for the textarea to provide additional information.',
+      description: 'Hint text for the input to provide additional information.',
       control: 'object',
       table: {
         category: 'Hint',
@@ -39,11 +90,28 @@ const meta = {
     },
     error: {
       description:
-        'Error message for the textarea, displayed when there is a validation error.',
+        'Error message for the input, displayed when there is a validation error.',
       control: 'object',
       table: {
         category: 'Error',
         type: { summary: 'ErrorText' },
+      },
+    },
+    id: {
+      description: 'Sets the unique ID for the input field.',
+      control: 'text',
+      table: {
+        category: 'Accessibility',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'input-id' },
+      },
+    },
+    disabled: {
+      description: 'Disable input',
+      control: 'boolean',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'Behavior' },
       },
     },
     rows: {
@@ -74,96 +142,135 @@ const meta = {
         defaultValue: { summary: 'on' },
       },
     },
-    id: {
-      description: 'Sets the ID for the textarea, used for accessibility.',
+    dataTestId: {
+      description: 'Sets the unique ID for test.',
       control: 'text',
-      table: {
-        category: 'Accessibility',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'textarea-id' },
-      },
-    },
-    disabled: {
-      description: 'Disable textarea',
-      control: 'boolean',
-      table: {
-        category: 'Behavior',
-        type: { summary: 'Behavior' },
-      },
     },
   },
-} satisfies Meta<typeof TextArea>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
   args: {
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-1',
+    id: 'input-id',
     label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-1',
-      size: 'md',
-    },
-    error: {
-      content: '',
-    },
-    hint: {
-      content: '',
+      content: 'Label',
+      for: 'input-id',
+      size: LabelSize.Medium,
     },
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelAndHint: Story = {
   args: {
     label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-3',
-      size: 'md',
+      content: 'Label',
+      for: 'label-hint-input',
+      size: LabelSize.Medium,
     },
     hint: {
-      content: 'Hint text for textarea',
+      content: 'Hint',
     },
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-3',
+    id: 'label-hint-input',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelAndError: Story = {
   args: {
     label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-4',
-      size: 'md',
+      content: 'Label',
+      for: 'label-hint-input',
+      size: LabelSize.Medium,
     },
     error: {
-      content: 'Error message for textarea',
+      content: 'Error: Please correct this issue.',
     },
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-4',
+    id: 'label-hint-input',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelHintAndError: Story = {
   args: {
     label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-4',
-      size: 'md',
+      content: 'Label',
+      for: 'error-input',
+      size: LabelSize.Medium,
     },
     hint: {
       content: 'Hint: This is a helpful hint.',
     },
     error: {
-      content: 'Error message for textarea',
+      content: 'Error: Please correct this issue.',
     },
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-4',
+    id: 'error-input',
+    dataTestId: 'text-input-id',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)',
+    );
+
+    const label = canvas.getByText('Label');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
+
+    const hint = canvas.getByText('Hint: This is a helpful hint.');
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
+
+    const error = canvas.getByText('Error: Please correct this issue.');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
+  },
+};
+
+export const InputLength: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'character-width-input',
+      size: LabelSize.Medium,
+    },
+    maxLength: 20,
+    id: 'character-width-input',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const DisabledInput: Story = {
+  args: {
+    label: {
+      content: 'Label',
+      for: 'text-input-id',
+      size: LabelSize.Medium,
+    },
+    id: 'text-input-id',
+    disabled: true,
+    dataTestId: 'text-input-id',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(textInput).toBeDisabled();
+  },
+};
+
+export const WithHalfWidth: Story = {
+  args: {
+    id: 'input-id',
+    className: 'gi-input-half-width',
+    dataTestId: 'text-input-id',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(textInput.parentElement).toHaveClass('gi-input-half-width');
   },
 };
 
@@ -177,6 +284,14 @@ export const CustomRowsAndColumns: Story = {
     rows: 6,
     cols: 40,
     id: 'custom-size-textarea',
+    dataTestId: 'text-input-id',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    expect(textInput.getAttribute('cols')).toBe('40');
+    expect(textInput.getAttribute('rows')).toBe('6');
   },
 };
 
@@ -190,80 +305,19 @@ export const WithMaxChars: Story = {
     hint: {
       content: 'Hint text for textarea',
     },
-    maxChars: 100,
+    maxChars: 30,
     id: 'textarea-id-5',
+    dataTestId: 'textarea-id-5',
   },
-};
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textareaElement = canvas.getByRole('textbox');
+    expect(textareaElement.getAttribute('maxlength')).toBe('30');
 
-export const DisabledTextarea: Story = {
-  args: {
-    label: {
-      content: 'Textarea Label',
-      for: 'textarea-id-5',
-      size: 'md',
-    },
-    hint: {
-      content: 'Hint text for textarea',
-    },
-    id: 'textarea-id-5',
-    disabled: true,
-  },
-};
-
-export const AllStates: Story = {
-  //@ts-expect-error Render function returns raw HTML string, not a React component
-  render: () => `
-  <div class="gi-gap-4">
-  <div class="undefined">
-    <label class="gi-text-md gi-label gi-mb-2" for="default-textarea" id=":r7:-label">Default</label>
-    <div class="gi-textarea-container">
-      <textarea
-        id="default-textarea"
-        rows="4"
-        cols="100"
-        autocomplete="on"
-        class="gi-textarea"
-        aria-labelledby=":r7:-label"
-        aria-describedby=""
-      ></textarea>
-    </div>
-  </div>
-
-  <div class="undefined">
-    <label class="gi-text-md gi-label gi-mb-2" for="focus-textarea" id=":r8:-label">Focus</label>
-    <div class="gi-textarea-container">
-      <textarea
-        id="focus-textarea"
-        rows="4"
-        cols="100"
-        autocomplete="on"
-        class="gi-textarea pseudo-focus"
-        aria-labelledby=":r8:-label"
-        aria-describedby=""
-      ></textarea>
-    </div>
-  </div>
-
-  <div class="undefined">
-    <label class="gi-text-md gi-label gi-mb-2" for="textarea-disabled" id=":r9:-label">Disabled</label>
-    <div class="gi-textarea-container">
-      <textarea
-        id="textarea-disabled"
-        rows="4"
-        cols="100"
-        autocomplete="on"
-        class="gi-textarea gi-textarea-disabled"
-        aria-labelledby=":r9:-label"
-        aria-describedby=""
-        disabled
-      ></textarea>
-    </div>
-  </div>
-</div>
-`,
-  parameters: {
-    pseudo: {
-      focus: '#focus-textarea',
-    },
+    const remainingElement = canvas.getByText(
+      'You have 30 characters remaining',
+    );
+    expect(remainingElement).toBeInTheDocument();
   },
 };

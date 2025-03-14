@@ -23,17 +23,17 @@ export const SummaryListRowSchema = zod.object({
       description: 'Indicates if the row has a border.',
     })
     .optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
-    })
-    .optional(),
 });
 
 export const SummaryListSchema = zod.object({
   rows: zod.array(SummaryListRowSchema, {
     description: 'Array of rows in the summary list.',
   }),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type SummaryListProps = zod.infer<typeof SummaryListSchema>;
