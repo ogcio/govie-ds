@@ -1,5 +1,5 @@
 import { render, cleanup } from '../test-utils.js';
-import { Anchor, AnchorProps } from './anchor.js';
+import Anchor, { AnchorProps } from './anchor.js';
 
 describe('anchor', () => {
   afterEach(cleanup);
