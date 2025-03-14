@@ -2,18 +2,57 @@
     "include-component-in-tag": true,
     "group-pull-request-title-pattern": "chore(ci): release ${branch}",
     "bootstrap-sha": "78025b35be74c6eccbfcbcec4a1509e2e919e7f4",
-    "release-type": "node",
+    "always-link-local": true,
     "packages": {
-        "apps/docs": {},
-        "packages/build/eslint-config": {},
-        "packages/build/prettier-config": {},
-        "packages/design/deepmerge": {},
-        "packages/design/tailwind": {},
-        "packages/design/theme-builder": {},
-        "packages/html/ds": {},
-        "packages/react/ds": {},
-        "packages/themes/govie": {},
+        "apps/docs": {
+            "component": "docs",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/build/eslint-config": {
+            "component": "eslint-config",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/build/prettier-config": {
+            "component": "prettier-config",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/design/deepmerge": {
+            "component": "design-deepmerge",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/design/tailwind": {
+            "component": "design-tailwind",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/design/theme-builder": {
+            "component": "design-theme-builder",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/html/ds": {
+            "component": "html-lib",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/react/ds": {
+            "component": "react-lib",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
+        "packages/themes/govie": {
+            "component": "themes-govie",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md"
+        },
         "tokens": {
+            "component": "tokens",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md",
             "extra-files": [
                 "tokens/light/semantic/heading.json",
                 "tokens/light/semantic/surface.json",
@@ -21,5 +60,20 @@
             ]
         }
     },
+    "plugins": [
+        {
+            "type": "node-workspace",
+            "updateAllPackages": true
+        },
+        {
+            "type": "linked-versions",
+            "groupName": "tokens-group",
+            "components": [
+                "tokens",
+                "themes-govie",
+                "design-theme-builder"
+            ]
+        }
+    ],
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
