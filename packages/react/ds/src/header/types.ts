@@ -1,3 +1,4 @@
+import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
 
@@ -57,13 +58,7 @@ export type HeaderItem = CommonProps & ConditionalProps;
 
 export type HeaderProps = {
   title?: string;
-  logo?: {
-    imageSmall?: string;
-    imageLarge?: string;
-    href?: string;
-    external?: boolean;
-    alt?: string;
-  };
+  logo?: LogoProps;
   addDefaultMobileMenu?: boolean;
   mobileMenuLabel?: string;
   items?: HeaderItem[];
