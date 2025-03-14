@@ -6,18 +6,19 @@ export type FooterProps = {
   primarySlot?: ReactNode;
   secondarySlot?: ReactNode;
   utilitySlot?: ReactNode;
-  dataTestid?: string;
   logoComponent?: ReactNode;
   className?: string;
-};
+  dataTestid?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export function Footer({
   primarySlot,
   secondarySlot,
   utilitySlot,
-  dataTestid = 'govie-footer',
   logoComponent = <GovieLogoHarpWithText />,
   className = '',
+  dataTestid,
+  ...props
 }: FooterProps) {
   return (
     <footer
@@ -26,6 +27,7 @@ export function Footer({
       role="contentinfo"
       aria-label="Footer"
       data-testid={dataTestid}
+      {...props}
     >
       <div className="gi-footer-container">
         {primarySlot && (
