@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/themes-govie-v0.6.1...themes-govie-v1.2.0) (2025-03-14)
+
+
+### Features
+
+* support react 19 ([#380](https://github.com/ogcio/govie-ds/issues/380)) ([bf552ff](https://github.com/ogcio/govie-ds/commit/bf552ff8327fe1e8776d8aa53fdf8fa04d23fab7))
+
+
+### Bug Fixes
+
+* theme release ([7a336b2](https://github.com/ogcio/govie-ds/commit/7a336b20d20215e51cae40de8967746213fa5b05))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.1
+    * @govie-ds/prettier-config bumped to 1.0.2
+    * @govie-ds/theme-builder bumped to 1.2.0
+    * @govie-ds/tokens bumped to 1.2.0
+
 ## [0.6.1](https://github.com/ogcio/govie-ds/compare/theme-govie-v0.6.0...theme-govie-v0.6.1) (2025-03-14)
 
 

@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.1](https://github.com/ogcio/govie-ds/compare/docs-v1.1.0...docs-v1.1.1) (2025-03-14)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/deepmerge bumped to 1.0.1
+    * @govie-ds/react bumped to 2.0.0
+    * @govie-ds/tailwind bumped to 2.0.0
+    * @govie-ds/theme-govie bumped to 1.2.0
+    * @govie-ds/tokens bumped to 1.2.0
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.1
+    * @govie-ds/prettier-config bumped to 1.0.2
+
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/docs-v1.0.0...docs-v1.1.0) (2025-03-14)
 
 

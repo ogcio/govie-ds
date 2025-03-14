@@ -1,6 +1,8 @@
 # Changelog
 
 
+## [1.0.2](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.1...prettier-config-v1.0.2) (2025-03-14)
+
 ## [1.0.1](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.0...prettier-config-v1.0.1) (2024-10-02)
 
 ## [0.1.0](https://github.com/ogcio/govie-ds/compare/@govie-ds/prettier-config-0.0.2...@govie-ds/prettier-config-0.1.0) (2024-09-10)
