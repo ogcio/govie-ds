@@ -9,6 +9,7 @@
         "packages/build/prettier-config": {},
         "packages/design/deepmerge": {},
         "packages/design/tailwind": {},
+        "packages/design/theme-builder": {},
         "packages/html/ds": {},
         "packages/react/ds": {},
         "packages/themes/govie": {},
