@@ -14,9 +14,9 @@
         "packages/themes/govie": {},
         "tokens": {
             "extra-files": [
-                "tokens/tokens/light/semantic/heading.json",
-                "tokens/tokens/light/semantic/surface.json",
-                "tokens/tokens/light/semantic/text.json"
+                "tokens/light/semantic/heading.json",
+                "tokens/light/semantic/surface.json",
+                "tokens/light/semantic/text.json"
             ]
         }
     },
