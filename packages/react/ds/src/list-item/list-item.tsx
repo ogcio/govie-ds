@@ -1,5 +1,5 @@
 import { cn } from '../cn.js';
-import { Anchor } from '../primitives/anchor.js';
+import Anchor from '../primitives/anchor.js';
 
 export type ListItemProps = {
   label: string;

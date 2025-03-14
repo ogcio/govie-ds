@@ -127,4 +127,3 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
-export { Anchor, type AnchorProps } from './primitives/anchor.js';

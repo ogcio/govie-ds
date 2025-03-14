@@ -1,4 +1,4 @@
-import { Anchor, Footer, Header, HeaderProps } from '@govie-ds/react';
+import { Footer, Header, HeaderProps, Link } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -98,26 +98,26 @@ export default function RootLayout({
         <Footer
           secondarySlot={
             <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-              <Anchor aria-label="About Us" href="/about-us">
+              <Link aria-label="About Us" href="/about-us">
                 About Us
-              </Anchor>
-              <Anchor aria-label="Contact" href="/contact">
+              </Link>
+              <Link aria-label="Contact" href="/contact">
                 Contact
-              </Anchor>
-              <Anchor aria-label="Sitemap" href="/sitemap">
+              </Link>
+              <Link aria-label="Sitemap" href="/sitemap">
                 Sitemap
-              </Anchor>
+              </Link>
             </div>
           }
           utilitySlot={
             <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
               <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-                <Anchor aria-label="Privacy Policy" href="/privacy-policy">
+                <Link aria-label="Privacy Policy" href="/privacy-policy">
                   Privacy Policy
-                </Anchor>
-                <Anchor aria-label="Accessibility" href="/accessibility">
+                </Link>
+                <Link aria-label="Accessibility" href="/accessibility">
                   Accessibility
-                </Anchor>
+                </Link>
                 <div className="gi-text-sm">© 2025 Government of Ireland.</div>
               </div>
             </div>

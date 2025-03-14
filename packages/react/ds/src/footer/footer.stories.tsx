@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Anchor } from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Footer } from './footer.js';
+import { Link } from '../link/link.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -48,28 +48,28 @@ export const CompleteFooter: Story = {
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
           <ul className="gi-space-y-2">
             <li>
-              <Anchor
+              <Link
                 href="/services/public-services"
                 aria-label="Public Services"
               >
                 Public Services
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor
+              <Link
                 href="/services/business-services"
                 aria-label="Business Services"
               >
                 Business Services
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor
+              <Link
                 href="/services/online-services"
                 aria-label="Online Services"
               >
                 Online Services
-              </Anchor>
+              </Link>
             </li>
           </ul>
         </div>
@@ -78,28 +78,28 @@ export const CompleteFooter: Story = {
           <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
           <ul className="gi-space-y-2">
             <li>
-              <Anchor
+              <Link
                 href="/departments/health"
                 aria-label="Department of Health"
               >
                 Department of Health
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor
+              <Link
                 href="/departments/education"
                 aria-label="Department of Education"
               >
                 Department of Education
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor
+              <Link
                 href="/departments/finance"
                 aria-label="Department of Finance"
               >
                 Department of Finance
-              </Anchor>
+              </Link>
             </li>
           </ul>
         </div>
@@ -108,19 +108,19 @@ export const CompleteFooter: Story = {
           <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
           <ul className="gi-space-y-2">
             <li>
-              <Anchor href="/publications/reports" aria-label="Reports">
+              <Link href="/publications/reports" aria-label="Reports">
                 Reports
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor href="/publications/statistics" aria-label="Statistics">
+              <Link href="/publications/statistics" aria-label="Statistics">
                 Statistics
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor href="/publications/legislation" aria-label="Legislation">
+              <Link href="/publications/legislation" aria-label="Legislation">
                 Legislation
-              </Anchor>
+              </Link>
             </li>
           </ul>
         </div>
@@ -129,25 +129,22 @@ export const CompleteFooter: Story = {
           <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
           <ul className="gi-space-y-2">
             <li>
-              <Anchor
-                href="/contact/find-an-office"
-                aria-label="Find an Office"
-              >
+              <Link href="/contact/find-an-office" aria-label="Find an Office">
                 Find an Office
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor
+              <Link
                 href="/contact/phone-directory"
                 aria-label="Phone Directory"
               >
                 Phone Directory
-              </Anchor>
+              </Link>
             </li>
             <li>
-              <Anchor href="/contact/feedback" aria-label="Feedback">
+              <Link href="/contact/feedback" aria-label="Feedback">
                 Feedback
-              </Anchor>
+              </Link>
             </li>
           </ul>
         </div>
@@ -155,35 +152,35 @@ export const CompleteFooter: Story = {
     ),
     secondarySlot: (
       <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-        <Anchor href="/about-us" aria-label="About Us">
+        <Link href="/about-us" aria-label="About Us">
           About Us
-        </Anchor>
-        <Anchor href="/news" aria-label="News">
+        </Link>
+        <Link href="/news" aria-label="News">
           News
-        </Anchor>
-        <Anchor href="/events" aria-label="Events">
+        </Link>
+        <Link href="/events" aria-label="Events">
           Events
-        </Anchor>
-        <Anchor href="/jobs" aria-label="Jobs">
+        </Link>
+        <Link href="/jobs" aria-label="Jobs">
           Jobs
-        </Anchor>
+        </Link>
       </div>
     ),
     utilitySlot: (
       <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-          <Anchor href="/privacy-policy" aria-label="Privacy Policy">
+          <Link href="/privacy-policy" aria-label="Privacy Policy">
             Privacy Policy
-          </Anchor>
-          <Anchor href="/cookies" aria-label="Cookies">
+          </Link>
+          <Link href="/cookies" aria-label="Cookies">
             Cookies
-          </Anchor>
-          <Anchor href="/accessibility" aria-label="Accessibility">
+          </Link>
+          <Link href="/accessibility" aria-label="Accessibility">
             Accessibility
-          </Anchor>
-          <Anchor href="/terms-of-use" aria-label="Terms of Use">
+          </Link>
+          <Link href="/terms-of-use" aria-label="Terms of Use">
             Terms of Use
-          </Anchor>
+          </Link>
           <div className="gi-text-sm">
             © {new Date().getFullYear()} Government of Ireland.
           </div>
@@ -197,26 +194,26 @@ export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
       <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-        <Anchor href="/about-us" aria-label="About Us">
+        <Link href="/about-us" aria-label="About Us">
           About Us
-        </Anchor>
-        <Anchor href="/contact" aria-label="Contact">
+        </Link>
+        <Link href="/contact" aria-label="Contact">
           Contact
-        </Anchor>
-        <Anchor href="/sitemap" aria-label="Sitemap">
+        </Link>
+        <Link href="/sitemap" aria-label="Sitemap">
           Sitemap
-        </Anchor>
+        </Link>
       </div>
     ),
     utilitySlot: (
       <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-          <Anchor href="/privacy-policy" aria-label="Privacy Policy">
+          <Link href="/privacy-policy" aria-label="Privacy Policy">
             Privacy Policy
-          </Anchor>
-          <Anchor href="/accessibility" aria-label="Accessibility">
+          </Link>
+          <Link href="/accessibility" aria-label="Accessibility">
             Accessibility
-          </Anchor>
+          </Link>
           <div className="gi-text-sm">
             © {new Date().getFullYear()} Government of Ireland.
           </div>
@@ -231,20 +228,20 @@ export const MinimalFooter: Story = {
     utilitySlot: (
       <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
         <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-          <Anchor
+          <Link
             href="https://www.gov.ie/privacy/"
             external
             aria-label="Privacy Policy"
           >
             Privacy Policy
-          </Anchor>
-          <Anchor
+          </Link>
+          <Link
             href="https://www.gov.ie/cookies/"
             external
             aria-label="Cookies"
           >
             Cookies
-          </Anchor>
+          </Link>
           <div className="gi-text-sm">
             © {new Date().getFullYear()} Government of Ireland
           </div>
