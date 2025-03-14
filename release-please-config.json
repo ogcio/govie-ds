@@ -1,7 +1,7 @@
 {
     "include-component-in-tag": true,
     "group-pull-request-title-pattern": "chore(ci): release ${branch}",
-    "bootstrap-sha": "78025b35be74c6eccbfcbcec4a1509e2e919e7f4",
+    "bootstrap-sha": "e59f6b9d0bab630cb9b4083a74c866c1b84b0ee4",
     "always-link-local": true,
     "packages": {
         "apps/docs": {
