@@ -1,5 +1,5 @@
 import { Fragment, ReactElement } from 'react';
-import { ButtonSize } from '../button/types.js';
+import { ButtonProps, ButtonSize, ButtonVariant } from '../button/types.js';
 import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
 
@@ -15,8 +15,11 @@ export type ModalWrapperProps = {
   position?: 'center' | 'left' | 'right' | 'bottom';
   closeButtonLabel?: string;
   className?: string;
+  closeOnClick?: boolean;
+  closeOnOverlayClick?: boolean;
   children: ModalChildren;
   closeButtonSize?: ButtonSize;
+  dataTestId?: string;
 };
 
 export type ModalProps = {
@@ -25,8 +28,24 @@ export type ModalProps = {
   triggerButton: React.ReactElement;
   children: ModalChildren;
   startsOpen?: boolean;
+  closeOnClick?: boolean;
+  closeOnOverlayClick?: boolean;
+  dataTestId?: string;
 };
 
 export type ModalCloseButtonProps = {
   label?: string;
 } & Omit<IconButtonProps, 'className' | 'icon' | 'variant' | 'appearance'>;
+
+export type ModalFooterAction = {
+  label: string;
+  variant: ButtonVariant;
+} & ButtonProps;
+
+export type ModalFooterOrientation = 'vertical' | 'horizontal';
+
+export type ModalFooterProps = {
+  className?: string;
+  orientation?: ModalFooterOrientation;
+  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+};

@@ -1,8 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-
-import { ModalTitle, ModalBody, ModalFooter, Modal } from './modal.js';
+import {
+  ModalTitle,
+  ModalBody,
+  ModalFooter,
+  Modal,
+  ModalWrapper,
+} from './modal.js';
 
 const meta = {
   title: 'Application/Modal',
@@ -41,12 +47,157 @@ export const Default: Story = {
         </Paragraph>
       </ModalBody>,
       <ModalFooter key="footer">
-        <div className="gi-flex gi-gap-6 gi-justify-end">
-          <Button variant="secondary" appearance="dark">
-            Cancel
-          </Button>
-          <Button>Primary</Button>
-        </div>
+        <Button variant="secondary">Cancel</Button>
+        <Button variant="primary">Submit</Button>
+      </ModalFooter>,
+    ],
+  },
+};
+
+export const StateControlledModal: Story = {
+  args: {
+    children: <></>,
+    triggerButton: <></>,
+  },
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
+
+    return (
+      <>
+        <Button variant="flat" onClick={handleOpen}>
+          Click to Open
+        </Button>
+        <ModalWrapper
+          dataTestId={'test-id'}
+          isOpen={isOpen}
+          onClose={handleClose}
+        >
+          <ModalTitle key="title">Modal Title</ModalTitle>
+          <ModalBody key="body">
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+              esse magnam quis sit soluta cupiditate at deserunt exercitationem
+              voluptas doloribus asperiores.
+            </Paragraph>
+          </ModalBody>
+          <ModalFooter key="footer">
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant="primary">Save</Button>
+          </ModalFooter>
+        </ModalWrapper>
+      </>
+    );
+    return <></>;
+  },
+};
+
+export const WithoutFooter: Story = {
+  argTypes: {},
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    className: 'gi-w-[600px]',
+    children: [
+      <ModalTitle key="title">Modal Title</ModalTitle>,
+      <ModalBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </ModalBody>,
+    ],
+  },
+};
+
+export const WithScroll: Story = {
+  argTypes: {},
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    className: 'gi-w-[600px]',
+    children: [
+      <ModalTitle key="title">Modal Title</ModalTitle>,
+      <ModalBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at
+          deserunt exercitationem voluptas doloribus asperiores. Lorem ipsum
+          dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis
+          sit soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Incidunt esse magnam quis sit soluta cupiditate at deserunt
+          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
+          soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Incidunt esse magnam quis sit soluta cupiditate at deserunt
+          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
+          soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Incidunt esse magnam quis sit soluta cupiditate at deserunt
+          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
+          soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Incidunt esse magnam quis sit soluta cupiditate at deserunt
+          exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Incidunt esse magnam quis sit
+          soluta cupiditate at deserunt exercitationem voluptas doloribus
+          asperiores.
+        </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
+        <Button variant="secondary">Cancel</Button>
+        <Button variant="primary">Submit</Button>
+      </ModalFooter>,
+    ],
+  },
+};
+
+export const WithAllFooterButtonVariants: Story = {
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    children: [
+      <ModalTitle key="title">Modal Title</ModalTitle>,
+      <ModalBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
+        <Button variant="flat">Flat</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="primary">Primary</Button>
+      </ModalFooter>,
+    ],
+  },
+};
+
+export const ModalNotCloseOnClick: Story = {
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    closeOnClick: false,
+    children: [
+      <ModalTitle key="title">Modal Title</ModalTitle>,
+      <ModalBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
+        <Button variant="primary" appearance="dark">
+          Primary
+        </Button>
       </ModalFooter>,
     ],
   },
@@ -54,7 +205,6 @@ export const Default: Story = {
 
 export const ModalOpen: Story = {
   args: {
-    className: 'gi-w-[600px]',
     startsOpen: true,
     triggerButton: <Button>Open modal</Button>,
     children: [
@@ -67,12 +217,8 @@ export const ModalOpen: Story = {
         </Paragraph>
       </ModalBody>,
       <ModalFooter key="footer">
-        <div className="gi-flex gi-gap-6 gi-justify-end">
-          <Button variant="secondary" appearance="dark">
-            Cancel
-          </Button>
-          <Button>Primary</Button>
-        </div>
+        <Button variant="secondary">Cancel</Button>
+        <Button variant="primary">Submit</Button>
       </ModalFooter>,
     ],
   },
