@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { useRef, useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { TextInput } from './text-input.js';
@@ -90,6 +91,47 @@ export const Default: Story = {
       <TextInput {...props} data-testid="text-input-id" />
     </FormField>
   ),
+};
+
+export const TextElement: Story = {
+  args: {
+    id: 'text-input-id',
+  },
+  render: (props) => {
+    const [value, setValue] = useState('');
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleOnClose = () => {
+      setValue('');
+      inputRef?.current?.focus();
+    };
+
+    return (
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'text-input-id',
+        }}
+      >
+        <TextInput
+          {...props}
+          prefix="$"
+          suffix="CM"
+          placeholder="Placeholder"
+          iconStart="add_circle"
+          iconEnd="add_circle"
+          value={value}
+          ref={inputRef}
+          data-testid="text-input-id"
+          inputActionButton={{
+            icon: 'arrow_back',
+            onClick: handleOnClose,
+          }}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
+      </FormField>
+    );
+  },
 };
 
 export const ResponsiveLayout: Story = {
@@ -441,6 +483,142 @@ export const AllStates: Story = {
   parameters: {
     pseudo: {
       focus: '#focus-input',
+    },
+  },
+};
+
+export const AllIconVariantsStates: Story = {
+  render: () => {
+    const [value, setValue] = useState('');
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleOnClose = () => {
+      setValue('');
+      inputRef?.current?.focus();
+    };
+
+    return (
+      <Stack gap={4}>
+        <FormField
+          label={{
+            text: 'Default',
+            htmlFor: 'default-input',
+          }}
+        >
+          <TextInput
+            ref={inputRef}
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+            inputActionButton={{
+              icon: 'close',
+              onClick: handleOnClose,
+            }}
+            type="text"
+            id="default-input"
+            placeholder="Placeholder (clear working)"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Disabled',
+            htmlFor: 'disabled-input',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            disabled
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            id="disabled-input"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Focus',
+            htmlFor: 'focus-input',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            inputClassName="focus-input"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix Disabled',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+            disabled
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix Focus',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            placeholder="Placeholder"
+            inputClassName="focus-input"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+      </Stack>
+    );
+  },
+  parameters: {
+    pseudo: {
+      focus: '.focus-input',
     },
   },
 };
