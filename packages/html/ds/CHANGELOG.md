@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/ogcio/govie-ds/compare/html-v1.0.0...html-v1.0.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* update tailwind config safelist ([#473](https://github.com/ogcio/govie-ds/issues/473)) ([00b95bb](https://github.com/ogcio/govie-ds/commit/00b95bb54c26b8805be02b0c347c832f5df1d44b))
+
 ## [1.0.0](https://github.com/ogcio/govie-ds/compare/html-v0.31.2...html-v1.0.0) (2025-03-10)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/ogcio/govie-ds/compare/theme-govie-v0.6.0...theme-govie-v0.6.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* theme release ([7a336b2](https://github.com/ogcio/govie-ds/commit/7a336b20d20215e51cae40de8967746213fa5b05))
+
 ## [0.6.0](https://github.com/ogcio/govie-ds/compare/theme-govie-v0.5.0...theme-govie-v0.6.0) (2025-01-13)
 
 

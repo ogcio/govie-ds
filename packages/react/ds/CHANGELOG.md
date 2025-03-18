@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/react-v1.0.0...react-v1.1.0) (2025-03-14)
+
+
+### Features
+
+* Adding inset prop in Container ([#471](https://github.com/ogcio/govie-ds/issues/471)) ([b6fb040](https://github.com/ogcio/govie-ds/commit/b6fb0409d184f76f1c845744116958a9838677be))
+
+
+### Bug Fixes
+
+* update tailwind config safelist ([#473](https://github.com/ogcio/govie-ds/issues/473)) ([00b95bb](https://github.com/ogcio/govie-ds/commit/00b95bb54c26b8805be02b0c347c832f5df1d44b))
+
 ## [1.0.0](https://github.com/ogcio/govie-ds/compare/react-v0.39.0...react-v1.0.0) (2025-03-10)
 
 

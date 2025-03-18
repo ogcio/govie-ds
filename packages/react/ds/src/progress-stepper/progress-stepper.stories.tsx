@@ -199,7 +199,7 @@ export const WithFormContentStepVertical: Story = {
                 raising.
               </Paragraph>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 label={{
                   text: 'Category',
                 }}
@@ -209,7 +209,7 @@ export const WithFormContentStepVertical: Story = {
                 </Select>
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 label={{
                   text: 'Customer Type',
                 }}
@@ -219,7 +219,7 @@ export const WithFormContentStepVertical: Story = {
                 </Select>
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 label={{
                   text: 'Related Topic',
                 }}
@@ -238,7 +238,7 @@ export const WithFormContentStepVertical: Story = {
                 details below. If it's about yourself, enter your own details.
               </Paragraph>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 label={{
                   htmlFor: 'fullname-text-id',
                   text: 'Full name',
@@ -247,7 +247,7 @@ export const WithFormContentStepVertical: Story = {
                 <TextInput id="fullname-text-id" />
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 label={{
                   htmlFor: 'pps-number-text-id',
                   text: 'PPS Number',
@@ -256,7 +256,7 @@ export const WithFormContentStepVertical: Story = {
                 <TextInput id="pps-number-text-id" />
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 hint={{
                   text: `Don't know your school number? Find a school application.`,
                 }}
@@ -268,7 +268,7 @@ export const WithFormContentStepVertical: Story = {
                 <TextInput id="school-roll-number-text-id" />
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 hint={{
                   text: `(Max 1'000 words)`,
                 }}
@@ -301,7 +301,7 @@ export const WithFormContentStepVertical: Story = {
                 receive the updates.
               </Paragraph>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 hint={{
                   text: '(to be used for communications relating to this query)',
                 }}
@@ -313,7 +313,7 @@ export const WithFormContentStepVertical: Story = {
                 <TextInput id="contact-fullname-text-id" />
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 hint={{
                   text: '(to be used for communications relating to this query)',
                 }}
@@ -325,7 +325,7 @@ export const WithFormContentStepVertical: Story = {
                 <TextInput id="phone-number-text-id" />
               </FormField>
               <FormField
-                className="gi-w-[450px]"
+                className="lg:gi-w-[450px] gi-w-full"
                 hint={{
                   text: '(to be used for communications relating to this query)',
                 }}

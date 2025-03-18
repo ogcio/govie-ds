@@ -1338,7 +1338,7 @@ input[type='file' i] {
 }
 
 .gi-progress-stepper[data-orientation='vertical'] {
-  @apply gi-flex-col gi-gap-14 gi-w-fit;
+  @apply gi-flex-col gi-gap-14 gi-w-full;
 }
 
 .gi-progress-stepper > div:last-child {

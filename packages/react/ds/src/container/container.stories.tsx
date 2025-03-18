@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Container } from './container.js';
+import { Container, ContainerInsetSizeEnum } from './container.js';
 
 const meta = {
   title: 'Layout/Container',
@@ -24,8 +24,52 @@ export const Default: Story = {
       description:
         'HTML content or other components to be rendered inside the container.',
     },
+    insetTop: {
+      control: 'select',
+      options: Object.values(ContainerInsetSizeEnum),
+      description:
+        'Defines the top padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
+    },
+    insetBottom: {
+      control: 'select',
+      options: Object.values(ContainerInsetSizeEnum),
+      description:
+        'Defines the bottom padding of the container. Options are `none`, `md`, `lg`, and `xl`.',
+    },
   },
   args: {
     children: `Paragraph`,
+  },
+};
+
+export const WithNoneInset: Story = {
+  args: {
+    children: 'Paragraph',
+    insetBottom: ContainerInsetSizeEnum.None,
+    insetTop: ContainerInsetSizeEnum.None,
+  },
+};
+
+export const WithMediumInset: Story = {
+  args: {
+    children: 'Paragraph',
+    insetTop: ContainerInsetSizeEnum.Medium,
+    insetBottom: ContainerInsetSizeEnum.Medium,
+  },
+};
+
+export const WithLargeInset: Story = {
+  args: {
+    children: 'Paragraph',
+    insetTop: ContainerInsetSizeEnum.Large,
+    insetBottom: ContainerInsetSizeEnum.Large,
+  },
+};
+
+export const WithExtraLargeInset: Story = {
+  args: {
+    children: 'Paragraph',
+    insetTop: ContainerInsetSizeEnum.ExtraLarge,
+    insetBottom: ContainerInsetSizeEnum.ExtraLarge,
   },
 };
