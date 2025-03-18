@@ -8,4 +8,4 @@ export const iconButtonSchema = buttonSchema.omit({ content: true }).and(
   }),
 );
 
-export type iconButtonProps = zod.infer<typeof iconButtonSchema>;
+export type IconButtonProps = zod.infer<typeof iconButtonSchema>;

@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within } from '@storybook/test';
 import { ButtonSize, ButtonVariant } from '../button/button.schema';
+import { createIconButton } from '../helpers/buttons';
 import { IconId } from '../icon/icon.schema';
-import { renderComponent } from '../storybook/storybook';
-import html from './icon-button.html?raw';
-import { iconButtonProps } from './icon-button.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { IconButtonProps } from './icon-button.schema';
 
-const macro = { name: 'govieIconButton', html };
-
-const IconButton = renderComponent<iconButtonProps>(macro);
-
-const meta = {
-  component: IconButton,
-  title: 'form/IconButton',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof IconButton>;
+const meta: Meta<IconButtonProps> = {
+  title: 'Form/IconButton',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<IconButtonProps>;
+
+const createElement = (arguments_: IconButtonProps) => {
+  const component = createIconButton(arguments_);
+  const container = document.createElement('div');
+  container.append(component);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -55,6 +55,11 @@ export const Default: Story = {
       icon: IconId.ThumbUp,
     },
   },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+  },
 };
 
 export const Small: Story = {
@@ -63,6 +68,11 @@ export const Small: Story = {
       icon: IconId.ThumbUp,
     },
     size: ButtonSize.Small,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
   },
 };
 
@@ -73,6 +83,11 @@ export const Large: Story = {
     },
     size: ButtonSize.Large,
   },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+  },
 };
 
 export const SecondaryButton: Story = {
@@ -81,6 +96,11 @@ export const SecondaryButton: Story = {
       icon: IconId.ThumbUp,
     },
     variant: ButtonVariant.Secondary,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
   },
 };
 
@@ -91,6 +111,11 @@ export const FlatButton: Story = {
     },
     variant: ButtonVariant.Flat,
   },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+  },
 };
 
 export const Disabled: Story = {
@@ -99,5 +124,10 @@ export const Disabled: Story = {
       icon: IconId.ThumbUp,
     },
     disabled: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
   },
 };

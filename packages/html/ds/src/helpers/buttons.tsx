@@ -1,5 +1,6 @@
 import { ButtonProps } from '../button/button.schema';
-import { beautifyHtmlNode } from '../storybook/storybook';
+import { IconButtonProps } from '../icon-button/icon-button.schema';
+import { createIcon } from './icons';
 
 export const getButtonSizeClass = (size?: string) => {
   let classSize = '';
@@ -20,7 +21,9 @@ export const getButtonSizeClass = (size?: string) => {
   return classSize;
 };
 
-export const getButtonAppearanceClass = (buttonProps: ButtonProps) => {
+export const getButtonAppearanceClass = (
+  buttonProps: ButtonProps | IconButtonProps,
+) => {
   let classAppearance;
   if (buttonProps.disabled) {
     if (buttonProps.variant === 'secondary') {
@@ -85,6 +88,28 @@ export const createButton = (arguments_: ButtonProps) => {
   const component = document.createElement('button') as HTMLButtonElement;
   component.className = `gi-btn ${classSize} ${classAppearance}`.trim();
   component.innerHTML = arguments_.content;
+
+  return component;
+};
+
+export const createIconButton = (arguments_: IconButtonProps) => {
+  let classSize;
+
+  if (arguments_.size == 'small') {
+    classSize = 'gi-icon-btn-small';
+  } else if (arguments_.size == 'large') {
+    classSize = 'gi-icon-btn-large';
+  } else {
+    classSize = 'gi-icon-btn-regular';
+  }
+
+  const classAppearance = getButtonAppearanceClass(arguments_);
+
+  const component = document.createElement('button') as HTMLButtonElement;
+  component.className = `gi-btn ${classSize} ${classAppearance}`.trim();
+
+  const icon = createIcon(arguments_.icon);
+  component.append(icon);
 
   return component;
 };
