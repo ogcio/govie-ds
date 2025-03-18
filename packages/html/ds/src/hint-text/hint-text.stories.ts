@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { createHint } from '../helpers/forms';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { HintSize, HintTextProps } from './hint-text.schema';
 
 const meta: Meta<HintTextProps> = {
