@@ -1,30 +1,101 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
-import { renderComponent } from '../storybook/storybook';
-import { ButtonAppearance, ButtonProps, ButtonType } from './button-schema';
-import { ButtonVariant, ButtonSize } from './button-schema';
-import html from './button.html?raw';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import {
+  ButtonAppearance,
+  ButtonProps,
+  ButtonSize,
+  ButtonVariant,
+} from './button-schema';
 
-const macro = { name: 'govieButton', html };
-
-const Button = renderComponent<ButtonProps>(macro);
-
-const meta = {
-  component: Button,
-  title: 'form/Button',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Button component to help users carry out an action like starting an application or saving their information.',
-      },
-    },
-  },
-} satisfies Meta<typeof Button>;
+const meta: Meta<ButtonProps> = {
+  title: 'Form/Button',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ButtonProps>;
+
+const createButton = (arguments_: ButtonProps) => {
+  const container = document.createElement('div');
+
+  let classSize = '';
+  switch (arguments_.size) {
+    case 'small': {
+      classSize = 'gi-btn-small';
+      break;
+    }
+    case 'large': {
+      classSize = 'gi-btn-large';
+      break;
+    }
+    default: {
+      classSize = 'gi-btn-regular';
+      break;
+    }
+  }
+
+  let classAppearance;
+  if (arguments_.disabled) {
+    if (arguments_.variant === 'secondary') {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-secondary-dark-disabled';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-secondary-light-disabled';
+      } else {
+        classAppearance = 'gi-btn-secondary-disabled';
+      }
+    } else if (arguments_.variant === 'flat') {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-flat-dark-disabled';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-flat-light-disabled';
+      } else {
+        classAppearance = 'gi-btn-flat-disabled';
+      }
+    } else {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-primary-dark-disabled';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-primary-light-disabled';
+      } else {
+        classAppearance = 'gi-btn-primary-disabled';
+      }
+    }
+  } else {
+    if (arguments_.variant === 'secondary') {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-secondary-dark';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-secondary-light';
+      } else {
+        classAppearance = 'gi-btn-secondary';
+      }
+    } else if (arguments_.variant === 'flat') {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-flat-dark';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-flat-light';
+      } else {
+        classAppearance = 'gi-btn-flat';
+      }
+    } else {
+      if (arguments_.appearance === 'dark') {
+        classAppearance = 'gi-btn-primary-dark';
+      } else if (arguments_.appearance === 'light') {
+        classAppearance = 'gi-btn-primary-light';
+      } else {
+        classAppearance = 'gi-btn-primary';
+      }
+    }
+  }
+
+  const component = document.createElement('button') as HTMLButtonElement;
+  component.className = `gi-btn ${classSize} ${classAppearance}`.trim();
+  component.innerHTML = arguments_.content;
+  container.append(component);
+
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -61,8 +132,8 @@ export const Default: Story = {
     variant: ButtonVariant.Primary,
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
-    type: ButtonType.Button,
   },
+  render: (arguments_) => createButton(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -71,74 +142,363 @@ export const Default: Story = {
   },
 };
 
-export const AllVariants: Story = {
+export const Primary: Story = {
   args: {
-    content: '',
+    content: `Primary Button`,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
   },
-  render: () => `
-  <div class="gi-flex gi-flex-col gi-gap-4">
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-primary gi-btn-regular">Primary</button>
-      <button class="gi-btn gi-btn-primary gi-btn-regular hover-selector">Primary Hover</button>
-      <button class="gi-btn gi-btn-primary gi-btn-regular focus-selector">Primary Focus</button>
-      <button class="gi-btn gi-btn-primary gi-btn-regular gi-btn-primary-disabled">Primary Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-secondary gi-btn-regular">Secondary</button>
-      <button class="gi-btn gi-btn-secondary gi-btn-regular hover-selector">Secondary Hover</button>
-      <button class="gi-btn gi-btn-secondary gi-btn-regular focus-selector">Secondary Focus</button>
-      <button class="gi-btn gi-btn-secondary gi-btn-regular gi-btn-secondary-disabled">Secondary Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-flat gi-btn-regular">Flat</button>
-      <button class="gi-btn gi-btn-flat gi-btn-regular hover-selector">Flat Hover</button>
-      <button class="gi-btn gi-btn-flat gi-btn-regular focus-selector">Flat Focus</button>
-      <button class="gi-btn gi-btn-flat gi-btn-regular gi-btn-flat-disabled">Flat Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
-      <button class="gi-btn gi-btn-primary-dark gi-btn-regular hover-selector">Primary Dark Hover</button>
-      <button class="gi-btn gi-btn-primary-dark gi-btn-regular focus-selector">Primary Dark Focus</button>
-      <button class="gi-btn gi-btn-primary-dark gi-btn-regular gi-btn-primary-dark-disabled">Primary Dark Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular">Secondary Dark</button>
-      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular hover-selector">Secondary Dark Hover</button>
-      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular focus-selector">Secondary Dark Focus</button>
-      <button class="gi-btn gi-btn-secondary-dark gi-btn-regular gi-btn-primary-disabled">Secondary Dark Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4">
-      <button class="gi-btn gi-btn-flat-dark gi-btn-regular">Flat Dark</button>
-      <button class="gi-btn gi-btn-flat-dark gi-btn-regular hover-selector">Flat Dark Hover</button>
-      <button class="gi-btn gi-btn-flat-dark gi-btn-regular focus-selector">Flat Dark Focus</button>
-      <button class="gi-btn gi-btn-regular gi-btn-flat-dark-disabled">Flat Dark Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-      <button class="gi-btn gi-btn-primary-light gi-btn-regular">Primary Light</button>
-      <button class="gi-btn gi-btn-primary-light gi-btn-regular hover-selector">Primary Light Hover</button>
-      <button class="gi-btn gi-btn-primary-light gi-btn-regular focus-selector">Primary Light Focus</button>
-      <button class="gi-btn gi-btn-regular gi-btn-primary-light-disabled">Primary Light Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-      <button class="gi-btn gi-btn-secondary-light gi-btn-regular">Secondary Light</button>
-      <button class="gi-btn gi-btn-secondary-light gi-btn-regular hover-selector">Secondary Light Hover</button>
-      <button class="gi-btn gi-btn-secondary-light gi-btn-regular focus-selector">Secondary Light Focus</button>
-      <button class="gi-btn gi-btn-secondary-light gi-btn-regular gi-btn-secondary-light-disabled">Secondary Light Disabled</button>
-    </div>
-    <div class="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-      <button class="gi-btn gi-btn-flat-light gi-btn-regular">Flat Light</button>
-      <button class="gi-btn gi-btn-flat-light gi-btn-regular hover-selector">Flat Light Hover</button>
-      <button class="gi-btn gi-btn-flat-light gi-btn-regular focus-selector">Flat Light Focus</button>
-      <button class="gi-btn gi-btn-flat-light gi-btn-regular gi-btn-flat-light-disabled">Flat Light Disabled</button>
-    </div>
-  </div>
-`,
-  parameters: {
-    pseudo: {
-      hover: '.hover-selector',
-      focus: '.focus-selector',
-    },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryHover: Story = {
+  args: {
+    content: `Primary Button (Hover)`,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
   },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryFocus: Story = {
+  args: {
+    content: `Primary Button (Focused)`,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryDisabled: Story = {
+  args: {
+    content: `Primary Button (Disabled)`,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryLight: Story = {
+  args: {
+    content: `Primary Light Button`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryLightHover: Story = {
+  args: {
+    content: `Primary Light Button (Hover)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryLightFocus: Story = {
+  args: {
+    content: `Primary Light Button (Focused)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryLightDisabled: Story = {
+  args: {
+    content: `Primary Light Button (Disabled)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryDark: Story = {
+  args: {
+    content: `Primary Dark Button`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryDarkHover: Story = {
+  args: {
+    content: `Primary Dark Button (Hover)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryDarkFocus: Story = {
+  args: {
+    content: `Primary Dark Button (Focused)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const PrimaryDarkDisabled: Story = {
+  args: {
+    content: `Primary Dark Button (Disabled)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const Secondary: Story = {
+  args: {
+    content: `Secondary Button`,
+    variant: ButtonVariant.Secondary,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryHover: Story = {
+  args: {
+    content: `Secondary Button (Hover)`,
+    variant: ButtonVariant.Secondary,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryFocus: Story = {
+  args: {
+    content: `Secondary Button (Focused)`,
+    variant: ButtonVariant.Secondary,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryDisabled: Story = {
+  args: {
+    content: `Secondary Button (Disabled)`,
+    variant: ButtonVariant.Secondary,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryLight: Story = {
+  args: {
+    content: `Secondary Light Button`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryLightHover: Story = {
+  args: {
+    content: `Secondary Light Button (Hover)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryLightFocus: Story = {
+  args: {
+    content: `Secondary Light Button (Focused)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryLightDisabled: Story = {
+  args: {
+    content: `Secondary Light Button (Disabled)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryDark: Story = {
+  args: {
+    content: `Secondary Dark Button`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryDarkHover: Story = {
+  args: {
+    content: `Secondary Dark Button (Hover)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryDarkFocus: Story = {
+  args: {
+    content: `Secondary Dark Button (Focused)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const SecondaryDarkDisabled: Story = {
+  args: {
+    content: `Secondary Dark Button (Disabled)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const Flat: Story = {
+  args: {
+    content: `Flat Button`,
+    variant: ButtonVariant.Flat,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatHover: Story = {
+  args: {
+    content: `Flat Button (Hover)`,
+    variant: ButtonVariant.Flat,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatFocus: Story = {
+  args: {
+    content: `Flat Button (Focused)`,
+    variant: ButtonVariant.Flat,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatDisabled: Story = {
+  args: {
+    content: `Flat Button (Disabled)`,
+    variant: ButtonVariant.Flat,
+    appearance: ButtonAppearance.Default,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatLight: Story = {
+  args: {
+    content: `Flat Light Button`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatLightHover: Story = {
+  args: {
+    content: `Flat Light Button (Hover)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatLightFocus: Story = {
+  args: {
+    content: `Flat Light Button (Focused)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatLightDisabled: Story = {
+  args: {
+    content: `Flat Light Button (Disabled)`,
+    appearance: ButtonAppearance.Light,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatDark: Story = {
+  args: {
+    content: `Flat Dark Button`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatDarkHover: Story = {
+  args: {
+    content: `Flat Dark Button (Hover)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatDarkFocus: Story = {
+  args: {
+    content: `Flat Dark Button (Focused)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createButton(arguments_),
+};
+
+export const FlatDarkDisabled: Story = {
+  args: {
+    content: `Flat Dark Button (Disabled)`,
+    appearance: ButtonAppearance.Dark,
+    size: ButtonSize.Medium,
+    disabled: true,
+  },
+  render: (arguments_) => createButton(arguments_),
 };
 
 export const WithLeftIcon: Story = {
@@ -146,8 +506,8 @@ export const WithLeftIcon: Story = {
     content: `<span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span> Button`,
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
-    type: ButtonType.Button,
   },
+  render: (arguments_) => createButton(arguments_),
 };
 
 export const WithIconRight: Story = {
@@ -155,21 +515,8 @@ export const WithIconRight: Story = {
     content: `Button <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span>`,
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
-    type: ButtonType.Button,
   },
-};
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    content: `Button`,
-    aria: {
-      'aria-disabled': 'true',
-    },
-    appearance: ButtonAppearance.Default,
-    size: ButtonSize.Medium,
-    type: ButtonType.Button,
-  },
+  render: (arguments_) => createButton(arguments_),
 };
 
 export const ButtonWithSpinner: Story = {
@@ -177,7 +524,6 @@ export const ButtonWithSpinner: Story = {
     disabled: true,
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
-    type: ButtonType.Button,
     content: `Button <svg
     class="gi-w-6 gi-h-6"
     viewBox="0 0 24 24"
@@ -221,4 +567,5 @@ export const ButtonWithSpinner: Story = {
     </g>
   </svg>`,
   },
+  render: (arguments_) => createButton(arguments_),
 };

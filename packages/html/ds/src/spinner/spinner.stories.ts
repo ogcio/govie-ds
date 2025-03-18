@@ -11,7 +11,7 @@ const meta: Meta<SpinnerProps> = {
 export default meta;
 type Story = StoryObj<SpinnerProps>;
 
-const createSectionBreak = (arguments_: SpinnerProps) => {
+const createSpinner = (arguments_: SpinnerProps) => {
   const container = document.createElement('div');
 
   let classSize = '';
@@ -90,7 +90,7 @@ export const Default: Story = {
   args: {
     size: IconSize.MEDIUM,
   },
-  render: (arguments_) => createSectionBreak(arguments_),
+  render: (arguments_) => createSpinner(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByRole('status');
@@ -102,7 +102,7 @@ export const Small: Story = {
   args: {
     size: IconSize.SMALL,
   },
-  render: (arguments_) => createSectionBreak(arguments_),
+  render: (arguments_) => createSpinner(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByRole('status');
@@ -114,7 +114,7 @@ export const Large: Story = {
   args: {
     size: IconSize.LARGE,
   },
-  render: (arguments_) => createSectionBreak(arguments_),
+  render: (arguments_) => createSpinner(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByRole('status');
@@ -126,7 +126,7 @@ export const ExtraLarge: Story = {
   args: {
     size: IconSize.EXTRA_LARGE,
   },
-  render: (arguments_) => createSectionBreak(arguments_),
+  render: (arguments_) => createSpinner(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByRole('status');
