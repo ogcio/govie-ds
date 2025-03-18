@@ -66,9 +66,7 @@ export const StateControlledModal: Story = {
 
     return (
       <>
-        <Button variant="flat" onClick={handleOpen}>
-          Click to Open
-        </Button>
+        <Button onClick={handleOpen}>Open Modal</Button>
         <ModalWrapper
           dataTestId={'test-id'}
           isOpen={isOpen}
@@ -91,7 +89,6 @@ export const StateControlledModal: Story = {
         </ModalWrapper>
       </>
     );
-    return <></>;
   },
 };
 
@@ -113,7 +110,7 @@ export const WithoutFooter: Story = {
   },
 };
 
-export const WithScroll: Story = {
+export const WithLongContent: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,

@@ -9,33 +9,32 @@ import React, {
 } from 'react';
 
 import { Button } from '../button/button.js';
-import { ButtonProps } from '../button/types.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import type {
   ModalCloseButtonProps,
-  ModalFooterAction,
+  ModalFooterButton,
   ModalFooterProps,
   ModalProps,
   ModalWrapperProps,
 } from './types.js';
 
 const isModalComponent = (
-  modalComponent: any,
+  modalComponent: React.ElementType,
   modalTitle: string,
-  child: any,
+  child: React.ReactNode,
 ): boolean => {
   if (!isValidElement(child)) {
     return false;
   }
-  const childType = child.type as any;
+  const childType = child.type;
   // @ts-expect-error The TS error says there is no _owner but there is
   return childType === modalComponent || child?._owner?.name === modalTitle;
 };
 
-const VARIANT_ORDER: Record<ModalFooterAction['variant'], number> = {
+const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
   flat: 0,
   secondary: 1,
   primary: 2,
@@ -193,7 +192,7 @@ export const ModalFooter = ({
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter(
-    (actionButton): actionButton is React.ReactElement<ButtonProps> =>
+    (actionButton) =>
       React.isValidElement(actionButton) && actionButton.type === Button,
   );
   const sortedButtons = filteredButtons.sort((a, b) => {
