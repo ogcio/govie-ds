@@ -102,7 +102,7 @@ export const Step = ({
       {showVerticalSlots && (
         <div
           className="gi-ml-10"
-          data-testId={`vertical-step-slot-${stepNumber - 1}`}
+          data-testid={`vertical-step-slot-${stepNumber - 1}`}
         >
           {verticalSlot}
         </div>
@@ -168,7 +168,7 @@ export const ProgressStepper = ({
       {showHorizontalSlot && (
         <div
           className="gi-h-full"
-          data-testId={`horizontal-step-slot-${currentStepIndex}`}
+          data-testid={`horizontal-step-slot-${currentStepIndex}`}
         >
           {slot}
         </div>
