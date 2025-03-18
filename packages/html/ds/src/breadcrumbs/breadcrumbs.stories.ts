@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { createIcon } from '../helpers/icons';
+import { createLink } from '../helpers/links';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { BreadcrumbsProps } from './breadcrumbs.schema';
 
@@ -15,6 +17,7 @@ const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
   const nav = document.createElement('nav');
   nav.className = 'gi-breadcrumbs';
   nav.dataset.module = 'gieds-breadcrumbs';
+  nav.dataset.element = 'breadcrumbs-container';
 
   const ol = document.createElement('ol');
   ol.role = 'list';
@@ -22,24 +25,36 @@ const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
   for (const navItem of arguments_.navItems) {
     const li = document.createElement('li');
     li.role = 'listitem';
+
+    let element;
     if (navItem.ellipsis) {
-      const ellipsis = document.createElement('div');
-      ellipsis.ariaHidden = 'true';
-      ellipsis.innerHTML = '';
+      const icon = createIcon({
+        icon: 'more_horiz',
+        className: 'gi-text-gray-700',
+      });
+      element = document.createElement('div');
+      element.ariaHidden = 'true';
+      element.append(icon);
     } else if (navItem.currentPage) {
-      const currentPage = document.createElement('div');
-      currentPage.ariaCurrent = 'page';
-      currentPage.innerHTML = '';
+      element = createLink({
+        noColor: true,
+        href: navItem.href,
+        label: navItem.label!,
+      }) as HTMLAnchorElement;
+      element.ariaCurrent = 'page';
     } else {
-      const page = document.createElement('div');
-      page.innerHTML = '';
+      element = createLink({
+        noColor: true,
+        href: navItem.href,
+        label: navItem.label!,
+      });
     }
 
+    li.append(element);
     ol.append(li);
   }
 
   nav.append(ol);
-
   container.append(nav);
 
   return beautifyHtmlNode(container);
@@ -57,8 +72,16 @@ export const Default: Story = {
   render: (arguments_) => createBreadcrumbs(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const heading = canvas.getByText('Small heading');
-    expect(heading).toHaveClass('gi-heading-2xs');
+    const breadcrumbNav = canvas.getByRole('navigation');
+    expect(breadcrumbNav).toBeInTheDocument();
+
+    const listItems = canvas.getAllByRole('listitem');
+    expect(listItems).toHaveLength(4);
+
+    expect(listItems[0]).toHaveTextContent('Home');
+    expect(listItems[1]).toBeInTheDocument();
+    expect(listItems[2]).toHaveTextContent('Travel');
+    expect(listItems[3]).toHaveTextContent('Documentation');
   },
 };
 
@@ -72,11 +95,6 @@ export const WithoutEllipsis: Story = {
     ],
   },
   render: (arguments_) => createBreadcrumbs(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const heading = canvas.getByText('Small heading');
-    expect(heading).toHaveClass('gi-heading-2xs');
-  },
 };
 
 export const SingleItem: Story = {
@@ -84,9 +102,4 @@ export const SingleItem: Story = {
     navItems: [{ label: 'Back to [Previous Page]', href: '/' }],
   },
   render: (arguments_) => createBreadcrumbs(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const heading = canvas.getByText('Small heading');
-    expect(heading).toHaveClass('gi-heading-2xs');
-  },
 };

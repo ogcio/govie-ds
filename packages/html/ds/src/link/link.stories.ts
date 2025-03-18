@@ -6,6 +6,7 @@ import {
   ButtonVariant,
 } from '../button/button.schema';
 import { createLink } from '../helpers/links';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { LinkProps, LinkSize } from './link.schema';
 
 const meta: Meta<LinkProps> = {
@@ -14,6 +15,13 @@ const meta: Meta<LinkProps> = {
 
 export default meta;
 type Story = StoryObj<LinkProps>;
+
+const createElement = (arguments_: LinkProps) => {
+  const component = createLink(arguments_);
+  const container = document.createElement('div');
+  container.append(component);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -57,7 +65,7 @@ export const Default: Story = {
     label: 'Link',
     size: LinkSize.Medium, // Default size can be set here, change to 'sm' if needed
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link');
@@ -71,7 +79,7 @@ export const WithoutUnderline: Story = {
     label: 'Link without underline',
     noUnderline: true,
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link without underline');
@@ -86,7 +94,7 @@ export const External: Story = {
     label: 'Link text (opens in a new tab)',
     external: true,
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link text (opens in a new tab)');
@@ -102,7 +110,7 @@ export const NoVisited: Story = {
     label: 'Link',
     noVisited: true,
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link');
@@ -120,7 +128,7 @@ export const styledAsButton: Story = {
     },
     label: 'Link',
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link');
@@ -133,7 +141,7 @@ export const asButton: Story = {
     as: 'button',
     label: 'Link',
   },
-  render: (arguments_) => createLink(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByText('Link');

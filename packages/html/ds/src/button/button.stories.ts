@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { createButton } from '../helpers/buttons';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import {
   ButtonAppearance,
   ButtonProps,
@@ -14,6 +15,13 @@ const meta: Meta<ButtonProps> = {
 
 export default meta;
 type Story = StoryObj<ButtonProps>;
+
+const createElement = (arguments_: ButtonProps) => {
+  const component = createButton(arguments_);
+  const container = document.createElement('div');
+  container.append(component);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -51,7 +59,7 @@ export const Default: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -66,7 +74,7 @@ export const Primary: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryHover: Story = {
@@ -76,7 +84,7 @@ export const PrimaryHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryFocus: Story = {
@@ -86,7 +94,7 @@ export const PrimaryFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryDisabled: Story = {
@@ -96,7 +104,7 @@ export const PrimaryDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryLight: Story = {
@@ -105,7 +113,7 @@ export const PrimaryLight: Story = {
     appearance: ButtonAppearance.Light,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryLightHover: Story = {
@@ -115,7 +123,7 @@ export const PrimaryLightHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryLightFocus: Story = {
@@ -125,7 +133,7 @@ export const PrimaryLightFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryLightDisabled: Story = {
@@ -135,7 +143,7 @@ export const PrimaryLightDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryDark: Story = {
@@ -144,7 +152,7 @@ export const PrimaryDark: Story = {
     appearance: ButtonAppearance.Dark,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryDarkHover: Story = {
@@ -154,7 +162,7 @@ export const PrimaryDarkHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryDarkFocus: Story = {
@@ -164,7 +172,7 @@ export const PrimaryDarkFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const PrimaryDarkDisabled: Story = {
@@ -174,7 +182,7 @@ export const PrimaryDarkDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Secondary: Story = {
@@ -184,7 +192,7 @@ export const Secondary: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryHover: Story = {
@@ -195,7 +203,7 @@ export const SecondaryHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryFocus: Story = {
@@ -206,7 +214,7 @@ export const SecondaryFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryDisabled: Story = {
@@ -217,7 +225,7 @@ export const SecondaryDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryLight: Story = {
@@ -226,7 +234,7 @@ export const SecondaryLight: Story = {
     appearance: ButtonAppearance.Light,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryLightHover: Story = {
@@ -236,7 +244,7 @@ export const SecondaryLightHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryLightFocus: Story = {
@@ -246,7 +254,7 @@ export const SecondaryLightFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryLightDisabled: Story = {
@@ -256,7 +264,7 @@ export const SecondaryLightDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryDark: Story = {
@@ -265,7 +273,7 @@ export const SecondaryDark: Story = {
     appearance: ButtonAppearance.Dark,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryDarkHover: Story = {
@@ -275,7 +283,7 @@ export const SecondaryDarkHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryDarkFocus: Story = {
@@ -285,7 +293,7 @@ export const SecondaryDarkFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryDarkDisabled: Story = {
@@ -295,7 +303,7 @@ export const SecondaryDarkDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Flat: Story = {
@@ -305,7 +313,7 @@ export const Flat: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatHover: Story = {
@@ -316,7 +324,7 @@ export const FlatHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatFocus: Story = {
@@ -327,7 +335,7 @@ export const FlatFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatDisabled: Story = {
@@ -338,7 +346,7 @@ export const FlatDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatLight: Story = {
@@ -347,7 +355,7 @@ export const FlatLight: Story = {
     appearance: ButtonAppearance.Light,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatLightHover: Story = {
@@ -357,7 +365,7 @@ export const FlatLightHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatLightFocus: Story = {
@@ -367,7 +375,7 @@ export const FlatLightFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatLightDisabled: Story = {
@@ -377,7 +385,7 @@ export const FlatLightDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatDark: Story = {
@@ -386,7 +394,7 @@ export const FlatDark: Story = {
     appearance: ButtonAppearance.Dark,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatDarkHover: Story = {
@@ -396,7 +404,7 @@ export const FlatDarkHover: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { hover: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatDarkFocus: Story = {
@@ -406,7 +414,7 @@ export const FlatDarkFocus: Story = {
     size: ButtonSize.Medium,
   },
   parameters: { pseudo: { focus: true } },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatDarkDisabled: Story = {
@@ -416,7 +424,7 @@ export const FlatDarkDisabled: Story = {
     size: ButtonSize.Medium,
     disabled: true,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLeftIcon: Story = {
@@ -425,7 +433,7 @@ export const WithLeftIcon: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithIconRight: Story = {
@@ -434,7 +442,7 @@ export const WithIconRight: Story = {
     appearance: ButtonAppearance.Default,
     size: ButtonSize.Medium,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const ButtonWithSpinner: Story = {
@@ -485,5 +493,5 @@ export const ButtonWithSpinner: Story = {
     </g>
   </svg>`,
   },
-  render: (arguments_) => createButton(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };

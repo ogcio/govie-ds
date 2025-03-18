@@ -79,15 +79,12 @@ export const getButtonAppearanceClass = (buttonProps: ButtonProps) => {
 };
 
 export const createButton = (arguments_: ButtonProps) => {
-  const container = document.createElement('div');
-
   const classSize = getButtonSizeClass(arguments_.size);
   const classAppearance = getButtonAppearanceClass(arguments_);
 
   const component = document.createElement('button') as HTMLButtonElement;
   component.className = `gi-btn ${classSize} ${classAppearance}`.trim();
   component.innerHTML = arguments_.content;
-  container.append(component);
 
-  return beautifyHtmlNode(container);
+  return component;
 };
