@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { createFormField } from '../helpers/forms';
 import { LabelSize } from '../label/label.schema';
-import { beautifyHtmlNode, createFormField } from '../storybook/storybook';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextInputProps } from './text-input.schema';
 
 const meta: Meta<TextInputProps> = {

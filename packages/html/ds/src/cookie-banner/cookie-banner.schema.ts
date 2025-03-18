@@ -1,5 +1,5 @@
 import * as zod from 'zod';
-import { buttonSchema } from '../button/button-schema';
+import { buttonSchema } from '../button/button.schema';
 import { linkSchema } from '../link/link.schema';
 
 export const cookieBannerSchema = zod.object({

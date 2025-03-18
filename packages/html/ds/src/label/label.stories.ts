@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { beautifyHtmlNode, createLabel } from '../storybook/storybook';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { createLabel } from '../helpers/forms';
 import { LabelProps, LabelSize } from './label.schema';
 
 const meta: Meta<LabelProps> = {

@@ -1,4 +1,4 @@
-import { ButtonSize, ButtonVariant } from '../button/button-schema';
+import { ButtonSize, ButtonVariant } from '../button/button.schema';
 import { render } from '../common/render';
 import { testVariantsAxe } from '../helpers/test-helpers';
 import { IconId } from '../icon/icon.schema';

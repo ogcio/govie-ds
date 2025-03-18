@@ -1,5 +1,5 @@
 import * as zod from 'zod';
-import { buttonSchema } from '../button/button-schema';
+import { buttonSchema } from '../button/button.schema';
 import { iconSchema } from '../icon/icon.schema';
 
 export const iconButtonSchema = buttonSchema.omit({ content: true }).and(

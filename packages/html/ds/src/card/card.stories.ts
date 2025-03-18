@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonVariant } from '../button/button-schema';
+import { ButtonVariant } from '../button/button.schema';
 import { IconId, IconSize } from '../icon/icon.schema';
 import { LinkSize } from '../link/link.schema';
 import { renderComponent } from '../storybook/storybook';

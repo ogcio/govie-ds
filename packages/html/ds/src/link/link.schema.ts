@@ -1,5 +1,5 @@
 import * as zod from 'zod';
-import { buttonSchema } from '../button/button-schema';
+import { buttonSchema } from '../button/button.schema';
 import { getEnumValues } from '../helpers';
 
 export const LinkSize = {
@@ -8,24 +8,6 @@ export const LinkSize = {
 } as const;
 
 const linkTypeSchema = zod.union([zod.literal('a'), zod.literal('button')]);
-
-const validAriaProps = [
-  'aria-disabled',
-  'aria-label',
-  'aria-hidden',
-  'aria-current',
-  'aria-labelledby',
-] as const;
-
-export const ariaSchema = zod.record(
-  zod.enum(validAriaProps, {
-    description: 'Valid ARIA attributes key',
-  }),
-  zod.string({
-    description: 'ARIA attributes value',
-  }),
-  { description: 'An object of ARIA attributes' },
-);
 
 export const linkSchema = zod.object({
   as: linkTypeSchema
@@ -44,16 +26,6 @@ export const linkSchema = zod.object({
     description: 'Label of link',
     required_error: 'label is required',
   }),
-  ariaLabel: zod
-    .string({
-      description: 'ARIA Label of link, default is label',
-    })
-    .optional(),
-  ariaCurrent: zod
-    .string({
-      description: 'ARIA current attribute',
-    })
-    .optional(),
   noVisited: zod
     .boolean({
       description:
@@ -78,12 +50,6 @@ export const linkSchema = zod.object({
   size: zod
     .enum(getEnumValues(LinkSize), {
       description: 'Size of the link',
-    })
-    .optional(),
-  aria: ariaSchema.describe('Defines the aria attributes').optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
     })
     .optional(),
 });

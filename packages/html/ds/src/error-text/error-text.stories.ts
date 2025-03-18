@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { beautifyHtmlNode, createErrorText } from '../storybook/storybook';
+import { createErrorText } from '../helpers/forms';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { ErrorSize, ErrorTextProps } from './error-text.schema';
 
 const meta: Meta<ErrorTextProps> = {

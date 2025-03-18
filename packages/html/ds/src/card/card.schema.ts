@@ -1,6 +1,6 @@
 import * as zod from 'zod';
 
-import { buttonSchema } from '../button/button-schema';
+import { buttonSchema } from '../button/button.schema';
 import { getEnumValues } from '../helpers';
 import { iconSchema } from '../icon/icon.schema';
 import { linkSchema } from '../link/link.schema';
