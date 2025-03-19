@@ -1,198 +1,104 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './footer.html?raw';
-import { FooterProps } from './footer.schema';
+import React from 'react';
 
-const macro = { name: 'govieFooter', html };
+type LogoProps = {
+  imageSmall?: string;
+  imageLarge?: string;
+  href?: string;
+  external?: boolean;
+  alt?: string;
+};
 
-const Footer = renderComponent<FooterProps>(macro);
+type FooterProps = {
+  primarySlot?: any;
+  secondarySlot?: any;
+  utilitySlot?: any;
+  logo?: LogoProps;
+  className?: string;
+  dataTestid?: string;
+};
 
-const meta = {
-  component: Footer,
+const meta: Meta<FooterProps> = {
   title: 'Layout/Footer',
-  parameters: {
-    macro,
+  argTypes: {
+    primarySlot: { control: 'text', description: 'Primary content slot' },
+    secondarySlot: { control: 'text', description: 'Secondary content slot' },
+    utilitySlot: { control: 'text', description: 'Utility content slot' },
+    className: { control: 'text', description: 'Additional CSS classes' },
+    dataTestid: { control: 'text', description: 'Test ID for queries' },
   },
-} satisfies Meta<typeof Footer>;
-
+};
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+type Story = StoryObj<FooterProps>;
 
-export const WithLinks: Story = {
-  args: {
-    links: [
-      {
-        href: '#',
-        label: 'Link 1',
-      },
-      {
-        href: '#',
-        label: 'Link 2',
-      },
-      {
-        href: '#',
-        label: 'Link 3',
-      },
-    ],
-  },
+const renderFooter = (args: FooterProps) => {
+  const container = document.createElement('div');
+  container.className = `gi-footer-container ${args.className ?? ''}`.trim();
+  if (args.dataTestid) {
+    container.dataset.testid = args.dataTestid;
+  }
+
+  const footer = document.createElement('footer');
+  footer.className = 'gi-footer';
+  footer.appendChild(container);
+
+  if (args.primarySlot) {
+    const primary = document.createElement('div');
+    primary.className = 'gi-footer-primary-slot';
+    primary.innerHTML = args.primarySlot;
+    container.appendChild(primary);
+  }
+
+  const sectionBreak = document.createElement('hr');
+  sectionBreak.className = 'gi-section-break-md gi-border-gray-400';
+  sectionBreak.setAttribute('role', 'separator');
+  container.appendChild(sectionBreak);
+
+  if (args.secondarySlot) {
+    const secondary = document.createElement('div');
+    secondary.className = 'gi-footer-secondary-slot';
+    secondary.innerHTML = args.secondarySlot;
+    container.appendChild(secondary);
+  }
+
+  if (args.utilitySlot) {
+    const utility = document.createElement('div');
+    utility.className = 'gi-footer-utility-slot';
+    utility.innerHTML = args.utilitySlot;
+    container.appendChild(utility);
+  }
+
+  return React.createElement('div', {
+    dangerouslySetInnerHTML: { __html: container.innerHTML }
+  });
 };
 
-export const WithSecondaryNavigation: Story = {
+
+export const Default: Story = {
   args: {
-    secondaryNavLinks: [
-      {
-        heading: 'Heading',
-        links: [
-          {
-            href: '#',
-            label: 'Link 1',
-          },
-          {
-            href: '#',
-            label: 'Link 2',
-          },
-          {
-            href: '#',
-            label: 'Link 3',
-          },
-        ],
-      },
-    ],
+    primarySlot: '<p>Primary Content</p>',
+    secondarySlot: '<p>Secondary Content</p>',
+    utilitySlot: '<p>Utility Content</p>',
+    className: 'custom-footer',
+    dataTestid: 'footer',
   },
+  render: renderFooter,
 };
 
-export const WithSecondaryNavigationTwoColumns: Story = {
+export const WithoutSecondary: Story = {
   args: {
-    secondaryNavLinks: [
-      {
-        heading: 'Heading 1',
-        links: [
-          {
-            href: '#',
-            label: 'Link 1',
-          },
-          {
-            href: '#',
-            label: 'Link 2',
-          },
-          {
-            href: '#',
-            label: 'Link 3',
-          },
-        ],
-      },
-      {
-        heading: 'Heading 2',
-        links: [
-          {
-            href: '#',
-            label: 'Link 4',
-          },
-          {
-            href: '#',
-            label: 'Link 5',
-          },
-          {
-            href: '#',
-            label: 'Link 6',
-          },
-        ],
-      },
-    ],
+    primarySlot: '<p>Primary Content</p>',
+    utilitySlot: '<p>Utility Content</p>',
+    dataTestid: 'footer',
   },
+  render: renderFooter,
 };
 
-export const WithSecondaryNavigationAndLinks: Story = {
+export const OnlyPrimary: Story = {
   args: {
-    links: [
-      {
-        href: '#',
-        label: 'Link 1',
-      },
-      {
-        href: '#',
-        label: 'Link 2',
-      },
-      {
-        href: '#',
-        label: 'Link 3',
-      },
-    ],
-    secondaryNavLinks: [
-      {
-        heading: 'Heading',
-        links: [
-          {
-            href: '#',
-            label: 'Link 1',
-          },
-          {
-            href: '#',
-            label: 'Link 2',
-          },
-          {
-            href: '#',
-            label: 'Link 3',
-          },
-        ],
-      },
-    ],
+    primarySlot: '<p>Primary Content</p>',
+    dataTestid: 'footer',
   },
-};
-
-export const WithSecondaryNavigationAndLinksAndTwoColumns: Story = {
-  args: {
-    links: [
-      {
-        href: '#',
-        label: 'Link 1',
-      },
-      {
-        href: '#',
-        label: 'Link 2',
-      },
-      {
-        href: '#',
-        label: 'Link 3',
-      },
-    ],
-    secondaryNavLinks: [
-      {
-        heading: 'Heading',
-        links: [
-          {
-            href: '#',
-            label: 'Link 1',
-          },
-          {
-            href: '#',
-            label: 'Link 2',
-          },
-          {
-            href: '#',
-            label: 'Link 3',
-          },
-        ],
-      },
-      {
-        heading: 'Heading 2',
-        links: [
-          {
-            href: '#',
-            label: 'Link 4',
-          },
-          {
-            href: '#',
-            label: 'Link 5',
-          },
-          {
-            href: '#',
-            label: 'Link 6',
-          },
-        ],
-      },
-    ],
-  },
+  render: renderFooter,
 };
