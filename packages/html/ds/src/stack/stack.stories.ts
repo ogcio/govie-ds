@@ -70,39 +70,39 @@ const createStack = (
         dividerClasses = 'gi-h-full gi-w-[1px]';
       }
     } else {
-      if (direction.base == 'row') {
+      if (direction.base == 'column') {
         dividerClasses += 'gi-w-full gi-h-[1px] ';
-      } else if (direction.base == 'column') {
+      } else if (direction.base == 'row') {
         dividerClasses += 'gi-h-full gi-w-[1px] ';
       }
-      if (direction.xs == 'row') {
+      if (direction.xs == 'column') {
         dividerClasses += 'xs:gi-w-full xs:gi-h-[1px] ';
-      } else if (direction.xs == 'column') {
+      } else if (direction.xs == 'row') {
         dividerClasses += 'xs:gi-h-full xs:gi-w-[1px] ';
       }
-      if (direction.sm == 'row') {
+      if (direction.sm == 'column') {
         dividerClasses += 'sm:gi-w-full sm:gi-h-[1px] ';
-      } else if (direction.sm == 'column') {
+      } else if (direction.sm == 'row') {
         dividerClasses += 'sm:gi-h-full sm:gi-w-[1px] ';
       }
-      if (direction.md == 'row') {
+      if (direction.md == 'column') {
         dividerClasses += 'md:gi-w-full md:gi-h-[1px] ';
-      } else if (direction.md == 'column') {
+      } else if (direction.md == 'row') {
         dividerClasses += 'md:gi-h-full md:gi-w-[1px] ';
       }
-      if (direction.lg == 'row') {
+      if (direction.lg == 'column') {
         dividerClasses += 'lg:gi-w-full lg:gi-h-[1px] ';
-      } else if (direction.lg == 'column') {
+      } else if (direction.lg == 'row') {
         dividerClasses += 'lg:gi-h-full lg:gi-w-[1px] ';
       }
-      if (direction.xl == 'row') {
+      if (direction.xl == 'column') {
         dividerClasses += 'xl:gi-w-full xl:gi-h-[1px] ';
-      } else if (direction.xl == 'column') {
+      } else if (direction.xl == 'row') {
         dividerClasses += 'xl:gi-h-full xl:gi-w-[1px] ';
       }
-      if (direction['2xl'] == 'row') {
+      if (direction['2xl'] == 'column') {
         dividerClasses += '2xl:gi-w-full 2xl:gi-h-[1px] ';
-      } else if (direction['2xl'] == 'column') {
+      } else if (direction['2xl'] == 'row') {
         dividerClasses += '2xl:gi-h-full 2xl:gi-w-[1px] ';
       }
     }
@@ -208,6 +208,11 @@ const children = [
   '<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 2</div>',
   '<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 3</div>',
 ];
+const children2 = [
+  '<div>Item 1</div>',
+  '<div>Item 2</div>',
+  '<div>Item 3</div>',
+];
 
 export const Default: Story = {
   args: {
@@ -227,10 +232,8 @@ export const Default: Story = {
 };
 
 export const WithDefaultProps: Story = {
-  args: {
-    children: ['<div>Item 1</div>', '<div>Item 2</div>', '<div>Item 3</div>'],
-  },
-  render: (arguments_) => createElement(arguments_, children),
+  args: {},
+  render: (arguments_) => createElement(arguments_, children2),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -245,9 +248,8 @@ export const ResponsiveDirectionWithDivider: Story = {
     gap: 1,
     hasDivider: true,
     fixedHeight: '150px',
-    children: ['Item 1', 'Item 2', 'Item 3'],
   },
-  render: (arguments_) => createElement(arguments_, children),
+  render: (arguments_) => createElement(arguments_, children2),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -261,9 +263,8 @@ export const CenteredItemsWithGap: Story = {
     itemsDistribution: 'center',
     gap: { sm: 4, md: 6 },
     hasDivider: false,
-    children: ['Item 1', 'Item 2', 'Item 3'],
   },
-  render: (arguments_) => createElement(arguments_, children),
+  render: (arguments_) => createElement(arguments_, children2),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -278,9 +279,8 @@ export const AroundDistributionWithDivider: Story = {
     gap: { sm: 1, lg: 5 },
     hasDivider: true,
     fixedHeight: '100px',
-    children: ['Item 1', 'Item 2', 'Item 3'],
   },
-  render: (arguments_) => createElement(arguments_, children),
+  render: (arguments_) => createElement(arguments_, children2),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
@@ -293,9 +293,8 @@ export const CenterDistribution: Story = {
     itemsAlignment: 'start',
     itemsDistribution: 'center',
     gap: 4,
-    children: ['Item 1', 'Item 2', 'Item 3'],
   },
-  render: (arguments_) => createElement(arguments_, children),
+  render: (arguments_) => createElement(arguments_, children2),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
