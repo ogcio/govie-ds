@@ -25,6 +25,9 @@ const createElement = (arguments_: TextAreaProps) => {
   textarea.className =
     `gi-textarea ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
 
+  if (arguments_.name) {
+    textarea.name = arguments_.name;
+  }
   if (arguments_.id) {
     textarea.id = arguments_.id;
   }

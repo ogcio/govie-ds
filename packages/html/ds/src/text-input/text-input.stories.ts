@@ -31,6 +31,9 @@ const createTextInput = (arguments_: TextInputProps) => {
   input.className =
     `gi-text-input ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
 
+  if (arguments_.name) {
+    input.name = arguments_.name;
+  }
   if (arguments_.id) {
     input.id = arguments_.id;
   }
