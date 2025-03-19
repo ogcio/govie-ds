@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ListProps, TypeEnum } from './list.schema';
+import { ListProps } from './types';
 
 const meta: Meta<ListProps> = {
   title: 'Typography/List',
@@ -28,8 +28,8 @@ const createList = (arguments_: ListProps) => {
 
   const component = document.createElement('ul');
   component.className = classType;
-  component.dataset.testid = arguments_.dataTestid;
   component.dataset.element = 'list-container';
+  component.dataset.testid = 'list';
 
   for (const item of arguments_.items) {
     const li = document.createElement('li');
@@ -52,7 +52,7 @@ export const Default: Story = {
       defaultValue: ['Item 1', 'Item 2', 'Item 3'],
     },
     type: {
-      options: ['normal', TypeEnum.Bullet, TypeEnum.Number],
+      options: ['normal', 'bullet', 'number'],
       control: { type: 'radio' },
       table: {
         defaultValue: { summary: 'normal' },
@@ -68,7 +68,6 @@ export const Default: Story = {
   },
   args: {
     items: ['Item 1', 'Item 2', 'Item 3'],
-    dataTestid: 'list',
   },
   render: (arguments_) => createList(arguments_),
   play: async ({ canvasElement }) => {
@@ -91,9 +90,8 @@ export const Links: Story = {
 
 export const Bullet: Story = {
   args: {
-    type: TypeEnum.Bullet,
+    type: 'bullet',
     items: ['apple', 'orange', 'pears'],
-    dataTestid: 'list',
   },
   render: (arguments_) => createList(arguments_),
   play: async ({ canvasElement }) => {
@@ -105,9 +103,8 @@ export const Bullet: Story = {
 
 export const Numbered: Story = {
   args: {
-    type: TypeEnum.Number,
+    type: 'number',
     items: ['Delivery address', 'Payment', 'Confirmation'],
-    dataTestid: 'list',
   },
   render: (arguments_) => createList(arguments_),
   play: async ({ canvasElement }) => {
@@ -119,14 +116,13 @@ export const Numbered: Story = {
 
 export const ExtraSpace: Story = {
   args: {
-    type: TypeEnum.Number,
+    type: 'number',
     spaced: true,
     items: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',
       'Curabitur ac felis arcu. Sed vehicula risus nec ligula tempor, vel euismod augue consectetur.',
       'Fusce tincidunt mi ac augue ultricies, id cursus libero dapibus. Phasellus a urna eget justo.',
     ],
-    dataTestid: 'list',
   },
   render: (arguments_) => createList(arguments_),
   play: async ({ canvasElement }) => {
