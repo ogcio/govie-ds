@@ -42,10 +42,10 @@ export const CompleteFooter: Story = {
   args: {
     dataTestid: 'gi-footer',
     primarySlot: (
-      <div className="gi-grid-responsive">
+      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -77,8 +77,8 @@ export const CompleteFooter: Story = {
           </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -110,8 +110,8 @@ export const CompleteFooter: Story = {
           </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
           <ul className="gi-space-y-2">
             <li>
               <Link noColor href="/publications/reports" aria-label="Reports">
@@ -139,8 +139,8 @@ export const CompleteFooter: Story = {
           </ul>
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-          <SectionBreak color="gi-border-gray-100" size="md" />
           <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -170,7 +170,7 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-3">
+      <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
         <Link noColor href="/about-us" aria-label="About Us">
           About Us
         </Link>
@@ -244,7 +244,7 @@ export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
       <>
-        <div className="gi-flex gi-flex-row gi-gap-3">
+        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -288,7 +288,7 @@ export const SimpleFooter: Story = {
       </>
     ),
     utilitySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+      <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -306,7 +306,7 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+      <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>

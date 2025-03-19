@@ -32,48 +32,48 @@ export default meta;
 
 type Story = StoryObj<FooterProps>;
 
-const renderFooter = (args: FooterProps) => {
+const renderFooter = (arguments_: FooterProps) => {
   const container = document.createElement('div');
-  container.className = `gi-footer-container ${args.className ?? ''}`.trim();
-  if (args.dataTestid) {
-    container.dataset.testid = args.dataTestid;
+  container.className =
+    `gi-footer-container ${arguments_.className ?? ''}`.trim();
+  if (arguments_.dataTestid) {
+    container.dataset.testid = arguments_.dataTestid;
   }
 
   const footer = document.createElement('footer');
   footer.className = 'gi-footer';
-  footer.appendChild(container);
+  footer.append(container);
 
-  if (args.primarySlot) {
+  if (arguments_.primarySlot) {
     const primary = document.createElement('div');
     primary.className = 'gi-footer-primary-slot';
-    primary.innerHTML = args.primarySlot;
-    container.appendChild(primary);
+    primary.innerHTML = arguments_.primarySlot;
+    container.append(primary);
   }
 
   const sectionBreak = document.createElement('hr');
   sectionBreak.className = 'gi-section-break-md gi-border-gray-400';
   sectionBreak.setAttribute('role', 'separator');
-  container.appendChild(sectionBreak);
+  container.append(sectionBreak);
 
-  if (args.secondarySlot) {
+  if (arguments_.secondarySlot) {
     const secondary = document.createElement('div');
     secondary.className = 'gi-footer-secondary-slot';
-    secondary.innerHTML = args.secondarySlot;
-    container.appendChild(secondary);
+    secondary.innerHTML = arguments_.secondarySlot;
+    container.append(secondary);
   }
 
-  if (args.utilitySlot) {
+  if (arguments_.utilitySlot) {
     const utility = document.createElement('div');
     utility.className = 'gi-footer-utility-slot';
-    utility.innerHTML = args.utilitySlot;
-    container.appendChild(utility);
+    utility.innerHTML = arguments_.utilitySlot;
+    container.append(utility);
   }
 
   return React.createElement('div', {
-    dangerouslySetInnerHTML: { __html: container.innerHTML }
+    dangerouslySetInnerHTML: { __html: container.innerHTML },
   });
 };
-
 
 export const Default: Story = {
   args: {

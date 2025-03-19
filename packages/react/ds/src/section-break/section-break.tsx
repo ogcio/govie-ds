@@ -1,3 +1,5 @@
+import { cn } from '../cn.js';
+
 export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
 export type SectionBreakProps = {
   size?: SectionBreakSize;
@@ -31,7 +33,7 @@ export function SectionBreak({
   return (
     <hr
       data-testid={dataTestid}
-      className={`${marginClass} ${color}`}
+      className={cn(marginClass, color)}
       role="separator"
       aria-label="Section break"
     />

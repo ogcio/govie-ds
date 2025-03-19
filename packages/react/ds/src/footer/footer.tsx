@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
+import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
@@ -28,7 +29,7 @@ function getLogo({ logo }: FooterProps) {
     <picture>
       <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
-        className="gi-h-10 sm:gi-h-14"
+        className="gi-h-16"
         src={logo?.imageSmall || svgDataUriMobile}
         alt={logo?.alt || 'Gov.ie logo'}
       />
@@ -64,7 +65,7 @@ export function Footer({
   };
   return (
     <footer
-      className={`gi-footer ${className}`}
+      className={cn('gi-footer', className)}
       data-module="gieds-footer"
       role="contentinfo"
       aria-label="Footer"
@@ -81,7 +82,9 @@ export function Footer({
           </div>
         )}
 
-        <SectionBreak color="gi-border-gray-100" size="lg" />
+        {(primarySlot || secondarySlot) && (
+          <SectionBreak color="gi-border-gray-100" size="lg" />
+        )}
 
         {secondarySlot && (
           <div
@@ -96,7 +99,7 @@ export function Footer({
         )}
 
         {!secondarySlot && (
-          <div className="gi-footer-logo gi-ml-auto ">{renderLogo()}</div>
+          <div className="gi-footer-logo md:gi-ml-auto ">{renderLogo()}</div>
         )}
       </div>
       {utilitySlot && (
