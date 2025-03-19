@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Footer } from './footer.js';
-import { Link } from '../link/link.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,

@@ -20,72 +20,28 @@ The GOV.IE footer provides copyright, licensing and other information about your
 
 ## Variants
 
-### Default 
+### Default
 
 <ComponentContainer fullWidth>
   <Footer
-    secondaryNavLinks={[
-      {
-        heading: 'Heading',
-        links: [
-          {
-            href: '#',
-            label: 'Link 1',
-          },
-          {
-            href: '#',
-            label: 'Link 2',
-          },
-          {
-            href: '#',
-            label: 'Link 3',
-          },
-        ],
-      },
-      {
-        heading: 'Heading 2',
-        links: [
-          {
-            href: '#',
-            label: 'Link 4',
-          },
-          {
-            href: '#',
-            label: 'Link 5',
-          },
-          {
-            href: '#',
-            label: 'Link 6',
-          },
-        ],
-      },
-    ]}
-    links={[
-      {
-        label: 'Help',
-        href: '/help/',
-      },
-      {
-        label: 'Privacy Policy',
-        href: '/privacy-policy/',
-      },
-      {
-        label: 'Cookies Policy',
-        href: '/cookies-policy/',
-      },
-      {
-        label: 'Contact',
-        href: '/contact/',
-      },
-    ]}
+    utilitySlot={
+      <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+          Privacy Policy
+        </Link>
+        <Link aria-label="Accessibility" href="/accessibility" noColor>
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </div>
+    }
   />
 </ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
-    <TabItem value="tab13">React</TabItem>
+    <TabItem value="tab12">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
     ```html
@@ -143,128 +99,21 @@ The GOV.IE footer provides copyright, licensing and other information about your
     </footer>
     ```
   </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieFooter({
-        secondaryNavLinks: [
-            {
-              heading: 'Heading',
-              links: [
-                {
-                  href: '#',
-                  label: 'Link 1',
-                },
-                {
-                  href: '#',
-                  label: 'Link 2',
-                },
-                {
-                  href: '#',
-                  label: 'Link 3',
-                },
-              ],
-            },
-            {
-              heading: 'Heading 2',
-              links: [
-                {
-                  href: '#',
-                  label: 'Link 4',
-                },
-                {
-                  href: '#',
-                  label: 'Link 5',
-                },
-                {
-                  href: '#',
-                  label: 'Link 6',
-                },
-              ],
-            },
-        ],
-        links: [
-          {
-              label: 'Help',
-              href: '/help/',
-          },
-          {
-              label: 'Privacy Policy',
-              href: '/privacy-policy/',
-          },
-          {
-              label: 'Cookies Policy',
-              href: '/cookies-policy/',
-          },
-          {
-              label: 'Contact',
-              href: '/contact/',
-          },
-        ]
-      })
-    }}
-    ```
-  </TabPanel>
-  <TabPanel value="tab13">
+  <TabPanel value="tab12">
     ```html
     import { Footer } from '@govie-ds/react';
 
     <Footer
-      secondaryNavLinks={[
-        {
-          heading: 'Heading',
-          links: [
-            {
-              href: '#',
-              label: 'Link 1',
-            },
-            {
-              href: '#',
-              label: 'Link 2',
-            },
-            {
-              href: '#',
-              label: 'Link 3',
-            },
-          ],
-        },
-        {
-          heading: 'Heading 2',
-          links: [
-            {
-              href: '#',
-              label: 'Link 4',
-            },
-            {
-              href: '#',
-              label: 'Link 5',
-            },
-            {
-              href: '#',
-              label: 'Link 6',
-            },
-          ],
-        },
-      ]}
-      links={[
-        {
-          label: 'Help',
-          href: '/help/',
-        },
-        {
-          label: 'Privacy Policy',
-          href: '/privacy-policy/',
-        },
-        {
-          label: 'Cookies Policy',
-          href: '/cookies-policy/',
-        },
-        {
-          label: 'Contact',
-          href: '/contact/',
-        },
-      ]}
-    />
+      utilitySlot={
+        <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>Privacy Policy</Link>
+          <Link aria-label="Accessibility" href="/accessibility" noColor>Accessibility</Link>
+          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+          </div>
+        }
+      />
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -272,30 +121,46 @@ The GOV.IE footer provides copyright, licensing and other information about your
 
 Use the footer at the bottom of every page of your service.
 
-### Adding links
+### Adding Links
 
 You can add links to:
 
-- privacy notice
-- accessibility statement
-- cookies page
-- terms and conditions
-- other language options
-- help content
+- Privacy notice
+- Accessibility statement
+- Cookies page
+- Terms and conditions
+- Other language options
+- Help content
 
-Use ‘Privacy’, ‘Accessibility’, ‘Cookies’ and ‘Terms and conditions’ for the link text.
+Use ‘Privacy’, ‘Accessibility’, ‘Cookies’, and ‘Terms and conditions’ for the link text.
 
-### Adding secondary navigation
+### Adding Secondary Navigation
 
 Only add secondary GOV.IE navigation if you’re creating a GOV.IE service, and you want users to be able to navigate away from the service to somewhere else on the GOV.IE website. For example, you probably don’t want to encourage a user to navigate away from a linear, form-type service.
 
+### Footer Component Slots
+
+The footer component now accepts 3 customizable slots:
+
+- **Primary Slot**: For essential links such as the privacy notice, accessibility statement, terms and conditions, etc.
+- **Secondary Slot**: For secondary navigation, especially if you need to add other relevant links or additional GOV.IE content.
+- **Utility Slot**: For supplementary items such as language options, help content, or other utilities.
+
 ### Best Practices
 
-### When to use this component
+- Always use the footer at the bottom of every page.
+- Ensure the primary slot includes links to essential content like privacy, accessibility, and terms.
+- Only use secondary navigation for GOV.IE services and avoid overloading the footer with unnecessary links.
+- Make sure the utility slot is used sparingly for items that are not essential for navigation but are still useful for the user.
 
-### When not to use this component
+### When to Use This Component
+
+Use the footer when you need to provide important links or secondary navigation at the bottom of your service pages. This is a standard design element for providing users with easy access to essential information and resources.
+
+### When Not to Use This Component
+
+Avoid using the footer if you don’t have enough content for it, or if adding a footer could overwhelm or distract users from the main content of the page. Also, refrain from using it for complex navigation schemes or as a place for redundant content that doesn't contribute to user experience.
 
 ## Status
 
 <ComponentStatusBlock componentId="footer" />
-

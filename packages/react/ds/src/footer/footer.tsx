@@ -1,11 +1,11 @@
 'use client';
 import { ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
-import { SectionBreak } from '../section-break/section-break.js';
-import Anchor from '../primitives/anchor.js';
 import { LogoProps } from '../common/types.js';
-import { renderToStaticMarkup } from 'react-dom/server';
+import Anchor from '../primitives/anchor.js';
+import { SectionBreak } from '../section-break/section-break.js';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
