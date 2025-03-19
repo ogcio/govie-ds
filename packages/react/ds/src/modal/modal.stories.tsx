@@ -198,6 +198,28 @@ export const ModalNotCloseOnClick: Story = {
   },
 };
 
+export const ModalNotCloseOnOverlayClick: Story = {
+  args: {
+    triggerButton: <Button>Open modal</Button>,
+    closeOnOverlayClick: false,
+    children: [
+      <ModalTitle key="title">Modal Title</ModalTitle>,
+      <ModalBody key="body">
+        <Paragraph>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+          doloribus asperiores.
+        </Paragraph>
+      </ModalBody>,
+      <ModalFooter key="footer">
+        <Button variant="primary" appearance="dark">
+          Primary
+        </Button>
+      </ModalFooter>,
+    ],
+  },
+};
+
 export const ModalOpen: Story = {
   args: {
     startsOpen: true,

@@ -204,7 +204,7 @@ export const ModalFooter = ({
   });
 
   const buttonClassName = cn({
-    'gi-justify-center xs:gi-justify-start': !orientation,
+    'gi-justify-center sm:gi-justify-start': !orientation,
     'gi-justify-center': orientation === 'vertical',
     'gi-justify-start': orientation === 'horizontal',
   });
