@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from './text-input.js';
+import { TextInput, TextInputPassword } from './text-input.js';
 
 const meta = {
   title: 'Form/TextInput',
@@ -93,41 +93,21 @@ export const Default: Story = {
   ),
 };
 
-export const TextElement: Story = {
+export const PasswordInput: Story = {
   args: {
     id: 'text-input-id',
   },
-  render: (props) => {
-    const [value, setValue] = useState('');
-    const inputRef = useRef<HTMLInputElement | null>(null);
-
-    const handleOnClose = () => {
-      setValue('');
-      inputRef?.current?.focus();
-    };
-
+  render: () => {
     return (
       <FormField
         label={{
-          text: 'Input Label',
-          htmlFor: 'text-input-id',
+          text: 'Password',
+          htmlFor: 'text-password-id',
         }}
       >
-        <TextInput
-          {...props}
-          prefix="$"
-          suffix="CM"
+        <TextInputPassword
           placeholder="Placeholder"
-          iconStart="add_circle"
-          iconEnd="add_circle"
-          value={value}
-          ref={inputRef}
-          data-testid="text-input-id"
-          inputActionButton={{
-            icon: 'arrow_back',
-            onClick: handleOnClose,
-          }}
-          onChange={(event) => setValue(event.currentTarget.value)}
+          data-testid="text-password-id"
         />
       </FormField>
     );
@@ -522,6 +502,30 @@ export const AllIconVariantsStates: Story = {
         </FormField>
         <FormField
           label={{
+            text: 'Error',
+            htmlFor: 'default-input',
+          }}
+          error={{
+            text: 'Invalid',
+          }}
+        >
+          <TextInput
+            ref={inputRef}
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            value={value}
+            onChange={(event) => setValue(event.currentTarget.value)}
+            inputActionButton={{
+              icon: 'close',
+              onClick: handleOnClose,
+            }}
+            type="text"
+            id="default-input"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
             text: 'Disabled',
             htmlFor: 'disabled-input',
           }}
@@ -577,6 +581,27 @@ export const AllIconVariantsStates: Story = {
         </FormField>
         <FormField
           label={{
+            text: 'Prefix/Suffix Error',
+          }}
+          error={{
+            text: 'Invalid',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            iconEnd="add_circle"
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
             text: 'Prefix/Suffix Disabled',
           }}
         >
@@ -611,6 +636,42 @@ export const AllIconVariantsStates: Story = {
             inputClassName="focus-input"
             prefix="€"
             suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'With Icon Start',
+          }}
+        >
+          <TextInput
+            iconStart="add_circle"
+            type="text"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'With Icon End',
+          }}
+        >
+          <TextInput
+            iconEnd="add_circle"
+            type="text"
+            placeholder="Placeholder"
+          />
+        </FormField>{' '}
+        <FormField
+          label={{
+            text: 'With Action Button',
+          }}
+        >
+          <TextInput
+            inputActionButton={{
+              icon: 'close',
+              onClick: () => null,
+            }}
+            type="text"
+            placeholder="Placeholder"
           />
         </FormField>
       </Stack>

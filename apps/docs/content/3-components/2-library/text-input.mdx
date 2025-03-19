@@ -25,16 +25,93 @@ The `TextInput` component is used to allow users to enter single-line text, with
 <ComponentContainer>
   <FormField
     hint={{
-      text: 'Hint: This is a helpful hint.'
+      text: 'Hint: This is a helpful hint.',
     }}
     label={{
       htmlFor: 'text-input-id',
-      text: 'Input Label'
+      text: 'Input Label',
+    }}
+  >
+    <TextInput data-testid="text-input-id" id="text-input-id" />
+  </FormField>
+</ComponentContainer>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab33">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">        
+    ```html
+    <fieldset>
+      <label class="gi-text-md gi-label gi-mb-1" for="text-input-id">Label</label>
+      <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
+      <div class="gi-text-input-container">
+        <input type="text" class="gi-text-input" id="text-input-id"data-testid="text-input-id">
+      </div>
+    </fieldset>
+    ```
+  </TabPanel>
+  <TabPanel value="tab33">
+    ```jsx
+    import { FormField, TextInput } from "@govie-ds/react";
+    
+    <FormField
+      hint={{
+        text: 'Hint: This is a helpful hint.'
+      }}
+      label={{
+        htmlFor: 'text-input-id',
+        text: 'Input Label'
+      }}
+    >
+      <TextInput
+        data-testid="text-input-id"
+        id="text-input-id"
+      />
+    </FormField>
+    ```
+  </TabPanel>
+</Tabs>
+
+### With Prefix/Suffix
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
     }}
   >
     <TextInput
       data-testid="text-input-id"
       id="text-input-id"
+      prefix="€"
+      suffix="kg"
+    />
+  </FormField>
+</ComponentContainer>
+
+### With Icons
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+      iconStart="add_circle"
+      iconEnd="add_circle"
     />
   </FormField>
 </ComponentContainer>
@@ -101,4 +178,3 @@ The `TextInput` component is used to allow users to enter single-line text, with
 ## Status
 
 <ComponentStatusBlock componentId="text-input" />
-

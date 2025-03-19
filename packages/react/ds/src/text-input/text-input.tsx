@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -9,6 +10,7 @@ export type InputActionButtonProps = {
   disabled?: boolean;
   ariaLabel?: string;
   dataTestId?: string;
+  ref?: React.Ref<HTMLButtonElement>;
 };
 
 export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -80,7 +82,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             {prefix}
           </div>
         )}
-        <div className="gi-text-input-t">
+        <div className="gi-text-input-inner">
           {iconStart && (
             <div className="gi-text-input-icon-start" data-prefix={!!prefix}>
               <Icon icon={iconStart} size="md" disabled={disabled} />
@@ -124,5 +126,39 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     );
   },
 );
+
+export type TextInputPasswordProps = Omit<
+  TextInputProps,
+  'type' | 'inputActionButton' | 'prefix' | 'suffix' | 'iconStart' | 'iconEnd'
+>;
+
+export const TextInputPassword = (props: TextInputPasswordProps) => {
+  const [inputProps, setInputProps] = useState<{
+    type: 'password' | 'text';
+    icon: IconId;
+  }>({
+    icon: 'visibility',
+    type: 'password',
+  });
+
+  const handleOnClickVisibility = () => {
+    const isVisible = inputProps.type === 'text';
+    setInputProps({
+      type: isVisible ? 'password' : 'text',
+      icon: isVisible ? 'visibility' : 'visibility_off',
+    });
+  };
+
+  return (
+    <TextInput
+      {...props}
+      type={inputProps.type}
+      inputActionButton={{
+        icon: inputProps.icon,
+        onClick: handleOnClickVisibility,
+      }}
+    />
+  );
+};
 
 TextInput.displayName = 'TextInput';

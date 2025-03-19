@@ -111,7 +111,7 @@ input[type='text'] {
 
 /* Text Input */
 
-.gi-text-input-t {
+.gi-text-input-inner {
   @apply gi-w-full gi-flex gi-items-center gi-relative;
 }
 
@@ -134,7 +134,7 @@ input[type='text'] {
 }
 
 .gi-text-input {
-  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-1 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-gray-950;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-2 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-gray-950;
 }
 .gi-text-input[data-icon-start='true'][data-prefix='true'] {
   @apply gi-pl-9;
