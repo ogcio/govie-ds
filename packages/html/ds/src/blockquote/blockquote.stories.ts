@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { BlockquoteProps } from './blockquote.schema';
+import { BlockquoteProps } from './types';
 
 const meta: Meta<BlockquoteProps> = {
   title: 'Typography/Blockquote',

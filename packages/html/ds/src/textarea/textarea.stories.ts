@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import { createFormField, createHintText } from '../helpers/forms';
 import { LabelSize } from '../label/label.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { TextAreaProps } from './textarea.schema';
+import { TextAreaProps } from './types';
 
 const meta: Meta<TextAreaProps> = {
   title: 'Form/Textarea',

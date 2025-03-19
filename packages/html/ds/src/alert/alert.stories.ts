@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/test';
+import { createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { AlertProps, AlertVariant } from './alert-schema';
-import { createIconButton } from '../helpers/buttons';
+import { AlertProps, AlertVariant } from './alert.schema';
 
 const meta: Meta<AlertProps> = {
   title: 'Application/Alert',

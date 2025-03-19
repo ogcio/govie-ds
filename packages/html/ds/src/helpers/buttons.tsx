@@ -1,5 +1,5 @@
-import { ButtonProps } from '../button/button.schema';
-import { IconButtonProps } from '../icon-button/icon-button.schema';
+import { ButtonProps } from '../button/types';
+import { IconButtonProps } from '../icon-button/types';
 import { createIcon } from './icons';
 
 export const getButtonSizeClass = (size?: string) => {
@@ -87,7 +87,9 @@ export const createButton = (arguments_: ButtonProps) => {
 
   const component = document.createElement('button') as HTMLButtonElement;
   component.className = `gi-btn ${classSize} ${classAppearance}`.trim();
-  component.innerHTML = arguments_.content;
+  if (arguments_.content) {
+    component.innerHTML = arguments_.content;
+  }
 
   return component;
 };

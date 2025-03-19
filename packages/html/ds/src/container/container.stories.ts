@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ContainerProps } from './container.schema';
+import { ContainerProps } from './types';
 
 const meta: Meta<ContainerProps> = {
   title: 'Layout/Container',
@@ -13,22 +13,15 @@ type Story = StoryObj<ContainerProps>;
 const createContainer = (arguments_: ContainerProps) => {
   const container = document.createElement('div');
   container.className = 'gi-layout-container';
-  if (arguments_.html) {
-    container.innerHTML = arguments_.html;
+  if (arguments_.content) {
+    container.innerHTML = arguments_.content;
   }
   return beautifyHtmlNode(container);
 };
 
 export const Default: Story = {
-  argTypes: {
-    html: {
-      control: 'text',
-      description:
-        'HTML content or other components to be rendered inside the container.',
-    },
-  },
   args: {
-    html: `<p>Paragraph</p>`,
+    content: `<p>Paragraph</p>`,
   },
   render: (arguments_) => createContainer(arguments_),
   play: async ({ canvasElement }) => {

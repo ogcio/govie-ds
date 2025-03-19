@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ChipProps } from './chip.schema';
+import { ChipProps } from './types';
 
 const meta: Meta<ChipProps> = {
   title: 'Components/Chip',

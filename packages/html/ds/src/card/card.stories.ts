@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonVariant } from '../button/button.schema';
+import { ButtonVariant } from '../button/types';
 import { IconId, IconSize } from '../icon/icon.schema';
-import { LinkSize } from '../link/link.schema';
+import { LinkSize } from '../link/types';
 import { renderComponent } from '../storybook/storybook';
 import html from './card.html?raw';
 import { CardProps, CardType, InsetType } from './card.schema';

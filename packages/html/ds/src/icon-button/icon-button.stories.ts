@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/test';
-import { ButtonSize, ButtonVariant } from '../button/button.schema';
 import { createIconButton } from '../helpers/buttons';
 import { IconId } from '../icon/icon.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { IconButtonProps } from './icon-button.schema';
+import { IconButtonProps } from './types';
 
 const meta: Meta<IconButtonProps> = {
   title: 'Form/IconButton',
@@ -65,7 +64,7 @@ export const Small: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    size: ButtonSize.Small,
+    size: 'small',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -79,7 +78,7 @@ export const Large: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    size: ButtonSize.Large,
+    size: 'large',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -93,7 +92,7 @@ export const SecondaryButton: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    variant: ButtonVariant.Secondary,
+    variant: 'secondary',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -107,7 +106,7 @@ export const FlatButton: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    variant: ButtonVariant.Flat,
+    variant: 'flat',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {

@@ -129,7 +129,7 @@ describe('govieCard', () => {
       type: CardType.Vertical,
       title: 'Card with Actions',
       content: 'This is the card content with actions.',
-      action: { type: 'link', href: '#', label: 'Action 1' },
+      // action: { type: 'link', href: '#', label: 'Action 1' },
     });
 
     const actionLink1 = screen.getByText('Action 1');

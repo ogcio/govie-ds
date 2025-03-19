@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Size, Tag } from '../heading/heading.schema';
 import { renderComponent } from '../storybook/storybook';
-import { InputTypeEnum } from '../text-input/text-input.schema';
+import { InputTypeEnum } from '../text-input/types';
 import type { RadiosProps } from './radio.schema';
 import html from './radios-group.html?raw';
 

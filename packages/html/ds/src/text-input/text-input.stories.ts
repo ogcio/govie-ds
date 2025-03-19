@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import { createFormField } from '../helpers/forms';
 import { LabelSize } from '../label/label.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { TextInputProps } from './text-input.schema';
+import { TextInputProps } from './types';
 
 const meta: Meta<TextInputProps> = {
   title: 'Form/TextInput',

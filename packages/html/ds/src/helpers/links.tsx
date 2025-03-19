@@ -1,5 +1,5 @@
-import { ButtonProps } from '../button/button.schema';
-import { LinkProps } from '../link/link.schema';
+import { ButtonProps } from '../button/types';
+import { LinkProps } from '../link/types';
 import { getButtonAppearanceClass, getButtonSizeClass } from './buttons';
 
 export const getLinkSizeClass = (size?: string) => {
@@ -48,7 +48,9 @@ export const createLink = (arguments_: LinkProps) => {
     }
   }
 
-  anchor.textContent = arguments_.label;
+  if (arguments_.content) {
+    anchor.textContent = arguments_.content;
+  }
   anchor.href = arguments_.href || '#';
   anchor.className = linkClass.join(' ');
 

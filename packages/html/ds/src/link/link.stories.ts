@@ -1,13 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import {
-  ButtonAppearance,
-  ButtonSize,
-  ButtonVariant,
-} from '../button/button.schema';
 import { createLink } from '../helpers/links';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { LinkProps, LinkSize } from './link.schema';
+import { LinkProps } from './types';
 
 const meta: Meta<LinkProps> = {
   title: 'Navigation/Link',
@@ -23,7 +18,7 @@ const createElement = (arguments_: LinkProps) => {
 
 export const Default: Story = {
   argTypes: {
-    label: {
+    content: {
       control: 'text',
       type: { name: 'string', required: true },
     },
@@ -60,8 +55,8 @@ export const Default: Story = {
   },
   args: {
     href: '#',
-    label: 'Link',
-    size: LinkSize.Medium, // Default size can be set here, change to 'sm' if needed
+    content: 'Link',
+    size: 'md', // Default size can be set here, change to 'sm' if needed
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -74,7 +69,7 @@ export const Default: Story = {
 export const WithoutUnderline: Story = {
   args: {
     href: '#',
-    label: 'Link without underline',
+    content: 'Link without underline',
     noUnderline: true,
   },
   render: (arguments_) => createElement(arguments_),
@@ -89,7 +84,7 @@ export const WithoutUnderline: Story = {
 export const External: Story = {
   args: {
     href: '#',
-    label: 'Link text (opens in a new tab)',
+    content: 'Link text (opens in a new tab)',
     external: true,
   },
   render: (arguments_) => createElement(arguments_),
@@ -105,7 +100,7 @@ export const External: Story = {
 export const NoVisited: Story = {
   args: {
     href: '#',
-    label: 'Link',
+    content: 'Link',
     noVisited: true,
   },
   render: (arguments_) => createElement(arguments_),
@@ -120,11 +115,11 @@ export const styledAsButton: Story = {
   args: {
     href: '#',
     asButton: {
-      variant: ButtonVariant.Primary,
-      size: ButtonSize.Medium,
-      appearance: ButtonAppearance.Default,
+      variant: 'primary',
+      size: 'medium',
+      appearance: 'default',
     },
-    label: 'Link',
+    content: 'Link',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -137,7 +132,7 @@ export const styledAsButton: Story = {
 export const asButton: Story = {
   args: {
     as: 'button',
-    label: 'Link',
+    content: 'Link',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -150,7 +145,7 @@ export const asButton: Story = {
 export const AllStates: Story = {
   args: {
     href: '#',
-    label: '',
+    content: '',
   },
   render: () =>
     `<div class="gi-gap-4 gi-flex">
