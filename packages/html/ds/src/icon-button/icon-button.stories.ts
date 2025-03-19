@@ -15,8 +15,6 @@ type Story = StoryObj<IconButtonProps>;
 
 const createElement = (arguments_: IconButtonProps) => {
   const component = createIconButton(arguments_);
-  const container = document.createElement('div');
-  container.append(component);
   return beautifyHtmlNode(component);
 };
 

@@ -18,8 +18,6 @@ type Story = StoryObj<ButtonProps>;
 
 const createElement = (arguments_: ButtonProps) => {
   const component = createButton(arguments_);
-  const container = document.createElement('div');
-  container.append(component);
   return beautifyHtmlNode(component);
 };
 

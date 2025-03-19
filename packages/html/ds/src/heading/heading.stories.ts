@@ -11,9 +11,7 @@ const meta: Meta<HeadingProps> = {
 export default meta;
 type Story = StoryObj<HeadingProps>;
 
-const createHeader = (arguments_: HeadingProps) => {
-  const container = document.createElement('div');
-
+const createHeading = (arguments_: HeadingProps) => {
   let classSize = '';
   if (arguments_.size === undefined) {
     switch (arguments_.as) {
@@ -80,14 +78,18 @@ const createHeader = (arguments_: HeadingProps) => {
     caption.className = 'gi-text-gray-500';
     caption.textContent = arguments_.caption;
 
+    const container = document.createElement('div');
     container.append(caption);
+    container.append(component);
+    return container;
   } else {
-    return beautifyHtmlNode(component);
+    return component;
   }
+};
 
-  container.append(component);
-
-  return beautifyHtmlNode(container);
+const createElement = (arguments_: HeadingProps) => {
+  const component = createHeading(arguments_);
+  return beautifyHtmlNode(component);
 };
 
 export const Default: Story = {
@@ -112,7 +114,7 @@ export const Default: Story = {
       description: 'Caption for the heading',
     },
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Small: Story = {
@@ -120,7 +122,7 @@ export const Small: Story = {
     as: Tag.H6,
     text: 'Small heading',
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const heading = canvas.getByText('Small heading');
@@ -134,7 +136,7 @@ export const Medium: Story = {
     as: Tag.H3,
     text: 'Medium heading',
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const heading = canvas.getByText('Medium heading');
@@ -148,7 +150,7 @@ export const Large: Story = {
     as: Tag.H1,
     text: 'Large heading',
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const ExtraLarge: Story = {
@@ -157,7 +159,7 @@ export const ExtraLarge: Story = {
     as: Tag.H1,
     text: 'Extra large heading',
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Caption: Story = {
@@ -167,7 +169,7 @@ export const Caption: Story = {
     text: 'Heading with h6',
     caption: 'Caption Text',
   },
-  render: (arguments_) => createHeader(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const caption = canvas.getByText('Caption Text');

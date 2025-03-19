@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createFormField, createHint } from '../helpers/forms';
+import { createFormField, createHintText } from '../helpers/forms';
 import { LabelSize } from '../label/label.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextAreaProps } from './textarea.schema';
@@ -56,7 +56,7 @@ const createElement = (arguments_: TextAreaProps) => {
     remainingChars.className = 'gi-textarea-remaining-chars';
     remainingChars.dataset['remainingcharscontainer'] = textarea.id;
 
-    const remainingCharsHint = createHint({
+    const remainingCharsHint = createHintText({
       content: `You have ${arguments_.maxChars} characters remaining`,
     });
 

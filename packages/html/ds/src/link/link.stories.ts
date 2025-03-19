@@ -18,8 +18,6 @@ type Story = StoryObj<LinkProps>;
 
 const createElement = (arguments_: LinkProps) => {
   const component = createLink(arguments_);
-  const container = document.createElement('div');
-  container.append(component);
   return beautifyHtmlNode(component);
 };
 

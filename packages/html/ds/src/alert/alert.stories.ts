@@ -78,8 +78,6 @@ const createAlert = (arguments_: AlertProps) => {
 
 const createElement = (arguments_: AlertProps) => {
   const component = createAlert(arguments_);
-  const container = document.createElement('div');
-  container.append(component);
   return beautifyHtmlNode(component);
 };
 

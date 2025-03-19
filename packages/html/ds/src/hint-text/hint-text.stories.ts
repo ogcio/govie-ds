@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createHint } from '../helpers/forms';
+import { createHintText } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { HintSize, HintTextProps } from './hint-text.schema';
 
@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj<HintTextProps>;
 
 const createElement = (arguments_: HintTextProps) => {
-  const label = createHint(arguments_);
+  const label = createHintText(arguments_);
   return beautifyHtmlNode(label);
 };
 
