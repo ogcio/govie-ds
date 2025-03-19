@@ -16,14 +16,8 @@ export type ModalWrapperProps = {
   isOpen: boolean;
   onClose: () => void;
   position?: ModalPositions;
-  closeButtonLabel?: string;
-  className?: string;
-  closeOnClick?: boolean;
-  closeOnOverlayClick?: boolean;
-  children: ModalChildren;
   closeButtonSize?: ButtonSize;
-  dataTestId?: string;
-};
+} & Omit<ModalProps, 'triggerButton'>;
 
 export type ModalProps = {
   className?: string;
@@ -34,6 +28,7 @@ export type ModalProps = {
   closeOnClick?: boolean;
   closeOnOverlayClick?: boolean;
   dataTestId?: string;
+  size?: 'auto' | 'sm' | 'md' | 'lg';
 };
 
 export type ModalCloseButtonProps = {

@@ -84,6 +84,7 @@ const ModalCloseButton = ({
 
 export const ModalWrapper = ({
   position = 'center',
+  size = 'auto',
   closeOnClick = true,
   closeOnOverlayClick = true,
   isOpen,
@@ -132,6 +133,7 @@ export const ModalWrapper = ({
     >
       <div
         data-testid="modal-container"
+        data-size={size}
         className={cn(
           'gi-modal-container',
           {
@@ -165,7 +167,7 @@ export const ModalWrapper = ({
   );
 };
 
-export const ModalTitle = ({ children, as = 'h3', ...props }: HeadingProps) => (
+export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
   <div className="gi-flex-1" id="gi-modal-title">
     <Heading as={as} {...props}>
       {children}
@@ -230,12 +232,8 @@ export const ModalFooter = ({
 export const Modal = ({
   children,
   triggerButton,
-  className,
   startsOpen,
-  closeButtonLabel,
-  closeOnClick,
-  closeOnOverlayClick,
-  dataTestId,
+  ...props
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -252,14 +250,10 @@ export const Modal = ({
     <>
       {renderCloneTrigger}
       <ModalWrapper
-        dataTestId={dataTestId}
-        isOpen={isOpen}
         onClose={handleClose}
         position="center"
-        className={className}
-        closeButtonLabel={closeButtonLabel}
-        closeOnClick={closeOnClick}
-        closeOnOverlayClick={closeOnOverlayClick}
+        isOpen={isOpen}
+        {...props}
       >
         {children}
       </ModalWrapper>

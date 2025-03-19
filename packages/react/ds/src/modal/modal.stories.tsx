@@ -33,10 +33,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,
-    className: 'gi-w-[600px]',
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">

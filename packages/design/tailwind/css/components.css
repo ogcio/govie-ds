@@ -714,7 +714,19 @@ input[type='file' i] {
 }
 
 .gi-modal-container {
-  @apply gi-bg-white gi-absolute gi-w-fit gi-max-w-[420px] gi-min-w-[280px] xs:gi-max-w-[640px] xs:gi-min-w-[480px] md:gi-max-w-[960px] md:gi-min-w-[640px];
+  @apply gi-bg-white gi-absolute gi-w-fit;
+}
+.gi-modal-container[data-size='auto'] {
+  @apply gi-max-w-105 gi-min-w-70 xs:gi-max-w-160 xs:gi-min-w-120 md:gi-max-w-240 md:gi-min-w-160;
+}
+.gi-modal-container[data-size='sm'] {
+  @apply gi-max-w-105 gi-min-w-70;
+}
+.gi-modal-container[data-size='md'] {
+  @apply gi-max-w-160 gi-min-w-120;
+}
+.gi-modal-container[data-size='lg'] {
+  @apply gi-max-w-240 gi-min-w-160;
 }
 
 .gi-modal-container > :first-child {
