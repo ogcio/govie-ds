@@ -3,7 +3,7 @@ import { createButton, createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { createLink } from '../helpers/links';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ToastProps } from './toast.schema';
+import { ToastProps } from './types';
 
 const meta: Meta<ToastProps> = {
   title: 'Application/Toast',
