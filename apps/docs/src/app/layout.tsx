@@ -97,28 +97,19 @@ export default function RootLayout({
         {children}
         <Footer
           secondarySlot={
-            <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-              <Link aria-label="About Us" href="/about-us">
-                About Us
-              </Link>
-              <Link aria-label="Contact" href="/contact">
-                Contact
-              </Link>
-              <Link aria-label="Sitemap" href="/sitemap">
-                Sitemap
-              </Link>
+            <div className="gi-flex gi-flex-row gi-gap-3">
+              {footerLinks.map((link) => (
+                <Link noColor aria-label={link.label} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           }
           utilitySlot={
-            <div className="gi-flex gi-flex-col md:gi-flex-row gi-items-center gi-justify-between gi-space-y-4 md:gi-space-y-0 gi-py-4">
-              <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-                <Link aria-label="Privacy Policy" href="/privacy-policy">
-                  Privacy Policy
-                </Link>
-                <Link aria-label="Accessibility" href="/accessibility">
-                  Accessibility
-                </Link>
-                <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+            <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+              <div className="gi-text-sm">
+                © {new Date().getFullYear()} Design System of Government of
+                Ireland.
               </div>
             </div>
           }
