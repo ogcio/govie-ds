@@ -97,7 +97,7 @@ export default function RootLayout({
         {children}
         <Footer
           secondarySlot={
-            <div className="gi-flex gi-flex-row gi-gap-3">
+            <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
               {footerLinks.map((link) => (
                 <Link noColor aria-label={link.label} href={link.href}>
                   {link.label}
@@ -106,7 +106,7 @@ export default function RootLayout({
             </div>
           }
           utilitySlot={
-            <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+            <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
               <div className="gi-text-sm">
                 © {new Date().getFullYear()} Design System of Government of
                 Ireland.
