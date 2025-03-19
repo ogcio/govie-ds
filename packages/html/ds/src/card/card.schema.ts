@@ -2,7 +2,7 @@ import * as zod from 'zod';
 
 import { getEnumValues } from '../helpers';
 import { iconSchema } from '../icon/icon.schema';
-import { tagSchema } from '../tag/tag.schema';
+import { tagSchema } from '../tag/types';
 
 export const CardType = {
   Vertical: 'vertical',

@@ -1,61 +1,79 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './tag.html?raw';
-import { TagProps, TagType } from './tag.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { TagProps } from './types';
 
-const macro = { name: 'govieTag', html };
-
-const Tag = renderComponent<TagProps>(macro);
-
-const meta = {
-  component: Tag,
+const meta: Meta<TagProps> = {
   title: 'Typography/Tag',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Tag component used to display a small label or status indicator in HTML. The type of the tag changes its color, and the text is used to display a label.',
-      },
-    },
-  },
-} satisfies Meta<typeof Tag>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<TagProps>;
+
+const createTag = (arguments_: TagProps) => {
+  const tagClasses = {
+    default: 'gi-tag-default',
+    info: 'gi-tag-info',
+    success: 'gi-tag-success',
+    warning: 'gi-tag-warning',
+    error: 'gi-tag-error',
+    counter: 'gi-tag-counter',
+    counterWarning: 'gi-tag-counter-warning',
+  };
+  const tag = document.createElement('strong');
+  tag.className = `gi-tag ${tagClasses[arguments_.type || 'info']}`;
+  tag.textContent = arguments_.text;
+  return tag;
+};
+
+const createElement = (arguments_: TagProps) => {
+  const component = createTag(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
-  argTypes: {
-    text: {
-      control: 'text',
-      description:
-        'The text displayed inside the tag. This is the content of the tag, typically a status or label.',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Completed' },
-        category: 'Content',
-      },
-      type: { name: 'string', required: true },
-    },
-    type: {
-      control: {
-        type: 'select',
-      },
-      options: Object.values(TagType),
-      description:
-        'Defines the visual style and color of the tag. Select from predefined options like default, grey, green, blue, etc.',
-      table: {
-        type: { summary: 'TagType' },
-        defaultValue: { summary: 'default' },
-        category: 'Appearance',
-      },
-    },
-  },
   args: {
     text: 'Completed',
-    type: TagType.Info,
-    aria: {
-      'aria-label': 'Completed',
-    },
+    type: 'info',
   },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Success: Story = {
+  args: {
+    text: 'Completed',
+    type: 'success',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Warning: Story = {
+  args: {
+    text: 'Completed',
+    type: 'warning',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Error: Story = {
+  args: {
+    text: 'Completed',
+    type: 'error',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const CounterWarning: Story = {
+  args: {
+    text: '3',
+    type: 'counterWarning',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Counter: Story = {
+  args: {
+    text: '3',
+    type: 'counter',
+  },
+  render: (arguments_) => createElement(arguments_),
 };
