@@ -170,23 +170,46 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <div className="gi-grid-responsive">
-        <div className="gi-col-span-12">
-          <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-            <Link noColor href="/about-us" aria-label="About Us">
-              About Us
-            </Link>
-            <Link noColor href="/news" aria-label="News">
-              News
-            </Link>
-            <Link noColor href="/events" aria-label="Events">
-              Events
-            </Link>
-            <Link noColor href="/jobs" aria-label="Jobs">
-              Jobs
-            </Link>
-          </div>
-        </div>
+      <div className="gi-flex gi-flex-row gi-gap-3">
+        <Link noColor href="/about-us" aria-label="About Us">
+          About Us
+        </Link>
+        <Link noColor href="/contact" aria-label="Contact">
+          Contact
+        </Link>
+        <Link noColor href="/sitemap" aria-label="Sitemap">
+          Sitemap
+        </Link>
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+          Terms of Service
+        </Link>
+        <Link noColor href="/careers" aria-label="Careers">
+          Careers
+        </Link>
+        <Link noColor href="/blog" aria-label="Blog">
+          Blog
+        </Link>
+        <Link noColor href="/faq" aria-label="FAQ">
+          FAQ
+        </Link>
+        <Link noColor href="/support" aria-label="Support">
+          Support
+        </Link>
+        <Link noColor href="/press" aria-label="Press">
+          Press
+        </Link>
+        <Link noColor href="/partners" aria-label="Partners">
+          Partners
+        </Link>
+        <Link noColor href="/investors" aria-label="Investors">
+          Investors
+        </Link>
+        <Link noColor href="/events" aria-label="Events">
+          Events
+        </Link>
       </div>
     ),
     utilitySlot: (
@@ -220,38 +243,60 @@ export const CompleteFooter: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <div className="gi-grid-responsive">
-        <div className="gi-col-span-12">
-          <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-4 md:gi-space-y-0 md:gi-space-x-6">
-            <Link href="/about-us" aria-label="About Us">
-              About Us
-            </Link>
-            <Link href="/contact" aria-label="Contact">
-              Contact
-            </Link>
-            <Link href="/sitemap" aria-label="Sitemap">
-              Sitemap
-            </Link>
-          </div>
+      <>
+        <div className="gi-flex gi-flex-row gi-gap-3">
+          <Link noColor href="/about-us" aria-label="About Us">
+            About Us
+          </Link>
+          <Link noColor href="/contact" aria-label="Contact">
+            Contact
+          </Link>
+          <Link noColor href="/sitemap" aria-label="Sitemap">
+            Sitemap
+          </Link>
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+            Terms of Service
+          </Link>
+          <Link noColor href="/careers" aria-label="Careers">
+            Careers
+          </Link>
+          <Link noColor href="/blog" aria-label="Blog">
+            Blog
+          </Link>
+          <Link noColor href="/faq" aria-label="FAQ">
+            FAQ
+          </Link>
+          <Link noColor href="/support" aria-label="Support">
+            Support
+          </Link>
+          <Link noColor href="/press" aria-label="Press">
+            Press
+          </Link>
+          <Link noColor href="/partners" aria-label="Partners">
+            Partners
+          </Link>
+          <Link noColor href="/investors" aria-label="Investors">
+            Investors
+          </Link>
+          <Link noColor href="/events" aria-label="Events">
+            Events
+          </Link>
         </div>
-      </div>
+      </>
     ),
     utilitySlot: (
-      <div className="gi-grid-responsive">
-        <div className="gi-col-span-12">
-          <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
-            <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-              <Link href="/privacy-policy" aria-label="Privacy Policy">
-                Privacy Policy
-              </Link>
-              <Link href="/accessibility" aria-label="Accessibility">
-                Accessibility
-              </Link>
-              <div className="gi-text-sm">
-                © {new Date().getFullYear()} Government of Ireland.
-              </div>
-            </div>
-          </div>
+      <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
         </div>
       </div>
     ),
@@ -261,29 +306,15 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <div className="gi-grid-responsive">
-        <div className="gi-col-span-12">
-          <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0 gi-py-4">
-            <div className="gi-flex gi-flex-row gi-space-x-6 gi-text-sm">
-              <Link
-                href="https://www.gov.ie/privacy/"
-                external
-                aria-label="Privacy Policy"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="https://www.gov.ie/cookies/"
-                external
-                aria-label="Cookies"
-              >
-                Cookies
-              </Link>
-              <div className="gi-text-sm">
-                © {new Date().getFullYear()} Government of Ireland
-              </div>
-            </div>
-          </div>
+      <div className="gi-flex gi-flex-row gi-gap-3 gi-justify-center gi-flex-wrap">
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
         </div>
       </div>
     ),

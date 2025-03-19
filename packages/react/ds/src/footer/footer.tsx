@@ -26,10 +26,7 @@ function getLogo({ logo }: FooterProps) {
 
   return (
     <picture>
-      <source
-        srcSet={logo?.imageLarge || svgDataUriDesktop}
-        media="(min-width: 640px)"
-      />
+      <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
       <img
         className="gi-h-10 sm:gi-h-14"
         src={logo?.imageSmall || svgDataUriMobile}
@@ -91,12 +88,16 @@ export function Footer({
             className="gi-footer-secondary-slot"
             aria-label="Secondary footer slot"
           >
-            <div>{secondarySlot}</div>
+            <div className="gi-footer-secondary-slot-content">
+              {secondarySlot}
+            </div>
             <div className="gi-footer-logo">{renderLogo()}</div>
           </div>
         )}
 
-        {!secondarySlot && <div className="gi-footer-logo">{renderLogo()}</div>}
+        {!secondarySlot && (
+          <div className="gi-footer-logo gi-ml-auto ">{renderLogo()}</div>
+        )}
       </div>
       {utilitySlot && (
         <div className="gi-footer-utility" aria-label="Utility links">
