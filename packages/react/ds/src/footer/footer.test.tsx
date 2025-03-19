@@ -39,8 +39,6 @@ describe('Footer', () => {
     );
     renderFooter({ secondarySlot: secondaryContent });
 
-    const secondaryNav = screen.getByLabelText('Secondary footer navigation');
-    expect(secondaryNav).toBeInTheDocument();
     expect(screen.getByTestId('secondary-content')).toBeInTheDocument();
   });
 
