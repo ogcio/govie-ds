@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
 import { Footer } from './footer.js';
+import { Icon } from '../icon/icon.js';
 
 const meta: Meta<typeof Footer> = {
   component: Footer,
@@ -170,47 +171,55 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        <Link noColor href="/about-us" aria-label="About Us">
-          About Us
-        </Link>
-        <Link noColor href="/contact" aria-label="Contact">
-          Contact
-        </Link>
-        <Link noColor href="/sitemap" aria-label="Sitemap">
-          Sitemap
-        </Link>
-        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
-          Privacy Policy
-        </Link>
-        <Link noColor href="/terms-of-service" aria-label="Terms of Service">
-          Terms of Service
-        </Link>
-        <Link noColor href="/careers" aria-label="Careers">
-          Careers
-        </Link>
-        <Link noColor href="/blog" aria-label="Blog">
-          Blog
-        </Link>
-        <Link noColor href="/faq" aria-label="FAQ">
-          FAQ
-        </Link>
-        <Link noColor href="/support" aria-label="Support">
-          Support
-        </Link>
-        <Link noColor href="/press" aria-label="Press">
-          Press
-        </Link>
-        <Link noColor href="/partners" aria-label="Partners">
-          Partners
-        </Link>
-        <Link noColor href="/investors" aria-label="Investors">
-          Investors
-        </Link>
-        <Link noColor href="/events" aria-label="Events">
-          Events
-        </Link>
-      </div>
+      <>
+        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+          <Link noColor href="/about-us" aria-label="About Us">
+            About Us
+          </Link>
+          <Link noColor href="/contact" aria-label="Contact">
+            Contact
+          </Link>
+          <Link noColor href="/sitemap" aria-label="Sitemap">
+            Sitemap
+          </Link>
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+            Terms of Service
+          </Link>
+          <Link noColor href="/careers" aria-label="Careers">
+            Careers
+          </Link>
+          <Link noColor href="/blog" aria-label="Blog">
+            Blog
+          </Link>
+          <Link noColor href="/faq" aria-label="FAQ">
+            FAQ
+          </Link>
+          <Link noColor href="/support" aria-label="Support">
+            Support
+          </Link>
+          <Link noColor href="/press" aria-label="Press">
+            Press
+          </Link>
+          <Link noColor href="/partners" aria-label="Partners">
+            Partners
+          </Link>
+          <Link noColor href="/investors" aria-label="Investors">
+            Investors
+          </Link>
+          <Link noColor href="/events" aria-label="Events">
+            Events
+          </Link>
+        </div>
+        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+          <Icon icon="social_x" />
+          <Icon icon="social_facebook" />
+          <Icon icon="social_bluesky" />
+          <Icon icon="social_linkedin" />
+        </div>
+      </>
     ),
     utilitySlot: (
       <div className="gi-grid-responsive">
