@@ -127,3 +127,4 @@ insetTop
 insetBottom
 Toggleable
 passwordless
+form-textinputpassword
