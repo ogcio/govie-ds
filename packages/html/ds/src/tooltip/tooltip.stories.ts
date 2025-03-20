@@ -1,54 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './tooltip.html?raw';
-import { TooltipProps } from './tooltip.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { TooltipProps } from './types';
 
-const macro = { name: 'govieTooltip', html };
-const Tooltip = renderComponent<TooltipProps>(macro);
-
-const meta = {
+const meta: Meta<TooltipProps> = {
   title: 'Application/Tooltip',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'The Tooltip component displays a label when the user hovers over the wrapped element. The `label` prop defines the text, and the `position` prop specifies the tooltip position (`top`, `bottom`, `left`, or `right`).',
-      },
-    },
-  },
-  argTypes: {
-    text: {
-      description: 'The text displayed in the tooltip.',
-      control: 'text',
-      table: {
-        category: 'Props',
-        type: { summary: 'string' },
-      },
-    },
-    position: {
-      description: 'Position of the tooltip relative to the child element.',
-      control: 'radio',
-      options: ['top', 'bottom', 'left', 'right'],
-      table: {
-        category: 'Props',
-        type: { summary: "'top' | 'bottom' | 'left' | 'right'" },
-      },
-    },
-    content: {
-      description: 'The HTML content that will be wrapped by the tooltip.',
-      control: 'text',
-      table: {
-        category: 'Props',
-        type: { summary: 'HTMLString' },
-      },
-    },
-  },
-  component: Tooltip,
-} satisfies Meta<typeof Tooltip>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<TooltipProps>;
+
+const createTooltip = (arguments_: TooltipProps) => {
+  const tooltip = document.createElement('span');
+  tooltip.className = 'gi-tooltip-wrapper';
+  tooltip.dataset.module = 'gieds-tooltip';
+  if (arguments_.content) {
+    if (typeof arguments_.content === 'string') {
+      tooltip.innerHTML = arguments_.content;
+    } else {
+      tooltip.append(arguments_.content);
+    }
+  }
+  const popup = document.createElement('span');
+  popup.role = 'tooltip';
+  popup.className = `gi-tooltip gi-tooltip-${arguments_.position}`;
+  popup.ariaHidden = 'true';
+  popup.textContent = arguments_.text;
+  tooltip.append(popup);
+  return tooltip;
+};
+
+const createElement = (arguments_: TooltipProps) => {
+  const component = createTooltip(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   args: {
@@ -64,6 +48,7 @@ export const Default: Story = {
       Default (Hover me)
     </button>`,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const TopPosition: Story = {
@@ -81,6 +66,7 @@ export const TopPosition: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const BottomPosition: Story = {
@@ -98,6 +84,7 @@ export const BottomPosition: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const LeftPosition: Story = {
@@ -115,6 +102,7 @@ export const LeftPosition: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const RightPosition: Story = {
@@ -132,6 +120,7 @@ export const RightPosition: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLongLabel: Story = {
@@ -149,6 +138,7 @@ export const WithLongLabel: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithAriaAttribute: Story = {
@@ -169,4 +159,5 @@ export const WithAriaAttribute: Story = {
       </button>
     `,
   },
+  render: (arguments_) => createElement(arguments_),
 };
