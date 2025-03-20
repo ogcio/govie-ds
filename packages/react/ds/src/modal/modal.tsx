@@ -84,7 +84,7 @@ const ModalCloseButton = ({
 
 export const ModalWrapper = ({
   position = 'center',
-  size = 'auto',
+  size = 'lg',
   closeOnClick = true,
   closeOnOverlayClick = true,
   isOpen,
@@ -94,6 +94,7 @@ export const ModalWrapper = ({
   children,
   closeButtonSize,
   dataTestId,
+  ...props
 }: ModalWrapperProps) => {
   const childrenArray = Children.toArray(children);
 
@@ -103,12 +104,26 @@ export const ModalWrapper = ({
   const modalFooter = childrenArray.find((child) =>
     isModalComponent(ModalFooter, 'ModalFooter', child),
   );
-  const otherChildren = childrenArray.filter(
-    (child) => !isModalComponent(ModalTitle, 'ModalTitle', child),
-  );
+
+  const modalTitleClone = modalTitle
+    ? React.cloneElement(modalTitle as ReactElement<HeadingProps>, {
+        as: size === 'sm' ? 'h5' : 'h4',
+      })
+    : null;
+
+  const otherChildren = childrenArray
+    .map((child) =>
+      modalFooter
+        ? React.cloneElement(child as ReactElement<ModalFooterProps>, {
+            dataModalSize: size,
+          })
+        : child,
+    )
+    .filter((child) => !isModalComponent(ModalTitle, 'ModalTitle', child));
 
   return (
     <div
+      {...props}
       className={cn('gi-modal', {
         'gi-modal-open': isOpen,
         'gi-modal-close': !isOpen,
@@ -117,8 +132,6 @@ export const ModalWrapper = ({
       data-element="modal"
       role="dialog"
       aria-modal="true"
-      aria-label={modalTitle ? undefined : 'modal'}
-      aria-labelledby={modalTitle ? 'gi-modal-title' : undefined}
       aria-describedby="gi-modal-body"
       onClick={(event) => {
         const target = event.target as HTMLDivElement;
@@ -146,7 +159,7 @@ export const ModalWrapper = ({
         )}
       >
         <div>
-          {modalTitle}
+          {modalTitleClone}
           {closeOnClick && (
             <ModalCloseButton
               onClick={onClose}
@@ -191,6 +204,7 @@ export const ModalFooter = ({
   className,
   children,
   orientation,
+  dataModalSize,
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter(
@@ -204,8 +218,9 @@ export const ModalFooter = ({
   });
 
   const buttonClassName = cn({
-    'gi-justify-center sm:gi-justify-start': !orientation,
-    'gi-justify-center': orientation === 'vertical',
+    'gi-justify-center sm:gi-justify-start':
+      !orientation && dataModalSize !== 'sm',
+    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm',
     'gi-justify-start': orientation === 'horizontal',
   });
 
@@ -217,7 +232,10 @@ export const ModalFooter = ({
       })}
     >
       {sortedButtons.length > 0 && (
-        <div data-orientation={orientation || 'unset'}>
+        <div
+          data-orientation={orientation || 'unset'}
+          data-modal-size={dataModalSize}
+        >
           {sortedButtons.map((button) =>
             React.cloneElement(button, {
               className: cn(button?.props?.className, buttonClassName),

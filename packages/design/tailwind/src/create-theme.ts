@@ -261,10 +261,13 @@ export function createTheme(
       '72': variables.primitive.space['72'],
       '80': variables.primitive.space['80'],
       '86': variables.primitive.space['86'],
+      '94': variables.primitive.space['94'],
       '96': variables.primitive.space['96'],
       '105': variables.primitive.space['105'],
+      '135': variables.primitive.space['135'],
       '120': variables.primitive.space['120'],
       '160': variables.primitive.space['160'],
+      '192': variables.primitive.space['192'],
       '240': variables.primitive.space['240'],
     },
     screens: {

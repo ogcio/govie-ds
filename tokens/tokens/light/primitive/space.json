@@ -37,10 +37,13 @@
       "72": { "$type": "dimension", "$value": "288px" },
       "80": { "$type": "dimension", "$value": "320px" },
       "86": { "$type": "dimension", "$value": "344px" },
+      "94": { "$type": "dimension", "$value": "376px" },
       "96": { "$type": "dimension", "$value": "384px" },
       "105": { "$type": "dimension", "$value": "420px" },
       "120": { "$type": "dimension", "$value": "480px" },
+      "135": { "$type": "dimension", "$value": "540px" },
       "160": { "$type": "dimension", "$value": "640px" },
+      "192": { "$type": "dimension", "$value": "768px" },
       "240": { "$type": "dimension", "$value": "960px" }
     }
   }

@@ -19,7 +19,8 @@ export type ModalWrapperProps = {
   closeButtonSize?: ButtonSize;
 } & Omit<ModalProps, 'triggerButton'>;
 
-export type ModalProps = {
+export type ModalSize = 'sm' | 'md' | 'lg';
+export type ModalProps = React.AriaAttributes & {
   className?: string;
   closeButtonLabel?: string;
   triggerButton: React.ReactElement;
@@ -28,7 +29,7 @@ export type ModalProps = {
   closeOnClick?: boolean;
   closeOnOverlayClick?: boolean;
   dataTestId?: string;
-  size?: 'auto' | 'sm' | 'md' | 'lg';
+  size?: ModalSize;
 };
 
 export type ModalCloseButtonProps = {
@@ -43,5 +44,7 @@ export type ModalFooterButton = {
 export type ModalFooterProps = {
   className?: string;
   orientation?: ModalFooterOrientation;
+  dataTestId?: string;
+  dataModalSize?: ModalSize;
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
 };
