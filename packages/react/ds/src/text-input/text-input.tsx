@@ -1,12 +1,11 @@
-'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
 export type InputActionButtonProps = {
   icon: IconId;
-  onClick: any;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   ariaLabel?: string;
   dataTestId?: string;
@@ -126,39 +125,5 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     );
   },
 );
-
-export type TextInputPasswordProps = Omit<
-  TextInputProps,
-  'type' | 'inputActionButton' | 'prefix' | 'suffix' | 'iconStart' | 'iconEnd'
->;
-
-export const TextInputPassword = (props: TextInputPasswordProps) => {
-  const [inputProps, setInputProps] = useState<{
-    type: 'password' | 'text';
-    icon: IconId;
-  }>({
-    icon: 'visibility',
-    type: 'password',
-  });
-
-  const handleOnClickVisibility = () => {
-    const isVisible = inputProps.type === 'text';
-    setInputProps({
-      type: isVisible ? 'password' : 'text',
-      icon: isVisible ? 'visibility' : 'visibility_off',
-    });
-  };
-
-  return (
-    <TextInput
-      {...props}
-      type={inputProps.type}
-      inputActionButton={{
-        icon: inputProps.icon,
-        onClick: handleOnClickVisibility,
-      }}
-    />
-  );
-};
 
 TextInput.displayName = 'TextInput';

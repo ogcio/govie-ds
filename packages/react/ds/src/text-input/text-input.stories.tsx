@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput, TextInputPassword } from './text-input.js';
+import { TextInput } from './text-input.js';
 
 const meta = {
   title: 'Form/TextInput',
@@ -91,27 +91,6 @@ export const Default: Story = {
       <TextInput {...props} data-testid="text-input-id" />
     </FormField>
   ),
-};
-
-export const PasswordInput: Story = {
-  args: {
-    id: 'text-input-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: 'Password',
-          htmlFor: 'text-password-id',
-        }}
-      >
-        <TextInputPassword
-          placeholder="Placeholder"
-          data-testid="text-password-id"
-        />
-      </FormField>
-    );
-  },
 };
 
 export const ResponsiveLayout: Story = {
@@ -510,14 +489,11 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInput
-            ref={inputRef}
             iconStart="add_circle"
             iconEnd="add_circle"
-            value={value}
-            onChange={(event) => setValue(event.currentTarget.value)}
             inputActionButton={{
               icon: 'close',
-              onClick: handleOnClose,
+              onClick: () => null,
             }}
             type="text"
             id="default-input"
@@ -667,8 +643,8 @@ export const AllIconVariantsStates: Story = {
         >
           <TextInput
             inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
+              icon: 'keyboard_arrow_down',
+              onClick: () => alert('action button clicked'),
             }}
             type="text"
             placeholder="Placeholder"
