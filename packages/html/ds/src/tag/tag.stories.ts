@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { createTag } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TagProps } from './types';
 
@@ -8,22 +9,6 @@ const meta: Meta<TagProps> = {
 
 export default meta;
 type Story = StoryObj<TagProps>;
-
-const createTag = (arguments_: TagProps) => {
-  const tagClasses = {
-    default: 'gi-tag-default',
-    info: 'gi-tag-info',
-    success: 'gi-tag-success',
-    warning: 'gi-tag-warning',
-    error: 'gi-tag-error',
-    counter: 'gi-tag-counter',
-    counterWarning: 'gi-tag-counter-warning',
-  };
-  const tag = document.createElement('strong');
-  tag.className = `gi-tag ${tagClasses[arguments_.type || 'info']}`;
-  tag.textContent = arguments_.text;
-  return tag;
-};
 
 const createElement = (arguments_: TagProps) => {
   const component = createTag(arguments_);

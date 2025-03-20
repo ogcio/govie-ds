@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { createButton } from '../helpers/buttons';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import {
-  ButtonAppearance,
-  ButtonProps,
-  ButtonSize,
-  ButtonVariant,
-} from './types';
+import { ButtonProps } from './types';
 
 const meta: Meta<ButtonProps> = {
   title: 'Form/Button',
