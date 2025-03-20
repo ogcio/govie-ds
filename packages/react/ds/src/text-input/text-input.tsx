@@ -58,7 +58,9 @@ export const InputActionButton = ({
   );
 };
 
-export type TextInputWithResetProps = { setValue: any } & TextInputProps;
+export type TextInputWithResetProps = {
+  setValue: (value: string) => void;
+} & TextInputProps;
 
 export const TextInputWithReset = ({
   value,

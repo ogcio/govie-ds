@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { TextInput, TextInputWithReset } from './text-input.js';
