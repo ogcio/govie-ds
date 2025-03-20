@@ -128,3 +128,5 @@ insetBottom
 Toggleable
 passwordless
 form-textinputpassword
+inputtextwithreset
+InputTextWithReset
