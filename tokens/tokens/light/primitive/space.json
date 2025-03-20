@@ -36,6 +36,7 @@
       "70": { "$type": "dimension", "$value": "280px" },
       "72": { "$type": "dimension", "$value": "288px" },
       "80": { "$type": "dimension", "$value": "320px" },
+      "86": { "$type": "dimension", "$value": "344px" },
       "96": { "$type": "dimension", "$value": "384px" },
       "105": { "$type": "dimension", "$value": "420px" },
       "120": { "$type": "dimension", "$value": "480px" },

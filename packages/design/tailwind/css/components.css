@@ -686,7 +686,7 @@ input[type='file' i] {
 }
 
 .gi-modal-body {
-  @apply gi-px-6 gi-flex-1 gi-max-h-[280px] xs:gi-max-h-[344px] gi-overflow-y-auto;
+  @apply gi-px-6 gi-flex-1 gi-max-h-70 xs:gi-max-h-86 gi-overflow-y-auto;
 }
 
 .gi-modal-footer {

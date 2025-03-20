@@ -47,6 +47,7 @@ export const spaceSchema = z
       70: createSpaceSchema('70'),
       72: createSpaceSchema('72'),
       80: createSpaceSchema('80'),
+      86: createSpaceSchema('86'),
       96: createSpaceSchema('96'),
       105: createSpaceSchema('105'),
       120: createSpaceSchema('120'),

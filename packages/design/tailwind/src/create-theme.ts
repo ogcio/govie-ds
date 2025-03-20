@@ -260,6 +260,7 @@ export function createTheme(
       '70': variables.primitive.space['70'],
       '72': variables.primitive.space['72'],
       '80': variables.primitive.space['80'],
+      '86': variables.primitive.space['86'],
       '96': variables.primitive.space['96'],
       '105': variables.primitive.space['105'],
       '120': variables.primitive.space['120'],
