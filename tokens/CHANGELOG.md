@@ -2,6 +2,15 @@
 
 
 
+## [0.7.2](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.1...tokens-v0.7.2) (2025-03-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/prettier-config bumped to 1.0.2
+
 ## [0.7.1](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.0...tokens-v0.7.1) (2025-03-14)
 
 

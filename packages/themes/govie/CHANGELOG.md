@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.2](https://github.com/ogcio/govie-ds/compare/themes-govie-v0.6.1...themes-govie-v0.6.2) (2025-03-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.1
+    * @govie-ds/prettier-config bumped to 1.0.2
+    * @govie-ds/theme-builder bumped to 1.1.1
+    * @govie-ds/tokens bumped to 0.7.2
+
 ## [0.6.1](https://github.com/ogcio/govie-ds/compare/theme-govie-v0.6.0...theme-govie-v0.6.1) (2025-03-14)
 
 
