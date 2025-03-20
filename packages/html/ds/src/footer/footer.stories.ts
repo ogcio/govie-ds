@@ -81,7 +81,7 @@ export const Default: Story = {
     className: 'custom-footer',
     dataTestid: 'footer',
   },
-  // @ts-expect-error
+  // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
 
@@ -91,7 +91,7 @@ export const WithoutSecondary: Story = {
     utilitySlot: '<p>Utility Content</p>',
     dataTestid: 'footer',
   },
-  // @ts-expect-error
+  // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
 
@@ -100,6 +100,6 @@ export const OnlyPrimary: Story = {
     primarySlot: '<p>Primary Content</p>',
     dataTestid: 'footer',
   },
-  // @ts-expect-error
+  // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
