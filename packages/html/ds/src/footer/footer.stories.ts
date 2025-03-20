@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import { beautifyHtmlNode } from '../storybook/storybook';
 
 type LogoProps = {
   imageSmall?: string;
@@ -32,7 +32,7 @@ export default meta;
 
 type Story = StoryObj<FooterProps>;
 
-const renderFooter = (arguments_: FooterProps) => {
+const createFooter = (arguments_: FooterProps) => {
   const container = document.createElement('div');
   container.className =
     `gi-footer-container ${arguments_.className ?? ''}`.trim();
@@ -70,9 +70,7 @@ const renderFooter = (arguments_: FooterProps) => {
     container.append(utility);
   }
 
-  return React.createElement('div', {
-    dangerouslySetInnerHTML: { __html: container.innerHTML },
-  });
+  return beautifyHtmlNode(container);
 };
 
 export const Default: Story = {
@@ -83,7 +81,8 @@ export const Default: Story = {
     className: 'custom-footer',
     dataTestid: 'footer',
   },
-  render: renderFooter,
+  // @ts-expect-error
+  render: (arguments_) => createFooter(arguments_),
 };
 
 export const WithoutSecondary: Story = {
@@ -92,7 +91,8 @@ export const WithoutSecondary: Story = {
     utilitySlot: '<p>Utility Content</p>',
     dataTestid: 'footer',
   },
-  render: renderFooter,
+  // @ts-expect-error
+  render: (arguments_) => createFooter(arguments_),
 };
 
 export const OnlyPrimary: Story = {
@@ -100,5 +100,6 @@ export const OnlyPrimary: Story = {
     primarySlot: '<p>Primary Content</p>',
     dataTestid: 'footer',
   },
-  render: renderFooter,
+  // @ts-expect-error
+  render: (arguments_) => createFooter(arguments_),
 };
