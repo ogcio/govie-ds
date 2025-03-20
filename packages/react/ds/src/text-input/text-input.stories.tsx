@@ -472,12 +472,6 @@ export const AllStates: Story = {
 export const AllIconVariantsStates: Story = {
   render: () => {
     const [value, setValue] = useState('');
-    const inputRef = useRef<HTMLInputElement | null>(null);
-
-    const handleOnClose = () => {
-      setValue('');
-      inputRef?.current?.focus();
-    };
 
     return (
       <Stack gap={4}>
@@ -487,19 +481,10 @@ export const AllIconVariantsStates: Story = {
             htmlFor: 'default-input',
           }}
         >
-          <TextInput
-            ref={inputRef}
-            iconStart="add_circle"
-            iconEnd="add_circle"
+          <TextInputWithReset
+            placeholder="Placeholder"
             value={value}
-            onChange={(event) => setValue(event.currentTarget.value)}
-            inputActionButton={{
-              icon: 'close',
-              onClick: handleOnClose,
-            }}
-            type="text"
-            id="default-input"
-            placeholder="Placeholder (clear working)"
+            setValue={setValue}
           />
         </FormField>
         <FormField
