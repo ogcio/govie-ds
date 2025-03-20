@@ -3,7 +3,7 @@ import { expect, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from './text-input.js';
+import { TextInput, TextInputWithReset } from './text-input.js';
 
 const meta = {
   title: 'Form/TextInput',
@@ -93,121 +93,25 @@ export const Default: Story = {
   ),
 };
 
-export const ResponsiveLayout: Story = {
+export const WithTextInputReset: Story = {
   args: {
     id: 'text-input-id',
   },
-  render: (props) => {
+  render: () => {
+    const [value, setValue] = useState('');
     return (
-      <div
-        className="md:gi-w-2/3 gi-w-full"
-        role="presentation"
-        aria-label="example"
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'text-input-id',
+        }}
       >
-        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block1"
-          >
-            <FormField
-              label={{ text: 'First Name', htmlFor: 'text-1' }}
-              hint={{
-                text: 'Your first name.',
-              }}
-            >
-              <TextInput {...props} id="text-1" />
-            </FormField>
-            <FormField
-              label={{ text: 'Last Name', htmlFor: 'text-2' }}
-              hint={{
-                text: 'Your last name.',
-              }}
-            >
-              <TextInput {...props} id="text-2" />
-            </FormField>
-          </Stack>
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block2"
-          >
-            <FormField
-              label={{
-                text: 'Address',
-                htmlFor: 'text-4',
-              }}
-              hint={{
-                text: 'Where you live.',
-              }}
-            >
-              <TextInput {...props} id="text-4" maxLength={5} />
-            </FormField>
-          </Stack>
-
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block3"
-          >
-            <FormField
-              label={{
-                htmlFor: 'text-input-birth',
-                text: 'Date of birth',
-              }}
-              hint={{
-                text: 'Your date of birth.',
-              }}
-            >
-              <TextInput id="text-input-birth" type="date" />
-            </FormField>
-
-            <FormField
-              label={{
-                htmlFor: 'text-input-height',
-                text: 'Height',
-              }}
-              hint={{
-                text: 'Your height',
-              }}
-            >
-              <TextInput id="text-input-height" prefix="cm" />
-            </FormField>
-            <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
-              <FormField
-                label={{
-                  text: 'Age',
-                  htmlFor: 'text-input-age',
-                }}
-                hint={{
-                  text: 'Your Age.',
-                }}
-              >
-                <TextInput {...props} maxLength={3} id="text-input-age" />
-              </FormField>
-            </div>
-          </Stack>
-          <FormField
-            label={{
-              text: 'Phone Number',
-              htmlFor: 'text-phone',
-            }}
-            hint={{
-              text: 'Your phone number.',
-            }}
-            error={{
-              text: 'Error: Please correct this issue.',
-            }}
-          >
-            <TextInput
-              {...props}
-              id="text-phone"
-              pattern="\d*"
-              maxLength={10}
-            />
-          </FormField>
-        </Stack>
-      </div>
+        <TextInputWithReset
+          placeholder="Placeholder"
+          value={value}
+          setValue={setValue}
+        />
+      </FormField>
     );
   },
 };
@@ -399,6 +303,125 @@ export const WithHalfWidth: Story = {
       >
         <TextInput {...props} />
       </FormField>
+    );
+  },
+};
+
+export const ResponsiveLayout: Story = {
+  args: {
+    id: 'text-input-id',
+  },
+  render: (props) => {
+    return (
+      <div
+        className="md:gi-w-2/3 gi-w-full"
+        role="presentation"
+        aria-label="example"
+      >
+        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block1"
+          >
+            <FormField
+              label={{ text: 'First Name', htmlFor: 'text-1' }}
+              hint={{
+                text: 'Your first name.',
+              }}
+            >
+              <TextInput {...props} id="text-1" />
+            </FormField>
+            <FormField
+              label={{ text: 'Last Name', htmlFor: 'text-2' }}
+              hint={{
+                text: 'Your last name.',
+              }}
+            >
+              <TextInput {...props} id="text-2" />
+            </FormField>
+          </Stack>
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block2"
+          >
+            <FormField
+              label={{
+                text: 'Address',
+                htmlFor: 'text-4',
+              }}
+              hint={{
+                text: 'Where you live.',
+              }}
+            >
+              <TextInput {...props} id="text-4" maxLength={5} />
+            </FormField>
+          </Stack>
+
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block3"
+          >
+            <FormField
+              label={{
+                htmlFor: 'text-input-birth',
+                text: 'Date of birth',
+              }}
+              hint={{
+                text: 'Your date of birth.',
+              }}
+            >
+              <TextInput id="text-input-birth" type="date" />
+            </FormField>
+
+            <FormField
+              label={{
+                htmlFor: 'text-input-height',
+                text: 'Height',
+              }}
+              hint={{
+                text: 'Your height',
+              }}
+            >
+              <TextInput id="text-input-height" prefix="cm" />
+            </FormField>
+            <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
+              <FormField
+                label={{
+                  text: 'Age',
+                  htmlFor: 'text-input-age',
+                }}
+                hint={{
+                  text: 'Your Age.',
+                }}
+              >
+                <TextInput {...props} maxLength={3} id="text-input-age" />
+              </FormField>
+            </div>
+          </Stack>
+          <FormField
+            label={{
+              text: 'Phone Number',
+              htmlFor: 'text-phone',
+            }}
+            hint={{
+              text: 'Your phone number.',
+            }}
+            error={{
+              text: 'Error: Please correct this issue.',
+            }}
+          >
+            <TextInput
+              {...props}
+              id="text-phone"
+              pattern="\d*"
+              maxLength={10}
+            />
+          </FormField>
+        </Stack>
+      </div>
     );
   },
 };

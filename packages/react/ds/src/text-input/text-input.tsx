@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -53,6 +54,34 @@ export const InputActionButton = ({
       variant="flat"
       size="small"
       appearance="dark"
+    />
+  );
+};
+
+export type TextInputWithResetProps = { setValue: any } & TextInputProps;
+
+export const TextInputWithReset = ({
+  value,
+  setValue,
+  ...props
+}: TextInputWithResetProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleOnClose = () => {
+    setValue('');
+    inputRef?.current?.focus();
+  };
+
+  return (
+    <TextInput
+      {...props}
+      ref={inputRef}
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
+      inputActionButton={{
+        icon: 'close',
+        onClick: handleOnClose,
+      }}
     />
   );
 };
