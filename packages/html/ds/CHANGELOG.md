@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.0.1...html-lib-v1.0.2) (2025-03-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.1
+    * @govie-ds/prettier-config bumped to 1.0.2
+    * @govie-ds/tailwind bumped to 1.1.1
+    * @govie-ds/theme-govie bumped to 0.6.2
+
 ## [1.0.1](https://github.com/ogcio/govie-ds/compare/html-v1.0.0...html-v1.0.1) (2025-03-14)
 
 
