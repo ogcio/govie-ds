@@ -51,10 +51,12 @@ const createFooter = (arguments_: FooterProps) => {
     container.append(primary);
   }
 
-  const sectionBreak = document.createElement('hr');
-  sectionBreak.className = 'gi-section-break-lg gi-border-gray-100';
-  sectionBreak.setAttribute('role', 'separator');
-  container.append(sectionBreak);
+  if (arguments_.primarySlot || arguments_.secondarySlot) {
+    const sectionBreak = document.createElement('hr');
+    sectionBreak.className = 'gi-section-break-lg gi-border-gray-100';
+    sectionBreak.setAttribute('role', 'separator');
+    container.append(sectionBreak);
+  }
 
   if (arguments_.secondarySlot) {
     const secondary = document.createElement('div');
@@ -214,12 +216,6 @@ export const MinimalFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Partners</a>
         <a href="#" class="gi-link gi-link-inherit">Investors</a>
         <a href="#" class="gi-link gi-link-inherit">Events</a>
-      </div>
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
       </div>`,
     utilitySlot: `
       <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
@@ -238,6 +234,14 @@ export const MinimalFooter: Story = {
 export const SimpleFooter: Story = {
   args: {
     dataTestid: 'footer',
+    utilitySlot: `
+      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+        <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
+        <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
+        <div class="gi-text-sm">
+          © ${new Date().getFullYear()} Government of Ireland.
+        </div>
+      </div>`,
   },
   // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
