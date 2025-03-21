@@ -317,7 +317,7 @@ export const WithHalfWidth: Story = {
   },
   render: (props) => {
     return (
-      <Stack>
+      <Stack gap={4}>
         <FormField
           label={{
             text: 'Half width',
