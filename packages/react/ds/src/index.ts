@@ -66,7 +66,7 @@ export {
   ModalWrapper,
   ModalTitle,
 } from './modal/modal.js';
-export type { ModalProps, ModalWrapperProps } from './modal/types.js';
+export type * from './modal/types.js';
 export { Pagination, type PaginationProps } from './pagination/pagination.js';
 export { Paragraph, type ParagraphProps } from './paragraph/paragraph.js';
 export {
