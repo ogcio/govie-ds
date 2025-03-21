@@ -99,7 +99,7 @@ export function Footer({
         )}
 
         {!secondarySlot && (
-          <div className="gi-footer-logo md:gi-ml-auto ">{renderLogo()}</div>
+          <div className="gi-footer-logo md:gi-ml-auto">{renderLogo()}</div>
         )}
       </div>
       {utilitySlot && (
