@@ -2,6 +2,20 @@
 
 
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.2...tokens-v1.2.0) (2025-03-21)
+
+
+### Features
+
+* Modal component sync with Figma ([#480](https://github.com/ogcio/govie-ds/issues/480)) ([d83ff0c](https://github.com/ogcio/govie-ds/commit/d83ff0cb6969c05a5e9210b4b01afd2b186e5ef8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/prettier-config bumped to 1.0.3
+
 ## [0.7.2](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.1...tokens-v0.7.2) (2025-03-18)
 
 

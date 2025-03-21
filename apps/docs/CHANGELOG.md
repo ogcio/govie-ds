@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/docs-v1.1.1...docs-v1.2.0) (2025-03-21)
+
+
+### Features
+
+* Modal component sync with Figma ([#480](https://github.com/ogcio/govie-ds/issues/480)) ([d83ff0c](https://github.com/ogcio/govie-ds/commit/d83ff0cb6969c05a5e9210b4b01afd2b186e5ef8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/deepmerge bumped to 1.0.2
+    * @govie-ds/react bumped to 1.2.0
+    * @govie-ds/tailwind bumped to 1.2.0
+    * @govie-ds/theme-govie bumped to 1.2.0
+    * @govie-ds/tokens bumped to 1.2.0
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.2
+    * @govie-ds/prettier-config bumped to 1.0.3
+
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/docs-v1.1.0...docs-v1.1.1) (2025-03-18)
 
 
