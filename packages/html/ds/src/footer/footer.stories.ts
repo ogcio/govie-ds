@@ -58,7 +58,7 @@ const createFooter = (arguments_: FooterProps) => {
   }
 
   const sectionBreak = document.createElement('hr');
-  sectionBreak.className = 'gi-section-break-md gi-border-gray-100';
+  sectionBreak.className = 'gi-section-break-lg gi-border-gray-100';
   sectionBreak.setAttribute('role', 'separator');
   container.append(sectionBreak);
 
