@@ -1,0 +1,34 @@
+.gi-radio-base {
+  @apply gi-cursor-pointer gi-appearance-none gi-border-solid gi-border-[2px] gi-rounded-[50%] gi-border-black checked:before:gi-border-solid checked:before:gi-rounded-[50%] checked:before:gi-border-black checked:before:gi-block checked:before:gi-w-0 focus:gi-border-[4px] gi-focus-state-outline hover:gi-shadow-[0_0_0_4px_#d8dadf] hover:focus:gi-shadow-[0_0_0_6px_#d8dadf];
+}
+.gi-radio-small {
+  @apply gi-radio-base gi-min-w-6 gi-min-h-6 gi-w-6 gi-h-6 checked:before:gi-border-[5px] checked:before:gi-translate-x-[5px] checked:before:gi-translate-y-[5px] focus:before:gi-translate-x-[3px] focus:before:gi-translate-y-[3px];
+}
+.gi-radio-medium {
+  @apply gi-radio-base gi-min-w-8 gi-min-h-8 gi-w-8 gi-h-8 checked:before:gi-border-[7px] checked:before:gi-translate-x-[7px] checked:before:gi-translate-y-[7px] focus:before:gi-translate-x-[5px] focus:before:gi-translate-y-[5px];
+}
+.gi-radio-large {
+  @apply gi-radio-base gi-min-w-11 gi-min-h-11 gi-w-11 gi-h-11 checked:before:gi-border-[10px] checked:before:gi-translate-x-[10px] checked:before:gi-translate-y-[10px] focus:before:gi-translate-x-[8px] focus:before:gi-translate-y-[8px];
+}
+
+.gi-radio-small ~ label {
+  @apply gi-cursor-pointer gi-text-sm;
+}
+.gi-radio-medium ~ label {
+  @apply gi-cursor-pointer gi-text-md;
+}
+.gi-radio-large ~ label {
+  @apply gi-cursor-pointer gi-text-lg;
+}
+.gi-radio-container {
+  @apply gi-gap-4 gi-flex gi-items-center;
+}
+.gi-radio-conditional-divider-container {
+  @apply gi-flex gi-gap-4;
+}
+.gi-radio-conditional-divider-border-container {
+  @apply gi-h-full gi-flex gi-justify-center gi-mt-1.5;
+}
+.gi-radio-conditional-divider-border {
+  @apply gi-h-full gi-w-1 gi-bg-gray-300;
+}
