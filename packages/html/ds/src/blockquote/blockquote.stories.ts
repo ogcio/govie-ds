@@ -1,39 +1,33 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './blockquote.html?raw';
-import { BlockquoteProps } from './blockquote.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { BlockquoteProps } from './types';
 
-const macro = { name: 'govieBlockquote', html };
-
-const Blockquote = renderComponent<BlockquoteProps>(macro);
-
-const meta = {
-  component: Blockquote,
+const meta: Meta<BlockquoteProps> = {
   title: 'Typography/Blockquote',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Inset text component to differentiate a block of text from the content that surrounds it.',
-      },
-    },
-  },
-} satisfies Meta<typeof Blockquote>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<BlockquoteProps>;
+
+const createElement = (arguments_: BlockquoteProps) => {
+  const container = document.createElement('blockquote');
+  container.className = 'gi-blockquote';
+  if (arguments_.content) {
+    container.innerHTML = arguments_.content;
+  }
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
   argTypes: {
     content: {
       control: 'text',
-      type: { name: 'string', required: true },
-      description: 'The text or component within the blockquote.',
+      description:
+        'HTML content or other components to be rendered inside the container.',
     },
   },
   args: {
-    content:
-      'It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.',
+    content: `<p>Paragraph</p>`,
   },
+  render: (arguments_) => createElement(arguments_),
 };

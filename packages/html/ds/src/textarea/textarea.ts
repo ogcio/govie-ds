@@ -19,7 +19,7 @@ export class Textarea extends BaseComponent<TextareaProps> {
         try {
           const { id, value, maxLength } = textarea;
           const remainingCharsContainer = document.querySelector(
-            `div[data-remaining-chars-container=${id}]`,
+            `div[data-remainingcharscontainer=${id}]`,
           );
 
           if (textarea?.maxLength > -1 && remainingCharsContainer) {

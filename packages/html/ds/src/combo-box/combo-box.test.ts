@@ -6,7 +6,7 @@ import {
 } from '../../../../react/ds/src/combo-box/combo-box.content';
 import { render } from '../common/render';
 import html from './combo-box.html?raw';
-import { ComboBoxProps } from './combo-box.schema';
+import { ComboBoxProps } from './types';
 
 const standardProps = {
   action: '#',

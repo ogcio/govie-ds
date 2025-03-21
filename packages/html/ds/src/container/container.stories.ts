@@ -1,38 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './container.html?raw';
-import { ContainerProps } from './container.schema';
+import { expect, within } from '@storybook/test';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { ContainerProps } from './types';
 
-const macro = { name: 'govieContainer', html };
-
-const Container = renderComponent<ContainerProps>(macro);
-
-const meta = {
-  component: Container,
+const meta: Meta<ContainerProps> = {
   title: 'Layout/Container',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Container component when you need a centralised, consistent layout wrapper for content on your webpage.',
-      },
-    },
-  },
-} satisfies Meta<typeof Container>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ContainerProps>;
+
+const createContainer = (arguments_: ContainerProps) => {
+  const container = document.createElement('div');
+  container.className = 'gi-layout-container';
+  if (arguments_.content) {
+    container.innerHTML = arguments_.content;
+  }
+  return beautifyHtmlNode(container);
+};
 
 export const Default: Story = {
-  argTypes: {
-    html: {
-      control: 'text',
-      description:
-        'HTML content or other components to be rendered inside the container.',
-    },
-  },
   args: {
-    html: `<p>Paragraph</p>`,
+    content: `<p>Paragraph</p>`,
+  },
+  render: (arguments_) => createContainer(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText('This is a paragraph.');
+    expect(paragraph).toHaveClass('gi-paragraph-md');
+    expect(paragraph).toHaveClass('gi-text-start');
+    expect(paragraph).toHaveClass('gi-whitespace-normal');
   },
 };

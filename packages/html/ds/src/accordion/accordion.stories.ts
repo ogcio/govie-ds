@@ -1,27 +1,82 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import { AccordionProps } from './accordion-schema';
-import html from './accordion.html?raw';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { AccordionProps } from './types';
+import { createIcon } from '../helpers/icons';
 
-const macro = { name: 'govieAccordion', html };
-
-const Accordion = renderComponent<AccordionProps>(macro);
-
-const meta = {
-  component: Accordion,
+const meta: Meta<AccordionProps> = {
   title: 'Layout/Accordion',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component: 'Accordion component',
-      },
-    },
-  },
-} satisfies Meta<typeof Accordion>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<AccordionProps>;
+
+const createAccordion = (arguments_: AccordionProps) => {
+  const accordion = document.createElement('div');
+  accordion.dataset.module = 'gieds-accordion';
+  accordion.role = 'region';
+
+  const variantClass =
+    arguments_.variant == 'small'
+      ? 'gi-py-2 gi-px-2 gi-text-sm gi-font-bold'
+      : 'gi-px-2 gi-py-4 gi-text-md gi-font-bold';
+
+  const textSizeClass =
+    arguments_.variant == 'small' ? 'gi-text-sm' : 'gi-text-md';
+
+  for (let index = 0; index < arguments_.items.length; index++) {
+    const item = arguments_.items[index];
+
+    const defaultExpandedClass = item.defaultExpanded
+      ? 'gi-block'
+      : 'gi-hidden';
+    const iconId = item.defaultExpanded
+      ? 'keyboard_arrow_up'
+      : 'keyboard_arrow_down';
+
+    const borderClass =
+      index === arguments_.items.length - 1
+        ? 'gi-border-t'
+        : 'gi-border-t gi-border-b';
+
+    const accordionItem = document.createElement('div');
+    accordionItem.className = borderClass;
+
+    const title = document.createElement('div');
+    title.dataset.disabled = `${item.disabled || false}`;
+    title.dataset['iconStart'] = `${arguments_.iconStart || false}`;
+    title.dataset['defaultExpanded'] = `${item.defaultExpanded || false}`;
+    title.role = 'group';
+    title.className = 'gi-accordion';
+    title.tabIndex = 0;
+
+    const header = document.createElement('div');
+    header.id = `accordion-header-${index}`;
+    header.className = `gi-accordion-header ${variantClass}`;
+
+    const icon = createIcon({ icon: iconId });
+    header.innerHTML = item.label + ' ' + icon.outerHTML;
+    title.append(header);
+
+    const content = document.createElement('div');
+    content.className = `gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal ${defaultExpandedClass} ${textSizeClass}`;
+    content.id = `accordion-panel-${index}`;
+    content.role = 'region';
+    if (item.content) {
+      content.innerHTML = item.content;
+    }
+
+    accordionItem.append(title);
+    accordionItem.append(content);
+    accordion.append(accordionItem);
+  }
+
+  return accordion;
+};
+
+const createElement = (arguments_: AccordionProps) => {
+  const component = createAccordion(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 const items = [
   {
@@ -51,51 +106,23 @@ const items = [
 ];
 
 export const Default: Story = {
-  argTypes: {
-    items: {
-      description:
-        'The content that will be inserted into the accordion (AccordionItem components)',
-      table: {
-        type: { summary: 'React.ReactElement<typeof AccordionItem>[]' },
-      },
-    },
-    iconStart: {
-      control: 'boolean',
-      description:
-        'Indicates whether icons should appear on the left (true) or the right (false) of the accordion label.',
-    },
-    dataTestid: {
-      control: 'text',
-      description: 'Custom test id for the Accordion component.',
-    },
-    variant: {
-      control: 'radio',
-      options: ['default', 'small'],
-      description:
-        'Defines the padding and style for the Accordion (default or small)',
-    },
-  },
   args: {
     items,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SmallVariant: Story = {
   args: {
     variant: 'small',
-    aria: {
-      'aria-label': 'Accordion',
-    },
     items,
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithIconStart: Story = {
   args: {
     iconStart: true,
-    aria: {
-      'aria-label': 'Accordion',
-    },
     items: [
       {
         label: 'Label 1',
@@ -112,13 +139,11 @@ export const WithIconStart: Story = {
           'Minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.',
       },
       {
-        aria: {
-          'aria-disabled': 'true',
-        },
         disabled: true,
         label: 'Label 4',
         content: `<button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">Button</button>`,
       },
     ],
   },
+  render: (arguments_) => createElement(arguments_),
 };

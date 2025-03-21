@@ -1,7 +1,0 @@
-{% macro govieContainer(content) %}
-  <div class="gi-layout-container" data-testid="govie-container">
-    {% if content.html %}
-      {{ content.html | safe | trim | indent(2) }}
-    {% endif %}
-  </div>
-{% endmacro %}

@@ -1,23 +1,96 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './heading.html?raw';
-import { Size, Tag } from './heading.schema';
+import { within, expect } from '@storybook/test';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import type { HeadingProps } from './heading.schema';
+import { Size, Tag } from './heading.schema';
 
-const macro = { name: 'govieHeading', html };
-
-const Heading = renderComponent<HeadingProps>(macro);
-
-const meta = {
-  component: Heading,
-  title: 'typography/Heading',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof Heading>;
+const meta: Meta<HeadingProps> = {
+  title: 'Typography/Heading',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<HeadingProps>;
+
+const createHeading = (arguments_: HeadingProps) => {
+  let classSize = '';
+  if (arguments_.size === undefined) {
+    switch (arguments_.as) {
+      case 'h6': {
+        classSize = 'gi-heading-2xs';
+        break;
+      }
+      case 'h5': {
+        classSize = 'gi-heading-xs';
+        break;
+      }
+      case 'h4': {
+        classSize = 'gi-heading-sm';
+        break;
+      }
+      case 'h3': {
+        classSize = 'gi-heading-md';
+        break;
+      }
+      case 'h2': {
+        classSize = 'gi-heading-lg';
+        break;
+      }
+      case 'h1': {
+        classSize = 'gi-heading-xl';
+        break;
+      }
+    }
+  } else {
+    switch (arguments_.size) {
+      case '2xs': {
+        classSize = 'gi-heading-2xs';
+        break;
+      }
+      case 'xs': {
+        classSize = 'gi-heading-xs';
+        break;
+      }
+      case 'sm': {
+        classSize = 'gi-heading-sm';
+        break;
+      }
+      case 'md': {
+        classSize = 'gi-heading-md';
+        break;
+      }
+      case 'lg': {
+        classSize = 'gi-heading-lg';
+        break;
+      }
+      case 'xl': {
+        classSize = 'gi-heading-xl';
+        break;
+      }
+    }
+  }
+
+  const component = document.createElement(arguments_.as ?? 'h1');
+  component.className = classSize;
+  component.textContent = arguments_.text;
+
+  if (arguments_.caption) {
+    const caption = document.createElement('span');
+    caption.className = 'gi-text-gray-500';
+    caption.textContent = arguments_.caption;
+
+    const container = document.createElement('div');
+    container.append(caption);
+    container.append(component);
+    return container;
+  } else {
+    return component;
+  }
+};
+
+const createElement = (arguments_: HeadingProps) => {
+  const component = createHeading(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   args: {
@@ -41,6 +114,7 @@ export const Default: Story = {
       description: 'Caption for the heading',
     },
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Small: Story = {
@@ -48,15 +122,11 @@ export const Small: Story = {
     as: Tag.H6,
     text: 'Small heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByText('Small heading');
+    expect(heading).toHaveClass('gi-heading-2xs');
   },
 };
 
@@ -66,15 +136,11 @@ export const Medium: Story = {
     as: Tag.H3,
     text: 'Medium heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByText('Medium heading');
+    expect(heading).toHaveClass('gi-heading-md');
   },
 };
 
@@ -84,16 +150,7 @@ export const Large: Story = {
     as: Tag.H1,
     text: 'Large heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
-  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const ExtraLarge: Story = {
@@ -102,16 +159,7 @@ export const ExtraLarge: Story = {
     as: Tag.H1,
     text: 'Extra large heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
-  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Caption: Story = {
@@ -121,14 +169,10 @@ export const Caption: Story = {
     text: 'Heading with h6',
     caption: 'Caption Text',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const caption = canvas.getByText('Caption Text');
+    expect(caption).toBeDefined();
   },
 };

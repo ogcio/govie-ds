@@ -1,72 +1,51 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './file-upload.html?raw';
-import { FileUploadProps } from './file-upload.schema';
+import { expect, within } from '@storybook/test';
+import { createFormField } from '../helpers/forms';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { FileUploadProps } from './types';
 
-const macro = { name: 'govieFileUpload', html };
-const FileUpload = renderComponent<FileUploadProps>(macro);
-
-const meta = {
+const meta: Meta<FileUploadProps> = {
   title: 'Form/FileUpload',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Use the file upload component to allow users to upload files. It includes options for adding labels, hint text, and error messages.',
-      },
-    },
-  },
-  component: FileUpload,
-  argTypes: {
-    label: {
-      description: 'Label associated with the input field.',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-    hint: {
-      description: 'Hint text for additional guidance.',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    error: {
-      description: 'Error message displayed when there is a validation error.',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
-    accept: {
-      description:
-        'Accepted file types for the file upload (e.g., image/*, application/pdf).',
-      control: 'text',
-      table: {
-        category: 'File Type',
-        type: { summary: 'string' },
-        defaultValue: { summary: '*/*' },
-      },
-    },
-    id: {
-      description: 'Sets the unique ID for the file input field.',
-      control: 'text',
-      table: {
-        category: 'Accessibility',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'file-upload-id' },
-      },
-    },
-  },
-} satisfies Meta<typeof FileUpload>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<FileUploadProps>;
+
+const createFileUpload = (arguments_: FileUploadProps) => {
+  const formField = createFormField(arguments_);
+
+  const container = document.createElement('div');
+  container.className =
+    `${arguments_.className || ''} gi-text-input-container`.trim();
+
+  const input = document.createElement('input') as HTMLInputElement;
+  input.type = 'file';
+  input.className = `gi-file-upload-input `.trim();
+
+  if (arguments_.id) {
+    input.id = arguments_.id;
+  }
+  if (arguments_.name) {
+    input.name = arguments_.name;
+  }
+  if (arguments_.placeholder) {
+    input.placeholder = arguments_.placeholder;
+  }
+  if (arguments_.dataTestId) {
+    input.dataset.testid = arguments_.dataTestId;
+  }
+  if (arguments_.disabled) {
+    input.disabled = true;
+  }
+  if (arguments_.accept) {
+    input.accept = arguments_.accept;
+  }
+
+  container.append(input);
+  formField.append(container);
+
+  return beautifyHtmlNode(formField);
+};
 
 export const Default: Story = {
   args: {
@@ -76,32 +55,24 @@ export const Default: Story = {
       for: 'file-upload-id',
       size: 'md',
     },
-    hint: {
-      content: '',
-    },
-    error: {
-      content: '',
-    },
+    dataTestId: 'input-id',
     accept: '*/*',
+  },
+  render: (arguments_) => createFileUpload(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textInput = canvas.getByTestId('input-id') as HTMLInputElement;
+    expect(textInput).toHaveAttribute('type', 'file');
+
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
   },
 };
 
-export const WithLabelAndHint: Story = {
-  args: {
-    id: 'file-upload-id',
-    label: {
-      content: 'Upload File',
-      for: 'file-upload-id',
-      size: 'md',
-    },
-    hint: {
-      content: 'Hint: Please upload a file that is less than 5MB.',
-    },
-    accept: '*/*',
-  },
-};
-
-export const WithLabelAndError: Story = {
+export const WithLabelHintAndError: Story = {
   args: {
     id: 'file-upload-id',
     label: {
@@ -112,7 +83,35 @@ export const WithLabelAndError: Story = {
     error: {
       content: 'Error: File must be smaller than 5MB.',
     },
+    hint: {
+      content: 'Hint: Please upload a file that is less than 5MB.',
+    },
+    dataTestId: 'input-id',
     accept: '.pdf, .docx',
+  },
+  render: (arguments_) => createFileUpload(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textInput = canvas.getByTestId('input-id') as HTMLInputElement;
+    expect(window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)',
+    );
+
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
+
+    const hint = canvas.getByText(
+      'Hint: Please upload a file that is less than 5MB.',
+    );
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
+
+    const error = canvas.getByText('Error: File must be smaller than 5MB.');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
   },
 };
 
@@ -124,6 +123,14 @@ export const WithPDFAndDocxOnly: Story = {
       for: 'file-upload-id',
       size: 'md',
     },
+    dataTestId: 'input-id',
     accept: '.pdf, .docx',
+  },
+  render: (arguments_) => createFileUpload(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textInput = canvas.getByTestId('input-id') as HTMLInputElement;
+    expect(textInput).toHaveAttribute('accept', '.pdf, .docx');
   },
 };

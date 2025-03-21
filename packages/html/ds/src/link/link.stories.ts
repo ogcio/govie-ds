@@ -1,31 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  ButtonAppearance,
-  ButtonSize,
-  ButtonVariant,
-} from '../button/button-schema';
-import { renderComponent } from '../storybook/storybook';
-import html from './link.html?raw';
-import { LinkProps, LinkSize } from './link.schema';
+import { expect, within } from '@storybook/test';
+import { createLink } from '../helpers/links';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { LinkProps } from './types';
 
-const macro = { name: 'govieLink', html };
-
-const Link = renderComponent<LinkProps>(macro);
-
-const meta = {
-  component: Link,
+const meta: Meta<LinkProps> = {
   title: 'Navigation/Link',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof Link>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<LinkProps>;
+
+const createElement = (arguments_: LinkProps) => {
+  const component = createLink(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
-    label: {
+    content: {
       control: 'text',
       type: { name: 'string', required: true },
     },
@@ -62,32 +55,59 @@ export const Default: Story = {
   },
   args: {
     href: '#',
-    label: 'Link',
-    size: LinkSize.Medium, // Default size can be set here, change to 'sm' if needed
+    content: 'Link',
+    size: 'md', // Default size can be set here, change to 'sm' if needed
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link');
+    expect(link).toHaveClass('gi-link');
   },
 };
 
 export const WithoutUnderline: Story = {
   args: {
     href: '#',
-    label: 'Link without underline',
+    content: 'Link without underline',
     noUnderline: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link without underline');
+    expect(link).toHaveClass('gi-link');
+    expect(link).toHaveClass('gi-link-no-underline');
   },
 };
 
 export const External: Story = {
   args: {
     href: '#',
-    label: 'Link text (opens in a new tab)',
+    content: 'Link text (opens in a new tab)',
     external: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link text (opens in a new tab)');
+    expect(link).toHaveClass('gi-link');
+    expect(link).toHaveAttribute('rel', 'noreferrer noopener');
+    expect(link).toHaveAttribute('target', '_blank');
   },
 };
 
 export const NoVisited: Story = {
   args: {
     href: '#',
-    label: 'Link',
+    content: 'Link',
     noVisited: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link');
+    expect(link).toHaveClass('gi-link-no-visited');
   },
 };
 
@@ -95,50 +115,37 @@ export const styledAsButton: Story = {
   args: {
     href: '#',
     asButton: {
-      variant: ButtonVariant.Primary,
-      size: ButtonSize.Medium,
-      appearance: ButtonAppearance.Default,
+      variant: 'primary',
+      size: 'medium',
+      appearance: 'default',
     },
-    label: 'Link',
+    content: 'Link',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link');
+    expect(link).toHaveClass('gi-btn');
   },
 };
 
 export const asButton: Story = {
   args: {
     as: 'button',
-    label: 'Link',
+    content: 'Link',
   },
-};
-
-export const asButtonDisabled: Story = {
-  args: {
-    as: 'button',
-    label: 'Link',
-    asButton: {
-      disabled: true,
-      aria: {
-        'aria-disabled': 'true',
-      },
-    },
-  },
-};
-
-export const withAriaAttributes: Story = {
-  args: {
-    href: '#',
-    label: 'Link',
-    size: LinkSize.Medium,
-    aria: {
-      'aria-current': '2',
-      'aria-disabled': 'false',
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Link');
+    expect(link.tagName).toBe('BUTTON');
   },
 };
 
 export const AllStates: Story = {
   args: {
     href: '#',
-    label: '',
+    content: '',
   },
   render: () =>
     `<div class="gi-gap-4 gi-flex">
