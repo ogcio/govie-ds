@@ -1,0 +1,7 @@
+.gi-drawer {
+  @apply gi-flex gi-flex-col;
+}
+
+.gi-drawer-body {
+  @apply gi-border-t-xs gi-border-gray-100;
+}

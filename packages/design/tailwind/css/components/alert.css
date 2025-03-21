@@ -1,0 +1,35 @@
+.gi-alert-base {
+  @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px];
+}
+
+.gi-alert-base-dismissible {
+  @apply gi-alert-base;
+}
+
+.gi-alert-title {
+  @apply gi-text-2md gi-font-bold;
+}
+
+.gi-alert-container {
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2;
+}
+
+.gi-alert-dismiss {
+  @apply gi-absolute gi-top-2 gi-right-2;
+}
+
+.gi-alert-info {
+  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700;
+}
+
+.gi-alert-success {
+  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700;
+}
+
+.gi-alert-warning {
+  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700;
+}
+
+.gi-alert-danger {
+  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
+}
