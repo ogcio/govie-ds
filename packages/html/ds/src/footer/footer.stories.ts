@@ -1,10 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  BlueskySVG,
-  FacebookSVG,
-  LinkedInSVG,
-  XSVG,
-} from '../icon/svgs/social';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { getLogoContaier } from './footer.util';
 
@@ -183,10 +177,10 @@ export const CompleteFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Events</a>
       </div>
       <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        ${XSVG({})}
-        ${FacebookSVG({})}
-        ${BlueskySVG({})}
-        ${LinkedInSVG({})}
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
       </div>`,
     utilitySlot: `
     <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
@@ -222,10 +216,10 @@ export const MinimalFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Events</a>
       </div>
       <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        ${XSVG({})}
-        ${FacebookSVG({})}
-        ${BlueskySVG({})}
-        ${LinkedInSVG({})}
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
+        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
       </div>`,
     utilitySlot: `
       <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
