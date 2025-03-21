@@ -68,7 +68,7 @@ const meta = {
       control: false,
       table: {
         category: 'Behavior',
-        type: { summary: '(value: string) => void' },
+        type: { summary: '() => void' },
       },
     },
   },

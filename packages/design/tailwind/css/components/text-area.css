@@ -6,7 +6,7 @@
   @apply gi-pl-9;
 }
 
-.gi-text-area-inner {
+.gi-textarea-inner {
   @apply gi-w-full gi-flex gi-items-start gi-relative;
 }
 

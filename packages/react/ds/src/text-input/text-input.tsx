@@ -59,7 +59,7 @@ export const InputActionButton = ({
 };
 
 export type TextInputWithResetProps = {
-  onResetValue?: (value: string) => void;
+  onResetValue?: () => void;
 } & Omit<TextInputProps, 'inputActionButton'>;
 
 export const TextInputWithReset = forwardRef<
@@ -72,7 +72,7 @@ export const TextInputWithReset = forwardRef<
 
   const handleOnReset = () => {
     if (onResetValue) {
-      onResetValue('');
+      onResetValue();
     }
 
     if (inputRef?.current) {

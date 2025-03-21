@@ -22,7 +22,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   autoComplete?: string;
   maxChars?: number;
   halfFluid?: boolean;
-  onResetValue?: (text: string) => void;
+  onResetValue?: () => void;
   iconStart?: IconId;
 };
 
@@ -64,7 +64,7 @@ export const TextArea = forwardRef(
 
     const handleOnResetClick = () => {
       if (onResetValue) {
-        onResetValue('');
+        onResetValue();
       }
 
       if (inputRef?.current) {
@@ -77,7 +77,7 @@ export const TextArea = forwardRef(
       <>
         <div className="gi-textarea-container">
           <div
-            className={cn('gi-text-area-inner', {
+            className={cn('gi-textarea-inner', {
               'gi-input-half-width': halfFluid,
             })}
           >
