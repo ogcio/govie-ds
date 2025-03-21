@@ -1,6 +1,6 @@
-import { ErrorTextProps } from '../error-text/error-text.schema';
-import { HintTextProps } from '../hint-text/hint-text.schema';
-import { LabelProps } from '../label/label.schema';
+import { ErrorTextProps } from '../error-text/types';
+import { HintTextProps } from '../hint-text/types';
+import { LabelProps } from '../label/types';
 
 export type FileUploadProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: LabelProps;

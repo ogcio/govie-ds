@@ -1,7 +1,7 @@
 import { CheckboxProps } from '../checkbox/types';
-import { ErrorTextProps } from '../error-text/error-text.schema';
-import { HintTextProps } from '../hint-text/hint-text.schema';
-import { LabelProps } from '../label/label.schema';
+import { ErrorTextProps } from '../error-text/types';
+import { HintTextProps } from '../hint-text/types';
+import { LabelProps } from '../label/types';
 import { RadioProps } from '../radio/types';
 import { TextInputProps } from '../text-input/types';
 
@@ -9,27 +9,33 @@ export const createLabel = (labelProps: LabelProps) => {
   const label = document.createElement('label');
   label.className =
     `gi-text-${labelProps.size} gi-label ${labelProps.className || ''}`.trim();
-  label.textContent = labelProps.content;
-  if (labelProps.for) {
-    label.htmlFor = labelProps.for;
+  if (labelProps.content) {
+    label.textContent = labelProps.content;
+  }
+  if (labelProps.htmlFor) {
+    label.htmlFor = labelProps.htmlFor;
   }
   return label;
 };
 
 export const createHintText = (hintProps: HintTextProps) => {
-  const label = document.createElement('div');
-  label.className =
+  const hint = document.createElement('div');
+  hint.className =
     `gi-hint-text-${hintProps.size} gi-hint-text ${hintProps.className || ''}`.trim();
-  label.textContent = hintProps.content;
+  if (hintProps.content) {
+    hint.textContent = hintProps.content;
+  }
 
-  return label;
+  return hint;
 };
 
 export const createErrorText = (errorProps: ErrorTextProps) => {
   const errorText = document.createElement('div');
   errorText.className =
     `gi-error-text-${errorProps.size} gi-error-text ${errorProps.className || ''}`.trim();
-  errorText.textContent = errorProps.content;
+  if (errorProps.content) {
+    errorText.textContent = errorProps.content;
+  }
   errorText.role = 'alert';
 
   return errorText;
@@ -63,21 +69,18 @@ export const createFormField = (formFieldProps: {
 };
 
 export const createCheckbox = (arguments_: CheckboxProps) => {
+  let widthClass = '';
   let sizeClass = '';
-  let tickClass = '';
 
   if (arguments_.size == 'lg') {
-    sizeClass = 'gi-w-11 gi-h-11';
-    tickClass =
-      'checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2';
+    widthClass = 'gi-w-11 gi-h-11';
+    sizeClass = 'gi-checkbox-large';
   } else if (arguments_.size == 'sm') {
-    sizeClass = 'gi-w-6 gi-h-6';
-    tickClass =
-      'checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1';
+    widthClass = 'gi-w-6 gi-h-6';
+    sizeClass = 'gi-checkbox-small';
   } else {
-    sizeClass = 'gi-w-8 gi-h-8';
-    tickClass =
-      'checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5';
+    widthClass = 'gi-w-8 gi-h-8';
+    sizeClass = 'gi-checkbox-medium';
   }
 
   const container = document.createElement('div');
@@ -87,10 +90,8 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   const input = document.createElement('input') as HTMLInputElement;
   input.type = 'checkbox';
   input.role = 'checkbox';
-  input.className = `gi-checkbox-input ${sizeClass} ${tickClass}`;
-  if (arguments_.id) {
-    input.id = arguments_.id;
-  }
+  input.className = `gi-checkbox-input ${sizeClass} ${widthClass}`;
+  input.id = arguments_.id || (arguments_.value as string);
   if (arguments_.value) {
     input.value = arguments_.value as string;
   }
@@ -104,14 +105,14 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   if (arguments_.disabled) {
     input.disabled = arguments_.disabled;
   }
-
+  if (arguments_.dataElement) {
+    input.dataset.element = arguments_.dataElement;
+  }
   inputContainer.append(input);
 
   if (arguments_.label) {
     const label = document.createElement('label') as HTMLLabelElement;
-    if (arguments_.id) {
-      label.htmlFor = arguments_.id;
-    }
+    label.htmlFor = input.id;
     label.className = 'gi-checkbox-label';
     label.textContent = arguments_.label;
     inputContainer.append(label);

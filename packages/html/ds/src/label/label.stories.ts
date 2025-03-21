@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createLabel } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { LabelProps, LabelSize } from './label.schema';
+import { LabelProps, LabelSize } from './types';
 
 const meta: Meta<LabelProps> = {
   title: 'Typography/Label',
@@ -23,7 +23,7 @@ export const Default: Story = {
       description: 'Text content of the label',
       type: { name: 'string', required: true },
     },
-    for: {
+    htmlFor: {
       control: 'text',
       description: 'ID of the associated form input',
       type: { name: 'string', required: false },
@@ -42,7 +42,7 @@ export const Default: Story = {
   args: {
     content: 'This is label text',
     size: 'md',
-    for: 'input-id',
+    htmlFor: 'input-id',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createHintText } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { HintSize, HintTextProps } from './hint-text.schema';
+import { HintSize, HintTextProps } from './types';
 
 const meta: Meta<HintTextProps> = {
   title: 'Typography/HintText',

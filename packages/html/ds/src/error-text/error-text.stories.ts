@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createErrorText } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { ErrorSize, ErrorTextProps } from './error-text.schema';
+import { ErrorSize, ErrorTextProps } from './types';
 
 const meta: Meta<ErrorTextProps> = {
   title: 'Typography/ErrorText',

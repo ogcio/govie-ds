@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createTextInput } from '../helpers/forms';
-import { LabelSize } from '../label/label.schema';
+import { LabelSize } from '../label/types';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextInputProps } from './types';
 

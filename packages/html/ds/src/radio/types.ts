@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
-import { ErrorTextProps } from '../error-text/error-text.schema.js';
-import { HintTextProps } from '../hint-text/hint-text.schema.js';
-import { LabelProps } from '../label/label.schema.js';
+import { ErrorTextProps } from '../error-text/types.js';
+import { HintTextProps } from '../hint-text/types.js';
+import { LabelProps } from '../label/types.js';
 import { TextInputProps } from '../text-input/types.js';
 
 export const RadioSizeEnum = {

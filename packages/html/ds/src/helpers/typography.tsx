@@ -39,7 +39,9 @@ export const createParagraph = (arguments_: ParagraphProps) => {
   if (arguments_.content) {
     component.textContent = arguments_.content;
   }
-  component.dataset.testid = arguments_.dataTestid;
+  if (arguments_.dataTestid) {
+    component.dataset.testid = arguments_.dataTestid;
+  }
 
   return component;
 };
