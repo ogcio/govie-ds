@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -59,34 +59,39 @@ export const InputActionButton = ({
 };
 
 export type TextInputWithResetProps = {
-  setValue: (value: string) => void;
-} & TextInputProps;
+  onResetValue?: (value: string) => void;
+} & Omit<TextInputProps, 'inputActionButton'>;
 
-export const TextInputWithReset = ({
-  value,
-  setValue,
-  ...props
-}: TextInputWithResetProps) => {
+export const TextInputWithReset = forwardRef<
+  HTMLInputElement,
+  TextInputWithResetProps
+>(({ onResetValue, ...props }, externalRef) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleOnClose = () => {
-    setValue('');
-    inputRef?.current?.focus();
+  useImperativeHandle(externalRef, () => inputRef.current!);
+
+  const handleOnReset = () => {
+    if (onResetValue) {
+      onResetValue('');
+    }
+
+    if (inputRef?.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
   };
 
   return (
     <TextInput
       {...props}
       ref={inputRef}
-      value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
       inputActionButton={{
         icon: 'close',
-        onClick: handleOnClose,
+        onClick: handleOnReset,
       }}
     />
   );
-};
+});
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
@@ -112,7 +117,11 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             {prefix}
           </div>
         )}
-        <div className="gi-text-input-inner">
+        <div
+          className={cn('gi-text-input-inner', {
+            'gi-input-half-width': halfFluid,
+          })}
+        >
           {iconStart && (
             <div className="gi-text-input-icon-start" data-prefix={!!prefix}>
               <Icon icon={iconStart} size="md" disabled={disabled} />
@@ -125,9 +134,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             data-end-element={!!inputActionButton}
             data-prefix={!!prefix}
             data-suffix={!!suffix}
-            className={cn(inputClassName, 'gi-text-input', {
-              'gi-input-half-width': halfFluid,
-            })}
+            className={cn(inputClassName, 'gi-text-input')}
             ref={ref}
             disabled={disabled}
             {...props}

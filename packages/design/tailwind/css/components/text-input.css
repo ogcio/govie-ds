@@ -31,6 +31,9 @@
   @apply gi-pl-9;
 }
 
+.gi-text-input[data-icon-end='false'][data-end-element='true'] {
+  @apply gi-pr-10;
+}
 .gi-text-input[data-icon-end='true'][data-end-element='true'] {
   @apply gi-pr-18;
 }

@@ -111,7 +111,6 @@ export default function Home() {
       duration: 3000,
       dismissible: true,
     });
-  const [inputText, setInputText] = useState('');
 
   return (
     <>
@@ -127,7 +126,7 @@ export default function Home() {
       <Container>
         <br />
         Text Input With Reset
-        <TextInputWithReset value={inputText} setValue={setInputText} />
+        <TextInputWithReset />
         <br />
         Text Input Password
         <TextInputPassword />

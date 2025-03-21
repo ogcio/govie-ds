@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { useState } from 'react';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { TextInput, TextInputWithReset } from './text-input.js';
@@ -35,6 +34,34 @@ const meta = {
         type: { summary: 'React.ReactNode' },
       },
     },
+    iconStart: {
+      description: 'Optional icon displayed at the start of the input field.',
+      control: 'text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    iconEnd: {
+      description: 'Optional icon displayed at the end of the input field.',
+      control: 'text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    inputActionButton: {
+      description:
+        'Optional action button rendered inside the input for custom actions.',
+      control: false,
+      table: {
+        category: 'Behavior',
+        type: {
+          summary: `InputActionButtonProps`,
+        },
+      },
+    },
+
     ref: {
       control: false,
       table: {
@@ -98,7 +125,6 @@ export const WithTextInputReset: Story = {
     id: 'text-input-id',
   },
   render: () => {
-    const [value, setValue] = useState('');
     return (
       <FormField
         label={{
@@ -106,11 +132,7 @@ export const WithTextInputReset: Story = {
           htmlFor: 'text-input-id',
         }}
       >
-        <TextInputWithReset
-          placeholder="Placeholder"
-          value={value}
-          setValue={setValue}
-        />
+        <TextInputWithReset placeholder="Placeholder" />
       </FormField>
     );
   },
@@ -295,14 +317,24 @@ export const WithHalfWidth: Story = {
   },
   render: (props) => {
     return (
-      <FormField
-        label={{
-          text: 'Half width',
-          htmlFor: 'text-input-id',
-        }}
-      >
-        <TextInput {...props} />
-      </FormField>
+      <Stack>
+        <FormField
+          label={{
+            text: 'Half width',
+            htmlFor: 'text-input-id',
+          }}
+        >
+          <TextInput {...props} />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Half width',
+            htmlFor: 'text-input-id',
+          }}
+        >
+          <TextInputWithReset halfFluid />
+        </FormField>
+      </Stack>
     );
   },
 };
@@ -469,79 +501,90 @@ export const AllStates: Story = {
   },
 };
 
+export const WithCustomActionButton: Story = {
+  args: {
+    id: 'text-input-id',
+  },
+  render: () => (
+    <FormField
+      label={{
+        text: 'Default',
+      }}
+      hint={{
+        text: 'Support text',
+      }}
+    >
+      <TextInput
+        inputActionButton={{
+          icon: 'keyboard_arrow_down',
+          onClick: () => alert('action button clicked'),
+        }}
+        type="text"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+};
+
 export const AllIconVariantsStates: Story = {
   render: () => {
-    const [value, setValue] = useState('');
-
     return (
       <Stack gap={4}>
         <FormField
           label={{
             text: 'Default',
-            htmlFor: 'default-input',
+          }}
+          hint={{
+            text: 'Support text',
           }}
         >
           <TextInputWithReset
+            iconStart="add_circle"
+            iconEnd="add_circle"
             placeholder="Placeholder"
-            value={value}
-            setValue={setValue}
           />
         </FormField>
         <FormField
           label={{
             text: 'Error',
-            htmlFor: 'default-input',
+          }}
+          hint={{
+            text: 'Support text',
           }}
           error={{
             text: 'Invalid',
           }}
         >
-          <TextInput
+          <TextInputWithReset
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
-            id="default-input"
             placeholder="Placeholder"
           />
         </FormField>
         <FormField
           label={{
             text: 'Disabled',
-            htmlFor: 'disabled-input',
           }}
         >
-          <TextInput
-            iconStart="add_circle"
+          <TextInputWithReset
             disabled
+            iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
-            id="disabled-input"
             placeholder="Placeholder"
           />
         </FormField>
         <FormField
           label={{
             text: 'Focus',
-            htmlFor: 'focus-input',
+          }}
+          hint={{
+            text: 'Support text',
           }}
         >
-          <TextInput
+          <TextInputWithReset
+            inputClassName="focus-input"
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
-            inputClassName="focus-input"
             placeholder="Placeholder"
           />
         </FormField>
@@ -549,15 +592,13 @@ export const AllIconVariantsStates: Story = {
           label={{
             text: 'Prefix/Suffix',
           }}
+          hint={{
+            text: 'Support text',
+          }}
         >
-          <TextInput
+          <TextInputWithReset
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -567,18 +608,16 @@ export const AllIconVariantsStates: Story = {
           label={{
             text: 'Prefix/Suffix Error',
           }}
+          hint={{
+            text: 'Support text',
+          }}
           error={{
             text: 'Invalid',
           }}
         >
-          <TextInput
+          <TextInputWithReset
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -588,15 +627,13 @@ export const AllIconVariantsStates: Story = {
           label={{
             text: 'Prefix/Suffix Disabled',
           }}
+          hint={{
+            text: 'Support text',
+          }}
         >
-          <TextInput
+          <TextInputWithReset
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -607,17 +644,15 @@ export const AllIconVariantsStates: Story = {
           label={{
             text: 'Prefix/Suffix Focus',
           }}
+          hint={{
+            text: 'Support text',
+          }}
         >
-          <TextInput
+          <TextInputWithReset
+            inputClassName="focus-input"
             iconStart="add_circle"
             iconEnd="add_circle"
-            inputActionButton={{
-              icon: 'close',
-              onClick: () => null,
-            }}
-            type="text"
             placeholder="Placeholder"
-            inputClassName="focus-input"
             prefix="€"
             suffix="kg"
           />
@@ -625,6 +660,9 @@ export const AllIconVariantsStates: Story = {
         <FormField
           label={{
             text: 'With Icon Start',
+          }}
+          hint={{
+            text: 'Support text',
           }}
         >
           <TextInput
@@ -637,23 +675,12 @@ export const AllIconVariantsStates: Story = {
           label={{
             text: 'With Icon End',
           }}
-        >
-          <TextInput
-            iconEnd="add_circle"
-            type="text"
-            placeholder="Placeholder"
-          />
-        </FormField>{' '}
-        <FormField
-          label={{
-            text: 'With Action Button',
+          hint={{
+            text: 'Support text',
           }}
         >
           <TextInput
-            inputActionButton={{
-              icon: 'keyboard_arrow_down',
-              onClick: () => alert('action button clicked'),
-            }}
+            iconEnd="add_circle"
             type="text"
             placeholder="Placeholder"
           />

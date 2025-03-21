@@ -66,6 +66,7 @@ import {
   TextArea,
   TextInput,
   TextInputPassword,
+  TextInputWithReset,
   Tooltip,
   StepItem,
 } from '@govie-ds/react';
@@ -79,7 +80,6 @@ import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
-import { TextInputWithResetSample } from '../components/text-input-reset';
 import { Toast } from '../components/toast';
 import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
@@ -283,7 +283,7 @@ const documentComponents: MDXComponents = {
     </div>
   ),
   TextInputPassword,
-  TextInputWithResetSample,
+  TextInputWithReset,
 };
 
 export function Mdx({ code }: MdxProps) {
