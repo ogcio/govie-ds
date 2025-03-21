@@ -1,85 +1,72 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './select.html?raw';
-import { SelectProps } from './select.schema';
+import { expect, within } from '@storybook/test';
+import { createFormField } from '../helpers/forms';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { SelectProps } from './types';
 
-const macro = { name: 'govieSelect', html };
-
-const Select = renderComponent<SelectProps>(macro);
-
-const meta = {
-  component: Select,
-  title: 'form/Select',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'A select that component allows users to choose an option from a long list.',
-      },
-    },
-  },
-} satisfies Meta<typeof Select>;
+const meta: Meta<SelectProps> = {
+  title: 'Form/Select',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<SelectProps>;
+
+const createSelect = (arguments_: SelectProps) => {
+  const formField = createFormField(arguments_);
+
+  const select = document.createElement('select');
+  select.className = 'gi-select';
+  select.dataset.testid = arguments_.dataTestid;
+
+  for (const item of arguments_.items) {
+    if ('items' in item) {
+      const optgroup = document.createElement('optgroup');
+      optgroup.role = 'group';
+      if (item.label) {
+        optgroup.label = item.label;
+      }
+      for (const subitem of item.items) {
+        const option = document.createElement('option');
+        option.className = 'gi-select-option';
+        if (subitem.label) {
+          option.label = subitem.label;
+        }
+        if (subitem.value) {
+          option.value = `${subitem.value}`;
+        }
+        optgroup.append(option);
+      }
+      select.append(optgroup);
+    } else {
+      const option = document.createElement('option');
+      option.className = 'gi-select-option';
+      if (item.label) {
+        option.label = item.label;
+      }
+      if (item.value) {
+        option.value = `${item.value}`;
+      }
+      select.append(option);
+    }
+  }
+
+  formField.append(select);
+
+  return formField;
+};
+
+const createElement = (arguments_: SelectProps) => {
+  const component = createSelect(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
-  argTypes: {
-    id: {
-      description: 'A unqiue valued used to identify the component',
-      control: 'text',
-      table: {
-        category: 'ID',
-        type: { summary: 'string' },
-        defaultValue: { summary: '' },
-      },
-    },
-    options: {
-      description: 'A list of labels and values for each option',
-      control: 'object',
-      table: {
-        category: 'Options',
-        type: { summary: 'Options' },
-      },
-    },
-    error: {
-      description: 'Error message for the select',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
-    hint: {
-      description: 'Hint message for the select',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    label: {
-      description: 'Label associated for the select',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-  },
   args: {
     id: 'unique-id',
     label: {
       content: 'Label',
     },
-    hint: {
-      content: '',
-    },
-    error: {
-      content: '',
-    },
-    options: [
+    items: [
       {
         label: 'Option 1',
         value: 'value-1',
@@ -94,18 +81,23 @@ export const Default: Story = {
       },
     ],
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
-export const withHint: Story = {
+export const withLabelHintAndError: Story = {
   args: {
     id: 'unique-id',
+    dataTestid: 'unique-id',
     label: {
       content: 'Default Select',
     },
     hint: {
       content: 'This can be different to where you went before',
     },
-    options: [
+    error: {
+      content: 'Error message',
+    },
+    items: [
       {
         label: 'Option 1',
         value: 'value-1',
@@ -120,38 +112,36 @@ export const withHint: Story = {
       },
     ],
   },
-};
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
 
-export const withError: Story = {
-  args: {
-    id: 'unique-id',
-    label: {
-      content: 'Default Select',
-    },
-    error: {
-      content: 'Error message',
-    },
-    options: [
-      {
-        label: 'Option 1',
-        value: 'value-1',
-      },
-      {
-        label: 'Option 2',
-        value: 'value-2',
-      },
-      {
-        label: 'Option 3',
-        value: 'value-3',
-      },
-    ],
+    const textInput = canvas.getByTestId('unique-id') as HTMLSelectElement;
+    expect(window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)',
+    );
+
+    const label = canvas.getByText('Default Select');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
+    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
+
+    const hint = canvas.getByText(
+      'This can be different to where you went before',
+    );
+    expect(hint).toBeTruthy();
+    expect(hint).toHaveClass('gi-hint-text');
+
+    const error = canvas.getByText('Error message');
+    expect(error).toBeTruthy();
+    expect(error).toHaveClass('gi-error-text');
   },
 };
 
 export const withoutLabel: Story = {
   args: {
     id: 'unique-id',
-    options: [
+    items: [
       {
         label: 'Option 1',
         value: 'value-1',
@@ -166,6 +156,7 @@ export const withoutLabel: Story = {
       },
     ],
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const withGroups: Story = {
@@ -174,9 +165,9 @@ export const withGroups: Story = {
     label: {
       content: 'Default Select',
     },
-    options: [
+    items: [
       {
-        groupName: 'Group 1',
+        label: 'Group 1',
         items: [
           {
             label: 'Option 1',
@@ -193,7 +184,7 @@ export const withGroups: Story = {
         ],
       },
       {
-        groupName: 'Group 2',
+        label: 'Group 2',
         items: [
           {
             label: 'Option 4',
@@ -211,4 +202,5 @@ export const withGroups: Story = {
       },
     ],
   },
+  render: (arguments_) => createElement(arguments_),
 };
