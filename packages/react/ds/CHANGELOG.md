@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [1.1.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.1.0...react-lib-v1.1.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* client errors ([66d5844](https://github.com/ogcio/govie-ds/commit/66d5844bc5a7d34da6a6b87edcec560c5b1be930))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 0.7.2
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.1
+    * @govie-ds/prettier-config bumped to 1.0.2
+    * @govie-ds/tailwind bumped to 1.1.1
+    * @govie-ds/theme-govie bumped to 0.6.2
+
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/react-v1.0.0...react-v1.1.0) (2025-03-14)
 
 

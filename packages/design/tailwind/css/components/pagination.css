@@ -1,0 +1,13 @@
+.gi-pagination {
+  @apply gi-flex xs:gi-justify-center gi-justify-between gi-items-center gi-gap-2;
+}
+
+@media (max-width: 640px) {
+  .gi-pagination-next-btn,
+  .gi-pagination-prev-btn {
+    padding: var(--gieds-space-3);
+    height: var(--gieds-space-12);
+    width: var(--gieds-space-12);
+    justify-content: center;
+  }
+}
