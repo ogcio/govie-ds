@@ -28,9 +28,6 @@
 .gi-combobox-search-input input {
   @apply gi-pl-3;
 }
-.gi-combobox-search-input input::placeholder {
-  @apply gi-text-gray-600 gi-stroke-gray-600;
-}
 .gi-combobox-search-icon {
   @apply gi-absolute gi-right-4 gi-top-5 gi-z-100 gi-cursor-pointer;
 }

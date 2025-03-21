@@ -21,23 +21,27 @@ export const FormField = ({
 }: FormFieldProps) => {
   return (
     <fieldset className={cn({ 'gi-error-state': error }, className)}>
-      {label?.text && (
-        <Label
-          text={label.text}
-          size={label.size}
-          htmlFor={label.htmlFor}
-          className={!hint?.text && !error?.text ? 'gi-mb-2' : 'gi-mb-1'}
-        >
-          {label.children}
-        </Label>
-      )}
+      <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
+        <div>
+          {label?.text && (
+            <Label
+              text={label.text}
+              size={label.size}
+              htmlFor={label.htmlFor}
+              className={'gi-font-bold'}
+            >
+              {label.children}
+            </Label>
+          )}
 
-      {hint?.text && (
-        <HintText text={hint.text} size={hint.size} className="gi-mb-1" />
-      )}
-      {error?.text && (
-        <ErrorText text={error.text} size={error.size} className="gi-mb-1" />
-      )}
+          {hint?.text && (
+            <HintText text={hint.text} size={hint.size} className="gi-mb-1" />
+          )}
+        </div>
+        {error?.text && (
+          <ErrorText text={error.text} size={error.size} className="gi-mb-1" />
+        )}
+      </div>
 
       <Slottable>{children}</Slottable>
     </fieldset>

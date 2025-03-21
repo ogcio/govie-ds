@@ -1,5 +1,17 @@
 .gi-textarea {
-  @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-p-1  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-py-1 gi-pl-2 gi-pr-10  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+}
+
+.gi-textarea[data-icon-start='true'] {
+  @apply gi-pl-9;
+}
+
+.gi-textarea-inner {
+  @apply gi-w-full gi-flex gi-items-start gi-relative;
+}
+
+.gi-text-area-end-element {
+  @apply gi-flex gi-absolute gi-z-200 gi-right-1 gi-top-1;
 }
 
 .gi-textarea-container {
@@ -12,4 +24,8 @@
 
 .gi-textarea-remaining-chars {
   @apply gi-mt-2;
+}
+
+.gi-text-area-icon-start {
+  @apply gi-absolute gi-z-200 gi-left-2 gi-top-2;
 }

@@ -65,6 +65,8 @@ import {
   Tag,
   TextArea,
   TextInput,
+  TextInputPassword,
+  TextInputWithReset,
   Tooltip,
   StepItem,
 } from '@govie-ds/react';
@@ -282,6 +284,8 @@ const documentComponents: MDXComponents = {
       <DataGridSample />
     </div>
   ),
+  TextInputPassword,
+  TextInputWithReset,
 };
 
 export function Mdx({ code }: MdxProps) {

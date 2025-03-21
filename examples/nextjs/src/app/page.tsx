@@ -18,7 +18,6 @@ import {
   ModalFooter,
   Button,
   CookieBanner,
-  TypeEnum,
   List,
   Combobox,
   Chip,
@@ -48,7 +47,10 @@ import {
   toaster,
   ToastVariant,
   ToastProvider,
+  TextInputPassword,
+  TextInputWithReset,
 } from '@govie-ds/react';
+import { useState } from 'react';
 
 const headerProps: HeaderProps = {
   items: [
@@ -122,6 +124,12 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <br />
+        Text Input With Reset
+        <TextInputWithReset />
+        <br />
+        Text Input Password
+        <TextInputPassword />
         <br />
         <Button onClick={() => handleCreateToast('Success', 'success')}>
           Trigger Success Toast via callback
@@ -282,7 +290,7 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
