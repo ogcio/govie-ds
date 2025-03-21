@@ -50,7 +50,6 @@
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
     "@types/nunjucks": "^3.2.6",
-    "@vitest/coverage-istanbul": "2.1.8",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
     "eslint": "^9.8.0",
@@ -65,7 +64,6 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tsx": "^4.16.5",
-    "vite-plugin-dts": "^3.9.1",
     "zod": "3.24.1"
   }
 }
