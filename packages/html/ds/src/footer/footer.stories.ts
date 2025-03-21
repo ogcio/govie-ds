@@ -1,23 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { beautifyHtmlNode } from '../storybook/storybook';
+import { FooterProps } from './footer.schema';
 import { getLogoContaier } from './footer.util';
-
-type LogoProps = {
-  imageSmall?: string;
-  imageLarge?: string;
-  href?: string;
-  external?: boolean;
-  alt?: string;
-};
-
-type FooterProps = {
-  primarySlot?: any;
-  secondarySlot?: any;
-  utilitySlot?: any;
-  logo?: LogoProps;
-  class?: string;
-  dataTestid?: string;
-};
 
 const meta: Meta<FooterProps> = {
   title: 'Layout/Footer',
@@ -25,6 +9,10 @@ const meta: Meta<FooterProps> = {
     primarySlot: { control: 'text', description: 'Primary content slot' },
     secondarySlot: { control: 'text', description: 'Secondary content slot' },
     utilitySlot: { control: 'text', description: 'Utility content slot' },
+    logo: {
+      control: 'object',
+      description: 'Optional custom logo component',
+    },
     class: { control: 'text', description: 'Additional CSS classes' },
     dataTestid: { control: 'text', description: 'Test ID for queries' },
   },

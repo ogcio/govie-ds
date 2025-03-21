@@ -1,7 +1,6 @@
 type LogoProps = {
-  imageSmall?: string;
-  imageLarge?: string;
   href?: string;
+  src?: string;
   external?: boolean;
   alt?: string;
 };
@@ -11,6 +10,6 @@ export type FooterProps = {
   secondarySlot?: any;
   utilitySlot?: any;
   logo?: LogoProps;
-  className?: string;
+  class?: string;
   dataTestid?: string;
 };
