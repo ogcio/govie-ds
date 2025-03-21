@@ -76,39 +76,7 @@ export const Default: Story = {
   },
 };
 
-export const withHints: Story = {
-  args: {
-    groupId: 'govie-field-ID',
-    items: [
-      {
-        label: 'Irish',
-        value: 'irish',
-      },
-      {
-        label: 'British',
-        value: 'british',
-        hint: 'including English, Scottish, Welsh and Northern Irish',
-      },
-      {
-        label: 'Citizen of another country',
-        value: 'citizen-of-another-country',
-      },
-    ],
-    label: {
-      content: 'What is your nationality?',
-    },
-    hint: {
-      content:
-        'If you have dual nationality, select all options that are relevant to you.',
-    },
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
-};
-
-export const withErrorMessage: Story = {
+export const withLabelHintAndError: Story = {
   args: {
     groupId: 'govie-field-ID-2',
     items: [

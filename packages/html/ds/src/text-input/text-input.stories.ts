@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createFormField } from '../helpers/forms';
+import { createTextInput } from '../helpers/forms';
 import { LabelSize } from '../label/label.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextInputProps } from './types';
@@ -12,145 +12,12 @@ const meta: Meta<TextInputProps> = {
 export default meta;
 type Story = StoryObj<TextInputProps>;
 
-const createTextInput = (arguments_: TextInputProps) => {
-  const formField = createFormField(arguments_);
-
-  const container = document.createElement('div');
-  container.className =
-    `${arguments_.className || ''} gi-text-input-container`.trim();
-
-  if (arguments_.prefix) {
-    const prefix = document.createElement('div');
-    prefix.className = 'gi-text-input-prefix';
-    prefix.textContent = arguments_.prefix;
-    container.append(prefix);
-  }
-
-  const input = document.createElement('input') as HTMLInputElement;
-  input.type = arguments_.type || 'text';
-  input.className =
-    `gi-text-input ${arguments_.halfFluid === true ? 'gi-input-half-width' : ''}`.trim();
-
-  if (arguments_.name) {
-    input.name = arguments_.name;
-  }
-  if (arguments_.id) {
-    input.id = arguments_.id;
-  }
-  if (arguments_.placeholder) {
-    input.placeholder = arguments_.placeholder;
-  }
-  if (arguments_.dataTestId) {
-    input.dataset.testid = arguments_.dataTestId;
-  }
-  if (arguments_.disabled) {
-    input.disabled = true;
-  }
-
-  container.append(input);
-
-  if (arguments_.suffix) {
-    const suffix = document.createElement('div');
-    suffix.className = 'gi-text-input-suffix';
-    suffix.textContent = arguments_.suffix;
-    container.append(suffix);
-  }
-
-  formField.append(container);
-
-  return beautifyHtmlNode(formField);
+const createElement = (arguments_: TextInputProps) => {
+  const component = createTextInput(arguments_);
+  return beautifyHtmlNode(component);
 };
 
 export const Default: Story = {
-  argTypes: {
-    label: {
-      description: 'Label associated with the input.',
-      control: 'object',
-      table: {
-        category: 'Label',
-        type: { summary: 'Label' },
-      },
-    },
-    hint: {
-      description: 'Hint text for the input to provide additional information.',
-      control: 'object',
-      table: {
-        category: 'Hint',
-        type: { summary: 'HintText' },
-      },
-    },
-    error: {
-      description:
-        'Error message for the input, displayed when there is a validation error.',
-      control: 'object',
-      table: {
-        category: 'Error',
-        type: { summary: 'ErrorText' },
-      },
-    },
-    prefix: {
-      description:
-        'Element or text to display on the left side of the input, such as a unit or symbol.',
-      control: 'text',
-      table: {
-        category: 'Content',
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-    },
-    suffix: {
-      description:
-        'Element or text to display on the right side of the input, such as a unit or symbol.',
-      control: 'text',
-      table: {
-        category: 'Content',
-        type: { summary: 'string' },
-        defaultValue: { summary: '-' },
-      },
-    },
-    id: {
-      description: 'Sets the unique ID for the input field.',
-      control: 'text',
-      table: {
-        category: 'Accessibility',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'input-id' },
-      },
-    },
-    type: {
-      control: 'select',
-      description: 'Specifies the input type.',
-      options: [
-        'text',
-        'date',
-        'datetime-local',
-        'email',
-        'month',
-        'number',
-        'password',
-        'tel',
-        'time',
-        'url',
-        'week',
-      ],
-      table: {
-        category: 'Content',
-        type: { summary: 'string' },
-      },
-    },
-    disabled: {
-      description: 'Disable input',
-      control: 'boolean',
-      table: {
-        category: 'Behavior',
-        type: { summary: 'Behavior' },
-      },
-    },
-    dataTestId: {
-      description: 'Sets the unique ID for test.',
-      control: 'text',
-    },
-  },
   args: {
     id: 'input-id',
     label: {
@@ -159,7 +26,7 @@ export const Default: Story = {
       size: LabelSize.Medium,
     },
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelAndHint: Story = {
@@ -174,7 +41,7 @@ export const WithLabelAndHint: Story = {
     },
     id: 'label-hint-input',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelAndError: Story = {
@@ -189,7 +56,7 @@ export const WithLabelAndError: Story = {
     },
     id: 'label-hint-input',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const WithLabelHintAndError: Story = {
@@ -208,7 +75,7 @@ export const WithLabelHintAndError: Story = {
     id: 'error-input',
     dataTestId: 'text-input-id',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -243,7 +110,7 @@ export const WithLabelAndPrefixSuffix: Story = {
     suffix: 'per item',
     id: 'suffix-input',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -267,7 +134,7 @@ export const InputLength: Story = {
     maxLength: 20,
     id: 'character-width-input',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const DateInput: Story = {
@@ -280,7 +147,7 @@ export const DateInput: Story = {
     id: 'text-input-id',
     type: 'date',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const DisabledInput: Story = {
@@ -294,7 +161,7 @@ export const DisabledInput: Story = {
     disabled: true,
     dataTestId: 'text-input-id',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
@@ -313,7 +180,7 @@ export const WithHalfWidth: Story = {
     className: 'gi-input-half-width',
     dataTestId: 'text-input-id',
   },
-  render: (arguments_) => createTextInput(arguments_),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
