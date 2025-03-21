@@ -88,7 +88,7 @@ const createFooter = (arguments_: FooterProps) => {
   return beautifyHtmlNode(footer);
 };
 
-export const Default: Story = {
+export const CompleteFooter: Story = {
   args: {
     primarySlot: `
     <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
@@ -197,25 +197,52 @@ export const Default: Story = {
       </div>
     </div>`,
     class: 'custom-footer',
-    dataTestid: 'footer',
+    dataTestid: 'footer-complete',
   },
   // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const WithoutSecondary: Story = {
+export const MinimalFooter: Story = {
   args: {
-    primarySlot: '<p>Primary Content</p>',
-    utilitySlot: '<p>Utility Content</p>',
-    dataTestid: 'footer',
+    secondarySlot: `
+      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+        <a href="#" class="gi-link gi-link-inherit">About Us</a>
+        <a href="#" class="gi-link gi-link-inherit">Contact</a>
+        <a href="#" class="gi-link gi-link-inherit">Sitemap</a>
+        <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
+        <a href="#" class="gi-link gi-link-inherit">Terms of Service</a>
+        <a href="#" class="gi-link gi-link-inherit">Careers</a>
+        <a href="#" class="gi-link gi-link-inherit">Blog</a>
+        <a href="#" class="gi-link gi-link-inherit">FAQ</a>
+        <a href="#" class="gi-link gi-link-inherit">Support</a>
+        <a href="#" class="gi-link gi-link-inherit">Press</a>
+        <a href="#" class="gi-link gi-link-inherit">Partners</a>
+        <a href="#" class="gi-link gi-link-inherit">Investors</a>
+        <a href="#" class="gi-link gi-link-inherit">Events</a>
+      </div>
+      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+        ${XSVG({})}
+        ${FacebookSVG({})}
+        ${BlueskySVG({})}
+        ${LinkedInSVG({})}
+      </div>`,
+    utilitySlot: `
+      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+        <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
+        <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
+        <div class="gi-text-sm">
+          © ${new Date().getFullYear()} Government of Ireland.
+        </div>
+      </div>`,
+    dataTestid: 'footer-minimal',
   },
   // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const OnlyPrimary: Story = {
+export const SimpleFooter: Story = {
   args: {
-    primarySlot: '<p>Primary Content</p>',
     dataTestid: 'footer',
   },
   // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
