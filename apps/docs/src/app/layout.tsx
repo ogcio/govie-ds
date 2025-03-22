@@ -1,4 +1,4 @@
-import { Footer, Header, HeaderProps } from '@govie-ds/react';
+import { Footer, Header, HeaderProps, Link } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -95,7 +95,25 @@ export default function RootLayout({
         </a>
         <Header {...headerProps} addDefaultMobileMenu />
         {children}
-        <Footer links={footerLinks} />
+        <Footer
+          secondarySlot={
+            <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+              {footerLinks.map((link) => (
+                <Link noColor aria-label={link.label} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          }
+          utilitySlot={
+            <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
+              <div className="gi-text-sm">
+                © {new Date().getFullYear()} Design System of Government of
+                Ireland.
+              </div>
+            </div>
+          }
+        />
       </body>
     </html>
   );
