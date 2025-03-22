@@ -1,3 +1,4 @@
+import { Button } from '../button/button.js';
 import { ModalTitle, ModalBody, ModalFooter } from './modal.js';
 
 export const HtmlContent = (
@@ -11,15 +12,8 @@ export const HtmlContent = (
         commodi cupiditate sit minima veritatis.
       </p>
     </ModalBody>
-    <ModalFooter className="gi-flex gi-gap-6 gi-justify-end">
-      <>
-        <button className="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">
-          Cancel
-        </button>
-        <button className="gi-btn gi-btn-primary gi-btn-regular">
-          Primary
-        </button>
-      </>
+    <ModalFooter>
+      <Button>Primary</Button>
     </ModalFooter>
   </>
 );

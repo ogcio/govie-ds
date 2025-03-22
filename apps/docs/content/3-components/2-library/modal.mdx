@@ -26,12 +26,10 @@ libraries:
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
     </ModalBody>
     <ModalFooter>
-      <div className="gi-flex gi-gap-6 gi-justify-end">
-        <Button variant="secondary" appearance="dark">
-          Cancel action
-        </Button>
-        <Button>Primary action</Button>
-      </div>
+      <Button variant="secondary" appearance="dark">
+        Secondary
+      </Button>
+      <Button variant="primary">Primary</Button>
     </ModalFooter>
   </Modal>
 </ComponentContainer>
@@ -39,8 +37,7 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
-    <TabItem value="tab13">React</TabItem>
+    <TabItem value="tab12">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
   ```html
@@ -66,32 +63,11 @@ libraries:
    </div>
 </div>
 
-```
+````
 </TabPanel>
-<TabPanel value="tab12">
-```html
-  {{ govieModal({
-    triggerButton: '<button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>',
-    title: 'Title',
-    body: `
-      <div class="gi-w-[500px]">
-        <p class="gi-paragraph-md">
-          This is the main body of the modal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
-        </p>
-      </div>
-    `,
-    footer: `
-      <div class="gi-flex gi-gap-6 gi-justify-end">
-        <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular">Cancel</button>
-        <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
-      </div>
-    `,
-  }) }}
-  ```
-  </TabPanel>
-  <TabPanel value="tab13">
+  <TabPanel value="tab12">
   ```html
-    import { Modal } from '@govie-ds/react';
+    import { Modal, Button } from '@govie-ds/react';
 
     <Modal triggerButton={<Button>Open Modal</Button>}>
       <ModalTitle>Title</ModalTitle>
@@ -99,12 +75,10 @@ libraries:
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
       </ModalBody>
       <ModalFooter>
-        <div className="gi-flex gi-gap-6 gi-justify-end">
-          <Button variant="secondary" appearance="dark">
-            Cancel action
+          <Button variant="secondary">
+            Secondary
           </Button>
-          <Button>Primary action</Button>
-        </div>
+          <Button variant="primary">Primary</Button>
       </ModalFooter>
     </Modal>;
 
@@ -112,7 +86,111 @@ libraries:
 </TabPanel>
 </Tabs>
 
+
+### Alternative with ModalWrapper component
+
+<ComponentContainer>
+  <ModalWrapper />
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">
+  ```html
+    <div>
+      <button class="gi-btn gi-btn-flat gi-btn-regular">Click to Open</button>
+      <div class="gi-modal gi-modal-open" data-testid="test-id" data-element="modal" role="dialog" aria-modal="true" aria-labelledby="gi-modal-title" aria-describedby="gi-modal-body">
+          <div data-testid="modal-container" class="gi-modal-container gi-modal-container-center">
+            <div>
+                <div class="gi-flex-1" id="gi-modal-title">
+                  <h3 class="gi-heading-md">Modal Title</h3>
+                </div>
+                <button role="button" data-testid="govieIconButton-dark-flat-small-undefined" class="gi-btn gi-btn-flat-dark gi-icon-btn-small undefined gi-modal-icon"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 16px;">close</span></button>
+            </div>
+            <div class="">
+                <div id="gi-modal-body" class="gi-modal-body">
+                  <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.</p>
+                </div>
+                <div class="gi-modal-footer">
+                  <div data-orientation="unset"><button class="gi-btn gi-btn-secondary gi-btn-regular gi-justify-center xs:gi-justify-start">Cancel</button><button class="gi-btn gi-btn-primary gi-btn-regular gi-justify-center xs:gi-justify-start">Save</button></div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+```
+
+</TabPanel>
+  <TabPanel value="tab22">
+  ```html
+    import { ModalWrapper, Button } from '@govie-ds/react';
+
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
+
+    return (
+      <>
+        <Button onClick={handleOpen}>
+          Click to Open
+        </Button>
+        <ModalWrapper
+          dataTestId={'test-id'}
+          isOpen={isOpen}
+          onClose={handleClose}
+        >
+          <ModalTitle key="title">Modal Title</ModalTitle>
+          <ModalBody key="body">
+            <Paragraph>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+              esse magnam quis sit soluta cupiditate at deserunt exercitationem
+              voluptas doloribus asperiores.
+            </Paragraph>
+          </ModalBody>
+          <ModalFooter key="footer">
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant="primary">Save</Button>
+          </ModalFooter>
+        </ModalWrapper>
+      </>
+    );
+
+```
+</TabPanel>
+</Tabs>
 ## Usage
+
+### Modal Props
+
+- **className** (optional): A string for custom styling of the modal.
+- **closeButtonLabel** (optional): A string defining the label for the close button, improving accessibility.
+- **triggerButton** (required): A `React.ReactElement` that triggers the modal when clicked.
+- **children** (required): The modal content, structured using `ModalChildren`.
+- **startsOpen** (optional): A boolean indicating whether the modal should be open by default. Defaults to `false`.
+- **closeOnClick** (optional): A boolean that, when `true`, allows closing the modal via the close button or by clicking on the overlay. Defaults to `true`.
+- **closeOnOverlayClick** (optional): A boolean that enables closing the modal when clicking outside its content (on the overlay). Defaults to `true`.
+- **dataTestId** (optional): A string used for testing purposes.
+- **size** (optional): Defines the size of the component. Accepts one of the following values:
+  - `'sm'`: Small size.
+  - `'md'`: Medium size.
+  - `'lg'`: Large size (default).
+
+### ModalWrapper: An Alternative for More Control
+
+`ModalWrapper` includes all properties from `Modal`, except for **triggerButton**, and provides additional control over modal visibility. It is useful when managing the modal state externally.
+
+#### Additional ModalWrapper Props
+- **isOpen** (required): A boolean indicating whether the modal is open.
+- **onClose** (required): A function that handles closing the modal.
+- **position** (optional): Defines the modal's position, using `ModalPositions`.
+- **closeButtonSize** (optional): Sets the size of the close button, using `ButtonSize`.
+
+Using `ModalWrapper` allows direct control over the `isOpen` state, making it ideal for programmatically handling modal visibility.
 
 ### Best Practices
 
@@ -127,3 +205,5 @@ Don't use modal dialogs for elements that should be linkable or searchable.
 ## Status
 
 <ComponentStatusBlock componentId="modal" />
+
+````
