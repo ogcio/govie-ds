@@ -27,7 +27,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -37,19 +36,11 @@ libraries:
     <span class="gi-span-md">This is an inline paragraph</span>
     ```
   </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieParagraph({"content": "This is a paragraph"}) }}
-
-    {{ govieParagraph({"content": "This is an inline paragraph", "as":"span"}) }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```html
     import { Paragraph } from '@govie-ds/react';
 
     <Paragraph>This is a paragraph</Paragraph>
-
     <Paragraph as="span">This is an inline paragraph</Paragraph>
     ```
   </TabPanel>
@@ -64,7 +55,6 @@ libraries:
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">        
@@ -72,22 +62,6 @@ libraries:
     <p class="gi-paragraph-sm">This is a paragraph</p>
 
     <span class="gi-span-sm">This is an inline paragraph</span>
-    ```
-  </TabPanel>
-  <TabPanel value="tab22">        
-    ```html
-    {{ govieParagraph({
-      "content": "This is a paragraph", 
-      "size": "sm"
-      })
-    }}
-
-    {{ govieParagraph({
-      "content": "This is an inline paragraph", 
-      "size": "sm",
-      "as": "span"
-      })
-    }}
     ```
   </TabPanel>
   <TabPanel value="tab23">
@@ -110,7 +84,6 @@ libraries:
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">        
@@ -118,22 +91,6 @@ libraries:
     <p class="gi-paragraph-lg">This is a paragraph</p>
 
     <span class="gi-span-lg">This is an inline paragraph</span>
-    ```
-  </TabPanel>
-  <TabPanel value="tab32">        
-    ```html
-    {{ govieParagraph({
-      "content": "This is a paragraph", 
-      "size": "lg"
-      })
-    }}
-
-    {{ govieParagraph({
-      "content": "This is an inline paragraph", 
-      "size": "lg",
-      "as": "span"
-      })
-    }}
     ```
   </TabPanel>
   <TabPanel value="tab33">

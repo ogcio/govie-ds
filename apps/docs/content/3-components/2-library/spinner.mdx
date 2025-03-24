@@ -28,7 +28,6 @@ A spinner is a rotating circle that indicates the status or state of completion 
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -77,15 +76,6 @@ A spinner is a rotating circle that indicates the status or state of completion 
     </svg>
     ```
   </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ 
-        govieSpinner({
-            "size": "md"
-        }) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```jsx
     <Spinner />
@@ -102,10 +92,9 @@ A spinner is a rotating circle that indicates the status or state of completion 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
-  <TabPanel value="tab21">        
+  <TabPanel value="tab21">
     ```html
     <button id="button" disabled="true" aria-disabled="true" class="gi-btn gi-btn-regular gi-btn-primary-disabled">
         Loading...
@@ -154,16 +143,6 @@ A spinner is a rotating circle that indicates the status or state of completion 
     </button>
     ```
   </TabPanel>
-  <TabPanel value="tab22">        
-    ```html
-    {{ 
-        govieButton({
-            "content": 'Loading... ' + govieSpinner(),
-            "disabled": true
-        }) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab23">
     ```jsx
     import { Button } from '@govie-ds/react';
@@ -190,7 +169,6 @@ A spinner is a rotating circle that indicates the status or state of completion 
 <Tabs id="tab31">
   <TabList>
     <TabItem value="tab311" checked>HTML</TabItem>
-    <TabItem value="tab312">Macro</TabItem>
     <TabItem value="tab313">React</TabItem>
   </TabList>
   <TabPanel value="tab311">        
@@ -248,16 +226,6 @@ A spinner is a rotating circle that indicates the status or state of completion 
         </div>
     </div>
     ```
-  </TabPanel>
-  <TabPanel value="tab312">        
-    ```html
-  {{ 
-    govieModal({
-        "html": "<div class='grid gap-4 px-4 justify-items-center'>"+govieSpinner()+"<span>Loading...</span></div>",
-        "triggerButton": "<button>Open Modal</button>"
-    }) 
-  }}
-  ```
   </TabPanel>
   <TabPanel value="tab313">
     ```jsx
