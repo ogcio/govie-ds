@@ -39,7 +39,6 @@ import {
   ToastProvider,
   toaster,
   ToastProps,
-  SectionBreak,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
