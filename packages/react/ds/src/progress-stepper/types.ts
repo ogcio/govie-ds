@@ -2,6 +2,7 @@ type Orientation = 'vertical' | 'horizontal';
 
 export const ProgressStepperIndicator = {
   Hashtag: 'hashtag',
+  Number: 'number',
 } as const;
 
 export type ProgressStepperIndicatorType =
@@ -24,6 +25,7 @@ export type ProgressStepperProps = {
   orientation?: Orientation;
   completeAll?: boolean;
   dataTestId?: string;
+  indicator?: ProgressStepperIndicatorType;
 };
 
 export type InnerStepProps = {
@@ -36,6 +38,7 @@ export type InnerStepProps = {
   indicator?: ProgressStepperIndicatorType;
   verticalSlot?: React.ReactNode;
   defaultOpen?: boolean;
+  dataTestId?: string;
 };
 
 export type ConnectorProps = {
