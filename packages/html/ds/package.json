@@ -21,7 +21,7 @@
     "format": "prettier 'src/**/*.{ts,html}' --write",
     "format:check": "prettier 'src/**/*.{ts,html}' --check",
     "lint": "eslint 'src/**/*.{ts,html}'",
-    "test": "vitest run --project=unit",
+    "test": "vitest run",
     "test:watch": "vitest",
     "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles && pnpm build:assets",
     "build:properties": "tsx scripts/build-properties.ts",
