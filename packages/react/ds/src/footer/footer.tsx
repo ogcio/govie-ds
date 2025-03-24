@@ -74,12 +74,7 @@ export function Footer({
     >
       <div className="gi-footer-container">
         {primarySlot && (
-          <div
-            className="gi-footer-primary-slot"
-            aria-label="Primary footer slot"
-          >
-            {primarySlot}
-          </div>
+          <div aria-label="Primary footer slot">{primarySlot}</div>
         )}
 
         {primarySlot && secondarySlot && (
