@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect } from '@storybook/test';
+import { expect, within } from '@storybook/test';
+import { createHeading } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import type { HeadingProps } from './heading.schema';
-import { Size, Tag } from './heading.schema';
+import type { HeadingProps } from './types';
 
 const meta: Meta<HeadingProps> = {
   title: 'Typography/Heading',
@@ -11,82 +11,6 @@ const meta: Meta<HeadingProps> = {
 export default meta;
 type Story = StoryObj<HeadingProps>;
 
-const createHeading = (arguments_: HeadingProps) => {
-  let classSize = '';
-  if (arguments_.size === undefined) {
-    switch (arguments_.as) {
-      case 'h6': {
-        classSize = 'gi-heading-2xs';
-        break;
-      }
-      case 'h5': {
-        classSize = 'gi-heading-xs';
-        break;
-      }
-      case 'h4': {
-        classSize = 'gi-heading-sm';
-        break;
-      }
-      case 'h3': {
-        classSize = 'gi-heading-md';
-        break;
-      }
-      case 'h2': {
-        classSize = 'gi-heading-lg';
-        break;
-      }
-      case 'h1': {
-        classSize = 'gi-heading-xl';
-        break;
-      }
-    }
-  } else {
-    switch (arguments_.size) {
-      case '2xs': {
-        classSize = 'gi-heading-2xs';
-        break;
-      }
-      case 'xs': {
-        classSize = 'gi-heading-xs';
-        break;
-      }
-      case 'sm': {
-        classSize = 'gi-heading-sm';
-        break;
-      }
-      case 'md': {
-        classSize = 'gi-heading-md';
-        break;
-      }
-      case 'lg': {
-        classSize = 'gi-heading-lg';
-        break;
-      }
-      case 'xl': {
-        classSize = 'gi-heading-xl';
-        break;
-      }
-    }
-  }
-
-  const component = document.createElement(arguments_.as ?? 'h1');
-  component.className = classSize;
-  component.textContent = arguments_.text;
-
-  if (arguments_.caption) {
-    const caption = document.createElement('span');
-    caption.className = 'gi-text-gray-500';
-    caption.textContent = arguments_.caption;
-
-    const container = document.createElement('div');
-    container.append(caption);
-    container.append(component);
-    return container;
-  } else {
-    return component;
-  }
-};
-
 const createElement = (arguments_: HeadingProps) => {
   const component = createHeading(arguments_);
   return beautifyHtmlNode(component);
@@ -94,33 +18,17 @@ const createElement = (arguments_: HeadingProps) => {
 
 export const Default: Story = {
   args: {
-    as: Tag.H1,
-    text: 'Heading',
+    as: 'h1',
+    content: 'Heading',
     caption: '',
-  },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      description: 'Options for sizes',
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      description: 'Option for the Heading tag',
-      control: { type: 'radio' },
-    },
-    caption: {
-      control: 'text',
-      description: 'Caption for the heading',
-    },
   },
   render: (arguments_) => createElement(arguments_),
 };
 
 export const Small: Story = {
   args: {
-    as: Tag.H6,
-    text: 'Small heading',
+    as: 'h6',
+    content: 'Small heading',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -132,9 +40,9 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    size: Size.Medium,
-    as: Tag.H3,
-    text: 'Medium heading',
+    size: 'md',
+    as: 'h3',
+    content: 'Medium heading',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
@@ -146,27 +54,27 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    size: Size.Large,
-    as: Tag.H1,
-    text: 'Large heading',
+    size: 'lg',
+    as: 'h1',
+    content: 'Large heading',
   },
   render: (arguments_) => createElement(arguments_),
 };
 
 export const ExtraLarge: Story = {
   args: {
-    size: Size.ExtraLarge,
-    as: Tag.H1,
-    text: 'Extra large heading',
+    size: 'xl',
+    as: 'h1',
+    content: 'Extra large heading',
   },
   render: (arguments_) => createElement(arguments_),
 };
 
 export const Caption: Story = {
   args: {
-    size: Size.Medium,
-    as: Tag.H1,
-    text: 'Heading with h6',
+    size: 'md',
+    as: 'h1',
+    content: 'Heading with h6',
     caption: 'Caption Text',
   },
   render: (arguments_) => createElement(arguments_),

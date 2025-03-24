@@ -1,78 +1,189 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import {
-  modalBody,
-  modalFooter,
-  modalTitle,
-  triggerButton,
-} from './modal.content';
-import html from './modal.html?raw';
-import { ModalProps } from './modal.schema';
+import { expect, within } from '@storybook/test';
+import { ButtonProps } from '../button/types';
+import { createButton, createIconButton } from '../helpers/buttons';
+import { createHeading } from '../helpers/typography';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { modalBody, modalFooter, modalTitle } from './modal.content';
+import { ModalWrapperProps } from './modal.schema';
 
-const macro = { name: 'govieModal', html };
+type ModalWrapperPropsExtension = ModalWrapperProps & {
+  triggerButton: ButtonProps;
+};
 
-const Modal = renderComponent<ModalProps>(macro);
-
-const meta = {
-  component: Modal,
+const meta: Meta<ModalWrapperPropsExtension> = {
   title: 'Application/Modal',
-  parameters: {
-    macro,
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        component:
-          'A modal component that displays content on a button trigger or on page load',
-      },
-    },
-  },
-} satisfies Meta<typeof Modal>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ModalWrapperPropsExtension>;
+
+const createModal = (arguments_: ModalWrapperPropsExtension) => {
+  const modalWrapper = document.createElement('div');
+  modalWrapper.dataset.module = 'gieds-modal';
+
+  if (arguments_.triggerButton) {
+    const triggerButton = createButton(arguments_.triggerButton);
+    triggerButton.dataset.element = 'trigger-button';
+    triggerButton.dataset.testid = 'trigger-button';
+
+    modalWrapper.append(triggerButton);
+  }
+
+  const modal = document.createElement('div');
+  modalWrapper.append(modal);
+  modal.dataset.element = 'modal';
+  modal.dataset.testid = 'modal';
+  modal.className = 'gi-modal';
+  modal.dataset.position = arguments_.position || 'center';
+  modal.dataset.open = (arguments_.isOpen || false).toString();
+
+  const modalContainer = document.createElement('div');
+  modal.append(modalContainer);
+  modalContainer.dataset.element = 'modal-container';
+  modalContainer.dataset.testid = 'modal-container';
+  modalContainer.dataset.size = arguments_.size;
+  modalContainer.className = `gi-modal-container gi-modal-container-${arguments_.position}`;
+
+  const modalHeader = document.createElement('div');
+  modalContainer.append(modalHeader);
+  modalHeader.className = 'gi-flex-1';
+  if (arguments_.title) {
+    const heading = createHeading(arguments_.title);
+    modalHeader.append(heading);
+  }
+
+  if (arguments_.closeButtonLabel) {
+    const closeButton = createButton({
+      onClick: arguments_.onClose,
+      appearance: 'dark',
+      size: 'small',
+      className: 'gi-modal-icon',
+      variant: 'flat',
+      content:
+        arguments_.closeButtonLabel +
+        ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[16px]">close</span>',
+    });
+    modalHeader.append(closeButton);
+  } else {
+    const closeButton = createIconButton({
+      icon: {
+        icon: 'close',
+      },
+      onClick: arguments_.onClose,
+      appearance: 'dark',
+      size: 'small',
+      className: 'gi-modal-icon',
+      variant: 'flat',
+    });
+    modalHeader.append(closeButton);
+  }
+
+  const modalBody = document.createElement('div');
+  modalContainer.append(modalBody);
+  modalBody.dataset.testid = 'modal-body';
+  modalBody.className = 'gi-modal-body';
+  modalBody.innerHTML = arguments_.body;
+
+  const modalFooter = document.createElement('div');
+  modalContainer.append(modalFooter);
+  modalFooter.dataset.testid = 'modal-footer';
+  modalFooter.className = 'gi-modal-footer';
+  modalFooter.innerHTML = arguments_.footer;
+
+  return modalWrapper;
+};
+
+const createElement = (arguments_: ModalWrapperPropsExtension) => {
+  const component = createModal(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
-  argTypes: {
-    title: {
-      control: 'object',
-      description:
-        'The heading props for the modal title, including text, size, and caption.',
-    },
-    body: {
-      control: 'text',
-      description: 'The content that will be inserted in the modal body',
-    },
-    footer: {
-      control: 'text',
-      description: 'The content that will be inserted in the modal footer',
-    },
-
-    triggerButton: {
-      control: 'text',
-      description: 'The button that will trigger the modal component',
-    },
-    closeButtonLabel: {
-      control: 'text',
-      description: 'The close button label',
-    },
-  },
   args: {
-    title: { text: modalTitle },
+    title: { content: modalTitle, as: 'h4' },
     body: modalBody,
     footer: modalFooter,
-    triggerButton,
+    triggerButton: { content: 'Open Modal' },
+    isOpen: false,
+    size: 'md',
+    position: 'center',
+  },
+  render: createElement,
+};
+
+export const Test: Story = {
+  args: {
+    title: { content: modalTitle, as: 'h4' },
+    body: modalBody,
+    footer: modalFooter,
+    triggerButton: { content: 'Open Modal' },
+    isOpen: false,
+    size: 'md',
+    position: 'center',
+  },
+  render: createElement,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const modalElement = canvas.getByTestId('modal');
+    const triggerButtonElement = canvas.getByTestId('trigger-button');
+    const iconElement = canvas
+      .getByTestId('modal-container')
+      .querySelector('.gi-modal-icon') as HTMLElement;
+
+    // Default state with Modal closed
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+
+    // Modal Open
+    triggerButtonElement.click();
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+
+    // Modal Close using close button
+    iconElement.click();
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+
+    // Modal Open
+    triggerButtonElement.click();
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+
+    // Modal Closed by modal overlay
+    modalElement.click();
+    expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   },
 };
 
-export const ModalOpen: Story = {
+export const CenterLarge: Story = {
   args: {
-    title: { text: modalTitle },
+    title: { content: modalTitle, as: 'h4' },
     body: modalBody,
     footer: modalFooter,
     isOpen: true,
-    aria: {
-      'aria-labelledby': 'modal-title',
-      'aria-describedby': 'modal-title',
-    },
+    size: 'lg',
+    position: 'center',
   },
+  render: createElement,
+};
+
+export const CenterMedium: Story = {
+  args: {
+    title: { content: modalTitle, as: 'h4' },
+    body: modalBody,
+    footer: modalFooter,
+    isOpen: true,
+    size: 'md',
+    position: 'center',
+  },
+  render: createElement,
+};
+
+export const CenterSmall: Story = {
+  args: {
+    title: { content: modalTitle, as: 'h4' },
+    body: modalBody,
+    footer: modalFooter,
+    isOpen: true,
+    size: 'sm',
+    position: 'center',
+  },
+  render: createElement,
 };

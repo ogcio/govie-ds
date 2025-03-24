@@ -1,5 +1,84 @@
+import { HeadingProps } from '../heading/types';
 import { ParagraphProps } from '../paragraph/types';
 import { TagProps } from '../tag/types';
+
+export const createHeading = (arguments_: HeadingProps) => {
+  let classSize = '';
+  if (arguments_.size === undefined) {
+    switch (arguments_.as) {
+      case 'h6': {
+        classSize = 'gi-heading-2xs';
+        break;
+      }
+      case 'h5': {
+        classSize = 'gi-heading-xs';
+        break;
+      }
+      case 'h4': {
+        classSize = 'gi-heading-sm';
+        break;
+      }
+      case 'h3': {
+        classSize = 'gi-heading-md';
+        break;
+      }
+      case 'h2': {
+        classSize = 'gi-heading-lg';
+        break;
+      }
+      case 'h1': {
+        classSize = 'gi-heading-xl';
+        break;
+      }
+    }
+  } else {
+    switch (arguments_.size) {
+      case '2xs': {
+        classSize = 'gi-heading-2xs';
+        break;
+      }
+      case 'xs': {
+        classSize = 'gi-heading-xs';
+        break;
+      }
+      case 'sm': {
+        classSize = 'gi-heading-sm';
+        break;
+      }
+      case 'md': {
+        classSize = 'gi-heading-md';
+        break;
+      }
+      case 'lg': {
+        classSize = 'gi-heading-lg';
+        break;
+      }
+      case 'xl': {
+        classSize = 'gi-heading-xl';
+        break;
+      }
+    }
+  }
+
+  const component = document.createElement(arguments_.as ?? 'h1');
+  component.className = classSize;
+  if (arguments_.content) {
+    component.textContent = arguments_.content;
+  }
+
+  if (arguments_.caption) {
+    const caption = document.createElement('span');
+    caption.className = 'gi-text-gray-500';
+    caption.textContent = arguments_.caption;
+
+    const container = document.createElement('div');
+    container.append(caption);
+    container.append(component);
+    return container;
+  } else {
+    return component;
+  }
+};
 
 export const createParagraph = (arguments_: ParagraphProps) => {
   let classSize = '';
