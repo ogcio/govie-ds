@@ -39,7 +39,7 @@ const createFooter = (arguments_: FooterProps) => {
     container.append(primary);
   }
 
-  if (arguments_.primarySlot || arguments_.secondarySlot) {
+  if (arguments_.primarySlot && arguments_.secondarySlot) {
     const sectionBreak = document.createElement('hr');
     sectionBreak.className = 'gi-section-break-lg gi-border-gray-100';
     sectionBreak.setAttribute('role', 'separator');
