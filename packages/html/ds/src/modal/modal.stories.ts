@@ -5,7 +5,7 @@ import { createButton, createIconButton } from '../helpers/buttons';
 import { createHeading } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { modalBody, modalFooter, modalTitle } from './modal.content';
-import { ModalWrapperProps } from './modal.schema';
+import { ModalWrapperProps } from './types';
 
 type ModalWrapperPropsExtension = ModalWrapperProps & {
   triggerButton: ButtonProps;
