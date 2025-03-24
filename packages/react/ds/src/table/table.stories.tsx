@@ -300,6 +300,63 @@ export const TableWithFooter: Story = {
   ),
 };
 
+export const AlignedColumns: Story = {
+  args: {
+    captionText: 'Employee Salaries',
+    headers: ['Name', 'Role', 'Salary'],
+    rows: [
+      {
+        id: 1,
+        name: 'Alice Johnson',
+        role: 'Manager',
+        salary: '€80,000',
+      },
+      {
+        id: 2,
+        name: 'Bob Martin',
+        role: 'Engineer',
+        salary: '€65,000',
+      },
+      {
+        id: 3,
+        name: 'Carla Gomez',
+        role: 'Designer',
+        salary: '€70,000',
+      },
+    ],
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This story demonstrates how to align table cell content using the `align` prop on `TableHeader` and `TableData`. ' +
+          '`Name` is left-aligned, `Role` is center-aligned, and `Salary` is right-aligned, showcasing how alignment can be controlled per column.',
+      },
+    },
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          <TableHeader align="left">{headers?.[0]}</TableHeader>
+          <TableHeader align="center">{headers?.[1]}</TableHeader>
+          <TableHeader align="right">{headers?.[2]}</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData align="left">{row.name}</TableData>
+            <TableData align="center">{row.role}</TableData>
+            <TableData align="right">{row.salary}</TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
 export const EmptyState: Story = {
   args: {
     captionText: 'No Data Available',
