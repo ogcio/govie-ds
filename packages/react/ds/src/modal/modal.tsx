@@ -1,5 +1,5 @@
 'use client';
-import {
+import React, {
   cloneElement,
   ReactNode,
   Children,
@@ -7,6 +7,7 @@ import {
   ReactElement,
   useState,
 } from 'react';
+
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
@@ -14,9 +15,30 @@ import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import type {
   ModalCloseButtonProps,
+  ModalFooterButton,
+  ModalFooterProps,
   ModalProps,
   ModalWrapperProps,
 } from './types.js';
+
+const isModalComponent = (
+  modalComponent: React.ElementType,
+  modalTitle: string,
+  child: React.ReactNode,
+): boolean => {
+  if (!isValidElement(child)) {
+    return false;
+  }
+  const childType = child.type;
+  // @ts-expect-error The TS error says there is no _owner but there is
+  return childType === modalComponent || child?._owner?.name === modalTitle;
+};
+
+const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
+  flat: 0,
+  secondary: 1,
+  primary: 2,
+};
 
 const ModalCloseButton = ({
   label,
@@ -60,51 +82,71 @@ const ModalCloseButton = ({
   );
 };
 
-const isModalTitle = (child: any): boolean => {
-  if (!isValidElement(child)) {
-    return false;
-  }
-  const childType = child.type as any;
-  // @ts-expect-error The TS error says there is no _owner but there is
-  return childType === ModalTitle || child?._owner?.name === 'ModalTitle';
-};
-
 export const ModalWrapper = ({
+  position = 'center',
+  size = 'lg',
+  closeOnClick = true,
+  closeOnOverlayClick = true,
   isOpen,
   onClose,
-  position = 'center',
   closeButtonLabel,
   className,
   children,
   closeButtonSize,
+  dataTestId,
+  ...props
 }: ModalWrapperProps) => {
   const childrenArray = Children.toArray(children);
 
-  const modalTitle = childrenArray.find((child) => isModalTitle(child));
-  const otherChildren = childrenArray.filter((child) => !isModalTitle(child));
+  const modalTitle = childrenArray.find((child) =>
+    isModalComponent(ModalTitle, 'ModalTitle', child),
+  );
+  const modalFooter = childrenArray.find((child) =>
+    isModalComponent(ModalFooter, 'ModalFooter', child),
+  );
+
+  const modalTitleClone = modalTitle
+    ? React.cloneElement(modalTitle as ReactElement<HeadingProps>, {
+        as: size === 'sm' ? 'h5' : 'h4',
+      })
+    : null;
+
+  const otherChildren = childrenArray
+    .map((child) =>
+      modalFooter
+        ? React.cloneElement(child as ReactElement<ModalFooterProps>, {
+            dataModalSize: size,
+          })
+        : child,
+    )
+    .filter((child) => !isModalComponent(ModalTitle, 'ModalTitle', child));
 
   return (
     <div
+      {...props}
       className={cn('gi-modal', {
         'gi-modal-open': isOpen,
         'gi-modal-close': !isOpen,
       })}
-      data-testid="modal"
+      data-testid={dataTestId || 'modal'}
       data-element="modal"
       role="dialog"
       aria-modal="true"
-      aria-label={modalTitle ? undefined : 'modal'}
-      aria-labelledby={modalTitle ? 'gi-modal-title' : undefined}
       aria-describedby="gi-modal-body"
       onClick={(event) => {
         const target = event.target as HTMLDivElement;
-        if (target.dataset.element === 'modal') {
+        if (
+          target.dataset.element === 'modal' &&
+          closeOnClick &&
+          closeOnOverlayClick
+        ) {
           onClose();
         }
       }}
     >
       <div
         data-testid="modal-container"
+        data-size={size}
         className={cn(
           'gi-modal-container',
           {
@@ -117,14 +159,22 @@ export const ModalWrapper = ({
         )}
       >
         <div>
-          {modalTitle}
-          <ModalCloseButton
-            onClick={onClose}
-            label={closeButtonLabel}
-            size={closeButtonSize}
-          />
+          {modalTitleClone}
+          {closeOnClick && (
+            <ModalCloseButton
+              onClick={onClose}
+              label={closeButtonLabel}
+              size={closeButtonSize}
+            />
+          )}
         </div>
-        <div>{otherChildren}</div>
+        <div
+          className={cn({
+            'gi-pb-6': !modalFooter,
+          })}
+        >
+          {otherChildren}
+        </div>
       </div>
     </div>
   );
@@ -151,19 +201,57 @@ export const ModalBody = ({
 );
 
 export const ModalFooter = ({
-  children,
   className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => <div className={cn('gi-modal-footer', className)}>{children}</div>;
+  children,
+  orientation,
+  dataModalSize,
+}: ModalFooterProps) => {
+  const actionButtons = Array.isArray(children) ? children : [children];
+  const filteredButtons = actionButtons.filter(
+    (actionButton) =>
+      React.isValidElement(actionButton) && actionButton.type === Button,
+  );
+  const sortedButtons = filteredButtons.sort((a, b) => {
+    const variantA = a.props.variant ?? 'primary';
+    const variantB = b.props.variant ?? 'primary';
+    return (VARIANT_ORDER[variantA] || 0) - (VARIANT_ORDER[variantB] || 0);
+  });
+
+  const buttonClassName = cn({
+    'gi-justify-center sm:gi-justify-start':
+      !orientation && dataModalSize !== 'sm',
+    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm',
+    'gi-justify-start': orientation === 'horizontal',
+  });
+
+  return (
+    <div
+      className={cn(className, {
+        'gi-pt-6': sortedButtons.length === 0,
+        'gi-modal-footer': sortedButtons.length,
+      })}
+    >
+      {sortedButtons.length > 0 && (
+        <div
+          data-orientation={orientation || 'unset'}
+          data-modal-size={dataModalSize}
+        >
+          {sortedButtons.map((button) =>
+            React.cloneElement(button, {
+              className: cn(button?.props?.className, buttonClassName),
+            }),
+          ) || null}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Modal = ({
   children,
   triggerButton,
-  className,
   startsOpen,
-  closeButtonLabel,
+  ...props
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
 
@@ -180,11 +268,10 @@ export const Modal = ({
     <>
       {renderCloneTrigger}
       <ModalWrapper
-        isOpen={isOpen}
         onClose={handleClose}
         position="center"
-        className={className}
-        closeButtonLabel={closeButtonLabel}
+        isOpen={isOpen}
+        {...props}
       >
         {children}
       </ModalWrapper>
