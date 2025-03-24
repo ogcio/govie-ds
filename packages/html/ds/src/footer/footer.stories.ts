@@ -34,7 +34,6 @@ const createFooter = (arguments_: FooterProps) => {
 
   if (arguments_.primarySlot) {
     const primary = document.createElement('div');
-    primary.className = 'gi-footer-primary-slot';
     primary.innerHTML = arguments_.primarySlot;
     container.append(primary);
   }
