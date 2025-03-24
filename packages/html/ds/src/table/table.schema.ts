@@ -30,7 +30,12 @@ export const ariaSchema = zod.record(
 );
 
 export const tableSchema = zod.object({
-  captionText: zod.string().optional(),
+  captionText: zod
+    .string({
+      description:
+        'Text for the table caption, providing a brief description of the table contents.',
+    })
+    .optional(),
   headers: zod
     .array(
       zod.object({
@@ -58,8 +63,12 @@ export const tableSchema = zod.object({
       },
     )
     .optional(),
-  aria: ariaSchema.optional(),
-  dataTestid: zod.string().optional(),
+  aria: ariaSchema.describe('Defines the aria attributes').optional(),
+  dataTestid: zod
+    .string({
+      description: 'Test id for the component.',
+    })
+    .optional(),
 });
 
 export type TableProps = zod.infer<typeof tableSchema>;
