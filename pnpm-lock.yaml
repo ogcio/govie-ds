@@ -331,18 +331,6 @@ importers:
         specifier: ^0.4.9
         version: 0.4.16(eslint@8.57.1)
 
-  examples/wagtail:
-    dependencies:
-      '@govie-ds/html':
-        specifier: workspace:*
-        version: link:../../packages/html/ds
-      '@govie-ds/theme-govie':
-        specifier: workspace:*
-        version: link:../../packages/themes/govie
-      '@ogcio/ogcio-ds':
-        specifier: ^0.4.4
-        version: 0.4.4
-
   packages/build/eslint-config:
     dependencies:
       '@eslint/compat':
@@ -2787,10 +2775,6 @@ packages:
 
   '@octokit/types@13.6.2':
     resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
-
-  '@ogcio/ogcio-ds@0.4.4':
-    resolution: {integrity: sha512-pjgnmk8ZFm06wk2oUbSvYCkCmf2AH+uOt3XcFZTs3qDpBCsiSmzyk8XM1ZRwb9kXbzByYrX0mYO+7HPXqWDBAg==}
-    engines: {node: ^20.11.0, npm: ^10.2.4}
 
   '@one-ini/wasm@0.1.1':
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
@@ -12363,8 +12347,6 @@ snapshots:
   '@octokit/types@13.6.2':
     dependencies:
       '@octokit/openapi-types': 22.2.0
-
-  '@ogcio/ogcio-ds@0.4.4': {}
 
   '@one-ini/wasm@0.1.1': {}
 
