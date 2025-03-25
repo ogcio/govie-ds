@@ -330,7 +330,7 @@ export const AllVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextArea iconStart="add_circle" placeholder="Placeholder" />
+          <TextArea iconStart="placeholder" placeholder="Placeholder" />
         </FormField>
         <FormField
           label={{
@@ -342,7 +342,7 @@ export const AllVariantsStates: Story = {
         >
           <TextArea
             className="focus-input"
-            iconStart="add_circle"
+            iconStart="placeholder"
             placeholder="Placeholder"
           />
         </FormField>
@@ -357,7 +357,7 @@ export const AllVariantsStates: Story = {
             text: 'Invalid',
           }}
         >
-          <TextArea iconStart="add_circle" placeholder="Placeholder" />
+          <TextArea iconStart="placeholder" placeholder="Placeholder" />
         </FormField>
         <FormField
           label={{
@@ -367,7 +367,11 @@ export const AllVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextArea disabled iconStart="add_circle" placeholder="Placeholder" />
+          <TextArea
+            disabled
+            iconStart="placeholder"
+            placeholder="Placeholder"
+          />
         </FormField>
       </Stack>
     );
