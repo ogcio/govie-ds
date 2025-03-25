@@ -127,7 +127,7 @@ insetTop
 insetBottom
 Toggleable
 passwordless
-form-textinputpassword
+form-inputpassword
 inputtextwithreset
 InputTextWithReset
 InputPassword
