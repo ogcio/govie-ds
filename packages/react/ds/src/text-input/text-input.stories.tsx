@@ -516,7 +516,7 @@ export const WithCustomActionButton: Story = {
     >
       <TextInput
         inputActionButton={{
-          icon: 'keyboard_arrow_down',
+          icon: 'info',
           onClick: () => alert('action button clicked'),
         }}
         type="text"
@@ -539,8 +539,8 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInputWithReset
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
           />
         </FormField>
@@ -556,8 +556,8 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInputWithReset
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
           />
         </FormField>
@@ -568,8 +568,8 @@ export const AllIconVariantsStates: Story = {
         >
           <TextInputWithReset
             disabled
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
           />
         </FormField>
@@ -583,8 +583,8 @@ export const AllIconVariantsStates: Story = {
         >
           <TextInputWithReset
             inputClassName="focus-input"
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
           />
         </FormField>
@@ -597,8 +597,8 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInputWithReset
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -616,8 +616,8 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInputWithReset
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -632,8 +632,8 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInputWithReset
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -650,8 +650,8 @@ export const AllIconVariantsStates: Story = {
         >
           <TextInputWithReset
             inputClassName="focus-input"
-            iconStart="add_circle"
-            iconEnd="add_circle"
+            iconStart="placeholder"
+            iconEnd="placeholder"
             placeholder="Placeholder"
             prefix="€"
             suffix="kg"
@@ -666,7 +666,7 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInput
-            iconStart="add_circle"
+            iconStart="placeholder"
             type="text"
             placeholder="Placeholder"
           />
@@ -680,7 +680,7 @@ export const AllIconVariantsStates: Story = {
           }}
         >
           <TextInput
-            iconEnd="add_circle"
+            iconEnd="placeholder"
             type="text"
             placeholder="Placeholder"
           />
