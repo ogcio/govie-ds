@@ -110,17 +110,6 @@ export const disabledItem = {
     </Select>
   ),
 };
-export const disabled = {
-  render: () => (
-    <Select aria-label="Select">
-      <SelectItem disabled value="value-1">
-        Option 1
-      </SelectItem>
-      <SelectItem value="value-2">Option 2</SelectItem>
-      <SelectItem value="value-3">Option 3</SelectItem>
-    </Select>
-  ),
-};
 
 export const withGroups = {
   render: () => (
