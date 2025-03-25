@@ -65,7 +65,7 @@ import {
   Tag,
   TextArea,
   TextInput,
-  TextInputPassword,
+  InputPassword,
   TextInputWithReset,
   Tooltip,
   StepItem,
@@ -284,7 +284,7 @@ const documentComponents: MDXComponents = {
       <DataGridSample />
     </div>
   ),
-  TextInputPassword,
+  InputPassword,
   TextInputWithReset,
 };
 

@@ -123,9 +123,9 @@ export {
   type TextInputProps,
 } from './text-input/text-input.js';
 export {
-  TextInputPassword,
-  type TextInputPasswordProps,
-} from './text-input-password/text-input-password.js';
+  InputPassword,
+  type InputPasswordProps,
+} from './input-password/input-password.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
 export { toaster, ToastProvider } from './toast/toast.js';
 export type {

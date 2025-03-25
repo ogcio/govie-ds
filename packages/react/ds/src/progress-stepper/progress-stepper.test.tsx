@@ -165,6 +165,60 @@ describe('govieProgressStepper', () => {
     expect(stepperElement3).toBeInTheDocument();
   });
 
+  it('should check step numbers when "indicator" is a number', () => {
+    const screen = renderProgressStepper({
+      indicator: 'number',
+      children: [
+        <StepItem label="Step 1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
+    });
+
+    const steps = screen.getAllByRole('listitem');
+
+    for (const step of steps) {
+      const content = step
+        .querySelector('.gi-progress-stepper-step')
+        ?.textContent?.trim();
+      expect(!Number.isNaN(Number(content))).toBe(true);
+    }
+  });
+
+  it('should have a check icon for the completed steps when "indicator" is a number', () => {
+    const screen = renderProgressStepper({
+      indicator: 'number',
+      currentStepIndex: 2,
+      children: [
+        <StepItem label="Step 1">
+          <div>Step 1 Content</div>
+        </StepItem>,
+        <StepItem label="Step 2">
+          <div>Step 2 Content</div>
+        </StepItem>,
+        <StepItem label="Step 3">
+          <div>Step 3 Content</div>
+        </StepItem>,
+      ],
+    });
+
+    const [content1, content2, currentStep] = screen
+      .getAllByRole('listitem')
+      .map((step) =>
+        step.querySelector('.gi-progress-stepper-step')?.textContent?.trim(),
+      );
+
+    expect(content1).toBe('check');
+    expect(content2).toBe('check');
+    expect(currentStep).toBe('3');
+  });
+
   it('should pass axe accessibility tests', async () => {
     const screen = renderProgressStepper({
       children: [

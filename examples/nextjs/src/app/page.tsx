@@ -47,7 +47,7 @@ import {
   toaster,
   ToastVariant,
   ToastProvider,
-  TextInputPassword,
+  InputPassword,
   TextInputWithReset,
 } from '@govie-ds/react';
 import { useState } from 'react';
@@ -129,7 +129,7 @@ export default function Home() {
         <TextInputWithReset />
         <br />
         Text Input Password
-        <TextInputPassword />
+        <InputPassword />
         <br />
         <Button onClick={() => handleCreateToast('Success', 'success')}>
           Trigger Success Toast via callback
@@ -350,6 +350,14 @@ export default function Home() {
             <StepItem label="Step 3">Here is the Step 3</StepItem>
             <StepItem label="Step 4">Here is the Step 4</StepItem>
             <StepItem label="Step 5">Here is the Step 5</StepItem>
+          </ProgressStepper>
+
+          <br />
+          <ProgressStepper indicator="number" currentStepIndex={2}>
+            <StepItem label="Step 1" />
+            <StepItem label="Step 2" />
+            <StepItem label="Step 3" />
+            <StepItem label="Step 4" />
           </ProgressStepper>
 
           <br />
