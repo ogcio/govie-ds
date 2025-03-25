@@ -87,6 +87,41 @@ export const withoutLabel = {
   ),
 };
 
+export const disabledSelect = {
+  render: () => (
+    <Select aria-label="Select" disabled>
+      <SelectItem disabled value="value-1">
+        Option 1
+      </SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  ),
+};
+
+export const disabledItem = {
+  render: () => (
+    <Select aria-label="Select">
+      <SelectItem disabled value="value-1">
+        Option 1
+      </SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  ),
+};
+export const disabled = {
+  render: () => (
+    <Select aria-label="Select">
+      <SelectItem disabled value="value-1">
+        Option 1
+      </SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  ),
+};
+
 export const withGroups = {
   render: () => (
     <Select aria-label="Select" data-testid="select">
