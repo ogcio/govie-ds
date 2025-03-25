@@ -1,0 +1,120 @@
+.gi-btn {
+  @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm gi-items-center gi-focus-state-outline gi-focus-state-border-sm-rounded;
+}
+
+/* Button Focus state */
+
+.gi-btn-primary,
+.gi-btn-primary-dark {
+  @apply focus:gi-bg-emerald-900 focus:gi-shadow-[inset_0_0_0_2px] focus:gi-shadow-white;
+}
+
+.gi-btn-primary-dark,
+.gi-btn-secondary-light,
+.gi-btn-flat-light {
+  @apply focus:gi-bg-gray-800;
+}
+
+.gi-btn-primary-light,
+.gi-btn-secondary-dark,
+.gi-btn-flat-dark {
+  @apply focus:gi-bg-gray-200;
+}
+
+.gi-btn-secondary,
+.gi-btn-flat {
+  @apply focus:gi-bg-emerald-50;
+}
+/* Button Focus state*/
+
+/* Button Primary */
+
+.gi-btn-primary {
+  @apply gi-border-transparent gi-text-white gi-stroke-white gi-bg-primary-default hover:gi-bg-emerald-900;
+}
+
+.gi-btn-primary-disabled {
+  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+.gi-btn-primary-light {
+  @apply gi-border-transparent gi-text-gray-950 gi-stroke-gray-950 gi-bg-white hover:gi-bg-gray-200;
+}
+
+.gi-btn-primary-light-disabled {
+  @apply gi-border-transparent gi-bg-gray-800 gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+}
+
+.gi-btn-primary-dark {
+  @apply gi-border-transparent gi-text-white gi-stroke-white gi-bg-gray-950 hover:gi-bg-gray-800;
+}
+
+.gi-btn-primary-dark-disabled {
+  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+/* Button Secondary */
+
+.gi-btn-secondary {
+  @apply gi-border-primary-default gi-text-primary-default gi-stroke-primary-default gi-border-primary-default hover:gi-bg-emerald-50;
+}
+
+.gi-btn-secondary-disabled {
+  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+.gi-btn-secondary-light {
+  @apply gi-text-white gi-stroke-white gi-border-white hover:gi-bg-gray-800;
+}
+
+.gi-btn-secondary-light-disabled {
+  @apply gi-bg-gray-800 gi-border-gray-400 gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+}
+
+.gi-btn-secondary-dark {
+  @apply gi-border-gray-950 hover:gi-bg-gray-200;
+}
+
+.gi-btn-secondary-dark-disabled {
+  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+/* Button Flat */
+
+.gi-btn-flat {
+  @apply gi-border-transparent gi-text-primary-default gi-stroke-primary-default hover:gi-bg-emerald-50;
+}
+
+.gi-btn-flat-disabled {
+  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+.gi-btn-flat-light {
+  @apply gi-border-transparent gi-text-white gi-stroke-white hover:gi-bg-gray-800;
+}
+
+.gi-btn-flat-light-disabled {
+  @apply gi-border-transparent gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+}
+
+.gi-btn-flat-dark {
+  @apply gi-border-transparent gi-text-gray-950 gi-stroke-gray-950 hover:gi-bg-gray-200;
+}
+
+.gi-btn-flat-dark-disabled {
+  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+}
+
+/* Button sizes */
+
+.gi-btn-small {
+  @apply gi-h-8 gi-px-2 gi-py-1.5 gi-text-xs;
+}
+
+.gi-btn-large {
+  @apply gi-h-12 gi-px-4 gi-py-3 gi-text-2md;
+}
+
+.gi-btn-regular {
+  @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm;
+}

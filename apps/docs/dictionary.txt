@@ -123,3 +123,5 @@ currentStepIndex
 completeAll
 StepItem
 defaultOpen
+insetTop
+insetBottom

@@ -8,6 +8,17 @@
       gi-table-auto
     {% endif %}
   {% endmacro %}
+
+  {% macro getAlignClass(align) %}
+    {% if align == 'right' %}
+      gi-text-right
+    {% elif align == 'center' %}
+      gi-text-center
+    {% else %}
+      gi-text-left
+    {% endif %}
+  {% endmacro %}
+
   <table
     {{ commonAriaAttributes(props) }}
     class="{{ getLayoutClass(props) | trim }} gi-table"
@@ -18,21 +29,35 @@
         {{ props.captionText }}
       </caption>
     {% endif %}
+
     {% if props.headers %}
       <thead>
         <tr>
           {% for header in props.headers %}
-            <th class="gi-table-th">{{ header }}</th>
+            {% if header is string %}
+              <th class="gi-table-th">{{ header }}</th>
+            {% else %}
+              <th class="gi-table-th {{ getAlignClass(header.align) }}">
+                {{ header.text }}
+              </th>
+            {% endif %}
           {% endfor %}
         </tr>
       </thead>
     {% endif %}
+
     {% if props.rows and props.rows | length > 0 %}
       <tbody>
         {% for row in props.rows %}
           <tr>
             {% for cell in row %}
-              <td class="gi-table-td">{{ cell | safe }}</td>
+              {% if cell is mapping %}
+                <td class="gi-table-td {{ getAlignClass(cell.align) }}">
+                  {{ cell.content | safe }}
+                </td>
+              {% else %}
+                <td class="gi-table-td">{{ cell | safe }}</td>
+              {% endif %}
             {% endfor %}
           </tr>
         {% endfor %}

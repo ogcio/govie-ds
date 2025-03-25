@@ -1,0 +1,27 @@
+.gi-accordion {
+  @apply gi-focus-visible-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion-header {
+  @apply gi-items-center;
+}
+
+.gi-accordion[data-disabled='false'] {
+  @apply hover:gi-bg-gray-200 gi-focus-state-outline-inner-shadow-sm;
+}
+
+.gi-accordion[data-disabled='false'] .gi-accordion-header {
+  @apply gi-cursor-pointer;
+}
+
+.gi-accordion[data-disabled='true'] .gi-accordion-header {
+  @apply gi-cursor-not-allowed gi-text-gray-600;
+}
+
+.gi-accordion[data-icon-start='false'] .gi-accordion-header {
+  @apply gi-flex gi-justify-between;
+}
+
+.gi-accordion[data-icon-start='true'] .gi-accordion-header {
+  @apply gi-flex gi-flex-row-reverse gi-justify-end gi-gap-2;
+}

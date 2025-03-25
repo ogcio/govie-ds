@@ -2,6 +2,23 @@
 
 
 
+## [0.7.2](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.1...tokens-v0.7.2) (2025-03-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/prettier-config bumped to 1.0.2
+
+## [0.7.1](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.0...tokens-v0.7.1) (2025-03-14)
+
+
+### Bug Fixes
+
+* button tokens ([543d673](https://github.com/ogcio/govie-ds/commit/543d6731d9d6d2c2dbbe5804c323b79ab85968b1))
+* hide button tokens ([0f3abf1](https://github.com/ogcio/govie-ds/commit/0f3abf15a97cc1db8424664b58233c67c80f8251))
+
 ## [0.7.0](https://github.com/ogcio/govie-ds/compare/tokens-v0.6.0...tokens-v0.7.0) (2024-10-28)
 
 
