@@ -146,7 +146,7 @@ export function Icon({
         className={cn({
           'gi-block': !inline,
           'gi-inline-block': inline,
-          'gi-stroke-gray-700': disabled,
+          'gi-fill-gray-700': disabled,
         })}
       />
     );

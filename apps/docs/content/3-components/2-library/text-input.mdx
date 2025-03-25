@@ -86,7 +86,7 @@ The `TextInput` component is used to allow users to enter single-line text, with
       text: 'Input Label',
     }}
   >
-    <TextInputWithReset data-testid="text-reset-id" id="text-reset-id" />
+    <TextInput clearEnabled data-testid="text-reset-id" id="text-reset-id" />
   </FormField>
 </ComponentContainer>
 
@@ -134,15 +134,15 @@ The `TextInput` component is used to allow users to enter single-line text, with
 
 ## Usage
 
-### InputTextWithReset
-
-The `InputTextWithReset` component provides an enhanced user experience by allowing users to quickly clear the input field. This is particularly useful in cases where users frequently modify or re-enter information.
-
 #### Features:
 
 - Includes a built-in reset button to clear the input field.
 - Maintains the same styling and customisation options as the standard input component.
 - Ideal for search fields, dynamic form inputs, or scenarios requiring frequent text updates.
+
+### clearEnabled
+
+The `clearEnabled` prop enhances user experience by displaying a reset (clear) button inside the input field. When enabled, users can quickly clear the input value with a single click. This is particularly useful in forms where users frequently modify or re-enter information. It ensures fast interaction without requiring manual deletion.
 
 ### Best Practices
 

@@ -116,12 +116,7 @@ export { TabList } from './tabs/tab-list.js';
 export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs, type TabsProps } from './tabs/tabs.js';
 export { Tag, type TagProps, TagTypeEnum, type TagType } from './tag/tag.js';
-export {
-  TextInput,
-  TextInputWithReset,
-  type TextInputWithResetProps,
-  type TextInputProps,
-} from './text-input/text-input.js';
+export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export {
   InputPassword,
   type InputPasswordProps,

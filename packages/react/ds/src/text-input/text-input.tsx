@@ -33,6 +33,7 @@ export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'url'
     | 'week';
   halfFluid?: boolean;
+  clearButtonEnabled?: boolean;
 };
 
 export const InputActionButton = ({
@@ -58,42 +59,52 @@ export const InputActionButton = ({
   );
 };
 
-export type TextInputWithResetProps = {
-  onResetValue?: () => void;
-} & Omit<TextInputProps, 'inputActionButton'>;
+export const InputTextWithClear = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ onChange, ...props }, externalRef) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
-export const TextInputWithReset = forwardRef<
-  HTMLInputElement,
-  TextInputWithResetProps
->(({ onResetValue, ...props }, externalRef) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+    useImperativeHandle(externalRef, () => inputRef.current!);
 
-  useImperativeHandle(externalRef, () => inputRef.current!);
+    const handleOnReset = () => {
+      if (inputRef?.current) {
+        inputRef.current.value = '';
+        inputRef.current.focus();
+      }
 
-  const handleOnReset = () => {
-    if (onResetValue) {
-      onResetValue();
-    }
+      const newInputEvent = {
+        target: inputRef.current,
+        currentTarget: inputRef.current,
+      } as unknown as React.ChangeEvent<HTMLInputElement>;
 
-    if (inputRef?.current) {
-      inputRef.current.value = '';
-      inputRef.current.focus();
-    }
-  };
+      if (onChange) {
+        onChange(newInputEvent);
+      }
+    };
 
-  return (
-    <TextInput
-      {...props}
-      ref={inputRef}
-      inputActionButton={{
-        icon: 'close',
-        onClick: handleOnReset,
-      }}
-    />
-  );
-});
+    return (
+      <InputText
+        {...props}
+        ref={inputRef}
+        inputActionButton={{
+          icon: 'close',
+          onClick: handleOnReset,
+        }}
+      />
+    );
+  },
+);
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+  ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
+    if (clearButtonEnabled) {
+      return <InputTextWithClear ref={ref} type={type} {...props} />;
+    }
+
+    return <InputText ref={ref} type={type} {...props} />;
+  },
+);
+
+const InputText = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       prefix,

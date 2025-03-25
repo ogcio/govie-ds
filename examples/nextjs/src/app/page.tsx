@@ -48,7 +48,7 @@ import {
   ToastVariant,
   ToastProvider,
   InputPassword,
-  TextInputWithReset,
+  TextInput,
 } from '@govie-ds/react';
 import { useState } from 'react';
 
@@ -126,7 +126,7 @@ export default function Home() {
       <Container>
         <br />
         Text Input With Reset
-        <TextInputWithReset />
+        <TextInput clearEnabled />
         <br />
         Text Input Password
         <InputPassword />

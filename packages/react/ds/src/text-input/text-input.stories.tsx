@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput, TextInputWithReset } from './text-input.js';
+import { TextInput } from './text-input.js';
 
 const meta = {
   title: 'Form/TextInput',
@@ -132,7 +132,7 @@ export const WithTextInputReset: Story = {
           htmlFor: 'text-input-id',
         }}
       >
-        <TextInputWithReset placeholder="Placeholder" />
+        <TextInput clearButtonEnabled placeholder="Placeholder" />
       </FormField>
     );
   },
@@ -332,7 +332,7 @@ export const WithHalfWidth: Story = {
             htmlFor: 'text-input-id',
           }}
         >
-          <TextInputWithReset halfFluid />
+          <TextInput clearButtonEnabled halfFluid />
         </FormField>
       </Stack>
     );
@@ -538,7 +538,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
             placeholder="Placeholder"
@@ -555,7 +556,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Invalid',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
             placeholder="Placeholder"
@@ -566,7 +568,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Disabled',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             disabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -581,7 +584,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             inputClassName="focus-input"
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -596,7 +600,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
             placeholder="Placeholder"
@@ -615,7 +620,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Invalid',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
             placeholder="Placeholder"
@@ -631,7 +637,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
             placeholder="Placeholder"
@@ -648,7 +655,8 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInputWithReset
+          <TextInput
+            clearButtonEnabled
             inputClassName="focus-input"
             iconStart="placeholder"
             iconEnd="placeholder"

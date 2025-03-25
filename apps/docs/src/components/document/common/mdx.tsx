@@ -66,7 +66,6 @@ import {
   TextArea,
   TextInput,
   InputPassword,
-  TextInputWithReset,
   Tooltip,
   StepItem,
 } from '@govie-ds/react';
@@ -285,7 +284,6 @@ const documentComponents: MDXComponents = {
     </div>
   ),
   InputPassword,
-  TextInputWithReset,
 };
 
 export function Mdx({ code }: MdxProps) {
