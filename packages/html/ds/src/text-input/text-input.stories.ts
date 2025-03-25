@@ -22,7 +22,7 @@ export const Default: Story = {
     id: 'input-id',
     label: {
       content: 'Label',
-      for: 'input-id',
+      htmlFor: 'input-id',
       size: LabelSize.Medium,
     },
   },
@@ -33,7 +33,7 @@ export const WithLabelAndHint: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'label-hint-input',
+      htmlFor: 'label-hint-input',
       size: LabelSize.Medium,
     },
     hint: {
@@ -48,7 +48,7 @@ export const WithLabelAndError: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'label-hint-input',
+      htmlFor: 'label-hint-input',
       size: LabelSize.Medium,
     },
     error: {
@@ -63,7 +63,7 @@ export const WithLabelHintAndError: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'error-input',
+      htmlFor: 'error-input',
       size: LabelSize.Medium,
     },
     hint: {
@@ -103,7 +103,7 @@ export const WithLabelAndPrefixSuffix: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'suffix-input',
+      htmlFor: 'suffix-input',
       size: LabelSize.Medium,
     },
     prefix: 'KG',
@@ -128,7 +128,7 @@ export const InputLength: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'character-width-input',
+      htmlFor: 'character-width-input',
       size: LabelSize.Medium,
     },
     maxLength: 20,
@@ -141,7 +141,7 @@ export const DateInput: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'text-input-id',
+      htmlFor: 'text-input-id',
       size: LabelSize.Medium,
     },
     id: 'text-input-id',
@@ -154,7 +154,7 @@ export const DisabledInput: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'text-input-id',
+      htmlFor: 'text-input-id',
       size: LabelSize.Medium,
     },
     id: 'text-input-id',
@@ -173,7 +173,7 @@ export const WithHalfWidth: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'input-id',
+      htmlFor: 'input-id',
       size: LabelSize.Medium,
     },
     id: 'input-id',

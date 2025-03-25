@@ -1,1 +1,1 @@
-export type BlockquoteProps = React.QuoteHTMLAttributes<HTMLQuoteElement>;
+export type BlockquoteProps = {content?: string};

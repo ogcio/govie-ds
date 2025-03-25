@@ -18,7 +18,7 @@ export type ToastProps = {
     label: string;
   };
   dismissible?: boolean;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose?: () => void;
   duration?: number;
   position?: ToastPosition;
   dataTestid?: string;

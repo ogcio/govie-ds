@@ -145,9 +145,6 @@ export const WithAriaAttribute: Story = {
   args: {
     text: 'This is a tooltip at the top.',
     position: 'top',
-    aria: {
-      'aria-label': 'Aria label',
-    },
     content: `
       <button
         data-testid="govieButton-top-primary-medium-notDisabled"

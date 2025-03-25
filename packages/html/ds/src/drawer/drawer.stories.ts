@@ -3,11 +3,7 @@ import { ButtonProps } from '../button/types.ts';
 import { createButton, createIconButton } from '../helpers/buttons.tsx';
 import { createHeading } from '../helpers/typography.tsx';
 import { beautifyHtmlNode } from '../storybook/storybook.tsx';
-import {
-  drawerBody,
-  drawerFooter,
-  drawerTriggerButton,
-} from './drawer.content.ts';
+import { drawerBody, drawerFooter } from './drawer.content.ts';
 import { DrawerWrapperProps } from './types.ts';
 
 type DrawerWrapperPropsExtension = DrawerWrapperProps & {

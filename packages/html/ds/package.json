@@ -35,8 +35,7 @@
     "storybook:coverage": "vitest --project=storybook --coverage"
   },
   "files": [
-    "dist",
-    "macros"
+    "dist"
   ],
   "keywords": [],
   "author": "",
@@ -49,7 +48,6 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
-    "@types/nunjucks": "^3.2.6",
     "@vitest/coverage-istanbul": "2.1.8",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
@@ -58,11 +56,9 @@
     "glob": "^10.4.5",
     "jsdom": "^25.0.1",
     "js-beautify": "^1.15.3",
-    "nunjucks": "^3.2.4",
     "postcss": "^8.4.40",
     "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-jinja-template": "^2.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tsx": "^4.16.5",

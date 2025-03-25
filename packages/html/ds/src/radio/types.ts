@@ -1,4 +1,3 @@
-import { InputHTMLAttributes } from 'react';
 import { ErrorTextProps } from '../error-text/types.js';
 import { HintTextProps } from '../hint-text/types.js';
 import { LabelProps } from '../label/types.js';
@@ -13,12 +12,17 @@ export const RadioSizeEnum = {
 export type RadioSizeType = (typeof RadioSizeEnum)[keyof typeof RadioSizeEnum];
 
 export type RadioProps = {
+  id?: string;
+  size?: RadioSizeType;
   label?: string;
   hint?: string;
-  size?: RadioSizeType;
-  conditionalInput?: TextInputProps;
   dataElement?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  value?: string;
+  disabled?: boolean;
+  checked?: boolean;
+  name?: string;
+  conditionalInput?: TextInputProps;
+};
 
 export type RadioGroupProps = {
   label?: LabelProps;

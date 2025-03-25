@@ -2,10 +2,9 @@ import { ErrorTextProps } from '../error-text/types';
 import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
 
-export type SelectProps = React.DetailedHTMLProps<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
-> & {
+export type SelectProps = {
+  id: string;
+  name: string;
   label?: LabelProps;
   hint?: HintTextProps;
   error?: ErrorTextProps;
@@ -13,14 +12,12 @@ export type SelectProps = React.DetailedHTMLProps<
   dataTestid?: string;
 };
 
-export type SelectItemProps = React.DetailedHTMLProps<
-  React.OptionHTMLAttributes<HTMLOptionElement>,
-  HTMLOptionElement
->;
+export type SelectItemProps = {
+  value: string;
+  label: string;
+};
 
-export type SelectGroupItemProps = React.DetailedHTMLProps<
-  React.OptgroupHTMLAttributes<HTMLOptGroupElement>,
-  HTMLOptGroupElement
-> & {
+export type SelectGroupItemProps = {
   items: SelectItemProps[];
+  label: string;
 };

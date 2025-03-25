@@ -6,6 +6,8 @@ export const HintSize = {
 
 export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];
 
-export type HintTextProps = React.HTMLAttributes<HTMLElement> & {
+export type HintTextProps = {
+  content?: string;
   size?: HintSizeType;
+  className?: string;
 };

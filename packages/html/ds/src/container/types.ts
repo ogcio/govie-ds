@@ -1,1 +1,1 @@
-export type ContainerProps = React.HTMLAttributes<HTMLDivElement>;
+export type ContainerProps = {content?: string};

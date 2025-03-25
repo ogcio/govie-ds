@@ -52,7 +52,7 @@ export const Default: Story = {
     id: 'file-upload-id',
     label: {
       content: 'Upload File',
-      for: 'file-upload-id',
+      htmlFor: 'file-upload-id',
       size: 'md',
     },
     dataTestId: 'input-id',
@@ -77,7 +77,7 @@ export const WithLabelHintAndError: Story = {
     id: 'file-upload-id',
     label: {
       content: 'Upload File',
-      for: 'file-upload-id',
+      htmlFor: 'file-upload-id',
       size: 'md',
     },
     error: {
@@ -120,7 +120,7 @@ export const WithPDFAndDocxOnly: Story = {
     id: 'file-upload-id',
     label: {
       content: 'Upload File',
-      for: 'file-upload-id',
+      htmlFor: 'file-upload-id',
       size: 'md',
     },
     dataTestId: 'input-id',

@@ -6,7 +6,9 @@ export const ErrorSize = {
 
 export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
 
-export type ErrorTextProps = React.HTMLAttributes<HTMLDivElement> & {
+export type ErrorTextProps = {
+  content?: string;
   size?: ErrorSizeType;
+  className?: string;
   dataTestid?: string;
 };

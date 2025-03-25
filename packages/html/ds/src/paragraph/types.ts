@@ -7,7 +7,9 @@ export type ParagraphWhitespace =
   | 'pre-wrap'
   | 'break-spaces';
 
-export type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
+export type ParagraphProps = {
+  content: string;
+  className?: string;
   as?: ParagraphAs;
   size?: ParagraphSize;
   align?: ParagraphAlign;

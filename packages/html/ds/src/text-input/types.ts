@@ -2,7 +2,18 @@ import { ErrorTextProps } from '../error-text/types';
 import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
 
-export type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type TextInputProps = {
+  id: string;
+  name?: string;
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  required?: boolean;
+  maxLength?: number;
+  minLength?: number;
+  pattern?: string;
+  className?: string;
   label?: LabelProps;
   hint?: HintTextProps;
   error?: ErrorTextProps;

@@ -11,7 +11,7 @@ export type DrawerWrapperProps = {
 } & Omit<DrawerProps, 'triggerButton'>;
 
 export type DrawerSize = 'sm' | 'md' | 'lg';
-export type DrawerProps = React.AriaAttributes & {
+export type DrawerProps = {
   className?: string;
   closeButtonLabel?: string;
   triggerButton: ButtonProps;

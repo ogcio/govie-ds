@@ -41,4 +41,4 @@ export type StackProps = {
   wrap?: boolean;
   fixedHeight?: string;
   className?: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+};

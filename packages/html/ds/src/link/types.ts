@@ -1,6 +1,8 @@
 import { ButtonVariant, ButtonAppearance, ButtonSize } from '../button/types';
 
-export type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type AnchorProps = {
+  content?: string;
+  className?: string;
   external?: boolean;
   asChild?: boolean;
 };

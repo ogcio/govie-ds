@@ -151,7 +151,7 @@ export const Default: Story = {
     id: 'input-id',
     label: {
       content: 'Label',
-      for: 'input-id',
+      htmlFor: 'input-id',
       size: LabelSize.Medium,
     },
   },
@@ -162,7 +162,7 @@ export const WithLabelAndHint: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'label-hint-input',
+      htmlFor: 'label-hint-input',
       size: LabelSize.Medium,
     },
     hint: {
@@ -177,7 +177,7 @@ export const WithLabelAndError: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'label-hint-input',
+      htmlFor: 'label-hint-input',
       size: LabelSize.Medium,
     },
     error: {
@@ -192,7 +192,7 @@ export const WithLabelHintAndError: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'error-input',
+      htmlFor: 'error-input',
       size: LabelSize.Medium,
     },
     hint: {
@@ -232,7 +232,7 @@ export const InputLength: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'character-width-input',
+      htmlFor: 'character-width-input',
       size: LabelSize.Medium,
     },
     maxLength: 20,
@@ -245,7 +245,7 @@ export const DisabledInput: Story = {
   args: {
     label: {
       content: 'Label',
-      for: 'text-input-id',
+      htmlFor: 'text-input-id',
       size: LabelSize.Medium,
     },
     id: 'text-input-id',
@@ -278,7 +278,7 @@ export const CustomRowsAndColumns: Story = {
   args: {
     label: {
       content: 'Textarea Label',
-      for: 'custom-size-textarea',
+      htmlFor: 'custom-size-textarea',
       size: 'md',
     },
     rows: 6,
@@ -299,7 +299,7 @@ export const WithMaxChars: Story = {
   args: {
     label: {
       content: 'Textarea Label',
-      for: 'textarea-id-5',
+      htmlFor: 'textarea-id-5',
       size: 'md',
     },
     hint: {

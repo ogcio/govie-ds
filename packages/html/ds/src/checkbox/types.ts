@@ -1,4 +1,3 @@
-import { InputHTMLAttributes } from 'react';
 import { ErrorTextProps } from '../error-text/types';
 import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
@@ -13,11 +12,18 @@ export type CheckboxSizeEnumType =
   (typeof CheckboxSizeEnum)[keyof typeof CheckboxSizeEnum];
 
 export type CheckboxProps = {
+  id?: string;
   size?: CheckboxSizeEnumType;
   label?: string;
   hint?: string;
   dataElement?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  value?: string;
+  disabled?: boolean;
+  checked?: boolean;
+  name?: string;
+};
+
+// InputHTMLAttributes<HTMLInputElement>
 
 export type CheckboxGroupProps = {
   label?: LabelProps;

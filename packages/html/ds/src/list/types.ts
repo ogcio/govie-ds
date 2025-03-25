@@ -10,4 +10,4 @@ export type ListProps = {
   items: string[];
   spaced?: boolean;
   type?: ListType;
-} & React.HTMLAttributes<HTMLUListElement>;
+};

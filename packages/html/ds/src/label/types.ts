@@ -6,6 +6,9 @@ export const LabelSize = {
 
 export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
 
-export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
+export type LabelProps = {
+  content?: string;
+  htmlFor?: string;
+  className?: string;
   size?: LabelSizeType;
 };

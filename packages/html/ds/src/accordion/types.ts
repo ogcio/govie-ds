@@ -3,7 +3,8 @@ export type AccordionItemProps = {
   defaultExpanded?: boolean;
   disabled?: boolean;
   variant?: 'default' | 'small';
-} & React.HTMLAttributes<HTMLDivElement>;
+  content?: string;
+};
 
 export type AccordionProps = {
   items: AccordionItemProps[];

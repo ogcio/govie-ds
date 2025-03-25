@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { createIcon } from '../helpers/icons';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { AccordionProps } from './types';
-import { createIcon } from '../helpers/icons';
 
 const meta: Meta<AccordionProps> = {
   title: 'Layout/Accordion',

@@ -18,10 +18,10 @@ const createElement = (arguments_: ButtonProps) => {
 
 export const Default: Story = {
   argTypes: {
-    children: {
+    content: {
       control: 'text',
       type: { name: 'string' },
-      description: 'The React Node that the button will accept',
+      description: 'The content that the button will accept',
     },
     variant: {
       control: 'radio',

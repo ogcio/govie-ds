@@ -11,7 +11,7 @@ export type ModalWrapperProps = {
 } & Omit<ModalProps, 'triggerButton'>;
 
 export type ModalSize = 'sm' | 'md' | 'lg';
-export type ModalProps = React.AriaAttributes & {
+export type ModalProps = {
   className?: string;
   closeButtonLabel?: string;
   triggerButton: ButtonProps;
