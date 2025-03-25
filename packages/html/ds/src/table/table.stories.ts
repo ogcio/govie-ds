@@ -78,11 +78,51 @@ const createElement = (arguments_: TablePropsExtension) => {
 export const Default: Story = {
   args: {
     captionText: 'Default Table Example',
-    headers: ['Name', 'Email', 'Role'],
+    headers: [{ text: 'Name' }, { text: 'Email' }, { text: 'Role' }],
     rows: [
-      ['John Doe', 'john.doe@example.com', 'Admin'],
-      ['Jane Smith', 'jane.smith@example.com', 'User'],
-      ['Sam Lee', 'sam.lee@example.com', 'Editor'],
+      [
+        { content: 'John Doe' },
+        { content: 'john.doe@example.com' },
+        { content: 'Admin' },
+      ],
+      [
+        { content: 'Jane Smith' },
+        { content: 'jane.smith@example.com' },
+        { content: 'User' },
+      ],
+      [
+        { content: 'Sam Lee' },
+        { content: 'sam.lee@example.com' },
+        { content: 'Editor' },
+      ],
+    ],
+  },
+};
+
+export const WithAlignment: Story = {
+  args: {
+    captionText: 'Table With Text Alignment',
+    headers: [
+      { text: 'Name', align: 'left' },
+      { text: 'Age', align: 'center' },
+      { text: 'Balance', align: 'right' },
+    ],
+    rows: [
+      [
+        { content: 'Alice', align: 'left' },
+        { content: '30', align: 'center' },
+        { content: '$1,000.00', align: 'right' },
+      ],
+      [
+        { content: 'Bob', align: 'left' },
+        { content: '45', align: 'center' },
+        { content: '$2,500.00', align: 'right' },
+      ],
+      [
+        { content: 'Charlie', align: 'left' },
+        { content: '28', align: 'center' },
+        { content: '$900.00', align: 'right' },
+      ],
     ],
   },
   render: (arguments_) => createElement(arguments_),
@@ -91,79 +131,85 @@ export const Default: Story = {
 export const WithInteractiveElements: Story = {
   args: {
     captionText: 'Table with Interactive Elements',
-    headers: ['Item', 'Quantity', 'Action'],
+    headers: [{ text: 'Item' }, { text: 'Quantity' }, { text: 'Action' }],
     rows: [
       [
-        'Apple',
-        '5',
-        `<span
-          class="gi-tooltip-wrapper"
-          data-module="gieds-tooltip"
-        >
-          <button
-            data-testid="govieButton-default-primary-medium-notDisabled"
-            data-element="button-container"
-            data-module="gieds-button"
-            class="gi-btn gi-btn-primary gi-btn-regular"
+        { content: 'Apple' },
+        { content: '5' },
+        {
+          content: `<span
+            class="gi-tooltip-wrapper"
+            data-module="gieds-tooltip"
           >
-            Edit
-          </button>
-          <span
-            role="tooltip"
-            class="gi-tooltip gi-tooltip-right"
-            aria-hidden="true"
-          >
-            Edit.
-          </span>
-        </span>`,
+            <button
+              data-testid="govieButton-default-primary-medium-notDisabled"
+              data-element="button-container"
+              data-module="gieds-button"
+              class="gi-btn gi-btn-primary gi-btn-regular"
+            >
+              Edit
+            </button>
+            <span
+              role="tooltip"
+              class="gi-tooltip gi-tooltip-right"
+              aria-hidden="true"
+            >
+              Edit.
+            </span>
+          </span>`,
+        },
       ],
       [
-        'Banana',
-        '10',
-        `<span
-          class="gi-tooltip-wrapper"
-          data-module="gieds-tooltip"
-        >
-          <button
-            data-testid="govieButton-default-primary-medium-notDisabled"
-            data-element="button-container"
-            data-module="gieds-button"
-            class="gi-btn gi-btn-primary gi-btn-regular"
+        { content: 'Banana' },
+        { content: '10' },
+        {
+          content: `<span
+            class="gi-tooltip-wrapper"
+            data-module="gieds-tooltip"
           >
-            Edit
-          </button>
-          <span
-            role="tooltip"
-            class="gi-tooltip gi-tooltip-right"
-            aria-hidden="true"
-          >
-            Edit.
-          </span>
-        </span>`,
+            <button
+              data-testid="govieButton-default-primary-medium-notDisabled"
+              data-element="button-container"
+              data-module="gieds-button"
+              class="gi-btn gi-btn-primary gi-btn-regular"
+            >
+              Edit
+            </button>
+            <span
+              role="tooltip"
+              class="gi-tooltip gi-tooltip-right"
+              aria-hidden="true"
+            >
+              Edit.
+            </span>
+          </span>`,
+        },
       ],
       [
-        'Cherry',
-        '20',
-        `<span
-          class="gi-tooltip-wrapper"
-          data-module="gieds-tooltip"
-        >
-          <button
-            data-testid="govieButton-default-primary-medium-notDisabled"
-            data-element="button-container"
-            data-module="gieds-button"
-            class="gi-btn gi-btn-primary gi-btn-regular"
+        { content: 'Cherry' },
+        { content: '20' },
+        {
+          content: `<span
+            class="gi-tooltip-wrapper"
+            data-module="gieds-tooltip"
           >
-            Edit
-          </button>
-          <span
-            role="tooltip"
-            class="gi-tooltip gi-tooltip-right"
-            aria-hidden="true"
-          >
-            Edit.
-          </span>
-        </span>`,
+            <button
+              data-testid="govieButton-default-primary-medium-notDisabled"
+              data-element="button-container"
+              data-module="gieds-button"
+              class="gi-btn gi-btn-primary gi-btn-regular"
+            >
+              Edit
+            </button>
+            <span
+              role="tooltip"
+              class="gi-tooltip gi-tooltip-right"
+              aria-hidden="true"
+            >
+              Edit.
+            </span>
+          </span>`,
+        },
       ],
     ],
   },
@@ -174,9 +220,21 @@ export const NoHeaders: Story = {
   args: {
     captionText: 'Table Without Headers',
     rows: [
-      ['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
-      ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
-      ['Row 3, Cell 1', 'Row 3, Cell 2', 'Row 3, Cell 3'],
+      [
+        { content: 'Row 1, Cell 1' },
+        { content: 'Row 1, Cell 2' },
+        { content: 'Row 1, Cell 3' },
+      ],
+      [
+        { content: 'Row 2, Cell 1' },
+        { content: 'Row 2, Cell 2' },
+        { content: 'Row 2, Cell 3' },
+      ],
+      [
+        { content: 'Row 3, Cell 1' },
+        { content: 'Row 3, Cell 2' },
+        { content: 'Row 3, Cell 3' },
+      ],
     ],
   },
   render: (arguments_) => createElement(arguments_),
@@ -185,7 +243,7 @@ export const NoHeaders: Story = {
 export const EmptyTable: Story = {
   args: {
     captionText: 'Empty Table Example',
-    headers: ['Item', 'Quantity', 'Action'],
+    headers: [{ text: 'Item' }, { text: 'Quantity' }, { text: 'Action' }],
     rows: [],
   },
   render: (arguments_) => createElement(arguments_),
