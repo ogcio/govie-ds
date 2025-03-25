@@ -173,16 +173,17 @@ A spinner is a rotating circle that indicates the status or state of completion 
         <Spinner inline={true} />
     </Button>
     ```
+
   </TabPanel>
 </Tabs>
 
 ### Modal with a spinner
 
 <ComponentContainer>
-  <Modal triggerButton={<Button>Open Modal</Button>}  >
+  <Modal triggerButton={<Button>Open Modal</Button>}>
     <div className="grid gap-4 px-4 justify-items-center">
-        <Spinner size="xl" />
-        <span>Loading...</span>
+      <Spinner size="xl" />
+      <span>Loading...</span>
     </div>
   </Modal>
 </ComponentContainer>
@@ -270,36 +271,49 @@ A spinner is a rotating circle that indicates the status or state of completion 
         </div>
     </Modal>
     ```
+
   </TabPanel>
 </Tabs>
 
 ## Usage
 
+### Spinner Props
+
+- **size** (optional): Specifies the size of the spinner. Available options are:
+
+  - `'sm'`: Small size.
+  - `'md'`: Medium size.
+  - `'lg'`: Large size.
+  - `'xl'`: Extra-large size.
+
+- **inline** (optional): If `true`, the spinner will be displayed inline with other content. If `false`, it will be displayed as a block element.
+
 ### Best Practices
 
 Here are some best practices for the usage of a Spinner component:
+
 1. Use spinners for short wait times (under 10 seconds):
-    - Spinners are best for quick tasks like submitting a form or loading a small amount of data.
-    - For longer waits (over 10 seconds), consider using progress bars or skeleton screens instead.
+   - Spinners are best for quick tasks like submitting a form or loading a small amount of data.
+   - For longer waits (over 10 seconds), consider using progress bars or skeleton screens instead.
 2. Provide context and estimates:
-    - Add helpful text explaining what's happening, e.g. "Loading your profile...".
-    - If possible, give a general time estimate, e.g. "This may take a few seconds".
+   - Add helpful text explaining what's happening, e.g. "Loading your profile...".
+   - If possible, give a general time estimate, e.g. "This may take a few seconds".
 3. Placement and visibility:
-    - Centre the spinner within the loading area.
-    - Ensure proper contrast against the background.
-    - Add a slight delay (e.g. 100 ms) before showing the spinner to avoid flickering for very fast loads.
+   - Centre the spinner within the loading area.
+   - Ensure proper contrast against the background.
+   - Add a slight delay (e.g. 100 ms) before showing the spinner to avoid flickering for very fast loads.
 4. Accessibility:
-    - Use ARIA attributes like role="status" and aria-label to describe the loading state for screen readers.
-    - Consider adding visually hidden text like "Now loading..." for accessibility.
+   - Use ARIA attributes like role="status" and aria-label to describe the loading state for screen readers.
+   - Consider adding visually hidden text like "Now loading..." for accessibility.
 5. Alternative approaches:
-    - For very quick loads (under 1 second), don't show a spinner at all.
-    - Consider skeleton screens to show layout placeholders while content loads.
+   - For very quick loads (under 1 second), don't show a spinner at all.
+   - Consider skeleton screens to show layout placeholders while content loads.
 6. Error handling:
-    - Implement timeouts and error messaging if loading takes too long.
-    - Provide options to retry or cancel the operation if it fails.
+   - Implement timeouts and error messaging if loading takes too long.
+   - Provide options to retry or cancel the operation if it fails.
 7. Avoid overuse:
-    - Don't use multiple spinners on the same page - use a single global indicator instead.
-    - For component-level loading (e.g. in cards/dropdowns), consider skeleton loaders instead of spinners.
+   - Don't use multiple spinners on the same page - use a single global indicator instead.
+   - For component-level loading (e.g. in cards/dropdowns), consider skeleton loaders instead of spinners.
 
 ### When to use this component
 
@@ -308,4 +322,3 @@ Here are some best practices for the usage of a Spinner component:
 ## Status
 
 <ComponentStatusBlock componentId="spinner" />
-

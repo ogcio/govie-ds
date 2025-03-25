@@ -72,7 +72,7 @@ libraries:
       </a>
 
       <span
-      
+
          class="material-symbols-outlined gi-gray-700"
       >
          more_horiz
@@ -89,7 +89,7 @@ libraries:
       </a>
 
       <span
-      
+
          class="material-symbols-outlined gi-gray-700"
       >
          more_horiz
@@ -119,7 +119,7 @@ libraries:
       </a>
 
       <span
-      
+
          class="material-symbols-outlined gi-gray-700"
       >
          more_horiz
@@ -176,7 +176,7 @@ libraries:
       </a>
 
       <span
-      
+
          class="material-symbols-outlined gi-gray-700"
       >
          more_horiz
@@ -218,6 +218,17 @@ libraries:
 
 ## Usage
 
+### Pagination Props
+
+- **currentPage** (optional): A number that indicates the current active page displayed in the pagination.  
+  Default value is `1`.
+
+- **totalPages** (optional): A number that represents the total number of pages available in the pagination.  
+  Default value is `1`.
+
+- **onPageChange** (required): A callback function triggered when the page changes. It receives the new page number as an argument.  
+  Type: `(page: number) => void`.
+
 ### Best Practices
 
 - Pagination in a blog or article listing.
@@ -253,4 +264,3 @@ Consider other navigation or layout patterns when:
 ## Status
 
 <ComponentStatusBlock componentId="pagination" />
-
