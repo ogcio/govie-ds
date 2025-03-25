@@ -13,6 +13,12 @@ export const LayoutVariant = {
   Fixed: 'fixed',
 } as const;
 
+export const Alignment = {
+  Left: 'left',
+  Center: 'center',
+  Right: 'right',
+} as const;
+
 export const ariaSchema = zod.record(
   zod.enum(validAriaProps, {
     description: 'Valid ARIA attributes key',
@@ -31,17 +37,31 @@ export const tableSchema = zod.object({
     })
     .optional(),
   headers: zod
-    .array(zod.string(), {
-      description:
-        'An array of strings representing column headers for the table.',
-    })
+    .array(
+      zod.object({
+        text: zod.string().optional(),
+        align: zod.enum(getEnumValues(Alignment)).optional(),
+      }),
+      {
+        description:
+          'Array of headers, each with "text" and optionally "align"',
+      },
+    )
     .optional(),
   layout: zod.enum(getEnumValues(LayoutVariant)).optional(),
   rows: zod
-    .array(zod.any(), {
-      description:
-        'An array representing rows of the table. Each row can contain HTML elements, text, or any other type.',
-    })
+    .array(
+      zod.array(
+        zod.object({
+          content: zod.any(),
+          align: zod.enum(getEnumValues(Alignment)).optional(),
+        }),
+      ),
+      {
+        description:
+          'Rows array with cells containing "content" and optional "align"',
+      },
+    )
     .optional(),
   aria: ariaSchema.describe('Defines the aria attributes').optional(),
   dataTestid: zod
