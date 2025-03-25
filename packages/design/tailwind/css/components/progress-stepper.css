@@ -13,6 +13,9 @@
 .gi-progress-stepper-step {
   @apply gi-text-white gi-rounded-full gi-relative gi-w-8 gi-h-8 gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-z-1 gi-text-sm;
 }
+.gi-progress-stepper-step[data-indicator='number'] {
+  @apply gi-text-sm gi-font-bold;
+}
 
 .gi-progress-stepper-step-connector {
   @apply gi-absolute gi-flex-1 gi-h-[calc(100%_+_var(--gieds-space-5))];
