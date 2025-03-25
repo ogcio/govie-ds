@@ -1,8 +1,10 @@
 import { act } from 'react';
+import { Button } from '../button/button.js';
 import { render, cleanup, waitFor } from '../test-utils.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
-import { Modal } from './modal.js';
-import { ModalProps } from './types.js';
+import { Modal, ModalFooter } from './modal.js';
+
+import type { ModalProps } from './types.js';
 
 describe('modal', () => {
   afterEach(cleanup);
@@ -93,6 +95,40 @@ describe('modal', () => {
     await waitFor(() => {
       const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+    });
+  });
+
+  it('should render modal footer buttons in correct order', async () => {
+    const screen = renderModal({
+      dataTestId: 'modal-footer',
+      children: (
+        <>
+          <ModalFooter>
+            <Button variant="flat">Help</Button>
+            <Button variant="secondary">Cancel</Button>
+            <Button variant="primary">Save</Button>
+          </ModalFooter>
+        </>
+      ),
+      triggerButton: TriggerButton,
+      startsOpen: true,
+    });
+
+    const triggerButtonElement = screen.getByTestId(
+      'modal-trigger-button-container',
+    );
+    triggerButtonElement.click();
+
+    await waitFor(() => {
+      const footerButtons = screen
+        .getByTestId('modal-footer')
+        .querySelectorAll('button');
+
+      expect(footerButtons).toHaveLength(4);
+      expect(footerButtons[0].textContent).toBe('close');
+      expect(footerButtons[1].textContent).toBe('Help');
+      expect(footerButtons[2].textContent).toBe('Cancel');
+      expect(footerButtons[3].textContent).toBe('Save');
     });
   });
 
