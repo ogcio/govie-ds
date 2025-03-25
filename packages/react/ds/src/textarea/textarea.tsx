@@ -22,7 +22,6 @@ export type TextAreaProps = React.DetailedHTMLProps<
   autoComplete?: string;
   maxChars?: number;
   halfFluid?: boolean;
-  onResetValue?: () => void;
   iconStart?: IconId;
 };
 
@@ -34,7 +33,6 @@ export const TextArea = forwardRef(
       autoComplete = 'on',
       maxChars,
       halfFluid = false,
-      onResetValue,
       iconStart,
       className,
       ...props
@@ -63,13 +61,18 @@ export const TextArea = forwardRef(
     };
 
     const handleOnResetClick = () => {
-      if (onResetValue) {
-        onResetValue();
-      }
-
       if (inputRef?.current) {
         inputRef.current.value = '';
         inputRef.current.focus();
+
+        const newInputEvent = {
+          target: inputRef.current,
+          currentTarget: inputRef.current,
+        } as unknown as React.ChangeEvent<HTMLTextAreaElement>;
+
+        if (props.onChange) {
+          props.onChange(newInputEvent);
+        }
       }
     };
 

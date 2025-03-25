@@ -61,16 +61,6 @@ const meta = {
         type: { summary: 'IconId' },
       },
     },
-
-    onResetValue: {
-      description:
-        'Called when the reset button (X) is clicked. Typically used to clear the input value from both the UI and the internal state.',
-      control: false,
-      table: {
-        category: 'Behavior',
-        type: { summary: '() => void' },
-      },
-    },
   },
 } satisfies Meta<typeof TextArea>;
 
