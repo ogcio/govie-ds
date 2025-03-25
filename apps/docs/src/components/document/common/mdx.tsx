@@ -78,6 +78,7 @@ import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
+import { ModalWrapperSample } from '../components/modal-wrapper-example';
 import { Toast } from '../components/toast';
 import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
@@ -206,6 +207,7 @@ const documentComponents: MDXComponents = {
   RadioGroup: (props) => <RadioGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
+  ModalWrapper: ModalWrapperSample,
   Modal: (props) => <Modal {...props}>{props.children}</Modal>,
   ModalTitle: (props) => <ModalTitle>{props.children}</ModalTitle>,
   ModalBody: (props) => <ModalBody>{props.children}</ModalBody>,
