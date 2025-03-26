@@ -1,10 +1,11 @@
-import { cleanup, render } from '../test-utils.js';
+import { render, cleanup } from '../test-utils.js';
 import { TableContent } from './table-content.js';
 import { Table } from './table.js';
 
 describe('table', () => {
   afterEach(cleanup);
-  const renderTable = (props) => render(<Table {...props} />);
+  const renderTable = (props: React.PropsWithChildren) =>
+    render(<Table {...props} />);
 
   it('should render table', () => {
     const screen = renderTable({
