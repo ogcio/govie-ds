@@ -12,7 +12,7 @@
   {% endmacro %}
 
   <hr
-    class="{{ getMarginClass(props.size) | trim }}"
+    class="{{ getMarginClass(props.size) | trim }} {{ props.color | default('gi-border-gray-400') }}"
     data-testid="{{ props.dataTestid }}"
     role="separator"
   />

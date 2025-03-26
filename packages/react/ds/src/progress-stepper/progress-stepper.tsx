@@ -34,12 +34,35 @@ const getIndicatorClasses = (indicator: ProgressStepperIndicatorType) => {
   const indicatorClasses = {
     [ProgressStepperIndicator.Hashtag]: {
       completed: <Icon icon="check" />,
-      current: '#',
-      next: '#',
+      current: () => '#',
+      next: () => '#',
+    },
+    [ProgressStepperIndicator.Number]: {
+      completed: <Icon icon="check" />,
+      current: (stepNumber: number) => stepNumber,
+      next: (stepNumber: number) => stepNumber,
     },
   };
 
   return indicatorClasses[indicator];
+};
+
+const getProgressIconStep = (
+  indicator: ProgressStepperIndicatorType,
+  stepNumber: number,
+  isCompleted: boolean,
+  isCurrentStep: boolean,
+) => {
+  const { current, completed, next } = getIndicatorClasses(
+    indicator || ProgressStepperIndicator.Hashtag,
+  );
+
+  if (isCompleted) {
+    return completed;
+  } else if (isCurrentStep) {
+    return current(stepNumber);
+  }
+  return next(stepNumber);
 };
 
 export const Step = ({
@@ -49,25 +72,14 @@ export const Step = ({
   stepNumber,
   orientation,
   children,
-  indicator = 'hashtag',
+  indicator,
   verticalSlot,
   defaultOpen,
+  dataTestId,
 }: InnerStepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
-  const { current, completed, next } = getIndicatorClasses(
-    indicator || ProgressStepperIndicator.Hashtag,
-  );
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
-
-  const getProgressIconStep = () => {
-    if (isCompleted) {
-      return completed;
-    } else if (isCurrentStep) {
-      return current;
-    }
-    return next;
-  };
 
   return (
     <div className="gi-relative">
@@ -80,8 +92,16 @@ export const Step = ({
         data-indicator={indicator}
         role="listitem"
         aria-labelledby={`step-label-${stepNumber}`}
+        data-testid={dataTestId || `step-label-${stepNumber}`}
       >
-        <div className="gi-progress-stepper-step">{getProgressIconStep()}</div>
+        <div className="gi-progress-stepper-step" data-indicator={indicator}>
+          {getProgressIconStep(
+            indicator || ProgressStepperIndicator.Hashtag,
+            stepNumber,
+            isCompleted,
+            isCurrentStep,
+          )}
+        </div>
         <div
           className="gi-progress-stepper-step-label"
           data-orientation={orientation}
@@ -118,6 +138,7 @@ export const ProgressStepper = ({
   children,
   currentStepIndex = 0,
   orientation = 'horizontal',
+  indicator = 'hashtag',
   completeAll,
   dataTestId,
 }: ProgressStepperProps) => {
@@ -158,6 +179,8 @@ export const ProgressStepper = ({
                 isLastStep={isLastStep}
                 verticalSlot={children[index]?.props?.children}
                 defaultOpen={defaultOpen}
+                indicator={indicator}
+                dataTestId={dataTestId}
               >
                 {label}
               </Step>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="gi-layout-container py-6 lg:py-8">
+    <main className="gi-layout-container flex-1 py-6 lg:py-8">
       <Heading>Contact</Heading>
       <Paragraph className="mt-2">
         You can contact the design system team using{' '}

@@ -34,6 +34,11 @@ export const Default: Story = {
       type: { name: 'string', required: false },
       description: 'Specifies the size of the section break margin.',
     },
+    color: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Specifies the color of the section break.',
+    },
   },
   args: {
     size: SizeEnum.Medium,
