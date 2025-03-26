@@ -322,7 +322,19 @@ export function App() {
         </Alert>
         {/* <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} /> */}
       </Container>
-      <Footer />
+      <Footer
+        utilitySlot={
+          <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+            <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+              Privacy Policy
+            </Link>
+            <Link aria-label="Accessibility" href="/accessibility" noColor>
+              Accessibility
+            </Link>
+            <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+          </div>
+        }
+      />
     </>
   );
 }
