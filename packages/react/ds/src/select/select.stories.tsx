@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
-import { Label } from '../label/label.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {
@@ -90,13 +89,17 @@ export const withoutLabel = {
 export const disabledSelect = {
   render: () => (
     <Select aria-label="Select" disabled>
-      <SelectItem disabled value="value-1">
-        Option 1
-      </SelectItem>
+      <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
       <SelectItem value="value-3">Option 3</SelectItem>
     </Select>
   ),
+  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByLabelText('Select');
+
+    expect(select).toBeDisabled();
+  },
 };
 
 export const disabledItem = {
@@ -109,6 +112,15 @@ export const disabledItem = {
       <SelectItem value="value-3">Option 3</SelectItem>
     </Select>
   ),
+  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByLabelText('Select');
+    const options = canvas.getAllByRole('option');
+
+    expect(options[0]).toBeDisabled();
+    expect(options[1]).not.toBeDisabled();
+    expect(options[2]).not.toBeDisabled();
+  },
 };
 
 export const withGroups = {
