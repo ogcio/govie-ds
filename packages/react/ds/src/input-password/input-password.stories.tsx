@@ -82,10 +82,10 @@ export const AllVariants: Story = {
         </FormField>
         <FormField
           label={{
-            text: 'Label Readonly',
+            text: 'Label',
           }}
           hint={{
-            text: 'Support text',
+            text: 'This field is read-only',
           }}
         >
           <InputPassword readOnly placeholder="Placeholder" value={'123456'} />
