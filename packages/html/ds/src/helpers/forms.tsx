@@ -128,7 +128,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
     hintContainer.className = 'gi-checkbox-hint-container';
 
     const spacer = document.createElement('div');
-    spacer.className = sizeClass;
+    spacer.className = widthClass;
 
     const hint = createHintText({ content: arguments_.hint });
 

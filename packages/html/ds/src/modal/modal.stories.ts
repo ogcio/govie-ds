@@ -47,10 +47,13 @@ const createModal = (arguments_: ModalWrapperPropsExtension) => {
 
   const modalHeader = document.createElement('div');
   modalContainer.append(modalHeader);
-  modalHeader.className = 'gi-flex-1';
+
   if (arguments_.title) {
+    const modalTitle = document.createElement('div');
+    modalHeader.append(modalTitle);
+    modalTitle.className = 'gi-flex-1';
     const heading = createHeading(arguments_.title);
-    modalHeader.append(heading);
+    modalTitle.append(heading);
   }
 
   if (arguments_.closeButtonLabel) {
