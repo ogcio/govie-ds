@@ -1,7 +1,8 @@
 .gi-select {
-  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-sm gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md gi-appearance-none gi-relative gi-bg-no-repeat gi-bg-right;
+  @apply gi-rounded-sm gi-focus-state-outline gi-p-1.5 gi-border-black gi-border-sm gi-border-solid gi-min-w-56 gi-font-primary xs:gi-text-sm md:gi-text-md gi-appearance-none gi-relative gi-bg-no-repeat gi-bg-right disabled:gi-border-gray-400 disabled:gi-bg-gray-200 disabled:gi-text-gray-700;
   background-image: url("data:image/svg+xml;utf8,<svg fill='var(--gieds-color-gray-950)' height='24' viewBox='0 -960 960 960' width='24px' xmlns='http://www.w3.org/2000/svg'><path d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z' /></svg>");
 }
+
 .gi-select-option {
   @apply gi-font-primary xs:gi-text-sm md:gi-text-md;
 }
