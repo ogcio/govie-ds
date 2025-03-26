@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormField } from '../forms/form-field.js';
+import { InputRadio } from '../input-radio/input-radio.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { InputRadio } from './input-radio.js';
 import { RadioGroup } from './radio-group.js';
 
 const meta = {
-  title: 'Form/InputRadio/RadioGroup',
+  title: 'Form/Radio/RadioGroup',
   parameters: {
     docs: {
       description: {

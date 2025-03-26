@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { InputRadio } from './input-radio.js';
 
 const meta = {
-  title: 'Form/InputRadio/InputRadio',
+  title: 'Form/Radio/InputRadio',
   parameters: {
     docs: {
       description: {

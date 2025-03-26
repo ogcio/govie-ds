@@ -12,12 +12,12 @@ import {
 } from './types.js';
 
 const getRadioSize = (size?: InputRadioSizeType) => {
-  let sizeClass = 'gi-radio-medium';
+  let sizeClass = 'gi-input-radio-medium';
   if (size === InputRadioSizeEnum.Large) {
-    sizeClass = 'gi-radio-large';
+    sizeClass = 'gi-input-radio-large';
   }
   if (size === InputRadioSizeEnum.Small) {
-    sizeClass = 'gi-radio-small';
+    sizeClass = 'gi-input-radio-small';
   }
   return sizeClass;
 };
@@ -55,7 +55,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({
   const radioId = id ?? useId();
   return (
     <>
-      <div className="gi-radio-container">
+      <div className="gi-input-radio-container">
         <input
           type="radio"
           id={radioId}
@@ -73,9 +73,9 @@ export const InputRadio: React.FC<InputRadioProps> = ({
             className={`${addConditionalDivider(conditionalInput, checked)} ${getRadioWidth(size)}`}
           >
             <div
-              className={`gi-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
+              className={`gi-input-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
             >
-              <div className="gi-radio-conditional-divider-border" />
+              <div className="gi-input-radio-conditional-divider-border" />
             </div>
           </div>
           <div>
