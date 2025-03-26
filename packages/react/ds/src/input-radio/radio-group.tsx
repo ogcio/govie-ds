@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import type { RadioGroupProps } from './types.js';
 
-export const RadioGroup = ({
+export const RadioGroup: React.FC<React.PropsWithChildren<RadioGroupProps>> = ({
   groupId,
   inline,
   onChange,
   children,
-}: React.PropsWithChildren<RadioGroupProps>) => {
+}) => {
   const [value, setValue] = useState<null | string>();
 
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
