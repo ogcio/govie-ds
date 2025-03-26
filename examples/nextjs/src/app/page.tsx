@@ -48,9 +48,9 @@ import {
   ToastVariant,
   ToastProvider,
   InputPassword,
-  InputText,
   FormField,
   InputRadio,
+  InputText,
 } from '@govie-ds/react';
 
 const headerProps: HeaderProps = {

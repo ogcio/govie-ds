@@ -4,7 +4,7 @@ import { InputText } from '../input-text/input-text.js';
 import type { InputTextProps } from '../input-text/type.js';
 
 /**
- * @deprecated Use `<Input />` instead of `<TextInput />`.
+ * @deprecated Use `<InputText />` instead of `<TextInput />`.
  */
 export const TextInput = InputText;
 export type TextInputProps = InputTextProps;
