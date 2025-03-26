@@ -218,7 +218,7 @@ const createHeader = (arguments_: HeaderProps) => {
           }
           setTimeout(() => {
             const label = document.getElementById('ItemActionLabel-${index}');
-            label.addEventListener('click', function() { toggleDrawer${index}(); })
+            label?.addEventListener('click', function() { toggleDrawer${index}(); })
           }, 500);
           `;
 
