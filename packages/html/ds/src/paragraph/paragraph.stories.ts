@@ -53,11 +53,11 @@ export const RightAlignment: Story = {
 
 export const WhitespacePre: Story = {
   args: {
-    content: `Hey everyone!
+    content: `<pre>Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
-You will never know.`,
+You will never know.</pre>`,
     as: 'p',
     whitespace: 'pre',
     dataTestid: 'paragraph',
@@ -72,11 +72,11 @@ You will never know.`,
 
 export const WhitespacePreWrap: Story = {
   args: {
-    content: `Hey everyone!
+    content: `<pre>Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
-You will never know.`,
+You will never know.</pre>`,
     as: 'p',
     whitespace: 'pre-wrap',
     dataTestid: 'paragraph',
@@ -91,11 +91,11 @@ You will never know.`,
 
 export const WhitespaceBreakSpaces: Story = {
   args: {
-    content: `Hey everyone!
+    content: `<pre>Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
 
-You will never know.`,
+You will never know.</pre>`,
     as: 'p',
     whitespace: 'break-spaces',
     dataTestid: 'paragraph',

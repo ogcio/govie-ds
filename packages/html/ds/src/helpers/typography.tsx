@@ -116,7 +116,7 @@ export const createParagraph = (arguments_: ParagraphProps) => {
   component.className =
     `${classSize} ${alignClass} ${whitespaceClass} gi-max-w-prose`.trim();
   if (arguments_.content) {
-    component.textContent = arguments_.content;
+    component.innerHTML = arguments_.content;
   }
   if (arguments_.dataTestid) {
     component.dataset.testid = arguments_.dataTestid;
