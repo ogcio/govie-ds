@@ -49,6 +49,7 @@ import {
   ToastProvider,
   InputPassword,
   TextInput,
+  InputText,
 } from '@govie-ds/react';
 import { useState } from 'react';
 
@@ -125,8 +126,8 @@ export default function Home() {
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <br />
-        Text Input With Reset
-        <TextInput clearEnabled />
+        Input Text With Reset
+        <InputText clearButtonEnabled />
         <br />
         Text Input Password
         <InputPassword />

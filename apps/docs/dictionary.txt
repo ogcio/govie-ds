@@ -130,3 +130,4 @@ passwordless
 form-inputpassword
 InputPassword
 clearEnabled
+form-inputtext

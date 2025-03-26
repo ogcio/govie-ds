@@ -1,22 +1,22 @@
 ---
-title: Text Input
-description: Text Input HTML Component
+title: Input Text
+description: Input Text HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6827'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4008-2997&p=f&t=ehxglTNnwfdM5cox-0'
     status: 'stable'
   - platform: 'global'
-    link: '?path=/docs/form-textinput--docs'
+    link: '?path=/docs/form-inputtext--docs'
     status: 'stable'
   - platform: react
-    link: '?path=/docs/form-textinput--docs'
+    link: '?path=/docs/form-inputtext--docs'
     status: 'stable'
 ---
 
-# Text Input
+# Input Text
 
-The `TextInput` component is used to allow users to enter single-line text, with options to adjust the width dynamically using `halfFluid`, `fullFluid`, or `characterWidth`. It can be used with prefixes, suffixes, and error states for flexible form input scenarios.
+The `InputText` component is used to allow users to enter single-line text, with options to adjust the width dynamically using `halfFluid`, `fullFluid`, or `characterWidth`. It can be used with prefixes, suffixes, and error states for flexible form input scenarios.
 
 ## Variants
 
@@ -28,11 +28,11 @@ The `TextInput` component is used to allow users to enter single-line text, with
       text: 'Hint: This is a helpful hint.',
     }}
     label={{
-      htmlFor: 'text-input-id',
+      htmlFor: 'input-text-id',
       text: 'Input Label',
     }}
   >
-    <TextInput data-testid="text-input-id" id="text-input-id" />
+    <InputText data-testid="input-text-id" id="input-text-id" />
   </FormField>
 </ComponentContainer>
 
@@ -44,30 +44,30 @@ The `TextInput` component is used to allow users to enter single-line text, with
   <TabPanel value="tab31">        
     ```html
     <fieldset>
-      <label class="gi-text-md gi-label gi-mb-1" for="text-input-id">Label</label>
+      <label class="gi-text-md gi-label gi-mb-1" for="input-text-id">Label</label>
       <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
-      <div class="gi-text-input-container">
-        <input type="text" class="gi-text-input" id="text-input-id"data-testid="text-input-id">
+      <div class="gi-input-text-container">
+        <input type="text" class="gi-input-text" id="input-text-id"data-testid="input-text-id">
       </div>
     </fieldset>
     ```
   </TabPanel>
   <TabPanel value="tab33">
     ```jsx
-    import { FormField, TextInput } from "@govie-ds/react";
+    import { FormField, InputText } from "@govie-ds/react";
     
     <FormField
       hint={{
         text: 'Hint: This is a helpful hint.'
       }}
       label={{
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
         text: 'Input Label'
       }}
     >
-      <TextInput
-        data-testid="text-input-id"
-        id="text-input-id"
+      <InputText
+        data-testid="input-text-id"
+        id="input-text-id"
       />
     </FormField>
     ```
@@ -86,7 +86,7 @@ The `TextInput` component is used to allow users to enter single-line text, with
       text: 'Input Label',
     }}
   >
-    <TextInput clearEnabled data-testid="text-reset-id" id="text-reset-id" />
+    <InputText clearEnabled data-testid="text-reset-id" id="text-reset-id" />
   </FormField>
 </ComponentContainer>
 
@@ -98,13 +98,13 @@ The `TextInput` component is used to allow users to enter single-line text, with
       text: 'Hint: This is a helpful hint.',
     }}
     label={{
-      htmlFor: 'text-input-id',
+      htmlFor: 'input-text-id',
       text: 'Input Label',
     }}
   >
-    <TextInput
-      data-testid="text-input-id"
-      id="text-input-id"
+    <InputText
+      data-testid="input-text-id"
+      id="input-text-id"
       prefix="€"
       suffix="kg"
     />
@@ -119,13 +119,13 @@ The `TextInput` component is used to allow users to enter single-line text, with
       text: 'Hint: This is a helpful hint.',
     }}
     label={{
-      htmlFor: 'text-input-id',
+      htmlFor: 'input-text-id',
       text: 'Input Label',
     }}
   >
-    <TextInput
-      data-testid="text-input-id"
-      id="text-input-id"
+    <InputText
+      data-testid="input-text-id"
+      id="input-text-id"
       iconStart="add_circle"
       iconEnd="add_circle"
     />
@@ -158,11 +158,11 @@ The `clearEnabled` prop enhances user experience by displaying a reset (clear) b
 
 ### When Not to Use This Component
 
-- **Multi-Line Text Fields**: If your input requires multiple lines (such as a message box), use a `textarea` instead of `TextInput`.
+- **Multi-Line Text Fields**: If your input requires multiple lines (such as a message box), use a `textarea` instead of `InputText`.
 - **Input with Formatting Requirements**: If input masking or format validation (like date pickers or rich text editors) is necessary, consider using a specialised component.
 
 - **Non-Textual Inputs**: This component is not suitable for non-textual input types like checkboxes, radio buttons, or dropdown menus.
 
 ## Status
 
-<ComponentStatusBlock componentId="text-input" />
+<ComponentStatusBlock componentId="input-text" />
