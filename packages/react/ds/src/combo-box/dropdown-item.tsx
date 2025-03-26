@@ -9,19 +9,25 @@ import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utils.js';
 import { DropdownItemProps } from './types.js';
-
 export const DropdownItem = ({
   children,
   noSearch,
   options,
+  value,
+  defaultValue = [],
+  onChange,
+  onSearch,
 }: DropdownItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [noResults, setNoResults] = useState(false);
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
+  const [selectedValues, setSelectedValues] = useState<string[]>(defaultValue);
   const dropdownCustomClass = children
     ? `${slugify(`${children}-${useId()}`)}`
     : '';
+
+  const isControlled = value !== undefined;
+  const selected = isControlled ? value : selectedValues;
 
   const getCheckboxes = () => [
     ...window.document.querySelectorAll<HTMLElement>(
@@ -34,8 +40,7 @@ export const DropdownItem = ({
     const checkboxes = getCheckboxes();
     for (const checkbox of checkboxes) {
       const label = checkbox.querySelector('label')?.textContent;
-
-      if (label?.toLowerCase()?.includes(searchInput?.toLowerCase())) {
+      if (label?.toLowerCase()?.includes(searchInput.toLowerCase())) {
         checkbox.style.display = 'flex';
       } else {
         checkbox.style.display = 'none';
@@ -43,29 +48,19 @@ export const DropdownItem = ({
       }
     }
 
-    hiddenCheckboxes === options.length
-      ? setNoResults(true)
-      : setNoResults(false);
-  }, [searchInput]);
+    setNoResults(hiddenCheckboxes === options.length);
+  }, [searchInput, options.length]);
 
-  const handleCheckbox = () => {
-    let selectedCheckbox = 0;
-    const checkboxes = getCheckboxes();
+  const handleChange = (checkboxValue: string, checked: boolean) => {
+    const updatedValues = checked
+      ? [...(selected || []), checkboxValue]
+      : (selected || []).filter((value_) => value_ !== checkboxValue);
 
-    for (const checkbox of checkboxes) {
-      const input = checkbox.querySelector('input');
-      const label = checkbox.querySelector('label');
-
-      if (input?.checked) {
-        checkbox.classList.add('hover:gi-bg-gray-50');
-        label?.classList.add('gi-font-bold');
-        selectedCheckbox++;
-      } else {
-        checkbox.classList.remove('hover:gi-bg-gray-50');
-        label?.classList.remove('gi-font-bold');
-      }
+    if (!isControlled) {
+      setSelectedValues(updatedValues);
     }
-    setSelectedCheckboxes(selectedCheckbox);
+
+    onChange?.(updatedValues);
   };
 
   return (
@@ -79,11 +74,8 @@ export const DropdownItem = ({
       >
         <div className="gi-combobox-toggle-content">
           <Paragraph size="md">{children}</Paragraph>
-          {selectedCheckboxes !== 0 && (
-            <Tag
-              type={TagTypeEnum.Counter}
-              text={selectedCheckboxes.toString()}
-            />
+          {selected?.length > 0 && (
+            <Tag type={TagTypeEnum.Counter} text={selected.length.toString()} />
           )}
         </div>
 
@@ -94,16 +86,23 @@ export const DropdownItem = ({
       </button>
 
       <div
-        className={`${isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}`}
+        className={`${
+          isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'
+        }`}
         id={`${dropdownCustomClass}-search`}
       >
         {!noSearch && (
           <div className="gi-combobox-search">
+            {/* TODO translation for "Search" */}
             <TextInput
               placeholder="Search"
               className="gi-combobox-search-input"
               value={searchInput}
-              onChange={(event) => setSearchInput(event.target.value)}
+              onChange={(event) => {
+                const newValue = event.target.value;
+                setSearchInput(newValue);
+                onSearch?.(newValue);
+              }}
             />
             {searchInput && (
               <IconButton
@@ -111,7 +110,10 @@ export const DropdownItem = ({
                 appearance="dark"
                 size="small"
                 className="gi-combobox-search-icon"
-                onClick={() => setSearchInput('')}
+                onClick={() => {
+                  onSearch?.('');
+                  setSearchInput('');
+                }}
                 icon={{
                   icon: 'close',
                 }}
@@ -121,20 +123,24 @@ export const DropdownItem = ({
         )}
 
         <div className="gi-combobox-checkbox-container">
+          {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
               No results found.
             </Paragraph>
           )}
           {options.map((checkbox, index) => {
+            const checked = selected?.includes(checkbox.value);
             return (
               <div
                 key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                 className={`gi-combobox-checkbox gi-combobox-key-${dropdownCustomClass}`}
               >
                 <Checkbox
-                  key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
-                  onChange={handleCheckbox}
+                  onChange={(event) =>
+                    handleChange(checkbox.value, event.target.checked)
+                  }
+                  checked={checked}
                   id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                   size={CheckboxSizeEnum.Small}
                   label={checkbox.label}

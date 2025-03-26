@@ -7,6 +7,10 @@ export type DropdownItemProps = {
     value: string;
   }[];
   noSearch?: boolean;
+  value?: string[];
+  defaultValue?: string[];
+  onChange?: (selectedValues: string[]) => void;
+  onSearch?: (query: string) => void;
 };
 
 export type ComboboxProps = {
