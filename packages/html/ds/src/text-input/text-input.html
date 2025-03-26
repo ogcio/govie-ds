@@ -24,7 +24,7 @@
   {% set inputId = props.id or 'input-id' %}
 
   <div
-    class="gi-text-input-container {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}"
+    class="gi-input-text-container {{ getErrorStyle(isError) | trim }} {{ addClasses(props.className) | trim }}"
     data-testid="{{ props.dataTestid }}"
   >
     {% if props.label %}
@@ -56,9 +56,9 @@
       }}
     {% endif %}
 
-    <div class="gi-text-input-container {{ marginTop }}">
+    <div class="gi-input-text-container {{ marginTop }}">
       {% if props.prefix %}
-        <div class="gi-text-input-prefix">{{ props.prefix | safe }}</div>
+        <div class="gi-input-text-prefix">{{ props.prefix | safe }}</div>
       {% endif %}
 
       <input
@@ -66,7 +66,7 @@
         id="{{ inputId }}"
         type="{{ props.type or 'text' }}"
         autocomplete="{{ props.autoComplete or 'on' }}"
-        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} gi-text-input "
+        class="{% if isError %}gi-border-red-600{% else %}gi-border-gray-950{% endif %} gi-input-text "
         {% if props.disabled %}disabled{% endif %}
         {% if props.readOnly %}readonly{% endif %}
         {% if props.required %}required{% endif %}
@@ -85,7 +85,7 @@
       />
 
       {% if props.suffix %}
-        <div class="gi-text-input-suffix">{{ props.suffix | safe }}</div>
+        <div class="gi-input-text-suffix">{{ props.suffix | safe }}</div>
       {% endif %}
     </div>
   </div>
