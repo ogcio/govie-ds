@@ -33,7 +33,7 @@ const createTable = (arguments_: TablePropsExtension) => {
     for (const header of arguments_.headers) {
       const th = document.createElement('th');
       th.textContent = header;
-      th.className = 'gi-table-th';
+      th.className = 'gi-table-th gi-text-left';
       tr.append(th);
     }
     thead.append(tr);
@@ -48,7 +48,7 @@ const createTable = (arguments_: TablePropsExtension) => {
       for (const cell of row) {
         const td = document.createElement('td');
         td.innerHTML = cell;
-        td.className = 'gi-table-td';
+        td.className = 'gi-table-td gi-text-left';
         tr.append(td);
       }
       tbody.append(tr);
