@@ -70,6 +70,7 @@ export const iconIds = [
   'social_tiktok',
   'social_x',
   'social_youtube',
+  'placeholder',
 ] as const;
 
 export const Icons = [...iconIds];
