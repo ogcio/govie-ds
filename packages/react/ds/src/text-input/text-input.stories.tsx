@@ -34,6 +34,34 @@ const meta = {
         type: { summary: 'React.ReactNode' },
       },
     },
+    iconStart: {
+      description: 'Optional icon displayed at the start of the input field.',
+      control: 'text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    iconEnd: {
+      description: 'Optional icon displayed at the end of the input field.',
+      control: 'text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    inputActionButton: {
+      description:
+        'Optional action button rendered inside the input for custom actions.',
+      control: false,
+      table: {
+        category: 'Behavior',
+        type: {
+          summary: `InputActionButtonProps`,
+        },
+      },
+    },
+
     ref: {
       control: false,
       table: {
@@ -92,121 +120,20 @@ export const Default: Story = {
   ),
 };
 
-export const ResponsiveLayout: Story = {
+export const WithTextInputReset: Story = {
   args: {
     id: 'text-input-id',
   },
-  render: (props) => {
+  render: () => {
     return (
-      <div
-        className="md:gi-w-2/3 gi-w-full"
-        role="presentation"
-        aria-label="example"
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'text-input-id',
+        }}
       >
-        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block1"
-          >
-            <FormField
-              label={{ text: 'First Name', htmlFor: 'text-1' }}
-              hint={{
-                text: 'Your first name.',
-              }}
-            >
-              <TextInput {...props} id="text-1" />
-            </FormField>
-            <FormField
-              label={{ text: 'Last Name', htmlFor: 'text-2' }}
-              hint={{
-                text: 'Your last name.',
-              }}
-            >
-              <TextInput {...props} id="text-2" />
-            </FormField>
-          </Stack>
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block2"
-          >
-            <FormField
-              label={{
-                text: 'Address',
-                htmlFor: 'text-4',
-              }}
-              hint={{
-                text: 'Where you live.',
-              }}
-            >
-              <TextInput {...props} id="text-4" maxLength={5} />
-            </FormField>
-          </Stack>
-
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block3"
-          >
-            <FormField
-              label={{
-                htmlFor: 'text-input-birth',
-                text: 'Date of birth',
-              }}
-              hint={{
-                text: 'Your date of birth.',
-              }}
-            >
-              <TextInput id="text-input-birth" type="date" />
-            </FormField>
-
-            <FormField
-              label={{
-                htmlFor: 'text-input-height',
-                text: 'Height',
-              }}
-              hint={{
-                text: 'Your height',
-              }}
-            >
-              <TextInput id="text-input-height" prefix="cm" />
-            </FormField>
-            <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
-              <FormField
-                label={{
-                  text: 'Age',
-                  htmlFor: 'text-input-age',
-                }}
-                hint={{
-                  text: 'Your Age.',
-                }}
-              >
-                <TextInput {...props} maxLength={3} id="text-input-age" />
-              </FormField>
-            </div>
-          </Stack>
-          <FormField
-            label={{
-              text: 'Phone Number',
-              htmlFor: 'text-phone',
-            }}
-            hint={{
-              text: 'Your phone number.',
-            }}
-            error={{
-              text: 'Error: Please correct this issue.',
-            }}
-          >
-            <TextInput
-              {...props}
-              id="text-phone"
-              pattern="\d*"
-              maxLength={10}
-            />
-          </FormField>
-        </Stack>
-      </div>
+        <TextInput clearButtonEnabled placeholder="Placeholder" />
+      </FormField>
     );
   },
 };
@@ -390,14 +317,143 @@ export const WithHalfWidth: Story = {
   },
   render: (props) => {
     return (
-      <FormField
-        label={{
-          text: 'Half width',
-          htmlFor: 'text-input-id',
-        }}
+      <Stack gap={4}>
+        <FormField
+          label={{
+            text: 'Half width',
+            htmlFor: 'text-input-id',
+          }}
+        >
+          <TextInput {...props} />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Half width',
+            htmlFor: 'text-input-id',
+          }}
+        >
+          <TextInput clearButtonEnabled halfFluid />
+        </FormField>
+      </Stack>
+    );
+  },
+};
+
+export const ResponsiveLayout: Story = {
+  args: {
+    id: 'text-input-id',
+  },
+  render: (props) => {
+    return (
+      <div
+        className="md:gi-w-2/3 gi-w-full"
+        role="presentation"
+        aria-label="example"
       >
-        <TextInput {...props} />
-      </FormField>
+        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block1"
+          >
+            <FormField
+              label={{ text: 'First Name', htmlFor: 'text-1' }}
+              hint={{
+                text: 'Your first name.',
+              }}
+            >
+              <TextInput {...props} id="text-1" />
+            </FormField>
+            <FormField
+              label={{ text: 'Last Name', htmlFor: 'text-2' }}
+              hint={{
+                text: 'Your last name.',
+              }}
+            >
+              <TextInput {...props} id="text-2" />
+            </FormField>
+          </Stack>
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block2"
+          >
+            <FormField
+              label={{
+                text: 'Address',
+                htmlFor: 'text-4',
+              }}
+              hint={{
+                text: 'Where you live.',
+              }}
+            >
+              <TextInput {...props} id="text-4" maxLength={5} />
+            </FormField>
+          </Stack>
+
+          <Stack
+            direction={{ md: 'row', base: 'column' }}
+            gap={3}
+            aria-label="block3"
+          >
+            <FormField
+              label={{
+                htmlFor: 'text-input-birth',
+                text: 'Date of birth',
+              }}
+              hint={{
+                text: 'Your date of birth.',
+              }}
+            >
+              <TextInput id="text-input-birth" type="date" />
+            </FormField>
+
+            <FormField
+              label={{
+                htmlFor: 'text-input-height',
+                text: 'Height',
+              }}
+              hint={{
+                text: 'Your height',
+              }}
+            >
+              <TextInput id="text-input-height" prefix="cm" />
+            </FormField>
+            <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
+              <FormField
+                label={{
+                  text: 'Age',
+                  htmlFor: 'text-input-age',
+                }}
+                hint={{
+                  text: 'Your Age.',
+                }}
+              >
+                <TextInput {...props} maxLength={3} id="text-input-age" />
+              </FormField>
+            </div>
+          </Stack>
+          <FormField
+            label={{
+              text: 'Phone Number',
+              htmlFor: 'text-phone',
+            }}
+            hint={{
+              text: 'Your phone number.',
+            }}
+            error={{
+              text: 'Error: Please correct this issue.',
+            }}
+          >
+            <TextInput
+              {...props}
+              id="text-phone"
+              pattern="\d*"
+              maxLength={10}
+            />
+          </FormField>
+        </Stack>
+      </div>
     );
   },
 };
@@ -441,6 +497,208 @@ export const AllStates: Story = {
   parameters: {
     pseudo: {
       focus: '#focus-input',
+    },
+  },
+};
+
+export const WithCustomActionButton: Story = {
+  args: {
+    id: 'text-input-id',
+  },
+  render: () => (
+    <FormField
+      label={{
+        text: 'Default',
+      }}
+      hint={{
+        text: 'Support text',
+      }}
+    >
+      <TextInput
+        inputActionButton={{
+          icon: 'info',
+          onClick: () => alert('action button clicked'),
+        }}
+        type="text"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+};
+
+export const AllIconVariantsStates: Story = {
+  render: () => {
+    return (
+      <Stack gap={4}>
+        <FormField
+          label={{
+            text: 'Default',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Error',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+          error={{
+            text: 'Invalid',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Disabled',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            disabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Focus',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            inputClassName="focus-input"
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix Error',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+          error={{
+            text: 'Invalid',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix Disabled',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+            disabled
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Prefix/Suffix Focus',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            clearButtonEnabled
+            inputClassName="focus-input"
+            iconStart="placeholder"
+            iconEnd="placeholder"
+            placeholder="Placeholder"
+            prefix="€"
+            suffix="kg"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'With Icon Start',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            iconStart="placeholder"
+            type="text"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'With Icon End',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextInput
+            iconEnd="placeholder"
+            type="text"
+            placeholder="Placeholder"
+          />
+        </FormField>
+      </Stack>
+    );
+  },
+  parameters: {
+    pseudo: {
+      focus: '.focus-input',
     },
   },
 };

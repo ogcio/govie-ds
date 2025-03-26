@@ -47,7 +47,10 @@ import {
   toaster,
   ToastVariant,
   ToastProvider,
+  InputPassword,
+  TextInput,
 } from '@govie-ds/react';
+import { useState } from 'react';
 
 const headerProps: HeaderProps = {
   items: [
@@ -121,6 +124,12 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <br />
+        Text Input With Reset
+        <TextInput clearEnabled />
+        <br />
+        Text Input Password
+        <InputPassword />
         <br />
         <Button onClick={() => handleCreateToast('Success', 'success')}>
           Trigger Success Toast via callback
