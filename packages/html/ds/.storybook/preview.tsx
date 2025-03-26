@@ -66,7 +66,7 @@ const decorators = [
 
     const storyResult = Story(context);
 
-    if (typeof storyResult === 'string') {
+    if (typeof storyResult === 'string' || storyResult instanceof HTMLElement) {
       return (
         <div
           style={ModalDecorator(args, parameters)}
@@ -113,8 +113,13 @@ const preview: Preview = {
     },
     docs: {
       source: {
-        transform: (_, context) => {
+        transform: (code, context) => {
           const { args, parameters } = context;
+          
+          if (!parameters.macro) {
+            return code.slice(2, -2);
+          }
+
           const isProd = import.meta.env.STORYBOOK_ENV === 'prod';
           parameters.macro.path = isProd
             ? './macros'

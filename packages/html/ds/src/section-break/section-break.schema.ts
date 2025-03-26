@@ -14,6 +14,11 @@ export const sectionBreakSchema = zod.object({
       description: 'Specifies the size of the Section Break.',
     })
     .optional(),
+  color: zod
+    .string({
+      description: 'Color for the component.',
+    })
+    .optional(),
   dataTestid: zod
     .string({
       description: 'Test id for the component.',
