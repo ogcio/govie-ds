@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.0.2](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.1...design-deepmerge-v1.0.2) (2025-03-26)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.2
+    * @govie-ds/prettier-config bumped to 1.0.3
+
 ## [1.0.1](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.0...design-deepmerge-v1.0.1) (2025-03-18)
 
 
