@@ -57,7 +57,7 @@ export const withLabelHintAndError = {
       </Select>
     </FormField>
   ),
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
 
     const select = canvas.getByTestId('select');
@@ -133,7 +133,7 @@ export const withGroups = {
       </SelectGroupItem>
     </Select>
   ),
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
 
     const select = canvas.getByTestId('select') as HTMLSelectElement;
