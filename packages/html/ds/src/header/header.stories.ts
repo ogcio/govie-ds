@@ -20,11 +20,36 @@ const buildDefaultMobileMenu = (
     label: string;
   }[],
 ) => {
+  const mobileHeaderMenuItems = document.createElement('ul');
+
+  for (const item of items) {
+    if (item.itemType === 'link') {
+      const li = document.createElement('li');
+
+      const listItem = document.createElement('a');
+      listItem.href = item.href!;
+      listItem.className = 'gi-list-item';
+      if (item.external) {
+        listItem.target = '_blank';
+        listItem.rel = 'noreferrer noopener';
+      }
+
+      const span = document.createElement('span');
+      span.className = 'gi-text-sm gi-ml-1';
+      span.textContent = item.label!;
+
+      listItem.append(span);
+      li.append(listItem);
+
+      mobileHeaderMenuItems.append(li);
+    }
+  }
+
   const mobileMenu: HeaderItem = {
     label: mobileMenuLabel,
     icon: 'menu',
     itemType: 'slot',
-    component: `<MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />`,
+    component: mobileHeaderMenuItems.outerHTML,
     slotAppearance: 'drawer',
     showItemMode: 'mobile-only',
   };
