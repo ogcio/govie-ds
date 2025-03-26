@@ -10,7 +10,7 @@ export type InputActionButtonProps = {
   ref?: React.Ref<HTMLButtonElement>;
 };
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   inputClassName?: string;

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormField } from '../forms/form-field.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import { InputRadio } from './input-radio.js';
 import { RadioGroup } from './radio-group.js';
-import { Radio } from './radio.js';
 
 const meta = {
-  title: 'Form/Radio/RadioGroup',
+  title: 'Form/InputRadio/RadioGroup',
   parameters: {
     docs: {
       description: {
@@ -33,9 +33,9 @@ export const Default: Story = {
   render: (arguments_) => (
     <FormField label={{ text: 'Where do you live?' }}>
       <RadioGroup {...arguments_}>
-        <Radio value={'dublin'} label={'Dublin'} />
-        <Radio value={'cork'} label={'Cork'} />
-        <Radio value={'galway'} label={'Galway'} />
+        <InputRadio value={'dublin'} label={'Dublin'} />
+        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
@@ -49,9 +49,9 @@ export const inline: Story = {
   render: (arguments_) => (
     <FormField label={{ text: 'Where do you live?' }}>
       <RadioGroup {...arguments_} inline>
-        <Radio value={'dublin'} label={'Dublin'} />
-        <Radio value={'cork'} label={'Cork'} />
-        <Radio value={'galway'} label={'Galway'} />
+        <InputRadio value={'dublin'} label={'Dublin'} />
+        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
@@ -67,9 +67,9 @@ export const withTitleHint: Story = {
       hint={{ text: 'Select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio value={'dublin'} label={'Dublin'} />
-        <Radio value={'cork'} label={'Cork'} />
-        <Radio value={'galway'} label={'Galway'} />
+        <InputRadio value={'dublin'} label={'Dublin'} />
+        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
@@ -87,12 +87,12 @@ export const withOptionHints: Story = {
       }}
     >
       <RadioGroup {...arguments_}>
-        <Radio
+        <InputRadio
           value={'val1'}
           label={'Sign in with Username and Password'}
           hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
         />
-        <Radio
+        <InputRadio
           value={'val2'}
           label={'Sign in with MyGovID'}
           hint="If you don't have a MyGovID Login, you can create one"
@@ -112,11 +112,11 @@ export const withDividerOption: Story = {
       hint={{ text: 'Select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio value={'dublin'} label={'Dublin'} />
-        <Radio value={'cork'} label={'Cork'} />
-        <Radio value={'galway'} label={'Galway'} />
+        <InputRadio value={'dublin'} label={'Dublin'} />
+        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value={'galway'} label={'Galway'} />
         <Paragraph>or</Paragraph>
-        <Radio value={'none'} label={'Non of above'} />
+        <InputRadio value={'none'} label={'Non of above'} />
       </RadioGroup>
     </FormField>
   ),
@@ -133,9 +133,9 @@ export const withError: Story = {
       error={{ text: 'Please select a city' }}
     >
       <RadioGroup {...arguments_}>
-        <Radio value={'dublin'} label={'Dublin'} />
-        <Radio value={'cork'} label={'Cork'} />
-        <Radio value={'galway'} label={'Galway'} />
+        <InputRadio value={'dublin'} label={'Dublin'} />
+        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value={'galway'} label={'Galway'} />
       </RadioGroup>
     </FormField>
   ),
@@ -148,12 +148,12 @@ export const withConditionalInput: Story = {
   render: (arguments_) => (
     <FormField label={{ text: 'How would you prefer to be contacted?' }}>
       <RadioGroup {...arguments_}>
-        <Radio
+        <InputRadio
           value={'email'}
           label={'email'}
           conditionalInput={{ id: 'email', placeholder: 'Email address' }}
         />
-        <Radio
+        <InputRadio
           value={'phone'}
           label={'Phone'}
           conditionalInput={{ id: 'phone', placeholder: 'Phone number' }}

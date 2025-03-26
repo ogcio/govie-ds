@@ -78,7 +78,7 @@ export {
   type ProgressBarProps,
 } from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
-export { RadioGroup } from './radio/radio-group.js';
+export { RadioGroup } from './input-radio/radio-group.js';
 export { Radio } from './radio/radio.js';
 export type { RadioGroupProps, RadioProps } from './radio/types.js';
 export {
@@ -118,7 +118,16 @@ export { Tabs, type TabsProps } from './tabs/tabs.js';
 export { Tag, type TagProps, TagTypeEnum, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { InputText } from './input-text/input-text.js';
-export type { InputProps, InputActionButtonProps } from './input-text/type.js';
+export { InputRadio } from './input-radio/input-radio.js';
+export {
+  type InputRadioProps,
+  type InputRadioSizeType,
+  InputRadioSizeEnum,
+} from './input-radio/types.js';
+export type {
+  InputTextProps,
+  InputActionButtonProps,
+} from './input-text/type.js';
 export {
   InputPassword,
   type InputPasswordProps,
