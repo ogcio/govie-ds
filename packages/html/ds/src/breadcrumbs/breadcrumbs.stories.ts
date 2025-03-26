@@ -39,14 +39,14 @@ const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
       element = createLink({
         noColor: true,
         href: navItem.href,
-        label: navItem.label!,
+        content: navItem.label!,
       }) as HTMLAnchorElement;
       element.ariaCurrent = 'page';
     } else {
       element = createLink({
         noColor: true,
         href: navItem.href,
-        label: navItem.label!,
+        content: navItem.label!,
       });
     }
 

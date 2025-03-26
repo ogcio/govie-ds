@@ -262,7 +262,12 @@ export const DisabledInput: Story = {
 
 export const WithHalfWidth: Story = {
   args: {
-    id: 'input-id',
+    id: 'text-input-id',
+    label: {
+      content: 'Label',
+      htmlFor: 'text-input-id',
+      size: LabelSize.Medium,
+    },
     className: 'gi-input-half-width',
     dataTestId: 'text-input-id',
   },

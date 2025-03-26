@@ -7,8 +7,9 @@ import { TextInputProps } from '../text-input/types';
 
 export const createLabel = (labelProps: LabelProps) => {
   const label = document.createElement('label');
+  const size = labelProps.size;
   label.className =
-    `gi-text-${labelProps.size} gi-label ${labelProps.className || ''}`.trim();
+    `gi-text-${size || 'md'} gi-label ${labelProps.className || ''}`.trim();
   if (labelProps.content) {
     label.textContent = labelProps.content;
   }
@@ -20,8 +21,9 @@ export const createLabel = (labelProps: LabelProps) => {
 
 export const createHintText = (hintProps: HintTextProps) => {
   const hint = document.createElement('div');
+  const size = hintProps.size;
   hint.className =
-    `gi-hint-text-${hintProps.size} gi-hint-text ${hintProps.className || ''}`.trim();
+    `gi-hint-text-${size || 'md'} gi-hint-text ${hintProps.className || ''}`.trim();
   if (hintProps.content) {
     hint.textContent = hintProps.content;
   }
@@ -31,8 +33,9 @@ export const createHintText = (hintProps: HintTextProps) => {
 
 export const createErrorText = (errorProps: ErrorTextProps) => {
   const errorText = document.createElement('div');
+  const size = errorProps.size;
   errorText.className =
-    `gi-error-text-${errorProps.size} gi-error-text ${errorProps.className || ''}`.trim();
+    `gi-error-text-${size || 'md'} gi-error-text ${errorProps.className || ''}`.trim();
   if (errorProps.content) {
     errorText.textContent = errorProps.content;
   }

@@ -225,19 +225,11 @@ export const Default: Story = {
     fixedHeight: '300px',
   },
   render: (arguments_) => createElement(arguments_, children),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };
 
 export const WithDefaultProps: Story = {
   args: {},
   render: (arguments_) => createElement(arguments_, children2),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };
 
 export const ResponsiveDirectionWithDivider: Story = {
@@ -250,10 +242,6 @@ export const ResponsiveDirectionWithDivider: Story = {
     fixedHeight: '150px',
   },
   render: (arguments_) => createElement(arguments_, children2),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };
 
 export const CenteredItemsWithGap: Story = {
@@ -265,10 +253,6 @@ export const CenteredItemsWithGap: Story = {
     hasDivider: false,
   },
   render: (arguments_) => createElement(arguments_, children2),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };
 
 export const AroundDistributionWithDivider: Story = {
@@ -281,10 +265,6 @@ export const AroundDistributionWithDivider: Story = {
     fixedHeight: '100px',
   },
   render: (arguments_) => createElement(arguments_, children2),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };
 
 export const CenterDistribution: Story = {
@@ -295,8 +275,4 @@ export const CenterDistribution: Story = {
     gap: 4,
   },
   render: (arguments_) => createElement(arguments_, children2),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
 };

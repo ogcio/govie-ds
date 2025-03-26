@@ -16,7 +16,10 @@ const createSelect = (arguments_: SelectProps) => {
 
   const select = document.createElement('select');
   select.className = 'gi-select';
-  select.dataset.testid = arguments_.dataTestid;
+  select.id = arguments_.id;
+  if (arguments_.dataTestid) {
+    select.dataset.testid = arguments_.dataTestid;
+  }
 
   for (const item of arguments_.items) {
     if ('items' in item) {
@@ -65,6 +68,7 @@ export const Default: Story = {
     id: 'unique-id',
     label: {
       content: 'Label',
+      htmlFor: 'unique-id',
     },
     items: [
       {
@@ -90,6 +94,7 @@ export const withLabelHintAndError: Story = {
     dataTestid: 'unique-id',
     label: {
       content: 'Default Select',
+      htmlFor: 'unique-id',
     },
     hint: {
       content: 'This can be different to where you went before',
@@ -138,32 +143,12 @@ export const withLabelHintAndError: Story = {
   },
 };
 
-export const withoutLabel: Story = {
-  args: {
-    id: 'unique-id',
-    items: [
-      {
-        label: 'Option 1',
-        value: 'value-1',
-      },
-      {
-        label: 'Option 2',
-        value: 'value-2',
-      },
-      {
-        label: 'Option 3',
-        value: 'value-3',
-      },
-    ],
-  },
-  render: (arguments_) => createElement(arguments_),
-};
-
 export const withGroups: Story = {
   args: {
     id: 'unique-id',
     label: {
       content: 'Default Select',
+      htmlFor: 'unique-id',
     },
     items: [
       {

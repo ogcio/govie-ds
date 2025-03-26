@@ -19,7 +19,10 @@ const createProgressBar = (arguments_: ProgressBarProps) => {
     ? null
     : `${arguments_.value}`;
   progressBar.ariaValueMin = '0';
-  progressBar.ariaValueMax = `${arguments_.max}`;
+  if (arguments_.max) {
+    progressBar.ariaValueMax = `${arguments_.max}`;
+  }
+  progressBar.ariaLabel = 'Progress bar';
   progressBar.className = 'gi-progress-bar';
 
   if (arguments_.isIndeterminate) {

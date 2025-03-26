@@ -87,9 +87,14 @@ const createHeader = (arguments_: HeaderProps) => {
 
   if (arguments_.logo?.href) {
     const logoLink = document.createElement('a');
+    logoLink.dataset.testid = 'logo-link';
+    if (arguments_.logo.external) {
+      logoLink.target = '_blank';
+      logoLink.rel = 'noreferrer noopener';
+    }
     logoLink.href = arguments_.logo.href;
     logoLink.append(logo);
-    logoWrapper.append(logo);
+    logoWrapper.append(logoLink);
   } else {
     logoWrapper.append(logo);
   }
@@ -126,6 +131,10 @@ const createHeader = (arguments_: HeaderProps) => {
           const icon = createIcon({ icon: item.icon });
           link.append(icon);
         }
+        if (item.external) {
+          link.target = '_blank';
+          link.rel = 'noreferrer noopener';
+        }
         menuItem.append(link);
         break;
       }
@@ -145,6 +154,8 @@ const createHeader = (arguments_: HeaderProps) => {
         const label = document.createElement('label');
         label.className = toolItemClassNames;
         label.htmlFor = `ItemActionTrigger-${index}`;
+        label.dataset.testid = `ItemActionTrigger-${index}`;
+        label.ariaLabel = item.label || item.icon || 'menu';
         label.id = `ItemActionLabel-${index}`;
 
         const input = document.createElement('input');
@@ -883,10 +894,10 @@ export const withExternalLinks: Story = {
     const canvas = within(canvasElement);
 
     const logoLink = canvas.getByTestId('logo-link');
-    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
-    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
-    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
-    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+    const internalNav = canvas.getByText('Internal Nav');
+    const externalNav = canvas.getByText('External Nav');
+    const externalTool = canvas.getByText('External Tool');
+    const internalTool = canvas.getByText('Internal Tool');
 
     await expect(logoLink).toHaveAttribute('target', '_blank');
     await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
@@ -957,17 +968,17 @@ export const mobileWithExternalLinks: Story = {
     const canvas = within(canvasElement);
 
     const logoLink = canvas.getByTestId('logo-link');
-    const headerMobileMenu = canvas.getByTestId('ItemActionDrawerTrigger-0');
+    const headerMobileMenu = canvas.getByTestId('ItemActionTrigger-0');
 
     await expect(logoLink).toHaveAttribute('target', '_blank');
     await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
 
     await userEvent.click(headerMobileMenu);
 
-    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
-    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
-    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
-    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+    const internalNav = canvas.getByText('Internal Nav');
+    const externalNav = canvas.getByText('External Nav');
+    const externalTool = canvas.getByText('External Tool');
+    const internalTool = canvas.getByText('Internal Tool');
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
     await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');

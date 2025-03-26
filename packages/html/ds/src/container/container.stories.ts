@@ -21,14 +21,12 @@ const createContainer = (arguments_: ContainerProps) => {
 
 export const Default: Story = {
   args: {
-    content: `<p>Paragraph</p>`,
+    content: `<p>This is a paragraph.</p>`,
   },
   render: (arguments_) => createContainer(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const paragraph = canvas.getByText('This is a paragraph.');
-    expect(paragraph).toHaveClass('gi-paragraph-md');
-    expect(paragraph).toHaveClass('gi-text-start');
-    expect(paragraph).toHaveClass('gi-whitespace-normal');
+    expect(paragraph.parentElement).toHaveClass('gi-layout-container');
   },
 };

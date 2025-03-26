@@ -48,7 +48,7 @@ const createCard = (arguments_: CardProps) => {
       case 'icon': {
         const div = document.createElement('div');
         div.className = 'gi-card-icon';
-        div.ariaHidden = 'true';
+
         const anchor = createLink({ href: arguments_.href });
         const icon = createIcon({ ...arguments_.media.config });
         anchor.append(icon);

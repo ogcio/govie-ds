@@ -19,7 +19,6 @@ type Story = StoryObj<CookieBannerProps>;
 
 const createCookieBanner = (arguments_: CookieBannerProps) => {
   const cookieBannerContainer = document.createElement('div');
-  cookieBannerContainer.ariaLabel = 'Cookie banner';
   cookieBannerContainer.dataset.module = 'gieds-cookie-banner';
   cookieBannerContainer.className = 'gi-cookie-banner-container';
 

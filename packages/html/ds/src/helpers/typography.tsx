@@ -68,7 +68,7 @@ export const createHeading = (arguments_: HeadingProps) => {
 
   if (arguments_.caption) {
     const caption = document.createElement('span');
-    caption.className = 'gi-text-gray-500';
+    caption.className = 'gi-text-gray-600';
     caption.textContent = arguments_.caption;
 
     const container = document.createElement('div');
