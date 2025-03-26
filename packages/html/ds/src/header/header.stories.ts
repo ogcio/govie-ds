@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within, userEvent } from '@storybook/test';
-import { beautifyHtmlNode } from '../storybook/storybook';
-import { HeaderItem, HeaderProps } from './types';
+import { expect, userEvent, within } from '@storybook/test';
 import { createIcon } from '../helpers/icons';
 import { createDrawer } from '../helpers/modal';
-import { a } from 'vitest/dist/chunks/suite.B2jumIFP.js';
-import { Drawer } from '../drawer/drawer';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { HeaderItem, HeaderProps } from './types';
 
 const meta: Meta<HeaderProps> = {
   title: 'Layout/Header',

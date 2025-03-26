@@ -1,1 +1,1 @@
-export type BlockquoteProps = {content?: string};
+export type BlockquoteProps = { content?: string };

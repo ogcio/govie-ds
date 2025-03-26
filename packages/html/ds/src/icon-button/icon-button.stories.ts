@@ -52,7 +52,6 @@ export const Default: Story = {
     },
   },
   render: (arguments_) => createElement(arguments_),
-  
 };
 
 export const Small: Story = {
@@ -63,7 +62,6 @@ export const Small: Story = {
     size: 'small',
   },
   render: (arguments_) => createElement(arguments_),
-  
 };
 
 export const Large: Story = {
@@ -74,7 +72,6 @@ export const Large: Story = {
     size: 'large',
   },
   render: (arguments_) => createElement(arguments_),
-  
 };
 
 export const SecondaryButton: Story = {
@@ -85,7 +82,6 @@ export const SecondaryButton: Story = {
     variant: 'secondary',
   },
   render: (arguments_) => createElement(arguments_),
-  
 };
 
 export const FlatButton: Story = {
@@ -96,7 +92,6 @@ export const FlatButton: Story = {
     variant: 'flat',
   },
   render: (arguments_) => createElement(arguments_),
-  
 };
 
 export const Disabled: Story = {
@@ -107,5 +102,4 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (arguments_) => createElement(arguments_),
-  
 };

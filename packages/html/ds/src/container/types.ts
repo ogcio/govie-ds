@@ -1,1 +1,1 @@
-export type ContainerProps = {content?: string};
+export type ContainerProps = { content?: string };

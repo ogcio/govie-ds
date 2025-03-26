@@ -1,4 +1,4 @@
-import { DrawerPosition } from "../drawer/types";
+import { DrawerPosition } from '../drawer/types';
 
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';
@@ -35,7 +35,7 @@ type ConditionalProps =
       component?: never;
       href?: string;
       external?: boolean;
-      onClick?: ()=>void;
+      onClick?: () => void;
       slotAppearance?: never;
       drawerPosition?: never;
       itemType: 'link';
