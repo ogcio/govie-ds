@@ -48,8 +48,9 @@ import {
   ToastVariant,
   ToastProvider,
   InputPassword,
-  TextInput,
   InputText,
+  FormField,
+  InputRadio,
 } from '@govie-ds/react';
 import { useState } from 'react';
 
@@ -212,41 +213,24 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <RadioGroup
-            title={{
-              value: 'Where do you live?',
-              asHeading: {
-                size: 'md',
-                as: 'h2',
-              },
-            }}
-            items={[
-              {
-                label: 'England',
-                value: 'england',
-              },
-              {
-                label: 'Scotland',
-                value: 'scotland',
-              },
-              {
-                label: 'Ireland',
-                value: 'ireland',
-              },
-            ]}
-            groupId="uniqueId"
-          />
-          <TextArea
+          <FormField label={{ text: 'Where do you live?' }}>
+            <RadioGroup groupId={'city'}>
+              <InputRadio value={'dublin'} label={'Dublin'} />
+              <InputRadio value={'cork'} label={'Cork'} />
+              <InputRadio value={'galway'} label={'Galway'} />
+            </RadioGroup>
+          </FormField>
+          <FormField
             hint={{
               text: 'Hint: This is a helpful hint.',
             }}
-            id="textarea-id"
-            maxChars={50}
             label={{
               text: 'Textarea text',
               htmlFor: 'textarea-id',
             }}
-          />
+          >
+            <TextArea id="textarea-id" maxChars={50} />
+          </FormField>
 
           <span className="material-symbols-outlined">face</span>
           <div>
