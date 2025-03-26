@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
 import { IconId } from '../icon/icon.js';
-import { TextInput, TextInputProps } from '../text-input/text-input.js';
+import { InputText } from '../input-text/input-text.js';
+import type { InputTextProps } from '../input-text/type.js';
 
 export type InputPasswordProps = Omit<
-  TextInputProps,
+  InputTextProps,
   'type' | 'inputActionButton' | 'prefix' | 'suffix' | 'iconStart' | 'iconEnd'
 >;
 
@@ -26,7 +27,7 @@ export const InputPassword = (props: InputPasswordProps) => {
   };
 
   return (
-    <TextInput
+    <InputText
       {...props}
       type={inputProps.type}
       inputActionButton={{

@@ -4,9 +4,9 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import type { InputActionButtonProps, InputProps } from './type.js';
+import type { InputActionButtonProps, InputTextProps } from './type.js';
 
-const InputTextWithClear = forwardRef<HTMLInputElement, InputProps>(
+const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
   ({ onChange, ...props }, externalRef) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -41,7 +41,7 @@ const InputTextWithClear = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputTextProps>(
   (
     {
       prefix,
@@ -135,7 +135,7 @@ export const InputActionButton = ({
   );
 };
 
-export const InputText = React.forwardRef<HTMLInputElement, InputProps>(
+export const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
   ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
     if (clearButtonEnabled) {
       return <InputTextWithClear ref={ref} type={type} {...props} />;
