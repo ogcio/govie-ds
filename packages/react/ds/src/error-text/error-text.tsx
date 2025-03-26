@@ -8,9 +8,12 @@ export const ErrorSize = {
 
 export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
 
-export type ErrorTextProps = React.HTMLAttributes<HTMLDivElement> & {
+// Extend `React.HTMLAttributes<HTMLParagraphElement>` so that
+// the component can accept all the standard attributes and events that a `<p>` element can handle.
+export type ErrorTextProps = React.HTMLAttributes<HTMLParagraphElement> & {
   text: string;
   size?: ErrorSizeType;
+  className?: string;
   dataTestid?: string;
 };
 
