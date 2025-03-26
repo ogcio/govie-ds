@@ -65,7 +65,9 @@ const createComboBox = (arguments_: ComboBoxProps) => {
       containerOpen.append(containerSearch);
       containerSearch.className = 'gi-combobox-search';
 
-      const searchInput = createTextInput({ placeholder: 'Search' });
+      const searchInput = createTextInput({
+        placeholder: 'Search',
+      });
       containerSearch.append(searchInput);
       searchInput.className = 'gi-combobox-search-input';
 
@@ -80,8 +82,9 @@ const createComboBox = (arguments_: ComboBoxProps) => {
         icon: {
           icon: 'close',
         },
+        className: 'gi-combobox-search-icon',
       });
-      iconButton.className = 'gi-combobox-search-icon';
+
       searchButtonContainer.append(iconButton);
     }
 

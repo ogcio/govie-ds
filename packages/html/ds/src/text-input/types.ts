@@ -3,7 +3,7 @@ import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
 
 export type TextInputProps = {
-  id: string;
+  id?: string;
   name?: string;
   value?: string;
   placeholder?: string;
