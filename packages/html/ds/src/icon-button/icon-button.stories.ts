@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within } from '@storybook/test';
 import { createIconButton } from '../helpers/buttons';
 import { IconId } from '../icon/icon.schema';
 import { beautifyHtmlNode } from '../storybook/storybook';
@@ -53,10 +52,7 @@ export const Default: Story = {
     },
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };
 
 export const Small: Story = {
@@ -67,10 +63,7 @@ export const Small: Story = {
     size: 'small',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };
 
 export const Large: Story = {
@@ -81,10 +74,7 @@ export const Large: Story = {
     size: 'large',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };
 
 export const SecondaryButton: Story = {
@@ -95,10 +85,7 @@ export const SecondaryButton: Story = {
     variant: 'secondary',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };
 
 export const FlatButton: Story = {
@@ -109,10 +96,7 @@ export const FlatButton: Story = {
     variant: 'flat',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };
 
 export const Disabled: Story = {
@@ -123,8 +107,5 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-  },
+  
 };

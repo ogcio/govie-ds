@@ -18,25 +18,25 @@
     "access": "public"
   },
   "scripts": {
-    "format": "prettier 'src/**/*.{ts,html}' --write",
-    "format:check": "prettier 'src/**/*.{ts,html}' --check",
-    "lint": "eslint 'src/**/*.{ts,html}'",
+    "format": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles && pnpm build:assets",
+    "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles",
     "build:properties": "tsx scripts/build-properties.ts",
-    "build:assets": "tsx scripts/copy-assets.ts",
     "build:ts": "vite build",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
-    "postbuild": "zip -r govie-frontend.zip dist macros",
-    "storybook:dev": "STORYBOOK_DEV_MACRO_URL=\"http://localhost:6006/@fs$(pwd)/src\" storybook dev -p 6006",
-    "storybook:build": "tsx scripts/copy-macros.ts && STORYBOOK_ENV=prod storybook build --stats-json",
+    "postbuild": "zip -r govie-frontend.zip dist",
+    "storybook:dev": "storybook dev -p 6006",
+    "storybook:build": "STORYBOOK_ENV=prod storybook build --stats-json",
     "storybook:test": "vitest --project=storybook --reporter=basic --disable-console-intercept",
     "storybook:coverage": "vitest --project=storybook --coverage"
   },
   "files": [
     "dist"
   ],
+  "prettier": "@govie-ds/prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",

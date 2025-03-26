@@ -1,12 +1,12 @@
 import { ButtonProps, ButtonSize } from '../button/types.js';
 import { HeadingProps } from '../heading/types.js';
 
-export type DrawerPositions = 'left' | 'right' | 'bottom';
+export type DrawerPosition = 'left' | 'right' | 'bottom';
 
 export type DrawerWrapperProps = {
   isOpen: boolean;
-  onClose: () => void;
-  position?: DrawerPositions;
+  onClose?: () => void;
+  position?: DrawerPosition;
   closeButtonSize?: ButtonSize;
 } & Omit<DrawerProps, 'triggerButton'>;
 

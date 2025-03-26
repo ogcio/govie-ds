@@ -1,22 +1,245 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './header.html?raw';
-import { HeaderProps } from './header.schema';
+import { expect, within, userEvent } from '@storybook/test';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { HeaderItem, HeaderProps } from './types';
+import { createIcon } from '../helpers/icons';
+import { createDrawer } from '../helpers/modal';
+import { a } from 'vitest/dist/chunks/suite.B2jumIFP.js';
+import { Drawer } from '../drawer/drawer';
 
-const macro = { name: 'govieHeader', html };
-
-const Header = renderComponent<HeaderProps>(macro);
-
-const meta = {
-  component: Header,
-  title: 'layout/Header',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof Header>;
+const meta: Meta<HeaderProps> = {
+  title: 'Layout/Header',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<HeaderProps>;
+
+const buildDefaultMobileMenu = (
+  mobileMenuLabel: string,
+  items: HeaderItem[],
+  secondaryLinks: {
+    href: string;
+    label: string;
+  }[],
+) => {
+  const mobileMenu: HeaderItem = {
+    label: mobileMenuLabel,
+    icon: 'menu',
+    itemType: 'slot',
+    component: `<MobileHeaderMenuItems items={items} secondaryLinks={secondaryLinks} />`,
+    slotAppearance: 'drawer',
+    showItemMode: 'mobile-only',
+  };
+
+  return [mobileMenu, ...items];
+};
+
+const createHeader = (arguments_: HeaderProps) => {
+  const items =
+    (arguments_.addDefaultMobileMenu
+      ? buildDefaultMobileMenu(
+          arguments_.mobileMenuLabel || '',
+          arguments_.items || [],
+          arguments_.secondaryLinks || [],
+        )
+      : arguments_.items) || [];
+
+  const containerClassName = arguments_.fullWidth
+    ? 'gi-layout-container-full-width'
+    : 'gi-layout-container';
+  const headerClassNames = 'gi-header';
+  const secondaryBarClassNames = 'gi-header-secondary-bar';
+  const secondaryItemClassNames = 'gi-header-secondary-item';
+  const menuContainerClassNames = 'gi-header-menu';
+  const appTitleClassNames = 'gi-header-title';
+  const toolItemClassNames = 'gi-header-tool-item';
+  const menuDividerClassNames = 'gi-header-divider';
+
+  const header = document.createElement('header');
+  header.id = 'GovieHeader';
+  header.className = headerClassNames;
+
+  const container = document.createElement('div');
+  container.className = `${containerClassName} gi-order-2`;
+  header.append(container);
+
+  const menuContainer = document.createElement('div');
+  menuContainer.className = menuContainerClassNames;
+  container.append(menuContainer);
+
+  const wrapper1 = document.createElement('div');
+
+  const logoWrapper = document.createElement('div');
+  logoWrapper.className = 'gi-header-logo';
+
+  const logo = document.createElement('picture');
+  const source = document.createElement('source');
+  source.srcset =
+    arguments_.logo?.imageLarge ||
+    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-white.svg';
+  source.media = '(min-width: 640px)';
+  const img = document.createElement('img');
+  img.src =
+    arguments_.logo?.imageSmall ||
+    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/harp/harp-white.svg';
+  img.alt = arguments_.logo?.alt || 'Gov.ie logo';
+  img.className = 'gi-h-10 sm:gi-h-14';
+  logo.append(source);
+  logo.append(img);
+
+  if (arguments_.logo?.href) {
+    const logoLink = document.createElement('a');
+    logoLink.href = arguments_.logo.href;
+    logoLink.append(logo);
+    logoWrapper.append(logo);
+  } else {
+    logoWrapper.append(logo);
+  }
+
+  const titleWrapper = document.createElement('div');
+  titleWrapper.className = `${appTitleClassNames} ${arguments_.showTitleOnMobile ? '' : 'gi-hidden'}`;
+  if (arguments_.title) {
+    titleWrapper.textContent = arguments_.title;
+  }
+
+  wrapper1.append(logoWrapper);
+  wrapper1.append(titleWrapper);
+
+  const wrapper2 = document.createElement('div');
+  wrapper2.className = 'gi-gap-2 md:gi-gap-4';
+
+  for (const [index, item] of items.entries()) {
+    const menuItem = document.createElement('div');
+    menuItem.className = 'gi-block';
+    if (item.showItemMode === 'mobile-only') {
+      menuItem.className = 'gi-block lg:gi-hidden';
+    } else if (item.showItemMode === 'desktop-only') {
+      menuItem.className = 'gi-hidden lg:gi-block';
+    }
+    wrapper2.append(menuItem);
+
+    switch (item.itemType) {
+      case 'link': {
+        const link = document.createElement('a');
+        link.className = toolItemClassNames;
+        link.href = item.href || '#';
+        link.textContent = item.label || '';
+        if (item.icon) {
+          const icon = createIcon({ icon: item.icon });
+          link.append(icon);
+        }
+        menuItem.append(link);
+        break;
+      }
+      case 'slot': {
+        if (item.slotAppearance === 'drawer') {
+          const drawer = createDrawer({
+            body: item.component || '',
+            position: item.drawerPosition || 'right',
+            startsOpen: false,
+            isOpen: false,
+            footer: '',
+          });
+          drawer.id = `Drawer-${index}`;
+          header.append(drawer);
+        }
+
+        const label = document.createElement('label');
+        label.className = toolItemClassNames;
+        label.htmlFor = `ItemActionTrigger-${index}`;
+        label.id = `ItemActionLabel-${index}`;
+
+        const input = document.createElement('input');
+        input.id = `ItemActionTrigger-${index}`;
+        input.type = 'checkbox';
+        input.dataset.index = `${index}`;
+
+        if (item.slotAppearance === 'drawer') {
+          const script = document.createElement('script');
+          script.async = false;
+
+          const scriptCode = `
+          function toggleDrawer${index}() {
+            const element = document.getElementById('Drawer-${index}');
+            const elements = element.querySelectorAll('[data-element="modal"]');
+            const modal = elements[0];
+            modal.classList.add('gi-modal-open');
+            modal.classList.remove('gi-modal-close');
+            modal.setAttribute('aria-hidden', 'false');
+          }
+          setTimeout(() => {
+            const label = document.getElementById('ItemActionLabel-${index}');
+            label.addEventListener('click', function() { toggleDrawer${index}(); })
+          }, 500);
+          `;
+
+          script.append(document.createTextNode(scriptCode));
+          document.body.append(script);
+        }
+
+        const span = document.createElement('span');
+        span.className = 'label';
+        span.textContent = item.label || '';
+
+        label.append(input);
+        label.append(span);
+        if (item.icon) {
+          const icon = createIcon({ icon: item.icon });
+          icon.id = `ItemIconActionTrigger-${index}`;
+          label.append(icon);
+        }
+        const closeIcon = createIcon({ icon: 'close' });
+        closeIcon.className = 'gi-hidden close-icon';
+        closeIcon.id = `ItemCloseTrigger-${index}`;
+        label.append(closeIcon);
+        menuItem.append(label);
+
+        break;
+      }
+      case 'divider': {
+        const divider = document.createElement('div');
+        divider.className = menuDividerClassNames;
+        menuItem.append(divider);
+        break;
+      }
+    }
+  }
+
+  menuContainer.append(wrapper1);
+  menuContainer.append(wrapper2);
+
+  if (arguments_.secondaryLinks) {
+    const secondaryLinks = document.createElement('div');
+    secondaryLinks.className = `${secondaryBarClassNames} gi-order-1`;
+    header.append(secondaryLinks);
+
+    const secondaryLinksContainer = document.createElement('div');
+    secondaryLinksContainer.className = containerClassName;
+    secondaryLinks.append(secondaryLinksContainer);
+
+    const list = document.createElement('ul');
+    secondaryLinksContainer.append(list);
+
+    for (const link of arguments_.secondaryLinks) {
+      const li = document.createElement('li');
+
+      const secondaryLink = document.createElement('a');
+      secondaryLink.href = link.href;
+      secondaryLink.textContent = link.label;
+      secondaryLink.className = secondaryItemClassNames;
+
+      li.append(secondaryLink);
+      list.append(li);
+    }
+  }
+
+  return header;
+};
+
+const createElement = (arguments_: HeaderProps) => {
+  const component = createHeader(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 const slotExample1 = () => `
   <ul class="gi-list-bullet" data-testid="govieList">
@@ -47,7 +270,7 @@ const slotExample1 = () => `
   </ul>
 `;
 
-const slotExample2 = () => `
+const slotSearch = () => `
   <form class="gi-max-w-md gi-mx-auto">
     <h4 class="gi-heading-sm">Search the website</h4>
     <div class="gi-flex gi-items-end gi-mt-4">
@@ -98,127 +321,213 @@ const slotExample3 = () => `
   </select>
 `;
 
+const headerProps: HeaderProps = {
+  items: [
+    {
+      label: 'Departments',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Services',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
+    },
+    {
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Faq',
+      icon: 'info',
+      itemType: 'slot',
+      component: slotExample1(),
+      slotAppearance: 'drawer',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
+      component: slotSearch(),
+      slotAppearance: 'dropdown',
+      showItemMode: 'desktop-only',
+    },
+    {
+      label: 'Languages',
+      icon: 'mic',
+      itemType: 'slot',
+      component: slotExample3(),
+      slotAppearance: 'dropdown',
+      showItemMode: 'desktop-only',
+    },
+  ],
+};
+
 export const Default: Story = {
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'The title of the Header',
+      table: {
+        category: 'Header',
+      },
+    },
+    logo: {
+      control: 'object',
+      description: 'The url and image for the logo',
+      table: {
+        category: 'Header',
+      },
+    },
+    items: {
+      control: 'object',
+      description: 'Actionable items such as CTAs, links, slots, or dividers',
+      table: {
+        category: 'Header',
+        type: {
+          summary: 'HeaderItem[]',
+        },
+      },
+    },
+    secondaryLinks: {
+      description: 'A list of secondary navigation links',
+      table: {
+        category: 'Header',
+      },
+    },
+    addDefaultMobileMenu: {
+      control: 'boolean',
+      description:
+        'If true, adds a default mobile menu to the header according with your "items" ',
+      table: {
+        category: 'Header',
+      },
+    },
+    mobileMenuLabel: {
+      control: 'text',
+      description:
+        'Change the mobile menu label when "addDefaultMobileMenu" is set',
+      table: {
+        category: 'Header',
+      },
+    },
+    showTitleOnMobile: {
+      control: 'boolean',
+      description:
+        'If true, the title will be shown on mobile, if false it will be hidden',
+      table: {
+        category: 'Header',
+      },
+    },
+  },
   args: {
     logo: {
       href: '/link',
     },
-    tools: {
-      menu: {
-        icon: 'menu',
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-        {
-          href: '#',
-          label: 'Faq',
-          icon: 'info',
-          keepOnMobile: true,
-          slot: slotExample1(),
-        },
-        {
-          href: '/search_page',
-          label: 'Search',
-          keepOnMobile: true,
-          icon: 'search',
-          slot: slotExample2(),
-        },
-        {
-          href: '#',
-          label: 'Languages',
-          icon: 'mic',
-          keepOnMobile: true,
-          slot: slotExample3(),
-        },
-      ],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
+    mobileMenuLabel: 'Menu',
+  },
+  render: createElement,
+};
+
+export const DesktopDrawerDefaultMenu: Story = {
+  args: {
+    logo: {
+      href: '/link',
     },
-    navLinks: [
+    items: [
+      // {
+      //   label: 'Menu',
+      //   icon: 'menu',
+      //   itemType: 'slot',
+      //   component: <MobileHeaderMenuItems items={headerProps.items} />,
+      //   slotAppearance: 'drawer',
+      // },
+    ],
+  },
+  render: createElement,
+};
+
+export const DesktopDrawerCustom: Story = {
+  args: {
+    logo: {
+      href: '/link',
+    },
+    items: [
       {
-        href: '#',
-        label: 'Departments',
+        icon: 'chevron_left',
+        itemType: 'slot',
+        component: `<div className="gi-py-4">Left</div>`,
+        slotAppearance: 'drawer',
+        drawerPosition: 'left',
+        showItemMode: 'always',
       },
       {
-        href: '#',
-        label: 'Services',
+        icon: 'chevron_right',
+        itemType: 'slot',
+        component: `<div className="gi-py-4">Right</div>`,
+        slotAppearance: 'drawer',
+        drawerPosition: 'right',
+        showItemMode: 'always',
+      },
+      {
+        label: 'Bottom',
+        icon: 'work',
+        itemType: 'slot',
+        component: `<div className="gi-py-4">Bottom</div>`,
+        slotAppearance: 'drawer',
+        drawerPosition: 'bottom',
+        showItemMode: 'always',
       },
     ],
   },
+  render: createElement,
 };
 
 export const NoLinks: Story = {
-  args: { fullWidth: false },
+  args: {},
+  render: createElement,
 };
 
-export const WithMainLinks: Story = {
+export const WithMainLinksDesktopOnly: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: '/search_page',
-      },
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
         label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
     ],
   },
-};
-
-export const WithNoSearch: Story = {
-  args: {
-    fullWidth: false,
-    logo: {
-      href: '/path',
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-  },
+  render: createElement,
 };
 
 export const WithSecondaryLinks: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: 'search_page',
-      },
-    },
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -228,36 +537,25 @@ export const WithSecondaryLinks: Story = {
         label: 'Gaeilge',
       },
     ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: slotSearch(),
+        slotAppearance: 'dropdown',
+      },
+    ],
   },
+  render: createElement,
 };
 
-export const withMainAndSecondaryLinks: Story = {
+export const withMainAndSecondaryLinksDesktopOnly: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -267,70 +565,118 @@ export const withMainAndSecondaryLinks: Story = {
         label: 'Gaeilge',
       },
     ],
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
   },
+  render: createElement,
 };
+
+const defaultHeaderItems = (external?: boolean) => [
+  {
+    label: 'Departments',
+    itemType: 'link',
+    href: '#',
+    external,
+    showItemMode: 'desktop-only',
+  },
+  {
+    label: 'Services',
+    itemType: 'link',
+    href: '#',
+    external,
+    showItemMode: 'desktop-only',
+  },
+  {
+    itemType: 'divider',
+  },
+  {
+    icon: 'search',
+    label: 'Search',
+    itemType: 'slot',
+    component: slotSearch(),
+    slotAppearance: 'dropdown',
+  },
+];
+
+const defaultHeaderProps = (external?: boolean) =>
+  ({
+    items: [...(defaultHeaderItems(external) as any)],
+    addDefaultMobileMenu: true,
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  }) as HeaderProps;
 
 export const withTitle: Story = {
   args: {
-    fullWidth: false,
     title: 'Life Events',
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
   },
+  render: createElement,
 };
 
 export const NoLabelSearch: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
+    items: [
       {
-        href: '#',
         label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+      },
+      {
+        icon: 'search',
+        itemType: 'slot',
+        component: slotSearch(),
+        slotAppearance: 'dropdown',
       },
     ],
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'English',
@@ -341,6 +687,7 @@ export const NoLabelSearch: Story = {
       },
     ],
   },
+  render: createElement,
 };
 
 export const tabletView: Story = {
@@ -351,40 +698,13 @@ export const tabletView: Story = {
     },
   },
   args: {
-    fullWidth: false,
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
   },
+  render: createElement,
 };
 
 export const mobileView: Story = {
@@ -395,119 +715,89 @@ export const mobileView: Story = {
     },
   },
   args: {
-    fullWidth: false,
     logo: {
       href: 'path',
     },
-    tools: {
-      search: {
-        action: '/search-page',
-      },
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
   },
+  render: createElement,
 };
 
 export const WithExtraButtons: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: '/path',
     },
-    tools: {
-      items: [
-        {
-          href: '/home',
-          icon: 'home',
-        },
-        {
-          href: '/logout',
-          icon: 'logout',
-        },
-      ],
-    },
-    navLinks: [
+    items: [
       {
+        icon: 'home',
+        itemType: 'link',
         href: '#',
+        showItemMode: 'always',
+      },
+      {
+        icon: 'logout',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'always',
+      },
+      {
         label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
       {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
         label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
       },
     ],
   },
+  render: createElement,
 };
+
+const withExtraButtonsAndLabelsItems: HeaderItem[] = [
+  {
+    icon: 'search',
+    itemType: 'slot',
+    component: slotSearch(),
+    slotAppearance: 'dropdown',
+  },
+  {
+    icon: 'home',
+    itemType: 'link',
+    href: '#',
+  },
+  {
+    icon: 'logout',
+    itemType: 'link',
+    href: '#',
+  },
+  {
+    label: 'News',
+    itemType: 'link',
+    href: '#',
+    showItemMode: 'desktop-only',
+  },
+  {
+    label: 'Services',
+    itemType: 'link',
+    href: '#',
+    showItemMode: 'desktop-only',
+  },
+];
 
 export const WithExtraButtonsAndLabels: Story = {
   args: {
-    fullWidth: false,
     logo: {
       href: '/path',
     },
-    tools: {
-      search: {
-        label: 'Search',
-        action: 'search_page',
-      },
-      menu: {
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/home',
-          icon: 'home',
-          label: 'Home',
-        },
-        {
-          href: '/logout',
-          icon: 'logout',
-          label: 'Logout',
-        },
-      ],
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'News',
-      },
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
+    items: withExtraButtonsAndLabelsItems,
   },
+  render: createElement,
 };
 
 export const FullWidth: Story = {
@@ -516,39 +806,9 @@ export const FullWidth: Story = {
     logo: {
       href: '/link',
     },
-    tools: {
-      search: {
-        action: '/search_page',
-        label: 'Search',
-      },
-      menu: {
-        label: 'Menu',
-      },
-      items: [
-        {
-          href: '/item1',
-          label: 'Home',
-          icon: 'home',
-        },
-      ],
-    },
-    navLinks: [
-      {
-        href: '#',
-        label: 'Departments',
-      },
-      {
-        href: '#',
-        label: 'Services',
-      },
-    ],
-    languages: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    ...defaultHeaderProps(),
   },
+  render: createElement,
 };
 
 export const ShowMobileMenuForLanguages: Story = {
@@ -562,7 +822,7 @@ export const ShowMobileMenuForLanguages: Story = {
     logo: {
       href: '/link',
     },
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'Gaeilge',
@@ -572,6 +832,159 @@ export const ShowMobileMenuForLanguages: Story = {
         label: 'English',
       },
     ],
+    addDefaultMobileMenu: true,
+  },
+  render: createElement,
+};
+
+export const withExternalLinks: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    items: [
+      {
+        itemType: 'link',
+        href: '#',
+        label: 'Internal Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        href: '#',
+        external: true,
+        label: 'External Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+      },
+      {
+        itemType: 'link',
+        icon: 'attach_file',
+        href: '#',
+        label: 'Internal Tool',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'arrow_outward',
+        href: '#',
+        external: true,
+        label: 'External Tool',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+  render: createElement,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const logoLink = canvas.getByTestId('logo-link');
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noreferrer noopener',
+    );
+  },
+};
+
+export const mobileWithExternalLinks: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    items: [
+      {
+        itemType: 'link',
+        href: '#',
+        label: 'Internal Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        href: '#',
+        external: true,
+        label: 'External Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'attach_file',
+        href: '#',
+        label: 'Internal Tool',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'arrow_outward',
+        href: '#',
+        external: true,
+        label: 'External Tool',
+        showItemMode: 'desktop-only',
+      },
+    ],
+    addDefaultMobileMenu: true,
+  },
+  render: createElement,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const logoLink = canvas.getByTestId('logo-link');
+    const headerMobileMenu = canvas.getByTestId('ItemActionDrawerTrigger-0');
+
+    await expect(logoLink).toHaveAttribute('target', '_blank');
+    await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await userEvent.click(headerMobileMenu);
+
+    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
+    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
+    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+
+    await expect(internalNav).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalNav).toHaveAttribute('target', '_blank');
+    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(externalTool).toHaveAttribute('target', '_blank');
+    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
+
+    await expect(internalTool).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool).not.toHaveAttribute(
+      'rel',
+      'noreferrer noopener',
+    );
   },
 };
 
@@ -588,7 +1001,7 @@ export const ShowTitleOnMobile: Story = {
     logo: {
       href: '/link',
     },
-    languages: [
+    secondaryLinks: [
       {
         href: '#',
         label: 'Gaeilge',
@@ -599,4 +1012,5 @@ export const ShowTitleOnMobile: Story = {
       },
     ],
   },
+  render: createElement,
 };

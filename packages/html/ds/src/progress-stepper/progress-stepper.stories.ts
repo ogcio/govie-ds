@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { createIcon } from '../helpers/icons';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { ProgressStepperProps } from './types';
-import { createIcon } from '../helpers/icons';
 
 const meta: Meta<ProgressStepperProps> = {
   title: 'Application/ProgressStepper',

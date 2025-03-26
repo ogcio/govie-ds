@@ -54,7 +54,7 @@ export class Drawer extends BaseComponent<any> {
     this.toggleModalState(true);
   }
 
-  modalEventListener(event: any) {
+  modalEventListener(event: Event) {
     const targetElement = event.target as HTMLElement;
 
     if (targetElement.dataset.element === 'modal') {

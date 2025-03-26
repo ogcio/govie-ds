@@ -1,6 +1,6 @@
 import { render } from '../common/render';
 import html from './header.html?raw';
-import { HeaderProps } from './header.schema';
+import { HeaderProps } from './types';
 
 const standardProps = {
   logo: { href: '/home' },

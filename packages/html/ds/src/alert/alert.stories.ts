@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within } from '@storybook/test';
 import { createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { beautifyHtmlNode } from '../storybook/storybook';
@@ -88,9 +87,6 @@ export const InfoAlert: Story = {
     children: '<p>Content</p>',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const DangerAlert: Story = {
@@ -100,9 +96,6 @@ export const DangerAlert: Story = {
     children: '<p>Content</p>',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const SuccessAlert: Story = {
@@ -112,9 +105,6 @@ export const SuccessAlert: Story = {
     children: '<p>Content</p>',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const WarningAlert: Story = {
@@ -124,9 +114,6 @@ export const WarningAlert: Story = {
     children: '<p>Content</p>',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const isDismissible: Story = {
@@ -137,7 +124,4 @@ export const isDismissible: Story = {
     children: '<p>Content</p>',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };

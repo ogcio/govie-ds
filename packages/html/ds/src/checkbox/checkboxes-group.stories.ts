@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within } from '@storybook/test';
 import { createCheckbox, createFormField } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import type { CheckboxGroupProps } from './types';
@@ -71,9 +70,6 @@ export const Default: Story = {
     },
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const withLabelHintAndError: Story = {
@@ -106,7 +102,4 @@ export const withLabelHintAndError: Story = {
     },
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
