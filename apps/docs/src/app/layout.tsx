@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${lato.variable} ${lato.className} transition duration-500 bg-white h-full`}
+        className={`${lato.variable} ${lato.className} transition duration-500 h-screen flex flex-col bg-white`}
       >
         <a href="#main" className="sr-only">
           Skip to main content
