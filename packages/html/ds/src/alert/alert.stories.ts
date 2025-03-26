@@ -68,7 +68,6 @@ const createAlert = (arguments_: AlertProps) => {
         icon: 'close',
       },
     });
-    icon.className = 'gi-alert-dismiss';
     component.append(icon);
   }
 
