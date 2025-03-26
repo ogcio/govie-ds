@@ -164,7 +164,7 @@ export const Test: Story = {
     }
 
     for (const element of elements) {
-      element.click();
+      await userEvent.click(element);
     }
     const dropdownElements = canvas.getAllByTestId(
       'combobox-dropdown-container',
@@ -189,7 +189,7 @@ export const Test: Story = {
         '.gi-combobox-checkbox input',
       ) as NodeListOf<HTMLInputElement>;
       for (const input of checkboxesInputs) {
-        input.click();
+        await userEvent.click(input);
       }
     }
 

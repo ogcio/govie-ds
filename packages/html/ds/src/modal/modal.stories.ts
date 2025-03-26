@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 import { ButtonProps } from '../button/types';
 import { createButton, createIconButton } from '../helpers/buttons';
 import { createHeading } from '../helpers/typography';
@@ -135,19 +135,19 @@ export const Test: Story = {
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
 
     // Modal Open
-    triggerButtonElement.click();
+    await userEvent.click(triggerButtonElement);
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
 
     // Modal Close using close button
-    iconElement.click();
+    await userEvent.click(iconElement);
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
 
     // Modal Open
-    triggerButtonElement.click();
+    await userEvent.click(triggerButtonElement);
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
 
     // Modal Closed by modal overlay
-    modalElement.click();
+    await userEvent.click(modalElement);
     expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
   },
 };

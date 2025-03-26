@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 import { createButton } from '../helpers/buttons';
 import { createLink } from '../helpers/links';
 import { beautifyHtmlNode } from '../storybook/storybook';
@@ -157,13 +157,13 @@ export const AcceptFlow: Story = {
     const acceptButton = canvas.getByTestId('accept-btn');
     const dismissButton = canvas.getByTestId('dismiss-btn-accepted');
 
-    acceptButton.click();
+    await userEvent.click(acceptButton);
 
     expect(defaultScreen).not.toBeVisible();
     expect(acceptedScreen).toBeVisible();
     expect(rejectedScreen).not.toBeVisible();
 
-    dismissButton.click();
+    await userEvent.click(dismissButton);
 
     expect(defaultScreen).not.toBeVisible();
     expect(acceptedScreen).not.toBeVisible();
