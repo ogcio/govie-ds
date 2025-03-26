@@ -1,0 +1,64 @@
+.gi-text-input-inner {
+  @apply gi-w-full gi-flex gi-items-center gi-relative;
+}
+
+.gi-text-input-container {
+  @apply gi-w-full gi-flex gi-items-center gi-relative;
+}
+
+.gi-text-input-prefix {
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-100 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+}
+.gi-text-input-prefix[data-disabled='true'] {
+  @apply gi-border-gray-400 gi-text-gray-700 gi-cursor-not-allowed;
+}
+
+.gi-text-input-suffix {
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-100 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+}
+.gi-text-input-suffix[data-disabled='true'] {
+  @apply gi-border-gray-400 gi-text-gray-700 gi-cursor-not-allowed;
+}
+
+.gi-text-input {
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-2 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-gray-950;
+}
+.gi-text-input[data-icon-start='true'][data-prefix='true'] {
+  @apply gi-pl-9;
+}
+
+.gi-text-input[data-icon-start='true'] {
+  @apply gi-pl-9;
+}
+
+.gi-text-input[data-icon-end='false'][data-end-element='true'] {
+  @apply gi-pr-10;
+}
+.gi-text-input[data-icon-end='true'][data-end-element='true'] {
+  @apply gi-pr-18;
+}
+.gi-text-input[data-icon-end='true'][data-end-element='false'] {
+  @apply gi-pr-8;
+}
+
+.gi-text-input-icon-end {
+  @apply gi-absolute gi-z-200 gi-right-2;
+}
+
+.gi-text-input-icon-end[data-end-element='true'] {
+  @apply gi-right-11;
+}
+.gi-text-input-icon-end[data-end-element='true'][data-suffix='true'] {
+  @apply gi-right-10;
+}
+
+.gi-text-input-icon-start {
+  @apply gi-absolute gi-z-200 gi-left-2;
+}
+
+.gi-text-input-end-element {
+  @apply gi-flex gi-absolute gi-z-200 gi-right-1;
+}
+.gi-input-half-width {
+  @apply !gi-w-1/2;
+}

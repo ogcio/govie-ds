@@ -52,7 +52,6 @@ import {
   FormField,
   InputRadio,
 } from '@govie-ds/react';
-import { useState } from 'react';
 
 const headerProps: HeaderProps = {
   items: [

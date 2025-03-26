@@ -78,7 +78,7 @@ input[type='text'] {
 .gi-error-state input[type='range'],
 .gi-error-state select,
 .gi-error-state textarea {
-  @apply gi-border-red-600;
+  @apply gi-border-red-600 gi-focus-visible-state-border;
 }
 
 /* End of Error state */

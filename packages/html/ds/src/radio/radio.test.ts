@@ -1,6 +1,6 @@
 import { render } from '../common/render';
 import { Size, Tag } from '../heading/heading.schema';
-import { type InputRadiosProps, InputInputRadioSizeEnum } from './radio.schema';
+import { type RadiosProps, RadioSizeEnum } from './radio.schema';
 import html from './radios-group.html?raw';
 
 const standardProps = {
@@ -38,8 +38,8 @@ const standardProps = {
 };
 
 describe('radios', () => {
-  const renderRadios = render<InputRadiosProps>({
-Input    componentName: 'radios',
+  const renderRadios = render<RadiosProps>({
+    componentName: 'radios',
     macroName: 'govieRadioGroup',
     html,
   });
@@ -124,7 +124,7 @@ Input    componentName: 'radios',
     const classes = 'gi-input-radio-small';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: InputRadioSizeEnum.Small,
+      size: RadioSizeEnum.Small,
     };
 
     const screen = renderRadios(propsWithSmallRadios);
@@ -140,7 +140,7 @@ Input    componentName: 'radios',
     const classes = 'gi-input-radio-large';
     const propsWithSmallRadios = {
       ...standardProps,
-      size: InputRadioSizeEnum.Large,
+      size: RadioSizeEnum.Large,
     };
 
     const screen = renderRadios(propsWithSmallRadios);
