@@ -131,3 +131,4 @@ form-inputpassword
 InputPassword
 clearEnabled
 form-inputtext
+InputRadio
