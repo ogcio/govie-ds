@@ -6,9 +6,11 @@ import Bluesky from './svgs/bluesky.js';
 import Facebook from './svgs/facebook.js';
 import Instagram from './svgs/instagram.js';
 import Linkedin from './svgs/linkedin.js';
+import Placeholder from './svgs/placeholder.js';
 import Threads from './svgs/threads.js';
 import Tiktok from './svgs/tiktok.js';
 import X from './svgs/x.js';
+
 import Youtube from './svgs/youtube.js';
 
 export type IconId = (typeof iconIds)[number];
@@ -133,6 +135,18 @@ export function Icon({
           'gi-block': !inline,
           'gi-inline-block': inline,
           'gi-stroke-gray-700': disabled,
+        })}
+      />
+    );
+  }
+  if (icon === 'placeholder') {
+    return (
+      <Placeholder
+        size={fontSize}
+        className={cn({
+          'gi-block': !inline,
+          'gi-inline-block': inline,
+          'gi-fill-gray-700': disabled,
         })}
       />
     );

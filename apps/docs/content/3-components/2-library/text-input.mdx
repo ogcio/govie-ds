@@ -25,17 +25,14 @@ The `TextInput` component is used to allow users to enter single-line text, with
 <ComponentContainer>
   <FormField
     hint={{
-      text: 'Hint: This is a helpful hint.'
+      text: 'Hint: This is a helpful hint.',
     }}
     label={{
       htmlFor: 'text-input-id',
-      text: 'Input Label'
+      text: 'Input Label',
     }}
   >
-    <TextInput
-      data-testid="text-input-id"
-      id="text-input-id"
-    />
+    <TextInput data-testid="text-input-id" id="text-input-id" />
   </FormField>
 </ComponentContainer>
 
@@ -77,7 +74,75 @@ The `TextInput` component is used to allow users to enter single-line text, with
   </TabPanel>
 </Tabs>
 
+### With Reset
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-reset-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput clearEnabled data-testid="text-reset-id" id="text-reset-id" />
+  </FormField>
+</ComponentContainer>
+
+### With Prefix/Suffix
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+      prefix="€"
+      suffix="kg"
+    />
+  </FormField>
+</ComponentContainer>
+
+### With Icons
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+      iconStart="add_circle"
+      iconEnd="add_circle"
+    />
+  </FormField>
+</ComponentContainer>
+
 ## Usage
+
+#### Features:
+
+- Includes a built-in reset button to clear the input field.
+- Maintains the same styling and customisation options as the standard input component.
+- Ideal for search fields, dynamic form inputs, or scenarios requiring frequent text updates.
+
+### clearEnabled
+
+The `clearEnabled` prop enhances user experience by displaying a reset (clear) button inside the input field. When enabled, users can quickly clear the input value with a single click. This is particularly useful in forms where users frequently modify or re-enter information. It ensures fast interaction without requiring manual deletion.
 
 ### Best Practices
 
@@ -101,4 +166,3 @@ The `TextInput` component is used to allow users to enter single-line text, with
 ## Status
 
 <ComponentStatusBlock componentId="text-input" />
-
