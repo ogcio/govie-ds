@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { createIcon } from '../helpers/icons';
 import { createDrawer } from '../helpers/modal';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { HeaderItem, HeaderProps } from './types';
+import { HeaderItem, HeaderItemMode, HeaderProps } from './types';
 
 const meta: Meta<HeaderProps> = {
   title: 'Layout/Header',
@@ -24,25 +24,12 @@ const buildDefaultMobileMenu = (
 
   for (const item of items) {
     if (item.itemType === 'link') {
-      const li = document.createElement('li');
-
-      const listItem = document.createElement('a');
-      listItem.href = item.href!;
-      listItem.className = 'gi-list-item';
-      if (item.external) {
-        listItem.target = '_blank';
-        listItem.rel = 'noreferrer noopener';
-      }
-
-      const span = document.createElement('span');
-      span.className = 'gi-text-sm gi-ml-1';
-      span.textContent = item.label!;
-
-      listItem.append(span);
-      li.append(listItem);
-
-      mobileHeaderMenuItems.append(li);
+      createListItem(item);
     }
+  }
+
+  for (const item of secondaryLinks) {
+    createListItem(item);
   }
 
   const mobileMenu: HeaderItem = {
@@ -55,6 +42,34 @@ const buildDefaultMobileMenu = (
   };
 
   return [mobileMenu, ...items];
+
+  function createListItem(
+    item:
+      | HeaderItem
+      | {
+          href: string;
+          label: string;
+        },
+  ) {
+    const li = document.createElement('li');
+
+    const listItem = document.createElement('a');
+    listItem.href = item.href!;
+    listItem.className = 'gi-list-item';
+    if ('external' in item && item.external) {
+      listItem.target = '_blank';
+      listItem.rel = 'noreferrer noopener';
+    }
+
+    const span = document.createElement('span');
+    span.className = 'gi-text-sm gi-ml-1';
+    span.textContent = item.label!;
+
+    listItem.append(span);
+    li.append(listItem);
+
+    mobileHeaderMenuItems.append(li);
+  }
 };
 
 const createHeader = (arguments_: HeaderProps) => {
@@ -1000,22 +1015,25 @@ export const mobileWithExternalLinks: Story = {
 
     await userEvent.click(headerMobileMenu);
 
-    const internalNav = canvas.getByText('Internal Nav');
-    const externalNav = canvas.getByText('External Nav');
-    const externalTool = canvas.getByText('External Tool');
-    const internalTool = canvas.getByText('Internal Tool');
+    const internalNav = await canvas.findAllByText('Internal Nav');
+    const externalNav = await canvas.findAllByText('External Nav');
+    const externalTool = await canvas.findAllByText('External Tool');
+    const internalTool = await canvas.findAllByText('Internal Tool');
 
-    await expect(internalNav).not.toHaveAttribute('target', '_blank');
-    await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
+    await expect(internalNav[0]).not.toHaveAttribute('target', '_blank');
+    await expect(internalNav[0]).not.toHaveAttribute(
+      'rel',
+      'noreferrer noopener',
+    );
 
-    await expect(externalNav).toHaveAttribute('target', '_blank');
-    await expect(externalNav).toHaveAttribute('rel', 'noreferrer noopener');
+    await expect(externalNav[0]).toHaveAttribute('target', '_blank');
+    await expect(externalNav[0]).toHaveAttribute('rel', 'noreferrer noopener');
 
-    await expect(externalTool).toHaveAttribute('target', '_blank');
-    await expect(externalTool).toHaveAttribute('rel', 'noreferrer noopener');
+    await expect(externalTool[0]).toHaveAttribute('target', '_blank');
+    await expect(externalTool[0]).toHaveAttribute('rel', 'noreferrer noopener');
 
-    await expect(internalTool).not.toHaveAttribute('target', '_blank');
-    await expect(internalTool).not.toHaveAttribute(
+    await expect(internalTool[0]).not.toHaveAttribute('target', '_blank');
+    await expect(internalTool[0]).not.toHaveAttribute(
       'rel',
       'noreferrer noopener',
     );
