@@ -1,6 +1,35 @@
 # Changelog
 
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.1.1...react-lib-v1.2.0) (2025-03-26)
+
+
+### Features
+
+* Adding number indicator on Progress Stepper component ([#486](https://github.com/ogcio/govie-ds/issues/486)) ([23297b7](https://github.com/ogcio/govie-ds/commit/23297b7b4befc216ef76488e103d965c98b45fcf))
+* Modal component sync with Figma ([#480](https://github.com/ogcio/govie-ds/issues/480)) ([d83ff0c](https://github.com/ogcio/govie-ds/commit/d83ff0cb6969c05a5e9210b4b01afd2b186e5ef8))
+* Text Input sync with Figma ([#482](https://github.com/ogcio/govie-ds/issues/482)) ([a206fb0](https://github.com/ogcio/govie-ds/commit/a206fb0f2bc58b9ad9686eacd050d4c58854a4b8))
+* update footer with slots ([#477](https://github.com/ogcio/govie-ds/issues/477)) ([2cd79bd](https://github.com/ogcio/govie-ds/commit/2cd79bd56bfd9df2a36bab1762e2334df9ee1c92))
+
+
+### Bug Fixes
+
+* table component cell alignment ([#485](https://github.com/ogcio/govie-ds/issues/485)) ([f6a0678](https://github.com/ogcio/govie-ds/commit/f6a06784f4a727fa1b7f318d214078e0030bcd38))
+* update disabled property select and select item  ([#488](https://github.com/ogcio/govie-ds/issues/488)) ([46b3c24](https://github.com/ogcio/govie-ds/commit/46b3c24e6fc58b3c3c3f9dad4b1954bc00718afd))
+* update dropdown item with additional props ([#489](https://github.com/ogcio/govie-ds/issues/489)) ([46862c3](https://github.com/ogcio/govie-ds/commit/46862c36c432cf4eb50cc4fd74d0e3a80f589370))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.2.0
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.2
+    * @govie-ds/prettier-config bumped to 1.0.3
+    * @govie-ds/tailwind bumped to 1.2.0
+    * @govie-ds/theme-govie bumped to 1.2.0
+
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.1.0...react-lib-v1.1.1) (2025-03-18)
 
 
