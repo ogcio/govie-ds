@@ -18,7 +18,6 @@ import {
   ModalFooter,
   Button,
   CookieBanner,
-  TypeEnum,
   List,
   Combobox,
   Chip,
@@ -282,7 +281,7 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={TypeEnum.Bullet} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
@@ -342,6 +341,14 @@ export default function Home() {
             <StepItem label="Step 3">Here is the Step 3</StepItem>
             <StepItem label="Step 4">Here is the Step 4</StepItem>
             <StepItem label="Step 5">Here is the Step 5</StepItem>
+          </ProgressStepper>
+
+          <br />
+          <ProgressStepper indicator="number" currentStepIndex={2}>
+            <StepItem label="Step 1" />
+            <StepItem label="Step 2" />
+            <StepItem label="Step 3" />
+            <StepItem label="Step 4" />
           </ProgressStepper>
 
           <br />

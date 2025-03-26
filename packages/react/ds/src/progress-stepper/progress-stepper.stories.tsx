@@ -45,6 +45,21 @@ export const Default: Story = {
   },
 };
 
+export const WithNumbersIndicator: Story = {
+  args: {
+    currentStepIndex: 2,
+    indicator: 'number',
+    children: [
+      <StepItem label="Start Your Application" />,
+      <StepItem label="Personal Information" />,
+      <StepItem label="Eligibility Check" />,
+      <StepItem label="Documents Submission" />,
+      <StepItem label="Review" />,
+      <StepItem label="Complete & Submit" />,
+    ],
+  },
+};
+
 export const WithStepContent: Story = {
   args: {
     children: [],
@@ -88,7 +103,12 @@ export const WithStepContent: Story = {
             </Stack>
           </StepItem>
         </ProgressStepper>
-        <Stack direction={'row'} gap={3} className="gi-pt-3">
+        <Stack
+          direction={'row'}
+          gap={3}
+          className="gi-pt-3"
+          itemsDistribution="start"
+        >
           {currentIndex > 0 && (
             <Button variant="secondary" onClick={handlePreviousButton}>
               Previous
@@ -131,7 +151,12 @@ export const WithContentStepVertical: Story = {
     const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
     const PreviousNextContainerVertical = () => (
-      <Stack direction="row" gap={3} className="gi-pt-5">
+      <Stack
+        direction="row"
+        gap={3}
+        className="gi-pt-5"
+        itemsDistribution="start"
+      >
         {currentIndex > 0 && (
           <Button variant="secondary" onClick={handlePreviousButton}>
             Previous
@@ -178,7 +203,12 @@ export const WithFormContentStepVertical: Story = {
     const handleNextButton = () => setCurrentIndex(() => currentIndex + 1);
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
     const PreviousNextContainerVertical = () => (
-      <Stack direction="row" gap={3} className="gi-pt-5">
+      <Stack
+        direction="row"
+        gap={3}
+        className="gi-pt-5"
+        itemsDistribution="start"
+      >
         {currentIndex > 0 && (
           <Button variant="secondary" onClick={handlePreviousButton}>
             Previous
