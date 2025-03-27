@@ -1,51 +1,49 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './details.html?raw';
-import { DetailsProps } from './details.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { DetailsProps } from './types';
 
-const path = import.meta.url.split('/details')[0];
-
-const macro = { name: 'govieDetails', html, path };
-
-const Details = renderComponent<DetailsProps>(macro);
-
-const meta = {
-  component: Details,
+const meta: Meta<DetailsProps> = {
   title: 'Typography/Details',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component:
-          'Make a page easier to scan by letting users reveal more detailed information only if they need it.',
-      },
-    },
-  },
-  argTypes: {
-    label: {
-      control: 'text',
-      description: 'The label text displayed in the summary of the details.',
-    },
-    name: {
-      control: 'text',
-      description:
-        'The name attribute specifies a group name — give multiple "details" elements the same name value to group them. Only one of the grouped "details" elements can be open at a time — opening one will cause another to close',
-    },
-    children: {
-      control: 'text',
-      description:
-        'The content inside the details element, displayed when the element is open.',
-    },
-    startsOpen: {
-      control: 'boolean',
-      description:
-        'The details are shown when this attribute exists, or hidden when this attribute is absent. By default this attribute is absent which means the details are not visible at the first time.',
-    },
-  },
-} satisfies Meta<typeof Details>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<DetailsProps>;
+
+const createDetails = (arguments_: DetailsProps) => {
+  const details = document.createElement('details');
+  details.className = 'gi-details';
+  details.name = arguments_.name!;
+  details.open = arguments_.open || false;
+  details.dataset.module = 'gi-details';
+  details.dataset.testid = 'govie-details';
+  details.ariaExpanded = arguments_.open ? 'true' : 'false';
+
+  const summary = document.createElement('summary');
+  summary.className = 'gi-details-summary';
+  summary.dataset.testid = 'govie-details-summary';
+  summary.role = 'button';
+  summary.ariaExpanded = arguments_.open ? 'true' : 'false';
+
+  const summaryText = document.createElement('span');
+  summaryText.className = 'gi-details-summary-text';
+  summaryText.textContent = arguments_.label;
+  summary.append(summaryText);
+
+  const detailsContent = document.createElement('div');
+  detailsContent.id = 'details-content';
+  detailsContent.className = 'gi-details-text';
+  detailsContent.ariaHidden = arguments_.open ? 'false' : 'true';
+  detailsContent.textContent = arguments_.content || '';
+
+  details.append(summary, detailsContent);
+
+  return details;
+};
+
+const createElement = (arguments_: DetailsProps) => {
+  const component = createDetails(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   parameters: {
@@ -53,9 +51,10 @@ export const Default: Story = {
   },
   args: {
     label: 'Help with Nationality',
-    children:
+    content:
       'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.',
   },
+  render: createElement,
 };
 
 export const WithMultipleDetailsGrouped: Story = {
@@ -63,7 +62,7 @@ export const WithMultipleDetailsGrouped: Story = {
     layout: 'fullscreen',
   },
   args: {
-    children: '',
+    content: '',
     label: '',
   },
   render: () => `
@@ -107,8 +106,9 @@ export const StartsOpen: Story = {
   },
   args: {
     label: 'This Details Starts Open',
-    children: `This details component is open by default when the page loads. Use the
+    content: `This details component is open by default when the page loads. Use the
     "startsOpen" attribute to control the initial state.`,
-    startsOpen: true,
+    open: true,
   },
+  render: createElement,
 };

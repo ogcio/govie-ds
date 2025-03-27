@@ -33,15 +33,14 @@ export class Radio extends BaseComponent<RadioOptions> {
     this.renderConditionalInput = () => {
       for (const radio of this.getAllRadioInputs) {
         const isChecked = (radio as HTMLInputElement).checked;
-        const id = (radio as HTMLInputElement).id;
+        const dataElement = (radio as HTMLInputElement).dataset.element;
         const getConditionalContainer = document.querySelector(
-          `div[data-conditional-container=${id}]`,
+          `div[data-conditional-container=${dataElement}]`,
         );
         const getConditionalDivider = document.querySelector(
-          `div[data-conditional-divider=${id}]`,
+          `div[data-conditional-divider=${dataElement}]`,
         );
         const { hasConditionalInput } = radio.dataset;
-
         if (isChecked) {
           radio.setAttribute('aria-checked', 'true');
           getConditionalContainer?.classList.remove('gi-hidden');

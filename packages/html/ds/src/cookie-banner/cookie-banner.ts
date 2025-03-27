@@ -71,13 +71,13 @@ export class CookieBanner extends BaseComponent<CookieBannerOptions> {
   }
 
   initComponent() {
-    this.acceptButton.addEventListener('click', this.openAcceptedContainer);
-    this.rejectButton.addEventListener('click', this.openRejectedContainer);
-    this.dismissButtonAccepted.addEventListener(
+    this.acceptButton?.addEventListener('click', this.openAcceptedContainer);
+    this.rejectButton?.addEventListener('click', this.openRejectedContainer);
+    this.dismissButtonAccepted?.addEventListener(
       'click',
       this.closeCookieBanner,
     );
-    this.dismissButtonRejected.addEventListener(
+    this.dismissButtonRejected?.addEventListener(
       'click',
       this.closeCookieBanner,
     );

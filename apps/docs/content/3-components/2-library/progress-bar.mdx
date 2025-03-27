@@ -29,10 +29,9 @@ Use the progress bar component to visually represent the progress of a task or o
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
-  <TabPanel value="tab11">        
+  <TabPanel value="tab11">
     ```html
       <div class="gi-progress-bar-container">
         <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-labelledby="progress-bar-:S1:" aria-label="Progress bar" class="gi-progress-bar gi-h-2">
@@ -40,11 +39,6 @@ Use the progress bar component to visually represent the progress of a task or o
           </div>
         </div>
       </div>
-    ```
-  </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-      {{ govieProgressBar({"value": 50 }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -66,7 +60,6 @@ Use the progress bar component to visually represent the progress of a task or o
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">        
@@ -77,11 +70,6 @@ Use the progress bar component to visually represent the progress of a task or o
       </div>
       <span>Loading...</span>
     </div>
-    ```
-  </TabPanel>
-  <TabPanel value="tab22">        
-    ```html
-      {{ govieProgressBar({"label": "Loading...", "isIndeterminate": true }) }}
     ```
   </TabPanel>
   <TabPanel value="tab23">

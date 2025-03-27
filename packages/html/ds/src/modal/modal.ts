@@ -11,7 +11,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   closeIcon: Element | null;
   position: string;
   isOpen: boolean;
-  triggerButtonContainer: Element | null;
+  triggerButton: Element | null;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -20,8 +20,8 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modalEventListener = this.modalEventListener.bind(this);
     this.closeButtonListener = this.closeButtonListener.bind(this);
 
-    this.triggerButtonContainer = this.query.getByElement({
-      name: 'trigger-button-container',
+    this.triggerButton = this.query.getByElement({
+      name: 'trigger-button',
     });
     this.modal = this.query.getByElement({ name: 'modal' });
     this.closeIcon = this.query.getByElement({
@@ -29,7 +29,7 @@ export class Modal extends BaseComponent<ModalOptions> {
     }).firstElementChild;
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
-    this.isOpen = !!(this.modal as HTMLElement).dataset?.open;
+    this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
 
     this.initModalState();
   }
@@ -67,7 +67,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   initComponent() {
-    this.triggerButtonContainer?.addEventListener(
+    this.triggerButton?.addEventListener(
       'click',
       this.triggerButtonEventLister,
     );
@@ -76,7 +76,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   destroyComponent(): void {
-    this.triggerButtonContainer?.removeEventListener(
+    this.triggerButton?.removeEventListener(
       'click',
       this.triggerButtonEventLister,
     );

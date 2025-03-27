@@ -35,7 +35,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -223,32 +222,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```
 
   </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieHeader({
-        "title":"Application title"
-        "languages":[{ "href": "/", "label": "Gaeilge" }]
-        "navLinks":[{ "href": "/", "label": "News" },{ "href": "/", "label": "Departments" },{ "href": "/", "label": "Services" }]
-        "tools":{
-            "search": {
-                "label": "Search",
-                "action": "/search-page",
-            },
-            "items": [
-                {
-                    "href": "/item1",
-                    "label": "Home",
-                    "icon": "home",
-                },
-            ],
-            "menu": {
-                "label": "Menu"
-            }
-        }
-        })
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```html
     import { Header, HeaderProps, HeaderSearch } from '@govie-ds/react';
@@ -324,7 +297,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">        
@@ -343,11 +315,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     ```
 
-  </TabPanel>
-  <TabPanel value="tab22">        
-    ```html
-    {{ govieHeader({"title": "Application title"}) }}
-    ```
   </TabPanel>
   <TabPanel value="tab23">
     ```html
@@ -384,7 +351,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">        
@@ -422,26 +388,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     ```
 
-  </TabPanel>
-  <TabPanel value="tab32">        
-    ```html
-    {{ govieHeader({
-        "navLinks": [
-            { 
-                "href": "/", 
-                "label": "News" 
-            },
-            { 
-                "href": "/", 
-                "label": "Departments" 
-            },
-            { 
-                "href": "/", 
-                "label": "Services"
-            }
-        ]}) 
-    }}
-    ```
   </TabPanel>
   <TabPanel value="tab33">
     ```html
@@ -530,7 +476,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 <Tabs id="tab4">
   <TabList>
     <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab42">Macro</TabItem>
     <TabItem value="tab43">React</TabItem>
   </TabList>
   <TabPanel value="tab41">        
@@ -560,18 +505,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     </header>
     ```
 
-  </TabPanel>
-  <TabPanel value="tab42">        
-    ```html
-    {{ govieHeader({
-        "languages": [
-            { 
-                "href": "/", 
-                "label": "Gaeilge" 
-            }
-        ]}) 
-    }}
-    ```
   </TabPanel>
   <TabPanel value="tab43">
     ```html
@@ -638,7 +571,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 <Tabs id="tab5">
   <TabList>
     <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab52">Macro</TabItem>
     <TabItem value="tab53">React</TabItem>
   </TabList>
   <TabPanel value="tab51">        
@@ -797,37 +729,8 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     ```
 
   </TabPanel>
-  <TabPanel value="tab52">        
-    ```html
-    {{ govieHeader(
-        tools:{
-            search: {
-                label: 'Search'
-                action: '/search-page',
-            },
-            items: [
-                {
-                    href: '/item1',
-                    label: 'Home',
-                    icon: 'home',
-                },
-                {
-                    href: '#',
-                    label: 'Faq',
-                    icon: 'info',
-                    keepOnMobile: true,
-                    slot:  "<ul class='gi-list-bullet'><li><a href='#' class='gi-link gi-link-sm'>Citizens Information - Services and Rights</a></li><li><a href='#' class='gi-link gi-link-sm'>Revenue - Taxes and Payments</a></li><li><a href='#' class='gi-link gi-link-sm'>Department of Social Protection</a></li></ul>",
-                },
-            ],
-            menu: {
-                label: 'Menu'
-            }
-        }) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab53">
-    ```react
+    ```jsx
     import { Header, HeaderSearch } from '@govie-ds/react';
 
     <Header

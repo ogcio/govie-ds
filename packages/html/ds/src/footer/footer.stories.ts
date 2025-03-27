@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { FooterProps } from './footer.schema';
-import { getLogoContaier } from './footer.util';
+import { getLogoContainer } from './footer.util';
 
 const meta: Meta<FooterProps> = {
   title: 'Layout/Footer',
@@ -55,10 +55,10 @@ const createFooter = (arguments_: FooterProps) => {
 
     secondary.append(secondaryContent);
 
-    secondary.append(getLogoContaier());
+    secondary.append(getLogoContainer());
     container.append(secondary);
   } else {
-    container.append(getLogoContaier('gi-footer-logo md:gi-ml-auto'));
+    container.append(getLogoContainer('gi-footer-logo md:gi-ml-auto'));
   }
 
   if (arguments_.utilitySlot) {
@@ -166,10 +166,10 @@ export const CompleteFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Events</a>
       </div>
       <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
-        <img src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
+        <img alt="X logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
+        <img alt="Facebook logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
+        <img alt="Bluesky logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
+        <img alt="Linkedin logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
       </div>`,
     utilitySlot: `
     <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
