@@ -132,3 +132,5 @@ InputPassword
 clearEnabled
 form-inputtext
 InputRadio
+clearEnabled
+inputcheckbox
