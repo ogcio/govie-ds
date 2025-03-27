@@ -184,6 +184,66 @@ libraries:
   </TabPanel>
 </Tabs>
 
+### Table Props
+
+- **children** (required):  
+  Nodes representing the full content of the table, including `TableHead`, `TableBody`, and optionally `TableFoot`.
+
+- Inherits all props from `HTMLAttributes<HTMLTableElement>`.
+
+### TableHead Props
+
+- **children** (required):  
+  A set of `TableRow` components containing header cells (`TableHeader`).
+
+### TableBody Props
+
+- **children** (required):  
+  A set of `TableRow` components containing data cells (`TableData`).
+
+### TableFoot Props
+
+- **children** (required):  
+  A `TableRow` (or multiple) used for summarizing data or adding footer content.
+
+### TableRow Props
+
+- **children** (required):  
+  A collection of `TableHeader` or `TableData` elements within a row.
+
+- Inherits all props from `HTMLAttributes<HTMLTableRowElement>`.
+
+### TableHeader Props
+
+- **children** (required):  
+  Content of the table header cell.
+
+- **align** (optional):  
+  Controls horizontal alignment. Accepts:
+
+  - `'left'`
+  - `'center'`
+  - `'right'`
+
+- Inherits all props from `ThHTMLAttributes<HTMLTableCellElement>`.
+
+### TableData Props
+
+- **children** (required):  
+  Content of the table data cell.
+
+- **align** (optional):  
+  Controls horizontal alignment. Accepts:
+
+  - `'left'`
+  - `'center'`
+  - `'right'`
+
+- **colSpan** (optional):  
+  Number of columns the cell should span across.
+
+- Inherits all props from `TdHTMLAttributes<HTMLTableCellElement>`.
+
 ### Best Practices
 
 - **Provide clear headings**: Use descriptive table headers to clearly communicate the data presented in each column.
