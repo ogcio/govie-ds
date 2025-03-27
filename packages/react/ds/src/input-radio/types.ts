@@ -16,9 +16,3 @@ export type InputRadioProps = {
   size?: InputRadioSizeType;
   conditionalInput?: InputTextProps;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
-
-export type RadioGroupProps = {
-  groupId: string;
-  inline?: boolean;
-  onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
-};

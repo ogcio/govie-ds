@@ -230,12 +230,12 @@ export const AllStates: Story = {
   render: () =>
     `<div class="gi-flex gi-gap-4 gi-flex-col">
       <div class="gi-checkbox-group-checkboxes-container">
-        <div class="gi-checkbox-container">
+        <div class="gi-input-checkbox-container">
           <input
             name="Default"
             data-element="checkbox0"
             id="default-checkbox-0"
-            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
+            class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-input-checkbox"
             type="checkbox"
             value="default"
           />
@@ -245,12 +245,12 @@ export const AllStates: Story = {
     <div class="gi-checkbox-group-container">
       <fieldset>
         <div class="gi-checkbox-group-checkboxes-container">
-          <div class="gi-checkbox-container">
+          <div class="gi-input-checkbox-container">
             <input
               name="Hover"
               data-element="checkbox0"
               id="hover-checkbox-0"
-              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input pseudo-hover"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-input-checkbox pseudo-hover"
               type="checkbox"
               value="hover"
             />
@@ -263,12 +263,12 @@ export const AllStates: Story = {
     <div class="gi-checkbox-group-container">
       <fieldset>
         <div class="gi-checkbox-group-checkboxes-container">
-          <div class="gi-checkbox-container">
+          <div class="gi-input-checkbox-container">
             <input
               name="Focus"
               data-element="checkbox0"
               id="focus-checkbox-0"
-              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input pseudo-focus"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-input-checkbox pseudo-focus"
               type="checkbox"
               value="focus"
             />
@@ -281,12 +281,12 @@ export const AllStates: Story = {
     <div class="gi-checkbox-group-container">
       <fieldset>
         <div class="gi-checkbox-group-checkboxes-container">
-          <div class="gi-checkbox-container">
+          <div class="gi-input-checkbox-container">
             <input
               name="Disabled"
               data-element="checkbox0"
               id="disabled-checkbox-0"
-              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-checkbox-input"
+              class="gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5 gi-input-checkbox"
               disabled
               type="checkbox"
               value="disabled"

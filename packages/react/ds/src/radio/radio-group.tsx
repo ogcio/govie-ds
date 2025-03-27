@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import type { RadioGroupProps } from './types.js';
+import type { RadioGroupProps } from '../input-radio/types.js';
 
 export const RadioGroup: React.FC<React.PropsWithChildren<RadioGroupProps>> = ({
   groupId,

@@ -1,6 +1,7 @@
 'use client';
 
 import { useId } from 'react';
+import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
 import type { InputTextProps } from '../input-text/type.js';
@@ -70,10 +71,16 @@ export const InputRadio: React.FC<InputRadioProps> = ({
       {(hint || conditionalInput) && (
         <div className="gi-radio-conditional-divider-container">
           <div
-            className={`${addConditionalDivider(conditionalInput, checked)} ${getRadioWidth(size)}`}
+            className={cn(
+              addConditionalDivider(conditionalInput, checked),
+              getRadioWidth(size),
+            )}
           >
             <div
-              className={`gi-input-radio-conditional-divider-border-container ${getRadioWidth(size)}`}
+              className={cn(
+                'gi-input-radio-conditional-divider-border-container',
+                getRadioWidth(size),
+              )}
             >
               <div className="gi-input-radio-conditional-divider-border" />
             </div>

@@ -1,36 +1,36 @@
-.gi-checkbox-input {
+.gi-input-checkbox {
   @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
 }
 
-.gi-checkbox-small {
-  @apply gi-checkbox-input gi-w-6 gi-h-6 checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1;
+.gi-input-checkbox-small {
+  @apply gi-input-checkbox gi-w-6 gi-h-6 checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1;
 }
 
-.gi-checkbox-medium {
-  @apply gi-checkbox-input gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5;
+.gi-input-checkbox-medium {
+  @apply gi-input-checkbox gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5;
 }
 
-.gi-checkbox-large {
-  @apply gi-checkbox-input gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
+.gi-input-checkbox-large {
+  @apply gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
 }
 
-.gi-checkbox-small ~ label {
+.gi-input-checkbox-small ~ label {
   @apply gi-cursor-pointer gi-text-sm;
 }
 
-.gi-checkbox-medium ~ label {
+.gi-input-checkbox-medium ~ label {
   @apply gi-cursor-pointer gi-text-md;
 }
 
-.gi-checkbox-large ~ label {
+.gi-input-checkbox-large ~ label {
   @apply gi-cursor-pointer gi-text-lg;
 }
-.gi-checkbox-container {
+.gi-input-checkbox-container {
   @apply gi-gap-4 gi-flex gi-items-center;
 }
-.gi-checkbox-hint-container {
+.gi-input-checkbox-hint-container {
   @apply gi-flex gi-gap-4;
 }
-.gi-checkbox-hint-container > div {
+.gi-input-checkbox-hint-container > div {
   @apply gi-h-auto;
 }

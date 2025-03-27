@@ -78,7 +78,7 @@ export {
   type ProgressBarProps,
 } from './progress-bar/progress-bar.js';
 export * from './progress-stepper/progress-stepper.js';
-export { RadioGroup } from './input-radio/radio-group.js';
+export { RadioGroup } from './radio/radio-group.js';
 export { Radio } from './radio/radio.js';
 export type { RadioGroupProps, RadioProps } from './radio/types.js';
 export {
@@ -142,3 +142,9 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
+export { InputCheckbox } from './input-checkbox/input-checkbox.js';
+export {
+  InputCheckboxSizeEnum,
+  type InputCheckboxSizeEnumType,
+  type InputCheckboxProps,
+} from './input-checkbox/types.js';
