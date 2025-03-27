@@ -12,6 +12,7 @@ type Story = StoryObj<ProgressBarProps>;
 
 const createProgressBar = (arguments_: ProgressBarProps) => {
   const progressBarContainer = document.createElement('div');
+  progressBarContainer.className = 'gi-progress-bar-container';
 
   const progressBar = document.createElement('div');
   progressBar.role = 'progressbar';

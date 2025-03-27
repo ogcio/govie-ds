@@ -17,12 +17,12 @@ const createStack = (
   let dividerClasses = '';
 
   const direction = arguments_.direction || 'column';
-  const itemsAlignment = arguments_.itemsAlignment || 'start';
-  const itemsDistribution = arguments_.itemsDistribution || 'start';
-  const gap = arguments_.gap || 2;
+  const itemsAlignment = arguments_.itemsAlignment || 'stretch';
+  const itemsDistribution = arguments_.itemsDistribution || 'stretch';
+  const gap = arguments_.gap || 0;
   const hasDivider = arguments_.hasDivider || false;
   const wrap = arguments_.wrap || false;
-  const fixedHeight = arguments_.fixedHeight || '300px';
+  const fixedHeight = arguments_.fixedHeight || '100%';
 
   if (direction) {
     if (typeof direction === 'string') {
