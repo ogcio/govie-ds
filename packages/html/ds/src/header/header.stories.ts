@@ -199,6 +199,7 @@ const createHeader = (arguments_: HeaderProps) => {
         label.id = `ItemActionLabel-${index}`;
 
         const input = document.createElement('input');
+        label.append(input);
         input.id = `ItemActionTrigger-${index}`;
         input.type = 'checkbox';
         input.dataset.index = `${index}`;
@@ -226,12 +227,13 @@ const createHeader = (arguments_: HeaderProps) => {
           document.body.append(script);
         }
 
-        const span = document.createElement('span');
-        span.className = 'label';
-        span.textContent = item.label || '';
+        if (item.label) {
+          const span = document.createElement('span');
+          span.className = 'label';
+          span.textContent = item.label;
+          label.append(span);
+        }
 
-        label.append(input);
-        label.append(span);
         if (item.icon) {
           const icon = createIcon({ icon: item.icon });
           icon.id = `ItemIconActionTrigger-${index}`;
