@@ -119,22 +119,22 @@ const createStack = (
     itemsGapClasses = `gi-gap-${gap}`;
   } else if (gap) {
     if (gap.base) {
-      itemsGapClasses += `gi-gap-${gap.base}`;
+      itemsGapClasses += `gi-gap-${gap.base} `;
     }
     if (gap.sm) {
-      itemsGapClasses += `sm:gi-gap-${gap.sm}`;
+      itemsGapClasses += `sm:gi-gap-${gap.sm} `;
     }
     if (gap.md) {
-      itemsGapClasses += `md:gi-gap-${gap.md}`;
+      itemsGapClasses += `md:gi-gap-${gap.md} `;
     }
     if (gap.lg) {
-      itemsGapClasses += `lg:gi-gap-${gap.lg}`;
+      itemsGapClasses += `lg:gi-gap-${gap.lg} `;
     }
     if (gap.xl) {
-      itemsGapClasses += `xl:gi-gap-${gap.xl}`;
+      itemsGapClasses += `xl:gi-gap-${gap.xl} `;
     }
     if (gap['2xl']) {
-      itemsGapClasses += `2xl:gi-gap-${gap['2xl']}`;
+      itemsGapClasses += `2xl:gi-gap-${gap['2xl']} `;
     }
   }
 
