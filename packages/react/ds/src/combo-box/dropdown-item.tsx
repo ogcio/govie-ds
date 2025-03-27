@@ -4,11 +4,12 @@ import { Checkbox } from '../checkbox/checkbox.js';
 import { CheckboxSizeEnum } from '../checkbox/types.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { InputText } from '../input-text/input-text.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
-import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utils.js';
 import { DropdownItemProps } from './types.js';
+
 export const DropdownItem = ({
   children,
   noSearch,
@@ -94,7 +95,7 @@ export const DropdownItem = ({
         {!noSearch && (
           <div className="gi-combobox-search">
             {/* TODO translation for "Search" */}
-            <TextInput
+            <InputText
               placeholder="Search"
               className="gi-combobox-search-input"
               value={searchInput}

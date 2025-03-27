@@ -142,3 +142,9 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
+export { InputCheckbox } from './input-checkbox/input-checkbox.js';
+export {
+  InputCheckboxSizeEnum,
+  type InputCheckboxSizeEnumType,
+  type InputCheckboxProps,
+} from './input-checkbox/types.js';
