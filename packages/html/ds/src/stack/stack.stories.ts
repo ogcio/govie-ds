@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within } from '@storybook/test';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { StackProps } from './types';
 
@@ -17,7 +16,14 @@ const createStack = (
   let directionClasses = '';
   let dividerClasses = '';
 
-  const direction = arguments_.direction;
+  const direction = arguments_.direction || 'column';
+  const itemsAlignment = arguments_.itemsAlignment || 'start';
+  const itemsDistribution = arguments_.itemsDistribution || 'start';
+  const gap = arguments_.gap || 2;
+  const hasDivider = arguments_.hasDivider || false;
+  const wrap = arguments_.wrap || false;
+  const fixedHeight = arguments_.fixedHeight || '300px';
+
   if (direction) {
     if (typeof direction === 'string') {
       if (direction == 'row') {
@@ -109,54 +115,54 @@ const createStack = (
   }
 
   let itemsGapClasses = '';
-  if (typeof arguments_.gap === 'number') {
-    itemsGapClasses = `gi-gap-${arguments_.gap}`;
-  } else if (arguments_.gap) {
-    if (arguments_.gap.base) {
-      itemsGapClasses += `gi-gap-${arguments_.gap.base}`;
+  if (typeof gap === 'number') {
+    itemsGapClasses = `gi-gap-${gap}`;
+  } else if (gap) {
+    if (gap.base) {
+      itemsGapClasses += `gi-gap-${gap.base}`;
     }
-    if (arguments_.gap.sm) {
-      itemsGapClasses += `sm:gi-gap-${arguments_.gap.sm}`;
+    if (gap.sm) {
+      itemsGapClasses += `sm:gi-gap-${gap.sm}`;
     }
-    if (arguments_.gap.md) {
-      itemsGapClasses += `md:gi-gap-${arguments_.gap.md}`;
+    if (gap.md) {
+      itemsGapClasses += `md:gi-gap-${gap.md}`;
     }
-    if (arguments_.gap.lg) {
-      itemsGapClasses += `lg:gi-gap-${arguments_.gap.lg}`;
+    if (gap.lg) {
+      itemsGapClasses += `lg:gi-gap-${gap.lg}`;
     }
-    if (arguments_.gap.xl) {
-      itemsGapClasses += `xl:gi-gap-${arguments_.gap.xl}`;
+    if (gap.xl) {
+      itemsGapClasses += `xl:gi-gap-${gap.xl}`;
     }
-    if (arguments_.gap['2xl']) {
-      itemsGapClasses += `2xl:gi-gap-${arguments_.gap['2xl']}`;
+    if (gap['2xl']) {
+      itemsGapClasses += `2xl:gi-gap-${gap['2xl']}`;
     }
   }
 
   let alignmentClasses;
-  if (arguments_.itemsAlignment == 'start') {
+  if (itemsAlignment == 'start') {
     alignmentClasses = 'gi-items-start';
-  } else if (arguments_.itemsAlignment == 'center') {
+  } else if (itemsAlignment == 'center') {
     alignmentClasses = 'gi-items-center';
-  } else if (arguments_.itemsAlignment == 'end') {
+  } else if (itemsAlignment == 'end') {
     alignmentClasses = 'gi-items-end';
   }
 
   let distributionClasses;
-  if (arguments_.itemsDistribution == 'start') {
+  if (itemsDistribution == 'start') {
     distributionClasses = 'gi-justify-start';
-  } else if (arguments_.itemsDistribution == 'center') {
+  } else if (itemsDistribution == 'center') {
     distributionClasses = 'gi-justify-center';
-  } else if (arguments_.itemsDistribution == 'end') {
+  } else if (itemsDistribution == 'end') {
     distributionClasses = 'gi-justify-end';
-  } else if (arguments_.itemsDistribution == 'between') {
+  } else if (itemsDistribution == 'between') {
     distributionClasses = 'gi-justify-between';
-  } else if (arguments_.itemsDistribution == 'around') {
+  } else if (itemsDistribution == 'around') {
     distributionClasses = 'gi-justify-around';
-  } else if (arguments_.itemsDistribution == 'evenly') {
+  } else if (itemsDistribution == 'evenly') {
     distributionClasses = 'gi-justify-evenly';
   }
 
-  const wrapClass = arguments_.wrap ? 'gi-flex-wrap' : 'gi-flex-nowrap';
+  const wrapClass = wrap ? 'gi-flex-wrap' : 'gi-flex-nowrap';
 
   const stackClasses = [
     'gi-flex',
@@ -175,7 +181,7 @@ const createStack = (
   const stack = document.createElement('div');
   stack.className = stackClasses.join(' ');
   stack.role = 'region';
-  stack.style.height = arguments_.fixedHeight || '100%';
+  stack.style.height = fixedHeight || '100%';
 
   for (const item of items) {
     if (typeof item === 'string') {
@@ -184,7 +190,7 @@ const createStack = (
       stack.append(item);
     }
 
-    if (arguments_.hasDivider) {
+    if (hasDivider) {
       const divider = document.createElement('div');
       divider.className = `${dividerClasses} gi-bg-gray-400`;
       divider.ariaHidden = 'true';
