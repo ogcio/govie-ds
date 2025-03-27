@@ -48,6 +48,10 @@ export const createLink = (arguments_: LinkProps) => {
     }
   }
 
+  if (arguments_.className) {
+    linkClass.push(arguments_.className);
+  }
+
   if (arguments_.content) {
     anchor.textContent = arguments_.content;
   }

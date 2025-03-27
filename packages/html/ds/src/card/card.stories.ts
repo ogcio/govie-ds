@@ -30,7 +30,10 @@ const createCard = (arguments_: CardProps) => {
         const { src, alt, aspectRatio } = arguments_.media.config;
         const div = document.createElement('div');
         div.className = 'gi-card-image';
-        const anchor = createLink({ href: arguments_.href });
+        const anchor = createLink({
+          href: arguments_.href,
+          className: '!gi-block',
+        });
         const image = document.createElement('img');
         image.src = src;
         if (alt) {

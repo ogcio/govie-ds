@@ -112,7 +112,8 @@ export const createIconButton = (arguments_: IconButtonProps) => {
   component.className =
     `gi-btn ${classSize} ${classAppearance} ${arguments_.className || ''}`.trim();
 
-  const icon = createIcon(arguments_.icon);
+  const iconSize = arguments_.size === 'large' ? 'md' : 'sm';
+  const icon = createIcon({ ...arguments_.icon, size: iconSize });
   component.append(icon);
 
   return component;
