@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './checkbox.js';
-import { CheckboxSizeEnum } from './types.js';
+import { InputCheckbox } from './input-checkbox.js';
+import { InputCheckboxSizeEnum } from './types.js';
 
 const meta = {
-  title: 'Form/Checkbox/Checkbox',
+  title: 'Form/Checkbox/InputCheckbox',
   parameters: {
     docs: {
       description: {
-        component: 'Checkbox component',
+        component: 'Input Checkbox component',
       },
     },
   },
-  component: Checkbox,
-} satisfies Meta<typeof Checkbox>;
+  component: InputCheckbox,
+} satisfies Meta<typeof InputCheckbox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -99,7 +99,7 @@ export const smallCheckbox: Story = {
     id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Small,
+    size: InputCheckboxSizeEnum.Small,
   },
 };
 
@@ -108,7 +108,7 @@ export const mediumCheckbox: Story = {
     id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Medium,
+    size: InputCheckboxSizeEnum.Medium,
   },
 };
 
@@ -117,6 +117,6 @@ export const largeCheckbox: Story = {
     id: 'checkbox-id-1',
     value: 'value-1',
     label: 'Checkbox',
-    size: CheckboxSizeEnum.Large,
+    size: InputCheckboxSizeEnum.Large,
   },
 };

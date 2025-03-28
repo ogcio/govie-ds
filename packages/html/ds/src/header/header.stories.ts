@@ -51,14 +51,14 @@ const slotExample2 = () => `
   <form class="gi-max-w-md gi-mx-auto">
     <h4 class="gi-heading-sm">Search the website</h4>
     <div class="gi-flex gi-items-end gi-mt-4">
-      <div class="gi-text-input-container gi-flex-auto">
-        <div class="gi-text-input-container">
+      <div class="gi-input-text-container gi-flex-auto">
+        <div class="gi-input-text-container">
           <input
             placeholder="Enter search term"
             id="search"
             type="text"
             data-testid="textbox"
-            class="gi-border-gray-950 gi-w-full gi-text-input"
+            class="gi-border-gray-950 gi-w-full gi-input-text"
             name="search_query"
             aria-label="Search the website"
           />

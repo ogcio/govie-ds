@@ -1,23 +1,23 @@
-import { InputHTMLAttributes } from 'react';
+import { InputCheckboxSizeEnum } from '../input-checkbox/types.js';
 
-export const CheckboxSizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
-} as const;
-
-export type CheckboxSizeEnumType =
-  (typeof CheckboxSizeEnum)[keyof typeof CheckboxSizeEnum];
-
-export type CheckboxProps = {
-  size?: CheckboxSizeEnumType;
-  label?: string;
-  hint?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+import {
+  InputCheckboxSizeEnumType,
+  InputCheckboxProps,
+} from '../input-checkbox/types.js';
 
 export type CheckboxGroupProps = {
-  size?: CheckboxSizeEnumType;
+  size?: InputCheckboxSizeEnumType;
   groupId: string;
   inline?: boolean;
   onChange?: (items: string[]) => void;
 };
+
+/** @deprecated Use InputCheckboxSizeEnum instead */
+//eslint-disable-next-line unicorn/prefer-export-from
+export const CheckboxSizeEnum = InputCheckboxSizeEnum;
+
+/** @deprecated Use InputCheckboxSizeEnumType instead */
+export type CheckboxSizeEnumType = InputCheckboxSizeEnumType;
+
+/** @deprecated Use InputCheckboxProps instead */
+export type CheckboxProps = InputCheckboxProps;

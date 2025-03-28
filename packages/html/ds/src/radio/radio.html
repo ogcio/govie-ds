@@ -7,7 +7,7 @@
   {% set hasConditionalInput = true if props.conditionalInput %}
   {% set radioId = props.radioId or props.id or props.value %}
 
-  <div class="gi-radio-container">
+  <div class="gi-input-radio-container">
     <div class="gi-radio-input-container">
       <input
         {% if props.checked %}readonly checked{% endif %}
@@ -17,7 +17,7 @@
         {% if props.dataElement %}data-element="{{ props.dataElement }}"{% endif %}
         id="{{ radioId }}"
         value="{{ props.value }}"
-        class="{{ getRadioSize(props.size) | trim }} gi-radio-base"
+        class="{{ getRadioSize(props.size) | trim }} gi-input-radio-base"
         type="radio"
         {{ commonAriaAttributes(props) }}
       />
@@ -34,9 +34,9 @@
           class="{{ getRadioWidth(props.size) | trim }} gi-invisible"
         >
           <div
-            class="{{ getRadioWidth(props.size) | trim }} gi-radio-conditional-divider-border-container"
+            class="{{ getRadioWidth(props.size) | trim }} gi-input-radio-conditional-divider-border-container"
           >
-            <div class="gi-radio-conditional-divider-border"></div>
+            <div class="gi-input-radio-conditional-divider-border"></div>
           </div>
         </div>
         <div>

@@ -4,10 +4,10 @@ import { Button } from '../button/button.js';
 import { FileUpload } from '../file-upload/file-upload.js';
 import { FormField } from '../forms/form-field.js';
 import { Heading } from '../heading/heading.js';
+import { InputText } from '../input-text/input-text.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Select, SelectItem } from '../select/select.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from '../text-input/text-input.js';
 import { TextArea } from '../textarea/textarea.js';
 import { ProgressStepper, StepItem } from './progress-stepper.js';
 
@@ -274,7 +274,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'Full name',
                 }}
               >
-                <TextInput id="fullname-text-id" />
+                <InputText id="fullname-text-id" />
               </FormField>
               <FormField
                 className="lg:gi-w-[450px] gi-w-full"
@@ -283,7 +283,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'PPS Number',
                 }}
               >
-                <TextInput id="pps-number-text-id" />
+                <InputText id="pps-number-text-id" />
               </FormField>
               <FormField
                 className="lg:gi-w-[450px] gi-w-full"
@@ -295,7 +295,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'School Roll Number',
                 }}
               >
-                <TextInput id="school-roll-number-text-id" />
+                <InputText id="school-roll-number-text-id" />
               </FormField>
               <FormField
                 className="lg:gi-w-[450px] gi-w-full"
@@ -340,7 +340,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'Full name',
                 }}
               >
-                <TextInput id="contact-fullname-text-id" />
+                <InputText id="contact-fullname-text-id" />
               </FormField>
               <FormField
                 className="lg:gi-w-[450px] gi-w-full"
@@ -352,7 +352,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'Phone Number Number',
                 }}
               >
-                <TextInput id="phone-number-text-id" />
+                <InputText id="phone-number-text-id" />
               </FormField>
               <FormField
                 className="lg:gi-w-[450px] gi-w-full"
@@ -364,7 +364,7 @@ export const WithFormContentStepVertical: Story = {
                   text: 'Email Address',
                 }}
               >
-                <TextInput id="email-number-text-id" />
+                <InputText id="email-number-text-id" />
               </FormField>
             </Stack>
           </StepItem>

@@ -130,3 +130,8 @@ passwordless
 form-inputpassword
 InputPassword
 clearEnabled
+form-inputtext
+InputRadio
+clearEnabled
+inputcheckbox
+form-inputfile

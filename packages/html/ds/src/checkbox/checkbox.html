@@ -10,7 +10,7 @@
 
   <div>
     <div
-      class="gi-checkbox-container {{ addClasses(props.className) | trim }}"
+      class="gi-input-checkbox-container {{ addClasses(props.className) | trim }}"
       data-testid="{{ props.dataTestid }}"
     >
       <input
@@ -21,7 +21,7 @@
         data-element="{{ props.dataElement }}"
         id="{{ checkboxId }}"
         value="{{ props.value }}"
-        class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-checkbox-input"
+        class="{{ getSizeClass(props.size) | trim }} {{ getTickSize(props.size) | trim }} gi-input-checkbox"
         type="checkbox"
         name="{{ props.name or props.label }}"
       />
@@ -30,7 +30,7 @@
       </label>
     </div>
     {% if props.hint %}
-      <div class="gi-checkbox-hint-container">
+      <div class="gi-input-checkbox-hint-container">
         <div class="{{ getSizeClass(props.size) | trim }}"></div>
         {{
           govieHintText({

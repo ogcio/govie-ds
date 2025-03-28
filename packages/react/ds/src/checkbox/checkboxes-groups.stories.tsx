@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormField } from '../forms/form-field.js';
+import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { CheckboxGroup } from './checkbox-group.js';
-import { Checkbox } from './checkbox.js';
 
 const meta = {
   title: 'Form/Checkbox/CheckboxGroup',
@@ -38,22 +38,22 @@ export const Default: Story = {
   render: (arguments_) => (
     <FormField label={{ text: 'Organization' }}>
       <CheckboxGroup {...arguments_}>
-        <Checkbox
+        <InputCheckbox
           value={'employment-tribunal'}
           label={'Employment Tribunal'}
           id={'UniqueID-check1'}
         />
-        <Checkbox
+        <InputCheckbox
           value={'ministry-of-defence'}
           label={'Ministry of Defence'}
           id={'UniqueID-check2'}
         />
-        <Checkbox
+        <InputCheckbox
           value={'department-for-transport'}
           label={'Department for Transport'}
           id={'UniqueID-check3'}
         />
-        <Checkbox
+        <InputCheckbox
           value={'others'}
           label={'Others'}
           id={'UniqueID-check4'}
@@ -76,14 +76,14 @@ export const withHints: Story = {
       }}
     >
       <CheckboxGroup {...arguments_}>
-        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
-        <Checkbox
+        <InputCheckbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <InputCheckbox
           value={'british'}
           label={'British'}
           hint="including English, Scottish, Welsh and Northern Irish"
           id={'govie-field-ID-check2'}
         />
-        <Checkbox
+        <InputCheckbox
           value={'citizen-of-another-country'}
           label={'Citizen of another country'}
           id={'govie-field-ID-check3'}
@@ -108,14 +108,14 @@ export const withErrorMessage: Story = {
       }}
     >
       <CheckboxGroup {...arguments_}>
-        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
-        <Checkbox
+        <InputCheckbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <InputCheckbox
           value={'british'}
           label={'British'}
           hint="including English, Scottish, Welsh and Northern Irish"
           id={'govie-field-ID2-check2'}
         />
-        <Checkbox
+        <InputCheckbox
           value={'citizen-of-another-country'}
           label={'Citizen of another country'}
           id={'govie-field-ID2-check3'}

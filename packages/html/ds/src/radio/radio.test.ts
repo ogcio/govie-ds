@@ -121,7 +121,7 @@ describe('radios', () => {
   });
 
   it('should render small radios', () => {
-    const classes = 'gi-radio-small';
+    const classes = 'gi-input-radio-small';
     const propsWithSmallRadios = {
       ...standardProps,
       size: RadioSizeEnum.Small,
@@ -137,7 +137,7 @@ describe('radios', () => {
   });
 
   it('should render big radios', () => {
-    const classes = 'gi-radio-large';
+    const classes = 'gi-input-radio-large';
     const propsWithSmallRadios = {
       ...standardProps,
       size: RadioSizeEnum.Large,

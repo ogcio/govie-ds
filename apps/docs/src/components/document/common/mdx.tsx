@@ -65,9 +65,13 @@ import {
   Tag,
   TextArea,
   TextInput,
+  InputRadio,
+  InputText,
   InputPassword,
   Tooltip,
   StepItem,
+  InputCheckbox,
+  InputFile,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import NextLink from 'next/link';
@@ -221,6 +225,8 @@ const documentComponents: MDXComponents = {
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
   TextInput: (props) => <TextInput {...props} />,
+  InputText,
+  InputRadio,
   SectionBreak: (props) => <SectionBreak {...props} />,
   Select: (props) => <Select {...props} />,
   SelectItem: (props) => <SelectItem {...props} />,
@@ -284,6 +290,8 @@ const documentComponents: MDXComponents = {
     </div>
   ),
   InputPassword,
+  InputCheckbox,
+  InputFile,
 };
 
 export function Mdx({ code }: MdxProps) {

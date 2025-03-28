@@ -1,20 +1,18 @@
-import { InputHTMLAttributes } from 'react';
-import type { TextInputProps } from '../text-input/text-input.js';
+import {
+  InputRadioSizeType,
+  InputRadioProps,
+  InputRadioSizeEnum,
+} from '../input-radio/types.js';
 
-export const RadioSizeEnum = {
-  Large: 'lg',
-  Medium: 'md',
-  Small: 'sm',
-} as const;
+/** @deprecated Use InputRadioSizeType instead */
+export type RadioSizeType = InputRadioSizeType;
 
-export type RadioSizeType = (typeof RadioSizeEnum)[keyof typeof RadioSizeEnum];
+/** @deprecated Use InputRadioProps instead */
+export type RadioProps = InputRadioProps;
 
-export type RadioProps = {
-  label?: string;
-  hint?: string;
-  size?: RadioSizeType;
-  conditionalInput?: TextInputProps;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+/** @deprecated Use InputRadioSizeEnum instead */
+// eslint-disable-next-line unicorn/prefer-export-from
+export const RadioSizeEnum = InputRadioSizeEnum;
 
 export type RadioGroupProps = {
   groupId: string;

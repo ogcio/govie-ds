@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
+import { InputText } from '../input-text/input-text.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from '../text-input/text-input.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -97,7 +97,7 @@ export const Default: Story = {
   },
 };
 
-export const ResponsiveWidthWithTextInput: Story = {
+export const ResponsiveWidthWithInputText: Story = {
   args: {
     rows: 4,
     cols: 100,
@@ -119,7 +119,7 @@ export const ResponsiveWidthWithTextInput: Story = {
               htmlFor: 'text-1',
             }}
           >
-            <TextInput {...textProps} id="text-1" />
+            <InputText {...textProps} id="text-1" />
           </FormField>
           <FormField
             label={{
@@ -135,7 +135,7 @@ export const ResponsiveWidthWithTextInput: Story = {
               htmlFor: 'text-2',
             }}
           >
-            <TextInput {...textProps} id="text-2" />
+            <InputText {...textProps} id="text-2" />
           </FormField>
           <FormField
             label={{

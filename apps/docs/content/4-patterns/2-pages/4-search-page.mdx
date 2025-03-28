@@ -189,13 +189,13 @@ A template for a search page
         <form action="/search_page" class="gi-max-w-md gi-mx-auto">
           <h4 class="gi-heading-sm">Search the website</h4>
           <div class="gi-flex gi-items-end gi-mt-4">
-            <div class="gi-text-input-container gi-flex-auto">
-              <div class="gi-text-input-container">
+            <div class="gi-input-text-container gi-flex-auto">
+              <div class="gi-input-text-container">
                 <input
                   placeholder="Enter search term"
                   id="search"
                   type="text"
-                  class="gi-border-gray-950 gi-w-full gi-text-input"
+                  class="gi-border-gray-950 gi-w-full gi-input-text"
                   name="search_query"
                   aria-label="Search the website"
                 />
@@ -263,13 +263,13 @@ A template for a search page
             <form action="/search_page" class="gi-max-w-md gi-mx-auto">
               <h4 class="gi-heading-sm">Search the website</h4>
               <div class="gi-flex gi-items-end gi-mt-4">
-                <div class="gi-text-input-container gi-flex-auto">
-                  <div class="gi-text-input-container">
+                <div class="gi-input-text-container gi-flex-auto">
+                  <div class="gi-input-text-container">
                     <input
                       placeholder="Enter search term"
                       id="search"
                       type="text"
-                      class="gi-border-gray-950 gi-w-full gi-text-input"
+                      class="gi-border-gray-950 gi-w-full gi-input-text"
                       name="search_query"
                       aria-label="Search the website"
                     />
@@ -314,13 +314,13 @@ A template for a search page
                 <div class="grow gi-gap-4 gi-flex gi-flex-col">
                   <h2 class="gi-heading-lg">Search</h2>
 
-                  <div class="gi-text-input-container">
-                    <div class="gi-text-input-container {{ marginTop }}">
+                  <div class="gi-input-text-container">
+                    <div class="gi-input-text-container {{ marginTop }}">
                       <input
                         id="search-input"
                         type="text"
                         autocomplete="on"
-                        class="gi-border-gray-950 gi-w-full gi-text-input"
+                        class="gi-border-gray-950 gi-w-full gi-input-text"
                       />
                     </div>
                   </div>
@@ -557,17 +557,15 @@ A template for a search page
                 >
                   <div class="gi-combobox-search">
                     <div
-                      class="gi-text-input-container gi-combobox-search-input"
+                      class="gi-input-text-container gi-combobox-search-input"
                     >
-                      <div
-                        class="gi-text-input-container {{ marginTop }}"
-                      >
+                      <div class="gi-input-text-container {{ marginTop }}">
                         <input
                           id="input-id"
                           placeholder="Search"
                           type="text"
                           autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
+                          class="gi-border-gray-950 gi-w-full gi-input-text"
                         />
                       </div>
                     </div>
@@ -604,13 +602,15 @@ A template for a search page
                       </p>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="An Bord Pleanála"
                         data-element="An Bord Pleanála"
                         id="An Bord Pleanála"
                         value="15431907-an-bord-pleanala"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="An Bord Pleanála" class="gi-checkbox-label">
@@ -618,13 +618,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="An Garda Síochána"
                         data-element="An Garda Síochána"
                         id="An Garda Síochána"
                         value="an-garda-siochana"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="An Garda Síochána" class="gi-checkbox-label">
@@ -632,13 +634,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Bord Bia (Irish Food Board)"
                         data-element="Bord Bia (Irish Food Board)"
                         id="Bord Bia (Irish Food Board)"
                         value="14061907-bord-bia-irish-food-board"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -649,13 +653,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Capital Works Management Framework"
                         data-element="Capital Works Management Framework"
                         id="Capital Works Management Framework"
                         value="7c2ea-capital-works-management-framework"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -666,13 +672,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Carlow County Council"
                         data-element="Carlow County Council"
                         id="Carlow County Council"
                         value="carlow-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -683,13 +691,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Cavan County Council"
                         data-element="Cavan County Council"
                         id="Cavan County Council"
                         value="cavan-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -700,13 +710,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Central Bank of Ireland"
                         data-element="Central Bank of Ireland"
                         id="Central Bank of Ireland"
                         value="10032007-central-bank-of-ireland"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -717,13 +729,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Central Statistics Office"
                         data-element="Central Statistics Office"
                         id="Central Statistics Office"
                         value="central-statistics-office"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -734,13 +748,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Chief State Solicitor’s Office"
                         data-element="Chief State Solicitor’s Office"
                         id="Chief State Solicitor’s Office"
                         value="chief-state-solicitors-office"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -751,13 +767,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Circulars"
                         data-element="Circulars"
                         id="Circulars"
                         value="28448-circulars"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Circulars" class="gi-checkbox-label">
@@ -765,13 +783,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Civil Justice Review"
                         data-element="Civil Justice Review"
                         id="Civil Justice Review"
                         value="dff8b-civil-justice-review"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -782,13 +802,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Civil Service Employee Assistance Service"
                         data-element="Civil Service Employee Assistance Service"
                         id="Civil Service Employee Assistance Service"
                         value="72752-civil-service-employee-assistance-service"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -799,13 +821,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Clare County Council"
                         data-element="Clare County Council"
                         id="Clare County Council"
                         value="clare-county-council"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -816,13 +840,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Commission on Taxation and Welfare"
                         data-element="Commission on Taxation and Welfare"
                         id="Commission on Taxation and Welfare"
                         value="c526e-commission-on-taxation-and-welfare"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -833,13 +859,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Commission on the Defence Forces"
                         data-element="Commission on the Defence Forces"
                         id="Commission on the Defence Forces"
                         value="20d04-commission-of-the-defence-forces"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -889,17 +917,15 @@ A template for a search page
                 >
                   <div class="gi-combobox-search">
                     <div
-                      class="gi-text-input-container gi-combobox-search-input"
+                      class="gi-input-text-container gi-combobox-search-input"
                     >
-                      <div
-                        class="gi-text-input-container {{ marginTop }}"
-                      >
+                      <div class="gi-input-text-container {{ marginTop }}">
                         <input
                           id="input-id"
                           placeholder="Search"
                           type="text"
                           autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
+                          class="gi-border-gray-950 gi-w-full gi-input-text"
                         />
                       </div>
                     </div>
@@ -936,13 +962,15 @@ A template for a search page
                       </p>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Agencies"
                         data-element="Agencies"
                         id="Agencies"
                         value="agencies"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Agencies" class="gi-checkbox-label">
@@ -950,13 +978,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Aquaculture licences"
                         data-element="Aquaculture licences"
                         id="Aquaculture licences"
                         value="aquaculture_licence"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -967,13 +997,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Biographies"
                         data-element="Biographies"
                         id="Biographies"
                         value="biographies"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Biographies" class="gi-checkbox-label">
@@ -981,13 +1013,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Campaigns"
                         data-element="Campaigns"
                         id="Campaigns"
                         value="campaigns"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Campaigns" class="gi-checkbox-label">
@@ -995,13 +1029,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Circulars"
                         data-element="Circulars"
                         id="Circulars"
                         value="circulars"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Circulars" class="gi-checkbox-label">
@@ -1009,13 +1045,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Collections"
                         data-element="Collections"
                         id="Collections"
                         value="collections"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Collections" class="gi-checkbox-label">
@@ -1023,13 +1061,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Consultations"
                         data-element="Consultations"
                         id="Consultations"
                         value="consultations"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Consultations" class="gi-checkbox-label">
@@ -1037,13 +1077,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Coroner cases"
                         data-element="Coroner cases"
                         id="Coroner cases"
                         value="coroner_cases"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Coroner cases" class="gi-checkbox-label">
@@ -1090,17 +1132,15 @@ A template for a search page
                 >
                   <div class="gi-combobox-search">
                     <div
-                      class="gi-text-input-container gi-combobox-search-input"
+                      class="gi-input-text-container gi-combobox-search-input"
                     >
-                      <div
-                        class="gi-text-input-container {{ marginTop }}"
-                      >
+                      <div class="gi-input-text-container {{ marginTop }}">
                         <input
                           id="input-id"
                           placeholder="Search"
                           type="text"
                           autocomplete="on"
-                          class="gi-border-gray-950 gi-w-full gi-text-input"
+                          class="gi-border-gray-950 gi-w-full gi-input-text"
                         />
                       </div>
                     </div>
@@ -1137,13 +1177,15 @@ A template for a search page
                       </p>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Brexit"
                         data-element="Brexit"
                         id="Brexit"
                         value="brexit"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="Brexit" class="gi-checkbox-label">
@@ -1151,13 +1193,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Business and industry"
                         data-element="Business and industry"
                         id="Business and industry"
                         value="business-and-industry"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label
@@ -1168,13 +1212,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="COVID-19"
                         data-element="COVID-19"
                         id="COVID-19"
                         value="covid-19"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label for="COVID-19" class="gi-checkbox-label">
@@ -1182,13 +1228,15 @@ A template for a search page
                       </label>
                     </div>
 
-                    <div class="gi-checkbox-container gi-combobox-checkbox">
+                    <div
+                      class="gi-input-checkbox-container gi-combobox-checkbox"
+                    >
                       <input
                         name="Corporate information"
                         data-element="Corporate information"
                         id="Corporate information"
                         value="corporate-information"
-                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-checkbox-input"
+                        class="gi-w-6 gi-h-6 checked:before:gi-w-3.5 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1 gi-input-checkbox"
                         type="checkbox"
                       />
                       <label

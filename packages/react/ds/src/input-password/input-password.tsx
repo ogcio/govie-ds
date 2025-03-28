@@ -1,14 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { IconId } from '../icon/icon.js';
-import { TextInput, TextInputProps } from '../text-input/text-input.js';
+import { InputText } from '../input-text/input-text.js';
+import { InputPasswordProps } from './types.js';
 
-export type InputPasswordProps = Omit<
-  TextInputProps,
-  'type' | 'inputActionButton' | 'prefix' | 'suffix' | 'iconStart' | 'iconEnd'
->;
-
-export const InputPassword = (props: InputPasswordProps) => {
+export const InputPassword: React.FC<InputPasswordProps> = (props) => {
   const [inputProps, setInputProps] = useState<{
     type: 'password' | 'text';
     icon: IconId;
@@ -26,7 +22,7 @@ export const InputPassword = (props: InputPasswordProps) => {
   };
 
   return (
-    <TextInput
+    <InputText
       {...props}
       type={inputProps.type}
       inputActionButton={{
