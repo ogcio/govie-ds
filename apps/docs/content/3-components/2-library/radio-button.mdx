@@ -126,20 +126,21 @@ libraries:
     </div>
 </fieldset>
 
-  ```
-  </TabPanel>
-  <TabPanel value="tab23">
-  ```jsx
-  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
+````
+</TabPanel>
+<TabPanel value="tab23">
+```jsx
+import { RadioGroup, FormField, Radio } from '@govie-ds/react';
 
-  <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'} inline>
-      <Radio value={'dublin'} label={'Dublin'} />
-      <Radio value={'cork'} label={'Cork'} />
-      <Radio value={'galway'} label={'Galway'} />
-    </RadioGroup>
-  </FormField>
-  ```
+<FormField label={{ text: 'Where do you live?' }}>
+  <RadioGroup groupId={'city'} inline>
+    <Radio value={'dublin'} label={'Dublin'} />
+    <Radio value={'cork'} label={'Cork'} />
+    <Radio value={'galway'} label={'Galway'} />
+  </RadioGroup>
+</FormField>
+````
+
   </TabPanel>
 </Tabs>
 
@@ -255,6 +256,30 @@ libraries:
 
 ## Usage
 
+### Radio Props
+
+- **label** (optional): The label displayed next to the radio input.
+
+- **hint** (optional): An optional hint text to display below the radio input.
+
+- **size** (optional): The size of the radio button. Possible values are:
+
+  - `'lg'` for large
+  - `'md'` for medium
+  - `'sm'` for small
+
+- **conditionalInput** (optional): Allows for a conditional text input that will be displayed depending on the state of the radio button.
+
+- **children** (optional): Standard HTML attributes for an input element (excluding `size`).
+
+### Radio Group Props
+
+- **groupId** (required): A unique identifier for the radio group.
+
+- **inline** (optional): If true, displays the radio buttons inline.
+
+- **onChange** (optional): A callback function that is triggered when a radio button is selected.
+
 ### Best Practices
 
 ### When to use this component
@@ -268,4 +293,3 @@ Do not use the radios component if users might need to select more than one opti
 ## Status
 
 <ComponentStatusBlock componentId="radio-button" />
-

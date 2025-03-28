@@ -21,11 +21,33 @@ The tabs component lets users navigate between related sections of content, disp
 
 ## Usage
 
+### Tabs Props
+
+- **id** (optional): A unique identifier for the `Tabs` component.
+- **children** (optional): The `TabList` and `TabPanel` components to be displayed within the `Tabs` component.
+- **ariaLabelledBy** (optional): Associates the `Tabs` component with a label by the specified `id` of the labeled element.
+
+### TabItem Props
+
+- **value** (required): The unique value for each tab, used for selecting the active tab.
+- **checked** (optional): If `true`, marks the tab as the currently selected tab.
+- **children** (optional): The text or content displayed inside the tab.
+
+### TabList Props
+
+- **children** (optional): A list of `TabItem` components to render inside the tab list.
+
+### TabPanel Props
+
+- **value** (required): The unique value that corresponds to the `TabItem` value, used to associate the panel with the selected tab.
+- **children** (optional): The content displayed inside the tab panel for the corresponding tab.
+
 ### Best Practices
 
 ### When to use this component
 
 Tabs can be a helpful way of letting users quickly switch between related information if:
+
 - your content can be usefully separated into clearly labelled sections
 - the first section is more relevant than the others for most users
 - users will not need to view all the sections at once
@@ -39,19 +61,23 @@ Do not use the tabs component if the total amount of content the tabs contain wi
 Tabs hide content from users and not everyone will notice them or understand how they work.
 
 Do not use tabs if your users might need to:
+
 - read through all of the content in order, for example, to understand a step-by-step process
 - compare information in different tabs - having to memorise the information and switch backwards and forwards can be frustrating and difficult
 
 Test your content without tabs first. Consider if it’s better to:
+
 - simplify and reduce the amount of content
 - split the content across multiple pages
 - keep the content on a single page, separated by headings
 - use a table of contents to let users navigate quickly to specific sections of content
 
 ### Decide between using tabs, accordion and details
+
 Tabs, accordions, and details all hide sections of content which a user can choose to reveal.
 
 If you decide to use one of these components, consider if:
+
 - the user does not need to view more than one section at a time – consider using tabs
 - the user needs to switch quickly between sections – tabs can show content without pushing other sections down the page, unlike accordions
 - there are many pieces of content – tabs can fit fewer sections as they’re arranged horizontally, unlike accordions which are arranged vertically
@@ -60,4 +86,3 @@ If you decide to use one of these components, consider if:
 ## Status
 
 <ComponentStatusBlock componentId="tabs" />
-

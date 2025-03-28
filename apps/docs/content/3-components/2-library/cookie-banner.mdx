@@ -19,46 +19,48 @@ libraries:
 
 ### Default
 
-<CookieBanner {...{
-  children: (
-    <>
-      <Heading as="h3">Title</Heading>
-      <Paragraph>
-        We use some essential cookies to make this service work.
-        <br />
-        <br />
-        We’d also like to use analytics cookies so we can understand how you use
-        the service and make improvements.
-      </Paragraph>
-    </>
-  ),
-  accept: {
+<CookieBanner
+  {...{
     children: (
       <>
-        <Heading as="h3">Accepted Title</Heading>
+        <Heading as="h3">Title</Heading>
         <Paragraph>
-          You’ve accepted analytics cookies. You can change your cookie settings
-          at any time.
+          We use some essential cookies to make this service work.
+          <br />
+          <br />
+          We’d also like to use analytics cookies so we can understand how you
+          use the service and make improvements.
         </Paragraph>
       </>
     ),
-    triggerButton: <Button>Accept cookies</Button>,
-  },
-  reject: {
-    children: (
-      <>
-        <Heading as="h3">Rejected Title</Heading>
-        <Paragraph>
-          You’ve rejected analytics cookies. You can change your cookie settings
-          at any time.
-        </Paragraph>
-      </>
-    ),
-    triggerButton: <Button>Reject cookies</Button>,
-  },
-  cookieLink: <Link href="#">See Cookies</Link>,
-  dismissButton: <Button>Hide this message</Button>,
-}} />
+    accept: {
+      children: (
+        <>
+          <Heading as="h3">Accepted Title</Heading>
+          <Paragraph>
+            You’ve accepted analytics cookies. You can change your cookie
+            settings at any time.
+          </Paragraph>
+        </>
+      ),
+      triggerButton: <Button>Accept cookies</Button>,
+    },
+    reject: {
+      children: (
+        <>
+          <Heading as="h3">Rejected Title</Heading>
+          <Paragraph>
+            You’ve rejected analytics cookies. You can change your cookie
+            settings at any time.
+          </Paragraph>
+        </>
+      ),
+      triggerButton: <Button>Reject cookies</Button>,
+    },
+    cookieLink: <Link href="#">See Cookies</Link>,
+    dismissButton: <Button>Hide this message</Button>,
+  }}
+/>
 
 <Tabs id="tab1">
   <TabList>
@@ -118,57 +120,60 @@ libraries:
         </button>
       </div>
     </div>
+
   </div>
 </div>
 
-
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieCookieBanner({
-    "children": govieHeading({"text": "Title", "as": "h3"}) + govieParagraph({ "content": "We use some essential cookies to make this service work.<br><br>We’d also like to use analytics cookies so we can understand how you use the service and make improvements." }),
-    "accept": {
-      "children": govieHeading({"text": "Accepted Title", "as": "h3"}) + govieParagraph({ "content": "You’ve accepted analytics cookies. You can change your cookie settings at any time." }),
-      "triggerButton": {
-        "content": "Accept cookies"
-      }
-    },
-    "reject": {
-      "children": govieHeading({"text": "Rejected Title", "as": "h3"}) + govieParagraph({ "content": "You’ve rejected analytics cookies. You can change your cookie settings at any time." }),
-      "triggerButton": {
-        "content": "Reject cookies"
-      }
-    },
-    "dismissButton": {
-      "content": "Hide this message"
-    },
-    "cookieLink": {
-      "label": "See cookies",
-      "href": "#"
+````
+</TabPanel>
+<TabPanel value="tab12">
+```html
+{{ govieCookieBanner({
+  "children": govieHeading({"text": "Title", "as": "h3"}) + govieParagraph({ "content": "We use some essential cookies to make this service work.<br><br>We’d also like to use analytics cookies so we can understand how you use the service and make improvements." }),
+  "accept": {
+    "children": govieHeading({"text": "Accepted Title", "as": "h3"}) + govieParagraph({ "content": "You’ve accepted analytics cookies. You can change your cookie settings at any time." }),
+    "triggerButton": {
+      "content": "Accept cookies"
     }
-  }) }}
-  ```
+  },
+  "reject": {
+    "children": govieHeading({"text": "Rejected Title", "as": "h3"}) + govieParagraph({ "content": "You’ve rejected analytics cookies. You can change your cookie settings at any time." }),
+    "triggerButton": {
+      "content": "Reject cookies"
+    }
+  },
+  "dismissButton": {
+    "content": "Hide this message"
+  },
+  "cookieLink": {
+    "label": "See cookies",
+    "href": "#"
+  }
+}) }}
+````
+
   </TabPanel>
   <TabPanel value="tab13">
   ```html
   import { CookieBanner } from '@govie-ds/react';
 
- <CookieBanner
+{' '}
+
+<CookieBanner
   children={
     <>
-      <Heading as='h3'>Title</Heading>
+      <Heading as="h3">Title</Heading>
       <Paragraph>
-        We use some essential cookies to make this service work.
-        We’d also like to use analytics cookies so we can understand how you use
-        the service and make improvements.
+        We use some essential cookies to make this service work. We’d also like
+        to use analytics cookies so we can understand how you use the service
+        and make improvements.
       </Paragraph>
     </>
   }
   accept={{
     children: (
       <>
-        <Heading as='h3'>Accepted Title</Heading>
+        <Heading as="h3">Accepted Title</Heading>
         <Paragraph>
           You’ve accepted analytics cookies. You can change your cookie settings
           at any time.
@@ -180,7 +185,7 @@ libraries:
   reject={{
     children: (
       <>
-        <Heading as='h3'>Rejected Title</Heading>
+        <Heading as="h3">Rejected Title</Heading>
         <Paragraph>
           You’ve rejected analytics cookies. You can change your cookie settings
           at any time.
@@ -191,13 +196,27 @@ libraries:
   }}
   cookieLink={<Link href="#">See Cookies</Link>}
   dismissButton={<Button>Hide this message</Button>}
-/>;
+/>
+;
 
-  ```
-  </TabPanel>
+```
+</TabPanel>
 </Tabs>
 
 ## Usage
+
+### Cookie Banner Props
+
+- **children** (required): The content to be displayed in the default cookie banner.
+- **accept** (optional): An object specifying the content for the accepted cookie banner and the trigger button. It has the following properties:
+- `children`: The text or content displayed in the accepted cookie banner.
+- `triggerButton`: The text for the button used to navigate to the accepted state.
+- **reject** (optional): An object specifying the content for the rejected cookie banner and the trigger button. It has the following properties:
+- `children`: The text or content displayed in the rejected cookie banner.
+- `triggerButton`: The text for the button used to navigate to the rejected state.
+- **dismissButton** (optional): A string representing the text on the button used to dismiss the cookie banner.
+- **cookieLink** (optional): A string representing a link to navigate the user to the cookie policy page.
+
 
 ### Best Practices
 
@@ -217,3 +236,4 @@ However, you must tell users that you set essential cookies. You can do this wit
 
 <ComponentStatusBlock componentId="cookie-banner" />
 
+```

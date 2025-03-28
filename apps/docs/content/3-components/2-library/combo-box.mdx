@@ -407,6 +407,33 @@ libraries:
 
 ## Usage
 
+### Combobox Props
+
+- **children** (required): One or more `DropdownItem` components that define the options in the combobox.
+
+- **className** (optional): A string to apply custom class names to the combobox for styling.
+
+- **dataTestid** (optional): A string that assigns a custom test ID to the combobox for testing purposes.
+
+### DropdownItem Props
+
+- **children** (required): A string representing the label or text displayed for the dropdown item.
+
+- **options** (required): An array of objects defining the dropdown options. Each option has:
+
+  - `label`: The display label of the option.
+  - `value`: The value associated with the option.
+
+- **noSearch** (optional): A boolean that, when set to `true`, disables the search functionality within the dropdown.
+
+- **value** (optional): An array of strings representing the currently selected values. Useful for controlled components.
+
+- **defaultValue** (optional): An array of strings that defines the default selected values when the component is first rendered.
+
+- **onChange** (optional): A callback function triggered when the selected values change. Receives the updated array of selected values as a parameter.
+
+- **onSearch** (optional): A callback function triggered when the user types in the search input. Receives the current query string as a parameter.
+
 ### Best Practices
 
 ### When to use this component

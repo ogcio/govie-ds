@@ -32,24 +32,33 @@ libraries:
 
 <Tabs id="tab3">
   <TabList>
-    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab31" checked>
+      HTML
+    </TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
     ```html
     <fieldset data-module="gieds-select">
-      <label class="gi-text-md gi-label gi-mb-2" aria-label="Label">Label</label>
+      <label class="gi-text-md gi-label gi-mb-2" aria-label="Label">
+        Label
+      </label>
       <select class="gi-select" aria-label="Select" id="uniqueId">
-        <option class="gi-select-option" aria-selected="false" value="value-1">Option 1</option>
-        <option class="gi-select-option" aria-selected="false" value="value-2">Option 2</option>
-        <option class="gi-select-option" aria-selected="false" value="value-3">Option 3</option>
+        <option class="gi-select-option" aria-selected="false" value="value-1">
+          Option 1
+        </option>
+        <option class="gi-select-option" aria-selected="false" value="value-2">
+          Option 2
+        </option>
+        <option class="gi-select-option" aria-selected="false" value="value-3">
+          Option 3
+        </option>
       </select>
     </fieldset>
     ```
   </TabPanel>
   <TabPanel value="tab33">
-    ```jsx 
-    import { Select, SelectItem, FormField } from "@govie-ds/react";
+    ```jsx import {(Select, SelectItem, FormField)} from "@govie-ds/react";
     <FormField label={{ text: 'Label' }}>
       <Select aria-label="Select" id={'uniqueId'}>
         <SelectItem value="value-1">Option 1</SelectItem>
@@ -62,6 +71,18 @@ libraries:
 </Tabs>
 
 ## Usage
+
+### Select Props
+
+- **...props** (optional): Accepts all other generic `SelectHTMLAttributes` for additional customizations.
+
+### Select Item Props
+
+- **...props** (optional): Accepts all other generic `OptionHTMLAttributes` for further customization.
+
+### Select Group Item Props
+
+- **...props** (optional): Accepts all other generic `OptgroupHTMLAttributes` for further customization.
 
 ### Best Practices
 
@@ -78,4 +99,3 @@ Asking questions means you’re less likely to need to use the select component,
 ## Status
 
 <ComponentStatusBlock componentId="select" />
-
