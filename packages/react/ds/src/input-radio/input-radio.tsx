@@ -5,7 +5,7 @@ import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
 import type { InputTextProps } from '../input-text/type.js';
-
+import { Input } from '../primitives/input.js';
 import {
   InputRadioProps,
   InputRadioSizeEnum,
@@ -57,7 +57,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({
   return (
     <>
       <div className="gi-input-radio-container">
-        <input
+        <Input
           type="radio"
           id={radioId}
           checked={checked}

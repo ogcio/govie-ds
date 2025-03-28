@@ -71,6 +71,7 @@ import {
   Tooltip,
   StepItem,
   InputCheckbox,
+  InputFile,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import NextLink from 'next/link';
@@ -290,6 +291,7 @@ const documentComponents: MDXComponents = {
   ),
   InputPassword,
   InputCheckbox,
+  InputFile,
 };
 
 export function Mdx({ code }: MdxProps) {

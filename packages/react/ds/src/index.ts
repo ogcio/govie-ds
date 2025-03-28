@@ -128,10 +128,7 @@ export type {
   InputTextProps,
   InputActionButtonProps,
 } from './input-text/type.js';
-export {
-  InputPassword,
-  type InputPasswordProps,
-} from './input-password/input-password.js';
+export { InputPassword } from './input-password/input-password.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
 export { toaster, ToastProvider } from './toast/toast.js';
 export type {
@@ -148,3 +145,5 @@ export {
   type InputCheckboxSizeEnumType,
   type InputCheckboxProps,
 } from './input-checkbox/types.js';
+export { InputFile } from './input-file/input-file.js';
+export type { InputFileProps } from './input-file/types.js';

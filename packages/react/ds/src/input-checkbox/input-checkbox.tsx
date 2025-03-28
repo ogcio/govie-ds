@@ -1,9 +1,10 @@
 'use client';
 import { useId } from 'react';
 import { HintText } from '../hint-text/hint-text.js';
+import { Input } from '../primitives/input.js';
 import {
   InputCheckboxSizeEnum,
-  InputCheckboxSizeEnumType,
+  type InputCheckboxSizeEnumType,
   type InputCheckboxProps,
 } from './types.js';
 
@@ -43,7 +44,7 @@ export const InputCheckbox: React.FC<InputCheckboxProps> = ({
   return (
     <>
       <div className="gi-input-checkbox-container">
-        <input
+        <Input
           type="checkbox"
           id={CheckboxId}
           className={getSizeClass(size)}
@@ -65,3 +66,5 @@ export const InputCheckbox: React.FC<InputCheckboxProps> = ({
     </>
   );
 };
+
+InputCheckbox.displayName = 'InputCheckbox';

@@ -2,14 +2,9 @@
 import { useState } from 'react';
 import { IconId } from '../icon/icon.js';
 import { InputText } from '../input-text/input-text.js';
-import type { InputTextProps } from '../input-text/type.js';
+import { InputPasswordProps } from './types.js';
 
-export type InputPasswordProps = Omit<
-  InputTextProps,
-  'type' | 'inputActionButton' | 'prefix' | 'suffix' | 'iconStart' | 'iconEnd'
->;
-
-export const InputPassword = (props: InputPasswordProps) => {
+export const InputPassword: React.FC<InputPasswordProps> = (props) => {
   const [inputProps, setInputProps] = useState<{
     type: 'password' | 'text';
     icon: IconId;

@@ -4,6 +4,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { Input as PrimitiveInput } from '../primitives/input.js';
 import type { InputActionButtonProps, InputTextProps } from './type.js';
 
 const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
@@ -75,7 +76,7 @@ const Input = React.forwardRef<HTMLInputElement, InputTextProps>(
               <Icon icon={iconStart} size="md" disabled={disabled} />
             </div>
           )}
-          <input
+          <PrimitiveInput
             type={type}
             data-icon-start={!!iconStart}
             data-icon-end={!!iconEnd}

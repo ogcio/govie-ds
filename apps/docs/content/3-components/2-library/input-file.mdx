@@ -1,22 +1,22 @@
 ---
-title: File Upload
-description: File Upload HTML Component
+title: Input File
+description: Input File HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
     link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5500-7027'
     status: 'stable'
   - platform: 'global'
-    link: '?path=/docs/form-fileupload--docs'
+    link: '?path=/docs/form-inputfile--docs'
     status: 'stable'
   - platform: 'react'
-    link: '?path=/docs/form-fileupload--docs'
+    link: '?path=/docs/form-inputfile--docs'
     status: 'stable'
 ---
 
-# File Upload
+# Input File
 
-The **File Upload** component allows users to upload one or multiple files from their local device to a web application. It provides a user-friendly interface for attaching documents, images, or other types of files as part of form submissions. The component is customizable, supporting various file types, size limits, and even batch uploads, making it versatile for a wide range of use cases. Whether for uploading personal data or sharing project files, this component is a key part of modern web interactions.
+The **Input File** component allows users to upload one or multiple files from their local device to a web application. It provides a user-friendly interface for attaching documents, images, or other types of files as part of form submissions. The component is customizable, supporting various file types, size limits, and even batch uploads, making it versatile for a wide range of use cases. Whether for uploading personal data or sharing project files, this component is a key part of modern web interactions.
 
 ## Variants
 
@@ -27,13 +27,10 @@ The **File Upload** component allows users to upload one or multiple files from 
     id="file-upload-id"
     label={{
       htmlFor: 'file-upload-id',
-      text: 'Upload File'
+      text: 'Upload File',
     }}
   >
-    <FileUpload
-      accept="*/*"
-      id="file-upload-id"
-    />
+    <InputFile accept="*/*" id="file-upload-id" />
   </FormField>
 </ComponentContainer>
 
@@ -46,13 +43,13 @@ The **File Upload** component allows users to upload one or multiple files from 
     ```html
     <fieldset>
       <label class="gi-text-md gi-label gi-mb-2" for="file-upload-id">Upload File</label>
-      <input class="gi-file-upload-input" type="file" id="file-upload-id" accept="*/*">
+      <input class="gi-input-file" type="file" id="file-upload-id" accept="*/*">
     </fieldset>
     ```
   </TabPanel>
   <TabPanel value="tab33">
     ```jsx
-    import { FormField, FileUpload } from "@govie-ds/react";
+    import { FormField, InputFile } from "@govie-ds/react";
     
     <FormField
       id="file-upload-id"
@@ -61,7 +58,7 @@ The **File Upload** component allows users to upload one or multiple files from 
         text: 'Upload File'
       }}
     >
-      <FileUpload
+      <InputFile
         accept="*/*"
         id="file-upload-id"
       />
@@ -92,5 +89,4 @@ The **File Upload** component allows users to upload one or multiple files from 
 
 ## Status
 
-<ComponentStatusBlock componentId="file-upload" />
-
+<ComponentStatusBlock componentId="input-file" />

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
-import { FileUpload } from './file-upload.js';
+import { InputFile } from './input-file.js';
 
 const meta = {
-  title: 'Form/FileUpload',
+  title: 'Form/InputFile',
   parameters: {
     docs: {
       description: {
         component:
-          'Use the file upload component to allow users to upload files. It includes options for adding labels, hint text, and error messages.',
+          'Use the input file component to allow users to upload files. It includes options for adding labels, hint text, and error messages.',
       },
     },
   },
-  component: FileUpload,
+  component: InputFile,
   argTypes: {
     accept: {
       description:
@@ -33,7 +33,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof FileUpload>;
+} satisfies Meta<typeof InputFile>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -52,7 +52,7 @@ export const Default: Story = {
           htmlFor: 'file-upload-id',
         }}
       >
-        <FileUpload {...arguments_} />
+        <InputFile {...arguments_} />
       </FormField>
     </>
   ),
@@ -81,7 +81,7 @@ export const WithLabelAndHint: Story = {
           text: 'Hint: This is a helpful hint.',
         }}
       >
-        <FileUpload {...arguments_} />
+        <InputFile {...arguments_} />
       </FormField>
     </>
   ),
@@ -114,7 +114,7 @@ export const WithLabelAndError: Story = {
           text: 'Error: File must be smaller than 5MB.',
         }}
       >
-        <FileUpload {...arguments_} />
+        <InputFile {...arguments_} />
       </FormField>
     </>
   ),
@@ -144,7 +144,7 @@ export const WithPDFAndDocxOnly: Story = {
           htmlFor: 'file-upload-id',
         }}
       >
-        <FileUpload data-testid={'file-upload-id'} {...arguments_} />
+        <InputFile data-testid={'file-upload-id'} {...arguments_} />
       </FormField>
     </>
   ),

@@ -134,3 +134,4 @@ form-inputtext
 InputRadio
 clearEnabled
 inputcheckbox
+form-inputfile
