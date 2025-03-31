@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [1.2.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.1...design-tailwind-v1.2.2) (2025-03-31)
+
+
+### Bug Fixes
+
+* footer secondary slot ([ff60905](https://github.com/ogcio/govie-ds/commit/ff60905d104983e9c663fd39aef32eedfab1abd4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/deepmerge bumped to 1.0.4
+    * @govie-ds/tokens bumped to 1.2.2
+  * devDependencies
+    * @govie-ds/prettier-config bumped to 1.0.5
+
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.0...design-tailwind-v1.2.1) (2025-03-31)
 
 
