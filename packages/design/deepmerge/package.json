@@ -1,6 +1,6 @@
 {
   "name": "@govie-ds/deepmerge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The Gov IE design system deepmerge utility.",
   "type": "module",
   "main": "dist/index.js",
