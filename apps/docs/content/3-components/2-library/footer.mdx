@@ -154,7 +154,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
     }
     secondarySlot={
       <Stack direction={'column'} gap={4}>
-        <Stack direction={'row'} gap={4} wrap>
+        <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -499,7 +499,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
       }
       secondarySlot={
         <Stack direction={'column'} gap={4}>
-          <Stack direction={'row'} gap={4} wrap>
+          <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
             <Link noColor href="/about-us" aria-label="About Us">
               About Us
             </Link>
@@ -584,7 +584,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
   <Footer
     secondarySlot={
       <Stack direction={'column'} gap={4}>
-        <Stack direction={'row'} gap={4} wrap>
+        <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>

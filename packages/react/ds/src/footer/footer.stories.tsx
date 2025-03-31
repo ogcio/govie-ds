@@ -173,7 +173,11 @@ export const CompleteFooter: Story = {
     ),
     secondarySlot: (
       <Stack direction={'column'} gap={4}>
-        <Stack direction={'row'} gap={4} wrap>
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          wrap
+        >
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -252,7 +256,11 @@ export const CompleteFooter: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <Stack direction={'row'} gap={4} wrap>
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        wrap
+      >
         <Link noColor href="/about-us" aria-label="About Us">
           About Us
         </Link>
@@ -295,7 +303,11 @@ export const SimpleFooter: Story = {
       </Stack>
     ),
     utilitySlot: (
-      <Stack direction={'row'} gap={4} itemsDistribution="center">
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+      >
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -313,7 +325,11 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <Stack direction={'row'} gap={4} itemsDistribution="center">
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+      >
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>

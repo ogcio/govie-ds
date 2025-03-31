@@ -11,11 +11,11 @@
 }
 
 .gi-footer-secondary-slot {
-  @apply gi-flex gi-flex-row-reverse;
+  @apply gi-flex gi-flex-row-reverse gi-flex-wrap-reverse gi-justify-between gi-justify-items-stretch;
 }
 
 .gi-footer-secondary-slot-content {
-  @apply gi-max-w-[calc(100%_-_var(--gieds-space-80))];
+  @apply gi-grow md:gi-max-w-[calc(100%_-_var(--gieds-space-80))];
 }
 
 .gi-footer-utility {
