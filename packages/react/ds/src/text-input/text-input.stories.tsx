@@ -317,7 +317,7 @@ export const WithHalfWidth: Story = {
   },
   render: (props) => {
     return (
-      <Stack gap={4}>
+      <Stack gap={4} itemsAlignment="stretch">
         <FormField
           label={{
             text: 'Half width',
@@ -350,7 +350,12 @@ export const ResponsiveLayout: Story = {
         role="presentation"
         aria-label="example"
       >
-        <Stack direction={{ base: 'column' }} gap={3} aria-label="form">
+        <Stack
+          direction={{ base: 'column' }}
+          gap={3}
+          aria-label="form"
+          itemsAlignment="stretch"
+        >
           <Stack
             direction={{ md: 'row', base: 'column' }}
             gap={3}
@@ -529,7 +534,7 @@ export const WithCustomActionButton: Story = {
 export const AllIconVariantsStates: Story = {
   render: () => {
     return (
-      <Stack gap={4}>
+      <Stack gap={4} itemsAlignment="stretch">
         <FormField
           label={{
             text: 'Default',

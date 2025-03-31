@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
+import { Stack } from '../stack/stack.js';
 import { Footer } from './footer.js';
 
 const meta: Meta<typeof Footer> = {
@@ -171,8 +172,8 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <>
-        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+      <Stack direction={'column'} gap={4}>
+        <Stack direction={'row'} gap={4} wrap>
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -212,39 +213,38 @@ export const CompleteFooter: Story = {
           <Link noColor href="/events" aria-label="Events">
             Events
           </Link>
-        </div>
-        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+        </Stack>
+        <Stack direction={'row'} gap={4}>
           <Icon icon="social_x" />
           <Icon icon="social_facebook" />
           <Icon icon="social_bluesky" />
           <Icon icon="social_linkedin" />
-        </div>
-      </>
+        </Stack>
+      </Stack>
     ),
     utilitySlot: (
-      <div className="gi-grid-responsive">
-        <div className="gi-col-span-12">
-          <div className="gi-flex gi-flex-col md:gi-flex-row gi-justify-center gi-space-y-4 md:gi-space-y-0">
-            <div className="gi-flex gi-flex-col md:gi-flex-row gi-space-y-3 md:gi-space-y-0 md:gi-space-x-6 gi-text-sm gi-items-center">
-              <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
-                Privacy Policy
-              </Link>
-              <Link noColor href="/cookies" aria-label="Cookies">
-                Cookies
-              </Link>
-              <Link noColor href="/accessibility" aria-label="Accessibility">
-                Accessibility
-              </Link>
-              <Link noColor href="/terms-of-use" aria-label="Terms of Use">
-                Terms of Use
-              </Link>
-              <div className="gi-text-sm">
-                © {new Date().getFullYear()} Government of Ireland.
-              </div>
-            </div>
-          </div>
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+        itemsAlignment="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/cookies" aria-label="Cookies">
+          Cookies
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
         </div>
-      </div>
+      </Stack>
     ),
   },
 };
@@ -252,52 +252,50 @@ export const CompleteFooter: Story = {
 export const SimpleFooter: Story = {
   args: {
     secondarySlot: (
-      <>
-        <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-          <Link noColor href="/about-us" aria-label="About Us">
-            About Us
-          </Link>
-          <Link noColor href="/contact" aria-label="Contact">
-            Contact
-          </Link>
-          <Link noColor href="/sitemap" aria-label="Sitemap">
-            Sitemap
-          </Link>
-          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
-            Privacy Policy
-          </Link>
-          <Link noColor href="/terms-of-service" aria-label="Terms of Service">
-            Terms of Service
-          </Link>
-          <Link noColor href="/careers" aria-label="Careers">
-            Careers
-          </Link>
-          <Link noColor href="/blog" aria-label="Blog">
-            Blog
-          </Link>
-          <Link noColor href="/faq" aria-label="FAQ">
-            FAQ
-          </Link>
-          <Link noColor href="/support" aria-label="Support">
-            Support
-          </Link>
-          <Link noColor href="/press" aria-label="Press">
-            Press
-          </Link>
-          <Link noColor href="/partners" aria-label="Partners">
-            Partners
-          </Link>
-          <Link noColor href="/investors" aria-label="Investors">
-            Investors
-          </Link>
-          <Link noColor href="/events" aria-label="Events">
-            Events
-          </Link>
-        </div>
-      </>
+      <Stack direction={'row'} gap={4} wrap>
+        <Link noColor href="/about-us" aria-label="About Us">
+          About Us
+        </Link>
+        <Link noColor href="/contact" aria-label="Contact">
+          Contact
+        </Link>
+        <Link noColor href="/sitemap" aria-label="Sitemap">
+          Sitemap
+        </Link>
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+          Terms of Service
+        </Link>
+        <Link noColor href="/careers" aria-label="Careers">
+          Careers
+        </Link>
+        <Link noColor href="/blog" aria-label="Blog">
+          Blog
+        </Link>
+        <Link noColor href="/faq" aria-label="FAQ">
+          FAQ
+        </Link>
+        <Link noColor href="/support" aria-label="Support">
+          Support
+        </Link>
+        <Link noColor href="/press" aria-label="Press">
+          Press
+        </Link>
+        <Link noColor href="/partners" aria-label="Partners">
+          Partners
+        </Link>
+        <Link noColor href="/investors" aria-label="Investors">
+          Investors
+        </Link>
+        <Link noColor href="/events" aria-label="Events">
+          Events
+        </Link>
+      </Stack>
     ),
     utilitySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
+      <Stack direction={'row'} gap={4} itemsDistribution="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -307,7 +305,7 @@ export const SimpleFooter: Story = {
         <div className="gi-text-sm">
           © {new Date().getFullYear()} Government of Ireland.
         </div>
-      </div>
+      </Stack>
     ),
   },
 };
@@ -315,7 +313,7 @@ export const SimpleFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     utilitySlot: (
-      <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+      <Stack direction={'row'} gap={4} itemsDistribution="center">
         <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
@@ -325,7 +323,7 @@ export const MinimalFooter: Story = {
         <div className="gi-text-sm">
           © {new Date().getFullYear()} Government of Ireland.
         </div>
-      </div>
+      </Stack>
     ),
   },
 };
