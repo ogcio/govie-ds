@@ -24,16 +24,208 @@ The GOV.IE footer provides copyright, licensing and other information about your
 
 <ComponentContainer fullWidth>
   <Footer
-    utilitySlot={
-      <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
-        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+    primarySlot={
+      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                noColor
+                href="/services/public-services"
+                aria-label="Public Services"
+              >
+                Public Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/services/business-services"
+                aria-label="Business Services"
+              >
+                Business Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/services/online-services"
+                aria-label="Online Services"
+              >
+                Online Services
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                noColor
+                href="/departments/health"
+                aria-label="Department of Health"
+              >
+                Department of Health
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/departments/education"
+                aria-label="Department of Education"
+              >
+                Department of Education
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/departments/finance"
+                aria-label="Department of Finance"
+              >
+                Department of Finance
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link noColor href="/publications/reports" aria-label="Reports">
+                Reports
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/publications/statistics"
+                aria-label="Statistics"
+              >
+                Statistics
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/publications/legislation"
+                aria-label="Legislation"
+              >
+                Legislation
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+          <SectionBreak color="gi-border-gray-100" size="md" />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                noColor
+                href="/contact/find-an-office"
+                aria-label="Find an Office"
+              >
+                Find an Office
+              </Link>
+            </li>
+            <li>
+              <Link
+                noColor
+                href="/contact/phone-directory"
+                aria-label="Phone Directory"
+              >
+                Phone Directory
+              </Link>
+            </li>
+            <li>
+              <Link noColor href="/contact/feedback" aria-label="Feedback">
+                Feedback
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    }
+    secondarySlot={
+      <Stack direction={'column'} gap={4}>
+        <Stack direction={'row'} gap={4} wrap>
+          <Link noColor href="/about-us" aria-label="About Us">
+            About Us
+          </Link>
+          <Link noColor href="/contact" aria-label="Contact">
+            Contact
+          </Link>
+          <Link noColor href="/sitemap" aria-label="Sitemap">
+            Sitemap
+          </Link>
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+            Terms of Service
+          </Link>
+          <Link noColor href="/careers" aria-label="Careers">
+            Careers
+          </Link>
+          <Link noColor href="/blog" aria-label="Blog">
+            Blog
+          </Link>
+          <Link noColor href="/faq" aria-label="FAQ">
+            FAQ
+          </Link>
+          <Link noColor href="/support" aria-label="Support">
+            Support
+          </Link>
+          <Link noColor href="/press" aria-label="Press">
+            Press
+          </Link>
+          <Link noColor href="/partners" aria-label="Partners">
+            Partners
+          </Link>
+          <Link noColor href="/investors" aria-label="Investors">
+            Investors
+          </Link>
+          <Link noColor href="/events" aria-label="Events">
+            Events
+          </Link>
+        </Stack>
+        <Stack direction={'row'} gap={4}>
+          <Icon icon="social_x" />
+          <Icon icon="social_facebook" />
+          <Icon icon="social_bluesky" />
+          <Icon icon="social_linkedin" />
+        </Stack>
+      </Stack>
+    }
+    utilitySlot= {
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+        itemsAlignment="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
           Privacy Policy
         </Link>
-        <Link aria-label="Accessibility" href="/accessibility" noColor>
+        <Link noColor href="/cookies" aria-label="Cookies">
+          Cookies
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
           Accessibility
         </Link>
-        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
-      </div>
+        <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
+        </div>
+      </Stack>
     }
   />
 </ComponentContainer>
@@ -45,39 +237,693 @@ The GOV.IE footer provides copyright, licensing and other information about your
   </TabList>
   <TabPanel value="tab11">        
     ```html
-    <footer class="gi-footer">
-      <div class="gi-footer-container" data-testid="footer">
-        <div class="gi-footer-logo md:gi-ml-auto">
-          <img class="gi-h-16" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg" alt="Gov.ie logo">
-        </div>
+    <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
+      <div class="gi-footer-container">
+          <div aria-label="Primary footer slot">
+              <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+                  <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+                      <h3 class="gi-heading-sm gi-mb-4">Services</h3>
+                      <hr class="gi-section-break-md gi-border-gray-100" role="separator" aria-label="Section break">
+                      <ul class="gi-list-bullet">
+                          <li><a href="/services/public-services" aria-label="Public Services"
+                                  class="gi-link gi-link-inherit">Public Services</a></li>
+                          <li><a href="/services/business-services" aria-label="Business Services"
+                                  class="gi-link gi-link-inherit">Business Services</a></li>
+                          <li><a href="/services/online-services" aria-label="Online Services"
+                                  class="gi-link gi-link-inherit">Online Services</a></li>
+                      </ul>
+                  </div>
+                  <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+                      <h3 class="gi-heading-sm gi-mb-4">Departments</h3>
+                      <hr class="gi-section-break-md gi-border-gray-100" role="separator" aria-label="Section break">
+                      <ul class="gi-list-bullet">
+                          <li><a href="/departments/health" aria-label="Department of Health"
+                                  class="gi-link gi-link-inherit">Department of Health</a></li>
+                          <li><a href="/departments/education" aria-label="Department of Education"
+                                  class="gi-link gi-link-inherit">Department of Education</a></li>
+                          <li><a href="/departments/finance" aria-label="Department of Finance"
+                                  class="gi-link gi-link-inherit">Department of Finance</a></li>
+                      </ul>
+                  </div>
+                  <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+                      <h3 class="gi-heading-sm gi-mb-4">Publications</h3>
+                      <hr class="gi-section-break-md gi-border-gray-100" role="separator" aria-label="Section break">
+                      <ul class="gi-list-bullet">
+                          <li><a href="/publications/reports" aria-label="Reports"
+                                  class="gi-link gi-link-inherit">Reports</a></li>
+                          <li><a href="/publications/statistics" aria-label="Statistics"
+                                  class="gi-link gi-link-inherit">Statistics</a></li>
+                          <li><a href="/publications/legislation" aria-label="Legislation"
+                                  class="gi-link gi-link-inherit">Legislation</a></li>
+                      </ul>
+                  </div>
+                  <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+                      <h3 class="gi-heading-sm gi-mb-4">Contact</h3>
+                      <hr class="gi-section-break-md gi-border-gray-100" role="separator" aria-label="Section break">
+                      <ul class="gi-list-bullet">
+                          <li><a href="/contact/find-an-office" aria-label="Find an Office"
+                                  class="gi-link gi-link-inherit">Find an Office</a></li>
+                          <li><a href="/contact/phone-directory" aria-label="Phone Directory"
+                                  class="gi-link gi-link-inherit">Phone Directory</a></li>
+                          <li><a href="/contact/feedback" aria-label="Feedback"
+                                  class="gi-link gi-link-inherit">Feedback</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <hr class="gi-section-break-lg gi-border-gray-100" role="separator" aria-label="Section break">
+          <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
+              <div class="gi-footer-logo">
+                  <img class="gi-h-16"
+                      src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+                      alt="Gov.ie logo" />
+              </div>
+              <div class="gi-footer-secondary-slot-content">
+                  <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap"
+                      role="region" style="height:100%">
+                      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
+                          role="region" style="height:100%" data-testid="govie-stack-item-0"><a href="/about-us"
+                              aria-label="About Us" class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">About
+                              Us</a><a href="/contact" aria-label="Contact" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-1">Contact</a><a href="/sitemap" aria-label="Sitemap"
+                              class="gi-link gi-link-inherit" data-testid="govie-stack-item-2">Sitemap</a><a
+                              href="/privacy-policy" aria-label="Privacy Policy" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-3">Privacy Policy</a><a href="/terms-of-service"
+                              aria-label="Terms of Service" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-4">Terms of Service</a><a href="/careers" aria-label="Careers"
+                              class="gi-link gi-link-inherit" data-testid="govie-stack-item-5">Careers</a><a href="/blog"
+                              aria-label="Blog" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-6">Blog</a><a href="/faq" aria-label="FAQ"
+                              class="gi-link gi-link-inherit" data-testid="govie-stack-item-7">FAQ</a><a href="/support"
+                              aria-label="Support" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-8">Support</a><a href="/press" aria-label="Press"
+                              class="gi-link gi-link-inherit" data-testid="govie-stack-item-9">Press</a><a
+                              href="/partners" aria-label="Partners" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-10">Partners</a><a href="/investors" aria-label="Investors"
+                              class="gi-link gi-link-inherit" data-testid="govie-stack-item-11">Investors</a><a
+                              href="/events" aria-label="Events" class="gi-link gi-link-inherit"
+                              data-testid="govie-stack-item-12">Events</a></div>
+                      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-nowrap"
+                          role="region" style="height:100%" data-testid="govie-stack-item-1"><svg width="24px"
+                              height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M13.8623 10.4686L21.1542 2H19.4263L13.0947 9.3532L8.03772 2H2.20508L9.85224 13.1193L2.20508 22H3.93312L10.6194 14.2348L15.96 22H21.7926L13.8623 10.4686ZM4.55576 3.29968H7.20993L19.4271 20.7594H16.7729L4.55576 3.29968Z"
+                                  fill="#0B0C0C"></path>
+                          </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M12 1C5.925 1 1 5.95031 1 12.0565C1 17.5999 5.0625 22.1768 10.356 22.9764V14.987H7.6345V12.0807H10.356V10.1468C10.356 6.9449 11.908 5.53921 14.5555 5.53921C15.8235 5.53921 16.494 5.63369 16.8115 5.67692V8.21389H15.0055C13.8815 8.21389 13.489 9.28486 13.489 10.492V12.0807H16.783L16.336 14.987H13.489V23C18.858 22.2678 23 17.6537 23 12.0565C23 5.95031 18.075 1 12 1Z"
+                                  fill="#0B0C0C"></path>
+                          </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M5.76884 3.30802C8.29094 5.20793 11.0042 9.05965 12 11.1266V16.5861C12 16.4699 11.9553 16.6012 11.8591 16.8841C11.3393 18.4158 9.30912 24.394 4.66678 19.6148C2.22237 17.0986 3.354 14.5823 7.8035 13.8226C5.25803 14.2571 2.39631 13.5391 1.61119 10.7237C1.385 9.91387 1 4.92537 1 4.25162C1 0.876681 3.94903 1.93749 5.76884 3.30802ZM18.2312 3.30802C15.7091 5.20793 12.9958 9.05965 12 11.1266V16.5861C12 16.4699 12.0447 16.6012 12.1409 16.8841C12.6607 18.4158 14.6909 24.394 19.3332 19.6148C21.7776 17.0986 20.646 14.5823 16.1965 13.8226C18.742 14.2571 21.6037 13.5391 22.3888 10.7237C22.615 9.91387 23 4.92537 23 4.25162C23 0.876681 20.0513 1.93749 18.2312 3.30802Z"
+                                  fill="#0B0C0C"></path>
+                          </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M21.3719 1C22.2689 1 22.9994 1.71022 22.9994 2.58626V21.4125C22.9994 22.2886 22.2689 23 21.3719 23H2.62264C1.72745 23 1 22.2886 1 21.4125V2.58626C1 1.71022 1.72745 1 2.62264 1H21.3719ZM19.7469 19.7463V13.9885C19.7469 11.1609 19.1364 8.98705 15.8326 8.98705C14.2451 8.98705 13.1804 9.8575 12.7453 10.6828H12.7007V9.24759H9.57286V19.7463H12.8319V14.5536C12.8319 13.184 13.091 11.8571 14.7888 11.8571C16.4633 11.8571 16.4843 13.4233 16.4843 14.6408V19.7463H19.7469ZM7.52588 9.24759H4.25963V19.7463H7.52588V9.24759ZM5.89362 4.02869C4.84566 4.02869 4.00064 4.87646 4.00064 5.92085C4.00064 6.9655 4.84566 7.81323 5.89362 7.81323C6.93745 7.81323 7.78488 6.9655 7.78488 5.92085C7.78488 4.87646 6.93745 4.02869 5.89362 4.02869Z"
+                                  fill="#0B0C0C"></path>
+                          </svg></div>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="gi-footer-utility">
-        <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
-          <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
-          <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
-          <div class="gi-text-sm"> © 2025 Government of Ireland. </div>
-        </div>
+      <div class="gi-footer-utility" aria-label="Utility links">
+          <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
+              role="region" style="height:100%"><a href="/privacy-policy" aria-label="Privacy Policy"
+                  class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">Privacy Policy</a><a href="/cookies"
+                  aria-label="Cookies" class="gi-link gi-link-inherit" data-testid="govie-stack-item-1">Cookies</a><a
+                  href="/accessibility" aria-label="Accessibility" class="gi-link gi-link-inherit"
+                  data-testid="govie-stack-item-2">Accessibility</a><a href="/terms-of-use" aria-label="Terms of Use"
+                  class="gi-link gi-link-inherit" data-testid="govie-stack-item-3">Terms of Use</a>
+              <div class="gi-text-sm" data-testid="govie-stack-item-4">© <!-- -->2025<!-- --> Government of Ireland.</div>
+          </div>
       </div>
     </footer>
     ```
   </TabPanel>
   <TabPanel value="tab12">
-    ```html
+    ```jsx
     import { Footer } from '@govie-ds/react';
 
     <Footer
-      utilitySlot={
-        <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
-          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>Privacy Policy</Link>
-          <Link aria-label="Accessibility" href="/accessibility" noColor>Accessibility</Link>
-          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      primarySlot={
+        <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/services/public-services"
+                  aria-label="Public Services"
+                >
+                  Public Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/services/business-services"
+                  aria-label="Business Services"
+                >
+                  Business Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/services/online-services"
+                  aria-label="Online Services"
+                >
+                  Online Services
+                </Link>
+              </li>
+            </ul>
           </div>
-        }
-      />
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/departments/health"
+                  aria-label="Department of Health"
+                >
+                  Department of Health
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/departments/education"
+                  aria-label="Department of Education"
+                >
+                  Department of Education
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/departments/finance"
+                  aria-label="Department of Finance"
+                >
+                  Department of Finance
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link noColor href="/publications/reports" aria-label="Reports">
+                  Reports
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/publications/statistics"
+                  aria-label="Statistics"
+                >
+                  Statistics
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/publications/legislation"
+                  aria-label="Legislation"
+                >
+                  Legislation
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/contact/find-an-office"
+                  aria-label="Find an Office"
+                >
+                  Find an Office
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/contact/phone-directory"
+                  aria-label="Phone Directory"
+                >
+                  Phone Directory
+                </Link>
+              </li>
+              <li>
+                <Link noColor href="/contact/feedback" aria-label="Feedback">
+                  Feedback
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      }
+      secondarySlot={
+        <Stack direction={'column'} gap={4}>
+          <Stack direction={'row'} gap={4} wrap>
+            <Link noColor href="/about-us" aria-label="About Us">
+              About Us
+            </Link>
+            <Link noColor href="/contact" aria-label="Contact">
+              Contact
+            </Link>
+            <Link noColor href="/sitemap" aria-label="Sitemap">
+              Sitemap
+            </Link>
+            <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+              Privacy Policy
+            </Link>
+            <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+              Terms of Service
+            </Link>
+            <Link noColor href="/careers" aria-label="Careers">
+              Careers
+            </Link>
+            <Link noColor href="/blog" aria-label="Blog">
+              Blog
+            </Link>
+            <Link noColor href="/faq" aria-label="FAQ">
+              FAQ
+            </Link>
+            <Link noColor href="/support" aria-label="Support">
+              Support
+            </Link>
+            <Link noColor href="/press" aria-label="Press">
+              Press
+            </Link>
+            <Link noColor href="/partners" aria-label="Partners">
+              Partners
+            </Link>
+            <Link noColor href="/investors" aria-label="Investors">
+              Investors
+            </Link>
+            <Link noColor href="/events" aria-label="Events">
+              Events
+            </Link>
+          </Stack>
+          <Stack direction={'row'} gap={4}>
+            <Icon icon="social_x" />
+            <Icon icon="social_facebook" />
+            <Icon icon="social_bluesky" />
+            <Icon icon="social_linkedin" />
+          </Stack>
+        </Stack>
+      }
+      utilitySlot= {
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          itemsDistribution="center"
+          itemsAlignment="center"
+        >
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/cookies" aria-label="Cookies">
+            Cookies
+          </Link>
+          <Link noColor href="/accessibility" aria-label="Accessibility">
+            Accessibility
+          </Link>
+          <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+            Terms of Use
+          </Link>
+          <div className="gi-text-sm">
+            © {new Date().getFullYear()} Government of Ireland.
+          </div>
+        </Stack>
+      }
+    />
     ```
 
   </TabPanel>
 </Tabs>
+
+### Without Primary
+
+<ComponentContainer fullWidth>
+  <Footer
+    secondarySlot={
+      <Stack direction={'column'} gap={4}>
+        <Stack direction={'row'} gap={4} wrap>
+          <Link noColor href="/about-us" aria-label="About Us">
+            About Us
+          </Link>
+          <Link noColor href="/contact" aria-label="Contact">
+            Contact
+          </Link>
+          <Link noColor href="/sitemap" aria-label="Sitemap">
+            Sitemap
+          </Link>
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+            Terms of Service
+          </Link>
+          <Link noColor href="/careers" aria-label="Careers">
+            Careers
+          </Link>
+          <Link noColor href="/blog" aria-label="Blog">
+            Blog
+          </Link>
+          <Link noColor href="/faq" aria-label="FAQ">
+            FAQ
+          </Link>
+          <Link noColor href="/support" aria-label="Support">
+            Support
+          </Link>
+          <Link noColor href="/press" aria-label="Press">
+            Press
+          </Link>
+          <Link noColor href="/partners" aria-label="Partners">
+            Partners
+          </Link>
+          <Link noColor href="/investors" aria-label="Investors">
+            Investors
+          </Link>
+          <Link noColor href="/events" aria-label="Events">
+            Events
+          </Link>
+        </Stack>
+        <Stack direction={'row'} gap={4}>
+          <Icon icon="social_x" />
+          <Icon icon="social_facebook" />
+          <Icon icon="social_bluesky" />
+          <Icon icon="social_linkedin" />
+        </Stack>
+      </Stack>
+    }
+    utilitySlot= {
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+        itemsAlignment="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/cookies" aria-label="Cookies">
+          Cookies
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
+        </div>
+      </Stack>
+    }
+  />
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab22">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">        
+    ```html
+    <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
+      <div class="gi-footer-container">
+        <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
+          <div class="gi-footer-logo">
+              <img class="gi-h-16"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+                  alt="Gov.ie logo" />
+          </div>
+          <div class="gi-footer-secondary-slot-content">
+              <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap"
+                  role="region" style="height:100%">
+                  <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
+                      role="region" style="height:100%" data-testid="govie-stack-item-0"><a href="/about-us"
+                          aria-label="About Us" class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">About
+                          Us</a><a href="/contact" aria-label="Contact" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-1">Contact</a><a href="/sitemap" aria-label="Sitemap"
+                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-2">Sitemap</a><a
+                          href="/privacy-policy" aria-label="Privacy Policy" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-3">Privacy Policy</a><a href="/terms-of-service"
+                          aria-label="Terms of Service" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-4">Terms of Service</a><a href="/careers" aria-label="Careers"
+                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-5">Careers</a><a href="/blog"
+                          aria-label="Blog" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-6">Blog</a><a href="/faq" aria-label="FAQ"
+                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-7">FAQ</a><a href="/support"
+                          aria-label="Support" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-8">Support</a><a href="/press" aria-label="Press"
+                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-9">Press</a><a
+                          href="/partners" aria-label="Partners" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-10">Partners</a><a href="/investors" aria-label="Investors"
+                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-11">Investors</a><a
+                          href="/events" aria-label="Events" class="gi-link gi-link-inherit"
+                          data-testid="govie-stack-item-12">Events</a></div>
+                  <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-nowrap"
+                      role="region" style="height:100%" data-testid="govie-stack-item-1"><svg width="24px"
+                          height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M13.8623 10.4686L21.1542 2H19.4263L13.0947 9.3532L8.03772 2H2.20508L9.85224 13.1193L2.20508 22H3.93312L10.6194 14.2348L15.96 22H21.7926L13.8623 10.4686ZM4.55576 3.29968H7.20993L19.4271 20.7594H16.7729L4.55576 3.29968Z"
+                              fill="#0B0C0C"></path>
+                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M12 1C5.925 1 1 5.95031 1 12.0565C1 17.5999 5.0625 22.1768 10.356 22.9764V14.987H7.6345V12.0807H10.356V10.1468C10.356 6.9449 11.908 5.53921 14.5555 5.53921C15.8235 5.53921 16.494 5.63369 16.8115 5.67692V8.21389H15.0055C13.8815 8.21389 13.489 9.28486 13.489 10.492V12.0807H16.783L16.336 14.987H13.489V23C18.858 22.2678 23 17.6537 23 12.0565C23 5.95031 18.075 1 12 1Z"
+                              fill="#0B0C0C"></path>
+                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M5.76884 3.30802C8.29094 5.20793 11.0042 9.05965 12 11.1266V16.5861C12 16.4699 11.9553 16.6012 11.8591 16.8841C11.3393 18.4158 9.30912 24.394 4.66678 19.6148C2.22237 17.0986 3.354 14.5823 7.8035 13.8226C5.25803 14.2571 2.39631 13.5391 1.61119 10.7237C1.385 9.91387 1 4.92537 1 4.25162C1 0.876681 3.94903 1.93749 5.76884 3.30802ZM18.2312 3.30802C15.7091 5.20793 12.9958 9.05965 12 11.1266V16.5861C12 16.4699 12.0447 16.6012 12.1409 16.8841C12.6607 18.4158 14.6909 24.394 19.3332 19.6148C21.7776 17.0986 20.646 14.5823 16.1965 13.8226C18.742 14.2571 21.6037 13.5391 22.3888 10.7237C22.615 9.91387 23 4.92537 23 4.25162C23 0.876681 20.0513 1.93749 18.2312 3.30802Z"
+                              fill="#0B0C0C"></path>
+                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M21.3719 1C22.2689 1 22.9994 1.71022 22.9994 2.58626V21.4125C22.9994 22.2886 22.2689 23 21.3719 23H2.62264C1.72745 23 1 22.2886 1 21.4125V2.58626C1 1.71022 1.72745 1 2.62264 1H21.3719ZM19.7469 19.7463V13.9885C19.7469 11.1609 19.1364 8.98705 15.8326 8.98705C14.2451 8.98705 13.1804 9.8575 12.7453 10.6828H12.7007V9.24759H9.57286V19.7463H12.8319V14.5536C12.8319 13.184 13.091 11.8571 14.7888 11.8571C16.4633 11.8571 16.4843 13.4233 16.4843 14.6408V19.7463H19.7469ZM7.52588 9.24759H4.25963V19.7463H7.52588V9.24759ZM5.89362 4.02869C4.84566 4.02869 4.00064 4.87646 4.00064 5.92085C4.00064 6.9655 4.84566 7.81323 5.89362 7.81323C6.93745 7.81323 7.78488 6.9655 7.78488 5.92085C7.78488 4.87646 6.93745 4.02869 5.89362 4.02869Z"
+                              fill="#0B0C0C"></path>
+                      </svg></div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="gi-footer-utility" aria-label="Utility links">
+        <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
+            role="region" style="height:100%"><a href="/privacy-policy" aria-label="Privacy Policy"
+                class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">Privacy Policy</a><a href="/cookies"
+                aria-label="Cookies" class="gi-link gi-link-inherit" data-testid="govie-stack-item-1">Cookies</a><a
+                href="/accessibility" aria-label="Accessibility" class="gi-link gi-link-inherit"
+                data-testid="govie-stack-item-2">Accessibility</a><a href="/terms-of-use" aria-label="Terms of Use"
+                class="gi-link gi-link-inherit" data-testid="govie-stack-item-3">Terms of Use</a>
+          <div class="gi-text-sm" data-testid="govie-stack-item-4">© <!-- -->2025<!-- --> Government of Ireland.</div>
+        </div>
+      </div>
+    </footer>
+
+    ```
+  </TabPanel>
+  <TabPanel value="tab22">
+    ```jsx
+    import { Footer } from '@govie-ds/react';
+
+    <Footer
+      secondarySlot={
+        <Stack direction={'column'} gap={4}>
+          <Stack direction={'row'} gap={4} wrap>
+            <Link noColor href="/about-us" aria-label="About Us">
+              About Us
+            </Link>
+            <Link noColor href="/contact" aria-label="Contact">
+              Contact
+            </Link>
+            <Link noColor href="/sitemap" aria-label="Sitemap">
+              Sitemap
+            </Link>
+            <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+              Privacy Policy
+            </Link>
+            <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+              Terms of Service
+            </Link>
+            <Link noColor href="/careers" aria-label="Careers">
+              Careers
+            </Link>
+            <Link noColor href="/blog" aria-label="Blog">
+              Blog
+            </Link>
+            <Link noColor href="/faq" aria-label="FAQ">
+              FAQ
+            </Link>
+            <Link noColor href="/support" aria-label="Support">
+              Support
+            </Link>
+            <Link noColor href="/press" aria-label="Press">
+              Press
+            </Link>
+            <Link noColor href="/partners" aria-label="Partners">
+              Partners
+            </Link>
+            <Link noColor href="/investors" aria-label="Investors">
+              Investors
+            </Link>
+            <Link noColor href="/events" aria-label="Events">
+              Events
+            </Link>
+          </Stack>
+          <Stack direction={'row'} gap={4}>
+            <Icon icon="social_x" />
+            <Icon icon="social_facebook" />
+            <Icon icon="social_bluesky" />
+            <Icon icon="social_linkedin" />
+          </Stack>
+        </Stack>
+      }
+      utilitySlot= {
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          itemsDistribution="center"
+          itemsAlignment="center"
+        >
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/cookies" aria-label="Cookies">
+            Cookies
+          </Link>
+          <Link noColor href="/accessibility" aria-label="Accessibility">
+            Accessibility
+          </Link>
+          <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+            Terms of Use
+          </Link>
+          <div className="gi-text-sm">
+            © {new Date().getFullYear()} Government of Ireland.
+          </div>
+        </Stack>
+      }
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
+### Minimal
+
+<ComponentContainer fullWidth>
+  <Footer
+    utilitySlot= {
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+        itemsAlignment="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/cookies" aria-label="Cookies">
+          Cookies
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
+        </div>
+      </Stack>
+    }
+  />
+</ComponentContainer>
+
+<Tabs id="tab3">
+  <TabList>
+    <TabItem value="tab31" checked>HTML</TabItem>
+    <TabItem value="tab32">React</TabItem>
+  </TabList>
+  <TabPanel value="tab31">        
+    ```html
+    <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
+      <div class="gi-footer-container">
+        <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
+          <div class="gi-footer-logo">
+            <img class="gi-h-16"
+              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+              alt="Gov.ie logo" />
+          </div>
+        </div>
+      </div>
+      <div class="gi-footer-utility" aria-label="Utility links">
+        <div
+          class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
+          role="region" style="height:100%"><a href="/privacy-policy" aria-label="Privacy Policy"
+            class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">Privacy Policy</a><a href="/cookies"
+            aria-label="Cookies" class="gi-link gi-link-inherit" data-testid="govie-stack-item-1">Cookies</a><a
+            href="/accessibility" aria-label="Accessibility" class="gi-link gi-link-inherit"
+            data-testid="govie-stack-item-2">Accessibility</a><a href="/terms-of-use" aria-label="Terms of Use"
+            class="gi-link gi-link-inherit" data-testid="govie-stack-item-3">Terms of Use</a>
+          <div class="gi-text-sm" data-testid="govie-stack-item-4">© <!-- -->2025<!-- --> Government of Ireland.</div>
+        </div>
+      </div>
+    </footer>
+    ```
+  </TabPanel>
+  <TabPanel value="tab32">
+    ```jsx
+    import { Footer } from '@govie-ds/react';
+
+    <Footer
+      utilitySlot= {
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          itemsDistribution="center"
+          itemsAlignment="center"
+        >
+          <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+            Privacy Policy
+          </Link>
+          <Link noColor href="/cookies" aria-label="Cookies">
+            Cookies
+          </Link>
+          <Link noColor href="/accessibility" aria-label="Accessibility">
+            Accessibility
+          </Link>
+          <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+            Terms of Use
+          </Link>
+          <div className="gi-text-sm">
+            © {new Date().getFullYear()} Government of Ireland.
+          </div>
+        </Stack>
+      }
+    />
+    ```
+  </TabPanel>
+</Tabs>
+
 
 ## Usage
 
