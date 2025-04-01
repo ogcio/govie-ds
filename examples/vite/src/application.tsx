@@ -11,23 +11,19 @@ import {
   IconButton,
   PhaseBanner,
   Select,
-  TextInput,
   TextArea,
   Tabs,
   TabItem,
   TabPanel,
   TabList,
-  FileUpload,
   Tag,
   Modal,
   Card,
   Button,
   CookieBanner,
   Combobox,
-  Radio,
   Alert,
   Pagination,
-  Checkbox,
   Form,
   DropdownItem,
   HeaderProps,
@@ -36,6 +32,12 @@ import {
   toaster,
   ToastProps,
   InputRadioGroup,
+  InputText,
+  InputFile,
+  InputCheckboxGroup,
+  InputCheckbox,
+  InputRadio,
+  SelectItem,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
@@ -178,34 +180,8 @@ export function App() {
             />
           </TabPanel>
           <TabPanel value="tab3">
-            <TextInput
-              id="text-input-id"
-              error={{
-                text: 'Error: Please correct this issue.',
-              }}
-              hint={{
-                text: 'Hint: This is a helpful hint.',
-              }}
-              label={{
-                text: 'Label',
-                htmlFor: 'text-input-id',
-              }}
-              suffix="KG"
-            />
-            <TextArea
-              error={{
-                text: 'Error: Please correct this issue.',
-              }}
-              hint={{
-                text: 'Hint: This is a helpful hint.',
-              }}
-              id="textarea-id"
-              maxChars={50}
-              label={{
-                text: 'Label',
-                htmlFor: 'textarea-id',
-              }}
-            />
+            <InputText id="text-input-id" suffix="KG" />
+            <TextArea id="textarea-id" maxChars={50} />
             <Form>
               <Combobox>
                 <DropdownItem options={ComboBoxProps.organisationOptions}>
@@ -223,35 +199,12 @@ export function App() {
             <Button onClick={() => toaster.create(toastProps)}>
               Trigger Toast
             </Button>
-            <Select
-              id="unique-id"
-              label={{ text: 'Label' }}
-              options={[
-                {
-                  label: 'Option 1',
-                  value: 'value-1',
-                },
-                {
-                  label: 'Option 2',
-                  value: 'value-2',
-                },
-                {
-                  label: 'Option 3',
-                  value: 'value-3',
-                },
-              ]}
-            />
+            <Select id="unique-id">
+              <SelectItem>Option 1</SelectItem>
+              <SelectItem>Option 2</SelectItem>
+            </Select>
             <hr />
-            <FileUpload
-              error={{
-                text: 'Error: File must be smaller than 5MB.',
-              }}
-              id="file-upload-id"
-              label={{
-                text: 'Upload File',
-                htmlFor: 'file-upload-id',
-              }}
-            />
+            <InputFile id="file-upload-id" />
             <Pagination
               currentPage={currentPage}
               onPageChange={setCurrentPage}
@@ -260,46 +213,19 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <InputCheckboxGroup
-          groupId="field-Id"
-          items={[
-            { label: 'Irish', value: 'irish' },
-            { label: 'British', value: 'british' },
-            {
-              label: 'Citizen of another country',
-              value: 'citizen-of-another-country',
-            },
-          ]}
-        />
+        <InputCheckboxGroup groupId="field-Id">
+          <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
+          <InputCheckbox id="checkbox-id-2" value="value-1" label="Checkbox2" />
+        </InputCheckboxGroup>
         <br />
         <h2>Checkbox</h2>
-        <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <InputRadioGroup
-          title={{
-            value: 'Where do you live?',
-            asHeading: {
-              size: 'md',
-              as: 'h3',
-            },
-          }}
-          items={[
-            {
-              label: 'England',
-              value: 'england',
-            },
-            {
-              label: 'Scotland',
-              value: 'scotland',
-            },
-            {
-              label: 'Ireland',
-              value: 'ireland',
-            },
-          ]}
-          groupId="uniqueId1"
-        />
+        <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
+        <InputRadioGroup groupId="uniqueId1">
+          <InputRadio value="single-radio" label="Radio 1" />
+          <InputRadio value="single-radio" label="Radio 2" />
+        </InputRadioGroup>
         <Heading size="sm">Single Radio</Heading>
-        <Radio value="single-radio" label="Single Radio" />
+        <InputRadio value="single-radio" label="Single Radio" />
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading as="h2">Title</Heading>
           <Paragraph>
