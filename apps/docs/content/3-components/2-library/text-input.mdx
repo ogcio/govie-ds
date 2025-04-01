@@ -4,14 +4,14 @@ description: Text Input HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4008-3093&t=x9tccZ94Zz8w2Tvu-4'
-    status: 'alpha'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6827'
+    status: 'stable'
   - platform: 'global'
     link: '?path=/docs/form-textinput--docs'
-    status: 'alpha'
+    status: 'stable'
   - platform: react
     link: '?path=/docs/form-textinput--docs'
-    status: 'alpha'
+    status: 'stable'
 ---
 
 # Text Input
@@ -25,17 +25,14 @@ The `TextInput` component is used to allow users to enter single-line text, with
 <ComponentContainer>
   <FormField
     hint={{
-      text: 'Hint: This is a helpful hint.'
+      text: 'Hint: This is a helpful hint.',
     }}
     label={{
       htmlFor: 'text-input-id',
-      text: 'Input Label'
+      text: 'Input Label',
     }}
   >
-    <TextInput
-      data-testid="text-input-id"
-      id="text-input-id"
-    />
+    <TextInput data-testid="text-input-id" id="text-input-id" />
   </FormField>
 </ComponentContainer>
 
@@ -77,7 +74,82 @@ The `TextInput` component is used to allow users to enter single-line text, with
   </TabPanel>
 </Tabs>
 
+### With Reset
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-reset-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput clearEnabled data-testid="text-reset-id" id="text-reset-id" />
+  </FormField>
+</ComponentContainer>
+
+### With Prefix/Suffix
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+      prefix="€"
+      suffix="kg"
+    />
+  </FormField>
+</ComponentContainer>
+
+### With Icons
+
+<ComponentContainer>
+  <FormField
+    hint={{
+      text: 'Hint: This is a helpful hint.',
+    }}
+    label={{
+      htmlFor: 'text-input-id',
+      text: 'Input Label',
+    }}
+  >
+    <TextInput
+      data-testid="text-input-id"
+      id="text-input-id"
+      iconStart="add_circle"
+      iconEnd="add_circle"
+    />
+  </FormField>
+</ComponentContainer>
+
 ## Usage
+
+#### Features:
+
+- Includes a built-in reset button to clear the input field.
+- Maintains the same styling and customisation options as the standard input component.
+- Ideal for search fields, dynamic form inputs, or scenarios requiring frequent text updates.
+
+### Text Input Props
+
+- **prefix** (optional): Element or text to display on the left side of the input, such as a unit or symbol.
+- **suffix** (optional): Element or text to display on the right side of the input, such as a unit or symbol.
+- **halfFluid** (optional): If `true`, the text input will take up half the width of the container.
+- **ref** (optional): A reference to the input element.
+- **type** (optional): Specifies the input type.
+- **disabled** (optional): Disable the input.
+- **clearEnabled** (optional): Enhances user experience by displaying a reset (clear) button inside the input field. When enabled, users can quickly clear the input value with a single click. This is particularly useful in forms where users frequently modify or re-enter information. It ensures fast interaction without requiring manual deletion.
+- **Other InputHTMLAttributes** (optional): The component also accepts other standard HTML input attributes, such as `placeholder`, `maxLength`, etc., through the `InputHTMLAttributes` generic props.
 
 ### Best Practices
 
@@ -101,4 +173,3 @@ The `TextInput` component is used to allow users to enter single-line text, with
 ## Status
 
 <ComponentStatusBlock componentId="text-input" />
-

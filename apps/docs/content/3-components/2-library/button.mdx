@@ -8,10 +8,10 @@ libraries:
     status: 'stable'
   - platform: 'global'
     link: '?path=/docs/form-button--docs'
-    status: 'beta'
+    status: 'stable'
   - platform: 'react'
     link: '?path=/docs/form-button--docs'
-    status: 'beta'
+    status: 'stable'
 ---
 
 # Button
@@ -27,7 +27,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -35,15 +34,8 @@ libraries:
   <button id="button" class="gi-btn gi-btn-primary gi-btn-regular">Primary Button</button>
   ```
   </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieButton({
-    "content": 'Primary Button'
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab13">
-  ```react
+  ```jsx
   import { Button } from '@govie-ds/react';
 
   <Button>Primary Button</Button>
@@ -54,34 +46,25 @@ libraries:
 ### Secondary buttons
 
 <ComponentContainer>
-<Button variant="secondary">Secondary Button</Button>
+  <Button variant="secondary">Secondary Button</Button>
 </ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
-  ```html
-  <button id="button" class="gi-btn gi-btn-secondary gi-btn-regular">Secondary Button</button>
-  ```
-  </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-  {{ govieButton({
-    "content": 'Secondary Button',
-    "variant": 'secondary'
-  }) }}
-  ```
+    ```html
+    <button id="button" class="gi-btn gi-btn-secondary gi-btn-regular">Secondary Button</button>
+    ```
   </TabPanel>
   <TabPanel value="tab23">
-  ```html
-  import { Button } from '@govie-ds/react';
-  
-  <Button variant="secondary">Secondary Button</Button>
-  ```
+    ```jsx
+    import { Button } from '@govie-ds/react';
+    
+    <Button variant="secondary">Secondary Button</Button>
+    ```
   </TabPanel>
 </Tabs>
 
@@ -94,7 +77,6 @@ libraries:
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
@@ -102,20 +84,12 @@ libraries:
   <button id="button" class="gi-btn gi-btn-flat gi-btn-regular">Flat Button</button>
   ```
   </TabPanel>
-  <TabPanel value="tab32">
-  ```html
-  {{ govieButton({
-    "content": 'Flat Button',
-    "variant": 'flat'
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab33">
-  ```html
-  import { Button } from '@govie-ds/react';
-  
-  <Button variant="flat">Flat Button</Button>
-  ```
+    ```jsx
+    import { Button } from '@govie-ds/react';
+    
+    <Button variant="flat">Flat Button</Button>
+    ```
   </TabPanel>
 </Tabs>
 
@@ -131,7 +105,6 @@ libraries:
 <Tabs id="tab4">
   <TabList>
     <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab42">Macro</TabItem>
     <TabItem value="tab43">React</TabItem>
   </TabList>
   <TabPanel value="tab41">
@@ -143,22 +116,15 @@ libraries:
   </button>
   ```
   </TabPanel>
-  <TabPanel value="tab42">
-  ```html
-  {{ govieButton({
-    "content": govieIcon({"icon": "thumb_up"}) + 'button'
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab43">
-  ```html
-  import { Button, Icon } from '@govie-ds/react';
-  
-  <Button>
-    <Icon icon="thumb_up" />
-    button
-  </Button>
-  ```
+    ```jsx
+    import { Button, Icon } from '@govie-ds/react';
+    
+    <Button>
+      <Icon icon="thumb_up" />
+      button
+    </Button>
+    ```
   </TabPanel>
 </Tabs>
 
@@ -173,7 +139,6 @@ libraries:
 <Tabs id="tab5">
   <TabList>
     <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab52">Macro</TabItem>
     <TabItem value="tab53">React</TabItem>
   </TabList>
   <TabPanel value="tab51">
@@ -181,21 +146,14 @@ libraries:
   Not available
   ```
   </TabPanel>
-  <TabPanel value="tab52">
-  ```html
-  {{ govieButton({
-    "content": govieIcon({"icon": "thumb_up"})
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab53">
-  ```html
-  import { Button, Icon } from '@govie-ds/react';
-  
-  <Button>
-    <Icon icon="thumb_up" />
-  </Button>
-  ```
+    ```jsx
+    import { Button, Icon } from '@govie-ds/react';
+    
+    <Button>
+      <Icon icon="thumb_up" />
+    </Button>
+    ```
   </TabPanel>
 </Tabs>
 
@@ -210,7 +168,6 @@ libraries:
 <Tabs id="tab6">
   <TabList>
     <TabItem value="tab61" checked>HTML</TabItem>
-    <TabItem value="tab62">Macro</TabItem>
     <TabItem value="tab63">React</TabItem>
   </TabList>
   <TabPanel value="tab61">
@@ -218,22 +175,14 @@ libraries:
   <button id="button" data-module="govie-button" disabled="true" aria-disabled="true" class="gi-btn gi-btn-regular gi-btn-primary-disabled">Disabled button</button>
   ```
   </TabPanel>
-  <TabPanel value="tab62">
-  ```html
-  {{ govieButton({
-    "content": 'Disabled Button',
-    "disabled": true
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab63">
-  ```html
-  import { Button } from '@govie-ds/react';
-  
-  <Button disabled={true}>
-    Disabled Button
-  </Button>
-  ```
+    ```jsx
+    import { Button } from '@govie-ds/react';
+    
+    <Button disabled={true}>
+      Disabled Button
+    </Button>
+    ```
   </TabPanel>
 </Tabs>
 
@@ -248,7 +197,6 @@ libraries:
 <Tabs id="tab7">
   <TabList>
     <TabItem value="tab71" checked>HTML</TabItem>
-    <TabItem value="tab72">Macro</TabItem>
     <TabItem value="tab73">React</TabItem>
   </TabList>
   <TabPanel value="tab71">
@@ -256,26 +204,42 @@ libraries:
   <button class="gi-btn gi-btn-primary-dark gi-btn-regular">Primary Dark</button>
   ```
   </TabPanel>
-  <TabPanel value="tab72">
-  ```html
-  {{ govieButton({
-    "content": 'Dark Button',
-    "appearance": 'light'
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab73">
-  ```html
-  import { Button } from '@govie-ds/react';
-  
-  <Button appearance="light">
-    Dark Button
-  </Button>
-  ```
+    ```jsx
+    import { Button } from '@govie-ds/react';
+    
+    <Button appearance="light">
+      Dark Button
+    </Button>
+    ```
   </TabPanel>
 </Tabs>
 
 ## Usage
+
+### Button Props
+
+- **children** (optional): The content inside the button. Can be a string or any valid React node.
+
+- **variant** (optional): Defines the visual style of the button. Options include:
+
+  - `'primary'`
+  - `'secondary'`
+  - `'flat'`
+
+- **appearance** (optional): Adjusts the overall tone or theme of the button. Options are:
+
+  - `'default'`
+  - `'dark'`
+  - `'light'`
+
+- **size** (optional): Specifies the size of the button. Options include:
+
+  - `'small'`
+  - `'medium'`
+  - `'large'`
+
+- **disabled** (optional): A boolean that, when `true`, disables the button and prevents interaction.
 
 ### Best Practices
 

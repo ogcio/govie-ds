@@ -4,14 +4,14 @@ description: Phase Banner HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1410-9061&p=f&t=TDHF1QkZpdPfgn8m-0'
-    status: 'alpha'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1410-9061'
+    status: 'beta'
   - platform: 'global'
     link: '?path=/docs/typography-phasebanner--docs'
-    status: 'alpha'
+    status: 'beta'
   - platform: react
     link: '?path=/docs/typography-phasebanner--docs'
-    status: 'alpha'
+    status: 'beta'
 ---
 
 # Phase Banner
@@ -23,10 +23,20 @@ Use the phase banner component to show users your service is still being worked 
 ### Alpha
 
 <ComponentContainer>
-  <PhaseBanner level="alpha">This is a new service - your <Link href='/'>feedback</Link> will help us to improve it.</PhaseBanner>
+  <PhaseBanner level="alpha">
+    This is a new service - your <Link href="/">feedback</Link> will help us to
+    improve it.
+  </PhaseBanner>
 </ComponentContainer>
 
 ## Usage
+
+### Phase Banner Props
+
+- **children** (required): The text content of the phase banner.
+
+- **level** (optional): Specifies the level of the phase banner.  
+  Options: `alpha` or `beta`.
 
 ### Best Practices
 

@@ -11,7 +11,7 @@ export class Drawer extends BaseComponent<any> {
   closeIcon: Element | null;
   position: string;
   isOpen: boolean;
-  triggerButtonContainer: Element | null;
+  triggerButton: Element | null;
 
   constructor(options: DrawerOptions) {
     super(options);
@@ -20,8 +20,8 @@ export class Drawer extends BaseComponent<any> {
     this.modalEventListener = this.modalEventListener.bind(this);
     this.closeButtonListener = this.closeButtonListener.bind(this);
 
-    this.triggerButtonContainer = this.query.getByElement({
-      name: 'drawer-trigger-button-container',
+    this.triggerButton = this.query.getByElement({
+      name: 'drawer-trigger-button',
     });
     this.modal = this.query.getByElement({ name: 'modal' });
     this.closeIcon = this.query.getByElement({
@@ -29,7 +29,7 @@ export class Drawer extends BaseComponent<any> {
     }).firstElementChild;
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
-    this.isOpen = !!(this.modal as HTMLElement).dataset?.open;
+    this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
 
     this.initModalState();
   }
@@ -54,7 +54,7 @@ export class Drawer extends BaseComponent<any> {
     this.toggleModalState(true);
   }
 
-  modalEventListener(event: any) {
+  modalEventListener(event: Event) {
     const targetElement = event.target as HTMLElement;
 
     if (targetElement.dataset.element === 'modal') {
@@ -67,7 +67,7 @@ export class Drawer extends BaseComponent<any> {
   }
 
   initComponent() {
-    this.triggerButtonContainer?.addEventListener(
+    this.triggerButton?.addEventListener(
       'click',
       this.triggerButtonEventLister,
     );
@@ -76,7 +76,7 @@ export class Drawer extends BaseComponent<any> {
   }
 
   destroyComponent(): void {
-    this.triggerButtonContainer?.removeEventListener(
+    this.triggerButton?.removeEventListener(
       'click',
       this.triggerButtonEventLister,
     );

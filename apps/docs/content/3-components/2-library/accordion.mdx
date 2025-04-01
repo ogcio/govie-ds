@@ -37,59 +37,44 @@ libraries:
 
 <Tabs id="tab1">
   <TabList>
-    <TabItem value="tab11" checked>Macro</TabItem>
+    <TabItem value="tab11" checked>HTML</TabItem>
     <TabItem value="tab12">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
-    ```html
-    {{ govieAccordion({
-        "aria": {
-          'aria-label': 'Accordion',
-        },
-        "items": [
-            {
-              "label": 'What is the Citizens Information Service?',
-              "content":
-                'The Citizens Information Service provides information on public services and entitlements.',
-            },
-            {
-              "label": 'How can I apply for social welfare benefits?',
-              "content":
-                'To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation,     and submit it online or at your local office.',
-            },
-            {
-              "label": 'How do I get a public service card?',
-              "content":
-                'To obtain a public service card, you need to visit a local service center with identification documents and proof of address.',
-            },
-            {
-              "disabled": "true",
-              "label": 'Can I get financial assistance during a crisis?',
-              "content": "
-                  <button data-element='button-container' data-module='gieds-button' class='gi-btn gi-btn-primary gi-btn-regular'>
-                    Learn More About Financial Assistance
-                  </button>
-              ",
-            },
-          ]
-    }) }}
+  ```html
+  <div data-module="gieds-accordion" role="region">
+    <div class="gi-border-t gi-border-b">
+      <div data-disabled="false" data-icon-start="false" data-default-expanded="false" role="group" class="gi-accordion" tabindex="0">
+        <div id="accordion-header-0" class="gi-accordion-header gi-px-2 gi-py-4 gi-text-md gi-font-bold">What is the Citizens Information Service? <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
+        </div>
+      </div>
+      <div class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal gi-hidden gi-text-md" id="accordion-panel-0" role="region">The Citizens Information Service provides information on public services and entitlements.</div>
+    </div>
+    <div class="gi-border-t">
+      <div data-disabled="false" data-icon-start="false" data-default-expanded="false" role="group" class="gi-accordion" tabindex="0">
+        <div id="accordion-header-1" class="gi-accordion-header gi-px-2 gi-py-4 gi-text-md gi-font-bold">How can I apply for social welfare benefits? <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
+        </div>
+      </div>
+      <div class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal gi-hidden gi-text-md" id="accordion-panel-1" role="region">To apply for social welfare benefits, you need to fill out an application form, provide necessary documentation, and submit it online or at your local office.</div>
+    </div>
+  </div>  
   ```
-</TabPanel>
-<TabPanel value="tab12">
-    ```react
-      import {(Accordion, AccordionItem)} from '@govie-ds/react';
-      <Accordion>
-        <AccordionItem label="What is the Citizens Information Service?">
-              The Citizens Information Service provides information on public
-              services and entitlements...
-        </AccordionItem>
-        <AccordionItem label="How can I apply for social welfare benefits?">
-              To apply for social welfare benefits, you need to fill out an
-              application form...
-        </AccordionItem>
-      </Accordion>
-      ```
-</TabPanel>
+  </TabPanel>
+  <TabPanel value="tab12">
+  ```jsx
+    import {(Accordion, AccordionItem)} from '@govie-ds/react';
+    <Accordion>
+      <AccordionItem label="What is the Citizens Information Service?">
+            The Citizens Information Service provides information on public
+            services and entitlements...
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+            To apply for social welfare benefits, you need to fill out an
+            application form...
+      </AccordionItem>
+    </Accordion>
+    ```
+  </TabPanel>
 </Tabs>
 
 ### Accordion with Icon on the Left
@@ -108,38 +93,34 @@ libraries:
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>
-      Macro
+      HTML
     </TabItem>
     <TabItem  value="tab22">
       React
     </TabItem>
   </TabList>
   <TabPanel value="tab21">
-      ```html
-      {{ govieAccordion({
-            "aria": {
-              'aria-label': 'Accordion',
-            },
-            "iconStart": "true",
-            "items": [
-                {
-                  "label": "Label1",
-                  "content":
-                    "This is a content paragraph",
-                },
-                {
-                  "label": "Label2",
-                  "content":
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
-                    eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum
-                    omnis harum quaerat eius praesentium a at perferendis quisquam hic.",
-                },
-              ]
-        }) }}
-      ```
-    </TabPanel>
+  ```html
+  <div data-module="gieds-accordion" role="region">
+    <div class="gi-border-t gi-border-b">
+      <div data-disabled="false" data-icon-start="true" data-default-expanded="false" role="group" class="gi-accordion" tabindex="0">
+        <div id="accordion-header-0" class="gi-accordion-header gi-px-2 gi-py-4 gi-text-md gi-font-bold">Label 1 <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
+        </div>
+      </div>
+      <div class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal gi-hidden gi-text-md" id="accordion-panel-0" role="region">This is a content paragraph paragraph</div>
+    </div>
+    <div class="gi-border-t">
+      <div data-disabled="false" data-icon-start="true" data-default-expanded="false" role="group" class="gi-accordion" tabindex="0">
+        <div id="accordion-header-1" class="gi-accordion-header gi-px-2 gi-py-4 gi-text-md gi-font-bold">Label 2 <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
+        </div>
+      </div>
+      <div class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal gi-hidden gi-text-md" id="accordion-panel-1" role="region">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus eveniet ex officiis accusantium sint eius deleniti cumque? Iste voluptatum omnis harum quaerat eius praesentium a at perferendis quisquam hic.</div>
+    </div>
+  </div>
+  ```
+  </TabPanel>
   <TabPanel value="tab22">
-    ```react
+    ```jsx
      import {(Accordion, AccordionItem)} from '@govie-ds/react';
     <Accordion iconStart={true}>
       <AccordionItem label="Label1">This is a content paragraph
@@ -164,7 +145,7 @@ libraries:
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>
-      Macro
+      HTML
     </TabItem>
     <TabItem value="tab32">
       React
@@ -172,24 +153,21 @@ libraries:
   </TabList>
   <TabPanel value="tab31">
     ```html
-      {{ govieAccordion({
-            "aria": {
-              'aria-label': 'Accordion',
-            },
-            "iconStart": "true",
-            "items": [
-                {
-                  "label": "Disabled Accordion",
-                  "content":
-                    "This is the content disabled",
-                  "disabled": "true"
-                },
-              ]
-        }) }}
+    <div data-module="gieds-accordion" role="region">
+      <div class="gi-border-t">
+        <div data-disabled="true" data-icon-start="true" data-default-expanded="false" role="group" class="gi-accordion" tabindex="0">
+          <div id="accordion-header-3" class="gi-accordion-header gi-px-2 gi-py-4 gi-text-md gi-font-bold">Disabled Accordion <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
+          </div>
+        </div>
+        <div class="gi-px-2 gi-pb-4 gi-pt-2 gi-font-normal gi-hidden gi-text-md" id="accordion-panel-3" role="region">
+          This is the content disabled
+        </div>
+      </div>
+    </div>
     ```
     </TabPanel>
   <TabPanel value="tab32">
-  ```react
+  ```jsx
    import {(Accordion, AccordionItem)} from '@govie-ds/react';
   <Accordion>
     <AccordionItem disabled label="Disabled Accordion">
@@ -201,6 +179,23 @@ libraries:
 </Tabs>
 
 ## Usage
+
+### Accordion Props
+
+- **children** (required): An array of `AccordionItem` components that represent the content of each accordion section.
+- **iconStart** (optional): A boolean indicating whether icons should appear on the **left** (`true`) or **right** (`false`) of the accordion label.
+- **dataTestid** (optional): A string used to assign a custom test ID to the Accordion component for testing purposes.
+- **variant** (optional): A string that determines the style and padding of the Accordion. Can be either `'default'` or `'small'`.
+
+### AccordionItem Props
+
+- **children** (required): The content to display inside the accordion panel when expanded.
+- **label** (required): A string used as the title or header for the accordion item.
+- **defaultExpanded** (optional): A boolean that, when `true`, expands the item by default on initial render.
+- **disabled** (optional): A boolean that disables interaction with the accordion item.
+- **dataTestid** (optional): A string used to assign a custom test ID to the individual accordion item for testing purposes.
+- **iconStart** (optional): A boolean indicating whether the icon should appear on the **left** (`true`) or **right** (`false`) of the label.
+- **variant** (optional): A string defining the style and padding of the item. Accepts `'default'` or `'small'`.
 
 ### Best Practices
 

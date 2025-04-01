@@ -1,85 +1,103 @@
+'use client';
+import { ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
-import { Container } from '../container/container.js';
+import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
+import { cn } from '../cn.js';
+import { LogoProps } from '../common/types.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
 
-type FooterLink = {
-  label: string;
-  href: string;
-  external?: boolean;
-};
-
 export type FooterProps = {
-  links?: FooterLink[];
-  secondaryNavLinks?: {
-    heading: string;
-    links: FooterLink[];
-  }[];
+  primarySlot?: ReactNode;
+  secondarySlot?: ReactNode;
+  utilitySlot?: ReactNode;
+  logo?: LogoProps;
+  className?: string;
   dataTestid?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export function Footer({ links, secondaryNavLinks, dataTestid }: FooterProps) {
+function getLogo({ logo }: FooterProps) {
+  const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
+  const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
+  const svgDesktopString = btoa(
+    renderToStaticMarkup(<GovieLogoHarpWithText />),
+  );
+  const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
+
+  return (
+    <picture>
+      <source srcSet={logo?.imageLarge || svgDataUriDesktop} />
+      <img
+        className="gi-h-16"
+        src={logo?.imageSmall || svgDataUriMobile}
+        alt={logo?.alt || 'Gov.ie logo'}
+      />
+    </picture>
+  );
+}
+
+export function Footer({
+  primarySlot,
+  secondarySlot,
+  utilitySlot,
+  logo,
+  className = '',
+  dataTestid,
+  ...props
+}: FooterProps) {
+  const renderLogo = () => {
+    return (
+      <>
+        {logo?.href && (
+          <Anchor
+            href={logo.href}
+            aria-label="Go to the home page"
+            data-testid={`logo-link`}
+            external={logo.external}
+          >
+            {getLogo({ logo })}
+          </Anchor>
+        )}
+        {!logo?.href && getLogo({ logo })}
+      </>
+    );
+  };
   return (
     <footer
-      className="gi-footer"
+      className={cn('gi-footer', className)}
       data-module="gieds-footer"
       role="contentinfo"
       aria-label="Footer"
       data-testid={dataTestid}
+      {...props}
     >
-      <Container>
-        {secondaryNavLinks && (
-          <div className="footer-secondary-nav-links">
-            {secondaryNavLinks.map((secondaryNav, navIndex) => (
-              <div key={`div-${navIndex}-${navIndex}`}>
-                <div className="gi-heading-md" id={`secondary-nav-${navIndex}`}>
-                  {secondaryNav.heading}
-                </div>
-                <SectionBreak size="md" />
-                <ul aria-labelledby={`secondary-nav-${navIndex}`}>
-                  {secondaryNav.links.map((link, index) => (
-                    <li
-                      data-testid={`secondary-${navIndex}-${index}`}
-                      key={`secondary-${navIndex}-${index}`}
-                    >
-                      <Anchor
-                        aria-label={link.label}
-                        href={link.href}
-                        external={link.external}
-                      >
-                        {link.label}
-                      </Anchor>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+      <div className="gi-footer-container">
+        {primarySlot && (
+          <div aria-label="Primary footer slot">{primarySlot}</div>
         )}
-        <div className="footer-primary-nav-links">
-          {links && (
-            <ul>
-              {links.map((link, index) => (
-                <li
-                  data-testid={`main-link-${index}`}
-                  key={`main-link-${index}`}
-                >
-                  <Anchor
-                    href={link.href}
-                    external={link.external}
-                    aria-label={link.label}
-                  >
-                    {link.label}
-                  </Anchor>
-                </li>
-              ))}
-            </ul>
+
+        {primarySlot && secondarySlot && (
+          <SectionBreak color="gi-border-gray-100" size="lg" />
+        )}
+
+        <div
+          className="gi-footer-secondary-slot"
+          aria-label="Secondary footer slot"
+        >
+          <div className="gi-footer-logo">{renderLogo()}</div>
+          {secondarySlot && (
+            <div className="gi-footer-secondary-slot-content">
+              {secondarySlot}
+            </div>
           )}
-          <div className="logo-container">
-            <GovieLogoHarpWithText />
-          </div>
         </div>
-      </Container>
+      </div>
+      {utilitySlot && (
+        <div className="gi-footer-utility" aria-label="Utility links">
+          {utilitySlot}
+        </div>
+      )}
     </footer>
   );
 }

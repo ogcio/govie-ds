@@ -30,7 +30,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11">HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -44,14 +43,6 @@ libraries:
       ">
       thumb_up
     </span>
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-    {{ govieIcon({
-      "icon": "thumb_up",
-      "size": "sm"
-    }) }}
   ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -69,6 +60,38 @@ libraries:
 
 ## Usage
 
+### Icon Props
+
+- **icon** (optional): Specifies the name of the icon.
+
+  - The value should be a string representing the name of the icon.
+  - Example: `home`, `search`, `user`
+
+- **size** (optional): Specifies the size of the icon.
+
+  - Options: `sm`, `md`, `lg`, `xl`
+  - The control for this prop is a string, allowing the user to set the icon size.
+
+- **filled** (optional): Specifies whether the icon has a filled style.
+
+  - The control for this prop is a boolean, allowing the user to toggle between a filled or outlined style for the icon.
+
+- **disabled** (optional): Specifies whether the icon is disabled.
+
+  - The control for this prop is a boolean, allowing the user to enable or disable the icon.
+
+- **ariaHidden** (optional): Hides non-interactive content from accessibility tools.
+
+  - The value should be a string, typically set to `true` or `false` to control whether the icon should be accessible.
+
+- **ariaLabel** (optional): Defines a string value that can be used to name an element for accessibility purposes.
+
+  - The value should be a string that describes the icon for users relying on screen readers.
+
+- **inline** (optional): Specifies whether the icon should be displayed as inline.
+
+  - The control for this prop is a boolean, allowing the user to toggle the icon between inline and block display styles.
+
 ### Best Practices
 
 ### When to use this component
@@ -82,4 +105,3 @@ Avoid using icons as the sole indicator of critical information, as they can be 
 ## Status
 
 <ComponentStatusBlock componentId="icon" />
-

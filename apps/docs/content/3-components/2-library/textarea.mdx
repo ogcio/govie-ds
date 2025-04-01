@@ -4,14 +4,14 @@ description: Textarea HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4008-3141&t=x9tccZ94Zz8w2Tvu-4'
-    status: 'alpha'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6828'
+    status: 'stable'
   - platform: 'global'
     link: '?path=/docs/form-textarea--docs'
-    status: 'alpha'
+    status: 'stable'
   - platform: react
     link: '?path=/docs/form-textarea--docs'
-    status: 'alpha'
+    status: 'stable'
 ---
 
 # Textarea
@@ -86,66 +86,82 @@ The `Textarea` component allows users to input multi-line text. It's ideal for l
 <ComponentContainer>
   <FormField
     hint={{
-      text: 'Hint: This is a helpful hint.'
+      text: 'Hint: This is a helpful hint.',
     }}
     label={{
       htmlFor: 'textarea-id-5',
-      text: 'Label'
+      text: 'Label',
     }}
   >
-    <TextArea
-      data-testid="textarea-id-5"
-      id="textarea-id-5"
-      maxChars={30}
-    />
+    <TextArea data-testid="textarea-id-5" id="textarea-id-5" maxChars={30} />
   </FormField>
 </ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
-    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab21" checked>
+      HTML
+    </TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
-  ```html
-  <fieldset class="">
-    <label class="gi-text-md gi-label gi-mb-1" for="textarea-id-5">Label</label>
-    <div class="gi-hint-text-md gi-hint-text gi-mb-1">Hint: This is a helpful hint.</div>
-    <div >
-      <div class="gi-textarea-container" data-module="gieds-textarea">
-        <textarea rows="4" cols="100" autocomplete="on" class="gi-textarea" maxlength="30" id="textarea-id-5" data-testid="textarea-id-5"></textarea>
+    ```html
+    <fieldset class="">
+      <label class="gi-text-md gi-label gi-mb-1" for="textarea-id-5">
+        Label
+      </label>
+      <div class="gi-hint-text-md gi-hint-text gi-mb-1">
+        Hint: This is a helpful hint.
       </div>
-      <div class="gi-textarea-remaining-chars">
-        <div class="gi-hint-text-md gi-hint-text">You have 30 characters remaining</div>
+      <div>
+        <div class="gi-textarea-container" data-module="gieds-textarea">
+          <textarea
+            rows="4"
+            cols="100"
+            autocomplete="on"
+            class="gi-textarea"
+            maxlength="30"
+            id="textarea-id-5"
+            data-testid="textarea-id-5"
+          ></textarea>
+        </div>
+        <div class="gi-textarea-remaining-chars">
+          <div class="gi-hint-text-md gi-hint-text">
+            You have 30 characters remaining
+          </div>
+        </div>
       </div>
-    </div>
-  </fieldset>
-  ```
+    </fieldset>
+    ```
   </TabPanel>
   <TabPanel value="tab23">
-  ```jsx
-  import { FormField, TextArea } from '@govie-ds/textarea';
-  
-  <FormField
-    hint={{
-      text: 'Hint: This is a helpful hint.'
-    }}
-    label={{
-      htmlFor: 'textarea-id-5',
-      text: 'Label'
-    }}
-  >
-    <TextArea
-      data-testid="textarea-id-5"
-      id="textarea-id-5"
-      maxChars={30}
-    />
-  </FormField>
-  ```
+    ```jsx import {(FormField, TextArea)} from '@govie-ds/textarea';
+    <FormField
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+      label={{
+        htmlFor: 'textarea-id-5',
+        text: 'Label',
+      }}
+    >
+      <TextArea data-testid="textarea-id-5" id="textarea-id-5" maxChars={30} />
+    </FormField>
+    ```
   </TabPanel>
 </Tabs>
 
 ## Usage
+
+### Text Area Props
+
+- **ref** (optional): A reference to the text area element.
+- **rows** (optional): The number of visible text lines for the text area.
+- **cols** (optional): The visible width of the text area in characters.
+- **autoComplete** (optional): Specifies whether the browser should automatically complete the input.
+- **maxChars** (optional): The maximum number of characters allowed in the text area.
+- **halfFluid** (optional): If `true`, the text area will take up half the width of the container.
+- **Other TextareaHTMLAttributes** (optional): The component also accepts other standard HTML textarea attributes, such as `placeholder`, `disabled`, `readOnly`, etc., through the `TextareaHTMLAttributes` generic props.
 
 ### Best Practices
 
@@ -168,4 +184,3 @@ The `Textarea` component allows users to input multi-line text. It's ideal for l
 ## Status
 
 <ComponentStatusBlock componentId="textarea" />
-

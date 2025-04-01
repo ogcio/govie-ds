@@ -8,10 +8,10 @@ libraries:
     status: 'stable'
   - platform: 'global'
     link: '?path=/docs/application-alert--docs'
-    status: 'beta'
+    status: 'stable'
   - platform: 'react'
     link: '?path=/docs/application-alert--docs'
-    status: 'beta'
+    status: 'stable'
 ---
 
 # Alert
@@ -22,14 +22,13 @@ libraries:
 
 <ComponentContainer>
   <Alert title="Info">
-      <Paragraph>This is a info Alert</Paragraph>
+    <Paragraph>This is a info Alert</Paragraph>
   </Alert>
 </ComponentContainer>
 
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -37,16 +36,8 @@ libraries:
   <div class="gi-alert-base gi-alert-info" role="alert"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">info</span><div class="gi-alert-container"><p class="gi-alert-title">Info</p><div class="mb-2xl stroke-gray-950"><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is a info Alert</p></div></div></div>
   ```
   </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-  {{ govieAlert({
-    "title": "Info",
-    "children": "<p>This is a info Alert</p>"
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab13">
-  ```react
+  ```jsx
   import { Alert } from '@govie-ds/react';
 
   <Alert title="Info">
@@ -60,14 +51,13 @@ libraries:
 
 <ComponentContainer>
   <Alert title="Success" variant="success">
-      <Paragraph>This is a success Alert</Paragraph>
+    <Paragraph>This is a success Alert</Paragraph>
   </Alert>
 </ComponentContainer>
 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
@@ -75,17 +65,8 @@ libraries:
   <div class="gi-alert-base gi-alert-success" role="alert"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">check_circle</span><div class="gi-alert-container"><p class="gi-alert-title">Success</p><div class="mb-2xl stroke-gray-950"><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is a success Alert</p></div></div></div>
   ```
   </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-  {{ govieAlert({
-    "title": "Success",
-    "variant": "success",
-    "children": "<p>This is a success Alert</p>"
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab23">
-  ```react
+  ```jsx
   import { Alert } from '@govie-ds/react';
 
   <Alert title="Success" variant="success">
@@ -99,14 +80,13 @@ libraries:
 
 <ComponentContainer>
   <Alert title="Error" variant="danger">
-      <Paragraph>This is an error Alert</Paragraph>
+    <Paragraph>This is an error Alert</Paragraph>
   </Alert>
 </ComponentContainer>
 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
@@ -114,17 +94,8 @@ libraries:
   <div class="gi-alert-base gi-alert-danger" role="alert"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">error</span><div class="gi-alert-container"><p class="gi-alert-title">Error</p><div class="mb-2xl stroke-gray-950"><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is an error Alert</p></div></div></div>
   ```
   </TabPanel>
-  <TabPanel value="tab32">
-  ```html
-  {{ govieAlert({
-    "title": "Danger",
-    "variant": "danger",
-    "children": "<p>This is an error Alert</p>"
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab33">
-  ```react
+  ```jsx
   import { Alert } from '@govie-ds/react';
 
   <Alert title="Error" variant="danger">
@@ -138,14 +109,13 @@ libraries:
 
 <ComponentContainer>
   <Alert title="Warning" variant="warning">
-      <Paragraph>This is a warning Alert</Paragraph>
+    <Paragraph>This is a warning Alert</Paragraph>
   </Alert>
 </ComponentContainer>
 
 <Tabs id="tab4">
   <TabList>
     <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab42">Macro</TabItem>
     <TabItem value="tab43">React</TabItem>
   </TabList>
   <TabPanel value="tab41">
@@ -153,17 +123,8 @@ libraries:
   <div class="gi-alert-base gi-alert-warning" role="alert"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">warning</span><div class="gi-alert-container"><p class="gi-alert-title">Warning</p><div class="mb-2xl stroke-gray-950"><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is a warning Alert</p></div></div></div>
   ```
   </TabPanel>
-  <TabPanel value="tab42">
-  ```html
-  {{ govieAlert({
-    "title": "Warning",
-    "variant": "warning",
-    "children": "<p>This is a warning Alert</p>"
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab43">
-  ```react
+  ```jsx
   import { Alert } from '@govie-ds/react';
 
   <Alert title="Warning" variant="warning">
@@ -177,14 +138,13 @@ libraries:
 
 <ComponentContainer>
   <Alert title="Dismissible" dismissible>
-      <Paragraph>This is a dismissible Alert</Paragraph>
+    <Paragraph>This is a dismissible Alert</Paragraph>
   </Alert>
 </ComponentContainer>
 
 <Tabs id="tab5">
   <TabList>
     <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab52">Macro</TabItem>
     <TabItem value="tab53">React</TabItem>
   </TabList>
   <TabPanel value="tab51">
@@ -192,17 +152,8 @@ libraries:
   <div class="gi-alert-base-dismissible gi-alert-info" role="alert"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 24px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">info</span><div class="gi-alert-container"><p class="gi-alert-title">Dismissible</p><div class="mb-2xl stroke-gray-950"><p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">This is a Dismissible Alert</p></div></div><buttonflat-small-undefined" class="gi-btn gi-btn-flat-dark gi-icon-btn-small undefined gi-alert-dismiss"><span role="presentation" class="material-symbols-outlined   gi-block" style="font-size: 16px; font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">close</span></button></div>
   ```
   </TabPanel>
-  <TabPanel value="tab52">
-  ```html
-  {{ govieAlert({
-    "title": "Dismissible",
-    "dismissible": true,
-    "children": "<p>This is a dismissible Alert</p>"
-  }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab53">
-  ```react
+  ```jsx
   import { Alert } from '@govie-ds/react';
 
   <Alert title="Dismissible" dismissible>
@@ -214,12 +165,27 @@ libraries:
 
 ## Usage
 
+### Alert Props
+
+- **variant** (optional): A string that defines the style of the alert. Options include:
+
+  - `'info'`
+  - `'danger'`
+  - `'success'`
+  - `'warning'`
+
+- **title** (optional): A string representing the title displayed at the top of the alert.
+- **dismissible** (optional): A boolean that determines whether the alert can be closed by the user.
+- **children** (optional): The content (HTML or text) displayed inside the alert body.
+- **onClose** (optional): A callback function triggered when the alert is dismissed.
+
 ### Best Practices
 
 ### When to use this component
 
 An alert may be a notification that keeps people informed of the status of the system and may or may not require the user to respond. Such notifications may be errors, warnings, and general updates.
 This component replace the following components in local library:
+
 - [Error Summary](https://storybook.design-system.ogcio.gov.ie/?path=/docs/typography-error-summary--docs)
 - [Warning Text](https://storybook.design-system.ogcio.gov.ie/?path=/docs/typography-warning-text--docs)
 - [Notification Panel](https://storybook.design-system.ogcio.gov.ie/?path=/docs/layout-notification-panel--docs)

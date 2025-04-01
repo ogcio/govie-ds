@@ -1,34 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import {
-  drawerBody,
-  drawerTriggerButton,
-  drawerFooter,
-} from './drawer.content.ts';
-import html from './drawer.html?raw';
-import { DrawerProps } from './drawer.schema';
+import { ButtonProps } from '../button/types.ts';
+import { createDrawer } from '../helpers/modal.tsx';
+import { beautifyHtmlNode } from '../storybook/storybook.tsx';
+import { drawerBody, drawerFooter } from './drawer.content.ts';
+import { DrawerWrapperProps } from './types.ts';
 
-const macro = { name: 'govieDrawer', html };
+type DrawerWrapperPropsExtension = DrawerWrapperProps & {
+  triggerButton?: ButtonProps;
+};
 
-const Drawer = renderComponent<DrawerProps>(macro);
-
-const meta = {
-  component: Drawer,
+const meta: Meta<DrawerWrapperPropsExtension> = {
   title: 'Application/Drawer',
-  parameters: {
-    macro,
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        component:
-          'A drawer component that slides from the left, right, or bottom and can be triggered by a button.',
-      },
-    },
-  },
-} satisfies Meta<typeof Drawer>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<DrawerWrapperPropsExtension>;
+
+const createElement = (arguments_: DrawerWrapperPropsExtension) => {
+  const component = createDrawer(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -64,22 +55,20 @@ export const Default: Story = {
     },
   },
   args: {
-    triggerButton: drawerTriggerButton,
+    triggerButton: { content: 'Open Modal' },
     body: drawerBody,
     position: 'right',
   },
+  render: createElement,
 };
 
 export const DrawerOpen: Story = {
   args: {
-    triggerButton: drawerTriggerButton,
+    triggerButton: { content: 'Open Modal' },
     body: drawerBody,
     position: 'right',
     startsOpen: true,
     footer: drawerFooter,
-    aria: {
-      'aria-labelledby': 'drawer-title',
-      'aria-describedby': 'drawer-title',
-    },
   },
+  render: createElement,
 };

@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.1.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.1...html-lib-v1.1.2) (2025-03-31)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.4
+    * @govie-ds/prettier-config bumped to 1.0.5
+    * @govie-ds/tailwind bumped to 1.2.2
+    * @govie-ds/theme-govie bumped to 1.2.2
+
+## [1.1.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.0...html-lib-v1.1.1) (2025-03-31)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.3
+    * @govie-ds/prettier-config bumped to 1.0.4
+    * @govie-ds/tailwind bumped to 1.2.1
+    * @govie-ds/theme-govie bumped to 1.2.1
+
+## [1.1.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.0.2...html-lib-v1.1.0) (2025-03-26)
+
+
+### Features
+
+* update footer with slots ([#477](https://github.com/ogcio/govie-ds/issues/477)) ([2cd79bd](https://github.com/ogcio/govie-ds/commit/2cd79bd56bfd9df2a36bab1762e2334df9ee1c92))
+
+
+### Bug Fixes
+
+* table component cell alignment ([#485](https://github.com/ogcio/govie-ds/issues/485)) ([f6a0678](https://github.com/ogcio/govie-ds/commit/f6a06784f4a727fa1b7f318d214078e0030bcd38))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.2
+    * @govie-ds/prettier-config bumped to 1.0.3
+    * @govie-ds/tailwind bumped to 1.2.0
+    * @govie-ds/theme-govie bumped to 1.2.0
+
 ## [1.0.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.0.1...html-lib-v1.0.2) (2025-03-18)
 
 

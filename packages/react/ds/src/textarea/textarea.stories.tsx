@@ -53,6 +53,14 @@ const meta = {
         type: { summary: 'Behavior' },
       },
     },
+    iconStart: {
+      description: 'Optional icon displayed at the start of the input field.',
+      control: 'text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
   },
 } satisfies Meta<typeof TextArea>;
 
@@ -104,7 +112,7 @@ export const ResponsiveWidthWithTextInput: Story = {
     };
     return (
       <div className="gi-w-full md:gi-w-1/2">
-        <Stack direction={{ base: 'column' }} gap={3}>
+        <Stack direction={{ base: 'column' }} gap={3} itemsAlignment="stretch">
           <FormField
             label={{
               text: 'Input Label',
@@ -310,44 +318,67 @@ export const WithHalfWidth: Story = {
   ),
 };
 
-export const AllStates: Story = {
-  render: () => (
-    <div className="gi-gap-4">
-      <FormField
-        label={{
-          text: 'Default',
-          htmlFor: 'default-textarea',
-        }}
-      >
-        <TextArea id="default-textarea" />
-      </FormField>
-      <br />
-      <FormField
-        label={{
-          text: 'Focus',
-          htmlFor: 'focus-textarea',
-        }}
-      >
-        <TextArea id="focus-textarea" />
-      </FormField>
-      <br />
-      <FormField
-        label={{
-          text: 'Disabled',
-          htmlFor: 'textarea-disabled',
-        }}
-      >
-        <TextArea
-          id="textarea-disabled"
-          value="This field is disabled"
-          disabled
-        />
-      </FormField>
-    </div>
-  ),
+export const AllVariantsStates: Story = {
+  render: () => {
+    return (
+      <Stack gap={4} itemsAlignment="stretch">
+        <FormField
+          label={{
+            text: 'Default',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextArea iconStart="placeholder" placeholder="Placeholder" />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Focus',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextArea
+            className="focus-input"
+            iconStart="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Error',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+          error={{
+            text: 'Invalid',
+          }}
+        >
+          <TextArea iconStart="placeholder" placeholder="Placeholder" />
+        </FormField>
+        <FormField
+          label={{
+            text: 'Disabled',
+          }}
+          hint={{
+            text: 'Support text',
+          }}
+        >
+          <TextArea
+            disabled
+            iconStart="placeholder"
+            placeholder="Placeholder"
+          />
+        </FormField>
+      </Stack>
+    );
+  },
   parameters: {
     pseudo: {
-      focus: '#focus-textarea',
+      focus: '.focus-input',
     },
   },
 };

@@ -8,10 +8,10 @@ libraries:
     status: 'stable'
   - platform: 'global'
     link: '?path=/docs/form-iconbutton--docs'
-    status: 'beta'
+    status: 'stable'
   - platform: 'react'
     link: '?path=/docs/form-iconbutton--docs'
-    status: 'beta'
+    status: 'stable'
 ---
 
 # Icon Button
@@ -36,7 +36,6 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">
@@ -56,17 +55,6 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
     </button>
     ```
   </TabPanel>
-  <TabPanel value="tab32">
-    ```html
-    {{ govieIconButton({
-      "icon": {
-        "icon": "thumb_up"
-      }
-    }) }}
-
-    ```
-
-  </TabPanel>
   <TabPanel value="tab33">
     ```html
     import { IconButton } from "@govie-ds/react";
@@ -82,6 +70,32 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 </Tabs>
 
 ## Usage
+
+### Icon Button Props
+
+- **icon** (optional): Specifies the Icon component that the button will accept.
+
+  - The value should be a string representing the icon's identifier or name.
+  - Example: `edit`, `delete`
+
+- **variant** (optional): Defines the variant style of the button.
+
+  - Options: `primary`, `secondary`, `flat`
+  - The control for this prop is a string, allowing the user to set the button variants.
+
+- **appearance** (optional): Specifies the visual appearance style of the button.
+
+  - Options: `default`, `dark`, `light`
+  - The control for this prop is a string, allowing the user to set the button's appearance.
+
+- **size** (optional): Defines the size of the button.
+
+  - Options: `medium`, `small`, `large`
+  - The control for this prop is a string, allowing the user to set the defined button sizes.
+
+- **disabled** (optional): Specifies whether the button is disabled.
+
+  - The control for this prop is a boolean, allowing the user to enable or disable the button.
 
 ### Best Practices
 
@@ -101,4 +115,3 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 ## Status
 
 <ComponentStatusBlock componentId="icon-button" />
-

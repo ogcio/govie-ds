@@ -7,10 +7,10 @@ libraries:
     status: 'not-available'
   - platform: global
     link: '?path=/docs/layout-stack--docs'
-    status: 'beta'
+    status: 'stable'
   - platform: react
     link: '?path=/docs/layout-stack--docs'
-    status: 'beta'
+    status: 'stable'
 ---
 
 # Stack
@@ -35,25 +35,11 @@ libraries:
 
 <Tabs id="tab1">
    <TabList>
-    <TabItem value="tab11" checked>Macro</TabItem>
+    <TabItem value="tab11" checked>HTML</TabItem>
     <TabItem value="tab12">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
     ```html
-      {{ govieStack({
-        "direction": "column",
-        "itemsAlignment": "start",
-        "itemsDistribution": "start",
-        "gap": 2,
-        "hasDivider": false,
-        "wrap": false,
-        "fixedHeight": "300px",
-        "children": [
-          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 1</div>",
-          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 2</div>",
-          "<div class="gi-bg-gray-300 gi-p-2 gi-h-[50px] gi-w-[100px] gi-flex gi-items-center gi-justify-center">Item 3</div>"
-        ]
-      }) }}
     ```
   </TabPanel>
   <TabPanel value="tab12">
@@ -73,10 +59,49 @@ libraries:
       </Stack>;
 
     ```
+
   </TabPanel>
 </Tabs>
 
 ## Usage
+
+### Stack Props
+
+- **direction** (optional): Defines the direction of the stack. Available options are:
+
+  - `'column'`: Stacks items vertically.
+  - `'row'`: Stacks items horizontally.
+  - Responsive values: Can also accept an object with responsive breakpoints (`base`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`).
+
+- **itemsAlignment** (optional): Aligns items along the cross-axis. Available options are:
+
+  - `'start'`: Align items to the start of the stack.
+  - `'center'`: Align items to the center.
+  - `'end'`: Align items to the end.
+  - `'stretch'`: Stretch items to fill the available space.
+
+- **itemsDistribution** (optional): Defines how items are distributed along the main axis. Available options are:
+
+  - `'start'`: Distribute items to the start of the stack.
+  - `'center'`: Distribute items to the center.
+  - `'end'`: Distribute items to the end.
+  - `'between'`: Items are spaced evenly with the first item at the start and the last at the end.
+  - `'around'`: Items are spaced evenly with equal space before the first and after the last item.
+  - `'evenly'`: Items are spaced evenly with equal space between all items.
+  - `'stretch'`: Stretch items to fill the available space.
+
+- **gap** (optional): Specifies the space between the stack items. Can be defined as a number or a responsive object. Available options:
+
+  - `number`: A fixed gap value.
+  - Responsive values: Can accept an object with breakpoints (`base`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`).
+
+- **hasDivider** (optional): If `true`, adds a divider between stack items.
+
+- **wrap** (optional): If `true`, allows stack items to wrap onto the next line.
+
+- **fixedHeight** (optional): Specifies a fixed height for the stack, typically used when you want the stack to have a consistent height.
+
+- **className** (optional): Custom class name to apply to the stack container.
 
 ### Best Practices
 
