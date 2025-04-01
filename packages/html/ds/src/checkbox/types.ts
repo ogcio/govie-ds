@@ -23,8 +23,6 @@ export type CheckboxProps = {
   name?: string;
 };
 
-// InputHTMLAttributes<HTMLInputElement>
-
 export type CheckboxGroupProps = {
   label?: LabelProps;
   hint?: HintTextProps;
