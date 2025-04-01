@@ -95,14 +95,8 @@ export const DropdownItem = ({
       >
         {!noSearch && (
           <div className="gi-combobox-search">
-<<<<<<< HEAD
-            {/* TODO translation for "Search" */}
             <InputText
-              placeholder="Search"
-=======
-            <TextInput
-              placeholder={t('dropdownItem.search')}
->>>>>>> a03ac1fb (fix: update files with missing locale keys)
+              placeholder={t('dropdownItem.search', { defaultValue: 'Search' })}
               className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => {
@@ -137,7 +131,9 @@ export const DropdownItem = ({
           {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
-              {t('dropdownItem.noResultFound')}
+              {t('dropdownItem.noResultFound', {
+                defaultValue: 'No results found.',
+              })}
             </Paragraph>
           )}
           {options.map((checkbox, index) => {

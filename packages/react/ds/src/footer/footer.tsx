@@ -32,7 +32,7 @@ function getLogo({ logo }: FooterProps) {
       <img
         className="gi-h-16"
         src={logo?.imageSmall || svgDataUriMobile}
-        alt={logo?.alt || t('logo.govieLogo')}
+        alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />
     </picture>
   );
@@ -53,7 +53,9 @@ export function Footer({
         {logo?.href && (
           <Anchor
             href={logo.href}
-            aria-label={t('footer.goToHomePage')}
+            aria-label={t('footer.goToHomePage', {
+              defaultValue: 'Go to Home Page',
+            })}
             data-testid={`logo-link`}
             external={logo.external}
           >
@@ -69,13 +71,19 @@ export function Footer({
       className={cn('gi-footer', className)}
       data-module="gieds-footer"
       role="contentinfo"
-      aria-label={t('footer.footer')}
+      aria-label={t('footer.footer', { defaultValue: 'Footer' })}
       data-testid={dataTestid}
       {...props}
     >
       <div className="gi-footer-container">
         {primarySlot && (
-          <div aria-label={t('footer.primarySlot')}>{primarySlot}</div>
+          <div
+            aria-label={t('footer.primarySlot', {
+              defaultValue: 'Footer Primary Slot',
+            })}
+          >
+            {primarySlot}
+          </div>
         )}
 
         {primarySlot && secondarySlot && (
@@ -84,7 +92,9 @@ export function Footer({
 
         <div
           className="gi-footer-secondary-slot"
-          aria-label={t('footer.secondarySlot')}
+          aria-label={t('footer.secondarySlot', {
+            defaultValue: 'Footer Secondary Slot',
+          })}
         >
           <div className="gi-footer-logo">{renderLogo()}</div>
           {secondarySlot && (
@@ -97,7 +107,9 @@ export function Footer({
       {utilitySlot && (
         <div
           className="gi-footer-utility"
-          aria-label={t('footer.utilityLinks')}
+          aria-label={t('footer.utilityLinks', {
+            defaultValue: 'Footer Utility Links',
+          })}
         >
           {utilitySlot}
         </div>

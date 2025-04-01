@@ -16,7 +16,13 @@ export const SummaryListAction = ({
   children,
 }: SummaryListActionProps) => (
   <dd className="gi-summary-list-actions">
-    <Link href={href} aria-label={t('summaryList.linkAction', { children })}>
+    <Link
+      href={href}
+      aria-label={t('summaryList.linkAction', {
+        children,
+        defaultValue: `Link action: ${children}`,
+      })}
+    >
       {children}
     </Link>
   </dd>
@@ -40,7 +46,9 @@ export const SummaryList = ({ children, dataTestid }: SummaryListProps) => {
   return (
     <div
       className="gi-summary-list"
-      aria-label={t('summaryList.summaryList')}
+      aria-label={t('summaryList.summaryList', {
+        defaultValue: 'Summary list',
+      })}
       data-testid={dataTestid}
     >
       {children}

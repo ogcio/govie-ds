@@ -62,7 +62,11 @@ export const ToastProvider = () => {
             id={`toast-portal-${position.x}-${position.y}`}
             key={`toast-${position.x}-${position.y}`}
             role="region"
-            aria-label={t('toast.position', { x: position.x, y: position.y })}
+            aria-label={t('toast.position', {
+              x: position.x,
+              y: position.y,
+              defaultValue: `Toasts-${position.y}-${position.x}`,
+            })}
             data-position={`${position.y}-${position.x}`}
             className="gi-toast-portal"
           >

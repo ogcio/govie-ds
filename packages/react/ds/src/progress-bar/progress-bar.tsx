@@ -23,7 +23,9 @@ export function ProgressBar({
         aria-valuenow={isIndeterminate ? undefined : value}
         aria-valuemin={0}
         aria-valuemax={max}
-        aria-label={t('progressBar.progressBar')}
+        aria-label={t('progressBar.progressBar', {
+          defaultValue: 'Progress bar',
+        })}
         data-testid="progress-bar"
         className="gi-progress-bar"
       >

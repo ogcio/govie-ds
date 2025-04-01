@@ -113,7 +113,13 @@ export const Card = ({
 
   const renderTitle = () => {
     const titleContent = href ? (
-      <Link href={href} aria-label={t('card.cardTitle', { title })}>
+      <Link
+        href={href}
+        aria-label={t('card.cardTitle', {
+          title,
+          defaultValue: `Card link: ${title}`,
+        })}
+      >
         {title}
       </Link>
     ) : (
@@ -127,7 +133,10 @@ export const Card = ({
       return (
         <Link
           {...action}
-          aria-label={t('card.actionLink', { children: action.children })}
+          aria-label={t('card.actionLink', {
+            children: action.children,
+            defaultValue: `Action link: ${action.children}`,
+          })}
         >
           {action.children}
         </Link>
@@ -136,7 +145,10 @@ export const Card = ({
     return (
       <Button
         {...action}
-        aria-label={t('card.actionButton', { children: action.children })}
+        aria-label={t('card.actionButton', {
+          children: action.children,
+          defaultValue: `Action button: ${action.children}`,
+        })}
       >
         {action.children}
       </Button>
@@ -158,7 +170,10 @@ export const Card = ({
             {subTitle && (
               <div
                 className="gi-card-subheading"
-                aria-label={t('card.subTitle', { subTitle })}
+                aria-label={t('card.subTitle', {
+                  subTitle,
+                  defaultValue: `Subtitle: ${subTitle}`,
+                })}
               >
                 {subTitle}
               </div>
@@ -167,7 +182,10 @@ export const Card = ({
           {tag?.text && tag.type && (
             <div
               className="gi-card-tag"
-              aria-label={t('card.tag', { tag: tag.text })}
+              aria-label={t('card.tag', {
+                tag: tag.text,
+                defaultValue: `Tag: ${tag.text}`,
+              })}
             >
               <Tag text={tag.text} type={tag.type} />
             </div>

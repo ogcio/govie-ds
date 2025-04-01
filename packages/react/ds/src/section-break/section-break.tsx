@@ -36,7 +36,9 @@ export function SectionBreak({
       data-testid={dataTestid}
       className={cn(marginClass, color)}
       role="separator"
-      aria-label={t('sectionBreak.sectionBreak')}
+      aria-label={t('sectionBreak.sectionBreak', {
+        defaultValue: 'Section Break',
+      })}
     />
   );
 }

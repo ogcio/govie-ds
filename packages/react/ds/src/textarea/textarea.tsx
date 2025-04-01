@@ -118,7 +118,12 @@ export const TextArea = forwardRef(
 
         {maxChars && (
           <div className="gi-textarea-remaining-chars">
-            <HintText text={t('textarea.remainingChars', { remainingChars })} />
+            <HintText
+              text={t('textarea.remainingChars', {
+                remainingChars,
+                defaultValue: `You have ${remainingChars} characters remaining`,
+              })}
+            />
           </div>
         )}
       </>
