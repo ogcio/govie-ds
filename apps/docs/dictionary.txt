@@ -135,3 +135,5 @@ InputRadio
 clearEnabled
 inputcheckbox
 form-inputfile
+InputRadioGroup
+inputradiogroup

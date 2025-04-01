@@ -3,6 +3,7 @@ import {
   InputRadioProps,
   InputRadioSizeEnum,
 } from '../input-radio/types.js';
+import { InputRadioGroupProps } from '../input-radio-group/types.js';
 
 /** @deprecated Use InputRadioSizeType instead */
 export type RadioSizeType = InputRadioSizeType;
@@ -14,8 +15,5 @@ export type RadioProps = InputRadioProps;
 // eslint-disable-next-line unicorn/prefer-export-from
 export const RadioSizeEnum = InputRadioSizeEnum;
 
-export type RadioGroupProps = {
-  groupId: string;
-  inline?: boolean;
-  onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
-};
+/** @deprecated Use InputRadioGroupProps instead */
+export type RadioGroupProps = InputRadioGroupProps;

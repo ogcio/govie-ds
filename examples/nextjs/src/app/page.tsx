@@ -35,7 +35,6 @@ import {
   ProgressStepper,
   StepItem,
   InputCheckbox,
-  CheckboxGroup,
   DropdownItem,
   Form,
   Drawer,
@@ -51,8 +50,9 @@ import {
   InputText,
   FormField,
   InputRadio,
+  InputCheckboxGroup,
+  InputRadioGroup,
 } from '@govie-ds/react';
-import { useState } from 'react';
 
 const headerProps: HeaderProps = {
   items: [
@@ -211,11 +211,11 @@ export default function Home() {
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
           <FormField label={{ text: 'Where do you live?' }}>
-            <RadioGroup groupId={'city'}>
-              <InputRadio value={'dublin'} label={'Dublin'} />
+            <InputRadioGroup groupId={'city'}>
+              <InputRadio value="dublin" label="Dublin" />
               <InputRadio value={'cork'} label={'Cork'} />
-              <InputRadio value={'galway'} label={'Galway'} />
-            </RadioGroup>
+              <InputRadio value="galway" label="Galway" />
+            </InputRadioGroup>
           </FormField>
           <FormField
             hint={{

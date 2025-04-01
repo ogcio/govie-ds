@@ -20,18 +20,14 @@ import {
   FileUpload,
   Tag,
   Modal,
-  RadioGroup,
   Card,
   Button,
   CookieBanner,
-  // List,
-  // TypeEnum,
   Combobox,
   Radio,
   Alert,
   Pagination,
   Checkbox,
-  CheckboxGroup,
   Form,
   DropdownItem,
   HeaderProps,
@@ -39,6 +35,7 @@ import {
   ToastProvider,
   toaster,
   ToastProps,
+  InputRadioGroup,
 } from '@govie-ds/react';
 import { CookieBannerProps, ComboBoxProps } from './props';
 import { useState } from 'react';
@@ -277,7 +274,7 @@ export function App() {
         <br />
         <h2>Checkbox</h2>
         <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <RadioGroup
+        <InputRadioGroup
           title={{
             value: 'Where do you live?',
             asHeading: {

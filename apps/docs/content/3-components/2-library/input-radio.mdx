@@ -22,11 +22,11 @@ libraries:
 
 <ComponentContainer>
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'}>
-      <InputRadio value={'dublin'} label={'Dublin'} />
-      <InputRadio value={'cork'} label={'Cork'} />
-      <InputRadio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city">
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway" />
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -67,14 +67,14 @@ libraries:
   </TabPanel>
   <TabPanel value="tab13">
   ```jsx
-  import { RadioGroup, FormField, InputRadio } from '@govie-ds/react';
+  import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'}>
-      <InputRadio value={'dublin'} label={'Dublin'} />
-      <InputRadio value={'cork'} label={'Cork'} />
-      <InputRadio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city">
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway"/>
+    </InputRadioGroup>
   </FormField>
   ```
   </TabPanel>
@@ -84,11 +84,11 @@ libraries:
 
 <ComponentContainer>
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'} inline>
-      <InputRadio value={'dublin'} label={'Dublin'} />
-      <InputRadio value={'cork'} label={'Cork'} />
-      <InputRadio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city" inline>
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway" />
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -129,14 +129,14 @@ libraries:
 </TabPanel>
 <TabPanel value="tab23">
 ```jsx
-import { RadioGroup, FormField, Radio } from '@govie-ds/react';
+import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
 <FormField label={{ text: 'Where do you live?' }}>
-  <RadioGroup groupId={'city'} inline>
-    <InputRadio value={'dublin'} label={'Dublin'} />
-    <InputRadio value={'cork'} label={'Cork'} />
-    <InputRadio value={'galway'} label={'Galway'} />
-  </RadioGroup>
+  <InputRadioGroup groupId="city" inline>
+    <InputRadio value="dublin" label="Dublin" />
+    <InputRadio value="cork" label="Cork" />
+    <InputRadio value="galway" label="Galway"/>
+  </InputRadioGroup>
 </FormField>
 ```
   </TabPanel>
@@ -151,18 +151,18 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
       text: "You'll need an account to prove your identity and complete your Self Assessment",
     }}
   >
-    <RadioGroup groupId={'withhint'}>
-      <Radio
-        value={'val1'}
-        label={'Sign in with Username and Password'}
+    <InputRadioGroup groupId="withhint">
+      <InputRadio
+        value="val1"
+        label="Sign in with Username and Password"
         hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
       />
-      <Radio
-        value={'val2'}
-        label={'Sign in with MyGovID'}
+      <InputRadio
+        value="val2"
+        label="Sign in with MyGovID"
         hint="If you don't have a MyGovID Login, you can create one"
       />
-    </RadioGroup>
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -227,7 +227,7 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
   </TabPanel>
   <TabPanel value="tab33">
   ```jsx
-  import { RadioGroup, FormField, InputRadio } from '@govie-ds/react';
+  import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
   <FormField
       label={{ text: 'How do you want to sign in?' }}
@@ -235,18 +235,18 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
         text: "You'll need an account to prove your identity and complete your Self Assessment",
       }}
     >
-      <RadioGroup groupId={'withhint'}>
+      <InputRadioGroup groupId="withhint">
         <InputRadio
-          value={'val1'}
-          label={'Sign in with Username and Password'}
+          value="val1"
+          label="Sign in with Username and Password"
           hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
         />
         <InputRadio
-          value={'val2'}
-          label={'Sign in with MyGovID'}
+          value="val2"
+          label="Sign in with MyGovID"
           hint="If you don't have a MyGovID Login, you can create one"
         />
-      </RadioGroup>
+      </InputRadioGroup>
     </FormField>
   ```
   </TabPanel>

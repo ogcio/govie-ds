@@ -274,54 +274,6 @@ export const WithHalfWidth: Story = {
   },
 };
 
-// export const AllStates: Story = {
-//   render: () => `
-//   <div class="gi-gap-4">
-//   <div class="gi-input-text-container">
-//     <label class="gi-text-md gi-label gi-mb-2" for="default-input">Default</label>
-//     <div class="gi-input-text-container">
-//       <input
-//         id="default-input"
-//         type="text"
-//         data-testid="textbox"
-//         class="gi-border-gray-950 gi-w-full gi-input-text"
-//       />
-//     </div>
-//   </div>
-
-//   <div class="gi-input-text-container">
-//     <label class="gi-text-md gi-label gi-mb-2" for="focus-input">Focus</label>
-//     <div class="gi-input-text-container">
-//       <input
-//         id="focus-input"
-//         type="text"
-//         data-testid="textbox"
-//         class="gi-border-gray-950 gi-w-full gi-input-text pseudo-focus"
-//       />
-//     </div>
-//   </div>
-
-//   <div class="gi-input-text-container">
-//     <label class="gi-text-md gi-label gi-mb-2" for="input-disabled">Disabled</label>
-//     <div class="gi-input-text-container">
-//       <input
-//         id="input-disabled"
-//         type="text"
-//         data-testid="textbox"
-//         class="gi-border-gray-950 gi-w-full gi-input-text gi-input-text-disabled"
-//         disabled
-//       />
-//     </div>
-//   </div>
-// </div>
-// `,
-//   parameters: {
-//     pseudo: {
-//       focus: '#focus-input',
-//     },
-//   },
-// };
-
 export const TextInputWithAriaAttributes: Story = {
   args: {
     id: 'input-id',

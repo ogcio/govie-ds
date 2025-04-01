@@ -39,7 +39,6 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  RadioGroup,
   SectionBreak,
   Select,
   SelectItem,
@@ -70,6 +69,7 @@ import {
   InputCheckbox,
   InputFile,
   InputCheckboxGroup,
+  InputRadioGroup,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import NextLink from 'next/link';
@@ -207,7 +207,6 @@ const documentComponents: MDXComponents = {
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
-  RadioGroup: (props) => <RadioGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   ModalWrapper: ModalWrapperSample,
@@ -288,6 +287,7 @@ const documentComponents: MDXComponents = {
   InputPassword,
   InputCheckbox,
   InputFile,
+  InputRadioGroup,
 };
 
 export function Mdx({ code }: MdxProps) {
