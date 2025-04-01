@@ -263,7 +263,7 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <CheckboxGroup
+        <InputCheckboxGroup
           groupId="field-Id"
           items={[
             { label: 'Irish', value: 'irish' },

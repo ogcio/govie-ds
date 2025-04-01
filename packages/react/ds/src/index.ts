@@ -147,3 +147,5 @@ export {
 } from './input-checkbox/types.js';
 export { InputFile } from './input-file/input-file.js';
 export type { InputFileProps } from './input-file/types.js';
+export { InputCheckboxGroup } from './input-checkbox-group/input-checkbox-group.js';
+export type { InputCheckboxGroupProps } from './input-checkbox-group/types.js';

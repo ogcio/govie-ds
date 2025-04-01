@@ -187,14 +187,14 @@ export default function Home() {
             </Combobox>
           </Form>
           <h2>Checkboxes Group</h2>
-          <CheckboxGroup groupId="field-Id">
+          <InputCheckboxGroup groupId="field-Id">
             <InputCheckbox value="irish" label="Irish" />
             <InputCheckbox value="british" label="British" />
             <InputCheckbox
               value="citizen-of-another-country"
               label="Citizen of another country"
             />
-          </CheckboxGroup>
+          </InputCheckboxGroup>
           <br />
           <h2>InputCheckbox</h2>
           <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />

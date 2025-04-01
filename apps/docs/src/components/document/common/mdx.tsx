@@ -10,8 +10,6 @@ import {
   Button,
   Caption,
   Card,
-  Checkbox,
-  CheckboxGroup,
   Chip,
   Combobox,
   CookieBanner,
@@ -41,7 +39,6 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  Radio,
   RadioGroup,
   SectionBreak,
   Select,
@@ -72,6 +69,7 @@ import {
   StepItem,
   InputCheckbox,
   InputFile,
+  InputCheckboxGroup,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import NextLink from 'next/link';
@@ -232,7 +230,7 @@ const documentComponents: MDXComponents = {
   SelectItem: (props) => <SelectItem {...props} />,
   IconButton: (props) => <IconButton {...props} />,
   FileUpload: (props) => <FileUpload {...props} />,
-  CheckboxGroup: (props) => <CheckboxGroup {...props} />,
+  InputCheckboxGroup,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
     <Button disabled={true}>
@@ -282,8 +280,6 @@ const documentComponents: MDXComponents = {
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
   FormField: (props) => <FormField {...props} />,
-  Radio: (props) => <Radio {...props} />,
-  Checkbox: (props) => <Checkbox {...props} />,
   DataGridSample: () => (
     <div className="gi-not-prose">
       <DataGridSample />

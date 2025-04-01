@@ -22,7 +22,7 @@ libraries:
 
 <ComponentContainer>
   <FormField label={{ text: 'Organization' }}>
-    <CheckboxGroup groupId={'uniqueid1'}>
+    <InputCheckboxGroup groupId={'uniqueid1'}>
       <InputCheckbox
         value={'employment-tribunal'}
         label={'Employment Tribunal'}
@@ -44,7 +44,7 @@ libraries:
         id={'uniqueid1-check4'}
         disabled
       />
-    </CheckboxGroup>
+    </InputCheckboxGroup>
   </FormField>
 </ComponentContainer>
 
@@ -84,10 +84,10 @@ libraries:
   </TabPanel>
   <TabPanel value="tab33">
     ```jsx
-    import { CheckboxGroup, FormField, InputCheckbox } from "@govie-ds/react";
+    import { InputCheckboxGroup, FormField, InputCheckbox } from "@govie-ds/react";
       
     <FormField label={{ text: 'Organization' }}>
-      <CheckboxGroup groupId={'uniqueid1'} >
+      <InputCheckboxGroup groupId={'uniqueid1'} >
         <InputCheckbox
           value={'employment-tribunal'}
           label={'Employment Tribunal'}
@@ -109,7 +109,7 @@ libraries:
           id={'uniqueid1-check4'}
           disabled
         />
-      </CheckboxGroup>
+      </InputCheckboxGroup>
     </FormField>
     ```
   </TabPanel>
