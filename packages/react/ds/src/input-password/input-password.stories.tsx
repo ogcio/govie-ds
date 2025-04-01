@@ -32,7 +32,7 @@ export const Default: Story = {
 export const AllVariants: Story = {
   render: () => {
     return (
-      <Stack gap={4}>
+      <Stack gap={4} itemsAlignment="stretch">
         <FormField
           label={{
             text: 'Label',

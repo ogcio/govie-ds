@@ -198,6 +198,22 @@ The List component organises text and links in a simple vertical format, support
 
 ## Usage
 
+### List Props
+
+- **items** (required): A list of texts to be displayed in the list.
+
+- **type** (optional): Defines the type of the list. It controls whether the list is a bulleted list, numbered list, or a simple list.
+
+  - Options:
+    - `None`: A normal list with no special formatting.
+    - `Bullet`: A bulleted list with a lead-in line ending in a colon.
+    - `Number`: A numbered list for when the order of items is important.
+
+- **spaced** (optional): Adds extra spacing between list items to improve readability, especially if the list items span multiple lines.
+
+  - The control for this prop is a boolean, allowing the user to toggle the extra spacing.
+
+
 ### Best Practices
 
 ### When to use this component
@@ -215,3 +231,4 @@ If the list items demand heavy customization or interaction beyond links or simp
 
 <ComponentStatusBlock componentId="list" />
 
+```

@@ -188,12 +188,43 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabPanel>
 </Tabs>
 
+## Usage
+
+### Link Props
+
+- **children** (required): The text or content inside the link. This prop is required and should be a string.
+
+- **href** (required): The URL to which the link points. This prop is required and should be a valid string URL.
+
+- **noUnderline** (optional): Removes the underline from the link.
+
+  - The control for this prop is a boolean, allowing the user to toggle between underlined and non-underlined links.
+
+- **external** (optional): Specifies whether the link should open in a new tab.
+
+  - The control for this prop is a boolean. When set to `true`, the link will open in a new tab.
+
+- **noVisited** (optional): Prevents the link from distinguishing between visited and unvisited states.
+
+  - The control for this prop is a boolean. This can be useful for frequently-changing content where the state of the link should not visually change after being clicked.
+
+- **noColor** (optional): Inherits the color from its parent element.
+
+  - The control for this prop is a boolean. When set to `true`, the link will inherit the color from its parent instead of using its own color.
+
+- **size** (optional): Specifies the size of the link.
+
+  - Options: `sm` and `md` (default in global HTML).
+  - The control for this prop is a string, allowing the user to set the size of the link.
+
 ### With Other Router
 
 It's possible to use the Link component as a React Router Link or NextLink.
 
 <ComponentContainer>
-  <Link asChild><NextLink href="/components">Next Link</NextLink></Link>
+  <Link asChild>
+    <NextLink href="/components">Next Link</NextLink>
+  </Link>
 </ComponentContainer>
 
 <Tabs id="tab7">
@@ -207,10 +238,9 @@ It's possible to use the Link component as a React Router Link or NextLink.
 
     <Link asChild><NextLink href="/other-page" /></Link>
     ```
+
   </TabPanel>
 </Tabs>
-
-## Usage
 
 ### Best Practices
 

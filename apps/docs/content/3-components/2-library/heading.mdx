@@ -21,12 +21,12 @@ libraries:
 ### Heading standard
 
 <ComponentContainer>
-  <Heading as='h1'>This is an h1</Heading>
-  <Heading as='h2'>This is an h2</Heading>
-  <Heading as='h3'>This is an h3</Heading>
-  <Heading as='h4'>This is an h4</Heading>
-  <Heading as='h5'>This is an h5</Heading>
-  <Heading as='h6'>This is an h6</Heading>
+  <Heading as="h1">This is an h1</Heading>
+  <Heading as="h2">This is an h2</Heading>
+  <Heading as="h3">This is an h3</Heading>
+  <Heading as="h4">This is an h4</Heading>
+  <Heading as="h5">This is an h5</Heading>
+  <Heading as="h6">This is an h6</Heading>
 </ComponentContainer>
 
 <Tabs id="tab1">
@@ -55,6 +55,7 @@ libraries:
     <Heading as='h5'>This is an h5</Heading>
     <Heading as='h6'>This is an h6</Heading>
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -79,6 +80,7 @@ libraries:
 
     <Heading as='h1' caption="This is a caption">This is a heading</Heading>
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -90,6 +92,22 @@ For a question page, or pages with long headings, follow the usual hierarchy of 
 
 Write all headings in sentence case.
 
+### Heading Component Props
+
+- **size** (optional): Defines the size of the heading. This can be selected from the available options based on the `headingVariants.variants.size` object.
+
+  - Examples: `small`, `medium`, `large`
+  - The control for this prop is a radio button, allowing the user to select from the defined size options.
+
+- **as** (optional): Specifies which HTML heading tag the component should render as. This can be selected from the available options in the `headingVariants.variants.as` object.
+
+  - Examples: `h1`, `h2`, `h3`
+  - The control for this prop is a radio button, allowing the user to choose between different heading tags.
+
+- **caption** (optional): A caption or additional text that will be displayed under the heading. This provides extra context or description related to the heading.
+
+  - The control for this prop is a text input field, allowing the user to input a caption.
+
 ### Best Practices
 
 ### When to use this component
@@ -99,4 +117,3 @@ Write all headings in sentence case.
 ## Status
 
 <ComponentStatusBlock componentId="heading" />
-

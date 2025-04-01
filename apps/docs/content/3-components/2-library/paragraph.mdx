@@ -35,6 +35,7 @@ libraries:
 
     <span class="gi-span-md">This is an inline paragraph</span>
     ```
+
   </TabPanel>
   <TabPanel value="tab13">
     ```html
@@ -43,6 +44,7 @@ libraries:
     <Paragraph>This is a paragraph</Paragraph>
     <Paragraph as="span">This is an inline paragraph</Paragraph>
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -63,6 +65,7 @@ libraries:
 
     <span class="gi-span-sm">This is an inline paragraph</span>
     ```
+
   </TabPanel>
   <TabPanel value="tab23">
     ```html
@@ -72,6 +75,7 @@ libraries:
 
     <Paragraph size="sm" as="span">This is an inline paragraph</Paragraph>
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -92,6 +96,7 @@ libraries:
 
     <span class="gi-span-lg">This is an inline paragraph</span>
     ```
+
   </TabPanel>
   <TabPanel value="tab33">
     ```html
@@ -101,10 +106,27 @@ libraries:
 
     <Paragraph size="lg" as="span">This is an inline paragraph</Paragraph>
     ```
+
   </TabPanel>
 </Tabs>
 
 ## Usage
+
+### Paragraph Props
+
+- **children** (required): The text content of the paragraph.
+
+- **as** (optional): Specifies the HTML element to render the component as.  
+  Options: `p`, `span`.
+
+- **size** (optional): Specifies the size of the paragraph.  
+  Options: `lg`, `md`, `sm`.
+
+- **align** (optional): Specifies the alignment of the paragraph.  
+  Options: `start`, `center`, `end`, `justify`.
+
+- **whitespace** (optional): Specifies the whitespace property.  
+  Options: `normal`, `pre`, `pre-wrap`, `break-spaces`.
 
 ### Best Practices
 
@@ -126,4 +148,3 @@ This component is also not intended for use in non-responsive or print-oriented 
 ## Status
 
 <ComponentStatusBlock componentId="paragraph" />
-

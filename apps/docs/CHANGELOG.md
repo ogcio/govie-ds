@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.2.2](https://github.com/ogcio/govie-ds/compare/docs-v1.2.1...docs-v1.2.2) (2025-03-31)
+
+
+### Bug Fixes
+
+* footer secondary slot ([ff60905](https://github.com/ogcio/govie-ds/commit/ff60905d104983e9c663fd39aef32eedfab1abd4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/deepmerge bumped to 1.0.4
+    * @govie-ds/react bumped to 1.2.2
+    * @govie-ds/tailwind bumped to 1.2.2
+    * @govie-ds/theme-govie bumped to 1.2.2
+    * @govie-ds/tokens bumped to 1.2.2
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.4
+    * @govie-ds/prettier-config bumped to 1.0.5
+
+## [1.2.1](https://github.com/ogcio/govie-ds/compare/docs-v1.2.0...docs-v1.2.1) (2025-03-31)
+
+
+### Bug Fixes
+
+* use stack in footer ([#495](https://github.com/ogcio/govie-ds/issues/495)) ([4be1e11](https://github.com/ogcio/govie-ds/commit/4be1e11e807004152efb684f8a3e1ddd50eb0a8f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/deepmerge bumped to 1.0.3
+    * @govie-ds/react bumped to 1.2.1
+    * @govie-ds/tailwind bumped to 1.2.1
+    * @govie-ds/theme-govie bumped to 1.2.1
+    * @govie-ds/tokens bumped to 1.2.1
+  * devDependencies
+    * @govie-ds/eslint-config bumped to 1.2.3
+    * @govie-ds/prettier-config bumped to 1.0.4
+
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/docs-v1.1.1...docs-v1.2.0) (2025-03-26)
 
 
