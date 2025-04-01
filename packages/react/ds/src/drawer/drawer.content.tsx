@@ -52,10 +52,8 @@ export const DrawerMenuExample = () => {
   ];
   const tools = [
     {
-      search: {
-        label: 'Search',
-        action: 'search_page',
-      },
+      label: 'Search',
+      action: 'search_page',
     },
   ];
   const languages = [
@@ -69,9 +67,19 @@ export const DrawerMenuExample = () => {
     },
   ];
   const searchProps = {};
+
+  type LinkType = {
+    href?: string;
+    label: string;
+    action?: string;
+    external?: boolean;
+    slot?: React.ReactNode;
+    keepOnMobile?: boolean;
+  };
+
   return (
     <ul>
-      {navLinks?.map((link: any, index: number) => (
+      {navLinks?.map((link: LinkType, index: number) => (
         <li key={`navLink-${link.label}-${index}`}>
           <ListItem
             href={link.href}
@@ -81,7 +89,10 @@ export const DrawerMenuExample = () => {
         </li>
       ))}
       {tools?.map(
-        ({ href, label, slot, keepOnMobile, external }: any, index: number) => {
+        (
+          { href, label, slot, keepOnMobile, external }: LinkType,
+          index: number,
+        ) => {
           if (slot && !keepOnMobile) {
             return null;
           }
@@ -96,7 +107,7 @@ export const DrawerMenuExample = () => {
           );
         },
       )}
-      {languages?.map((link: any, index: number) => (
+      {languages?.map((link: LinkType, index: number) => (
         <li key={`secondary-${link.label}-${index}`}>
           <ListItem href={link.href} label={link.label} bold={false} />
         </li>

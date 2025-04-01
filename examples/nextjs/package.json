@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
+    "@next/eslint-plugin-next": "^15.2.4",
     "eslint": "^9.23.0",
-    "eslint-config-next": "15.2.4",
     "postcss": "^8.4.40"
   }
 }

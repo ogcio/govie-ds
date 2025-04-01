@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { createIcon } from '../helpers/icons';
 import { createDrawer } from '../helpers/modal';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { HeaderItem, HeaderItemMode, HeaderProps } from './types';
+import { HeaderItem, HeaderProps } from './types';
 
 const meta: Meta<HeaderProps> = {
   title: 'Layout/Header',
@@ -669,7 +669,7 @@ const defaultHeaderItems = (external?: boolean) => [
 
 const defaultHeaderProps = (external?: boolean) =>
   ({
-    items: [...(defaultHeaderItems(external) as any)],
+    items: [...defaultHeaderItems(external)],
     addDefaultMobileMenu: true,
     secondaryLinks: [
       {

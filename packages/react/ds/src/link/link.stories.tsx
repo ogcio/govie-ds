@@ -76,7 +76,7 @@ export const NoVisited: Story = {
   },
 };
 
-export const styledAsButton: Story = {
+export const StyledAsButton: Story = {
   args: {
     asButton: {
       variant: 'primary',
@@ -88,7 +88,7 @@ export const styledAsButton: Story = {
   },
 };
 
-export const asButton: Story = {
+export const AsButton: Story = {
   args: {},
   render: () => (
     <Link onClick={() => alert('Button Clicked')} asChild>

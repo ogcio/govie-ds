@@ -1,6 +1,6 @@
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
-import { cleanup, render } from '../test-utilities.js';
+import { cleanup, renderComponent } from '../test-utilities.js';
 import {
   ChildrenDefault,
   ChildrenAccepted,
@@ -26,7 +26,7 @@ describe('cookieBanner', () => {
   afterEach(cleanup);
 
   const renderCookieBanner = (props: CookieBannerProps) =>
-    render(<CookieBanner {...props} />);
+    renderComponent(<CookieBanner {...props} />);
 
   it('should pass axe accessibility tests', async () => {
     const screen = renderCookieBanner(standardProps);

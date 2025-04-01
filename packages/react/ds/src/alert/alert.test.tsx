@@ -1,4 +1,8 @@
-import { render, cleanup, testVariantsAxe } from '../test-utilities.js';
+import {
+  renderComponent,
+  cleanup,
+  testVariantsAxe,
+} from '../test-utilities.js';
 import { type AlertProps, Alert } from './alert.js';
 
 const variants: AlertProps['variant'][] = [
@@ -11,7 +15,8 @@ const variants: AlertProps['variant'][] = [
 describe('Alert', () => {
   afterEach(cleanup);
 
-  const renderAlert = (props: AlertProps) => render(<Alert {...props} />);
+  const renderAlert = (props: AlertProps) =>
+    renderComponent(<Alert {...props} />);
 
   testVariantsAxe(Reflect.ownKeys(variants), (variant) =>
     renderAlert({

@@ -1,10 +1,10 @@
-import { cleanup, render, screen } from '../test-utilities.js';
+import { cleanup, renderComponent, screen } from '../test-utilities.js';
 import { FooterProps, Footer } from './footer.js';
 
 describe('Footer', () => {
   afterEach(cleanup);
   const renderFooter = (props: FooterProps = {}) =>
-    render(<Footer {...props} />);
+    renderComponent(<Footer {...props} />);
 
   it('should render the footer with default props', () => {
     renderFooter({

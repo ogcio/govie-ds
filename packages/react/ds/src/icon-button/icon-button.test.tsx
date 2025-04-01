@@ -1,11 +1,15 @@
 import { ButtonVariants } from '../button/types.js';
-import { render, cleanup, testVariantsAxe } from '../test-utilities.js';
+import {
+  renderComponent,
+  cleanup,
+  testVariantsAxe,
+} from '../test-utilities.js';
 import { IconButtonProps, IconButton } from './icon-button.js';
 
 describe('icon-button', () => {
   afterEach(cleanup);
   const renderIconButton = (props: IconButtonProps) =>
-    render(<IconButton {...props} />);
+    renderComponent(<IconButton {...props} />);
 
   testVariantsAxe(ButtonVariants, (variant) =>
     renderIconButton({

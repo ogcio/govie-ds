@@ -1,9 +1,9 @@
-import { render } from '../test-utilities.js';
+import { renderComponent } from '../test-utilities.js';
 import { ErrorSize, ErrorTextProps, ErrorText } from './error-text.js';
 
 describe('govieErrorText', () => {
   const renderErrorText = (props: ErrorTextProps) =>
-    render(<ErrorText {...props} />);
+    renderComponent(<ErrorText {...props} />);
 
   it('should render error text with the correct content', () => {
     const screen = renderErrorText({

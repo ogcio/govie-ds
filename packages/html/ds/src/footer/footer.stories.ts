@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { beautifyHtmlNode } from '../storybook/storybook';
+import { getLogoContainer } from './footer.helpers.js';
 import { FooterProps } from './footer.schema';
-import { getLogoContainer } from './footer.util';
 
 const meta: Meta<FooterProps> = {
   title: 'Layout/Footer',

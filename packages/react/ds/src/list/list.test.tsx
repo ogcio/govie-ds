@@ -1,11 +1,11 @@
 import { Link } from '../link/link.js';
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { ListProps, ListTypeEnum, List } from './list.js';
 
 describe('govieList', () => {
   afterEach(cleanup);
   const renderList = (props: ListProps) =>
-    render(<List {...props} data-testid="govieList" />);
+    renderComponent(<List {...props} data-testid="govieList" />);
 
   it('should render a list correctly with items', () => {
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];

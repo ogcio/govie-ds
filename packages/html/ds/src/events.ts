@@ -7,7 +7,7 @@ export function createEvents({
 }) {
   function init() {
     for (const eventFunction of functions) {
-      if (typeof globalThis.window !== 'undefined') {
+      if (globalThis.window !== undefined) {
         globalThis.window.addEventListener(type, eventFunction);
       }
     }

@@ -1,9 +1,10 @@
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import Anchor, { AnchorProps } from './anchor.js';
 
 describe('anchor', () => {
   afterEach(cleanup);
-  const renderAnchor = (props: AnchorProps) => render(<Anchor {...props} />);
+  const renderAnchor = (props: AnchorProps) =>
+    renderComponent(<Anchor {...props} />);
 
   it('should render link text', () => {
     const screen = renderAnchor({

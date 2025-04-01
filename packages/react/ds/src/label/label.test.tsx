@@ -1,9 +1,10 @@
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { LabelProps, LabelSize, Label } from './label.js';
 
 describe('govieLabel', () => {
   afterEach(cleanup);
-  const renderLabel = (props: LabelProps) => render(<Label {...props} />);
+  const renderLabel = (props: LabelProps) =>
+    renderComponent(<Label {...props} />);
 
   it('should render a label with the correct content', () => {
     const screen = renderLabel({

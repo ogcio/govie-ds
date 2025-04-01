@@ -1,10 +1,10 @@
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { SectionBreakProps, SectionBreak } from './section-break.js';
 
 describe('govieSectionBreak', () => {
   afterEach(cleanup);
   const renderSectionBreak = (props: SectionBreakProps) =>
-    render(<SectionBreak {...props} />);
+    renderComponent(<SectionBreak {...props} />);
 
   it('should have correct text size classes for "xl"', () => {
     const screen = renderSectionBreak({

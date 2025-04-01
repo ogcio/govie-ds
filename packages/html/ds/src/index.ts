@@ -1,7 +1,7 @@
-import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import/order */
-import { initAlert } from './alert/alert.js'; /* eslint-disable-line import/order */
-import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
-import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import/order */
+import { initAccordion } from './accordion/accordion.js';
+import { initAlert } from './alert/alert.js';
+import { initCheckboxes } from './checkbox/checkbox.js';
+import { initComboBox } from './combo-box/combo-box.js';
 import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { initDrawer } from './drawer/drawer.js';
@@ -13,7 +13,7 @@ import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
-import { initUtils } from './utils/utilities.js';
+import { initUtilities } from './utils/utilities.js';
 
 export * as properties from './dist/properties.js';
 
@@ -45,7 +45,7 @@ export function initGovIe() {
   initAlert();
   initToast();
   initAccordion();
-  initUtils();
+  initUtilities();
 }
 
 export function destroyGovIe() {

@@ -1,11 +1,11 @@
-import { cleanup, render } from '../test-utilities.js';
+import { cleanup, renderComponent } from '../test-utilities.js';
 import { ProgressBar, ProgressBarProps } from './progress-bar.js';
 
 describe('ProgressBar', () => {
   afterEach(cleanup);
 
   const renderProgressBar = (props: ProgressBarProps) =>
-    render(<ProgressBar {...props} />);
+    renderComponent(<ProgressBar {...props} />);
 
   it('should render a progress bar with a specified value', () => {
     const screen = renderProgressBar({

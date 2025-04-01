@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import { ComponentProps } from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Link } from '../link/link.js';
@@ -16,10 +16,10 @@ import { TableRow } from './table-row.js';
 import { Table } from './table.js';
 
 interface TableRowData {
-  [key: string]: any; // Allows any key with any value type
+  [key: string]: string;
 }
 
-interface TableStoryProps extends React.ComponentProps<typeof Table> {
+interface TableStoryProps extends ComponentProps<typeof Table> {
   captionText?: string;
   headers?: string[];
   rows?: TableRowData[];

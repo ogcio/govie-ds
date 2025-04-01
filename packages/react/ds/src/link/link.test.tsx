@@ -1,9 +1,9 @@
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { LinkProps, Link } from './link.js';
 
 describe('link', () => {
   afterEach(cleanup);
-  const renderLink = (props: LinkProps) => render(<Link {...props} />);
+  const renderLink = (props: LinkProps) => renderComponent(<Link {...props} />);
 
   it('should render link text', () => {
     const screen = renderLink({

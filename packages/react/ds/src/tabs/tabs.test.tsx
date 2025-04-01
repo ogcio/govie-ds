@@ -1,10 +1,10 @@
-import { render, cleanup, fireEvent } from '../test-utilities.js';
+import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
 import { TabsContent } from './tabs-content.js';
 import { TabsProps, Tabs } from './tabs.js';
 
 describe('tabs', () => {
   afterEach(cleanup);
-  const renderTabs = (props: TabsProps) => render(<Tabs {...props} />);
+  const renderTabs = (props: TabsProps) => renderComponent(<Tabs {...props} />);
 
   it('should render tabs', () => {
     const screen = renderTabs({
@@ -52,10 +52,10 @@ describe('tabs', () => {
 
     try {
       await screen.axe();
-    } catch (error: any) {
+    } catch (error) {
       // ARIA tabs definition allows multiple items in tablist, AXE throws an error instead
       // https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
-      if (error.message?.includes('input[aria-labelledby]')) {
+      if ((error as Error).message?.includes('input[aria-labelledby]')) {
         return;
       }
       throw error;

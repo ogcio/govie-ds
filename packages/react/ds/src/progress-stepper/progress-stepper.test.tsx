@@ -1,4 +1,4 @@
-import { cleanup, render } from '../test-utilities.js';
+import { cleanup, renderComponent } from '../test-utilities.js';
 import { ProgressStepper, StepItem } from './progress-stepper.js';
 import type { ProgressStepperProps } from './types.js';
 
@@ -6,7 +6,7 @@ describe('govieProgressStepper', () => {
   afterEach(cleanup);
 
   const renderProgressStepper = (props: ProgressStepperProps) =>
-    render(<ProgressStepper {...props} />);
+    renderComponent(<ProgressStepper {...props} />);
 
   it('should render a horizontal progress stepper correctly', () => {
     const screen = renderProgressStepper({

@@ -1,9 +1,9 @@
-import { render, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { Card, CardProps } from './card.js';
 
 describe('govieCard', () => {
   afterEach(cleanup);
-  const renderCard = (props: CardProps) => render(<Card {...props} />);
+  const renderCard = (props: CardProps) => renderComponent(<Card {...props} />);
 
   it('should render a card with title and content', () => {
     const screen = renderCard({

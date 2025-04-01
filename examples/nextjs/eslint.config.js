@@ -1,10 +1,15 @@
-// eslint.config.js
-import { defineConfig } from "eslint/config";
+import { FlatCompat } from "@eslint/eslintrc";
 import eslintConfig from "@govie-ds/eslint-config";
 
-export default defineConfig([
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    extends: [eslintConfig],
-  },
-]);
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+  recommendedConfig: eslintConfig,
+});
+
+const eslintNextConfig = [
+  ...compat.config({
+    extends: ["next"],
+  }),
+];
+
+export default eslintNextConfig;
