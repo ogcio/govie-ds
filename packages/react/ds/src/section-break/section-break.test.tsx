@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import { SectionBreakProps, SectionBreak } from './section-break.js';
 
 describe('govieSectionBreak', () => {

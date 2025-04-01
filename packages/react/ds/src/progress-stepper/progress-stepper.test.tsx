@@ -1,4 +1,4 @@
-import { cleanup, render } from '../test-utils.js';
+import { cleanup, render } from '../test-utilities.js';
 import { ProgressStepper, StepItem } from './progress-stepper.js';
 import type { ProgressStepperProps } from './types.js';
 

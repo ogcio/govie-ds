@@ -1,5 +1,5 @@
 import { Breakpoint } from '../hooks/use-breakpoint.js';
-import { getDisplayPages } from './utils.js';
+import { getDisplayPages } from './utilities.js';
 
 describe('getDisplayPages', () => {
   it('should return all pages for small screens when totalPages is less than or equal to 3', () => {

@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import { TableContent } from './table-content.js';
 import { Table } from './table.js';
 

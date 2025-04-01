@@ -30,7 +30,7 @@ export const DropdownItem = ({
   const selected = isControlled ? value : selectedValues;
 
   const getCheckboxes = () => [
-    ...window.document.querySelectorAll<HTMLElement>(
+    ...globalThis.window.document.querySelectorAll<HTMLElement>(
       `div.gi-combobox-checkbox.gi-combobox-key-${dropdownCustomClass}`,
     ),
   ];

@@ -1,8 +1,10 @@
-import { eslintConfig } from "@govie-ds/eslint-config";
+// eslint.config.js
+import { defineConfig } from "eslint/config";
+import eslintConfig from "@govie-ds/eslint-config";
 
-export default [
-  ...eslintConfig,
+export default defineConfig([
   {
-    ignores: ["next-env.d.ts", ".next/**/*"],
+    files: ["**/*.ts", "**/*.tsx"],
+    extends: [eslintConfig],
   },
-];
+]);

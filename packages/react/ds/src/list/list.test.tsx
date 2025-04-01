@@ -1,5 +1,5 @@
 import { Link } from '../link/link.js';
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import { ListProps, ListTypeEnum, List } from './list.js';
 
 describe('govieList', () => {

@@ -1,10 +1,9 @@
-import React, { ReactElement } from 'react';
-
+import { Children, cloneElement, isValidElement, ReactElement } from 'react';
 import { cn } from '../cn.js';
-import { AccordionItem } from './accordion-item.js';
+import { AccordionItem, AccordionItemProps } from './accordion-item.js';
 
 export type AccordionProps = {
-  children: React.ReactElement<typeof AccordionItem>[];
+  children: ReactElement<typeof AccordionItem>[];
   iconStart?: boolean;
   dataTestid?: string;
   variant?: 'default' | 'small';
@@ -22,19 +21,22 @@ export const Accordion = ({
       data-icon-start={iconStart}
       role="presentation"
     >
-      {React.Children.map(children, (child, index) => {
-        const isLastChild = index === React.Children.count(children) - 1;
+      {Children.map(children, (child, index) => {
+        const isLastChild = index === Children.count(children) - 1;
 
-        return React.isValidElement(child) ? (
+        return isValidElement(child) ? (
           <div
             className={cn('gi-border-t', {
               'gi-border-b': isLastChild,
             })}
           >
-            {React.cloneElement(child as ReactElement<any>, {
-              variant,
-              iconStart,
-            })}
+            {cloneElement(
+              child as unknown as ReactElement<AccordionItemProps>,
+              {
+                variant,
+                iconStart,
+              },
+            )}
           </div>
         ) : null;
       })}

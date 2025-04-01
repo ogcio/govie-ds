@@ -1,55 +1,35 @@
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import globals from 'globals';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import { fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import eslintJs from '@eslint/js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import globals from 'globals';
 
-// eslint-plugin-import does not currently support eslint flat config
-// See https://github.com/import-js/eslint-plugin-import/issues/2948#issuecomment-2148832701
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import eslintPluginImportX from 'eslint-plugin-import-x';
+import tsParser from '@typescript-eslint/parser';
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: eslintJs.configs.recommended,
-});
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
-function legacyPlugin(name, alias = name) {
-  const plugin = compat.plugins(name)[0]?.plugins?.[alias];
-
-  if (!plugin) {
-    throw new Error(`Unable to resolve plugin ${name} and/or alias ${alias}`);
-  }
-
-  return fixupPluginRules(plugin);
-}
-
-export const eslintConfig = [
-  { languageOptions: { globals: globals.browser } }, // { globals: eslintrc.Legacy.environments.get('es2024') } },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+export default [
+  { languageOptions: { globals: globals.browser } },
+  js.configs.recommended,
+  tseslint.configs.recommended,
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
   eslintPluginUnicorn.configs['recommended'],
-  ...compat.extends('plugin:import/typescript'),
   {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ignores: ['eslint.config.js'],
     languageOptions: {
-      parserOptions: {},
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
     settings: {
-      'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx'],
-      },
-      'import/resolver': {
-        typescript: {
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
           alwaysTryTypes: true,
-          project: {},
-        },
-      },
+        }),
+      ],
     },
-    plugins: { import: legacyPlugin('eslint-plugin-import', 'import') },
     rules: {
       'no-restricted-syntax': [
         'error',
@@ -63,8 +43,9 @@ export const eslintConfig = [
       'object-shorthand': ['error', 'always'],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
-      'import/no-unresolved': 'off',
-      'import/order': [
+      'import-x/no-unresolved': 'off',
+      'import-x/default': 'warn',
+      'import-x/order': [
         'error',
         {
           alphabetize: {
@@ -82,6 +63,7 @@ export const eslintConfig = [
             props: false,
             ref: false,
             refs: false,
+            env: false,
           },
           ignore: ['generateStaticParams'],
         },

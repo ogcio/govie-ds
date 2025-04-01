@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import { Stack } from './stack.js';
 import type { StackProps } from './types.js';
 

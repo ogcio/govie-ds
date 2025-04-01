@@ -1,5 +1,10 @@
 import React from 'react';
-import { cleanup, render, fireEvent, testVariantsAxe } from '../test-utils.js';
+import {
+  cleanup,
+  render,
+  fireEvent,
+  testVariantsAxe,
+} from '../test-utilities.js';
 import { positionVariants, Tooltip } from './tooltip.js';
 
 describe('govieTooltip', () => {

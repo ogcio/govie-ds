@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from '../test-utils.js';
+import { render, cleanup, fireEvent } from '../test-utilities.js';
 import { InputPassword } from './input-password.js';
 
 describe('InputPassword', () => {

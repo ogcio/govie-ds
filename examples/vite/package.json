@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
-    "eslint": "^9.8.0"
+    "eslint": "^9.23.0"
   }
 }

@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import Anchor, { AnchorProps } from './anchor.js';
 
 describe('anchor', () => {

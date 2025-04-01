@@ -102,8 +102,8 @@ describe('goviePagination', () => {
   });
 
   it('should apply gi-hidden class to goviePaginationCompactView for screen size of 478px', () => {
-    window.innerWidth = 478;
-    window.dispatchEvent(new Event('resize'));
+    globalThis.window.innerWidth = 478;
+    globalThis.window.dispatchEvent(new Event('resize'));
 
     const screen = renderPagination({
       currentPage: 5,

@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { render, cleanup } from '../test-utilities.js';
 import { Paragraph, ParagraphProps } from './paragraph.js';
 
 describe('govieParagraph', () => {

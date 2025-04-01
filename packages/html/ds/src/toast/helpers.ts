@@ -42,12 +42,12 @@ export function createToastByTemplate({
   variant = ToastVariant.Success,
 }: ToastProps) {
   const toastWrapper = document.createElement('div');
-  const replacements = {
+  const replacements: Record<string, string> = {
     '{{variant}}': variant,
     '{{icon}}': getIcon(variant),
     '{{title}}': title,
     '{{description}}': description,
-  } as any;
+  };
 
   let toastHTML = TOAST_TEMPLATE;
   for (const key of Object.keys(replacements)) {

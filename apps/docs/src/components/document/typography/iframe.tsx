@@ -33,9 +33,10 @@ export function IFrame({
       return;
     }
 
-    const linkElements = window.parent.document.querySelectorAll(styleSelector);
+    const linkElements =
+      globalThis.window.parent.document.querySelectorAll(styleSelector);
     linkElements.forEach((linkElement) => {
-      window.document.head.append(linkElement);
+      globalThis.window.document.head.append(linkElement);
     });
   }, [contentRef, styleSelector]);
 

@@ -1,4 +1,4 @@
-import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utilities.js';
 import { spinnerSizeVariants, Spinner, type SpinnerProps } from './spinner.js';
 
 describe('govieSpinner', () => {

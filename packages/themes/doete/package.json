@@ -17,7 +17,6 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check",
-    "lint": "eslint 'src/**/*.ts'",
     "build": "pnpm build:tokens && pnpm build:source",
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup"
@@ -27,9 +26,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
-    "@govie-ds/theme-builder": "workspace:*",
-    "eslint": "~9.5.0"
+    "@govie-ds/theme-builder": "workspace:*"
   }
 }

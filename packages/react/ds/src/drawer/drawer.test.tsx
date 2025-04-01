@@ -1,13 +1,13 @@
 import { act } from 'react';
 import { Button } from '../button/button.js';
-import { render, cleanup, waitFor } from '../test-utils.js';
+import { render, cleanup, waitFor } from '../test-utilities.js';
 import { HtmlContent, TriggerButton } from './drawer.content.js';
-import { Drawer, DrawerBody, DrawerFooter } from './drawer.js';
+import { Drawer, DrawerBody, DrawerFooter, DrawerProps } from './drawer.js';
 
 describe('drawer', () => {
   afterEach(cleanup);
 
-  const renderDrawer = (props: any) =>
+  const renderDrawer = (props: DrawerProps) =>
     render(
       <Drawer {...props}>
         <DrawerBody>Here is the body content of the drawer.</DrawerBody>

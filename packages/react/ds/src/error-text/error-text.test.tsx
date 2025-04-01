@@ -1,4 +1,4 @@
-import { render } from '../test-utils.js';
+import { render } from '../test-utilities.js';
 import { ErrorSize, ErrorTextProps, ErrorText } from './error-text.js';
 
 describe('govieErrorText', () => {

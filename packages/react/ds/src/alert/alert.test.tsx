@@ -1,4 +1,4 @@
-import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utilities.js';
 import { type AlertProps, Alert } from './alert.js';
 
 const variants: AlertProps['variant'][] = [

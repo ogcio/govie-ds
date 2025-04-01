@@ -1,5 +1,5 @@
 import { Icon } from '../icon/icon.js';
-import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import { render, cleanup, testVariantsAxe } from '../test-utilities.js';
 import { Button } from './button.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 

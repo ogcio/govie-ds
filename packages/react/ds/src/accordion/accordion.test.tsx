@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from '../test-utils.js';
+import { render, cleanup, fireEvent } from '../test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
 import { Accordion } from './accordion.js';
 

@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '../test-utils.js';
+import { cleanup, render, screen } from '../test-utilities.js';
 import { FooterProps, Footer } from './footer.js';
 
 describe('Footer', () => {

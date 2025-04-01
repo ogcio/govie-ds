@@ -36,7 +36,7 @@ export const TriggerButton = (
 );
 
 export const DrawerMenuExample = () => {
-  const navLinks: any = [
+  const navLinks = [
     {
       href: '#',
       label: 'News',
@@ -50,7 +50,7 @@ export const DrawerMenuExample = () => {
       label: 'Services',
     },
   ];
-  const tools: any = [
+  const tools = [
     {
       search: {
         label: 'Search',
@@ -58,7 +58,7 @@ export const DrawerMenuExample = () => {
       },
     },
   ];
-  const languages: any = [
+  const languages = [
     {
       href: '#',
       label: 'English',
@@ -68,7 +68,7 @@ export const DrawerMenuExample = () => {
       label: 'Gaeilge',
     },
   ];
-  const searchProps: any = undefined;
+  const searchProps = {};
   return (
     <ul>
       {navLinks?.map((link: any, index: number) => (
@@ -80,7 +80,7 @@ export const DrawerMenuExample = () => {
           />
         </li>
       ))}
-      {tools?.items?.map(
+      {tools?.map(
         ({ href, label, slot, keepOnMobile, external }: any, index: number) => {
           if (slot && !keepOnMobile) {
             return null;

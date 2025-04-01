@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from '../test-utils.js';
+import { render, cleanup, fireEvent } from '../test-utilities.js';
 import { TabsContent } from './tabs-content.js';
 import { TabsProps, Tabs } from './tabs.js';
 
