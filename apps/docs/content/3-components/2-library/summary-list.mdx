@@ -49,7 +49,6 @@ libraries:
 <Tabs id="summary-list-default">
   <TabList>
     <TabItem value="html" checked>HTML</TabItem>
-    <TabItem value="macro">Macro</TabItem>
     <TabItem value="react">React</TabItem>
   </TabList>
   <TabPanel value="html">
@@ -86,18 +85,8 @@ libraries:
   </div>
   ```
   </TabPanel>
-  <TabPanel value="macro"> 
-    ```html 
-        {{ govieSummaryList({ "rows":
-          [ { "label": "Name", "value": "John Smith", "action": { "href": "/change-name", "label": "Change name" } },
-            { "label": "Date of Birth", "value": "8 November 1982", "action": { "href": "/change-dob", "label": "Change date of birth" } },
-            { "label": "Address", "value": "72 Guild Street <br/> London <br/> SE23 6FH", "action": { "href": "/change-address", "label": "Change address" } } 
-          ]})
-        }} 
-    ```
-  </TabPanel>
   <TabPanel value="react">
-    ```react
+    ```jsx
         import { SummaryList, SummaryListRow, SummaryListValue, SummaryListAction } from '@govie-ds/react';
         
         <SummaryList>

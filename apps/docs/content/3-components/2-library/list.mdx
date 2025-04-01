@@ -28,7 +28,6 @@ The List component organises text and links in a simple vertical format, support
 <Tabs id="tab0">
   <TabList>
     <TabItem value="tab01" checked>HTML</TabItem>
-    <TabItem value="tab02">Macro</TabItem>
     <TabItem value="tab03">React</TabItem>
   </TabList>
   <TabPanel value="tab01">        
@@ -38,11 +37,6 @@ The List component organises text and links in a simple vertical format, support
         <li>Item 2</li>
         <li>Item 3</li>
     </ul>
-    ```
-  </TabPanel>
-  <TabPanel value="tab02">        
-    ```html
-    {{ govieList({ "items": ["Item 1","Item 2","Item 3"]}) }}
     ```
   </TabPanel>
   <TabPanel value="tab03">
@@ -64,7 +58,6 @@ The List component organises text and links in a simple vertical format, support
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -74,11 +67,6 @@ The List component organises text and links in a simple vertical format, support
         <li>Item 2</li>
         <li>Item 3</li>
     </ul>
-    ```
-  </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieList({ "items": ["Item 1","Item 2","Item 3"], "type": "bullet"}) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -100,7 +88,6 @@ The List component organises text and links in a simple vertical format, support
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">        
@@ -110,11 +97,6 @@ The List component organises text and links in a simple vertical format, support
         <li>Item 2</li>
         <li>Item 3</li>
     </ul>
-    ```
-  </TabPanel>
-  <TabPanel value="tab12" >        
-    ```html
-    {{ govieList({ "items": ["Item 1","Item 2","Item 3"], "type": "number"}) }}
     ```
   </TabPanel>
   <TabPanel value="tab13" key="tab13-0">
@@ -143,28 +125,17 @@ The List component organises text and links in a simple vertical format, support
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
-<TabPanel value="tab31">
-  ```html
-  <ul class="gi-list gi-list-spaced">
-    <li>constructing, altering or repairing</li>
-    <li>pipelines, reservoirs, water mains, wells, sewers or industriali>
-    <li>painting or decorating the inside or the external surfaces</li>
-  </ul>
-  ```
-</TabPanel>
-
-  <TabPanel value="tab32">        
+  <TabPanel value="tab31">
     ```html
-    {{ govieList({ 
-        "items": ["constructing, altering or repairing", "pipelines, reservoirs, water mains, wells, sewers, industrial plant and installations for purposes of land drainage, coast protection or defence", "painting or decorating the insid or orue
-     })
-    }}
+    <ul class="gi-list gi-list-spaced">
+      <li>constructing, altering or repairing</li>
+      <li>pipelines, reservoirs, water mains, wells, sewers or industriali>
+      <li>painting or decorating the inside or the external surfaces</li>
+    </ul>
     ```
   </TabPanel>
-
   <TabPanel value="tab33">        
     ```jsx
     import { List } from '@govie-ds/list';
@@ -194,30 +165,17 @@ The List component organises text and links in a simple vertical format, support
 <Tabs id="tab4">
   <TabList>
     <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab42">Macro</TabItem>
     <TabItem value="tab43">React</TabItem>
   </TabList>
-<TabPanel value="tab41">
-  ```html
-  <ul class="gi-list-bullet gi-list-spaced">
-    <li>constructing, altering or repairing</li>
-    <li>pipelines, reservoirs, water mains, wells, sewers or industriali>
-    <li>painting or decorating the inside or the external surfaces</li>
-  </ul>
-  ```
-</TabPanel>
-
-  <TabPanel value="tab42">        
+  <TabPanel value="tab41">
     ```html
-    {{ govieList({ 
-        "items": [{"href": "/", "label": "Link 1"}, {"href": "/", "label": "Link 2"}, {"href": "/", "label": "Link 3"}], 
-        "spaced": true,
-        "type": "bullet"
-     })
-    }}
+    <ul class="gi-list-bullet gi-list-spaced">
+      <li>constructing, altering or repairing</li>
+      <li>pipelines, reservoirs, water mains, wells, sewers or industriali>
+      <li>painting or decorating the inside or the external surfaces</li>
+    </ul>
     ```
   </TabPanel>
-
   <TabPanel value="tab43">        
     ```jsx
     import { List, TypeEnum } from '@govie-ds/list';

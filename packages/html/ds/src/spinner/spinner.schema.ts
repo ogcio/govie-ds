@@ -12,11 +12,6 @@ export const spinnerSchema = zod.object({
       description: 'View as inline (block is default).',
     })
     .optional(),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
-    })
-    .optional(),
 });
 
 export type SpinnerProps = zod.infer<typeof spinnerSchema>;

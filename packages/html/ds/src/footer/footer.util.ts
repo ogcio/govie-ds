@@ -1,4 +1,4 @@
-export const getLogoContaier = (customClass = '', source = '') => {
+export const getLogoContainer = (customClass = '', source = '') => {
   const logoContainer = document.createElement('div');
   logoContainer.className =
     customClass.length === 0 ? 'gi-footer-logo' : customClass;

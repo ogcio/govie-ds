@@ -14,6 +14,3 @@ export const modalFooter = `
     <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
 </div>
 `;
-
-export const triggerButton =
-  '<button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>';
