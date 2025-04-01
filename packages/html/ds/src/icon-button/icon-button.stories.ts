@@ -1,24 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonSize, ButtonVariant } from '../button/button-schema';
+import { createIconButton } from '../helpers/buttons';
 import { IconId } from '../icon/icon.schema';
-import { renderComponent } from '../storybook/storybook';
-import html from './icon-button.html?raw';
-import { iconButtonProps } from './icon-button.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { IconButtonProps } from './types';
 
-const macro = { name: 'govieIconButton', html };
-
-const IconButton = renderComponent<iconButtonProps>(macro);
-
-const meta = {
-  component: IconButton,
-  title: 'form/IconButton',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof IconButton>;
+const meta: Meta<IconButtonProps> = {
+  title: 'Form/IconButton',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<IconButtonProps>;
+
+const createElement = (arguments_: IconButtonProps) => {
+  const component = createIconButton(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -55,6 +51,7 @@ export const Default: Story = {
       icon: IconId.ThumbUp,
     },
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Small: Story = {
@@ -62,8 +59,9 @@ export const Small: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    size: ButtonSize.Small,
+    size: 'small',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Large: Story = {
@@ -71,8 +69,9 @@ export const Large: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    size: ButtonSize.Large,
+    size: 'large',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const SecondaryButton: Story = {
@@ -80,8 +79,9 @@ export const SecondaryButton: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    variant: ButtonVariant.Secondary,
+    variant: 'secondary',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const FlatButton: Story = {
@@ -89,8 +89,9 @@ export const FlatButton: Story = {
     icon: {
       icon: IconId.ThumbUp,
     },
-    variant: ButtonVariant.Flat,
+    variant: 'flat',
   },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Disabled: Story = {
@@ -100,4 +101,5 @@ export const Disabled: Story = {
     },
     disabled: true,
   },
+  render: (arguments_) => createElement(arguments_),
 };

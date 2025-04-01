@@ -112,7 +112,7 @@ export const ResponsiveWidthWithInputText: Story = {
     };
     return (
       <div className="gi-w-full md:gi-w-1/2">
-        <Stack direction={{ base: 'column' }} gap={3}>
+        <Stack direction={{ base: 'column' }} gap={3} itemsAlignment="stretch">
           <FormField
             label={{
               text: 'Input Label',
@@ -321,7 +321,7 @@ export const WithHalfWidth: Story = {
 export const AllVariantsStates: Story = {
   render: () => {
     return (
-      <Stack gap={4}>
+      <Stack gap={4} itemsAlignment="stretch">
         <FormField
           label={{
             text: 'Default',

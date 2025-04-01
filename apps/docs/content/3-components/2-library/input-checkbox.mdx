@@ -117,6 +117,34 @@ libraries:
 
 ## Usage
 
+### Checkbox Props
+
+- **size** (optional): Defines the size of the checkbox. Options include:
+
+  - `'lg'` (Large)
+  - `'md'` (Medium)
+  - `'sm'` (Small)
+
+- **label** (optional): A string representing the label displayed next to the checkbox.
+
+- **hint** (optional): A string shown below the checkbox to provide additional context or guidance.
+
+> Inherits all native HTML input attributes for checkboxes, except for the `size` attribute which is overridden.
+
+### CheckboxGroup Props
+
+- **size** (optional): Sets the size for all checkboxes in the group. Accepts:
+
+  - `'lg'` (Large)
+  - `'md'` (Medium)
+  - `'sm'` (Small)
+
+- **groupId** (required): A unique string identifier for the checkbox group.
+
+- **inline** (optional): A boolean that, when `true`, displays the checkboxes in a horizontal row instead of stacked vertically.
+
+- **onChange** (optional): A callback function triggered when any checkbox is checked or unchecked. It receives an array of selected item values.
+
 ### Best Practices
 
 ### When to use this component

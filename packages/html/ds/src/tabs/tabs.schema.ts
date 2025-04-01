@@ -1,15 +1,6 @@
 import * as zod from 'zod';
 
 export const tabsSchema = zod.object({
-  ariaLabelledBy: zod.string({
-    description: 'The label reference of the tab',
-    required_error: 'The aria-labelled-id is required',
-  }),
-  dataTestid: zod
-    .string({
-      description: 'Test id for the component.',
-    })
-    .optional(),
   items: zod
     .array(
       zod.object({
@@ -24,11 +15,7 @@ export const tabsSchema = zod.object({
           .optional(),
         panel: zod
           .object({
-            html: zod.string().describe('The html content').optional(),
-            text: zod
-              .string()
-              .describe('The text content, will be wrapped into a Paragraph')
-              .optional(),
+            content: zod.string().describe('The html content').optional(),
           })
           .describe('Tab Panel content'),
       }),

@@ -29,7 +29,6 @@ Tags are used to visually categorise content. They can indicate the status of an
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -37,14 +36,6 @@ Tags are used to visually categorise content. They can indicate the status of an
     <strong class="gi-tag gi-tag-info">
       Completed
     </strong>
-    ```
-  </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieTag({
-      "text": "Completed",
-      "type": "info"
-    }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -61,6 +52,21 @@ Tags are used to visually categorise content. They can indicate the status of an
 </Tabs>
 
 ## Usage
+
+### Tag Props
+
+- **text** (required): The text displayed inside the tag. This typically represents a status or label.
+  - Default: `'Completed'`
+- **type** (optional): Defines the visual style and color of the tag. Choose from predefined options like `default`, `grey`, `green`, `blue`, etc.
+  - Default: `'blue'`
+  - Options:
+    - `'default'`
+    - `'info'`
+    - `'success'`
+    - `'warning'`
+    - `'error'`
+    - `'counter'`
+    - `'counterWarning'`
 
 ### Best Practices
 
@@ -87,4 +93,3 @@ In such cases, consider alternative UI elements that better suit your requiremen
 ## Status
 
 <ComponentStatusBlock componentId="tag" />
-

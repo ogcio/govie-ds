@@ -81,21 +81,17 @@ export function Footer({
           <SectionBreak color="gi-border-gray-100" size="lg" />
         )}
 
-        {secondarySlot && (
-          <div
-            className="gi-footer-secondary-slot"
-            aria-label="Secondary footer slot"
-          >
+        <div
+          className="gi-footer-secondary-slot"
+          aria-label="Secondary footer slot"
+        >
+          <div className="gi-footer-logo">{renderLogo()}</div>
+          {secondarySlot && (
             <div className="gi-footer-secondary-slot-content">
               {secondarySlot}
             </div>
-            <div className="gi-footer-logo">{renderLogo()}</div>
-          </div>
-        )}
-
-        {!secondarySlot && (
-          <div className="gi-footer-logo md:gi-ml-auto">{renderLogo()}</div>
-        )}
+          )}
+        </div>
       </div>
       {utilitySlot && (
         <div className="gi-footer-utility" aria-label="Utility links">

@@ -35,7 +35,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -223,32 +222,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```
 
   </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-    {{ govieHeader({
-        "title":"Application title"
-        "languages":[{ "href": "/", "label": "Gaeilge" }]
-        "navLinks":[{ "href": "/", "label": "News" },{ "href": "/", "label": "Departments" },{ "href": "/", "label": "Services" }]
-        "tools":{
-            "search": {
-                "label": "Search",
-                "action": "/search-page",
-            },
-            "items": [
-                {
-                    "href": "/item1",
-                    "label": "Home",
-                    "icon": "home",
-                },
-            ],
-            "menu": {
-                "label": "Menu"
-            }
-        }
-        })
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```html
     import { Header, HeaderProps, HeaderSearch } from '@govie-ds/react';
@@ -324,7 +297,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">        
@@ -343,11 +315,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
     ```
 
-  </TabPanel>
-  <TabPanel value="tab22">        
-    ```html
-    {{ govieHeader({"title": "Application title"}) }}
-    ```
   </TabPanel>
   <TabPanel value="tab23">
     ```html
@@ -368,13 +335,13 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
       {
         label: 'Departments',
         itemType: 'link',
-        href:'#',
+        href: '#',
         showItemMode: 'desktop-only',
       },
       {
         label: 'Services',
         itemType: 'link',
-        href:'#',
+        href: '#',
         showItemMode: 'desktop-only',
       },
     ]}
@@ -384,7 +351,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 <Tabs id="tab3">
   <TabList>
     <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab32">Macro</TabItem>
     <TabItem value="tab33">React</TabItem>
   </TabList>
   <TabPanel value="tab31">        
@@ -423,26 +389,6 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```
 
   </TabPanel>
-  <TabPanel value="tab32">        
-    ```html
-    {{ govieHeader({
-        "navLinks": [
-            { 
-                "href": "/", 
-                "label": "News" 
-            },
-            { 
-                "href": "/", 
-                "label": "Departments" 
-            },
-            { 
-                "href": "/", 
-                "label": "Services"
-            }
-        ]}) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab33">
     ```html
     import { Header } from '@govie-ds/react';
@@ -471,8 +417,8 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
 
 ### Header with Custom Links
 
-You can also use custom links components with the header component. 
-For instance, you can use the `react-router-link` or `next/link` component to link to a specific route in your application. 
+You can also use custom links components with the header component.
+For instance, you can use the `react-router-link` or `next/link` component to link to a specific route in your application.
 
 <ComponentContainer fullWidth>
   <Header
@@ -480,12 +426,12 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     items={[
       {
         itemType: 'custom-link',
-        component: (<NextLink href="/departments">Departments</NextLink>),
+        component: <NextLink href="/departments">Departments</NextLink>,
         showItemMode: 'desktop-only',
       },
       {
         itemType: 'custom-link',
-        component: (<NextLink href="/services">Services</NextLink>),
+        component: <NextLink href="/services">Services</NextLink>,
         showItemMode: 'desktop-only',
       },
     ]}
@@ -530,7 +476,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 <Tabs id="tab4">
   <TabList>
     <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab42">Macro</TabItem>
     <TabItem value="tab43">React</TabItem>
   </TabList>
   <TabPanel value="tab41">        
@@ -561,18 +506,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     ```
 
   </TabPanel>
-  <TabPanel value="tab42">        
-    ```html
-    {{ govieHeader({
-        "languages": [
-            { 
-                "href": "/", 
-                "label": "Gaeilge" 
-            }
-        ]}) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab43">
     ```html
     import { Header } from '@govie-ds/react';
@@ -600,7 +533,7 @@ For instance, you can use the `react-router-link` or `next/link` component to li
       {
         icon: 'home',
         itemType: 'link',
-        href:'#',
+        href: '#',
       },
       {
         label: 'Faq',
@@ -638,7 +571,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 <Tabs id="tab5">
   <TabList>
     <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab52">Macro</TabItem>
     <TabItem value="tab53">React</TabItem>
   </TabList>
   <TabPanel value="tab51">        
@@ -797,37 +729,8 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     ```
 
   </TabPanel>
-  <TabPanel value="tab52">        
-    ```html
-    {{ govieHeader(
-        tools:{
-            search: {
-                label: 'Search'
-                action: '/search-page',
-            },
-            items: [
-                {
-                    href: '/item1',
-                    label: 'Home',
-                    icon: 'home',
-                },
-                {
-                    href: '#',
-                    label: 'Faq',
-                    icon: 'info',
-                    keepOnMobile: true,
-                    slot:  "<ul class='gi-list-bullet'><li><a href='#' class='gi-link gi-link-sm'>Citizens Information - Services and Rights</a></li><li><a href='#' class='gi-link gi-link-sm'>Revenue - Taxes and Payments</a></li><li><a href='#' class='gi-link gi-link-sm'>Department of Social Protection</a></li></ul>",
-                },
-            ],
-            menu: {
-                label: 'Menu'
-            }
-        }) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab53">
-    ```react
+    ```jsx
     import { Header, HeaderSearch } from '@govie-ds/react';
 
     <Header
@@ -879,6 +782,88 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 </Tabs>
 
 ## Usage
+
+### `HeaderProps`
+
+Props for the `Header` component:
+
+- **`title`** (optional): The title of the header.
+- **`logo`** (optional): An object defining logo properties:
+  - `imageSmall`: Small version of the logo.
+  - `imageLarge`: Large version of the logo.
+  - `href`: URL to navigate to when the logo is clicked.
+  - `external`: If true, opens the logo link in a new tab.
+  - `alt`: Alternative text for the logo image.
+- **`addDefaultMobileMenu`** (optional): If true, the default mobile menu is included in the header.
+- **`mobileMenuLabel`** (optional): The label for the mobile menu.
+- **`items`** (optional): A list of `HeaderItem` objects to include in the header.
+- **`secondaryLinks`** (optional): A list of secondary links for the header.
+  - `href`: The URL for the link.
+  - `label`: The label for the link.
+- **`fullWidth`** (optional): If true, the header will span the full width of the container.
+- **`showTitleOnMobile`** (optional): If true, the header title will be shown on mobile.
+- **`dataTestid`** (optional): Custom test ID for the header.
+
+### `HeaderItemMode`
+
+- **`'always'`**: The item is always displayed.
+- **`'mobile-only'`**: The item is displayed only on mobile devices.
+- **`'desktop-only'`**: The item is displayed only on desktop devices.
+
+### `HeaderItemAppearance`
+
+- **`'dropdown'`**: The item is displayed as a dropdown menu.
+- **`'drawer'`**: The item is displayed within a drawer.
+
+### `HeaderItemType`
+
+- **`'slot'`**: A custom slot where you can place custom content. This slot can have additional properties:
+  - `label`: An optional label for the slot.
+  - `icon`: An optional icon to display alongside the content.
+  - `component`: A required React component to render inside the slot.
+  - `slotAppearance`: The appearance of the slot, which can either be a dropdown or drawer.
+  - `drawerPosition`: Specifies the position of the drawer if it's being used.
+- **`'divider'`**: A visual divider, used to separate other header items. This type does not require any additional props except for the `itemType` property.
+
+- **`'link'`**: A clickable link. It can have the following properties:
+
+  - `label`: The label to display for the link.
+  - `icon`: An optional icon to display alongside the label.
+  - `href`: The URL to which the link should point.
+  - `external`: If true, opens the link in a new tab.
+  - `onClick`: An optional click handler for the link.
+
+- **`'custom-link'`**: A custom link, rendered with a React component. This type only requires the `component` property.
+
+### `HeaderItem`
+
+A type that combines both `CommonProps` and `ConditionalProps`, representing an individual item in the header.
+
+- **`CommonProps`**:
+
+  - `showItemMode` (optional): Specifies when the header item should be displayed, based on the `HeaderItemMode` type.
+
+- **`ConditionalProps`**:
+  These props vary based on the `itemType` of the header item. Here’s the breakdown for each `itemType`:
+
+  - **`'slot'`**:
+    - `label`: Optional label for the slot.
+    - `icon`: Optional icon.
+    - `component`: The React component to display.
+    - `slotAppearance`: Optional. Defines if the slot should have a dropdown or drawer appearance.
+    - `drawerPosition`: Optional. Defines the drawer position when using a drawer appearance.
+  - **`'divider'`**:
+
+    - This item type doesn't require any additional properties besides `itemType`.
+
+  - **`'link'`**:
+    - `label`: The text for the link.
+    - `icon`: An optional icon.
+    - `href`: The URL the link will go to.
+    - `external`: If true, opens the link in a new tab.
+    - `onClick`: Optional click handler for the link.
+  - **`'custom-link'`**:
+    - `component`: The custom React component that renders the link content.
 
 ### Best Practices
 

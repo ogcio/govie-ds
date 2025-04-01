@@ -203,8 +203,8 @@ export const Stack: React.FC<StackProps> = ({
   fixedHeight = '100%',
   gap = 0,
   hasDivider,
-  itemsAlignment = 'stretch',
-  itemsDistribution = 'stretch',
+  itemsAlignment = 'start',
+  itemsDistribution = 'start',
   wrap = false,
   className,
   ...props

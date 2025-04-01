@@ -48,7 +48,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -84,32 +83,6 @@ libraries:
       </div>
     </div>
   </div>
-  ```
-  </TabPanel>
-  <TabPanel value="tab12">
-  ```html
-    {{ govieCard({
-      "type": "vertical",
-      "title": "Card Title",
-      "subTitle": "Subheading",
-      "inset": "body",
-      "media": {
-        "type": 'image',
-        "config": {
-          "src": "https://placeholderjs.com/400x300"
-        }
-      },
-      "content": "This is card.",
-      "tag": {
-        "text": "New",
-        "type": "info"
-      },
-      "action": {
-        "type": "button",
-        "content": "Button",
-        "variant": "secondary"
-      }
-    }) }}
   ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -173,7 +146,6 @@ libraries:
 <Tabs id="tab2">
   <TabList>
     <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab22">Macro</TabItem>
     <TabItem value="tab23">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
@@ -215,32 +187,6 @@ libraries:
   </div>
   ```
   </TabPanel>
-  <TabPanel value="tab22">
-  ```html
-    {{ govieCard({
-      "type": "horizontal",
-      "title": "Card Title",
-      "subTitle": "Subheading",
-      "inset": "body",
-      "media": {
-        "type": 'image',
-        "config": {
-          "src": "https://placeholderjs.com/400x300"
-        }
-      }
-      "content": "This is card.",
-      "tag": {
-        "text": "New",
-        "type": "info"
-      },
-      "action": {
-        "type": "button",
-        "content": "Button",
-        "variant": "secondary"
-      }
-    }) }}
-  ```
-  </TabPanel>
   <TabPanel value="tab23">
     ```html
     import { Card } from '@govie-ds/react';
@@ -273,6 +219,37 @@ libraries:
 </Tabs>
 
 ## Usage
+
+### Card Props
+
+- **type** (optional): Controls the layout orientation of the card. Options include:
+
+  - `'horizontal'`
+  - `'vertical'`
+
+- **title** (optional): A string used as the main title of the card.
+
+- **subTitle** (optional): A string for the card’s subheading or subtitle.
+
+- **href** (optional): A URL string that makes the entire card clickable and navigates to the given link.
+
+- **media** (optional): An object configuring the media displayed in the card. Supports:
+
+  - `type`: `'image' | 'icon' | 'iframe'`
+  - `config`: A configuration object matching the media type (e.g. `ImagePropTypes`, `IconProps`, or `IframePropTypes`).
+
+- **content** (optional): A string used as the main description or body text of the card.
+
+- **tag** (optional): An object defining a tag element, typically used to highlight status or category.
+
+- **action** (optional): An object that renders a button or link inside the card. Follows the structure:
+
+  - `{ type: "button" | "link", ...Button | Link }`
+
+- **inset** (optional): Specifies where the content of the card is inset. Options include:
+  - `'none'`
+  - `'body'`
+  - `'full'`
 
 ### Best Practices
 

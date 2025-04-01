@@ -54,7 +54,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -69,18 +68,6 @@ libraries:
     </details>
     ```
   </TabPanel>
-  <TabPanel value="tab12">
-    ```html
-    {{ 
-      govieDetails({ 
-        "label": "Help with Nationality", 
-        "name": "nationality-help",
-        "startsOpen": true,
-        "children": "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post." 
-      }) 
-    }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```jsx
     import { Details } from '@govie-ds/react';
@@ -92,6 +79,13 @@ libraries:
 </Tabs>
 
 ## Usage
+
+### Details Props
+
+- **label** (optional): The text displayed in the summary of the details element. This serves as the clickable label to expand or collapse the content.
+- **name** (optional): A string used to group multiple "details" elements. If multiple "details" elements have the same `name`, only one can be open at a time. Opening one will automatically close any others within the same group.
+- **children** (optional): The content inside the details element, which is displayed when the details section is open.
+- **open** (optional): A boolean that, when `true`, shows the details content by default. If absent or `false`, the details are collapsed initially.
 
 ### Best Practices
 

@@ -52,7 +52,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">        
@@ -84,35 +83,6 @@ libraries:
         </tr>
       </tbody>
     </table>
-    ```
-  </TabPanel>
-  <TabPanel value="tab12">        
-    ```html
-   {{ govieTable({
-    "captionText": "Default Table Example",
-    "headers": [
-      "Name",
-      "Email",
-      "Role"
-    ],
-    "rows": [
-      [
-        "John Doe",
-        "john.doe@example.com",
-        "Admin"
-      ],
-      [
-        "Jane Smith",
-        "jane.smith@example.com",
-        "User"
-      ],
-      [
-        "Sam Lee",
-        "sam.lee@example.com",
-        "Editor"
-      ]
-    ]
-  }) }}
     ```
   </TabPanel>
   <TabPanel value="tab13">
@@ -183,6 +153,66 @@ libraries:
   ```
   </TabPanel>
 </Tabs>
+
+### Table Props
+
+- **children** (required):  
+  Nodes representing the full content of the table, including `TableHead`, `TableBody`, and optionally `TableFoot`.
+
+- Inherits all props from `HTMLAttributes<HTMLTableElement>`.
+
+### TableHead Props
+
+- **children** (required):  
+  A set of `TableRow` components containing header cells (`TableHeader`).
+
+### TableBody Props
+
+- **children** (required):  
+  A set of `TableRow` components containing data cells (`TableData`).
+
+### TableFoot Props
+
+- **children** (required):  
+  A `TableRow` (or multiple) used for summarizing data or adding footer content.
+
+### TableRow Props
+
+- **children** (required):  
+  A collection of `TableHeader` or `TableData` elements within a row.
+
+- Inherits all props from `HTMLAttributes<HTMLTableRowElement>`.
+
+### TableHeader Props
+
+- **children** (required):  
+  Content of the table header cell.
+
+- **align** (optional):  
+  Controls horizontal alignment. Accepts:
+
+  - `'left'`
+  - `'center'`
+  - `'right'`
+
+- Inherits all props from `ThHTMLAttributes<HTMLTableCellElement>`.
+
+### TableData Props
+
+- **children** (required):  
+  Content of the table data cell.
+
+- **align** (optional):  
+  Controls horizontal alignment. Accepts:
+
+  - `'left'`
+  - `'center'`
+  - `'right'`
+
+- **colSpan** (optional):  
+  Number of columns the cell should span across.
+
+- Inherits all props from `TdHTMLAttributes<HTMLTableCellElement>`.
 
 ### Best Practices
 

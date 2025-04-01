@@ -32,7 +32,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -57,20 +56,8 @@ libraries:
     </nav>
   ```
   </TabPanel>
-  <TabPanel value="tab12">
-    ```html
-      {{govieBreadcrumbs({
-        navItems: [
-          { "label": "Home", "href": "/home" },
-          { "ellipsis": true },
-          { "label": "Documentation", "href": "/docs" },
-          { "label": "Travel abroad", "href": "/travel", "currentPage": true }
-        ]})
-      }}
-    ```
-    </TabPanel>
   <TabPanel value="tab13">
-  ```react
+  ```jsx
     import { Breadcrumbs, BreadcrumbLink, BreadcrumbEllipsis, BreadcrumbCurrentLink } from '@govie-ds/react';
 
     <Breadcrumbs>
@@ -79,11 +66,28 @@ libraries:
       <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
       <BreadcrumbCurrentLink href="/travel">Travel abroad</BreadcrumbCurrentLink>
     </Breadcrumbs>
-  ```
+
+```
 </TabPanel>
 </Tabs>
 
 ## Usage
+
+### Breadcrumb Props
+
+- **children** (required): One or more breadcrumb items. These must be one of the following components:
+- `BreadcrumbLink`: A standard navigational breadcrumb link.
+- `BreadcrumbCurrentLink`: Marks the current page in the breadcrumb trail.
+- `BreadcrumbEllipsis`: Displays an ellipsis (`...`) to indicate collapsed breadcrumbs.
+- **iconStart** (optional): A boolean that determines whether icons should appear to the **left** of breadcrumb items.
+
+### BreadcrumbLink Props
+
+- **href** (required): The URL the breadcrumb item links to.
+- **children** (required): The text or content of the breadcrumb item.
+
+> Note: `BreadcrumbCurrentLink` and `BreadcrumbEllipsis` do not accept props beyond `children`, as they are specialized representations within the breadcrumb trail.
+
 
 ### Best Practices
 
@@ -96,3 +100,4 @@ Avoid breadcrumbs on websites or applications with a flat structure, where there
 ## Status
 
 <ComponentStatusBlock componentId="breadcrumbs" />
+```

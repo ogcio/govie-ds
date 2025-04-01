@@ -3,7 +3,7 @@ import { Config } from 'tailwindcss';
 
 const config: Config = {
   prefix: 'gi-',
-  content: ['./src/**/*.html', './src/**/*.ts'],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: createTheme(),
   // eslint-disable-next-line unicorn/prefer-module
   plugins: [require('@tailwindcss/typography')],

@@ -175,136 +175,13 @@ libraries:
 
 <Tabs id="tab1">
    <TabList>
-    <TabItem value="tab11" checked>Macro</TabItem>
+    <TabItem value="tab11" checked>HTML</TabItem>
     <TabItem value="tab12">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
-    ```html
-    {{ govieComboBox({
-    "action": "#",
-    "dropdownItems": [{
-    "label": "Organisations",
-    "options": [
-      {
-        "label": 'An Bord Pleanála',
-        "value": '15431907-an-bord-pleanala',
-      },
-      {
-        "label": 'An Garda Síochána',
-        "value": 'an-garda-siochana',
-      },
-      {
-        "label": 'Bord Bia (Irish Food Board)',
-        "value": '14061907-bord-bia-irish-food-board',
-      },
-      {
-        "label": 'Capital Works Management Framework',
-        "value": '7c2ea-capital-works-management-framework',
-      },
-      {
-        "label": 'Carlow County Council',
-        "value": 'carlow-county-council',
-      },
-      {
-        "label": 'Cavan County Council',
-        "value": 'cavan-county-council',
-      },
-      {
-        "label": 'Central Bank of Ireland',
-        "value": '10032007-central-bank-of-ireland',
-      },
-      {
-        "label": 'Central Statistics Office',
-        "value": 'central-statistics-office',
-      },
-      {
-        "label": 'Chief State Solicitor’s Office',
-        "value": 'chief-state-solicitors-office',
-      },
-      {
-        "label": 'Circulars',
-        "value": '28448-circulars',
-      },
-      {
-        "label": 'Civil Justice Review',
-        "value": 'dff8b-civil-justice-review',
-      },
-      {
-        "label": 'Civil Service Employee Assistance Service',
-        "value": '72752-civil-service-employee-assistance-service',
-      },
-      {
-        "label": 'Clare County Council',
-        "value": 'clare-county-council',
-      },
-      {
-        "label": 'Commission on Taxation and Welfare',
-        "value": 'c526e-commission-on-taxation-and-welfare',
-      },
-      {
-        "label": 'Commission on the Defence Forces',
-        "value": '20d04-commission-of-the-defence-forces',
-      }]
-    }, 
-    {
-      "label": "Category",
-      "options": [
-      {
-        "label": 'Agencies',
-        "value": 'agencies',
-      },
-      {
-        "label": 'Aquaculture licences',
-        "value": 'aquaculture_licence',
-      },
-      {
-        "label": 'Biographies',
-        "value": 'biographies',
-      },
-      {
-        "label": 'Campaigns',
-        "value": 'campaigns',
-      },
-      {
-        "label": 'Circulars',
-        "value": 'circulars',
-      },
-      {
-        "label": 'Collections',
-        "value": 'collections',
-      },
-      {
-        "label": 'Consultations',
-        "value": 'consultations',
-      },
-      {
-        "label": 'Coroner cases',
-        "value": 'coroner_cases',
-      }]
-    }, 
-    {
-      "label": "Topic",
-      "options": [
-      {
-        "label": 'Brexit',
-        "value": 'brexit',
-      },
-      {
-        "label": 'Business and industry',
-        "value": 'business-and-industry',
-      },
-      {
-        "label": 'COVID-19',
-        "value": 'covid-19',
-      },
-      {
-        "label": 'Corporate information',
-        "value": 'corporate-information',
-      }]
-    }]
-  }) 
-  }}
-    ```
+  ```html
+    
+  ```
   </TabPanel>
   <TabPanel value="tab12">
   ```html 
@@ -406,6 +283,33 @@ libraries:
 </Tabs>
 
 ## Usage
+
+### Combobox Props
+
+- **children** (required): One or more `DropdownItem` components that define the options in the combobox.
+
+- **className** (optional): A string to apply custom class names to the combobox for styling.
+
+- **dataTestid** (optional): A string that assigns a custom test ID to the combobox for testing purposes.
+
+### DropdownItem Props
+
+- **children** (required): A string representing the label or text displayed for the dropdown item.
+
+- **options** (required): An array of objects defining the dropdown options. Each option has:
+
+  - `label`: The display label of the option.
+  - `value`: The value associated with the option.
+
+- **noSearch** (optional): A boolean that, when set to `true`, disables the search functionality within the dropdown.
+
+- **value** (optional): An array of strings representing the currently selected values. Useful for controlled components.
+
+- **defaultValue** (optional): An array of strings that defines the default selected values when the component is first rendered.
+
+- **onChange** (optional): A callback function triggered when the selected values change. Receives the updated array of selected values as a parameter.
+
+- **onSearch** (optional): A callback function triggered when the user types in the search input. Receives the current query string as a parameter.
 
 ### Best Practices
 

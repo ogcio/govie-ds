@@ -1,39 +1,49 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './phase-banner.html?raw';
-import { PhaseBannerProps, LevelEnum } from './phase-banner.schema';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { PhaseBannerProps } from './types';
 
-const macro = { name: 'goviePhaseBanner', html };
-
-const PhaseBanner = renderComponent<PhaseBannerProps>(macro);
-
-const meta = {
-  component: PhaseBanner,
+const meta: Meta<PhaseBannerProps> = {
   title: 'Typography/PhaseBanner',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof PhaseBanner>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<PhaseBannerProps>;
+
+const createPhaseBanner = (arguments_: PhaseBannerProps) => {
+  const banner = document.createElement('div');
+  banner.className = 'gi-phase-banner-container';
+
+  const tag = document.createElement('div');
+  tag.className = 'gi-phase-banner';
+  tag.textContent = arguments_.level;
+  banner.append(tag);
+
+  if (arguments_.content) {
+    const content = document.createElement('div');
+    content.innerHTML = arguments_.content;
+    banner.append(content);
+  }
+
+  return banner;
+};
+
+const createElement = (arguments_: PhaseBannerProps) => {
+  const component = createPhaseBanner(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
-  argTypes: {
-    content: {
-      control: 'text',
-      type: { name: 'string', required: true },
-      description: 'The text content of the phase banner.',
-    },
-    level: {
-      control: 'radio',
-      options: Object.values(LevelEnum),
-      type: { name: 'string', required: false },
-      description: 'Specifies the level of the phase banner.',
-    },
-  },
   args: {
     content: 'This is a phase banner.',
-    level: LevelEnum.Alpha,
+    level: 'alpha',
   },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Beta: Story = {
+  args: {
+    content: 'This is a phase banner.',
+    level: 'beta',
+  },
+  render: (arguments_) => createElement(arguments_),
 };

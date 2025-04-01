@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [1.2.4](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.3...eslint-config-v1.2.4) (2025-03-31)
+
+## [1.2.3](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.2...eslint-config-v1.2.3) (2025-03-31)
+
 ## [1.2.2](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.1...eslint-config-v1.2.2) (2025-03-26)
 
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.0...eslint-config-v1.2.1) (2025-03-18)

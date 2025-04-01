@@ -29,7 +29,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -55,15 +54,6 @@ libraries:
     </span>
   ```
   </TabPanel>
-  <TabPanel value="tab12">
-    ```html
-    {{ govieTooltip({
-      "position": "top",
-      "text": "Tooltip right.",
-      "content": "\n<button\ndata-element=\"button-container\"\ndata-module=\"gieds-button\"\nclass=\"gi-btn gi-btn-primary gi-btn-regular\"\n>\nDefault (Hover me)\n</button>"
-    }) }}
-    ```
-  </TabPanel>
   <TabPanel value="tab13">
     ```jsx
     import { Tooltip, Button } from '@govie-ds/react';
@@ -81,6 +71,15 @@ libraries:
 
   </TabPanel>
 </Tabs>
+
+### Tooltip Props
+
+- **text** (optional): The text displayed in the tooltip.
+  - Type: `string`
+- **position** (optional): Position of the tooltip relative to the child element.
+  - Type: `string`
+  - Options: `['top', 'bottom', 'left', 'right']`
+- **children** (optional): The child element that triggers the tooltip on hover.
 
 ### Best Practices
 

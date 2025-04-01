@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './icon.html?raw';
+import { expect } from '@storybook/test';
+import { createIcon } from '../helpers/icons';
+import { beautifyHtmlNode } from '../storybook/storybook';
 import { IconId, IconProps, IconSize } from './icon.schema';
 
-const macro = { name: 'govieIcon', html };
-
-const Icon = renderComponent<IconProps>(macro);
-
-const meta = {
-  component: Icon,
+const meta: Meta<IconProps> = {
   title: 'components/Icon',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof Icon>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<IconProps>;
+
+const createElement = (arguments_: IconProps) => {
+  const icon = createIcon(arguments_);
+  const container = document.createElement('div');
+  container.append(icon);
+  return beautifyHtmlNode(icon);
+};
 
 export const Default: Story = {
   argTypes: {
@@ -37,15 +37,6 @@ export const Default: Story = {
       control: 'boolean',
       description: 'Specify if the icon is disabled',
     },
-    ariaHidden: {
-      control: 'text',
-      description: 'Hide non-interactive content from the accessibility',
-    },
-    ariaLabel: {
-      control: 'text',
-      description:
-        'Define a string value that can be used to name an element (for accessibilty purposes)',
-    },
     inline: {
       control: 'boolean',
       description: 'View the icon as inline',
@@ -53,6 +44,17 @@ export const Default: Story = {
   },
   args: {
     icon: IconId.ThumbUp,
+    filled: false,
+    size: IconSize.MEDIUM,
+    disabled: false,
+    inline: false,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.classList.contains('gi-text-[24px]')).toBe(true);
   },
 };
 
@@ -61,12 +63,26 @@ export const Small: Story = {
     icon: IconId.ThumbUp,
     size: IconSize.SMALL,
   },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.classList.contains('gi-text-[16px]')).toBe(true);
+  },
 };
 
 export const Large: Story = {
   args: {
     icon: IconId.ThumbUp,
     size: IconSize.LARGE,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.classList.contains('gi-text-[32px]')).toBe(true);
   },
 };
 
@@ -75,12 +91,26 @@ export const ExtraLarge: Story = {
     icon: IconId.ThumbUp,
     size: IconSize.EXTRA_LARGE,
   },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.classList.contains('gi-text-[49px]')).toBe(true);
+  },
 };
 
 export const Filled: Story = {
   args: {
     icon: IconId.ThumbUp,
     filled: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.style.fontVariationSettings).toContain('"FILL" 1');
   },
 };
 
@@ -89,18 +119,11 @@ export const Disabled: Story = {
     icon: IconId.ThumbUp,
     disabled: true,
   },
-};
-
-export const AriaHidden: Story = {
-  args: {
-    icon: IconId.ThumbUp,
-    ariaHidden: true,
-  },
-};
-
-export const AriaLabel: Story = {
-  args: {
-    icon: IconId.ThumbUp,
-    ariaLabel: 'Thumbs up',
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const span = canvasElement.querySelector('span');
+    expect(span).toBeDefined();
+    expect(span?.textContent).toBe('thumb_up');
+    expect(span?.classList.contains('gi-text-gray-700')).toBe(true);
   },
 };
