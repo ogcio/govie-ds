@@ -171,7 +171,7 @@ export const CompleteFooter: Story = {
         </div>
       </div>`,
     utilitySlot: `
-    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+    <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
       <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
       <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
       <div class="gi-text-sm">
@@ -204,7 +204,7 @@ export const MinimalFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Events</a>
       </div>`,
     utilitySlot: `
-      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+      <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
         <div class="gi-text-sm">
@@ -221,7 +221,7 @@ export const SimpleFooter: Story = {
   args: {
     dataTestid: 'footer',
     utilitySlot: `
-      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+      <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
         <div class="gi-text-sm">
