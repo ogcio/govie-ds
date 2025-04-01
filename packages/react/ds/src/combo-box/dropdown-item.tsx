@@ -9,6 +9,7 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { slugify } from '../utilities.js';
 import { DropdownItemProps } from './types.js';
+import { translate as t } from '../i18n/util.js';
 
 export const DropdownItem = ({
   children,
@@ -94,9 +95,14 @@ export const DropdownItem = ({
       >
         {!noSearch && (
           <div className="gi-combobox-search">
+<<<<<<< HEAD
             {/* TODO translation for "Search" */}
             <InputText
               placeholder="Search"
+=======
+            <TextInput
+              placeholder={t('dropdownItem.search')}
+>>>>>>> a03ac1fb (fix: update files with missing locale keys)
               className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => {
@@ -131,7 +137,7 @@ export const DropdownItem = ({
           {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
-              No results found.
+              {t('dropdownItem.noResultFound')}
             </Paragraph>
           )}
           {options.map((checkbox, index) => {

@@ -1,6 +1,7 @@
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
+import { translate as t } from '../i18n/util.js';
 
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
@@ -35,7 +36,7 @@ export const BreadcrumbCurrentLink = ({
 
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   return (
-    <nav aria-label="Breadcrumbs" className="gi-breadcrumbs">
+    <nav aria-label={t('breadcrumbs.breadcrumbs')} className="gi-breadcrumbs">
       {iconStart && (
         <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
       )}

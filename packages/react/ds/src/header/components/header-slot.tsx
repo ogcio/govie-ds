@@ -4,6 +4,7 @@ import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
 import { Icon } from '../../icon/icon.js';
 import { Input } from '../../primitives/input.js';
 import { HeaderItem } from '../types.js';
+import { translate as t } from '../../i18n/util.js';
 
 type HeaderSlotProps = {
   item: HeaderItem;
@@ -18,7 +19,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
     data-index={index}
-    aria-label={`Slot Container ${index + 1}`}
+    aria-label={t('header.headerSlot', { index: index + 1 })}
     className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3"
   >
     {slot}
@@ -86,7 +87,9 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
   return (
     <label
       htmlFor={`ItemActionTrigger-${index}`}
-      aria-label={`Toggle item action for ${item.label || `item ${index + 1}`}`}
+      aria-label={t('header.toggleActionItem', {
+        item: item.label || `item ${index + 1}`,
+      })}
       className="gi-header-tool-item"
       data-label-index={index}
     >

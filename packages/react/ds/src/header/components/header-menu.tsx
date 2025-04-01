@@ -5,6 +5,7 @@ import { cn } from '../../cn.js';
 import { Icon } from '../../icon/icon.js';
 import { ListItem } from '../../list-item/list-item.js';
 import { HeaderProps } from '../types.js';
+import { translate as t } from '../../i18n/util.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,
@@ -108,14 +109,14 @@ function HeaderMenu({ ...props }: MobileHeaderMenuProps) {
     <div
       id="HeaderMenuContainer"
       className="gi-header-menu-container lg:gi-hidden"
-      aria-label="Mobile Navigation Menu"
+      aria-label={t('header.mobileNavigationMenu')}
     >
       <div>
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
             className="gi-header-menu-mobile-trigger"
-            aria-label="Close Mobile Menu"
+            aria-label={t('header.closeMobileMenu')}
           >
             <span>Close</span>
             <Icon icon={'close'} />

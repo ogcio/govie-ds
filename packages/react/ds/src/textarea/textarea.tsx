@@ -11,6 +11,7 @@ import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { translate as t } from '../i18n/util.js';
 
 export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -117,9 +118,7 @@ export const TextArea = forwardRef(
 
         {maxChars && (
           <div className="gi-textarea-remaining-chars">
-            <HintText
-              text={`You have ${remainingChars} characters remaining`}
-            />
+            <HintText text={t('textarea.remainingChars', { remainingChars })} />
           </div>
         )}
       </>

@@ -5,6 +5,7 @@ import { Icon, IconProps } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagProps } from '../tag/tag.js';
+import { translate as t } from '../i18n/util.js';
 
 type Action =
   | (ButtonProps & { type: 'button' })
@@ -112,7 +113,7 @@ export const Card = ({
 
   const renderTitle = () => {
     const titleContent = href ? (
-      <Link href={href} aria-label={`Card link: ${title}`}>
+      <Link href={href} aria-label={t('card.cardTitle', { title })}>
         {title}
       </Link>
     ) : (
@@ -124,13 +125,19 @@ export const Card = ({
   const renderAction = (action: Action) => {
     if (action.type === 'link') {
       return (
-        <Link {...action} aria-label={`Action link: ${action.children}`}>
+        <Link
+          {...action}
+          aria-label={t('card.actionLink', { children: action.children })}
+        >
           {action.children}
         </Link>
       );
     }
     return (
-      <Button {...action} aria-label={`Action button: ${action.children}`}>
+      <Button
+        {...action}
+        aria-label={t('card.actionButton', { children: action.children })}
+      >
         {action.children}
       </Button>
     );
@@ -151,14 +158,17 @@ export const Card = ({
             {subTitle && (
               <div
                 className="gi-card-subheading"
-                aria-label={`Subtitle: ${subTitle}`}
+                aria-label={t('card.subTitle', { subTitle })}
               >
                 {subTitle}
               </div>
             )}
           </div>
           {tag?.text && tag.type && (
-            <div className="gi-card-tag" aria-label={`Tag: ${tag.text}`}>
+            <div
+              className="gi-card-tag"
+              aria-label={t('card.tag', { tag: tag.text })}
+            >
               <Tag text={tag.text} type={tag.type} />
             </div>
           )}

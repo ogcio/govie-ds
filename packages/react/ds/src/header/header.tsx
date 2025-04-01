@@ -10,6 +10,7 @@ import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
 import type { HeaderItem, HeaderProps } from './types.js';
+import { translate as t } from '../i18n/util.js';
 
 function getLogo({ logo }: HeaderProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
@@ -28,7 +29,7 @@ function getLogo({ logo }: HeaderProps) {
       <img
         className={'gi-h-10 sm:gi-h-14'}
         src={logo?.imageSmall || svgDataUriMobile}
-        alt={logo?.alt || 'Gov.ie logo'}
+        alt={logo?.alt || t('logo.govieLogo')}
       />
     </picture>
   );
@@ -136,7 +137,7 @@ export function Header({
   return (
     <header
       id="GovieHeader"
-      aria-label="Site Header"
+      aria-label={t('header.siteHeader')}
       className={headerClassNames}
       data-testid={dataTestid}
     >
@@ -150,7 +151,7 @@ export function Header({
               {logo?.href && (
                 <Anchor
                   href={logo.href}
-                  aria-label="Go to the home page"
+                  aria-label={t('header.goToHomePage')}
                   data-testid={`logo-link`}
                   external={logo.external}
                 >
