@@ -36,7 +36,10 @@ export const BreadcrumbCurrentLink = ({
 
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
   return (
-    <nav aria-label={t('breadcrumbs.breadcrumbs')} className="gi-breadcrumbs">
+    <nav
+      aria-label={t('breadcrumbs.breadcrumbs', { defaultValue: 'Breadcrumbs' })}
+      className="gi-breadcrumbs"
+    >
       {iconStart && (
         <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
       )}

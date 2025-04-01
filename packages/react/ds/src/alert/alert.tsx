@@ -111,7 +111,9 @@ function Alert({
           appearance="dark"
           variant="flat"
           icon={{ icon: 'close' }}
-          aria-label={t('alert.dismissAlert')}
+          aria-label={t('alert.dismissAlert', {
+            defaultValue: 'Dismiss alert',
+          })}
         />
       )}
     </div>

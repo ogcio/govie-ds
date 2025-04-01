@@ -96,7 +96,7 @@ export const DropdownItem = ({
         {!noSearch && (
           <div className="gi-combobox-search">
             <TextInput
-              placeholder={t('dropdownItem.search')}
+              placeholder={t('dropdownItem.search', { defaultValue: 'Search' })}
               className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => {
@@ -126,7 +126,9 @@ export const DropdownItem = ({
         <div className="gi-combobox-checkbox-container">
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
-              {t('dropdownItem.noResultFound')}
+              {t('dropdownItem.noResultFound', {
+                defaultValue: 'No results found.',
+              })}
             </Paragraph>
           )}
           {options.map((checkbox, index) => {
