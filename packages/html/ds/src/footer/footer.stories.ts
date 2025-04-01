@@ -147,29 +147,31 @@ export const CompleteFooter: Story = {
     </div>
     `,
     secondarySlot: `
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        <a href="#" class="gi-link gi-link-inherit">About Us</a>
-        <a href="#" class="gi-link gi-link-inherit">Contact</a>
-        <a href="#" class="gi-link gi-link-inherit">Sitemap</a>
-        <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
-        <a href="#" class="gi-link gi-link-inherit">Terms of Service</a>
-        <a href="#" class="gi-link gi-link-inherit">Careers</a>
-        <a href="#" class="gi-link gi-link-inherit">Blog</a>
-        <a href="#" class="gi-link gi-link-inherit">FAQ</a>
-        <a href="#" class="gi-link gi-link-inherit">Support</a>
-        <a href="#" class="gi-link gi-link-inherit">Press</a>
-        <a href="#" class="gi-link gi-link-inherit">Partners</a>
-        <a href="#" class="gi-link gi-link-inherit">Investors</a>
-        <a href="#" class="gi-link gi-link-inherit">Events</a>
-      </div>
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-        <img alt="X logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
-        <img alt="Facebook logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
-        <img alt="Bluesky logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
-        <img alt="Linkedin logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap">
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+          <a href="#" class="gi-link gi-link-inherit">About Us</a>
+          <a href="#" class="gi-link gi-link-inherit">Contact</a>
+          <a href="#" class="gi-link gi-link-inherit">Sitemap</a>
+          <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
+          <a href="#" class="gi-link gi-link-inherit">Terms of Service</a>
+          <a href="#" class="gi-link gi-link-inherit">Careers</a>
+          <a href="#" class="gi-link gi-link-inherit">Blog</a>
+          <a href="#" class="gi-link gi-link-inherit">FAQ</a>
+          <a href="#" class="gi-link gi-link-inherit">Support</a>
+          <a href="#" class="gi-link gi-link-inherit">Press</a>
+          <a href="#" class="gi-link gi-link-inherit">Partners</a>
+          <a href="#" class="gi-link gi-link-inherit">Investors</a>
+          <a href="#" class="gi-link gi-link-inherit">Events</a>
+        </div>
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+          <img alt="X logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/X.svg" />
+          <img alt="Facebook logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Facebook.svg" />
+          <img alt="Bluesky logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Bluesky.svg" />
+          <img alt="Linkedin logo" src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/social/Linkedin.svg" />
+        </div>
       </div>`,
     utilitySlot: `
-    <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
       <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
       <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
       <div class="gi-text-sm">
@@ -186,7 +188,7 @@ export const CompleteFooter: Story = {
 export const MinimalFooter: Story = {
   args: {
     secondarySlot: `
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
         <a href="#" class="gi-link gi-link-inherit">About Us</a>
         <a href="#" class="gi-link gi-link-inherit">Contact</a>
         <a href="#" class="gi-link gi-link-inherit">Sitemap</a>
@@ -202,7 +204,7 @@ export const MinimalFooter: Story = {
         <a href="#" class="gi-link gi-link-inherit">Events</a>
       </div>`,
     utilitySlot: `
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
         <div class="gi-text-sm">
@@ -219,7 +221,7 @@ export const SimpleFooter: Story = {
   args: {
     dataTestid: 'footer',
     utilitySlot: `
-      <div class="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4 gi-justify-center gi-flex-wrap">
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Privacy Policy</a>
         <a href="#" data-testid="" class="gi-link gi-link-inherit">Accessibility</a>
         <div class="gi-text-sm">
