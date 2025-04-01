@@ -45,20 +45,17 @@ const createFooter = (arguments_: FooterProps) => {
     container.append(sectionBreak);
   }
 
-  if (arguments_.secondarySlot) {
-    const secondary = document.createElement('div');
-    secondary.className = 'gi-footer-secondary-slot';
+  const secondary = document.createElement('div');
+  secondary.className = 'gi-footer-secondary-slot';
 
+  secondary.append(getLogoContainer());
+  container.append(secondary);
+
+  if (arguments_.secondarySlot) {
     const secondaryContent = document.createElement('div');
     secondaryContent.className = 'gi-footer-secondary-slot-content';
     secondaryContent.innerHTML = arguments_.secondarySlot;
-
     secondary.append(secondaryContent);
-
-    secondary.append(getLogoContainer());
-    container.append(secondary);
-  } else {
-    container.append(getLogoContainer('gi-footer-logo md:gi-ml-auto'));
   }
 
   if (arguments_.utilitySlot) {
