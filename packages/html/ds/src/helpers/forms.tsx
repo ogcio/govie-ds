@@ -77,23 +77,23 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
 
   if (arguments_.size == 'lg') {
     widthClass = 'gi-w-11 gi-h-11';
-    sizeClass = 'gi-checkbox-large';
+    sizeClass = 'gi-input-checkbox-large';
   } else if (arguments_.size == 'sm') {
     widthClass = 'gi-w-6 gi-h-6';
-    sizeClass = 'gi-checkbox-small';
+    sizeClass = 'gi-input-checkbox-small';
   } else {
     widthClass = 'gi-w-8 gi-h-8';
-    sizeClass = 'gi-checkbox-medium';
+    sizeClass = 'gi-input-checkbox-medium';
   }
 
   const container = document.createElement('div');
   const inputContainer = document.createElement('div');
-  inputContainer.className = 'gi-checkbox-container';
+  inputContainer.className = 'gi-input-checkbox-container';
 
   const input = document.createElement('input') as HTMLInputElement;
   input.type = 'checkbox';
   input.role = 'checkbox';
-  input.className = `gi-checkbox-input ${sizeClass} ${widthClass}`;
+  input.className = `gi-input-checkbox ${sizeClass} ${widthClass}`;
   input.id = arguments_.id || (arguments_.value as string);
   if (arguments_.value) {
     input.value = arguments_.value as string;
@@ -125,7 +125,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
 
   if (arguments_.hint) {
     const hintContainer = document.createElement('div');
-    hintContainer.className = 'gi-checkbox-hint-container';
+    hintContainer.className = 'gi-input-checkbox-hint-container';
 
     const spacer = document.createElement('div');
     spacer.className = widthClass;
@@ -194,18 +194,18 @@ export const createRadio = (arguments_: RadioProps) => {
 
   if (arguments_.size == 'lg') {
     widthClass = 'gi-w-11 gi-h-11';
-    sizeClass = 'gi-radio-large';
+    sizeClass = 'gi-input-radio-large';
   } else if (arguments_.size == 'sm') {
     widthClass = 'gi-w-6 gi-h-6';
-    sizeClass = 'gi-radio-small';
+    sizeClass = 'gi-input-radio-small';
   } else {
     widthClass = 'gi-w-8 gi-h-8';
-    sizeClass = 'gi-radio-medium';
+    sizeClass = 'gi-input-radio-medium';
   }
 
   const container = document.createElement('div');
   const inputContainer = document.createElement('div');
-  inputContainer.className = 'gi-radio-container';
+  inputContainer.className = 'gi-input-radio-container';
 
   const input = document.createElement('input') as HTMLInputElement;
   input.type = 'radio';
@@ -243,7 +243,7 @@ export const createRadio = (arguments_: RadioProps) => {
 
   if (arguments_.hint) {
     const hintContainer = document.createElement('div');
-    hintContainer.className = 'gi-checkbox-hint-container';
+    hintContainer.className = 'gi-input-checkbox-hint-container';
 
     const spacer = document.createElement('div');
     spacer.className = widthClass;
