@@ -5,6 +5,7 @@ import type {
   SummaryListValueProps,
   SummaryListRowProps,
 } from './types.js';
+import { translate as t } from '../i18n/util.js';
 
 export const SummaryListValue = ({ children }: SummaryListValueProps) => (
   <dd className="gi-summary-list-value">{children}</dd>
@@ -15,7 +16,7 @@ export const SummaryListAction = ({
   children,
 }: SummaryListActionProps) => (
   <dd className="gi-summary-list-actions">
-    <Link href={href} aria-label={`Link action: ${children}`}>
+    <Link href={href} aria-label={t('summaryList.linkAction', { children })}>
       {children}
     </Link>
   </dd>
@@ -39,7 +40,7 @@ export const SummaryList = ({ children, dataTestid }: SummaryListProps) => {
   return (
     <div
       className="gi-summary-list"
-      aria-label="Summary list"
+      aria-label={t('summaryList.summaryList')}
       data-testid={dataTestid}
     >
       {children}

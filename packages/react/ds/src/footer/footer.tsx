@@ -7,6 +7,7 @@ import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
+import { translate as t } from '../i18n/util.js';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
@@ -31,7 +32,7 @@ function getLogo({ logo }: FooterProps) {
       <img
         className="gi-h-16"
         src={logo?.imageSmall || svgDataUriMobile}
-        alt={logo?.alt || 'Gov.ie logo'}
+        alt={logo?.alt || t('logo.govieLogo')}
       />
     </picture>
   );
@@ -52,7 +53,7 @@ export function Footer({
         {logo?.href && (
           <Anchor
             href={logo.href}
-            aria-label="Go to the home page"
+            aria-label={t('footer.goToHomePage')}
             data-testid={`logo-link`}
             external={logo.external}
           >
@@ -68,13 +69,13 @@ export function Footer({
       className={cn('gi-footer', className)}
       data-module="gieds-footer"
       role="contentinfo"
-      aria-label="Footer"
+      aria-label={t('footer.footer')}
       data-testid={dataTestid}
       {...props}
     >
       <div className="gi-footer-container">
         {primarySlot && (
-          <div aria-label="Primary footer slot">{primarySlot}</div>
+          <div aria-label={t('footer.primarySlot')}>{primarySlot}</div>
         )}
 
         {primarySlot && secondarySlot && (
@@ -83,7 +84,7 @@ export function Footer({
 
         <div
           className="gi-footer-secondary-slot"
-          aria-label="Secondary footer slot"
+          aria-label={t('footer.secondarySlot')}
         >
           <div className="gi-footer-logo">{renderLogo()}</div>
           {secondarySlot && (
@@ -94,7 +95,10 @@ export function Footer({
         </div>
       </div>
       {utilitySlot && (
-        <div className="gi-footer-utility" aria-label="Utility links">
+        <div
+          className="gi-footer-utility"
+          aria-label={t('footer.utilityLinks')}
+        >
           {utilitySlot}
         </div>
       )}

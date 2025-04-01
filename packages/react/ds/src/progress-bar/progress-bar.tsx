@@ -1,4 +1,5 @@
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/util.js';
 
 export type ProgressBarProps = {
   max?: number;
@@ -22,7 +23,7 @@ export function ProgressBar({
         aria-valuenow={isIndeterminate ? undefined : value}
         aria-valuemin={0}
         aria-valuemax={max}
-        aria-label="Progress bar"
+        aria-label={t('progressBar.progressBar')}
         data-testid="progress-bar"
         className="gi-progress-bar"
       >

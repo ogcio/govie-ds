@@ -3,6 +3,7 @@ import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { translate as t } from '../i18n/util.js';
 
 const alertVariants = tv({
   slots: {
@@ -110,7 +111,7 @@ function Alert({
           appearance="dark"
           variant="flat"
           icon={{ icon: 'close' }}
-          aria-label="Dismiss alert"
+          aria-label={t('alert.dismissAlert')}
         />
       )}
     </div>
