@@ -32,7 +32,7 @@ export const eslintConfig = [
   { languageOptions: { globals: globals.browser } }, // { globals: eslintrc.Legacy.environments.get('es2024') } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  eslintPluginUnicorn.configs['flat/recommended'],
+  eslintPluginUnicorn.configs['recommended'],
   ...compat.extends('plugin:import/typescript'),
   {
     languageOptions: {
