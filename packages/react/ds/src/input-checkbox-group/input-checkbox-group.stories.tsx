@@ -39,24 +39,24 @@ export const Default: Story = {
     <FormField label={{ text: 'Organization' }}>
       <InputCheckboxGroup {...props}>
         <InputCheckbox
-          value={'employment-tribunal'}
-          label={'Employment Tribunal'}
-          id={'UniqueID-check1'}
+          value="employment-tribunal"
+          label="Employment Tribunal"
+          id="UniqueID-check1"
         />
         <InputCheckbox
-          value={'ministry-of-defence'}
-          label={'Ministry of Defence'}
-          id={'UniqueID-check2'}
+          value="ministry-of-defence"
+          label="Ministry of Defence"
+          id="UniqueID-check2"
         />
         <InputCheckbox
-          value={'department-for-transport'}
-          label={'Department for Transport'}
-          id={'UniqueID-check3'}
+          value="department-for-transport"
+          label="Department for Transport"
+          id="UniqueID-check3"
         />
         <InputCheckbox
-          value={'others'}
-          label={'Others'}
-          id={'UniqueID-check4'}
+          value="others"
+          label="Others"
+          id="UniqueID-check4"
           disabled
         />
       </InputCheckboxGroup>
@@ -76,17 +76,17 @@ export const withHints: Story = {
       }}
     >
       <InputCheckboxGroup {...arguments_}>
-        <InputCheckbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
         <InputCheckbox
-          value={'british'}
-          label={'British'}
+          value="british"
+          label="British"
           hint="including English, Scottish, Welsh and Northern Irish"
-          id={'govie-field-ID-check2'}
+          id="govie-field-ID-check2"
         />
         <InputCheckbox
-          value={'citizen-of-another-country'}
-          label={'Citizen of another country'}
-          id={'govie-field-ID-check3'}
+          value="citizen-of-another-country"
+          label="Citizen of another country"
+          id="govie-field-ID-check3"
         />
       </InputCheckboxGroup>
     </FormField>
@@ -108,17 +108,17 @@ export const withErrorMessage: Story = {
       }}
     >
       <InputCheckboxGroup {...arguments_}>
-        <InputCheckbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
+        <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
         <InputCheckbox
-          value={'british'}
-          label={'British'}
+          value="british"
+          label="British"
           hint="including English, Scottish, Welsh and Northern Irish"
-          id={'govie-field-ID2-check2'}
+          id="govie-field-ID2-check2"
         />
         <InputCheckbox
-          value={'citizen-of-another-country'}
-          label={'Citizen of another country'}
-          id={'govie-field-ID2-check3'}
+          value="citizen-of-another-country"
+          label="Citizen of another country"
+          id="govie-field-ID2-check3"
         />
       </InputCheckboxGroup>
     </FormField>

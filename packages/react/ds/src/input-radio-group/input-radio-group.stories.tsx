@@ -34,7 +34,7 @@ export const Default: Story = {
     <FormField label={{ text: 'Where do you live?' }}>
       <InputRadioGroup {...arguments_}>
         <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value="cork" label="Cork" />
         <InputRadio value="galway" label="Galway" />
       </InputRadioGroup>
     </FormField>
@@ -50,7 +50,7 @@ export const inline: Story = {
     <FormField label={{ text: 'Where do you live?' }}>
       <InputRadioGroup {...arguments_} inline>
         <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value="cork" label="Cork" />
         <InputRadio value="galway" label="Galway" />
       </InputRadioGroup>
     </FormField>
@@ -68,7 +68,7 @@ export const withTitleHint: Story = {
     >
       <InputRadioGroup {...arguments_}>
         <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value="cork" label="Cork" />
         <InputRadio value="galway" label="Galway" />
       </InputRadioGroup>
     </FormField>
@@ -113,7 +113,7 @@ export const withDividerOption: Story = {
     >
       <InputRadioGroup {...arguments_}>
         <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value="cork" label="Cork" />
         <InputRadio value="galway" label="Galway" />
         <Paragraph>or</Paragraph>
         <InputRadio value={'none'} label={'Non of above'} />
@@ -134,7 +134,7 @@ export const withError: Story = {
     >
       <InputRadioGroup {...arguments_}>
         <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value={'cork'} label={'Cork'} />
+        <InputRadio value="cork" label="Cork" />
         <InputRadio value="galway" label="Galway" />
       </InputRadioGroup>
     </FormField>

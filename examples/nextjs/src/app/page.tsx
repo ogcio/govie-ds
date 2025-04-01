@@ -211,9 +211,9 @@ export default function Home() {
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
           <FormField label={{ text: 'Where do you live?' }}>
-            <InputRadioGroup groupId={'city'}>
+            <InputRadioGroup groupId="city">
               <InputRadio value="dublin" label="Dublin" />
-              <InputRadio value={'cork'} label={'Cork'} />
+              <InputRadio value="cork" label="Cork" />
               <InputRadio value="galway" label="Galway" />
             </InputRadioGroup>
           </FormField>
