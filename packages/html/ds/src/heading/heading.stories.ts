@@ -1,134 +1,86 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './heading.html?raw';
-import { Size, Tag } from './heading.schema';
-import type { HeadingProps } from './heading.schema';
+import { expect, within } from '@storybook/test';
+import { createHeading } from '../helpers/typography';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import type { HeadingProps } from './types';
 
-const macro = { name: 'govieHeading', html };
-
-const Heading = renderComponent<HeadingProps>(macro);
-
-const meta = {
-  component: Heading,
-  title: 'typography/Heading',
-  parameters: {
-    macro,
-  },
-} satisfies Meta<typeof Heading>;
+const meta: Meta<HeadingProps> = {
+  title: 'Typography/Heading',
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<HeadingProps>;
+
+const createElement = (arguments_: HeadingProps) => {
+  const component = createHeading(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
   args: {
-    as: Tag.H1,
-    text: 'Heading',
+    as: 'h1',
+    content: 'Heading',
     caption: '',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      description: 'Options for sizes',
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      description: 'Option for the Heading tag',
-      control: { type: 'radio' },
-    },
-    caption: {
-      control: 'text',
-      description: 'Caption for the heading',
-    },
-  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Small: Story = {
   args: {
-    as: Tag.H6,
-    text: 'Small heading',
+    as: 'h6',
+    content: 'Small heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByText('Small heading');
+    expect(heading).toHaveClass('gi-heading-2xs');
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: Size.Medium,
-    as: Tag.H3,
-    text: 'Medium heading',
+    size: 'md',
+    as: 'h3',
+    content: 'Medium heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByText('Medium heading');
+    expect(heading).toHaveClass('gi-heading-md');
   },
 };
 
 export const Large: Story = {
   args: {
-    size: Size.Large,
-    as: Tag.H1,
-    text: 'Large heading',
+    size: 'lg',
+    as: 'h1',
+    content: 'Large heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
-  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const ExtraLarge: Story = {
   args: {
-    size: Size.ExtraLarge,
-    as: Tag.H1,
-    text: 'Extra large heading',
+    size: 'xl',
+    as: 'h1',
+    content: 'Extra large heading',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
-  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const Caption: Story = {
   args: {
-    size: Size.Medium,
-    as: Tag.H1,
-    text: 'Heading with h6',
+    size: 'md',
+    as: 'h1',
+    content: 'Heading with h6',
     caption: 'Caption Text',
   },
-  argTypes: {
-    size: {
-      options: Object.values(Size),
-      control: { type: 'radio' },
-    },
-    as: {
-      options: Object.values(Tag),
-      control: { type: 'radio' },
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const caption = canvas.getByText('Caption Text');
+    expect(caption).toBeDefined();
   },
 };

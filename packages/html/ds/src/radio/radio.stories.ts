@@ -1,105 +1,130 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { renderComponent } from '../storybook/storybook';
-import html from './radio.html?raw';
-import type { RadioProps } from './radio.schema';
+import { expect, within } from '@storybook/test';
+import { createRadio } from '../helpers/forms';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import type { RadioProps } from './types';
 
-const macro = { name: 'govieRadio', html };
-
-const Radio = renderComponent<RadioProps>(macro);
-
-const meta = {
-  component: Radio,
+const meta: Meta<RadioProps> = {
   title: 'form/Radio/Radio',
-  parameters: {
-    macro,
-    docs: {
-      description: {
-        component: 'Radio component',
-      },
-    },
-  },
-} satisfies Meta<typeof Radio>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<RadioProps>;
+
+const createElement = (arguments_: RadioProps) => {
+  const component = createRadio(arguments_);
+  return beautifyHtmlNode(component);
+};
 
 export const Default: Story = {
-  argTypes: {
-    value: {
-      control: 'text',
-      type: 'string',
-      description: 'The value of the Component',
-    },
-    name: {
-      control: 'text',
-      type: 'string',
-      description: 'Name attribute of the input element',
-    },
-    label: {
-      control: 'text',
-      type: 'string',
-      description: 'The label associated with the Radio',
-    },
-    hint: {
-      control: 'text',
-      type: 'string',
-      description:
-        'Additional text to inform the user about the Radio component',
-    },
-    id: {
-      control: 'text',
-      type: 'string',
-      description: 'The id of the Radio',
-    },
-    size: {
-      control: 'radio',
-      options: ['lg', 'md', 'sm'],
-      description: 'The sizes for the Radio',
-    },
-
-    checked: {
-      control: 'boolean',
-      description: 'if true the component is checked',
-    },
-  },
   args: {
     value: 'radio-value',
     label: 'Radio',
   },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Hover: Story = {
+  args: {
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
+  },
+  parameters: { pseudo: { hover: true } },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Focus: Story = {
+  args: {
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
+  },
+  parameters: { pseudo: { focus: true } },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Disabled: Story = {
+  args: {
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
+    disabled: true,
+  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const withHint: Story = {
   args: {
-    value: 'radio-with-hint',
-    label: 'With hint',
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
     hint: 'This is a hint',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is a hint');
+    expect(hint).toBeDefined();
   },
 };
 
 export const withDefaultChecked: Story = {
   args: {
-    value: 'radio-with-default-checked',
-    label: 'Default checked',
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
     checked: true,
   },
-};
-
-export const withoutLabel: Story = {
-  args: {
-    id: 'without-label-radio',
-    value: 'radio-without-label',
-    aria: {
-      'aria-label': 'without-label-radio',
-    },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('radio');
+    expect(input).toBeChecked();
   },
 };
 
-export const withAriaAttributes: Story = {
+export const smallRadio: Story = {
   args: {
-    value: 'radio-without-label',
+    id: 'radio-id-1',
+    value: 'value-1',
     label: 'Radio',
-    aria: {
-      'aria-checked': 'false',
-    },
+    size: 'sm',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('radio');
+    expect(input).toHaveClass('gi-h-6');
+  },
+};
+
+export const mediumRadio: Story = {
+  args: {
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
+    size: 'md',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('radio');
+    expect(input).toHaveClass('gi-h-8');
+  },
+};
+
+export const largeRadio: Story = {
+  args: {
+    id: 'radio-id-1',
+    value: 'value-1',
+    label: 'Radio',
+    size: 'lg',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('radio');
+    expect(input).toHaveClass('gi-h-11');
   },
 };
