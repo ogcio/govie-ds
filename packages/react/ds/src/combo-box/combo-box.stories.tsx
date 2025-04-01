@@ -10,7 +10,7 @@ import { Combobox } from './combo-box.js';
 import { DropdownItem } from './dropdown-item.js';
 
 const meta = {
-  title: 'Navigation/ComboBox',
+  title: 'Form/ComboBox',
   parameters: {
     docs: {
       description: {
