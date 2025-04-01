@@ -13,6 +13,7 @@ import {
   FileUpload,
   Footer,
   Form,
+  FormField,
   Header,
   HeaderProps,
   HeaderSearch,
@@ -27,6 +28,7 @@ import {
   Radio,
   RadioGroup,
   Select,
+  SelectItem,
   TabItem,
   TabList,
   TabPanel,
@@ -181,8 +183,7 @@ export function App() {
             />
           </TabPanel>
           <TabPanel value="tab3">
-            <TextInput
-              id="text-input-id"
+            <FormField
               error={{
                 text: 'Error: Please correct this issue.',
               }}
@@ -193,22 +194,23 @@ export function App() {
                 text: 'Label',
                 htmlFor: 'text-input-id',
               }}
-              suffix="KG"
-            />
-            <TextArea
+            >
+              <TextInput id="text-input-id" suffix="KG" />
+            </FormField>
+            <FormField
+              label={{
+                text: 'Label',
+                htmlFor: 'textarea-id',
+              }}
               error={{
                 text: 'Error: Please correct this issue.',
               }}
               hint={{
                 text: 'Hint: This is a helpful hint.',
               }}
-              id="textarea-id"
-              maxChars={50}
-              label={{
-                text: 'Label',
-                htmlFor: 'textarea-id',
-              }}
-            />
+            >
+              <TextArea id="textarea-id" maxChars={50} />
+            </FormField>
             <Form>
               <Combobox>
                 <DropdownItem options={ComboBoxProps.organisationOptions}>
@@ -226,35 +228,25 @@ export function App() {
             <Button onClick={() => toaster.create(toastProps)}>
               Trigger Toast
             </Button>
-            <Select
-              id="unique-id"
-              label={{ text: 'Label' }}
-              options={[
-                {
-                  label: 'Option 1',
-                  value: 'value-1',
-                },
-                {
-                  label: 'Option 2',
-                  value: 'value-2',
-                },
-                {
-                  label: 'Option 3',
-                  value: 'value-3',
-                },
-              ]}
-            />
+            <FormField label={{ text: 'Label' }}>
+              <Select id="unique-id">
+                <SelectItem label="Option 1" value={'value-1'} />
+                <SelectItem label="Option 2" value={'value-2'} />
+                <SelectItem label="Option 3" value={'value-3'} />
+              </Select>
+            </FormField>
             <hr />
-            <FileUpload
-              error={{
-                text: 'Error: File must be smaller than 5MB.',
-              }}
-              id="file-upload-id"
+            <FormField
               label={{
                 text: 'Upload File',
                 htmlFor: 'file-upload-id',
               }}
-            />
+              error={{
+                text: 'Error: File must be smaller than 5MB.',
+              }}
+            >
+              <FileUpload id="file-upload-id" />
+            </FormField>
             <Pagination
               currentPage={currentPage}
               onPageChange={setCurrentPage}
@@ -263,44 +255,54 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-        <CheckboxGroup
-          groupId="field-Id"
-          items={[
-            { label: 'Irish', value: 'irish' },
-            { label: 'British', value: 'british' },
-            {
-              label: 'Citizen of another country',
-              value: 'citizen-of-another-country',
-            },
-          ]}
-        />
+
+        <FormField>
+          <CheckboxGroup groupId="field-Id">
+            <Checkbox
+              value={'employment-tribunal'}
+              label={'Employment Tribunal'}
+              id={'UniqueID-check1'}
+            />
+            <Checkbox
+              value={'ministry-of-defence'}
+              label={'Ministry of Defence'}
+              id={'UniqueID-check2'}
+            />
+            <Checkbox
+              value={'department-for-transport'}
+              label={'Department for Transport'}
+              id={'UniqueID-check3'}
+            />
+            <Checkbox
+              value={'others'}
+              label={'Others'}
+              id={'UniqueID-check4'}
+              disabled
+            />
+          </CheckboxGroup>
+        </FormField>
         <br />
         <h2>Checkbox</h2>
         <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <RadioGroup
-          title={{
-            value: 'Where do you live?',
-            asHeading: {
-              size: 'md',
-              as: 'h3',
-            },
+        <FormField
+          label={{ text: 'How do you want to sign in?' }}
+          hint={{
+            text: "You'll need an account to prove your identity and complete your Self Assessment",
           }}
-          items={[
-            {
-              label: 'England',
-              value: 'england',
-            },
-            {
-              label: 'Scotland',
-              value: 'scotland',
-            },
-            {
-              label: 'Ireland',
-              value: 'ireland',
-            },
-          ]}
-          groupId="uniqueId1"
-        />
+        >
+          <RadioGroup groupId="group">
+            <Radio
+              value={'val1'}
+              label={'Sign in with Username and Password'}
+              hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
+            />
+            <Radio
+              value={'val2'}
+              label={'Sign in with MyGovID'}
+              hint="If you don't have a MyGovID Login, you can create one"
+            />
+          </RadioGroup>
+        </FormField>
         <Heading size="sm">Single Radio</Heading>
         <Radio value="single-radio" label="Single Radio" />
         <Modal triggerButton={<Button>Open Modal</Button>}>
