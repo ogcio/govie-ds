@@ -2,6 +2,7 @@
 import { useEffect, useState, useId } from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { CheckboxSizeEnum } from '../checkbox/types.js';
+import { translate as t } from '../i18n/util.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -9,7 +10,6 @@ import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utils.js';
 import { DropdownItemProps } from './types.js';
-import { translate as t } from '../i18n/util.js';
 
 export const DropdownItem = ({
   children,

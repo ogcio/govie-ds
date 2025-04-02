@@ -1,8 +1,5 @@
 import type { Meta } from '@storybook/react';
 import { Button } from '../button/button.js';
-import { Heading } from '../heading/heading.js';
-import { Link } from '../link/link.js';
-import { Paragraph } from '../paragraph/paragraph.js';
 import { AccordionItem } from './accordion-item.js';
 import { Accordion, AccordionProps } from './accordion.js';
 

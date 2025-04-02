@@ -1,7 +1,7 @@
 'use client';
 import { useId } from 'react';
-import { Icon } from '../icon/icon.js';
 import { translate as t } from '../i18n/util.js';
+import { Icon } from '../icon/icon.js';
 
 export type ChipProps = {
   label: string;

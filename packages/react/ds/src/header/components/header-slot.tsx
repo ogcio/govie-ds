@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
+import { translate as t } from '../../i18n/util.js';
 import { Icon } from '../../icon/icon.js';
 import { HeaderItem } from '../types.js';
-import { translate as t } from '../../i18n/util.js';
 
 type HeaderSlotProps = {
   item: HeaderItem;

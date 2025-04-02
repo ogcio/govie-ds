@@ -1,8 +1,8 @@
 import { Button } from '../../button/button.js';
 import { Heading } from '../../heading/heading.js';
+import { translate as t } from '../../i18n/util.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { TextInput } from '../../text-input/text-input.js';
-import { translate as t } from '../../i18n/util.js';
 
 export type HeaderSearchProps = {
   action?: string;

@@ -1,3 +1,4 @@
+import { translate as t } from '../i18n/util.js';
 import { Link } from '../link/link.js';
 import type {
   SummaryListActionProps,
@@ -5,7 +6,6 @@ import type {
   SummaryListValueProps,
   SummaryListRowProps,
 } from './types.js';
-import { translate as t } from '../i18n/util.js';
 
 export const SummaryListValue = ({ children }: SummaryListValueProps) => (
   <dd className="gi-summary-list-value">{children}</dd>

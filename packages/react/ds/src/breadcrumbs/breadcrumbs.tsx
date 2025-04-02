@@ -1,7 +1,7 @@
+import { translate as t } from '../i18n/util.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import type { BreadcrumbLinkProps, BreadcrumbProps } from './types.js';
-import { translate as t } from '../i18n/util.js';
 
 export const BreadcrumbEllipsis = () => (
   <div aria-hidden="true">
