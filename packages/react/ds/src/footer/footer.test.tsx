@@ -56,7 +56,7 @@ describe('Footer', () => {
     );
     renderFooter({ utilitySlot: utilityContent });
 
-    const utilitySection = screen.getByLabelText('Utility links');
+    const utilitySection = screen.getByLabelText('Footer Utility Links');
     expect(utilitySection).toBeInTheDocument();
     expect(screen.getByTestId('utility-content')).toBeInTheDocument();
   });
