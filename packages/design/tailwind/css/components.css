@@ -1,6 +1,6 @@
-@import './components/placeholder.css';
+@import './components/common.css';
 @import './components/accordion.css';
-@import './components/alert.css';
+/*@import './components/alert.css';
 @import './components/blockquote.css';
 @import './components/breadcrumbs.css';
 @import './components/button.css';
@@ -8,7 +8,7 @@
 @import './components/checkbox.css';
 @import './components/chip.css';
 @import './components/combo-box.css';
-@import './components/common.css';
+
 @import './components/cookie-banner.css';
 @import './components/drawer.css';
 @import './components/error-text.css';
@@ -22,6 +22,7 @@
 @import './components/modal.css';
 @import './components/pagination.css';
 @import './components/phase-banner.css';
+@import './components/placeholder.css';
 @import './components/progress-bar.css';
 @import './components/progress-stepper.css';
 @import './components/radio.css';
@@ -34,3 +35,4 @@
 @import './components/text-input.css';
 @import './components/toast.css';
 @import './components/tootlip.css';
+*/

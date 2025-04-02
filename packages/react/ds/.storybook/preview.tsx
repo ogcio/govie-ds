@@ -17,7 +17,7 @@ import type { Preview } from '@storybook/react';
 import i18n from 'i18next';
 import React from 'react';
 import enTranslations from '../src/i18n/translations/en.json';
-import '../styles.css';
+import '../dist/styles.css';
 import './global.css';
 
 i18n.init({
