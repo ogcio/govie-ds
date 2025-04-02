@@ -7,7 +7,7 @@ describe('typeScriptFormatter', () => {
   });
 
   it('should throw without export option', async () => {
-    const formatted = await formatArray({
+    const formatted = formatArray({
       allTokens: [],
     });
     expect(formatted).rejects.toThrow('Missing exportName option.');
