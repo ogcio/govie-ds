@@ -30,7 +30,7 @@ export class Accordion extends BaseComponent<AccordionOptions> {
     ] as HTMLElement[];
 
     this.accordionItemsState = this.accordionItems.map((item) => {
-      const innerContainer = item.querySelector(':scope > div') as any;
+      const innerContainer = item.querySelector(':scope > div') as HTMLElement;
       return {
         elements: {
           mainContainer: item,

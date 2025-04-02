@@ -26,22 +26,16 @@ libraries:
 
 <Tabs id="tab2">
   <TabList>
-    <TabItem value="tab21" checked>Macro</TabItem>
+    <TabItem value="tab21" checked>HTML</TabItem>
     <TabItem value="tab22">React</TabItem>
   </TabList>
   <TabPanel value="tab21">
   ```html
-  {{ govieToast({
-    "title": "Toast Triggered",
-    "description": "This is an info toast",
-    "trigger": {
-      "content": "Trigger Toast"
-    }
-  }) }}
+  
   ```
   </TabPanel>
   <TabPanel value="tab22">
-  ```react
+  ```jsx
   import { toaster, ToastProvider } from '@govie-ds/react';
   
   <ToastProvider />
@@ -73,23 +67,16 @@ libraries:
 
 <Tabs id="tab4">
 <TabList>
-  <TabItem value="tab41" checked>Macro</TabItem>
+  <TabItem value="tab41" checked>HTML</TabItem>
   <TabItem value="tab42">React</TabItem>
 </TabList>
 <TabPanel value="tab41">
 ```html
-{{ govieToast({
-  "title": "Toast Triggered",
-  "description": "This is an error toast",
-  "variant": "danger",
-  "trigger": {
-    "content": "Trigger Toast"
-  }
-}) }}
+
 ```
   </TabPanel>
   <TabPanel value="tab42">
-  ```react
+  ```jsx
     import { toaster, ToastProvider } from '@govie-ds/react';
 
     <ToastProvider />
@@ -120,24 +107,16 @@ libraries:
 
 <Tabs id="tab5">
 <TabList>
-  <TabItem value="tab51" checked>Macro</TabItem>
+  <TabItem value="tab51" checked>HTML</TabItem>
   <TabItem value="tab52">React</TabItem>
 </TabList>
 <TabPanel value="tab51">
 ```html
-{{ govieToast({
-  "title": "Toast Triggered",
-  "description": "This is a warning toast",
-  "variant": "warning",
-  "trigger": {
-    "content": "Trigger Toast"
-  }
-}) }}
-```
 
-  </TabPanel>
+```
+</TabPanel>
   <TabPanel value="tab52">
-  ```react
+  ```jsx
     import { toaster, ToastProvider } from '@govie-ds/react';
 
     <ToastProvider />
@@ -167,27 +146,16 @@ libraries:
 
 <Tabs id="tab6">
   <TabList>
-    <TabItem value="tab61" checked>Macro</TabItem>
+    <TabItem value="tab61" checked>HTML</TabItem>
     <TabItem value="tab62" checked>React</TabItem>
   </TabList>
   <TabPanel value="tab61">
   ```html
-    {{ govieToast({
-      "title": "Toast Triggered",
-      "description": "This is a warning toast",
-      "variant": "warning",
-      "trigger": {
-        "content": "Trigger Toast"
-      },
-      "position": {
-        { "x": "left", y: "top" }
-      }
-    }) }}
-    ```
-
-</TabPanel>
+  
+  ```
+  </TabPanel>
   <TabPanel value="tab62">
-  ```react  
+  ```jsx  
     import { toaster, ToastProvider } from '@govie-ds/react';
 
     <ToastProvider />
@@ -203,8 +171,7 @@ libraries:
       Trigger Top-Left
     </Button>
     ```
-
-</TabPanel>
+  </TabPanel>
 </Tabs>
 
 ### Dismissible Toast
@@ -219,24 +186,16 @@ libraries:
 
 <Tabs id="tab7">
   <TabList>
-    <TabItem value="tab71" checked>Macro</TabItem>
+    <TabItem value="tab71" checked>HTML</TabItem>
     <TabItem value="tab72" checked>React</TabItem>
   </TabList>
   <TabPanel value="tab71">
     ```html
-      {{ govieToast({
-        "title": "Toast Triggered",
-        "description": "This is a warning toast",
-        "variant": "warning",
-        "trigger": {
-          "content": "Trigger Toast"
-        }
-        dismissed: true
-      }) }}
-      ```
-</TabPanel>
+     
+    ```
+  </TabPanel>
   <TabPanel value="tab72">
-  ```react  
+  ```jsx  
     import { toaster, ToastProvider } from '@govie-ds/react';
 
     <ToastProvider />
@@ -252,8 +211,7 @@ libraries:
       Trigger Dismissible
     </Button>
     ```
-
-</TabPanel>
+  </TabPanel>
 </Tabs>
 
 ### Toast with Animation
@@ -271,7 +229,7 @@ libraries:
     <TabItem value="tab81" checked>React</TabItem>
   </TabList>
   <TabPanel value="tab81">
-  ```react  
+  ```jsx  
     import { toaster, ToastProvider } from '@govie-ds/react';
 
     <ToastProvider />

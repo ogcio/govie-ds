@@ -32,7 +32,6 @@ libraries:
 <Tabs id="tab1">
   <TabList>
     <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab12">Macro</TabItem>
     <TabItem value="tab13">React</TabItem>
   </TabList>
   <TabPanel value="tab11">
@@ -57,20 +56,8 @@ libraries:
     </nav>
   ```
   </TabPanel>
-  <TabPanel value="tab12">
-    ```html
-      {{govieBreadcrumbs({
-        navItems: [
-          { "label": "Home", "href": "/home" },
-          { "ellipsis": true },
-          { "label": "Documentation", "href": "/docs" },
-          { "label": "Travel abroad", "href": "/travel", "currentPage": true }
-        ]})
-      }}
-    ```
-    </TabPanel>
   <TabPanel value="tab13">
-  ```react
+  ```jsx
     import { Breadcrumbs, BreadcrumbLink, BreadcrumbEllipsis, BreadcrumbCurrentLink } from '@govie-ds/react';
 
     <Breadcrumbs>

@@ -96,16 +96,6 @@ export const iconSchema = zod.object({
       description: 'Set disabled look&feel',
     })
     .optional(),
-  ariaHidden: zod
-    .boolean({
-      description: 'Set ARIA hidden field',
-    })
-    .optional(),
-  ariaLabel: zod
-    .string({
-      description: 'Set ARIA Label field',
-    })
-    .optional(),
   inline: zod
     .boolean({
       description: 'View as inline (block is default).',
@@ -114,11 +104,6 @@ export const iconSchema = zod.object({
   className: zod
     .string({
       description: 'Custom classes',
-    })
-    .optional(),
-  id: zod
-    .string({
-      description: 'custom icon id',
     })
     .optional(),
 });

@@ -12,6 +12,3 @@ export const drawerFooter = `
     <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
 </div>
 `;
-
-export const drawerTriggerButton =
-  '<button class="gi-btn gi-btn-primary gi-btn-regular">Open Modal</button>';
