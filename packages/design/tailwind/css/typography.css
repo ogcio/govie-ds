@@ -31,7 +31,7 @@
 .gi-paragraph-lg,
 .gi-paragraph-md,
 .gi-paragraph-xs {
-  @apply gi-max-w-prose;
+  @apply gi:max-w-prose;
 }
 
 .gi-paragraph-md,
@@ -193,49 +193,48 @@
 /* Link  */
 
 .gi-link {
-  @apply gi-decoration-xs
-  gi-underline
-  gi-underline-offset-[0.2em]
-  gi-text-blue-700 gi-inline-block;
+  @apply gi:decoration-xs
+  gi:underline
+  gi:underline-offset-[0.2em]
+  gi:text-blue-700 gi:inline-block;
 }
 
 .gi-link:not([aria-current='page']) {
-  @apply hover:gi-decoration-lg
-  focus:gi-no-underline
-  focus:gi-rounded-sm
-  focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
-  focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
-  focus-visible:gi-no-underline
-  focus-visible:gi-rounded-sm
-  focus-visible:gi-outline-none;
+  @apply gi:hover:decoration-lg
+  gi:focus:no-underline
+  gi:focus:rounded-sm
+  gi:focus:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+  gi:focus-visible:shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
+  gi:focus-visible:no-underline
+  gi:focus-visible:rounded-sm
+  gi:focus-visible:outline-none;
 }
 
 .gi-link[aria-current='page'] {
-  @apply gi-text-gray-700 gi-pointer-events-none gi-no-underline focus-visible:gi-outline-none focus-visible:gi-shadow-none;
+  @apply gi:text-gray-700 gi:pointer-events-none gi:no-underline gi:focus-visible:outline-none gi:focus-visible:shadow-none;
 }
 
 .gi-link:not(.gi-link-inherit) {
-  @apply hover:gi-text-blue-800 visited:gi-text-purple-700 focus:gi-text-blue-800 focus-visible:gi-text-blue-800;
+  @apply gi:hover:text-blue-800 gi:visited:text-purple-700 gi:focus:text-blue-800 gi:focus-visible:text-blue-800;
 }
 
 .gi-link-sm {
-  @apply gi-text-sm;
+  @apply gi:text-sm;
 }
 
 .gi-link-md {
-  @apply gi-text-2md;
+  @apply gi:text-2md;
 }
 
 .gi-link-inherit {
-  @apply gi-text-inherit hover:gi-text-inherit;
+  @apply gi:text-inherit gi:hover:text-inherit;
 }
 
 .gi-link-no-visited {
-  @apply visited:gi-text-blue-700;
+  @apply gi:visited:text-blue-700;
 }
-
 .gi-link-no-underline {
-  @apply gi-no-underline gi-underline-offset-[0.1em] focus:gi-no-underline;
+  @apply gi:no-underline gi:underline-offset-[0.1em] gi:focus:no-underline;
 }
 
 /* End Link */
@@ -243,28 +242,28 @@
 /* Start List */
 
 .gi-list {
-  @apply gi-list-none;
+  @apply gi:list-none;
 }
 
 .gi-list-bullet {
-  @apply gi-pl-5 gi-list-disc;
+  @apply gi:pl-5 gi:list-disc;
 }
 
 .gi-list-number {
-  @apply gi-pl-4 gi-list-decimal;
+  @apply gi:pl-4 gi:list-decimal;
 }
 
 .gi-list > li {
-  @apply gi-mb-1;
+  @apply gi:mb-1;
 }
 
 .gi-list-bullet > li,
 .gi-list-number > li {
-  @apply gi-mb-0;
+  @apply gi:mb-0;
 }
 
 .gi-list-spaced > li {
-  @apply gi-mb-4;
+  @apply gi:mb-4;
 }
 
 /* End List */
@@ -274,48 +273,47 @@ Summary List
 */
 
 .gi-summary-list {
-  @apply gi-text-sm md:gi-w-full md:gi-table-fixed gi-antialiased md:gi-table md:gi-border-collapse;
+  @apply gi:text-sm gi:md:w-full gi:md:table-fixed gi:antialiased gi:md:table gi:md:border-collapse;
 }
 
 .gi-summary-list > dl {
-  @apply gi-w-full gi-mb-7 gi-mb-4 md:gi-table-row md:gi-text-md md:gi-mb-1;
+  @apply gi:w-full gi:mb-7 gi:mb-4 gi:md:table-row gi:md:text-md gi:md:mb-1;
 }
 
 .gi-summary-list > dl[data-border='true'] {
-  @apply gi-border-b-gray-400 gi-border-b;
+  @apply gi:border-b-gray-400 gi:border-b;
 }
 
 .gi-summary-list > dl > dt {
-  @apply gi-py-2 gi-font-bold;
+  @apply gi:py-2 gi:font-bold;
 }
 
 .gi-summary-list > dl > dd,
 .gi-summary-list > dl > dl {
-  @apply gi-block gi-mb-4 md:gi-pt-2 md:gi-pb-2 md:gi-m-0 md:gi-table-cell md:gi-text-md;
+  @apply gi:block gi:mb-4 gi:md:pt-2 gi:md:pb-2 gi:md:m-0 gi:md:table-cell gi:md:text-md;
 }
 
 .gi-summary-list-value {
-  @apply md:gi-break-words;
+  @apply gi:md:break-words;
 }
 
 .gi-summary-list-actions {
-  @apply md:gi-text-right;
+  @apply gi:md:text-right;
 }
 
 /*
-End of Summary List
+End of:Summary List
 */
 
-/*
-Details
+/*:Details
 */
 
 .gi-details {
-  @apply gi-block gi-text-md gi-text-gray-950;
+  @apply gi:block gi:text-md gi:text-gray-950;
 }
 
 .gi-details-summary {
-  @apply gi-relative gi-mb-1 gi-cursor-pointer gi-text-blue-700 gi-w-fit focus-visible:gi-shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-950)] focus-visible:gi-bg-yellow-400 focus-visible:gi-text-gray-950 focus-visible:gi-decoration-none focus-visible:gi-outline focus-visible:gi-outline-[3px] focus-visible:gi-outline-transparent hover:gi-text-blue-800;
+  @apply gi:relative gi:mb-1 gi:cursor-pointer gi:text-blue-700 gi:w-fit gi:focus-visible:shadow-[0_-2px_var(--gieds-color-yellow-400),0_4px_var(--gieds-color-gray-950)] gi:focus-visible:bg-yellow-400 gi:focus-visible:text-gray-950 gi:focus-visible:decoration-none gi:focus-visible:outline gi:focus-visible:outline-[3px] gi:focus-visible:outline-transparent gi:hover:text-blue-800;
 }
 
 .gi-details-summary:focus-visible > .gi-details-summary-text {
@@ -328,13 +326,13 @@ Details
 }
 
 .gi-details-summary-text {
-  @apply gi-underline gi-underline-offset-[0.1rem];
+  @apply gi:underline gi:underline-offset-[0.1rem];
 }
 
 .gi-details-text {
-  @apply gi-py-4 gi-pl-5 gi-border-l-[5px] gi-border-solid gi-border-l-gray-200;
+  @apply gi:py-4 gi:pl-5 gi:border-l-[5px] gi:border-solid gi:border-l-gray-200;
 }
 
 /*
-End of Details
+End of:Details
 */

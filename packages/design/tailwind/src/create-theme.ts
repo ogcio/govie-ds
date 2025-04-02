@@ -1,8 +1,10 @@
 import { deepmerge } from '@govie-ds/deepmerge';
 import { variables } from '@govie-ds/tokens';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
-import { CustomThemeConfig } from 'tailwindcss/types/config.js';
+//import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utils.js';
+
+type CustomThemeConfig = any;
 
 export type CreateThemeOptions = {
   meta?: any;

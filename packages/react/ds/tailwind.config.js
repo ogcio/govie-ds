@@ -1,13 +1,12 @@
-import { createTheme } from '@govie-ds/tailwind';
-import { Config } from 'tailwindcss';
+const { createTheme } = require('@govie-ds/tailwind');
 
-const config: Config = {
-  prefix: 'gi-',
+/** @type {import('tailwindcss').Config} */
+const config = {
+  prefix: 'gi',
   content: ['./src/**/*.ts', './src/**/*.tsx'],
   theme: createTheme(),
-  // eslint-disable-next-line unicorn/prefer-module
   plugins: [require('@tailwindcss/typography')],
-  safelist: [
+  /*safelist: [
     'gi-prose',
     'gi-not-prose',
     'gi-max-w-none',
@@ -20,7 +19,7 @@ const config: Config = {
     { pattern: /col-./ },
     { pattern: /row-./ },
     { pattern: /gap-./, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
-  ],
+  ],*/
 };
 
-export default config;
+module.exports = config;
