@@ -1,12 +1,12 @@
 // Don't reorder the following import
-import { destroyAllInstances } from './common/instances.js'; /* eslint-disable-line import-x/order */
+import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
-import { initAccordion } from './accordion/accordion.js';
-import { initAlert } from './alert/alert.js';
-import { initCheckboxes } from './checkbox/checkbox.js';
-import { initComboBox } from './combo-box/combo-box.js';
+import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
+import { initAlert } from './alert/alert.js'; /* eslint-disable-line import-x/order */
+import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import-x/order */
+import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initHeader } from './header/header.js';
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
