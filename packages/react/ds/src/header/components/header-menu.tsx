@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { cn } from '../../cn.js';
+import { translate as t } from '../../i18n/util.js';
 import { Icon } from '../../icon/icon.js';
 import { ListItem } from '../../list-item/list-item.js';
 import { HeaderProps } from '../types.js';
-import { translate as t } from '../../i18n/util.js';
 
 export type MobileHeaderMenuProps = Pick<
   HeaderProps,

@@ -9,9 +9,9 @@ import React, {
 } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
+import { translate as t } from '../i18n/util.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { translate as t } from '../i18n/util.js';
 
 export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,

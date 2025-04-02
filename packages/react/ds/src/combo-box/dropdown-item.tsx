@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useId, useState } from 'react';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/util.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
@@ -9,7 +10,6 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { slugify } from '../utilities.js';
 import { DropdownItemProps } from './types.js';
-import { translate as t } from '../i18n/util.js';
 
 export const DropdownItem = ({
   children,

@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/util.js';
 import { Toast as DSToast } from './ds-toast.js';
 import type { ToastPosition, ToastProps } from './types.js';
-import { translate as t } from '../i18n/util.js';
 
 const positions: ToastPosition[] = [
   { x: 'left', y: 'top' },

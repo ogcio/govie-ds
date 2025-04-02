@@ -2,8 +2,8 @@
 import React, { useState, cloneElement } from 'react';
 import { ButtonProps } from '../button/types.js';
 import { Container } from '../container/container.js';
-import { LinkProps } from '../link/link.js';
 import { translate as t } from '../i18n/util.js';
+import { LinkProps } from '../link/link.js';
 
 export type CookieBannerProps = {
   children: React.ReactNode;
