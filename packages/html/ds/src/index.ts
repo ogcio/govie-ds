@@ -1,7 +1,12 @@
-import { destroyAllInstances } from './common/instances.js';
+// Don't reorder the following import
+import { destroyAllInstances } from './common/instances.js'; /* eslint-disable-line import-x/order */
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
+import { initAccordion } from './accordion/accordion.js';
+import { initAlert } from './alert/alert.js';
+import { initCheckboxes } from './checkbox/checkbox.js';
+import { initComboBox } from './combo-box/combo-box.js';
 import { initHeader } from './header/header.js';
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
@@ -10,12 +15,6 @@ import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
 import { initUtilities } from './utils/utilities.js';
-import { initAlert } from './alert/alert.js';
-import { initCheckboxes } from './checkbox/checkbox.js';
-import { initComboBox } from './combo-box/combo-box.js';
-
-// Don't reorder the following import
-import { initAccordion } from './accordion/accordion.js';
 
 export * as properties from './dist/properties.js';
 
