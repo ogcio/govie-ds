@@ -23,6 +23,7 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "vitest run",
     "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "build": "pnpm build:properties && pnpm build:ts && pnpm build:styles",
     "build:properties": "tsx scripts/build-properties.ts",
     "build:ts": "vite build",
