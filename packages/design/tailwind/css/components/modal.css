@@ -37,6 +37,13 @@
 .gi-modal-container {
   @apply gi-bg-white gi-absolute gi-w-fit;
 }
+
+.gi-modal-container[data-position='bottom'][data-size='lg'],
+.gi-modal-container[data-position='bottom'][data-size='md'],
+.gi-modal-container[data-position='bottom'][data-size='sm'] {
+  @apply gi-w-full;
+}
+
 .gi-modal-container[data-size='lg'] {
   @apply gi-w-94 sm:gi-w-135 xl:gi-w-192;
 }

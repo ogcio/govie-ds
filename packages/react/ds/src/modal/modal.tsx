@@ -147,6 +147,7 @@ export const ModalWrapper = ({
       <div
         data-testid="modal-container"
         data-size={size}
+        data-position={position}
         className={cn(
           'gi-modal-container',
           {
