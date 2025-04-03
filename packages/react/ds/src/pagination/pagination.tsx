@@ -27,6 +27,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
   dataTestid,
 }) => {
+  if (totalPages === 0) {
+    return null;
+  }
+
   const { breakpoint, width } = useBreakpoint();
 
   // SSR Safety
