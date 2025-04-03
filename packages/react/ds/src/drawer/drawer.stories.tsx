@@ -39,18 +39,16 @@ export const Default: Story = {
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
-        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
-        </div>
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
       </DrawerFooter>,
     ],
   },
@@ -191,18 +189,16 @@ export const DrawerMenuTablet: Story = {
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
-        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
-        </div>
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
       </DrawerFooter>,
     ],
   },
@@ -223,18 +219,16 @@ export const DrawerMenuMobile: Story = {
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
-        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
-        </div>
+        <Button
+          variant="secondary"
+          appearance="dark"
+          className="gi-justify-center xs:gi-justify-start"
+        >
+          Cancel
+        </Button>
+        <Button className="gi-justify-center xs:gi-justify-start">
+          Primary
+        </Button>
       </DrawerFooter>,
     ],
   },
