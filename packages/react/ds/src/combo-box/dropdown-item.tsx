@@ -1,9 +1,8 @@
 'use client';
-import { useEffect, useState, useId } from 'react';
-import { Checkbox } from '../checkbox/checkbox.js';
-import { CheckboxSizeEnum } from '../checkbox/types.js';
+import { useEffect, useId, useState } from 'react';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputText } from '../input-text/input-text.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
@@ -137,13 +136,12 @@ export const DropdownItem = ({
                 key={`${index}_${dropdownCustomClass}_${checkbox.value}`}
                 className={`gi-combobox-checkbox gi-combobox-key-${dropdownCustomClass}`}
               >
-                <Checkbox
+                <InputCheckbox
                   onChange={(event) =>
                     handleChange(checkbox.value, event.target.checked)
                   }
                   checked={checked}
                   id={`${index}_${dropdownCustomClass}_${checkbox.value}`}
-                  size={CheckboxSizeEnum.Small}
                   label={checkbox.label}
                   name={`${index}_${checkbox.label}_${dropdownCustomClass}`}
                   value={checkbox.value}

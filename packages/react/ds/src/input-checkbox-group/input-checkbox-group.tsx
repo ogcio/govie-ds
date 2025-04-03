@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import { Children, cloneElement, isValidElement, useState } from 'react';
 import { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
 import { InputRadioSizeType } from '../input-radio/types.js';
 import { InputCheckboxGroupProps } from './types.js';
@@ -20,9 +20,9 @@ export const InputCheckboxGroup: React.FC<
     onChange?.(newValues);
   };
 
-  const childrenWithOnChange = React.Children.map(children, (element) => {
+  const childrenWithOnChange = Children.map(children, (element) => {
     if (
-      React.isValidElement<{
+      isValidElement<{
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
@@ -30,7 +30,7 @@ export const InputCheckboxGroup: React.FC<
         name: string;
       }>(element)
     ) {
-      return React.cloneElement<{
+      return cloneElement<{
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;

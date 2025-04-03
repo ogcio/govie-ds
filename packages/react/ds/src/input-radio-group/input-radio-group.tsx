@@ -1,29 +1,40 @@
 'use client';
 
-import React, { useState } from 'react';
+import {
+  ChangeEvent,
+  Children,
+  cloneElement,
+  FC,
+  isValidElement,
+  PropsWithChildren,
+  useState,
+} from 'react';
 import { InputRadioGroupProps } from './types.js';
 
-export const InputRadioGroup: React.FC<
-  React.PropsWithChildren<InputRadioGroupProps>
-> = ({ groupId, inline, onChange, children }) => {
+export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
+  groupId,
+  inline,
+  onChange,
+  children,
+}) => {
   const [value, setValue] = useState<null | string>();
 
-  const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     onChange?.(event);
   };
 
-  const childrenWithOnChange = React.Children.map(children, (element) => {
+  const childrenWithOnChange = Children.map(children, (element) => {
     if (
-      React.isValidElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      isValidElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         name: string;
       }>(element)
     ) {
-      return React.cloneElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      return cloneElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         name: string;
