@@ -1,7 +1,8 @@
 'use client';
-import { useEffect, useState, useId } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { CheckboxSizeEnum } from '../checkbox/types.js';
+import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -122,7 +123,11 @@ export const DropdownItem = ({
           </div>
         )}
 
-        <div className="gi-combobox-checkbox-container">
+        <div
+          className={cn('gi-combobox-checkbox-container', {
+            'gi-h-64': !noSearch,
+          })}
+        >
           {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
