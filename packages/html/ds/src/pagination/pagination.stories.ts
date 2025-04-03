@@ -255,8 +255,8 @@ export const CompactView: Story = {
   },
   render: createElement,
   play: async ({ canvasElement }) => {
-    window.innerWidth = 478;
-    window.dispatchEvent(new Event('resize'));
+    globalThis.window.innerWidth = 478;
+    globalThis.window.dispatchEvent(new Event('resize'));
 
     const canvas = within(canvasElement);
 
@@ -281,8 +281,8 @@ export const CompactViewWithButtons: Story = {
   },
   render: createElement,
   play: async ({ canvasElement }) => {
-    window.innerWidth = 500;
-    window.dispatchEvent(new Event('resize'));
+    globalThis.window.innerWidth = 500;
+    globalThis.window.dispatchEvent(new Event('resize'));
 
     const canvas = within(canvasElement);
 

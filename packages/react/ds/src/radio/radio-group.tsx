@@ -1,5 +1,12 @@
 'use client';
-import React, { useState } from 'react';
+import React, {
+  ChangeEvent,
+  Children,
+  cloneElement,
+  isValidElement,
+  PropsWithChildren,
+  useState,
+} from 'react';
 import type { RadioGroupProps } from './types.js';
 
 export const RadioGroup = ({
@@ -7,7 +14,7 @@ export const RadioGroup = ({
   inline,
   onChange,
   children,
-}: React.PropsWithChildren<RadioGroupProps>) => {
+}: PropsWithChildren<RadioGroupProps>) => {
   const [value, setValue] = useState<null | string>();
 
   const onOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,17 +22,17 @@ export const RadioGroup = ({
     onChange?.(event);
   };
 
-  const childrenWithOnChange = React.Children.map(children, (element) => {
+  const childrenWithOnChange = Children.map(children, (element) => {
     if (
-      React.isValidElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      isValidElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         name: string;
       }>(element)
     ) {
-      return React.cloneElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      return cloneElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         name: string;

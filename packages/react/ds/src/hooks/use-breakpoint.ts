@@ -35,22 +35,22 @@ export const useBreakpoint = (): {
     Breakpoint.ExtraSmall,
   );
   const [width, setWidth] = useState<number>(
-    typeof window === 'undefined' ? 0 : window.innerWidth,
+    globalThis.window === undefined ? 0 : globalThis.window.innerWidth,
   );
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (globalThis.window !== undefined) {
       const handleResize = () => {
-        const currentWidth = window.innerWidth;
+        const currentWidth = globalThis.window.innerWidth;
         setWidth(currentWidth);
         setBreakpoint(getBreakpoint(currentWidth));
       };
 
       handleResize();
-      window.addEventListener('resize', handleResize);
+      globalThis.window.addEventListener('resize', handleResize);
 
       return () => {
-        window.removeEventListener('resize', handleResize);
+        globalThis.window.removeEventListener('resize', handleResize);
       };
     }
   }, []);

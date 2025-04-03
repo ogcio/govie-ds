@@ -1,10 +1,10 @@
-import { cleanup, render } from '../test-utils.js';
+import { cleanup, renderComponent } from '../test-utilities.js';
 import { PhaseBannerProps, PhaseBanner } from './phase-banner.js';
 
 describe('goviePhaseBanner', () => {
   afterEach(cleanup);
   const renderPhaseBanner = (props: PhaseBannerProps) =>
-    render(<PhaseBanner {...props} />);
+    renderComponent(<PhaseBanner {...props} />);
 
   it('should render a phase-banner with alpha level', () => {
     const screen = renderPhaseBanner({

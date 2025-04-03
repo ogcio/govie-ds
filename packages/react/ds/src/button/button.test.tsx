@@ -1,5 +1,9 @@
 import { Icon } from '../icon/icon.js';
-import { render, cleanup, testVariantsAxe } from '../test-utils.js';
+import {
+  renderComponent,
+  cleanup,
+  testVariantsAxe,
+} from '../test-utilities.js';
 import { Button } from './button.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
@@ -11,7 +15,7 @@ const standardProps: ButtonProps = {
 describe('button', () => {
   afterEach(cleanup);
   const renderButton = ({ children, ...props }: ButtonProps) =>
-    render(
+    renderComponent(
       <Button {...props} data-testid={'govie-button'}>
         {children}
       </Button>,

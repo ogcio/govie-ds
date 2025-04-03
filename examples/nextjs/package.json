@@ -2,6 +2,7 @@
   "name": "@govie-ds/examples-nextjs",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,13 +12,15 @@
   "dependencies": {
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/react": "workspace:*",
-    "next": "15.1.4",
+    "next": "^15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-next": "15.1.4",
+    "@govie-ds/eslint-config": "workspace:*",
+    "@next/eslint-plugin-next": "^15.2.4",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.4",
     "postcss": "^8.4.40"
   }
 }

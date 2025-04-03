@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
@@ -9,7 +9,7 @@ import {
 describe('govieBreadcrumbs', () => {
   afterEach(cleanup);
   it('should render Breadcrumbs', () => {
-    const { getByRole, getAllByRole } = render(
+    const { getByRole, getAllByRole } = renderComponent(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
         <BreadcrumbEllipsis />
@@ -31,7 +31,7 @@ describe('govieBreadcrumbs', () => {
   });
 
   it('should render Breadcrumbs with ellipses correctly', () => {
-    const { container } = render(
+    const { container } = renderComponent(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
         <BreadcrumbEllipsis />
@@ -46,7 +46,7 @@ describe('govieBreadcrumbs', () => {
   });
 
   it('should show left chevron icon when iconStart is true', () => {
-    const { container } = render(
+    const { container } = renderComponent(
       <Breadcrumbs iconStart>
         <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>
       </Breadcrumbs>,
@@ -57,7 +57,7 @@ describe('govieBreadcrumbs', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const { axe } = render(
+    const { axe } = renderComponent(
       <Breadcrumbs>
         <BreadcrumbLink href="/home">Home</BreadcrumbLink>
         <BreadcrumbEllipsis />

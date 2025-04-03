@@ -69,7 +69,7 @@ export const Default: Story = {
   },
 };
 
-export const withHint: Story = {
+export const WithHint: Story = {
   args: {
     value: 'radio-with-hint',
     label: 'With hint',
@@ -77,7 +77,7 @@ export const withHint: Story = {
   },
 };
 
-export const withDefaultChecked: Story = {
+export const WithDefaultChecked: Story = {
   args: {
     value: 'radio-with-default-checked',
     label: 'Default checked',

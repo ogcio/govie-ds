@@ -1,6 +1,13 @@
 'use client';
 
-import React from 'react';
+import {
+  Children,
+  cloneElement,
+  FC,
+  Fragment,
+  isValidElement,
+  ReactElement,
+} from 'react';
 import { cn } from '../cn.js';
 import type {
   Alignment,
@@ -197,7 +204,7 @@ const Divider = ({ direction }: { direction: Direction }) => {
   );
 };
 
-export const Stack: React.FC<StackProps> = ({
+export const Stack: FC<StackProps> = ({
   children,
   direction = 'column',
   fixedHeight = '100%',
@@ -221,12 +228,12 @@ export const Stack: React.FC<StackProps> = ({
   );
 
   const renderChildren = () => {
-    const childrenComponent = React.Children.toArray(children);
+    const childrenComponent = Children.toArray(children);
     return childrenComponent.map((child, index) => (
-      <React.Fragment key={`item_${index}`}>
-        {React.isValidElement(child)
-          ? React.cloneElement(
-              child as React.ReactElement,
+      <Fragment key={`item_${index}`}>
+        {isValidElement(child)
+          ? cloneElement(
+              child as ReactElement,
               {
                 'data-testid': `govie-stack-item-${index}`,
               } as { 'data-testid': string },
@@ -236,7 +243,7 @@ export const Stack: React.FC<StackProps> = ({
         {hasDivider && index < childrenComponent.length - 1 && (
           <Divider direction={direction} />
         )}
-      </React.Fragment>
+      </Fragment>
     ));
   };
 
@@ -247,7 +254,7 @@ export const Stack: React.FC<StackProps> = ({
       style={{ height: fixedHeight }}
       {...props}
     >
-      {renderChildren() as React.ReactElement[]}
+      {renderChildren() as ReactElement[]}
     </div>
   );
 };

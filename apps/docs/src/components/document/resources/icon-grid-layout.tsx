@@ -1,7 +1,7 @@
 'use client';
 import { Icon, Icons, Paragraph } from '@govie-ds/react';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
-import { titleCase } from '@/lib/utils';
+import { titleCase } from '@/lib/utilities';
 
 const icons = [...Icons.sort()];
 
