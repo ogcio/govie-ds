@@ -64,7 +64,7 @@ export const Default: Story = {
   ),
 };
 
-export const withHints: Story = {
+export const WithHints: Story = {
   args: {
     groupId: 'govie-field-ID',
   },
@@ -93,7 +93,7 @@ export const withHints: Story = {
   ),
 };
 
-export const withErrorMessage: Story = {
+export const WithErrorMessage: Story = {
   args: {
     groupId: 'govie-field-ID2',
   },

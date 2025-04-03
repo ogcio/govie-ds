@@ -6,9 +6,9 @@ type LogoProps = {
 };
 
 export type FooterProps = {
-  primarySlot?: any;
-  secondarySlot?: any;
-  utilitySlot?: any;
+  primarySlot?: string;
+  secondarySlot?: string;
+  utilitySlot?: string;
   logo?: LogoProps;
   class?: string;
   dataTestid?: string;

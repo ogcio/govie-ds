@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { cn } from '../cn.js';
 
 export const LabelSize = {
@@ -16,7 +16,7 @@ export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
 };
 
 // Use React.forwardRef to support refs properly
-export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ({ text, size = LabelSize.Medium, className, ...props }, ref) => {
     return (
       <label

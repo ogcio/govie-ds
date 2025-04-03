@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import {
   SummaryList,
   SummaryListRow,
@@ -11,7 +11,7 @@ describe('govieSummaryList', () => {
   afterEach(cleanup);
 
   const renderSummaryList = (props: SummaryListProps) =>
-    render(<SummaryList {...props} />);
+    renderComponent(<SummaryList {...props} />);
 
   it('should render SummaryList and its rows correctly', () => {
     const { getByText } = renderSummaryList({

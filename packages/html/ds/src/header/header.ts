@@ -28,7 +28,12 @@ const removeClass = (
 };
 
 export class Header extends BaseComponent<HeaderOptions> {
-  getElements: any;
+  getElements: () => {
+    itemSlotActions: NodeListOf<Element>;
+    slotContainers: NodeListOf<Element>;
+    searchTrigger: HTMLInputElement;
+    accordionContainers: NodeListOf<Element>;
+  };
   closeAllSlotContainers: (target: HTMLInputElement) => void;
   handleSearchChange: (event: Event) => void;
   attachEventsToSearchTrigger: () => void;

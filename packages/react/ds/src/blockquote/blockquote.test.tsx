@@ -1,10 +1,12 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { Blockquote } from './blockquote.js';
 
 describe('govieBlockquote', () => {
   afterEach(cleanup);
   it('should render a blockquote with the correct content', () => {
-    const { getByText } = render(<Blockquote>This is a blockquote</Blockquote>);
+    const { getByText } = renderComponent(
+      <Blockquote>This is a blockquote</Blockquote>,
+    );
     const pElement = getByText('This is a blockquote');
     expect(pElement).toBeTruthy();
     expect(pElement.tagName.toLowerCase()).toBe('blockquote');
@@ -12,7 +14,7 @@ describe('govieBlockquote', () => {
 
   it('should render a blockquote with the cite attribute when provided', () => {
     const citeUrl = 'https://example.com/source';
-    const { container } = render(
+    const { container } = renderComponent(
       <Blockquote cite={citeUrl}>This is a blockquote</Blockquote>,
     );
     const blockquoteElement = container.querySelector('blockquote');
@@ -21,7 +23,9 @@ describe('govieBlockquote', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const { axe } = render(<Blockquote>This is a blockquote</Blockquote>);
+    const { axe } = renderComponent(
+      <Blockquote>This is a blockquote</Blockquote>,
+    );
     await axe();
   });
 });

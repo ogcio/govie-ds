@@ -98,8 +98,13 @@ export default function RootLayout({
         <Footer
           secondarySlot={
             <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-              {footerLinks.map((link) => (
-                <Link noColor aria-label={link.label} href={link.href}>
+              {footerLinks.map((link, index) => (
+                <Link
+                  noColor
+                  aria-label={link.label}
+                  href={link.href}
+                  key={`footerlink-${index}`}
+                >
                   {link.label}
                 </Link>
               ))}

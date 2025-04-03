@@ -64,22 +64,20 @@ export class Toast extends BaseComponent<ToastOptions> {
       this.clonedNode?.classList.remove('gi-hidden');
       if (this.triggerButton) {
         this.triggerButton.addEventListener('click', () => {
-          this.notyf &&
-            this.notyf.open({
-              type: 'open',
-              message: this.clonedNode?.outerHTML,
-              duration,
-              position,
-            });
-        });
-      } else {
-        this.notyf &&
-          this.notyf.open({
+          this.notyf?.open({
             type: 'open',
             message: this.clonedNode?.outerHTML,
             duration,
             position,
           });
+        });
+      } else {
+        this.notyf?.open({
+          type: 'open',
+          message: this.clonedNode?.outerHTML,
+          duration,
+          position,
+        });
       }
     };
   }

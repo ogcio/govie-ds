@@ -1,5 +1,12 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import {
+  useState,
+  useEffect,
+  Children,
+  cloneElement,
+  isValidElement,
+  ReactNode,
+} from 'react';
 import { TabItemProps } from './tab-item.js';
 
 export const TabList = ({
@@ -7,10 +14,10 @@ export const TabList = ({
   tabName,
 }: {
   tabName?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
-  const tabCount = React.Children.count(children);
+  const tabCount = Children.count(children);
 
   useEffect(() => {
     // Initialize the active tab based on children
@@ -18,9 +25,9 @@ export const TabList = ({
     let foundCheckedTab = false;
     let checkedIndex = 0;
 
-    React.Children.forEach(children, (child, index) => {
+    Children.forEach(children, (child, index) => {
       if (
-        React.isValidElement<TabItemProps>(child) &&
+        isValidElement<TabItemProps>(child) &&
         'checked' in child.props &&
         child.props.checked === true
       ) {
@@ -96,9 +103,9 @@ export const TabList = ({
     setActiveTab(index);
   };
 
-  const childrenWithName = React.Children.map(children, (element, index) => {
+  const childrenWithName = Children.map(children, (element, index) => {
     if (
-      React.isValidElement<{
+      isValidElement<{
         index: number;
         checked: boolean;
         onTabSelected: (
@@ -108,7 +115,7 @@ export const TabList = ({
         onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
       }>(element)
     ) {
-      return React.cloneElement<{
+      return cloneElement<{
         index: number;
         checked: boolean;
         onTabSelected: (

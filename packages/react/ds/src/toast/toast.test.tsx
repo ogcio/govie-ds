@@ -1,4 +1,4 @@
-import { render, cleanup, waitFor } from '../test-utils.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
 import { ToastProvider, toaster } from './toast.js';
 import type { ToastProps } from './types.js';
 
@@ -13,7 +13,7 @@ describe('Toast', () => {
   afterEach(cleanup);
 
   const triggerToast = (props: ToastProps) => {
-    const screen = render(<ToastProvider />);
+    const screen = renderComponent(<ToastProvider />);
     toaster.create(props);
 
     return screen;
@@ -31,7 +31,7 @@ describe('Toast', () => {
   });
 
   it('should render all different variants', async () => {
-    const screen = render(<ToastProvider />);
+    const screen = renderComponent(<ToastProvider />);
     for (const variant of variants) {
       const title = `Toast`;
 

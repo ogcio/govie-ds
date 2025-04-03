@@ -122,7 +122,7 @@ export const withLabelHintAndError: Story = {
     const canvas = within(canvasElement);
 
     const textInput = canvas.getByTestId('unique-id') as HTMLSelectElement;
-    expect(window.getComputedStyle(textInput).borderColor).toBe(
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
 

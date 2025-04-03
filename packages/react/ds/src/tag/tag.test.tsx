@@ -1,9 +1,9 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { TagProps, Tag, TagTypeEnum, type TagType } from './tag.js';
 
 describe('govieTag', () => {
   afterEach(cleanup);
-  const renderTag = (props: TagProps) => render(<Tag {...props} />);
+  const renderTag = (props: TagProps) => renderComponent(<Tag {...props} />);
 
   it('should render a tag with the correct content', () => {
     const screen = renderTag({

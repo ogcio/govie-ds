@@ -1,3 +1,6 @@
+import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
+import { cn } from '@/lib/cn';
 import {
   Accordion,
   AccordionItem,
@@ -30,6 +33,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  InputPassword,
   Link,
   List,
   Modal,
@@ -48,6 +52,7 @@ import {
   SelectItem,
   Spinner,
   Stack,
+  StepItem,
   SummaryList,
   SummaryListAction,
   SummaryListRow,
@@ -65,13 +70,11 @@ import {
   Tag,
   TextArea,
   TextInput,
-  InputPassword,
   Tooltip,
-  StepItem,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
-import NextLink from 'next/link';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
+import NextLink from 'next/link';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
@@ -112,14 +115,10 @@ import {
   TypeScaleHeadingTable,
   TypeScaleTextTable,
 } from '../typography/type-scale-table';
-import { TypographyResponsive } from '../typography/typography-responsive';
 import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
-import { ColorPrimitives } from '@/components/document/color/color-primitives';
-import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
-import { cn } from '@/lib/cn';
 
 export type MdxProps = {
   code: string;
@@ -166,7 +165,6 @@ const documentComponents: MDXComponents = {
   TypeScaleTextTable: () => <TypeScaleTextTable />,
   HeadingResponsiveSizes: (props) => <HeadingResponsiveSizes {...props} />,
   TextResponsiveSizes: (props) => <TextResponsiveSizes {...props} />,
-  TypographyResponsive: () => <TypographyResponsive />,
   ScreenSizeTable: () => <ScreenSizeTable />,
   SizeTable: () => <SizeTable />,
   SpaceTable: () => <SpaceTable />,

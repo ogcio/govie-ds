@@ -1,122 +1,123 @@
-'use client';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
+"use client";
 import {
-  Container,
-  Footer,
-  Header,
-  Heading,
-  Icon,
-  IconButton,
-  Link,
-  Paragraph,
-  PhaseBanner,
-  RadioGroup,
-  TextArea,
-  Modal,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Button,
-  CookieBanner,
-  List,
-  Combobox,
-  Chip,
-  Stack,
   Alert,
-  Breadcrumbs,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
-  SummaryListRow,
-  SummaryList,
-  SummaryListAction,
-  SummaryListValue,
-  ProgressBar,
-  ProgressStepper,
-  StepItem,
+  Breadcrumbs,
+  Button,
   Checkbox,
   CheckboxGroup,
-  DropdownItem,
-  Form,
+  Chip,
+  Combobox,
+  Container,
+  CookieBanner,
+  Details,
   Drawer,
   DrawerBody,
   DrawerFooter,
-  HeaderSearch,
+  DropdownItem,
+  Footer,
+  Form,
+  FormField,
+  Header,
   HeaderProps,
-  Details,
-  toaster,
-  ToastVariant,
-  ToastProvider,
+  HeaderSearch,
+  Heading,
+  Icon,
+  IconButton,
   InputPassword,
+  Link,
+  List,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalTitle,
+  Paragraph,
+  PhaseBanner,
+  ProgressBar,
+  ProgressStepper,
+  Radio,
+  RadioGroup,
+  Stack,
+  StepItem,
+  SummaryList,
+  SummaryListAction,
+  SummaryListRow,
+  SummaryListValue,
+  TextArea,
   TextInput,
-} from '@govie-ds/react';
-import { useState } from 'react';
+  toaster,
+  ToastProvider,
+  ToastVariant,
+} from "@govie-ds/react";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Departments",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Services",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
+      itemType: "divider",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      href: '/item1',
-      showItemMode: 'desktop-only',
+      label: "Home",
+      icon: "home",
+      itemType: "link",
+      href: "/item1",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
+      label: "Search",
+      icon: "search",
+      itemType: "slot",
       component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
+      slotAppearance: "dropdown",
+      showItemMode: "desktop-only",
     },
   ],
   secondaryLinks: [
     {
-      href: '#',
-      label: 'English',
+      href: "#",
+      label: "English",
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      href: "#",
+      label: "Gaeilge",
     },
   ],
 };
 
-export default function Home() {
-  const handleCreateToast = (title: string, variant: ToastVariant) =>
-    toaster.create({
-      title,
-      variant,
-      description: 'This is a toast notification.',
-      position: {
-        x: 'right',
-        y: 'bottom',
-      },
-      duration: 3000,
-      dismissible: true,
-    });
+const handleCreateToast = (title: string, variant: ToastVariant) =>
+  toaster.create({
+    title,
+    variant,
+    description: "This is a toast notification.",
+    position: {
+      x: "right",
+      y: "bottom",
+    },
+    duration: 3000,
+    dismissible: true,
+  });
 
+export default function Home() {
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: '/' }}
+        logo={{ href: "/" }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -126,24 +127,24 @@ export default function Home() {
       <Container>
         <br />
         Text Input With Reset
-        <TextInput clearEnabled />
+        <TextInput clearButtonEnabled />
         <br />
         Text Input Password
         <InputPassword />
         <br />
-        <Button onClick={() => handleCreateToast('Success', 'success')}>
+        <Button onClick={() => handleCreateToast("Success", "success")}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+        <Button onClick={() => handleCreateToast("Error", "danger")}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Info', 'info')}>
+        <Button onClick={() => handleCreateToast("Info", "info")}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+        <Button onClick={() => handleCreateToast("Warning", "warning")}>
           Trigger Warning Toast via callback
         </Button>
         <br />
@@ -167,8 +168,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Form>
@@ -185,17 +186,14 @@ export default function Home() {
             </Combobox>
           </Form>
           <h2>Checkboxes Group</h2>
-          <CheckboxGroup
-            groupId="field-Id"
-            items={[
-              { label: 'Irish', value: 'irish' },
-              { label: 'British', value: 'british' },
-              {
-                label: 'Citizen of another country',
-                value: 'citizen-of-another-country',
-              },
-            ]}
-          />
+          <CheckboxGroup groupId="field-Id">
+            <Checkbox label="Irish" value={"irish"} />
+            <Checkbox label="British" value={"british"} />
+            <Checkbox
+              label="Citizen of another country"
+              value={"citizen-of-another-country"}
+            />
+          </CheckboxGroup>
           <br />
           <h2>Checkbox</h2>
           <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
@@ -211,41 +209,24 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <RadioGroup
-            title={{
-              value: 'Where do you live?',
-              asHeading: {
-                size: 'md',
-                as: 'h2',
-              },
-            }}
-            items={[
-              {
-                label: 'England',
-                value: 'england',
-              },
-              {
-                label: 'Scotland',
-                value: 'scotland',
-              },
-              {
-                label: 'Ireland',
-                value: 'ireland',
-              },
-            ]}
-            groupId="uniqueId"
-          />
-          <TextArea
+          <FormField label={{ text: "Where do you live?" }}>
+            <RadioGroup groupId="uniqueId">
+              <Radio label={"England"} value={"england"} />
+              <Radio label={"Scotland"} value={"scotland"} />
+              <Radio label={"Ireland"} value={"ireland"} />
+            </RadioGroup>
+          </FormField>
+          <FormField
             hint={{
-              text: 'Hint: This is a helpful hint.',
+              text: "Hint: This is a helpful hint.",
             }}
-            id="textarea-id"
-            maxChars={50}
             label={{
-              text: 'Textarea text',
-              htmlFor: 'textarea-id',
+              text: "Textarea text",
+              htmlFor: "textarea-id",
             }}
-          />
+          >
+            <TextArea id="textarea-id" maxChars={50} />
+          </FormField>
 
           <span className="material-symbols-outlined">face</span>
           <div>
@@ -290,11 +271,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}

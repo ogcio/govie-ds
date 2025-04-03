@@ -246,7 +246,8 @@ export function destroyAllInstances() {
 
 export const instances = new Instances();
 
-if (typeof window !== 'undefined') {
-  (window as unknown as { GovieInstances: Instances }).GovieInstances =
-    instances;
+if (globalThis.window !== undefined) {
+  (
+    globalThis.window as unknown as { GovieInstances: Instances }
+  ).GovieInstances = instances;
 }

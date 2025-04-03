@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { slugify } from '../utils.js';
+import { slugify } from '../utilities.ts.js';
 
 export type TabItemProps = {
   value: string;

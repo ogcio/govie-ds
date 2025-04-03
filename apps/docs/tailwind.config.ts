@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-module */
 import { createTheme } from '@govie-ds/tailwind';
 import { meta } from '@govie-ds/theme-govie';
 import type { Config } from 'tailwindcss';

@@ -169,7 +169,7 @@ export const WithPositionChange: Story = {
   ),
 };
 
-export const tabletView: Story = {
+export const TabletView: Story = {
   args: {
     title: 'Tablet Position Change',
     description: 'This toast appears on a tablet',
@@ -191,7 +191,7 @@ export const tabletView: Story = {
   ),
 };
 
-export const mobileView: Story = {
+export const MobileView: Story = {
   args: {
     title: 'Mobile Position Change',
     description: 'This toast appears on a mobile',

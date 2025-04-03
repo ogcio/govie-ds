@@ -1,12 +1,12 @@
 import { act } from 'react';
-import { render, cleanup, waitFor } from '../test-utils.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
 import { Details, DetailsProps } from './details.js';
 
 describe('Details', () => {
   afterEach(cleanup);
 
   const renderDetails = (props: DetailsProps) =>
-    render(
+    renderComponent(
       <Details {...props}>
         Here is the body content of the details element.
       </Details>,

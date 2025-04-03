@@ -1,4 +1,4 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
 import { HeaderProps } from './types.js';
@@ -46,7 +46,8 @@ const standardProps: HeaderProps = {
 
 describe('header', () => {
   afterEach(cleanup);
-  const renderHeader = (props: HeaderProps) => render(<Header {...props} />);
+  const renderHeader = (props: HeaderProps) =>
+    renderComponent(<Header {...props} />);
 
   it('should pass axe tests', async () => {
     const screen = renderHeader({

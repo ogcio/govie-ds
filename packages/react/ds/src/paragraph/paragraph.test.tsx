@@ -1,10 +1,10 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { Paragraph, ParagraphProps } from './paragraph.js';
 
 describe('govieParagraph', () => {
   afterEach(cleanup);
   const renderParagraph = (props: ParagraphProps) =>
-    render(<Paragraph {...props} />);
+    renderComponent(<Paragraph {...props} />);
 
   it('should render a paragraph with the correct content when props.as is "p"', () => {
     const screen = renderParagraph({

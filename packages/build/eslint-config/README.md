@@ -15,19 +15,14 @@ pnpm add -D eslint @govie-ds/eslint-config
 #### eslint.config.js
 
 ```javascript
-export { eslintConfig as default } from '@govie-ds/eslint-config';
-```
+// eslint.config.js
+import { defineConfig } from 'eslint/config';
+import eslintConfig from '@govie-ds/eslint-config';
 
-```javascript
-import { eslintConfig } from '@govie-ds/eslint-config';
-
-export default [
-  ...eslintConfig,
-  // your modifications
+export default defineConfig([
   {
-    rules: {
-      ...
-    },
+    files: ['**/*.ts', '**/*.tsx'],
+    extends: [eslintConfig],
   },
-];
+]);
 ```

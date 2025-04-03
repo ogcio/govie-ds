@@ -1,5 +1,5 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import eslintConfig from '@govie-ds/eslint-config';
+import { FlatCompat } from "@eslint/eslintrc";
+import eslintConfig from "@govie-ds/eslint-config";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -8,7 +8,7 @@ const compat = new FlatCompat({
 
 const eslintNextConfig = [
   ...compat.config({
-    extends: ['next'],
+    extends: ["next"],
   }),
 ];
 

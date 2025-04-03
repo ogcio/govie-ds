@@ -26,6 +26,6 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@types/lodash": "^4.17.7",
-    "eslint": "^9.8.0"
+    "eslint": "^9.23.0"
   }
 }

@@ -306,7 +306,7 @@ export const WithSecondaryLinks: Story = {
   },
 };
 
-export const withMainAndSecondaryLinksDesktopOnly: Story = {
+export const WithMainAndSecondaryLinksDesktopOnly: Story = {
   args: {
     logo: {
       href: 'path',
@@ -386,7 +386,7 @@ const defaultHeaderProps = (external?: boolean) =>
     ],
   }) as HeaderProps;
 
-export const withTitle: Story = {
+export const WithTitle: Story = {
   args: {
     title: 'Life Events',
     logo: {
@@ -442,7 +442,7 @@ export const NoLabelSearch: Story = {
   },
 };
 
-export const tabletView: Story = {
+export const TabletView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -458,7 +458,7 @@ export const tabletView: Story = {
   },
 };
 
-export const mobileView: Story = {
+export const MobileView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -508,7 +508,7 @@ export const WithExtraButtons: Story = {
   },
 };
 
-const withExtraButtonsAndLabelsItems: HeaderItem[] = [
+const WithExtraButtonsAndLabelsItems: HeaderItem[] = [
   {
     icon: 'search',
     itemType: 'slot',
@@ -544,7 +544,7 @@ export const WithExtraButtonsAndLabels: Story = {
     logo: {
       href: '/path',
     },
-    items: withExtraButtonsAndLabelsItems,
+    items: WithExtraButtonsAndLabelsItems,
   },
 };
 
@@ -583,7 +583,7 @@ export const ShowMobileMenuForLanguages: Story = {
   },
 };
 
-export const withExternalLinks: Story = {
+export const WithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
   },
@@ -655,7 +655,7 @@ export const withExternalLinks: Story = {
   },
 };
 
-export const mobileWithExternalLinks: Story = {
+export const MobileWithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {

@@ -1,9 +1,9 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { IconProps, Icon } from './icon.js';
 
 describe('govieIcon', () => {
   afterEach(cleanup);
-  const renderIcon = (props: IconProps) => render(<Icon {...props} />);
+  const renderIcon = (props: IconProps) => renderComponent(<Icon {...props} />);
 
   it('should render the ThumbDown icon', () => {
     const screen = renderIcon({

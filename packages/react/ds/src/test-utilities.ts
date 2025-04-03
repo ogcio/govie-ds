@@ -3,10 +3,10 @@ import {
   RenderOptions,
   RenderResult,
 } from '@testing-library/react';
-import axe from 'axe-core';
+import { run, Result } from 'axe-core';
 import React from 'react';
 
-function toAxeErrorMessage(violations: axe.Result[]) {
+function toAxeErrorMessage(violations: Result[]) {
   return violations
     .map((violation) => {
       return `${violation.id}: ${violation.description}\n${violation.nodes
@@ -24,7 +24,7 @@ interface CustomRenderResult extends RenderResult {
   axe: () => Promise<void>;
 }
 
-export function render(
+export function renderComponent(
   component: React.ReactNode,
   options?: RenderOptions,
 ): CustomRenderResult {
@@ -34,7 +34,7 @@ export function render(
     ...renderRest,
     container,
     axe: async () => {
-      const axeResult = await axe.run(container);
+      const axeResult = await run(container);
 
       if (axeResult.violations.length > 0) {
         throw new Error(toAxeErrorMessage(axeResult.violations));

@@ -5,7 +5,7 @@ import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { translate as t } from '../i18n/util.js';
 import { Icon } from '../icon/icon.js';
-import { getDisplayPages } from '../utils/utils.js';
+import { getDisplayPages } from '../utils/utilities.js';
 
 export type PaginationProps = {
   currentPage: number;

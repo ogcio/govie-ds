@@ -1,6 +1,6 @@
 import { initI18n } from '@govie-ds/react';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 import { App } from './application.tsx';
 
 // Initialize i18next before rendering the app
@@ -34,7 +34,7 @@ initI18n({
   lng: 'fr', // Toggle here for debugging.
 });
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

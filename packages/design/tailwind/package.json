@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "@govie-ds/prettier-config": "workspace:*",
-    "eslint": "^9.8.0"
+    "eslint": "^9.23.0"
   }
 }

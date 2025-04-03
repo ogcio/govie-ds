@@ -23,7 +23,7 @@
   "devDependencies": {
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
-    "eslint": "^9.8.0",
+    "eslint": "^9.23.0",
     "tsx": "^4.16.5"
   }
 }

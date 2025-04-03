@@ -37,6 +37,7 @@ export function ZIndexTable() {
                       index === valueIndex ? 'bg-gold-200' : 'bg-gray-50',
                       index > valueIndex ? 'opacity-40' : 'opacity-100',
                     )}
+                    key={`zindex-${index}`}
                     style={{
                       width: itemWidth,
                       height: itemHeight,

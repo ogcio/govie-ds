@@ -67,7 +67,7 @@ export const Default: Story = {
   },
 };
 
-export const withHint: Story = {
+export const WithHint: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
@@ -76,7 +76,7 @@ export const withHint: Story = {
   },
 };
 
-export const withDefaultChecked: Story = {
+export const WithDefaultChecked: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
@@ -85,7 +85,7 @@ export const withDefaultChecked: Story = {
   },
 };
 
-export const withChecked: Story = {
+export const WithChecked: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
@@ -94,7 +94,7 @@ export const withChecked: Story = {
   },
 };
 
-export const smallCheckbox: Story = {
+export const SmallCheckbox: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
@@ -103,7 +103,7 @@ export const smallCheckbox: Story = {
   },
 };
 
-export const mediumCheckbox: Story = {
+export const MediumCheckbox: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',
@@ -112,7 +112,7 @@ export const mediumCheckbox: Story = {
   },
 };
 
-export const largeCheckbox: Story = {
+export const LargeCheckbox: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',

@@ -1,8 +1,8 @@
-import React from 'react';
+import { TdHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import { TableAlign } from './table.js';
 
-interface TableDataProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
+interface TableDataProps extends TdHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
 }
 

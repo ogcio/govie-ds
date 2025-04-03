@@ -89,7 +89,7 @@ export const WarningAlert: Story = {
   },
 };
 
-export const isDismissible: Story = {
+export const IsDismissible: Story = {
   args: {
     title: 'Info Alert',
     variant: 'info',

@@ -1,11 +1,11 @@
-import { render, cleanup, fireEvent } from '../test-utils.js';
+import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
 import { InputPassword } from './input-password.js';
 
 describe('InputPassword', () => {
   afterEach(cleanup);
 
   const renderInput = (props = {}) =>
-    render(<InputPassword aria-label="Password Input" {...props} />);
+    renderComponent(<InputPassword aria-label="Password Input" {...props} />);
 
   it('should render a password input with a visibility toggle button', () => {
     const screen = renderInput();

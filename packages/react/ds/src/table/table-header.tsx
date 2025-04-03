@@ -1,9 +1,8 @@
-import React from 'react';
+import { ThHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import { TableAlign } from './table.js';
 
-interface TableHeaderProps
-  extends React.ThHTMLAttributes<HTMLTableCellElement> {
+interface TableHeaderProps extends ThHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
 }
 

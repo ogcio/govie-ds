@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within } from '@storybook/test';
 import { createFormField, createRadio } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { RadioGroupProps } from './types';
@@ -77,9 +76,6 @@ export const Default: Story = {
     groupId: 'UniqueId1',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const inline: Story = {
@@ -89,9 +85,6 @@ export const inline: Story = {
     inline: true,
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const withTitleHint: Story = {
@@ -109,9 +102,6 @@ export const withTitleHint: Story = {
     groupId: 'UniqueId3',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const withOptionHints: Story = {
@@ -138,9 +128,6 @@ export const withOptionHints: Story = {
     groupId: 'UniqueId4',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };
 
 export const withConditionalInput: Story = {
@@ -156,7 +143,7 @@ export const withConditionalInput: Story = {
           id: 'input-id-email',
           label: {
             content: 'Email address',
-            for: 'input-id-email',
+            htmlFor: 'input-id-email',
             size: 'md',
           },
           type: 'email',
@@ -169,7 +156,7 @@ export const withConditionalInput: Story = {
           id: 'input-id-phone',
           label: {
             content: 'Phone number',
-            for: 'input-id-phone',
+            htmlFor: 'input-id-phone',
             size: 'md',
           },
           type: 'tel',
@@ -179,7 +166,4 @@ export const withConditionalInput: Story = {
     groupId: 'UniqueId7',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-  },
 };

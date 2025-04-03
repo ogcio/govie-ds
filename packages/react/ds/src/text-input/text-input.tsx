@@ -1,5 +1,5 @@
 'use client';
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -94,7 +94,7 @@ export const InputTextWithClear = forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
     if (clearButtonEnabled) {
       return <InputTextWithClear ref={ref} type={type} {...props} />;
@@ -104,7 +104,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-const InputText = React.forwardRef<HTMLInputElement, TextInputProps>(
+const InputText = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       prefix,

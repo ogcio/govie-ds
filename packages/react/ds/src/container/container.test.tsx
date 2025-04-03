@@ -1,10 +1,10 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { Container } from './container.js';
 
 describe('govieContainer', () => {
   afterEach(cleanup);
   const renderContainer = (children: React.ReactNode) =>
-    render(<Container>{children}</Container>);
+    renderComponent(<Container>{children}</Container>);
 
   it('should render the provided HTML content correctly', () => {
     const content = <p>Test content</p>;
