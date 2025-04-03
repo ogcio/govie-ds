@@ -1,19 +1,20 @@
+// Don't reorder the following import
 import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
 import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
+import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
+import { initAlert } from './alert/alert.js'; /* eslint-disable-line import-x/order */
+import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import-x/order */
+import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initHeader } from './header/header.js';
-import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import/order */
-import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import/order */
-import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import/order */
-import { initAlert } from './alert/alert.js'; /* eslint-disable-line import/order */
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
 import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
-import { initUtils } from './utils/utils.js';
+import { initUtilities } from './utils/utilities.js';
 
 export * as properties from './dist/properties.js';
 
@@ -45,7 +46,7 @@ export function initGovIe() {
   initAlert();
   initToast();
   initAccordion();
-  initUtils();
+  initUtilities();
 }
 
 export function destroyGovIe() {
@@ -59,7 +60,7 @@ const componentEvents = createEvents({
 
 componentEvents.init();
 
-export * from './header/header.js';
 export * from './checkbox/checkbox.js';
+export * from './header/header.js';
 export * from './radio/radio.js';
 export * from './tabs/tabs.js';

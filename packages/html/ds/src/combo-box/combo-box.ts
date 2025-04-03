@@ -65,9 +65,11 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
 
     this.handleOpenDropdown = (element: Element, state: dropdownStateType) => {
       state.isOpen = !state.isOpen;
-      state.isOpen
-        ? element.classList.remove('gi-hidden')
-        : element.classList.add('gi-hidden');
+      if (state.isOpen) {
+        element.classList.remove('gi-hidden');
+      } else {
+        element.classList.add('gi-hidden');
+      }
     };
   }
 
@@ -100,10 +102,10 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
             state.selectedCheckboxes--;
           }
           if (state.selectedCheckboxes) {
-            tagContainer && tagContainer.classList.remove('gi-hidden');
+            tagContainer?.classList.remove('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           } else {
-            tagContainer && tagContainer.classList.add('gi-hidden');
+            tagContainer?.classList.add('gi-hidden');
             tag.textContent = state.selectedCheckboxes.toString();
           }
         });
@@ -154,9 +156,11 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
           for (const checkbox of checkboxes) {
             const label = checkbox.querySelector('label')?.textContent;
 
-            state.searchInput
-              ? resetSearchElement.classList.remove('gi-hidden')
-              : resetSearchElement.classList.add('gi-hidden');
+            if (state.searchInput) {
+              resetSearchElement.classList.remove('gi-hidden');
+            } else {
+              resetSearchElement.classList.add('gi-hidden');
+            }
 
             if (
               label?.toLowerCase()?.includes(state.searchInput?.toLowerCase())
@@ -167,9 +171,11 @@ export class ComboBox extends BaseComponent<ComboBoxOptions> {
               hiddenCheckboxes++;
             }
           }
-          hiddenCheckboxes === checkboxes.length
-            ? noResultsElement?.classList.remove('gi-hidden')
-            : noResultsElement?.classList.add('gi-hidden');
+          if (hiddenCheckboxes === checkboxes.length) {
+            noResultsElement?.classList.remove('gi-hidden');
+          } else {
+            noResultsElement?.classList.add('gi-hidden');
+          }
         });
       }
     }

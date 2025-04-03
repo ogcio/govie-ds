@@ -1,12 +1,17 @@
 import React from 'react';
-import { cleanup, render, fireEvent, testVariantsAxe } from '../test-utils.js';
+import {
+  cleanup,
+  renderComponent,
+  fireEvent,
+  testVariantsAxe,
+} from '../test-utilities.js';
 import { positionVariants, Tooltip } from './tooltip.js';
 
 describe('govieTooltip', () => {
   afterEach(cleanup);
 
   const renderTooltip = (props: React.ComponentProps<typeof Tooltip>) =>
-    render(<Tooltip {...props}>Hover me</Tooltip>);
+    renderComponent(<Tooltip {...props}>Hover me</Tooltip>);
 
   testVariantsAxe(Reflect.ownKeys(positionVariants), (position) =>
     renderTooltip({

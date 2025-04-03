@@ -1,4 +1,4 @@
-import { render, cleanup, fireEvent } from '../test-utils.js';
+import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
 import { AccordionItem } from './accordion-item.js';
 import { Accordion } from './accordion.js';
 
@@ -6,7 +6,7 @@ describe('govieAccordion', () => {
   afterEach(cleanup);
 
   it('should render accordion with all items', () => {
-    const { getByText } = render(
+    const { getByText } = renderComponent(
       <Accordion>
         <AccordionItem label="Label1">
           <h1>This is the content Heading 1</h1>
@@ -24,7 +24,7 @@ describe('govieAccordion', () => {
   });
 
   it('should toggle accordion item visibility when clicked', () => {
-    const { getByText, queryByText } = render(
+    const { getByText, queryByText } = renderComponent(
       <Accordion>
         <AccordionItem label="Label1">
           <p>This is the content for Label1</p>
@@ -46,7 +46,7 @@ describe('govieAccordion', () => {
   });
 
   it('should not toggle disabled accordion item', () => {
-    const { getByText, queryByText } = render(
+    const { getByText, queryByText } = renderComponent(
       <Accordion>
         <AccordionItem label="Label1" disabled>
           <p>This is the content for Label1</p>
@@ -65,7 +65,7 @@ describe('govieAccordion', () => {
   });
 
   it('should render accordion items with defaultExpanded set to true', () => {
-    const { getByText } = render(
+    const { getByText } = renderComponent(
       <Accordion>
         <AccordionItem label="Label1" defaultExpanded>
           <p>This is the content for Label1</p>
@@ -80,7 +80,7 @@ describe('govieAccordion', () => {
   });
 
   it('should apply iconStart styling when iconStart is true', () => {
-    const { container } = render(
+    const { container } = renderComponent(
       <Accordion iconStart>
         <AccordionItem label="Label1">
           <p>This is the content for Label1</p>
@@ -98,7 +98,7 @@ describe('govieAccordion', () => {
   });
 
   it('should not apply iconStart styling when iconStart is false', () => {
-    const { container } = render(
+    const { container } = renderComponent(
       <Accordion>
         <AccordionItem label="Label1">
           <p>This is the content for Label1</p>

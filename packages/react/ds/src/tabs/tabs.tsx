@@ -1,5 +1,5 @@
-import React from 'react';
-import { generateRandomId } from '../utils.js';
+import { Children, cloneElement, isValidElement } from 'react';
+import { generateRandomId } from '../utilities.ts.js';
 
 export type TabsProps = {
   id?: string;
@@ -14,9 +14,9 @@ export function Tabs({
   dataTestid,
   children,
 }: TabsProps) {
-  const childrenWithName = React.Children.map(children, (element) => {
-    if (React.isValidElement<{ tabName: string }>(element)) {
-      return React.cloneElement<{ tabName: string }>(element, { tabName: id });
+  const childrenWithName = Children.map(children, (element) => {
+    if (isValidElement<{ tabName: string }>(element)) {
+      return cloneElement<{ tabName: string }>(element, { tabName: id });
     }
     return element;
   });

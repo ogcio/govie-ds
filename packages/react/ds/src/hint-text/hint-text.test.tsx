@@ -1,10 +1,10 @@
-import { render, cleanup } from '../test-utils.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { HintTextProps, HintSize, HintText } from './hint-text.js';
 
 describe('govieHintText', () => {
   afterEach(cleanup);
   const renderHintText = (props: HintTextProps) =>
-    render(<HintText {...props} />);
+    renderComponent(<HintText {...props} />);
 
   it('should render hint text with the correct content for size "md"', () => {
     const screen = renderHintText({

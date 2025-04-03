@@ -6,7 +6,7 @@ import {
 
 export type DrawerOptions = BaseComponentOptions;
 
-export class Drawer extends BaseComponent<any> {
+export class Drawer extends BaseComponent<DrawerOptions> {
   modal: Element;
   closeIcon: Element | null;
   position: string;

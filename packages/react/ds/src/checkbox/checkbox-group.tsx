@@ -1,5 +1,12 @@
 'use client';
-import React, { useState } from 'react';
+import {
+  ChangeEvent,
+  Children,
+  cloneElement,
+  isValidElement,
+  PropsWithChildren,
+  useState,
+} from 'react';
 import { RadioSizeType } from '../radio/types.js';
 import { CheckboxGroupProps, CheckboxSizeEnumType } from './types.js';
 
@@ -9,7 +16,7 @@ export const CheckboxGroup = ({
   inline,
   onChange,
   children,
-}: React.PropsWithChildren<CheckboxGroupProps>) => {
+}: PropsWithChildren<CheckboxGroupProps>) => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
   const handleCheckboxChange = (value: string) => {
@@ -23,18 +30,18 @@ export const CheckboxGroup = ({
     onChange?.(newValues);
   };
 
-  const childrenWithOnChange = React.Children.map(children, (element) => {
+  const childrenWithOnChange = Children.map(children, (element) => {
     if (
-      React.isValidElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      isValidElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         size?: CheckboxSizeEnumType | RadioSizeType;
         name: string;
       }>(element)
     ) {
-      return React.cloneElement<{
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      return cloneElement<{
+        onChange: (event: ChangeEvent<HTMLInputElement>) => void;
         checked: boolean;
         value: string;
         size?: CheckboxSizeEnumType | RadioSizeType;
