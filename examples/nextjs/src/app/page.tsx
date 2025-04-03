@@ -33,6 +33,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalTitle,
+  Pagination,
   Paragraph,
   PhaseBanner,
   ProgressBar,
@@ -348,6 +349,7 @@ export default function Home() {
             you’ll have to send copies of identity documents through the post.
           </Details>
         </div>
+        <Pagination currentPage={5} onPageChange={() => {}} totalPages={10} />
       </Container>
 
       <Footer />
