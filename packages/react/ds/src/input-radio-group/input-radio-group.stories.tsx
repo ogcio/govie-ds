@@ -41,7 +41,7 @@ export const Default: Story = {
   ),
 };
 
-export const inline: Story = {
+export const Inline: Story = {
   args: {
     inline: true,
     groupId: 'city2',
@@ -57,7 +57,7 @@ export const inline: Story = {
   ),
 };
 
-export const withTitleHint: Story = {
+export const WithTitleHint: Story = {
   args: {
     groupId: 'city3',
   },
@@ -75,7 +75,7 @@ export const withTitleHint: Story = {
   ),
 };
 
-export const withOptionHints: Story = {
+export const WithOptionHints: Story = {
   args: {
     groupId: 'login',
   },
@@ -102,7 +102,7 @@ export const withOptionHints: Story = {
   ),
 };
 
-export const withDividerOption: Story = {
+export const WithDividerOption: Story = {
   args: {
     groupId: 'city5',
   },
@@ -122,7 +122,7 @@ export const withDividerOption: Story = {
   ),
 };
 
-export const withError: Story = {
+export const WithError: Story = {
   args: {
     groupId: 'city6',
   },
@@ -141,7 +141,7 @@ export const withError: Story = {
   ),
 };
 
-export const withConditionalInput: Story = {
+export const WithConditionalInput: Story = {
   args: {
     groupId: 'contact',
   },

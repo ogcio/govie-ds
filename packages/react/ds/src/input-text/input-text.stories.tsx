@@ -201,7 +201,7 @@ export const WithLabelHintAndError: Story = {
     const canvas = within(canvasElement);
 
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
-    expect(window.getComputedStyle(textInput).borderColor).toBe(
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
     );
 

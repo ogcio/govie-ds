@@ -32,10 +32,13 @@ export const ToastProvider = () => {
       setToastStack((previous) => [...previous, customEvent.detail]);
     };
 
-    window.addEventListener('govie:add-toast', handleToastEvent);
+    globalThis.window.addEventListener('govie:add-toast', handleToastEvent);
     toastProviderState.isMounted = true;
     return () => {
-      window.removeEventListener('govie:add-toast', handleToastEvent);
+      globalThis.window.removeEventListener(
+        'govie:add-toast',
+        handleToastEvent,
+      );
       toastProviderState.isMounted = false;
     };
   }, []);
@@ -85,7 +88,7 @@ export const toaster = {
           },
         },
       });
-      window.dispatchEvent(event);
+      globalThis.window.dispatchEvent(event);
     } else {
       console.warn('ToastProvider not found. Cannot dispatch toast event.');
     }

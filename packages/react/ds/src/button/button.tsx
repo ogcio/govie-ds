@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import { forwardRef } from 'react';
 import { cn } from '../cn.js';
 import {
   isButtonDisabled,
@@ -11,7 +11,7 @@ import { ButtonProps } from './types.js';
 // Extend `React.InputHTMLAttributes<HTMLButtonElement>` so that
 // the component can accept all the standard attributes and events that an `<button>` element can handle.
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { variant, appearance, size, disabled, className, children, ...props },
     ref,

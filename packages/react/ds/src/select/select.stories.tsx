@@ -42,7 +42,7 @@ export const WithLabelAndHint = {
   ),
 };
 
-export const withLabelHintAndError = {
+export const WithLabelHintAndError = {
   render: () => (
     <FormField
       label={{ text: 'Label', htmlFor: 'select' }}
@@ -76,7 +76,7 @@ export const withLabelHintAndError = {
   },
 };
 
-export const withoutLabel = {
+export const WithoutLabel = {
   render: () => (
     <Select aria-label="Select">
       <SelectItem value="value-1">Option 1</SelectItem>
@@ -86,7 +86,7 @@ export const withoutLabel = {
   ),
 };
 
-export const disabledSelect = {
+export const DisabledSelect = {
   render: () => (
     <Select aria-label="Select" disabled>
       <SelectItem value="value-1">Option 1</SelectItem>
@@ -102,7 +102,7 @@ export const disabledSelect = {
   },
 };
 
-export const disabledItem = {
+export const DisabledItem = {
   render: () => (
     <Select aria-label="Select">
       <SelectItem disabled value="value-1">
@@ -114,7 +114,6 @@ export const disabledItem = {
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
-    const select = canvas.getByLabelText('Select');
     const options = canvas.getAllByRole('option');
 
     expect(options[0]).toBeDisabled();
@@ -123,7 +122,7 @@ export const disabledItem = {
   },
 };
 
-export const withGroups = {
+export const WithGroups = {
   render: () => (
     <Select aria-label="Select" data-testid="select">
       <SelectGroupItem label="Group 1" data-testid="select-group">

@@ -211,7 +211,7 @@ export const WithLabelHintAndError: Story = {
     const canvas = within(canvasElement);
 
     const textarea = canvas.getByTestId('textarea-id-3') as HTMLTextAreaElement;
-    expect(window.getComputedStyle(textarea).borderColor).toBe(
+    expect(globalThis.window.getComputedStyle(textarea).borderColor).toBe(
       'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
     );
 

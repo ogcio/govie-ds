@@ -7,7 +7,6 @@ import {
   getDocumentHierarchy,
 } from '@/lib/documents/document-hierarchy';
 import * as documents from '@/lib/documents/documents';
-// eslint-disable-next-line import/order
 import { Doc } from 'contentlayer/generated';
 
 // TODO: generic solution for navigation titles for folders
@@ -79,7 +78,6 @@ function toMeta({
     (document) => document.id === documentHierarchy.id,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, _id, _raw, body, ...rest } = meta ?? {};
 
   return {

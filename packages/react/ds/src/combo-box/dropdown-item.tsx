@@ -7,7 +7,7 @@ import { IconButton } from '../icon-button/icon-button.js';
 import { InputText } from '../input-text/input-text.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
-import { slugify } from '../utils.js';
+import { slugify } from '../utilities.js';
 import { DropdownItemProps } from './types.js';
 
 export const DropdownItem = ({
@@ -31,7 +31,7 @@ export const DropdownItem = ({
   const selected = isControlled ? value : selectedValues;
 
   const getCheckboxes = () => [
-    ...window.document.querySelectorAll<HTMLElement>(
+    ...globalThis.window.document.querySelectorAll<HTMLElement>(
       `div.gi-combobox-checkbox.gi-combobox-key-${dropdownCustomClass}`,
     ),
   ];

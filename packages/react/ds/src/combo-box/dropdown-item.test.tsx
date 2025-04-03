@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '../test-utils.js';
+import { fireEvent, renderComponent, screen } from '../test-utilities.js';
 import { DropdownItem } from './dropdown-item.js';
 
 const OPTIONS = [
@@ -9,7 +9,7 @@ const OPTIONS = [
 
 describe('DropdownItem', () => {
   it('renders with title and options', () => {
-    render(
+    renderComponent(
       <DropdownItem options={OPTIONS} defaultValue={[]} onChange={() => {}}>
         Categories
       </DropdownItem>,
@@ -22,7 +22,7 @@ describe('DropdownItem', () => {
   });
 
   it('toggles open and closed on button click', () => {
-    render(
+    renderComponent(
       <DropdownItem options={OPTIONS} defaultValue={[]} onChange={() => {}}>
         Categories
       </DropdownItem>,
@@ -38,7 +38,7 @@ describe('DropdownItem', () => {
   });
 
   it('renders with default selected values', () => {
-    render(
+    renderComponent(
       <DropdownItem
         options={OPTIONS}
         defaultValue={['design']}
@@ -56,7 +56,7 @@ describe('DropdownItem', () => {
 
   it('fires onChange when checkbox is clicked (uncontrolled)', () => {
     const onChange = vi.fn();
-    render(
+    renderComponent(
       <DropdownItem options={OPTIONS} defaultValue={[]} onChange={onChange}>
         Categories
       </DropdownItem>,
@@ -69,7 +69,7 @@ describe('DropdownItem', () => {
   });
 
   it('shows no results when search yields none', () => {
-    render(
+    renderComponent(
       <DropdownItem options={OPTIONS} defaultValue={[]} onChange={() => {}}>
         Categories
       </DropdownItem>,
@@ -85,7 +85,7 @@ describe('DropdownItem', () => {
 
   it('calls onSearch callback when typing in search', () => {
     const onSearch = vi.fn();
-    render(
+    renderComponent(
       <DropdownItem
         options={OPTIONS}
         defaultValue={[]}
@@ -105,7 +105,7 @@ describe('DropdownItem', () => {
   });
 
   it('disables search when noSearch is true', () => {
-    render(
+    renderComponent(
       <DropdownItem
         options={OPTIONS}
         defaultValue={[]}
@@ -122,7 +122,7 @@ describe('DropdownItem', () => {
   });
 
   it('should pass axe accessibility tests', async () => {
-    const screen = render(
+    const screen = renderComponent(
       <DropdownItem options={OPTIONS} defaultValue={[]} onChange={() => {}}>
         Categories
       </DropdownItem>,

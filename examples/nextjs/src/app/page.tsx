@@ -1,29 +1,6 @@
-'use client';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
+"use client";
 import {
-  Container,
-  Footer,
-  Header,
-  Heading,
-  Icon,
-  IconButton,
-  Link,
-  Paragraph,
-  PhaseBanner,
-  RadioGroup,
-  TextArea,
-  Modal,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  Button,
-  CookieBanner,
-  List,
-  Combobox,
-  Chip,
-  Stack,
   Alert,
-  Breadcrumbs,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -40,85 +17,89 @@ import {
   Drawer,
   DrawerBody,
   DrawerFooter,
-  HeaderSearch,
+  DropdownItem,
+  Footer,
+  Form,
+  FormField,
+  Header,
   HeaderProps,
-  Details,
-  toaster,
-  ToastVariant,
-  ToastProvider,
+  HeaderSearch,
+  Heading,
+  Icon,
+  IconButton,
   InputPassword,
   InputText,
   FormField,
   InputRadio,
   InputCheckboxGroup,
   InputRadioGroup,
-} from '@govie-ds/react';
+} from "@govie-ds/react";
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Departments",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Services",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
+      itemType: "divider",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      href: '/item1',
-      showItemMode: 'desktop-only',
+      label: "Home",
+      icon: "home",
+      itemType: "link",
+      href: "/item1",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
+      label: "Search",
+      icon: "search",
+      itemType: "slot",
       component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
+      slotAppearance: "dropdown",
+      showItemMode: "desktop-only",
     },
   ],
   secondaryLinks: [
     {
-      href: '#',
-      label: 'English',
+      href: "#",
+      label: "English",
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      href: "#",
+      label: "Gaeilge",
     },
   ],
 };
 
-export default function Home() {
-  const handleCreateToast = (title: string, variant: ToastVariant) =>
-    toaster.create({
-      title,
-      variant,
-      description: 'This is a toast notification.',
-      position: {
-        x: 'right',
-        y: 'bottom',
-      },
-      duration: 3000,
-      dismissible: true,
-    });
+const handleCreateToast = (title: string, variant: ToastVariant) =>
+  toaster.create({
+    title,
+    variant,
+    description: "This is a toast notification.",
+    position: {
+      x: "right",
+      y: "bottom",
+    },
+    duration: 3000,
+    dismissible: true,
+  });
 
+export default function Home() {
   return (
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: '/' }}
+        logo={{ href: "/" }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -133,19 +114,19 @@ export default function Home() {
         Text Input Password
         <InputPassword />
         <br />
-        <Button onClick={() => handleCreateToast('Success', 'success')}>
+        <Button onClick={() => handleCreateToast("Success", "success")}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+        <Button onClick={() => handleCreateToast("Error", "danger")}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Info', 'info')}>
+        <Button onClick={() => handleCreateToast("Info", "info")}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+        <Button onClick={() => handleCreateToast("Warning", "warning")}>
           Trigger Warning Toast via callback
         </Button>
         <br />
@@ -169,8 +150,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Form>
@@ -210,7 +191,7 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <FormField label={{ text: 'Where do you live?' }}>
+          <FormField label={{ text: "Where do you live?" }}>
             <InputRadioGroup groupId="city">
               <InputRadio value="dublin" label="Dublin" />
               <InputRadio value="cork" label="Cork" />
@@ -219,11 +200,11 @@ export default function Home() {
           </FormField>
           <FormField
             hint={{
-              text: 'Hint: This is a helpful hint.',
+              text: "Hint: This is a helpful hint.",
             }}
             label={{
-              text: 'Textarea text',
-              htmlFor: 'textarea-id',
+              text: "Textarea text",
+              htmlFor: "textarea-id",
             }}
           >
             <TextArea id="textarea-id" maxChars={50} />
@@ -272,11 +253,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}

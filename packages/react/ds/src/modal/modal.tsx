@@ -24,7 +24,7 @@ import type {
 const isModalComponent = (
   modalComponent: React.ElementType,
   modalTitle: string,
-  child: React.ReactNode,
+  child: ReactNode,
 ): boolean => {
   if (!isValidElement(child)) {
     return false;
@@ -106,7 +106,7 @@ export const ModalWrapper = ({
   );
 
   const modalTitleClone = modalTitle
-    ? React.cloneElement(modalTitle as ReactElement<HeadingProps>, {
+    ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
         as: size === 'sm' ? 'h5' : 'h4',
       })
     : null;
@@ -114,7 +114,7 @@ export const ModalWrapper = ({
   const otherChildren = childrenArray
     .map((child) =>
       modalFooter
-        ? React.cloneElement(child as ReactElement<ModalFooterProps>, {
+        ? cloneElement(child as ReactElement<ModalFooterProps>, {
             dataModalSize: size,
           })
         : child,
@@ -210,7 +210,7 @@ export const ModalFooter = ({
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter(
     (actionButton) =>
-      React.isValidElement(actionButton) && actionButton.type === Button,
+      isValidElement(actionButton) && actionButton.type === Button,
   );
   const sortedButtons = filteredButtons.sort((a, b) => {
     const variantA = a.props.variant ?? 'primary';
@@ -238,7 +238,7 @@ export const ModalFooter = ({
           data-modal-size={dataModalSize}
         >
           {sortedButtons.map((button) =>
-            React.cloneElement(button, {
+            cloneElement(button, {
               className: cn(button?.props?.className, buttonClassName),
             }),
           ) || null}

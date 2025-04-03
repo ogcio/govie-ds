@@ -1,5 +1,5 @@
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { render, fireEvent, cleanup } from '../test-utils.js';
+import { renderComponent, fireEvent, cleanup } from '../test-utilities.js';
 import { Pagination, PaginationProps } from './pagination.js';
 
 vi.mock('../hooks/use-breakpoint.js', async () => {
@@ -15,7 +15,7 @@ vi.mock('i18next', async (importOriginal) => {
 
   const translations: Record<
     string,
-    (parameters?: Record<string, any>) => string
+    (parameters?: Record<string, string>) => string
   > = {
     'pagination.previous': () => 'Previous',
     'pagination.next': () => 'Next',
@@ -26,7 +26,7 @@ vi.mock('i18next', async (importOriginal) => {
     'pagination.goToNext': () => 'Go to next',
   };
 
-  const mockTranslate = (key: string, parameters?: Record<string, any>) => {
+  const mockTranslate = (key: string, parameters?: Record<string, string>) => {
     return translations[key]?.(parameters) || key;
   };
 
@@ -63,7 +63,7 @@ describe('Pagination', () => {
   });
 
   const renderPagination = (props: PaginationProps) =>
-    render(<Pagination {...props} />);
+    renderComponent(<Pagination {...props} />);
 
   it('should render the previous and next buttons', () => {
     const screen = renderPagination(standardProps);

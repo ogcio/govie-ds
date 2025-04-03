@@ -1,13 +1,13 @@
-import i18next from 'i18next';
+import { init, Resource } from 'i18next';
 
 export { default as i18next } from 'i18next';
 
 export const initI18n = (config: {
-  resources: Record<string, any>;
+  resources: Resource;
   lng?: string;
   fallbackLng?: string;
 }) => {
-  i18next.init({
+  init({
     resources: config.resources,
     lng: config.lng || 'en',
     fallbackLng: config.fallbackLng || 'en',

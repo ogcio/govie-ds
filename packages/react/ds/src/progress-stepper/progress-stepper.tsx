@@ -1,12 +1,13 @@
-import React from 'react';
+import { Children, FC } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
-import { type ProgressStepperProps, type StepItemProps } from './types.js';
 import {
   ProgressStepperIndicator,
   type ConnectorProps,
-  type ProgressStepperIndicatorType,
   type InnerStepProps,
+  type ProgressStepperIndicatorType,
+  type ProgressStepperProps,
+  type StepItemProps,
 } from './types.js';
 
 const Connector = ({
@@ -132,7 +133,7 @@ export const Step = ({
 };
 
 // Component needed to pick the props inside ProgressStepper component
-export const StepItem: React.FC<StepItemProps> = () => null;
+export const StepItem: FC<StepItemProps> = () => null;
 
 export const ProgressStepper = ({
   children,
@@ -158,7 +159,7 @@ export const ProgressStepper = ({
         role="list"
         aria-live="polite"
       >
-        {React.Children.map(children, (child, index) => {
+        {Children.map(children, (child, index) => {
           const { label, defaultOpen } =
             child.props as unknown as StepItemProps;
           const [isCurrentStep, isLastStep, isCompleted] = [
