@@ -2,6 +2,7 @@
 import { useEffect, useState, useId } from 'react';
 import { Checkbox } from '../checkbox/checkbox.js';
 import { CheckboxSizeEnum } from '../checkbox/types.js';
+import { translate as t } from '../i18n/util.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -9,6 +10,7 @@ import { Tag, TagTypeEnum } from '../tag/tag.js';
 import { TextInput } from '../text-input/text-input.js';
 import { slugify } from '../utilities.ts.js';
 import { DropdownItemProps } from './types.js';
+
 export const DropdownItem = ({
   children,
   noSearch,
@@ -93,9 +95,8 @@ export const DropdownItem = ({
       >
         {!noSearch && (
           <div className="gi-combobox-search">
-            {/* TODO translation for "Search" */}
             <TextInput
-              placeholder="Search"
+              placeholder={t('dropdownItem.search', { defaultValue: 'Search' })}
               className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => {
@@ -123,10 +124,11 @@ export const DropdownItem = ({
         )}
 
         <div className="gi-combobox-checkbox-container">
-          {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
-              No results found.
+              {t('dropdownItem.noResultFound', {
+                defaultValue: 'No results found.',
+              })}
             </Paragraph>
           )}
           {options.map((checkbox, index) => {
