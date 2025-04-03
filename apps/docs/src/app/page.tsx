@@ -1,9 +1,9 @@
-import { Heading, Icon, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
+import { Prose } from '@/components/typography/prose';
+import { config } from '@/lib/config';
+import { Heading, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
-import { Prose } from '@/components/typography/prose';
-import { config } from '@/lib/config';
 
 const benefits = [
   {
