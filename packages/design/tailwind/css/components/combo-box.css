@@ -32,7 +32,7 @@
   @apply gi-absolute gi-right-4 gi-top-5 gi-z-100 gi-cursor-pointer;
 }
 .gi-combobox-checkbox-container {
-  @apply gi-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2;
+  @apply gi-max-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2;
 }
 .gi-combobox-checkbox-container .gi-checkbox-container {
   @apply gi-items-center;
