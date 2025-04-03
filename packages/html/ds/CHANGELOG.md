@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.2...html-lib-v1.1.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* combo-box height ([#502](https://github.com/ogcio/govie-ds/issues/502)) ([f92f522](https://github.com/ogcio/govie-ds/commit/f92f522167de1d8ba73aae65e632e9714195515c))
+* Drawer component width size ([#504](https://github.com/ogcio/govie-ds/issues/504)) ([f955a0c](https://github.com/ogcio/govie-ds/commit/f955a0c68ca01b79aab6cdb2e95e7e016087c8ee))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.2.3
+
 ## [1.1.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.1...html-lib-v1.1.2) (2025-03-31)
 
 
