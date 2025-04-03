@@ -1,13 +1,7 @@
 'use client';
 
-import {
-  cloneElement,
-  Fragment,
-  ReactElement,
-  ReactNode,
-  useState,
-} from 'react';
-import { ButtonSize } from '../button/types.js';
+import { cloneElement, Fragment, ReactElement, useState } from 'react';
+import { ButtonProps, ButtonSize } from '../button/types.js';
 import { cn } from '../cn.js';
 import { ModalWrapper, ModalBody, ModalFooter } from '../modal/modal.js';
 import { ModalProps, ModalWrapperProps } from '../modal/types.js';
@@ -18,14 +12,17 @@ type DrawerChildren =
 
 export type DrawerPosition = 'left' | 'right' | 'bottom';
 
-export type DrawerProps = ModalProps & {
+export type DrawerProps = Omit<
+  ModalProps,
+  'closeOnClick' | 'closeOnOverlayClick' | 'size'
+> & {
   position?: DrawerPosition;
   closeButtonSize?: ButtonSize;
   children: DrawerChildren;
 };
 
 type DrawerSectionProps = {
-  children: ReactNode;
+  children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
   className?: string;
 };
 
@@ -39,7 +36,7 @@ export const DrawerWrapper = ({
   ...props
 }: DrawerWrapperProps) => {
   return (
-    <ModalWrapper className={cn('gi-drawer', className)} {...props}>
+    <ModalWrapper className={cn('gi-drawer-container', className)} {...props}>
       {children}
     </ModalWrapper>
   );

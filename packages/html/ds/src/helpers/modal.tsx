@@ -26,7 +26,7 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
   modal.append(modalContainer);
   modalContainer.dataset.element = 'modal-container';
   modalContainer.dataset.testid = 'modal-container';
-  modalContainer.className = `gi-modal-container gi-modal-container-${arguments_.position} gi-drawer`;
+  modalContainer.className = `gi-modal-container gi-modal-container-${arguments_.position} gi-drawer-container`;
 
   const modalHeader = document.createElement('div');
   modalContainer.append(modalHeader);
