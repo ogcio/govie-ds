@@ -78,35 +78,6 @@ You can run the local version for as long as needed, and update to the global ve
 
 The markup will likely be similar in structure, but with design modernisation, and will use different class names and data attribute names. Therefore when switching from local to global components, you will need to update the HTML markup.
 
-However, we are also looking to provide macros for global components that are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) templating engines, so we would recommend switching to the use of macros where possible when moving from local to global components.
-
-</Faq>
-
-<Faq question="Why will macros be provided alongside the HTML markup for global HTML components?">
-
-The use of macros that are [Nunjucks](https://mozilla.github.io/nunjucks/) and [Jinja](https://jinja.palletsprojects.com/) compatible means that consumers of the global HTML components are protected from any underlying HTML markup changes whilst the global components are being built or as new features are added.
-
-This reduces the risk of having to deal with breaking changes as you update versions of global HTML components. It also greatly reduces the amount of code required to render components.
-
-</Faq>
-
-<Faq question="Will macros be provided for the local components?">
-
-No, the local components will require using the HTML markup directly, as already documented on the [HTML components Storybook](https://storybook.design-system.ogcio.gov.ie/).
-The priority for the design system team is to globalise the local components, rather than spending time improving the developer experience of the local components.
-However, we will still support the local components as they are globalised, providing assistance and implementing any necessary bug fixes.
-
-When the global version of a component becomes available, we recommend favouring the use of the global component and the associated macros where possible.
-
-</Faq>
-
-<Faq question="Can I still use the HTML markup directly rather than the macros for global components?">
-
-Yes you can, but this would require more code compared to the use of macros, and having to deal with any underlying HTML markup changes as you update versions of the component library.
-
-We therefore strongly recommend the use of macros if you are using a technology stack that supports the execution of macros server side.
-There will be some situations where the use of the HTML markup directly will be necessary, either due to a lack of server environment or templating tooling.
-
 </Faq>
 
 <Faq question="Can I run global and local components side by side or do I need to upgrade all components at once?">
