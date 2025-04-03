@@ -1,23 +1,14 @@
-import { forwardRef } from 'react';
+import { InputFile } from '../input-file/input-file.js';
+import type { InputFileProps } from '../input-file/types.js';
 
-// Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
-// the component can accept all the standard attributes and events that an `<input>` element can handle.
-export type FileUploadProps = React.InputHTMLAttributes<HTMLInputElement>;
+/**
+ * @deprecated Use FileUploadProps instead of `Radio`.
+ */
+export type FileUploadProps = InputFileProps;
 
-// Use React.forwardRef to support refs properly
-export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
-  (props, ref) => {
-    return (
-      <input
-        className="gi-file-upload-input"
-        type="file"
-        multiple
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+/**
+ * @deprecated Use <InputFile /> instead of <FileUpload />.
+ */
+export const FileUpload = InputFile;
 
-// Set the displayName for debugging purposes
 FileUpload.displayName = 'FileUpload';

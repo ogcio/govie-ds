@@ -117,10 +117,18 @@ export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs, type TabsProps } from './tabs/tabs.js';
 export { Tag, type TagProps, TagTypeEnum, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
+export { InputText } from './input-text/input-text.js';
+export { InputRadio } from './input-radio/input-radio.js';
 export {
-  InputPassword,
-  type InputPasswordProps,
-} from './input-password/input-password.js';
+  type InputRadioProps,
+  type InputRadioSizeType,
+  InputRadioSizeEnum,
+} from './input-radio/types.js';
+export type {
+  InputTextProps,
+  InputActionButtonProps,
+} from './input-text/type.js';
+export { InputPassword } from './input-password/input-password.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
 export { toaster, ToastProvider } from './toast/toast.js';
 export type {
@@ -131,3 +139,15 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
+export { InputCheckbox } from './input-checkbox/input-checkbox.js';
+export {
+  InputCheckboxSizeEnum,
+  type InputCheckboxSizeEnumType,
+  type InputCheckboxProps,
+} from './input-checkbox/types.js';
+export { InputFile } from './input-file/input-file.js';
+export type { InputFileProps } from './input-file/types.js';
+export { InputCheckboxGroup } from './input-checkbox-group/input-checkbox-group.js';
+export type { InputCheckboxGroupProps } from './input-checkbox-group/types.js';
+export { InputRadioGroup } from './input-radio-group/input-radio-group.js';
+export type { InputRadioGroupProps } from './input-radio-group/types.js';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { slugify } from '../utilities.ts.js';
+import { slugify } from '../utilities.js';
 
 export function TabPanel({
   value,

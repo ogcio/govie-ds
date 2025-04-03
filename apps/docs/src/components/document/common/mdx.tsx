@@ -13,8 +13,6 @@ import {
   Button,
   Caption,
   Card,
-  Checkbox,
-  CheckboxGroup,
   Chip,
   Combobox,
   CookieBanner,
@@ -33,7 +31,13 @@ import {
   Heading,
   Icon,
   IconButton,
+  InputCheckbox,
+  InputCheckboxGroup,
+  InputFile,
   InputPassword,
+  InputRadio,
+  InputRadioGroup,
+  InputText,
   Link,
   List,
   Modal,
@@ -45,8 +49,6 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  Radio,
-  RadioGroup,
   SectionBreak,
   Select,
   SelectItem,
@@ -203,7 +205,6 @@ const documentComponents: MDXComponents = {
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
-  RadioGroup: (props) => <RadioGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   ModalWrapper: ModalWrapperSample,
@@ -219,12 +220,14 @@ const documentComponents: MDXComponents = {
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
   TextInput: (props) => <TextInput {...props} />,
+  InputText,
+  InputRadio,
   SectionBreak: (props) => <SectionBreak {...props} />,
   Select: (props) => <Select {...props} />,
   SelectItem: (props) => <SelectItem {...props} />,
   IconButton: (props) => <IconButton {...props} />,
   FileUpload: (props) => <FileUpload {...props} />,
-  CheckboxGroup: (props) => <CheckboxGroup {...props} />,
+  InputCheckboxGroup,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
     <Button disabled={true}>
@@ -274,14 +277,15 @@ const documentComponents: MDXComponents = {
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
   FormField: (props) => <FormField {...props} />,
-  Radio: (props) => <Radio {...props} />,
-  Checkbox: (props) => <Checkbox {...props} />,
   DataGridSample: () => (
     <div className="gi-not-prose">
       <DataGridSample />
     </div>
   ),
   InputPassword,
+  InputCheckbox,
+  InputFile,
+  InputRadioGroup,
 };
 
 export function Mdx({ code }: MdxProps) {

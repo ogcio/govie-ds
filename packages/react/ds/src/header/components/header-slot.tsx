@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { cn } from '../../cn.js';
 import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
 import { Icon } from '../../icon/icon.js';
+import { Input } from '../../primitives/input.js';
 import { HeaderItem } from '../types.js';
 
 type HeaderSlotProps = {
@@ -37,7 +38,7 @@ const DrawerTrigger = ({
         className="gi-header-tool-item"
         onClick={() => setIsOpen(true)}
       >
-        <input
+        <Input
           data-testid={`ItemActionDrawerTrigger-${index}`}
           className="gi-block gi-w-0 gi-absolute gi-h-0"
           id={`ItemActionDrawerTrigger-${index}`}
@@ -89,7 +90,7 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
       className="gi-header-tool-item"
       data-label-index={index}
     >
-      <input
+      <Input
         data-testid={`ItemActionTrigger-${index}`}
         id={`ItemActionTrigger-${index}`}
         data-index={index}

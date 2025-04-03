@@ -1,6 +1,6 @@
 ---
-title: Checkbox
-description: Checkbox HTML Component
+title: Input Checkbox
+description: Input Checkbox HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
@@ -14,7 +14,7 @@ libraries:
     status: 'stable'
 ---
 
-# Checkbox
+# Input Checkbox
 
 ## Variants
 
@@ -22,29 +22,29 @@ libraries:
 
 <ComponentContainer>
   <FormField label={{ text: 'Organization' }}>
-    <CheckboxGroup groupId={'uniqueid1'}>
-      <Checkbox
-        value={'employment-tribunal'}
-        label={'Employment Tribunal'}
-        id={'uniqueid1-check1'}
+    <InputCheckboxGroup groupId="uniqueid1">
+      <InputCheckbox
+        value="employment-tribunal"
+        label="Employment Tribunal"
+        id="uniqueid1-check1"
       />
-      <Checkbox
-        value={'ministry-of-defence'}
-        label={'Ministry of Defence'}
-        id={'uniqueid1-check2'}
+      <InputCheckbox
+        value="ministry-of-defence"
+        label="Ministry of Defence"
+        id="uniqueid1-check2"
       />
-      <Checkbox
-        value={'department-for-transport'}
-        label={'Department for Transport'}
-        id={'uniqueid1-check3'}
+      <InputCheckbox
+        value="department-for-transport"
+        label="Department for Transport"
+        id="uniqueid1-check3"
       />
-      <Checkbox
-        value={'others'}
-        label={'Others'}
-        id={'uniqueid1-check4'}
+      <InputCheckbox
+        value="others"
+        label="Others"
+        id="uniqueid1-check4"
         disabled
       />
-    </CheckboxGroup>
+    </InputCheckboxGroup>
   </FormField>
 </ComponentContainer>
 
@@ -60,20 +60,20 @@ libraries:
       <div class="gi-input-group-container">
         <div class="gi-input-group-options-container">
           <div class="gi-input-group-options-stacked">
-            <div class="gi-checkbox-container">
-              <input type="checkbox" id="UniqueID-check1" class="gi-checkbox-medium" aria-labelledby="UniqueID-check1-label" name="UniqueID" value="employment-tribunal">
+            <div class="gi-input-checkbox-container">
+              <input type="checkbox" id="UniqueID-check1" class="gi-input-checkbox-medium" aria-labelledby="UniqueID-check1-label" name="UniqueID" value="employment-tribunal">
               <label id="UniqueID-check1-label" for="UniqueID-check1">Employment Tribunal</label>
             </div>
-            <div class="gi-checkbox-container">
-              <input type="checkbox" id="UniqueID-check2" class="gi-checkbox-medium" aria-labelledby="UniqueID-check2-label" name="UniqueID" value="ministry-of-defence">
+            <div class="gi-input-checkbox-container">
+              <input type="checkbox" id="UniqueID-check2" class="gi-input-checkbox-medium" aria-labelledby="UniqueID-check2-label" name="UniqueID" value="ministry-of-defence">
               <label id="UniqueID-check2-label" for="UniqueID-check2">Ministry of Defence</label>
             </div>
-            <div class="gi-checkbox-container">
-              <input type="checkbox" id="UniqueID-check3" class="gi-checkbox-medium" aria-labelledby="UniqueID-check3-label" name="UniqueID" value="department-for-transport">
+            <div class="gi-input-checkbox-container">
+              <input type="checkbox" id="UniqueID-check3" class="gi-input-checkbox-medium" aria-labelledby="UniqueID-check3-label" name="UniqueID" value="department-for-transport">
               <label id="UniqueID-check3-label" for="UniqueID-check3">Department for Transport</label>
             </div>
-            <div class="gi-checkbox-container">
-              <input type="checkbox" id="UniqueID-check4" class="gi-checkbox-medium" aria-labelledby="UniqueID-check4-label" disabled="" name="UniqueID" value="others">
+            <div class="gi-input-checkbox-container">
+              <input type="checkbox" id="UniqueID-check4" class="gi-input-checkbox-medium" aria-labelledby="UniqueID-check4-label" disabled="" name="UniqueID" value="others">
               <label id="UniqueID-check4-label" for="UniqueID-check4">Others</label>
             </div>
           </div>
@@ -84,32 +84,32 @@ libraries:
   </TabPanel>
   <TabPanel value="tab33">
     ```jsx
-    import { CheckboxGroup, FormField, Checkbox } from "@govie-ds/react";
+    import { InputCheckboxGroup, FormField, InputCheckbox } from "@govie-ds/react";
       
     <FormField label={{ text: 'Organization' }}>
-      <CheckboxGroup groupId={'uniqueid1'} >
-        <Checkbox
-          value={'employment-tribunal'}
-          label={'Employment Tribunal'}
-          id={'uniqueid1-check1'}
+      <InputCheckboxGroup groupId="uniqueid1">
+        <InputCheckbox
+          value="employment-tribunal"
+          label="Employment Tribunal"
+          id="uniqueid1-check1"
         />
-        <Checkbox
-          value={'ministry-of-defence'}
-          label={'Ministry of Defence'}
-          id={'uniqueid1-check2'}
+        <InputCheckbox
+          value="ministry-of-defence"
+          label="Ministry of Defence"
+          id="uniqueid1-check2"
         />
-        <Checkbox
-          value={'department-for-transport'}
-          label={'Department for Transport'}
-          id={'uniqueid1-check3'}
+        <InputCheckbox
+          value="department-for-transport"
+          label="Department for Transport"
+          id="uniqueid1-check3"
         />
-        <Checkbox
-          value={'others'}
-          label={'Others'}
-          id={'uniqueid1-check4'}
+        <InputCheckbox
+          value="others"
+          label="Others"
+          id="uniqueid1-check4"
           disabled
         />
-      </CheckboxGroup>
+      </InputCheckboxGroup>
     </FormField>
     ```
   </TabPanel>
@@ -161,4 +161,4 @@ libraries:
 
 ## Status
 
-<ComponentStatusBlock componentId="checkbox" />
+<ComponentStatusBlock componentId="input-checkbox" />
