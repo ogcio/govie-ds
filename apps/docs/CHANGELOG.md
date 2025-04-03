@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.3](https://github.com/ogcio/govie-ds/compare/docs-v1.2.2...docs-v1.2.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* Drawer component width size ([#504](https://github.com/ogcio/govie-ds/issues/504)) ([f955a0c](https://github.com/ogcio/govie-ds/commit/f955a0c68ca01b79aab6cdb2e95e7e016087c8ee))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.2.3
+    * @govie-ds/tailwind bumped to 1.2.3
+
 ## [1.2.2](https://github.com/ogcio/govie-ds/compare/docs-v1.2.1...docs-v1.2.2) (2025-03-31)
 
 
