@@ -28,31 +28,25 @@ const getBreakpoint = (width: number): BreakpointType => {
 };
 
 export const useBreakpoint = (): {
-  breakpoint: BreakpointType;
-  width: number;
+  breakpoint: BreakpointType | null;
+  width: number | null;
 } => {
-  const [breakpoint, setBreakpoint] = useState<BreakpointType>(
-    Breakpoint.ExtraSmall,
-  );
-  const [width, setWidth] = useState<number>(
-    globalThis.window === undefined ? 0 : globalThis.window.innerWidth,
-  );
+  const [breakpoint, setBreakpoint] = useState<BreakpointType | null>(null);
+  const [width, setWidth] = useState<number | null>(null);
 
   useEffect(() => {
-    if (globalThis.window !== undefined) {
-      const handleResize = () => {
-        const currentWidth = globalThis.window.innerWidth;
-        setWidth(currentWidth);
-        setBreakpoint(getBreakpoint(currentWidth));
-      };
+    const handleResize = () => {
+      const currentWidth = globalThis.window.innerWidth;
+      setWidth(currentWidth);
+      setBreakpoint(getBreakpoint(currentWidth));
+    };
 
-      handleResize();
-      globalThis.window.addEventListener('resize', handleResize);
+    handleResize();
+    globalThis.window.addEventListener('resize', handleResize);
 
-      return () => {
-        globalThis.window.removeEventListener('resize', handleResize);
-      };
-    }
+    return () => {
+      globalThis.window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return { breakpoint, width };

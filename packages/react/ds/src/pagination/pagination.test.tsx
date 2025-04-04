@@ -74,6 +74,15 @@ describe('Pagination', () => {
     expect(nextButton).toBeInTheDocument();
   });
 
+  it('should not render pagination when totalPages is 0', () => {
+    const props = { ...standardProps, totalPages: 0 };
+    const screen = renderPagination(props);
+
+    const paginationElement = screen.container.firstChild;
+
+    expect(paginationElement).toBeNull();
+  });
+
   it('should render pagination buttons and page numbers when not on XS breakpoint', () => {
     mockUseBreakpoint.mockReturnValue({
       breakpoint: Breakpoint.ExtraSmall,
