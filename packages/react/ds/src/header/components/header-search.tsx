@@ -1,7 +1,7 @@
 import { Button } from '../../button/button.js';
 import { Heading } from '../../heading/heading.js';
 import { Icon, IconId } from '../../icon/icon.js';
-import { TextInput } from '../../text-input/text-input.js';
+import { InputText } from '../../input-text/input-text.js';
 
 export type HeaderSearchProps = {
   action?: string;
@@ -24,7 +24,7 @@ export function HeaderSearch({
     >
       <Heading as="h4">Search the website</Heading>
       <div className="gi-flex gi-items-end gi-mt-4">
-        <TextInput
+        <InputText
           name="search_query"
           aria-label="Search the website"
           placeholder="Enter search term"

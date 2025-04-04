@@ -82,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: build
-    if: ${{ !contains('main', github.ref) }}
+    if: ${{ !contains(github.ref, 'main') }}
     outputs:
       html_affected: ${{ steps.check-html-affected.outputs.html_affected }}
       react_affected: ${{ steps.check-react-affected.outputs.react_affected }}

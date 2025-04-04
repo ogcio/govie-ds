@@ -46,9 +46,6 @@ describe('govieContainer', () => {
     expect(containerDiv).toBeTruthy();
     expect(pElement).toBeTruthy();
     expect(pElement.innerHTML).toContain('Safe content');
-    // TODO Handle sanitisation separately e.g. using a different python library.
-    // The `safe` filter in jinja doesn't sanitize the HTML content, it simply marks it as safe for rendering.
-    // expect(pElement.innerHTML).not.toContain('alert("XSS")');
   });
 
   it('should handle empty content gracefully', () => {

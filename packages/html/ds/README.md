@@ -17,22 +17,7 @@ Package that contains the components and the styles of the <strong>HTML global c
 | `pnpm build:properties`       | Generate properties from the components schemas to ensure validation                         |
 | `pnpm build:ts`               | Compiles, builds and optimises the components in a production ready state                    |
 | `pnpm build:styles`           | Compiles, minifies and moves the tailwind styles in the ``dist`` folder                      |
-| `pnpm postbuild`              | Archives the ``dist`` and ``macros`` folder into a ``govie-frontend.zip`` file               |
-
-
-## Macro
-
-### About
-Package that creates the `renderMacro` function which enables usage of nunjucks templates
-
-#### Scripts
-
-| Script                        | Description                                                                                  |
-| ------------------------------| ---------------------------------------------------------------------------------------------|
-| `pnpm format`                 | Formats the code and and rewrites all processed files in place                               |
-| `pnpm format:check`           | Verifies if the files are formatted accordingly                                              |
-| `pnpm lint`                   | Identify and report on patterns found in ECMAScript/JavaScript code                          |
-| `pnpm build`                  | bundles the application and outputs the files to the `/dist` folder   |
+| `pnpm postbuild`              | Archives the ``dist`` folder into a ``govie-frontend.zip`` file               |
 
 
 ## Storybook

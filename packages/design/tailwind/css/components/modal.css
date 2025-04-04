@@ -34,9 +34,16 @@
   @apply gi-hidden;
 }
 
-.gi-modal-container {
+.gi-modal-container-control {
   @apply gi-bg-white gi-absolute gi-w-fit;
 }
+
+.gi-modal-container[data-position='bottom'][data-size='lg'],
+.gi-modal-container[data-position='bottom'][data-size='md'],
+.gi-modal-container[data-position='bottom'][data-size='sm'] {
+  @apply gi-w-full;
+}
+
 .gi-modal-container[data-size='lg'] {
   @apply gi-w-94 sm:gi-w-135 xl:gi-w-192;
 }
@@ -47,11 +54,11 @@
   @apply gi-w-94;
 }
 
-.gi-modal-container > :first-child {
+.gi-modal-container-control > :first-child {
   @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-py-4 gi-px-6;
 }
 
-.gi-modal-container > :nth-child(2) {
+.gi-modal-container-control > :nth-child(2) {
   @apply gi-flex gi-flex-col gi-flex-1;
 }
 

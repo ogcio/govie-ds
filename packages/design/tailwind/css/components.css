@@ -5,7 +5,7 @@
 @import './components/breadcrumbs.css';
 @import './components/button.css';
 @import './components/card.css';
-@import './components/checkbox.css';
+@import './components/input-checkbox.css';
 @import './components/chip.css';
 @import './components/combo-box.css';
 @import './components/common.css';
@@ -24,13 +24,13 @@
 @import './components/phase-banner.css';
 @import './components/progress-bar.css';
 @import './components/progress-stepper.css';
-@import './components/radio.css';
+@import './components/input-radio.css';
 @import './components/section-break.css';
 @import './components/select.css';
 @import './components/table.css';
 @import './components/tabs.css';
 @import './components/tag.css';
 @import './components/text-area.css';
-@import './components/text-input.css';
+@import './components/input-text.css';
 @import './components/toast.css';
 @import './components/tootlip.css';
