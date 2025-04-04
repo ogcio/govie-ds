@@ -189,3 +189,4 @@ whitespace
 withBorder
 xl
 xs
+iconEnd
