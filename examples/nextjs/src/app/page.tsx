@@ -1,4 +1,5 @@
 "use client";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
 import {
   Alert,
   BreadcrumbCurrentLink,
@@ -6,8 +7,6 @@ import {
   BreadcrumbLink,
   Breadcrumbs,
   Button,
-  Checkbox,
-  CheckboxGroup,
   Chip,
   Combobox,
   Container,
@@ -26,7 +25,12 @@ import {
   Heading,
   Icon,
   IconButton,
+  InputCheckbox,
+  InputCheckboxGroup,
   InputPassword,
+  InputRadio,
+  InputRadioGroup,
+  InputText,
   Link,
   List,
   Modal,
@@ -38,8 +42,6 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  Radio,
-  RadioGroup,
   Stack,
   StepItem,
   SummaryList,
@@ -47,12 +49,10 @@ import {
   SummaryListRow,
   SummaryListValue,
   TextArea,
-  TextInput,
   toaster,
   ToastProvider,
   ToastVariant,
 } from "@govie-ds/react";
-import { ComboBoxProps, CookieBannerProps } from "@/props";
 
 const headerProps: HeaderProps = {
   items: [
@@ -127,8 +127,8 @@ export default function Home() {
       <CookieBanner {...CookieBannerProps} />
       <Container>
         <br />
-        Text Input With Reset
-        <TextInput clearButtonEnabled />
+        Input Text With Reset
+        <InputText clearButtonEnabled />
         <br />
         Text Input Password
         <InputPassword />
@@ -187,17 +187,17 @@ export default function Home() {
             </Combobox>
           </Form>
           <h2>Checkboxes Group</h2>
-          <CheckboxGroup groupId="field-Id">
-            <Checkbox label="Irish" value={"irish"} />
-            <Checkbox label="British" value={"british"} />
-            <Checkbox
+          <InputCheckboxGroup groupId="field-Id">
+            <InputCheckbox value="irish" label="Irish" />
+            <InputCheckbox value="british" label="British" />
+            <InputCheckbox
+              value="citizen-of-another-country"
               label="Citizen of another country"
-              value={"citizen-of-another-country"}
             />
-          </CheckboxGroup>
+          </InputCheckboxGroup>
           <br />
-          <h2>Checkbox</h2>
-          <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
+          <h2>InputCheckbox</h2>
+          <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -211,11 +211,11 @@ export default function Home() {
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
           <FormField label={{ text: "Where do you live?" }}>
-            <RadioGroup groupId="uniqueId">
-              <Radio label={"England"} value={"england"} />
-              <Radio label={"Scotland"} value={"scotland"} />
-              <Radio label={"Ireland"} value={"ireland"} />
-            </RadioGroup>
+            <InputRadioGroup groupId="city">
+              <InputRadio value="dublin" label="Dublin" />
+              <InputRadio value="cork" label="Cork" />
+              <InputRadio value="galway" label="Galway" />
+            </InputRadioGroup>
           </FormField>
           <FormField
             hint={{

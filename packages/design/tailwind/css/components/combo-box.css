@@ -34,7 +34,7 @@
 .gi-combobox-checkbox-container {
   @apply gi-max-h-64 gi-overflow-y-auto gi-overflow-x-hidden gi-pt-2;
 }
-.gi-combobox-checkbox-container .gi-checkbox-container {
+.gi-combobox-checkbox-container .gi-input-checkbox-container {
   @apply gi-items-center;
 }
 .gi-combobox-checkbox-paragraph {

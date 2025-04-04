@@ -16,7 +16,7 @@ const createFileUpload = (arguments_: FileUploadProps) => {
 
   const container = document.createElement('div');
   container.className =
-    `${arguments_.className || ''} gi-text-input-container`.trim();
+    `${arguments_.className || ''} gi-input-text-container`.trim();
 
   const input = document.createElement('input') as HTMLInputElement;
   input.type = 'file';

@@ -2,31 +2,29 @@ import {
   Alert,
   Button,
   Card,
-  Checkbox,
-  CheckboxGroup,
-  // List,
-  // TypeEnum,
   Combobox,
   Container,
   CookieBanner,
   DropdownItem,
-  FileUpload,
   Footer,
   Form,
-  FormField,
   Header,
   HeaderProps,
   HeaderSearch,
   Heading,
   Icon,
   IconButton,
+  InputCheckbox,
+  InputCheckboxGroup,
+  InputFile,
+  InputRadio,
+  InputRadioGroup,
+  InputText,
   Link,
   Modal,
   Pagination,
   Paragraph,
   PhaseBanner,
-  Radio,
-  RadioGroup,
   Select,
   SelectItem,
   TabItem,
@@ -35,7 +33,6 @@ import {
   Tabs,
   Tag,
   TextArea,
-  TextInput,
   toaster,
   ToastProps,
   ToastProvider,
@@ -183,34 +180,8 @@ export function App() {
             />
           </TabPanel>
           <TabPanel value="tab3">
-            <FormField
-              error={{
-                text: 'Error: Please correct this issue.',
-              }}
-              hint={{
-                text: 'Hint: This is a helpful hint.',
-              }}
-              label={{
-                text: 'Label',
-                htmlFor: 'text-input-id',
-              }}
-            >
-              <TextInput id="text-input-id" suffix="KG" />
-            </FormField>
-            <FormField
-              label={{
-                text: 'Label',
-                htmlFor: 'textarea-id',
-              }}
-              error={{
-                text: 'Error: Please correct this issue.',
-              }}
-              hint={{
-                text: 'Hint: This is a helpful hint.',
-              }}
-            >
-              <TextArea id="textarea-id" maxChars={50} />
-            </FormField>
+            <InputText id="text-input-id" suffix="KG" />
+            <TextArea id="textarea-id" maxChars={50} />
             <Form>
               <Combobox>
                 <DropdownItem options={ComboBoxProps.organisationOptions}>
@@ -228,25 +199,12 @@ export function App() {
             <Button onClick={() => toaster.create(toastProps)}>
               Trigger Toast
             </Button>
-            <FormField label={{ text: 'Label' }}>
-              <Select id="unique-id">
-                <SelectItem label="Option 1" value={'value-1'} />
-                <SelectItem label="Option 2" value={'value-2'} />
-                <SelectItem label="Option 3" value={'value-3'} />
-              </Select>
-            </FormField>
+            <Select id="unique-id">
+              <SelectItem>Option 1</SelectItem>
+              <SelectItem>Option 2</SelectItem>
+            </Select>
             <hr />
-            <FormField
-              label={{
-                text: 'Upload File',
-                htmlFor: 'file-upload-id',
-              }}
-              error={{
-                text: 'Error: File must be smaller than 5MB.',
-              }}
-            >
-              <FileUpload id="file-upload-id" />
-            </FormField>
+            <InputFile id="file-upload-id" />
             <Pagination
               currentPage={currentPage}
               onPageChange={setCurrentPage}
@@ -255,56 +213,19 @@ export function App() {
           </TabPanel>
         </Tabs>
         <h2>Checkboxes Group</h2>
-
-        <FormField>
-          <CheckboxGroup groupId="field-Id">
-            <Checkbox
-              value={'employment-tribunal'}
-              label={'Employment Tribunal'}
-              id={'UniqueID-check1'}
-            />
-            <Checkbox
-              value={'ministry-of-defence'}
-              label={'Ministry of Defence'}
-              id={'UniqueID-check2'}
-            />
-            <Checkbox
-              value={'department-for-transport'}
-              label={'Department for Transport'}
-              id={'UniqueID-check3'}
-            />
-            <Checkbox
-              value={'others'}
-              label={'Others'}
-              id={'UniqueID-check4'}
-              disabled
-            />
-          </CheckboxGroup>
-        </FormField>
+        <InputCheckboxGroup groupId="field-Id">
+          <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
+          <InputCheckbox id="checkbox-id-2" value="value-1" label="Checkbox2" />
+        </InputCheckboxGroup>
         <br />
         <h2>Checkbox</h2>
-        <Checkbox id="checkbox-id" value="value-1" label="Checkbox" />
-        <FormField
-          label={{ text: 'How do you want to sign in?' }}
-          hint={{
-            text: "You'll need an account to prove your identity and complete your Self Assessment",
-          }}
-        >
-          <RadioGroup groupId="group">
-            <Radio
-              value={'val1'}
-              label={'Sign in with Username and Password'}
-              hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
-            />
-            <Radio
-              value={'val2'}
-              label={'Sign in with MyGovID'}
-              hint="If you don't have a MyGovID Login, you can create one"
-            />
-          </RadioGroup>
-        </FormField>
+        <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
+        <InputRadioGroup groupId="uniqueId1">
+          <InputRadio value="single-radio" label="Radio 1" />
+          <InputRadio value="single-radio" label="Radio 2" />
+        </InputRadioGroup>
         <Heading size="sm">Single Radio</Heading>
-        <Radio value="single-radio" label="Single Radio" />
+        <InputRadio value="single-radio" label="Single Radio" />
         <Modal triggerButton={<Button>Open Modal</Button>}>
           <Heading as="h2">Title</Heading>
           <Paragraph>

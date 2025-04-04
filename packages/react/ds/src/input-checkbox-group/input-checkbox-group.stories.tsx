@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormField } from '../forms/form-field.js';
-import { CheckboxGroup } from './checkbox-group.js';
-import { Checkbox } from './checkbox.js';
+import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
+import { InputCheckboxGroup } from './input-checkbox-group.js';
 
 const meta = {
-  title: 'Form/Checkbox/CheckboxGroup',
+  title: 'Form/Checkbox/InputCheckboxGroup',
   parameters: {
     docs: {
       description: {
@@ -13,8 +13,8 @@ const meta = {
       },
     },
   },
-  component: CheckboxGroup,
-} satisfies Meta<typeof CheckboxGroup>;
+  component: InputCheckboxGroup,
+} satisfies Meta<typeof InputCheckboxGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -35,31 +35,31 @@ export const Default: Story = {
   args: {
     groupId: 'UniqueID',
   },
-  render: (arguments_) => (
+  render: (props) => (
     <FormField label={{ text: 'Organization' }}>
-      <CheckboxGroup {...arguments_}>
-        <Checkbox
-          value={'employment-tribunal'}
-          label={'Employment Tribunal'}
-          id={'UniqueID-check1'}
+      <InputCheckboxGroup {...props}>
+        <InputCheckbox
+          value="employment-tribunal"
+          label="Employment Tribunal"
+          id="UniqueID-check1"
         />
-        <Checkbox
-          value={'ministry-of-defence'}
-          label={'Ministry of Defence'}
-          id={'UniqueID-check2'}
+        <InputCheckbox
+          value="ministry-of-defence"
+          label="Ministry of Defence"
+          id="UniqueID-check2"
         />
-        <Checkbox
-          value={'department-for-transport'}
-          label={'Department for Transport'}
-          id={'UniqueID-check3'}
+        <InputCheckbox
+          value="department-for-transport"
+          label="Department for Transport"
+          id="UniqueID-check3"
         />
-        <Checkbox
-          value={'others'}
-          label={'Others'}
-          id={'UniqueID-check4'}
+        <InputCheckbox
+          value="others"
+          label="Others"
+          id="UniqueID-check4"
           disabled
         />
-      </CheckboxGroup>
+      </InputCheckboxGroup>
     </FormField>
   ),
 };
@@ -75,20 +75,20 @@ export const WithHints: Story = {
         text: 'If you have dual nationality, select all options that are relevant to you.',
       }}
     >
-      <CheckboxGroup {...arguments_}>
-        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
-        <Checkbox
-          value={'british'}
-          label={'British'}
+      <InputCheckboxGroup {...arguments_}>
+        <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
+        <InputCheckbox
+          value="british"
+          label="British"
           hint="including English, Scottish, Welsh and Northern Irish"
-          id={'govie-field-ID-check2'}
+          id="govie-field-ID-check2"
         />
-        <Checkbox
-          value={'citizen-of-another-country'}
-          label={'Citizen of another country'}
-          id={'govie-field-ID-check3'}
+        <InputCheckbox
+          value="citizen-of-another-country"
+          label="Citizen of another country"
+          id="govie-field-ID-check3"
         />
-      </CheckboxGroup>
+      </InputCheckboxGroup>
     </FormField>
   ),
 };
@@ -107,20 +107,20 @@ export const WithErrorMessage: Story = {
         text: 'Select if you are Irish, British or a citizen of a different country',
       }}
     >
-      <CheckboxGroup {...arguments_}>
-        <Checkbox value={'irish'} label={'Irish'} id={'UniqueID-check1'} />
-        <Checkbox
-          value={'british'}
-          label={'British'}
+      <InputCheckboxGroup {...arguments_}>
+        <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
+        <InputCheckbox
+          value="british"
+          label="British"
           hint="including English, Scottish, Welsh and Northern Irish"
-          id={'govie-field-ID2-check2'}
+          id="govie-field-ID2-check2"
         />
-        <Checkbox
-          value={'citizen-of-another-country'}
-          label={'Citizen of another country'}
-          id={'govie-field-ID2-check3'}
+        <InputCheckbox
+          value="citizen-of-another-country"
+          label="Citizen of another country"
+          id="govie-field-ID2-check3"
         />
-      </CheckboxGroup>
+      </InputCheckboxGroup>
     </FormField>
   ),
 };

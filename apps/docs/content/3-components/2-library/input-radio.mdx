@@ -1,10 +1,10 @@
 ---
-title: Radio Button
-description: Radio Button HTML Component
+title: Input Radio
+description: Input Radio HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4008-3304&t=x9tccZ94Zz8w2Tvu-4'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5205-2042&t=3PZYNdqajrSyp3r5-0'
     status: 'stable'
   - platform: 'global'
     link: '?path=/docs/form-radio-radiogroup--docs'
@@ -14,19 +14,19 @@ libraries:
     status: 'stable'
 ---
 
-# Radio Button
+# Input Radio
 
 ## Variants
 
-### Standard radio
+### Standard Input Radio
 
 <ComponentContainer>
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'}>
-      <Radio value={'dublin'} label={'Dublin'} />
-      <Radio value={'cork'} label={'Cork'} />
-      <Radio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city">
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway" />
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -42,20 +42,20 @@ libraries:
     <div class="gi-input-group-container">
         <div class="gi-input-group-options-container">
             <div role="radiogroup" class="gi-input-group-options-stacked">
-                <div class="gi-radio-container">
+                <div class="gi-input-radio-container">
                     <div class="gi-radio-input-container">
-                      <input id="dublin" class="gi-radio-base gi-radio-medium" aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin" name="city">
+                      <input id="dublin" class="gi-input-radio-base gi-input-radio-medium" aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin" name="city">
                       <label for="dublin" class="gi-radio-label" aria-hidden="true">Dublin</label>
                     </div>
                 </div>
-                <div class="gi-radio-container">
+                <div class="gi-input-radio-container">
                     <div class="gi-radio-input-container">
-                      <input id="cork" class="gi-radio-base gi-radio-medium" aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork" name="city">
+                      <input id="cork" class="gi-input-radio-base gi-input-radio-medium" aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork" name="city">
                       <label for="cork" class="gi-radio-label" aria-hidden="true">Cork</label></div>
                 </div>
-                <div class="gi-radio-container">
+                <div class="gi-input-radio-container">
                     <div class="gi-radio-input-container">
-                      <input id="galway" class="gi-radio-base gi-radio-medium" aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway" name="city">
+                      <input id="galway" class="gi-input-radio-base gi-input-radio-medium" aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway" name="city">
                       <label for="galway" class="gi-radio-label" aria-hidden="true">Galway</label>
                     </div>
                 </div>
@@ -67,28 +67,28 @@ libraries:
   </TabPanel>
   <TabPanel value="tab13">
   ```jsx
-  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
+  import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'}>
-      <Radio value={'dublin'} label={'Dublin'} />
-      <Radio value={'cork'} label={'Cork'} />
-      <Radio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city">
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway"/>
+    </InputRadioGroup>
   </FormField>
   ```
   </TabPanel>
 </Tabs>
 
-### Inline radio
+### Inline Input Radio
 
 <ComponentContainer>
   <FormField label={{ text: 'Where do you live?' }}>
-    <RadioGroup groupId={'city'} inline>
-      <Radio value={'dublin'} label={'Dublin'} />
-      <Radio value={'cork'} label={'Cork'} />
-      <Radio value={'galway'} label={'Galway'} />
-    </RadioGroup>
+    <InputRadioGroup groupId="city" inline>
+      <InputRadio value="dublin" label="Dublin" />
+      <InputRadio value="cork" label="Cork" />
+      <InputRadio value="galway" label="Galway" />
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -104,19 +104,19 @@ libraries:
     <div class="gi-input-group-container">
         <div class="gi-input-group-options-container">
             <div role="radiogroup" class="gi-input-group-options-inline">
-                <div class="gi-radio-container">
-                    <div class="gi-radio-input-container"><input id="dublin" class="gi-radio-base gi-radio-medium"
+                <div class="gi-input-radio-container">
+                    <div class="gi-radio-input-container"><input id="dublin" class="gi-input-radio-base gi-input-radio-medium"
                             aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin"
                             name="city"><label for="dublin" class="gi-radio-label" aria-hidden="true">Dublin</label>
                     </div>
                 </div>
-                <div class="gi-radio-container">
-                    <div class="gi-radio-input-container"><input id="cork" class="gi-radio-base gi-radio-medium"
+                <div class="gi-input-radio-container">
+                    <div class="gi-radio-input-container"><input id="cork" class="gi-input-radio-base gi-input-radio-medium"
                             aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork"
                             name="city"><label for="cork" class="gi-radio-label" aria-hidden="true">Cork</label></div>
                 </div>
-                <div class="gi-radio-container">
-                    <div class="gi-radio-input-container"><input id="galway" class="gi-radio-base gi-radio-medium"
+                <div class="gi-input-radio-container">
+                    <div class="gi-radio-input-container"><input id="galway" class="gi-input-radio-base gi-input-radio-medium"
                             aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway"
                             name="city"><label for="galway" class="gi-radio-label" aria-hidden="true">Galway</label>
                     </div>
@@ -125,26 +125,24 @@ libraries:
         </div>
     </div>
 </fieldset>
-
-````
+```
 </TabPanel>
 <TabPanel value="tab23">
 ```jsx
-import { RadioGroup, FormField, Radio } from '@govie-ds/react';
+import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
 <FormField label={{ text: 'Where do you live?' }}>
-  <RadioGroup groupId={'city'} inline>
-    <Radio value={'dublin'} label={'Dublin'} />
-    <Radio value={'cork'} label={'Cork'} />
-    <Radio value={'galway'} label={'Galway'} />
-  </RadioGroup>
+  <InputRadioGroup groupId="city" inline>
+    <InputRadio value="dublin" label="Dublin" />
+    <InputRadio value="cork" label="Cork" />
+    <InputRadio value="galway" label="Galway"/>
+  </InputRadioGroup>
 </FormField>
-````
-
+```
   </TabPanel>
 </Tabs>
 
-### Radios with hints
+### Input Radios with hints
 
 <ComponentContainer>
   <FormField
@@ -153,18 +151,18 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
       text: "You'll need an account to prove your identity and complete your Self Assessment",
     }}
   >
-    <RadioGroup groupId={'withhint'}>
-      <Radio
-        value={'val1'}
-        label={'Sign in with Username and Password'}
+    <InputRadioGroup groupId="withhint">
+      <InputRadio
+        value="val1"
+        label="Sign in with Username and Password"
         hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
       />
-      <Radio
-        value={'val2'}
-        label={'Sign in with MyGovID'}
+      <InputRadio
+        value="val2"
+        label="Sign in with MyGovID"
         hint="If you don't have a MyGovID Login, you can create one"
       />
-    </RadioGroup>
+    </InputRadioGroup>
   </FormField>
 </ComponentContainer>
 
@@ -184,15 +182,15 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
     <div class="gi-input-group-container">
         <div class="gi-input-group-options-container">
             <div role="radiogroup" class="gi-input-group-options-stacked">
-                <div class="gi-radio-container">
-                    <div class="gi-radio-input-container"><input id="val1" class="gi-radio-base gi-radio-medium"
+                <div class="gi-input-radio-container">
+                    <div class="gi-radio-input-container"><input id="val1" class="gi-input-radio-base gi-input-radio-medium"
                             type="radio" aria-label="val1" aria-checked="false" aria-describedby="val1-hint"
                             aria-required="false" name="withhint" value="val1"><label for="val1" class="gi-radio-label"
                             aria-hidden="true">Sign in with Username and Password</label></div>
                     <div class="gi-radio-conditional-divider-container">
                         <div class="gi-invisible gi-w-8">
-                            <div class="gi-radio-conditional-divider-border-container gi-w-8">
-                                <div class="gi-radio-conditional-divider-border"></div>
+                            <div class="gi-input-radio-conditional-divider-border-container gi-w-8">
+                                <div class="gi-input-radio-conditional-divider-border"></div>
                             </div>
                         </div>
                         <div>
@@ -203,15 +201,15 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
                         </div>
                     </div>
                 </div>
-                <div class="gi-radio-container">
-                    <div class="gi-radio-input-container"><input id="val2" class="gi-radio-base gi-radio-medium"
+                <div class="gi-input-radio-container">
+                    <div class="gi-radio-input-container"><input id="val2" class="gi-input-radio-base gi-input-radio-medium"
                             type="radio" aria-label="val2" aria-checked="false" aria-describedby="val2-hint"
                             aria-required="false" name="withhint" value="val2"><label for="val2" class="gi-radio-label"
                             aria-hidden="true">Sign in with MyGovID</label></div>
                     <div class="gi-radio-conditional-divider-container">
                         <div class="gi-invisible gi-w-8">
-                            <div class="gi-radio-conditional-divider-border-container gi-w-8">
-                                <div class="gi-radio-conditional-divider-border"></div>
+                            <div class="gi-input-radio-conditional-divider-border-container gi-w-8">
+                                <div class="gi-input-radio-conditional-divider-border"></div>
                             </div>
                         </div>
                         <div>
@@ -229,7 +227,7 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
   </TabPanel>
   <TabPanel value="tab33">
   ```jsx
-  import { RadioGroup, FormField, Radio } from '@govie-ds/react';
+  import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 
   <FormField
       label={{ text: 'How do you want to sign in?' }}
@@ -237,18 +235,18 @@ import { RadioGroup, FormField, Radio } from '@govie-ds/react';
         text: "You'll need an account to prove your identity and complete your Self Assessment",
       }}
     >
-      <RadioGroup groupId={'withhint'}>
-        <Radio
-          value={'val1'}
-          label={'Sign in with Username and Password'}
+      <InputRadioGroup groupId="withhint">
+        <InputRadio
+          value="val1"
+          label="Sign in with Username and Password"
           hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
         />
-        <Radio
-          value={'val2'}
-          label={'Sign in with MyGovID'}
+        <InputRadio
+          value="val2"
+          label="Sign in with MyGovID"
           hint="If you don't have a MyGovID Login, you can create one"
         />
-      </RadioGroup>
+      </InputRadioGroup>
     </FormField>
   ```
   </TabPanel>
@@ -292,4 +290,4 @@ Do not use the radios component if users might need to select more than one opti
 
 ## Status
 
-<ComponentStatusBlock componentId="radio-button" />
+<ComponentStatusBlock componentId="input-radio" />

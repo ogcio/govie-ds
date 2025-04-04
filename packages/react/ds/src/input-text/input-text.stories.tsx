@@ -2,19 +2,19 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
 import { Stack } from '../stack/stack.js';
-import { TextInput } from './text-input.js';
+import { InputText } from './input-text.js';
 
 const meta = {
-  title: 'Form/TextInput',
+  title: 'Form/InputText',
   parameters: {
     docs: {
       description: {
         component:
-          'Use the TextInput component for single-line text inputs like names or phone numbers. You can control the width using the `halfFluid`, `fullFluid`, or `characterWidth` properties.',
+          'Use the InputText component for single-line text inputs like names or phone numbers. You can control the width using the `halfFluid`, `fullFluid`, or `characterWidth` properties.',
       },
     },
   },
-  component: TextInput,
+  component: InputText,
   argTypes: {
     prefix: {
       description:
@@ -99,40 +99,40 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof TextInput>;
+} satisfies Meta<typeof InputText>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: (props) => (
     <FormField
       label={{
         text: 'Input Label',
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
       }}
     >
-      <TextInput {...props} data-testid="text-input-id" />
+      <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
 };
 
 export const WithTextInputReset: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: () => {
     return (
       <FormField
         label={{
           text: 'Input Label',
-          htmlFor: 'text-input-id',
+          htmlFor: 'input-text-id',
         }}
       >
-        <TextInput clearButtonEnabled placeholder="Placeholder" />
+        <InputText clearButtonEnabled placeholder="Placeholder" />
       </FormField>
     );
   },
@@ -140,52 +140,52 @@ export const WithTextInputReset: Story = {
 
 export const WithLabelAndHint: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: (props) => (
     <FormField
       label={{
         text: 'Label',
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
       }}
       hint={{
         text: 'Hint: This is a helpful hint.',
       }}
     >
-      <TextInput {...props} data-testid="text-input-id" />
+      <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
 };
 
 export const WithLabelAndError: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: (props) => (
     <FormField
       label={{
         text: 'Label',
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
       }}
       error={{
         text: 'Error: Please correct this issue.',
       }}
     >
-      <TextInput {...props} data-testid="text-input-id" />
+      <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
 };
 
 export const WithLabelHintAndError: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     suffix: 'KG',
   },
   render: (props) => (
     <FormField
       label={{
         text: 'Label',
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
       }}
       hint={{
         text: 'Hint: This is a helpful hint.',
@@ -194,13 +194,13 @@ export const WithLabelHintAndError: Story = {
         text: 'Error: Please correct this issue.',
       }}
     >
-      <TextInput {...props} data-testid="text-input-id" />
+      <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textInput = canvas.getByTestId('text-input-id') as HTMLInputElement;
+    const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
     );
@@ -222,7 +222,7 @@ export const WithLabelHintAndError: Story = {
 
 export const WithLabelAndPrefixSuffix: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     prefix: 'kg',
     suffix: 'per item',
   },
@@ -230,10 +230,10 @@ export const WithLabelAndPrefixSuffix: Story = {
     <FormField
       label={{
         text: 'Label',
-        htmlFor: 'text-input-id',
+        htmlFor: 'input-text-id',
       }}
     >
-      <TextInput {...props} data-testid="text-input-id" />
+      <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
   play: async ({ canvasElement }) => {
@@ -241,17 +241,17 @@ export const WithLabelAndPrefixSuffix: Story = {
 
     const prefix = canvas.getByText('kg');
     expect(prefix).toBeTruthy();
-    expect(prefix).toHaveClass('gi-text-input-prefix');
+    expect(prefix).toHaveClass('gi-input-text-prefix');
 
     const suffix = canvas.getByText('per item');
     expect(suffix).toBeTruthy();
-    expect(suffix).toHaveClass('gi-text-input-suffix');
+    expect(suffix).toHaveClass('gi-input-text-suffix');
   },
 };
 
 export const InputLength: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     maxLength: 4,
   },
   render: (props) => {
@@ -259,10 +259,10 @@ export const InputLength: Story = {
       <FormField
         label={{
           text: '4 characters width',
-          htmlFor: 'text-input-id',
+          htmlFor: 'input-text-id',
         }}
       >
-        <TextInput {...props} maxLength={4} />
+        <InputText {...props} maxLength={4} />
       </FormField>
     );
   },
@@ -270,7 +270,7 @@ export const InputLength: Story = {
 
 export const DateInput: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     type: 'date',
   },
   render: (props) => {
@@ -278,10 +278,10 @@ export const DateInput: Story = {
       <FormField
         label={{
           text: 'Date input',
-          htmlFor: 'text-input-id',
+          htmlFor: 'input-text-id',
         }}
       >
-        <TextInput {...props} />
+        <InputText {...props} />
       </FormField>
     );
   },
@@ -289,7 +289,7 @@ export const DateInput: Story = {
 
 export const DisabledInput: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     disabled: true,
     value: 'This field is disabled',
   },
@@ -298,13 +298,13 @@ export const DisabledInput: Story = {
       <FormField
         label={{
           text: 'Disabled',
-          htmlFor: 'text-input-id',
+          htmlFor: 'input-text-id',
         }}
         hint={{
           text: 'Hint: This is a helpful hint.',
         }}
       >
-        <TextInput {...props} />
+        <InputText {...props} />
       </FormField>
     );
   },
@@ -312,7 +312,7 @@ export const DisabledInput: Story = {
 
 export const WithHalfWidth: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
     halfFluid: true,
   },
   render: (props) => {
@@ -321,18 +321,18 @@ export const WithHalfWidth: Story = {
         <FormField
           label={{
             text: 'Half width',
-            htmlFor: 'text-input-id',
+            htmlFor: 'input-text-id',
           }}
         >
-          <TextInput {...props} />
+          <InputText {...props} />
         </FormField>
         <FormField
           label={{
             text: 'Half width',
-            htmlFor: 'text-input-id',
+            htmlFor: 'input-text-id',
           }}
         >
-          <TextInput clearButtonEnabled halfFluid />
+          <InputText clearButtonEnabled halfFluid />
         </FormField>
       </Stack>
     );
@@ -341,7 +341,7 @@ export const WithHalfWidth: Story = {
 
 export const ResponsiveLayout: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: (props) => {
     return (
@@ -367,7 +367,7 @@ export const ResponsiveLayout: Story = {
                 text: 'Your first name.',
               }}
             >
-              <TextInput {...props} id="text-1" />
+              <InputText {...props} id="text-1" />
             </FormField>
             <FormField
               label={{ text: 'Last Name', htmlFor: 'text-2' }}
@@ -375,7 +375,7 @@ export const ResponsiveLayout: Story = {
                 text: 'Your last name.',
               }}
             >
-              <TextInput {...props} id="text-2" />
+              <InputText {...props} id="text-2" />
             </FormField>
           </Stack>
           <Stack
@@ -392,7 +392,7 @@ export const ResponsiveLayout: Story = {
                 text: 'Where you live.',
               }}
             >
-              <TextInput {...props} id="text-4" maxLength={5} />
+              <InputText {...props} id="text-4" maxLength={5} />
             </FormField>
           </Stack>
 
@@ -403,38 +403,38 @@ export const ResponsiveLayout: Story = {
           >
             <FormField
               label={{
-                htmlFor: 'text-input-birth',
+                htmlFor: 'input-text-birth',
                 text: 'Date of birth',
               }}
               hint={{
                 text: 'Your date of birth.',
               }}
             >
-              <TextInput id="text-input-birth" type="date" />
+              <InputText id="input-text-birth" type="date" />
             </FormField>
 
             <FormField
               label={{
-                htmlFor: 'text-input-height',
+                htmlFor: 'input-text-height',
                 text: 'Height',
               }}
               hint={{
                 text: 'Your height',
               }}
             >
-              <TextInput id="text-input-height" prefix="cm" />
+              <InputText id="input-text-height" prefix="cm" />
             </FormField>
             <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
               <FormField
                 label={{
                   text: 'Age',
-                  htmlFor: 'text-input-age',
+                  htmlFor: 'input-text-age',
                 }}
                 hint={{
                   text: 'Your Age.',
                 }}
               >
-                <TextInput {...props} maxLength={3} id="text-input-age" />
+                <InputText {...props} maxLength={3} id="input-text-age" />
               </FormField>
             </div>
           </Stack>
@@ -450,7 +450,7 @@ export const ResponsiveLayout: Story = {
               text: 'Error: Please correct this issue.',
             }}
           >
-            <TextInput
+            <InputText
               {...props}
               id="text-phone"
               pattern="\d*"
@@ -472,7 +472,7 @@ export const AllStates: Story = {
           htmlFor: 'default-input',
         }}
       >
-        <TextInput type="text" id="default-input" />
+        <InputText type="text" id="default-input" />
       </FormField>
       <br />
       <FormField
@@ -481,7 +481,7 @@ export const AllStates: Story = {
           htmlFor: 'focus-input',
         }}
       >
-        <TextInput type="text" id="focus-input" />
+        <InputText type="text" id="focus-input" />
       </FormField>
       <br />
       <FormField
@@ -490,7 +490,7 @@ export const AllStates: Story = {
           htmlFor: 'input-disabled',
         }}
       >
-        <TextInput
+        <InputText
           value="This field is disabled"
           type="text"
           id="input-disabled"
@@ -508,7 +508,7 @@ export const AllStates: Story = {
 
 export const WithCustomActionButton: Story = {
   args: {
-    id: 'text-input-id',
+    id: 'input-text-id',
   },
   render: () => (
     <FormField
@@ -519,7 +519,7 @@ export const WithCustomActionButton: Story = {
         text: 'Support text',
       }}
     >
-      <TextInput
+      <InputText
         inputActionButton={{
           icon: 'info',
           onClick: () => alert('action button clicked'),
@@ -543,7 +543,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -561,7 +561,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Invalid',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -573,7 +573,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Disabled',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             disabled
             iconStart="placeholder"
@@ -589,7 +589,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             inputClassName="focus-input"
             iconStart="placeholder"
@@ -605,7 +605,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -625,7 +625,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Invalid',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -642,7 +642,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             iconStart="placeholder"
             iconEnd="placeholder"
@@ -660,7 +660,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             clearButtonEnabled
             inputClassName="focus-input"
             iconStart="placeholder"
@@ -678,7 +678,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             iconStart="placeholder"
             type="text"
             placeholder="Placeholder"
@@ -692,7 +692,7 @@ export const AllIconVariantsStates: Story = {
             text: 'Support text',
           }}
         >
-          <TextInput
+          <InputText
             iconEnd="placeholder"
             type="text"
             placeholder="Placeholder"
