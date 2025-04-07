@@ -1,10 +1,16 @@
 import { Analytics as MatomoAnalytics } from '@ogcio/analytics-sdk';
+import {
+  isConsentGiven,
+  CookieCategory,
+  ConsentChangeEvent,
+} from '../utils/cookieConsent';
+import { useEffect } from 'react';
 
 export type AnalyticEvent = {
   category: string;
   action: string;
   name?: string;
-  value?: string | number;
+  value?: number;
 };
 
 export class Analytics {
@@ -14,7 +20,7 @@ export class Analytics {
   async init(): Promise<void> {
     if (this.initialized) return;
 
-    if (typeof window !== 'undefined') {
+    if (globalThis.window) {
       try {
         this.matomoAnalytics = new MatomoAnalytics({
           baseUrl: process.env.NEXT_PUBLIC_API_URL!,
@@ -22,7 +28,26 @@ export class Analytics {
           organizationId: process.env.NEXT_PUBLIC_ORGANIZATION_ID,
         });
 
-        await this.matomoAnalytics.initClientTracker();
+        if (isConsentGiven('analytics')) {
+          await this.matomoAnalytics.initClientTracker();
+        }
+
+        const handleConsentChange = async (
+          event: ConsentChangeEvent,
+        ): Promise<void> => {
+          if (event.detail.status === 'all' && isConsentGiven('analytics')) {
+            await this.matomoAnalytics?.initClientTracker();
+
+            globalThis.window.removeEventListener(
+              'consentStatusChanged',
+              (event) => handleConsentChange(event as ConsentChangeEvent),
+            );
+          }
+        };
+
+        globalThis.window.addEventListener('consentStatusChanged', (event) =>
+          handleConsentChange(event as ConsentChangeEvent),
+        );
 
         console.log('Analytics initialized');
         this.initialized = true;
@@ -33,27 +58,31 @@ export class Analytics {
   }
 
   async trackPageView(path: string): Promise<void> {
-    if (!this.initialized) {
-      console.warn('Analytics not initialized, skipping page view tracking');
-      return;
-    }
-    console.log(`Page view tracked: ${path}`);
+    if (isConsentGiven('analytics')) {
+      if (!this.initialized) {
+        console.warn('Analytics not initialized, skipping page view tracking');
+        return;
+      }
+      console.log(`Page view tracked: ${path}`);
 
-    await this.matomoAnalytics?.track.pageView({
-      event: {
-        title: path,
-      },
-    });
+      await this.matomoAnalytics?.track.pageView({
+        event: {
+          title: path,
+        },
+      });
+    }
   }
 
   async trackEvent(event: AnalyticEvent): Promise<void> {
-    if (!this.initialized) {
-      console.warn('Analytics not initialized, skipping event tracking');
-      return;
-    }
-    console.log(`Event tracked: ${event}`);
+    if (isConsentGiven('analytics')) {
+      if (!this.initialized) {
+        console.warn('Analytics not initialized, skipping event tracking');
+        return;
+      }
+      console.log(`Event tracked: ${event}`);
 
-    await this.matomoAnalytics?.track.event({ event });
+      await this.matomoAnalytics?.track.event({ event });
+    }
   }
 }
 

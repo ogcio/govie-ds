@@ -1,4 +1,4 @@
-import AnalyticsProvider from '@/components/AnalyticsProvider';
+import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
 import { Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
@@ -6,6 +6,7 @@ import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
+import CookieConsent from '@/components/cookie-consent';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -124,6 +125,7 @@ export default function RootLayout({
             }
           />
         </AnalyticsProvider>
+        <CookieConsent />
       </body>
     </html>
   );
