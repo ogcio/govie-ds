@@ -150,6 +150,58 @@ export const AllStates: Story = {
   },
 };
 
+export const WithText: Story = {
+  render: () => (
+    <Stack gap={2}>
+      <Stack>
+        <Paragraph>Small size</Paragraph>
+        <Paragraph size="sm">
+          Here is a paragraph with{' '}
+          <Link
+            size="sm"
+            href="#"
+            iconStart="arrow_back"
+            iconEnd="arrow_forward"
+          >
+            Link text
+          </Link>
+          .
+        </Paragraph>
+      </Stack>
+      <Stack>
+        <Paragraph size="md">Medium size</Paragraph>
+        <Paragraph size="md">
+          Here is a paragraph with{' '}
+          <Link
+            size="md"
+            href="#"
+            iconStart="arrow_back"
+            iconEnd="arrow_forward"
+          >
+            Link text
+          </Link>
+          .
+        </Paragraph>
+      </Stack>
+      <Stack>
+        <Paragraph size="lg">Large size</Paragraph>
+        <Paragraph size="lg">
+          Here is a paragraph with{' '}
+          <Link
+            size="lg"
+            href="#"
+            iconStart="arrow_back"
+            iconEnd="arrow_forward"
+          >
+            Link text
+          </Link>
+          .
+        </Paragraph>
+      </Stack>
+    </Stack>
+  ),
+};
+
 export const AllVariants: Story = {
   render: () => (
     <Stack gap={6}>

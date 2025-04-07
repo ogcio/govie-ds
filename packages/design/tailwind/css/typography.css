@@ -214,14 +214,6 @@
   @apply visited:gi-text-purple-700;
 }
 
-.gi-link-sm {
-  @apply gi-text-sm;
-}
-
-.gi-link-md {
-  @apply gi-text-2md;
-}
-
 .gi-link-no-visited {
   @apply visited:gi-text-blue-700;
 }
@@ -236,6 +228,12 @@
 
 .gi-link-icon[data-size='sm'] {
   @apply gi-top-1;
+}
+.gi-link-icon[data-size='md'] {
+  @apply gi-top-[5.5px];
+}
+.gi-link-icon[data-size='lg'] {
+  @apply gi-top-2;
 }
 
 .gi-link-icon-start {

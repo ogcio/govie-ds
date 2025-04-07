@@ -18,7 +18,7 @@ export type LinkProps = AnchorProps & {
   noUnderline?: boolean;
   noColor?: boolean;
   external?: boolean;
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg';
   dataTestid?: string;
   asButton?: {
     variant?: ButtonVariant;
@@ -46,6 +46,7 @@ const LinkContainer = ({
   const linkSize = size || 'sm';
   const showIconStart = iconStart && !asButton && !asChild;
   const showIconEnd = iconEnd && !asButton && !asChild;
+  const iconSize = 'sm';
 
   return (
     <>
@@ -54,27 +55,18 @@ const LinkContainer = ({
           className={'gi-link-icon gi-link-icon-start'}
           data-size={linkSize}
         >
-          <Icon icon={iconStart} size={linkSize} />
+          <Icon icon={iconStart} size={iconSize} />
         </span>
       )}
       {showIconEnd || showIconStart ? (
-        <span
-          className={cn({
-            'gi-pl-5': showIconStart && linkSize === 'sm',
-            'gi-pr-5': showIconEnd && linkSize === 'sm',
-            'gi-pl-6': showIconStart && linkSize === 'md',
-            'gi-pr-6': showIconEnd && linkSize === 'md',
-          })}
-        >
-          {children}
-        </span>
+        <span className="gi-pr-5 gi-pl-5">{children}</span>
       ) : (
         children
       )}
 
       {showIconEnd && (
         <span className="gi-link-icon gi-link-icon-end" data-size={linkSize}>
-          <Icon icon={iconEnd} size={linkSize} />
+          <Icon icon={iconEnd} size={iconSize} />
         </span>
       )}
     </>
@@ -134,8 +126,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
               !noVisited &&
               !disabled,
           },
-          size ? `gi-link-${size}` : '',
-
+          `gi-paragraph-${size || 'sm'}`,
           buttonVariant,
           buttonSize,
           className,
