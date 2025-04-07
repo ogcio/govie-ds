@@ -4,7 +4,7 @@ export type AnalyticEvent = {
   category: string;
   action: string;
   name?: string;
-  value?: number;
+  value?: string | number;
 };
 
 export class Analytics {

@@ -1,4 +1,7 @@
+'use client';
+
 import { Prose } from '@/components/typography/prose';
+import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
 import { Heading, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
 import Image from 'next/image';
@@ -80,7 +83,16 @@ export default function HomePage() {
       <PhaseBanner level="alpha">
         <p className="text-gray-700 text-xs sm:text-md">
           This is a new service - your{' '}
-          <Link href={config.feedbackFormUrl} noVisited>
+          <Link
+            href={config.feedbackFormUrl}
+            noVisited
+            onClick={() => {
+              analytics.trackEvent({
+                category: 'feedback',
+                action: 'click',
+              });
+            }}
+          >
             feedback
           </Link>{' '}
           will help us to improve it.
@@ -88,7 +100,9 @@ export default function HomePage() {
       </PhaseBanner>
       <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
         <Prose>
-          <h1 className="leading-none sm:leading-normal">Design System</h1>
+          <h1 className="leading-none sm:leading-normal">
+            Gov IE Design System
+          </h1>
           <p>
             The Design System Building Block ensures efficiency, quality and
             consistency across public sector departments. Engineered to be

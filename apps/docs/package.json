@@ -6,7 +6,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
-    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo",
+    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo -p 80",
     "build": "pnpm build:styles && pnpm build:content && pnpm build:site",
     "build:content": "contentlayer2 build",
     "build:site": "next build",

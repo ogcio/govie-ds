@@ -1,10 +1,11 @@
-import { Footer, Header, HeaderProps, Link } from '@govie-ds/react';
+import AnalyticsProvider from '@/components/AnalyticsProvider';
+import { GovieLink } from '@/components/navigation/custom-link';
+import { Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-import AnalyticsProvider from '@/components/AnalyticsProvider';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -15,8 +16,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'Design System',
-  description: 'Design System',
+  title: 'Gov IE Design System',
+  description:
+    'A design system for the GOV.IE. We make it easier to build accessible, mobile-friendly government websites.',
 };
 
 export default function RootLayout({
@@ -26,7 +28,7 @@ export default function RootLayout({
 }>) {
   const headerProps: HeaderProps = {
     fullWidth: true,
-    title: 'Design System',
+    title: 'Gov IE Design System',
     logo: {
       href: '/',
     },
@@ -101,14 +103,14 @@ export default function RootLayout({
             secondarySlot={
               <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
                 {footerLinks.map((link, index) => (
-                  <Link
+                  <GovieLink
                     noColor
                     aria-label={link.label}
                     href={link.href}
                     key={`footerlink-${index}`}
                   >
                     {link.label}
-                  </Link>
+                  </GovieLink>
                 ))}
               </div>
             }
