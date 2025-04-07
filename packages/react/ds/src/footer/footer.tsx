@@ -5,9 +5,9 @@ import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
+import { Container } from '../container/container.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
-import { Container } from '../container/container.js';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
