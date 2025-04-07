@@ -7,6 +7,7 @@ import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
+import { Container } from '../container/container.js';
 
 export type FooterProps = {
   primarySlot?: ReactNode;
@@ -73,25 +74,27 @@ export function Footer({
       {...props}
     >
       <div className="gi-footer-container">
-        {primarySlot && (
-          <div aria-label="Primary footer slot">{primarySlot}</div>
-        )}
-
-        {primarySlot && secondarySlot && (
-          <SectionBreak color="gi-border-gray-100" size="lg" />
-        )}
-
-        <div
-          className="gi-footer-secondary-slot"
-          aria-label="Secondary footer slot"
-        >
-          <div className="gi-footer-logo">{renderLogo()}</div>
-          {secondarySlot && (
-            <div className="gi-footer-secondary-slot-content">
-              {secondarySlot}
-            </div>
+        <Container>
+          {primarySlot && (
+            <div aria-label="Primary footer slot">{primarySlot}</div>
           )}
-        </div>
+
+          {primarySlot && secondarySlot && (
+            <SectionBreak color="gi-border-gray-100" size="lg" />
+          )}
+
+          <div
+            className="gi-footer-secondary-slot"
+            aria-label="Secondary footer slot"
+          >
+            <div className="gi-footer-logo">{renderLogo()}</div>
+            {secondarySlot && (
+              <div className="gi-footer-secondary-slot-content">
+                {secondarySlot}
+              </div>
+            )}
+          </div>
+        </Container>
       </div>
       {utilitySlot && (
         <div className="gi-footer-utility" aria-label="Utility links">
