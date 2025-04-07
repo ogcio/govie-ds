@@ -45,7 +45,12 @@ export const Default: Story = {
     },
     size: {
       control: { type: 'radio' },
-      options: ['sm', 'md'],
+      options: ['sm', 'md', 'lg'],
+      table: {
+        defaultValue: {
+          summary: 'sm',
+        },
+      },
       description: 'Size of the link.',
       type: { name: 'string', required: false },
     },
