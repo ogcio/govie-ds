@@ -1,13 +1,12 @@
 'use client';
 import i18next, { t as i18nextT } from 'i18next';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../button/button.js';
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Icon } from '../icon/icon.js';
 import { getDisplayPages } from '../utils/utilities.js';
 
 // Handle case for where the project has not initialised i18next.
-// TODO make helper fn for this
 const t = (key: string, options?: Record<string, any>) => {
   if (i18next.isInitialized) {
     return i18nextT(key, options);
@@ -28,14 +27,31 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
   dataTestid,
 }) => {
-  const { breakpoint, width } = useBreakpoint();
-  const isCompactView = breakpoint === Breakpoint.ExtraSmall;
-  const isSMWidth = width < 639;
+  if (totalPages === 0) {
+    return null;
+  }
 
-  const displayedPages = getDisplayPages(currentPage, totalPages, breakpoint);
+  const { breakpoint, width } = useBreakpoint();
+
+  // SSR Safety
+  // State to track if component has mounted on the client
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const isCompactView = isClient && breakpoint === Breakpoint.ExtraSmall;
+  const isSMWidth = isClient && width !== null && width < 639;
 
   const renderPaginationBtns = () => {
-    return displayedPages.map((page, index) =>
+    // Calculate pagesToRender only when breakpoint is known
+    const pagesToRender =
+      isClient && breakpoint
+        ? getDisplayPages(currentPage, totalPages, breakpoint)
+        : getDisplayPages(currentPage, totalPages, Breakpoint.Large);
+
+    return pagesToRender.map((page, index) =>
       page === -1 || page === -2 ? (
         <React.Fragment key={`ellipsis-${index}`}>
           <Icon
