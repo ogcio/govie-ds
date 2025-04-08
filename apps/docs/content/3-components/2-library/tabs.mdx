@@ -19,7 +19,67 @@ The tabs component lets users navigate between related sections of content, disp
 
 ## Variants
 
+### Basic
+
+<ComponentContainer>
+  <Tabs id="tab-container-1" ariaLabelledBy="tab-container-1">
+    <TabList>
+      <TabItem value="tab1">Tab 1</TabItem>
+      <TabItem value="tab2">Tab 2</TabItem>
+      <TabItem value="tab3">Tab 3</TabItem>
+    </TabList>
+    <TabPanel value="tab1">Tab 1 Content</TabPanel>
+    <TabPanel value="tab2">Tab 2 Content</TabPanel>
+    <TabPanel value="tab3">Tab 3 Content</TabPanel>
+  </Tabs>
+</ComponentContainer>
+
 ## Usage
+
+<Tabs id="tab1">
+  <TabList>
+    <TabItem value="tab11" checked>HTML</TabItem>
+    <TabItem value="tab13">React</TabItem>
+  </TabList>
+  <TabPanel value="tab11">        
+    ```html
+      <div aria-labelledby="tab-container-1" class="gi-tabs" id="tab-container-1">
+        <div role="tablist" class="gi--mb-[1px]">
+            <button id="tab-tab1" role="tab" aria-roledescription="tab" aria-selected="false" aria-controls="tab-panel-tab1" class="gi-tab-item"><span class="gi-decoration-xs">Tab 1</span></button>
+            <button id="tab-tab2" role="tab" aria-roledescription="tab" aria-selected="false" aria-controls="tab-panel-tab2" class="gi-tab-item"><span class="gi-decoration-xs">Tab 2</span></button>
+            <button id="tab-tab3" role="tab" aria-roledescription="tab" aria-selected="true" aria-controls="tab-panel-tab3" class="gi-tab-item gi-tab-item-checked"><span class="gi-decoration-xs">Tab 3</span></button>
+        </div>
+        <div role="tabpanel" aria-labelledby="tab-tab1" id="tab-panel-tab1" tabindex="0" class="gi-tab-panel" style="display: none;">Tab 1 Content</div>
+        <div role="tabpanel" aria-labelledby="tab-tab2" id="tab-panel-tab2" tabindex="0" class="gi-tab-panel" style="display: none;">Tab 2 Content</div>
+        <div role="tabpanel" aria-labelledby="tab-tab3" id="tab-panel-tab3" tabindex="0" class="gi-tab-panel" style="display: block;">Tab 3 Content</div>
+      </div>
+    ```
+
+  </TabPanel>
+  <TabPanel value="tab13">
+    ```jsx
+    import React from 'react';
+    import {
+      TabItem,
+      Tabs,
+      TabPanel,
+      TabList
+    } from '@govie-ds/react';
+
+    <Tabs id="tab-container-1" ariaLabelledBy="tab-container-1">
+      <TabList>
+        <TabItem value="tab1">Tab 1</TabItem>
+        <TabItem value="tab2">Tab 2</TabItem>
+        <TabItem value="tab3">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab1">Tab 1 Content</TabPanel>
+      <TabPanel value="tab2">Tab 2 Content</TabPanel>
+      <TabPanel value="tab3">Tab 3 Content</TabPanel>
+    </Tabs>
+
+```
+</TabPanel>
+</Tabs>
 
 ### Tabs Props
 
@@ -32,6 +92,7 @@ The tabs component lets users navigate between related sections of content, disp
 - **value** (required): The unique value for each tab, used for selecting the active tab.
 - **checked** (optional): If `true`, marks the tab as the currently selected tab.
 - **children** (optional): The text or content displayed inside the tab.
+- **onTabSelected** (optional): Callback fired when the tab is selected. Useful for triggering actions or updating state on selection.
 
 ### TabList Props
 
@@ -86,3 +147,4 @@ If you decide to use one of these components, consider if:
 ## Status
 
 <ComponentStatusBlock componentId="tabs" />
+```
