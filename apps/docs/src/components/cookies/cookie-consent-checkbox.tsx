@@ -1,5 +1,5 @@
 'use client';
-import { Checkbox } from '@govie-ds/react';
+import { InputCheckbox } from '@govie-ds/react';
 import {
   CookieCategory,
   isConsentGiven,
@@ -14,7 +14,7 @@ export default function CookieConsentCheckbox({
   const checked = isConsentGiven(category);
 
   return (
-    <Checkbox
+    <InputCheckbox
       defaultChecked={checked}
       onChange={(e) => {
         const status = e.target.checked ? 'all' : 'none';

@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
+import { Suspense } from 'react';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -94,38 +95,40 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${lato.className} transition duration-500 h-screen flex flex-col bg-white`}
       >
-        <AnalyticsProvider>
-          <CookieConsent />
-          <a href="#main" className="sr-only">
-            Skip to main content
-          </a>
-          <Header {...headerProps} addDefaultMobileMenu />
-          {children}
-          <Footer
-            secondarySlot={
-              <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-                {footerLinks.map((link, index) => (
-                  <GovieLink
-                    noColor
-                    aria-label={link.label}
-                    href={link.href}
-                    key={`footerlink-${index}`}
-                  >
-                    {link.label}
-                  </GovieLink>
-                ))}
-              </div>
-            }
-            utilitySlot={
-              <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
-                <div className="gi-text-sm">
-                  © {new Date().getFullYear()} Design System of Government of
-                  Ireland.
+        <Suspense>
+          <AnalyticsProvider>
+            <CookieConsent />
+            <a href="#main" className="sr-only">
+              Skip to main content
+            </a>
+            <Header {...headerProps} addDefaultMobileMenu />
+            {children}
+            <Footer
+              secondarySlot={
+                <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+                  {footerLinks.map((link, index) => (
+                    <GovieLink
+                      noColor
+                      aria-label={link.label}
+                      href={link.href}
+                      key={`footerlink-${index}`}
+                    >
+                      {link.label}
+                    </GovieLink>
+                  ))}
                 </div>
-              </div>
-            }
-          />
-        </AnalyticsProvider>
+              }
+              utilitySlot={
+                <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
+                  <div className="gi-text-sm">
+                    © {new Date().getFullYear()} Design System of Government of
+                    Ireland.
+                  </div>
+                </div>
+              }
+            />
+          </AnalyticsProvider>
+        </Suspense>
       </body>
     </html>
   );
