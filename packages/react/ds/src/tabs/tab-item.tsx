@@ -9,15 +9,13 @@ export type TabItemProps = {
   checked?: boolean;
   ariaLabel?: string;
   ariaLabelledby?: string;
-  onTabSelected?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
+  onTabClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export type InternalTabItemProps = TabItemProps & {
-  index?: number;
-  onTabClick?: (index: number) => void;
+  onTabClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  index: number;
 };
 
 // Component exposed to pick only the props needed
@@ -26,19 +24,18 @@ export const TabItem: FC<TabItemProps> = () => null;
 export const InternalTabItem: FC<InternalTabItemProps> = ({
   value,
   href,
-  index = -1,
   checked = false,
   children,
-  onTabSelected,
   onTabClick,
   onTabKeyDown,
 }) => {
   const valueSlug = slugify(value);
 
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const clickButtonRef = useRef(false);
 
   useEffect(() => {
-    if (checked) {
+    if (checked && !clickButtonRef.current) {
       buttonRef.current?.click();
     }
   }, [checked]);
@@ -53,11 +50,9 @@ export const InternalTabItem: FC<InternalTabItemProps> = ({
       aria-controls={`tab-panel-${valueSlug}`}
       className={`gi-tab-item ${checked ? 'gi-tab-item-checked' : ''}`}
       onClick={(event) => {
+        clickButtonRef.current = true;
         if (onTabClick) {
-          onTabClick(index);
-        }
-        if (onTabSelected) {
-          onTabSelected(event);
+          onTabClick(event);
         }
         buttonRef.current?.blur();
       }}

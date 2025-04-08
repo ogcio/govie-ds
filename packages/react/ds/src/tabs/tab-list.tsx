@@ -38,13 +38,16 @@ export const TabList = ({
     setActiveTab(foundCheckedTab ? checkedIndex : 0);
   }, []);
 
-  const handleOnTabSelected =
+  const handleOnTabClick =
     (
+      index: number,
       originalHandler?: (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
       ) => void,
     ) =>
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      setActiveTab(index);
+
       const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
 
       const tabPanels: HTMLElement[] = [
@@ -108,10 +111,6 @@ export const TabList = ({
     }
   };
 
-  const handleOnTabClick = (index: number) => {
-    setActiveTab(index);
-  };
-
   const childrenWithName = Children.map(children, (element, index) => {
     if (isValidElement<TabItemProps>(element)) {
       return (
@@ -120,8 +119,7 @@ export const TabList = ({
           index={index}
           checked={activeTab === index}
           onTabKeyDown={handleOnTabKeyDown}
-          onTabClick={handleOnTabClick}
-          onTabSelected={handleOnTabSelected(element?.props?.onTabSelected)}
+          onTabClick={handleOnTabClick(index, element?.props?.onTabClick)}
         />
       );
     }

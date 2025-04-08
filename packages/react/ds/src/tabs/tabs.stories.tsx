@@ -66,17 +66,13 @@ export const WithHandler: Story = {
         <Paragraph>Tab Selected: {tab}</Paragraph>
         <Tabs {...arguments_}>
           <TabList>
-            <TabItem
-              checked
-              onTabSelected={() => setTab('Tab 1')}
-              value="tab100"
-            >
+            <TabItem checked onTabClick={() => setTab('Tab 1')} value="tab100">
               Tab 1
             </TabItem>
-            <TabItem value="tab200" onTabSelected={() => setTab('Tab 2')}>
+            <TabItem value="tab200" onTabClick={() => setTab('Tab 2')}>
               Tab 2
             </TabItem>
-            <TabItem value="tab300" onTabSelected={() => setTab('Tab 3')}>
+            <TabItem value="tab300" onTabClick={() => setTab('Tab 3')}>
               Tab 3
             </TabItem>
           </TabList>

@@ -1,5 +1,5 @@
 .gi-tabs {
-  @apply gi-flex gi-flex-wrap;
+  @apply gi-flex gi-flex-wrap gi-w-full;
 }
 
 .gi-tab-item {
