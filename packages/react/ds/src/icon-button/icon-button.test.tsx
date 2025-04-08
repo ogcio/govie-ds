@@ -79,7 +79,7 @@ describe('icon-button', () => {
       exact: false,
     });
 
-    expect(iconElement).toHaveStyle('font-size: 16px');
+    expect(iconElement).toHaveStyle('font-size: 24px');
     expect(buttonElement.classList.contains(buttonClass)).toBeTruthy();
   });
 
