@@ -1,7 +1,7 @@
 ---
 title: HTML
 navigation: HTML
-description: HTML components
+description: HTML component library setup
 status: in-review
 ---
 
@@ -44,10 +44,16 @@ This is the recommended way to use the Gov IE Frontend HTML components if you ar
 <body>
   <h1>Gov IE Frontend</h1>
   <p>This is a sample page using Gov IE Frontend HTML components.</p>
-  
+
   <!-- Important: add it as last script -->
   <script src="/static/js/govie-frontend.umd.js"></script>
 </body>
 </html>
 ```
 
+## Notes
+
+Pay attention when components contain the `data-module` attribute.
+This attribute is used to initialize the component and should not be removed or modified.
+The `data-module` attribute value starts with `gieds-` and is followed by the component name.
+Check the component documentation for the correct value of the `data-module` attribute.
