@@ -7,7 +7,7 @@
 }
 
 .gi-footer-container {
-  @apply gi-py-10 gi-px-8;
+  @apply gi-py-10;
 }
 
 .gi-footer-secondary-slot {

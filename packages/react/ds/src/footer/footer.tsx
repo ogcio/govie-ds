@@ -6,6 +6,7 @@ import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
+import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
@@ -77,34 +78,37 @@ export function Footer({
       {...props}
     >
       <div className="gi-footer-container">
-        {primarySlot && (
-          <div
-            aria-label={t('footer.primarySlot', {
-              defaultValue: 'Footer Primary Slot',
-            })}
-          >
-            {primarySlot}
-          </div>
-        )}
-
-        {primarySlot && secondarySlot && (
-          <SectionBreak color="gi-border-gray-100" size="lg" />
-        )}
-
-        <div
-          className="gi-footer-secondary-slot"
-          aria-label={t('footer.secondarySlot', {
-            defaultValue: 'Footer Secondary Slot',
-          })}
-        >
-          <div className="gi-footer-logo">{renderLogo()}</div>
-          {secondarySlot && (
-            <div className="gi-footer-secondary-slot-content">
-              {secondarySlot}
+        <Container>
+          {primarySlot && (
+            <div
+              aria-label={t('footer.primarySlot', {
+                defaultValue: 'Footer Primary Slot',
+              })}
+            >
+              {primarySlot}
             </div>
           )}
-        </div>
+
+          {primarySlot && secondarySlot && (
+            <SectionBreak color="gi-border-gray-100" size="lg" />
+          )}
+
+          <div
+            className="gi-footer-secondary-slot"
+            aria-label={t('footer.secondarySlot', {
+              defaultValue: 'Footer Secondary Slot',
+            })}
+          >
+            <div className="gi-footer-logo">{renderLogo()}</div>
+            {secondarySlot && (
+              <div className="gi-footer-secondary-slot-content">
+                {secondarySlot}
+              </div>
+            )}
+          </div>
+        </Container>
       </div>
+
       {utilitySlot && (
         <div
           className="gi-footer-utility"
