@@ -14,6 +14,7 @@ These are idiomatic components suitable for modern React applications, for examp
 Please check the [current status](/components/) of each React component for latest updates.
 
 If you are interested in the use of React components that implement the design system, please [contact the design system team](/contact/).
+
 </Blockquote>
 
 ## Install with Node.js package manager (npm)
@@ -93,6 +94,72 @@ function MyComponent() {
   );
 }
 ```
+
+### Internationalisation (i18n) Guidelines
+
+To support multiple languages across your application, we use the `initI18n` utility provided by `@govie-ds/react`. This ensures consistency, accessibility, and localisation across all components.
+
+Before rendering your app, make sure to initialise i18n with your language resources:
+
+```ts
+import { initI18n } from '@govie-ds/react';
+
+initI18n({
+  resources: {
+    en: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+    fr: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+    ar: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+  },
+  lng: 'en', // Default language
+});
+```
+
+#### Example Localisation of Pagination
+
+The pagination component uses the following i18n keys:
+
+```json
+resources: {
+  en: {
+    translation: {
+      pagination: {
+        previous: 'Previous',
+        next: 'Next',
+        page: 'Page {{currentPage}} of {{totalPages}}',
+        goToPage: 'Go to page {{page}}',
+        goToPrevious: 'Go to previous page',
+        goToNext: 'Go to next page',
+      },
+    },
+  },
+  fr: {
+    translation: {
+      pagination: {
+        previous: 'Précédent',
+        next: 'Suivant',
+        page: 'Page {{currentPage}} sur {{totalPages}}',
+        goToPage: 'Aller à la page {{page}}',
+        goToPrevious: 'Aller à la page précédente',
+        goToNext: 'Aller à la page suivante',
+      },
+    },
+  },
+}
+```
+
+> Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
 
 ## Contribution
 
