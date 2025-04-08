@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { cn } from '../../cn.js';
-import { translate as t } from '../../i18n/util.js';
+import { translate as t } from '../../i18n/utility.js';
 import { Icon } from '../../icon/icon.js';
 import { ListItem } from '../../list-item/list-item.js';
 import { HeaderProps } from '../types.js';

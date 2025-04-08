@@ -1,4 +1,4 @@
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
 import type {
   SummaryListActionProps,

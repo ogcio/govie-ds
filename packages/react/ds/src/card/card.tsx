@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon, IconProps } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';

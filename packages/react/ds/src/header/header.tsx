@@ -4,13 +4,13 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import type { HeaderItem, HeaderProps } from './types.js';
+import { HeaderItem, HeaderProps } from './types.js';
 
 function getLogo({ logo }: HeaderProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));

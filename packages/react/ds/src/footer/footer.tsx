@@ -1,11 +1,12 @@
 'use client';
+import React from 'react';
 import { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
 

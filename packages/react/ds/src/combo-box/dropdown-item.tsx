@@ -1,7 +1,8 @@
 'use client';
+import React from 'react';
 import { useEffect, useId, useState } from 'react';
 import { cn } from '../cn.js';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';

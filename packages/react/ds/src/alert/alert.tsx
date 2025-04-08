@@ -1,7 +1,7 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 

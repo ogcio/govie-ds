@@ -1,5 +1,5 @@
 import { cn } from '../cn.js';
-import { translate as t } from '../i18n/util.js';
+import { translate as t } from '../i18n/utility.js';
 
 export type SectionBreakSize = 'sm' | 'md' | 'lg' | 'xl';
 export type SectionBreakProps = {
