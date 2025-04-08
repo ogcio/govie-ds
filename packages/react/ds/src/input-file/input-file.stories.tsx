@@ -2,6 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
 import { InputFile } from './input-file.js';
+import { Table } from '../table/table.js';
+import { Checkbox } from '../checkbox/checkbox.js';
+import { IconButton } from '../icon-button/icon-button.js';
+import { Link } from '../link/link.js';
+import { Caption } from '../table/caption.js';
+import { TableBody } from '../table/table-body.js';
+import { TableData } from '../table/table-data.js';
+import { TableHead } from '../table/table-head.js';
+import { TableHeader } from '../table/table-header.js';
+import { TableRow } from '../table/table-row.js';
+import { Tag } from '../tag/tag.js';
 
 const meta = {
   title: 'Form/InputFile',
@@ -152,5 +163,121 @@ export const WithPDFAndDocxOnly: Story = {
     const canvas = within(canvasElement);
     const fileInput = canvas.getByTestId('file-upload-id') as HTMLInputElement;
     expect(fileInput.accept).toBe('.pdf, .docx');
+  },
+};
+
+export const WithListOfUploadedFiles: Story = {
+  args: {
+    id: 'file-upload-id',
+    accept: '*/*',
+  },
+  render: (arguments_) => (
+    <>
+      <FormField
+        id="file-upload-id"
+        label={{
+          text: 'Upload File',
+          htmlFor: 'file-upload-id',
+        }}
+        className="gi-w-full md:gi-w-[400px]"
+      >
+        <InputFile {...arguments_} />
+        <Table layout="auto">
+          <TableHead>
+            <TableRow>
+              <TableHeader>Uploaded file</TableHeader>
+              <TableHeader className="gi-hidden md:gi-table-cell">
+                File size
+              </TableHeader>
+              <TableHeader className="gi-w-32">Actions</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableData>
+                signed_form.pdf
+                <span className="gi-inline md:gi-hidden">
+                  <br />
+                  378 Kb
+                </span>
+              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">
+                378 Kb
+              </TableData>
+              <TableData>
+                <IconButton
+                  {...{
+                    icon: {
+                      icon: 'download',
+                    },
+                    onClick: () => {},
+                    variant: 'flat',
+                    appearance: 'dark',
+                    size: 'large',
+                    className: '!gi-inline-flex',
+                  }}
+                />
+                <IconButton
+                  {...{
+                    icon: {
+                      icon: 'delete',
+                    },
+                    onClick: () => {},
+                    variant: 'flat',
+                    appearance: 'dark',
+                    size: 'large',
+                    className: '!gi-inline-flex',
+                  }}
+                />
+              </TableData>
+            </TableRow>
+            <TableRow>
+              <TableData>
+                id_scan.pdf{' '}
+                <span className="gi-inline md:gi-hidden">
+                  <br />
+                  238 Kb
+                </span>
+              </TableData>
+              <TableData className="gi-hidden md:gi-table-cell">
+                238 Kb
+              </TableData>
+              <TableData>
+                <IconButton
+                  {...{
+                    icon: {
+                      icon: 'download',
+                    },
+                    onClick: () => {},
+                    variant: 'flat',
+                    appearance: 'dark',
+                    size: 'large',
+                    className: '!gi-inline-flex',
+                  }}
+                />
+                <IconButton
+                  {...{
+                    icon: {
+                      icon: 'delete',
+                    },
+                    onClick: () => {},
+                    variant: 'flat',
+                    appearance: 'dark',
+                    size: 'large',
+                    className: '!gi-inline-flex',
+                  }}
+                />
+              </TableData>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </FormField>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Upload File');
+    expect(label).toBeTruthy();
+    expect(label).toHaveClass('gi-label');
   },
 };
