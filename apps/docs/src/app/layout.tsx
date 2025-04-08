@@ -95,6 +95,7 @@ export default function RootLayout({
         className={`${lato.variable} ${lato.className} transition duration-500 h-screen flex flex-col bg-white`}
       >
         <AnalyticsProvider>
+          <CookieConsent />
           <a href="#main" className="sr-only">
             Skip to main content
           </a>
@@ -125,7 +126,6 @@ export default function RootLayout({
             }
           />
         </AnalyticsProvider>
-        <CookieConsent />
       </body>
     </html>
   );

@@ -30,6 +30,7 @@ export class Analytics {
 
         if (isConsentGiven('analytics')) {
           await this.matomoAnalytics.initClientTracker();
+          console.log('Analytics initialized');
         }
 
         const handleConsentChange = async (
@@ -37,6 +38,7 @@ export class Analytics {
         ): Promise<void> => {
           if (event.detail.status === 'all' && isConsentGiven('analytics')) {
             await this.matomoAnalytics?.initClientTracker();
+            console.log('Analytics initialized');
 
             globalThis.window.removeEventListener(
               'consentStatusChanged',
@@ -49,7 +51,6 @@ export class Analytics {
           handleConsentChange(event as ConsentChangeEvent),
         );
 
-        console.log('Analytics initialized');
         this.initialized = true;
       } catch (error) {
         console.error('Failed to initialize analytics:', error);

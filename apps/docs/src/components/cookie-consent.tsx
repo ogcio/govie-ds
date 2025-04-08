@@ -1,20 +1,10 @@
 'use client';
 import {
   Button,
-  Container,
   CookieBanner,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerWrapper,
   Heading,
   Link,
-  ModalBody,
-  ModalFooter,
-  ModalTitle,
-  ModalWrapper,
   Paragraph,
-  Stack,
 } from '@govie-ds/react';
 import { useEffect, useState } from 'react';
 import { getConsentStatus, setConsentStatus } from '../utils/cookieConsent';
@@ -36,11 +26,6 @@ export default function CookieConsent() {
     setShowConsent(false);
   };
 
-  const acceptEssential = (): void => {
-    setConsentStatus('essential');
-    setShowConsent(false);
-  };
-
   const declineAll = (): void => {
     setConsentStatus('none');
     setShowConsent(false);
@@ -49,51 +34,28 @@ export default function CookieConsent() {
   if (!showConsent) return null;
 
   return (
-    // <DrawerWrapper isOpen={showConsent} onClose={declineAll} position="bottom">
-    //   <DrawerBody>
-    //     <div className="mx-auto px-10">
-    //       <Heading as="h3">Cookie Consent</Heading>
-
-    //       <div className="gi-mt-4">
-    //         We use some essential cookies to make this service work. We’d also
-    //         like to use analytics cookies so we can understand how you use the
-    //         service and make improvements.
-    //       </div>
-
-    //       <Stack
-    //         direction="row"
-    //         itemsAlignment="end"
-    //         itemsDistribution="end"
-    //         gap={4}
-    //         className="gi-mt-4"
-    //       >
-    //         <Button key="decline" variant="primary" onClick={declineAll}>
-    //           Reject
-    //         </Button>
-    //         <Button key="accept" variant="primary" onClick={acceptAll}>
-    //           Accept
-    //         </Button>
-    //       </Stack>
-    //     </div>
-    //   </DrawerBody>
-    // </DrawerWrapper>
-    <ModalWrapper isOpen={showConsent} onClose={declineAll}>
-      <ModalTitle key="title">Cookie Consent</ModalTitle>
-      <ModalBody key="body">
-        <Paragraph>
-          We use some essential cookies to make this service work. We’d also
-          like to use analytics cookies so we can understand how you use the
-          service and make improvements.
+    <CookieBanner
+      showConsent={showConsent}
+      accept={
+        <Button variant="primary" onClick={acceptAll}>
+          Accept all cookies
+        </Button>
+      }
+      reject={
+        <Button variant="primary" onClick={declineAll}>
+          Necessary cookies only
+        </Button>
+      }
+    >
+      <>
+        <Heading as="h3">A notice about cookies</Heading>
+        <Paragraph className="my-4">
+          This website uses cookies to collect information about how you use
+          this site. This information is used to make the website work as well
+          as possible. More details available in our{' '}
+          <Link href="/cookies-policy/">cookie and privacy policies</Link>.
         </Paragraph>
-      </ModalBody>
-      <ModalFooter key="footer">
-        <Button key="decline" variant="primary" onClick={declineAll}>
-          Reject
-        </Button>
-        <Button key="accept" variant="primary" onClick={acceptAll}>
-          Accept
-        </Button>
-      </ModalFooter>
-    </ModalWrapper>
+      </>
+    </CookieBanner>
   );
 }
