@@ -19,6 +19,41 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Test: Story = {
+  args: {
+    id: 'tab-story',
+    children: '',
+    ariaLabelledBy: 'tab-story',
+  },
+  render: (arguments_) => {
+    return (
+      <Tabs {...arguments_}>
+        <TabList>
+          <TabItem onTabSelected={() => console.log('tab1')} value="tab1">
+            Tab 1
+          </TabItem>
+          <TabItem
+            value="tab2"
+            onTabSelected={() => console.log('tab2')}
+            checked
+          >
+            Tab 2
+          </TabItem>
+          <TabItem
+            value="tab3"
+            onTabSelected={(event) => console.log(event, 'tab3')}
+          >
+            Tab 3
+          </TabItem>
+        </TabList>
+        <TabPanel value="tab1">Tab 1 Content</TabPanel>
+        <TabPanel value="tab2">Tab 2 Content</TabPanel>
+        <TabPanel value="tab3">Tab 3 Content</TabPanel>
+      </Tabs>
+    );
+  },
+};
+
 export const Default: Story = {
   args: {
     id: 'tab-story',

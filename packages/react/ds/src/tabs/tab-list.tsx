@@ -3,11 +3,10 @@ import {
   useState,
   useEffect,
   Children,
-  cloneElement,
   isValidElement,
   ReactNode,
 } from 'react';
-import { TabItemProps } from './tab-item.js';
+import { InternalTabItem, TabItemProps } from './tab-item.js';
 
 export const TabList = ({
   children,
@@ -39,32 +38,42 @@ export const TabList = ({
     setActiveTab(foundCheckedTab ? checkedIndex : 0);
   }, []);
 
-  const onTabSelected = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  const handleOnTabSelected =
+    (
+      originalHandler?: (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      ) => void,
+    ) =>
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
+
+      const tabPanels: HTMLElement[] = [
+        ...tabs.querySelectorAll(`[role=tabpanel]`),
+      ] as HTMLElement[];
+
+      for (const tabPanel of tabPanels) {
+        tabPanel.style.display = 'none';
+      }
+      const ariaControlAttribute =
+        event.currentTarget.getAttribute('aria-controls');
+      if (!ariaControlAttribute) {
+        return;
+      }
+
+      const tabpanel = document.querySelector(
+        `#${ariaControlAttribute}`,
+      ) as HTMLElement;
+
+      tabpanel.style.display = 'block';
+
+      if (originalHandler) {
+        originalHandler(event);
+      }
+    };
+
+  const handleOnTabKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
   ) => {
-    const tabs = document.querySelector(`#${tabName}`) as HTMLElement;
-
-    const tabPanels: HTMLElement[] = [
-      ...tabs.querySelectorAll(`[role=tabpanel]`),
-    ] as HTMLElement[];
-
-    for (const tabPanel of tabPanels) {
-      tabPanel.style.display = 'none';
-    }
-    const ariaControlAttribute =
-      event.currentTarget.getAttribute('aria-controls');
-    if (!ariaControlAttribute) {
-      return;
-    }
-
-    const tabpanel = document.querySelector(
-      `#${ariaControlAttribute}`,
-    ) as HTMLElement;
-
-    tabpanel.style.display = 'block';
-  };
-
-  const onTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     let flag = false;
 
     switch (event.key) {
@@ -99,39 +108,25 @@ export const TabList = ({
     }
   };
 
-  const onTabClick = (index: number) => {
+  const handleOnTabClick = (index: number) => {
     setActiveTab(index);
   };
 
   const childrenWithName = Children.map(children, (element, index) => {
-    if (
-      isValidElement<{
-        index: number;
-        checked: boolean;
-        onTabSelected: (
-          event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        ) => void;
-        onTabClick: (index: number) => void;
-        onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-      }>(element)
-    ) {
-      return cloneElement<{
-        index: number;
-        checked: boolean;
-        onTabSelected: (
-          event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-        ) => void;
-        onTabClick: (index: number) => void;
-        onTabKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-      }>(element, {
-        index,
-        checked: activeTab === index,
-        onTabClick,
-        onTabKeyDown,
-        onTabSelected,
-      });
+    if (isValidElement<TabItemProps>(element)) {
+      return (
+        <InternalTabItem
+          {...element.props}
+          index={index}
+          checked={activeTab === index}
+          onTabKeyDown={handleOnTabKeyDown}
+          onTabClick={handleOnTabClick}
+          onTabSelected={handleOnTabSelected(element?.props?.onTabSelected)}
+        />
+      );
     }
-    return element;
+
+    return null;
   });
 
   return (
