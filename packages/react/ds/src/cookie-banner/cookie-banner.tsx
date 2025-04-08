@@ -2,6 +2,7 @@
 import React, { useState, cloneElement } from 'react';
 import { ButtonProps } from '../button/types.js';
 import { Container } from '../container/container.js';
+import { translate as t } from '../i18n/utility.js';
 import { LinkProps } from '../link/link.js';
 
 export type CookieBannerProps = {
@@ -50,11 +51,15 @@ export const CookieBanner = ({
                   <div id="cookie-banner-description">{children}</div>
                   <div className="gi-cookie-banner-buttons">
                     {cloneElement(accept.triggerButton, {
-                      'aria-label': 'Accept cookies',
+                      'aria-label': t('cookieBanner.acceptCookies', {
+                        defaultValue: 'Accept cookies',
+                      }),
                       onClick: handleOpenBanner,
                     })}
                     {cloneElement(reject.triggerButton, {
-                      'aria-label': 'Reject cookies',
+                      'aria-label': t('cookieBanner.rejectCookies', {
+                        defaultValue: 'Reject cookies',
+                      }),
                       onClick: handleCloseBanner,
                     })}
                     {cookieLink && cookieLink}
@@ -69,7 +74,9 @@ export const CookieBanner = ({
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {
-                        'aria-label': 'Dismiss cookie banner',
+                        'aria-label': t('cookieBanner.dismissCookieBanner', {
+                          defaultValue: 'Dismiss Cookie Banner',
+                        }),
                         onClick: handleDismissBanner,
                       })}
                     </>
@@ -84,7 +91,9 @@ export const CookieBanner = ({
                   {dismissButton && (
                     <>
                       {cloneElement(dismissButton, {
-                        'aria-label': 'Dismiss cookie banner',
+                        'aria-label': t('cookieBanner.dismissCookieBanner', {
+                          defaultValue: 'Dismiss Cookie Banner',
+                        }),
                         onClick: handleDismissBanner,
                       })}
                     </>

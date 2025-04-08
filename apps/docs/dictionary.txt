@@ -208,3 +208,4 @@ form-inputfile
 InputRadioGroup
 inputradiogroup
 onTabSelected
+i18n
