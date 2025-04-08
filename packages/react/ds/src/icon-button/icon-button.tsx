@@ -32,7 +32,7 @@ export const IconButton = ({
   onClick,
   className = '',
 }: IconButtonProps) => {
-  const iconSize = size === 'large' ? 'md' : 'sm';
+  const iconSize = size === 'small' ? 'sm' : 'md';
   return (
     <button
       aria-disabled={disabled}

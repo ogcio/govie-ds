@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from './radio.js';
+import { InputRadio } from './input-radio.js';
 
 const meta = {
-  title: 'Form/Radio/Radio',
+  title: 'Form/Radio/InputRadio',
   parameters: {
     docs: {
       description: {
-        component: 'Radio component',
+        component: 'Input Radio component',
       },
     },
   },
-  component: Radio,
-} satisfies Meta<typeof Radio>;
+  component: InputRadio,
+} satisfies Meta<typeof InputRadio>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

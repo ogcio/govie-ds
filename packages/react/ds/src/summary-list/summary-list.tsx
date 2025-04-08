@@ -1,3 +1,4 @@
+import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
 import type {
   SummaryListActionProps,
@@ -15,7 +16,13 @@ export const SummaryListAction = ({
   children,
 }: SummaryListActionProps) => (
   <dd className="gi-summary-list-actions">
-    <Link href={href} aria-label={`Link action: ${children}`}>
+    <Link
+      href={href}
+      aria-label={t('summaryList.linkAction', {
+        children,
+        defaultValue: `Link action: ${children}`,
+      })}
+    >
       {children}
     </Link>
   </dd>
@@ -39,7 +46,9 @@ export const SummaryList = ({ children, dataTestid }: SummaryListProps) => {
   return (
     <div
       className="gi-summary-list"
-      aria-label="Summary list"
+      aria-label={t('summaryList.summaryList', {
+        defaultValue: 'Summary list',
+      })}
       data-testid={dataTestid}
     >
       {children}

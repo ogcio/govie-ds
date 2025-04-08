@@ -15,8 +15,6 @@ import {
   Button,
   Caption,
   Card,
-  Checkbox,
-  CheckboxGroup,
   Chip,
   Combobox,
   CookieBanner,
@@ -26,7 +24,6 @@ import {
   DrawerFooter,
   DrawerWrapper,
   DropdownItem,
-  FileUpload,
   Footer,
   Form,
   FormField,
@@ -35,7 +32,13 @@ import {
   Heading,
   Icon,
   IconButton,
+  InputCheckbox,
+  InputCheckboxGroup,
+  InputFile,
   InputPassword,
+  InputRadio,
+  InputRadioGroup,
+  InputText,
   List,
   Modal,
   ModalBody,
@@ -46,8 +49,6 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
-  Radio,
-  RadioGroup,
   SectionBreak,
   Select,
   SelectItem,
@@ -70,7 +71,6 @@ import {
   Tabs,
   Tag,
   TextArea,
-  TextInput,
   Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -204,7 +204,6 @@ const documentComponents: MDXComponents = {
   Tag: (props) => <Tag {...props}>{props.children}</Tag>,
   Header: (props) => <Header {...props}>{props.children}</Header>,
   Footer: (props) => <Footer {...props}>{props.children}</Footer>,
-  RadioGroup: (props) => <RadioGroup {...props} />,
   Card: (props) => <Card {...props}>{props.children}</Card>,
   TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
   ModalWrapper: ModalWrapperSample,
@@ -219,13 +218,13 @@ const documentComponents: MDXComponents = {
   ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
-  TextInput: (props) => <TextInput {...props} />,
+  InputText,
+  InputRadio,
   SectionBreak: (props) => <SectionBreak {...props} />,
   Select: (props) => <Select {...props} />,
   SelectItem: (props) => <SelectItem {...props} />,
   IconButton: (props) => <IconButton {...props} />,
-  FileUpload: (props) => <FileUpload {...props} />,
-  CheckboxGroup: (props) => <CheckboxGroup {...props} />,
+  InputCheckboxGroup,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
     <Button disabled={true}>
@@ -275,8 +274,6 @@ const documentComponents: MDXComponents = {
   Toast: (props) => <Toast {...props} />,
   NextLink: (props) => <NextLink {...props} />,
   FormField: (props) => <FormField {...props} />,
-  Radio: (props) => <Radio {...props} />,
-  Checkbox: (props) => <Checkbox {...props} />,
   DataGridSample: () => (
     <div className="gi-not-prose">
       <DataGridSample />
@@ -284,6 +281,9 @@ const documentComponents: MDXComponents = {
   ),
   InputPassword,
   CookieConsentCheckbox: (props) => <CookieConsentCheckbox {...props} />,
+  InputCheckbox,
+  InputFile,
+  InputRadioGroup,
 };
 
 export function Mdx({ code }: MdxProps) {

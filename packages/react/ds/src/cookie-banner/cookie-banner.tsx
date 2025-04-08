@@ -2,6 +2,7 @@
 import React from 'react';
 import { ButtonProps } from '../button/types.js';
 import { Container } from '../container/container.js';
+import { translate as t } from '../i18n/utility.js';
 import { LinkProps } from '../link/link.js';
 
 export type CookieBannerProps = {

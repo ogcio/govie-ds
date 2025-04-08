@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { cn } from '../../cn.js';
+import { translate as t } from '../../i18n/utility.js';
 import { Icon } from '../../icon/icon.js';
 import { ListItem } from '../../list-item/list-item.js';
 import { HeaderProps } from '../types.js';
@@ -108,14 +109,18 @@ function HeaderMenu({ ...props }: MobileHeaderMenuProps) {
     <div
       id="HeaderMenuContainer"
       className="gi-header-menu-container lg:gi-hidden"
-      aria-label="Mobile Navigation Menu"
+      aria-label={t('header.mobileNavigationMenu', {
+        defaultValue: 'Mobile Navigation Menu',
+      })}
     >
       <div>
         <div className="gi-flex gi-items-center">
           <label
             htmlFor="MobileMenuTrigger"
             className="gi-header-menu-mobile-trigger"
-            aria-label="Close Mobile Menu"
+            aria-label={t('header.closeMobileMenu', {
+              defaultValue: 'Close Mobile Menu',
+            })}
           >
             <span>Close</span>
             <Icon icon={'close'} />

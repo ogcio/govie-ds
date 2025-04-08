@@ -1,5 +1,5 @@
 import { Children, cloneElement, isValidElement } from 'react';
-import { generateRandomId } from '../utilities.ts.js';
+import { generateRandomId } from '../utilities.js';
 
 export type TabsProps = {
   id?: string;
