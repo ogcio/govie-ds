@@ -1,18 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
-import { InputFile } from './input-file.js';
-import { Table } from '../table/table.js';
-import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
-import { Link } from '../link/link.js';
-import { Caption } from '../table/caption.js';
 import { TableBody } from '../table/table-body.js';
 import { TableData } from '../table/table-data.js';
 import { TableHead } from '../table/table-head.js';
 import { TableHeader } from '../table/table-header.js';
 import { TableRow } from '../table/table-row.js';
-import { Tag } from '../tag/tag.js';
+import { Table } from '../table/table.js';
+import { InputFile } from './input-file.js';
 
 const meta = {
   title: 'Form/InputFile',
