@@ -43,7 +43,6 @@ const LinkContainer = ({
   children,
   iconEnd,
 }: LinkContainerProps) => {
-  const linkSize = size || 'sm';
   const iconSize = 'sm';
   const showIconStart = iconStart && !asButton && !asChild;
   const showIconEnd = iconEnd && !asButton && !asChild;
@@ -51,10 +50,7 @@ const LinkContainer = ({
   return (
     <>
       {showIconStart && (
-        <span
-          className={'gi-link-icon gi-link-icon-start'}
-          data-size={linkSize}
-        >
+        <span className={'gi-link-icon gi-link-icon-start'} data-size={size}>
           <Icon icon={iconStart} size={iconSize} />
         </span>
       )}
@@ -65,7 +61,7 @@ const LinkContainer = ({
       )}
 
       {showIconEnd && (
-        <span className="gi-link-icon gi-link-icon-end" data-size={linkSize}>
+        <span className="gi-link-icon gi-link-icon-end" data-size={size}>
           <Icon icon={iconEnd} size={iconSize} />
         </span>
       )}
@@ -76,6 +72,7 @@ const LinkContainer = ({
 export const Link = forwardRef<HTMLElement, LinkProps>(
   (
     {
+      size = 'sm',
       asChild,
       className,
       children,
@@ -84,7 +81,6 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
       noUnderline,
       noColor,
       external,
-      size,
       asButton,
       iconStart,
       iconEnd,
@@ -125,7 +121,7 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
               !noColor &&
               !noVisited &&
               !disabled,
-            'gi-text-sm': !size || size === 'sm',
+            'gi-text-sm': size === 'sm',
             'gi-text-md': size === 'md',
             'gi-text-lg': size === 'lg',
           },
