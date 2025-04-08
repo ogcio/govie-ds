@@ -220,6 +220,19 @@ libraries:
 - **onPageChange** (required): A callback function triggered when the page changes. It receives the new page number as an argument.  
   Type: `(page: number) => void`.
 
+### i18n Keys
+
+```json
+   "translation": {
+      "pagination.previous": "Previous",
+      "pagination.next": "Next",
+      "pagination.page": "Page {{currentPage}} of {{totalPages}}",
+      "pagination.goToPage": "Go to page {{page}}",
+      "pagination.goToPrevious": "Go to previous",
+      "pagination.goToNext": "Go to next"
+   }
+```
+
 ### Best Practices
 
 - Pagination in a blog or article listing.

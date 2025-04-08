@@ -208,3 +208,4 @@ inputcheckbox
 form-inputfile
 InputRadioGroup
 inputradiogroup
+i18n

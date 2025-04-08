@@ -1,6 +1,8 @@
 'use client';
+import React from 'react';
 import { useEffect, useId, useState } from 'react';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
@@ -94,9 +96,8 @@ export const DropdownItem = ({
       >
         {!noSearch && (
           <div className="gi-combobox-search">
-            {/* TODO translation for "Search" */}
             <InputText
-              placeholder="Search"
+              placeholder={t('dropdownItem.search', { defaultValue: 'Search' })}
               className="gi-combobox-search-input"
               value={searchInput}
               onChange={(event) => {
@@ -131,7 +132,9 @@ export const DropdownItem = ({
           {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
-              No results found.
+              {t('dropdownItem.noResultFound', {
+                defaultValue: 'No results found.',
+              })}
             </Paragraph>
           )}
           {options.map((checkbox, index) => {
