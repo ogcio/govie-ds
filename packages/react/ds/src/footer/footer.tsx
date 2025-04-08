@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
@@ -6,6 +7,7 @@ import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { LogoProps } from '../common/types.js';
 import { Container } from '../container/container.js';
+import { translate as t } from '../i18n/utility.js';
 import Anchor from '../primitives/anchor.js';
 import { SectionBreak } from '../section-break/section-break.js';
 
@@ -32,7 +34,7 @@ function getLogo({ logo }: FooterProps) {
       <img
         className="gi-h-16"
         src={logo?.imageSmall || svgDataUriMobile}
-        alt={logo?.alt || 'Gov.ie logo'}
+        alt={logo?.alt || t('logo.govieLogo', { defaultValue: 'Gov.ie Logo' })}
       />
     </picture>
   );
@@ -53,7 +55,9 @@ export function Footer({
         {logo?.href && (
           <Anchor
             href={logo.href}
-            aria-label="Go to the home page"
+            aria-label={t('footer.goToHomePage', {
+              defaultValue: 'Go to Home Page',
+            })}
             data-testid={`logo-link`}
             external={logo.external}
           >
@@ -69,14 +73,20 @@ export function Footer({
       className={cn('gi-footer', className)}
       data-module="gieds-footer"
       role="contentinfo"
-      aria-label="Footer"
+      aria-label={t('footer.footer', { defaultValue: 'Footer' })}
       data-testid={dataTestid}
       {...props}
     >
       <div className="gi-footer-container">
         <Container>
           {primarySlot && (
-            <div aria-label="Primary footer slot">{primarySlot}</div>
+            <div
+              aria-label={t('footer.primarySlot', {
+                defaultValue: 'Footer Primary Slot',
+              })}
+            >
+              {primarySlot}
+            </div>
           )}
 
           {primarySlot && secondarySlot && (
@@ -85,7 +95,9 @@ export function Footer({
 
           <div
             className="gi-footer-secondary-slot"
-            aria-label="Secondary footer slot"
+            aria-label={t('footer.secondarySlot', {
+              defaultValue: 'Footer Secondary Slot',
+            })}
           >
             <div className="gi-footer-logo">{renderLogo()}</div>
             {secondarySlot && (
@@ -96,8 +108,14 @@ export function Footer({
           </div>
         </Container>
       </div>
+
       {utilitySlot && (
-        <div className="gi-footer-utility" aria-label="Utility links">
+        <div
+          className="gi-footer-utility"
+          aria-label={t('footer.utilityLinks', {
+            defaultValue: 'Footer Utility Links',
+          })}
+        >
           {utilitySlot}
         </div>
       )}

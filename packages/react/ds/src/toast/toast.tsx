@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 import { Toast as DSToast } from './ds-toast.js';
 import type { ToastPosition, ToastProps } from './types.js';
 
@@ -61,7 +62,11 @@ export const ToastProvider = () => {
             id={`toast-portal-${position.x}-${position.y}`}
             key={`toast-${position.x}-${position.y}`}
             role="region"
-            aria-label={`Toasts-${position.y}-${position.x}`}
+            aria-label={t('toast.position', {
+              x: position.x,
+              y: position.y,
+              defaultValue: `Toasts-${position.y}-${position.x}`,
+            })}
             data-position={`${position.y}-${position.x}`}
             className="gi-toast-portal"
           >

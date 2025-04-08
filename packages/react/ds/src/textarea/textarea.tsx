@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 
@@ -118,7 +119,10 @@ export const TextArea = forwardRef(
         {maxChars && (
           <div className="gi-textarea-remaining-chars">
             <HintText
-              text={`You have ${remainingChars} characters remaining`}
+              text={t('textarea.remainingChars', {
+                remainingChars,
+                defaultValue: `You have ${remainingChars} characters remaining`,
+              })}
             />
           </div>
         )}

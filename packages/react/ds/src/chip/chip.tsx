@@ -1,5 +1,6 @@
 'use client';
 import { useId } from 'react';
+import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 
 export type ChipProps = {
@@ -26,13 +27,17 @@ export const Chip = ({ label, onClose = () => null }: ChipProps) => {
   return (
     <div
       className="gi-chip"
-      aria-label={`chip: ${label}`}
+      aria-label={t('chip.label', { label, defaultValue: `chip: ${label}` })}
       aria-describedby={descriptionId}
       tabIndex={0}
       onKeyDown={handleKeyDown}
     >
       <span id={descriptionId}>{label}</span>
-      <div role="button" aria-label="remove chip" onClick={onClose}>
+      <div
+        role="button"
+        aria-label={t('chip.removeChip', { defaultValue: 'remove chip' })}
+        onClick={onClose}
+      >
         <Icon icon="close" size="sm" />
       </div>
     </div>
