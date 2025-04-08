@@ -259,6 +259,7 @@
 .gi-link-light {
   @apply focus:gi-text-white hover:gi-text-white gi-text-white;
 }
+
 /* End Link */
 
 /* Start List */

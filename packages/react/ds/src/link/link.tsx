@@ -44,9 +44,9 @@ const LinkContainer = ({
   iconEnd,
 }: LinkContainerProps) => {
   const linkSize = size || 'sm';
+  const iconSize = 'sm';
   const showIconStart = iconStart && !asButton && !asChild;
   const showIconEnd = iconEnd && !asButton && !asChild;
-  const iconSize = 'sm';
 
   return (
     <>
@@ -125,8 +125,10 @@ export const Link = forwardRef<HTMLElement, LinkProps>(
               !noColor &&
               !noVisited &&
               !disabled,
+            'gi-text-sm': !size || size === 'sm',
+            'gi-text-md': size === 'md',
+            'gi-text-lg': size === 'lg',
           },
-          `gi-paragraph-${size || 'sm'}`,
           buttonVariant,
           buttonSize,
           className,
