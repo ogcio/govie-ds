@@ -7,7 +7,7 @@ import {
   Paragraph,
 } from '@govie-ds/react';
 import { useEffect, useState } from 'react';
-import { getConsentStatus, setConsentStatus } from '../utils/cookieConsent';
+import { getConsentStatus, setConsentStatus } from '../../utils/cookieConsent';
 
 export default function CookieConsent() {
   const [showConsent, setShowConsent] = useState<boolean>(false);

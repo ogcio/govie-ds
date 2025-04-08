@@ -1,3 +1,4 @@
+import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { GovieLink } from '@/components/navigation/custom-link';
@@ -35,7 +36,6 @@ import {
   Icon,
   IconButton,
   InputPassword,
-  Link,
   List,
   Modal,
   ModalBody,
@@ -283,6 +283,7 @@ const documentComponents: MDXComponents = {
     </div>
   ),
   InputPassword,
+  CookieConsentCheckbox: (props) => <CookieConsentCheckbox {...props} />,
 };
 
 export function Mdx({ code }: MdxProps) {

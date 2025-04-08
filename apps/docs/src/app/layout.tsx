@@ -6,7 +6,7 @@ import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
-import CookieConsent from '@/components/cookie-consent';
+import CookieConsent from '@/components/cookies/cookie-consent';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
