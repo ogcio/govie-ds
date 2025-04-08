@@ -79,6 +79,72 @@ function MyComponent() {
 
 The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato) Google font. The font should be added to your application, e.g. via [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts), [Fontsource](https://fontsource.org/docs/getting-started/install) or embed code.
 
+### Internationalization (i18n) Guidelines
+
+To support multiple languages across your application, we use the `initI18n` utility provided by `@govie-ds/react`. This ensures consistency, accessibility, and localization across all components.
+
+Before rendering your app, make sure to initialize i18n with your language resources:
+
+```js
+import { initI18n } from '@govie-ds/react';
+
+initI18n({
+  resources: {
+    en: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+    fr: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+    ar: {
+      translation: {
+        // Component namespaces go here
+      },
+    },
+  },
+  lng: 'en', // Default language
+});
+```
+
+#### Example Localisation of Pagination
+
+The pagination component uses the following i18n keys:
+
+```js
+resources: {
+  en: {
+    translation: {
+      pagination: {
+        previous: 'Previous',
+        next: 'Next',
+        page: 'Page {{currentPage}} of {{totalPages}}',
+        goToPage: 'Go to page {{page}}',
+        goToPrevious: 'Go to previous page',
+        goToNext: 'Go to next page',
+      },
+    },
+  },
+  fr: {
+    translation: {
+      pagination: {
+        previous: 'Précédent:,
+        next: 'Suivant',
+        page: 'Page {{currentPage}} sur {{totalPages}}',
+        goToPage: 'Aller à la page {{page}}',
+        goToPrevious: 'Aller à la page précédente',
+        goToNext: 'Aller à la page suivante',
+      },
+    },
+  },
+}
+```
+
+Note: Each component in the design system documents its relevant i18n keys under an **i18n Keys** heading, if available, for example [Pagination i18n Keys](http://ds.blocks.gov.ie/components/library/pagination/#i18n-keys). Be sure to refer to this section when using or implementing a component to ensure all necessary translations are provided.
+
 ## Contribution
 
 We welcome contributions! If you have suggestions for improvements, please feel free to open an issue or submit a pull request.

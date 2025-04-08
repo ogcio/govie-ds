@@ -7,6 +7,7 @@
 - [ ] 🚀 Feature
 - [ ] 🐛 Bug
 - [ ] 🔧 Chore
+- [ ] 🌐 Docs
 
 ## Checklist
 
