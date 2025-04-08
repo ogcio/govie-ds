@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
+import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
@@ -67,6 +68,7 @@ export function Header({
   mobileMenuLabel,
   showTitleOnMobile,
   dataTestid,
+  utilitySlot,
 }: HeaderProps) {
   const containerClassName = fullWidth
     ? 'gi-layout-container-full-width'
@@ -141,10 +143,7 @@ export function Header({
       className={headerClassNames}
       data-testid={dataTestid}
     >
-      <div
-        id="HeaderContainer"
-        className={cn(containerClassName, 'gi-order-2')}
-      >
+      <Container id="HeaderContainer" className="gi-order-2">
         <div className={menuContainerClassNames}>
           <div>
             <div className="gi-header-logo">
@@ -191,32 +190,35 @@ export function Header({
             })}
           </div>
         </div>
-      </div>
+      </Container>
 
-      {secondaryLinks && (
+      {(secondaryLinks || utilitySlot) && (
         <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
-          <div className={containerClassName}>
-            <ul>
-              {secondaryLinks.map((link, index) => (
-                <li key={`secondary-${link.label}-${index}`}>
-                  {link.href ? (
-                    <a
-                      aria-label={link.label}
-                      data-testid={`secondary-link-desktop-${index}`}
-                      href={link.href}
-                      className={secondaryItemClassNames}
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <span className={secondaryItemClassNames}>
-                      {link.label}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Container className="gi-flex gi-justify-end gi-items-center">
+            {secondaryLinks && (
+              <ul>
+                {secondaryLinks.map((link, index) => (
+                  <li key={`secondary-${link.label}-${index}`}>
+                    {link.href ? (
+                      <a
+                        aria-label={link.label}
+                        data-testid={`secondary-link-desktop-${index}`}
+                        href={link.href}
+                        className={secondaryItemClassNames}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <span className={secondaryItemClassNames}>
+                        {link.label}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {utilitySlot}
+          </Container>
         </div>
       )}
 

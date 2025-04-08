@@ -10,18 +10,19 @@ export const ContainerInsetSizeEnum = {
 export type ContainerInsetSizeType =
   (typeof ContainerInsetSizeEnum)[keyof typeof ContainerInsetSizeEnum];
 
-type ContainerProps = {
-  children: React.ReactNode;
+type ContainerProps = React.PropsWithChildren<{
   id?: string;
   insetTop?: ContainerInsetSizeType;
   insetBottom?: ContainerInsetSizeType;
-};
+  className?: string;
+}>;
 
 export function Container({
   children,
   id,
   insetBottom,
   insetTop,
+  className,
 }: ContainerProps) {
   const hasInset = insetTop || insetBottom;
   return (
@@ -29,7 +30,7 @@ export function Container({
       data-testid="govie-container"
       data-inset-top={insetTop}
       data-inset-bottom={insetBottom}
-      className={cn({
+      className={cn(className, {
         'gi-layout-container': !hasInset,
         'gi-layout-container-inset': hasInset,
       })}

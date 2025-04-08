@@ -4,6 +4,7 @@ import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
+import { Paragraph } from '../paragraph/paragraph.js';
 import { Select } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
@@ -192,6 +193,31 @@ export const Default: Story = {
     items: headerProps.items,
     addDefaultMobileMenu: true,
     mobileMenuLabel: 'Menu',
+  },
+};
+
+export const WithUtilitiesSlots: Story = {
+  args: {
+    logo: {
+      href: '/link',
+    },
+    utilitySlot: (
+      <Paragraph size="sm" className="gi-text-white">
+        User Name (<Link className="gi-cursor-pointer">Logout</Link>)
+        {/*
+            User Name (<Link appearance="light" size="sm">Logout</Link>)
+          */}
+      </Paragraph>
+    ),
+    items: [
+      {
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        component: <MobileHeaderMenuItems items={headerProps.items} />,
+        slotAppearance: 'drawer',
+      },
+    ],
   },
 };
 
