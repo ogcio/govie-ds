@@ -905,7 +905,7 @@ export const mobileWithExternalLinks: Story = {
     const canvas = within(canvasElement);
 
     const logoLink = canvas.getByTestId('logo-link');
-    const headerMobileMenu = canvas.getByTestId('ItemActionTrigger-0');
+    const headerMobileMenu = canvas.getByTestId('ItemActionTrigger-4');
 
     await expect(logoLink).toHaveAttribute('target', '_blank');
     await expect(logoLink).toHaveAttribute('rel', 'noreferrer noopener');
