@@ -15,6 +15,7 @@ type ContainerProps = React.PropsWithChildren<{
   insetTop?: ContainerInsetSizeType;
   insetBottom?: ContainerInsetSizeType;
   className?: string;
+  fullWidth?: boolean;
 }>;
 
 export function Container({
@@ -23,6 +24,7 @@ export function Container({
   insetBottom,
   insetTop,
   className,
+  fullWidth,
 }: ContainerProps) {
   const hasInset = insetTop || insetBottom;
   return (
@@ -31,7 +33,8 @@ export function Container({
       data-inset-top={insetTop}
       data-inset-bottom={insetBottom}
       className={cn(className, {
-        'gi-layout-container': !hasInset,
+        'gi-layout-container': !fullWidth && !hasInset,
+        'gi-layout-container-full-width': fullWidth && !hasInset,
         'gi-layout-container-inset': hasInset,
       })}
       id={id}

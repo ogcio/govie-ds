@@ -70,9 +70,6 @@ export function Header({
   dataTestid,
   utilitySlot,
 }: HeaderProps) {
-  const containerClassName = fullWidth
-    ? 'gi-layout-container-full-width'
-    : 'gi-layout-container';
   const headerClassNames = 'gi-header';
   const secondaryBarClassNames = 'gi-header-secondary-bar';
   const secondaryItemClassNames = 'gi-header-secondary-item';
@@ -143,36 +140,37 @@ export function Header({
       className={headerClassNames}
       data-testid={dataTestid}
     >
-      <Container id="HeaderContainer" className="gi-order-2">
+      <Container
+        id="HeaderContainer"
+        className="gi-order-2"
+        fullWidth={fullWidth}
+      >
         <div className={menuContainerClassNames}>
-          <div>
-            <div className="gi-header-logo">
-              {logo?.href && (
-                <Anchor
-                  href={logo.href}
-                  aria-label={t('header.goToHomePage', {
-                    defaultValue: 'Go to Home Page',
-                  })}
-                  data-testid={`logo-link`}
-                  external={logo.external}
-                >
-                  {getLogo({ logo })}
-                </Anchor>
-              )}
-              {!logo?.href && getLogo({ logo })}
-            </div>
-            <div
-              className={cn(appTitleClassNames, {
-                'gi-hidden': !showTitleOnMobile,
-              })}
-            >
-              {title}
-            </div>
+          <div className="gi-header-logo">
+            {logo?.href && (
+              <Anchor
+                href={logo.href}
+                aria-label={t('header.goToHomePage', {
+                  defaultValue: 'Go to Home Page',
+                })}
+                data-testid={`logo-link`}
+                external={logo.external}
+              >
+                {getLogo({ logo })}
+              </Anchor>
+            )}
+            {!logo?.href && getLogo({ logo })}
+          </div>
+          <div
+            className={cn(appTitleClassNames, {
+              'gi-hidden': !showTitleOnMobile,
+            })}
+          >
+            {title}
           </div>
           <div className="gi-gap-2 md:gi-gap-4">
             {finalItems?.map((item, index) => {
               const { label, showItemMode = 'desktop-only' } = item;
-
               return (
                 <div
                   aria-label={label}
@@ -194,7 +192,10 @@ export function Header({
 
       {(secondaryLinks || utilitySlot) && (
         <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
-          <Container className="gi-flex gi-justify-end gi-items-center">
+          <Container
+            className="gi-flex gi-justify-end gi-items-center"
+            fullWidth={fullWidth}
+          >
             {secondaryLinks && (
               <ul>
                 {secondaryLinks.map((link, index) => (
