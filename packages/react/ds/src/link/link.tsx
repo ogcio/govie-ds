@@ -51,7 +51,7 @@ const LinkContainer = ({
     <>
       {showIconStart && (
         <span
-          className={'gi-link-icon gi-link-icon-start'}
+          className="gi-link-icon gi-link-icon-start"
           data-size={size || 'sm'}
         >
           <Icon icon={iconStart} size={iconSize} />
