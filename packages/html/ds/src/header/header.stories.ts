@@ -12,37 +12,13 @@ const meta: Meta<HeaderProps> = {
 export default meta;
 type Story = StoryObj<HeaderProps>;
 
-const buildDefaultMobileMenu = (
-  mobileMenuLabel: string,
+const mobileHeaderMenuItems = (
   items: HeaderItem[],
-  secondaryLinks: {
+  secondaryLinks?: {
     href: string;
     label: string;
   }[],
 ) => {
-  const mobileHeaderMenuItems = document.createElement('ul');
-
-  for (const item of items) {
-    if (item.itemType === 'link') {
-      createListItem(item);
-    }
-  }
-
-  for (const item of secondaryLinks) {
-    createListItem(item);
-  }
-
-  const mobileMenu: HeaderItem = {
-    label: mobileMenuLabel,
-    icon: 'menu',
-    itemType: 'slot',
-    component: mobileHeaderMenuItems.outerHTML,
-    slotAppearance: 'drawer',
-    showItemMode: 'mobile-only',
-  };
-
-  return [mobileMenu, ...items];
-
   function createListItem(
     item:
       | HeaderItem
@@ -70,6 +46,42 @@ const buildDefaultMobileMenu = (
 
     mobileHeaderMenuItems.append(li);
   }
+
+  const mobileHeaderMenuItems = document.createElement('ul');
+
+  for (const item of items) {
+    if (item.itemType === 'link') {
+      createListItem(item);
+    }
+  }
+
+  for (const item of secondaryLinks || []) {
+    createListItem(item);
+  }
+
+  return mobileHeaderMenuItems;
+};
+
+const buildDefaultMobileMenu = (
+  mobileMenuLabel: string,
+  items: HeaderItem[],
+  secondaryLinks: {
+    href: string;
+    label: string;
+  }[],
+) => {
+  const component = mobileHeaderMenuItems(items, secondaryLinks);
+
+  const mobileMenu: HeaderItem = {
+    label: mobileMenuLabel,
+    icon: 'menu',
+    itemType: 'slot',
+    component: component.outerHTML,
+    slotAppearance: 'drawer',
+    showItemMode: 'mobile-only',
+  };
+
+  return [mobileMenu, ...items];
 };
 
 const createHeader = (arguments_: HeaderProps) => {
@@ -96,6 +108,7 @@ const createHeader = (arguments_: HeaderProps) => {
   const header = document.createElement('header');
   header.id = 'GovieHeader';
   header.className = headerClassNames;
+  header.dataset.module = 'gieds-header';
 
   const container = document.createElement('div');
   container.className = `${containerClassName} gi-order-2`;
@@ -239,8 +252,10 @@ const createHeader = (arguments_: HeaderProps) => {
           icon.id = `ItemIconActionTrigger-${index}`;
           label.append(icon);
         }
-        const closeIcon = createIcon({ icon: 'close' });
-        closeIcon.className = 'gi-hidden close-icon';
+        const closeIcon = createIcon({
+          icon: 'close',
+          className: 'gi-hidden close-icon',
+        });
         closeIcon.id = `ItemCloseTrigger-${index}`;
         label.append(closeIcon);
         menuItem.append(label);
@@ -292,6 +307,23 @@ const createHeader = (arguments_: HeaderProps) => {
     }
   }
 
+  for (const [index, item] of items.entries()) {
+    if (item.itemType !== 'slot') {
+      continue;
+    }
+    if (item.slotAppearance !== 'dropdown') {
+      continue;
+    }
+    const slotContainer = document.createElement('div');
+    slotContainer.id = `SlotContainer-${index}`;
+    slotContainer.dataset.index = `${index}`;
+    slotContainer.ariaLabel = `Slot Container ${index + 1}`;
+    slotContainer.className =
+      'gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3';
+    slotContainer.innerHTML = item.component || '';
+    header.append(slotContainer);
+  }
+
   return header;
 };
 
@@ -301,7 +333,7 @@ const createElement = (arguments_: HeaderProps) => {
 };
 
 const slotExample1 = () => `
-  <ul class="gi-list-bullet" data-testid="govieList">
+  <ul class="gi-list-bullet">
     <li>
       <a
         href="#"
@@ -339,7 +371,6 @@ const slotSearch = () => `
             placeholder="Enter search term"
             id="search"
             type="text"
-            data-testid="textbox"
             class="gi-border-gray-950 gi-w-full gi-input-text"
             name="search_query"
             aria-label="Search the website"
@@ -347,12 +378,10 @@ const slotSearch = () => `
         </div>
       </div>
       <button
-        data-testid="govieButton-undefined-undefined-undefined-"
         class="gi-btn gi-btn-primary gi-btn-regular gi-ml-1 gi-flex-none"
       >
         Search
         <span
-          data-testid="govie-icon"
           aria-label="Search"
           role="img"
           class="material-symbols-outlined gi-block"
@@ -499,13 +528,14 @@ export const DesktopDrawerDefaultMenu: Story = {
       href: '/link',
     },
     items: [
-      // {
-      //   label: 'Menu',
-      //   icon: 'menu',
-      //   itemType: 'slot',
-      //   component: <MobileHeaderMenuItems items={headerProps.items} />,
-      //   slotAppearance: 'drawer',
-      // },
+      {
+        label: 'Menu',
+        icon: 'menu',
+        itemType: 'slot',
+        component: mobileHeaderMenuItems(headerProps.items || []).outerHTML,
+        slotAppearance: 'drawer',
+        showItemMode: 'always',
+      },
     ],
   },
   render: createElement,

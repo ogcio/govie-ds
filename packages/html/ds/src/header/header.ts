@@ -49,6 +49,7 @@ export class Header extends BaseComponent<HeaderOptions> {
       const itemSlotActions = document.querySelectorAll(
         "[id^='ItemActionTrigger-']",
       );
+
       const slotContainers = document.querySelectorAll(
         "[id^='SlotContainer-']",
       );
