@@ -206,4 +206,5 @@ inputcheckbox
 form-inputfile
 InputRadioGroup
 inputradiogroup
+onTabClick
 i18n
