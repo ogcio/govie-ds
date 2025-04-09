@@ -81,7 +81,7 @@ const buildDefaultMobileMenu = (
     showItemMode: 'mobile-only',
   };
 
-  return [mobileMenu, ...items];
+  return [...items, mobileMenu];
 };
 
 const createHeader = (arguments_: HeaderProps) => {
@@ -259,7 +259,6 @@ const createHeader = (arguments_: HeaderProps) => {
         closeIcon.id = `ItemCloseTrigger-${index}`;
         label.append(closeIcon);
         menuItem.append(label);
-
         break;
       }
       case 'divider': {
@@ -409,7 +408,50 @@ const slotExample3 = () => `
   </select>
 `;
 
-const headerProps: HeaderProps = {
+const defaultHeaderItems = (external?: boolean) => [
+  {
+    label: 'Departments',
+    itemType: 'link',
+    href: '#',
+    external,
+    showItemMode: 'desktop-only',
+  },
+  {
+    label: 'Services',
+    itemType: 'link',
+    href: '#',
+    external,
+    showItemMode: 'desktop-only',
+  },
+  {
+    itemType: 'divider',
+  },
+  {
+    icon: 'search',
+    label: 'Search',
+    itemType: 'slot',
+    component: slotSearch(),
+    slotAppearance: 'dropdown',
+  },
+];
+
+const defaultHeaderProps = (external?: boolean) =>
+  ({
+    items: [...defaultHeaderItems(external)],
+    addDefaultMobileMenu: true,
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  }) as HeaderProps;
+
+const headerWithSlotsProps: HeaderProps = {
   items: [
     {
       label: 'Departments',
@@ -515,8 +557,7 @@ export const Default: Story = {
     logo: {
       href: '/link',
     },
-    items: headerProps.items,
-    addDefaultMobileMenu: true,
+    ...defaultHeaderProps(),
     mobileMenuLabel: 'Menu',
   },
   render: createElement,
@@ -532,11 +573,22 @@ export const DesktopDrawerDefaultMenu: Story = {
         label: 'Menu',
         icon: 'menu',
         itemType: 'slot',
-        component: mobileHeaderMenuItems(headerProps.items || []).outerHTML,
+        component: mobileHeaderMenuItems(defaultHeaderProps().items || [])
+          .outerHTML,
         slotAppearance: 'drawer',
         showItemMode: 'always',
       },
     ],
+  },
+  render: createElement,
+};
+
+export const DesktopDrawerWithSlot: Story = {
+  args: {
+    logo: {
+      href: '/link',
+    },
+    items: headerWithSlotsProps.items,
   },
   render: createElement,
 };
@@ -577,40 +629,6 @@ export const DesktopDrawerCustom: Story = {
   render: createElement,
 };
 
-export const NoLinks: Story = {
-  args: {},
-  render: createElement,
-};
-
-export const WithMainLinksDesktopOnly: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    items: [
-      {
-        label: 'News',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Departments',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ],
-  },
-  render: createElement,
-};
-
 export const WithSecondaryLinks: Story = {
   args: {
     logo: {
@@ -635,98 +653,6 @@ export const WithSecondaryLinks: Story = {
         slotAppearance: 'dropdown',
       },
     ],
-  },
-  render: createElement,
-};
-
-export const withMainAndSecondaryLinksDesktopOnly: Story = {
-  args: {
-    logo: {
-      href: 'path',
-    },
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
-    items: [
-      {
-        label: 'News',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Departments',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ],
-  },
-  render: createElement,
-};
-
-const defaultHeaderItems = (external?: boolean) => [
-  {
-    label: 'Departments',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    label: 'Services',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    itemType: 'divider',
-  },
-  {
-    icon: 'search',
-    label: 'Search',
-    itemType: 'slot',
-    component: slotSearch(),
-    slotAppearance: 'dropdown',
-  },
-];
-
-const defaultHeaderProps = (external?: boolean) =>
-  ({
-    items: [...defaultHeaderItems(external)],
-    addDefaultMobileMenu: true,
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
-  }) as HeaderProps;
-
-export const withTitle: Story = {
-  args: {
-    title: 'Life Events',
-    logo: {
-      href: 'path',
-    },
   },
   render: createElement,
 };
@@ -790,8 +716,7 @@ export const tabletView: Story = {
     logo: {
       href: 'path',
     },
-    items: headerProps.items,
-    addDefaultMobileMenu: true,
+    ...defaultHeaderProps(),
   },
   render: createElement,
 };
@@ -807,8 +732,7 @@ export const mobileView: Story = {
     logo: {
       href: 'path',
     },
-    items: headerProps.items,
-    addDefaultMobileMenu: true,
+    ...defaultHeaderProps(),
   },
   render: createElement,
 };
@@ -848,47 +772,6 @@ export const WithExtraButtons: Story = {
   render: createElement,
 };
 
-const withExtraButtonsAndLabelsItems: HeaderItem[] = [
-  {
-    icon: 'search',
-    itemType: 'slot',
-    component: slotSearch(),
-    slotAppearance: 'dropdown',
-  },
-  {
-    icon: 'home',
-    itemType: 'link',
-    href: '#',
-  },
-  {
-    icon: 'logout',
-    itemType: 'link',
-    href: '#',
-  },
-  {
-    label: 'News',
-    itemType: 'link',
-    href: '#',
-    showItemMode: 'desktop-only',
-  },
-  {
-    label: 'Services',
-    itemType: 'link',
-    href: '#',
-    showItemMode: 'desktop-only',
-  },
-];
-
-export const WithExtraButtonsAndLabels: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    items: withExtraButtonsAndLabelsItems,
-  },
-  render: createElement,
-};
-
 export const FullWidth: Story = {
   args: {
     fullWidth: true,
@@ -896,32 +779,6 @@ export const FullWidth: Story = {
       href: '/link',
     },
     ...defaultHeaderProps(),
-  },
-  render: createElement,
-};
-
-export const ShowMobileMenuForLanguages: Story = {
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
-  },
-  args: {
-    logo: {
-      href: '/link',
-    },
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ],
-    addDefaultMobileMenu: true,
   },
   render: createElement,
 };

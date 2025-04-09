@@ -114,6 +114,9 @@ export class Header extends BaseComponent<HeaderOptions> {
         const slot = document.querySelector(
           `#SlotContainer-${index}`,
         ) as HTMLInputElement;
+        const drawer = document.querySelector(
+          `#Drawer-${index}`,
+        ) as HTMLInputElement;
 
         if (!fromFilteredItems || fromSearchTrigger) {
           for (const container of slotContainers) {
@@ -123,17 +126,29 @@ export class Header extends BaseComponent<HeaderOptions> {
         }
 
         if (currentTrigger.checked && !fromFilteredItems) {
-          addClass(icon, hidden);
-          addClass(closeIcon, block);
-          removeClass(closeIcon, hidden);
+          if (drawer) {
+            const elements = drawer.querySelectorAll('[data-element="modal"]');
+            const modal = elements[0];
+            modal.classList.add('gi-modal-open');
+            modal.classList.remove('gi-modal-close');
+            modal.setAttribute('aria-hidden', 'false');
+            currentTrigger.checked = false;
+          } else {
+            addClass(icon, hidden);
+            addClass(closeIcon, block);
+            removeClass(closeIcon, hidden);
 
-          removeClass(slot, hidden);
-          addClass(slot, block);
+            removeClass(slot, hidden);
+            addClass(slot, block);
+          }
         } else {
-          addClass(closeIcon, hidden);
-          removeClass(closeIcon, block);
-          addClass(icon, block);
-          removeClass(icon, hidden);
+          if (slot) {
+            addClass(closeIcon, hidden);
+            removeClass(closeIcon, block);
+
+            addClass(icon, block);
+            removeClass(icon, hidden);
+          }
           return;
         }
 
