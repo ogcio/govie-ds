@@ -5,7 +5,7 @@ import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from '../list/list.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Select } from '../select/select.js';
+import { Select, SelectItem } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
@@ -53,34 +53,12 @@ const SlotExample1 = () => (
 
 const SlotExample2 = () => {
   return (
-    <Select
-      id="slot-example-2"
-      options={[
-        {
-          label: 'Languages',
-          value: 'languages',
-          groupName: 'Languages',
-          items: [
-            {
-              label: 'Gaeilge',
-              value: 'gaeilge',
-            },
-            {
-              label: 'English',
-              value: 'english',
-            },
-            {
-              label: 'Spanish',
-              value: 'spanish',
-            },
-            {
-              label: 'Italian',
-              value: 'italian',
-            },
-          ],
-        },
-      ]}
-    />
+    <Select id="slot-example-2">
+      <SelectItem value="gaeilge">Gaeilge</SelectItem>
+      <SelectItem value="english">English</SelectItem>
+      <SelectItem value="spanish">Spanish</SelectItem>
+      <SelectItem value="italian">Italian</SelectItem>
+    </Select>
   );
 };
 
