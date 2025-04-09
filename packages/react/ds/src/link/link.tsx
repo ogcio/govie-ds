@@ -50,7 +50,10 @@ const LinkContainer = ({
   return (
     <>
       {showIconStart && (
-        <span className={'gi-link-icon gi-link-icon-start'} data-size={size}>
+        <span
+          className="gi-link-icon gi-link-icon-start"
+          data-size={size || 'sm'}
+        >
           <Icon icon={iconStart} size={iconSize} />
         </span>
       )}
@@ -61,7 +64,10 @@ const LinkContainer = ({
       )}
 
       {showIconEnd && (
-        <span className="gi-link-icon gi-link-icon-end" data-size={size}>
+        <span
+          className="gi-link-icon gi-link-icon-end"
+          data-size={size || 'sm'}
+        >
           <Icon icon={iconEnd} size={iconSize} />
         </span>
       )}
@@ -72,7 +78,7 @@ const LinkContainer = ({
 export const Link = forwardRef<HTMLElement, LinkProps>(
   (
     {
-      size = 'sm',
+      size,
       asChild,
       className,
       children,

@@ -1,39 +1,59 @@
 ---
 title: HTML
 navigation: HTML
-description: HTML components
+description: HTML component library setup
 status: in-review
 ---
 
 # HTML Components
 
-A version of the design system implemented as HTML Templates components is currently under development.
-
-These are idiomatic components suitable for applications developed with `Nunjucks` or Jinja.
-
-<Blockquote>
-Note that the HTML components are currently under **design review**. Component designs and implementations will change over time, but any breaking changes will be handled with major version increments.
-
-We are also reviewing mechanisms to abstract away the underlying HTML markup when consuming components to simplify updates as components change.
-
-Please check the [current status](/components/) of each HTML component for latest updates.
-</Blockquote>
+A version of the design system implemented as HTML components.
+These components are designed to be used in any HTML-based project, including static sites, server-rendered applications, and client-side applications.
+These components are not tied to any specific framework or library, and can be used with any HTML, CSS, and JavaScript setup.
 
 ## Install using precompiled files
 
 You can install the Gov IE Frontend global HTML components by copying the CSS, JavaScript, and macro files into your project.
+This is the recommended way to use the Gov IE Frontend HTML components if you are not using a build tool or package manager.
 
 ### Download the files
 
 1. Download the `govie-frontend.zip` asset file from the [latest release](https://github.com/ogcio/govie-ds/releases) of `@govie-ds/html`.
 2. Download the `theme.zip` asset file from the [latest release](https://github.com/ogcio/govie-ds/releases) of `@govie-ds/theme-govie`.
 
-### Integration with Wagtail
-
-#### Copy CSS and JavaScript
+### Copy CSS and JavaScript
 
 1. Copy the `theme.css` file from `theme.zip` to a folder that can serve static CSS files, e.g. `static/css`.
 2. Copy the `styles.css` file from `govie-frontend.zip` to a folder that can serve static CSS files, e.g. `static/css`.
 3. Copy the `govie-frontend.umd.js` file from `govie-frontend.zip` to a folder that can serve static JavaScript files, e.g. `static/js`.
 
 > Note that the template needs to include the `theme.css`, `styles.css`, and `govie-frontend.umd.js` files previously copied to a folder that can serve static files.
+
+### Include the CSS and JavaScript files in your HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>Gov IE Frontend</title>
+</head>
+<body>
+  <h1>Gov IE Frontend</h1>
+  <p>This is a sample page using Gov IE Frontend HTML components.</p>
+
+  <!-- Important: add it as last script -->
+  <script src="/static/js/govie-frontend.umd.js"></script>
+</body>
+</html>
+```
+
+## Notes
+
+Pay attention when components contain the `data-module` attribute.
+This attribute is used to initialise the component and should not be removed or modified.
+The `data-module` attribute value starts with `gieds-` and is followed by the component name.
+Check the component documentation for the correct value of the `data-module` attribute.
