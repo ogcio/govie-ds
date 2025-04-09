@@ -203,10 +203,10 @@ export const WithUtilitiesSlots: Story = {
     },
     utilitySlot: (
       <Paragraph size="sm" className="gi-text-white">
-        User Name (<Link className="gi-cursor-pointer">Logout</Link>)
-        {/*
-            User Name (<Link appearance="light" size="sm">Logout</Link>)
-          */}
+        Hello John |{' '}
+        <Link appearance="light" href="/logout">
+          Logout
+        </Link>
       </Paragraph>
     ),
     items: [

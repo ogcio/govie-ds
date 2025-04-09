@@ -58,6 +58,31 @@ const buildDefaultMobileMenu = (
   return [mobileMenu, ...items];
 };
 
+const SecondaryLinks: React.FC<{
+  links?: HeaderProps['secondaryLinks'];
+}> = ({ links }) => {
+  return (
+    <ul>
+      {links?.map((link, index) => (
+        <li key={`secondary-${link.label}-${index}`}>
+          {link.href ? (
+            <a
+              aria-label={link.label}
+              data-testid={`secondary-link-desktop-${index}`}
+              href={link.href}
+              className="gi-header-secondary-item"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <span className="gi-header-secondary-item">{link.label}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export function Header({
   title,
   items,
@@ -72,7 +97,6 @@ export function Header({
 }: HeaderProps) {
   const headerClassNames = 'gi-header';
   const secondaryBarClassNames = 'gi-header-secondary-bar';
-  const secondaryItemClassNames = 'gi-header-secondary-item';
   const menuContainerClassNames = 'gi-header-menu';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
@@ -196,28 +220,7 @@ export function Header({
             className="gi-flex gi-justify-end gi-items-center"
             fullWidth={fullWidth}
           >
-            {secondaryLinks && (
-              <ul>
-                {secondaryLinks.map((link, index) => (
-                  <li key={`secondary-${link.label}-${index}`}>
-                    {link.href ? (
-                      <a
-                        aria-label={link.label}
-                        data-testid={`secondary-link-desktop-${index}`}
-                        href={link.href}
-                        className={secondaryItemClassNames}
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <span className={secondaryItemClassNames}>
-                        {link.label}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
+            {secondaryLinks && <SecondaryLinks links={secondaryLinks} />}
             {utilitySlot}
           </Container>
         </div>
