@@ -1,10 +1,5 @@
 import { Analytics as MatomoAnalytics } from '@ogcio/analytics-sdk';
-import {
-  isConsentGiven,
-  CookieCategory,
-  ConsentChangeEvent,
-} from '../utils/cookieConsent';
-import { useEffect } from 'react';
+import { ConsentChangeEvent, isConsentGiven } from '../utils/cookieConsent';
 
 export type AnalyticEvent = {
   category: string;
@@ -30,7 +25,6 @@ export class Analytics {
 
         if (isConsentGiven('analytics')) {
           await this.matomoAnalytics.initClientTracker();
-          console.log('Analytics initialized');
         }
 
         const handleConsentChange = async (
@@ -38,7 +32,6 @@ export class Analytics {
         ): Promise<void> => {
           if (event.detail.status === 'all' && isConsentGiven('analytics')) {
             await this.matomoAnalytics?.initClientTracker();
-            console.log('Analytics initialized');
 
             globalThis.window.removeEventListener(
               'consentStatusChanged',
@@ -64,7 +57,6 @@ export class Analytics {
         console.warn('Analytics not initialized, skipping page view tracking');
         return;
       }
-      console.log(`Page view tracked: ${path}`);
 
       await this.matomoAnalytics?.track.pageView({
         event: {
@@ -80,7 +72,6 @@ export class Analytics {
         console.warn('Analytics not initialized, skipping event tracking');
         return;
       }
-      console.log(`Event tracked: ${event}`);
 
       await this.matomoAnalytics?.track.event({ event });
     }
