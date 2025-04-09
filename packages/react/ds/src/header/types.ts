@@ -63,6 +63,9 @@ export type HeaderProps = {
   addDefaultMobileMenu?: boolean;
   mobileMenuLabel?: string;
   items?: HeaderItem[];
+  /**
+   * @deprecated Use `utilitySlot` instead.
+   */
   secondaryLinks?: {
     href: string;
     label: string;

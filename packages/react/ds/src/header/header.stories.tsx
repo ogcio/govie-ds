@@ -174,7 +174,7 @@ export const Default: Story = {
   },
 };
 
-export const WithUtilitiesSlots: Story = {
+export const WithUtilitySlot: Story = {
   args: {
     logo: {
       href: '/link',
