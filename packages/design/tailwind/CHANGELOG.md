@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.3...design-tailwind-v1.3.0) (2025-04-09)
+
+
+### Features
+
+* Sync Link component with figma ([#505](https://github.com/ogcio/govie-ds/issues/505)) ([d7b24f0](https://github.com/ogcio/govie-ds/commit/d7b24f0fd543874f3b68c539550dd314e8f448da))
+
+
+### Bug Fixes
+
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* Fix TabItem onTabSelected handler  ([#511](https://github.com/ogcio/govie-ds/issues/511)) ([ba191e7](https://github.com/ogcio/govie-ds/commit/ba191e7c3dc08bbd7b5f8f23fad8ebf1ac38d7da))
+
 ## [1.2.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.2...design-tailwind-v1.2.3) (2025-04-03)
 
 

@@ -157,13 +157,10 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabPanel>
 </Tabs>
 
-### With Icon
+### With Icons
 
 <ComponentContainer>
-  <Link href="#">
-    <Icon icon="chevron_left" inline size="sm" />
-    <span>Back</span>
-  </Link>
+  <Link href="#" iconStart="chevron_left" iconEnd="chevron_right">Back</Link>
 </ComponentContainer>
 
 <Tabs id="tab6">
@@ -173,16 +170,20 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabList>
   <TabPanel value="tab61">        
     ```html
-    <a href="#" class="gi-link">
-      <span role="presentation" class="material-symbols-outlined gi-text-[16px]">chevron_left</span> Back
-    </a>
+      <a href="#" class="gi-link">
+          <span class="gi-link-icon gi-link-icon-start" data-size="sm"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 16px;">chevron_left</span></span>
+          <span class="gi-pl-5 gi-pr-5">Link text</span>
+          <span class="gi-link-icon gi-link-icon-end" data-size="sm"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 16px;">chevron_right</span></span>
+      </a>
+
     ```
+
   </TabPanel>
   <TabPanel value="tab63">
     ```html
-    import { Icon, Link } from '@govie-ds/react';
+    import { Link } from '@govie-ds/react';
 
-    <Link href="#"><Icon icon="chevron_left" inline size="md" /> Back</Link>
+    <Link href="#" iconStart="chevron_left" iconEnd="chevron_right" >Link text</Link>
     ```
 
   </TabPanel>
@@ -214,8 +215,25 @@ Links are blue and underlined by default. If your link is at the end of a senten
 
 - **size** (optional): Specifies the size of the link.
 
-  - Options: `sm` and `md` (default in global HTML).
+  - Options: `sm`, `md` and `lg`.
   - The control for this prop is a string, allowing the user to set the size of the link.
+
+- **iconStart** (optional): Displays an icon before the link text.
+
+  - The control for this prop is a string. You must pass a valid `IconId`.
+
+- **iconEnd** (optional): Displays an icon after the link text.
+
+  - The control for this prop is a string. You must pass a valid `IconId`.
+
+- **disabled** (optional): Disables the link interaction.
+
+  - The control for this prop is a boolean. When `true`, the link appears inactive and does not trigger navigation or actions.
+
+- **appearance** (optional): Sets the visual style of the link.
+
+  - Options: `default` or `light`.
+  - The control for this prop is a string.
 
 ### With Other Router
 

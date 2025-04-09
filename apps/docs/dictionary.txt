@@ -188,6 +188,7 @@ whitespace
 withBorder
 xl
 xs
+iconEnd
 currentStepIndex
 completeAll
 StepItem
