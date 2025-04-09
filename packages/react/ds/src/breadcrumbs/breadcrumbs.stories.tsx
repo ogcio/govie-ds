@@ -1,10 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { cn } from '../cn.js';
 import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
   BreadcrumbLink,
   BreadcrumbEllipsis,
 } from './breadcrumbs.js';
+
+const ReactRouterLink = ({ to, children, className }: any) => (
+  <a href={to} className={cn(className, 'example-react-router')}>
+    {children}
+  </a>
+);
 
 const meta = {
   title: 'Navigation/Breadcrumbs',
@@ -49,6 +56,17 @@ export const WithSingleItemAndIconStart: Story = {
     iconStart: true,
     children: [
       <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
+    ],
+  },
+};
+
+export const WithCustomLink: Story = {
+  args: {
+    iconStart: true,
+    children: [
+      <BreadcrumbLink asChild>
+        <ReactRouterLink to="home"> Home</ReactRouterLink>
+      </BreadcrumbLink>,
     ],
   },
 };
