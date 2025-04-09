@@ -72,7 +72,7 @@ const LinkContainer = ({
 export const Link = forwardRef<HTMLElement, LinkProps>(
   (
     {
-      size = 'sm',
+      size,
       asChild,
       className,
       children,
