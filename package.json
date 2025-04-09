@@ -15,7 +15,7 @@
     "ds:build:export": "nx run @govie-ds/docs:build:export",
     "ds:storybook": "nx run @govie-ds/docs:storybook",
     "build": "nx run-many --target=build --all --exclude=@govie-ds/examples-html,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
-    "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs,@govie-ds/examples-vite,@govie-ds/examples-nextjs",
+    "build:libs": "nx run-many --target=build --all --exclude=@govie-ds/docs,@govie-ds/examples-vite,@govie-ds/examples-nextjs,@govie-ds/examples-html",
     "test": "nx run-many --target=test --all --verbose",
     "tokens:build": "nx run @govie-ds/tokens:build",
     "govie:build": "nx run @govie-ds/theme-govie:build",
