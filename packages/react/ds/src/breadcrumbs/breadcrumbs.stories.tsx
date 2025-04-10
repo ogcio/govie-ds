@@ -7,12 +7,6 @@ import {
   BreadcrumbEllipsis,
 } from './breadcrumbs.js';
 
-const ReactRouterLink = ({ to, children, className }: any) => (
-  <a href={to} className={cn(className, 'example-react-router')}>
-    {children}
-  </a>
-);
-
 const meta = {
   title: 'Navigation/Breadcrumbs',
   parameters: {
@@ -65,8 +59,15 @@ export const WithCustomLink: Story = {
     iconStart: true,
     children: [
       <BreadcrumbLink asChild>
-        <ReactRouterLink to="home"> Home</ReactRouterLink>
+        <a href="/departments">Departments</a>
       </BreadcrumbLink>,
+      <BreadcrumbEllipsis />,
+      <BreadcrumbLink asChild>
+        <a href="/docs">Documents</a>
+      </BreadcrumbLink>,
+      <BreadcrumbCurrentLink asChild>
+        <a href="/travel">Travel abroad</a>
+      </BreadcrumbCurrentLink>,
     ],
   },
 };

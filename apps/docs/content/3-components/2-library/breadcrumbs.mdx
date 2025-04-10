@@ -66,10 +66,70 @@ libraries:
       <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
       <BreadcrumbCurrentLink href="/travel">Travel abroad</BreadcrumbCurrentLink>
     </Breadcrumbs>
+    ```
+
+</TabPanel>
+</Tabs>
+
+### With Custom Links
+
+<ComponentContainer>
+  <Breadcrumbs>
+    <BreadcrumbLink asChild>
+      <NextLink href="/departments">Departments</NextLink>
+    </BreadcrumbLink>
+    <BreadcrumbEllipsis />
+    <BreadcrumbLink asChild>
+      <NextLink href="/docs">Documents</NextLink>
+    </BreadcrumbLink>
+    <BreadcrumbCurrentLink asChild>
+      <NextLink href="/travel">Travel abroad</NextLink>
+    </BreadcrumbCurrentLink>
+  </Breadcrumbs>
+</ComponentContainer>
+
+<Tabs id="tab100">
+  <TabList>
+    <TabItem value="tab110" checked>HTML</TabItem>
+    <TabItem value="tab130">React</TabItem>
+  </TabList>
+  <TabPanel value="tab110">
+  ```html
+    <nav aria-label="Breadcrumbs" class="gi-breadcrumbs">
+      <ol role="list">
+          <li role="listitem"><a class="gi-link gi-link-inherit gi-text-sm gi-breadcrumbs-link " href="/departments/">Departments</a></li>
+          <li role="listitem">
+            <div aria-hidden="true"><span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined gi-text-gray-700" style="font-size:24px;font-variation-settings:'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px">more_horiz</span></div>
+          </li>
+          <li role="listitem"><a class="gi-link gi-link-inherit gi-text-sm gi-breadcrumbs-link " href="/docs/">Documents</a></li>
+          <li role="listitem"><a aria-current="page" class="gi-link gi-link-inherit gi-text-sm gi-breadcrumbs-link " href="/travel/">Travel abroad</a></li>
+      </ol>
+    </nav>
+```
+
+  </TabPanel>
+  <TabPanel value="tab130">
+  ```jsx
+    import NextLink from 'next/link';
+    import { Breadcrumbs, BreadcrumbLink, BreadcrumbEllipsis, BreadcrumbCurrentLink } from '@govie-ds/react';
+
+    <Breadcrumbs>
+      <BreadcrumbLink asChild>
+        <NextLink href="/departments">Departments</NextLink>
+      </BreadcrumbLink>
+      <BreadcrumbEllipsis />
+      <BreadcrumbLink asChild>
+        <NextLink href="/docs">Documents</NextLink>
+      </BreadcrumbLink>
+      <BreadcrumbCurrentLink asChild>
+        <NextLink href="/travel">Travel abroad</NextLink>
+      </BreadcrumbCurrentLink>
+    </Breadcrumbs>
 
 ```
 </TabPanel>
 </Tabs>
+
 
 ## Usage
 
@@ -100,4 +160,8 @@ Avoid breadcrumbs on websites or applications with a flat structure, where there
 ## Status
 
 <ComponentStatusBlock componentId="breadcrumbs" />
+```
+
+```
+
 ```
