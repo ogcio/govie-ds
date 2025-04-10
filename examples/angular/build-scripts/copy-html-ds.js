@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
   );
   const destinationJsPath = path.resolve(
     currentDirectory,
-    "../src/app/assets/govie-frontend.umd.js"
+    "../src/app/assets/global/govie-frontend.umd.js"
   );
 
   const sourceCssPath = path.resolve(
@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
   );
   const destinationCssPath = path.resolve(
     currentDirectory,
-    "../src/app/assets/styles.css"
+    "../src/app/assets/global/styles.css"
   );
 
   const sourceThemePath = path.resolve(
@@ -30,7 +30,7 @@ import { fileURLToPath } from "node:url";
   );
   const destinationThemePath = path.resolve(
     currentDirectory,
-    "../src/app/assets/theme.css"
+    "../src/app/assets/global/theme.css"
   );
 
   fs.copyFileSync(sourceJsPath, destinationJsPath);

@@ -34,11 +34,13 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/assets/styles.css",
-              "src/app/assets/theme.css"
+              "src/app/assets/global/styles.css",
+              "src/app/assets/global/theme.css",
+              "src/app/assets/local/ogcio-ds-0.4.4.min.css"
             ],
             "scripts": [
-              "src/app/assets/govie-frontend.umd.js"
+              "src/app/assets/global/govie-frontend.umd.js",
+              "src/app/assets/local/ogcio-ds-0.4.4.min.js"
             ]
           },
           "configurations": {
