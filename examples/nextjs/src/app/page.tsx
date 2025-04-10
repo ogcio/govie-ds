@@ -102,7 +102,11 @@ const headerProps: HeaderProps = {
   ],
 };
 
-const handleCreateToast = (title: string, variant: ToastVariant) =>
+const handleCreateToast = (
+  title: string,
+  variant: ToastVariant,
+  customAction?: any,
+) =>
   toaster.create({
     title,
     variant,
@@ -113,6 +117,7 @@ const handleCreateToast = (title: string, variant: ToastVariant) =>
     },
     duration: 3000,
     dismissible: true,
+    customAction,
   });
 
 export default function Home() {
@@ -149,6 +154,18 @@ export default function Home() {
         <br />
         <Button onClick={() => handleCreateToast('Warning', 'warning')}>
           Trigger Warning Toast via callback
+        </Button>
+        <br />
+        <Button
+          onClick={() =>
+            handleCreateToast(
+              'Success',
+              'success',
+              <NextLink href="#">Custom Nextjs Link</NextLink>,
+            )
+          }
+        >
+          Trigger with Custom Action link
         </Button>
         <br />
         <div className="flex flex-col gap-4 my-4">
@@ -374,8 +391,10 @@ export default function Home() {
                 <br />
                 SE23 6FH
               </SummaryListValue>
-              <SummaryListAction href="/change-address">
-                Change address
+              <SummaryListAction asChild>
+                <NextLink href="/change-address">
+                  Change address Nextjs link
+                </NextLink>
               </SummaryListAction>
             </SummaryListRow>
           </SummaryList>
