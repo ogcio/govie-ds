@@ -48,10 +48,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Feedback Likelihood Scale',
-  render: (args) => {
+  render: (arguments_) => {
     return (
       <div className="gi-flex gi-flex-col gi-items-center gi-gap-1">
-        <ButtonGroup {...args} />
+        <ButtonGroup {...arguments_} onChange={(value) => console.log(value)} />
         <div className="gi-flex gi-w-full gi-justify-between gi-text-sm gi-pt-1">
           <span>Extremely Dissatisfied</span>
           <span>Extremely Satisfied</span>
