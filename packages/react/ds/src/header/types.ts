@@ -66,10 +66,18 @@ export type HeaderProps = {
   /**
    * @deprecated Use `utilitySlot` instead.
    */
-  secondaryLinks?: {
-    href: string;
-    label: string;
-  }[];
+  secondaryLinks?: (
+    | {
+        href: string;
+        label: string;
+        customLink?: undefined;
+      }
+    | {
+        customLink: React.ReactNode;
+        href?: undefined;
+        label?: undefined;
+      }
+  )[];
   utilitySlot?: ReactNode;
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;

@@ -39,10 +39,7 @@ function getLogo({ logo }: HeaderProps) {
 const buildDefaultMobileMenu = (
   mobileMenuLabel: string,
   items: HeaderItem[],
-  secondaryLinks: {
-    href: string;
-    label: string;
-  }[],
+  secondaryLinks: HeaderProps['secondaryLinks'],
 ) => {
   const mobileMenu: HeaderItem = {
     label: mobileMenuLabel,
@@ -61,19 +58,21 @@ const buildDefaultMobileMenu = (
 const SecondaryLinks: React.FC<{
   links?: HeaderProps['secondaryLinks'];
 }> = ({ links }) => {
+  console.log({ links });
   return (
     <ul>
       {links?.map((link, index) => (
         <li key={`secondary-${link.label}-${index}`}>
-          {link.href ? (
-            <a
-              aria-label={link.label}
+          {link.href || link.customLink ? (
+            <Anchor
+              aria-label={link?.label}
               data-testid={`secondary-link-desktop-${index}`}
-              href={link.href}
+              href={link?.href}
               className="gi-header-secondary-item"
+              asChild={!!link.customLink}
             >
-              {link.label}
-            </a>
+              {link.customLink || link.label}
+            </Anchor>
           ) : (
             <span className="gi-header-secondary-item">{link.label}</span>
           )}

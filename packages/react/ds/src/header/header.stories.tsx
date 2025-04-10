@@ -310,6 +310,31 @@ export const WithSecondaryLinks: Story = {
   },
 };
 
+export const WithCustomSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        customLink: <a href="#">English</a>,
+      },
+      {
+        customLink: <a href="#">Gaeilge</a>,
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+};
+
 export const WithMainAndSecondaryLinksDesktopOnly: Story = {
   args: {
     logo: {

@@ -64,7 +64,10 @@ export const MobileHeaderMenuItems = ({
   return (
     <ul>
       {items?.map(({ itemType, label, ...item }, index) => {
-        const [isLink, isSlot] = [itemType === 'link', itemType === 'slot'];
+        const [isLink, isSlot] = [
+          itemType === 'link' || itemType === 'custom-link',
+          itemType === 'slot',
+        ];
         if (!label) {
           return null;
         }
@@ -76,6 +79,7 @@ export const MobileHeaderMenuItems = ({
                 href={item?.href}
                 label={label}
                 external={item?.external}
+                customLink={item?.component}
               />
             </li>
           );
@@ -96,7 +100,12 @@ export const MobileHeaderMenuItems = ({
 
       {secondaryLinks?.map((link, index) => (
         <li key={`secondary-${link.label}-${index}`}>
-          <ListItem href={link.href} label={link.label} bold={false} />
+          <ListItem
+            href={link.href}
+            label={link.label}
+            bold={false}
+            customLink={link.customLink}
+          />
         </li>
       ))}
     </ul>
