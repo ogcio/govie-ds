@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.3...html-lib-v1.1.4) (2025-04-09)
+
+
+### Bug Fixes
+
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* icon button sizes ([#508](https://github.com/ogcio/govie-ds/issues/508)) ([1e6c56d](https://github.com/ogcio/govie-ds/commit/1e6c56dc9348f4479fcf45e0a94f56d4935398bc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.3.0
+
 ## [1.1.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.2...html-lib-v1.1.3) (2025-04-03)
 
 
