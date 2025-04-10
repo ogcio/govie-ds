@@ -259,28 +259,36 @@ const createHeader = (arguments_: HeaderProps) => {
   menuContainer.append(wrapper1);
   menuContainer.append(wrapper2);
 
-  if (arguments_.secondaryLinks) {
-    const secondaryLinks = document.createElement('div');
-    secondaryLinks.className = `${secondaryBarClassNames} gi-order-1`;
-    header.append(secondaryLinks);
+  if (arguments_.secondaryLinks || arguments_.utilitySlot) {
+    const secondaryBar = document.createElement('div');
+    secondaryBar.className = `${secondaryBarClassNames} gi-order-1`;
+    header.append(secondaryBar);
 
-    const secondaryLinksContainer = document.createElement('div');
-    secondaryLinksContainer.className = containerClassName;
-    secondaryLinks.append(secondaryLinksContainer);
+    const secondaryBarContainer = document.createElement('div');
+    secondaryBarContainer.className = `${containerClassName} gi-flex gi-justify-end gi-items-center`;
+    secondaryBar.append(secondaryBarContainer);
 
-    const list = document.createElement('ul');
-    secondaryLinksContainer.append(list);
+    if (arguments_.secondaryLinks?.length) {
+      const list = document.createElement('ul');
 
-    for (const link of arguments_.secondaryLinks) {
-      const li = document.createElement('li');
+      for (const link of arguments_.secondaryLinks) {
+        const li = document.createElement('li');
 
-      const secondaryLink = document.createElement('a');
-      secondaryLink.href = link.href;
-      secondaryLink.textContent = link.label;
-      secondaryLink.className = secondaryItemClassNames;
+        const secondaryLink = document.createElement('a');
+        secondaryLink.href = link.href;
+        secondaryLink.textContent = link.label;
+        secondaryLink.className = secondaryItemClassNames;
 
-      li.append(secondaryLink);
-      list.append(li);
+        li.append(secondaryLink);
+        list.append(li);
+      }
+      secondaryBarContainer.append(list);
+    }
+
+    if (arguments_.utilitySlot) {
+      const utilityWrapper = document.createElement('div');
+      utilityWrapper.innerHTML = arguments_.utilitySlot;
+      secondaryBarContainer.append(utilityWrapper);
     }
   }
 
@@ -1065,6 +1073,49 @@ export const ShowTitleOnMobile: Story = {
         label: 'English',
       },
     ],
+  },
+  render: createElement,
+};
+
+export const WithUtilitySlot: Story = {
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    items: [
+      {
+        itemType: 'link',
+        href: '#',
+        label: 'Internal Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        href: '#',
+        external: true,
+        label: 'External Nav',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'attach_file',
+        href: '#',
+        label: 'Internal Tool',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'link',
+        icon: 'arrow_outward',
+        href: '#',
+        external: true,
+        label: 'External Tool',
+        showItemMode: 'desktop-only',
+      },
+    ],
+    utilitySlot: `<p class="gi-paragraph-sm gi-text-start gi-whitespace-normal gi-text-white">
+          Hello John | <a href="/logout" class="gi-link gi-link-light" data-appearance="light">Logout</a>
+        </p>`,
   },
   render: createElement,
 };
