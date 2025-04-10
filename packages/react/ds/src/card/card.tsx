@@ -115,10 +115,10 @@ export const Card = ({
   };
 
   const renderTitle = () => {
-    const isOnlyTitle = !title || (!href && !titleAsChild);
+    const isTitleOnly = !title || (!href && !titleAsChild);
     return (
       <div className="gi-card-title">
-        {isOnlyTitle ? (
+        {isTitleOnly ? (
           title
         ) : (
           <Link
