@@ -211,3 +211,4 @@ inputradiogroup
 onTabClick
 i18n
 titleAsChild
+asChild

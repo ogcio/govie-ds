@@ -79,6 +79,23 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const WithCustomAction: Story = {
+  args: {
+    title: 'With Action',
+    description: 'This is some content',
+    customAction: <a href="#">Go to Link</a>,
+    duration: 5000,
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>
+        Show Toast with Action
+      </Button>
+    </>
+  ),
+};
+
 export const Default: Story = {
   args: {
     title: 'Default',
