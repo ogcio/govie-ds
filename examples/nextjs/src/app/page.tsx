@@ -206,9 +206,9 @@ export default function Home() {
               type: 'link',
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
-            href="#"
             title="Vertical Card Without Image"
             type="vertical"
+            titleAsChild
           >
             <NextLink href="#">NextJs Link</NextLink>
           </Card>
