@@ -1,6 +1,5 @@
 'use client';
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-gold-text-green.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';

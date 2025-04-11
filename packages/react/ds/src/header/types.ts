@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
@@ -62,10 +63,14 @@ export type HeaderProps = {
   addDefaultMobileMenu?: boolean;
   mobileMenuLabel?: string;
   items?: HeaderItem[];
+  /**
+   * @deprecated Use `utilitySlot` instead.
+   */
   secondaryLinks?: {
     href: string;
     label: string;
   }[];
+  utilitySlot?: ReactNode;
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;

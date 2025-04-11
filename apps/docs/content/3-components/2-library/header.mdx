@@ -781,6 +781,69 @@ For instance, you can use the `react-router-link` or `next/link` component to li
   </TabPanel>
 </Tabs>
 
+### Header with utility slot
+
+<ComponentContainer fullWidth>
+  <Header
+    title="Application title"
+    utilitySlot={
+      <Paragraph size="sm" className="gi-text-white">
+        Hello John |{' '}
+        <Link appearance="light" href="/logout">
+          Logout
+        </Link>
+      </Paragraph>
+    }
+  />
+</ComponentContainer>
+
+<Tabs id="tab200">
+  <TabList>
+    <TabItem value="tab210" checked>HTML</TabItem>
+    <TabItem value="tab230">React</TabItem>
+  </TabList>
+  <TabPanel value="tab210">        
+    ```html
+      <header id="GovieHeader" aria-label="Site Header" class="gi-header">
+        <div data-testid="govie-container" class="gi-order-2 gi-layout-container" id="HeaderContainer">
+            <div class="gi-header-menu">
+                <div class="gi-header-logo">
+                    <img src="logo-desktop.svg" />
+                </div>
+                <div class="gi-header-title gi-hidden">Application title</div>
+                <div class="gi-gap-2 md:gi-gap-4"></div>
+            </div>
+        </div>
+        <div class="gi-header-secondary-bar gi-order-1">
+            <div data-testid="govie-container" class="gi-flex gi-justify-end gi-items-center gi-layout-container">
+                <p class="gi-paragraph-sm gi-text-start gi-whitespace-normal gi-text-white">Hello John | <a href="/logout" class="gi-link gi-link-light" data-appearance="light">Logout</a></p>
+            </div>
+        </div>
+      </header>
+
+    ```
+
+  </TabPanel>
+  <TabPanel value="tab230">
+    ```html
+    import { Header, Paragraph, Link } from '@govie-ds/react';
+
+    <Header
+      title="Application title"
+      utilitySlot={
+        <Paragraph size="sm" className="gi-text-white">
+          Hello John |{' '}
+          <Link appearance="light" href="/logout">
+            Logout
+          </Link>
+        </Paragraph>
+      }
+    />
+    ```
+
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### `HeaderProps`
@@ -797,9 +860,10 @@ Props for the `Header` component:
 - **`addDefaultMobileMenu`** (optional): If true, the default mobile menu is included in the header.
 - **`mobileMenuLabel`** (optional): The label for the mobile menu.
 - **`items`** (optional): A list of `HeaderItem` objects to include in the header.
-- **`secondaryLinks`** (optional): A list of secondary links for the header.
+- **`secondaryLinks`** deprecated (optional): A list of secondary links for the header.
   - `href`: The URL for the link.
   - `label`: The label for the link.
+- **`utilitySlot`** (optional): A node rendered in the utility area of the header. Often used for custom links.
 - **`fullWidth`** (optional): If true, the header will span the full width of the container.
 - **`showTitleOnMobile`** (optional): If true, the header title will be shown on mobile.
 - **`dataTestid`** (optional): Custom test ID for the header.

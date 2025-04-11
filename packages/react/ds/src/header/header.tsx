@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
+import { Container } from '../container/container.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import Anchor from '../primitives/anchor.js';
@@ -57,6 +58,31 @@ const buildDefaultMobileMenu = (
   return [mobileMenu, ...items];
 };
 
+const SecondaryLinks: React.FC<{
+  links?: HeaderProps['secondaryLinks'];
+}> = ({ links }) => {
+  return (
+    <ul>
+      {links?.map((link, index) => (
+        <li key={`secondary-${link.label}-${index}`}>
+          {link.href ? (
+            <a
+              aria-label={link.label}
+              data-testid={`secondary-link-desktop-${index}`}
+              href={link.href}
+              className="gi-header-secondary-item"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <span className="gi-header-secondary-item">{link.label}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export function Header({
   title,
   items,
@@ -67,13 +93,10 @@ export function Header({
   mobileMenuLabel,
   showTitleOnMobile,
   dataTestid,
+  utilitySlot,
 }: HeaderProps) {
-  const containerClassName = fullWidth
-    ? 'gi-layout-container-full-width'
-    : 'gi-layout-container';
   const headerClassNames = 'gi-header';
   const secondaryBarClassNames = 'gi-header-secondary-bar';
-  const secondaryItemClassNames = 'gi-header-secondary-item';
   const menuContainerClassNames = 'gi-header-menu';
   const appTitleClassNames = 'gi-header-title';
   const toolItemClassNames = 'gi-header-tool-item';
@@ -141,9 +164,10 @@ export function Header({
       className={headerClassNames}
       data-testid={dataTestid}
     >
-      <div
+      <Container
         id="HeaderContainer"
-        className={cn(containerClassName, 'gi-order-2')}
+        className="gi-order-2"
+        fullWidth={fullWidth}
       >
         <div className={menuContainerClassNames}>
           <div>
@@ -173,7 +197,6 @@ export function Header({
           <div className="gi-gap-2 md:gi-gap-4">
             {finalItems?.map((item, index) => {
               const { label, showItemMode = 'desktop-only' } = item;
-
               return (
                 <div
                   aria-label={label}
@@ -191,32 +214,17 @@ export function Header({
             })}
           </div>
         </div>
-      </div>
+      </Container>
 
-      {secondaryLinks && (
+      {(secondaryLinks || utilitySlot) && (
         <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
-          <div className={containerClassName}>
-            <ul>
-              {secondaryLinks.map((link, index) => (
-                <li key={`secondary-${link.label}-${index}`}>
-                  {link.href ? (
-                    <a
-                      aria-label={link.label}
-                      data-testid={`secondary-link-desktop-${index}`}
-                      href={link.href}
-                      className={secondaryItemClassNames}
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <span className={secondaryItemClassNames}>
-                      {link.label}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Container
+            className="gi-flex gi-justify-end gi-items-center"
+            fullWidth={fullWidth}
+          >
+            {secondaryLinks && <SecondaryLinks links={secondaryLinks} />}
+            {utilitySlot}
+          </Container>
         </div>
       )}
 

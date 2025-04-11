@@ -43,7 +43,7 @@ const createModal = (arguments_: ModalWrapperPropsExtension) => {
   modalContainer.dataset.element = 'modal-container';
   modalContainer.dataset.testid = 'modal-container';
   modalContainer.dataset.size = arguments_.size;
-  modalContainer.className = `gi-modal-container gi-modal-container-${arguments_.position}`;
+  modalContainer.className = `gi-modal-container-control gi-modal-container gi-modal-container-${arguments_.position}`;
 
   const modalHeader = document.createElement('div');
   modalContainer.append(modalHeader);

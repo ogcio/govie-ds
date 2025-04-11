@@ -56,10 +56,6 @@
   @apply gi-grid gi-grid-cols-1 md:gi-grid-cols-3 gi-gap-4;
 }
 
-.gi-layout-container-full-width {
-  @apply gi-w-full gi-px-6 lg:gi-px-8 2xl:gi-max-w-screen-2xl 2xl:gi-mx-auto;
-}
-
 .gi-layout-column-2-3 {
   @apply gi-w-full md:gi-col-span-2;
 }

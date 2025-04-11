@@ -73,4 +73,5 @@ export type HeaderProps = {
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;
+  utilitySlot?: any;
 };
