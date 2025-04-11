@@ -1,9 +1,13 @@
-import { Footer, Header, HeaderProps, Link } from '@govie-ds/react';
+import AnalyticsProvider from '@/components/analytics-provider';
+import { GovieLink } from '@/components/navigation/custom-link';
+import { Footer, Header, HeaderProps } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
+import CookieConsent from '@/components/cookies/cookie-consent';
+import { Suspense } from 'react';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -14,8 +18,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'Design System',
-  description: 'Design System',
+  title: 'Gov IE Design System',
+  description:
+    'A design system for the GOV.IE. We make it easier to build accessible, mobile-friendly government websites.',
 };
 
 export default function RootLayout({
@@ -25,7 +30,7 @@ export default function RootLayout({
 }>) {
   const headerProps: HeaderProps = {
     fullWidth: true,
-    title: 'Design System',
+    title: 'Gov IE Design System',
     logo: {
       href: '/',
     },
@@ -90,35 +95,40 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${lato.className} transition duration-500 h-screen flex flex-col bg-white`}
       >
-        <a href="#main" className="sr-only">
-          Skip to main content
-        </a>
-        <Header {...headerProps} addDefaultMobileMenu />
-        {children}
-        <Footer
-          secondarySlot={
-            <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
-              {footerLinks.map((link, index) => (
-                <Link
-                  noColor
-                  aria-label={link.label}
-                  href={link.href}
-                  key={`footerlink-${index}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          }
-          utilitySlot={
-            <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
-              <div className="gi-text-sm">
-                © {new Date().getFullYear()} Design System of Government of
-                Ireland.
-              </div>
-            </div>
-          }
-        />
+        <Suspense>
+          <AnalyticsProvider>
+            <CookieConsent />
+            <a href="#main" className="sr-only">
+              Skip to main content
+            </a>
+            <Header {...headerProps} addDefaultMobileMenu />
+            {children}
+            <Footer
+              secondarySlot={
+                <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+                  {footerLinks.map((link, index) => (
+                    <GovieLink
+                      noColor
+                      aria-label={link.label}
+                      href={link.href}
+                      key={`footerlink-${index}`}
+                    >
+                      {link.label}
+                    </GovieLink>
+                  ))}
+                </div>
+              }
+              utilitySlot={
+                <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
+                  <div className="gi-text-sm">
+                    © {new Date().getFullYear()} Design System of Government of
+                    Ireland.
+                  </div>
+                </div>
+              }
+            />
+          </AnalyticsProvider>
+        </Suspense>
       </body>
     </html>
   );

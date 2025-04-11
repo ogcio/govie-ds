@@ -27,12 +27,12 @@ JSON
 JSX
 Jinja
 Lato
+Matomo
 NDA
 NVDA
 NVDA's
 NextLink
 NonVisual
-Nunjucks
 ProgressStepper
 RadioGroup
 Roadmap
@@ -65,6 +65,7 @@ WebAIM
 YAML
 actionLink
 analyze
+anonymized
 application-cookiebanner
 application-progressstepper
 application-tooltip
@@ -105,7 +106,6 @@ digitalising
 discoverable
 dismissButton
 dismissible
-dismissible.
 dropdown
 dropdown.
 dropdowns
@@ -167,7 +167,6 @@ secondarySlot
 sm
 summarisable
 summarizing
-templating
 textarea
 themeable
 theming

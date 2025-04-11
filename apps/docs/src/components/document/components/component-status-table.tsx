@@ -11,6 +11,7 @@ import {
 } from '@govie-ds/react';
 import { Fragment } from 'react';
 import { ComponentStatus, getComponents } from '@/lib/components';
+import analytics from '@/lib/analytics';
 
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {
@@ -41,9 +42,11 @@ export function TagFromStatus(status: ComponentStatus) {
 export function ComponentStatusPill({
   status,
   href,
+  category,
 }: {
   status: ComponentStatus;
   href?: string;
+  category: string;
 }) {
   const tagProps = TagFromStatus(status);
   return (
@@ -54,7 +57,14 @@ export function ComponentStatusPill({
           icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
           size="small"
           variant="flat"
-          onClick={() => globalThis.window.open(href, '_blank')}
+          onClick={() => {
+            analytics.trackEvent({
+              category,
+              action: 'click',
+              name: href,
+            });
+            globalThis.window.open(href, '_blank');
+          }}
         />
       ) : null}
     </div>
@@ -111,6 +121,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
             <ComponentStatusPill
               status={componentStatus.figma.status}
               href={componentStatus.figma.href}
+              category="figma"
             />
           </td>
         </tr>
@@ -120,6 +131,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
             <ComponentStatusPill
               status={componentStatus.global.status}
               href={componentStatus.global.href}
+              category="storybook-html"
             />
           </td>
         </tr>
@@ -129,6 +141,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
             <ComponentStatusPill
               status={componentStatus.react.status}
               href={componentStatus.react.href}
+              category="storybook-react"
             />
           </td>
         </tr>
@@ -235,6 +248,7 @@ export function ComponentStatusTable() {
                 <ComponentStatusPill
                   status={componentStatus.figma.status}
                   href={componentStatus.figma.href}
+                  category="figma"
                 />
               </div>
               <div className="flex p-2">
@@ -242,6 +256,7 @@ export function ComponentStatusTable() {
                 <ComponentStatusPill
                   status={componentStatus.global.status}
                   href={componentStatus.global.href}
+                  category="storybook-html"
                 />
               </div>
               <div className="flex p-2">
@@ -249,6 +264,7 @@ export function ComponentStatusTable() {
                 <ComponentStatusPill
                   status={componentStatus.react.status}
                   href={componentStatus.react.href}
+                  category="storybook-react"
                 />
               </div>
               <hr className="block lg:hidden col-span-2" />

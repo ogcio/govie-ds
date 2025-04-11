@@ -3,7 +3,7 @@
 }
 
 .gi-cookie-banner-buttons {
-  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row;
+  @apply gi-flex gi-gap-4 gi-items-center gi-flex-col xs:gi-flex-row gi-my-4;
 }
 
 .gi-cookie-banner-buttons button {

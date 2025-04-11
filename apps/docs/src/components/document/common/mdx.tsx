@@ -1,5 +1,7 @@
+import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
+import { GovieLink } from '@/components/navigation/custom-link';
 import { cn } from '@/lib/cn';
 import {
   Accordion,
@@ -22,7 +24,6 @@ import {
   DrawerFooter,
   DrawerWrapper,
   DropdownItem,
-  FileUpload,
   Footer,
   Form,
   FormField,
@@ -38,7 +39,6 @@ import {
   InputRadio,
   InputRadioGroup,
   InputText,
-  Link,
   List,
   Modal,
   ModalBody,
@@ -71,7 +71,6 @@ import {
   Tabs,
   Tag,
   TextArea,
-  TextInput,
   Tooltip,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
@@ -128,7 +127,7 @@ export type MdxProps = {
 
 const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
-    props['data-raw'] ? <a {...props} /> : <Link {...props} />,
+    props['data-raw'] ? <a {...props} /> : <GovieLink {...props} />,
   ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
   ol: ({ children }) => <ol className="gi-list-number">{children}</ol>,
   li: ({ children }) => <li>{children}</li>,
@@ -197,7 +196,7 @@ const documentComponents: MDXComponents = {
   TabList: (props) => <TabList {...props}>{props.children}</TabList>,
   TabItem: (props) => <TabItem {...props}>{props.children}</TabItem>,
   TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
-  Link: (props) => <Link {...props}>{props.children}</Link>,
+  Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
   Paragraph: (props) => <Paragraph {...props}>{props.children}</Paragraph>,
   Heading: (props) => <Heading {...props}>{props.children}</Heading>,
   Button: (props) => <Button {...props} />,
@@ -219,14 +218,12 @@ const documentComponents: MDXComponents = {
   ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,
   Chip: (props) => <Chip {...props} />,
   IconGridLayout: (props) => <IconGridLayout {...props} />,
-  TextInput: (props) => <TextInput {...props} />,
   InputText,
   InputRadio,
   SectionBreak: (props) => <SectionBreak {...props} />,
   Select: (props) => <Select {...props} />,
   SelectItem: (props) => <SelectItem {...props} />,
   IconButton: (props) => <IconButton {...props} />,
-  FileUpload: (props) => <FileUpload {...props} />,
   InputCheckboxGroup,
   Spinner: (props) => <Spinner {...props} />,
   ButtonWithSpinner: () => (
@@ -283,6 +280,7 @@ const documentComponents: MDXComponents = {
     </div>
   ),
   InputPassword,
+  CookieConsentCheckbox: (props) => <CookieConsentCheckbox {...props} />,
   InputCheckbox,
   InputFile,
   InputRadioGroup,
