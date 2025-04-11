@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { cn } from '@/lib/cn';
+import { GovieLink } from './custom-link';
 
 export type SideNavigationItem = {
   id: string;
@@ -28,7 +28,7 @@ export function SideNavigation({
           )}
         >
           {item.href ? (
-            <Link
+            <GovieLink
               href={item.href}
               onClick={() => onSelect(item.id)}
               className={cn(
@@ -38,7 +38,7 @@ export function SideNavigation({
               )}
             >
               {item.name}
-            </Link>
+            </GovieLink>
           ) : (
             <p className="text-gray-800 text-md my-md">{item.name}</p>
           )}

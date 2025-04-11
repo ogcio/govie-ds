@@ -156,6 +156,9 @@ importers:
       '@govie-ds/tokens':
         specifier: workspace:*
         version: link:../../tokens
+      '@ogcio/analytics-sdk':
+        specifier: ^0.1.0-beta.15
+        version: 0.1.0-beta.15
       '@radix-ui/react-dialog':
         specifier: ^1.1.2
         version: 1.1.4(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3416,6 +3419,10 @@ packages:
 
   '@octokit/types@13.6.2':
     resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
+
+  '@ogcio/analytics-sdk@0.1.0-beta.15':
+    resolution: {integrity: sha512-qV/Y8q6Orb1eOMp0MFWJDjtHBvAJMBKmZ+TAJ8X8f04KD71Jf41R/fF8Aw/vaig42Ho7ovTf7ujxPqvXQ6fgOg==}
+    engines: {node: '>=17.0.0'}
 
   '@one-ini/wasm@0.1.1':
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
@@ -9264,6 +9271,12 @@ packages:
   open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
+
+  openapi-fetch@0.13.5:
+    resolution: {integrity: sha512-AQK8T9GSKFREFlN1DBXTYsLjs7YV2tZcJ7zUWxbjMoQmj8dDSFRrzhLCbHPZWA1TMV3vACqfCxLEZcwf2wxV6Q==}
+
+  openapi-typescript-helpers@0.0.15:
+    resolution: {integrity: sha512-opyTPaunsklCBpTK8JGef6mfPhLSnyy5a0IN9vKtx3+4aExf+KxEqYwIy3hqkedXIB97u357uLMJsOnm3GVjsw==}
 
   opener@1.5.2:
     resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
@@ -15143,6 +15156,11 @@ snapshots:
   '@octokit/types@13.6.2':
     dependencies:
       '@octokit/openapi-types': 22.2.0
+
+  '@ogcio/analytics-sdk@0.1.0-beta.15':
+    dependencies:
+      openapi-fetch: 0.13.5
+      openapi-typescript-helpers: 0.0.15
 
   '@one-ini/wasm@0.1.1': {}
 
@@ -22495,6 +22513,12 @@ snapshots:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  openapi-fetch@0.13.5:
+    dependencies:
+      openapi-typescript-helpers: 0.0.15
+
+  openapi-typescript-helpers@0.0.15: {}
 
   opener@1.5.2: {}
 
