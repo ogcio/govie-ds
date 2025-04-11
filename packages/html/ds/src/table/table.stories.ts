@@ -71,6 +71,7 @@ const createTable = (arguments_: TablePropsExtension) => {
 };
 
 const createElement = (arguments_: TablePropsExtension) => {
+  console.log(arguments_);
   const component = createTable(arguments_);
   return beautifyHtmlNode(component);
 };
