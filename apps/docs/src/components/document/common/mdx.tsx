@@ -127,8 +127,8 @@ export type MdxProps = {
 };
 
 const standardComponents: MDXComponents = {
-  a: ({ children, href }) =>
-    href ? <Link href={href}>{children}</Link> : null,
+  a: ({ ...props }) =>
+    props['data-raw'] ? <a {...props} /> : <Link {...props} />,
   ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
   ol: ({ children }) => <ol className="gi-list-number">{children}</ol>,
   li: ({ children }) => <li>{children}</li>,

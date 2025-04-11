@@ -105,7 +105,7 @@ const headerProps: HeaderProps = {
 const handleCreateToast = (
   title: string,
   variant: ToastVariant,
-  customAction?: any,
+  slotAction?: any,
 ) =>
   toaster.create({
     title,
@@ -117,7 +117,7 @@ const handleCreateToast = (
     },
     duration: 3000,
     dismissible: true,
-    customAction,
+    slotAction,
   });
 
 export default function Home() {

@@ -70,7 +70,7 @@ function Toast({
   dismissible,
   onClose,
   dataTestid,
-  customAction,
+  slotAction,
 }: ToastProps) {
   const { base, heading, container, innerContainer, dismiss, baseDismissible } =
     toastVariants({
@@ -106,15 +106,10 @@ function Toast({
           )}
         </div>
         <Paragraph ariaLabel={description}>{description}</Paragraph>
-        {(action || customAction) && (
+        {(action || slotAction) && (
           <div className="gi-toast-action">
-            <Link
-              href={action?.href}
-              noColor
-              size="md"
-              asChild={!!customAction}
-            >
-              {customAction || action?.label}
+            <Link href={action?.href} noColor size="md" asChild={!!slotAction}>
+              {slotAction || action?.label}
             </Link>
           </div>
         )}

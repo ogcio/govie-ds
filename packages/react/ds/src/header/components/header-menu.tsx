@@ -79,7 +79,7 @@ export const MobileHeaderMenuItems = ({
                 href={item?.href}
                 label={label}
                 external={item?.external}
-                customLink={item?.component}
+                slot={item?.component}
               />
             </li>
           );
@@ -104,7 +104,7 @@ export const MobileHeaderMenuItems = ({
             href={link.href}
             label={link.label}
             bold={false}
-            customLink={link.customLink}
+            slot={link.slot}
           />
         </li>
       ))}

@@ -7,27 +7,19 @@ export type ListItemProps = {
   href?: string;
   external?: boolean;
   bold?: boolean;
-  customLink?: React.ReactNode;
+  slot?: React.ReactNode;
 };
 
-export function ListItem({
-  label,
-  href,
-  external,
-  bold,
-  customLink,
-}: ListItemProps) {
+export function ListItem({ label, href, external, bold, slot }: ListItemProps) {
   return (
     <Anchor
       aria-label={label}
       href={href}
-      className="gi-list-item"
+      className={cn('gi-list-item', { 'gi-font-bold': bold })}
       external={external}
-      asChild={!!customLink}
+      asChild={!!slot}
     >
-      <span className={cn('gi-text-sm', 'gi-ml-1', { 'gi-font-bold': bold })}>
-        {customLink || label}
-      </span>
+      {slot || label}
     </Anchor>
   );
 }

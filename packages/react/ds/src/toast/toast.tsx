@@ -108,7 +108,7 @@ export const Toast = ({
   dismissible,
   duration = 5000,
   animation = 'fadeinup',
-  customAction,
+  slotAction,
 }: ToastProps) => {
   const [isOpen, setIsOpen] = useState(true);
   const [hide, setHide] = useState(false);
@@ -150,7 +150,7 @@ export const Toast = ({
             variant={variant}
             description={description}
             dismissible={dismissible}
-            customAction={customAction}
+            slotAction={slotAction}
           />
         </div>
       </div>

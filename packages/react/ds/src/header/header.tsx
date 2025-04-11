@@ -11,7 +11,7 @@ import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import { HeaderItem, HeaderProps } from './types.js';
+import { HeaderItem, HeaderProps, SecondaryLink } from './types.js';
 
 function getLogo({ logo }: HeaderProps) {
   const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
@@ -55,28 +55,37 @@ const buildDefaultMobileMenu = (
   return [mobileMenu, ...items];
 };
 
+const SecondaryLinkItem = ({
+  href,
+  label,
+  slot,
+  index,
+}: { index: number } & SecondaryLink) => {
+  return (
+    <li key={`secondary-${label}-${index}`}>
+      {href ? (
+        <Anchor
+          aria-label={label}
+          data-testid={`secondary-link-desktop-${index}`}
+          href={href}
+          className="gi-header-secondary-item"
+        >
+          {label}
+        </Anchor>
+      ) : (
+        <div className="gi-header-secondary-item-slot">{slot}</div>
+      )}
+    </li>
+  );
+};
+
 const SecondaryLinks: React.FC<{
   links?: HeaderProps['secondaryLinks'];
 }> = ({ links }) => {
-  console.log({ links });
   return (
     <ul>
       {links?.map((link, index) => (
-        <li key={`secondary-${link.label}-${index}`}>
-          {link.href || link.customLink ? (
-            <Anchor
-              aria-label={link?.label}
-              data-testid={`secondary-link-desktop-${index}`}
-              href={link?.href}
-              className="gi-header-secondary-item"
-              asChild={!!link.customLink}
-            >
-              {link.customLink || link.label}
-            </Anchor>
-          ) : (
-            <span className="gi-header-secondary-item">{link.label}</span>
-          )}
-        </li>
+        <SecondaryLinkItem {...link} index={index} />
       ))}
     </ul>
   );
@@ -92,7 +101,6 @@ export function Header({
   mobileMenuLabel,
   showTitleOnMobile,
   dataTestid,
-  utilitySlot,
 }: HeaderProps) {
   const headerClassNames = 'gi-header';
   const secondaryBarClassNames = 'gi-header-secondary-bar';
@@ -215,14 +223,13 @@ export function Header({
         </div>
       </Container>
 
-      {(secondaryLinks || utilitySlot) && (
+      {secondaryLinks && (
         <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
           <Container
             className="gi-flex gi-justify-end gi-items-center"
             fullWidth={fullWidth}
           >
             {secondaryLinks && <SecondaryLinks links={secondaryLinks} />}
-            {utilitySlot}
           </Container>
         </div>
       )}

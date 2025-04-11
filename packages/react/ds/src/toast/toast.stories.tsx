@@ -79,11 +79,11 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const WithCustomAction: Story = {
+export const WithSlotAction: Story = {
   args: {
     title: 'With Action',
     description: 'This is some content',
-    customAction: <a href="#">Go to Link</a>,
+    slotAction: <a href="#">Go to Link</a>,
     duration: 5000,
   },
   render: (props) => (

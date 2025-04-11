@@ -212,3 +212,4 @@ onTabClick
 i18n
 titleAsChild
 asChild
+ReactNode

@@ -67,11 +67,11 @@ export type HeaderProps = {
   mobileMenuLabel?: string;
   items?: HeaderItem[];
   secondaryLinks?: {
-    href: string;
-    label: string;
+    href?: string;
+    label?: string;
+    slot?: any;
   }[];
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;
-  utilitySlot?: any;
 };
