@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 import { FormField } from '../../forms/form-field.js';
+import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {
   title: 'Form/ButtonGroup',
@@ -44,7 +44,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Feedback Likelihood Scale',
-  render: (args) => {
+  render: (arguments_) => {
     const options = [
       { label: '1', value: '1' },
       { label: '2', value: '2' },
@@ -70,9 +70,9 @@ export const Default: Story = {
           }}
         >
           <ButtonGroup
-            name={args.name}
-            size={args.size}
-            defaultValue={args.defaultValue}
+            name={arguments_.name}
+            size={arguments_.size}
+            defaultValue={arguments_.defaultValue}
             onChange={(value) => console.log(value)}
           >
             {options.map((option) => (
@@ -94,7 +94,7 @@ export const Default: Story = {
 
 export const ExplicitItems: Story = {
   name: 'Yes/No Question',
-  render: (args) => {
+  render: (arguments_) => {
     return (
       <FormField
         label={{
@@ -102,9 +102,9 @@ export const ExplicitItems: Story = {
         }}
       >
         <ButtonGroup
-          name={args.name}
-          size={args.size}
-          defaultValue={args.defaultValue}
+          name={arguments_.name}
+          size={arguments_.size}
+          defaultValue={arguments_.defaultValue}
           onChange={(value) => console.log(value)}
         >
           <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
