@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.3.0...react-lib-v1.4.0) (2025-04-11)
+
+
+### Features
+
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.4.0
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.3...react-lib-v1.3.0) (2025-04-09)
 
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.4...html-lib-v1.2.0) (2025-04-11)
+
+
+### Features
+
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Bug Fixes
+
+* html header and modal ([#516](https://github.com/ogcio/govie-ds/issues/516)) ([edbc035](https://github.com/ogcio/govie-ds/commit/edbc035ed90f2b5fbf98320cba441c7b5ea2d0de))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.4.0
+
 ## [1.1.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.3...html-lib-v1.1.4) (2025-04-09)
 
 
