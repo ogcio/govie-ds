@@ -19,7 +19,7 @@ export function ListItem({ label, href, external, bold, slot }: ListItemProps) {
       external={external}
       asChild={!!slot}
     >
-      {slot || label}
+      {slot || <span className="gi-text-sm gi-ml-1">{label}</span>}
     </Anchor>
   );
 }
