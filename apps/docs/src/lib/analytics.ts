@@ -1,4 +1,7 @@
-import { Analytics as MatomoAnalytics } from '@ogcio/analytics-sdk';
+import {
+  ConsoleLogger,
+  Analytics as MatomoAnalytics,
+} from '@ogcio/analytics-sdk';
 import { ConsentChangeEvent, isConsentGiven } from '../utils/cookieConsent';
 
 export type AnalyticEvent = {
@@ -21,6 +24,7 @@ export class Analytics {
           baseUrl: process.env.NEXT_PUBLIC_API_URL!,
           trackingWebsiteId: process.env.NEXT_PUBLIC_TRACKING_WEBSITE_ID,
           organizationId: process.env.NEXT_PUBLIC_ORGANIZATION_ID,
+          logger: new ConsoleLogger({ level: 'silent' }),
         });
 
         if (isConsentGiven('analytics')) {
