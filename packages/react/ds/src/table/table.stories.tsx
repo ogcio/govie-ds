@@ -16,7 +16,7 @@ import { TableRow } from './table-row.js';
 import { Table } from './table.js';
 
 interface TableRowData {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 interface TableStoryProps extends ComponentProps<typeof Table> {

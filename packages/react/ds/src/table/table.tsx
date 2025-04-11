@@ -3,6 +3,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../cn.js';
 
 export type TableAlign = 'left' | 'center' | 'right';
+export type VerticalAlign = 'top' | 'middle' | 'bottom';
 
 const tableVariants = tv({
   base: 'gi-table',
