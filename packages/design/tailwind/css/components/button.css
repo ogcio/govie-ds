@@ -118,3 +118,13 @@
 .gi-btn-regular {
   @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm;
 }
+
+/* Button Group */
+
+.gi-btn-group {
+  @apply gi-flex gi-flex-wrap gi-gap-3 gi-justify-center sm:gi-justify-start;
+}
+
+.gi-btn-group button {
+  @apply gi-min-w-[48px] gi-justify-center;
+}
