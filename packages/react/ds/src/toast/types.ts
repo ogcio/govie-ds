@@ -22,4 +22,5 @@ export type ToastProps = {
   duration?: number;
   position?: ToastPosition;
   dataTestid?: string;
+  slotAction?: React.ReactNode;
 };

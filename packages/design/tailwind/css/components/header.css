@@ -8,8 +8,13 @@
 .gi-header-secondary-bar ul {
   @apply gi-flex gi-justify-end gi-items-center gi-gap-4;
 }
-.gi-header-secondary-item {
+.gi-header-secondary-item,
+.gi-header-secondary-item-slot a {
   @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
+}
+
+.gi-header-secondary-item-slot > :first-child {
+  @apply gi-flex gi-items-center !gi-text-sm !gi-text-white;
 }
 
 .gi-header-menu {
@@ -51,6 +56,7 @@
 /* Nav components focus state */
 .gi-header-tool-item,
 .gi-header-secondary-item,
+.gi-header-secondary-item-slot a,
 .gi-header-nav a {
   @apply gi-focus-state-outline gi-focus-within-state-outline
    focus:gi-bg-black focus-within:gi-bg-black 
@@ -146,14 +152,12 @@
 }
 
 .gi-list-item {
-  @apply hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid
-  focus:gi-no-underline
-  focus:gi-rounded-sm
-  focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
-  focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)]
-  focus-visible:gi-no-underline
-  focus-visible:gi-rounded-sm
-  focus-visible:gi-outline-none;
+  @apply gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none !gi-text-sm;
+}
+
+a.gi-list-item:hover,
+.gi-list-item > a:hover {
+  @apply hover:gi-underline hover:gi-underline-offset-sm;
 }
 
 .gi-header-slot-container {

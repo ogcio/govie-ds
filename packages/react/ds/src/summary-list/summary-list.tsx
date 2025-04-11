@@ -14,6 +14,7 @@ export const SummaryListValue = ({ children }: SummaryListValueProps) => (
 export const SummaryListAction = ({
   href,
   children,
+  asChild,
 }: SummaryListActionProps) => (
   <dd className="gi-summary-list-actions">
     <Link
@@ -22,6 +23,7 @@ export const SummaryListAction = ({
         children,
         defaultValue: `Link action: ${children}`,
       })}
+      asChild={asChild}
     >
       {children}
     </Link>

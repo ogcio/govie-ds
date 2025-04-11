@@ -131,3 +131,34 @@ export const WithoutBorders: Story = {
     ],
   },
 };
+
+export const WithCustomLinks: Story = {
+  args: {
+    children: [
+      <SummaryListRow key="1" withBorder label="Name">
+        <SummaryListValue>John Smith</SummaryListValue>
+        <SummaryListAction asChild>
+          <a href="/change">Change</a>
+        </SummaryListAction>
+      </SummaryListRow>,
+      <SummaryListRow key="2" label="Date of birth">
+        <SummaryListValue>8 November 1982</SummaryListValue>
+        <SummaryListAction asChild>
+          <a href="/change">Change</a>
+        </SummaryListAction>
+      </SummaryListRow>,
+      <SummaryListRow key="3" withBorder label="Address">
+        <SummaryListValue>
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
+        </SummaryListValue>
+        <SummaryListAction asChild>
+          <a href="/change">Change</a>
+        </SummaryListAction>
+      </SummaryListRow>,
+    ],
+  },
+};

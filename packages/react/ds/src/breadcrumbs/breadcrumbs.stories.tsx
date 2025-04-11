@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { cn } from '../cn.js';
 import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
@@ -49,6 +50,24 @@ export const WithSingleItemAndIconStart: Story = {
     iconStart: true,
     children: [
       <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
+    ],
+  },
+};
+
+export const WithCustomLink: Story = {
+  args: {
+    iconStart: true,
+    children: [
+      <BreadcrumbLink asChild>
+        <a href="/departments">Departments</a>
+      </BreadcrumbLink>,
+      <BreadcrumbEllipsis />,
+      <BreadcrumbLink asChild>
+        <a href="/docs">Documents</a>
+      </BreadcrumbLink>,
+      <BreadcrumbCurrentLink asChild>
+        <a href="/travel">Travel abroad</a>
+      </BreadcrumbCurrentLink>,
     ],
   },
 };

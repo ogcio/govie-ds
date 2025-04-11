@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
 import { translate as t } from '../i18n/utility.js';
@@ -38,7 +38,7 @@ type MediaContent =
       config: IframePropTypes;
     };
 
-export type CardProps = {
+export type CardProps = PropsWithChildren<{
   type: 'vertical' | 'horizontal';
   inset?: 'body' | 'full' | 'none';
   title?: string;
@@ -49,7 +49,8 @@ export type CardProps = {
   content?: string;
   action?: Action;
   dataTestid?: string;
-};
+  titleAsChild?: boolean;
+}>;
 
 export const Card = ({
   type = 'vertical',
@@ -62,6 +63,8 @@ export const Card = ({
   href,
   tag,
   dataTestid,
+  titleAsChild,
+  children,
 }: CardProps) => {
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset}`;
@@ -112,20 +115,25 @@ export const Card = ({
   };
 
   const renderTitle = () => {
-    const titleContent = href ? (
-      <Link
-        href={href}
-        aria-label={t('card.cardTitle', {
-          title,
-          defaultValue: `Card link: ${title}`,
-        })}
-      >
-        {title}
-      </Link>
-    ) : (
-      title
+    const isTitleOnly = !title || (!href && !titleAsChild);
+    return (
+      <div className="gi-card-title">
+        {isTitleOnly ? (
+          title
+        ) : (
+          <Link
+            href={href}
+            asChild={titleAsChild}
+            aria-label={t('card.cardTitle', {
+              title,
+              defaultValue: `Card link: ${title}`,
+            })}
+          >
+            {titleAsChild ? children : title}
+          </Link>
+        )}
+      </div>
     );
-    return <div className="gi-card-title">{titleContent}</div>;
   };
 
   const renderAction = (action: Action) => {

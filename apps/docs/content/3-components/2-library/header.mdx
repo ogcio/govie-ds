@@ -706,19 +706,34 @@ For instance, you can use the `react-router-link` or `next/link` component to li
   </TabPanel>
 </Tabs>
 
-### Header with utility slot
+### Header with secondary links as slot
 
 <ComponentContainer fullWidth>
   <Header
     title="Application title"
-    utilitySlot={
-      <Paragraph size="sm" className="gi-text-white">
-        Hello John |{' '}
-        <Link appearance="light" href="/logout">
-          Logout
-        </Link>
-      </Paragraph>
-    }
+    secondaryLinks={[
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: (
+          <a href="#" data-raw="true">
+            English
+          </a>
+        ),
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John |{' '}
+            <a href="#" data-raw="true">
+              Logout
+            </a>
+          </Paragraph>
+        ),
+      },
+    ]}
   />
 </ComponentContainer>
 
@@ -755,14 +770,22 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 
     <Header
       title="Application title"
-      utilitySlot={
-        <Paragraph size="sm" className="gi-text-white">
-          Hello John |{' '}
-          <Link appearance="light" href="/logout">
-            Logout
-          </Link>
-        </Paragraph>
-      }
+       secondaryLinks={[
+          {
+            href: '#',
+            label: 'Gaeilge',
+          },
+          {
+            slot: <a href="#">English</a>,
+          },
+          {
+            slot: (
+              <Paragraph>
+                Hello John | <a href="#">Logout</a>
+              </Paragraph>
+            ),
+          },
+        ]}
     />
     ```
 
@@ -785,10 +808,10 @@ Props for the `Header` component:
 - **`addDefaultMobileMenu`** (optional): If true, the default mobile menu is included in the header.
 - **`mobileMenuLabel`** (optional): The label for the mobile menu.
 - **`items`** (optional): A list of `HeaderItem` objects to include in the header.
-- **`secondaryLinks`** deprecated (optional): A list of secondary links for the header.
+- **`secondaryLinks`** (optional): A list of secondary links for the header.
   - `href`: The URL for the link.
   - `label`: The label for the link.
-- **`utilitySlot`** (optional): A node rendered in the utility area of the header. Often used for custom links.
+  - `slot`: A ReactNode element. It's recommended to wrap it with a `Paragraph` component or a link component (e.g., NextLink).
 - **`fullWidth`** (optional): If true, the header will span the full width of the container.
 - **`showTitleOnMobile`** (optional): If true, the header title will be shown on mobile.
 - **`dataTestid`** (optional): Custom test ID for the header.

@@ -273,7 +273,7 @@ const createHeader = (arguments_: HeaderProps) => {
   menuContainer.append(wrapper1);
   menuContainer.append(wrapper2);
 
-  if (arguments_.secondaryLinks || arguments_.utilitySlot) {
+  if (arguments_.secondaryLinks?.length) {
     const secondaryBar = document.createElement('div');
     secondaryBar.className = `${secondaryBarClassNames} gi-order-1`;
     header.append(secondaryBar);
@@ -288,21 +288,22 @@ const createHeader = (arguments_: HeaderProps) => {
       for (const link of arguments_.secondaryLinks) {
         const li = document.createElement('li');
 
-        const secondaryLink = document.createElement('a');
-        secondaryLink.href = link.href;
-        secondaryLink.textContent = link.label;
-        secondaryLink.className = secondaryItemClassNames;
+        if (link.slot) {
+          const slotWrapper = document.createElement('div');
+          slotWrapper.className = 'gi-header-secondary-item-slot';
+          slotWrapper.innerHTML = link.slot;
+          li.append(slotWrapper);
+        } else if (link.href && link.label) {
+          const secondaryLink = document.createElement('a');
+          secondaryLink.href = link.href;
+          secondaryLink.textContent = link.label;
+          secondaryLink.className = secondaryItemClassNames;
 
-        li.append(secondaryLink);
+          li.append(secondaryLink);
+        }
         list.append(li);
       }
       secondaryBarContainer.append(list);
-    }
-
-    if (arguments_.utilitySlot) {
-      const utilityWrapper = document.createElement('div');
-      utilityWrapper.innerHTML = arguments_.utilitySlot;
-      secondaryBarContainer.append(utilityWrapper);
     }
   }
 
@@ -963,46 +964,27 @@ export const ShowTitleOnMobile: Story = {
   },
   render: createElement,
 };
-
 export const WithUtilitySlot: Story = {
   args: {
     logo: {
       href: 'path',
       external: true,
     },
-    items: [
+    title: 'Title',
+    secondaryLinks: [
       {
-        itemType: 'link',
         href: '#',
-        label: 'Internal Nav',
-        showItemMode: 'desktop-only',
+        label: 'Gaeilge',
       },
       {
-        itemType: 'link',
-        href: '#',
-        external: true,
-        label: 'External Nav',
-        showItemMode: 'desktop-only',
+        slot: `<a href="#">English</a>`,
       },
       {
-        itemType: 'link',
-        icon: 'attach_file',
-        href: '#',
-        label: 'Internal Tool',
-        showItemMode: 'desktop-only',
-      },
-      {
-        itemType: 'link',
-        icon: 'arrow_outward',
-        href: '#',
-        external: true,
-        label: 'External Tool',
-        showItemMode: 'desktop-only',
+        slot: `
+          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+        `,
       },
     ],
-    utilitySlot: `<p class="gi-paragraph-sm gi-text-start gi-whitespace-normal gi-text-white">
-          Hello John | <a href="/logout" class="gi-link gi-link-light" data-appearance="light">Logout</a>
-        </p>`,
   },
   render: createElement,
 };
