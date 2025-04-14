@@ -174,31 +174,6 @@ export const Default: Story = {
   },
 };
 
-export const WithUtilitySlot: Story = {
-  args: {
-    logo: {
-      href: '/link',
-    },
-    utilitySlot: (
-      <Paragraph size="sm" className="gi-text-white">
-        Hello John |{' '}
-        <Link appearance="light" href="/logout">
-          Logout
-        </Link>
-      </Paragraph>
-    ),
-    items: [
-      {
-        label: 'Menu',
-        icon: 'menu',
-        itemType: 'slot',
-        component: <MobileHeaderMenuItems items={headerProps.items} />,
-        slotAppearance: 'drawer',
-      },
-    ],
-  },
-};
-
 export const DesktopDrawerDefaultMenu: Story = {
   args: {
     logo: {
@@ -298,6 +273,40 @@ export const WithSecondaryLinks: Story = {
         label: 'Gaeilge',
       },
     ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+};
+
+export const WithCustomSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: <a href="#">English</a>,
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John | <a href="#">Logout</a>
+          </Paragraph>
+        ),
+      },
+    ],
+    addDefaultMobileMenu: true,
     items: [
       {
         icon: 'search',
