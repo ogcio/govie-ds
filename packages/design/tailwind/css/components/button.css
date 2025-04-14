@@ -126,5 +126,5 @@
 }
 
 .gi-btn-group button {
-  @apply gi-min-w-[48px] gi-justify-center;
+  @apply gi-min-w-12 gi-justify-center;
 }
