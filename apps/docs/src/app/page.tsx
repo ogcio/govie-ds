@@ -1,9 +1,7 @@
 'use client';
 
 import { Prose } from '@/components/typography/prose';
-import analytics from '@/lib/analytics';
-import { config } from '@/lib/config';
-import { Heading, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
+import { Heading, Paragraph } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
@@ -80,25 +78,7 @@ export default function HomePage() {
       id="main"
       className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow"
     >
-      <PhaseBanner level="alpha">
-        <p className="text-gray-700 text-xs sm:text-md">
-          This is a new service - your{' '}
-          <Link
-            href={config.feedbackFormUrl}
-            noVisited
-            onClick={() => {
-              analytics.trackEvent({
-                category: 'feedback',
-                action: 'click',
-              });
-            }}
-          >
-            feedback
-          </Link>{' '}
-          will help us to improve it.
-        </p>
-      </PhaseBanner>
-      <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
+      <section className="flex flex-wrap lg:flex-nowrap gap-2xl mt-16">
         <Prose>
           <h1 className="leading-none sm:leading-normal">
             Gov IE Design System
@@ -110,14 +90,6 @@ export default function HomePage() {
             customisable, the Design System Building Block allows departments to
             create cohesive digital experiences effortlessly.
           </p>
-          {/* <Link
-            className="gi-not-prose"
-            href={config.signUpFormUrl}
-            asButton={{ variant: 'primary' }}
-          >
-            Sign up to learn more
-            <Icon icon="arrow_forward" />
-          </Link> */}
         </Prose>
         <div>
           <Image
