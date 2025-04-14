@@ -11,7 +11,7 @@ const Anchor = ({
   asChild,
   children,
   ...props
-}: React.PropsWithChildren<AnchorProps>) => {
+}: AnchorProps) => {
   const externalProps = external && {
     target: '_blank',
     rel: 'noreferrer noopener',

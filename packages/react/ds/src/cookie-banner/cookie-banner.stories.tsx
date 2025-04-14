@@ -28,48 +28,13 @@ export const Default: Story = {
       description:
         'The content that will be inserted the the default cookie banner',
     },
-    accept: {
-      control: 'object',
-      description:
-        'The content that will be inserted in the accepted cookie banner and the trigger button used to navigate there',
-      type: {
-        name: 'object',
-        value: {
-          children: {
-            name: 'string',
-          },
-          triggerButton: {
-            name: 'string',
-          },
-        },
-      },
-    },
-    reject: {
-      control: 'object',
-      description:
-        'The content that will be inserted in the rejected cookie banner and the trigger button used to navigate there',
-      type: {
-        name: 'object',
-        value: {
-          children: {
-            name: 'string',
-          },
-          triggerButton: {
-            name: 'string',
-          },
-        },
-      },
-    },
-    dismissButton: {
-      control: 'text',
-      description: 'The button used to hide the cookie banner',
-    },
     cookieLink: {
       control: 'text',
       description: 'A link used to navigate the user to the cookies page',
     },
   },
   args: {
+    showConsent: true,
     children: (
       <>
         <Heading as="h3" id="cookie-banner-title">
@@ -84,31 +49,8 @@ export const Default: Story = {
         </Paragraph>
       </>
     ),
-    accept: {
-      children: (
-        <>
-          <Heading as="h3">Accepted Title</Heading>
-          <Paragraph>
-            You’ve accepted analytics cookies. You can change your cookie
-            settings at any time.
-          </Paragraph>
-        </>
-      ),
-      triggerButton: <Button>Accept cookies</Button>,
-    },
-    reject: {
-      children: (
-        <>
-          <Heading as="h3">Rejected Title</Heading>
-          <Paragraph>
-            You’ve rejected analytics cookies. You can change your cookie
-            settings at any time.
-          </Paragraph>
-        </>
-      ),
-      triggerButton: <Button>Reject cookies</Button>,
-    },
+    accept: <Button>Accept cookies</Button>,
+    reject: <Button>Reject cookies</Button>,
     cookieLink: <Link href="#">See Cookies</Link>,
-    dismissButton: <Button>Hide this message</Button>,
   },
 };

@@ -12,26 +12,24 @@ export const BreadcrumbEllipsis = () => (
 export const BreadcrumbLink = ({
   href,
   children,
+  asChild,
   ...ariaProps
 }: BreadcrumbLinkProps) => (
   <Link
     noColor
+    asChild={asChild}
     href={href}
     aria-label={`${children} page`}
     size="sm"
+    className="gi-breadcrumbs-link "
     {...ariaProps}
   >
-    <span className="gi-breadcrumbs-link">{children}</span>
+    {children}
   </Link>
 );
 
-export const BreadcrumbCurrentLink = ({
-  href,
-  children,
-}: BreadcrumbLinkProps) => (
-  <BreadcrumbLink href={href} aria-current="page">
-    {children}
-  </BreadcrumbLink>
+export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => (
+  <BreadcrumbLink {...props} aria-current="page" />
 );
 
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
