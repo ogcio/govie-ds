@@ -78,7 +78,7 @@ export default function HomePage() {
       id="main"
       className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow"
     >
-      <section className="flex flex-wrap lg:flex-nowrap gap-2xl mt-16">
+      <section className="flex flex-wrap lg:flex-nowrap gap-2xl pt-8">
         <Prose>
           <h1 className="leading-none sm:leading-normal">
             Gov IE Design System
