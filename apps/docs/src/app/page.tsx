@@ -1,9 +1,10 @@
-import { Heading, Icon, Link, Paragraph, PhaseBanner } from '@govie-ds/react';
+'use client';
+
+import { Prose } from '@/components/typography/prose';
+import { Heading, Paragraph } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';
-import { Prose } from '@/components/typography/prose';
-import { config } from '@/lib/config';
 
 const benefits = [
   {
@@ -77,18 +78,11 @@ export default function HomePage() {
       id="main"
       className="gi-layout-container flex flex-col sm:pb-2xl gap-5xl grow"
     >
-      <PhaseBanner level="alpha">
-        <p className="text-gray-700 text-xs sm:text-md">
-          This is a new service - your{' '}
-          <Link href={config.feedbackFormUrl} noVisited>
-            feedback
-          </Link>{' '}
-          will help us to improve it.
-        </p>
-      </PhaseBanner>
-      <section className="flex flex-wrap lg:flex-nowrap gap-2xl">
+      <section className="flex flex-wrap lg:flex-nowrap gap-2xl pt-8">
         <Prose>
-          <h1 className="leading-none sm:leading-normal">Design System</h1>
+          <h1 className="leading-none sm:leading-normal">
+            Gov IE Design System
+          </h1>
           <p>
             The Design System Building Block ensures efficiency, quality and
             consistency across public sector departments. Engineered to be
@@ -96,14 +90,6 @@ export default function HomePage() {
             customisable, the Design System Building Block allows departments to
             create cohesive digital experiences effortlessly.
           </p>
-          {/* <Link
-            className="gi-not-prose"
-            href={config.signUpFormUrl}
-            asButton={{ variant: 'primary' }}
-          >
-            Sign up to learn more
-            <Icon icon="arrow_forward" />
-          </Link> */}
         </Prose>
         <div>
           <Image

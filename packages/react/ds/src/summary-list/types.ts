@@ -15,7 +15,10 @@ export type SummaryListValueProps = {
   children: React.ReactNode;
 };
 
-export type SummaryListActionProps = Pick<LinkProps, 'children' | 'href'>;
+export type SummaryListActionProps = Pick<
+  LinkProps,
+  'children' | 'href' | 'asChild'
+>;
 
 export type SummaryListRowProps = {
   label: string;

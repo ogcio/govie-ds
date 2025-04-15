@@ -3,6 +3,7 @@ import { Icon } from '@govie-ds/react';
 import copy from 'copy-text-to-clipboard';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
+import analytics from '@/lib/analytics';
 
 export function CopyToClipboardButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -20,6 +21,12 @@ export function CopyToClipboardButton({ text }: { text: string }) {
   return (
     <button
       onClick={() => {
+        analytics.trackEvent({
+          category: 'copy content',
+          action: 'click',
+          name: text,
+        });
+
         copy(text);
         setCopied(true);
       }}

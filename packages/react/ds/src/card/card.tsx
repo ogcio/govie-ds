@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon, IconProps } from '../icon/icon.js';
 import { Link, LinkProps } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -37,7 +38,7 @@ type MediaContent =
       config: IframePropTypes;
     };
 
-export type CardProps = {
+export type CardProps = PropsWithChildren<{
   type: 'vertical' | 'horizontal';
   inset?: 'body' | 'full' | 'none';
   title?: string;
@@ -48,7 +49,8 @@ export type CardProps = {
   content?: string;
   action?: Action;
   dataTestid?: string;
-};
+  titleAsChild?: boolean;
+}>;
 
 export const Card = ({
   type = 'vertical',
@@ -61,6 +63,8 @@ export const Card = ({
   href,
   tag,
   dataTestid,
+  titleAsChild,
+  children,
 }: CardProps) => {
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset}`;
@@ -111,26 +115,49 @@ export const Card = ({
   };
 
   const renderTitle = () => {
-    const titleContent = href ? (
-      <Link href={href} aria-label={`Card link: ${title}`}>
-        {title}
-      </Link>
-    ) : (
-      title
+    const isTitleOnly = !title || (!href && !titleAsChild);
+    return (
+      <div className="gi-card-title">
+        {isTitleOnly ? (
+          title
+        ) : (
+          <Link
+            href={href}
+            asChild={titleAsChild}
+            aria-label={t('card.cardTitle', {
+              title,
+              defaultValue: `Card link: ${title}`,
+            })}
+          >
+            {titleAsChild ? children : title}
+          </Link>
+        )}
+      </div>
     );
-    return <div className="gi-card-title">{titleContent}</div>;
   };
 
   const renderAction = (action: Action) => {
     if (action.type === 'link') {
       return (
-        <Link {...action} aria-label={`Action link: ${action.children}`}>
+        <Link
+          {...action}
+          aria-label={t('card.actionLink', {
+            children: action.children,
+            defaultValue: `Action link: ${action.children}`,
+          })}
+        >
           {action.children}
         </Link>
       );
     }
     return (
-      <Button {...action} aria-label={`Action button: ${action.children}`}>
+      <Button
+        {...action}
+        aria-label={t('card.actionButton', {
+          children: action.children,
+          defaultValue: `Action button: ${action.children}`,
+        })}
+      >
         {action.children}
       </Button>
     );
@@ -151,14 +178,23 @@ export const Card = ({
             {subTitle && (
               <div
                 className="gi-card-subheading"
-                aria-label={`Subtitle: ${subTitle}`}
+                aria-label={t('card.subTitle', {
+                  subTitle,
+                  defaultValue: `Subtitle: ${subTitle}`,
+                })}
               >
                 {subTitle}
               </div>
             )}
           </div>
           {tag?.text && tag.type && (
-            <div className="gi-card-tag" aria-label={`Tag: ${tag.text}`}>
+            <div
+              className="gi-card-tag"
+              aria-label={t('card.tag', {
+                tag: tag.text,
+                defaultValue: `Tag: ${tag.text}`,
+              })}
+            >
               <Tag text={tag.text} type={tag.type} />
             </div>
           )}

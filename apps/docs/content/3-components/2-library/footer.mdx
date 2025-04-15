@@ -154,7 +154,11 @@ The GOV.IE footer provides copyright, licensing and other information about your
     }
     secondarySlot={
       <Stack direction={'column'} gap={4}>
-        <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          wrap
+        >
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -203,7 +207,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
         </Stack>
       </Stack>
     }
-    utilitySlot= {
+    utilitySlot={
       <Stack
         direction={{ base: 'column', xs: 'column', md: 'row' }}
         gap={4}
@@ -239,6 +243,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
     ```html
     <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
       <div class="gi-footer-container">
+        <div data-testid="govie-container" class="gi-layout-container">
           <div aria-label="Primary footer slot">
               <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
                   <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
@@ -349,6 +354,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
                   </div>
               </div>
           </div>
+        </div>
       </div>
       <div class="gi-footer-utility" aria-label="Utility links">
           <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
@@ -584,7 +590,11 @@ The GOV.IE footer provides copyright, licensing and other information about your
   <Footer
     secondarySlot={
       <Stack direction={'column'} gap={4}>
-        <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
+        <Stack
+          direction={{ base: 'column', xs: 'column', md: 'row' }}
+          gap={4}
+          wrap
+        >
           <Link noColor href="/about-us" aria-label="About Us">
             About Us
           </Link>
@@ -633,7 +643,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
         </Stack>
       </Stack>
     }
-    utilitySlot= {
+    utilitySlot={
       <Stack
         direction={{ base: 'column', xs: 'column', md: 'row' }}
         gap={4}
@@ -669,63 +679,65 @@ The GOV.IE footer provides copyright, licensing and other information about your
     ```html
     <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
       <div class="gi-footer-container">
-        <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
-          <div class="gi-footer-logo">
-              <img class="gi-h-16"
-                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
-                  alt="Gov.ie logo" />
-          </div>
-          <div class="gi-footer-secondary-slot-content">
-              <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap"
-                  role="region" style="height:100%">
-                  <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
-                      role="region" style="height:100%" data-testid="govie-stack-item-0"><a href="/about-us"
-                          aria-label="About Us" class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">About
-                          Us</a><a href="/contact" aria-label="Contact" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-1">Contact</a><a href="/sitemap" aria-label="Sitemap"
-                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-2">Sitemap</a><a
-                          href="/privacy-policy" aria-label="Privacy Policy" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-3">Privacy Policy</a><a href="/terms-of-service"
-                          aria-label="Terms of Service" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-4">Terms of Service</a><a href="/careers" aria-label="Careers"
-                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-5">Careers</a><a href="/blog"
-                          aria-label="Blog" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-6">Blog</a><a href="/faq" aria-label="FAQ"
-                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-7">FAQ</a><a href="/support"
-                          aria-label="Support" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-8">Support</a><a href="/press" aria-label="Press"
-                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-9">Press</a><a
-                          href="/partners" aria-label="Partners" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-10">Partners</a><a href="/investors" aria-label="Investors"
-                          class="gi-link gi-link-inherit" data-testid="govie-stack-item-11">Investors</a><a
-                          href="/events" aria-label="Events" class="gi-link gi-link-inherit"
-                          data-testid="govie-stack-item-12">Events</a></div>
-                  <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-nowrap"
-                      role="region" style="height:100%" data-testid="govie-stack-item-1"><svg width="24px"
-                          height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M13.8623 10.4686L21.1542 2H19.4263L13.0947 9.3532L8.03772 2H2.20508L9.85224 13.1193L2.20508 22H3.93312L10.6194 14.2348L15.96 22H21.7926L13.8623 10.4686ZM4.55576 3.29968H7.20993L19.4271 20.7594H16.7729L4.55576 3.29968Z"
-                              fill="#0B0C0C"></path>
-                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M12 1C5.925 1 1 5.95031 1 12.0565C1 17.5999 5.0625 22.1768 10.356 22.9764V14.987H7.6345V12.0807H10.356V10.1468C10.356 6.9449 11.908 5.53921 14.5555 5.53921C15.8235 5.53921 16.494 5.63369 16.8115 5.67692V8.21389H15.0055C13.8815 8.21389 13.489 9.28486 13.489 10.492V12.0807H16.783L16.336 14.987H13.489V23C18.858 22.2678 23 17.6537 23 12.0565C23 5.95031 18.075 1 12 1Z"
-                              fill="#0B0C0C"></path>
-                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M5.76884 3.30802C8.29094 5.20793 11.0042 9.05965 12 11.1266V16.5861C12 16.4699 11.9553 16.6012 11.8591 16.8841C11.3393 18.4158 9.30912 24.394 4.66678 19.6148C2.22237 17.0986 3.354 14.5823 7.8035 13.8226C5.25803 14.2571 2.39631 13.5391 1.61119 10.7237C1.385 9.91387 1 4.92537 1 4.25162C1 0.876681 3.94903 1.93749 5.76884 3.30802ZM18.2312 3.30802C15.7091 5.20793 12.9958 9.05965 12 11.1266V16.5861C12 16.4699 12.0447 16.6012 12.1409 16.8841C12.6607 18.4158 14.6909 24.394 19.3332 19.6148C21.7776 17.0986 20.646 14.5823 16.1965 13.8226C18.742 14.2571 21.6037 13.5391 22.3888 10.7237C22.615 9.91387 23 4.92537 23 4.25162C23 0.876681 20.0513 1.93749 18.2312 3.30802Z"
-                              fill="#0B0C0C"></path>
-                      </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M21.3719 1C22.2689 1 22.9994 1.71022 22.9994 2.58626V21.4125C22.9994 22.2886 22.2689 23 21.3719 23H2.62264C1.72745 23 1 22.2886 1 21.4125V2.58626C1 1.71022 1.72745 1 2.62264 1H21.3719ZM19.7469 19.7463V13.9885C19.7469 11.1609 19.1364 8.98705 15.8326 8.98705C14.2451 8.98705 13.1804 9.8575 12.7453 10.6828H12.7007V9.24759H9.57286V19.7463H12.8319V14.5536C12.8319 13.184 13.091 11.8571 14.7888 11.8571C16.4633 11.8571 16.4843 13.4233 16.4843 14.6408V19.7463H19.7469ZM7.52588 9.24759H4.25963V19.7463H7.52588V9.24759ZM5.89362 4.02869C4.84566 4.02869 4.00064 4.87646 4.00064 5.92085C4.00064 6.9655 4.84566 7.81323 5.89362 7.81323C6.93745 7.81323 7.78488 6.9655 7.78488 5.92085C7.78488 4.87646 6.93745 4.02869 5.89362 4.02869Z"
-                              fill="#0B0C0C"></path>
-                      </svg></div>
+        <div data-testid="govie-container" class="gi-layout-container">
+          <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
+            <div class="gi-footer-logo">
+                <img class="gi-h-16"
+                    src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+                    alt="Gov.ie logo" />
+            </div>
+            <div class="gi-footer-secondary-slot-content">
+                <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap"
+                    role="region" style="height:100%">
+                    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap"
+                        role="region" style="height:100%" data-testid="govie-stack-item-0"><a href="/about-us"
+                            aria-label="About Us" class="gi-link gi-link-inherit" data-testid="govie-stack-item-0">About
+                            Us</a><a href="/contact" aria-label="Contact" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-1">Contact</a><a href="/sitemap" aria-label="Sitemap"
+                            class="gi-link gi-link-inherit" data-testid="govie-stack-item-2">Sitemap</a><a
+                            href="/privacy-policy" aria-label="Privacy Policy" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-3">Privacy Policy</a><a href="/terms-of-service"
+                            aria-label="Terms of Service" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-4">Terms of Service</a><a href="/careers" aria-label="Careers"
+                            class="gi-link gi-link-inherit" data-testid="govie-stack-item-5">Careers</a><a href="/blog"
+                            aria-label="Blog" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-6">Blog</a><a href="/faq" aria-label="FAQ"
+                            class="gi-link gi-link-inherit" data-testid="govie-stack-item-7">FAQ</a><a href="/support"
+                            aria-label="Support" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-8">Support</a><a href="/press" aria-label="Press"
+                            class="gi-link gi-link-inherit" data-testid="govie-stack-item-9">Press</a><a
+                            href="/partners" aria-label="Partners" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-10">Partners</a><a href="/investors" aria-label="Investors"
+                            class="gi-link gi-link-inherit" data-testid="govie-stack-item-11">Investors</a><a
+                            href="/events" aria-label="Events" class="gi-link gi-link-inherit"
+                            data-testid="govie-stack-item-12">Events</a></div>
+                    <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-nowrap"
+                        role="region" style="height:100%" data-testid="govie-stack-item-1"><svg width="24px"
+                            height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.8623 10.4686L21.1542 2H19.4263L13.0947 9.3532L8.03772 2H2.20508L9.85224 13.1193L2.20508 22H3.93312L10.6194 14.2348L15.96 22H21.7926L13.8623 10.4686ZM4.55576 3.29968H7.20993L19.4271 20.7594H16.7729L4.55576 3.29968Z"
+                                fill="#0B0C0C"></path>
+                        </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 1C5.925 1 1 5.95031 1 12.0565C1 17.5999 5.0625 22.1768 10.356 22.9764V14.987H7.6345V12.0807H10.356V10.1468C10.356 6.9449 11.908 5.53921 14.5555 5.53921C15.8235 5.53921 16.494 5.63369 16.8115 5.67692V8.21389H15.0055C13.8815 8.21389 13.489 9.28486 13.489 10.492V12.0807H16.783L16.336 14.987H13.489V23C18.858 22.2678 23 17.6537 23 12.0565C23 5.95031 18.075 1 12 1Z"
+                                fill="#0B0C0C"></path>
+                        </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5.76884 3.30802C8.29094 5.20793 11.0042 9.05965 12 11.1266V16.5861C12 16.4699 11.9553 16.6012 11.8591 16.8841C11.3393 18.4158 9.30912 24.394 4.66678 19.6148C2.22237 17.0986 3.354 14.5823 7.8035 13.8226C5.25803 14.2571 2.39631 13.5391 1.61119 10.7237C1.385 9.91387 1 4.92537 1 4.25162C1 0.876681 3.94903 1.93749 5.76884 3.30802ZM18.2312 3.30802C15.7091 5.20793 12.9958 9.05965 12 11.1266V16.5861C12 16.4699 12.0447 16.6012 12.1409 16.8841C12.6607 18.4158 14.6909 24.394 19.3332 19.6148C21.7776 17.0986 20.646 14.5823 16.1965 13.8226C18.742 14.2571 21.6037 13.5391 22.3888 10.7237C22.615 9.91387 23 4.92537 23 4.25162C23 0.876681 20.0513 1.93749 18.2312 3.30802Z"
+                                fill="#0B0C0C"></path>
+                        </svg><svg width="24px" height="24px" viewBox="0 0 24 24" class="gi-block" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21.3719 1C22.2689 1 22.9994 1.71022 22.9994 2.58626V21.4125C22.9994 22.2886 22.2689 23 21.3719 23H2.62264C1.72745 23 1 22.2886 1 21.4125V2.58626C1 1.71022 1.72745 1 2.62264 1H21.3719ZM19.7469 19.7463V13.9885C19.7469 11.1609 19.1364 8.98705 15.8326 8.98705C14.2451 8.98705 13.1804 9.8575 12.7453 10.6828H12.7007V9.24759H9.57286V19.7463H12.8319V14.5536C12.8319 13.184 13.091 11.8571 14.7888 11.8571C16.4633 11.8571 16.4843 13.4233 16.4843 14.6408V19.7463H19.7469ZM7.52588 9.24759H4.25963V19.7463H7.52588V9.24759ZM5.89362 4.02869C4.84566 4.02869 4.00064 4.87646 4.00064 5.92085C4.00064 6.9655 4.84566 7.81323 5.89362 7.81323C6.93745 7.81323 7.78488 6.9655 7.78488 5.92085C7.78488 4.87646 6.93745 4.02869 5.89362 4.02869Z"
+                                fill="#0B0C0C"></path>
+                        </svg></div>
+                </div>
               </div>
             </div>
-        </div>
+          </div>
       </div>
       <div class="gi-footer-utility" aria-label="Utility links">
         <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
@@ -741,6 +753,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
     </footer>
 
     ```
+
   </TabPanel>
   <TabPanel value="tab22">
     ```jsx
@@ -824,6 +837,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
       }
     />
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -831,7 +845,7 @@ The GOV.IE footer provides copyright, licensing and other information about your
 
 <ComponentContainer fullWidth>
   <Footer
-    utilitySlot= {
+    utilitySlot={
       <Stack
         direction={{ base: 'column', xs: 'column', md: 'row' }}
         gap={4}
@@ -867,11 +881,13 @@ The GOV.IE footer provides copyright, licensing and other information about your
     ```html
     <footer class="gi-footer" data-module="gieds-footer" role="contentinfo" aria-label="Footer">
       <div class="gi-footer-container">
-        <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
-          <div class="gi-footer-logo">
-            <img class="gi-h-16"
-              src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
-              alt="Gov.ie logo" />
+        <div data-testid="govie-container" class="gi-layout-container">
+          <div class="gi-footer-secondary-slot" aria-label="Secondary footer slot">
+            <div class="gi-footer-logo">
+              <img class="gi-h-16"
+                src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-gold-text-green.svg"
+                alt="Gov.ie logo" />
+            </div>
           </div>
         </div>
       </div>
@@ -921,9 +937,9 @@ The GOV.IE footer provides copyright, licensing and other information about your
       }
     />
     ```
+
   </TabPanel>
 </Tabs>
-
 
 ## Usage
 

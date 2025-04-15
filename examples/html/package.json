@@ -1,0 +1,14 @@
+{
+  "name": "@govie-ds/examples-html",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ./build-scripts/copy-html-ds.js",
+    "dev": "pnpm build && open index.html"
+  },
+  "dependencies": {
+    "@govie-ds/theme-govie": "workspace:*",
+    "@govie-ds/html": "workspace:*"
+  }
+}

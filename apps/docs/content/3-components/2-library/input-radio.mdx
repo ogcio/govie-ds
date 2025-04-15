@@ -38,29 +38,22 @@ libraries:
   <TabPanel value="tab11">
   ```html
   <fieldset data-module="gieds-radios">
-    <label class="gi-text-md gi-label gi-mb-2" aria-label="Where do you live?">Where do you live?</label>
+    <div class="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
+      <div><label class="gi-text-md gi-label gi-font-bold">Where do you live?</label></div>
+    </div>
     <div class="gi-input-group-container">
-        <div class="gi-input-group-options-container">
-            <div role="radiogroup" class="gi-input-group-options-stacked">
-                <div class="gi-input-radio-container">
-                    <div class="gi-radio-input-container">
-                      <input id="dublin" class="gi-input-radio-base gi-input-radio-medium" aria-label="dublin" aria-checked="false" aria-required="false" type="radio" value="dublin" name="city">
-                      <label for="dublin" class="gi-radio-label" aria-hidden="true">Dublin</label>
-                    </div>
-                </div>
-                <div class="gi-input-radio-container">
-                    <div class="gi-radio-input-container">
-                      <input id="cork" class="gi-input-radio-base gi-input-radio-medium" aria-label="cork" aria-checked="false" aria-required="false" type="radio" value="cork" name="city">
-                      <label for="cork" class="gi-radio-label" aria-hidden="true">Cork</label></div>
-                </div>
-                <div class="gi-input-radio-container">
-                    <div class="gi-radio-input-container">
-                      <input id="galway" class="gi-input-radio-base gi-input-radio-medium" aria-label="galway" aria-checked="false" aria-required="false" type="radio" value="galway" name="city">
-                      <label for="galway" class="gi-radio-label" aria-hidden="true">Galway</label>
-                    </div>
-                </div>
-            </div>
+      <div class="gi-input-group-options-container">
+        <div role="radiogroup" class="gi-input-group-options-stacked">
+          <div class="gi-input-radio-container"><input id="r0" class="gi-input-radio-medium"
+              aria-required="false" type="radio" value="dublin" name="city"><label for="r0">Dublin</label>
+          </div>
+          <div class="gi-input-radio-container"><input id="r1" class="gi-input-radio-medium"
+              aria-required="false" type="radio" value="cork" name="city"><label for="r1">Cork</label></div>
+          <div class="gi-input-radio-container"><input id="r2" class="gi-input-radio-medium"
+              aria-required="false" type="radio" value="galway" name="city"><label for="r2">Galway</label>
+          </div>
         </div>
+      </div>
     </div>
   </fieldset>
   ```

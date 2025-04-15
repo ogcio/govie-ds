@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.2.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.4...html-lib-v1.2.0) (2025-04-14)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Bug Fixes
+
+* add vertical align prop on table data and header ([#521](https://github.com/ogcio/govie-ds/issues/521)) ([907c141](https://github.com/ogcio/govie-ds/commit/907c14178209626886e00cc3dcad683a549cd5db))
+* html header and modal ([#516](https://github.com/ogcio/govie-ds/issues/516)) ([edbc035](https://github.com/ogcio/govie-ds/commit/edbc035ed90f2b5fbf98320cba441c7b5ea2d0de))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.4.0
+
+## [1.1.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.3...html-lib-v1.1.4) (2025-04-09)
+
+
+### Bug Fixes
+
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* icon button sizes ([#508](https://github.com/ogcio/govie-ds/issues/508)) ([1e6c56d](https://github.com/ogcio/govie-ds/commit/1e6c56dc9348f4479fcf45e0a94f56d4935398bc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.3.0
+
 ## [1.1.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.2...html-lib-v1.1.3) (2025-04-03)
 
 

@@ -1,6 +1,32 @@
 # Changelog
 
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.3.0...design-tailwind-v1.4.0) (2025-04-14)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Bug Fixes
+
+* add vertical align prop on table data and header ([#521](https://github.com/ogcio/govie-ds/issues/521)) ([907c141](https://github.com/ogcio/govie-ds/commit/907c14178209626886e00cc3dcad683a549cd5db))
+
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.3...design-tailwind-v1.3.0) (2025-04-09)
+
+
+### Features
+
+* Sync Link component with figma ([#505](https://github.com/ogcio/govie-ds/issues/505)) ([d7b24f0](https://github.com/ogcio/govie-ds/commit/d7b24f0fd543874f3b68c539550dd314e8f448da))
+
+
+### Bug Fixes
+
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* Fix TabItem onTabSelected handler  ([#511](https://github.com/ogcio/govie-ds/issues/511)) ([ba191e7](https://github.com/ogcio/govie-ds/commit/ba191e7c3dc08bbd7b5f8f23fad8ebf1ac38d7da))
+
 ## [1.2.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.2...design-tailwind-v1.2.3) (2025-04-03)
 
 

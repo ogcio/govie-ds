@@ -1,12 +1,25 @@
-import type { LinkProps } from '../link/link.js';
+import { PropsWithChildren } from 'react';
 import {
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
 } from './breadcrumbs.js';
 
-export type BreadcrumbLinkProps = Pick<LinkProps, 'href' | 'children'> &
+type BreadcrumbLinkBaseProps = PropsWithChildren<{
+  asChild?: false;
+  href: string;
+}> &
   React.AriaAttributes;
+
+type BreadcrumbLinkAsChildProps = PropsWithChildren<{
+  asChild: true;
+  href?: string;
+}> &
+  React.AriaAttributes;
+
+export type BreadcrumbLinkProps =
+  | BreadcrumbLinkBaseProps
+  | BreadcrumbLinkAsChildProps;
 
 type BreadcrumbChildrenType = React.ReactElement<
   | typeof BreadcrumbLink

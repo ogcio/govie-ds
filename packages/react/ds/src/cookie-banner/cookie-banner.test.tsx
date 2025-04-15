@@ -9,16 +9,10 @@ import {
 import { CookieBanner, CookieBannerProps } from './cookie-banner.js';
 
 const standardProps: CookieBannerProps = {
+  showConsent: true,
   children: ChildrenDefault,
-  accept: {
-    children: ChildrenAccepted,
-    triggerButton: <Button>Accept cookies</Button>,
-  },
-  reject: {
-    children: ChildrenRejected,
-    triggerButton: <Button>Reject cookies</Button>,
-  },
-  dismissButton: <Button>'Hide this message'</Button>,
+  accept: <Button>Accept cookies</Button>,
+  reject: <Button>Reject cookies</Button>,
   cookieLink: <Link href="#">See Cookies</Link>,
 };
 

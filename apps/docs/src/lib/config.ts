@@ -6,6 +6,6 @@ export type DocumentSiteConfiguration = {
 
 export const config: DocumentSiteConfiguration = {
   showDrafts: process.env.SHOW_DRAFTS === 'true',
-  feedbackFormUrl: process.env.FEEDBACK_FORM_URL || '',
-  signUpFormUrl: process.env.SIGNUP_FORM_URL || '',
+  feedbackFormUrl: process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL || '',
+  signUpFormUrl: process.env.NEXT_PUBLIC_SIGNUP_FORM_URL || '',
 };

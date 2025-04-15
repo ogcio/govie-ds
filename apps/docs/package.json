@@ -1,12 +1,12 @@
 {
   "name": "@govie-ds/docs",
-  "version": "1.2.3",
+  "version": "1.4.0",
   "private": true,
   "type": "module",
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
-    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo",
+    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo -p 80",
     "build": "pnpm build:styles && pnpm build:content && pnpm build:site",
     "build:content": "contentlayer2 build",
     "build:site": "next build",
@@ -31,6 +31,7 @@
     "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/theme-hse": "workspace:*",
     "@govie-ds/tokens": "workspace:*",
+    "@ogcio/analytics-sdk": "^0.1.0-beta.15",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@tanstack/match-sorter-utils": "^8.19.4",

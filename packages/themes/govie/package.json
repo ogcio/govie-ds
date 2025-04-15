@@ -23,7 +23,7 @@
     "build": "pnpm build:tokens && pnpm build:source",
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup",
-    "postbuild": "zip -r theme.zip dist"
+    "dist": "zip -r theme.zip dist"
   },
   "prettier": "@govie-ds/prettier-config",
   "keywords": [],

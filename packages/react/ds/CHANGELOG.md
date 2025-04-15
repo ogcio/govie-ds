@@ -1,6 +1,50 @@
 # Changelog
 
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.3.0...react-lib-v1.4.0) (2025-04-14)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Bug Fixes
+
+* add vertical align prop on table data and header ([#521](https://github.com/ogcio/govie-ds/issues/521)) ([907c141](https://github.com/ogcio/govie-ds/commit/907c14178209626886e00cc3dcad683a549cd5db))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.4.0
+
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.3...react-lib-v1.3.0) (2025-04-09)
+
+
+### Features
+
+* Sync Link component with figma ([#505](https://github.com/ogcio/govie-ds/issues/505)) ([d7b24f0](https://github.com/ogcio/govie-ds/commit/d7b24f0fd543874f3b68c539550dd314e8f448da))
+
+
+### Bug Fixes
+
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* Fix TabItem onTabSelected handler  ([#511](https://github.com/ogcio/govie-ds/issues/511)) ([ba191e7](https://github.com/ogcio/govie-ds/commit/ba191e7c3dc08bbd7b5f8f23fad8ebf1ac38d7da))
+* icon button sizes ([#508](https://github.com/ogcio/govie-ds/issues/508)) ([1e6c56d](https://github.com/ogcio/govie-ds/commit/1e6c56dc9348f4479fcf45e0a94f56d4935398bc))
+* Removing default size for the link ([#515](https://github.com/ogcio/govie-ds/issues/515)) ([adda944](https://github.com/ogcio/govie-ds/commit/adda9441f4b6c150f035328d3c6ffdd1868969d9))
+* update files with missing locale keys ([#499](https://github.com/ogcio/govie-ds/issues/499)) ([9d51ef2](https://github.com/ogcio/govie-ds/commit/9d51ef2953c0d549ede4fc3bf4e3e3af1c93981f))
+* update pagination and use breakpoint hook ([#501](https://github.com/ogcio/govie-ds/issues/501)) ([3edb397](https://github.com/ogcio/govie-ds/commit/3edb397440cdb6bd21d00ed1c11f716eb7fa31ab))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.3.0
+
 ## [1.2.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.2...react-lib-v1.2.3) (2025-04-03)
 
 

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
@@ -56,16 +57,25 @@ type ConditionalProps =
 
 export type HeaderItem = CommonProps & ConditionalProps;
 
+export type SecondaryLink =
+  | {
+      href: string;
+      label: string;
+      slot?: undefined;
+    }
+  | {
+      slot: React.ReactNode;
+      href?: undefined;
+      label?: undefined;
+    };
+
 export type HeaderProps = {
   title?: string;
   logo?: LogoProps;
   addDefaultMobileMenu?: boolean;
   mobileMenuLabel?: string;
   items?: HeaderItem[];
-  secondaryLinks?: {
-    href: string;
-    label: string;
-  }[];
+  secondaryLinks?: SecondaryLink[];
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;
