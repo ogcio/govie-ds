@@ -3,7 +3,7 @@ import { FormField } from '../../forms/form-field.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {
-  title: 'Form/ButtonGroup',
+  title: 'Form/Button/ButtonGroup',
   component: ButtonGroup,
   parameters: {
     docs: {
