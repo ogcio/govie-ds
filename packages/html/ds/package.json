@@ -28,7 +28,7 @@
     "build:properties": "tsx scripts/build-properties.ts",
     "build:ts": "vite build",
     "build:styles": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
-    "postbuild": "zip -r govie-frontend.zip dist",
+    "dist": "zip -r govie-frontend.zip dist",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "STORYBOOK_ENV=prod storybook build --stats-json",
     "storybook:test": "vitest --project=storybook --reporter=basic --disable-console-intercept",
