@@ -67,6 +67,264 @@ The **Input File** component allows users to upload one or multiple files from t
   </TabPanel>
 </Tabs>
 
+### Multiple Files
+<ComponentContainer>
+  <FormField
+    id="file-upload-multiple-id"
+    label={{
+      htmlFor: 'file-upload-multiple-id',
+      text: 'Upload Multiple Files',
+    }}
+  >
+    <InputFile accept="*/*" id="file-upload-multiple-id" multiple />
+    <Table layout="auto">
+      <TableHead>
+        <TableRow>
+          <TableHeader>Uploaded file</TableHeader>
+          <TableHeader className="gi-hidden md:gi-table-cell">
+            File size
+          </TableHeader>
+          <TableHeader className="gi-w-32">Actions</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData>
+            signed_form.pdf
+            <span className="gi-inline md:gi-hidden">
+              <br />
+              378 Kb
+            </span>
+          </TableData>
+          <TableData className="gi-hidden md:gi-table-cell">
+            378 Kb
+          </TableData>
+          <TableData>
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'download',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'delete',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+          </TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>
+            id_scan.pdf{' '}
+            <span className="gi-inline md:gi-hidden">
+              <br />
+              238 Kb
+            </span>
+          </TableData>
+          <TableData className="gi-hidden md:gi-table-cell">
+            238 Kb
+          </TableData>
+          <TableData>
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'download',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'delete',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+          </TableData>
+        </TableRow>
+      </TableBody>
+    </Table>      
+  </FormField>
+</ComponentContainer>
+
+<Tabs id="tab4">
+  <TabList>
+    <TabItem value="tab41" checked>HTML</TabItem>
+    <TabItem value="tab43">React</TabItem>
+  </TabList>
+  <TabPanel value="tab41">
+    ```html
+    <fieldset>
+      <label class="gi-text-md gi-label gi-mb-2" for="file-upload-multiple-id">Upload Multiple Files</label>
+      <input class="gi-input-file" type="file" id="file-upload-multiple-id" accept="*/*" multiple />
+      <table class="gi-table gi-table-auto">
+        <thead>
+          <tr>
+            <th>Uploaded file</th>
+            <th class="gi-hidden md:gi-table-cell">File size</th>
+            <th class="gi-w-32">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>signed_form.pdf
+              <span class="gi-inline md:gi-hidden">
+                <br />
+                378 Kb
+              </span>
+            </td>
+            <td class="gi-hidden md:gi-table-cell">378 Kb</td>
+            <td>
+              <button class="gi-icon-button gi-icon-button-flat gi-icon-button-dark gi-icon-button-large gi-inline-flex">
+                <!-- Icon for download -->
+              </button>
+              <button class="gi-icon-button gi-icon-button-flat gi-icon-button-dark gi-icon-button-large gi-inline-flex">
+                <!-- Icon for delete -->
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>id_scan.pdf
+              <span class="gi-inline md:gi-hidden">
+                <br />
+                238 Kb
+              </span>
+            </td>
+            <td class="gi-hidden md:gi-table-cell">238 Kb</td>
+            <td>
+              <button class="gi-icon-button gi-icon-button-flat gi-icon-button-dark gi-icon-button-large gi-inline-flex">
+                <!-- Icon for download -->
+              </button>
+              <button class="gi-icon-button gi-icon-button-flat gi-icon-button-dark gi-icon-button-large gi-inline-flex">
+                <!-- Icon for delete -->
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+    ```
+  </TabPanel>
+  <TabPanel value="tab43">
+    ```jsx
+    import { FormField, InputFile, Table, TableHead, TableHeader, TableBody, TableRow, TableData, IconButton } from "@govie-ds/react";
+    
+    <FormField
+    id="file-upload-multiple-id"
+    label={{
+      htmlFor: 'file-upload-multiple-id',
+      text: 'Upload Multiple Files',
+    }}
+  >
+    <InputFile accept="*/*" id="file-upload-multiple-id" multiple />
+    <Table layout="auto">
+      <TableHead>
+        <TableRow>
+          <TableHeader>Uploaded file</TableHeader>
+          <TableHeader className="gi-hidden md:gi-table-cell">
+            File size
+          </TableHeader>
+          <TableHeader className="gi-w-32">Actions</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData>
+            signed_form.pdf
+            <span className="gi-inline md:gi-hidden">
+              <br />
+              378 Kb
+            </span>
+          </TableData>
+          <TableData className="gi-hidden md:gi-table-cell">
+            378 Kb
+          </TableData>
+          <TableData>
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'download',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'delete',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+          </TableData>
+        </TableRow>
+        <TableRow>
+          <TableData>
+            id_scan.pdf{' '}
+            <span className="gi-inline md:gi-hidden">
+              <br />
+              238 Kb
+            </span>
+          </TableData>
+          <TableData className="gi-hidden md:gi-table-cell">
+            238 Kb
+          </TableData>
+          <TableData>
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'download',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+            <IconButton
+              {...{
+                icon: {
+                  icon: 'delete',
+                },
+                variant: 'flat',
+                appearance: 'dark',
+                size: 'large',
+                className: '!gi-inline-flex',
+              }}
+            />
+          </TableData>
+        </TableRow>
+      </TableBody>
+    </Table>      
+  </FormField>
+    ```
+  </TabPanel>
+</Tabs>
+
 ## Usage
 
 ### File Upload Props
