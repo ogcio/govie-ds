@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { Button } from '../button.js';
 import { ButtonSize } from '../types.js';
 
@@ -15,10 +15,9 @@ const ButtonGroupContext = React.createContext<
   ButtonGroupContextType | undefined
 >(undefined);
 
-type ButtonGroupItemProps = {
+type ButtonGroupItemProps = PropsWithChildren<{
   value: string;
-  children: React.ReactNode;
-};
+}>;
 
 export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
   value,
@@ -50,13 +49,12 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
   );
 };
 
-type ButtonGroupProps = {
+type ButtonGroupProps = PropsWithChildren<{
   name: string;
   size?: ButtonSize;
   onChange?: (value: string) => void;
   defaultValue?: string;
-  children?: React.ReactNode;
-};
+}>;
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   name,
