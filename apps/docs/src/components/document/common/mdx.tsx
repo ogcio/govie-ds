@@ -13,6 +13,8 @@ import {
   BreadcrumbLink,
   Breadcrumbs,
   Button,
+  ButtonGroup,
+  ButtonGroupItem,
   Caption,
   Card,
   Chip,
@@ -284,6 +286,8 @@ const documentComponents: MDXComponents = {
   InputCheckbox,
   InputFile,
   InputRadioGroup,
+  ButtonGroup,
+  ButtonGroupItem,
 };
 
 export function Mdx({ code }: MdxProps) {

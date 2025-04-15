@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
+import { createButton } from '../../helpers/buttons';
 import { beautifyHtmlNode } from '../../storybook/storybook';
 import { ButtonSize } from '../types';
-import { createButton } from '../../helpers/buttons';
 
 type ButtonOption = {
   label: string;
@@ -20,6 +20,14 @@ type ButtonGroupProps = {
 
 const meta: Meta<ButtonGroupProps> = {
   title: 'Form/Button/ButtonGroup',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'ButtonGroup component that behaves like a radio group using buttons. Useful for questionnaire-style inputs.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -45,23 +53,23 @@ const createButtonGroup = ({
       const labelElement = document.createElement('label');
       labelElement.className = 'gi-text-md gi-label gi-font-bold';
       labelElement.textContent = label;
-      labelWrapper.appendChild(labelElement);
+      labelWrapper.append(labelElement);
     }
 
     if (hint) {
       const hintElement = document.createElement('div');
       hintElement.className = 'gi-hint-text-md gi-hint-text gi-mb-1';
       hintElement.textContent = hint;
-      labelWrapper.appendChild(hintElement);
+      labelWrapper.append(hintElement);
     }
 
-    fieldWrapper.appendChild(labelWrapper);
+    fieldWrapper.append(labelWrapper);
   }
 
   const group = document.createElement('div');
   group.className = 'gi-btn-group';
 
-  options.forEach(({ label, value }, index) => {
+  for (const [index, { label, value }] of options.entries()) {
     const button = createButton({
       content: label,
       appearance: 'dark',
@@ -70,17 +78,17 @@ const createButtonGroup = ({
     });
     button.setAttribute('name', label);
     button.setAttribute('id', `gi-btn-group-${index}`);
-    group.appendChild(button);
-  });
+    group.append(button);
+  }
 
-  fieldset.appendChild(fieldWrapper);
-  fieldset.appendChild(group);
+  fieldset.append(fieldWrapper);
+  fieldset.append(group);
 
   return fieldset;
 };
 
-const createElement = (args: ButtonGroupProps): string => {
-  const component = createButtonGroup(args);
+const createElement = (arguments_: ButtonGroupProps): string => {
+  const component = createButtonGroup(arguments_);
   return beautifyHtmlNode(component);
 };
 export const Default: Story = {
@@ -118,18 +126,18 @@ export const Default: Story = {
     label:
       'How likely are you to recommend our service to a friend or colleague?',
     hint: '1 = Not likely, 10 = Extremely likely',
-    options: Array.from({ length: 10 }, (_, i) => ({
-      label: `${i + 1}`,
-      value: `${i + 1}`,
+    options: Array.from({ length: 10 }, (_, index) => ({
+      label: `${index + 1}`,
+      value: `${index + 1}`,
     })),
   },
-  render: (args) => createElement(args),
+  render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     // Ensure all 10 buttons are present
-    for (let i = 1; i <= 10; i++) {
-      await canvas.findByRole('button', { name: `${i}` });
+    for (let index = 1; index <= 10; index++) {
+      await canvas.findByRole('button', { name: `${index}` });
     }
 
     const button3 = await canvas.findByRole('button', { name: '3' });
@@ -157,5 +165,5 @@ export const YesNo: Story = {
       { label: 'No', value: 'no' },
     ],
   },
-  render: (args) => createElement(args),
+  render: (arguments_) => createElement(arguments_),
 };
