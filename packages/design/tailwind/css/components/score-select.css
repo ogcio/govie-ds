@@ -1,0 +1,7 @@
+.gi-score-select-labels {
+  @apply gi-flex gi-justify-between;
+}
+
+.gi-score-select-button-group {
+  @apply gi-space-y-2 gi-w-fit;
+}
