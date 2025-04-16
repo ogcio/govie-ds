@@ -8,9 +8,6 @@ import {
 } from './helpers.js';
 import { ButtonProps } from './types.js';
 
-// Extend `React.InputHTMLAttributes<HTMLButtonElement>` so that
-// the component can accept all the standard attributes and events that an `<button>` element can handle.
-
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { variant, appearance, size, disabled, className, children, ...props },
@@ -20,6 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...props}
         ref={ref}
+        aria-disabled={disabled}
         disabled={disabled}
         className={cn(
           'gi-btn',
