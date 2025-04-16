@@ -41,15 +41,31 @@ export const getVariantAppearanceClass = ({
 };
 
 export const getSizeClass = (size?: ButtonSize) => {
-  let classes;
-  if (size === 'small') {
-    classes = 'gi-btn-small';
-  } else if (size === 'large') {
-    classes = 'gi-btn-large';
-  } else {
-    classes = 'gi-btn-regular';
+  switch (size) {
+    case 'small': {
+      return 'gi-btn-small';
+    }
+    case 'large': {
+      return 'gi-btn-large';
+    }
+    default: {
+      return 'gi-btn-regular';
+    }
   }
-  return classes;
+};
+
+export const getButtonIconSizeClass = (size?: ButtonSize) => {
+  switch (size) {
+    case 'small': {
+      return 'gi-icon-btn-small';
+    }
+    case 'large': {
+      return 'gi-icon-btn-large';
+    }
+    default: {
+      return 'gi-icon-btn-regular';
+    }
+  }
 };
 
 export const isButtonDisabled = ({

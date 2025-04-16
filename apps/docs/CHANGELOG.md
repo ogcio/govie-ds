@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/docs-v1.3.0...docs-v1.4.0) (2025-04-14)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.4.0
+    * @govie-ds/tailwind bumped to 1.4.0
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/docs-v1.2.3...docs-v1.3.0) (2025-04-09)
 
 

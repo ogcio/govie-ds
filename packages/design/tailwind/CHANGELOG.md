@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.3.0...design-tailwind-v1.4.0) (2025-04-14)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+
+
+### Bug Fixes
+
+* add vertical align prop on table data and header ([#521](https://github.com/ogcio/govie-ds/issues/521)) ([907c141](https://github.com/ogcio/govie-ds/commit/907c14178209626886e00cc3dcad683a549cd5db))
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.3...design-tailwind-v1.3.0) (2025-04-09)
 
 

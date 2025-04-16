@@ -47,6 +47,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm build
+          pnpm dist
 
       - name: Publish DS React package
         if: ${{ steps.release.outputs['packages/react/ds--release_created'] }}
