@@ -5,7 +5,7 @@ import { Spinner } from '../spinner/spinner.js';
 import { Button } from './button.js';
 
 const meta = {
-  title: 'Form/Button',
+  title: 'Form/Button/Button',
   decorators: (Story, context) => {
     const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
     return (

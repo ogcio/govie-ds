@@ -16,6 +16,10 @@ export {
   type BreadcrumbProps,
 } from './breadcrumbs/types.js';
 export { Button } from './button/button.js';
+export {
+  ButtonGroup,
+  ButtonGroupItem,
+} from './button/button-group/button-group.js';
 export { type ButtonProps } from './button/types.js';
 export { Card, type CardProps } from './card/card.js';
 export { CheckboxGroup } from './checkbox/checkbox-group.js';
