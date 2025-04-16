@@ -122,7 +122,7 @@
 /* Button Group */
 
 .gi-btn-group {
-  @apply gi-flex gi-flex-wrap gi-gap-3 gi-justify-center sm:gi-justify-start;
+  @apply gi-flex gi-flex-wrap gi-gap-3;
 }
 
 .gi-btn-group button {
