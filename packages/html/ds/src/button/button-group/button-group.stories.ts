@@ -92,6 +92,7 @@ const createElement = (arguments_: ButtonGroupProps): string => {
   return beautifyHtmlNode(component);
 };
 export const Default: Story = {
+  name: 'Likert Scale',
   argTypes: {
     size: {
       control: 'radio',

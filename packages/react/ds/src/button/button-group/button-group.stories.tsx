@@ -43,7 +43,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Feedback Likelihood Scale',
+  name: 'Likert Scale',
   render: (arguments_) => {
     const options = [
       { label: '1', value: '1' },
