@@ -63,7 +63,7 @@ const createButtonGroup = ({
       labelWrapper.append(hintElement);
     }
 
-    fieldWrapper.append(labelWrapper);
+    fieldset.append(labelWrapper);
   }
 
   const group = document.createElement('div');

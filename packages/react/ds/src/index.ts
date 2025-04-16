@@ -105,6 +105,8 @@ export type {
   SummaryListRowProps,
   SummaryListValueProps,
 } from './summary-list/types.js';
+export { ScoreSelect } from './score-select/score-select.js';
+export type { ScoreSelectProps } from './score-select/type.js';
 export { Caption, type CaptionProps } from './table/caption.js';
 export { ColumnGroup } from './table/column-group.js';
 export { Column } from './table/column.js';
