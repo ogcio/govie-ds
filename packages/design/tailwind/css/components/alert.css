@@ -11,7 +11,12 @@
 }
 
 .gi-alert-container {
-  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2;
+  @apply gi-flex gi-flex-col gi-items-start gi-gap-1 gi-grow gi-pr-2
+   /* 
+  gi-text-color-border-intent-warning-subtle;
+
+ gi-bg-color-surface-tone-primary-fill-default gi-text-color-text-tone-primary-fill-default
+  gi-border-color-border-tone-primary-fill-default*/;
 }
 
 .gi-alert-dismiss {
