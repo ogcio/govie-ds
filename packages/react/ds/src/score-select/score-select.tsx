@@ -14,7 +14,6 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   label,
   hint,
   leftLabel,
-  middleLabel,
   rightLabel,
   onChange,
 }) => {
@@ -25,6 +24,16 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
       hint={hint ? { text: hint } : undefined}
     >
       <div className="gi-score-select-button-group">
+        {leftLabel && rightLabel && options.length > 2 && (
+          <div className="gi-score-select-labels-responsive">
+            <div>
+              {options[0]?.label} – {leftLabel}
+            </div>
+            <div>
+              {options[options.length - 1]?.label} – {rightLabel}
+            </div>
+          </div>
+        )}
         <ButtonGroup
           name={name}
           size={size}
@@ -38,11 +47,10 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
           ))}
         </ButtonGroup>
 
-        {(leftLabel || middleLabel || rightLabel) && (
+        {(leftLabel || rightLabel) && (
           <div className="gi-score-select-labels">
-            <div className="gi-text-left">{leftLabel}</div>
-            <div className="gi-text-center">{middleLabel}</div>
-            <div className="gi-text-right">{rightLabel}</div>
+            <div>{leftLabel}</div>
+            <div>{rightLabel}</div>
           </div>
         )}
       </div>

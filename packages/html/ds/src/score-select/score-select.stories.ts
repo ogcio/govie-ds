@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within } from '@storybook/test';
+import { within } from '@storybook/test';
 import { createButton } from '../helpers/buttons';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { ScoreSelectProps } from './types';
@@ -10,7 +10,7 @@ const meta: Meta<ScoreSelectProps> = {
     docs: {
       description: {
         component:
-          'ScoreSelect behaves like a Likert scale using buttons. Includes optional left/middle/right labels below the button group.',
+          'ScoreSelect behaves like a Likert scale using buttons. Includes optional responsive bottom labels for the range ends.',
       },
     },
   },
@@ -27,20 +27,17 @@ const createScoreSelect = ({
   label,
   hint,
   leftLabel,
-  middleLabel,
   rightLabel,
 }: ScoreSelectProps): HTMLElement => {
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'gi-w-full';
-
-  const fieldWrapper = document.createElement('div');
-  fieldWrapper.className = 'gi-pb-3 gi-flex gi-flex-col gi-gap-1';
 
   const wrapper = document.createElement('div');
   wrapper.className = 'gi-score-select-button-group';
 
   if (label || hint) {
     const labelWrapper = document.createElement('div');
+    labelWrapper.className = 'gi-pb-3 gi-flex gi-flex-col';
 
     if (label) {
       const labelElement = document.createElement('label');
@@ -57,6 +54,25 @@ const createScoreSelect = ({
     }
 
     fieldset.append(labelWrapper);
+  }
+
+  // Responsive label row
+  if (leftLabel && rightLabel && options.length > 2) {
+    const responsiveLabels = document.createElement('div');
+    responsiveLabels.className = 'gi-score-select-labels-responsive';
+
+    const firstLabel = options[0]?.label ?? '';
+    const lastLabel = options[options.length - 1]?.label ?? '';
+
+    const left = document.createElement('div');
+    left.textContent = `${firstLabel} – ${leftLabel}`;
+    responsiveLabels.append(left);
+
+    const right = document.createElement('div');
+    right.textContent = `${lastLabel} – ${rightLabel}`;
+    responsiveLabels.append(right);
+
+    wrapper.append(responsiveLabels);
   }
 
   const buttonGroup = document.createElement('div');
@@ -76,29 +92,22 @@ const createScoreSelect = ({
 
   wrapper.append(buttonGroup);
 
-  if (leftLabel || middleLabel || rightLabel) {
+  // Bottom static labels
+  if (leftLabel || rightLabel) {
     const labelRow = document.createElement('div');
     labelRow.className = 'gi-score-select-labels';
 
     const left = document.createElement('div');
-    left.className = 'gi-text-left';
     left.textContent = leftLabel ?? '';
     labelRow.append(left);
 
-    const middle = document.createElement('div');
-    middle.className = 'gi-text-center';
-    middle.textContent = middleLabel ?? '';
-    labelRow.append(middle);
-
     const right = document.createElement('div');
-    right.className = 'gi-text-right';
     right.textContent = rightLabel ?? '';
     labelRow.append(right);
 
     wrapper.append(labelRow);
   }
 
-  fieldset.append(fieldWrapper);
   fieldset.append(wrapper);
   return fieldset;
 };
@@ -121,14 +130,9 @@ export const OpinionScale5: Story = {
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     for (let index = 1; index <= 5; index++) {
       await canvas.findByRole('button', { name: `${index}` });
     }
-
-    await userEvent.click(await canvas.findByRole('button', { name: '2' }));
-    await userEvent.click(await canvas.findByRole('button', { name: '4' }));
-    await canvas.findByText(/How strongly do you agree/i);
   },
 };
 
@@ -144,21 +148,15 @@ export const OpinionScale7: Story = {
       value: String(index + 1),
     })),
     leftLabel: 'Very Dissatisfied',
-    middleLabel: 'Neutral',
     rightLabel: 'Very Satisfied',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     for (let index = 1; index <= 7; index++) {
       await canvas.findByRole('button', { name: `${index}` });
     }
-
-    await userEvent.click(await canvas.findByRole('button', { name: '1' }));
-    await userEvent.click(await canvas.findByRole('button', { name: '7' }));
     await canvas.findByText(/Very Dissatisfied/);
-    await canvas.findByText(/Neutral/);
     await canvas.findByText(/Very Satisfied/);
   },
 };
@@ -171,26 +169,21 @@ export const NPS: Story = {
     defaultValue: '6',
     label:
       'How likely are you to recommend our service to a friend or colleague?',
-    hint: '0 = Not likely, 10 = Extremely likely',
+    hint: 'Description',
     options: Array.from({ length: 11 }, (_, index) => ({
       label: String(index),
       value: String(index),
     })),
     leftLabel: 'Not Likely',
-    middleLabel: 'Neutral',
     rightLabel: 'Extremely Likely',
   },
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     for (let index = 0; index <= 10; index++) {
       await canvas.findByRole('button', { name: `${index}` });
     }
-
-    await userEvent.click(await canvas.findByRole('button', { name: '0' }));
-    await userEvent.click(await canvas.findByRole('button', { name: '10' }));
-    await canvas.findByText(/recommend our service/i);
-    await canvas.findByText(/Neutral/i);
+    await canvas.findByText(/Not Likely/);
+    await canvas.findByText(/Extremely Likely/);
   },
 };

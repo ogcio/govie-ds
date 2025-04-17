@@ -23,7 +23,6 @@ const meta = {
     label: { control: 'text' },
     hint: { control: 'text' },
     leftLabel: { control: 'text' },
-    middleLabel: { control: 'text' },
     rightLabel: { control: 'text' },
     onChange: { action: 'selected' },
   },
@@ -37,7 +36,7 @@ export const OpinionScale5: Story = {
   args: {
     name: 'opinion-scale-5',
     label: 'How strongly do you agree with this statement?',
-    size: 'medium',
+    size: 'large',
     defaultValue: '3',
     options: Array.from({ length: 5 }, (_, index) => ({
       label: String(index + 1),
@@ -54,14 +53,13 @@ export const OpinionScale7: Story = {
   args: {
     name: 'opinion-scale-7',
     label: 'How satisfied are you with your experience?',
-    size: 'medium',
+    size: 'large',
     defaultValue: '4',
     options: Array.from({ length: 7 }, (_, index) => ({
       label: String(index + 1),
       value: String(index + 1),
     })),
     leftLabel: 'Very Dissatisfied',
-    middleLabel: 'Neutral',
     rightLabel: 'Very Satisfied',
     onChange(value) {
       console.log('Selected value:', value);
@@ -75,7 +73,7 @@ export const NPS: Story = {
     name: 'nps',
     label:
       'How likely are you to recommend our service to a friend or colleague?',
-    hint: '0 = Not likely, 10 = Extremely likely',
+    hint: 'Description',
     size: 'large',
     defaultValue: '6',
     options: Array.from({ length: 11 }, (_, index) => ({
@@ -83,7 +81,6 @@ export const NPS: Story = {
       value: String(index),
     })),
     leftLabel: 'Not Likely',
-    middleLabel: 'Neutral',
     rightLabel: 'Extremely Likely',
     onChange(value) {
       console.log('Selected value:', value);
