@@ -36,8 +36,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
     throw new Error('ButtonGroupItem must be used within a ButtonGroup');
   }
 
-  const { selectedValue, setSelectedValue, name, size, onChange, groupId } =
-    context;
+  const { selectedValue, setSelectedValue, size, onChange, groupId } = context;
   const isSelected = selectedValue === value;
 
   const handleClick = () => {
@@ -45,7 +44,6 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
     onChange?.(value);
   };
 
-  // Calculate item ID based on group ID and value
   const itemId = `${groupId}-${value}`;
 
   return (
@@ -56,7 +54,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
       onClick={handleClick}
       id={itemId}
       role={customRole || 'radio'}
-      aria-checked={ariaChecked !== undefined ? ariaChecked : isSelected}
+      aria-checked={ariaChecked === undefined ? isSelected : ariaChecked}
       aria-label={ariaLabel}
     >
       {children}
