@@ -18,15 +18,28 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   rightLabel,
   onChange,
 }) => {
+  // Generate a unique ID for associating labels with controls
+  const controlId = React.useId();
+  const labelId = `${controlId}-label`;
+  const hintId = hint ? `${controlId}-hint` : undefined;
+
   return (
     <FormField
       className="gi-w-full"
-      label={{ text: label }}
-      hint={hint ? { text: hint } : undefined}
+      label={{ text: label, id: labelId }}
+      hint={hint ? { text: hint, id: hintId } : undefined}
     >
-      <div className="gi-score-select-button-group">
+      <div
+        className="gi-score-select-button-group"
+        role="group"
+        aria-labelledby={labelId}
+        aria-describedby={hintId}
+      >
         {leftLabel && rightLabel && options.length > 2 && (
-          <div className="gi-score-select-labels-responsive">
+          <div
+            className="gi-score-select-labels-responsive"
+            aria-hidden="true" // This is decorative text as the actual options provide the accessible content
+          >
             <div>
               {options[0]?.label} – {leftLabel}
             </div>
@@ -40,16 +53,28 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
           size={size}
           defaultValue={defaultValue}
           onChange={(value) => onChange?.(value)}
+          role="radiogroup"
+          aria-labelledby={labelId}
+          aria-describedby={hintId}
         >
           {options.map((option) => (
-            <ButtonGroupItem key={option.value} value={option.value}>
+            <ButtonGroupItem
+              key={option.value}
+              value={option.value}
+              role="radio"
+              aria-checked={defaultValue === option.value}
+              aria-label={`${option.label}${leftLabel && option.value === options[0]?.value ? ` - ${leftLabel}` : ''}${rightLabel && option.value === options.at(-1)?.value ? ` - ${rightLabel}` : ''}`}
+            >
               {option.label}
             </ButtonGroupItem>
           ))}
         </ButtonGroup>
 
         {(leftLabel || rightLabel) && (
-          <div className="gi-score-select-labels">
+          <div
+            className="gi-score-select-labels"
+            aria-hidden="true" // This is decorative text as the actual options provide the accessible content
+          >
             <div>{leftLabel}</div>
             <div>{rightLabel}</div>
           </div>

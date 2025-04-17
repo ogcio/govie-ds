@@ -4,13 +4,12 @@ description: Score Select HTML Component
 status: in-review
 libraries:
   - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1315-1300'
-    status: 'stable'
+    status: 'not-available'
   - platform: 'global'
-    link: '?path=/docs/forms-scoreselect--docs'
+    link: '?path=/docs/components-scoreselect--docs'
     status: 'stable'
   - platform: react
-    link: '?path=/docs/forms-scoreselect--docs'
+    link: '?path=/docs/components-scoreselect--docs'
     status: 'stable'
 ---
 
@@ -53,25 +52,25 @@ Score Select is used to collect a rating score from users, typically in the form
     ```html
     <fieldset class="gi-w-full">
       <div class="gi-pb-3 gi-flex gi-flex-col">
-        <label class="gi-text-md gi-label gi-font-bold">How likely are you to recommend our service to a friend or colleague?</label>
+        <label class="gi-text-md gi-label gi-font-bold" id="nps-label">How likely are you to recommend our service to a friend or colleague?</label>
         <div class="gi-hint-text-md gi-hint-text gi-mb-1">Description</div>
       </div>
       <div class="gi-score-select-button-group">
-        <div class="gi-score-select-labels-responsive">
+        <div class="gi-score-select-labels-responsive" aria-hidden="true">
           <div>0 – Not Likely</div>
           <div>10 – Extremely Likely</div>
         </div>
-        <div class="gi-btn-group">
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-0">0</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-1">1</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-2">2</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-3">3</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-4">4</button>
-          <button class="gi-btn gi-btn-large gi-btn-primary-dark" name="nps" id="score-select-5">5</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-6">6</button>
-          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-7">7</button>
+        <div class="gi-btn-group" role="radiogroup" aria-labelledby="nps-label">
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-0" data-value="0">0</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-1" data-value="1">1</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-2" data-value="2">2</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-3" data-value="3">3</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-4" data-value="4">4</button>
+          <button class="gi-btn gi-btn-large gi-btn-primary-dark" role="radio" aria-checked="true" name="nps" id="score-select-5" data-value="5">5</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-6" data-value="6">6</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" role="radio" aria-checked="false" name="nps" id="score-select-7" data-value="7">7</button>
         </div>
-        <div class="gi-score-select-labels">
+        <div class="gi-score-select-labels" aria-hidden="true">
           <div>Not Likely</div>
           <div>Extremely Likely</div>
         </div>

@@ -18,7 +18,6 @@ const meta: Meta<ScoreSelectProps> = {
 
 export default meta;
 type Story = StoryObj<ScoreSelectProps>;
-
 const createScoreSelect = ({
   name,
   size = 'large',
@@ -32,34 +31,39 @@ const createScoreSelect = ({
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'gi-w-full';
 
-  const wrapper = document.createElement('div');
-  wrapper.className = 'gi-score-select-button-group';
+  const labelWrapper = document.createElement('div');
+  labelWrapper.className = 'gi-pb-3 gi-flex gi-flex-col';
+
+  let groupLabelId: string | undefined;
+
+  if (label) {
+    const labelElement = document.createElement('label');
+    labelElement.className = 'gi-text-md gi-label gi-font-bold';
+    labelElement.textContent = label;
+    groupLabelId = `${name}-label`;
+    labelElement.id = groupLabelId;
+    labelWrapper.append(labelElement);
+  }
+
+  if (hint) {
+    const hintElement = document.createElement('div');
+    hintElement.className = 'gi-hint-text-md gi-hint-text gi-mb-1';
+    hintElement.textContent = hint;
+    labelWrapper.append(hintElement);
+  }
 
   if (label || hint) {
-    const labelWrapper = document.createElement('div');
-    labelWrapper.className = 'gi-pb-3 gi-flex gi-flex-col';
-
-    if (label) {
-      const labelElement = document.createElement('label');
-      labelElement.className = 'gi-text-md gi-label gi-font-bold';
-      labelElement.textContent = label;
-      labelWrapper.append(labelElement);
-    }
-
-    if (hint) {
-      const hintElement = document.createElement('div');
-      hintElement.className = 'gi-hint-text-md gi-hint-text gi-mb-1';
-      hintElement.textContent = hint;
-      labelWrapper.append(hintElement);
-    }
-
     fieldset.append(labelWrapper);
   }
 
-  // Responsive label row
+  const wrapper = document.createElement('div');
+  wrapper.className = 'gi-score-select-button-group';
+
+  // Responsive top label row (decorative)
   if (leftLabel && rightLabel && options.length > 2) {
     const responsiveLabels = document.createElement('div');
     responsiveLabels.className = 'gi-score-select-labels-responsive';
+    responsiveLabels.setAttribute('aria-hidden', 'true');
 
     const firstLabel = options[0]?.label ?? '';
     const lastLabel = options.at(-1)?.label ?? '';
@@ -77,25 +81,39 @@ const createScoreSelect = ({
 
   const buttonGroup = document.createElement('div');
   buttonGroup.className = 'gi-btn-group';
+  buttonGroup.setAttribute('role', 'radiogroup');
+  if (groupLabelId) {
+    buttonGroup.setAttribute('aria-labelledby', groupLabelId);
+  } else {
+    buttonGroup.setAttribute('aria-label', name);
+  }
 
-  for (const [index, { label, value }] of options.entries()) {
+  for (const [index, { label: buttonLabel, value }] of options.entries()) {
     const button = createButton({
-      content: label,
+      content: buttonLabel,
       appearance: 'dark',
       size,
       variant: value === defaultValue ? 'primary' : 'secondary',
     });
+
+    const isSelected = value === defaultValue;
+
+    button.setAttribute('role', 'radio');
+    button.setAttribute('aria-checked', isSelected ? 'true' : 'false');
     button.setAttribute('name', name);
     button.setAttribute('id', `score-select-${index}`);
+    button.dataset.value = value;
+
     buttonGroup.append(button);
   }
 
   wrapper.append(buttonGroup);
 
-  // Bottom static labels
+  // Bottom static labels (decorative)
   if (leftLabel || rightLabel) {
     const labelRow = document.createElement('div');
     labelRow.className = 'gi-score-select-labels';
+    labelRow.setAttribute('aria-hidden', 'true');
 
     const left = document.createElement('div');
     left.textContent = leftLabel ?? '';
@@ -131,7 +149,7 @@ export const OpinionScale5: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     for (let index = 1; index <= 5; index++) {
-      await canvas.findByRole('button', { name: `${index}` });
+      await canvas.findByRole('radio', { name: `${index}` });
     }
   },
 };
@@ -154,7 +172,7 @@ export const OpinionScale7: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     for (let index = 1; index <= 7; index++) {
-      await canvas.findByRole('button', { name: `${index}` });
+      await canvas.findByRole('radio', { name: `${index}` });
     }
     await canvas.findAllByText(/Very Dissatisfied/);
     await canvas.findAllByText(/Very Satisfied/);
@@ -181,7 +199,7 @@ export const NPS: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     for (let index = 0; index <= 10; index++) {
-      await canvas.findByRole('button', { name: `${index}` });
+      await canvas.findByRole('radio', { name: `${index}` });
     }
     await canvas.findAllByText(/Not Likely/);
     await canvas.findAllByText(/Extremely Likely/);
