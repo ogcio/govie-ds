@@ -88,7 +88,6 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     defaultValue,
   );
 
-  // Generate a unique ID for the group
   const groupId = React.useId();
 
   return (

@@ -18,7 +18,6 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   rightLabel,
   onChange,
 }) => {
-  // Generate a unique ID for associating labels with controls
   const controlId = React.useId();
   const labelId = `${controlId}-label`;
   const hintId = hint ? `${controlId}-hint` : undefined;
@@ -36,10 +35,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
         aria-describedby={hintId}
       >
         {leftLabel && rightLabel && options.length > 2 && (
-          <div
-            className="gi-score-select-labels-responsive"
-            aria-hidden="true" // This is decorative text as the actual options provide the accessible content
-          >
+          <div className="gi-score-select-labels-responsive" aria-hidden="true">
             <div>
               {options[0]?.label} – {leftLabel}
             </div>
@@ -71,10 +67,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
         </ButtonGroup>
 
         {(leftLabel || rightLabel) && (
-          <div
-            className="gi-score-select-labels"
-            aria-hidden="true" // This is decorative text as the actual options provide the accessible content
-          >
+          <div className="gi-score-select-labels" aria-hidden="true">
             <div>{leftLabel}</div>
             <div>{rightLabel}</div>
           </div>
