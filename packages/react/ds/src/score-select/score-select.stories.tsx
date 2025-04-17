@@ -19,11 +19,14 @@ const meta = {
       control: 'select',
       options: ['small', 'medium', 'large'] as ButtonSize[],
     },
-    defaultValue: { control: 'text' },
     label: { control: 'text' },
     hint: { control: 'text' },
     leftLabel: { control: 'text' },
     rightLabel: { control: 'text' },
+    type: {
+      control: 'select',
+      options: ['1-5', '1-7', '0-10'],
+    },
     onChange: { action: 'selected' },
   },
 } satisfies Meta<typeof ScoreSelect>;
@@ -37,11 +40,7 @@ export const OpinionScale5: Story = {
     name: 'opinion-scale-5',
     label: 'How strongly do you agree with this statement?',
     size: 'large',
-    defaultValue: '3',
-    options: Array.from({ length: 5 }, (_, index) => ({
-      label: String(index + 1),
-      value: String(index + 1),
-    })),
+    type: '1-5',
     onChange(value) {
       console.log('Selected value:', value);
     },
@@ -54,11 +53,7 @@ export const OpinionScale7: Story = {
     name: 'opinion-scale-7',
     label: 'How satisfied are you with your experience?',
     size: 'large',
-    defaultValue: '4',
-    options: Array.from({ length: 7 }, (_, index) => ({
-      label: String(index + 1),
-      value: String(index + 1),
-    })),
+    type: '1-7',
     leftLabel: 'Very Dissatisfied',
     rightLabel: 'Very Satisfied',
     onChange(value) {
@@ -75,11 +70,8 @@ export const NPS: Story = {
       'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
     size: 'large',
-    defaultValue: '5',
-    options: Array.from({ length: 11 }, (_, index) => ({
-      label: String(index),
-      value: String(index),
-    })),
+    type: '0-10',
+    value: '5',
     leftLabel: 'Not Likely',
     rightLabel: 'Extremely Likely',
     onChange(value) {

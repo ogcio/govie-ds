@@ -10,17 +10,60 @@ import { ScoreSelectProps } from './type.js';
 export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   name,
   size = 'medium',
-  options,
-  defaultValue,
+  value,
   label,
   hint,
   leftLabel,
   rightLabel,
   onChange,
+  type,
 }) => {
   const controlId = React.useId();
   const labelId = `${controlId}-label`;
   const hintId = hint ? `${controlId}-hint` : undefined;
+
+  let scoreOptions: { value: string; label: string }[] = [];
+
+  switch (type) {
+    case '1-5': {
+      scoreOptions = [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+      ];
+      break;
+    }
+    case '1-7': {
+      scoreOptions = [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+      ];
+      break;
+    }
+    case '0-10': {
+      scoreOptions = [
+        { value: '0', label: '0' },
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+        { value: '8', label: '8' },
+        { value: '9', label: '9' },
+        { value: '10', label: '10' },
+      ];
+      break;
+    }
+  }
 
   return (
     <FormField
@@ -34,32 +77,32 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
         aria-labelledby={labelId}
         aria-describedby={hintId}
       >
-        {leftLabel && rightLabel && options.length > 2 && (
+        {leftLabel && rightLabel && scoreOptions.length > 2 && (
           <div className="gi-score-select-labels-responsive" aria-hidden="true">
             <div>
-              {options[0]?.label} – {leftLabel}
+              {scoreOptions[0]?.label} – {leftLabel}
             </div>
             <div>
-              {options.at(-1)?.label} – {rightLabel}
+              {scoreOptions.at(-1)?.label} – {rightLabel}
             </div>
           </div>
         )}
         <ButtonGroup
           name={name}
           size={size}
-          defaultValue={defaultValue}
+          defaultValue={value}
           onChange={(value) => onChange?.(value)}
           role="radiogroup"
           aria-labelledby={labelId}
           aria-describedby={hintId}
         >
-          {options.map((option) => (
+          {scoreOptions.map((option) => (
             <ButtonGroupItem
               key={option.value}
               value={option.value}
               role="radio"
-              aria-checked={defaultValue === option.value}
-              aria-label={`${option.label}${leftLabel && option.value === options[0]?.value ? ` - ${leftLabel}` : ''}${rightLabel && option.value === options.at(-1)?.value ? ` - ${rightLabel}` : ''}`}
+              aria-checked={value === option.value}
+              aria-label={`${option.label}${leftLabel && option.value === scoreOptions[0]?.value ? ` - ${leftLabel}` : ''}${rightLabel && option.value === scoreOptions.at(-1)?.value ? ` - ${rightLabel}` : ''}`}
             >
               {option.label}
             </ButtonGroupItem>

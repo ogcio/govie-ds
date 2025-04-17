@@ -213,3 +213,5 @@ titleAsChild
 asChild
 ReactNode
 components-scoreselect
+ScoreSelect
+Likert
