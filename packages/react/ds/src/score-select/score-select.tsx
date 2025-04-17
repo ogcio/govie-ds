@@ -30,7 +30,7 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
               {options[0]?.label} – {leftLabel}
             </div>
             <div>
-              {options[options.length - 1]?.label} – {rightLabel}
+              {options.at(-1)?.label} – {rightLabel}
             </div>
           </div>
         )}

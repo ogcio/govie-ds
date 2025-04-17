@@ -75,7 +75,7 @@ export const NPS: Story = {
       'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
     size: 'large',
-    defaultValue: '6',
+    defaultValue: '5',
     options: Array.from({ length: 11 }, (_, index) => ({
       label: String(index),
       value: String(index),

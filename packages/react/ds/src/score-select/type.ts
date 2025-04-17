@@ -13,7 +13,6 @@ export type ScoreSelectProps = {
   label: string;
   hint?: string;
   leftLabel?: string;
-  middleLabel?: string;
   rightLabel?: string;
   onChange?: (value: string) => void;
 };

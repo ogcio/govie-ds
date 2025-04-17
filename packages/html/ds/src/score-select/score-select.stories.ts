@@ -62,7 +62,7 @@ const createScoreSelect = ({
     responsiveLabels.className = 'gi-score-select-labels-responsive';
 
     const firstLabel = options[0]?.label ?? '';
-    const lastLabel = options[options.length - 1]?.label ?? '';
+    const lastLabel = options.at(-1)?.label ?? '';
 
     const left = document.createElement('div');
     left.textContent = `${firstLabel} – ${leftLabel}`;
@@ -166,7 +166,7 @@ export const NPS: Story = {
   args: {
     name: 'nps',
     size: 'large',
-    defaultValue: '6',
+    defaultValue: '5',
     label:
       'How likely are you to recommend our service to a friend or colleague?',
     hint: 'Description',
