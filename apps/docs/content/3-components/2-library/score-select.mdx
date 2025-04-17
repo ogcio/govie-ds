@@ -1,0 +1,142 @@
+---
+title: Score Select
+description: Score Select HTML Component
+status: in-review
+libraries:
+  - platform: 'figma'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1315-1300'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/forms-scoreselect--docs'
+    status: 'stable'
+  - platform: react
+    link: '?path=/docs/forms-scoreselect--docs'
+    status: 'stable'
+---
+
+# Score Select
+
+Score Select is used to collect a rating score from users, typically in the form of Net Promoter Score (NPS). It displays a horizontal row of buttons representing numeric values from 0 to 10, and includes labels on either side to help frame the scale.
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <ScoreSelect
+    defaultValue="5"
+    hint="Description"
+    label="How likely are you to recommend our service to a friend or colleague?"
+    leftLabel="Not Likely"
+    name="nps"
+    options={[
+      { label: '0', value: '0' },
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' },
+      { label: '6', value: '6' },
+      { label: '7', value: '7' },
+    ]}
+    rightLabel="Extremely Likely"
+    size="large"
+  />
+</ComponentContainer>
+
+<Tabs id="scoreSelectTabs">
+  <TabList>
+    <TabItem value="html" checked>HTML</TabItem>
+    <TabItem value="react">React</TabItem>
+  </TabList>
+  <TabPanel value="html">
+    ```html
+    <fieldset class="gi-w-full">
+      <div class="gi-pb-3 gi-flex gi-flex-col">
+        <label class="gi-text-md gi-label gi-font-bold">How likely are you to recommend our service to a friend or colleague?</label>
+        <div class="gi-hint-text-md gi-hint-text gi-mb-1">Description</div>
+      </div>
+      <div class="gi-score-select-button-group">
+        <div class="gi-score-select-labels-responsive">
+          <div>0 – Not Likely</div>
+          <div>10 – Extremely Likely</div>
+        </div>
+        <div class="gi-btn-group">
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-0">0</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-1">1</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-2">2</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-3">3</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-4">4</button>
+          <button class="gi-btn gi-btn-large gi-btn-primary-dark" name="nps" id="score-select-5">5</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-6">6</button>
+          <button class="gi-btn gi-btn-large gi-btn-secondary-dark" name="nps" id="score-select-7">7</button>
+        </div>
+        <div class="gi-score-select-labels">
+          <div>Not Likely</div>
+          <div>Extremely Likely</div>
+        </div>
+      </div>
+    </fieldset>
+  ```
+  </TabPanel>
+  <TabPanel value="react">
+    ```jsx
+    import ScoreSelect from '@govie-ds/react';
+
+    <ScoreSelect
+      defaultValue="5"
+      hint="Description"
+      label="How likely are you to recommend our service to a friend or colleague?"
+      leftLabel="Not Likely"
+      name="nps"
+      options={[
+        label: '0', value: '0',
+        label: '1', value: '1',
+        label: '2', value: '2',
+        label: '3', value: '3',
+        label: '4', value: '4',
+        label: '5', value: '5',
+        label: '6', value: '6',
+        label: '7', value: '7',
+      ]}
+      rightLabel="Extremely Likely"
+      size="large"
+    />
+
+```
+</TabPanel>
+</Tabs>
+
+## Usage
+
+### ScoreSelect Props
+
+- `label` (required): The main label above the button group.
+- `hint` (optional): A brief description or instruction shown under the label.
+- `name` (required): The name attribute used for form submission.
+- `defaultValue` (optional): The initial selected score.
+- `options` (required): An array of `{ label, value }` pairs, typically from 0 to 10.
+- `leftLabel` (optional): The text that appears on the left of the score range (e.g., "Not Likely").
+- `rightLabel` (optional): The text that appears on the right of the score range (e.g., "Extremely Likely").
+- `size` (optional): Size of the buttons. Options include `small`, `medium`, `large`. Default is `medium`.
+- `onChange` (optional): Callback when the selected score changes.
+
+### Best Practices
+
+#### When to use this component
+
+- Use the Score Select component when you need a quick and intuitive way to collect user ratings, such as:
+- Net Promoter Score (NPS) surveys.
+- Satisfaction ratings.
+- Feedback forms where numeric rating is required.
+
+#### When not to use this component
+
+- Do not use if:
+- You require text-based answers or qualitative feedback.
+- You need more than one score group in a single input.
+- A slider or range input would be more appropriate for continuous values.
+
+## Status
+
+<ComponentStatusBlock componentId="score-select" />

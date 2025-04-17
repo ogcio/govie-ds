@@ -156,8 +156,8 @@ export const OpinionScale7: Story = {
     for (let index = 1; index <= 7; index++) {
       await canvas.findByRole('button', { name: `${index}` });
     }
-    await canvas.findByText(/Very Dissatisfied/);
-    await canvas.findByText(/Very Satisfied/);
+    await canvas.findAllByText(/Very Dissatisfied/);
+    await canvas.findAllByText(/Very Satisfied/);
   },
 };
 
@@ -183,7 +183,7 @@ export const NPS: Story = {
     for (let index = 0; index <= 10; index++) {
       await canvas.findByRole('button', { name: `${index}` });
     }
-    await canvas.findByText(/Not Likely/);
-    await canvas.findByText(/Extremely Likely/);
+    await canvas.findAllByText(/Not Likely/);
+    await canvas.findAllByText(/Extremely Likely/);
   },
 };
