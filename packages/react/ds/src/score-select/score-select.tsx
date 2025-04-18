@@ -1,0 +1,121 @@
+'use client';
+import React from 'react';
+import {
+  ButtonGroup,
+  ButtonGroupItem,
+} from '../button/button-group/button-group.js';
+import { FormField } from '../forms/form-field.js';
+import { ScoreSelectProps } from './type.js';
+
+export const ScoreSelect: React.FC<ScoreSelectProps> = ({
+  name,
+  size = 'medium',
+  value,
+  label,
+  hint,
+  leftLabel,
+  rightLabel,
+  onChange,
+  type,
+}) => {
+  const controlId = React.useId();
+  const labelId = `${controlId}-label`;
+  const hintId = hint ? `${controlId}-hint` : undefined;
+
+  let scoreOptions: { value: string; label: string }[] = [];
+
+  switch (type) {
+    case '1-5': {
+      scoreOptions = [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+      ];
+      break;
+    }
+    case '1-7': {
+      scoreOptions = [
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+      ];
+      break;
+    }
+    case '0-10': {
+      scoreOptions = [
+        { value: '0', label: '0' },
+        { value: '1', label: '1' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '4', label: '4' },
+        { value: '5', label: '5' },
+        { value: '6', label: '6' },
+        { value: '7', label: '7' },
+        { value: '8', label: '8' },
+        { value: '9', label: '9' },
+        { value: '10', label: '10' },
+      ];
+      break;
+    }
+  }
+
+  return (
+    <FormField
+      className="gi-w-full"
+      label={{ text: label, id: labelId }}
+      hint={hint ? { text: hint, id: hintId } : undefined}
+    >
+      <div
+        className="gi-score-select-button-group"
+        role="group"
+        aria-labelledby={labelId}
+        aria-describedby={hintId}
+      >
+        {leftLabel && rightLabel && scoreOptions.length > 2 && (
+          <div className="gi-score-select-labels-responsive" aria-hidden="true">
+            <div>
+              {scoreOptions[0]?.label} – {leftLabel}
+            </div>
+            <div>
+              {scoreOptions.at(-1)?.label} – {rightLabel}
+            </div>
+          </div>
+        )}
+        <ButtonGroup
+          name={name}
+          size={size}
+          defaultValue={value}
+          onChange={(value) => onChange?.(value)}
+          role="radiogroup"
+          aria-labelledby={labelId}
+          aria-describedby={hintId}
+        >
+          {scoreOptions.map((option) => (
+            <ButtonGroupItem
+              key={option.value}
+              value={option.value}
+              role="radio"
+              aria-checked={value === option.value}
+              aria-label={`${option.label}${leftLabel && option.value === scoreOptions[0]?.value ? ` - ${leftLabel}` : ''}${rightLabel && option.value === scoreOptions.at(-1)?.value ? ` - ${rightLabel}` : ''}`}
+            >
+              {option.label}
+            </ButtonGroupItem>
+          ))}
+        </ButtonGroup>
+
+        {(leftLabel || rightLabel) && (
+          <div className="gi-score-select-labels" aria-hidden="true">
+            <div>{leftLabel}</div>
+            <div>{rightLabel}</div>
+          </div>
+        )}
+      </div>
+    </FormField>
+  );
+};

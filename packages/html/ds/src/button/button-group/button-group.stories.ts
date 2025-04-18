@@ -63,7 +63,7 @@ const createButtonGroup = ({
       labelWrapper.append(hintElement);
     }
 
-    fieldWrapper.append(labelWrapper);
+    fieldset.append(labelWrapper);
   }
 
   const group = document.createElement('div');
@@ -92,6 +92,7 @@ const createElement = (arguments_: ButtonGroupProps): string => {
   return beautifyHtmlNode(component);
 };
 export const Default: Story = {
+  name: 'Likert Scale',
   argTypes: {
     size: {
       control: 'radio',

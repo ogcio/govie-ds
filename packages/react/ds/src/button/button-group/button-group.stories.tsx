@@ -43,7 +43,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Feedback Likelihood Scale',
+  name: 'Likert Scale',
   render: (arguments_) => {
     const options = [
       { label: '1', value: '1' },
@@ -59,30 +59,28 @@ export const Default: Story = {
     ];
 
     return (
-      <div className="gi-flex gi-flex-col gi-items-center gi-gap-1">
-        <FormField
-          className="gi-w-full"
-          label={{
-            text: 'How likely are you to recommend our service to a friend or colleague?',
-          }}
-          hint={{
-            text: '1 = Not likely, 10 = Extremely likely',
-          }}
+      <FormField
+        className="gi-w-full"
+        label={{
+          text: 'How likely are you to recommend our service to a friend or colleague?',
+        }}
+        hint={{
+          text: '1 = Not likely, 10 = Extremely likely',
+        }}
+      >
+        <ButtonGroup
+          name={arguments_.name}
+          size={arguments_.size}
+          defaultValue={arguments_.defaultValue}
+          onChange={(value) => console.log(value)}
         >
-          <ButtonGroup
-            name={arguments_.name}
-            size={arguments_.size}
-            defaultValue={arguments_.defaultValue}
-            onChange={(value) => console.log(value)}
-          >
-            {options.map((option) => (
-              <ButtonGroupItem key={option.value} value={option.value}>
-                {option.label}
-              </ButtonGroupItem>
-            ))}
-          </ButtonGroup>
-        </FormField>
-      </div>
+          {options.map((option) => (
+            <ButtonGroupItem key={option.value} value={option.value}>
+              {option.label}
+            </ButtonGroupItem>
+          ))}
+        </ButtonGroup>
+      </FormField>
     );
   },
   args: {
