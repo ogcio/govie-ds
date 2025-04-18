@@ -310,11 +310,6 @@ export function createTheme(
     },
     extend: {
       colors: {
-        'brand-color': {
-          ...(meta
-            ? convertColors(meta.light.resolved.brand.color)
-            : variables.brand.color),
-        },
         color: {
           ...(meta
             ? convertColors(meta.light.resolved.semantic.color)

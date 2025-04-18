@@ -45,7 +45,8 @@ const createToast = (arguments_: ToastProps) => {
   dsToast.dataset.module = 'gieds-dsToast';
   dsToast.className = `${variantClass} ${baseToastClass}`;
 
-  const icon = createIcon({ icon: iconId });
+  const icon = createIcon({ icon: iconId, className: 'gi-toast-icon' });
+  icon.dataset.variant = arguments_.variant;
   dsToast.append(icon);
 
   const container = document.createElement('div');

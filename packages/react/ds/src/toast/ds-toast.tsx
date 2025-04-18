@@ -88,7 +88,11 @@ function Toast({
       aria-label={title}
       data-testid={dataTestid}
     >
-      <Icon icon={icon({ variant })} />
+      <Icon
+        icon={icon({ variant })}
+        className="gi-toast-icon"
+        data-variant={variant}
+      />
       <div className={container()}>
         <div className={innerContainer()}>
           <p className={heading()}>{title}</p>
