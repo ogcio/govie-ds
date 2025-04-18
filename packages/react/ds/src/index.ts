@@ -16,6 +16,10 @@ export {
   type BreadcrumbProps,
 } from './breadcrumbs/types.js';
 export { Button } from './button/button.js';
+export {
+  ButtonGroup,
+  ButtonGroupItem,
+} from './button/button-group/button-group.js';
 export { type ButtonProps } from './button/types.js';
 export { Card, type CardProps } from './card/card.js';
 export { CheckboxGroup } from './checkbox/checkbox-group.js';
@@ -101,6 +105,8 @@ export type {
   SummaryListRowProps,
   SummaryListValueProps,
 } from './summary-list/types.js';
+export { ScoreSelect } from './score-select/score-select.js';
+export type { ScoreSelectProps } from './score-select/type.js';
 export { Caption, type CaptionProps } from './table/caption.js';
 export { ColumnGroup } from './table/column-group.js';
 export { Column } from './table/column.js';

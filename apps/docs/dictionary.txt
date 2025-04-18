@@ -212,3 +212,6 @@ i18n
 titleAsChild
 asChild
 ReactNode
+components-scoreselect
+ScoreSelect
+Likert

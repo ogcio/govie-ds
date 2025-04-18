@@ -1,5 +1,5 @@
 .gi-btn {
-  @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm gi-items-center gi-focus-state-outline gi-focus-state-border-sm-rounded;
+  @apply gi-border-solid gi-border-sm gi-gap-2 gi-flex gi-rounded-sm gi-items-center gi-focus-state-outline gi-focus-state-border-sm-rounded disabled:gi-cursor-not-allowed;
 }
 
 /* Button Focus state */
@@ -34,7 +34,7 @@
 }
 
 .gi-btn-primary-disabled {
-  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700;
 }
 
 .gi-btn-primary-light {
@@ -42,7 +42,7 @@
 }
 
 .gi-btn-primary-light-disabled {
-  @apply gi-border-transparent gi-bg-gray-800 gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+  @apply gi-border-transparent gi-bg-gray-800 gi-text-gray-400 gi-stroke-gray-400;
 }
 
 .gi-btn-primary-dark {
@@ -50,7 +50,7 @@
 }
 
 .gi-btn-primary-dark-disabled {
-  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-transparent gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700;
 }
 
 /* Button Secondary */
@@ -60,7 +60,7 @@
 }
 
 .gi-btn-secondary-disabled {
-  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700;
 }
 
 .gi-btn-secondary-light {
@@ -68,7 +68,7 @@
 }
 
 .gi-btn-secondary-light-disabled {
-  @apply gi-bg-gray-800 gi-border-gray-400 gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+  @apply gi-bg-gray-800 gi-border-gray-400 gi-text-gray-400 gi-stroke-gray-400;
 }
 
 .gi-btn-secondary-dark {
@@ -76,7 +76,7 @@
 }
 
 .gi-btn-secondary-dark-disabled {
-  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-gray-400 gi-bg-gray-200 gi-text-gray-700 gi-stroke-gray-700;
 }
 
 /* Button Flat */
@@ -86,7 +86,7 @@
 }
 
 .gi-btn-flat-disabled {
-  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700;
 }
 
 .gi-btn-flat-light {
@@ -94,7 +94,7 @@
 }
 
 .gi-btn-flat-light-disabled {
-  @apply gi-border-transparent gi-text-gray-400 gi-stroke-gray-400 gi-pointer-events-none;
+  @apply gi-border-transparent gi-text-gray-400 gi-stroke-gray-400;
 }
 
 .gi-btn-flat-dark {
@@ -102,7 +102,7 @@
 }
 
 .gi-btn-flat-dark-disabled {
-  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700 gi-pointer-events-none;
+  @apply gi-border-transparent gi-text-gray-700 gi-stroke-gray-700;
 }
 
 /* Button sizes */
@@ -117,4 +117,14 @@
 
 .gi-btn-regular {
   @apply gi-h-10 gi-px-3 gi-py-2 gi-text-sm;
+}
+
+/* Button Group */
+
+.gi-btn-group {
+  @apply gi-flex gi-flex-wrap gi-gap-3;
+}
+
+.gi-btn-group button {
+  @apply gi-min-w-12 gi-justify-center;
 }

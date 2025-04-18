@@ -1,0 +1,11 @@
+.gi-score-select-labels {
+  @apply sm:gi-flex gi-justify-between gi-hidden gi-text-sm;
+}
+
+.gi-score-select-labels-responsive {
+  @apply gi-block sm:gi-hidden gi-text-sm;
+}
+
+.gi-score-select-button-group {
+  @apply gi-space-y-2 gi-w-fit;
+}

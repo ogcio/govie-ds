@@ -13,6 +13,8 @@ import {
   BreadcrumbLink,
   Breadcrumbs,
   Button,
+  ButtonGroup,
+  ButtonGroupItem,
   Caption,
   Card,
   Chip,
@@ -59,6 +61,7 @@ import {
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,
+  ScoreSelect,
   TabItem,
   Table,
   TableBody,
@@ -254,6 +257,7 @@ const documentComponents: MDXComponents = {
   SummaryListRow: (props) => <SummaryListRow {...props} />,
   SummaryListAction: (props) => <SummaryListAction {...props} />,
   SummaryListValue: (props) => <SummaryListValue {...props} />,
+  ScoreSelect: (props) => <ScoreSelect {...props} />,
   ProgressBar: (props) => <ProgressBar {...props} />,
   ProgressStepper: (props) => <ProgressStepper {...props} />,
   Table: (props) => <Table {...props} />,
@@ -284,6 +288,8 @@ const documentComponents: MDXComponents = {
   InputCheckbox,
   InputFile,
   InputRadioGroup,
+  ButtonGroup,
+  ButtonGroupItem,
 };
 
 export function Mdx({ code }: MdxProps) {

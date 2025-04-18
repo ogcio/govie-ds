@@ -5,7 +5,7 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { ButtonProps } from './types';
 
 const meta: Meta<ButtonProps> = {
-  title: 'Form/Button',
+  title: 'Form/Button/Button',
 };
 
 export default meta;
