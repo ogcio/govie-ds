@@ -87,34 +87,6 @@ export const AllVariants: Story = {
         </Button>
       </div>
       <div className="gi-flex gi-gap-4">
-        <Button variant="secondary" size="medium">
-          Secondary
-        </Button>
-        <Button variant="secondary" size="medium" className="hover-selector">
-          Secondary Hover
-        </Button>
-        <Button variant="secondary" size="medium" className="focus-selector">
-          Secondary Focus
-        </Button>
-        <Button variant="secondary" size="medium" disabled>
-          Secondary Disabled
-        </Button>
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <Button variant="flat" size="medium">
-          Flat
-        </Button>
-        <Button variant="flat" size="medium" className="hover-selector">
-          Flat Hover
-        </Button>
-        <Button variant="flat" size="medium" className="focus-selector">
-          Flat Focus
-        </Button>
-        <Button variant="flat" size="medium" disabled>
-          Flat Disabled
-        </Button>
-      </div>
-      <div className="gi-flex gi-gap-4">
         <Button variant="primary" size="medium" appearance="dark">
           Primary Dark
         </Button>
@@ -136,54 +108,6 @@ export const AllVariants: Story = {
         </Button>
         <Button variant="primary" size="medium" appearance="dark" disabled>
           Primary Dark Disabled
-        </Button>
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <Button variant="secondary" size="medium" appearance="dark">
-          Secondary Dark
-        </Button>
-        <Button
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          className="hover-selector"
-        >
-          Secondary Dark Hover
-        </Button>
-        <Button
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          className="focus-selector"
-        >
-          Secondary Dark Focus
-        </Button>
-        <Button variant="secondary" size="medium" appearance="dark" disabled>
-          Secondary Dark Disabled
-        </Button>
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <Button variant="flat" size="medium" appearance="dark">
-          Flat Dark
-        </Button>
-        <Button
-          variant="flat"
-          size="medium"
-          appearance="dark"
-          className="hover-selector"
-        >
-          Flat Dark Hover
-        </Button>
-        <Button
-          variant="flat"
-          size="medium"
-          appearance="dark"
-          className="focus-selector"
-        >
-          Flat Dark Focus
-        </Button>
-        <Button variant="flat" size="medium" appearance="dark" disabled>
-          Flat Dark Disabled
         </Button>
       </div>
       <div
@@ -213,6 +137,44 @@ export const AllVariants: Story = {
           Primary Light Disabled
         </Button>
       </div>
+      <div className="gi-flex gi-gap-4">
+        <Button variant="secondary" size="medium">
+          Secondary
+        </Button>
+        <Button variant="secondary" size="medium" className="hover-selector">
+          Secondary Hover
+        </Button>
+        <Button variant="secondary" size="medium" className="focus-selector">
+          Secondary Focus
+        </Button>
+        <Button variant="secondary" size="medium" disabled>
+          Secondary Disabled
+        </Button>
+      </div>
+      <div className="gi-flex gi-gap-4">
+        <Button variant="secondary" size="medium" appearance="dark">
+          Secondary Dark
+        </Button>
+        <Button
+          variant="secondary"
+          size="medium"
+          appearance="dark"
+          className="hover-selector"
+        >
+          Secondary Dark Hover
+        </Button>
+        <Button
+          variant="secondary"
+          size="medium"
+          appearance="dark"
+          className="focus-selector"
+        >
+          Secondary Dark Focus
+        </Button>
+        <Button variant="secondary" size="medium" appearance="dark" disabled>
+          Secondary Dark Disabled
+        </Button>
+      </div>
       <div
         className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit"
         data-testid="light-appearance"
@@ -240,6 +202,46 @@ export const AllVariants: Story = {
           Secondary Light Disabled
         </Button>
       </div>
+      <div className="gi-flex gi-gap-4">
+        <Button variant="flat" size="medium">
+          Flat
+        </Button>
+        <Button variant="flat" size="medium" className="hover-selector">
+          Flat Hover
+        </Button>
+        <Button variant="flat" size="medium" className="focus-selector">
+          Flat Focus
+        </Button>
+        <Button variant="flat" size="medium" disabled>
+          Flat Disabled
+        </Button>
+      </div>
+
+      <div className="gi-flex gi-gap-4">
+        <Button variant="flat" size="medium" appearance="dark">
+          Flat Dark
+        </Button>
+        <Button
+          variant="flat"
+          size="medium"
+          appearance="dark"
+          className="hover-selector"
+        >
+          Flat Dark Hover
+        </Button>
+        <Button
+          variant="flat"
+          size="medium"
+          appearance="dark"
+          className="focus-selector"
+        >
+          Flat Dark Focus
+        </Button>
+        <Button variant="flat" size="medium" appearance="dark" disabled>
+          Flat Dark Disabled
+        </Button>
+      </div>
+
       <div
         className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit"
         data-testid="light-appearance"

@@ -10,9 +10,9 @@ type Token = {
 
 function dtcgToSet(
   set: Record<string, Token>,
-): { name: number; value: string }[] {
+): { name: number | string; value: string }[] {
   return Object.entries(set).map(([name, value]) => ({
-    name: Number(name),
+    name: typeof name === 'string' ? name : Number(name),
     value: value.$value,
   }));
 }

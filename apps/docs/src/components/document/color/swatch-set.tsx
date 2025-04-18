@@ -2,7 +2,7 @@ import { Fragment } from 'react/jsx-runtime';
 import { Swatch, SwatchProps } from './swatch';
 
 export type SwatchSetProps = {
-  name: string;
+  name: string | number;
   set: SwatchProps[];
   hideValues?: boolean;
 };

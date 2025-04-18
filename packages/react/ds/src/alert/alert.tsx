@@ -95,7 +95,12 @@ function Alert({
       role="alert"
       aria-live="assertive"
     >
-      <Icon icon={icon({ variant })} ariaHidden />
+      <Icon
+        icon={icon({ variant })}
+        ariaHidden
+        className="gi-alert-icon"
+        data-variant={variant}
+      />
       <div className={container()}>
         <p className={heading()}>{title}</p>
         {children}

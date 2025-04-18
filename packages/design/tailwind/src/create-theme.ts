@@ -310,6 +310,11 @@ export function createTheme(
     },
     extend: {
       colors: {
+        color: {
+          ...(meta
+            ? convertColors(meta.light.resolved.semantic.color)
+            : variables.semantic.color),
+        },
         primary: {
           ...(meta
             ? convertColors(meta.light.resolved.semantic.surface.primary)

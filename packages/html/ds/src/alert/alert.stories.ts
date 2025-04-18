@@ -46,7 +46,8 @@ const createAlert = (arguments_: AlertProps) => {
     iconId = 'info';
   }
 
-  const icon = createIcon({ icon: iconId });
+  const icon = createIcon({ icon: iconId, className: 'gi-alert-icon' });
+  icon.dataset.variant = arguments_.variant;
   component.append(icon);
 
   const container = document.createElement('div');
