@@ -114,7 +114,7 @@
         "yellow": { "$type": "color", "$value": "#FFDD00" },
         "green": { "$type": "color", "$value": "#00703C" },
         "purple": { "$type": "color", "$value": "#4C2C92" },
-        "white": { "$type": "color", "$value": "#004D44" },
+        "white": { "$type": "color", "$value": "#FFFFFF" },
         "transparent": { "$type": "color", "$value": "#FFFFFF03" },
         "black": { "$type": "color", "$value": "#000000" }
       }
