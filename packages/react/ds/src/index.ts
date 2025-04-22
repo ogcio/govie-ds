@@ -48,6 +48,10 @@ export type { DrawerProps, DrawerWrapperProps } from './drawer/drawer.js';
 export { FileUpload, type FileUploadProps } from './file-upload/file-upload.js';
 export { Footer, type FooterProps } from './footer/footer.js';
 export { FormField, type FormFieldProps } from './forms/form-field.js';
+export {
+  FormFieldWithTag,
+  type FormFieldWithTagProps,
+} from './forms/form-field-with-tag/form-field-with-tag.js';
 export { Form } from './forms/form.js';
 export {
   HeaderSearch,
