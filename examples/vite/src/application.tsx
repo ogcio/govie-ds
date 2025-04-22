@@ -4,7 +4,6 @@ import {
   Card,
   Combobox,
   Container,
-  CookieBanner,
   DropdownItem,
   Footer,
   Form,
@@ -41,7 +40,7 @@ import {
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import { useState } from 'react';
-import { ComboBoxProps, CookieBannerProps } from './props';
+import { ComboBoxProps } from './props';
 
 const toastProps: ToastProps = {
   title: 'Default',

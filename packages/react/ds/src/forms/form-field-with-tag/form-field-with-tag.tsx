@@ -3,9 +3,9 @@ import React from 'react';
 import { cn } from '../../cn.js';
 import { ErrorText, ErrorTextProps } from '../../error-text/error-text.js';
 import { HintText, HintTextProps } from '../../hint-text/hint-text.js';
+import { translate as t } from '../../i18n/utility.js';
 import { Label, LabelProps } from '../../label/label.js';
 import { Tag, TagProps } from '../../tag/tag.js';
-import { translate as t } from '../../i18n/utility.js';
 
 export type FormFieldWithTagProps = {
   error?: ErrorTextProps;
