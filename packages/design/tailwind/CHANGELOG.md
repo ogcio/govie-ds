@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [1.5.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.4.0...design-tailwind-v1.5.0) (2025-04-18)
+
+
+### Features
+
+* add button group component ([#518](https://github.com/ogcio/govie-ds/issues/518)) ([de6aed4](https://github.com/ogcio/govie-ds/commit/de6aed4a9660252f00990bed09b76c214082cd45))
+* add score select component ([#525](https://github.com/ogcio/govie-ds/issues/525)) ([11ab372](https://github.com/ogcio/govie-ds/commit/11ab3728f10ab01d7c86e864946c71a0e03526e4))
+
+
+### Bug Fixes
+
+* Not-allowed cursor for disabled buttons ([#522](https://github.com/ogcio/govie-ds/issues/522)) ([2b4722f](https://github.com/ogcio/govie-ds/commit/2b4722ff61e413a10617abd8af9e8e9c14e71fdc))
+
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.3.0...design-tailwind-v1.4.0) (2025-04-14)
 
 
