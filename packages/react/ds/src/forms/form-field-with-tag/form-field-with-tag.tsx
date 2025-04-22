@@ -7,6 +7,10 @@ import { translate as t } from '../../i18n/utility.js';
 import { Label, LabelProps } from '../../label/label.js';
 import { Tag, TagProps } from '../../tag/tag.js';
 
+/**
+ * @deprecated This type is deprecated and will be removed in a future release.
+ * Please use the new FormFieldProps component instead.
+ */
 export type FormFieldWithTagProps = {
   error?: ErrorTextProps;
   hint?: HintTextProps;
@@ -15,6 +19,10 @@ export type FormFieldWithTagProps = {
   tag?: TagProps;
 } & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
+/**
+ * @deprecated This component is deprecated and will be removed in a future release.
+ * Please use the new FormField component instead.
+ */
 export const FormFieldWithTag = ({
   label,
   hint,
