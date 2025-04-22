@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.2.0...html-lib-v1.3.0) (2025-04-18)
+
+
+### Features
+
+* add button group component ([#518](https://github.com/ogcio/govie-ds/issues/518)) ([de6aed4](https://github.com/ogcio/govie-ds/commit/de6aed4a9660252f00990bed09b76c214082cd45))
+* add score select component ([#525](https://github.com/ogcio/govie-ds/issues/525)) ([11ab372](https://github.com/ogcio/govie-ds/commit/11ab3728f10ab01d7c86e864946c71a0e03526e4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.5.0
+
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.4...html-lib-v1.2.0) (2025-04-14)
 
 
