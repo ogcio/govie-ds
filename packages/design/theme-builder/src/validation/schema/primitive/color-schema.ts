@@ -34,4 +34,5 @@ export const colorSchema = z
       required_error: 'color is required.',
     },
   )
-  .strict();
+  .strict()
+  .or(z.any());
