@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { createColorSchema, createColorSwatchSetSchema } from '../shared.js';
 
-export const colorSchema = z
+const knownColors = z
   .object(
     {
       gray: createColorSwatchSetSchema('gray'),
@@ -26,7 +26,7 @@ export const colorSchema = z
           black: createColorSchema('black'),
         },
         {
-          required_error: `base color is required.`,
+          required_error: 'base color is required.',
         },
       ),
     },
@@ -34,5 +34,8 @@ export const colorSchema = z
       required_error: 'color is required.',
     },
   )
-  .strict()
-  .or(z.any());
+  .strict();
+
+const dynamicColors = z.record(createColorSwatchSetSchema('dynamic'));
+
+export const colorSchema = knownColors.and(dynamicColors);
