@@ -7,6 +7,8 @@ import {
   Stack,
   Paragraph,
   Link,
+  Container,
+  Heading,
 } from '@govie-ds/react';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
@@ -69,7 +71,7 @@ export default function FeedbackForm() {
     });
   };
 
-  return showForm ? (
+  /*return showForm ? (
     <div className="border-sm border-solid w-105 p-4 bg-white fixed bottom-7 lg:right-14 right-6 z-900">
       <Stack>
         <FormField
@@ -92,9 +94,11 @@ export default function FeedbackForm() {
         )}
       </Stack>
     </div>
-  ) : null;
+  ) : null;*/
+
   /*
-    <Container className="w-full justify-end flex pb-8">
+  return showForm ? (
+    <Container className="w-full justify-end flex pb-1">
       <Stack className="border-sm border-solid w-full lg:w-105 p-4">
         <FormField
           label={{
@@ -111,9 +115,39 @@ export default function FeedbackForm() {
             </ButtonGroup>
           )}
         </FormField>
-          {showSendFeedbackButton && (
-            <SendFeedbackContainer onClick={handleOnFeedbackFormButtonClick} />
-          )}
+        {showSendFeedbackButton && (
+          <SendFeedbackContainer onClick={handleOnFeedbackFormButtonClick} />
+        )}
       </Stack>
-    </Container> */
+    </Container>
+  ) : null;*/
+
+  return (
+    <Container>
+      <div className="flex justify-end mb-4">
+        <div className="flex gap-4 items-center">
+          <Heading as="h5">Was this page helpful?</Heading>
+          <div>
+            {showSendFeedbackButton ? (
+              <Link
+                external
+                onClick={handleOnFeedbackFormButtonClick}
+                asButton={{
+                  appearance: 'dark',
+                }}
+                href={config.feedbackFormUrl}
+              >
+                Send feedback
+              </Link>
+            ) : (
+              <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
+                <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
+                <ButtonGroupItem value="no">No</ButtonGroupItem>
+              </ButtonGroup>
+            )}
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
 }
