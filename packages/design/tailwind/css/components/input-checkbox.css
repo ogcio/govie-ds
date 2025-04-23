@@ -30,6 +30,7 @@
 }
 .gi-input-checkbox-container label {
   @apply gi-w-fit;
+  overflow-wrap: anywhere;
 }
 .gi-input-checkbox-hint-container {
   @apply gi-flex gi-gap-4;
