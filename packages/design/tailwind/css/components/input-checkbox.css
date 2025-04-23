@@ -28,6 +28,9 @@
 .gi-input-checkbox-container {
   @apply gi-gap-4 gi-flex gi-items-center;
 }
+.gi-input-checkbox-container label {
+  @apply gi-w-fit;
+}
 .gi-input-checkbox-hint-container {
   @apply gi-flex gi-gap-4;
 }
