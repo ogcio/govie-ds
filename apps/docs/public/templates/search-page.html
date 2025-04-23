@@ -87,7 +87,7 @@
       <div class="gi-header-menu">
         <div>
           <div class="gi-header-logo">
-            <a data-testid="logo-link" href="#">
+            <a href="#">
               <picture>
                 <source
                   srcset="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
@@ -114,8 +114,7 @@
             <a class="gi-header-tool-item" href="#">Gaelige</a>
           </div>
           <div class="gi-block lg:gi-hidden">
-            <label class="gi-header-tool-item" for="ItemActionTrigger-4" data-testid="ItemActionTrigger-4"
-              aria-label="menu" id="ItemActionLabel-4">
+            <label class="gi-header-tool-item" for="ItemActionTrigger-4" aria-label="menu" id="ItemActionLabel-4">
               <input id="ItemActionTrigger-4" type="checkbox" data-index="4">
               <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" id="ItemIconActionTrigger-4"
                 style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">menu</span>
@@ -128,8 +127,8 @@
       </div>
     </div>
     <div data-module="gieds-drawer" id="Drawer-4">
-      <div data-element="modal" data-testid="modal" class="gi-modal" data-position="right" data-open="false">
-        <div data-element="modal-container" data-testid="modal-container"
+      <div data-element="modal" class="gi-modal" data-position="right" data-open="false">
+        <div data-element="modal-container"
           class="gi-modal-container-control gi-modal-container gi-modal-container-right gi-drawer-container">
           <div>
             <button class="gi-btn gi-icon-btn-small gi-btn-flat-dark gi-modal-icon">
@@ -137,7 +136,7 @@
                 style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">close</span>
             </button>
           </div>
-          <div data-testid="modal-body" class="gi-modal-body g-drawer-body">
+          <div class="gi-modal-body g-drawer-body">
             <ul>
               <li>
                 <a href="#" class="gi-list-item">
@@ -173,28 +172,27 @@
 
                 <div class="gi-input-text-container">
                   <div class="gi-input-text-container {{ marginTop }}">
-                    <input id="search-input" data-testid="textbox" type="text" autocomplete="on"
+                    <input id="search-input" type="text" autocomplete="on"
                       class="gi-border-gray-950 gi-w-full gi-input-text" />
                   </div>
                 </div>
               </div>
               <div class="gi-hidden sm:gi-block">
-                <button data-testid="govieButton-default-primary-medium-notDisabled" data-element="button-container"
-                  data-module="gieds-button" class="gi-btn gi-btn-primary gi-btn-regular">
+                <button data-element="button-container" data-module="gieds-button"
+                  class="gi-btn gi-btn-primary gi-btn-regular">
                   Search
                 </button>
               </div>
               <div class="gi-block sm:gi-hidden">
                 <button data-element="icon-button-container" data-module="gieds-icon-button"
-                  data-testid="govieIconButton-default-primary-medium-notDisabled"
                   class="gi-btn gi-btn-primary gi-icon-btn-regular">
-                  <span data-testid="govie-icon" role="presentation" style="
+                  <span role="presentation" style="
                         font-variation-settings:
                           'FILL' 0,
                           'wght' 400,
                           'GRAD' 0,
                           'opsz' 24;
-                      " class="material-symbols-outlined gi-block gi-text-[16px]">
+                      " class="material-symbols-outlined gi-block gi-text-[24px]">
                     search
                   </span>
                 </button>
@@ -334,7 +332,7 @@
         <form data-module="gieds-combobox" action="#" class="gi-combobox-container">
 
           <div role="group" data-module="gieds-dropdown-item">
-            <button class="gi-combobox-toggle" data-testid="combobox-toggle">
+            <button class="gi-combobox-toggle">
               <div class="gi-combobox-toggle-content">
                 <p class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose">Organisations</p>
                 <div class="gi-hidden">
@@ -344,8 +342,7 @@
               <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert"
                 style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
             </button>
-            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container"
-              data-testid="combobox-dropdown-container">
+            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container">
               <div class="gi-combobox-search">
                 <fieldset class="gi-combobox-search-input">
                   <div class="gi-input-text-container">
@@ -1745,7 +1742,7 @@
             </div>
           </div>
           <div role="group" data-module="gieds-dropdown-item">
-            <button class="gi-combobox-toggle" data-testid="combobox-toggle">
+            <button class="gi-combobox-toggle">
               <div class="gi-combobox-toggle-content">
                 <p class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose">Categories</p>
                 <div class="gi-hidden">
@@ -1755,8 +1752,7 @@
               <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert"
                 style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
             </button>
-            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container"
-              data-testid="combobox-dropdown-container">
+            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container">
               <div class="gi-combobox-search">
                 <fieldset class="gi-combobox-search-input">
                   <div class="gi-input-text-container">
@@ -1956,7 +1952,7 @@
             </div>
           </div>
           <div role="group" data-module="gieds-dropdown-item">
-            <button class="gi-combobox-toggle" data-testid="combobox-toggle">
+            <button class="gi-combobox-toggle">
               <div class="gi-combobox-toggle-content">
                 <p class="gi-paragraph-md gi-text-start gi-whitespace-normal gi-max-w-prose">Topic (without search)</p>
                 <div class="gi-hidden">
@@ -1966,8 +1962,7 @@
               <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert"
                 style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">keyboard_arrow_down</span>
             </button>
-            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container"
-              data-testid="combobox-dropdown-container">
+            <div class="gi-combobox-dropdown-container-close" data-element="combobox-dropdown-container">
               <div class="gi-combobox-checkbox-container">
                 <div class="gi-hidden">
                   <p class="gi-combobox-checkbox-paragraph">No results found</p>
@@ -2081,8 +2076,8 @@
         </form>
 
         <div>
-          <button data-testid="govieButton-dark-primary-medium-notDisabled" data-element="button-container"
-            data-module="gieds-button" class="gi-btn gi-btn-primary-dark gi-btn-regular">
+          <button data-element="button-container" data-module="gieds-button"
+            class="gi-btn gi-btn-primary-dark gi-btn-regular">
             Apply filters
           </button>
         </div>
@@ -2090,12 +2085,10 @@
         <a href="#" class="gi-link visited:gi-text-blue-700">Clear All</a>
       </div>
       <div class="my-6 gi-col-span-2 gi-col-start-2 gi-order-3">
-        <div class="gi-pagination" data-current-page="5" data-total-pages="10" data-testid="govie-pagination"
-          data-module="gieds-pagination">
-          <a href="#" target="_self" data-testid="govie-pagination-prev-btn" data-element="button-container"
-            data-module="gieds-button" class="gi-pagination-prev-btn gi-btn gi-btn-flat-dark gi-btn-large">
-            <span data-testid="govie-icon" role="presentation"
-              class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span>
+        <div class="gi-pagination" data-current-page="5" data-total-pages="10" data-module="gieds-pagination">
+          <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+            class="gi-pagination-prev-btn gi-btn gi-btn-flat-dark gi-btn-large">
+            <span role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_left_alt</span>
             <span class="sm:gi-block gi-hidden">Previous</span>
           </a>
 
@@ -2104,74 +2097,71 @@
           </div>
 
           <div class="sm:gi-flex xs:gi-flex gi-items-center gi-justify-between gi-gap-2 md:gi-hidden gi-hidden">
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               1
             </a>
 
-            <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+            <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-dark-large-notDisabled"
-              data-element="button-container" data-module="gieds-button"
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
               class="gi-btn gi-btn-primary-dark gi-btn-large">
               5
             </a>
 
-            <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+            <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               10
             </a>
           </div>
 
           <div class="md:gi-flex gi-items-center gi-justify-between gi-gap-2 gi-hidden">
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               1
             </a>
 
-            <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+            <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               3
             </a>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               4
             </a>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-dark-large-notDisabled"
-              data-element="button-container" data-module="gieds-button"
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
               class="gi-btn gi-btn-primary-dark gi-btn-large">
               5
             </a>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               6
             </a>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               7
             </a>
 
-            <span data-testid="govie-icon" class="material-symbols-outlined gi-gray-700">more_horiz</span>
+            <span class="material-symbols-outlined gi-gray-700">more_horiz</span>
 
-            <a href="#" target="_self" data-testid="govieButton-dark-flat-large-notDisabled"
-              data-element="button-container" data-module="gieds-button" class="gi-btn gi-btn-flat-dark gi-btn-large">
+            <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+              class="gi-btn gi-btn-flat-dark gi-btn-large">
               10
             </a>
           </div>
 
-          <a href="#" target="_self" data-testid="govie-pagination-next-btn" data-element="button-container"
-            data-module="gieds-button" class="gi-pagination-next-btn gi-btn gi-btn-flat-dark gi-btn-large">
+          <a href="#" target="_self" data-element="button-container" data-module="gieds-button"
+            class="gi-pagination-next-btn gi-btn gi-btn-flat-dark gi-btn-large">
             <span class="sm:gi-block gi-hidden">Next</span>
-            <span data-testid="govie-icon" role="presentation"
-              class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
+            <span role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">arrow_right_alt</span>
           </a>
         </div>
       </div>
@@ -2180,7 +2170,7 @@
 
   <footer class="gi-footer">
     <div class="gi-layout-container">
-      <div class="gi-footer-container custom-footer" data-testid="footer-complete">
+      <div class="gi-footer-container custom-footer">
         <div>
           <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
             <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">

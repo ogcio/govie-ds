@@ -4,6 +4,7 @@ import { Heading } from '../../heading/heading.js';
 import { translate as t } from '../../i18n/utility.js';
 import { Icon, IconId } from '../../icon/icon.js';
 import { InputText } from '../../input-text/input-text.js';
+import { IconButton } from '../../icon-button/icon-button.js';
 
 export type HeaderSearchProps = {
   action?: string;
@@ -37,18 +38,19 @@ export function HeaderSearch({
           className="gi-flex-auto"
         />
         <Button
-          className="gi-ml-1 gi-flex-none"
+          className="gi-ml-1 gi-flex-none gi-hidden sm:gi-block"
           aria-label={t('header.submitSearch', {
             defaultValue: 'Submit Search',
           })}
         >
           {t('header.search', { defaultValue: 'Search' })}
-          <Icon
-            icon={icon}
-            ariaLabel={t('header.search', { defaultValue: 'Search' })}
-            aria-hidden="true"
-          />
         </Button>
+        <IconButton
+          className="gi-ml-1 gi-flex-none sm:gi-hidden gi-block"
+          aria-label={t('header.search', { defaultValue: 'Search' })}
+          aria-hidden="true"
+          icon={{ icon }}
+        />
       </div>
     </form>
   );
