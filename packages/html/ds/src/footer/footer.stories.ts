@@ -236,3 +236,61 @@ export const SimpleFooter: Story = {
   // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
   render: (arguments_) => createFooter(arguments_),
 };
+
+export const GovieFooter: Story = {
+  args: {
+    primarySlot: `
+    <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+      <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+        <ul class="gi-space-y-2">
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Circulars</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Consultations</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Directory</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Policies</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Publications</a>
+          </li>
+        </ul>
+      </div>
+      <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+        <ul class="gi-space-y-2">
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Latest financial accounts</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Sell to Government</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Who Does What</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    `,
+    secondarySlot: `
+      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap">
+        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
+          <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
+          <a href="#" class="gi-link gi-link-inherit">Accessibility</a>
+        </div>
+      </div>`,
+    utilitySlot: `
+    <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
+      <div class="gi-text-sm">
+        © ${new Date().getFullYear()} Government of Ireland.
+      </div>
+    </div>`,
+    class: 'custom-footer',
+    dataTestid: 'footer-complete',
+  },
+  // @ts-expect-error Type mismatch: createFooter returns a string instead of a React element
+  render: (arguments_) => createFooter(arguments_),
+};

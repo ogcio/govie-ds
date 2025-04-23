@@ -988,3 +988,41 @@ export const WithUtilitySlot: Story = {
   },
   render: createElement,
 };
+
+export const GovieHeader: Story = {
+  args: {
+    logo: {
+      href: '#',
+      imageLarge:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+      imageSmall:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+    },
+    items: [
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Gaelige',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'always',
+      },
+    ],
+    addDefaultMobileMenu: true,
+  },
+  render: createElement,
+};
