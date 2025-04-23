@@ -86,10 +86,9 @@ export const Step = ({
   const [labelClassName, setLabelClassName] = useState('');
 
   useEffect(() => {
-    if (!labelRef.current) {
+    if (!labelRef.current || typeof ResizeObserver === 'undefined') {
       return;
     }
-
     const observer = new ResizeObserver(([entry]) => {
       if (entry.contentRect.height >= 40) {
         setLabelClassName('gi-pt-5');
