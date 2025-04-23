@@ -16,7 +16,9 @@ libraries:
 
 # Header
 
-The GOV.IE header component tells users they’re using a service on GOV.IE and lets them use GOV.IE-wide tools. Also known as the GOV.IE masthead.
+The Header component serves as the top-level navigation element across all GOV.IE digital services. 
+It provides users with a consistent and recognizable interface that establishes trust, reinforces brand identity, and offers essential navigation tools. 
+This component, sometimes referred to as the GOV.IE masthead, helps users instantly identify they're interacting with an official government service while providing access to site-wide functionality.
 
 ## Variants
 
@@ -26,8 +28,24 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
   <Header
     title={'Application title'}
     addDefaultMobileMenu
-    items={[{ label: 'Departments', itemType: 'link', href: '#' }, { label: 'Services', itemType: 'link', href: '#' }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', component: <HeaderSearch />, slotAppearance: 'dropdown' }, { label: 'Home', icon: 'home', itemType: 'link', href: '/item1' }]}
-    secondaryLinks={[{ href: '', label: 'Gaeilge' }]}
+    items={[{ label: 'Departments', itemType: 'link', href: '#' }, { label: 'Services', itemType: 'link', href: '#' }, { itemType: 'divider' }, { label: 'Search', icon: 'search', itemType: 'slot', component: <HeaderSearch />, slotAppearance: 'dropdown' }]}
+    secondaryLinks={[
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John | <NextLink href="#">Logout</NextLink>
+          </Paragraph>
+        ),
+      },
+    ]}
 />
 
 </ComponentContainer>
@@ -151,189 +169,31 @@ The GOV.IE header component tells users they’re using a service on GOV.IE and 
     ```jsx
     import { Header, HeaderProps, HeaderSearch } from '@govie-ds/react';
 
-    const headerProps: HeaderProps = {
-        items: [
-            {
-                label: 'Departments',
-                itemType: 'link',
-                href: '#',
-                showItemMode: 'desktop-only',
-            },
-            {
-                label: 'Services',
-                itemType: 'link',
-                href: '#',
-                showItemMode: 'desktop-only',
-            },
-            {
-                itemType: 'divider',
-                showItemMode: 'desktop-only',
-            },
-            {
-                label: 'Home',
-                icon: 'home',
-                itemType: 'link',
-                href: '/item1',
-                showItemMode: 'desktop-only',
-            },
-            {
-                label: 'Faq',
-                icon: 'info',
-                itemType: 'slot',
-                component: <div>Example drawer</div>,
-                slotAppearance: 'drawer',
-                showItemMode: 'desktop-only',
-            },
-            {
-                label: 'Search',
-                icon: 'search',
-                itemType: 'slot',
-                component: <HeaderSearch />,
-                slotAppearance: 'dropdown',
-                showItemMode: 'desktop-only',
-            },
-            {
-                label: 'Languages',
-                icon: 'mic',
-                itemType: 'slot',
-                component: <div>Example slot</div>
-                slotAppearance: 'dropdown',
-                showItemMode: 'desktop-only',
-            },
-        ],
-    };
-
     <Header
-        items={headerProps.items}
-        addDefaultMobileMenu
-        secondaryLinks={[{href: '#', label: 'English'}, { href: '#', label: 'Gaeilge'}]}
-    />
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Header with only title
-
-<ComponentContainer fullWidth>
-  <Header title="Application title" />
-</ComponentContainer>
-
-<Tabs id="tab2">
-  <TabList>
-    <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab23">React</TabItem>
-  </TabList>
-  <TabPanel value="tab21">        
-    ```html
-    <header id="GovieHeader" class="gi-header">
-        <div id="MenuContainer" class="gi-header-menu">
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
-                <img src="logo-desktop.svg" />
-            </a>
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
-                <img src="logo-mobile.svg" />
-            </a>
-            <div class="gi-header-title">Application title</div>
-        </div>    
-    </header>
-
-    ```
-
-  </TabPanel>
-  <TabPanel value="tab23">
-    ```html
-    import { Header } from '@govie-ds/react';
-
-    <Header title={'Application title'}/>
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Header with links
-
-<ComponentContainer fullWidth>
-  <Header
-    addDefaultMobileMenu
-    items={[
-      {
-        label: 'Departments',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ]}
-  />
-</ComponentContainer>
-
-<Tabs id="tab3">
-  <TabList>
-    <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab33">React</TabItem>
-  </TabList>
-  <TabPanel value="tab31">        
-    ```html
-    <header id="GovieHeader" class="gi-header">
-        <div id="MenuContainer" class="gi-header-menu">
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
-            <img src="logo-desktop.svg" />
-            </a>
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
-            <img src="logo-mobile.svg" />
-            </a>
-
-            <div class="gi-header-title"></div>
-
-            <ul id="links-container-desktop" class="gi-header-nav">
-            <li class="gi-flex">
-                <a href="/">
-                News
-                </a>
-            </li>
-            <li class="gi-flex">
-                <a href="/">
-                Departments
-                </a>
-            </li>
-            <li class="gi-flex">
-                <a href="/">
-                Services
-                </a>
-            </li>
-            </ul>
-        </div>
-    </header>
-
-    ```
-
-  </TabPanel>
-  <TabPanel value="tab33">
-    ```html
-    import { Header } from '@govie-ds/react';
-
-    <Header items={
-            [
-                {
-                    label: 'Departments',
-                    itemType: 'link',
-                    href: '#',
-                    showItemMode: 'desktop-only',
-                },
-                {
-                    label: 'Services',
-                    itemType: 'link',
-                    href: '#',
-                    showItemMode: 'desktop-only',
-                }
-            ]
-        }
+      title={'Application title'}
+      addDefaultMobileMenu
+      items={[
+        { label: 'Departments', itemType: 'link', href: '#' }, 
+        { label: 'Services', itemType: 'link', href: '#' }, 
+        { itemType: 'divider' }, 
+        { label: 'Search', icon: 'search', itemType: 'slot', component: <HeaderSearch />, slotAppearance: 'dropdown' }
+      ]}
+      secondaryLinks={[
+        {
+          href: '#',
+          label: 'Gaeilge',
+        },
+        {
+          slot: <a href="#">English</a>,
+        },
+        {
+          slot: (
+            <Paragraph>
+              Hello John | <a href="#">Logout</a>
+            </Paragraph>
+          ),
+        },
+      ]}
     />
     ```
 
@@ -368,7 +228,7 @@ For instance, you can use the `react-router-link` or `next/link` component to li
     <TabItem value="tab63" checked>React</TabItem>
   </TabList>
   <TabPanel value="tab63">
-    ```html
+    ```jsx
     import { Header } from '@govie-ds/react';
     import NextLink from 'next/link';
 
@@ -386,406 +246,6 @@ For instance, you can use the `react-router-link` or `next/link` component to li
         },
       ]
     }
-    />
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Header with language switch
-
-<ComponentContainer fullWidth>
-  <Header secondaryLinks={[{ href: '', label: 'Gaeilge' }]} />
-</ComponentContainer>
-
-<Tabs id="tab4">
-  <TabList>
-    <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab43">React</TabItem>
-  </TabList>
-  <TabPanel value="tab41">        
-    ```html
-    <header id="GovieHeader" class="gi-header">
-        <ul class="gi-header-secondary-bar">
-            <li>
-            <a
-                class="gi-header-secondary-item"
-                href="/"
-            >
-                Gaeilge
-            </a>
-            </li>
-        </ul>
-
-        <div id="MenuContainer" class="gi-header-menu">
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
-            <img src="logo-desktop.svg" />
-            </a>
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
-            <img src="logo-mobile.svg" />
-            </a>
-
-            <div class="gi-header-title"></div>
-        </div>
-    </header>
-    ```
-
-  </TabPanel>
-  <TabPanel value="tab43">
-    ```jsx
-    import { Header } from '@govie-ds/react';
-
-    <Header secondaryLinks={[
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ]}/>
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Header with slots
-
-<ComponentContainer fullWidth>
-  <Header
-    items={[
-      {
-        icon: 'home',
-        itemType: 'link',
-        href: '#',
-      },
-      {
-        label: 'Faq',
-        icon: 'info',
-        itemType: 'slot',
-        component: (
-          <List
-            type={'bullet'}
-            items={[
-              <Link
-                size="sm"
-                href="#"
-                children="Citizens Information - Services and Rights"
-              />,
-              <Link
-                size="sm"
-                href="#"
-                children="Revenue - Taxes and Payments"
-              />,
-              <Link
-                size="sm"
-                href="#"
-                children="Department of Social Protection"
-              />,
-            ]}
-          />
-        ),
-        slotAppearance: 'drawer',
-      },
-    ]}
-    addDefaultMobileMenu
-  />
-</ComponentContainer>
-
-<Tabs id="tab5">
-  <TabList>
-    <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab53">React</TabItem>
-  </TabList>
-  <TabPanel value="tab51">        
-    ```html
-    /* Does not support 'slots' feature */
-    <header id="GovieHeader" class="gi-header">
-        <div id="MenuContainer" class="gi-header-menu">
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-lg">
-            <img src="logo-desktop.svg" />
-            </a>
-            <a aria-label="Go to the home page" href="/home" class="gi-header-logo-sm">
-            <img src="logo-mobile.svg" />
-            </a>
-
-            <div class="gi-header-title"></div>
-            <label for="SearchTrigger" class="gi-header-tool-item">
-                <input
-                    class="gi-block gi-w-0 gi-absolute gi-h-0"
-                    id="SearchTrigger"
-                    type="checkbox"
-                />
-                <span class="">Search</span>
-                <div class="search-icon">
-                    <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                    >
-                    search
-                    </span>
-                </div>
-                <div class="gi-hidden close-icon">
-                    <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                    >
-                    close
-                    </span>
-                </div>
-            </label>
-            <a class="gi-header-tool-item" href="/item1">
-                <span class="">Apps</span>
-
-                <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                >
-                    apps
-                </span>
-            </a>
-            <label for="MobileMenuTrigger" class="gi-header-tool-item sm:gi-hidden">
-                <input
-                    class="gi-block gi-w-0 gi-absolute gi-h-0"
-                    id="MobileMenuTrigger"
-                    data-element="menu-icon"
-                    type="checkbox"
-                />
-                <span class="">Menu</span>
-                <div data-element="menu-icon">
-                    <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                    >
-                    menu
-                    </span>
-                </div>
-            </label>
-        </div>
-        <div
-            id="SearchContainer"
-            class="gi-flex gi-h-0 gi-bg-gray-50 gi-overflow-hidden gi-px-4 xs:gi-px-8"
-        >
-            <div class="sm:gi-w-3/6 gi-w-full gi-flex gi-mx-auto gi-flex-col gi-my-8">
-            <form action="/search_page">
-                <label for="search" class="gi-text-md gi-font-bold gi-mb-4">
-                Enter search term
-                </label>
-                <div class="gi-flex">
-                <input
-                    name="search_query"
-                    type="text"
-                    class="gi-px-3 gi-py-1 gi-grow gi-w-full"
-                    id="search"
-                />
-                <button class="gi-bg-emerald-800 gi-text-white gi-p-md">
-                    <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                    >
-                    search
-                    </span>
-                </button>
-                </div>
-            </form>
-            </div>
-        </div>
-
-        <div
-            id="HeaderMenuContainer"
-            class="gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0"
-        >
-            <div class="gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4">
-            <div class="gi-flex gi-items-center">
-                <label
-                for="MobileMenuTrigger`"
-                class="gi-border gi-border-solid gi-border-transparent sm:gi-hidden gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-flex gi-items-center gi-gap-md gi-cursor-pointer"
-                >
-                <span class="gi-text-2md gi-font-bold">Close</span>
-
-                <span
-                    role="presentation"
-                    class="material-symbols-outlined gi-block gi-text-[24px]"
-                >
-                    Close
-                </span>
-                </label>
-            </div>
-            </div>
-            <ul class="gi-bg-white gi-px-4 sm:gi-px-8 gi-h-screen">
-            <li>
-                <a
-                href="/"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-                >
-                <span class="gi-font-bold gi-text-sm">News</span>
-                </a>
-            </li>
-            <li>
-                <a
-                href="/"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-                >
-                <span class="gi-font-bold gi-text-sm">Departments</span>
-                </a>
-            </li>
-            <li>
-                <a
-                href="/"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid"
-                >
-                <span class="gi-font-bold gi-text-sm">Services</span>
-                </a>
-            </li>
-            <li>
-                <a
-                href="/"
-                class="hover:gi-underline hover:gi-underline-offset-sm gi-block gi-py-4"
-                >
-                <span class="gi-text-sm">Gaeilge</span>
-                </a>
-            </li>
-            </ul>
-        </div>
-        <div class="gi-header-overlay" data-element="overlay-disabled"></div>
-        </header>
-
-    ```
-
-  </TabPanel>
-  <TabPanel value="tab53">
-    ```jsx
-    import { Header, HeaderSearch } from '@govie-ds/react';
-
-    <Header
-      addDefaultMobileMenu
-      items={[
-        {
-          label: 'Search',
-          icon: 'search',
-          itemType: 'slot',
-          component: <HeaderSearch />,
-          slotAppearance: 'dropdown',
-        },
-        {
-          icon: 'home',
-          itemType: 'link',
-          href: '#',
-        },
-        {
-          label: 'Faq',
-          icon: 'info',
-          itemType: 'slot',
-          component: (
-              <List
-                type={'bullet'}
-                items={[
-                  <Link
-                    size="sm"
-                    href="#"
-                    children="Citizens Information - Services and Rights"
-                  />,
-                  <Link
-                    size="sm"
-                    href="#"
-                    children="Revenue - Taxes and Payments"
-                  />,
-                  <Link
-                    size="sm"
-                    href="#"
-                    children="Department of Social Protection"
-                  />,
-                ]}
-              />
-        )
-        }
-      ]} />
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Header with secondary links as slot
-
-<ComponentContainer fullWidth>
-  <Header
-    title="Application title"
-    secondaryLinks={[
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        slot: (
-          <a href="#" data-raw="true">
-            English
-          </a>
-        ),
-      },
-      {
-        slot: (
-          <Paragraph>
-            Hello John |{' '}
-            <a href="#" data-raw="true">
-              Logout
-            </a>
-          </Paragraph>
-        ),
-      },
-    ]}
-  />
-</ComponentContainer>
-
-<Tabs id="tab200">
-  <TabList>
-    <TabItem value="tab210" checked>HTML</TabItem>
-    <TabItem value="tab230">React</TabItem>
-  </TabList>
-  <TabPanel value="tab210">        
-    ```html
-      <header id="GovieHeader" aria-label="Site Header" class="gi-header">
-        <div data-testid="govie-container" class="gi-order-2 gi-layout-container" id="HeaderContainer">
-            <div class="gi-header-menu">
-                <div class="gi-header-logo">
-                    <img src="logo-desktop.svg" />
-                </div>
-                <div class="gi-header-title gi-hidden">Application title</div>
-                <div class="gi-gap-2 md:gi-gap-4"></div>
-            </div>
-        </div>
-        <div class="gi-header-secondary-bar gi-order-1">
-            <div data-testid="govie-container" class="gi-flex gi-justify-end gi-items-center gi-layout-container">
-                <p class="gi-paragraph-sm gi-text-start gi-whitespace-normal gi-text-white">Hello John | <a href="/logout" class="gi-link gi-link-light" data-appearance="light">Logout</a></p>
-            </div>
-        </div>
-      </header>
-
-    ```
-
-  </TabPanel>
-  <TabPanel value="tab230">
-    ```html
-    import { Header, Paragraph, Link } from '@govie-ds/react';
-
-    <Header
-      title="Application title"
-       secondaryLinks={[
-          {
-            href: '#',
-            label: 'Gaeilge',
-          },
-          {
-            slot: <a href="#">English</a>,
-          },
-          {
-            slot: (
-              <Paragraph>
-                Hello John | <a href="#">Logout</a>
-              </Paragraph>
-            ),
-          },
-        ]}
     />
     ```
 

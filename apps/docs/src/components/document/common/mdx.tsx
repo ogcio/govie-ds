@@ -132,7 +132,7 @@ const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
     props['data-raw'] ? <a {...props} /> : <GovieLink {...props} />,
   ul: ({ children, className }) => (
-    <ul className={className || 'gi-list-bullet'}>{children}</ul>
+    <ul className={className || 'gi-list'}>{children}</ul>
   ),
   ol: ({ children }) => <ol className="gi-list-number">{children}</ol>,
   li: ({ children }) => <li>{children}</li>,
