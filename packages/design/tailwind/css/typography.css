@@ -193,7 +193,7 @@
 /* Link  */
 
 .gi-link {
-  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.2em] gi-text-blue-700 gi-inline-block gi-relative gi-w-fit;
+  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.2em] gi-text-blue-700 gi-inline gi-relative gi-w-fit;
 }
 
 .gi-link:not([aria-current='page']) {
