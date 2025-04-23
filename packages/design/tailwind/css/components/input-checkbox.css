@@ -3,15 +3,15 @@
 }
 
 .gi-input-checkbox-small {
-  @apply gi-input-checkbox gi-w-6 gi-h-6 checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1;
+  @apply gi-flex-none gi-input-checkbox gi-w-6 gi-h-6 checked:before:gi-w-4 checked:before:gi-h-2 checked:before:gi-left-0.5 checked:before:gi-top-1;
 }
 
 .gi-input-checkbox-medium {
-  @apply gi-input-checkbox gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5;
+  @apply gi-flex-none gi-input-checkbox gi-w-8 gi-h-8 checked:before:gi-w-5 checked:before:gi-h-2.5 checked:before:gi-left-1 checked:before:gi-top-1.5;
 }
 
 .gi-input-checkbox-large {
-  @apply gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
+  @apply gi-flex-none gi-input-checkbox gi-w-11 gi-h-11 checked:before:gi-w-7 checked:before:gi-h-3.5 checked:before:gi-left-1.5 checked:before:gi-top-2;
 }
 
 .gi-input-checkbox-small ~ label {
@@ -27,10 +27,6 @@
 }
 .gi-input-checkbox-container {
   @apply gi-gap-4 gi-flex gi-items-center;
-}
-.gi-input-checkbox-container label {
-  @apply gi-w-fit;
-  overflow-wrap: anywhere;
 }
 .gi-input-checkbox-hint-container {
   @apply gi-flex gi-gap-4;
