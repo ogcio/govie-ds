@@ -30,6 +30,7 @@
       "footer.primarySlot": "Primary footer slot",
       "footer.secondarySlot": "Secondary footer slot",
       "footer.utilityLinks": "Utility links",
+      "formField.tag": "Tag: {{tag}}",
       "logo.govieLogo": "Gov.ie Logo",
       "progressBar.progressBar": "Progress bar",
       "summaryList.linkAction": "Link action: {{children}}",

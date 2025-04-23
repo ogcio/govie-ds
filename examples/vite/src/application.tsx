@@ -4,10 +4,10 @@ import {
   Card,
   Combobox,
   Container,
-  CookieBanner,
   DropdownItem,
   Footer,
   Form,
+  FormFieldWithTag,
   Header,
   HeaderProps,
   HeaderSearch,
@@ -40,7 +40,7 @@ import {
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import { useState } from 'react';
-import { ComboBoxProps, CookieBannerProps } from './props';
+import { ComboBoxProps } from './props';
 
 const toastProps: ToastProps = {
   title: 'Default',
@@ -110,7 +110,7 @@ export function App() {
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
       />
-      <CookieBanner {...CookieBannerProps} />
+      {/* <CookieBanner {...CookieBannerProps} /> */}
       <Container>
         <Heading>Design System </Heading>
         <Tabs id="tabs" ariaLabelledBy="">
@@ -151,6 +151,20 @@ export function App() {
             <Paragraph as="span">Span paragraph</Paragraph>
             <hr />
             <Tag text="Completed" type="info" />
+            <FormFieldWithTag
+              label={{
+                text: 'Label',
+              }}
+              hint={{
+                text: 'Description',
+              }}
+              tag={{
+                text: 'Error',
+                type: 'error',
+              }}
+            >
+              <TextArea halfFluid id="textarea-id" maxChars={50} />
+            </FormFieldWithTag>
           </TabPanel>
           <TabPanel value="tab2">
             <PhaseBanner level="alpha">
