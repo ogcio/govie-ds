@@ -82,7 +82,7 @@ export const CompleteFooter: Story = {
           class="gi-section-break-md gi-border-gray-100"
           role="separator"
         />
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Public Services</a>
           </li>
@@ -100,7 +100,7 @@ export const CompleteFooter: Story = {
           class="gi-section-break-md gi-border-gray-100"
           role="separator"
         />
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Department of Health</a>
           </li>
@@ -118,7 +118,7 @@ export const CompleteFooter: Story = {
           class="gi-section-break-md gi-border-gray-100"
           role="separator"
         />
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Reports</a>
           </li>
@@ -136,7 +136,7 @@ export const CompleteFooter: Story = {
           class="gi-section-break-md gi-border-gray-100"
           role="separator"
         />
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Find an Office</a>
           </li>
@@ -242,7 +242,7 @@ export const GovieFooter: Story = {
     primarySlot: `
     <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Circulars</a>
           </li>
@@ -261,7 +261,7 @@ export const GovieFooter: Story = {
         </ul>
       </div>
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
-        <ul class="gi-space-y-2">
+        <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Latest financial accounts</a>
           </li>
