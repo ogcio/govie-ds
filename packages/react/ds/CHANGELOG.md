@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.0...react-lib-v1.5.1) (2025-04-24)
+
+
+### Bug Fixes
+
+* add form field with tag component ([#528](https://github.com/ogcio/govie-ds/issues/528)) ([aedaa5f](https://github.com/ogcio/govie-ds/commit/aedaa5ffb4a3a51592f4d9280db83cf231ac0cba))
+* Fix secondaryLink "key" lint error ([#529](https://github.com/ogcio/govie-ds/issues/529)) ([da93e71](https://github.com/ogcio/govie-ds/commit/da93e714393b72f220bd6a87d0385cc177c648ec))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.5.1
+
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.4.0...react-lib-v1.5.0) (2025-04-18)
 
 
