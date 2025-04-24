@@ -18,7 +18,7 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
   modalWrapper.append(modal);
   modal.dataset.element = 'modal';
   modal.dataset.testid = 'modal';
-  modal.className = 'gi-modal';
+  modal.className = 'gi-modal gi-modal-close';
   modal.dataset.position = arguments_.position || 'center';
   modal.dataset.open = (arguments_.isOpen || false).toString();
 
