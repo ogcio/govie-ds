@@ -398,10 +398,10 @@ const slotSearch = () => `
           />
         </div>
       </div>
-      <button class="gi-btn gi-btn-primary gi-btn-regular gi-ml-1 gi-flex-none gi-hidden sm:gi-block">
+      <button class="gi-btn gi-btn-primary gi-btn-regular gi-ml-1 gi-flex-none !gi-hidden sm:!gi-block">
         Search
       </button>
-      <button class="gi-btn gi-icon-btn-regular gi-btn-primary gi-ml-1 gi-flex-none sm:gi-hidden gi-block">
+      <button class="gi-btn gi-icon-btn-regular gi-btn-primary gi-ml-1 gi-flex-none sm:!gi-hidden !gi-block">
         <span class="material-symbols-outlined gi-text-[24px] gi-block" role="alert" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">search</span>
       </button>
     </div>
