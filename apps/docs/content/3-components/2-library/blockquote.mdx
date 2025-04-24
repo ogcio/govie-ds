@@ -11,6 +11,17 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-blockquote--docs'
     status: 'alpha'
+properties:
+  - name: BlockquoteProps
+    fields:
+      - name: 'children'
+        ofType: 'node'
+        description: 'The text or component that will be displayed as the main content of the blockquote.'
+        required: true
+      - name: 'cite'
+        ofType: 'string'
+        description: 'A string representing the source of the quotation. This can be a URL or a plain text description.'
+        required: false
 ---
 
 # Blockquote
@@ -27,6 +38,8 @@ libraries:
 </ComponentContainer>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="blockquote" />
 
 ### Blockquote Props
 

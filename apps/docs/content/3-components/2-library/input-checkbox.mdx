@@ -12,6 +12,55 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/form-checkbox-checkboxgroup--docs'
     status: 'stable'
+properties:
+  - name: InputCheckboxProps
+    fields:
+      - name: 'size'
+        ofType: 'string'
+        description: 'Defines the size of the checkbox. Options include: lg (Large), md (Medium), sm (Small).'
+        required: false
+      - name: 'label'
+        ofType: 'string'
+        description: 'A string representing the label displayed next to the checkbox.'
+        required: false
+      - name: 'hint'
+        ofType: 'string'
+        description: 'A string shown below the checkbox to provide additional context or guidance.'
+        required: false
+      - name: 'id'
+        ofType: 'string'
+        description: 'A unique identifier for the checkbox input element.'
+        required: true
+      - name: 'value'
+        ofType: 'string'
+        description: 'The value associated with the checkbox when selected.'
+        required: true
+      - name: 'disabled'
+        ofType: 'boolean'
+        description: 'When true, disables the checkbox preventing user interaction.'
+        required: false
+  - name: InputCheckboxGroupProps
+    fields:
+      - name: 'size'
+        ofType: 'string'
+        description: 'Sets the size for all checkboxes in the group. Options: lg (Large), md (Medium), sm (Small).'
+        required: false
+      - name: 'groupId'
+        ofType: 'string'
+        description: 'A unique string identifier for the checkbox group.'
+        required: true
+      - name: 'inline'
+        ofType: 'boolean'
+        description: 'When true, displays the checkboxes in a horizontal row instead of stacked vertically.'
+        required: false
+      - name: 'onChange'
+        ofType: 'function'
+        description: 'A callback function triggered when any checkbox is checked or unchecked. Receives an array of selected item values.'
+        required: false
+      - name: 'children'
+        ofType: 'node'
+        description: 'One or more InputCheckbox components to be rendered within the group.'
+        required: true
 ---
 
 # Input Checkbox
@@ -116,6 +165,8 @@ libraries:
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="input-checkbox" />
 
 ### Checkbox Props
 

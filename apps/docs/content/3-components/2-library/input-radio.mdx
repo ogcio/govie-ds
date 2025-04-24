@@ -12,6 +12,47 @@ libraries:
   - platform: react
     link: '?path=/docs/form-radio-radiogroup--docs'
     status: 'stable'
+properties:
+  - name: InputRadioProps
+    fields:
+      - name: 'label'
+        ofType: 'string'
+        description: 'The label displayed next to the radio input.'
+        required: true
+      - name: 'hint'
+        ofType: 'string'
+        description: 'An optional hint text to display below the radio input.'
+        required: false
+      - name: 'size'
+        ofType: 'string'
+        description: 'The size of the radio button. Possible values are: lg, md, sm.'
+        required: false
+      - name: 'conditionalInput'
+        ofType: 'node'
+        description: 'Allows for a conditional text input that will be displayed depending on the state of the radio button.'
+        required: false
+      - name: 'value'
+        ofType: 'string'
+        description: 'The value of the radio button when selected.'
+        required: true
+  - name: InputRadioGroupProps
+    fields:
+      - name: 'groupId'
+        ofType: 'string'
+        description: 'A unique identifier for the radio group.'
+        required: true
+      - name: 'inline'
+        ofType: 'boolean'
+        description: 'If true, displays the radio buttons inline.'
+        required: false
+      - name: 'onChange'
+        ofType: 'function'
+        description: 'A callback function that is triggered when a radio button is selected.'
+        required: false
+      - name: 'children'
+        ofType: 'node'
+        description: 'One or more InputRadio components.'
+        required: true
 ---
 
 # Input Radio
@@ -246,6 +287,8 @@ import { InputRadioGroup, FormField, InputRadio } from '@govie-ds/react';
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="input-radio" />
 
 ### Radio Props
 

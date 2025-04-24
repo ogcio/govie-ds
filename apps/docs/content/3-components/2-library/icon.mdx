@@ -12,6 +12,37 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/components-icon--docs'
     status: 'stable'
+properties:
+  - name: IconProps
+    fields:
+      - name: 'icon'
+        ofType: 'string'
+        description: 'Specifies the name of the icon.'
+        required: true
+      - name: 'size'
+        ofType: 'string'
+        description: 'Specifies the size of the icon. Options: sm, md, lg, xl.'
+        required: false
+      - name: 'filled'
+        ofType: 'boolean'
+        description: 'Specifies whether the icon has a filled style.'
+        required: false
+      - name: 'disabled'
+        ofType: 'boolean'
+        description: 'Specifies whether the icon is disabled.'
+        required: false
+      - name: 'ariaHidden'
+        ofType: 'string'
+        description: 'Hides non-interactive content from accessibility tools.'
+        required: false
+      - name: 'ariaLabel'
+        ofType: 'string'
+        description: 'Defines a string value that can be used to name an element for accessibility purposes.'
+        required: false
+      - name: 'inline'
+        ofType: 'boolean'
+        description: 'Specifies whether the icon should be displayed as inline.'
+        required: false
 ---
 
 # Icon
@@ -59,6 +90,8 @@ libraries:
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="icon" />
 
 ### Icon Props
 

@@ -12,7 +12,19 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-tag--docs'
     status: 'stable'
+properties:
+  - name: TagProps
+    fields:
+      - name: 'text'
+        ofType: 'string'
+        description: 'The text displayed inside the tag. This typically represents a status or label.'
+        required: true
+      - name: 'type'
+        ofType: 'string'
+        description: 'Defines the visual style and color of the tag. Choose from predefined options like default, info, success, warning, error, counter, counterWarning.'
+        required: false
 ---
+
 
 # Tag
 
@@ -52,6 +64,8 @@ Tags are used to visually categorise content. They can indicate the status of an
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="tag" />
 
 ### Tag Props
 

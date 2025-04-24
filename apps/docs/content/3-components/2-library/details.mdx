@@ -12,6 +12,25 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-details--default'
     status: 'beta'
+properties:
+  - name: DetailsProps
+    fields:
+      - name: 'label'
+        ofType: 'string'
+        description: 'The text displayed in the summary of the details element. This serves as the clickable label to expand or collapse the content.'
+        required: true
+      - name: 'name'
+        ofType: 'string'
+        description: 'A string used to group multiple details elements. If multiple details elements have the same name, only one can be open at a time.'
+        required: false
+      - name: 'children'
+        ofType: 'node'
+        description: 'The content inside the details element, which is displayed when the details section is open.'
+        required: true
+      - name: 'startsOpen'
+        ofType: 'boolean'
+        description: 'A boolean that, when true, shows the details content by default. If absent or false, the details are collapsed initially.'
+        required: false
 ---
 
 # Details
@@ -79,6 +98,8 @@ libraries:
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable properties="details" />
 
 ### Details Props
 

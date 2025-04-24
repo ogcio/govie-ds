@@ -123,6 +123,7 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
+import { ComponentPropertiesTable } from '../components/component-properties-table';
 
 export type MdxProps = {
   code: string;
@@ -292,6 +293,7 @@ const documentComponents: MDXComponents = {
   InputRadioGroup,
   ButtonGroup,
   ButtonGroupItem,
+  ComponentPropertiesTable,
 };
 
 export function Mdx({ code }: MdxProps) {

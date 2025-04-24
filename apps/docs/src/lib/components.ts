@@ -28,6 +28,18 @@ export type ComponentDetail = {
   name: string;
   slug: string;
   statuses: ComponentPlatformStatus[];
+  properties?:
+    | {
+        name: string;
+        fields: {
+          name: string;
+          ofType: string;
+          description: string;
+          defaultValue?: string | undefined;
+          required: boolean;
+        }[];
+      }[]
+    | undefined;
 };
 
 const globalHtmlStorybookBaseUrl = '/storybook-html/';
@@ -42,6 +54,7 @@ export function getComponents(): ComponentDetail[] {
         id: component.id,
         name: component.title,
         slug: component.slug,
+        properties: component.properties,
         statuses:
           component.libraries?.map((status) => {
             let baseUrl = '';

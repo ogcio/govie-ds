@@ -12,6 +12,33 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/form-iconbutton--docs'
     status: 'stable'
+properties:
+  - name: IconButtonProps
+    fields:
+      - name: 'icon'
+        ofType: 'object'
+        description: 'Specifies the Icon component that the button will accept. The value should be an object with an icon property.'
+        required: true
+      - name: 'variant'
+        ofType: 'string'
+        description: 'Defines the variant style of the button. Options: primary, secondary, flat.'
+        required: false
+      - name: 'appearance'
+        ofType: 'string'
+        description: 'Specifies the visual appearance style of the button. Options: default, dark, light.'
+        required: false
+      - name: 'size'
+        ofType: 'string'
+        description: 'Defines the size of the button. Options: medium, small, large.'
+        required: false
+      - name: 'disabled'
+        ofType: 'boolean'
+        description: 'Specifies whether the button is disabled.'
+        required: false
+      - name: 'onClick'
+        ofType: 'function'
+        description: 'A callback function that is triggered when the button is clicked.'
+        required: false
 ---
 
 # Icon Button
@@ -70,6 +97,8 @@ Icon buttons are ideal for quick, easily recognised actions, but they rely on fa
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="icon-button" />
 
 ### Icon Button Props
 

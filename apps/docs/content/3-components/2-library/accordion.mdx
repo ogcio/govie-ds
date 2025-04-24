@@ -13,52 +13,54 @@ libraries:
     link: '?path=/docs/layout-accordion--docs'
     status: 'beta'
 properties:
-  - AccordionProps:
-    - name: 'children'
-      type: 'array'
-      description: 'An array of AccordionItem components that represent the content of each accordion section.'
-      required: true
-    - name: 'iconStart'
-      type: 'boolean'
-      description: 'A boolean indicating whether icons should appear on the left (true) or right (false) of the accordion label.'
-      required: false
-    - name: 'dataTestid'
-      type: 'string'
-      description: 'A string used to assign a custom test ID to the Accordion component for testing purposes.'
-      required: false
-    - name: 'variant'
-      type: 'string'
-      description: 'A string that determines the style and padding of the Accordion. Can be either default or small.'
-      required: false
-  - AccordionItemProps:
-    - name: 'children'
-      type: 'string'
-      description: 'The content to display inside the accordion panel when expanded.'
-      required: true
-    - name: 'label' 
-      type: 'string'
-      description: 'A string used as the title or header for the accordion item.'
-      required: true
-    - name: 'defaultExpanded' 
-      type: 'boolean'
-      description: 'A boolean that, when true, expands the item by default on initial render.'
-      required: false
-    - name: 'disabled'
-      type: 'boolean'
-      description: 'A boolean that disables interaction with the accordion item.'
-      required: false
-    - name: 'dataTestid'
-      type: 'string'
-      description: 'A string used to assign a custom test ID to the individual accordion item for testing purposes.'
-      required: false
-    - name: 'iconStart'
-      type: 'boolean'
-      description: 'A boolean indicating whether the icon should appear on the left (true) or right (false) of the label.'
-      required: false
-    - name: 'variant'
-      type: 'string'
-      description: 'A string defining the style and padding of the item. Accepts default or small.'
-      required: false
+  - name: Accordion Props
+    fields:
+      - name: 'children'
+        ofType: 'array'
+        description: 'An array of AccordionItem components that represent the content of each accordion section.'
+        required: true
+      - name: 'iconStart'
+        ofType: 'boolean'
+        description: 'A boolean indicating whether icons should appear on the left (true) or right (false) of the accordion label.'
+        required: false
+      - name: 'dataTestid'
+        ofType: 'string'
+        description: 'A string used to assign a custom test ID to the Accordion component for testing purposes.'
+        required: false
+      - name: 'variant'
+        ofType: 'string'
+        description: 'A string that determines the style and padding of the Accordion. Can be either default or small.'
+        required: false
+  - name: Accordion Item Props
+    fields:
+      - name: 'children'
+        ofType: 'string'
+        description: 'The content to display inside the accordion panel when expanded.'
+        required: true
+      - name: 'label' 
+        ofType: 'string'
+        description: 'A string used as the title or header for the accordion item.'
+        required: true
+      - name: 'defaultExpanded' 
+        ofType: 'boolean'
+        description: 'A boolean that, when true, expands the item by default on initial render.'
+        required: false
+      - name: 'disabled'
+        ofType: 'boolean'
+        description: 'A boolean that disables interaction with the accordion item.'
+        required: false
+      - name: 'dataTestid'
+        ofType: 'string'
+        description: 'A string used to assign a custom test ID to the individual accordion item for testing purposes.'
+        required: false
+      - name: 'iconStart'
+        ofType: 'boolean'
+        description: 'A boolean indicating whether the icon should appear on the left (true) or right (false) of the label.'
+        required: false
+      - name: 'variant'
+        ofType: 'string'
+        description: 'A string defining the style and padding of the item. Accepts default or small.'
+        required: false
 ---
 
 # Accordion
@@ -226,6 +228,8 @@ properties:
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="accordion" />
 
 ### Accordion Props
 

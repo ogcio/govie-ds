@@ -11,11 +11,32 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/layout-container--docs'
     status: 'stable'
+properties:
+  - name: ContainerProps
+    fields:
+      - name: 'children'
+        ofType: 'node'
+        description: 'A React node representing the content to be rendered inside the container.'
+        required: true
+      - name: 'id'
+        ofType: 'string'
+        description: 'A string to uniquely identify the container, useful for testing or targeting specific containers in styles or scripts.'
+        required: false
+      - name: 'insetTop'
+        ofType: 'string'
+        description: 'Defines the top padding of the container. Options are none, md, lg, and xl.'
+        required: false
+      - name: 'insetBottom'
+        ofType: 'string'
+        description: 'Defines the bottom padding of the container. Options are none, md, lg, and xl.'
+        required: false
 ---
 
 # Container
 
 ## Usage
+
+<ComponentPropertiesTable componentId="container" />
 
 ### Classes guidelines
 

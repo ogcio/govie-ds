@@ -11,6 +11,29 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/application-cookiebanner--docs'
     status: 'beta'
+properties:
+  - name: CookieBannerProps
+    fields:
+      - name: 'children'
+        ofType: 'node'
+        description: 'The content to be displayed in the default cookie banner.'
+        required: true
+      - name: 'accept'
+        ofType: 'object'
+        description: 'An object specifying the content for the accepted cookie banner and the trigger button.'
+        required: false
+      - name: 'reject'
+        ofType: 'object'
+        description: 'An object specifying the content for the rejected cookie banner and the trigger button.'
+        required: false
+      - name: 'dismissButton'
+        ofType: 'node'
+        description: 'A button component used to dismiss the cookie banner.'
+        required: false
+      - name: 'cookieLink'
+        ofType: 'node'
+        description: 'A link component to navigate the user to the cookie policy page.'
+        required: false
 ---
 
 # Cookie Banner
@@ -172,6 +195,8 @@ libraries:
 
 ## Usage
 
+<ComponentPropertiesTable componentId="cookie-banner" />
+
 ### Cookie Banner Props
 
 - **children** (required): The content to be displayed in the default cookie banner.
@@ -202,5 +227,3 @@ However, you must tell users that you set essential cookies. You can do this wit
 ## Status
 
 <ComponentStatusBlock componentId="cookie-banner" />
-
-```

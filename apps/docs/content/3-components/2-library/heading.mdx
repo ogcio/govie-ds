@@ -12,6 +12,25 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-heading--docs'
     status: 'stable'
+properties:
+  - name: HeadingProps
+    fields:
+      - name: 'children'
+        ofType: 'node'
+        description: 'The text content of the heading.'
+        required: true
+      - name: 'as'
+        ofType: 'string'
+        description: 'Specifies which HTML heading tag the component should render as (h1, h2, h3, h4, h5, h6).'
+        required: false
+      - name: 'size'
+        ofType: 'string'
+        description: 'Defines the size of the heading (small, medium, large).'
+        required: false
+      - name: 'caption'
+        ofType: 'string'
+        description: 'A caption or additional text that will be displayed under the heading.'
+        required: false
 ---
 
 # Heading
@@ -91,6 +110,8 @@ Use heading as, such as `<h1>`, `<h2>` and so on, to tag the headings on a page.
 For a question page, or pages with long headings, follow the usual hierarchy of heading levels and styles associated with them. For example, `<h1>`, followed by an `<h2>` and so on. In rare cases, you might want to alter how you use the headings hierarchy to achieve a better visual balance. An example of this is in the design system’s notification banner which uses heading levels in a different order to emphasise the most important information. If you do change the heading hierarchy in a similar way, it needs to go through accessibility testing before use.
 
 Write all headings in sentence case.
+
+<ComponentPropertiesTable componentId="heading" />
 
 ### Heading Component Props
 

@@ -12,6 +12,75 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/layout-header--docs'
     status: 'beta'
+properties:
+  - name: HeaderProps
+    fields:
+      - name: 'title'
+        ofType: 'string'
+        description: 'The title of the header.'
+        required: false
+      - name: 'logo'
+        ofType: 'object'
+        description: 'An object defining logo properties including imageSmall, imageLarge, href, external, and alt text.'
+        required: false
+      - name: 'addDefaultMobileMenu'
+        ofType: 'boolean'
+        description: 'If true, the default mobile menu is included in the header.'
+        required: false
+      - name: 'mobileMenuLabel'
+        ofType: 'string'
+        description: 'The label for the mobile menu.'
+        required: false
+      - name: 'items'
+        ofType: 'array'
+        description: 'A list of HeaderItem objects to include in the header.'
+        required: false
+      - name: 'secondaryLinks'
+        ofType: 'array'
+        description: 'A list of secondary links for the header.'
+        required: false
+      - name: 'fullWidth'
+        ofType: 'boolean'
+        description: 'If true, the header will span the full width of the container.'
+        required: false
+      - name: 'showTitleOnMobile'
+        ofType: 'boolean'
+        description: 'If true, the header title will be shown on mobile.'
+        required: false
+      - name: 'dataTestid'
+        ofType: 'string'
+        description: 'Custom test ID for the header.'
+        required: false
+  - name: HeaderItemProps
+    fields:
+      - name: 'itemType'
+        ofType: 'string'
+        description: 'The type of item. Options: slot, divider, link, custom-link.'
+        required: true
+      - name: 'showItemMode'
+        ofType: 'string'
+        description: 'Specifies when the header item should be displayed. Options: always, mobile-only, desktop-only.'
+        required: false
+      - name: 'label'
+        ofType: 'string'
+        description: 'The label for the item (used with link and slot types).'
+        required: false
+      - name: 'icon'
+        ofType: 'string'
+        description: 'An optional icon to display alongside the content.'
+        required: false
+      - name: 'href'
+        ofType: 'string'
+        description: 'The URL for link items.'
+        required: false
+      - name: 'component'
+        ofType: 'node'
+        description: 'A React component to render (used with slot and custom-link types).'
+        required: false
+      - name: 'slotAppearance'
+        ofType: 'string'
+        description: 'The appearance of the slot. Options: dropdown, drawer.'
+        required: false
 ---
 
 # Header
@@ -253,6 +322,8 @@ For instance, you can use the `react-router-link` or `next/link` component to li
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="header" />
 
 ### `HeaderProps`
 

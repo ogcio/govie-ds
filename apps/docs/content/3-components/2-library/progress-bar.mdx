@@ -12,6 +12,29 @@ libraries:
   - platform: react
     link: '?path=/docs/indicators-progressbar--docs'
     status: 'stable'
+properties:
+  - name: ProgressBarProps
+    fields:
+      - name: 'value'
+        ofType: 'number'
+        description: 'The current value of the progress bar.'
+        required: true
+      - name: 'max'
+        ofType: 'number'
+        description: 'The maximum value of the progress bar.'
+        required: false
+      - name: 'isIndeterminate'
+        ofType: 'boolean'
+        description: 'When true, sets the progress bar to an indeterminate state with an animation.'
+        required: false
+      - name: 'label'
+        ofType: 'string'
+        description: 'Custom label text to display alongside the progress bar.'
+        required: false
+      - name: 'size'
+        ofType: 'string'
+        description: 'Size of the progress bar. Options: sm, md, lg.'
+        required: false
 ---
 
 # Progress Bar
@@ -83,6 +106,8 @@ Use the progress bar component to visually represent the progress of a task or o
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="progress-bar" />
 
 ### Progress Bar Props
 

@@ -11,6 +11,45 @@ libraries:
   - platform: react
     link: '?path=/docs/layout-stack--docs'
     status: 'stable'
+properties:
+  - name: StackProps
+    fields:
+      - name: 'direction'
+        ofType: 'string | object'
+        description: 'Defines the direction of the stack. Options: column, row. Can also accept an object with responsive breakpoints (base, xs, sm, md, lg, xl, 2xl).'
+        required: false
+      - name: 'itemsAlignment'
+        ofType: 'string'
+        description: 'Aligns items along the cross-axis. Options: start, center, end, stretch.'
+        required: false
+      - name: 'itemsDistribution'
+        ofType: 'string'
+        description: 'Defines how items are distributed along the main axis. Options: start, center, end, between, around, evenly, stretch.'
+        required: false
+      - name: 'gap'
+        ofType: 'number | object'
+        description: 'Specifies the space between stack items. Can be a number or a responsive object with breakpoints.'
+        required: false
+      - name: 'hasDivider'
+        ofType: 'boolean'
+        description: 'If true, adds a divider between stack items.'
+        required: false
+      - name: 'wrap'
+        ofType: 'boolean'
+        description: 'If true, allows stack items to wrap onto the next line.'
+        required: false
+      - name: 'fixedHeight'
+        ofType: 'string'
+        description: 'Specifies a fixed height for the stack, typically used when you want the stack to have a consistent height.'
+        required: false
+      - name: 'className'
+        ofType: 'string'
+        description: 'Custom class name to apply to the stack container.'
+        required: false
+      - name: 'children'
+        ofType: 'node'
+        description: 'The items to be stacked.'
+        required: true
 ---
 
 # Stack
@@ -64,6 +103,8 @@ libraries:
 </Tabs>
 
 ## Usage
+
+<ComponentPropertiesTable componentId="stack" />
 
 ### Stack Props
 
