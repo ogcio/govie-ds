@@ -2,8 +2,7 @@
 import analytics from '@/lib/analytics';
 import { ComponentStatus, getComponents } from '@/lib/components';
 import {
-  Button,
-  Icon,
+  IconButton,
   Paragraph,
   Table,
   TableBody,
@@ -12,7 +11,6 @@ import {
   Tag,
   TagTypeEnum,
 } from '@govie-ds/react';
-import Image from 'next/image';
 import { Fragment } from 'react';
 
 export function TagFromStatus(status: ComponentStatus) {
@@ -51,17 +49,13 @@ export function ComponentStatusPill({
   category: string;
 }) {
   const tagProps = TagFromStatus(status);
-
-  const storybookLogo = '/logos/storybook.svg';
-
-  const figmaLogo = '/logos/figma.svg';
-
-  const logo = category === 'figma' ? figmaLogo : storybookLogo;
   return (
     <div className="flex gap-sm items-center">
       {tagProps && <Tag {...tagProps} />}
       {href ? (
-        <Button
+        <IconButton
+          icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
+          size="small"
           variant="flat"
           onClick={() => {
             analytics.trackEvent({
@@ -71,10 +65,7 @@ export function ComponentStatusPill({
             });
             globalThis.window.open(href, '_blank');
           }}
-        >
-          <Image src={logo} alt={category} width={24} height={24} />
-          <Icon icon={'open_in_new'} ariaLabel="Open" size="sm" />
-        </Button>
+        />
       ) : null}
     </div>
   );
