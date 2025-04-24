@@ -1,4 +1,6 @@
 'use client';
+import analytics from '@/lib/analytics';
+import { ComponentStatus, getComponents } from '@/lib/components';
 import {
   IconButton,
   Paragraph,
@@ -10,8 +12,6 @@ import {
   TagTypeEnum,
 } from '@govie-ds/react';
 import { Fragment } from 'react';
-import { ComponentStatus, getComponents } from '@/lib/components';
-import analytics from '@/lib/analytics';
 
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {

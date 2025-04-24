@@ -217,6 +217,7 @@ const createHeader = (arguments_: HeaderProps) => {
         input.type = 'checkbox';
         input.dataset.index = `${index}`;
 
+        // this code is needed only for storybook
         if (item.slotAppearance === 'drawer') {
           const script = document.createElement('script');
           script.async = false;
@@ -233,6 +234,26 @@ const createHeader = (arguments_: HeaderProps) => {
           setTimeout(() => {
             const label = document.getElementById('ItemActionLabel-${index}');
             label?.addEventListener('click', function() { toggleDrawer${index}(); })
+          }, 500);
+          `;
+
+          script.append(document.createTextNode(scriptCode));
+          document.body.append(script);
+        }
+        // this code is needed only for storybook
+        if (item.slotAppearance === 'dropdown') {
+          const script = document.createElement('script');
+          script.async = false;
+
+          const scriptCode = `
+          function openSlotContainer${index}() {
+            const element = document.getElementById('SlotContainer-${index}');
+            element.classList.add('gi-block');
+            element.classList.remove('gi-hidden');
+          }
+          setTimeout(() => {
+            const label = document.getElementById('ItemActionLabel-${index}');
+            label?.addEventListener('click', function() { openSlotContainer${index}(); })
           }, 500);
           `;
 
@@ -377,19 +398,12 @@ const slotSearch = () => `
           />
         </div>
       </div>
-      <button
-        class="gi-btn gi-btn-primary gi-btn-regular gi-ml-1 gi-flex-none"
-      >
-        Search
-        <span
-          aria-label="Search"
-          role="img"
-          class="material-symbols-outlined gi-block"
-          style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
-        >
-          search
-        </span>
-      </button>
+      <div class="gi-ml-1 gi-flex-none">
+        <button class="gi-btn gi-btn-primary sm:gi-icon-btn-regular gi-btn-regular">
+          <span class="gi-hidden md:gi-block">Search</span>
+          <span class="gi-block md:gi-hidden material-symbols-outlined gi-text-[24px]" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">search</span>
+        </button>
+      </div>
     </div>
   </form>
 `;
@@ -985,6 +999,44 @@ export const WithUtilitySlot: Story = {
         `,
       },
     ],
+  },
+  render: createElement,
+};
+
+export const GovieHeader: Story = {
+  args: {
+    logo: {
+      href: '#',
+      imageLarge:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+      imageSmall:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+    },
+    items: [
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Gaelige',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'always',
+      },
+    ],
+    addDefaultMobileMenu: true,
   },
   render: createElement,
 };

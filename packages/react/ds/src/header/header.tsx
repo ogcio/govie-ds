@@ -60,24 +60,22 @@ const SecondaryLinkItem = ({
   label,
   slot,
   index,
-}: { index: number } & SecondaryLink) => {
-  return (
-    <li key={`secondary-${label}-${index}`}>
-      {href ? (
-        <Anchor
-          aria-label={label}
-          data-testid={`secondary-link-desktop-${index}`}
-          href={href}
-          className="gi-header-secondary-item"
-        >
-          {label}
-        </Anchor>
-      ) : (
-        <div className="gi-header-secondary-item-slot">{slot}</div>
-      )}
-    </li>
-  );
-};
+}: { index: number } & SecondaryLink) => (
+  <li>
+    {href ? (
+      <Anchor
+        aria-label={label}
+        data-testid={`secondary-link-desktop-${index}`}
+        href={href}
+        className="gi-header-secondary-item"
+      >
+        {label}
+      </Anchor>
+    ) : (
+      <div className="gi-header-secondary-item-slot">{slot}</div>
+    )}
+  </li>
+);
 
 const SecondaryLinks: React.FC<{
   links?: HeaderProps['secondaryLinks'];
@@ -85,7 +83,11 @@ const SecondaryLinks: React.FC<{
   return (
     <ul>
       {links?.map((link, index) => (
-        <SecondaryLinkItem {...link} index={index} />
+        <SecondaryLinkItem
+          {...link}
+          index={index}
+          key={`secondary-${link.label}-${index}`}
+        />
       ))}
     </ul>
   );
