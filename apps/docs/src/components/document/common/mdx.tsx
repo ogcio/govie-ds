@@ -131,7 +131,9 @@ export type MdxProps = {
 const standardComponents: MDXComponents = {
   a: ({ ...props }) =>
     props['data-raw'] ? <a {...props} /> : <GovieLink {...props} />,
-  ul: ({ children }) => <ul className="gi-list-bullet">{children}</ul>,
+  ul: ({ children, className }) => (
+    <ul className={className || 'gi-list'}>{children}</ul>
+  ),
   ol: ({ children }) => <ol className="gi-list-number">{children}</ol>,
   li: ({ children }) => <li>{children}</li>,
   code: ({ children, className }) =>

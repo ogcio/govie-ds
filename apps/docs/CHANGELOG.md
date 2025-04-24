@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/docs-v1.5.0...docs-v1.5.1) (2025-04-24)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.5.1
+    * @govie-ds/tailwind bumped to 1.5.1
+
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/docs-v1.4.0...docs-v1.5.0) (2025-04-18)
 
 

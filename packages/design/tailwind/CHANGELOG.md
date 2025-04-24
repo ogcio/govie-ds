@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.5.0...design-tailwind-v1.5.1) (2025-04-24)
+
+
+### Bug Fixes
+
+* update checkbox label width ([#531](https://github.com/ogcio/govie-ds/issues/531)) ([34bcc9d](https://github.com/ogcio/govie-ds/commit/34bcc9d9fe66bf9df00d5515ad8ffc23a52019eb))
+
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.4.0...design-tailwind-v1.5.0) (2025-04-18)
 
 
