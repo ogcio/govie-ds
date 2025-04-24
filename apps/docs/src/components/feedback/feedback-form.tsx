@@ -122,9 +122,9 @@ export default function FeedbackForm() {
     </Container>
   ) : null;*/
 
-  return (
+  return showForm ? (
     <Container>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-start mb-4">
         <div className="flex gap-4 items-center">
           <Heading as="h5">Was this page helpful?</Heading>
           <div>
@@ -140,14 +140,16 @@ export default function FeedbackForm() {
                 Send feedback
               </Link>
             ) : (
-              <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
-                <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
-                <ButtonGroupItem value="no">No</ButtonGroupItem>
-              </ButtonGroup>
+              <div className="w-[130px]">
+                <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
+                  <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
+                  <ButtonGroupItem value="no">No</ButtonGroupItem>
+                </ButtonGroup>
+              </div>
             )}
           </div>
         </div>
       </div>
     </Container>
-  );
+  ) : null;
 }
