@@ -15,6 +15,7 @@ const config: Config = {
     'gi-stroke-gray-950',
     'gi-h-screen',
     'gi-w-full',
+    { pattern: /hidden/, variants: ['sm', 'md', 'lg', 'xl', '2xl'] },
     { pattern: /grid-./ },
     { pattern: /col-./ },
     { pattern: /row-./ },
