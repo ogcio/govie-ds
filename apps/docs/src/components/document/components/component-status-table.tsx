@@ -1,8 +1,9 @@
 'use client';
+import { GovieLink } from '@/components/navigation/custom-link';
 import analytics from '@/lib/analytics';
 import { ComponentStatus, getComponents } from '@/lib/components';
 import {
-  IconButton,
+  Button,
   Paragraph,
   Table,
   TableBody,
@@ -11,6 +12,7 @@ import {
   Tag,
   TagTypeEnum,
 } from '@govie-ds/react';
+import Image from 'next/image';
 import { Fragment } from 'react';
 
 export function TagFromStatus(status: ComponentStatus) {
@@ -39,34 +41,12 @@ export function TagFromStatus(status: ComponentStatus) {
   }
 }
 
-export function ComponentStatusPill({
-  status,
-  href,
-  category,
-}: {
-  status: ComponentStatus;
-  href?: string;
-  category: string;
-}) {
+export function ComponentStatusPill({ status }: { status: ComponentStatus }) {
   const tagProps = TagFromStatus(status);
+
   return (
     <div className="flex gap-sm items-center">
       {tagProps && <Tag {...tagProps} />}
-      {href ? (
-        <IconButton
-          icon={{ icon: 'open_in_new', ariaLabel: 'Open' }}
-          size="small"
-          variant="flat"
-          onClick={() => {
-            analytics.trackEvent({
-              category,
-              action: 'click',
-              name: href,
-            });
-            globalThis.window.open(href, '_blank');
-          }}
-        />
-      ) : null}
     </div>
   );
 }
@@ -112,37 +92,98 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   if (!componentStatus) {
     throw new Error(`Component status not found '${componentId}'.`);
   }
+
+  const storybookLogo = '/logos/storybook.svg';
+  const figmaLogo = '/logos/figma.svg';
+
   return (
-    <table className="table-fixed max-w-prose">
+    <table className="table-auto max-w-prose">
       <tbody>
         <tr>
-          <td className="p-2">Figma Library</td>
+          <td className="p-2 gi-align-middle">Figma Library</td>
+          <td className="gi-align-middle">
+            <ComponentStatusPill status={componentStatus.figma.status} />
+          </td>
           <td>
-            <ComponentStatusPill
-              status={componentStatus.figma.status}
-              href={componentStatus.figma.href}
-              category="figma"
-            />
+            {componentStatus.figma.href ? (
+              <Button
+                variant="flat"
+                onClick={() => {
+                  analytics.trackEvent({
+                    category: 'figma',
+                    action: 'click',
+                    name: componentStatus.figma.href,
+                  });
+                  globalThis.window.open(componentStatus.figma.href, '_blank');
+                }}
+              >
+                <Image
+                  src={figmaLogo}
+                  alt={'View on Figma'}
+                  width={24}
+                  height={24}
+                />
+                View on Figma
+              </Button>
+            ) : null}
           </td>
         </tr>
         <tr>
-          <td className="p-2">Global HTML</td>
+          <td className="p-2 gi-align-middle">Global HTML</td>
+          <td className="gi-align-middle">
+            <ComponentStatusPill status={componentStatus.global.status} />
+          </td>
           <td>
-            <ComponentStatusPill
-              status={componentStatus.global.status}
-              href={componentStatus.global.href}
-              category="storybook-html"
-            />
+            {componentStatus.global.href ? (
+              <Button
+                variant="flat"
+                onClick={() => {
+                  analytics.trackEvent({
+                    category: 'storybook-html',
+                    action: 'click',
+                    name: componentStatus.global.href,
+                  });
+                  globalThis.window.open(componentStatus.global.href, '_blank');
+                }}
+              >
+                <Image
+                  src={storybookLogo}
+                  alt={'View on Storybook'}
+                  width={24}
+                  height={24}
+                />
+                View on Storybook
+              </Button>
+            ) : null}
           </td>
         </tr>
         <tr>
-          <td className="p-2">Global React</td>
+          <td className="p-2 gi-align-middle">Global React</td>
+          <td className="gi-align-middle">
+            <ComponentStatusPill status={componentStatus.react.status} />
+          </td>
           <td>
-            <ComponentStatusPill
-              status={componentStatus.react.status}
-              href={componentStatus.react.href}
-              category="storybook-react"
-            />
+            {componentStatus.react.href ? (
+              <Button
+                variant="flat"
+                onClick={() => {
+                  analytics.trackEvent({
+                    category: 'storybook-react',
+                    action: 'click',
+                    name: componentStatus.react.href,
+                  });
+                  globalThis.window.open(componentStatus.react.href, '_blank');
+                }}
+              >
+                <Image
+                  src={storybookLogo}
+                  alt={'View on Storybook'}
+                  width={24}
+                  height={24}
+                />
+                View on Storybook
+              </Button>
+            ) : null}
           </td>
         </tr>
       </tbody>
@@ -167,6 +208,7 @@ export function ComponentStatusTable() {
     return {
       id: component.id,
       name: component.name,
+      slug: component.slug,
       figma: {
         status: figmaPlatform?.status ?? 'considering',
         href: figmaPlatform?.platform?.href,
@@ -241,31 +283,25 @@ export function ComponentStatusTable() {
           return (
             <Fragment key={componentStatus.id}>
               <div className="row-span-3 lg:row-span-1 mb-4 lg:mb-0 w-32 lg:w-full p-2">
-                {componentStatus.name}
+                <GovieLink
+                  noUnderline
+                  noVisited
+                  href={`/${componentStatus.slug}`}
+                >
+                  {componentStatus.name}
+                </GovieLink>
               </div>
               <div className="flex p-2">
                 <div className="w-32 block lg:hidden">Figma Library</div>
-                <ComponentStatusPill
-                  status={componentStatus.figma.status}
-                  href={componentStatus.figma.href}
-                  category="figma"
-                />
+                <ComponentStatusPill status={componentStatus.figma.status} />
               </div>
               <div className="flex p-2">
                 <div className="w-32 block lg:hidden">Global HTML</div>
-                <ComponentStatusPill
-                  status={componentStatus.global.status}
-                  href={componentStatus.global.href}
-                  category="storybook-html"
-                />
+                <ComponentStatusPill status={componentStatus.global.status} />
               </div>
               <div className="flex p-2">
                 <div className="w-32 block lg:hidden">React</div>
-                <ComponentStatusPill
-                  status={componentStatus.react.status}
-                  href={componentStatus.react.href}
-                  category="storybook-react"
-                />
+                <ComponentStatusPill status={componentStatus.react.status} />
               </div>
               <hr className="block lg:hidden col-span-2" />
             </Fragment>

@@ -26,6 +26,7 @@ export type ComponentPlatformStatus = {
 export type ComponentDetail = {
   id: string;
   name: string;
+  slug: string;
   statuses: ComponentPlatformStatus[];
 };
 
@@ -40,6 +41,7 @@ export function getComponents(): ComponentDetail[] {
       ({
         id: component.id,
         name: component.title,
+        slug: component.slug,
         statuses:
           component.libraries?.map((status) => {
             let baseUrl = '';
