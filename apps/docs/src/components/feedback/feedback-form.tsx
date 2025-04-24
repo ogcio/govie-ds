@@ -1,53 +1,19 @@
 'use client';
 
 import {
-  FormField,
   ButtonGroup,
   ButtonGroupItem,
   Stack,
-  Paragraph,
   Link,
   Container,
   Heading,
 } from '@govie-ds/react';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
-import { setFeedback, checkFeedbackWasGivenByPath } from '@/utils/feedback';
-import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
-
-const SendFeedbackContainer = ({ onClick }: any) => {
-  return (
-    <Stack gap={4}>
-      <Paragraph>You can tell us more bellow</Paragraph>
-      <Link
-        external
-        onClick={onClick}
-        asButton={{
-          appearance: 'dark',
-        }}
-        href={config.feedbackFormUrl}
-      >
-        Send feedback
-      </Link>
-    </Stack>
-  );
-};
+import { useState } from 'react';
 
 export default function FeedbackForm() {
-  const [showForm, setShowForm] = useState(false);
   const [showSendFeedbackButton, setShowSendFeedbackButton] = useState(false);
-  const routePath = usePathname();
-  const lastPathRef = useRef(routePath);
-
-  useEffect(() => {
-    if (lastPathRef.current !== routePath) {
-      setShowSendFeedbackButton(false);
-      lastPathRef.current = routePath;
-    }
-
-    setShowForm(!checkFeedbackWasGivenByPath(routePath));
-  }, [routePath]);
 
   const handleOnClick = (answer: string) => {
     setShowSendFeedbackButton(true);
@@ -61,9 +27,7 @@ export default function FeedbackForm() {
   };
 
   const handleOnFeedbackFormButtonClick = () => {
-    setShowForm(false);
-    setFeedback(routePath);
-
+    setShowSendFeedbackButton(false);
     analytics.trackEvent({
       category: 'feedback',
       action: 'click',
@@ -71,85 +35,49 @@ export default function FeedbackForm() {
     });
   };
 
-  /*return showForm ? (
-    <div className="border-sm border-solid w-105 p-4 bg-white fixed bottom-7 lg:right-14 right-6 z-900">
-      <Stack>
-        <FormField
-          label={{
-            text: 'Was this page helpful?',
-          }}
-          hint={{
-            text: 'We use this feedback to improve our documentation',
-          }}
-        >
-          {!showSendFeedbackButton && (
-            <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
-              <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
-              <ButtonGroupItem value="no">No</ButtonGroupItem>
-            </ButtonGroup>
-          )}
-        </FormField>
-        {showSendFeedbackButton && (
-          <SendFeedbackContainer onClick={handleOnFeedbackFormButtonClick} />
-        )}
-      </Stack>
-    </div>
-  ) : null;*/
-
-  /*
-  return showForm ? (
-    <Container className="w-full justify-end flex pb-1">
-      <Stack className="border-sm border-solid w-full lg:w-105 p-4">
-        <FormField
-          label={{
-            text: 'Was this page helpful?',
-          }}
-          hint={{
-            text: 'We use this feedback to improve our documentation',
-          }}
-        >
-          {!showSendFeedbackButton && (
-            <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
-              <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
-              <ButtonGroupItem value="no">No</ButtonGroupItem>
-            </ButtonGroup>
-          )}
-        </FormField>
-        {showSendFeedbackButton && (
-          <SendFeedbackContainer onClick={handleOnFeedbackFormButtonClick} />
-        )}
-      </Stack>
-    </Container>
-  ) : null;*/
-
-  return showForm ? (
+  return (
     <Container>
-      <div className="flex justify-start mb-4">
-        <div className="flex gap-4 items-center">
-          <Heading as="h5">Was this page helpful?</Heading>
-          <div>
-            {showSendFeedbackButton ? (
-              <Link
-                external
-                onClick={handleOnFeedbackFormButtonClick}
-                asButton={{
-                  appearance: 'dark',
-                }}
-                href={config.feedbackFormUrl}
-              >
-                Send feedback
-              </Link>
-            ) : (
-              <div className="w-[130px]">
-                <ButtonGroup name={'feedback_answer'} onChange={handleOnClick}>
-                  <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
-                  <ButtonGroupItem value="no">No</ButtonGroupItem>
-                </ButtonGroup>
-              </div>
-            )}
-          </div>
+      <Stack
+        itemsAlignment="center"
+        gap={4}
+        direction="row"
+        className="mb-4"
+        role="group"
+        aria-labelledby="feedback-heading"
+      >
+        <Heading as="h5" id="feedback-heading">
+          Was this page helpful?
+        </Heading>
+        <div>
+          {showSendFeedbackButton ? (
+            <Link
+              aria-label="feedback external link"
+              external
+              onClick={handleOnFeedbackFormButtonClick}
+              asButton={{
+                appearance: 'dark',
+              }}
+              href={config.feedbackFormUrl}
+            >
+              Send feedback
+            </Link>
+          ) : (
+            <ButtonGroup
+              role="radiogroup"
+              aria-labelledby="feedback-heading"
+              name="feedback_answer"
+              onChange={handleOnClick}
+            >
+              <ButtonGroupItem value="yes" aria-label="Yes">
+                Yes
+              </ButtonGroupItem>
+              <ButtonGroupItem value="no" aria-label="No">
+                No
+              </ButtonGroupItem>
+            </ButtonGroup>
+          )}
         </div>
-      </div>
+      </Stack>
     </Container>
-  ) : null;
+  );
 }

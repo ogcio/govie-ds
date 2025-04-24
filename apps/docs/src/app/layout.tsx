@@ -8,7 +8,6 @@ import { Lato } from 'next/font/google';
 import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
-import FeedbackForm from '@/components/feedback/feedback-form';
 
 const lato = Lato({
   weight: ['100', '300', '400', '700', '900'],
@@ -104,7 +103,6 @@ export default function RootLayout({
             </a>
             <Header {...headerProps} addDefaultMobileMenu />
             {children}
-            <FeedbackForm />
             <Footer
               secondarySlot={
                 <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
