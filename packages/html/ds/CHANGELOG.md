@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.1...html-lib-v1.3.2) (2025-04-24)
+
+
+### Bug Fixes
+
+* html header stories ([0d8ba27](https://github.com/ogcio/govie-ds/commit/0d8ba2772be0caa64f7c46aed5643a822c4574e9))
+
 ## [1.3.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.0...html-lib-v1.3.1) (2025-04-24)
 
 

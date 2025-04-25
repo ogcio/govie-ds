@@ -1,6 +1,6 @@
 import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, Header, HeaderProps } from '@govie-ds/react';
+import { Footer, Header, HeaderProps, Link, Stack } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -105,7 +105,11 @@ export default function RootLayout({
             {children}
             <Footer
               secondarySlot={
-                <div className="gi-flex gi-flex-row gi-gap-y-2 gi-gap-4">
+                <Stack
+                  direction={{ base: 'column', md: 'row', xs: 'column' }}
+                  gap={4}
+                  wrap
+                >
                   {footerLinks.map((link, index) => (
                     <GovieLink
                       noColor
@@ -116,15 +120,19 @@ export default function RootLayout({
                       {link.label}
                     </GovieLink>
                   ))}
-                </div>
+                </Stack>
               }
               utilitySlot={
-                <div className="gi-flex gi-flex-row gi-gap-4 gi-justify-center gi-flex-wrap">
+                <Stack
+                  direction={{ base: 'column', md: 'row', xs: 'column' }}
+                  gap={4}
+                  itemsDistribution="center"
+                >
                   <div className="gi-text-sm">
                     © {new Date().getFullYear()} Design System of Government of
                     Ireland.
                   </div>
-                </div>
+                </Stack>
               }
             />
           </AnalyticsProvider>
