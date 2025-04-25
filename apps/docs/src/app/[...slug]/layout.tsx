@@ -45,11 +45,9 @@ export default async function DocumentLayoutProps({
   }
 
   return (
-    <>
-      <main className="gi-layout-container-full-width flex flex-1 flex-row gap-4 lg:gap-6 pt-6 pb-1 lg:pt-8 lg:pb-2 content-stretch">
-        <SideNavigationConnected />
-        {children}
-      </main>
-    </>
+    <main className="gi-layout-container-full-width flex flex-1 flex-row gap-4 lg:gap-6 pt-6 pb-1 lg:pt-8 lg:pb-2 content-stretch">
+      <SideNavigationConnected />
+      {children}
+    </main>
   );
 }
