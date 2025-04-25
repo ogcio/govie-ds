@@ -36,24 +36,23 @@ export default function FeedbackForm() {
   };
 
   return (
-    <Container>
+    <div>
       <Stack
         itemsAlignment="center"
         gap={4}
         direction="row"
-        className="mb-4"
         role="group"
         aria-labelledby="feedback-heading"
       >
-        <Heading as="h5" id="feedback-heading">
+        <Heading as="h5" className="m-0" id="feedback-heading">
           Was this page helpful?
         </Heading>
         <div>
           {showSendFeedbackButton ? (
             <Link
-              aria-label="feedback external link"
               external
               onClick={handleOnFeedbackFormButtonClick}
+              className="gi-not-prose"
               asButton={{
                 appearance: 'dark',
               }}
@@ -78,6 +77,6 @@ export default function FeedbackForm() {
           )}
         </div>
       </Stack>
-    </Container>
+    </div>
   );
 }

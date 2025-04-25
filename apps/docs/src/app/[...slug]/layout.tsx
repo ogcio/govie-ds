@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import { SideNavigationConnected } from '@/components/navigation/side-navigation-connected';
 import * as documents from '@/lib/documents/documents';
-import FeedbackForm from '@/components/feedback/feedback-form';
 
 export async function generateStaticParams() {
   return documents.getAll().map((document) => ({
@@ -47,11 +46,10 @@ export default async function DocumentLayoutProps({
 
   return (
     <>
-      <main className="gi-layout-container-full-width flex flex-1 flex-row gap-4 lg:gap-6 py-6 lg:py-8 content-stretch">
+      <main className="gi-layout-container-full-width flex flex-1 flex-row gap-4 lg:gap-6 pt-6 pb-1 lg:pt-8 lg:pb-2 content-stretch">
         <SideNavigationConnected />
         {children}
       </main>
-      <FeedbackForm />
     </>
   );
 }
