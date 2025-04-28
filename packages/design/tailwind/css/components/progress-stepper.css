@@ -11,7 +11,7 @@
 }
 
 .gi-progress-stepper-step {
-  @apply gi-text-white gi-rounded-full gi-relative gi-w-8 gi-h-8 gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-z-1 gi-text-sm;
+  @apply gi-text-white gi-rounded-full gi-w-8 gi-h-8 gi-flex gi-flex-col gi-justify-center gi-items-center gi-relative gi-text-lg gi-z-1 gi-text-sm;
 }
 .gi-progress-stepper-step[data-indicator='number'] {
   @apply gi-text-sm gi-font-bold;
@@ -101,7 +101,7 @@
 }
 
 .gi-progress-stepper-step-container[data-orientation='vertical'] {
-  @apply gi-h-9 gi-gap-2 gi-mt-1;
+  @apply gi-h-9 gi-gap-2 gi-mt-1 gi-w-full;
 }
 
 .gi-progress-stepper-step-container {
@@ -109,9 +109,9 @@
 }
 
 .gi-progress-stepper-step-label {
-  @apply gi-text-left gi-overflow-hidden gi-text-sm gi-text-ellipsis gi-whitespace-normal gi-break-words gi-line-clamp-2 gi-max-w-[108px];
+  @apply gi-flex-1 gi-text-left gi-overflow-hidden gi-text-sm gi-text-ellipsis gi-whitespace-normal gi-break-words gi-line-clamp-2 gi-max-w-[108px];
 }
 
 .gi-progress-stepper-step-label[data-orientation='vertical'] {
-  @apply gi-mt-1;
+  @apply gi-mt-1 gi-max-w-full;
 }
