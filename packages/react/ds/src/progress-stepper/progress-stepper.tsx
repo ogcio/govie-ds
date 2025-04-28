@@ -1,5 +1,4 @@
-'use client';
-import { Children, FC, useEffect, useRef, useState } from 'react';
+import { Children, FC } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import {
@@ -82,25 +81,6 @@ export const Step = ({
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
-  const labelRef = useRef<HTMLDivElement | null>(null);
-  const [labelClassName, setLabelClassName] = useState('');
-
-  useEffect(() => {
-    if (!labelRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry.contentRect.height >= 40) {
-        setLabelClassName('gi-pt-5');
-      } else {
-        setLabelClassName('');
-      }
-    });
-
-    observer.observe(labelRef.current);
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="gi-relative">
@@ -127,7 +107,6 @@ export const Step = ({
           className="gi-progress-stepper-step-label"
           data-orientation={orientation}
           id={`step-label-${stepNumber}`}
-          ref={labelRef}
         >
           {children}
         </div>
@@ -144,7 +123,7 @@ export const Step = ({
       {showVerticalSlots && (
         <div
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
-          className={cn('gi-ml-10', labelClassName)}
+          className="gi-ml-10 gi-pt-5"
         >
           {verticalSlot}
         </div>
