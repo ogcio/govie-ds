@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.5.1...design-tailwind-v1.5.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* card and header issues ([799d22f](https://github.com/ogcio/govie-ds/commit/799d22f4e2258ade5318b2e83d208c7da488496b))
+
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.5.0...design-tailwind-v1.5.1) (2025-04-24)
 
 

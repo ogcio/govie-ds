@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.2...html-lib-v1.3.3) (2025-04-28)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.5.2
+
 ## [1.3.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.1...html-lib-v1.3.2) (2025-04-24)
 
 
