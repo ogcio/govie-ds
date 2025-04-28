@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.1...react-lib-v1.5.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* card and header issues ([799d22f](https://github.com/ogcio/govie-ds/commit/799d22f4e2258ade5318b2e83d208c7da488496b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.5.2
+
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.0...react-lib-v1.5.1) (2025-04-24)
 
 
