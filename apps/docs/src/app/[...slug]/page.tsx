@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
 import { slugify } from '@/lib/utilities';
+import FeedbackForm from '@/components/feedback/feedback-form';
 
 type DocumentPageProps = {
   params: Promise<{
@@ -44,7 +45,10 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
 
   return (
     <>
-      <article id="main" className="w-full flex-auto gi-prose gi-max-w-none">
+      <article
+        id="main"
+        className="w-full flex flex-col flex-auto gi-prose gi-max-w-none"
+      >
         {document.status !== 'stable' && (
           <div className="flex justify-between items-center py-2">
             {document.status === 'in-review' && (
@@ -53,7 +57,12 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
             {document.status === 'draft' && <Tag text="Draft" type="warning" />}
           </div>
         )}
-        <Mdx code={document.body.code} />
+        <div className="flex flex-col justify-between flex-grow">
+          <div>
+            <Mdx code={document.body.code} />
+          </div>
+          <FeedbackForm />
+        </div>
       </article>
       {!hideToc && (
         <aside
