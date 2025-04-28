@@ -24,7 +24,6 @@ export function ComponentPropertiesTable({
     throw new Error(`Component status not found '${componentId}'.`);
   }
 
-  console.log('Component properties:', component.properties);
   return (
     <Table className="gi-not-prose">
       {component.properties?.map((property, pindex) => (
