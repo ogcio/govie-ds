@@ -1,13 +1,14 @@
 'use client';
 import React, { PropsWithChildren, useState } from 'react';
 import { Button } from '../button.js';
-import { ButtonSize } from '../types.js';
+import { ButtonAppearance, ButtonSize } from '../types.js';
 
 type ButtonGroupContextType = {
   selectedValue?: string;
   setSelectedValue: (value: string) => void;
   name: string;
   size: ButtonSize;
+  appearance?: ButtonAppearance;
   onChange?: (value: string) => void;
   groupId: string;
 };
@@ -36,7 +37,14 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
     throw new Error('ButtonGroupItem must be used within a ButtonGroup');
   }
 
-  const { selectedValue, setSelectedValue, size, onChange, groupId } = context;
+  const {
+    selectedValue,
+    setSelectedValue,
+    size,
+    onChange,
+    groupId,
+    appearance,
+  } = context;
   const isSelected = selectedValue === value;
 
   const handleClick = () => {
@@ -50,7 +58,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
     <Button
       variant={isSelected ? 'primary' : 'secondary'}
       size={size}
-      appearance="dark"
+      appearance={appearance}
       onClick={handleClick}
       id={itemId}
       role={customRole || 'radio'}
@@ -65,6 +73,7 @@ export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
 type ButtonGroupProps = PropsWithChildren<{
   name: string;
   size?: ButtonSize;
+  appearance?: ButtonAppearance;
   onChange?: (value: string) => void;
   defaultValue?: string;
   role?: string;
@@ -75,6 +84,7 @@ type ButtonGroupProps = PropsWithChildren<{
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   name,
   size = 'medium',
+  appearance = 'dark',
   onChange,
   defaultValue,
   children,
@@ -90,7 +100,15 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <ButtonGroupContext.Provider
-      value={{ selectedValue, setSelectedValue, name, size, onChange, groupId }}
+      value={{
+        selectedValue,
+        setSelectedValue,
+        name,
+        size,
+        onChange,
+        groupId,
+        appearance,
+      }}
     >
       <div
         className="gi-btn-group"

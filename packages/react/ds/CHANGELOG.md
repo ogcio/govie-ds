@@ -1,6 +1,43 @@
 # Changelog
 
 
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.2...react-lib-v1.6.0) (2025-04-28)
+
+
+### Features
+
+* Adding feedback form in docs ([#527](https://github.com/ogcio/govie-ds/issues/527)) ([afc68d5](https://github.com/ogcio/govie-ds/commit/afc68d5869e9169525f5eb4afaabc75d76b98dd4))
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Bug Fixes
+
+* Progress stepper label width ([#533](https://github.com/ogcio/govie-ds/issues/533)) ([f4bff7e](https://github.com/ogcio/govie-ds/commit/f4bff7e0846322c5066d073a9ffd9cd3b5563bf9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.3.0
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.6.0
+    * @govie-ds/theme-govie bumped to 1.3.0
+
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.1...react-lib-v1.5.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* card and header issues ([799d22f](https://github.com/ogcio/govie-ds/commit/799d22f4e2258ade5318b2e83d208c7da488496b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.5.2
+
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.0...react-lib-v1.5.1) (2025-04-24)
 
 

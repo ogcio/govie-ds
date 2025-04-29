@@ -1,51 +1,61 @@
 import { z } from 'zod';
-import { createColorHexSchema, createTokenSchema } from '../shared.js';
+import { createColorSchema, createColorSwatchSetSchema } from '../shared.js';
 
-function createColorSchema(name: string) {
-  return createTokenSchema({
-    type: 'color',
-    valueSchema: createColorHexSchema(),
-    name,
-  });
-}
+const knownColorSchema = z.object({
+  gray: createColorSwatchSetSchema('gray'),
+  blue: createColorSwatchSetSchema('blue'),
+  red: createColorSwatchSetSchema('red'),
+  yellow: createColorSwatchSetSchema('yellow'),
+  green: createColorSwatchSetSchema('green'),
+  emerald: createColorSwatchSetSchema('emerald'),
+  purple: createColorSwatchSetSchema('purple'),
+  gold: createColorSwatchSetSchema('gold'),
+  base: z
+    .object({
+      emerald: createColorSchema('emerald'),
+      gold: createColorSchema('gold'),
+      gray: createColorSchema('gray'),
+      blue: createColorSchema('blue'),
+      red: createColorSchema('red'),
+      yellow: createColorSchema('yellow'),
+      green: createColorSchema('green'),
+      purple: createColorSchema('purple'),
+      white: createColorSchema('white'),
+      transparent: createColorSchema('transparent'),
+      black: createColorSchema('black'),
+    })
+    .strict(),
+});
 
-function createColorSwatchSetSchema(name: string) {
-  return z
-    .object(
-      {
-        '50': createColorSchema('50'),
-        '100': createColorSchema('100'),
-        '200': createColorSchema('200'),
-        '300': createColorSchema('300'),
-        '400': createColorSchema('400'),
-        '500': createColorSchema('500'),
-        '600': createColorSchema('600'),
-        '700': createColorSchema('700'),
-        '800': createColorSchema('800'),
-        '900': createColorSchema('900'),
-        '950': createColorSchema('950'),
-      },
-      {
-        required_error: `${name} is required.`,
-      },
-    )
-    .strict();
-}
+export const colorSchema = z.any().superRefine((value, context) => {
+  if (
+    typeof value !== 'object' ||
+    value === null ||
+    Object.keys(value)?.length == 0
+  ) {
+    context.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'color is required.',
+    });
+    return;
+  }
 
-export const colorSchema = z
-  .object(
-    {
-      gray: createColorSwatchSetSchema('gray'),
-      blue: createColorSwatchSetSchema('blue'),
-      red: createColorSwatchSetSchema('red'),
-      yellow: createColorSwatchSetSchema('yellow'),
-      green: createColorSwatchSetSchema('green'),
-      emerald: createColorSwatchSetSchema('emerald'),
-      purple: createColorSwatchSetSchema('purple'),
-      gold: createColorSwatchSetSchema('gold'),
-    },
-    {
-      required_error: 'color is required.',
-    },
-  )
-  .strict();
+  const knownResult = knownColorSchema.safeParse(value);
+  if (knownResult.success) {
+    return;
+  }
+
+  // validation for dynamic colors e.g: brown. It should match with createColorSwatchSetSchema
+  for (const [key, swatch] of Object.entries(value)) {
+    const result = createColorSwatchSetSchema(key).safeParse(swatch);
+    if (!result.success) {
+      for (const error of result.error.errors) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [key, ...(error.path || [])],
+          message: error.message,
+        });
+      }
+    }
+  }
+});

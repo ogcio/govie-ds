@@ -221,7 +221,7 @@ function createRemoveTierTransformer({
 
     const category = token.attributes?.category as string;
 
-    if (!['primitive', 'semantic', 'component'].includes(category)) {
+    if (!['primitive', 'semantic', 'component', 'brand'].includes(category)) {
       throw new Error(
         `Token ${token.name} has an invalid category '${category}'.`,
       );

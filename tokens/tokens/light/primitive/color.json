@@ -104,6 +104,19 @@
         "800": { "$type": "color", "$value": "#584915" },
         "900": { "$type": "color", "$value": "#3f3308" },
         "950": { "$type": "color", "$value": "#261f00" }
+      },
+      "base": {
+        "emerald": { "$type": "color", "$value": "#004d44" },
+        "gold": { "$type": "color", "$value": "#a39161" },
+        "gray": { "$type": "color", "$value": "#0b0c0c" },
+        "blue": { "$type": "color", "$value": "#2c55a2" },
+        "red": { "$type": "color", "$value": "#d4351c" },
+        "yellow": { "$type": "color", "$value": "#ffdd00" },
+        "green": { "$type": "color", "$value": "#00703c" },
+        "purple": { "$type": "color", "$value": "#4c2c92" },
+        "white": { "$type": "color", "$value": "#ffffff" },
+        "transparent": { "$type": "color", "$value": "#ffffff03" },
+        "black": { "$type": "color", "$value": "#000000" }
       }
     }
   }

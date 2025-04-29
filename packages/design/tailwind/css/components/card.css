@@ -40,6 +40,10 @@
   @apply gi-table gi-items-start gi-self-stretch gi-w-full gi-h-auto;
 }
 
+.gi-card-image a {
+  @apply !gi-w-full;
+}
+
 .gi-card-image img {
   @apply gi-w-full gi-h-auto;
 }
