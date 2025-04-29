@@ -1,8 +1,8 @@
 'use client';
 import React, { PropsWithChildren, useState } from 'react';
+import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { cn } from '../cn.js';
 import { SideNavItemProps, SideNavProps } from './types.js';
 
 type SideNavContextType = {
@@ -95,10 +95,8 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = ({
   className,
   dataTestid,
 }) => {
-  const [openItemId, setOpenItemId] = useState<string | undefined>(undefined);
-  const [selectedItemId, setSelectedItemId] = useState<string | undefined>(
-    undefined,
-  );
+  const [openItemId, setOpenItemId] = useState<string | undefined>();
+  const [selectedItemId, setSelectedItemId] = useState<string | undefined>();
   const navId = React.useId();
 
   return (

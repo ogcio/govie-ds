@@ -24,7 +24,7 @@
 }
 
 .gi-side-nav-item-label > p {
-  @apply gi-text-md gi-font-bold;
+  @apply gi-text-md;
 }
 
 .gi-side-nav-item-content {
