@@ -15,8 +15,12 @@
     hover:gi-rounded-sm;
 }
 
+/* TODO replace 
+- border left class with `gi-border-l-color-border-tone-primary-accent-selected`
+- background class with `gi-bg-color-surface-system-neutral-interactive-selected-subtle` 
+*/
 .gi-side-nav-item-selected {
-  @apply gi-border-l-lg gi-border-l-[#008971] gi-border-solid;
+  @apply gi-border-l-lg gi-border-l-[#008971] gi-border-solid gi-bg-[#F7F7F8];
 }
 
 .gi-side-nav-item-label {
@@ -41,4 +45,8 @@
 
 .gi-side-nav-expandable-icon {
   @apply gi-flex gi-items-center;
+}
+
+.gi-side-nav-item-parent .gi-side-nav-item-label > p {
+  @apply gi-font-bold;
 }

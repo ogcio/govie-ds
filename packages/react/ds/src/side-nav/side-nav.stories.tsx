@@ -21,9 +21,9 @@ type Story = StoryObj<typeof meta>;
 export const Basic = {
   render: () => (
     <SideNav>
-      <SideNavItem value="cl-1" label="Custom Label 1" />
-      <SideNavItem value="cl-2" label="Custom Label 2" />
-      <SideNavItem value="cl-3" label="Custom Label 3" />
+      <SideNavItem value="cl-1" label="Custom Label 1" parent />
+      <SideNavItem value="cl-2" label="Custom Label 2" parent />
+      <SideNavItem value="cl-3" label="Custom Label 3" parent />
     </SideNav>
   ),
 };
@@ -31,9 +31,9 @@ export const Basic = {
 export const WithIcon = {
   render: () => (
     <SideNav>
-      <SideNavItem icon="check" value="cl-1" label="Custom Label 1" />
-      <SideNavItem icon="check" value="cl-2" label="Custom Label 2" />
-      <SideNavItem icon="check" value="cl-3" label="Custom Label 3" />
+      <SideNavItem icon="check" value="cl-1" label="Custom Label 1" parent />
+      <SideNavItem icon="check" value="cl-2" label="Custom Label 2" parent />
+      <SideNavItem icon="check" value="cl-3" label="Custom Label 3" parent />
     </SideNav>
   ),
 };
@@ -56,22 +56,18 @@ export const ParentChild = {
 export const Example = {
   render: () => (
     <SideNav>
-      <SideNavItem icon="info" value="dashboard" label="Dashboard" />
-      <SideNavItem icon="work" value="team" label="Team" parent>
-        <SideNavItem value="team-members" label="Members" />
-        <SideNavItem value="team-permissions" label="Permissions" />
-        <SideNavItem value="team-groups" label="Groups" />
+      <SideNavItem value="dashboard" label="Dashboard" parent />
+      <SideNavItem value="team" label="Team" parent expandable>
+        <SideNavItem icon="work" value="team-members" label="Members" />
       </SideNavItem>
-      <SideNavItem
-        icon="attach_file"
-        value="projects"
-        label="Attachments"
-        parent
-      >
-        <SideNavItem value="projects-active" label="Active Projects" />
-        <SideNavItem value="projects-archived" label="Archived Projects" />
+      <SideNavItem value="projects" label="Attachments" parent expandable>
+        <SideNavItem
+          icon="attach_file"
+          value="projects-active"
+          label="Active Projects"
+        />
       </SideNavItem>
-      <SideNavItem icon="settings" value="settings" label="Settings" />
+      <SideNavItem value="settings" label="Settings" parent />
     </SideNav>
   ),
 };

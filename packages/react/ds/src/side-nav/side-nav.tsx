@@ -20,6 +20,7 @@ const SideNavContext = React.createContext<SideNavContextType | undefined>(
 export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
   children,
   parent,
+  expandable,
   label,
   value,
   icon,
@@ -42,7 +43,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
   const isSelected = selectedItemId === value;
 
   const handleClick = () => {
-    if (parent) {
+    if (parent && expandable) {
       const updatedOpenIds = isOpen
         ? openItemIds.filter((id) => id !== value)
         : [...openItemIds, value];
@@ -53,6 +54,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
   };
 
   const itemId = `${navId}-${value}`;
+  const showExpandableIcon = parent && expandable;
 
   return (
     <div role="group" aria-label={`${children} dropdown`}>
@@ -63,6 +65,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
         }}
         className={cn('gi-side-nav-item', {
           'gi-side-nav-item-selected': isSelected,
+          'gi-side-nav-item-parent': parent,
         })}
         id={itemId}
       >
@@ -76,7 +79,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
             <Paragraph size="md">{label}</Paragraph>
           </div>
         </div>
-        {parent && (
+        {showExpandableIcon && (
           <div className="gi-side-nav-expandable-icon">
             <Icon
               className={cn(isOpen && 'gi-rotate-180')}
@@ -86,7 +89,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
         )}
       </button>
 
-      {parent && (
+      {expandable && (
         <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>
           {children}
         </div>
@@ -99,7 +102,7 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = ({
   children,
   className,
   dataTestid,
-  onChange, // <-- new
+  onChange,
 }) => {
   const [openItemIds, setOpenItemIds] = useState<string[]>([]);
   const [selectedItemId, setSelectedItemId] = useState<string | undefined>();
