@@ -108,14 +108,6 @@ export default function HomePage() {
           or learn more about how the Design System Building Block can benefit
           your department.
         </Paragraph>
-        {/* <Link
-          className="gi-not-prose"
-          href={config.signUpFormUrl}
-          asButton={{ variant: 'primary' }}
-        >
-          Sign up to learn more
-          <Icon icon="arrow_forward" />
-        </Link> */}
       </Prose>
     </main>
   );
