@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.3...html-lib-v1.4.0) (2025-04-28)
+
+
+### Features
+
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.6.0
+    * @govie-ds/theme-govie bumped to 1.3.0
+
 ## [1.3.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.2...html-lib-v1.3.3) (2025-04-28)
 
 

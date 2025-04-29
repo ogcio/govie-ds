@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.5.2...design-tailwind-v1.6.0) (2025-04-28)
+
+
+### Features
+
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Bug Fixes
+
+* Progress stepper label width ([#533](https://github.com/ogcio/govie-ds/issues/533)) ([f4bff7e](https://github.com/ogcio/govie-ds/commit/f4bff7e0846322c5066d073a9ffd9cd3b5563bf9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.3.0
+
 ## [1.5.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.5.1...design-tailwind-v1.5.2) (2025-04-28)
 
 
