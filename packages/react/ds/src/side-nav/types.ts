@@ -1,16 +1,15 @@
-import { SideNavItem } from './side-nav-item.js';
+import { IconId } from '../icon/icon.js';
+import { SideNavItem } from './side-nav.js';
 
 export type SideNavItemProps = {
-  children: string;
-  value?: string[];
-  defaultValue?: string[];
+  value: string;
+  label: string;
+  isExpandable?: boolean;
+  icon?: IconId;
   onChange?: (selectedValues: string[]) => void;
 };
 
 export type SideNavProps = {
-  children:
-    | React.ReactElement<typeof SideNavItem>[]
-    | React.ReactElement<typeof SideNavItem>;
   className?: string;
   dataTestid?: string;
 };

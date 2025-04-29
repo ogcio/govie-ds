@@ -1,11 +1,8 @@
 import { Meta } from '@storybook/react';
-import { SideNavItem } from './side-nav-item.js';
-import { JSX } from 'react/jsx-runtime';
-import { SideNavItemProps } from './types.js';
-import { SideNav } from './side-nav.js';
+import { SideNav, SideNavItem } from './side-nav.js';
 
 const meta = {
-  title: 'Navigation/SideNavItem',
+  title: 'Navigation/SideNav',
   component: SideNavItem,
   parameters: {
     docs: {
@@ -19,27 +16,38 @@ const meta = {
 
 export default meta;
 
-export const Default = {
-  argTypes: {
-    children: {
-      control: 'text',
-      description: 'Label text for the SideNavItem button.',
-      table: {
-        type: { summary: 'ReactNode' },
-      },
-    },
-  },
-  render: (args: JSX.IntrinsicAttributes & SideNavItemProps) => (
+export const Basic = {
+  render: () => (
     <SideNav>
-      <SideNavItem {...args}>Navigation Item</SideNavItem>
+      <SideNavItem value="cl-1" label="Custom Label 1" />
+      <SideNavItem value="cl-2" label="Custom Label 1" />
+      <SideNavItem value="cl-3" label="Custom Label 3" />
     </SideNav>
   ),
 };
 
-export const WithCustomLabel = {
+export const WithIcon = {
   render: () => (
     <SideNav>
-      <SideNavItem>Custom Label</SideNavItem>
+      <SideNavItem icon="check" value="cl-1" label="Custom Label 1" />
+      <SideNavItem icon="check" value="cl-2" label="Custom Label 1" />
+      <SideNavItem icon="check" value="cl-3" label="Custom Label 3" />
+    </SideNav>
+  ),
+};
+
+export const Expandable = {
+  render: () => (
+    <SideNav>
+      <SideNavItem value="cl-1" label="Custom Label 1" isExpandable>
+        Content Slot
+      </SideNavItem>
+      <SideNavItem value="cl-2" label="Custom Label 1" isExpandable>
+        Content Slot
+      </SideNavItem>
+      <SideNavItem value="cl-3" label="Custom Label 3" isExpandable>
+        Content Slot
+      </SideNavItem>
     </SideNav>
   ),
 };
