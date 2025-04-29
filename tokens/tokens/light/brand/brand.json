@@ -111,6 +111,19 @@
           "800": { "$type": "color", "$value": "{primitive.color.blue.800}" },
           "900": { "$type": "color", "$value": "{primitive.color.blue.900}" },
           "950": { "$type": "color", "$value": "{primitive.color.blue.950}" }
+        },
+        "focus": {
+          "50": { "$type": "color", "$value": "{primitive.color.yellow.50}" },
+          "100": { "$type": "color", "$value": "{primitive.color.yellow.100}" },
+          "200": { "$type": "color", "$value": "{primitive.color.yellow.200}" },
+          "300": { "$type": "color", "$value": "{primitive.color.yellow.300}" },
+          "400": { "$type": "color", "$value": "{primitive.color.yellow.400}" },
+          "500": { "$type": "color", "$value": "{primitive.color.yellow.500}" },
+          "600": { "$type": "color", "$value": "{primitive.color.yellow.600}" },
+          "700": { "$type": "color", "$value": "{primitive.color.yellow.700}" },
+          "800": { "$type": "color", "$value": "{primitive.color.yellow.800}" },
+          "900": { "$type": "color", "$value": "{primitive.color.yellow.900}" },
+          "950": { "$type": "color", "$value": "{primitive.color.yellow.950}" }
         }
       },
       "utility": {

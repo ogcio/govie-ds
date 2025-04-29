@@ -47,7 +47,10 @@ export const CompleteFooter: Story = {
       <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Services</h3>
-          <SectionBreak color="gi-border-gray-100" size="md" />
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -80,7 +83,10 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
-          <SectionBreak color="gi-border-gray-100" size="md" />
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
           <ul className="gi-space-y-2">
             <li>
               <Link
@@ -113,7 +119,10 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
-          <SectionBreak color="gi-border-gray-100" size="md" />
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
           <ul className="gi-space-y-2">
             <li>
               <Link noColor href="/publications/reports" aria-label="Reports">
@@ -142,7 +151,10 @@ export const CompleteFooter: Story = {
         </div>
         <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
           <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
-          <SectionBreak color="gi-border-gray-100" size="md" />
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
           <ul className="gi-space-y-2">
             <li>
               <Link
