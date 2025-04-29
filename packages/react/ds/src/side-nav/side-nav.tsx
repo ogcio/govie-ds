@@ -6,9 +6,9 @@ import { Paragraph } from '../paragraph/paragraph.js';
 import { SideNavItemProps, SideNavProps } from './types.js';
 
 type SideNavContextType = {
-  openItemId?: string;
+  openItemIds: string[];
   selectedItemId?: string;
-  setOpenItemId: (id: string | undefined) => void;
+  setOpenItemIds: (ids: string[]) => void;
   setSelectedItemId: (id: string) => void;
   navId: string;
 };
@@ -19,7 +19,7 @@ const SideNavContext = React.createContext<SideNavContextType | undefined>(
 
 export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
   children,
-  isExpandable,
+  parent,
   label,
   value,
   icon,
@@ -31,19 +31,24 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
   }
 
   const {
-    openItemId,
+    openItemIds,
     selectedItemId,
-    setOpenItemId,
+    setOpenItemIds,
     setSelectedItemId,
     navId,
   } = context;
-  const isOpen = openItemId === value;
+
+  const isOpen = openItemIds.includes(value);
   const isSelected = selectedItemId === value;
 
   const handleClick = () => {
-    setSelectedItemId(value);
-    if (isExpandable) {
-      setOpenItemId(isOpen ? undefined : value);
+    if (parent) {
+      const updatedOpenIds = isOpen
+        ? openItemIds.filter((id) => id !== value)
+        : [...openItemIds, value];
+      setOpenItemIds(updatedOpenIds);
+    } else {
+      setSelectedItemId(value);
     }
   };
 
@@ -71,7 +76,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
             <Paragraph size="md">{label}</Paragraph>
           </div>
         </div>
-        {isExpandable && (
+        {parent && (
           <div className="gi-side-nav-expandable-icon">
             <Icon
               className={cn(isOpen && 'gi-rotate-180')}
@@ -81,7 +86,7 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
         )}
       </button>
 
-      {isExpandable && (
+      {parent && (
         <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>
           {children}
         </div>
@@ -94,18 +99,24 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = ({
   children,
   className,
   dataTestid,
+  onChange, // <-- new
 }) => {
-  const [openItemId, setOpenItemId] = useState<string | undefined>();
+  const [openItemIds, setOpenItemIds] = useState<string[]>([]);
   const [selectedItemId, setSelectedItemId] = useState<string | undefined>();
   const navId = React.useId();
+
+  const handleSetSelectedItemId = (id: string) => {
+    setSelectedItemId(id);
+    onChange?.(id);
+  };
 
   return (
     <SideNavContext.Provider
       value={{
-        openItemId,
+        openItemIds,
         selectedItemId,
-        setOpenItemId,
-        setSelectedItemId,
+        setOpenItemIds,
+        setSelectedItemId: handleSetSelectedItemId,
         navId,
       }}
     >
@@ -118,3 +129,6 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = ({
     </SideNavContext.Provider>
   );
 };
+
+SideNav.displayName = 'SideNav';
+SideNavItem.displayName = 'SideNavItem';

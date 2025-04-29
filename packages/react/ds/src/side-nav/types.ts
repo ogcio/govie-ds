@@ -1,15 +1,14 @@
 import { IconId } from '../icon/icon.js';
-import { SideNavItem } from './side-nav.js';
 
 export type SideNavItemProps = {
   value: string;
   label: string;
-  isExpandable?: boolean;
+  parent?: boolean;
   icon?: IconId;
-  onChange?: (selectedValues: string[]) => void;
 };
 
 export type SideNavProps = {
   className?: string;
   dataTestid?: string;
+  onChange?: (value: string) => void;
 };

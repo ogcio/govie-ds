@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SideNav, SideNavItem } from './side-nav.js';
 
 const meta = {
@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A collapsible side navigation item that toggles its content visibility.',
+          'A collapsible side navigation with multiple parentables and single selected child.',
       },
     },
   },
@@ -16,11 +16,13 @@ const meta = {
 
 export default meta;
 
+type Story = StoryObj<typeof meta>;
+
 export const Basic = {
   render: () => (
     <SideNav>
       <SideNavItem value="cl-1" label="Custom Label 1" />
-      <SideNavItem value="cl-2" label="Custom Label 1" />
+      <SideNavItem value="cl-2" label="Custom Label 2" />
       <SideNavItem value="cl-3" label="Custom Label 3" />
     </SideNav>
   ),
@@ -30,23 +32,22 @@ export const WithIcon = {
   render: () => (
     <SideNav>
       <SideNavItem icon="check" value="cl-1" label="Custom Label 1" />
-      <SideNavItem icon="check" value="cl-2" label="Custom Label 1" />
+      <SideNavItem icon="check" value="cl-2" label="Custom Label 2" />
       <SideNavItem icon="check" value="cl-3" label="Custom Label 3" />
     </SideNav>
   ),
 };
 
-export const Expandable = {
+export const ParentChild = {
   render: () => (
     <SideNav>
-      <SideNavItem value="cl-1" label="Custom Label 1" isExpandable>
-        Content Slot
+      <SideNavItem value="parent-1" label="Parent 1" parent>
+        <SideNavItem value="parent-1-child-1" label="Child 1" />
+        <SideNavItem value="parent-1-child-2" label="Child 2" />
       </SideNavItem>
-      <SideNavItem value="cl-2" label="Custom Label 1" isExpandable>
-        Content Slot
-      </SideNavItem>
-      <SideNavItem value="cl-3" label="Custom Label 3" isExpandable>
-        Content Slot
+      <SideNavItem value="parent-2" label="Parent 2" parent>
+        <SideNavItem value="parent-2-child-1" label="Child 1" />
+        <SideNavItem value="parent-2-child-2" label="Child 2" />
       </SideNavItem>
     </SideNav>
   ),
@@ -56,19 +57,19 @@ export const Example = {
   render: () => (
     <SideNav>
       <SideNavItem icon="info" value="dashboard" label="Dashboard" />
-      <SideNavItem icon="work" value="team" label="Team" isExpandable>
-        <div>Members</div>
-        <div>Permissions</div>
-        <div>Groups</div>
+      <SideNavItem icon="work" value="team" label="Team" parent>
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
+        <SideNavItem value="team-groups" label="Groups" />
       </SideNavItem>
       <SideNavItem
         icon="attach_file"
         value="projects"
         label="Attachments"
-        isExpandable
+        parent
       >
-        <div>Active Projects</div>
-        <div>Archived Projects</div>
+        <SideNavItem value="projects-active" label="Active Projects" />
+        <SideNavItem value="projects-archived" label="Archived Projects" />
       </SideNavItem>
       <SideNavItem icon="settings" value="settings" label="Settings" />
     </SideNav>
