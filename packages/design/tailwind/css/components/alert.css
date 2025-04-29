@@ -19,17 +19,41 @@
 }
 
 .gi-alert-info {
-  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700;
+  @apply gi-bg-color-surface-intent-info-default
+  gi-border-color-border-intent-info-subtle
+  gi-text-color-text-intent-info-default;
 }
 
 .gi-alert-success {
-  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700;
+  @apply gi-bg-color-surface-intent-success-default
+  gi-border-color-border-intent-success-subtle
+  gi-text-color-text-intent-success-default;
 }
 
 .gi-alert-warning {
-  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700;
+  @apply gi-bg-color-surface-intent-warning-default
+  gi-border-color-border-intent-warning-subtle
+  gi-text-color-text-intent-warning-default;
 }
 
 .gi-alert-danger {
-  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700;
+  @apply gi-bg-color-surface-intent-error-default
+  gi-border-color-border-intent-error-subtle
+  gi-text-color-text-intent-error-default;
+}
+
+.gi-alert-icon[data-variant='info'] {
+  @apply gi-text-color-icon-intent-info-default;
+}
+
+.gi-alert-icon[data-variant='warning'] {
+  @apply gi-text-color-icon-intent-warning-default;
+}
+
+.gi-alert-icon[data-variant='danger'] {
+  @apply gi-text-color-icon-intent-error-default;
+}
+
+.gi-alert-icon[data-variant='success'] {
+  @apply gi-text-color-icon-intent-success-default;
 }

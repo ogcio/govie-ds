@@ -219,158 +219,166 @@ export const WithFormContentStepVertical: Story = {
     );
 
     return (
-      <Stack>
-        <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
-          <StepItem label="Step 1" defaultOpen>
-            <Stack gap={2}>
-              <Heading size="sm">Category Details</Heading>
-              <Paragraph>
-                Please select the options that best describes the query you’re
-                raising.
-              </Paragraph>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                label={{
-                  text: 'Category',
-                }}
-              >
-                <Select aria-label="Select Category">
-                  <SelectItem value="0">Select a Category</SelectItem>
-                </Select>
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                label={{
-                  text: 'Customer Type',
-                }}
-              >
-                <Select aria-label="Select Customer Type">
-                  <SelectItem value="0">Select a Customer Type</SelectItem>
-                </Select>
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                label={{
-                  text: 'Related Topic',
-                }}
-              >
-                <Select aria-label="Select Related Topic">
-                  <SelectItem value="0">Select a related topic</SelectItem>
-                </Select>
-              </FormField>
-            </Stack>
-          </StepItem>
-          <StepItem label="Step 2" defaultOpen>
-            <Stack gap={2}>
-              <Heading size="sm">Query Details</Heading>
-              <Paragraph>
-                If this query is about someone else, please provide their
-                details below. If it's about yourself, enter your own details.
-              </Paragraph>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                label={{
-                  htmlFor: 'fullname-text-id',
-                  text: 'Full name',
-                }}
-              >
-                <InputText id="fullname-text-id" />
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                label={{
-                  htmlFor: 'pps-number-text-id',
-                  text: 'PPS Number',
-                }}
-              >
-                <InputText id="pps-number-text-id" />
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                hint={{
-                  text: `Don't know your school number? Find a school application.`,
-                }}
-                label={{
-                  htmlFor: 'school-roll-number-text-id',
-                  text: 'School Roll Number',
-                }}
-              >
-                <InputText id="school-roll-number-text-id" />
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                hint={{
-                  text: `(Max 1'000 words)`,
-                }}
-                label={{
-                  htmlFor: 'description-text-id',
-                  text: 'Describe your Query',
-                }}
-              >
-                <TextArea cols={100} id="description-text-id" rows={4} />
-              </FormField>
-              <FormField
-                hint={{
-                  text: '.jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted. Looking for an application form? Find a form here.',
-                }}
-                label={{
-                  htmlFor: 'file-upload-id',
-                  text: 'Document Upload',
-                }}
-              >
-                <FileUpload accept="*/*" id="file-upload-id" />
-              </FormField>
-            </Stack>
-          </StepItem>
-          <StepItem label="Step 3" defaultOpen>
-            <Stack gap={2}>
-              <Heading size="sm">Contact Details</Heading>
-              <Paragraph>
-                Where should we send updates about this query? Enter your
-                contact details or the details of someone else who should
-                receive the updates.
-              </Paragraph>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                hint={{
-                  text: '(to be used for communications relating to this query)',
-                }}
-                label={{
-                  htmlFor: 'contact-fullname-text-id',
-                  text: 'Full name',
-                }}
-              >
-                <InputText id="contact-fullname-text-id" />
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                hint={{
-                  text: '(to be used for communications relating to this query)',
-                }}
-                label={{
-                  htmlFor: 'phone-number-text-id',
-                  text: 'Phone Number Number',
-                }}
-              >
-                <InputText id="phone-number-text-id" />
-              </FormField>
-              <FormField
-                className="lg:gi-w-[450px] gi-w-full"
-                hint={{
-                  text: '(to be used for communications relating to this query)',
-                }}
-                label={{
-                  htmlFor: 'email-text-id',
-                  text: 'Email Address',
-                }}
-              >
-                <InputText id="email-number-text-id" />
-              </FormField>
-            </Stack>
-          </StepItem>
-        </ProgressStepper>
-        <PreviousNextContainerVertical />
-      </Stack>
+      <div className="gi-w-[500px]">
+        <Stack>
+          <ProgressStepper
+            currentStepIndex={currentIndex}
+            orientation="vertical"
+          >
+            <StepItem
+              label="This step is for requesting information, this is the first step the user needs to finish."
+              defaultOpen
+            >
+              <Stack gap={2}>
+                <Heading size="sm">Category Details</Heading>
+                <Paragraph>
+                  Please select the options that best describes the query you’re
+                  raising.
+                </Paragraph>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  label={{
+                    text: 'Category',
+                  }}
+                >
+                  <Select aria-label="Select Category">
+                    <SelectItem value="0">Select a Category</SelectItem>
+                  </Select>
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  label={{
+                    text: 'Customer Type',
+                  }}
+                >
+                  <Select aria-label="Select Customer Type">
+                    <SelectItem value="0">Select a Customer Type</SelectItem>
+                  </Select>
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  label={{
+                    text: 'Related Topic',
+                  }}
+                >
+                  <Select aria-label="Select Related Topic">
+                    <SelectItem value="0">Select a related topic</SelectItem>
+                  </Select>
+                </FormField>
+              </Stack>
+            </StepItem>
+            <StepItem label="Step 2" defaultOpen>
+              <Stack gap={2}>
+                <Heading size="sm">Query Details</Heading>
+                <Paragraph>
+                  If this query is about someone else, please provide their
+                  details below. If it's about yourself, enter your own details.
+                </Paragraph>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  label={{
+                    htmlFor: 'fullname-text-id',
+                    text: 'Full name',
+                  }}
+                >
+                  <InputText id="fullname-text-id" />
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  label={{
+                    htmlFor: 'pps-number-text-id',
+                    text: 'PPS Number',
+                  }}
+                >
+                  <InputText id="pps-number-text-id" />
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  hint={{
+                    text: `Don't know your school number? Find a school application.`,
+                  }}
+                  label={{
+                    htmlFor: 'school-roll-number-text-id',
+                    text: 'School Roll Number',
+                  }}
+                >
+                  <InputText id="school-roll-number-text-id" />
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  hint={{
+                    text: `(Max 1'000 words)`,
+                  }}
+                  label={{
+                    htmlFor: 'description-text-id',
+                    text: 'Describe your Query',
+                  }}
+                >
+                  <TextArea cols={100} id="description-text-id" rows={4} />
+                </FormField>
+                <FormField
+                  hint={{
+                    text: '.jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted. Looking for an application form? Find a form here.',
+                  }}
+                  label={{
+                    htmlFor: 'file-upload-id',
+                    text: 'Document Upload',
+                  }}
+                >
+                  <FileUpload accept="*/*" id="file-upload-id" />
+                </FormField>
+              </Stack>
+            </StepItem>
+            <StepItem label="Step 3" defaultOpen>
+              <Stack gap={2}>
+                <Heading size="sm">Contact Details</Heading>
+                <Paragraph>
+                  Where should we send updates about this query? Enter your
+                  contact details or the details of someone else who should
+                  receive the updates.
+                </Paragraph>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  hint={{
+                    text: '(to be used for communications relating to this query)',
+                  }}
+                  label={{
+                    htmlFor: 'contact-fullname-text-id',
+                    text: 'Full name',
+                  }}
+                >
+                  <InputText id="contact-fullname-text-id" />
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  hint={{
+                    text: '(to be used for communications relating to this query)',
+                  }}
+                  label={{
+                    htmlFor: 'phone-number-text-id',
+                    text: 'Phone Number Number',
+                  }}
+                >
+                  <InputText id="phone-number-text-id" />
+                </FormField>
+                <FormField
+                  className="lg:gi-w-[450px] gi-w-full"
+                  hint={{
+                    text: '(to be used for communications relating to this query)',
+                  }}
+                  label={{
+                    htmlFor: 'email-text-id',
+                    text: 'Email Address',
+                  }}
+                >
+                  <InputText id="email-number-text-id" />
+                </FormField>
+              </Stack>
+            </StepItem>
+          </ProgressStepper>
+          <PreviousNextContainerVertical />
+        </Stack>
+      </div>
     );
   },
 };
@@ -390,5 +398,26 @@ export const WithLongText: Story = {
       <StepItem key="step-3" label="This step is for analysis." />,
       <StepItem key="step-4" label="This is a long step text." />,
     ],
+  },
+};
+
+export const WithVerticalLongText: Story = {
+  argTypes: {
+    currentStepIndex: {
+      control: 'number',
+      type: { name: 'number', required: true },
+      description: 'The initial active step (zero-based index).',
+    },
+  },
+  args: {
+    currentStepIndex: 1,
+    children: [
+      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+    ],
+    orientation: 'vertical',
   },
 };

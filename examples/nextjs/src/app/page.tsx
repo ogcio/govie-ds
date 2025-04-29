@@ -418,6 +418,20 @@ export default function Home() {
           </ProgressStepper>
 
           <br />
+
+          <ProgressStepper
+            indicator="number"
+            orientation="vertical"
+            currentStepIndex={1}
+          >
+            <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+            <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+            <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+            <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+            <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+          </ProgressStepper>
+
+          <br />
           <Details label="Help with Nationality">
             We need to know your nationality so we can work out which elections
             you’re entitled to vote in. If you cannot provide your nationality,

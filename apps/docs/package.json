@@ -1,12 +1,12 @@
 {
   "name": "@govie-ds/docs",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": true,
   "type": "module",
   "scripts": {
     "format": "prettier 'src/**/*.{ts,tsx}' --write",
     "format:check": "prettier 'src/**/*.{ts,tsx}' --check",
-    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo -p 80",
+    "dev": "pnpm build:styles && pnpm build:content && next dev --turbo",
     "build": "pnpm build:styles && pnpm build:content && pnpm build:site",
     "build:content": "contentlayer2 build",
     "build:site": "next build",

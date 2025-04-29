@@ -41,8 +41,8 @@ describe('validateDesignTokensSchema', () => {
     } catch (error) {
       const validationError = error as TokensValidationError;
       expect(validationError.errors).toContainEqual({
-        message: 'gray is required.',
-        path: 'primitive.color.gray',
+        message: 'color is required.',
+        path: 'primitive.color',
       });
     }
   });
@@ -114,6 +114,152 @@ describe('validateDesignTokensSchema', () => {
         message: 'Color must be a full lowercase hex value.',
         path: 'primitive.color.gray.50.$value',
       });
+    }
+  });
+  it('should not fail for "dynamic" color (brown)', () => {
+    try {
+      validateDesignTokens({
+        tokens: {
+          primitive: {
+            color: {
+              gray: {
+                '50': { $type: 'color', $value: '#f7f7f8' },
+                '100': { $type: 'color', $value: '#e9eaed' },
+                '200': { $type: 'color', $value: '#d8dadf' },
+                '300': { $type: 'color', $value: '#babec4' },
+                '400': { $type: 'color', $value: '#a1a6af' },
+                '500': { $type: 'color', $value: '#828893' },
+                '600': { $type: 'color', $value: '#686d78' },
+                '700': { $type: 'color', $value: '#51555e' },
+                '800': { $type: 'color', $value: '#3a3c41' },
+                '900': { $type: 'color', $value: '#252526' },
+                '950': { $type: 'color', $value: '#0b0c0c' },
+              },
+              blue: {
+                '50': { $type: 'color', $value: '#f2f9ff' },
+                '100': { $type: 'color', $value: '#d4e8fd' },
+                '200': { $type: 'color', $value: '#b6d6fb' },
+                '300': { $type: 'color', $value: '#80b2f4' },
+                '400': { $type: 'color', $value: '#5c94e8' },
+                '500': { $type: 'color', $value: '#457cd8' },
+                '600': { $type: 'color', $value: '#3668c0' },
+                '700': { $type: 'color', $value: '#2c55a2' },
+                '800': { $type: 'color', $value: '#15387c' },
+                '900': { $type: 'color', $value: '#072155' },
+                '950': { $type: 'color', $value: '#001030' },
+              },
+              red: {
+                '50': { $type: 'color', $value: '#fff4f2' },
+                '100': { $type: 'color', $value: '#fdd1ca' },
+                '200': { $type: 'color', $value: '#faafa3' },
+                '300': { $type: 'color', $value: '#f27764' },
+                '400': { $type: 'color', $value: '#e65038' },
+                '500': { $type: 'color', $value: '#d4351c' },
+                '600': { $type: 'color', $value: '#bb250d' },
+                '700': { $type: 'color', $value: '#9a1a04' },
+                '800': { $type: 'color', $value: '#741201' },
+                '900': { $type: 'color', $value: '#4c0b00' },
+                '950': { $type: 'color', $value: '#290600' },
+              },
+              yellow: {
+                '50': { $type: 'color', $value: '#fffceb' },
+                '100': { $type: 'color', $value: '#fffac4' },
+                '200': { $type: 'color', $value: '#fff985' },
+                '300': { $type: 'color', $value: '#ffed44' },
+                '400': { $type: 'color', $value: '#ffdd00' },
+                '500': { $type: 'color', $value: '#e3b30c' },
+                '600': { $type: 'color', $value: '#c18c17' },
+                '700': { $type: 'color', $value: '#99681f' },
+                '800': { $type: 'color', $value: '#67431e' },
+                '900': { $type: 'color', $value: '#3e2919' },
+                '950': { $type: 'color', $value: '#1f150f' },
+              },
+              green: {
+                '50': { $type: 'color', $value: '#f4fff1' },
+                '100': { $type: 'color', $value: '#c5f3bf' },
+                '200': { $type: 'color', $value: '#93e891' },
+                '300': { $type: 'color', $value: '#4dd05e' },
+                '400': { $type: 'color', $value: '#23b84b' },
+                '500': { $type: 'color', $value: '#0ca044' },
+                '600': { $type: 'color', $value: '#008840' },
+                '700': { $type: 'color', $value: '#00703c' },
+                '800': { $type: 'color', $value: '#00572f' },
+                '900': { $type: 'color', $value: '#003d21' },
+                '950': { $type: 'color', $value: '#002413' },
+              },
+              emerald: {
+                '50': { $type: 'color', $value: '#f0fff7' },
+                '100': { $type: 'color', $value: '#c2fde1' },
+                '200': { $type: 'color', $value: '#95fbd0' },
+                '300': { $type: 'color', $value: '#4aecb4' },
+                '400': { $type: 'color', $value: '#19d39f' },
+                '500': { $type: 'color', $value: '#00b089' },
+                '600': { $type: 'color', $value: '#008971' },
+                '700': { $type: 'color', $value: '#006658' },
+                '800': { $type: 'color', $value: '#004d44' },
+                '900': { $type: 'color', $value: '#003630' },
+                '950': { $type: 'color', $value: '#00241e' },
+              },
+              purple: {
+                '50': { $type: 'color', $value: '#f7f5ff' },
+                '100': { $type: 'color', $value: '#e3daff' },
+                '200': { $type: 'color', $value: '#cfbffe' },
+                '300': { $type: 'color', $value: '#ac8ff8' },
+                '400': { $type: 'color', $value: '#936def' },
+                '500': { $type: 'color', $value: '#7f56e1' },
+                '600': { $type: 'color', $value: '#6f45cd' },
+                '700': { $type: 'color', $value: '#42409d' },
+                '800': { $type: 'color', $value: '#393179' },
+                '900': { $type: 'color', $value: '#331a68' },
+                '950': { $type: 'color', $value: '#1e0d40' },
+              },
+              brown: {
+                '50': { $type: 'color', $value: '#f7f5ff' },
+                '100': { $type: 'color', $value: '#e3daff' },
+                '200': { $type: 'color', $value: '#cfbffe' },
+                '300': { $type: 'color', $value: '#ac8ff8' },
+                '400': { $type: 'color', $value: '#936def' },
+                '500': { $type: 'color', $value: '#7f56e1' },
+                '600': { $type: 'color', $value: '#6f45cd' },
+                '700': { $type: 'color', $value: '#42409d' },
+                '800': { $type: 'color', $value: '#393179' },
+                '900': { $type: 'color', $value: '#331a68' },
+                '950': { $type: 'color', $value: '#1e0d40' },
+              },
+              gold: {
+                '50': { $type: 'color', $value: '#fffbf2' },
+                '100': { $type: 'color', $value: '#f4edde' },
+                '200': { $type: 'color', $value: '#e9dfcb' },
+                '300': { $type: 'color', $value: '#d1c3a3' },
+                '400': { $type: 'color', $value: '#baa980' },
+                '500': { $type: 'color', $value: '#a39161' },
+                '600': { $type: 'color', $value: '#8a7742' },
+                '700': { $type: 'color', $value: '#715f28' },
+                '800': { $type: 'color', $value: '#584915' },
+                '900': { $type: 'color', $value: '#3f3308' },
+                '950': { $type: 'color', $value: '#261f00' },
+              },
+              base: {
+                emerald: { $type: 'color', $value: '#004d44' },
+                gold: { $type: 'color', $value: '#a39161' },
+                gray: { $type: 'color', $value: '#0b0c0c' },
+                blue: { $type: 'color', $value: '#2c55a2' },
+                red: { $type: 'color', $value: '#d4351c' },
+                yellow: { $type: 'color', $value: '#ffdd00' },
+                green: { $type: 'color', $value: '#00703c' },
+                purple: { $type: 'color', $value: '#4c2c92' },
+                white: { $type: 'color', $value: '#ffffff' },
+                transparent: { $type: 'color', $value: '#ffffff03' },
+                black: { $type: 'color', $value: '#000000' },
+              },
+            },
+          },
+        },
+      });
+    } catch (error) {
+      const validationError = error as TokensValidationError;
+      const paths = validationError.errors.map(({ path }) => path);
+      expect(paths.find((p) => /color/.test(p))).toBeUndefined();
     }
   });
 });

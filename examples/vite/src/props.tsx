@@ -13,32 +13,11 @@ export const CookieBannerProps = {
       </Paragraph>
     </>
   ),
-  accept: {
-    children: (
-      <>
-        <Heading as="h3">Accepted Title</Heading>
-        <Paragraph>
-          You’ve accepted analytics cookies. You can change your cookie settings
-          at any time.
-        </Paragraph>
-      </>
-    ),
-    triggerButton: <Button>Accept cookies</Button>,
-  },
-  reject: {
-    children: (
-      <>
-        <Heading as="h3">Rejected Title</Heading>
-        <Paragraph>
-          You’ve rejected analytics cookies. You can change your cookie settings
-          at any time.
-        </Paragraph>
-      </>
-    ),
-    triggerButton: <Button>Reject cookies</Button>,
-  },
+  accept: <Button>Accept cookies</Button>,
+  reject: <Button>Reject cookies</Button>,
   cookieLink: <Link href="#">See Cookies</Link>,
   dismissButton: <Button>Hide this message</Button>,
+  showConsent: true,
 };
 
 export const ComboBoxProps = {

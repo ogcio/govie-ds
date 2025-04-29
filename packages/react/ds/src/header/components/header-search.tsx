@@ -36,20 +36,22 @@ export function HeaderSearch({
           type="text"
           className="gi-flex-auto"
         />
-        <Button
-          className="gi-ml-1 gi-flex-none gi-hidden sm:gi-block"
-          aria-label={t('header.submitSearch', {
-            defaultValue: 'Submit Search',
-          })}
-        >
-          {t('header.search', { defaultValue: 'Search' })}
-        </Button>
-        <IconButton
-          className="gi-ml-1 gi-flex-none sm:gi-hidden gi-block"
-          aria-label={t('header.search', { defaultValue: 'Search' })}
-          aria-hidden="true"
-          icon={{ icon }}
-        />
+        <div className="gi-ml-1 gi-flex-none gi-hidden md:gi-block">
+          <Button
+            aria-label={t('header.submitSearch', {
+              defaultValue: 'Submit Search',
+            })}
+          >
+            {t('header.search', { defaultValue: 'Search' })}
+          </Button>
+        </div>
+        <div className="gi-ml-1 gi-flex-none gi-block md:gi-hidden">
+          <IconButton
+            aria-label={t('header.search', { defaultValue: 'Search' })}
+            aria-hidden="true"
+            icon={{ icon }}
+          />
+        </div>
       </div>
     </form>
   );
