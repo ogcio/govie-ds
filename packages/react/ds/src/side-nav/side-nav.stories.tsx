@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A collapsible side navigation with multiple parentables and single selected child.',
+          'A collapsible side navigation component supporting parent/child relationships and single selected child at a time.',
       },
     },
   },
@@ -20,20 +20,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic = {
   render: () => (
-    <SideNav>
-      <SideNavItem value="cl-1" label="Custom Label 1" parent />
-      <SideNavItem value="cl-2" label="Custom Label 2" parent />
-      <SideNavItem value="cl-3" label="Custom Label 3" parent />
+    <SideNav value="item-1">
+      <SideNavItem value="item-1" label="Overview" parent />
+      <SideNavItem value="item-2" label="Reports" parent />
+      <SideNavItem value="item-3" label="Settings" parent />
     </SideNav>
   ),
 };
 
-export const WithIcon = {
+export const WithIcons = {
   render: () => (
-    <SideNav>
-      <SideNavItem icon="check" value="cl-1" label="Custom Label 1" parent />
-      <SideNavItem icon="check" value="cl-2" label="Custom Label 2" parent />
-      <SideNavItem icon="check" value="cl-3" label="Custom Label 3" parent />
+    <SideNav value="dashboard">
+      <SideNavItem icon="menu" value="dashboard" label="Dashboard" parent />
+      <SideNavItem icon="apps" value="analytics" label="Analytics" parent />
+      <SideNavItem icon="settings" value="settings" label="Settings" parent />
     </SideNav>
   ),
 };
@@ -41,33 +41,49 @@ export const WithIcon = {
 export const ParentChild = {
   render: () => (
     <SideNav>
-      <SideNavItem value="parent-1" label="Parent 1" parent>
-        <SideNavItem value="parent-1-child-1" label="Child 1" />
-        <SideNavItem value="parent-1-child-2" label="Child 2" />
+      <SideNavItem value="team" label="Team" parent expandable>
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
       </SideNavItem>
-      <SideNavItem value="parent-2" label="Parent 2" parent>
-        <SideNavItem value="parent-2-child-1" label="Child 1" />
-        <SideNavItem value="parent-2-child-2" label="Child 2" />
+      <SideNavItem value="projects" label="Projects" parent expandable>
+        <SideNavItem value="projects-active" label="Active Projects" />
+        <SideNavItem value="projects-archived" label="Archived Projects" />
       </SideNavItem>
     </SideNav>
   ),
 };
 
-export const Example = {
+export const FullExample = {
   render: () => (
-    <SideNav>
-      <SideNavItem value="dashboard" label="Dashboard" parent />
-      <SideNavItem value="team" label="Team" parent expandable>
-        <SideNavItem icon="work" value="team-members" label="Members" />
-      </SideNavItem>
-      <SideNavItem value="projects" label="Attachments" parent expandable>
+    <SideNav value="projects">
+      <SideNavItem value="dashboard" label="Dashboard" parent icon="apps" />
+
+      <SideNavItem value="team" label="Team" parent expandable icon="info">
+        <SideNavItem value="team-members" label="Members" icon="person" />
         <SideNavItem
-          icon="attach_file"
-          value="projects-active"
-          label="Active Projects"
+          value="team-permissions"
+          label="Permissions"
+          icon="event"
         />
       </SideNavItem>
-      <SideNavItem value="settings" label="Settings" parent />
+
+      <SideNavItem
+        value="projects"
+        label="Projects"
+        parent
+        open
+        expandable
+        icon="attach_file"
+      >
+        <SideNavItem
+          value="projects-active"
+          label="Active"
+          icon="check_circle"
+        />
+        <SideNavItem value="projects-archived" label="Archived" icon="info" />
+      </SideNavItem>
+
+      <SideNavItem value="settings" label="Settings" parent icon="settings" />
     </SideNav>
   ),
 };

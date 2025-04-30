@@ -1,5 +1,5 @@
 'use client';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { Paragraph } from '../paragraph/paragraph.js';
@@ -7,8 +7,8 @@ import { SideNavItemProps, SideNavProps } from './types.js';
 
 type SideNavContextType = {
   openItemIds: string[];
+  setOpenItemIds: React.Dispatch<React.SetStateAction<string[]>>;
   selectedItemId?: string;
-  setOpenItemIds: (ids: string[]) => void;
   setSelectedItemId: (id: string) => void;
   navId: string;
 };
@@ -17,14 +17,9 @@ const SideNavContext = React.createContext<SideNavContextType | undefined>(
   undefined,
 );
 
-export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
-  children,
-  parent,
-  expandable,
-  label,
-  value,
-  icon,
-}) => {
+export const SideNavItem: React.FC<
+  PropsWithChildren<SideNavItemProps> & { open?: boolean }
+> = ({ children, parent, expandable, label, value, icon, open = false }) => {
   const context = React.useContext(SideNavContext);
 
   if (!context) {
@@ -41,6 +36,17 @@ export const SideNavItem: React.FC<PropsWithChildren<SideNavItemProps>> = ({
 
   const isOpen = openItemIds.includes(value);
   const isSelected = selectedItemId === value;
+
+  useEffect(() => {
+    if (open) {
+      setOpenItemIds((prevIds: string[]) => {
+        if (!prevIds.includes(value)) {
+          return [...prevIds, value];
+        }
+        return prevIds;
+      });
+    }
+  }, [open, setOpenItemIds, value]);
 
   const handleClick = () => {
     if (parent && expandable) {
@@ -103,9 +109,12 @@ export const SideNav: React.FC<PropsWithChildren<SideNavProps>> = ({
   className,
   dataTestid,
   onChange,
+  value,
 }) => {
   const [openItemIds, setOpenItemIds] = useState<string[]>([]);
-  const [selectedItemId, setSelectedItemId] = useState<string | undefined>();
+  const [selectedItemId, setSelectedItemId] = useState<string | undefined>(
+    value,
+  );
   const navId = React.useId();
 
   const handleSetSelectedItemId = (id: string) => {
