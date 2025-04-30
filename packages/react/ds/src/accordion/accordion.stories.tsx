@@ -69,25 +69,55 @@ export const Default = {
   ),
 };
 
+export const SmallVariant = {
+  args: {
+    variant: 'small',
+  },
+  render: (props: AccordionProps) => (
+    <Accordion {...props}>
+      <AccordionItem label="What is the Citizens Information Service?">
+        The Citizens Information Service provides information on public services
+        and entitlements. It helps citizens access services like social welfare,
+        health services, and more.
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+        To apply for social welfare benefits, you need to fill out an
+        application form, provide necessary documentation, and submit it online
+        or at your local office.
+      </AccordionItem>
+      <AccordionItem label="How do I get a public service card?">
+        To obtain a public service card, you need to visit a local service
+        center with identification documents and proof of address.
+      </AccordionItem>
+      <AccordionItem
+        disabled
+        label="Can I get financial assistance during a crisis?"
+      >
+        <Button>Learn More About Financial Assistance</Button>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
 export const WithIconStart = {
   render: () => (
     <Accordion iconStart={true}>
-      <AccordionItem label="Label1">
+      <AccordionItem label="Label 1">
         This is a content paragraph paragraph
       </AccordionItem>
-      <AccordionItem label="Label2">
+      <AccordionItem label="Label 2">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
         eveniet ex officiis accusantium sint eius deleniti cumque? Iste
         voluptatum omnis harum quaerat eius praesentium a at perferendis
         quisquam hic.
       </AccordionItem>
-      <AccordionItem label="Label3">
+      <AccordionItem label="Label 3">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
         eveniet ex officiis accusantium sint eius deleniti cumque? Iste
         voluptatum omnis harum quaerat eius praesentium a at perferendis
         quisquam hic.
       </AccordionItem>
-      <AccordionItem disabled label="Disabled Accordion">
+      <AccordionItem disabled label="Label 4">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
         eveniet ex officiis accusantium sint eius deleniti cumque? Iste
         voluptatum omnis harum quaerat eius praesentium a at perferendis

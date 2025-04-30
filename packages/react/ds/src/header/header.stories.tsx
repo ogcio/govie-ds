@@ -226,38 +226,6 @@ export const DesktopDrawerCustom: Story = {
   },
 };
 
-export const NoLinks: Story = {
-  args: {},
-};
-
-export const WithMainLinksDesktopOnly: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    items: [
-      {
-        label: 'News',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Departments',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ],
-  },
-};
-
 export const WithSecondaryLinks: Story = {
   args: {
     logo: {
@@ -282,129 +250,6 @@ export const WithSecondaryLinks: Story = {
         slotAppearance: 'dropdown',
       },
     ],
-  },
-};
-
-export const WithCustomSecondaryLinks: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        slot: <a href="#">English</a>,
-      },
-      {
-        slot: (
-          <Paragraph>
-            Hello John | <a href="#">Logout</a>
-          </Paragraph>
-        ),
-      },
-    ],
-    addDefaultMobileMenu: true,
-    items: [
-      {
-        icon: 'search',
-        label: 'Search',
-        itemType: 'slot',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-    ],
-  },
-};
-
-export const WithMainAndSecondaryLinksDesktopOnly: Story = {
-  args: {
-    logo: {
-      href: 'path',
-    },
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
-    items: [
-      {
-        label: 'News',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Departments',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ],
-  },
-};
-const defaultHeaderItems = (external?: boolean) => [
-  {
-    label: 'Departments',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    label: 'Services',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    itemType: 'divider',
-  },
-  {
-    icon: 'search',
-    label: 'Search',
-    itemType: 'slot',
-    component: <HeaderSearch />,
-    slotAppearance: 'dropdown',
-  },
-];
-
-const defaultHeaderProps = (external?: boolean) =>
-  ({
-    items: [...(defaultHeaderItems(external) as any)],
-    addDefaultMobileMenu: true,
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
-  }) as HeaderProps;
-
-export const WithTitle: Story = {
-  args: {
-    title: 'Life Events',
-    logo: {
-      href: 'path',
-    },
   },
 };
 
@@ -521,45 +366,48 @@ export const WithExtraButtons: Story = {
   },
 };
 
-const WithExtraButtonsAndLabelsItems: HeaderItem[] = [
+const defaultHeaderItems = (external?: boolean) => [
   {
-    icon: 'search',
-    itemType: 'slot',
-    component: <HeaderSearch />,
-    slotAppearance: 'dropdown',
-  },
-  {
-    icon: 'home',
+    label: 'Departments',
     itemType: 'link',
     href: '#',
-  },
-  {
-    icon: 'logout',
-    itemType: 'link',
-    href: '#',
-  },
-  {
-    label: 'News',
-    itemType: 'link',
-    href: '#',
+    external,
     showItemMode: 'desktop-only',
   },
   {
     label: 'Services',
     itemType: 'link',
     href: '#',
+    external,
     showItemMode: 'desktop-only',
+  },
+  {
+    itemType: 'divider',
+  },
+  {
+    icon: 'search',
+    label: 'Search',
+    itemType: 'slot',
+    component: <HeaderSearch />,
+    slotAppearance: 'dropdown',
   },
 ];
 
-export const WithExtraButtonsAndLabels: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    items: WithExtraButtonsAndLabelsItems,
-  },
-};
+const defaultHeaderProps = (external?: boolean) =>
+  ({
+    items: [...(defaultHeaderItems(external) as any)],
+    addDefaultMobileMenu: true,
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+  }) as HeaderProps;
 
 export const FullWidth: Story = {
   args: {
@@ -568,31 +416,6 @@ export const FullWidth: Story = {
       href: '/link',
     },
     ...defaultHeaderProps(),
-  },
-};
-
-export const ShowMobileMenuForLanguages: Story = {
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
-  },
-  args: {
-    logo: {
-      href: '/link',
-    },
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        href: '#',
-        label: 'English',
-      },
-    ],
-    addDefaultMobileMenu: true,
   },
 };
 
@@ -768,5 +591,244 @@ export const ShowTitleOnMobile: Story = {
         label: 'English',
       },
     ],
+  },
+};
+
+export const GovieHeader: Story = {
+  args: {
+    logo: {
+      href: '#',
+      imageLarge:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+      imageSmall:
+        'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg',
+    },
+    items: [
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        itemType: 'divider',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Gaelige',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'always',
+      },
+    ],
+    addDefaultMobileMenu: true,
+  },
+};
+
+export const WithUtilitySlot: Story = {
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    title: 'Title',
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: <a href="#">English</a>,
+      },
+      {
+        slot: (
+          <Paragraph size="sm">
+            Hello John | <a href="#">Logout</a>
+          </Paragraph>
+        ),
+      },
+    ],
+  },
+};
+
+export const NoLinks: Story = {
+  args: {},
+};
+
+export const WithMainLinksDesktopOnly: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+};
+
+export const WithCustomSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: <a href="#">English</a>,
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John | <a href="#">Logout</a>
+          </Paragraph>
+        ),
+      },
+    ],
+    addDefaultMobileMenu: true,
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+};
+
+export const WithMainAndSecondaryLinksDesktopOnly: Story = {
+  args: {
+    logo: {
+      href: 'path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+};
+
+export const WithTitle: Story = {
+  args: {
+    title: 'Life Events',
+    logo: {
+      href: 'path',
+    },
+  },
+};
+
+export const WithExtraButtonsAndLabels: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    items: [
+      {
+        icon: 'search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+      {
+        icon: 'home',
+        itemType: 'link',
+        href: '#',
+      },
+      {
+        icon: 'logout',
+        itemType: 'link',
+        href: '#',
+      },
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+};
+
+export const ShowMobileMenuForLanguages: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ],
+    addDefaultMobileMenu: true,
   },
 };

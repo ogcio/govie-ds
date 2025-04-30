@@ -597,7 +597,7 @@ export const DesktopDrawerDefaultMenu: Story = {
   },
   render: createElement,
 };
-
+/*
 export const DesktopDrawerWithSlot: Story = {
   args: {
     logo: {
@@ -606,7 +606,7 @@ export const DesktopDrawerWithSlot: Story = {
     items: headerWithSlotsProps.items,
   },
   render: createElement,
-};
+};*/
 
 export const DesktopDrawerCustom: Story = {
   args: {
@@ -720,7 +720,7 @@ export const NoLabelSearch: Story = {
   render: createElement,
 };
 
-export const tabletView: Story = {
+export const TabletView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -736,7 +736,7 @@ export const tabletView: Story = {
   render: createElement,
 };
 
-export const mobileView: Story = {
+export const MobileView: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -798,7 +798,7 @@ export const FullWidth: Story = {
   render: createElement,
 };
 
-export const withExternalLinks: Story = {
+export const WithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
   },
@@ -871,7 +871,7 @@ export const withExternalLinks: Story = {
   },
 };
 
-export const mobileWithExternalLinks: Story = {
+export const MobileWithExternalLinks: Story = {
   parameters: {
     layout: 'fullscreen',
     viewport: {
@@ -978,30 +978,6 @@ export const ShowTitleOnMobile: Story = {
   },
   render: createElement,
 };
-export const WithUtilitySlot: Story = {
-  args: {
-    logo: {
-      href: 'path',
-      external: true,
-    },
-    title: 'Title',
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-      {
-        slot: `<a href="#">English</a>`,
-      },
-      {
-        slot: `
-          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
-        `,
-      },
-    ],
-  },
-  render: createElement,
-};
 
 export const GovieHeader: Story = {
   args: {
@@ -1034,6 +1010,167 @@ export const GovieHeader: Story = {
         itemType: 'link',
         href: '#',
         showItemMode: 'always',
+      },
+    ],
+    addDefaultMobileMenu: true,
+  },
+  render: createElement,
+};
+
+export const WithUtilitySlot: Story = {
+  args: {
+    logo: {
+      href: 'path',
+      external: true,
+    },
+    title: 'Title',
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: `<a href="#">English</a>`,
+      },
+      {
+        slot: `
+          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+        `,
+      },
+    ],
+  },
+  render: createElement,
+};
+
+/* New ones */
+
+export const NoLinks: Story = {
+  args: {},
+  render: createElement,
+};
+
+export const WithMainLinksDesktopOnly: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+  render: createElement,
+};
+
+export const WithCustomSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: `<a href="#">English</a>`,
+      },
+      {
+        slot: `
+        <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+      `,
+      },
+    ],
+    addDefaultMobileMenu: true,
+    items: [...defaultHeaderItems()],
+  },
+  render: createElement,
+};
+
+export const WithMainAndSecondaryLinksDesktopOnly: Story = {
+  args: {
+    logo: {
+      href: 'path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+  },
+  render: createElement,
+};
+
+export const WithTitle: Story = {
+  args: {
+    title: 'Life Events',
+    logo: {
+      href: 'path',
+    },
+  },
+  render: createElement,
+};
+
+export const ShowMobileMenuForLanguages: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
       },
     ],
     addDefaultMobileMenu: true,

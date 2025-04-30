@@ -189,7 +189,7 @@ export const CompleteFooter: Story = {
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const MinimalFooter: Story = {
+export const SimpleFooter: Story = {
   args: {
     secondarySlot: `
       <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
@@ -221,7 +221,7 @@ export const MinimalFooter: Story = {
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const SimpleFooter: Story = {
+export const MinimalFooter: Story = {
   args: {
     dataTestid: 'footer',
     utilitySlot: `
