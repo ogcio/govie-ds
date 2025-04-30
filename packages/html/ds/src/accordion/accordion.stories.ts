@@ -38,13 +38,6 @@ const createAccordion = (arguments_: AccordionProps) => {
         ? 'gi-border-t gi-border-b'
         : 'gi-border-t';
 
-    console.log(
-      { borderClass },
-      arguments_,
-      index,
-      index === arguments_.items.length - 1,
-    );
-
     const accordionItem = document.createElement('div');
     accordionItem.className = borderClass;
 
