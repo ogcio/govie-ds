@@ -1,5 +1,9 @@
 .gi-textarea {
-  @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-py-1 gi-pl-2 gi-pr-10  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-gray-950 gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-py-1 gi-pl-2 gi-pr-2  xs:gi-text-md gi-text-sm gi-resize-y gi-min-h-10 gi-border-gray-950 gi-input-disabled-state;
+}
+
+.gi-textarea[data-clear-enabled='true'] {
+  @apply gi-pr-10;
 }
 
 .gi-textarea[data-icon-start='true'] {
