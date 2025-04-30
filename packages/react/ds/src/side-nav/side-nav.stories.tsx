@@ -53,7 +53,7 @@ export const ParentChild = {
 
 export const FullExample = {
   render: () => (
-    <SideNav value="projects">
+    <SideNav value="projects-active">
       <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
       <SideNavItem parent expandable icon="info" value="team" label="Team">
         <SideNavItem value="team-members" label="Members" icon="person" />
