@@ -89,7 +89,10 @@ export function Footer({
           )}
 
           {primarySlot && secondarySlot && (
-            <SectionBreak color="gi-border-gray-100" size="lg" />
+            <SectionBreak
+              color="gi-border-color-border-system-neutral-subtle"
+              size="lg"
+            />
           )}
 
           <div
