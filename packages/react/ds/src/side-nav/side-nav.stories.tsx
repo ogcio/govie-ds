@@ -56,12 +56,8 @@ export const FullExample = {
     <SideNav value="projects-active">
       <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
       <SideNavItem parent expandable icon="info" value="team" label="Team">
-        <SideNavItem value="team-members" label="Members" icon="person" />
-        <SideNavItem
-          value="team-permissions"
-          label="Permissions"
-          icon="event"
-        />
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
       </SideNavItem>
       <SideNavItem
         parent
@@ -72,18 +68,8 @@ export const FullExample = {
         href="#"
         icon="attach_file"
       >
-        <SideNavItem
-          value="projects-active"
-          label="Active"
-          icon="check_circle"
-          href="#"
-        />
-        <SideNavItem
-          href="#"
-          value="projects-archived"
-          label="Archived"
-          icon="info"
-        />
+        <SideNavItem value="projects-active" label="Active" href="#" />
+        <SideNavItem href="#" value="projects-archived" label="Archived" />
       </SideNavItem>
       <SideNavItem value="settings" label="Settings" icon="settings" />
     </SideNav>
