@@ -3,6 +3,7 @@ import { IconId } from '../icon/icon.js';
 export type SideNavItemProps = {
   value: string;
   label: string;
+  href?: string;
   parent?: boolean;
   open?: boolean;
   expandable?: boolean;

@@ -3,16 +3,8 @@
 }
 
 .gi-side-nav-item {
-  @apply gi-relative 
-    gi-z-1 
-    gi-px-3
-    gi-py-3 
-    gi-flex 
-    gi-cursor-pointer 
-    gi-justify-between
-    gi-w-full
-    hover:gi-bg-gray-200
-    hover:gi-rounded-sm;
+  @apply gi-my-1 gi-border-transparent gi-relative gi-z-1 gi-px-3 gi-py-3 gi-flex gi-cursor-pointer 
+    gi-justify-between gi-w-full hover:gi-bg-gray-200 hover:gi-rounded-sm;
 }
 
 /* TODO replace 
@@ -20,7 +12,7 @@
 - background class with `gi-bg-color-surface-system-neutral-interactive-selected-subtle` 
 */
 .gi-side-nav-item-selected {
-  @apply gi-border-l-lg gi-border-l-[#008971] gi-border-solid gi-bg-[#F7F7F8];
+  @apply !gi-border-l-lg !gi-border-l-[#008971] !gi-border-solid gi-bg-[#F7F7F8];
 }
 
 .gi-side-nav-item-label {

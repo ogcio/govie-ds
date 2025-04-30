@@ -19,7 +19,16 @@ const SideNavContext = React.createContext<SideNavContextType | undefined>(
 
 export const SideNavItem: React.FC<
   PropsWithChildren<SideNavItemProps> & { open?: boolean }
-> = ({ children, parent, expandable, label, value, icon, open = false }) => {
+> = ({
+  children,
+  parent,
+  expandable,
+  label,
+  value,
+  icon,
+  href,
+  open = false,
+}) => {
   const context = React.useContext(SideNavContext);
 
   if (!context) {
@@ -39,61 +48,95 @@ export const SideNavItem: React.FC<
 
   useEffect(() => {
     if (open) {
-      setOpenItemIds((prevIds: string[]) => {
-        if (!prevIds.includes(value)) {
-          return [...prevIds, value];
+      setOpenItemIds((previousIds: string[]) => {
+        if (!previousIds.includes(value)) {
+          return [...previousIds, value];
         }
-        return prevIds;
+        return previousIds;
       });
     }
   }, [open, setOpenItemIds, value]);
 
-  const handleClick = () => {
-    if (parent && expandable) {
-      const updatedOpenIds = isOpen
-        ? openItemIds.filter((id) => id !== value)
-        : [...openItemIds, value];
-      setOpenItemIds(updatedOpenIds);
-    } else {
-      setSelectedItemId(value);
-    }
+  const handleExpandCollapse = () => {
+    const updatedOpenIds = isOpen
+      ? openItemIds.filter((id) => id !== value)
+      : [...openItemIds, value];
+    setOpenItemIds(updatedOpenIds);
+  };
+
+  const handleSelection = () => {
+    setSelectedItemId(value);
   };
 
   const itemId = `${navId}-${value}`;
   const showExpandableIcon = parent && expandable;
 
-  return (
-    <div role="group" aria-label={`${children} dropdown`}>
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          handleClick();
-        }}
-        className={cn('gi-side-nav-item', {
-          'gi-side-nav-item-selected': isSelected,
-          'gi-side-nav-item-parent': parent,
-        })}
-        id={itemId}
-      >
-        <div className="gi-side-nav-item-left">
-          {icon && (
-            <div className="gi-side-nav-item-icon">
-              <Icon icon={icon} />
-            </div>
-          )}
-          <div className="gi-side-nav-item-label">
-            <Paragraph size="md">{label}</Paragraph>
-          </div>
-        </div>
-        {showExpandableIcon && (
-          <div className="gi-side-nav-expandable-icon">
-            <Icon
-              className={cn(isOpen && 'gi-rotate-180')}
-              icon="keyboard_arrow_down"
-            />
+  const isNavigable = href !== undefined;
+
+  const itemContent = (
+    <>
+      <div className="gi-side-nav-item-left">
+        {icon && (
+          <div className="gi-side-nav-item-icon">
+            <Icon icon={icon} />
           </div>
         )}
-      </button>
+        <div className="gi-side-nav-item-label">
+          <Paragraph size="md">{label}</Paragraph>
+        </div>
+      </div>
+      {showExpandableIcon && (
+        <div className="gi-side-nav-expandable-icon">
+          <Icon
+            className={cn(isOpen && 'gi-rotate-180')}
+            icon="keyboard_arrow_down"
+          />
+        </div>
+      )}
+    </>
+  );
+
+  return (
+    <div
+      role="group"
+      aria-label={`${label} ${parent && expandable ? 'dropdown' : 'item'}`}
+    >
+      {isNavigable ? (
+        <a
+          href={href}
+          className={cn('gi-btn gi-side-nav-item', {
+            'gi-side-nav-item-selected': isSelected,
+            'gi-side-nav-item-parent': parent,
+          })}
+          id={itemId}
+          onClick={() => {
+            if (parent && expandable) {
+              handleExpandCollapse();
+            }
+            handleSelection();
+          }}
+        >
+          {itemContent}
+        </a>
+      ) : (
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            if (parent && expandable) {
+              handleExpandCollapse();
+            } else {
+              handleSelection();
+            }
+          }}
+          className={cn('gi-btn gi-side-nav-item', {
+            'gi-side-nav-item-selected': isSelected,
+            'gi-side-nav-item-parent': parent,
+          })}
+          id={itemId}
+        >
+          {itemContent}
+        </button>
+      )}
 
       {expandable && (
         <div className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}>

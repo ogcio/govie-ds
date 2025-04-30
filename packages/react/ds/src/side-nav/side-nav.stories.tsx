@@ -16,8 +16,6 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
 export const Basic = {
   render: () => (
     <SideNav value="item-1">
@@ -56,9 +54,8 @@ export const ParentChild = {
 export const FullExample = {
   render: () => (
     <SideNav value="projects">
-      <SideNavItem value="dashboard" label="Dashboard" parent icon="apps" />
-
-      <SideNavItem value="team" label="Team" parent expandable icon="info">
+      <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
+      <SideNavItem parent expandable icon="info" value="team" label="Team">
         <SideNavItem value="team-members" label="Members" icon="person" />
         <SideNavItem
           value="team-permissions"
@@ -66,24 +63,29 @@ export const FullExample = {
           icon="event"
         />
       </SideNavItem>
-
       <SideNavItem
-        value="projects"
-        label="Projects"
         parent
         open
         expandable
+        value="projects"
+        label="Projects"
+        href="#"
         icon="attach_file"
       >
         <SideNavItem
           value="projects-active"
           label="Active"
           icon="check_circle"
+          href="#"
         />
-        <SideNavItem value="projects-archived" label="Archived" icon="info" />
+        <SideNavItem
+          href="#"
+          value="projects-archived"
+          label="Archived"
+          icon="info"
+        />
       </SideNavItem>
-
-      <SideNavItem value="settings" label="Settings" parent icon="settings" />
+      <SideNavItem value="settings" label="Settings" icon="settings" />
     </SideNav>
   ),
 };
