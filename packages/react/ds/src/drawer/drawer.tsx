@@ -26,6 +26,11 @@ type DrawerSectionProps = {
   className?: string;
 };
 
+type DrawerBodySectionProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
 export type DrawerWrapperProps = ModalWrapperProps & {
   children: DrawerChildren;
 };
@@ -88,7 +93,7 @@ export const Drawer = ({
   );
 };
 
-export const DrawerBody = ({ children, className }: DrawerSectionProps) => (
+export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   <ModalBody className={cn('gi-drawer-body', className)}>{children}</ModalBody>
 );
 
