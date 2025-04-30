@@ -4,6 +4,7 @@ import {
   Card,
   Combobox,
   Container,
+  CookieBanner,
   DropdownItem,
   Footer,
   Form,
@@ -25,8 +26,10 @@ import {
   Pagination,
   Paragraph,
   PhaseBanner,
+  ProgressStepper,
   Select,
   SelectItem,
+  StepItem,
   TabItem,
   TabList,
   TabPanel,
@@ -40,7 +43,7 @@ import {
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import { useState } from 'react';
-import { ComboBoxProps } from './props';
+import { ComboBoxProps, CookieBannerProps } from './props';
 
 const toastProps: ToastProps = {
   title: 'Default',
@@ -110,7 +113,7 @@ export function App() {
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
       />
-      {/* <CookieBanner {...CookieBannerProps} /> */}
+      <CookieBanner {...CookieBannerProps} />
       <Container>
         <Heading>Design System </Heading>
         <Tabs id="tabs" ariaLabelledBy="">
@@ -232,6 +235,19 @@ export function App() {
           <InputCheckbox id="checkbox-id-2" value="value-1" label="Checkbox2" />
         </InputCheckboxGroup>
         <br />
+        <br />
+        <h2>Progress Stepper</h2>
+        <ProgressStepper
+          indicator="number"
+          orientation="vertical"
+          currentStepIndex={1}
+        >
+          <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+          <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+          <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+          <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+          <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />
+        </ProgressStepper>
         <h2>Checkbox</h2>
         <InputCheckbox id="checkbox-id" value="value-1" label="Checkbox" />
         <InputRadioGroup groupId="uniqueId1">

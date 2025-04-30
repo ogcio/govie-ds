@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.2.2...design-theme-builder-v1.3.0) (2025-04-28)
+
+
+### Features
+
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.3.0
+
 ## [1.2.2](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.2.1...design-theme-builder-v1.2.2) (2025-03-31)
 
 

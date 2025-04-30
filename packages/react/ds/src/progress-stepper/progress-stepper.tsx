@@ -122,8 +122,8 @@ export const Step = ({
       )}
       {showVerticalSlots && (
         <div
-          className="gi-ml-10"
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
+          className="gi-ml-10 gi-pt-5"
         >
           {verticalSlot}
         </div>
