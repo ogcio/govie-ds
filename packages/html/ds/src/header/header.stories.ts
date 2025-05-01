@@ -450,20 +450,11 @@ const defaultHeaderItems = (external?: boolean) => [
   },
 ];
 
-const defaultHeaderProps = (external?: boolean) =>
+const defaultHeaderProps = () =>
   ({
-    items: [...defaultHeaderItems(external)],
+    items: headerWithSlotsProps.items,
     addDefaultMobileMenu: true,
-    secondaryLinks: [
-      {
-        href: '#',
-        label: 'English',
-      },
-      {
-        href: '#',
-        label: 'Gaeilge',
-      },
-    ],
+    mobileMenuLabel: 'Menu',
   }) as HeaderProps;
 
 const headerWithSlotsProps: HeaderProps = {
@@ -597,16 +588,6 @@ export const DesktopDrawerDefaultMenu: Story = {
   },
   render: createElement,
 };
-/*
-export const DesktopDrawerWithSlot: Story = {
-  args: {
-    logo: {
-      href: '/link',
-    },
-    items: headerWithSlotsProps.items,
-  },
-  render: createElement,
-};*/
 
 export const DesktopDrawerCustom: Story = {
   args: {

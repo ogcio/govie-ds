@@ -9,7 +9,7 @@ import { Select, SelectItem } from '../select/select.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
-import { HeaderItem, HeaderProps } from './types.js';
+import { HeaderProps } from './types.js';
 
 const meta = {
   title: 'layout/Header',
@@ -767,44 +767,6 @@ export const WithTitle: Story = {
     logo: {
       href: 'path',
     },
-  },
-};
-
-export const WithExtraButtonsAndLabels: Story = {
-  args: {
-    logo: {
-      href: '/path',
-    },
-    items: [
-      {
-        icon: 'search',
-        itemType: 'slot',
-        component: <HeaderSearch />,
-        slotAppearance: 'dropdown',
-      },
-      {
-        icon: 'home',
-        itemType: 'link',
-        href: '#',
-      },
-      {
-        icon: 'logout',
-        itemType: 'link',
-        href: '#',
-      },
-      {
-        label: 'News',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-      {
-        label: 'Services',
-        itemType: 'link',
-        href: '#',
-        showItemMode: 'desktop-only',
-      },
-    ],
   },
 };
 
