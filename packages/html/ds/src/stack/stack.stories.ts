@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { beautifyHtmlNode } from '../storybook/storybook';
-import { StackProps } from './types';
 import { createButton } from '../helpers/buttons';
 import { createLink } from '../helpers/links';
+import { beautifyHtmlNode } from '../storybook/storybook';
+import { StackProps } from './types';
 
 const meta: Meta<StackProps> = {
   title: 'layout/Stack',

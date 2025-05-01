@@ -118,42 +118,6 @@ export const Default: Story = {
     const defaultScreen = canvas.getByTestId('default-container');
     const acceptedScreen = canvas.getByTestId('accepted-container');
     const rejectedScreen = canvas.getByTestId('rejected-container');
-
-    expect(defaultScreen).toBeVisible();
-    expect(acceptedScreen).not.toBeVisible();
-    expect(rejectedScreen).not.toBeVisible();
-  },
-};
-
-export const AcceptFlow: Story = {
-  args: {
-    content: childrenDefault,
-    accept: {
-      content: childrenAccepted,
-      triggerButton: {
-        content: 'Accept cookies',
-      },
-    },
-    reject: {
-      content: childrenRejected,
-      triggerButton: {
-        content: 'Reject cookies',
-      },
-    },
-    dismissButton: {
-      content: 'Hide this message',
-    },
-    cookieLink: {
-      href: '#',
-      content: 'See Cookies',
-    },
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const defaultScreen = canvas.getByTestId('default-container');
-    const acceptedScreen = canvas.getByTestId('accepted-container');
-    const rejectedScreen = canvas.getByTestId('rejected-container');
     const acceptButton = canvas.getByTestId('accept-btn');
     const dismissButton = canvas.getByTestId('dismiss-btn-accepted');
 
