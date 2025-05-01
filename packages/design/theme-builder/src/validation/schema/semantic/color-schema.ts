@@ -1,7 +1,14 @@
 import { z } from 'zod';
 import { createAliasSchema, createTokenSchema } from '../shared.js';
 
-const colorStateKeys = ['default', 'disabled', 'hover', 'focus', 'visited'];
+const colorStateKeys = [
+  'default',
+  'disabled',
+  'hover',
+  'focus',
+  'visited',
+  'selected',
+];
 
 const createInteractionStates = (name: string) =>
   z
@@ -34,8 +41,15 @@ function createToneSchema(namePrefix: string, tones: string[] = []) {
     .strict();
 }
 
-function createIntentSchema(namePrefix: string, intents: string[] = []) {
-  const commonIntents = ['info', 'success', 'error', 'warning'];
+function createIntentSchema(
+  namePrefix: string,
+  intents: string[] = [],
+  ignoreCommon = false,
+) {
+  const commonIntents = ignoreCommon
+    ? []
+    : ['info', 'success', 'error', 'warning'];
+
   return z
     .object(
       Object.fromEntries(
@@ -136,6 +150,13 @@ function createSurfaceSystemSchema(namePrefix: string) {
                   `${namePrefix}.neutral.interactive.selected-disabled`,
                 ),
                 name: 'selected-disabled',
+              }),
+              'selected-subtle': createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.selected-subtle`,
+                ),
+                name: 'selected-subtle',
               }),
             })
             .strict(),
@@ -327,9 +348,17 @@ export const colorSchema = z
       system: createIconSystemSchema('icon.system'),
     }),
     border: z.object({
-      tone: createToneSchema('border.tone', ['convention', 'dark', 'light']),
+      tone: createToneSchema('border.tone', [
+        'convention',
+        'dark',
+        'light',
+        'primary-accent',
+      ]),
       intent: createIntentSchema('border.intent', ['focus']),
       system: createBorderSystemSchema('border.system'),
+    }),
+    shadow: z.object({
+      intent: createIntentSchema('shadow.intent', ['focus'], true),
     }),
   })
   .strict();

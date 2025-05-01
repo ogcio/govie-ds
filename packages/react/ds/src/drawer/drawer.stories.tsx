@@ -35,7 +35,10 @@ export const Default: Story = {
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
-      <DrawerBody key="body" className="gi-border-t-xs gi-border-t-gray-100">
+      <DrawerBody
+        key="body"
+        className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
+      >
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
@@ -185,7 +188,10 @@ export const DrawerMenuTablet: Story = {
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
-      <DrawerBody key="body" className="gi-border-t-xs gi-border-t-gray-100">
+      <DrawerBody
+        key="body"
+        className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
+      >
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">
@@ -215,7 +221,10 @@ export const DrawerMenuMobile: Story = {
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
-      <DrawerBody key="body" className="gi-border-t-xs gi-border-t-gray-100">
+      <DrawerBody
+        key="body"
+        className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
+      >
         <DrawerMenuExample />
       </DrawerBody>,
       <DrawerFooter key="footer">

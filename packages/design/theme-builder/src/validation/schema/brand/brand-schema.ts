@@ -54,7 +54,7 @@ function createBrandColorSchema(name: string) {
 const supportSchema = z
   .object(
     Object.fromEntries(
-      ['error', 'warning', 'success', 'info'].map((type) => [
+      ['error', 'warning', 'success', 'info', 'focus'].map((type) => [
         type,
         createColorSwatchSetSchema(`support.${type}`, true),
       ]),

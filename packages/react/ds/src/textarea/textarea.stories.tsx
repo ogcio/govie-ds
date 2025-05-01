@@ -97,6 +97,24 @@ export const Default: Story = {
   },
 };
 
+export const WithTextInputReset: Story = {
+  args: {
+    id: 'text-area-id01',
+  },
+  render: () => {
+    return (
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'text-area-id01',
+        }}
+      >
+        <TextArea clearButtonEnabled placeholder="Placeholder" />
+      </FormField>
+    );
+  },
+};
+
 export const ResponsiveWidthWithInputText: Story = {
   args: {
     rows: 4,

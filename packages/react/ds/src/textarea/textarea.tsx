@@ -24,6 +24,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   maxChars?: number;
   halfFluid?: boolean;
   iconStart?: IconId;
+  clearButtonEnabled?: boolean;
 };
 
 export const TextArea = forwardRef(
@@ -36,6 +37,7 @@ export const TextArea = forwardRef(
       halfFluid = false,
       iconStart,
       className,
+      clearButtonEnabled,
       ...props
     }: TextAreaProps,
     externalRef,
@@ -97,22 +99,25 @@ export const TextArea = forwardRef(
               className={cn(className, 'gi-textarea')}
               ref={inputRef}
               data-icon-start={!!iconStart}
+              data-clear-enabled={clearButtonEnabled}
               maxLength={maxChars}
               onChange={handleOnChange}
               {...props}
             />
-            <div className="gi-text-area-end-element">
-              <IconButton
-                disabled={props.disabled}
-                icon={{
-                  icon: 'close',
-                }}
-                onClick={handleOnResetClick}
-                variant="flat"
-                size="small"
-                appearance="dark"
-              />
-            </div>
+            {clearButtonEnabled ? (
+              <div className="gi-text-area-end-element">
+                <IconButton
+                  disabled={props.disabled}
+                  icon={{
+                    icon: 'close',
+                  }}
+                  onClick={handleOnResetClick}
+                  variant="flat"
+                  size="small"
+                  appearance="dark"
+                />
+              </div>
+            ) : null}
           </div>
         </div>
 

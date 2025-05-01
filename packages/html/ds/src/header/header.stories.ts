@@ -340,7 +340,7 @@ const createHeader = (arguments_: HeaderProps) => {
     slotContainer.dataset.index = `${index}`;
     slotContainer.ariaLabel = `Slot Container ${index + 1}`;
     slotContainer.className =
-      'gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3';
+      'gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-color-surface-system-primary-default gi-order-3';
     slotContainer.innerHTML = item.component || '';
     header.append(slotContainer);
   }
