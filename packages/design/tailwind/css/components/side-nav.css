@@ -12,7 +12,7 @@
 - background class with `gi-bg-color-surface-system-neutral-interactive-selected-subtle` 
 */
 .gi-side-nav-item-selected {
-  @apply !gi-shadow-[inset_4px_0_0_#008971] gi-bg-[#F7F7F8];
+  @apply !gi-shadow-[inset_4px_0_0_var(--gieds-color-border-tone-primary-accent-selected)] gi-bg-color-surface-system-neutral-interactive-selected-subtle;
 }
 
 .gi-side-nav-item-label {

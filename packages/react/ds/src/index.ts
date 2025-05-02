@@ -111,6 +111,8 @@ export type {
 } from './summary-list/types.js';
 export { ScoreSelect } from './score-select/score-select.js';
 export type { ScoreSelectProps } from './score-select/type.js';
+export { SideNav, SideNavItem } from './side-nav/side-nav.js';
+export type { SideNavItemProps, SideNavProps } from './side-nav/types.js';
 export { Caption, type CaptionProps } from './table/caption.js';
 export { ColumnGroup } from './table/column-group.js';
 export { Column } from './table/column.js';
