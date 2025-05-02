@@ -24,7 +24,7 @@
 }
 
 .gi-side-nav-item-content {
-  @apply gi-mx-6 gi-my-2 gi-relative gi-block;
+  @apply gi-relative gi-block;
 }
 
 .gi-side-nav-item-left {
