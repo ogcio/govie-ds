@@ -1,111 +1,56 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { createIcon } from '../helpers/icons';
+import { createProgressStepper } from '../helpers/progress-stepper';
 import { beautifyHtmlNode } from '../storybook/storybook';
+import { formSlot1, formSlot2, formSlot3 } from './progress-stepper.content';
 import { ProgressStepperProps } from './types';
 
 const meta: Meta<ProgressStepperProps> = {
   title: 'Application/ProgressStepper',
+  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<ProgressStepperProps>;
 
-const createProgressBar = (arguments_: ProgressStepperProps) => {
-  const currentStep = arguments_.currentStepIndex || 0;
-  const slot = arguments_.children[currentStep]?.content;
-  const showHorizontalSlot = arguments_.orientation === 'horizontal' && slot;
-
-  const progressStepperContainer = document.createElement('div');
-  progressStepperContainer.className = `gi-w-full ${arguments_.orientation === 'vertical' ? 'gi-flex' : ''}`;
-
-  const progressStepper = document.createElement('div');
-  progressStepperContainer.append(progressStepper);
-  progressStepper.dataset.testid = 'progress-stepper';
-  progressStepper.dataset.orientation = arguments_.orientation;
-  progressStepper.role = 'list';
-  progressStepper.ariaLive = 'polite';
-  progressStepper.className = 'gi-progress-stepper';
-
-  for (let index = 0; index < arguments_.children.length; index++) {
-    const stepItem = arguments_.children[index];
-
-    const isCurrentStep = !arguments_.completeAll && currentStep === index;
-    const isLastStep = index === arguments_.children.length - 1;
-    const isCompleted =
-      arguments_.completeAll || (index < currentStep && index !== currentStep);
-    const isNextStep = !isCompleted && !isCurrentStep;
-    const stepWrapper = document.createElement('div');
-    progressStepper.append(stepWrapper);
-
-    stepWrapper.className = 'gi-w-full';
-    const stepNumber = index + 1;
-
-    const div = document.createElement('div');
-    stepWrapper.append(div);
-    div.className = 'gi-relative';
-
-    const stepContainer = document.createElement('div');
-    div.append(stepContainer);
-    stepContainer.className = 'gi-progress-stepper-step-container';
-    stepContainer.dataset.orientation = arguments_.orientation;
-    stepContainer.dataset.current = isCurrentStep.toString();
-    stepContainer.dataset.completed = isCompleted.toString();
-    stepContainer.dataset.next = isNextStep.toString();
-    stepContainer.role = 'listitem';
-
-    const indicator = document.createElement('div');
-    stepContainer.append(indicator);
-    indicator.className = 'gi-progress-stepper-step';
-
-    if (isCompleted) {
-      const icon = createIcon({ icon: 'check' });
-      indicator.append(icon);
-    } else {
-      indicator.textContent = stepNumber.toString();
-    }
-
-    const stepLabel = document.createElement('div');
-    stepContainer.append(stepLabel);
-    stepLabel.className = 'gi-progress-stepper-step-label';
-    stepLabel.dataset.orientation = arguments_.orientation;
-    stepLabel.id = `step-label-${stepNumber}`;
-    stepLabel.textContent = stepItem.label;
-
-    if (!isLastStep) {
-      const connector = document.createElement('div');
-      div.append(connector);
-      connector.dataset.orientation = arguments_.orientation;
-      connector.dataset.current = isCurrentStep.toString();
-      connector.dataset.completed = isCompleted.toString();
-      connector.dataset.next = isNextStep.toString();
-      connector.ariaHidden = 'true';
-      connector.className = 'gi-progress-stepper-step-connector';
-
-      const span = document.createElement('span');
-      connector.append(span);
-      if (isCurrentStep) {
-        const span = document.createElement('span');
-        connector.append(span);
-      }
-    }
-  }
-
-  if (showHorizontalSlot) {
-    const horizontalStepSlot = document.createElement('div');
-    horizontalStepSlot.className = 'gi-h-full';
-    horizontalStepSlot.dataset.testid = `horizontal-step-slot-${currentStep}`;
-    horizontalStepSlot.textContent = slot;
-    progressStepperContainer.append(horizontalStepSlot);
-  }
-  return progressStepperContainer;
-};
-
 const createElement = (arguments_: ProgressStepperProps) => {
-  const component = createProgressBar(arguments_);
+  const component = createProgressStepper(arguments_);
   return beautifyHtmlNode(component);
 };
 
 export const Default: Story = {
+  argTypes: {
+    currentStepIndex: {
+      control: 'number',
+      type: { name: 'number', required: false },
+      description: 'The initial active step (zero-based index).',
+      defaultValue: 0,
+    },
+    orientation: {
+      control: { type: 'radio' },
+      options: ['horizontal', 'vertical'],
+      type: { name: 'string', required: false },
+      description: 'Orientation of the stepper',
+      defaultValue: 'horizontal',
+    },
+    completeAll: {
+      control: 'boolean',
+      type: { name: 'boolean', required: false },
+      description: 'Complete all steps regardless of progress',
+      defaultValue: false,
+    },
+    dataTestId: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Custom data-testid for test selectors',
+    },
+    indicator: {
+      control: { type: 'select' },
+      options: ['number', 'hashtag'],
+      type: { name: 'string', required: false },
+      description: 'Indicator style for steps (number or hashtag)',
+      defaultValue: 'hashtag',
+    },
+  },
   args: {
     currentStepIndex: 1,
     children: [
@@ -120,10 +65,10 @@ export const Default: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
-export const Vertical: Story = {
+export const WithNumbersIndicator: Story = {
   args: {
-    currentStepIndex: 1,
-    orientation: 'vertical',
+    currentStepIndex: 2,
+    indicator: 'number',
     children: [
       { label: 'Start Your Application' },
       { label: 'Personal Information' },
@@ -131,6 +76,86 @@ export const Vertical: Story = {
       { label: 'Documents Submission' },
       { label: 'Review' },
       { label: 'Complete & Submit' },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithStepContent: Story = {
+  args: {
+    currentStepIndex: 1,
+    orientation: 'vertical',
+    children: [
+      {
+        label:
+          'This step is for requesting information, this is the first step the user needs to finish',
+        content: formSlot1,
+        defaultOpen: true,
+      },
+      {
+        label: 'Step 2',
+        content: formSlot2,
+        defaultOpen: true,
+      },
+      {
+        label: 'Step 3',
+        content: formSlot3,
+        defaultOpen: true,
+      },
+    ],
+  },
+  render: (arguments_) => {
+    const div = document.createElement('div');
+    div.className = 'gi-w-[500px] aaaa';
+    div.append(createProgressStepper(arguments_));
+    return beautifyHtmlNode(div);
+  },
+};
+
+export const WithLongText: Story = {
+  args: {
+    currentStepIndex: 1,
+    children: [
+      {
+        label:
+          'This step is for requesting information, this is the first step the user needs to finish.',
+      },
+      {
+        label:
+          'This step is for requesting documentation, this second step the user needs to finish.',
+      },
+      { label: 'This step is for analysis.' },
+      { label: 'This is a long step text.' },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithVerticalLongText: Story = {
+  args: {
+    currentStepIndex: 1,
+    orientation: 'vertical',
+    children: [
+      {
+        label:
+          'This step is for requesting information, this is a long step the user needs to finish.',
+      },
+      {
+        label:
+          'This step is for requesting information, this is a long step the user needs to finish.',
+      },
+      {
+        label:
+          'This step is for requesting information, this is a long step the user needs to finish.',
+      },
+      {
+        label:
+          'This step is for requesting information, this is a long step the user needs to finish.',
+      },
+      {
+        label:
+          'This step is for requesting information, this is a long step the user needs to finish.',
+      },
     ],
   },
   render: (arguments_) => createElement(arguments_),

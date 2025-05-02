@@ -11,6 +11,10 @@ type NotyfVerticalPosition = 'center' | 'top' | 'bottom';
 type NotyfHorizontalPosition = 'left' | 'center' | 'right';
 
 const notyf = new Notyf();
+const EVENT_MARK = Symbol('event-added');
+type WithEventMark = HTMLElement & {
+  [EVENT_MARK]?: boolean;
+};
 
 export class Toast extends BaseComponent<ToastOptions> {
   container: HTMLElement;
@@ -27,20 +31,6 @@ export class Toast extends BaseComponent<ToastOptions> {
     this.dsToastContainer = this.container.nextElementSibling;
     this.triggerButton = this.container.querySelector(':scope > button');
     this.notyf = notyf;
-
-    setTimeout(() => {
-      const notyfContainer = document.querySelectorAll(
-        '.notyf .notyf__toast',
-      ) as NodeListOf<HTMLElement>;
-
-      for (const toast of notyfContainer) {
-        toast
-          .querySelector('.gi-toast-dismiss')
-          ?.addEventListener('click', () => {
-            toast.style.display = 'none';
-          });
-      }
-    });
 
     this.renderNotyf = () => {
       const duration = this.container.dataset.duration
@@ -62,7 +52,10 @@ export class Toast extends BaseComponent<ToastOptions> {
 
       this.clonedNode = this.dsToastContainer?.cloneNode(true) as HTMLElement;
       this.clonedNode?.classList.remove('gi-hidden');
-      if (this.triggerButton) {
+      if (
+        this.triggerButton &&
+        !(this.triggerButton as WithEventMark)[EVENT_MARK]
+      ) {
         this.triggerButton.addEventListener('click', () => {
           this.notyf?.open({
             type: 'open',
@@ -70,14 +63,19 @@ export class Toast extends BaseComponent<ToastOptions> {
             duration,
             position,
           });
+
+          const notyfContainer = document.querySelectorAll(
+            '.notyf .notyf__toast',
+          ) as NodeListOf<HTMLElement>;
+          for (const toast of notyfContainer) {
+            toast
+              .querySelector('.gi-toast-dismiss')
+              ?.addEventListener('click', () => {
+                toast.style.display = 'none';
+              });
+          }
         });
-      } else {
-        this.notyf?.open({
-          type: 'open',
-          message: this.clonedNode?.outerHTML,
-          duration,
-          position,
-        });
+        (this.triggerButton as WithEventMark)[EVENT_MARK] = true;
       }
     };
   }
