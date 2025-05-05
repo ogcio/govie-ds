@@ -79,7 +79,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Services</h3>
         <hr
-          class="gi-section-break-md gi-border-gray-100"
+          class="gi-section-break-md gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
@@ -97,7 +97,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Departments</h3>
         <hr
-          class="gi-section-break-md gi-border-gray-100"
+          class="gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
@@ -115,7 +115,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Publications</h3>
         <hr
-          class="gi-section-break-md gi-border-gray-100"
+          class="gi-section-break-md gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
@@ -133,7 +133,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Contact</h3>
         <hr
-          class="gi-section-break-md gi-border-gray-100"
+          class="gi-section-break-md gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
@@ -241,7 +241,7 @@ export const GovieFooter: Story = {
   args: {
     primarySlot: `
     <div class="gi-grid-responsive !gi-ml-0 !gi-mr-0">
-      <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+      <div class="gi-col-span-6">
         <ul class="gi-list gi-space-y-2">
           <li>
             <a href="#" class="gi-link gi-link-inherit">Circulars</a>
@@ -260,10 +260,19 @@ export const GovieFooter: Story = {
           </li>
         </ul>
       </div>
-      <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+      <div class="gi-col-span-6">
         <ul class="gi-list gi-space-y-2">
           <li>
+            <a href="#" class="gi-link gi-link-inherit">About gov.ie</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Accessibility</a>
+          </li>
+          <li>
             <a href="#" class="gi-link gi-link-inherit">Latest financial accounts</a>
+          </li>
+          <li>
+            <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
           </li>
           <li>
             <a href="#" class="gi-link gi-link-inherit">Sell to Government</a>
@@ -275,19 +284,6 @@ export const GovieFooter: Story = {
       </div>
     </div>
     `,
-    secondarySlot: `
-      <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-4 gi-flex-nowrap">
-        <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
-          <a href="#" class="gi-link gi-link-inherit">Privacy Policy</a>
-          <a href="#" class="gi-link gi-link-inherit">Accessibility</a>
-        </div>
-      </div>`,
-    utilitySlot: `
-    <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap">
-      <div class="gi-text-sm">
-        © ${new Date().getFullYear()} Government of Ireland.
-      </div>
-    </div>`,
     class: 'custom-footer',
     dataTestid: 'footer-complete',
   },

@@ -1,8 +1,8 @@
 .gi-header {
-  @apply gi-grid gi-relative gi-overflow-x-clip gi-bg-primary-default gi-w-full gi-font-primary;
+  @apply gi-grid gi-relative gi-overflow-x-clip gi-bg-color-surface-system-primary-default gi-w-full gi-font-primary;
 }
 .gi-header-secondary-bar {
-  @apply gi-hidden lg:gi-flex gi-bg-primary-subtle gi-h-10 gi-items-center;
+  @apply gi-hidden lg:gi-flex gi-bg-color-surface-system-primary-subtle gi-h-10 gi-items-center;
 }
 
 .gi-header-secondary-bar ul {
@@ -10,7 +10,7 @@
 }
 .gi-header-secondary-item,
 .gi-header-secondary-item-slot a {
-  @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-yellow-400 focus:gi-border focus:gi-border-solid focus:gi-border-yellow-400 gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
+  @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-color-shadow-intent-focus-default focus:gi-border focus:gi-border-solid focus:gi-border-color-shadow-intent-focus-default gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
 }
 
 .gi-header-secondary-item-slot > :first-child {
@@ -18,7 +18,7 @@
 }
 
 .gi-header-menu {
-  @apply gi-h-20 gi-items-center gi-justify-between gi-flex gi-flex-row gi-flex-nowrap gi-bg-primary-default gi-py-3 sm:gi-py-4;
+  @apply gi-h-20 gi-items-center gi-justify-between gi-flex gi-flex-row gi-flex-nowrap gi-bg-color-surface-system-primary-default gi-py-3 sm:gi-py-4;
 }
 
 .gi-header-menu > div {
@@ -102,16 +102,12 @@
   @apply gi-block gi-w-0 gi-absolute gi-h-0;
 }
 
-.gi-header-tool-container {
-  @apply gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-primary-default;
-}
-
 .gi-header-menu-container {
   @apply gi-z-1000 gi-bg-white gi-absolute gi-h-full gi-w-full xs:gi-w-3/5 gi-translate-x-full gi-top-0 gi-right-0 gi-min-h-screen;
 }
 
 .gi-header-menu-container > div {
-  @apply gi-border-gray-100 gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4;
+  @apply gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid gi-h-20 gi-justify-end gi-items-center gi-flex gi-relative gi-py-3 gi-px-4 sm:gi-px-8 sm:gi-py-4;
 }
 
 .gi-header-menu-container > ul {
@@ -140,7 +136,7 @@
 }
 
 .gi-header-accordion-item-toggle {
-  @apply hover:gi-no-underline hover:gi-underline-offset-sm hover:gi-cursor-pointer gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid;
+  @apply hover:gi-no-underline hover:gi-underline-offset-sm hover:gi-cursor-pointer gi-block gi-py-4 gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid;
 }
 
 .gi-header-accordion-item-toggle > div {
@@ -152,14 +148,10 @@
 }
 
 .gi-list-item {
-  @apply gi-block gi-py-4 gi-border-gray-100 gi-border-b-xs gi-border-solid focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none !gi-text-sm;
+  @apply gi-block gi-py-4 gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid focus:gi-no-underline focus:gi-rounded-sm focus:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-shadow-[0_0_0_2px_var(--gieds-color-gray-950),0_0_0_5px_var(--gieds-color-yellow-400)] focus-visible:gi-no-underline focus-visible:gi-rounded-sm focus-visible:gi-outline-none !gi-text-sm;
 }
 
 a.gi-list-item:hover,
 .gi-list-item > a:hover {
   @apply hover:gi-underline hover:gi-underline-offset-sm;
-}
-
-.gi-header-slot-container {
-  @apply gi-hidden gi-bg-gray-50 gi-px-8 gi-pt-8 gi-pb-14 gi-border-b-2xl gi-border-b-primary-default;
 }

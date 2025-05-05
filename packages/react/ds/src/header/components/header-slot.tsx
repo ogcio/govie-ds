@@ -23,7 +23,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
       index: index + 1,
       defaultValue: `Slot Container ${index + 1}`,
     })}
-    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-emerald-800 gi-order-3"
+    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-color-surface-system-primary-default gi-order-3"
   >
     {slot}
   </div>

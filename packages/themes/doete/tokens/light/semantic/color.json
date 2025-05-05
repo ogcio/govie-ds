@@ -308,6 +308,10 @@
               "selected-disabled": {
                 "$type": "color",
                 "$value": "{brand.color.neutral.700}"
+              },
+              "selected-subtle": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.50}"
               }
             },
             "muted": {
@@ -749,6 +753,12 @@
       },
       "border": {
         "tone": {
+          "primary-accent": {
+            "selected": {
+              "$type": "color",
+              "$value": "{brand.color.primary.600}"
+            }
+          },
           "primary-outline": {
             "default": {
               "$type": "color",
@@ -921,6 +931,16 @@
             "subtle": {
               "$type": "color",
               "$value": "{brand.color.neutral.100}"
+            }
+          }
+        }
+      },
+      "shadow": {
+        "intent": {
+          "focus": {
+            "default": {
+              "$type": "color",
+              "$value": "{brand.color.support.focus.400}"
             }
           }
         }
