@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { Link } from '../link/link.js';
 import { List, ListTypeEnum } from './list.js';
 
@@ -42,36 +43,56 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    dataTestid: 'list',
     items: ['Item 1', 'Item 2', 'Item 3'],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list');
   },
 };
 
 export const Links: Story = {
   args: {
+    dataTestid: 'list',
     items: [
-      <Link href="#">link 1</Link>,
-      <Link href="#">link 2</Link>,
-      <Link href="#">link 3</Link>,
+      <Link href="#">Link 1</Link>,
+      <Link href="#">Link 2</Link>,
+      <Link href="#">Link 3</Link>,
     ],
   },
 };
 
 export const Bullet: Story = {
   args: {
+    dataTestid: 'list',
     type: ListTypeEnum.Bullet,
     items: ['apple', 'orange', 'pears'],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-bullet');
   },
 };
 
 export const Numbered: Story = {
   args: {
+    dataTestid: 'list',
     type: ListTypeEnum.Number,
     items: ['Delivery address', 'Payment', 'Confirmation'],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-number');
   },
 };
 
 export const ExtraSpace: Story = {
   args: {
+    dataTestid: 'list',
     type: ListTypeEnum.Number,
     spaced: true,
     items: [
@@ -79,5 +100,10 @@ export const ExtraSpace: Story = {
       'Curabitur ac felis arcu. Sed vehicula risus nec ligula tempor, vel euismod augue consectetur.',
       'Fusce tincidunt mi ac augue ultricies, id cursus libero dapibus. Phasellus a urna eget justo.',
     ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByTestId('list');
+    expect(heading).toHaveClass('gi-list-spaced');
   },
 };

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { cn } from '../cn.js';
 import {
   Breadcrumbs,
   BreadcrumbCurrentLink,

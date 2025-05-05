@@ -37,7 +37,7 @@ export const createLink = (arguments_: LinkProps) => {
     );
   } else {
     linkClass.push('gi-link', `${getLinkSizeClass(arguments_.size)}`);
-    if (arguments_.noUnderline) {
+    if (arguments_.noColor) {
       linkClass.push('gi-link-inherit');
     }
     if (arguments_.noUnderline) {

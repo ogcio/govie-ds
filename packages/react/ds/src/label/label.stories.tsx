@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { Label, LabelSize } from './label.js';
 
 const meta = {
@@ -60,5 +61,41 @@ export const Default: Story = {
     htmlFor: 'input-id',
     size: LabelSize.Medium,
     text: 'Label',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: LabelSize.Small,
+    text: 'This is label text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: LabelSize.Medium,
+    text: 'This is label text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: LabelSize.Large,
+    text: 'This is label text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-lg');
   },
 };

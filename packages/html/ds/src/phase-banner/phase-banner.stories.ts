@@ -4,6 +4,27 @@ import { PhaseBannerProps } from './types';
 
 const meta: Meta<PhaseBannerProps> = {
   title: 'Typography/PhaseBanner',
+  argTypes: {
+    content: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'The text content of the phase banner.',
+    },
+    level: {
+      control: 'radio',
+      options: ['alpha', 'beta'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the level of the phase banner.',
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'PhaseBanner component is used to indicate that a page or feature is in a particular phase (e.g., alpha or beta). It typically appears at the top of the page and provides contextual information or feedback links.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -36,14 +57,6 @@ export const Default: Story = {
   args: {
     content: 'This is a phase banner.',
     level: 'alpha',
-  },
-  render: (arguments_) => createElement(arguments_),
-};
-
-export const Beta: Story = {
-  args: {
-    content: 'This is a phase banner.',
-    level: 'beta',
   },
   render: (arguments_) => createElement(arguments_),
 };
