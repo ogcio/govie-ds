@@ -40,8 +40,13 @@ function toSideNavigationItem({
     return undefined;
   }
 
-  const name: string = item.meta['navigation']
-    ? item.meta['navigation'].toString()
+  // Check if meta object doesn't exist or is empty
+  // if (!item.meta || Object.keys(item.meta).length === 0) {
+  //   return undefined;
+  // }
+
+  const name: string = item.meta['title']
+    ? item.meta['title'].toString()
     : getNameFromSlug(item.slug);
 
   return {
@@ -49,21 +54,29 @@ function toSideNavigationItem({
     name,
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
     isActive: item.slug === slug.join('/'),
-    children: item.children.map((child) => {
-      const childDocument = documents.getById({ id: child.id });
+    children: item.children
+      .map((child) => {
+        let childId = child.id;
+        if (Object.keys(child.meta).length === 0) {
+          childId = child.children[0].id;
+        }
+        const childDocument = documents.getById({ id: childId });
 
-      if (!childDocument) {
-        throw new Error(`Document not found '${child.id}'.`);
-      }
+        if (!childDocument) {
+          throw new Error(`Document not found '${child.id}'.`);
+        }
 
-      return {
-        id: child.id,
-        name: childDocument.title,
-        href: `/${child.slug}`,
-        isActive: child.slug === slug.join('/'),
-        children: [],
-      };
-    }),
+        return {
+          id: child.id,
+          name: childDocument.title,
+          href: `/${child.slug}`,
+          isActive: child.slug === slug.join('/'),
+          children: [],
+        };
+      })
+      .sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      }),
   };
 }
 
@@ -121,7 +134,7 @@ export function useSideNavigationItems() {
 
   const items: SideNavigationItem[] = topLevelHierarchy.children
     .map((item) => toSideNavigationItem({ slug, item }))
-    .filter(Boolean) as SideNavigationItem[]; // TODO: ts filter
+    .filter(Boolean) as SideNavigationItem[];
 
   return items;
 }

@@ -51,6 +51,7 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
+  ScoreSelect,
   SectionBreak,
   Select,
   SelectItem,
@@ -61,7 +62,6 @@ import {
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,
-  ScoreSelect,
   TabItem,
   Table,
   TableBody,
@@ -87,6 +87,7 @@ import {
   ComponentStatusTable,
 } from '../components/component-status-table';
 import { ModalWrapperSample } from '../components/modal-wrapper-example';
+import { Section } from '../components/section';
 import { Toast } from '../components/toast';
 import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
@@ -188,6 +189,7 @@ const documentComponents: MDXComponents = {
   Favicons: () => <Favicons />,
   Faqs: (props) => <Faqs {...props} />,
   Faq: (props) => <Faq {...props} />,
+  Section: (props) => <Section {...props} />,
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
   PageNotFound: (props) => <PageNotFound {...props} />,

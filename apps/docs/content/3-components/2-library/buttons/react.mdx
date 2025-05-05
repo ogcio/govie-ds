@@ -12,64 +12,11 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/form-button--docs'
     status: 'stable'
-properties:
-  - name: ButtonProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content inside the button. Can be a string or any valid React node.'
-        required: false
-      - name: 'variant'
-        ofType: 'string'
-        description: 'Defines the visual style of the button. Options include: primary, secondary, flat.'
-        required: false
-      - name: 'appearance'
-        ofType: 'string'
-        description: 'Adjusts the overall tone or theme of the button. Options are: default, dark, light.'
-        required: false
-      - name: 'size'
-        ofType: 'string'
-        description: 'Specifies the size of the button. Options include: small, medium, large.'
-        required: false
-      - name: 'disabled'
-        ofType: 'boolean'
-        description: 'A boolean that, when true, disables the button and prevents interaction.'
-        required: false
-  - name: ButtonGroupProps
-    fields:
-      - name: 'name'
-        ofType: 'string'
-        description: 'A string used to uniquely identify the button group. Useful for forms or accessibility purposes.'
-        required: true
-      - name: 'size'
-        ofType: 'string'
-        description: 'Defines the size of each button within the group. Options include: small, medium, large.'
-        required: false
-      - name: 'onChange'
-        ofType: 'function'
-        description: 'A callback function triggered when a button is selected. It receives the selected value.'
-        required: false
-      - name: 'defaultValue'
-        ofType: 'string'
-        description: 'The initially selected value in the group.'
-        required: false
-      - name: 'children'
-        ofType: 'node'
-        description: 'Can be used to inject custom React nodes into the group (if needed for flexibility).'
-        required: false
-  - name: ButtonGroupItemProps
-    fields:
-      - name: 'value'
-        ofType: 'string'
-        description: 'The value associated with this button item in the group.'
-        required: true
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the button item.'
-        required: true
 ---
 
 # Button
+
+<Section componentId="button" current="react">
 
 ## Variants
 
@@ -437,8 +384,6 @@ properties:
 
 ## Usage
 
-<ComponentPropertiesTable componentId="button" />
-
 ### Button Props
 
 - **children** (optional): The content inside the button. Can be a string or any valid React node.
@@ -496,3 +441,5 @@ Used to display a collection of related buttons (e.g., for feedback, selection, 
 ## Status
 
 <ComponentStatusBlock componentId="button" />
+
+</Section>
