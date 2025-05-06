@@ -1,4 +1,5 @@
-import { ButtonVariant, ButtonAppearance, ButtonSize } from '../button/types';
+import { ButtonAppearance, ButtonSize, ButtonVariant } from '../button/types';
+import { IconIdType } from '../icon/icon.schema';
 
 export type AnchorProps = {
   content?: string;
@@ -7,19 +8,23 @@ export type AnchorProps = {
   asChild?: boolean;
 };
 
-export type LinkProps = AnchorProps & {
+export type LinkProps = {
   href?: string;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  as?: 'a' | 'button';
-  noVisited?: boolean;
-  noUnderline?: boolean;
-  noColor?: boolean;
-  external?: boolean;
-  size?: 'sm' | 'md';
-  dataTestid?: string;
+  content: string;
   asButton?: {
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;
     size?: ButtonSize;
   };
+  noVisited?: boolean;
+  noUnderline?: boolean;
+  noColor?: boolean;
+  external?: boolean;
+  size?: ButtonSize;
+  dataTestid?: string;
+  iconStart?: IconIdType;
+  iconEnd?: IconIdType;
+  disabled?: boolean;
+  appearance?: ButtonAppearance;
+  className?: string;
 };

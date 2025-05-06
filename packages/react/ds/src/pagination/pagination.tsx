@@ -103,6 +103,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           defaultValue: 'Go to previous',
         })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
+        dataTestid="govie-pagination-prev-btn"
       >
         <React.Fragment key="previous-btn-pagination">
           <Icon icon="arrow_left_alt" />
@@ -120,6 +121,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={() => onPageChange(currentPage + 1)}
         aria-label={t('pagination.goToNext', { defaultValue: 'Go to next' })}
         className={isSMWidth ? 'gi-icon-btn-large' : ''}
+        dataTestid="govie-pagination-next-btn"
       >
         {!isSMWidth && t('pagination.next', { defaultValue: 'Next' })}
         <React.Fragment key="next-btn-pagination">

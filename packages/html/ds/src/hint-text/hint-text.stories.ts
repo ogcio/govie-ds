@@ -5,7 +5,15 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { HintSize, HintTextProps } from './types';
 
 const meta: Meta<HintTextProps> = {
-  title: 'Typography/HintText',
+  title: 'Form/HintText',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use hint text alongside a form input for help that’s relevant to the majority of users, like how their information will be used, or where to find it.',
+      },
+    },
+  },
 };
 
 export default meta;
