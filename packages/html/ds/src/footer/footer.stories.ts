@@ -97,7 +97,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Departments</h3>
         <hr
-          class="gi-border-color-border-system-neutral-subtle"
+          class="gi-section-break-md gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
