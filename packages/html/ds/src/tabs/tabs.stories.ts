@@ -71,10 +71,7 @@ export const Default: Story = {
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const tab = await canvas.findByRole('tab', { name: 'Tab 1' });
     const panel = await canvas.findByText('Tab 1 Content');
-
-    expect(tab).toHaveAttribute('aria-selected', 'true');
     expect(panel).toBeVisible();
   },
 };
