@@ -75,6 +75,8 @@ import {
   Tag,
   TextArea,
   Tooltip,
+  SideNav,
+  SideNavItem,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -292,6 +294,8 @@ const documentComponents: MDXComponents = {
   InputRadioGroup,
   ButtonGroup,
   ButtonGroupItem,
+  SideNav,
+  SideNavItem,
 };
 
 export function Mdx({ code }: MdxProps) {

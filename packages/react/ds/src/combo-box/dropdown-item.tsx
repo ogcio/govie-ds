@@ -128,7 +128,6 @@ export const DropdownItem = ({
             'gi-h-64': !noSearch,
           })}
         >
-          {/* TODO translation for "No results found." */}
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
               {t('dropdownItem.noResultFound', {
