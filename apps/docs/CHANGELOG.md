@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/docs-v1.6.0...docs-v1.7.0) (2025-05-06)
+
+
+### Features
+
+* Add side navigation component to React and HTML library ([#540](https://github.com/ogcio/govie-ds/issues/540)) ([30cd784](https://github.com/ogcio/govie-ds/commit/30cd78491ff2a862d8557514acf427cbb014dede))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.7.0
+    * @govie-ds/tailwind bumped to 1.7.0
+    * @govie-ds/theme-govie bumped to 1.4.0
+    * @govie-ds/tokens bumped to 1.4.0
+
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/docs-v1.5.2...docs-v1.6.0) (2025-04-28)
 
 

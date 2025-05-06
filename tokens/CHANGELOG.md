@@ -2,6 +2,13 @@
 
 
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.3.0...tokens-v1.4.0) (2025-05-06)
+
+
+### Features
+
+* updated semantic colors + header/footer changes ([#539](https://github.com/ogcio/govie-ds/issues/539)) ([d3e9289](https://github.com/ogcio/govie-ds/commit/d3e92896f8cdb6a136a45c6aa93905c65cac1bda))
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.2.2...tokens-v1.3.0) (2025-04-28)
 
 

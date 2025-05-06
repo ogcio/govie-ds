@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.3.0...design-theme-builder-v1.4.0) (2025-05-06)
+
+
+### Features
+
+* updated semantic colors + header/footer changes ([#539](https://github.com/ogcio/govie-ds/issues/539)) ([d3e9289](https://github.com/ogcio/govie-ds/commit/d3e92896f8cdb6a136a45c6aa93905c65cac1bda))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.4.0
+
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.2.2...design-theme-builder-v1.3.0) (2025-04-28)
 
 
