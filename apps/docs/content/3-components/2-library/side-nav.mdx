@@ -1,0 +1,126 @@
+---
+title: Side Navigation
+description: Side Navigation HTML Component
+status: in-review
+libraries:
+  - platform: 'figma'
+    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=6439-817'
+    status: 'stable'
+  - platform: 'global'
+    link: '?path=/docs/navigation-sidenav--docs'
+    status: 'stable'
+  - platform: react
+    link: '?path=/docs/navigation-sidenav--docs'
+    status: 'stable'
+---
+
+# Side Navigation
+
+Side Navigation (SideNav) helps users navigate across major sections of an application. It is commonly used in dashboard layouts, allowing for quick and persistent access to key areas.
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <SideNav value="projects-active">
+    <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
+    <SideNavItem parent expandable icon="info" value="team" label="Team">
+      <SideNavItem value="team-members" label="Members" />
+      <SideNavItem value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem
+      parent
+      open
+      expandable
+      value="projects"
+      label="Projects"
+      href="#"
+      icon="attach_file"
+    >
+      <SideNavItem value="projects-active" label="Active" href="#" />
+      <SideNavItem href="#" value="projects-archived" label="Archived" />
+    </SideNavItem>
+    <SideNavItem value="settings" label="Settings" icon="settings" />
+  </SideNav>
+</ComponentContainer>
+
+<Tabs id="tab2">
+  <TabList>
+    <TabItem value="tab21" checked>HTML</TabItem>
+    <TabItem value="tab23">React</TabItem>
+  </TabList>
+  <TabPanel value="tab21">        
+    ```html
+    <div class="gi-side-nav-container">
+      <div role="group" aria-label="Dashboard item">
+        <button class="gi-btn gi-side-nav-item gi-side-nav-item-parent gi-side-nav-item-selected" id=":r3:-dashboard" type="button">
+          <div class="gi-side-nav-item-left">
+            <div class="gi-side-nav-item-icon">
+              <span class="gi-block material-symbols-outlined" style="font-size: 24px;">menu</span>
+            </div>
+            <div class="gi-side-nav-item-label">
+              <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">Dashboard</p>
+            </div>
+          </div>
+        </button>
+      </div>
+      <!-- More items follow similarly -->
+    </div>
+    ```
+  </TabPanel>
+  <TabPanel value="tab23">
+    ```tsx
+    import { SideNav, SideNavItem } from '@govie-ds/react';
+
+    <SideNav value="projects-active">
+      <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
+      <SideNavItem parent expandable icon="info" value="team" label="Team">
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
+      </SideNavItem>
+      <SideNavItem parent open expandable value="projects" label="Projects" href="#" icon="attach_file">
+        <SideNavItem value="projects-active" label="Active" href="#" />
+        <SideNavItem href="#" value="projects-archived" label="Archived" />
+      </SideNavItem>
+      <SideNavItem value="settings" label="Settings" icon="settings" />
+    </SideNav>
+    ```
+
+  </TabPanel>
+</Tabs>
+
+## Usage
+
+### SideNav Props
+
+- **value** (optional): The currently selected item's value. Helps manage active state.
+  - Example: `'projects-active'`
+
+### SideNavItem Props
+
+- **value** (required): Unique identifier for the item.
+- **label** (required): The visible label text for the item.
+- **icon** (optional): Icon name (material symbols) to show beside the label.
+- **href** (optional): URL if the item should behave like a link.
+- **parent** (optional): Indicates that the item has children.
+- **expandable** (optional): Allows the item to be expanded/collapsed.
+- **open** (optional): Sets the item to be initially open if expandable.
+
+### Best Practices
+
+#### When to use this component
+
+- When your application requires persistent, structured navigation.
+- To allow users to quickly access main sections or dashboards.
+- Ideal for admin panels, complex tools, or multi-section content.
+
+#### When not to use this component
+
+- For simple single-page navigation.
+- On mobile devices where a drawer or tab-based system might be more appropriate.
+- When the visual hierarchy isn’t deep enough to justify a full side nav.
+
+## Status
+
+<ComponentStatusBlock componentId="side-nav" />

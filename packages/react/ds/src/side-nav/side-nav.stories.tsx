@@ -1,0 +1,77 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { SideNav, SideNavItem } from './side-nav.js';
+
+const meta = {
+  title: 'Navigation/SideNav',
+  component: SideNavItem,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A collapsible side navigation component supporting parent/child relationships and single selected child at a time.',
+      },
+    },
+  },
+} satisfies Meta<typeof SideNavItem>;
+
+export default meta;
+
+export const Basic = {
+  render: () => (
+    <SideNav value="item-1">
+      <SideNavItem value="item-1" label="Overview" parent />
+      <SideNavItem value="item-2" label="Reports" parent />
+      <SideNavItem value="item-3" label="Settings" parent />
+    </SideNav>
+  ),
+};
+
+export const WithIcons = {
+  render: () => (
+    <SideNav value="dashboard">
+      <SideNavItem icon="menu" value="dashboard" label="Dashboard" parent />
+      <SideNavItem icon="apps" value="analytics" label="Analytics" parent />
+      <SideNavItem icon="settings" value="settings" label="Settings" parent />
+    </SideNav>
+  ),
+};
+
+export const ParentChild = {
+  render: () => (
+    <SideNav>
+      <SideNavItem value="team" label="Team" parent expandable>
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
+      </SideNavItem>
+      <SideNavItem value="projects" label="Projects" parent expandable>
+        <SideNavItem value="projects-active" label="Active Projects" />
+        <SideNavItem value="projects-archived" label="Archived Projects" />
+      </SideNavItem>
+    </SideNav>
+  ),
+};
+
+export const FullExample = {
+  render: () => (
+    <SideNav value="projects-active">
+      <SideNavItem value="dashboard" label="Dashboard" icon="apps" />
+      <SideNavItem parent expandable icon="info" value="team" label="Team">
+        <SideNavItem value="team-members" label="Members" />
+        <SideNavItem value="team-permissions" label="Permissions" />
+      </SideNavItem>
+      <SideNavItem
+        parent
+        open
+        expandable
+        value="projects"
+        label="Projects"
+        href="#"
+        icon="attach_file"
+      >
+        <SideNavItem value="projects-active" label="Active" href="#" />
+        <SideNavItem href="#" value="projects-archived" label="Archived" />
+      </SideNavItem>
+      <SideNavItem value="settings" label="Settings" icon="settings" />
+    </SideNav>
+  ),
+};
