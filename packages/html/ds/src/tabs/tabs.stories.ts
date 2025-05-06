@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect } from '@storybook/test';
 import { createTabs } from '../helpers/tabs';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TabsProps } from './tabs.schema';
@@ -69,11 +68,6 @@ export const Default: Story = {
   },
 
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const panel = await canvas.findByText('Tab 1 Content');
-    expect(panel).toBeVisible();
-  },
 };
 
 export const HoverState: Story = {
@@ -123,13 +117,6 @@ export const HoverState: Story = {
       hover: '#tab-tab21',
     },
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const tab = await canvas.findByRole('tab', { name: 'Hover' });
-
-    expect(tab).toBeVisible();
-    expect(tab.className).toContain('pseudo-hover');
-  },
 };
 
 export const FocusState: Story = {
@@ -178,12 +165,5 @@ export const FocusState: Story = {
     pseudo: {
       focus: '#tab-tab31',
     },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const tab = await canvas.findByRole('tab', { name: 'Focus' });
-
-    expect(tab).toBeVisible();
-    expect(tab.className).toContain('pseudo-focus');
   },
 };

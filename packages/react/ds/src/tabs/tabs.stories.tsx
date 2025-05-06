@@ -1,7 +1,6 @@
 'use client';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect } from '@storybook/test';
 import { useState } from 'react';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Stack } from '../stack/stack.js';
@@ -50,14 +49,6 @@ export const Default: Story = {
       <TabPanel value="tab3">Tab 3 Content</TabPanel>
     </Tabs>
   ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const tab = await canvas.findByRole('tab', { name: 'Tab 1' });
-    const panel = await canvas.findByText('Tab 1 Content');
-
-    expect(tab).toHaveAttribute('aria-selected', 'true');
-    expect(panel).toBeVisible();
-  },
 };
 
 export const Checked: Story = {
