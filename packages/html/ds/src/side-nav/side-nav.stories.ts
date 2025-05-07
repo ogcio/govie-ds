@@ -120,12 +120,13 @@ const createSideNav = (_arguments: SideNavProps) => {
   };
 
   for (const item of _arguments.items) {
-    item.primary = item.primary ?? true;
+    item.primary = item.primary ?? false;
     container.append(createSideNavItem(item));
   }
 
   return beautifyHtmlNode(container);
 };
+
 export const Basic: Story = {
   args: {
     items: [
@@ -150,11 +151,10 @@ export const WithIcons: Story = {
         value: 'dashboard',
         label: 'Dashboard',
         icon: 'menu',
-        primary: true,
         selected: true,
       },
-      { value: 'analytics', label: 'Analytics', icon: 'apps', primary: true },
-      { value: 'settings', label: 'Settings', icon: 'settings', primary: true },
+      { value: 'analytics', label: 'Analytics', icon: 'apps' },
+      { value: 'settings', label: 'Settings', icon: 'settings' },
     ],
   },
   render: (_arguments) => createSideNav(_arguments),
@@ -211,7 +211,7 @@ export const ParentChild: Story = {
 export const FullExample: Story = {
   args: {
     items: [
-      { value: 'dashboard', label: 'Dashboard', icon: 'apps', primary: true },
+      { value: 'dashboard', label: 'Dashboard', primary: true },
       {
         primary: true,
         expandable: true,
@@ -245,7 +245,7 @@ export const FullExample: Story = {
           },
         ],
       },
-      { value: 'settings', label: 'Settings', icon: 'settings', primary: true },
+      { value: 'settings', label: 'Settings', primary: true },
     ],
   },
   render: (_arguments) => createSideNav(_arguments),

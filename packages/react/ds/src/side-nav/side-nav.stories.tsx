@@ -29,9 +29,9 @@ export const Basic = {
 export const WithIcons = {
   render: () => (
     <SideNav value="dashboard">
-      <SideNavItem icon="menu" value="dashboard" label="Dashboard" primary />
-      <SideNavItem icon="apps" value="analytics" label="Analytics" primary />
-      <SideNavItem icon="settings" value="settings" label="Settings" primary />
+      <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
+      <SideNavItem icon="apps" value="analytics" label="Analytics" />
+      <SideNavItem icon="settings" value="settings" label="Settings" />
     </SideNav>
   ),
 };
@@ -62,7 +62,7 @@ export const ParentChild = {
 export const FullExample = {
   render: () => (
     <SideNav value="projects-active">
-      <SideNavItem primary value="dashboard" label="Dashboard" icon="apps" />
+      <SideNavItem primary value="dashboard" label="Dashboard" />
       <SideNavItem primary expandable value="team" label="Team">
         <SideNavItem secondary value="team-members" label="Members" />
         <SideNavItem secondary value="team-permissions" label="Permissions" />
@@ -88,7 +88,7 @@ export const FullExample = {
           label="Archived"
         />
       </SideNavItem>
-      <SideNavItem primary value="settings" label="Settings" icon="settings" />
+      <SideNavItem primary value="settings" label="Settings" />
     </SideNav>
   ),
 };
