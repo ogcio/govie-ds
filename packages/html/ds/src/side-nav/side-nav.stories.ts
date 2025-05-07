@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from '@storybook/test';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { SideNavItemProps, SideNavProps } from './types';
 
@@ -125,7 +126,6 @@ const createSideNav = (_arguments: SideNavProps) => {
 
   return beautifyHtmlNode(container);
 };
-
 export const Basic: Story = {
   args: {
     items: [
@@ -135,6 +135,12 @@ export const Basic: Story = {
     ],
   },
   render: (_arguments) => createSideNav(_arguments),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const selected = canvas.getByRole('group', { name: /Overview item/i });
+    expect(selected).toBeInTheDocument();
+    expect(selected.querySelector('.gi-side-nav-item-selected')).toBeTruthy();
+  },
 };
 
 export const WithIcons: Story = {
@@ -152,6 +158,11 @@ export const WithIcons: Story = {
     ],
   },
   render: (_arguments) => createSideNav(_arguments),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const icon = canvas.getAllByTestId('govie-icon')[0];
+    expect(icon).toHaveTextContent('menu');
+  },
 };
 
 export const ParentChild: Story = {
@@ -188,6 +199,13 @@ export const ParentChild: Story = {
     ],
   },
   render: (_arguments) => createSideNav(_arguments),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const parent = canvas.getByRole('group', { name: /Team dropdown/i });
+    expect(parent).toBeInTheDocument();
+    const child = within(parent).getByText('Members');
+    expect(child).toBeInTheDocument();
+  },
 };
 
 export const FullExample: Story = {
@@ -231,4 +249,12 @@ export const FullExample: Story = {
     ],
   },
   render: (_arguments) => createSideNav(_arguments),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const active = canvas.getByRole('group', { name: /Active item/i });
+    expect(active.querySelector('.gi-side-nav-item-selected')).toBeTruthy();
+
+    const projects = canvas.getByRole('group', { name: /Projects dropdown/i });
+    expect(projects.querySelector('.gi-side-nav-expandable-icon')).toBeTruthy();
+  },
 };
