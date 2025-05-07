@@ -21,7 +21,8 @@ export const SideNavItem: React.FC<
   PropsWithChildren<SideNavItemProps> & { open?: boolean }
 > = ({
   children,
-  parent,
+  primary,
+  secondary,
   expandable,
   label,
   value,
@@ -69,7 +70,7 @@ export const SideNavItem: React.FC<
   };
 
   const itemId = `${navId}-${value}`;
-  const showExpandableIcon = parent && expandable;
+  const showExpandableIcon = primary && expandable;
 
   const isNavigable = href !== undefined;
 
@@ -99,18 +100,19 @@ export const SideNavItem: React.FC<
   return (
     <div
       role="group"
-      aria-label={`${label} ${parent && expandable ? 'dropdown' : 'item'}`}
+      aria-label={`${label} ${primary && expandable ? 'dropdown' : 'item'}`}
     >
       {isNavigable ? (
         <a
           href={href}
           className={cn('gi-btn gi-side-nav-item', {
             'gi-side-nav-item-selected': isSelected,
-            'gi-side-nav-item-parent': parent,
+            'gi-side-nav-item-primary': primary,
+            'gi-side-nav-item-secondary': secondary,
           })}
           id={itemId}
           onClick={() => {
-            if (parent && expandable) {
+            if (primary && expandable) {
               handleExpandCollapse();
             }
             handleSelection();
@@ -122,7 +124,7 @@ export const SideNavItem: React.FC<
         <button
           onClick={(event) => {
             event.preventDefault();
-            if (parent && expandable) {
+            if (primary && expandable) {
               handleExpandCollapse();
             } else {
               handleSelection();
@@ -130,7 +132,8 @@ export const SideNavItem: React.FC<
           }}
           className={cn('gi-btn gi-side-nav-item', {
             'gi-side-nav-item-selected': isSelected,
-            'gi-side-nav-item-parent': parent,
+            'gi-side-nav-item-primary': primary,
+            'gi-side-nav-item-secondary': secondary,
           })}
           id={itemId}
         >

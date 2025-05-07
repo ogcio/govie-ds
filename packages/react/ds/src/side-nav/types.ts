@@ -4,7 +4,8 @@ export type SideNavItemProps = {
   value: string;
   label: string;
   href?: string;
-  parent?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
   open?: boolean;
   expandable?: boolean;
   icon?: IconId;
