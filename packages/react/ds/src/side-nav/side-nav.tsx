@@ -8,9 +8,9 @@ import React, {
 } from 'react';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
+import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { SideNavItemProps, SideNavProps } from './types.js';
-import { Link } from '../link/link.js';
 
 type SideNavContextType = {
   openItemIds: string[];
@@ -167,9 +167,7 @@ export const SideNavItem: React.FC<
             className={itemClassName}
             onClick={handleClick}
           >
-            {hrefComponent ? (
-              hrefComponent
-            ) : (
+            {hrefComponent || (
               <ItemContent
                 icon={icon}
                 label={label}
