@@ -11,6 +11,7 @@ import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { SideNavItemProps, SideNavProps } from './types.js';
+import { Button } from '../button/button.js';
 
 type SideNavContextType = {
   openItemIds: string[];
@@ -144,7 +145,7 @@ export const SideNavItem: React.FC<
       'gi-side-nav-item-secondary': secondary,
     });
 
-    const buttonClassName = cn('gi-btn gi-side-nav-item', {
+    const buttonClassName = cn('gi-side-nav-item', {
       'gi-side-nav-item-selected': isSelected,
       'gi-side-nav-item-primary': primary,
       'gi-side-nav-item-secondary': secondary,
@@ -163,6 +164,7 @@ export const SideNavItem: React.FC<
             asButton={{
               variant: 'flat',
               appearance: 'dark',
+              size: 'medium',
             }}
             className={itemClassName}
             onClick={handleClick}
@@ -177,7 +179,10 @@ export const SideNavItem: React.FC<
             )}
           </Link>
         ) : (
-          <button
+          <Button
+            variant="flat"
+            appearance="dark"
+            size="medium"
             onClick={handleButtonClick}
             className={buttonClassName}
             id={itemId}
@@ -188,7 +193,7 @@ export const SideNavItem: React.FC<
               showExpandableIcon={showExpandableIcon}
               isOpen={isOpen}
             />
-          </button>
+          </Button>
         )}
 
         {expandable && (

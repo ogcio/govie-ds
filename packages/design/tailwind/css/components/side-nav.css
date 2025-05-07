@@ -3,7 +3,7 @@
 }
 
 .gi-side-nav-item {
-  @apply gi-my-1 gi-border-transparent gi-relative gi-z-1 gi-px-3 gi-py-2 gi-flex gi-cursor-pointer gi-rounded-[unset] 
+  @apply gi-mt-1 !gi-h-[unset] gi-border-transparent gi-relative gi-z-1 gi-px-3 gi-py-2 gi-flex gi-cursor-pointer gi-rounded-[unset] 
     gi-justify-between gi-w-full hover:gi-bg-gray-200;
 }
 
