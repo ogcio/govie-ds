@@ -4,6 +4,7 @@ export type SideNavItemProps = {
   value: string;
   label: string;
   href?: string;
+  hrefComponent?: React.ReactNode;
   primary?: boolean;
   secondary?: boolean;
   open?: boolean;
