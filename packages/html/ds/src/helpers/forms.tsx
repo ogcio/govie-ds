@@ -53,20 +53,28 @@ export const createFormField = (formFieldProps: {
   formField.className =
     `${formFieldProps.error ? 'gi-error-state' : ''}`.trim();
 
+  const wrapper = document.createElement('div');
+  wrapper.className = 'gi-pb-3 gi-flex gi-flex-col gi-gap-1';
+
   if (formFieldProps.label) {
-    const label = createLabel(formFieldProps.label);
-    formField.append(label);
+    const label = createLabel({
+      ...formFieldProps.label,
+      className: 'gi-font-bold',
+    });
+    wrapper.append(label);
   }
 
   if (formFieldProps.hint) {
     const hint = createHintText(formFieldProps.hint);
-    formField.append(hint);
+    wrapper.append(hint);
   }
 
   if (formFieldProps.error) {
     const error = createErrorText(formFieldProps.error);
-    formField.append(error);
+    wrapper.append(error);
   }
+
+  formField.append(wrapper);
 
   return formField;
 };
@@ -189,18 +197,15 @@ export const createTextInput = (arguments_: TextInputProps) => {
 };
 
 export const createRadio = (arguments_: RadioProps) => {
-  let widthClass = '';
-  let sizeClass = '';
+  let widthClass = 'gi-w-8';
+  let sizeClass = 'gi-input-radio-medium';
 
   if (arguments_.size == 'lg') {
-    widthClass = 'gi-w-11 gi-h-11';
+    widthClass = 'gi-w-11';
     sizeClass = 'gi-input-radio-large';
   } else if (arguments_.size == 'sm') {
-    widthClass = 'gi-w-6 gi-h-6';
+    widthClass = 'gi-w-6';
     sizeClass = 'gi-input-radio-small';
-  } else {
-    widthClass = 'gi-w-8 gi-h-8';
-    sizeClass = 'gi-input-radio-medium';
   }
 
   const container = document.createElement('div');
@@ -271,14 +276,15 @@ export const createRadio = (arguments_: RadioProps) => {
     spacerContainer.append(spacer);
     extraContainer.append(spacerContainer);
 
-    const inputContainer = document.createElement('div');
-    inputContainer.dataset.conditionalContainer = arguments_.dataElement;
-    inputContainer.className = arguments_.checked ? 'gi-block' : 'gi-hidden';
+    const indexContainer = document.createElement('div');
+    indexContainer.dataset.conditionalContainer = arguments_.dataElement;
+    indexContainer.className = arguments_.checked ? 'gi-block' : 'gi-hidden';
     const textInput = createTextInput({ ...arguments_.conditionalInput });
-    inputContainer.append(textInput);
+    indexContainer.append(textInput);
 
-    extraContainer.append(inputContainer);
+    extraContainer.append(indexContainer);
     container.append(extraContainer);
   }
+
   return container;
 };

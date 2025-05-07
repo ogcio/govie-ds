@@ -22,6 +22,7 @@ export type RadioProps = {
   checked?: boolean;
   name?: string;
   conditionalInput?: TextInputProps;
+  slot?: HTMLElement;
 };
 
 export type RadioGroupProps = {

@@ -114,6 +114,9 @@ export const createIconButton = (arguments_: IconButtonProps) => {
 
   const iconSize = arguments_.size === 'small' ? 'sm' : 'md';
   const icon = createIcon({ ...arguments_.icon, size: iconSize });
+
+  component.disabled = !!arguments_.disabled;
+
   component.append(icon);
 
   return component;
