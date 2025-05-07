@@ -6,12 +6,12 @@ import React, {
   useCallback,
   memo,
 } from 'react';
+import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { SideNavItemProps, SideNavProps } from './types.js';
-import { Button } from '../button/button.js';
 
 type SideNavContextType = {
   openItemIds: string[];
