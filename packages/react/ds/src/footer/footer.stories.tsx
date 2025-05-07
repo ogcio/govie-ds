@@ -355,3 +355,75 @@ export const MinimalFooter: Story = {
     ),
   },
 };
+
+export const GovieFooter: Story = {
+  args: {
+    primarySlot: (
+      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+        <div className="gi-col-span-6">
+          <ul className="gi-list gi-space-y-2">
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Circulars
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Consultations
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Directory
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Policies
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Publications
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-6">
+          <ul className="gi-list gi-space-y-2">
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                About gov.ie
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Accessibility
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Latest financial accounts
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Sell to Government
+              </a>
+            </li>
+            <li>
+              <a href="#" className="gi-link gi-link-inherit">
+                Who Does What
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+};

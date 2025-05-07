@@ -4,6 +4,11 @@ import { TooltipProps } from './types';
 
 const meta: Meta<TooltipProps> = {
   title: 'Application/Tooltip',
+  decorators: (story) => `
+    <div class="gi-flex gi-justify-center gi-my-20 gi-mx-20">
+      ${story()}
+    </div>
+  `,
 };
 
 export default meta;
@@ -45,7 +50,7 @@ export const Default: Story = {
       data-module="gieds-button"
       class="gi-btn gi-btn-primary gi-btn-regular"
     >
-      Default (Hover me)
+      Hover me (Top)
     </button>`,
   },
   render: (arguments_) => createElement(arguments_),
@@ -123,7 +128,7 @@ export const RightPosition: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
-export const WithLongLabel: Story = {
+export const WithLongText: Story = {
   args: {
     text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
     position: 'right',
@@ -135,24 +140,6 @@ export const WithLongLabel: Story = {
         class="gi-btn gi-btn-primary gi-btn-regular"
       >
         Hover me (Right)
-      </button>
-    `,
-  },
-  render: (arguments_) => createElement(arguments_),
-};
-
-export const WithAriaAttribute: Story = {
-  args: {
-    text: 'This is a tooltip at the top.',
-    position: 'top',
-    content: `
-      <button
-        data-testid="govieButton-top-primary-medium-notDisabled"
-        data-element="button-container"
-        data-module="gieds-button"
-        class="gi-btn gi-btn-primary gi-btn-regular"
-      >
-        Hover me (Top)
       </button>
     `,
   },

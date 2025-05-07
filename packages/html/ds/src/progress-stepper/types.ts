@@ -11,12 +11,21 @@ export type StepItemProps = {
   defaultOpen?: boolean;
 };
 
+export const ProgressStepperIndicator = {
+  Hashtag: 'hashtag',
+  Number: 'number',
+} as const;
+
+export type ProgressStepperIndicatorType =
+  (typeof ProgressStepperIndicator)[keyof typeof ProgressStepperIndicator];
+
 export type ProgressStepperProps = {
   children: StepItemProps[];
   currentStepIndex?: number;
   orientation?: Orientation;
   completeAll?: boolean;
   dataTestId?: string;
+  indicator?: ProgressStepperIndicatorType;
 };
 
 export type InnerStepProps = {

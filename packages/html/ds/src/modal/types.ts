@@ -24,3 +24,7 @@ export type ModalProps = {
   dataTestId?: string;
   size?: ModalSize;
 };
+
+export type ModalWrapperPropsExtension = ModalWrapperProps & {
+  triggerButton: ButtonProps;
+};
