@@ -2,11 +2,55 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { createButton, createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { createLink } from '../helpers/links';
+import { createStack } from '../helpers/stack';
+import { createParagraph } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { ToastProps } from './types';
 
 const meta: Meta<ToastProps> = {
   title: 'Application/Toast',
+  argTypes: {
+    variant: {
+      control: 'radio',
+      description: 'Specify the variant of the toast component',
+      options: ['info', 'danger', 'success', 'warning'],
+    },
+
+    animation: {
+      control: 'radio',
+      description: 'Specify the toast animation."',
+      options: ['fadeinup', 'fadeinleft', 'fadeinright'],
+    },
+    title: {
+      control: 'text',
+      description: 'Specify the title of the toast component',
+    },
+    dismissible: {
+      control: 'boolean',
+      description: 'Specify if the toast is dismissible',
+    },
+    description: {
+      control: 'text',
+      description: 'Specify the content in the toast component',
+    },
+    action: {
+      control: 'object',
+      description: 'Specify a link for the toast component',
+    },
+    duration: {
+      control: 'number',
+      description: 'Set the duration of the toast appearing on screen',
+    },
+    position: {
+      control: 'object',
+      table: {
+        type: {
+          summary: `x: ['left', 'center', 'right'] y: ['top', 'center', 'bottom']`,
+        },
+      },
+      description: 'Specify the position of the toast',
+    },
+  },
 };
 
 export default meta;
@@ -38,6 +82,10 @@ const createToast = (arguments_: ToastProps) => {
 
   const toast = document.createElement('div');
   toast.className = 'gi-hidden';
+  if (arguments_.id) {
+    toast.setAttribute('id', arguments_.id);
+  }
+  toast.dataset.duration = arguments_.duration?.toString();
 
   const dsToast = document.createElement('div');
 
@@ -58,8 +106,7 @@ const createToast = (arguments_: ToastProps) => {
   container.append(title);
 
   if (arguments_.description) {
-    const content = document.createElement('p');
-    content.textContent = arguments_.description;
+    const content = createParagraph({ content: arguments_.description });
     container.append(content);
   }
 
@@ -87,6 +134,7 @@ const createToast = (arguments_: ToastProps) => {
       icon: {
         icon: 'close',
       },
+      id: `toast-dismissible-${arguments_.id}`,
     });
     dsToast.append(dismissButton);
   }
@@ -95,20 +143,22 @@ const createToast = (arguments_: ToastProps) => {
   return toast;
 };
 
-const createTrigger = (arguments_: ToastProps) => {
+const createTrigger = (arguments_: ToastProps, label: string) => {
   const trigger = document.createElement('div');
   trigger.role = 'alert';
   trigger.dataset.module = 'gieds-toast';
+  const position = arguments_.position;
 
   if (arguments_.duration) {
     trigger.dataset.duration = arguments_.duration.toString();
   }
-  if (arguments_.position) {
-    trigger.dataset['position-x'] = arguments_.position?.x;
-    trigger.dataset['position-y'] = arguments_.position?.y;
+  if (position) {
+    trigger.dataset.position = `${position.y}-${position.x}`;
+    trigger.dataset.positionX = position?.x;
+    trigger.dataset.positionY = position?.y;
   }
 
-  const button = createButton({ content: 'Trigger Toast' });
+  const button = createButton({ content: label || 'Trigger Toast' });
   trigger.append(button);
   return trigger;
 };
@@ -117,7 +167,7 @@ const createElement = (arguments_: ToastProps, hasTrigger?: boolean) => {
   const container = document.createElement('div');
 
   if (hasTrigger) {
-    const trigger = createTrigger(arguments_);
+    const trigger = createTrigger(arguments_, arguments_.triggerButtonLabel);
     container.append(trigger);
   }
 
@@ -128,59 +178,17 @@ const createElement = (arguments_: ToastProps, hasTrigger?: boolean) => {
 
 export const Default: Story = {
   args: {
-    title: 'This is a Toast',
+    title: 'Default',
     description: 'This is some content',
-  },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
-};
-
-export const Success: Story = {
-  args: {
-    title: 'This is a Toast',
-    description: 'This is some content',
-    variant: 'success',
-  },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
-};
-
-export const Warning: Story = {
-  args: {
-    title: 'This is a Toast',
-    description: 'This is some content',
-    variant: 'warning',
-  },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    title: 'This is a Toast',
-    description: 'This is some content',
-    variant: 'danger',
-  },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
-};
-
-export const WithTrigger: Story = {
-  args: {
-    title: 'Toast Triggered',
-    description: 'This is some content',
+    animation: 'fadeinup',
+    variant: 'info',
+    duration: 5000,
+    position: {
+      x: 'right',
+      y: 'top',
+    },
+    triggerButtonLabel: 'Trigger Toast',
+    id: 'toast-1',
   },
   render: (arguments_) => createElement(arguments_, true),
 };
@@ -193,44 +201,116 @@ export const WithAction: Story = {
       href: '#',
       label: 'Go to Link',
     },
+    duration: 5000,
+    triggerButtonLabel: 'Show Toast with Action',
+    id: 'toast-2',
   },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
+  render: (arguments_) => createElement(arguments_, true),
 };
 
 export const Dismissible: Story = {
   args: {
+    variant: 'info',
     title: 'Dismissible',
     description: 'This is some content',
     dismissible: true,
+    triggerButtonLabel: 'Show Dismissible Toast',
+    duration: 5000,
+    id: 'toast-3',
   },
-  render: (arguments_) => {
-    const component = createToast(arguments_);
-    component.className = '';
-    return beautifyHtmlNode(component);
-  },
+  render: (arguments_) => createElement(arguments_, true),
 };
 
-export const withLongerDuration: Story = {
+export const WithLongerDuration: Story = {
   args: {
-    title: 'WithDuration',
+    title: 'With Duration',
     description: 'This is some content',
     duration: 8000,
+    triggerButtonLabel: 'Show Toast with Longer Duration',
+    id: 'toast-4',
   },
-  render: (arguments_) => createElement(arguments_),
+  render: (arguments_) => createElement(arguments_, true),
 };
 
-export const withPositionChange: Story = {
+export const WithPositionChange: Story = {
   args: {
-    title: 'withPositionChange',
+    title: 'With Position Change',
     description: 'This is some content',
-    position: {
-      x: 'left',
-      y: 'bottom',
+    position: { x: 'left', y: 'bottom' },
+    triggerButtonLabel: 'Show Toast at Bottom Left',
+  },
+  render: (arguments_) => createElement(arguments_, true),
+};
+
+export const TabletView: Story = {
+  args: {
+    title: 'Tablet Position Change',
+    description: 'This toast appears on a tablet',
+    position: { x: 'right', y: 'bottom' },
+    triggerButtonLabel: 'Show Toast at Bottom Left',
+  },
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'ipad',
     },
   },
-  render: (arguments_) => createElement(arguments_),
+  render: (arguments_) => createElement(arguments_, true),
+};
+
+export const MobileView: Story = {
+  args: {
+    title: 'Mobile Position Change',
+    description: 'This toast appears on a mobile',
+    position: { x: 'right', y: 'bottom' },
+    triggerButtonLabel: 'Show Toast full width (Mobile)',
+  },
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  render: (arguments_) => createElement(arguments_, true),
+};
+
+export const AllVariants: Story = {
+  render: () => {
+    const common = {
+      title: 'Default',
+      description: 'Toast description',
+      position: { x: 'right', y: 'bottom' },
+    };
+    const infoVariant = {
+      variant: 'info',
+      triggerButtonLabel: 'Info',
+      ...common,
+    };
+    const successVariant = {
+      variant: 'success',
+      triggerButtonLabel: 'Success',
+      ...common,
+    };
+    const dangerVariant = {
+      variant: 'danger',
+      triggerButtonLabel: 'Danger',
+      ...common,
+    };
+    const warningVariant = {
+      variant: 'warning',
+      triggerButtonLabel: 'Warning',
+      ...common,
+    };
+
+    return beautifyHtmlNode(
+      createStack(
+        {
+          gap: 4,
+        },
+        [infoVariant, successVariant, dangerVariant, warningVariant].map(
+          (props: any) => createElement(props, true),
+        ),
+      ),
+    );
+  },
 };

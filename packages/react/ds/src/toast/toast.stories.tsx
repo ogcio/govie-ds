@@ -7,6 +7,7 @@ import {
 } from '@storybook/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
+import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
 
 const meta: Meta<typeof Toast> = {
@@ -79,23 +80,6 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const WithSlotAction: Story = {
-  args: {
-    title: 'With Action',
-    description: 'This is some content',
-    slotAction: <a href="#">Go to Link</a>,
-    duration: 5000,
-  },
-  render: (props) => (
-    <>
-      <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast with Action
-      </Button>
-    </>
-  ),
-};
-
 export const Default: Story = {
   args: {
     title: 'Default',
@@ -112,6 +96,23 @@ export const Default: Story = {
     <>
       <ToastProvider />
       <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
+};
+
+export const WithSlotAction: Story = {
+  args: {
+    title: 'With Action',
+    description: 'This is some content',
+    slotAction: <a href="#">Go to Link</a>,
+    duration: 5000,
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>
+        Show Toast with Action
+      </Button>
     </>
   ),
 };
@@ -228,4 +229,51 @@ export const MobileView: Story = {
       </Button>
     </>
   ),
+};
+
+export const AllVariants: Story = {
+  render: (props) => {
+    const common = {
+      title: 'Default',
+      description: 'Toast description',
+      position: { x: 'right', y: 'bottom' },
+    };
+    const infoVariant = {
+      variant: 'info',
+      triggerButtonLabel: 'Info',
+      ...common,
+    };
+    const successVariant = {
+      variant: 'success',
+      triggerButtonLabel: 'Success',
+      ...common,
+    };
+    const dangerVariant = {
+      variant: 'danger',
+      triggerButtonLabel: 'Danger',
+      ...common,
+    };
+    const warningVariant = {
+      variant: 'warning',
+      triggerButtonLabel: 'Warning',
+      ...common,
+    };
+    return (
+      <>
+        <ToastProvider />
+        <Stack gap={4}>
+          {[infoVariant, successVariant, dangerVariant, warningVariant].map(
+            (props: any, index: number) => (
+              <Button
+                key={`${props.triggerButtonLabel}_${index}`}
+                onClick={() => toaster.create(props)}
+              >
+                {props.triggerButtonLabel}
+              </Button>
+            ),
+          )}
+        </Stack>
+      </>
+    );
+  },
 };

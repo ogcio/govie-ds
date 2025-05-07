@@ -22,4 +22,6 @@ export type ToastProps = {
   duration?: number;
   position?: ToastPosition;
   dataTestid?: string;
+  triggerButtonLabel: string;
+  id?: string;
 };
