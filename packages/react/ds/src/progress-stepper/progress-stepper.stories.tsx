@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../button/button.js';
-import { FileUpload } from '../file-upload/file-upload.js';
 import { FormField } from '../forms/form-field.js';
 import { Heading } from '../heading/heading.js';
+import { InputFile } from '../input-file/input-file.js';
 import { InputText } from '../input-text/input-text.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Select, SelectItem } from '../select/select.js';
@@ -24,12 +24,34 @@ export const Default: Story = {
   argTypes: {
     currentStepIndex: {
       control: 'number',
-      type: { name: 'number', required: true },
+      type: { name: 'number', required: false },
       description: 'The initial active step (zero-based index).',
+      defaultValue: 0,
+    },
+    orientation: {
+      control: { type: 'radio' },
+      options: ['horizontal', 'vertical'],
+      type: { name: 'string', required: false },
+      description: 'Orientation of the stepper',
+      defaultValue: 'horizontal',
     },
     completeAll: {
+      control: 'boolean',
       type: { name: 'boolean', required: false },
-      description: 'Complete all steps',
+      description: 'Complete all steps regardless of progress',
+      defaultValue: false,
+    },
+    dataTestId: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Custom data-testid for test selectors',
+    },
+    indicator: {
+      control: { type: 'select' },
+      options: ['number', 'hashtag'],
+      type: { name: 'string', required: false },
+      description: 'Indicator style for steps (number or hashtag)',
+      defaultValue: 'hashtag',
     },
   },
   args: {
@@ -325,7 +347,7 @@ export const WithFormContentStepVertical: Story = {
                     text: 'Document Upload',
                   }}
                 >
-                  <FileUpload accept="*/*" id="file-upload-id" />
+                  <InputFile accept="*/*" id="file-upload-id" />
                 </FormField>
               </Stack>
             </StepItem>
@@ -412,11 +434,11 @@ export const WithVerticalLongText: Story = {
   args: {
     currentStepIndex: 1,
     children: [
-      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is the first step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
+      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
     ],
     orientation: 'vertical',
   },
