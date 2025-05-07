@@ -1,5 +1,6 @@
+'use client';
 import { cn } from '@/lib/cn';
-import { GovieLink } from './custom-link';
+import { SideNav, SideNavItem } from '@govie-ds/react';
 
 export type SideNavigationItem = {
   id: string;
@@ -12,41 +13,37 @@ export type SideNavigationItem = {
 export function SideNavigation({
   items,
   onSelect = () => {},
+  value,
+  className,
 }: {
   items: SideNavigationItem[];
   onSelect?: (id: string) => void;
+  value?: string;
+  className?: string;
 }) {
   return (
-    <ul className="flex flex-col gap-lg [&_ul]:ml-lg whitespace-nowrap">
+    <SideNav className={cn(className)} onChange={onSelect} value={value}>
       {items.map((item) => (
-        <li
+        <SideNavItem
           key={item.id}
-          className={cn(
-            'pl-md flex flex-col gap-md justify-center',
-            item.isActive ? 'border-gold-400' : 'border-transparent',
-            item.href ? 'border-l-md' : null,
-          )}
+          value={item.id}
+          label={item.name}
+          href={item.href}
+          primary
+          expandable={!!item.children?.length}
+          open
         >
-          {item.href ? (
-            <GovieLink
-              href={item.href}
-              onClick={() => onSelect(item.id)}
-              className={cn(
-                'py-sm text-blue-700 text-sm hover:text-blue-800',
-                'focus:bg-yellow-400',
-                'hover:underline hover:underline-offset-md hover:underline-thickness-lg',
-              )}
-            >
-              {item.name}
-            </GovieLink>
-          ) : (
-            <p className="text-gray-800 text-md my-md">{item.name}</p>
-          )}
-          {item.children && item.children.length > 0 ? (
-            <SideNavigation items={item.children} onSelect={onSelect} />
-          ) : null}
-        </li>
+          {item.children?.map((child) => (
+            <SideNavItem
+              key={child.id}
+              value={child.id}
+              label={child.name}
+              href={child.href}
+              secondary
+            />
+          ))}
+        </SideNavItem>
       ))}
-    </ul>
+    </SideNav>
   );
 }
