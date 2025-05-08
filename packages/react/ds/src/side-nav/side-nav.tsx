@@ -196,7 +196,7 @@ export const SideNavItem: React.FC<
           </Button>
         )}
 
-        {expandable && (
+        {expandable && primary && (
           <div
             className={cn(isOpen ? 'gi-side-nav-item-content' : 'gi-hidden')}
           >

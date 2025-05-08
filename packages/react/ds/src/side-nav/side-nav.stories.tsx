@@ -91,4 +91,12 @@ export const FullExample = {
       <SideNavItem primary value="settings" label="Settings" />
     </SideNav>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example showcases a fully expanded side navigation component. Several items include `href` links, which define their navigation targets. These links can be further customized using the `hrefComponent` prop for advanced routing scenarios (e.g., with React Router or Next.js Link).',
+      },
+    },
+  },
 };
