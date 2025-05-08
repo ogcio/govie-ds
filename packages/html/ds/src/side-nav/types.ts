@@ -9,7 +9,8 @@ export type SideNavItemProps = {
   icon?: string;
   expandable?: boolean;
   selected?: boolean;
-  parent?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
   open?: boolean;
   children?: SideNavItemProps[];
 };
