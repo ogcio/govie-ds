@@ -21,7 +21,7 @@ export const BreadcrumbLink = ({
     href={href}
     aria-label={`${children} page`}
     size="sm"
-    className="gi-breadcrumbs-link "
+    className="gi-breadcrumbs-link"
     {...ariaProps}
   >
     {children}

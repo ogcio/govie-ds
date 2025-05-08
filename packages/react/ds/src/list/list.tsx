@@ -10,6 +10,7 @@ export type ListProps = {
   items: Array<string | React.ReactElement>;
   spaced?: boolean;
   type?: ListType;
+  dataTestid?: string;
 } & React.HTMLAttributes<HTMLUListElement>;
 
 const getListClass = ({ spaced, type }: Omit<ListProps, 'items'>) => {
@@ -47,6 +48,7 @@ export function List({
     <ul
       role={type === ListTypeEnum.None ? 'list' : undefined}
       className={getListClass({ spaced, type })}
+      data-testId={props.dataTestid}
       {...props}
     >
       {items.map((item, index) => {

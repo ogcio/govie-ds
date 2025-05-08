@@ -5,7 +5,7 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { ErrorSize, ErrorTextProps } from './types';
 
 const meta: Meta<ErrorTextProps> = {
-  title: 'Typography/ErrorText',
+  title: 'Form/ErrorText',
 };
 
 export default meta;

@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createIcon } from '../helpers/icons';
-import { createLink } from '../helpers/links';
-import { beautifyHtmlNode } from '../storybook/storybook';
+import { createBreadcrumbs } from '../helpers/breadcrumbs';
 import { BreadcrumbsProps } from './breadcrumbs.schema';
 
 const meta: Meta<BreadcrumbsProps> = {
@@ -11,54 +9,6 @@ const meta: Meta<BreadcrumbsProps> = {
 
 export default meta;
 type Story = StoryObj<BreadcrumbsProps>;
-
-const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
-  const container = document.createElement('div');
-  const nav = document.createElement('nav');
-  nav.className = 'gi-breadcrumbs';
-  nav.dataset.module = 'gieds-breadcrumbs';
-  nav.dataset.element = 'breadcrumbs-container';
-
-  const ol = document.createElement('ol');
-  ol.role = 'list';
-
-  for (const navItem of arguments_.navItems) {
-    const li = document.createElement('li');
-    li.role = 'listitem';
-
-    let element;
-    if (navItem.ellipsis) {
-      const icon = createIcon({
-        icon: 'more_horiz',
-        className: 'gi-text-gray-700',
-      });
-      element = document.createElement('div');
-      element.ariaHidden = 'true';
-      element.append(icon);
-    } else if (navItem.currentPage) {
-      element = createLink({
-        noColor: true,
-        href: navItem.href,
-        content: navItem.label!,
-      }) as HTMLAnchorElement;
-      element.ariaCurrent = 'page';
-    } else {
-      element = createLink({
-        noColor: true,
-        href: navItem.href,
-        content: navItem.label!,
-      });
-    }
-
-    li.append(element);
-    ol.append(li);
-  }
-
-  nav.append(ol);
-  container.append(nav);
-
-  return beautifyHtmlNode(container);
-};
 
 export const Default: Story = {
   args: {
@@ -100,6 +50,14 @@ export const WithoutEllipsis: Story = {
 export const SingleItem: Story = {
   args: {
     navItems: [{ label: 'Back to [Previous Page]', href: '/' }],
+  },
+  render: (arguments_) => createBreadcrumbs(arguments_),
+};
+
+export const WithSingleItemAndIconStart: Story = {
+  args: {
+    iconStart: true,
+    navItems: [{ label: 'Back to [Previous page]', href: '/' }],
   },
   render: (arguments_) => createBreadcrumbs(arguments_),
 };

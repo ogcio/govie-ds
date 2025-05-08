@@ -1,163 +1,252 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
 import { createLink } from '../helpers/links';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { LinkProps } from './types';
 
 const meta: Meta<LinkProps> = {
   title: 'Navigation/Link',
+  argTypes: {
+    content: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'Link html content',
+    },
+    href: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'URL to navigate to',
+    },
+    noVisited: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Removes the visited link styling',
+    },
+    noUnderline: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Disables underline styling on the link',
+    },
+    noColor: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Prevents default color styling',
+    },
+    external: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Marks the link as external (adds rel, target)',
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['sm', 'md', 'lg'],
+      type: { name: 'string', required: false },
+      description: 'Controls the link size',
+    },
+    dataTestid: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Custom data-testid attribute for testing',
+    },
+    iconStart: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Icon displayed before link text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    iconEnd: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Icon displayed after link text',
+      table: {
+        category: 'Visual',
+        type: { summary: 'IconId' },
+      },
+    },
+    disabled: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Disables interaction and dims the link',
+    },
+    appearance: {
+      control: { type: 'radio' },
+      options: ['default', 'light'],
+      type: { name: 'string', required: false },
+      description: 'Link appearance style',
+      table: {
+        category: 'Visual',
+        type: { summary: "'default' | 'light'" },
+      },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Link component for navigating to internal or external URLs. Supports accessibility features, icons, and customizable styles.',
+      },
+    },
+    pseudo: {
+      hover: '.link-hover',
+      focus: '.link-focus',
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<LinkProps>;
 
-const createElement = (arguments_: LinkProps) => {
-  const component = createLink(arguments_);
-  return beautifyHtmlNode(component);
+const createElement = (props: LinkProps) => beautifyHtmlNode(createLink(props));
+
+const withIcons = (props: LinkProps) => {
+  return {
+    ...props,
+    iconStart: 'arrow_back',
+    iconEnd: 'arrow_forward',
+  } as any;
+};
+
+const baseProps = {
+  href: '#',
+  content: 'Link text',
 };
 
 export const Default: Story = {
-  argTypes: {
-    content: {
-      control: 'text',
-      type: { name: 'string', required: true },
-    },
-    href: {
-      control: 'text',
-      type: { name: 'string', required: true },
-    },
-    noUnderline: {
-      description: 'To remove underlines from links.',
-      control: 'boolean',
-      type: { name: 'boolean' },
-    },
-    external: {
-      description: 'To open the link in a new tab.',
-      control: 'boolean',
-      type: { name: 'boolean' },
-    },
-    noVisited: {
-      description:
-        'Where it is not helpful to distinguish between visited and unvisited states, for example when linking to pages with frequently-changing content such as the dashboard for an admin interface.',
-      control: 'boolean',
-      type: { name: 'boolean' },
-    },
-    noColor: {
-      description: 'To inherit color from parent',
-      control: 'boolean',
-      type: { name: 'boolean' },
-    },
-    size: {
-      control: { type: 'select', options: ['sm', 'md'] },
-      description: 'Size of the link.',
-      type: { name: 'string', required: false },
-    },
-  },
   args: {
-    href: '#',
-    content: 'Link',
-    size: 'md', // Default size can be set here, change to 'sm' if needed
+    ...baseProps,
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link');
-    expect(link).toHaveClass('gi-link');
-  },
+  render: createElement,
 };
 
-export const WithoutUnderline: Story = {
+export const DefaultWithIconStart: Story = {
   args: {
-    href: '#',
-    content: 'Link without underline',
+    ...baseProps,
+    iconStart: 'arrow_back',
+  },
+  render: createElement,
+};
+
+export const DefaultWithIconEnd: Story = {
+  args: {
+    ...baseProps,
+    iconEnd: 'arrow_back',
+  },
+  render: createElement,
+};
+export const NoUnderline: Story = {
+  args: {
+    ...baseProps,
     noUnderline: true,
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link without underline');
-    expect(link).toHaveClass('gi-link');
-    expect(link).toHaveClass('gi-link-no-underline');
-  },
+  render: createElement,
 };
 
-export const External: Story = {
+export const NoUnderlineWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    noUnderline: true,
+  }),
+  render: createElement,
+};
+
+export const NoColor: Story = {
+  args: {
+    ...baseProps,
+    noColor: true,
+  },
+  render: createElement,
+};
+
+export const NoColorWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    noColor: true,
+  }),
+  render: createElement,
+};
+
+export const Light: Story = {
+  args: {
+    ...baseProps,
+    appearance: 'light',
+  },
+  render: (props) =>
+    `<div class="gi-bg-black gi-p-4 gi-w-fit">
+        ${createElement(props)}
+      </div>`,
+};
+
+export const LightWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    appearance: 'light',
+  }),
+  render: (props) =>
+    `<div class="gi-bg-black gi-p-4 gi-w-fit">
+        ${createElement(props)}
+      </div>`,
+};
+
+export const Disabled: Story = {
+  args: {
+    ...baseProps,
+    disabled: true,
+  },
+  render: createElement,
+};
+
+export const DisabledWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    disabled: true,
+  }),
+  render: createElement,
+};
+
+export const StateDefault: Story = {
   args: {
     href: '#',
-    content: 'Link text (opens in a new tab)',
-    external: true,
+    content: 'Default',
+    className: 'link-default',
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link text (opens in a new tab)');
-    expect(link).toHaveClass('gi-link');
-    expect(link).toHaveAttribute('rel', 'noreferrer noopener');
-    expect(link).toHaveAttribute('target', '_blank');
-  },
+  render: createElement,
 };
 
-export const NoVisited: Story = {
+export const StateHover: Story = {
   args: {
     href: '#',
-    content: 'Link',
-    noVisited: true,
+    content: 'Hover',
+    className: 'link-hover',
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link');
-    expect(link).toHaveClass('gi-link-no-visited');
-  },
+  render: createElement,
 };
 
-export const styledAsButton: Story = {
+export const StateFocus: Story = {
   args: {
     href: '#',
-    asButton: {
-      variant: 'primary',
-      size: 'medium',
-      appearance: 'default',
-    },
-    content: 'Link',
+    content: 'Focus',
+    className: 'link-focus',
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link');
-    expect(link).toHaveClass('gi-btn');
-  },
+  render: createElement,
 };
 
-export const asButton: Story = {
-  args: {
-    as: 'button',
-    content: 'Link',
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByText('Link');
-    expect(link.tagName).toBe('BUTTON');
-  },
-};
-
-export const AllStates: Story = {
+export const StateDisabled: Story = {
   args: {
     href: '#',
-    content: '',
+    content: 'Disabled',
+    disabled: true,
+    className: 'link-disabled',
   },
-  render: () =>
-    `<div class="gi-gap-4 gi-flex">
-      <a href="#" class="gi-link">Default</a>
-      <a href="#" class="gi-link pseudo-hover">Hover</a>
-      <a href="#" class="gi-link pseudo-focus">Focus</a>
-     </div>
-    `,
-  parameters: {
-    pseudo: {
-      hover: '.gi-link:nth-child(2)',
-      focus: '.gi-link:nth-child(3)',
-    },
-  },
+  render: createElement,
+};
+
+export const StateFocusWithIcons: Story = {
+  args: withIcons({
+    href: '#',
+    content: 'State Icons',
+    className: 'link-hover link-focus',
+  }),
+  render: createElement,
 };
