@@ -11,10 +11,11 @@ type DrawerWrapperPropsExtension = DrawerWrapperProps & {
 };
 
 const meta: Meta<DrawerWrapperPropsExtension> = {
-  decorators: (story) => `
+  decorators: (story) =>
+    `
     <div class="gi-h-[600px]">
       ${story()}
-    </div>`,
+    </div>` as any,
   title: 'Application/Drawer',
 };
 

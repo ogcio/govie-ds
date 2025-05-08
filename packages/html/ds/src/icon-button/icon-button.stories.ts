@@ -6,6 +6,12 @@ import { IconButtonProps } from './types';
 
 const meta: Meta<IconButtonProps> = {
   title: 'Form/IconButton',
+  decorators: (story, context) => {
+    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    return `<div class="gi-p-4 ${isLight} gi-w-fit">
+    ${story()}
+      </div>` as any;
+  },
   parameters: {
     docs: {
       description: {

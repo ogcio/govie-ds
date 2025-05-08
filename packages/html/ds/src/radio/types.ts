@@ -1,7 +1,7 @@
 import { ErrorTextProps } from '../error-text/types.js';
 import { HintTextProps } from '../hint-text/types.js';
+import { TextInputProps } from '../input-text/types.js';
 import { LabelProps } from '../label/types.js';
-import { TextInputProps } from '../text-input/types.js';
 
 export const RadioSizeEnum = {
   Large: 'lg',

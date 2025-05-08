@@ -4,11 +4,12 @@ import { TooltipProps } from './types';
 
 const meta: Meta<TooltipProps> = {
   title: 'Application/Tooltip',
-  decorators: (story) => `
+  decorators: (story) =>
+    `
     <div class="gi-flex gi-justify-center gi-my-20 gi-mx-20">
       ${story()}
     </div>
-  `,
+  ` as any,
 };
 
 export default meta;

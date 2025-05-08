@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
-import { Stack } from '../stack/stack.js';
 import { InputText } from './input-text.js';
 
 const meta = {
@@ -103,7 +102,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const Default: Story = {
   args: {
     id: 'input-text-id',
@@ -111,7 +109,7 @@ export const Default: Story = {
   render: (props) => (
     <FormField
       label={{
-        text: 'Input Label',
+        text: 'Label',
         htmlFor: 'input-text-id',
       }}
     >
@@ -120,19 +118,31 @@ export const Default: Story = {
   ),
 };
 
-export const WithTextInputReset: Story = {
+export const Focus: Story = {
+  render: () => (
+    <FormField label={{ text: 'Label', htmlFor: 'focus-input' }}>
+      <InputText type="text" id="focus-input" inputClassName="focus-input" />
+    </FormField>
+  ),
+  parameters: {
+    pseudo: { focus: '.focus-input' },
+  },
+};
+
+export const Disabled: Story = {
   args: {
     id: 'input-text-id',
+    disabled: true,
   },
-  render: () => {
+  render: (props) => {
     return (
       <FormField
         label={{
-          text: 'Input Label',
+          text: 'Label',
           htmlFor: 'input-text-id',
         }}
       >
-        <InputText clearButtonEnabled placeholder="Placeholder" />
+        <InputText {...props} />
       </FormField>
     );
   },
@@ -258,7 +268,7 @@ export const InputLength: Story = {
     return (
       <FormField
         label={{
-          text: '4 characters width',
+          text: 'Label',
           htmlFor: 'input-text-id',
         }}
       >
@@ -287,21 +297,17 @@ export const DateInput: Story = {
   },
 };
 
-export const DisabledInput: Story = {
+export const WithHalfWidth: Story = {
   args: {
     id: 'input-text-id',
-    disabled: true,
-    value: 'This field is disabled',
+    halfFluid: true,
   },
   render: (props) => {
     return (
       <FormField
         label={{
-          text: 'Disabled',
+          text: 'Label',
           htmlFor: 'input-text-id',
-        }}
-        hint={{
-          text: 'Hint: This is a helpful hint.',
         }}
       >
         <InputText {...props} />
@@ -310,219 +316,13 @@ export const DisabledInput: Story = {
   },
 };
 
-export const WithHalfWidth: Story = {
-  args: {
-    id: 'input-text-id',
-    halfFluid: true,
-  },
-  render: (props) => {
-    return (
-      <Stack gap={4} itemsAlignment="stretch">
-        <FormField
-          label={{
-            text: 'Half width',
-            htmlFor: 'input-text-id',
-          }}
-        >
-          <InputText {...props} />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Half width',
-            htmlFor: 'input-text-id',
-          }}
-        >
-          <InputText clearButtonEnabled halfFluid />
-        </FormField>
-      </Stack>
-    );
-  },
-};
-
-export const ResponsiveLayout: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: (props) => {
-    return (
-      <div
-        className="md:gi-w-2/3 gi-w-full"
-        role="presentation"
-        aria-label="example"
-      >
-        <Stack
-          direction={{ base: 'column' }}
-          gap={3}
-          aria-label="form"
-          itemsAlignment="stretch"
-        >
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block1"
-          >
-            <FormField
-              label={{ text: 'First Name', htmlFor: 'text-1' }}
-              hint={{
-                text: 'Your first name.',
-              }}
-            >
-              <InputText {...props} id="text-1" />
-            </FormField>
-            <FormField
-              label={{ text: 'Last Name', htmlFor: 'text-2' }}
-              hint={{
-                text: 'Your last name.',
-              }}
-            >
-              <InputText {...props} id="text-2" />
-            </FormField>
-          </Stack>
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block2"
-          >
-            <FormField
-              label={{
-                text: 'Address',
-                htmlFor: 'text-4',
-              }}
-              hint={{
-                text: 'Where you live.',
-              }}
-            >
-              <InputText {...props} id="text-4" maxLength={5} />
-            </FormField>
-          </Stack>
-
-          <Stack
-            direction={{ md: 'row', base: 'column' }}
-            gap={3}
-            aria-label="block3"
-          >
-            <FormField
-              label={{
-                htmlFor: 'input-text-birth',
-                text: 'Date of birth',
-              }}
-              hint={{
-                text: 'Your date of birth.',
-              }}
-            >
-              <InputText id="input-text-birth" type="date" />
-            </FormField>
-
-            <FormField
-              label={{
-                htmlFor: 'input-text-height',
-                text: 'Height',
-              }}
-              hint={{
-                text: 'Your height',
-              }}
-            >
-              <InputText id="input-text-height" prefix="cm" />
-            </FormField>
-            <div className="gi-w-full sm:gi-w-[80px] gi-flex-none">
-              <FormField
-                label={{
-                  text: 'Age',
-                  htmlFor: 'input-text-age',
-                }}
-                hint={{
-                  text: 'Your Age.',
-                }}
-              >
-                <InputText {...props} maxLength={3} id="input-text-age" />
-              </FormField>
-            </div>
-          </Stack>
-          <FormField
-            label={{
-              text: 'Phone Number',
-              htmlFor: 'text-phone',
-            }}
-            hint={{
-              text: 'Your phone number.',
-            }}
-            error={{
-              text: 'Error: Please correct this issue.',
-            }}
-          >
-            <InputText
-              {...props}
-              id="text-phone"
-              pattern="\d*"
-              maxLength={10}
-            />
-          </FormField>
-        </Stack>
-      </div>
-    );
-  },
-};
-
-export const AllStates: Story = {
+export const InputWithCustomActionButton: Story = {
   render: () => (
-    <div className="gi-gap-4">
-      <FormField
-        label={{
-          text: 'Default',
-          htmlFor: 'default-input',
-        }}
-      >
-        <InputText type="text" id="default-input" />
-      </FormField>
-      <br />
-      <FormField
-        label={{
-          text: 'Focused',
-          htmlFor: 'focus-input',
-        }}
-      >
-        <InputText type="text" id="focus-input" />
-      </FormField>
-      <br />
-      <FormField
-        label={{
-          text: 'Disabled',
-          htmlFor: 'input-disabled',
-        }}
-      >
-        <InputText
-          value="This field is disabled"
-          type="text"
-          id="input-disabled"
-          disabled
-        />
-      </FormField>
-    </div>
-  ),
-  parameters: {
-    pseudo: {
-      focus: '#focus-input',
-    },
-  },
-};
-
-export const WithCustomActionButton: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => (
-    <FormField
-      label={{
-        text: 'Default',
-      }}
-      hint={{
-        text: 'Support text',
-      }}
-    >
+    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
       <InputText
         inputActionButton={{
           icon: 'info',
-          onClick: () => alert('action button clicked'),
+          onClick: () => alert('Action button clicked'),
         }}
         type="text"
         placeholder="Placeholder"
@@ -531,179 +331,174 @@ export const WithCustomActionButton: Story = {
   ),
 };
 
-export const AllIconVariantsStates: Story = {
+export const InputWithIcons: Story = {
+  render: () => (
+    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
+      <InputText
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+};
+
+export const InputWithIconsDisabled: Story = {
+  render: () => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText
+        disabled
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+};
+
+export const InputWithIconsFocus: Story = {
+  render: () => (
+    <FormField label={{ text: 'Label', htmlFor: 'focus-input' }}>
+      <InputText
+        type="text"
+        id="focus-input"
+        inputClassName="focus-input"
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+  parameters: {
+    pseudo: { focus: '.focus-input' },
+  },
+};
+
+export const InputWithPrefixSuffix: Story = {
+  args: {
+    prefix: '€',
+    suffix: 'kg',
+    iconStart: 'person',
+    iconEnd: 'person',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText
+        type="text"
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+        {...props}
+      />
+    </FormField>
+  ),
+};
+
+export const InputWithPrefixSuffixError: Story = {
+  render: () => (
+    <FormField
+      label={{ text: 'Label' }}
+      hint={{ text: 'Support text' }}
+      error={{ text: 'Invalid' }}
+    >
+      <InputText
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+        prefix="€"
+        suffix="kg"
+      />
+    </FormField>
+  ),
+};
+
+export const InputWithPrefixSuffixDisabled: Story = {
+  args: {
+    disabled: true,
+    prefix: '€',
+    suffix: 'kg',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+        prefix="€"
+        suffix="kg"
+        {...props}
+      />
+    </FormField>
+  ),
+};
+
+export const InputWithPrefixSuffixFocus: Story = {
+  args: {
+    inputClassName: 'focus-input',
+    prefix: '€',
+    suffix: 'kg',
+    iconStart: 'person',
+    iconEnd: 'person',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText
+        iconStart="placeholder"
+        iconEnd="placeholder"
+        placeholder="Placeholder"
+        prefix="€"
+        suffix="kg"
+        inputClassName="focus-input"
+        {...props}
+      />
+    </FormField>
+  ),
+  parameters: {
+    pseudo: { focus: '.focus-input' },
+  },
+};
+
+export const InputWithIconStartOnly: Story = {
+  args: {
+    iconStart: 'person',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText {...props} />
+    </FormField>
+  ),
+};
+
+export const InputWithIconEndOnly: Story = {
+  args: {
+    iconEnd: 'person',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField label={{ text: 'Label' }}>
+      <InputText {...props} />
+    </FormField>
+  ),
+};
+
+export const WithTextInputReset: Story = {
+  args: {
+    id: 'input-text-id',
+  },
   render: () => {
     return (
-      <Stack gap={4} itemsAlignment="stretch">
-        <FormField
-          label={{
-            text: 'Default',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Error',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-          error={{
-            text: 'Invalid',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Disabled',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            disabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Focus',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            inputClassName="focus-input"
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Prefix/Suffix',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-            prefix="€"
-            suffix="kg"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Prefix/Suffix Error',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-          error={{
-            text: 'Invalid',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-            prefix="€"
-            suffix="kg"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Prefix/Suffix Disabled',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-            prefix="€"
-            suffix="kg"
-            disabled
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Prefix/Suffix Focus',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            clearButtonEnabled
-            inputClassName="focus-input"
-            iconStart="placeholder"
-            iconEnd="placeholder"
-            placeholder="Placeholder"
-            prefix="€"
-            suffix="kg"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'With Icon Start',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            iconStart="placeholder"
-            type="text"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'With Icon End',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <InputText
-            iconEnd="placeholder"
-            type="text"
-            placeholder="Placeholder"
-          />
-        </FormField>
-      </Stack>
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'input-text-id',
+        }}
+      >
+        <InputText clearButtonEnabled placeholder="Placeholder" />
+      </FormField>
     );
-  },
-  parameters: {
-    pseudo: {
-      focus: '.focus-input',
-    },
   },
 };

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from '@storybook/test';
 import { ErrorSize, ErrorText } from './error-text.js';
 
 const meta = {
-  title: 'Form/ErrorText',
+  title: 'Typography/ErrorText',
   parameters: {
     docs: {
       description: {
@@ -40,5 +41,41 @@ export const Default: Story = {
   args: {
     text: 'Error',
     size: ErrorSize.Medium,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: ErrorSize.Small,
+    text: 'This is error text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: ErrorSize.Medium,
+    text: 'This is error text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: ErrorSize.Large,
+    text: 'This is error text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-lg');
   },
 };

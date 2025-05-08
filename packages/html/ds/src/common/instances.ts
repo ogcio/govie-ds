@@ -1,10 +1,10 @@
 import { Accordion } from '../accordion/accordion';
 import { Alert } from '../alert/alert';
-import { Checkboxes } from '../checkbox/checkbox';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Drawer } from '../drawer/drawer';
 import { Header } from '../header/header';
+import { Checkboxes } from '../input-checkbox/input-checkbox';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';

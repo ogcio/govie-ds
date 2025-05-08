@@ -67,6 +67,33 @@ export const Default: Story = {
   },
 };
 
+export const Hover: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+  },
+  parameters: { pseudo: { hover: true } },
+};
+
+export const Focus: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+  },
+  parameters: { pseudo: { focus: true } },
+};
+
+export const Disabled: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    disabled: true,
+  },
+};
+
 export const WithHint: Story = {
   args: {
     id: 'checkbox-id-1',

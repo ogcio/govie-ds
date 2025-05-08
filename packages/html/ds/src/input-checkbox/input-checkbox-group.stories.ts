@@ -1,42 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { createCheckbox, createFormField } from '../helpers/forms';
+import { createCheckboxGroup } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import type { CheckboxGroupProps } from './types';
 
 const meta: Meta<CheckboxGroupProps> = {
-  title: 'form/Checkbox/CheckboxGroup',
+  title: 'form/Checkbox/InputCheckboxGroup',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Checkboxes component when you need to help users select multiple options from a list or toggle a single option on or off',
+      },
+    },
+  },
+  argTypes: {
+    groupId: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'the unique value for the checkboxes group',
+    },
+    size: {
+      control: 'radio',
+      options: ['lg', 'md', 'sm'],
+      description: 'The sizes of the checkboxes',
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<CheckboxGroupProps>;
-
-const createCheckboxGroup = (arguments_: CheckboxGroupProps) => {
-  const formField = createFormField(arguments_);
-
-  const container = document.createElement('div');
-  container.className = 'gi-input-group-container';
-  container.dataset.module = 'gieds-checkboxes';
-
-  const innerContainer = document.createElement('div');
-  innerContainer.className = 'gi-input-group-options-container';
-
-  const stackContainer = document.createElement('div');
-  stackContainer.dataset.element = 'checkbox-container';
-  stackContainer.className = arguments_.inline
-    ? 'gi-input-group-options-inline'
-    : 'gi-input-group-options-stacked';
-
-  for (const item of arguments_.items) {
-    const checkbox = createCheckbox({ ...item, size: arguments_.size });
-    stackContainer.append(checkbox);
-  }
-
-  innerContainer.append(stackContainer);
-  container.append(innerContainer);
-  formField.append(container);
-
-  return formField;
-};
 
 const createElement = (arguments_: CheckboxGroupProps) => {
   const component = createCheckboxGroup(arguments_);
@@ -83,6 +75,7 @@ export const withLabelHintAndError: Story = {
       {
         label: 'British',
         value: 'british',
+        hint: 'including English, Scottish, Welsh and Northern Irish',
       },
       {
         label: 'Citizen of another country',

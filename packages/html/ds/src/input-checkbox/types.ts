@@ -20,6 +20,7 @@ export type CheckboxProps = {
   value?: string;
   disabled?: boolean;
   checked?: boolean;
+  defaultChecked?: boolean;
   name?: string;
 };
 

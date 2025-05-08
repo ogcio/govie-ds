@@ -30,16 +30,21 @@ export const Default = {
   ),
 };
 
-export const WithLabelAndHint = {
+export const Focus = {
   render: () => (
-    <FormField label={{ text: 'Label' }} hint={{ text: 'This is a hint' }}>
-      <Select aria-label="Select">
+    <FormField label={{ text: 'Label', htmlFor: 'focus-select' }}>
+      <Select id="focus-select" aria-label="Select" className="focus-select">
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
     </FormField>
   ),
+  parameters: {
+    pseudo: {
+      focus: '.focus-select',
+    },
+  },
 };
 
 export const WithLabelHintAndError = {

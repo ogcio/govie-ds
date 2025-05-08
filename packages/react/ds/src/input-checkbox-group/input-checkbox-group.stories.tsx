@@ -36,7 +36,7 @@ export const Default: Story = {
     groupId: 'UniqueID',
   },
   render: (props) => (
-    <FormField label={{ text: 'Organization' }}>
+    <FormField label={{ text: 'Organisation' }}>
       <InputCheckboxGroup {...props}>
         <InputCheckbox
           value="employment-tribunal"
@@ -64,36 +64,7 @@ export const Default: Story = {
   ),
 };
 
-export const WithHints: Story = {
-  args: {
-    groupId: 'govie-field-ID',
-  },
-  render: (arguments_) => (
-    <FormField
-      label={{ text: 'What is your nationality?' }}
-      hint={{
-        text: 'If you have dual nationality, select all options that are relevant to you.',
-      }}
-    >
-      <InputCheckboxGroup {...arguments_}>
-        <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
-        <InputCheckbox
-          value="british"
-          label="British"
-          hint="including English, Scottish, Welsh and Northern Irish"
-          id="govie-field-ID-check2"
-        />
-        <InputCheckbox
-          value="citizen-of-another-country"
-          label="Citizen of another country"
-          id="govie-field-ID-check3"
-        />
-      </InputCheckboxGroup>
-    </FormField>
-  ),
-};
-
-export const WithErrorMessage: Story = {
+export const WithLabelHintAndError: Story = {
   args: {
     groupId: 'govie-field-ID2',
   },
