@@ -47,6 +47,20 @@ const componentProperty = defineNestedType(() => ({
   },
 }));
 
+const componentType = defineNestedType(() => ({
+  fields: {
+    id: { type: 'string', required: true },
+    link: { type: 'string' },
+    status: {
+      type: 'enum',
+      options: ['N/A', 'alpha', 'beta', 'stable'],
+      required: true,
+      default: 'N/A',
+    },
+    properties: { type: 'list', of: componentProperty, required: false },
+  },
+}));
+
 const Document = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `**/*.mdx`,
@@ -67,9 +81,9 @@ const Document = defineDocumentType(() => ({
       of: componentLibrary,
       required: false,
     },
-    properties: {
-      type: 'list',
-      of: componentProperty,
+    component: {
+      type: 'nested',
+      of: componentType,
       required: false,
     },
   },

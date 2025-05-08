@@ -1,445 +1,162 @@
 ---
 title: Button
-description: Button HTML Component
+description: Button Design Guidelines
 status: in-review
-libraries:
-  - platform: 'figma'
-    link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1222-1936'
-    status: 'stable'
-  - platform: 'global'
-    link: '?path=/docs/form-button--docs'
-    status: 'stable'
-  - platform: 'react'
-    link: '?path=/docs/form-button--docs'
-    status: 'stable'
+component:
+  id: 'button'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1222-1936'
+  status: 'stable'
 ---
 
 # Button
 
+Buttons allow users to take actions, make choices, and navigate interfaces with a single tap. 
+This versatile component comes in multiple variants, sizes, and styles to accommodate different design needs and user interactions throughout your application.
+
 <Section componentId="button" current="design">
+
+<ComponentPreview>
+  <Button>This is a button</Button>
+</ComponentPreview>
+
+## States
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button tabindex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-default] !shadow-none !outline-none">Default</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabindex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-none !outline-none">Hover</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabindex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-[--gieds-color-border-intent-focus-light] !shadow-[inset_0_0_0_2px] outline outline-sm outline-[--gieds-color-shadow-intent-focus-default] outline-offset-0">Focus</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabindex="-1" disabled>Default</Button>
+  </ComponentPreviewItem>
+  </ComponentPreviewLayout>
 
 ## Variants
 
-### Primary buttons
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button variant='primary'>Primary</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button variant='secondary'>Secondary</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button variant='flat'>Flat</Button>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
 
-<ComponentContainer>
-  <Button>Primary Button</Button>
-</ComponentContainer>
+- **Primary**: The main action button that stands out and draws attention. Use it for the most important actions on a page.
+- **Secondary**: A less prominent button that complements the primary button. Use it for secondary actions that are still important but not the main focus.
+- **Flat**: A button with minimal styling, often used for less important actions or in contexts where a more subtle appearance is desired.
 
-<Tabs id="tab1">
-  <TabList>
-    <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab13">React</TabItem>
-  </TabList>
-  <TabPanel value="tab11">
-  ```html
-  <button id="button" class="gi-btn gi-btn-primary gi-btn-regular">Primary Button</button>
-  ```
-  </TabPanel>
-  <TabPanel value="tab13">
-  ```jsx
-  import { Button } from '@govie-ds/react';
+## Appearance
 
-  <Button>Primary Button</Button>
-  ```
-  </TabPanel>
-</Tabs>
-
-### Secondary buttons
-
-<ComponentContainer>
-  <Button variant="secondary">Secondary Button</Button>
-</ComponentContainer>
-
-<Tabs id="tab2">
-  <TabList>
-    <TabItem value="tab21" checked>HTML</TabItem>
-    <TabItem value="tab23">React</TabItem>
-  </TabList>
-  <TabPanel value="tab21">
-    ```html
-    <button id="button" class="gi-btn gi-btn-secondary gi-btn-regular">
-      Secondary Button
-    </button>
-    ```
-  </TabPanel>
-  <TabPanel value="tab23">
-    ```jsx 
-    import { Button } from '@govie-ds/react';
-    <Button variant="secondary">Secondary Button</Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Flat buttons
-
-<ComponentContainer>
-  <Button variant="flat">Flat Button</Button>
-</ComponentContainer>
-
-<Tabs id="tab3">
-  <TabList>
-    <TabItem value="tab31" checked>HTML</TabItem>
-    <TabItem value="tab33">React</TabItem>
-  </TabList>
-  <TabPanel value="tab31">
-    ```html
-    <button id="button" class="gi-btn gi-btn-flat gi-btn-regular">
-      Flat Button
-    </button>
-    ```
-  </TabPanel>
-  <TabPanel value="tab33">
-    ```jsx 
-    import { Button } from '@govie-ds/react';
-    <Button variant="flat">Flat Button</Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Buttons with icons and label
-
-<ComponentContainer>
-  <Button>
-    <Icon icon="thumb_up" />
-    <span>button</span>
-  </Button>
-</ComponentContainer>
-
-<Tabs id="tab4">
-  <TabList>
-    <TabItem value="tab41" checked>HTML</TabItem>
-    <TabItem value="tab43">React</TabItem>
-  </TabList>
-  <TabPanel value="tab41">
-    ```html
-    <button id="button" class="gi-btn gi-btn-secondary gi-btn-regular">
-      <svg
-        class="govie-button__icon-left"
-        width="14"
-        height="15"
-        viewBox="0 0 14 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M14 8.5H8V14.5H6V8.5H0V6.5H6V0.5H8V6.5H14V8.5Z"
-          fill="white"
-        ></path>
-      </svg>{' '}
-      button
-    </button>
-    ```
-  </TabPanel>
-  <TabPanel value="tab43">
-    ```jsx 
-    import {(Button, Icon)} from '@govie-ds/react';
-    <Button>
-      <Icon icon="thumb_up" />
-      button
-    </Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Icon Buttons
-
-<ComponentContainer>
-  <Button>
-    <Icon icon="thumb_up" />
-  </Button>
-</ComponentContainer>
-
-<Tabs id="tab5">
-  <TabList>
-    <TabItem value="tab51" checked>HTML</TabItem>
-    <TabItem value="tab53">React</TabItem>
-  </TabList>
-  <TabPanel value="tab51">```html Not available ```</TabPanel>
-  <TabPanel value="tab53">
-    ```jsx 
-    import {(Button, Icon)} from '@govie-ds/react';
-    <Button>
-      <Icon icon="thumb_up" />
-    </Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Disabled buttons
-
-<ComponentContainer>
-  <Button disabled={true}>
-    <span>Disabled Button</span>
-  </Button>
-</ComponentContainer>
-
-<Tabs id="tab6">
-  <TabList>
-    <TabItem value="tab61" checked>HTML</TabItem>
-    <TabItem value="tab63">React</TabItem>
-  </TabList>
-  <TabPanel value="tab61">
-    ```html
-    <button
-      id="button"
-      data-module="govie-button"
-      disabled="true"
-      aria-disabled="true"
-      class="gi-btn gi-btn-regular gi-btn-primary-disabled"
-    >
-      Disabled button
-    </button>
-    ```
-  </TabPanel>
-  <TabPanel value="tab63">
-    ```jsx 
-    import { Button } from '@govie-ds/react';
-    <Button disabled={true}>Disabled Button</Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Buttons on dark backgrounds
-
-<ComponentContainer className="gi-bg-black gi-p-4">
-  <Button appearance="light">
-    <span>Dark Button</span>
-  </Button>
-</ComponentContainer>
-
-<Tabs id="tab7">
-  <TabList>
-    <TabItem value="tab71" checked>HTML</TabItem>
-    <TabItem value="tab73">React</TabItem>
-  </TabList>
-  <TabPanel value="tab71">
-    ```html
-    <button class="gi-btn gi-btn-primary-dark gi-btn-regular">
-      Primary Dark
-    </button>
-    ```
-  </TabPanel>
-  <TabPanel value="tab73">
-    ```jsx 
-    import { Button } from '@govie-ds/react';
-    <Button appearance="light">Dark Button</Button>
-    ```
-  </TabPanel>
-</Tabs>
-
-### Button Group
-
-<ComponentContainer>
-  <div className="gi-flex gi-flex-col gi-items-center gi-gap-1">
-    <FormField
-      className="gi-w-full"
-      hint={{
-        text: '1 = Not likely, 10 = Extremely likely',
-      }}
-      label={{
-        text: 'How likely are you to recommend our service to a friend or colleague?',
-      }}
-    >
-      <ButtonGroup defaultValue="6" name="likelihood-feedback" size="large">
-        <ButtonGroupItem value="1">1</ButtonGroupItem>
-        <ButtonGroupItem value="2">2</ButtonGroupItem>
-        <ButtonGroupItem value="3">3</ButtonGroupItem>
-        <ButtonGroupItem value="4">4</ButtonGroupItem>
-        <ButtonGroupItem value="5">5</ButtonGroupItem>
-        <ButtonGroupItem value="6">6</ButtonGroupItem>
-        <ButtonGroupItem value="7">7</ButtonGroupItem>
-        <ButtonGroupItem value="8">8</ButtonGroupItem>
-        <ButtonGroupItem value="9">9</ButtonGroupItem>
-        <ButtonGroupItem value="10">10</ButtonGroupItem>
-      </ButtonGroup>
-    </FormField>
-  </div>
-</ComponentContainer>
-
-<Tabs id="tab8">
-  <TabList>
-    <TabItem value="tab81" checked>HTML</TabItem>
-    <TabItem value="tab83">React</TabItem>
-  </TabList>
-  <TabPanel value="tab81">
-    ```html
-    <fieldset class="gi-w-full">
-      <div class="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
-        <div>
-          <label class="gi-text-md gi-label gi-font-bold">
-            How likely are you to recommend our service to a friend or
-            colleague?
-          </label>
-          <div class="gi-hint-text-md gi-hint-text gi-mb-1">
-            1 = Not likely, 10 = Extremely likely
-          </div>
-        </div>
-      </div>
-      <div class="gi-btn-group">
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="1"
-          id="gi-btn-group-0"
-        >
-          1
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="2"
-          id="gi-btn-group-1"
-        >
-          2
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="3"
-          id="gi-btn-group-2"
-        >
-          3
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="4"
-          id="gi-btn-group-3"
-        >
-          4
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="5"
-          id="gi-btn-group-4"
-        >
-          5
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-primary-dark"
-          name="6"
-          id="gi-btn-group-5"
-        >
-          6
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="7"
-          id="gi-btn-group-6"
-        >
-          7
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="8"
-          id="gi-btn-group-7"
-        >
-          8
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="9"
-          id="gi-btn-group-8"
-        >
-          9
-        </button>
-        <button
-          class="gi-btn gi-btn-large gi-btn-secondary-dark"
-          name="10"
-          id="gi-btn-group-9"
-        >
-          10
-        </button>
-      </div>
-    </fieldset>
-    ```
-  </TabPanel>
-  <TabPanel value="tab83">
-    ```jsx 
-    import {(FormField, ButtonGroup, ButtonGroupItem)} from '@govie-ds/react';
-    <div className="gi-flex gi-flex-col gi-items-center gi-gap-1">
-      <FormField
-        className="gi-w-full"
-        hint={{
-          text: '1 = Not likely, 10 = Extremely likely',
-        }}
-        label={{
-          text: 'How likely are you to recommend our service to a friend or colleague?',
-        }}
-      >
-        <ButtonGroup defaultValue="6" name="likelihood-feedback" size="large">
-          <ButtonGroupItem value="1">1</ButtonGroupItem>
-          <ButtonGroupItem value="2">2</ButtonGroupItem>
-          <ButtonGroupItem value="3">3</ButtonGroupItem>
-          <ButtonGroupItem value="4">4</ButtonGroupItem>
-          <ButtonGroupItem value="5">5</ButtonGroupItem>
-          <ButtonGroupItem value="6">6</ButtonGroupItem>
-          <ButtonGroupItem value="7">7</ButtonGroupItem>
-          <ButtonGroupItem value="8">8</ButtonGroupItem>
-          <ButtonGroupItem value="9">9</ButtonGroupItem>
-          <ButtonGroupItem value="10">10</ButtonGroupItem>
-        </ButtonGroup>
-      </FormField>
-    </div>
-    ```
-  </TabPanel>
-</Tabs>
-
-## Usage
-
-### Button Props
-
-- **children** (optional): The content inside the button. Can be a string or any valid React node.
-
-- **variant** (optional): Defines the visual style of the button. Options include:
-
-  - `'primary'`
-  - `'secondary'`
-  - `'flat'`
-
-- **appearance** (optional): Adjusts the overall tone or theme of the button. Options are:
-
-  - `'default'`
-  - `'dark'`
-  - `'light'`
-
-- **size** (optional): Specifies the size of the button. Options include:
-
-  - `'small'`
-  - `'medium'`
-  - `'large'`
-
-- **disabled** (optional): A boolean that, when `true`, disables the button and prevents interaction.
-
-### ButtonGroup Props
-
-Used to display a collection of related buttons (e.g., for feedback, selection, etc.).
-
-- **name** (required): A string used to uniquely identify the button group. Useful for forms or accessibility purposes.
-
-- **size** (optional): Defines the size of each button within the group. Options include:
-
-  - `'small'`
-  - `'medium'`
-  - `'large'`
-
-- **onChange** (optional): A callback function triggered when a button is selected. It receives the selected value.
-
-- **defaultValue** (optional): The initially selected value in the group.
-
-- **children** (optional): Can be used to inject custom React nodes into the group (if needed for flexibility).
-
-### Best Practices
-
-#### When to use this component
-
-- Use **Button** for user-triggered actions like submitting a form or confirming a choice.
-- Use **ButtonGroup** when offering a set of mutually exclusive options, such as rating selections or binary questions.
-
-#### When not to use this component
-
-- Don’t use **Button** when the goal is navigation — use a **Link** component instead.
-- Don’t use **ButtonGroup** if you only need a single action — use just a **Button** in that case.
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button appearance='default'>Default</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button appearance='dark'>Dark</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button appearance='light'>Light</Button>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
 
 ## Status
 
-<ComponentStatusBlock componentId="button" />
+## Tokens
+
+## Usage
+
+## Usage Guidelines
+
+Buttons are interactive elements that enable users to trigger actions or navigate through an application. Using buttons appropriately creates a more intuitive and efficient user experience.
+
+### Do
+
+- **Use clear, action-oriented labels**: Button text should be concise and describe the action that will occur (e.g., "Save changes", "Submit form", "Continue").
+- **Maintain hierarchy**: Use primary buttons for main actions, secondary buttons for alternative actions, and flat buttons for less important actions.
+- **Ensure adequate spacing**: Allow enough space between multiple buttons to prevent accidental clicks.
+- **Provide visual feedback**: Ensure buttons have hover, active, and focus states to indicate interactivity.
+- **Be consistent**: Use the same button style for similar actions across your application.
+- **Include icons when helpful**: Add icons to buttons when they enhance understanding, but ensure they're relevant to the action.
+
+### Don't
+
+- **Don't use buttons for navigation**: Use links instead of buttons when the purpose is to navigate to a different page.
+- **Don't use multiple primary buttons**: Avoid having more than one primary button in a section as it can confuse users about the main action.
+- **Don't use vague labels**: Avoid generic labels like "Click here" or "Submit" without context.
+- **Don't disable buttons without explanation**: If a button is disabled, provide clear information about why and how to enable it.
+- **Don't overcrowd interfaces with buttons**: Limit the number of buttons in one view to reduce cognitive load.
+- **Don't use button groups for unrelated actions**: Button groups should only contain buttons that are related to each other.
+
+### Examples
+
+<ComponentContainer>
+  <div className="gi-flex gi-flex-col gi-gap-4">
+    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
+      <div className="gi-text-lg gi-font-bold gi-text-green-600 gi-mb-2"><Icon icon="thumb_up" inline/> Do</div>
+      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
+        <h4 className="gi-mb-2">Submit your application</h4>
+        <div className="gi-flex gi-gap-2">
+          <Button>Submit</Button>
+          <Button variant="secondary">Save draft</Button>
+        </div>
+      </div>
+      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+        Clear hierarchy with primary action (Submit) and secondary action (Save draft)
+      </div>
+    </div>
+    
+    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
+      <div className="gi-text-lg gi-font-bold gi-text-red-600 gi-mb-2"><Icon icon="thumb_down" inline/> Don't</div>
+      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
+        <h4 className="gi-mb-2">Submit your application</h4>
+        <div className="gi-flex gi-gap-2">
+          <Button>Submit</Button>
+          <Button>Save draft</Button>
+        </div>
+      </div>
+      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+        Confusing hierarchy with multiple primary buttons of equal visual weight
+      </div>
+    </div>
+    
+    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
+      <div className="gi-text-lg gi-font-bold gi-text-green-600 gi-mb-2"><Icon icon="thumb_up" inline/> Do</div>
+      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
+        <Button>
+          <Icon icon="mail" />
+          <span>Send mail</span>
+        </Button>
+      </div>
+      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+        Descriptive label with relevant icon that enhances understanding
+      </div>
+    </div>
+    
+    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
+      <div className="gi-text-lg gi-font-bold gi-text-red-600 gi-mb-2"><Icon icon="thumb_down" inline/> Don't</div>
+      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
+        <Button>
+          <Icon icon="mail" />
+          <span>Click here</span>
+        </Button>
+      </div>
+      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+        Vague label that doesn't clearly describe the action
+      </div>
+    </div>
+  </div>
+</ComponentContainer>
+
+{/* <ComponentStatusBlock componentId="button" /> */}
+{component.status}
 
 </Section>
