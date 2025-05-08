@@ -11,51 +11,53 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-summarylist--docs'
     status: 'alpha'
-properties:
-  - name: SummaryListProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'A list of SummaryListRow components that will be displayed in the summary list.'
-        required: true
-      - name: 'dataTestid'
-        ofType: 'string'
-        description: 'A string value for specifying the data-testid attribute for testing purposes.'
-        required: false
-  - name: SummaryListRowProps
-    fields:
-      - name: 'label'
-        ofType: 'string'
-        description: 'The label for the row, displayed as the key or title of the item.'
-        required: true
-      - name: 'withBorder'
-        ofType: 'boolean'
-        description: 'When true, adds a border to the summary list row.'
-        required: false
-      - name: 'children'
-        ofType: 'node'
-        description: 'A list of SummaryListValue or SummaryListAction components that will be rendered as the values or actions in the row.'
-        required: true
-  - name: SummaryListValueProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content or value of the summary item. This can be any valid React node.'
-        required: true
-  - name: SummaryListActionProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content or text for the action, typically displayed as a link.'
-        required: true
-      - name: 'href'
-        ofType: 'string'
-        description: 'The URL for the link, which will be used in the action.'
-        required: true
-      - name: 'asChild'
-        ofType: 'boolean'
-        description: 'When set to true, allows a custom link component (like NextLink) to be passed as a child.'
-        required: false
+component:
+  id: 'summary-list'
+  properties:
+    - name: SummaryListProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A list of SummaryListRow components that will be displayed in the summary list.'
+          required: true
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string value for specifying the data-testid attribute for testing purposes.'
+          required: false
+    - name: SummaryListRowProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'The label for the row, displayed as the key or title of the item.'
+          required: true
+        - name: 'withBorder'
+          ofType: 'boolean'
+          description: 'When true, adds a border to the summary list row.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'A list of SummaryListValue or SummaryListAction components that will be rendered as the values or actions in the row.'
+          required: true
+    - name: SummaryListValueProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content or value of the summary item. This can be any valid React node.'
+          required: true
+    - name: SummaryListActionProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content or text for the action, typically displayed as a link.'
+          required: true
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL for the link, which will be used in the action.'
+          required: true
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When set to true, allows a custom link component (like NextLink) to be passed as a child.'
+          required: false
 ---
 
 # Summary List

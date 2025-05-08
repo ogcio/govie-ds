@@ -12,85 +12,87 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/application-modal--docs'
     status: 'stable'
-properties:
-  - name: ModalProps
-    fields:
-      - name: 'className'
-        ofType: 'string'
-        description: 'A string for custom styling of the modal.'
-        required: false
-      - name: 'closeButtonLabel'
-        ofType: 'string'
-        description: 'A string defining the label for the close button, improving accessibility.'
-        required: false
-      - name: 'triggerButton'
-        ofType: 'ReactElement'
-        description: 'A React element that triggers the modal when clicked.'
-        required: true
-      - name: 'children'
-        ofType: 'node'
-        description: 'The modal content, structured using ModalChildren.'
-        required: true
-      - name: 'startsOpen'
-        ofType: 'boolean'
-        description: 'A boolean indicating whether the modal should be open by default. Defaults to false.'
-        required: false
-      - name: 'closeOnClick'
-        ofType: 'boolean'
-        description: 'When true, allows closing the modal via the close button or by clicking on the overlay. Defaults to true.'
-        required: false
-      - name: 'closeOnOverlayClick'
-        ofType: 'boolean'
-        description: 'Enables closing the modal when clicking outside its content (on the overlay). Defaults to true.'
-        required: false
-      - name: 'dataTestId'
-        ofType: 'string'
-        description: 'A string used for testing purposes.'
-        required: false
-      - name: 'size'
-        ofType: 'string'
-        description: 'Defines the size of the component. Accepts: sm (Small), md (Medium), lg (Large, default).'
-        required: false  
-  - name: ModalWrapperProps
-    fields:
-      - name: 'isOpen'
-        ofType: 'boolean'
-        description: 'A boolean indicating whether the modal is open.'
-        required: true
-      - name: 'onClose'
-        ofType: 'function'
-        description: 'A function that handles closing the modal.'
-        required: true
-      - name: 'position'
-        ofType: 'string'
-        description: 'Defines the modal''s position, using ModalPositions.'
-        required: false
-      - name: 'closeButtonSize'
-        ofType: 'string'
-        description: 'Sets the size of the close button, using ButtonSize.'
-        required: false
-      - name: 'children'
-        ofType: 'node'
-        description: 'The modal content, structured using ModalChildren.'
-        required: true
-  - name: ModalTitleProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the modal title.'
-        required: true
-  - name: ModalBodyProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the modal body.'
-        required: true
-  - name: ModalFooterProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the modal footer, typically action buttons.'
-        required: true
+component:
+  id: 'modal'
+  properties:
+    - name: ModalProps
+      fields:
+        - name: 'className'
+          ofType: 'string'
+          description: 'A string for custom styling of the modal.'
+          required: false
+        - name: 'closeButtonLabel'
+          ofType: 'string'
+          description: 'A string defining the label for the close button, improving accessibility.'
+          required: false
+        - name: 'triggerButton'
+          ofType: 'ReactElement'
+          description: 'A React element that triggers the modal when clicked.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The modal content, structured using ModalChildren.'
+          required: true
+        - name: 'startsOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the modal should be open by default. Defaults to false.'
+          required: false
+        - name: 'closeOnClick'
+          ofType: 'boolean'
+          description: 'When true, allows closing the modal via the close button or by clicking on the overlay. Defaults to true.'
+          required: false
+        - name: 'closeOnOverlayClick'
+          ofType: 'boolean'
+          description: 'Enables closing the modal when clicking outside its content (on the overlay). Defaults to true.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'A string used for testing purposes.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of the component. Accepts: sm (Small), md (Medium), lg (Large, default).'
+          required: false  
+    - name: ModalWrapperProps
+      fields:
+        - name: 'isOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the modal is open.'
+          required: true
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'A function that handles closing the modal.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: 'Defines the modal''s position, using ModalPositions.'
+          required: false
+        - name: 'closeButtonSize'
+          ofType: 'string'
+          description: 'Sets the size of the close button, using ButtonSize.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The modal content, structured using ModalChildren.'
+          required: true
+    - name: ModalTitleProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal title.'
+          required: true
+    - name: ModalBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal body.'
+          required: true
+    - name: ModalFooterProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal footer, typically action buttons.'
+          required: true
 ---
 
 # Modal

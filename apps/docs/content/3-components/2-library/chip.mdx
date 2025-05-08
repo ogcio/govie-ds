@@ -12,17 +12,19 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/components-chip--docs'
     status: 'stable'
-properties:
-  - name: ChipProps
-    fields:
-      - name: 'label'
-        ofType: 'string'
-        description: 'A string that defines the content displayed inside the chip.'
-        required: true
-      - name: 'onClose'
-        ofType: 'function'
-        description: 'A function that gets triggered when the chip''s close action is invoked (e.g., clicking a dismiss button).'
-        required: false
+component:
+  id: 'chip'
+  properties:
+    - name: ChipProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'A string that defines the content displayed inside the chip.'
+          required: true
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'A function that gets triggered when the chip''s close action is invoked (e.g., clicking a dismiss button).'
+          required: false
 ---
 
 # Chip

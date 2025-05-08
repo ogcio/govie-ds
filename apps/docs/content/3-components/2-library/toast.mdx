@@ -12,51 +12,53 @@ libraries:
   - platform: react
     link: '?path=/docs/application-toast--docs'
     status: 'stable'
-properties:
-  - name: ToastProps
-    fields:
-      - name: 'variant'
-        ofType: 'string'
-        description: 'Specify the variant of the toast component. Options: info, danger, success, warning.'
-        required: false
-      - name: 'animation'
-        ofType: 'string'
-        description: 'Specify the toast animation. Options: fadeinup, fadeinleft, fadeinright.'
-        required: false
-      - name: 'title'
-        ofType: 'string'
-        description: 'Specify the title of the toast component.'
-        required: false
-      - name: 'dismissible'
-        ofType: 'boolean'
-        description: 'Specify if the toast is dismissible.'
-        required: false
-      - name: 'description'
-        ofType: 'string'
-        description: 'Specify the content in the toast component.'
-        required: false
-      - name: 'action'
-        ofType: 'object'
-        description: 'Specify a link for the toast component.'
-        required: false
-      - name: 'slotAction'
-        ofType: 'node'
-        description: 'Specify a custom action for the toast component.'
-        required: false
-      - name: 'duration'
-        ofType: 'number'
-        description: 'Set the duration of the toast appearing on screen (in milliseconds).'
-        required: false
-      - name: 'position'
-        ofType: 'object'
-        description: 'Specify the position of the toast. Example: { x: "left" | "center" | "right", y: "top" | "center" | "bottom" }.'
-        required: false
-  - name: ToastProviderProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the application where toasts can be triggered.'
-        required: false
+component:
+  id: 'toast'
+  properties:
+    - name: ToastProps
+      fields:
+        - name: 'variant'
+          ofType: 'string'
+          description: 'Specify the variant of the toast component. Options: info, danger, success, warning.'
+          required: false
+        - name: 'animation'
+          ofType: 'string'
+          description: 'Specify the toast animation. Options: fadeinup, fadeinleft, fadeinright.'
+          required: false
+        - name: 'title'
+          ofType: 'string'
+          description: 'Specify the title of the toast component.'
+          required: false
+        - name: 'dismissible'
+          ofType: 'boolean'
+          description: 'Specify if the toast is dismissible.'
+          required: false
+        - name: 'description'
+          ofType: 'string'
+          description: 'Specify the content in the toast component.'
+          required: false
+        - name: 'action'
+          ofType: 'object'
+          description: 'Specify a link for the toast component.'
+          required: false
+        - name: 'slotAction'
+          ofType: 'node'
+          description: 'Specify a custom action for the toast component.'
+          required: false
+        - name: 'duration'
+          ofType: 'number'
+          description: 'Set the duration of the toast appearing on screen (in milliseconds).'
+          required: false
+        - name: 'position'
+          ofType: 'object'
+          description: 'Specify the position of the toast. Example: { x: "left" | "center" | "right", y: "top" | "center" | "bottom" }.'
+          required: false
+    - name: ToastProviderProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the application where toasts can be triggered.'
+          required: false
 ---
 
 # Toast

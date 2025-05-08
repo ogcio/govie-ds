@@ -12,33 +12,35 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/layout-footer--docs'
     status: 'beta'
-properties:
-  - name: FooterProps
-    fields:
-      - name: 'primarySlot'
-        ofType: 'node'
-        description: 'A node rendered in the primary section of the footer. Typically used for key links or content.'
-        required: false
-      - name: 'secondarySlot'
-        ofType: 'node'
-        description: 'A node rendered in the secondary section of the footer. Useful for secondary navigation or additional content.'
-        required: false
-      - name: 'utilitySlot'
-        ofType: 'node'
-        description: 'A node rendered in the utility area of the footer. Often used for legal links, language selectors, or settings.'
-        required: false
-      - name: 'logo'
-        ofType: 'object'
-        description: 'An object of type LogoProps representing the logo displayed in the footer.'
-        required: false
-      - name: 'className'
-        ofType: 'string'
-        description: 'A string for applying custom CSS classes to the footer container.'
-        required: false
-      - name: 'dataTestid'
-        ofType: 'string'
-        description: 'A string used as a test identifier for testing frameworks.'
-        required: false
+component:
+  id: 'footer'
+  properties:
+    - name: FooterProps
+      fields:
+        - name: 'primarySlot'
+          ofType: 'node'
+          description: 'A node rendered in the primary section of the footer. Typically used for key links or content.'
+          required: false
+        - name: 'secondarySlot'
+          ofType: 'node'
+          description: 'A node rendered in the secondary section of the footer. Useful for secondary navigation or additional content.'
+          required: false
+        - name: 'utilitySlot'
+          ofType: 'node'
+          description: 'A node rendered in the utility area of the footer. Often used for legal links, language selectors, or settings.'
+          required: false
+        - name: 'logo'
+          ofType: 'object'
+          description: 'An object of type LogoProps representing the logo displayed in the footer.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'A string for applying custom CSS classes to the footer container.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string used as a test identifier for testing frameworks.'
+          required: false
 ---
 
 # Footer

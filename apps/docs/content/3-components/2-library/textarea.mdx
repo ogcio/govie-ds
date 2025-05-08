@@ -12,33 +12,35 @@ libraries:
   - platform: react
     link: '?path=/docs/form-textarea--docs'
     status: 'stable'
-properties:
-  - name: TextAreaProps
-    fields:
-      - name: 'ref'
-        ofType: 'object'
-        description: 'A reference to the text area element.'
-        required: false
-      - name: 'rows'
-        ofType: 'number'
-        description: 'The number of visible text lines for the text area.'
-        required: false
-      - name: 'cols'
-        ofType: 'number'
-        description: 'The visible width of the text area in characters.'
-        required: false
-      - name: 'autoComplete'
-        ofType: 'string'
-        description: 'Specifies whether the browser should automatically complete the input.'
-        required: false
-      - name: 'maxChars'
-        ofType: 'number'
-        description: 'The maximum number of characters allowed in the text area.'
-        required: false
-      - name: 'halfFluid'
-        ofType: 'boolean'
-        description: 'If `true`, the text area will take up half the width of the container.'
-        required: false
+component:
+  id: 'textarea'
+  properties:
+    - name: TextAreaProps
+      fields:
+        - name: 'ref'
+          ofType: 'object'
+          description: 'A reference to the text area element.'
+          required: false
+        - name: 'rows'
+          ofType: 'number'
+          description: 'The number of visible text lines for the text area.'
+          required: false
+        - name: 'cols'
+          ofType: 'number'
+          description: 'The visible width of the text area in characters.'
+          required: false
+        - name: 'autoComplete'
+          ofType: 'string'
+          description: 'Specifies whether the browser should automatically complete the input.'
+          required: false
+        - name: 'maxChars'
+          ofType: 'number'
+          description: 'The maximum number of characters allowed in the text area.'
+          required: false
+        - name: 'halfFluid'
+          ofType: 'boolean'
+          description: 'If `true`, the text area will take up half the width of the container.'
+          required: false
 ---
 
 # Textarea

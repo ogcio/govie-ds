@@ -12,51 +12,53 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/navigation-breadcrumbs--docs'
     status: 'stable'
-properties:
-  - name: BreadcrumbsProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'One or more breadcrumb items. These must be BreadcrumbLink, BreadcrumbCurrentLink, or BreadcrumbEllipsis components.'
-        required: true
-      - name: 'iconStart'
-        ofType: 'boolean'
-        description: 'A boolean that determines whether icons should appear to the left of breadcrumb items.'
-        required: false
-  - name: BreadcrumbLinkProps
-    fields:
-      - name: 'href'
-        ofType: 'string'
-        description: 'The URL the breadcrumb item links to.'
-        required: true
-      - name: 'children'
-        ofType: 'node'
-        description: 'The text or content of the breadcrumb item.'
-        required: true
-      - name: 'asChild'
-        ofType: 'boolean'
-        description: 'When set to true, allows a custom link component (like NextLink) to be passed as a child.'
-        required: false
-  - name: BreadcrumbCurrentLinkProps
-    fields:
-      - name: 'href'
-        ofType: 'string'
-        description: 'The URL of the current page.'
-        required: true
-      - name: 'children'
-        ofType: 'node'
-        description: 'The text or content representing the current page.'
-        required: true
-      - name: 'asChild'
-        ofType: 'boolean'
-        description: 'When set to true, allows a custom link component to be passed as a child.'
-        required: false
-  - name: BreadcrumbEllipsisProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'Optional custom content to replace the default ellipsis.'
-        required: false
+component:
+  id: 'breadcrumbs'
+  properties:
+    - name: BreadcrumbsProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'One or more breadcrumb items. These must be BreadcrumbLink, BreadcrumbCurrentLink, or BreadcrumbEllipsis components.'
+          required: true
+        - name: 'iconStart'
+          ofType: 'boolean'
+          description: 'A boolean that determines whether icons should appear to the left of breadcrumb items.'
+          required: false
+    - name: BreadcrumbLinkProps
+      fields:
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL the breadcrumb item links to.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content of the breadcrumb item.'
+          required: true
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When set to true, allows a custom link component (like NextLink) to be passed as a child.'
+          required: false
+    - name: BreadcrumbCurrentLinkProps
+      fields:
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL of the current page.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content representing the current page.'
+          required: true
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When set to true, allows a custom link component to be passed as a child.'
+          required: false
+    - name: BreadcrumbEllipsisProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Optional custom content to replace the default ellipsis.'
+          required: false
 ---
 
 # Breadcrumbs

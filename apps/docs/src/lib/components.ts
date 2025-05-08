@@ -28,35 +28,40 @@ export type ComponentDetail = {
   name: string;
   slug: string;
   statuses: ComponentPlatformStatus[];
-  properties?:
-    | {
-        name: string;
-        fields: {
-          name: string;
-          ofType: string;
-          description: string;
-          defaultValue?: string | undefined;
-          required: boolean;
-        }[];
-      }[]
-    | undefined;
+  component: ComponentMetadata;
+};
+
+export type ComponentMetadata = {
+  id: string;
+  link?: string | undefined;
+  status: 'N/A' | 'alpha' | 'beta' | 'stable';
+  properties?: {
+    name: string;
+    fields: {
+      name: string;
+      ofType: string;
+      description: string;
+      defaultValue?: string | undefined;
+      required: boolean;
+    }[];
+  }[];
 };
 
 const globalHtmlStorybookBaseUrl = '/storybook-html/';
 const reactStorybookBaseUrl = '/storybook-react/';
 
 export function getComponents(): ComponentDetail[] {
-  const componentsDocument = getAll().filter((document) => document.libraries);
+  const componentsDocuments = getAll().filter((document) => document.component);
 
-  const components = componentsDocument.map(
-    (component) =>
+  const components = componentsDocuments.map(
+    (componentsDocument) =>
       ({
-        id: component.id,
-        name: component.title,
-        slug: component.slug,
-        properties: component.properties,
+        id: componentsDocument.id,
+        name: componentsDocument.title,
+        slug: componentsDocument.slug,
+        component: componentsDocument.component,
         statuses:
-          component.libraries?.map((status) => {
+          componentsDocument.libraries?.map((status) => {
             let baseUrl = '';
             switch (status.platform) {
               case 'react': {

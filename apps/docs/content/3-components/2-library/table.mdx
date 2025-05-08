@@ -11,61 +11,63 @@ libraries:
   - platform: react
     link: '?path=/docs/components-table--docs'
     status: 'stable'
-properties:
-  - name: TableProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'Nodes representing the full content of the table, including TableHead, TableBody, and optionally TableFoot.'
-        required: true
-  - name: TableHeadProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'A set of TableRow components containing header cells (TableHeader).'
-        required: true
-  - name: TableBodyProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'A set of TableRow components containing data cells (TableData).'
-        required: true
-  - name: TableFootProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'A TableRow (or multiple) used for summarizing data or adding footer content.'
-        required: true
-  - name: TableRowProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'A collection of TableHeader or TableData elements within a row.'
-        required: true
-  - name: TableHeaderProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'Content of the table header cell.'
-        required: true
-      - name: 'align'
-        ofType: 'string'
-        description: 'Controls horizontal alignment. Accepts: left, center, right.'
-        required: false
-  - name: TableDataProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'Content of the table data cell.'
-        required: true
-      - name: 'align'
-        ofType: 'string'
-        description: 'Controls horizontal alignment. Accepts: left, center, right.'
-        required: false
-      - name: 'colSpan'
-        ofType: 'number'
-        description: 'Number of columns the cell should span across.'
-        required: false
+component:
+  id: 'table'
+  properties:
+    - name: TableProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Nodes representing the full content of the table, including TableHead, TableBody, and optionally TableFoot.'
+          required: true
+    - name: TableHeadProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing header cells (TableHeader).'
+          required: true
+    - name: TableBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing data cells (TableData).'
+          required: true
+    - name: TableFootProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A TableRow (or multiple) used for summarizing data or adding footer content.'
+          required: true
+    - name: TableRowProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A collection of TableHeader or TableData elements within a row.'
+          required: true
+    - name: TableHeaderProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table header cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+    - name: TableDataProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table data cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+        - name: 'colSpan'
+          ofType: 'number'
+          description: 'Number of columns the cell should span across.'
+          required: false
 ---
 
 # Table

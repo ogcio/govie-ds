@@ -12,43 +12,45 @@ libraries:
   - platform: react
     link: '?path=/docs/application-progressstepper--docs'
     status: 'beta'
-properties:
-  - name: ProgressStepperProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'An array of StepItem components, each representing an individual step.'
-        required: true
-      - name: 'currentStepIndex'
-        ofType: 'number'
-        description: 'A number (zero-based index) representing the current active step. Defaults to 0.'
-        required: false
-      - name: 'orientation'
-        ofType: 'string'
-        description: 'A string defining the layout of the progress stepper, either horizontal or vertical. The default is horizontal.'
-        required: false
-      - name: 'completeAll'
-        ofType: 'boolean'
-        description: 'When set to true, marks all steps as completed, regardless of the current step.'
-        required: false
-      - name: 'indicator'
-        ofType: 'string'
-        description: 'Defines how each step indicator is rendered. Accepts number or hashtag.'
-        required: false
-  - name: StepItemProps
-    fields:
-      - name: 'label'
-        ofType: 'string'
-        description: 'A string representing the label for the step, providing context for the user on what this step is about.'
-        required: true
-      - name: 'children'
-        ofType: 'node'
-        description: 'The content of the step, which can include any valid React node (e.g., forms, string, etc.).'
-        required: false
-      - name: 'defaultOpen'
-        ofType: 'boolean'
-        description: 'A boolean indicating whether the step should be open by default.'
-        required: false
+component:
+  id: 'progress-stepper'
+  properties:
+    - name: ProgressStepperProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'An array of StepItem components, each representing an individual step.'
+          required: true
+        - name: 'currentStepIndex'
+          ofType: 'number'
+          description: 'A number (zero-based index) representing the current active step. Defaults to 0.'
+          required: false
+        - name: 'orientation'
+          ofType: 'string'
+          description: 'A string defining the layout of the progress stepper, either horizontal or vertical. The default is horizontal.'
+          required: false
+        - name: 'completeAll'
+          ofType: 'boolean'
+          description: 'When set to true, marks all steps as completed, regardless of the current step.'
+          required: false
+        - name: 'indicator'
+          ofType: 'string'
+          description: 'Defines how each step indicator is rendered. Accepts number or hashtag.'
+          required: false
+    - name: StepItemProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'A string representing the label for the step, providing context for the user on what this step is about.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the step, which can include any valid React node (e.g., forms, string, etc.).'
+          required: false
+        - name: 'defaultOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the step should be open by default.'
+          required: false
 ---
 
 # ProgressStepper

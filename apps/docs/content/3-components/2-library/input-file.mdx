@@ -12,29 +12,31 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/form-inputfile--docs'
     status: 'stable'
-properties:
-  - name: InputFileProps
-    fields:
-      - name: 'accept'
-        ofType: 'string'
-        description: 'Defines the types of files that the input should accept. Can be a comma-separated list of file types (e.g., .png, .jpg, image/*).'
-        required: false
-      - name: 'id'
-        ofType: 'string'
-        description: 'The unique identifier for the file input element.'
-        required: true
-      - name: 'multiple'
-        ofType: 'boolean'
-        description: 'When set to true, allows the user to select multiple files.'
-        required: false
-      - name: 'onChange'
-        ofType: 'function'
-        description: 'Callback function that is triggered when the selected file(s) change.'
-        required: false
-      - name: 'ref'
-        ofType: 'object'
-        description: 'A reference to the file input element, typically used for programmatic access to the input field.'
-        required: false
+component:
+  id: 'input-file'
+  properties:
+    - name: InputFileProps
+      fields:
+        - name: 'accept'
+          ofType: 'string'
+          description: 'Defines the types of files that the input should accept. Can be a comma-separated list of file types (e.g., .png, .jpg, image/*).'
+          required: false
+        - name: 'id'
+          ofType: 'string'
+          description: 'The unique identifier for the file input element.'
+          required: true
+        - name: 'multiple'
+          ofType: 'boolean'
+          description: 'When set to true, allows the user to select multiple files.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback function that is triggered when the selected file(s) change.'
+          required: false
+        - name: 'ref'
+          ofType: 'object'
+          description: 'A reference to the file input element, typically used for programmatic access to the input field.'
+          required: false
 ---
 
 # Input File

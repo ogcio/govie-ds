@@ -55,7 +55,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
   const components = getComponents();
 
   const componentStatuses = components
-    .filter((component) => component.id.split('/').at(-1) === componentId)
+    .filter((component) => component.component.id === componentId)
     .map((component) => {
       const figmaPlatform = component.statuses.find(
         (platformStatus) => platformStatus.platform.id === 'figma',
@@ -68,7 +68,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
       );
 
       return {
-        id: component.id.split('/').at(-1),
+        id: component.component.id,
         name: component.name,
         figma: {
           status: figmaPlatform?.status ?? 'considering',

@@ -12,17 +12,19 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-phasebanner--docs'
     status: 'beta'
-properties:
-  - name: PhaseBannerProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The text content of the phase banner.'
-        required: true
-      - name: 'level'
-        ofType: 'string'
-        description: 'Specifies the level of the phase banner. Options: alpha or beta.'
-        required: true
+component:
+  id: 'phase-banner'
+  properties:
+    - name: PhaseBannerProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the phase banner.'
+          required: true
+        - name: 'level'
+          ofType: 'string'
+          description: 'Specifies the level of the phase banner. Options: alpha or beta.'
+          required: true
 ---
 
 # Phase Banner

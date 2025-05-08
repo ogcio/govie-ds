@@ -12,21 +12,23 @@ libraries:
   - platform: react
     link: '?path=/docs/application-tooltip--docs'
     status: 'stable'
-properties:
-  - name: TooltipProps
-    fields:
-      - name: 'text'
-        ofType: 'string'
-        description: 'The text displayed in the tooltip.'
-        required: true
-      - name: 'position'
-        ofType: 'string'
-        description: 'Position of the tooltip relative to the child element. Options: top, bottom, left, right.'
-        required: false
-      - name: 'children'
-        ofType: 'node'
-        description: 'The child element that triggers the tooltip on hover.'
-        required: true
+component:
+  id: 'tooltip'
+  properties:
+    - name: TooltipProps
+      fields:
+        - name: 'text'
+          ofType: 'string'
+          description: 'The text displayed in the tooltip.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: 'Position of the tooltip relative to the child element. Options: top, bottom, left, right.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The child element that triggers the tooltip on hover.'
+          required: true
 ---
 
 # Tooltip

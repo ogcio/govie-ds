@@ -11,21 +11,23 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-sectionbreak--docs'
     status: 'stable'
-properties:
-  - name: SectionBreakProps
-    fields:
-      - name: 'size'
-        ofType: 'string'
-        description: 'Controls the height or spacing of the section break. Options: sm, md, lg, xl.'
-        required: false
-      - name: 'color'
-        ofType: 'string'
-        description: 'A string representing the color of the section break. Can be any valid CSS color value.'
-        required: false
-      - name: 'dataTestid'
-        ofType: 'string'
-        description: 'A string used as a test identifier for testing frameworks.'
-        required: false
+component:
+  id: 'section-break'
+  properties:
+    - name: SectionBreakProps
+      fields:
+        - name: 'size'
+          ofType: 'string'
+          description: 'Controls the height or spacing of the section break. Options: sm, md, lg, xl.'
+          required: false
+        - name: 'color'
+          ofType: 'string'
+          description: 'A string representing the color of the section break. Can be any valid CSS color value.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string used as a test identifier for testing frameworks.'
+          required: false
 ---
 
 # Section Break

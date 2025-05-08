@@ -11,21 +11,23 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-list--docs'
     status: 'alpha'
-properties:
-  - name: ListProps
-    fields:
-      - name: 'items'
-        ofType: 'array'
-        description: 'A list of texts or nodes to be displayed in the list.'
-        required: true
-      - name: 'type'
-        ofType: 'string'
-        description: 'Defines the type of the list. Options: None, Bullet, Number.'
-        required: false
-      - name: 'spaced'
-        ofType: 'boolean'
-        description: 'Adds extra spacing between list items to improve readability.'
-        required: false
+component:
+  id: 'list'
+  properties:
+    - name: ListProps
+      fields:
+        - name: 'items'
+          ofType: 'array'
+          description: 'A list of texts or nodes to be displayed in the list.'
+          required: true
+        - name: 'type'
+          ofType: 'string'
+          description: 'Defines the type of the list. Options: None, Bullet, Number.'
+          required: false
+        - name: 'spaced'
+          ofType: 'boolean'
+          description: 'Adds extra spacing between list items to improve readability.'
+          required: false
 ---
 
 # List

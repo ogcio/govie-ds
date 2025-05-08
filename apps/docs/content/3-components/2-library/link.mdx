@@ -12,57 +12,59 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/navigation-link--docs'
     status: 'stable'
-properties:
-  - name: LinkProps
-    fields:
-      - name: 'children'
-        ofType: 'node'
-        description: 'The text or content inside the link.'
-        required: true
-      - name: 'href'
-        ofType: 'string'
-        description: 'The URL to which the link points.'
-        required: true
-      - name: 'noUnderline'
-        ofType: 'boolean'
-        description: 'Removes the underline from the link.'
-        required: false
-      - name: 'external'
-        ofType: 'boolean'
-        description: 'Specifies whether the link should open in a new tab.'
-        required: false
-      - name: 'noVisited'
-        ofType: 'boolean'
-        description: 'Prevents the link from distinguishing between visited and unvisited states.'
-        required: false
-      - name: 'noColor'
-        ofType: 'boolean'
-        description: 'Inherits the color from its parent element.'
-        required: false
-      - name: 'size'
-        ofType: 'string'
-        description: 'Specifies the size of the link. Options: sm, md, lg.'
-        required: false
-      - name: 'iconStart'
-        ofType: 'string'
-        description: 'Displays an icon before the link text. Must be a valid IconId.'
-        required: false
-      - name: 'iconEnd'
-        ofType: 'string'
-        description: 'Displays an icon after the link text. Must be a valid IconId.'
-        required: false
-      - name: 'disabled'
-        ofType: 'boolean'
-        description: 'Disables the link interaction.'
-        required: false
-      - name: 'appearance'
-        ofType: 'string'
-        description: 'Sets the visual style of the link. Options: default, light.'
-        required: false
-      - name: 'asChild'
-        ofType: 'boolean'
-        description: 'When true, allows a custom link component (like NextLink) to be passed as a child.'
-        required: false
+component:
+  id: 'link'
+  properties:
+    - name: LinkProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content inside the link.'
+          required: true
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL to which the link points.'
+          required: true
+        - name: 'noUnderline'
+          ofType: 'boolean'
+          description: 'Removes the underline from the link.'
+          required: false
+        - name: 'external'
+          ofType: 'boolean'
+          description: 'Specifies whether the link should open in a new tab.'
+          required: false
+        - name: 'noVisited'
+          ofType: 'boolean'
+          description: 'Prevents the link from distinguishing between visited and unvisited states.'
+          required: false
+        - name: 'noColor'
+          ofType: 'boolean'
+          description: 'Inherits the color from its parent element.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the link. Options: sm, md, lg.'
+          required: false
+        - name: 'iconStart'
+          ofType: 'string'
+          description: 'Displays an icon before the link text. Must be a valid IconId.'
+          required: false
+        - name: 'iconEnd'
+          ofType: 'string'
+          description: 'Displays an icon after the link text. Must be a valid IconId.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Disables the link interaction.'
+          required: false
+        - name: 'appearance'
+          ofType: 'string'
+          description: 'Sets the visual style of the link. Options: default, light.'
+          required: false
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When true, allows a custom link component (like NextLink) to be passed as a child.'
+          required: false
 ---
 
 # Link

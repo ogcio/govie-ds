@@ -14,19 +14,19 @@ export function ComponentPropertiesTable({
 }: {
   componentId: string;
 }) {
-  const components = getComponents();
+  const componentDocs = getComponents();
 
-  const component = components
-    .filter((component) => component.id.split('/').at(-1) === componentId)
+  const componentDoc = componentDocs
+    .filter((component) => component.component.id === componentId)
     .shift();
 
-  if (!component) {
+  if (!componentDoc) {
     throw new Error(`Component status not found '${componentId}'.`);
   }
 
   return (
     <Table className="gi-not-prose">
-      {component.properties?.map((property, pindex) => (
+      {componentDoc.component.properties?.map((property, pindex) => (
         <>
           <TableHead key={`${pindex}`}>
             <TableRow>
