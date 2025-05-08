@@ -7,7 +7,7 @@ Blockquote
 CheckboxGroup
 Color
 ComboBox
-Combobox
+ComboBox
 CookieBanner
 Customizable
 DOM
