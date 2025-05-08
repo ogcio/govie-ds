@@ -74,7 +74,7 @@ export const SideNavItem: React.FC<
     value,
     icon,
     href,
-    hrefComponent,
+    asChild,
     open,
   }) => {
     const context = React.useContext(SideNavContext);
@@ -160,7 +160,7 @@ export const SideNavItem: React.FC<
           <Link
             id={itemId}
             href={href}
-            asChild={!!hrefComponent}
+            asChild={asChild}
             asButton={{
               variant: 'flat',
               appearance: 'dark',
@@ -169,7 +169,9 @@ export const SideNavItem: React.FC<
             className={itemClassName}
             onClick={handleClick}
           >
-            {hrefComponent || (
+            {asChild ? (
+              children
+            ) : (
               <ItemContent
                 icon={icon}
                 label={label}

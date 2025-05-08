@@ -46,10 +46,10 @@ export function SideNavigation({
               value={child.id}
               label={child.name}
               href={child.href}
-              hrefComponent={
-                <NextLink href={child.href || '#'}>{child.name}</NextLink>
-              }
-            />
+              asChild
+            >
+              <NextLink href={child.href || '#'}>{child.name}</NextLink>
+            </SideNavItem>
           ))}
         </SideNavItem>
       ))}
