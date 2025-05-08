@@ -89,12 +89,15 @@ function toMeta({
   };
 }
 
-export function useSideNavigationItems() {
+export function useSideNavigationItems(): {
+  items: SideNavigationItem[];
+  activeItem?: SideNavigationItem;
+} {
   const pathname = usePathname();
   const slug = pathname.split('/').filter(Boolean);
 
   if (slug.length === 0) {
-    return [];
+    return { items: [] };
   }
 
   const allDocuments = documents.getAll();
@@ -103,7 +106,7 @@ export function useSideNavigationItems() {
   );
 
   if (!documentHierarchy) {
-    return [];
+    return { items: [] };
   }
 
   const documentHierarchyWithMeta: DocumentHierarchyWithMeta = toMeta({
@@ -116,12 +119,15 @@ export function useSideNavigationItems() {
   );
 
   if (!topLevelHierarchy) {
-    return [];
+    return { items: [] };
   }
 
   const items: SideNavigationItem[] = topLevelHierarchy.children
     .map((item) => toSideNavigationItem({ slug, item }))
-    .filter(Boolean) as SideNavigationItem[]; // TODO: ts filter
+    .filter(Boolean) as SideNavigationItem[];
 
-  return items;
+  const allItems = items.flatMap((item) => [item, ...(item.children ?? [])]);
+  const activeItem = allItems.find((item) => item.isActive);
+
+  return { items, activeItem };
 }
