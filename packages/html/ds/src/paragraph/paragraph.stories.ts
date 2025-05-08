@@ -6,6 +6,45 @@ import { ParagraphProps } from './types';
 
 const meta: Meta<ParagraphProps> = {
   title: 'Typography/Paragraph',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Paragraph component used for rendering body text with consistent spacing, font size, and line height.',
+      },
+    },
+  },
+  argTypes: {
+    content: {
+      control: 'text',
+      type: { name: 'string', required: true },
+      description: 'The text content of the paragraph.',
+    },
+    as: {
+      control: 'radio',
+      options: ['p', 'span'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the HTML element to render the component as.',
+    },
+    size: {
+      control: 'radio',
+      options: ['lg', 'md', 'sm'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the size of the paragraph.',
+    },
+    align: {
+      control: 'radio',
+      options: ['start', 'center', 'end', 'justify'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the alignment of the paragraph.',
+    },
+    whitespace: {
+      control: 'radio',
+      options: ['normal', 'pre', 'pre-wrap', 'break-spaces'],
+      type: { name: 'string', required: false },
+      description: 'Specifies the whitespace property.',
+    },
+  },
 };
 
 export default meta;
@@ -18,7 +57,8 @@ const createElement = (arguments_: ParagraphProps) => {
 
 export const Default: Story = {
   args: {
-    content: 'This is a paragraph.',
+    content: 'Paragraph.',
+    dataTestid: 'paragraph',
     as: 'p',
     size: 'md',
     align: 'start',
@@ -27,7 +67,7 @@ export const Default: Story = {
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const paragraph = canvas.getByText('This is a paragraph.');
+    const paragraph = canvas.getByText('Paragraph.');
     expect(paragraph).toHaveClass('gi-paragraph-md');
     expect(paragraph).toHaveClass('gi-text-start');
     expect(paragraph).toHaveClass('gi-whitespace-normal');

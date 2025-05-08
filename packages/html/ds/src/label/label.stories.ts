@@ -6,6 +6,14 @@ import { LabelProps, LabelSize } from './types';
 
 const meta: Meta<LabelProps> = {
   title: 'Typography/Label',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A Label component to wrap label text and associate it with a form input element.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -52,19 +60,6 @@ export const Default: Story = {
   },
 };
 
-export const Large: Story = {
-  args: {
-    size: LabelSize.Large,
-    content: 'This is label text',
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const label = canvas.getByText('This is label text');
-    expect(label).toHaveClass('gi-text-lg');
-  },
-};
-
 export const Small: Story = {
   args: {
     size: LabelSize.Small,
@@ -75,5 +70,31 @@ export const Small: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('This is label text');
     expect(label).toHaveClass('gi-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: LabelSize.Medium,
+    content: 'This is label text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: LabelSize.Large,
+    content: 'This is label text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('This is label text');
+    expect(label).toHaveClass('gi-text-lg');
   },
 };

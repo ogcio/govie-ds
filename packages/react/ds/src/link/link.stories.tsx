@@ -1,65 +1,64 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paragraph } from '../paragraph/paragraph.js';
-import { Stack } from '../stack/stack.js';
-
-import { Link } from './link.js';
+import { Link, LinkProps } from './link.js';
 
 const meta = {
   title: 'Navigation/Link',
   component: Link,
-} satisfies Meta<typeof Link>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
   argTypes: {
-    children: {
+    content: {
       control: 'text',
       type: { name: 'string', required: true },
+      description: 'Link html content',
     },
     href: {
       control: 'text',
-      type: { name: 'string', required: true },
-    },
-    noUnderline: {
-      description: 'To remove underlines from links.',
-      control: 'boolean',
-      type: { name: 'boolean' },
-    },
-    external: {
-      description: 'To open the link in a new tab.',
-      control: 'boolean',
-      type: { name: 'boolean' },
+      type: { name: 'string', required: false },
+      description: 'URL to navigate to',
     },
     noVisited: {
-      description:
-        'Where it is not helpful to distinguish between visited and unvisited states, for example when linking to pages with frequently-changing content such as the dashboard for an admin interface.',
       control: 'boolean',
       type: { name: 'boolean' },
+      description: 'Removes the visited link styling',
+    },
+    noUnderline: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Disables underline styling on the link',
     },
     noColor: {
-      description: 'To inherit color from parent',
       control: 'boolean',
       type: { name: 'boolean' },
+      description: 'Prevents default color styling',
+    },
+    external: {
+      control: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Marks the link as external (adds rel, target)',
     },
     size: {
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
-      description: 'Size of the link.',
       type: { name: 'string', required: false },
+      description: 'Controls the link size',
+    },
+    dataTestid: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Custom data-testid attribute for testing',
     },
     iconStart: {
-      description: 'Optional icon displayed at the start of the link field.',
       control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Icon displayed before link text',
       table: {
         category: 'Visual',
         type: { summary: 'IconId' },
       },
     },
     iconEnd: {
-      description: 'Optional icon displayed at the end of the link field.',
       control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Icon displayed after link text',
       table: {
         category: 'Visual',
         type: { summary: 'IconId' },
@@ -67,412 +66,166 @@ export const Default: Story = {
     },
     disabled: {
       control: 'boolean',
-      description: 'Specify if the link is disabled',
-      type: 'boolean',
+      type: { name: 'boolean' },
+      description: 'Disables interaction and dims the link',
     },
     appearance: {
       control: { type: 'radio' },
       options: ['default', 'light'],
-      description: 'Appearance of the link.',
-      category: 'Visual',
       type: { name: 'string', required: false },
+      description: 'Link appearance style',
+      table: {
+        category: 'Visual',
+        type: { summary: "'default' | 'light'" },
+      },
     },
   },
-  args: {
-    href: '#',
-    children: 'Link',
-  },
-};
-
-export const WithoutUnderline: Story = {
-  args: {
-    href: '#',
-    children: 'Link without underline',
-    noUnderline: true,
-  },
-};
-
-export const External: Story = {
-  args: {
-    href: '#',
-    children: 'Link text (opens in a new tab)',
-    external: true,
-  },
-};
-
-export const NoVisited: Story = {
-  args: {
-    href: '#',
-    children: 'Link',
-    noVisited: true,
-  },
-};
-
-export const StyledAsButton: Story = {
-  args: {
-    asButton: {
-      variant: 'primary',
-      size: 'medium',
-      appearance: 'default',
-    },
-    href: '#',
-    children: 'Link',
-  },
-};
-
-export const AsButton: Story = {
-  args: {},
-  render: () => (
-    <Link onClick={() => alert('Button Clicked')} asChild>
-      <button>Click me</button>
-    </Link>
-  ),
-};
-
-export const AllStates: Story = {
-  args: {
-    href: '#',
-    children: '',
-    noVisited: true,
-  },
-  render: () => (
-    <div className="gi-gap-4 gi-flex">
-      <Link href="#">Default</Link>
-      <Link href="#">Hover</Link>
-      <Link href="#">Focus</Link>
-    </div>
-  ),
   parameters: {
-    pseudo: {
-      hover: '.gi-link:nth-child(2)',
-      focus: '.gi-link:nth-child(3)',
+    docs: {
+      description: {
+        component:
+          'Link component for navigating to internal or external URLs. Supports accessibility features, icons, and customizable styles.',
+      },
     },
-  },
-};
-
-export const WithText: Story = {
-  render: () => (
-    <Stack gap={2}>
-      <Stack>
-        <Paragraph>Small size</Paragraph>
-        <Paragraph size="sm">
-          Here is a paragraph with{' '}
-          <Link
-            size="sm"
-            href="#"
-            iconStart="arrow_back"
-            iconEnd="arrow_forward"
-          >
-            Link text
-          </Link>
-          .
-        </Paragraph>
-      </Stack>
-      <Stack>
-        <Paragraph size="md">Medium size</Paragraph>
-        <Paragraph size="md">
-          Here is a paragraph with{' '}
-          <Link
-            size="md"
-            href="#"
-            iconStart="arrow_back"
-            iconEnd="arrow_forward"
-          >
-            Link text
-          </Link>
-          .
-        </Paragraph>
-      </Stack>
-      <Stack>
-        <Paragraph size="lg">Large size</Paragraph>
-        <Paragraph size="lg">
-          Here is a paragraph with{' '}
-          <Link
-            size="lg"
-            href="#"
-            iconStart="arrow_back"
-            iconEnd="arrow_forward"
-          >
-            Link text
-          </Link>
-          .
-        </Paragraph>
-      </Stack>
-    </Stack>
-  ),
-};
-
-export const AllVariants: Story = {
-  render: () => (
-    <Stack gap={6}>
-      <Stack gap={6}>
-        <Paragraph> Underline</Paragraph>
-        <Stack gap={6}>
-          <Stack gap={2}>
-            <Paragraph>Default</Paragraph>
-            <div className="gi-flex gi-gap-4">
-              <Link href="#" iconStart="arrow_back" iconEnd="arrow_forward">
-                Link text
-              </Link>
-              <Link
-                href="#"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                href="#"
-                className="link-focus"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                href="#"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-          <Stack gap={2}>
-            <Paragraph>No color</Paragraph>
-            <div className="gi-flex gi-gap-4">
-              <Link
-                href="#2"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                noColor
-              >
-                Link text
-              </Link>
-              <Link
-                noColor
-                href="#21"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                noColor
-                href="#22"
-                className="link-focus"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                noColor
-                href="#23"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-          <Stack gap={2}>
-            <Paragraph>Light</Paragraph>
-            <div className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-              <Link
-                appearance="light"
-                href="#2"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-              <Link
-                appearance="light"
-                href="#21"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                appearance="light"
-                href="#22"
-                className="link-focus"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                appearance="light"
-                href="#23"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-        </Stack>
-      </Stack>
-      <Stack gap={6}>
-        <Paragraph> No Underline</Paragraph>
-        <Stack gap={6}>
-          <Stack gap={2}>
-            <Paragraph>Default</Paragraph>
-            <div className="gi-flex gi-gap-4">
-              <Link
-                href="#"
-                noUnderline
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-              <Link
-                noUnderline
-                href="#"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                href="#"
-                className="link-focus"
-                noUnderline
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                href="#"
-                noUnderline
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-          <Stack gap={2}>
-            <Paragraph>No color</Paragraph>
-            <div className="gi-flex gi-gap-4">
-              <Link
-                href="#2"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                noColor
-                noUnderline
-              >
-                Link text
-              </Link>
-              <Link
-                noColor
-                href="#21"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                noUnderline
-              >
-                Link text
-              </Link>
-
-              <Link
-                noColor
-                href="#22"
-                className="link-focus"
-                noUnderline
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                noColor
-                noUnderline
-                href="#23"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-          <Stack gap={2}>
-            <Paragraph>Light</Paragraph>
-            <div className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit">
-              <Link
-                appearance="light"
-                href="#2"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                noUnderline
-              >
-                Link text
-              </Link>
-              <Link
-                appearance="light"
-                href="#21"
-                className="link-hover"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                noUnderline
-              >
-                Link text
-              </Link>
-
-              <Link
-                appearance="light"
-                href="#22"
-                className="link-focus"
-                noUnderline
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-              >
-                Link text
-              </Link>
-
-              <Link
-                appearance="light"
-                href="#23"
-                iconStart="arrow_back"
-                iconEnd="arrow_forward"
-                disabled
-                noUnderline
-              >
-                Link text
-              </Link>
-            </div>
-          </Stack>
-        </Stack>
-      </Stack>
-    </Stack>
-  ),
-  parameters: {
     pseudo: {
       hover: '.link-hover',
       focus: '.link-focus',
     },
+  },
+} satisfies Meta<typeof Link>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const baseProps: LinkProps = {
+  children: 'Link text',
+  href: '#',
+};
+
+const withIcons = (props: LinkProps) => {
+  return {
+    ...props,
+    iconStart: 'arrow_back',
+    iconEnd: 'arrow_forward',
+  } as any;
+};
+
+const wrapInDarkBg = (story: Story): Story => {
+  return {
+    ...story,
+    render: (props) => (
+      <div className="gi-bg-black gi-p-4 gi-w-fit">
+        <Link {...props} />
+      </div>
+    ),
+  };
+};
+
+export const Default: Story = {
+  args: {
+    ...baseProps,
+  },
+};
+
+export const WithIconStart: Story = {
+  args: {
+    ...baseProps,
+    iconStart: 'arrow_back',
+  },
+};
+
+export const DefaultWithIconEnd: Story = {
+  args: {
+    ...baseProps,
+    iconEnd: 'arrow_back',
+  },
+};
+
+export const DefaultWithIcons: Story = {
+  args: withIcons(baseProps),
+};
+
+export const NoUnderline: Story = {
+  args: {
+    ...baseProps,
+    noUnderline: true,
+  },
+};
+
+export const NoUnderlineWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    noUnderline: true,
+  }),
+};
+
+export const NoColor: Story = {
+  args: {
+    ...baseProps,
+    noColor: true,
+  },
+};
+
+export const NoColorWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    noColor: true,
+  }),
+};
+
+export const Light: Story = wrapInDarkBg({
+  args: {
+    ...baseProps,
+    appearance: 'light',
+  },
+});
+
+export const LightWithIcons: Story = wrapInDarkBg({
+  args: withIcons({
+    ...baseProps,
+    appearance: 'light',
+  }),
+});
+
+export const Disabled: Story = {
+  args: {
+    ...baseProps,
+    disabled: true,
+  },
+};
+
+export const DisabledWithIcons: Story = {
+  args: withIcons({
+    ...baseProps,
+    disabled: true,
+  }),
+};
+
+export const HoverState: Story = {
+  args: {
+    ...baseProps,
+    className: 'link-hover',
+  },
+};
+
+export const FocusState: Story = {
+  args: {
+    ...baseProps,
+    className: 'link-focus',
+  },
+};
+
+export const DisabledState: Story = {
+  args: {
+    ...baseProps,
+    disabled: true,
+    className: 'link-disabled',
+  },
+};
+
+export const StateFocusWithIcons: Story = {
+  args: {
+    ...withIcons(baseProps),
+    className: 'link-hover link-focus',
   },
 };

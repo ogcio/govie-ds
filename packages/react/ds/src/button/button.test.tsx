@@ -16,7 +16,7 @@ describe('button', () => {
   afterEach(cleanup);
   const renderButton = ({ children, ...props }: ButtonProps) =>
     renderComponent(
-      <Button {...props} data-testid={'govie-button'}>
+      <Button {...props} dataTestid={'govie-button'}>
         {children}
       </Button>,
     );

@@ -10,12 +10,22 @@ import { ButtonProps } from './types.js';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { variant, appearance, size, disabled, className, children, ...props },
+    {
+      variant,
+      appearance,
+      size,
+      disabled,
+      className,
+      children,
+      dataTestid,
+      ...props
+    },
     ref,
   ) => {
     return (
       <button
         {...props}
+        data-testid={dataTestid || 'govie-button'}
         ref={ref}
         aria-disabled={disabled}
         disabled={disabled}

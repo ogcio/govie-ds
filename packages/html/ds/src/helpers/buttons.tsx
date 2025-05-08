@@ -92,6 +92,8 @@ export const createButton = (arguments_: ButtonProps) => {
     component.innerHTML = arguments_.content;
   }
 
+  component.disabled = !!arguments_.disabled;
+
   return component;
 };
 

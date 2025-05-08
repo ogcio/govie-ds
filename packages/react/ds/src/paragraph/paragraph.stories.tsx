@@ -1,9 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { Paragraph } from './paragraph.js';
 
 const meta = {
   title: 'typography/Paragraph',
   component: Paragraph,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Paragraph component used for rendering body text with consistent spacing, font size, and line height.',
+      },
+    },
+  },
 } satisfies Meta<typeof Paragraph>;
 
 export default meta;
@@ -42,25 +51,42 @@ export const Default: Story = {
     },
   },
   args: {
-    children: 'Paragraph',
+    dataTestid: 'paragraph',
+    children: 'This is a paragraph.',
     as: 'p',
     size: 'md',
     align: 'start',
     whitespace: 'normal',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText('This is a paragraph.');
+    expect(paragraph).toHaveClass('gi-paragraph-md');
+    expect(paragraph).toHaveClass('gi-text-start');
+    expect(paragraph).toHaveClass('gi-whitespace-normal');
+  },
 };
 
 export const RightAlignment: Story = {
   args: {
+    dataTestid: 'paragraph',
     children: 'This is a paragraph.',
     as: 'p',
     size: 'md',
     align: 'end',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText('This is a paragraph.');
+    expect(paragraph).toHaveClass('gi-paragraph-md');
+    expect(paragraph).toHaveClass('gi-text-end');
+    expect(paragraph).toHaveClass('gi-whitespace-normal');
+  },
 };
 
 export const WhitespacePre: Story = {
   args: {
+    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -69,10 +95,16 @@ You will never know.`,
     as: 'p',
     whitespace: 'pre',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByTestId('paragraph');
+    expect(paragraph).toHaveClass('gi-whitespace-pre');
+  },
 };
 
 export const WhitespacePreWrap: Story = {
   args: {
+    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -81,10 +113,16 @@ You will never know.`,
     as: 'p',
     whitespace: 'pre-wrap',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByTestId('paragraph');
+    expect(paragraph).toHaveClass('gi-whitespace-pre-wrap');
+  },
 };
 
 export const WhitespaceBreakSpaces: Story = {
   args: {
+    dataTestid: 'paragraph',
     children: `Hey everyone!
 
 It's almost 2022       and we still don't know if there       is aliens living among us, or do we? Maybe the person writing this is an alien.
@@ -92,5 +130,24 @@ It's almost 2022       and we still don't know if there       is aliens living a
 You will never know.`,
     as: 'p',
     whitespace: 'break-spaces',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByTestId('paragraph');
+    expect(paragraph).toHaveClass('gi-whitespace-break-spaces');
+  },
+};
+
+export const AsSpan: Story = {
+  args: {
+    dataTestid: 'paragraph',
+    as: 'span',
+    children: 'This is a paragraph',
+    size: 'md',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByText('This is a paragraph');
+    expect(paragraph).toHaveClass('gi-span-md');
   },
 };
