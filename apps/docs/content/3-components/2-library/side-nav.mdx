@@ -60,9 +60,6 @@ Side Navigation (SideNav) helps users navigate across major sections of an appli
       <div role="group" aria-label="Dashboard item">
         <button class="gi-btn gi-side-nav-item gi-side-nav-item-primary" id="side-nav-dashboard" type="button">
           <div class="gi-side-nav-item-left">
-            <div class="gi-side-nav-item-icon">
-              <span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">apps</span>
-            </div>
             <div class="gi-side-nav-item-label">
               <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">Dashboard</p>
             </div>
@@ -136,16 +133,12 @@ Side Navigation (SideNav) helps users navigate across major sections of an appli
       <div role="group" aria-label="Settings item">
         <button class="gi-btn gi-side-nav-item gi-side-nav-item-primary" id="side-nav-settings" type="button">
           <div class="gi-side-nav-item-left">
-            <div class="gi-side-nav-item-icon">
-              <span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px;">settings</span>
-            </div>
             <div class="gi-side-nav-item-label">
               <p class="gi-paragraph-md gi-text-start gi-whitespace-normal">Settings</p>
             </div>
           </div>
         </button>
       </div>
-    </div>
     </div>
     ```
   </TabPanel>
@@ -154,7 +147,7 @@ Side Navigation (SideNav) helps users navigate across major sections of an appli
     import { SideNav, SideNavItem } from '@govie-ds/react';
 
     <SideNav value="projects-active">
-      <SideNavItem primary value="dashboard" label="Dashboard" icon="apps" />
+      <SideNavItem primary value="dashboard" label="Dashboard" />
       <SideNavItem primary expandable value="team" label="Team">
         <SideNavItem secondary value="team-members" label="Members" />
         <SideNavItem secondary value="team-permissions" label="Permissions" />
@@ -163,7 +156,7 @@ Side Navigation (SideNav) helps users navigate across major sections of an appli
         <SideNavItem secondary value="projects-active" label="Active" href="#" />
         <SideNavItem secondary href="#" value="projects-archived" label="Archived" />
       </SideNavItem>
-      <SideNavItem primary value="settings" label="Settings" icon="settings" />
+      <SideNavItem primary value="settings" label="Settings" />
     </SideNav>
     ```
 
