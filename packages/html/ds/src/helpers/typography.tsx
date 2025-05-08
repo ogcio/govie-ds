@@ -26,7 +26,7 @@ export const createHeading = (arguments_: HeadingProps) => {
         classSize = 'gi-heading-lg';
         break;
       }
-      case 'h1': {
+      default: {
         classSize = 'gi-heading-xl';
         break;
       }
@@ -113,8 +113,7 @@ export const createParagraph = (arguments_: ParagraphProps) => {
   }
 
   const component = document.createElement(arguments_.as ?? 'p');
-  component.className =
-    `${classSize} ${alignClass} ${whitespaceClass} gi-max-w-prose`.trim();
+  component.className = `${classSize} ${alignClass} ${whitespaceClass}`.trim();
   if (arguments_.content) {
     component.innerHTML = arguments_.content;
   }

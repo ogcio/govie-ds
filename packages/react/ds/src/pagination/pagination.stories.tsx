@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { Pagination } from './pagination.js';
 
 const meta: Meta<typeof Pagination> = {
@@ -52,5 +53,42 @@ export const Default: Story = {
     totalPages: 10,
     currentPage: 5,
     onPageChange: (page: number) => console.log(`Navigated to page: ${page}`),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
+    expect(previousButton).toBeInTheDocument();
+
+    const nextButton = canvas.getByTestId('govie-pagination-next-btn');
+    expect(nextButton).toBeInTheDocument();
+  },
+};
+
+export const FirstPageSelected: Story = {
+  args: {
+    totalPages: 10,
+    currentPage: 1,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const previousButton = canvas.getByTestId('govie-pagination-prev-btn');
+    expect(previousButton).toBeInTheDocument();
+    expect(previousButton).toHaveClass('gi-btn-flat-dark-disabled');
+  },
+};
+
+export const LastPageSelected: Story = {
+  args: {
+    totalPages: 10,
+    currentPage: 10,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const nextButton = canvas.getByTestId('govie-pagination-next-btn');
+    expect(nextButton).toBeInTheDocument();
+    expect(nextButton).toHaveClass('gi-btn-flat-dark-disabled');
   },
 };

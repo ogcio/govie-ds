@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { SectionBreak } from './section-break.js';
 
 const meta = {
@@ -30,5 +31,49 @@ export const Default: Story = {
   },
   args: {
     size: 'md',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByRole('separator');
+    expect(paragraph).toHaveClass('gi-section-break-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByRole('separator');
+    expect(paragraph).toHaveClass('gi-section-break-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByRole('separator');
+    expect(paragraph).toHaveClass('gi-section-break-lg');
+  },
+};
+
+export const ExtraLarge: Story = {
+  args: {
+    size: 'xl',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const paragraph = canvas.getByRole('separator');
+    expect(paragraph).toHaveClass('gi-section-break-xl');
   },
 };

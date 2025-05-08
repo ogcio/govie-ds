@@ -5,6 +5,14 @@ import { Heading, HeadingProps, headingVariants } from './heading.js';
 export default {
   title: 'typography/Heading',
   component: Heading,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Heading component for displaying semantic, accessible typographic headings (e.g., h1–h6) with consistent styling.',
+      },
+    },
+  },
 } satisfies Meta<HeadingProps>;
 
 type Story = StoryObj<HeadingProps>;
@@ -35,22 +43,6 @@ export const Default: Story = {
     expect(heading).toBeTruthy();
   },
 };
-
-export const WithSize: Story = () => {
-  return (
-    <div className="flex flex-row gap-2">
-      {Object.keys(headingVariants.variants.size).map((size) => (
-        <Heading
-          key={size}
-          size={size as keyof typeof headingVariants.variants.size}
-        >
-          Heading {size}
-        </Heading>
-      ))}
-    </div>
-  );
-};
-WithSize.args = {};
 
 export const Small: Story = {
   args: {
