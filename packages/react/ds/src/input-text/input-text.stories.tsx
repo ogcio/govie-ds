@@ -120,7 +120,7 @@ export const Default: Story = {
 
 export const Focus: Story = {
   render: () => (
-    <FormField label={{ text: 'Label', htmlFor: 'focus-input' }}>
+    <FormField label={{ text: 'Label Focus', htmlFor: 'focus-input' }}>
       <InputText type="text" id="focus-input" inputClassName="focus-input" />
     </FormField>
   ),
