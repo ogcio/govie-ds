@@ -31,6 +31,11 @@ i18n.init({
 
 const preview: Preview = {
   decorators: [
+    (Story) => {
+      document.body.style.height = '100vh';
+      document.body.style.margin = '0';
+      return <Story />;
+    },
     withThemeByDataAttribute({
       themes: {
         govie: '',

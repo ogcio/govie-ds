@@ -10,6 +10,11 @@ import '../styles.css';
 import './global.css';
 
 const decorators = [
+  (Story) => {
+    document.body.style.height = '100vh';
+    document.body.style.margin = '0';
+    return <Story />;
+  },
   (Story, context) => {
     useEffect(() => {
       destroyGovIe();
