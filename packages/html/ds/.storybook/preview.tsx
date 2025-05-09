@@ -10,10 +10,10 @@ import '../styles.css';
 import './global.css';
 
 const decorators = [
-  (Story) => {
+  (story) => {
     document.body.style.height = '100vh';
     document.body.style.margin = '0';
-    return <Story />;
+    return story();
   },
   (Story, context) => {
     useEffect(() => {
