@@ -180,7 +180,7 @@ export const WithGroups = {
     const canvas = within(canvasElement);
 
     const select = canvas.getByTestId('select') as HTMLSelectElement;
-    expect(select.options.length).toBe(9);
+    expect(select.options.length).toBe(12);
 
     const optGroup1 = canvas.getByTestId('select-group');
     expect(optGroup1).toBeTruthy();
