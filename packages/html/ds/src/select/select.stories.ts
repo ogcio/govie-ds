@@ -32,10 +32,16 @@ const createSelect = (arguments_: SelectProps) => {
         const option = document.createElement('option');
         option.className = 'gi-select-option';
         if (subitem.label) {
-          option.label = subitem.label;
+          option.textContent = subitem.label;
         }
         if (subitem.value) {
           option.value = `${subitem.value}`;
+        }
+        if (subitem.hidden) {
+          option.hidden = true;
+        }
+        if (subitem.selected) {
+          option.selected = true;
         }
         optgroup.append(option);
       }
@@ -44,10 +50,16 @@ const createSelect = (arguments_: SelectProps) => {
       const option = document.createElement('option');
       option.className = 'gi-select-option';
       if (item.label) {
-        option.label = item.label;
+        option.textContent = item.label;
       }
       if (item.value) {
         option.value = `${item.value}`;
+      }
+      if (item.hidden) {
+        option.hidden = true;
+      }
+      if (item.selected) {
+        option.selected = true;
       }
       select.append(option);
     }
@@ -57,7 +69,6 @@ const createSelect = (arguments_: SelectProps) => {
 
   return formField;
 };
-
 const createElement = (arguments_: SelectProps) => {
   const component = createSelect(arguments_);
   return beautifyHtmlNode(component);
@@ -71,6 +82,12 @@ export const Default: Story = {
       htmlFor: 'unique-id',
     },
     items: [
+      {
+        label: 'Select Option',
+        hidden: true,
+        selected: true,
+        value: '',
+      },
       {
         label: 'Option 1',
         value: 'value-1',
@@ -104,6 +121,12 @@ export const withLabelHintAndError: Story = {
     },
     items: [
       {
+        label: 'Select Option',
+        hidden: true,
+        selected: true,
+        value: '',
+      },
+      {
         label: 'Option 1',
         value: 'value-1',
       },
@@ -121,15 +144,15 @@ export const withLabelHintAndError: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textInput = canvas.getByTestId('unique-id') as HTMLSelectElement;
-    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
+    const select = canvas.getByTestId('unique-id') as HTMLSelectElement;
+    expect(globalThis.window.getComputedStyle(select).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
 
     const label = canvas.getByText('Default Select');
     expect(label).toBeTruthy();
     expect(label).toHaveClass('gi-label');
-    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
+    expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
 
     const hint = canvas.getByText(
       'This can be different to where you went before',
@@ -140,6 +163,11 @@ export const withLabelHintAndError: Story = {
     const error = canvas.getByText('Error message');
     expect(error).toBeTruthy();
     expect(error).toHaveClass('gi-error-text');
+
+    const placeholderOption = select.options[0];
+    expect(placeholderOption.textContent).toBe('Select Option');
+    expect(placeholderOption.hidden).toBe(true);
+    expect(placeholderOption.selected).toBe(true);
   },
 };
 
@@ -154,6 +182,12 @@ export const withGroups: Story = {
       {
         label: 'Group 1',
         items: [
+          {
+            label: 'Select Option',
+            hidden: true,
+            selected: true,
+            value: '',
+          },
           {
             label: 'Option 1',
             value: 'value-1',
@@ -171,6 +205,12 @@ export const withGroups: Story = {
       {
         label: 'Group 2',
         items: [
+          {
+            label: 'Select Option',
+            hidden: true,
+            selected: true,
+            value: '',
+          },
           {
             label: 'Option 4',
             value: 'value-4',
