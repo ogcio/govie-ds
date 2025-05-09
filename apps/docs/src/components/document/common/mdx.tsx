@@ -98,6 +98,7 @@ import { OpacityTable } from '../opacity/opacity-table';
 import { Addresses } from '../patterns/addresses';
 import { ContactDeptOrService } from '../patterns/contact-dept-or-service';
 import { PageNotFound } from '../patterns/page-not-found';
+import { LoadingPattern } from '../patterns/loading';
 import { RenderPage } from '../patterns/render-page';
 import { ServiceUnavailable } from '../patterns/service-not-available';
 import { Favicons } from '../resources/favicons';
@@ -192,6 +193,7 @@ const documentComponents: MDXComponents = {
   DesignSystemBenefits: () => <DesignSystemBenefits />,
   Vision: () => <Vision />,
   PageNotFound: (props) => <PageNotFound {...props} />,
+  LoadingPattern: (props) => <LoadingPattern {...props} />,
   RenderPage: (props) => <RenderPage {...props} />,
   ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
   ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
