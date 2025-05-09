@@ -38,22 +38,28 @@ export const Default: Story = {
   },
 };
 
-export const AllStates: Story = {
+export const Hover: Story = {
   args: {
-    label: '',
+    label: 'Hover',
     onClose: () => {},
+    className: 'hover-chip',
   },
-  render: () => (
-    <div className="gi-gap-4 gi-flex-col gi-flex gi-w-fit">
-      <Chip onClose={() => null} label="Default" />
-      <Chip onClose={() => null} label="Hover" />
-      <Chip onClose={() => null} label="Focus" />
-    </div>
-  ),
   parameters: {
     pseudo: {
-      hover: '.gi-chip:nth-child(2)',
-      focus: '.gi-chip:nth-child(3)',
+      hover: '.hover-chip',
+    },
+  },
+};
+
+export const Focus: Story = {
+  args: {
+    label: 'Focus',
+    onClose: () => {},
+    className: 'focus-chip',
+  },
+  parameters: {
+    pseudo: {
+      focus: '.focus-chip',
     },
   },
 };
