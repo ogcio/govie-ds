@@ -4,10 +4,11 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { DetailsProps } from './types';
 
 const meta: Meta<DetailsProps> = {
-  decorators: (story: any) => `
+  decorators: (story: any) =>
+    `
     <div class="gi-pl-6 gi-pt-6 gi-h-[200px]">
       ${story()}
-    </div>`,
+    </div>` as any,
   title: 'Typography/Details',
   parameters: {
     layout: 'fullscreen',

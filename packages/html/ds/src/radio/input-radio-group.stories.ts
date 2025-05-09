@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { createFormField, createRadio } from '../helpers/forms';
+import { createInputRadioGroup } from '../helpers/input-radio-group';
+import { createParagraph } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { RadioGroupProps } from './types';
 
 const meta: Meta<RadioGroupProps> = {
-  title: 'form/Radio/RadioGroup',
+  title: 'form/Radio/InputRadioGroup',
 };
 
 export default meta;
@@ -31,42 +32,8 @@ const standardProps: RadioGroupProps = {
   ],
 };
 
-const createRadioGroup = (arguments_: RadioGroupProps) => {
-  const formField = createFormField(arguments_);
-
-  const container = document.createElement('div');
-  container.className = 'gi-input-group-container';
-  container.dataset.module = 'gieds-radios';
-
-  const innerContainer = document.createElement('div');
-  innerContainer.className = 'gi-input-group-options-container';
-
-  const stackContainer = document.createElement('div');
-  stackContainer.dataset.element = 'radio-container';
-  stackContainer.className = arguments_.inline
-    ? 'gi-input-group-options-inline'
-    : 'gi-input-group-options-stacked';
-
-  for (let index = 0; index < arguments_.items.length; index++) {
-    const item = arguments_.items[index];
-    const radio = createRadio({
-      ...item,
-      name: arguments_.groupId,
-      size: arguments_.size,
-      dataElement: `radio${index}`,
-    });
-    stackContainer.append(radio);
-  }
-
-  innerContainer.append(stackContainer);
-  container.append(innerContainer);
-  formField.append(container);
-
-  return formField;
-};
-
 const createElement = (arguments_: RadioGroupProps) => {
-  const component = createRadioGroup(arguments_);
+  const component = createInputRadioGroup(arguments_);
   return beautifyHtmlNode(component);
 };
 
@@ -87,7 +54,21 @@ export const inline: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
-export const withTitleHint: Story = {
+export const WithTitleHint: Story = {
+  args: {
+    ...standardProps,
+    label: {
+      content: 'Where do you live?',
+    },
+    hint: {
+      content: 'Specify the location where you live',
+    },
+    groupId: 'UniqueId3',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const withError: Story = {
   args: {
     ...standardProps,
     label: {
@@ -104,7 +85,7 @@ export const withTitleHint: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
-export const withOptionHints: Story = {
+export const WithOptionHints: Story = {
   args: {
     label: {
       content: 'Have you changed your name?',
@@ -129,7 +110,40 @@ export const withOptionHints: Story = {
   },
   render: (arguments_) => createElement(arguments_),
 };
-
+export const WithDividerOption: Story = {
+  args: {
+    label: {
+      content: 'Have you changed your name?',
+    },
+    hint: {
+      content:
+        'This includes changing your last name or spelling your name differently.',
+    },
+    items: [
+      {
+        label: 'Dublin',
+        value: 'Dublin',
+      },
+      {
+        label: 'Cork',
+        value: 'Cork',
+      },
+      {
+        label: 'Galway',
+        value: 'Galway',
+      },
+      {
+        slot: createParagraph({ content: 'or' }),
+      },
+      {
+        label: 'None of above',
+        value: 'none',
+      },
+    ],
+    groupId: 'UniqueId4',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
 export const withConditionalInput: Story = {
   args: {
     label: {
@@ -137,7 +151,7 @@ export const withConditionalInput: Story = {
     },
     items: [
       {
-        label: 'Email',
+        label: 'email',
         value: 'email',
         conditionalInput: {
           id: 'input-id-email',
@@ -150,7 +164,7 @@ export const withConditionalInput: Story = {
         },
       },
       {
-        label: 'Phone',
+        label: 'phone',
         value: 'phone',
         conditionalInput: {
           id: 'input-id-phone',

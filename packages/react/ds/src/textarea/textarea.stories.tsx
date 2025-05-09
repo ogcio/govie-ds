@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
-import { InputText } from '../input-text/input-text.js';
-import { Stack } from '../stack/stack.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -77,7 +75,7 @@ export const Default: Story = {
     <FormField
       id="textarea-id-0"
       label={{
-        text: 'Textarea Label',
+        text: 'Label',
         htmlFor: 'textarea-id-0',
       }}
     >
@@ -97,6 +95,23 @@ export const Default: Story = {
   },
 };
 
+export const Focus: Story = {
+  render: () => (
+    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
+      <TextArea
+        className="focus-input"
+        iconStart="placeholder"
+        placeholder="Placeholder"
+      />
+    </FormField>
+  ),
+  parameters: {
+    pseudo: {
+      focus: '.focus-input',
+    },
+  },
+};
+
 export const WithTextInputReset: Story = {
   args: {
     id: 'text-area-id01',
@@ -111,60 +126,6 @@ export const WithTextInputReset: Story = {
       >
         <TextArea clearButtonEnabled placeholder="Placeholder" />
       </FormField>
-    );
-  },
-};
-
-export const ResponsiveWidthWithInputText: Story = {
-  args: {
-    rows: 4,
-    cols: 100,
-    id: 'textarea-id-0',
-  },
-  render: (props) => {
-    const textProps = {
-      label: {
-        text: 'Input Label',
-        htmlFor: 'text-input-id',
-      },
-    };
-    return (
-      <div className="gi-w-full md:gi-w-1/2">
-        <Stack direction={{ base: 'column' }} gap={3} itemsAlignment="stretch">
-          <FormField
-            label={{
-              text: 'Input Label',
-              htmlFor: 'text-1',
-            }}
-          >
-            <InputText {...textProps} id="text-1" />
-          </FormField>
-          <FormField
-            label={{
-              text: 'Textarea Label',
-              htmlFor: 'textarea-1',
-            }}
-          >
-            <TextArea {...props} id="textarea-1" />
-          </FormField>
-          <FormField
-            label={{
-              text: 'Input Label',
-              htmlFor: 'text-2',
-            }}
-          >
-            <InputText {...textProps} id="text-2" />
-          </FormField>
-          <FormField
-            label={{
-              text: 'Textarea Label',
-              htmlFor: 'textarea-2',
-            }}
-          >
-            <TextArea {...props} id="textarea-2" />
-          </FormField>
-        </Stack>
-      </div>
     );
   },
 };
@@ -248,24 +209,6 @@ export const WithLabelHintAndError: Story = {
   },
 };
 
-export const CustomRowsAndColumns: Story = {
-  args: {
-    id: 'textarea-id-4',
-    rows: 6,
-    cols: 40,
-  },
-  render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-4',
-      }}
-    >
-      <TextArea {...props} />
-    </FormField>
-  ),
-};
-
 export const WithMaxChars: Story = {
   args: {
     id: 'textarea-id-5',
@@ -298,11 +241,10 @@ export const WithMaxChars: Story = {
   },
 };
 
-export const DisabledState: Story = {
+export const Disabled: Story = {
   args: {
     id: 'textarea-id-5',
     disabled: true,
-    value: 'This field is disabled',
   },
   render: (props) => (
     <FormField
@@ -336,67 +278,20 @@ export const WithHalfWidth: Story = {
   ),
 };
 
-export const AllVariantsStates: Story = {
-  render: () => {
-    return (
-      <Stack gap={4} itemsAlignment="stretch">
-        <FormField
-          label={{
-            text: 'Default',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <TextArea iconStart="placeholder" placeholder="Placeholder" />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Focus',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <TextArea
-            className="focus-input"
-            iconStart="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Error',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-          error={{
-            text: 'Invalid',
-          }}
-        >
-          <TextArea iconStart="placeholder" placeholder="Placeholder" />
-        </FormField>
-        <FormField
-          label={{
-            text: 'Disabled',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
-          <TextArea
-            disabled
-            iconStart="placeholder"
-            placeholder="Placeholder"
-          />
-        </FormField>
-      </Stack>
-    );
+export const CustomRowsAndColumns: Story = {
+  args: {
+    id: 'textarea-id-4',
+    rows: 6,
+    cols: 40,
   },
-  parameters: {
-    pseudo: {
-      focus: '.focus-input',
-    },
-  },
+  render: (props) => (
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'textarea-id-4',
+      }}
+    >
+      <TextArea {...props} />
+    </FormField>
+  ),
 };

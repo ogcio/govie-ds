@@ -5,9 +5,9 @@ import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
 import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
 import { initAlert } from './alert/alert.js'; /* eslint-disable-line import-x/order */
-import { initCheckboxes } from './checkbox/checkbox.js'; /* eslint-disable-line import-x/order */
-import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initHeader } from './header/header.js';
+import { initCheckboxes } from './input-checkbox/input-checkbox.js'; /* eslint-disable-line import-x/order */
+import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initModal } from './modal/modal.js';
 import { initRadios } from './radio/radio.js';
 import { initTabs } from './tabs/tabs.js';
@@ -60,7 +60,7 @@ const componentEvents = createEvents({
 
 componentEvents.init();
 
-export * from './checkbox/checkbox.js';
+export * from './input-checkbox/input-checkbox.js';
 export * from './header/header.js';
 export * from './radio/radio.js';
 export * from './tabs/tabs.js';

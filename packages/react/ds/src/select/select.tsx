@@ -34,9 +34,9 @@ export const SelectItem = ({ children, ...props }: SelectItemProps) => (
   </option>
 );
 
-export const Select = ({ children, ...props }: SelectProps) => {
+export const Select = ({ children, className, ...props }: SelectProps) => {
   return (
-    <select className={cn('gi-select', props.className)} {...props}>
+    <select className={cn('gi-select', className)} {...props}>
       {children}
     </select>
   );

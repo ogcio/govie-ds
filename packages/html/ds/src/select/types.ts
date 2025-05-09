@@ -10,11 +10,14 @@ export type SelectProps = {
   error?: ErrorTextProps;
   items: (SelectItemProps | SelectGroupItemProps)[];
   dataTestid?: string;
+  className?: string;
+  disabled?: boolean;
 };
 
 export type SelectItemProps = {
   value: string;
   label: string;
+  disabled?: boolean;
 };
 
 export type SelectGroupItemProps = {

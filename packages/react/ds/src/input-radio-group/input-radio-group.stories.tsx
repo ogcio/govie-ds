@@ -75,6 +75,25 @@ export const WithTitleHint: Story = {
   ),
 };
 
+export const WithError: Story = {
+  args: {
+    groupId: 'city6',
+  },
+  render: (arguments_) => (
+    <FormField
+      label={{ text: 'Where do you live?' }}
+      hint={{ text: 'Select a city' }}
+      error={{ text: 'Please select a city' }}
+    >
+      <InputRadioGroup {...arguments_}>
+        <InputRadio value="dublin" label="Dublin" />
+        <InputRadio value="cork" label="Cork" />
+        <InputRadio value="galway" label="Galway" />
+      </InputRadioGroup>
+    </FormField>
+  ),
+};
+
 export const WithOptionHints: Story = {
   args: {
     groupId: 'login',
@@ -117,25 +136,6 @@ export const WithDividerOption: Story = {
         <InputRadio value="galway" label="Galway" />
         <Paragraph>or</Paragraph>
         <InputRadio value={'none'} label={'Non of above'} />
-      </InputRadioGroup>
-    </FormField>
-  ),
-};
-
-export const WithError: Story = {
-  args: {
-    groupId: 'city6',
-  },
-  render: (arguments_) => (
-    <FormField
-      label={{ text: 'Where do you live?' }}
-      hint={{ text: 'Select a city' }}
-      error={{ text: 'Please select a city' }}
-    >
-      <InputRadioGroup {...arguments_}>
-        <InputRadio value="dublin" label="Dublin" />
-        <InputRadio value="cork" label="Cork" />
-        <InputRadio value="galway" label="Galway" />
       </InputRadioGroup>
     </FormField>
   ),

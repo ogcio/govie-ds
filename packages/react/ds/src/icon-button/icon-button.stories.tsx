@@ -7,7 +7,7 @@ const meta = {
   decorators: (Story, context) => {
     const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
     return (
-      <div className={`gi-p-4 ${isLight}`}>
+      <div className={`gi-p-4 ${isLight} gi-w-fit`}>
         <Story />
       </div>
     );
@@ -15,6 +15,14 @@ const meta = {
   component: IconButton,
   args: {
     onClick: fn(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'IconButton is a clickable button designed to contain only an icon. It supports multiple appearances and is commonly used for toolbars, actions, or navigation.',
+      },
+    },
   },
 } satisfies Meta<typeof IconButton>;
 
@@ -76,24 +84,6 @@ export const Large: Story = {
   },
 };
 
-export const SecondaryButton: Story = {
-  args: {
-    icon: {
-      icon: 'thumb_up',
-    },
-    variant: 'secondary',
-  },
-};
-
-export const FlatButton: Story = {
-  args: {
-    icon: {
-      icon: 'thumb_up',
-    },
-    variant: 'flat',
-  },
-};
-
 export const Disabled: Story = {
   args: {
     icon: {
@@ -103,246 +93,248 @@ export const Disabled: Story = {
   },
 };
 
-export const AllVariants: Story = {
+export const PrimaryDefault: Story = {
   args: {
-    icon: {
-      icon: 'thumb_up',
-    },
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
   },
-  render: (props) => (
-    <div className="gi-flex gi-flex-col gi-gap-4">
-      <div className="gi-flex gi-gap-4">
-        <IconButton variant="primary" size="medium" {...props} />
-        <IconButton
-          variant="primary"
-          size="medium"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton variant="primary" size="medium" disabled {...props} />
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <IconButton variant="secondary" size="medium" {...props} />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton variant="secondary" size="medium" disabled {...props} />
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <IconButton variant="flat" size="medium" {...props} />
-        <IconButton
-          variant="flat"
-          size="medium"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton variant="flat" size="medium" disabled {...props} />
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="dark"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="dark"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="dark"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="dark"
-          disabled
-          {...props}
-        />
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="dark"
-          disabled
-          {...props}
-        />
-      </div>
-      <div className="gi-flex gi-gap-4">
-        <IconButton variant="flat" size="medium" appearance="dark" {...props} />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="dark"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="dark"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="dark"
-          disabled
-          {...props}
-        />
-      </div>
-      <div
-        className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit"
-        data-testid="light-appearance"
-      >
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="light"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="light"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="light"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="primary"
-          size="medium"
-          appearance="light"
-          disabled
-          {...props}
-        />
-      </div>
-      <div
-        className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit"
-        data-testid="light-appearance"
-      >
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="light"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="light"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="light"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="secondary"
-          size="medium"
-          appearance="light"
-          disabled
-          {...props}
-        />
-      </div>
-      <div
-        className="gi-flex gi-gap-4 gi-bg-black gi-p-4 gi-w-fit"
-        data-testid="light-appearance"
-      >
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="light"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="light"
-          className="hover-selector"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="light"
-          className="focus-selector"
-          {...props}
-        />
-        <IconButton
-          variant="flat"
-          size="medium"
-          appearance="light"
-          disabled
-          {...props}
-        />
-      </div>
-    </div>
-  ),
+};
+
+export const PrimaryHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    className: 'hover-selector',
+  },
   parameters: {
-    pseudo: {
-      hover: '.hover-selector',
-      focus: '.focus-selector',
-    },
+    pseudo: { hover: '.hover-selector' },
+  },
+};
+
+export const PrimaryFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    className: 'focus-selector',
+  },
+  parameters: {
+    pseudo: { focus: '.focus-selector' },
+  },
+};
+
+export const PrimaryDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    disabled: true,
+  },
+};
+
+export const SecondaryDefault: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+  },
+};
+
+export const SecondaryHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    className: 'hover-selector',
+  },
+  parameters: {
+    pseudo: { hover: '.hover-selector' },
+  },
+};
+
+export const SecondaryFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    className: 'focus-selector',
+  },
+  parameters: {
+    pseudo: { focus: '.focus-selector' },
+  },
+};
+
+export const SecondaryDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    disabled: true,
+  },
+};
+
+export const FlatDefault: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+  },
+};
+
+export const FlatHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    className: 'hover-selector',
+  },
+  parameters: {
+    pseudo: { hover: '.hover-selector' },
+  },
+};
+
+export const FlatFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    className: 'focus-selector',
+  },
+  parameters: {
+    pseudo: { focus: '.focus-selector' },
+  },
+};
+
+export const FlatDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    disabled: true,
+  },
+};
+
+export const PrimaryLight: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    appearance: 'light',
+  },
+};
+
+export const PrimaryLightHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    appearance: 'light',
+    className: 'hover-selector',
+  },
+  parameters: { pseudo: { hover: '.hover-selector' } },
+};
+
+export const PrimaryLightFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    appearance: 'light',
+    className: 'focus-selector',
+  },
+  parameters: { pseudo: { focus: '.focus-selector' } },
+};
+
+export const PrimaryLightDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'primary',
+    appearance: 'light',
+    disabled: true,
+  },
+};
+
+export const SecondaryLight: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    appearance: 'light',
+  },
+};
+
+export const SecondaryLightHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    appearance: 'light',
+    className: 'hover-selector',
+  },
+  parameters: { pseudo: { hover: '.hover-selector' } },
+};
+
+export const SecondaryLightFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    appearance: 'light',
+    className: 'focus-selector',
+  },
+  parameters: { pseudo: { focus: '.focus-selector' } },
+};
+
+export const SecondaryLightDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'secondary',
+    appearance: 'light',
+    disabled: true,
+  },
+};
+
+export const FlatLight: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    appearance: 'light',
+  },
+};
+
+export const FlatLightHover: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    appearance: 'light',
+    className: 'hover-selector',
+  },
+  parameters: { pseudo: { hover: '.hover-selector' } },
+};
+
+export const FlatLightFocus: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    appearance: 'light',
+    className: 'focus-selector',
+  },
+  parameters: { pseudo: { focus: '.focus-selector' } },
+};
+
+export const FlatLightDisabled: Story = {
+  args: {
+    icon: { icon: 'thumb_up' },
+    size: 'medium',
+    variant: 'flat',
+    appearance: 'light',
+    disabled: true,
   },
 };

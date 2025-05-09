@@ -205,6 +205,73 @@ export const BasicTable: Story = {
   ),
 };
 
+export const NoHeaders: Story = {
+  args: {
+    captionText: 'Table Without Headers',
+    rows: [
+      {
+        id: 1,
+        col1: 'Row 1, Cell 1',
+        col2: 'Row 1, Cell 2',
+        col3: 'Row 1, Cell 3',
+      },
+      {
+        id: 2,
+        col1: 'Row 2, Cell 1',
+        col2: 'Row 2, Cell 2',
+        col3: 'Row 2, Cell 3',
+      },
+      {
+        id: 3,
+        col1: 'Row 3, Cell 1',
+        col2: 'Row 3, Cell 2',
+        col3: 'Row 3, Cell 3',
+      },
+    ],
+  },
+  render: ({ captionText, rows }) => (
+    <Table>
+      <Caption>{captionText}</Caption>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>{row.col1}</TableData>
+            <TableData>{row.col2}</TableData>
+            <TableData>{row.col3}</TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const EmptyState: Story = {
+  args: {
+    captionText: 'No Data Available',
+    headers: ['ID', 'Name', 'Status'],
+    rows: [],
+  },
+  render: ({ captionText, headers = [] }) => (
+    <Table>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableData colSpan={headers.length} className="gi-table-no-data">
+            No data to display
+          </TableData>
+        </TableRow>
+      </TableBody>
+    </Table>
+  ),
+};
+
 export const TableWithFooter: Story = {
   args: {
     captionText: 'Interactive Table with Footer',
@@ -352,33 +419,6 @@ export const AlignedColumns: Story = {
             <TableData align="right">{row.salary}</TableData>
           </TableRow>
         ))}
-      </TableBody>
-    </Table>
-  ),
-};
-
-export const EmptyState: Story = {
-  args: {
-    captionText: 'No Data Available',
-    headers: ['ID', 'Name', 'Status'],
-    rows: [],
-  },
-  render: ({ captionText, headers = [] }) => (
-    <Table>
-      <Caption>{captionText}</Caption>
-      <TableHead>
-        <TableRow>
-          {headers?.map((heading, index) => (
-            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
-          ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableData colSpan={headers.length} className="gi-table-no-data">
-            No data to display
-          </TableData>
-        </TableRow>
       </TableBody>
     </Table>
   ),

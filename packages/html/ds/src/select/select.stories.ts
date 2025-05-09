@@ -1,62 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createFormField } from '../helpers/forms';
+import { createFormField, createSelect } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { SelectProps } from './types';
 
 const meta: Meta<SelectProps> = {
   title: 'Form/Select',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A composable select component allows users to choose an option from a long list.',
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<SelectProps>;
-
-const createSelect = (arguments_: SelectProps) => {
-  const formField = createFormField(arguments_);
-
-  const select = document.createElement('select');
-  select.className = 'gi-select';
-  select.id = arguments_.id;
-  if (arguments_.dataTestid) {
-    select.dataset.testid = arguments_.dataTestid;
-  }
-
-  for (const item of arguments_.items) {
-    if ('items' in item) {
-      const optgroup = document.createElement('optgroup');
-      optgroup.role = 'group';
-      if (item.label) {
-        optgroup.label = item.label;
-      }
-      for (const subitem of item.items) {
-        const option = document.createElement('option');
-        option.className = 'gi-select-option';
-        if (subitem.label) {
-          option.label = subitem.label;
-        }
-        if (subitem.value) {
-          option.value = `${subitem.value}`;
-        }
-        optgroup.append(option);
-      }
-      select.append(optgroup);
-    } else {
-      const option = document.createElement('option');
-      option.className = 'gi-select-option';
-      if (item.label) {
-        option.label = item.label;
-      }
-      if (item.value) {
-        option.value = `${item.value}`;
-      }
-      select.append(option);
-    }
-  }
-
-  formField.append(select);
-
-  return formField;
-};
 
 const createElement = (arguments_: SelectProps) => {
   const component = createSelect(arguments_);
@@ -84,6 +45,35 @@ export const Default: Story = {
         value: 'value-3',
       },
     ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Focus = {
+  args: {
+    label: {
+      content: 'Label',
+    },
+    className: 'focus-select',
+    items: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      focus: '.focus-select',
+    },
   },
   render: (arguments_) => createElement(arguments_),
 };
@@ -141,6 +131,74 @@ export const withLabelHintAndError: Story = {
     expect(error).toBeTruthy();
     expect(error).toHaveClass('gi-error-text');
   },
+};
+
+export const WithoutLabel = {
+  args: {
+    items: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const DisabledSelect = {
+  args: {
+    disabled: true,
+    label: {
+      content: 'Label',
+    },
+    items: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const DisabledItem = {
+  args: {
+    label: {
+      content: 'Label',
+    },
+    items: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+        disabled: true,
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
 };
 
 export const withGroups: Story = {

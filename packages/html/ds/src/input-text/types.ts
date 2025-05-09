@@ -1,5 +1,7 @@
 import { ErrorTextProps } from '../error-text/types';
 import { HintTextProps } from '../hint-text/types';
+import { IconIdType } from '../icon/icon.schema';
+import { IconButtonProps } from '../icon-button/types';
 import { LabelProps } from '../label/types';
 
 export type TextInputProps = {
@@ -33,4 +35,8 @@ export type TextInputProps = {
     | 'week';
   halfFluid?: boolean;
   dataTestId?: string;
+  iconStart?: IconIdType;
+  iconEnd?: IconIdType;
+  inputActionButton?: IconButtonProps;
+  inputClassName?: string;
 };

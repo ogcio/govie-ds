@@ -192,3 +192,6 @@ whitespace
 withBorder
 xl
 xs
+form-radio-inputradiogroup
+form-inputtext
+form-checkbox-inputcheckboxgroup

@@ -18,10 +18,11 @@ const meta: Meta<ModalWrapperPropsExtension> = {
       },
     },
   },
-  decorators: (story) => `
+  decorators: (story) =>
+    `
     <div class="gi-h-[600px]">
       ${story()}
-    </div>`,
+    </div>` as any,
 };
 
 export default meta;

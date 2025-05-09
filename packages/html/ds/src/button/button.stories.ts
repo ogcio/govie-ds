@@ -6,6 +6,20 @@ import { ButtonProps } from './types';
 
 const meta: Meta<ButtonProps> = {
   title: 'Form/Button/Button',
+  decorators: (story, context) => {
+    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    return `<div class="gi-p-4 ${isLight} gi-w-fit">
+    ${story()}
+      </div>` as any;
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Button component to help users carry out an action like starting an application or saving their information.',
+      },
+    },
+  },
 };
 
 export default meta;
