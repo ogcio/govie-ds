@@ -22,6 +22,9 @@ export const Default = {
   render: () => (
     <FormField label={{ text: 'Label' }}>
       <Select aria-label="Select">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -34,6 +37,9 @@ export const Focus = {
   render: () => (
     <FormField label={{ text: 'Label', htmlFor: 'focus-select' }}>
       <Select id="focus-select" aria-label="Select" className="focus-select">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -55,6 +61,9 @@ export const WithLabelHintAndError = {
       error={{ text: 'This is an error' }}
     >
       <Select aria-label="Select" data-testid="select" id="select">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
@@ -84,6 +93,9 @@ export const WithLabelHintAndError = {
 export const WithoutLabel = {
   render: () => (
     <Select aria-label="Select">
+      <SelectItem selected hidden>
+        Select Option
+      </SelectItem>
       <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
       <SelectItem value="value-3">Option 3</SelectItem>
@@ -94,6 +106,9 @@ export const WithoutLabel = {
 export const DisabledSelect = {
   render: () => (
     <Select aria-label="Select" disabled>
+      <SelectItem selected hidden>
+        Select Option
+      </SelectItem>
       <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
       <SelectItem value="value-3">Option 3</SelectItem>
@@ -110,6 +125,9 @@ export const DisabledSelect = {
 export const DisabledItem = {
   render: () => (
     <Select aria-label="Select">
+      <SelectItem selected hidden>
+        Select Option
+      </SelectItem>
       <SelectItem disabled value="value-1">
         Option 1
       </SelectItem>
@@ -131,18 +149,27 @@ export const WithGroups = {
   render: () => (
     <Select aria-label="Select" data-testid="select">
       <SelectGroupItem label="Group 1" data-testid="select-group">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </SelectGroupItem>
 
       <SelectGroupItem label="Group 2">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-4">Option 4</SelectItem>
         <SelectItem value="value-5">Option 5</SelectItem>
         <SelectItem value="value-6">Option 6</SelectItem>
       </SelectGroupItem>
 
       <SelectGroupItem label="Group 3">
+        <SelectItem selected hidden>
+          Select Option
+        </SelectItem>
         <SelectItem value="value-7">Option 7</SelectItem>
         <SelectItem value="value-8">Option 8</SelectItem>
         <SelectItem value="value-9">Option 9</SelectItem>
