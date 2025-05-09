@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createFormField, createSelect } from '../helpers/forms';
+import { createSelect } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { SelectProps } from './types';
 
