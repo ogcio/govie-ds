@@ -32,7 +32,7 @@ const createSelect = (arguments_: SelectProps) => {
         const option = document.createElement('option');
         option.className = 'gi-select-option';
         if (subitem.label) {
-          option.textContent = subitem.label;
+          option.label = subitem.label;
         }
         if (subitem.value) {
           option.value = `${subitem.value}`;
@@ -50,7 +50,7 @@ const createSelect = (arguments_: SelectProps) => {
       const option = document.createElement('option');
       option.className = 'gi-select-option';
       if (item.label) {
-        option.textContent = item.label;
+        option.label = item.label;
       }
       if (item.value) {
         option.value = `${item.value}`;
