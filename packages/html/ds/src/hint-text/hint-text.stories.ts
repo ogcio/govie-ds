@@ -5,7 +5,7 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { HintSize, HintTextProps } from './types';
 
 const meta: Meta<HintTextProps> = {
-  title: 'Form/HintText',
+  title: 'Typography/HintText',
   parameters: {
     docs: {
       description: {
@@ -56,19 +56,6 @@ export const Default: Story = {
   },
 };
 
-export const Large: Story = {
-  args: {
-    size: HintSize.Large,
-    content: 'This is hint text',
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const hint = canvas.getByText('This is hint text');
-    expect(hint).toHaveClass('gi-hint-text-lg');
-  },
-};
-
 export const Small: Story = {
   args: {
     size: HintSize.Small,
@@ -79,5 +66,31 @@ export const Small: Story = {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
     expect(hint).toHaveClass('gi-hint-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: HintSize.Medium,
+    content: 'This is hint text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: HintSize.Large,
+    content: 'This is hint text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-lg');
   },
 };

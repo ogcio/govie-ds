@@ -10,7 +10,7 @@ export type AnchorProps = {
 
 export type LinkProps = {
   href?: string;
-  content: string;
+  content?: string;
   asButton?: {
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;

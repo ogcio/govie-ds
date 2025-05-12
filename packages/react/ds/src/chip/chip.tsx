@@ -1,5 +1,6 @@
 'use client';
 import { useId } from 'react';
+import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 
@@ -10,9 +11,10 @@ export type ChipProps = {
       | React.MouseEvent<HTMLDivElement>
       | React.KeyboardEvent<HTMLDivElement>,
   ) => void;
+  className?: string;
 };
 
-export const Chip = ({ label, onClose = () => null }: ChipProps) => {
+export const Chip = ({ label, className, onClose = () => null }: ChipProps) => {
   const uniqueId = useId();
   const descriptionId = `chip-description-${uniqueId}`;
 
@@ -26,7 +28,7 @@ export const Chip = ({ label, onClose = () => null }: ChipProps) => {
 
   return (
     <div
-      className="gi-chip"
+      className={cn(className, 'gi-chip')}
       aria-label={t('chip.label', { label, defaultValue: `chip: ${label}` })}
       aria-describedby={descriptionId}
       tabIndex={0}

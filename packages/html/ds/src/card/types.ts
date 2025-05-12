@@ -45,4 +45,5 @@ export type CardProps = {
   content?: string;
   action?: Action;
   dataTestid?: string;
+  titleAsChild?: boolean;
 };
