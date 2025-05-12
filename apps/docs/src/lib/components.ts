@@ -23,7 +23,7 @@ export type ComponentPlatformStatus = {
   accessibilityReviewed?: boolean;
 };
 
-export type ComponentDetail = {
+export type ComponentsDocument = {
   id: string;
   name: string;
   slug: string;
@@ -34,7 +34,7 @@ export type ComponentDetail = {
 export type ComponentMetadata = {
   id: string;
   link?: string | undefined;
-  status: 'N/A' | 'alpha' | 'beta' | 'stable';
+  status: 'not-available' | 'alpha' | 'beta' | 'stable';
   properties?: {
     name: string;
     fields: {
@@ -50,7 +50,7 @@ export type ComponentMetadata = {
 const globalHtmlStorybookBaseUrl = '/storybook-html/';
 const reactStorybookBaseUrl = '/storybook-react/';
 
-export function getComponents(): ComponentDetail[] {
+export function getComponents(): ComponentsDocument[] {
   const componentsDocuments = getAll().filter((document) => document.component);
 
   const components = componentsDocuments.map(
@@ -81,7 +81,7 @@ export function getComponents(): ComponentDetail[] {
               },
             } as ComponentPlatformStatus;
           }) || [],
-      }) as ComponentDetail,
+      }) as ComponentsDocument,
   );
 
   return sortBy(components, 'name');

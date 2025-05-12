@@ -55,6 +55,8 @@ import {
   SectionBreak,
   Select,
   SelectItem,
+  SideNav,
+  SideNavItem,
   Spinner,
   Stack,
   StepItem,
@@ -75,8 +77,6 @@ import {
   Tag,
   TextArea,
   Tooltip,
-  SideNav,
-  SideNavItem,
 } from '@govie-ds/react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
@@ -84,6 +84,12 @@ import NextLink from 'next/link';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { BorderRadiusTable } from '../border/border-radius-table';
 import { BorderWidthTable } from '../border/border-width-table';
+import {
+  ComponentPreview,
+  ComponentPreviewItem,
+  ComponentPreviewLayout,
+} from '../components/component-preview';
+import { ComponentPropertiesTable } from '../components/component-properties-table';
 import {
   ComponentStatusBlock,
   ComponentStatusTable,
@@ -126,13 +132,6 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
-import { ComponentPropertiesTable } from '../components/component-properties-table';
-import {
-  ComponentPreviewLayout,
-  ComponentPreviewItem,
-  ComponentPreview,
-} from '../components/component-preview';
-import { C } from 'vitest/dist/chunks/reporters.d.CfRkRKN2.js';
 
 export type MdxProps = {
   code: string;

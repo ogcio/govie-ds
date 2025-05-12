@@ -53,9 +53,16 @@ const componentType = defineNestedType(() => ({
     link: { type: 'string' },
     status: {
       type: 'enum',
-      options: ['N/A', 'alpha', 'beta', 'stable'],
+      options: [
+        'alpha',
+        'beta',
+        'stable',
+        'considering',
+        'not-available',
+        'deprecated',
+      ],
       required: true,
-      default: 'N/A',
+      default: 'not-available',
     },
     properties: { type: 'list', of: componentProperty, required: false },
   },
