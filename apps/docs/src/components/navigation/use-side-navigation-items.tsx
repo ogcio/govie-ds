@@ -35,16 +35,7 @@ function toSideNavigationItem({
 }: {
   slug: string[];
   item: DocumentHierarchyWithMeta;
-}): SideNavigationItem | undefined {
-  if (item.id.endsWith('index')) {
-    return undefined;
-  }
-
-  // Check if meta object doesn't exist or is empty
-  // if (!item.meta || Object.keys(item.meta).length === 0) {
-  //   return undefined;
-  // }
-
+}): SideNavigationItem {
   const name: string = item.meta['title']
     ? item.meta['title'].toString()
     : getNameFromSlug(item.slug);
@@ -66,11 +57,16 @@ function toSideNavigationItem({
           throw new Error(`Document not found '${child.id}'.`);
         }
 
+        let documentSlug = childDocument.slug;
+        if (Object.keys(child.meta).length === 0) {
+          documentSlug = child.slug;
+        }
+
         return {
-          id: child.id,
+          id: childDocument.id,
           name: childDocument.title,
-          href: `/${child.slug}`,
-          isActive: child.slug === slug.join('/'),
+          href: `/${childDocument.slug}`,
+          isActive: slug.join('/').includes(documentSlug),
           children: [],
         };
       })
