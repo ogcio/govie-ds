@@ -1,10 +1,4 @@
-import {
-  Header,
-  Paragraph,
-  Footer,
-  HeaderSearch,
-  Spinner,
-} from '@govie-ds/react';
+import { Paragraph, Spinner } from '@govie-ds/react';
 
 const LoadingComponent = ({
   label = 'We’re logging you out',
@@ -28,26 +22,13 @@ const LoadingComponent = ({
 export function LoadingPattern() {
   return (
     <>
-      <Header
-        logo={{ href: '/' }}
-        items={[
-          {
-            itemType: 'slot',
-            component: <HeaderSearch />,
-            slotAppearance: 'dropdown',
-          },
-        ]}
-      />
-      <main className="gi-layout-container-full-width my-5 min-h-[25vh]">
-        <div className="flex flex-col items-center justify-center text-center gap-4">
-          <LoadingComponent />
-          <Paragraph as="span">
-            Please don&rsquo;t close or refresh this page — you&rsquo;ll be
-            redirected shortly.
-          </Paragraph>
-        </div>
-      </main>
-      <Footer />
+      <div className="flex flex-col items-center justify-center text-center gap-4">
+        <LoadingComponent />
+        <Paragraph as="span">
+          Please don&rsquo;t close or refresh this page — you&rsquo;ll be
+          redirected shortly.
+        </Paragraph>
+      </div>
     </>
   );
 }
