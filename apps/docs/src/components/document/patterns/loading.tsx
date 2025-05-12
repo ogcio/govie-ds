@@ -7,7 +7,7 @@ import {
 } from '@govie-ds/react';
 
 const LoadingComponent = ({
-  label = 'Loading...',
+  label = 'We’re logging you out',
   size = 'xl',
 }: {
   label?: string;
@@ -16,7 +16,11 @@ const LoadingComponent = ({
   return (
     <div className="gi-flex gi-flex-col gi-items-center gi-justify-center gi-gap-2 gi-py-8">
       <Spinner size={size} />
-      {label && <Paragraph>{label}</Paragraph>}
+      {label && (
+        <Paragraph className="font-bold" as="span">
+          {label}
+        </Paragraph>
+      )}
     </div>
   );
 };
@@ -34,11 +38,14 @@ export function LoadingPattern() {
           },
         ]}
       />
-      <main className="gi-flex gi-flex-col gi-items-center gi-justify-center gi-min-h-[50vh] gi-text-center gi-gap-4 gi-px-4">
-        <Paragraph>
-          We&rsquo;re preparing your content. Please wait a moment.
-        </Paragraph>
-        <LoadingComponent />
+      <main className="gi-layout-container-full-width my-5 min-h-[25vh]">
+        <div className="flex flex-col items-center justify-center text-center gap-4">
+          <LoadingComponent />
+          <Paragraph as="span">
+            Please don&rsquo;t close or refresh this page — you&rsquo;ll be
+            redirected shortly.
+          </Paragraph>
+        </div>
       </main>
       <Footer />
     </>
