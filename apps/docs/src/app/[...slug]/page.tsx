@@ -57,7 +57,7 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
             {document.status === 'draft' && <Tag text="Draft" type="warning" />}
           </div>
         )}
-        <div className="flex flex-col justify-between flex-grow">
+        <div className="flex flex-col justify-between flex-grow gap-3">
           <div>
             <Mdx code={document.body.code} />
           </div>
