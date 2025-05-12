@@ -21,8 +21,8 @@ export default meta;
 export const Default = {
   render: () => (
     <FormField label={{ text: 'Label' }}>
-      <Select aria-label="Select">
-        <SelectItem selected hidden>
+      <Select aria-label="Select" defaultValue="select-option">
+        <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
@@ -60,8 +60,13 @@ export const WithLabelHintAndError = {
       hint={{ text: 'This is a hint' }}
       error={{ text: 'This is an error' }}
     >
-      <Select aria-label="Select" data-testid="select" id="select">
-        <SelectItem selected hidden>
+      <Select
+        aria-label="Select"
+        data-testid="select"
+        id="select"
+        defaultValue="select-option"
+      >
+        <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
@@ -92,8 +97,8 @@ export const WithLabelHintAndError = {
 
 export const WithoutLabel = {
   render: () => (
-    <Select aria-label="Select">
-      <SelectItem selected hidden>
+    <Select aria-label="Select" defaultValue="select-option">
+      <SelectItem value="select-option" hidden>
         Select Option
       </SelectItem>
       <SelectItem value="value-1">Option 1</SelectItem>
@@ -105,8 +110,8 @@ export const WithoutLabel = {
 
 export const DisabledSelect = {
   render: () => (
-    <Select aria-label="Select" disabled>
-      <SelectItem selected hidden>
+    <Select aria-label="Select" defaultValue="select-option" disabled>
+      <SelectItem value="select-option" hidden>
         Select Option
       </SelectItem>
       <SelectItem value="value-1">Option 1</SelectItem>
@@ -124,8 +129,8 @@ export const DisabledSelect = {
 
 export const DisabledItem = {
   render: () => (
-    <Select aria-label="Select">
-      <SelectItem selected hidden>
+    <Select aria-label="Select" defaultValue="select-option">
+      <SelectItem value="select-option" hidden>
         Select Option
       </SelectItem>
       <SelectItem disabled value="value-1">
@@ -147,9 +152,13 @@ export const DisabledItem = {
 
 export const WithGroups = {
   render: () => (
-    <Select aria-label="Select" data-testid="select">
+    <Select
+      aria-label="Select"
+      data-testid="select"
+      defaultValue="select-option"
+    >
       <SelectGroupItem label="Group 1" data-testid="select-group">
-        <SelectItem selected hidden>
+        <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
         <SelectItem value="value-1">Option 1</SelectItem>
@@ -158,7 +167,7 @@ export const WithGroups = {
       </SelectGroupItem>
 
       <SelectGroupItem label="Group 2">
-        <SelectItem selected hidden>
+        <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
         <SelectItem value="value-4">Option 4</SelectItem>
@@ -167,7 +176,7 @@ export const WithGroups = {
       </SelectGroupItem>
 
       <SelectGroupItem label="Group 3">
-        <SelectItem selected hidden>
+        <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
         <SelectItem value="value-7">Option 7</SelectItem>
