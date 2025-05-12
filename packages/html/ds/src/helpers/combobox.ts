@@ -54,7 +54,8 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
         placeholder: 'Search',
       });
       containerSearch.append(searchInput);
-      searchInput.className = 'gi-combobox-search-input';
+      searchInput.className =
+        'gi-combobox-search-input gi-input-text-container';
 
       const searchButtonContainer = document.createElement('div');
       containerSearch.append(searchButtonContainer);

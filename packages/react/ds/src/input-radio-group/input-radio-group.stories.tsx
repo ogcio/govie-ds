@@ -100,21 +100,22 @@ export const WithOptionHints: Story = {
   },
   render: (arguments_) => (
     <FormField
-      label={{ text: 'How do you want to sign in?' }}
+      label={{ text: ' Have you changed your name?' }}
       hint={{
-        text: "You'll need an account to prove your identity and complete your Self Assessment",
+        text: 'This includes changing your last name or spelling your name differently.',
       }}
     >
       <InputRadioGroup {...arguments_}>
         <InputRadio
           value={'val1'}
-          label={'Sign in with Username and Password'}
-          hint="You'll have a user ID if you've registered for Self Assessment or filed a tax return online before"
+          label={'Yes'}
+          hint="
+Yes, I have changed my name"
         />
         <InputRadio
           value={'val2'}
-          label={'Sign in with MyGovID'}
-          hint="If you don't have a MyGovID Login, you can create one"
+          label={'No'}
+          hint="No, I didn't change my name"
         />
       </InputRadioGroup>
     </FormField>
