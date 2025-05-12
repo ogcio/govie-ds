@@ -1,60 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { beautifyHtmlNode } from '../storybook/storybook';
+import { createSummaryList } from '../helpers/summary-list';
 import { SummaryListProps } from './summary-list.schema';
 
 const meta: Meta<SummaryListProps> = {
   title: 'Typography/SummaryList',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use the summary list to summarize information, for example, a user’s responses at the end of a form.',
+      },
+    },
+  },
+  argTypes: {
+    rows: {
+      description:
+        'An array of row objects to render. Each row contains a label, value, optional action (e.g., change link), and an optional border toggle (`withBorder`).',
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<SummaryListProps>;
-
-const createSummaryList = (arguments_: SummaryListProps) => {
-  const container = document.createElement('div');
-
-  const component = document.createElement('div');
-  component.className = 'gi-summary-list';
-  component.dataset.testid = arguments_.dataTestid ?? 'paragraph';
-
-  for (const row of arguments_.rows) {
-    const rowItem = document.createElement('dl');
-    rowItem.className = 'gi-summary-list-row';
-    if (row.withBorder) {
-      rowItem.dataset.border = 'true';
-    }
-
-    const dt = document.createElement('dt');
-    dt.textContent = row.label;
-    rowItem.append(dt);
-
-    if (row.value) {
-      const dd = document.createElement('dd');
-      dd.innerHTML = row.value;
-      dd.className = 'gi-summary-list-value';
-
-      rowItem.append(dd);
-    }
-
-    if (row.action) {
-      const dd = document.createElement('dd');
-      dd.innerHTML =
-        '<a href="' +
-        row.action.href +
-        '" class="gi-link">' +
-        row.action.label +
-        '</a>';
-      dd.className = 'gi-summary-list-actions';
-
-      rowItem.append(dd);
-    }
-
-    component.append(rowItem);
-  }
-
-  container.append(component);
-
-  return beautifyHtmlNode(container);
-};
 
 export const Default: Story = {
   render: (arguments_) => createSummaryList(arguments_),

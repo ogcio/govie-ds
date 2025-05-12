@@ -5,7 +5,14 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { CheckboxSizeEnum, type CheckboxProps } from './types';
 
 const meta: Meta<CheckboxProps> = {
-  title: 'form/Checkbox/Checkbox',
+  title: 'form/Checkbox/InputCheckbox',
+  parameters: {
+    docs: {
+      description: {
+        component: 'Input Checkbox component',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -101,8 +108,22 @@ export const withHint: Story = {
     expect(hint).toBeDefined();
   },
 };
-
 export const withDefaultChecked: Story = {
+  args: {
+    id: 'checkbox-id-1',
+    value: 'value-1',
+    label: 'Checkbox',
+    defaultChecked: true,
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('checkbox');
+    expect(input).toBeChecked();
+  },
+};
+
+export const withChecked: Story = {
   args: {
     id: 'checkbox-id-1',
     value: 'value-1',

@@ -97,7 +97,7 @@ export const CompleteFooter: Story = {
       <div class="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
         <h3 class="gi-heading-sm gi-mb-4">Departments</h3>
         <hr
-          class="gi-border-color-border-system-neutral-subtle"
+          class="gi-section-break-md gi-border-color-border-system-neutral-subtle"
           role="separator"
         />
         <ul class="gi-list gi-space-y-2">
@@ -189,7 +189,7 @@ export const CompleteFooter: Story = {
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const MinimalFooter: Story = {
+export const SimpleFooter: Story = {
   args: {
     secondarySlot: `
       <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-gap-4 gi-flex-wrap">
@@ -221,7 +221,7 @@ export const MinimalFooter: Story = {
   render: (arguments_) => createFooter(arguments_),
 };
 
-export const SimpleFooter: Story = {
+export const MinimalFooter: Story = {
   args: {
     dataTestid: 'footer',
     utilitySlot: `

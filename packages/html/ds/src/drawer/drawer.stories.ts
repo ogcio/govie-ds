@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ButtonProps } from '../button/types.ts';
 import { createDrawer } from '../helpers/modal.tsx';
+import { createParagraph } from '../helpers/typography.tsx';
 import { beautifyHtmlNode } from '../storybook/storybook.tsx';
 import { drawerBody, drawerFooter } from './drawer.content.ts';
 import { DrawerWrapperProps } from './types.ts';
@@ -10,6 +11,11 @@ type DrawerWrapperPropsExtension = DrawerWrapperProps & {
 };
 
 const meta: Meta<DrawerWrapperPropsExtension> = {
+  decorators: (story) =>
+    `
+    <div class="gi-h-[600px]">
+      ${story()}
+    </div>` as any,
   title: 'Application/Drawer',
 };
 
@@ -55,9 +61,59 @@ export const Default: Story = {
     },
   },
   args: {
-    triggerButton: { content: 'Open Modal' },
+    closeButtonSize: 'large',
+    triggerButton: { content: 'Open drawer' },
+    closeButtonLabel: 'Close',
     body: drawerBody,
+    footer: drawerFooter,
     position: 'right',
+  },
+  render: createElement,
+};
+
+export const DrawerRight: Story = {
+  args: {
+    closeButtonSize: 'small',
+    triggerButton: { content: 'Open drawer' },
+    body: beautifyHtmlNode(
+      createParagraph({
+        content:
+          ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.',
+      }),
+    ),
+    footer: drawerFooter,
+    position: 'right',
+  },
+  render: createElement,
+};
+
+export const DrawerLeft: Story = {
+  args: {
+    position: 'left',
+    closeButtonSize: 'small',
+    triggerButton: { content: 'Open drawer' },
+    body: beautifyHtmlNode(
+      createParagraph({
+        content:
+          ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.',
+      }),
+    ),
+    footer: drawerFooter,
+  },
+  render: createElement,
+};
+
+export const DrawerBottom: Story = {
+  args: {
+    position: 'bottom',
+    closeButtonSize: 'small',
+    triggerButton: { content: 'Open drawer' },
+    body: beautifyHtmlNode(
+      createParagraph({
+        content:
+          ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.',
+      }),
+    ),
   },
   render: createElement,
 };
@@ -68,6 +124,39 @@ export const DrawerOpen: Story = {
     body: drawerBody,
     position: 'right',
     startsOpen: true,
+    footer: drawerFooter,
+  },
+  render: createElement,
+};
+
+export const DrawerMenuTablet: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'ipad',
+    },
+  },
+  args: {
+    triggerButton: { content: 'Open Modal' },
+    body: drawerBody,
+    position: 'right',
+    startsOpen: true,
+    footer: drawerFooter,
+  },
+  render: createElement,
+};
+
+export const DrawerMenuMobile: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    viewport: {
+      defaultViewport: 'mobile2',
+    },
+  },
+  args: {
+    triggerButton: { content: 'Open Modal' },
+    closeButtonLabel: 'Close',
+    body: drawerBody,
     footer: drawerFooter,
   },
   render: createElement,

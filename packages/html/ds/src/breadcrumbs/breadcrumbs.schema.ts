@@ -32,6 +32,11 @@ export const BreadcrumbsArraySchema = zod.object({
   navItems: zod.array(BreadcrumbsItemSchema, {
     description: 'List of nav items',
   }),
+  iconStart: zod
+    .boolean({
+      description: 'Indicates whether an icon is displayed at the start.',
+    })
+    .optional(),
 });
 
 export type BreadcrumbsProps = zod.infer<typeof BreadcrumbsArraySchema>;

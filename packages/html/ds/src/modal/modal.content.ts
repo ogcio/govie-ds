@@ -3,7 +3,7 @@ export const modalTitle = 'Modal Title';
 export const modalBody = `
   <div>
     <p class="gi-paragraph-md">
-        This is the main body of the modal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt exercitationem voluptas doloribus asperiores.
     </p>
   </div>
 `;

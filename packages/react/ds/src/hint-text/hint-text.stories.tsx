@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from '@storybook/test';
 import { HintSize, HintText } from './hint-text.js';
 
 const meta = {
-  title: 'Form/HintText',
+  title: 'Typography/HintText',
   parameters: {
     docs: {
       description: {
@@ -40,5 +41,40 @@ export const Default: Story = {
   args: {
     text: 'Hint',
     size: HintSize.Medium,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: HintSize.Small,
+    text: 'This is hint text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: HintSize.Small,
+    text: 'This is hint text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-sm');
+  },
+};
+export const Large: Story = {
+  args: {
+    size: HintSize.Large,
+    text: 'This is hint text',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('This is hint text');
+    expect(hint).toHaveClass('gi-hint-text-lg');
   },
 };

@@ -6,6 +6,14 @@ import { ErrorSize, ErrorTextProps } from './types';
 
 const meta: Meta<ErrorTextProps> = {
   title: 'Typography/ErrorText',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use hint text alongside a form input for help that’s relevant to the majority of users, like how their information will be used, or where to find it.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -48,19 +56,6 @@ export const Default: Story = {
   },
 };
 
-export const Large: Story = {
-  args: {
-    size: ErrorSize.Large,
-    content: 'This is error text',
-  },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const error = canvas.getByText('This is error text');
-    expect(error).toHaveClass('gi-error-text-lg');
-  },
-};
-
 export const Small: Story = {
   args: {
     size: ErrorSize.Small,
@@ -71,5 +66,31 @@ export const Small: Story = {
     const canvas = within(canvasElement);
     const error = canvas.getByText('This is error text');
     expect(error).toHaveClass('gi-error-text-sm');
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: ErrorSize.Medium,
+    content: 'This is error text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-md');
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: ErrorSize.Large,
+    content: 'This is error text',
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('This is error text');
+    expect(error).toHaveClass('gi-error-text-lg');
   },
 };

@@ -12,4 +12,5 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   form?: string;
   value?: string;
   className?: string;
+  dataTestid?: string;
 };

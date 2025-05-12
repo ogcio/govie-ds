@@ -22,7 +22,7 @@ const Connector = ({
       data-next={isNextStep}
       data-completed={isCompleted}
       data-current={isCurrentStep}
-      className={cn('gi-progress-stepper-step-connector')}
+      className={'gi-progress-stepper-step-connector'}
       aria-hidden="true"
     >
       <span />

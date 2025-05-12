@@ -1,9 +1,10 @@
 export const ButtonVariants = ['primary', 'secondary', 'flat'] as const;
+export const ButtonSizes = ['medium', 'small', 'large'];
+export const ButtonAppearances = ['default', 'dark', 'light'];
+
+export type ButtonAppearance = (typeof ButtonAppearances)[number];
 export type ButtonVariant = (typeof ButtonVariants)[number];
-
-export type ButtonAppearance = 'default' | 'dark' | 'light';
-
-export type ButtonSize = 'medium' | 'small' | 'large';
+export type ButtonSize = (typeof ButtonSizes)[number];
 
 export type ButtonProps = {
   content?: string;
@@ -15,4 +16,5 @@ export type ButtonProps = {
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
+  id?: string;
 };

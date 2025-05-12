@@ -1,49 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { createLink } from '../helpers/links';
+import { createList } from '../helpers/list';
 import { beautifyHtmlNode } from '../storybook/storybook';
+
 import { ListProps } from './types';
 
 const meta: Meta<ListProps> = {
   title: 'Typography/List',
-};
-
-export default meta;
-type Story = StoryObj<ListProps>;
-
-const createList = (arguments_: ListProps) => {
-  const container = document.createElement('div');
-
-  let classType = '';
-  if (arguments_.type == 'bullet') {
-    classType = 'gi-list-bullet';
-  } else if (arguments_.type == 'number') {
-    classType = 'gi-list-number';
-  } else {
-    classType = 'gi-list';
-  }
-
-  if (arguments_.spaced) {
-    classType += ' gi-list-spaced';
-  }
-
-  const component = document.createElement('ul');
-  component.className = classType;
-  component.dataset.element = 'list-container';
-  component.dataset.testid = 'list';
-
-  for (const item of arguments_.items) {
-    const li = document.createElement('li');
-    li.innerHTML = item;
-
-    component.append(li);
-  }
-
-  container.append(component);
-
-  return beautifyHtmlNode(container);
-};
-
-export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Use lists to make blocks of text easier to read, and to break information into manageable chunks.',
+      },
+    },
+  },
   argTypes: {
     items: {
       control: 'object',
@@ -66,6 +38,12 @@ export const Default: Story = {
         'If a list is hard to read because the items run across multiple lines you can add extra spacing.',
     },
   },
+};
+
+export default meta;
+type Story = StoryObj<ListProps>;
+
+export const Default: Story = {
   args: {
     items: ['Item 1', 'Item 2', 'Item 3'],
   },
@@ -80,9 +58,24 @@ export const Default: Story = {
 export const Links: Story = {
   args: {
     items: [
-      "<a href='#' class='gi-link'>Link 1</a>",
-      "<a href='#' class='gi-link'>Link 2</a>",
-      "<a href='#' class='gi-link'>Link 3</a>",
+      beautifyHtmlNode(
+        createLink({
+          content: 'Link 1',
+          href: '#',
+        }),
+      ),
+      beautifyHtmlNode(
+        createLink({
+          content: 'Link 2',
+          href: '#',
+        }),
+      ),
+      beautifyHtmlNode(
+        createLink({
+          content: 'Link 3',
+          href: '#',
+        }),
+      ),
     ],
   },
   render: (arguments_) => createList(arguments_),

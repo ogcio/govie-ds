@@ -65,7 +65,10 @@ export const IconId = {
   Visibility_off: 'visibility_off',
   Warning: 'warning',
   Work: 'work',
+  Placeholder: 'placeholder',
 } as const;
+
+export type IconIdType = (typeof IconId)[keyof typeof IconId];
 
 export const IconSize = {
   SMALL: 'sm',

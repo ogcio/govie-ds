@@ -3,7 +3,7 @@ import { SideNavigation } from './side-navigation';
 import { useSideNavigationItems } from '@/components/navigation/use-side-navigation-items';
 
 export function SideNavigationConnected() {
-  const sideNavigationItems = useSideNavigationItems();
+  const { items: sideNavigationItems, activeItem } = useSideNavigationItems();
 
   if (sideNavigationItems.length === 0) {
     return null;
@@ -11,7 +11,7 @@ export function SideNavigationConnected() {
 
   return (
     <aside className="hidden sm:block w-full max-w-48 flex-auto">
-      <SideNavigation items={sideNavigationItems} />
+      <SideNavigation items={sideNavigationItems} activeItem={activeItem} />
     </aside>
   );
 }

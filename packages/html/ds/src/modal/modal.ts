@@ -12,6 +12,8 @@ export class Modal extends BaseComponent<ModalOptions> {
   position: string;
   isOpen: boolean;
   triggerButton: Element | null;
+  closeOnClick: boolean;
+  closeOnOverlayClick: boolean;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -30,20 +32,32 @@ export class Modal extends BaseComponent<ModalOptions> {
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
+    console.log((this.modal as HTMLElement).dataset);
+    this.closeOnClick =
+      (this.modal as HTMLElement).dataset?.closeonclick === 'true';
+    this.closeOnOverlayClick =
+      (this.modal as HTMLElement).dataset?.closeonoverlayclick === 'true';
 
     this.initModalState();
   }
 
   initModalState() {
+    this.modal.classList.add('gi-modal-close');
+    this.modal.classList.remove('gi-modal-open');
+    this.modal.setAttribute('aria-hidden', 'true');
+
     this.toggleModalState(this.isOpen);
   }
 
-  toggleModalState(isOpen: boolean) {
+  toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
-    } else {
+    } else if (
+      (this.closeOnClick && this.closeOnOverlayClick) ||
+      props?.forceClose
+    ) {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
       this.modal.setAttribute('aria-hidden', 'true');
@@ -63,7 +77,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   closeButtonListener() {
-    this.toggleModalState(false);
+    this.toggleModalState(false, { forceClose: true });
   }
 
   initComponent() {

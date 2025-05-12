@@ -92,6 +92,8 @@ export const createButton = (arguments_: ButtonProps) => {
     component.innerHTML = arguments_.content;
   }
 
+  component.disabled = !!arguments_.disabled;
+
   return component;
 };
 
@@ -112,8 +114,15 @@ export const createIconButton = (arguments_: IconButtonProps) => {
   component.className =
     `gi-btn ${classSize} ${classAppearance} ${arguments_.className || ''}`.trim();
 
+  if (arguments_.id) {
+    component.setAttribute('id', arguments_.id);
+  }
+
   const iconSize = arguments_.size === 'small' ? 'sm' : 'md';
   const icon = createIcon({ ...arguments_.icon, size: iconSize });
+
+  component.disabled = !!arguments_.disabled;
+
   component.append(icon);
 
   return component;

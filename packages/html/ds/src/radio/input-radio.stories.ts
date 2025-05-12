@@ -5,7 +5,15 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import type { RadioProps } from './types';
 
 const meta: Meta<RadioProps> = {
-  title: 'form/Radio/Radio',
+  title: 'form/Radio/InputRadio',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Radio group component when users can only select one option.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -95,7 +103,7 @@ export const smallRadio: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('radio');
-    expect(input).toHaveClass('gi-h-6');
+    expect(input).toHaveClass('gi-w-6');
   },
 };
 
@@ -110,7 +118,7 @@ export const mediumRadio: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('radio');
-    expect(input).toHaveClass('gi-h-8');
+    expect(input).toHaveClass('gi-w-8');
   },
 };
 
@@ -125,6 +133,6 @@ export const largeRadio: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('radio');
-    expect(input).toHaveClass('gi-h-11');
+    expect(input).toHaveClass('gi-w-11');
   },
 };

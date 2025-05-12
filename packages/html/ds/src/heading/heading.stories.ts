@@ -6,6 +6,14 @@ import type { HeadingProps } from './types';
 
 const meta: Meta<HeadingProps> = {
   title: 'Typography/Heading',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Heading component for displaying semantic, accessible typographic headings (e.g., h1–h6) with consistent styling.',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -17,10 +25,29 @@ const createElement = (arguments_: HeadingProps) => {
 };
 
 export const Default: Story = {
+  argTypes: {
+    size: {
+      options: ['xl', 'lg', 'md', 'sm', 'xs', '2xs'],
+      description: 'Options for sizes',
+      control: { type: 'radio' },
+    },
+    as: {
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: 'Option for the Heading tag',
+      control: { type: 'radio' },
+    },
+    caption: {
+      control: 'text',
+      description: 'Caption for the heading',
+    },
+  },
   args: {
-    as: 'h1',
     content: 'Heading',
-    caption: '',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const heading = canvas.getByRole('heading');
+    expect(heading).toBeTruthy();
   },
   render: (arguments_) => createElement(arguments_),
 };
@@ -74,7 +101,7 @@ export const Caption: Story = {
   args: {
     size: 'md',
     as: 'h1',
-    content: 'Heading with h6',
+    content: 'Heading with caption',
     caption: 'Caption Text',
   },
   render: (arguments_) => createElement(arguments_),

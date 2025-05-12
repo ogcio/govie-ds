@@ -4,6 +4,14 @@ import { PhaseBanner } from './phase-banner.js';
 const meta = {
   title: 'Typography/PhaseBanner',
   component: PhaseBanner,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'PhaseBanner component is used to indicate that a page or feature is in a particular phase (e.g., alpha or beta). It typically appears at the top of the page and provides contextual information or feedback links.',
+      },
+    },
+  },
 } satisfies Meta<typeof PhaseBanner>;
 
 export default meta;

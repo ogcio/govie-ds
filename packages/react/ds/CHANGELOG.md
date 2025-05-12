@@ -1,6 +1,29 @@
 # Changelog
 
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.6.0...react-lib-v1.7.0) (2025-05-06)
+
+
+### Features
+
+* Add side navigation component to React and HTML library ([#540](https://github.com/ogcio/govie-ds/issues/540)) ([30cd784](https://github.com/ogcio/govie-ds/commit/30cd78491ff2a862d8557514acf427cbb014dede))
+* updated semantic colors + header/footer changes ([#539](https://github.com/ogcio/govie-ds/issues/539)) ([d3e9289](https://github.com/ogcio/govie-ds/commit/d3e92896f8cdb6a136a45c6aa93905c65cac1bda))
+
+
+### Bug Fixes
+
+* optional clearButtonEnabled on TextArea component ([#541](https://github.com/ogcio/govie-ds/issues/541)) ([f8cff65](https://github.com/ogcio/govie-ds/commit/f8cff65877b996a4cc184f3bb399f80f224c7bfd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.4.0
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.7.0
+    * @govie-ds/theme-govie bumped to 1.4.0
+
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.2...react-lib-v1.6.0) (2025-04-28)
 
 
