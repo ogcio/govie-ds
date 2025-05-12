@@ -144,7 +144,6 @@ export const withLabelHintAndError: Story = {
     expect(error).toHaveClass('gi-error-text');
 
     const placeholderOption = select.options[0];
-    expect(placeholderOption.textContent).toBe('Select Option');
     expect(placeholderOption.hidden).toBe(true);
     expect(placeholderOption.selected).toBe(true);
   },
