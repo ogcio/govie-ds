@@ -47,6 +47,13 @@ const componentProperty = defineNestedType(() => ({
   },
 }));
 
+const componentStory = defineNestedType(() => ({
+  fields: {
+    name: { type: 'string', required: true },
+    url: { type: 'string', required: true },
+  },
+}));
+
 const componentType = defineNestedType(() => ({
   fields: {
     id: { type: 'string', required: true },
@@ -65,6 +72,7 @@ const componentType = defineNestedType(() => ({
       default: 'not-available',
     },
     properties: { type: 'list', of: componentProperty, required: false },
+    stories: { type: 'list', of: componentStory, required: false },
   },
 }));
 

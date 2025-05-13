@@ -96,6 +96,7 @@ import {
 } from '../components/component-status-table';
 import { ModalWrapperSample } from '../components/modal-wrapper-example';
 import { Section } from '../components/section';
+import { StorybookFrame } from '../components/storybook-frame';
 import { Toast } from '../components/toast';
 import { DataGridSample } from '../data-grid/data-grid-sample';
 import { Faq, Faqs } from '../faqs/faqs';
@@ -282,6 +283,7 @@ const documentComponents: MDXComponents = {
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,
+  StorybookFrame,
   SystemElements,
   TabItem,
   TabList,

@@ -4,7 +4,7 @@ description: Button React Component
 status: stable
 component:
   id: 'button-react'
-  link: '?path=/docs/form-button--docs'
+  link: '/docs/form-button--docs'
   status: 'stable'
   properties:
     - name: ButtonProps
@@ -61,6 +61,13 @@ component:
           ofType: 'node'
           description: 'The content of the button item.'
           required: true
+  stories:
+    - name: 'primary'
+      url: '/story/form-button--primary'
+    - name: 'secondary'
+      url: '/story/form-button--secondary'
+    - name: 'flat'
+      url: '/story/form-button--flat'
 ---
 
 # Button
@@ -73,6 +80,24 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
 <ComponentPreview>
   <Button>This is a button</Button>
 </ComponentPreview>
+
+## Variants
+
+### Primary
+<StorybookFrame
+  componentId="button-react"
+  story="primary" />
+
+### Secondary
+<StorybookFrame
+  componentId="button-react"
+  story="secondary" />
+
+### Flat
+<StorybookFrame
+  componentId="button-react"
+  story="flat" />
+
 
 ## Properties
 

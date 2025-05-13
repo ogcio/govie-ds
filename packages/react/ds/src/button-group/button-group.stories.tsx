@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../../forms/form-field.js';
+import { FormField } from '../forms/form-field.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {
-  title: 'Form/Button/ButtonGroup',
+  title: 'Form/ButtonGroup',
   component: ButtonGroup,
   parameters: {
     docs: {

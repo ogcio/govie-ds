@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@govie-ds/react';
+import { Fragment } from 'react';
 
 export function ComponentPropertiesTable({
   componentId,
@@ -27,8 +28,8 @@ export function ComponentPropertiesTable({
   return (
     <Table className="gi-not-prose">
       {componentDoc.component.properties?.map((property, pindex) => (
-        <>
-          <TableHead key={`${pindex}`}>
+        <Fragment key={`${pindex}`}>
+          <TableHead>
             <TableRow>
               <TableHeader colSpan={4}>{property.name}</TableHeader>
             </TableRow>
@@ -53,7 +54,7 @@ export function ComponentPropertiesTable({
               </TableRow>
             ))}
           </TableBody>
-        </>
+        </Fragment>
       ))}
     </Table>
   );

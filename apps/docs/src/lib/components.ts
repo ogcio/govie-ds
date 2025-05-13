@@ -45,6 +45,10 @@ export type ComponentMetadata = {
       required: boolean;
     }[];
   }[];
+  stories?: {
+    name: string;
+    url: string;
+  }[];
 };
 
 const globalHtmlStorybookBaseUrl = '/storybook-html/';

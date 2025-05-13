@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button.js';
 
 const meta = {
-  title: 'Form/Button/Button',
+  title: 'Form/Button',
   decorators: (Story, context) => {
     const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
     return (

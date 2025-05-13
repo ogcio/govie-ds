@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
-import { createButton } from '../../helpers/buttons';
-import { beautifyHtmlNode } from '../../storybook/storybook';
-import { ButtonSize } from '../types';
+import { ButtonSize } from '../button/types';
+import { createButton } from '../helpers/buttons';
+import { beautifyHtmlNode } from '../storybook/storybook';
 
 type ButtonOption = {
   label: string;
@@ -19,7 +19,7 @@ type ButtonGroupProps = {
 };
 
 const meta: Meta<ButtonGroupProps> = {
-  title: 'Form/Button/ButtonGroup',
+  title: 'Form/ButtonGroup',
   parameters: {
     docs: {
       description: {
