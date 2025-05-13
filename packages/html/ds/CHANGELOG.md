@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.0...html-lib-v1.5.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* add placeholder option on select ([#549](https://github.com/ogcio/govie-ds/issues/549)) ([09f8aea](https://github.com/ogcio/govie-ds/commit/09f8aea9dde9d5b59ee6e02dea12ffadfaf34d89))
+* update side navigation ([#545](https://github.com/ogcio/govie-ds/issues/545)) ([2333cbb](https://github.com/ogcio/govie-ds/commit/2333cbb327578a864979d5516cf42bdf273afc3a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.7.1
+
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.4.0...html-lib-v1.5.0) (2025-05-06)
 
 
