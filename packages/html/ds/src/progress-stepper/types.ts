@@ -6,7 +6,7 @@ export type Step = {
 };
 
 export type StepItemProps = {
-  label: string;
+  label?: string;
   content?: string;
   defaultOpen?: boolean;
 };

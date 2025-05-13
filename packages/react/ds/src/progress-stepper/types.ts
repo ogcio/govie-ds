@@ -14,7 +14,7 @@ export type Step = {
 };
 
 export type StepItemProps = {
-  label: string;
+  label?: string;
   children?: React.ReactNode;
   defaultOpen?: boolean;
 };

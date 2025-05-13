@@ -81,6 +81,22 @@ export const WithNumbersIndicator: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
+export const WithoutLabels: Story = {
+  args: {
+    currentStepIndex: 2,
+    indicator: 'number',
+    children: [
+      { label: '' },
+      { label: '' },
+      { label: '' },
+      { label: '' },
+      { label: '' },
+      { label: '' },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
 export const WithStepContent: Story = {
   args: {
     currentStepIndex: 1,

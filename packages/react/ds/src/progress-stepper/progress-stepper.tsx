@@ -160,7 +160,7 @@ export const ProgressStepper = ({
         aria-live="polite"
       >
         {Children.map(children, (child, index) => {
-          const { label, defaultOpen } =
+          const { label = '', defaultOpen } =
             child.props as unknown as StepItemProps;
           const [isCurrentStep, isLastStep, isCompleted] = [
             !completeAll && currentStepIndex === index,
