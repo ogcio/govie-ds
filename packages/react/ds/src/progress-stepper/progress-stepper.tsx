@@ -107,6 +107,7 @@ export const Step = ({
           className="gi-progress-stepper-step-label"
           data-orientation={orientation}
           id={`step-label-${stepNumber}`}
+          aria-label={children ? undefined : `Step ${stepNumber}`}
         >
           {children}
         </div>

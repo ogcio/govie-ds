@@ -206,22 +206,22 @@ export const WithContentStepVertical: Story = {
     return (
       <Stack>
         <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
-          <StepItem label="Step 1">
+          <StepItem>
             <Stack>Here are the content for Step 1</Stack>
           </StepItem>
-          <StepItem label="Step 2">
+          <StepItem>
             <Stack>Here are the content for Step 2</Stack>
           </StepItem>
-          <StepItem label="Step 3">
+          <StepItem>
             <Stack>Here are the content for Step 3</Stack>
           </StepItem>
-          <StepItem label="Step 4">
+          <StepItem>
             <Stack>Here are the content for Step 4</Stack>
           </StepItem>
-          <StepItem label="Step 5">
+          <StepItem>
             <Stack>Here are the content for Step 5</Stack>
           </StepItem>
-          <StepItem label="Step 6">
+          <StepItem>
             <Stack>Here are the content for Step 6</Stack>
           </StepItem>
         </ProgressStepper>
