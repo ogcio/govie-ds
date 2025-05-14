@@ -2,9 +2,9 @@
 
 export function ComponentPreview({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex w-full h-32 border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center">
+    <div className="flex w-full min-h-32 border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center">
       {children}
-    </li>
+    </div>
   );
 }
 

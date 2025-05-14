@@ -81,6 +81,29 @@ Buttons are interactive elements that enable users to trigger actions or navigat
 - **Be consistent**: Use the same button style for similar actions across your application.
 - **Include icons when helpful**: Add icons to buttons when they enhance understanding, but ensure they're relevant to the action.
 
+**Example:**
+<ComponentContainer>
+  <div className='flex flex-col gap-4'>
+    <div className="gi-flex gi-gap-2">
+      <Button>Submit</Button>
+      <Button variant="secondary">Save draft</Button>
+    </div>
+    <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+      Clear hierarchy with primary action (Submit) and secondary action (Save draft)
+    </div>
+
+    <div>
+      <Button>
+        <Icon icon="mail" />
+        <span>Send mail</span>
+      </Button>
+    </div>
+    <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+      Descriptive label with relevant icon that enhances understanding
+    </div>
+  </div>
+</ComponentContainer>
+
 ### Don't
 
 - **Don't use buttons for navigation**: Use links instead of buttons when the purpose is to navigate to a different page.
@@ -90,62 +113,25 @@ Buttons are interactive elements that enable users to trigger actions or navigat
 - **Don't overcrowd interfaces with buttons**: Limit the number of buttons in one view to reduce cognitive load.
 - **Don't use button groups for unrelated actions**: Button groups should only contain buttons that are related to each other.
 
-### Examples
-
+**Example:**
 <ComponentContainer>
-  <div className="gi-flex gi-flex-col gi-gap-4">
-    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
-      <div className="gi-text-lg gi-font-bold gi-text-green-600 gi-mb-2"><Icon icon="thumb_up" inline/> Do</div>
-      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
-        <h4 className="gi-mb-2">Submit your application</h4>
-        <div className="gi-flex gi-gap-2">
-          <Button>Submit</Button>
-          <Button variant="secondary">Save draft</Button>
-        </div>
-      </div>
-      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
-        Clear hierarchy with primary action (Submit) and secondary action (Save draft)
-      </div>
+  <div className='flex flex-col gap-4'>
+    <div className="gi-flex gi-gap-2">
+      <Button>Submit</Button>
+      <Button>Save draft</Button>
+    </div>
+    <div>
+      Confusing hierarchy with multiple primary buttons of equal visual weight
     </div>
     
-    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
-      <div className="gi-text-lg gi-font-bold gi-text-red-600 gi-mb-2"><Icon icon="thumb_down" inline/> Don't</div>
-      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
-        <h4 className="gi-mb-2">Submit your application</h4>
-        <div className="gi-flex gi-gap-2">
-          <Button>Submit</Button>
-          <Button>Save draft</Button>
-        </div>
-      </div>
-      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
-        Confusing hierarchy with multiple primary buttons of equal visual weight
-      </div>
+    <div>
+      <Button>
+        <Icon icon="mail" />
+        <span>Click here</span>
+      </Button>
     </div>
-    
-    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
-      <div className="gi-text-lg gi-font-bold gi-text-green-600 gi-mb-2"><Icon icon="thumb_up" inline/> Do</div>
-      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
-        <Button>
-          <Icon icon="mail" />
-          <span>Send mail</span>
-        </Button>
-      </div>
-      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
-        Descriptive label with relevant icon that enhances understanding
-      </div>
-    </div>
-    
-    <div className="gi-border gi-border-gray-300 gi-rounded-md gi-p-4">
-      <div className="gi-text-lg gi-font-bold gi-text-red-600 gi-mb-2"><Icon icon="thumb_down" inline/> Don't</div>
-      <div className="gi-bg-gray-100 gi-p-4 gi-rounded-md">
-        <Button>
-          <Icon icon="mail" />
-          <span>Click here</span>
-        </Button>
-      </div>
-      <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
-        Vague label that doesn't clearly describe the action
-      </div>
+    <div>
+      Vague label that doesn't clearly describe the action
     </div>
   </div>
 </ComponentContainer>

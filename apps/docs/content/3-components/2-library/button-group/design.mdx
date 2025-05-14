@@ -3,7 +3,7 @@ title: Button Group
 description: Button Group Design Guidelines
 status: stable
 component:
-  id: 'button'
+  id: 'button-group'
   link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1222-1936'
   status: 'stable'
 ---
@@ -38,7 +38,7 @@ Button groups help streamline the user interface by consolidating related action
 - **Provide clear feedback**: Highlight the selected button to indicate the current state and provide hover and focus states for better accessibility.
 
 **Example:**
-<ComponentPreview>
+<ComponentContainer>
   <ButtonGroup
     name={'opinion_scale'}
     size={'large'}
@@ -47,7 +47,7 @@ Button groups help streamline the user interface by consolidating related action
     <ButtonGroupItem key={1} value={1}>List View</ButtonGroupItem>
     <ButtonGroupItem key={2} value={2}>Grid View</ButtonGroupItem>
   </ButtonGroup>
-</ComponentPreview>
+</ComponentContainer>
 
 ### Don'ts
 - **Avoid using too many buttons**: Limit the number of buttons in a group to avoid overwhelming users. If there are too many options, consider using a dropdown or another component.
@@ -55,8 +55,8 @@ Button groups help streamline the user interface by consolidating related action
 - **Avoid ambiguous labels**: Ensure button labels are clear and unambiguous to prevent user confusion.
 - **Don’t ignore accessibility**: Avoid designs that rely solely on color to indicate state. Use additional indicators like borders or icons for better accessibility.
 
-**Example of what not to do:**
-<ComponentPreview>
+**Example:**
+<ComponentContainer>
   <FormField
       label={{
         text: 'Where do you live?',
@@ -74,6 +74,6 @@ Button groups help streamline the user interface by consolidating related action
       <ButtonGroupItem key={5} value={5}>Phoenix</ButtonGroupItem>
     </ButtonGroup>
   </FormField>
-</ComponentPreview>
+</ComponentContainer>
 
 </Section>
