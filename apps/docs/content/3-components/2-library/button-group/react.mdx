@@ -42,6 +42,10 @@ component:
   stories:
     - name: 'default'
       url: '/story/form-buttongroup--default'
+    - name: 'opinion-scale'
+      url: '/story/form-buttongroup--opinion-scale'
+    - name: 'yes-no'
+      url: '/story/form-buttongroup--yes-no'
 ---
 
 # Button Group
@@ -65,12 +69,19 @@ Button groups help streamline the user interface by consolidating related action
   </ButtonGroup>
 </ComponentPreview>
 
-## Example
+## Examples
 
+### Opinion Scale
 <StorybookFrame
   componentId="buttongroup-react"
-  story="default" />
+  heightClassName="h-48"
+  story="opinion-scale" />
 
+### Quick question
+<StorybookFrame
+  componentId="buttongroup-react"
+  story="yes-no" />
+  
 ## Properties
 
 <ComponentPropertiesTable componentId="buttongroup-react" />
