@@ -51,16 +51,18 @@ export function StorybookFrame({
         src={iframeStoryUrl}
         className={`gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center ${heightClassName || 'h-32'}`}
       ></iframe>
-      <Link
-        external
-        noColor
-        noUnderline
-        noVisited
-        href={docsUrl}
-        className="block p-2 bottom-0 right-0 absolute"
-      >
-        <StorybookLogo className="inline mr-2" /> View on Storybook
-      </Link>
+      <div className="p-2 bottom-0 right-0 absolute">
+        <Link
+          external
+          noColor
+          noUnderline
+          noVisited
+          href={docsUrl}
+          className="block"
+        >
+          <StorybookLogo className="inline mr-2" /> View on Storybook
+        </Link>
+      </div>
     </div>
   );
 }

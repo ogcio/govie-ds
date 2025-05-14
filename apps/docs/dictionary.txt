@@ -2,6 +2,8 @@
 2xl
 2xs
 AccordionItem
+AccordionItemProps
+AccordionProps
 AlertProps
 Arial
 Blockquote
