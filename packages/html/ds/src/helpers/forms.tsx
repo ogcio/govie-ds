@@ -424,6 +424,12 @@ export const createSelect = (arguments_: SelectProps) => {
         if (subitem.value) {
           option.value = `${subitem.value}`;
         }
+        if (subitem.hidden) {
+          option.hidden = true;
+        }
+        if (subitem.selected) {
+          option.selected = true;
+        }
         optgroup.append(option);
       }
       select.append(optgroup);
@@ -436,6 +442,12 @@ export const createSelect = (arguments_: SelectProps) => {
       }
       if (item.value) {
         option.value = `${item.value}`;
+      }
+      if (item.hidden) {
+        option.hidden = true;
+      }
+      if (item.selected) {
+        option.selected = true;
       }
       select.append(option);
     }
