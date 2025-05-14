@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.7.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.0...design-tailwind-v1.7.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* update side navigation ([#545](https://github.com/ogcio/govie-ds/issues/545)) ([2333cbb](https://github.com/ogcio/govie-ds/commit/2333cbb327578a864979d5516cf42bdf273afc3a))
+
 ## [1.7.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.6.0...design-tailwind-v1.7.0) (2025-05-06)
 
 

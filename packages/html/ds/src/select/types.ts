@@ -18,6 +18,8 @@ export type SelectItemProps = {
   value: string;
   label: string;
   disabled?: boolean;
+  hidden?: boolean;
+  selected?: boolean;
 };
 
 export type SelectGroupItemProps = {

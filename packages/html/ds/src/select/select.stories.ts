@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { createFormField, createSelect } from '../helpers/forms';
+import { createSelect } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { SelectProps } from './types';
 
@@ -32,6 +32,12 @@ export const Default: Story = {
       htmlFor: 'unique-id',
     },
     items: [
+      {
+        label: 'Select Option',
+        hidden: true,
+        selected: true,
+        value: '',
+      },
       {
         label: 'Option 1',
         value: 'value-1',
@@ -94,6 +100,12 @@ export const withLabelHintAndError: Story = {
     },
     items: [
       {
+        label: 'Select Option',
+        hidden: true,
+        selected: true,
+        value: '',
+      },
+      {
         label: 'Option 1',
         value: 'value-1',
       },
@@ -111,15 +123,15 @@ export const withLabelHintAndError: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const textInput = canvas.getByTestId('unique-id') as HTMLSelectElement;
-    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
+    const select = canvas.getByTestId('unique-id') as HTMLSelectElement;
+    expect(globalThis.window.getComputedStyle(select).borderColor).toBe(
       'rgb(187, 37, 13)',
     );
 
     const label = canvas.getByText('Default Select');
     expect(label).toBeTruthy();
     expect(label).toHaveClass('gi-label');
-    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
+    expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
 
     const hint = canvas.getByText(
       'This can be different to where you went before',
@@ -130,6 +142,10 @@ export const withLabelHintAndError: Story = {
     const error = canvas.getByText('Error message');
     expect(error).toBeTruthy();
     expect(error).toHaveClass('gi-error-text');
+
+    const placeholderOption = select.options[0];
+    expect(placeholderOption.hidden).toBe(true);
+    expect(placeholderOption.selected).toBe(true);
   },
 };
 
@@ -213,6 +229,12 @@ export const withGroups: Story = {
         label: 'Group 1',
         items: [
           {
+            label: 'Select Option',
+            hidden: true,
+            selected: true,
+            value: '',
+          },
+          {
             label: 'Option 1',
             value: 'value-1',
           },
@@ -229,6 +251,12 @@ export const withGroups: Story = {
       {
         label: 'Group 2',
         items: [
+          {
+            label: 'Select Option',
+            hidden: true,
+            selected: true,
+            value: '',
+          },
           {
             label: 'Option 4',
             value: 'value-4',
