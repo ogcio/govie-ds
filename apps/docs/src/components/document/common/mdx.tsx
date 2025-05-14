@@ -133,6 +133,7 @@ import { Vision } from '../vision/vision';
 import { ZIndexTable } from '../z-index/z-index-table';
 import { DesignSystemBenefits } from './design-system-benefits';
 import { DocumentImage } from './document-image';
+import { LoadingPattern } from '../patterns/loading';
 
 export type MdxProps = {
   code: string;
@@ -249,6 +250,7 @@ const documentComponents: MDXComponents = {
   LineHeightTable,
   Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
   List,
+  LoadingPattern,
   Logos,
   Modal,
   ModalBody,
