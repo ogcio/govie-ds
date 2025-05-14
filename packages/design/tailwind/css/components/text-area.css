@@ -23,7 +23,7 @@
 }
 
 .gi-textarea-error {
-  @apply gi-border-red-600;
+  @apply gi-border-color-border-intent-error-default;
 }
 
 .gi-textarea-remaining-chars {
