@@ -91,8 +91,8 @@ const createElement = (arguments_: ButtonGroupProps): string => {
   const component = createButtonGroup(arguments_);
   return beautifyHtmlNode(component);
 };
+
 export const Default: Story = {
-  name: 'Likert Scale',
   argTypes: {
     size: {
       control: 'radio',
@@ -121,6 +121,19 @@ export const Default: Story = {
       type: { name: 'string' },
     },
   },
+  args: {
+    size: 'large',
+    defaultValue: '2',
+    options: Array.from({ length: 4 }, (_, index) => ({
+      label: `Btn ${index + 1}`,
+      value: `${index + 1}`,
+    })),
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const OpinionScale: Story = {
+  name: 'Opinion Scale',
   args: {
     size: 'large',
     defaultValue: '6',

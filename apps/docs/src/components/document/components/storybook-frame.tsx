@@ -31,9 +31,13 @@ export function StorybookFrame({
     return <></>;
   }
 
-  const baseUrl = componentId.includes('html')
-    ? '/storybook-html/'
-    : '/storybook-react/';
+  let baseUrl = componentId.includes('html')
+    ? '/storybook-html'
+    : '/storybook-react';
+
+  if (process.env.NODE_ENV === 'development') {
+    baseUrl = 'http://localhost:6006';
+  }
 
   const id = storyProps.url.replace('/story/', '');
   const iframeStoryUrl = `${baseUrl}/iframe.html?id=${id}`;

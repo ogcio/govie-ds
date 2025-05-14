@@ -1,0 +1,45 @@
+---
+title: Button Group
+description: Button Group HTML Component
+status: stable
+component:
+  id: 'buttongroup-html'
+  link: '?path=/docs/form-buttongroup--docs'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/form-buttongroup--default'
+    - name: 'secondary'
+      url: '/story/form-buttongroup--secondary'
+    - name: 'flat'
+      url: '/story/form-buttongroup--flat'
+---
+
+# Button Group
+
+A button group, also known as a segmented control, is a set of buttons grouped together to allow users to select one option from a set. 
+It is commonly used for toggling between views, filtering content, or selecting mutually exclusive options. 
+Button groups help streamline the user interface by consolidating related actions into a single component.
+
+<Section current="html" >
+
+<ComponentPreview>
+  <ButtonGroup
+    name={'opinion_scale'}
+    size={'large'}
+    defaultValue={2}
+  >
+    <ButtonGroupItem key={1} value={1}>Btn 1</ButtonGroupItem>
+    <ButtonGroupItem key={2} value={2}>Btn 2</ButtonGroupItem>
+    <ButtonGroupItem key={3} value={3}>Btn 3</ButtonGroupItem>
+    <ButtonGroupItem key={4} value={4}>Btn 4</ButtonGroupItem>
+  </ButtonGroup>
+</ComponentPreview>
+
+## Example
+
+<StorybookFrame
+  componentId="buttongroup-html"
+  story="default" />
+
+</Section>

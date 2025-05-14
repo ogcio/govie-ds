@@ -62,7 +62,7 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
           <div className="py-2">
             <Mdx code={document.body.code} />
             {document.component && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 mt-8">
                 <Heading as="h4" className="m-0">
                   Status
                 </Heading>

@@ -1,0 +1,78 @@
+---
+title: Button Group
+description: Button Group React Component
+status: stable
+component:
+  id: 'buttongroup-react'
+  link: '/docs/form-buttongroup--docs'
+  status: 'stable'
+  properties:
+    - name: ButtonGroupProps
+      fields:
+        - name: 'name'
+          ofType: 'string'
+          description: 'A string used to uniquely identify the button group. Useful for forms or accessibility purposes.'
+          required: true
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of each button within the group. Options include: small, medium, large.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'A callback function triggered when a button is selected. It receives the selected value.'
+          required: false
+        - name: 'defaultValue'
+          ofType: 'string'
+          description: 'The initially selected value in the group.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'Can be used to inject custom React nodes into the group (if needed for flexibility).'
+          required: false
+    - name: ButtonGroupItemProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The value associated with this button item in the group.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the button item.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/form-buttongroup--default'
+---
+
+# Button Group
+
+A button group, also known as a segmented control, is a set of buttons grouped together to allow users to select one option from a set. 
+It is commonly used for toggling between views, filtering content, or selecting mutually exclusive options. 
+Button groups help streamline the user interface by consolidating related actions into a single component.
+
+<Section current="react" >
+
+<ComponentPreview>
+  <ButtonGroup
+    name={'opinion_scale'}
+    size={'large'}
+    defaultValue={2}
+  >
+    <ButtonGroupItem key={1} value={1}>Btn 1</ButtonGroupItem>
+    <ButtonGroupItem key={2} value={2}>Btn 2</ButtonGroupItem>
+    <ButtonGroupItem key={3} value={3}>Btn 3</ButtonGroupItem>
+    <ButtonGroupItem key={4} value={4}>Btn 4</ButtonGroupItem>
+  </ButtonGroup>
+</ComponentPreview>
+
+## Example
+
+<StorybookFrame
+  componentId="buttongroup-react"
+  story="default" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="buttongroup-react" />
+
+</Section>

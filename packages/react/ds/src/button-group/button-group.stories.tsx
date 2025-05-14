@@ -43,7 +43,38 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Likert Scale',
+  render: (arguments_) => {
+    const options = [
+      { label: 'Opt 1', value: '1' },
+      { label: 'Opt 2', value: '2' },
+      { label: 'Opt 3', value: '3' },
+      { label: 'Opt 4', value: '4' },
+    ];
+
+    return (
+      <ButtonGroup
+        name={arguments_.name}
+        size={arguments_.size}
+        defaultValue={arguments_.defaultValue}
+        onChange={(value) => console.log(value)}
+      >
+        {options.map((option) => (
+          <ButtonGroupItem key={option.value} value={option.value}>
+            {option.label}
+          </ButtonGroupItem>
+        ))}
+      </ButtonGroup>
+    );
+  },
+  args: {
+    name: 'likelihood-feedback',
+    size: 'large',
+    defaultValue: '6',
+  },
+};
+
+export const OpinionScale: Story = {
+  name: 'Opinion Scale',
   render: (arguments_) => {
     const options = [
       { label: '1', value: '1' },

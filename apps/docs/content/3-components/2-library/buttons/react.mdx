@@ -29,38 +29,6 @@ component:
           ofType: 'boolean'
           description: 'A boolean that, when true, disables the button and prevents interaction.'
           required: false
-    - name: ButtonGroupProps
-      fields:
-        - name: 'name'
-          ofType: 'string'
-          description: 'A string used to uniquely identify the button group. Useful for forms or accessibility purposes.'
-          required: true
-        - name: 'size'
-          ofType: 'string'
-          description: 'Defines the size of each button within the group. Options include: small, medium, large.'
-          required: false
-        - name: 'onChange'
-          ofType: 'function'
-          description: 'A callback function triggered when a button is selected. It receives the selected value.'
-          required: false
-        - name: 'defaultValue'
-          ofType: 'string'
-          description: 'The initially selected value in the group.'
-          required: false
-        - name: 'children'
-          ofType: 'node'
-          description: 'Can be used to inject custom React nodes into the group (if needed for flexibility).'
-          required: false
-    - name: ButtonGroupItemProps
-      fields:
-        - name: 'value'
-          ofType: 'string'
-          description: 'The value associated with this button item in the group.'
-          required: true
-        - name: 'children'
-          ofType: 'node'
-          description: 'The content of the button item.'
-          required: true
   stories:
     - name: 'primary'
       url: '/story/form-button--primary'
@@ -81,7 +49,7 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
   <Button>This is a button</Button>
 </ComponentPreview>
 
-## Variants
+## Examples
 
 ### Primary
 <StorybookFrame
@@ -101,6 +69,7 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
 
 ## Properties
 
+This component will extend the default HTML button element and it will add the following properties:
 <ComponentPropertiesTable componentId="button-react" />
 
 </Section>
