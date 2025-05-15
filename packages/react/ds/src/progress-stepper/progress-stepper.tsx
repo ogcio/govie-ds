@@ -81,6 +81,7 @@ export const Step = ({
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
+  const hasLabel = Boolean(children);
 
   return (
     <div className="gi-relative">
@@ -94,6 +95,7 @@ export const Step = ({
         role="listitem"
         aria-labelledby={`step-label-${stepNumber}`}
         data-testid={dataTestId || `step-label-${stepNumber}`}
+        aria-label={hasLabel ? undefined : `Step ${stepNumber}`}
       >
         <div className="gi-progress-stepper-step" data-indicator={indicator}>
           {getProgressIconStep(
@@ -107,7 +109,6 @@ export const Step = ({
           className="gi-progress-stepper-step-label"
           data-orientation={orientation}
           id={`step-label-${stepNumber}`}
-          aria-label={children ? undefined : `Step ${stepNumber}`}
         >
           {children}
         </div>
@@ -124,7 +125,9 @@ export const Step = ({
       {showVerticalSlots && (
         <div
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
-          className="gi-ml-10 gi-pt-5"
+          className={cn('gi-ml-10', {
+            'gi-pt-5': hasLabel,
+          })}
         >
           {verticalSlot}
         </div>
