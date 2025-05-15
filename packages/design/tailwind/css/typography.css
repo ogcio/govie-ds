@@ -193,7 +193,7 @@
 /* Link  */
 
 .gi-link {
-  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.2em] gi-text-blue-700 gi-inline gi-relative gi-w-fit;
+  @apply gi-decoration-xs gi-underline gi-underline-offset-[0.2em] gi-text-color-text-tone-convention-default gi-inline gi-relative gi-w-fit;
 }
 
 .gi-link:not([aria-current='page']) {
@@ -204,18 +204,18 @@
 }
 
 .gi-link:not(.gi-link-disabled)[aria-current='page'] {
-  @apply gi-text-gray-700 gi-pointer-events-none gi-no-underline focus-visible:gi-outline-none focus-visible:gi-shadow-none;
+  @apply gi-text-color-icon-tone-convention-disabled gi-pointer-events-none gi-no-underline focus-visible:gi-outline-none focus-visible:gi-shadow-none;
 }
 
 .gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
-  @apply hover:gi-text-blue-800 focus:gi-text-blue-800 focus-visible:gi-text-blue-800;
+  @apply hover:gi-text-color-text-tone-convention-hover focus:gi-text-color-text-tone-convention-hover focus-visible:gi-text-color-text-tone-convention-hover;
 }
 .gi-link:not(.gi-link-inherit):not(.gi-link-disabled):not(.gi-link-light) {
-  @apply visited:gi-text-purple-700;
+  @apply visited:gi-text-color-icon-tone-convention-visited;
 }
 
 .gi-link-no-visited {
-  @apply visited:gi-text-blue-700;
+  @apply visited:gi-text-color-text-tone-convention-default;
 }
 
 .gi-link-no-underline {
@@ -249,11 +249,11 @@
 }
 
 .gi-link-disabled {
-  @apply gi-text-gray-700 gi-cursor-default focus:gi-text-gray-700  gi-pointer-events-none;
+  @apply gi-text-color-icon-tone-convention-disabled gi-cursor-default focus:gi-text-color-icon-tone-convention-disabled  gi-pointer-events-none;
 }
 
 .gi-link-disabled[data-appearance='light'] {
-  @apply gi-text-gray-400;
+  @apply gi-text-color-text-tone-light-disabled;
 }
 
 .gi-link-light {
