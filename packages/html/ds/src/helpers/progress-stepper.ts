@@ -49,6 +49,9 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepContainer.dataset.next = isNextStep.toString();
     stepContainer.dataset.indicator = indicator;
     stepContainer.role = 'listitem';
+    if (label) {
+      stepContainer.ariaLabel = `Step ${stepNumber}`;
+    }
 
     const indicatorDiv = document.createElement('div');
     indicatorDiv.dataset.indicator = indicator;
@@ -70,9 +73,6 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepLabel.dataset.orientation = orientation;
     stepLabel.id = `step-label-${stepNumber}`;
     stepLabel.textContent = label;
-    if (label) {
-      stepLabel.ariaLabel = `Step ${stepNumber}`;
-    }
 
     if (!isLastStep) {
       const connector = document.createElement('div');
