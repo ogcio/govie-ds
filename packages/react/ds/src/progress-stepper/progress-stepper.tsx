@@ -140,7 +140,7 @@ export const ProgressStepper = ({
   children,
   currentStepIndex = 0,
   orientation = 'horizontal',
-  indicator = 'hashtag',
+  indicator = 'number',
   completeAll,
   dataTestId,
 }: ProgressStepperProps) => {

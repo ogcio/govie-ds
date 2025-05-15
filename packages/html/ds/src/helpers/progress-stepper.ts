@@ -7,7 +7,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
   const orientation = arguments_.orientation || 'horizontal';
   const showHorizontalSlot = orientation === 'horizontal' && slot;
 
-  const indicator = arguments_.indicator || 'hashtag';
+  const indicator = arguments_.indicator || 'number';
   const progressStepperContainer = document.createElement('div');
   progressStepperContainer.className = `gi-w-full ${orientation === 'vertical' ? 'gi-flex' : ''}`;
 
