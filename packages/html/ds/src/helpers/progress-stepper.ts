@@ -49,7 +49,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepContainer.dataset.next = isNextStep.toString();
     stepContainer.dataset.indicator = indicator;
     stepContainer.role = 'listitem';
-    if (label) {
+    if (!label) {
       stepContainer.ariaLabel = `Step ${stepNumber}`;
     }
 
