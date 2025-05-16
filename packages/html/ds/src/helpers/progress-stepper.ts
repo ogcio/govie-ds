@@ -21,7 +21,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
 
   for (let index = 0; index < arguments_.children.length; index++) {
     const stepItem = arguments_.children[index];
-    const { label = '', defaultOpen } = stepItem;
+    const { label = '', defaultOpen, ariaLabel = '' } = stepItem;
     const isCurrentStep = !arguments_.completeAll && currentStep === index;
     const isLastStep = index === arguments_.children.length - 1;
     const isCompleted =
@@ -50,7 +50,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepContainer.dataset.indicator = indicator;
     stepContainer.role = 'listitem';
     if (!label) {
-      stepContainer.ariaLabel = `Step ${stepNumber}`;
+      stepContainer.ariaLabel = ariaLabel;
     }
 
     const indicatorDiv = document.createElement('div');
