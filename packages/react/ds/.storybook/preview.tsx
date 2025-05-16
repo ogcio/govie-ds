@@ -1,5 +1,5 @@
-import '@govie-ds/theme-govie/theme.css';
 import '@govie-ds/theme-doete/light.css';
+import '@govie-ds/theme-govie/theme.css';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import {
   INITIAL_VIEWPORTS,
@@ -15,7 +15,6 @@ import {
 } from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
 import i18n from 'i18next';
-import React from 'react';
 import enTranslations from '../src/i18n/translations/en.json';
 import '../styles.css';
 import './global.css';

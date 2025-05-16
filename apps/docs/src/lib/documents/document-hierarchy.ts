@@ -43,7 +43,7 @@ function getDocumentHierarchyInternal(
   for (const path of paths) {
     const parts = path.split('/').map((part) => getSegmentDetails(part));
 
-    if (parts.length < 2 || parts.length > 3) {
+    if (parts.length < 2 || parts.length > 4) {
       throw new Error(`Invalid path '${path}'.`);
     }
 

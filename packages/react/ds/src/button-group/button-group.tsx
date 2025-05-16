@@ -1,7 +1,14 @@
 'use client';
-import React, { PropsWithChildren, useState } from 'react';
-import { Button } from '../button.js';
-import { ButtonAppearance, ButtonSize } from '../types.js';
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  useContext,
+  useId,
+  useState,
+} from 'react';
+import { Button } from '../button/button.js';
+import { ButtonAppearance, ButtonSize } from '../button/types.js';
 
 type ButtonGroupContextType = {
   selectedValue?: string;
@@ -13,9 +20,9 @@ type ButtonGroupContextType = {
   groupId: string;
 };
 
-const ButtonGroupContext = React.createContext<
-  ButtonGroupContextType | undefined
->(undefined);
+const ButtonGroupContext = createContext<ButtonGroupContextType | undefined>(
+  undefined,
+);
 
 type ButtonGroupItemProps = PropsWithChildren<{
   value: string;
@@ -24,14 +31,14 @@ type ButtonGroupItemProps = PropsWithChildren<{
   'aria-label'?: string;
 }>;
 
-export const ButtonGroupItem: React.FC<ButtonGroupItemProps> = ({
+export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
   value,
   children,
   role: customRole,
   'aria-checked': ariaChecked,
   'aria-label': ariaLabel,
 }) => {
-  const context = React.useContext(ButtonGroupContext);
+  const context = useContext(ButtonGroupContext);
 
   if (!context) {
     throw new Error('ButtonGroupItem must be used within a ButtonGroup');
@@ -81,7 +88,7 @@ type ButtonGroupProps = PropsWithChildren<{
   'aria-describedby'?: string;
 }>;
 
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+export const ButtonGroup: FC<ButtonGroupProps> = ({
   name,
   size = 'medium',
   appearance = 'dark',
@@ -96,7 +103,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     defaultValue,
   );
 
-  const groupId = React.useId();
+  const groupId = useId();
 
   return (
     <ButtonGroupContext.Provider

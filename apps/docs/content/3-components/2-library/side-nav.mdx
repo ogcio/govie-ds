@@ -12,6 +12,49 @@ libraries:
   - platform: react
     link: '?path=/docs/navigation-sidenav--docs'
     status: 'stable'
+component:
+  id: 'side-nav'
+  properties:
+    - name: SideNavProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The currently selected item value.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The child elements of the SideNav.'
+          required: true
+    - name: SideNavItemProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'Unique identifier for the item.'
+          required: true
+        - name: 'label'
+          ofType: 'string'
+          description: 'The visible label text for the item.'
+          required: true
+        - name: 'icon'
+          ofType: 'string'
+          description: 'Icon name (material symbols) to show beside the label.'
+          required: false
+        - name: 'href'
+          ofType: 'string'
+          description: 'URL if the item should behave like a link.'
+          required: false
+        - name: 'parent'
+          ofType: 'boolean'
+          description: 'Indicates that the item has children.'
+          required: false
+        - name: 'expandable'
+          ofType: 'boolean'
+          description: 'Allows the item to be expanded/collapsed.'
+          required: false
+        - name: 'open'
+          ofType: 'boolean'
+          description: 'Sets the item to be initially open if expandable.'
+          required: false
 ---
 
 # Side Navigation

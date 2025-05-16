@@ -5,7 +5,7 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { ButtonProps } from './types';
 
 const meta: Meta<ButtonProps> = {
-  title: 'Form/Button/Button',
+  title: 'Form/Button',
   decorators: (story, context) => {
     const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
     return `<div class="gi-p-4 ${isLight} gi-w-fit">
