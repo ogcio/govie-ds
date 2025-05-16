@@ -17,6 +17,7 @@ export type StepItemProps = {
   label?: string;
   children?: React.ReactNode;
   defaultOpen?: boolean;
+  ariaLabel?: string;
 };
 
 export type ProgressStepperProps = {
@@ -39,6 +40,7 @@ export type InnerStepProps = {
   verticalSlot?: React.ReactNode;
   defaultOpen?: boolean;
   dataTestId?: string;
+  ariaLabel?: string;
 };
 
 export type ConnectorProps = {
