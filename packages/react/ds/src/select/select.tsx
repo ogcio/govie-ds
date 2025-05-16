@@ -24,9 +24,13 @@ export const SelectGroupItem = ({
   </optgroup>
 );
 
-export const SelectItem = ({ children, ...props }: SelectItemProps) => (
+export const SelectItem = ({
+  children,
+  className,
+  ...props
+}: SelectItemProps) => (
   <option
-    className={cn('gi-select-option', props.className)}
+    className={cn('gi-select-option', className)}
     aria-selected={props.selected ? 'true' : 'false'}
     {...props}
   >
