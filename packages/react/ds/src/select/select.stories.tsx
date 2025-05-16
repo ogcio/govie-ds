@@ -25,7 +25,9 @@ export const Default = {
         <SelectItem value="select-option" hidden>
           Select Option
         </SelectItem>
-        <SelectItem value="value-1">Option 1</SelectItem>
+        <SelectItem value="value-1" className="gi-p-10">
+          Option 1
+        </SelectItem>
         <SelectItem value="value-2">Option 2</SelectItem>
         <SelectItem value="value-3">Option 3</SelectItem>
       </Select>
