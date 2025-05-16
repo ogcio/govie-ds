@@ -20,7 +20,8 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
 
     const button = document.createElement('button');
     itemContainer.append(button);
-    button.className = 'gi-combobox-toggle';
+    button.className =
+      'gi-btn gi-btn-flat-dark gi-btn-large gi-combobox-toggle';
     button.dataset.testid = 'combobox-toggle';
 
     const buttonContent = document.createElement('div');
@@ -77,10 +78,6 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
     const checkBoxContainer = document.createElement('div');
     containerOpen.append(checkBoxContainer);
     checkBoxContainer.className = 'gi-combobox-checkbox-container';
-
-    if (!item.noSearch) {
-      checkBoxContainer.className += ' gi-h-64';
-    }
 
     const noResultContainer = document.createElement('div');
     checkBoxContainer.append(noResultContainer);
