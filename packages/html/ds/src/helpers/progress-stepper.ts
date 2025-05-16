@@ -95,7 +95,17 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     if (showVerticalSlots) {
       const slot = arguments_.children[index]?.content;
       const verticalStepSlot = document.createElement('div');
-      verticalStepSlot.className = 'gi-ml-10 gi-pt-5';
+
+      verticalStepSlot.classList.add('gi-ml-10');
+
+      if (label) {
+        verticalStepSlot.classList.add('gi-pt-5');
+      } else {
+        if (slot) {
+          verticalStepSlot.classList.add('-gi-mt-[34px]');
+        }
+      }
+
       verticalStepSlot.dataset.testid = `vertical-step-slot-${currentStep}`;
       verticalStepSlot.innerHTML = slot || '';
       div.append(verticalStepSlot);
