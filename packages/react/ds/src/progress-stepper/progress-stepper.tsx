@@ -105,13 +105,15 @@ export const Step = ({
             isCurrentStep,
           )}
         </div>
-        <div
-          className="gi-progress-stepper-step-label"
-          data-orientation={orientation}
-          id={`step-label-${stepNumber}`}
-        >
-          {children}
-        </div>
+        {hasLabel && (
+          <div
+            className="gi-progress-stepper-step-label"
+            data-orientation={orientation}
+            id={`step-label-${stepNumber}`}
+          >
+            {children}
+          </div>
+        )}
       </div>
       {isLastStep ? null : (
         <Connector
@@ -127,6 +129,7 @@ export const Step = ({
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
           className={cn('gi-ml-10', {
             'gi-pt-5': hasLabel,
+            '-gi-mt-[34px]': !hasLabel,
           })}
         >
           {verticalSlot}
