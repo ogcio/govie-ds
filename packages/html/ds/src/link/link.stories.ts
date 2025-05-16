@@ -178,6 +178,42 @@ export const Light: Story = {
       </div>`,
 };
 
+export const LightDisabled: Story = {
+  args: {
+    ...baseProps,
+    disabled: true,
+    appearance: 'light',
+  },
+  render: (props) =>
+    `<div class="gi-bg-black gi-p-4 gi-w-fit">
+        ${createElement(props)}
+      </div>`,
+};
+
+export const LightHover: Story = {
+  args: {
+    ...withIcons(baseProps),
+    appearance: 'light',
+    className: 'link-hover',
+  },
+  render: (props) =>
+    `<div class="gi-bg-black gi-p-4 gi-w-fit">
+        ${createElement(props)}
+      </div>`,
+};
+
+export const LightFocus: Story = {
+  args: {
+    ...withIcons(baseProps),
+    appearance: 'light',
+    className: 'link-focus',
+  },
+  render: (props) =>
+    `<div class="gi-bg-black gi-p-4 gi-w-fit">
+        ${createElement(props)}
+      </div>`,
+};
+
 export const LightWithIcons: Story = {
   args: withIcons({
     ...baseProps,
