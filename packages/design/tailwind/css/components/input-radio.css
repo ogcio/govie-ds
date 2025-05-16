@@ -21,7 +21,7 @@
   @apply gi-cursor-pointer gi-text-lg;
 }
 .gi-input-radio-container {
-  @apply gi-gap-4 gi-flex gi-items-center;
+  @apply gi-gap-3 gi-flex gi-items-start;
 }
 .gi-input-radio-conditional-divider-container {
   @apply gi-flex gi-gap-4;

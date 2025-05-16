@@ -5,7 +5,6 @@ import { TextInputProps } from '../input-text/types';
 import { LabelProps } from '../label/types';
 import { RadioProps } from '../radio/types';
 import { SelectProps } from '../select/types';
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextAreaProps } from '../textarea/types';
 import { createIconButton } from './buttons';
 import { createIcon } from './icons';
@@ -272,11 +271,12 @@ export const createTextInput = (arguments_: TextInputProps) => {
 export const createRadio = (arguments_: RadioProps) => {
   let widthClass = 'gi-w-8';
   let sizeClass = 'gi-input-radio-medium';
+  const size: any = arguments_.size?.toString() || 'md';
 
-  if (arguments_.size == 'lg') {
+  if (size == 'lg') {
     widthClass = 'gi-w-11';
     sizeClass = 'gi-input-radio-large';
-  } else if (arguments_.size == 'sm') {
+  } else if (size == 'sm') {
     widthClass = 'gi-w-6';
     sizeClass = 'gi-input-radio-small';
   }
@@ -310,33 +310,46 @@ export const createRadio = (arguments_: RadioProps) => {
     input.dataset.element = arguments_.dataElement;
   }
   inputContainer.append(input);
+  const labelDiv = document.createElement('div');
 
   if (arguments_.label) {
-    const label = document.createElement('label') as HTMLLabelElement;
+    let labelDivClass = '';
+
+    if (size === 'md') {
+      labelDivClass = 'gi-mt-1';
+    } else if (size === 'lg') {
+      labelDivClass = 'gi-mt-2';
+    }
+
+    labelDiv.className = labelDivClass;
+
+    const label = createLabel({
+      size,
+      content: arguments_.label,
+    });
     label.htmlFor = input.id;
-    label.textContent = arguments_.label;
-    inputContainer.append(label);
+    labelDiv.append(label);
+
+    inputContainer.append(labelDiv);
   }
   container.append(inputContainer);
 
   if (arguments_.hint) {
     const hintContainer = document.createElement('div');
-    hintContainer.className = 'gi-input-checkbox-hint-container';
 
     const spacer = document.createElement('div');
     spacer.className = widthClass;
 
-    const hint = createHintText({ content: arguments_.hint });
+    const hint = createHintText({ content: arguments_.hint, size });
 
     hintContainer.append(spacer);
     hintContainer.append(hint);
 
-    container.append(hintContainer);
+    labelDiv.append(hintContainer);
   }
 
   if (arguments_.conditionalInput) {
     const extraContainer = document.createElement('div');
-    extraContainer.className = 'gi-radio-conditional-divider-container';
 
     const spacerContainer = document.createElement('div');
     spacerContainer.dataset.conditionalDivider = arguments_.dataElement;
