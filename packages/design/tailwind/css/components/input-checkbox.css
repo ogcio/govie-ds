@@ -1,5 +1,5 @@
 .gi-input-checkbox {
-  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-gray-950 gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-black checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-black gi-input-disabled-state disabled:before:gi-border-gray-700;
+  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-color-border-system-neutral-interactive-hover gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-color-border-system-neutral-default checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-color-border-system-neutral-default gi-input-disabled-state disabled:before:gi-border-color-border-system-neutral-interactive-disabled;
 }
 
 .gi-input-checkbox-small {

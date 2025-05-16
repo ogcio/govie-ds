@@ -3,27 +3,27 @@
 }
 
 .gi-tag-default {
-  @apply gi-bg-gray-50 gi-border-gray-200 gi-text-gray-700 gi-stroke-gray-700;
+  @apply gi-bg-color-surface-system-neutral-subtle gi-border-color-border-system-neutral-muted gi-text-color-text-system-neutral-secondary gi-stroke-color-text-system-neutral-secondary;
 }
 
 .gi-tag-info {
-  @apply gi-bg-blue-50 gi-border-blue-100 gi-text-blue-700 gi-stroke-blue-700;
+  @apply gi-bg-color-surface-intent-info-default gi-border-color-border-intent-info-subtle gi-text-color-text-intent-info-default gi-stroke-color-text-intent-info-default;
 }
 
 .gi-tag-success {
-  @apply gi-bg-green-50 gi-border-green-100 gi-text-green-700 gi-stroke-green-700;
+  @apply gi-bg-color-surface-intent-success-default gi-border-color-border-intent-success-subtle gi-text-color-text-intent-success-default gi-stroke-color-text-intent-success-default;
 }
 
 .gi-tag-warning {
-  @apply gi-bg-yellow-50 gi-border-yellow-300 gi-text-yellow-700 gi-stroke-yellow-700;
+  @apply gi-bg-color-surface-intent-warning-default gi-border-color-border-intent-warning-subtle gi-text-color-text-intent-warning-default gi-stroke-color-text-intent-warning-default;
 }
 
 .gi-tag-error {
-  @apply gi-bg-red-50 gi-border-red-100 gi-text-red-700 gi-stroke-red-700;
+  @apply gi-bg-color-surface-intent-error-default gi-border-color-border-intent-error-subtle gi-text-color-text-intent-error-default gi-stroke-color-text-intent-error-default;
 }
 
 .gi-tag-counter {
-  @apply gi-bg-gray-950 gi-text-white gi-stroke-white;
+  @apply gi-bg-color-surface-system-neutral-strong gi-text-color-text-system-neutral-inverted gi-stroke-color-text-system-neutral-inverted;
 }
 
 .gi-tag-counter-warning {
