@@ -6,9 +6,10 @@ export type Step = {
 };
 
 export type StepItemProps = {
-  label: string;
+  label?: string;
   content?: string;
   defaultOpen?: boolean;
+  ariaLabel?: string;
 };
 
 export const ProgressStepperIndicator = {
