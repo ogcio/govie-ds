@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useId, useState } from 'react';
-import { cn } from '../cn.js';
+import { Button } from '../button/button.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -67,7 +67,10 @@ export const DropdownItem = ({
 
   return (
     <div role="group" aria-label={`${children} dropdown`}>
-      <button
+      <Button
+        variant="flat"
+        appearance="dark"
+        size="large"
         onClick={(event) => {
           event.preventDefault();
           setIsOpen(!isOpen);
@@ -85,7 +88,7 @@ export const DropdownItem = ({
           className={`${isOpen && 'gi-rotate-180'}`}
           icon="keyboard_arrow_down"
         />
-      </button>
+      </Button>
 
       <div
         className={`${
@@ -123,11 +126,7 @@ export const DropdownItem = ({
           </div>
         )}
 
-        <div
-          className={cn('gi-combobox-checkbox-container', {
-            'gi-h-64': !noSearch,
-          })}
-        >
+        <div className="gi-combobox-checkbox-container">
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
               {t('dropdownItem.noResultFound', {

@@ -1,9 +1,10 @@
 .gi-combobox-container {
   @apply gi-max-w-[400px] gi-border-t;
 }
-
-.gi-combobox-container > div {
-  @apply gi-border-color-border-system-neutral-muted;
+.gi-combobox-toggle {
+  @apply gi-border-t-transparent gi-border-b
+    gi-relative !gi-h-[unset] gi-z-1 gi-px-2 gi-py-4 gi-flex gi-border-color-border-system-neutral-muted
+    gi-justify-between gi-cursor-pointer gi-w-full hover:gi-bg-gray-200;
 }
 
 .gi-combobox-toggle {
