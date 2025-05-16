@@ -129,7 +129,7 @@ export const Step = ({
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
           className={cn('gi-ml-10', {
             'gi-pt-5': hasLabel,
-            '-gi-mt-[34px]': !hasLabel,
+            '-gi-mt-[34px]': !hasLabel && verticalSlot,
           })}
         >
           {verticalSlot}
