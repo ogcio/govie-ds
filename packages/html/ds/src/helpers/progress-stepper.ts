@@ -7,7 +7,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
   const orientation = arguments_.orientation || 'horizontal';
   const showHorizontalSlot = orientation === 'horizontal' && slot;
 
-  const indicator = arguments_.indicator || 'hashtag';
+  const indicator = arguments_.indicator || 'number';
   const progressStepperContainer = document.createElement('div');
   progressStepperContainer.className = `gi-w-full ${orientation === 'vertical' ? 'gi-flex' : ''}`;
 
@@ -21,7 +21,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
 
   for (let index = 0; index < arguments_.children.length; index++) {
     const stepItem = arguments_.children[index];
-    const { label, defaultOpen } = stepItem;
+    const { label = '', defaultOpen, ariaLabel = '' } = stepItem;
     const isCurrentStep = !arguments_.completeAll && currentStep === index;
     const isLastStep = index === arguments_.children.length - 1;
     const isCompleted =
@@ -49,6 +49,9 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepContainer.dataset.next = isNextStep.toString();
     stepContainer.dataset.indicator = indicator;
     stepContainer.role = 'listitem';
+    if (!label) {
+      stepContainer.ariaLabel = ariaLabel;
+    }
 
     const indicatorDiv = document.createElement('div');
     indicatorDiv.dataset.indicator = indicator;
@@ -92,7 +95,17 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     if (showVerticalSlots) {
       const slot = arguments_.children[index]?.content;
       const verticalStepSlot = document.createElement('div');
-      verticalStepSlot.className = 'gi-ml-10 gi-pt-5';
+
+      verticalStepSlot.classList.add('gi-ml-10');
+
+      if (label) {
+        verticalStepSlot.classList.add('gi-pt-5');
+      } else {
+        if (slot) {
+          verticalStepSlot.classList.add('-gi-mt-[34px]');
+        }
+      }
+
       verticalStepSlot.dataset.testid = `vertical-step-slot-${currentStep}`;
       verticalStepSlot.innerHTML = slot || '';
       div.append(verticalStepSlot);

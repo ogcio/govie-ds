@@ -12,6 +12,59 @@ libraries:
   - platform: react
     link: '?path=/docs/form-inputtext--docs'
     status: 'stable'
+component:
+  id: 'input-text'
+  properties:
+    - name: InputTextProps
+      fields:
+        - name: 'prefix'
+          ofType: 'node'
+          description: 'Element or text to display on the left side of the input, such as a unit or symbol.'
+          required: false
+        - name: 'suffix'
+          ofType: 'node'
+          description: 'Element or text to display on the right side of the input, such as a unit or symbol.'
+          required: false
+        - name: 'halfFluid'
+          ofType: 'boolean'
+          description: 'If true, the text input will take up half the width of the container.'
+          required: false
+        - name: 'fullFluid'
+          ofType: 'boolean'
+          description: 'If true, the text input will take up the full width of the container.'
+          required: false
+        - name: 'characterWidth'
+          ofType: 'number'
+          description: 'Specify a custom width based on the number of characters the input should accommodate.'
+          required: false
+        - name: 'ref'
+          ofType: 'object'
+          description: 'A reference to the input element.'
+          required: false
+        - name: 'type'
+          ofType: 'string'
+          description: 'Specifies the input type.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Disable the input.'
+          required: false
+        - name: 'clearEnabled'
+          ofType: 'boolean'
+          description: 'Displays a reset (clear) button inside the input field.'
+          required: false
+        - name: 'iconStart'
+          ofType: 'string'
+          description: 'Icon to display at the start of the input.'
+          required: false
+        - name: 'iconEnd'
+          ofType: 'string'
+          description: 'Icon to display at the end of the input.'
+          required: false
+        - name: 'hasError'
+          ofType: 'boolean'
+          description: 'Visually indicates errors with a red border.'
+          required: false
 ---
 
 # Input Text
@@ -132,24 +185,15 @@ The `InputText` component is used to allow users to enter single-line text, with
   </FormField>
 </ComponentContainer>
 
-## Usage
+## Properties
 
-#### Features:
+<ComponentPropertiesTable componentId="input-text" />
+
+## Usage
 
 - Includes a built-in reset button to clear the input field.
 - Maintains the same styling and customisation options as the standard input component.
 - Ideal for search fields, dynamic form inputs, or scenarios requiring frequent text updates.
-
-### Text Input Props
-
-- **prefix** (optional): Element or text to display on the left side of the input, such as a unit or symbol.
-- **suffix** (optional): Element or text to display on the right side of the input, such as a unit or symbol.
-- **halfFluid** (optional): If `true`, the text input will take up half the width of the container.
-- **ref** (optional): A reference to the input element.
-- **type** (optional): Specifies the input type.
-- **disabled** (optional): Disable the input.
-- **clearEnabled** (optional): Enhances user experience by displaying a reset (clear) button inside the input field. When enabled, users can quickly clear the input value with a single click. This is particularly useful in forms where users frequently modify or re-enter information. It ensures fast interaction without requiring manual deletion.
-- **Other InputHTMLAttributes** (optional): The component also accepts other standard HTML input attributes, such as `placeholder`, `maxLength`, etc., through the `InputHTMLAttributes` generic props.
 
 ### Best Practices
 

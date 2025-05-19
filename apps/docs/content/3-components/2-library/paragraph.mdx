@@ -1,6 +1,6 @@
 ---
 title: Paragraph
-description: Paragraph HTML Component
+description: Paragraph Component
 status: in-review
 libraries:
   - platform: 'figma'
@@ -12,6 +12,31 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-paragraph--docs'
     status: 'stable'
+component:
+  id: 'paragraph'
+  properties:
+    - name: ParagraphProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the paragraph.'
+          required: true
+        - name: 'as'
+          ofType: 'string'
+          description: 'Specifies the HTML element to render the component as. Options: p, span.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the paragraph. Options: lg, md, sm.'
+          required: false
+        - name: 'align'
+          ofType: 'string'
+          description: 'Specifies the alignment of the paragraph. Options: start, center, end, justify.'
+          required: false
+        - name: 'whitespace'
+          ofType: 'string'
+          description: 'Specifies the whitespace property. Options: normal, pre, pre-wrap, break-spaces.'
+          required: false
 ---
 
 # Paragraph
@@ -110,23 +135,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="paragraph" />
+
 ## Usage
-
-### Paragraph Props
-
-- **children** (required): The text content of the paragraph.
-
-- **as** (optional): Specifies the HTML element to render the component as.  
-  Options: `p`, `span`.
-
-- **size** (optional): Specifies the size of the paragraph.  
-  Options: `lg`, `md`, `sm`.
-
-- **align** (optional): Specifies the alignment of the paragraph.  
-  Options: `start`, `center`, `end`, `justify`.
-
-- **whitespace** (optional): Specifies the whitespace property.  
-  Options: `normal`, `pre`, `pre-wrap`, `break-spaces`.
 
 ### Best Practices
 
