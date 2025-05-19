@@ -5,6 +5,7 @@ import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
 import type { InputTextProps } from '../input-text/type.js';
+import { Label } from '../label/label.js';
 import { Input } from '../primitives/input.js';
 import {
   InputRadioProps,
@@ -48,7 +49,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({
   label,
   hint,
   id,
-  size,
+  size = 'md',
   conditionalInput,
   checked,
   ...props
@@ -66,35 +67,31 @@ export const InputRadio: React.FC<InputRadioProps> = ({
           aria-required={conditionalInput ? 'true' : 'false'}
           {...props}
         />
-        <label htmlFor={radioId}>{label}</label>
-      </div>
-      {(hint || conditionalInput) && (
-        <div className="gi-radio-conditional-divider-container">
-          <div
-            className={cn(
-              addConditionalDivider(conditionalInput, checked),
-              getRadioWidth(size),
-            )}
-          >
-            <div
-              className={cn(
-                'gi-input-radio-conditional-divider-border-container',
-                getRadioWidth(size),
-              )}
-            >
-              <div className="gi-input-radio-conditional-divider-border" />
-            </div>
-          </div>
-          <div>
-            {hint && <HintText text={hint} />}
-            {conditionalInput && (
-              <div className={`${!checked && 'gi-hidden'}`}>
-                <InputText {...conditionalInput} />
+        <div
+          className={cn({
+            'gi-mt-1': size === 'md',
+            'gi-mt-2': size === 'lg',
+          })}
+        >
+          <Label htmlFor={radioId} text={label || ''} size={size}></Label>
+          {(hint || conditionalInput) && (
+            <div className="gi-radio-conditional-divider-container">
+              <div>
+                {hint && <HintText text={hint} size={size} />}
+                {conditionalInput && (
+                  <div
+                    className={cn('gi-mt-3', {
+                      'gi-hidden': !checked,
+                    })}
+                  >
+                    <InputText {...conditionalInput} />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -180,6 +180,30 @@ export const Light: Story = wrapInDarkBg({
   },
 });
 
+export const LightDisabled: Story = wrapInDarkBg({
+  args: {
+    ...baseProps,
+    disabled: true,
+    appearance: 'light',
+  },
+});
+
+export const LightHover: Story = wrapInDarkBg({
+  args: {
+    ...withIcons(baseProps),
+    appearance: 'light',
+    className: 'link-hover',
+  },
+});
+
+export const LightFocus: Story = wrapInDarkBg({
+  args: {
+    ...withIcons(baseProps),
+    appearance: 'light',
+    className: 'link-focus',
+  },
+});
+
 export const LightWithIcons: Story = wrapInDarkBg({
   args: withIcons({
     ...baseProps,
