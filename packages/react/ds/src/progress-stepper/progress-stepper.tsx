@@ -77,10 +77,12 @@ export const Step = ({
   verticalSlot,
   defaultOpen,
   dataTestId,
+  ariaLabel,
 }: InnerStepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
+  const hasLabel = Boolean(children);
 
   return (
     <div className="gi-relative">
@@ -94,6 +96,7 @@ export const Step = ({
         role="listitem"
         aria-labelledby={`step-label-${stepNumber}`}
         data-testid={dataTestId || `step-label-${stepNumber}`}
+        aria-label={hasLabel ? undefined : ariaLabel}
       >
         <div className="gi-progress-stepper-step" data-indicator={indicator}>
           {getProgressIconStep(
@@ -103,13 +106,15 @@ export const Step = ({
             isCurrentStep,
           )}
         </div>
-        <div
-          className="gi-progress-stepper-step-label"
-          data-orientation={orientation}
-          id={`step-label-${stepNumber}`}
-        >
-          {children}
-        </div>
+        {hasLabel && (
+          <div
+            className="gi-progress-stepper-step-label"
+            data-orientation={orientation}
+            id={`step-label-${stepNumber}`}
+          >
+            {children}
+          </div>
+        )}
       </div>
       {isLastStep ? null : (
         <Connector
@@ -123,7 +128,10 @@ export const Step = ({
       {showVerticalSlots && (
         <div
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
-          className="gi-ml-10 gi-pt-5"
+          className={cn('gi-ml-10', {
+            'gi-pt-5': hasLabel,
+            '-gi-mt-[34px]': !hasLabel && verticalSlot,
+          })}
         >
           {verticalSlot}
         </div>
@@ -139,7 +147,7 @@ export const ProgressStepper = ({
   children,
   currentStepIndex = 0,
   orientation = 'horizontal',
-  indicator = 'hashtag',
+  indicator = 'number',
   completeAll,
   dataTestId,
 }: ProgressStepperProps) => {
@@ -160,8 +168,11 @@ export const ProgressStepper = ({
         aria-live="polite"
       >
         {Children.map(children, (child, index) => {
-          const { label, defaultOpen } =
-            child.props as unknown as StepItemProps;
+          const {
+            label = '',
+            defaultOpen,
+            ariaLabel,
+          } = child.props as unknown as StepItemProps;
           const [isCurrentStep, isLastStep, isCompleted] = [
             !completeAll && currentStepIndex === index,
             index === children.length - 1,
@@ -182,6 +193,7 @@ export const ProgressStepper = ({
                 defaultOpen={defaultOpen}
                 indicator={indicator}
                 dataTestId={dataTestId}
+                ariaLabel={ariaLabel}
               >
                 {label}
               </Step>
