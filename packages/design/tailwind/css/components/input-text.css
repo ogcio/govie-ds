@@ -1,5 +1,5 @@
 .gi-input-text-inner {
-  @apply gi-w-full gi-flex gi-items-center gi-relative;
+  @apply gi-w-full gi-flex gi-items-center gi-relative gi-text-color-text-system-neutral-primary;
 }
 
 .gi-input-text-container {
@@ -7,21 +7,21 @@
 }
 
 .gi-input-text-prefix {
-  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-100 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-muted gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
 }
 .gi-input-text-prefix[data-disabled='true'] {
-  @apply gi-border-gray-400 gi-text-gray-700 gi-cursor-not-allowed;
+  @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled gi-cursor-not-allowed;
 }
 
 .gi-input-text-suffix {
-  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-gray-100 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-gray-950 gi-min-w-10 gi-h-10;
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-muted gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
 }
 .gi-input-text-suffix[data-disabled='true'] {
-  @apply gi-border-gray-400 gi-text-gray-700 gi-cursor-not-allowed;
+  @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled gi-cursor-not-allowed;
 }
 
 .gi-input-text {
-  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-2 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-gray-950;
+  @apply gi-w-full gi-rounded-sm gi-focus-state-outline gi-focus-state-border gi-flex-initial gi-border-sm gi-border-solid gi-box-border gi-h-10 gi-mt-0 gi-p-2 gi-z-1 xs:gi-text-md gi-text-sm gi-leading-10 xs:gi-leading-5 gi-input-disabled-state gi-border-color-border-intent-focus-default;
 }
 .gi-input-text[data-icon-start='true'][data-prefix='true'] {
   @apply gi-pl-9;

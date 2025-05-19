@@ -49,3 +49,45 @@ export const Default: Story = {
     type: TagTypeEnum.Info,
   },
 };
+
+export const Info: Story = {
+  args: {
+    text: 'Info Tag',
+    type: TagTypeEnum.Info,
+  },
+};
+
+export const Success: Story = {
+  args: {
+    text: 'Success Tag',
+    type: TagTypeEnum.Success,
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    text: 'Warning Tag',
+    type: TagTypeEnum.Warning,
+  },
+};
+
+export const Error: Story = {
+  args: {
+    text: 'Error Tag',
+    type: TagTypeEnum.Error,
+  },
+};
+
+export const Counter: Story = {
+  args: {
+    text: '13',
+    type: TagTypeEnum.Counter,
+  },
+};
+
+export const CounterWarning: Story = {
+  args: {
+    text: '13',
+    type: TagTypeEnum.CounterWarning,
+  },
+};
