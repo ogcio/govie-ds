@@ -34,10 +34,10 @@
 }
 
 .gi-header-title {
-  @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow lg:gi-block;
+  @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow lg:gi-block gi-text-ellipsis gi-whitespace-nowrap gi-overflow-hidden;
 }
 .gi-header-tool-item {
-  @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer;
+  @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer gi-whitespace-nowrap;
 }
 .gi-header-tool-item:first-child {
   @apply lg:gi-flex gi-text-md gi-font-bold gi-text-white gi-stroke-white;
