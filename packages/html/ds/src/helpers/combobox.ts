@@ -20,7 +20,8 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
 
     const button = document.createElement('button');
     itemContainer.append(button);
-    button.className = 'gi-combobox-toggle';
+    button.className =
+      'gi-btn gi-btn-flat-dark gi-btn-large gi-combobox-toggle';
     button.dataset.testid = 'combobox-toggle';
 
     const buttonContent = document.createElement('div');

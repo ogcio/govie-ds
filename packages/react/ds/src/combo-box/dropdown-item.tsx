@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useId, useState } from 'react';
+import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
@@ -67,7 +68,10 @@ export const DropdownItem = ({
 
   return (
     <div role="group" aria-label={`${children} dropdown`}>
-      <button
+      <Button
+        variant="flat"
+        appearance="dark"
+        size="large"
         onClick={(event) => {
           event.preventDefault();
           setIsOpen(!isOpen);
@@ -87,7 +91,7 @@ export const DropdownItem = ({
           className={cn({ 'gi-rotate-180': isOpen })}
           icon="keyboard_arrow_down"
         />
-      </button>
+      </Button>
 
       <div
         className={isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}
