@@ -1,5 +1,6 @@
 import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
+import { DownloadTheme } from '@/components/document/theme/download-theme';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { GovieLink } from '@/components/navigation/custom-link';
 import { cn } from '@/lib/cn';
@@ -167,6 +168,7 @@ const standardComponents: MDXComponents = {
 const documentComponents: MDXComponents = {
   Accordion,
   AccordionItem,
+<<<<<<< Updated upstream
   Addresses,
   Alert,
   Blockquote,
@@ -179,6 +181,85 @@ const documentComponents: MDXComponents = {
   Button,
   ButtonGroup,
   ButtonGroupItem,
+=======
+  DropdownItem: (props) => (
+    <DropdownItem {...props}>{props.children}</DropdownItem>
+  ),
+  Form: (props) => <Form {...props}>{props.children}</Form>,
+  Image: (props) => <DocumentImage {...props} />,
+  ColorPrimitives: () => <ColorPrimitives />,
+  DownloadTheme: () => <DownloadTheme />,
+  FontFamilyTable: () => <FontFamilyTable />,
+  FontSizeTable: () => <FontSizeTable />,
+  FontWeightTable: () => <FontWeightTable />,
+  LineHeightTable: () => <LineHeightTable />,
+  LetterSpacingTable: () => <LetterSpacingTable />,
+  TypeScaleHeadingTable: () => <TypeScaleHeadingTable />,
+  TypeScaleTextTable: () => <TypeScaleTextTable />,
+  HeadingResponsiveSizes: (props) => <HeadingResponsiveSizes {...props} />,
+  TextResponsiveSizes: (props) => <TextResponsiveSizes {...props} />,
+  ScreenSizeTable: () => <ScreenSizeTable />,
+  SizeTable: () => <SizeTable />,
+  SpaceTable: () => <SpaceTable />,
+  BorderWidthTable: () => <BorderWidthTable />,
+  BorderRadiusTable: () => <BorderRadiusTable />,
+  ShadowTable: () => <ShadowTable />,
+  OpacityTable: () => <OpacityTable />,
+  ZIndexTable: () => <ZIndexTable />,
+  ComponentStatusTable: () => <ComponentStatusTable />,
+  ComponentStatusBlock: (props) => <ComponentStatusBlock {...props} />,
+  SystemElements: () => <SystemElements />,
+  Logos: () => <Logos />,
+  Fonts: () => <Fonts />,
+  Favicons: () => <Favicons />,
+  Faqs: (props) => <Faqs {...props} />,
+  Faq: (props) => <Faq {...props} />,
+  DesignSystemBenefits: () => <DesignSystemBenefits />,
+  Vision: () => <Vision />,
+  PageNotFound: (props) => <PageNotFound {...props} />,
+  LoadingPattern: (props) => <LoadingPattern {...props} />,
+  RenderPage: (props) => <RenderPage {...props} />,
+  ServiceUnavailable: (props) => <ServiceUnavailable {...props} />,
+  ContactDeptOrService: (props) => <ContactDeptOrService {...props} />,
+  Addresses: (props) => <Addresses {...props} />,
+  GridPrimitives: (props) => <GridPrimitives {...props} />,
+  TwoThirds: (props) => <TwoThirds {...props} />,
+  TwoThirdsOneThird: (props) => <TwoThirdsOneThird {...props} />,
+  Tabs: (props) => <Tabs {...props}>{props.children}</Tabs>,
+  TabList: (props) => <TabList {...props}>{props.children}</TabList>,
+  TabItem: (props) => <TabItem {...props}>{props.children}</TabItem>,
+  TabPanel: (props) => <TabPanel {...props}>{props.children}</TabPanel>,
+  Link: (props) => <GovieLink {...props}>{props.children}</GovieLink>,
+  Paragraph: (props) => <Paragraph {...props}>{props.children}</Paragraph>,
+  Heading: (props) => <Heading {...props}>{props.children}</Heading>,
+  Button: (props) => <Button {...props} />,
+  Icon: (props) => <Icon {...props} />,
+  Tag: (props) => <Tag {...props}>{props.children}</Tag>,
+  Header: (props) => <Header {...props}>{props.children}</Header>,
+  Footer: (props) => <Footer {...props}>{props.children}</Footer>,
+  Card: (props) => <Card {...props}>{props.children}</Card>,
+  TextArea: (props) => <TextArea {...props}>{props.children}</TextArea>,
+  ModalWrapper: ModalWrapperSample,
+  Modal: (props) => <Modal {...props}>{props.children}</Modal>,
+  ModalTitle: (props) => <ModalTitle>{props.children}</ModalTitle>,
+  ModalBody: (props) => <ModalBody>{props.children}</ModalBody>,
+  ModalFooter: (props) => (
+    <ModalFooter {...props}>{props.children}</ModalFooter>
+  ),
+  CookieBanner: (props) => <CookieBanner {...props} />,
+  List: (props) => <List {...props} />,
+  ComboBox: (props) => <Combobox {...props}>{props.children}</Combobox>,
+  Chip: (props) => <Chip {...props} />,
+  IconGridLayout: (props) => <IconGridLayout {...props} />,
+  InputText,
+  InputRadio,
+  SectionBreak: (props) => <SectionBreak {...props} />,
+  Select: (props) => <Select {...props} />,
+  SelectItem: (props) => <SelectItem {...props} />,
+  IconButton: (props) => <IconButton {...props} />,
+  InputCheckboxGroup,
+  Spinner: (props) => <Spinner {...props} />,
+>>>>>>> Stashed changes
   ButtonWithSpinner: () => (
     <Button disabled={true}>
       Loading... <Spinner inline={true} />
