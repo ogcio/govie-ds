@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.1...html-lib-v1.5.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* Radio group label spacing ([#551](https://github.com/ogcio/govie-ds/issues/551)) ([18baf71](https://github.com/ogcio/govie-ds/commit/18baf71a7b06a8edaa31b4bbc522adb7ae9850fb))
+* update combo box focus state ([#553](https://github.com/ogcio/govie-ds/issues/553)) ([6399ce2](https://github.com/ogcio/govie-ds/commit/6399ce280ae4d107252a7067dafeb37ba9aa4efa))
+* Update Progress Stepper label as optional ([#552](https://github.com/ogcio/govie-ds/issues/552)) ([8792750](https://github.com/ogcio/govie-ds/commit/879275054897a9941db79610c802fa7cf4a421c8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.7.2
+
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.0...html-lib-v1.5.1) (2025-05-12)
 
 

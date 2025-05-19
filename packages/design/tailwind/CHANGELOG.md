@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [1.7.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.1...design-tailwind-v1.7.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* Radio group label spacing ([#551](https://github.com/ogcio/govie-ds/issues/551)) ([18baf71](https://github.com/ogcio/govie-ds/commit/18baf71a7b06a8edaa31b4bbc522adb7ae9850fb))
+* update combo box focus state ([#553](https://github.com/ogcio/govie-ds/issues/553)) ([6399ce2](https://github.com/ogcio/govie-ds/commit/6399ce280ae4d107252a7067dafeb37ba9aa4efa))
+
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.0...design-tailwind-v1.7.1) (2025-05-12)
 
 
