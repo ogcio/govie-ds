@@ -1,6 +1,6 @@
 ---
-title: ComboBox
-description: ComboBox Component
+title: Combobox
+description: Combobox Component
 status: in-review
 libraries:
   - platform: 'figma'
@@ -12,6 +12,53 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/navigation-combobox--docs'
     status: 'stable'
+component:
+  id: 'combo-box'
+  properties:
+    - name: ComboboxProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'One or more DropdownItem components that define the options in the combobox.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'A string to apply custom class names to the combobox for styling.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string that assigns a custom test ID to the combobox for testing purposes.'
+          required: false
+    - name: DropdownItemProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A string representing the label or text displayed for the dropdown item.'
+          required: true
+        - name: 'options'
+          ofType: 'array'
+          description: 'An array of objects defining the dropdown options. Each option has a label and value.'
+          required: true
+        - name: 'noSearch'
+          ofType: 'boolean'
+          description: 'A boolean that, when set to true, disables the search functionality within the dropdown.'
+          required: false
+        - name: 'value'
+          ofType: 'array'
+          description: 'An array of strings representing the currently selected values. Useful for controlled components.'
+          required: false
+        - name: 'defaultValue'
+          ofType: 'array'
+          description: 'An array of strings that defines the default selected values when the component is first rendered.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'A callback function triggered when the selected values change. Receives the updated array of selected values as a parameter.'
+          required: false
+        - name: 'onSearch'
+          ofType: 'function'
+          description: 'A callback function triggered when the user types in the search input. Receives the current query string as a parameter.'
+          required: false
 ---
 
 # Combo Box
@@ -22,7 +69,7 @@ libraries:
 
 <ComponentContainer>
   <Form>
-    <ComboBox>
+    <Combobox>
       <DropdownItem
         options={[
           {
@@ -169,7 +216,7 @@ libraries:
       >
         <b style={{ fontWeight: 400 }}>Topic</b>
       </DropdownItem>
-    </ComboBox>
+    </Combobox>
   </Form>
 </ComponentContainer>
 
@@ -184,10 +231,10 @@ libraries:
   ```
   </TabPanel>
   <TabPanel value="tab12">
-  ```html 
+  ```jsx 
       <Combobox
       action="#"
-      id="ComboBoxId"
+      id="ComboboxId"
       dropdownItems={[
         {
           label: "Organisations",
@@ -282,34 +329,11 @@ libraries:
 </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="combo-box" />
+
 ## Usage
-
-### Combobox Props
-
-- **children** (required): One or more `DropdownItem` components that define the options in the combobox.
-
-- **className** (optional): A string to apply custom class names to the combobox for styling.
-
-- **dataTestid** (optional): A string that assigns a custom test ID to the combobox for testing purposes.
-
-### DropdownItem Props
-
-- **children** (required): A string representing the label or text displayed for the dropdown item.
-
-- **options** (required): An array of objects defining the dropdown options. Each option has:
-
-  - `label`: The display label of the option.
-  - `value`: The value associated with the option.
-
-- **noSearch** (optional): A boolean that, when set to `true`, disables the search functionality within the dropdown.
-
-- **value** (optional): An array of strings representing the currently selected values. Useful for controlled components.
-
-- **defaultValue** (optional): An array of strings that defines the default selected values when the component is first rendered.
-
-- **onChange** (optional): A callback function triggered when the selected values change. Receives the updated array of selected values as a parameter.
-
-- **onSearch** (optional): A callback function triggered when the user types in the search input. Receives the current query string as a parameter.
 
 ### i18n Keys
 

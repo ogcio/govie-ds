@@ -12,6 +12,59 @@ libraries:
   - platform: react
     link: '?path=/docs/form-select--docs'
     status: 'stable'
+component:
+  id: 'select'
+  properties:
+    - name: SelectProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'SelectItem components to be rendered as options in the select dropdown.'
+          required: true
+        - name: 'id'
+          ofType: 'string'
+          description: 'Unique identifier for the select element.'
+          required: true
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'When true, disables the select element preventing user interaction.'
+          required: false
+        - name: 'defaultValue'
+          ofType: 'string'
+          description: 'The initial selected value when the component is first rendered.'
+          required: false
+        - name: 'value'
+          ofType: 'string'
+          description: 'The controlled value of the select element.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback function triggered when the selected option changes.'
+          required: false
+    - name: SelectItemProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content to display for this option.'
+          required: true
+        - name: 'value'
+          ofType: 'string'
+          description: 'The value associated with this option.'
+          required: true
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'When true, makes this option unselectable.'
+          required: false
+    - name: SelectGroupItemProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'SelectItem components to be grouped together.'
+          required: true
+        - name: 'label'
+          ofType: 'string'
+          description: 'Text label for the option group.'
+          required: true
 ---
 
 # Select
@@ -70,19 +123,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="select" />
+
 ## Usage
-
-### Select Props
-
-- **...props** (optional): Accepts all other generic `SelectHTMLAttributes` for additional customizations.
-
-### Select Item Props
-
-- **...props** (optional): Accepts all other generic `OptionHTMLAttributes` for further customization.
-
-### Select Group Item Props
-
-- **...props** (optional): Accepts all other generic `OptgroupHTMLAttributes` for further customization.
 
 ### Best Practices
 

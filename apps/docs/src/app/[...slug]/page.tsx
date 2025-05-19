@@ -1,9 +1,10 @@
-import { Heading, Tag } from '@govie-ds/react';
+import { Heading, Paragraph, Tag } from '@govie-ds/react';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';
 import { slugify } from '@/lib/utilities';
 import FeedbackForm from '@/components/feedback/feedback-form';
+import { TagFromStatus } from '@/components/document/components/tag-from-status';
 
 type DocumentPageProps = {
   params: Promise<{
@@ -57,9 +58,17 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
             {document.status === 'draft' && <Tag text="Draft" type="warning" />}
           </div>
         )}
-        <div className="flex flex-col justify-between flex-grow gap-3">
-          <div>
+        <div className="flex flex-col justify-between flex-grow">
+          <div className="py-2">
             <Mdx code={document.body.code} />
+            {document.component && (
+              <div className="flex items-center gap-2 mt-8">
+                <Heading as="h4" className="m-0">
+                  Status
+                </Heading>
+                <Tag {...TagFromStatus(document.component?.status)} />
+              </div>
+            )}
           </div>
           <FeedbackForm />
         </div>
@@ -72,7 +81,7 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
           {tocItems?.filter((item) => item.depth > 1).length > 0 && (
             <>
               <Heading as="h4">On this page</Heading>
-              <ul className="gi-list p-0">
+              <ul className="gi-list p-0 mt-2">
                 {tocItems
                   .filter((item) => item.depth > 1)
                   .map((item) => (

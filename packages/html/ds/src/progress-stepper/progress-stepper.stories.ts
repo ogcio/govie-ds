@@ -81,6 +81,22 @@ export const WithNumbersIndicator: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
+export const WithoutLabels: Story = {
+  args: {
+    currentStepIndex: 2,
+    indicator: 'number',
+    children: [
+      { label: '', ariaLabel: 'Step 1' },
+      { label: '', ariaLabel: 'Step 2' },
+      { label: '', ariaLabel: 'Step 3' },
+      { label: '', ariaLabel: 'Step 4' },
+      { label: '', ariaLabel: 'Step 5' },
+      { label: '', ariaLabel: 'Step 6' },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
 export const WithStepContent: Story = {
   args: {
     currentStepIndex: 1,
@@ -98,7 +114,6 @@ export const WithStepContent: Story = {
         defaultOpen: true,
       },
       {
-        label: 'Step 3',
         content: formSlot3,
         defaultOpen: true,
       },

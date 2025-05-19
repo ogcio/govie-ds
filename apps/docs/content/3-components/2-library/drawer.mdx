@@ -11,6 +11,43 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/application-drawer--docs'
     status: 'alpha'
+component:
+  id: 'drawer'
+  properties:
+    - name: DrawerProps
+      fields:
+        - name: 'closeButtonSize'
+          ofType: 'string'
+          description: 'Specifies the size of the close button. The default value is large.'
+          required: false
+        - name: 'triggerButton'
+          ofType: 'ReactElement'
+          description: 'A button component that will trigger the opening of the drawer.'
+          required: true
+        - name: 'closeButtonLabel'
+          ofType: 'string'
+          description: 'A string representing the label for the close button. The default value is Close.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content to be displayed inside the drawer, typically DrawerBody and DrawerFooter.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: 'Specifies the position from which the drawer appears. Options: left, right, bottom.'
+          required: false
+    - name: DrawerBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The main content of the drawer body.'
+          required: true
+    - name: DrawerFooterProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the drawer footer, typically containing action buttons.'
+          required: true
 ---
 
 # Drawer
@@ -162,7 +199,9 @@ libraries:
     ```
   </TabPanel>
   <TabPanel value="tab13">
-    ```html import {Drawer} from '@govie-ds/react';
+    ```jsx 
+    import {Drawer} from '@govie-ds/react';
+
     <Drawer triggerButton={<Button>Open Drawer</Button>}>
       <DrawerBody>
         <Paragraph>
@@ -188,16 +227,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="drawer" />
+
 ## Usage
-
-### Drawer Props
-
-- **closeButtonSize** (optional): Specifies the size of the close button. The default value is `'large'`.
-- **triggerButton** (optional): A button component (e.g., `<Button>Open drawer</Button>`) that will trigger the opening of the drawer.
-- **closeButtonLabel** (optional): A string representing the label for the close button. The default value is `'Close'`.
-- **children** (required): The content to be displayed inside the drawer, typically consisting of:
-  - **DrawerBody**: The main body content of the drawer.
-  - **DrawerFooter**: Th
 
 ### Best Practices
 

@@ -11,6 +11,57 @@ libraries:
   - platform: react
     link: '?path=/docs/navigation-tabs--docs'
     status: 'alpha'
+component:
+  id: 'tabs'
+  properties:
+    - name: TabsProps
+      fields:
+        - name: 'id'
+          ofType: 'string'
+          description: 'A unique identifier for the Tabs component.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The TabList and TabPanel components to be displayed within the Tabs component.'
+          required: true
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'Associates the Tabs component with a label by the specified id of the labeled element.'
+          required: false
+    - name: TabItemProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The unique value for each tab, used for selecting the active tab.'
+          required: true
+        - name: 'checked'
+          ofType: 'boolean'
+          description: 'If true, marks the tab as the currently selected tab.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content displayed inside the tab.'
+          required: true
+        - name: 'onTabClick'
+          ofType: 'function'
+          description: 'Callback fired when the tab is clicked. Useful for triggering actions or updating state on selection.'
+          required: false
+    - name: TabListProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A list of TabItem components to render inside the tab list.'
+          required: true
+    - name: TabPanelProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The unique value that corresponds to the TabItem value, used to associate the panel with the selected tab.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content displayed inside the tab panel for the corresponding tab.'
+          required: true
 ---
 
 # Tabs
@@ -81,27 +132,11 @@ The tabs component lets users navigate between related sections of content, disp
 </TabPanel>
 </Tabs>
 
-### Tabs Props
+## Properties
 
-- **id** (optional): A unique identifier for the `Tabs` component.
-- **children** (optional): The `TabList` and `TabPanel` components to be displayed within the `Tabs` component.
-- **ariaLabelledBy** (optional): Associates the `Tabs` component with a label by the specified `id` of the labeled element.
+<ComponentPropertiesTable componentId="tabs" />
 
-### TabItem Props
-
-- **value** (required): The unique value for each tab, used for selecting the active tab.
-- **checked** (optional): If `true`, marks the tab as the currently selected tab.
-- **children** (optional): The text or content displayed inside the tab.
-- **onTabClick** (optional): Callback fired when the tab is clicked. Useful for triggering actions or updating state on selection.
-
-### TabList Props
-
-- **children** (optional): A list of `TabItem` components to render inside the tab list.
-
-### TabPanel Props
-
-- **value** (required): The unique value that corresponds to the `TabItem` value, used to associate the panel with the selected tab.
-- **children** (optional): The content displayed inside the tab panel for the corresponding tab.
+## Usage
 
 ### Best Practices
 
@@ -147,4 +182,3 @@ If you decide to use one of these components, consider if:
 ## Status
 
 <ComponentStatusBlock componentId="tabs" />
-```

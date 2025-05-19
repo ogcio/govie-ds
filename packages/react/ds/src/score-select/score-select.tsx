@@ -1,9 +1,6 @@
 'use client';
 import React from 'react';
-import {
-  ButtonGroup,
-  ButtonGroupItem,
-} from '../button/button-group/button-group.js';
+import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
 import { FormField } from '../forms/form-field.js';
 import { ScoreSelectProps } from './type.js';
 

@@ -11,6 +11,63 @@ libraries:
   - platform: react
     link: '?path=/docs/components-table--docs'
     status: 'stable'
+component:
+  id: 'table'
+  properties:
+    - name: TableProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Nodes representing the full content of the table, including TableHead, TableBody, and optionally TableFoot.'
+          required: true
+    - name: TableHeadProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing header cells (TableHeader).'
+          required: true
+    - name: TableBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A set of TableRow components containing data cells (TableData).'
+          required: true
+    - name: TableFootProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A TableRow (or multiple) used for summarizing data or adding footer content.'
+          required: true
+    - name: TableRowProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'A collection of TableHeader or TableData elements within a row.'
+          required: true
+    - name: TableHeaderProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table header cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+    - name: TableDataProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Content of the table data cell.'
+          required: true
+        - name: 'align'
+          ofType: 'string'
+          description: 'Controls horizontal alignment. Accepts: left, center, right.'
+          required: false
+        - name: 'colSpan'
+          ofType: 'number'
+          description: 'Number of columns the cell should span across.'
+          required: false
 ---
 
 # Table
@@ -154,65 +211,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
-### Table Props
+## Properties
 
-- **children** (required):  
-  Nodes representing the full content of the table, including `TableHead`, `TableBody`, and optionally `TableFoot`.
+<ComponentPropertiesTable componentId="table" />
 
-- Inherits all props from `HTMLAttributes<HTMLTableElement>`.
-
-### TableHead Props
-
-- **children** (required):  
-  A set of `TableRow` components containing header cells (`TableHeader`).
-
-### TableBody Props
-
-- **children** (required):  
-  A set of `TableRow` components containing data cells (`TableData`).
-
-### TableFoot Props
-
-- **children** (required):  
-  A `TableRow` (or multiple) used for summarizing data or adding footer content.
-
-### TableRow Props
-
-- **children** (required):  
-  A collection of `TableHeader` or `TableData` elements within a row.
-
-- Inherits all props from `HTMLAttributes<HTMLTableRowElement>`.
-
-### TableHeader Props
-
-- **children** (required):  
-  Content of the table header cell.
-
-- **align** (optional):  
-  Controls horizontal alignment. Accepts:
-
-  - `'left'`
-  - `'center'`
-  - `'right'`
-
-- Inherits all props from `ThHTMLAttributes<HTMLTableCellElement>`.
-
-### TableData Props
-
-- **children** (required):  
-  Content of the table data cell.
-
-- **align** (optional):  
-  Controls horizontal alignment. Accepts:
-
-  - `'left'`
-  - `'center'`
-  - `'right'`
-
-- **colSpan** (optional):  
-  Number of columns the cell should span across.
-
-- Inherits all props from `TdHTMLAttributes<HTMLTableCellElement>`.
+## Usage
 
 ### Best Practices
 

@@ -82,6 +82,25 @@ export const WithNumbersIndicator: Story = {
   },
 };
 
+export const WithoutLabels: Story = {
+  args: {
+    currentStepIndex: 1,
+    indicator: 'number',
+    children: [],
+  },
+  render: () => {
+    return (
+      <ProgressStepper orientation="horizontal">
+        <StepItem ariaLabel="Step 1" />
+        <StepItem ariaLabel="Step 2" />
+        <StepItem ariaLabel="Step 3" />
+        <StepItem ariaLabel="Step 4" />
+        <StepItem ariaLabel="Step 5" />
+      </ProgressStepper>
+    );
+  },
+};
+
 export const WithStepContent: Story = {
   args: {
     children: [],
@@ -351,7 +370,7 @@ export const WithFormContentStepVertical: Story = {
                 </FormField>
               </Stack>
             </StepItem>
-            <StepItem label="Step 3" defaultOpen>
+            <StepItem defaultOpen>
               <Stack gap={2}>
                 <Heading size="sm">Contact Details</Heading>
                 <Paragraph>

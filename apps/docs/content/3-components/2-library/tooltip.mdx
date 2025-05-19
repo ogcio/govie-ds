@@ -12,6 +12,23 @@ libraries:
   - platform: react
     link: '?path=/docs/application-tooltip--docs'
     status: 'stable'
+component:
+  id: 'tooltip'
+  properties:
+    - name: TooltipProps
+      fields:
+        - name: 'text'
+          ofType: 'string'
+          description: 'The text displayed in the tooltip.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: 'Position of the tooltip relative to the child element. Options: top, bottom, left, right.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The child element that triggers the tooltip on hover.'
+          required: true
 ---
 
 # Tooltip
@@ -24,62 +41,11 @@ libraries:
   </Tooltip>
 </ComponentContainer>
 
+## Properties
+
+<ComponentPropertiesTable componentId="tooltip" />
+
 ## Usage
-
-<Tabs id="tab1">
-  <TabList>
-    <TabItem value="tab11" checked>HTML</TabItem>
-    <TabItem value="tab13">React</TabItem>
-  </TabList>
-  <TabPanel value="tab11">
-  ```html
-    <span
-      class="gi-tooltip-wrapper"
-      data-module="gieds-tooltip"
-    >        
-      <button
-        data-element="button-container"
-        data-module="gieds-button"
-        class="gi-btn gi-btn-primary gi-btn-regular"
-      >
-        Default (Hover me)
-      </button>
-      <span 
-        role="tooltip" 
-        class="gi-tooltip gi-tooltip-top"
-        aria-hidden="true"
-      >
-        Tooltip right.
-      </span>
-    </span>
-  ```
-  </TabPanel>
-  <TabPanel value="tab13">
-    ```jsx
-    import { Tooltip, Button } from '@govie-ds/react';
-
-    <Tooltip
-      text="Default Tooltip"
-      position="top"
-    >
-      <Button variant="primary">
-        Hover me (Top)
-      </Button>
-    </Tooltip>
-
-    ```
-
-  </TabPanel>
-</Tabs>
-
-### Tooltip Props
-
-- **text** (optional): The text displayed in the tooltip.
-  - Type: `string`
-- **position** (optional): Position of the tooltip relative to the child element.
-  - Type: `string`
-  - Options: `['top', 'bottom', 'left', 'right']`
-- **children** (optional): The child element that triggers the tooltip on hover.
 
 ### Best Practices
 

@@ -12,6 +12,51 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/components-card--docs'
     status: 'stable'
+component:
+  id: 'card'
+  properties:
+    - name: CardProps
+      fields:
+        - name: 'type'
+          ofType: 'string'
+          description: 'Controls the layout orientation of the card. Options include: horizontal, vertical.'
+          required: false
+        - name: 'title'
+          ofType: 'string'
+          description: 'A string used as the main title of the card.'
+          required: false
+        - name: 'subTitle'
+          ofType: 'string'
+          description: 'A string for the card''s subheading or subtitle.'
+          required: false
+        - name: 'href'
+          ofType: 'string'
+          description: 'A URL string that makes the entire card clickable and navigates to the given link.'
+          required: false
+        - name: 'media'
+          ofType: 'object'
+          description: 'An object configuring the media displayed in the card. Supports: type (image, icon, iframe) and config object.'
+          required: false
+        - name: 'content'
+          ofType: 'string'
+          description: 'A string used as the main description or body text of the card.'
+          required: false
+        - name: 'tag'
+          ofType: 'object'
+          description: 'An object defining a tag element, typically used to highlight status or category.'
+          required: false
+        - name: 'action'
+          ofType: 'object'
+          description: 'An object that renders a button or link inside the card.'
+          required: false
+        - name: 'inset'
+          ofType: 'string'
+          description: 'Specifies where the content of the card is inset. Options include: none, body, full.'
+          required: false
+        - name: 'titleAsChild'
+          ofType: 'boolean'
+          description: 'When set to true, allows a custom link component to be passed as a child.'
+          required: false
 ---
 
 # Card
@@ -24,12 +69,12 @@ libraries:
   <Card
     action={{
       children: 'Button',
-      type: 'button',
+      ofType: 'button',
       variant: 'secondary',
     }}
     content="This is card."
     media={{
-      type: 'image',
+      ofType: 'image',
       config: {
         src: 'https://placeholderjs.com/400x300',
       },
@@ -38,7 +83,7 @@ libraries:
     subTitle="Subheading"
     tag={{
       text: 'New',
-      type: 'info',
+      ofType: 'info',
     }}
     title="Card Title"
     type="vertical"
@@ -92,12 +137,12 @@ libraries:
     <Card
       action={{
         children: 'Button',
-        type: 'button',
+        ofType: 'button',
         variant: 'secondary'
       }}
       content="This is card."
       media={{
-        type: 'image',
+        ofType: 'image',
         config: {
           src: "https://placeholderjs.com/400x300"
         }
@@ -106,7 +151,7 @@ libraries:
       subTitle="Subheading"
       tag={{
         text: 'New',
-        type: 'info'
+        ofType: 'info'
       }}
       title="Card Title"
       type="vertical"
@@ -122,12 +167,12 @@ libraries:
   <Card
     action={{
       children: 'Button',
-      type: 'button',
+      ofType: 'button',
       variant: 'secondary',
     }}
     content="This is card."
     media={{
-      type: 'image',
+      ofType: 'image',
       config: {
         src: 'https://placeholderjs.com/400x300',
       },
@@ -136,7 +181,7 @@ libraries:
     subTitle="Subheading"
     tag={{
       text: 'New',
-      type: 'info',
+      ofType: 'info',
     }}
     title="Card Title"
     type="horizontal"
@@ -194,12 +239,12 @@ libraries:
     <Card
       action={{
         children: 'Button',
-        type: 'button',
+        ofType: 'button',
         variant: 'secondary'
       }}
       content="This is card."
       media={{
-        type: 'image',
+        ofType: 'image',
         config: {
           src: "https://placeholderjs.com/400x300"
         }
@@ -208,7 +253,7 @@ libraries:
       subTitle="Subheading"
       tag={{
         text: 'New',
-        type: 'info'
+        ofType: 'info'
       }}
       title="Card Title"
       type="horizontal"
@@ -218,42 +263,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="card" />
+
 ## Usage
-
-### Card Props
-
-- **type** (optional): Controls the layout orientation of the card. Options include:
-
-  - `'horizontal'`
-  - `'vertical'`
-
-- **title** (optional): A string used as the main title of the card.
-
-- **subTitle** (optional): A string for the card’s subheading or subtitle.
-
-- **href** (optional): A URL string that makes the entire card clickable and navigates to the given link.
-
-- **media** (optional): An object configuring the media displayed in the card. Supports:
-
-  - `type`: `'image' | 'icon' | 'iframe'`
-  - `config`: A configuration object matching the media type (e.g. `ImagePropTypes`, `IconProps`, or `IframePropTypes`).
-
-- **content** (optional): A string used as the main description or body text of the card.
-
-- **tag** (optional): An object defining a tag element, typically used to highlight status or category.
-
-- **action** (optional): An object that renders a button or link inside the card. Follows the structure:
-
-  - `{ type: "button" | "link", ...Button | Link }`
-
-- **inset** (optional): Specifies where the content of the card is inset. Options include:
-  - `'none'`
-  - `'body'`
-  - `'full'`
-
-- **titleAsChild** (optional): When set to true, allows a custom link component (like NextLink) to be passed as a child.
-  Useful when using framework-specific routing instead of the Link component.
-  Requires wrapping the custom link inside the Card component as a child.
 
 ### Best Practices
 
