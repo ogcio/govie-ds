@@ -6,6 +6,21 @@ import { RadioGroupProps } from './types';
 
 const meta: Meta<RadioGroupProps> = {
   title: 'form/Radio/InputRadioGroup',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Radio group component when users can only select one option.',
+      },
+    },
+  },
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      description: 'Set the size of the radio button',
+    },
+  },
 };
 
 export default meta;
