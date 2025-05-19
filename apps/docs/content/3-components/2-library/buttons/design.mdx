@@ -1,0 +1,139 @@
+---
+title: Button
+description: Button Design Guidelines
+status: stable
+component:
+  id: 'button'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1222-1936'
+  status: 'stable'
+---
+
+# Button
+
+Buttons allow users to take actions, make choices, and navigate interfaces with a single tap. 
+This versatile component comes in multiple variants, sizes, and styles to accommodate different design needs and user interactions throughout your application.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Button>This is a button</Button>
+</ComponentPreview>
+
+## States
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-default] !shadow-none !outline-none">Default</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-none !outline-none">Hover</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-[--gieds-color-border-intent-focus-light] !shadow-[inset_0_0_0_2px] outline outline-sm outline-[--gieds-color-shadow-intent-focus-default] outline-offset-0">Focus</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button tabIndex="-1" disabled>Default</Button>
+  </ComponentPreviewItem>
+  </ComponentPreviewLayout>
+
+## Variants
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button variant='primary'>Primary</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button variant='secondary'>Secondary</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button variant='flat'>Flat</Button>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+- **Primary**: The main action button that stands out and draws attention. Use it for the most important actions on a page.
+- **Secondary**: A less prominent button that complements the primary button. Use it for secondary actions that are still important but not the main focus.
+- **Flat**: A button with minimal styling, often used for less important actions or in contexts where a more subtle appearance is desired.
+
+## Appearance
+
+<ComponentPreviewLayout>
+  <ComponentPreviewItem>
+    <Button appearance='default'>Default</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button appearance='dark'>Dark</Button>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem>
+    <Button appearance='light'>Light</Button>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Buttons are interactive elements that enable users to trigger actions or navigate through an application. Using buttons appropriately creates a more intuitive and efficient user experience.
+
+### Do
+
+- **Use clear, action-oriented labels**: Button text should be concise and describe the action that will occur (e.g., "Save changes", "Submit form", "Continue").
+- **Maintain hierarchy**: Use primary buttons for main actions, secondary buttons for alternative actions, and flat buttons for less important actions.
+- **Ensure adequate spacing**: Allow enough space between multiple buttons to prevent accidental clicks.
+- **Provide visual feedback**: Ensure buttons have hover, active, and focus states to indicate interactivity.
+- **Be consistent**: Use the same button style for similar actions across your application.
+- **Include icons when helpful**: Add icons to buttons when they enhance understanding, but ensure they're relevant to the action.
+
+**Example:**
+<ComponentContainer>
+  <div className='flex flex-col gap-4'>
+    <div className="gi-flex gi-gap-2">
+      <Button>Submit</Button>
+      <Button variant="secondary">Save draft</Button>
+    </div>
+    <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+      Clear hierarchy with primary action (Submit) and secondary action (Save draft)
+    </div>
+
+    <div>
+      <Button>
+        <Icon icon="mail" />
+        <span>Send mail</span>
+      </Button>
+    </div>
+    <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
+      Descriptive label with relevant icon that enhances understanding
+    </div>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- **Don't use buttons for navigation**: Use links instead of buttons when the purpose is to navigate to a different page.
+- **Don't use multiple primary buttons**: Avoid having more than one primary button in a section as it can confuse users about the main action.
+- **Don't use vague labels**: Avoid generic labels like "Click here" or "Submit" without context.
+- **Don't disable buttons without explanation**: If a button is disabled, provide clear information about why and how to enable it.
+- **Don't overcrowd interfaces with buttons**: Limit the number of buttons in one view to reduce cognitive load.
+- **Don't use button groups for unrelated actions**: Button groups should only contain buttons that are related to each other.
+
+**Example:**
+<ComponentContainer>
+  <div className='flex flex-col gap-4'>
+    <div className="gi-flex gi-gap-2">
+      <Button>Submit</Button>
+      <Button>Save draft</Button>
+    </div>
+    <div>
+      Confusing hierarchy with multiple primary buttons of equal visual weight
+    </div>
+    
+    <div>
+      <Button>
+        <Icon icon="mail" />
+        <span>Click here</span>
+      </Button>
+    </div>
+    <div>
+      Vague label that doesn't clearly describe the action
+    </div>
+  </div>
+</ComponentContainer>
+
+</Section>

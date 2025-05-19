@@ -35,13 +35,9 @@ function toSideNavigationItem({
 }: {
   slug: string[];
   item: DocumentHierarchyWithMeta;
-}): SideNavigationItem | undefined {
-  if (item.id.endsWith('index')) {
-    return undefined;
-  }
-
-  const name: string = item.meta['navigation']
-    ? item.meta['navigation'].toString()
+}): SideNavigationItem {
+  const name: string = item.meta['title']
+    ? item.meta['title'].toString()
     : getNameFromSlug(item.slug);
 
   return {
@@ -49,21 +45,34 @@ function toSideNavigationItem({
     name,
     href: item.children.length === 0 ? `/${item.slug}` : undefined,
     isActive: item.slug === slug.join('/'),
-    children: item.children.map((child) => {
-      const childDocument = documents.getById({ id: child.id });
+    children: item.children
+      .map((child) => {
+        let childId = child.id;
+        if (Object.keys(child.meta).length === 0) {
+          childId = child.children[0].id;
+        }
+        const childDocument = documents.getById({ id: childId });
 
-      if (!childDocument) {
-        throw new Error(`Document not found '${child.id}'.`);
-      }
+        if (!childDocument) {
+          throw new Error(`Document not found '${child.id}'.`);
+        }
 
-      return {
-        id: child.id,
-        name: childDocument.title,
-        href: `/${child.slug}`,
-        isActive: child.slug === slug.join('/'),
-        children: [],
-      };
-    }),
+        let documentSlug = childDocument.slug;
+        if (Object.keys(child.meta).length === 0) {
+          documentSlug = child.slug;
+        }
+
+        return {
+          id: childDocument.id,
+          name: childDocument.title,
+          href: `/${childDocument.slug}`,
+          isActive: slug.join('/').includes(documentSlug),
+          children: [],
+        };
+      })
+      .sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      }),
   };
 }
 

@@ -26,10 +26,4 @@ describe('getDocumentDetails', () => {
       `Invalid path '1-foo'.`,
     );
   });
-
-  it('should throw for more than 3 parts', () => {
-    expect(() => getDocumentDetails('1-foo/2-bar/3-baz/4-qux')).toThrowError(
-      `Invalid path '1-foo/2-bar/3-baz/4-qux'.`,
-    );
-  });
 });

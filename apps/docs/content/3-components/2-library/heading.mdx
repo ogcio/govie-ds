@@ -12,6 +12,27 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-heading--docs'
     status: 'stable'
+component:
+  id: 'heading'
+  properties:
+    - name: HeadingProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the heading.'
+          required: true
+        - name: 'as'
+          ofType: 'string'
+          description: 'Specifies which HTML heading tag the component should render as (h1, h2, h3, h4, h5, h6).'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of the heading (small, medium, large).'
+          required: false
+        - name: 'caption'
+          ofType: 'string'
+          description: 'A caption or additional text that will be displayed under the heading.'
+          required: false
 ---
 
 # Heading
@@ -84,6 +105,10 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="heading" />
+
 ## Usage
 
 Use heading as, such as `<h1>`, `<h2>` and so on, to tag the headings on a page. Style headings consistently to create a clear content structure throughout your service.
@@ -91,22 +116,6 @@ Use heading as, such as `<h1>`, `<h2>` and so on, to tag the headings on a page.
 For a question page, or pages with long headings, follow the usual hierarchy of heading levels and styles associated with them. For example, `<h1>`, followed by an `<h2>` and so on. In rare cases, you might want to alter how you use the headings hierarchy to achieve a better visual balance. An example of this is in the design system’s notification banner which uses heading levels in a different order to emphasise the most important information. If you do change the heading hierarchy in a similar way, it needs to go through accessibility testing before use.
 
 Write all headings in sentence case.
-
-### Heading Component Props
-
-- **size** (optional): Defines the size of the heading. This can be selected from the available options based on the `headingVariants.variants.size` object.
-
-  - Examples: `small`, `medium`, `large`
-  - The control for this prop is a radio button, allowing the user to select from the defined size options.
-
-- **as** (optional): Specifies which HTML heading tag the component should render as. This can be selected from the available options in the `headingVariants.variants.as` object.
-
-  - Examples: `h1`, `h2`, `h3`
-  - The control for this prop is a radio button, allowing the user to choose between different heading tags.
-
-- **caption** (optional): A caption or additional text that will be displayed under the heading. This provides extra context or description related to the heading.
-
-  - The control for this prop is a text input field, allowing the user to input a caption.
 
 ### Best Practices
 

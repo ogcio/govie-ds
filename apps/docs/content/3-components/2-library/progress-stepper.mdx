@@ -12,6 +12,45 @@ libraries:
   - platform: react
     link: '?path=/docs/application-progressstepper--docs'
     status: 'beta'
+component:
+  id: 'progress-stepper'
+  properties:
+    - name: ProgressStepperProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'An array of StepItem components, each representing an individual step.'
+          required: true
+        - name: 'currentStepIndex'
+          ofType: 'number'
+          description: 'A number (zero-based index) representing the current active step. Defaults to 0.'
+          required: false
+        - name: 'orientation'
+          ofType: 'string'
+          description: 'A string defining the layout of the progress stepper, either horizontal or vertical. The default is horizontal.'
+          required: false
+        - name: 'completeAll'
+          ofType: 'boolean'
+          description: 'When set to true, marks all steps as completed, regardless of the current step.'
+          required: false
+        - name: 'indicator'
+          ofType: 'string'
+          description: 'Defines how each step indicator is rendered. Accepts number or hashtag.'
+          required: false
+    - name: StepItemProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'A string representing the label for the step, providing context for the user on what this step is about.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the step, which can include any valid React node (e.g., forms, string, etc.).'
+          required: false
+        - name: 'defaultOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the step should be open by default.'
+          required: false
 ---
 
 # ProgressStepper
@@ -675,21 +714,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="progress-stepper" />
+
 ## Usage
-
-### ProgressStepper Props
-
-- **children** (required): An array of `StepItem` components, each representing an individual step.
-- **currentStepIndex** (optional): A number (zero-based index) representing the current active step. Defaults to `0`.
-- **orientation** (optional): A string defining the layout of the progress stepper, either `horizontal` or `vertical`. The default is `horizontal`.
-- **completeAll** (optional): A boolean that, when set to `true`, marks all steps as completed, regardless of the current step. This can be useful in scenarios like post-submission actions.
-- **indicator** (optional): Defines how each step indicator is rendered. Accepts `number` or `hashtag`. When set to `number`, each step is shown as its index. When `hashtag`, all steps display the # symbol instead. Defaults to `hashtag`.
-
-### StepItem Props
-
-- **label** (required): A string representing the label for the step, providing context for the user on what this step is about.
-- **children** (optional): The content of the step, which can include any valid React node (e.g., forms, string, etc.).
-- **defaultOpen** (optional): A boolean indicating whether the step should be open by default. When set to `true`, the step is visible when the component first renders.
 
 ### Best Practices
 

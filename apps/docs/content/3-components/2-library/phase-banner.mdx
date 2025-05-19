@@ -12,6 +12,19 @@ libraries:
   - platform: react
     link: '?path=/docs/typography-phasebanner--docs'
     status: 'beta'
+component:
+  id: 'phase-banner'
+  properties:
+    - name: PhaseBannerProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the phase banner.'
+          required: true
+        - name: 'level'
+          ofType: 'string'
+          description: 'Specifies the level of the phase banner. Options: alpha or beta.'
+          required: true
 ---
 
 # Phase Banner
@@ -29,14 +42,11 @@ Use the phase banner component to show users your service is still being worked 
   </PhaseBanner>
 </ComponentContainer>
 
+## Properties
+
+<ComponentPropertiesTable componentId="phase-banner" />
+
 ## Usage
-
-### Phase Banner Props
-
-- **children** (required): The text content of the phase banner.
-
-- **level** (optional): Specifies the level of the phase banner.  
-  Options: `alpha` or `beta`.
 
 ### Best Practices
 
