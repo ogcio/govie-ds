@@ -114,7 +114,6 @@ export const WithStepContent: Story = {
         defaultOpen: true,
       },
       {
-        label: 'Step 3',
         content: formSlot3,
         defaultOpen: true,
       },

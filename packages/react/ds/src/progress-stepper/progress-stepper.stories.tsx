@@ -370,7 +370,7 @@ export const WithFormContentStepVertical: Story = {
                 </FormField>
               </Stack>
             </StepItem>
-            <StepItem label="Step 3" defaultOpen>
+            <StepItem defaultOpen>
               <Stack gap={2}>
                 <Heading size="sm">Contact Details</Heading>
                 <Paragraph>
