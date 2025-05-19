@@ -84,7 +84,7 @@ export const DropdownItem = ({
         </div>
 
         <Icon
-          className={isOpen ? 'gi-rotate-180' : ''}
+          className={cn({ 'gi-rotate-180': isOpen })}
           icon="keyboard_arrow_down"
         />
       </button>
