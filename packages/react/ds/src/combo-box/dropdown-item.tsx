@@ -127,7 +127,11 @@ export const DropdownItem = ({
           </div>
         )}
 
-        <div className="gi-combobox-checkbox-container">
+        <div
+          className={cn('gi-combobox-checkbox-container', {
+            'gi-h-64': !noSearch,
+          })}
+        >
           {noResults && (
             <Paragraph className="gi-combobox-checkbox-paragraph">
               {t('dropdownItem.noResultFound', {

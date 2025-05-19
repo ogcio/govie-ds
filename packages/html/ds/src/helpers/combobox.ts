@@ -79,6 +79,10 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
     containerOpen.append(checkBoxContainer);
     checkBoxContainer.className = 'gi-combobox-checkbox-container';
 
+    if (!item.noSearch) {
+      checkBoxContainer.className += ' gi-h-64';
+    }
+
     const noResultContainer = document.createElement('div');
     checkBoxContainer.append(noResultContainer);
     noResultContainer.className = 'gi-hidden';
