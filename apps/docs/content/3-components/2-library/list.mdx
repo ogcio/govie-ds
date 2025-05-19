@@ -11,6 +11,23 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/typography-list--docs'
     status: 'alpha'
+component:
+  id: 'list'
+  properties:
+    - name: ListProps
+      fields:
+        - name: 'items'
+          ofType: 'array'
+          description: 'A list of texts or nodes to be displayed in the list.'
+          required: true
+        - name: 'type'
+          ofType: 'string'
+          description: 'Defines the type of the list. Options: None, Bullet, Number.'
+          required: false
+        - name: 'spaced'
+          ofType: 'boolean'
+          description: 'Adds extra spacing between list items to improve readability.'
+          required: false
 ---
 
 # List
@@ -196,23 +213,11 @@ The List component organises text and links in a simple vertical format, support
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="list" />
+
 ## Usage
-
-### List Props
-
-- **items** (required): A list of texts to be displayed in the list.
-
-- **type** (optional): Defines the type of the list. It controls whether the list is a bulleted list, numbered list, or a simple list.
-
-  - Options:
-    - `None`: A normal list with no special formatting.
-    - `Bullet`: A bulleted list with a lead-in line ending in a colon.
-    - `Number`: A numbered list for when the order of items is important.
-
-- **spaced** (optional): Adds extra spacing between list items to improve readability, especially if the list items span multiple lines.
-
-  - The control for this prop is a boolean, allowing the user to toggle the extra spacing.
-
 
 ### Best Practices
 
@@ -230,5 +235,3 @@ If the list items demand heavy customization or interaction beyond links or simp
 ## Status
 
 <ComponentStatusBlock componentId="list" />
-
-```

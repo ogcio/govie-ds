@@ -12,6 +12,35 @@ libraries:
   - platform: 'react'
     link: '?path=/docs/layout-footer--docs'
     status: 'beta'
+component:
+  id: 'footer'
+  properties:
+    - name: FooterProps
+      fields:
+        - name: 'primarySlot'
+          ofType: 'node'
+          description: 'A node rendered in the primary section of the footer. Typically used for key links or content.'
+          required: false
+        - name: 'secondarySlot'
+          ofType: 'node'
+          description: 'A node rendered in the secondary section of the footer. Useful for secondary navigation or additional content.'
+          required: false
+        - name: 'utilitySlot'
+          ofType: 'node'
+          description: 'A node rendered in the utility area of the footer. Often used for legal links, language selectors, or settings.'
+          required: false
+        - name: 'logo'
+          ofType: 'object'
+          description: 'An object of type LogoProps representing the logo displayed in the footer.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'A string for applying custom CSS classes to the footer container.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string used as a test identifier for testing frameworks.'
+          required: false
 ---
 
 # Footer
@@ -375,7 +404,186 @@ The GOV.IE footer provides copyright, licensing and other information about your
     import { Footer } from '@govie-ds/react';
 
     <Footer
-      primarySlot={
+primarySlot={
+        <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/services/public-services"
+                  aria-label="Public Services"
+                >
+                  Public Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/services/business-services"
+                  aria-label="Business Services"
+                >
+                  Business Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/services/online-services"
+                  aria-label="Online Services"
+                >
+                  Online Services
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/departments/health"
+                  aria-label="Department of Health"
+                >
+                  Department of Health
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/departments/education"
+                  aria-label="Department of Education"
+                >
+                  Department of Education
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/departments/finance"
+                  aria-label="Department of Finance"
+                >
+                  Department of Finance
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link noColor href="/publications/reports" aria-label="Reports">
+                  Reports
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/publications/statistics"
+                  aria-label="Statistics"
+                >
+                  Statistics
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/publications/legislation"
+                  aria-label="Legislation"
+                >
+                  Legislation
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+            <SectionBreak color="gi-border-gray-100" size="md" />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  noColor
+                  href="/contact/find-an-office"
+                  aria-label="Find an Office"
+                >
+                  Find an Office
+                </Link>
+              </li>
+              <li>
+                <Link
+                  noColor
+                  href="/contact/phone-directory"
+                  aria-label="Phone Directory"
+                >
+                  Phone Directory
+                </Link>
+              </li>
+              <li>
+                <Link noColor href="/contact/feedback" aria-label="Feedback">
+                  Feedback
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      }
+      secondarySlot={
+        <Stack direction={'column'} gap={4}>
+          <Stack direction={{ base: 'column', xs: 'column', md: 'row' }} gap={4} wrap>
+            <Link noColor href="/about-us" aria-label="About Us">
+              About Us
+            </Link>
+            <Link noColor href="/contact" aria-label="Contact">
+              Contact
+            </Link>
+            <Link noColor href="/sitemap" aria-label="Sitemap">
+              Sitemap
+            </Link>
+            <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+              Privacy Policy
+            </Link>
+            <Link noColor href="/terms-of-service" aria-label="Terms of Service">
+              Terms of Service
+            </Link>
+            <Link noColor href="/careers" aria-label="Careers">
+              Careers
+            </Link>
+            <Link noColor href="/blog" aria-label="Blog">
+              Blog
+            </Link>
+            <Link noColor href="/faq" aria-label="FAQ">
+              FAQ
+            </Link>
+            <Link noColor href="/support" aria-label="Support">
+              Support
+            </Link>
+            <Link noColor href="/press" aria-label="Press">
+              Press
+            </Link>
+            <Link noColor href="/partners" aria-label="Partners">
+              Partners
+            </Link>
+            <Link noColor href="/investors" aria-label="Investors">
+              Investors
+            </Link>
+            <Link noColor href="/events" aria-label="Events">
+              Events
+            </Link>
+          </Stack>
+          <Stack direction={'row'} gap={4}>
+            <Icon icon="social_x" />
+            <Icon icon="social_facebook" />
+            <Icon icon="social_bluesky" />
+            <Icon icon="social_linkedin" />
+          </Stack>
+        </Stack>
+      }
+primarySlot={
         <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
           <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
             <h3 className="gi-heading-sm gi-mb-4">Services</h3>
@@ -734,10 +942,10 @@ The GOV.IE footer provides copyright, licensing and other information about your
                                 d="M21.3719 1C22.2689 1 22.9994 1.71022 22.9994 2.58626V21.4125C22.9994 22.2886 22.2689 23 21.3719 23H2.62264C1.72745 23 1 22.2886 1 21.4125V2.58626C1 1.71022 1.72745 1 2.62264 1H21.3719ZM19.7469 19.7463V13.9885C19.7469 11.1609 19.1364 8.98705 15.8326 8.98705C14.2451 8.98705 13.1804 9.8575 12.7453 10.6828H12.7007V9.24759H9.57286V19.7463H12.8319V14.5536C12.8319 13.184 13.091 11.8571 14.7888 11.8571C16.4633 11.8571 16.4843 13.4233 16.4843 14.6408V19.7463H19.7469ZM7.52588 9.24759H4.25963V19.7463H7.52588V9.24759ZM5.89362 4.02869C4.84566 4.02869 4.00064 4.87646 4.00064 5.92085C4.00064 6.9655 4.84566 7.81323 5.89362 7.81323C6.93745 7.81323 7.78488 6.9655 7.78488 5.92085C7.78488 4.87646 6.93745 4.02869 5.89362 4.02869Z"
                                 fill="#0B0C0C"></path>
                         </svg></div>
-                </div>
+                  </div>
               </div>
-            </div>
           </div>
+        </div>
       </div>
       <div class="gi-footer-utility" aria-label="Utility links">
         <div class="gi-flex gi-w-full gi-justify-center gi-items-center gi-flex-col xs:gi-flex-col md:gi-flex-row gi-gap-4 gi-flex-nowrap"
@@ -941,6 +1149,10 @@ The GOV.IE footer provides copyright, licensing and other information about your
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="footer" />
+
 ## Usage
 
 Use the footer at the bottom of every page of your service.
@@ -969,20 +1181,6 @@ The footer component now accepts 3 customizable slots:
 - **Primary Slot**: For essential links such as the privacy notice, accessibility statement, terms and conditions, etc.
 - **Secondary Slot**: For secondary navigation, especially if you need to add other relevant links or additional GOV.IE content.
 - **Utility Slot**: For supplementary items such as language options, help content, or other utilities.
-
-### Footer Props
-
-- **primarySlot** (optional): A node rendered in the primary section of the footer. Typically used for key links or content.
-
-- **secondarySlot** (optional): A node rendered in the secondary section of the footer. Useful for secondary navigation or additional content.
-
-- **utilitySlot** (optional): A node rendered in the utility area of the footer. Often used for legal links, language selectors, or settings.
-
-- **logo** (optional): An object of type `LogoProps` representing the logo displayed in the footer.
-
-- **className** (optional): A string for applying custom CSS classes to the footer container.
-
-- **dataTestid** (optional): A string used as a test identifier for testing frameworks.
 
 ### Best Practices
 

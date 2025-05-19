@@ -12,6 +12,23 @@ libraries:
   - platform: react
     link: '?path=/docs/navigation-pagination--docs'
     status: 'stable'
+component:
+  id: 'pagination'
+  properties:
+    - name: PaginationProps
+      fields:
+        - name: 'currentPage'
+          ofType: 'number'
+          description: 'A number that indicates the current active page displayed in the pagination.'
+          required: false
+        - name: 'totalPages'
+          ofType: 'number'
+          description: 'A number that represents the total number of pages available in the pagination.'
+          required: false
+        - name: 'onPageChange'
+          ofType: 'function'
+          description: 'A callback function triggered when the page changes. It receives the new page number as an argument.'
+          required: true
 ---
 
 # Pagination
@@ -199,7 +216,7 @@ libraries:
   ```
   </TabPanel>
   <TabPanel value="tab12">
-    ```html
+    ```jsx
     import { Pagination } from '@govie-ds/react';
     
     <Pagination currentPage={5} totalPages={10} />
@@ -207,18 +224,11 @@ libraries:
   </TabPanel>
 </Tabs>
 
+## Properties
+
+<ComponentPropertiesTable componentId="pagination" />
+
 ## Usage
-
-### Pagination Props
-
-- **currentPage** (optional): A number that indicates the current active page displayed in the pagination.  
-  Default value is `1`.
-
-- **totalPages** (optional): A number that represents the total number of pages available in the pagination.  
-  Default value is `1`.
-
-- **onPageChange** (required): A callback function triggered when the page changes. It receives the new page number as an argument.  
-  Type: `(page: number) => void`.
 
 ### i18n Keys
 
