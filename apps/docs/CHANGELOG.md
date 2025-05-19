@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.7.2](https://github.com/ogcio/govie-ds/compare/docs-v1.7.1...docs-v1.7.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* update combo box focus state ([#553](https://github.com/ogcio/govie-ds/issues/553)) ([6399ce2](https://github.com/ogcio/govie-ds/commit/6399ce280ae4d107252a7067dafeb37ba9aa4efa))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.7.2
+    * @govie-ds/tailwind bumped to 1.7.2
+
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/docs-v1.7.0...docs-v1.7.1) (2025-05-12)
 
 
