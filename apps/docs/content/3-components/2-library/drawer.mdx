@@ -199,7 +199,9 @@ component:
     ```
   </TabPanel>
   <TabPanel value="tab13">
-    ```html import {Drawer} from '@govie-ds/react';
+    ```jsx 
+    import {Drawer} from '@govie-ds/react';
+
     <Drawer triggerButton={<Button>Open Drawer</Button>}>
       <DrawerBody>
         <Paragraph>
@@ -225,18 +227,11 @@ component:
   </TabPanel>
 </Tabs>
 
-## Usage
+## Properties
 
 <ComponentPropertiesTable componentId="drawer" />
 
-### Drawer Props
-
-- **closeButtonSize** (optional): Specifies the size of the close button. The default value is `'large'`.
-- **triggerButton** (optional): A button component (e.g., `<Button>Open drawer</Button>`) that will trigger the opening of the drawer.
-- **closeButtonLabel** (optional): A string representing the label for the close button. The default value is `'Close'`.
-- **children** (required): The content to be displayed inside the drawer, typically consisting of:
-  - **DrawerBody**: The main body content of the drawer.
-  - **DrawerFooter**: Th
+## Usage
 
 ### Best Practices
 

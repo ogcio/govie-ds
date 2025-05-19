@@ -242,53 +242,11 @@ Links are blue and underlined by default. If your link is at the end of a senten
   </TabPanel>
 </Tabs>
 
-## Usage
+## Properties
 
 <ComponentPropertiesTable componentId="link" />
 
-### Link Props
-
-- **children** (required): The text or content inside the link. This prop is required and should be a string.
-
-- **href** (required): The URL to which the link points. This prop is required and should be a valid string URL.
-
-- **noUnderline** (optional): Removes the underline from the link.
-
-  - The control for this prop is a boolean, allowing the user to toggle between underlined and non-underlined links.
-
-- **external** (optional): Specifies whether the link should open in a new tab.
-
-  - The control for this prop is a boolean. When set to `true`, the link will open in a new tab.
-
-- **noVisited** (optional): Prevents the link from distinguishing between visited and unvisited states.
-
-  - The control for this prop is a boolean. This can be useful for frequently-changing content where the state of the link should not visually change after being clicked.
-
-- **noColor** (optional): Inherits the color from its parent element.
-
-  - The control for this prop is a boolean. When set to `true`, the link will inherit the color from its parent instead of using its own color.
-
-- **size** (optional): Specifies the size of the link.
-
-  - Options: `sm`, `md` and `lg`.
-  - The control for this prop is a string, allowing the user to set the size of the link.
-
-- **iconStart** (optional): Displays an icon before the link text.
-
-  - The control for this prop is a string. You must pass a valid `IconId`.
-
-- **iconEnd** (optional): Displays an icon after the link text.
-
-  - The control for this prop is a string. You must pass a valid `IconId`.
-
-- **disabled** (optional): Disables the link interaction.
-
-  - The control for this prop is a boolean. When `true`, the link appears inactive and does not trigger navigation or actions.
-
-- **appearance** (optional): Sets the visual style of the link.
-
-  - Options: `default` or `light`.
-  - The control for this prop is a string.
+## Usage
 
 ### With Other Router
 

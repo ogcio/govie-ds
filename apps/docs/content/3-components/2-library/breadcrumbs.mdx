@@ -177,27 +177,11 @@ component:
 </TabPanel>
 </Tabs>
 
-
-## Usage
+## Properties
 
 <ComponentPropertiesTable componentId="breadcrumbs" />
 
-### Breadcrumb Props
-
-- **children** (required): One or more breadcrumb items. These must be one of the following components:
-- `BreadcrumbLink`: A standard navigational breadcrumb link.
-- `BreadcrumbCurrentLink`: Marks the current page in the breadcrumb trail.
-- `BreadcrumbEllipsis`: Displays an ellipsis (`...`) to indicate collapsed breadcrumbs.
-- **iconStart** (optional): A boolean that determines whether icons should appear to the **left** of breadcrumb items.
-
-### BreadcrumbLink Props
-
-- **href** (required): The URL the breadcrumb item links to.
-- **children** (required): The text or content of the breadcrumb item.
-- **asChild** (optional): When set to true, allows a custom link component (like NextLink) to be passed as a child.
-
-> Note: `BreadcrumbCurrentLink` and `BreadcrumbEllipsis` do not accept props beyond `children`, as they are specialized representations within the breadcrumb trail.
-
+## Usage
 
 ### Best Practices
 
