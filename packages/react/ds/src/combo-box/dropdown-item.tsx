@@ -72,7 +72,9 @@ export const DropdownItem = ({
           event.preventDefault();
           setIsOpen(!isOpen);
         }}
-        className={`gi-combobox-toggle ${isOpen && 'gi-combobox-toggle-open'}`}
+        className={cn('gi-combobox-toggle', {
+          'gi-combobox-toggle-open': isOpen,
+        })}
       >
         <div className="gi-combobox-toggle-content">
           <Paragraph size="md">{children}</Paragraph>
@@ -82,15 +84,13 @@ export const DropdownItem = ({
         </div>
 
         <Icon
-          className={`${isOpen && 'gi-rotate-180'}`}
+          className={isOpen ? 'gi-rotate-180' : ''}
           icon="keyboard_arrow_down"
         />
       </button>
 
       <div
-        className={`${
-          isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'
-        }`}
+        className={isOpen ? 'gi-combobox-dropdown-container-open' : 'gi-hidden'}
         id={`${dropdownCustomClass}-search`}
       >
         {!noSearch && (
