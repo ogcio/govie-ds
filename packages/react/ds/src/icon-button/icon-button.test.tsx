@@ -37,12 +37,11 @@ describe('icon-button', () => {
         icon: 'thumb_up',
       },
       size: 'small',
+      dataTestid: 'govieIconButton',
     });
 
     const iconElement = screen.getByTestId('govie-icon');
-    const buttonElement = screen.getByTestId('govieIconButton', {
-      exact: false,
-    });
+    const buttonElement = screen.getByTestId('govieIconButton');
 
     expect(iconElement).toHaveStyle('font-size: 16px');
     expect(buttonElement.classList.contains(buttonClass)).toBeTruthy();
@@ -55,12 +54,11 @@ describe('icon-button', () => {
         icon: 'thumb_up',
       },
       size: 'large',
+      dataTestid: 'govieIconButton',
     });
 
     const iconElement = screen.getByTestId('govie-icon');
-    const buttonElement = screen.getByTestId('govieIconButton', {
-      exact: false,
-    });
+    const buttonElement = screen.getByTestId('govieIconButton');
 
     expect(iconElement).toHaveStyle('font-size: 24px');
     expect(buttonElement.classList.contains(buttonClass)).toBeTruthy();
@@ -72,12 +70,11 @@ describe('icon-button', () => {
       icon: {
         icon: 'thumb_up',
       },
+      dataTestid: 'govieIconButton',
     });
 
     const iconElement = screen.getByTestId('govie-icon');
-    const buttonElement = screen.getByTestId('govieIconButton', {
-      exact: false,
-    });
+    const buttonElement = screen.getByTestId('govieIconButton');
 
     expect(iconElement).toHaveStyle('font-size: 24px');
     expect(buttonElement.classList.contains(buttonClass)).toBeTruthy();

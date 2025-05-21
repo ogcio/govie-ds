@@ -16,7 +16,16 @@ export type IconButtonProps = Omit<ButtonProps, 'children'> & {
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
-    { icon, variant, appearance, size, disabled, onClick, className = '' },
+    {
+      icon,
+      variant,
+      appearance,
+      size,
+      disabled,
+      dataTestid,
+      onClick,
+      className = '',
+    },
     ref,
   ) => {
     const iconSize = size === 'small' ? 'sm' : 'md';
@@ -27,6 +36,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         role="button"
         onClick={onClick}
+        data-testid={dataTestid}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),
