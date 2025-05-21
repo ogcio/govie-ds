@@ -26,7 +26,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         aria-disabled={disabled}
         disabled={disabled}
         role="button"
-        data-testid={`govieIconButton-${appearance}-${variant}-${size}-${disabled}`}
         onClick={onClick}
         className={cn(
           'gi-btn',
