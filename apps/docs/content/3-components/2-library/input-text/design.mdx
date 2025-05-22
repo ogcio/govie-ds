@@ -1,0 +1,122 @@
+---
+title: Input Text
+description: Input Text Design Guidelines
+status: stable
+component:
+  id: 'input-text'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6827'
+  status: 'stable'
+---
+
+# Input Text
+
+The Input Text component allows users to enter and edit text. It supports various input types, prefixes/suffixes, icons, and a clear button.
+
+<Section current="design">
+
+<ComponentPreview>
+  <FormField
+    label={{
+      htmlFor: 'input-text-id',
+      text: 'Label',
+    }}
+  >
+    <InputText data-testid="input-text-id" id="input-text-id" />
+  </FormField>
+</ComponentPreview>
+
+## States
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-80">
+    <InputText placeholder="Default" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText placeholder="Focus" autoFocus />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText placeholder="Disabled" disabled />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Types
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-80">
+    <InputText type="text" placeholder="Text" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText type="email" placeholder="Email" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText type="number" placeholder="Number" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText type="date" placeholder="Date" />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-80">
+    <InputText iconStart="search" placeholder="With iconStart" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText iconEnd="event" placeholder="With iconEnd" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText clearButtonEnabled placeholder="Clearable input" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-80">
+    <InputText prefix="$" suffix=".00" placeholder="With prefix & suffix" />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Input fields are used to capture user data like text, email, numbers, and more.
+
+### Do
+
+- **Use labels**: Always pair input fields with a clear and accessible label.
+- **Use appropriate types**: Choose input types like email, password, or number to improve user experience.
+- **Provide placeholders**: Use descriptive placeholder text as a hint for what the input expects.
+- **Support clearing input**: When applicable, allow users to reset input with a clear button.
+- **Include icons when helpful**: Use iconStart or iconEnd for visual hints (e.g., search, calendar).
+- **Use prefix/suffix for formatting**: Display currency, units, etc., clearly.
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <FormField label={{ htmlFor: 'input-example-do', text: 'Amount' }}>
+      <InputText
+        id="input-example-do"
+        prefix="$"
+        suffix="USD"
+        placeholder="100.00"
+      />
+    </FormField>
+    <FormField label={{ htmlFor: 'input-search', text: 'Search' }}>
+      <InputText id="input-search" iconStart="search" placeholder="Search..." />
+    </FormField>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- **Don’t rely only on placeholder text**: Always use labels to avoid confusion.
+- **Don’t overload inputs with unrelated elements**: Prefix, suffix, and icons should be relevant to the input’s context.
+- **Don’t use vague placeholders**: Be specific about the expected value.
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <InputText placeholder="Enter here..." />
+    <div>No label provided – unclear input purpose</div>
+
+    <InputText iconStart="chat_bubble" prefix="%" placeholder="Click me" />
+    <div>Unrelated prefix/icon combo makes input confusing</div>
+
+  </div>
+</ComponentContainer>
+
+</Section>
