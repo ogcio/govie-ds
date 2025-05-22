@@ -20,25 +20,11 @@ The Input File component enables users to upload one or more files from their de
 
 ## States
 
-<ComponentPreviewLayout>
-  <ComponentPreviewItem>
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-105">
     <InputFile />
   </ComponentPreviewItem>
-  <ComponentPreviewItem>
-    <FormField
-      error={{
-        text: 'Error: File must be smaller than 5MB.',
-      }}
-      id="file-upload-id"
-      label={{
-        htmlFor: 'file-upload-id',
-        text: 'Upload File',
-      }}
-    >
-      <InputFile accept=".pdf, .docx" id="file-upload-id" />
-    </FormField>
-  </ComponentPreviewItem>
-  <ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
     <FormField
       hint={{
         text: 'Hint: This is a helpful hint.',
@@ -52,6 +38,20 @@ The Input File component enables users to upload one or more files from their de
       <InputFile accept="*/*" id="file-upload-id" />
     </FormField>
   </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <FormField
+      error={{
+        text: 'Error: File must be smaller than 5MB.',
+      }}
+      id="file-upload-id"
+      label={{
+        htmlFor: 'file-upload-id',
+        text: 'Upload File',
+      }}
+    >
+      <InputFile accept=".pdf, .docx" id="file-upload-id" />
+    </FormField>
+  </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
 ## Usage
@@ -62,9 +62,7 @@ Input File components should be used when your interface requires users to uploa
 
 - **Label inputs clearly**: Always pair the input with a label or descriptive placeholder to indicate its purpose.
 - **Support multiple file types**: Use the `accept` attribute to guide users on allowed formats.
-- **Provide drag-and-drop alternatives**: Consider enhancing the experience with drag-and-drop areas if applicable.
 - **Give feedback**: Show selected file names or upload progress where appropriate.
-- **Maintain keyboard accessibility**: Ensure users can tab to and activate the file input with keyboard only.
 
 **Example:**
 

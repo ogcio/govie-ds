@@ -34,9 +34,11 @@ component:
       url: '/story/form-inputfile--default'
     - name: 'with-label-and-hint'
       url: '/story/form-inputfile--with-label-and-hint'
+    - name: 'with-label-hint-and-error'
+      url: '/story/form-inputfile--with-label-and-error'
 ---
 
-# InputFile
+# Input File
 
 The InputFile component allows users to upload one or more files.  
 It extends the native HTML element while allowing customization and consistent styling across your application.
@@ -51,11 +53,27 @@ It extends the native HTML element while allowing customization and consistent s
 
 ### Default
 
-<StorybookFrame componentId="input-file-react" story="default" />
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="default"
+/>
 
 ### With Label and Hint
 
-<StorybookFrame componentId="input-file-react" story="with-label-and-hint" />
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="with-label-and-hint"
+/>
+
+### With Label, Hint and Error
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="with-label-hint-and-error"
+/>
 
 ## Properties
 
