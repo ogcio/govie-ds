@@ -10,7 +10,7 @@ component:
 
 # Button
 
-Buttons allow users to take actions, make choices, and navigate interfaces with a single tap. 
+Buttons allow users to take actions, make choices, and navigate interfaces with a single tap.
 This versatile component comes in multiple variants, sizes, and styles to accommodate different design needs and user interactions throughout your application.
 
 <Section current="design">
@@ -18,35 +18,53 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
 <ComponentPreview>
   <Button>This is a button</Button>
 </ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1222-1936" />
 
 ## States
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem>
-    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-default] !shadow-none !outline-none">Default</Button>
+    <Button
+      tabIndex="-1"
+      className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-default] !shadow-none !outline-none"
+    >
+      Default
+    </Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-none !outline-none">Hover</Button>
+    <Button
+      tabIndex="-1"
+      className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-none !outline-none"
+    >
+      Hover
+    </Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button tabIndex="-1" className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-[--gieds-color-border-intent-focus-light] !shadow-[inset_0_0_0_2px] outline outline-sm outline-[--gieds-color-shadow-intent-focus-default] outline-offset-0">Focus</Button>
+    <Button
+      tabIndex="-1"
+      className="!cursor-default !bg-[--gieds-color-surface-tone-primary-fill-hover] !shadow-[--gieds-color-border-intent-focus-light] !shadow-[inset_0_0_0_2px] outline outline-sm outline-[--gieds-color-shadow-intent-focus-default] outline-offset-0"
+    >
+      Focus
+    </Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button tabIndex="-1" disabled>Default</Button>
+    <Button tabIndex="-1" disabled>
+      Default
+    </Button>
   </ComponentPreviewItem>
-  </ComponentPreviewLayout>
+</ComponentPreviewLayout>
 
 ## Variants
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem>
-    <Button variant='primary'>Primary</Button>
+    <Button variant="primary">Primary</Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button variant='secondary'>Secondary</Button>
+    <Button variant="secondary">Secondary</Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button variant='flat'>Flat</Button>
+    <Button variant="flat">Flat</Button>
   </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
@@ -58,13 +76,13 @@ This versatile component comes in multiple variants, sizes, and styles to accomm
 
 <ComponentPreviewLayout>
   <ComponentPreviewItem>
-    <Button appearance='default'>Default</Button>
+    <Button appearance="default">Default</Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button appearance='dark'>Dark</Button>
+    <Button appearance="dark">Dark</Button>
   </ComponentPreviewItem>
   <ComponentPreviewItem>
-    <Button appearance='light'>Light</Button>
+    <Button appearance="light">Light</Button>
   </ComponentPreviewItem>
 </ComponentPreviewLayout>
 
@@ -82,6 +100,7 @@ Buttons are interactive elements that enable users to trigger actions or navigat
 - **Include icons when helpful**: Add icons to buttons when they enhance understanding, but ensure they're relevant to the action.
 
 **Example:**
+
 <ComponentContainer>
   <div className='flex flex-col gap-4'>
     <div className="gi-flex gi-gap-2">
@@ -101,6 +120,7 @@ Buttons are interactive elements that enable users to trigger actions or navigat
     <div className="gi-mt-2 gi-text-sm gi-text-gray-600">
       Descriptive label with relevant icon that enhances understanding
     </div>
+
   </div>
 </ComponentContainer>
 
@@ -114,8 +134,9 @@ Buttons are interactive elements that enable users to trigger actions or navigat
 - **Don't use button groups for unrelated actions**: Button groups should only contain buttons that are related to each other.
 
 **Example:**
+
 <ComponentContainer>
-  <div className='flex flex-col gap-4'>
+  <div className="flex flex-col gap-4">
     <div className="gi-flex gi-gap-2">
       <Button>Submit</Button>
       <Button>Save draft</Button>
@@ -123,16 +144,14 @@ Buttons are interactive elements that enable users to trigger actions or navigat
     <div>
       Confusing hierarchy with multiple primary buttons of equal visual weight
     </div>
-    
+
     <div>
       <Button>
         <Icon icon="mail" />
         <span>Click here</span>
       </Button>
     </div>
-    <div>
-      Vague label that doesn't clearly describe the action
-    </div>
+    <div>Vague label that doesn't clearly describe the action</div>
   </div>
 </ComponentContainer>
 
