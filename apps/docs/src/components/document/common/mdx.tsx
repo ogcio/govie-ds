@@ -1,6 +1,7 @@
 import CookieConsentCheckbox from '@/components/cookies/cookie-consent-checkbox';
 import { ColorPrimitives } from '@/components/document/color/color-primitives';
 import { DownloadTheme } from '@/components/document/theme/download-theme';
+import { ThemeBuilder } from '@/components/document/theme/theme-builder';
 import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { GovieLink } from '@/components/navigation/custom-link';
 import { cn } from '@/lib/cn';
@@ -210,6 +211,7 @@ const documentComponents: MDXComponents = {
   CookieBanner,
   CookieConsentCheckbox,
   DownloadTheme,
+  ThemeBuilder,
   DataGridSample: () => (
     <div className="gi-not-prose">
       <DataGridSample />
