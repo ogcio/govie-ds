@@ -1,0 +1,105 @@
+---
+title: Input Text
+description: Input Text React Component
+status: stable
+component:
+  id: 'input-text-react'
+  link: '/docs/form-inputtext--docs'
+  status: 'stable'
+  properties:
+    - name: InputText
+      fields:
+        - name: 'prefix'
+          ofType: 'node'
+          description: 'An optional element displayed before the input field.'
+          required: false
+        - name: 'suffix'
+          ofType: 'node'
+          description: 'An optional element displayed after the input field.'
+          required: false
+        - name: 'inputClassName'
+          ofType: 'string'
+          description: 'Custom class name for styling the input element.'
+          required: false
+        - name: 'iconStart'
+          ofType: 'IconId'
+          description: 'ID of an icon to display at the start of the input.'
+          required: false
+        - name: 'iconEnd'
+          ofType: 'IconId'
+          description: 'ID of an icon to display at the end of the input.'
+          required: false
+        - name: 'inputActionButton'
+          ofType: 'InputActionButtonProps'
+          description: 'An optional action button associated with the input field.'
+          required: false
+        - name: 'type'
+          ofType: 'string'
+          description: 'The type of input. Options include: text, date, datetime-local, email, month, number, password, tel, time, url, week.'
+          required: false
+        - name: 'halfFluid'
+          ofType: 'boolean'
+          description: 'When true, the input takes up half the width of its container.'
+          required: false
+        - name: 'clearButtonEnabled'
+          ofType: 'boolean'
+          description: 'If true, displays a button to clear the input value.'
+          required: false
+  stories:
+    - name: 'focus'
+      url: '/story/form-inputtext--focus'
+    - name: 'disabled'
+      url: '/story/form-inputtext--disabled'
+    - name: 'with-label-and-hint'
+      url: '/story/form-inputtext--with-label-and-hint'
+---
+
+# Input Text
+Description
+
+<Section current="react" >
+
+<ComponentPreview>
+  <FormField
+    label={{
+      htmlFor: 'input-text-id',
+      text: 'Label',
+    }}
+  >
+    <InputText data-testid="input-text-id" id="input-text-id" />
+  </FormField>
+</ComponentPreview>
+
+## Examples
+
+### Focus
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-text-html"
+  story="focus"
+/>
+
+### Disabled
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-text-html"
+  story="disabled"
+/>
+
+### With Label and Hint
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-text-html"
+  story="with-label-and-hint"
+/>
+
+## Properties
+
+This component will extend the default HTML Input Text element and it will add the following properties:
+
+<ComponentPropertiesTable componentId="input-text-react" />
+
+</Section>
