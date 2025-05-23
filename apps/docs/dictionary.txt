@@ -25,6 +25,7 @@ Combobox
 ComboboxProps
 ContainerProps
 CookieBannerProps
+Customize
 DOM
 Deque
 DetailsProps
@@ -53,6 +54,7 @@ IconProps
 InputCheckbox
 InputCheckboxGroupProps
 InputCheckboxProps
+InputFile
 InputFileProps
 InputPasswordProps
 InputRadio
@@ -157,6 +159,7 @@ combobox
 components-scoreselect
 config
 customizable
+customization
 data-testid
 defaultValue
 digitalisation

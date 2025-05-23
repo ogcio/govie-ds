@@ -1,0 +1,84 @@
+---
+title: Input File
+description: InputFile React Component
+status: stable
+component:
+  id: 'input-file-react'
+  link: '/docs/form-inputfile--docs'
+  status: 'stable'
+  properties:
+    - name: InputFileProps
+      fields:
+        - name: 'multiple'
+          ofType: 'boolean'
+          description: 'Allows selection of multiple files if set to true.'
+          required: false
+        - name: 'accept'
+          ofType: 'string'
+          description: 'Specifies the types of files that the server accepts (e.g., .jpg, .pdf, image/*).'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'When true, disables the input so users cannot interact with it.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name to style the input element.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback function triggered when file selection changes.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/form-inputfile--default'
+    - name: 'with-label-and-hint'
+      url: '/story/form-inputfile--with-label-and-hint'
+    - name: 'with-label-hint-and-error'
+      url: '/story/form-inputfile--with-label-and-error'
+---
+
+# Input File
+
+The InputFile component allows users to upload one or more files.  
+It extends the native HTML element while allowing customization and consistent styling across your application.
+
+<Section current="react">
+
+<ComponentPreview>
+  <InputFile />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="default"
+/>
+
+### With Label and Hint
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="with-label-and-hint"
+/>
+
+### With Label, Hint and Error
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-file-react"
+  story="with-label-hint-and-error"
+/>
+
+## Properties
+
+This component extends the default HTML file input element and adds the following properties:
+
+<ComponentPropertiesTable componentId="input-file-react" />
+
+</Section>
