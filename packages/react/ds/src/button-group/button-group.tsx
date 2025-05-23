@@ -4,11 +4,11 @@ import {
   FC,
   PropsWithChildren,
   useContext,
-  useId,
   useState,
 } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonAppearance, ButtonSize } from '../button/types.js';
+import { useDomId } from '../hooks/use-dom-id.js';
 
 type ButtonGroupContextType = {
   selectedValue?: string;
@@ -71,6 +71,7 @@ export const ButtonGroupItem: FC<ButtonGroupItemProps> = ({
       role={customRole || 'radio'}
       aria-checked={ariaChecked === undefined ? isSelected : ariaChecked}
       aria-label={ariaLabel}
+      type="button"
     >
       {children}
     </Button>
@@ -103,7 +104,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
     defaultValue,
   );
 
-  const groupId = useId();
+  const groupId = useDomId();
 
   return (
     <ButtonGroupContext.Provider
