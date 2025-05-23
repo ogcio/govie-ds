@@ -146,7 +146,7 @@ export const ThemeBuilder = () => {
             </div>
           ))}
         </div>
-        <Paragraph>
+        <Paragraph className="gi-not-prose my-8">
           Once you are done, click the <b>Download</b> button to export the
           complete theme as a CSS file, ready to use in your project.
         </Paragraph>
