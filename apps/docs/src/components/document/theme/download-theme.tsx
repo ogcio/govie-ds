@@ -76,7 +76,7 @@ const handleDownload = (colorMap: Record<string, Record<string, string>>) => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'theme.colors.css';
+  link.download = 'theme.css';
   link.click();
   URL.revokeObjectURL(url);
 };
