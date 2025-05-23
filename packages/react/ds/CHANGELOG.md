@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.7.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.2...react-lib-v1.7.3) (2025-05-23)
+
+
+### Bug Fixes
+
+* copy to clipboard icon ([#560](https://github.com/ogcio/govie-ds/issues/560)) ([131fd8f](https://github.com/ogcio/govie-ds/commit/131fd8f0be9962705afa604269cfe24511de4528))
+
 ## [1.7.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.1...react-lib-v1.7.2) (2025-05-19)
 
 
