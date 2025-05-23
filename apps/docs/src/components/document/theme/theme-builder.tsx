@@ -4,34 +4,18 @@ import { useEffect, useReducer, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { ClientOnly } from '../common/client-only';
 import { DownloadTheme } from './download-theme';
-import { Paragraph } from '@govie-ds/react';
-
-const COLOR_GROUPS = [
-  {
-    label: 'Brand',
-    keys: ['primary', 'secondary', 'neutral'],
-  },
-  {
-    label: 'Support',
-    keys: [
-      'support-info',
-      'support-success',
-      'support-warning',
-      'support-error',
-    ],
-  },
-  {
-    label: 'Utility',
-    keys: ['utility-convention', 'utility-convention-alt'],
-  },
-] as const;
-
-const COLOR_KEYS = COLOR_GROUPS.flatMap((group) => group.keys);
+import { Heading, Paragraph } from '@govie-ds/react';
+import { ThemePreview } from './theme-preview';
+import {
+  COLOR_GROUPS,
+  COLOR_KEYS,
+  formatKeyLabel,
+  generateShades,
+  resolveColor,
+} from '@/lib/theme-utils';
 
 type ColorKey = (typeof COLOR_KEYS)[number];
-
 type State = Record<ColorKey, string>;
-
 type Action = {
   type: 'UPDATE_COLOR';
   key: ColorKey;
@@ -41,34 +25,6 @@ type Action = {
 const initialState = Object.fromEntries(
   COLOR_KEYS.map((key) => [key, `var(--gieds-color-${key}-800)`]),
 ) as State;
-
-const resolveColor = (isMounted: boolean, color: string): string => {
-  if (!isMounted) {
-    return '#ffffff';
-  }
-  if (!color.startsWith('var(')) {
-    return color;
-  }
-
-  const cssVar = color.slice(4, -1).trim();
-  return (
-    getComputedStyle(document.documentElement)
-      .getPropertyValue(cssVar)
-      .trim() || '#ffffff'
-  );
-};
-
-const formatKeyLabel = (key: string): string => {
-  const parts = key
-    .replace(/^support-/, '')
-    .replace(/^utility-/, '')
-    .split('-');
-  const label = parts
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-
-  return label === 'Convention Alt' ? 'Alt' : label;
-};
 
 function colorReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -84,6 +40,20 @@ export const ThemeBuilder = () => {
   const [active, setActive] = useState<ColorKey | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const pickerRef = useRef<HTMLDivElement | null>(null);
+
+  const colors = Reflect.ownKeys(state).reduce(
+    (prevKey: any, currentKey: any) => {
+      return {
+        ...prevKey,
+        [currentKey]: resolveColor(isMounted, state[currentKey]),
+      };
+    },
+    {},
+  );
+  const generated = Object.entries(colors).reduce(
+    (acc, [key, baseHex]: any) => ({ ...acc, ...generateShades(key, baseHex) }),
+    {},
+  );
 
   useEffect(() => {
     setIsMounted(true);
@@ -101,7 +71,7 @@ export const ThemeBuilder = () => {
 
   return (
     <ClientOnly>
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-8">
         <div className="flex gap-4 flex-col gi-not-prose">
           {COLOR_GROUPS.map((group) => (
             <div key={group.label}>
@@ -146,21 +116,16 @@ export const ThemeBuilder = () => {
             </div>
           ))}
         </div>
+
+        <div className="flex flex-col mt-8 gap-5 gi-not-prose">
+          <Heading as="h3">Example</Heading>
+          <ThemePreview colors={generated} />
+        </div>
         <Paragraph className="gi-not-prose my-8">
           Once you are done, click the <b>Download</b> button to export the
           complete theme as a CSS file, ready to use in your project.
         </Paragraph>
-        <DownloadTheme
-          colors={Reflect.ownKeys(state).reduce(
-            (prevKey: any, currentKey: any) => {
-              return {
-                ...prevKey,
-                [currentKey]: resolveColor(isMounted, state[currentKey]),
-              };
-            },
-            {},
-          )}
-        />
+        <DownloadTheme colors={generated} />
       </div>
     </ClientOnly>
   );
