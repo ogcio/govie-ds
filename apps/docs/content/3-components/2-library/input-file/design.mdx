@@ -1,0 +1,100 @@
+---
+title: Input File
+description: Input File Design Guidelines
+status: stable
+component:
+  id: 'input-file'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5500-7027'
+  status: 'stable'
+---
+
+# Input File
+
+The Input File component enables users to upload one or more files from their device. It supports common file input patterns and can be styled to match your design system while maintaining accessibility and usability.
+
+<Section current="design">
+
+<ComponentPreview>
+  <InputFile />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5500-7027" />
+
+## States
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-105">
+    <InputFile />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <FormField
+      hint={{
+        text: 'Hint: This is a helpful hint.',
+      }}
+      id="file-upload-id"
+      label={{
+        htmlFor: 'file-upload-id',
+        text: 'Upload File',
+      }}
+    >
+      <InputFile accept="*/*" id="file-upload-id" />
+    </FormField>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <FormField
+      error={{
+        text: 'Error: File must be smaller than 5MB.',
+      }}
+      id="file-upload-id"
+      label={{
+        htmlFor: 'file-upload-id',
+        text: 'Upload File',
+      }}
+    >
+      <InputFile accept=".pdf, .docx" id="file-upload-id" />
+    </FormField>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Input File components should be used when your interface requires users to upload files. This can include documents, images, or other formats supported by the application.
+
+### Do
+
+- **Label inputs clearly**: Always pair the input with a label or descriptive placeholder to indicate its purpose.
+- **Support multiple file types**: Use the `accept` attribute to guide users on allowed formats.
+- **Give feedback**: Show selected file names or upload progress where appropriate.
+
+**Example:**
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <label className="gi-text-sm gi-font-medium" htmlFor="resume-upload">
+      Upload your resume (PDF only)
+    </label>
+    <InputFile id="resume-upload" accept=".pdf" />
+    <div className="gi-text-sm gi-text-gray-600">
+      Clear label, file type restricted to .pdf
+    </div>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- **Don’t rely on default browser styling**: Customize the input to fit your visual system.
+- **Don’t disable without explanation**: If the input is disabled, explain why.
+- **Don’t leave file uploads ambiguous**: Always show feedback (file selected, upload success/failure).
+- **Don’t ignore file size constraints**: Validate and inform users if files exceed allowed limits.
+
+**Example:**
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <InputFile disabled />
+    <div className="gi-text-sm gi-text-gray-600">
+      Disabled input with no explanation – may confuse users
+    </div>
+  </div>
+</ComponentContainer>
+
+</Section>

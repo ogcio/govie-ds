@@ -91,6 +91,7 @@ import {
   ComponentPreviewItem,
   ComponentPreviewLayout,
 } from '../components/component-preview';
+import { FigmaPreviewButton } from '../components/figma-preview-button';
 import { ComponentPropertiesTable } from '../components/component-properties-table';
 import {
   ComponentStatusBlock,
@@ -204,6 +205,7 @@ const documentComponents: MDXComponents = {
   ComponentPreview,
   ComponentPreviewItem,
   ComponentPreviewLayout,
+  FigmaPreviewButton,
   ComponentPropertiesTable,
   ComponentStatusBlock,
   ComponentStatusTable,
