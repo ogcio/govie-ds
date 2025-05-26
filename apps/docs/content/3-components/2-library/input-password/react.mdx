@@ -1,0 +1,61 @@
+---
+title: Input Password
+description: Input Password React Component
+status: stable
+component:
+  id: 'input-password-react'
+  link: '/docs/form-inputpassword--docs'
+  status: 'stable'
+
+  stories:
+    - name: 'default'
+      url: '/story/form-inputpassword--default'
+    - name: 'all-variants'
+      url: '/story/form-inputpassword--all-variants'
+---
+
+# Input Password
+
+<Section current="react">
+
+<ComponentPreview>
+  <FormField
+    label={{
+      text: 'Password',
+      htmlFor: 'text-password-id',
+    }}
+  >
+    <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
+  </FormField>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-password-react"
+  story="default"
+/>
+
+### All Variants
+
+<StorybookFrame
+  heightClassName="h-192"
+  componentId="input-password-react"
+  story="all-variants"
+/>
+
+## Properties
+
+This component inherits all properties from the default HTML text input element except for the following omitted props:
+
+- type
+- inputActionButton
+- prefix
+- suffix
+- iconStart
+- iconEnd
+
+</Section>

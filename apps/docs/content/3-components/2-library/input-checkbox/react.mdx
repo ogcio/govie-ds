@@ -1,0 +1,93 @@
+---
+title: Input Checkbox
+description: InputCheckbox React Component
+status: stable
+component:
+  id: 'input-checkbox-react'
+  link: '/docs/form-checkbox-inputcheckbox--docs'
+  status: 'stable'
+  properties:
+    - name: InputCheckboxProps
+      fields:
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the checkbox. Options include: sm, md, lg.'
+          required: false
+        - name: 'label'
+          ofType: 'string'
+          description: 'The text label displayed next to the checkbox.'
+          required: false
+        - name: 'hint'
+          ofType: 'string'
+          description: 'Additional helper text or hint displayed with the checkbox.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/form-checkbox-inputcheckbox--default'
+    - name: 'focus'
+      url: '/story/form-checkbox-inputcheckbox--focus'
+    - name: 'default-checked'
+      url: '/story/form-checkbox-inputcheckbox--with-default-checked'
+    - name: 'with-hint'
+      url: '/story/form-checkbox-inputcheckbox--with-hint'
+    - name: 'disabled'
+      url: '/story/form-checkbox-inputcheckbox--disabled'
+---
+
+# Input Checkbox
+
+<Section current="react">
+
+<ComponentPreview>
+  <InputCheckbox label="Checkbox" value="value-1" />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-checkbox-react"
+  story="default"
+/>
+
+### Focus
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-checkbox-react"
+  story="focus"
+/>
+
+### Default Checked
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-checkbox-react"
+  story="default-checked"
+/>
+
+### Disabled
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-checkbox-react"
+  story="disabled"
+/>
+
+### With Hint
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="input-checkbox-html"
+  story="with-label-and-hint"
+/>
+
+## Properties
+
+This component extends the default HTML checkbox input element and adds the following properties:
+
+<ComponentPropertiesTable componentId="input-checkbox-react" />
+
+</Section>

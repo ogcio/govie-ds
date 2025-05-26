@@ -1,0 +1,116 @@
+---
+title: Input Password
+description: Input Password Design Guidelines
+status: stable
+component:
+  id: 'input-password'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-7026'
+  status: 'stable'
+---
+
+# Input Password
+
+The Input Password component allows users to securely enter and toggle the visibility of password fields. It includes built-in visibility controls and can be used anywhere password input is required.
+
+<Section current="design">
+
+<ComponentPreview>
+  <FormField
+    label={{
+      text: 'Password',
+      htmlFor: 'text-password-id',
+    }}
+  >
+    <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
+  </FormField>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-7026" />
+
+## States
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-96 h-52">
+    <FormField
+      label={{
+        text: 'Label',
+        htmlFor: 'text-password-id',
+      }}
+    >
+      <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
+    </FormField>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-96 h-52">
+    <FormField
+      label={{
+        text: 'Label',
+      }}
+      hint={{
+        text: 'Support text',
+      }}
+    >
+      <InputPassword disabled placeholder="Placeholder" />
+    </FormField>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-96 h-52">
+    <FormField
+      error={{
+        text: 'Error text',
+      }}
+      label={{
+        text: 'Label',
+      }}
+      hint={{
+        text: 'Support text',
+      }}
+    >
+      <InputPassword placeholder="Placeholder" />
+    </FormField>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the Input Password component for fields requiring secure input, such as account creation, login forms, or security settings.
+
+### Do
+
+- **Allow users to toggle visibility**: Let users confirm their input when necessary.
+- **Use clear hints and error messages**: Guide users on password requirements and show helpful feedback.
+- **Ensure consistent styling**: Match the component to your overall design system for clarity and trust.
+
+**Example:**
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <FormField
+      label={{
+        text: 'Password',
+        htmlFor: 'text-password-id',
+      }}
+    >
+      <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
+    </FormField>
+    <div className="gi-text-sm gi-text-gray-600">
+      Includes visibility toggle and secure input
+    </div>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- **Don’t remove the visibility toggle**: Users often need to verify their input, especially on mobile.
+- **Don’t neglect validation**: Always validate password inputs and inform the user when rules are not met.
+- **Don’t expose password rules too late**: Show guidance before submission to reduce friction.
+
+**Example:**
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <InputPassword placeholder="No guidance, hidden errors" />
+    <div className="gi-text-sm gi-text-gray-600">
+      Missing hints or rules – user may get frustrated
+    </div>
+  </div>
+</ComponentContainer>
+
+</Section>

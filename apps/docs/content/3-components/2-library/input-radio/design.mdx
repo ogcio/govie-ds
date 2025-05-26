@@ -1,0 +1,79 @@
+---
+title: Input Radio
+description: Input Radio Design Guidelines
+status: stable
+component:
+  id: 'input-radio'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5205-2026&t=sOPBcSILxOa8Sc8a-4'
+  status: 'stable'
+---
+
+# Input Radio
+
+The Input Radio component lets users select a single option from a group. It supports various sizes, optional hints, and conditional inputs based on selection.
+
+<Section current="design">
+
+<ComponentPreview>
+  <InputRadio label="Radio" value="radio-value" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5205-2026&t=sOPBcSILxOa8Sc8a-4" />
+
+## States
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-96">
+    <InputRadio label="Radio" value="radio-value" />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-96">
+    <InputRadio label="Radio" value="radio-with-foucs" autoFocus />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-96">
+    <InputRadio checked label="Radio" value="radio-with-default-checked" />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use radio buttons when users must choose only **one** option from a predefined set. Always group related options and use a clear group label.
+
+### Do
+
+- **Use clear, concise labels**: Each radio option should clearly communicate what it represents.
+- **Use conditional inputs when needed**: Prompt users for more information only when certain options are selected.
+- **Group related options**: Use a fieldset and legend (if semantically appropriate) to group radio inputs.
+
+**Example:**
+
+<ComponentContainer>
+  <FormField
+    label={{
+      text: 'Where do you live?',
+    }}
+  >
+    <InputRadioGroup groupId="city">
+      <InputRadio label="Dublin" value="dublin" />
+      <InputRadio label="Cork" value="cork" />
+      <InputRadio label="Galway" value="galway" />
+    </InputRadioGroup>
+  </FormField>
+</ComponentContainer>
+
+### Don't
+
+- **Don’t use radio buttons for multiple selections**: Use checkboxes if users can select more than one option.
+- **Don’t forget the name attribute**: Radios without a shared `name` won’t behave as a group.
+- **Don’t hide conditional inputs without logic**: Make sure conditional inputs only appear when appropriate.
+
+**Example:**
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <InputRadio label="No group name" />
+    <div className="gi-text-sm gi-text-gray-600">
+      Missing `name` attribute – radios will not behave as a group
+    </div>
+  </div>
+</ComponentContainer>
+
+</Section>
