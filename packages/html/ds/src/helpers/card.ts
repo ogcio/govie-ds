@@ -10,7 +10,7 @@ export const createCard = (arguments_: CardProps) => {
 
   const card = document.createElement('div');
   card.className = `gi-card gi-card-${arguments_.type || 'vertical'} gi-card-inset-${arguments_.inset || 'none'}`;
-  card.role = 'region';
+
   if (arguments_.dataTestid) {
     card.dataset.testid = arguments_.dataTestid;
   }
