@@ -42,15 +42,13 @@ export const ThemeBuilder = () => {
   const pickerRef = useRef<HTMLDivElement | null>(null);
 
   const colors = Reflect.ownKeys(state).reduce(
-    (prevKey: any, currentKey: any) => {
-      return {
-        ...prevKey,
-        [currentKey]: resolveColor(isMounted, state[currentKey]),
-      };
-    },
+    (prevKey: any, currentKey: any) => ({
+      ...prevKey,
+      [currentKey]: resolveColor(isMounted, state[currentKey]),
+    }),
     {},
   );
-  const generated = Object.entries(colors).reduce(
+  const themeGenerated = Object.entries(colors).reduce(
     (acc, [key, baseHex]: any) => ({ ...acc, ...generateShades(key, baseHex) }),
     {},
   );
@@ -119,13 +117,13 @@ export const ThemeBuilder = () => {
 
         <div className="flex flex-col mt-8 gap-5 gi-not-prose">
           <Heading as="h3">Example</Heading>
-          <ThemePreview colors={generated} />
+          <ThemePreview colors={themeGenerated} />
         </div>
         <Paragraph className="gi-not-prose my-8">
           Once you are done, click the <b>Download</b> button to export the
           complete theme as a CSS file, ready to use in your project.
         </Paragraph>
-        <DownloadTheme colors={generated} />
+        <DownloadTheme colors={themeGenerated} />
       </div>
     </ClientOnly>
   );

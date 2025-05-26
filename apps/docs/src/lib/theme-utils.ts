@@ -3,19 +3,24 @@ import tinycolor from 'tinycolor2';
 export const TAILWIND_SHADES = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ];
-export const LIGHTNESS_MAP: any = {
-  50: 95,
-  100: 90,
-  200: 80,
-  300: 70,
-  400: 60,
-  500: 50,
-  600: 40,
-  700: 30,
-  800: 20,
-  900: 10,
-  950: 5,
+
+export const COLOR_TUNE_MAP: Record<
+  number,
+  { l: number; s?: number; h?: number }
+> = {
+  50: { l: 97.1 },
+  100: { l: 87.6 },
+  200: { l: 78.4 },
+  300: { l: 60.8 },
+  400: { l: 46.3 },
+  500: { l: 34.5 },
+  600: { l: 26.9 },
+  700: { l: 20.0 },
+  800: { l: 15.0 },
+  900: { l: 10.6 },
+  950: { l: 7.1 },
 };
+
 export const COLOR_GROUPS = [
   {
     label: 'Brand',
@@ -84,7 +89,11 @@ export const generateShades = (
       if (shade === 800) {
         acc[shade] = baseHex;
       } else {
-        const modified = { ...baseColor, l: LIGHTNESS_MAP[shade] / 100 };
+        const { l } = COLOR_TUNE_MAP[shade];
+        const modified = {
+          ...baseColor,
+          l: l / 100,
+        };
         acc[shade] = tinycolor(modified).toHexString();
       }
       return acc;
