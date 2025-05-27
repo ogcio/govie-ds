@@ -170,11 +170,13 @@ fieldset
 flexbox-based
 form-buttongroup
 form-checkbox-inputcheckbox
+form-checkbox-inputcheckboxgroup
 form-iconbutton
 form-inputfile
 form-inputpassword
 form-inputtext
 form-radio-inputradio
+form-radio-inputradiogroup
 form-textarea
 gi-btn
 gi-btn-flat-dark
