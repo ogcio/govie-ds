@@ -159,6 +159,18 @@ export const NoColor: Story = {
   render: createElement,
 };
 
+export const LinkAsButton: Story = {
+  args: {
+    ...baseProps,
+    asButton: {
+      appearance: 'default',
+      size: 'medium',
+      variant: 'primary',
+    },
+  },
+  render: createElement,
+};
+
 export const NoColorWithIcons: Story = {
   args: withIcons({
     ...baseProps,

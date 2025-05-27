@@ -166,6 +166,17 @@ export const NoColor: Story = {
   },
 };
 
+export const LinkAsButton: Story = {
+  args: {
+    ...baseProps,
+    asButton: {
+      appearance: 'default',
+      size: 'medium',
+      variant: 'primary',
+    },
+  },
+};
+
 export const NoColorWithIcons: Story = {
   args: withIcons({
     ...baseProps,
