@@ -24,12 +24,12 @@ component:
   stories:
     - name: 'default'
       url: '/story/form-checkbox-inputcheckbox--default'
-    - name: 'focus'
-      url: '/story/form-checkbox-inputcheckbox--focus'
     - name: 'default-checked'
       url: '/story/form-checkbox-inputcheckbox--with-default-checked'
     - name: 'with-hint'
       url: '/story/form-checkbox-inputcheckbox--with-hint'
+    - name: 'with-checkbox-group'
+      url: '/story/form-checkbox-inputcheckboxgroup--default'
     - name: 'disabled'
       url: '/story/form-checkbox-inputcheckbox--disabled'
 ---
@@ -50,14 +50,6 @@ component:
   heightClassName="h-max"
   componentId="input-checkbox-react"
   story="default"
-/>
-
-### Focus
-
-<StorybookFrame
-  heightClassName="h-max"
-  componentId="input-checkbox-react"
-  story="focus"
 />
 
 ### Default Checked
@@ -82,6 +74,14 @@ component:
   heightClassName="h-max"
   componentId="input-checkbox-html"
   story="with-label-and-hint"
+/>
+
+### With Checkbox Group
+
+<StorybookFrame
+  heightClassName="h-52"
+  componentId="input-checkbox-react"
+  story="with-checkbox-group"
 />
 
 ## Properties
