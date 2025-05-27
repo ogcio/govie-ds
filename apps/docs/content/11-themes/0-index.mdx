@@ -1,7 +1,86 @@
 ---
 title: Theme
-description: Theme page
+description: Overview of theming in the design system
 status: stable
 ---
 
-# Theme
+# Themes
+
+## Overview
+
+In a design system, a **theme** is a defined set of stylistic tokens—such as colors, typography, spacing, and other visual attributes—that collectively determine the appearance of UI components. By encapsulating these stylistic elements into a theme, teams can consistently and efficiently adapt the user interface to different brands, or contextual requirements, without modifying the component structure.
+
+## Benefits of Theming
+
+Using themes provides several key benefits:
+
+- **Consistency**: Maintains a uniform visual style across components and applications.
+- **Flexibility**: Supports customization for different brands, regions, or user settings.
+- **Efficiency**: Enables centralized style updates that propagate across the system.
+- **Scalability**: Accommodates the addition of new themes without altering core components.
+
+## Theme Integration Options
+
+There are two primary methods for integrating themes into your project:
+
+1. **Using the prebuilt `@govie-ds/theme-govie` package**
+2. **Creating and exporting a custom theme with the Theme Builder**
+
+<Tabs id="themeTabs">
+  <TabList>
+    <TabItem value="themeTab1" checked>1. Prebuilt Theme</TabItem>
+    <TabItem value="themeTab2">2. Custom Theme</TabItem>
+  </TabList>
+
+  <TabPanel value="themeTab1">
+    The `@govie-ds/theme-govie` package provides a default theme with pre-configured design tokens. These tokens are exposed via the `meta` object and can be integrated with Tailwind CSS using the `createTheme` helper.
+
+    ```ts
+    // tailwind.config.js
+    import { createTheme } from '@govie-ds/tailwind';
+    import { meta } from '@govie-ds/theme-govie';
+
+    const config: Config = {
+      // Other Tailwind config...
+      theme: createTheme({
+        meta,
+      }),
+    };
+    ```
+
+    This setup allows you to use design system tokens directly within your Tailwind configuration.
+
+  </TabPanel>
+
+  <TabPanel value="themeTab2">
+    The Theme Builder provides a visual interface for generating custom themes. This method outputs a CSS file containing a `:root` block with your theme's CSS variables.
+
+    #### Step 1: Generate and Download Theme
+
+    1. Access the [Theme Builder](/themes/builder/)
+    2. Customize your theme using the UI
+    3. Click Download to export a `theme.css` file
+
+    Example output:
+
+    ```css
+    :root {
+      --gieds-color-primary-50: #f0fff7;
+      --gieds-color-primary-100: #c2fde1;
+      --gieds-color-primary-200: #95fbd0;
+      --gieds-color-primary-300: #4aecb4;
+      /* ...more tokens */
+    }
+    ```
+
+    #### Step 2: Import Theme into Your Stylesheet
+
+    Include the generated CSS file in your global stylesheet (e.g., `globals.css` or `main.css`):
+
+    ```css
+    @import './theme.css';
+    ```
+    This makes all the theme variables globally accessible within your application. This approach is ideal if you are not using the @govie-ds/theme-govie package or require customized, brand-specific themes.
+
+  </TabPanel>
+</Tabs>

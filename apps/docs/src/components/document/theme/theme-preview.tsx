@@ -9,7 +9,7 @@ import {
   SideNavItem,
   Tag,
 } from '@govie-ds/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 type ThemePreviewProps = {
   colors: Record<string, Record<string | number, string>>;

@@ -4,29 +4,26 @@ export const TAILWIND_SHADES = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 ];
 
-export const COLOR_TUNE_MAP: Record<
-  number,
-  { l: number; s?: number; h?: number }
-> = {
-  50: { l: 97.1 },
-  100: { l: 87.6 },
-  200: { l: 78.4 },
-  300: { l: 60.8 },
-  400: { l: 46.3 },
-  500: { l: 34.5 },
-  600: { l: 26.9 },
-  700: { l: 20.0 },
-  800: { l: 15.0 },
-  900: { l: 10.6 },
-  950: { l: 7.1 },
+const SHADE_LIGHTNESS_MAP: Record<number, number> = {
+  50: 97,
+  100: 90,
+  200: 80,
+  300: 70,
+  400: 60,
+  500: 50,
+  600: 40,
+  700: 25,
+  800: 20,
+  900: 10,
+  950: 5,
 };
 
 export const COLOR_GROUPS = [
   {
     label: 'Brand',
-    keys: ['primary', 'secondary', 'neutral'],
+    keys: ['primary', 'secondary' /*'neutral'*/],
   },
-  {
+  /*{
     label: 'Support',
     keys: [
       'support-info',
@@ -38,7 +35,7 @@ export const COLOR_GROUPS = [
   {
     label: 'Utility',
     keys: ['utility-convention', 'utility-convention-alt'],
-  },
+  },*/
 ] as const;
 
 export const COLOR_KEYS = COLOR_GROUPS.flatMap((group) => group.keys);
@@ -77,29 +74,50 @@ export const resolveCssVariables = (
 
   return resolved;
 };
+export const findClosestShade = (baseColor: string): number => {
+  const hsl = tinycolor(baseColor).toHsl();
+  const baseLightness = hsl.l * 100;
 
+  let closestShade = 500;
+  let smallestDiff = Infinity;
+
+  for (const shade in SHADE_LIGHTNESS_MAP) {
+    const targetLightness = SHADE_LIGHTNESS_MAP[Number(shade)];
+    const diff = Math.abs(baseLightness - targetLightness);
+
+    if (diff < smallestDiff) {
+      smallestDiff = diff;
+      closestShade = Number(shade);
+    }
+  }
+
+  return closestShade;
+};
 export const generateShades = (
   name: string,
-  baseHex: string,
+  baseColor: string,
 ): Record<string, Record<number, string>> => {
-  const baseColor = tinycolor(baseHex).toHsl();
+  const baseShade = findClosestShade(baseColor);
+  const baseHSL = tinycolor(baseColor).toHsl();
 
-  const shades = TAILWIND_SHADES.reduce(
-    (acc, shade) => {
-      if (shade === 800) {
-        acc[shade] = baseHex;
-      } else {
-        const { l } = COLOR_TUNE_MAP[shade];
-        const modified = {
-          ...baseColor,
-          l: l / 100,
-        };
-        acc[shade] = tinycolor(modified).toHexString();
-      }
-      return acc;
-    },
-    {} as Record<number, string>,
-  );
+  console.log({ baseColor, baseShade });
+
+  const shades: Record<number, string> = {};
+  shades[baseShade] = tinycolor(baseColor).toHexString();
+
+  for (const shade of TAILWIND_SHADES) {
+    if (shade === baseShade) continue;
+
+    const targetLightness = SHADE_LIGHTNESS_MAP[shade];
+
+    const generated = tinycolor({
+      h: baseHSL.h,
+      s: baseHSL.s,
+      l: targetLightness,
+    });
+
+    shades[shade] = generated.toHexString();
+  }
 
   return { [name]: shades };
 };

@@ -23,7 +23,10 @@ type Action = {
 };
 
 const initialState = Object.fromEntries(
-  COLOR_KEYS.map((key) => [key, `var(--gieds-color-${key}-800)`]),
+  COLOR_KEYS.map((key) => [
+    key,
+    `var(--gieds-color-${key}-${key === 'primary' ? 800 : 500})`,
+  ]),
 ) as State;
 
 function colorReducer(state: State, action: Action): State {
