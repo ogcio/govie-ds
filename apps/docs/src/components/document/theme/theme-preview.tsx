@@ -1,4 +1,4 @@
-import { resolveCssVariables } from '@/lib/theme-utils';
+import { ColorsMapProps, resolveCssVariables } from '@/lib/theme-utils';
 import {
   Alert,
   Button,
@@ -11,11 +11,7 @@ import {
 } from '@govie-ds/react';
 import React from 'react';
 
-type ThemePreviewProps = {
-  colors: Record<string, Record<string | number, string>>;
-};
-
-export const ThemePreview: React.FC<ThemePreviewProps> = ({ colors }) => {
+export const ThemePreview = ({ colors }: ColorsMapProps) => {
   return (
     <div
       style={resolveCssVariables(colors)}

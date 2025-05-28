@@ -1,12 +1,12 @@
 'use client';
 
-import { resolveCssVariables } from '@/lib/theme-utils';
+import { ColorsMapProps, resolveCssVariables } from '@/lib/theme-utils';
 import { Button, Icon } from '@govie-ds/react';
 
-const handleDownload = (colorMap: Record<string, Record<string, string>>) => {
-  const previewStyle = resolveCssVariables(colorMap);
+const handleDownload = ({ colors }: ColorsMapProps) => {
+  const previewStyle = resolveCssVariables(colors);
   const cssBlock = `:root {\n${Object.entries(previewStyle)
-    .map(([k, v]) => `  ${k}: ${v};`)
+    .map(([k, v]) => `${k}: ${v};`)
     .join('\n')}\n}`;
 
   const blob = new Blob([cssBlock], { type: 'text/css' });
@@ -18,13 +18,13 @@ const handleDownload = (colorMap: Record<string, Record<string, string>>) => {
   URL.revokeObjectURL(url);
 };
 
-export const DownloadTheme = ({ colors }: any) => {
+export const DownloadTheme = ({ colors }: ColorsMapProps) => {
   if (!colors) {
     return null;
   }
 
   return (
-    <Button onClick={() => handleDownload(colors)} className="w-fit">
+    <Button onClick={() => handleDownload({ colors })} className="w-fit">
       Download <Icon icon="download" />
     </Button>
   );

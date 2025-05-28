@@ -1,41 +1,30 @@
 import tinycolor from 'tinycolor2';
 
-export const TAILWIND_SHADES = [
-  50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
-];
+export type ColorsMapProps = {
+  colors: Record<string, Record<string | number, string>>;
+};
+
+const TAILWIND_SHADES = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
 const SHADE_LIGHTNESS_MAP: Record<number, number> = {
-  50: 97,
-  100: 90,
-  200: 80,
-  300: 70,
-  400: 60,
-  500: 50,
-  600: 40,
-  700: 25,
-  800: 20,
-  900: 10,
-  950: 5,
+  50: 97.06,
+  100: 87.65,
+  200: 78.43,
+  300: 60.78,
+  400: 46.27,
+  500: 34.51,
+  600: 26.86,
+  700: 20,
+  800: 15.1,
+  900: 10.59,
+  950: 7.06,
 };
 
 export const COLOR_GROUPS = [
   {
     label: 'Brand',
-    keys: ['primary', 'secondary' /*'neutral'*/],
+    keys: ['primary'],
   },
-  /*{
-    label: 'Support',
-    keys: [
-      'support-info',
-      'support-success',
-      'support-warning',
-      'support-error',
-    ],
-  },
-  {
-    label: 'Utility',
-    keys: ['utility-convention', 'utility-convention-alt'],
-  },*/
 ] as const;
 
 export const COLOR_KEYS = COLOR_GROUPS.flatMap((group) => group.keys);
@@ -82,7 +71,7 @@ export const findClosestShade = (baseColor: string): number => {
   let smallestDiff = Infinity;
 
   for (const shade in SHADE_LIGHTNESS_MAP) {
-    const targetLightness = SHADE_LIGHTNESS_MAP[Number(shade)];
+    const targetLightness = SHADE_LIGHTNESS_MAP[shade];
     const diff = Math.abs(baseLightness - targetLightness);
 
     if (diff < smallestDiff) {
@@ -93,33 +82,29 @@ export const findClosestShade = (baseColor: string): number => {
 
   return closestShade;
 };
-export const generateShades = (
-  name: string,
-  baseColor: string,
-): Record<string, Record<number, string>> => {
+
+export const generateShades = (key: string, baseColor: string) => {
   const baseShade = findClosestShade(baseColor);
   const baseHSL = tinycolor(baseColor).toHsl();
-
-  console.log({ baseColor, baseShade });
-
-  const shades: Record<number, string> = {};
+  const shades: any = {};
   shades[baseShade] = tinycolor(baseColor).toHexString();
 
   for (const shade of TAILWIND_SHADES) {
-    if (shade === baseShade) continue;
+    if (shade === baseShade) {
+      continue;
+    }
 
     const targetLightness = SHADE_LIGHTNESS_MAP[shade];
 
     const generated = tinycolor({
-      h: baseHSL.h,
-      s: baseHSL.s,
+      ...baseHSL,
       l: targetLightness,
     });
 
     shades[shade] = generated.toHexString();
   }
 
-  return { [name]: shades };
+  return { [key]: shades };
 };
 
 export const resolveColor = (isMounted: boolean, color: string): string => {
@@ -136,16 +121,4 @@ export const resolveColor = (isMounted: boolean, color: string): string => {
       .getPropertyValue(cssVar)
       .trim() || '#ffffff'
   );
-};
-
-export const formatKeyLabel = (key: string): string => {
-  const parts = key
-    .replace(/^support-/, '')
-    .replace(/^utility-/, '')
-    .split('-');
-  const label = parts
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-
-  return label === 'Convention Alt' ? 'Alt' : label;
 };
