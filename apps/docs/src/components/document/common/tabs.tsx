@@ -1,5 +1,3 @@
-import NextLink from 'next/link';
-import { cn } from '@/lib/cn';
 import { GovieLink } from '@/components/navigation/custom-link';
 
 export type Tab = {
