@@ -1,14 +1,14 @@
 ---
 title: Theme
 description: Overview of theming in the design system
-status: stable
+status: in-review
 ---
 
 # Themes
 
 ## Overview
 
-In a design system, a **theme** is a defined set of stylistic tokens—such as colors, typography, spacing, and other visual attributes—that collectively determine the appearance of UI components. By encapsulating these stylistic elements into a theme, teams can consistently and efficiently adapt the user interface to different brands, or contextual requirements, without modifying the component structure.
+In a design system, a **theme** is a defined set of stylistic tokens — such as colors, typography, spacing, and other visual attributes — that collectively determine the appearance of UI components. By encapsulating these stylistic elements into a theme, teams can consistently and efficiently adapt the user interface to different brands, or contextual requirements, without modifying the component structure.
 
 ## Benefits of Theming
 
@@ -33,22 +33,23 @@ There are two primary methods for integrating themes into your project:
   </TabList>
 
   <TabPanel value="themeTab1">
-    The `@govie-ds/theme-govie` package provides a default theme with pre-configured design tokens. These tokens are exposed via the `meta` object and can be integrated with Tailwind CSS using the `createTheme` helper.
+   The `@govie-ds/theme-govie` package offers a default theme with pre-configured design tokens.
+    To apply the **GOV IE** styles, import the `theme.css` file from the package at your application's entry point, for example:
+    
+    ```react
+    import "@govie-ds/react/styles.css";
+    import "@govie-ds/theme-govie/theme.css";
 
-    ```ts
-    // tailwind.config.js
-    import { createTheme } from '@govie-ds/tailwind';
-    import { meta } from '@govie-ds/theme-govie';
-
-    const config: Config = {
-      // Other Tailwind config...
-      theme: createTheme({
-        meta,
-      }),
-    };
+    export function App() {
+      return (
+        ...
+      );
+    }
     ```
 
-    This setup allows you to use design system tokens directly within your Tailwind configuration.
+    <Blockquote>
+        Note that you should typically run some form of CSS reset or normalisation of styles as part of your application entry point, depending on your application styling solution. For example Tailwind includes [preflight](https://tailwindcss.com/docs/preflight), an opinionated set of base styles.
+    </Blockquote>
 
   </TabPanel>
 
