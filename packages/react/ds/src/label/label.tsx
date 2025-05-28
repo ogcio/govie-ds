@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import { cn } from '../cn.js';
+import { tv } from 'tailwind-variants';
+import { type LabelTextProps } from './types.js';
 
 export const LabelSize = {
   Small: 'sm',
@@ -7,28 +8,28 @@ export const LabelSize = {
   Large: 'lg',
 } as const;
 
-export type LabelSizeType = (typeof LabelSize)[keyof typeof LabelSize];
+const label = tv({
+  base: 'gi-label',
+  variants: {
+    size: {
+      sm: 'gi-text-sm',
+      md: 'gi-text-md',
+      lg: 'gi-text-lg',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
-// Extend `React.LabelHTMLAttributes<HTMLLabelElement>` for correct label attributes
-export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
-  text: string;
-  size?: LabelSizeType;
-};
-
-// Use React.forwardRef to support refs properly
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
   ({ text, size = LabelSize.Medium, className, ...props }, ref) => {
     return (
-      <label
-        className={cn(`gi-text-${size}`, 'gi-label', className)}
-        ref={ref}
-        {...props}
-      >
+      <label className={label({ size, className })} ref={ref} {...props}>
         {text}
       </label>
     );
   },
 );
 
-// Set the displayName for debugging purposes
 Label.displayName = 'Label';

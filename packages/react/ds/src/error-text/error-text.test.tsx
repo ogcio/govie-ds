@@ -1,5 +1,6 @@
 import { renderComponent } from '../test-utilities.js';
-import { ErrorSize, ErrorTextProps, ErrorText } from './error-text.js';
+import { ErrorSize, ErrorText } from './error-text.js';
+import { type ErrorTextProps } from './types.js';
 
 describe('govieErrorText', () => {
   const renderErrorText = (props: ErrorTextProps) =>
