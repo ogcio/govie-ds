@@ -502,3 +502,21 @@ export const WithTextInputReset: Story = {
     );
   },
 };
+
+export const WithTextInputSearch: Story = {
+  args: {
+    id: 'input-text-id',
+  },
+  render: () => {
+    return (
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'input-text-id',
+        }}
+      >
+        <InputText type="search" placeholder="Placeholder" />
+      </FormField>
+    );
+  },
+};

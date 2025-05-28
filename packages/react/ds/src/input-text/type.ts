@@ -28,7 +28,8 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'tel'
     | 'time'
     | 'url'
-    | 'week';
+    | 'week'
+    | 'search';
   halfFluid?: boolean;
   clearButtonEnabled?: boolean;
 };
