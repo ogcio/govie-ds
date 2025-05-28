@@ -1,22 +1,28 @@
-import type React from 'react';
-import { Fragment } from 'react';
-import { Tabs } from '../common/tabs';
+'use client';
 
-const tabs = [
+import type React from 'react';
+import { Tabs } from '../common/tabs';
+import { usePathname } from 'next/navigation';
+import { useMemo } from 'react';
+
+const baseTabs = [
   {
     id: 'design',
     title: 'Design',
     href: '../design/',
+    excludes: [],
   },
   {
     id: 'html',
     title: 'HTML',
     href: '../html/',
+    excludes: ['input-password'],
   },
   {
     id: 'react',
     title: 'React',
     href: '../react/',
+    excludes: [],
   },
 ];
 
@@ -27,11 +33,17 @@ export function Section({
   current: string;
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  const tabs = useMemo(() => {
+    return baseTabs.filter(
+      (tab) => !tab.excludes.some((excluded) => pathname.includes(excluded)),
+    );
+  }, [pathname]);
+
   return (
-    <Fragment>
-      <Tabs tabs={tabs} current={current}>
-        {children}
-      </Tabs>
-    </Fragment>
+    <Tabs tabs={tabs} current={current}>
+      {children}
+    </Tabs>
   );
 }

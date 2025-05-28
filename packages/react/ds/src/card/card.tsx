@@ -166,7 +166,6 @@ export const Card = ({
   return (
     <div
       className={cardClasses}
-      role="region"
       aria-labelledby={title ? 'card-title' : undefined}
       data-testid={dataTestid}
     >
