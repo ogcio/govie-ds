@@ -10,11 +10,11 @@ import {
   TableData,
   TableRow,
   Tag,
-  TagTypeEnum,
 } from '@govie-ds/react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { TagFromStatus } from './tag-from-status';
+import { getComponentsTemp } from '@/lib/helper';
 
 export function ComponentStatusPill({ status }: { status: ComponentStatus }) {
   const tagProps = TagFromStatus(status);
@@ -167,7 +167,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
 }
 
 export function ComponentStatusTable() {
-  const components = getComponents();
+  const components = getComponentsTemp();
 
   const componentStatuses = components.map((component) => {
     const figmaPlatform = component.statuses.find(
