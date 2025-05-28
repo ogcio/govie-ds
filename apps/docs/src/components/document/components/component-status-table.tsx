@@ -1,7 +1,7 @@
 'use client';
 import { GovieLink } from '@/components/navigation/custom-link';
 import analytics from '@/lib/analytics';
-import { ComponentStatus, getComponents } from '@/lib/components';
+import { ComponentStatus } from '@/lib/components';
 import {
   Button,
   Paragraph,
@@ -14,7 +14,7 @@ import {
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { TagFromStatus } from './tag-from-status';
-import { getComponentsTemp } from '@/lib/helper';
+import { getComponents } from '@/lib/helper';
 
 export function ComponentStatusPill({ status }: { status: ComponentStatus }) {
   const tagProps = TagFromStatus(status);
@@ -167,7 +167,7 @@ export function ComponentStatusBlock({ componentId }: { componentId: string }) {
 }
 
 export function ComponentStatusTable() {
-  const components = getComponentsTemp();
+  const components = getComponents();
 
   const componentStatuses = components.map((component) => {
     const figmaPlatform = component.statuses.find(

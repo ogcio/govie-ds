@@ -1,20 +1,3 @@
-/**
- * @function getComponentsTemp
- * @description
- * Temporary utility function to fetch and normalize component metadata
- * from mixed-format documents. It merges legacy documents (without explicit
- * libraries) and newer documents (with `libraries` field), associating them
- * with appropriate platforms (`figma`, `react`, `global`) and statuses.
- *
- * The function generates a standardized list of ComponentsDocument objects,
- * each including platform-specific statuses and links to Storybook previews.
- *
- * ⚠️ This function will be removed once all component documents are migrated
- * to the new file format structure (design, react, html).
- *
- * @returns {ComponentsDocument[]} Sorted list of normalized component metadata.
- */
-
 import { sortBy, groupBy } from 'lodash';
 import { getAll } from './documents';
 
@@ -99,7 +82,24 @@ function mapPlatformName(platform: string): ComponentPlatformId {
   }
 }
 
-export function getComponentsTemp(): ComponentsDocument[] {
+/**
+ * @function getComponents
+ * @description
+ * Temporary utility function to fetch and normalize component metadata
+ * from mixed-format documents. It merges legacy documents (without explicit
+ * libraries) and newer documents (with `libraries` field), associating them
+ * with appropriate platforms (`figma`, `react`, `global`) and statuses.
+ *
+ * The function generates a standardized list of ComponentsDocument objects,
+ * each including platform-specific statuses and links to Storybook previews.
+ *
+ * ⚠️ This function will be removed once all component documents are migrated
+ * to the new file format structure (design, react, html).
+ *
+ * @returns {ComponentsDocument[]} Sorted list of normalized component metadata.
+ */
+
+export function getComponents(): ComponentsDocument[] {
   const componentsDocuments = getAll().filter((document) => document.component);
 
   const componentWithLibraries = componentsDocuments.filter(
