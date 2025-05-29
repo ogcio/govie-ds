@@ -52,10 +52,16 @@ export const createFormField = (formFieldProps: {
   label?: LabelProps;
   hint?: HintTextProps;
   error?: ErrorTextProps;
+  className?: string;
 }) => {
   const formField = document.createElement('fieldset');
-  formField.className =
-    `${formFieldProps.error ? 'gi-error-state' : ''}`.trim();
+  formField.className = [
+    formFieldProps.error ? 'gi-error-state' : '',
+    formFieldProps.className || '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
 
   const wrapper = document.createElement('div');
   wrapper.className = 'gi-pb-3 gi-flex gi-flex-col gi-gap-1';
