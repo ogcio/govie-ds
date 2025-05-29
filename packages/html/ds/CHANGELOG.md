@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.2...html-lib-v1.5.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* update link styling ([#565](https://github.com/ogcio/govie-ds/issues/565)) ([c3b506b](https://github.com/ogcio/govie-ds/commit/c3b506b1dfc7beef02ebb1c74c5be88d38bf7f5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.7.3
+
 ## [1.5.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.1...html-lib-v1.5.2) (2025-05-19)
 
 
