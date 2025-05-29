@@ -1,9 +1,10 @@
 import { renderComponent, cleanup } from '../test-utilities.js';
-import { LabelProps, LabelSize, Label } from './label.js';
+import { Label, LabelSize } from './label.js';
+import { type LabelTextProps } from './types.js';
 
 describe('govieLabel', () => {
   afterEach(cleanup);
-  const renderLabel = (props: LabelProps) =>
+  const renderLabel = (props: LabelTextProps) =>
     renderComponent(<Label {...props} />);
 
   it('should render a label with the correct content', () => {

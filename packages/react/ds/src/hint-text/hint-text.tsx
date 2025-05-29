@@ -1,48 +1,34 @@
-import React from 'react';
-import { cn } from '../cn.js';
-
+import { tv } from 'tailwind-variants';
+import { type HintTextProps } from './types.js';
 export const HintSize = {
   Small: 'sm',
   Medium: 'md',
   Large: 'lg',
 } as const;
 
-export type HintSizeType = (typeof HintSize)[keyof typeof HintSize];
+const hintText = tv({
+  base: 'gi-hint-text',
+  variants: {
+    size: {
+      sm: 'gi-hint-text-sm',
+      md: 'gi-hint-text-md',
+      lg: 'gi-hint-text-lg',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
-// Extend `React.InputHTMLAttributes<HTMLInputElement>` so that
-// the component can accept all the standard attributes and events that an `<input>` element can handle.
-export type HintTextProps = React.HTMLAttributes<HTMLElement> & {
-  text: string;
-  size?: HintSizeType;
-};
-
-// Use React.forwardRef to support refs properly
 export const HintText: React.FC<HintTextProps> = ({
   text,
   className,
-  size,
+  size = HintSize.Medium,
   ...props
-}) => {
-  const sizeClass = (() => {
-    switch (size) {
-      case 'lg': {
-        return 'gi-hint-text-lg';
-      }
-      case 'sm': {
-        return 'gi-hint-text-sm';
-      }
-      default: {
-        return 'gi-hint-text-md';
-      }
-    }
-  })();
+}) => (
+  <div className={hintText({ size, className })} {...props}>
+    {text}
+  </div>
+);
 
-  return (
-    <div className={cn(sizeClass, 'gi-hint-text', className)} {...props}>
-      {text}
-    </div>
-  );
-};
-
-// Set the displayName for debugging purposes
 HintText.displayName = 'HintText';
