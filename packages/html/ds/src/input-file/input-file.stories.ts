@@ -146,15 +146,15 @@ export const WithUploadedFilesTable: Story = {
     dataTestId: 'input-upload-files',
     accept: '*/*',
   },
-  render: (args) => {
+  render: (arguments_) => {
     const baseHtml = createFileUpload({
-      ...args,
+      ...arguments_,
       className: 'gi-w-full md:gi-w-[400px]',
     });
 
-    const temp = document.createElement('div');
-    temp.innerHTML = baseHtml;
-    const formElement = temp.firstElementChild!;
+    const temporary = document.createElement('div');
+    temporary.innerHTML = baseHtml;
+    const formElement = temporary.firstElementChild!;
 
     const table = document.createElement('table');
     table.className = 'gi-table gi-table-auto';
@@ -182,7 +182,7 @@ export const WithUploadedFilesTable: Story = {
       </tbody>
     `;
 
-    formElement.appendChild(table);
+    formElement.append(table);
 
     return formElement.outerHTML;
   },
