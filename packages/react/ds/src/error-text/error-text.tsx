@@ -1,18 +1,24 @@
-import React from 'react';
-
+import { tv } from 'tailwind-variants';
+import { type ErrorTextProps } from './types.js';
 export const ErrorSize = {
   Small: 'sm',
   Medium: 'md',
   Large: 'lg',
 } as const;
 
-export type ErrorSizeType = (typeof ErrorSize)[keyof typeof ErrorSize];
-
-export type ErrorTextProps = React.HTMLAttributes<HTMLDivElement> & {
-  text: string;
-  size?: ErrorSizeType;
-  dataTestid?: string;
-};
+const errorText = tv({
+  base: 'gi-error-text',
+  variants: {
+    size: {
+      sm: 'gi-error-text-sm',
+      md: 'gi-error-text-md',
+      lg: 'gi-error-text-lg',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
 export const ErrorText: React.FC<ErrorTextProps> = ({
   text,
@@ -20,29 +26,15 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
   size = ErrorSize.Medium,
   dataTestid,
   ...props
-}) => {
-  const sizeClass = (() => {
-    switch (size) {
-      case 'lg': {
-        return 'gi-error-text-lg';
-      }
-      case 'sm': {
-        return 'gi-error-text-sm';
-      }
-      default: {
-        return 'gi-error-text-md';
-      }
-    }
-  })();
+}) => (
+  <div
+    role="alert"
+    className={errorText({ size, className })}
+    data-testid={dataTestid}
+    {...props}
+  >
+    {text}
+  </div>
+);
 
-  return (
-    <div
-      role="alert"
-      className={`${sizeClass} gi-error-text ${className || ''}`}
-      data-testid={dataTestid}
-      {...props}
-    >
-      {text}
-    </div>
-  );
-};
+ErrorText.displayName = 'ErrorText';
