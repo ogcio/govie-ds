@@ -27,6 +27,8 @@ export type ProgressStepperProps = {
   completeAll?: boolean;
   dataTestId?: string;
   indicator?: ProgressStepperIndicatorType;
+  className?: string;
+  gap?: number;
 };
 
 export type InnerStepProps = {
@@ -38,6 +40,7 @@ export type InnerStepProps = {
   orientation?: Orientation;
   verticalSlot?: React.ReactNode;
   defaultOpen?: boolean;
+  gap: number;
 };
 
 export type ConnectorProps = {
@@ -46,4 +49,5 @@ export type ConnectorProps = {
   isCurrentStep: boolean;
   isCompleted: boolean;
   orientation?: Orientation;
+  gap: number;
 };
