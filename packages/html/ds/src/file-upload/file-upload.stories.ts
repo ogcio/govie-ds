@@ -5,7 +5,7 @@ import { beautifyHtmlNode } from '../storybook/storybook';
 import { FileUploadProps } from './types';
 
 const meta: Meta<FileUploadProps> = {
-  title: 'Form/FileUpload',
+  title: 'Form/InputFile',
 };
 
 export default meta;
