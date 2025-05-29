@@ -86,7 +86,7 @@ export const findClosestShade = (baseColor: string): number => {
 export const generateShades = (key: string, baseColor: string) => {
   const baseShade = findClosestShade(baseColor);
   const baseHSL = tinycolor(baseColor).toHsl();
-  const shades: any = {};
+  const shades: Record<number, string> = {};
   shades[baseShade] = tinycolor(baseColor).toHexString();
 
   for (const shade of TAILWIND_SHADES) {

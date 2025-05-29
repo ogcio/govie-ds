@@ -35,7 +35,7 @@ function colorReducer(state: State, action: Action): State {
 }
 
 export const ThemeBuilder = () => {
-  const [state, dispatch] = useReducer<any, any>(colorReducer, initialState);
+  const [state, dispatch] = useReducer(colorReducer, initialState);
   const [active, setActive] = useState<ColorKey | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const pickerRef = useRef<HTMLDivElement | null>(null);
