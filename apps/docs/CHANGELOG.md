@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.7.3](https://github.com/ogcio/govie-ds/compare/docs-v1.7.2...docs-v1.7.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* copy to clipboard icon ([#560](https://github.com/ogcio/govie-ds/issues/560)) ([131fd8f](https://github.com/ogcio/govie-ds/commit/131fd8f0be9962705afa604269cfe24511de4528))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.7.3
+    * @govie-ds/tailwind bumped to 1.7.3
+
 ## [1.7.2](https://github.com/ogcio/govie-ds/compare/docs-v1.7.1...docs-v1.7.2) (2025-05-19)
 
 

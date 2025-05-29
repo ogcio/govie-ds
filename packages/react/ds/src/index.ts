@@ -160,3 +160,6 @@ export { InputCheckboxGroup } from './input-checkbox-group/input-checkbox-group.
 export type { InputCheckboxGroupProps } from './input-checkbox-group/types.js';
 export { InputRadioGroup } from './input-radio-group/input-radio-group.js';
 export type { InputRadioGroupProps } from './input-radio-group/types.js';
+export type { ErrorTextProps } from './error-text/types.js';
+export type { HintTextProps } from './hint-text/types.js';
+export type { LabelTextProps } from './label/types.js';

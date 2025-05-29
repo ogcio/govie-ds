@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [1.7.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.2...react-lib-v1.7.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* add button type to button group item ([#563](https://github.com/ogcio/govie-ds/issues/563)) ([e8c9210](https://github.com/ogcio/govie-ds/commit/e8c92103b9baba34a1e46f72886e6272126e6704))
+* copy to clipboard icon ([#560](https://github.com/ogcio/govie-ds/issues/560)) ([131fd8f](https://github.com/ogcio/govie-ds/commit/131fd8f0be9962705afa604269cfe24511de4528))
+* update link styling ([#565](https://github.com/ogcio/govie-ds/issues/565)) ([c3b506b](https://github.com/ogcio/govie-ds/commit/c3b506b1dfc7beef02ebb1c74c5be88d38bf7f5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.7.3
+
 ## [1.7.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.1...react-lib-v1.7.2) (2025-05-19)
 
 
