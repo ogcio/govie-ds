@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.7.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.2...design-tailwind-v1.7.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* update link styling ([#565](https://github.com/ogcio/govie-ds/issues/565)) ([c3b506b](https://github.com/ogcio/govie-ds/commit/c3b506b1dfc7beef02ebb1c74c5be88d38bf7f5e))
+
 ## [1.7.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.1...design-tailwind-v1.7.2) (2025-05-19)
 
 
