@@ -37,6 +37,15 @@ component:
           ofType: 'string'
           description: 'Defines how each step indicator is rendered. Accepts number or hashtag.'
           required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom CSS class name(s) to apply to the stepper container.'
+          required: false
+        - name: 'verticalGap'
+          ofType: 'number'
+          description: 'Vertical spacing between steps. Default value is 14'
+          required: false
+
     - name: StepItemProps
       fields:
         - name: 'label'
