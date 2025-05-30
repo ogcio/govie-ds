@@ -58,11 +58,10 @@ export const Default: Story = {
       type: { name: 'string', required: false },
       description: 'Custom CSS classes for the stepper container',
     },
-    gap: {
+    verticalGap: {
       control: 'number',
       type: { name: 'number', required: false },
-      description:
-        'Vertical spacing between steps (only applies in vertical orientation) default value is 14',
+      description: 'Vertical spacing between steps. Default value is 14',
     },
   },
   args: {
@@ -485,6 +484,6 @@ export const WithCustomVerticalGap: Story = {
       <StepItem label="Step 5" />,
     ],
     orientation: 'vertical',
-    gap: 8,
+    verticalGap: 8,
   },
 };

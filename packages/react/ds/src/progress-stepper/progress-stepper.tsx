@@ -20,11 +20,11 @@ const Connector = ({
   orientation = 'horizontal',
   isCurrentStep,
   isCompleted,
-  gap,
+  verticalGap,
 }: ConnectorProps) => {
   const connectorStyle =
     orientation === 'vertical'
-      ? { height: getVerticalConnectorHeight(gap) }
+      ? { height: getVerticalConnectorHeight(verticalGap) }
       : undefined;
   return (
     <div
@@ -89,7 +89,7 @@ export const Step = ({
   defaultOpen,
   dataTestId,
   ariaLabel,
-  gap,
+  verticalGap,
 }: InnerStepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
@@ -135,7 +135,7 @@ export const Step = ({
           isCompleted={isCompleted}
           orientation={orientation}
           stepNumber={stepNumber}
-          gap={gap}
+          verticalGap={verticalGap}
         />
       )}
       {showVerticalSlots && verticalSlot && (
@@ -164,7 +164,7 @@ export const ProgressStepper = ({
   completeAll,
   dataTestId,
   className,
-  gap = 14,
+  verticalGap = 14,
 }: ProgressStepperProps) => {
   const slot = children[currentStepIndex]?.props?.children;
   const showHorizontalSlot = orientation === 'horizontal' && slot;
@@ -180,7 +180,7 @@ export const ProgressStepper = ({
         className={cn(
           'gi-progress-stepper',
           {
-            [`gi-gap-${gap}`]: orientation === 'vertical',
+            [`gi-gap-${verticalGap}`]: orientation === 'vertical',
           },
           className,
         )}
@@ -215,7 +215,7 @@ export const ProgressStepper = ({
                 indicator={indicator}
                 dataTestId={dataTestId}
                 ariaLabel={ariaLabel}
-                gap={gap}
+                verticalGap={verticalGap}
               >
                 {label}
               </Step>

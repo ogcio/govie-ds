@@ -11,7 +11,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
   const slot = arguments_.children[currentStep]?.content;
   const orientation = arguments_.orientation || 'horizontal';
   const showHorizontalSlot = orientation === 'horizontal' && slot;
-  const gap = arguments_.gap || 14;
+  const gap = arguments_.verticalGap || 14;
 
   const indicator = arguments_.indicator || 'number';
   const progressStepperContainer = document.createElement('div');
