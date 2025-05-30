@@ -315,6 +315,11 @@ export function createTheme(
             ? convertColors(meta.light.resolved.semantic.color)
             : variables.semantic.color),
         },
+        brand: {
+          ...(meta
+            ? convertColors(meta.light.resolved.brand.color)
+            : variables.brand.color),
+        },
         primary: {
           ...(meta
             ? convertColors(meta.light.resolved.semantic.surface.primary)

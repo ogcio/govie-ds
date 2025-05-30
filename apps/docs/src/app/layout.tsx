@@ -1,6 +1,6 @@
 import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, Header, HeaderProps, Link, Stack } from '@govie-ds/react';
+import { Footer, Header, HeaderProps, Stack } from '@govie-ds/react';
 import '@govie-ds/react/styles.css';
 import '@govie-ds/theme-govie/theme.css';
 import type { Metadata } from 'next';
@@ -54,6 +54,11 @@ export default function RootLayout({
         label: 'Patterns',
         itemType: 'link',
         href: '/patterns/',
+      },
+      {
+        label: 'Themes',
+        itemType: 'link',
+        href: '/themes/',
       },
       {
         label: 'Resources',

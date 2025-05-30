@@ -42,6 +42,7 @@ export function Heading({
   size,
   children,
   caption,
+  className,
   ...props
 }: HeadingProps) {
   const Slot = as || 'h1';
@@ -53,7 +54,7 @@ export function Heading({
           {caption}
         </span>
       )}
-      <Slot className={cn(base())} {...props}>
+      <Slot className={cn(base(), className)} {...props}>
         {children}
       </Slot>
     </>
