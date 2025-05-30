@@ -2,7 +2,7 @@ import { ErrorTextProps } from '../error-text/types';
 import { HintTextProps } from '../hint-text/types';
 import { LabelProps } from '../label/types';
 
-export type FileUploadProps = {
+export type InputFileProps = {
   id?: string;
   placeholder?: string;
   name?: string;
