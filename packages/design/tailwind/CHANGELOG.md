@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.8.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.3...design-tailwind-v1.8.0) (2025-05-30)
+
+
+### Features
+
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+
 ## [1.7.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.2...design-tailwind-v1.7.3) (2025-05-29)
 
 
