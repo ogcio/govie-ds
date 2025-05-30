@@ -32,13 +32,13 @@ export class Modal extends BaseComponent<ModalOptions> {
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
-    console.log((this.modal as HTMLElement).dataset);
     this.closeOnClick =
       (this.modal as HTMLElement).dataset?.closeonclick === 'true';
     this.closeOnOverlayClick =
       (this.modal as HTMLElement).dataset?.closeonoverlayclick === 'true';
 
     this.initModalState();
+    this.bindCloseButtons();
   }
 
   initModalState() {
@@ -47,6 +47,25 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modal.setAttribute('aria-hidden', 'true');
 
     this.toggleModalState(this.isOpen);
+  }
+
+  bindCloseButtons() {
+    const buttons = this.modal.querySelectorAll(
+      'button[data-closeonclick="true"]',
+    );
+    for (const button of buttons) {
+      button.addEventListener('click', (event) => {
+        queueMicrotask(() => {
+          const buttonText = button.textContent?.trim();
+          if (!event.defaultPrevented) {
+            this.toggleModalState(false, { forceClose: true });
+            if (buttonText) {
+              console.log(buttonText.toLowerCase());
+            }
+          }
+        });
+      });
+    }
   }
 
   toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {

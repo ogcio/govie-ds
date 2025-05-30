@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ButtonProps } from '../button/types.ts';
-import { createDrawer } from '../helpers/modal.tsx';
+import { createDrawer } from '../helpers/modal.ts';
 import { createParagraph } from '../helpers/typography.tsx';
 import { beautifyHtmlNode } from '../storybook/storybook.tsx';
 import { drawerBody, drawerFooter } from './drawer.content.ts';

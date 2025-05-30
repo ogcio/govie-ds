@@ -14,3 +14,10 @@ export const modalFooter = `
     <button class="gi-btn gi-btn-primary gi-btn-regular">Confirm</button>
 </div>
 `;
+
+export const modalFooterWithCloseAction = `
+<div class="gi-flex gi-gap-6 gi-justify-end">
+    <button class="gi-btn gi-btn-secondary gi-btn-secondary-dark gi-btn-regular" data-closeonclick="true">Cancel</button>
+    <button class="gi-btn gi-btn-primary gi-btn-regular" data-closeonclick="true">Confirm</button>
+</div>
+`;

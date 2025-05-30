@@ -4,7 +4,12 @@ import { createButton } from '../helpers/buttons';
 import { createModal } from '../helpers/modal';
 import { createParagraph } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { modalBody, modalFooter, modalTitle } from './modal.content';
+import {
+  modalBody,
+  modalFooter,
+  modalFooterWithCloseAction,
+  modalTitle,
+} from './modal.content';
 import { ModalWrapperPropsExtension } from './types';
 
 const meta: Meta<ModalWrapperPropsExtension> = {
@@ -179,6 +184,18 @@ export const WithCenterSmall: Story = {
     isOpen: true,
     size: 'sm',
     position: 'center',
+  },
+  render: createElement,
+};
+
+export const WithCloseAction: Story = {
+  args: {
+    title: { content: modalTitle, as: 'h4' },
+    body: modalBody,
+    footer: modalFooterWithCloseAction,
+    size: 'sm',
+    position: 'center',
+    triggerButton: { content: 'Open Modal' },
   },
   render: createElement,
 };
