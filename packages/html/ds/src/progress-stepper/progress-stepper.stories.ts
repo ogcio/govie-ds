@@ -50,6 +50,16 @@ export const Default: Story = {
       description: 'Indicator style for steps (number or hashtag)',
       defaultValue: 'hashtag',
     },
+    className: {
+      control: 'text',
+      type: { name: 'string', required: false },
+      description: 'Custom CSS classes for the stepper container',
+    },
+    verticalGap: {
+      control: 'number',
+      type: { name: 'number', required: false },
+      description: 'Vertical spacing between steps. Default value is 14',
+    },
   },
   args: {
     currentStepIndex: 1,
@@ -170,6 +180,32 @@ export const WithVerticalLongText: Story = {
       {
         label:
           'This step is for requesting information, this is a long step the user needs to finish.',
+      },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithCustomVerticalGap: Story = {
+  args: {
+    currentStepIndex: 1,
+    orientation: 'vertical',
+    verticalGap: 8,
+    children: [
+      {
+        label: 'Step 1',
+      },
+      {
+        label: 'Step 2',
+      },
+      {
+        label: 'Step 3',
+      },
+      {
+        label: 'Step 4',
+      },
+      {
+        label: 'Step 5',
       },
     ],
   },

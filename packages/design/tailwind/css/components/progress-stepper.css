@@ -1,9 +1,9 @@
 .gi-progress-stepper {
-  @apply gi-w-full gi-flex gi-items-start gi-max-w-screen-md gi-w-full gi-items-start;
+  @apply gi-w-full gi-flex gi-items-start gi-w-full gi-items-start;
 }
 
 .gi-progress-stepper[data-orientation='vertical'] {
-  @apply gi-flex-col gi-gap-14 gi-w-full;
+  @apply gi-flex-col gi-w-full;
 }
 
 .gi-progress-stepper > div:last-child {
@@ -18,7 +18,7 @@
 }
 
 .gi-progress-stepper-step-connector {
-  @apply gi-absolute gi-flex-1 gi-h-[calc(100%_+_var(--gieds-space-5))];
+  @apply gi-absolute gi-flex-1;
 }
 
 .gi-progress-stepper-step-connector > span {

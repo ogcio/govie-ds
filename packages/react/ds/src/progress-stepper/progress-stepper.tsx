@@ -10,12 +10,22 @@ import {
   type StepItemProps,
 } from './types.js';
 
+const getVerticalConnectorHeight = (gap: number): string => {
+  const heightOffset = gap * 4 - 36;
+  return `calc(100% + ${heightOffset}px)`;
+};
+
 const Connector = ({
   isNextStep,
   orientation = 'horizontal',
   isCurrentStep,
   isCompleted,
+  verticalGap,
 }: ConnectorProps) => {
+  const connectorStyle =
+    orientation === 'vertical'
+      ? { height: getVerticalConnectorHeight(verticalGap) }
+      : undefined;
   return (
     <div
       data-orientation={orientation}
@@ -24,6 +34,7 @@ const Connector = ({
       data-current={isCurrentStep}
       className={'gi-progress-stepper-step-connector'}
       aria-hidden="true"
+      style={connectorStyle}
     >
       <span />
       {isCurrentStep ? <span /> : null}
@@ -78,6 +89,7 @@ export const Step = ({
   defaultOpen,
   dataTestId,
   ariaLabel,
+  verticalGap,
 }: InnerStepProps) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
@@ -123,9 +135,10 @@ export const Step = ({
           isCompleted={isCompleted}
           orientation={orientation}
           stepNumber={stepNumber}
+          verticalGap={verticalGap}
         />
       )}
-      {showVerticalSlots && (
+      {showVerticalSlots && verticalSlot && (
         <div
           data-testid={`vertical-step-slot-${stepNumber - 1}`}
           className={cn('gi-ml-10', {
@@ -150,6 +163,8 @@ export const ProgressStepper = ({
   indicator = 'number',
   completeAll,
   dataTestId,
+  className,
+  verticalGap = 14,
 }: ProgressStepperProps) => {
   const slot = children[currentStepIndex]?.props?.children;
   const showHorizontalSlot = orientation === 'horizontal' && slot;
@@ -162,7 +177,13 @@ export const ProgressStepper = ({
     >
       <div
         data-testid="progress-stepper"
-        className="gi-progress-stepper"
+        className={cn(
+          'gi-progress-stepper',
+          {
+            [`gi-gap-${verticalGap}`]: orientation === 'vertical',
+          },
+          className,
+        )}
         data-orientation={orientation}
         role="list"
         aria-live="polite"
@@ -194,6 +215,7 @@ export const ProgressStepper = ({
                 indicator={indicator}
                 dataTestId={dataTestId}
                 ariaLabel={ariaLabel}
+                verticalGap={verticalGap}
               >
                 {label}
               </Step>

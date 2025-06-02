@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createFormField } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
-import { FileUploadProps } from './types';
+import { InputFileProps } from './types';
 
-const meta: Meta<FileUploadProps> = {
+const meta: Meta<InputFileProps> = {
   title: 'Form/InputFile',
 };
 
 export default meta;
-type Story = StoryObj<FileUploadProps>;
+type Story = StoryObj<InputFileProps>;
 
-const createFileUpload = (arguments_: FileUploadProps) => {
+const createFileUpload = (arguments_: InputFileProps) => {
   const formField = createFormField(arguments_);
 
   const container = document.createElement('div');
@@ -20,7 +20,7 @@ const createFileUpload = (arguments_: FileUploadProps) => {
 
   const input = document.createElement('input') as HTMLInputElement;
   input.type = 'file';
-  input.className = `gi-file-upload-input `.trim();
+  input.className = `gi-input-file-input `.trim();
 
   if (arguments_.id) {
     input.id = arguments_.id;
@@ -49,10 +49,10 @@ const createFileUpload = (arguments_: FileUploadProps) => {
 
 export const Default: Story = {
   args: {
-    id: 'file-upload-id',
+    id: 'input-file-id',
     label: {
       content: 'Upload File',
-      htmlFor: 'file-upload-id',
+      htmlFor: 'input-file-id',
       size: 'md',
     },
     dataTestId: 'input-id',
@@ -74,10 +74,10 @@ export const Default: Story = {
 
 export const WithLabelHintAndError: Story = {
   args: {
-    id: 'file-upload-id',
+    id: 'input-file-id',
     label: {
       content: 'Upload File',
-      htmlFor: 'file-upload-id',
+      htmlFor: 'input-file-id',
       size: 'md',
     },
     error: {
@@ -117,10 +117,10 @@ export const WithLabelHintAndError: Story = {
 
 export const WithPDFAndDocxOnly: Story = {
   args: {
-    id: 'file-upload-id',
+    id: 'input-file-id',
     label: {
       content: 'Upload File',
-      htmlFor: 'file-upload-id',
+      htmlFor: 'input-file-id',
       size: 'md',
     },
     dataTestId: 'input-id',
@@ -132,5 +132,58 @@ export const WithPDFAndDocxOnly: Story = {
 
     const textInput = canvas.getByTestId('input-id') as HTMLInputElement;
     expect(textInput).toHaveAttribute('accept', '.pdf, .docx');
+  },
+};
+
+export const WithUploadedFilesTable: Story = {
+  args: {
+    id: 'input-file-upload-list',
+    label: {
+      content: 'Upload Files',
+      htmlFor: 'input-file-upload-list',
+      size: 'md',
+    },
+    dataTestId: 'input-upload-files',
+    accept: '*/*',
+  },
+  render: (arguments_) => {
+    const baseHtml = createFileUpload({
+      ...arguments_,
+      className: 'gi-w-full md:gi-w-[400px]',
+    });
+
+    const temporary = document.createElement('div');
+    temporary.innerHTML = baseHtml;
+    const formElement = temporary.firstElementChild!;
+
+    const table = document.createElement('table');
+    table.className = 'gi-table gi-table-auto';
+    table.id = 'uploaded-files-table';
+
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th class="gi-table-th gi-text-left gi-align-middle">Name</th>
+          <th class="gi-table-th gi-text-left gi-align-middle">Size</th>
+          <th class="gi-table-th gi-text-left gi-align-middle">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gi-table-td gi-text-left gi-align-middle">signed_form.pdf</td>
+          <td class="gi-table-td gi-text-left gi-align-middle">378 KB</td>
+          <td class="gi-table-td gi-text-left gi-align-middle">application/pdf</td>
+        </tr>
+        <tr>
+          <td class="gi-table-td gi-text-left gi-align-middle">id_scan.pdf</td>
+          <td class="gi-table-td gi-text-left gi-align-middle">238 KB</td>
+          <td class="gi-table-td gi-text-left gi-align-middle">application/pdf</td>
+        </tr>
+      </tbody>
+    `;
+
+    formElement.append(table);
+
+    return formElement.outerHTML;
   },
 };

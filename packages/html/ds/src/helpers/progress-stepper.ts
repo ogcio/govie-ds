@@ -1,11 +1,17 @@
 import { ProgressStepperProps } from '../progress-stepper/types';
 import { createIcon } from './icons';
 
+const getVerticalConnectorHeight = (gap: number): string => {
+  const heightOffset = gap * 4 - 36;
+  return `calc(100% + ${heightOffset}px)`;
+};
+
 export const createProgressStepper = (arguments_: ProgressStepperProps) => {
   const currentStep = arguments_.currentStepIndex || 0;
   const slot = arguments_.children[currentStep]?.content;
   const orientation = arguments_.orientation || 'horizontal';
   const showHorizontalSlot = orientation === 'horizontal' && slot;
+  const gap = arguments_.verticalGap || 14;
 
   const indicator = arguments_.indicator || 'number';
   const progressStepperContainer = document.createElement('div');
@@ -17,7 +23,10 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
   progressStepper.dataset.orientation = orientation;
   progressStepper.role = 'list';
   progressStepper.ariaLive = 'polite';
-  progressStepper.className = 'gi-progress-stepper';
+  progressStepper.className =
+    'gi-progress-stepper' +
+    (orientation === 'vertical' ? ` gi-gap-${gap}` : '') +
+    (arguments_.className ? ` ${arguments_.className}` : '');
 
   for (let index = 0; index < arguments_.children.length; index++) {
     const stepItem = arguments_.children[index];
@@ -75,6 +84,10 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepLabel.textContent = label;
 
     if (!isLastStep) {
+      const connectorStyle =
+        orientation === 'vertical'
+          ? { height: getVerticalConnectorHeight(gap) }
+          : undefined;
       const connector = document.createElement('div');
       div.append(connector);
       connector.dataset.orientation = orientation || 'horizontal';
@@ -83,6 +96,10 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
       connector.dataset.next = isNextStep.toString();
       connector.ariaHidden = 'true';
       connector.className = 'gi-progress-stepper-step-connector';
+
+      if (connectorStyle?.height) {
+        connector.style.height = connectorStyle.height;
+      }
 
       const span = document.createElement('span');
       connector.append(span);
