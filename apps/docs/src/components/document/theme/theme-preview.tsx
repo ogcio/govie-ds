@@ -57,35 +57,11 @@ export const ThemePreview = ({ colors }: ColorsMapProps) => {
           </Button>
         </div>
         <div className="flex gap-4">
-          <Tag type="info" text="Info" />
-          <Tag type="success" text="Success" />
-          <Tag type="warning" text="Warning" />
-          <Tag type="error" text="Error" />
-          <Tag type="default" text="Default" />
-        </div>
-        <div className="flex gap-4">
-          <Link href="#">Link</Link>
-        </div>
-        <div className="flex gap-4">
           <SideNav value="item-1">
             <SideNavItem value="item-1" label="Overview" primary />
             <SideNavItem value="item-2" label="Reports" primary />
             <SideNavItem value="item-3" label="Settings" primary />
           </SideNav>
-        </div>
-        <div className="flex gap-4">
-          <Alert title="Info">
-            <Paragraph>This is a info Alert</Paragraph>
-          </Alert>
-          <Alert title="Success" variant="success">
-            <Paragraph>This is a success Alert</Paragraph>
-          </Alert>
-          <Alert title="Warning" variant="warning">
-            <Paragraph>This is a warning Alert</Paragraph>
-          </Alert>
-          <Alert title="Error" variant="danger">
-            <Paragraph>This is an error Alert</Paragraph>
-          </Alert>
         </div>
       </div>
     </div>
