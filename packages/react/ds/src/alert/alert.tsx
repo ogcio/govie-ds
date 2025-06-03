@@ -1,6 +1,7 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -90,7 +91,7 @@ function Alert({
   }
   return (
     <div
-      className={baseVariant()}
+      className={cn(baseVariant(), 'gi-not-prose')}
       data-testid={dataTestid}
       role="alert"
       aria-live="assertive"
