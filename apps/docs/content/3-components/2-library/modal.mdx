@@ -52,7 +52,7 @@ component:
         - name: 'size'
           ofType: 'string'
           description: 'Defines the size of the component. Accepts: sm (Small), md (Medium), lg (Large, default).'
-          required: false  
+          required: false
     - name: ModalWrapperProps
       fields:
         - name: 'isOpen'
@@ -65,7 +65,7 @@ component:
           required: true
         - name: 'position'
           ofType: 'string'
-          description: 'Defines the modal''s position, using ModalPositions.'
+          description: "Defines the modal's position, using ModalPositions."
           required: false
         - name: 'closeButtonSize'
           ofType: 'string'
@@ -264,6 +264,31 @@ component:
 
 Using `ModalWrapper` allows direct control over the `isOpen` state, making it ideal for programmatically handling modal visibility.
 
+
+ #### For HTML-only usage:
+  You can close the modal from a button in the footer by adding ```data-closeonclick="true"``` to the button element.
+  This will trigger the modal's close behavior automatically after any attached onclick runs.
+
+  ```html
+  <div class="gi-modal-footer">
+    <button onclick="onCancelClick()" data-closeonclick="true">
+      Cancel
+    </button>
+    <button onclick="onConfirmClick()"  data-closeonclick="true">
+      Confirm
+    </button>
+  </div>
+  ```
+  To conditionally prevent the modal from closing, the inline ```onclick``` can call ```event.preventDefault()```:
+  ```html
+    <button onclick="if (!isValid()) event.preventDefault()" data-closeonclick="true">
+      Confirm
+    </button>
+  ```
+  If ```event.defaultPrevented``` is triggered, the modal will not close.
+  This allows your ```onclick``` logic (e.g. validation) to determine whether the modal should close or not.
+
+
 ### Best Practices
 
 ### When to use this component
@@ -277,3 +302,4 @@ Don't use modal dialogs for elements that should be linkable or searchable.
 ## Status
 
 <ComponentStatusBlock componentId="modal" />
+````
