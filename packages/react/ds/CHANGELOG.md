@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [1.8.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.3...react-lib-v1.8.0) (2025-06-03)
+
+
+### Features
+
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+
+
+### Bug Fixes
+
+* import types into FormField & omit style ([#575](https://github.com/ogcio/govie-ds/issues/575)) ([1190871](https://github.com/ogcio/govie-ds/commit/1190871f35082fbe5a6fbcdbf628e7dfb5bfef3b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.0
+
 ## [1.7.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.2...react-lib-v1.7.3) (2025-05-29)
 
 

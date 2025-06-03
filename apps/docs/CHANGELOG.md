@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.8.0](https://github.com/ogcio/govie-ds/compare/docs-v1.7.3...docs-v1.8.0) (2025-06-03)
+
+
+### Features
+
+* Option to close the modal from modal buttons [html] ([#571](https://github.com/ogcio/govie-ds/issues/571)) ([f73be1d](https://github.com/ogcio/govie-ds/commit/f73be1d64dfd0e77b9333395d8f58178da2a37a3))
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+
+
+### Bug Fixes
+
+* update combobox counter height and docs ([#574](https://github.com/ogcio/govie-ds/issues/574)) ([25a65e0](https://github.com/ogcio/govie-ds/commit/25a65e029597902d5bbf1af87102a060155f065e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.8.0
+    * @govie-ds/tailwind bumped to 1.8.0
+
 ## [1.7.3](https://github.com/ogcio/govie-ds/compare/docs-v1.7.2...docs-v1.7.3) (2025-05-29)
 
 
