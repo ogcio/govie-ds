@@ -1,16 +1,19 @@
 import { Slottable } from '@radix-ui/react-slot';
-import React from 'react';
+import { FieldsetHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
-import { ErrorText, ErrorTextProps } from '../error-text/error-text.js';
-import { HintText, HintTextProps } from '../hint-text/hint-text.js';
-import { Label, LabelProps } from '../label/label.js';
+import { ErrorText } from '../error-text/error-text.js';
+import { ErrorTextProps } from '../error-text/types.js';
+import { HintText } from '../hint-text/hint-text.js';
+import { HintTextProps } from '../hint-text/types.js';
+import { Label } from '../label/label.js';
+import { LabelTextProps } from '../label/types.js';
 
 export type FormFieldProps = {
   error?: ErrorTextProps;
   hint?: HintTextProps;
-  label?: LabelProps;
+  label?: LabelTextProps;
   className?: string;
-} & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
+} & Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'style'>;
 
 export const FormField = ({
   label,
@@ -18,9 +21,10 @@ export const FormField = ({
   error,
   children,
   className,
+  ...props
 }: FormFieldProps) => {
   return (
-    <fieldset className={cn({ 'gi-error-state': error }, className)}>
+    <fieldset className={cn({ 'gi-error-state': error }, className)} {...props}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
         <div>
           {label?.text && (
