@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [1.8.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.3...design-tailwind-v1.8.0) (2025-06-03)
+
+
+### Features
+
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+
+
+### Bug Fixes
+
+* Select font-height ([#573](https://github.com/ogcio/govie-ds/issues/573)) ([f567dfc](https://github.com/ogcio/govie-ds/commit/f567dfc0ae53ce4239030e87f7bd052f3fc66199))
+* update combobox counter height and docs ([#574](https://github.com/ogcio/govie-ds/issues/574)) ([25a65e0](https://github.com/ogcio/govie-ds/commit/25a65e029597902d5bbf1af87102a060155f065e))
+
 ## [1.7.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.2...design-tailwind-v1.7.3) (2025-05-29)
 
 
