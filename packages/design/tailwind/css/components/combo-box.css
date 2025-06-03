@@ -18,7 +18,7 @@
   @apply gi-flex gi-gap-2;
 }
 .gi-combobox-toggle-content > p {
-  @apply gi-mb-0 gi-leading-[1.3];
+  @apply gi-mb-0;
 }
 .gi-combobox-dropdown-container-open {
   @apply gi-bg-color-surface-system-neutral-subtle gi-relative gi-border-b gi-block;
