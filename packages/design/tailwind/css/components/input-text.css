@@ -7,14 +7,14 @@
 }
 
 .gi-input-text-prefix {
-  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-muted gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
+  @apply gi-rounded-l-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-layer2 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-l-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
 }
 .gi-input-text-prefix[data-disabled='true'] {
   @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled gi-cursor-not-allowed;
 }
 
 .gi-input-text-suffix {
-  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-muted gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
+  @apply gi-rounded-r-sm xs:gi-text-md gi-text-sm gi-grid gi-place-content-center gi-bg-color-surface-system-neutral-layer2 gi-inline-block gi-flex-[0_0_auto] gi-text-center gi-whitespace-nowrap gi-cursor-default gi-px-2 gi-py-2 gi-border-r-sm gi-border-t-sm gi-border-b-sm gi-border-solid gi-border-color-border-intent-focus-default gi-min-w-10 gi-h-10;
 }
 .gi-input-text-suffix[data-disabled='true'] {
   @apply gi-border-color-border-system-neutral-interactive-disabled gi-text-color-text-system-neutral-interactive-disabled gi-cursor-not-allowed;

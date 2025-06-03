@@ -288,9 +288,21 @@
               "$type": "color",
               "$value": "{brand.color.neutral.white}"
             },
-            "subtle": {
+            "layer1": {
               "$type": "color",
               "$value": "{brand.color.neutral.50}"
+            },
+            "layer2": {
+              "$type": "color",
+              "$value": "{brand.color.neutral.100}"
+            },
+            "layer5": {
+              "$type": "color",
+              "$value": "{brand.color.neutral.400}"
+            },
+            "layer11": {
+              "$type": "color",
+              "$value": "{brand.color.neutral.950}"
             },
             "interactive": {
               "disabled": {
@@ -313,14 +325,6 @@
                 "$type": "color",
                 "$value": "{brand.color.neutral.50}"
               }
-            },
-            "muted": {
-              "$type": "color",
-              "$value": "{brand.color.neutral.100}"
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{brand.color.neutral.950}"
             }
           },
           "primary": {

@@ -3,7 +3,7 @@
 }
 
 .gi-tooltip {
-  @apply gi-absolute gi-z-[100] gi-bg-color-surface-system-neutral-strong gi-text-sm gi-text-color-text-system-neutral-inverted gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
+  @apply gi-absolute gi-z-[100] gi-bg-color-surface-system-neutral-layer11 gi-text-sm gi-text-color-text-system-neutral-inverted gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
 }
 
 .gi-tooltip[aria-hidden='true'] {
@@ -21,7 +21,7 @@
 
 .gi-tooltip-wrapper .gi-tooltip-top::after {
   @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] 
-         gi-border-x-[9px] gi-border-x-transparent gi-border-t-[9px] gi-border-t-color-surface-system-neutral-strong gi-bottom-[-0.45rem];
+         gi-border-x-[9px] gi-border-x-transparent gi-border-t-[9px] gi-border-t-color-surface-system-neutral-layer11 gi-bottom-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-bottom {
@@ -30,7 +30,7 @@
 
 .gi-tooltip-wrapper .gi-tooltip-bottom::after {
   @apply gi-content-[''] gi-absolute gi-left-1/2 gi-translate-x-[-50%] 
-         gi-border-x-[9px] gi-border-x-transparent gi-border-b-[9px] gi-border-b-color-surface-system-neutral-strong gi-top-[-0.45rem];
+         gi-border-x-[9px] gi-border-x-transparent gi-border-b-[9px] gi-border-b-color-surface-system-neutral-layer11 gi-top-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-left {
@@ -39,7 +39,7 @@
 
 .gi-tooltip-wrapper .gi-tooltip-left::after {
   @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] 
-         gi-border-y-[9px] gi-border-y-transparent gi-border-l-[9px] gi-border-l-color-surface-system-neutral-strong gi-right-[-0.45rem];
+         gi-border-y-[9px] gi-border-y-transparent gi-border-l-[9px] gi-border-l-color-surface-system-neutral-layer11 gi-right-[-0.45rem];
 }
 
 .gi-tooltip-wrapper .gi-tooltip-right {
@@ -48,5 +48,5 @@
 
 .gi-tooltip-wrapper .gi-tooltip-right::after {
   @apply gi-content-[''] gi-absolute gi-top-1/2 gi-translate-y-[-50%] 
-         gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-color-surface-system-neutral-strong gi-left-[-0.45rem];
+         gi-border-y-[9px] gi-border-y-transparent gi-border-r-[9px] gi-border-r-color-surface-system-neutral-layer11 gi-left-[-0.45rem];
 }

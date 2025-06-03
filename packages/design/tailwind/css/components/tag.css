@@ -3,7 +3,7 @@
 }
 
 .gi-tag-default {
-  @apply gi-bg-color-surface-system-neutral-subtle gi-border-color-border-system-neutral-muted gi-text-color-text-system-neutral-secondary gi-stroke-color-text-system-neutral-secondary;
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-border-color-border-system-neutral-muted gi-text-color-text-system-neutral-secondary gi-stroke-color-text-system-neutral-secondary;
 }
 
 .gi-tag-info {
@@ -23,7 +23,7 @@
 }
 
 .gi-tag-counter {
-  @apply gi-bg-color-surface-system-neutral-strong gi-text-color-text-system-neutral-inverted gi-stroke-color-text-system-neutral-inverted;
+  @apply gi-bg-color-surface-system-neutral-layer11 gi-text-color-text-system-neutral-inverted gi-stroke-color-text-system-neutral-inverted;
 }
 
 .gi-tag-counter-warning {

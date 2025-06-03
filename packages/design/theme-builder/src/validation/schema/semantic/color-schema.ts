@@ -116,10 +116,25 @@ function createSurfaceSystemSchema(namePrefix: string) {
             valueSchema: createAliasSchema(`${namePrefix}.neutral.default`),
             name: 'default',
           }),
-          subtle: createTokenSchema({
+          layer1: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.subtle`),
-            name: 'subtle',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer1`),
+            name: 'layer1',
+          }),
+          layer2: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer2`),
+            name: 'layer2',
+          }),
+          layer5: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer5`),
+            name: 'layer5',
+          }),
+          layer11: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer11`),
+            name: 'layer11',
           }),
           interactive: z
             .object({
@@ -160,16 +175,6 @@ function createSurfaceSystemSchema(namePrefix: string) {
               }),
             })
             .strict(),
-          muted: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.muted`),
-            name: 'muted',
-          }),
-          strong: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.strong`),
-            name: 'strong',
-          }),
         })
         .strict(),
       primary: z
