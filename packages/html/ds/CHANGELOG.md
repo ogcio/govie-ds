@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.3...html-lib-v1.6.0) (2025-06-03)
+
+
+### Features
+
+* Option to close the modal from modal buttons [html] ([#571](https://github.com/ogcio/govie-ds/issues/571)) ([f73be1d](https://github.com/ogcio/govie-ds/commit/f73be1d64dfd0e77b9333395d8f58178da2a37a3))
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.0
+
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.2...html-lib-v1.5.3) (2025-05-29)
 
 
