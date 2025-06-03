@@ -74,29 +74,45 @@ function createTextSystemSchema(namePrefix: string) {
     .object({
       neutral: z
         .object({
-          inverted: createTokenSchema({
+          default: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.inverted`),
-            name: 'inverted',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.default`),
+            name: 'default',
           }),
-          primary: createTokenSchema({
+          muted: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.primary`),
-            name: 'primary',
-          }),
-          secondary: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.secondary`),
-            name: 'secondary',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.muted`),
+            name: 'muted',
           }),
           interactive: z
             .object({
+              default: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.default`,
+                ),
+                name: 'default',
+              }),
+              muted: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.muted`,
+                ),
+                name: 'muted',
+              }),
               disabled: createTokenSchema({
                 type: 'color',
                 valueSchema: createAliasSchema(
                   `${namePrefix}.neutral.interactive.disabled`,
                 ),
                 name: 'disabled',
+              }),
+              'disabled-surface': createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.disabled-surface`,
+                ),
+                name: 'disabled-surface',
               }),
             })
             .strict(),

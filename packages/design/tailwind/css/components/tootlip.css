@@ -3,7 +3,7 @@
 }
 
 .gi-tooltip {
-  @apply gi-absolute gi-z-[100] gi-bg-color-surface-system-neutral-layer11 gi-text-sm gi-text-color-text-system-neutral-inverted gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
+  @apply gi-absolute gi-z-[100] gi-bg-color-surface-system-neutral-layer11 gi-text-sm gi-text-color-text-tone-light-default gi-px-3 gi-py-2 gi-rounded-sm gi-opacity-100 gi-transition-opacity gi-duration-300 gi-w-max gi-text-left gi-max-w-[324px];
 }
 
 .gi-tooltip[aria-hidden='true'] {

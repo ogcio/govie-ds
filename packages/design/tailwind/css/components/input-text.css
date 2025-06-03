@@ -1,5 +1,5 @@
 .gi-input-text-inner {
-  @apply gi-w-full gi-flex gi-items-center gi-relative gi-text-color-text-system-neutral-primary;
+  @apply gi-w-full gi-flex gi-items-center gi-relative gi-text-color-text-system-neutral-default;
 }
 
 .gi-input-text-container {

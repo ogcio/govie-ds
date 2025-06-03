@@ -260,22 +260,30 @@
         },
         "system": {
           "neutral": {
-            "inverted": {
-              "$type": "color",
-              "$value": "{brand.color.neutral.white}"
-            },
-            "primary": {
+            "default": {
               "$type": "color",
               "$value": "{brand.color.neutral.950}"
             },
-            "secondary": {
+            "muted": {
               "$type": "color",
               "$value": "{brand.color.neutral.600}"
             },
             "interactive": {
+              "default": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
+              },
+              "muted": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.600}"
+              },
               "disabled": {
                 "$type": "color",
-                "$value": "{brand.color.neutral.700}"
+                "$value": "{brand.color.neutral.600}"
+              },
+              "disabled-surface": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.600}"
               }
             }
           }
