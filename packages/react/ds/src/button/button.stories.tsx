@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Icon } from '../icon/icon.js';
 import { Button } from './button.js';
 
 const meta = {
@@ -390,13 +391,7 @@ export const WithLeftIcon: Story = {
   args: {
     children: (
       <>
-        <span
-          data-testid="govie-icon"
-          role="presentation"
-          className="material-symbols-outlined gi-block gi-text-[24px]"
-        >
-          thumb_up
-        </span>{' '}
+        <Icon icon="thumb_up" />
         Button
       </>
     ),
@@ -409,14 +404,7 @@ export const WithIconRight: Story = {
   args: {
     children: (
       <>
-        Button{' '}
-        <span
-          data-testid="govie-icon"
-          role="presentation"
-          class="material-symbols-outlined gi-block gi-text-[24px]"
-        >
-          thumb_up
-        </span>
+        Button <Icon icon="thumb_up" />
       </>
     ),
     appearance: 'default',
@@ -433,7 +421,7 @@ export const ButtonWithSpinner: Story = {
       <>
         Button{' '}
         <svg
-          class="gi-w-6 gi-h-6"
+          className="gi-w-6 gi-h-6"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
