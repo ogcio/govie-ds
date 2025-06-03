@@ -13,7 +13,6 @@ export type FormFieldProps = {
   hint?: HintTextProps;
   label?: LabelTextProps;
   className?: string;
-  style?: React.CSSProperties;
 } & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export const FormField = ({
@@ -22,13 +21,9 @@ export const FormField = ({
   error,
   children,
   className,
-  style,
 }: FormFieldProps) => {
   return (
-    <fieldset
-      className={cn({ 'gi-error-state': error }, className)}
-      style={style}
-    >
+    <fieldset className={cn({ 'gi-error-state': error }, className)}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
         <div>
           {label?.text && (
