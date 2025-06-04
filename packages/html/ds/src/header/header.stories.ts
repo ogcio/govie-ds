@@ -214,7 +214,7 @@ const createHeader = (arguments_: HeaderProps) => {
         const input = document.createElement('input');
         label.append(input);
         input.id = `ItemActionTrigger-${index}`;
-        input.type = 'checkbox';
+        input.type = 'button';
         input.dataset.index = `${index}`;
 
         // this code is needed only for storybook
