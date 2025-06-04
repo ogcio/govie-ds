@@ -47,7 +47,7 @@ const DrawerTrigger = ({
           className="gi-block gi-w-0 gi-absolute gi-h-0"
           id={`ItemActionDrawerTrigger-${index}`}
           data-index={index}
-          type="checkbox"
+          type="button"
         />
         {label && <span className="label">{label}</span>}
         {icon && (
@@ -103,7 +103,7 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
         data-index={index}
         aria-expanded="false"
         aria-controls={`SlotContainer-${index + 1}`}
-        type="checkbox"
+        type="button"
       />
       {item.label && <span className="label">{item.label}</span>}
       {item.icon && (
