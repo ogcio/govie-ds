@@ -514,18 +514,26 @@
       "icon": {
         "system": {
           "neutral": {
-            "primary": {
+            "default": {
               "$type": "color",
               "$value": "{brand.color.neutral.950}"
             },
-            "inverted": {
+            "muted": {
               "$type": "color",
-              "$value": "{brand.color.neutral.white}"
+              "$value": "{brand.color.neutral.600}"
             },
             "interactive": {
-              "disabled": {
+              "default": {
                 "$type": "color",
-                "$value": "{brand.color.neutral.700}"
+                "$value": "{brand.color.neutral.950}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
               },
               "selected": {
                 "$type": "color",
@@ -534,11 +542,11 @@
               "selected-disabled": {
                 "$type": "color",
                 "$value": "{brand.color.neutral.700}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.700}"
               }
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{brand.color.neutral.600}"
             }
           }
         },
@@ -926,16 +934,6 @@
               "$type": "color",
               "$value": "{brand.color.neutral.950}"
             },
-            "interactive": {
-              "disabled": {
-                "$type": "color",
-                "$value": "{brand.color.neutral.400}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{brand.color.neutral.950}"
-              }
-            },
             "muted": {
               "$type": "color",
               "$value": "{brand.color.neutral.200}"
@@ -943,6 +941,24 @@
             "subtle": {
               "$type": "color",
               "$value": "{brand.color.neutral.100}"
+            },
+            "interactive": {
+              "default": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
+              },
+              "muted": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.200}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.400}"
+              }
             }
           }
         }
