@@ -12,7 +12,7 @@ import {
 import { Card } from './card.js';
 
 const meta: Meta = {
-  title: 'Components/Card/Card',
+  title: 'Components/Card',
   parameters: {
     controls: {
       include: ['inset', 'type', 'children'],
