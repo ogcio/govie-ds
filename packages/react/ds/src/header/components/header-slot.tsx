@@ -58,6 +58,7 @@ const DrawerTrigger = ({
             })}
             icon={icon}
             id={`ItemIconDrawerActionTrigger-${index}`}
+            ariaHidden={!!label}
           />
         )}
         <Icon
@@ -66,6 +67,7 @@ const DrawerTrigger = ({
             'gi-block': isOpen,
           })}
           id={`ItemCloseTrigger-${index}`}
+          aria-hidden="true"
           icon="close"
         />
       </label>

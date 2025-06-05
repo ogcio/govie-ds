@@ -208,7 +208,6 @@ export function Header({
               const { label, showItemMode = 'desktop-only' } = item;
               return (
                 <div
-                  aria-label={label}
                   data-testid={`header-item-${index}`}
                   className={cn({
                     'gi-block': showItemMode === 'always',
