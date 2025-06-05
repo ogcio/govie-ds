@@ -12,6 +12,7 @@ type CommonProps = { showItemMode?: HeaderItemMode };
 type ConditionalProps =
   | {
       label?: string;
+      ariaLabel?: string;
       icon?: IconId;
       component: React.ReactNode;
       href?: never;
@@ -23,6 +24,7 @@ type ConditionalProps =
     }
   | {
       label?: never;
+      ariaLabel?: string;
       icon?: never;
       component?: never;
       href?: never;
@@ -34,6 +36,7 @@ type ConditionalProps =
     }
   | {
       label?: string;
+      ariaLabel?: string;
       icon?: IconId;
       component?: never;
       href?: string;
@@ -45,6 +48,7 @@ type ConditionalProps =
     }
   | {
       label?: never;
+      ariaLabel?: string;
       icon?: never;
       component: React.ReactNode;
       href?: never;

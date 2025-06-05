@@ -3,5 +3,5 @@
 }
 
 .gi-drawer-body {
-  @apply gi-px-6 gi-flex-1 gi-border-t-xs gi-border-gray-100 gi-overflow-y-auto;
+  @apply gi-px-6 gi-pt-1 gi-flex-1 gi-border-t-xs gi-border-gray-100 gi-overflow-y-auto;
 }
