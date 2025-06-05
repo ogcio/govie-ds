@@ -21,10 +21,10 @@
   @apply gi-mb-0;
 }
 .gi-combobox-dropdown-container-open {
-  @apply gi-bg-color-surface-system-neutral-subtle gi-relative gi-border-b gi-block;
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-relative gi-border-b gi-block;
 }
 .gi-combobox-dropdown-container-close {
-  @apply gi-bg-color-surface-system-neutral-subtle gi-relative gi-border-b gi-hidden;
+  @apply gi-bg-color-surface-system-neutral-layer1 gi-relative gi-border-b gi-hidden;
 }
 .gi-combobox-search {
   @apply gi-py-4 gi-px-3 gi-relative;

@@ -8,5 +8,5 @@
   @apply gi-text-lg;
 }
 .gi-hint-text {
-  @apply gi-font-normal gi-text-color-text-system-neutral-secondary gi-stroke-color-text-system-neutral-secondary gi-mb-0;
+  @apply gi-font-normal gi-text-color-text-system-neutral-muted gi-stroke-color-text-system-neutral-muted gi-mb-0;
 }
