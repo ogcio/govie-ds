@@ -18,7 +18,15 @@ export {
 export { Button } from './button/button.js';
 export { ButtonGroup, ButtonGroupItem } from './button-group/button-group.js';
 export { type ButtonProps } from './button/types.js';
-export { Card, type CardProps } from './card/card.js';
+export { Card } from './card/card.js';
+export type {
+  CardBodyProps,
+  CardContainerProps,
+  CardFooterProps,
+  CardHeaderProps,
+  CardMediaProps,
+  CardProps,
+} from './card/types.js';
 export { CheckboxGroup } from './checkbox/checkbox-group.js';
 export { Checkbox } from './checkbox/checkbox.js';
 export {
