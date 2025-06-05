@@ -12,8 +12,8 @@ import {
   CardNextProps,
 } from './types.js';
 
-export const CardNextContext = createContext(false);
-export const CardContainerContext = createContext(false);
+const CardNextContext = createContext(false);
+const CardContainerContext = createContext(false);
 
 export const useCardNext = (componentName: string) => {
   const isInCard = useContext(CardNextContext);
