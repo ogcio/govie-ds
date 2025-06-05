@@ -31,7 +31,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
 
 const DrawerTrigger = ({
   index,
-  item: { component, drawerPosition, icon, label },
+  item: { component, drawerPosition, icon, label, ariaLabel },
 }: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,7 +49,11 @@ const DrawerTrigger = ({
           data-index={index}
           type="button"
         />
-        {label && <span className="label">{label}</span>}
+        {label && (
+          <span className="label" aria-hidden={ariaLabel ? 'true' : 'false'}>
+            {label}
+          </span>
+        )}
         {icon && (
           <Icon
             className={cn({
@@ -58,7 +62,7 @@ const DrawerTrigger = ({
             })}
             icon={icon}
             id={`ItemIconDrawerActionTrigger-${index}`}
-            ariaHidden={!!label}
+            ariaHidden={true}
           />
         )}
         <Icon
@@ -67,7 +71,7 @@ const DrawerTrigger = ({
             'gi-block': isOpen,
           })}
           id={`ItemCloseTrigger-${index}`}
-          aria-hidden="true"
+          ariaHidden={true}
           icon="close"
         />
       </label>
@@ -111,13 +115,13 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
       {item.icon && (
         <Icon
           icon={item.icon}
-          aria-hidden="true"
+          ariaHidden={true}
           id={`ItemIconActionTrigger-${index}`}
         />
       )}
       <Icon
         className="gi-hidden close-icon"
-        aria-hidden="true"
+        ariaHidden={true}
         id={`ItemCloseTrigger-${index}`}
         icon="close"
       />

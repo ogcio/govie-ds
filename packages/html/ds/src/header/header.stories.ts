@@ -271,6 +271,7 @@ const createHeader = (arguments_: HeaderProps) => {
         if (item.icon) {
           const icon = createIcon({ icon: item.icon });
           icon.id = `ItemIconActionTrigger-${index}`;
+          icon.ariaHidden = 'true';
           label.append(icon);
         }
         const closeIcon = createIcon({
@@ -278,6 +279,7 @@ const createHeader = (arguments_: HeaderProps) => {
           className: 'gi-hidden close-icon',
         });
         closeIcon.id = `ItemCloseTrigger-${index}`;
+        closeIcon.ariaHidden = 'true';
         label.append(closeIcon);
         menuItem.append(label);
         break;
