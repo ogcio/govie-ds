@@ -74,29 +74,45 @@ function createTextSystemSchema(namePrefix: string) {
     .object({
       neutral: z
         .object({
-          inverted: createTokenSchema({
+          default: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.inverted`),
-            name: 'inverted',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.default`),
+            name: 'default',
           }),
-          primary: createTokenSchema({
+          muted: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.primary`),
-            name: 'primary',
-          }),
-          secondary: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.secondary`),
-            name: 'secondary',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.muted`),
+            name: 'muted',
           }),
           interactive: z
             .object({
+              default: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.default`,
+                ),
+                name: 'default',
+              }),
+              muted: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.muted`,
+                ),
+                name: 'muted',
+              }),
               disabled: createTokenSchema({
                 type: 'color',
                 valueSchema: createAliasSchema(
                   `${namePrefix}.neutral.interactive.disabled`,
                 ),
                 name: 'disabled',
+              }),
+              'disabled-surface': createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.disabled-surface`,
+                ),
+                name: 'disabled-surface',
               }),
             })
             .strict(),
@@ -116,10 +132,25 @@ function createSurfaceSystemSchema(namePrefix: string) {
             valueSchema: createAliasSchema(`${namePrefix}.neutral.default`),
             name: 'default',
           }),
-          subtle: createTokenSchema({
+          layer1: createTokenSchema({
             type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.subtle`),
-            name: 'subtle',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer1`),
+            name: 'layer1',
+          }),
+          layer2: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer2`),
+            name: 'layer2',
+          }),
+          layer5: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer5`),
+            name: 'layer5',
+          }),
+          layer11: createTokenSchema({
+            type: 'color',
+            valueSchema: createAliasSchema(`${namePrefix}.neutral.layer11`),
+            name: 'layer11',
           }),
           interactive: z
             .object({
@@ -160,16 +191,6 @@ function createSurfaceSystemSchema(namePrefix: string) {
               }),
             })
             .strict(),
-          muted: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.muted`),
-            name: 'muted',
-          }),
-          strong: createTokenSchema({
-            type: 'color',
-            valueSchema: createAliasSchema(`${namePrefix}.neutral.strong`),
-            name: 'strong',
-          }),
         })
         .strict(),
       primary: z
@@ -199,35 +220,42 @@ function createIconSystemSchema(namePrefix: string) {
   return z.object({
     neutral: z
       .object({
-        primary: createTokenSchema({
+        default: createTokenSchema({
           type: 'color',
           valueSchema: createAliasSchema(
-            `${namePrefix}.icon.system.neutral.primary`,
+            `${namePrefix}.icon.system.neutral.default`,
           ),
-          name: 'primary',
+          name: 'default',
         }),
-        inverted: createTokenSchema({
+        muted: createTokenSchema({
           type: 'color',
           valueSchema: createAliasSchema(
-            `${namePrefix}.icon.system.neutral.inverted`,
-          ),
-          name: 'inverted',
-        }),
-        secondary: createTokenSchema({
-          type: 'color',
-          valueSchema: createAliasSchema(
-            `${namePrefix}.icon.system.neutral.secondary`,
+            `${namePrefix}.icon.system.neutral.muted`,
           ),
           name: 'secondary',
         }),
         interactive: z
           .object({
-            disabled: createTokenSchema({
+            default: createTokenSchema({
               type: 'color',
               valueSchema: createAliasSchema(
-                `${namePrefix}.icon.system.neutral.interactive.disabled`,
+                `${namePrefix}.icon.system.neutral.interactive.default`,
               ),
-              name: 'disabled',
+              name: 'default',
+            }),
+            hover: createTokenSchema({
+              type: 'color',
+              valueSchema: createAliasSchema(
+                `${namePrefix}.icon.system.neutral.interactive.hover`,
+              ),
+              name: 'hover',
+            }),
+            focus: createTokenSchema({
+              type: 'color',
+              valueSchema: createAliasSchema(
+                `${namePrefix}.icon.system.neutral.interactive.focus`,
+              ),
+              name: 'focus',
             }),
             selected: createTokenSchema({
               type: 'color',
@@ -235,6 +263,13 @@ function createIconSystemSchema(namePrefix: string) {
                 `${namePrefix}.icon.system.neutral.interactive.selected`,
               ),
               name: 'selected',
+            }),
+            disabled: createTokenSchema({
+              type: 'color',
+              valueSchema: createAliasSchema(
+                `${namePrefix}.icon.system.neutral.interactive.disabled`,
+              ),
+              name: 'disabled',
             }),
             'selected-disabled': createTokenSchema({
               type: 'color',
@@ -260,24 +295,6 @@ function createBorderSystemSchema(namePrefix: string) {
             valueSchema: createAliasSchema(`${namePrefix}.neutral.default`),
             name: 'default',
           }),
-          interactive: z
-            .object({
-              disabled: createTokenSchema({
-                type: 'color',
-                valueSchema: createAliasSchema(
-                  `${namePrefix}.neutral.interactive.disabled`,
-                ),
-                name: 'disabled',
-              }),
-              hover: createTokenSchema({
-                type: 'color',
-                valueSchema: createAliasSchema(
-                  `${namePrefix}.neutral.interactive.hover`,
-                ),
-                name: 'hover',
-              }),
-            })
-            .strict(),
           muted: createTokenSchema({
             type: 'color',
             valueSchema: createAliasSchema(`${namePrefix}.neutral.muted`),
@@ -288,6 +305,38 @@ function createBorderSystemSchema(namePrefix: string) {
             valueSchema: createAliasSchema(`${namePrefix}.neutral.subtle`),
             name: 'subtle',
           }),
+          interactive: z
+            .object({
+              default: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.default`,
+                ),
+                name: 'default',
+              }),
+              muted: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.muted`,
+                ),
+                name: 'muted',
+              }),
+              hover: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.hover`,
+                ),
+                name: 'hover',
+              }),
+              disabled: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.disabled`,
+                ),
+                name: 'disabled',
+              }),
+            })
+            .strict(),
         })
         .strict(),
     })

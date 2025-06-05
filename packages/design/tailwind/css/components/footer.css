@@ -1,5 +1,5 @@
 .gi-footer {
-  @apply gi-bg-color-surface-system-neutral-subtle;
+  @apply gi-bg-color-surface-system-neutral-layer1;
 }
 
 .gi-footer-logo {
@@ -19,5 +19,5 @@
 }
 
 .gi-footer-utility {
-  @apply gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-muted;
+  @apply gi-py-4 gi-px-8 gi-bg-color-surface-system-neutral-layer2;
 }
