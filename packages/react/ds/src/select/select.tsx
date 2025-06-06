@@ -1,4 +1,5 @@
 import { cn } from '../cn.js';
+import { Icon } from '../icon/icon.js';
 
 type SelectProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
@@ -36,8 +37,11 @@ export const SelectItem = ({ children, ...props }: SelectItemProps) => (
 
 export const Select = ({ children, className, ...props }: SelectProps) => {
   return (
-    <select className={cn('gi-select', className)} {...props}>
-      {children}
-    </select>
+    <div className="gi-select-container">
+      <select className={cn('gi-select', className)} {...props}>
+        {children}
+      </select>
+      <Icon className="gi-select-icon " icon="keyboard_arrow_down" />
+    </div>
   );
 };
