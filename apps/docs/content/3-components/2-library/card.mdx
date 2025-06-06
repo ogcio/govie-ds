@@ -27,7 +27,7 @@ component:
           required: false
         - name: 'children'
           ofType: 'CardMedia | CardContainer'
-          description: 'Composable structure using CardMedia and CardContainer. Inside CardContainer, valid children include: CardHeader, CardBody, CardFooter.'
+          description: 'Composable structure using CardMedia and CardContainer. Inside CardContainer, valid children include: CardHeader, CardDescription, CardAction.'
           required: true
 ---
 
@@ -48,13 +48,17 @@ component:
       }}
     />
     <CardContainer inset="body">
-      <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-        <Link href="#">Card Title</Link>
+      <CardHeader>
+        <CardTitle>
+          <Link href="#">Card Title</Link>
+        </CardTitle>
+        <CardSubtitle>Subheading</CardSubtitle>
+        <CardTag text="New" type="info" />
       </CardHeader>
-      <CardBody>This is card.</CardBody>
-      <CardFooter>
+      <CardDescription>This is card.</CardDescription>
+      <CardAction>
         <Button variant="secondary">Button</Button>
-      </CardFooter>
+      </CardAction>
     </CardContainer>
   </Card>
 </ComponentContainer>
@@ -113,18 +117,22 @@ component:
         }}
       />
       <CardContainer inset="body">
-        <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-          <Link href="#">Card Title</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
         </CardHeader>
-        <CardBody>This is card.</CardBody>
-        <CardFooter>
+        <CardDescription>This is card.</CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
     ```
 
-  </TabPanel>
+</TabPanel>
 </Tabs>
 
 ### Horizontal Card
@@ -140,13 +148,17 @@ component:
       }}
     />
     <CardContainer inset="body">
-      <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-        <Link href="#">Card Title</Link>
+      <CardHeader>
+        <CardTitle>
+          <Link href="#">Card Title</Link>
+        </CardTitle>
+        <CardSubtitle>Subheading</CardSubtitle>
+        <CardTag text="New" type="info" />
       </CardHeader>
-      <CardBody>This is card.</CardBody>
-      <CardFooter>
+      <CardDescription>This is card.</CardDescription>
+      <CardAction>
         <Button variant="secondary">Button</Button>
-      </CardFooter>
+      </CardAction>
     </CardContainer>
   </Card>
 
@@ -159,7 +171,7 @@ component:
   </TabList>
   <TabPanel value="tab21">
   ```html
-   <div class="gi-card gi-card-horizontal gi-card-inset-body">
+  <div class="gi-card gi-card-horizontal gi-card-inset-body">
     <div class="gi-card-image">
       <a href="">
         <img src="https://placeholderjs.com/400x300" alt="" />
@@ -210,14 +222,19 @@ component:
         }}
       />
       <CardContainer inset="body">
-        <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-          <Link href="#">Card Title</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
         </CardHeader>
-        <CardBody>This is card.</CardBody>
-        <CardFooter>
+        <CardDescription>This is card.</CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
+
     </Card>
 
     ```

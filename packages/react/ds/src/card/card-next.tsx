@@ -1,42 +1,50 @@
 'use client';
-import { createContext, useContext, useMemo } from 'react';
+import {
+  Children,
+  Context,
+  createContext,
+  FC,
+  isValidElement,
+  ReactNode,
+  useContext,
+  useMemo,
+} from 'react';
 import { Icon } from '../icon/icon.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import { Tag } from '../tag/tag.js';
+import { Tag, TagProps } from '../tag/tag.js';
 import {
-  CardBodyProps,
+  CardDescriptionProps,
   CardContainerProps,
-  CardFooterProps,
+  CardActionProps,
   CardHeaderProps,
   CardMediaProps,
   CardNextProps,
+  CardSubtitleProps,
+  CardTitleProps,
 } from './types.js';
 
 const CardNextContext = createContext(false);
+const CardHeaderContext = createContext(false);
 const CardContainerContext = createContext(false);
 
-export const useCardNext = (componentName: string) => {
-  const isInCard = useContext(CardNextContext);
-  if (!isInCard) {
-    throw new Error(`${componentName} must be used inside <Card>`);
-  }
-  return true;
-};
-
-export const useCardContainer = (componentName: string) => {
-  const inside = useContext(CardContainerContext);
+export function useRequiredContext(
+  context: Context<boolean>,
+  componentName: string,
+  parentName: string,
+): true {
+  const inside = useContext(context);
   if (!inside) {
-    throw new Error(`${componentName} must be used inside <CardContainer>`);
+    throw new Error(`${componentName} must be used inside <${parentName}>`);
   }
   return true;
-};
+}
 
-export function CardNext({
+export const CardNext: FC<CardNextProps> = ({
   children,
   inset,
   type = 'vertical',
   dataTestid,
-}: CardNextProps) {
+}) => {
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset || 'none'}`;
     return `gi-card gi-card-${type} ${insetClass}`;
@@ -49,10 +57,10 @@ export function CardNext({
       </div>
     </CardNextContext.Provider>
   );
-}
+};
 
-export function CardMedia({ media, href }: CardMediaProps) {
-  useCardNext('CardMedia');
+export const CardMedia: FC<CardMediaProps> = ({ media, href }) => {
+  useRequiredContext(CardNextContext, 'CardMedia', 'Card');
 
   if (!media) {
     return null;
@@ -62,7 +70,7 @@ export function CardMedia({ media, href }: CardMediaProps) {
     case 'image': {
       const { src, alt, aspectRatio } = media.config;
       return (
-        <div className="gi-card-image" aria-label={alt}>
+        <div className="gi-card-image">
           <a href={href}>
             <img
               src={src}
@@ -94,13 +102,13 @@ export function CardMedia({ media, href }: CardMediaProps) {
       return null;
     }
   }
-}
+};
 
-export function CardContainer({
+export const CardContainer: FC<CardContainerProps> = ({
   children,
   inset = 'none',
-}: CardContainerProps) {
-  useCardNext('CardContainer');
+}) => {
+  useRequiredContext(CardNextContext, 'CardContainer', 'Card');
   return (
     <CardContainerContext.Provider value={true}>
       <div className={`gi-card-content gi-card-inset-${inset || 'none'}`}>
@@ -108,27 +116,75 @@ export function CardContainer({
       </div>
     </CardContainerContext.Provider>
   );
-}
+};
 
-export function CardHeader({ children, subTitle, tag }: CardHeaderProps) {
-  useCardContainer('CardHeader');
+export const CardTitle: FC<CardTitleProps> = ({ children }) => {
+  useRequiredContext(CardHeaderContext, 'CardTitle', 'CardHeader');
+  if (!children) {
+    return null;
+  }
+  return <div className="gi-card-title">{children}</div>;
+};
+
+export const CardSubtitle: FC<CardSubtitleProps> = ({ children }) => {
+  useRequiredContext(CardHeaderContext, 'CardSubtitle', 'CardHeader');
+  if (!children) {
+    return null;
+  }
+
+  return <div className="gi-card-subheading">{children}</div>;
+};
+
+export const CardTag: FC<TagProps> = ({ text, type }: TagProps) => {
+  useRequiredContext(CardHeaderContext, 'CardTag', 'CardHeader');
   return (
-    <div className="gi-card-header">
-      <div className="gi-card-heading">
-        <div className="gi-card-title">{children}</div>
-        {subTitle && <div className="gi-card-subheading">{subTitle}</div>}
-      </div>
-      {tag?.text && tag.type && (
-        <div className="gi-card-tag">
-          <Tag text={tag.text} type={tag.type} />
-        </div>
-      )}
+    <div className="gi-card-tag">
+      <Tag text={text} type={type} />
     </div>
   );
-}
+};
+// Not necessary to expose componentType as props, internal use only.
+Object.defineProperty(CardTag, 'componentType', {
+  value: 'CardTag',
+  writable: false,
+  enumerable: false,
+});
 
-export function CardBody({ children }: CardBodyProps) {
-  useCardContainer('CardBody');
+export const CardHeader: FC<CardHeaderProps> = ({ children }) => {
+  useRequiredContext(CardContainerContext, 'CardHeader', 'CardContainer');
+
+  const headingChildren: ReactNode[] = [];
+  const tags: ReactNode[] = [];
+
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) {
+      return;
+    }
+
+    const type =
+      (child?.type as any)?.componentType || (child.props as any)?.__mdxType;
+
+    if (type === 'CardTag') {
+      tags.push(child);
+    } else {
+      headingChildren.push(child);
+    }
+  });
+
+  return (
+    <CardHeaderContext.Provider value={true}>
+      <div className="gi-card-header">
+        <div className="gi-card-heading">{headingChildren}</div>
+        {tags}
+      </div>
+    </CardHeaderContext.Provider>
+  );
+};
+
+export const CardDescription: FC<CardDescriptionProps> = ({
+  children,
+}: CardDescriptionProps) => {
+  useRequiredContext(CardContainerContext, 'CardDescription', 'CardContainer');
   if (!children) {
     return null;
   }
@@ -138,9 +194,11 @@ export function CardBody({ children }: CardBodyProps) {
       <Paragraph size="sm">{children}</Paragraph>
     </div>
   );
-}
+};
 
-export function CardFooter({ children }: CardFooterProps) {
-  useCardContainer('CardFooter');
+export const CardAction: FC<CardActionProps> = ({
+  children,
+}: CardActionProps) => {
+  useRequiredContext(CardContainerContext, 'CardAction', 'CardContainer');
   return <div className="gi-card-action">{children}</div>;
-}
+};

@@ -20,16 +20,19 @@ export { ButtonGroup, ButtonGroupItem } from './button-group/button-group.js';
 export { type ButtonProps } from './button/types.js';
 export { Card } from './card/card.js';
 export {
-  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardTag,
   CardContainer,
-  CardFooter,
+  CardDescription,
+  CardAction,
   CardHeader,
   CardMedia,
 } from './card/card-next.js';
 export type {
-  CardBodyProps,
+  CardDescriptionProps,
   CardContainerProps,
-  CardFooterProps,
+  CardActionProps,
   CardHeaderProps,
   CardMediaProps,
   CardProps,

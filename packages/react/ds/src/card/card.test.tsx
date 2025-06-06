@@ -1,5 +1,6 @@
 import { renderComponent, cleanup } from '../test-utilities.js';
-import { Card, CardProps } from './card.js';
+import { Card } from './card.js';
+import { CardProps } from './types.js';
 
 describe('govieCard', () => {
   afterEach(cleanup);

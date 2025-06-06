@@ -24,7 +24,11 @@ export const Card = (props: CardProps) => {
   }
 
   return (
-    <CardNext inset={props.inset} type={props.type}>
+    <CardNext
+      inset={props.inset}
+      type={props.type}
+      dataTestid={props.dataTestid}
+    >
       {props.children}
     </CardNext>
   );

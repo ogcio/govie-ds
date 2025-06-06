@@ -2,12 +2,15 @@ import { Button } from '../button/button.js';
 import { translate as t } from '../i18n/utility.js';
 import { Link } from '../link/link.js';
 import {
-  CardFooter,
+  CardAction,
   CardContainer,
-  CardBody,
+  CardDescription,
   CardMedia,
   CardNext,
   CardHeader,
+  CardTitle,
+  CardSubtitle,
+  CardTag,
 } from './card-next.js';
 import { Action, CardProps } from './types.js';
 
@@ -28,7 +31,7 @@ export const CardLegacy = ({
   const renderTitle = () => {
     const isTitleOnly = !title || (!href && !titleAsChild);
     return isTitleOnly ? (
-      title
+      title || ''
     ) : (
       <Link
         href={href}
@@ -74,11 +77,13 @@ export const CardLegacy = ({
     <CardNext inset={inset} type={type} dataTestid={dataTestid}>
       {media && <CardMedia media={media} href={href} />}
       <CardContainer inset={inset}>
-        <CardHeader subTitle={subTitle} tag={tag}>
-          {renderTitle()}
+        <CardHeader>
+          <CardTitle>{renderTitle()}</CardTitle>
+          <CardSubtitle>{subTitle}</CardSubtitle>
+          {tag && <CardTag text={tag.text} type={tag.type} />}
         </CardHeader>
-        <CardBody>{content}</CardBody>
-        {action && <CardFooter>{renderAction(action)}</CardFooter>}
+        <CardDescription>{content}</CardDescription>
+        {action && <CardAction>{renderAction(action)}</CardAction>}
       </CardContainer>
     </CardNext>
   );

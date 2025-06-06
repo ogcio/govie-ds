@@ -1,26 +1,39 @@
-import { PropsWithChildren, ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
+import { Button } from '../button/button.js';
 import { ButtonProps } from '../button/types.js';
 import { IconProps } from '../icon/icon.js';
-import { LinkProps } from '../link/link.js';
+import { Link, LinkProps } from '../link/link.js';
 import { TagProps } from '../tag/tag.js';
 import {
-  CardFooter,
+  CardAction,
   CardContainer,
-  CardBody,
+  CardDescription,
   CardMedia,
   CardHeader,
+  CardTitle,
+  CardSubtitle,
+  CardTag,
 } from './card-next.js';
 
 type CardNextChild =
   | ReactElement<typeof CardMedia>
   | ReactElement<typeof CardContainer>
+  | ReactElement
   | undefined
   | null;
 type CardContainerChild =
   | ReactElement<typeof CardHeader>
-  | ReactElement<typeof CardBody>
-  | ReactElement<typeof CardFooter>
+  | ReactElement<typeof CardDescription>
+  | ReactElement<typeof CardAction>
   | undefined;
+type CardHeaderChild =
+  | ReactElement<typeof CardTitle>
+  | ReactElement<typeof CardSubtitle>
+  | ReactElement<typeof CardTag>
+  | undefined;
+type CardActionChild = ReactElement<typeof Button> | ReactElement<typeof Link>;
+type CardTitleChild = ReactElement<typeof Link> | string;
+
 type InsetProps = 'body' | 'full' | 'none';
 type TypeProps = 'vertical' | 'horizontal';
 
@@ -65,9 +78,9 @@ export type CardProps = {
   title?: string;
   /** @deprecated Use <CardTitle subtitle=""> instead */
   subTitle?: string;
-  /** @deprecated Use <CardFooter> with a n action component (e.g: Button, Link) instead */
+  /** @deprecated Use <CardAction> with a n action component (e.g: Button, Link) instead */
   action?: Action;
-  /** @deprecated Use <CardBody> instead */
+  /** @deprecated Use <CardDescription> instead */
   content?: string;
   /** @deprecated Use <CardMedia> instead */
   media?: MediaContent;
@@ -83,8 +96,12 @@ export type CardContainerProps = {
   children: CardContainerChild | CardContainerChild[];
   inset?: InsetProps;
 };
-export type CardBodyProps = PropsWithChildren;
-export type CardFooterProps = PropsWithChildren;
+export type CardDescriptionProps = {
+  children?: string;
+};
+export type CardActionProps = {
+  children: CardActionChild | CardActionChild[];
+};
 export type CardNextProps = {
   children: CardNextChild | CardNextChild[];
   inset?: InsetProps;
@@ -92,10 +109,16 @@ export type CardNextProps = {
   dataTestid?: string;
 };
 export type CardHeaderProps = {
-  children: ReactNode;
-  subTitle?: string;
-  tag?: TagProps;
+  children: CardHeaderChild | CardHeaderChild[];
 };
+export type CardTitleProps = {
+  children: CardTitleChild;
+};
+
+export type CardSubtitleProps = {
+  children?: string;
+};
+
 export type CardMediaProps = {
   media: MediaContent;
   href?: string;

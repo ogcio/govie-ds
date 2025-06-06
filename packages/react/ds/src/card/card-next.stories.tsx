@@ -1,13 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { t } from 'i18next';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
 import {
   CardMedia,
   CardContainer,
-  CardBody,
+  CardDescription,
   CardHeader,
-  CardFooter,
+  CardAction,
+  CardTitle,
+  CardSubtitle,
+  CardTag,
 } from './card-next.js';
 import { Card } from './card.js';
 
@@ -21,6 +25,7 @@ const meta: Meta = {
   args: {
     type: 'horizontal',
     inset: 'none',
+    dataTestid: 'card',
   },
   argTypes: {
     type: {
@@ -46,7 +51,7 @@ const meta: Meta = {
       table: {
         type: {
           summary:
-            'CardMedia | CardContainer (CardHeader, CardBody, CardFooter)',
+            'CardMedia | CardContainer (CardHeader, CardDescription, CardAction)',
         },
       },
       description:
@@ -61,7 +66,7 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
-  render: ({ ...props }) => (
+  render: (props) => (
     <Card {...props}>
       <CardMedia
         media={{
@@ -75,27 +80,37 @@ export const Default: Story = {
         href="#"
       />
       <CardContainer inset="none">
-        <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-          <Link href="#">Card Title</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
-          <Button
-            variant="secondary"
-            aria-label={t('card.actionButton', {
-              children: 'Button',
-              defaultValue: `Action button: Button`,
-            })}
-          >
-            Button
-          </Button>
-        </CardFooter>
+        </CardDescription>
+        <CardAction>
+          <Button variant="secondary">Button</Button>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = await canvas.findByTestId('card');
+    await expect(card).toBeInTheDocument();
+    await expect(await canvas.findByText('Card Title')).toBeInTheDocument();
+    await expect(await canvas.findByText('Subheading')).toBeInTheDocument();
+    await expect(await canvas.findByRole('img')).toHaveAttribute(
+      'src',
+      'https://placeholderjs.com/400x300',
+    );
+    const button = await canvas.findByRole('button', { name: 'Button' });
+    await userEvent.click(button);
+    await expect(button).toBeEnabled();
+  },
 };
 
 export const VerticalWithoutImage: Story = {
@@ -103,13 +118,15 @@ export const VerticalWithoutImage: Story = {
     <Card>
       <CardContainer>
         <CardHeader>
-          <Link href="#">Vertical Card Without Image</Link>
+          <CardTitle>
+            <Link href="#">Vertical Card Without Image</Link>
+          </CardTitle>
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Link
             size="md"
             aria-label={t('card.actionLink', {
@@ -119,7 +136,7 @@ export const VerticalWithoutImage: Story = {
           >
             Learn more
           </Link>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -139,18 +156,22 @@ export const VerticalWithLink: Story = {
         href="#"
       />
       <CardContainer>
-        <CardHeader tag={{ text: 'Featured', type: 'info' }}>
-          <Link href="#">Vertical Card</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Vertical Card</Link>
+          </CardTitle>
+          <CardSubtitle>teste</CardSubtitle>
+          <CardTag text="Featured" type="info" />
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Link size="md" href="#">
             View More
           </Link>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -173,18 +194,17 @@ export const VerticalWithButton: Story = {
         <CardHeader>
           <Link href="#">Vertical Card</Link>
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
 };
-
 export const Horizontal: Story = {
   render: () => (
     <Card type="horizontal">
@@ -200,17 +220,19 @@ export const Horizontal: Story = {
       />
       <CardContainer>
         <CardHeader>
-          <Link href="#">Horizontal Card</Link>
+          <CardTitle>
+            <Link href="#">Horizontal Card</Link>
+          </CardTitle>
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Link size="md" href="#">
             Link
           </Link>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -220,18 +242,19 @@ export const HorizontalWithoutImage: Story = {
   render: () => (
     <Card type="horizontal">
       <CardContainer>
-        <CardHeader subTitle="Subtitle Here">
-          Horizontal Card Without Image
+        <CardHeader>
+          <CardTitle>Horizontal Card Without Image</CardTitle>
+          <CardSubtitle>Subtitle Here</CardSubtitle>
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Link size="md" href="#">
             Learn More
           </Link>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -251,14 +274,16 @@ export const HorizontalWithIcon: Story = {
         }}
       />
       <CardContainer>
-        <CardHeader>Card With Icon</CardHeader>
-        <CardBody>
+        <CardHeader>
+          <CardTitle>Card With Icon</CardTitle>
+        </CardHeader>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Button variant="secondary">Download</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -281,15 +306,18 @@ export const WithIframeEmbed: Story = {
         href="#"
       />
       <CardContainer inset="none">
-        <CardHeader tag={{ text: 'Video', type: 'info' }}>
-          <Link href="#">Featured Video</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Featured Video</Link>
+          </CardTitle>
+          <CardTag text="Video" type="info" />
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           This card demonstrates embedding a YouTube video using an iframe.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Button variant="secondary">Watch Later</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -310,16 +338,17 @@ export const MediaImageWithAspectRatio: Story = {
         href="#"
       />
       <CardContainer inset="none">
-        <CardHeader
-          subTitle="Subheading"
-          tag={{ text: 'Featured', type: 'info' }}
-        >
-          <Link href="#">Card Title</Link>
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="Featured" type="info" />
         </CardHeader>
-        <CardBody>Card with 16 / 9 aspect ratio media</CardBody>
-        <CardFooter>
+        <CardDescription>Card with 16 / 9 aspect ratio media</CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -340,17 +369,19 @@ export const WithCustomTitleLink: Story = {
       />
       <CardContainer inset="none">
         <CardHeader>
-          <Link asChild>
-            <a href="#">Custom Title Link</a>
-          </Link>
+          <CardTitle>
+            <Link asChild>
+              <a href="#">Custom Title Link</a>
+            </Link>
+          </CardTitle>
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
@@ -370,16 +401,18 @@ export const WithoutTitleLink: Story = {
         }}
       />
       <CardContainer inset="none">
-        <CardHeader subTitle="Subheading" tag={{ text: 'New', type: 'info' }}>
-          Card Title
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
         </CardHeader>
-        <CardBody>
+        <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.
           Sollicitudin.
-        </CardBody>
-        <CardFooter>
+        </CardDescription>
+        <CardAction>
           <Button variant="secondary">Button</Button>
-        </CardFooter>
+        </CardAction>
       </CardContainer>
     </Card>
   ),
