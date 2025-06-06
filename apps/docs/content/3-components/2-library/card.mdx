@@ -19,44 +19,16 @@ component:
       fields:
         - name: 'type'
           ofType: 'string'
-          description: 'Controls the layout orientation of the card. Options include: horizontal, vertical.'
-          required: false
-        - name: 'title'
-          ofType: 'string'
-          description: 'A string used as the main title of the card.'
-          required: false
-        - name: 'subTitle'
-          ofType: 'string'
-          description: 'A string for the card''s subheading or subtitle.'
-          required: false
-        - name: 'href'
-          ofType: 'string'
-          description: 'A URL string that makes the entire card clickable and navigates to the given link.'
-          required: false
-        - name: 'media'
-          ofType: 'object'
-          description: 'An object configuring the media displayed in the card. Supports: type (image, icon, iframe) and config object.'
-          required: false
-        - name: 'content'
-          ofType: 'string'
-          description: 'A string used as the main description or body text of the card.'
-          required: false
-        - name: 'tag'
-          ofType: 'object'
-          description: 'An object defining a tag element, typically used to highlight status or category.'
-          required: false
-        - name: 'action'
-          ofType: 'object'
-          description: 'An object that renders a button or link inside the card.'
+          description: 'Layout direction of the card. Options: "horizontal" or "vertical".'
           required: false
         - name: 'inset'
           ofType: 'string'
-          description: 'Specifies where the content of the card is inset. Options include: none, body, full.'
+          description: 'Padding behaviour inside the card container. Options: "none", "body", or "full".'
           required: false
-        - name: 'titleAsChild'
-          ofType: 'boolean'
-          description: 'When set to true, allows a custom link component to be passed as a child.'
-          required: false
+        - name: 'children'
+          ofType: 'CardMedia | CardContainer'
+          description: 'Composable structure using CardMedia and CardContainer. Inside CardContainer, valid children include: CardHeader, CardDescription, CardAction.'
+          required: true
 ---
 
 # Card
@@ -66,28 +38,29 @@ component:
 ### Vertical Card
 
 <ComponentContainer>
-  <Card
-    action={{
-      children: 'Button',
-      ofType: 'button',
-      variant: 'secondary',
-    }}
-    content="This is card."
-    media={{
-      ofType: 'image',
-      config: {
-        src: 'https://placeholderjs.com/400x300',
-      },
-    }}
-    inset="body"
-    subTitle="Subheading"
-    tag={{
-      text: 'New',
-      ofType: 'info',
-    }}
-    title="Card Title"
-    type="vertical"
-  />
+  <Card type="vertical" inset="body">
+    <CardMedia
+      media={{
+        type: 'image',
+        config: {
+          src: 'https://placeholderjs.com/400x300',
+        },
+      }}
+    />
+    <CardContainer inset="body">
+      <CardHeader>
+        <CardTitle>
+          <Link href="#">Card Title</Link>
+        </CardTitle>
+        <CardSubtitle>Subheading</CardSubtitle>
+        <CardTag text="New" type="info" />
+      </CardHeader>
+      <CardDescription>This is card.</CardDescription>
+      <CardAction>
+        <Button variant="secondary">Button</Button>
+      </CardAction>
+    </CardContainer>
+  </Card>
 </ComponentContainer>
 
 <Tabs id="tab1">
@@ -134,58 +107,61 @@ component:
     ```html
     import { Card } from '@govie-ds/react';
 
-    <Card
-      action={{
-        children: 'Button',
-        ofType: 'button',
-        variant: 'secondary'
-      }}
-      content="This is card."
-      media={{
-        ofType: 'image',
-        config: {
-          src: "https://placeholderjs.com/400x300"
-        }
-      }}
-      inset="body"
-      subTitle="Subheading"
-      tag={{
-        text: 'New',
-        ofType: 'info'
-      }}
-      title="Card Title"
-      type="vertical"
-    />
+    <Card type="vertical" inset="body">
+      <CardMedia
+        media={{
+          type: 'image',
+          config: {
+            src: 'https://placeholderjs.com/400x300',
+          },
+        }}
+      />
+      <CardContainer inset="body">
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
+        </CardHeader>
+        <CardDescription>This is card.</CardDescription>
+        <CardAction>
+          <Button variant="secondary">Button</Button>
+        </CardAction>
+      </CardContainer>
+    </Card>
     ```
 
-  </TabPanel>
+</TabPanel>
 </Tabs>
 
 ### Horizontal Card
 
 <ComponentContainer>
-  <Card
-    action={{
-      children: 'Button',
-      ofType: 'button',
-      variant: 'secondary',
-    }}
-    content="This is card."
-    media={{
-      ofType: 'image',
-      config: {
-        src: 'https://placeholderjs.com/400x300',
-      },
-    }}
-    inset="body"
-    subTitle="Subheading"
-    tag={{
-      text: 'New',
-      ofType: 'info',
-    }}
-    title="Card Title"
-    type="horizontal"
-  />
+  <Card type="horizontal" inset="body">
+    <CardMedia
+      media={{
+        type: 'image',
+        config: {
+          src: 'https://placeholderjs.com/400x300',
+        },
+      }}
+    />
+    <CardContainer inset="body">
+      <CardHeader>
+        <CardTitle>
+          <Link href="#">Card Title</Link>
+        </CardTitle>
+        <CardSubtitle>Subheading</CardSubtitle>
+        <CardTag text="New" type="info" />
+      </CardHeader>
+      <CardDescription>This is card.</CardDescription>
+      <CardAction>
+        <Button variant="secondary">Button</Button>
+      </CardAction>
+    </CardContainer>
+  </Card>
+
 </ComponentContainer>
 
 <Tabs id="tab2">
@@ -195,7 +171,7 @@ component:
   </TabList>
   <TabPanel value="tab21">
   ```html
-   <div class="gi-card gi-card-horizontal gi-card-inset-body">
+  <div class="gi-card gi-card-horizontal gi-card-inset-body">
     <div class="gi-card-image">
       <a href="">
         <img src="https://placeholderjs.com/400x300" alt="" />
@@ -236,28 +212,31 @@ component:
     ```html
     import { Card } from '@govie-ds/react';
 
-    <Card
-      action={{
-        children: 'Button',
-        ofType: 'button',
-        variant: 'secondary'
-      }}
-      content="This is card."
-      media={{
-        ofType: 'image',
-        config: {
-          src: "https://placeholderjs.com/400x300"
-        }
-      }}
-      inset="body"
-      subTitle="Subheading"
-      tag={{
-        text: 'New',
-        ofType: 'info'
-      }}
-      title="Card Title"
-      type="horizontal"
-    />
+    <Card type="horizontal" inset="body">
+      <CardMedia
+        media={{
+          type: 'image',
+          config: {
+            src: 'https://placeholderjs.com/400x300',
+          },
+        }}
+      />
+      <CardContainer inset="body">
+        <CardHeader>
+          <CardTitle>
+            <Link href="#">Card Title</Link>
+          </CardTitle>
+          <CardSubtitle>Subheading</CardSubtitle>
+          <CardTag text="New" type="info" />
+        </CardHeader>
+        <CardDescription>This is card.</CardDescription>
+        <CardAction>
+          <Button variant="secondary">Button</Button>
+        </CardAction>
+      </CardContainer>
+
+    </Card>
+
     ```
 
   </TabPanel>

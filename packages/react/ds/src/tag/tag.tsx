@@ -32,11 +32,7 @@ export const Tag = ({
   dataTestid,
 }: TagProps) => {
   return (
-    <strong
-      className={`gi-tag ${tagClass[type]}`}
-      data-testid={dataTestid}
-      aria-label={text}
-    >
+    <strong className={`gi-tag ${tagClass[type]}`} data-testid={dataTestid}>
       {text}
     </strong>
   );
