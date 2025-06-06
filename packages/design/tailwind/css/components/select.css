@@ -1,4 +1,11 @@
 .gi-select {
   @apply gi-rounded-sm gi-focus-state-outline gi-p-2 gi-border-color-border-system-neutral-default gi-border-sm gi-border-solid gi-min-w-56  gi-text-sm gi-leading-5 xs:gi-text-md xs:gi-leading-5 gi-appearance-none gi-relative gi-bg-no-repeat gi-bg-right disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='var(--gieds-color-gray-950)' height='24' viewBox='0 -960 960 960' width='24px' xmlns='http://www.w3.org/2000/svg'><path d='M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z' /></svg>");
+}
+
+.gi-select-container {
+  @apply gi-relative gi-inline gi-w-full;
+}
+
+.gi-select-icon {
+  @apply gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2;
 }

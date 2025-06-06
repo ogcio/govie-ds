@@ -412,6 +412,9 @@ export const createCheckboxGroup = (arguments_: CheckboxGroupProps) => {
 export const createSelect = (arguments_: SelectProps) => {
   const formField = createFormField(arguments_);
 
+  const container = document.createElement('div');
+  container.className = 'gi-select-container';
+
   const select = document.createElement('select');
   select.className = 'gi-select';
 
@@ -471,8 +474,16 @@ export const createSelect = (arguments_: SelectProps) => {
       select.append(option);
     }
   }
+  container.append(select);
 
-  formField.append(select);
+  container.append(
+    createIcon({
+      icon: 'keyboard_arrow_down',
+      className: 'gi-select-icon',
+    }),
+  );
+
+  formField.append(container);
 
   return formField;
 };

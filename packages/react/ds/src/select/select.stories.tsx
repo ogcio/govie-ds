@@ -1,5 +1,5 @@
-import type { Meta } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
@@ -18,7 +18,7 @@ const meta = {
 
 export default meta;
 
-export const Default = {
+export const Default: StoryObj = {
   render: () => (
     <FormField label={{ text: 'Label' }}>
       <Select aria-label="Select" defaultValue="select-option">
@@ -31,6 +31,18 @@ export const Default = {
       </Select>
     </FormField>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByLabelText('Select') as HTMLSelectElement;
+
+    await userEvent.selectOptions(select, 'value-2');
+
+    await waitFor(() => {
+      expect(select.value).toBe('value-2');
+    });
+    const icon = canvas.getByLabelText('keyboard_arrow_down');
+    expect(icon).toBeInTheDocument();
+  },
 };
 
 export const Focus = {
