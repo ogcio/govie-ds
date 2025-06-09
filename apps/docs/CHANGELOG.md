@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.1](https://github.com/ogcio/govie-ds/compare/docs-v1.8.0...docs-v1.8.1) (2025-06-09)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.8.1
+    * @govie-ds/tailwind bumped to 1.8.1
+
 ## [1.8.0](https://github.com/ogcio/govie-ds/compare/docs-v1.7.3...docs-v1.8.0) (2025-06-03)
 
 

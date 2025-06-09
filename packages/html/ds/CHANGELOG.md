@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.0...html-lib-v1.6.1) (2025-06-09)
+
+
+### Bug Fixes
+
+* Chevron icon in Select component ([#579](https://github.com/ogcio/govie-ds/issues/579)) ([6be38c7](https://github.com/ogcio/govie-ds/commit/6be38c76f9f406d34ff37eaa6e9509254bb12b66))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.1
+
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.3...html-lib-v1.6.0) (2025-06-03)
 
 
