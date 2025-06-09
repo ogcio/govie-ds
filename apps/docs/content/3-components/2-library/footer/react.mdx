@@ -1,0 +1,106 @@
+---
+title: Footer
+description: Footer React Component
+status: stable
+component:
+  id: 'footer-react'
+  link: '/docs/layout-footer--docs'
+  status: 'stable'
+  properties:
+    - name: Footer
+      fields:
+        - name: 'primarySlot'
+          ofType: 'node'
+          description: 'Optional content to be displayed in the primary slot at the top of the footer.'
+          required: false
+        - name: 'secondarySlot'
+          ofType: 'node'
+          description: 'Optional content to be displayed next to the logo in the secondary section of the footer.'
+          required: false
+        - name: 'utilitySlot'
+          ofType: 'node'
+          description: 'Optional content to be displayed in the utility section of the footer, typically used for utility links.'
+          required: false
+        - name: 'logo'
+          ofType: 'LogoProps'
+          description: 'Object defining the logo configuration including href, alt text, and image sources.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class name for styling the footer.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'Optional test ID for the component.'
+          required: false
+        - name: '...props'
+          ofType: 'React.HTMLAttributes<HTMLDivElement>'
+          description: 'Any additional props supported by a <div> element.'
+          required: false
+  stories:
+    - name: 'complete-footer'
+      url: '/story/layout-footer--complete-footer'
+    - name: 'with-utility-links'
+      url: '/story/layout-footer--minimal-footer'
+---
+
+# Footer
+
+The Footer component is used to render the bottom section of a web page. It supports customizable slots for content, a logo, and utility links. This component adheres to accessibility best practices with appropriate roles and aria labels.
+
+<Section current="react" >
+
+<ComponentPreview>
+  <Footer
+    utilitySlot={
+      <Stack
+        direction={{ base: 'column', xs: 'column', md: 'row' }}
+        gap={4}
+        itemsDistribution="center"
+        itemsAlignment="center"
+      >
+        <Link noColor href="/privacy-policy" aria-label="Privacy Policy">
+          Privacy Policy
+        </Link>
+        <Link noColor href="/cookies" aria-label="Cookies">
+          Cookies
+        </Link>
+        <Link noColor href="/accessibility" aria-label="Accessibility">
+          Accessibility
+        </Link>
+        <Link noColor href="/terms-of-use" aria-label="Terms of Use">
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">
+          © {new Date().getFullYear()} Government of Ireland.
+        </div>
+      </Stack>
+    }
+  />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-192"
+  componentId="footer-react"
+  story="complete-footer"
+/>
+
+### With Utility Links
+
+<StorybookFrame
+  heightClassName="h-72"
+  componentId="footer-react"
+  story="with-utility-links"
+/>
+
+## Properties
+
+This component extends the default HTML `<div>` element and includes the following additional properties:
+
+<ComponentPropertiesTable componentId="footer-react" />
+
+</Section>
