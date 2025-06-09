@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [1.8.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.0...design-tailwind-v1.8.1) (2025-06-09)
+
+
+### Bug Fixes
+
+* CardTitle focus state ([#580](https://github.com/ogcio/govie-ds/issues/580)) ([e1fad04](https://github.com/ogcio/govie-ds/commit/e1fad04811aee0972c029f942db8a45c70156f28))
+* Chevron icon in Select component ([#579](https://github.com/ogcio/govie-ds/issues/579)) ([6be38c7](https://github.com/ogcio/govie-ds/commit/6be38c76f9f406d34ff37eaa6e9509254bb12b66))
+
 ## [1.8.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.7.3...design-tailwind-v1.8.0) (2025-06-03)
 
 
