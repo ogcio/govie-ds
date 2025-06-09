@@ -41,7 +41,7 @@ export const Select = ({ children, className, ...props }: SelectProps) => {
       <select className={cn('gi-select', className)} {...props}>
         {children}
       </select>
-      <Icon className="gi-select-icon " icon="keyboard_arrow_down" />
+      <Icon className="gi-select-icon" icon="keyboard_arrow_down" />
     </div>
   );
 };
