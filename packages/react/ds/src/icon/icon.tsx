@@ -162,7 +162,7 @@ export function Icon({
       data-testid="govie-icon"
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || icon}
       role={ariaLabel ? 'img' : 'presentation'}
       className={cn(
         { 'gi-block': !inline, 'gi-text-gray-700': disabled },
