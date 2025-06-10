@@ -1,3 +1,4 @@
+'use client';
 import { createPopper } from '@popperjs/core';
 import { useRef, useEffect } from 'react';
 import { cn } from '../cn.js';

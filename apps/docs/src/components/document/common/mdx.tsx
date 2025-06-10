@@ -51,6 +51,7 @@ import {
   Pagination,
   Paragraph,
   PhaseBanner,
+  Popover,
   ProgressBar,
   ProgressStepper,
   ScoreSelect,
@@ -97,7 +98,8 @@ import {
   ComponentStatusBlock,
   ComponentStatusTable,
 } from '../components/component-status-table';
-import { ModalWrapperSample } from '../components/modal-wrapper-example';
+import { PopoverSample } from '../components/popover-wrapper-sample';
+import { ModalWrapperSample } from '../components/modal-wrapper-sample';
 import { Section } from '../components/section';
 import { StorybookFrame } from '../components/storybook-frame';
 import { Toast } from '../components/toast';
@@ -269,6 +271,7 @@ const documentComponents: MDXComponents = {
   Pagination,
   Paragraph,
   PhaseBanner,
+  Popover,
   ProgressBar,
   ProgressStepper,
   RenderPage,
@@ -314,6 +317,7 @@ const documentComponents: MDXComponents = {
   TypeScaleTextTable,
   Vision,
   ZIndexTable,
+  PopoverSample,
 };
 
 export function Mdx({ code }: MdxProps) {

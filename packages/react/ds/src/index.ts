@@ -163,3 +163,5 @@ export type { InputRadioGroupProps } from './input-radio-group/types.js';
 export type { ErrorTextProps } from './error-text/types.js';
 export type { HintTextProps } from './hint-text/types.js';
 export type { LabelTextProps } from './label/types.js';
+export { Popover } from './popover/popover.js';
+export type { PopoverProps } from './popover/types.js';
