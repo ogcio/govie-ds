@@ -2,6 +2,13 @@
 
 
 
+## [1.4.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.4.0...tokens-v1.4.1) (2025-06-10)
+
+
+### Bug Fixes
+
+* release please config ([ff961a1](https://github.com/ogcio/govie-ds/commit/ff961a1da68eda4158276dfeaab5c611c1667e7d))
+
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.3.0...tokens-v1.4.0) (2025-05-06)
 
 
