@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [1.8.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.1...design-tailwind-v1.8.2) (2025-06-10)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.4.1
+
 ## [1.8.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.0...design-tailwind-v1.8.1) (2025-06-09)
 
 

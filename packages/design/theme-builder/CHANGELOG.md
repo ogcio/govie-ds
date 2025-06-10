@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.0...design-theme-builder-v1.4.1) (2025-06-10)
+
+
+### Miscellaneous Chores
+
+* **design-theme-builder:** Synchronize tokens-group versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.4.1
+
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.3.0...design-theme-builder-v1.4.0) (2025-05-06)
 
 
