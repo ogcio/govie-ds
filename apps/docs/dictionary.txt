@@ -82,6 +82,7 @@ ProgressBarProps
 ProgressStepper
 ProgressStepperProps
 Roadmap
+RefObject
 SEO
 SSR
 ScoreSelectProps
@@ -89,6 +90,7 @@ SectionBreakProps
 SelectGroupItemProps
 SelectItem
 SelectItemProps
+SelectMenu
 SelectProps
 SideNav
 SideNavItem
