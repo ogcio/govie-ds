@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { Card } from '../common/card';
 import { Image } from '../common/image';
 import { CopySvg } from './copy-svg';
+import { DownloadSvg } from './download-svg';
 
 type Logo = {
   id: string;
@@ -92,7 +93,8 @@ function LogoGroup({ name, logos }: { name: string; logos: Logo[] }) {
                     height={logo.height}
                   />
                 </div>
-                <div className="flex justify-end">
+                <div className="flex justify-end gap-1">
+                  <DownloadSvg name={logo.name} src={logo.src} />
                   <CopySvg src={logo.src} />
                 </div>
               </Card>
