@@ -24,7 +24,7 @@ export function DownloadIconButton({
   }, [downloaded]);
 
   const handleDownload = () => {
-    const safeName = name.trim().replace(/\s+/g, '_');
+    const safeName = name.toLowerCase().trim().replace(/\s+/g, '_');
 
     analytics.trackEvent({
       category: 'download content',
@@ -32,12 +32,12 @@ export function DownloadIconButton({
       name,
     });
 
-    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([text], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${safeName}.txt`;
+    link.download = `${safeName}.svg`;
     link.click();
 
     URL.revokeObjectURL(url);
