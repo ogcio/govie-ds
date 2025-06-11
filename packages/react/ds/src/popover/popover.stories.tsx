@@ -27,25 +27,18 @@ export const Default: Story = {
     onOpenChange: () => null,
     open: false,
     triggerRef: null,
-    offset: [0, 0],
-    placement: 'right',
   },
   render: () => {
     const triggerRef = useRef<HTMLButtonElement>(null!);
     const [open, setOpen] = useState(false);
 
     return (
-      <div className="gi-h-10">
+      <div className="gi-h-20">
         <Button ref={triggerRef} onClick={() => setOpen(!open)}>
           Open Popover
         </Button>
 
-        <Popover
-          triggerRef={triggerRef}
-          open={open}
-          onOpenChange={setOpen}
-          placement="bottom-start"
-        >
+        <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <div className="gi-text-sm gi-text-gray-800 gi-p-4">
             This is a popover content
           </div>
@@ -82,14 +75,12 @@ export const Default: Story = {
   },
 };
 
-export const WithOptions: Story = {
+export const WithSelectMenu: Story = {
   args: {
     children: null,
     onOpenChange: () => null,
     open: false,
     triggerRef: null,
-    offset: [0, 8],
-    placement: 'bottom-start',
   },
   render: () => {
     const triggerRef = useRef<HTMLButtonElement>(null!);
@@ -107,12 +98,7 @@ export const WithOptions: Story = {
         <Button ref={triggerRef} onClick={() => setOpen(!open)}>
           Open Popover
         </Button>
-        <Popover
-          triggerRef={triggerRef}
-          open={open}
-          onOpenChange={setOpen}
-          placement="bottom-start"
-        >
+        <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <SelectMenu onChange={setSelectedValue} enableSearch>
             {options.map(({ value, label, isDisabled }) => (
               <SelectMenuOption

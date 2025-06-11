@@ -1,52 +1,48 @@
 ---
-title: Popover React
+title: Popover
 description: Popover React Component
 status: stable
 component:
   id: 'popover-react'
-  link: '/docs/application-popover--docs' 
+  link: '/docs/application-popover--docs'
   status: 'stable'
   properties:
     - name: Popover
       fields:
         - name: 'triggerRef'
-          ofType: 'RefObject<HTMLElement>'
-          description: 'A React ref object pointing to the element that triggers the popover. This is used by Popper.js to position the popover relative to the trigger.'
+          ofType: 'RefObject<HTMLElement> | null'
+          description: 'A React ref object pointing to the element that triggers the popover. Used by Popper.js for positioning. Can be null initially.'
           required: true
         - name: 'children'
           ofType: 'ReactNode'
-          description: 'The content to be displayed inside the popover. This will be rendered within the popover container.'
+          description: 'Content to be rendered inside the popover container.'
           required: true
         - name: 'className'
           ofType: 'string'
-          description: 'Custom class names applied to the main popover `div` element for additional styling.'
-          required: false
-        - name: 'placement'
-          ofType: 'string' 
-          description: 'The placement of the popover relative to the `triggerRef` element. Uses Popper.js placement options (e.g., `bottom-start`, `top`, `right-end`).'
-          default: 'bottom-start'
-          required: false
-        - name: 'offset'
-          ofType: '[number, number]'
-          description: 'An array specifying the skidding and distance offset of the popover from the trigger, in pixels. `[skidding, distance]`'
-          default: '[0, 4]'
+          description: 'Custom class names to style the popover container.'
           required: false
         - name: 'open'
           ofType: 'boolean'
-          description: 'Controls the visibility of the popover. Set to `true` to show the popover, `false` to hide it.'
+          description: 'Controls the visibility of the popover. Set to true to display.'
           required: true
         - name: 'onOpenChange'
           ofType: '(isOpen: boolean) => void'
-          description: 'Callback function invoked when the popover\'s open state needs to change, typically due to an outside click or the Escape key press.'
+          description: 'Callback triggered when popover open state changes (e.g., on outside click or Escape key).'
           required: true
+        - name: 'options'
+          ofType: 'PopperOptions'
+          description: 'Optional configuration object passed to Popper.js for custom behavior, placement, modifiers, etc.'
+          required: false
   stories:
     - name: 'default'
       url: '/story/application-popover--default'
+    - name: 'with-select-menu'
+      url: '/story/application-popover--with-select-menu'
 ---
 
 # Popover
 
-The Popover component is a versatile UI element used to display contextual information or actions when a user interacts with a specific trigger element. It leverages Popper.js for precise positioning and offers built-in functionality for managing its open/close state through external clicks and keyboard interactions.
+The Popover component is a versatile UI element used to display contextual information or actions when a user interacts with a specific trigger element. It leverages [Popper.js](https://popper.js.org/docs/v2/) for precise positioning and offers built-in functionality for managing its open/close state through external clicks and keyboard interactions.
 
 <Section current="react" >
 
@@ -64,6 +60,14 @@ The default example demonstrates the basic functionality of the Popover, includi
   heightClassName="h-max"
   componentId="popover-react"
   story="default"
+/>
+
+### With SelectMenu
+
+<StorybookFrame
+  heightClassName="h-56"
+  componentId="popover-react"
+  story="with-select-menu"
 />
 
 ## Properties

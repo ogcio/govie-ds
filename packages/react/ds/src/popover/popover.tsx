@@ -8,30 +8,24 @@ export const Popover = ({
   triggerRef,
   children,
   className,
-  placement = 'bottom-start',
-  offset = [0, 4],
   open,
   onOpenChange,
+  options = {
+    strategy: 'absolute',
+    placement: 'bottom-start',
+    modifiers: [
+      { name: 'offset', options: { offset: [0, 4] } },
+      { name: 'preventOverflow', options: { padding: 8 } },
+    ],
+  },
 }: PopoverProps) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open && triggerRef?.current && popoverRef?.current) {
-      createPopper(triggerRef.current, popoverRef.current, {
-        placement,
-        modifiers: [
-          { name: 'offset', options: { offset } },
-          { name: 'preventOverflow', options: { padding: 8 } },
-          {
-            name: 'flip',
-            options: {
-              fallbackPlacements: ['top', 'right', 'left'],
-            },
-          },
-        ],
-      });
+      createPopper(triggerRef.current, popoverRef.current, options);
     }
-  }, [open, placement, offset, triggerRef]);
+  }, [open, triggerRef]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

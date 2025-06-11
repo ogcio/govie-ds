@@ -13,7 +13,9 @@ export const PopoverSample = () => {
         Open Popover
       </Button>
       <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
-        <div className="gi-text-sm gi-text-gray-800">Popover Content</div>
+        <div className="gi-text-sm gi-text-gray-800 gi-p-4">
+          Popover Content
+        </div>
       </Popover>
     </>
   );
