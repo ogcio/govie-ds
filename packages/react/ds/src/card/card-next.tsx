@@ -47,7 +47,7 @@ export const CardNext: FC<CardNextProps> = ({
 }) => {
   const cardClasses = useMemo(() => {
     const insetClass = `gi-card-inset-${inset || 'none'}`;
-    return `gi-card gi-card-${type} ${insetClass}`;
+    return `gi-card gi-card-${type} ${insetClass} gi-not-prose`;
   }, [type, inset]);
 
   return (

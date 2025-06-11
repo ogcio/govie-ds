@@ -160,7 +160,7 @@ export const VerticalWithLink: Story = {
           <CardTitle>
             <Link href="#">Vertical Card</Link>
           </CardTitle>
-          <CardSubtitle>teste</CardSubtitle>
+          <CardSubtitle>Subtitle</CardSubtitle>
           <CardTag text="Featured" type="info" />
         </CardHeader>
         <CardDescription>
@@ -192,7 +192,9 @@ export const VerticalWithButton: Story = {
       />
       <CardContainer>
         <CardHeader>
-          <Link href="#">Vertical Card</Link>
+          <CardTitle>
+            <Link href="#">Vertical Card</Link>
+          </CardTitle>
         </CardHeader>
         <CardDescription>
           Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac.

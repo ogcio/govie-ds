@@ -9,7 +9,7 @@ export const createCard = (arguments_: CardProps) => {
     !arguments_.title || (!arguments_.href && !arguments_.titleAsChild);
 
   const card = document.createElement('div');
-  card.className = `gi-card gi-card-${arguments_.type || 'vertical'} gi-card-inset-${arguments_.inset || 'none'}`;
+  card.className = `gi-card gi-card-${arguments_.type || 'vertical'} gi-card-inset-${arguments_.inset || 'none'} gi-not-prose`;
 
   if (arguments_.dataTestid) {
     card.dataset.testid = arguments_.dataTestid;
@@ -118,7 +118,7 @@ export const createCard = (arguments_: CardProps) => {
     paragraphContainer.className = 'gi-card-paragraph';
     const paragraph = createParagraph({
       content: arguments_.content,
-      size: 'md',
+      size: 'sm',
     });
     paragraphContainer.append(paragraph);
     content.append(paragraphContainer);
