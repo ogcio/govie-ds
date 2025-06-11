@@ -89,7 +89,7 @@ export const WithSelectMenu: Story = {
     const options = [
       { label: 'Option 1', value: '1' },
       { label: 'Option 2', value: '2' },
-      { label: 'Option 3', value: '3', isDisabled: true },
+      { label: 'Option 3', value: '3' },
       { label: 'Option 4', value: '4' },
     ];
 
@@ -100,12 +100,11 @@ export const WithSelectMenu: Story = {
         </Button>
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <SelectMenu onChange={setSelectedValue} enableSearch>
-            {options.map(({ value, label, isDisabled }) => (
+            {options.map(({ value, label }) => (
               <SelectMenuOption
                 key={`${label}-${value}`}
                 value={value}
                 isSelected={selectedValue === value}
-                isDisabled={isDisabled}
               >
                 {label}
               </SelectMenuOption>
