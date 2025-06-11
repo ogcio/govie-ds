@@ -1,6 +1,32 @@
 # Changelog
 
 
+## [1.8.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.1...react-lib-v1.8.2) (2025-06-10)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/tokens bumped to 1.4.1
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.2
+    * @govie-ds/theme-govie bumped to 1.4.1
+
+## [1.8.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.0...react-lib-v1.8.1) (2025-06-09)
+
+
+### Bug Fixes
+
+* Chevron icon in Select component ([#579](https://github.com/ogcio/govie-ds/issues/579)) ([6be38c7](https://github.com/ogcio/govie-ds/commit/6be38c76f9f406d34ff37eaa6e9509254bb12b66))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.1
+
 ## [1.8.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.3...react-lib-v1.8.0) (2025-06-03)
 
 
