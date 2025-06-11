@@ -16,6 +16,7 @@ export const createComboBox = (arguments_: ComboBoxProps) => {
     const itemContainer = document.createElement('div');
     comboBox.append(itemContainer);
     itemContainer.role = 'group';
+    itemContainer.className = 'gi-combobox-dropdown-item';
     itemContainer.dataset.module = 'gieds-dropdown-item';
 
     const button = document.createElement('button');
