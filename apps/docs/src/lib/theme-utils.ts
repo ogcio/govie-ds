@@ -34,34 +34,57 @@ export const resolveCssVariables = (
 ): Record<string, string> => {
   const resolved: Record<string, string> = {};
 
-  for (const sheet of Array.from(document.styleSheets)) {
-    try {
-      const rules = sheet.cssRules || [];
-      for (const rule of Array.from(rules)) {
-        if (rule instanceof CSSStyleRule && rule.selectorText === ':root') {
-          for (const styleName of rule.style) {
-            const value = rule.style.getPropertyValue(styleName).trim();
-            const match = styleName.match(
-              /--gieds-color-([a-zA-Z0-9-]+)-(\d{2,3})/,
-            );
-            if (match) {
-              const [, key, shade] = match;
-              const replacement = colorMap[key]?.[shade];
-              if (replacement) {
-                resolved[styleName] = replacement;
-              }
-            } else {
-              resolved[styleName] = value;
-            }
-          }
-        }
-      }
-    } catch {
-      continue;
+  for (const [key, shades] of Object.entries(colorMap)) {
+    for (const [shade, value] of Object.entries(shades)) {
+      resolved[`--gieds-brand-color-${key}-${shade}`] = value;
+      resolved[`--gieds-color-${key}-${shade}`] =
+        `var(--gieds-brand-color-${key}-${shade})`;
     }
   }
 
-  return resolved;
+  return {
+    ...resolved,
+    '--gieds-color-text-tone-primary-outline-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-text-tone-primary-outline-hover':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-text-tone-primary-outline-focus':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-text-tone-primary-flat-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-text-tone-primary-flat-hover':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-text-tone-primary-flat-focus':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-surface-system-primary-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-surface-system-primary-subtle':
+      'var(--gieds-color-primary-700)',
+    '--gieds-color-surface-system-primary-accent':
+      'var(--gieds-color-primary-400)',
+    '--gieds-color-surface-tone-primary-fill-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-surface-tone-primary-fill-hover':
+      'var(--gieds-color-primary-900)',
+    '--gieds-color-surface-tone-primary-outline-hover':
+      'var(--gieds-color-primary-50)',
+    '--gieds-color-surface-tone-primary-flat-hover':
+      'var(--gieds-color-primary-50)',
+    '--gieds-color-icon-tone-primary-outline-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-icon-tone-primary-outline-hover':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-icon-tone-primary-flat-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-icon-tone-primary-flat-hover':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-border-tone-primary-accent-selected':
+      'var(--gieds-color-primary-600)',
+    '--gieds-color-border-tone-primary-outline-default':
+      'var(--gieds-color-primary-800)',
+    '--gieds-color-border-tone-primary-outline-hover':
+      'var(--gieds-color-primary-800)',
+  };
 };
 export const findClosestShade = (baseColor: string): number => {
   const hsl = tinycolor(baseColor).toHsl();
