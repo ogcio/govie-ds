@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/ogcio/govie-ds/compare/docs-v1.8.2...docs-v1.8.3) (2025-06-12)
+
+
+### Bug Fixes
+
+* theme builder ([#587](https://github.com/ogcio/govie-ds/issues/587)) ([cef2aac](https://github.com/ogcio/govie-ds/commit/cef2aace05707daf08589b7f5fd0c184424220d7))
+
 ## [1.8.2](https://github.com/ogcio/govie-ds/compare/docs-v1.8.1...docs-v1.8.2) (2025-06-10)
 
 
