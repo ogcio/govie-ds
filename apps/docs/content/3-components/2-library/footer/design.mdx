@@ -1,0 +1,689 @@
+---
+title: Footer
+description: Footer Design Guidelines
+status: stable
+component:
+  id: 'footer'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4939-2662'
+  status: 'stable'
+---
+
+# Footer
+
+The Footer component provides a structured area at the bottom of the page to display essential information, navigational links, branding, and utility actions. It supports customizable slots for content and branding, aligning with gov.ie standards and accessibility requirements.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose">
+  <Footer
+    dataTestid="gi-footer"
+    primarySlot={
+      <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                aria-label="Public Services"
+                href="/services/public-services"
+                noColor
+              >
+                Public Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Business Services"
+                href="/services/business-services"
+                noColor
+              >
+                Business Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Online Services"
+                href="/services/online-services"
+                noColor
+              >
+                Online Services
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                aria-label="Department of Health"
+                href="/departments/health"
+                noColor
+              >
+                Department of Health
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Department of Education"
+                href="/departments/education"
+                noColor
+              >
+                Department of Education
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Department of Finance"
+                href="/departments/finance"
+                noColor
+              >
+                Department of Finance
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link aria-label="Reports" href="/publications/reports" noColor>
+                Reports
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Statistics"
+                href="/publications/statistics"
+                noColor
+              >
+                Statistics
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Legislation"
+                href="/publications/legislation"
+                noColor
+              >
+                Legislation
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+          <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+          <SectionBreak
+            color="gi-border-color-border-system-neutral-subtle"
+            size="md"
+          />
+          <ul className="gi-space-y-2">
+            <li>
+              <Link
+                aria-label="Find an Office"
+                href="/contact/find-an-office"
+                noColor
+              >
+                Find an Office
+              </Link>
+            </li>
+            <li>
+              <Link
+                aria-label="Phone Directory"
+                href="/contact/phone-directory"
+                noColor
+              >
+                Phone Directory
+              </Link>
+            </li>
+            <li>
+              <Link aria-label="Feedback" href="/contact/feedback" noColor>
+                Feedback
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    }
+    secondarySlot={
+      <Stack direction="column" gap={4}>
+        <Stack
+          direction={{ base: 'column', md: 'row', xs: 'column' }}
+          gap={4}
+          wrap
+        >
+          <Link aria-label="About Us" href="/about-us" noColor>
+            About Us
+          </Link>
+          <Link aria-label="Contact" href="/contact" noColor>
+            Contact
+          </Link>
+          <Link aria-label="Sitemap" href="/sitemap" noColor>
+            Sitemap
+          </Link>
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+            Privacy Policy
+          </Link>
+          <Link aria-label="Terms of Service" href="/terms-of-service" noColor>
+            Terms of Service
+          </Link>
+          <Link aria-label="Careers" href="/careers" noColor>
+            Careers
+          </Link>
+          <Link aria-label="Blog" href="/blog" noColor>
+            Blog
+          </Link>
+          <Link aria-label="FAQ" href="/faq" noColor>
+            FAQ
+          </Link>
+          <Link aria-label="Support" href="/support" noColor>
+            Support
+          </Link>
+          <Link aria-label="Press" href="/press" noColor>
+            Press
+          </Link>
+          <Link aria-label="Partners" href="/partners" noColor>
+            Partners
+          </Link>
+          <Link aria-label="Investors" href="/investors" noColor>
+            Investors
+          </Link>
+          <Link aria-label="Events" href="/events" noColor>
+            Events
+          </Link>
+        </Stack>
+        <Stack direction="row" gap={4}>
+          <Icon icon="social_x" />
+          <Icon icon="social_facebook" />
+          <Icon icon="social_bluesky" />
+          <Icon icon="social_linkedin" />
+        </Stack>
+      </Stack>
+    }
+    utilitySlot={
+      <Stack
+        direction={{ base: 'column', md: 'row', xs: 'column' }}
+        gap={4}
+        itemsAlignment="center"
+        itemsDistribution="center"
+      >
+        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+          Privacy Policy
+        </Link>
+        <Link aria-label="Cookies" href="/cookies" noColor>
+          Cookies
+        </Link>
+        <Link aria-label="Accessibility" href="/accessibility" noColor>
+          Accessibility
+        </Link>
+        <Link aria-label="Terms of Use" href="/terms-of-use" noColor>
+          Terms of Use
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </Stack>
+    }
+  />
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4939-2662" />
+
+## Structure
+
+The Gov.ie Design System Footer is structured into three key sections:
+
+- **Primary Slot**: Used for navigational links, summaries, or descriptive blocks.
+- **Secondary Slot**: Contains the official logo and optional secondary content like metadata or partner links.
+- **Utility Slot**: Typically used for legal links such as privacy policy, accessibility statement, etc.
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="block h-full w-full">
+    <Footer
+      dataTestid="gi-footer"
+      primarySlot={
+        <div className="gi-grid-responsive !gi-ml-0 !gi-mr-0">
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Services</h3>
+            <SectionBreak
+              color="gi-border-color-border-system-neutral-subtle"
+              size="md"
+            />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  aria-label="Public Services"
+                  href="/services/public-services"
+                  noColor
+                >
+                  Public Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Business Services"
+                  href="/services/business-services"
+                  noColor
+                >
+                  Business Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Online Services"
+                  href="/services/online-services"
+                  noColor
+                >
+                  Online Services
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Departments</h3>
+            <SectionBreak
+              color="gi-border-color-border-system-neutral-subtle"
+              size="md"
+            />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  aria-label="Department of Health"
+                  href="/departments/health"
+                  noColor
+                >
+                  Department of Health
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Department of Education"
+                  href="/departments/education"
+                  noColor
+                >
+                  Department of Education
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Department of Finance"
+                  href="/departments/finance"
+                  noColor
+                >
+                  Department of Finance
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Publications</h3>
+            <SectionBreak
+              color="gi-border-color-border-system-neutral-subtle"
+              size="md"
+            />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link aria-label="Reports" href="/publications/reports" noColor>
+                  Reports
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Statistics"
+                  href="/publications/statistics"
+                  noColor
+                >
+                  Statistics
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Legislation"
+                  href="/publications/legislation"
+                  noColor
+                >
+                  Legislation
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="gi-col-span-4 md:gi-col-span-4 lg:gi-col-span-3">
+            <h3 className="gi-heading-sm gi-mb-4">Contact</h3>
+            <SectionBreak
+              color="gi-border-color-border-system-neutral-subtle"
+              size="md"
+            />
+            <ul className="gi-space-y-2">
+              <li>
+                <Link
+                  aria-label="Find an Office"
+                  href="/contact/find-an-office"
+                  noColor
+                >
+                  Find an Office
+                </Link>
+              </li>
+              <li>
+                <Link
+                  aria-label="Phone Directory"
+                  href="/contact/phone-directory"
+                  noColor
+                >
+                  Phone Directory
+                </Link>
+              </li>
+              <li>
+                <Link aria-label="Feedback" href="/contact/feedback" noColor>
+                  Feedback
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      }
+      secondarySlot={
+        <Stack direction="column" gap={4}>
+          <Stack
+            direction={{ base: 'column', md: 'row', xs: 'column' }}
+            gap={4}
+            wrap
+          >
+            <Link aria-label="About Us" href="/about-us" noColor>
+              About Us
+            </Link>
+            <Link aria-label="Contact" href="/contact" noColor>
+              Contact
+            </Link>
+            <Link aria-label="Sitemap" href="/sitemap" noColor>
+              Sitemap
+            </Link>
+            <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+              Privacy Policy
+            </Link>
+            <Link
+              aria-label="Terms of Service"
+              href="/terms-of-service"
+              noColor
+            >
+              Terms of Service
+            </Link>
+            <Link aria-label="Careers" href="/careers" noColor>
+              Careers
+            </Link>
+            <Link aria-label="Blog" href="/blog" noColor>
+              Blog
+            </Link>
+            <Link aria-label="FAQ" href="/faq" noColor>
+              FAQ
+            </Link>
+            <Link aria-label="Support" href="/support" noColor>
+              Support
+            </Link>
+            <Link aria-label="Press" href="/press" noColor>
+              Press
+            </Link>
+            <Link aria-label="Partners" href="/partners" noColor>
+              Partners
+            </Link>
+            <Link aria-label="Investors" href="/investors" noColor>
+              Investors
+            </Link>
+            <Link aria-label="Events" href="/events" noColor>
+              Events
+            </Link>
+          </Stack>
+          <Stack direction="row" gap={4}>
+            <Icon icon="social_x" />
+            <Icon icon="social_facebook" />
+            <Icon icon="social_bluesky" />
+            <Icon icon="social_linkedin" />
+          </Stack>
+        </Stack>
+      }
+      utilitySlot={
+        <Stack
+          direction={{ base: 'column', md: 'row', xs: 'column' }}
+          gap={4}
+          itemsAlignment="center"
+          itemsDistribution="center"
+        >
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+            Privacy Policy
+          </Link>
+          <Link aria-label="Cookies" href="/cookies" noColor>
+            Cookies
+          </Link>
+          <Link aria-label="Accessibility" href="/accessibility" noColor>
+            Accessibility
+          </Link>
+          <Link aria-label="Terms of Use" href="/terms-of-use" noColor>
+            Terms of Use
+          </Link>
+          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        </Stack>
+      }
+    />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="block h-full w-full">
+    <Footer
+      secondarySlot={
+        <Stack
+          direction={{ base: 'column', md: 'row', xs: 'column' }}
+          gap={4}
+          wrap
+        >
+          <Link aria-label="About Us" href="/about-us" noColor>
+            About Us
+          </Link>
+          <Link aria-label="Contact" href="/contact" noColor>
+            Contact
+          </Link>
+          <Link aria-label="Sitemap" href="/sitemap" noColor>
+            Sitemap
+          </Link>
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+            Privacy Policy
+          </Link>
+          <Link aria-label="Terms of Service" href="/terms-of-service" noColor>
+            Terms of Service
+          </Link>
+          <Link aria-label="Careers" href="/careers" noColor>
+            Careers
+          </Link>
+          <Link aria-label="Blog" href="/blog" noColor>
+            Blog
+          </Link>
+          <Link aria-label="FAQ" href="/faq" noColor>
+            FAQ
+          </Link>
+          <Link aria-label="Support" href="/support" noColor>
+            Support
+          </Link>
+          <Link aria-label="Press" href="/press" noColor>
+            Press
+          </Link>
+          <Link aria-label="Partners" href="/partners" noColor>
+            Partners
+          </Link>
+          <Link aria-label="Investors" href="/investors" noColor>
+            Investors
+          </Link>
+          <Link aria-label="Events" href="/events" noColor>
+            Events
+          </Link>
+        </Stack>
+      }
+      utilitySlot={
+        <Stack
+          direction={{ base: 'column', md: 'row', xs: 'column' }}
+          gap={4}
+          itemsDistribution="center"
+        >
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+            Privacy Policy
+          </Link>
+          <Link aria-label="Accessibility" href="/accessibility" noColor>
+            Accessibility
+          </Link>
+          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        </Stack>
+      }
+    />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="block h-full w-full">
+    <Footer
+      utilitySlot={
+        <Stack
+          direction={{ base: 'column', md: 'row', xs: 'column' }}
+          gap={4}
+          itemsDistribution="center"
+        >
+          <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+            Privacy Policy
+          </Link>
+          <Link aria-label="Accessibility" href="/accessibility" noColor>
+            Accessibility
+          </Link>
+          <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+        </Stack>
+      }
+    />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Footers are used to provide consistent structure and reliable access to persistent links or brand identity at the bottom of each page.
+
+### Do
+
+- **Use all relevant slots**: Include meaningful, well-organized content in `primarySlot` and `secondarySlot` to improve structure and navigation.
+- **Use a grid layout or clear alignment**: Ensure items in `primarySlot` and `secondarySlot` are visually balanced and easy to scan.
+- **Group related links or information**: Organize content into columns or sections to support usability.
+
+<ComponentContainer fullWidth>
+  <Footer
+    secondarySlot={
+      <Stack
+        direction={{ base: 'column', md: 'row', xs: 'column' }}
+        gap={4}
+        wrap
+      >
+        <Link aria-label="About Us" href="/about-us" noColor>
+          About Us
+        </Link>
+        <Link aria-label="Contact" href="/contact" noColor>
+          Contact
+        </Link>
+        <Link aria-label="Sitemap" href="/sitemap" noColor>
+          Sitemap
+        </Link>
+        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+          Privacy Policy
+        </Link>
+        <Link aria-label="Terms of Service" href="/terms-of-service" noColor>
+          Terms of Service
+        </Link>
+        <Link aria-label="Careers" href="/careers" noColor>
+          Careers
+        </Link>
+        <Link aria-label="Blog" href="/blog" noColor>
+          Blog
+        </Link>
+        <Link aria-label="FAQ" href="/faq" noColor>
+          FAQ
+        </Link>
+        <Link aria-label="Support" href="/support" noColor>
+          Support
+        </Link>
+        <Link aria-label="Press" href="/press" noColor>
+          Press
+        </Link>
+        <Link aria-label="Partners" href="/partners" noColor>
+          Partners
+        </Link>
+        <Link aria-label="Investors" href="/investors" noColor>
+          Investors
+        </Link>
+        <Link aria-label="Events" href="/events" noColor>
+          Events
+        </Link>
+      </Stack>
+    }
+    utilitySlot={
+      <Stack
+        direction={{ base: 'column', md: 'row', xs: 'column' }}
+        gap={4}
+        itemsDistribution="center"
+      >
+        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+          Privacy Policy
+        </Link>
+        <Link aria-label="Accessibility" href="/accessibility" noColor>
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </Stack>
+    }
+  />
+</ComponentContainer>
+
+### Don't
+
+- **Don’t place unstructured content**: Avoid dumping unrelated or ungrouped items into the footer.
+- **Don’t use inconsistent alignment**: Keep column widths and content hierarchy aligned for readability.
+- **Don’t overload the footer with excessive links**: Prioritize key navigation and legal content, not every page.
+- **Don’t forget spacing and layout**: Crowded or overlapping content negatively impacts both accessibility and design clarity.
+
+<ComponentContainer fullWidth>
+  <Footer
+    primarySlot={
+      <div>
+        <p>Some text</p>
+        <p>More unrelated text</p>
+        <ul>
+          <li>Random link 1</li>
+          <li>Random link 2</li>
+          <li>Random link 3</li>
+          <li>Random link 4</li>
+          <li>Random link 5</li>
+          <li>Random link 6</li>
+        </ul>
+      </div>
+    }
+    secondarySlot={
+      <div>
+        <p>This section has no alignment</p>
+        <p>And too many items stacked poorly</p>
+      </div>
+    }
+    utilitySlot={
+      <Stack
+        direction={{ base: 'column', md: 'row', xs: 'column' }}
+        gap={4}
+        itemsDistribution="center"
+      >
+        <Link aria-label="Privacy Policy" href="/privacy-policy" noColor>
+          Privacy Policy
+        </Link>
+        <Link aria-label="Accessibility" href="/accessibility" noColor>
+          Accessibility
+        </Link>
+        <div className="gi-text-sm">© 2025 Government of Ireland.</div>
+      </Stack>
+    }
+  />
+</ComponentContainer>
+</Section>
