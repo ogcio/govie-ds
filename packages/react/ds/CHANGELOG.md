@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.9.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.3...react-lib-v1.9.0) (2025-06-13)
+
+
+### Features
+
+* Composable Card component ([#578](https://github.com/ogcio/govie-ds/issues/578)) ([0586c8f](https://github.com/ogcio/govie-ds/commit/0586c8faf2908a5029eed2aebcc31c7be7c048fe))
+
 ## [1.8.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.2...react-lib-v1.8.3) (2025-06-13)
 
 
