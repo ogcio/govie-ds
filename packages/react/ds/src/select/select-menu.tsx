@@ -7,13 +7,16 @@ import {
   ChangeEvent,
   KeyboardEvent,
 } from 'react';
+
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { InputText } from '../input-text/input-text.js';
+import { Label } from '../label/label.js';
 import {
+  SelectMenuGroupReactElement,
   SelectMenuOptionProps,
   SelectMenuOptionReactElement,
-  SelectMenuOptionsProps,
+  SelectMenuProps,
 } from './types.js';
 
 export const SelectMenu = ({
@@ -21,11 +24,9 @@ export const SelectMenu = ({
   className,
   onChange,
   enableSearch,
-}: SelectMenuOptionsProps) => {
+}: SelectMenuProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredOptions, setFilteredOptions] = useState<
-    SelectMenuOptionReactElement[]
-  >([]);
+  const [filteredOptions, setFilteredOptions] = useState<any>([]);
 
   useEffect(() => {
     const validChildren = Children.toArray(children).filter((child) =>
@@ -33,33 +34,72 @@ export const SelectMenu = ({
     ) as React.ReactElement[];
 
     const allOptions = validChildren
-      .map((child): SelectMenuOptionReactElement | null => {
-        const typedChild = child as SelectMenuOptionReactElement;
+      .map((child) => {
+        const type = (child?.type as any)?.componentType;
+        const search = searchTerm.toLowerCase();
 
-        if (typeof typedChild.props.value === 'string') {
-          return cloneElement(typedChild, {
-            onChange,
-          });
+        switch (type) {
+          case 'SelectMenuOption': {
+            const typedChild = child as SelectMenuOptionReactElement;
+            if (typeof typedChild.props.value === 'string') {
+              const optionChildren =
+                typedChild?.props?.children?.toString()?.toLowerCase() || '';
+              const optionValue = typedChild?.props?.value?.toLowerCase();
+
+              if (
+                optionChildren.includes(search) ||
+                optionValue.includes(search)
+              ) {
+                return cloneElement(typedChild, {
+                  onChange,
+                });
+              }
+            }
+            break;
+          }
+          case 'SelectMenuGroupItem': {
+            const group = child as SelectMenuGroupReactElement;
+            const groupChildren = Children.toArray(group.props.children).filter(
+              (child) => isValidElement(child),
+            );
+
+            const filteredGroupOptions = groupChildren
+              .map((sub) => {
+                if ((sub?.type as any)?.componentType === 'SelectMenuOption') {
+                  const subOption = sub as SelectMenuOptionReactElement;
+                  return cloneElement(subOption, { onChange });
+                }
+                return null;
+              })
+              .filter(
+                (opt): opt is SelectMenuOptionReactElement => opt !== null,
+              );
+
+            const matches = filteredGroupOptions.filter((opt) => {
+              const text = opt.props.children?.toString()?.toLowerCase() || '';
+              const value = opt.props.value?.toLowerCase() || '';
+              return (
+                text?.includes(searchTerm.toLowerCase()) ||
+                value?.includes(searchTerm.toLowerCase())
+              );
+            });
+
+            if (matches.length > 0 || searchTerm === '') {
+              return cloneElement(group, {
+                children: matches,
+              });
+            }
+
+            return null;
+          }
+          default: {
+            return null;
+          }
         }
-        return null;
       })
-      .filter(
-        (option): option is SelectMenuOptionReactElement => option !== null,
-      );
+      .filter(Boolean);
 
-    if (searchTerm === '') {
-      setFilteredOptions(allOptions);
-    } else {
-      const search = searchTerm.toLowerCase();
-      const newFilteredOptions = allOptions.filter((option) => {
-        const optionChildren =
-          option?.props?.children?.toString().toLowerCase() || '';
-        const optionValue = option?.props?.value?.toLowerCase();
-
-        return optionChildren.includes(search) || optionValue.includes(search);
-      });
-      setFilteredOptions(newFilteredOptions);
-    }
+    setFilteredOptions(allOptions);
   }, [children, searchTerm, onChange]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -98,10 +138,12 @@ export const SelectMenu = ({
 export const SelectMenuOption = ({
   children,
   value,
-  isSelected,
+  selected,
   onChange,
-  isDisabled,
+  disabled,
   dataTestid,
+  className,
+  hidden,
 }: SelectMenuOptionProps) => {
   const handleOnKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -110,27 +152,62 @@ export const SelectMenuOption = ({
     }
   };
   const handleOnClick = () => {
-    if (!isDisabled) {
+    if (!disabled) {
       onChange?.(value);
     }
   };
 
+  if (hidden) {
+    return null;
+  }
+
   return (
     <li
-      tabIndex={isDisabled ? -1 : 0}
+      role="option"
+      tabIndex={disabled ? -1 : 0}
       key={`${children}-${value}`}
-      aria-selected={isSelected}
+      aria-selected={selected}
       aria-label={children?.toString()}
-      aria-disabled={isDisabled}
+      aria-disabled={disabled}
       onKeyDown={handleOnKeyDown}
       onClick={handleOnClick}
-      className={cn('gi-select-option-item', {
-        'gi-select-option-item-disabled': isDisabled,
-      })}
+      className={cn(
+        'gi-select-option-item',
+        {
+          'gi-select-option-item-disabled': disabled,
+        },
+        className,
+      )}
       data-testid={dataTestid || `option-${value}`}
     >
       <span className="gi-text-sm">{children}</span>
-      {isSelected && <Icon icon="check" />}
+      {selected && <Icon icon="check" />}
     </li>
   );
 };
+Object.defineProperty(SelectMenuOption, 'componentType', {
+  value: 'SelectMenuOption',
+  writable: false,
+  enumerable: false,
+});
+
+export const SelectMenuGroupItem = ({
+  children,
+  label,
+  ...props
+}: {
+  children?: any;
+  label: string;
+}) => {
+  return (
+    <div {...props} role="group" className="gi-px-3">
+      <Label text={label} size="sm" className="gi-font-bold gi-pb-1" />
+      {children}
+    </div>
+  );
+};
+Object.defineProperty(SelectMenuGroupItem, 'componentType', {
+  value: 'SelectMenuGroupItem',
+  writable: false,
+  enumerable: false,
+});

@@ -1,7 +1,7 @@
 import { Options as PopperOptions } from '@popperjs/core';
 
 export type PopoverProps = {
-  triggerRef: React.RefObject<HTMLElement> | null;
+  triggerRef: React.RefObject<any> | null;
   children: React.ReactNode;
   className?: string;
   open: boolean;

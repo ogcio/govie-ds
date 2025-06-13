@@ -52,7 +52,11 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
       className,
       type = 'text',
       iconStart,
+      iconStartClassName,
+      onIconStartClick,
       iconEnd,
+      iconEndClassName,
+      onIconEndClick,
       disabled,
       inputClassName,
       ...props
@@ -72,7 +76,11 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
           })}
         >
           {iconStart && (
-            <div className="gi-input-text-icon-start" data-prefix={!!prefix}>
+            <div
+              className={cn('gi-input-text-icon-start', iconStartClassName)}
+              onClick={onIconStartClick}
+              data-prefix={!!prefix}
+            >
               <Icon icon={iconStart} size="md" disabled={disabled} />
             </div>
           )}
@@ -90,9 +98,10 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
           />
           {iconEnd && (
             <div
-              className="gi-input-text-icon-end"
+              className={cn('gi-input-text-icon-end', iconEndClassName)}
               data-end-element={!!inputActionButton}
               data-suffix={!!suffix}
+              onClick={onIconEndClick}
             >
               <Icon icon={iconEnd} size="md" disabled={disabled} />
             </div>

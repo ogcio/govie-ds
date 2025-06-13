@@ -1,24 +1,93 @@
-export type SelectMenuOptionsProps = {
-  children: React.ReactNode;
+import {
+  ChangeEvent,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  OptgroupHTMLAttributes,
+  OptionHTMLAttributes,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+  SelectHTMLAttributes,
+} from 'react';
+
+/**
+ * @deprecated Use `SelectNextProps` instead of `SelectProps`.
+ */
+export type SelectProps = DetailedHTMLProps<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
+>;
+/**
+ * @deprecated Use `SelectItemNextProps` instead of `SelectItemProps`.
+ */
+export type SelectItemProps = DetailedHTMLProps<
+  OptionHTMLAttributes<HTMLOptionElement>,
+  HTMLOptionElement
+>;
+
+export type SelectGroupItemProps = DetailedHTMLProps<
+  OptgroupHTMLAttributes<HTMLOptGroupElement>,
+  HTMLOptGroupElement
+>;
+
+export type SelectMenuProps = {
+  children: ReactNode;
   className?: string;
   onChange?: (value: string) => void;
   enableSearch?: boolean;
 };
 
-export type SelectMenuOptionElementProps = {
+export type SelectMenuOptionReactElement = ReactElement<{
   value: string;
   onChange?: (value: string) => void;
-  children?: React.ReactNode;
-};
+  children?: ReactNode;
+}>;
 
-export type SelectMenuOptionReactElement =
-  React.ReactElement<SelectMenuOptionElementProps>;
+export type SelectMenuGroupReactElement =
+  ReactElement<SelectMenuGroupOptionProps>;
 
 export type SelectMenuOptionProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   value: string;
-  isSelected?: boolean;
+  selected?: boolean;
   onChange?: (value: string) => void;
-  isDisabled?: boolean;
+  disabled?: boolean;
   dataTestid?: string;
+  className?: string;
+  hidden?: boolean;
 };
+export type SelectMenuGroupOptionProps = {
+  children: ReactNode;
+  className?: string;
+  label: string;
+};
+
+export type SelectNextOptionItemElement = ReactElement<
+  SelectMenuOptionProps & {
+    selectedValue: string;
+  }
+>;
+export type SelectNextGroupItemElement =
+  ReactElement<SelectMenuGroupOptionProps>;
+export type SelectNextProps = PropsWithChildren<
+  {
+    onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+    onMenuClose?: () => void;
+    defaultValue?: string;
+    enableSearch?: boolean;
+    disabled?: boolean;
+  } & Omit<HTMLAttributes<HTMLDivElement>, `on${string}`>
+>;
+
+export type SelectNextOptionProps = PropsWithChildren<{
+  className?: string;
+  value: string;
+  hidden?: boolean;
+  disabled?: boolean;
+}>;
+
+export type SelectNextGroupProps = PropsWithChildren<{
+  className?: string;
+  label?: string;
+  children: ReactNode;
+}>;

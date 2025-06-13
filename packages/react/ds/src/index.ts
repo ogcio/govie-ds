@@ -91,6 +91,14 @@ export {
   type SectionBreakProps,
 } from './section-break/section-break.js';
 export { Select, SelectGroupItem, SelectItem } from './select/select.js';
+export type {
+  SelectGroupItemProps,
+  SelectMenuOptionProps,
+  SelectMenuProps,
+  SelectNextProps,
+  SelectNextOptionProps,
+  SelectNextGroupProps,
+} from './select/types.js';
 export { Spinner, type SpinnerProps } from './spinner/spinner.js';
 export { Stack } from './stack/stack.js';
 export { type StackProps } from './stack/types.js';

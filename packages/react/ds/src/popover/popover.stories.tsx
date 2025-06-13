@@ -104,7 +104,7 @@ export const WithSelectMenu: Story = {
               <SelectMenuOption
                 key={`${label}-${value}`}
                 value={value}
-                isSelected={selectedValue === value}
+                selected={selectedValue === value}
               >
                 {label}
               </SelectMenuOption>
