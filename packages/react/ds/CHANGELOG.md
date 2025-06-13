@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.8.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.2...react-lib-v1.8.3) (2025-06-13)
+
+
+### Bug Fixes
+
+* update combo box focus state ([#586](https://github.com/ogcio/govie-ds/issues/586)) ([4327d28](https://github.com/ogcio/govie-ds/commit/4327d28cbc30cb73259335717ac5da8f5001d0e4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.3
+
 ## [1.8.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.1...react-lib-v1.8.2) (2025-06-10)
 
 
