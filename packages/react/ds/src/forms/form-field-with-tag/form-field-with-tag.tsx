@@ -1,10 +1,13 @@
 import { Slottable } from '@radix-ui/react-slot';
 import React from 'react';
 import { cn } from '../../cn.js';
-import { ErrorText, ErrorTextProps } from '../../error-text/error-text.js';
-import { HintText, HintTextProps } from '../../hint-text/hint-text.js';
+import { ErrorText } from '../../error-text/error-text.js';
+import type { ErrorTextProps } from '../../error-text/types.js';
+import { HintText } from '../../hint-text/hint-text.js';
+import type { HintTextProps } from '../../hint-text/types.js';
 import { translate as t } from '../../i18n/utility.js';
-import { Label, LabelProps } from '../../label/label.js';
+import { Label } from '../../label/label.js';
+import type { LabelTextProps } from '../../label/types.js';
 import { Tag, TagProps } from '../../tag/tag.js';
 
 /**
@@ -14,7 +17,7 @@ import { Tag, TagProps } from '../../tag/tag.js';
 export type FormFieldWithTagProps = {
   error?: ErrorTextProps;
   hint?: HintTextProps;
-  label?: LabelProps;
+  label?: LabelTextProps;
   className?: string;
   tag?: TagProps;
 } & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;

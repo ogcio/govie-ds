@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './card.js';
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Components/Card/Deprecated',
   parameters: {
+    deprecated: true,
     docs: {
       description: {
         component:
-          'A card component that displays an image, title, content, and actions, with both horizontal and vertical layouts.',
+          'This Card version is deprecated. Please use the Composable version.',
       },
     },
   },
