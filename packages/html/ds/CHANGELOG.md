@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.3...html-lib-v1.7.0) (2025-06-13)
+
+
+### Features
+
+* Composable Card component ([#578](https://github.com/ogcio/govie-ds/issues/578)) ([0586c8f](https://github.com/ogcio/govie-ds/commit/0586c8faf2908a5029eed2aebcc31c7be7c048fe))
+
 ## [1.6.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.2...html-lib-v1.6.3) (2025-06-13)
 
 
