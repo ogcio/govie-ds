@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.2...html-lib-v1.6.3) (2025-06-13)
+
+
+### Bug Fixes
+
+* update combo box focus state ([#586](https://github.com/ogcio/govie-ds/issues/586)) ([4327d28](https://github.com/ogcio/govie-ds/commit/4327d28cbc30cb73259335717ac5da8f5001d0e4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.3
+
 ## [1.6.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.1...html-lib-v1.6.2) (2025-06-10)
 
 
