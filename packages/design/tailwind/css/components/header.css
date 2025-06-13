@@ -21,12 +21,8 @@
   @apply gi-h-20 gi-items-center gi-justify-between gi-flex gi-flex-row gi-flex-nowrap gi-bg-color-surface-system-primary-default gi-py-3 sm:gi-py-4;
 }
 
-.gi-header-menu > div {
-  @apply gi-flex gi-items-center;
-}
-
 .gi-header-logo {
-  @apply gi-flex-auto lg:gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline;
+  @apply gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline;
 }
 
 .gi-header-logo a {
@@ -34,7 +30,7 @@
 }
 
 .gi-header-title {
-  @apply gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow lg:gi-block gi-text-ellipsis gi-whitespace-nowrap gi-overflow-hidden;
+  @apply gi-min-w-0 gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow lg:gi-block gi-truncate gi-overflow-hidden gi-text-ellipsis;
 }
 .gi-header-tool-item {
   @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer gi-whitespace-nowrap gi-overflow-hidden gi-text-ellipsis;
