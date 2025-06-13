@@ -1,0 +1,3 @@
+.gi-popover {
+  @apply gi-overflow-y-auto gi-w-fit gi-bg-color-surface-system-neutral-layer1;
+}

@@ -15,7 +15,11 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   suffix?: React.ReactNode;
   inputClassName?: string;
   iconStart?: IconId;
+  onIconStartClick?: () => void;
+  iconStartClassName?: string;
   iconEnd?: IconId;
+  iconEndClassName?: string;
+  onIconEndClick?: () => void;
   inputActionButton?: InputActionButtonProps;
   type?:
     | 'text'

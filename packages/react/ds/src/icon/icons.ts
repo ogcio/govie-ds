@@ -4,6 +4,7 @@ export const iconIds = [
   'apps', // Apps
   'arrow_back', // Arrow back
   'arrow_downward', // Arrow downward
+  'arrow_drop_down', // Arrow drop down
   'arrow_forward', // Arrow forward
   'arrow_left_alt', // Arrow left
   'arrow_outward', // Arrow outward
