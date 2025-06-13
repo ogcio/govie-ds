@@ -40,7 +40,6 @@ DropdownItem
 DropdownItemProps
 Favicon
 Figma
-FooterProps
 FormField
 Frontend
 GovTech
@@ -63,7 +62,6 @@ Lato
 Likert
 LinkProps
 ListProps
-LogoProps
 Matomo
 ModalBodyProps
 ModalFooterProps
@@ -75,9 +73,11 @@ NVDA
 NVDA's
 NextLink
 NonVisual
+Organize
 PaginationProps
 ParagraphProps
 PhaseBannerProps
+Prioritize
 ProgressBarProps
 ProgressStepper
 ProgressStepperProps
@@ -147,6 +147,7 @@ application-progressstepper
 application-tooltip
 breakpoint
 centered
+centralized
 checkboxes
 color
 colors
@@ -195,8 +196,6 @@ inclusivity
 indexable
 indicators-progressbar
 inputActionButton
-itemsAlignment
-itemsDistribution
 labeled
 labeling
 lifecycle
@@ -209,12 +208,11 @@ onboarding
 organization
 pre-expand
 pre-made
+prebuilt
 precompiled
 preflight
-primarySlot
 programmatically
 scalable
-secondarySlot
 selectable
 sm
 summarisable
@@ -228,13 +226,14 @@ typography-blockquote
 typography-phasebanner
 typography-sectionbreak
 typography-summarylist
+ungrouped
 unvisited
 url
 user-centric
-utilitySlot
 viewport
 webpage
 webpages
+well-organized
 whitespace
 xl
 xs
