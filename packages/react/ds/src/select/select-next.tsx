@@ -113,6 +113,12 @@ export const SelectNext = ({
     }
   }, [value, validOptions]);
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !disabled) {
+      handleOnClick();
+    }
+  };
+
   return (
     <div {...props} aria-disabled={disabled}>
       <InputText
@@ -133,6 +139,7 @@ export const SelectNext = ({
         ref={inputRef}
         value={inputValue}
         onClick={handleOnClick}
+        onKeyDown={handleKeyDown}
       />
       <Popover
         triggerRef={inputRef}
