@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.8.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.2...design-tailwind-v1.8.3) (2025-06-13)
+
+
+### Bug Fixes
+
+* update combo box focus state ([#586](https://github.com/ogcio/govie-ds/issues/586)) ([4327d28](https://github.com/ogcio/govie-ds/commit/4327d28cbc30cb73259335717ac5da8f5001d0e4))
+
 ## [1.8.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.1...design-tailwind-v1.8.2) (2025-06-10)
 
 
