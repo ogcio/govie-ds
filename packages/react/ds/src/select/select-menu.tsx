@@ -52,6 +52,7 @@ export const SelectMenu = ({
               ) {
                 return cloneElement(typedChild, {
                   onChange,
+                  enableSearch,
                 });
               }
             }
@@ -144,6 +145,7 @@ export const SelectMenuOption = ({
   dataTestid,
   className,
   hidden,
+  enableSearch,
 }: SelectMenuOptionProps) => {
   const handleOnKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -178,6 +180,7 @@ export const SelectMenuOption = ({
         },
         className,
       )}
+      data-search-enabled={enableSearch}
       data-testid={dataTestid || `option-${value}`}
     >
       <span className="gi-text-sm">{children}</span>

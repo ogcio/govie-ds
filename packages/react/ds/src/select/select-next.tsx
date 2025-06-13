@@ -69,7 +69,7 @@ export const SelectNext = ({
         },
       } as unknown as React.ChangeEvent<HTMLSelectElement>;
 
-      // it dispatches an synthetic native event
+      // it dispatches a synthetic native event
       onSelectNextChange(event);
     }
   };

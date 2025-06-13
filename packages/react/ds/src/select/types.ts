@@ -41,6 +41,7 @@ export type SelectMenuOptionReactElement = ReactElement<{
   value: string;
   onChange?: (value: string) => void;
   children?: ReactNode;
+  enableSearch?: boolean;
 }>;
 
 export type SelectMenuGroupReactElement =
@@ -55,6 +56,7 @@ export type SelectMenuOptionProps = {
   dataTestid?: string;
   className?: string;
   hidden?: boolean;
+  enableSearch?: boolean;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;

@@ -98,7 +98,9 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
-    expect(input).toHaveValue('Select Option');
+    await waitFor(() => {
+      expect(input).toHaveValue('Select Option');
+    });
     await userEvent.click(input);
     await waitFor(() => {
       expect(canvas.getByRole('list')).toBeInTheDocument();
