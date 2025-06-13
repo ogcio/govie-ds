@@ -67,7 +67,11 @@ export const DropdownItem = ({
   };
 
   return (
-    <div role="group" aria-label={`${children} dropdown`}>
+    <div
+      role="group"
+      aria-label={`${children} dropdown`}
+      className="gi-combobox-dropdown-item"
+    >
       <Button
         variant="flat"
         appearance="dark"
