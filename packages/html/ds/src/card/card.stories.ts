@@ -250,7 +250,7 @@ export const WithIframeEmbed: Story = {
 
 export const MediaImageWithAspectRatio: Story = {
   args: {
-    type: 'vertical',
+    type: 'horizontal',
     title: 'Card Title',
     subTitle: 'Subheading',
     href: '#',
