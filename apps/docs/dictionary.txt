@@ -250,3 +250,4 @@ CardAction
 iframes
 Iframe
 with-iframe-embed
+SelectNext

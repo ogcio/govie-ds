@@ -35,7 +35,7 @@
 }
 
 .gi-select-option-item[data-search-enabled='true'] {
-  @apply gi-pl-5;
+  @apply gi-pl-5 gi-pr-4;
 }
 
 .gi-select-option-item-disabled {
