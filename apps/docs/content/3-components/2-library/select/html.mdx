@@ -1,0 +1,98 @@
+---
+title: Select
+description: 'Select HTML Component'
+status: stable
+component:
+  id: 'select-html'
+  link: '?path=/docs/form-select--docs'
+  status: 'stable'
+  stories:
+    - name: 'Default'
+      url: '/story/form-select--default'
+    - name: 'Focus'
+      url: '/story/form-select--focus'
+    - name: 'With Label Hint And Error'
+      url: '/story/form-select--with-label-hint-and-error'
+    - name: 'Without Label'
+      url: '/story/form-select--without-label'
+    - name: 'Disabled Select'
+      url: '/story/form-select--disabled-select'
+    - name: 'Disabled Item'
+      url: '/story/form-select--disabled-item'
+    - name: 'With Groups'
+      url: '/story/form-select--with-groups'
+---
+
+# Select
+
+<Section current="html">
+
+<ComponentPreview>
+  <FormField label={{ text: 'Label' }}>
+    <Select aria-label="Select">
+      <SelectItem value="value-1">Option 1</SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  </FormField>
+</ComponentPreview>
+
+## Variants
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="Default"
+/>
+
+### Focus
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="Focus"
+/>
+
+### With Label Hint And Error
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="With Label Hint And Error"
+/>
+
+### Without Label
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="Without Label"
+/>
+
+### Disabled Select
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="Disabled Select"
+/>
+
+### Disabled Item
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="Disabled Item"
+/>
+
+### With Groups
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="select-html"
+  story="With Groups"
+/>
+
+</Section>

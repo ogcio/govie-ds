@@ -1,0 +1,151 @@
+---
+title: 'Select'
+description: 'Select'
+status: 'stable'
+component:
+  id: 'select'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5501-7028'
+  status: 'stable'
+---
+
+# Select
+
+The Select component allows users to choose a single option from a predefined list.
+
+<Section current="design" >
+<ComponentContainer>
+  <FormField label={{ text: 'Label' }}>
+    <Select aria-label="Select">
+      <SelectItem value="value-1">Option 1</SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  </FormField>
+</ComponentContainer>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5501-7028" />
+
+## Variants
+
+### Default
+
+<ComponentContainer>
+  <FormField label={{ text: 'Label' }}>
+    <Select aria-label="Select">
+      <SelectItem value="value-1">Option 1</SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  </FormField>
+</ComponentContainer>
+
+### Disabled
+
+<ComponentContainer>
+  <Select aria-label="Select" defaultValue="select-option" disabled>
+    <SelectItem value="select-option" hidden>
+      Select Option
+    </SelectItem>
+    <SelectItem value="value-1">Option 1</SelectItem>
+    <SelectItem value="value-2">Option 2</SelectItem>
+    <SelectItem value="value-3">Option 3</SelectItem>
+  </Select>
+</ComponentContainer>
+
+### With Group
+
+<ComponentContainer>
+   <Select
+      aria-label="Select"
+      data-testid="select"
+      defaultValue="select-option"
+    >
+      <SelectGroupItem label="Group 1" data-testid="select-group">
+        <SelectItem value="select-option" hidden>
+          Select Option
+        </SelectItem>
+        <SelectItem value="value-1">Option 1</SelectItem>
+        <SelectItem value="value-2">Option 2</SelectItem>
+        <SelectItem value="value-3">Option 3</SelectItem>
+      </SelectGroupItem>
+
+      <SelectGroupItem label="Group 2">
+        <SelectItem value="select-option" hidden>
+          Select Option
+        </SelectItem>
+        <SelectItem value="value-4">Option 4</SelectItem>
+        <SelectItem value="value-5">Option 5</SelectItem>
+        <SelectItem value="value-6">Option 6</SelectItem>
+      </SelectGroupItem>
+
+      <SelectGroupItem label="Group 3">
+        <SelectItem value="select-option" hidden>
+          Select Option
+        </SelectItem>
+        <SelectItem value="value-7">Option 7</SelectItem>
+        <SelectItem value="value-8">Option 8</SelectItem>
+        <SelectItem value="value-9">Option 9</SelectItem>
+      </SelectGroupItem>
+    </Select>
+
+</ComponentContainer>
+
+## Usage
+
+The select component should only be used as a last resort in public-facing services because research shows that some users find selects very difficult to use.
+
+### Do
+
+- **Limit the number of options**: Use a select when there are more than 5-8 options but fewer than 20-30. For fewer options, consider radio buttons. For many more, consider an auto-completing input or search.
+- **Provide a clear default or "empty" state**: Include a default option like "Select an option..." or "None" to indicate that a choice needs to be made.
+- **Order options logically**: Arrange options alphabetically, numerically, or by common usage to make them easy to find.
+- **Use clear and concise labels**: Ensure each option's text is unambiguous and easily understood.
+- **Consider accessibility**: Ensure the select component is keyboard navigable and correctly conveys its state and options to assistive technologies.
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <FormField label={{ text: 'Country' }}>
+      <Select aria-label="Country" defaultValue="">
+        <SelectItem value="" hidden>
+          Select a country
+        </SelectItem>
+        <SelectItem value="us">United States</SelectItem>
+        <SelectItem value="ca">Canada</SelectItem>
+        <SelectItem value="mx">Mexico</SelectItem>
+      </Select>
+    </FormField>
+    <FormField label={{ text: 'Favorite Color' }}>
+      <Select aria-label="Favorite Color" defaultValue="blue">
+        <SelectItem value="red">Red</SelectItem>
+        <SelectItem value="blue">Blue</SelectItem>
+        <SelectItem value="green">Green</SelectItem>
+      </Select>
+    </FormField>
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- **Don't use for true/false or binary choices**: For two options, use checkboxes or toggle switches instead.
+- **Don't hide critical information**: If all options are equally important and need to be visible at a glance, a select is not appropriate.
+- **Don't use for actions or commands**: Selects are for choosing data, not for triggering actions. Use buttons or links for actions.
+- **Don't put too many options in one select**: If the list becomes excessively long (e.g., hundreds of items), consider a different UI pattern like a search-enabled dropdown or a dedicated search page.
+- **Don't rely solely on placeholder text for critical choices**: Always use a clear label for the select component itself.
+
+<ComponentContainer>
+  <div className="flex flex-col gap-4">
+    <FormField label={{ text: 'Is active' }}>
+      <Select aria-label="Is Active?" defaultValue="yes">
+        <SelectItem value="yes">Yes</SelectItem>
+        <SelectItem value="no">No</SelectItem>
+      </Select>
+    </FormField>
+    <FormField label={{ text: 'Save document' }}>
+      <Select aria-label="Save Document" defaultValue="save">
+        <SelectItem value="save">Save Document</SelectItem>
+        <SelectItem value="cancel">Cancel</SelectItem>
+      </Select>
+    </FormField>
+  </div>
+</ComponentContainer>
+
+</Section>
