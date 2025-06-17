@@ -179,31 +179,29 @@ export function Header({
         fullWidth={fullWidth}
       >
         <div className={menuContainerClassNames}>
-          <div>
-            <div className="gi-header-logo">
-              {logo?.href && (
-                <Anchor
-                  href={logo.href}
-                  aria-label={t('header.goToHomePage', {
-                    defaultValue: 'Go to Home Page',
-                  })}
-                  data-testid={`logo-link`}
-                  external={logo.external}
-                >
-                  {getLogo({ logo })}
-                </Anchor>
-              )}
-              {!logo?.href && getLogo({ logo })}
-            </div>
-            <div
-              className={cn(appTitleClassNames, {
-                'gi-hidden': !showTitleOnMobile,
-              })}
-            >
-              {title}
-            </div>
+          <div className="gi-header-logo">
+            {logo?.href && (
+              <Anchor
+                href={logo.href}
+                aria-label={t('header.goToHomePage', {
+                  defaultValue: 'Go to Home Page',
+                })}
+                data-testid={`logo-link`}
+                external={logo.external}
+              >
+                {getLogo({ logo })}
+              </Anchor>
+            )}
+            {!logo?.href && getLogo({ logo })}
           </div>
-          <div className="gi-gap-2 md:gi-gap-4">
+          <div
+            className={cn(appTitleClassNames, {
+              'gi-hidden': !showTitleOnMobile,
+            })}
+          >
+            {title}
+          </div>
+          <div className="gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none">
             {finalItems?.map((item, index) => {
               const { label, showItemMode = 'desktop-only' } = item;
               return (

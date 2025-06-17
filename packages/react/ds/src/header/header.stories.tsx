@@ -327,6 +327,9 @@ export const MobileView: Story = {
     logo: {
       href: 'path',
     },
+    title:
+      'Title on mobile very very very very very very very very very very long',
+    showTitleOnMobile: true,
     items: headerProps.items,
     addDefaultMobileMenu: true,
   },
