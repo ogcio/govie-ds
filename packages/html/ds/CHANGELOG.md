@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.3...html-lib-v1.7.0) (2025-06-17)
+
+
+### Features
+
+* Composable Card component ([#578](https://github.com/ogcio/govie-ds/issues/578)) ([0586c8f](https://github.com/ogcio/govie-ds/commit/0586c8faf2908a5029eed2aebcc31c7be7c048fe))
+
+
+### Bug Fixes
+
+* title not truncating in header ([#591](https://github.com/ogcio/govie-ds/issues/591)) ([7fd767d](https://github.com/ogcio/govie-ds/commit/7fd767d503d152bcdd17ffe413727401869f87ab))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.8.4
+
 ## [1.6.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.2...html-lib-v1.6.3) (2025-06-13)
 
 
