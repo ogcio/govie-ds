@@ -15,16 +15,16 @@ type Story = StoryObj<HeaderProps>;
 const mobileHeaderMenuItems = (
   items: HeaderItem[],
   secondaryLinks?: {
-    href: string;
-    label: string;
+    href?: string;
+    label?: string;
   }[],
 ) => {
   function createListItem(
     item:
       | HeaderItem
       | {
-          href: string;
-          label: string;
+          href?: string;
+          label?: string;
         },
   ) {
     const li = document.createElement('li');
@@ -66,8 +66,8 @@ const buildDefaultMobileMenu = (
   mobileMenuLabel: string,
   items: HeaderItem[],
   secondaryLinks: {
-    href: string;
-    label: string;
+    href?: string;
+    label?: string;
   }[],
 ) => {
   const component = mobileHeaderMenuItems(items, secondaryLinks);
@@ -118,8 +118,6 @@ const createHeader = (arguments_: HeaderProps) => {
   menuContainer.className = menuContainerClassNames;
   container.append(menuContainer);
 
-  const wrapper1 = document.createElement('div');
-
   const logoWrapper = document.createElement('div');
   logoWrapper.className = 'gi-header-logo';
 
@@ -158,11 +156,9 @@ const createHeader = (arguments_: HeaderProps) => {
     titleWrapper.textContent = arguments_.title;
   }
 
-  wrapper1.append(logoWrapper);
-  wrapper1.append(titleWrapper);
-
   const wrapper2 = document.createElement('div');
-  wrapper2.className = 'gi-gap-2 md:gi-gap-4';
+  wrapper2.className =
+    'gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none';
 
   for (const [index, item] of items.entries()) {
     const menuItem = document.createElement('div');
@@ -292,8 +288,8 @@ const createHeader = (arguments_: HeaderProps) => {
       }
     }
   }
-
-  menuContainer.append(wrapper1);
+  menuContainer.append(logoWrapper);
+  menuContainer.append(titleWrapper);
   menuContainer.append(wrapper2);
 
   if (arguments_.secondaryLinks?.length) {
