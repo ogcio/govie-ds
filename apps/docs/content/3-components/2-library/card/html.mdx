@@ -1,0 +1,145 @@
+---
+title: Card
+description: Card HTML Component
+status: stable
+component:
+  id: 'card-html'
+  link: '/docs/display-card--docs'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/components-card--default'
+    - name: 'vertical-without-image'
+      url: '/story/components-card--vertical-without-image'
+    - name: 'vertical-with-link'
+      url: '/story/components-card--vertical-with-link'
+    - name: 'vertical-with-button'
+      url: '/story/components-card--vertical-with-button'
+    - name: 'horizontal'
+      url: '/story/components-card--horizontal'
+    - name: 'horizontal-without-image'
+      url: '/story/components-card--horizontal-without-image'
+    - name: 'horizontal-with-icon'
+      url: '/story/components-card--horizontal-with-icon'
+    - name: 'with-iframe-embed'
+      url: '/story/components-card--with-iframe-embed'
+    - name: 'media-image-with-aspect-ratio'
+      url: '/story/components-card--media-image-with-aspect-ratio'
+    - name: 'without-title-link'
+      url: '/story/components-card--without-title-link'
+---
+
+# Card
+
+<Section current="html">
+
+<ComponentPreview>
+  <Card type="vertical">
+    <CardMedia
+      media={{
+        type: 'image',
+        config: {
+          src: 'https://placeholderjs.com/400x300',
+          alt: 'Card image',
+        },
+      }}
+    />
+    <CardContainer>
+      <CardHeader>
+        <CardTitle>
+          <Link href="#">Card Title</Link>
+        </CardTitle>
+        <CardSubtitle>Subtitle</CardSubtitle>
+        <CardTag text="New" type="info" />
+      </CardHeader>
+      <CardDescription>This is a simple card using HTML setup.</CardDescription>
+      <CardAction>
+        <Button variant="secondary">Click</Button>
+      </CardAction>
+    </CardContainer>
+  </Card>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="default"
+/>
+
+### Vertical Without Image
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="vertical-without-image"
+/>
+
+### Vertical With Link
+
+<StorybookFrame
+  heightClassName="h-[630px]"
+  componentId="card-html"
+  story="vertical-with-link"
+/>
+
+### Vertical With Button
+
+<StorybookFrame
+  heightClassName="h-[640px]"
+  componentId="card-html"
+  story="vertical-with-button"
+/>
+
+### Horizontal
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="horizontal"
+/>
+
+### Horizontal Without Image
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="horizontal-without-image"
+/>
+
+### Horizontal With Icon
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="horizontal-with-icon"
+/>
+
+### With Iframe Embed
+
+<StorybookFrame
+  heightClassName="h-[400px]"
+  componentId="card-html"
+  story="with-iframe-embed"
+/>
+
+### Media Image with Aspect Ratio
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="media-image-with-aspect-ratio"
+/>
+
+### Without Title Link
+
+<StorybookFrame
+  heightClassName="h-[356px]"
+  componentId="card-html"
+  story="without-title-link"
+/>
+
+</Section>

@@ -1,5 +1,5 @@
 'use client';
-import { Icon, IconButton } from '@govie-ds/react';
+import { IconButton } from '@govie-ds/react';
 import copy from 'copy-text-to-clipboard';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
