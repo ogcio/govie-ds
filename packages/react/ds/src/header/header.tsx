@@ -175,7 +175,7 @@ export function Header({
     >
       <Container
         id="HeaderContainer"
-        className="gi-order-2 !gi-w-screen"
+        className="gi-order-2"
         fullWidth={fullWidth}
       >
         <div className={menuContainerClassNames}>
