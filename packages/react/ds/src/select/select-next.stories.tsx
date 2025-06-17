@@ -83,8 +83,12 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     return (
-      <FormField label={{ text: 'Label' }}>
-        <SelectNext aria-label="Select" defaultValue="select-option">
+      <FormField label={{ text: 'Label' }} className="gi-w-56">
+        <SelectNext
+          aria-label="Select"
+          defaultValue="select-option"
+          className="gi-w-[600px]"
+        >
           <SelectItemNext value="select-option" hidden>
             Select Option
           </SelectItemNext>
@@ -118,7 +122,10 @@ export const Default: StoryObj = {
 
 export const Focus = {
   render: () => (
-    <FormField label={{ text: 'Label', htmlFor: 'focus-select' }}>
+    <FormField
+      label={{ text: 'Label', htmlFor: 'focus-select' }}
+      className="gi-w-56"
+    >
       <SelectNext
         id="focus-select"
         aria-label="Select"
@@ -147,6 +154,7 @@ export const WithLabelHintAndError = {
       label={{ text: 'Label', htmlFor: 'select' }}
       hint={{ text: 'This is a hint' }}
       error={{ text: 'This is an error' }}
+      className="gi-w-56"
     >
       <SelectNext
         aria-label="Select"
@@ -172,7 +180,11 @@ export const WithLabelHintAndError = {
 
 export const WithoutLabel = {
   render: () => (
-    <SelectNext aria-label="Select" defaultValue="select-option">
+    <SelectNext
+      aria-label="Select"
+      defaultValue="select-option"
+      className="gi-w-56"
+    >
       <SelectItemNext value="select-option" hidden>
         Select Option
       </SelectItemNext>
@@ -185,7 +197,12 @@ export const WithoutLabel = {
 
 export const DisabledSelect = {
   render: () => (
-    <SelectNext aria-label="Select" defaultValue="select-option" disabled>
+    <SelectNext
+      aria-label="Select"
+      defaultValue="select-option"
+      disabled
+      className="gi-w-56"
+    >
       <SelectItemNext value="select-option" hidden>
         Select Option
       </SelectItemNext>
@@ -203,7 +220,11 @@ export const DisabledSelect = {
 
 export const DisabledItem = {
   render: () => (
-    <SelectNext aria-label="Select" defaultValue="select-option">
+    <SelectNext
+      aria-label="Select"
+      defaultValue="select-option"
+      className="gi-w-56"
+    >
       <SelectItemNext value="select-option" hidden>
         Select Option
       </SelectItemNext>
@@ -232,7 +253,7 @@ export const DisabledItem = {
 
 export const WithSearchEnabled: StoryObj = {
   render: () => (
-    <FormField label={{ text: 'Label' }}>
+    <FormField label={{ text: 'Label' }} className="gi-w-56">
       <SelectNext aria-label="Select" defaultValue="select-option" enableSearch>
         <SelectItemNext value="select-option" hidden>
           Select Option
@@ -267,6 +288,7 @@ export const WithGroups = {
       aria-label="Select"
       data-testid="select"
       defaultValue="value-1"
+      className="gi-w-56"
     >
       <SelectGroupItemNext label="Group 1" data-testid="select-group">
         <SelectItemNext value="value-1">Option 1</SelectItemNext>

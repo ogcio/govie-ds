@@ -11,7 +11,7 @@
 }
 
 .gi-select-menu-container {
-  @apply gi-flex gi-flex-col gi-text-sm gi-leading-5 xs:gi-text-md xs:gi-leading-5 gi-max-w-56 gi-bg-color-surface-system-neutral-layer1;
+  @apply gi-flex gi-flex-col gi-text-sm gi-leading-5 xs:gi-text-md xs:gi-leading-5 gi-bg-color-surface-system-neutral-layer1;
 }
 
 .gi-select-menu-input-container {

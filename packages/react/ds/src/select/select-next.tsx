@@ -125,7 +125,6 @@ export const SelectNext = ({
         aria-label="Select an option"
         aria-disabled={disabled}
         disabled={disabled}
-        className="gi-min-w-56 !gi-w-min"
         placeholder={inputValue || 'Select'}
         readOnly={true}
         inputClassName="gi-cursor-pointer"

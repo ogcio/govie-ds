@@ -1,3 +1,4 @@
 .gi-popover {
-  @apply gi-overflow-y-auto gi-w-fit gi-bg-color-surface-system-neutral-layer1;
+  @apply gi-overflow-y-auto gi-bg-color-surface-system-neutral-layer1;
+  width: inherit;
 }
