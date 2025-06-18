@@ -108,7 +108,7 @@
 }
 
 .gi-btn-secondary-dark {
-  @apply gi-border-color-border-tone-primary-outline-default
+  @apply gi-border-color-border-tone-dark-outline-default
   gi-bg-color-surface-tone-dark-outline-default
   hover:gi-bg-color-surface-tone-dark-outline-hover;
 }

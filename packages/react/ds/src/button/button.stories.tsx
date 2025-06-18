@@ -211,6 +211,7 @@ export const SecondaryDisabled: Story = {
 export const SecondaryLight: Story = {
   args: {
     children: `Secondary Light Button`,
+    variant: 'secondary',
     appearance: 'light',
     size: 'medium',
   },
@@ -219,6 +220,7 @@ export const SecondaryLight: Story = {
 export const SecondaryLightHover: Story = {
   args: {
     children: `Secondary Light Button (Hover)`,
+    variant: 'secondary',
     appearance: 'light',
     size: 'medium',
   },
@@ -228,6 +230,7 @@ export const SecondaryLightHover: Story = {
 export const SecondaryLightFocus: Story = {
   args: {
     children: `Secondary Light Button (Focused)`,
+    variant: 'secondary',
     appearance: 'light',
     size: 'medium',
   },
@@ -237,6 +240,7 @@ export const SecondaryLightFocus: Story = {
 export const SecondaryLightDisabled: Story = {
   args: {
     children: `Secondary Light Button (Disabled)`,
+    variant: 'secondary',
     appearance: 'light',
     size: 'medium',
     disabled: true,
@@ -246,6 +250,7 @@ export const SecondaryLightDisabled: Story = {
 export const SecondaryDark: Story = {
   args: {
     children: `Secondary Dark Button`,
+    variant: 'secondary',
     appearance: 'dark',
     size: 'medium',
   },
@@ -254,6 +259,7 @@ export const SecondaryDark: Story = {
 export const SecondaryDarkHover: Story = {
   args: {
     children: `Secondary Dark Button (Hover)`,
+    variant: 'secondary',
     appearance: 'dark',
     size: 'medium',
   },
@@ -263,6 +269,7 @@ export const SecondaryDarkHover: Story = {
 export const SecondaryDarkFocus: Story = {
   args: {
     children: `Secondary Dark Button (Focused)`,
+    variant: 'secondary',
     appearance: 'dark',
     size: 'medium',
   },
@@ -272,6 +279,7 @@ export const SecondaryDarkFocus: Story = {
 export const SecondaryDarkDisabled: Story = {
   args: {
     children: `Secondary Dark Button (Disabled)`,
+    variant: 'secondary',
     appearance: 'dark',
     size: 'medium',
     disabled: true,
@@ -320,6 +328,7 @@ export const FlatDisabled: Story = {
 export const FlatLight: Story = {
   args: {
     children: `Flat Light Button`,
+    variant: 'flat',
     appearance: 'light',
     size: 'medium',
   },
@@ -328,6 +337,7 @@ export const FlatLight: Story = {
 export const FlatLightHover: Story = {
   args: {
     children: `Flat Light Button (Hover)`,
+    variant: 'flat',
     appearance: 'light',
     size: 'medium',
   },
@@ -337,6 +347,7 @@ export const FlatLightHover: Story = {
 export const FlatLightFocus: Story = {
   args: {
     children: `Flat Light Button (Focused)`,
+    variant: 'flat',
     appearance: 'light',
     size: 'medium',
   },
@@ -346,6 +357,7 @@ export const FlatLightFocus: Story = {
 export const FlatLightDisabled: Story = {
   args: {
     children: `Flat Light Button (Disabled)`,
+    variant: 'flat',
     appearance: 'light',
     size: 'medium',
     disabled: true,
@@ -355,6 +367,7 @@ export const FlatLightDisabled: Story = {
 export const FlatDark: Story = {
   args: {
     children: `Flat Dark Button`,
+    variant: 'flat',
     appearance: 'dark',
     size: 'medium',
   },
@@ -363,6 +376,7 @@ export const FlatDark: Story = {
 export const FlatDarkHover: Story = {
   args: {
     children: `Flat Dark Button (Hover)`,
+    variant: 'flat',
     appearance: 'dark',
     size: 'medium',
   },
@@ -372,6 +386,7 @@ export const FlatDarkHover: Story = {
 export const FlatDarkFocus: Story = {
   args: {
     children: `Flat Dark Button (Focused)`,
+    variant: 'flat',
     appearance: 'dark',
     size: 'medium',
   },
@@ -381,6 +396,7 @@ export const FlatDarkFocus: Story = {
 export const FlatDarkDisabled: Story = {
   args: {
     children: `Flat Dark Button (Disabled)`,
+    variant: 'flat',
     appearance: 'dark',
     size: 'medium',
     disabled: true,

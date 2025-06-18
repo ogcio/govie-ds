@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.9.0](https://github.com/ogcio/govie-ds/compare/docs-v1.8.4...docs-v1.9.0) (2025-06-17)
+
+
+### Features
+
+* Composable Card component ([#578](https://github.com/ogcio/govie-ds/issues/578)) ([0586c8f](https://github.com/ogcio/govie-ds/commit/0586c8faf2908a5029eed2aebcc31c7be7c048fe))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.9.0
+    * @govie-ds/tailwind bumped to 1.8.4
+
 ## [1.8.4](https://github.com/ogcio/govie-ds/compare/docs-v1.8.3...docs-v1.8.4) (2025-06-13)
 
 
