@@ -1,17 +1,18 @@
 'use client';
 import { getComponents } from '@/lib/components';
-import { Button, Link } from '@govie-ds/react';
+import { Link } from '@govie-ds/react';
 import StorybookLogo from './storybook';
 import React from 'react';
+import { cn } from '@/lib/cn';
 
 export function StorybookFrame({
   componentId,
   story,
-  heightClassName,
+  className,
 }: {
   componentId: string;
   story: string;
-  heightClassName?: string;
+  className?: string;
 }) {
   const components = getComponents();
 
@@ -49,7 +50,10 @@ export function StorybookFrame({
     <div className="relative">
       <iframe
         src={iframeStoryUrl}
-        className={`gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center ${heightClassName || 'h-32'}`}
+        className={cn(
+          'gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center h-32',
+          className,
+        )}
       ></iframe>
       <div className="p-2 bottom-0 right-0 absolute">
         <Link
