@@ -84,11 +84,7 @@ export const Default: StoryObj = {
   render: () => {
     return (
       <FormField label={{ text: 'Label' }} className="gi-w-56">
-        <SelectNext
-          aria-label="Select"
-          defaultValue="select-option"
-          className="gi-w-[600px]"
-        >
+        <SelectNext aria-label="Select" defaultValue="select-option">
           <SelectItemNext value="select-option" hidden>
             Select Option
           </SelectItemNext>
