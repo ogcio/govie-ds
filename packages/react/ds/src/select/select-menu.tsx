@@ -124,12 +124,7 @@ export const SelectMenu = ({
         {filteredOptions.length > 0 ? (
           <ul>{filteredOptions}</ul>
         ) : (
-          enableSearch &&
-          searchTerm && (
-            <div className="gi-select-menu-option-not-found">
-              No data found.
-            </div>
-          )
+          <div className="gi-select-menu-option-not-found">No data found.</div>
         )}
       </div>
     </div>
