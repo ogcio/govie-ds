@@ -1,0 +1,79 @@
+---
+title: Popover
+description: Popover React Component
+status: stable
+component:
+  id: 'popover-react'
+  link: '/docs/application-popover--docs'
+  status: 'stable'
+  properties:
+    - name: Popover
+      fields:
+        - name: 'triggerRef'
+          ofType: 'RefObject<HTMLElement> | null'
+          description: 'A React ref object pointing to the element that triggers the popover. Used by Popper.js for positioning. Can be null initially.'
+          required: true
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'Content to be rendered inside the popover container.'
+          required: true
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom class names to style the popover container.'
+          required: false
+        - name: 'open'
+          ofType: 'boolean'
+          description: 'Controls the visibility of the popover. Set to true to display.'
+          required: true
+        - name: 'onOpenChange'
+          ofType: '(isOpen: boolean) => void'
+          description: 'Callback triggered when popover open state changes (e.g., on outside click or Escape key).'
+          required: true
+        - name: 'options'
+          ofType: 'PopperOptions'
+          description: 'Optional configuration object passed to Popper.js for custom behaviour, placement, modifiers, etc.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/application-popover--default'
+    - name: 'with-select-menu'
+      url: '/story/application-popover--with-select-menu'
+---
+
+# Popover
+
+The Popover component is a versatile UI element used to display contextual information or actions when a user interacts with a specific trigger element. It leverages [Popper.js](https://popper.js.org/docs/v2/) for precise positioning and offers built-in functionality for managing its open/close state through external clicks and keyboard interactions.
+
+<Section current="react" >
+
+<ComponentPreview>
+  <PopoverSample />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+The default example demonstrates the basic functionality of the Popover, including opening, closing via outside click, and closing via the Escape key.
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="popover-react"
+  story="default"
+/>
+
+### With SelectMenu
+
+<StorybookFrame
+  heightClassName="h-56"
+  componentId="popover-react"
+  story="with-select-menu"
+/>
+
+## Properties
+
+The Popover component accepts the following properties:
+
+<ComponentPropertiesTable componentId="popover-react" />
+
+</Section>

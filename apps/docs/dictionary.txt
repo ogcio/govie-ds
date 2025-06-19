@@ -82,6 +82,7 @@ ProgressBarProps
 ProgressStepper
 ProgressStepperProps
 Roadmap
+RefObject
 SEO
 SSR
 ScoreSelectProps
@@ -89,6 +90,7 @@ SectionBreakProps
 SelectGroupItemProps
 SelectItem
 SelectItemProps
+SelectMenu
 SelectProps
 SideNav
 SideNavItem
@@ -239,6 +241,7 @@ xl
 xs
 centralized
 prebuilt
+isOpen
 CardHeader
 CardContainer
 CardMedia
@@ -247,3 +250,5 @@ CardAction
 iframes
 Iframe
 with-iframe-embed
+SelectNext
+form-select-selectnative

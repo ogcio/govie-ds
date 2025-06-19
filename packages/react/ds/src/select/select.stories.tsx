@@ -4,7 +4,7 @@ import { FormField } from '../forms/form-field.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {
-  title: 'Form/Select',
+  title: 'Form/Select/SelectNative',
   parameters: {
     docs: {
       description: {

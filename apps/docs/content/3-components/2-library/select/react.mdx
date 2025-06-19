@@ -1,0 +1,175 @@
+---
+title: Select
+description: Select React Component
+status: stable
+component:
+  id: 'select-react'
+  link: '?path=/docs/form-select-selectnative--docs'
+  status: 'stable'
+  properties:
+    - name: Select
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'SelectItem components to be rendered as options in the select dropdown.'
+          required: true
+        - name: 'id'
+          ofType: 'string'
+          description: 'Unique identifier for the select element.'
+          required: true
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'When true, disables the select element preventing user interaction.'
+          required: false
+        - name: 'defaultValue'
+          ofType: 'string'
+          description: 'The initial selected value when the component is first rendered.'
+          required: false
+        - name: 'value'
+          ofType: 'string'
+          description: 'The controlled value of the select element.'
+          required: false
+        - name: 'onChange'
+          ofType: 'function'
+          description: 'Callback function triggered when the selected option changes.'
+          required: false
+    - name: 'SelectItem'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content to display for this option.'
+          required: true
+        - name: 'value'
+          ofType: 'string'
+          description: 'The value associated with this option.'
+          required: true
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'When true, makes this option unselectable.'
+          required: false
+    - name: 'SelectGroupItem'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'SelectItem components to be grouped together.'
+          required: true
+        - name: 'label'
+          ofType: 'string'
+          description: 'Text label for the option group.'
+          required: true
+
+  stories:
+    - name: 'Default'
+      url: '/story/form-select-selectnative--default'
+    - name: 'Focus'
+      url: '/story/form-select-selectnative--focus'
+    - name: 'With Label Hint And Error'
+      url: '/story/form-select-selectnative--with-label-hint-and-error'
+    - name: 'Without Label'
+      url: '/story/form-select-selectnative--without-label'
+    - name: 'Disabled Select'
+      url: '/story/form-select-selectnative--disabled-select'
+    - name: 'Disabled Item'
+      url: '/story/form-select-selectnative--disabled-item'
+    - name: 'With Groups'
+      url: '/story/form-select-selectnative--with-groups'
+---
+
+# Select
+
+<Section current="react">
+
+<ComponentPreview>
+  <FormField label={{ text: 'Label' }}>
+    <Select aria-label="Select">
+      <SelectItem value="value-1">Option 1</SelectItem>
+      <SelectItem value="value-2">Option 2</SelectItem>
+      <SelectItem value="value-3">Option 3</SelectItem>
+    </Select>
+  </FormField>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="Default"
+  componentId="select-react"
+/>
+
+### Focus
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="Focus"
+  componentId="select-react"
+/>
+
+### With Label Hint And Error
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="With Label Hint And Error"
+  componentId="select-react"
+/>
+
+### Without Label
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="Without Label"
+  componentId="select-react"
+/>
+
+### Disabled Select
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="Disabled Select"
+  componentId="select-react"
+/>
+
+### Disabled Item
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="Disabled Item"
+  componentId="select-react"
+/>
+
+### With Groups
+
+<StorybookFrame
+  heightClassName="h-max"
+  story="With Groups"
+  componentId="select-react"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="select-react" />
+
+## SelectNext
+
+<StorybookFrame
+  heightClassName="h-[290px]"
+  componentId="select-react"
+  docsPath="?path=/docs/form-select-selectnext--docs"
+  iframeId="form-select-selectnext--default"
+/>
+
+A new version of the `Select` component is now available: **`SelectNext`**.
+
+We recommend using `SelectNext` whenever native HTML elements `<select>` and `<option>` are not strictly required. The new version offers enhanced user experience, improved accessibility, and greater visual and functional control.
+
+The native `Select` component is **currently deprecated** and will be **fully replaced by `SelectNext`** in a future release.
+
+### When to continue using `Select`
+
+- When rendering a native HTML `<select>` element is strictly necessary
+
+For further information, please refer to the `SelectNext` storybook.
+
+</Section>

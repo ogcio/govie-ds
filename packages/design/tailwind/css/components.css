@@ -24,6 +24,7 @@
 @import './components/phase-banner.css';
 @import './components/progress-bar.css';
 @import './components/progress-stepper.css';
+@import './components/popover.css';
 @import './components/input-radio.css';
 @import './components/section-break.css';
 @import './components/select.css';

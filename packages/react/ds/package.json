@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@govie-ds/tokens": "workspace:*",
+    "@popperjs/core": "^2.11.8",
     "@radix-ui/react-slot": "^1.1.2",
     "clsx": "^2.1.1",
     "rollup-preserve-directives": "^1.1.2"
@@ -53,8 +54,8 @@
     "@govie-ds/eslint-config": "workspace:*",
     "@govie-ds/prettier-config": "workspace:*",
     "@govie-ds/tailwind": "workspace:*",
-    "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/theme-doete": "workspace:*",
+    "@govie-ds/theme-govie": "workspace:*",
     "@percy/cli": "^1.30.7",
     "@percy/storybook": "^6.0.3",
     "@testing-library/jest-dom": "^6.4.8",
