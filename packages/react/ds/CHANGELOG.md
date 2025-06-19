@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.10.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.9.0...react-lib-v1.10.0) (2025-06-19)
+
+
+### Features
+
+* SelectNext + Popover components ([#590](https://github.com/ogcio/govie-ds/issues/590)) ([83b5963](https://github.com/ogcio/govie-ds/commit/83b59638f0f561cf05418bbb8a45788e9e5dee5d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.9.0
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.3...react-lib-v1.9.0) (2025-06-17)
 
 
