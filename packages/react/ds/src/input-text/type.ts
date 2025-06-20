@@ -21,6 +21,8 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   iconEndClassName?: string;
   onIconEndClick?: () => void;
   inputActionButton?: InputActionButtonProps;
+  iconEndRef?: any;
+  inputActionPosition?: 'beforeSuffix' | 'afterSuffix';
   type?:
     | 'text'
     | 'date'

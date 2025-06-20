@@ -4,6 +4,13 @@ import { useRef, useEffect } from 'react';
 import { cn } from '../cn.js';
 import { PopoverProps } from './types.js';
 
+const useCombinedRefs = (...refs: (React.RefObject<any> | null)[]) => {
+  return {
+    contains: (node: Node) => refs.some((ref) => ref?.current?.contains(node)),
+    current: refs.map((ref) => ref?.current).find(Boolean) ?? null,
+  };
+};
+
 export const Popover = ({
   triggerRef,
   children,
@@ -18,8 +25,10 @@ export const Popover = ({
       { name: 'preventOverflow', options: { padding: 8 } },
     ],
   },
+  extraRefs = [],
 }: PopoverProps) => {
   const popoverRef = useRef<HTMLDivElement>(null);
+  const combinedTriggerRef = useCombinedRefs(triggerRef, ...extraRefs);
 
   useEffect(() => {
     if (open && triggerRef?.current && popoverRef?.current) {
@@ -31,7 +40,8 @@ export const Popover = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (
         popoverRef.current &&
-        !popoverRef.current.contains(event.target as Node)
+        !popoverRef.current.contains(event.target as Node) &&
+        !combinedTriggerRef.contains(event.target as Node)
       ) {
         onOpenChange(false);
       }

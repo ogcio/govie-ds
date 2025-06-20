@@ -124,12 +124,7 @@ export const SelectMenu = ({
         {filteredOptions.length > 0 ? (
           <ul>{filteredOptions}</ul>
         ) : (
-          enableSearch &&
-          searchTerm && (
-            <div className="gi-select-menu-option-not-found">
-              No data found.
-            </div>
-          )
+          <div className="gi-select-menu-option-not-found">No data found.</div>
         )}
       </div>
     </div>
@@ -146,6 +141,8 @@ export const SelectMenuOption = ({
   className,
   hidden,
   enableSearch,
+  isHighlighted,
+  ...props
 }: SelectMenuOptionProps) => {
   const handleOnKeyDown = (event: KeyboardEvent<HTMLLIElement>) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -177,11 +174,13 @@ export const SelectMenuOption = ({
         'gi-select-option-item',
         {
           'gi-select-option-item-disabled': disabled,
+          'gi-select-option-item-highlighted': isHighlighted,
         },
         className,
       )}
       data-search-enabled={enableSearch}
       data-testid={dataTestid || `option-${value}`}
+      {...props}
     >
       <span className="gi-text-sm">{children}</span>
       {selected && <Icon icon="check" />}
