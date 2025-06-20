@@ -80,7 +80,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
         );
       }
       return null;
-    }, []);
+    }, [inputActionButton]);
 
     return (
       <div className={cn(className, 'gi-input-text-container')}>
