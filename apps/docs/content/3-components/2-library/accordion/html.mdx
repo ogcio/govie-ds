@@ -1,0 +1,66 @@
+---
+title: Accordion
+description: Accordion HTML Component
+status: stable
+component:
+  id: 'accordion-html'
+  link: '/docs/layout-accordion--docs'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/layout-accordion--default'
+    - name: 'small-variant'
+      url: '/story/layout-accordion--small-variant'
+    - name: 'with-icon-start'
+      url: '/story/layout-accordion--with-icon-start'
+---
+
+# Accordion
+
+The component allows users to upload one or more files.  
+It extends the native HTML element while allowing customization and consistent styling across your application.
+
+<Section current="html">
+
+<ComponentPreview>
+  <Accordion>
+    <AccordionItem label="What is the Citizens Information Service?">
+      The Citizens Information Service provides information on public services
+      and entitlements. It helps citizens access services like social welfare,
+      health services, and more.
+    </AccordionItem>
+    <AccordionItem label="How can I apply for social welfare benefits?">
+      To apply for social welfare benefits, you need to fill out an application
+      form, provide necessary documentation, and submit it online or at your
+      local office.
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="accordion-html"
+  story="default"
+/>
+
+### Small Variant
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="accordion-html"
+  story="small-variant"
+/>
+
+### With Icon on the Left
+
+<StorybookFrame
+  heightClassName="h-max"
+  componentId="accordion-html"
+  story="with-icon-start"
+/>
+
+</Section>

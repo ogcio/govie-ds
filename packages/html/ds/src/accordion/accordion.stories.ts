@@ -14,6 +14,7 @@ const createAccordion = (arguments_: AccordionProps) => {
   const accordion = document.createElement('div');
   accordion.dataset.module = 'gieds-accordion';
   accordion.role = 'region';
+  accordion.className = 'gi-w-full';
 
   const variantClass =
     arguments_.variant == 'small'

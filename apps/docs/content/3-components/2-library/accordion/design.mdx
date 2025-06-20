@@ -1,0 +1,116 @@
+---
+title: Accordion
+description: Accordion Design Guidelines
+status: stable
+component:
+  id: 'accordion'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4500-3185'
+  status: 'stable'
+---
+
+# Accordion
+
+The Accordion component allows users to expand and collapse sections of content, making it ideal for organizing large amounts of information in a compact format. 
+It is particularly useful for FAQs, forms, and other content that benefits from being grouped into collapsible sections.
+
+<Section current="design">
+
+<ComponentPreview className="w-full h-96">
+  <Accordion className="w-105">
+    <AccordionItem label="What is the Citizens Information Service?">
+      The Citizens Information Service provides information on public services
+      and entitlements. It helps citizens access services like social welfare,
+      health services, and more.
+    </AccordionItem>
+    <AccordionItem label="How can I apply for social welfare benefits?">
+      To apply for social welfare benefits, you need to fill out an application
+      form, provide necessary documentation, and submit it online or at your
+      local office.
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+<FigmaPreviewButton href='https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4500-3185' />
+
+## Variants
+
+### Default
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-120 h-96">
+    <Accordion className="w-105">
+      <AccordionItem label="What is the Citizens Information Service?">
+        The Citizens Information Service provides information on public services
+        and entitlements. It helps citizens access services like social welfare,
+        health services, and more.
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+        To apply for social welfare benefits, you need to fill out an application
+        form, provide necessary documentation, and submit it online or at your
+        local office.
+      </AccordionItem>
+    </Accordion>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+### Small
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-120 h-96">
+    <Accordion variant="small" className="w-105">
+      <AccordionItem label="What is the Citizens Information Service?">
+        The Citizens Information Service provides information on public services
+        and entitlements. It helps citizens access services like social welfare,
+        health services, and more.
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+        To apply for social welfare benefits, you need to fill out an application
+        form, provide necessary documentation, and submit it online or at your
+        local office.
+      </AccordionItem>
+    </Accordion>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+### With Icon on the Left
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-120 h-96">
+    <Accordion iconStart className="w-105">
+      <AccordionItem label="What is the Citizens Information Service?">
+        The Citizens Information Service provides information on public services
+        and entitlements. It helps citizens access services like social welfare,
+        health services, and more.
+      </AccordionItem>
+      <AccordionItem label="How can I apply for social welfare benefits?">
+        To apply for social welfare benefits, you need to fill out an application
+        form, provide necessary documentation, and submit it online or at your
+        local office.
+      </AccordionItem>
+    </Accordion>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+The Accordion component is best used when you need to organize and present large amounts of related content in a compact, user-friendly way. 
+It helps users quickly scan headings and expand only the sections they are interested in, reducing information overload. 
+Common use cases include FAQs, multi-step forms, and settings panels. Each AccordionItem should have a clear, descriptive label to ensure accessibility and ease of navigation.
+
+### DOs
+
+- **Use clear, descriptive labels** for each AccordionItem so users know what content to expect.
+- **Group related content** together to help users scan and find information quickly.
+- **Keep content concise** within each section to avoid overwhelming users.
+- **Ensure keyboard accessibility** and proper focus management for all interactive elements.
+
+### DON'Ts
+
+- **Don't use vague or generic labels** like "Section 1" or "More info".
+- **Don't nest accordions** inside each other, as this can confuse users.
+- **Don't overload a single accordion** with too many items; consider breaking up content if needed.
+- **Don't hide critical information** that users must see to complete a task.
+
+
+
+
+</Section>
