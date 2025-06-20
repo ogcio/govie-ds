@@ -5,19 +5,15 @@ import {
   useEffect,
   useRef,
   useReducer,
-  ReactElement,
 } from 'react';
 import { cn } from '../cn.js';
 import { InputText } from '../input-text/input-text.js';
+import { Popover } from '../popover/popover.js';
+import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteAction,
   AutocompleteState,
-} from '../input-text/type.js';
-import { Popover } from '../popover/popover.js';
-
-import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
-import {
   AutocompleteItemProps,
   AutocompleteOptionItemElement,
   AutocompleteProps,
@@ -31,13 +27,14 @@ Object.defineProperty(AutocompleteItem, 'componentType', {
 });
 
 const {
-  ON_CLEAR,
+  ON_RESET,
   ON_SELECT_ITEM,
   SET_INPUT_VALUE,
   SET_IS_OPEN,
   SET_OPTIONS,
   TOGGLE_CLEAR_BUTTON,
   SET_VALUE,
+  SET_HIGHLIGHTED_INDEX,
 } = AUTOCOMPLETE_ACTIONS;
 
 const reducer = (
@@ -63,12 +60,13 @@ const reducer = (
         isClearButtonEnabled: action.payload || !!state.inputValue,
       };
     }
-    case ON_CLEAR: {
+    case ON_RESET: {
       return {
         ...state,
         value: '',
         inputValue: '',
         isClearButtonEnabled: false,
+        highlightedIndex: -1,
       };
     }
     case ON_SELECT_ITEM: {
@@ -80,39 +78,44 @@ const reducer = (
         isClearButtonEnabled: true,
       };
     }
+    case SET_HIGHLIGHTED_INDEX: {
+      return { ...state, highlightedIndex: action.payload, isOpen: true };
+    }
     default: {
       return state;
     }
   }
 };
 
-const filterChildOption = (child: any, inpValue: string) => {
-  const type = (child?.type as any)?.componentType;
-
-  if (type === 'AutocompleteItem') {
-    const typedChild = child as AutocompleteOptionItemElement;
-    const optionLabel =
-      typedChild?.props?.children?.toString()?.toLowerCase() || '';
-    const optionValue = typedChild?.props?.value?.toLowerCase();
-
-    return (
-      optionLabel.includes(inpValue.toLowerCase()) ||
-      optionValue.includes(inpValue.toLowerCase())
-    );
-  }
-
-  return false;
+const filterChildOption = (
+  child: AutocompleteOptionItemElement,
+  inputValue: string,
+) => {
+  const label = child.props.children?.toString().toLowerCase() || '';
+  const value = child.props.value?.toLowerCase();
+  const input = inputValue.toLowerCase();
+  return label.includes(input) || value.includes(input);
 };
 
+const isAutocompleteItem = (
+  child: React.ReactNode,
+): child is AutocompleteOptionItemElement => {
+  return (
+    isValidElement(child) &&
+    (child.type as any)?.componentType === 'AutocompleteItem'
+  );
+};
+const getValidChildren = (children: React.ReactNode) =>
+  Children.toArray(children).filter((child) => isAutocompleteItem(child)) || [];
+
 const getOptionLabelByValue = (
-  children: ReactElement<AutocompleteItemProps>[],
+  children: AutocompleteProps['children'],
   value: string,
 ) => {
-  const optionLabel = children
-    ?.filter((child) => filterChildOption(child, value))
-    ?.find((child) => child?.props?.value === value)?.props?.children;
-
-  return optionLabel || '';
+  return (
+    getValidChildren(children).find((child) => child.props.value === value)
+      ?.props.children || ''
+  ).toString();
 };
 
 export const Autocomplete: FC<AutocompleteProps> = ({
@@ -125,18 +128,16 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const iconEndRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
-
   const [state, dispatch] = useReducer(reducer, {
     isOpen: false,
     value: defaultValue,
-    inputValue: '',
+    inputValue: defaultValue || '',
     autocompleteOptions: children,
     isClearButtonEnabled: false,
+    highlightedIndex: -1,
   });
 
-  const options = Children.toArray(state.autocompleteOptions).filter((child) =>
-    isValidElement(child),
-  ) as React.ReactElement[];
+  const options = getValidChildren(state.autocompleteOptions);
 
   const propagateOnChange = (inputValue: string) => {
     if (onAutocompleteChange && inputRef.current) {
@@ -156,7 +157,6 @@ export const Autocomplete: FC<AutocompleteProps> = ({
 
   const handleOnOpenChange = (isOpen: boolean) => {
     dispatch({ type: SET_IS_OPEN, payload: isOpen });
-
     if (!isOpen) {
       dispatch({ type: TOGGLE_CLEAR_BUTTON, payload: false });
     }
@@ -170,7 +170,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
     } = event;
 
     if (event.__origin === 'clear_button') {
-      dispatch({ type: ON_CLEAR });
+      dispatch({ type: ON_RESET });
       dispatch({ type: SET_IS_OPEN, payload: false });
       propagateOnChange('');
     } else {
@@ -181,6 +181,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
     }
 
     dispatch({ type: TOGGLE_CLEAR_BUTTON });
+    setTimeout(() => inputRef.current?.focus());
   };
 
   const handleOnIconEndClick = () => {
@@ -209,21 +210,14 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   };
 
   useEffect(() => {
-    const found: AutocompleteOptionItemElement | undefined = options.find(
-      (child): child is AutocompleteOptionItemElement => {
-        const type = (child.type as any)?.componentType;
-        if (type === 'AutocompleteItem') {
-          const item = child as AutocompleteOptionItemElement;
-          return item.props.value === state.value;
-        }
-        return false;
-      },
+    const option = options.find(
+      (child): child is AutocompleteOptionItemElement =>
+        isAutocompleteItem(child) && child.props.value === state.value,
     );
-
-    if (found) {
+    if (option) {
       dispatch({
         type: SET_INPUT_VALUE,
-        payload: found.props.children?.toString() || '',
+        payload: option.props.children?.toString() || '',
       });
     }
   }, [state.value]);
@@ -233,45 +227,87 @@ export const Autocomplete: FC<AutocompleteProps> = ({
       hasMountedRef.current = true;
       return;
     }
-
-    inputRef.current?.focus();
+    const isResetState = state.inputValue === '' && state.value === '';
+    if (isResetState) {
+      inputRef.current?.focus();
+    }
   }, [state.isClearButtonEnabled]);
 
   useEffect(() => {
     if (state.isOpen) {
       inputRef.current?.focus();
     } else {
-      const optionLabel = getOptionLabelByValue(children, state.value);
-
-      if (optionLabel && state.value) {
+      const label = getOptionLabelByValue(children, state.value);
+      if (label && state.value) {
         dispatch({
           type: SET_INPUT_VALUE,
-          payload: optionLabel,
+          payload: label,
         });
         dispatch({ type: SET_IS_OPEN, payload: false });
-        dispatch({ type: TOGGLE_CLEAR_BUTTON });
       } else {
-        dispatch({ type: ON_CLEAR });
-        dispatch({ type: TOGGLE_CLEAR_BUTTON });
+        dispatch({ type: ON_RESET });
       }
+      dispatch({ type: TOGGLE_CLEAR_BUTTON });
     }
   }, [state.isOpen]);
 
   useEffect(() => {
     if (state.inputValue && children) {
-      const newChildrenOptions = children.filter((child) =>
+      const validChildren = getValidChildren(children).filter((child) =>
         filterChildOption(child, state.inputValue),
       );
-      dispatch({ type: SET_OPTIONS, payload: newChildrenOptions });
+      dispatch({ type: SET_OPTIONS, payload: validChildren });
       if (!state.isOpen && !state.value) {
         dispatch({ type: SET_IS_OPEN, payload: true });
       }
     } else {
       dispatch({ type: SET_VALUE, payload: '' });
       dispatch({ type: SET_OPTIONS, payload: children });
-      dispatch({ type: SET_IS_OPEN, payload: true });
     }
   }, [state.inputValue]);
+
+  const handleOnKeyDown = (event: any) => {
+    const total = options.length;
+
+    const findNextEnabledIndex = (
+      currentIndex: number,
+      direction: 1 | -1,
+    ): number => {
+      let index = currentIndex;
+      for (let step = 0; step < total; step++) {
+        index = (index + direction + total) % total;
+        const candidateOption = options[index] as AutocompleteOptionItemElement;
+        // it skips disabled items
+        if (!candidateOption.props.disabled) {
+          return index;
+        }
+      }
+      return -1;
+    };
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      dispatch({
+        type: SET_HIGHLIGHTED_INDEX,
+        payload: state.isOpen
+          ? findNextEnabledIndex(state.highlightedIndex, 1)
+          : 0,
+      });
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      dispatch({
+        type: SET_HIGHLIGHTED_INDEX,
+        payload: findNextEnabledIndex(state.highlightedIndex, -1),
+      });
+    } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
+      const selected = options[
+        state.highlightedIndex
+      ] as AutocompleteOptionItemElement;
+      if (selected && selected.props.value && !selected.props.disabled) {
+        handleOnSelectItem(selected.props.value);
+      }
+    }
+  };
 
   return (
     <div
@@ -280,15 +316,16 @@ export const Autocomplete: FC<AutocompleteProps> = ({
       className={cn('gi-autocomplete', props.className)}
     >
       <InputText
+        onKeyDown={handleOnKeyDown}
         onIconEndClick={handleOnIconEndClick}
         onChange={handleOnChange}
         onClick={handleOnClick}
         clearButtonEnabled={state.isClearButtonEnabled}
         inputActionPosition="beforeSuffix"
-        aria-label="Select an option"
+        aria-label="Type to Search"
         aria-disabled={disabled}
         disabled={disabled}
-        placeholder={state.inputValue || 'Select'}
+        placeholder={state.inputValue || 'Type to Search'}
         iconEndClassName={cn({
           'gi-cursor-pointer': !disabled,
           'gi-cursor-not-allowed': disabled,
@@ -298,7 +335,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         ref={inputRef}
         iconEndRef={iconEndRef}
         value={state.inputValue}
-        defaultValue={defaultValue}
+        data-highlighted-index={state.highlightedIndex}
       />
       <Popover
         onOpenChange={handleOnOpenChange}
@@ -318,25 +355,16 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         }}
       >
         <SelectMenu onChange={handleOnSelectItem}>
-          {options.map((child) => {
-            const type = (child?.type as any)?.componentType;
-
-            if (type === 'AutocompleteItem') {
-              const typedChild = child as AutocompleteOptionItemElement;
-
-              return (
-                <SelectMenuOption
-                  key={`AutocompleteItem-${typedChild.props.value.toString()}`}
-                  {...typedChild.props}
-                  selected={
-                    state.value?.toString() ===
-                    typedChild.props.value.toString()
-                  }
-                />
-              );
-            }
-            return null;
-          })}
+          {options.map((child, index) =>
+            isAutocompleteItem(child) ? (
+              <SelectMenuOption
+                {...child.props}
+                key={`AutocompleteItem-${child.props.value}`}
+                selected={state.value === child.props.value}
+                isHighlighted={index === state.highlightedIndex}
+              />
+            ) : null,
+          )}
         </SelectMenu>
       </Popover>
     </div>
