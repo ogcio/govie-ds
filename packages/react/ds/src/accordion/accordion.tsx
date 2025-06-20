@@ -6,6 +6,7 @@ export type AccordionProps = {
   children: ReactElement<typeof AccordionItem>[];
   iconStart?: boolean;
   dataTestid?: string;
+  className?: string;
   variant?: 'default' | 'small';
 };
 
@@ -13,6 +14,7 @@ export const Accordion = ({
   children,
   iconStart,
   dataTestid,
+  className,
   variant = 'default',
 }: AccordionProps) => {
   return (
@@ -20,6 +22,7 @@ export const Accordion = ({
       data-testid={dataTestid}
       data-icon-start={iconStart}
       role="presentation"
+      className={cn('gi-w-full', className)}
     >
       {Children.map(children, (child, index) => {
         const isLastChild = index === Children.count(children) - 1;
