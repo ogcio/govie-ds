@@ -274,6 +274,69 @@ export const createTextInput = (arguments_: TextInputProps) => {
   return formField;
 };
 
+export const createInputPassword = (arguments_: TextInputProps) => {
+  const formField = createFormField(arguments_);
+
+  const container = document.createElement('div');
+  container.className =
+    `${arguments_.className || ''} gi-input-text-container`.trim();
+
+  const inner = document.createElement('div');
+  inner.className = 'gi-input-text-inner';
+
+  const input = document.createElement('input');
+  input.type = 'password';
+  input.className = 'gi-input-text';
+
+  if (arguments_.id) {
+    input.id = arguments_.id;
+  }
+
+  if (arguments_.name) {
+    input.name = arguments_.name;
+  }
+
+  if (arguments_.placeholder) {
+    input.placeholder = arguments_.placeholder;
+  }
+
+  if (arguments_.dataTestId) {
+    input.dataset.testid = arguments_.dataTestId;
+  }
+
+  if (arguments_.disabled) {
+    input.disabled = true;
+  }
+
+  if (arguments_.halfFluid) {
+    inner.classList.add('gi-input-half-width');
+  }
+
+  inner.append(input);
+
+  const endElement = document.createElement('div');
+  endElement.className = 'gi-input-text-end-element';
+  endElement.dataset.suffix = `${!!arguments_.suffix}`;
+  endElement.append(
+    createIconButton({
+      id: 'input-password-visibility-icon',
+      icon: {
+        icon: 'visibility',
+      },
+      variant: 'flat',
+      size: 'small',
+      appearance: 'dark',
+      disabled: arguments_.disabled,
+    }),
+  );
+
+  inner.append(endElement);
+  container.append(inner);
+  formField.append(container);
+
+  return formField;
+};
+
 export const createRadio = (arguments_: RadioProps) => {
   let widthClass = 'gi-w-8';
   let sizeClass = 'gi-input-radio-medium';

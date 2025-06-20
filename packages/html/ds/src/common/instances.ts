@@ -1,4 +1,5 @@
 import { Accordion } from '../accordion/accordion';
+import { InputPassword } from '../input-password/input-password';
 import { Alert } from '../alert/alert';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
@@ -30,8 +31,8 @@ const componentRegistry = {
   Alert,
   Toast,
   Accordion,
+  InputPassword,
   Drawer,
-  // TODO: additional component classes
 } as const;
 
 export type ComponentRegistryKey = keyof typeof componentRegistry;
