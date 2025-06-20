@@ -281,6 +281,8 @@ export const createInputPassword = (arguments_: TextInputProps) => {
   container.className =
     `${arguments_.className || ''} gi-input-text-container`.trim();
 
+  container.dataset.module = 'gieds-input-password';
+
   const inner = document.createElement('div');
   inner.className = 'gi-input-text-inner';
 
