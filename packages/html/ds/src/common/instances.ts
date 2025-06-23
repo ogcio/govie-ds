@@ -1,11 +1,11 @@
 import { Accordion } from '../accordion/accordion';
-import { InputPassword } from '../input-password/input-password';
 import { Alert } from '../alert/alert';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Drawer } from '../drawer/drawer';
 import { Header } from '../header/header';
 import { Checkboxes } from '../input-checkbox/input-checkbox';
+import { InputPassword } from '../input-password/input-password';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';

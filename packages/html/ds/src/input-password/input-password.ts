@@ -20,7 +20,9 @@ export class InputPassword extends BaseComponent<InputPasswordOptions> {
     );
   }
   initComponent() {
-    if (!this.inputEl || !this.toggleButton) return;
+    if (!this.inputEl || !this.toggleButton) {
+      return;
+    }
     this.toggleButton.addEventListener('click', this.toggleHandler);
   }
 
@@ -31,7 +33,9 @@ export class InputPassword extends BaseComponent<InputPasswordOptions> {
   }
 
   private toggleHandler = () => {
-    if (!this.inputEl || !this.toggleButton) return;
+    if (!this.inputEl || !this.toggleButton) {
+      return;
+    }
 
     const isPassword = this.inputEl.type === 'password';
     this.inputEl.type = isPassword ? 'text' : 'password';

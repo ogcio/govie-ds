@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ErrorSize } from '../error-text/types';
 import { createInputPassword } from '../helpers/forms';
+import { HintSize } from '../hint-text/types';
 import { LabelSize } from '../label/types';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { InputPasswordProps } from './types';
-import { HintSize } from '../hint-text/types';
-import { ErrorSize } from '../error-text/types';
 
 const meta: Meta<InputPasswordProps> = {
   title: 'Form/InputPassword',
