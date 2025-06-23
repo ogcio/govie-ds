@@ -1,0 +1,175 @@
+---
+title: Header
+description: Header Design Guidelines
+status: stable
+component:
+  id: 'header'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=258-2288'
+  status: 'stable'
+---
+
+# Header
+
+The Header component functions as a top-level navigation element for digital services across government departments and public sector organisations.
+It offers users a consistent and recognisable interface that builds trust, supports a unified brand identity, and delivers key navigation tools.
+Originally referred to as the GOV.IE masthead, this component is designed to signal to users that they are engaging with an official government service while providing easy access to essential site-wide features. It is adaptable for use beyond GOV.IE, supporting a broad range of departmental and agency websites.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose">
+  <Header
+    title="Application title"
+    addDefaultMobileMenu
+    items={[
+      { label: 'Departments', itemType: 'link', href: '#' },
+      { label: 'Services', itemType: 'link', href: '#' },
+      { itemType: 'divider' },
+      {
+        label: 'Search',
+        icon: 'search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ]}
+    secondaryLinks={[
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ]}
+  />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=258-2288" />
+
+## Structure
+
+The Header component accepts a variety of items including standard links, dividers, slots (custom content), and secondary links (e.g. language switchers). It supports responsive modes and can render differently on mobile and desktop.
+
+**Main sections:**
+
+- **Title or logo** — Identifies the application or service.
+- **Primary navigation** — Main links and content slots.
+- **Secondary links** — Typically language toggles or quick utilities.
+- **Custom slots** — Optional dynamic areas like search, menus, etc.
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col gap-10">
+  <ComponentPreviewItem className="block h-full w-full">
+    <Header />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="block h-full w-full">
+    <Header
+      items={[
+        {
+          href: '#',
+          itemType: 'link',
+          label: 'News',
+          showItemMode: 'desktop-only',
+        },
+        {
+          href: '#',
+          itemType: 'link',
+          label: 'Departments',
+          showItemMode: 'desktop-only',
+        },
+        {
+          href: '#',
+          itemType: 'link',
+          label: 'Services',
+          showItemMode: 'desktop-only',
+        },
+      ]}
+      logo={{
+        href: '/path',
+      }}
+    />
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="block h-full w-full">
+    <Header
+      items={[
+        {
+          component: <HeaderSearch />,
+          icon: 'search',
+          itemType: 'slot',
+          label: 'Search',
+          slotAppearance: 'dropdown',
+        },
+      ]}
+      logo={{
+        href: '/path',
+      }}
+      secondaryLinks={[
+        {
+          href: '#',
+          label: 'English',
+        },
+        {
+          href: '#',
+          label: 'Gaeilge',
+        },
+      ]}
+    />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+The GOV.IE header should appear at the top of every page on your service. It is used to clearly identify the service through a name or logo, provide meaningful top-level navigation, and offer access to useful tools such as search, language selectors, or accessibility options. These elements can be included using the header's slot system for customisation.
+
+### Do
+
+- Use the GOV.IE header at the top of every page on your service.
+- Clearly identify your service with a title or logo.
+- Include meaningful top-level navigation or search where relevant.
+- Use slot support to include relevant tools or quick access features.
+
+**Example:**
+
+<ComponentContainer fullWidth>
+  <Header
+    title="Tax Services"
+    items={[
+      { label: 'Home', itemType: 'link', href: '/' },
+      { itemType: 'divider' },
+      {
+        label: 'Search',
+        itemType: 'slot',
+        icon: 'search',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ]}
+    secondaryLinks={[
+      { href: '#', label: 'English' },
+      { href: '#', label: 'Gaeilge' },
+    ]}
+  />
+</ComponentContainer>
+
+### Don't
+
+- Ensure the service title is concise — long names can disrupt layout and readability.
+- Use the GOV.IE header on services not hosted under official GOV.IE domains.
+- Imitate GOV.IE design on third-party services without clear distinction.
+- Overload the header with too many complex components.
+- Use more than one header on a single page — this creates confusion and breaks consistency.
+
+**Example:**
+
+<ComponentContainer fullWidth>
+  <Header
+    title="Private App"
+    items={[
+      { label: 'Everything', itemType: 'link', href: '#' },
+      { label: 'Contact', itemType: 'link', href: '#' },
+      { label: 'More', itemType: 'link', href: '#' },
+    ]}
+  />
+</ComponentContainer>
+</Section>
