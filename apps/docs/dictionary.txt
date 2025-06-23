@@ -50,6 +50,7 @@ HeadingProps
 ICT
 IconButtonProps
 IconProps
+Iframe
 InputCheckbox
 InputCheckboxProps
 InputFile
@@ -155,7 +156,6 @@ color
 colors
 combobox
 components-scoreselect
-config
 customizable
 customization
 data-testid
@@ -192,7 +192,7 @@ htmlFor
 i18n
 iconEnd
 iconStart
-iframe
+iframes
 imageSmall
 inclusivity
 indexable
@@ -237,6 +237,7 @@ webpage
 webpages
 well-organized
 whitespace
+with-iframe-embed
 xl
 xs
 centralized
