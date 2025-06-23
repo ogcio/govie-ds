@@ -1,48 +1,13 @@
 ---
 title: Cookie Banner
-description: Cookie Banner HTML Component
-status: in-review
-libraries:
-  - platform: 'figma'
-    status: 'considering'
-  - platform: 'global'
-    link: '?path=/docs/application-cookiebanner--docs'
-    status: 'beta'
-  - platform: 'react'
-    link: '?path=/docs/application-cookiebanner--docs'
-    status: 'beta'
-component:
-  id: 'cookie-banner'
-  properties:
-    - name: CookieBannerProps
-      fields:
-        - name: 'children'
-          ofType: 'node'
-          description: 'The content to be displayed in the default cookie banner.'
-          required: true
-        - name: 'accept'
-          ofType: 'object'
-          description: 'An object specifying the content for the accepted cookie banner and the trigger button.'
-          required: false
-        - name: 'reject'
-          ofType: 'object'
-          description: 'An object specifying the content for the rejected cookie banner and the trigger button.'
-          required: false
-        - name: 'dismissButton'
-          ofType: 'node'
-          description: 'A button component used to dismiss the cookie banner.'
-          required: false
-        - name: 'cookieLink'
-          ofType: 'node'
-          description: 'A link component to navigate the user to the cookie policy page.'
-          required: false
+description: Cookie Banner
+status: stable
 ---
 
 # Cookie Banner
 
-## Variants
-
-### Default
+The Cookie Banner component is used to inform users about the use of cookies on a website and to obtain their consent for non-essential cookies. 
+It provides options for users to accept all cookies or only necessary cookies.
 
 <ComponentContainer>
   <CookieBanner
@@ -124,24 +89,15 @@ component:
 
 ## Properties
 
+> **Note:** The following properties apply only to the React implementation of the Cookie Banner component.
+
 <ComponentPropertiesTable componentId="cookie-banner" />
 
 ## Usage
 
-### Best Practices
+A cookie banner is required whenever your application or website manages user information or tracks user behavior. 
+This includes scenarios where cookies or similar technologies are used to collect analytics, personalize content, or store user preferences. 
+Informing users and obtaining their consent is essential for compliance with privacy regulations and for building user trust.
 
-### When to use this component
-
-Use this component if your service sets any cookies on a user’s device.
-
-This component page shows several options for using a cookie banner, based on the types of cookies you’re using in the service. We also tell you what to cover in your cookie banner, with some text examples.
-
-### When not to use this component
-
-You can choose not to have a cookie banner if the service only sets essential or ‘strictly necessary’ cookies, as these do not need user consent.
-
-However, you must tell users that you set essential cookies. You can do this with a cookies page – link to this page in the footer.
-
-## Status
-
-<ComponentStatusBlock componentId="cookie-banner" />
+According to GDPR legislation, the consent acquired from users must be stored securely and in a way that can be audited if required. 
+Ensure your implementation records the user's consent decision and provides a mechanism to retrieve or update this information if necessary.
