@@ -19,13 +19,6 @@ import {
   AutocompleteProps,
 } from './types.js';
 
-export const AutocompleteItem: FC<AutocompleteItemProps> = () => null;
-Object.defineProperty(AutocompleteItem, 'componentType', {
-  value: 'AutocompleteItem',
-  writable: false,
-  enumerable: false,
-});
-
 const {
   ON_RESET,
   ON_SELECT_ITEM,
@@ -131,7 +124,9 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   const [state, dispatch] = useReducer(reducer, {
     isOpen: false,
     value: defaultValue,
-    inputValue: defaultValue || '',
+    inputValue: defaultValue
+      ? getOptionLabelByValue(children, defaultValue)
+      : '',
     autocompleteOptions: children,
     isClearButtonEnabled: false,
     highlightedIndex: -1,
@@ -266,7 +261,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
     }
   }, [state.inputValue]);
 
-  const handleOnKeyDown = (event: any) => {
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const total = options.length;
 
     const findNextEnabledIndex = (
@@ -370,3 +365,10 @@ export const Autocomplete: FC<AutocompleteProps> = ({
     </div>
   );
 };
+
+export const AutocompleteItem: FC<AutocompleteItemProps> = () => null;
+Object.defineProperty(AutocompleteItem, 'componentType', {
+  value: 'AutocompleteItem',
+  writable: false,
+  enumerable: false,
+});

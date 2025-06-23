@@ -17,7 +17,7 @@ const meta = {
   component: Autocomplete,
   decorators: (Story) => {
     return (
-      <div className="gi-h-[330px]">
+      <div className="gi-h-[335px]">
         <Story />
       </div>
     );
@@ -127,5 +127,26 @@ export const WithDisabledOptions: Story = {
     const parentWithAria = disabledOption.closest('[aria-disabled]');
     expect(parentWithAria).toHaveAttribute('aria-disabled', 'true');
     await userEvent.click(document.body);
+  },
+};
+
+export const WithDisabled: Story = {
+  args: {
+    defaultValue: '',
+    children: [],
+  },
+  render: (props: AutocompleteProps) => (
+    <FormField label={{ text: 'With Disabled' }} className="gi-w-56">
+      <Autocomplete {...props} disabled>
+        {options.map(({ value, label }) => (
+          <AutocompleteItem value={value}>{label}</AutocompleteItem>
+        ))}
+      </Autocomplete>
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).toBeDisabled();
   },
 };
