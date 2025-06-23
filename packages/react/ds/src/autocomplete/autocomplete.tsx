@@ -1,3 +1,4 @@
+'use client';
 import {
   Children,
   FC,
@@ -93,10 +94,10 @@ const filterChildOption = (
 const isAutocompleteItem = (
   child: React.ReactNode,
 ): child is AutocompleteOptionItemElement => {
-  return (
-    isValidElement(child) &&
-    (child.type as any)?.componentType === 'AutocompleteItem'
-  );
+  const type =
+    (child as any)?.type?.componentType || (child as any)?.props?.__mdxType;
+
+  return isValidElement(child) && type === 'AutocompleteItem';
 };
 const getValidChildren = (children: React.ReactNode) =>
   Children.toArray(children).filter((child) => isAutocompleteItem(child)) || [];
@@ -308,7 +309,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
     <div
       {...props}
       aria-disabled={disabled}
-      className={cn('gi-autocomplete', props.className)}
+      className={cn('gi-autocomplete gi-not-prose', props.className)}
     >
       <InputText
         onKeyDown={handleOnKeyDown}
@@ -323,8 +324,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         placeholder={state.inputValue || 'Type to Search'}
         iconEndClassName={cn({
           'gi-cursor-pointer': !disabled,
-          'gi-cursor-not-allowed': disabled,
-          'gi-pointer-events-none': disabled,
+          'gi-cursor-not-allowed gi-pointer-events-none': disabled,
         })}
         iconEnd={state.isOpen ? 'arrow_drop_up' : 'arrow_drop_down'}
         ref={inputRef}

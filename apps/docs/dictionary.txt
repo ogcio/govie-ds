@@ -252,3 +252,7 @@ Iframe
 with-iframe-embed
 SelectNext
 form-select-selectnative
+form-autocomplete
+Autocomplete
+AutocompleteItem
+autocomplete

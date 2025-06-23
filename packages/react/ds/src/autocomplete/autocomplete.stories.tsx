@@ -8,6 +8,7 @@ const meta = {
   title: 'Form/Autocomplete',
   parameters: {
     docs: {
+      autoplay: false,
       description: {
         component:
           'Autocomplete component for selecting a value from a filtered list of options.',
