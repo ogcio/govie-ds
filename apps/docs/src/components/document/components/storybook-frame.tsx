@@ -46,7 +46,10 @@ export function StorybookFrame({
         <div className="relative">
           <iframe
             src={`${baseUrl}/iframe.html?id=${iframeId}`}
-            className={`gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center ${heightClassName || 'h-32'}`}
+            className={cn(
+              'gi-not-prose flex w-full border border-gray-200 shadow-sm shadow-gray-200 p-2 items-center justify-center h-32',
+              className,
+            )}
           ></iframe>
           <div className="p-2 bottom-0 right-0 absolute">
             <Link
