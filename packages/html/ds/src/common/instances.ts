@@ -5,6 +5,7 @@ import { CookieBanner } from '../cookie-banner/cookie-banner';
 import { Drawer } from '../drawer/drawer';
 import { Header } from '../header/header';
 import { Checkboxes } from '../input-checkbox/input-checkbox';
+import { InputPassword } from '../input-password/input-password';
 import { Modal } from '../modal/modal';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
@@ -30,8 +31,8 @@ const componentRegistry = {
   Alert,
   Toast,
   Accordion,
+  InputPassword,
   Drawer,
-  // TODO: additional component classes
 } as const;
 
 export type ComponentRegistryKey = keyof typeof componentRegistry;
