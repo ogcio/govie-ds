@@ -45,7 +45,9 @@ export const Default: Story = {
       <FormField label={{ text: 'Label' }} className="gi-w-56">
         <Autocomplete {...props}>
           {options.map(({ value, label }) => (
-            <AutocompleteItem value={value}>{label}</AutocompleteItem>
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
           ))}
         </Autocomplete>
       </FormField>
@@ -88,7 +90,9 @@ export const WithDefaultValue: Story = {
     <FormField label={{ text: 'With Default Value' }} className="gi-w-56">
       <Autocomplete {...props} defaultValue={options[1].value}>
         {options.map(({ value, label }) => (
-          <AutocompleteItem value={value}>{label}</AutocompleteItem>
+          <AutocompleteItem value={value} key={`${label}-${value}`}>
+            {label}
+          </AutocompleteItem>
         ))}
       </Autocomplete>
     </FormField>
@@ -109,11 +113,13 @@ export const WithDisabledOptions: Story = {
     <FormField label={{ text: 'With Disabled Options' }} className="gi-w-56">
       <Autocomplete {...props}>
         {[
-          <AutocompleteItem value="disabled" disabled>
+          <AutocompleteItem value="disabled" disabled key="disabled">
             Tester
           </AutocompleteItem>,
           ...options.map(({ value, label }) => (
-            <AutocompleteItem value={value}>{label}</AutocompleteItem>
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
           )),
         ]}
       </Autocomplete>
@@ -140,7 +146,9 @@ export const WithDisabled: Story = {
     <FormField label={{ text: 'With Disabled' }} className="gi-w-56">
       <Autocomplete {...props} disabled>
         {options.map(({ value, label }) => (
-          <AutocompleteItem value={value}>{label}</AutocompleteItem>
+          <AutocompleteItem value={value} key={`${label}-${value}`}>
+            {label}
+          </AutocompleteItem>
         ))}
       </Autocomplete>
     </FormField>
