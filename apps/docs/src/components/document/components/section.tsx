@@ -10,13 +10,13 @@ const baseTabs = [
     id: 'design',
     title: 'Design',
     href: '../design/',
-    excludes: ['popover'],
+    excludes: ['popover', 'autocomplete'],
   },
   {
     id: 'html',
     title: 'HTML',
     href: '../html/',
-    excludes: ['popover'],
+    excludes: ['popover', 'autocomplete'],
   },
   {
     id: 'react',

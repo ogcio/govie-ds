@@ -120,7 +120,11 @@ export const SelectNext = ({
   };
 
   return (
-    <div {...props} aria-disabled={disabled}>
+    <div
+      {...props}
+      aria-disabled={disabled}
+      className={cn('gi-select-next', props.className)}
+    >
       <InputText
         aria-label="Select an option"
         aria-disabled={disabled}

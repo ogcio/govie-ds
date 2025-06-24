@@ -59,6 +59,18 @@
 .gi-input-text-end-element {
   @apply gi-flex gi-absolute gi-z-200 gi-right-1;
 }
+
+.gi-input-text-action-before-suffix {
+  @apply gi-absolute gi-z-1;
+}
+
+.gi-input-text-action-before-suffix[data-has-icon-end='true'] {
+  @apply gi-right-7;
+}
+.gi-input-text-action-before-suffix[data-has-icon-end='false'] {
+  @apply gi-right-1;
+}
+
 .gi-input-half-width {
   @apply !gi-w-1/2;
 }

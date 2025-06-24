@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -22,6 +22,7 @@ const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
       const newInputEvent = {
         target: inputRef.current,
         currentTarget: inputRef.current,
+        __origin: 'clear_button',
       } as unknown as React.ChangeEvent<HTMLInputElement>;
 
       if (onChange) {
@@ -32,6 +33,7 @@ const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
     return (
       <Input
         {...props}
+        onChange={onChange}
         ref={inputRef}
         inputActionButton={{
           icon: 'close',
@@ -47,6 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
     {
       prefix,
       inputActionButton,
+      inputActionPosition = 'beforeSuffix',
       suffix,
       halfFluid = false,
       className,
@@ -59,10 +62,26 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
       onIconEndClick,
       disabled,
       inputClassName,
+      iconEndRef,
       ...props
     },
     ref,
   ) => {
+    const renderActionButton = useMemo(() => {
+      if (inputActionButton && inputActionPosition === 'beforeSuffix') {
+        return (
+          <div
+            className="gi-input-text-action-before-suffix"
+            data-suffix={!!suffix}
+            data-has-icon-end={!!iconEnd}
+          >
+            <InputActionButton {...inputActionButton} disabled={disabled} />
+          </div>
+        );
+      }
+      return null;
+    }, [inputActionButton]);
+
     return (
       <div className={cn(className, 'gi-input-text-container')}>
         {prefix && (
@@ -99,19 +118,23 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
           {iconEnd && (
             <div
               className={cn('gi-input-text-icon-end', iconEndClassName)}
-              data-end-element={!!inputActionButton}
+              data-end-element={
+                !!inputActionButton && inputActionPosition === 'afterSuffix'
+              }
               data-suffix={!!suffix}
               onClick={onIconEndClick}
+              ref={iconEndRef}
             >
               <Icon icon={iconEnd} size="md" disabled={disabled} />
             </div>
           )}
-          {inputActionButton && (
-            <div className="gi-input-text-end-element" data-suffix={!!suffix}>
-              <InputActionButton {...inputActionButton} disabled={disabled} />
-            </div>
-          )}
+          {renderActionButton}
         </div>
+        {inputActionButton && inputActionPosition === 'afterSuffix' && (
+          <div className="gi-input-text-end-element" data-suffix={!!suffix}>
+            <InputActionButton {...inputActionButton} disabled={disabled} />
+          </div>
+        )}
         {suffix && (
           <div className="gi-input-text-suffix" data-disabled={disabled}>
             {suffix}

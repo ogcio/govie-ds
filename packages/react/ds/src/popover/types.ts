@@ -7,4 +7,5 @@ export type PopoverProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   options?: PopperOptions;
+  extraRefs?: React.RefObject<any>[];
 };
