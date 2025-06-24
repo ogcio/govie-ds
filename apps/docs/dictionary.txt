@@ -242,3 +242,5 @@ whitespace
 with-iframe-embed
 xl
 xs
+dismissible
+is-dismissible 
