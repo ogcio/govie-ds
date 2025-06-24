@@ -1,0 +1,62 @@
+---
+title: Chip
+description: Chip Component Design Guidelines
+status: stable
+component:
+  id: 'chip'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1668-2029'
+  status: 'stable'
+---
+
+# Chip
+
+A Chip is a compact UI element that displays information, can be removed via a close button, and is ideal for tags, filters, or selection indicators.
+It allows users to close the chip using keyboard interactions. For accessibility, users can press the "Enter" or "Space" key to close the chip when it is focused.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Chip label="Label 1" />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1668-2029" />
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="h-auto">
+    <Chip label="Label" />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Chips are best used to represent compact pieces of information such as tags, selected filters, or items in a collection. They should remain short, actionable when necessary, and always accessible via keyboard and screen readers. Use them to enhance filtering systems, display selections, or categorize content, and make sure to provide a close action when removal is allowed. Avoid overloading chips with long labels or using them for actions that should be handled by buttons or links.
+
+### Do
+
+- Use Chips to show selected filters or tags.
+- Use clear, concise labels.
+- Make chips dismissible when relevant.
+- Ensure keyboard and screen reader support.
+
+<ComponentContainer>
+  <div className="flex gap-2">
+    <Chip label="Marketing" />
+    <Chip label="Engineering" />
+  </div>
+</ComponentContainer>
+
+### Don't
+
+- Don’t overload chips with long text.
+- Don’t use chips for primary actions.
+- Don’t rely on color alone to convey information.
+
+<ComponentContainer>
+  <div className="flex gap-2">
+    <Chip label="This is a very long label that should be shortened" />
+    <Chip label="Click Me!" />
+  </div>
+</ComponentContainer>
+
+</Section>
