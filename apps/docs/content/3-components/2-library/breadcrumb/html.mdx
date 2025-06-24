@@ -1,0 +1,50 @@
+---
+title: 'Breadcrumbs'
+description: 'Breadcrumbs HTML Component'
+status: stable
+component:
+  id: 'breadcrumbs-html'
+  link: '/docs/navigation-breadcrumbs--docs'
+  status: stable
+  stories:
+    - name: 'default'
+      url: '/story/navigation-breadcrumbs--default'
+    - name: 'without-ellipsis'
+      url: '/story/navigation-breadcrumbs--without-ellipsis'
+    - name: 'with-single-item-and-icon-start'
+      url: '/story/navigation-breadcrumbs--with-single-item-and-icon-start'
+---
+
+# Breadcrumbs
+
+The Breadcrumbs component displays the user's current location within a site's hierarchy and provides easy navigation to previous levels. It supports icons, custom links, and ellipsis to manage complex paths while maintaining accessibility and clarity.
+
+<Section current="html">
+
+<ComponentPreview>
+  <Breadcrumbs>
+    <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+    <BreadcrumbEllipsis />
+    <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+    <BreadcrumbCurrentLink href="/travel">Travel abroad</BreadcrumbCurrentLink>
+  </Breadcrumbs>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame story="default" componentId="breadcrumbs-html" />
+
+### Without Ellipsis
+
+<StorybookFrame story="without-ellipsis" componentId="breadcrumbs-html" />
+
+### With Single Item and Icon Start
+
+<StorybookFrame
+  story="with-single-item-and-icon-start"
+  componentId="breadcrumbs-html"
+/>
+
+</Section>

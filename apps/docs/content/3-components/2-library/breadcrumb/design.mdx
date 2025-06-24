@@ -1,0 +1,43 @@
+---
+title: 'Breadcrumbs'
+description: 'Breadcrumbs component design reference'
+status: stable
+component:
+  id: 'breadcrumbs'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3109-2186'
+  status: 'stable'
+---
+
+# Breadcrumbs
+
+The Breadcrumbs component displays the user's current location within a site's hierarchy and provides easy navigation to previous levels. It supports icons, custom links, and ellipsis to manage complex paths while maintaining accessibility and clarity.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Breadcrumbs>
+    <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+    <BreadcrumbEllipsis />
+    <BreadcrumbLink href="/travel">Travel</BreadcrumbLink>
+    <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>
+  </Breadcrumbs>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3109-2186" />
+
+## Usage
+
+Use breadcrumbs to help users understand their location within a website or application hierarchy and navigate back to higher levels easily.
+
+### Do
+
+- Use breadcrumbs when your content has a hierarchical structure.
+- Keep breadcrumb items concise and relevant.
+- Use ellipsis to avoid overloading when there are many levels.
+
+### Don't
+
+- Don’t use breadcrumbs in flat navigation structures.
+- Don’t include unnecessary levels just to fill space.
+- Don’t overload breadcrumbs with icons or complex elements.
+
+</Section>
