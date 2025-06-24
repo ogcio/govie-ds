@@ -176,36 +176,31 @@ export const WithLabelHintAndError = {
 
 export const WithoutLabel = {
   render: () => (
-    <SelectNext
-      aria-label="Select"
-      defaultValue="select-option"
-      className="gi-w-56"
-    >
-      <SelectItemNext value="select-option" hidden>
-        Select Option
-      </SelectItemNext>
-      <SelectItemNext value="value-1">Option 1</SelectItemNext>
-      <SelectItemNext value="value-2">Option 2</SelectItemNext>
-      <SelectItemNext value="value-3">Option 3</SelectItemNext>
-    </SelectNext>
+    <FormField className="gi-w-56">
+      <SelectNext aria-label="Select" defaultValue="select-option">
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext value="value-1">Option 1</SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+        <SelectItemNext value="value-3">Option 3</SelectItemNext>
+      </SelectNext>
+    </FormField>
   ),
 };
 
 export const DisabledSelect = {
   render: () => (
-    <SelectNext
-      aria-label="Select"
-      defaultValue="select-option"
-      disabled
-      className="gi-w-56"
-    >
-      <SelectItemNext value="select-option" hidden>
-        Select Option
-      </SelectItemNext>
-      <SelectItemNext value="value-1">Option 1</SelectItemNext>
-      <SelectItemNext value="value-2">Option 2</SelectItemNext>
-      <SelectItemNext value="value-3">Option 3</SelectItemNext>
-    </SelectNext>
+    <FormField className="gi-w-56">
+      <SelectNext aria-label="Select" defaultValue="select-option" disabled>
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext value="value-1">Option 1</SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+        <SelectItemNext value="value-3">Option 3</SelectItemNext>
+      </SelectNext>
+    </FormField>
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
@@ -216,20 +211,18 @@ export const DisabledSelect = {
 
 export const DisabledItem = {
   render: () => (
-    <SelectNext
-      aria-label="Select"
-      defaultValue="select-option"
-      className="gi-w-56"
-    >
-      <SelectItemNext value="select-option" hidden>
-        Select Option
-      </SelectItemNext>
-      <SelectItemNext disabled value="value-1">
-        Option 1
-      </SelectItemNext>
-      <SelectItemNext value="value-2">Option 2</SelectItemNext>
-      <SelectItemNext value="value-3">Option 3</SelectItemNext>
-    </SelectNext>
+    <FormField className="gi-w-56">
+      <SelectNext aria-label="Select" defaultValue="select-option">
+        <SelectItemNext value="select-option" hidden>
+          Select Option
+        </SelectItemNext>
+        <SelectItemNext disabled value="value-1">
+          Option 1
+        </SelectItemNext>
+        <SelectItemNext value="value-2">Option 2</SelectItemNext>
+        <SelectItemNext value="value-3">Option 3</SelectItemNext>
+      </SelectNext>
+    </FormField>
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);
@@ -279,24 +272,25 @@ export const WithSearchEnabled: StoryObj = {
 
 export const WithGroups = {
   render: () => (
-    <SelectNext
-      enableSearch
-      aria-label="Select"
-      data-testid="select"
-      defaultValue="value-1"
-      className="gi-w-56"
-    >
-      <SelectGroupItemNext label="Group 1" data-testid="select-group">
-        <SelectItemNext value="value-1">Option 1</SelectItemNext>
-        <SelectItemNext value="value-2">Option 2</SelectItemNext>
-        <SelectItemNext value="value-3">Option 3</SelectItemNext>
-      </SelectGroupItemNext>
-      <SelectGroupItemNext label="Group 2">
-        <SelectItemNext value="value-7">Option 7</SelectItemNext>
-        <SelectItemNext value="value-8">Option 8</SelectItemNext>
-        <SelectItemNext value="value-9">Option 9</SelectItemNext>
-      </SelectGroupItemNext>
-    </SelectNext>
+    <FormField label={{ text: 'Label' }} className="gi-w-56">
+      <SelectNext
+        enableSearch
+        aria-label="Select"
+        data-testid="select"
+        defaultValue="value-1"
+      >
+        <SelectGroupItemNext label="Group 1" data-testid="select-group">
+          <SelectItemNext value="value-1">Option 1</SelectItemNext>
+          <SelectItemNext value="value-2">Option 2</SelectItemNext>
+          <SelectItemNext value="value-3">Option 3</SelectItemNext>
+        </SelectGroupItemNext>
+        <SelectGroupItemNext label="Group 2">
+          <SelectItemNext value="value-7">Option 7</SelectItemNext>
+          <SelectItemNext value="value-8">Option 8</SelectItemNext>
+          <SelectItemNext value="value-9">Option 9</SelectItemNext>
+        </SelectGroupItemNext>
+      </SelectNext>
+    </FormField>
   ),
   play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
     const canvas = within(canvasElement);

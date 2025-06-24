@@ -5,6 +5,7 @@ export const iconIds = [
   'arrow_back', // Arrow back
   'arrow_downward', // Arrow downward
   'arrow_drop_down', // Arrow drop down
+  'arrow_drop_up', // Arrow drop up
   'arrow_forward', // Arrow forward
   'arrow_left_alt', // Arrow left
   'arrow_outward', // Arrow outward

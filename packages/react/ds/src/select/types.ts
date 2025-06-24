@@ -57,6 +57,7 @@ export type SelectMenuOptionProps = {
   className?: string;
   hidden?: boolean;
   enableSearch?: boolean;
+  isHighlighted?: boolean;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;

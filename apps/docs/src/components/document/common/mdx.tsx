@@ -6,6 +6,8 @@ import { TwoThirds, TwoThirdsOneThird } from '@/components/layouts/two-thirds';
 import { GovieLink } from '@/components/navigation/custom-link';
 import { cn } from '@/lib/cn';
 import {
+  Autocomplete,
+  AutocompleteItem,
   Accordion,
   AccordionItem,
   Alert,
@@ -183,6 +185,10 @@ const documentComponents: MDXComponents = {
   AccordionItem,
   Addresses,
   Alert,
+  Autocomplete,
+  AutocompleteItem: (props) => {
+    return <AutocompleteItem {...props} __mdxType="AutocompleteItem" />;
+  },
   Blockquote,
   BorderRadiusTable,
   BorderWidthTable,
