@@ -164,6 +164,7 @@ defaultValue
 digitalisation
 digitalising
 discoverable
+dismissible
 dropdown
 dropdowns
 eGovernment
