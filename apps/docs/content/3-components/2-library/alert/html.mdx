@@ -1,0 +1,56 @@
+---
+title: 'Alert HTML Component'
+description: 'Alert HTML Component'
+status: stable
+component:
+  id: 'alert-html'
+  link: '/docs/application-alert--docs'
+  status: stable
+  stories:
+    - name: 'info-alert'
+      url: '/story/application-alert--info-alert'
+    - name: 'danger-alert'
+      url: '/story/application-alert--danger-alert'
+    - name: 'success-alert'
+      url: '/story/application-alert--success-alert'
+    - name: 'warning-alert'
+      url: '/story/application-alert--warning-alert'
+    - name: 'is-dismissible'
+      url: '/story/application-alert--is-dismissible'
+---
+
+# Alert
+
+The Alert component is used to display important feedback messages to users. It supports different variants like success, warning, info, and danger, and may be dismissible.
+
+<Section current="html">
+
+<ComponentPreview>
+  <Alert title="Info Alert" variant="info" dismissible>
+    Content
+  </Alert>
+</ComponentPreview>
+
+## Example
+
+### Info Alert
+
+<StorybookFrame componentId="alert-html" story="info-alert" />
+
+### Danger Alert
+
+<StorybookFrame componentId="alert-html" story="danger-alert" />
+
+### Success Alert
+
+<StorybookFrame componentId="alert-html" story="success-alert" />
+
+### Warning Alert
+
+<StorybookFrame componentId="alert-html" story="warning-alert" />
+
+### Dismissible Alert
+
+<StorybookFrame componentId="alert-html" story="is-dismissible" />
+
+</Section>

@@ -1,0 +1,83 @@
+---
+title: 'Alert React Component'
+description: 'Alert React Component'
+status: stable
+component:
+  id: 'alert-react'
+  link: '/docs/application-alert--docs'
+  status: stable
+  properties:
+    - name: 'AlertProps'
+      fields:
+        - name: 'variant'
+          ofType: 'string'
+          description: 'A string that defines the style of the alert. Options include: info, danger, success, warning.'
+          required: false
+        - name: 'title'
+          ofType: 'string'
+          description: 'A string representing the title displayed at the top of the alert.'
+          required: false
+        - name: 'dismissible'
+          ofType: 'boolean'
+          description: 'A boolean that determines whether the alert can be closed by the user.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content (HTML or text) displayed inside the alert body.'
+          required: false
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'A callback function triggered when the alert is dismissed.'
+          required: false
+  stories:
+    - name: 'info-alert'
+      url: '/story/application-alert--info-alert'
+    - name: 'danger-alert'
+      url: '/story/application-alert--danger-alert'
+    - name: 'success-alert'
+      url: '/story/application-alert--success-alert'
+    - name: 'warning-alert'
+      url: '/story/application-alert--warning-alert'
+    - name: 'is-dismissible'
+      url: '/story/application-alert--is-dismissible'
+---
+
+# Alert
+
+The Alert component is used to display important feedback messages to users. It supports different variants like success, warning, info, and danger, and may be dismissible.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Alert title="Info Alert" variant="info" dismissible>
+    Content
+  </Alert>
+</ComponentPreview>
+
+## Example
+
+### Info Alert
+
+<StorybookFrame componentId="alert-react" story="info-alert" />
+
+### Danger Alert
+
+<StorybookFrame componentId="alert-react" story="danger-alert" />
+
+### Success Alert
+
+<StorybookFrame componentId="alert-react" story="success-alert" />
+
+### Warning Alert
+
+<StorybookFrame componentId="alert-react" story="warning-alert" />
+
+### Dismissible Alert
+
+<StorybookFrame componentId="alert-react" story="is-dismissible" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="alert-react" />
+
+</Section>
