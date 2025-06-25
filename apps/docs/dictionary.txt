@@ -8,6 +8,7 @@ AlertProps
 Arial
 Blockquote
 BlockquoteProps
+Blockquotes
 BreadcrumbCurrentLinkProps
 BreadcrumbEllipsis
 BreadcrumbEllipsisProps
@@ -146,6 +147,8 @@ anonymized
 application-cookiebanner
 application-progressstepper
 application-tooltip
+blockquote
+blockquotes
 breakpoint
 centered
 centralized
@@ -164,6 +167,7 @@ discoverable
 dropdown
 dropdowns
 eGovernment
+emphasize
 fadeinup
 favicon
 favoriting
