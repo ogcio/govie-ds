@@ -1,0 +1,91 @@
+---
+title: 'Alert'
+description: 'Alert Design Guidelines'
+status: stable
+component:
+  id: 'alert'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=2514-2017'
+  status: 'stable'
+---
+
+# Alert
+
+The Alert component is used to display important feedback messages to users. It supports different variants like success, warning, info, and danger, and may be dismissible.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Alert title="Info Alert" variant="info" dismissible>
+    Content
+  </Alert>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=2514-2017" />
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-105">
+    <Alert title="Info">This is an info alert</Alert>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <Alert title="Success" variant="success">
+      This is a success alert
+    </Alert>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <Alert title="Error" variant="danger">
+      This is an error alert
+    </Alert>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <Alert title="Warning" variant="warning">
+      This is a warning alert
+    </Alert>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <Alert title="Dismissible" dismissible>
+      This is a dismissible alert
+    </Alert>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use alerts to provide contextual feedback messages for typical user actions. These messages are often used to inform users of success, error, or warning states.
+
+### Do
+
+- Use appropriate variants for different message contexts (info, success, warning, danger).
+- Keep messages short and actionable.
+- Use dismissible alerts when users can safely ignore the message.
+- Place alerts in prominent locations within the UI.
+- Provide accessible labels and roles.
+
+**Example:**
+
+<ComponentContainer>
+  <Alert title="Update saved" variant="success" dismissible>
+    Your profile information was successfully updated.
+  </Alert>
+</ComponentContainer>
+
+### Don't
+
+- Don't use alerts to display large blocks of text.
+- Don't use alerts for interactive content.
+- Don't show multiple alerts stacked unnecessarily.
+- Don't rely solely on color to convey meaning.
+- Don't use alerts for permanent messages.
+
+**Example:**
+
+<ComponentContainer>
+  <Alert title="This alert contains too much content and interactivity">
+    <div>
+      <button>Click Me</button>
+      <p>This alert is trying to do too much and overwhelms the user.</p>
+    </div>
+  </Alert>
+</ComponentContainer>
+
+</Section>

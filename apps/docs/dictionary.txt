@@ -243,6 +243,7 @@ whitespace
 with-iframe-embed
 xl
 xs
+dismissible
 centralized
 prebuilt
 isOpen
@@ -260,3 +261,4 @@ form-autocomplete
 Autocomplete
 AutocompleteItem
 autocomplete
+is-dismissible 
