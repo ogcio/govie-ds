@@ -1,5 +1,6 @@
 .gi-alert-base {
   @apply gi-relative gi-flex-row gi-flex gi-p-3 gi-border-xs gi-rounded-sm gi-gap-2 gi-max-w-[640px];
+  width: inherit;
 }
 
 .gi-alert-base-dismissible {
