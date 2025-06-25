@@ -22,12 +22,13 @@ const hintText = tv({
 
 export const HintText: React.FC<HintTextProps> = ({
   text,
+  children,
   className,
   size = HintSize.Medium,
   ...props
 }) => (
   <div className={hintText({ size, className })} {...props}>
-    {text}
+    {children ?? text}
   </div>
 );
 

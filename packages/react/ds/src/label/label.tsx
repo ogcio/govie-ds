@@ -23,10 +23,10 @@ const label = tv({
 });
 
 export const Label = forwardRef<HTMLLabelElement, LabelTextProps>(
-  ({ text, size = LabelSize.Medium, className, ...props }, ref) => {
+  ({ text, size = LabelSize.Medium, className, children, ...props }, ref) => {
     return (
       <label className={label({ size, className })} ref={ref} {...props}>
-        {text}
+        {children ?? text}
       </label>
     );
   },
