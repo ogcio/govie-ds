@@ -3,6 +3,7 @@ import React, {
   ChangeEvent,
   forwardRef,
   TextareaHTMLAttributes,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -30,6 +31,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
 export const TextArea = forwardRef(
   (
     {
+      value,
       rows = 4,
       cols = 100,
       autoComplete = 'on',
@@ -49,13 +51,21 @@ export const TextArea = forwardRef(
 
     useImperativeHandle(externalRef, () => inputRef.current!);
 
-    const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const {
-        target: { value },
-      } = event;
+    const [internalValue, setInternalValue] = useState<string>('');
 
-      if (maxChars) {
-        setRemainingChars(maxChars - (value as string)?.length || 0);
+    const currentValue = typeof value === 'string' ? value : internalValue;
+
+    useEffect(() => {
+      if (maxChars !== undefined) {
+        setRemainingChars(maxChars - currentValue.length);
+      }
+    }, [currentValue, maxChars]);
+
+    const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+
+      if (value === undefined) {
+        setInternalValue(newValue);
       }
 
       if (props.onChange) {
