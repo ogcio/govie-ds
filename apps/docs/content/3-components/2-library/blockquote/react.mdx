@@ -1,0 +1,52 @@
+---
+title: Blockquote
+description: Blockquote React Component
+status: stable
+component:
+  id: 'blockquote-react'
+  link: '/docs/typography-blockquote--docs'
+  status: 'stable'
+  properties:
+    - name: BlockquoteProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or component that will be displayed as the main content of the blockquote.'
+          required: true
+        - name: 'cite'
+          ofType: 'string'
+          description: 'A string representing the source of the quotation. This can be a URL or a plain text description.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-blockquote--default'
+---
+
+# Blockquote
+
+The `Blockquote` React component is used to semantically and visually highlight quoted content. It accepts children as the main content and an optional `cite` prop to provide attribution or a source link. Ideal for showcasing user testimonials, legal statements, or externally referenced information.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Blockquote cite="https://example.com/source">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </Blockquote>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  className="h-auto"
+  componentId="blockquote-react"
+  story="default"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="blockquote-react" />
+
+</Section>
