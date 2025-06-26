@@ -1,0 +1,63 @@
+---
+title: Blockquote
+description: Blockquote Design Guidelines
+status: stable
+component:
+  id: 'blockquote'
+  status: 'stable'
+---
+
+# Blockquote
+
+Use the blockquote component to visually emphasise quoted or cited content, especially when referencing external sources or highlighting key statements.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Blockquote cite="https://example.com/source">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </Blockquote>
+</ComponentPreview>
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="block h-auto w-max">
+    <Blockquote cite="https://example.com/source">
+      The source URL or description for the quotation.
+    </Blockquote>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Blockquotes are used to display content quoted from another source. They help draw attention to important excerpts or testimonials and should include a citation when referencing external content.
+
+### Do
+
+- Use blockquotes to highlight important or quoted content.
+- Always include a citation when quoting external sources.
+- Ensure accessibility by using semantic elements properly.
+- Keep the content concise and relevant to the surrounding text.
+
+<ComponentContainer>
+  <Blockquote cite="https://gov.uk/lpa">
+    It can take up to 8 weeks to register a lasting power of attorney if there
+    are no mistakes in the application.
+  </Blockquote>
+</ComponentContainer>
+
+### Don't
+
+- Don’t use blockquotes for styling non-quoted content.
+- Avoid overusing blockquotes; they should emphasise, not distract.
+- Don’t omit the citation when the quote is from an external source.
+- Avoid nesting blockquotes unless absolutely necessary.
+
+<ComponentContainer fullWidth>
+  <Blockquote>
+    Click below to continue
+  </Blockquote>
+</ComponentContainer>
+</Section>
