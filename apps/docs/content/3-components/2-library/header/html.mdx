@@ -1,0 +1,77 @@
+---
+title: Header
+description: Header HTML Component
+status: stable
+component:
+  id: 'header-html'
+  link: '?path=/docs/layout-header--docs'
+  status: 'stable'
+  stories:
+    - name: 'full-width'
+      url: '/story/layout-header--full-width'
+    - name: 'secondary-links'
+      url: '/story/layout-header--with-secondary-links'
+    - name: 'no-links'
+      url: '/story/layout-header--no-links'
+---
+
+# Header
+
+<Section current="html">
+
+<ComponentPreview className="block w-full gi-not-prose">
+  <Header
+    title="Application title"
+    addDefaultMobileMenu
+    items={[
+      { label: 'Departments', itemType: 'link', href: '#' },
+      { label: 'Services', itemType: 'link', href: '#' },
+      { itemType: 'divider' },
+      {
+        label: 'Search',
+        icon: 'search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ]}
+    secondaryLinks={[
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        href: '#',
+        label: 'English',
+      },
+    ]}
+  />
+</ComponentPreview>
+
+## Examples
+
+### Full Width
+
+<StorybookFrame
+  className="h-52 p-1"
+  componentId="header-html"
+  story="full-width"
+/>
+
+### With Secondary Links
+
+<StorybookFrame
+  className="h-52 p-1"
+  componentId="header-html"
+  story="secondary-links"
+/>
+
+### With No Links
+
+<StorybookFrame
+  className="h-auto p-1"
+  componentId="header-html"
+  story="no-links"
+/>
+
+</Section>

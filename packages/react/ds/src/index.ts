@@ -4,6 +4,11 @@ export {
 } from './accordion/accordion-item.js';
 export { Accordion, type AccordionProps } from './accordion/accordion.js';
 export { Alert, type AlertProps } from './alert/alert.js';
+export { Autocomplete, AutocompleteItem } from './autocomplete/autocomplete.js';
+export type {
+  AutocompleteItemProps,
+  AutocompleteProps,
+} from './autocomplete/types.js';
 export { Blockquote, type BlockquoteProps } from './blockquote/blockquote.js';
 export {
   BreadcrumbCurrentLink,

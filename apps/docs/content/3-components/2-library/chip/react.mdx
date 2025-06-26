@@ -1,0 +1,45 @@
+---
+title: Chip
+description: Chip React Component
+status: stable
+component:
+  id: 'chip-react'
+  link: '/docs/components-chip--docs'
+  status: 'stable'
+  properties:
+    - name: ChipProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'A string that defines the content displayed inside the chip.'
+          required: true
+        - name: 'onClose'
+          ofType: 'function'
+          description: "A function that gets triggered when the chip's close action is invoked (e.g., clicking a dismiss button)."
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/components-chip--default'
+---
+
+# Chip
+
+The Chip component in React is used to display compact, contextual information such as tags or filters. It accepts a `label` prop to define the content and optionally an `onClose` callback if the chip should be dismissible. Chips are fully accessible by default and support keyboard interactions like `Enter` and `Space` to trigger dismissal when focused.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Chip label="Label" />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame className="h-20" componentId="chip-react" story="default" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="chip-react" />
+
+</Section>
