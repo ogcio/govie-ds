@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   const headerProps: HeaderProps = {
     fullWidth: true,
-    title: 'Gov IE Design System',
+    title: 'Design System',
     logo: {
       href: '/',
     },
