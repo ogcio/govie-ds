@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.10.0](https://github.com/ogcio/govie-ds/compare/docs-v1.9.0...docs-v1.10.0) (2025-06-27)
+
+
+### Features
+
+* Autocomplete component + Breadcrumbs docs ([#596](https://github.com/ogcio/govie-ds/issues/596)) ([aec27b7](https://github.com/ogcio/govie-ds/commit/aec27b7ccf227075f8a20a31e1b9e14f12740d23))
+* Label, Hint and Error supports rich content ([#604](https://github.com/ogcio/govie-ds/issues/604)) ([bc9503b](https://github.com/ogcio/govie-ds/commit/bc9503b6df37ae15715a72204a25fa547cb27405))
+* SelectNext + Popover components ([#590](https://github.com/ogcio/govie-ds/issues/590)) ([83b5963](https://github.com/ogcio/govie-ds/commit/83b59638f0f561cf05418bbb8a45788e9e5dee5d))
+
+
+### Bug Fixes
+
+* add input password html component and associated documentation ([#597](https://github.com/ogcio/govie-ds/issues/597)) ([678abad](https://github.com/ogcio/govie-ds/commit/678abadcdeeb1e010d72d84457bfcbe0e6ba3ff0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @govie-ds/react bumped to 1.10.0
+    * @govie-ds/tailwind bumped to 1.9.0
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/docs-v1.8.4...docs-v1.9.0) (2025-06-17)
 
 

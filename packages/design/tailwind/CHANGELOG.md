@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [1.9.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.4...design-tailwind-v1.9.0) (2025-06-27)
+
+
+### Features
+
+* Autocomplete component + Breadcrumbs docs ([#596](https://github.com/ogcio/govie-ds/issues/596)) ([aec27b7](https://github.com/ogcio/govie-ds/commit/aec27b7ccf227075f8a20a31e1b9e14f12740d23))
+* SelectNext + Popover components ([#590](https://github.com/ogcio/govie-ds/issues/590)) ([83b5963](https://github.com/ogcio/govie-ds/commit/83b59638f0f561cf05418bbb8a45788e9e5dee5d))
+
 ## [1.8.4](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.3...design-tailwind-v1.8.4) (2025-06-17)
 
 
