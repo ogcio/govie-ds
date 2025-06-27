@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [1.10.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.9.0...react-lib-v1.10.0) (2025-06-27)
+
+
+### Features
+
+* Autocomplete component + Breadcrumbs docs ([#596](https://github.com/ogcio/govie-ds/issues/596)) ([aec27b7](https://github.com/ogcio/govie-ds/commit/aec27b7ccf227075f8a20a31e1b9e14f12740d23))
+* Label, Hint and Error supports rich content ([#604](https://github.com/ogcio/govie-ds/issues/604)) ([bc9503b](https://github.com/ogcio/govie-ds/commit/bc9503b6df37ae15715a72204a25fa547cb27405))
+* SelectNext + Popover components ([#590](https://github.com/ogcio/govie-ds/issues/590)) ([83b5963](https://github.com/ogcio/govie-ds/commit/83b59638f0f561cf05418bbb8a45788e9e5dee5d))
+
+
+### Bug Fixes
+
+* update TextArea for controlled and uncontrolled usecases ([#605](https://github.com/ogcio/govie-ds/issues/605)) ([1ac8faf](https://github.com/ogcio/govie-ds/commit/1ac8faf5906eb9945eba5f400af0967ec3fd479b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @govie-ds/tailwind bumped to 1.9.0
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.3...react-lib-v1.9.0) (2025-06-17)
 
 
