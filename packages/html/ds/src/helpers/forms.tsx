@@ -15,7 +15,7 @@ export const createLabel = (labelProps: LabelProps) => {
   label.className =
     `gi-text-${size || 'md'} gi-label ${labelProps.className || ''}`.trim();
   if (labelProps.content) {
-    label.textContent = labelProps.content;
+    label.innerHTML = labelProps.content;
   }
   if (labelProps.htmlFor) {
     label.htmlFor = labelProps.htmlFor;
@@ -29,7 +29,7 @@ export const createHintText = (hintProps: HintTextProps) => {
   hint.className =
     `gi-hint-text-${size || 'md'} gi-hint-text ${hintProps.className || ''}`.trim();
   if (hintProps.content) {
-    hint.textContent = hintProps.content;
+    hint.innerHTML = hintProps.content;
   }
 
   return hint;
@@ -41,7 +41,7 @@ export const createErrorText = (errorProps: ErrorTextProps) => {
   errorText.className =
     `gi-error-text-${size || 'md'} gi-error-text ${errorProps.className || ''}`.trim();
   if (errorProps.content) {
-    errorText.textContent = errorProps.content;
+    errorText.innerHTML = errorProps.content;
   }
   errorText.role = 'alert';
 
@@ -73,14 +73,14 @@ export const createFormField = (formFieldProps: {
       className: 'gi-font-bold',
     });
     container.append(label);
+    wrapper.append(container);
   }
 
   if (formFieldProps.hint) {
     const hint = createHintText(formFieldProps.hint);
     container.append(hint);
+    wrapper.append(container);
   }
-
-  wrapper.append(container);
 
   if (formFieldProps.error) {
     const error = createErrorText(formFieldProps.error);

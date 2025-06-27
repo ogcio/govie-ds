@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { Icon } from '../icon/icon.js';
+import { Link } from '../link/link.js';
 import { Label, LabelSize } from './label.js';
 
 const meta = {
@@ -97,5 +99,22 @@ export const Large: Story = {
     const canvas = within(canvasElement);
     const label = canvas.getByText('This is label text');
     expect(label).toHaveClass('gi-text-lg');
+  },
+};
+
+export const WithRichText: Story = {
+  args: {
+    size: LabelSize.Medium,
+    children: (
+      <div className="gi-flex">
+        Here is a rich label &nbsp;<Link href="#">Click here </Link>
+        <Icon icon="arrow_drop_up" />
+      </div>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('Here is a rich label');
+    expect(hint).toHaveClass('gi-flex');
   },
 };

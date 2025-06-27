@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { within, expect } from '@storybook/test';
+import { Icon } from '../icon/icon.js';
 import { ErrorSize, ErrorText } from './error-text.js';
 
 const meta = {
@@ -77,5 +78,22 @@ export const Large: Story = {
     const canvas = within(canvasElement);
     const error = canvas.getByText('This is error text');
     expect(error).toHaveClass('gi-error-text-lg');
+  },
+};
+
+export const WithRichText: Story = {
+  args: {
+    size: ErrorSize.Medium,
+    text: (
+      <div className="gi-flex">
+        Error message &nbsp;
+        <Icon icon="error" />
+      </div>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const error = canvas.getByText('Error message');
+    expect(error).toHaveClass('gi-flex');
   },
 };

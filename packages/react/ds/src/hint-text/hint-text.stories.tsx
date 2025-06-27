@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
+import { Icon } from '../icon/icon.js';
+import { Link } from '../link/link.js';
 import { HintSize, HintText } from './hint-text.js';
 
 const meta = {
@@ -76,5 +78,22 @@ export const Large: Story = {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
     expect(hint).toHaveClass('gi-hint-text-lg');
+  },
+};
+
+export const WithRichText: Story = {
+  args: {
+    size: HintSize.Medium,
+    children: (
+      <div className="gi-flex">
+        Here is a rich hint &nbsp;<Link href="#">Click here </Link>
+        <Icon icon="arrow_drop_up" />
+      </div>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const hint = canvas.getByText('Here is a rich hint');
+    expect(hint).toHaveClass('gi-flex');
   },
 };

@@ -23,6 +23,22 @@ export const FormField = ({
   className,
   ...props
 }: FormFieldProps) => {
+  const renderTextComponent = (type: string, props: any) => {
+    const Component = type === 'error' ? ErrorText : HintText;
+
+    if (!props?.text) {
+      return null;
+    }
+
+    return typeof props.text === 'string' ? (
+      <Component text={props.text} size={props.size} className="gi-mb-1" />
+    ) : (
+      <Component size={props.size} className="gi-mb-1">
+        {props.text}
+      </Component>
+    );
+  };
+
   return (
     <fieldset className={cn({ 'gi-error-state': error }, className)} {...props}>
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
@@ -37,14 +53,9 @@ export const FormField = ({
               {label.children}
             </Label>
           )}
-
-          {hint?.text && (
-            <HintText text={hint.text} size={hint.size} className="gi-mb-1" />
-          )}
+          {renderTextComponent('hint', hint)}
         </div>
-        {error?.text && (
-          <ErrorText text={error.text} size={error.size} className="gi-mb-1" />
-        )}
+        {renderTextComponent('error', error)}
       </div>
 
       <Slottable>{children}</Slottable>

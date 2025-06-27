@@ -25,6 +25,7 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
   className,
   size = ErrorSize.Medium,
   dataTestid,
+  children,
   ...props
 }) => (
   <div
@@ -33,7 +34,7 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
     data-testid={dataTestid}
     {...props}
   >
-    {text}
+    {children ?? text}
   </div>
 );
 
