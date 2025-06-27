@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { createTextInput } from '../helpers/forms';
+import { createIcon } from '../helpers/icons';
+import { createLink } from '../helpers/links';
 import { LabelSize } from '../label/types';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TextInputProps } from './types';
@@ -391,6 +393,45 @@ export const InputWithIconEndOnly: Story = {
     label: { content: 'Label' },
     iconEnd: 'person',
     placeholder: 'Placeholder',
+  },
+  render: (props) => createElement(props),
+};
+
+export const WithRichHintText: Story = {
+  args: {
+    id: 'input-text-id',
+    hint: {
+      content: `<div class="gi-flex">
+                  Here is a rich hint &nbsp;${beautifyHtmlNode(createLink({ href: '#', content: 'Click here' }))}
+                  ${beautifyHtmlNode(createIcon({ icon: 'arrow_drop_up', className: 'gi-contents' }))}
+                </div>`,
+    },
+  },
+  render: (props) => createElement(props),
+};
+
+export const WithRichErrorText: Story = {
+  args: {
+    id: 'input-text-id',
+    error: {
+      content: `<div class="gi-flex">
+                 Error message &nbsp;
+                  ${beautifyHtmlNode(createIcon({ icon: 'error' }))}
+                </div>`,
+    },
+  },
+  render: (props) => createElement(props),
+};
+
+export const WithRichLabelText: Story = {
+  args: {
+    id: 'input-text-id',
+    label: {
+      content: `<div class="gi-flex">
+                 Label message &nbsp;
+                  ${beautifyHtmlNode(createIcon({ icon: 'info' }))}
+                </div>`,
+    },
   },
   render: (props) => createElement(props),
 };
