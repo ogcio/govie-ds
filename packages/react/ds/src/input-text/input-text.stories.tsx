@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
 import { FormField } from '../forms/form-field.js';
+import { Icon } from '../icon/icon.js';
+import { Link } from '../link/link.js';
 import { InputText } from './input-text.js';
 
 const meta = {
@@ -512,6 +514,81 @@ export const WithTextInputSearch: Story = {
       <FormField
         label={{
           text: 'Input Label',
+          htmlFor: 'input-text-id',
+        }}
+      >
+        <InputText type="search" placeholder="Placeholder" />
+      </FormField>
+    );
+  },
+};
+
+export const WithRichHintText: Story = {
+  args: {
+    id: 'input-text-id',
+  },
+  render: () => {
+    return (
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'input-text-id',
+        }}
+        hint={{
+          text: (
+            <div className="gi-flex ">
+              Here is a rich hint &nbsp;<Link href="#">Click here </Link>
+              <Icon icon="arrow_drop_up" />
+            </div>
+          ),
+        }}
+      >
+        <InputText type="search" placeholder="Placeholder" />
+      </FormField>
+    );
+  },
+};
+
+export const WithRichErrorText: Story = {
+  args: {
+    id: 'input-text-id',
+  },
+  render: () => {
+    return (
+      <FormField
+        label={{
+          text: 'Input Label',
+          htmlFor: 'input-text-id',
+        }}
+        error={{
+          text: (
+            <div className="gi-flex">
+              Error message &nbsp;
+              <Icon icon="error" />
+            </div>
+          ),
+        }}
+      >
+        <InputText type="search" placeholder="Placeholder" />
+      </FormField>
+    );
+  },
+};
+
+export const WithRichLabelText: Story = {
+  args: {
+    id: 'input-text-id',
+  },
+  render: () => {
+    return (
+      <FormField
+        label={{
+          text: (
+            <div className="gi-flex">
+              Label message &nbsp;
+              <Icon icon="info" />
+            </div>
+          ),
           htmlFor: 'input-text-id',
         }}
       >
