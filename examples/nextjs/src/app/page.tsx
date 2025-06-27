@@ -1,6 +1,7 @@
-'use client';
-import NextLink from 'next/link';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
+"use client";
+import NextLink from "next/link";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
+import { useForm, Controller } from "react-hook-form";
 import {
   Alert,
   BreadcrumbCurrentLink,
@@ -54,66 +55,93 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
-} from '@govie-ds/react';
+} from "@govie-ds/react";
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Departments",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Services",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
+      itemType: "divider",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      href: '/item1',
-      showItemMode: 'desktop-only',
+      label: "Home",
+      icon: "home",
+      itemType: "link",
+      href: "/item1",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
+      label: "Search",
+      icon: "search",
+      itemType: "slot",
       component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
+      slotAppearance: "dropdown",
+      showItemMode: "desktop-only",
     },
   ],
   secondaryLinks: [
     {
-      href: '#',
-      label: 'English',
+      href: "#",
+      label: "English",
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      href: "#",
+      label: "Gaeilge",
     },
   ],
 };
 
+function MyForm() {
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      myText: "",
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    console.log("Form Data:", data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="myText"
+        control={control}
+        rules={{ maxLength: 50 }}
+        render={({ field, fieldState }) => (
+          <>
+            <TextArea id="textarea-id" maxChars={50} {...field} />
+          </>
+        )}
+      />
+    </form>
+  );
+}
+
 const handleCreateToast = (
   title: string,
   variant: ToastVariant,
-  slotAction?: any,
+  slotAction?: any
 ) =>
   toaster.create({
     title,
     variant,
-    description: 'This is a toast notification.',
+    description: "This is a toast notification.",
     position: {
-      x: 'right',
-      y: 'bottom',
+      x: "right",
+      y: "bottom",
     },
     duration: 3000,
     dismissible: true,
@@ -125,7 +153,7 @@ export default function Home() {
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: '/' }}
+        logo={{ href: "/" }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -140,28 +168,28 @@ export default function Home() {
         Text Input Password
         <InputPassword />
         <br />
-        <Button onClick={() => handleCreateToast('Success', 'success')}>
+        <Button onClick={() => handleCreateToast("Success", "success")}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+        <Button onClick={() => handleCreateToast("Error", "danger")}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Info', 'info')}>
+        <Button onClick={() => handleCreateToast("Info", "info")}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+        <Button onClick={() => handleCreateToast("Warning", "warning")}>
           Trigger Warning Toast via callback
         </Button>
         <br />
         <Button
           onClick={() =>
             handleCreateToast(
-              'Success',
-              'success',
-              <NextLink href="#">Custom Nextjs Link</NextLink>,
+              "Success",
+              "success",
+              <NextLink href="#">Custom Nextjs Link</NextLink>
             )
           }
         >
@@ -191,25 +219,25 @@ export default function Home() {
           <h2>Card</h2>
           <Card
             action={{
-              children: 'Button',
-              type: 'button',
-              variant: 'secondary',
+              children: "Button",
+              type: "button",
+              variant: "secondary",
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             href="#"
             inset="none"
             media={{
               config: {
-                alt: 'Card Title',
-                aspectRatio: '4 / 3',
-                src: 'https://placeholderjs.com/400x300',
+                alt: "Card Title",
+                aspectRatio: "4 / 3",
+                src: "https://placeholderjs.com/400x300",
               },
-              type: 'image',
+              type: "image",
             }}
             subTitle="Subheading"
             tag={{
-              text: 'New',
-              type: 'info',
+              text: "New",
+              type: "info",
             }}
             title="Card Title"
             type="horizontal"
@@ -217,10 +245,10 @@ export default function Home() {
           <h2>Card with Nextjs Link</h2>
           <Card
             action={{
-              children: 'Learn More',
-              href: '#',
-              size: 'md',
-              type: 'link',
+              children: "Learn More",
+              href: "#",
+              size: "md",
+              type: "link",
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             title="Vertical Card Without Image"
@@ -242,8 +270,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Form>
@@ -283,7 +311,7 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <FormField label={{ text: 'Where do you live?' }}>
+          <FormField label={{ text: "Where do you live?" }}>
             <InputRadioGroup groupId="city">
               <InputRadio value="dublin" label="Dublin" />
               <InputRadio value="cork" label="Cork" />
@@ -292,14 +320,25 @@ export default function Home() {
           </FormField>
           <FormField
             hint={{
-              text: 'Hint: This is a helpful hint.',
+              text: "Hint: This is a helpful hint.",
             }}
             label={{
-              text: 'Textarea text',
-              htmlFor: 'textarea-id',
+              text: "Textarea with React Hook Form",
+              htmlFor: "textarea-id",
             }}
           >
-            <TextArea id="textarea-id" maxChars={50} />
+            <MyForm />
+          </FormField>
+          <FormField
+            hint={{
+              text: "Hint: This is a helpful hint.",
+            }}
+            label={{
+              text: "Textarea Component without React Hook Form",
+              htmlFor: "textarea-id2",
+            }}
+          >
+            <TextArea id="textarea-id2" maxChars={50} />
           </FormField>
 
           <span className="material-symbols-outlined">face</span>
@@ -345,11 +384,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}

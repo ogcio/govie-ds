@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@govie-ds/theme-govie": "workspace:*",
     "@govie-ds/react": "workspace:*",
+    "@govie-ds/theme-govie": "workspace:*",
     "next": "^15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0"
@@ -21,6 +21,7 @@
     "@next/eslint-plugin-next": "^15.2.4",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.4",
-    "postcss": "^8.4.40"
+    "postcss": "^8.4.40",
+    "react-hook-form": "^7.58.1"
   }
 }
