@@ -91,7 +91,7 @@ import {
   Tag,
   TextArea,
   Tooltip,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import NextLink from 'next/link';

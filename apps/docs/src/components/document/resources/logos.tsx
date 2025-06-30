@@ -1,4 +1,4 @@
-import { Heading } from '@govie-ds/react';
+import { Heading } from '@ogcio/design-system-react';
 import { Fragment } from 'react';
 import { Card } from '../common/card';
 import { Image } from '../common/image';

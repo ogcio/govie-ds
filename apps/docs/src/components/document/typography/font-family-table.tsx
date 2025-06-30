@@ -1,4 +1,4 @@
-import { meta } from '@govie-ds/theme-govie';
+import { meta } from '@ogcio/theme-govie';
 import { SampleTable } from '../common/sample-table';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';

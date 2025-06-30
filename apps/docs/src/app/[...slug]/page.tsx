@@ -1,4 +1,4 @@
-import { Heading, Paragraph, Tag } from '@govie-ds/react';
+import { Heading, Paragraph, Tag } from '@ogcio/design-system-react';
 import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/document/common/mdx';
 import * as documents from '@/lib/documents/documents';

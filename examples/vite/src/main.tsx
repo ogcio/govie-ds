@@ -1,4 +1,4 @@
-import { initI18n } from '@govie-ds/react';
+import { initI18n } from '@ogcio/design-system-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { App } from './application.tsx';

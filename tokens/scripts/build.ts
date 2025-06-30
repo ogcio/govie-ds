@@ -1,4 +1,4 @@
-import { buildTokens } from "@govie-ds/tokens-builder";
+import { buildTokens } from "@ogcio/design-system-tokens-builder";
 
 async function main() {
   const prefix = "gieds";

@@ -1,7 +1,6 @@
 {
-  "name": "@govie-ds/theme-builder",
+  "name": "@ogcio/theme-builder",
   "version": "1.4.1",
-  "description": "",
   "private": true,
   "main": "dist/index.js",
   "type": "module",
@@ -13,23 +12,20 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "prettier": "@govie-ds/prettier-config",
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@govie-ds/deepmerge": "workspace:*",
-    "@govie-ds/eslint-config": "workspace:*",
-    "@govie-ds/tokens": "workspace:*",
-    "@govie-ds/tokens-builder": "workspace:*",
+    "@ogcio/ds-deepmerge": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-tokens": "workspace:*",
+    "@ogcio/design-system-tokens-builder": "workspace:*",
     "fs-extra": "^11.2.0",
     "glob": "^11.0.1",
     "json-schema-to-typescript": "^14.1.0",
     "zod-to-json-schema": "^3.23.2"
   },
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "@types/fs-extra": "^11.0.4",
     "eslint": "^9.23.0",
     "zod": "^3.23.8",

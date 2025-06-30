@@ -1,4 +1,4 @@
-import { Link } from '@govie-ds/react';
+import { Link } from '@ogcio/design-system-react';
 import { cn } from '@/lib/cn';
 
 export function Card({

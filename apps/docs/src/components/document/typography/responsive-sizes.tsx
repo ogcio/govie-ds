@@ -1,4 +1,4 @@
-import { meta } from '@govie-ds/tokens';
+import { meta } from '@ogcio/design-system-tokens';
 import kebabCase from 'kebab-case';
 import { groupBy } from 'lodash';
 import { objectKeys } from 'ts-extras';

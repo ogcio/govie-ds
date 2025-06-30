@@ -1,9 +1,64 @@
 {
-    "group-pull-request-title-pattern": "chore(ci): release ${branch}",
-    "bootstrap-sha": "e59f6b9d0bab630cb9b4083a74c866c1b84b0ee4",
-    "always-link-local": false,
-    "always-update": true,
+    "pull-request-title-pattern": "chore(auto-release): release ${component} ${version}",
     "include-component-in-tag": true,
+    "separate-pull-requests": true,
+    "changelog-sections": [
+        {
+            "type": "feat",
+            "section": "Features"
+        },
+        {
+            "type": "fix",
+            "section": "Bug Fixes"
+        },
+        {
+            "type": "perf",
+            "section": "Performance Improvements"
+        },
+        {
+            "type": "revert",
+            "section": "Reverts",
+            "hidden": true
+        },
+        {
+            "type": "deprecate",
+            "section": "Deprecations"
+        },
+        {
+            "type": "docs",
+            "section": "Documentation",
+            "hidden": true
+        },
+        {
+            "type": "style",
+            "section": "Styles",
+            "hidden": true
+        },
+        {
+            "type": "chore",
+            "section": "Miscellaneous Chores"
+        },
+        {
+            "type": "refactor",
+            "section": "Code Refactoring",
+            "hidden": true
+        },
+        {
+            "type": "test",
+            "section": "Tests",
+            "hidden": true
+        },
+        {
+            "type": "build",
+            "section": "Build System",
+            "hidden": true
+        },
+        {
+            "type": "ci",
+            "section": "Continuous Integration",
+            "hidden": true
+        }
+    ],
     "packages": {
         "apps/docs": {
             "component": "docs",

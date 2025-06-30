@@ -1,7 +1,7 @@
 'use client';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
-import { Heading, Link, Paragraph } from '@govie-ds/react';
+import { Heading, Link, Paragraph } from '@ogcio/design-system-react';
 
 export default function ContactPage() {
   return (

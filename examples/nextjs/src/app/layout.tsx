@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "@govie-ds/react/styles.css";
-import "@govie-ds/theme-govie/theme.css";
+import "@ogcio/design-system-react/styles.css";
+import "@ogcio/theme-govie/theme.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",

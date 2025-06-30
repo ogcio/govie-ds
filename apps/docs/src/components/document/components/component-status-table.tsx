@@ -10,7 +10,7 @@ import {
   TableData,
   TableRow,
   Tag,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { TagFromStatus } from './tag-from-status';

@@ -1,5 +1,5 @@
-import '@govie-ds/theme-doete/light.css';
-import '@govie-ds/theme-govie/theme.css';
+import '@ogcio/theme-doete/light.css';
+import '@ogcio/theme-govie/theme.css';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import {
   INITIAL_VIEWPORTS,

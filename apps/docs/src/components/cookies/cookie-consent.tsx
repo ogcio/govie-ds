@@ -5,7 +5,7 @@ import {
   Heading,
   Link,
   Paragraph,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 import { getConsentStatus, setConsentStatus } from '../../utils/cookieConsent';
 

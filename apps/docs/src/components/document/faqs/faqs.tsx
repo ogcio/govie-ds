@@ -1,4 +1,4 @@
-import { Heading } from '@govie-ds/react';
+import { Heading } from '@ogcio/design-system-react';
 import type React from 'react';
 import { Fragment } from 'react';
 import { Tabs } from '../common/tabs';

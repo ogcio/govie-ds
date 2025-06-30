@@ -39,9 +39,9 @@ import {
   toaster,
   ToastProps,
   ToastProvider,
-} from '@govie-ds/react';
-import '@govie-ds/react/styles.css';
-import '@govie-ds/theme-govie/theme.css';
+} from '@ogcio/design-system-react';
+import '@ogcio/design-system-react/styles.css';
+import '@ogcio/theme-govie/theme.css';
 import { useState } from 'react';
 import { ComboBoxProps, CookieBannerProps } from './props';
 
