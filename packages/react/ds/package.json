@@ -28,7 +28,7 @@
     "storybook:coverage": "vitest --project=storybook --coverage",
     "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "sideEffects": [
     "**/*.css"
   ],
@@ -51,9 +51,9 @@
     "rollup-preserve-directives": "^1.1.2"
   },
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
-    "@ogcio/ds-prettier-config": "workspace:*",
-    "@ogcio/tailwind": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
+    "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-doete": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@percy/cli": "^1.30.7",

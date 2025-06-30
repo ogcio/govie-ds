@@ -158,7 +158,7 @@ importers:
       "@ogcio/design-system-react":
         specifier: workspace:*
         version: link:../../packages/react/ds
-      "@ogcio/tailwind":
+      "@ogcio/design-system-tailwind":
         specifier: workspace:*
         version: link:../../packages/design/tailwind
       "@ogcio/theme-govie":
@@ -249,10 +249,10 @@ importers:
       "@fontsource/lato":
         specifier: ^5.0.21
         version: 5.1.1
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../packages/build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../packages/build/prettier-config
       "@next/eslint-plugin-next":
@@ -389,7 +389,7 @@ importers:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../packages/build/eslint-config
       "@next/eslint-plugin-next":
@@ -423,7 +423,7 @@ importers:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../packages/build/eslint-config
       eslint:
@@ -465,10 +465,10 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       eslint:
@@ -487,10 +487,10 @@ importers:
         specifier: workspace:*
         version: link:../../themes/hse
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       eslint:
@@ -512,7 +512,7 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0
     devDependencies:
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       eslint:
@@ -533,7 +533,7 @@ importers:
       "@ogcio/ds-deepmerge":
         specifier: workspace:*
         version: link:../deepmerge
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
       fs-extra:
@@ -549,7 +549,7 @@ importers:
         specifier: ^3.23.2
         version: 3.24.1(zod@3.24.1)
     devDependencies:
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@types/fs-extra":
@@ -574,10 +574,10 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@types/lodash":
@@ -602,13 +602,13 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0
     devDependencies:
-      "@ogcio/design-token-utils":
+      "@ogcio/design-system-token-utils":
         specifier: workspace:*
         version: link:../token-utils
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@types/color":
@@ -623,13 +623,13 @@ importers:
 
   packages/html/ds:
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
-      "@ogcio/tailwind":
+      "@ogcio/design-system-tailwind":
         specifier: workspace:*
         version: link:../../design/tailwind
       "@ogcio/theme-govie":
@@ -708,13 +708,13 @@ importers:
         specifier: ^1.1.2
         version: 1.1.3(rollup@4.39.0)
     devDependencies:
-      "@ogcio/ds-eslint-config":
+      "@ogcio/design-system-eslint-config":
         specifier: workspace:*
         version: link:../../build/eslint-config
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
-      "@ogcio/tailwind":
+      "@ogcio/design-system-tailwind":
         specifier: workspace:*
         version: link:../../design/tailwind
       "@ogcio/theme-doete":
@@ -774,7 +774,7 @@ importers:
 
   packages/themes/doete:
     devDependencies:
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@ogcio/theme-builder":
@@ -786,7 +786,7 @@ importers:
       "@ogcio/design-system-tokens":
         specifier: workspace:*
         version: link:../../../tokens
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@ogcio/theme-builder":
@@ -798,7 +798,7 @@ importers:
       "@ogcio/design-system-tokens":
         specifier: workspace:*
         version: link:../../../tokens
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../../build/prettier-config
       "@ogcio/theme-builder":
@@ -810,7 +810,7 @@ importers:
       "@ogcio/design-system-tokens-builder":
         specifier: workspace:*
         version: link:../packages/design/tokens-builder
-      "@ogcio/ds-prettier-config":
+      "@ogcio/design-system-prettier-config":
         specifier: workspace:*
         version: link:../packages/build/prettier-config
 

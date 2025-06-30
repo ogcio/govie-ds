@@ -37,14 +37,14 @@
   "files": [
     "dist"
   ],
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
-    "@ogcio/ds-prettier-config": "workspace:*",
-    "@ogcio/tailwind": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
+    "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",

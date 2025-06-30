@@ -1,6 +1,6 @@
 {
   "version": "1.0.5",
-  "name": "@ogcio/ds-prettier-config",
+  "name": "@ogcio/design-system-prettier-config",
   "description": "The GOV IE design system prettier configuration.",
   "main": "prettierrc.json",
   "type": "module",

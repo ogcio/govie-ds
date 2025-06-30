@@ -16,7 +16,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.9.0
+    - @ogcio/design-system-tailwind bumped to 1.9.0
 
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.3...react-lib-v1.9.0) (2025-06-17)
 
@@ -32,7 +32,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.4
+    - @ogcio/design-system-tailwind bumped to 1.8.4
 
 ## [1.8.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.2...react-lib-v1.8.3) (2025-06-13)
 
@@ -44,7 +44,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.3
+    - @ogcio/design-system-tailwind bumped to 1.8.3
 
 ## [1.8.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.1...react-lib-v1.8.2) (2025-06-10)
 
@@ -54,7 +54,7 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.4.1
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.2
+    - @ogcio/design-system-tailwind bumped to 1.8.2
     - @ogcio/theme-govie bumped to 1.4.1
 
 ## [1.8.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.8.0...react-lib-v1.8.1) (2025-06-09)
@@ -67,7 +67,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.1
+    - @ogcio/design-system-tailwind bumped to 1.8.1
 
 ## [1.8.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.3...react-lib-v1.8.0) (2025-06-03)
 
@@ -83,7 +83,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.0
+    - @ogcio/design-system-tailwind bumped to 1.8.0
 
 ## [1.7.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.2...react-lib-v1.7.3) (2025-05-29)
 
@@ -97,7 +97,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.3
+    - @ogcio/design-system-tailwind bumped to 1.7.3
 
 ## [1.7.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.1...react-lib-v1.7.2) (2025-05-19)
 
@@ -111,7 +111,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.2
+    - @ogcio/design-system-tailwind bumped to 1.7.2
 
 ## [1.7.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.7.0...react-lib-v1.7.1) (2025-05-12)
 
@@ -124,7 +124,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.1
+    - @ogcio/design-system-tailwind bumped to 1.7.1
 
 ## [1.7.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.6.0...react-lib-v1.7.0) (2025-05-06)
 
@@ -143,7 +143,7 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.4.0
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.0
+    - @ogcio/design-system-tailwind bumped to 1.7.0
     - @ogcio/theme-govie bumped to 1.4.0
 
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.2...react-lib-v1.6.0) (2025-04-28)
@@ -163,7 +163,7 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.3.0
   - devDependencies
-    - @ogcio/tailwind bumped to 1.6.0
+    - @ogcio/design-system-tailwind bumped to 1.6.0
     - @ogcio/theme-govie bumped to 1.3.0
 
 ## [1.5.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.1...react-lib-v1.5.2) (2025-04-28)
@@ -176,7 +176,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.2
+    - @ogcio/design-system-tailwind bumped to 1.5.2
 
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.5.0...react-lib-v1.5.1) (2025-04-24)
 
@@ -189,7 +189,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.1
+    - @ogcio/design-system-tailwind bumped to 1.5.1
 
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.4.0...react-lib-v1.5.0) (2025-04-18)
 
@@ -206,7 +206,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.0
+    - @ogcio/design-system-tailwind bumped to 1.5.0
 
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.3.0...react-lib-v1.4.0) (2025-04-14)
 
@@ -223,7 +223,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.4.0
+    - @ogcio/design-system-tailwind bumped to 1.4.0
 
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.3...react-lib-v1.3.0) (2025-04-09)
 
@@ -244,7 +244,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.3.0
+    - @ogcio/design-system-tailwind bumped to 1.3.0
 
 ## [1.2.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.2...react-lib-v1.2.3) (2025-04-03)
 
@@ -257,7 +257,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.2.3
+    - @ogcio/design-system-tailwind bumped to 1.2.3
 
 ## [1.2.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.1...react-lib-v1.2.2) (2025-03-31)
 
@@ -271,9 +271,9 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.2.2
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.4
-    - @ogcio/ds-prettier-config bumped to 1.0.5
-    - @ogcio/tailwind bumped to 1.2.2
+    - @ogcio/design-system-eslint-config bumped to 1.2.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-tailwind bumped to 1.2.2
     - @ogcio/theme-govie bumped to 1.2.2
 
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.2.0...react-lib-v1.2.1) (2025-03-31)
@@ -288,9 +288,9 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.2.1
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.3
-    - @ogcio/ds-prettier-config bumped to 1.0.4
-    - @ogcio/tailwind bumped to 1.2.1
+    - @ogcio/design-system-eslint-config bumped to 1.2.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-tailwind bumped to 1.2.1
     - @ogcio/theme-govie bumped to 1.2.1
 
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.1.1...react-lib-v1.2.0) (2025-03-26)
@@ -314,9 +314,9 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 1.2.0
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.2
-    - @ogcio/ds-prettier-config bumped to 1.0.3
-    - @ogcio/tailwind bumped to 1.2.0
+    - @ogcio/design-system-eslint-config bumped to 1.2.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-tailwind bumped to 1.2.0
     - @ogcio/theme-govie bumped to 1.2.0
 
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.1.0...react-lib-v1.1.1) (2025-03-18)
@@ -331,9 +331,9 @@
   - dependencies
     - @ogcio/design-system-tokens bumped to 0.7.2
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.1
-    - @ogcio/ds-prettier-config bumped to 1.0.2
-    - @ogcio/tailwind bumped to 1.1.1
+    - @ogcio/design-system-eslint-config bumped to 1.2.1
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-tailwind bumped to 1.1.1
     - @ogcio/theme-govie bumped to 0.6.2
 
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/react-v1.0.0...react-v1.1.0) (2025-03-14)
@@ -744,7 +744,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/tailwind` updated to version `0.7.0`
+- `@ogcio/design-system-tailwind` updated to version `0.7.0`
 
 ### Bug Fixes
 
@@ -773,13 +773,13 @@
 
 ### Dependency Updates
 
-- `@ogcio/tailwind` updated to version `0.5.3`
+- `@ogcio/design-system-tailwind` updated to version `0.5.3`
 
 ## [0.8.1](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.8.0...@govie-react/ds-0.8.1) (2024-09-09)
 
 ### Dependency Updates
 
-- `@ogcio/tailwind` updated to version `0.5.2`
+- `@ogcio/design-system-tailwind` updated to version `0.5.2`
 - `@ogcio/design-system-tokens` updated to version `0.4.1`
 
 ### Features
@@ -790,7 +790,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.2.0`
+- `@ogcio/design-system-eslint-config` updated to version `0.2.0`
 - `@ogcio/design-system-tokens` updated to version `0.4.0`
 
 ### Features
@@ -811,8 +811,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.2`
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.2`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 - `@ogcio/design-system-tokens` updated to version `0.3.3`
 
 ## [0.7.5](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.7.4...@govie-react/ds-0.7.5) (2024-07-23)
@@ -935,8 +935,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 - `@ogcio/design-system-tokens` updated to version `0.1.4`
 
 ## [0.1.3](https://github.com/ogcio/govie-ds/compare/@govie-react/ds-0.1.2...@govie-react/ds-0.1.3) (2024-06-26)
@@ -961,8 +961,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 - `@ogcio/design-system-tokens` updated to version `0.1.0`
 
 ### Bug Fixes

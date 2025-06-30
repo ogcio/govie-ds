@@ -43,10 +43,10 @@
 - The following workspace dependencies were updated
   - dependencies
     - @ogcio/ds-deepmerge bumped to 1.0.4
-    - @ogcio/ds-eslint-config bumped to 1.2.4
+    - @ogcio/design-system-eslint-config bumped to 1.2.4
     - @ogcio/design-system-tokens bumped to 1.2.2
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
 
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.2.0...design-theme-builder-v1.2.1) (2025-03-31)
 
@@ -55,10 +55,10 @@
 - The following workspace dependencies were updated
   - dependencies
     - @ogcio/ds-deepmerge bumped to 1.0.3
-    - @ogcio/ds-eslint-config bumped to 1.2.3
+    - @ogcio/design-system-eslint-config bumped to 1.2.3
     - @ogcio/design-system-tokens bumped to 1.2.1
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
 
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.1.1...design-theme-builder-v1.2.0) (2025-03-26)
 
@@ -72,10 +72,10 @@
 - The following workspace dependencies were updated
   - dependencies
     - @ogcio/ds-deepmerge bumped to 1.0.2
-    - @ogcio/ds-eslint-config bumped to 1.2.2
+    - @ogcio/design-system-eslint-config bumped to 1.2.2
     - @ogcio/design-system-tokens bumped to 1.2.0
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
 
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.1.0...design-theme-builder-v1.1.1) (2025-03-18)
 
@@ -84,10 +84,10 @@
 - The following workspace dependencies were updated
   - dependencies
     - @ogcio/ds-deepmerge bumped to 1.0.1
-    - @ogcio/ds-eslint-config bumped to 1.2.1
+    - @ogcio/design-system-eslint-config bumped to 1.2.1
     - @ogcio/design-system-tokens bumped to 0.7.2
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
 
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/theme-builder-v1.0.0...theme-builder-v1.1.0) (2025-03-14)
 

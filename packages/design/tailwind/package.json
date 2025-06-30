@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio/tailwind",
+  "name": "@ogcio/design-system-tailwind",
   "version": "1.9.0",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
@@ -21,14 +21,14 @@
   "files": [
     "dist"
   ],
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@ogcio/ds-deepmerge": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0"
   }
 }

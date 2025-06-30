@@ -16,7 +16,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.9.0
+    - @ogcio/design-system-tailwind bumped to 1.9.0
 
 ## [1.7.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.3...html-lib-v1.7.0) (2025-06-17)
 
@@ -32,7 +32,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.4
+    - @ogcio/design-system-tailwind bumped to 1.8.4
 
 ## [1.6.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.2...html-lib-v1.6.3) (2025-06-13)
 
@@ -44,7 +44,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.3
+    - @ogcio/design-system-tailwind bumped to 1.8.3
 
 ## [1.6.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.1...html-lib-v1.6.2) (2025-06-10)
 
@@ -52,7 +52,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.2
+    - @ogcio/design-system-tailwind bumped to 1.8.2
     - @ogcio/theme-govie bumped to 1.4.1
 
 ## [1.6.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.6.0...html-lib-v1.6.1) (2025-06-09)
@@ -65,7 +65,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.1
+    - @ogcio/design-system-tailwind bumped to 1.8.1
 
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.3...html-lib-v1.6.0) (2025-06-03)
 
@@ -78,7 +78,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.8.0
+    - @ogcio/design-system-tailwind bumped to 1.8.0
 
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.2...html-lib-v1.5.3) (2025-05-29)
 
@@ -90,7 +90,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.3
+    - @ogcio/design-system-tailwind bumped to 1.7.3
 
 ## [1.5.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.1...html-lib-v1.5.2) (2025-05-19)
 
@@ -104,7 +104,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.2
+    - @ogcio/design-system-tailwind bumped to 1.7.2
 
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.5.0...html-lib-v1.5.1) (2025-05-12)
 
@@ -117,7 +117,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.1
+    - @ogcio/design-system-tailwind bumped to 1.7.1
 
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.4.0...html-lib-v1.5.0) (2025-05-06)
 
@@ -130,7 +130,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.7.0
+    - @ogcio/design-system-tailwind bumped to 1.7.0
     - @ogcio/theme-govie bumped to 1.4.0
 
 ## [1.4.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.3...html-lib-v1.4.0) (2025-04-28)
@@ -143,7 +143,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.6.0
+    - @ogcio/design-system-tailwind bumped to 1.6.0
     - @ogcio/theme-govie bumped to 1.3.0
 
 ## [1.3.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.2...html-lib-v1.3.3) (2025-04-28)
@@ -152,7 +152,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.2
+    - @ogcio/design-system-tailwind bumped to 1.5.2
 
 ## [1.3.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.3.1...html-lib-v1.3.2) (2025-04-24)
 
@@ -166,7 +166,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.1
+    - @ogcio/design-system-tailwind bumped to 1.5.1
 
 ## [1.3.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.2.0...html-lib-v1.3.0) (2025-04-18)
 
@@ -179,7 +179,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.5.0
+    - @ogcio/design-system-tailwind bumped to 1.5.0
 
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.4...html-lib-v1.2.0) (2025-04-14)
 
@@ -197,7 +197,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.4.0
+    - @ogcio/design-system-tailwind bumped to 1.4.0
 
 ## [1.1.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.3...html-lib-v1.1.4) (2025-04-09)
 
@@ -210,7 +210,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.3.0
+    - @ogcio/design-system-tailwind bumped to 1.3.0
 
 ## [1.1.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.2...html-lib-v1.1.3) (2025-04-03)
 
@@ -223,7 +223,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/tailwind bumped to 1.2.3
+    - @ogcio/design-system-tailwind bumped to 1.2.3
 
 ## [1.1.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.1...html-lib-v1.1.2) (2025-03-31)
 
@@ -231,9 +231,9 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.4
-    - @ogcio/ds-prettier-config bumped to 1.0.5
-    - @ogcio/tailwind bumped to 1.2.2
+    - @ogcio/design-system-eslint-config bumped to 1.2.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-tailwind bumped to 1.2.2
     - @ogcio/theme-govie bumped to 1.2.2
 
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.1.0...html-lib-v1.1.1) (2025-03-31)
@@ -242,9 +242,9 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.3
-    - @ogcio/ds-prettier-config bumped to 1.0.4
-    - @ogcio/tailwind bumped to 1.2.1
+    - @ogcio/design-system-eslint-config bumped to 1.2.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-tailwind bumped to 1.2.1
     - @ogcio/theme-govie bumped to 1.2.1
 
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.0.2...html-lib-v1.1.0) (2025-03-26)
@@ -261,9 +261,9 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.2
-    - @ogcio/ds-prettier-config bumped to 1.0.3
-    - @ogcio/tailwind bumped to 1.2.0
+    - @ogcio/design-system-eslint-config bumped to 1.2.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-tailwind bumped to 1.2.0
     - @ogcio/theme-govie bumped to 1.2.0
 
 ## [1.0.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.0.1...html-lib-v1.0.2) (2025-03-18)
@@ -272,9 +272,9 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.1
-    - @ogcio/ds-prettier-config bumped to 1.0.2
-    - @ogcio/tailwind bumped to 1.1.1
+    - @ogcio/design-system-eslint-config bumped to 1.2.1
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-tailwind bumped to 1.1.1
     - @ogcio/theme-govie bumped to 0.6.2
 
 ## [1.0.1](https://github.com/ogcio/govie-ds/compare/html-v1.0.0...html-v1.0.1) (2025-03-14)
@@ -657,7 +657,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/tailwind` updated to version `0.7.0`
+- `@ogcio/design-system-tailwind` updated to version `0.7.0`
 
 ### Bug Fixes
 
@@ -700,7 +700,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/tailwind` updated to version `0.5.3`
+- `@ogcio/design-system-tailwind` updated to version `0.5.3`
 - `@govie-frontend/macro` updated to version `0.1.0`
 
 ## [0.3.0](https://github.com/ogcio/govie-ds/compare/@govie-frontend/ds-0.2.3...@govie-frontend/ds-0.3.0) (2024-09-02)
@@ -749,9 +749,9 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.2.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
-- `@ogcio/tailwind` updated to version `0.5.0`
+- `@ogcio/design-system-eslint-config` updated to version `0.2.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-tailwind` updated to version `0.5.0`
 
 ### Bug Fixes
 

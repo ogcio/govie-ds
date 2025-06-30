@@ -1,6 +1,6 @@
+import { buildTokens } from '@ogcio/design-system-tokens-builder';
 import { meta as govieMeta } from '@ogcio/theme-govie';
 import { meta as hseMeta } from '@ogcio/theme-hse';
-import { buildTokens } from '@ogcio/design-system-tokens-builder';
 import { readJson, writeJson } from '../src/json.js';
 import { createManifest } from '../src/manifest.js';
 

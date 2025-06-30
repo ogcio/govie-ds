@@ -162,7 +162,7 @@
     - @ogcio/ds-deepmerge bumped to 1.0.4
     - @ogcio/design-system-tokens bumped to 1.2.2
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
 
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.2.0...design-tailwind-v1.2.1) (2025-03-31)
 
@@ -177,7 +177,7 @@
     - @ogcio/ds-deepmerge bumped to 1.0.3
     - @ogcio/design-system-tokens bumped to 1.2.1
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
 
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.1.1...design-tailwind-v1.2.0) (2025-03-26)
 
@@ -201,7 +201,7 @@
     - @ogcio/ds-deepmerge bumped to 1.0.2
     - @ogcio/design-system-tokens bumped to 1.2.0
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
 
 ## [1.1.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.1.0...design-tailwind-v1.1.1) (2025-03-18)
 
@@ -212,7 +212,7 @@
     - @ogcio/ds-deepmerge bumped to 1.0.1
     - @ogcio/design-system-tokens bumped to 0.7.2
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
 
 ## [1.1.0](https://github.com/ogcio/govie-ds/compare/tailwind-v1.0.0...tailwind-v1.1.0) (2025-03-14)
 
@@ -507,17 +507,17 @@
 
 - add tabs for react ([#228](https://github.com/ogcio/govie-ds/issues/228)) ([8f676ee](https://github.com/ogcio/govie-ds/commit/8f676eeeb269e90ec1ddb1dff4a3c1915f234496))
 
-## [0.7.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.6.0...@ogcio/tailwind-0.7.0) (2024-09-20)
+## [0.7.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.6.0...@ogcio/design-system-tailwind-0.7.0) (2024-09-20)
 
 ### Features
 
 - implement header component ([#208](https://github.com/ogcio/govie-ds/issues/208)) ([4641b63](https://github.com/ogcio/govie-ds/commit/4641b6323a2ceb6ad852a7fb2f63682e2180fac6))
 
-## [0.6.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.5.3...@ogcio/tailwind-0.6.0) (2024-09-10)
+## [0.6.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.5.3...@ogcio/design-system-tailwind-0.6.0) (2024-09-10)
 
-## [0.5.3](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.5.2...@ogcio/tailwind-0.5.3) (2024-09-10)
+## [0.5.3](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.5.2...@ogcio/design-system-tailwind-0.5.3) (2024-09-10)
 
-## [0.5.2](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.5.0...@ogcio/tailwind-0.5.2) (2024-09-09)
+## [0.5.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.5.0...@ogcio/design-system-tailwind-0.5.2) (2024-09-09)
 
 ### Dependency Updates
 
@@ -528,7 +528,7 @@
 
 - enable tailwind in react components ([#186](https://github.com/ogcio/govie-ds/issues/186)) ([f97f8b2](https://github.com/ogcio/govie-ds/commit/f97f8b2c5a370b580bd22246787cd6eea0d06997))
 
-## [0.5.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.4.3...@ogcio/tailwind-0.5.0) (2024-08-06)
+## [0.5.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.4.3...@ogcio/design-system-tailwind-0.5.0) (2024-08-06)
 
 ### Dependency Updates
 
@@ -539,63 +539,63 @@
 
 - add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
 
-## [0.4.3](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.4.2...@ogcio/tailwind-0.4.3) (2024-08-05)
+## [0.4.3](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.4.2...@ogcio/design-system-tailwind-0.4.3) (2024-08-05)
 
 ### Bug Fixes
 
 - update create theme options ([#146](https://github.com/ogcio/govie-ds/issues/146)) ([fb431ea](https://github.com/ogcio/govie-ds/commit/fb431ea864b236fba7e8e3442acbce8d1ff37207))
 
-## [0.4.2](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.4.1...@ogcio/tailwind-0.4.2) (2024-08-02)
+## [0.4.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.4.1...@ogcio/design-system-tailwind-0.4.2) (2024-08-02)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-tokens` updated to version `0.3.4`
 
-## [0.4.1](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.4.0...@ogcio/tailwind-0.4.1) (2024-07-31)
+## [0.4.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.4.0...@ogcio/design-system-tailwind-0.4.1) (2024-07-31)
 
 ### Dependency Updates
 
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 - `@ogcio/ds-deepmerge` updated to version `0.2.2`
 - `@ogcio/design-system-tokens` updated to version `0.3.3`
 
-## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.3.3...@ogcio/tailwind-0.4.0) (2024-07-30)
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.3...@ogcio/design-system-tailwind-0.4.0) (2024-07-30)
 
 ### Features
 
 - add faqs ([#137](https://github.com/ogcio/govie-ds/issues/137)) ([f9a6cb8](https://github.com/ogcio/govie-ds/commit/f9a6cb8d89498bcb44fe6140708cbf4aa7ea2f85))
 
-## [0.3.3](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.3.2...@ogcio/tailwind-0.3.3) (2024-07-23)
+## [0.3.3](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.2...@ogcio/design-system-tailwind-0.3.3) (2024-07-23)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-tokens` updated to version `0.3.2`
 
-## [0.3.2](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.3.1...@ogcio/tailwind-0.3.2) (2024-07-05)
+## [0.3.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.1...@ogcio/design-system-tailwind-0.3.2) (2024-07-05)
 
 ### Dependency Updates
 
 - `@ogcio/ds-deepmerge` updated to version `0.2.1`
 
-## [0.3.1](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.3.0...@ogcio/tailwind-0.3.1) (2024-07-04)
+## [0.3.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.0...@ogcio/design-system-tailwind-0.3.1) (2024-07-04)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-tokens` updated to version `0.3.1`
 
-## [0.3.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.2.1...@ogcio/tailwind-0.3.0) (2024-07-02)
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.2.1...@ogcio/design-system-tailwind-0.3.0) (2024-07-02)
 
 ### Features
 
 - add footer component ([#98](https://github.com/ogcio/govie-ds/issues/98)) ([fa0b0a2](https://github.com/ogcio/govie-ds/commit/fa0b0a2bc0fa7058870217a21947448febb934bc))
 
-## [0.2.1](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.2.0...@ogcio/tailwind-0.2.1) (2024-07-01)
+## [0.2.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.2.0...@ogcio/design-system-tailwind-0.2.1) (2024-07-01)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-tokens` updated to version `0.3.0`
 
-## [0.2.0](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.1.2...@ogcio/tailwind-0.2.0) (2024-07-01)
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.1.2...@ogcio/design-system-tailwind-0.2.0) (2024-07-01)
 
 ### Dependency Updates
 
@@ -606,13 +606,13 @@
 
 - add link ([#94](https://github.com/ogcio/govie-ds/issues/94)) ([0829761](https://github.com/ogcio/govie-ds/commit/082976131495f029bbdf7d3ef3dbb3e80d460c4a))
 
-## [0.1.2](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.1.1...@ogcio/tailwind-0.1.2) (2024-06-28)
+## [0.1.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.1.1...@ogcio/design-system-tailwind-0.1.2) (2024-06-28)
 
 ### Bug Fixes
 
 - update font ([#92](https://github.com/ogcio/govie-ds/issues/92)) ([69c8f92](https://github.com/ogcio/govie-ds/commit/69c8f9236562a2b2f79467441aa0a9a164a238a8))
 
-## [0.1.1](https://github.com/ogcio/govie-ds/compare/@ogcio/tailwind-0.1.0...@ogcio/tailwind-0.1.1) (2024-06-26)
+## [0.1.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.1.0...@ogcio/design-system-tailwind-0.1.1) (2024-06-26)
 
 ### Dependency Updates
 
@@ -622,7 +622,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 - `@ogcio/ds-deepmerge` updated to version `0.1.0`
 - `@ogcio/design-system-tokens` updated to version `0.1.5`
 

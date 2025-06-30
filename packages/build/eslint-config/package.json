@@ -1,5 +1,5 @@
 {
-  "name": "@ogcio/ds-eslint-config",
+  "name": "@ogcio/design-system-eslint-config",
   "version": "1.2.4",
   "type": "module",
   "main": "src/index.js",
@@ -8,7 +8,7 @@
     "format": "prettier 'src/**/*.js' --write",
     "format:check": "prettier 'src/**/*.js' --check"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {},
   "peerDependencies": {
     "eslint": ">= 9"

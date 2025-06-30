@@ -12,11 +12,11 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
     "@ogcio/ds-deepmerge": "workspace:*",
-    "@ogcio/ds-eslint-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*",
     "fs-extra": "^11.2.0",
@@ -25,7 +25,7 @@
     "zod-to-json-schema": "^3.23.2"
   },
   "devDependencies": {
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "@types/fs-extra": "^11.0.4",
     "eslint": "^9.23.0",
     "zod": "^3.23.8",

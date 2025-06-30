@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*"
   }
 }

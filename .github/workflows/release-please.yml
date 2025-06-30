@@ -66,7 +66,7 @@ jobs:
       - name: Publish Tailwind Builder package
         if: ${{ steps.release.outputs['packages/design/tailwind--release_created'] }}
         run: |
-          pnpm --filter "@ogcio/tailwind" publish
+          pnpm --filter "@ogcio/design-system-tailwind" publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 

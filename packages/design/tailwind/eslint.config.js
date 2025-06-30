@@ -1,6 +1,6 @@
 // eslint.config.js
 import { defineConfig } from 'eslint/config';
-import eslintConfig from '@ogcio/ds-eslint-config';
+import eslintConfig from '@ogcio/design-system-eslint-config';
 
 export default defineConfig([
   {

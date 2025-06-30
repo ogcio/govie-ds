@@ -15,13 +15,13 @@
   "files": [
     "dist"
   ],
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0"
   }
 }

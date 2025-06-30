@@ -10,15 +10,15 @@
     "lint": "eslint 'src/**/*.ts'",
     "build": "tsx scripts/build.ts"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@ogcio/theme-govie": "workspace:*",
     "@ogcio/theme-hse": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*"
   },
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "eslint": "^9.23.0",
     "tsx": "^4.16.5"
   }

@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@ogcio/theme-govie": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
@@ -17,7 +17,7 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
     "eslint": "^9.23.0"
   }
 }

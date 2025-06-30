@@ -24,7 +24,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
 
 ## [1.2.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.2.0...tokens-v1.2.1) (2025-03-31)
 
@@ -32,7 +32,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
 
 ## [1.2.0](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.2...tokens-v1.2.0) (2025-03-26)
 
@@ -45,7 +45,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
 
 ## [0.7.2](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.1...tokens-v0.7.2) (2025-03-18)
 
@@ -53,7 +53,7 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
 
 ## [0.7.1](https://github.com/ogcio/govie-ds/compare/tokens-v0.7.0...tokens-v0.7.1) (2025-03-14)
 
@@ -96,7 +96,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 
 ## [0.3.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tokens-0.3.1...@ogcio/design-system-tokens-0.3.2) (2024-07-23)
 
@@ -128,7 +128,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 
 ## [0.1.3](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tokens-0.1.2...@ogcio/design-system-tokens-0.1.3) (2024-06-26)
 
@@ -140,7 +140,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 - `@ogcio/design-system-tokens-builder` updated to version `0.1.0`
 
 ### Bug Fixes

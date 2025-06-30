@@ -22,12 +22,12 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
-  "prettier": "@ogcio/ds-prettier-config",
+  "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
     "@ogcio/ds-deepmerge": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
-    "@ogcio/tailwind": "workspace:*",
+    "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "@ogcio/theme-hse": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
@@ -60,8 +60,8 @@
   },
   "devDependencies": {
     "@fontsource/lato": "^5.0.21",
-    "@ogcio/ds-eslint-config": "workspace:*",
-    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
+    "@ogcio/design-system-prettier-config": "workspace:*",
     "@next/eslint-plugin-next": "^15.2.4",
     "@nx-tools/container-metadata": "^6.0.1",
     "@nx-tools/nx-container": "^6.0.1",

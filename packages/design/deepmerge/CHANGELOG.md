@@ -6,8 +6,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.4
-    - @ogcio/ds-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-eslint-config bumped to 1.2.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
 
 ## [1.0.3](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.2...design-deepmerge-v1.0.3) (2025-03-31)
 
@@ -15,8 +15,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.3
-    - @ogcio/ds-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-eslint-config bumped to 1.2.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
 
 ## [1.0.2](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.1...design-deepmerge-v1.0.2) (2025-03-26)
 
@@ -24,8 +24,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.2
-    - @ogcio/ds-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-eslint-config bumped to 1.2.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
 
 ## [1.0.1](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.0...design-deepmerge-v1.0.1) (2025-03-18)
 
@@ -33,8 +33,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.1
-    - @ogcio/ds-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-eslint-config bumped to 1.2.1
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
 
 ## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.3.1...@ogcio/ds-deepmerge-0.4.0) (2024-09-10)
 
@@ -44,7 +44,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.2.0`
+- `@ogcio/design-system-eslint-config` updated to version `0.2.0`
 
 ### Features
 
@@ -54,8 +54,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.2`
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.2`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 
 ## [0.2.1](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.2.0...@ogcio/ds-deepmerge-0.2.1) (2024-07-05)
 
@@ -75,8 +75,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 
 ### Features
 

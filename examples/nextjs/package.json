@@ -16,7 +16,7 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@ogcio/ds-eslint-config": "workspace:*",
+    "@ogcio/design-system-eslint-config": "workspace:*",
     "@next/eslint-plugin-next": "^15.2.4",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.4",

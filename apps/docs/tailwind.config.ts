@@ -1,4 +1,4 @@
-import { createTheme } from '@ogcio/tailwind';
+import { createTheme } from '@ogcio/design-system-tailwind';
 import { meta } from '@ogcio/theme-govie';
 import type { Config } from 'tailwindcss';
 

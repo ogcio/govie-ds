@@ -45,8 +45,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.4
-    - @ogcio/ds-prettier-config bumped to 1.0.5
+    - @ogcio/design-system-eslint-config bumped to 1.2.4
+    - @ogcio/design-system-prettier-config bumped to 1.0.5
     - @ogcio/theme-builder bumped to 1.2.2
     - @ogcio/design-system-tokens bumped to 1.2.2
 
@@ -56,8 +56,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.3
-    - @ogcio/ds-prettier-config bumped to 1.0.4
+    - @ogcio/design-system-eslint-config bumped to 1.2.3
+    - @ogcio/design-system-prettier-config bumped to 1.0.4
     - @ogcio/theme-builder bumped to 1.2.1
     - @ogcio/design-system-tokens bumped to 1.2.1
 
@@ -71,8 +71,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.2
-    - @ogcio/ds-prettier-config bumped to 1.0.3
+    - @ogcio/design-system-eslint-config bumped to 1.2.2
+    - @ogcio/design-system-prettier-config bumped to 1.0.3
     - @ogcio/theme-builder bumped to 1.2.0
     - @ogcio/design-system-tokens bumped to 1.2.0
 
@@ -82,8 +82,8 @@
 
 - The following workspace dependencies were updated
   - devDependencies
-    - @ogcio/ds-eslint-config bumped to 1.2.1
-    - @ogcio/ds-prettier-config bumped to 1.0.2
+    - @ogcio/design-system-eslint-config bumped to 1.2.1
+    - @ogcio/design-system-prettier-config bumped to 1.0.2
     - @ogcio/theme-builder bumped to 1.1.1
     - @ogcio/design-system-tokens bumped to 0.7.2
 
@@ -117,7 +117,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.2.0`
+- `@ogcio/design-system-eslint-config` updated to version `0.2.0`
 - `@ogcio/theme-builder` updated to version `0.1.0`
 
 ### Features
@@ -138,8 +138,8 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.2`
-- `@ogcio/ds-prettier-config` updated to version `0.0.2`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.2`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 
 ## [0.2.2](https://github.com/ogcio/govie-ds/compare/@ogcio/theme-govie-0.2.1...@ogcio/theme-govie-0.2.2) (2024-07-23)
 
@@ -169,15 +169,15 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 
 # 0.1.0 (2024-06-26)
 
 ### Dependency Updates
 
-- `@ogcio/ds-eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-prettier-config` updated to version `0.0.1`
+- `@ogcio/design-system-eslint-config` updated to version `0.1.0`
+- `@ogcio/design-system-prettier-config` updated to version `0.0.1`
 - `@ogcio/theme-builder` updated to version `0.1.0`
 
 ### Features
