@@ -48,10 +48,10 @@ export class Details extends BaseComponent<DetailsOptions> {
       : 'keyboard_arrow_down';
     this.detailsEl.ariaExpanded = isOpen.toString();
 
-    const contentEl =
+    const contentElement =
       this.detailsEl.querySelector<HTMLElement>('#details-content');
-    if (contentEl) {
-      contentEl.ariaHidden = (!isOpen).toString();
+    if (contentElement) {
+      contentElement.ariaHidden = (!isOpen).toString();
     }
   };
 }

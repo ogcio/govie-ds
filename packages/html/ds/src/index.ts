@@ -1,6 +1,7 @@
 // Don't reorder the following import
 import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
+import { initDetails } from './details/details.js';
 import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
 import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
@@ -16,7 +17,6 @@ import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
 import { initUtilities } from './utils/utilities.js';
-import { initDetails } from './details/details.js';
 
 export * as properties from './dist/properties.js';
 
