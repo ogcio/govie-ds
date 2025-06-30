@@ -7,6 +7,7 @@ import { Header } from '../header/header';
 import { Checkboxes } from '../input-checkbox/input-checkbox';
 import { InputPassword } from '../input-password/input-password';
 import { Modal } from '../modal/modal';
+import { Popover } from '../popover/popover';
 import { Radio } from '../radio/radio';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
@@ -33,6 +34,7 @@ const componentRegistry = {
   Accordion,
   InputPassword,
   Drawer,
+  Popover,
 } as const;
 
 export type ComponentRegistryKey = keyof typeof componentRegistry;
