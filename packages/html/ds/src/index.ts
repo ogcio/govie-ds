@@ -16,6 +16,7 @@ import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
 import { initUtilities } from './utils/utilities.js';
+import { initDetails } from './details/details.js';
 
 export * as properties from './dist/properties.js';
 
@@ -49,6 +50,7 @@ export function initGovIe() {
   initAccordion();
   initPassword();
   initUtilities();
+  initDetails();
 }
 
 export function destroyGovIe() {
