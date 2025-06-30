@@ -5,7 +5,7 @@ import {
   getValue,
   isCompositeToken,
   aliasToPath,
-} from '@govie-ds/token-utils';
+} from '@ogcio/design-token-utils';
 import cloneDeepWith from 'lodash/cloneDeepWith.js';
 import flow from 'lodash/fp/flow.js';
 import { FormatFnArguments } from 'style-dictionary/types';

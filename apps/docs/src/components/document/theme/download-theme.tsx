@@ -1,7 +1,7 @@
 'use client';
 
 import { ColorsMapProps, resolveCssVariables } from '@/lib/theme-utils';
-import { Button, Icon } from '@govie-ds/react';
+import { Button, Icon } from '@ogcio/design-system-react';
 
 const handleDownload = ({ colors }: ColorsMapProps) => {
   const previewStyle = resolveCssVariables(colors);

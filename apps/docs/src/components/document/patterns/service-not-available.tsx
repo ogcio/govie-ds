@@ -5,7 +5,7 @@ import {
   Paragraph,
   Footer,
   HeaderSearch,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 
 export function ServiceUnavailable() {
   return (

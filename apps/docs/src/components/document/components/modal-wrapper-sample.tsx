@@ -7,7 +7,7 @@ import {
   ModalTitle,
   ModalWrapper,
   Paragraph,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import { useState } from 'react';
 
 export const ModalWrapperSample = () => {

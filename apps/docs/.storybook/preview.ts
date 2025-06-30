@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '@fontsource/lato';
-import '@govie-ds/theme-govie/theme.css';
+import '@ogcio/theme-govie/theme.css';
 import './global.css';
 
 const preview: Preview = {

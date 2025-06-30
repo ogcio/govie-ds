@@ -1,6 +1,5 @@
 {
-  "name": "@govie-ds/examples-angular",
-  "version": "0.1.0",
+  "name": "@ogcio/examples-angular",
   "scripts": {
     "copy:assets": "node ./build-scripts/copy-html-ds.js",
     "ng": "pnpm copy:assets && ng",

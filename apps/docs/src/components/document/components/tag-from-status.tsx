@@ -1,5 +1,5 @@
 import { ComponentStatus } from '@/lib/components';
-import { TagTypeEnum } from '@govie-ds/react';
+import { TagTypeEnum } from '@ogcio/design-system-react';
 
 export function TagFromStatus(status: ComponentStatus) {
   switch (status) {

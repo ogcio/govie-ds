@@ -1,6 +1,6 @@
 'use client';
 import { getComponents } from '@/lib/components';
-import { Link } from '@govie-ds/react';
+import { Link } from '@ogcio/design-system-react';
 import StorybookLogo from './storybook';
 import React from 'react';
 import { cn } from '@/lib/cn';

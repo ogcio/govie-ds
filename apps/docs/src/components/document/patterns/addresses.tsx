@@ -1,4 +1,4 @@
-import { Stack, TextInput, FormField } from '@govie-ds/react';
+import { Stack, TextInput, FormField } from '@ogcio/design-system-react';
 
 export function Addresses() {
   return (

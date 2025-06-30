@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/theme-doete",
+  "name": "@ogcio/theme-doete",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -21,12 +21,12 @@
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup"
   },
-  "prettier": "@govie-ds/prettier-config",
+  "prettier": "@ogcio/ds-prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:*",
-    "@govie-ds/theme-builder": "workspace:*"
+    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/theme-builder": "workspace:*"
   }
 }

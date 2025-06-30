@@ -1,7 +1,7 @@
-# @govie-ds/eslint-config
+# @ogcio/ds-eslint-config
 
 ```
-pnpm add -D eslint @govie-ds/eslint-config
+pnpm add -D eslint @ogcio/ds-eslint-config
 ```
 
 #### package.json
@@ -17,7 +17,7 @@ pnpm add -D eslint @govie-ds/eslint-config
 ```javascript
 // eslint.config.js
 import { defineConfig } from 'eslint/config';
-import eslintConfig from '@govie-ds/eslint-config';
+import eslintConfig from '@ogcio/ds-eslint-config';
 
 export default defineConfig([
   {

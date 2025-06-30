@@ -7,7 +7,7 @@ import {
   Link,
   Container,
   Heading,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import analytics from '@/lib/analytics';
 import { config } from '@/lib/config';
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-import { Heading, Paragraph, Button, Link } from '@govie-ds/react';
+import { Heading, Paragraph, Button, Link } from '@ogcio/design-system-react';
 
 export const CookieBannerProps = {
   children: (

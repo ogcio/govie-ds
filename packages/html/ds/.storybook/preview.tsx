@@ -1,11 +1,11 @@
-import '@govie-ds/theme-govie/theme.css';
+import '@ogcio/theme-govie/theme.css';
 import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
 import React, { useEffect } from 'react';
-import { destroyGovIe, initGovIe } from '@govie-ds/html';
+import { destroyGovIe, initGovIe } from '@ogcio/design-system-html';
 import '../styles.css';
 import './global.css';
 

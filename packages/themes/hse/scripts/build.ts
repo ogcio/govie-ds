@@ -1,11 +1,11 @@
-import { buildTheme } from "@govie-ds/theme-builder";
+import { buildTheme } from '@ogcio/theme-builder';
 
 async function main() {
   await buildTheme({
-    themeId: "hse",
-    sourceFolder: "tokens",
-    outputFolderCss: "dist",
-    outputFolderTypeScript: "src/dist",
+    themeId: 'hse',
+    sourceFolder: 'tokens',
+    outputFolderCss: 'dist',
+    outputFolderTypeScript: 'src/dist',
   });
 }
 

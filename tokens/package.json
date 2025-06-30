@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/tokens",
+  "name": "@ogcio/design-system-tokens",
   "version": "1.4.1",
   "description": "The GOV IE Design System tokens.",
   "type": "module",
@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:*",
-    "@govie-ds/tokens-builder": "workspace:*"
+    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/design-system-tokens-builder": "workspace:*"
   }
 }

@@ -1,6 +1,5 @@
 {
-  "name": "@govie-ds/examples-html",
-  "version": "0.1.0",
+  "name": "@ogcio/examples-html",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +7,7 @@
     "dev": "pnpm build && open index.html"
   },
   "dependencies": {
-    "@govie-ds/theme-govie": "workspace:*",
-    "@govie-ds/html": "workspace:*"
+    "@ogcio/theme-govie": "workspace:*",
+    "@ogcio/design-system-html": "workspace:*"
   }
 }

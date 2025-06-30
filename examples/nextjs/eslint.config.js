@@ -1,5 +1,5 @@
 import { FlatCompat } from "@eslint/eslintrc";
-import eslintConfig from "@govie-ds/eslint-config";
+import eslintConfig from "@ogcio/ds-eslint-config";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,

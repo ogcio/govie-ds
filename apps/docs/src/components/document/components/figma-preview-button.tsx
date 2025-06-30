@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@govie-ds/react';
+import { Button } from '@ogcio/design-system-react';
 import analytics from '@/lib/analytics';
 import Image from 'next/image';
 

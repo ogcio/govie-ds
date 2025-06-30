@@ -1,13 +1,11 @@
 {
-  "name": "@govie-ds/tailwind",
+  "name": "@ogcio/tailwind",
   "version": "1.9.0",
   "description": "The GOV IE design system Tailwind utilities.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "exports": {
     ".": "./dist/index.js",
     "./components.css": "./css/components.css"
@@ -23,17 +21,14 @@
   "files": [
     "dist"
   ],
-  "prettier": "@govie-ds/prettier-config",
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "prettier": "@ogcio/ds-prettier-config",
   "dependencies": {
-    "@govie-ds/deepmerge": "workspace:*",
-    "@govie-ds/tokens": "workspace:*",
+    "@ogcio/ds-deepmerge": "workspace:*",
+    "@ogcio/design-system-tokens": "workspace:*",
     "ts-extras": "^0.11.0"
   },
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:*",
+    "@ogcio/ds-prettier-config": "workspace:*",
     "eslint": "^9.23.0"
   }
 }

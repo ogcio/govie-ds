@@ -1,7 +1,6 @@
 {
-  "name": "@govie-ds/figma",
   "version": "1.0.0",
-  "description": "",
+  "name": "@ogcio/ds-figma",
   "private": true,
   "main": "index.js",
   "type": "module",
@@ -11,18 +10,15 @@
     "lint": "eslint 'src/**/*.ts'",
     "build": "tsx scripts/build.ts"
   },
-  "prettier": "@govie-ds/prettier-config",
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "prettier": "@ogcio/ds-prettier-config",
   "dependencies": {
-    "@govie-ds/theme-govie": "workspace:*",
-    "@govie-ds/theme-hse": "workspace:*",
-    "@govie-ds/tokens-builder": "workspace:*"
+    "@ogcio/theme-govie": "workspace:*",
+    "@ogcio/theme-hse": "workspace:*",
+    "@ogcio/design-system-tokens-builder": "workspace:*"
   },
   "devDependencies": {
-    "@govie-ds/eslint-config": "workspace:*",
-    "@govie-ds/prettier-config": "workspace:*",
+    "@ogcio/ds-eslint-config": "workspace:*",
+    "@ogcio/ds-prettier-config": "workspace:*",
     "eslint": "^9.23.0",
     "tsx": "^4.16.5"
   }

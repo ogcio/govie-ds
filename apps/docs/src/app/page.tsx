@@ -1,7 +1,7 @@
 'use client';
 
 import { Prose } from '@/components/typography/prose';
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, Paragraph } from '@ogcio/design-system-react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import heroImage from '../../public/hero.png';

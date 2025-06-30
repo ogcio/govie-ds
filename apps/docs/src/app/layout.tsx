@@ -1,8 +1,8 @@
 import AnalyticsProvider from '@/components/analytics-provider';
 import { GovieLink } from '@/components/navigation/custom-link';
-import { Footer, Header, HeaderProps, Stack } from '@govie-ds/react';
-import '@govie-ds/react/styles.css';
-import '@govie-ds/theme-govie/theme.css';
+import { Footer, Header, HeaderProps, Stack } from '@ogcio/design-system-react';
+import '@ogcio/design-system-react/styles.css';
+import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';

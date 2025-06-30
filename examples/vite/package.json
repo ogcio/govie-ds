@@ -1,7 +1,6 @@
 {
-  "name": "@govie-ds/examples-vite",
+  "name": "@ogcio/examples-vite",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,15 +9,15 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "prettier": "@govie-ds/prettier-config",
+  "prettier": "@ogcio/ds-prettier-config",
   "dependencies": {
-    "@govie-ds/theme-govie": "workspace:*",
-    "@govie-ds/react": "workspace:*",
+    "@ogcio/theme-govie": "workspace:*",
+    "@ogcio/design-system-react": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@govie-ds/eslint-config": "workspace:*",
+    "@ogcio/ds-eslint-config": "workspace:*",
     "eslint": "^9.23.0"
   }
 }

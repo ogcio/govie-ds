@@ -1,5 +1,10 @@
 'use client';
-import { Button, toaster, ToastProps, ToastProvider } from '@govie-ds/react';
+import {
+  Button,
+  toaster,
+  ToastProps,
+  ToastProvider,
+} from '@ogcio/design-system-react';
 
 export const Toast = (props: ToastProps) => {
   return (

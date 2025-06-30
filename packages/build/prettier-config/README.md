@@ -1,7 +1,7 @@
-# @govie-ds/prettier-config
+# @ogcio/ds-prettier-config
 
 ```
-pnpm add -D prettier @govie-ds/prettier-config
+pnpm add -D prettier @ogcio/ds-prettier-config
 ```
 
 #### package.json
@@ -11,5 +11,5 @@ pnpm add -D prettier @govie-ds/prettier-config
     "format": "prettier 'src/**/*.ts' --write",
     "format:check": "prettier 'src/**/*.ts' --check"
 },
-"prettier": "@govie-ds/prettier-config",
+"prettier": "@ogcio/ds-prettier-config",
 ```

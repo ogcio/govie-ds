@@ -1,13 +1,10 @@
 {
-  "name": "@govie-ds/prettier-config",
   "version": "1.0.5",
+  "name": "@ogcio/ds-prettier-config",
   "description": "The GOV IE design system prettier configuration.",
   "main": "prettierrc.json",
   "type": "module",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "scripts": {
     "build": "echo No build"
   },

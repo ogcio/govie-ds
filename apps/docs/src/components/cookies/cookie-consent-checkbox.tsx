@@ -1,5 +1,5 @@
 'use client';
-import { InputCheckbox } from '@govie-ds/react';
+import { InputCheckbox } from '@ogcio/design-system-react';
 import {
   CookieCategory,
   isConsentGiven,

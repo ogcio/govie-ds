@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/prettier-config",
+  "name": "@ogcio/ds-prettier-config",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {}
 }

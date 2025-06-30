@@ -1,5 +1,5 @@
-import { createTheme } from '@govie-ds/tailwind';
-import { meta } from '@govie-ds/theme-govie';
+import { createTheme } from '@ogcio/tailwind';
+import { meta } from '@ogcio/theme-govie';
 import type { Config } from 'tailwindcss';
 
 const useMeta = process.env.USE_RESOLVED_THEME === 'true';

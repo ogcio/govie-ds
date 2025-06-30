@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import { Fragment } from 'react';
 
 export function ComponentPropertiesTable({

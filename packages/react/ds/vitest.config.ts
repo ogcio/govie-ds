@@ -3,11 +3,16 @@ import { defineConfig, coverageConfigDefaults } from 'vitest/config';
 export default defineConfig({
   test: {
     setupFiles: ['./vitest.setup.ts'],
+    reporters: [
+      'default',
+      ['junit', { outputFile: 'coverage/test-report.xml' }],
+    ],
     coverage: {
       enabled: true,
-      reportOnFailure: true,
-      provider: 'istanbul',
-      reporter: ['text', 'json', 'html'],
+      provider: 'v8',
+      reportsDirectory: 'coverage',
+      reporter: ['lcov', 'cobertura'],
+      clean: true,
       exclude: [
         ...coverageConfigDefaults.exclude,
         '**/{postcss,tailwind}.config.*',

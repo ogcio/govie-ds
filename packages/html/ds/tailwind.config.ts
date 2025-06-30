@@ -1,4 +1,4 @@
-import { createTheme } from '@govie-ds/tailwind';
+import { createTheme } from '@ogcio/tailwind';
 import { Config } from 'tailwindcss';
 
 const config: Config = {

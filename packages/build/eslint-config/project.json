@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/eslint-config",
+  "name": "@ogcio/ds-eslint-config",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {}
 }

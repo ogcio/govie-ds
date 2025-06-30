@@ -52,21 +52,21 @@ jobs:
       - name: Publish DS React package
         if: ${{ steps.release.outputs['packages/react/ds--release_created'] }}
         run: |
-          pnpm --filter "@govie-ds/react" publish
+          pnpm --filter "@ogcio/design-system-react" publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Theme GOV.IE design tokens package
         if: ${{ steps.release.outputs['tokens--release_created'] }}
         run: |
-          pnpm --filter "@govie-ds/tokens" publish
+          pnpm --filter "@ogcio/design-system-tokens" publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Tailwind Builder package
         if: ${{ steps.release.outputs['packages/design/tailwind--release_created'] }}
         run: |
-          pnpm --filter "@govie-ds/tailwind" publish
+          pnpm --filter "@ogcio/tailwind" publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -79,7 +79,7 @@ jobs:
       - name: Publish Theme output
         if: ${{ steps.release.outputs['packages/themes/govie--release_created'] }}
         run: |
-          pnpm --filter "@govie-ds/theme-govie" publish
+          pnpm --filter "@ogcio/theme-govie" publish
           gh release upload ${{ steps.release.outputs['packages/themes/govie--tag_name'] }} ./packages/themes/govie/theme.zip
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_PAT }}

@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/theme-govie",
+  "name": "@ogcio/theme-govie",
   "version": "1.4.1",
   "description": "The GOV IE design system theme.",
   "type": "module",
@@ -25,13 +25,13 @@
     "build:source": "tsup",
     "dist": "zip -r theme.zip dist"
   },
-  "prettier": "@govie-ds/prettier-config",
+  "prettier": "@ogcio/ds-prettier-config",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@govie-ds/prettier-config": "workspace:*",
-    "@govie-ds/theme-builder": "workspace:*",
-    "@govie-ds/tokens": "workspace:*"
+    "@ogcio/ds-prettier-config": "workspace:*",
+    "@ogcio/theme-builder": "workspace:*",
+    "@ogcio/design-system-tokens": "workspace:*"
   }
 }
