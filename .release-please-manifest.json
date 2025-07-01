@@ -1,6 +1,6 @@
 {
     "apps/docs": "1.10.0",
-    "packages/build/eslint-config": "1.2.4",
+    "packages/build/eslint-config": "1.2.5",
     "packages/build/prettier-config": "1.0.5",
     "packages/design/deepmerge": "1.0.4",
     "packages/design/tailwind": "1.9.0",
