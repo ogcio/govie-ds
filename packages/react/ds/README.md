@@ -13,7 +13,7 @@ Welcome to the GOV IE React component library, a collection of reusable React co
 To install the library, use the following command:
 
 ```
-npm install @govie-ds/react @govie-ds/theme-govie
+npm install @ogcio/design-system-react @ogcio/theme-govie
 ```
 
 ### Pinning packages
@@ -24,18 +24,18 @@ We **strongly recommend** that you pin the GOV IE design system packages, so tha
 
 ```diff
 "dependencies": {
--  "@govie-ds/theme-govie": "^0.1.2",
-+  "@govie-ds/theme-govie": "0.1.2",
--  "@govie-ds/react": "^0.1.6",
-+  "@govie-ds/react": "0.1.6"
+-  "@ogcio/theme-govie": "^0.1.2",
++  "@ogcio/theme-govie": "0.1.2",
+-  "@ogcio/design-system-react": "^0.1.6",
++  "@ogcio/design-system-react": "0.1.6"
 ```
 
 ### Usage
 
-Import the GOV IE `theme.css` from the `@govie-ds/theme-govie` theme package at the entry point of your application, for example:
+Import the GOV IE `theme.css` from the `@ogcio/theme-govie` theme package at the entry point of your application, for example:
 
 ```diff
-+import '@govie-ds/theme-govie/theme.css'
++import '@ogcio/theme-govie/theme.css'
 
 export function App() {
   return (
@@ -46,10 +46,10 @@ export function App() {
 
 > Note that you should typically run some form of CSS reset or normalisation of styles as part of your application entry point, depending on your application styling solution. For example Tailwind includes [preflight](https://tailwindcss.com/docs/preflight), an optinionated set of base styles.
 
-Use components within your application from the `@govie-ds/react` component package:
+Use components within your application from the `@ogcio/design-system-react` component package:
 
 ```jsx
-import { Header } from '@govie-ds/react';
+import { Header } from '@ogcio/design-system-react';
 
 export function MyComponent() {
   return (
@@ -62,10 +62,10 @@ export function MyComponent() {
 
 ### Typography
 
-The `@govie-ds/react` package contains `Heading` and `Paragraph` components that implement the GOV IE design system responsive text guidelines:
+The `@ogcio/design-system-react` package contains `Heading` and `Paragraph` components that implement the GOV IE design system responsive text guidelines:
 
 ```jsx
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, Paragraph } from '@ogcio/design-system-react';
 
 function MyComponent() {
   return (
@@ -81,12 +81,12 @@ The GOV IE design system uses the [Lato](https://fonts.google.com/specimen/Lato)
 
 ### Internationalization (i18n) Guidelines
 
-To support multiple languages across your application, we use the `initI18n` utility provided by `@govie-ds/react`. This ensures consistency, accessibility, and localization across all components.
+To support multiple languages across your application, we use the `initI18n` utility provided by `@ogcio/design-system-react`. This ensures consistency, accessibility, and localization across all components.
 
 Before rendering your app, make sure to initialize i18n with your language resources:
 
 ```js
-import { initI18n } from '@govie-ds/react';
+import { initI18n } from '@ogcio/design-system-react';
 
 initI18n({
   resources: {

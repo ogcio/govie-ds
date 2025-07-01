@@ -113,7 +113,7 @@ jobs:
       - name: Set environment output if HTML package is affected
         id: check-html-affected
         run: |
-          if grep -q "@govie-ds/html" affected.txt; then
+          if grep -q "@ogcio/design-system-html" affected.txt; then
             echo "html_affected=true" >> "$GITHUB_OUTPUT"
           else
             echo "html_affected=false" >> $GITHUB_OUTPUT
@@ -121,7 +121,7 @@ jobs:
       - name: Set environment output if React package is affected
         id: check-react-affected
         run: |
-          if grep -q "@govie-ds/react" affected.txt; then
+          if grep -q "@ogcio/design-system-react" affected.txt; then
             echo "react_affected=true" >> $GITHUB_OUTPUT
           else
             echo "react_affected=false" >> $GITHUB_OUTPUT

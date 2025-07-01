@@ -1,4 +1,4 @@
-import { meta } from '@govie-ds/tokens';
+import { meta } from '@ogcio/design-system-tokens';
 import { SampleList } from '../common/sample-list';
 import { sampleTextShort } from '../common/sample-text';
 import { toSampleTokens } from '../common/sample-token';

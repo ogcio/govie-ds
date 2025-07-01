@@ -1,5 +1,5 @@
 {
-  "name": "@govie-ds/deepmerge",
+  "name": "@ogcio/ds-deepmerge",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "targets": {}
 }

@@ -1,5 +1,5 @@
 'use client';
-import { IconButton } from '@govie-ds/react';
+import { IconButton } from '@ogcio/design-system-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 import analytics from '@/lib/analytics';

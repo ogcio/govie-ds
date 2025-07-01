@@ -1,5 +1,5 @@
 'use client';
-import { meta } from '@govie-ds/tokens';
+import { meta } from '@ogcio/design-system-tokens';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';

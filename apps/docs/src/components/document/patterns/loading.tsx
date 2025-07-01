@@ -1,4 +1,4 @@
-import { Paragraph, Spinner } from '@govie-ds/react';
+import { Paragraph, Spinner } from '@ogcio/design-system-react';
 
 const LoadingComponent = ({
   label = 'We’re logging you out',

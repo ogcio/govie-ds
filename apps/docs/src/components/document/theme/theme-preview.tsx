@@ -8,7 +8,7 @@ import {
   SideNav,
   SideNavItem,
   Tag,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import React from 'react';
 
 export const ThemePreview = ({ colors }: ColorsMapProps) => {

@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
-import { meta } from '@govie-ds/tokens';
-import { buildTokens } from '@govie-ds/tokens-builder';
+import { meta } from '@ogcio/design-system-tokens';
+import { buildTokens } from '@ogcio/design-system-tokens-builder';
 import { outputFile } from 'fs-extra';
 import { compile } from 'json-schema-to-typescript';
 import { ZodTypeAny } from 'zod';

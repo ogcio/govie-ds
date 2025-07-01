@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/lib/cn';
-import { SideNav, SideNavItem } from '@govie-ds/react';
+import { SideNav, SideNavItem } from '@ogcio/design-system-react';
 import NextLink from 'next/link';
 
 export type SideNavigationItem = {

@@ -36,7 +36,7 @@ const config: StorybookConfig = {
       },
       resolve: {
         alias: {
-          '@govie-ds/html': path.resolve(
+          '@ogcio/design-system-html': path.resolve(
             // eslint-disable-next-line unicorn/prefer-module
             __dirname,
             '../src/index.ts',

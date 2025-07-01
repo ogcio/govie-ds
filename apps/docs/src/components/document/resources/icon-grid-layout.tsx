@@ -1,5 +1,5 @@
 'use client';
-import { Icon, Icons, Paragraph } from '@govie-ds/react';
+import { Icon, Icons, Paragraph } from '@ogcio/design-system-react';
 import { CopyToClipboardButton } from './copy-to-clipboard-button';
 import { titleCase } from '@/lib/utilities';
 

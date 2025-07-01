@@ -1,5 +1,5 @@
-import { deepmerge } from '@govie-ds/deepmerge';
-import { variables } from '@govie-ds/tokens';
+import { variables } from '@ogcio/design-system-tokens';
+import { deepmerge } from '@ogcio/ds-deepmerge';
 import tailwindTheme from 'tailwindcss/defaultTheme.js';
 import { CustomThemeConfig } from 'tailwindcss/types/config.js';
 import { convertColors, toFont } from './utilities.js';

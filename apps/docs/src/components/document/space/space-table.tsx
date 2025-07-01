@@ -1,4 +1,4 @@
-import { meta } from '@govie-ds/theme-govie';
+import { meta } from '@ogcio/theme-govie';
 import { orderBy } from 'lodash';
 import { objectKeys } from 'ts-extras';
 import { SampleList } from '../common/sample-list';

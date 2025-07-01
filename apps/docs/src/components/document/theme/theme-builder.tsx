@@ -4,7 +4,7 @@ import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { ClientOnly } from '../common/client-only';
 import { DownloadTheme } from './download-theme';
-import { Heading, Paragraph } from '@govie-ds/react';
+import { Heading, Paragraph } from '@ogcio/design-system-react';
 import { ThemePreview } from './theme-preview';
 import {
   COLOR_GROUPS,

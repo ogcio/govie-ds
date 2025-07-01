@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Popover } from '@govie-ds/react';
+import { Button, Popover } from '@ogcio/design-system-react';
 import { useRef, useState } from 'react';
 
 export const PopoverSample = () => {

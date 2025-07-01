@@ -15,7 +15,7 @@ import {
   TableRow,
   TextInput,
   Tooltip,
-} from '@govie-ds/react';
+} from '@ogcio/design-system-react';
 import {
   compareItems,
   RankingInfo,

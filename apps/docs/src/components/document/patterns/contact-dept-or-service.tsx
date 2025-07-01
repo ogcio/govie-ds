@@ -1,4 +1,4 @@
-import { Heading, Link, Paragraph } from '@govie-ds/react';
+import { Heading, Link, Paragraph } from '@ogcio/design-system-react';
 
 export function ContactDeptOrService() {
   return (

@@ -1,5 +1,5 @@
 'use client';
-import { Link, LinkProps } from '@govie-ds/react';
+import { Link, LinkProps } from '@ogcio/design-system-react';
 import analytics from '@/lib/analytics';
 import NextLink from 'next/link';
 

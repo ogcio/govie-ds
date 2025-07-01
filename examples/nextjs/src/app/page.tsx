@@ -55,7 +55,7 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
-} from "@govie-ds/react";
+} from "@ogcio/design-system-react";
 
 const headerProps: HeaderProps = {
   items: [
