@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.2](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.1...design-theme-builder-v1.4.2) (2025-07-01)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+    * @ogcio/design-system-eslint-config bumped to 1.2.5
+
 ## [1.4.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.0...design-theme-builder-v1.4.1) (2025-06-10)
 
 ### Miscellaneous Chores
