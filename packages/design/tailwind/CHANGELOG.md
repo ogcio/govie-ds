@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.9.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.9.0...design-tailwind-v1.9.1) (2025-07-01)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.4...design-tailwind-v1.9.0) (2025-06-27)
 
 ### Features

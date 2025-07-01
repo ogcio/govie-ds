@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.4...design-deepmerge-v1.0.5) (2025-07-01)
+
+
+### Miscellaneous Chores
+
+* eslint update ([#498](https://github.com/ogcio/govie-ds/issues/498)) ([b379780](https://github.com/ogcio/govie-ds/commit/b37978011efd59e9bee03c4175fe63e3f36b6791))
+
 ## [1.0.4](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.3...design-deepmerge-v1.0.4) (2025-03-31)
 
 ### Dependencies

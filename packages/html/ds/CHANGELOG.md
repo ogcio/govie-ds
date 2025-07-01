@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.8.0...html-lib-v1.8.1) (2025-07-01)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.9.1
+    * @ogcio/theme-govie bumped to 1.4.2
+
 ## [1.8.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.7.0...html-lib-v1.8.0) (2025-06-27)
 
 ### Features
