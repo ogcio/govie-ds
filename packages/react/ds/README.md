@@ -4,10 +4,6 @@
 
 Welcome to the GOV IE React component library, a collection of reusable React components designed to help you build modern React web applications utilising the GOV IE design system.
 
-**Status: Alpha**
-
-> Important Note: This library is currently in the **alpha** stage. As we continue to develop and improve the components, **frequent breaking changes are to be expected**. We appreciate your understanding and patience as we work towards a stable version 1.0.
-
 ## Getting Started
 
 To install the library, use the following command:
@@ -24,10 +20,10 @@ We **strongly recommend** that you pin the GOV IE design system packages, so tha
 
 ```diff
 "dependencies": {
--  "@ogcio/theme-govie": "^0.1.2",
-+  "@ogcio/theme-govie": "0.1.2",
--  "@ogcio/design-system-react": "^0.1.6",
-+  "@ogcio/design-system-react": "0.1.6"
+-  "@ogcio/theme-govie": "^1.4.1",
++  "@ogcio/theme-govie": "1.4.1",
+-  "@ogcio/design-system-react": "^1.10.0",
++  "@ogcio/design-system-react": "1.10.0"
 ```
 
 ### Usage
