@@ -27,7 +27,7 @@ export const Default: Story = {
     id: 'popover',
     triggerElement: beautifyHtmlNode(createButton({ content: 'Popover' })),
     content: `<div class="gi-text-sm gi-text-gray-800 gi-p-4">
-                    This is a popover content
+                This is a popover content
               </div>`,
   },
   render: (arguments_: any) =>
