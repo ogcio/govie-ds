@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "@ogcio/ds-figma",
+  "name": "@ogcio/design-system-figma",
   "private": true,
   "main": "index.js",
   "type": "module",

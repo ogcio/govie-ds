@@ -5,9 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "files": [
     "dist"
   ],
@@ -18,7 +16,6 @@
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup"
   },
-  "license": "MIT",
   "devDependencies": {
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*"

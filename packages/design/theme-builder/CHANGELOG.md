@@ -42,7 +42,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.4
+    - @ogcio/design-system-deepmerge bumped to 1.0.4
     - @ogcio/design-system-eslint-config bumped to 1.2.4
     - @ogcio/design-system-tokens bumped to 1.2.2
   - devDependencies
@@ -54,7 +54,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.3
+    - @ogcio/design-system-deepmerge bumped to 1.0.3
     - @ogcio/design-system-eslint-config bumped to 1.2.3
     - @ogcio/design-system-tokens bumped to 1.2.1
   - devDependencies
@@ -71,7 +71,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.2
+    - @ogcio/design-system-deepmerge bumped to 1.0.2
     - @ogcio/design-system-eslint-config bumped to 1.2.2
     - @ogcio/design-system-tokens bumped to 1.2.0
   - devDependencies
@@ -83,7 +83,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.1
+    - @ogcio/design-system-deepmerge bumped to 1.0.1
     - @ogcio/design-system-eslint-config bumped to 1.2.1
     - @ogcio/design-system-tokens bumped to 0.7.2
   - devDependencies
