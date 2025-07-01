@@ -25,7 +25,7 @@
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@faker-js/faker": "^9.6.0",
-    "@ogcio/ds-deepmerge": "workspace:*",
+    "@ogcio/design-system-deepmerge": "workspace:*",
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/design-system-tailwind": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",

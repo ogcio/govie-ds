@@ -1,5 +1,5 @@
 import { promises as fs } from 'node:fs';
-import { deepmerge } from '@ogcio/ds-deepmerge';
+import { deepmerge } from '@ogcio/design-system-deepmerge';
 import { glob } from 'glob';
 
 export async function mergeDesignTokens({

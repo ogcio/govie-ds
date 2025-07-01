@@ -36,11 +36,11 @@
     - @ogcio/design-system-eslint-config bumped to 1.2.1
     - @ogcio/design-system-prettier-config bumped to 1.0.2
 
-## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.3.1...@ogcio/ds-deepmerge-0.4.0) (2024-09-10)
+## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.3.1...@ogcio/design-system-deepmerge-0.4.0) (2024-09-10)
 
-## [0.3.1](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.3.0...@ogcio/ds-deepmerge-0.3.1) (2024-09-09)
+## [0.3.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.3.0...@ogcio/design-system-deepmerge-0.3.1) (2024-09-09)
 
-## [0.3.0](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.2.2...@ogcio/ds-deepmerge-0.3.0) (2024-08-06)
+## [0.3.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.2.2...@ogcio/design-system-deepmerge-0.3.0) (2024-08-06)
 
 ### Dependency Updates
 
@@ -50,26 +50,26 @@
 
 - add html package ([#145](https://github.com/ogcio/govie-ds/issues/145)) ([1d35bd1](https://github.com/ogcio/govie-ds/commit/1d35bd17900468863403333f77c855e5d92f3458))
 
-## [0.2.2](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.2.1...@ogcio/ds-deepmerge-0.2.2) (2024-07-31)
+## [0.2.2](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.2.1...@ogcio/design-system-deepmerge-0.2.2) (2024-07-31)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-eslint-config` updated to version `0.1.2`
 - `@ogcio/design-system-prettier-config` updated to version `0.0.2`
 
-## [0.2.1](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.2.0...@ogcio/ds-deepmerge-0.2.1) (2024-07-05)
+## [0.2.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.2.0...@ogcio/design-system-deepmerge-0.2.1) (2024-07-05)
 
 ### Bug Fixes
 
 - update merge desc ([#107](https://github.com/ogcio/govie-ds/issues/107)) ([35fd649](https://github.com/ogcio/govie-ds/commit/35fd649facc6923f7854122a7c98f4e549eb2218))
 
-## [0.2.0](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.1.1...@ogcio/ds-deepmerge-0.2.0) (2024-07-01)
+## [0.2.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.1.1...@ogcio/design-system-deepmerge-0.2.0) (2024-07-01)
 
 ### Features
 
 - add link ([#94](https://github.com/ogcio/govie-ds/issues/94)) ([0829761](https://github.com/ogcio/govie-ds/commit/082976131495f029bbdf7d3ef3dbb3e80d460c4a))
 
-## [0.1.1](https://github.com/ogcio/govie-ds/compare/@ogcio/ds-deepmerge-0.1.0...@ogcio/ds-deepmerge-0.1.1) (2024-06-26)
+## [0.1.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-deepmerge-0.1.0...@ogcio/design-system-deepmerge-0.1.1) (2024-06-26)
 
 ## 0.1.0 (2024-06-26)
 

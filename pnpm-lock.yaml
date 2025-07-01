@@ -152,7 +152,7 @@ importers:
       "@ogcio/design-system-tokens":
         specifier: workspace:*
         version: link:../../tokens
-      "@ogcio/ds-deepmerge":
+      "@ogcio/design-system-deepmerge":
         specifier: workspace:*
         version: link:../../packages/design/deepmerge
       "@ogcio/design-system-react":
@@ -505,7 +505,7 @@ importers:
       "@ogcio/design-system-tokens":
         specifier: workspace:*
         version: link:../../../tokens
-      "@ogcio/ds-deepmerge":
+      "@ogcio/design-system-deepmerge":
         specifier: workspace:*
         version: link:../deepmerge
       ts-extras:
@@ -530,7 +530,7 @@ importers:
       "@ogcio/design-system-tokens-builder":
         specifier: workspace:*
         version: link:../tokens-builder
-      "@ogcio/ds-deepmerge":
+      "@ogcio/design-system-deepmerge":
         specifier: workspace:*
         version: link:../deepmerge
       "@ogcio/design-system-eslint-config":
