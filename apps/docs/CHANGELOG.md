@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.1](https://github.com/ogcio/govie-ds/compare/docs-v1.10.0...docs-v1.10.1) (2025-07-01)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+    * @ogcio/design-system-react bumped to 1.10.1
+    * @ogcio/design-system-tailwind bumped to 1.9.1
+    * @ogcio/theme-govie bumped to 1.4.2
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.2.5
+
 ## [1.10.0](https://github.com/ogcio/govie-ds/compare/docs-v1.9.0...docs-v1.10.0) (2025-06-27)
 
 ### Features
