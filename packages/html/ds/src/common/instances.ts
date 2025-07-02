@@ -9,11 +9,11 @@ import { InputPassword } from '../input-password/input-password';
 import { Modal } from '../modal/modal';
 import { Popover } from '../popover/popover';
 import { Radio } from '../radio/radio';
+import { SelectNext } from '../select-next/select-next';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { Toast } from '../toast/toast';
 import { Tooltip } from '../tooltip/tooltip';
-import { SelectNext } from '../select-next/select-next';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {

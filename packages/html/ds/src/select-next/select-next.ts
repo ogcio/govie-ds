@@ -35,7 +35,7 @@ export class SelectNext extends BaseComponent<SelectNextOptions> {
     const optionsContainer = this.container.querySelector(
       '.gi-select-menu-option-container',
     );
-    optionsContainer?.appendChild(this.notFoundElement);
+    optionsContainer?.append(this.notFoundElement);
 
     if (this.searchInput) {
       this.searchInput.addEventListener('input', this.handleSearchInput);
@@ -65,7 +65,7 @@ export class SelectNext extends BaseComponent<SelectNextOptions> {
             icon: 'check',
             className: 'gi-icon-check',
           });
-          option.appendChild(checkIcon);
+          option.append(checkIcon);
         }
       } else {
         option.setAttribute('aria-selected', 'false');
@@ -96,31 +96,34 @@ export class SelectNext extends BaseComponent<SelectNextOptions> {
   }
 
   handleOnOptionClick(event: any) {
-    const { label, value } = event.target?.dataset;
-    this.input.setAttribute('value', label);
+    const target = event.target as HTMLElement | null;
+    const { label, value } = target?.dataset ?? {};
+
+    this.input.setAttribute('value', label || '');
     this.input.dataset.optionValue = value;
     const closePopoverEvent = new CustomEvent('closePopover', {
       bubbles: true,
     });
     this.input.dispatchEvent(closePopoverEvent);
-    this.updateOptionCheck(value);
+    this.updateOptionCheck(value || '');
   }
 
   handleOnOptionKeyDown(event: any) {
     const key = event.key;
-    const { label, value, isDisabled } = event.target?.dataset;
+    const target = event.target as HTMLElement | null;
+    const { label, value, isDisabled } = target?.dataset ?? {};
 
     if (
       key === 'Enter' &&
       (isDisabled === 'false' || isDisabled === undefined)
     ) {
-      this.input.setAttribute('value', label);
+      this.input.setAttribute('value', label || '');
       this.input.dataset.optionValue = value;
       const closePopoverEvent = new CustomEvent('closePopover', {
         bubbles: true,
       });
       this.input.dispatchEvent(closePopoverEvent);
-      this.updateOptionCheck(value);
+      this.updateOptionCheck(value || '');
     }
   }
 

@@ -12,8 +12,8 @@ import {
 import { TextAreaProps } from '../textarea/types';
 import { createIconButton } from './buttons';
 import { createIcon } from './icons';
-import { createSelectMenu } from './select-menu';
 import { createPopover } from './popover';
+import { createSelectMenu } from './select-menu';
 
 export const createLabel = (labelProps: LabelProps) => {
   const label = document.createElement('label');
@@ -685,7 +685,7 @@ function resolveDefaultValueLabel(
 
   for (const item of items) {
     if ('items' in item) {
-      const found = item.items.find((i) => i.value === value);
+      const found = item.items.find((item) => item.value === value);
       if (found) {
         return found.label;
       }

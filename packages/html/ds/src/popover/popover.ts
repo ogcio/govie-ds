@@ -71,8 +71,9 @@ export class Popover extends BaseComponent<PopoverOptions> {
   }
 
   destroyComponent(): void {
-    this.triggerElement.removeEventListener('click', () =>
-      this.toggleDisplayState(),
+    this.triggerElement.removeEventListener(
+      'click',
+      this.toggleDisplayState as any,
     );
   }
 }

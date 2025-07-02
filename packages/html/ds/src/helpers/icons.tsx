@@ -28,9 +28,9 @@ export const createIcon = (iconProps: IconProps) => {
   }
 
   if (iconProps.dataset) {
-    Object.entries(iconProps.dataset || {}).forEach(([key, value]) => {
+    for (const [key, value] of Object.entries(iconProps.dataset || {})) {
       icon.dataset[key] = value as string;
-    });
+    }
   }
 
   icon.className = className.join(' ');
