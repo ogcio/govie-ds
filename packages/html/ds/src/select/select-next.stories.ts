@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
-import { createSelect } from '../helpers/forms';
+import { createSelectNext } from '../helpers/forms';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { SelectProps } from './types';
 
 const meta: Meta<SelectProps> = {
-  title: 'Form/Select',
+  title: 'Form/Select/SelectNext',
   parameters: {
     docs: {
       description: {
@@ -20,17 +19,18 @@ export default meta;
 type Story = StoryObj<SelectProps>;
 
 const createElement = (arguments_: SelectProps) => {
-  const component = createSelect(arguments_);
-  return beautifyHtmlNode(component);
+  const component = createSelectNext(arguments_);
+  return `<div class="gi-w-56">${beautifyHtmlNode(component)}</div>`;
 };
 
 export const Default: Story = {
   args: {
-    id: 'unique-id',
+    id: 'default-id',
     label: {
       content: 'Label',
       htmlFor: 'unique-id',
     },
+    defaultValue: 'value-1',
     items: [
       {
         label: 'Select Option',
@@ -52,11 +52,14 @@ export const Default: Story = {
       },
     ],
   },
-  render: (arguments_) => createElement(arguments_),
+  render: (arguments_) => {
+    return createElement(arguments_);
+  },
 };
 
 export const Focus = {
   args: {
+    id: 'select-focus-id',
     label: {
       content: 'Label',
     },
@@ -81,12 +84,14 @@ export const Focus = {
       focus: '.focus-select',
     },
   },
-  render: (arguments_) => createElement(arguments_),
+  render: (arguments_) => {
+    return createElement(arguments_);
+  },
 };
 
-export const withLabelHintAndError: Story = {
+export const WithLabelHintAndError: Story = {
   args: {
-    id: 'unique-id',
+    id: 'with-error-id',
     dataTestid: 'unique-id',
     label: {
       content: 'Default Select',
@@ -119,38 +124,13 @@ export const withLabelHintAndError: Story = {
       },
     ],
   },
-  render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    const select = canvas.getByTestId('unique-id') as HTMLSelectElement;
-    expect(globalThis.window.getComputedStyle(select).borderColor).toBe(
-      'rgb(187, 37, 13)',
-    );
-
-    const label = canvas.getByText('Default Select');
-    expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
-    expect(label.getAttribute('for')).toBe(select.getAttribute('id'));
-
-    const hint = canvas.getByText(
-      'This can be different to where you went before',
-    );
-    expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
-
-    const error = canvas.getByText('Error message');
-    expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
-
-    const placeholderOption = select.options[0];
-    expect(placeholderOption.hidden).toBe(true);
-    expect(placeholderOption.selected).toBe(true);
-  },
+  render: (arguments_) =>
+    `<div class="gi-w-56">${beautifyHtmlNode(createSelectNext(arguments_))}</div>`,
 };
 
 export const WithoutLabel = {
   args: {
+    id: 'without-label-id',
     items: [
       {
         label: 'Option 1',
@@ -171,6 +151,7 @@ export const WithoutLabel = {
 
 export const DisabledSelect = {
   args: {
+    id: 'disabled-select-id',
     disabled: true,
     label: {
       content: 'Label',
@@ -195,6 +176,7 @@ export const DisabledSelect = {
 
 export const DisabledItem = {
   args: {
+    id: 'disabled-item-id',
     label: {
       content: 'Label',
     },
@@ -217,13 +199,36 @@ export const DisabledItem = {
   render: (arguments_) => createElement(arguments_),
 };
 
-export const withGroups: Story = {
+export const WithSearchEnabled = {
   args: {
-    id: 'unique-id',
+    id: 'without-label-id',
+    enableSearch: true,
+    items: [
+      {
+        label: 'Option 1',
+        value: 'value-1',
+      },
+      {
+        label: 'Option 2',
+        value: 'value-2',
+      },
+      {
+        label: 'Option 3',
+        value: 'value-3',
+      },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithGroups: Story = {
+  args: {
+    id: 'with-groups-id',
     label: {
       content: 'Default Select',
-      htmlFor: 'unique-id',
+      htmlFor: 'with-groups-id',
     },
+    enableSearch: true,
     items: [
       {
         label: 'Group 1',

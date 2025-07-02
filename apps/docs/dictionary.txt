@@ -80,6 +80,7 @@ PaginationProps
 ParagraphProps
 PhaseBannerProps
 Prioritize
+Programmatically
 ProgressBarProps
 ProgressStepper
 ProgressStepperProps

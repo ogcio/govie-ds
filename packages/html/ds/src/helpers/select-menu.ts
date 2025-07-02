@@ -1,4 +1,46 @@
 import { SelectGroupItemProps, SelectItemProps } from '../select/types';
+import { createLabel } from './forms';
+
+const createListItem = (
+  item: SelectItemProps,
+  enableSearch?: boolean,
+  ignorePopoverEvents?: boolean,
+): HTMLLIElement => {
+  const li = document.createElement('li');
+  li.dataset.ignorePopoverEvents = ignorePopoverEvents ? 'true' : 'false';
+  const span = document.createElement('span');
+  span.dataset.ignorePopoverEvents = ignorePopoverEvents ? 'true' : 'false';
+
+  li.className = 'gi-select-option-item';
+  span.className = 'gi-text-sm';
+  span.textContent = item.label;
+  span.dataset.value = item.value?.toString();
+  span.dataset.label = item.label?.toString();
+
+  li.setAttribute('role', 'option');
+  li.setAttribute('tabindex', '0');
+  li.setAttribute('aria-selected', 'false');
+  li.setAttribute('aria-label', item.label);
+  li.dataset.isDisabled = 'false';
+  span.dataset.isDisabled = 'false';
+  li.dataset.testid = `option-${item.value?.toString()}`;
+  li.dataset.value = item.value?.toString();
+  li.dataset.label = item.label?.toString();
+  li.dataset.searchEnabled = enableSearch ? 'true' : 'false';
+
+  if (item.hidden) {
+    li.style.display = 'none';
+  }
+
+  if (item.disabled) {
+    li.className = 'gi-select-option-item gi-select-option-item-disabled';
+    li.dataset.isDisabled = 'true';
+    span.dataset.isDisabled = 'true';
+  }
+
+  li.append(span);
+  return li;
+};
 
 export type SelectMenuProps = {
   id: string;
@@ -7,6 +49,7 @@ export type SelectMenuProps = {
   className?: string;
   disabled?: boolean;
   enableSearch?: boolean;
+  ignorePopoverEvents?: boolean;
 };
 
 export const createSelectMenu = (arguments_: SelectMenuProps) => {
@@ -16,10 +59,13 @@ export const createSelectMenu = (arguments_: SelectMenuProps) => {
     className = '',
     disabled = false,
     enableSearch,
+    id,
+    ignorePopoverEvents,
   } = arguments_;
 
   const container = document.createElement('div');
   container.dataset.testid = dataTestid;
+  container.id = `select-menu-${id}`;
   container.className = `gi-select-menu-container ${className}`.trim();
 
   if (enableSearch) {
@@ -33,6 +79,7 @@ export const createSelectMenu = (arguments_: SelectMenuProps) => {
     inputInner.className = 'gi-input-text-inner';
 
     const input = document.createElement('input');
+    input.id = `search-input-${id}`;
     input.className = 'gi-input-text';
     input.type = 'text';
     input.placeholder = 'Search';
@@ -44,6 +91,7 @@ export const createSelectMenu = (arguments_: SelectMenuProps) => {
     input.dataset.suffix = 'false';
     input.dataset.triggerElementId = 'select-menu-search-input-trigger';
     input.disabled = disabled;
+    input.dataset.ignorePopoverEvents = ignorePopoverEvents ? 'true' : 'false';
 
     const iconWrapper = document.createElement('div');
     iconWrapper.className = 'gi-input-text-icon-end';
@@ -71,25 +119,30 @@ export const createSelectMenu = (arguments_: SelectMenuProps) => {
   optionsContainer.className = 'gi-select-menu-option-container';
 
   const ul = document.createElement('ul');
+  ul.dataset.ignorePopoverEvents = ignorePopoverEvents ? 'true' : 'false';
 
   for (const item of items) {
-    const li = document.createElement('li');
-    li.className = 'gi-select-option-item';
-    li.setAttribute('role', 'option');
-    li.setAttribute('tabindex', '0');
-    li.setAttribute('aria-selected', 'false');
-    li.setAttribute('aria-label', item.label);
-    li.dataset.searchEnabled = 'true';
-    li.dataset.testid = `option-${item.value.toString()}`;
-    li.dataset.triggerElementId = 'select-menu-item-trigger';
+    if ('items' in item) {
+      const groupDiv = document.createElement('div');
+      groupDiv.setAttribute('role', 'option');
+      groupDiv.className = 'gi-px-3';
 
-    const span = document.createElement('span');
-    span.className = 'gi-text-sm';
-    span.textContent = item.label;
-    span.dataset.triggerElementId = 'select-menu-span-trigger';
+      const groupLabel = createLabel({
+        content: item.label,
+        size: 'sm',
+        className: 'gi-font-bold gi-pb-1',
+      });
+      groupDiv.append(groupLabel);
 
-    li.append(span);
-    ul.append(li);
+      for (const child of item.items.filter((opt) => !opt.hidden)) {
+        const li = createListItem(child, enableSearch, ignorePopoverEvents);
+        groupDiv.append(li);
+      }
+      ul.append(groupDiv);
+    } else if (!item.hidden) {
+      const li = createListItem(item, enableSearch, ignorePopoverEvents);
+      ul.append(li);
+    }
   }
 
   optionsContainer.append(ul);

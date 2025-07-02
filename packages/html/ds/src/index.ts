@@ -16,6 +16,7 @@ import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
+import { initSelectNext } from './select-next/select-next.js';
 import { initUtilities } from './utils/utilities.js';
 
 export * as properties from './dist/properties.js';
@@ -51,6 +52,7 @@ export function initGovIe() {
   initPassword();
   initUtilities();
   initPopover();
+  initSelectNext();
 }
 
 export function destroyGovIe() {

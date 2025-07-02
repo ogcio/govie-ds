@@ -13,6 +13,7 @@ import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { Toast } from '../toast/toast';
 import { Tooltip } from '../tooltip/tooltip';
+import { SelectNext } from '../select-next/select-next';
 import { BaseComponent, BaseComponentOptions } from './component';
 
 function generateRandomId() {
@@ -35,6 +36,7 @@ const componentRegistry = {
   InputPassword,
   Drawer,
   Popover,
+  SelectNext,
 } as const;
 
 export type ComponentRegistryKey = keyof typeof componentRegistry;

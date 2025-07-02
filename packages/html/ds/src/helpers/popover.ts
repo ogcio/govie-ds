@@ -9,10 +9,12 @@ export const createPopover = (arguments_: PopoverProps) => {
   container.dataset.element = 'popover';
   container.id = arguments_.id;
   container.classList = 'gi-popover-container';
+  container.style = 'width:inherit';
 
   wrapper.ariaRoleDescription = 'dialog';
   wrapper.ariaHidden = 'true';
-  wrapper.classList = 'gi-popover gi-hidden';
+  wrapper.classList = `gi-popover gi-hidden ${arguments_.className}`;
+  wrapper.style = 'z-index: 999';
   wrapper.innerHTML = arguments_.content;
   wrapper.dataset.element = 'popover';
 

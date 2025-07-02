@@ -29,4 +29,16 @@ The default example demonstrates the basic functionality of the Popover, includi
 
 <StorybookFrame className="h-max" componentId="popover-html" story="default" />
 
+## Programmatically Close Popover
+
+You can programmatically close the Popover by dispatching a `closePopover` event. This is useful when interacting with other components (e.g., when a dropdown option is selected).
+To close the Popover from an external element (like an input or list item), dispatch a `CustomEvent` named `closePopover`. Make sure it bubbles so it reaches the Popover container:
+
+```ts
+const closePopoverEvent = new CustomEvent('closePopover', {
+  bubbles: true,
+});
+this.input.dispatchEvent(closePopoverEvent);
+```
+
 </Section>
