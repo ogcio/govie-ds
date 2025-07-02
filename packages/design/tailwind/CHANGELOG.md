@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.9.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.9.0...design-tailwind-v1.9.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.4...design-tailwind-v1.9.0) (2025-06-27)
 
 ### Features
