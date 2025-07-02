@@ -1,5 +1,5 @@
 {
-    "pull-request-title-pattern": "chore(auto-release): release ${component} ${version}",
+    "group-pull-request-title-pattern": "chore(auto-release): release",
     "include-component-in-tag": true,
     "changelog-sections": [
         {
