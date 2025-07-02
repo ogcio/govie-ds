@@ -30,7 +30,6 @@ export const Default: Story = {
       content: 'Label',
       htmlFor: 'unique-id',
     },
-    defaultValue: 'value-1',
     items: [
       {
         label: 'Select Option',
