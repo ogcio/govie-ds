@@ -1,0 +1,68 @@
+---
+title: Pagination
+description: Pagination React Component
+status: stable
+component:
+  id: 'pagination-react'
+  link: '/docs/navigation-pagination--docs'
+  status: 'stable'
+  properties:
+    - name: PaginationProps
+      fields:
+        - name: 'currentPage'
+          ofType: 'number'
+          description: 'A number that indicates the current active page displayed in the pagination.'
+          required: false
+        - name: 'totalPages'
+          ofType: 'number'
+          description: 'A number that represents the total number of pages available in the pagination.'
+          required: false
+        - name: 'onPageChange'
+          ofType: 'function'
+          description: 'A callback function triggered when the page changes. It receives the new page number as an argument.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/navigation-pagination--default'
+---
+
+# Pagination
+
+The Pagination component provides a user interface for navigating through multiple pages of content. It dynamically adjusts the number of page buttons shown based on screen size and the total number of pages, using ellipses (`...`) when necessary to keep the layout compact. On small screens, it switches to a compact view with only previous/next buttons and a current page indicator.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Pagination currentPage={5} totalPages={10} />
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame className="h-28" componentId="pagination-react" story="default" />
+
+## Properties
+
+<ComponentPropertiesTable componentId="pagination-react" />
+
+## i18n Keys
+
+The Pagination component supports localization through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+
+```json
+{
+  "pagination.previous": "Previous",
+  "pagination.next": "Next",
+  "pagination.page": "Page {{currentPage}} of {{totalPages}}",
+  "pagination.goToPage": "Go to page {{page}}",
+  "pagination.goToPrevious": "Go to previous",
+  "pagination.goToNext": "Go to next"
+}
+```
+
+These keys are used for screen reader accessibility (aria-label) and visible button text.
+- You can override these translations per locale to support multilingual experiences.
+- Ensure placeholders like `{{ currentPage }}`, `{{ totalPages }}`, and `{{ page }}` are preserved when translating.
+
+</Section>
