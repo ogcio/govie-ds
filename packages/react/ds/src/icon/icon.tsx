@@ -1,5 +1,4 @@
 'use client';
-import { meta } from '@ogcio/design-system-tokens';
 import { cn } from '../cn.js';
 import { iconIds } from './icons.js';
 import Bluesky from './svgs/bluesky.js';
@@ -41,7 +40,21 @@ export function Icon({
   onClick,
   ...props
 }: IconProps) {
-  const fontSize = meta.light.resolved.primitive.size[size].$value;
+  let fontSize = '24';
+  switch (size) {
+    case 'sm': {
+      fontSize = '16';
+      break;
+    }
+    case 'lg': {
+      fontSize = '32';
+      break;
+    }
+    case 'xl': {
+      fontSize = '48';
+      break;
+    }
+  }
 
   if (icon === 'social_bluesky') {
     return (
