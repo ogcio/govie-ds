@@ -1,0 +1,73 @@
+---
+title: Details
+description: Details Component Design Guidelines
+status: stable
+component:
+  id: 'details'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4500-3577&t=7VDYQ4vLM9yzDqQx-4'
+  status: 'stable'
+---
+
+# Details
+
+The Details component provides a way to show or hide additional information on demand. It’s commonly used to keep interfaces clean while still giving users access to supporting content like explanations, help text, or guidance. The component is accessible by default using the HTML `<details>` and `<summary>` elements, and supports keyboard interaction and screen readers.
+
+<Section current="design">
+
+<ComponentPreview className="justify-normal">
+  <Details label="Help with Nationality">
+    We need to know your nationality so we can work out which elections you’re
+    entitled to vote in. If you cannot provide your nationality, you’ll have to
+    send copies of identity documents through the post.
+  </Details>
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4500-3577&t=7VDYQ4vLM9yzDqQx-4" />
+
+## Variants
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-full justify-normal">
+    <Details label="What is a National Insurance number?">
+      Your National Insurance number is a number unique to you. It helps make sure your National Insurance contributions and tax are recorded correctly.
+    </Details>
+  </ComponentPreviewItem>
+
+  <ComponentPreviewItem className="w-full justify-normal">
+    <Details label="Why we need your date of birth" open>
+      We use your date of birth to help confirm your identity and ensure you meet the age requirements for registration.
+    </Details>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the Details component when you want to progressively disclose additional content, especially in forms or dense information areas. It helps reduce cognitive load by hiding less frequently needed content until requested.
+
+### Do
+
+- Use for help text, legal info, or secondary guidance.
+- Keep labels short and descriptive.
+- Ensure toggling updates the icon and accessibility attributes.
+- Use one Details component per discrete information group.
+
+<ComponentContainer>
+  <Details label="Need help with email address?">
+    Enter the email address you use most often. We may use this to contact you
+    about your registration.
+  </Details>
+</ComponentContainer>
+
+### Don’t
+
+- Don’t overload with too much content—prefer links to full help pages for lengthy info.
+- Don’t use for critical information that must always be visible.
+- Don’t use generic labels like “More info” without context.
+
+<ComponentContainer>
+  <Details label="More Info">
+    This is vague and doesn't help users understand what they’ll see.
+  </Details>
+</ComponentContainer>
+
+</Section>

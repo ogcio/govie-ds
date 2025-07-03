@@ -2,6 +2,7 @@ import { Accordion } from '../accordion/accordion';
 import { Alert } from '../alert/alert';
 import { ComboBox } from '../combo-box/combo-box';
 import { CookieBanner } from '../cookie-banner/cookie-banner';
+import { Details } from '../details/details';
 import { Drawer } from '../drawer/drawer';
 import { Header } from '../header/header';
 import { Checkboxes } from '../input-checkbox/input-checkbox';
@@ -33,6 +34,7 @@ const componentRegistry = {
   Accordion,
   InputPassword,
   Drawer,
+  Details,
 } as const;
 
 export type ComponentRegistryKey = keyof typeof componentRegistry;

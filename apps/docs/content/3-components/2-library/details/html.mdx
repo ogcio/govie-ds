@@ -1,0 +1,54 @@
+---
+title: Details
+description: Details HTML Component
+status: stable
+component:
+  id: 'details-html'
+  link: '/docs/typography-details--docs'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/typography-details--default'
+    - name: 'with-multiple-group'
+      url: '/story/typography-details--with-multiple-details-grouped'
+    - name: 'starts-open'
+      url: '/story/typography-details--starts-open'
+---
+
+# Details
+
+The Details component is a semantic HTML element that lets users toggle the visibility of content. It’s ideal for progressively disclosing supporting information such as help text, guidance, or definitions. This implementation uses the native `<details>` and `<summary>` tags, ensuring built-in accessibility and expected browser behaviour.
+
+<Section current="html">
+
+<ComponentPreview className="justify-normal">
+  <Details label="Help with Nationality">
+    We need to know your nationality so we can work out which elections you’re
+    entitled to vote in. If you cannot provide your nationality, you’ll have to
+    send copies of identity documents through the post.
+  </Details>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame className="h-auto" componentId="details-html" story="default" />
+
+### With Multiple Details Group
+
+<StorybookFrame
+  className="h-auto"
+  componentId="details-html"
+  story="with-multiple-group"
+/>
+
+### Starts Open
+
+<StorybookFrame
+  className="h-auto"
+  componentId="details-html"
+  story="starts-open"
+/>
+
+</Section>

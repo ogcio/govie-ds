@@ -1,6 +1,7 @@
 // Don't reorder the following import
 import { destroyAllInstances } from './common/instances.js';
 import { initCookieBanner } from './cookie-banner/cookie-banner.js';
+import { initDetails } from './details/details.js';
 import { initDrawer } from './drawer/drawer.js';
 import { createEvents } from './events.js';
 import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
@@ -49,6 +50,7 @@ export function initGovIe() {
   initAccordion();
   initPassword();
   initUtilities();
+  initDetails();
 }
 
 export function destroyGovIe() {
