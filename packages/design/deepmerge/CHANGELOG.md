@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.6](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.5...design-deepmerge-v1.0.6) (2025-07-03)
+
+
+### Miscellaneous Chores
+
+* **auto-release:** release ([#619](https://github.com/ogcio/govie-ds/issues/619)) ([e5e52ee](https://github.com/ogcio/govie-ds/commit/e5e52ee27bd80881d39200149da0fc2ad7441bc8))
+* **ci:** release main ([#481](https://github.com/ogcio/govie-ds/issues/481)) ([10ee31a](https://github.com/ogcio/govie-ds/commit/10ee31a750add6274865217714f66e5a7853f3be))
+* **ci:** release main ([#483](https://github.com/ogcio/govie-ds/issues/483)) ([f5919cb](https://github.com/ogcio/govie-ds/commit/f5919cb3796ff28fa57f52c6800d46236568b117))
+* **ci:** release main ([#496](https://github.com/ogcio/govie-ds/issues/496)) ([e4f5f7a](https://github.com/ogcio/govie-ds/commit/e4f5f7aa3777b752188eee5618bb1932ebd7a104))
+* **ci:** release main ([#497](https://github.com/ogcio/govie-ds/issues/497)) ([972b463](https://github.com/ogcio/govie-ds/commit/972b4639fa231d83d0dbfe8087969712960bde45))
+* eslint update ([#498](https://github.com/ogcio/govie-ds/issues/498)) ([b379780](https://github.com/ogcio/govie-ds/commit/b37978011efd59e9bee03c4175fe63e3f36b6791))
+* update changelogs ([3ef603f](https://github.com/ogcio/govie-ds/commit/3ef603f2a68c1115ed0ff88471584bf6917534f4))
+* update node to 22 ([#306](https://github.com/ogcio/govie-ds/issues/306)) ([61120a1](https://github.com/ogcio/govie-ds/commit/61120a1ba5892c9be233ca17d6372dbab44236a1))
+
 ## [1.0.5](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.4...design-deepmerge-v1.0.5) (2025-07-02)
 
 
