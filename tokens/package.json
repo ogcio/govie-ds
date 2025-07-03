@@ -18,7 +18,6 @@
     "build:tokens": "tsx scripts/build.ts",
     "build:source": "tsup"
   },
-  "license": "MIT",
   "devDependencies": {
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*"

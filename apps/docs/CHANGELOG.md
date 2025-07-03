@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.10.1](https://github.com/ogcio/govie-ds/compare/docs-v1.10.0...docs-v1.10.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+    * @ogcio/design-system-react bumped to 1.10.1
+    * @ogcio/design-system-tailwind bumped to 1.9.1
+    * @ogcio/theme-govie bumped to 1.4.2
+
 ## [1.10.0](https://github.com/ogcio/govie-ds/compare/docs-v1.9.0...docs-v1.10.0) (2025-06-27)
 
 ### Features
@@ -252,7 +269,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.4
+    - @ogcio/design-system-deepmerge bumped to 1.0.4
     - @ogcio/design-system-react bumped to 1.2.2
     - @ogcio/design-system-tailwind bumped to 1.2.2
     - @ogcio/theme-govie bumped to 1.2.2
@@ -271,7 +288,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.3
+    - @ogcio/design-system-deepmerge bumped to 1.0.3
     - @ogcio/design-system-react bumped to 1.2.1
     - @ogcio/design-system-tailwind bumped to 1.2.1
     - @ogcio/theme-govie bumped to 1.2.1
@@ -297,7 +314,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.2
+    - @ogcio/design-system-deepmerge bumped to 1.0.2
     - @ogcio/design-system-react bumped to 1.2.0
     - @ogcio/design-system-tailwind bumped to 1.2.0
     - @ogcio/theme-govie bumped to 1.2.0
@@ -312,7 +329,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.1
+    - @ogcio/design-system-deepmerge bumped to 1.0.1
     - @ogcio/design-system-react bumped to 1.1.1
     - @ogcio/design-system-tailwind bumped to 1.1.1
     - @ogcio/theme-govie bumped to 0.6.2
@@ -620,7 +637,7 @@
 
 - `@ogcio/eslint-config` updated to version `0.3.0`
 - `@ogcio/design-system-prettier-config` updated to version `0.1.0`
-- `@ogcio/ds-deepmerge` updated to version `0.4.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.4.0`
 - `@ogcio/design-system-tailwind` updated to version `0.6.0`
 - `@ogcio/theme-govie` updated to version `0.4.0`
 - `@ogcio/theme-hse` updated to version `0.1.0`
@@ -680,7 +697,7 @@
 ### Dependency Updates
 
 - `@ogcio/eslint-config` updated to version `0.2.0`
-- `@ogcio/ds-deepmerge` updated to version `0.3.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.3.0`
 - `@ogcio/design-system-tailwind` updated to version `0.5.0`
 - `@ogcio/theme-govie` updated to version `0.3.0`
 - `@ogcio/theme-hse` updated to version `0.1.0`
@@ -726,7 +743,7 @@
 
 - `@ogcio/eslint-config` updated to version `0.1.2`
 - `@ogcio/design-system-prettier-config` updated to version `0.0.2`
-- `@ogcio/ds-deepmerge` updated to version `0.2.2`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.2`
 - `@ogcio/design-system-tailwind` updated to version `0.4.1`
 - `@ogcio/theme-govie` updated to version `0.2.3`
 - `@ogcio/theme-hse` updated to version `0.1.0`
@@ -871,7 +888,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.2.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.1`
 - `@ogcio/design-system-tailwind` updated to version `0.3.2`
 
 ## [0.18.7](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-docs-0.18.6...@ogcio/design-system-docs-0.18.7) (2024-07-05)
@@ -948,7 +965,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.2.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.0`
 - `@ogcio/design-system-tailwind` updated to version `0.2.0`
 - `@ogcio/theme-govie` updated to version `0.2.0`
 - `@ogcio/theme-hse` updated to version `0.1.0`
@@ -982,14 +999,14 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.1.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.1.1`
 - `@ogcio/design-system-tailwind` updated to version `0.1.1`
 
 ## [0.15.12](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-docs-0.15.11...@ogcio/design-system-docs-0.15.12) (2024-06-26)
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.1.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.1.0`
 - `@ogcio/design-system-tailwind` updated to version `0.1.0`
 - `@ogcio/theme-govie` updated to version `0.1.2`
 - `@ogcio/design-system-tokens` updated to version `0.1.5`
@@ -1123,7 +1140,7 @@
 ### Dependency Updates
 
 - `@ogcio/eslint-config` updated to version `0.1.0`
-- `@ogcio/ds-deepmerge` updated to version `0.1.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.1.0`
 - `@ogcio/design-components` updated to version `0.1.0`
 - `@ogcio/theme-govie` updated to version `0.1.0`
 - `@ogcio/theme-hse` updated to version `0.1.0`
@@ -1149,7 +1166,7 @@
 ### Dependency Updates
 
 - `@ogcio/eslint-config` updated to version `0.0.1`
-- `@ogcio/ds-deepmerge` updated to version `0.0.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.0.1`
 - `@ogcio/theme-govie` updated to version `0.0.1`
 - `@ogcio/theme-hse` updated to version `0.0.1`
 
@@ -1182,7 +1199,7 @@
 
 - `@ogcio/eslint-config` updated to version `0.0.1`
 - `@ogcio/design-system-prettier-config` updated to version `0.0.1`
-- `@ogcio/ds-deepmerge` updated to version `0.0.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.0.1`
 - `@ogcio/theme-govie` updated to version `0.0.1`
 - `@ogcio/theme-hse` updated to version `0.0.1`
 - `@ogcio/design-system-tokens` updated to version `0.1.0`

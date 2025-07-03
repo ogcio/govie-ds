@@ -1,7 +1,6 @@
 {
-    "pull-request-title-pattern": "chore(auto-release): release ${component} ${version}",
+    "group-pull-request-title-pattern": "chore(auto-release): release",
     "include-component-in-tag": true,
-    "separate-pull-requests": true,
     "changelog-sections": [
         {
             "type": "feat",

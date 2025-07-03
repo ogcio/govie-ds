@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/theme-builder",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "main": "dist/index.js",
   "type": "module",
@@ -15,7 +15,7 @@
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {
     "@animaapp/design-tokens-validator": "^0.0.2",
-    "@ogcio/ds-deepmerge": "workspace:*",
+    "@ogcio/design-system-deepmerge": "workspace:*",
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-tokens": "workspace:*",
     "@ogcio/design-system-tokens-builder": "workspace:*",

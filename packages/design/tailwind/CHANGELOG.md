@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.9.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.9.0...design-tailwind-v1.9.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+
 ## [1.9.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.8.4...design-tailwind-v1.9.0) (2025-06-27)
 
 ### Features
@@ -159,7 +173,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.4
+    - @ogcio/design-system-deepmerge bumped to 1.0.4
     - @ogcio/design-system-tokens bumped to 1.2.2
   - devDependencies
     - @ogcio/design-system-prettier-config bumped to 1.0.5
@@ -174,7 +188,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.3
+    - @ogcio/design-system-deepmerge bumped to 1.0.3
     - @ogcio/design-system-tokens bumped to 1.2.1
   - devDependencies
     - @ogcio/design-system-prettier-config bumped to 1.0.4
@@ -198,7 +212,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.2
+    - @ogcio/design-system-deepmerge bumped to 1.0.2
     - @ogcio/design-system-tokens bumped to 1.2.0
   - devDependencies
     - @ogcio/design-system-prettier-config bumped to 1.0.3
@@ -209,7 +223,7 @@
 
 - The following workspace dependencies were updated
   - dependencies
-    - @ogcio/ds-deepmerge bumped to 1.0.1
+    - @ogcio/design-system-deepmerge bumped to 1.0.1
     - @ogcio/design-system-tokens bumped to 0.7.2
   - devDependencies
     - @ogcio/design-system-prettier-config bumped to 1.0.2
@@ -521,7 +535,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.3.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.3.1`
 - `@ogcio/design-system-tokens` updated to version `0.4.1`
 
 ### Features
@@ -532,7 +546,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.3.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.3.0`
 - `@ogcio/design-system-tokens` updated to version `0.4.0`
 
 ### Features
@@ -556,7 +570,7 @@
 ### Dependency Updates
 
 - `@ogcio/design-system-prettier-config` updated to version `0.0.2`
-- `@ogcio/ds-deepmerge` updated to version `0.2.2`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.2`
 - `@ogcio/design-system-tokens` updated to version `0.3.3`
 
 ## [0.4.0](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.3...@ogcio/design-system-tailwind-0.4.0) (2024-07-30)
@@ -575,7 +589,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.2.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.1`
 
 ## [0.3.1](https://github.com/ogcio/govie-ds/compare/@ogcio/design-system-tailwind-0.3.0...@ogcio/design-system-tailwind-0.3.1) (2024-07-04)
 
@@ -599,7 +613,7 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.2.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.2.0`
 - `@ogcio/design-system-tokens` updated to version `0.2.0`
 
 ### Features
@@ -616,14 +630,14 @@
 
 ### Dependency Updates
 
-- `@ogcio/ds-deepmerge` updated to version `0.1.1`
+- `@ogcio/design-system-deepmerge` updated to version `0.1.1`
 
 # 0.1.0 (2024-06-26)
 
 ### Dependency Updates
 
 - `@ogcio/design-system-prettier-config` updated to version `0.0.1`
-- `@ogcio/ds-deepmerge` updated to version `0.1.0`
+- `@ogcio/design-system-deepmerge` updated to version `0.1.0`
 - `@ogcio/design-system-tokens` updated to version `0.1.5`
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
-  "version": "1.0.4",
-  "name": "@ogcio/ds-deepmerge",
+  "version": "1.0.5",
+  "name": "@ogcio/design-system-deepmerge",
   "description": "The Gov IE design system deepmerge utility.",
   "type": "module",
   "main": "dist/index.js",

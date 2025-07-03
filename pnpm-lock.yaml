@@ -156,6 +156,9 @@ importers:
       '@ogcio/analytics-sdk':
         specifier: ^0.1.0-beta.15
         version: 0.1.0-beta.15
+      '@ogcio/design-system-deepmerge':
+        specifier: workspace:*
+        version: link:../../packages/design/deepmerge
       '@ogcio/design-system-react':
         specifier: workspace:*
         version: link:../../packages/react/ds
@@ -165,9 +168,6 @@ importers:
       '@ogcio/design-system-tokens':
         specifier: workspace:*
         version: link:../../tokens
-      '@ogcio/ds-deepmerge':
-        specifier: workspace:*
-        version: link:../../packages/design/deepmerge
       '@ogcio/theme-govie':
         specifier: workspace:*
         version: link:../../packages/themes/govie
@@ -506,12 +506,12 @@ importers:
 
   packages/design/tailwind:
     dependencies:
+      '@ogcio/design-system-deepmerge':
+        specifier: workspace:*
+        version: link:../deepmerge
       '@ogcio/design-system-tokens':
         specifier: workspace:*
         version: link:../../../tokens
-      '@ogcio/ds-deepmerge':
-        specifier: workspace:*
-        version: link:../deepmerge
       ts-extras:
         specifier: ^0.11.0
         version: 0.11.0
@@ -528,6 +528,9 @@ importers:
       '@animaapp/design-tokens-validator':
         specifier: ^0.0.2
         version: 0.0.2
+      '@ogcio/design-system-deepmerge':
+        specifier: workspace:*
+        version: link:../deepmerge
       '@ogcio/design-system-eslint-config':
         specifier: workspace:*
         version: link:../../build/eslint-config
@@ -537,9 +540,6 @@ importers:
       '@ogcio/design-system-tokens-builder':
         specifier: workspace:*
         version: link:../tokens-builder
-      '@ogcio/ds-deepmerge':
-        specifier: workspace:*
-        version: link:../deepmerge
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0

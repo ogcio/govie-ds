@@ -22,7 +22,7 @@ describe('Details', () => {
     const summaryElement = screen.getByTestId('govie-details-summary');
 
     expect(detailsElement).toBeTruthy();
-    expect(summaryElement.textContent).toBe('Help with Details');
+    expect(summaryElement.textContent).toContain('Help with Details');
   });
 
   it('should render with open set to true', () => {

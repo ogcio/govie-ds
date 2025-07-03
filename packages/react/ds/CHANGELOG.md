@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.10.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.10.0...react-lib-v1.10.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.9.1
+    * @ogcio/theme-govie bumped to 1.4.2
+
 ## [1.10.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.9.0...react-lib-v1.10.0) (2025-06-27)
 
 ### Features

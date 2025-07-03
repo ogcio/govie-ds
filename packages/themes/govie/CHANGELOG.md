@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.2](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.4.1...themes-govie-v1.4.2) (2025-07-02)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.4.2
+
 ## [1.4.1](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.4.0...themes-govie-v1.4.1) (2025-06-10)
 
 ### Miscellaneous Chores
