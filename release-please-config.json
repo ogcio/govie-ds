@@ -1,5 +1,5 @@
 {
-    "group-pull-request-title-pattern": "chore(auto-release): release",
+    "group-pull-request-title-pattern": "chore(auto-release): release ${branch}",
     "include-component-in-tag": true,
     "changelog-sections": [
         {
