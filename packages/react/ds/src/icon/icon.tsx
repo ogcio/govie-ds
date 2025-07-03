@@ -40,18 +40,18 @@ export function Icon({
   onClick,
   ...props
 }: IconProps) {
-  let fontSize = '24';
+  let fontSize = '24px';
   switch (size) {
     case 'sm': {
-      fontSize = '16';
+      fontSize = '16px';
       break;
     }
     case 'lg': {
-      fontSize = '32';
+      fontSize = '32px';
       break;
     }
     case 'xl': {
-      fontSize = '48';
+      fontSize = '48px';
       break;
     }
   }
