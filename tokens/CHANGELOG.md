@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.4.1...tokens-v1.5.0) (2025-07-03)
+
+
+### Bug Fixes
+
+* token package publishing status ([6d6bc0a](https://github.com/ogcio/govie-ds/commit/6d6bc0a17ba789e2b96e98c48f86fdc7c2aa56c8))
+* tokens publishing ([826a51f](https://github.com/ogcio/govie-ds/commit/826a51fdc81bccc9da076bf47ff418aa6c994b0b))
+
 ## [1.4.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.4.0...tokens-v1.4.1) (2025-06-10)
 
 ### Bug Fixes
