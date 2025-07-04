@@ -1,5 +1,5 @@
 import { act } from 'react';
-import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.test.js';
 import { Details, DetailsProps } from './details.js';
 
 describe('Details', () => {

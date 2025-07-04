@@ -1,4 +1,4 @@
-import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
+import { renderComponent, cleanup, fireEvent } from '../test-utilities.test.js';
 import { InputPassword } from './input-password.js';
 
 describe('InputPassword', () => {

@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.test.js';
 import { Label, LabelSize } from './label.js';
 import { type LabelTextProps } from './types.js';
 

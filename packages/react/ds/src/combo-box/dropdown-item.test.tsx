@@ -1,4 +1,4 @@
-import { fireEvent, renderComponent, screen } from '../test-utilities.js';
+import { fireEvent, renderComponent, screen } from '../test-utilities.test.js';
 import { DropdownItem } from './dropdown-item.js';
 
 const OPTIONS = [

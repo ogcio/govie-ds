@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.test.js';
 import { Container } from './container.js';
 
 describe('govieContainer', () => {

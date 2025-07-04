@@ -2,7 +2,7 @@ import {
   renderComponent,
   cleanup,
   testVariantsAxe,
-} from '../test-utilities.js';
+} from '../test-utilities.test.js';
 import { type AlertProps, Alert } from './alert.js';
 
 const variants: AlertProps['variant'][] = [

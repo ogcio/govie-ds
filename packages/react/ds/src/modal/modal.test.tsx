@@ -1,6 +1,6 @@
 import { act } from 'react';
 import { Button } from '../button/button.js';
-import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.test.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
 import { Modal, ModalFooter } from './modal.js';
 

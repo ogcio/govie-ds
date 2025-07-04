@@ -1,4 +1,4 @@
-import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.test.js';
 import { ToastProvider, toaster } from './toast.js';
 import type { ToastProps } from './types.js';
 

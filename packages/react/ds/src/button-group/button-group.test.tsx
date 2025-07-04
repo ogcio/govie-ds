@@ -1,5 +1,5 @@
 import { userEvent } from '@testing-library/user-event';
-import { renderComponent, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.test.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 describe('buttonGroup', () => {

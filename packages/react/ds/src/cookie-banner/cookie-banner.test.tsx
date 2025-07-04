@@ -1,6 +1,6 @@
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
-import { cleanup, renderComponent } from '../test-utilities.js';
+import { cleanup, renderComponent } from '../test-utilities.test.js';
 import {
   ChildrenDefault,
   ChildrenAccepted,

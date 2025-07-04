@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.js';
+import { renderComponent, cleanup } from '../test-utilities.test.js';
 import { Card } from './card.js';
 import { CardProps } from './types.js';
 

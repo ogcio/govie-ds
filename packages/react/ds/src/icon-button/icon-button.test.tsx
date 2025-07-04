@@ -3,7 +3,7 @@ import {
   renderComponent,
   cleanup,
   testVariantsAxe,
-} from '../test-utilities.js';
+} from '../test-utilities.test.js';
 import { IconButtonProps, IconButton } from './icon-button.js';
 
 describe('icon-button', () => {
