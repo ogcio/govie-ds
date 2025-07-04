@@ -1,4 +1,4 @@
-import { cleanup, renderComponent } from '../test-utilities.test.js';
+import { cleanup, renderComponent } from '../test-utilities.js';
 import { PhaseBannerProps, PhaseBanner } from './phase-banner.js';
 
 describe('goviePhaseBanner', () => {

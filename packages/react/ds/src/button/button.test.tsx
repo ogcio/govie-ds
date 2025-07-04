@@ -3,7 +3,7 @@ import {
   renderComponent,
   cleanup,
   testVariantsAxe,
-} from '../test-utilities.test.js';
+} from '../test-utilities.js';
 import { Button } from './button.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 

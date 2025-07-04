@@ -1,6 +1,6 @@
 import { act } from 'react';
 import { Button } from '../button/button.js';
-import { renderComponent, cleanup, waitFor } from '../test-utilities.test.js';
+import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
 import { HtmlContent, TriggerButton } from './drawer.content.js';
 import { Drawer, DrawerBody, DrawerFooter, DrawerProps } from './drawer.js';
 

@@ -4,7 +4,7 @@ import {
   renderComponent,
   fireEvent,
   testVariantsAxe,
-} from '../test-utilities.test.js';
+} from '../test-utilities.js';
 import { positionVariants, Tooltip } from './tooltip.js';
 
 describe('govieTooltip', () => {

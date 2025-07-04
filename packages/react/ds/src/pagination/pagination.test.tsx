@@ -1,5 +1,5 @@
 import { Breakpoint, useBreakpoint } from '../hooks/use-breakpoint.js';
-import { renderComponent, fireEvent, cleanup } from '../test-utilities.test.js';
+import { renderComponent, fireEvent, cleanup } from '../test-utilities.js';
 import { Pagination, PaginationProps } from './pagination.js';
 
 vi.mock('../hooks/use-breakpoint.js', async () => {

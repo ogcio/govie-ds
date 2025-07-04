@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.test.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { HeaderSearch } from './components/header-search.js';
 import { Header } from './header.js';
 import { HeaderProps } from './types.js';

@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.test.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { TagProps, Tag, TagTypeEnum, type TagType } from './tag.js';
 
 describe('govieTag', () => {

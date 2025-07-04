@@ -14,7 +14,11 @@ export default defineConfig({
     libInjectCss(),
     dts({
       include: ['src'],
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.*'],
+      exclude: [
+        'src/**/*.stories.tsx',
+        'src/**/*.test.*',
+        'src/test-utilities.ts',
+      ],
     }),
     preserveDirectives(),
   ],
@@ -42,6 +46,7 @@ export default defineConfig({
               'src/**/*.d.ts',
               'src/**/*.stories.tsx',
               'src/**/*.test.*',
+              'src/test-utilities.ts',
             ],
           })
           .map((file: string) => [

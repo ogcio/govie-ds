@@ -2,7 +2,7 @@ import {
   renderComponent,
   cleanup,
   testVariantsAxe,
-} from '../test-utilities.test.js';
+} from '../test-utilities.js';
 import { spinnerSizeVariants, Spinner, type SpinnerProps } from './spinner.js';
 
 describe('govieSpinner', () => {

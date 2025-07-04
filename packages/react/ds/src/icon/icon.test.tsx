@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.test.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { IconProps, Icon } from './icon.js';
 
 describe('govieIcon', () => {

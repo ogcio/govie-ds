@@ -1,4 +1,4 @@
-import { renderComponent, cleanup } from '../test-utilities.test.js';
+import { renderComponent, cleanup } from '../test-utilities.js';
 import { HintSize, HintText } from './hint-text.js';
 import { type HintTextProps } from './types.js';
 

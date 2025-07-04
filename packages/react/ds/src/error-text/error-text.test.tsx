@@ -1,4 +1,4 @@
-import { renderComponent } from '../test-utilities.test.js';
+import { renderComponent } from '../test-utilities.js';
 import { ErrorSize, ErrorText } from './error-text.js';
 import { type ErrorTextProps } from './types.js';
 
