@@ -1,5 +1,160 @@
 # Changelog
 
+## [1.11.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.1...react-lib-v1.11.2) (2025-07-04)
+
+
+### Bug Fixes
+
+* import organization ([6a0ed49](https://github.com/ogcio/govie-ds/commit/6a0ed497a55a6807672c3f594ae067f4d252b427))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.10.2
+    * @ogcio/theme-govie bumped to 1.5.2
+
+## [1.11.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.0...react-lib-v1.11.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* remove design-system-tokens dependency ([#625](https://github.com/ogcio/govie-ds/issues/625)) ([30856e6](https://github.com/ogcio/govie-ds/commit/30856e68d4a5c11aa76b0bb0bbc7607d4d38a884))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.10.1
+    * @ogcio/theme-govie bumped to 1.5.1
+
+## [1.11.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.10.1...react-lib-v1.11.0) (2025-07-03)
+
+
+### Features
+
+* Accept custom link in components ([#517](https://github.com/ogcio/govie-ds/issues/517)) ([da6d0e0](https://github.com/ogcio/govie-ds/commit/da6d0e07a407b95e8078588c069a90e72706b4d1))
+* add button group component ([#518](https://github.com/ogcio/govie-ds/issues/518)) ([de6aed4](https://github.com/ogcio/govie-ds/commit/de6aed4a9660252f00990bed09b76c214082cd45))
+* add score select component ([#525](https://github.com/ogcio/govie-ds/issues/525)) ([11ab372](https://github.com/ogcio/govie-ds/commit/11ab3728f10ab01d7c86e864946c71a0e03526e4))
+* Add side navigation component to React and HTML library ([#540](https://github.com/ogcio/govie-ds/issues/540)) ([30cd784](https://github.com/ogcio/govie-ds/commit/30cd78491ff2a862d8557514acf427cbb014dede))
+* Adding feedback form in docs ([#527](https://github.com/ogcio/govie-ds/issues/527)) ([afc68d5](https://github.com/ogcio/govie-ds/commit/afc68d5869e9169525f5eb4afaabc75d76b98dd4))
+* Adding number indicator on Progress Stepper component ([#486](https://github.com/ogcio/govie-ds/issues/486)) ([23297b7](https://github.com/ogcio/govie-ds/commit/23297b7b4befc216ef76488e103d965c98b45fcf))
+* Adding utilitySlot in Header component ([#514](https://github.com/ogcio/govie-ds/issues/514)) ([794d9b7](https://github.com/ogcio/govie-ds/commit/794d9b75ede7f35a60464609096ce5971b5a7754))
+* Autocomplete component + Breadcrumbs docs ([#596](https://github.com/ogcio/govie-ds/issues/596)) ([aec27b7](https://github.com/ogcio/govie-ds/commit/aec27b7ccf227075f8a20a31e1b9e14f12740d23))
+* Composable Card component ([#578](https://github.com/ogcio/govie-ds/issues/578)) ([0586c8f](https://github.com/ogcio/govie-ds/commit/0586c8faf2908a5029eed2aebcc31c7be7c048fe))
+* Label, Hint and Error supports rich content ([#604](https://github.com/ogcio/govie-ds/issues/604)) ([bc9503b](https://github.com/ogcio/govie-ds/commit/bc9503b6df37ae15715a72204a25fa547cb27405))
+* Modal component sync with Figma ([#480](https://github.com/ogcio/govie-ds/issues/480)) ([d83ff0c](https://github.com/ogcio/govie-ds/commit/d83ff0cb6969c05a5e9210b4b01afd2b186e5ef8))
+* Progress Stepper improvements ([#569](https://github.com/ogcio/govie-ds/issues/569)) ([4931b46](https://github.com/ogcio/govie-ds/commit/4931b46f9241f4c1971855fb853be6766b25ea1b))
+* SelectNext + Popover components ([#590](https://github.com/ogcio/govie-ds/issues/590)) ([83b5963](https://github.com/ogcio/govie-ds/commit/83b59638f0f561cf05418bbb8a45788e9e5dee5d))
+* Sync Link component with figma ([#505](https://github.com/ogcio/govie-ds/issues/505)) ([d7b24f0](https://github.com/ogcio/govie-ds/commit/d7b24f0fd543874f3b68c539550dd314e8f448da))
+* Text Input sync with Figma ([#482](https://github.com/ogcio/govie-ds/issues/482)) ([a206fb0](https://github.com/ogcio/govie-ds/commit/a206fb0f2bc58b9ad9686eacd050d4c58854a4b8))
+* update footer with slots ([#477](https://github.com/ogcio/govie-ds/issues/477)) ([2cd79bd](https://github.com/ogcio/govie-ds/commit/2cd79bd56bfd9df2a36bab1762e2334df9ee1c92))
+* updated semantic colors + header/footer changes ([#539](https://github.com/ogcio/govie-ds/issues/539)) ([d3e9289](https://github.com/ogcio/govie-ds/commit/d3e92896f8cdb6a136a45c6aa93905c65cac1bda))
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Bug Fixes
+
+* add button type to button group item ([#563](https://github.com/ogcio/govie-ds/issues/563)) ([e8c9210](https://github.com/ogcio/govie-ds/commit/e8c92103b9baba34a1e46f72886e6272126e6704))
+* add form field with tag component ([#528](https://github.com/ogcio/govie-ds/issues/528)) ([aedaa5f](https://github.com/ogcio/govie-ds/commit/aedaa5ffb4a3a51592f4d9280db83cf231ac0cba))
+* add placeholder option on select ([#549](https://github.com/ogcio/govie-ds/issues/549)) ([09f8aea](https://github.com/ogcio/govie-ds/commit/09f8aea9dde9d5b59ee6e02dea12ffadfaf34d89))
+* add vertical align prop on table data and header ([#521](https://github.com/ogcio/govie-ds/issues/521)) ([907c141](https://github.com/ogcio/govie-ds/commit/907c14178209626886e00cc3dcad683a549cd5db))
+* Adding Container in Footer ([#506](https://github.com/ogcio/govie-ds/issues/506)) ([75f897a](https://github.com/ogcio/govie-ds/commit/75f897a2f3a3ca2f95a6cf2900e3fab1261ca1d1))
+* card and header issues ([799d22f](https://github.com/ogcio/govie-ds/commit/799d22f4e2258ade5318b2e83d208c7da488496b))
+* Chevron icon in Select component ([#579](https://github.com/ogcio/govie-ds/issues/579)) ([6be38c7](https://github.com/ogcio/govie-ds/commit/6be38c76f9f406d34ff37eaa6e9509254bb12b66))
+* client errors ([66d5844](https://github.com/ogcio/govie-ds/commit/66d5844bc5a7d34da6a6b87edcec560c5b1be930))
+* combo-box height ([#502](https://github.com/ogcio/govie-ds/issues/502)) ([f92f522](https://github.com/ogcio/govie-ds/commit/f92f522167de1d8ba73aae65e632e9714195515c))
+* copy to clipboard icon ([#560](https://github.com/ogcio/govie-ds/issues/560)) ([131fd8f](https://github.com/ogcio/govie-ds/commit/131fd8f0be9962705afa604269cfe24511de4528))
+* Drawer component width size ([#504](https://github.com/ogcio/govie-ds/issues/504)) ([f955a0c](https://github.com/ogcio/govie-ds/commit/f955a0c68ca01b79aab6cdb2e95e7e016087c8ee))
+* Fix secondaryLink "key" lint error ([#529](https://github.com/ogcio/govie-ds/issues/529)) ([da93e71](https://github.com/ogcio/govie-ds/commit/da93e714393b72f220bd6a87d0385cc177c648ec))
+* Fix TabItem onTabSelected handler  ([#511](https://github.com/ogcio/govie-ds/issues/511)) ([ba191e7](https://github.com/ogcio/govie-ds/commit/ba191e7c3dc08bbd7b5f8f23fad8ebf1ac38d7da))
+* footer secondary slot ([ff60905](https://github.com/ogcio/govie-ds/commit/ff60905d104983e9c663fd39aef32eedfab1abd4))
+* icon button sizes ([#508](https://github.com/ogcio/govie-ds/issues/508)) ([1e6c56d](https://github.com/ogcio/govie-ds/commit/1e6c56dc9348f4479fcf45e0a94f56d4935398bc))
+* import types into FormField & omit style ([#575](https://github.com/ogcio/govie-ds/issues/575)) ([1190871](https://github.com/ogcio/govie-ds/commit/1190871f35082fbe5a6fbcdbf628e7dfb5bfef3b))
+* Not-allowed cursor for disabled buttons ([#522](https://github.com/ogcio/govie-ds/issues/522)) ([2b4722f](https://github.com/ogcio/govie-ds/commit/2b4722ff61e413a10617abd8af9e8e9c14e71fdc))
+* optional clearButtonEnabled on TextArea component ([#541](https://github.com/ogcio/govie-ds/issues/541)) ([f8cff65](https://github.com/ogcio/govie-ds/commit/f8cff65877b996a4cc184f3bb399f80f224c7bfd))
+* Progress stepper label width ([#533](https://github.com/ogcio/govie-ds/issues/533)) ([f4bff7e](https://github.com/ogcio/govie-ds/commit/f4bff7e0846322c5066d073a9ffd9cd3b5563bf9))
+* Radio group label spacing ([#551](https://github.com/ogcio/govie-ds/issues/551)) ([18baf71](https://github.com/ogcio/govie-ds/commit/18baf71a7b06a8edaa31b4bbc522adb7ae9850fb))
+* Removing default size for the link ([#515](https://github.com/ogcio/govie-ds/issues/515)) ([adda944](https://github.com/ogcio/govie-ds/commit/adda9441f4b6c150f035328d3c6ffdd1868969d9))
+* table component cell alignment ([#485](https://github.com/ogcio/govie-ds/issues/485)) ([f6a0678](https://github.com/ogcio/govie-ds/commit/f6a06784f4a727fa1b7f318d214078e0030bcd38))
+* title not truncating in header ([#591](https://github.com/ogcio/govie-ds/issues/591)) ([7fd767d](https://github.com/ogcio/govie-ds/commit/7fd767d503d152bcdd17ffe413727401869f87ab))
+* update combo box focus state ([#553](https://github.com/ogcio/govie-ds/issues/553)) ([6399ce2](https://github.com/ogcio/govie-ds/commit/6399ce280ae4d107252a7067dafeb37ba9aa4efa))
+* update combo box focus state ([#586](https://github.com/ogcio/govie-ds/issues/586)) ([4327d28](https://github.com/ogcio/govie-ds/commit/4327d28cbc30cb73259335717ac5da8f5001d0e4))
+* update disabled property select and select item  ([#488](https://github.com/ogcio/govie-ds/issues/488)) ([46b3c24](https://github.com/ogcio/govie-ds/commit/46b3c24e6fc58b3c3c3f9dad4b1954bc00718afd))
+* update dropdown item with additional props ([#489](https://github.com/ogcio/govie-ds/issues/489)) ([46862c3](https://github.com/ogcio/govie-ds/commit/46862c36c432cf4eb50cc4fd74d0e3a80f589370))
+* update files with missing locale keys ([#499](https://github.com/ogcio/govie-ds/issues/499)) ([9d51ef2](https://github.com/ogcio/govie-ds/commit/9d51ef2953c0d549ede4fc3bf4e3e3af1c93981f))
+* update link styling ([#565](https://github.com/ogcio/govie-ds/issues/565)) ([c3b506b](https://github.com/ogcio/govie-ds/commit/c3b506b1dfc7beef02ebb1c74c5be88d38bf7f5e))
+* update pagination and use breakpoint hook ([#501](https://github.com/ogcio/govie-ds/issues/501)) ([3edb397](https://github.com/ogcio/govie-ds/commit/3edb397440cdb6bd21d00ed1c11f716eb7fa31ab))
+* Update Progress Stepper label as optional ([#552](https://github.com/ogcio/govie-ds/issues/552)) ([8792750](https://github.com/ogcio/govie-ds/commit/879275054897a9941db79610c802fa7cf4a421c8))
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+* update side navigation ([#545](https://github.com/ogcio/govie-ds/issues/545)) ([2333cbb](https://github.com/ogcio/govie-ds/commit/2333cbb327578a864979d5516cf42bdf273afc3a))
+* update TextArea for controlled and uncontrolled usecases ([#605](https://github.com/ogcio/govie-ds/issues/605)) ([1ac8faf](https://github.com/ogcio/govie-ds/commit/1ac8faf5906eb9945eba5f400af0967ec3fd479b))
+* use stack in footer ([#495](https://github.com/ogcio/govie-ds/issues/495)) ([4be1e11](https://github.com/ogcio/govie-ds/commit/4be1e11e807004152efb684f8a3e1ddd50eb0a8f))
+
+
+### Miscellaneous Chores
+
+* add tablet size to percy ([df2ab0f](https://github.com/ogcio/govie-ds/commit/df2ab0f3162639e1bb1e937f7aa34f4e2929882a))
+* add uploaded files table ([#509](https://github.com/ogcio/govie-ds/issues/509)) ([c41d301](https://github.com/ogcio/govie-ds/commit/c41d301bb01b17d2ad622ed1dd781700bebba2c3))
+* Adding semantic tokens on inputs ([#550](https://github.com/ogcio/govie-ds/issues/550)) ([65536cd](https://github.com/ogcio/govie-ds/commit/65536cd70c73f943697500561d3aaac14489149a))
+* **auto-release:** release ([#619](https://github.com/ogcio/govie-ds/issues/619)) ([e5e52ee](https://github.com/ogcio/govie-ds/commit/e5e52ee27bd80881d39200149da0fc2ad7441bc8))
+* **ci:** release main ([#481](https://github.com/ogcio/govie-ds/issues/481)) ([10ee31a](https://github.com/ogcio/govie-ds/commit/10ee31a750add6274865217714f66e5a7853f3be))
+* **ci:** release main ([#483](https://github.com/ogcio/govie-ds/issues/483)) ([f5919cb](https://github.com/ogcio/govie-ds/commit/f5919cb3796ff28fa57f52c6800d46236568b117))
+* **ci:** release main ([#496](https://github.com/ogcio/govie-ds/issues/496)) ([e4f5f7a](https://github.com/ogcio/govie-ds/commit/e4f5f7aa3777b752188eee5618bb1932ebd7a104))
+* **ci:** release main ([#497](https://github.com/ogcio/govie-ds/issues/497)) ([972b463](https://github.com/ogcio/govie-ds/commit/972b4639fa231d83d0dbfe8087969712960bde45))
+* **ci:** release main ([#503](https://github.com/ogcio/govie-ds/issues/503)) ([67874cd](https://github.com/ogcio/govie-ds/commit/67874cd3eba3498a7d7b88202db7482308186534))
+* **ci:** release main ([#507](https://github.com/ogcio/govie-ds/issues/507)) ([503c609](https://github.com/ogcio/govie-ds/commit/503c609a245729dc341d15652c49a938c331c9dc))
+* **ci:** release main ([#519](https://github.com/ogcio/govie-ds/issues/519)) ([de8c890](https://github.com/ogcio/govie-ds/commit/de8c890a3128880283e709e89c65820032ae8e40))
+* **ci:** release main ([#524](https://github.com/ogcio/govie-ds/issues/524)) ([877baa5](https://github.com/ogcio/govie-ds/commit/877baa5f38516c91f3278f6f6dd525499bb054b2))
+* **ci:** release main ([#530](https://github.com/ogcio/govie-ds/issues/530)) ([647e573](https://github.com/ogcio/govie-ds/commit/647e573249f44677e78f669d4f51dfd5cb16b959))
+* **ci:** release main ([#537](https://github.com/ogcio/govie-ds/issues/537)) ([6f96e5b](https://github.com/ogcio/govie-ds/commit/6f96e5ba424be7b22c8b45285f4f0f109f15eaef))
+* **ci:** release main ([#538](https://github.com/ogcio/govie-ds/issues/538)) ([5d8608e](https://github.com/ogcio/govie-ds/commit/5d8608e053af7fb0062b1e31880f438df8719a86))
+* **ci:** release main ([#542](https://github.com/ogcio/govie-ds/issues/542)) ([4be8517](https://github.com/ogcio/govie-ds/commit/4be851700fd3b71cc2fd225f048c13e08e9429c4))
+* **ci:** release main ([#547](https://github.com/ogcio/govie-ds/issues/547)) ([0104d66](https://github.com/ogcio/govie-ds/commit/0104d66e50c1604be308f15471437b49bdd11acb))
+* **ci:** release main ([#556](https://github.com/ogcio/govie-ds/issues/556)) ([b6d3d6f](https://github.com/ogcio/govie-ds/commit/b6d3d6f51d0ea297308c28a5353eaf8d9505e3b6))
+* **ci:** release main ([#561](https://github.com/ogcio/govie-ds/issues/561)) ([275aaa7](https://github.com/ogcio/govie-ds/commit/275aaa73587beaba8abfeda097e8d6db1dbb50f8))
+* **ci:** release main ([#570](https://github.com/ogcio/govie-ds/issues/570)) ([71e7445](https://github.com/ogcio/govie-ds/commit/71e74450afe1ea7bb527a77f28a71f4947f0850d))
+* **ci:** release main ([#581](https://github.com/ogcio/govie-ds/issues/581)) ([a2001f4](https://github.com/ogcio/govie-ds/commit/a2001f42241e4bcfc5792ddb247c98998f01f45a))
+* **ci:** release main ([#583](https://github.com/ogcio/govie-ds/issues/583)) ([dd5854c](https://github.com/ogcio/govie-ds/commit/dd5854c369fdf8a25c82a226644b0d95e938545c))
+* **ci:** release main ([#589](https://github.com/ogcio/govie-ds/issues/589)) ([a1d193a](https://github.com/ogcio/govie-ds/commit/a1d193a86593f1fd2120b8aa401980aa466603df))
+* **ci:** release main ([#592](https://github.com/ogcio/govie-ds/issues/592)) ([bea6ca8](https://github.com/ogcio/govie-ds/commit/bea6ca8f930e040814f837dd0b3d3d60350ce51d))
+* **ci:** release main ([#595](https://github.com/ogcio/govie-ds/issues/595)) ([20619dd](https://github.com/ogcio/govie-ds/commit/20619dd2133379f6b9d6d88dd3fcc4bf152724c3))
+* combo box class name ([#555](https://github.com/ogcio/govie-ds/issues/555)) ([0b1cb52](https://github.com/ogcio/govie-ds/commit/0b1cb529dd59e1afb71e8426ff626d11ad0dab13))
+* eslint update ([#498](https://github.com/ogcio/govie-ds/issues/498)) ([b379780](https://github.com/ogcio/govie-ds/commit/b37978011efd59e9bee03c4175fe63e3f36b6791))
+* Exporting Label, Error and Hint props ([#567](https://github.com/ogcio/govie-ds/issues/567)) ([93469e5](https://github.com/ogcio/govie-ds/commit/93469e5319f65bb50979ee67c40f5c253ddf0c78))
+* Sync storybook stories - Form & Components section ([#546](https://github.com/ogcio/govie-ds/issues/546)) ([d7facdd](https://github.com/ogcio/govie-ds/commit/d7facdd23a9c54166f7453f6bacb51d1ab34b17e))
+* Sync storybook stories - Layout & Application sections ([#543](https://github.com/ogcio/govie-ds/issues/543)) ([0d3b6a2](https://github.com/ogcio/govie-ds/commit/0d3b6a293143978489ac98e4a6963c0902336e07))
+* Sync storybook stories - Typo & Nav sections ([#544](https://github.com/ogcio/govie-ds/issues/544)) ([60b6cb4](https://github.com/ogcio/govie-ds/commit/60b6cb4ee0d968c4aa2d86185e116dfb6718dc1f))
+* update menu input type to button for screen reader ([#577](https://github.com/ogcio/govie-ds/issues/577)) ([f6b8db4](https://github.com/ogcio/govie-ds/commit/f6b8db428d5578e352372d8667c875c226292815))
+* vite update ([#484](https://github.com/ogcio/govie-ds/issues/484)) ([4621516](https://github.com/ogcio/govie-ds/commit/46215163b0d1b80fe25dccc173768fe075d8b77b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.5.0
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.10.0
+    * @ogcio/theme-govie bumped to 1.5.0
+
+## [1.10.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.10.0...react-lib-v1.10.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* update react and html details component ([#607](https://github.com/ogcio/govie-ds/issues/607)) ([e87b2d7](https://github.com/ogcio/govie-ds/commit/e87b2d72c9c7ec6f6dd1af819de22bd0f131feef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.9.1
+    * @ogcio/theme-govie bumped to 1.4.2
+
 ## [1.10.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.9.0...react-lib-v1.10.0) (2025-06-27)
 
 ### Features

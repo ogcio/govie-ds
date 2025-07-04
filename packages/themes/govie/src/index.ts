@@ -1,9 +1,9 @@
+import * as tokensDark from './dist/tokens-dark.js';
+import * as tokensLight from './dist/tokens-light.js';
 import { metaDarkUnresolved } from './dist/meta-dark-unresolved.js';
 import { metaDark } from './dist/meta-dark.js';
 import { metaLightUnresolved } from './dist/meta-light-unresolved.js';
 import { metaLight } from './dist/meta-light.js';
-import * as tokensDark from './dist/tokens-dark.js';
-import * as tokensLight from './dist/tokens-light.js';
 
 export const meta = {
   light: {

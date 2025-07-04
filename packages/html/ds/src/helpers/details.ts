@@ -1,11 +1,13 @@
 import { DetailsProps } from '../details/types';
+import { createIcon } from './icons';
 
 export const createDetails = (arguments_: DetailsProps) => {
   const details = document.createElement('details');
+
   details.className = 'gi-details';
   details.name = arguments_.name!;
   details.open = arguments_.open || false;
-  details.dataset.module = 'gi-details';
+  details.dataset.module = 'gieds-details';
   details.dataset.testid = 'govie-details';
   details.ariaExpanded = arguments_.open ? 'true' : 'false';
 
@@ -14,6 +16,12 @@ export const createDetails = (arguments_: DetailsProps) => {
   summary.dataset.testid = 'govie-details-summary';
   summary.role = 'button';
   summary.ariaExpanded = arguments_.open ? 'true' : 'false';
+
+  const toggleIcon = createIcon({
+    icon: arguments_.open ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
+  });
+
+  summary.append(toggleIcon);
 
   const summaryText = document.createElement('span');
   summaryText.className = 'gi-details-summary-text';

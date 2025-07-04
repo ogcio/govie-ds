@@ -1,0 +1,50 @@
+---
+title: Textarea
+description: Textarea Design Guidelines
+status: stable
+component:
+  id: 'textarea'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6828'
+  status: stable
+---
+
+# Textarea
+
+The Textarea component allows users to input multi-line text. It's ideal for longer content such as messages, feedback, or descriptions. It supports customizable dimensions with `rows` and `cols`, and character limits using `maxChars`.
+
+<Section current="design">
+
+<ComponentPreview>
+  <FormField label={{ text: 'Label' }}>
+    <TextArea />
+  </FormField>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5499-6828" />
+
+## Usage
+
+Use the Textarea component when your users need to provide longer input that spans multiple lines. It is suited for feedback, descriptions, messages, or any unstructured multi-line content.
+
+### Do
+
+- **Multi-line input**: Use `Textarea` when the input requires multiple lines of text, such as:
+- Feedback forms, comments, or reviews
+- Messages, descriptions, or instructions
+- Long-form text fields like addresses or notes
+- **Variable text length**: Use it when you cannot predict how long the user's input will be, but expect it to exceed a single line.
+- **Custom size control**: Use `rows` and `cols` to control the visible size of the text box, tailoring the component to your layout needs.
+- **Character limit**: Use `maxChars` to limit the number of characters allowed.
+
+### Don't
+
+- **Single-line input**: If you only expect short, single-line inputs (e.g., names, email addresses), use the `TextInput` component instead.
+- **Structured data input**: For specialised inputs like dates, numbers, or selections from predefined options, use components like `DateInput`, `NumberInput`, or `Select` instead of `Textarea`.
+- **Large text area**: If the input area becomes too large (like for editing full documents or code), consider a more robust solution, such as a dedicated text editor component or even a rich text editor.
+
+**Example:**
+
+<ComponentContainer>
+  <TextArea placeholder="Don't use textarea for single-line inputs like names or email addresses" />
+</ComponentContainer>
+
+</Section>

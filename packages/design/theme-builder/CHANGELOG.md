@@ -1,5 +1,74 @@
 # Changelog
 
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.5.1...design-theme-builder-v1.5.2) (2025-07-04)
+
+
+### Miscellaneous Chores
+
+* **design-theme-builder:** Synchronize tokens-group versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.5.2
+
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.5.0...design-theme-builder-v1.5.1) (2025-07-03)
+
+
+### Miscellaneous Chores
+
+* **design-theme-builder:** Synchronize tokens-group versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.5.1
+
+## [1.5.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.2...design-theme-builder-v1.5.0) (2025-07-03)
+
+
+### Features
+
+* Modal component sync with Figma ([#480](https://github.com/ogcio/govie-ds/issues/480)) ([d83ff0c](https://github.com/ogcio/govie-ds/commit/d83ff0cb6969c05a5e9210b4b01afd2b186e5ef8))
+* Text Input sync with Figma ([#482](https://github.com/ogcio/govie-ds/issues/482)) ([a206fb0](https://github.com/ogcio/govie-ds/commit/a206fb0f2bc58b9ad9686eacd050d4c58854a4b8))
+* updated semantic colors + header/footer changes ([#539](https://github.com/ogcio/govie-ds/issues/539)) ([d3e9289](https://github.com/ogcio/govie-ds/commit/d3e92896f8cdb6a136a45c6aa93905c65cac1bda))
+* Updating Semantic Color Tokens ([#526](https://github.com/ogcio/govie-ds/issues/526)) ([164e3cb](https://github.com/ogcio/govie-ds/commit/164e3cbee0a1042f88bdb482cf82bd187eec602f))
+
+
+### Miscellaneous Chores
+
+* **auto-release:** release ([#619](https://github.com/ogcio/govie-ds/issues/619)) ([e5e52ee](https://github.com/ogcio/govie-ds/commit/e5e52ee27bd80881d39200149da0fc2ad7441bc8))
+* **ci:** release main ([#481](https://github.com/ogcio/govie-ds/issues/481)) ([10ee31a](https://github.com/ogcio/govie-ds/commit/10ee31a750add6274865217714f66e5a7853f3be))
+* **ci:** release main ([#483](https://github.com/ogcio/govie-ds/issues/483)) ([f5919cb](https://github.com/ogcio/govie-ds/commit/f5919cb3796ff28fa57f52c6800d46236568b117))
+* **ci:** release main ([#496](https://github.com/ogcio/govie-ds/issues/496)) ([e4f5f7a](https://github.com/ogcio/govie-ds/commit/e4f5f7aa3777b752188eee5618bb1932ebd7a104))
+* **ci:** release main ([#497](https://github.com/ogcio/govie-ds/issues/497)) ([972b463](https://github.com/ogcio/govie-ds/commit/972b4639fa231d83d0dbfe8087969712960bde45))
+* **ci:** release main ([#538](https://github.com/ogcio/govie-ds/issues/538)) ([5d8608e](https://github.com/ogcio/govie-ds/commit/5d8608e053af7fb0062b1e31880f438df8719a86))
+* **ci:** release main ([#542](https://github.com/ogcio/govie-ds/issues/542)) ([4be8517](https://github.com/ogcio/govie-ds/commit/4be851700fd3b71cc2fd225f048c13e08e9429c4))
+* **ci:** release main ([#583](https://github.com/ogcio/govie-ds/issues/583)) ([dd5854c](https://github.com/ogcio/govie-ds/commit/dd5854c369fdf8a25c82a226644b0d95e938545c))
+* eslint update ([#498](https://github.com/ogcio/govie-ds/issues/498)) ([b379780](https://github.com/ogcio/govie-ds/commit/b37978011efd59e9bee03c4175fe63e3f36b6791))
+* Semantic tokens update ([#576](https://github.com/ogcio/govie-ds/issues/576)) ([0d90064](https://github.com/ogcio/govie-ds/commit/0d900640d4ff98156a16d77badf5a436ad5193ae))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.6
+    * @ogcio/design-system-tokens bumped to 1.5.0
+
+## [1.4.2](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.1...design-theme-builder-v1.4.2) (2025-07-02)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.5
+
 ## [1.4.1](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.4.0...design-theme-builder-v1.4.1) (2025-06-10)
 
 ### Miscellaneous Chores
