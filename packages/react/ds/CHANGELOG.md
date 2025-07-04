@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.11.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.0...react-lib-v1.11.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* remove design-system-tokens dependency ([#625](https://github.com/ogcio/govie-ds/issues/625)) ([30856e6](https://github.com/ogcio/govie-ds/commit/30856e68d4a5c11aa76b0bb0bbc7607d4d38a884))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.10.1
+    * @ogcio/theme-govie bumped to 1.5.1
+
 ## [1.11.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.10.1...react-lib-v1.11.0) (2025-07-03)
 
 

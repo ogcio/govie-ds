@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.0...tokens-v1.5.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* remove design-system-tokens dependency ([#625](https://github.com/ogcio/govie-ds/issues/625)) ([30856e6](https://github.com/ogcio/govie-ds/commit/30856e68d4a5c11aa76b0bb0bbc7607d4d38a884))
+
 ## [1.5.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.4.1...tokens-v1.5.0) (2025-07-03)
 
 
