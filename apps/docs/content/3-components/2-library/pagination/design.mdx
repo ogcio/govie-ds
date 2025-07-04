@@ -33,8 +33,10 @@ Pagination adapts based on screen size:
 
 ## Usage
 
-Use the pagination component when your content is divided into multiple pages, especially if users need to navigate backward and forward or jump to specific pages. 
+Use the pagination component when your content is divided into multiple pages, especially if users need to navigate backward and forward or jump to specific pages.
 It's most effective in scenarios where the total number of pages is known and clearly defined.
+
+By design, the component automatically hides itself if totalPages is 0, you don't need to implement that check yourself.
 
 ### Do
 
@@ -49,8 +51,7 @@ It's most effective in scenarios where the total number of pages is known and cl
 ### Don't
 
 - Don’t place pagination far away from the content it controls, users should immediately associate it with the data being paginated.
-- Don’t render the component when `totalPages` is `0`, the component does this automatically.
-- Don’t show too many numbered pages at once — the component inserts ellipses where needed.
+- Don’t show too many numbered pages at once, the component inserts ellipses where needed.
 
 <ComponentContainer>
   <Pagination currentPage={2} totalPages={100} />
