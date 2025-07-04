@@ -1,0 +1,159 @@
+---
+title: Textarea
+description: Textarea React Component
+status: stable
+component:
+  id: 'textarea-react'
+  link: '/docs/form-textarea--docs'
+  status: stable
+  properties:
+    - name: TextAreaProps
+      fields:
+        - name: 'ref'
+          ofType: 'object'
+          description: 'A reference to the text area element.'
+          required: false
+        - name: 'rows'
+          ofType: 'number'
+          description: 'The number of visible text lines for the text area.'
+          required: false
+        - name: 'cols'
+          ofType: 'number'
+          description: 'The visible width of the text area in characters.'
+          required: false
+        - name: 'autoComplete'
+          ofType: 'string'
+          description: 'Specifies whether the browser should automatically complete the input.'
+          required: false
+        - name: 'maxChars'
+          ofType: 'number'
+          description: 'The maximum number of characters allowed in the text area.'
+          required: false
+        - name: 'halfFluid'
+          ofType: 'boolean'
+          description: 'If `true`, the text area will take up half the width of the container.'
+          required: false
+        - name: 'iconStart'
+          ofType: 'IconId'
+          description: 'Optional icon displayed at the start of the text area.'
+          required: false
+        - name: 'clearButtonEnabled'
+          ofType: 'boolean'
+          description: 'If `true`, displays a button to clear the textarea content.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/form-textarea--default'
+    - name: 'focus'
+      url: '/story/form-textarea--focus'
+    - name: 'with-text-input-reset'
+      url: '/story/form-textarea--with-text-input-reset'
+    - name: 'with-label-and-hint'
+      url: '/story/form-textarea--with-label-and-hint'
+    - name: 'with-label-and-error'
+      url: '/story/form-textarea--with-label-and-error'
+    - name: 'with-label-hint-and-error'
+      url: '/story/form-textarea--with-label-hint-and-error'
+    - name: 'with-max-chars'
+      url: '/story/form-textarea--with-max-chars'
+    - name: 'disabled'
+      url: '/story/form-textarea--disabled'
+    - name: 'with-half-width'
+      url: '/story/form-textarea--with-half-width'
+    - name: 'custom-rows-and-columns'
+      url: '/story/form-textarea--custom-rows-and-columns'
+---
+
+# Textarea
+
+The Textarea component allows users to input multi-line text. It's ideal for longer content such as messages, feedback, or descriptions. It supports customizable dimensions with `rows` and `cols`, and character limits using `maxChars`.
+
+<Section current="react">
+
+### Default
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="default"
+/>
+
+### Focus
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="focus"
+/>
+
+### With Text Input Reset
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="with-text-input-reset"
+/>
+
+### With Label and Hint
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="with-label-and-hint"
+/>
+
+### With Label and Error
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="with-label-and-error"
+/>
+
+### With Label Hint and Error
+
+<StorybookFrame
+  className="h-[294px]"
+  componentId="textarea-react"
+  story="with-label-hint-and-error"
+/>
+
+### With Max Chars
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="with-max-chars"
+/>
+
+### Disabled
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="disabled"
+/>
+
+### With Half Width
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="textarea-react"
+  story="with-half-width"
+/>
+
+### Custom Rows and Columns
+
+<StorybookFrame
+  className="h-[294px]"
+  componentId="textarea-react"
+  story="custom-rows-and-columns"
+/>
+
+## Properties
+
+This component supports all native HTML `<textarea>` attributes via standard HTML props.
+
+<ComponentPropertiesTable componentId="textarea-react" />
+
+</Section>
