@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.2](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.1...themes-govie-v1.5.2) (2025-07-04)
+
+
+### Bug Fixes
+
+* import organization ([6a0ed49](https://github.com/ogcio/govie-ds/commit/6a0ed497a55a6807672c3f594ae067f4d252b427))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.5.2
+    * @ogcio/design-system-tokens bumped to 1.5.2
+
 ## [1.5.1](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.0...themes-govie-v1.5.1) (2025-07-03)
 
 
