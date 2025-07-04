@@ -22,7 +22,6 @@ ButtonProps
 CardProps
 ChipProps
 Color
-Combobox
 ComboboxProps
 ContainerProps
 Customize
@@ -179,6 +178,7 @@ form-autocomplete
 form-buttongroup
 form-checkbox-inputcheckbox
 form-checkbox-inputcheckboxgroup
+form-combobox
 form-iconbutton
 form-inputfile
 form-inputpassword
@@ -211,7 +211,6 @@ labeling
 lifecycle
 md
 nav
-navigation-combobox
 navigation-sidenav
 ofType
 onboarding
@@ -219,6 +218,7 @@ organization
 organize
 organizing
 pre-expand
+pre-fill
 pre-made
 prebuilt
 precompiled
