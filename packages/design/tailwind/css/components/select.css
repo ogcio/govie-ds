@@ -19,11 +19,26 @@
 }
 
 .gi-select-menu-option-container {
-  @apply gi-min-w-56 gi-overflow-y-auto gi-overflow-x-hidden gi-py-2 gi-px-1;
+  @apply gi-min-w-56 gi-overflow-y-auto gi-overflow-x-hidden  gi-px-1;
 }
 
-.gi-select-menu-option-container ul {
-  @apply gi-space-y-2;
+.gi-select-menu-option-container ul > li {
+  @apply gi-mt-1;
+}
+.gi-select-menu-option-container ul > li:first-child {
+  @apply !gi-mt-2;
+}
+
+.gi-select-menu-option-container ul > li:last-child {
+  @apply gi-mb-2;
+}
+
+.gi-select-menu-option-container ul > div > li:not(:first-child) {
+  @apply gi-mt-1;
+}
+
+.gi-select-menu-option-container ul > div > li:last-child {
+  @apply gi-mb-2;
 }
 
 .gi-select-menu-option-not-found {

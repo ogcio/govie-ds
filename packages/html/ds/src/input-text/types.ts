@@ -21,6 +21,7 @@ export type TextInputProps = {
   error?: ErrorTextProps;
   prefix?: string;
   suffix?: string;
+  dataset?: any;
   type?:
     | 'text'
     | 'date'

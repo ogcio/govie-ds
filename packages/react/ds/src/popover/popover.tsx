@@ -23,6 +23,12 @@ export const Popover = ({
     modifiers: [
       { name: 'offset', options: { offset: [0, 4] } },
       { name: 'preventOverflow', options: { padding: 8 } },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['right', 'top'],
+        },
+      },
     ],
   },
   extraRefs = [],

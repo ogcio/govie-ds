@@ -8,7 +8,9 @@ import { Header } from '../header/header';
 import { Checkboxes } from '../input-checkbox/input-checkbox';
 import { InputPassword } from '../input-password/input-password';
 import { Modal } from '../modal/modal';
+import { Popover } from '../popover/popover';
 import { Radio } from '../radio/radio';
+import { SelectNext } from '../select-next/select-next';
 import { Tabs } from '../tabs/tabs';
 import { Textarea } from '../textarea/textarea';
 import { Toast } from '../toast/toast';
@@ -34,6 +36,8 @@ const componentRegistry = {
   Accordion,
   InputPassword,
   Drawer,
+  Popover,
+  SelectNext,
   Details,
 } as const;
 

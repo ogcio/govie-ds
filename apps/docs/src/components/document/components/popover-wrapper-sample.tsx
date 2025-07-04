@@ -8,7 +8,7 @@ export const PopoverSample = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div>
       <Button ref={triggerRef} onClick={() => setOpen(!open)}>
         Open Popover
       </Button>
@@ -17,6 +17,6 @@ export const PopoverSample = () => {
           Popover Content
         </div>
       </Popover>
-    </>
+    </div>
   );
 };
