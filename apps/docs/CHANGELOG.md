@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.11.2](https://github.com/ogcio/govie-ds/compare/docs-v1.11.1...docs-v1.11.2) (2025-07-04)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.11.2
+    * @ogcio/design-system-tailwind bumped to 1.10.2
+    * @ogcio/theme-govie bumped to 1.5.2
+    * @ogcio/design-system-tokens bumped to 1.5.2
+
 ## [1.11.1](https://github.com/ogcio/govie-ds/compare/docs-v1.11.0...docs-v1.11.1) (2025-07-03)
 
 
