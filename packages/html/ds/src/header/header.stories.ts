@@ -223,9 +223,12 @@ const createHeader = (arguments_: HeaderProps) => {
             const element = document.getElementById('Drawer-${index}');
             const elements = element.querySelectorAll('[data-element="modal"]');
             const modal = elements[0];
-            modal.classList.add('gi-modal-open');
-            modal.classList.remove('gi-modal-close');
-            modal.setAttribute('aria-hidden', 'false');
+
+            if(modal){
+              modal.classList.add('gi-modal-open');
+              modal.classList.remove('gi-modal-close');
+              modal.setAttribute('aria-hidden', 'false');
+            }
           }
           setTimeout(() => {
             const label = document.getElementById('ItemActionLabel-${index}');
@@ -244,8 +247,11 @@ const createHeader = (arguments_: HeaderProps) => {
           const scriptCode = `
           function openSlotContainer${index}() {
             const element = document.getElementById('SlotContainer-${index}');
-            element.classList.add('gi-block');
-            element.classList.remove('gi-hidden');
+
+            if(element){
+              element.classList.add('gi-block');
+              element.classList.remove('gi-hidden');
+            }
           }
           setTimeout(() => {
             const label = document.getElementById('ItemActionLabel-${index}');

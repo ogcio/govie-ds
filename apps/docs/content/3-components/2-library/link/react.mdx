@@ -1,0 +1,139 @@
+---
+title: 'Link'
+description: 'Link React Component'
+status: 'stable'
+component:
+  id: 'link-react'
+  link: '?path=/docs/navigation-link--docs'
+  status: 'stable'
+  properties:
+    - name: 'LinkProps'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text or content inside the link.'
+          required: true
+        - name: 'href'
+          ofType: 'string'
+          description: 'The URL to which the link points.'
+          required: true
+        - name: 'noUnderline'
+          ofType: 'boolean'
+          description: 'Removes the underline from the link.'
+          required: false
+        - name: 'external'
+          ofType: 'boolean'
+          description: 'Specifies whether the link should open in a new tab.'
+          required: false
+        - name: 'noVisited'
+          ofType: 'boolean'
+          description: 'Prevents the link from distinguishing between visited and unvisited states.'
+          required: false
+        - name: 'noColor'
+          ofType: 'boolean'
+          description: 'Inherits the color from its parent element.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the link. Options: sm, md, lg.'
+          required: false
+        - name: 'iconStart'
+          ofType: 'string'
+          description: 'Displays an icon before the link text. Must be a valid IconId.'
+          required: false
+        - name: 'iconEnd'
+          ofType: 'string'
+          description: 'Displays an icon after the link text. Must be a valid IconId.'
+          required: false
+        - name: 'disabled'
+          ofType: 'boolean'
+          description: 'Disables the link interaction.'
+          required: false
+        - name: 'appearance'
+          ofType: 'string'
+          description: 'Sets the visual style of the link. Options: default, light.'
+          required: false
+        - name: 'asChild'
+          ofType: 'boolean'
+          description: 'When true, allows a custom link component (like NextLink) to be passed as a child.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/navigation-link--default'
+    - name: 'with-icon-start'
+      url: '/story/navigation-link--with-icon-start'
+    - name: 'with-icon-end'
+      url: '/story/navigation-link--with-icon-end'
+    - name: 'with-icons'
+      url: '/story/navigation-link--with-icons'
+    - name: 'no-underline'
+      url: '/story/navigation-link--no-underline'
+    - name: 'no-color'
+      url: '/story/navigation-link--no-color'
+    - name: 'light'
+      url: '/story/navigation-link--light'
+    - name: 'disabled'
+      url: '/story/navigation-link--disabled'
+---
+
+# Link
+
+Links are blue and underlined by default. If your link is at the end of a sentence or paragraph, make sure that the linked text does not include the full stop.
+
+<Section current="react">
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="default" />
+</ComponentPreview>
+
+### With Icon Start
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="with-icon-start" />
+</ComponentPreview>
+
+### With Icon End
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="with-icon-end" />
+</ComponentPreview>
+
+### With Icons
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="with-icons" />
+</ComponentPreview>
+
+### No Underline
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="no-underline" />
+</ComponentPreview>
+
+### No Color
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="no-color" />
+</ComponentPreview>
+
+### Light
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="light" />
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview>
+  <StorybookFrame componentId="link-react" story="disabled" />
+</ComponentPreview>
+
+## Properties
+
+This component supports all native HTML `<a>` attributes via standard HTML props.
+
+<ComponentPropertiesTable componentId="link-react" />
+
+</Section>

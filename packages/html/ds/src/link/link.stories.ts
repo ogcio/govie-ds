@@ -120,7 +120,7 @@ export const Default: Story = {
   render: createElement,
 };
 
-export const DefaultWithIconStart: Story = {
+export const WithIconStart: Story = {
   args: {
     ...baseProps,
     iconStart: 'arrow_back',
@@ -128,13 +128,22 @@ export const DefaultWithIconStart: Story = {
   render: createElement,
 };
 
-export const DefaultWithIconEnd: Story = {
+export const WithIconEnd: Story = {
   args: {
     ...baseProps,
     iconEnd: 'arrow_back',
   },
   render: createElement,
 };
+export const WithIcons: Story = {
+  args: {
+    ...baseProps,
+    iconEnd: 'arrow_back',
+    iconStart: 'arrow_back',
+  },
+  render: createElement,
+};
+
 export const NoUnderline: Story = {
   args: {
     ...baseProps,
