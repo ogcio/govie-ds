@@ -1,0 +1,60 @@
+---
+title: Pagination
+description: Pagination Component Design Guidelines
+status: stable
+component:
+  id: 'pagination'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=2245-2236'
+  status: 'stable'
+---
+
+# Pagination
+
+The Pagination component is used to navigate large sets of content that are broken up into discrete pages. It provides clear controls for navigating forward and backward, and adapts responsively for mobile layouts.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Pagination currentPage={5} totalPages={10} />
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1668-2029" />
+
+## Variants
+
+Pagination adapts based on screen size:
+- On large screens, it displays a subset of numbered page buttons with ellipses when needed.
+- On small or extra-small screens, it switches to a compact view showing only the current page (e.g., "Page 2 of 10") with previous/next buttons.
+
+<ComponentPreviewLayout className="flex-col space-y-4">
+  <ComponentPreviewItem className="h-auto w-full">
+    <Pagination currentPage={6} totalPages={12} />
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the pagination component when your content is divided into multiple pages, especially if users need to navigate backward and forward or jump to specific pages.
+It's most effective in scenarios where the total number of pages is known and clearly defined.
+
+By design, the component automatically hides itself if `totalPages` is 0, you don't need to implement that check yourself.
+
+### Do
+
+- Ensure `currentPage` and `totalPages` are always valid integers.
+- Use in contexts where users benefit from non-linear access to pages.
+- Keep it visually close to the content it controls, typically at the **bottom right** or **centre** of the content block.
+
+<ComponentContainer>
+  <Pagination currentPage={2} totalPages={5} />
+</ComponentContainer>
+
+### Don't
+
+- Don’t place pagination far away from the content it controls, users should immediately associate it with the data being paginated.
+- Don’t show too many numbered pages at once, the component inserts ellipses where needed.
+
+<ComponentContainer>
+  <Pagination currentPage={2} totalPages={100} />
+</ComponentContainer>
+
+</Section>
