@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-react",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "The GOV IE design system React components.",
   "type": "module",
   "main": "dist/index.js",
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@ogcio/design-system-tokens": "workspace:*",
+    "@popperjs/core": "^2.11.8",
     "@radix-ui/react-slot": "^1.1.2",
     "clsx": "^2.1.1",
     "rollup-preserve-directives": "^1.1.2"
