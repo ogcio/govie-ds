@@ -100,8 +100,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3(playwright@1.53.2)
       chromatic:
-        specifier: 11.25.1
-        version: 11.25.1
+        specifier: 13.1.2
+        version: 13.1.2
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -258,10 +258,10 @@ importers:
         version: 15.3.5
       '@nx-tools/container-metadata':
         specifier: ^6.0.1
-        version: 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
+        version: 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
       '@nx-tools/nx-container':
         specifier: ^6.0.1
-        version: 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0))(dotenv@16.4.7)(nx@20.4.0)(tslib@2.8.1)
+        version: 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2))(dotenv@16.4.7)(nx@21.2.2)(tslib@2.8.1)
       '@ogcio/design-system-eslint-config':
         specifier: workspace:*
         version: link:../../packages/build/eslint-config
@@ -5471,6 +5471,18 @@ packages:
 
   chromatic@11.25.1:
     resolution: {integrity: sha512-D0NdcGOSy84hqgNnSY7FM4TzB77RymRTowjm4hb1CV4wbk1djKTV4SJbbYVCzHFD+n/NOg/wtZ9Y7sjiRdy8dA==}
+    hasBin: true
+    peerDependencies:
+      '@chromatic-com/cypress': ^0.*.* || ^1.0.0
+      '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+    peerDependenciesMeta:
+      '@chromatic-com/cypress':
+        optional: true
+      '@chromatic-com/playwright':
+        optional: true
+
+  chromatic@13.1.2:
+    resolution: {integrity: sha512-jgVptQabJHOnzmmvLjbtfutREkWGhDDk2gVqMH6N+V7z56oIy4Sd2/U7ZxNvnVFPinZQMSjSdUce4b6JIP64Dg==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -14282,10 +14294,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nx-tools/ci-context@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/ci-context@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
       '@actions/github': 6.0.1
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
       '@octokit/openapi-types': 22.2.0
       ci-info: 4.2.0
       properties-file: 3.5.12
@@ -14293,11 +14305,11 @@ snapshots:
     transitivePeerDependencies:
       - '@nx/devkit'
 
-  '@nx-tools/container-metadata@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/container-metadata@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
-      '@nx-tools/ci-context': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx-tools/ci-context': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       '@renovate/pep440': 1.0.0
       csv-parse: 5.6.0
       handlebars: 4.7.8
@@ -14305,41 +14317,29 @@ snapshots:
       semver: 7.7.2
       tslib: 2.8.1
 
-  '@nx-tools/core@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/core@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
       '@actions/exec': 1.1.1
       '@actions/io': 1.1.3
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       chalk: 4.1.2
       ci-info: 4.2.0
       csv-parse: 5.6.0
       tslib: 2.8.1
 
-  '@nx-tools/nx-container@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0))(dotenv@16.4.7)(nx@20.4.0)(tslib@2.8.1)':
+  '@nx-tools/nx-container@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2))(dotenv@16.4.7)(nx@21.2.2)(tslib@2.8.1)':
     dependencies:
-      '@nx-tools/container-metadata': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx/devkit': 21.2.2(nx@20.4.0)
-      '@nx/js': 21.2.2(@babel/traverse@7.28.0)(nx@20.4.0)
+      '@nx-tools/container-metadata': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
+      '@nx/js': 21.2.2(@babel/traverse@7.28.0)(nx@21.2.2)
       csv-parse: 5.6.0
       dotenv: 16.4.7
       handlebars: 4.7.8
-      nx: 20.4.0
+      nx: 21.2.2
       semver: 7.7.2
       tmp: 0.2.3
       tslib: 2.8.1
-
-  '@nx/devkit@21.2.2(nx@20.4.0)':
-    dependencies:
-      ejs: 3.1.10
-      enquirer: 2.3.6
-      ignore: 5.3.2
-      minimatch: 9.0.3
-      nx: 20.4.0
-      semver: 7.7.2
-      tmp: 0.2.3
-      tslib: 2.8.1
-      yargs-parser: 21.1.1
 
   '@nx/devkit@21.2.2(nx@21.2.2)':
     dependencies:
@@ -14353,7 +14353,7 @@ snapshots:
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
-  '@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0)':
+  '@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-proposal-decorators': 7.28.0(@babel/core@7.28.0)
@@ -14362,7 +14362,7 @@ snapshots:
       '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.0)
       '@babel/runtime': 7.27.6
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       '@nx/workspace': 21.2.2
       '@zkochan/js-yaml': 0.0.7
       babel-plugin-const-enum: 1.2.0(@babel/core@7.28.0)
@@ -17126,6 +17126,8 @@ snapshots:
   chownr@3.0.0: {}
 
   chromatic@11.25.1: {}
+
+  chromatic@13.1.2: {}
 
   chrome-trace-event@1.0.4: {}
 
