@@ -12,11 +12,19 @@ export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
-    dts({ include: ['src'], exclude: ['src/**/*.stories.tsx'] }),
+    dts({
+      include: ['src'],
+      exclude: [
+        'src/**/*.stories.tsx',
+        'src/**/*.test.*',
+        'src/test-utilities.ts',
+      ],
+    }),
     preserveDirectives(),
   ],
   build: {
     copyPublicDir: false,
+    sourcemap: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es'],
@@ -34,7 +42,12 @@ export default defineConfig({
         // https://rollupjs.org/configuration-options/#input
         glob
           .sync('src/**/*.{ts,tsx}', {
-            ignore: ['src/**/*.d.ts', 'src/**/*.stories.tsx'],
+            ignore: [
+              'src/**/*.d.ts',
+              'src/**/*.stories.tsx',
+              'src/**/*.test.*',
+              'src/test-utilities.ts',
+            ],
           })
           .map((file: string) => [
             // 1. The name of the entry point

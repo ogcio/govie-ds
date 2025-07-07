@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.10.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.10.2...design-tailwind-v1.10.3) (2025-07-04)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.5.3
+
 ## [1.10.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.10.1...design-tailwind-v1.10.2) (2025-07-04)
 
 
