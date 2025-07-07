@@ -27,6 +27,12 @@ export const createIcon = (iconProps: IconProps) => {
     className.push(iconProps.className);
   }
 
+  if (iconProps.dataset) {
+    for (const [key, value] of Object.entries(iconProps.dataset || {})) {
+      icon.dataset[key] = value as string;
+    }
+  }
+
   icon.className = className.join(' ');
   icon.textContent = iconProps.icon || '';
   icon.role = 'alert';

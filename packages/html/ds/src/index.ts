@@ -11,13 +11,14 @@ import { initCheckboxes } from './input-checkbox/input-checkbox.js'; /* eslint-d
 import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initModal } from './modal/modal.js';
 import { initPassword } from './input-password/input-password.js'; /* eslint-disable-line import-x/order */
+import { initPopover } from './popover/popover.js';
 import { initRadios } from './radio/radio.js';
+import { initSelectNext } from './select-next/select-next.js';
 import { initTabs } from './tabs/tabs.js';
 import { initTextarea } from './textarea/textarea.js';
 import { initToast } from './toast/toast.js';
 import { initTooltip } from './tooltip/tooltip.js';
 import { initUtilities } from './utils/utilities.js';
-
 export * as properties from './dist/properties.js';
 
 function addJavaScriptClass() {
@@ -50,6 +51,8 @@ export function initGovIe() {
   initAccordion();
   initPassword();
   initUtilities();
+  initPopover();
+  initSelectNext();
   initDetails();
 }
 

@@ -109,6 +109,7 @@ export const iconSchema = zod.object({
       description: 'Custom classes',
     })
     .optional(),
+  dataset: zod.record(zod.string()).optional(),
 });
 
 export type IconProps = zod.infer<typeof iconSchema>;

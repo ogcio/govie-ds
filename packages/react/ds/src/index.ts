@@ -145,6 +145,11 @@ export {
   type SectionBreakProps,
 } from './section-break/section-break.js';
 export { Select, SelectGroupItem, SelectItem } from './select/select.js';
+export {
+  SelectNext,
+  SelectGroupItemNext,
+  SelectItemNext,
+} from './select/select-next.js';
 export type {
   SelectGroupItemProps,
   SelectMenuOptionProps,
