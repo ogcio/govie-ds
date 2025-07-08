@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.3](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.2...themes-govie-v1.5.3) (2025-07-04)
+
+
+### Bug Fixes
+
+* reduce bundle size ([#630](https://github.com/ogcio/govie-ds/issues/630)) ([ad0dbfe](https://github.com/ogcio/govie-ds/commit/ad0dbfe0ab744b12409036113fb781b372b601ae))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/theme-builder bumped to 1.5.3
+    * @ogcio/design-system-tokens bumped to 1.5.3
+
 ## [1.5.2](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.1...themes-govie-v1.5.2) (2025-07-04)
 
 

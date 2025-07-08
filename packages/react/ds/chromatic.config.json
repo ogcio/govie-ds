@@ -1,0 +1,10 @@
+{
+    "$schema": "https://www.chromatic.com/config-file.schema.json",
+    "projectId": "66d71adc83425e26c052e5e2",
+    "autoAcceptChanges": "main",
+    "exitOnceUploaded": true,
+    "onlyChanged": true,
+    "storybookBuildDir": "packages/react/ds/storybook-static",
+    "storybookConfigDir": "packages/react/ds/.storybook",
+    "storybookBaseDir": "packages/react/ds"
+}

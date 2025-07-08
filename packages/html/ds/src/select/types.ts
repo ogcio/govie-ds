@@ -12,6 +12,8 @@ export type SelectProps = {
   dataTestid?: string;
   className?: string;
   disabled?: boolean;
+  defaultValue?: string;
+  enableSearch?: boolean;
 };
 
 export type SelectItemProps = {

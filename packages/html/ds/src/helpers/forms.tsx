@@ -4,10 +4,16 @@ import { CheckboxGroupProps, CheckboxProps } from '../input-checkbox/types';
 import { TextInputProps } from '../input-text/types';
 import { LabelProps } from '../label/types';
 import { RadioProps } from '../radio/types';
-import { SelectProps } from '../select/types';
+import {
+  SelectGroupItemProps,
+  SelectItemProps,
+  SelectProps,
+} from '../select/types';
 import { TextAreaProps } from '../textarea/types';
 import { createIconButton } from './buttons';
 import { createIcon } from './icons';
+import { createPopover } from './popover';
+import { createSelectMenu } from './select-menu';
 
 export const createLabel = (labelProps: LabelProps) => {
   const label = document.createElement('label');
@@ -55,6 +61,9 @@ export const createFormField = (formFieldProps: {
   className?: string;
 }) => {
   const formField = document.createElement('fieldset');
+  const hasWidth = /\bgi-w-(\[[^\]]+\]|\S+)\b/.test(
+    formFieldProps.className ?? '',
+  );
   formField.className = [
     formFieldProps.error ? 'gi-error-state' : '',
     formFieldProps.className || '',
@@ -62,6 +71,8 @@ export const createFormField = (formFieldProps: {
     .filter(Boolean)
     .join(' ')
     .trim();
+
+  formField.style = hasWidth ? '' : 'width:inherit';
 
   const wrapper = document.createElement('div');
   wrapper.className = 'gi-pb-3 gi-flex gi-flex-col gi-gap-1';
@@ -163,6 +174,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   }
   return container;
 };
+
 export const createTextInput = (arguments_: TextInputProps) => {
   const formField = createFormField(arguments_);
 
@@ -607,3 +619,123 @@ export const createTextArea = (arguments_: TextAreaProps) => {
 
   return formField;
 };
+export const createSelectNext = ({
+  id,
+  label,
+  hint,
+  error,
+  items,
+  dataTestid,
+  disabled = false,
+  defaultValue,
+  className = '',
+  enableSearch,
+}: SelectProps) => {
+  const formField = createFormField({ label, hint, error });
+
+  const resolvedLabel = resolveDefaultValueLabel(items, defaultValue);
+  const input = createSelectInput(
+    className,
+    resolvedLabel,
+    defaultValue,
+    disabled,
+    id,
+  );
+  const icon = createIcon({
+    icon: 'arrow_drop_down',
+    size: 'md',
+    dataset: { triggerElementId: 'select-next-icon-trigger' },
+  });
+
+  const triggerElement = createSelectTriggerElement(input, icon);
+
+  const content = createSelectMenu({
+    id,
+    items,
+    dataTestid,
+    className: '',
+    disabled,
+    enableSearch,
+    ignorePopoverEvents: true,
+  }).outerHTML;
+
+  const popover = createPopover({
+    id: `popover-${id}`,
+    triggerElement,
+    content,
+  });
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'gi-select-next';
+  wrapper.append(popover);
+  wrapper.dataset.module = 'gieds-select-next';
+  wrapper.dataset.element = 'select-next';
+
+  formField.append(wrapper);
+  return formField;
+};
+
+function resolveDefaultValueLabel(
+  items: (SelectItemProps | SelectGroupItemProps)[],
+  value?: string,
+): string {
+  if (!value) {
+    return '';
+  }
+
+  for (const item of items) {
+    if ('items' in item) {
+      const found = item.items.find((item) => item.value === value);
+      if (found) {
+        return found.label;
+      }
+    } else if (item.value === value) {
+      return item.label;
+    }
+  }
+
+  return '';
+}
+
+function createSelectInput(
+  className: string,
+  label: string,
+  value?: string,
+  disabled?: boolean,
+  id?: string,
+): HTMLInputElement {
+  const input = document.createElement('input');
+  input.id = `select-next-${id}`;
+  input.type = 'text';
+  input.className = `${className} gi-cursor-pointer gi-input-text`;
+  input.setAttribute('aria-label', 'Select an option');
+  input.setAttribute('placeholder', 'Select Option');
+  input.setAttribute('value', label);
+  input.dataset.triggerElementId = 'select-next-input-trigger';
+  input.dataset.optionValue = value;
+  input.disabled = disabled ?? false;
+  input.setAttribute('readonly', '');
+  return input;
+}
+
+function createSelectTriggerElement(
+  input: HTMLInputElement,
+  icon: HTMLElement,
+): string {
+  const iconWrapper = document.createElement('div');
+  iconWrapper.className = 'gi-input-text-icon-end gi-cursor-pointer';
+  iconWrapper.dataset.endElement = 'false';
+  iconWrapper.dataset.suffix = 'false';
+  iconWrapper.append(icon);
+
+  const inputInner = document.createElement('div');
+  inputInner.className = 'gi-input-text-inner';
+  inputInner.append(input);
+  inputInner.append(iconWrapper);
+
+  const inputWrapper = document.createElement('div');
+  inputWrapper.className = 'gi-input-text-container';
+  inputWrapper.append(inputInner);
+
+  return inputWrapper.outerHTML;
+}

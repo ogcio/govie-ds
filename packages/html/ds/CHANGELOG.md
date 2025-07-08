@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.9.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.9.2...html-lib-v1.9.3) (2025-07-04)
+
+
+### Bug Fixes
+
+* reduce bundle size ([#630](https://github.com/ogcio/govie-ds/issues/630)) ([ad0dbfe](https://github.com/ogcio/govie-ds/commit/ad0dbfe0ab744b12409036113fb781b372b601ae))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.10.3
+    * @ogcio/theme-govie bumped to 1.5.3
+
 ## [1.9.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.9.1...html-lib-v1.9.2) (2025-07-04)
 
 

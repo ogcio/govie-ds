@@ -79,6 +79,7 @@ PaginationProps
 ParagraphProps
 PhaseBannerProps
 Prioritize
+Programmatically
 ProgressBarProps
 ProgressStepper
 ProgressStepperProps
@@ -249,3 +250,4 @@ whitespace
 with-iframe-embed
 xl
 xs
+frontend
