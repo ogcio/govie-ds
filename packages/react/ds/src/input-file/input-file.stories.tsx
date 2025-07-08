@@ -104,17 +104,10 @@ export const WithLabelAndError: Story = {
   },
   render: (arguments_) => (
     <>
-      <FormField
-        id="file-upload-id"
-        label={{
-          text: 'Upload File',
-          htmlFor: 'file-upload-id',
-        }}
-        error={{
-          text: 'Error: File must be smaller than 5MB.',
-        }}
-      >
+      <FormField id="file-upload-id">
+        <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
         <InputFile {...arguments_} />
+        <FormField.Error>Error: File must be smaller than 5MB.</FormField.Error>
       </FormField>
     </>
   ),
