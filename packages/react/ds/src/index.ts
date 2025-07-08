@@ -72,7 +72,13 @@ export {
   FormFieldWithTag,
   type FormFieldWithTagProps,
 } from './forms/form-field-with-tag/form-field-with-tag.js';
-export { FormField, type FormFieldProps } from './forms/form-field.js';
+export {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from './forms/form-field/form-field.js';
+export type { FormFieldProps } from './forms/form-field/types.js';
 export { Form } from './forms/form.js';
 export {
   HeaderSearch,
