@@ -1,3 +1,4 @@
+import { Slottable } from '@radix-ui/react-slot';
 import {
   ReactNode,
   FieldsetHTMLAttributes,
@@ -6,14 +7,13 @@ import {
   createContext,
   useContext,
 } from 'react';
-import { Slottable } from '@radix-ui/react-slot';
 import { cn } from '../../cn.js';
-import { Label } from '../../label/label.js';
-import { LabelTextProps } from '../../label/types.js';
-import { HintText } from '../../hint-text/hint-text.js';
-import { HintTextProps } from '../../hint-text/types.js';
 import { ErrorText } from '../../error-text/error-text.js';
 import { ErrorTextProps } from '../../error-text/types.js';
+import { HintText } from '../../hint-text/hint-text.js';
+import { HintTextProps } from '../../hint-text/types.js';
+import { Label } from '../../label/label.js';
+import { LabelTextProps } from '../../label/types.js';
 import { FormFieldProps } from './types.js';
 
 type FormFieldBaseProps = Omit<
