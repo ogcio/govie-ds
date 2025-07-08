@@ -21,6 +21,7 @@ import {
   SelectNextProps,
   SelectNextOptionItemElement,
   SelectNextOptionProps,
+  SelectNextTableCellProps,
 } from './types.js';
 
 export const SelectNext = ({
@@ -225,3 +226,22 @@ Object.defineProperty(SelectGroupItemNext, 'componentType', {
   writable: false,
   enumerable: false,
 });
+
+export const SelectNextTableCell = (props: SelectNextTableCellProps) => {
+  const { options, defaultValue, onChange, error } = props;
+  return (
+    <SelectNext
+      {...props}
+      defaultValue={defaultValue}
+      onChange={onChange}
+      data-table-cell="true"
+      data-table-cell-error-state={error?.toString()}
+    >
+      {options.map(({ value, label }) => (
+        <SelectItemNext key={`${value}-${label}`} value={value}>
+          {label}
+        </SelectItemNext>
+      ))}
+    </SelectNext>
+  );
+};

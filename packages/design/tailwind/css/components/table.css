@@ -4,7 +4,15 @@
 
 .gi-table-th,
 .gi-table-td {
-  @apply gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid;
+  @apply gi-border-b-[gray]
+  gi-border-b gi-border-solid
+  gi-border-b-color-surface-system-neutral-interactive-disabled
+  gi-text-sm gi-leading-10 xs:gi-leading-5;
+}
+
+.gi-table-tr {
+  /*TODO: Set different height for tr*/
+  @apply gi-h-12;
 }
 
 .gi-table-caption-text {

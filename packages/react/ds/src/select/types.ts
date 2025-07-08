@@ -9,6 +9,7 @@ import {
   ReactNode,
   SelectHTMLAttributes,
 } from 'react';
+import { InputTextProps } from '../input-text/type.js';
 
 /**
  * @deprecated Use `SelectNextProps` instead of `SelectProps`.
@@ -94,3 +95,13 @@ export type SelectNextGroupProps = PropsWithChildren<{
   label?: string;
   children: ReactNode;
 }>;
+
+export type SelectNativeTableCellProps = Omit<SelectProps, 'children'> & {
+  options: { label: string; value: string }[];
+  error?: boolean;
+};
+
+export type SelectNextTableCellProps = SelectNextProps & {
+  options: { label: string; value: string }[];
+  error?: boolean;
+} & Pick<InputTextProps, 'iconEnd' | 'iconStart'>;

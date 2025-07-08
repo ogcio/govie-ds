@@ -1,13 +1,35 @@
 .gi-select {
-  @apply gi-rounded-sm gi-focus-state-outline gi-p-2 gi-border-color-border-system-neutral-default gi-border-sm gi-border-solid gi-min-w-56 gi-text-sm gi-leading-5 xs:gi-text-md xs:gi-leading-5 gi-appearance-none gi-relative gi-bg-no-repeat gi-bg-right disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled;
+  @apply gi-rounded-sm 
+  gi-focus-state-outline
+  gi-p-2
+  gi-border-color-border-system-neutral-default
+  gi-border-sm
+  gi-border-solid
+  gi-min-w-56
+  gi-text-sm
+  gi-leading-5
+  xs:gi-text-md
+  xs:gi-leading-5
+  gi-appearance-none
+  gi-relative
+  gi-bg-no-repeat
+  gi-bg-right
+  disabled:gi-border-color-border-system-neutral-interactive-disabled
+  disabled:gi-bg-color-surface-system-neutral-interactive-disabled
+  disabled:gi-text-color-text-system-neutral-interactive-disabled
+  disabled:gi-opacity-[1];
 }
 
 .gi-select-container {
-  @apply gi-relative gi-inline gi-w-full;
+  @apply gi-relative gi-inline gi-w-full gi-h-full;
 }
 
 .gi-select-icon {
-  @apply gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2;
+  @apply gi-pointer-events-none gi-absolute gi-right-2 gi-top-1/2 gi--translate-y-1/2 gi-z-[3];
+}
+
+.gi-select-icon[data-disabled='true'] {
+  @apply gi-text-color-icon-system-neutral-interactive-disabled;
 }
 
 .gi-select-menu-container {
@@ -63,4 +85,54 @@
 
 .gi-select-next {
   width: inherit;
+}
+
+.gi-select[data-table-cell='true'] {
+  width: inherit;
+}
+
+.gi-select[data-table-cell='true'],
+.gi-select-next[data-table-cell='true'] input {
+  @apply gi-h-12
+    gi-px-3
+    gi-truncate
+    gi-overflow-hidden
+    gi-whitespace-nowrap
+    gi-text-sm
+    gi-leading-6
+    gi-border-[3px]
+    gi-border-transparent
+    gi-rounded-[0px]
+
+    focus:gi-z-[3]
+    focus:gi-border-[3px]
+    focus:gi-border-solid
+    focus:gi-border-color-border-intent-focus-default
+    focus:gi-outline
+    focus:gi-outline-sm
+    focus:gi-outline-color-shadow-intent-focus-default
+    focus:gi-outline-offset-0
+
+    disabled:gi-outline
+    disabled:gi-outline-sm
+    disabled:gi-outline-color-surface-system-neutral-interactive-disabled
+    disabled:gi-outline-offset-0;
+}
+
+.gi-select[data-table-cell-error-state='true'],
+.gi-select-next[data-table-cell-error-state='true'] input {
+  @apply gi-outline
+  gi-z-[2]
+  gi-outline-sm
+  gi-outline-color-border-intent-error-default
+  gi-outline-offset-0
+  focus:gi-outline
+  focus:gi-outline-sm
+  focus:gi-outline-color-shadow-intent-focus-default
+  focus:gi-outline-offset-0;
+}
+
+.gi-select[data-table-cell='true']:disabled,
+.gi-select-next[data-table-cell='true'] input:disabled {
+  @apply gi-border-[0px];
 }

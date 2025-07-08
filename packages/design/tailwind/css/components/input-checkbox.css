@@ -34,3 +34,17 @@
 .gi-input-checkbox-hint-container > div {
   @apply gi-h-auto;
 }
+
+.gi-input-checkbox[data-table-cell='true'] {
+  @apply hover:gi-outline-0
+    gi-border-solid;
+}
+
+.gi-input-checkbox[data-table-cell-error-state='true'] {
+  @apply gi-border-sm
+    gi-border-color-border-intent-error-default
+    focus:gi-shadow-[inset_0_0_0_1px]
+    focus:gi-shadow-color-border-system-neutral-interactive-hover
+    focus:gi-border-color-border-system-neutral-default
+    gi-focus-state-outline;
+}

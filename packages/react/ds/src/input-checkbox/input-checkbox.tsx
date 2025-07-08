@@ -1,11 +1,13 @@
 'use client';
 import { useId } from 'react';
+import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { Input } from '../primitives/input.js';
 import {
   InputCheckboxSizeEnum,
   type InputCheckboxSizeEnumType,
   type InputCheckboxProps,
+  InputCheckboxTableCellProps,
 } from './types.js';
 
 const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
@@ -38,16 +40,18 @@ export const InputCheckbox: React.FC<InputCheckboxProps> = ({
   size = InputCheckboxSizeEnum.Medium,
   label,
   hint,
+  className,
+  containerClassName,
   ...props
 }: InputCheckboxProps) => {
   const CheckboxId = id || useId();
   return (
     <>
-      <div className="gi-input-checkbox-container">
+      <div className={cn('gi-input-checkbox-container', containerClassName)}>
         <Input
           type="checkbox"
           id={CheckboxId}
-          className={getSizeClass(size)}
+          className={cn(getSizeClass(size), className)}
           aria-labelledby={label ? `${CheckboxId}-label` : undefined}
           {...props}
         />
@@ -66,5 +70,19 @@ export const InputCheckbox: React.FC<InputCheckboxProps> = ({
     </>
   );
 };
+
+export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
+  error,
+  ...props
+}) => (
+  <InputCheckbox
+    {...props}
+    size="sm"
+    containerClassName="gi-gap-0"
+    data-table-cell="true"
+    data-table-cell-error-state={error?.toString()}
+  />
+);
+InputCheckboxTableCell.displayName = 'InputCheckboxTableCell';
 
 InputCheckbox.displayName = 'InputCheckbox';

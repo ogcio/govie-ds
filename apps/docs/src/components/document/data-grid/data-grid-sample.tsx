@@ -1,10 +1,9 @@
 'use client';
 import {
-  Button,
-  Checkbox,
   Table as DSTable,
   Icon,
   IconButton,
+  InputCheckbox,
   Pagination,
   Select,
   SelectItem,
@@ -84,7 +83,8 @@ export function DataGridSample() {
         id: 'select',
         header: ({ table }) => (
           <div className="px-[3px]">
-            <Checkbox
+            <InputCheckbox
+              size="sm"
               id={'all'}
               value={'all'}
               {...{
@@ -95,7 +95,8 @@ export function DataGridSample() {
           </div>
         ),
         cell: ({ row }) => (
-          <Checkbox
+          <InputCheckbox
+            size="sm"
             id={row.id}
             value={row.id}
             {...{

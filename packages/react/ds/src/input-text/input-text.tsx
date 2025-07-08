@@ -110,7 +110,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
             data-end-element={!!inputActionButton}
             data-prefix={!!prefix}
             data-suffix={!!suffix}
-            className={cn(inputClassName, 'gi-input-text')}
+            className={cn('gi-input-text', inputClassName)}
             ref={ref}
             disabled={disabled}
             {...props}

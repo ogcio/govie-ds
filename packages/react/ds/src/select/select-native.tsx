@@ -4,6 +4,7 @@ import { Icon } from '../icon/icon.js';
 import type {
   SelectGroupItemProps,
   SelectItemProps,
+  SelectNativeTableCellProps,
   SelectProps,
 } from './types.js';
 
@@ -36,7 +37,35 @@ export const SelectNative: FC<SelectProps> = ({
       <select className={cn('gi-select', className)} {...props}>
         {children}
       </select>
-      <Icon className="gi-select-icon" icon="keyboard_arrow_down" />
+      <Icon
+        className="gi-select-icon"
+        icon="keyboard_arrow_down"
+        data-disabled={props?.disabled?.toString()}
+      />
     </div>
+  );
+};
+
+export const SelectNativeTableCell = ({
+  options,
+  defaultValue,
+  onChange,
+  error,
+  ...props
+}: SelectNativeTableCellProps) => {
+  return (
+    <SelectNative
+      {...props}
+      defaultValue={defaultValue}
+      onChange={onChange}
+      data-table-cell="true"
+      data-table-cell-error-state={error?.toString()}
+    >
+      {options.map(({ value, label }) => (
+        <SelectItem key={`${value}-${label}`} value={value}>
+          {label}
+        </SelectItem>
+      ))}
+    </SelectNative>
   );
 };
