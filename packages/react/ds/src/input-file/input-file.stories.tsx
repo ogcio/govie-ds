@@ -51,12 +51,10 @@ export const Default: Story = {
     accept: '*/*',
   },
   render: (arguments_) => (
-    <>
-      <FormField id="file-upload-id">
-        <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
-        <InputFile {...arguments_} />
-      </FormField>
-    </>
+    <FormField id="file-upload-id">
+      <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
+      <InputFile {...arguments_} />
+    </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
