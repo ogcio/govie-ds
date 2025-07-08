@@ -12,8 +12,8 @@ importers:
         specifier: ^2.11.8
         version: 2.11.8
       '@vitest/spy':
-        specifier: 2.1.3
-        version: 2.1.3
+        specifier: 3.2.4
+        version: 3.2.4
       react-color:
         specifier: ^2.19.3
         version: 2.19.3(react@19.0.0)
@@ -88,7 +88,7 @@ importers:
         specifier: ^1.4.6
         version: 1.4.6
       '@vitejs/plugin-react':
-        specifier: ^4.3.4
+        specifier: ^4.6.0
         version: 4.6.0(vite@6.3.5(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       '@vitest/browser':
         specifier: ^3.2.4
@@ -139,10 +139,10 @@ importers:
         specifier: ^6.2.4
         version: 6.3.5(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
       vite-plugin-dts:
-        specifier: ^4.5.3
+        specifier: ^4.5.4
         version: 4.5.4(@types/node@22.10.5)(rollup@4.44.1)(typescript@5.6.3)(vite@6.3.5(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       vite-plugin-lib-inject-css:
-        specifier: ^2.1.1
+        specifier: ^2.2.2
         version: 2.2.2(vite@6.3.5(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       vitest:
         specifier: 3.2.4
@@ -4754,9 +4754,6 @@ packages:
 
   '@vitest/spy@2.0.5':
     resolution: {integrity: sha512-c/jdthAhvJdpfVuaexSrnawxZz6pywlTPe84LUB2m/4t3rl2fTo9NFGBG4oWgaD+FTgDDV8hJ/nibT7IfH3JfA==}
-
-  '@vitest/spy@2.1.3':
-    resolution: {integrity: sha512-Nb2UzbcUswzeSP7JksMDaqsI43Sj5+Kry6ry6jQJT4b5gAK+NS9NED6mDb8FlMRCX8m5guaHCDZmqYMMWRy5nQ==}
 
   '@vitest/spy@3.2.4':
     resolution: {integrity: sha512-vAfasCOe6AIK70iP5UD11Ac4siNUNJ9i/9PZ3NKx07sG6sUxeag1LWdNrMWeKKYBLlzuK+Gn65Yd5nyL6ds+nw==}
@@ -16263,10 +16260,6 @@ snapshots:
       pathe: 2.0.3
 
   '@vitest/spy@2.0.5':
-    dependencies:
-      tinyspy: 3.0.2
-
-  '@vitest/spy@2.1.3':
     dependencies:
       tinyspy: 3.0.2
 
