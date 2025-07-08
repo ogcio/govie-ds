@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
-import { FormField } from '../forms/form-field.js';
+import { FormField } from '../forms/form-field/form-field.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {

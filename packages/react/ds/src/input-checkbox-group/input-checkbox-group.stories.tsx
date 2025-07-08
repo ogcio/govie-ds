@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../forms/form-field.js';
+import { FormField } from '../forms/form-field/form-field.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputCheckboxGroup } from './input-checkbox-group.js';
 
