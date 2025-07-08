@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.12.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.0...react-lib-v1.12.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* remove dep with design-system-tokens ([f7eb0fd](https://github.com/ogcio/govie-ds/commit/f7eb0fde86d816d27f305651fb2c9d196d44df19))
+
+
+### Miscellaneous Chores
+
+* fix flaky test ([c3b5d30](https://github.com/ogcio/govie-ds/commit/c3b5d30b7dcaa5a394f95e20faed97b28ebf411d))
+* fix flaky test ([940a956](https://github.com/ogcio/govie-ds/commit/940a956d9ab83e7dbc7a41efbcaf1767b495c768))
+
 ## [1.12.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.3...react-lib-v1.12.0) (2025-07-08)
 
 
