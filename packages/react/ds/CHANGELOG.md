@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.12.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.3...react-lib-v1.12.0) (2025-07-08)
+
+
+### Features
+
+* add composable form field component ([#635](https://github.com/ogcio/govie-ds/issues/635)) ([6434eed](https://github.com/ogcio/govie-ds/commit/6434eedde43599b0202be41b5c66fcc4b8ae22c6))
+* Popover (html) + SelectNext (html) ([#621](https://github.com/ogcio/govie-ds/issues/621)) ([72da4e9](https://github.com/ogcio/govie-ds/commit/72da4e92830f28871f3a43d17ee04771e298d7bc))
+
+
+### Bug Fixes
+
+* add "use client" for form-field ([25da21e](https://github.com/ogcio/govie-ds/commit/25da21e6cd7a25dac3c2b6db07c2772c0b45e366))
+* Exporting SelectNext ([#632](https://github.com/ogcio/govie-ds/issues/632)) ([2e38e5e](https://github.com/ogcio/govie-ds/commit/2e38e5e7e3e057efce0cf3f565d175d1041d3167))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.11.0
+
 ## [1.11.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.11.2...react-lib-v1.11.3) (2025-07-04)
 
 
