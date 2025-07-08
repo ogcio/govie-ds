@@ -89,7 +89,7 @@ const FormFieldNextLabel = ({
     {children}
   </Label>
 );
-FormFieldNextLabel.displayName = 'FormFieldNext.Label';
+FormFieldNextLabel.displayName = 'FormField.Label';
 FormFieldNext.Label = FormFieldNextLabel;
 
 const FormFieldNextHint = ({
@@ -102,7 +102,7 @@ const FormFieldNextHint = ({
     {children}
   </HintText>
 );
-FormFieldNextHint.displayName = 'FormFieldNext.Hint';
+FormFieldNextHint.displayName = 'FormField.Hint';
 FormFieldNext.Hint = FormFieldNextHint;
 
 const FormFieldNextError = ({
@@ -115,5 +115,5 @@ const FormFieldNextError = ({
     {children}
   </ErrorText>
 );
-FormFieldNextError.displayName = 'FormFieldNext.Error';
+FormFieldNextError.displayName = 'FormField.Error';
 FormFieldNext.Error = FormFieldNextError;
