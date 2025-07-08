@@ -696,9 +696,6 @@ importers:
 
   packages/react/ds:
     dependencies:
-      '@ogcio/design-system-tokens':
-        specifier: workspace:*
-        version: link:../../../tokens
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
