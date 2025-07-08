@@ -134,14 +134,14 @@ export const WithIconStart: Story = {
   },
 };
 
-export const DefaultWithIconEnd: Story = {
+export const WithIconEnd: Story = {
   args: {
     ...baseProps,
     iconEnd: 'arrow_back',
   },
 };
 
-export const DefaultWithIcons: Story = {
+export const WithIcons: Story = {
   args: withIcons(baseProps),
 };
 
