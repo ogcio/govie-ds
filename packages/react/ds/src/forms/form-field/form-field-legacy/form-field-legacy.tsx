@@ -1,21 +1,11 @@
 import { Slottable } from '@radix-ui/react-slot';
-import { FieldsetHTMLAttributes } from 'react';
-import { cn } from '../cn.js';
-import { ErrorText } from '../error-text/error-text.js';
-import { ErrorTextProps } from '../error-text/types.js';
-import { HintText } from '../hint-text/hint-text.js';
-import { HintTextProps } from '../hint-text/types.js';
-import { Label } from '../label/label.js';
-import { LabelTextProps } from '../label/types.js';
+import { cn } from '../../../cn.js';
+import { ErrorText } from '../../../error-text/error-text.js';
+import { HintText } from '../../../hint-text/hint-text.js';
+import { Label } from '../../../label/label.js';
+import { FormFieldProps } from '../types.js';
 
-export type FormFieldProps = {
-  error?: ErrorTextProps;
-  hint?: HintTextProps;
-  label?: LabelTextProps;
-  className?: string;
-} & Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'style'>;
-
-export const FormField = ({
+export const FormFieldLegacy = ({
   label,
   hint,
   error,

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
-import { FormField } from '../forms/form-field.js';
+import { FormField } from '../forms/form-field/form-field.js';
 import { ScoreSelectProps } from './type.js';
 
 export const ScoreSelect: React.FC<ScoreSelectProps> = ({

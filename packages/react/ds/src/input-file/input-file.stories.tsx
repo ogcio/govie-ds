@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../forms/form-field.js';
+import { FormField } from '../forms/form-field/form-field.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { TableBody } from '../table/table-body.js';
 import { TableData } from '../table/table-data.js';
@@ -52,13 +52,8 @@ export const Default: Story = {
   },
   render: (arguments_) => (
     <>
-      <FormField
-        id="file-upload-id"
-        label={{
-          text: 'Upload File',
-          htmlFor: 'file-upload-id',
-        }}
-      >
+      <FormField id="file-upload-id">
+        <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
         <InputFile {...arguments_} />
       </FormField>
     </>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../button/button.js';
-import { FormField } from '../forms/form-field.js';
+import { FormField } from '../forms/form-field/form-field.js';
 import { Heading } from '../heading/heading.js';
 import { InputFile } from '../input-file/input-file.js';
 import { InputText } from '../input-text/input-text.js';
