@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.9.3...html-lib-v1.10.0) (2025-07-08)
+
+
+### Features
+
+* Popover (html) + SelectNext (html) ([#621](https://github.com/ogcio/govie-ds/issues/621)) ([72da4e9](https://github.com/ogcio/govie-ds/commit/72da4e92830f28871f3a43d17ee04771e298d7bc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.11.0
+
 ## [1.9.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.9.2...html-lib-v1.9.3) (2025-07-04)
 
 
