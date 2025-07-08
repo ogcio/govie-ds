@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { TableBody } from '../table/table-body.js';
 import { TableData } from '../table/table-data.js';
@@ -52,7 +57,7 @@ export const Default: Story = {
   },
   render: (arguments_) => (
     <FormField id="file-upload-id">
-      <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
+      <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
     </FormField>
   ),
@@ -70,20 +75,11 @@ export const WithLabelAndHint: Story = {
     accept: '*/*',
   },
   render: (arguments_) => (
-    <>
-      <FormField
-        id="file-upload-id"
-        label={{
-          text: 'Upload File',
-          htmlFor: 'file-upload-id',
-        }}
-        hint={{
-          text: 'Hint: This is a helpful hint.',
-        }}
-      >
-        <InputFile {...arguments_} />
-      </FormField>
-    </>
+    <FormField id="file-upload-id">
+      <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
+      <InputFile {...arguments_} />
+    </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -105,9 +101,9 @@ export const WithLabelAndError: Story = {
   render: (arguments_) => (
     <>
       <FormField id="file-upload-id">
-        <FormField.Label htmlFor="file-upload-id">Upload File</FormField.Label>
+        <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
         <InputFile {...arguments_} />
-        <FormField.Error>Error: File must be smaller than 5MB.</FormField.Error>
+        <FormFieldError>Error: File must be smaller than 5MB.</FormFieldError>
       </FormField>
     </>
   ),
@@ -130,13 +126,8 @@ export const WithPDFAndDocxOnly: Story = {
   },
   render: (arguments_) => (
     <>
-      <FormField
-        id="file-upload-id"
-        label={{
-          text: 'Upload File',
-          htmlFor: 'file-upload-id',
-        }}
-      >
+      <FormField id="file-upload-id">
+        <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
         <InputFile data-testid={'file-upload-id'} {...arguments_} />
       </FormField>
     </>
@@ -155,14 +146,8 @@ export const WithListOfUploadedFiles: Story = {
   },
   render: (arguments_) => (
     <>
-      <FormField
-        id="file-upload-id"
-        label={{
-          text: 'Upload File',
-          htmlFor: 'file-upload-id',
-        }}
-        className="gi-w-full md:gi-w-[400px]"
-      >
+      <FormField id="file-upload-id" className="gi-w-full md:gi-w-[400px]">
+        <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
         <InputFile {...arguments_} />
         <Table layout="auto">
           <TableHead>
