@@ -46,11 +46,8 @@ Use radio buttons when users must choose only **one** option from a predefined s
 **Example:**
 
 <ComponentContainer>
-  <FormField
-    label={{
-      text: 'Where do you live?',
-    }}
-  >
+  <FormField>
+    <FormFieldLabel>Where do you live?</FormFieldLabel>
     <InputRadioGroup groupId="city">
       <InputRadio label="Dublin" value="dublin" />
       <InputRadio label="Cork" value="cork" />

@@ -15,12 +15,8 @@ The Input Text component allows users to enter and edit text. It supports variou
 <Section current="design">
 
 <ComponentPreview>
-  <FormField
-    label={{
-      htmlFor: 'input-text-id',
-      text: 'Label',
-    }}
-  >
+  <FormField>
+    <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
     <InputText data-testid="input-text-id" id="input-text-id" />
   </FormField>
 </ComponentPreview>
@@ -89,7 +85,8 @@ Input fields are used to capture user data like text, email, numbers, and more.
 
 <ComponentContainer>
   <div className="flex flex-col gap-4">
-    <FormField label={{ htmlFor: 'input-example-do', text: 'Amount' }}>
+    <FormField>
+      <FormFieldLabel htmlFor="input-example-do">Amount</FormFieldLabel>
       <InputText
         id="input-example-do"
         prefix="$"
@@ -97,7 +94,8 @@ Input fields are used to capture user data like text, email, numbers, and more.
         placeholder="100.00"
       />
     </FormField>
-    <FormField label={{ htmlFor: 'input-search', text: 'Search' }}>
+    <FormField>
+      <FormFieldLabel htmlFor="input-search">Search</FormFieldLabel>
       <InputText id="input-search" iconStart="search" placeholder="Search..." />
     </FormField>
   </div>

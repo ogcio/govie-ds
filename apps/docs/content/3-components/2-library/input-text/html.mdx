@@ -28,12 +28,8 @@ The Input Text component allows users to enter and edit text. It supports variou
 <Section current="html">
 
 <ComponentPreview>
-  <FormField
-    label={{
-      htmlFor: 'input-text-id',
-      text: 'Label',
-    }}
-  >
+  <FormField>
+    <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
     <InputText data-testid="input-text-id" id="input-text-id" />
   </FormField>
 </ComponentPreview>

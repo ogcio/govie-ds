@@ -330,7 +330,7 @@ export default function Home() {
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="textarea-id2">
-              Textarea Component without React Hook Form"
+              Textarea Component without React Hook Form
             </FormFieldLabel>
             <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <TextArea id="textarea-id2" maxChars={50} />
