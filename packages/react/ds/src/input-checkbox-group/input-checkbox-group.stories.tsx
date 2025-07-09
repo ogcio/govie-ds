@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputCheckboxGroup } from './input-checkbox-group.js';
 
@@ -36,7 +41,8 @@ export const Default: Story = {
     groupId: 'UniqueID',
   },
   render: (props) => (
-    <FormField label={{ text: 'Organisation' }}>
+    <FormField>
+      <FormFieldLabel>Organisation</FormFieldLabel>
       <InputCheckboxGroup {...props}>
         <InputCheckbox
           value="employment-tribunal"
@@ -69,15 +75,15 @@ export const WithLabelHintAndError: Story = {
     groupId: 'govie-field-ID2',
   },
   render: (arguments_) => (
-    <FormField
-      label={{ text: 'What is your nationality?' }}
-      hint={{
-        text: 'If you have dual nationality, select all options that are relevant to you.',
-      }}
-      error={{
-        text: 'Select if you are Irish, British or a citizen of a different country',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel>What is your nationality?</FormFieldLabel>
+      <FormFieldHint>
+        If you have dual nationality, select all options that are relevant to
+        you.
+      </FormFieldHint>
+      <FormFieldError>
+        Select if you are Irish, British or a citizen of a different country
+      </FormFieldError>
       <InputCheckboxGroup {...arguments_}>
         <InputCheckbox value="irish" label="Irish" id="UniqueID-check1" />
         <InputCheckbox

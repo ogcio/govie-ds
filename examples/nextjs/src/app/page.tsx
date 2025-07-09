@@ -22,6 +22,8 @@ import {
   Footer,
   Form,
   FormField,
+  FormFieldHint,
+  FormFieldLabel,
   Header,
   HeaderProps,
   HeaderSearch,
@@ -311,33 +313,26 @@ export default function Home() {
           <hr />
           <Paragraph as="span">Span paragraph</Paragraph>
           <hr />
-          <FormField label={{ text: "Where do you live?" }}>
+          <FormField>
+            <FormFieldLabel>Where do you live?</FormFieldLabel>
             <InputRadioGroup groupId="city">
               <InputRadio value="dublin" label="Dublin" />
               <InputRadio value="cork" label="Cork" />
               <InputRadio value="galway" label="Galway" />
             </InputRadioGroup>
           </FormField>
-          <FormField
-            hint={{
-              text: "Hint: This is a helpful hint.",
-            }}
-            label={{
-              text: "Textarea with React Hook Form",
-              htmlFor: "textarea-id",
-            }}
-          >
+          <FormField>
+            <FormFieldLabel htmlFor="textarea-id">
+              Textarea with React Hook Form
+            </FormFieldLabel>
+            <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <MyForm />
           </FormField>
-          <FormField
-            hint={{
-              text: "Hint: This is a helpful hint.",
-            }}
-            label={{
-              text: "Textarea Component without React Hook Form",
-              htmlFor: "textarea-id2",
-            }}
-          >
+          <FormField>
+            <FormFieldLabel htmlFor="textarea-id2">
+              Textarea Component without React Hook Form"
+            </FormFieldLabel>
+            <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <TextArea id="textarea-id2" maxChars={50} />
           </FormField>
 
