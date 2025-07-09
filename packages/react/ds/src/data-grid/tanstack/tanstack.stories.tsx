@@ -1,5 +1,5 @@
 'use client';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
@@ -16,10 +16,10 @@ import {
 import { debounce } from 'lodash';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
-import { Icon } from '../icon/icon.js';
-import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
-import { InputText } from '../input-text/input-text.js';
-import { Pagination } from '../pagination/pagination.js';
+import { Icon } from '../../icon/icon.js';
+import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
+import { InputText } from '../../input-text/input-text.js';
+import { Pagination } from '../../pagination/pagination.js';
 import {
   Table,
   TableHead,
@@ -27,9 +27,10 @@ import {
   TableHeader,
   TableBody,
   TableData,
-} from '../table/index.js';
-import { EditableCell } from './tanstack/editable-cell.js';
-import { makeData } from './utilities.js';
+  TableCell,
+} from '../../table/index.js';
+import { EditableTableCell } from '../editable-table-cell.js';
+import { makeData } from './tanstack-helpers.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -57,7 +58,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'An editable data table built with TanStack Table. Supports inline editing of text fields using InputText components.',
+          'An editable data table built with TanStack Table and React Hook Form. Supports inline editing of text fields using InputText components.',
       },
     },
   },
@@ -87,7 +88,7 @@ const getFieldError = (
 ): FieldError | undefined =>
   (errors?.[rowIndex] as Record<string, FieldError | undefined>)?.[columnId];
 
-export const EditableGridSample = () => {
+export const WithReactHookForm = () => {
   const [data, setData] = useState(makeData(100));
   const [globalFilter, setGlobalFilter] = useState('');
   const [inputGlobalFilter, setInputGlobalFilter] = useState('');
@@ -95,6 +96,7 @@ export const EditableGridSample = () => {
     pageIndex: 0,
     pageSize: 10,
   });
+
   const methods = useForm({
     defaultValues: data.reduce(
       (previous, current, index) => {
@@ -143,14 +145,14 @@ export const EditableGridSample = () => {
         accessorFn: (row) => `${row.firstName} ${row.lastName}`,
         id: 'fullName',
         header: 'Full Name',
-        cell: (info) => info.getValue(),
+        cell: (info) => <TableCell>{info.getValue()}</TableCell>,
         filterFn: 'fuzzy',
       },
       {
         accessorKey: 'email',
         header: 'Email',
         cell: ({ row, column, getValue }) => (
-          <EditableCell
+          <EditableTableCell
             value={getValue()}
             rowIndex={row.index}
             columnId={column.id}
@@ -162,6 +164,7 @@ export const EditableGridSample = () => {
                   required: true,
                   pattern: /.+@.+\..+/,
                 }),
+                iconStart: 'edit',
                 error: !!getFieldError(errors, row.index, column.id),
                 disabled:
                   row.original?.disabledFields?.includes('email') || false,
@@ -176,7 +179,7 @@ export const EditableGridSample = () => {
         accessorKey: 'age',
         header: 'Age',
         cell: ({ row, column, getValue }) => (
-          <EditableCell
+          <EditableTableCell
             value={getValue()}
             rowIndex={row.index}
             columnId={column.id}
@@ -185,6 +188,7 @@ export const EditableGridSample = () => {
               type: 'text',
               props: {
                 type: 'number',
+                iconEnd: 'accessibility_new',
                 ...register(`${row.index}.${column.id}` as never, {
                   required: true,
                 }),
@@ -201,7 +205,7 @@ export const EditableGridSample = () => {
         accessorKey: 'city',
         header: 'City',
         cell: ({ row, column, getValue }) => (
-          <EditableCell
+          <EditableTableCell
             value={getValue()}
             rowIndex={row.index}
             columnId={column.id}
@@ -226,7 +230,7 @@ export const EditableGridSample = () => {
         accessorKey: 'isActive',
         header: 'is Active',
         cell: ({ row, column, getValue }) => (
-          <EditableCell
+          <EditableTableCell
             value={getValue()}
             rowIndex={row.index}
             columnId={column.id}
@@ -253,7 +257,7 @@ export const EditableGridSample = () => {
         accessorKey: 'status',
         header: 'Status',
         cell: ({ row, column, getValue }) => (
-          <EditableCell
+          <EditableTableCell
             value={getValue()}
             rowIndex={row.index}
             columnId={column.id}
@@ -291,6 +295,7 @@ export const EditableGridSample = () => {
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
+    autoResetPageIndex: false,
   });
 
   useEffect(() => {
@@ -326,16 +331,14 @@ export const EditableGridSample = () => {
                     }
                     onClick={header.column.getToggleSortingHandler()}
                   >
-                    <div className="gi-flex">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                      {{
-                        asc: <Icon inline icon="arrow_upward" />,
-                        desc: <Icon inline icon="arrow_downward" />,
-                      }[header.column.getIsSorted() as string] ?? null}
-                    </div>
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                    {{
+                      asc: <Icon inline icon="arrow_upward" />,
+                      desc: <Icon inline icon="arrow_downward" />,
+                    }[header.column.getIsSorted() as string] ?? null}
                   </div>
                 </TableHeader>
               ))}
@@ -363,12 +366,4 @@ export const EditableGridSample = () => {
   );
 };
 
-export const Default: Story = {
-  render: () => <EditableGridSample />,
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
-
 export default meta;
-type Story = StoryObj<typeof meta>;

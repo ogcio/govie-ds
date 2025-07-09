@@ -77,9 +77,8 @@
 
 .gi-input-text[data-table-cell='true'] {
   @apply gi-relative
-    
     gi-h-12
-    gi-px-3
+    
     gi-py-3
     gi-text-sm
     gi-leading-6
@@ -89,6 +88,9 @@
     gi-border-[3px]
     gi-border-transparent
     gi-rounded-[0px]
+    gi-cursor-pointer
+
+    disabled:gi-cursor-not-allowed
 
     focus:gi-z-[3]
     focus:gi-border-[3px]
@@ -99,6 +101,13 @@
     focus:gi-outline-sm
     focus:gi-outline-color-shadow-intent-focus-default
     focus:gi-outline-offset-0;
+}
+
+.gi-input-text[data-table-cell='true']:not([data-icon-start='true']) {
+  @apply gi-pl-3;
+}
+.gi-input-text[data-table-cell='true']:not([data-icon-end='true']) {
+  @apply gi-pr-3;
 }
 
 .gi-input-text[data-table-cell='true']:disabled {

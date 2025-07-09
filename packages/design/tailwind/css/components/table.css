@@ -23,3 +23,7 @@
 .gi-table-loading {
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
+
+.gi-table-cell {
+  @apply gi-px-3 gi-overflow-hidden gi-whitespace-normal gi-line-clamp-2;
+}

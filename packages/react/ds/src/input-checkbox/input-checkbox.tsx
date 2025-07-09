@@ -41,13 +41,16 @@ export const InputCheckbox: React.FC<InputCheckboxProps> = ({
   label,
   hint,
   className,
-  containerClassName,
+  containerProps,
   ...props
 }: InputCheckboxProps) => {
   const CheckboxId = id || useId();
   return (
     <>
-      <div className={cn('gi-input-checkbox-container', containerClassName)}>
+      <div
+        {...containerProps}
+        className={cn('gi-input-checkbox-container', containerProps?.className)}
+      >
         <Input
           type="checkbox"
           id={CheckboxId}
@@ -78,11 +81,12 @@ export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
   <InputCheckbox
     {...props}
     size="sm"
-    containerClassName="gi-gap-0"
     data-table-cell="true"
     data-table-cell-error-state={error?.toString()}
+    containerProps={{
+      'data-table-cell': true,
+    }}
   />
 );
 InputCheckboxTableCell.displayName = 'InputCheckboxTableCell';
-
 InputCheckbox.displayName = 'InputCheckbox';

@@ -96,7 +96,7 @@ export type SelectNextGroupProps = PropsWithChildren<{
   children: ReactNode;
 }>;
 
-export type SelectNativeTableCellProps = Omit<SelectProps, 'children'> & {
+export type SelectTableCellProps = Omit<SelectProps, 'children'> & {
   options: { label: string; value: string }[];
   error?: boolean;
 };

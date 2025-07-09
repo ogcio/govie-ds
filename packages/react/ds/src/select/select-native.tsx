@@ -4,7 +4,7 @@ import { Icon } from '../icon/icon.js';
 import type {
   SelectGroupItemProps,
   SelectItemProps,
-  SelectNativeTableCellProps,
+  SelectTableCellProps,
   SelectProps,
 } from './types.js';
 
@@ -46,13 +46,13 @@ export const SelectNative: FC<SelectProps> = ({
   );
 };
 
-export const SelectNativeTableCell = ({
+export const SelectTableCell = ({
   options,
   defaultValue,
   onChange,
   error,
   ...props
-}: SelectNativeTableCellProps) => {
+}: SelectTableCellProps) => {
   return (
     <SelectNative
       {...props}

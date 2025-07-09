@@ -154,7 +154,8 @@ export const SelectNext = ({
           placement: 'bottom-start',
           strategy: 'absolute',
           modifiers: [
-            { name: 'preventOverflow', options: { padding: 8 } },
+            { name: 'offset', options: { offset: [0, 4] } },
+            { name: 'preventOverflow', options: { padding: 10 } },
             {
               name: 'flip',
               options: { fallbackPlacements: ['top', 'right', 'left'] },

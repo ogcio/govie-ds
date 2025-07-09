@@ -13,7 +13,7 @@ export type InputCheckboxProps = {
   size?: InputCheckboxSizeEnumType;
   label?: string;
   hint?: string;
-  containerClassName?: string;
+  containerProps?: any;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export type InputCheckboxTableCellProps = Partial<InputCheckboxProps> & {
