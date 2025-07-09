@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.1...react-lib-v1.12.2) (2025-07-09)
+
+
+### Bug Fixes
+
+* add forward ref to input password ([#640](https://github.com/ogcio/govie-ds/issues/640)) ([63c64b3](https://github.com/ogcio/govie-ds/commit/63c64b322d87f7dbbb90e51a44715f8f27533571))
+
 ## [1.12.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.0...react-lib-v1.12.1) (2025-07-08)
 
 
