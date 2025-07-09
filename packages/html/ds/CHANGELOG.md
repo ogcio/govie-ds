@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.10.0...html-lib-v1.10.1) (2025-07-08)
+
+
+### Miscellaneous Chores
+
+* fix flaky test ([c3b5d30](https://github.com/ogcio/govie-ds/commit/c3b5d30b7dcaa5a394f95e20faed97b28ebf411d))
+
 ## [1.10.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.9.3...html-lib-v1.10.0) (2025-07-08)
 
 
