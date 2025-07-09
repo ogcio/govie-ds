@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
 import { InputPassword } from './input-password.js';
 
@@ -27,6 +28,16 @@ describe('InputPassword', () => {
 
     fireEvent.click(toggleButton);
     expect(inputElement).toHaveAttribute('type', 'password');
+  });
+
+  it('should support ref forwarding to the underlying input element', () => {
+    const ref = createRef<HTMLInputElement>();
+    const screen = renderComponent(
+      <InputPassword aria-label="Password Input" ref={ref} />,
+    );
+
+    const inputElement = screen.getByLabelText('Password Input');
+    expect(ref.current).toBe(inputElement);
   });
 
   it('should pass axe accessibility tests', async () => {
