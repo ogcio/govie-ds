@@ -1,6 +1,5 @@
 .gi-select {
   @apply gi-rounded-sm 
-  gi-focus-state-outline
   gi-p-2
   gi-pr-8
   gi-border-color-border-system-neutral-default
@@ -9,16 +8,21 @@
   gi-min-w-56
   gi-text-sm
   gi-leading-5
+
   xs:gi-text-md
   xs:gi-leading-5
+
   gi-appearance-none
   gi-relative
   gi-bg-no-repeat
   gi-bg-right
+
   disabled:gi-border-color-border-system-neutral-interactive-disabled
   disabled:gi-bg-color-surface-system-neutral-interactive-disabled
   disabled:gi-text-color-text-system-neutral-interactive-disabled
-  disabled:gi-opacity-[1];
+  disabled:gi-opacity-[1]
+  
+  gi-focus-state-outline;
 }
 
 .gi-select-container {
@@ -105,6 +109,7 @@
     gi-rounded-[0px]
     gi-cursor-pointer
     gi-min-w-0
+    gi-min-w-none
 
     focus:gi-z-[3]
     focus:gi-border-[3px]
@@ -114,29 +119,24 @@
     focus:gi-outline-sm
     focus:gi-outline-color-shadow-intent-focus-default
     focus:gi-outline-offset-0
-    gi-min-w-none
-
+   
     disabled:gi-cursor-not-allowed
     disabled:gi-outline
     disabled:gi-outline-sm
     disabled:gi-outline-color-surface-system-neutral-interactive-disabled
-    disabled:gi-outline-offset-0;
+    disabled:gi-outline-offset-0
+    disabled:gi-border-[0px];
 }
 
-.gi-select[data-table-cell-error-state='true'] {
+.gi-select[data-table-cell-error-state='true']:not(:disabled) {
   @apply gi-outline
   gi-z-[2]
-  gi-outline-sm
+  gi-outline-[2px]
   gi-outline-color-border-intent-error-default
   gi-outline-offset-0
-
+  
   focus:gi-outline
   focus:gi-outline-sm
   focus:gi-outline-color-shadow-intent-focus-default
   focus:gi-outline-offset-0;
-}
-
-.gi-select[data-table-cell='true']:disabled {
-  @apply gi-border-[0px] 
-  gi-cursor-not-allowed;
 }

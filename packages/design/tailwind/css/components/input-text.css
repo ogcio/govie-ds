@@ -78,7 +78,6 @@
 .gi-input-text[data-table-cell='true'] {
   @apply gi-relative
     gi-h-12
-    
     gi-py-3
     gi-text-sm
     gi-leading-6
@@ -118,7 +117,7 @@
   gi-border-[0px];
 }
 
-.gi-input-text[data-table-cell-error-state='true'] {
+.gi-input-text[data-table-cell-error-state='true']:not(:disabled) {
   @apply gi-outline
   gi-z-[2]
   gi-outline-[2px]

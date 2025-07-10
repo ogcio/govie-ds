@@ -20,7 +20,7 @@ const range = (length_: number) => {
 };
 
 const createRandomCitizen = (): Person => {
-  const allFields = ['firstName', 'age', 'city', 'email', 'status'];
+  const allFields = ['firstName', 'age', 'city', 'email', 'status', 'isActive'];
   const disabledFields = [
     ...new Set([
       allFields[Math.floor(Math.random() * allFields.length)],

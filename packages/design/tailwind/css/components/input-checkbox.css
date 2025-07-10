@@ -35,10 +35,9 @@
   @apply gi-h-auto;
 }
 
-.gi-input-checkbox[data-table-cell-error-state='true'] {
+.gi-input-checkbox[data-table-cell-error-state='true']:not(:disabled) {
   @apply gi-border-sm
     gi-border-color-border-intent-error-default
-    
     gi-focus-state-outline
     focus:gi-shadow-[inset_0_0_0_1px]
     focus:gi-shadow-color-border-system-neutral-interactive-hover
