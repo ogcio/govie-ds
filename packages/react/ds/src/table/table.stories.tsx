@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
-import { Checkbox } from '../checkbox/checkbox.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
 import { Link } from '../link/link.js';
 import { Spinner } from '../spinner/spinner.js';
 import { Tag, TagTypeEnum } from '../tag/tag.js';
@@ -131,7 +131,7 @@ export const Default: Story = {
         {rows?.map((row) => (
           <TableRow key={`row-${row.id}`}>
             <TableData>
-              <Checkbox
+              <InputCheckboxTableCell
                 aria-label={`checkbox-id-${row.id}`}
                 id={`checkbox-id-${row.id}`}
                 value={row.id.toString()}
@@ -314,7 +314,7 @@ export const TableWithFooter: Story = {
         {rows?.map((row) => (
           <TableRow key={`row-${row.id}`}>
             <TableData>
-              <Checkbox
+              <InputCheckboxTableCell
                 aria-label={`checkbox-id-${row.id}`}
                 id={`project-select-${row.id}`}
                 value={row.id.toString()}

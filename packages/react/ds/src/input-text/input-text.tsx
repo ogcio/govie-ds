@@ -5,7 +5,11 @@ import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Input as PrimitiveInput } from '../primitives/input.js';
-import type { InputActionButtonProps, InputTextProps } from './type.js';
+import type {
+  InputActionButtonProps,
+  InputTextProps,
+  InputTextTableCellProps,
+} from './type.js';
 
 const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
   ({ onChange, ...props }, externalRef) => {
@@ -110,7 +114,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
             data-end-element={!!inputActionButton}
             data-prefix={!!prefix}
             data-suffix={!!suffix}
-            className={cn(inputClassName, 'gi-input-text')}
+            className={cn('gi-input-text', inputClassName)}
             ref={ref}
             disabled={disabled}
             {...props}
@@ -179,3 +183,18 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 );
 
 InputText.displayName = 'InputText';
+
+export const InputTextTableCell = forwardRef<
+  HTMLInputElement,
+  InputTextTableCellProps
+>(({ type = 'text', error, ...props }, ref) => {
+  return (
+    <InputText
+      {...props}
+      data-table-cell="true"
+      data-table-cell-error-state={error?.toString()}
+      ref={ref}
+      type={type}
+    />
+  );
+});

@@ -94,7 +94,10 @@ export { Icon, type IconProps } from './icon/icon.js';
 export { Icons } from './icon/icons.js';
 export { InputCheckboxGroup } from './input-checkbox-group/input-checkbox-group.js';
 export type { InputCheckboxGroupProps } from './input-checkbox-group/types.js';
-export { InputCheckbox } from './input-checkbox/input-checkbox.js';
+export {
+  InputCheckbox,
+  InputCheckboxTableCell,
+} from './input-checkbox/input-checkbox.js';
 export {
   InputCheckboxSizeEnum,
   type InputCheckboxProps,
@@ -111,10 +114,11 @@ export {
   type InputRadioProps,
   type InputRadioSizeType,
 } from './input-radio/types.js';
-export { InputText } from './input-text/input-text.js';
+export { InputText, InputTextTableCell } from './input-text/input-text.js';
 export type {
   InputActionButtonProps,
   InputTextProps,
+  InputTextTableCellProps,
 } from './input-text/type.js';
 export type { LabelTextProps } from './label/types.js';
 export { Link, type LinkProps } from './link/link.js';
@@ -150,7 +154,12 @@ export {
   SectionBreak,
   type SectionBreakProps,
 } from './section-break/section-break.js';
-export { Select, SelectGroupItem, SelectItem } from './select/select.js';
+export {
+  Select,
+  SelectGroupItem,
+  SelectItem,
+  SelectTableCell,
+} from './select/select.js';
 export {
   SelectNext,
   SelectGroupItemNext,
@@ -207,3 +216,8 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
+export { EditableTableCell } from './data-grid/editable-table-cell.js';
+export type {
+  EditorTableCellConfig,
+  EditorTableCellProps,
+} from './data-grid/types.js';

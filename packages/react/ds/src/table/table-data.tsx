@@ -1,4 +1,4 @@
-import { TdHTMLAttributes } from 'react';
+import { ReactElement, TdHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import { TableAlign, VerticalAlign } from './table.js';
 
@@ -40,3 +40,11 @@ export function TableData({
     </td>
   );
 }
+
+export const TableCell = ({
+  children,
+  className,
+}: {
+  children: any;
+  className?: string;
+}) => <span className={cn('gi-table-cell', className)}>{children}</span>;
