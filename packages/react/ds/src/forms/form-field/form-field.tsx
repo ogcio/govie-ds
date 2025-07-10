@@ -41,7 +41,9 @@ function isSpecialComponentType(
   | typeof FormFieldHint
   | typeof FormFieldError {
   return (
-    type === FormFieldLabel || type === FormFieldHint || type === FormFieldError
+    (type as any)?.componentType === 'FormFieldLabel' ||
+    (type as any)?.componentType === 'FormFieldHint' ||
+    (type as any)?.componentType === 'FormFieldError'
   );
 }
 
@@ -81,13 +83,19 @@ const FormFieldBase = ({
   const allChildren = Children.toArray(children);
 
   const label = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldLabel,
+    (child) =>
+      isValidElement(child) &&
+      (child.type as any).componentType === 'FormFieldLabel',
   );
   const hint = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldHint,
+    (child) =>
+      isValidElement(child) &&
+      (child.type as any).componentType === 'FormFieldHint',
   );
   const error = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldError,
+    (child) =>
+      isValidElement(child) &&
+      (child.type as any).componentType === 'FormFieldError',
   );
 
   const rest = allChildren.filter(
@@ -131,6 +139,11 @@ const FormFieldLabel = ({
     </Label>
   );
 };
+Object.defineProperty(FormFieldLabel, 'componentType', {
+  value: 'FormFieldLabel',
+  writable: false,
+  enumerable: false,
+});
 FormFieldLabel.displayName = 'FormFieldLabel';
 
 const FormFieldHint = ({ children, text, size, className }: HintTextProps) => {
@@ -141,6 +154,11 @@ const FormFieldHint = ({ children, text, size, className }: HintTextProps) => {
     </HintText>
   );
 };
+Object.defineProperty(FormFieldHint, 'componentType', {
+  value: 'FormFieldHint',
+  writable: false,
+  enumerable: false,
+});
 FormFieldHint.displayName = 'FormFieldHint';
 
 const FormFieldError = ({
@@ -156,6 +174,11 @@ const FormFieldError = ({
     </ErrorText>
   );
 };
+Object.defineProperty(FormFieldError, 'componentType', {
+  value: 'FormFieldError',
+  writable: false,
+  enumerable: false,
+});
 FormFieldError.displayName = 'FormFieldError';
 
 export { FormField, FormFieldLabel, FormFieldHint, FormFieldError };
