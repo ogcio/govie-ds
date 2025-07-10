@@ -22,6 +22,7 @@ import {
   Footer,
   Form,
   FormField,
+  FormFieldError,
   FormFieldHint,
   FormFieldLabel,
   Header,
@@ -315,6 +316,8 @@ export default function Home() {
           <hr />
           <FormField>
             <FormFieldLabel>Where do you live?</FormFieldLabel>
+            <FormFieldError>Error</FormFieldError>
+            <FormFieldHint>Hint</FormFieldHint>
             <InputRadioGroup groupId="city">
               <InputRadio value="dublin" label="Dublin" />
               <InputRadio value="cork" label="Cork" />

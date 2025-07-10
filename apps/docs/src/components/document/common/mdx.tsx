@@ -266,9 +266,15 @@ const documentComponents: MDXComponents = {
   Fonts,
   Form,
   FormField,
-  FormFieldLabel,
-  FormFieldError,
-  FormFieldHint,
+  FormFieldLabel: (props) => {
+    return <FormFieldLabel {...props} __mdxType="FormFieldLabel" />;
+  },
+  FormFieldError: (props) => {
+    return <FormFieldError {...props} __mdxType="FormFieldError" />;
+  },
+  FormFieldHint: (props) => {
+    return <FormFieldHint {...props} __mdxType="FormFieldHint" />;
+  },
   Footer,
   GridPrimitives,
   Header,

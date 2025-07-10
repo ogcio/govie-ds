@@ -36,6 +36,7 @@ function useFormFieldContext(component: string) {
 
 function isSpecialComponentType(
   type: unknown,
+  props?: any,
 ): type is
   | typeof FormFieldLabel
   | typeof FormFieldHint
@@ -43,10 +44,12 @@ function isSpecialComponentType(
   return (
     (type as any)?.componentType === 'FormFieldLabel' ||
     (type as any)?.componentType === 'FormFieldHint' ||
-    (type as any)?.componentType === 'FormFieldError'
+    (type as any)?.componentType === 'FormFieldError' ||
+    props?.__mdxType === 'FormFieldLabel' ||
+    props?.__mdxType === 'FormFieldHint' ||
+    props?.__mdxType === 'FormFieldError'
   );
 }
-
 const FormField = (props: FormFieldProps) => {
   const deprecatedKeys = ['error', 'hint', 'label'] as const;
   const isLegacy = deprecatedKeys.some((key) => key in props);
@@ -85,21 +88,25 @@ const FormFieldBase = ({
   const label = allChildren.find(
     (child) =>
       isValidElement(child) &&
-      (child.type as any).componentType === 'FormFieldLabel',
+      ((child.type as any).componentType === 'FormFieldLabel' ||
+        (child?.props as any)?.__mdxType === 'FormFieldLabel'),
   );
   const hint = allChildren.find(
     (child) =>
       isValidElement(child) &&
-      (child.type as any).componentType === 'FormFieldHint',
+      ((child.type as any).componentType === 'FormFieldHint' ||
+        (child?.props as any)?.__mdxType === 'FormFieldHint'),
   );
   const error = allChildren.find(
     (child) =>
       isValidElement(child) &&
-      (child.type as any).componentType === 'FormFieldError',
+      ((child.type as any).componentType === 'FormFieldError' ||
+        (child?.props as any)?.__mdxType === 'FormFieldError'),
   );
-
   const rest = allChildren.filter(
-    (child) => !isValidElement(child) || !isSpecialComponentType(child.type),
+    (child) =>
+      !isValidElement(child) ||
+      !isSpecialComponentType(child.type, (child as any)?.props),
   );
 
   return (
