@@ -58,7 +58,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'An editable data table built with TanStack Table and React Hook Form. Supports inline editing of text fields using InputText components.',
+          'An editable data table built with TanStack Table and React Hook Form. Supports inline editing for InputText, InputCheckbox and Select',
       },
     },
   },

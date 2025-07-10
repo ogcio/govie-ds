@@ -1,6 +1,6 @@
 import { InputCheckboxTableCellProps } from '../input-checkbox/types.js';
 import { InputTextTableCellProps } from '../input-text/type.js';
-import { SelectNativeTableCellProps } from '../select/types.js';
+import { SelectTableCellProps } from '../select/types.js';
 
 export type EditorTableCellConfig =
   | {
@@ -9,7 +9,7 @@ export type EditorTableCellConfig =
     }
   | {
       type: 'select';
-      props?: SelectNativeTableCellProps;
+      props?: SelectTableCellProps;
     }
   | {
       type: 'checkbox';

@@ -18,5 +18,4 @@ export type InputCheckboxProps = {
 
 export type InputCheckboxTableCellProps = Partial<InputCheckboxProps> & {
   error?: boolean;
-  ref?: any;
 };
