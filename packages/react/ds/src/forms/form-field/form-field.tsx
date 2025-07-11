@@ -34,22 +34,22 @@ function useFormFieldContext(component: string) {
   }
 }
 
-function isSpecialComponentType(
-  type: unknown,
-  props?: any,
-): type is
-  | typeof FormFieldLabel
-  | typeof FormFieldHint
-  | typeof FormFieldError {
+function getSpecialComponentType(child: ReactNode): string | null {
+  if (!isValidElement(child)) return null;
+
   return (
-    (type as any)?.componentType === 'FormFieldLabel' ||
-    (type as any)?.componentType === 'FormFieldHint' ||
-    (type as any)?.componentType === 'FormFieldError' ||
-    props?.__mdxType === 'FormFieldLabel' ||
-    props?.__mdxType === 'FormFieldHint' ||
-    props?.__mdxType === 'FormFieldError'
+    (child.type as any)?.componentType ||
+    (child.props as any)?.__mdxType ||
+    null
   );
 }
+
+function isSpecialComponent(child: ReactNode): boolean {
+  return ['FormFieldLabel', 'FormFieldHint', 'FormFieldError'].includes(
+    getSpecialComponentType(child) ?? '',
+  );
+}
+
 const FormField = (props: FormFieldProps) => {
   const deprecatedKeys = ['error', 'hint', 'label'] as const;
   const isLegacy = deprecatedKeys.some((key) => key in props);
@@ -86,28 +86,15 @@ const FormFieldBase = ({
   const allChildren = Children.toArray(children);
 
   const label = allChildren.find(
-    (child) =>
-      isValidElement(child) &&
-      ((child.type as any).componentType === 'FormFieldLabel' ||
-        (child?.props as any)?.__mdxType === 'FormFieldLabel'),
+    (child) => getSpecialComponentType(child) === 'FormFieldLabel',
   );
   const hint = allChildren.find(
-    (child) =>
-      isValidElement(child) &&
-      ((child.type as any).componentType === 'FormFieldHint' ||
-        (child?.props as any)?.__mdxType === 'FormFieldHint'),
+    (child) => getSpecialComponentType(child) === 'FormFieldHint',
   );
   const error = allChildren.find(
-    (child) =>
-      isValidElement(child) &&
-      ((child.type as any).componentType === 'FormFieldError' ||
-        (child?.props as any)?.__mdxType === 'FormFieldError'),
+    (child) => getSpecialComponentType(child) === 'FormFieldError',
   );
-  const rest = allChildren.filter(
-    (child) =>
-      !isValidElement(child) ||
-      !isSpecialComponentType(child.type, (child as any)?.props),
-  );
+  const rest = allChildren.filter((child) => !isSpecialComponent(child));
 
   return (
     <fieldset
