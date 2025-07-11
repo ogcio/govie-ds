@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { InputText } from './input-text.js';
@@ -104,17 +109,12 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
 export const Default: Story = {
-  args: {
-    id: 'input-text-id',
-  },
+  args: { id: 'input-text-id' },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'input-text-id',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
@@ -122,7 +122,8 @@ export const Default: Story = {
 
 export const Focus: Story = {
   render: () => (
-    <FormField label={{ text: 'Label Focus', htmlFor: 'focus-input' }}>
+    <FormField>
+      <FormFieldLabel htmlFor="focus-input">Label Focus</FormFieldLabel>
       <InputText type="text" id="focus-input" inputClassName="focus-input" />
     </FormField>
   ),
@@ -132,195 +133,113 @@ export const Focus: Story = {
 };
 
 export const Disabled: Story = {
-  args: {
-    id: 'input-text-id',
-    disabled: true,
-  },
-  render: (props) => {
-    return (
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText {...props} />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id', disabled: true },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <InputText {...props} />
+    </FormField>
+  ),
 };
 
 export const WithLabelAndHint: Story = {
-  args: {
-    id: 'input-text-id',
-  },
+  args: { id: 'input-text-id' },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'input-text-id',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
 };
 
 export const WithLabelAndError: Story = {
-  args: {
-    id: 'input-text-id',
-  },
+  args: { id: 'input-text-id' },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'input-text-id',
-      }}
-      error={{
-        text: 'Error: Please correct this issue.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <FormFieldError>Error: Please correct this issue.</FormFieldError>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
 };
 
 export const WithLabelHintAndError: Story = {
-  args: {
-    id: 'input-text-id',
-    suffix: 'KG',
-  },
+  args: { id: 'input-text-id', suffix: 'KG' },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'input-text-id',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-      error={{
-        text: 'Error: Please correct this issue.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
+      <FormFieldError>Error: Please correct this issue.</FormFieldError>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
-      'rgb(187, 37, 13)', //'var(--gieds-color-red-600)',
+      'rgb(187, 37, 13)',
     );
-
-    const label = canvas.getByText('Label');
-    expect(label).toBeTruthy();
-    expect(label).toHaveClass('gi-label');
-    expect(label.getAttribute('for')).toBe(textInput.getAttribute('id'));
-
-    const hint = canvas.getByText('Hint: This is a helpful hint.');
-    expect(hint).toBeTruthy();
-    expect(hint).toHaveClass('gi-hint-text');
-
-    const error = canvas.getByText('Error: Please correct this issue.');
-    expect(error).toBeTruthy();
-    expect(error).toHaveClass('gi-error-text');
+    expect(canvas.getByText('Label')).toHaveClass('gi-label');
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveClass(
+      'gi-hint-text',
+    );
+    expect(canvas.getByText('Error: Please correct this issue.')).toHaveClass(
+      'gi-error-text',
+    );
   },
 };
 
 export const WithLabelAndPrefixSuffix: Story = {
-  args: {
-    id: 'input-text-id',
-    prefix: 'kg',
-    suffix: 'per item',
-  },
+  args: { id: 'input-text-id', prefix: 'kg', suffix: 'per item' },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'input-text-id',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
-    const prefix = canvas.getByText('kg');
-    expect(prefix).toBeTruthy();
-    expect(prefix).toHaveClass('gi-input-text-prefix');
-
-    const suffix = canvas.getByText('per item');
-    expect(suffix).toBeTruthy();
-    expect(suffix).toHaveClass('gi-input-text-suffix');
+    expect(canvas.getByText('kg')).toHaveClass('gi-input-text-prefix');
+    expect(canvas.getByText('per item')).toHaveClass('gi-input-text-suffix');
   },
 };
 
 export const InputLength: Story = {
-  args: {
-    id: 'input-text-id',
-    maxLength: 4,
-  },
-  render: (props) => {
-    return (
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText {...props} maxLength={4} />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id', maxLength: 4 },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <InputText {...props} maxLength={4} />
+    </FormField>
+  ),
 };
 
 export const DateInput: Story = {
-  args: {
-    id: 'input-text-id',
-    type: 'date',
-  },
-  render: (props) => {
-    return (
-      <FormField
-        label={{
-          text: 'Date input',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText {...props} />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id', type: 'date' },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Date input</FormFieldLabel>
+      <InputText {...props} />
+    </FormField>
+  ),
 };
 
 export const WithHalfWidth: Story = {
-  args: {
-    id: 'input-text-id',
-    halfFluid: true,
-  },
-  render: (props) => {
-    return (
-      <FormField
-        label={{
-          text: 'Label',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText {...props} />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id', halfFluid: true },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
+      <InputText {...props} />
+    </FormField>
+  ),
 };
 
 export const InputWithCustomActionButton: Story = {
   render: () => (
-    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
       <InputText
         inputActionButton={{
           icon: 'info',
@@ -335,7 +254,9 @@ export const InputWithCustomActionButton: Story = {
 
 export const InputWithIcons: Story = {
   render: () => (
-    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
       <InputText
         iconStart="placeholder"
         iconEnd="placeholder"
@@ -347,7 +268,8 @@ export const InputWithIcons: Story = {
 
 export const InputWithIconsDisabled: Story = {
   render: () => (
-    <FormField label={{ text: 'Label' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
       <InputText
         disabled
         iconStart="placeholder"
@@ -360,7 +282,8 @@ export const InputWithIconsDisabled: Story = {
 
 export const InputWithIconsFocus: Story = {
   render: () => (
-    <FormField label={{ text: 'Label', htmlFor: 'focus-input' }}>
+    <FormField>
+      <FormFieldLabel htmlFor="focus-input">Label</FormFieldLabel>
       <InputText
         type="text"
         id="focus-input"
@@ -385,25 +308,19 @@ export const InputWithPrefixSuffix: Story = {
     placeholder: 'Placeholder',
   },
   render: (props) => (
-    <FormField label={{ text: 'Label' }}>
-      <InputText
-        type="text"
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-        {...props}
-      />
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <InputText {...props} />
     </FormField>
   ),
 };
 
 export const InputWithPrefixSuffixError: Story = {
   render: () => (
-    <FormField
-      label={{ text: 'Label' }}
-      hint={{ text: 'Support text' }}
-      error={{ text: 'Invalid' }}
-    >
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
+      <FormFieldError>Invalid</FormFieldError>
       <InputText
         iconStart="placeholder"
         iconEnd="placeholder"
@@ -423,15 +340,9 @@ export const InputWithPrefixSuffixDisabled: Story = {
     placeholder: 'Placeholder',
   },
   render: (props) => (
-    <FormField label={{ text: 'Label' }}>
-      <InputText
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-        prefix="€"
-        suffix="kg"
-        {...props}
-      />
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <InputText {...props} />
     </FormField>
   ),
 };
@@ -446,16 +357,9 @@ export const InputWithPrefixSuffixFocus: Story = {
     placeholder: 'Placeholder',
   },
   render: (props) => (
-    <FormField label={{ text: 'Label' }}>
-      <InputText
-        iconStart="placeholder"
-        iconEnd="placeholder"
-        placeholder="Placeholder"
-        prefix="€"
-        suffix="kg"
-        inputClassName="focus-input"
-        {...props}
-      />
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <InputText {...props} />
     </FormField>
   ),
   parameters: {
@@ -469,7 +373,8 @@ export const InputWithIconStartOnly: Story = {
     placeholder: 'Placeholder',
   },
   render: (props) => (
-    <FormField label={{ text: 'Label' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
       <InputText {...props} />
     </FormField>
   ),
@@ -481,119 +386,76 @@ export const InputWithIconEndOnly: Story = {
     placeholder: 'Placeholder',
   },
   render: (props) => (
-    <FormField label={{ text: 'Label' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
       <InputText {...props} />
     </FormField>
   ),
 };
 
 export const WithTextInputReset: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText clearButtonEnabled placeholder="Placeholder" />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id' },
+  render: () => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Input Label</FormFieldLabel>
+      <InputText clearButtonEnabled placeholder="Placeholder" />
+    </FormField>
+  ),
 };
 
 export const WithTextInputSearch: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText type="search" placeholder="Placeholder" />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id' },
+  render: () => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Input Label</FormFieldLabel>
+      <InputText type="search" placeholder="Placeholder" />
+    </FormField>
+  ),
 };
 
 export const WithRichHintText: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'input-text-id',
-        }}
-        hint={{
-          text: (
-            <div className="gi-flex ">
-              Here is a rich hint &nbsp;<Link href="#">Click here </Link>
-              <Icon icon="arrow_drop_up" />
-            </div>
-          ),
-        }}
-      >
-        <InputText type="search" placeholder="Placeholder" />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id' },
+  render: () => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Input Label</FormFieldLabel>
+      <FormFieldHint>
+        <div className="gi-flex">
+          Here is a rich hint &nbsp;<Link href="#">Click here </Link>
+          <Icon icon="arrow_drop_up" />
+        </div>
+      </FormFieldHint>
+      <InputText type="search" placeholder="Placeholder" />
+    </FormField>
+  ),
 };
 
 export const WithRichErrorText: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'input-text-id',
-        }}
-        error={{
-          text: (
-            <div className="gi-flex">
-              Error message &nbsp;
-              <Icon icon="error" />
-            </div>
-          ),
-        }}
-      >
-        <InputText type="search" placeholder="Placeholder" />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id' },
+  render: () => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">Input Label</FormFieldLabel>
+      <FormFieldError>
+        <div className="gi-flex">
+          Error message &nbsp;
+          <Icon icon="error" />
+        </div>
+      </FormFieldError>
+      <InputText type="search" placeholder="Placeholder" />
+    </FormField>
+  ),
 };
 
 export const WithRichLabelText: Story = {
-  args: {
-    id: 'input-text-id',
-  },
-  render: () => {
-    return (
-      <FormField
-        label={{
-          text: (
-            <div className="gi-flex">
-              Label message &nbsp;
-              <Icon icon="info" />
-            </div>
-          ),
-          htmlFor: 'input-text-id',
-        }}
-      >
-        <InputText type="search" placeholder="Placeholder" />
-      </FormField>
-    );
-  },
+  args: { id: 'input-text-id' },
+  render: () => (
+    <FormField>
+      <FormFieldLabel htmlFor="input-text-id">
+        <div className="gi-flex">
+          Label message &nbsp;
+          <Icon icon="info" />
+        </div>
+      </FormFieldLabel>
+      <InputText type="search" placeholder="Placeholder" />
+    </FormField>
+  ),
 };

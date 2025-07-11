@@ -34,14 +34,19 @@ function useFormFieldContext(component: string) {
   }
 }
 
-function isSpecialComponentType(
-  type: unknown,
-): type is
-  | typeof FormFieldLabel
-  | typeof FormFieldHint
-  | typeof FormFieldError {
+function getSpecialComponentType(child: ReactNode): string | null {
+  if (!isValidElement(child)) return null;
+
   return (
-    type === FormFieldLabel || type === FormFieldHint || type === FormFieldError
+    (child.type as any)?.componentType ||
+    (child.props as any)?.__mdxType ||
+    null
+  );
+}
+
+function isSpecialComponent(child: ReactNode): boolean {
+  return ['FormFieldLabel', 'FormFieldHint', 'FormFieldError'].includes(
+    getSpecialComponentType(child) ?? '',
   );
 }
 
@@ -81,18 +86,15 @@ const FormFieldBase = ({
   const allChildren = Children.toArray(children);
 
   const label = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldLabel,
+    (child) => getSpecialComponentType(child) === 'FormFieldLabel',
   );
   const hint = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldHint,
+    (child) => getSpecialComponentType(child) === 'FormFieldHint',
   );
   const error = allChildren.find(
-    (child) => isValidElement(child) && child.type === FormFieldError,
+    (child) => getSpecialComponentType(child) === 'FormFieldError',
   );
-
-  const rest = allChildren.filter(
-    (child) => !isValidElement(child) || !isSpecialComponentType(child.type),
-  );
+  const rest = allChildren.filter((child) => !isSpecialComponent(child));
 
   return (
     <fieldset
@@ -131,6 +133,11 @@ const FormFieldLabel = ({
     </Label>
   );
 };
+Object.defineProperty(FormFieldLabel, 'componentType', {
+  value: 'FormFieldLabel',
+  writable: false,
+  enumerable: false,
+});
 FormFieldLabel.displayName = 'FormFieldLabel';
 
 const FormFieldHint = ({ children, text, size, className }: HintTextProps) => {
@@ -141,6 +148,11 @@ const FormFieldHint = ({ children, text, size, className }: HintTextProps) => {
     </HintText>
   );
 };
+Object.defineProperty(FormFieldHint, 'componentType', {
+  value: 'FormFieldHint',
+  writable: false,
+  enumerable: false,
+});
 FormFieldHint.displayName = 'FormFieldHint';
 
 const FormFieldError = ({
@@ -156,6 +168,11 @@ const FormFieldError = ({
     </ErrorText>
   );
 };
+Object.defineProperty(FormFieldError, 'componentType', {
+  value: 'FormFieldError',
+  writable: false,
+  enumerable: false,
+});
 FormFieldError.displayName = 'FormFieldError';
 
 export { FormField, FormFieldLabel, FormFieldHint, FormFieldError };

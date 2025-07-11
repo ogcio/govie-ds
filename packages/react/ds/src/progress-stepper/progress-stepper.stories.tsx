@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Button } from '../button/button.js';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { Heading } from '../heading/heading.js';
 import { InputFile } from '../input-file/input-file.js';
 import { InputText } from '../input-text/input-text.js';
@@ -286,32 +290,20 @@ export const WithFormContentStepVertical: Story = {
                   Please select the options that best describes the query you’re
                   raising.
                 </Paragraph>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  label={{
-                    text: 'Category',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel>Category</FormFieldLabel>
                   <Select aria-label="Select Category">
                     <SelectItem value="0">Select a Category</SelectItem>
                   </Select>
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  label={{
-                    text: 'Customer Type',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel>Customer Type</FormFieldLabel>
                   <Select aria-label="Select Customer Type">
                     <SelectItem value="0">Select a Customer Type</SelectItem>
                   </Select>
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  label={{
-                    text: 'Related Topic',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel>Related Topic</FormFieldLabel>
                   <Select aria-label="Select Related Topic">
                     <SelectItem value="0">Select a related topic</SelectItem>
                   </Select>
@@ -325,57 +317,42 @@ export const WithFormContentStepVertical: Story = {
                   If this query is about someone else, please provide their
                   details below. If it's about yourself, enter your own details.
                 </Paragraph>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  label={{
-                    htmlFor: 'fullname-text-id',
-                    text: 'Full name',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="fullname-text-id">
+                    Full name
+                  </FormFieldLabel>
                   <InputText id="fullname-text-id" />
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  label={{
-                    htmlFor: 'pps-number-text-id',
-                    text: 'PPS Number',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="pps-number-text-id">
+                    PPS Number
+                  </FormFieldLabel>
                   <InputText id="pps-number-text-id" />
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  hint={{
-                    text: `Don't know your school number? Find a school application.`,
-                  }}
-                  label={{
-                    htmlFor: 'school-roll-number-text-id',
-                    text: 'School Roll Number',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="School Roll Number">
+                    School Roll Number
+                  </FormFieldLabel>
+                  <FormFieldHint>
+                    Don't know your school number? Find a school application.
+                  </FormFieldHint>
                   <InputText id="school-roll-number-text-id" />
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  hint={{
-                    text: `(Max 1'000 words)`,
-                  }}
-                  label={{
-                    htmlFor: 'description-text-id',
-                    text: 'Describe your Query',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="description-text-id">
+                    Describe your Query
+                  </FormFieldLabel>
+                  <FormFieldHint>(Max 1'000 words)</FormFieldHint>
                   <TextArea cols={100} id="description-text-id" rows={4} />
                 </FormField>
-                <FormField
-                  hint={{
-                    text: '.jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted. Looking for an application form? Find a form here.',
-                  }}
-                  label={{
-                    htmlFor: 'file-upload-id',
-                    text: 'Document Upload',
-                  }}
-                >
+                <FormField>
+                  <FormFieldLabel htmlFor="file-upload-id">
+                    Document Upload
+                  </FormFieldLabel>
+                  <FormFieldHint>
+                    .jpg, .rtf, .txt, .doc,. docx and .pdf files are accepted.
+                    Looking for an application form? Find a form here.
+                  </FormFieldHint>
                   <InputFile accept="*/*" id="file-upload-id" />
                 </FormField>
               </Stack>
@@ -388,40 +365,31 @@ export const WithFormContentStepVertical: Story = {
                   contact details or the details of someone else who should
                   receive the updates.
                 </Paragraph>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  hint={{
-                    text: '(to be used for communications relating to this query)',
-                  }}
-                  label={{
-                    htmlFor: 'contact-fullname-text-id',
-                    text: 'Full name',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="contact-fullname-text-id">
+                    Full name
+                  </FormFieldLabel>
+                  <FormFieldHint>
+                    (to be used for communications relating to this query)
+                  </FormFieldHint>
                   <InputText id="contact-fullname-text-id" />
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  hint={{
-                    text: '(to be used for communications relating to this query)',
-                  }}
-                  label={{
-                    htmlFor: 'phone-number-text-id',
-                    text: 'Phone Number Number',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="phone-number-text-id">
+                    Phone Number
+                  </FormFieldLabel>
+                  <FormFieldHint>
+                    (to be used for communications relating to this query)
+                  </FormFieldHint>
                   <InputText id="phone-number-text-id" />
                 </FormField>
-                <FormField
-                  className="lg:gi-w-[450px] gi-w-full"
-                  hint={{
-                    text: '(to be used for communications relating to this query)',
-                  }}
-                  label={{
-                    htmlFor: 'email-text-id',
-                    text: 'Email Address',
-                  }}
-                >
+                <FormField className="lg:gi-w-[450px] gi-w-full">
+                  <FormFieldLabel htmlFor="email-text-id">
+                    Email Address
+                  </FormFieldLabel>
+                  <FormFieldHint>
+                    (to be used for communications relating to this query)
+                  </FormFieldHint>
                   <InputText id="email-number-text-id" />
                 </FormField>
               </Stack>

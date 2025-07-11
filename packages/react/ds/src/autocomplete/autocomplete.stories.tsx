@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within, userEvent } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
 
@@ -42,7 +42,8 @@ const options = [
 export const Default: Story = {
   render: (props: AutocompleteProps) => {
     return (
-      <FormField label={{ text: 'Label' }} className="gi-w-56">
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Label</FormFieldLabel>
         <Autocomplete {...props}>
           {options.map(({ value, label }) => (
             <AutocompleteItem value={value} key={`${label}-${value}`}>
@@ -87,7 +88,8 @@ export const WithDefaultValue: Story = {
     children: [],
   },
   render: (props: AutocompleteProps) => (
-    <FormField label={{ text: 'With Default Value' }} className="gi-w-56">
+    <FormField className="gi-w-56">
+      <FormFieldLabel>With Default Value</FormFieldLabel>
       <Autocomplete {...props} defaultValue={options[1].value}>
         {options.map(({ value, label }) => (
           <AutocompleteItem value={value} key={`${label}-${value}`}>
@@ -110,7 +112,8 @@ export const WithDisabledOptions: Story = {
     children: [],
   },
   render: (props: AutocompleteProps) => (
-    <FormField label={{ text: 'With Disabled Options' }} className="gi-w-56">
+    <FormField className="gi-w-56">
+      <FormFieldLabel>With Disabled Options</FormFieldLabel>
       <Autocomplete {...props}>
         {[
           <AutocompleteItem value="disabled" disabled key="disabled">
@@ -143,7 +146,8 @@ export const WithDisabled: Story = {
     children: [],
   },
   render: (props: AutocompleteProps) => (
-    <FormField label={{ text: 'With Disabled' }} className="gi-w-56">
+    <FormField className="gi-w-56">
+      <FormFieldLabel>With Disabled</FormFieldLabel>
       <Autocomplete {...props} disabled>
         {options.map(({ value, label }) => (
           <AutocompleteItem value={value} key={`${label}-${value}`}>

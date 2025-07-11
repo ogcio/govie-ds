@@ -1,7 +1,11 @@
 'use client';
 import React from 'react';
 import { ButtonGroup, ButtonGroupItem } from '../button-group/button-group.js';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { ScoreSelectProps } from './type.js';
 
 export const ScoreSelect: React.FC<ScoreSelectProps> = ({
@@ -63,11 +67,9 @@ export const ScoreSelect: React.FC<ScoreSelectProps> = ({
   }
 
   return (
-    <FormField
-      className="gi-w-full"
-      label={{ text: label, id: labelId }}
-      hint={hint ? { text: hint, id: hintId } : undefined}
-    >
+    <FormField className="gi-w-full">
+      <FormFieldLabel id={labelId}>{label}</FormFieldLabel>
+      {hint && <FormFieldHint id={hintId}>{hint}</FormFieldHint>}
       <div
         className="gi-score-select-button-group"
         role="group"

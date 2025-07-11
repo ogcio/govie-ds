@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { Stack } from '../stack/stack.js';
 import { InputPassword } from './input-password.js';
 
@@ -14,12 +19,8 @@ export const Default: Story = {
   args: {},
   render: () => {
     return (
-      <FormField
-        label={{
-          text: 'Password',
-          htmlFor: 'text-password-id',
-        }}
-      >
+      <FormField>
+        <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
         <InputPassword
           placeholder="Placeholder"
           data-testid="text-password-id"
@@ -33,61 +34,37 @@ export const AllVariants: Story = {
   render: () => {
     return (
       <Stack gap={4} itemsAlignment="stretch">
-        <FormField
-          label={{
-            text: 'Label',
-            htmlFor: 'default-input',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
+        <FormField>
+          <FormFieldLabel htmlFor="default-input">Label</FormFieldLabel>
+          <FormFieldHint>Support text</FormFieldHint>
           <InputPassword placeholder="Placeholder" id="default-input" />
         </FormField>
-        <FormField
-          label={{
-            text: 'Label',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
+
+        <FormField>
+          <FormFieldLabel>Label</FormFieldLabel>
+          <FormFieldHint>Support text</FormFieldHint>
           <InputPassword
             placeholder="Placeholder"
             inputClassName="focus-input"
           />
         </FormField>
-        <FormField
-          error={{
-            text: 'Error text',
-          }}
-          label={{
-            text: 'Label',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
+
+        <FormField>
+          <FormFieldLabel>Label</FormFieldLabel>
+          <FormFieldHint>Support text</FormFieldHint>
+          <FormFieldError>Error text</FormFieldError>
           <InputPassword placeholder="Placeholder" />
         </FormField>
-        <FormField
-          label={{
-            text: 'Label',
-          }}
-          hint={{
-            text: 'Support text',
-          }}
-        >
+
+        <FormField>
+          <FormFieldLabel>Label</FormFieldLabel>
+          <FormFieldHint>Support text</FormFieldHint>
           <InputPassword disabled placeholder="Placeholder" />
         </FormField>
-        <FormField
-          label={{
-            text: 'Label',
-          }}
-          hint={{
-            text: 'This field is read-only',
-          }}
-        >
+
+        <FormField>
+          <FormFieldLabel>Label</FormFieldLabel>
+          <FormFieldHint>This field is read-only</FormFieldHint>
           <InputPassword readOnly placeholder="Placeholder" value={'123456'} />
         </FormField>
       </Stack>
