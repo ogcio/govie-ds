@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import {
   SelectGroupItemNext,
   SelectItemNext,
@@ -83,7 +88,8 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     return (
-      <FormField label={{ text: 'Label' }} className="gi-w-56">
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Label</FormFieldLabel>
         <SelectNext aria-label="Select" defaultValue="select-option">
           <SelectItemNext value="select-option" hidden>
             Select Option
@@ -118,10 +124,8 @@ export const Default: StoryObj = {
 
 export const Focus = {
   render: () => (
-    <FormField
-      label={{ text: 'Label', htmlFor: 'focus-select' }}
-      className="gi-w-56"
-    >
+    <FormField className="gi-w-56">
+      <FormFieldLabel htmlFor="focus-select">Label</FormFieldLabel>
       <SelectNext
         id="focus-select"
         aria-label="Select"
@@ -146,12 +150,10 @@ export const Focus = {
 
 export const WithLabelHintAndError = {
   render: () => (
-    <FormField
-      label={{ text: 'Label', htmlFor: 'select' }}
-      hint={{ text: 'This is a hint' }}
-      error={{ text: 'This is an error' }}
-      className="gi-w-56"
-    >
+    <FormField className="gi-w-56">
+      <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
+      <FormFieldHint>This is a hint</FormFieldHint>
+      <FormFieldError>This is an error</FormFieldError>
       <SelectNext
         aria-label="Select"
         data-testid="select"
@@ -242,7 +244,8 @@ export const DisabledItem = {
 
 export const WithSearchEnabled: StoryObj = {
   render: () => (
-    <FormField label={{ text: 'Label' }} className="gi-w-56">
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext aria-label="Select" defaultValue="select-option" enableSearch>
         <SelectItemNext value="select-option" hidden>
           Select Option
@@ -272,7 +275,8 @@ export const WithSearchEnabled: StoryObj = {
 
 export const WithGroups = {
   render: () => (
-    <FormField label={{ text: 'Label' }} className="gi-w-56">
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext
         enableSearch
         aria-label="Select"

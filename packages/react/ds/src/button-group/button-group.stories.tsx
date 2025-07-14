@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { ButtonGroup, ButtonGroupItem } from './button-group.js';
 
 const meta = {
@@ -90,15 +94,11 @@ export const OpinionScale: Story = {
     ];
 
     return (
-      <FormField
-        className="gi-w-full"
-        label={{
-          text: 'How likely are you to recommend our service to a friend or colleague?',
-        }}
-        hint={{
-          text: '1 = Not likely, 10 = Extremely likely',
-        }}
-      >
+      <FormField className="gi-w-full">
+        <FormFieldLabel>
+          How likely are you to recommend our service to a friend or colleague?
+        </FormFieldLabel>
+        <FormFieldHint>1 = Not likely, 10 = Extremely likely</FormFieldHint>
         <ButtonGroup
           name={arguments_.name}
           size={arguments_.size}
@@ -125,11 +125,8 @@ export const ExplicitItems: Story = {
   name: 'Yes/No Question',
   render: (arguments_) => {
     return (
-      <FormField
-        label={{
-          text: 'Are you currently a customer?',
-        }}
-      >
+      <FormField>
+        <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
         <ButtonGroup
           name={arguments_.name}
           size={arguments_.size}

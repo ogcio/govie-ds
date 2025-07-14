@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { Select, SelectGroupItem, SelectItem } from './select.js';
 
 const meta = {
@@ -20,7 +25,8 @@ export default meta;
 
 export const Default: StoryObj = {
   render: () => (
-    <FormField label={{ text: 'Label' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
       <Select aria-label="Select" defaultValue="select-option">
         <SelectItem value="select-option" hidden>
           Select Option
@@ -47,7 +53,8 @@ export const Default: StoryObj = {
 
 export const Focus = {
   render: () => (
-    <FormField label={{ text: 'Label', htmlFor: 'focus-select' }}>
+    <FormField>
+      <FormFieldLabel htmlFor="focus-select">Label</FormFieldLabel>
       <Select id="focus-select" aria-label="Select" className="focus-select">
         <SelectItem selected hidden>
           Select Option
@@ -67,11 +74,10 @@ export const Focus = {
 
 export const WithLabelHintAndError = {
   render: () => (
-    <FormField
-      label={{ text: 'Label', htmlFor: 'select' }}
-      hint={{ text: 'This is a hint' }}
-      error={{ text: 'This is an error' }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="select">Label</FormFieldLabel>
+      <FormFieldHint>This is a hint</FormFieldHint>
+      <FormFieldError>This is an error</FormFieldError>
       <Select
         aria-label="Select"
         data-testid="select"

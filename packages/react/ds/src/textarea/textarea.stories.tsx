@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from '@storybook/test';
-import { FormField } from '../forms/form-field/form-field.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldHint,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { TextArea } from './textarea.js';
 
 const meta = {
@@ -72,13 +77,8 @@ export const Default: Story = {
     id: 'textarea-id-0',
   },
   render: (props) => (
-    <FormField
-      id="textarea-id-0"
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-0',
-      }}
-    >
+    <FormField id="textarea-id-0">
+      <FormFieldLabel htmlFor="textarea-id-0">Label</FormFieldLabel>
       <TextArea {...props} data-testid="textarea-id-0" />
     </FormField>
   ),
@@ -97,7 +97,9 @@ export const Default: Story = {
 
 export const Focus: Story = {
   render: () => (
-    <FormField label={{ text: 'Label' }} hint={{ text: 'Support text' }}>
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
       <TextArea
         className="focus-input"
         iconStart="placeholder"
@@ -118,12 +120,8 @@ export const WithTextInputReset: Story = {
   },
   render: () => {
     return (
-      <FormField
-        label={{
-          text: 'Input Label',
-          htmlFor: 'text-area-id01',
-        }}
-      >
+      <FormField>
+        <FormFieldLabel htmlFor="text-area-id01">Input Label</FormFieldLabel>
         <TextArea clearButtonEnabled placeholder="Placeholder" />
       </FormField>
     );
@@ -137,15 +135,9 @@ export const WithLabelAndHint: Story = {
     cols: 100,
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-1',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-1">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
       <TextArea {...props} />
     </FormField>
   ),
@@ -156,13 +148,9 @@ export const WithLabelAndError: Story = {
     id: 'textarea-id-2',
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-2',
-      }}
-      error={{ text: 'Error: Please correct this issue.' }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-2">Label</FormFieldLabel>
+      <FormFieldError>Error: Please correct this issue.</FormFieldError>
       <TextArea {...props} />
     </FormField>
   ),
@@ -173,16 +161,10 @@ export const WithLabelHintAndError: Story = {
     id: 'textarea-id-3',
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-3',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-      error={{ text: 'Error: Please correct this issue.' }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-3">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
+      <FormFieldError>Error: Please correct this issue.</FormFieldError>
       <TextArea {...props} data-testid="textarea-id-3" />
     </FormField>
   ),
@@ -215,15 +197,9 @@ export const WithMaxChars: Story = {
     maxChars: 30,
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-5',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-5">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
       <TextArea {...props} data-testid="textarea-id-5" />
     </FormField>
   ),
@@ -247,15 +223,9 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-5',
-      }}
-      hint={{
-        text: 'Hint: This is a helpful hint.',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-5">Label</FormFieldLabel>
+      <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
       <TextArea {...props} />
     </FormField>
   ),
@@ -267,12 +237,8 @@ export const WithHalfWidth: Story = {
     halfFluid: true,
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-5',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-5">Label</FormFieldLabel>
       <TextArea {...props} />
     </FormField>
   ),
@@ -285,12 +251,8 @@ export const CustomRowsAndColumns: Story = {
     cols: 40,
   },
   render: (props) => (
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'textarea-id-4',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="textarea-id-4">Label</FormFieldLabel>
       <TextArea {...props} />
     </FormField>
   ),

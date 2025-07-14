@@ -14,7 +14,8 @@ The Select component allows users to choose a single option from a predefined li
 
 <Section current="design" >
 <ComponentContainer>
-  <FormField label={{ text: 'Label' }}>
+  <FormField>
+    <FormFieldLabel>Label</FormFieldLabel>
     <Select aria-label="Select">
       <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
@@ -29,7 +30,8 @@ The Select component allows users to choose a single option from a predefined li
 ### Default
 
 <ComponentContainer>
-  <FormField label={{ text: 'Label' }}>
+  <FormField>
+    <FormFieldLabel>Label</FormFieldLabel>
     <Select aria-label="Select">
       <SelectItem value="value-1">Option 1</SelectItem>
       <SelectItem value="value-2">Option 2</SelectItem>
@@ -103,7 +105,8 @@ The select component should only be used as a last resort in public-facing servi
 
 <ComponentContainer>
   <div className="flex flex-col gap-4">
-    <FormField label={{ text: 'Country' }}>
+    <FormField>
+      <FormFieldLabel>Country</FormFieldLabel>
       <Select aria-label="Country" defaultValue="">
         <SelectItem value="" hidden>
           Select a country
@@ -113,7 +116,8 @@ The select component should only be used as a last resort in public-facing servi
         <SelectItem value="mx">Mexico</SelectItem>
       </Select>
     </FormField>
-    <FormField label={{ text: 'Favorite Color' }}>
+    <FormField>
+      <FormFieldLabel>Favorite Color</FormFieldLabel>
       <Select aria-label="Favorite Color" defaultValue="blue">
         <SelectItem value="red">Red</SelectItem>
         <SelectItem value="blue">Blue</SelectItem>
@@ -133,13 +137,15 @@ The select component should only be used as a last resort in public-facing servi
 
 <ComponentContainer>
   <div className="flex flex-col gap-4">
-    <FormField label={{ text: 'Is active' }}>
+    <FormField>
+      <FormFieldLabel>Is active</FormFieldLabel>
       <Select aria-label="Is Active?" defaultValue="yes">
         <SelectItem value="yes">Yes</SelectItem>
         <SelectItem value="no">No</SelectItem>
       </Select>
     </FormField>
-    <FormField label={{ text: 'Save document' }}>
+    <FormField>
+      <FormFieldLabel>Save document</FormFieldLabel>
       <Select aria-label="Save Document" defaultValue="save">
         <SelectItem value="save">Save Document</SelectItem>
         <SelectItem value="cancel">Cancel</SelectItem>

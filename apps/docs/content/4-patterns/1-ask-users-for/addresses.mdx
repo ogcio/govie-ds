@@ -75,54 +75,52 @@ This guidance is for government teams creating online address forms for digital 
   </TabPanel>
   <TabPanel value="tab32">
     ```jsx
-    import { Stack, TextInput } from '@ogcio/design-system-react';
+      import { Stack, TextInput, FormField, FormFieldLabel, FormFieldHint } from '@ogcio/design-system-react';
 
-    <div className="md:gi-w-2/3 gi-w-full">
+      <div className="md:gi-w-2/3 gi-w-full">
         <Stack direction={{ base: 'column' }} gap={3}>
           <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-            <FormField
-              label={{ text: 'Address Line 1' }}
-              hint={{ text: 'Street address, P.O. box, company name, c/o' }}
-            >
+            <FormField>
+              <FormFieldLabel>Address Line 1</FormFieldLabel>
+              <FormFieldHint>
+                Street address, P.O. box, company name, c/o
+              </FormFieldHint>
               <TextInput id="address-line-1" />
             </FormField>
           </Stack>
           <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-            <FormField
-              label={{ text: 'Address Line 2' }}
-              hint={{
-                text: 'Apartment, suite, unit, building, floor, etc. (optional)',
-              }}
-            >
+            <FormField>
+              <FormFieldLabel>Address Line 2</FormFieldLabel>
+              <FormFieldHint>
+                Apartment, suite, unit, building, floor, etc. (optional)
+              </FormFieldHint>
               <TextInput id="address-line-2" />
             </FormField>
           </Stack>
           <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-            <FormField
-              label={{ text: 'Town or City' }}
-              hint={{ text: 'Your town or city' }}
-            >
+            <FormField>
+              <FormFieldLabel>Town or City</FormFieldLabel>
+              <FormFieldHint>Your town or city</FormFieldHint>
               <TextInput id="town-city" />
             </FormField>
-            <FormField
-              label={{ text: 'Country' }}
-              hint={{ text: 'Your country' }}
-            >
+            <FormField>
+              <FormFieldLabel>Country</FormFieldLabel>
+              <FormFieldHint>Your country</FormFieldHint>
               <TextInput id="country" />
             </FormField>
           </Stack>
           <div className="gi-w-1/2">
             <Stack direction={{ md: 'row', base: 'column' }} gap={3}>
-              <FormField
-                label={{ text: 'Postcode' }}
-                hint={{ text: 'Your postcode or ZIP code' }}
-              >
+              <FormField>
+                <FormFieldLabel>Postcode</FormFieldLabel>
+                <FormFieldHint>Your postcode or ZIP code</FormFieldHint>
                 <TextInput id="postcode" maxLength={10} />
               </FormField>
             </Stack>
           </div>
         </Stack>
       </div>
+
     ```
 
   </TabPanel>

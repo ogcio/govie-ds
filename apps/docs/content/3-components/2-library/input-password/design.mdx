@@ -15,12 +15,8 @@ The Input Password component allows users to securely enter and toggle the visib
 <Section current="design">
 
 <ComponentPreview>
-  <FormField
-    label={{
-      text: 'Password',
-      htmlFor: 'text-password-id',
-    }}
-  >
+  <FormField>
+    <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
     <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
   </FormField>
 </ComponentPreview>
@@ -30,39 +26,23 @@ The Input Password component allows users to securely enter and toggle the visib
 
 <ComponentPreviewLayout className="flex-col">
   <ComponentPreviewItem className="w-96 h-52">
-    <FormField
-      label={{
-        text: 'Label',
-        htmlFor: 'text-password-id',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="text-password-id">Label</FormFieldLabel>
       <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
     </FormField>
   </ComponentPreviewItem>
   <ComponentPreviewItem className="w-96 h-52">
-    <FormField
-      label={{
-        text: 'Label',
-      }}
-      hint={{
-        text: 'Support text',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
       <InputPassword disabled placeholder="Placeholder" />
     </FormField>
   </ComponentPreviewItem>
   <ComponentPreviewItem className="w-96 h-52">
-    <FormField
-      error={{
-        text: 'Error text',
-      }}
-      label={{
-        text: 'Label',
-      }}
-      hint={{
-        text: 'Support text',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
+      <FormFieldError>Error text</FormFieldError>
       <InputPassword placeholder="Placeholder" />
     </FormField>
   </ComponentPreviewItem>
@@ -82,12 +62,8 @@ Use the Input Password component for fields requiring secure input, such as acco
 
 <ComponentContainer>
   <div className="flex flex-col gap-4">
-    <FormField
-      label={{
-        text: 'Password',
-        htmlFor: 'text-password-id',
-      }}
-    >
+    <FormField>
+      <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
       <InputPassword placeholder="Placeholder" data-testid="text-password-id" />
     </FormField>
     <div className="gi-text-sm gi-text-gray-600">
