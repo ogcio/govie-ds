@@ -376,8 +376,17 @@ export const WithReactHookForm = () => {
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHeader key={header.id} className="gi-align-top">
-                  <div
+                <TableHeader
+                  key={header.id}
+                  className="gi-align-top"
+                  sorted={header.column.getIsSorted()}
+                  onSort={header.column.getToggleSortingHandler()}
+                >
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext(),
+                  )}
+                  {/*<div
                     className={
                       header.column.getCanSort()
                         ? 'cursor-pointer select-none'
@@ -393,7 +402,7 @@ export const WithReactHookForm = () => {
                       asc: <Icon inline icon="arrow_upward" />,
                       desc: <Icon inline icon="arrow_downward" />,
                     }[header.column.getIsSorted() as string] ?? null}
-                  </div>
+                  </div> */}
                 </TableHeader>
               ))}
             </TableRow>

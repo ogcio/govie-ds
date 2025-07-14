@@ -59,6 +59,7 @@ export const iconIds = [
   'sync', // Sync
   'thumb_down', // Thumb down
   'thumb_up', // Thumb up
+  'unfold_more',
   'upload', // File upload
   'visibility', // Visibility
   'visibility_off', // Visibility off
