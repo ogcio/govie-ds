@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.12.3](https://github.com/ogcio/govie-ds/compare/docs-v1.12.2...docs-v1.12.3) (2025-07-14)
+
+
+### Miscellaneous Chores
+
+* update form field usage with composable APIs ([#638](https://github.com/ogcio/govie-ds/issues/638)) ([8aed676](https://github.com/ogcio/govie-ds/commit/8aed67609e286c579c66b553b17f3dbdd8d3368a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.12.3
+
 ## [1.12.2](https://github.com/ogcio/govie-ds/compare/docs-v1.12.1...docs-v1.12.2) (2025-07-09)
 
 
