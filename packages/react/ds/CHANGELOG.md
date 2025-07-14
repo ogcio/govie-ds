@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.12.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.2...react-lib-v1.12.3) (2025-07-14)
+
+
+### Bug Fixes
+
+* Adding back classname in FormFieldBase ([#645](https://github.com/ogcio/govie-ds/issues/645)) ([137d933](https://github.com/ogcio/govie-ds/commit/137d933e26d49b2c545f4db439f1cc3c2991026f))
+
+
+### Miscellaneous Chores
+
+* update form field usage with composable APIs ([#638](https://github.com/ogcio/govie-ds/issues/638)) ([8aed676](https://github.com/ogcio/govie-ds/commit/8aed67609e286c579c66b553b17f3dbdd8d3368a))
+
 ## [1.12.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.1...react-lib-v1.12.2) (2025-07-09)
 
 
