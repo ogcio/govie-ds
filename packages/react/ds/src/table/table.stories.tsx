@@ -455,3 +455,191 @@ export const LoadingState: Story = {
     </Table>
   ),
 };
+
+export const WithStripped: Story = {
+  args: {
+    captionText: 'Table Caption',
+    headers: defaultValueHeaders,
+    rows: defaultValueRows,
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table rowSize="md" stripped>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>
+              <InputCheckboxTableCell
+                aria-label={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
+                value={row.id.toString()}
+              />
+            </TableData>
+            <TableData>{row.id}</TableData>
+            <TableData>{row.county}</TableData>
+            <TableData>{row.description}</TableData>
+            <TableData>{row.total}</TableData>
+
+            <TableData>
+              <Link href="#">Link</Link>
+            </TableData>
+            <TableData>
+              <Tag text={row.status.text} type={row.status.type} />
+            </TableData>
+            <TableData>
+              <IconButton {...iconProps} />
+            </TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const WithSmallRowSize: Story = {
+  args: {
+    captionText: 'Table Caption',
+    headers: defaultValueHeaders,
+    rows: defaultValueRows,
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table rowSize="sm">
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>
+              <InputCheckboxTableCell
+                aria-label={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
+                value={row.id.toString()}
+              />
+            </TableData>
+            <TableData>{row.id}</TableData>
+            <TableData>{row.county}</TableData>
+            <TableData>{row.description}</TableData>
+            <TableData>{row.total}</TableData>
+
+            <TableData>
+              <Link href="#">Link</Link>
+            </TableData>
+            <TableData>
+              <Tag text={row.status.text} type={row.status.type} />
+            </TableData>
+            <TableData>
+              <IconButton {...iconProps} size="small" />
+            </TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const WithMediumRowSize: Story = {
+  args: {
+    captionText: 'Table Caption',
+    headers: defaultValueHeaders,
+    rows: defaultValueRows,
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table rowSize="md">
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>
+              <InputCheckboxTableCell
+                aria-label={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
+                value={row.id.toString()}
+              />
+            </TableData>
+            <TableData>{row.id}</TableData>
+            <TableData>{row.county}</TableData>
+            <TableData>{row.description}</TableData>
+            <TableData>{row.total}</TableData>
+
+            <TableData>
+              <Link href="#">Link</Link>
+            </TableData>
+            <TableData>
+              <Tag text={row.status.text} type={row.status.type} />
+            </TableData>
+            <TableData>
+              <IconButton {...iconProps} size="medium" />
+            </TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};
+
+export const WithLargeRowSize: Story = {
+  args: {
+    captionText: 'Table Caption',
+    headers: defaultValueHeaders,
+    rows: defaultValueRows,
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table rowSize="lg">
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>
+              <InputCheckboxTableCell
+                aria-label={`checkbox-id-${row.id}`}
+                id={`checkbox-id-${row.id}`}
+                value={row.id.toString()}
+              />
+            </TableData>
+            <TableData>{row.id}</TableData>
+            <TableData>{row.county}</TableData>
+            <TableData>{row.description}</TableData>
+            <TableData>{row.total}</TableData>
+
+            <TableData>
+              <Link href="#">Link</Link>
+            </TableData>
+            <TableData>
+              <Tag text={row.status.text} type={row.status.type} />
+            </TableData>
+            <TableData>
+              <IconButton {...iconProps} />
+            </TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+};

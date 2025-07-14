@@ -16,8 +16,10 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="gi-h-[200px] gi-px-2 gi-flex gi-items-center gi-justify-center">
-        <Story />
+      <div className="gi-h-[200px] gi-px-2 gi-flex gi-items-center ">
+        <div className="gi-h-10 gi-w-56">
+          <Story />
+        </div>
       </div>
     ),
   ],

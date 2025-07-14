@@ -92,12 +92,14 @@
   @apply gi-relative gi-w-full;
 }
 
-.gi-select[data-table-cell='true'] {
-  width: inherit;
+.gi-select-container[data-table-cell='true'] {
+  @apply gi-h-full gi-block;
 }
 
-.gi-select[data-table-cell='true'] {
-  @apply gi-h-12
+.gi-select-container[data-table-cell='true'] .gi-select {
+  @apply gi-h-full
+    gi-py-0
+    gi-w-full
     gi-pl-3
     gi-truncate
     gi-overflow-hidden
@@ -122,13 +124,14 @@
    
     disabled:gi-cursor-not-allowed
     disabled:gi-outline
-    disabled:gi-outline-sm
+    disabled:gi-outline-[1px]
     disabled:gi-outline-color-surface-system-neutral-interactive-disabled
     disabled:gi-outline-offset-0
     disabled:gi-border-[0px];
 }
 
-.gi-select[data-table-cell-error-state='true']:not(:disabled) {
+.gi-select-container[data-table-cell-error-state='true']
+  .gi-select:not(:disabled) {
   @apply gi-outline
   gi-z-[2]
   gi-outline-[2px]

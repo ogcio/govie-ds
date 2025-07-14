@@ -81,10 +81,9 @@ export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
   <InputCheckbox
     {...props}
     size="sm"
-    data-table-cell="true"
-    data-table-cell-error-state={error?.toString()}
     containerProps={{
       'data-table-cell': true,
+      'data-table-cell-error-state': error?.toString(),
     }}
   />
 );

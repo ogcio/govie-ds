@@ -8,11 +8,7 @@
   gi-border-b gi-border-solid
   gi-border-b-color-surface-system-neutral-interactive-disabled
   gi-text-sm gi-leading-10 xs:gi-leading-5;
-}
-
-.gi-table-tr {
-  /*TODO: Set different height for tr*/
-  @apply gi-h-12;
+  height: inherit;
 }
 
 .gi-table-caption-text {
@@ -26,4 +22,30 @@
 
 .gi-table-cell {
   @apply gi-px-3 gi-overflow-hidden gi-whitespace-normal gi-line-clamp-2;
+}
+
+.gi-table tbody tr {
+  @apply gi-overflow-hidden gi-align-middle;
+}
+
+.gi-table[data-row-size='sm'] tbody tr {
+  @apply gi-h-10;
+}
+.gi-table[data-row-size='md'] tbody tr {
+  @apply gi-h-12;
+}
+.gi-table[data-row-size='lg'] tbody tr {
+  @apply gi-h-14;
+}
+
+.gi-table[data-stripped='true'] tbody tr:nth-child(odd),
+.gi-table[data-stripped='true']
+  tbody
+  tr:nth-child(odd)
+  :is(input:not(:disabled), select:not(:disabled)) {
+  @apply gi-bg-color-surface-system-neutral-layer1;
+}
+
+.gi-table thead tr {
+  @apply gi-h-14;
 }

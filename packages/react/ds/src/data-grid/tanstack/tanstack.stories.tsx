@@ -13,12 +13,15 @@ import {
   PaginationState,
   useReactTable,
 } from '@tanstack/react-table';
+import type { ExpandedState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
 import { Icon } from '../../icon/icon.js';
 import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
+import { Label } from '../../label/label.js';
+import { Link } from '../../link/link.js';
 import { Pagination } from '../../pagination/pagination.js';
 import {
   Table,
@@ -29,6 +32,7 @@ import {
   TableData,
   TableCell,
 } from '../../table/index.js';
+import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -90,6 +94,7 @@ const getFieldError = (
 
 export const WithReactHookForm = () => {
   const [data, setData] = useState(makeData(100));
+  const [expanded, setExpanded] = useState<ExpandedState>({});
   const [globalFilter, setGlobalFilter] = useState('');
   const [inputGlobalFilter, setInputGlobalFilter] = useState('');
   const [pagination, setPagination] = useState<PaginationState>({
@@ -142,6 +147,24 @@ export const WithReactHookForm = () => {
         ),
       },
       {
+        id: 'expand',
+        cell: ({ row }) => (
+          <div className="gi-flex gi-items-center gi-justify-center">
+            <Icon
+              size="md"
+              icon={
+                (expanded as any)?.[row.id]
+                  ? 'keyboard_arrow_up'
+                  : 'keyboard_arrow_down'
+              }
+              className="gi-cursor-pointer"
+              onClick={() => row.toggleExpanded()}
+            />
+          </div>
+        ),
+      },
+
+      {
         accessorFn: (row) => `${row.firstName} ${row.lastName}`,
         id: 'fullName',
         header: 'Full Name',
@@ -164,7 +187,14 @@ export const WithReactHookForm = () => {
                   required: true,
                   pattern: /.+@.+\..+/,
                 }),
-                iconStart: 'edit',
+                iconEnd:
+                  row.original?.disabledFields?.includes('email') || false
+                    ? 'block'
+                    : undefined,
+                iconStart:
+                  row.original?.disabledFields?.includes('email') || false
+                    ? undefined
+                    : 'edit',
                 error: !!getFieldError(errors, row.index, column.id),
                 disabled:
                   row.original?.disabledFields?.includes('email') || false,
@@ -188,7 +218,14 @@ export const WithReactHookForm = () => {
               type: 'text',
               props: {
                 type: 'number',
-                iconEnd: 'accessibility_new',
+                iconStart:
+                  row.original?.disabledFields?.includes('age') || false
+                    ? undefined
+                    : 'accessibility_new',
+                iconEnd:
+                  row.original?.disabledFields?.includes('age') || false
+                    ? 'block'
+                    : undefined,
                 ...register(`${row.index}.${column.id}` as never, {
                   required: true,
                 }),
@@ -220,6 +257,14 @@ export const WithReactHookForm = () => {
                 disabled:
                   row.original?.disabledFields?.includes('city') || false,
                 placeholder: 'City',
+                iconEnd:
+                  row.original?.disabledFields?.includes('city') || false
+                    ? 'block'
+                    : undefined,
+                iconStart:
+                  row.original?.disabledFields?.includes('city') || false
+                    ? undefined
+                    : 'placeholder',
               },
             }}
           />
@@ -281,13 +326,13 @@ export const WithReactHookForm = () => {
         ),
       },
     ];
-  }, [setData, register, errors]);
+  }, [setData, register, errors, expanded]);
 
   const table = useReactTable({
     data,
     columns,
     filterFns: { fuzzy: fuzzyFilter },
-    state: { globalFilter, pagination },
+    state: { globalFilter, pagination, expanded },
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: 'fuzzy',
     getCoreRowModel: getCoreRowModel(),
@@ -296,6 +341,8 @@ export const WithReactHookForm = () => {
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
     autoResetPageIndex: false,
+    getRowCanExpand: () => true,
+    onExpandedChange: setExpanded,
   });
 
   useEffect(() => {
@@ -303,6 +350,13 @@ export const WithReactHookForm = () => {
       debouncedUpdateData.cancel();
     };
   }, [debouncedUpdateData]);
+
+  const statusTypeMap = {
+    pending: TagTypeEnum.Info,
+    accepted: TagTypeEnum.Success,
+    declined: TagTypeEnum.Error,
+    'in progress': TagTypeEnum.Warning,
+  };
 
   return (
     <div className="gi-p-2">
@@ -317,7 +371,7 @@ export const WithReactHookForm = () => {
           placeholder="Search all columns..."
         />
       </div>
-      <Table layout="auto" className="gi-my-4 gi-w-full">
+      <Table layout="auto" rowSize="sm" stripped className="gi-my-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -347,13 +401,36 @@ export const WithReactHookForm = () => {
         </TableHead>
         <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <TableData key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableData>
-              ))}
-            </TableRow>
+            <Fragment key={row.id}>
+              <TableRow>
+                {row.getVisibleCells().map((cell) => (
+                  <TableData key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableData>
+                ))}
+              </TableRow>
+              {row.getIsExpanded() && (
+                <TableRow>
+                  <TableData colSpan={columns.length + 1}>
+                    <div className="gi-flex gi-items-center gi-justify-between gi-bg-color-surface-system-neutral-layer1 gi-p-4">
+                      <div className="gi-text-sm">
+                        <Tag
+                          text={row.original.status?.toLocaleUpperCase()}
+                          type={
+                            statusTypeMap[row.original.status] ??
+                            TagTypeEnum.Info
+                          }
+                        />
+                        <Label size="sm">
+                          You can view additional information about this row.
+                        </Label>
+                        <Link href="#">View more details</Link>
+                      </div>
+                    </div>
+                  </TableData>
+                </TableRow>
+              )}
+            </Fragment>
           ))}
         </TableBody>
       </Table>

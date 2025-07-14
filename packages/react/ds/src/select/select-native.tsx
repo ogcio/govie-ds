@@ -27,13 +27,14 @@ export const SelectItem = ({ children, ...props }: SelectItemProps) => (
   </option>
 );
 
-export const SelectNative: FC<SelectProps> = ({
+export const SelectNative: FC<SelectProps & { containerProps?: any }> = ({
   children,
   className,
+  containerProps,
   ...props
-}: SelectProps) => {
+}) => {
   return (
-    <div className="gi-select-container">
+    <div className="gi-select-container" {...containerProps}>
       <select className={cn('gi-select', className)} {...props}>
         {children}
       </select>
@@ -56,10 +57,12 @@ export const SelectTableCell = ({
   return (
     <SelectNative
       {...props}
+      containerProps={{
+        'data-table-cell': 'true',
+        'data-table-cell-error-state': error?.toString(),
+      }}
       defaultValue={defaultValue}
       onChange={onChange}
-      data-table-cell="true"
-      data-table-cell-error-state={error?.toString()}
     >
       {options.map(({ value, label }) => (
         <SelectItem key={`${value}-${label}`} value={value}>

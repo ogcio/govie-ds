@@ -67,6 +67,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
       disabled,
       inputClassName,
       iconEndRef,
+      containerProps,
       ...props
     },
     ref,
@@ -87,7 +88,10 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
     }, [inputActionButton]);
 
     return (
-      <div className={cn(className, 'gi-input-text-container')}>
+      <div
+        className={cn(className, 'gi-input-text-container')}
+        {...containerProps}
+      >
         {prefix && (
           <div className="gi-input-text-prefix" data-disabled={disabled}>
             {prefix}
@@ -187,14 +191,14 @@ InputText.displayName = 'InputText';
 export const InputTextTableCell = forwardRef<
   HTMLInputElement,
   InputTextTableCellProps
->(({ type = 'text', error, ...props }, ref) => {
-  return (
-    <InputText
-      {...props}
-      data-table-cell="true"
-      data-table-cell-error-state={error?.toString()}
-      ref={ref}
-      type={type}
-    />
-  );
-});
+>(({ type = 'text', error, ...props }, ref) => (
+  <InputText
+    {...props}
+    containerProps={{
+      'data-table-cell': true,
+      'data-table-cell-error-state': error?.toString(),
+    }}
+    ref={ref}
+    type={type}
+  />
+));
