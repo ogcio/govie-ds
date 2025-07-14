@@ -35,7 +35,9 @@ function useFormFieldContext(component: string) {
 }
 
 function getSpecialComponentType(child: ReactNode): string | null {
-  if (!isValidElement(child)) return null;
+  if (!isValidElement(child)) {
+    return null;
+  }
 
   return (
     (child.type as any)?.componentType ||
@@ -61,7 +63,7 @@ const FormField = (props: FormFieldProps) => {
 
     return (
       <FormFieldContext.Provider value={true}>
-        <FormFieldBase>
+        <FormFieldBase className={props.className}>
           {props.label && <FormFieldLabel {...props.label} />}
           {props.hint && <FormFieldHint {...props.hint} />}
           {props.error && <FormFieldError {...props.error} />}
@@ -73,7 +75,9 @@ const FormField = (props: FormFieldProps) => {
 
   return (
     <FormFieldContext.Provider value={true}>
-      <FormFieldBase>{props.children}</FormFieldBase>
+      <FormFieldBase className={props.className}>
+        {props.children}
+      </FormFieldBase>
     </FormFieldContext.Provider>
   );
 };
