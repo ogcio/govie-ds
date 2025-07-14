@@ -25,8 +25,8 @@
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
 }
 
-.gi-table-cell {
-  @apply gi-px-3 gi-overflow-hidden gi-whitespace-normal gi-line-clamp-2;
+.gi-table-data-cell {
+  @apply gi-pl-3 gi-overflow-hidden gi-whitespace-normal gi-line-clamp-2 gi-table-cell;
 }
 
 .gi-table tbody tr {
@@ -61,4 +61,12 @@
 
 .gi-table-th[data-header-string='true'] {
   @apply gi-pl-3;
+}
+
+.gi-table-data-slot-container {
+  @apply gi-flex gi-items-center gi-justify-between gi-bg-color-surface-system-neutral-layer1 gi-p-3;
+}
+
+.gi-table-expand-icon-container {
+  @apply gi-flex gi-items-center gi-justify-center;
 }

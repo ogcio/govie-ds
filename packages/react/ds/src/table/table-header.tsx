@@ -51,10 +51,16 @@ export function TableHeader({
     bottom: 'gi-align-bottom',
   }[valign];
 
-  const handleSort = (event: React.MouseEvent) => {
+  const handleSort = (event: any) => {
     if (onSort && isChildrenString) {
       event.preventDefault();
       onSort(event);
+    }
+  };
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      handleSort(event);
     }
   };
 
@@ -65,18 +71,20 @@ export function TableHeader({
         verticalAlignmentClass,
         'gi-table-th',
         className,
+        { 'gi-w-12': !isChildrenString },
       )}
       role={onSort ? 'button' : undefined}
-      tabIndex={onSort && isChildrenString ? 0 : -1}
       data-sorted={!!onSort}
       data-header-string={isChildrenString}
       {...props}
     >
       <div
         className={cn({
-          'gi-flex gi-items-center gi-gap-1': isChildrenString,
+          'gi-flex gi-items-center gi-gap-1 gi-h-full': isChildrenString,
         })}
         onClick={handleSort}
+        tabIndex={onSort && isChildrenString ? 0 : -1}
+        onKeyDown={handleKeyDown}
       >
         {children}
         {!!onSort && getSortedIcon(isChildrenString, sorted)}

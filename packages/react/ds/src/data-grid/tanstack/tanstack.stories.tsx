@@ -17,7 +17,6 @@ import type { ExpandedState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
 import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
-import { Icon } from '../../icon/icon.js';
 import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
@@ -30,8 +29,8 @@ import {
   TableHeader,
   TableBody,
   TableData,
-  TableCell,
 } from '../../table/index.js';
+import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
@@ -149,18 +148,10 @@ export const WithReactHookForm = () => {
       {
         id: 'expand',
         cell: ({ row }) => (
-          <div className="gi-flex gi-items-center gi-justify-center">
-            <Icon
-              size="md"
-              icon={
-                (expanded as any)?.[row.id]
-                  ? 'keyboard_arrow_up'
-                  : 'keyboard_arrow_down'
-              }
-              className="gi-cursor-pointer"
-              onClick={() => row.toggleExpanded()}
-            />
-          </div>
+          <TableExpandIcon
+            expanded={(expanded as any)?.[row.id]}
+            onClick={row.toggleExpanded}
+          />
         ),
       },
 
@@ -168,7 +159,7 @@ export const WithReactHookForm = () => {
         accessorFn: (row) => `${row.firstName} ${row.lastName}`,
         id: 'fullName',
         header: 'Full Name',
-        cell: (info) => <TableCell>{info.getValue()}</TableCell>,
+        cell: (info) => info.getValue(),
         filterFn: 'fuzzy',
       },
       {
@@ -273,7 +264,7 @@ export const WithReactHookForm = () => {
       },
       {
         accessorKey: 'isActive',
-        header: 'is Active',
+        header: 'Active',
         cell: ({ row, column, getValue }) => (
           <EditableTableCell
             value={getValue()}
@@ -371,14 +362,13 @@ export const WithReactHookForm = () => {
           placeholder="Search all columns..."
         />
       </div>
-      <Table layout="auto" rowSize="sm" stripped className="gi-my-4 gi-w-full">
+      <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHeader
                   key={header.id}
-                  className="gi-align-top"
                   sorted={header.column.getIsSorted()}
                   onSort={header.column.getToggleSortingHandler()}
                 >
@@ -386,23 +376,6 @@ export const WithReactHookForm = () => {
                     header.column.columnDef.header,
                     header.getContext(),
                   )}
-                  {/*<div
-                    className={
-                      header.column.getCanSort()
-                        ? 'cursor-pointer select-none'
-                        : ''
-                    }
-                    onClick={header.column.getToggleSortingHandler()}
-                  >
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-                    {{
-                      asc: <Icon inline icon="arrow_upward" />,
-                      desc: <Icon inline icon="arrow_downward" />,
-                    }[header.column.getIsSorted() as string] ?? null}
-                  </div> */}
                 </TableHeader>
               ))}
             </TableRow>
@@ -420,23 +393,20 @@ export const WithReactHookForm = () => {
               </TableRow>
               {row.getIsExpanded() && (
                 <TableRow>
-                  <TableData colSpan={columns.length + 1}>
-                    <div className="gi-flex gi-items-center gi-justify-between gi-bg-color-surface-system-neutral-layer1 gi-p-4">
-                      <div className="gi-text-sm">
-                        <Tag
-                          text={row.original.status?.toLocaleUpperCase()}
-                          type={
-                            statusTypeMap[row.original.status] ??
-                            TagTypeEnum.Info
-                          }
-                        />
-                        <Label size="sm">
-                          You can view additional information about this row.
-                        </Label>
-                        <Link href="#">View more details</Link>
-                      </div>
+                  <TableDataSlot colSpan={columns.length + 1}>
+                    <div className="gi-text-sm">
+                      <Tag
+                        text={row.original.status?.toLocaleUpperCase()}
+                        type={
+                          statusTypeMap[row.original.status] ?? TagTypeEnum.Info
+                        }
+                      />
+                      <Label size="sm">
+                        You can view additional information about this row.
+                      </Label>
+                      <Link href="#">View more details</Link>
                     </div>
-                  </TableData>
+                  </TableDataSlot>
                 </TableRow>
               )}
             </Fragment>

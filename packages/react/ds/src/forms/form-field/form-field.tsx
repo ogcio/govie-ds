@@ -35,7 +35,9 @@ function useFormFieldContext(component: string) {
 }
 
 function getSpecialComponentType(child: ReactNode): string | null {
-  if (!isValidElement(child)) return null;
+  if (!isValidElement(child)) {
+    return null;
+  }
 
   return (
     (child.type as any)?.componentType ||
