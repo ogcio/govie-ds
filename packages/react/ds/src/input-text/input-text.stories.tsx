@@ -113,11 +113,18 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: { id: 'input-text-id' },
   render: (props) => (
-    <FormField>
+    <FormField data-testid="form-field-id">
       <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const formField = canvas.getByTestId(
+      'form-field-id',
+    ) as HTMLFieldSetElement;
+    expect(formField).toBeDefined();
+  },
 };
 
 export const Focus: Story = {
@@ -176,6 +183,39 @@ export const WithLabelHintAndError: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)',
+    );
+    expect(canvas.getByText('Label')).toHaveClass('gi-label');
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveClass(
+      'gi-hint-text',
+    );
+    expect(canvas.getByText('Error: Please correct this issue.')).toHaveClass(
+      'gi-error-text',
+    );
+  },
+};
+
+export const WithLabelHintAndErrorLegacy: Story = {
+  args: { id: 'input-text-id', suffix: 'KG' },
+  render: (props) => (
+    <FormField
+      data-testid="form-field-id"
+      label={{ text: 'Label', htmlFor: 'input-text-id' }}
+      hint={{ text: 'Hint: This is a helpful hint.' }}
+      error={{ text: 'Error: Please correct this issue.' }}
+    >
+      <InputText {...props} data-testid="input-text-id" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const formField = canvas.getByTestId(
+      'form-field-id',
+    ) as HTMLFieldSetElement;
+    expect(formField).toBeDefined();
+
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
