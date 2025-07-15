@@ -1,3 +1,4 @@
+'use client';
 import { ThHTMLAttributes } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
@@ -76,6 +77,8 @@ export function TableHeader({
       role={onSort ? 'button' : undefined}
       data-sorted={!!onSort}
       data-header-string={isChildrenString}
+      tabIndex={onSort && isChildrenString ? 0 : -1}
+      onKeyDown={handleKeyDown}
       {...props}
     >
       <div
@@ -83,7 +86,6 @@ export function TableHeader({
           'gi-flex gi-items-center gi-gap-1 gi-h-full': isChildrenString,
         })}
         onClick={handleSort}
-        tabIndex={onSort && isChildrenString ? 0 : -1}
         onKeyDown={handleKeyDown}
       >
         {children}

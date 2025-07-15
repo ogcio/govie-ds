@@ -1,5 +1,5 @@
 .gi-table {
-  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted gi-overflow-hidden;
+  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
 }
 
 .gi-table-th,
@@ -26,7 +26,7 @@
 }
 
 .gi-table-data-cell {
-  @apply gi-pl-3 gi-overflow-hidden gi-whitespace-normal gi-line-clamp-2 gi-table-cell;
+  @apply gi-pl-3 gi-whitespace-normal gi-line-clamp-2 gi-table-cell;
 }
 
 .gi-table tbody tr {
@@ -69,4 +69,8 @@
 
 .gi-table-expand-icon-container {
   @apply gi-flex gi-items-center gi-justify-center;
+}
+
+.gi-table-td {
+  @apply gi-p-0;
 }

@@ -362,7 +362,7 @@ export const WithReactHookForm = () => {
           placeholder="Search all columns..."
         />
       </div>
-      <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
+      <Table layout="auto" rowSize="lg" stripped className="gi-my-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>

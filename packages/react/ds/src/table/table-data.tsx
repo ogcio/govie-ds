@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { IconButton } from '../icon-button/icon-button.js';
 import { TableAlign, VerticalAlign } from './table.js';
 
 interface TableDataProps extends TdHTMLAttributes<HTMLTableCellElement> {
@@ -56,7 +56,7 @@ export function TableData({
       return;
     }
 
-    const inputs = ref.current.querySelectorAll('input, select');
+    const inputs = ref.current.querySelectorAll('input, select, button');
     setHasFormElement(inputs.length > 0);
   }, []);
 
@@ -71,11 +71,7 @@ export function TableData({
       )}
       {...props}
     >
-      {hasFormElement || children?.componentType === 'TableExpandIcon' ? (
-        children
-      ) : (
-        <TableCell>{children}</TableCell>
-      )}
+      {hasFormElement ? children : <TableCell>{children}</TableCell>}
     </td>
   );
 }
@@ -83,30 +79,44 @@ export function TableData({
 export const TableCell = ({ children, className }: TableCellProps) => (
   <div className={cn('gi-table-data-cell', className)}>{children}</div>
 );
-
 export const TableExpandIcon = ({
   expanded,
   onClick,
 }: TableExpandIconProps) => {
+  const [rowSize, setRowSize] = useState<'sm' | 'md' | 'lg'>('md');
+
+  useEffect(() => {
+    const element = document.querySelector('.gi-table');
+    const size = element?.getAttribute('data-row-size') as 'sm' | 'md' | 'lg';
+    if (size) {
+      setRowSize(size);
+    }
+  }, []);
+
+  const sizeMap = {
+    sm: 'medium',
+    md: 'large',
+    lg: 'extraLarge',
+  } as const;
+
   return (
     <div className="gi-table-expand-icon-container">
-      <Icon
-        size="md"
-        icon={expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+      <IconButton
+        variant="flat"
+        appearance="dark"
+        size={sizeMap[rowSize]}
+        icon={{
+          icon: expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
+        }}
         className="gi-cursor-pointer"
         onClick={(event) => {
-          event?.preventDefault();
+          event.preventDefault();
           onClick();
         }}
       />
     </div>
   );
 };
-Object.defineProperty(TableExpandIcon, 'componentType', {
-  value: 'TableExpandIcon',
-  writable: false,
-  enumerable: false,
-});
 
 export const TableDataSlot = ({
   children,

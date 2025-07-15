@@ -541,7 +541,7 @@ export const WithSmallRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="small" />
+              <IconButton {...iconProps} size="medium" />
             </TableData>
           </TableRow>
         ))}
@@ -588,7 +588,7 @@ export const WithMediumRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} size="medium" />
+              <IconButton {...iconProps} size="large" />
             </TableData>
           </TableRow>
         ))}
@@ -635,7 +635,7 @@ export const WithLargeRowSize: Story = {
               <Tag text={row.status.text} type={row.status.type} />
             </TableData>
             <TableData>
-              <IconButton {...iconProps} />
+              <IconButton {...iconProps} size="extraLarge" />
             </TableData>
           </TableRow>
         ))}

@@ -62,6 +62,9 @@ export const getButtonIconSizeClass = (size?: ButtonSize) => {
     case 'large': {
       return 'gi-icon-btn-large';
     }
+    case 'extraLarge': {
+      return 'gi-icon-btn-extra-large';
+    }
     default: {
       return 'gi-icon-btn-regular';
     }
