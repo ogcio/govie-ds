@@ -63,7 +63,7 @@ const FormField = (props: FormFieldProps) => {
 
     return (
       <FormFieldContext.Provider value={true}>
-        <FormFieldBase className={props.className}>
+        <FormFieldBase {...props}>
           {props.label && <FormFieldLabel {...props.label} />}
           {props.hint && <FormFieldHint {...props.hint} />}
           {props.error && <FormFieldError {...props.error} />}
@@ -75,18 +75,12 @@ const FormField = (props: FormFieldProps) => {
 
   return (
     <FormFieldContext.Provider value={true}>
-      <FormFieldBase className={props.className}>
-        {props.children}
-      </FormFieldBase>
+      <FormFieldBase {...props}>{props.children}</FormFieldBase>
     </FormFieldContext.Provider>
   );
 };
 
-const FormFieldBase = ({
-  children,
-  className,
-  ...props
-}: FormFieldBaseProps) => {
+const FormFieldBase = ({ children, ...props }: FormFieldBaseProps) => {
   const allChildren = Children.toArray(children);
 
   const label = allChildren.find(
@@ -102,7 +96,7 @@ const FormFieldBase = ({
 
   return (
     <fieldset
-      className={cn({ 'gi-error-state': !!error }, className)}
+      className={cn({ 'gi-error-state': !!error }, props.className)}
       {...props}
     >
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
