@@ -84,10 +84,11 @@ export const TableExpandIcon = ({
   onClick,
 }: TableExpandIconProps) => {
   const [rowSize, setRowSize] = useState<'sm' | 'md' | 'lg'>('md');
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = document.querySelector('.gi-table');
-    const size = element?.getAttribute('data-row-size') as 'sm' | 'md' | 'lg';
+    const table = containerRef.current?.closest('.gi-table');
+    const size = table?.getAttribute('data-row-size') as 'sm' | 'md' | 'lg';
     if (size) {
       setRowSize(size);
     }
@@ -100,7 +101,7 @@ export const TableExpandIcon = ({
   } as const;
 
   return (
-    <div className="gi-table-expand-icon-container">
+    <div ref={containerRef} className="gi-table-expand-icon-container">
       <IconButton
         variant="flat"
         appearance="dark"
