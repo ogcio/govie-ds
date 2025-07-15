@@ -80,7 +80,11 @@ const FormField = (props: FormFieldProps) => {
   );
 };
 
-const FormFieldBase = ({ children, ...props }: FormFieldBaseProps) => {
+const FormFieldBase = ({
+  children,
+  className,
+  ...props
+}: FormFieldBaseProps) => {
   const allChildren = Children.toArray(children);
 
   const label = allChildren.find(
@@ -96,7 +100,7 @@ const FormFieldBase = ({ children, ...props }: FormFieldBaseProps) => {
 
   return (
     <fieldset
-      className={cn({ 'gi-error-state': !!error }, props.className)}
+      className={cn({ 'gi-error-state': !!error }, className)}
       {...props}
     >
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
