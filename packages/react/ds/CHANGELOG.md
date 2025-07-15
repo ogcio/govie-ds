@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.4](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.3...react-lib-v1.12.4) (2025-07-15)
+
+
+### Bug Fixes
+
+* form-field missing props ([#647](https://github.com/ogcio/govie-ds/issues/647)) ([f1bf1ce](https://github.com/ogcio/govie-ds/commit/f1bf1ce753966b3d2cde4a1620edcf12fca46bb4))
+
 ## [1.12.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.2...react-lib-v1.12.3) (2025-07-14)
 
 

@@ -63,7 +63,7 @@ const FormField = (props: FormFieldProps) => {
 
     return (
       <FormFieldContext.Provider value={true}>
-        <FormFieldBase className={props.className}>
+        <FormFieldBase {...props}>
           {props.label && <FormFieldLabel {...props.label} />}
           {props.hint && <FormFieldHint {...props.hint} />}
           {props.error && <FormFieldError {...props.error} />}
@@ -75,9 +75,7 @@ const FormField = (props: FormFieldProps) => {
 
   return (
     <FormFieldContext.Provider value={true}>
-      <FormFieldBase className={props.className}>
-        {props.children}
-      </FormFieldBase>
+      <FormFieldBase {...props}>{props.children}</FormFieldBase>
     </FormFieldContext.Provider>
   );
 };
