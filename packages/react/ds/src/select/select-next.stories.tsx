@@ -11,6 +11,7 @@ import {
   SelectItemNext,
   SelectNext,
 } from './select-next.js';
+import { useState } from 'react';
 
 const meta = {
   title: 'Form/Select/SelectNext',
@@ -310,5 +311,49 @@ export const WithGroups = {
     expect(canvas.getByText('Option 1')).toBeInTheDocument();
     expect(canvas.getByText('Option 8')).toBeInTheDocument();
     await userEvent.click(document.body);
+  },
+};
+
+export const Controlled: StoryObj = {
+  render: () => {
+    const [value, setValue] = useState('value-2');
+
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Controlled Select</FormFieldLabel>
+        <SelectNext
+          aria-label="Select"
+          id="select-controlled"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        >
+          <SelectItemNext value="select-option" hidden>
+            Select Option
+          </SelectItemNext>
+          <SelectItemNext value="value-1">Option 1</SelectItemNext>
+          <SelectItemNext value="value-2">Option 2</SelectItemNext>
+          <SelectItemNext value="value-3">Option 3</SelectItemNext>
+        </SelectNext>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await waitFor(() => {
+      expect(input).toHaveValue('Option 2');
+    });
+
+    await userEvent.click(input);
+
+    const list = await canvas.findByRole('list');
+    const options = within(list).getAllByRole('option');
+
+    await userEvent.click(options[2]); // "Option 3"
+
+    await waitFor(() => {
+      expect(input).toHaveValue('Option 3');
+    });
   },
 };
