@@ -144,7 +144,7 @@ export const WithListOfUploadedFiles: Story = {
     <FormField id="file-upload-id" className="gi-w-full md:gi-w-[400px]">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
       <InputFile {...arguments_} />
-      <Table layout="auto">
+      <Table layout="auto" noBorder>
         <TableHead>
           <TableRow>
             <TableHeader>Uploaded file</TableHeader>

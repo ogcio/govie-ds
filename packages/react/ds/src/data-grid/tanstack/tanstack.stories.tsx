@@ -1,6 +1,5 @@
 'use client';
 import type { Meta } from '@storybook/react';
-
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   ColumnDef,

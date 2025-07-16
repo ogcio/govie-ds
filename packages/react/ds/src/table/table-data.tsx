@@ -14,6 +14,7 @@ import { TableAlign, VerticalAlign } from './table.js';
 interface TableDataProps extends TdHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign;
   valign?: VerticalAlign;
+  tableCellClassName?: string;
   children: any;
 }
 
@@ -34,6 +35,7 @@ export function TableData({
   valign = 'middle',
   className,
   children,
+  tableCellClassName,
   ...props
 }: TableDataProps) {
   const alignmentClass = {
@@ -71,7 +73,11 @@ export function TableData({
       )}
       {...props}
     >
-      {hasFormElement ? children : <TableCell>{children}</TableCell>}
+      {hasFormElement ? (
+        children
+      ) : (
+        <TableCell className={tableCellClassName}>{children}</TableCell>
+      )}
     </td>
   );
 }

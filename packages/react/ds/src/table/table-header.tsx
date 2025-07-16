@@ -82,8 +82,11 @@ export function TableHeader({
       {...props}
     >
       <div
-        className={cn({
-          'gi-flex gi-items-center gi-gap-1 gi-h-full': isChildrenString,
+        className={cn(alignmentClass, {
+          'gi-flex gi-gap-1 gi-h-full gi-items-center': isChildrenString,
+          'gi-justify-center': align === 'center',
+          'gi-justify-start': align === 'left',
+          'gi-justify-end': align === 'right',
         })}
         onClick={handleSort}
         onKeyDown={handleKeyDown}

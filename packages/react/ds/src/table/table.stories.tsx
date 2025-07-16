@@ -355,10 +355,18 @@ export const TableWithFooter: Story = {
       </TableBody>
       <TableFoot>
         <TableRow>
-          <TableData colSpan={3} className="gi-font-bold gi-text-right gi-py-4">
+          <TableData
+            colSpan={3}
+            className="gi-font-bold  gi-py-4"
+            tableCellClassName="gi-text-right"
+          >
             Total Budget:
           </TableData>
-          <TableData colSpan={3} className="gi-font-bold gi-text-left gi-py-4">
+          <TableData
+            colSpan={3}
+            className="gi-font-bold gi-py-4"
+            tableCellClassName="gi-text-left"
+          >
             €4,500,000
           </TableData>
         </TableRow>

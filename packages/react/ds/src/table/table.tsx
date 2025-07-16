@@ -19,12 +19,14 @@ export type TableProps = VariantProps<typeof tableVariants> & {
   dataTestid?: string;
   rowSize?: 'sm' | 'md' | 'lg';
   stripped?: boolean;
+  noBorder?: boolean;
 } & React.TableHTMLAttributes<HTMLTableElement>;
 
 export function Table({
   layout = 'auto',
   rowSize = 'md',
   stripped = false,
+  noBorder = false,
   dataTestid,
   children,
   className,
@@ -38,6 +40,7 @@ export function Table({
       data-testid={dataTestid}
       data-row-size={rowSize}
       data-stripped={stripped.toString()}
+      data-no-border={noBorder.toString()}
       {...props}
     >
       {children}

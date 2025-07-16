@@ -14,12 +14,6 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
-      '@tanstack/match-sorter-utils':
-        specifier: ^8.19.4
-        version: 8.19.4
-      '@tanstack/react-table':
-        specifier: 8.21.2
-        version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@types/lodash':
         specifier: ^4.17.7
         version: 4.17.20
@@ -84,6 +78,12 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.14)
+      '@tanstack/match-sorter-utils':
+        specifier: ^8.19.4
+        version: 8.19.4
+      '@tanstack/react-table':
+        specifier: 8.21.2
+        version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tsconfig/node22':
         specifier: ^22.0.1
         version: 22.0.2
@@ -276,10 +276,10 @@ importers:
         version: 15.3.5
       '@nx-tools/container-metadata':
         specifier: ^6.0.1
-        version: 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
+        version: 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
       '@nx-tools/nx-container':
         specifier: ^6.0.1
-        version: 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0))(dotenv@16.4.7)(nx@20.4.0)(tslib@2.8.1)
+        version: 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2))(dotenv@16.4.7)(nx@21.2.2)(tslib@2.8.1)
       '@ogcio/design-system-eslint-config':
         specifier: workspace:*
         version: link:../../packages/build/eslint-config
@@ -14321,10 +14321,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nx-tools/ci-context@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/ci-context@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
       '@actions/github': 6.0.1
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
       '@octokit/openapi-types': 22.2.0
       ci-info: 4.3.0
       properties-file: 3.5.12
@@ -14332,11 +14332,11 @@ snapshots:
     transitivePeerDependencies:
       - '@nx/devkit'
 
-  '@nx-tools/container-metadata@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/container-metadata@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
-      '@nx-tools/ci-context': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx-tools/ci-context': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       '@renovate/pep440': 1.0.0
       csv-parse: 5.6.0
       handlebars: 4.7.8
@@ -14344,41 +14344,29 @@ snapshots:
       semver: 7.7.2
       tslib: 2.8.1
 
-  '@nx-tools/core@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)':
+  '@nx-tools/core@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)':
     dependencies:
       '@actions/exec': 1.1.1
       '@actions/io': 1.1.3
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       chalk: 4.1.2
       ci-info: 4.3.0
       csv-parse: 5.6.0
       tslib: 2.8.1
 
-  '@nx-tools/nx-container@6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0))(dotenv@16.4.7)(nx@20.4.0)(tslib@2.8.1)':
+  '@nx-tools/nx-container@6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2))(dotenv@16.4.7)(nx@21.2.2)(tslib@2.8.1)':
     dependencies:
-      '@nx-tools/container-metadata': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@20.4.0))(tslib@2.8.1)
-      '@nx/devkit': 21.2.2(nx@20.4.0)
-      '@nx/js': 21.2.2(@babel/traverse@7.28.0)(nx@20.4.0)
+      '@nx-tools/container-metadata': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx-tools/core': 6.8.0(@nx/devkit@21.2.2(nx@21.2.2))(tslib@2.8.1)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
+      '@nx/js': 21.2.2(@babel/traverse@7.28.0)(nx@21.2.2)
       csv-parse: 5.6.0
       dotenv: 16.4.7
       handlebars: 4.7.8
-      nx: 20.4.0
+      nx: 21.2.2
       semver: 7.7.2
       tmp: 0.2.3
       tslib: 2.8.1
-
-  '@nx/devkit@21.2.2(nx@20.4.0)':
-    dependencies:
-      ejs: 3.1.10
-      enquirer: 2.3.6
-      ignore: 5.3.2
-      minimatch: 9.0.3
-      nx: 20.4.0
-      semver: 7.7.2
-      tmp: 0.2.3
-      tslib: 2.8.1
-      yargs-parser: 21.1.1
 
   '@nx/devkit@21.2.2(nx@21.2.2)':
     dependencies:
@@ -14392,7 +14380,7 @@ snapshots:
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
-  '@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@20.4.0)':
+  '@nx/js@21.2.2(@babel/traverse@7.28.0)(nx@21.2.2)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-proposal-decorators': 7.28.0(@babel/core@7.28.0)
@@ -14401,7 +14389,7 @@ snapshots:
       '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.0)
       '@babel/runtime': 7.27.6
-      '@nx/devkit': 21.2.2(nx@20.4.0)
+      '@nx/devkit': 21.2.2(nx@21.2.2)
       '@nx/workspace': 21.2.2
       '@zkochan/js-yaml': 0.0.7
       babel-plugin-const-enum: 1.2.0(@babel/core@7.28.0)

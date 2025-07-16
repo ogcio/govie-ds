@@ -1,6 +1,9 @@
 .gi-table {
   @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
 }
+.gi-table[data-no-border='true'] {
+  @apply gi-border-0;
+}
 
 .gi-table-th,
 .gi-table-td {
@@ -26,7 +29,7 @@
 }
 
 .gi-table-data-cell {
-  @apply gi-pl-3 gi-whitespace-normal gi-line-clamp-2 gi-table-cell;
+  @apply gi-px-3 gi-whitespace-normal gi-line-clamp-2;
 }
 
 .gi-table tbody tr {
@@ -60,7 +63,7 @@
 }
 
 .gi-table-th[data-header-string='true'] {
-  @apply gi-pl-3;
+  @apply gi-px-3;
 }
 
 .gi-table-data-slot-container {
