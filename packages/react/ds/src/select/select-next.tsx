@@ -60,6 +60,7 @@ export const SelectNext = ({
 
   const handleOnOpenChange = (isOpen: boolean) => {
     setIsOpen(isOpen);
+
     if (onMenuClose && !isOpen) {
       onMenuClose();
     }
@@ -81,6 +82,7 @@ export const SelectNext = ({
         },
       } as unknown as React.ChangeEvent<HTMLSelectElement>;
 
+      // it dispatches a synthetic native event
       onSelectNextChange(event);
     }
   };
@@ -212,10 +214,7 @@ export const SelectNext = ({
                 });
 
               return (
-                <SelectMenuGroupItem
-                  key={`Group-${typedChild.props.label}`}
-                  label={typedChild.props.label}
-                >
+                <SelectMenuGroupItem label={typedChild.props.label}>
                   {groupOptions}
                 </SelectMenuGroupItem>
               );
