@@ -184,8 +184,9 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <Stack direction={'column'} gap={4}>
+      <Stack direction={'column'} gap={4} role="navigation">
         <Stack
+          aria-label="Footer Secondary Links"
           direction={{ base: 'column', xs: 'column', md: 'row' }}
           gap={4}
           wrap
@@ -230,7 +231,7 @@ export const CompleteFooter: Story = {
             Events
           </Link>
         </Stack>
-        <Stack direction={'row'} gap={4}>
+        <Stack direction={'row'} gap={4} aria-label="Social Media Links">
           <Icon icon="social_x" />
           <Icon icon="social_facebook" />
           <Icon icon="social_bluesky" />
@@ -272,6 +273,7 @@ export const SimpleFooter: Story = {
         direction={{ base: 'column', xs: 'column', md: 'row' }}
         gap={4}
         wrap
+        aria-label="Footer Secondary Links"
       >
         <Link noColor href="/about-us" aria-label="About Us">
           About Us

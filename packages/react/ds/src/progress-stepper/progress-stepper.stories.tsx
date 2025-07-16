@@ -163,6 +163,7 @@ export const WithStepContent: Story = {
           gap={3}
           className="gi-pt-3"
           itemsDistribution="start"
+          role="navigation"
         >
           {currentIndex > 0 && (
             <Button variant="secondary" onClick={handlePreviousButton}>

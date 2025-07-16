@@ -171,6 +171,7 @@ export const ProgressStepper = ({
 
   return (
     <div
+      role="presentation"
       className={cn('gi-w-full', {
         'gi-flex': orientation === 'vertical',
       })}
