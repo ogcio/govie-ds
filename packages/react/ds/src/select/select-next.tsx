@@ -26,15 +26,19 @@ import {
 
 export const SelectNext = ({
   children,
+  value: controlledValue,
+  defaultValue = '',
   onChange: onSelectNextChange,
   onMenuClose,
-  defaultValue = '',
   enableSearch,
   disabled,
   ...props
-}: SelectNextProps) => {
+}: SelectNextProps & { value?: string }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState(defaultValue);
+
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const value = controlledValue !== undefined ? controlledValue : internalValue;
+
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -42,36 +46,41 @@ export const SelectNext = ({
     isValidElement(child),
   ) as React.ReactElement[];
 
+  useEffect(() => {
+    // keep internalValue in sync when controlledValue changes
+    if (controlledValue !== undefined) {
+      setInternalValue(controlledValue);
+    }
+  }, [controlledValue]);
+
   const handleOnClick = () => {
     setIsOpen(true);
-
-    if (inputRef?.current) {
-      inputRef?.current?.focus();
-    }
+    inputRef.current?.focus();
   };
 
   const handleOnOpenChange = (isOpen: boolean) => {
     setIsOpen(isOpen);
-
     if (onMenuClose && !isOpen) {
       onMenuClose();
     }
   };
 
-  const handleOnSelectItem = (value: string) => {
+  const handleOnSelectItem = (val: string) => {
     setIsOpen(false);
-    setValue(value);
+
+    if (controlledValue === undefined) {
+      setInternalValue(val);
+    }
 
     if (onSelectNextChange) {
       const event = {
         ...new Event('change', { bubbles: true }),
         target: {
           ...inputRef.current,
-          value,
+          value: val,
         },
       } as unknown as React.ChangeEvent<HTMLSelectElement>;
 
-      // it dispatches a synthetic native event
       onSelectNextChange(event);
     }
   };
@@ -112,6 +121,8 @@ export const SelectNext = ({
 
     if (found) {
       setInputValue(found.props.children?.toString() || '');
+    } else {
+      setInputValue('');
     }
   }, [value, validOptions]);
 
@@ -132,7 +143,7 @@ export const SelectNext = ({
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={inputValue || 'Select'}
-        readOnly={true}
+        readOnly
         inputClassName="gi-cursor-pointer"
         iconEndClassName={cn({
           'gi-cursor-pointer': !disabled,
@@ -201,7 +212,10 @@ export const SelectNext = ({
                 });
 
               return (
-                <SelectMenuGroupItem label={typedChild.props.label}>
+                <SelectMenuGroupItem
+                  key={`Group-${typedChild.props.label}`}
+                  label={typedChild.props.label}
+                >
                   {groupOptions}
                 </SelectMenuGroupItem>
               );
