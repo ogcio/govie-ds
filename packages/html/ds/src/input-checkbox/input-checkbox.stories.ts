@@ -55,6 +55,10 @@ export const Default: Story = {
       control: 'boolean',
       description: 'if true the component is disabled',
     },
+    indeterminate: {
+      control: 'boolean',
+      description: 'If true, the checkbox shows the indeterminate state',
+    },
   },
   args: {
     id: 'checkbox-id-1',
@@ -181,4 +185,34 @@ export const largeCheckbox: Story = {
     const input = canvas.getByRole('checkbox');
     expect(input).toHaveClass('gi-h-11');
   },
+};
+
+export const IndeterminateSmall: Story = {
+  args: {
+    value: 'value-1',
+    label: 'Checkbox',
+    indeterminate: true,
+    size: CheckboxSizeEnum.Small,
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const IndeterminateMedium: Story = {
+  args: {
+    value: 'value-1',
+    label: 'Checkbox',
+    indeterminate: true,
+    size: CheckboxSizeEnum.Medium,
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const IndeterminateLarge: Story = {
+  args: {
+    value: 'value-1',
+    label: 'Checkbox',
+    indeterminate: true,
+    size: CheckboxSizeEnum.Large,
+  },
+  render: (arguments_) => createElement(arguments_),
 };

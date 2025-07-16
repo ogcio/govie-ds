@@ -13,4 +13,5 @@ export type InputCheckboxProps = {
   size?: InputCheckboxSizeEnumType;
   label?: string;
   hint?: string;
+  indeterminate?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

@@ -22,6 +22,7 @@ export type CheckboxProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   name?: string;
+  indeterminate?: boolean;
 };
 
 export type CheckboxGroupProps = {
