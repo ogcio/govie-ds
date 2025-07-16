@@ -33,7 +33,7 @@ export const SelectNext = ({
   enableSearch,
   disabled,
   ...props
-}: SelectNextProps & { value?: string }) => {
+}: SelectNextProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [internalValue, setInternalValue] = useState(defaultValue);
