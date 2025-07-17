@@ -8,6 +8,8 @@ import {
 import { InputRadio } from '../input-radio/input-radio.js';
 import { InputRadioGroup } from '../input-radio-group/input-radio-group.js';
 import { Paragraph } from '../paragraph/paragraph.js';
+import React from 'react';
+import { userEvent, waitFor, within, expect } from '@storybook/test';
 
 const meta = {
   title: 'Form/Radio/InputRadioGroup',
@@ -35,6 +37,7 @@ export const Default: Story = {
   args: {
     groupId: 'city',
   },
+
   render: (arguments_) => (
     <FormField>
       <FormFieldLabel>Where do you live?</FormFieldLabel>
@@ -45,6 +48,33 @@ export const Default: Story = {
       </InputRadioGroup>
     </FormField>
   ),
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const dublinOption = await canvas.getByLabelText('Dublin');
+    const corkOption = await canvas.getByLabelText('Cork');
+    const galwayOption = await canvas.getByLabelText('Galway');
+
+    await userEvent.click(dublinOption);
+    await waitFor(() => {
+      expect(dublinOption).toBeChecked();
+      expect(corkOption).not.toBeChecked();
+      expect(galwayOption).not.toBeChecked();
+    });
+
+    await userEvent.click(corkOption);
+    await waitFor(() => {
+      expect(corkOption).toBeChecked();
+      expect(dublinOption).not.toBeChecked();
+      expect(galwayOption).not.toBeChecked();
+    });
+
+    await userEvent.click(galwayOption);
+    await waitFor(() => {
+      expect(galwayOption).toBeChecked();
+      expect(dublinOption).not.toBeChecked();
+      expect(corkOption).not.toBeChecked();
+    });
+  },
 };
 
 export const Inline: Story = {
@@ -165,4 +195,54 @@ export const WithConditionalInput: Story = {
       </InputRadioGroup>
     </FormField>
   ),
+};
+
+export const Controlled: Story = {
+  args: {
+    groupId: 'controlled',
+  },
+  render: (arguments_) => {
+    const [selectedValue, setSelectedValue] = React.useState<
+      string | undefined
+    >(undefined);
+
+    const handleChange = (event?: React.ChangeEvent<HTMLInputElement>) => {
+      if (event) {
+        setSelectedValue(event.target.value);
+      }
+    };
+
+    return (
+      <FormField>
+        <FormFieldLabel>Choose an option</FormFieldLabel>
+        <InputRadioGroup
+          {...arguments_}
+          value={selectedValue}
+          onChange={handleChange}
+        >
+          <InputRadio value="option1" label="Option 1" />
+          <InputRadio value="option2" label="Option 2" />
+          <InputRadio value="option3" label="Option 3" />
+        </InputRadioGroup>
+      </FormField>
+    );
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const option1 = await canvas.getByLabelText('Option 1');
+    const option2 = await canvas.getByLabelText('Option 2');
+
+    await userEvent.click(option1);
+
+    await waitFor(() => {
+      expect(option1).toBeChecked();
+      expect(option2).not.toBeChecked();
+    });
+
+    await userEvent.click(option2);
+    await waitFor(() => {
+      expect(option2).toBeChecked();
+      expect(option1).not.toBeChecked();
+    });
+  },
 };
