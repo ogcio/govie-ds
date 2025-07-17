@@ -57,6 +57,7 @@ export const iconIds = [
   'sort', // Sort
   'space_dashboard', // Space dashboard
   'sync', // Sync
+  'swap_vert',
   'thumb_down', // Thumb down
   'thumb_up', // Thumb up
   'unfold_more',

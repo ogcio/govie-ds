@@ -85,6 +85,6 @@ input[type='text'] {
 
 /* General Input disable state */
 .gi-input-disabled-state {
-  @apply disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled disabled:gi-cursor-not-allowed;
+  @apply disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled-surface disabled:gi-cursor-not-allowed;
 }
 /* General Input disable state */

@@ -335,6 +335,13 @@ function createBorderSystemSchema(namePrefix: string) {
                 ),
                 name: 'disabled',
               }),
+              'disabled-surface': createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.disabled-surface`,
+                ),
+                name: 'disabled-surface',
+              }),
             })
             .strict(),
         })

@@ -118,7 +118,7 @@
 
 .gi-input-text-container[data-table-cell='true'] .gi-input-text:disabled {
   @apply gi-outline
-  gi-outline-sm
+  gi-outline-[2px]
   gi-outline-color-surface-system-neutral-interactive-disabled
   gi-outline-offset-[-1px]
   gi-border-[0px];

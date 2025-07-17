@@ -19,7 +19,7 @@ const getSortedIcon = (isChildrenString: boolean, sorted: SortedType) => {
   }
 
   if (!sorted) {
-    return <Icon inline icon="unfold_more" size="sm" />;
+    return <Icon inline icon="swap_vert" size="sm" />;
   }
   return (
     <Icon

@@ -1,5 +1,6 @@
 .gi-table {
-  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
+  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate 
+  gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
 }
 .gi-table[data-no-border='true'] {
   @apply gi-border-0;
@@ -75,5 +76,5 @@
 }
 
 .gi-table-td {
-  @apply gi-p-0;
+  @apply gi-p-0 gi-text-sm gi-font-[400];
 }
