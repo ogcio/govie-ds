@@ -23,6 +23,7 @@ describe('buttonGroup', () => {
     expect(buttonTwoElement).not.toHaveClass('gi-btn-primary-dark');
     expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
   });
+
   it('should not submit the form on press a button group items', async () => {
     const onSubmitSpy = vi.fn();
     const user = userEvent.setup();

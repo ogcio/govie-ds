@@ -11,6 +11,8 @@ import {
   BreadcrumbLink,
   Breadcrumbs,
   Button,
+  ButtonGroup,
+  ButtonGroupItem,
   Card,
   Chip,
   Combobox,
@@ -122,6 +124,7 @@ function MyForm() {
       legacySelect: "select-option",
       password: "",
       radioGroup: "",
+      buttonGroup: "",
       checkboxGroup: [],
     },
   });
@@ -262,6 +265,26 @@ function MyForm() {
                       <InputRadio value="option2" label="Option 2" />
                       <InputRadio value="option3" label="Option 3" />
                     </InputRadioGroup>
+                  )}
+                />
+              </FormField>
+
+              {/* Button Group */}
+              <FormField label={{ text: "Button Group" }} className="w-full">
+                <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
+                <Controller
+                  name="buttonGroup"
+                  control={control}
+                  render={({ field }) => (
+                    <ButtonGroup
+                      value={field.value}
+                      name="customer-status"
+                      size="medium"
+                      onChange={field.onChange}
+                    >
+                      <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
+                      <ButtonGroupItem value="no">No</ButtonGroupItem>
+                    </ButtonGroup>
                   )}
                 />
               </FormField>
