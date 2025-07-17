@@ -201,6 +201,14 @@ export const Controlled: Story = {
   args: {
     groupId: 'controlled',
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "This story demonstrates a controlled input radio group where users can select option. The selected value are managed in the component's state, allowing for dynamic updates as radios are selected or unselected.",
+      },
+    },
+  },
   render: (arguments_) => {
     const [selectedValue, setSelectedValue] = React.useState<
       string | undefined
