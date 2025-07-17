@@ -193,7 +193,7 @@ export const IndeterminateChecked: Story = {
     id: 'checkbox-id-indeterminate',
     value: 'value-2',
     label: 'Checkbox',
-    checked: true
+    checked: true,
   },
   render: (arguments_) => createElement(arguments_),
 };
