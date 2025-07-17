@@ -1,5 +1,5 @@
 'use client';
-import React, {
+import {
   cloneElement,
   ReactNode,
   Children,
@@ -7,12 +7,20 @@ import React, {
   ReactElement,
   useState,
 } from 'react';
-
+import { createPortal } from 'react-dom';
+import FocusLockComponent from 'react-focus-lock';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
+import { useAriaHider } from '../hooks/use-aria-hider.js';
+import { useDomId } from '../hooks/use-dom-id.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+
+const FocusLock = FocusLockComponent as unknown as React.FC<{
+  children: React.ReactNode;
+}>;
+
 import type {
   ModalCloseButtonProps,
   ModalFooterButton,
@@ -94,6 +102,7 @@ export const ModalWrapper = ({
   children,
   closeButtonSize,
   dataTestId,
+  ref,
   ...props
 }: ModalWrapperProps) => {
   const childrenArray = Children.toArray(children);
@@ -123,16 +132,15 @@ export const ModalWrapper = ({
 
   return (
     <div
+      id={`modal-${useDomId()}`}
       {...props}
+      ref={ref}
       className={cn('gi-modal', {
         'gi-modal-open': isOpen,
         'gi-modal-close': !isOpen,
       })}
       data-testid={dataTestId || 'modal'}
-      data-element="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-describedby="gi-modal-body"
+      role="presentation"
       onClick={(event) => {
         const target = event.target as HTMLDivElement;
         if (
@@ -146,6 +154,10 @@ export const ModalWrapper = ({
     >
       <div
         data-testid="modal-container"
+        aria-role="dialog"
+        aria-modal="true"
+        aria-describedby="gi-modal-container"
+        aria-labelledby="gi-modal-heading"
         data-size={size}
         data-position={position}
         className={cn(
@@ -183,7 +195,11 @@ export const ModalWrapper = ({
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <div className="gi-flex-1" id="gi-modal-title">
+  <div
+    className="gi-flex-1"
+    id="gi-modal-title"
+    aria-label={children?.toString()}
+  >
     <Heading as={as} {...props}>
       {children}
     </Heading>
@@ -199,6 +215,8 @@ export const ModalBody = ({
 }) => (
   <div
     id="gi-modal-body"
+    aria-label="Modal content"
+    role="document"
     className={cn(
       {
         'gi-modal-body': !className,
@@ -257,6 +275,13 @@ export const ModalFooter = ({
   );
 };
 
+const ModalPortal = ({ children }: { children: ReactNode }) => {
+  if (!globalThis.window) {
+    return null;
+  }
+  return createPortal(<FocusLock>{children}</FocusLock>, document.body);
+};
+
 export const Modal = ({
   children,
   triggerButton,
@@ -264,6 +289,9 @@ export const Modal = ({
   ...props
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
+  const [modalElement, setModalElement] = useState<HTMLElement | null>(null);
+
+  useAriaHider(modalElement, isOpen);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -277,14 +305,17 @@ export const Modal = ({
   return (
     <>
       {renderCloneTrigger}
-      <ModalWrapper
-        onClose={handleClose}
-        position="center"
-        isOpen={isOpen}
-        {...props}
-      >
-        {children}
-      </ModalWrapper>
+      <ModalPortal>
+        <ModalWrapper
+          ref={setModalElement}
+          onClose={handleClose}
+          position="center"
+          isOpen={isOpen}
+          {...props}
+        >
+          {children}
+        </ModalWrapper>
+      </ModalPortal>
     </>
   );
 };

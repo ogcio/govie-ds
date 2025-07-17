@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, Ref } from 'react';
 import { ButtonProps, ButtonSize, ButtonVariant } from '../button/types.js';
 import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';
@@ -17,6 +17,7 @@ export type ModalWrapperProps = {
   onClose: () => void;
   position?: ModalPositions;
   closeButtonSize?: ButtonSize;
+  ref?: Ref<HTMLDivElement>;
 } & Omit<ModalProps, 'triggerButton'>;
 
 export type ModalSize = 'sm' | 'md' | 'lg';
