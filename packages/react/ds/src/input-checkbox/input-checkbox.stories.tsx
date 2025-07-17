@@ -152,6 +152,17 @@ export const LargeCheckbox: Story = {
   },
 };
 
+
+export const IndeterminateChecked: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    checked: true
+  },
+};
+
 export const IndeterminateSmall: Story = {
   args: {
     indeterminate: true,

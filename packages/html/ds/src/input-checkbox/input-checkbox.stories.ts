@@ -187,6 +187,17 @@ export const largeCheckbox: Story = {
   },
 };
 
+export const IndeterminateChecked: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    checked: true
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
 export const IndeterminateSmall: Story = {
   args: {
     value: 'value-1',
