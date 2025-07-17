@@ -42,7 +42,9 @@ export const Default: Story = {
     ],
     rows: [
       [
-        beautifyHtmlNode(createCheckbox({ id: '1', value: '1' })),
+        beautifyHtmlNode(
+          createCheckbox({ id: '1', value: '1', ariaLabel: 'Select row 1' }),
+        ),
         '1',
         'Cork',
         'Lorem ipsum',
@@ -59,7 +61,9 @@ export const Default: Story = {
         ),
       ],
       [
-        beautifyHtmlNode(createCheckbox({ id: '2', value: '2' })),
+        beautifyHtmlNode(
+          createCheckbox({ id: '2', value: '2', ariaLabel: 'Select row 2' }),
+        ),
         '2',
         'Limerick',
         'Lorem ipsum',
@@ -76,7 +80,9 @@ export const Default: Story = {
         ),
       ],
       [
-        beautifyHtmlNode(createCheckbox({ id: '3', value: '3' })),
+        beautifyHtmlNode(
+          createCheckbox({ id: '3', value: '3', ariaLabel: 'Select row 3' }),
+        ),
         '3',
         'Dublin',
         'Lorem ipsum Lorem ipsum Lorem ipsum',
@@ -93,7 +99,9 @@ export const Default: Story = {
         ),
       ],
       [
-        beautifyHtmlNode(createCheckbox({ id: '4', value: '4' })),
+        beautifyHtmlNode(
+          createCheckbox({ id: '4', value: '4', ariaLabel: 'Select row 4' }),
+        ),
         '4',
         'Donegal',
         'Lorem ipsum Lorem ipsum Lorem ipsum',
@@ -236,7 +244,13 @@ export const TableWithFooter: Story = {
     headers: ['Select', 'Project', 'Manager', 'Budget', 'Status', 'Actions'],
     rows: [
       [
-        beautifyHtmlNode(createCheckbox({ id: '1', value: '1' })),
+        beautifyHtmlNode(
+          createCheckbox({
+            id: '1',
+            value: '1',
+            ariaLabel: 'Select project 1',
+          }),
+        ),
         'Digital Transformation',
         beautifyHtmlNode(createLink({ href: '#', content: 'View Profile' })),
         '€1,500,000',
@@ -273,7 +287,13 @@ export const TableWithFooter: Story = {
         `,
       ],
       [
-        beautifyHtmlNode(createCheckbox({ id: '2', value: '2' })),
+        beautifyHtmlNode(
+          createCheckbox({
+            id: '2',
+            value: '2',
+            ariaLabel: 'Select project 2',
+          }),
+        ),
         'Customer Experience',
         beautifyHtmlNode(createLink({ href: '#', content: 'View Profile' })),
         '€750,000',
@@ -310,7 +330,13 @@ export const TableWithFooter: Story = {
         `,
       ],
       [
-        beautifyHtmlNode(createCheckbox({ id: '3', value: '3' })),
+        beautifyHtmlNode(
+          createCheckbox({
+            id: '3',
+            value: '3',
+            ariaLabel: 'Select project 3',
+          }),
+        ),
         'Sustainability Initiative',
         beautifyHtmlNode(createLink({ href: '#', content: 'View Profile' })),
         '€2,250,000',

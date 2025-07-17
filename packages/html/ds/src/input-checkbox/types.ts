@@ -15,6 +15,7 @@ export type CheckboxProps = {
   id?: string;
   size?: CheckboxSizeEnumType;
   label?: string;
+  ariaLabel?: string;
   hint?: string;
   dataElement?: string;
   value?: string;
