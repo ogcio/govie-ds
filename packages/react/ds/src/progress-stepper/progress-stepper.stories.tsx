@@ -125,7 +125,7 @@ export const WithStepContent: Story = {
     const handlePreviousButton = () => setCurrentIndex(() => currentIndex - 1);
 
     return (
-      <Stack>
+      <Stack aria-label="Progress Stepper with Content">
         <ProgressStepper currentStepIndex={currentIndex}>
           <StepItem label="Start Your Application">
             <Stack gap={2} className="gi-pt-2">
@@ -223,7 +223,7 @@ export const WithContentStepVertical: Story = {
     );
 
     return (
-      <Stack>
+      <Stack aria-label="Progress Stepper with Vertical Content">
         <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
           <StepItem label="Step 1">
             <Stack>Here are the content for Step 1</Stack>
@@ -275,7 +275,10 @@ export const WithFormContentStepVertical: Story = {
     );
 
     return (
-      <div className="gi-w-[500px]">
+      <div
+        className="gi-w-[500px]"
+        aria-label="Progress Stepper with Form Content"
+      >
         <Stack>
           <ProgressStepper
             currentStepIndex={currentIndex}
@@ -292,20 +295,26 @@ export const WithFormContentStepVertical: Story = {
                   raising.
                 </Paragraph>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel>Category</FormFieldLabel>
-                  <Select aria-label="Select Category">
+                  <FormFieldLabel htmlFor="category-select">
+                    Category
+                  </FormFieldLabel>
+                  <Select id="category-select">
                     <SelectItem value="0">Select a Category</SelectItem>
                   </Select>
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel>Customer Type</FormFieldLabel>
-                  <Select aria-label="Select Customer Type">
+                  <FormFieldLabel htmlFor="customer-type-select">
+                    Customer Type
+                  </FormFieldLabel>
+                  <Select id="customer-type-select">
                     <SelectItem value="0">Select a Customer Type</SelectItem>
                   </Select>
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel>Related Topic</FormFieldLabel>
-                  <Select aria-label="Select Related Topic">
+                  <FormFieldLabel htmlFor="related-topic-select">
+                    Related Topic
+                  </FormFieldLabel>
+                  <Select id="related-topic-select">
                     <SelectItem value="0">Select a related topic</SelectItem>
                   </Select>
                 </FormField>
@@ -331,7 +340,7 @@ export const WithFormContentStepVertical: Story = {
                   <InputText id="pps-number-text-id" />
                 </FormField>
                 <FormField className="lg:gi-w-[450px] gi-w-full">
-                  <FormFieldLabel htmlFor="School Roll Number">
+                  <FormFieldLabel htmlFor="school-roll-number-text-id">
                     School Roll Number
                   </FormFieldLabel>
                   <FormFieldHint>
@@ -391,7 +400,7 @@ export const WithFormContentStepVertical: Story = {
                   <FormFieldHint>
                     (to be used for communications relating to this query)
                   </FormFieldHint>
-                  <InputText id="email-number-text-id" />
+                  <InputText id="email-text-id" />
                 </FormField>
               </Stack>
             </StepItem>

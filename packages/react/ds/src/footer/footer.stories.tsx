@@ -184,7 +184,7 @@ export const CompleteFooter: Story = {
       </div>
     ),
     secondarySlot: (
-      <Stack direction={'column'} gap={4} role="navigation">
+      <Stack direction={'column'} gap={4} role="region">
         <Stack
           aria-label="Footer Secondary Links"
           direction={{ base: 'column', xs: 'column', md: 'row' }}
@@ -231,7 +231,12 @@ export const CompleteFooter: Story = {
             Events
           </Link>
         </Stack>
-        <Stack direction={'row'} gap={4} aria-label="Social Media Links">
+        <Stack
+          direction={'row'}
+          gap={4}
+          aria-label="Social Media Links"
+          role="navigation"
+        >
           <Icon icon="social_x" />
           <Icon icon="social_facebook" />
           <Icon icon="social_bluesky" />

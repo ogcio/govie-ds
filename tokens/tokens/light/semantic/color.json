@@ -283,7 +283,7 @@
               },
               "disabled-surface": {
                 "$type": "color",
-                "$value": "{brand.color.neutral.600}"
+                "$value": "{brand.color.neutral.700}"
               }
             }
           }
