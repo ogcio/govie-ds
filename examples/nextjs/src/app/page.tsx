@@ -121,21 +121,23 @@ function MyForm() {
       textArea: "",
       selectOption: "",
       legacySelect: "select-option",
-      city: "",
       password: "",
       radioGroup: "",
-      role: "",
+      checkboxGroup: [],
     },
   });
 
   const { handleSubmit, control, reset } = methods;
 
   const onSubmit = (data: any) => {
+    console.log("Form submitted successfully");
     console.log("Form Data:", data);
   };
 
   const handleClear = () => {
     reset();
+    console.log("Form cleared");
+    console.log("Form Data after clear:", methods.getValues());
   };
 
   const selectOptions: string[] = [
@@ -246,6 +248,7 @@ function MyForm() {
                 />
               </FormField>
 
+              {/* Radio Group */}
               <FormField label={{ text: "Radio Group" }} className="w-full">
                 <Controller
                   name="radioGroup"
@@ -260,6 +263,44 @@ function MyForm() {
                       <InputRadio value="option2" label="Option 2" />
                       <InputRadio value="option3" label="Option 3" />
                     </InputRadioGroup>
+                  )}
+                />
+              </FormField>
+
+              {/* Checkbox */}
+              <FormField>
+                <FormFieldLabel>Organisation</FormFieldLabel>
+                <Controller
+                  name="checkboxGroup"
+                  control={control}
+                  render={({ field }) => (
+                    <InputCheckboxGroup
+                      groupId="UniqueID"
+                      values={field.value}
+                      onChange={field.onChange}
+                    >
+                      <InputCheckbox
+                        id="UniqueID-check1"
+                        label="Employment Tribunal"
+                        value="employment-tribunal"
+                      />
+                      <InputCheckbox
+                        id="UniqueID-check2"
+                        label="Ministry of Defence"
+                        value="ministry-of-defence"
+                      />
+                      <InputCheckbox
+                        id="UniqueID-check3"
+                        label="Department for Transport"
+                        value="department-for-transport"
+                      />
+                      <InputCheckbox
+                        disabled
+                        id="UniqueID-check4"
+                        label="Others"
+                        value="others"
+                      />
+                    </InputCheckboxGroup>
                   )}
                 />
               </FormField>
