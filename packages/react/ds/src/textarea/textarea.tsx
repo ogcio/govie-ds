@@ -111,6 +111,7 @@ export const TextArea = forwardRef(
               data-icon-start={!!iconStart}
               data-clear-enabled={clearButtonEnabled}
               maxLength={maxChars}
+              value={currentValue}
               onChange={handleOnChange}
               {...props}
             />

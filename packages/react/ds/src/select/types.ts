@@ -77,6 +77,7 @@ export type SelectNextProps = PropsWithChildren<
     onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     onMenuClose?: () => void;
     defaultValue?: string;
+    value?: string;
     enableSearch?: boolean;
     disabled?: boolean;
   } & Omit<HTMLAttributes<HTMLDivElement>, `on${string}`>
