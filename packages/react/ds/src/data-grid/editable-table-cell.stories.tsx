@@ -71,6 +71,7 @@ export const AsSelect: Story = {
     editor: {
       type: 'select',
       props: {
+        'aria-label': 'Select option',
         options: [
           { label: 'Option 1', value: 'option1' },
           { label: 'Option 2', value: 'option2' },
@@ -94,6 +95,9 @@ export const AsCheckbox: Story = {
     setData: setDataMock,
     editor: {
       type: 'checkbox',
+      props: {
+        'aria-label': 'Active status',
+      },
     },
   },
   play: async ({ canvasElement }) => {
@@ -149,6 +153,7 @@ export const DisabledSelect: Story = {
     editor: {
       type: 'select',
       props: {
+        'aria-label': 'Select option',
         options: [
           { label: 'Option 1', value: 'option1' },
           { label: 'Option 2', value: 'option2' },
@@ -173,6 +178,7 @@ export const ErrorSelect: Story = {
     editor: {
       type: 'select',
       props: {
+        'aria-label': 'Select option',
         options: [
           { label: 'Option 1', value: 'option1' },
           { label: 'Option 2', value: 'option2' },
@@ -192,6 +198,7 @@ export const DisabledCheckbox: Story = {
     editor: {
       type: 'checkbox',
       props: {
+        'aria-label': 'Active status',
         disabled: true,
       },
     },
@@ -211,6 +218,7 @@ export const ErrorCheckbox: Story = {
     editor: {
       type: 'checkbox',
       props: {
+        'aria-label': 'Active status',
         error: true,
       },
     },
