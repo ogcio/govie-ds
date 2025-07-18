@@ -1,5 +1,28 @@
 .gi-input-checkbox {
-  @apply gi-rounded-sm hover:gi-outline hover:gi-outline-sm hover:gi-outline-gray-200 hover:gi-outline-offset-0 disabled:hover:gi-outline-none focus:gi-shadow-[inset_0_0_0_1px] focus:gi-shadow-color-border-system-neutral-interactive-hover gi-focus-state-outline gi-cursor-pointer gi-appearance-none gi-border-sm gi-border-solid gi-border-color-border-system-neutral-default checked:before:gi-block checked:before:gi--rotate-45 checked:before:gi-relative checked:before:gi-border-l-lg checked:before:gi-border-b-lg checked:before:gi-border-color-border-system-neutral-default gi-input-disabled-state disabled:before:gi-border-color-border-system-neutral-interactive-disabled;
+  @apply gi-rounded-sm 
+  hover:gi-outline
+  hover:gi-outline-sm
+  hover:gi-outline-gray-200
+  hover:gi-outline-offset-0 
+  
+  focus:gi-shadow-[inset_0_0_0_1px] 
+  focus:gi-shadow-color-border-system-neutral-interactive-hover
+
+  gi-focus-state-outline gi-cursor-pointer 
+  gi-appearance-none gi-border-sm gi-border-solid 
+  gi-border-color-border-system-neutral-default 
+  
+  checked:before:gi-block 
+  checked:before:gi--rotate-45 
+  checked:before:gi-relative 
+  checked:before:gi-border-l-lg 
+  checked:before:gi-border-b-lg 
+  checked:before:gi-border-color-border-system-neutral-default
+
+  gi-input-disabled-state 
+  disabled:hover:gi-outline-none 
+  disabled:before:gi-border-color-border-system-neutral-interactive-disabled-surface
+  disabled:gi-border-color-border-system-neutral-interactive-disabled-surface;
 }
 
 .gi-input-checkbox-small {
@@ -33,4 +56,17 @@
 }
 .gi-input-checkbox-hint-container > div {
   @apply gi-h-auto;
+}
+
+.gi-input-checkbox-container[data-table-cell='true'] {
+  @apply gi-gap-0 gi-justify-center;
+}
+.gi-input-checkbox-container[data-table-cell-error-state='true']
+  .gi-input-checkbox:not(:disabled) {
+  @apply gi-border-sm
+    gi-border-color-border-intent-error-default
+    gi-focus-state-outline
+    focus:gi-shadow-[inset_0_0_0_1px]
+    focus:gi-shadow-color-border-system-neutral-interactive-hover
+    focus:gi-border-color-border-system-neutral-default;
 }

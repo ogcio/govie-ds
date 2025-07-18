@@ -6,6 +6,10 @@
   @apply gi-p-3 gi-h-12 gi-w-12 gi-justify-center;
 }
 
+.gi-icon-btn-extra-large {
+  @apply gi-p-3 gi-h-14 gi-w-14 gi-justify-center;
+}
+
 .gi-icon-btn-regular {
   @apply gi-p-3 gi-h-10 gi-w-10 gi-justify-center;
 }

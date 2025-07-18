@@ -321,7 +321,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         aria-label="Type to Search"
         aria-disabled={disabled}
         disabled={disabled}
-        placeholder={state.inputValue || 'Type to Search'}
+        placeholder={props.placeholder || 'Type to Search'}
         iconEndClassName={cn({
           'gi-cursor-pointer': !disabled,
           'gi-cursor-not-allowed gi-pointer-events-none': disabled,
@@ -341,6 +341,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
           placement: 'bottom-start',
           strategy: 'absolute',
           modifiers: [
+            { name: 'offset', options: { offset: [0, 4] } },
             { name: 'preventOverflow', options: { padding: 8 } },
             {
               name: 'flip',
