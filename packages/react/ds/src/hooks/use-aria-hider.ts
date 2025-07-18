@@ -2,18 +2,22 @@ import { useEffect } from 'react';
 
 export const useAriaHider = (
   refNode: HTMLElement | null,
-  activate: boolean,
-) => {
+  shouldActivate: boolean,
+): void => {
   useEffect(() => {
-    if (!activate || !refNode) {
+    if (shouldActivate !== true || refNode === null) {
       return;
     }
 
-    const bodyChildren = [...document.body.children];
-    const elementsToHide = bodyChildren.filter(
-      (element) =>
-        element !== refNode && element.getAttribute('aria-hidden') !== 'true',
-    );
+    const documentContext = refNode.ownerDocument ?? document;
+    const bodyChildren = [...documentContext.body.children];
+
+    const elementsToHide: Element[] = bodyChildren.filter((element) => {
+      const isSameElement: boolean = element === refNode;
+      const alreadyHidden: boolean =
+        element.getAttribute('aria-hidden') === 'true';
+      return !isSameElement && !alreadyHidden;
+    });
 
     for (const element of elementsToHide) {
       element.setAttribute('aria-hidden', 'true');
@@ -24,5 +28,5 @@ export const useAriaHider = (
         element.removeAttribute('aria-hidden');
       }
     };
-  }, [activate, refNode]);
+  }, [shouldActivate, refNode]);
 };

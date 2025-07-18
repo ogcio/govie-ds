@@ -17,15 +17,15 @@ importers:
       '@types/lodash':
         specifier: ^4.17.7
         version: 4.17.20
+      focus-trap:
+        specifier: ^7.6.5
+        version: 7.6.5
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
       react-color:
         specifier: ^2.19.3
         version: 2.19.3(react@19.0.0)
-      react-focus-lock:
-        specifier: ^2.13.6
-        version: 2.13.6(@types/react@19.1.8)(react@19.0.0)
       react-hook-form:
         specifier: ^7.58.1
         version: 7.60.0(react@19.0.0)
@@ -6805,9 +6805,8 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  focus-lock@1.3.6:
-    resolution: {integrity: sha512-Ik/6OCk9RQQ0T5Xw+hKNLWrjSMtv51dD4GRmJjbD5a58TIEpI5a5iXagKVl3Z5UuyslMCA8Xwnu76jQob62Yhg==}
-    engines: {node: '>=10'}
+  focus-trap@7.6.5:
+    resolution: {integrity: sha512-7Ke1jyybbbPZyZXFxEftUtxFGLMpE2n6A+z//m4CRDlj0hW+o3iYSmh8nFlYMurOiJVDmJRilUQtJr08KfIxlg==}
 
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
@@ -9380,11 +9379,6 @@ packages:
       react: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  react-clientside-effect@1.2.8:
-    resolution: {integrity: sha512-ma2FePH0z3px2+WOu6h+YycZcEvFmmxIlAb62cF52bG86eMySciO/EQZeQMXd07kPCYB0a1dWDT5J+KE9mCDUw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-
   react-color@2.19.3:
     resolution: {integrity: sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==}
     peerDependencies:
@@ -9409,15 +9403,6 @@ packages:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
       react: ^19.0.0
-
-  react-focus-lock@2.13.6:
-    resolution: {integrity: sha512-ehylFFWyYtBKXjAO9+3v8d0i+cnc1trGS0vlTGhzFW1vbFXVUTmR8s2tt/ZQG8x5hElg6rhENlLG1H3EZK0Llg==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
 
   react-hook-form@7.60.0:
     resolution: {integrity: sha512-SBrYOvMbDB7cV8ZfNpaiLcgjH/a1c7aK0lK+aNigpf4xWLO8q+o4tcvVurv3c4EOyzn/3dCsYt4GKD42VvJ/+A==}
@@ -10391,6 +10376,9 @@ packages:
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
+
+  tabbable@6.2.0:
+    resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
   table-layout@0.4.5:
     resolution: {integrity: sha512-zTvf0mcggrGeTe/2jJ6ECkJHAQPIYEwDoqsiqBjI24mvRmQbInK5jq33fyypaCBxX08hMkfmdOqj6haT33EqWw==}
@@ -18823,9 +18811,9 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  focus-lock@1.3.6:
+  focus-trap@7.6.5:
     dependencies:
-      tslib: 2.8.1
+      tabbable: 6.2.0
 
   follow-redirects@1.15.9(debug@4.4.1):
     optionalDependencies:
@@ -22146,11 +22134,6 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  react-clientside-effect@1.2.8(react@19.0.0):
-    dependencies:
-      '@babel/runtime': 7.26.10
-      react: 19.0.0
-
   react-color@2.19.3(react@19.0.0):
     dependencies:
       '@icons/material': 0.2.4(react@19.0.0)
@@ -22190,18 +22173,6 @@ snapshots:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
-
-  react-focus-lock@2.13.6(@types/react@19.1.8)(react@19.0.0):
-    dependencies:
-      '@babel/runtime': 7.26.10
-      focus-lock: 1.3.6
-      prop-types: 15.8.1
-      react: 19.0.0
-      react-clientside-effect: 1.2.8(react@19.0.0)
-      use-callback-ref: 1.3.3(@types/react@19.1.8)(react@19.0.0)
-      use-sidecar: 1.1.3(@types/react@19.1.8)(react@19.0.0)
-    optionalDependencies:
-      '@types/react': 19.1.8
 
   react-hook-form@7.60.0(react@19.0.0):
     dependencies:
@@ -23531,6 +23502,8 @@ snapshots:
   symbol-tree@3.2.4: {}
 
   systeminformation@5.27.7: {}
+
+  tabbable@6.2.0: {}
 
   table-layout@0.4.5:
     dependencies:
