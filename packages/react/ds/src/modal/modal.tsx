@@ -279,11 +279,13 @@ const ModalPortal = ({
 }) => {
   useFocusTrap(modalRef?.current, isOpen, {
     initialFocus: false,
+    fallbackFocus: () => modalRef?.current,
   });
 
-  if (!globalThis.window) {
+  if (typeof document === 'undefined') {
     return null;
   }
+
   return createPortal(children, document.body);
 };
 

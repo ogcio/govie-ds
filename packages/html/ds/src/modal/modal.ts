@@ -12,10 +12,6 @@ export const hideAriaOutside = (refNode: HTMLElement) => {
   const elementsToHide = bodyChildren.filter((element) => {
     const isSameElement = element === refNode;
     const alreadyHidden = element.getAttribute('aria-hidden') === 'true';
-    console.log({
-      isSameElement,
-      alreadyHidden,
-    });
     return !isSameElement && !alreadyHidden;
   });
 

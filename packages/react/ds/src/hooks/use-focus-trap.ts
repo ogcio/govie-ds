@@ -17,7 +17,7 @@ export const useFocusTrap = (
 
     const trap: FocusTrap = createFocusTrap(element, options);
 
-    trap.activate();
+    setTimeout(trap.activate, 0);
 
     return () => {
       trap.deactivate();
