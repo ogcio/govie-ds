@@ -86,7 +86,7 @@ export function TableHeader({
       role={role}
       data-sorted={!!sorted}
       data-header-string={isChildrenString}
-      tabIndex={sorted && isChildrenString ? 0 : -1}
+      tabIndex={onSort && isChildrenString ? 0 : -1}
       onKeyDown={handleKeyDown}
       {...props}
     >
