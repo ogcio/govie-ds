@@ -8,6 +8,7 @@ import {
   InputCheckboxSizeEnum,
   type InputCheckboxSizeEnumType,
   type InputCheckboxProps,
+  InputCheckboxTableCellProps,
 } from './types.js';
 
 const getSizeClass = (size: InputCheckboxSizeEnumType): string => {
@@ -43,6 +44,7 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
       label,
       hint,
       indeterminate = false,
+      containerProps,
       ...props
     },
     ref,
@@ -51,7 +53,7 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
 
     return (
       <>
-        <div className="gi-input-checkbox-container">
+        <div className="gi-input-checkbox-container" {...containerProps}>
           <Input
             type="checkbox"
             ref={ref}
@@ -81,4 +83,18 @@ export const InputCheckbox = forwardRef<HTMLInputElement, InputCheckboxProps>(
   },
 );
 
+export const InputCheckboxTableCell: React.FC<InputCheckboxTableCellProps> = ({
+  error,
+  ...props
+}) => (
+  <InputCheckbox
+    {...props}
+    size="sm"
+    containerProps={{
+      'data-table-cell': true,
+      'data-table-cell-error-state': error?.toString(),
+    }}
+  />
+);
+InputCheckboxTableCell.displayName = 'InputCheckboxTableCell';
 InputCheckbox.displayName = 'InputCheckbox';

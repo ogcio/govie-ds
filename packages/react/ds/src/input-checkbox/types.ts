@@ -14,4 +14,9 @@ export type InputCheckboxProps = {
   label?: string;
   hint?: string;
   indeterminate?: boolean;
+  containerProps?: any;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
+
+export type InputCheckboxTableCellProps = Partial<InputCheckboxProps> & {
+  error?: boolean;
+};

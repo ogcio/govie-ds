@@ -153,7 +153,7 @@ export const smallCheckbox: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('checkbox');
-    expect(input).toHaveClass('gi-h-6');
+    expect(input).toHaveClass('gi-input-checkbox-small');
   },
 };
 
@@ -168,7 +168,7 @@ export const mediumCheckbox: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('checkbox');
-    expect(input).toHaveClass('gi-h-8');
+    expect(input).toHaveClass('gi-input-checkbox-medium');
   },
 };
 
@@ -183,7 +183,7 @@ export const largeCheckbox: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('checkbox');
-    expect(input).toHaveClass('gi-h-11');
+    expect(input).toHaveClass('gi-input-checkbox-large');
   },
 };
 
