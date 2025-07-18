@@ -23,6 +23,8 @@ export type CheckboxProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   name?: string;
+  className?: string;
+  dataTableCell?: any;
 };
 
 export type CheckboxGroupProps = {

@@ -15,4 +15,6 @@ export type TablePropsExtension = TableProps & {
   headers?: string[];
   rows?: string[][];
   foot?: TableFootCell[];
+  stripped?: boolean;
+  rowSize?: 'sm' | 'md' | 'lg';
 };

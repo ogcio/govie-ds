@@ -38,4 +38,10 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'search';
   halfFluid?: boolean;
   clearButtonEnabled?: boolean;
+  containerProps?: any;
+};
+
+export type InputTextTableCellProps = InputTextProps & {
+  error?: boolean;
+  disabled?: boolean;
 };

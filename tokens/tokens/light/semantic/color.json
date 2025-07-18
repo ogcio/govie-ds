@@ -958,6 +958,10 @@
               "disabled": {
                 "$type": "color",
                 "$value": "{brand.color.neutral.400}"
+              },
+              "disabled-surface": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.700}"
               }
             }
           }

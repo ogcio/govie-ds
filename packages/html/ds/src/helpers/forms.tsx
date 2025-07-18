@@ -110,7 +110,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   if (arguments_.size == 'lg') {
     widthClass = 'gi-w-11 gi-h-11';
     sizeClass = 'gi-input-checkbox-large';
-  } else if (arguments_.size == 'sm') {
+  } else if (arguments_.size == 'sm' || arguments_.dataTableCell) {
     widthClass = 'gi-w-6 gi-h-6';
     sizeClass = 'gi-input-checkbox-small';
   } else {
@@ -122,13 +122,17 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
   const inputContainer = document.createElement('div');
   inputContainer.className = 'gi-input-checkbox-container';
 
+  if (arguments_.dataTableCell) {
+    inputContainer.dataset.tableCell = arguments_.dataTableCell;
+  }
+
   const input = document.createElement('input') as HTMLInputElement;
 
   input.defaultChecked = !!arguments_.defaultChecked;
 
   input.type = 'checkbox';
   input.role = 'checkbox';
-  input.className = `gi-input-checkbox ${sizeClass} ${widthClass}`;
+  input.className = sizeClass;
   input.id = arguments_.id || (arguments_.value as string);
   if (arguments_.value) {
     input.value = arguments_.value as string;
@@ -159,9 +163,8 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
     input.ariaLabel = arguments_.ariaLabel;
   }
 
-  container.append(inputContainer);
-
   if (arguments_.hint) {
+    container.append(inputContainer);
     const hintContainer = document.createElement('div');
     hintContainer.className = 'gi-input-checkbox-hint-container';
 
@@ -174,8 +177,10 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
     hintContainer.append(hint);
 
     container.append(hintContainer);
+    return container;
   }
-  return container;
+
+  return inputContainer;
 };
 
 export const createTextInput = (arguments_: TextInputProps) => {
