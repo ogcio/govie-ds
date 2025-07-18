@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.11.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.10.1...html-lib-v1.11.0) (2025-07-18)
+
+
+### Features
+
+* Adding Checkbox indeterminate state  ([#651](https://github.com/ogcio/govie-ds/issues/651)) ([73b7da6](https://github.com/ogcio/govie-ds/commit/73b7da6821769d5cf4a6e7a3f9d207cd95a666fc))
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.12.0
+    * @ogcio/theme-govie bumped to 1.6.0
+
 ## [1.10.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.10.0...html-lib-v1.10.1) (2025-07-08)
 
 

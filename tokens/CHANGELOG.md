@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.3...tokens-v1.6.0) (2025-07-18)
+
+
+### Features
+
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.2...tokens-v1.5.3) (2025-07-04)
 
 
