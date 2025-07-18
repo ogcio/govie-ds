@@ -155,6 +155,7 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
         arguments_.closeButtonLabel +
         ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[16px]">close</span>',
     });
+    closeButton.dataset.element = 'modal-close-button';
     modalHeader.append(closeButton);
   } else if (closeOnClick) {
     const closeButton = createIconButton({
@@ -167,6 +168,7 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
       className: 'gi-modal-icon',
       variant: 'flat',
     });
+    closeButton.dataset.element = 'modal-close-button';
     modalHeader.append(closeButton);
   }
 

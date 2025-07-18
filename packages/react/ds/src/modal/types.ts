@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, Ref } from 'react';
 import { ButtonProps, ButtonSize, ButtonVariant } from '../button/types.js';
 import { IconButtonProps } from '../icon-button/icon-button.js';
 import { ModalBody, ModalFooter, ModalTitle } from './modal.js';

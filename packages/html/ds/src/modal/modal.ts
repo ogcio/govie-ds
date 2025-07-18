@@ -1,8 +1,34 @@
+import { createFocusTrap, FocusTrap } from 'focus-trap';
 import {
   BaseComponent,
   BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
+
+export const hideAriaOutside = (refNode: HTMLElement) => {
+  const documentContext = refNode.ownerDocument || document;
+  const bodyChildren = [...documentContext.body.children];
+
+  const elementsToHide = bodyChildren.filter((element) => {
+    const isSameElement = element === refNode;
+    const alreadyHidden = element.getAttribute('aria-hidden') === 'true';
+    console.log({
+      isSameElement,
+      alreadyHidden,
+    });
+    return !isSameElement && !alreadyHidden;
+  });
+
+  for (const element of elementsToHide) {
+    element.setAttribute('aria-hidden', 'true');
+  }
+
+  return () => {
+    for (const element of elementsToHide) {
+      element.removeAttribute('aria-hidden');
+    }
+  };
+};
 
 export type ModalOptions = BaseComponentOptions;
 
@@ -14,6 +40,8 @@ export class Modal extends BaseComponent<ModalOptions> {
   triggerButton: Element | null;
   closeOnClick: boolean;
   closeOnOverlayClick: boolean;
+  trap: FocusTrap;
+  ariaHiderCleanup: (() => void) | null = null;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -27,8 +55,8 @@ export class Modal extends BaseComponent<ModalOptions> {
     });
     this.modal = this.query.getByElement({ name: 'modal' });
     this.closeIcon = this.query.getByElement({
-      name: 'modal-container',
-    }).firstElementChild;
+      name: 'modal-close-button',
+    });
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
@@ -39,6 +67,10 @@ export class Modal extends BaseComponent<ModalOptions> {
 
     this.initModalState();
     this.bindCloseButtons();
+
+    this.trap = createFocusTrap(this.modal as HTMLElement, {
+      initialFocus: false,
+    });
   }
 
   initModalState() {
@@ -73,6 +105,8 @@ export class Modal extends BaseComponent<ModalOptions> {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
+      this.trap?.activate();
+      this.ariaHiderCleanup = hideAriaOutside(this.modal as HTMLElement);
     } else if (
       (this.closeOnClick && this.closeOnOverlayClick) ||
       props?.forceClose
@@ -80,6 +114,8 @@ export class Modal extends BaseComponent<ModalOptions> {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
       this.modal.setAttribute('aria-hidden', 'true');
+      this.trap?.deactivate();
+      this.ariaHiderCleanup?.();
     }
   }
 
@@ -115,6 +151,7 @@ export class Modal extends BaseComponent<ModalOptions> {
     );
     this.modal.removeEventListener('click', this.modalEventListener);
     this.closeIcon?.removeEventListener('click', this.closeButtonListener);
+    this.trap?.deactivate();
   }
 }
 
