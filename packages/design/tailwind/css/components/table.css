@@ -1,10 +1,23 @@
 .gi-table {
-  @apply gi-w-full gi-border-spacing-0 gi-border-collapse gi-text-md;
+  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate 
+  gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
+}
+.gi-table[data-no-border='true'] {
+  @apply gi-border-0;
 }
 
 .gi-table-th,
 .gi-table-td {
-  @apply gi-pl-1 gi-pr-5 gi-py-2.5 gi-border-b-[gray] gi-border-b gi-border-solid;
+  @apply gi-border-b-[gray]
+    gi-border-b
+    gi-border-solid
+    gi-border-b-color-surface-system-neutral-interactive-disabled
+    gi-text-sm gi-leading-10 xs:gi-leading-5;
+  height: inherit;
+}
+
+.gi-table-tr:last-child .gi-table-td {
+  @apply gi-border-b-0;
 }
 
 .gi-table-caption-text {
@@ -14,4 +27,54 @@
 .gi-table-no-data,
 .gi-table-loading {
   @apply gi-text-center gi-border-0 gi-py-8 gi-px-4;
+}
+
+.gi-table-data-cell {
+  @apply gi-px-3 gi-whitespace-normal gi-line-clamp-2;
+}
+
+.gi-table tbody tr {
+  @apply gi-overflow-hidden gi-align-middle;
+}
+
+.gi-table[data-row-size='sm'] tbody tr {
+  @apply gi-h-10;
+}
+.gi-table[data-row-size='md'] tbody tr {
+  @apply gi-h-12;
+}
+.gi-table[data-row-size='lg'] tbody tr {
+  @apply gi-h-14;
+}
+
+.gi-table[data-stripped='true'] tbody tr:nth-child(odd),
+.gi-table[data-stripped='true']
+  tbody
+  tr:nth-child(odd)
+  :is(input:not(:disabled), select:not(:disabled)) {
+  @apply gi-bg-color-surface-system-neutral-layer1;
+}
+
+.gi-table thead tr {
+  @apply gi-h-14;
+}
+
+.gi-table-th[data-sorted='true'] {
+  @apply gi-cursor-pointer gi-select-none;
+}
+
+.gi-table-th[data-header-string='true'] {
+  @apply gi-px-3;
+}
+
+.gi-table-data-slot-container {
+  @apply gi-flex gi-items-center gi-justify-between gi-bg-color-surface-system-neutral-layer1 gi-p-3;
+}
+
+.gi-table-expand-icon-container {
+  @apply gi-flex gi-items-center gi-justify-center;
+}
+
+.gi-table-td {
+  @apply gi-p-0 gi-text-sm gi-font-[400];
 }

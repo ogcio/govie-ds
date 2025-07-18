@@ -1,9 +1,11 @@
-"use client";
-import NextLink from "next/link";
-import { ComboBoxProps, CookieBannerProps } from "@/props";
-import { useForm, Controller } from "react-hook-form";
+'use client';
+import NextLink from 'next/link';
+import { ComboBoxProps, CookieBannerProps } from '@/props';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Alert,
+  Autocomplete,
+  AutocompleteItem,
   BreadcrumbCurrentLink,
   BreadcrumbEllipsis,
   BreadcrumbLink,
@@ -48,6 +50,8 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
+  SelectItemNext,
+  SelectNext,
   Stack,
   StepItem,
   SummaryList,
@@ -58,50 +62,50 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
-} from "@ogcio/design-system-react";
+} from '@ogcio/design-system-react';
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: "Departments",
-      itemType: "link",
-      href: "#",
-      showItemMode: "desktop-only",
+      label: 'Departments',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Services",
-      itemType: "link",
-      href: "#",
-      showItemMode: "desktop-only",
+      label: 'Services',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
     },
     {
-      itemType: "divider",
-      showItemMode: "desktop-only",
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Home",
-      icon: "home",
-      itemType: "link",
-      href: "/item1",
-      showItemMode: "desktop-only",
+      label: 'Home',
+      icon: 'home',
+      itemType: 'link',
+      href: '/item1',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Search",
-      icon: "search",
-      itemType: "slot",
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
       component: <HeaderSearch />,
-      slotAppearance: "dropdown",
-      showItemMode: "desktop-only",
+      slotAppearance: 'dropdown',
+      showItemMode: 'desktop-only',
     },
   ],
   secondaryLinks: [
     {
-      href: "#",
-      label: "English",
+      href: '#',
+      label: 'English',
     },
     {
-      href: "#",
-      label: "Gaeilge",
+      href: '#',
+      label: 'Gaeilge',
     },
   ],
 };
@@ -109,12 +113,12 @@ const headerProps: HeaderProps = {
 function MyForm() {
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      myText: "",
+      myText: '',
     },
   });
 
   const onSubmit = (data: any) => {
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
   };
 
   return (
@@ -136,15 +140,15 @@ function MyForm() {
 const handleCreateToast = (
   title: string,
   variant: ToastVariant,
-  slotAction?: any
+  slotAction?: any,
 ) =>
   toaster.create({
     title,
     variant,
-    description: "This is a toast notification.",
+    description: 'This is a toast notification.',
     position: {
-      x: "right",
-      y: "bottom",
+      x: 'right',
+      y: 'bottom',
     },
     duration: 3000,
     dismissible: true,
@@ -156,7 +160,7 @@ export default function Home() {
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: "/" }}
+        logo={{ href: '/' }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -171,28 +175,38 @@ export default function Home() {
         Text Input Password
         <InputPassword />
         <br />
-        <Button onClick={() => handleCreateToast("Success", "success")}>
+        <Autocomplete>
+          <AutocompleteItem value="option1">Option 1</AutocompleteItem>
+          <AutocompleteItem value="option2">Option 2</AutocompleteItem>
+        </Autocomplete>
+        <br />
+        <SelectNext>
+          <SelectItemNext value="Option1">Option 1</SelectItemNext>
+          <SelectItemNext value="Option2">Option 2</SelectItemNext>
+        </SelectNext>
+        <br />
+        <Button onClick={() => handleCreateToast('Success', 'success')}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Error", "danger")}>
+        <Button onClick={() => handleCreateToast('Error', 'danger')}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Info", "info")}>
+        <Button onClick={() => handleCreateToast('Info', 'info')}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Warning", "warning")}>
+        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
           Trigger Warning Toast via callback
         </Button>
         <br />
         <Button
           onClick={() =>
             handleCreateToast(
-              "Success",
-              "success",
-              <NextLink href="#">Custom Nextjs Link</NextLink>
+              'Success',
+              'success',
+              <NextLink href="#">Custom Nextjs Link</NextLink>,
             )
           }
         >
@@ -222,25 +236,25 @@ export default function Home() {
           <h2>Card</h2>
           <Card
             action={{
-              children: "Button",
-              type: "button",
-              variant: "secondary",
+              children: 'Button',
+              type: 'button',
+              variant: 'secondary',
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             href="#"
             inset="none"
             media={{
               config: {
-                alt: "Card Title",
-                aspectRatio: "4 / 3",
-                src: "https://placeholderjs.com/400x300",
+                alt: 'Card Title',
+                aspectRatio: '4 / 3',
+                src: 'https://placeholderjs.com/400x300',
               },
-              type: "image",
+              type: 'image',
             }}
             subTitle="Subheading"
             tag={{
-              text: "New",
-              type: "info",
+              text: 'New',
+              type: 'info',
             }}
             title="Card Title"
             type="horizontal"
@@ -248,10 +262,10 @@ export default function Home() {
           <h2>Card with Nextjs Link</h2>
           <Card
             action={{
-              children: "Learn More",
-              href: "#",
-              size: "md",
-              type: "link",
+              children: 'Learn More',
+              href: '#',
+              size: 'md',
+              type: 'link',
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             title="Vertical Card Without Image"
@@ -273,8 +287,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: "send",
-              ariaLabel: "Send",
+              icon: 'send',
+              ariaLabel: 'Send',
             }}
           />
           <Form>
@@ -382,11 +396,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: "column", base: "row" }}
+              direction={{ sm: 'column', base: 'row' }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}
