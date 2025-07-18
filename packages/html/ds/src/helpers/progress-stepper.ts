@@ -43,6 +43,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     progressStepper.append(stepWrapper);
 
     stepWrapper.className = 'gi-w-full';
+    stepWrapper.role = 'listitem';
     const stepNumber = index + 1;
 
     const div = document.createElement('div');
@@ -57,7 +58,7 @@ export const createProgressStepper = (arguments_: ProgressStepperProps) => {
     stepContainer.dataset.completed = isCompleted.toString();
     stepContainer.dataset.next = isNextStep.toString();
     stepContainer.dataset.indicator = indicator;
-    stepContainer.role = 'listitem';
+
     if (!label) {
       stepContainer.ariaLabel = ariaLabel;
     }

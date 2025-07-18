@@ -400,6 +400,10 @@ export const InputWithIconEndOnly: Story = {
 export const WithRichHintText: Story = {
   args: {
     id: 'input-text-id',
+    label: {
+      content: 'Label',
+      htmlFor: 'input-text-id',
+    },
     hint: {
       content: `<div class="gi-flex">
                   Here is a rich hint &nbsp;${beautifyHtmlNode(createLink({ href: '#', content: 'Click here' }))}
@@ -413,6 +417,10 @@ export const WithRichHintText: Story = {
 export const WithRichErrorText: Story = {
   args: {
     id: 'input-text-id',
+    label: {
+      content: 'Label',
+      htmlFor: 'input-text-id',
+    },
     error: {
       content: `<div class="gi-flex">
                  Error message &nbsp;
@@ -427,6 +435,7 @@ export const WithRichLabelText: Story = {
   args: {
     id: 'input-text-id',
     label: {
+      htmlFor: 'input-text-id',
       content: `<div class="gi-flex">
                  Label message &nbsp;
                   ${beautifyHtmlNode(createIcon({ icon: 'info' }))}

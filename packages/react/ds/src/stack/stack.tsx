@@ -248,12 +248,7 @@ export const Stack: FC<StackProps> = ({
   };
 
   return (
-    <div
-      className={stackClasses}
-      role="region"
-      style={{ height: fixedHeight }}
-      {...props}
-    >
+    <div className={stackClasses} style={{ height: fixedHeight }} {...props}>
       {renderChildren() as ReactElement[]}
     </div>
   );

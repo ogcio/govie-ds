@@ -159,6 +159,9 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
     label.textContent = arguments_.label;
     inputContainer.append(label);
   }
+  if (arguments_.ariaLabel) {
+    input.ariaLabel = arguments_.ariaLabel;
+  }
 
   if (arguments_.hint) {
     container.append(inputContainer);

@@ -131,6 +131,7 @@ export const ModalWrapper = ({
       data-testid={dataTestId || 'modal'}
       data-element="modal"
       role="dialog"
+      aria-label="modal"
       aria-modal="true"
       aria-describedby="gi-modal-body"
       onClick={(event) => {

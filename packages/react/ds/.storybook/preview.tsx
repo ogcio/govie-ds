@@ -52,9 +52,7 @@ const preview: Preview = {
         </>
       ),
     },
-    a11y: {
-      options: {},
-    },
+    a11y: { test: 'error' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

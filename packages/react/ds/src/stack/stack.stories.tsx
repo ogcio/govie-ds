@@ -158,15 +158,15 @@ export const NestedStack: Story = {
   },
   render: () => {
     return (
-      <Stack gap={5} aria-label="stack1">
-        <Stack direction="row" aria-label="stack2">
+      <Stack gap={5}>
+        <Stack direction="row">
           <div className="gi-h-[80px] gi-w-full gi-bg-gray-200"></div>
         </Stack>
-        <Stack direction="row" gap={5} aria-label="stack3">
-          <Stack direction="column" gap={5} aria-label="stack31">
+        <Stack direction="row" gap={5}>
+          <Stack direction="column" gap={5}>
             <div className="gi-h-[200px] gi-w-full gi-bg-gray-200"></div>
           </Stack>
-          <Stack direction="row" gap={5} wrap aria-label="stack32">
+          <Stack direction="row" gap={5} wrap>
             <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
             <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>
             <div className="gi-h-[50px] gi-w-[100px] gi-bg-gray-200"></div>

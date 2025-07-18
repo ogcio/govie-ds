@@ -204,6 +204,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'left',
         showItemMode: 'always',
+        ariaLabel: 'left drawer',
       },
       {
         icon: 'chevron_right',
@@ -212,6 +213,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'right',
         showItemMode: 'always',
+        ariaLabel: 'right drawer',
       },
       {
         label: 'Bottom',

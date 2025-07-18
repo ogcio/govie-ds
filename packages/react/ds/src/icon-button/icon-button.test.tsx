@@ -9,7 +9,7 @@ import { IconButtonProps, IconButton } from './icon-button.js';
 describe('icon-button', () => {
   afterEach(cleanup);
   const renderIconButton = (props: IconButtonProps) =>
-    renderComponent(<IconButton {...props} />);
+    renderComponent(<IconButton {...props} data-testid="govieIconButton" />);
 
   testVariantsAxe(ButtonVariants, (variant) =>
     renderIconButton({
@@ -37,7 +37,6 @@ describe('icon-button', () => {
         icon: 'thumb_up',
       },
       size: 'small',
-      dataTestid: 'govieIconButton',
     });
 
     const iconElement = screen.getByTestId('govie-icon');

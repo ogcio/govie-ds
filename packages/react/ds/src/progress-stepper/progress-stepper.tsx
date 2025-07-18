@@ -105,7 +105,6 @@ export const Step = ({
         data-completed={isCompleted}
         data-next={isNextStep}
         data-indicator={indicator}
-        role="listitem"
         aria-labelledby={`step-label-${stepNumber}`}
         data-testid={dataTestId || `step-label-${stepNumber}`}
         aria-label={hasLabel ? undefined : ariaLabel}
@@ -171,6 +170,7 @@ export const ProgressStepper = ({
 
   return (
     <div
+      role="presentation"
       className={cn('gi-w-full', {
         'gi-flex': orientation === 'vertical',
       })}
@@ -202,7 +202,7 @@ export const ProgressStepper = ({
           ];
 
           return (
-            <div className="gi-w-full">
+            <div className="gi-w-full" role="listitem">
               <Step
                 key={dataTestId || `progress-stepper-step-${index}`}
                 stepNumber={index + 1}

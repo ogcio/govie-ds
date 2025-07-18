@@ -159,7 +159,7 @@ export function Header({
     const newItems = items || [];
     return addDefaultMobileMenu
       ? buildDefaultMobileMenu(
-          mobileMenuLabel || '',
+          mobileMenuLabel || 'Menu',
           newItems,
           secondaryLinks || [],
         )

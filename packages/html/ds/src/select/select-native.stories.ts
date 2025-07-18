@@ -57,8 +57,10 @@ export const Default: Story = {
 
 export const Focus = {
   args: {
+    id: 'unique-id',
     label: {
       content: 'Label',
+      htmlFor: 'unique-id',
     },
     className: 'focus-select',
     items: [
@@ -149,31 +151,13 @@ export const withLabelHintAndError: Story = {
   },
 };
 
-export const WithoutLabel = {
-  args: {
-    items: [
-      {
-        label: 'Option 1',
-        value: 'value-1',
-      },
-      {
-        label: 'Option 2',
-        value: 'value-2',
-      },
-      {
-        label: 'Option 3',
-        value: 'value-3',
-      },
-    ],
-  },
-  render: (arguments_) => createElement(arguments_),
-};
-
 export const DisabledSelect = {
   args: {
+    id: 'unique-id',
     disabled: true,
     label: {
       content: 'Label',
+      htmlFor: 'unique-id',
     },
     items: [
       {
@@ -195,8 +179,10 @@ export const DisabledSelect = {
 
 export const DisabledItem = {
   args: {
+    id: 'unique-id',
     label: {
       content: 'Label',
+      htmlFor: 'unique-id',
     },
     items: [
       {
