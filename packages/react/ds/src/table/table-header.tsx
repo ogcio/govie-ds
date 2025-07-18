@@ -84,7 +84,7 @@ export function TableHeader({
         { 'gi-w-12': !isChildrenString },
       )}
       role={role}
-      data-sorted={!!sorted}
+      data-sorted={!!onSort}
       data-header-string={isChildrenString}
       tabIndex={onSort && isChildrenString ? 0 : -1}
       onKeyDown={handleKeyDown}
@@ -102,7 +102,7 @@ export function TableHeader({
       >
         {children}
 
-        {!!sorted && getSortedIcon(isChildrenString, sorted)}
+        {!!onSort && getSortedIcon(isChildrenString, sorted)}
       </div>
     </th>
   );
