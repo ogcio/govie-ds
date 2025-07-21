@@ -799,3 +799,35 @@ export const ShowMobileMenuForLanguages: Story = {
     addDefaultMobileMenu: true,
   },
 };
+
+export const TestWithSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      hover: '.gi-header-secondary-item',
+    },
+  },
+};
