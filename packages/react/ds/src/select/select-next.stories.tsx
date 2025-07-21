@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, waitFor, within } from '@storybook/test';
+import { useState } from 'react';
 import {
   FormField,
   FormFieldError,
@@ -11,7 +12,6 @@ import {
   SelectItemNext,
   SelectNext,
 } from './select-next.js';
-import { useState } from 'react';
 
 const meta = {
   title: 'Form/Select/SelectNext',

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, waitFor, within, expect } from '@storybook/test';
+import React from 'react';
 import {
   FormField,
   FormFieldError,
@@ -7,8 +9,6 @@ import {
 } from '../forms/form-field/form-field.js';
 import { InputCheckbox } from '../input-checkbox/input-checkbox.js';
 import { InputCheckboxGroup } from './input-checkbox-group.js';
-import { userEvent, waitFor, within, expect } from '@storybook/test';
-import React from 'react';
 
 const meta = {
   title: 'Form/Checkbox/InputCheckboxGroup',

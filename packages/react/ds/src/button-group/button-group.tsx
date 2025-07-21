@@ -107,7 +107,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
     defaultValue,
   );
 
-  const selectedValue = value !== undefined ? value : internalValue;
+  const selectedValue = value === undefined ? internalValue : value;
 
   useEffect(() => {
     if (value !== undefined) {
