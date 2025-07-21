@@ -79,6 +79,7 @@
     "@faker-js/faker": "^9.6.0",
     "@popperjs/core": "^2.11.8",
     "@types/lodash": "^4.17.7",
+    "focus-trap": "^7.6.5",
     "lodash": "^4.17.21",
     "react-color": "^2.19.3",
     "react-hook-form": "^7.58.1",

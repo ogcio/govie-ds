@@ -1,18 +1,22 @@
 'use client';
-import React, {
+import {
   cloneElement,
   ReactNode,
   Children,
   isValidElement,
   ReactElement,
   useState,
+  useRef,
 } from 'react';
-
+import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
+import { useAriaHider } from '../hooks/use-aria-hider.js';
+import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+
 import type {
   ModalCloseButtonProps,
   ModalFooterButton,
@@ -96,21 +100,21 @@ export const ModalWrapper = ({
   dataTestId,
   ...props
 }: ModalWrapperProps) => {
-  const childrenArray = Children.toArray(children);
+  const modalRef = useRef(null);
+  useAriaHider(modalRef.current, isOpen);
 
+  const childrenArray = Children.toArray(children);
   const modalTitle = childrenArray.find((child) =>
     isModalComponent(ModalTitle, 'ModalTitle', child),
   );
   const modalFooter = childrenArray.find((child) =>
     isModalComponent(ModalFooter, 'ModalFooter', child),
   );
-
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
         as: size === 'sm' ? 'h5' : 'h4',
       })
     : null;
-
   const otherChildren = childrenArray
     .map((child) =>
       modalFooter
@@ -122,69 +126,68 @@ export const ModalWrapper = ({
     .filter((child) => !isModalComponent(ModalTitle, 'ModalTitle', child));
 
   return (
-    <div
-      {...props}
-      className={cn('gi-modal', {
-        'gi-modal-open': isOpen,
-        'gi-modal-close': !isOpen,
-      })}
-      data-testid={dataTestId || 'modal'}
-      data-element="modal"
-      role="dialog"
-      aria-label="modal"
-      aria-modal="true"
-      aria-describedby="gi-modal-body"
-      onClick={(event) => {
-        const target = event.target as HTMLDivElement;
-        if (
-          target.dataset.element === 'modal' &&
-          closeOnClick &&
-          closeOnOverlayClick
-        ) {
-          onClose();
-        }
-      }}
-    >
+    <ModalPortal modalRef={modalRef} isOpen={isOpen}>
       <div
-        data-testid="modal-container"
-        data-size={size}
-        data-position={position}
-        className={cn(
-          'gi-modal-container-control',
-          {
-            'gi-modal-container': !className,
-            'gi-modal-container-center': position === 'center',
-            'gi-modal-container-left': position === 'left',
-            'gi-modal-container-right': position === 'right',
-            'gi-modal-container-bottom': position === 'bottom',
-          },
-          className,
-        )}
+        {...props}
+        ref={modalRef}
+        className={cn('gi-modal', {
+          'gi-modal-open': isOpen,
+          'gi-modal-close': !isOpen,
+        })}
+        data-testid={dataTestId || 'modal'}
+        role="dialog"
+        aria-label="modal"
+        onClick={(event) => {
+          const isOverlayClick = event.currentTarget === event.target;
+          if (isOverlayClick && closeOnClick && closeOnOverlayClick) {
+            onClose();
+          }
+        }}
       >
-        <div>
-          {modalTitleClone}
-          {closeOnClick && (
-            <ModalCloseButton
-              onClick={onClose}
-              label={closeButtonLabel}
-              size={closeButtonSize}
-            />
-          )}
-        </div>
         <div
-          className={cn({
-            'gi-pb-6': !modalFooter,
-          })}
+          data-testid="modal-container"
+          aria-modal="true"
+          aria-describedby="gi-modal-container"
+          aria-labelledby="gi-modal-title"
+          data-size={size}
+          data-position={position}
+          className={cn(
+            'gi-modal-container-control',
+            {
+              'gi-modal-container': !className,
+              'gi-modal-container-center': position === 'center',
+              'gi-modal-container-left': position === 'left',
+              'gi-modal-container-right': position === 'right',
+              'gi-modal-container-bottom': position === 'bottom',
+            },
+            className,
+          )}
         >
-          {otherChildren}
+          <div>
+            {modalTitleClone}
+            {closeOnClick && (
+              <ModalCloseButton
+                onClick={onClose}
+                label={closeButtonLabel}
+                size={closeButtonSize}
+              />
+            )}
+          </div>
+          <div
+            className={cn({
+              'gi-pb-6': !modalFooter,
+            })}
+          >
+            {otherChildren}
+          </div>
         </div>
       </div>
-    </div>
+    </ModalPortal>
   );
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <div className="gi-flex-1" id="gi-modal-title">
+  <div className="gi-flex-1" id={props.id} aria-label={children?.toString()}>
     <Heading as={as} {...props}>
       {children}
     </Heading>
@@ -200,6 +203,8 @@ export const ModalBody = ({
 }) => (
   <div
     id="gi-modal-body"
+    aria-label="Modal content"
+    role="document"
     className={cn(
       {
         'gi-modal-body': !className,
@@ -258,6 +263,27 @@ export const ModalFooter = ({
   );
 };
 
+const ModalPortal = ({
+  children,
+  modalRef,
+  isOpen,
+}: {
+  children: ReactNode;
+  modalRef: any;
+  isOpen: boolean;
+}) => {
+  useFocusTrap(modalRef?.current, isOpen, {
+    initialFocus: false,
+    fallbackFocus: () => modalRef?.current,
+  });
+
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  return createPortal(children, document.body);
+};
+
 export const Modal = ({
   children,
   triggerButton,
@@ -265,7 +291,6 @@ export const Modal = ({
   ...props
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
-
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
