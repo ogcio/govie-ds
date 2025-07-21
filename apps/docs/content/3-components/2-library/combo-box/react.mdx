@@ -62,7 +62,7 @@ component:
 
 The **Combo Box** component combines an input field with a dropdown list, allowing users to either select from a predefined set of options or type their own value.  
 It supports both controlled and uncontrolled modes, multi-select capabilities, and optional chips to display selected items.  
-You can customise its behaviour and appearance via props and integrate it seamlessly in forms.  
+You can customise its behaviour and appearance via props and integrate it seamlessly in forms.
 
 <Section current="react">
 
@@ -223,14 +223,35 @@ You can customise its behaviour and appearance via props and integrate it seamle
 
 ### Default
 
-<StorybookFrame className="h-72" componentId="combo-box-react" story="default" />
+<StorybookFrame
+  className="h-72"
+  componentId="combo-box-react"
+  story="default"
+/>
 
 ### Controlled & Uncontrolled
 
-<StorybookFrame className="h-56" componentId="combo-box-react" story="controlled-uncontrolled" />
+<StorybookFrame
+  className="h-56"
+  componentId="combo-box-react"
+  story="controlled-uncontrolled"
+/>
 
 ## Properties
 
 <ComponentPropertiesTable componentId="combo-box-react" />
+
+## i18n Keys
+
+The Combobox component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+
+```json
+{
+  "dropdownItem.noResultFound": "No results found.",
+  "dropdownItem.search": "Search."
+}
+```
+
+These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
 
 </Section>

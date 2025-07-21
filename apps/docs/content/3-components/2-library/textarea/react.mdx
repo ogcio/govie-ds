@@ -156,4 +156,18 @@ This component supports all native HTML `<textarea>` attributes via standard HTM
 
 <ComponentPropertiesTable componentId="textarea-react" />
 
+## i18n Keys
+
+The Textarea component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+
+```json
+{
+  "textarea.remainingChars": "You have {{remainingChars}} characters remaining"
+}
+```
+
+These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
+
+- Ensure placeholders like `{{ remainingChars }}` is preserved when translating.
+
 </Section>
