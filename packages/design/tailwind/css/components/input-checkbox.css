@@ -58,9 +58,26 @@
   @apply gi-h-auto;
 }
 
+.gi-input-checkbox.gi-checkbox-indeterminate:checked:before {
+  @apply gi-translate-y-0 gi-rotate-0;
+}
+
+.gi-input-checkbox-small.gi-checkbox-indeterminate:checked:before {
+  @apply gi-w-3 gi-h-[1px] gi-left-1 gi-top-[9px] gi-border-b-sm;
+}
+
+.gi-input-checkbox-medium.gi-checkbox-indeterminate:checked:before {
+  @apply gi-left-1.5 gi-w-4 gi-h-[1px] gi-top-[13px] gi-border-b-md;
+}
+
+.gi-input-checkbox-large.gi-checkbox-indeterminate:checked:before {
+  @apply gi-left-2 gi-w-6 gi-h-[1px] gi-top-[18px] gi-border-b-lg;
+}
+
 .gi-input-checkbox-container[data-table-cell='true'] {
   @apply gi-gap-0 gi-justify-center;
 }
+
 .gi-input-checkbox-container[data-table-cell-error-state='true']
   .gi-input-checkbox:not(:disabled) {
   @apply gi-border-sm
