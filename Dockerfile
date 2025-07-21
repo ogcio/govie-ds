@@ -10,7 +10,7 @@ RUN apk add --no-cache libc6-compat zip
 
 WORKDIR /build
 
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY apps/ ./apps
 COPY packages/ ./packages
 COPY tokens/ ./tokens

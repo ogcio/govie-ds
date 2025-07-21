@@ -1,5 +1,0 @@
-{
-  "name": "@ogcio/design-system-tailwind",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "targets": {}
-}
