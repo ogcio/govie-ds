@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 import {
   FormField,
   FormFieldError,
@@ -7,6 +7,7 @@ import {
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
 import { TextArea } from './textarea.js';
+import React from 'react';
 
 const meta = {
   title: 'Form/TextArea',
@@ -256,4 +257,56 @@ export const CustomRowsAndColumns: Story = {
       <TextArea {...props} />
     </FormField>
   ),
+};
+
+export const Controlled: Story = {
+  args: {
+    id: 'textarea-controlled',
+    rows: 4,
+    cols: 50,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows a controlled TextArea component where the value is managed by React state. The current value is displayed below the textarea and updates as the user types.',
+      },
+    },
+  },
+  render: (props) => {
+    const [value, setValue] = React.useState('Initial value');
+
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="textarea-controlled">
+          Controlled Label
+        </FormFieldLabel>
+        <TextArea
+          {...props}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          data-testid="textarea-controlled"
+        />
+        <FormFieldHint>Current: {value}</FormFieldHint>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId(
+      'textarea-controlled',
+    ) as HTMLTextAreaElement;
+
+    expect(textarea.value).toBe('Initial value');
+
+    await textarea.focus();
+    await userEvent.clear(textarea);
+    await userEvent.type(textarea, 'New controlled text');
+
+    expect(textarea.value).toBe('New controlled text');
+
+    const hint = canvas.getByText(/Current:/);
+    expect(hint).toHaveTextContent('Current: New controlled text');
+  },
 };

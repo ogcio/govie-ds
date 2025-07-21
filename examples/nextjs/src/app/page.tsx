@@ -1,7 +1,7 @@
-'use client';
-import NextLink from 'next/link';
-import { ComboBoxProps, CookieBannerProps } from '@/props';
-import { useForm, Controller } from 'react-hook-form';
+"use client";
+import NextLink from "next/link";
+import { ComboBoxProps, CookieBannerProps } from "@/props";
+import { useForm, Controller, FormProvider } from "react-hook-form";
 import {
   Alert,
   Autocomplete,
@@ -11,6 +11,8 @@ import {
   BreadcrumbLink,
   Breadcrumbs,
   Button,
+  ButtonGroup,
+  ButtonGroupItem,
   Card,
   Chip,
   Combobox,
@@ -35,6 +37,7 @@ import {
   IconButton,
   InputCheckbox,
   InputCheckboxGroup,
+  InputFile,
   InputPassword,
   InputRadio,
   InputRadioGroup,
@@ -50,6 +53,8 @@ import {
   PhaseBanner,
   ProgressBar,
   ProgressStepper,
+  Select,
+  SelectItem,
   SelectItemNext,
   SelectNext,
   Stack,
@@ -62,93 +67,307 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
-} from '@ogcio/design-system-react';
+} from "@ogcio/design-system-react";
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Departments",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
+      label: "Services",
+      itemType: "link",
+      href: "#",
+      showItemMode: "desktop-only",
     },
     {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
+      itemType: "divider",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Home',
-      icon: 'home',
-      itemType: 'link',
-      href: '/item1',
-      showItemMode: 'desktop-only',
+      label: "Home",
+      icon: "home",
+      itemType: "link",
+      href: "/item1",
+      showItemMode: "desktop-only",
     },
     {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
+      label: "Search",
+      icon: "search",
+      itemType: "slot",
       component: <HeaderSearch />,
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
+      slotAppearance: "dropdown",
+      showItemMode: "desktop-only",
     },
   ],
   secondaryLinks: [
     {
-      href: '#',
-      label: 'English',
+      href: "#",
+      label: "English",
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      href: "#",
+      label: "Gaeilge",
     },
   ],
 };
 
 function MyForm() {
-  const { handleSubmit, control } = useForm({
+  const methods = useForm({
     defaultValues: {
-      myText: '',
+      myText: "",
+      inputText: "",
+      textArea: "",
+      selectOption: "",
+      legacySelect: "select-option",
+      password: "",
+      radioGroup: "",
+      buttonGroup: "",
+      checkboxGroup: [],
     },
   });
 
+  const { handleSubmit, control, reset } = methods;
+
   const onSubmit = (data: any) => {
-    console.log('Form Data:', data);
+    console.log("Form submitted successfully");
+    console.log("Form Data:", data);
   };
 
+  const handleClear = () => {
+    reset();
+    console.log("Form cleared");
+    console.log("Form Data after clear:", methods.getValues());
+  };
+
+  const selectOptions: string[] = [
+    "Topic 1",
+    "Topic 2",
+    "Topic 3",
+    "Topic 4",
+    "Topic 5",
+  ];
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="myText"
-        control={control}
-        rules={{ maxLength: 50 }}
-        render={({ field, fieldState }) => (
-          <>
-            <TextArea id="textarea-id" maxChars={50} {...field} />
-          </>
-        )}
-      />
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Container
+          className="p-0 w-full border border-[--gieds-color-gray-200] bg-white rounded-lg shadow-lg"
+          id="card-container"
+        >
+          <Container className="px-4 pt-4 pb-0 md:px-8 md:pt-8 md:pb-6">
+            <Container className="p-0 pb-2">
+              <Heading as="h3" id="heading">
+                My Form
+              </Heading>
+            </Container>
+
+            <Container className="p-0 pb-8">
+              <Heading
+                as="h5"
+                className="font-normal text-[--gieds-color-gray-600]"
+                id="subheading"
+              >
+                Please fill in the fields
+              </Heading>
+            </Container>
+
+            <Container className="flex flex-col items-center p-0 gap-4 w-full lg:w-[480px] mx-auto">
+              {/* Input Text */}
+              <FormField label={{ text: "Input Text" }} className="w-full">
+                <Controller
+                  control={control}
+                  name="inputText"
+                  render={({ field }) => (
+                    <InputText
+                      {...field}
+                      id="input-text-id"
+                      className="w-full"
+                    />
+                  )}
+                />
+              </FormField>
+
+              {/* Text Area */}
+              <FormField label={{ text: "Text Area" }} className="w-full">
+                <Controller
+                  control={control}
+                  name="textArea"
+                  render={({ field }) => (
+                    <TextArea
+                      {...field}
+                      cols={100}
+                      rows={4}
+                      id="textarea-id-0"
+                      className="w-full"
+                      maxChars={100}
+                    />
+                  )}
+                />
+              </FormField>
+
+              {/* SelectNext */}
+              <FormField label={{ text: "SelectNext" }} className="w-full">
+                <Controller
+                  control={control}
+                  name="selectOption"
+                  render={({ field }) => (
+                    <SelectNext
+                      {...field}
+                      enableSearch
+                      id="select-option-id"
+                      className="w-full"
+                      onChange={(value: any) => field.onChange(value)}
+                    >
+                      <SelectItemNext value="">Please select</SelectItemNext>
+                      {selectOptions.map((opt) => (
+                        <SelectItemNext key={opt} value={opt}>
+                          {opt}
+                        </SelectItemNext>
+                      ))}
+                    </SelectNext>
+                  )}
+                />
+              </FormField>
+
+              {/* Legacy Select */}
+              <FormField label={{ text: "Select" }} className="w-full">
+                <Controller
+                  control={control}
+                  name="legacySelect"
+                  render={({ field }) => (
+                    <Select {...field} aria-label="Select">
+                      <SelectItem value="select-option" hidden>
+                        Select Option
+                      </SelectItem>
+                      <SelectItem value="value-1">Option 1</SelectItem>
+                      <SelectItem value="value-2">Option 2</SelectItem>
+                      <SelectItem value="value-3">Option 3</SelectItem>
+                    </Select>
+                  )}
+                />
+              </FormField>
+
+              {/* Radio Group */}
+              <FormField label={{ text: "Radio Group" }} className="w-full">
+                <Controller
+                  name="radioGroup"
+                  control={control}
+                  render={({ field }) => (
+                    <InputRadioGroup
+                      groupId="my-radio-group"
+                      value={field.value}
+                      onChange={field.onChange}
+                    >
+                      <InputRadio value="option1" label="Option 1" />
+                      <InputRadio value="option2" label="Option 2" />
+                      <InputRadio value="option3" label="Option 3" />
+                    </InputRadioGroup>
+                  )}
+                />
+              </FormField>
+
+              {/* Button Group */}
+              <FormField label={{ text: "Button Group" }} className="w-full">
+                <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
+                <Controller
+                  name="buttonGroup"
+                  control={control}
+                  render={({ field }) => (
+                    <ButtonGroup
+                      value={field.value}
+                      name="customer-status"
+                      size="medium"
+                      onChange={field.onChange}
+                    >
+                      <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
+                      <ButtonGroupItem value="no">No</ButtonGroupItem>
+                    </ButtonGroup>
+                  )}
+                />
+              </FormField>
+
+              {/* Checkbox */}
+              <FormField>
+                <FormFieldLabel>Organisation</FormFieldLabel>
+                <Controller
+                  name="checkboxGroup"
+                  control={control}
+                  render={({ field }) => (
+                    <InputCheckboxGroup
+                      groupId="UniqueID"
+                      values={field.value}
+                      onChange={field.onChange}
+                    >
+                      <InputCheckbox
+                        id="UniqueID-check1"
+                        label="Employment Tribunal"
+                        value="employment-tribunal"
+                      />
+                      <InputCheckbox
+                        id="UniqueID-check2"
+                        label="Ministry of Defence"
+                        value="ministry-of-defence"
+                      />
+                      <InputCheckbox
+                        id="UniqueID-check3"
+                        label="Department for Transport"
+                        value="department-for-transport"
+                      />
+                      <InputCheckbox
+                        disabled
+                        id="UniqueID-check4"
+                        label="Others"
+                        value="others"
+                      />
+                    </InputCheckboxGroup>
+                  )}
+                />
+              </FormField>
+
+              {/* Password */}
+              <FormField label={{ text: "Password" }} className="w-full">
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field }) => (
+                    <InputPassword {...field} placeholder="Placeholder" />
+                  )}
+                />
+              </FormField>
+
+              {/* Buttons */}
+              <Container className="flex gap-2">
+                <Button type="submit" variant="primary">
+                  Submit
+                </Button>
+                <Button type="button" variant="secondary" onClick={handleClear}>
+                  Clear
+                </Button>
+              </Container>
+            </Container>
+          </Container>
+        </Container>
+      </form>
+    </FormProvider>
   );
 }
 
 const handleCreateToast = (
   title: string,
   variant: ToastVariant,
-  slotAction?: any,
+  slotAction?: any
 ) =>
   toaster.create({
     title,
     variant,
-    description: 'This is a toast notification.',
+    description: "This is a toast notification.",
     position: {
-      x: 'right',
-      y: 'bottom',
+      x: "right",
+      y: "bottom",
     },
     duration: 3000,
     dismissible: true,
@@ -160,7 +379,7 @@ export default function Home() {
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: '/' }}
+        logo={{ href: "/" }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -185,28 +404,28 @@ export default function Home() {
           <SelectItemNext value="Option2">Option 2</SelectItemNext>
         </SelectNext>
         <br />
-        <Button onClick={() => handleCreateToast('Success', 'success')}>
+        <Button onClick={() => handleCreateToast("Success", "success")}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Error', 'danger')}>
+        <Button onClick={() => handleCreateToast("Error", "danger")}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Info', 'info')}>
+        <Button onClick={() => handleCreateToast("Info", "info")}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
+        <Button onClick={() => handleCreateToast("Warning", "warning")}>
           Trigger Warning Toast via callback
         </Button>
         <br />
         <Button
           onClick={() =>
             handleCreateToast(
-              'Success',
-              'success',
-              <NextLink href="#">Custom Nextjs Link</NextLink>,
+              "Success",
+              "success",
+              <NextLink href="#">Custom Nextjs Link</NextLink>
             )
           }
         >
@@ -236,25 +455,25 @@ export default function Home() {
           <h2>Card</h2>
           <Card
             action={{
-              children: 'Button',
-              type: 'button',
-              variant: 'secondary',
+              children: "Button",
+              type: "button",
+              variant: "secondary",
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             href="#"
             inset="none"
             media={{
               config: {
-                alt: 'Card Title',
-                aspectRatio: '4 / 3',
-                src: 'https://placeholderjs.com/400x300',
+                alt: "Card Title",
+                aspectRatio: "4 / 3",
+                src: "https://placeholderjs.com/400x300",
               },
-              type: 'image',
+              type: "image",
             }}
             subTitle="Subheading"
             tag={{
-              text: 'New',
-              type: 'info',
+              text: "New",
+              type: "info",
             }}
             title="Card Title"
             type="horizontal"
@@ -262,10 +481,10 @@ export default function Home() {
           <h2>Card with Nextjs Link</h2>
           <Card
             action={{
-              children: 'Learn More',
-              href: '#',
-              size: 'md',
-              type: 'link',
+              children: "Learn More",
+              href: "#",
+              size: "md",
+              type: "link",
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             title="Vertical Card Without Image"
@@ -287,8 +506,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: 'send',
-              ariaLabel: 'Send',
+              icon: "send",
+              ariaLabel: "Send",
             }}
           />
           <Form>
@@ -340,7 +559,7 @@ export default function Home() {
           </FormField>
           <FormField>
             <FormFieldLabel htmlFor="textarea-id">
-              Textarea with React Hook Form
+              Inputs with React Hook Form
             </FormFieldLabel>
             <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <MyForm />
@@ -352,7 +571,6 @@ export default function Home() {
             <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <TextArea id="textarea-id2" maxChars={50} />
           </FormField>
-
           <span className="material-symbols-outlined">face</span>
           <div>
             <Modal triggerButton={<Button>Open Modal</Button>}>
@@ -396,11 +614,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
+          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: 'column', base: 'row' }}
+              direction={{ sm: "column", base: "row" }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}

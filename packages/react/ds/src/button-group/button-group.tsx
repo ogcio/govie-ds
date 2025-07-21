@@ -5,6 +5,7 @@ import {
   PropsWithChildren,
   useContext,
   useState,
+  useEffect,
 } from 'react';
 import { Button } from '../button/button.js';
 import { ButtonAppearance, ButtonSize } from '../button/types.js';
@@ -84,6 +85,7 @@ type ButtonGroupProps = PropsWithChildren<{
   appearance?: ButtonAppearance;
   onChange?: (value: string) => void;
   defaultValue?: string;
+  value?: string;
   role?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
@@ -95,14 +97,31 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   appearance = 'dark',
   onChange,
   defaultValue,
+  value,
   children,
   role: customRole,
   'aria-labelledby': ariaLabelledby,
   'aria-describedby': ariaDescribedby,
 }) => {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+  const [internalValue, setInternalValue] = useState<string | undefined>(
     defaultValue,
   );
+
+  const selectedValue = value !== undefined ? value : internalValue;
+
+  useEffect(() => {
+    if (value !== undefined) {
+      setInternalValue(value);
+    }
+  }, [value]);
+
+  const setSelectedValue = (newValue: string) => {
+    // Only update internal state if not controlled
+    if (value === undefined) {
+      setInternalValue(newValue);
+    }
+    onChange?.(newValue);
+  };
 
   const groupId = useDomId();
 
