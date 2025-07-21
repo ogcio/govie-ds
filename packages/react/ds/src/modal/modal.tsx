@@ -190,7 +190,7 @@ export const ModalWrapper = ({
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
   <div
     className="gi-flex-1"
-    id="gi-modal-title"
+    id={props.id || `gi-modal-title-${useDomId()}`}
     aria-label={children?.toString()}
   >
     <Heading as={as} {...props}>
