@@ -8,6 +8,7 @@ import {
   isValidElement,
   PropsWithChildren,
   useState,
+  useEffect,
 } from 'react';
 import { InputRadioGroupProps } from './types.js';
 
@@ -15,12 +16,26 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   groupId,
   inline,
   onChange,
+  value: externalValue,
   children,
 }) => {
-  const [value, setValue] = useState<null | string>();
+  const [internalValue, setInternalValue] = useState<null | string>(
+    externalValue || null,
+  );
+
+  // Sync internal state with external value (for React Hook Form reset)
+  useEffect(() => {
+    setInternalValue(externalValue || null);
+  }, [externalValue]);
+
+  const currentValue =
+    externalValue === undefined ? internalValue : externalValue;
 
   const onOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    // We only update internal state if not controlled
+    if (externalValue === undefined) {
+      setInternalValue(event.target.value);
+    }
     onChange?.(event);
   };
 
@@ -40,12 +55,13 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
         name: string;
       }>(element, {
         onChange: onOptionChange,
-        checked: value === element.props.value,
+        checked: currentValue === element.props.value,
         name: groupId,
       });
     }
     return element;
   });
+
   return (
     <div className="gi-input-group-container">
       <div className="gi-input-group-options-container">

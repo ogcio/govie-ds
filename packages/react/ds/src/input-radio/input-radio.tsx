@@ -35,16 +35,6 @@ export const getRadioWidth = (size?: InputRadioSizeType) => {
   return widthClass;
 };
 
-const addConditionalDivider = (
-  conditionalInput: InputTextProps | undefined,
-  checked?: boolean,
-) => {
-  if (conditionalInput && checked) {
-    return checked ? 'gi-block' : 'gi-invisible';
-  }
-  return 'gi-invisible';
-};
-
 export const InputRadio: React.FC<InputRadioProps> = ({
   label,
   hint,

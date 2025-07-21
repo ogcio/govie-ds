@@ -63,8 +63,6 @@
     "@ogcio/design-system-eslint-config": "workspace:*",
     "@ogcio/design-system-prettier-config": "workspace:*",
     "@next/eslint-plugin-next": "^15.2.4",
-    "@nx-tools/container-metadata": "^6.0.1",
-    "@nx-tools/nx-container": "^6.0.1",
     "@types/color-convert": "^2.0.3",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",

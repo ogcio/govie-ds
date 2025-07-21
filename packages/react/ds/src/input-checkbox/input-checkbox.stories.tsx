@@ -59,6 +59,10 @@ export const Default: Story = {
       control: 'boolean',
       description: 'if true the component is disabled',
     },
+    indeterminate: {
+      control: 'boolean',
+      description: 'If true, the checkbox shows the indeterminate state',
+    },
   },
   args: {
     id: 'checkbox-id-1',
@@ -145,5 +149,45 @@ export const LargeCheckbox: Story = {
     value: 'value-1',
     label: 'Checkbox',
     size: InputCheckboxSizeEnum.Large,
+  },
+};
+
+export const IndeterminateChecked: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    checked: true,
+  },
+};
+
+export const IndeterminateSmall: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    size: 'sm',
+  },
+};
+
+export const IndeterminateMedium: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    size: 'md',
+  },
+};
+
+export const IndeterminateLarge: Story = {
+  args: {
+    indeterminate: true,
+    id: 'checkbox-id-indeterminate',
+    value: 'value-2',
+    label: 'Checkbox',
+    size: 'lg',
   },
 };

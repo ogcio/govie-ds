@@ -132,7 +132,7 @@ export const createCheckbox = (arguments_: CheckboxProps) => {
 
   input.type = 'checkbox';
   input.role = 'checkbox';
-  input.className = sizeClass;
+  input.className = `${sizeClass} ${arguments_.indeterminate ? 'gi-checkbox-indeterminate' : ''}`;
   input.id = arguments_.id || (arguments_.value as string);
   if (arguments_.value) {
     input.value = arguments_.value as string;
