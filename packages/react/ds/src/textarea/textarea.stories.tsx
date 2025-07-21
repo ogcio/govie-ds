@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
+import React from 'react';
 import {
   FormField,
   FormFieldError,
@@ -7,7 +8,6 @@ import {
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
 import { TextArea } from './textarea.js';
-import React from 'react';
 
 const meta = {
   title: 'Form/TextArea',
@@ -284,7 +284,7 @@ export const Controlled: Story = {
         <TextArea
           {...props}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(event) => setValue(event.target.value)}
           data-testid="textarea-controlled"
         />
         <FormFieldHint>Current: {value}</FormFieldHint>

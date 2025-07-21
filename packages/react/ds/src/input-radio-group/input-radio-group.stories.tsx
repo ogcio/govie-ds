@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, waitFor, within, expect } from '@storybook/test';
+import React from 'react';
 import {
   FormField,
   FormFieldError,
@@ -8,8 +10,6 @@ import {
 import { InputRadio } from '../input-radio/input-radio.js';
 import { InputRadioGroup } from '../input-radio-group/input-radio-group.js';
 import { Paragraph } from '../paragraph/paragraph.js';
-import React from 'react';
-import { userEvent, waitFor, within, expect } from '@storybook/test';
 
 const meta = {
   title: 'Form/Radio/InputRadioGroup',
@@ -212,7 +212,7 @@ export const Controlled: Story = {
   render: (arguments_) => {
     const [selectedValue, setSelectedValue] = React.useState<
       string | undefined
-    >(undefined);
+    >();
 
     const handleChange = (event?: React.ChangeEvent<HTMLInputElement>) => {
       if (event) {
