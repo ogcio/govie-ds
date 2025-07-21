@@ -37,7 +37,8 @@ export const SelectNext = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [internalValue, setInternalValue] = useState(defaultValue);
-  const value = controlledValue !== undefined ? controlledValue : internalValue;
+
+  const value = controlledValue === undefined ? internalValue : controlledValue;
 
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -66,11 +67,11 @@ export const SelectNext = ({
     }
   };
 
-  const handleOnSelectItem = (val: string) => {
+  const handleOnSelectItem = (value_: string) => {
     setIsOpen(false);
 
     if (controlledValue === undefined) {
-      setInternalValue(val);
+      setInternalValue(value_);
     }
 
     if (onSelectNextChange) {
@@ -78,7 +79,7 @@ export const SelectNext = ({
         ...new Event('change', { bubbles: true }),
         target: {
           ...inputRef.current,
-          value: val,
+          value: value_,
         },
       } as unknown as React.ChangeEvent<HTMLSelectElement>;
 

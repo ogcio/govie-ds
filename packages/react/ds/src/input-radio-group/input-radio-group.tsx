@@ -29,7 +29,7 @@ export const InputRadioGroup: FC<PropsWithChildren<InputRadioGroupProps>> = ({
   }, [externalValue]);
 
   const currentValue =
-    externalValue !== undefined ? externalValue : internalValue;
+    externalValue === undefined ? internalValue : externalValue;
 
   const onOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     // We only update internal state if not controlled

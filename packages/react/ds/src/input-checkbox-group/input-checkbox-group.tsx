@@ -23,7 +23,7 @@ export const InputCheckboxGroup: React.FC<
   }, [externalValues]);
 
   const currentValues =
-    externalValues !== undefined ? externalValues : internalValues;
+    externalValues === undefined ? internalValues : externalValues;
 
   const handleCheckboxChange = (value: string) => {
     let newValues = [];
