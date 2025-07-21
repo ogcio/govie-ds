@@ -13,7 +13,6 @@ import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
 import { useAriaHider } from '../hooks/use-aria-hider.js';
-import { useDomId } from '../hooks/use-dom-id.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
@@ -129,7 +128,6 @@ export const ModalWrapper = ({
   return (
     <ModalPortal modalRef={modalRef} isOpen={isOpen}>
       <div
-        id={`modal-${useDomId()}`}
         {...props}
         ref={modalRef}
         className={cn('gi-modal', {
@@ -188,11 +186,7 @@ export const ModalWrapper = ({
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <div
-    className="gi-flex-1"
-    id={props.id || `gi-modal-title-${useDomId()}`}
-    aria-label={children?.toString()}
-  >
+  <div className="gi-flex-1" id={props.id} aria-label={children?.toString()}>
     <Heading as={as} {...props}>
       {children}
     </Heading>
