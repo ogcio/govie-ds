@@ -100,7 +100,12 @@ const FormFieldBase = ({
 
   return (
     <fieldset
-      className={cn({ 'gi-error-state': !!error }, className)}
+      className={cn(
+        { 'gi-error-state': !!error },
+        // Fix for fieldset overflow issues
+        'gi-block gi-min-w-0',
+        className,
+      )}
       {...props}
     >
       <div className="gi-pb-3 gi-flex gi-flex-col gi-gap-1">
@@ -111,7 +116,10 @@ const FormFieldBase = ({
         {error}
       </div>
 
-      <Slottable>{rest}</Slottable>
+      {/* Wrap content in a container div to handle overflow properly */}
+      <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
+        <Slottable>{rest}</Slottable>
+      </div>
     </fieldset>
   );
 };

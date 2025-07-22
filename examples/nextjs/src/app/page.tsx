@@ -63,6 +63,12 @@ import {
   SummaryListAction,
   SummaryListRow,
   SummaryListValue,
+  Table,
+  TableBody,
+  TableData,
+  TableHead,
+  TableHeader,
+  TableRow,
   TextArea,
   toaster,
   ToastProvider,
@@ -387,6 +393,41 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <FormField>
+          <FormFieldLabel>FormField with a Table</FormFieldLabel>
+          <div className="overflow-x-auto">
+            <Table className="min-w-full table-auto">
+              <TableHead>
+                <TableRow>
+                  <TableHeader>ID</TableHeader>
+                  <TableHeader>Name</TableHeader>
+                  <TableHeader>Email</TableHeader>
+                  <TableHeader>Role</TableHeader>
+                  <TableHeader>Status</TableHeader>
+                  <TableHeader>Actions</TableHeader>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableData>1</TableData>
+                  <TableData>Alice</TableData>
+                  <TableData>alice@example.com</TableData>
+                  <TableData>Admin</TableData>
+                  <TableData>Active</TableData>
+                  <TableData>Edit | Delete</TableData>
+                </TableRow>
+                <TableRow>
+                  <TableData>2</TableData>
+                  <TableData>Bob</TableData>
+                  <TableData>bob@example.com</TableData>
+                  <TableData>User</TableData>
+                  <TableData>Inactive</TableData>
+                  <TableData>Edit | Delete</TableData>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </FormField>
         <br />
         Input Text With Reset
         <InputText clearButtonEnabled />
