@@ -393,9 +393,9 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        <FormField enableOverflow>
+        <FormField className="gi-block gi-min-w-0">
           <FormFieldLabel>FormField with a Table</FormFieldLabel>
-          <div className="overflow-x-auto">
+          <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
             <Table className="min-w-full table-auto">
               <TableHead>
                 <TableRow>
