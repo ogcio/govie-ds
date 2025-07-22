@@ -4,7 +4,7 @@ import {
   Description,
   Primary,
   Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';

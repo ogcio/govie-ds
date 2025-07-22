@@ -84,12 +84,8 @@ export class Modal extends BaseComponent<ModalOptions> {
     for (const button of buttons) {
       button.addEventListener('click', (event) => {
         queueMicrotask(() => {
-          const buttonText = button.textContent?.trim();
           if (!event.defaultPrevented) {
             this.toggleModalState(false, { forceClose: true });
-            if (buttonText) {
-              console.log(buttonText.toLowerCase());
-            }
           }
         });
       });

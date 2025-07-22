@@ -1,13 +1,11 @@
 import '@ogcio/theme-govie/theme.css';
-import {
-  INITIAL_VIEWPORTS,
-  MINIMAL_VIEWPORTS,
-} from '@storybook/addon-viewport';
 import type { Preview } from '@storybook/react';
-import React, { useEffect } from 'react';
-import { destroyGovIe, initGovIe } from '@ogcio/design-system-html';
+import { useEffect } from 'react';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import '../styles.css';
 import './global.css';
+import { beautifyHtmlNode } from '../src/storybook/storybook';
+import { destroyGovIe, initGovIe } from '@ogcio/design-system-html';
 
 const decorators = [
   (Story, context) => {
@@ -16,8 +14,7 @@ const decorators = [
       initGovIe();
     }, []);
 
-    const storyResult = Story(context);
-    return <div dangerouslySetInnerHTML={{ __html: storyResult }} />;
+    return Story(context);
   },
 ];
 
@@ -37,13 +34,6 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /date$/i,
-      },
-    },
-    docs: {
-      source: {
-        transform: (code: string) => {
-          return code.slice(2, -2);
-        },
       },
     },
   },
