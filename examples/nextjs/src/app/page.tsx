@@ -393,7 +393,7 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
-        <FormField>
+        <FormField enableOverflow>
           <FormFieldLabel>FormField with a Table</FormFieldLabel>
           <div className="overflow-x-auto">
             <Table className="min-w-full table-auto">

@@ -14,4 +14,5 @@ export type FormFieldProps = {
   label?: LabelTextProps;
 
   className?: string;
+  enableOverflow?: boolean;
 } & Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'style'>;

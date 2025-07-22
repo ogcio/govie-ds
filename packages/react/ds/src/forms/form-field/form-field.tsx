@@ -23,6 +23,7 @@ type FormFieldBaseProps = Omit<
 > & {
   className?: string;
   children: ReactNode;
+  enableOverflow?: boolean;
 };
 
 const FormFieldContext = createContext<boolean | null>(null);
@@ -83,6 +84,7 @@ const FormField = (props: FormFieldProps) => {
 const FormFieldBase = ({
   children,
   className,
+  enableOverflow,
   ...props
 }: FormFieldBaseProps) => {
   const allChildren = Children.toArray(children);
@@ -102,8 +104,7 @@ const FormFieldBase = ({
     <fieldset
       className={cn(
         { 'gi-error-state': !!error },
-        // Fix for fieldset overflow issues
-        'gi-block gi-min-w-0',
+        { 'gi-block gi-min-w-0': enableOverflow },
         className,
       )}
       {...props}
@@ -117,9 +118,13 @@ const FormFieldBase = ({
       </div>
 
       {/* Wrap content in a container div to handle overflow properly */}
-      <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
+      {enableOverflow ? (
+        <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
+          <Slottable>{rest}</Slottable>
+        </div>
+      ) : (
         <Slottable>{rest}</Slottable>
-      </div>
+      )}
     </fieldset>
   );
 };
