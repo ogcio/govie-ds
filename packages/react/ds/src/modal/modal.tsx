@@ -135,8 +135,6 @@ export const ModalWrapper = ({
           'gi-modal-close': !isOpen,
         })}
         data-testid={dataTestId || 'modal'}
-        role="dialog"
-        aria-label="modal"
         onClick={(event) => {
           const isOverlayClick = event.currentTarget === event.target;
           if (isOverlayClick && closeOnClick && closeOnOverlayClick) {
@@ -146,9 +144,9 @@ export const ModalWrapper = ({
       >
         <div
           data-testid="modal-container"
+          role="dialog"
           aria-modal="true"
-          aria-describedby="gi-modal-container"
-          aria-labelledby="gi-modal-title"
+          aria-label="dialog"
           data-size={size}
           data-position={position}
           className={cn(
