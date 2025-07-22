@@ -62,7 +62,12 @@ export const Default: Story = {
     rows: [
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '1', value: '1', dataTableCell: true }),
+          createCheckbox({
+            id: '1',
+            value: '1',
+            dataTableCell: true,
+            ariaLabel: 'Select row 1',
+          }),
         ),
         beautifyHtmlNode(createTableCell('1')),
         beautifyHtmlNode(createTableCell('Cork')),
@@ -93,7 +98,12 @@ export const Default: Story = {
       ],
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '2', value: '2', dataTableCell: true }),
+          createCheckbox({
+            id: '2',
+            value: '2',
+            dataTableCell: true,
+            ariaLabel: 'Select row 2',
+          }),
         ),
         beautifyHtmlNode(createTableCell('2')),
         beautifyHtmlNode(createTableCell('Limerick')),
@@ -124,7 +134,12 @@ export const Default: Story = {
       ],
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '3', value: '3', dataTableCell: true }),
+          createCheckbox({
+            id: '3',
+            value: '3',
+            dataTableCell: true,
+            ariaLabel: 'Select row 3',
+          }),
         ),
         beautifyHtmlNode(createTableCell('3')),
         beautifyHtmlNode(createTableCell('Dublin')),
@@ -157,7 +172,12 @@ export const Default: Story = {
       ],
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '4', value: '4', dataTableCell: true }),
+          createCheckbox({
+            id: '4',
+            value: '4',
+            dataTableCell: true,
+            ariaLabel: 'Select row 4',
+          }),
         ),
         beautifyHtmlNode(createTableCell('4')),
         beautifyHtmlNode(createTableCell('Donegal')),
@@ -350,7 +370,12 @@ export const TableWithFooter: Story = {
     rows: [
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '1', value: '1', dataTableCell: true }),
+          createCheckbox({
+            id: '1',
+            value: '1',
+            dataTableCell: true,
+            ariaLabel: 'Select project 1',
+          }),
         ),
         beautifyHtmlNode(createTableCell('Digital Transformation')),
         beautifyHtmlNode(
@@ -401,7 +426,12 @@ export const TableWithFooter: Story = {
       ],
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '2', value: '2', dataTableCell: true }),
+          createCheckbox({
+            id: '2',
+            value: '2',
+            dataTableCell: true,
+            ariaLabel: 'Select project 2',
+          }),
         ),
         beautifyHtmlNode(createTableCell('Customer Experience')),
         beautifyHtmlNode(
@@ -452,7 +482,12 @@ export const TableWithFooter: Story = {
       ],
       [
         beautifyHtmlNode(
-          createCheckbox({ id: '3', value: '3', dataTableCell: true }),
+          createCheckbox({
+            id: '3',
+            value: '3',
+            dataTableCell: true,
+            ariaLabel: 'Select project 3',
+          }),
         ),
         beautifyHtmlNode(createTableCell('Sustainability Initiative')),
         beautifyHtmlNode(

@@ -22,9 +22,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       appearance,
       size,
       disabled,
-      dataTestid,
       onClick,
       className = '',
+      ...props
     },
     ref,
   ) => {
@@ -36,7 +36,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         role="button"
         onClick={onClick}
-        data-testid={dataTestid}
+        {...props}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),

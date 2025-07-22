@@ -131,6 +131,7 @@ export const WithReactHookForm = () => {
           <InputCheckboxTableCell
             id="all"
             value="all"
+            aria-label="Select all rows"
             checked={table.getIsAllRowsSelected()}
             onChange={table.getToggleAllRowsSelectedHandler()}
           />
@@ -139,6 +140,7 @@ export const WithReactHookForm = () => {
           <InputCheckboxTableCell
             id={row.id}
             value={row.id}
+            aria-label={`Select row ${row.id}`}
             checked={row.getIsSelected()}
             onChange={row.getToggleSelectedHandler()}
           />
@@ -146,6 +148,8 @@ export const WithReactHookForm = () => {
       },
       {
         id: 'expand',
+        enableSorting: false,
+        header: '',
         cell: ({ row }) => (
           <TableExpandIcon
             expanded={(expanded as any)?.[row.id]}
@@ -173,6 +177,7 @@ export const WithReactHookForm = () => {
             editor={{
               type: 'text',
               props: {
+                'aria-label': 'Email input',
                 ...register(`${row.index}.${column.id}` as never, {
                   required: true,
                   pattern: /.+@.+\..+/,
@@ -207,6 +212,7 @@ export const WithReactHookForm = () => {
             editor={{
               type: 'text',
               props: {
+                'aria-label': 'Age input',
                 type: 'number',
                 iconStart:
                   row.original?.disabledFields?.includes('age') || false
@@ -240,6 +246,7 @@ export const WithReactHookForm = () => {
             editor={{
               type: 'text',
               props: {
+                'aria-label': 'City input',
                 ...register(`${row.index}.${column.id}` as never, {
                   required: true,
                 }),
@@ -273,6 +280,7 @@ export const WithReactHookForm = () => {
             editor={{
               type: 'checkbox',
               props: {
+                'aria-label': 'Active status',
                 ...register(`${row.index}.${column.id}` as never, {
                   validate: (value) => {
                     console.log({ value });
@@ -300,6 +308,7 @@ export const WithReactHookForm = () => {
             editor={{
               type: 'select',
               props: {
+                'aria-label': 'Select status',
                 ...register(`${row.index}.${column.id}` as never),
                 options: [
                   { value: 'pending', label: 'Pending' },
@@ -367,6 +376,7 @@ export const WithReactHookForm = () => {
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHeader
+                  id={header.id}
                   key={header.id}
                   sorted={header.column.getIsSorted()}
                   onSort={header.column.getToggleSortingHandler()}

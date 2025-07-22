@@ -5,6 +5,6 @@
     "exitOnceUploaded": true,
     "onlyChanged": true,
     "storybookBuildDir": "packages/react/ds/storybook-static",
-    "storybookConfigDir": "packages/react/ds/.storybook",
-    "storybookBaseDir": "packages/react/ds"
+    "storybookBaseDir": "packages/react/ds",
+    "zip": true
 }

@@ -204,6 +204,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'left',
         showItemMode: 'always',
+        ariaLabel: 'left drawer',
       },
       {
         icon: 'chevron_right',
@@ -212,6 +213,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'right',
         showItemMode: 'always',
+        ariaLabel: 'right drawer',
       },
       {
         label: 'Bottom',
@@ -795,5 +797,37 @@ export const ShowMobileMenuForLanguages: Story = {
       },
     ],
     addDefaultMobileMenu: true,
+  },
+};
+
+export const TestWithSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      hover: '.gi-header-secondary-item',
+    },
   },
 };
