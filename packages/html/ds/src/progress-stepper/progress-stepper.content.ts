@@ -1,5 +1,5 @@
 export const formSlot1 = `
-<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="region" style="height: 100%;">
+<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="presentation" style="height: 100%;">
    <h1 class="gi-heading-sm gi-heading-xl" data-testid="govie-stack-item-0">Category Details</h1>
    <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">Please select the options that best describes the query you’re raising.</p>
    <fieldset class="lg:gi-w-[450px] gi-w-full">
@@ -29,7 +29,7 @@ export const formSlot1 = `
 </div>`;
 
 export const formSlot2 = `
-<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="region" style="height: 100%;">
+<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="presentation" style="height: 100%;">
    <h1 class="gi-heading-sm gi-heading-xl" data-testid="govie-stack-item-0">Query Details</h1>
    <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">If this query is about someone else, please provide their details below. If it's about yourself, enter your own details.</p>
    <fieldset class="lg:gi-w-[450px] gi-w-full">
@@ -83,7 +83,7 @@ export const formSlot2 = `
 `;
 
 export const formSlot3 = `
-<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="region" style="height: 100%;">
+<div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-2 gi-flex-nowrap" role="presentation" style="height: 100%;">
    <h1 class="gi-heading-sm gi-heading-xl" data-testid="govie-stack-item-0">Contact Details</h1>
    <p class="gi-paragraph-md gi-text-start gi-whitespace-normal ">Where should we send updates about this query? Enter your contact details or the details of someone else who should receive the updates.</p>
    <fieldset class="lg:gi-w-[450px] gi-w-full">
@@ -116,7 +116,7 @@ export const formSlot3 = `
          </div>
       </div>
       <div class="gi-input-text-container">
-         <div class="gi-input-text-inner"><input data-icon-start="false" data-icon-end="false" data-end-element="false" data-prefix="false" data-suffix="false" class="gi-input-text" id="email-number-text-id" type="text"></div>
+         <div class="gi-input-text-inner"><input data-icon-start="false" data-icon-end="false" data-end-element="false" data-prefix="false" data-suffix="false" class="gi-input-text" id="email-text-id" type="text"></div>
       </div>
    </fieldset>
 </div>

@@ -1,8 +1,9 @@
 'use client';
-import { ThHTMLAttributes } from 'react';
+import { ThHTMLAttributes, Children } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { TableAlign, VerticalAlign } from './table.js';
+import { has } from 'lodash';
 
 type SortedType = 'asc' | 'desc' | false;
 
@@ -65,6 +66,14 @@ export function TableHeader({
     }
   };
 
+  const hasChildren = Children.count(children) > 0;
+
+  let role;
+  if (sorted && isChildrenString) {
+    role = 'button';
+  } else if (!hasChildren) {
+    role = 'cell'; // Header without children will raise accessibility warnings
+  }
   return (
     <th
       className={cn(
@@ -74,7 +83,7 @@ export function TableHeader({
         className,
         { 'gi-w-12': !isChildrenString },
       )}
-      role={onSort ? 'button' : undefined}
+      role={role}
       data-sorted={!!onSort}
       data-header-string={isChildrenString}
       tabIndex={onSort && isChildrenString ? 0 : -1}
@@ -92,6 +101,7 @@ export function TableHeader({
         onKeyDown={handleKeyDown}
       >
         {children}
+
         {!!onSort && getSortedIcon(isChildrenString, sorted)}
       </div>
     </th>

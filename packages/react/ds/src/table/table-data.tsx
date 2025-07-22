@@ -115,6 +115,7 @@ export const TableExpandIcon = ({
         icon={{
           icon: expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
         }}
+        aria-label={expanded ? 'Collapse row' : 'Expand row'}
         className="gi-cursor-pointer"
         onClick={(event) => {
           event.preventDefault();

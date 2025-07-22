@@ -37,7 +37,7 @@
       "summaryList.linkAction": "Link action: {{children}}",
       "summaryList.summaryList": "Summary List",
       "sectionBreak.sectionBreak": "Section Break",
-      "toast.position": "Toasts-{{position.y}}-{{position.x}}",
+      "toast.position": "Toasts-{{x}}-{{y}}",
       "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",
       "pagination.next": "Next",
