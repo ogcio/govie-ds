@@ -25,6 +25,7 @@
       "header.mobileNavigationMenu": "Mobile Navigation Menu",
       "header.siteHeader": "Site Header",
       "header.goToHomePage": "Go to the home page",
+      "header.drawer.close": "Close",
       "footer.goToHomePage": "Go to the home page",
       "footer.footer": "Footer",
       "footer.primarySlot": "Primary footer slot",
