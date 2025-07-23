@@ -32,6 +32,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         onClick={() => onPageChange(1)}
         appearance="dark"
         variant="flat"
+        className="gi-mr-4"
         icon={{
           icon: 'first_page',
         }}
@@ -41,6 +42,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         onClick={handlePrevious}
         appearance="dark"
         variant="flat"
+        className="gi-mr-2"
         icon={{
           icon: 'chevron_left',
         }}
@@ -62,6 +64,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         disabled={currentPage === totalPages}
         appearance="dark"
         variant="flat"
+        className="gi-ml-2"
         icon={{
           icon: 'chevron_right',
         }}
@@ -71,6 +74,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         onClick={() => onPageChange(totalPages)}
         appearance="dark"
         variant="flat"
+        className="gi-ml-4"
         icon={{
           icon: 'last_page',
         }}
