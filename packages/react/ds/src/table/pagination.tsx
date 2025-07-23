@@ -33,8 +33,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         appearance="dark"
         variant="flat"
         icon={{
-          // icon: 'first_page',
-          icon: 'chevron_left',
+          icon: 'first_page',
         }}
       />
       <IconButton
@@ -73,8 +72,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         appearance="dark"
         variant="flat"
         icon={{
-          // icon: 'last_page',
-          icon: 'chevron_right',
+          icon: 'last_page',
         }}
       />
     </div>
