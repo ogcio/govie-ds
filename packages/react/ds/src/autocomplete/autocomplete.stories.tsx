@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within, userEvent } from '@storybook/test';
+import { debounce } from 'lodash';
+import { useEffect, useMemo, useReducer } from 'react';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
@@ -161,5 +163,164 @@ export const WithDisabled: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
     expect(input).toBeDisabled();
+  },
+};
+
+export const WithFreeSolo: Story = {
+  args: {
+    defaultValue: '',
+    freeSolo: true,
+    children: [],
+  },
+  render: (props: AutocompleteProps) => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>With Free Solo</FormFieldLabel>
+      <Autocomplete {...props}>
+        {options.map(({ value, label }) => (
+          <AutocompleteItem value={value} key={`${label}-${value}`}>
+            {label}
+          </AutocompleteItem>
+        ))}
+      </Autocomplete>
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).not.toBeDisabled();
+  },
+};
+
+export const WithLoading: StoryObj<AutocompleteProps> = {
+  render: (props: AutocompleteProps) => {
+    const names = [
+      "Aoife O'Sullivan",
+      'Conor McCarthy',
+      "Niamh O'Brien",
+      'Sean Gallagher',
+      'Ciara Murphy',
+      "Cian O'Reilly",
+      'Saoirse Kennedy',
+      'Liam Doyle',
+      'Orla Byrne',
+      'Eoin Fitzpatrick',
+      'Róisín Kavanagh',
+      'Padraig Keane',
+      'Maeve Nolan',
+      'Darragh Quinn',
+      'Aisling Brady',
+      'Fionn MacNamara',
+      'Gráinne Flynn',
+      'Cathal Dunne',
+      'Eimear Ryan',
+      'Tadhg McDonagh',
+    ];
+
+    const ACTIONS = {
+      TOGGLE_OPEN: 'TOGGLE_OPEN',
+      SET_QUERY: 'SET_QUERY',
+      SET_RESULTS: 'SET_RESULTS',
+      SET_LOADING: 'SET_LOADING',
+    };
+
+    const reducer = (state: any, action: any) => {
+      switch (action.type) {
+        case ACTIONS.TOGGLE_OPEN: {
+          return { ...state, isOpen: action.payload };
+        }
+        case ACTIONS.SET_QUERY: {
+          return { ...state, query: action.payload };
+        }
+        case ACTIONS.SET_LOADING: {
+          if (action.payload) {
+            return { ...state, isLoading: action.payload, results: [] };
+          }
+          return { ...state, isLoading: action.payload };
+        }
+        case ACTIONS.SET_RESULTS: {
+          const children = action.payload.map((name: string) => (
+            <AutocompleteItem
+              key={name}
+              value={name.toLowerCase()?.replace(/\s+/g, '-')}
+            >
+              {name}
+            </AutocompleteItem>
+          ));
+          return { ...state, results: children, isLoading: false };
+        }
+        default: {
+          return state;
+        }
+      }
+    };
+
+    const [state, dispatch] = useReducer(reducer, {
+      query: '',
+      isOpen: false,
+      isLoading: false,
+      results: [],
+    });
+
+    const debouncedFetch = useMemo(
+      () =>
+        debounce(async (query) => {
+          const filtered = await new Promise((resolve) => {
+            // Fake fetch
+            setTimeout(() => {
+              const results = names
+                .filter((name) =>
+                  name.toLowerCase().includes(query.toLowerCase()),
+                )
+                .slice(0, 10);
+              resolve(results);
+            }, 600);
+          });
+
+          dispatch({ type: ACTIONS.SET_RESULTS, payload: filtered });
+        }, 500),
+      [],
+    );
+
+    const startFetch = () => {
+      dispatch({ type: ACTIONS.SET_LOADING, payload: true });
+      debouncedFetch(state.query);
+    };
+
+    useEffect(() => {
+      if (state.query) {
+        startFetch();
+      }
+    }, [state.query]);
+
+    const handleOpen = () => {
+      startFetch();
+    };
+
+    const handleClose = () => {
+      dispatch({ type: ACTIONS.SET_RESULTS, payload: [] });
+    };
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const {
+        target: { value },
+      } = event;
+      dispatch({ type: ACTIONS.SET_QUERY, payload: value });
+    };
+
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Async Search</FormFieldLabel>
+        <Autocomplete
+          {...props}
+          isOpen={state.isOpen}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          onChange={handleOnChange}
+          isLoading={state.isLoading}
+        >
+          {state.results}
+        </Autocomplete>
+      </FormField>
+    );
   },
 };

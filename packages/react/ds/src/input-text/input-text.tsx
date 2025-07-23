@@ -178,7 +178,10 @@ export const InputActionButton = ({
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
-    if (clearButtonEnabled) {
+    const showInputTextWithClearButton =
+      clearButtonEnabled || type === 'search';
+
+    if (showInputTextWithClearButton) {
       return <InputTextWithClear ref={ref} type={type} {...props} />;
     }
 

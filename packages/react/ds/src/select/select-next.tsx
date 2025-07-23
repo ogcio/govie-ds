@@ -15,6 +15,7 @@ import {
   SelectMenuGroupItem,
   SelectMenuOption,
 } from './select-menu.js';
+import { SelectSearch } from './select-search.js';
 import {
   SelectNextGroupItemElement,
   SelectNextGroupProps,
@@ -35,7 +36,6 @@ export const SelectNext = ({
   ...props
 }: SelectNextProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [internalValue, setInternalValue] = useState(defaultValue);
 
   const value = controlledValue === undefined ? internalValue : controlledValue;
@@ -134,6 +134,20 @@ export const SelectNext = ({
       handleOnClick();
     }
   };
+
+  if (enableSearch) {
+    return (
+      <SelectSearch
+        {...props}
+        value={controlledValue}
+        defaultValue={defaultValue}
+        onChange={onSelectNextChange}
+        disabled={disabled}
+      >
+        {children}
+      </SelectSearch>
+    );
+  }
 
   return (
     <div

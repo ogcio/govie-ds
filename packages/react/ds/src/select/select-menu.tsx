@@ -8,11 +8,12 @@ import {
   ChangeEvent,
   KeyboardEvent,
 } from 'react';
-
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { InputText } from '../input-text/input-text.js';
 import { Label } from '../label/label.js';
+import { Spinner } from '../spinner/spinner.js';
+
 import {
   SelectMenuGroupReactElement,
   SelectMenuOptionProps,
@@ -25,9 +26,19 @@ export const SelectMenu = ({
   className,
   onChange,
   enableSearch,
+  isLoading,
+  showNoData,
 }: SelectMenuProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [showNoDataDelay, setShowNoDataDelay] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState<any>([]);
+
+  useEffect(() => {
+    setShowNoDataDelay(false);
+    if (showNoData) {
+      setTimeout(() => setShowNoDataDelay(true), 0);
+    }
+  }, [showNoData]);
 
   useEffect(() => {
     const validChildren = Children.toArray(children).filter((child) =>
@@ -108,6 +119,22 @@ export const SelectMenu = ({
     setSearchTerm(event.target.value);
   };
 
+  const renderData = () => {
+    if (isLoading) {
+      return (
+        <div className="gi-select-menu-loading">
+          <Spinner size="md" />
+        </div>
+      );
+    }
+
+    return showNoDataDelay ? (
+      <div className="gi-select-menu-no-data">No data found.</div>
+    ) : (
+      <ul>{filteredOptions}</ul>
+    );
+  };
+
   return (
     <div className={cn('gi-select-menu-container', className)}>
       {enableSearch && (
@@ -121,13 +148,7 @@ export const SelectMenu = ({
           />
         </div>
       )}
-      <div className="gi-select-menu-option-container">
-        {filteredOptions.length > 0 ? (
-          <ul>{filteredOptions}</ul>
-        ) : (
-          <div className="gi-select-menu-option-not-found">No data found.</div>
-        )}
-      </div>
+      <div className="gi-select-menu-option-container">{renderData()}</div>
     </div>
   );
 };

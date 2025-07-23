@@ -17,14 +17,14 @@ export type AutocompleteState = {
   value: string;
   inputValue: string;
   isClearButtonEnabled: boolean;
-  autocompleteOptions: React.ReactNode;
+  autocompleteOptions: any[];
   highlightedIndex: number;
 };
 
 export type AutocompleteAction =
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_IS_OPEN; payload: boolean }
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_INPUT_VALUE; payload: string }
-  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTIONS; payload: React.ReactNode }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTIONS; payload: any[] }
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_VALUE; payload: string }
   | { type: typeof AUTOCOMPLETE_ACTIONS.ON_RESET }
   | {
@@ -52,6 +52,12 @@ export type AutocompleteOptionItemElement = ReactElement<
 export type AutocompleteProps = {
   defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  freeSolo?: boolean;
+  isLoading?: boolean;
+  onSelectItem?: (item: string) => void;
+  onOpen?: () => void;
+  onClose?: () => void;
+  isOpen?: boolean;
   children:
     | ReactElement<AutocompleteItemProps>
     | ReactElement<AutocompleteItemProps>[];

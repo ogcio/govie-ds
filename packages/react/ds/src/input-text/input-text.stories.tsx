@@ -499,3 +499,16 @@ export const WithRichLabelText: Story = {
     </FormField>
   ),
 };
+
+export const InputSearch: Story = {
+  args: {
+    type: 'search',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <InputText {...props} />
+    </FormField>
+  ),
+};
