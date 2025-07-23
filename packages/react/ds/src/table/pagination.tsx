@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconButton } from '../icon-button/icon-button.js';
 import { translate as t } from '../i18n/utility.js';
+import { IconButton } from '../icon-button/icon-button.js';
 
 export type TablePaginationProps = {
   currentPage: number;

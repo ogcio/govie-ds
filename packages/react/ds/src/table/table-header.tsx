@@ -3,7 +3,6 @@ import { ThHTMLAttributes, Children } from 'react';
 import { cn } from '../cn.js';
 import { Icon } from '../icon/icon.js';
 import { TableAlign, VerticalAlign } from './table.js';
-import { has } from 'lodash';
 
 type SortedType = 'asc' | 'desc' | false;
 

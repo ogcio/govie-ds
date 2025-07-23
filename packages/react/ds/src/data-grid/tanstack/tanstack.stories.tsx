@@ -28,11 +28,11 @@ import {
   TableBody,
   TableData,
 } from '../../table/index.js';
+import { TablePagination } from '../../table/pagination.js';
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
-import { TablePagination } from '../../table/pagination.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
