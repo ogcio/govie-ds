@@ -73,7 +73,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
 
   const handleUpdateInput = (value: string) => {
     dispatch({ type: SET_INPUT_VALUE, payload: value });
-    propagateOnChange(value);
+    propagateOnChange(onAutocompleteChange)(value, inputRef);
     if (value) {
       dispatch({ type: SET_IS_OPEN, payload: true });
     }
