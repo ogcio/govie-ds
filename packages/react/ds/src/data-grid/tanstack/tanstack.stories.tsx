@@ -20,7 +20,6 @@ import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
-import { Pagination } from '../../pagination/pagination.js';
 import {
   Table,
   TableHead,
@@ -33,6 +32,7 @@ import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import { TablePagination } from '../../table/pagination.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -422,7 +422,7 @@ export const WithReactHookForm = () => {
           ))}
         </TableBody>
       </Table>
-      <Pagination
+      <TablePagination
         currentPage={table.getState().pagination.pageIndex + 1}
         totalPages={table.getPageCount()}
         onPageChange={(page) => table.setPageIndex(page - 1)}

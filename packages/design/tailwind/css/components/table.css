@@ -78,3 +78,7 @@
 .gi-table-td {
   @apply gi-p-0 gi-text-sm gi-font-[400];
 }
+
+.gi-table-pagination {
+  @apply gi-flex gi-items-center gi-justify-center gi-gap-4 gi-p-4;
+}
