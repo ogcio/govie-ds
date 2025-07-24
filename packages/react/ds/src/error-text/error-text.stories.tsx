@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect } from '@storybook/test';
+import { within, expect } from 'storybook/test';
 import { Icon } from '../icon/icon.js';
 import { ErrorSize, ErrorText } from './error-text.js';
 

@@ -31,5 +31,5 @@ export const createList = (arguments_: ListProps) => {
 
   container.append(component);
 
-  return beautifyHtmlNode(container);
+  return container;
 };

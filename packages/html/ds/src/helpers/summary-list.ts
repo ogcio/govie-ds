@@ -1,4 +1,3 @@
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { SummaryListProps } from '../summary-list/summary-list.schema';
 
 export const createSummaryList = (arguments_: SummaryListProps) => {
@@ -45,5 +44,5 @@ export const createSummaryList = (arguments_: SummaryListProps) => {
 
   container.append(component);
 
-  return beautifyHtmlNode(container);
+  return container;
 };
