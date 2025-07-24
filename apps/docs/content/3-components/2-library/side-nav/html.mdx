@@ -1,0 +1,73 @@
+---
+title: Side Navigation
+description: Side Navigation HTML Component
+status: stable
+component:
+  id: 'side-nav-html'
+  link: '/docs/navigation-sidenav--docs'
+  status: 'stable'
+  stories:
+    - name: 'default'
+      url: '/story/navigation-sidenav--basic'
+    - name: 'with-icons'
+      url: '/story/navigation-sidenav--with-icons'
+    - name: 'parent-child'
+      url: '/story/navigation-sidenav--parent-child'
+---
+
+# Side Navigation
+
+Side Navigation (SideNav) is used to organize and access major sections of an application. It provides persistent and hierarchical navigation, making it ideal for dashboards or multi-section layouts.
+
+<Section current="html">
+
+<ComponentPreview className="gi-not-prose w-full block">
+  <SideNav value="projects-active">
+    <SideNavItem primary value="dashboard" label="Dashboard" />
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem
+      primary
+      open
+      expandable
+      value="projects"
+      label="Projects"
+      href="#"
+    >
+      <SideNavItem secondary value="projects-active" label="Active" href="#" />
+      <SideNavItem
+        secondary
+        href="#"
+        value="projects-archived"
+        label="Archived"
+      />
+    </SideNavItem>
+    <SideNavItem primary value="settings" label="Settings" />
+  </SideNav>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame className="h-52" componentId="side-nav-html" story="default" />
+
+### With Icons
+
+<StorybookFrame
+  className="h-52"
+  componentId="side-nav-html"
+  story="with-icons"
+/>
+
+### Parent Child
+
+<StorybookFrame
+  className="h-96"
+  componentId="side-nav-html"
+  story="parent-child"
+/>
+
+</Section>
