@@ -75,6 +75,8 @@ export const iconIds = [
   'social_x',
   'social_youtube',
   'placeholder',
+  'first_page',
+  'last_page',
 ] as const;
 
 export const Icons = [...iconIds];
