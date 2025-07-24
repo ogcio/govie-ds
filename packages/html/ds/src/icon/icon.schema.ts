@@ -66,6 +66,8 @@ export const IconId = {
   Warning: 'warning',
   Work: 'work',
   Placeholder: 'placeholder',
+  FirstPage: 'first_page',
+  LastPage: 'last_page',
 } as const;
 
 export type IconIdType = (typeof IconId)[keyof typeof IconId];
