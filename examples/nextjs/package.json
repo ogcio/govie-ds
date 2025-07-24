@@ -11,15 +11,15 @@
   "dependencies": {
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
-    "next": "^15.2.3",
+    "next": "^15.4.3",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@ogcio/design-system-eslint-config": "workspace:*",
-    "@next/eslint-plugin-next": "^15.2.4",
+    "@next/eslint-plugin-next": "^15.4.3",
     "eslint": "^9.23.0",
-    "eslint-config-next": "^15.2.4",
+    "eslint-config-next": "^15.4.3",
     "postcss": "^8.4.40",
     "react-hook-form": "^7.58.1"
   }
