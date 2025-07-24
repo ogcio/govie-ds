@@ -1,5 +1,4 @@
 import { SectionBreakProps } from '../section-break/section-break.schema';
-import { beautifyHtmlNode } from '../storybook/storybook';
 
 export const createSectionBreak = (arguments_: SectionBreakProps) => {
   const container = document.createElement('div');
@@ -21,5 +20,5 @@ export const createSectionBreak = (arguments_: SectionBreakProps) => {
 
   container.append(component);
 
-  return beautifyHtmlNode(container);
+  return container;
 };

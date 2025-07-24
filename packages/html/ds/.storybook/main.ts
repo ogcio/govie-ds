@@ -5,15 +5,24 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 
   addons: [
+    '@storybook/addon-docs',
     '@chromatic-com/storybook',
     '@storybook/addon-a11y',
     '@storybook/addon-coverage',
-    '@storybook/addon-essentials',
     '@storybook/addon-links',
-    '@storybook/addon-viewport',
     'storybook-addon-pseudo-states',
-    '@storybook/experimental-addon-test',
+    '@storybook/addon-vitest',
   ],
+
+  core: {
+    builder: '@storybook/builder-vite',
+  },
+
+  build: {
+    test: {
+      disabledAddons: ['@storybook/addon-docs'],
+    },
+  },
 
   framework: {
     name: '@storybook/react-vite',

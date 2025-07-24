@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect, userEvent, screen } from '@storybook/test';
+import { within, expect, userEvent, screen } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
