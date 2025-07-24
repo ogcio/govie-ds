@@ -82,3 +82,7 @@
 .gi-table-pagination {
   @apply gi-flex gi-items-center;
 }
+
+.gi-table-pagination-label {
+  @apply gi-text-md;
+}

@@ -59,7 +59,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           icon: 'chevron_left',
         }}
       />
-      <span className="gi-text-md" aria-live="polite">
+      <div className="gi-table-pagination-label" aria-live="polite">
         <span className="gi-font-bold">
           {t('table.pagination.page', {
             currentPage,
@@ -70,7 +70,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           totalPages,
           defaultValue: `of ${totalPages}`,
         })}
-      </span>
+      </div>
       <IconButton
         onClick={handleNext}
         disabled={currentPage === totalPages}
