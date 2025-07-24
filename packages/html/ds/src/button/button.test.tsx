@@ -3,7 +3,7 @@ import * as stories from './button.stories.js';
 
 const composedStories = composeStories(stories);
 
-describe('button', () => {
+describe('Snapshots', () => {
   for (const key of Object.keys(composedStories).sort() as Array<
     keyof typeof composedStories
   >) {

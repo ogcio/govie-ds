@@ -132,7 +132,12 @@ describe('button', () => {
     const screen = renderButton(standardProps);
     await screen.axe();
   });
+});
 
+describe('Snapshots', () => {
+  afterEach(cleanup);
+
+  const composedStories = composeStories(stories);
   for (const key of Object.keys(composedStories).sort() as Array<
     keyof typeof composedStories
   >) {
