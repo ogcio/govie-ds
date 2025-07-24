@@ -5,6 +5,6 @@
     "exitOnceUploaded": true,
     "onlyChanged": true,
     "storybookBuildDir": "packages/html/ds/storybook-static",
-    "storybookConfigDir": "packages/html/ds/.storybook",
-    "storybookBaseDir": "packages/html/ds"
+    "storybookBaseDir": "packages/html/ds",
+    "zip": true
 }

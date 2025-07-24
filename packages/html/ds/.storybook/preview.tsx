@@ -23,9 +23,7 @@ const decorators = [
 
 const preview: Preview = {
   parameters: {
-    a11y: {
-      options: {},
-    },
+    a11y: { test: 'error' },
     viewport: {
       viewports: {
         ...INITIAL_VIEWPORTS,

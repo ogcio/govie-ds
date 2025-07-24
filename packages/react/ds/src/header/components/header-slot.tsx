@@ -47,10 +47,15 @@ const DrawerTrigger = ({
           className="gi-block gi-w-0 gi-absolute gi-h-0"
           id={`ItemActionDrawerTrigger-${index}`}
           data-index={index}
+          aria-label={ariaLabel || label || ''}
           type="button"
         />
         {label && (
-          <span className="label" aria-hidden={ariaLabel ? 'true' : 'false'}>
+          <span
+            id={`ItemActionDrawerTrigger-${index}-label`}
+            className="label"
+            aria-hidden={ariaLabel ? 'true' : 'false'}
+          >
             {label}
           </span>
         )}
@@ -79,7 +84,9 @@ const DrawerTrigger = ({
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         position={drawerPosition || 'right'}
-        closeButtonLabel="Close"
+        closeButtonLabel={t('header.drawer.close', {
+          defaultValue: 'Close',
+        })}
         closeButtonSize="large"
       >
         <DrawerBody>{component}</DrawerBody>

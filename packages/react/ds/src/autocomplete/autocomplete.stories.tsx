@@ -20,7 +20,7 @@ const meta = {
   component: Autocomplete,
   decorators: (Story) => {
     return (
-      <div className="gi-h-[335px]">
+      <div className="gi-h-[400px]">
         <Story />
       </div>
     );

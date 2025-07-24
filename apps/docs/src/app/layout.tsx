@@ -4,18 +4,9 @@ import { Footer, Header, HeaderProps, Stack } from '@ogcio/design-system-react';
 import '@ogcio/design-system-react/styles.css';
 import '@ogcio/theme-govie/theme.css';
 import type { Metadata } from 'next';
-import { Lato } from 'next/font/google';
 import './globals.css';
 import CookieConsent from '@/components/cookies/cookie-consent';
 import { Suspense } from 'react';
-
-const lato = Lato({
-  weight: ['100', '300', '400', '700', '900'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--gieds-font-family-primary',
-});
 
 export const metadata: Metadata = {
   title: 'Gov IE Design System',
@@ -98,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${lato.variable} ${lato.className} transition duration-500 h-screen flex flex-col bg-white`}
+        className={`transition duration-500 h-screen flex flex-col bg-white`}
       >
         <Suspense>
           <AnalyticsProvider>

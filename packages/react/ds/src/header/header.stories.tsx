@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect, userEvent } from '@storybook/test';
+import { within, expect, userEvent, screen } from '@storybook/test';
 import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
@@ -204,6 +204,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'left',
         showItemMode: 'always',
+        ariaLabel: 'left drawer',
       },
       {
         icon: 'chevron_right',
@@ -212,6 +213,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'right',
         showItemMode: 'always',
+        ariaLabel: 'right drawer',
       },
       {
         label: 'Bottom',
@@ -549,10 +551,10 @@ export const MobileWithExternalLinks: Story = {
 
     await userEvent.click(headerMobileMenu);
 
-    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
-    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
-    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
-    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+    const internalNav = screen.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = screen.getByRole('link', { name: 'External Nav' });
+    const externalTool = screen.getByRole('link', { name: 'External Tool' });
+    const internalTool = screen.getByRole('link', { name: 'Internal Tool' });
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
     await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
@@ -795,5 +797,37 @@ export const ShowMobileMenuForLanguages: Story = {
       },
     ],
     addDefaultMobileMenu: true,
+  },
+};
+
+export const TestWithSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      hover: '.gi-header-secondary-item',
+    },
   },
 };
