@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`button > Button snapshot 1`] = `
+<div>
+  <div
+    class="gi-p-4 false gi-w-fit"
+  >
+    <button
+      class="gi-btn gi-btn-primary gi-btn-regular"
+    >
+      Primary Button
+    </button>
+  </div>
+</div>
+`;

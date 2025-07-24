@@ -1,12 +1,15 @@
+import { composeStories } from '@storybook/react-vite';
 import { Icon } from '../icon/icon.js';
 import {
-  renderComponent,
   cleanup,
+  renderComponent,
   testVariantsAxe,
 } from '../test-utilities.js';
 import { Button } from './button.js';
+import * as stories from './button.stories.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
+const { Primary } = composeStories(stories);
 const standardProps: ButtonProps = {
   children: 'Button Label',
   variant: 'primary',
@@ -128,5 +131,10 @@ describe('button', () => {
   it('should pass axe tests', async () => {
     const screen = renderButton(standardProps);
     await screen.axe();
+  });
+
+  it('Button snapshot', async () => {
+    await Primary.run();
+    expect(document.body.firstChild).toMatchSnapshot();
   });
 });

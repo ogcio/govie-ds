@@ -25,7 +25,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         {...props}
-        data-testid={dataTestid || 'govie-button'}
+        data-testid={dataTestid}
         ref={ref}
         aria-disabled={disabled}
         disabled={disabled}
