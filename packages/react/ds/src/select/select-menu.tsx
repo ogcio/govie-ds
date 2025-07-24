@@ -129,7 +129,7 @@ export const SelectMenu = ({
     }
 
     return showNoDataDelay ? (
-      <div className="gi-select-menu-no-data">No data found.</div>
+      <div className="gi-select-menu-option-not-found">No data found.</div>
     ) : (
       <ul>{filteredOptions}</ul>
     );
