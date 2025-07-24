@@ -1,11 +1,15 @@
 import { composeStories } from '@storybook/react-vite';
 import * as stories from './button.stories.js';
 
-const { Primary } = composeStories(stories);
+const composedStories = composeStories(stories);
 
 describe('button', () => {
-  it('Button snapshot', async () => {
-    await Primary.run();
-    expect(document.body.firstChild).toMatchSnapshot();
-  });
+  for (const key of Object.keys(composedStories).sort() as Array<
+    keyof typeof composedStories
+  >) {
+    it(`Snapshot - ${key}`, async () => {
+      await composedStories[key].run();
+      expect(document.body.firstChild).toMatchSnapshot();
+    });
+  }
 });

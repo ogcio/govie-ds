@@ -9,7 +9,7 @@ import { Button } from './button.js';
 import * as stories from './button.stories.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
-const { Primary } = composeStories(stories);
+const composedStories = composeStories(stories);
 const standardProps: ButtonProps = {
   children: 'Button Label',
   variant: 'primary',
@@ -133,8 +133,12 @@ describe('button', () => {
     await screen.axe();
   });
 
-  it('Button snapshot', async () => {
-    await Primary.run();
-    expect(document.body.firstChild).toMatchSnapshot();
-  });
+  for (const key of Object.keys(composedStories).sort() as Array<
+    keyof typeof composedStories
+  >) {
+    it(`Snapshot - ${key}`, async () => {
+      await composedStories[key].run();
+      expect(document.body.firstChild).toMatchSnapshot();
+    });
+  }
 });

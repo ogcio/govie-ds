@@ -52,6 +52,7 @@
     "@types/js-beautify": "^1.14.3",
     "autoprefixer": "^10.4.19",
     "axe-core": "^4.10.0",
+    "clsx": "^2.1.1",
     "eslint": "^9.23.0",
     "fs-extra": "^11.2.0",
     "glob": "^11.0.1",

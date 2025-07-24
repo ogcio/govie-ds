@@ -32,8 +32,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),
-          getSizeClass(size),
           isButtonDisabled({ disabled, variant, appearance }),
+          getSizeClass(size),
           className,
         )}
       >

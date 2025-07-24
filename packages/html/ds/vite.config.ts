@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   build: {
     copyPublicDir: false,
+    sourcemap: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'umd'],
@@ -26,6 +27,5 @@ export default defineConfig({
       },
       name: 'GovieFrontend',
     },
-    sourcemap: true,
   },
 });
