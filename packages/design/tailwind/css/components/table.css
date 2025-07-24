@@ -80,5 +80,5 @@
 }
 
 .gi-table-pagination {
-  @apply gi-flex gi-items-center gi-justify-center;
+  @apply gi-flex gi-items-center;
 }
