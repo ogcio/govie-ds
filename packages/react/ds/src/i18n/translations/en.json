@@ -37,6 +37,8 @@
       "summaryList.linkAction": "Link action: {{children}}",
       "summaryList.summaryList": "Summary List",
       "sectionBreak.sectionBreak": "Section Break",
+      "table.pagination.page": "Page {{currentPage}} ",
+      "table.pagination.ofTotal": "of {{totalPages}}",
       "toast.position": "Toasts-{{x}}-{{y}}",
       "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",
