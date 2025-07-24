@@ -14,7 +14,7 @@ Side Navigation (SideNav) is used to organize and access major sections of an ap
 
 <Section current="design">
 
-<ComponentPreview>
+<ComponentPreview className="gi-not-prose w-full block">
   <SideNav value="projects-active">
     <SideNavItem primary value="dashboard" label="Dashboard" />
     <SideNavItem primary expandable value="team" label="Team">
@@ -45,52 +45,42 @@ Side Navigation (SideNav) is used to organize and access major sections of an ap
 
 ## Variants
 
-SideNav can include:
+The SideNav component supports a variety of features, including primary items for top-level navigation and expandable sections that reveal nested secondary links.
+It also offers icon support through Material Symbols to provide visual context and allows for controlled open and closed states for expandable sections.
 
-- Primary items: top-level navigation entries.
-- Expandable items: sections that reveal nested (secondary) links.
-- Icon support: using Material Symbols for visual context.
-- Controlled open/closed state for expandable sections.
+### Basic with Icons
 
-<ComponentPreviewLayout className="flex-col space-y-4">
-  <ComponentPreviewItem className="h-auto w-full">
-    <SideNav value="dashboard">
-      <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
-      <SideNavItem icon="apps" value="analytics" label="Analytics" />
-      <SideNavItem icon="settings" value="settings" label="Settings" />
-    </SideNav>
-  </ComponentPreviewItem>
-  <ComponentPreviewItem className="h-auto w-full">
-    <SideNav>
-      <SideNavItem value="team" label="Team" primary expandable>
-        <SideNavItem secondary value="team-members" label="Members" />
-        <SideNavItem secondary value="team-permissions" label="Permissions" />
-      </SideNavItem>
-      <SideNavItem value="projects" label="Projects" primary expandable>
-        <SideNavItem
-          secondary
-          value="projects-active"
-          label="Active Projects"
-        />
-        <SideNavItem
-          secondary
-          value="projects-archived"
-          label="Archived Projects"
-        />
-      </SideNavItem>
-    </SideNav>
-  </ComponentPreviewItem>
-</ComponentPreviewLayout>
+<ComponentContainer>
+  <SideNav value="dashboard">
+    <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
+    <SideNavItem icon="apps" value="analytics" label="Analytics" />
+    <SideNavItem icon="settings" value="settings" label="Settings" />
+  </SideNav>
+</ComponentContainer>
+
+### Parent Child
+
+<ComponentContainer>
+  <SideNav>
+    <SideNavItem value="team" label="Team" primary expandable>
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem value="projects" label="Projects" primary expandable>
+      <SideNavItem secondary value="projects-active" label="Active Projects" />
+      <SideNavItem
+        secondary
+        value="projects-archived"
+        label="Archived Projects"
+      />
+    </SideNavItem>
+  </SideNav>
+</ComponentContainer>
 
 ## Usage
 
-Use the Side Navigation component when your application layout requires structured, vertical navigation that persists across views.
-
-It's especially effective in layouts where:
-
-- There are multiple sections or tools.
-- You want to group pages hierarchically.
-- Navigation should remain visible for quick switching.
+The Side Navigation component is ideal for application layouts that require persistent, structured vertical navigation across different views.
+It is particularly useful in scenarios where the interface includes multiple sections or tools, when there is a need to organize pages hierarchically, and when keeping navigation always visible enhances quick access and switching between views.
 
 ### Do
 
@@ -110,14 +100,19 @@ It's especially effective in layouts where:
 
 ### Don't
 
-- Use for simple, single-level navigation.
+- Don’t use it for simple, flat navigation with just a few items.
 - Don’t mix unrelated links in the same group.
-- Don’t overload with deep hierarchies — keep nesting shallow and clear.
+- Don’t overload with deep hierarchies, keep nesting shallow and clear.
 
 <ComponentContainer>
   <SideNav value="settings">
-    <SideNavItem primary value="dashboard" label="Dashboard" />
     <SideNavItem primary value="settings" label="Settings" />
+    <SideNavItem primary value="preferences" label="Preferences" />
+    <SideNavItem
+      primary
+      value="terms"
+      label="Terms and Conditions and Legal Disclaimers"
+    />
   </SideNav>
 </ComponentContainer>
 
