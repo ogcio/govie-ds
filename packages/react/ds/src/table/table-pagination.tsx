@@ -4,7 +4,7 @@ import { IconButton } from '../icon-button/icon-button.js';
 import { cn } from '../cn.js';
 
 export type TablePaginationProps = {
-  align?: 'left' | 'center' | 'right';
+  align?: 'start' | 'center' | 'end';
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
@@ -14,7 +14,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-  align = 'right',
+  align = 'end',
 }) => {
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -32,9 +32,9 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
     <div
       className={cn(
         {
-          'gi-justify-first': align === 'left',
+          'gi-justify-first': align === 'start',
           'gi-justify-center': align === 'center',
-          'gi-justify-end': align === 'right',
+          'gi-justify-end': align === 'end',
         },
         'gi-table-pagination',
       )}
