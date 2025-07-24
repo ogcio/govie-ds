@@ -216,9 +216,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
         <SelectMenu
           onChange={handleOnSelectItem}
           isLoading={isLoading}
-          showNoData={
-            !!(state.inputValue && !state.autocompleteOptions?.length)
-          }
+          showNoData={!state.autocompleteOptions?.length}
         >
           {state.autocompleteOptions?.map((child, index) => (
             <SelectMenuOption
