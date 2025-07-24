@@ -1,0 +1,124 @@
+---
+title: Side Navigation
+description: Side Navigation Component Design Guidelines
+status: in-review
+component:
+  id: 'side-nav'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=6439-817'
+  status: 'stable'
+---
+
+# Side Navigation
+
+Side Navigation (SideNav) is used to organize and access major sections of an application. It provides persistent and hierarchical navigation, making it ideal for dashboards or multi-section layouts.
+
+<Section current="design">
+
+<ComponentPreview>
+  <SideNav value="projects-active">
+    <SideNavItem primary value="dashboard" label="Dashboard" />
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem
+      primary
+      open
+      expandable
+      value="projects"
+      label="Projects"
+      href="#"
+    >
+      <SideNavItem secondary value="projects-active" label="Active" href="#" />
+      <SideNavItem
+        secondary
+        value="projects-archived"
+        label="Archived"
+        href="#"
+      />
+    </SideNavItem>
+    <SideNavItem primary value="settings" label="Settings" />
+  </SideNav>
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=6439-817" />
+
+## Variants
+
+SideNav can include:
+
+- Primary items: top-level navigation entries.
+- Expandable items: sections that reveal nested (secondary) links.
+- Icon support: using Material Symbols for visual context.
+- Controlled open/closed state for expandable sections.
+
+<ComponentPreviewLayout className="flex-col space-y-4">
+  <ComponentPreviewItem className="h-auto w-full">
+    <SideNav value="dashboard">
+      <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
+      <SideNavItem icon="apps" value="analytics" label="Analytics" />
+      <SideNavItem icon="settings" value="settings" label="Settings" />
+    </SideNav>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="h-auto w-full">
+    <SideNav>
+      <SideNavItem value="team" label="Team" primary expandable>
+        <SideNavItem secondary value="team-members" label="Members" />
+        <SideNavItem secondary value="team-permissions" label="Permissions" />
+      </SideNavItem>
+      <SideNavItem value="projects" label="Projects" primary expandable>
+        <SideNavItem
+          secondary
+          value="projects-active"
+          label="Active Projects"
+        />
+        <SideNavItem
+          secondary
+          value="projects-archived"
+          label="Archived Projects"
+        />
+      </SideNavItem>
+    </SideNav>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Use the Side Navigation component when your application layout requires structured, vertical navigation that persists across views.
+
+It's especially effective in layouts where:
+
+- There are multiple sections or tools.
+- You want to group pages hierarchically.
+- Navigation should remain visible for quick switching.
+
+### Do
+
+- Use for persistent navigation in multi-section layouts.
+- Provide clear and distinct labels for items.
+- Use `expandable` for parent items with nested links.
+- Use icons to reinforce meaning for top-level items.
+
+<ComponentContainer>
+  <SideNav value="team-permissions">
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+  </SideNav>
+</ComponentContainer>
+
+### Don't
+
+- Use for simple, single-level navigation.
+- Don’t mix unrelated links in the same group.
+- Don’t overload with deep hierarchies — keep nesting shallow and clear.
+
+<ComponentContainer>
+  <SideNav value="settings">
+    <SideNavItem primary value="dashboard" label="Dashboard" />
+    <SideNavItem primary value="settings" label="Settings" />
+  </SideNav>
+</ComponentContainer>
+
+</Section>

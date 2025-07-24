@@ -1,0 +1,122 @@
+---
+title: Side Navigation
+description: Side Navigation React Component
+status: stable
+component:
+  id: 'side-nav-react'
+  link: '/docs/navigation-sidenav--docs'
+  status: 'stable'
+  properties:
+    - name: SideNavProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'The currently selected item value.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The child elements of the SideNav.'
+          required: true
+    - name: SideNavItemProps
+      fields:
+        - name: 'value'
+          ofType: 'string'
+          description: 'Unique identifier for the item.'
+          required: true
+        - name: 'label'
+          ofType: 'string'
+          description: 'The visible label text for the item.'
+          required: true
+        - name: 'icon'
+          ofType: 'string'
+          description: 'Icon name (material symbols) to show beside the label.'
+          required: false
+        - name: 'href'
+          ofType: 'string'
+          description: 'URL if the item should behave like a link.'
+          required: false
+        - name: 'parent'
+          ofType: 'boolean'
+          description: 'Indicates that the item has children.'
+          required: false
+        - name: 'expandable'
+          ofType: 'boolean'
+          description: 'Allows the item to be expanded/collapsed.'
+          required: false
+        - name: 'open'
+          ofType: 'boolean'
+          description: 'Sets the item to be initially open if expandable.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/navigation-sidenav--basic'
+    - name: 'with-icons'
+      url: '/story/navigation-sidenav--with-icons'
+    - name: 'parent-child'
+      url: '/story/navigation-sidenav--parent-child'
+---
+
+# Side Navigation
+
+Side Navigation (SideNav) is used to organize and access major sections of an application. It provides persistent and hierarchical navigation, making it ideal for dashboards or multi-section layouts.
+
+<Section current="react">
+
+<ComponentPreview>
+  <SideNav value="projects-active">
+    <SideNavItem primary value="dashboard" label="Dashboard" />
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem
+      primary
+      open
+      expandable
+      value="projects"
+      label="Projects"
+      href="#"
+    >
+      <SideNavItem secondary value="projects-active" label="Active" href="#" />
+      <SideNavItem
+        secondary
+        href="#"
+        value="projects-archived"
+        label="Archived"
+      />
+    </SideNavItem>
+    <SideNavItem primary value="settings" label="Settings" />
+  </SideNav>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  className="h-auto"
+  componentId="side-nav-react"
+  story="default"
+/>
+
+### With Icons
+
+<StorybookFrame
+  className="h-auto"
+  componentId="side-nav-react"
+  story="with-icons"
+/>
+
+### Parent Child
+
+<StorybookFrame
+  className="h-auto"
+  componentId="side-nav-react"
+  story="parent-child"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="side-nav-react" />
+
+</Section>
