@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, waitFor, within, expect } from '@storybook/test';
+import { userEvent, waitFor, within, expect } from 'storybook/test';
 import { useState } from 'react';
 import {
   FormField,

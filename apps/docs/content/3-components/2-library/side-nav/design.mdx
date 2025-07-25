@@ -1,0 +1,119 @@
+---
+title: Side Navigation
+description: Side Navigation Component Design Guidelines
+status: stable
+component:
+  id: 'side-nav'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=6439-817'
+  status: 'stable'
+---
+
+# Side Navigation
+
+Side Navigation (SideNav) is used to organize and access major sections of an application. It provides persistent and hierarchical navigation, making it ideal for dashboards or multi-section layouts.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose w-full block">
+  <SideNav value="projects-active">
+    <SideNavItem primary value="dashboard" label="Dashboard" />
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem
+      primary
+      open
+      expandable
+      value="projects"
+      label="Projects"
+      href="#"
+    >
+      <SideNavItem secondary value="projects-active" label="Active" href="#" />
+      <SideNavItem
+        secondary
+        value="projects-archived"
+        label="Archived"
+        href="#"
+      />
+    </SideNavItem>
+    <SideNavItem primary value="settings" label="Settings" />
+  </SideNav>
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=6439-817" />
+
+## Variants
+
+The SideNav component supports a variety of features, including primary items for top-level navigation and expandable sections that reveal nested secondary links.
+It also offers icon support through Material Symbols to provide visual context and allows for controlled open and closed states for expandable sections.
+
+### Basic with Icons
+
+<ComponentContainer>
+  <SideNav value="dashboard">
+    <SideNavItem icon="menu" value="dashboard" label="Dashboard" />
+    <SideNavItem icon="apps" value="analytics" label="Analytics" />
+    <SideNavItem icon="settings" value="settings" label="Settings" />
+  </SideNav>
+</ComponentContainer>
+
+### Parent Child
+
+<ComponentContainer>
+  <SideNav>
+    <SideNavItem value="team" label="Team" primary expandable>
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+    <SideNavItem value="projects" label="Projects" primary expandable>
+      <SideNavItem secondary value="projects-active" label="Active Projects" />
+      <SideNavItem
+        secondary
+        value="projects-archived"
+        label="Archived Projects"
+      />
+    </SideNavItem>
+  </SideNav>
+</ComponentContainer>
+
+## Usage
+
+The Side Navigation component is ideal for application layouts that require persistent, structured vertical navigation across different views.
+It is particularly useful in scenarios where the interface includes multiple sections or tools, when there is a need to organize pages hierarchically, and when keeping navigation always visible enhances quick access and switching between views.
+
+### Do
+
+- Use for persistent navigation in multi-section layouts.
+- Provide clear and distinct labels for items.
+- Use `expandable` for parent items with nested links.
+- Use icons to reinforce meaning for top-level items.
+
+<ComponentContainer>
+  <SideNav value="team-permissions">
+    <SideNavItem primary expandable value="team" label="Team">
+      <SideNavItem secondary value="team-members" label="Members" />
+      <SideNavItem secondary value="team-permissions" label="Permissions" />
+    </SideNavItem>
+  </SideNav>
+</ComponentContainer>
+
+### Don't
+
+- Don’t use it for simple, flat navigation with just a few items.
+- Don’t mix unrelated links in the same group.
+- Don’t overload with deep hierarchies, keep nesting shallow and clear.
+
+<ComponentContainer>
+  <SideNav value="settings">
+    <SideNavItem primary value="settings" label="Settings" />
+    <SideNavItem primary value="preferences" label="Preferences" />
+    <SideNavItem
+      primary
+      value="terms"
+      label="Terms and Conditions and Legal Disclaimers"
+    />
+  </SideNav>
+</ComponentContainer>
+
+</Section>
