@@ -1,0 +1,109 @@
+---
+title: Progress Stepper
+description: Guide users through a series of steps in a process or workflow.
+status: beta
+component:
+  id: 'progress-stepper'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4429-6239'
+  status: 'beta'
+---
+
+# Progress Stepper
+
+The Progress Stepper component visually represents a user's position in a multistep process such as a form, onboarding flow, or application submission.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose w-full">
+  <ProgressStepper currentStepIndex={2}>
+    <StepItem label="Start Your Application" />
+    <StepItem label="Personal Information" />
+    <StepItem label="Eligibility Check" />
+    <StepItem label="Documents Submission" />
+    <StepItem label="Review" />
+    <StepItem label="Complete & Submit" />
+  </ProgressStepper>
+</ComponentPreview>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4429-6239" />
+
+## Variants
+
+There are two main orientations for the Progress Stepper: horizontal and vertical.
+The horizontal orientation is the default and is suitable for most use cases, while the vertical orientation is useful when steps include forms or require more detailed content.
+
+### Horizontal (Default)
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={3} indicator="number">
+    <StepItem label="Step 1" />
+    <StepItem label="Step 2" />
+    <StepItem label="Step 3" />
+    <StepItem label="Step 4" />
+    <StepItem label="Step 5" />
+  </ProgressStepper>
+</ComponentContainer>
+
+### Vertical
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={1} orientation="vertical">
+    <StepItem label="Account Setup" />
+    <StepItem label="Verification" />
+    <StepItem label="Preferences" />
+    <StepItem label="Complete" />
+  </ProgressStepper>
+</ComponentContainer>
+
+### Vertical with Content
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={2} orientation="vertical">
+    <StepItem label="Step 1" defaultOpen>
+      <Stack>Details for Step 1</Stack>
+    </StepItem>
+    <StepItem label="Step 2" defaultOpen>
+      <Stack>Details for Step 2</Stack>
+    </StepItem>
+    <StepItem label="Step 3" defaultOpen>
+      <Stack>Details for Step 3</Stack>
+    </StepItem>
+  </ProgressStepper>
+</ComponentContainer>
+
+## Usage
+
+Use the Progress Stepper to visually divide a process into steps and indicate progress through them. It's especially useful for guiding users through forms or tasks that must be completed in order.
+
+### Do
+
+- Use clear and descriptive labels for each step.
+
+- Use vertical orientation when steps include form content or require user input.
+- Keep steps concise and meaningful.
+- Each step should represent a distinct part of the process. Avoid breaking steps into overly granular sub-steps unless necessary.
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={1}>
+    <StepItem label="Start Application" />
+    <StepItem label="Personal Info" />
+    <StepItem label="Document Upload" />
+    <StepItem label="Review & Submit" />
+  </ProgressStepper>
+</ComponentContainer>
+
+### Don't
+
+- Don’t use this for non-linear flows where steps can be completed in any order.
+- Don’t overload steps with too much content—split into substeps or screens if needed.
+- Avoid showing more steps than necessary; reduce cognitive load for users.
+
+<ComponentContainer>
+  <ProgressStepper currentStepIndex={0}>
+    <StepItem label="Step A (optional)" />
+    <StepItem label="Step B (optional)" />
+    <StepItem label="Step C (optional)" />
+  </ProgressStepper>
+</ComponentContainer>
+
+</Section>
