@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ChangeEvent, ReactElement } from 'react';
 import { SelectMenuOptionProps } from '../select/types.js';
 
 export const AUTOCOMPLETE_ACTIONS = {
@@ -17,14 +17,14 @@ export type AutocompleteState = {
   value: string;
   inputValue: string;
   isClearButtonEnabled: boolean;
-  autocompleteOptions: React.ReactNode;
+  autocompleteOptions: any[];
   highlightedIndex: number;
 };
 
 export type AutocompleteAction =
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_IS_OPEN; payload: boolean }
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_INPUT_VALUE; payload: string }
-  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTIONS; payload: React.ReactNode }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTIONS; payload: any[] }
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_VALUE; payload: string }
   | { type: typeof AUTOCOMPLETE_ACTIONS.ON_RESET }
   | {
@@ -50,11 +50,29 @@ export type AutocompleteOptionItemElement = ReactElement<
 >;
 
 export type AutocompleteProps = {
-  defaultValue?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children:
     | ReactElement<AutocompleteItemProps>
     | ReactElement<AutocompleteItemProps>[];
+  /** Unique identifier for the autocomplete component. */
+  id?: string;
+  /** Initial selected value when the component is first rendered. */
+  defaultValue?: string;
+  /** When true, disables the autocomplete input and prevents user interaction. */
+  disabled?: boolean;
+  /** Callback function triggered when the input value changes */
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Enables typing freeform values not limited to the dropdown options and keep the value inside the Input. */
+  freeSolo?: boolean;
+  /** Displays loading spinner inside the dropdown list. */
+  isLoading?: boolean;
+  /** Callback triggered when an option is selected from the dropdown. */
+  onSelectItem?: (item: string) => void;
+  /** Callback triggered when the dropdown is opened. */
+  onOpen?: () => void;
+  /** Callback triggered when the dropdown is closed. */
+  onClose?: () => void;
+  /** Controls whether the dropdown is open (controlled mode). */
+  isOpen?: boolean;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'onChange' | 'defaultChecked'

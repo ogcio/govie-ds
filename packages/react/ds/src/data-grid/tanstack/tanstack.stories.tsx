@@ -28,8 +28,8 @@ import {
   TableBody,
   TableData,
 } from '../../table/index.js';
-import { TablePagination } from '../../table/table-pagination.js';
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
+import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
