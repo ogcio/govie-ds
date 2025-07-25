@@ -1,0 +1,111 @@
+---
+title: Progress Stepper
+description: Progress Stepper React Component
+status: beta
+component:
+  id: 'progress-stepper-react'
+  link: '/docs/application-progressstepper--docs'
+  status: 'beta'
+  properties:
+    - name: ProgressStepperProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'An array of StepItem components, each representing an individual step.'
+          required: true
+        - name: 'currentStepIndex'
+          ofType: 'number'
+          description: 'A number (zero-based index) representing the current active step. Defaults to 0.'
+          required: false
+        - name: 'orientation'
+          ofType: 'string'
+          description: 'A string defining the layout of the progress stepper, either horizontal or vertical. The default is horizontal.'
+          required: false
+        - name: 'completeAll'
+          ofType: 'boolean'
+          description: 'When set to true, marks all steps as completed, regardless of the current step.'
+          required: false
+        - name: 'indicator'
+          ofType: 'string'
+          description: 'Defines how each step indicator is rendered. Accepts number or hashtag.'
+          required: false
+        - name: 'className'
+          ofType: 'string'
+          description: 'Custom CSS class name(s) to apply to the stepper container.'
+          required: false
+        - name: 'verticalGap'
+          ofType: 'number'
+          description: 'Vertical spacing between steps. Default value is 14'
+          required: false
+
+    - name: StepItemProps
+      fields:
+        - name: 'label'
+          ofType: 'string'
+          description: 'A string representing the label for the step, providing context for the user on what this step is about.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the step, which can include any valid React node (e.g., forms, string, etc.).'
+          required: false
+        - name: 'defaultOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the step should be open by default.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/application-progressstepper--default'
+    - name: 'with-vertical-long-text'
+      url: '/story/application-progressstepper--with-vertical-long-text'
+    - name: 'with-step-content'
+      url: '/story/application-progressstepper--with-step-content'
+---
+
+# Progress Stepper
+
+The Progress Stepper component is a versatile UI element designed to guide users through a series of steps in a process.
+It can be used in both horizontal and vertical orientations, making it adaptable to various layouts. The component supports custom indicators, allowing for flexible visual representation of steps.
+
+<Section current="react">
+
+<ComponentPreview>
+  <ProgressStepper currentStepIndex={3}>
+    <StepItem label="Step 1" />
+    <StepItem label="Step 2" />
+    <StepItem label="Step 3" />
+    <StepItem label="Step 4" />
+    <StepItem label="Step 5" />
+  </ProgressStepper>
+</ComponentPreview>
+
+## Examples
+
+### Default
+
+<StorybookFrame
+  className="h-40"
+  componentId="progress-stepper-react"
+  story="default"
+/>
+
+### With Vertical Long Text
+
+<StorybookFrame
+  className="h-96"
+  componentId="progress-stepper-react"
+  story="with-vertical-long-text"
+/>
+
+### With Step Content
+
+<StorybookFrame
+  className="h-96"
+  componentId="progress-stepper-react"
+  story="with-step-content"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="progress-stepper-react" />
+
+</Section>
