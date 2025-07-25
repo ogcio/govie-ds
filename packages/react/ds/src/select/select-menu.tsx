@@ -9,6 +9,7 @@ import {
   KeyboardEvent,
 } from 'react';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 import { Icon } from '../icon/icon.js';
 import { InputText } from '../input-text/input-text.js';
 import { Label } from '../label/label.js';
@@ -129,7 +130,9 @@ export const SelectMenu = ({
     }
 
     return showNoDataDelay ? (
-      <div className="gi-select-menu-option-not-found">No data found.</div>
+      <div className="gi-select-menu-option-not-found">
+        {t('autocomplete.noData')}
+      </div>
     ) : (
       <ul>{filteredOptions}</ul>
     );

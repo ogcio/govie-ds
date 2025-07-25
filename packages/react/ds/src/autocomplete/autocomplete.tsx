@@ -1,6 +1,7 @@
 'use client';
 import { FC, useRef, ChangeEvent } from 'react';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
 import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
@@ -184,7 +185,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
         aria-label="Type to Search"
         aria-disabled={disabled}
         disabled={disabled}
-        placeholder={placeholder || 'Type to Search'}
+        placeholder={placeholder || t('autocomplete.placeholder')}
         iconEndClassName={cn({
           'gi-cursor-pointer': !disabled && !freeSolo,
           'gi-cursor-not-allowed gi-pointer-events-none': disabled && !freeSolo,
