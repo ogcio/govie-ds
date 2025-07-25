@@ -256,7 +256,7 @@ export const WithListOfUploadedFilesWithErrorState: Story = {
   render: (arguments_) => (
     <FormField id="file-upload-id" className="gi-block gi-min-w-0">
       <FormFieldLabel htmlFor="file-upload-id">Upload File</FormFieldLabel>
-      <FormFieldError>Upload File</FormFieldError>
+      <FormFieldError>Error</FormFieldError>
       <InputFile {...arguments_} />
       <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
         <Table layout="auto" noBorder>
