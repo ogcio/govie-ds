@@ -59,5 +59,5 @@ export const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
   nav.append(ol);
   container.append(nav);
 
-  return beautifyHtmlNode(container);
+  return container;
 };

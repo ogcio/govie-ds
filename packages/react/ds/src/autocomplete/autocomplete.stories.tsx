@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within, userEvent } from '@storybook/test';
 import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer } from 'react';
+import { expect, within, userEvent } from 'storybook/test';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
