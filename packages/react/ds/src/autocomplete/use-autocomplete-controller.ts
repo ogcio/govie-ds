@@ -256,9 +256,6 @@ export const useAutocompleteController = ({
           if (!state.isOpen && !state.value) {
             dispatch({ type: SET_IS_OPEN, payload: true });
           }
-          if (freeSolo) {
-            dispatch({ type: SET_VALUE, payload: '' });
-          }
         } else {
           dispatch({ type: SET_VALUE, payload: '' });
           dispatch({ type: SET_OPTIONS, payload: validChildren });

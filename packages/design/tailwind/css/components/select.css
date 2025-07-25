@@ -57,22 +57,19 @@
 }
 
 .gi-select-menu-option-container {
-  @apply gi-overflow-y-auto gi-overflow-x-hidden;
+  @apply gi-overflow-y-auto gi-overflow-x-hidden gi-pb-4 gi-pt-4;
 }
 
 .gi-select-menu-option-container ul > li {
   @apply gi-mt-2;
 }
-.gi-select-menu-option-container ul > li:first-child {
-  @apply !gi-mt-4;
-}
 
-.gi-select-menu-option-container ul > li:last-child {
-  @apply gi-mb-4;
+.gi-select-menu-option-container ul > li:first-child {
+  @apply gi-mt-0;
 }
 
 .gi-select-menu-loading {
-  @apply gi-my-4 gi-flex gi-items-center gi-justify-center gi-p-3;
+  @apply gi-flex gi-items-center gi-justify-center;
 }
 
 .gi-select-menu-option-container ul > div > li:not(:first-child) {
@@ -84,7 +81,7 @@
 }
 
 .gi-select-menu-option-not-found {
-  @apply gi-py-4 gi-px-3 gi-text-sm gi-text-gray-500 gi--mt-1;
+  @apply gi-px-3 gi-text-sm gi-text-gray-500;
 }
 
 .gi-select-option-item {

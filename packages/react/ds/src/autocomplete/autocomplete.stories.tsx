@@ -306,8 +306,6 @@ export const WithLoading = () => {
     dispatch({ type: ACTIONS.SET_QUERY, payload: value });
   };
 
-  console.log({ res: state.results });
-
   return (
     <FormField className="gi-w-56">
       <FormFieldLabel>Async Search</FormFieldLabel>
