@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
   FormFieldError,
@@ -285,6 +285,7 @@ export const WithGroups = {
         aria-label="Select"
         data-testid="select"
         defaultValue="value-1"
+        enableSearch
       >
         <SelectGroupItemNext label="Group 1" data-testid="select-group">
           <SelectItemNext value="value-1">Option 1</SelectItemNext>

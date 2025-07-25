@@ -1,10 +1,18 @@
 'use client';
-import { FC, useRef, ChangeEvent } from 'react';
+import { FC, useRef, ChangeEvent, isValidElement, Children } from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
-import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
+import {
+  SelectMenu,
+  SelectMenuGroupItem,
+  SelectMenuOption,
+} from '../select/select-menu.js';
+import {
+  SelectNextGroupItemElement,
+  SelectNextOptionItemElement,
+} from '../select/types.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteItemProps,
@@ -182,7 +190,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
         onClick={handleOnClick}
         clearButtonEnabled={state.isClearButtonEnabled}
         inputActionPosition="beforeSuffix"
-        aria-label="Type to Search"
+        aria-label={t('autocomplete.placeholder')}
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder || t('autocomplete.placeholder')}
@@ -219,23 +227,77 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
           isLoading={isLoading}
           showNoData={!state.autocompleteOptions?.length}
         >
-          {state.autocompleteOptions?.map((child, index) => (
-            <SelectMenuOption
-              {...child.props}
-              key={`AutocompleteItem-${child.props.value}`}
-              selected={state.value === child.props.value}
-              isHighlighted={index === state.highlightedIndex}
-            />
-          ))}
+          {renderSelectMenuOptions(
+            state.autocompleteOptions,
+            state,
+            handleOnSelectItem,
+          )}
         </SelectMenu>
       </Popover>
     </div>
   );
 };
 
+export const renderSelectMenuOptions = (
+  options: any[],
+  state: any,
+  handleOnSelectItem: (value: string) => void,
+): React.ReactNode[] => {
+  return options.map((child, index) => {
+    if (state.optionType === 'AutocompleteItem') {
+      return (
+        <SelectMenuOption
+          {...child.props}
+          key={`AutocompleteItem-${child.props.value}`}
+          selected={state.value === child.props.value}
+          isHighlighted={index === state.highlightedIndex}
+        />
+      );
+    } else if (state.optionType === 'AutocompleteGroupItem') {
+      const typedChild = child as SelectNextGroupItemElement;
+
+      const groupOptions = Children.toArray(typedChild.props.children)
+        .filter((child) => isValidElement(child))
+        .map((optionChild) => {
+          const optionProps = (optionChild as SelectNextOptionItemElement)
+            .props;
+          return (
+            <SelectMenuOption
+              key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
+              {...optionProps}
+              selected={state.value.toString() === optionProps.value.toString()}
+              onChange={handleOnSelectItem}
+            />
+          );
+        });
+
+      return (
+        <SelectMenuGroupItem
+          label={typedChild.props.label}
+          key={`Group-${typedChild.props.label}`}
+        >
+          {groupOptions}
+        </SelectMenuGroupItem>
+      );
+    }
+
+    return null;
+  });
+};
+
 export const AutocompleteItem: FC<AutocompleteItemProps> = () => null;
 Object.defineProperty(AutocompleteItem, 'componentType', {
   value: 'AutocompleteItem',
+  writable: false,
+  enumerable: false,
+});
+
+export const AutocompleteGroupItem: FC<{
+  children?: any;
+  label: string;
+}> = () => null;
+Object.defineProperty(AutocompleteGroupItem, 'componentType', {
+  value: 'AutocompleteGroupItem',
   writable: false,
   enumerable: false,
 });
