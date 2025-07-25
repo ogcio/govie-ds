@@ -38,9 +38,15 @@
 }
 
 .gi-select-menu-container {
-  @apply gi-flex gi-px-0 gi-border-[1px] gi-rounded-sm 
+  @apply gi-flex
+  gi-flex-col
+  gi-px-0
+  gi-rounded-sm
+  gi-border-[1px] 
   gi-border-color-border-system-neutral-muted
-  gi-flex-col gi-text-sm gi-leading-5
+  gi-text-sm
+  gi-leading-5
+  gi-max-h-[312px]
 
   xs:gi-text-md
   xs:gi-leading-5;
