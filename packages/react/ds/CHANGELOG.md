@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.13.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.4...react-lib-v1.13.0) (2025-07-24)
+
+
+### Features
+
+* add table pagination to tanstack ([#660](https://github.com/ogcio/govie-ds/issues/660)) ([059f798](https://github.com/ogcio/govie-ds/commit/059f798bdee586a26ac06d704366dfa064743316))
+* Adding Checkbox indeterminate state  ([#651](https://github.com/ogcio/govie-ds/issues/651)) ([73b7da6](https://github.com/ogcio/govie-ds/commit/73b7da6821769d5cf4a6e7a3f9d207cd95a666fc))
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Bug Fixes
+
+* a11y compliance ([#652](https://github.com/ogcio/govie-ds/issues/652)) ([9cff47d](https://github.com/ogcio/govie-ds/commit/9cff47d996c049f89076ab3ecd1e67f74fa53f9f))
+* Modal accessibility and focus behavior ([#654](https://github.com/ogcio/govie-ds/issues/654)) ([68f0ede](https://github.com/ogcio/govie-ds/commit/68f0edec21f96945bee69501c4614e3e7c846aa8))
+* update header translation and associated doc fixes for i18n keys ([#657](https://github.com/ogcio/govie-ds/issues/657)) ([d01b451](https://github.com/ogcio/govie-ds/commit/d01b45149b230893a5c038d754b20dbb5be4922d))
+* update InputRadio, InputCheckbox, SelectNext and TextArea with controlled props ([#653](https://github.com/ogcio/govie-ds/issues/653)) ([7512072](https://github.com/ogcio/govie-ds/commit/75120726941fd5733e09f722da4e78cff2a48e9d))
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+* update input files for lint errors ([#655](https://github.com/ogcio/govie-ds/issues/655)) ([07a97dd](https://github.com/ogcio/govie-ds/commit/07a97dde13be722c2cfa37a95f6618f87391b63f))
+* upgrade to sb 9 ([#658](https://github.com/ogcio/govie-ds/issues/658)) ([84e6481](https://github.com/ogcio/govie-ds/commit/84e6481d5b675164995992e00bab366cc66ae4c5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.2.6
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+    * @ogcio/design-system-tailwind bumped to 1.12.0
+    * @ogcio/theme-govie bumped to 1.6.0
+
 ## [1.12.4](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.3...react-lib-v1.12.4) (2025-07-15)
 
 
