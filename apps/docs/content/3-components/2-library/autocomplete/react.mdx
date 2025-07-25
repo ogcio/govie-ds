@@ -15,7 +15,7 @@ component:
           required: true
         - name: 'id'
           ofType: 'string'
-          description: Unique identifier for the autocomplete component.'
+          description: 'Unique identifier for the autocomplete component.'
           required: false
         - name: 'defaultValue'
           ofType: 'string'
@@ -27,7 +27,31 @@ component:
           required: false
         - name: 'onChange'
           ofType: 'function'
-          description: 'Callback function triggered when an option is selected.'
+          description: 'Callback function triggered when the input value changes or an option is selected.'
+          required: false
+        - name: 'freeSolo'
+          ofType: 'boolean'
+          description: 'When true, allows typing values that are not part of the dropdown options.'
+          required: false
+        - name: 'isLoading'
+          ofType: 'boolean'
+          description: 'Displays a loading indicator while fetching or filtering options.'
+          required: false
+        - name: 'onSelectItem'
+          ofType: 'function'
+          description: 'Callback triggered when an autocomplete option is selected.'
+          required: false
+        - name: 'onOpen'
+          ofType: 'function'
+          description: 'Callback triggered when the autocomplete dropdown is opened.'
+          required: false
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'Callback triggered when the autocomplete dropdown is closed.'
+          required: false
+        - name: 'isOpen'
+          ofType: 'boolean'
+          description: 'Controls the open/closed state of the dropdown (use for controlled mode).'
           required: false
   stories:
     - name: 'default'
@@ -38,6 +62,10 @@ component:
       url: '/story/form-autocomplete--with-disabled-options'
     - name: 'with-disabled'
       url: '/story/form-autocomplete--with-disabled'
+    - name: 'with-free-solo'
+      url: '/story/form-autocomplete--with-free-solo'
+    - name: 'with-loading'
+      url: '/story/form-autocomplete--with-loading'
 ---
 
 # Autocomplete
@@ -98,6 +126,22 @@ The Autocomplete component allows users to search and select from a list of opti
   heightClassName="h-[405px]"
   componentId="autocomplete-react"
   story="with-disabled"
+/>
+
+### With Free Solo
+
+<StorybookFrame
+  heightClassName="h-[405px]"
+  componentId="autocomplete-react"
+  story="with-loading"
+/>
+
+### With Loading
+
+<StorybookFrame
+  heightClassName="h-[405px]"
+  componentId="autocomplete-react"
+  story="with-loading"
 />
 
 ## Properties
