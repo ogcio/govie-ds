@@ -3,9 +3,7 @@ import parse from 'html-react-parser';
 import { createButton, createIconButton } from '../helpers/buttons';
 import { createIcon } from '../helpers/icons';
 import { createLink } from '../helpers/links';
-import { createStack } from '../helpers/stack';
 import { createParagraph } from '../helpers/typography';
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { ToastProps } from './types';
 
 const meta: Meta<ToastProps> = {
