@@ -46,7 +46,7 @@
   gi-border-color-border-system-neutral-muted
   gi-text-sm
   gi-leading-5
-  gi-max-h-[312px]
+  gi-max-h-[304px]
 
   xs:gi-text-md
   xs:gi-leading-5;
@@ -57,15 +57,10 @@
 }
 
 .gi-select-menu-option-container {
-  @apply gi-overflow-y-auto gi-overflow-x-hidden gi-pb-4 gi-pt-4;
-}
-
-.gi-select-menu-option-container ul > li {
-  @apply gi-mt-2;
-}
-
-.gi-select-menu-option-container ul > li:first-child {
-  @apply gi-mt-0;
+  @apply gi-overflow-y-auto
+  gi-overflow-x-hidden
+  gi-py-2
+  gi-scroll-smooth;
 }
 
 .gi-select-menu-loading {
@@ -89,7 +84,8 @@
   gi-flex
   gi-items-center
   gi-justify-between 
-  gi-cursor-pointer 
+  gi-cursor-pointer
+  gi-h-10
    
   hover:gi-bg-color-surface-system-neutral-interactive-hover
   hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 

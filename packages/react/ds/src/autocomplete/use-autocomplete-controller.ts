@@ -8,6 +8,7 @@ import {
   useReducer,
   useRef,
 } from 'react';
+import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteAction,
@@ -40,7 +41,10 @@ const reducer = (
       return { ...state, inputValue: action.payload };
     }
     case SET_OPTIONS: {
-      return { ...state, autocompleteOptions: action.payload || [] };
+      return {
+        ...state,
+        autocompleteOptions: action.payload || [],
+      };
     }
     case SET_VALUE: {
       return { ...state, value: action.payload };
@@ -70,7 +74,7 @@ const reducer = (
       };
     }
     case SET_HIGHLIGHTED_INDEX: {
-      return { ...state, highlightedIndex: action.payload, isOpen: true };
+      return { ...state, highlightedIndex: action.payload };
     }
     case SET_OPTION_TYPE: {
       return { ...state, optionType: action.payload };
@@ -160,6 +164,7 @@ export const useAutocompleteController = ({
   'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose'
 >) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
   const validChildren = useMemo(
     () => getValidChildren(children || []),
@@ -179,6 +184,7 @@ export const useAutocompleteController = ({
       optionType,
     };
   });
+  useScrollHighlightedItem(listRef, state.highlightedIndex);
 
   useEffect(() => {
     dispatch({ type: SET_OPTIONS, payload: validChildren });
@@ -253,12 +259,14 @@ export const useAutocompleteController = ({
             .filter(Boolean);
 
           dispatch({ type: SET_OPTIONS, payload: filtered });
-          if (!state.isOpen && !state.value) {
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: -1 });
+          if ((!state.isOpen && !state.value) || filtered?.length === 0) {
             dispatch({ type: SET_IS_OPEN, payload: true });
           }
         } else {
           dispatch({ type: SET_VALUE, payload: '' });
           dispatch({ type: SET_OPTIONS, payload: validChildren });
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: -1 });
         }
       }, 500),
     [validChildren, state.isOpen, state.value, freeSolo],
@@ -273,6 +281,7 @@ export const useAutocompleteController = ({
     state,
     dispatch,
     inputRef,
+    listRef,
     validChildren,
     getOptionLabelByValue,
   };

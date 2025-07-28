@@ -46,7 +46,7 @@ export const Default: StoryObj = {
     await waitFor(() => {
       expect(select.value).toBe('value-2');
     });
-    const icon = canvas.getByLabelText('keyboard_arrow_down');
+    const icon = canvas.getByTestId('govie-icon');
     expect(icon).toBeInTheDocument();
   },
 };

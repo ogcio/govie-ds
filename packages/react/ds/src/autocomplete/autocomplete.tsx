@@ -31,7 +31,7 @@ const {
 } = AUTOCOMPLETE_ACTIONS;
 
 const getIconEnd = (isOpen: boolean) =>
-  isOpen ? 'arrow_drop_up' : 'arrow_drop_down';
+  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
 const propagateOnChange =
   (onChange: any) => (inputValue: string, inputRef: any) => {
@@ -61,7 +61,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
     onChange: onAutocompleteChange,
   } = props;
 
-  const { state, dispatch, inputRef, getOptionLabelByValue } =
+  const { state, dispatch, inputRef, getOptionLabelByValue, listRef } =
     useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange),
@@ -161,12 +161,14 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
           ? findNextEnabledIndex(state.highlightedIndex, 1)
           : 0,
       });
+      dispatch({ type: SET_IS_OPEN, payload: true });
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
       dispatch({
         type: SET_HIGHLIGHTED_INDEX,
         payload: findNextEnabledIndex(state.highlightedIndex, -1),
       });
+      dispatch({ type: SET_IS_OPEN, payload: true });
     } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
       const selected = state.autocompleteOptions[
         state.highlightedIndex
@@ -226,6 +228,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
           onChange={handleOnSelectItem}
           isLoading={isLoading}
           showNoData={!state.autocompleteOptions?.length}
+          ref={listRef}
         >
           {renderSelectMenuOptions(
             state.autocompleteOptions,
@@ -251,6 +254,7 @@ export const renderSelectMenuOptions = (
           key={`AutocompleteItem-${child.props.value}`}
           selected={state.value === child.props.value}
           isHighlighted={index === state.highlightedIndex}
+          index={index}
         />
       );
     } else if (state.optionType === 'AutocompleteGroupItem') {
@@ -267,6 +271,7 @@ export const renderSelectMenuOptions = (
               {...optionProps}
               selected={state.value.toString() === optionProps.value.toString()}
               onChange={handleOnSelectItem}
+              index={index}
             />
           );
         });

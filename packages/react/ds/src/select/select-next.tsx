@@ -168,7 +168,7 @@ export const SelectNext = ({
           'gi-cursor-not-allowed': disabled,
           'gi-pointer-events-none': disabled,
         })}
-        iconEnd="arrow_drop_down"
+        iconEnd="keyboard_arrow_down"
         onIconEndClick={handleOnClick}
         ref={inputRef}
         value={inputValue}
@@ -193,7 +193,7 @@ export const SelectNext = ({
         }}
       >
         <SelectMenu onChange={handleOnSelectItem} enableSearch={enableSearch}>
-          {validOptions.map((child) => {
+          {validOptions.map((child, index) => {
             const type = (child?.type as any)?.componentType;
 
             if (type === 'SelectItemNext') {
@@ -206,6 +206,7 @@ export const SelectNext = ({
                   selected={
                     value.toString() === typedChild.props.value.toString()
                   }
+                  index={index}
                 />
               );
             } else if (type === 'SelectGroupItemNext') {
@@ -213,7 +214,7 @@ export const SelectNext = ({
 
               const groupOptions = Children.toArray(typedChild.props.children)
                 .filter((child) => isValidElement(child))
-                .map((optionChild) => {
+                .map((optionChild, index) => {
                   const optionProps = (
                     optionChild as SelectNextOptionItemElement
                   ).props;
@@ -225,6 +226,7 @@ export const SelectNext = ({
                         value.toString() === optionProps.value.toString()
                       }
                       onChange={handleOnSelectItem}
+                      index={index}
                     />
                   );
                 });
