@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from 'storybook/test';
 import { t } from 'i18next';
+import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
 import {
