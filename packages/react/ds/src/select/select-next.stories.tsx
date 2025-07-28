@@ -247,7 +247,7 @@ export const WithSearchEnabled: StoryObj = {
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
-      <SelectNext aria-label="Select" defaultValue="select-option" enableSearch>
+      <SelectNext aria-label="Select" enableSearch>
         <SelectItemNext value="select-option" hidden>
           Select Option
         </SelectItemNext>
@@ -262,14 +262,17 @@ export const WithSearchEnabled: StoryObj = {
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
-    const searchBox = canvas.getByPlaceholderText('Search');
+    const searchBox = canvas.getByPlaceholderText('Type to Search');
     await userEvent.type(searchBox, 'Option 2');
 
     const list = await canvas.findByRole('list');
-    const options = within(list).getAllByRole('option');
 
-    expect(options).toHaveLength(1);
-    expect(options[0]).toHaveTextContent('Option 2');
+    await waitFor(() => {
+      const options = within(list).getAllByRole('option');
+      expect(options).toHaveLength(1);
+      expect(options[0]).toHaveTextContent('Option 2');
+    });
+
     await userEvent.click(document.body);
   },
 };
@@ -279,7 +282,6 @@ export const WithGroups = {
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext
-        enableSearch
         aria-label="Select"
         data-testid="select"
         defaultValue="value-1"
