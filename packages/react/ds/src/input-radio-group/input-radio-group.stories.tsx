@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
@@ -209,9 +210,7 @@ export const Controlled: Story = {
     },
   },
   render: (arguments_) => {
-    const [selectedValue, setSelectedValue] = React.useState<
-      string | undefined
-    >();
+    const [selectedValue, setSelectedValue] = useState<string | undefined>();
 
     const handleChange = (event?: React.ChangeEvent<HTMLInputElement>) => {
       if (event) {
