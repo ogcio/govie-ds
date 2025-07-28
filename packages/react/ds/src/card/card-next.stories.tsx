@@ -4,14 +4,14 @@ import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
 import {
-  CardMedia,
+  CardAction,
   CardContainer,
   CardDescription,
   CardHeader,
-  CardAction,
-  CardTitle,
+  CardMedia,
   CardSubtitle,
   CardTag,
+  CardTitle,
 } from './card-next.js';
 import { Card } from './card.js';
 

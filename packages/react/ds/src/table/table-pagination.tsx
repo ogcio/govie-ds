@@ -1,4 +1,3 @@
-import React from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';

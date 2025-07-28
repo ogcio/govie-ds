@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { userEvent, waitFor, within, expect } from 'storybook/test';
+import { useState } from 'react';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
   FormFieldError,
@@ -117,7 +117,7 @@ export const Controlled: Story = {
     },
   },
   render: (props) => {
-    const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
     return (
       <FormField>
