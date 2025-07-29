@@ -20,6 +20,7 @@ ButtonGroupItemProps
 ButtonGroupProps
 ButtonProps
 CardProps
+Center
 ChipProps
 Color
 Combobox
@@ -197,13 +198,13 @@ inclusivity
 indexable
 indicators-progressbar
 inputActionButton
+interruptive
 is-dismissible
 isOpen
 labeled
 labeling
 lifecycle
 md
-multistep
 navigation-sidenav
 no-color
 noColor
@@ -245,6 +246,7 @@ webpage
 webpages
 well-organized
 whitespace
+with-center-medium
 with-iframe-embed
 xl
 xs
