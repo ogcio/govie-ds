@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.12.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.11.0...design-tailwind-v1.12.0) (2025-07-29)
+
+
+### Features
+
+* add table pagination to tanstack ([#660](https://github.com/ogcio/govie-ds/issues/660)) ([059f798](https://github.com/ogcio/govie-ds/commit/059f798bdee586a26ac06d704366dfa064743316))
+* Adding Checkbox indeterminate state  ([#651](https://github.com/ogcio/govie-ds/issues/651)) ([73b7da6](https://github.com/ogcio/govie-ds/commit/73b7da6821769d5cf4a6e7a3f9d207cd95a666fc))
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Bug Fixes
+
+* a11y compliance ([#652](https://github.com/ogcio/govie-ds/issues/652)) ([9cff47d](https://github.com/ogcio/govie-ds/commit/9cff47d996c049f89076ab3ecd1e67f74fa53f9f))
+* Autocomplete Component ([#661](https://github.com/ogcio/govie-ds/issues/661)) ([c8d6183](https://github.com/ogcio/govie-ds/commit/c8d61839e7b5967b294533d90e6e84b3710b427c))
+* set font token on text components ([#649](https://github.com/ogcio/govie-ds/issues/649)) ([c179f1b](https://github.com/ogcio/govie-ds/commit/c179f1bfd7e24f3df35d95bbef17556620ea57f4))
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.7
+    * @ogcio/design-system-tokens bumped to 1.6.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+
 ## [1.11.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.10.3...design-tailwind-v1.11.0) (2025-07-08)
 
 

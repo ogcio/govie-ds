@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.7](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.6...design-deepmerge-v1.0.7) (2025-07-29)
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.2.6
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+
 ## [1.0.6](https://github.com/ogcio/govie-ds/compare/design-deepmerge-v1.0.5...design-deepmerge-v1.0.6) (2025-07-03)
 
 

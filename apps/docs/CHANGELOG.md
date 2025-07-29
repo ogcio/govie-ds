@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.13.0](https://github.com/ogcio/govie-ds/compare/docs-v1.12.4...docs-v1.13.0) (2025-07-29)
+
+
+### Features
+
+* Adding Checkbox indeterminate state  ([#651](https://github.com/ogcio/govie-ds/issues/651)) ([73b7da6](https://github.com/ogcio/govie-ds/commit/73b7da6821769d5cf4a6e7a3f9d207cd95a666fc))
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Bug Fixes
+
+* Autocomplete Component ([#661](https://github.com/ogcio/govie-ds/issues/661)) ([c8d6183](https://github.com/ogcio/govie-ds/commit/c8d61839e7b5967b294533d90e6e84b3710b427c))
+* update header translation and associated doc fixes for i18n keys ([#657](https://github.com/ogcio/govie-ds/issues/657)) ([d01b451](https://github.com/ogcio/govie-ds/commit/d01b45149b230893a5c038d754b20dbb5be4922d))
+
+
+### Miscellaneous Chores
+
+* nextjs upgrade ([#662](https://github.com/ogcio/govie-ds/issues/662)) ([d2f1c28](https://github.com/ogcio/govie-ds/commit/d2f1c288e005cefbc6f77507e4cebead3e070bd3))
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.7
+    * @ogcio/design-system-react bumped to 1.13.0
+    * @ogcio/design-system-tailwind bumped to 1.12.0
+    * @ogcio/theme-govie bumped to 1.6.0
+    * @ogcio/design-system-tokens bumped to 1.6.0
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.2.6
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+
 ## [1.12.4](https://github.com/ogcio/govie-ds/compare/docs-v1.12.3...docs-v1.12.4) (2025-07-15)
 
 
