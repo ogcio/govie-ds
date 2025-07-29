@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.11.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.10.1...html-lib-v1.11.0) (2025-07-29)
+
+
+### Features
+
+* add table pagination to tanstack ([#660](https://github.com/ogcio/govie-ds/issues/660)) ([059f798](https://github.com/ogcio/govie-ds/commit/059f798bdee586a26ac06d704366dfa064743316))
+* Adding Checkbox indeterminate state  ([#651](https://github.com/ogcio/govie-ds/issues/651)) ([73b7da6](https://github.com/ogcio/govie-ds/commit/73b7da6821769d5cf4a6e7a3f9d207cd95a666fc))
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Bug Fixes
+
+* a11y compliance ([#652](https://github.com/ogcio/govie-ds/issues/652)) ([9cff47d](https://github.com/ogcio/govie-ds/commit/9cff47d996c049f89076ab3ecd1e67f74fa53f9f))
+* Modal accessibility and focus behavior ([#654](https://github.com/ogcio/govie-ds/issues/654)) ([68f0ede](https://github.com/ogcio/govie-ds/commit/68f0edec21f96945bee69501c4614e3e7c846aa8))
+
+
+### Miscellaneous Chores
+
+* lint fixes ([cdc1ea2](https://github.com/ogcio/govie-ds/commit/cdc1ea2a4a9f345495246a699cf6657b959a4022))
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+* upgrade to sb 9 ([#658](https://github.com/ogcio/govie-ds/issues/658)) ([84e6481](https://github.com/ogcio/govie-ds/commit/84e6481d5b675164995992e00bab366cc66ae4c5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-eslint-config bumped to 1.2.6
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+    * @ogcio/design-system-tailwind bumped to 1.12.0
+    * @ogcio/theme-govie bumped to 1.6.0
+
 ## [1.10.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.10.0...html-lib-v1.10.1) (2025-07-08)
 
 

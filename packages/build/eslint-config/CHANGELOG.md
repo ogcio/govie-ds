@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.5...eslint-config-v1.2.6) (2025-07-29)
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
 ## [1.2.5](https://github.com/ogcio/govie-ds/compare/eslint-config-v1.2.4...eslint-config-v1.2.5) (2025-07-01)
 
 

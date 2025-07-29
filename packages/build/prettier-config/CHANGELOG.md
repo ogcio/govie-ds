@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.0.6](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.5...prettier-config-v1.0.6) (2025-07-29)
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
 ## [1.0.5](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.4...prettier-config-v1.0.5) (2025-03-31)
 
 ## [1.0.4](https://github.com/ogcio/govie-ds/compare/prettier-config-v1.0.3...prettier-config-v1.0.4) (2025-03-31)

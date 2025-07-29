@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.3...themes-govie-v1.6.0) (2025-07-29)
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+    * @ogcio/theme-builder bumped to 1.6.0
+    * @ogcio/design-system-tokens bumped to 1.6.0
+
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/themes-govie-v1.5.2...themes-govie-v1.5.3) (2025-07-04)
 
 
