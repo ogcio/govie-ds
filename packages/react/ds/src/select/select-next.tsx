@@ -179,15 +179,15 @@ export const SelectNext = ({
         triggerRef={inputRef}
         onOpenChange={handleOnOpenChange}
         open={isOpen}
+        maxHeight={304}
         options={{
           placement: 'bottom-start',
           strategy: 'absolute',
           modifiers: [
             { name: 'offset', options: { offset: [0, 4] } },
-            { name: 'preventOverflow', options: { padding: 10 } },
             {
               name: 'flip',
-              options: { fallbackPlacements: ['top', 'right', 'left'] },
+              options: { fallbackPlacements: ['top'] },
             },
           ],
         }}

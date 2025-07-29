@@ -41,12 +41,9 @@
   @apply gi-flex
   gi-flex-col
   gi-px-0
-  gi-rounded-sm
-  gi-border-[1px] 
-  gi-border-color-border-system-neutral-muted
   gi-text-sm
   gi-leading-5
-  gi-max-h-[304px]
+  
 
   xs:gi-text-md
   xs:gi-leading-5;
