@@ -21,10 +21,12 @@ Modal components are used to display content in a layer above the main content o
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
     </ModalBody>
     <ModalFooter>
-      <Button variant="secondary" appearance="dark">
-        Secondary
+      <Button variant="secondary" data-button>
+        Cancel
       </Button>
-      <Button variant="primary">Primary</Button>
+      <Button variant="primary" data-button>
+        Submit
+      </Button>
     </ModalFooter>
   </Modal>
 </ComponentPreview>
@@ -38,58 +40,20 @@ Modal components are used to display content in a layer above the main content o
   <Modal triggerButton={<Button>Open modal</Button>}>
     <ModalTitle>Modal Title</ModalTitle>
     <ModalBody>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores.
-      </Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores.
     </ModalBody>
     <ModalFooter>
-      <Button variant="flat">Flat</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="primary">Primary</Button>
-    </ModalFooter>
-  </Modal>
-</ComponentContainer>
-
-### Modal with Long Content
-
-<ComponentContainer>
-  <Modal className="gi-w-[600px]" triggerButton={<Button>Open modal</Button>}>
-    <ModalTitle>Modal Title</ModalTitle>
-    <ModalBody>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt
-        exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Incidunt esse magnam quis sit soluta
-        cupiditate at deserunt exercitationem voluptas doloribus asperiores.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt
-        exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Incidunt esse magnam quis sit soluta
-        cupiditate at deserunt exercitationem voluptas doloribus asperiores.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt
-        exercitationem voluptas doloribus asperiores. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Incidunt esse magnam quis sit soluta
-        cupiditate at deserunt exercitationem voluptas doloribus asperiores.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Incidunt esse magnam quis sit soluta cupiditate at deserunt
-        exercitationem voluptas doloribus asperiores.
-      </Paragraph>
-    </ModalBody>
-    <ModalFooter>
-      <Button variant="secondary">Cancel</Button>
-      <Button variant="primary">Submit</Button>
+      <Button variant="flat" data-button>
+        Flat
+      </Button>
+      <Button variant="secondary" data-button>
+        Secondary
+      </Button>
+      <Button variant="primary" data-button>
+        Primary
+      </Button>
     </ModalFooter>
   </Modal>
 </ComponentContainer>
@@ -100,14 +64,12 @@ Modal components are used to display content in a layer above the main content o
   <Modal triggerButton={<Button>Open modal</Button>}>
     <ModalTitle>Modal Title</ModalTitle>
     <ModalBody>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-        magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-        doloribus asperiores.
-      </Paragraph>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores.
     </ModalBody>
     <ModalFooter>
-      <Button appearance="dark" variant="primary">
+      <Button appearance="dark" variant="primary" data-button>
         Primary
       </Button>
     </ModalFooter>
@@ -126,22 +88,21 @@ Modal components are used to display content in a layer above the main content o
 **Example:**
 
 <ComponentContainer>
-  <Modal triggerButton={<Button>Edit Profile</Button>}>
-    <ModalTitle>Edit Profile</ModalTitle>
+  <Modal triggerButton={<Button>Edit Username</Button>}>
+    <ModalTitle>Edit Username</ModalTitle>
     <ModalBody>
-      <Paragraph>You can update your first and last name below.</Paragraph>
       <FormField>
-        <FormFieldLabel htmlFor="first-name">First Name</FormFieldLabel>
-        <InputText id="first-name" />
-      </FormField>
-      <FormField>
-        <FormFieldLabel htmlFor="last-name">Last Name</FormFieldLabel>
-        <InputText id="last-name" />
+        <FormFieldLabel>Username</FormFieldLabel>
+        <InputText iconStart="person" placeholder="Username" />
       </FormField>
     </ModalBody>
     <ModalFooter>
-      <Button variant="secondary">Cancel</Button>
-      <Button variant="primary">Save Changes</Button>
+      <Button variant="secondary" data-button>
+        Cancel
+      </Button>
+      <Button variant="primary" data-button>
+        Save Changes
+      </Button>
     </ModalFooter>
   </Modal>
 </ComponentContainer>
@@ -159,13 +120,13 @@ Modal components are used to display content in a layer above the main content o
   <Modal triggerButton={<Button>Click Me</Button>}>
     <ModalTitle>Information</ModalTitle>
     <ModalBody>
-      <Paragraph>
-        Our company was founded in 2012 and has grown steadily since. We now
-        operate in 12 countries...
-      </Paragraph>
+      Our company was founded in 2012 and has grown steadily since. We now
+      operate in 12 countries...
     </ModalBody>
     <ModalFooter>
-      <Button variant="primary">Close</Button>
+      <Button variant="primary" data-button>
+        Close
+      </Button>
     </ModalFooter>
   </Modal>
 </ComponentContainer>
