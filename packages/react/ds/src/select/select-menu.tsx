@@ -145,7 +145,7 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           <div className="gi-select-menu-input-container">
             <InputText
               tabIndex={0}
-              placeholder="Search"
+              placeholder={t('input.search')}
               iconEnd="search"
               onChange={handleSearchChange}
               value={searchTerm}
