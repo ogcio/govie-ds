@@ -1,32 +1,28 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import { generateRandomId } from '../utilities.js';
-
-export type TabsProps = {
-  id?: string;
-  ariaLabelledBy: string;
-  dataTestid?: string;
-  children: React.ReactNode;
-};
+import { TabsProps } from './types.js';
 
 export function Tabs({
   id = generateRandomId(),
   ariaLabelledBy,
   dataTestid,
   children,
+  variant = 'neutral',
+  size = 'md',
 }: TabsProps) {
   const childrenWithName = Children.map(children, (element) => {
-    if (isValidElement<{ tabName: string }>(element)) {
-      return cloneElement<{ tabName: string }>(element, { tabName: id });
+    if (isValidElement(element)) {
+      return cloneElement<any>(element, {
+        tabName: id,
+        variant,
+        size,
+        ariaLabelledBy,
+      });
     }
     return element;
   });
   return (
-    <div
-      aria-labelledby={ariaLabelledBy}
-      className="gi-tabs"
-      id={id}
-      data-testid={dataTestid}
-    >
+    <div className="gi-tabs" id={id} data-testid={dataTestid}>
       {childrenWithName}
     </div>
   );

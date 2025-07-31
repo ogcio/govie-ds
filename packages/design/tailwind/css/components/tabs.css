@@ -3,17 +3,69 @@
 }
 
 .gi-tab-item {
-  @apply gi-inline-block gi-cursor-pointer gi-px-5 gi-py-2 gi-relative gi-mr-1 gi-bg-gray-50 gi-text-center gi-text-md gi-underline gi-text-gray-950 gi-stroke-gray-950 hover:gi-bg-gray-200 focus:gi-bg-gray-200 gi-focus-state-outline focus:gi-shadow-[inset_0_0_0_2px] focus:gi-border-transparent;
+  @apply gi-inline-block
+  gi-cursor-pointer
+  gi-relative
+  gi-text-center
+  gi-text-color-text-system-neutral-interactive-muted
+  gi-px-[3px]
+  gi-leading-6
+  
+  hover:gi-text-color-icon-system-neutral-interactive-hover
+
+  gi-focus-state-outline
+  focus:gi-shadow-[inset_0_0_0_2px]
+  focus:gi-border-transparent
+  focus:gi-border-none
+  focus:gi-bg-white
+  focus:gi-text-color-text-system-neutral-interactive-default
+  focus:gi-rounded-sm;
 }
 
 .gi-tab-item-checked {
-  @apply gi-border-solid gi-border-gray-200 gi-border-x-xs gi-border-t-xs gi-border-b-[1px] gi-border-b-transparent gi-bg-white gi-px-5 gi-py-3 gi--mt-2 gi-no-underline focus:gi-shadow-[inset_0_0_0_1px] focus:gi-border-[1px] focus:gi-border-gray-950;
+  @apply gi-bg-white
+  gi-no-underline
+  gi-font-bold
+
+  gi-text-color-text-system-neutral-interactive-default;
 }
 
-.gi-tab-item:hover > * {
-  @apply gi-decoration-lg;
+.gi-tab-item-border {
+  @apply gi-h-[2px]
+  gi-absolute
+  gi-bottom-0
+  gi-left-0
+  gi-w-full;
+}
+
+.gi-tab-item:focus .gi-tab-item-border {
+  @apply !gi-bg-transparent;
+}
+
+.gi-tab-item:hover .gi-tab-item-border {
+  @apply gi-bg-color-text-system-neutral-interactive-muted;
 }
 
 .gi-tab-panel {
-  @apply gi-hidden gi-basis-full gi-border-xs gi-border-solid gi-border-gray-200 gi-bg-white gi-p-4 focus-visible:gi-outline-none;
+  @apply gi-hidden gi-basis-full gi-pt-2 focus-visible:gi-outline-none;
+}
+
+.gi-tab-list {
+  @apply gi-gap-4
+  gi-flex
+  gi-justify-center
+  gi-items-center
+  gi-overflow-visible
+  gi-whitespace-nowrap gi-relative
+  gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-subtle)];
+}
+
+.gi-tab-list .gi-tab-indicator {
+  @apply gi-absolute 
+  gi-bottom-0
+  gi-transition-all
+  gi-duration-300
+  gi-w-full
+
+  gi-h-[2px];
 }

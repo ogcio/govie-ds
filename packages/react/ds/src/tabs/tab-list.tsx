@@ -6,21 +6,31 @@ import {
   isValidElement,
   ReactNode,
 } from 'react';
-import { InternalTabItem, TabItemProps } from './tab-item.js';
+import { InternalTabItem } from './tab-item.js';
+import { TabItemProps } from './types.js';
 
 export const TabList = ({
   children,
   tabName,
+  variant,
+  size,
+  ariaLabelledBy,
 }: {
   tabName?: string;
+  variant?: 'primary' | 'neutral';
+  size?: 'sm' | 'md';
+  ariaLabelledBy?: string;
   children: ReactNode;
 }) => {
+  /*
+  Prefer using this wrapper to handle indicator animation.
+  return <ScrollableTabs children={children} variant={variant} tabName={tabName} />
+  */
+
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const tabCount = Children.count(children);
 
   useEffect(() => {
-    // Initialize the active tab based on children
-    // Find if any child is checked
     let foundCheckedTab = false;
     let checkedIndex = 0;
 
@@ -116,6 +126,8 @@ export const TabList = ({
       return (
         <InternalTabItem
           {...element.props}
+          variant={variant}
+          size={size}
           index={index}
           checked={activeTab === index}
           onTabKeyDown={handleOnTabKeyDown}
@@ -128,8 +140,18 @@ export const TabList = ({
   });
 
   return (
-    <div role="tablist" className="gi--mb-[1px]">
-      {childrenWithName}
+    <div
+      role="tablist"
+      aria-orientation="horizontal"
+      className="gi-tab-list"
+      aria-labelledby={ariaLabelledBy}
+      id={`${tabName}-list`}
+    >
+      {children && Children.count(childrenWithName) > 0 ? (
+        childrenWithName
+      ) : (
+        <div className="gi-sr-only">No content available for this tab.</div>
+      )}
     </div>
   );
 };

@@ -9,13 +9,15 @@ import { TabList } from './tab-list.js';
 import { TabPanel } from './tab-panel.js';
 import { Tabs } from './tabs.js';
 
-const meta = {
+const meta: Meta<typeof Tabs> = {
   title: 'Navigation/Tabs',
-  decorators: (Story) => (
-    <div className="gi-p-8">
-      <Story />
-    </div>
-  ),
+  decorators: [
+    (Story) => (
+      <div className="gi-p-8">
+        <Story />
+      </div>
+    ),
+  ],
   component: Tabs,
   parameters: {
     layout: 'fullscreen',
@@ -26,16 +28,46 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Tabs>;
+  argTypes: {
+    id: {
+      control: 'text',
+      description: 'ID of the tabs container',
+    },
+    ariaLabelledBy: {
+      control: 'text',
+      description: 'ID of the element that labels the tabs (required)',
+    },
+    dataTestid: {
+      control: 'text',
+      description: 'Test ID for the tabs container',
+    },
+    variant: {
+      options: ['primary', 'neutral'],
+      control: 'radio',
+      description: 'Visual variant of the tabs',
+    },
+    size: {
+      options: ['sm', 'md'],
+      control: 'radio',
+      description: 'Size of the tabs',
+    },
+    children: {
+      control: false,
+      description: 'Tab items and panels as children components',
+    },
+  },
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    ariaLabelledBy: 'tabs-example',
-    children: '',
-    id: 'tab-default',
+    ariaLabelledBy: 'tab-example',
+    id: 'tab-example',
+    size: 'md',
+    children: null,
+    variant: 'neutral',
   },
   render: (props) => (
     <Tabs {...props}>
@@ -47,6 +79,48 @@ export const Default: Story = {
       <TabPanel value="tab1">Tab 1 Content</TabPanel>
       <TabPanel value="tab2">Tab 2 Content</TabPanel>
       <TabPanel value="tab3">Tab 3 Content</TabPanel>
+    </Tabs>
+  ),
+};
+
+export const Primary: Story = {
+  args: {
+    ariaLabelledBy: 'tab-primary',
+    children: '',
+    variant: 'primary',
+    id: 'tab-primary',
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tab11">Tab 1</TabItem>
+        <TabItem value="tab22">Tab 2</TabItem>
+        <TabItem value="tab33">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab11">Tab 1 Content</TabPanel>
+      <TabPanel value="tab22">Tab 2 Content</TabPanel>
+      <TabPanel value="tab33">Tab 3 Content</TabPanel>
+    </Tabs>
+  ),
+};
+
+export const Small: Story = {
+  args: {
+    ariaLabelledBy: 'tab-small',
+    children: '',
+    id: 'tab-small',
+    size: 'sm',
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tab111">Tab 1</TabItem>
+        <TabItem value="tab222">Tab 2</TabItem>
+        <TabItem value="tab333">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab111">Tab 1 Content</TabPanel>
+      <TabPanel value="tab222">Tab 2 Content</TabPanel>
+      <TabPanel value="tab333">Tab 3 Content</TabPanel>
     </Tabs>
   ),
 };

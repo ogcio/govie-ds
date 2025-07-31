@@ -1,0 +1,44 @@
+export type TabsProps = {
+  /** ID of the tabs container */
+  id?: string;
+  /** ID of the element that labels the tabs (required for accessibility) */
+  ariaLabelledBy: string;
+  /** Test ID for the tabs container */
+  dataTestid?: string;
+  /** Visual variant of the tabs */
+  variant?: 'primary' | 'neutral';
+  /** Size of the tabs */
+  size?: 'sm' | 'md';
+  /** TabList, TabItem, and TabPanel components */
+  children: React.ReactNode;
+};
+
+export type TabItemProps = {
+  /** Optional href to render the tab as a link */
+  href?: string;
+  /** Whether the tab is currently selected */
+  checked?: boolean;
+  /** Accessible label for the tab */
+  ariaLabel?: string;
+  /** ID of the element that labels the tab */
+  ariaLabelledby?: string;
+  /** Unique identifier for the tab */
+  value: string;
+  /** Tab label text */
+  children: string;
+  /** Optional click event handler for the tab */
+  onTabClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+};
+
+export type TabPanelProps = {
+  /** The value used to associate the panel with its corresponding tab */
+  value: string;
+  /** Content to be rendered inside the tab panel */
+  children: React.ReactNode;
+};
+export type InternalTabItemProps = TabItemProps & {
+  onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  index: number;
+  variant?: 'primary' | 'neutral';
+  size?: 'md' | 'sm';
+};
