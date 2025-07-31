@@ -2,14 +2,9 @@
 import { createPopper } from '@popperjs/core';
 import { useRef, useEffect } from 'react';
 import { cn } from '../cn.js';
+import { useCombinedRefs } from '../hooks/use-combined-refs.js';
 import { PopoverProps } from './types.js';
-
-const useCombinedRefs = (...refs: (React.RefObject<any> | null)[]) => {
-  return {
-    contains: (node: Node) => refs.some((ref) => ref?.current?.contains(node)),
-    current: refs.map((ref) => ref?.current).find(Boolean) ?? null,
-  };
-};
+import { createDynamicHeightModifier } from './utilities.js';
 
 export const Popover = ({
   triggerRef,
@@ -17,11 +12,11 @@ export const Popover = ({
   className,
   open,
   onOpenChange,
+  maxHeight,
   options = {
     strategy: 'absolute',
     placement: 'bottom-start',
     modifiers: [
-      { name: 'offset', options: { offset: [0, 4] } },
       { name: 'preventOverflow', options: { padding: 8 } },
       {
         name: 'flip',
@@ -35,12 +30,32 @@ export const Popover = ({
 }: PopoverProps) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const combinedTriggerRef = useCombinedRefs(triggerRef, ...extraRefs);
+  const instanceRef = useRef<ReturnType<typeof createPopper> | null>(null);
 
   useEffect(() => {
     if (open && triggerRef?.current && popoverRef?.current) {
-      createPopper(triggerRef.current, popoverRef.current, options);
+      instanceRef.current = createPopper(
+        triggerRef.current,
+        popoverRef.current,
+        {
+          ...options,
+          modifiers: [
+            ...(options.modifiers || []),
+            createDynamicHeightModifier(maxHeight),
+          ],
+        },
+      );
+
+      requestAnimationFrame(() => {
+        instanceRef.current?.update();
+      });
     }
-  }, [open, triggerRef]);
+
+    return () => {
+      instanceRef.current?.destroy?.();
+      instanceRef.current = null;
+    };
+  }, [open, triggerRef, maxHeight]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

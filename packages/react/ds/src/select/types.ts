@@ -36,6 +36,8 @@ export type SelectMenuProps = {
   className?: string;
   onChange?: (value: string) => void;
   enableSearch?: boolean;
+  isLoading?: boolean;
+  showNoData?: boolean;
 };
 
 export type SelectMenuOptionReactElement = ReactElement<{
@@ -59,6 +61,7 @@ export type SelectMenuOptionProps = {
   hidden?: boolean;
   enableSearch?: boolean;
   isHighlighted?: boolean;
+  index: number;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;
@@ -81,6 +84,10 @@ export type SelectNextProps = PropsWithChildren<
     value?: string;
     enableSearch?: boolean;
     disabled?: boolean;
+    /**
+     * Works only when `enableSearch` is set to `true`
+     */
+    placeholder?: string;
   } & Omit<HTMLAttributes<HTMLDivElement>, `on${string}`>
 >;
 

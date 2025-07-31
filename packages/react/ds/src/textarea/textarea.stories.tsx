@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import React from 'react';
 import {
   FormField,
   FormFieldError,
@@ -274,7 +274,7 @@ export const Controlled: Story = {
     },
   },
   render: (props) => {
-    const [value, setValue] = React.useState('Initial value');
+    const [value, setValue] = useState('Initial value');
 
     return (
       <FormField>

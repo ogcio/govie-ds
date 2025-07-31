@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useState } from 'react';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
   FormFieldError,
@@ -85,6 +85,49 @@ const meta = {
 } satisfies Meta<typeof SelectNext>;
 
 export default meta;
+
+const topics: string[] = [
+  'Topic 1',
+  'Topic 2',
+  'Topic 3',
+  'Topic 4',
+  'Topic 5',
+  'Topic 6',
+  'Topic 7',
+  'Topic 8',
+  'Topic 9',
+  'Topic 10',
+  'Topic 11',
+  'Topic 12',
+  'Topic 13',
+  'Topic 14',
+  'Topic 15',
+  'Topic 16',
+  'Topic 17',
+  'Topic 18',
+  'Topic 19',
+  'Topic 20',
+  'Topic 21',
+  'Topic 22',
+  'Topic 23',
+  'Topic 24',
+  'Topic 25',
+  'Topic 26',
+  'Topic 27',
+  'Topic 28',
+  'Topic 29',
+  'Topic 30',
+  'Topic 31',
+  'Topic 32',
+  'Topic 33',
+  'Topic 34',
+  'Topic 35',
+  'Topic 36',
+  'Topic 37',
+  'Topic 38',
+  'Topic 39',
+  'Topic 40',
+];
 
 export const Default: StoryObj = {
   render: () => {
@@ -247,7 +290,7 @@ export const WithSearchEnabled: StoryObj = {
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
-      <SelectNext aria-label="Select" defaultValue="select-option" enableSearch>
+      <SelectNext aria-label="Select" enableSearch>
         <SelectItemNext value="select-option" hidden>
           Select Option
         </SelectItemNext>
@@ -262,14 +305,17 @@ export const WithSearchEnabled: StoryObj = {
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
-    const searchBox = canvas.getByPlaceholderText('Search');
+    const searchBox = canvas.getByPlaceholderText('Type to Search');
     await userEvent.type(searchBox, 'Option 2');
 
     const list = await canvas.findByRole('list');
-    const options = within(list).getAllByRole('option');
 
-    expect(options).toHaveLength(1);
-    expect(options[0]).toHaveTextContent('Option 2');
+    await waitFor(() => {
+      const options = within(list).getAllByRole('option');
+      expect(options).toHaveLength(1);
+      expect(options[0]).toHaveTextContent('Option 2');
+    });
+
     await userEvent.click(document.body);
   },
 };
@@ -279,10 +325,10 @@ export const WithGroups = {
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext
-        enableSearch
         aria-label="Select"
         data-testid="select"
         defaultValue="value-1"
+        enableSearch
       >
         <SelectGroupItemNext label="Group 1" data-testid="select-group">
           <SelectItemNext value="value-1">Option 1</SelectItemNext>
@@ -355,5 +401,39 @@ export const Controlled: StoryObj = {
     await waitFor(() => {
       expect(input).toHaveValue('Option 3');
     });
+  },
+};
+
+export const WithLongList: StoryObj = {
+  render: () => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Long List Select</FormFieldLabel>
+        <SelectNext aria-label="Select" id="select-controlled">
+          {topics.map((topic) => (
+            <SelectItemNext key={topic} value={topic}>
+              {topic}
+            </SelectItemNext>
+          ))}
+        </SelectNext>
+      </FormField>
+    );
+  },
+};
+
+export const WithLongListSearchEnabled: StoryObj = {
+  render: () => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Long List Select Search</FormFieldLabel>
+        <SelectNext aria-label="Select" id="select-controlled" enableSearch>
+          {topics.map((topic) => (
+            <SelectItemNext key={topic} value={topic}>
+              {topic}
+            </SelectItemNext>
+          ))}
+        </SelectNext>
+      </FormField>
+    );
   },
 };

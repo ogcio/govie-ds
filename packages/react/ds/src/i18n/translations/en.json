@@ -2,6 +2,8 @@
   "en": {
     "translation": {
       "alert.dismissAlert": "Dismiss Alert",
+      "autocomplete.noData": "No data found.",
+      "autocomplete.placeholder": "Type to Search",
       "breadcrumbs.breadcrumbs": "Breadcrumbs",
       "card.cardTitle": "Card {{title}}",
       "card.actionLink": "Action link: {{children}}",
@@ -26,6 +28,7 @@
       "header.siteHeader": "Site Header",
       "header.goToHomePage": "Go to the home page",
       "header.drawer.close": "Close",
+      "input.search": "Search",
       "footer.goToHomePage": "Go to the home page",
       "footer.footer": "Footer",
       "footer.primarySlot": "Primary footer slot",
@@ -37,6 +40,8 @@
       "summaryList.linkAction": "Link action: {{children}}",
       "summaryList.summaryList": "Summary List",
       "sectionBreak.sectionBreak": "Section Break",
+      "table.pagination.page": "Page {{currentPage}} ",
+      "table.pagination.ofTotal": "of {{totalPages}}",
       "toast.position": "Toasts-{{x}}-{{y}}",
       "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",

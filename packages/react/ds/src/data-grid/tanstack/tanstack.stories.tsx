@@ -20,7 +20,6 @@ import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
-import { Pagination } from '../../pagination/pagination.js';
 import {
   Table,
   TableHead,
@@ -30,6 +29,7 @@ import {
   TableData,
 } from '../../table/index.js';
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
+import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
@@ -283,7 +283,6 @@ export const WithReactHookForm = () => {
                 'aria-label': 'Active status',
                 ...register(`${row.index}.${column.id}` as never, {
                   validate: (value) => {
-                    console.log({ value });
                     return value === true;
                   },
                 }),
@@ -422,7 +421,7 @@ export const WithReactHookForm = () => {
           ))}
         </TableBody>
       </Table>
-      <Pagination
+      <TablePagination
         currentPage={table.getState().pagination.pageIndex + 1}
         totalPages={table.getPageCount()}
         onPageChange={(page) => table.setPageIndex(page - 1)}
