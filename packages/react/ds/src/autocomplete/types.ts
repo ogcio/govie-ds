@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, PropsWithChildren, ReactElement } from 'react';
 import { SelectMenuOptionProps } from '../select/types.js';
 
 export const AUTOCOMPLETE_ACTIONS = {
@@ -10,6 +10,7 @@ export const AUTOCOMPLETE_ACTIONS = {
   TOGGLE_CLEAR_BUTTON: 'TOGGLE_CLEAR_BUTTON',
   ON_SELECT_ITEM: 'ON_SELECT_ITEM',
   SET_HIGHLIGHTED_INDEX: 'SET_HIGHLIGHTED_INDEX',
+  SET_OPTION_TYPE: 'SET_OPTION_TYPE',
 } as const;
 
 export type AutocompleteState = {
@@ -19,6 +20,7 @@ export type AutocompleteState = {
   isClearButtonEnabled: boolean;
   autocompleteOptions: any[];
   highlightedIndex: number;
+  optionType: string;
 };
 
 export type AutocompleteAction =
@@ -27,6 +29,7 @@ export type AutocompleteAction =
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTIONS; payload: any[] }
   | { type: typeof AUTOCOMPLETE_ACTIONS.SET_VALUE; payload: string }
   | { type: typeof AUTOCOMPLETE_ACTIONS.ON_RESET }
+  | { type: typeof AUTOCOMPLETE_ACTIONS.SET_OPTION_TYPE; payload: string }
   | {
       type: typeof AUTOCOMPLETE_ACTIONS.TOGGLE_CLEAR_BUTTON;
       payload?: boolean;
@@ -49,10 +52,7 @@ export type AutocompleteOptionItemElement = ReactElement<
   }
 >;
 
-export type AutocompleteProps = {
-  children:
-    | ReactElement<AutocompleteItemProps>
-    | ReactElement<AutocompleteItemProps>[];
+export type AutocompleteProps = PropsWithChildren<{
   /** Unique identifier for the autocomplete component. */
   id?: string;
   /** Initial selected value when the component is first rendered. */
@@ -73,10 +73,11 @@ export type AutocompleteProps = {
   onClose?: () => void;
   /** Controls whether the dropdown is open (controlled mode). */
   isOpen?: boolean;
-} & Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'defaultChecked'
->;
+}> &
+  Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'defaultChecked'
+  >;
 
 export type AutocompleteItemProps = {
   children: string;
