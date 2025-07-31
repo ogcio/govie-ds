@@ -25,15 +25,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         {...props}
-        data-testid={dataTestid || 'govie-button'}
+        data-testid={dataTestid}
         ref={ref}
         aria-disabled={disabled}
         disabled={disabled}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),
-          getSizeClass(size),
           isButtonDisabled({ disabled, variant, appearance }),
+          getSizeClass(size),
           className,
         )}
       >
