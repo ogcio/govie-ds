@@ -61,6 +61,7 @@ export type SelectMenuOptionProps = {
   hidden?: boolean;
   enableSearch?: boolean;
   isHighlighted?: boolean;
+  index: number;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;

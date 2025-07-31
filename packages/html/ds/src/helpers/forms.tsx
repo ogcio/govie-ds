@@ -650,7 +650,7 @@ export const createSelectNext = ({
     id,
   );
   const icon = createIcon({
-    icon: 'arrow_drop_down',
+    icon: 'keyboard_arrow_down',
     size: 'md',
     dataset: { triggerElementId: 'select-next-icon-trigger' },
   });

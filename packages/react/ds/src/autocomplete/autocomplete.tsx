@@ -1,10 +1,18 @@
 'use client';
-import { FC, useRef, ChangeEvent } from 'react';
+import { FC, useRef, ChangeEvent, isValidElement, Children } from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
-import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
+import {
+  SelectMenu,
+  SelectMenuGroupItem,
+  SelectMenuOption,
+} from '../select/select-menu.js';
+import {
+  SelectNextGroupItemElement,
+  SelectNextOptionItemElement,
+} from '../select/types.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteItemProps,
@@ -23,7 +31,7 @@ const {
 } = AUTOCOMPLETE_ACTIONS;
 
 const getIconEnd = (isOpen: boolean) =>
-  isOpen ? 'arrow_drop_up' : 'arrow_drop_down';
+  isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
 const propagateOnChange =
   (onChange: any) => (inputValue: string, inputRef: any) => {
@@ -53,7 +61,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
     onChange: onAutocompleteChange,
   } = props;
 
-  const { state, dispatch, inputRef, getOptionLabelByValue } =
+  const { state, dispatch, inputRef, getOptionLabelByValue, listRef } =
     useAutocompleteController({
       ...props,
       onChange: propagateOnChange(onAutocompleteChange),
@@ -153,12 +161,14 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
           ? findNextEnabledIndex(state.highlightedIndex, 1)
           : 0,
       });
+      dispatch({ type: SET_IS_OPEN, payload: true });
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
       dispatch({
         type: SET_HIGHLIGHTED_INDEX,
         payload: findNextEnabledIndex(state.highlightedIndex, -1),
       });
+      dispatch({ type: SET_IS_OPEN, payload: true });
     } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
       const selected = state.autocompleteOptions[
         state.highlightedIndex
@@ -171,7 +181,6 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
 
   return (
     <div
-      {...props}
       aria-disabled={disabled}
       className={cn('gi-autocomplete gi-not-prose', props.className)}
     >
@@ -182,7 +191,7 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
         onClick={handleOnClick}
         clearButtonEnabled={state.isClearButtonEnabled}
         inputActionPosition="beforeSuffix"
-        aria-label="Type to Search"
+        aria-label={t('autocomplete.placeholder')}
         aria-disabled={disabled}
         disabled={disabled}
         placeholder={placeholder || t('autocomplete.placeholder')}
@@ -201,15 +210,15 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
         triggerRef={inputRef}
         extraRefs={[iconEndRef]}
         open={state.isOpen}
+        maxHeight={304}
         options={{
           placement: 'bottom-start',
           strategy: 'absolute',
           modifiers: [
             { name: 'offset', options: { offset: [0, 4] } },
-            { name: 'preventOverflow', options: { padding: 8 } },
             {
               name: 'flip',
-              options: { fallbackPlacements: ['top', 'right', 'left'] },
+              options: { fallbackPlacements: ['top'] },
             },
           ],
         }}
@@ -218,24 +227,81 @@ export const Autocomplete: FC<AutocompleteProps> = (props) => {
           onChange={handleOnSelectItem}
           isLoading={isLoading}
           showNoData={!state.autocompleteOptions?.length}
+          ref={listRef}
         >
-          {state.autocompleteOptions?.map((child, index) => (
-            <SelectMenuOption
-              {...child.props}
-              key={`AutocompleteItem-${child.props.value}`}
-              selected={state.value === child.props.value}
-              isHighlighted={index === state.highlightedIndex}
-            />
-          ))}
+          {renderSelectMenuOptions(
+            state.autocompleteOptions,
+            state,
+            handleOnSelectItem,
+          )}
         </SelectMenu>
       </Popover>
     </div>
   );
 };
 
+export const renderSelectMenuOptions = (
+  options: any[],
+  state: any,
+  handleOnSelectItem: (value: string) => void,
+): React.ReactNode[] => {
+  return options.map((child, index) => {
+    if (state.optionType === 'AutocompleteItem') {
+      return (
+        <SelectMenuOption
+          {...child.props}
+          key={`AutocompleteItem-${child.props.value}`}
+          selected={state.value === child.props.value}
+          isHighlighted={index === state.highlightedIndex}
+          index={index}
+        />
+      );
+    } else if (state.optionType === 'AutocompleteGroupItem') {
+      const typedChild = child as SelectNextGroupItemElement;
+
+      const groupOptions = Children.toArray(typedChild.props.children)
+        .filter((child) => isValidElement(child))
+        .map((optionChild) => {
+          const optionProps = (optionChild as SelectNextOptionItemElement)
+            .props;
+          return (
+            <SelectMenuOption
+              key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
+              {...optionProps}
+              selected={state.value.toString() === optionProps.value.toString()}
+              onChange={handleOnSelectItem}
+              index={index}
+            />
+          );
+        });
+
+      return (
+        <SelectMenuGroupItem
+          label={typedChild.props.label}
+          key={`Group-${typedChild.props.label}`}
+        >
+          {groupOptions}
+        </SelectMenuGroupItem>
+      );
+    }
+
+    return null;
+  });
+};
+
 export const AutocompleteItem: FC<AutocompleteItemProps> = () => null;
 Object.defineProperty(AutocompleteItem, 'componentType', {
   value: 'AutocompleteItem',
+  writable: false,
+  enumerable: false,
+});
+
+export const AutocompleteGroupItem: FC<{
+  children?: any;
+  label: string;
+}> = () => null;
+Object.defineProperty(AutocompleteGroupItem, 'componentType', {
+  value: 'AutocompleteGroupItem',
   writable: false,
   enumerable: false,
 });
