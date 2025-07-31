@@ -1,12 +1,14 @@
 import { debounce } from 'lodash';
 import {
   Children,
+  cloneElement,
   isValidElement,
   useEffect,
   useMemo,
   useReducer,
   useRef,
 } from 'react';
+import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteAction,
@@ -24,6 +26,7 @@ const {
   TOGGLE_CLEAR_BUTTON,
   SET_VALUE,
   SET_HIGHLIGHTED_INDEX,
+  SET_OPTION_TYPE,
 } = AUTOCOMPLETE_ACTIONS;
 
 const reducer = (
@@ -38,7 +41,10 @@ const reducer = (
       return { ...state, inputValue: action.payload };
     }
     case SET_OPTIONS: {
-      return { ...state, autocompleteOptions: action.payload || [] };
+      return {
+        ...state,
+        autocompleteOptions: action.payload || [],
+      };
     }
     case SET_VALUE: {
       return { ...state, value: action.payload };
@@ -68,7 +74,10 @@ const reducer = (
       };
     }
     case SET_HIGHLIGHTED_INDEX: {
-      return { ...state, highlightedIndex: action.payload, isOpen: true };
+      return { ...state, highlightedIndex: action.payload };
+    }
+    case SET_OPTION_TYPE: {
+      return { ...state, optionType: action.payload };
     }
     default: {
       return state;
@@ -82,7 +91,10 @@ const isAutocompleteItem = (
   const type =
     (child as any)?.type?.componentType || (child as any)?.props?.__mdxType;
 
-  return isValidElement(child) && type === 'AutocompleteItem';
+  return (
+    isValidElement(child) &&
+    (type === 'AutocompleteItem' || type === 'AutocompleteGroupItem')
+  );
 };
 
 const filterChildOption = (
@@ -98,14 +110,45 @@ const filterChildOption = (
 const getValidChildren = (children: React.ReactNode) =>
   Children.toArray(children).filter((child) => isAutocompleteItem(child)) || [];
 
-const getOptionLabelByValue = (
-  children: AutocompleteProps['children'],
-  value: string,
-) => {
-  return (
-    getValidChildren(children).find((child) => child.props.value === value)
-      ?.props.children || ''
-  ).toString();
+const getOptionLabelByValue = (children: any, value: string): string => {
+  const valid = getValidChildren(children) as any;
+
+  for (const child of valid) {
+    const type = child.type?.componentType || child.props?.__mdxType;
+
+    if (child.props?.value === value) {
+      return child.props.children?.toString() || '';
+    }
+
+    if (type === 'AutocompleteGroupItem') {
+      const groupChildren = Children.toArray(child.props.children).filter(
+        (child) => isValidElement(child),
+      );
+
+      for (const child of groupChildren) {
+        if ((child as any).props?.value === value) {
+          return (child as any).props.children?.toString() || '';
+        }
+      }
+    }
+  }
+  return '';
+};
+
+const detectOptionType = (children: any) => {
+  const valid = getValidChildren(children);
+
+  if (valid?.length) {
+    const allGroup = valid.every(
+      (child: any) =>
+        child.props.__mdxType === 'AutocompleteGroupItem' ||
+        child.type?.componentType === 'AutocompleteGroupItem',
+    );
+
+    return allGroup ? 'AutocompleteGroupItem' : 'AutocompleteItem';
+  }
+
+  return 'AutocompleteItem';
 };
 
 export const useAutocompleteController = ({
@@ -121,6 +164,7 @@ export const useAutocompleteController = ({
   'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose'
 >) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
   const validChildren = useMemo(
     () => getValidChildren(children || []),
@@ -128,6 +172,7 @@ export const useAutocompleteController = ({
   );
 
   const focusInput = () => inputRef.current?.focus();
+  const optionType = useMemo(() => detectOptionType(children), [children]);
   const [state, dispatch] = useReducer(reducer, null, () => {
     return {
       isOpen: !!isOpen,
@@ -136,12 +181,18 @@ export const useAutocompleteController = ({
       autocompleteOptions: validChildren,
       isClearButtonEnabled: false,
       highlightedIndex: -1,
+      optionType,
     };
   });
+  useScrollHighlightedItem(listRef, state.highlightedIndex);
 
   useEffect(() => {
     dispatch({ type: SET_OPTIONS, payload: validChildren });
   }, [validChildren]);
+
+  useEffect(() => {
+    dispatch({ type: SET_OPTION_TYPE, payload: optionType });
+  }, [optionType]);
 
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -179,19 +230,43 @@ export const useAutocompleteController = ({
     () =>
       debounce((input: string) => {
         if (input) {
-          const filtered = validChildren.filter((child) =>
-            filterChildOption(child, input),
-          );
+          const filtered = validChildren
+            .map((child: any) => {
+              const type = child.type?.componentType || child.props?.__mdxType;
+              const isGroupItem =
+                optionType === 'AutocompleteGroupItem' &&
+                type === 'AutocompleteGroupItem';
+
+              if (isGroupItem) {
+                const groupChildren = Children.toArray(
+                  child.props.children,
+                ).filter((child) => isValidElement(child));
+
+                const matched = groupChildren.filter((groupItem: any) =>
+                  filterChildOption(groupItem, input),
+                );
+
+                if (matched.length > 0) {
+                  return cloneElement(child, { children: matched });
+                }
+
+                return null;
+              } else if (optionType === 'AutocompleteItem') {
+                return filterChildOption(child, input) ? child : null;
+              }
+              return null;
+            })
+            .filter(Boolean);
+
           dispatch({ type: SET_OPTIONS, payload: filtered });
-          if (!state.isOpen && !state.value) {
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: -1 });
+          if ((!state.isOpen && !state.value) || filtered?.length === 0) {
             dispatch({ type: SET_IS_OPEN, payload: true });
-          }
-          if (freeSolo) {
-            dispatch({ type: SET_VALUE, payload: '' });
           }
         } else {
           dispatch({ type: SET_VALUE, payload: '' });
           dispatch({ type: SET_OPTIONS, payload: validChildren });
+          dispatch({ type: SET_HIGHLIGHTED_INDEX, payload: -1 });
         }
       }, 500),
     [validChildren, state.isOpen, state.value, freeSolo],
@@ -206,6 +281,7 @@ export const useAutocompleteController = ({
     state,
     dispatch,
     inputRef,
+    listRef,
     validChildren,
     getOptionLabelByValue,
   };

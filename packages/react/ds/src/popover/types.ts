@@ -8,4 +8,5 @@ export type PopoverProps = {
   onOpenChange: (open: boolean) => void;
   options?: PopperOptions;
   extraRefs?: React.RefObject<any>[];
+  maxHeight?: number;
 };

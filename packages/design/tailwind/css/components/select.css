@@ -38,9 +38,12 @@
 }
 
 .gi-select-menu-container {
-  @apply gi-flex gi-px-0 gi-border-[1px] gi-rounded-sm 
-  gi-border-color-border-system-neutral-muted
-  gi-flex-col gi-text-sm gi-leading-5
+  @apply gi-flex
+  gi-flex-col
+  gi-px-0
+  gi-text-sm
+  gi-leading-5
+  
 
   xs:gi-text-md
   xs:gi-leading-5;
@@ -51,22 +54,14 @@
 }
 
 .gi-select-menu-option-container {
-  @apply gi-overflow-y-auto gi-overflow-x-hidden;
-}
-
-.gi-select-menu-option-container ul > li {
-  @apply gi-mt-2;
-}
-.gi-select-menu-option-container ul > li:first-child {
-  @apply !gi-mt-4;
-}
-
-.gi-select-menu-option-container ul > li:last-child {
-  @apply gi-mb-4;
+  @apply gi-overflow-y-auto
+  gi-overflow-x-hidden
+  gi-py-2
+  gi-scroll-smooth;
 }
 
 .gi-select-menu-loading {
-  @apply gi-my-4 gi-flex gi-items-center gi-justify-center gi-p-3;
+  @apply gi-flex gi-items-center gi-justify-center;
 }
 
 .gi-select-menu-option-container ul > div > li:not(:first-child) {
@@ -78,7 +73,7 @@
 }
 
 .gi-select-menu-option-not-found {
-  @apply gi-py-4 gi-px-3 gi-text-sm gi-text-gray-500 gi--mt-1;
+  @apply gi-px-3 gi-text-sm gi-text-gray-500;
 }
 
 .gi-select-option-item {
@@ -86,7 +81,8 @@
   gi-flex
   gi-items-center
   gi-justify-between 
-  gi-cursor-pointer 
+  gi-cursor-pointer
+  gi-h-10
    
   hover:gi-bg-color-surface-system-neutral-interactive-hover
   hover:gi-shadow-[0_0_0_4px_var(--gieds-color-surface-system-neutral-interactive-hover)] 

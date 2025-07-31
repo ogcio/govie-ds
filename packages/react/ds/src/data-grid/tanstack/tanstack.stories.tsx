@@ -283,7 +283,6 @@ export const WithReactHookForm = () => {
                 'aria-label': 'Active status',
                 ...register(`${row.index}.${column.id}` as never, {
                   validate: (value) => {
-                    console.log({ value });
                     return value === true;
                   },
                 }),

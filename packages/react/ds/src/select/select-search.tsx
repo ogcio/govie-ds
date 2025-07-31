@@ -1,6 +1,7 @@
 import { Children, FC, isValidElement } from 'react';
 import {
   Autocomplete,
+  AutocompleteGroupItem,
   AutocompleteItem,
 } from '../autocomplete/autocomplete.js';
 import { SelectNextProps } from './types.js';
@@ -17,10 +18,8 @@ export const SelectSearch: FC<SelectNextProps> = ({
       return;
     }
     const type = (child.type as any)?.componentType;
-
+    const { value, children: label, ...rest } = (child.props || {}) as any;
     if (type === 'SelectItemNext') {
-      const { value, children: label, ...rest } = (child.props || {}) as any;
-
       mappedChildren.push(
         <AutocompleteItem key={value} value={value} {...rest}>
           {label}
@@ -29,7 +28,11 @@ export const SelectSearch: FC<SelectNextProps> = ({
     }
 
     if (type === 'SelectGroupItemNext') {
-      // TO-DO
+      mappedChildren.push(
+        <AutocompleteGroupItem key={value} value={value} {...rest}>
+          {label}
+        </AutocompleteGroupItem>,
+      );
     }
   });
 
