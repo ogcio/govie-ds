@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.13.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.13.0...react-lib-v1.13.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* SelectMenu height + Autocomplete SelectGroupOption ([#665](https://github.com/ogcio/govie-ds/issues/665)) ([48d5216](https://github.com/ogcio/govie-ds/commit/48d5216e69b5d1c594a377c43d9bc765b2d4af6e))
+* update modal for server side app and documentation structure ([#666](https://github.com/ogcio/govie-ds/issues/666)) ([9b50855](https://github.com/ogcio/govie-ds/commit/9b508551ebcbf41fa684b6bd3cf035e36fdbd810))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.12.1
+
 ## [1.13.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.4...react-lib-v1.13.0) (2025-07-29)
 
 

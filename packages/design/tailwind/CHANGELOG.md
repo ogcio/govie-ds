@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.12.0...design-tailwind-v1.12.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* SelectMenu height + Autocomplete SelectGroupOption ([#665](https://github.com/ogcio/govie-ds/issues/665)) ([48d5216](https://github.com/ogcio/govie-ds/commit/48d5216e69b5d1c594a377c43d9bc765b2d4af6e))
+
 ## [1.12.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.11.0...design-tailwind-v1.12.0) (2025-07-29)
 
 
