@@ -1,0 +1,178 @@
+---
+title: Modal
+description: Modal React Component
+status: stable
+component:
+  id: 'modal-react'
+  link: '/docs/application-modal--docs'
+  status: stable
+  stories:
+    - name: 'default'
+      url: '/story/application-modal--default'
+    - name: 'without-footer'
+      url: '/story/application-modal--without-footer'
+    - name: 'with-long-content'
+      url: '/story/application-modal--with-long-content'
+    - name: 'with-footer-buttons'
+      url: '/story/application-modal--with-all-footer-button-variants'
+    - name: 'with-close-button-only'
+      url: '/story/application-modal--modal-not-close-on-overlay-click'
+    - name: 'with-center-medium'
+      url: '/story/application-modal--with-center-medium'
+  properties:
+    - name: ModalProps
+      fields:
+        - name: 'className'
+          ofType: 'string'
+          description: 'A string for custom styling of the modal.'
+          required: false
+        - name: 'closeButtonLabel'
+          ofType: 'string'
+          description: 'A string defining the label for the close button, improving accessibility.'
+          required: false
+        - name: 'triggerButton'
+          ofType: 'ReactElement'
+          description: 'A React element that triggers the modal when clicked.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'The modal content, structured using ModalChildren.'
+          required: true
+        - name: 'startsOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the modal should be open by default. Defaults to false.'
+          required: false
+        - name: 'closeOnClick'
+          ofType: 'boolean'
+          description: 'When true, allows closing the modal via the close button or by clicking on the overlay. Defaults to true.'
+          required: false
+        - name: 'closeOnOverlayClick'
+          ofType: 'boolean'
+          description: 'Enables closing the modal when clicking outside its content (on the overlay). Defaults to true.'
+          required: false
+        - name: 'dataTestId'
+          ofType: 'string'
+          description: 'A string used for testing purposes.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Defines the size of the component. Accepts: sm (Small), md (Medium), lg (Large, default).'
+          required: false
+    - name: ModalWrapperProps
+      fields:
+        - name: 'isOpen'
+          ofType: 'boolean'
+          description: 'A boolean indicating whether the modal is open.'
+          required: true
+        - name: 'onClose'
+          ofType: 'function'
+          description: 'A function that handles closing the modal.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: "Defines the modal's position, using ModalPositions."
+          required: false
+        - name: 'closeButtonSize'
+          ofType: 'string'
+          description: 'Sets the size of the close button, using ButtonSize.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'The modal content, structured using ModalChildren.'
+          required: true
+    - name: ModalTitleProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal title.'
+          required: true
+    - name: ModalBodyProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal body.'
+          required: true
+    - name: ModalFooterProps
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The content of the modal footer, typically action buttons.'
+          required: true
+---
+
+# Modal
+
+Modal components are used to display content in a layer above the main content of the application. They are typically used for user interactions that require focus, such as forms, confirmations, or additional information.
+
+<Section current="react">
+
+<ComponentPreview>
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <ModalTitle>Title</ModalTitle>
+    <ModalBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="secondary" appearance="dark" data-button>
+        Secondary
+      </Button>
+      <Button variant="primary" data-button>
+        Primary
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="modal-react"
+  story="default"
+/>
+
+### Modal without Footer
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="modal-react"
+  story="without-footer"
+/>
+
+### Modal with Long Content
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-react"
+  story="with-long-content"
+/>
+
+### Modal with Footer Buttons
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-react"
+  story="with-footer-buttons"
+/>
+
+### Modal with Close Button Only
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-react"
+  story="with-close-button-only"
+/>
+
+### Modal with Center Medium Size
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-react"
+  story="with-center-medium"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="modal-react" />
+
+</Section>

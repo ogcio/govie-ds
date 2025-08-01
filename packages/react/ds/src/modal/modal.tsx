@@ -7,6 +7,7 @@ import {
   ReactElement,
   useState,
   useRef,
+  useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
@@ -27,15 +28,19 @@ import type {
 
 const isModalComponent = (
   modalComponent: React.ElementType,
-  modalTitle: string,
+  componentName: string,
   child: ReactNode,
 ): boolean => {
   if (!isValidElement(child)) {
     return false;
   }
   const childType = child.type;
-  // @ts-expect-error The TS error says there is no _owner but there is
-  return childType === modalComponent || child?._owner?.name === modalTitle;
+  return (
+    childType === modalComponent ||
+    // @ts-expect-error The TS error says there is no _owner but there is
+    child?._owner?.name === componentName ||
+    (childType as any).componentType === componentName
+  );
 };
 
 const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
@@ -104,26 +109,33 @@ export const ModalWrapper = ({
   useAriaHider(modalRef.current, isOpen);
 
   const childrenArray = Children.toArray(children);
+
   const modalTitle = childrenArray.find((child) =>
     isModalComponent(ModalTitle, 'ModalTitle', child),
   );
+
   const modalFooter = childrenArray.find((child) =>
     isModalComponent(ModalFooter, 'ModalFooter', child),
   );
+
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
         as: size === 'sm' ? 'h5' : 'h4',
       })
     : null;
-  const otherChildren = childrenArray
-    .map((child) =>
-      modalFooter
-        ? cloneElement(child as ReactElement<ModalFooterProps>, {
-            dataModalSize: size,
-          })
-        : child,
-    )
-    .filter((child) => !isModalComponent(ModalTitle, 'ModalTitle', child));
+
+  const modalFooterClone = modalFooter
+    ? cloneElement(modalFooter as ReactElement<ModalFooterProps>, {
+        dataModalSize: size,
+      })
+    : null;
+
+  // Get all children that are NOT title or footer
+  const contentChildren = childrenArray.filter(
+    (child) =>
+      !isModalComponent(ModalTitle, 'ModalTitle', child) &&
+      !isModalComponent(ModalFooter, 'ModalFooter', child),
+  );
 
   return (
     <ModalPortal modalRef={modalRef} isOpen={isOpen}>
@@ -171,12 +183,9 @@ export const ModalWrapper = ({
               />
             )}
           </div>
-          <div
-            className={cn({
-              'gi-pb-6': !modalFooter,
-            })}
-          >
-            {otherChildren}
+          <div className={cn({ 'gi-pb-6': !modalFooter })}>
+            {contentChildren}
+            {modalFooterClone}
           </div>
         </div>
       </div>
@@ -191,6 +200,13 @@ export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
     </Heading>
   </div>
 );
+
+Object.defineProperty(ModalTitle, 'componentType', {
+  value: 'ModalTitle',
+  writable: false,
+  enumerable: false,
+});
+ModalTitle.displayName = 'ModalTitle';
 
 export const ModalBody = ({
   children,
@@ -221,10 +237,14 @@ export const ModalFooter = ({
   dataModalSize,
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
-  const filteredButtons = actionButtons.filter(
-    (actionButton) =>
-      isValidElement(actionButton) && actionButton.type === Button,
-  );
+  const filteredButtons = actionButtons.filter((actionButton) => {
+    return (
+      isValidElement(actionButton) &&
+      (actionButton.type === Button ||
+        (actionButton.type as any)?.displayName === 'Button' ||
+        (actionButton.props as any)?.['data-button'])
+    );
+  });
   const sortedButtons = filteredButtons.sort((a, b) => {
     const variantA = a.props.variant ?? 'primary';
     const variantB = b.props.variant ?? 'primary';
@@ -250,8 +270,14 @@ export const ModalFooter = ({
           data-orientation={orientation || 'unset'}
           data-modal-size={dataModalSize}
         >
-          {sortedButtons.map((button) =>
+          {sortedButtons.map((button, index) =>
             cloneElement(button, {
+              key:
+                button.key ||
+                button.props.id ||
+                button.props['dataTestid'] ||
+                `modal-footer-button-${index}`,
+              id: button.props.id || `modal-footer-button-${index}`,
               className: cn(button?.props?.className, buttonClassName),
             }),
           ) || null}
@@ -260,6 +286,13 @@ export const ModalFooter = ({
     </div>
   );
 };
+
+Object.defineProperty(ModalFooter, 'componentType', {
+  value: 'ModalFooter',
+  writable: false,
+  enumerable: false,
+});
+ModalFooter.displayName = 'ModalFooter';
 
 const ModalPortal = ({
   children,
@@ -270,12 +303,18 @@ const ModalPortal = ({
   modalRef: any;
   isOpen: boolean;
 }) => {
-  useFocusTrap(modalRef?.current, isOpen, {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useFocusTrap(modalRef?.current, isOpen && isMounted, {
     initialFocus: false,
     fallbackFocus: () => modalRef?.current,
   });
 
-  if (typeof document === 'undefined') {
+  if (!isMounted) {
     return null;
   }
 

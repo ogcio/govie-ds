@@ -300,8 +300,12 @@ const documentComponents: MDXComponents = {
   Logos,
   Modal,
   ModalBody,
-  ModalFooter,
-  ModalTitle,
+  ModalFooter: (props) => {
+    return <ModalFooter {...props} __mdxType="ModalFooter" />;
+  },
+  ModalTitle: (props) => {
+    return <ModalTitle {...props} __mdxType="ModalTitle" />;
+  },
   ModalWrapper: ModalWrapperSample,
   NextLink,
   OpacityTable,
