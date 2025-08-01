@@ -1,0 +1,95 @@
+---
+title: Modal
+description: Modal HTML Component
+status: stable
+component:
+  id: 'modal-html'
+  link: '/docs/application-modal--docs'
+  status: stable
+  stories:
+    - name: 'default'
+      url: '/story/application-modal--default'
+    - name: 'without-footer'
+      url: '/story/application-modal--without-footer'
+    - name: 'with-long-content'
+      url: '/story/application-modal--with-long-content'
+    - name: 'with-footer-buttons'
+      url: '/story/application-modal--with-all-footer-button-variants'
+    - name: 'with-close-button-only'
+      url: '/story/application-modal--modal-not-close-on-overlay-click'
+    - name: 'with-center-medium'
+      url: '/story/application-modal--with-center-medium'
+---
+
+# Modal
+
+Modal components are used to display content in a layer above the main content of the application. They are typically used for user interactions that require focus, such as forms, confirmations, or additional information.
+
+<Section current="html">
+
+<ComponentPreview>
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <ModalTitle>Title</ModalTitle>
+    <ModalBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="secondary" appearance="dark" data-button>
+        Secondary
+      </Button>
+      <Button variant="primary" data-button>
+        Primary
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentPreview>
+
+### Default
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="modal-html"
+  story="default"
+/>
+
+### Modal without Footer
+
+<StorybookFrame
+  className="h-[268px]"
+  componentId="modal-html"
+  story="without-footer"
+/>
+
+### Modal with Long Content
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-html"
+  story="with-long-content"
+/>
+
+### Modal with Footer Buttons
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-html"
+  story="with-footer-buttons"
+/>
+
+### Modal with Close Button Only
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-html"
+  story="with-close-button-only"
+/>
+
+### Modal with Center Medium Size
+
+<StorybookFrame
+  className="h-[400px]"
+  componentId="modal-html"
+  story="with-center-medium"
+/>
+
+</Section>

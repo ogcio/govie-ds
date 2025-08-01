@@ -44,3 +44,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
+Object.defineProperty(Button, 'componentType', {
+  value: 'Button',
+  writable: false,
+  enumerable: false,
+});

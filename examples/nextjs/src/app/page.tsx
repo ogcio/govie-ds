@@ -393,6 +393,22 @@ export default function Home() {
 
       <CookieBanner {...CookieBannerProps} />
       <Container>
+        <div>
+          <Modal triggerButton={<Button>Open Modal</Button>}>
+            <ModalTitle>Title</ModalTitle>
+            <ModalBody>
+              <Paragraph>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Incidunt esse magnam quis sit soluta cupiditate at deserunt
+                exercitationem voluptas doloribus asperiores
+              </Paragraph>
+            </ModalBody>
+            <ModalFooter>
+              <Button variant="secondary">Cancel</Button>
+              <Button variant="primary">Submit</Button>
+            </ModalFooter>
+          </Modal>
+        </div>
         <FormField className="gi-block gi-min-w-0">
           <FormFieldLabel>FormField with a Table</FormFieldLabel>
           <div className="gi-w-full gi-min-w-0 gi-overflow-x-auto">
@@ -613,26 +629,6 @@ export default function Home() {
             <TextArea id="textarea-id2" maxChars={50} />
           </FormField>
           <span className="material-symbols-outlined">face</span>
-          <div>
-            <Modal triggerButton={<Button>Open Modal</Button>}>
-              <ModalTitle>Title</ModalTitle>
-              <ModalBody>
-                <Paragraph>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Incidunt esse magnam quis sit soluta cupiditate at deserunt
-                  exercitationem voluptas doloribus asperiores
-                </Paragraph>
-              </ModalBody>
-              <ModalFooter>
-                <div className="gi-flex gi-gap-6 gi-justify-end">
-                  <Button variant="secondary" appearance="dark">
-                    Cancel action
-                  </Button>
-                  <Button>Primary action</Button>
-                </div>
-              </ModalFooter>
-            </Modal>
-          </div>
 
           <br />
           <div>
