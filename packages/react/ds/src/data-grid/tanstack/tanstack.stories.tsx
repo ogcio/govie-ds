@@ -27,12 +27,18 @@ import {
   TableHeader,
   TableBody,
   TableData,
+  TableFoot,
 } from '../../table/index.js';
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import {
+  TableFootCenter,
+  TableFootEnd,
+  TableFootStart,
+} from '../../table/table-foot.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -420,12 +426,51 @@ export const WithReactHookForm = () => {
             </Fragment>
           ))}
         </TableBody>
+        {/* <TableFoot>
+          <TableRow>
+            <TableData className="gi-py-2" colSpan={3}>
+              <span>TanStack Grid Example</span>
+            </TableData>
+            <TableData className="gi-py-2" align="left" colSpan={2}>
+              <span>
+                Showing 20 of {table.getFilteredRowModel().rows.length}
+              </span>
+            </TableData>
+            <TableData className="gi-py-2" colSpan={4}>
+              <TablePagination
+                currentPage={table.getState().pagination.pageIndex + 1}
+                totalPages={table.getPageCount()}
+                onPageChange={(page) => table.setPageIndex(page - 1)}
+              />
+            </TableData>
+          </TableRow>
+        </TableFoot> */}
+        <TableFoot totalColumns={12} colSpans={{ start: 3, center: 2, end: 5 }}>
+          <TableFootStart>
+            <div className="gi-py-2">
+              <span className="text-muted">Powered by TanStack Table</span>
+            </div>
+          </TableFootStart>
+
+          <TableFootCenter>
+            <div className="gi-py-2 text-center">
+              <span>
+                Showing 20 of {table.getFilteredRowModel().rows.length}
+              </span>
+            </div>
+          </TableFootCenter>
+
+          <TableFootEnd>
+            <div className="gi-py-2">
+              <TablePagination
+                currentPage={table.getState().pagination.pageIndex + 1}
+                totalPages={table.getPageCount()}
+                onPageChange={(page) => table.setPageIndex(page - 1)}
+              />
+            </div>
+          </TableFootEnd>
+        </TableFoot>
       </Table>
-      <TablePagination
-        currentPage={table.getState().pagination.pageIndex + 1}
-        totalPages={table.getPageCount()}
-        onPageChange={(page) => table.setPageIndex(page - 1)}
-      />
     </div>
   );
 };

@@ -66,9 +66,9 @@ export function TableData({
     <td
       ref={ref}
       className={cn(
+        'gi-table-td',
         alignmentClass,
         verticalAlignmentClass,
-        'gi-table-td',
         className,
       )}
       {...props}

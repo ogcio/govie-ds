@@ -76,7 +76,7 @@
 }
 
 .gi-table-td {
-  @apply gi-p-0 gi-text-sm gi-font-[400];
+  @apply gi-text-sm gi-font-[400];
 }
 
 .gi-table-pagination {
