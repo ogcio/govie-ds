@@ -1,5 +1,8 @@
 import { ReactNode } from 'react';
 
+type TabAppearanceType = 'default' | 'dark';
+type TabLabelAlignmentType = 'start' | 'end' | 'center';
+
 export type TabsProps = {
   /** ID of the tabs container */
   id?: string;
@@ -8,7 +11,7 @@ export type TabsProps = {
   /** Test ID for the tabs container */
   dataTestid?: string;
   /** Visual appearance of the tabs. */
-  appearance?: 'default' | 'dark';
+  appearance?: TabAppearanceType;
   /** Size of the tabs. Default: md */
   size?: 'sm' | 'md';
   /** if true all the tabs will space equally covering full available width. Default: false */
@@ -16,7 +19,7 @@ export type TabsProps = {
   /** if true all the tabs will space equally covering full available width. Default: true */
   padding?: boolean;
   /** Property to set the label alignment. Default: start */
-  labelAlignment?: 'start' | 'end' | 'center';
+  labelAlignment?: TabLabelAlignmentType;
   /** TabList, TabItem, and TabPanel components */
   children: React.ReactNode;
 };
@@ -45,25 +48,22 @@ export type TabPanelProps = {
   children: React.ReactNode;
 };
 
-type TabListAppearance = 'default' | 'dark';
-type TabListLabelAlignment = 'start' | 'end' | 'center';
-
 export type TabListProps = {
   tabName?: string;
-  appearance?: TabListAppearance;
+  appearance?: TabAppearanceType;
   size?: 'sm' | 'md';
   ariaLabelledBy?: string;
   stretch?: boolean;
   padding?: boolean;
   children: ReactNode;
-  labelAlignment?: TabListLabelAlignment;
+  labelAlignment?: TabLabelAlignmentType;
 };
 
 export type InternalTabItemProps = TabItemProps & {
   onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   index: number;
-  appearance?: TabListAppearance;
+  appearance?: TabAppearanceType;
   size?: 'md' | 'sm';
   stretch?: boolean;
-  labelAlignment?: TabListLabelAlignment;
+  labelAlignment?: TabLabelAlignmentType;
 };
