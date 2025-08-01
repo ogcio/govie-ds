@@ -1,4 +1,4 @@
-import React, {
+import {
   useState,
   useRef,
   useEffect,
@@ -17,7 +17,7 @@ import { TabItemProps } from './types.js';
 type ScrollableTabsProps = {
   children: ReactNode;
   tabName: string;
-  variant?: 'neutral' | 'primary';
+  appearance?: 'default' | 'dark';
   className?: string;
 };
 
@@ -25,7 +25,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   children,
   tabName,
   className = '',
-  variant = 'neutral',
+  appearance = 'default',
 }) => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const [indicatorStyle, setIndicatorStyle] = useState<{
@@ -117,7 +117,7 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       return (
         <InternalTabItem
           {...child?.props}
-          variant={variant}
+          appearance={appearance}
           index={index}
           checked={activeTab === index}
           onTabClick={handleClick(index, child.props.onTabClick)}
@@ -147,9 +147,9 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       <span
         className={cn('gi-tab-indicator', {
           'gi-bg-color-border-system-neutral-interactive-default':
-            variant === 'neutral',
+            appearance === 'dark',
           'gi-bg-color-border-tone-primary-accent-selected':
-            variant === 'primary',
+            appearance === 'default',
         })}
         style={indicatorCss}
       />

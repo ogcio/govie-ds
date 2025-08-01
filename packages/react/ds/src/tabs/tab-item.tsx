@@ -46,7 +46,7 @@ export const InternalTabItem = forwardRef<
       onTabClick,
       onTabKeyDown,
       size = 'md',
-      variant = 'neutral',
+      appearance = 'default',
       labelAlignment = 'center',
       stretch,
       ...props
@@ -103,9 +103,9 @@ export const InternalTabItem = forwardRef<
             <div
               className={cn('gi-tab-item-border', {
                 'gi-bg-color-text-system-neutral-interactive-default':
-                  checked && variant === 'neutral',
+                  checked && appearance === 'dark',
                 'gi-bg-color-border-tone-primary-accent-selected':
-                  checked && variant === 'primary',
+                  checked && appearance === 'default',
               })}
             ></div>
           </>

@@ -2,6 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { expect, within, userEvent } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Stack } from '../stack/stack.js';
 import { TabItem } from './tab-item.js';
@@ -41,10 +42,10 @@ const meta: Meta<typeof Tabs> = {
       control: 'text',
       description: 'Test ID for the tabs container',
     },
-    variant: {
-      options: ['primary', 'neutral'],
+    appearance: {
+      options: ['default', 'dark'],
       control: 'radio',
-      description: 'Visual variant of the tabs',
+      description: 'Visual appearance of the tabs',
     },
     size: {
       options: ['sm', 'md'],
@@ -81,7 +82,6 @@ export const Default: Story = {
     id: 'tab-example',
     size: 'md',
     children: null,
-    variant: 'neutral',
   },
   render: (props) => (
     <Tabs {...props}>
@@ -95,14 +95,41 @@ export const Default: Story = {
       <TabPanel value="tab3">Tab 3 Content</TabPanel>
     </Tabs>
   ),
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const computedStyle = getComputedStyle(canvasElement);
+    const mutedBorderColor = computedStyle
+      .getPropertyValue('--gieds-color-border-system-neutral-muted')
+      .trim();
+
+    expect(mutedBorderColor).toBe('#d8dadf');
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+
+    const itemBorder = tab1.querySelector('.gi-tab-item-border');
+    const isPrimaryColor = !![...(itemBorder?.classList || [])]?.find(
+      (className: string) =>
+        className === 'gi-bg-color-border-tone-primary-accent-selected',
+    );
+    expect(isPrimaryColor).toBeTruthy();
+
+    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
+  },
 };
 
-export const Primary: Story = {
+export const Dark: Story = {
   args: {
-    ariaLabelledBy: 'tab-primary',
+    ariaLabelledBy: 'tab-neutral',
     children: '',
-    variant: 'primary',
-    id: 'tab-primary',
+    appearance: 'dark',
+    id: 'tab-neutral',
   },
   render: (props) => (
     <Tabs {...props}>
@@ -116,6 +143,49 @@ export const Primary: Story = {
       <TabPanel value="tab33">Tab 3 Content</TabPanel>
     </Tabs>
   ),
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+    const tab3 = canvas.getByRole('tab', { name: 'Tab 3' });
+    const panels = globalThis.document.querySelectorAll('[role="tabpanel"]');
+
+    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    const itemBorder = tab1.querySelector('.gi-tab-item-border');
+    const isNeutralColor = !![...(itemBorder?.classList || [])]?.find(
+      (className: string) =>
+        className === 'gi-bg-color-text-system-neutral-interactive-default',
+    );
+    expect(isNeutralColor).toBeTruthy();
+
+    expect(globalThis.getComputedStyle(panels[0]).display).toBe('block');
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
+
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    expect(globalThis.getComputedStyle(panels[0]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('block');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
+
+    await userEvent.click(tab3);
+
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'true');
+
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('block');
+    await userEvent.click(tab1);
+  },
 };
 
 export const Small: Story = {

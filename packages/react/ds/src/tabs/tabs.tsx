@@ -3,7 +3,7 @@ import { generateRandomId } from '../utilities.js';
 import { TabsProps } from './types.js';
 
 export function Tabs({
-  variant = 'neutral',
+  appearance = 'default',
   size = 'md',
   stretch = false,
   padding = true,
@@ -17,7 +17,7 @@ export function Tabs({
     if (isValidElement(element)) {
       return cloneElement<any>(element, {
         tabName: id,
-        variant,
+        appearance,
         size,
         ariaLabelledBy,
         stretch,

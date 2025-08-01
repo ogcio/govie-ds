@@ -7,8 +7,8 @@ export type TabsProps = {
   ariaLabelledBy: string;
   /** Test ID for the tabs container */
   dataTestid?: string;
-  /** Visual variant of the tabs. Default: neutral */
-  variant?: 'primary' | 'neutral';
+  /** Visual appearance of the tabs. */
+  appearance?: 'default' | 'dark';
   /** Size of the tabs. Default: md */
   size?: 'sm' | 'md';
   /** if true all the tabs will space equally covering full available width. Default: false */
@@ -45,22 +45,25 @@ export type TabPanelProps = {
   children: React.ReactNode;
 };
 
+type TabListAppearance = 'default' | 'dark';
+type TabListLabelAlignment = 'start' | 'end' | 'center';
+
 export type TabListProps = {
   tabName?: string;
-  variant?: 'primary' | 'neutral';
+  appearance?: TabListAppearance;
   size?: 'sm' | 'md';
   ariaLabelledBy?: string;
   stretch?: boolean;
   padding?: boolean;
   children: ReactNode;
-  labelAlignment?: 'start' | 'end' | 'center';
+  labelAlignment?: TabListLabelAlignment;
 };
 
 export type InternalTabItemProps = TabItemProps & {
   onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   index: number;
-  variant?: 'primary' | 'neutral';
+  appearance?: TabListAppearance;
   size?: 'md' | 'sm';
   stretch?: boolean;
-  labelAlignment?: 'start' | 'center' | 'end';
+  labelAlignment?: TabListLabelAlignment;
 };

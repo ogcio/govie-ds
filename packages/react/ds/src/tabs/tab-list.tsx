@@ -7,7 +7,7 @@ import { TabItemProps, TabListProps } from './types.js';
 export const TabList = ({
   children,
   tabName,
-  variant,
+  appearance,
   size,
   ariaLabelledBy,
   stretch,
@@ -118,7 +118,7 @@ export const TabList = ({
       return (
         <InternalTabItem
           {...element.props}
-          variant={variant}
+          appearance={appearance}
           stretch={stretch}
           labelAlignment={labelAlignment}
           size={size}
