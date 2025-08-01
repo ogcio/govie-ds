@@ -34,6 +34,11 @@ import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import {
+  TableFootCenter,
+  TableFootEnd,
+  TableFootStart,
+} from '../../table/table-foot.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -421,7 +426,7 @@ export const WithReactHookForm = () => {
             </Fragment>
           ))}
         </TableBody>
-        <TableFoot>
+        {/* <TableFoot>
           <TableRow>
             <TableData className="gi-py-2" colSpan={3}>
               <span>TanStack Grid Example</span>
@@ -439,6 +444,31 @@ export const WithReactHookForm = () => {
               />
             </TableData>
           </TableRow>
+        </TableFoot> */}
+        <TableFoot totalColumns={12} colSpans={{ start: 3, center: 2, end: 5 }}>
+          <TableFootStart>
+            <div className="gi-py-2">
+              <span className="text-muted">Powered by TanStack Table</span>
+            </div>
+          </TableFootStart>
+
+          <TableFootCenter>
+            <div className="gi-py-2 text-center">
+              <span>
+                Showing 20 of {table.getFilteredRowModel().rows.length}
+              </span>
+            </div>
+          </TableFootCenter>
+
+          <TableFootEnd>
+            <div className="gi-py-2">
+              <TablePagination
+                currentPage={table.getState().pagination.pageIndex + 1}
+                totalPages={table.getPageCount()}
+                onPageChange={(page) => table.setPageIndex(page - 1)}
+              />
+            </div>
+          </TableFootEnd>
         </TableFoot>
       </Table>
     </div>
