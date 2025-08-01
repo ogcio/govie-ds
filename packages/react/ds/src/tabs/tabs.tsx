@@ -3,12 +3,15 @@ import { generateRandomId } from '../utilities.js';
 import { TabsProps } from './types.js';
 
 export function Tabs({
+  variant = 'neutral',
+  size = 'md',
+  stretch = false,
+  padding = true,
+  labelAlignment = 'center',
   id = generateRandomId(),
   ariaLabelledBy,
   dataTestid,
   children,
-  variant = 'neutral',
-  size = 'md',
 }: TabsProps) {
   const childrenWithName = Children.map(children, (element) => {
     if (isValidElement(element)) {
@@ -17,6 +20,9 @@ export function Tabs({
         variant,
         size,
         ariaLabelledBy,
+        stretch,
+        padding,
+        labelAlignment,
       });
     }
     return element;

@@ -17,6 +17,14 @@ const tabItemVariants = tv({
     checked: {
       true: 'gi-tab-item-checked',
     },
+    stretch: {
+      true: 'gi-flex-1',
+    },
+    labelAlignment: {
+      start: 'gi-text-start',
+      center: 'gi-text-center',
+      end: 'gi-text-end',
+    },
   },
   defaultVariants: {
     size: 'md',
@@ -39,6 +47,8 @@ export const InternalTabItem = forwardRef<
       onTabKeyDown,
       size = 'md',
       variant = 'neutral',
+      labelAlignment = 'center',
+      stretch,
       ...props
     },
     ref,
@@ -69,7 +79,7 @@ export const InternalTabItem = forwardRef<
         aria-roledescription="tab"
         aria-selected={checked ? 'true' : 'false'}
         aria-controls={`tab-panel-${valueSlug}`}
-        className={tabItemVariants({ size, checked })}
+        className={tabItemVariants({ size, checked, stretch, labelAlignment })}
         onClick={(event) => {
           clickButtonRef.current = true;
           if (onTabClick) {

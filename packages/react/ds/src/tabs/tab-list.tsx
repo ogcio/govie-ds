@@ -1,13 +1,8 @@
 'use client';
-import {
-  useState,
-  useEffect,
-  Children,
-  isValidElement,
-  ReactNode,
-} from 'react';
+import { useState, useEffect, Children, isValidElement } from 'react';
+import { cn } from '../cn.js';
 import { InternalTabItem } from './tab-item.js';
-import { TabItemProps } from './types.js';
+import { TabItemProps, TabListProps } from './types.js';
 
 export const TabList = ({
   children,
@@ -15,13 +10,10 @@ export const TabList = ({
   variant,
   size,
   ariaLabelledBy,
-}: {
-  tabName?: string;
-  variant?: 'primary' | 'neutral';
-  size?: 'sm' | 'md';
-  ariaLabelledBy?: string;
-  children: ReactNode;
-}) => {
+  stretch,
+  padding = true,
+  labelAlignment,
+}: TabListProps) => {
   /*
   Prefer using this wrapper to handle indicator animation.
   return <ScrollableTabs children={children} variant={variant} tabName={tabName} />
@@ -127,6 +119,8 @@ export const TabList = ({
         <InternalTabItem
           {...element.props}
           variant={variant}
+          stretch={stretch}
+          labelAlignment={labelAlignment}
           size={size}
           index={index}
           checked={activeTab === index}
@@ -143,15 +137,15 @@ export const TabList = ({
     <div
       role="tablist"
       aria-orientation="horizontal"
-      className="gi-tab-list"
+      className={cn('gi-tab-list', {
+        'gi-tab-list-stretch': stretch,
+        'gi-gap-4': padding,
+        'gi-gap-0': !padding,
+      })}
       aria-labelledby={ariaLabelledBy}
       id={`${tabName}-list`}
     >
-      {children && Children.count(childrenWithName) > 0 ? (
-        childrenWithName
-      ) : (
-        <div className="gi-sr-only">No content available for this tab.</div>
-      )}
+      {childrenWithName}
     </div>
   );
 };

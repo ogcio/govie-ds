@@ -51,6 +51,20 @@ const meta: Meta<typeof Tabs> = {
       control: 'radio',
       description: 'Size of the tabs',
     },
+    labelAlignment: {
+      options: ['start', 'center', 'end'],
+      control: 'radio',
+      description: 'Label alignment',
+    },
+    stretch: {
+      control: 'boolean',
+      description:
+        'If true, all the tabs will space equally covering full available width. Default: false',
+    },
+    padding: {
+      control: 'boolean',
+      description: 'If true, tabs will have padding applied. Default: true',
+    },
     children: {
       control: false,
       description: 'Tab items and panels as children components',
@@ -221,6 +235,51 @@ export const WithHandler: Story = {
           <TabPanel value="tab300">Tab 3 Content</TabPanel>
         </Tabs>
       </Stack>
+    );
+  },
+};
+
+export const WithStretch: Story = {
+  args: {
+    id: 'tabs-with-stretch',
+    ariaLabelledBy: 'tabs-with-stretch',
+    children: '',
+    stretch: true,
+  },
+  render: (props) => {
+    return (
+      <Tabs {...props}>
+        <TabList>
+          <TabItem value="tab-with-stretch1">Tab 1</TabItem>
+          <TabItem value="tab-with-stretch2">Tab 2</TabItem>
+        </TabList>
+        <TabPanel value="tab-with-stretch1">Tab 1 Content</TabPanel>
+        <TabPanel value="tab-with-stretch2">Tab 2 Content</TabPanel>
+      </Tabs>
+    );
+  },
+};
+
+export const WithoutPadding: Story = {
+  args: {
+    id: 'tabs-without-padding',
+    ariaLabelledBy: 'tabs-without-padding',
+    children: '',
+    padding: false,
+    stretch: true,
+  },
+  render: (props) => {
+    return (
+      <Tabs {...props}>
+        <TabList>
+          <TabPanel value="tab11-no-padding">Tab 1</TabPanel>
+          <TabPanel value="tab21-no-padding">Tab 2</TabPanel>
+          <TabPanel value="tab31-no-padding">Tab 3</TabPanel>
+        </TabList>
+        <TabPanel value="tab11-no-padding">Tab 1 Content</TabPanel>
+        <TabPanel value="tab21-no-padding">Tab 2 Content</TabPanel>
+        <TabPanel value="tab31-no-padding">Tab 3 Content</TabPanel>
+      </Tabs>
     );
   },
 };

@@ -6,11 +6,9 @@
   @apply gi-inline-block
   gi-cursor-pointer
   gi-relative
-  gi-text-center
   gi-text-color-text-system-neutral-interactive-muted
   gi-px-[3px]
   gi-leading-6
-  
   hover:gi-text-color-icon-system-neutral-interactive-hover
 
   gi-focus-state-outline
@@ -19,14 +17,14 @@
   focus:gi-border-none
   focus:gi-bg-white
   focus:gi-text-color-text-system-neutral-interactive-default
-  focus:gi-rounded-sm;
+  focus:gi-rounded-sm
+  focus:gi-z-1;
 }
 
 .gi-tab-item-checked {
   @apply gi-bg-white
   gi-no-underline
   gi-font-bold
-
   gi-text-color-text-system-neutral-interactive-default;
 }
 
@@ -51,13 +49,16 @@
 }
 
 .gi-tab-list {
-  @apply gi-gap-4
-  gi-flex
-  gi-justify-center
+  @apply gi-flex
   gi-items-center
   gi-overflow-visible
   gi-whitespace-nowrap gi-relative
   gi-shadow-[inset_0_-1px_0_0_var(--gieds-color-border-system-neutral-subtle)];
+}
+
+.gi-tab-list-stretch {
+  @apply gi-w-full
+  gi-justify-start;
 }
 
 .gi-tab-list .gi-tab-indicator {
@@ -66,6 +67,5 @@
   gi-transition-all
   gi-duration-300
   gi-w-full
-
   gi-h-[2px];
 }

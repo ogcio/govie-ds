@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type TabsProps = {
   /** ID of the tabs container */
   id?: string;
@@ -5,10 +7,16 @@ export type TabsProps = {
   ariaLabelledBy: string;
   /** Test ID for the tabs container */
   dataTestid?: string;
-  /** Visual variant of the tabs */
+  /** Visual variant of the tabs. Default: neutral */
   variant?: 'primary' | 'neutral';
-  /** Size of the tabs */
+  /** Size of the tabs. Default: md */
   size?: 'sm' | 'md';
+  /** if true all the tabs will space equally covering full available width. Default: false */
+  stretch?: boolean;
+  /** if true all the tabs will space equally covering full available width. Default: true */
+  padding?: boolean;
+  /** Property to set the label alignment. Default: start */
+  labelAlignment?: 'start' | 'end' | 'center';
   /** TabList, TabItem, and TabPanel components */
   children: React.ReactNode;
 };
@@ -36,9 +44,23 @@ export type TabPanelProps = {
   /** Content to be rendered inside the tab panel */
   children: React.ReactNode;
 };
+
+export type TabListProps = {
+  tabName?: string;
+  variant?: 'primary' | 'neutral';
+  size?: 'sm' | 'md';
+  ariaLabelledBy?: string;
+  stretch?: boolean;
+  padding?: boolean;
+  children: ReactNode;
+  labelAlignment?: 'start' | 'end' | 'center';
+};
+
 export type InternalTabItemProps = TabItemProps & {
   onTabKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   index: number;
   variant?: 'primary' | 'neutral';
   size?: 'md' | 'sm';
+  stretch?: boolean;
+  labelAlignment?: 'start' | 'center' | 'end';
 };
