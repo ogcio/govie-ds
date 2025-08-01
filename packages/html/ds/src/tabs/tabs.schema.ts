@@ -11,4 +11,10 @@ export type TabsProps = {
   id: string;
   ariaLabelledBy: string;
   dataTestid?: string;
+
+  stretch?: boolean;
+  padding?: boolean;
+  labelAlignment?: 'start' | 'end' | 'center';
+  appearance?: 'default' | 'dark';
+  size?: 'sm' | 'md';
 };

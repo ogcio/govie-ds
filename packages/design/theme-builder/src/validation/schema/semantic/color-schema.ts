@@ -114,6 +114,13 @@ function createTextSystemSchema(namePrefix: string) {
                 ),
                 name: 'disabled-surface',
               }),
+              hover: createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.hover`,
+                ),
+                name: 'hover',
+              }),
             })
             .strict(),
         })

@@ -1,20 +1,12 @@
-import React from 'react';
 import { slugify } from '../utilities.js';
+import { TabPanelProps } from './types.js';
 
-export function TabPanel({
-  value,
-  children,
-}: {
-  value: string;
-  ariaLabel?: string;
-  ariaLabelledby?: string;
-  children: React.ReactNode;
-}) {
+export function TabPanel({ value, children }: TabPanelProps) {
   const valueSlug = slugify(value);
   return (
     <div
       role="tabpanel"
-      aria-labelledby={`tab-${valueSlug}`}
+      aria-labelledby={`tab-panel-${valueSlug}`}
       id={`tab-panel-${valueSlug}`}
       tabIndex={0}
       className="gi-tab-panel"

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
+import { expect, within, userEvent } from 'storybook/test';
 import { createTabs } from '../helpers/tabs';
 import { TabsProps } from './tabs.schema';
 
@@ -69,102 +70,235 @@ export const Default: Story = {
   },
 
   render: (arguments_) => createElement(arguments_),
-};
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const computedStyle = getComputedStyle(canvasElement);
+    const mutedBorderColor = computedStyle
+      .getPropertyValue('--gieds-color-border-system-neutral-muted')
+      .trim();
 
-export const HoverState: Story = {
-  args: { items: [] },
-  render: () => `
-    <div class="gi-tabs" aria-labelledby="tabs-hover" id="tabs-hover">
-      <div role="tablist" class="gi--mb-[1px]">
-        <button
-          id="tab-tab-hover1"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-panel-tab-hover1"
-          class="gi-tab-item"
-        >
-          <span class="gi-decoration-xs">Tab 1</span>
-        </button>
-        <button
-          id="tab-tab-hover2"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-panel-tab-hover2"
-          class="gi-tab-item pseudo-hover"
-        >
-          <span class="gi-decoration-xs">Hover</span>
-        </button>
-      </div>
-      <div
-        role="tabpanel"
-        id="tab-panel-tab-hover1"
-        aria-labelledby="tab-tab-hover1"
-        class="gi-tab-panel"
-      >
-        Tab 1 Content
-      </div>
-      <div
-        role="tabpanel"
-        id="tab-panel-tab-hover2"
-        aria-labelledby="tab-tab-hover2"
-        class="gi-tab-panel"
-      >
-        Hover Tab Content
-      </div>
-    </div>
-  `,
-  parameters: {
-    pseudo: {
-      hover: '#tab-tab21',
-    },
+    expect(mutedBorderColor).toBe('#d8dadf');
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+
+    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
   },
 };
 
-export const FocusState: Story = {
-  args: { items: [] },
-  render: () => `
-     <div class="gi-tabs" aria-labelledby="tabs-focus" id="tabs-focus">
-      <div role="tablist" class="gi--mb-[1px]">
-        <button
-          id="tab-tab-focus1"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-panel-tab-focus1"
-          class="gi-tab-item"
-        >
-          <span class="gi-decoration-xs">Tab 1</span>
-        </button>
-        <button
-          id="tab-tab-focus2"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-panel-tab-focus2"
-          class="gi-tab-item pseudo-focus"
-        >
-          <span class="gi-decoration-xs">Focus</span>
-        </button>
-      </div>
-      <div
-        role="tabpanel"
-        id="tab-panel-tab-focus1"
-        aria-labelledby="tab-tab-focus1"
-        class="gi-tab-panel"
-      >
-        Tab 1 Content
-      </div>
-      <div
-        role="tabpanel"
-        id="tab-panel-tab-focus2"
-        aria-labelledby="tab-tab-focus2"
-        class="gi-tab-panel"
-      >
-        Focus Tab Content
-      </div>
-    </div>
-  `,
-  parameters: {
-    pseudo: {
-      focus: '#tab-tab31',
-    },
+export const Dark: Story = {
+  args: {
+    ariaLabelledBy: 'tab-neutral',
+    appearance: 'dark',
+    id: 'tab-neutral',
+    items: [
+      {
+        id: 'tab61',
+        label: 'Tab 1',
+        checked: true,
+        panel: {
+          content: 'Tab 1 Content',
+        },
+      },
+      {
+        id: 'tab62',
+        label: 'Tab 2',
+        panel: {
+          content: 'Tab 2 Content',
+        },
+      },
+      {
+        id: 'tab63',
+        label: 'Tab 3',
+        panel: {
+          content: 'Tab 3 Content',
+        },
+      },
+    ],
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+    const tab3 = canvas.getByRole('tab', { name: 'Tab 3' });
+    const panels = globalThis.document.querySelectorAll('[role="tabpanel"]');
+
+    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    const itemBorder = tab1.querySelector('.gi-tab-item-border');
+    const isNeutralColor = !![...(itemBorder?.classList || [])]?.find(
+      (className: string) =>
+        className === 'gi-bg-color-text-system-neutral-interactive-default',
+    );
+    expect(isNeutralColor).toBeTruthy();
+
+    expect(globalThis.getComputedStyle(panels[0]).display).toBe('block');
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
+
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    expect(globalThis.getComputedStyle(panels[0]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('block');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
+
+    await userEvent.click(tab3);
+
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'true');
+
+    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
+    expect(globalThis.getComputedStyle(panels[2]).display).toBe('block');
+    await userEvent.click(tab1);
+  },
+
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Small: Story = {
+  args: {
+    ariaLabelledBy: 'tab-small',
+    id: 'tab-small',
+    size: 'sm',
+    items: [
+      {
+        id: 'tab21',
+        label: 'Tab 1',
+        checked: true,
+        panel: {
+          content: 'Tab 1 Content',
+        },
+      },
+      {
+        id: 'tab22',
+        label: 'Tab 2',
+        panel: {
+          content: 'Tab 2 Content',
+        },
+      },
+      {
+        id: 'tab23',
+        label: 'Tab 3',
+        panel: {
+          content: 'Tab 3 Content',
+        },
+      },
+    ],
+  },
+
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const Checked: Story = {
+  args: {
+    id: 'tabs-checked',
+    ariaLabelledBy: 'tabs-checked',
+    items: [
+      {
+        id: 'tab31',
+        label: 'Tab 1',
+        panel: {
+          content: 'Tab 1 Content',
+        },
+      },
+      {
+        id: 'tab32',
+        label: 'Tab 2 (Checked)',
+        checked: true,
+        panel: {
+          content: 'Tab 2 Content',
+        },
+      },
+      {
+        id: 'tab33',
+        label: 'Tab 3',
+        panel: {
+          content: 'Tab 3 Content',
+        },
+      },
+    ],
+  },
+
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithStretch: Story = {
+  args: {
+    id: 'tabs-with-stretch',
+    ariaLabelledBy: 'tabs-with-stretch',
+    stretch: true,
+    items: [
+      {
+        id: 'tab41',
+        label: 'Tab 1',
+        checked: true,
+        panel: {
+          content: 'Tab 1 Content',
+        },
+      },
+      {
+        id: 'tab42',
+        label: 'Tab 2',
+        panel: {
+          content: 'Tab 2 Content',
+        },
+      },
+      {
+        id: 'tab43',
+        label: 'Tab 3',
+        panel: {
+          content: 'Tab 3 Content',
+        },
+      },
+    ],
+  },
+
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithoutPadding: Story = {
+  args: {
+    id: 'tabs-without-padding',
+    ariaLabelledBy: 'tabs-without-padding',
+    padding: false,
+    stretch: true,
+    items: [
+      {
+        id: 'tab51',
+        label: 'Tab 1',
+        checked: true,
+        panel: {
+          content: 'Tab 1 Content',
+        },
+      },
+      {
+        id: 'tab52',
+        label: 'Tab 2',
+        panel: {
+          content: 'Tab 2 Content',
+        },
+      },
+      {
+        id: 'tab53',
+        label: 'Tab 3',
+        panel: {
+          content: 'Tab 3 Content',
+        },
+      },
+    ],
+  },
+
+  render: (arguments_) => createElement(arguments_),
 };

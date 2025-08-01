@@ -1,6 +1,7 @@
 import { renderComponent, cleanup, fireEvent } from '../test-utilities.js';
 import { TabsContent } from './tabs-content.js';
-import { TabsProps, Tabs } from './tabs.js';
+import { Tabs } from './tabs.js';
+import { TabsProps } from './types.js';
 
 describe('tabs', () => {
   afterEach(cleanup);
