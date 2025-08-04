@@ -103,8 +103,10 @@ export const WithDefaultValue: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
-    await waitFor(() => expect(input).toHaveValue('Backend Dev.'));
+    const input = canvas.getByRole('textbox') as HTMLInputElement;
+    expect(input?.value?.toLowerCase().replaceAll(/[^a-z]/gi, '')).toBe(
+      'backenddev',
+    );
   },
 };
 

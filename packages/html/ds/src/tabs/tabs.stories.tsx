@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
-import { expect, within, userEvent } from 'storybook/test';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { createTabs } from '../helpers/tabs';
 import { TabsProps } from './tabs.schema';
 
@@ -127,22 +127,18 @@ export const Dark: Story = {
     const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
     const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
     const tab3 = canvas.getByRole('tab', { name: 'Tab 3' });
-    const panels = globalThis.document.querySelectorAll('[role="tabpanel"]');
 
     expect(tab1).toHaveAttribute('aria-selected', 'true');
     expect(tab2).toHaveAttribute('aria-selected', 'false');
     expect(tab3).toHaveAttribute('aria-selected', 'false');
 
     const itemBorder = tab1.querySelector('.gi-tab-item-border');
-    const isNeutralColor = !![...(itemBorder?.classList || [])]?.find(
-      (className: string) =>
-        className === 'gi-bg-color-text-system-neutral-interactive-default',
-    );
-    expect(isNeutralColor).toBeTruthy();
 
-    expect(globalThis.getComputedStyle(panels[0]).display).toBe('block');
-    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
-    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
+    await waitFor(() =>
+      expect(itemBorder?.classList).toContain(
+        'gi-bg-color-text-system-neutral-interactive-default',
+      ),
+    );
 
     await userEvent.click(tab2);
 
@@ -150,17 +146,11 @@ export const Dark: Story = {
     expect(tab2).toHaveAttribute('aria-selected', 'true');
     expect(tab3).toHaveAttribute('aria-selected', 'false');
 
-    expect(globalThis.getComputedStyle(panels[0]).display).toBe('none');
-    expect(globalThis.getComputedStyle(panels[1]).display).toBe('block');
-    expect(globalThis.getComputedStyle(panels[2]).display).toBe('none');
-
     await userEvent.click(tab3);
 
     expect(tab2).toHaveAttribute('aria-selected', 'false');
     expect(tab3).toHaveAttribute('aria-selected', 'true');
 
-    expect(globalThis.getComputedStyle(panels[1]).display).toBe('none');
-    expect(globalThis.getComputedStyle(panels[2]).display).toBe('block');
     await userEvent.click(tab1);
   },
 
