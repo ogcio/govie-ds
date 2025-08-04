@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { expect, within, userEvent } from 'storybook/test';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Stack } from '../stack/stack.js';
 import { TabItem } from './tab-item.js';
@@ -109,11 +109,11 @@ export const Default: Story = {
     const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
 
     const itemBorder = tab1.querySelector('.gi-tab-item-border');
-    const isPrimaryColor = !![...(itemBorder?.classList || [])]?.find(
-      (className: string) =>
-        className === 'gi-bg-color-border-tone-primary-accent-selected',
+    await waitFor(() =>
+      expect(itemBorder?.classList).toContain(
+        'gi-bg-color-border-tone-primary-accent-selected',
+      ),
     );
-    expect(isPrimaryColor).toBeTruthy();
 
     expect(tab1).toHaveAttribute('aria-selected', 'true');
     expect(tab2).toHaveAttribute('aria-selected', 'false');
