@@ -335,6 +335,13 @@ function createBorderSystemSchema(namePrefix: string) {
                 ),
                 name: 'hover',
               }),
+              'hover-muted': createTokenSchema({
+                type: 'color',
+                valueSchema: createAliasSchema(
+                  `${namePrefix}.neutral.interactive.hover-muted`,
+                ),
+                name: 'hover',
+              }),
               disabled: createTokenSchema({
                 type: 'color',
                 valueSchema: createAliasSchema(

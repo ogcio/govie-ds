@@ -41,7 +41,7 @@
 }
 
 .gi-tab-item:hover .gi-tab-item-border {
-  @apply gi-bg-color-text-system-neutral-interactive-muted;
+  @apply gi-bg-color-border-system-neutral-interactive-hover-muted;
 }
 
 .gi-tab-panel {

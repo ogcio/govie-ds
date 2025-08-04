@@ -959,6 +959,10 @@
                 "$type": "color",
                 "$value": "{brand.color.neutral.950}"
               },
+              "hover-muted": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.200}"
+              },
               "disabled": {
                 "$type": "color",
                 "$value": "{brand.color.neutral.400}"

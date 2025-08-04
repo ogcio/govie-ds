@@ -21,6 +21,7 @@ ButtonGroupProps
 ButtonProps
 CardProps
 Center
+center
 ChipProps
 Color
 Combobox
