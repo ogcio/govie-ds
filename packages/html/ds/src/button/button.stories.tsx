@@ -452,7 +452,7 @@ export const FlatDarkDisabled: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    content: `<span data-testid="govie-icon" aria-label="thumb_up" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>Button`,
+    content: `<span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>Button`,
     appearance: 'default',
     size: 'medium',
   },
@@ -461,7 +461,7 @@ export const WithLeftIcon: Story = {
 
 export const WithIconRight: Story = {
   args: {
-    content: `Button <span data-testid="govie-icon" aria-label="thumb_up"role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>`,
+    content: `Button <span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>`,
     appearance: 'default',
     size: 'medium',
   },

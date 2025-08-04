@@ -546,7 +546,6 @@ exports[`Snapshots > Snapshot - WithIconRight 1`] = `
     >
       Button 
       <span
-        aria-label="thumb_up"
         class="gi-block material-symbols-outlined"
         data-testid="govie-icon"
         role="presentation"
@@ -568,7 +567,6 @@ exports[`Snapshots > Snapshot - WithLeftIcon 1`] = `
       class="gi-btn gi-btn-primary gi-btn-regular"
     >
       <span
-        aria-label="thumb_up"
         class="gi-block material-symbols-outlined"
         data-testid="govie-icon"
         role="presentation"
