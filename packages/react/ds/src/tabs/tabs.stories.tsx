@@ -109,6 +109,7 @@ export const Default: Story = {
     const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
 
     const itemBorder = tab1.querySelector('.gi-tab-item-border');
+
     await waitFor(() =>
       expect(itemBorder?.classList).toContain(
         'gi-bg-color-border-tone-primary-accent-selected',
@@ -152,7 +153,8 @@ export const Dark: Story = {
     const tab3 = canvas.getByRole('tab', { name: 'Tab 3' });
     const panels = globalThis.document.querySelectorAll('[role="tabpanel"]');
 
-    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    await waitFor(() => expect(tab1).toHaveAttribute('aria-selected', 'true'));
+
     expect(tab2).toHaveAttribute('aria-selected', 'false');
     expect(tab3).toHaveAttribute('aria-selected', 'false');
 
