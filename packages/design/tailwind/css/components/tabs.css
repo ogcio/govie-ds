@@ -9,13 +9,15 @@
   gi-text-color-text-system-neutral-interactive-muted
   gi-px-[3px]
   gi-leading-6
+
   hover:gi-text-color-icon-system-neutral-interactive-hover
+  hover:gi-bg-color-surface-system-neutral-interactive-hover
 
   gi-focus-state-outline
   focus:gi-shadow-[inset_0_0_0_2px]
   focus:gi-border-transparent
   focus:gi-border-none
-  focus:gi-bg-white
+  focus:gi-bg-color-surface-system-neutral-interactive-hover
   focus:gi-text-color-text-system-neutral-interactive-default
   focus:gi-rounded-sm
   focus:gi-z-1;
@@ -40,8 +42,9 @@
   @apply !gi-bg-transparent;
 }
 
-.gi-tab-item:hover .gi-tab-item-border {
-  @apply gi-bg-color-border-system-neutral-interactive-hover-muted;
+.gi-tab-item:hover
+  .gi-tab-item-border:not(.gi-bg-color-border-tone-primary-accent-selected) {
+  @apply gi-bg-color-surface-system-neutral-interactive-hover;
 }
 
 .gi-tab-panel {

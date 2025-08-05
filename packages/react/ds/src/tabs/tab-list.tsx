@@ -79,38 +79,62 @@ export const TabList = ({
   const handleOnTabKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
   ) => {
-    let flag = false;
+    let direction = 0;
 
-    switch (event.key) {
-      case 'ArrowLeft': {
-        let newTab = (activeTab ?? 0) - 1;
-        if (newTab < 0) {
-          newTab = 0;
-        }
-        setActiveTab(newTab);
-        flag = true;
-        break;
-      }
-
-      case 'ArrowRight': {
-        let newTab = (activeTab ?? 0) + 1;
-        if (newTab >= tabCount) {
-          newTab = tabCount - 1;
-        }
-        setActiveTab(newTab);
-        flag = true;
-        break;
-      }
-
-      default: {
-        break;
-      }
+    if (event.key === 'ArrowLeft') {
+      direction = -1;
+    } else if (event.key === 'ArrowRight') {
+      direction = 1;
     }
 
-    if (flag) {
-      event.stopPropagation();
-      event.preventDefault();
+    if (direction === 0) {
+      return;
     }
+
+    const currentIndex = activeTab ?? 0;
+    let newIndex = currentIndex + direction;
+
+    if (newIndex < 0) {
+      newIndex = 0;
+    }
+
+    if (newIndex >= tabCount) {
+      newIndex = tabCount - 1;
+    }
+
+    const childrenArray = Children.toArray(children);
+    const child = childrenArray[newIndex] as any;
+
+    if (!child) {
+      return;
+    }
+
+    setActiveTab(newIndex);
+
+    const syntheticEvent = {
+      currentTarget: {
+        getAttribute: (name: string) => {
+          if (name === 'aria-controls') {
+            return `tab-panel-${child?.props?.value}`;
+          }
+          return null;
+        },
+      },
+      bubbles: true,
+      isTrusted: true,
+    } as unknown as React.MouseEvent<HTMLButtonElement>;
+
+    const onClickHandler = () => {
+      if (direction === -1) {
+        return child.props?.onTabClick?.(event);
+      }
+      return event;
+    };
+
+    handleOnTabClick(newIndex, onClickHandler)(syntheticEvent);
+
+    event.stopPropagation();
+    event.preventDefault();
   };
 
   const childrenWithName = Children.map(children, (element, index) => {

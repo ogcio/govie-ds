@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, forwardRef, FC } from 'react';
+import { useEffect, useRef, forwardRef, FC } from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../cn.js';
 import { Button as PrimitiveButton } from '../primitives/button.js';
