@@ -2,8 +2,10 @@
 import {
   Children,
   FC,
+  forwardRef,
   isValidElement,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
 } from 'react';
@@ -25,225 +27,239 @@ import {
   SelectNextTableCellProps,
 } from './types.js';
 
-export const SelectNext = ({
-  children,
-  value: controlledValue,
-  defaultValue = '',
-  onChange: onSelectNextChange,
-  onMenuClose,
-  enableSearch,
-  disabled,
-  ...props
-}: SelectNextProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [internalValue, setInternalValue] = useState(defaultValue);
+export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
+  (
+    {
+      children,
+      value: controlledValue,
+      defaultValue = '',
+      onChange: onSelectNextChange,
+      onMenuClose,
+      enableSearch,
+      disabled,
+      name,
+      ...props
+    },
+    ref,
+  ) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [internalValue, setInternalValue] = useState(defaultValue);
 
-  const value = controlledValue === undefined ? internalValue : controlledValue;
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+    const value =
+      controlledValue === undefined ? internalValue : controlledValue;
 
-  const validOptions = Children.toArray(children).filter((child) =>
-    isValidElement(child),
-  ) as React.ReactElement[];
+    const [isOpen, setIsOpen] = useState(false);
+    const [inputValue, setInputValue] = useState('');
 
-  useEffect(() => {
-    // keep internalValue in sync when controlledValue changes
-    if (controlledValue !== undefined) {
-      setInternalValue(controlledValue);
-    }
-  }, [controlledValue]);
+    const validOptions = Children.toArray(children).filter((child) =>
+      isValidElement(child),
+    ) as React.ReactElement[];
 
-  const handleOnClick = () => {
-    setIsOpen(true);
-    inputRef.current?.focus();
-  };
+    useEffect(() => {
+      // keep internalValue in sync when controlledValue changes
+      if (controlledValue !== undefined) {
+        setInternalValue(controlledValue);
+      }
+    }, [controlledValue]);
 
-  const handleOnOpenChange = (isOpen: boolean) => {
-    setIsOpen(isOpen);
+    const handleOnClick = () => {
+      setIsOpen(true);
+      inputRef.current?.focus();
+    };
 
-    if (onMenuClose && !isOpen) {
-      onMenuClose();
-    }
-  };
+    const handleOnOpenChange = (isOpen: boolean) => {
+      setIsOpen(isOpen);
 
-  const handleOnSelectItem = (value_: string) => {
-    setIsOpen(false);
+      if (onMenuClose && !isOpen) {
+        onMenuClose();
+      }
+    };
 
-    if (controlledValue === undefined) {
-      setInternalValue(value_);
-    }
+    const handleOnSelectItem = (value_: string) => {
+      setIsOpen(false);
 
-    if (onSelectNextChange) {
-      const event = {
-        ...new Event('change', { bubbles: true }),
-        target: {
-          ...inputRef.current,
-          value: value_,
-        },
-      } as unknown as React.ChangeEvent<HTMLSelectElement>;
-
-      // it dispatches a synthetic native event
-      onSelectNextChange(event);
-    }
-  };
-
-  useEffect(() => {
-    let found: SelectNextOptionItemElement | undefined;
-
-    for (const child of validOptions) {
-      const type = (child.type as any)?.componentType;
-
-      if (type === 'SelectItemNext') {
-        const item = child as SelectNextOptionItemElement;
-        if (item.props.value === value) {
-          found = item;
-          break;
-        }
+      if (controlledValue === undefined) {
+        setInternalValue(value_);
       }
 
-      if (type === 'SelectGroupItemNext') {
-        const group = child as SelectNextGroupItemElement;
-
-        const groupChild = Children.toArray(group.props.children).find(
-          (subChild) => {
-            const subType = (subChild as any)?.type?.componentType;
-            return (
-              subType === 'SelectItemNext' &&
-              (subChild as SelectNextOptionItemElement).props.value === value
-            );
+      if (onSelectNextChange) {
+        const event = {
+          target: {
+            name,
+            value: value_,
           },
-        );
+          currentTarget: {
+            name,
+            value: value_,
+          },
+          type: 'change',
+          bubbles: true,
+        } as unknown as React.ChangeEvent<HTMLSelectElement>;
+        onSelectNextChange(event);
+      }
+    };
 
-        if (groupChild && isValidElement(groupChild)) {
-          found = groupChild as SelectNextOptionItemElement;
-          break;
+    useEffect(() => {
+      let found: SelectNextOptionItemElement | undefined;
+
+      for (const child of validOptions) {
+        const type = (child.type as any)?.componentType;
+
+        if (type === 'SelectItemNext') {
+          const item = child as SelectNextOptionItemElement;
+          if (item.props.value === value) {
+            found = item;
+            break;
+          }
+        }
+
+        if (type === 'SelectGroupItemNext') {
+          const group = child as SelectNextGroupItemElement;
+
+          const groupChild = Children.toArray(group.props.children).find(
+            (subChild) => {
+              const subType = (subChild as any)?.type?.componentType;
+              return (
+                subType === 'SelectItemNext' &&
+                (subChild as SelectNextOptionItemElement).props.value === value
+              );
+            },
+          );
+
+          if (groupChild && isValidElement(groupChild)) {
+            found = groupChild as SelectNextOptionItemElement;
+            break;
+          }
         }
       }
+
+      if (found) {
+        setInputValue(found.props.children?.toString() || '');
+      } else {
+        setInputValue('');
+      }
+    }, [value, validOptions]);
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' && !disabled) {
+        handleOnClick();
+      }
+    };
+
+    if (enableSearch) {
+      return (
+        <SelectSearch
+          {...props}
+          value={controlledValue}
+          defaultValue={defaultValue}
+          onChange={onSelectNextChange}
+          disabled={disabled}
+        >
+          {children}
+        </SelectSearch>
+      );
     }
 
-    if (found) {
-      setInputValue(found.props.children?.toString() || '');
-    } else {
-      setInputValue('');
-    }
-  }, [value, validOptions]);
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && !disabled) {
-      handleOnClick();
-    }
-  };
-
-  if (enableSearch) {
     return (
-      <SelectSearch
-        {...props}
-        value={controlledValue}
-        defaultValue={defaultValue}
-        onChange={onSelectNextChange}
-        disabled={disabled}
-      >
-        {children}
-      </SelectSearch>
-    );
-  }
-
-  return (
-    <div
-      {...props}
-      aria-disabled={disabled}
-      className={cn('gi-select-next', props.className)}
-    >
-      <InputText
-        id={props.id}
-        aria-label="Select an option"
+      <div
         aria-disabled={disabled}
-        disabled={disabled}
-        placeholder={inputValue || 'Select'}
-        readOnly
-        inputClassName="gi-cursor-pointer"
-        iconEndClassName={cn({
-          'gi-cursor-pointer': !disabled,
-          'gi-cursor-not-allowed': disabled,
-          'gi-pointer-events-none': disabled,
-        })}
-        iconEnd="keyboard_arrow_down"
-        onIconEndClick={handleOnClick}
-        ref={inputRef}
-        value={inputValue}
-        onClick={handleOnClick}
-        onKeyDown={handleKeyDown}
-      />
-      <Popover
-        triggerRef={inputRef}
-        onOpenChange={handleOnOpenChange}
-        open={isOpen}
-        maxHeight={304}
-        options={{
-          placement: 'bottom-start',
-          strategy: 'absolute',
-          modifiers: [
-            { name: 'offset', options: { offset: [0, 4] } },
-            {
-              name: 'flip',
-              options: { fallbackPlacements: ['top'] },
-            },
-          ],
-        }}
+        className={cn('gi-select-next', props.className)}
       >
-        <SelectMenu onChange={handleOnSelectItem} enableSearch={enableSearch}>
-          {validOptions.map((child, index) => {
-            const type = (child?.type as any)?.componentType;
-
-            if (type === 'SelectItemNext') {
-              const typedChild = child as SelectNextOptionItemElement;
-
-              return (
-                <SelectMenuOption
-                  key={`SelectItemNext-${typedChild.props.value.toString()}`}
-                  {...typedChild.props}
-                  selected={
-                    value.toString() === typedChild.props.value.toString()
-                  }
-                  index={index}
-                />
-              );
-            } else if (type === 'SelectGroupItemNext') {
-              const typedChild = child as SelectNextGroupItemElement;
-
-              const groupOptions = Children.toArray(typedChild.props.children)
-                .filter((child) => isValidElement(child))
-                .map((optionChild, index) => {
-                  const optionProps = (
-                    optionChild as SelectNextOptionItemElement
-                  ).props;
-                  return (
-                    <SelectMenuOption
-                      key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
-                      {...optionProps}
-                      selected={
-                        value.toString() === optionProps.value.toString()
-                      }
-                      onChange={handleOnSelectItem}
-                      index={index}
-                    />
-                  );
-                });
-
-              return (
-                <SelectMenuGroupItem label={typedChild.props.label}>
-                  {groupOptions}
-                </SelectMenuGroupItem>
-              );
-            }
-            return null;
+        <InputText
+          {...props}
+          aria-label="Select an option"
+          aria-disabled={disabled}
+          disabled={disabled}
+          placeholder={inputValue || 'Select'}
+          readOnly
+          inputClassName="gi-cursor-pointer"
+          iconEndClassName={cn({
+            'gi-cursor-pointer': !disabled,
+            'gi-cursor-not-allowed': disabled,
+            'gi-pointer-events-none': disabled,
           })}
-        </SelectMenu>
-      </Popover>
-    </div>
-  );
-};
+          iconEnd="keyboard_arrow_down"
+          onIconEndClick={handleOnClick}
+          ref={inputRef}
+          value={inputValue}
+          onClick={handleOnClick}
+          onKeyDown={handleKeyDown}
+        />
+        <Popover
+          triggerRef={inputRef}
+          onOpenChange={handleOnOpenChange}
+          open={isOpen}
+          maxHeight={304}
+          options={{
+            placement: 'bottom-start',
+            strategy: 'absolute',
+            modifiers: [
+              { name: 'offset', options: { offset: [0, 4] } },
+              {
+                name: 'flip',
+                options: { fallbackPlacements: ['top'] },
+              },
+            ],
+          }}
+        >
+          <SelectMenu onChange={handleOnSelectItem} enableSearch={enableSearch}>
+            {validOptions.map((child, optionIndex) => {
+              const type = (child?.type as any)?.componentType;
+
+              if (type === 'SelectItemNext') {
+                const typedChild = child as SelectNextOptionItemElement;
+
+                return (
+                  <SelectMenuOption
+                    key={`SelectItemNext-${typedChild.props.value.toString()}`}
+                    {...typedChild.props}
+                    selected={
+                      value.toString() === typedChild.props.value.toString()
+                    }
+                    index={optionIndex}
+                  />
+                );
+              } else if (type === 'SelectGroupItemNext') {
+                const typedChild = child as SelectNextGroupItemElement;
+
+                const groupOptions = Children.toArray(typedChild.props.children)
+                  .filter((child) => isValidElement(child))
+                  .map((optionChild, index) => {
+                    const optionProps = (
+                      optionChild as SelectNextOptionItemElement
+                    ).props;
+                    return (
+                      <SelectMenuOption
+                        key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
+                        {...optionProps}
+                        selected={
+                          value.toString() === optionProps.value.toString()
+                        }
+                        onChange={handleOnSelectItem}
+                        index={index}
+                      />
+                    );
+                  });
+
+                return (
+                  <SelectMenuGroupItem
+                    label={typedChild.props.label}
+                    key={`option-group-${optionIndex}`}
+                  >
+                    {groupOptions}
+                  </SelectMenuGroupItem>
+                );
+              }
+              return null;
+            })}
+          </SelectMenu>
+        </Popover>
+      </div>
+    );
+  },
+);
 
 export const SelectItemNext: FC<SelectNextOptionProps> = () => null;
 Object.defineProperty(SelectItemNext, 'componentType', {
