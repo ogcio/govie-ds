@@ -1,0 +1,134 @@
+---
+title: Modal
+description: Modal Design Guidelines
+status: stable
+component:
+  id: 'modal'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5205-3366'
+  status: 'stable'
+---
+
+# Modal
+
+Modal components are used to display content in a layer above the main content of the application. They are typically used for user interactions that require focus, such as forms, confirmations, or additional information.
+
+<Section current="design">
+
+<ComponentPreview className="gi-not-prose">
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <ModalTitle>Title</ModalTitle>
+    <ModalBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="secondary" data-button>
+        Cancel
+      </Button>
+      <Button variant="primary" data-button>
+        Submit
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=5205-3366" />
+
+## Variants
+
+### Modal with Footer Buttons
+
+<ComponentContainer className="gi-not-prose">
+  <Modal triggerButton={<Button>Open modal</Button>}>
+    <ModalTitle>Modal Title</ModalTitle>
+    <ModalBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores.
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="flat" data-button>
+        Flat
+      </Button>
+      <Button variant="secondary" data-button>
+        Secondary
+      </Button>
+      <Button variant="primary" data-button>
+        Primary
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentContainer>
+
+### Modal without Overlay Close
+
+<ComponentContainer>
+  <Modal triggerButton={<Button>Open modal</Button>}>
+    <ModalTitle>Modal Title</ModalTitle>
+    <ModalBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
+      magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
+      doloribus asperiores.
+    </ModalBody>
+    <ModalFooter>
+      <Button appearance="dark" variant="primary" data-button>
+        Primary
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentContainer>
+
+## Usage
+
+### Do
+
+- Use modals for focused, interruptive tasks like editing information, confirming actions, or showing supplemental content.
+- Use a descriptive title that communicates the purpose of the modal (e.g., “Edit Profile”, “Delete Item”, or “View Details”).
+- Provide clear actions in the footer, like “Cancel” and “Save” or “Close” and “Continue”.
+- Keep modal content concise and relevant to a single user decision or task.
+
+**Example:**
+
+<ComponentContainer>
+  <Modal triggerButton={<Button>Edit Username</Button>}>
+    <ModalTitle>Edit Username</ModalTitle>
+    <ModalBody>
+      <FormField>
+        <FormFieldLabel>Username</FormFieldLabel>
+        <InputText iconStart="person" placeholder="Username" />
+      </FormField>
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="secondary" data-button>
+        Cancel
+      </Button>
+      <Button variant="primary" data-button>
+        Save Changes
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentContainer>
+
+### Don’t
+
+- Don’t use modals for lengthy, multi-step workflows, prefer dedicated pages or drawers for those.
+- Don’t stack multiple modals, avoid modal-on-modal patterns.
+- Don’t use modals for passive content that doesn’t require a response, consider tooltips, toasts, or inline UI.
+- Don’t allow modals to close unexpectedly if there's unsaved or critical user input.
+
+**Example:**
+
+<ComponentContainer>
+  <Modal triggerButton={<Button>Click Me</Button>}>
+    <ModalTitle>Information</ModalTitle>
+    <ModalBody>
+      Our company was founded in 2012 and has grown steadily since. We now
+      operate in 12 countries...
+    </ModalBody>
+    <ModalFooter>
+      <Button variant="primary" data-button>
+        Close
+      </Button>
+    </ModalFooter>
+  </Modal>
+</ComponentContainer>
+
+</Section>
