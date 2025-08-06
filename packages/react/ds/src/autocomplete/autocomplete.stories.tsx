@@ -104,7 +104,7 @@ export const WithDefaultValue: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
-    expect(input).toHaveDisplayValue('Backend Dev.');
+    expect(input).toHaveValue('backend_dev');
   },
 };
 
