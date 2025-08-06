@@ -78,6 +78,7 @@ export type SelectNextGroupItemElement =
   ReactElement<SelectMenuGroupOptionProps>;
 export type SelectNextProps = PropsWithChildren<
   {
+    name?: string;
     onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     onMenuClose?: () => void;
     defaultValue?: string;
@@ -88,7 +89,7 @@ export type SelectNextProps = PropsWithChildren<
      * Works only when `enableSearch` is set to `true`
      */
     placeholder?: string;
-  } & Omit<HTMLAttributes<HTMLDivElement>, `on${string}`>
+  } & Omit<HTMLAttributes<HTMLDivElement>, `onChange`>
 >;
 
 export type SelectNextOptionProps = PropsWithChildren<{
