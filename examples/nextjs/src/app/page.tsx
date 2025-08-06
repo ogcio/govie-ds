@@ -121,6 +121,47 @@ const headerProps: HeaderProps = {
   ],
 };
 
+const MyForm2 = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <Container
+      className="p-2 w-full border border-[--gieds-color-gray-200] bg-white rounded-lg shadow-lg"
+      id="card-container"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Heading as="h3" id="heading">
+          Form with register method of RHF
+        </Heading>
+        <TextArea
+          {...register("description")}
+          maxChars={200}
+          clearButtonEnabled
+        />
+        <InputText
+          {...register("inputtext")}
+          id="input-text-id"
+          className="w-full"
+          inputActionButton={{
+            icon: "info",
+            onClick: () => alert("Action button clicked"),
+          }}
+          type="text"
+          placeholder="Placeholder"
+        />
+
+        <Button className="mt-1" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Container>
+  );
+};
+
 function MyForm() {
   const methods = useForm({
     defaultValues: {
@@ -221,6 +262,7 @@ function MyForm() {
                       id="textarea-id-0"
                       className="w-full"
                       maxChars={100}
+                      clearButtonEnabled
                     />
                   )}
                 />
@@ -636,6 +678,7 @@ export default function Home() {
               <InputRadio value="galway" label="Galway" />
             </InputRadioGroup>
           </FormField>
+          <MyForm2 />
           <FormField>
             <FormFieldLabel htmlFor="textarea-id">
               Inputs with React Hook Form
