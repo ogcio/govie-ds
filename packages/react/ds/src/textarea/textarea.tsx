@@ -73,21 +73,22 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     };
 
     const handleOnResetClick = () => {
-      if (inputRef?.current) {
-        const clearEvent = {
-          target: { ...inputRef.current, value: '' },
-          currentTarget: inputRef.current,
-        } as React.ChangeEvent<HTMLTextAreaElement>;
-
+      if (inputRef.current) {
         if (!isControlled) {
           setInternalValue('');
         }
 
-        inputRef.current.focus();
+        const event = {
+          target: {
+            value: '',
+          },
+        } as React.ChangeEvent<HTMLTextAreaElement>;
 
         if (onChange) {
-          onChange(clearEvent);
+          onChange(event);
         }
+
+        inputRef.current.focus();
       }
     };
 
@@ -120,6 +121,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             {clearButtonEnabled ? (
               <div className="gi-text-area-end-element">
                 <IconButton
+                  type="button"
                   disabled={props.disabled}
                   icon={{
                     icon: 'close',

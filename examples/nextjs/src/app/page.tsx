@@ -129,19 +129,29 @@ const MyForm2 = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextArea
-        {...register("description")}
-        maxChars={200}
-        clearButtonEnabled
-      />
-      <InputText
-        {...register("inputtext")}
-        id="input-text-id"
-        className="w-full"
-      />
-      <Button type="submit">Submit</Button>
-    </form>
+    <Container
+      className="p-2 w-full border border-[--gieds-color-gray-200] bg-white rounded-lg shadow-lg"
+      id="card-container"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Heading as="h3" id="heading">
+          Form with register method of RHF
+        </Heading>
+        <TextArea
+          {...register("description")}
+          maxChars={200}
+          clearButtonEnabled
+        />
+        <InputText
+          {...register("inputtext")}
+          id="input-text-id"
+          className="w-full"
+        />
+        <Button className="mt-1" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Container>
   );
 };
 
