@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer } from 'react';
+import { useForm } from 'react-hook-form';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
+import { Label } from '../label/label.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
 
@@ -322,4 +324,44 @@ export const WithLoading = () => {
       </Autocomplete>
     </FormField>
   );
+};
+
+export const WithReactHookForm: StoryObj = {
+  render: () => {
+    const { register, watch } = useForm();
+
+    const topicValue = watch('example');
+
+    return (
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Select with watcher</FormFieldLabel>
+          <Autocomplete {...register('example')}>
+            {options.map(({ value, label }) => (
+              <AutocompleteItem value={value} key={`${label}-${value}`}>
+                {label}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+        </FormField>
+        <Label>Watched value: {topicValue}</Label>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.type(input, 'Backend', { delay: 100 });
+
+    const option = await canvas.findByText('Backend Dev.');
+    expect(option).toBeVisible();
+
+    await userEvent.click(option);
+    const watchedValueLabel = await canvas.findByText(/Watched value:/);
+
+    waitFor(() =>
+      expect(watchedValueLabel).toHaveTextContent('Watched value: backend_dev'),
+    );
+  },
 };
