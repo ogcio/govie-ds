@@ -159,7 +159,10 @@ export const useAutocompleteController = ({
   onOpen,
   onClose,
   onChange,
-}: { onChange?: (input: string, inputRef: any) => void } & Pick<
+}: {
+  onChange?: (input: string, name?: string) => void;
+  ref?: any;
+} & Pick<
   AutocompleteProps,
   'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose'
 >) => {
@@ -217,10 +220,10 @@ export const useAutocompleteController = ({
           payload: label,
         });
         dispatch({ type: SET_IS_OPEN, payload: false });
-        onChange?.(label, inputRef);
+        onChange?.(state.value);
       } else if (!freeSolo) {
         dispatch({ type: ON_RESET });
-        onChange?.('', inputRef);
+        onChange?.('');
       }
       dispatch({ type: TOGGLE_CLEAR_BUTTON });
     }
