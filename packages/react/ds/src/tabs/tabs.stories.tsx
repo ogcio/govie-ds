@@ -2,6 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Stack } from '../stack/stack.js';
 import { TabItem } from './tab-item.js';
@@ -9,13 +10,15 @@ import { TabList } from './tab-list.js';
 import { TabPanel } from './tab-panel.js';
 import { Tabs } from './tabs.js';
 
-const meta = {
+const meta: Meta<typeof Tabs> = {
   title: 'Navigation/Tabs',
-  decorators: (Story) => (
-    <div className="gi-p-8">
-      <Story />
-    </div>
-  ),
+  decorators: [
+    (Story) => (
+      <div className="gi-p-8">
+        <Story />
+      </div>
+    ),
+  ],
   component: Tabs,
   parameters: {
     layout: 'fullscreen',
@@ -26,16 +29,59 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Tabs>;
+  argTypes: {
+    id: {
+      control: 'text',
+      description: 'ID of the tabs container',
+    },
+    ariaLabelledBy: {
+      control: 'text',
+      description: 'ID of the element that labels the tabs (required)',
+    },
+    dataTestid: {
+      control: 'text',
+      description: 'Test ID for the tabs container',
+    },
+    appearance: {
+      options: ['default', 'dark'],
+      control: 'radio',
+      description: 'Visual appearance of the tabs',
+    },
+    size: {
+      options: ['sm', 'md'],
+      control: 'radio',
+      description: 'Size of the tabs',
+    },
+    labelAlignment: {
+      options: ['start', 'center', 'end'],
+      control: 'radio',
+      description: 'Label alignment',
+    },
+    stretch: {
+      control: 'boolean',
+      description:
+        'If true, all the tabs will space equally covering full available width. Default: false',
+    },
+    padding: {
+      control: 'boolean',
+      description: 'If true, tabs will have padding applied. Default: true',
+    },
+    children: {
+      control: false,
+      description: 'Tab items and panels as children components',
+    },
+  },
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    ariaLabelledBy: 'tabs-example',
-    children: '',
-    id: 'tab-default',
+    ariaLabelledBy: 'tab-example',
+    id: 'tab-example',
+    size: 'md',
+    children: null,
   },
   render: (props) => (
     <Tabs {...props}>
@@ -47,6 +93,110 @@ export const Default: Story = {
       <TabPanel value="tab1">Tab 1 Content</TabPanel>
       <TabPanel value="tab2">Tab 2 Content</TabPanel>
       <TabPanel value="tab3">Tab 3 Content</TabPanel>
+    </Tabs>
+  ),
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const computedStyle = getComputedStyle(canvasElement);
+    const mutedBorderColor = computedStyle
+      .getPropertyValue('--gieds-color-border-system-neutral-muted')
+      .trim();
+
+    expect(mutedBorderColor).toBe('#d8dadf');
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+
+    const itemBorder = tab1.querySelector('.gi-tab-item-border');
+
+    await waitFor(() =>
+      expect(itemBorder?.classList).toContain(
+        'gi-bg-color-border-tone-primary-accent-selected',
+      ),
+    );
+
+    expect(tab1).toHaveAttribute('aria-selected', 'true');
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
+  },
+};
+
+export const Dark: Story = {
+  args: {
+    ariaLabelledBy: 'tab-neutral',
+    children: '',
+    appearance: 'dark',
+    id: 'tab-neutral',
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tab11">Tab 1</TabItem>
+        <TabItem value="tab22">Tab 2</TabItem>
+        <TabItem value="tab33">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab11">Tab 1 Content</TabPanel>
+      <TabPanel value="tab22">Tab 2 Content</TabPanel>
+      <TabPanel value="tab33">Tab 3 Content</TabPanel>
+    </Tabs>
+  ),
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const tab1 = canvas.getByRole('tab', { name: 'Tab 1' });
+    const tab2 = canvas.getByRole('tab', { name: 'Tab 2' });
+    const tab3 = canvas.getByRole('tab', { name: 'Tab 3' });
+
+    await waitFor(() => expect(tab1).toHaveAttribute('aria-selected', 'true'));
+
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    const itemBorder = tab1.querySelector('.gi-tab-item-border');
+
+    await waitFor(() =>
+      expect(itemBorder?.classList).toContain(
+        'gi-bg-color-text-system-neutral-interactive-default',
+      ),
+    );
+
+    await userEvent.click(tab2);
+
+    expect(tab1).toHaveAttribute('aria-selected', 'false');
+    expect(tab2).toHaveAttribute('aria-selected', 'true');
+    expect(tab3).toHaveAttribute('aria-selected', 'false');
+
+    await userEvent.click(tab3);
+
+    expect(tab2).toHaveAttribute('aria-selected', 'false');
+    expect(tab3).toHaveAttribute('aria-selected', 'true');
+
+    await userEvent.click(tab1);
+  },
+};
+
+export const Small: Story = {
+  args: {
+    ariaLabelledBy: 'tab-small',
+    children: '',
+    id: 'tab-small',
+    size: 'sm',
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tab111">Tab 1</TabItem>
+        <TabItem value="tab222">Tab 2</TabItem>
+        <TabItem value="tab333">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab111">Tab 1 Content</TabPanel>
+      <TabPanel value="tab222">Tab 2 Content</TabPanel>
+      <TabPanel value="tab333">Tab 3 Content</TabPanel>
     </Tabs>
   ),
 };
@@ -147,6 +297,51 @@ export const WithHandler: Story = {
           <TabPanel value="tab300">Tab 3 Content</TabPanel>
         </Tabs>
       </Stack>
+    );
+  },
+};
+
+export const WithStretch: Story = {
+  args: {
+    id: 'tabs-with-stretch',
+    ariaLabelledBy: 'tabs-with-stretch',
+    children: '',
+    stretch: true,
+  },
+  render: (props) => {
+    return (
+      <Tabs {...props}>
+        <TabList>
+          <TabItem value="tab-with-stretch1">Tab 1</TabItem>
+          <TabItem value="tab-with-stretch2">Tab 2</TabItem>
+        </TabList>
+        <TabPanel value="tab-with-stretch1">Tab 1 Content</TabPanel>
+        <TabPanel value="tab-with-stretch2">Tab 2 Content</TabPanel>
+      </Tabs>
+    );
+  },
+};
+
+export const WithoutPadding: Story = {
+  args: {
+    id: 'tabs-without-padding',
+    ariaLabelledBy: 'tabs-without-padding',
+    children: '',
+    padding: false,
+    stretch: true,
+  },
+  render: (props) => {
+    return (
+      <Tabs {...props}>
+        <TabList>
+          <TabPanel value="tab11-no-padding">Tab 1</TabPanel>
+          <TabPanel value="tab21-no-padding">Tab 2</TabPanel>
+          <TabPanel value="tab31-no-padding">Tab 3</TabPanel>
+        </TabList>
+        <TabPanel value="tab11-no-padding">Tab 1 Content</TabPanel>
+        <TabPanel value="tab21-no-padding">Tab 2 Content</TabPanel>
+        <TabPanel value="tab31-no-padding">Tab 3 Content</TabPanel>
+      </Tabs>
     );
   },
 };

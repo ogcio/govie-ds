@@ -1,0 +1,124 @@
+---
+title: 'Tabs'
+description: 'Tabs HTML Component'
+status: 'stable'
+component:
+  id: 'tabs'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8079-62769'
+  status: 'stable'
+---
+
+# Tabs
+
+The tabs component lets users navigate between related sections of content, displaying one section at a time.
+
+<Section current="design">
+
+<ComponentPreview>
+  <Tabs id="tab-container-1" ariaLabelledBy="tab-container-1">
+    <TabList>
+      <TabItem value="tab1">Tab 1</TabItem>
+      <TabItem value="tab2">Tab 2</TabItem>
+      <TabItem value="tab3">Tab 3</TabItem>
+    </TabList>
+    <TabPanel value="tab1">Tab 1 Content</TabPanel>
+    <TabPanel value="tab2">Tab 2 Content</TabPanel>
+    <TabPanel value="tab3">Tab 3 Content</TabPanel>
+  </Tabs>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8079-62769" />
+
+## Appearance
+
+<ComponentPreviewLayout className="flex-col">
+  <ComponentPreviewItem className="w-105">
+    <Tabs id="tab-container-12" ariaLabelledBy="tab-container-12">
+      <TabList>
+        <TabItem value="tab12">Tab 1</TabItem>
+        <TabItem value="tab22">Tab 2</TabItem>
+        <TabItem value="tab32">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab12">Tab 1 Content</TabPanel>
+      <TabPanel value="tab22">Tab 2 Content</TabPanel>
+      <TabPanel value="tab32">Tab 3 Content</TabPanel>
+    </Tabs>
+  </ComponentPreviewItem>
+  <ComponentPreviewItem className="w-105">
+    <Tabs
+      id="tab-container-13"
+      appearance="dark"
+      ariaLabelledBy="tab-container-13"
+    >
+      <TabList>
+        <TabItem value="tab13">Tab 1</TabItem>
+        <TabItem value="tab23">Tab 2</TabItem>
+        <TabItem value="tab33">Tab 3</TabItem>
+      </TabList>
+      <TabPanel value="tab13">Tab 1 Content</TabPanel>
+      <TabPanel value="tab23">Tab 2 Content</TabPanel>
+      <TabPanel value="tab33">Tab 3 Content</TabPanel>
+    </Tabs>
+  </ComponentPreviewItem>
+</ComponentPreviewLayout>
+
+## Usage
+
+Tabs can be a helpful way of letting users quickly switch between related information if:
+
+- your content can be usefully separated into clearly labelled sections
+- the first section is more relevant than the others for most users
+- users will not need to view all the sections at once
+
+Tabs can work well for people who use a service regularly. Their need to perform tasks quickly may be greater than their need for simplicity of first-time use.
+
+### Decide between using tabs, accordion and details
+
+Tabs, accordions, and details all hide sections of content which a user can choose to reveal.
+
+If you decide to use one of these components, consider if:
+
+- the user does not need to view more than one section at a time – consider using tabs
+- the user needs to switch quickly between sections – tabs can show content without pushing other sections down the page, unlike accordions
+- there are many pieces of content – tabs can fit fewer sections as they’re arranged horizontally, unlike accordions which are arranged vertically
+- there’s only one or two pieces of short, less important content – the details component is more suitable as it’s visually smaller and less prominent than an accordion or tabs
+
+### Do
+
+- **Use clear and concise tab labels**: Help users understand what content each tab contains.
+- **Set a default selected tab**: Ensure one tab is active by default to display relevant content immediately.
+- **Keep tab content short and focused**: Ensure each tab contains just enough information for its context.
+- **Maintain consistent tab width**: Align visual balance, especially when there are few tabs.
+- **Use tabs for related content**: Group logically connected content that users might want to switch between.
+
+### Don't
+
+- **Don’t use tabs for primary navigation**: Tabs are meant for content toggling, not page changes.
+- **Don’t include complex or long forms**: Avoid placing heavy interactions inside tabs.
+- **Don’t overload the tab list**: Too many tabs make scanning and navigation harder—consider another pattern.
+- **Don’t assume all users notice tabs**: Critical content might be missed if hidden behind tabs.
+- **Don’t force tab switching for sequential tasks**: If users must read content in order, use a linear layout instead.
+
+**Example:**
+
+<ComponentContainer>
+  <Tabs id="bad-tabs-example">
+    <TabList>
+      <TabItem value="intro">Introduction</TabItem>
+      <TabItem value="terms">Terms and Conditions</TabItem>
+      <TabItem value="privacy">Privacy Policy</TabItem>
+      <TabItem value="accessibility">Accessibility Statement</TabItem>
+      <TabItem value="contact">Contact Information</TabItem>
+      <TabItem value="faq">FAQ</TabItem>
+      <TabItem value="support">Support</TabItem>
+    </TabList>
+    <TabPanel value="intro">Intro content...</TabPanel>
+    <TabPanel value="terms">Terms content...</TabPanel>
+    <TabPanel value="privacy">Privacy content...</TabPanel>
+    <TabPanel value="accessibility">Accessibility content...</TabPanel>
+    <TabPanel value="contact">Contact content...</TabPanel>
+    <TabPanel value="faq">FAQ content...</TabPanel>
+    <TabPanel value="support">Support content...</TabPanel>
+  </Tabs>
+</ComponentContainer>
+
+</Section>
