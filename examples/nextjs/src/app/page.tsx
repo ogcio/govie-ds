@@ -121,6 +121,26 @@ const headerProps: HeaderProps = {
   ],
 };
 
+const MyForm2 = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <TextArea {...register("description")} maxChars={200} />
+      <InputText
+        {...register("inputtext")}
+        id="input-text-id"
+        className="w-full"
+      />
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+};
+
 function MyForm() {
   const methods = useForm({
     defaultValues: {
@@ -614,6 +634,7 @@ export default function Home() {
               <InputRadio value="galway" label="Galway" />
             </InputRadioGroup>
           </FormField>
+          <MyForm2 />
           <FormField>
             <FormFieldLabel htmlFor="textarea-id">
               Inputs with React Hook Form

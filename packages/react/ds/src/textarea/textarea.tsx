@@ -18,7 +18,6 @@ export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 > & {
-  ref?: React.Ref<HTMLTextAreaElement>;
   rows?: number;
   cols?: number;
   autoComplete?: string;
@@ -28,7 +27,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   clearButtonEnabled?: boolean;
 };
 
-export const TextArea = forwardRef(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       value,
@@ -40,8 +39,9 @@ export const TextArea = forwardRef(
       iconStart,
       className,
       clearButtonEnabled,
+      onChange,
       ...props
-    }: TextAreaProps,
+    },
     externalRef,
   ) => {
     const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -49,11 +49,13 @@ export const TextArea = forwardRef(
       maxChars,
     );
 
+    // Forward ref to the actual textarea element
     useImperativeHandle(externalRef, () => inputRef.current!);
 
+    // Only use internal state when component is uncontrolled
     const [internalValue, setInternalValue] = useState<string>('');
-
-    const currentValue = typeof value === 'string' ? value : internalValue;
+    const isControlled = value !== undefined;
+    const currentValue: string = isControlled ? String(value) : internalValue;
 
     useEffect(() => {
       if (maxChars !== undefined) {
@@ -64,27 +66,36 @@ export const TextArea = forwardRef(
     const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const newValue = event.target.value;
 
-      if (value === undefined) {
+      // Only update internal state if uncontrolled
+      if (!isControlled) {
         setInternalValue(newValue);
       }
 
-      if (props.onChange) {
-        props.onChange(event);
+      // Always call the external onChange handler
+      if (onChange) {
+        onChange(event);
       }
     };
 
     const handleOnResetClick = () => {
       if (inputRef?.current) {
-        inputRef.current.value = '';
+        // Clear the input
+        const clearEvent = {
+          target: { ...inputRef.current, value: '' },
+          currentTarget: inputRef.current,
+        } as React.ChangeEvent<HTMLTextAreaElement>;
+
+        // Update internal state if uncontrolled
+        if (!isControlled) {
+          setInternalValue('');
+        }
+
+        // Focus the input
         inputRef.current.focus();
 
-        const newInputEvent = {
-          target: inputRef.current,
-          currentTarget: inputRef.current,
-        } as unknown as React.ChangeEvent<HTMLTextAreaElement>;
-
-        if (props.onChange) {
-          props.onChange(newInputEvent);
+        // Call onChange handler with cleared value
+        if (onChange) {
+          onChange(clearEvent);
         }
       }
     };
