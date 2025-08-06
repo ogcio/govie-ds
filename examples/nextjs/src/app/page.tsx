@@ -133,10 +133,11 @@ function MyForm() {
       radioGroup: "",
       buttonGroup: "",
       checkboxGroup: [],
+      autocomplete: ''
     },
   });
 
-  const { handleSubmit, control, reset } = methods;
+  const { handleSubmit, control, reset, register } = methods;
 
   const onSubmit = (data: any) => {
     console.log("Form submitted successfully");
@@ -155,6 +156,16 @@ function MyForm() {
     "Topic 3",
     "Topic 4",
     "Topic 5",
+  ];
+  const autocompleteOptions = [
+    { value: 'frontend_dev', label: 'Frontend Dev.' },
+    { value: 'backend_dev', label: 'Backend Dev.' },
+    { value: 'fullstack_dev', label: 'Full Stack Dev.' },
+    { value: 'devops_engineer', label: 'DevOps Engineer' },
+    { value: 'qa_engineer', label: 'QA Engineer' },
+    { value: 'ui_ux_designer', label: 'UI/UX Designer' },
+    { value: 'product_manager', label: 'Product Manager' },
+    { value: 'data_scientist', label: 'Data Scientist' },
   ];
 
   return (
@@ -343,6 +354,17 @@ function MyForm() {
                     <InputPassword {...field} placeholder="Placeholder" />
                   )}
                 />
+              </FormField>
+
+              <FormField className="gi-w-56">
+                <FormFieldLabel>Label</FormFieldLabel>
+                <Autocomplete {...register('autocomplete')}>
+                  {autocompleteOptions.map(({ value, label }) => (
+                    <AutocompleteItem value={value} key={`${label}-${value}`}>
+                      {label}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
               </FormField>
 
               {/* Buttons */}

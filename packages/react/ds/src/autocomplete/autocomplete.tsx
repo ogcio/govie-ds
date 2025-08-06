@@ -1,5 +1,13 @@
 'use client';
-import { FC, useRef, ChangeEvent, isValidElement, Children } from 'react';
+import {
+  FC,
+  useRef,
+  ChangeEvent,
+  isValidElement,
+  Children,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
@@ -34,14 +42,17 @@ const getIconEnd = (isOpen: boolean) =>
   isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
 const propagateOnChange =
-  (onChange: any) => (inputValue: string, inputRef: any) => {
-    if (onChange && inputRef.current) {
+  (onChange: any, name?: string) => (inputValue: string) => {
+    if (onChange) {
       const syntheticEvent = {
         target: {
-          ...inputRef.current,
+          name,
           value: inputValue,
         },
-        currentTarget: inputRef.current,
+        currentTarget: {
+          name,
+          value: inputValue,
+        },
         bubbles: true,
         isTrusted: true,
       } as ChangeEvent<HTMLInputElement>;
@@ -49,196 +60,205 @@ const propagateOnChange =
     }
   };
 
-export const Autocomplete: FC<AutocompleteProps> = (props) => {
-  const iconEndRef = useRef<HTMLDivElement>(null);
-  const {
-    disabled,
-    children,
-    placeholder,
-    onSelectItem,
-    isLoading,
-    freeSolo = false,
-    onChange: onAutocompleteChange,
-  } = props;
-
-  const { state, dispatch, inputRef, getOptionLabelByValue, listRef } =
-    useAutocompleteController({
-      ...props,
-      onChange: propagateOnChange(onAutocompleteChange),
-    });
-
-  const handleOnOpenChange = (isOpen: boolean) => {
-    dispatch({ type: SET_IS_OPEN, payload: isOpen });
-    if (!isOpen) {
-      dispatch({ type: TOGGLE_CLEAR_BUTTON, payload: false });
-    }
-  };
-
-  const handleClearInput = () => {
-    dispatch({ type: ON_RESET });
-    dispatch({ type: SET_IS_OPEN, payload: false });
-    propagateOnChange(onAutocompleteChange)('', inputRef);
-  };
-
-  const handleUpdateInput = (value: string) => {
-    dispatch({ type: SET_INPUT_VALUE, payload: value });
-    propagateOnChange(onAutocompleteChange)(value, inputRef);
-    if (value) {
-      dispatch({ type: SET_IS_OPEN, payload: true });
-    }
-  };
-
-  const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement> & { __origin: string },
-  ) => {
+export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
+  (props, ref) => {
+    const iconEndRef = useRef<HTMLDivElement>(null);
     const {
-      target: { value },
-    } = event;
+      disabled,
+      children,
+      placeholder,
+      onSelectItem,
+      isLoading,
+      freeSolo = false,
+      onChange: onAutocompleteChange,
+      name,
+    } = props;
 
-    if (event.__origin === 'clear_button') {
-      handleClearInput();
-    } else {
-      handleUpdateInput(value);
-    }
-
-    dispatch({ type: TOGGLE_CLEAR_BUTTON });
-    setTimeout(() => inputRef.current?.focus());
-  };
-
-  const handleOnIconEndClick = () => {
-    dispatch({ type: SET_IS_OPEN, payload: !state.isOpen });
-    inputRef.current?.focus();
-  };
-
-  const handleOnClick = () => {
-    if (!state.isOpen) {
-      dispatch({
-        type: SET_IS_OPEN,
-        payload: true,
+    const { state, dispatch, inputRef, getOptionLabelByValue, listRef } =
+      useAutocompleteController({
+        ...props,
+        onChange: propagateOnChange(onAutocompleteChange, name),
       });
-    }
-  };
 
-  const handleOnSelectItem = (value: string) => {
-    dispatch({
-      type: ON_SELECT_ITEM,
-      payload: {
-        inputValue: getOptionLabelByValue(children, value),
-        value,
-      },
-    });
-    if (onSelectItem) {
-      onSelectItem(value);
-    }
-  };
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const total = state.autocompleteOptions.length;
-
-    const findNextEnabledIndex = (
-      currentIndex: number,
-      direction: 1 | -1,
-    ): number => {
-      let index = currentIndex;
-      for (let step = 0; step < total; step++) {
-        index = (index + direction + total) % total;
-        const candidateOption = state.autocompleteOptions[
-          index
-        ] as AutocompleteOptionItemElement;
-        // it skips disabled items
-        if (!candidateOption.props.disabled) {
-          return index;
-        }
+    const handleOnOpenChange = (isOpen: boolean) => {
+      dispatch({ type: SET_IS_OPEN, payload: isOpen });
+      if (!isOpen) {
+        dispatch({ type: TOGGLE_CLEAR_BUTTON, payload: false });
       }
-      return -1;
     };
 
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      dispatch({
-        type: SET_HIGHLIGHTED_INDEX,
-        payload: state.isOpen
-          ? findNextEnabledIndex(state.highlightedIndex, 1)
-          : 0,
-      });
-      dispatch({ type: SET_IS_OPEN, payload: true });
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      dispatch({
-        type: SET_HIGHLIGHTED_INDEX,
-        payload: findNextEnabledIndex(state.highlightedIndex, -1),
-      });
-      dispatch({ type: SET_IS_OPEN, payload: true });
-    } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
-      const selected = state.autocompleteOptions[
-        state.highlightedIndex
-      ] as AutocompleteOptionItemElement;
-      if (selected && selected.props.value && !selected.props.disabled) {
-        handleOnSelectItem(selected.props.value);
-      }
-    }
-  };
+    const handleClearInput = () => {
+      dispatch({ type: ON_RESET });
+      dispatch({ type: SET_IS_OPEN, payload: false });
+      propagateOnChange(onAutocompleteChange, name)('');
+    };
 
-  return (
-    <div
-      aria-disabled={disabled}
-      className={cn('gi-autocomplete gi-not-prose', props.className)}
-    >
-      <InputText
-        onKeyDown={handleOnKeyDown}
-        onIconEndClick={handleOnIconEndClick}
-        onChange={handleOnChange}
-        onClick={handleOnClick}
-        clearButtonEnabled={state.isClearButtonEnabled}
-        inputActionPosition="beforeSuffix"
-        aria-label={t('autocomplete.placeholder')}
+    const handleUpdateInput = (value: string) => {
+      dispatch({ type: SET_INPUT_VALUE, payload: value });
+      if (freeSolo) {
+        propagateOnChange(onAutocompleteChange, name)(value);
+      }
+      if (value) {
+        dispatch({ type: SET_IS_OPEN, payload: true });
+      }
+    };
+
+    const handleOnChange = (
+      event: React.ChangeEvent<HTMLInputElement> & { __origin: string },
+    ) => {
+      const {
+        target: { value },
+      } = event;
+
+      if (event.__origin === 'clear_button') {
+        handleClearInput();
+      } else {
+        handleUpdateInput(value);
+      }
+
+      dispatch({ type: TOGGLE_CLEAR_BUTTON });
+      setTimeout(() => inputRef.current?.focus());
+    };
+
+    const handleOnIconEndClick = () => {
+      dispatch({ type: SET_IS_OPEN, payload: !state.isOpen });
+      inputRef.current?.focus();
+    };
+
+    const handleOnClick = () => {
+      if (!state.isOpen) {
+        dispatch({
+          type: SET_IS_OPEN,
+          payload: true,
+        });
+      }
+    };
+
+    const handleOnSelectItem = (value: string) => {
+      dispatch({
+        type: ON_SELECT_ITEM,
+        payload: {
+          inputValue: getOptionLabelByValue(children, value),
+          value,
+        },
+      });
+      if (onSelectItem) {
+        onSelectItem(value);
+      }
+    };
+
+    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      const total = state.autocompleteOptions.length;
+
+      const findNextEnabledIndex = (
+        currentIndex: number,
+        direction: 1 | -1,
+      ): number => {
+        let index = currentIndex;
+        for (let step = 0; step < total; step++) {
+          index = (index + direction + total) % total;
+          const candidateOption = state.autocompleteOptions[
+            index
+          ] as AutocompleteOptionItemElement;
+          // it skips disabled items
+          if (!candidateOption.props.disabled) {
+            return index;
+          }
+        }
+        return -1;
+      };
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        dispatch({
+          type: SET_HIGHLIGHTED_INDEX,
+          payload: state.isOpen
+            ? findNextEnabledIndex(state.highlightedIndex, 1)
+            : 0,
+        });
+        dispatch({ type: SET_IS_OPEN, payload: true });
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        dispatch({
+          type: SET_HIGHLIGHTED_INDEX,
+          payload: findNextEnabledIndex(state.highlightedIndex, -1),
+        });
+        dispatch({ type: SET_IS_OPEN, payload: true });
+      } else if (event.key === 'Enter' && state.highlightedIndex >= 0) {
+        const selected = state.autocompleteOptions[
+          state.highlightedIndex
+        ] as AutocompleteOptionItemElement;
+        if (selected && selected.props.value && !selected.props.disabled) {
+          handleOnSelectItem(selected.props.value);
+        }
+      }
+    };
+
+    return (
+      <div
         aria-disabled={disabled}
-        disabled={disabled}
-        placeholder={placeholder || t('autocomplete.placeholder')}
-        iconEndClassName={cn({
-          'gi-cursor-pointer': !disabled && !freeSolo,
-          'gi-cursor-not-allowed gi-pointer-events-none': disabled && !freeSolo,
-        })}
-        iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
-        ref={inputRef}
-        iconEndRef={iconEndRef}
-        value={state.inputValue}
-        data-highlighted-index={state.highlightedIndex}
-      />
-      <Popover
-        onOpenChange={handleOnOpenChange}
-        triggerRef={inputRef}
-        extraRefs={[iconEndRef]}
-        open={state.isOpen}
-        maxHeight={304}
-        options={{
-          placement: 'bottom-start',
-          strategy: 'absolute',
-          modifiers: [
-            { name: 'offset', options: { offset: [0, 4] } },
-            {
-              name: 'flip',
-              options: { fallbackPlacements: ['top'] },
-            },
-          ],
-        }}
+        className={cn('gi-autocomplete gi-not-prose', props.className)}
       >
-        <SelectMenu
-          onChange={handleOnSelectItem}
-          isLoading={isLoading}
-          showNoData={!state.autocompleteOptions?.length}
-          ref={listRef}
+        <InputText
+          name={name}
+          onKeyDown={handleOnKeyDown}
+          onIconEndClick={handleOnIconEndClick}
+          onChange={handleOnChange}
+          onClick={handleOnClick}
+          clearButtonEnabled={state.isClearButtonEnabled}
+          inputActionPosition="beforeSuffix"
+          aria-label={t('autocomplete.placeholder')}
+          aria-disabled={disabled}
+          disabled={disabled}
+          placeholder={placeholder || t('autocomplete.placeholder')}
+          iconEndClassName={cn({
+            'gi-cursor-pointer': !disabled && !freeSolo,
+            'gi-cursor-not-allowed gi-pointer-events-none':
+              disabled && !freeSolo,
+          })}
+          iconEnd={freeSolo ? undefined : getIconEnd(state.isOpen)}
+          ref={inputRef}
+          iconEndRef={iconEndRef}
+          value={state.inputValue}
+          data-highlighted-index={state.highlightedIndex}
+        />
+        <Popover
+          onOpenChange={handleOnOpenChange}
+          triggerRef={inputRef}
+          extraRefs={[iconEndRef]}
+          open={state.isOpen}
+          maxHeight={304}
+          options={{
+            placement: 'bottom-start',
+            strategy: 'absolute',
+            modifiers: [
+              { name: 'offset', options: { offset: [0, 4] } },
+              {
+                name: 'flip',
+                options: { fallbackPlacements: ['top'] },
+              },
+            ],
+          }}
         >
-          {renderSelectMenuOptions(
-            state.autocompleteOptions,
-            state,
-            handleOnSelectItem,
-          )}
-        </SelectMenu>
-      </Popover>
-    </div>
-  );
-};
+          <SelectMenu
+            onChange={handleOnSelectItem}
+            isLoading={isLoading}
+            showNoData={!state.autocompleteOptions?.length}
+            ref={listRef}
+          >
+            {renderSelectMenuOptions(
+              state.autocompleteOptions,
+              state,
+              handleOnSelectItem,
+            )}
+          </SelectMenu>
+        </Popover>
+      </div>
+    );
+  },
+);
 
 export const renderSelectMenuOptions = (
   options: any[],
