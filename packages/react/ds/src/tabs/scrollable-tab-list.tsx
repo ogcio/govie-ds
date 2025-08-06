@@ -42,8 +42,6 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
     for (const child of Children.toArray(children)) {
       if (isValidElement<TabItemProps>(child)) {
         if ((child?.props as any).checked) {
-          console.log('here index', index);
-          //setActiveTab(index);
           break;
         } else {
           continue;
@@ -54,7 +52,6 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   }, [children]);
 
   useLayoutEffect(() => {
-    console.log('activeTab', activeTab);
     const element = tabRefs.current[activeTab];
     const container = containerRef.current;
 
@@ -80,7 +77,6 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       original?: (event: MouseEvent<HTMLButtonElement>) => void,
     ) =>
     (event: MouseEvent<HTMLButtonElement>) => {
-      console.log('here', index);
       setActiveTab(index);
 
       if (original) {
@@ -106,7 +102,6 @@ export const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       if (next >= count) {
         next = count - 1;
       }
-      console.log('next', next);
       setActiveTab(next);
       event.preventDefault();
     }
