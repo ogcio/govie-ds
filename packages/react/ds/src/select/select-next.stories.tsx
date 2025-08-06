@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
@@ -7,6 +8,7 @@ import {
   FormFieldHint,
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
+import { Label } from '../label/label.js';
 import {
   SelectGroupItemNext,
   SelectItemNext,
@@ -365,22 +367,25 @@ export const Controlled: StoryObj = {
     const [value, setValue] = useState('value-2');
 
     return (
-      <FormField className="gi-w-56">
-        <FormFieldLabel>Controlled Select</FormFieldLabel>
-        <SelectNext
-          aria-label="Select"
-          id="select-controlled"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-        >
-          <SelectItemNext value="select-option" hidden>
-            Select Option
-          </SelectItemNext>
-          <SelectItemNext value="value-1">Option 1</SelectItemNext>
-          <SelectItemNext value="value-2">Option 2</SelectItemNext>
-          <SelectItemNext value="value-3">Option 3</SelectItemNext>
-        </SelectNext>
-      </FormField>
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Controlled Select</FormFieldLabel>
+          <SelectNext
+            aria-label="Select"
+            id="select-controlled"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+          >
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">Option 1</SelectItemNext>
+            <SelectItemNext value="value-2">Option 2</SelectItemNext>
+            <SelectItemNext value="value-3">Option 3</SelectItemNext>
+          </SelectNext>
+        </FormField>
+        <Label>Controlled value: {value}</Label>
+      </div>
     );
   },
   play: async ({ canvasElement }) => {
@@ -434,6 +439,34 @@ export const WithLongListSearchEnabled: StoryObj = {
           ))}
         </SelectNext>
       </FormField>
+    );
+  },
+};
+
+export const WithReactHookForm: StoryObj = {
+  render: () => {
+    const { register, watch } = useForm();
+
+    const topicValue = watch('topic');
+
+    return (
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Select with watcher</FormFieldLabel>
+          <SelectNext
+            aria-label="Select"
+            id="select-controlled"
+            {...register('topic')}
+          >
+            {topics.map((topic) => (
+              <SelectItemNext key={topic} value={topic}>
+                {topic}
+              </SelectItemNext>
+            ))}
+          </SelectNext>
+        </FormField>
+        <Label>Watched value: {topicValue}</Label>
+      </div>
     );
   },
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -308,5 +309,120 @@ export const Controlled: Story = {
 
     const hint = canvas.getByText(/Current:/);
     expect(hint).toHaveTextContent('Current: New controlled text');
+  },
+};
+
+export const Uncontrolled: Story = {
+  args: {
+    id: 'textarea-uncontrolled',
+    rows: 4,
+    cols: 50,
+    placeholder: 'Type something here...',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows an uncontrolled TextArea component where the value is managed internally by the component. The state is accessed via ref.',
+      },
+      source: {
+        code: `
+          import { useRef, useState } from 'react';
+          import { TextArea } from './textarea';
+          import {
+            FormField,
+            FormFieldLabel,
+            FormFieldHint,
+          } from '../forms/form-field/form-field';
+          import { Button } from '../button/button';
+
+          export function Example() {
+            const ref = useRef<HTMLTextAreaElement>(null);
+            const [value, setValue] = useState('');
+
+            const handleShowValue = () => {
+              if (ref.current) {
+                setValue(ref.current.value);
+              }
+            };
+
+            return (
+              <FormField>
+                <FormFieldLabel htmlFor="textarea-uncontrolled">
+                  Uncontrolled Label
+                </FormFieldLabel>
+                <TextArea
+                  id="textarea-uncontrolled"
+                  ref={ref}
+                  rows={4}
+                  cols={50}
+                  placeholder="Type something here..."
+                  data-testid="textarea-uncontrolled"
+                />
+                <Button
+                  className="gi-mt-1"
+                  data-testid="show-value-button"
+                  onClick={handleShowValue}
+                >
+                  Show Value
+                </Button>
+                <FormFieldHint data-testid="uncontrolled-output">
+                  Value: {value}
+                </FormFieldHint>
+              </FormField>
+            );
+          }
+        `.trim(),
+      },
+    },
+  },
+  render: (props) => {
+    const ref = useRef<HTMLTextAreaElement>(null);
+    const [value, setValue] = useState('');
+
+    const handleShowValue = () => {
+      if (ref.current) {
+        setValue(ref.current.value);
+      }
+    };
+
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="textarea-uncontrolled">
+          Uncontrolled Label
+        </FormFieldLabel>
+        <TextArea
+          {...props}
+          ref={ref}
+          clearButtonEnabled
+          data-testid="textarea-uncontrolled"
+        />
+        <Button
+          className="gi-mt-1"
+          onClick={handleShowValue}
+          dataTestid="show-value-button"
+        >
+          Show Value
+        </Button>
+        <FormFieldHint data-testid="uncontrolled-output">
+          Value: {value}
+        </FormFieldHint>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId(
+      'textarea-uncontrolled',
+    ) as HTMLTextAreaElement;
+
+    await userEvent.type(textarea, 'Hello, world!');
+
+    const button = canvas.getByTestId('show-value-button');
+    await userEvent.click(button);
+
+    const output = canvas.getByText('Value: Hello, world!');
+    expect(output).toBeInTheDocument();
   },
 };

@@ -121,6 +121,47 @@ const headerProps: HeaderProps = {
   ],
 };
 
+const MyForm2 = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
+  return (
+    <Container
+      className="p-2 w-full border border-[--gieds-color-gray-200] bg-white rounded-lg shadow-lg"
+      id="card-container"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Heading as="h3" id="heading">
+          Form with register method of RHF
+        </Heading>
+        <TextArea
+          {...register("description")}
+          maxChars={200}
+          clearButtonEnabled
+        />
+        <InputText
+          {...register("inputtext")}
+          id="input-text-id"
+          className="w-full"
+          inputActionButton={{
+            icon: "info",
+            onClick: () => alert("Action button clicked"),
+          }}
+          type="text"
+          placeholder="Placeholder"
+        />
+
+        <Button className="mt-1" type="submit">
+          Submit
+        </Button>
+      </form>
+    </Container>
+  );
+};
+
 function MyForm() {
   const methods = useForm({
     defaultValues: {
@@ -133,10 +174,11 @@ function MyForm() {
       radioGroup: "",
       buttonGroup: "",
       checkboxGroup: [],
+      autocomplete: ''
     },
   });
 
-  const { handleSubmit, control, reset } = methods;
+  const { handleSubmit, control, reset, register } = methods;
 
   const onSubmit = (data: any) => {
     console.log("Form submitted successfully");
@@ -155,6 +197,16 @@ function MyForm() {
     "Topic 3",
     "Topic 4",
     "Topic 5",
+  ];
+  const autocompleteOptions = [
+    { value: 'frontend_dev', label: 'Frontend Dev.' },
+    { value: 'backend_dev', label: 'Backend Dev.' },
+    { value: 'fullstack_dev', label: 'Full Stack Dev.' },
+    { value: 'devops_engineer', label: 'DevOps Engineer' },
+    { value: 'qa_engineer', label: 'QA Engineer' },
+    { value: 'ui_ux_designer', label: 'UI/UX Designer' },
+    { value: 'product_manager', label: 'Product Manager' },
+    { value: 'data_scientist', label: 'Data Scientist' },
   ];
 
   return (
@@ -210,6 +262,7 @@ function MyForm() {
                       id="textarea-id-0"
                       className="w-full"
                       maxChars={100}
+                      clearButtonEnabled
                     />
                   )}
                 />
@@ -343,6 +396,17 @@ function MyForm() {
                     <InputPassword {...field} placeholder="Placeholder" />
                   )}
                 />
+              </FormField>
+
+              <FormField className="gi-w-56">
+                <FormFieldLabel>Label</FormFieldLabel>
+                <Autocomplete {...register('autocomplete')}>
+                  {autocompleteOptions.map(({ value, label }) => (
+                    <AutocompleteItem value={value} key={`${label}-${value}`}>
+                      {label}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
               </FormField>
 
               {/* Buttons */}
@@ -614,6 +678,7 @@ export default function Home() {
               <InputRadio value="galway" label="Galway" />
             </InputRadioGroup>
           </FormField>
+          <MyForm2 />
           <FormField>
             <FormFieldLabel htmlFor="textarea-id">
               Inputs with React Hook Form

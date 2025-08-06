@@ -18,7 +18,6 @@ export type TextAreaProps = React.DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 > & {
-  ref?: React.Ref<HTMLTextAreaElement>;
   rows?: number;
   cols?: number;
   autoComplete?: string;
@@ -28,7 +27,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
   clearButtonEnabled?: boolean;
 };
 
-export const TextArea = forwardRef(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       value,
@@ -40,8 +39,9 @@ export const TextArea = forwardRef(
       iconStart,
       className,
       clearButtonEnabled,
+      onChange,
       ...props
-    }: TextAreaProps,
+    },
     externalRef,
   ) => {
     const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -51,9 +51,10 @@ export const TextArea = forwardRef(
 
     useImperativeHandle(externalRef, () => inputRef.current!);
 
+    // Only use internal state when component is uncontrolled
     const [internalValue, setInternalValue] = useState<string>('');
-
-    const currentValue = typeof value === 'string' ? value : internalValue;
+    const isControlled = value !== undefined;
+    const currentValue: string = isControlled ? String(value) : internalValue;
 
     useEffect(() => {
       if (maxChars !== undefined) {
@@ -63,29 +64,31 @@ export const TextArea = forwardRef(
 
     const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const newValue = event.target.value;
-
-      if (value === undefined) {
+      if (!isControlled) {
         setInternalValue(newValue);
       }
-
-      if (props.onChange) {
-        props.onChange(event);
+      if (onChange) {
+        onChange(event);
       }
     };
 
     const handleOnResetClick = () => {
-      if (inputRef?.current) {
-        inputRef.current.value = '';
-        inputRef.current.focus();
-
-        const newInputEvent = {
-          target: inputRef.current,
-          currentTarget: inputRef.current,
-        } as unknown as React.ChangeEvent<HTMLTextAreaElement>;
-
-        if (props.onChange) {
-          props.onChange(newInputEvent);
+      if (inputRef.current) {
+        if (!isControlled) {
+          setInternalValue('');
         }
+
+        const event = {
+          target: {
+            value: '',
+          },
+        } as React.ChangeEvent<HTMLTextAreaElement>;
+
+        if (onChange) {
+          onChange(event);
+        }
+
+        inputRef.current.focus();
       }
     };
 
@@ -118,6 +121,7 @@ export const TextArea = forwardRef(
             {clearButtonEnabled ? (
               <div className="gi-text-area-end-element">
                 <IconButton
+                  type="button"
                   disabled={props.disabled}
                   icon={{
                     icon: 'close',
