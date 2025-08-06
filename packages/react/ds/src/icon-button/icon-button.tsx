@@ -24,14 +24,17 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       disabled,
       onClick,
       className = '',
+      type = 'button',
       ...props
     },
     ref,
   ) => {
     const iconSize = size === 'small' ? 'sm' : 'md';
+
     return (
       <button
         ref={ref}
+        type={type}
         aria-disabled={disabled}
         disabled={disabled}
         role="button"
