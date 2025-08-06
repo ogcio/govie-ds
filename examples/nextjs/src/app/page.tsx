@@ -146,7 +146,14 @@ const MyForm2 = () => {
           {...register("inputtext")}
           id="input-text-id"
           className="w-full"
+          inputActionButton={{
+            icon: "info",
+            onClick: () => alert("Action button clicked"),
+          }}
+          type="text"
+          placeholder="Placeholder"
         />
+
         <Button className="mt-1" type="submit">
           Submit
         </Button>

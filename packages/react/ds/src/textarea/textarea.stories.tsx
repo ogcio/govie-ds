@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -8,7 +9,6 @@ import {
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
 import { TextArea } from './textarea.js';
-import { Button } from '../button/button.js';
 
 const meta = {
   title: 'Form/TextArea',
