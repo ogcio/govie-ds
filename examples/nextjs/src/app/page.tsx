@@ -130,7 +130,11 @@ const MyForm2 = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextArea {...register("description")} maxChars={200} />
+      <TextArea
+        {...register("description")}
+        maxChars={200}
+        clearButtonEnabled
+      />
       <InputText
         {...register("inputtext")}
         id="input-text-id"
@@ -230,6 +234,7 @@ function MyForm() {
                       id="textarea-id-0"
                       className="w-full"
                       maxChars={100}
+                      clearButtonEnabled
                     />
                   )}
                 />
