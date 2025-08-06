@@ -1,0 +1,143 @@
+---
+title: 'Tabs'
+description: 'Tabs React Component'
+status: 'stable'
+component:
+  id: 'tabs-react'
+  link: '?path=/story/navigation-tabs--docs'
+  status: 'stable'
+  properties:
+    - name: 'TabsProps'
+      fields:
+        - name: 'id'
+          ofType: 'string'
+          description: 'ID of the tabs container'
+          required: false
+        - name: 'ariaLabelledBy'
+          ofType: 'string'
+          description: 'ID of the element that labels the tabs (required for accessibility)'
+          required: true
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'Test ID for the tabs container'
+          required: false
+        - name: 'appearance'
+          ofType: 'default | dark'
+          description: 'Visual appearance of the tabs.'
+          required: false
+        - name: 'size'
+          ofType: 'sm | md'
+          description: 'Size of the tabs. Default: md'
+          required: false
+        - name: 'stretch'
+          ofType: 'boolean'
+          description: 'If true all the tabs will space equally covering full available width. Default: false'
+          required: false
+        - name: 'padding'
+          ofType: 'boolean'
+          description: 'If true all the tabs will space equally covering full available width. Default: true'
+          required: false
+        - name: 'labelAlignment'
+          ofType: 'start | end | center'
+          description: 'Property to set the label alignment. Default: start'
+          required: false
+        - name: 'children'
+          ofType: 'React.ReactNode'
+          description: 'TabList, TabItem, and TabPanel components'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/navigation-tabs--default'
+    - name: 'dark'
+      url: '/story/navigation-tabs--dark'
+    - name: 'small'
+      url: '/story/navigation-tabs--small'
+    - name: 'checked'
+      url: '/story/navigation-tabs--checked'
+    - name: 'hover-state'
+      url: '/story/navigation-tabs--hover-state'
+    - name: 'focus-state'
+      url: '/story/navigation-tabs--focus-state'
+    - name: 'with-handler'
+      url: '/story/navigation-tabs--with-handler'
+    - name: 'with-stretch'
+      url: '/story/navigation-tabs--with-stretch'
+    - name: 'without-padding'
+      url: '/story/navigation-tabs--without-padding'
+---
+
+# Tabs
+
+The tabs component lets users navigate between related sections of content, displaying one section at a time.
+
+<Section current="react">
+
+### Default
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="default"
+  className="h-[200px]"
+/>
+
+### Dark
+
+<StorybookFrame componentId="tabs-react" story="dark" className="h-[200px]" />
+
+### Small
+
+<StorybookFrame componentId="tabs-react" story="small" className="h-[200px]" />
+
+### Checked
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="checked"
+  className="h-[200px]"
+/>
+
+### Hover State
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="hover-state"
+  className="h-[200px]"
+/>
+
+### Focus State
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="focus-state"
+  className="h-[200px]"
+/>
+
+### With Handler
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="with-handler"
+  className="h-[200px]"
+/>
+
+### With Stretch
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="with-stretch"
+  className="h-[200px] w-full"
+/>
+
+### Without Padding
+
+<StorybookFrame
+  componentId="tabs-react"
+  story="without-padding"
+  className="h-[200px]"
+/>
+
+## Properties
+
+<ComponentPropertiesTable componentId="tabs-react" />
+
+</Section>

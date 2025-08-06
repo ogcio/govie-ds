@@ -39,7 +39,6 @@ class TabsAutomatic {
       ) as HTMLElement;
 
       if (tabpanel) {
-        tab.setAttribute('aria-selected', 'false');
         this.tabPanels.push(tabpanel);
 
         tab.addEventListener('keydown', this.onKeydown.bind(this));
@@ -47,7 +46,10 @@ class TabsAutomatic {
       }
     }
 
-    this.setSelectedTab(this.firstTab);
+    const tabSelected = this.tabs.find(
+      (tab) => tab.dataset.selected === 'true',
+    );
+    this.setSelectedTab(tabSelected || this.firstTab);
   }
 
   initComponent() {
@@ -72,9 +74,38 @@ class TabsAutomatic {
         tab.classList.add('gi-tab-item-checked');
         this.tabPanels[index].style.display = 'block';
         tab.blur();
+
+        const itemBorder = tab.querySelector('.gi-tab-item-border');
+        const tabItemBorderClassName = ['gi-tab-item-border'];
+
+        if (
+          (this.tabElement as HTMLElement).dataset?.appearance === 'default'
+        ) {
+          tabItemBorderClassName.push(
+            'gi-bg-color-border-tone-primary-accent-selected',
+          );
+        } else {
+          tabItemBorderClassName.push(
+            'gi-bg-color-text-system-neutral-interactive-default',
+          );
+        }
+
+        if (itemBorder) {
+          itemBorder.className = tabItemBorderClassName.join(' ');
+        }
       } else {
         tab.setAttribute('aria-selected', 'false');
         tab.classList.remove('gi-tab-item-checked');
+        const itemBorder = tab.querySelector('.gi-tab-item-border');
+        if (itemBorder) {
+          itemBorder.classList.remove(
+            'gi-bg-color-border-tone-primary-accent-selected',
+          );
+          itemBorder.classList.remove(
+            'gi-bg-color-text-system-neutral-interactive-default',
+          );
+        }
+
         this.tabPanels[index].style.display = 'none';
       }
     }
