@@ -1,26 +1,28 @@
 'use client';
-import {
-  useState,
-  useEffect,
-  Children,
-  isValidElement,
-  ReactNode,
-} from 'react';
-import { InternalTabItem, TabItemProps } from './tab-item.js';
+import { useState, useEffect, Children, isValidElement } from 'react';
+import { cn } from '../cn.js';
+import { InternalTabItem } from './tab-item.js';
+import { TabItemProps, TabListProps } from './types.js';
 
 export const TabList = ({
   children,
   tabName,
-}: {
-  tabName?: string;
-  children: ReactNode;
-}) => {
+  appearance,
+  size,
+  ariaLabelledBy,
+  stretch,
+  padding = true,
+  labelAlignment,
+}: TabListProps) => {
+  /*
+  Prefer using this wrapper to handle indicator animation.
+  return <ScrollableTabs children={children} variant={variant} tabName={tabName} />
+  */
+
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const tabCount = Children.count(children);
 
   useEffect(() => {
-    // Initialize the active tab based on children
-    // Find if any child is checked
     let foundCheckedTab = false;
     let checkedIndex = 0;
 
@@ -77,38 +79,62 @@ export const TabList = ({
   const handleOnTabKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
   ) => {
-    let flag = false;
+    let direction = 0;
 
-    switch (event.key) {
-      case 'ArrowLeft': {
-        let newTab = (activeTab ?? 0) - 1;
-        if (newTab < 0) {
-          newTab = 0;
-        }
-        setActiveTab(newTab);
-        flag = true;
-        break;
-      }
-
-      case 'ArrowRight': {
-        let newTab = (activeTab ?? 0) + 1;
-        if (newTab >= tabCount) {
-          newTab = tabCount - 1;
-        }
-        setActiveTab(newTab);
-        flag = true;
-        break;
-      }
-
-      default: {
-        break;
-      }
+    if (event.key === 'ArrowLeft') {
+      direction = -1;
+    } else if (event.key === 'ArrowRight') {
+      direction = 1;
     }
 
-    if (flag) {
-      event.stopPropagation();
-      event.preventDefault();
+    if (direction === 0) {
+      return;
     }
+
+    const currentIndex = activeTab ?? 0;
+    let newIndex = currentIndex + direction;
+
+    if (newIndex < 0) {
+      newIndex = 0;
+    }
+
+    if (newIndex >= tabCount) {
+      newIndex = tabCount - 1;
+    }
+
+    const childrenArray = Children.toArray(children);
+    const child = childrenArray[newIndex] as any;
+
+    if (!child) {
+      return;
+    }
+
+    setActiveTab(newIndex);
+
+    const syntheticEvent = {
+      currentTarget: {
+        getAttribute: (name: string) => {
+          if (name === 'aria-controls') {
+            return `tab-panel-${child?.props?.value}`;
+          }
+          return null;
+        },
+      },
+      bubbles: true,
+      isTrusted: true,
+    } as unknown as React.MouseEvent<HTMLButtonElement>;
+
+    const onClickHandler = () => {
+      if (direction === -1) {
+        return child.props?.onTabClick?.(event);
+      }
+      return event;
+    };
+
+    handleOnTabClick(newIndex, onClickHandler)(syntheticEvent);
+
+    event.stopPropagation();
+    event.preventDefault();
   };
 
   const childrenWithName = Children.map(children, (element, index) => {
@@ -116,6 +142,10 @@ export const TabList = ({
       return (
         <InternalTabItem
           {...element.props}
+          appearance={appearance}
+          stretch={stretch}
+          labelAlignment={labelAlignment}
+          size={size}
           index={index}
           checked={activeTab === index}
           onTabKeyDown={handleOnTabKeyDown}
@@ -128,7 +158,17 @@ export const TabList = ({
   });
 
   return (
-    <div role="tablist" className="gi--mb-[1px]">
+    <div
+      role="tablist"
+      aria-orientation="horizontal"
+      className={cn('gi-tab-list', {
+        'gi-tab-list-stretch': stretch,
+        'gi-gap-4': padding,
+        'gi-gap-0': !padding,
+      })}
+      aria-labelledby={ariaLabelledBy}
+      id={`${tabName}-list`}
+    >
       {childrenWithName}
     </div>
   );
