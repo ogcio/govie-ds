@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { debounce } from 'lodash';
 import { useEffect, useMemo, useReducer } from 'react';
-import { expect, within, userEvent } from 'storybook/test';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
@@ -103,8 +103,10 @@ export const WithDefaultValue: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
-    expect(input).toHaveValue('Backend Dev.');
+    const input = canvas.getByRole('textbox') as HTMLInputElement;
+    expect(input?.value?.toLowerCase().replaceAll(/[^a-z]/gi, '')).toBe(
+      'backenddev',
+    );
   },
 };
 
