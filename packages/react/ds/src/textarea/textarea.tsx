@@ -49,7 +49,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       maxChars,
     );
 
-    // Forward ref to the actual textarea element
     useImperativeHandle(externalRef, () => inputRef.current!);
 
     // Only use internal state when component is uncontrolled
@@ -65,13 +64,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const newValue = event.target.value;
-
-      // Only update internal state if uncontrolled
       if (!isControlled) {
         setInternalValue(newValue);
       }
-
-      // Always call the external onChange handler
       if (onChange) {
         onChange(event);
       }
@@ -79,21 +74,17 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     const handleOnResetClick = () => {
       if (inputRef?.current) {
-        // Clear the input
         const clearEvent = {
           target: { ...inputRef.current, value: '' },
           currentTarget: inputRef.current,
         } as React.ChangeEvent<HTMLTextAreaElement>;
 
-        // Update internal state if uncontrolled
         if (!isControlled) {
           setInternalValue('');
         }
 
-        // Focus the input
         inputRef.current.focus();
 
-        // Call onChange handler with cleared value
         if (onChange) {
           onChange(clearEvent);
         }
