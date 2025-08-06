@@ -400,7 +400,7 @@ export const Uncontrolled: Story = {
         <Button
           className="gi-mt-1"
           onClick={handleShowValue}
-          data-testid="show-value-button"
+          dataTestid="show-value-button"
         >
           Show Value
         </Button>
@@ -422,7 +422,7 @@ export const Uncontrolled: Story = {
     const button = canvas.getByTestId('show-value-button');
     await userEvent.click(button);
 
-    const output = canvas.getByTestId('uncontrolled-output');
-    expect(output).toHaveTextContent('Value: Hello, world!');
+    const output = canvas.getByText('Value: Hello, world!');
+    expect(output).toBeInTheDocument();
   },
 };
