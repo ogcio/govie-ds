@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.14.0](https://github.com/ogcio/govie-ds/compare/docs-v1.13.0...docs-v1.14.0) (2025-08-06)
+
+
+### Features
+
+* Sync Tabs component with Figma ([#669](https://github.com/ogcio/govie-ds/issues/669)) ([30db276](https://github.com/ogcio/govie-ds/commit/30db276eacabc83bdf0510bdb6ac0b0f7d62f0ef))
+
+
+### Bug Fixes
+
+* update modal for server side app and documentation structure ([#666](https://github.com/ogcio/govie-ds/issues/666)) ([9b50855](https://github.com/ogcio/govie-ds/commit/9b508551ebcbf41fa684b6bd3cf035e36fdbd810))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.14.0
+    * @ogcio/design-system-tailwind bumped to 1.13.0
+    * @ogcio/theme-govie bumped to 1.7.0
+    * @ogcio/design-system-tokens bumped to 1.7.0
+
 ## [1.13.0](https://github.com/ogcio/govie-ds/compare/docs-v1.12.4...docs-v1.13.0) (2025-07-29)
 
 

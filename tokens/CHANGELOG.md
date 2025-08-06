@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.6.0...tokens-v1.7.0) (2025-08-06)
+
+
+### Features
+
+* Sync Tabs component with Figma ([#669](https://github.com/ogcio/govie-ds/issues/669)) ([30db276](https://github.com/ogcio/govie-ds/commit/30db276eacabc83bdf0510bdb6ac0b0f7d62f0ef))
+
 ## [1.6.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.3...tokens-v1.6.0) (2025-07-29)
 
 
