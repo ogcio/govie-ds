@@ -18,6 +18,7 @@ type HeaderSlotContainerProps = {
 export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
+    data-testid={`SlotContainer-${index}`}
     data-index={index}
     aria-label={t('header.headerSlot', {
       index: index + 1,
@@ -48,7 +49,7 @@ const DrawerTrigger = ({
           id={`ItemActionDrawerTrigger-${index}`}
           data-index={index}
           aria-label={ariaLabel || label || ''}
-          type="button"
+          type="checkbox"
         />
         {label && (
           <span
@@ -77,6 +78,7 @@ const DrawerTrigger = ({
           })}
           id={`ItemCloseTrigger-${index}`}
           ariaHidden={true}
+          data-testid={`ItemCloseTrigger-${index}`}
           icon="close"
         />
       </label>
@@ -131,6 +133,7 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
         ariaHidden={true}
         id={`ItemCloseTrigger-${index}`}
         icon="close"
+        data-testid={`ItemCloseTrigger-${index}`}
       />
     </label>
   );
