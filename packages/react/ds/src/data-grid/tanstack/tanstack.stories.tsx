@@ -39,7 +39,6 @@ import {
   TanstackFooterEnd,
   TanstackFooterStart,
 } from './tanstack-footer.js';
-import { expect, within } from 'storybook/test';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {

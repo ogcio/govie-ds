@@ -89,9 +89,9 @@ export const TanstackFooter: React.FC<TanstackFooterProps> = ({
 
   const baseSectionClasses = 'gi-grow gi-basis-0 gi-min-w-0';
   const centerSectionClasses = `${baseSectionClasses} gi-text-center`;
-  const endSectionClasses = onlyEnd
-    ? 'gi-min-w-0'
-    : 'gi-basis-1/2 gi-min-w-0 gi-text-right';
+  const endSectionClasses = cn('gi-min-w-0', {
+    'gi-basis-1/2 gi-text-right': !onlyEnd,
+  });
 
   return (
     <div
