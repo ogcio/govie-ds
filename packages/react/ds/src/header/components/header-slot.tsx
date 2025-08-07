@@ -4,18 +4,28 @@ import { DrawerBody, DrawerWrapper } from '../../drawer/drawer.js';
 import { translate as t } from '../../i18n/utility.js';
 import { Icon } from '../../icon/icon.js';
 import { Input } from '../../primitives/input.js';
-import { HeaderItem } from '../types.js';
+import type { HeaderAppearance, HeaderItem } from '../types.js';
+import {
+  headerSlotContainerVariants,
+  headerToolItemVariants,
+} from '../variants.js';
 
 type HeaderSlotProps = {
   item: HeaderItem;
   index: number;
+  appearance: HeaderAppearance;
 };
 type HeaderSlotContainerProps = {
   slot: React.ReactNode;
   index: number;
+  appearance: HeaderAppearance;
 };
 
-export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
+export const SlotContainer = ({
+  index,
+  slot,
+  appearance,
+}: HeaderSlotContainerProps) => (
   <div
     id={`SlotContainer-${index}`}
     data-testid={`SlotContainer-${index}`}
@@ -24,7 +34,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
       index: index + 1,
       defaultValue: `Slot Container ${index + 1}`,
     })}
-    className="gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-color-surface-system-primary-default gi-order-3"
+    className={cn(headerSlotContainerVariants({ appearance }), 'gi-hidden')}
   >
     {slot}
   </div>
@@ -33,6 +43,7 @@ export const SlotContainer = ({ index, slot }: HeaderSlotContainerProps) => (
 const DrawerTrigger = ({
   index,
   item: { component, drawerPosition, icon, label, ariaLabel },
+  appearance,
 }: HeaderSlotProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +51,7 @@ const DrawerTrigger = ({
     <>
       <label
         htmlFor={`ItemActionDrawerTrigger-${index}`}
-        className="gi-header-tool-item"
+        className={headerToolItemVariants({ appearance })}
         onClick={() => setIsOpen(true)}
       >
         <Input
@@ -97,9 +108,13 @@ const DrawerTrigger = ({
   );
 };
 
-export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
+export const SlotItemAction = ({
+  item,
+  index,
+  appearance,
+}: HeaderSlotProps) => {
   if (item.slotAppearance === 'drawer') {
-    return <DrawerTrigger index={index} item={item} />;
+    return <DrawerTrigger index={index} item={item} appearance={appearance} />;
   }
 
   return (
@@ -109,7 +124,7 @@ export const SlotItemAction = ({ item, index }: HeaderSlotProps) => {
         item: item.label || `item ${index + 1}`,
         defaultValue: `Toggle item action for ${item.label || `item ${index + 1}`}`,
       })}
-      className="gi-header-tool-item"
+      className={headerToolItemVariants({ appearance })}
       data-label-index={index}
     >
       <Input
