@@ -1,5 +1,5 @@
 'use client';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   ColumnDef,
@@ -39,6 +39,7 @@ import {
   TanstackFooterEnd,
   TanstackFooterStart,
 } from './tanstack-footer.js';
+import { expect, within } from 'storybook/test';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -78,6 +79,8 @@ const meta = {
     ),
   ],
 } satisfies Meta<FC>;
+
+type Story = StoryObj<typeof meta>;
 
 export type Person = {
   firstName: string;
@@ -375,7 +378,7 @@ export const WithReactHookForm = () => {
           placeholder="Search all columns..."
         />
       </div>
-      <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
+      <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -428,7 +431,7 @@ export const WithReactHookForm = () => {
         </TableBody>
       </Table>
       <TanstackFooter>
-        <TanstackFooterEnd className="gi-text-right">
+        <TanstackFooterEnd className="gi-w-1/2 gi-text-right">
           <TablePagination
             currentPage={table.getState().pagination.pageIndex + 1}
             totalPages={table.getPageCount()}
@@ -438,6 +441,34 @@ export const WithReactHookForm = () => {
       </TanstackFooter>
     </div>
   );
+};
+
+export const TanstackFooterBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A basic footer for TanStack Table, demonstrating how to use the footer components with TanstackFooter, TanstackFooterStart, TanstackFooterCenter, and TanstackFooterEnd.',
+      },
+    },
+  },
+  render: () => (
+    <TanstackFooter>
+      <TanstackFooterStart className="gi-w-1/3">
+        <span className="gi-text-md">TanStack Grid Example</span>
+      </TanstackFooterStart>
+      <TanstackFooterCenter className="gi-w-1/3 gi-text-center">
+        <span className="gi-text-md">Showing 1 of 10</span>
+      </TanstackFooterCenter>
+      <TanstackFooterEnd className="gi-w-1/2 gi-text-right">
+        <TablePagination
+          currentPage={1}
+          totalPages={10}
+          onPageChange={() => null}
+        />
+      </TanstackFooterEnd>
+    </TanstackFooter>
+  ),
 };
 
 export default meta;

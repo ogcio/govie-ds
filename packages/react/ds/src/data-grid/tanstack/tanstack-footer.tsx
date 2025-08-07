@@ -1,39 +1,97 @@
 import React from 'react';
 import { cn } from '../../cn.js';
 
+interface TanstackFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
+
 interface TanstackFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-}
+export type { TanstackFooterProps, TanstackFooterTypeProps };
 
-export function TanstackFooter({
+const isTanstackFooterSection = (
+  child: React.ReactNode,
+  sectionType: React.ComponentType<TanstackFooterTypeProps>,
+): child is React.ReactElement<TanstackFooterTypeProps> => {
+  return React.isValidElement(child) && child.type === sectionType;
+};
+
+const renderFooterType = (
+  section: React.ReactElement<TanstackFooterTypeProps> | null,
+  baseClassName: string,
+  conditionalClassName?: string,
+): React.ReactNode => {
+  if (!section) return null;
+
+  return (
+    <div
+      className={cn(
+        baseClassName,
+        conditionalClassName,
+        section.props.className,
+      )}
+      style={section.props.style}
+    >
+      {section.props.children}
+    </div>
+  );
+};
+
+export const TanstackFooterStart: React.FC<TanstackFooterTypeProps> = ({
+  children,
+  ...props
+}) => <div {...props}>{children}</div>;
+TanstackFooterStart.displayName = 'TanstackFooterStart';
+
+export const TanstackFooterCenter: React.FC<TanstackFooterTypeProps> = ({
+  children,
+  ...props
+}) => <div {...props}>{children}</div>;
+TanstackFooterCenter.displayName = 'TanstackFooterCenter';
+
+export const TanstackFooterEnd: React.FC<TanstackFooterTypeProps> = ({
+  children,
+  ...props
+}) => <div {...props}>{children}</div>;
+TanstackFooterEnd.displayName = 'TanstackFooterEnd';
+
+export const TanstackFooter: React.FC<TanstackFooterProps> = ({
   children,
   className,
   ...props
-}: TanstackFooterProps) {
-  let start: React.ReactElement<SectionProps> | null = null;
-  let center: React.ReactElement<SectionProps> | null = null;
-  let end: React.ReactElement<SectionProps> | null = null;
+}) => {
+  const sections = React.useMemo(() => {
+    let start: React.ReactElement<TanstackFooterTypeProps> | null = null;
+    let center: React.ReactElement<TanstackFooterTypeProps> | null = null;
+    let end: React.ReactElement<TanstackFooterTypeProps> | null = null;
 
-  React.Children.forEach(children, (child) => {
-    if (!React.isValidElement(child)) return;
+    React.Children.forEach(children, (child) => {
+      if (isTanstackFooterSection(child, TanstackFooterStart)) {
+        start = child;
+      } else if (isTanstackFooterSection(child, TanstackFooterCenter)) {
+        center = child;
+      } else if (isTanstackFooterSection(child, TanstackFooterEnd)) {
+        end = child;
+      }
+    });
 
-    if (child.type === TanstackFooterStart) {
-      start = child as React.ReactElement<SectionProps>;
-    } else if (child.type === TanstackFooterCenter) {
-      center = child as React.ReactElement<SectionProps>;
-    } else if (child.type === TanstackFooterEnd) {
-      end = child as React.ReactElement<SectionProps>;
-    }
-  });
+    return { start, center, end };
+  }, [children]);
 
-  const hasStart = !!start;
-  const hasCenter = !!center;
-  const hasEnd = !!end;
+  const { start, center, end } = sections;
+
+  const hasStart = Boolean(start);
+  const hasCenter = Boolean(center);
+  const hasEnd = Boolean(end);
   const onlyEnd = !hasStart && !hasCenter && hasEnd;
+
+  const baseSectionClasses = 'gi-grow gi-basis-0 gi-min-w-0';
+  const centerSectionClasses = `${baseSectionClasses} gi-text-center`;
+  const endSectionClasses = onlyEnd
+    ? 'gi-min-w-0'
+    : 'gi-basis-1/2 gi-min-w-0 gi-text-right';
 
   return (
     <div
@@ -44,51 +102,11 @@ export function TanstackFooter({
         className,
       )}
     >
-      {hasStart && start && (
-        <div
-          className={cn(
-            'gi-grow gi-basis-0 gi-min-w-0',
-            (start as React.ReactElement<SectionProps>).props.className,
-          )}
-          style={(start as React.ReactElement<SectionProps>).props.style}
-        >
-          {(start as React.ReactElement<SectionProps>).props.children}
-        </div>
-      )}
-      {hasCenter && center && (
-        <div
-          className={cn(
-            'gi-grow gi-basis-0 gi-min-w-0 gi-text-center',
-            (center as React.ReactElement<SectionProps>).props.className,
-          )}
-          style={(center as React.ReactElement<SectionProps>).props.style}
-        >
-          {(center as React.ReactElement<SectionProps>).props.children}
-        </div>
-      )}
-      {hasEnd && end && (
-        <div
-          className={cn(
-            onlyEnd ? 'gi-min-w-0' : 'gi-basis-1/2 gi-min-w-0 gi-text-right',
-            (end as React.ReactElement<SectionProps>).props.className,
-          )}
-          style={(end as React.ReactElement<SectionProps>).props.style}
-        >
-          {(end as React.ReactElement<SectionProps>).props.children}
-        </div>
-      )}
+      {renderFooterType(start, baseSectionClasses)}
+      {renderFooterType(center, centerSectionClasses)}
+      {renderFooterType(end, endSectionClasses)}
     </div>
   );
-}
+};
 
-export function TanstackFooterStart(props: SectionProps) {
-  return <>{props.children}</>;
-}
-
-export function TanstackFooterCenter(props: SectionProps) {
-  return <>{props.children}</>;
-}
-
-export function TanstackFooterEnd(props: SectionProps) {
-  return <>{props.children}</>;
-}
+TanstackFooter.displayName = 'TanstackFooter';
