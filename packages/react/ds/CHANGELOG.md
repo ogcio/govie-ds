@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.14.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.13.0...react-lib-v1.14.0) (2025-08-06)
+
+
+### Features
+
+* Sync Tabs component with Figma ([#669](https://github.com/ogcio/govie-ds/issues/669)) ([30db276](https://github.com/ogcio/govie-ds/commit/30db276eacabc83bdf0510bdb6ac0b0f7d62f0ef))
+
+
+### Bug Fixes
+
+* Autocomplete and SelectNext with RHF  ([#671](https://github.com/ogcio/govie-ds/issues/671)) ([10832b7](https://github.com/ogcio/govie-ds/commit/10832b772691afd4546a9277da4cc122d48e7647))
+* SelectMenu height + Autocomplete SelectGroupOption ([#665](https://github.com/ogcio/govie-ds/issues/665)) ([48d5216](https://github.com/ogcio/govie-ds/commit/48d5216e69b5d1c594a377c43d9bc765b2d4af6e))
+* update icon button default type ([#673](https://github.com/ogcio/govie-ds/issues/673)) ([cfc050d](https://github.com/ogcio/govie-ds/commit/cfc050d1156b6c378f01c7dc7f6bbdc8bbc013c4))
+* update modal for server side app and documentation structure ([#666](https://github.com/ogcio/govie-ds/issues/666)) ([9b50855](https://github.com/ogcio/govie-ds/commit/9b508551ebcbf41fa684b6bd3cf035e36fdbd810))
+* update textarea for react hook form ([#672](https://github.com/ogcio/govie-ds/issues/672)) ([fd2c219](https://github.com/ogcio/govie-ds/commit/fd2c219c62803ea57c0bf800c3156dd829a57e85))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.0
+    * @ogcio/theme-govie bumped to 1.7.0
+
 ## [1.13.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.12.4...react-lib-v1.13.0) (2025-07-29)
 
 
