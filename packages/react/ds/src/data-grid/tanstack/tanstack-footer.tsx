@@ -23,7 +23,9 @@ const renderFooterType = (
   baseClassName: string,
   conditionalClassName?: string,
 ): React.ReactNode => {
-  if (!section) return null;
+  if (!section) {
+    return null;
+  }
 
   return (
     <div
