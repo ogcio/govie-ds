@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import { ButtonProps } from '../button/types';
 import { IconButtonProps } from '../icon-button/types';
 import { createIcon } from './icons';
@@ -86,13 +87,20 @@ export const createButton = (arguments_: ButtonProps) => {
   const classAppearance = getButtonAppearanceClass(arguments_);
 
   const component = document.createElement('button') as HTMLButtonElement;
-  component.className =
-    `gi-btn ${classSize} ${classAppearance} ${arguments_.className || ''}`.trim();
+  component.className = clsx(
+    'gi-btn',
+    classAppearance,
+    classSize,
+    arguments_.className,
+  );
   if (arguments_.content) {
     component.innerHTML = arguments_.content;
   }
 
-  component.disabled = !!arguments_.disabled;
+  if (arguments_.disabled !== undefined) {
+    component.disabled = !!arguments_.disabled;
+    component.ariaDisabled = `${arguments_.disabled}`;
+  }
 
   return component;
 };
@@ -111,8 +119,12 @@ export const createIconButton = (arguments_: IconButtonProps) => {
   const classAppearance = getButtonAppearanceClass(arguments_);
 
   const component = document.createElement('button') as HTMLButtonElement;
-  component.className =
-    `gi-btn ${classSize} ${classAppearance} ${arguments_.className || ''}`.trim();
+  component.className = clsx(
+    'gi-btn',
+    classSize,
+    classAppearance,
+    arguments_.className,
+  );
 
   if (arguments_.id) {
     component.setAttribute('id', arguments_.id);
