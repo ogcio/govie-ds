@@ -201,6 +201,25 @@ export const buildDefaultMobileMenu = (
   return [...items, mobileMenu];
 };
 
+const getIcon = (appearance = 'default', size = 'small') => {
+  const harpLogoUrl =
+    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/harp';
+  const govLogoUrl =
+    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland';
+  const iconMap: any = {
+    default: {
+      small: `${harpLogoUrl}/harp-white.svg`,
+      large: `${govLogoUrl}/harp-white.svg`,
+    },
+    light: {
+      small: `${harpLogoUrl}/harp-black.svg`,
+      large: `${govLogoUrl}/harp-black.svg`,
+    },
+  };
+
+  return iconMap[appearance][size];
+};
+
 export const createHeader = (arguments_: HeaderProps) => {
   const items =
     (arguments_.addDefaultMobileMenu
@@ -211,18 +230,10 @@ export const createHeader = (arguments_: HeaderProps) => {
         )
       : arguments_.items) || [];
   const appearance = arguments_?.appearance || 'default';
-  console.log({ appearance: headerVariants({ appearance }) });
 
   const containerClassName = arguments_.fullWidth
     ? 'gi-layout-container-full-width'
     : 'gi-layout-container';
-  //const headerClassNames = 'gi-header';
-  //const secondaryBarClassNames = 'gi-header-secondary-bar';
-  //const secondaryItemClassNames = 'gi-header-secondary-item';
-  //const menuContainerClassNames = 'gi-header-menu';
-  //const appTitleClassNames = 'gi-header-title';
-  //const toolItemClassNames = 'gi-header-tool-item';
-  //const menuDividerClassNames = 'gi-header-divider';
 
   const header = document.createElement('header');
   header.id = 'GovieHeader';
@@ -242,14 +253,10 @@ export const createHeader = (arguments_: HeaderProps) => {
 
   const logo = document.createElement('picture');
   const source = document.createElement('source');
-  source.srcset =
-    arguments_.logo?.imageLarge ||
-    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-white.svg';
+  source.srcset = arguments_.logo?.imageLarge || getIcon(appearance, 'large');
   source.media = '(min-width: 640px)';
   const img = document.createElement('img');
-  img.src =
-    arguments_.logo?.imageSmall ||
-    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/harp/harp-white.svg';
+  img.src = arguments_.logo?.imageSmall || getIcon(appearance, 'small');
   img.alt = arguments_.logo?.alt || 'Gov.ie logo';
   img.className = 'gi-h-10 sm:gi-h-14';
   logo.append(source);
