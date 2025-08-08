@@ -30,6 +30,13 @@ const logoGroups: LogoGroup[] = [
         width: 57,
         height: 88,
       },
+      {
+        id: 'harp-black',
+        name: 'Harp Black',
+        src: '/logos/general/harp-black.svg',
+        width: 57,
+        height: 88,
+      },
     ],
   },
   {
