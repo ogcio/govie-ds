@@ -205,6 +205,16 @@ export { TabList } from './tabs/tab-list.js';
 export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs } from './tabs/tabs.js';
 export type { TabItemProps, TabsProps, TabPanelProps } from './tabs/types.js';
+export type {
+  TanstackFooterProps,
+  TanstackFooterTypeProps,
+} from './data-grid/tanstack/tanstack-footer.js';
+export {
+  TanstackFooter,
+  TanstackFooterStart,
+  TanstackFooterCenter,
+  TanstackFooterEnd,
+} from './data-grid/tanstack/tanstack-footer.js';
 export { Tag, TagTypeEnum, type TagProps, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
