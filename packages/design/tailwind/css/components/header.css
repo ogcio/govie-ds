@@ -131,11 +131,14 @@
 
 .gi-header-tool-item-light {
   @apply gi-btn-primary-light 
-  gi-focus-state-border-sm-rounded
   focus-within:gi-shadow-color-border-intent-focus-default
   focus-within:gi-shadow-[inset_0_0_0_2px]
   focus-within:gi-bg-color-surface-tone-light-fill-hover
   gi-focus-within-state-outline;
+}
+
+label.gi-header-tool-item-light {
+  @apply gi-focus-state-border-sm-rounded;
 }
 
 /* Nav components focus state */
