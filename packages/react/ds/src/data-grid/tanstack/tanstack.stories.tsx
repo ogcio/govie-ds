@@ -39,6 +39,13 @@ import {
 } from '../data-grid-footer.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import {
+  DataGridHeader,
+  DataGridHeaderActions,
+  DataGridHeaderFilter,
+  DataGridHeaderSearch,
+} from '../data-grid-header.js';
+import { Button } from '../../button/button.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
