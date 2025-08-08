@@ -549,11 +549,11 @@ export const WithUtilitySlot: Story = {
         label: 'Gaeilge',
       },
       {
-        slot: `<a href="#">English</a>`,
+        slot: `<a href="#" class="gi-header-secondary-item gi-text-white gi-stroke-white gi-header-secondary-item-default">English</a>`,
       },
       {
         slot: `
-          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+          <p class="gi-paragraph-sm">Hello John | <a href="#" class="gi-header-secondary-item gi-text-white gi-stroke-white gi-header-secondary-item-default">Logout</a></p>
         `,
       },
     ],
@@ -724,7 +724,7 @@ export const Light: Story = {
       },
       {
         slot: `
-          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+          <p class="gi-paragraph-sm">Hello John | <a href="#" class="gi-header-secondary-item gi-header-secondary-item-light gi-text-gray-950">Logout</a></p>
         `,
       },
     ],

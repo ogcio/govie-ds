@@ -1,5 +1,4 @@
 import { BreadcrumbsProps } from '../breadcrumbs/breadcrumbs.schema';
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { createIcon } from './icons';
 import { createLink } from './links';
 

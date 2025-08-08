@@ -56,7 +56,7 @@ const DrawerTrigger = ({
       >
         <Input
           data-testid={`ItemActionDrawerTrigger-${index}`}
-          className="gi-block gi-w-0 gi-absolute gi-h-0"
+          className="gi-header-tool-item-input"
           id={`ItemActionDrawerTrigger-${index}`}
           data-index={index}
           aria-label={ariaLabel || label || ''}
@@ -130,6 +130,7 @@ export const SlotItemAction = ({
       <Input
         data-testid={`ItemActionTrigger-${index}`}
         id={`ItemActionTrigger-${index}`}
+        className="gi-header-tool-item-input"
         data-index={index}
         aria-expanded="false"
         aria-controls={`SlotContainer-${index + 1}`}

@@ -333,6 +333,7 @@ export const createHeader = (arguments_: HeaderProps) => {
         label.id = `ItemActionLabel-${index}`;
 
         const input = document.createElement('input');
+        input.classList = 'gi-header-tool-item-input';
         label.append(input);
         input.id = `ItemActionTrigger-${index}`;
         input.dataset.testid = `ItemActionTrigger-${index}`;

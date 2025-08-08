@@ -89,7 +89,7 @@ const SecondaryLinkItem = ({
   label,
   slot,
   index,
-  appearance,
+  appearance = 'default',
 }: { index: number; appearance: HeaderAppearance } & SecondaryLink) => (
   <li>
     {href ? (
@@ -102,7 +102,10 @@ const SecondaryLinkItem = ({
         {label}
       </Anchor>
     ) : (
-      <div className={headerSecondaryLinkSlotItemVariants({ appearance })}>
+      <div
+        className={headerSecondaryLinkSlotItemVariants({ appearance })}
+        data-appearance={appearance}
+      >
         {slot}
       </div>
     )}

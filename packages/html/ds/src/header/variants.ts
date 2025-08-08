@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants';
 
 const AppearanceText = {
   default: 'gi-text-white gi-stroke-white',
-  light: 'gi-text-color-text-tone-dark-outline-default',
+  light: 'gi-text-gray-950',
 };
 
 const AppearanceBackground = {
@@ -27,7 +27,10 @@ export const headerMenuVariants = tv({
 export const headerToolItemVariants = tv({
   base: 'gi-header-tool-item ',
   variants: {
-    appearance: AppearanceText,
+    appearance: {
+      default: `${AppearanceText.default} gi-header-tool-item-default`,
+      light: `${AppearanceText.light} gi-header-tool-item-light`,
+    },
   },
 });
 
@@ -36,7 +39,7 @@ export const headerSecondaryLinksVariants = tv({
   variants: {
     appearance: {
       default: 'gi-bg-color-surface-system-primary-subtle',
-      light: 'gi-text-color-text-tone-dark-outline-default',
+      light: 'gi-bg-gray-50',
     },
   },
 });
@@ -44,7 +47,10 @@ export const headerSecondaryLinksVariants = tv({
 export const headerSecondaryLinkItemVariants = tv({
   base: 'gi-header-secondary-item',
   variants: {
-    appearance: AppearanceText,
+    appearance: {
+      default: `${AppearanceText.default} gi-header-secondary-item-default`,
+      light: `${AppearanceText.light} gi-header-secondary-item-light`,
+    },
   },
 });
 
@@ -67,7 +73,7 @@ export const headerDividerVariants = tv({
   variants: {
     appearance: {
       default: 'gi-border-white',
-      light: 'gi-border-black',
+      light: 'gi-border-gray-950',
     },
   },
 });
@@ -77,7 +83,7 @@ export const headerSlotContainerVariants = tv({
   variants: {
     appearance: {
       default: 'gi-border-b-color-surface-system-primary-default gi-bg-gray-50',
-      light: 'gi-border-black',
+      light: 'gi-border-gray-950',
     },
   },
 });
