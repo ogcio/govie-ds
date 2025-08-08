@@ -1,5 +1,5 @@
 'use client';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   ColumnDef,
@@ -33,6 +33,13 @@ import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import {
+  DataGridHeader,
+  DataGridHeaderActions,
+  DataGridHeaderFilter,
+  DataGridHeaderSearch,
+} from '../data-grid-header.js';
+import { Button } from '../../button/button.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -72,6 +79,8 @@ const meta = {
     ),
   ],
 } satisfies Meta<FC>;
+
+type Story = StoryObj<typeof meta>;
 
 export type Person = {
   firstName: string;
@@ -358,17 +367,37 @@ export const WithReactHookForm = () => {
 
   return (
     <div className="gi-p-2">
-      <div className="gi-flex gi-gap-2 gi-mb-2">
-        <InputText
-          value={inputGlobalFilter}
-          onChange={(event) => {
-            setInputGlobalFilter(event.target.value);
-            debouncedUpdateData(event.target.value);
-          }}
-          className="w-64 justify-self-stretch"
-          placeholder="Search all columns..."
-        />
-      </div>
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            value={inputGlobalFilter}
+            id="data-grid-global-filter"
+            onChange={(e) => {
+              setInputGlobalFilter(e.target.value);
+              debouncedUpdateData(e.target.value);
+            }}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-2">
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Delete
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
       <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -428,6 +457,48 @@ export const WithReactHookForm = () => {
       />
     </div>
   );
+};
+
+export const DataGridHeaderBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Basic usage of the DataGridHeader component with search, filter, and action buttons.',
+      },
+    },
+  },
+  render: () => {
+    return (
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            id="data-grid-global-filter-story"
+            onChange={() => null}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-2">
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Delete
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
+    );
+  },
 };
 
 export default meta;
