@@ -33,11 +33,11 @@ import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import {
-  TanstackFooter,
-  TanstackFooterCenter,
-  TanstackFooterEnd,
-  TanstackFooterStart,
-} from './tanstack-footer.js';
+  DataGridFooter,
+  DataGridFooterCenter,
+  DataGridFooterEnd,
+  DataGridFooterStart,
+} from '../data-grid-footer.js';
 import { makeData } from './tanstack-helpers.js';
 
 declare module '@tanstack/react-table' {
@@ -429,44 +429,44 @@ export const WithReactHookForm = () => {
           ))}
         </TableBody>
       </Table>
-      <TanstackFooter>
-        <TanstackFooterEnd className="gi-w-1/2 gi-text-right">
+      <DataGridFooter>
+        <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
           <TablePagination
             currentPage={table.getState().pagination.pageIndex + 1}
             totalPages={table.getPageCount()}
             onPageChange={(page) => table.setPageIndex(page - 1)}
           />
-        </TanstackFooterEnd>
-      </TanstackFooter>
+        </DataGridFooterEnd>
+      </DataGridFooter>
     </div>
   );
 };
 
-export const TanstackFooterBasic: Story = {
+export const DataGridFooterBasic: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'A basic footer for TanStack Table, demonstrating how to use the footer components with TanstackFooter, TanstackFooterStart, TanstackFooterCenter, and TanstackFooterEnd.',
+          'A basic footer for DataGrid Table, demonstrating how to use the footer components with DataGridFooter, DataGridFooterStart, DataGridFooterCenter, and DataGridFooterEnd.',
       },
     },
   },
   render: () => (
-    <TanstackFooter>
-      <TanstackFooterStart className="gi-w-1/3">
-        <span className="gi-text-md">TanStack Grid Example</span>
-      </TanstackFooterStart>
-      <TanstackFooterCenter className="gi-w-1/3 gi-text-center">
+    <DataGridFooter>
+      <DataGridFooterStart className="gi-w-1/3">
+        <span className="gi-text-md">DataGrid Footer Example</span>
+      </DataGridFooterStart>
+      <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
         <span className="gi-text-md">Showing 1 of 10</span>
-      </TanstackFooterCenter>
-      <TanstackFooterEnd className="gi-w-1/2 gi-text-right">
+      </DataGridFooterCenter>
+      <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
         <TablePagination
           currentPage={1}
           totalPages={10}
           onPageChange={() => null}
         />
-      </TanstackFooterEnd>
-    </TanstackFooter>
+      </DataGridFooterEnd>
+    </DataGridFooter>
   ),
 };
 

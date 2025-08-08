@@ -1,25 +1,25 @@
 import React from 'react';
-import { cn } from '../../cn.js';
+import { cn } from '../cn.js';
 
-interface TanstackFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataGridFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-interface TanstackFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataGridFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export type { TanstackFooterProps, TanstackFooterTypeProps };
+export type { DataGridFooterProps, DataGridFooterTypeProps };
 
-const isTanstackFooterSection = (
+const isDataGridFooterSection = (
   child: React.ReactNode,
-  sectionType: React.ComponentType<TanstackFooterTypeProps>,
-): child is React.ReactElement<TanstackFooterTypeProps> => {
+  sectionType: React.ComponentType<DataGridFooterTypeProps>,
+): child is React.ReactElement<DataGridFooterTypeProps> => {
   return React.isValidElement(child) && child.type === sectionType;
 };
 
 const renderFooterType = (
-  section: React.ReactElement<TanstackFooterTypeProps> | null,
+  section: React.ReactElement<DataGridFooterTypeProps> | null,
   baseClassName: string,
   conditionalClassName?: string,
 ): React.ReactNode => {
@@ -41,40 +41,40 @@ const renderFooterType = (
   );
 };
 
-export const TanstackFooterStart: React.FC<TanstackFooterTypeProps> = ({
+export const DataGridFooterStart: React.FC<DataGridFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-TanstackFooterStart.displayName = 'TanstackFooterStart';
+DataGridFooterStart.displayName = 'DataGridFooterStart';
 
-export const TanstackFooterCenter: React.FC<TanstackFooterTypeProps> = ({
+export const DataGridFooterCenter: React.FC<DataGridFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-TanstackFooterCenter.displayName = 'TanstackFooterCenter';
+DataGridFooterCenter.displayName = 'DataGridFooterCenter';
 
-export const TanstackFooterEnd: React.FC<TanstackFooterTypeProps> = ({
+export const DataGridFooterEnd: React.FC<DataGridFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-TanstackFooterEnd.displayName = 'TanstackFooterEnd';
+DataGridFooterEnd.displayName = 'DataGridFooterEnd';
 
-export const TanstackFooter: React.FC<TanstackFooterProps> = ({
+export const DataGridFooter: React.FC<DataGridFooterProps> = ({
   children,
   className,
   ...props
 }) => {
   const sections = React.useMemo(() => {
-    let start: React.ReactElement<TanstackFooterTypeProps> | null = null;
-    let center: React.ReactElement<TanstackFooterTypeProps> | null = null;
-    let end: React.ReactElement<TanstackFooterTypeProps> | null = null;
+    let start: React.ReactElement<DataGridFooterTypeProps> | null = null;
+    let center: React.ReactElement<DataGridFooterTypeProps> | null = null;
+    let end: React.ReactElement<DataGridFooterTypeProps> | null = null;
 
     React.Children.forEach(children, (child) => {
-      if (isTanstackFooterSection(child, TanstackFooterStart)) {
+      if (isDataGridFooterSection(child, DataGridFooterStart)) {
         start = child;
-      } else if (isTanstackFooterSection(child, TanstackFooterCenter)) {
+      } else if (isDataGridFooterSection(child, DataGridFooterCenter)) {
         center = child;
-      } else if (isTanstackFooterSection(child, TanstackFooterEnd)) {
+      } else if (isDataGridFooterSection(child, DataGridFooterEnd)) {
         end = child;
       }
     });
@@ -111,4 +111,4 @@ export const TanstackFooter: React.FC<TanstackFooterProps> = ({
   );
 };
 
-TanstackFooter.displayName = 'TanstackFooter';
+DataGridFooter.displayName = 'DataGridFooter';
