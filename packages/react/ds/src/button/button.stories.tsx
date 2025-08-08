@@ -5,7 +5,7 @@ import { Button } from './button.js';
 const meta = {
   title: 'Form/Button',
   decorators: (Story, context) => {
-    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    const isLight = context?.args?.appearance === 'light' ? 'gi-bg-black' : '';
     return (
       <div className={`gi-p-4 ${isLight} gi-w-fit`}>
         <Story />
@@ -428,7 +428,7 @@ export const WithIconRight: Story = {
   },
 };
 
-export const ButtonWithSpinner: Story = {
+export const WithSpinner: Story = {
   args: {
     disabled: true,
     appearance: 'default',

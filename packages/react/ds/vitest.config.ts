@@ -1,4 +1,5 @@
-import { defineConfig, coverageConfigDefaults } from 'vitest/config';
+import { basename, resolve } from 'node:path';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -22,6 +23,15 @@ export default defineConfig({
         // 👇 This pattern must align with the output directory of `storybook build`
         '**/storybook-static/**',
       ],
+    },
+    resolveSnapshotPath: (testPath, snapExtension) => {
+      const testFileName = basename(testPath).replace(/\.(test)\.(tsx)$/, '');
+
+      return resolve(
+        process.cwd(),
+        '../../../snapshots',
+        `${testFileName}${snapExtension}`,
+      );
     },
   },
 });

@@ -171,8 +171,8 @@ export function Icon({
 
   return (
     <span
-      {...props}
       data-testid="govie-icon"
+      {...props}
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}
       aria-label={ariaLabel}

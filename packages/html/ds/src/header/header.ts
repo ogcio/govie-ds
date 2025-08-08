@@ -35,8 +35,6 @@ export class Header extends BaseComponent<HeaderOptions> {
     accordionContainers: NodeListOf<Element>;
   };
   closeAllSlotContainers: (target: HTMLInputElement) => void;
-  handleSearchChange: (event: Event) => void;
-  attachEventsToSearchTrigger: () => void;
   attachEventsToAccordion: () => void;
   attachEventsToItemActionTriggers: () => void;
   handleSlotItemChange: (event: Event) => void;
@@ -77,7 +75,7 @@ export class Header extends BaseComponent<HeaderOptions> {
           const item = container as HTMLInputElement;
           item.checked = false;
           item.dispatchEvent(
-            new CustomEvent('change', {
+            new CustomEvent('click', {
               detail: {
                 fromSearchTrigger: true,
               },
@@ -85,10 +83,6 @@ export class Header extends BaseComponent<HeaderOptions> {
           );
         }
       }
-    };
-
-    this.handleSearchChange = (event: Event) => {
-      this.closeAllSlotContainers(event.target as HTMLInputElement);
     };
 
     this.handleSlotItemChange = (event: Event) => {
@@ -100,8 +94,8 @@ export class Header extends BaseComponent<HeaderOptions> {
 
       const toggleIcons = (
         currentTrigger: HTMLInputElement,
-        fromFilteredItems: boolean,
-        fromSearchTrigger: boolean,
+        fromFilteredItems?: boolean,
+        fromSearchTrigger?: boolean,
       ) => {
         const index = currentTrigger.dataset.index || '';
         const icon = document.querySelector(
@@ -125,7 +119,7 @@ export class Header extends BaseComponent<HeaderOptions> {
           }
         }
 
-        if (currentTrigger.checked && !fromFilteredItems) {
+        if (currentTrigger.dataset.open === 'false' && !fromFilteredItems) {
           if (drawer) {
             const elements = drawer.querySelectorAll('[data-element="modal"]');
             const modal = elements[0];
@@ -140,6 +134,8 @@ export class Header extends BaseComponent<HeaderOptions> {
 
             removeClass(slot, hidden);
             addClass(slot, block);
+
+            currentTrigger.dataset.open = 'true';
           }
         } else {
           if (slot) {
@@ -148,33 +144,31 @@ export class Header extends BaseComponent<HeaderOptions> {
 
             addClass(icon, block);
             removeClass(icon, hidden);
+
+            addClass(slot, hidden);
+            removeClass(slot, block);
+
+            currentTrigger.dataset.open = 'false';
           }
           return;
         }
 
         const filteredItems = [...itemSlotActions].filter(
-          (element) =>
-            (element as HTMLInputElement).checked &&
-            element.id !== currentTrigger.id,
+          (element) => element.id !== currentTrigger.id,
         );
 
         for (const element of filteredItems) {
-          (element as HTMLInputElement).checked = false;
-          element.dispatchEvent(
-            new CustomEvent('change', {
-              detail: {
-                fromFilteredItems: true,
-              },
-            }),
-          );
+          const elementItem = element as HTMLInputElement;
+          elementItem.dataset.open = 'false';
+          toggleIcons(elementItem, true);
         }
       };
 
       toggleIcons(target, fromFilteredItems, fromSearchTrigger);
 
       if (searchTrigger?.checked && target?.checked) {
-        searchTrigger.checked = false;
-        searchTrigger.dispatchEvent(new Event('change', { bubbles: true }));
+        (searchTrigger as HTMLInputElement).dataset.open = 'false';
+        searchTrigger.dispatchEvent(new Event('click', { bubbles: true }));
       }
     };
 
@@ -212,20 +206,13 @@ export class Header extends BaseComponent<HeaderOptions> {
         }
       };
 
-    this.attachEventsToSearchTrigger = () => {
-      const searchTrigger = document.querySelector(`#SearchTrigger`);
-
-      if (searchTrigger) {
-        searchTrigger.addEventListener('change', this.handleSearchChange);
-      }
-    };
-
     this.attachEventsToItemActionTriggers = () => {
       const { itemSlotActions } = this.getElements();
 
       if (itemSlotActions.length > 0) {
         for (const container of itemSlotActions) {
-          container.addEventListener('change', this.handleSlotItemChange);
+          (container as HTMLInputElement).dataset.open = 'false';
+          container.addEventListener('click', this.handleSlotItemChange);
         }
       }
     };
@@ -253,22 +240,13 @@ export class Header extends BaseComponent<HeaderOptions> {
   initComponent() {
     this.attachEventsToItemActionTriggers();
     this.attachEventsToAccordion();
-
-    const { searchTrigger } = this.getElements();
-
-    if (searchTrigger) {
-      this.attachEventsToSearchTrigger();
-    }
   }
 
   destroyComponent(): void {
-    const { itemSlotActions, searchTrigger } = this.getElements();
-    if (searchTrigger) {
-      searchTrigger.removeEventListener('change', this.handleSearchChange);
-    }
+    const { itemSlotActions } = this.getElements();
 
     for (const container of itemSlotActions) {
-      container?.removeEventListener('change', this.handleSlotItemChange);
+      container?.removeEventListener('click', this.handleSlotItemChange);
     }
   }
 }

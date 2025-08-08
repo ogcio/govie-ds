@@ -270,6 +270,7 @@ export const SecondaryLightFocus: Story = {
 export const SecondaryLightDisabled: Story = {
   args: {
     content: `Secondary Light Button (Disabled)`,
+    variant: 'secondary',
     appearance: 'light',
     size: 'medium',
     disabled: true,
@@ -451,7 +452,7 @@ export const FlatDarkDisabled: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    content: `<span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span> Button`,
+    content: `<span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>Button`,
     appearance: 'default',
     size: 'medium',
   },
@@ -460,33 +461,27 @@ export const WithLeftIcon: Story = {
 
 export const WithIconRight: Story = {
   args: {
-    content: `Button <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[24px]">thumb_up</span>`,
+    content: `Button <span data-testid="govie-icon" role="presentation" class="gi-block material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24px;">thumb_up</span>`,
     appearance: 'default',
     size: 'medium',
   },
   render: (arguments_) => createElement(arguments_),
 };
 
-export const ButtonWithSpinner: Story = {
+export const WithSpinner: Story = {
   args: {
     disabled: true,
     appearance: 'default',
     size: 'medium',
-    content: `Button <svg
-    class="gi-w-6 gi-h-6"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
-      <circle
+    content: `Button
+       <svg class="gi-w-6 gi-h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle
         cx="12"
         cy="12"
         r="9.5"
         fill="none"
         stroke-width="3"
         stroke-linecap="round"
-      >
-        <animate
+      ><animate
           attributeName="stroke-dasharray"
           dur="1.5s"
           calcMode="spline"
@@ -494,8 +489,7 @@ export const ButtonWithSpinner: Story = {
           keyTimes="0;0.475;0.95;1"
           keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1"
           repeatCount="indefinite"
-        />
-        <animate
+        /><animate
           attributeName="stroke-dashoffset"
           dur="1.5s"
           calcMode="spline"
@@ -503,17 +497,13 @@ export const ButtonWithSpinner: Story = {
           keyTimes="0;0.475;0.95;1"
           keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1"
           repeatCount="indefinite"
-        />
-      </circle>
-      <animateTransform
+        /></circle><animateTransform
         attributeName="transform"
         type="rotate"
         dur="2s"
         values="0 12 12;360 12 12"
         repeatCount="indefinite"
-      />
-    </g>
-  </svg>`,
+      /></g></svg>`,
   },
   render: (arguments_) => createElement(arguments_),
 };

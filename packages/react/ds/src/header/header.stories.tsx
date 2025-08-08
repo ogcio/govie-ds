@@ -172,6 +172,29 @@ export const Default: Story = {
     addDefaultMobileMenu: true,
     mobileMenuLabel: 'Menu',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttontrigger = canvas.getByTestId('ItemActionTrigger-5');
+
+    const slotContainer = canvas.queryByTestId('SlotContainer-5');
+    await expect(slotContainer).not.toBeVisible();
+
+    await userEvent.click(buttontrigger);
+
+    const openedSlot = canvas.getByTestId('SlotContainer-5');
+    await expect(openedSlot).toBeInTheDocument();
+    await expect(openedSlot).toBeVisible();
+
+    const closeIcon = canvas.queryByTestId('ItemCloseTrigger-5');
+    await expect(closeIcon).toBeVisible();
+
+    await userEvent.click(buttontrigger);
+    await expect(slotContainer).not.toBeVisible();
+    await expect(closeIcon).not.toBeVisible();
+
+    await userEvent.click(document.body);
+  },
 };
 
 export const DesktopDrawerDefaultMenu: Story = {

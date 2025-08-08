@@ -203,13 +203,13 @@ const createHeader = (arguments_: HeaderProps) => {
         const label = document.createElement('label');
         label.className = toolItemClassNames;
         label.htmlFor = `ItemActionTrigger-${index}`;
-        label.dataset.testid = `ItemActionTrigger-${index}`;
         label.ariaLabel = item.label || item.icon || 'menu';
         label.id = `ItemActionLabel-${index}`;
 
         const input = document.createElement('input');
         label.append(input);
         input.id = `ItemActionTrigger-${index}`;
+        input.dataset.testid = `ItemActionTrigger-${index}`;
         input.type = 'button';
         input.dataset.index = `${index}`;
 
@@ -239,29 +239,6 @@ const createHeader = (arguments_: HeaderProps) => {
           script.append(document.createTextNode(scriptCode));
           document.body.append(script);
         }
-        // this code is needed only for storybook
-        if (item.slotAppearance === 'dropdown') {
-          const script = document.createElement('script');
-          script.async = false;
-
-          const scriptCode = `
-          function openSlotContainer${index}() {
-            const element = document.getElementById('SlotContainer-${index}');
-
-            if(element){
-              element.classList.add('gi-block');
-              element.classList.remove('gi-hidden');
-            }
-          }
-          setTimeout(() => {
-            const label = document.getElementById('ItemActionLabel-${index}');
-            label?.addEventListener('click', function() { openSlotContainer${index}(); })
-          }, 500);
-          `;
-
-          script.append(document.createTextNode(scriptCode));
-          document.body.append(script);
-        }
 
         if (item.label) {
           const span = document.createElement('span');
@@ -273,6 +250,7 @@ const createHeader = (arguments_: HeaderProps) => {
         if (item.icon) {
           const icon = createIcon({ icon: item.icon });
           icon.id = `ItemIconActionTrigger-${index}`;
+          icon.dataset.testid = `ItemIconActionTrigger-${index}`;
           icon.ariaHidden = 'true';
           label.append(icon);
         }
@@ -281,6 +259,7 @@ const createHeader = (arguments_: HeaderProps) => {
           className: 'gi-hidden close-icon',
         });
         closeIcon.id = `ItemCloseTrigger-${index}`;
+        closeIcon.dataset.testid = `ItemCloseTrigger-${index}`;
         closeIcon.ariaHidden = 'true';
         label.append(closeIcon);
         menuItem.append(label);
@@ -341,6 +320,7 @@ const createHeader = (arguments_: HeaderProps) => {
     }
     const slotContainer = document.createElement('div');
     slotContainer.id = `SlotContainer-${index}`;
+    slotContainer.dataset.testid = `SlotContainer-${index}`;
     slotContainer.dataset.index = `${index}`;
     slotContainer.ariaLabel = `Slot Container ${index + 1}`;
     slotContainer.className =
@@ -571,6 +551,29 @@ export const Default: Story = {
     mobileMenuLabel: 'Menu',
   },
   render: createElement,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttontrigger = canvas.getByTestId('ItemActionTrigger-4');
+
+    const slotContainer = canvas.queryByTestId('SlotContainer-4');
+    await expect(slotContainer).not.toBeVisible();
+
+    await userEvent.click(buttontrigger);
+
+    const openedSlot = canvas.getByTestId('SlotContainer-4');
+    await expect(openedSlot).toBeInTheDocument();
+    await expect(openedSlot).toBeVisible();
+
+    const closeIcon = canvas.queryByTestId('ItemCloseTrigger-4');
+    await expect(closeIcon).toBeVisible();
+
+    await userEvent.click(buttontrigger);
+    await expect(slotContainer).not.toBeVisible();
+    await expect(closeIcon).not.toBeVisible();
+
+    await userEvent.click(document.body);
+  },
 };
 
 export const DesktopDrawerDefaultMenu: Story = {
