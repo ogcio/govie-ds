@@ -1,0 +1,21 @@
+
+pnpm exec lint-staged
+SH
+chmod +x .husky/pre-commit
+
+
+cat > .husky/commit-msg <<'SH'
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+pnpm exec commitlint --edit "$1"
+SH
+chmod +x .husky/commit-msg
+
+cat > .husky/pre-push <<'SH'
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+pnpm -r --filter "./apps/**" --filter "./packages/**"
+SH
+chmod +x .husky/pre-push
