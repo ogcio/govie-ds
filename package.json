@@ -41,7 +41,7 @@
     "examples/nextjs/**/*.{js,ts,tsx}": [
       "pnpm -F @ogcio/examples-nextjs run lint --fix"
     ],
-    "*.{js,ts,tsx}": [
+    "*.{json,md,mdx,css,scss,yml,yaml}": [
       "pnpm exec prettier -w --ignore-unknown --"
     ]
   },
