@@ -374,17 +374,37 @@ export const WithReactHookForm = () => {
 
   return (
     <div className="gi-p-2">
-      <div className="gi-flex gi-gap-2 gi-mb-2">
-        <InputText
-          value={inputGlobalFilter}
-          onChange={(event) => {
-            setInputGlobalFilter(event.target.value);
-            debouncedUpdateData(event.target.value);
-          }}
-          className="w-64 justify-self-stretch"
-          placeholder="Search all columns..."
-        />
-      </div>
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            value={inputGlobalFilter}
+            id="data-grid-global-filter"
+            onChange={(event) => {
+              setInputGlobalFilter(event.target.value);
+              debouncedUpdateData(event.target.value);
+            }}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-2">
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Delete
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
       <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -448,6 +468,48 @@ export const WithReactHookForm = () => {
       </DataGridFooter>
     </div>
   );
+};
+
+export const DataGridHeaderBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Basic usage of the DataGridHeader component with search, filter, and action buttons.',
+      },
+    },
+  },
+  render: () => {
+    return (
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            id="data-grid-global-filter-story"
+            onChange={() => null}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-2">
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Delete
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
+    );
+  },
 };
 
 export const DataGridFooterBasic: Story = {
