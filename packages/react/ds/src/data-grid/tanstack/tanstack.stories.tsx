@@ -393,15 +393,15 @@ export const WithReactHookForm = () => {
           </Button>
         </DataGridHeaderFilter>
 
-        <DataGridHeaderActions className="gi-gap-2">
-          <Button onClick={() => null} variant="secondary">
-            Export
-          </Button>
+        <DataGridHeaderActions className="gi-gap-4">
           <Button onClick={() => null} variant="primary">
             Add
           </Button>
-          <Button onClick={() => null} variant="primary">
+          <Button onClick={() => null} variant="secondary">
             Delete
+          </Button>
+          <Button onClick={() => null} variant="secondary">
+            Export
           </Button>
         </DataGridHeaderActions>
       </DataGridHeader>

@@ -109,7 +109,7 @@ export const DataGridHeaderActions: React.FC<DataGridHeaderTypeProps> = ({
 }) => {
   return (
     <div
-      className={cn('gi-flex gi-items-center  gi-ml-auto', className)}
+      className={cn('gi-flex gi-items-center gi-ml-auto', className)}
       {...props}
     >
       {children}
