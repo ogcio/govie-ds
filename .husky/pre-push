@@ -1,11 +1,16 @@
-# run tests only for the changed paths 
+#!/usr/bin/env sh
 
-CHANGED_PATHS=$(git diff --name-only HEAD @{push})
+# Try to get upstream; empty if none set
+UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
 
-if echo "$CHANGED_PATHS" | grep -q '^packages/react/'; then
-  pnpm -F @ogcio/design-system-react test || exit 1
-fi
-
-if echo "$CHANGED_PATHS" | grep -q '^packages/html/'; then
-  pnpm -F @ogcio/design-system-html test || exit 1
+if [ -z "$UPSTREAM" ]; then
+  echo "pre-push: no upstream configured yet; running broad tests"
+  # first push of a branch → choose one:
+  pnpm -r --filter "./apps/**" --filter "./packages/**" --filter "./tokens/**" test || exit 1
+else
+  echo "pre-push: upstream is $UPSTREAM; running tests"
+  # optional: run targeted tests using changed paths vs upstream
+  CHANGED=$(git diff --name-only "$UPSTREAM"...HEAD)
+  # your per-workspace routing here, or just run full suite:
+  pnpm -r --filter "./apps/**" --filter "./packages/**" --filter "./tokens/**" test || exit 1
 fi
