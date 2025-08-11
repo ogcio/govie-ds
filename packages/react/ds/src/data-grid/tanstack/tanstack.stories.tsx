@@ -388,20 +388,20 @@ export const WithReactHookForm = () => {
         </DataGridHeaderSearch>
 
         <DataGridHeaderFilter>
-          <Button onClick={() => null} variant="secondary">
+          <Button onClick={() => null} variant="secondary" appearance="dark">
             Filters
           </Button>
         </DataGridHeaderFilter>
 
         <DataGridHeaderActions className="gi-gap-4">
-          <Button onClick={() => null} variant="primary">
-            Add
-          </Button>
           <Button onClick={() => null} variant="secondary">
             Delete
           </Button>
           <Button onClick={() => null} variant="secondary">
             Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
           </Button>
         </DataGridHeaderActions>
       </DataGridHeader>
@@ -484,27 +484,27 @@ export const DataGridHeaderBasic: Story = {
       <DataGridHeader>
         <DataGridHeaderSearch className="gi-max-w-52">
           <InputText
-            id="data-grid-global-filter-story"
+            id="data-grid-global-filter"
             onChange={() => null}
             placeholder="Search all columns..."
           />
         </DataGridHeaderSearch>
 
         <DataGridHeaderFilter>
-          <Button onClick={() => null} variant="secondary">
+          <Button onClick={() => null} variant="secondary" appearance="dark">
             Filters
           </Button>
         </DataGridHeaderFilter>
 
-        <DataGridHeaderActions className="gi-gap-2">
+        <DataGridHeaderActions className="gi-gap-4">
+          <Button onClick={() => null} variant="secondary">
+            Delete
+          </Button>
           <Button onClick={() => null} variant="secondary">
             Export
           </Button>
           <Button onClick={() => null} variant="primary">
             Add
-          </Button>
-          <Button onClick={() => null} variant="primary">
-            Delete
           </Button>
         </DataGridHeaderActions>
       </DataGridHeader>
