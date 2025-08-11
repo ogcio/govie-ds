@@ -38,5 +38,4 @@ export const Tag = ({
   );
 };
 
-// Set the displayName for debugging purposes
 Tag.displayName = 'Tag';
