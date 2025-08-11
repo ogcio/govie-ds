@@ -2,6 +2,7 @@ import parse from 'html-react-parser';
 import type { HeaderItem, HeaderProps } from '../header/types.js';
 import {
   headerDividerVariants,
+  headerLogoVariants,
   headerMenuVariants,
   headerSecondaryLinkItemVariants,
   headerSecondaryLinkSlotItemVariants,
@@ -249,7 +250,7 @@ export const createHeader = (arguments_: HeaderProps) => {
   container.append(menuContainer);
 
   const logoWrapper = document.createElement('div');
-  logoWrapper.className = 'gi-header-logo';
+  logoWrapper.className = headerLogoVariants({ appearance });
 
   const logo = document.createElement('picture');
   const source = document.createElement('source');

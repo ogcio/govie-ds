@@ -29,6 +29,7 @@ import {
   headerSecondaryLinkSlotItemVariants,
   headerTitleVariants,
   headerDividerVariants,
+  headerLogoVariants,
 } from './variants.js';
 
 function getLogo({ logo, appearance = 'default' }: HeaderProps) {
@@ -212,7 +213,7 @@ export function Header({
         fullWidth={fullWidth}
       >
         <div className={headerMenuVariants({ appearance })}>
-          <div className="gi-header-logo">
+          <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
               <Anchor
                 href={logo.href}

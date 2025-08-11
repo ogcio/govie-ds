@@ -87,3 +87,13 @@ export const headerSlotContainerVariants = tv({
     },
   },
 });
+
+export const headerLogoVariants = tv({
+  base: 'gi-header-logo',
+  variants: {
+    appearance: {
+      default: 'gi-header-logo-default',
+      light: 'gi-header-logo-light',
+    },
+  },
+});
