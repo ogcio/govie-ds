@@ -1,5 +1,5 @@
 'use client';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   ColumnDef,
@@ -31,6 +31,12 @@ import {
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
+import {
+  DataGridFooter,
+  DataGridFooterCenter,
+  DataGridFooterEnd,
+  DataGridFooterStart,
+} from '../data-grid-footer.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -72,6 +78,8 @@ const meta = {
     ),
   ],
 } satisfies Meta<FC>;
+
+type Story = StoryObj<typeof meta>;
 
 export type Person = {
   firstName: string;
@@ -369,7 +377,7 @@ export const WithReactHookForm = () => {
           placeholder="Search all columns..."
         />
       </div>
-      <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
+      <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -421,13 +429,45 @@ export const WithReactHookForm = () => {
           ))}
         </TableBody>
       </Table>
-      <TablePagination
-        currentPage={table.getState().pagination.pageIndex + 1}
-        totalPages={table.getPageCount()}
-        onPageChange={(page) => table.setPageIndex(page - 1)}
-      />
+      <DataGridFooter>
+        <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+          <TablePagination
+            currentPage={table.getState().pagination.pageIndex + 1}
+            totalPages={table.getPageCount()}
+            onPageChange={(page) => table.setPageIndex(page - 1)}
+          />
+        </DataGridFooterEnd>
+      </DataGridFooter>
     </div>
   );
+};
+
+export const DataGridFooterBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A basic footer for DataGrid Table, demonstrating how to use the footer components with DataGridFooter, DataGridFooterStart, DataGridFooterCenter, and DataGridFooterEnd.',
+      },
+    },
+  },
+  render: () => (
+    <DataGridFooter>
+      <DataGridFooterStart className="gi-w-1/3">
+        <span className="gi-text-md">DataGrid Footer Example</span>
+      </DataGridFooterStart>
+      <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
+        <span className="gi-text-md">Showing 1 of 10</span>
+      </DataGridFooterCenter>
+      <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+        <TablePagination
+          currentPage={1}
+          totalPages={10}
+          onPageChange={() => null}
+        />
+      </DataGridFooterEnd>
+    </DataGridFooter>
+  ),
 };
 
 export default meta;
