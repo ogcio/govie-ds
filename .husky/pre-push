@@ -1,1 +1,12 @@
-pnpm -r --filter "./apps/**" --filter "./packages/**"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+CHANGED_PATHS=$(git diff --name-only HEAD @{push})
+
+if echo "$CHANGED_PATHS" | grep -q '^packages/react/'; then
+  pnpm -F @ogcio/design-system-react test || exit 1
+fi
+
+if echo "$CHANGED_PATHS" | grep -q '^packages/html/'; then
+  pnpm -F @ogcio/design-system-html test || exit 1
+fi
