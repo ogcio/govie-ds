@@ -16,6 +16,8 @@ import type { ExpandedState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
 import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
+
+import { Button } from '../../button/button.js';
 import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
@@ -37,15 +39,14 @@ import {
   DataGridFooterEnd,
   DataGridFooterStart,
 } from '../data-grid-footer.js';
-import { EditableTableCell } from '../editable-table-cell.js';
-import { makeData } from './tanstack-helpers.js';
 import {
   DataGridHeader,
   DataGridHeaderActions,
   DataGridHeaderFilter,
   DataGridHeaderSearch,
 } from '../data-grid-header.js';
-import { Button } from '../../button/button.js';
+import { EditableTableCell } from '../editable-table-cell.js';
+import { makeData } from './tanstack-helpers.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
