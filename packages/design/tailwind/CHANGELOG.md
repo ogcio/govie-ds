@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.0...design-tailwind-v1.13.1) (2025-08-12)
+
+
+### Bug Fixes
+
+* update link styling AB[#30212](https://github.com/ogcio/govie-ds/issues/30212) ([#679](https://github.com/ogcio/govie-ds/issues/679)) ([0ade69c](https://github.com/ogcio/govie-ds/commit/0ade69c9737e8ff375c27cd3895d0333e533d53a))
+
 ## [1.13.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.12.0...design-tailwind-v1.13.0) (2025-08-06)
 
 
