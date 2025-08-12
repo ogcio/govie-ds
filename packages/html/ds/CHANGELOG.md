@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.12.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.0...html-lib-v1.12.1) (2025-08-12)
+
+
+### Bug Fixes
+
+* Show Header Slot on click ([#674](https://github.com/ogcio/govie-ds/issues/674)) ([19efd5c](https://github.com/ogcio/govie-ds/commit/19efd5c21600cbc726544fc4acd534430a2b55c2))
+
+
+### Miscellaneous Chores
+
+* snapshot testing ([#668](https://github.com/ogcio/govie-ds/issues/668)) ([29974d0](https://github.com/ogcio/govie-ds/commit/29974d0c820296f4fb5fe268e369d9ef697f871b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.1
+
 ## [1.12.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.11.0...html-lib-v1.12.0) (2025-08-06)
 
 
