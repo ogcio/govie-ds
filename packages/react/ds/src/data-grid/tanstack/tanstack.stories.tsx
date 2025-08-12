@@ -1,5 +1,5 @@
 'use client';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   ColumnDef,
@@ -16,6 +16,8 @@ import type { ExpandedState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
 import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
+
+import { Button } from '../../button/button.js';
 import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
@@ -31,6 +33,18 @@ import {
 import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
+import {
+  DataGridFooter,
+  DataGridFooterCenter,
+  DataGridFooterEnd,
+  DataGridFooterStart,
+} from '../data-grid-footer.js';
+import {
+  DataGridHeader,
+  DataGridHeaderActions,
+  DataGridHeaderFilter,
+  DataGridHeaderSearch,
+} from '../data-grid-header.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -72,6 +86,8 @@ const meta = {
     ),
   ],
 } satisfies Meta<FC>;
+
+type Story = StoryObj<typeof meta>;
 
 export type Person = {
   firstName: string;
@@ -358,18 +374,38 @@ export const WithReactHookForm = () => {
 
   return (
     <div className="gi-p-2">
-      <div className="gi-flex gi-gap-2 gi-mb-2">
-        <InputText
-          value={inputGlobalFilter}
-          onChange={(event) => {
-            setInputGlobalFilter(event.target.value);
-            debouncedUpdateData(event.target.value);
-          }}
-          className="w-64 justify-self-stretch"
-          placeholder="Search all columns..."
-        />
-      </div>
-      <Table layout="auto" rowSize="md" stripped className="gi-my-4 gi-w-full">
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            value={inputGlobalFilter}
+            id="data-grid-global-filter"
+            onChange={(event) => {
+              setInputGlobalFilter(event.target.value);
+              debouncedUpdateData(event.target.value);
+            }}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary" appearance="dark">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-4">
+          <Button onClick={() => null} variant="secondary">
+            Delete
+          </Button>
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
+      <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -421,13 +457,87 @@ export const WithReactHookForm = () => {
           ))}
         </TableBody>
       </Table>
-      <TablePagination
-        currentPage={table.getState().pagination.pageIndex + 1}
-        totalPages={table.getPageCount()}
-        onPageChange={(page) => table.setPageIndex(page - 1)}
-      />
+      <DataGridFooter>
+        <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+          <TablePagination
+            currentPage={table.getState().pagination.pageIndex + 1}
+            totalPages={table.getPageCount()}
+            onPageChange={(page) => table.setPageIndex(page - 1)}
+          />
+        </DataGridFooterEnd>
+      </DataGridFooter>
     </div>
   );
+};
+
+export const DataGridHeaderBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Basic usage of the DataGridHeader component with search, filter, and action buttons.',
+      },
+    },
+  },
+  render: () => {
+    return (
+      <DataGridHeader>
+        <DataGridHeaderSearch className="gi-max-w-52">
+          <InputText
+            id="data-grid-global-filter"
+            onChange={() => null}
+            placeholder="Search all columns..."
+          />
+        </DataGridHeaderSearch>
+
+        <DataGridHeaderFilter>
+          <Button onClick={() => null} variant="secondary" appearance="dark">
+            Filters
+          </Button>
+        </DataGridHeaderFilter>
+
+        <DataGridHeaderActions className="gi-gap-4">
+          <Button onClick={() => null} variant="secondary">
+            Delete
+          </Button>
+          <Button onClick={() => null} variant="secondary">
+            Export
+          </Button>
+          <Button onClick={() => null} variant="primary">
+            Add
+          </Button>
+        </DataGridHeaderActions>
+      </DataGridHeader>
+    );
+  },
+};
+
+export const DataGridFooterBasic: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A basic footer for DataGrid Table, demonstrating how to use the footer components with DataGridFooter, DataGridFooterStart, DataGridFooterCenter, and DataGridFooterEnd.',
+      },
+    },
+  },
+  render: () => (
+    <DataGridFooter>
+      <DataGridFooterStart className="gi-w-1/3">
+        <span className="gi-text-md">DataGrid Footer Example</span>
+      </DataGridFooterStart>
+      <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
+        <span className="gi-text-md">Showing 1 of 10</span>
+      </DataGridFooterCenter>
+      <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+        <TablePagination
+          currentPage={1}
+          totalPages={10}
+          onPageChange={() => null}
+        />
+      </DataGridFooterEnd>
+    </DataGridFooter>
+  ),
 };
 
 export default meta;
