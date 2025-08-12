@@ -1,5 +1,5 @@
 .gi-link {
-  @apply gi-decoration-xs gi-inline-block gi-underline gi-underline-offset-[0.2em] gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
+  @apply gi-decoration-xs gi-inline-flex gi-underline gi-underline-offset-[0.2em] gi-text-color-text-tone-convention-default gi-relative gi-w-fit;
 }
 
 .gi-link:not([aria-current='page']) {
