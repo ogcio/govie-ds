@@ -157,7 +157,7 @@ export function Header({
   };
 
   const headerMenuLabel = showMenuLabel
-    ? mobileMenuLabel || t('header.menu', { defaultValue: 'Menu ' })
+    ? mobileMenuLabel || t('header.menu', { defaultValue: 'Menu' })
     : '';
 
   const finalItems = useMemo(() => {
