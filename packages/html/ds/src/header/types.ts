@@ -3,6 +3,7 @@ import { DrawerPosition } from '../drawer/types';
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';
 export type HeaderItemType = 'slot' | 'divider' | 'link' | 'custom-link';
+export type HeaderAppearance = 'default' | 'light';
 
 type CommonProps = { showItemMode?: HeaderItemMode };
 
@@ -74,4 +75,5 @@ export type HeaderProps = {
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;
+  appearance?: HeaderAppearance;
 };
