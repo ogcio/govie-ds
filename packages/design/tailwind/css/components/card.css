@@ -37,7 +37,7 @@
 }
 
 .gi-card-image {
-  @apply gi-table gi-items-start gi-self-stretch gi-w-full gi-h-auto;
+  @apply gi-items-start gi-self-stretch gi-w-full gi-h-auto;
 }
 
 .gi-card-image a {
