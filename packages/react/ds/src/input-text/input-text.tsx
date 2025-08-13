@@ -141,7 +141,11 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               onClick={onIconEndClick}
               ref={iconEndRef}
             >
-              <Icon icon={iconEnd as IconId} size="md" disabled={disabled} />
+              {typeof iconEnd === 'string' ? (
+                <Icon icon={iconEnd as IconId} size="md" disabled={disabled} />
+              ) : (
+                iconEnd
+              )}
             </div>
           )}
           {renderActionButton}

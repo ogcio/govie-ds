@@ -8,8 +8,8 @@ import {
 } from '../forms/form-field/form-field.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
-import { InputText } from './input-text.js';
 import { Spinner } from '../spinner/spinner.js';
+import { InputText } from './input-text.js';
 
 const meta = {
   title: 'Form/InputText',
