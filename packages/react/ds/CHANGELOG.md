@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.15.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.0...react-lib-v1.15.1) (2025-08-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.2
+
 ## [1.15.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.14.0...react-lib-v1.15.0) (2025-08-12)
 
 
