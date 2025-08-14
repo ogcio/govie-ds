@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.1...react-lib-v1.15.2) (2025-08-14)
+
+
+### Bug Fixes
+
+* toggle menu label visibility ([#682](https://github.com/ogcio/govie-ds/issues/682)) ([4bcf99b](https://github.com/ogcio/govie-ds/commit/4bcf99bf83bf10878500eb6be2e3833fd285961d))
+* update input text component to accept react node for icon start/end ([#683](https://github.com/ogcio/govie-ds/issues/683)) ([10e3e19](https://github.com/ogcio/govie-ds/commit/10e3e1953e4c02f827242af34c1703a8d0c7d469))
+
 ## [1.15.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.0...react-lib-v1.15.1) (2025-08-13)
 
 
