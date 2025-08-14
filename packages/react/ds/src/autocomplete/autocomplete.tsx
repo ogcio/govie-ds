@@ -118,10 +118,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           payload: getOptionLabelByValue(children, value),
         });
         dispatch({ type: TOGGLE_CLEAR_BUTTON });
-
-        if (value === '') {
-          //propagateOnChange(onAutocompleteChange, name)('');
-        }
       }
     }, [value]);
 

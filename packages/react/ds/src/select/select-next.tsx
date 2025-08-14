@@ -44,9 +44,9 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
     ref,
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const iconEndRef = useRef<HTMLDivElement>(null); // needed to ignore blur when clicking chevron
-    const listRef = useRef<HTMLDivElement>(null); // menu container
-    const isPointerDownOnMenu = useRef(false); // guards blur during mousedown -> focus transfer
+    const iconEndRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<HTMLDivElement>(null);
+    const isPointerDownOnMenu = useRef(false);
 
     const [internalValue, setInternalValue] = useState(
       defaultValue || controlledValue,
@@ -219,16 +219,16 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           iconEnd="keyboard_arrow_down"
           onIconEndClick={handleOnClick}
           ref={inputRef}
-          iconEndRef={iconEndRef} // <-- so we can detect focus to icon
+          iconEndRef={iconEndRef}
           value={inputValue}
           onClick={handleOnClick}
           onKeyDown={handleKeyDown}
-          onBlur={handleBlur} // <-- use guarded blur
+          onBlur={handleBlur}
           name={name}
         />
         <Popover
           triggerRef={inputRef}
-          extraRefs={[iconEndRef]} // <-- popover should treat icon as "inside"
+          extraRefs={[iconEndRef]}
           onOpenChange={handleOnOpenChange}
           open={isOpen}
           maxHeight={304}
@@ -242,7 +242,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           }}
         >
           <SelectMenu
-            ref={listRef as any} // underlying container element
+            ref={listRef as any}
             onChange={handleOnSelectItem}
             enableSearch={enableSearch}
           >
