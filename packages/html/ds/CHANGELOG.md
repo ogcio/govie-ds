@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.2...html-lib-v1.12.3) (2025-08-14)
+
+
+### Bug Fixes
+
+* toggle menu label visibility ([#682](https://github.com/ogcio/govie-ds/issues/682)) ([4bcf99b](https://github.com/ogcio/govie-ds/commit/4bcf99bf83bf10878500eb6be2e3833fd285961d))
+
 ## [1.12.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.1...html-lib-v1.12.2) (2025-08-13)
 
 
