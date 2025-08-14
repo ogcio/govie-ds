@@ -101,6 +101,7 @@ export function Header({
   fullWidth = false,
   addDefaultMobileMenu,
   mobileMenuLabel,
+  showMenuLabel = true,
   showTitleOnMobile,
   dataTestid,
 }: HeaderProps) {
@@ -155,14 +156,14 @@ export function Header({
     }
   };
 
+  const headerMenuLabel = showMenuLabel
+    ? mobileMenuLabel || t('header.menu', { defaultValue: 'Menu' })
+    : '';
+
   const finalItems = useMemo(() => {
     const newItems = items || [];
     return addDefaultMobileMenu
-      ? buildDefaultMobileMenu(
-          mobileMenuLabel || 'Menu',
-          newItems,
-          secondaryLinks || [],
-        )
+      ? buildDefaultMobileMenu(headerMenuLabel, newItems, secondaryLinks || [])
       : newItems;
   }, [addDefaultMobileMenu]);
 
