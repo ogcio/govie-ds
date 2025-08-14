@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+
 import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -14,6 +16,11 @@ import {
   SelectItemNext,
   SelectNext,
 } from './select-next.js';
+
+const topics = Array.from({ length: 8 }, (_, index) => ({
+  value: `topic_${index + 1}`,
+  label: `Topic ${index + 1}`,
+}));
 
 const meta = {
   title: 'Form/Select/SelectNext',
@@ -87,49 +94,6 @@ const meta = {
 } satisfies Meta<typeof SelectNext>;
 
 export default meta;
-
-const topics: string[] = [
-  'Topic 1',
-  'Topic 2',
-  'Topic 3',
-  'Topic 4',
-  'Topic 5',
-  'Topic 6',
-  'Topic 7',
-  'Topic 8',
-  'Topic 9',
-  'Topic 10',
-  'Topic 11',
-  'Topic 12',
-  'Topic 13',
-  'Topic 14',
-  'Topic 15',
-  'Topic 16',
-  'Topic 17',
-  'Topic 18',
-  'Topic 19',
-  'Topic 20',
-  'Topic 21',
-  'Topic 22',
-  'Topic 23',
-  'Topic 24',
-  'Topic 25',
-  'Topic 26',
-  'Topic 27',
-  'Topic 28',
-  'Topic 29',
-  'Topic 30',
-  'Topic 31',
-  'Topic 32',
-  'Topic 33',
-  'Topic 34',
-  'Topic 35',
-  'Topic 36',
-  'Topic 37',
-  'Topic 38',
-  'Topic 39',
-  'Topic 40',
-];
 
 export const Default: StoryObj = {
   render: () => {
@@ -415,9 +379,9 @@ export const WithLongList: StoryObj = {
       <FormField className="gi-w-56">
         <FormFieldLabel>Long List Select</FormFieldLabel>
         <SelectNext aria-label="Select" id="select-controlled">
-          {topics.map((topic) => (
-            <SelectItemNext key={topic} value={topic}>
-              {topic}
+          {topics.map(({ label, value }) => (
+            <SelectItemNext key={value} value={value}>
+              {label}
             </SelectItemNext>
           ))}
         </SelectNext>
@@ -432,9 +396,9 @@ export const WithLongListSearchEnabled: StoryObj = {
       <FormField className="gi-w-56">
         <FormFieldLabel>Long List Select Search</FormFieldLabel>
         <SelectNext aria-label="Select" id="select-controlled" enableSearch>
-          {topics.map((topic) => (
-            <SelectItemNext key={topic} value={topic}>
-              {topic}
+          {topics.map(({ label, value }) => (
+            <SelectItemNext key={value} value={value}>
+              {label}
             </SelectItemNext>
           ))}
         </SelectNext>
@@ -445,28 +409,108 @@ export const WithLongListSearchEnabled: StoryObj = {
 
 export const WithReactHookForm: StoryObj = {
   render: () => {
-    const { register, watch } = useForm();
+    const { control, watch, reset } = useForm({
+      defaultValues: { topic: '' },
+      mode: 'onBlur',
+    });
 
     const topicValue = watch('topic');
 
     return (
       <div className="gi-flex gi-gap-4 gi-flex-col">
-        <FormField className="gi-w-56">
-          <FormFieldLabel>Select with watcher</FormFieldLabel>
-          <SelectNext
-            aria-label="Select"
-            id="select-controlled"
-            {...register('topic')}
-          >
-            {topics.map((topic) => (
-              <SelectItemNext key={topic} value={topic}>
-                {topic}
-              </SelectItemNext>
-            ))}
-          </SelectNext>
+        <FormField className="gi-w-[300px]">
+          <FormFieldLabel>Select with React Hook Form</FormFieldLabel>
+
+          <Controller
+            control={control}
+            name="topic"
+            rules={{
+              required: 'Topic is required',
+              validate: (value) =>
+                value !== 'topic_5' || 'Topic 5 is not allowed',
+            }}
+            render={({ field, fieldState }) => (
+              <>
+                {fieldState.error?.message && (
+                  <FormFieldError>{fieldState.error.message}</FormFieldError>
+                )}
+                <SelectNext
+                  aria-label="Select"
+                  id="select-rhf"
+                  enableSearch={false}
+                  aria-invalid={!!fieldState.error}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  ref={field.ref as any}
+                >
+                  <SelectItemNext value="">Select a topic</SelectItemNext>
+                  {topics.map(({ value, label }) => (
+                    <SelectItemNext key={value} value={value}>
+                      {label}
+                    </SelectItemNext>
+                  ))}
+                </SelectNext>
+              </>
+            )}
+          />
         </FormField>
-        <Label>Watched value: {topicValue}</Label>
+
+        <Label className="gi-font-bold">
+          Watched value: {topicValue || '—'}
+        </Label>
+        <Label>Validation included (topic_5 is not allowed)</Label>
+
+        <Button type="button" onClick={() => reset()} className="gi-w-fit">
+          Reset
+        </Button>
       </div>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const getWatched = () => canvas.getByText(/Watched value:/i);
+    const openAndSelect = async (label: string) => {
+      await userEvent.click(await canvas.findByRole('textbox'));
+      const option = await canvas.findByRole('option', { name: label });
+      await userEvent.click(option);
+    };
+
+    await expect(getWatched()).toHaveTextContent('—');
+
+    const input = await canvas.findByRole('textbox');
+    await userEvent.click(input);
+
+    await userEvent.click(document.body);
+
+    await canvas.findByText('Topic is required');
+    await openAndSelect('Topic 5');
+
+    const resetButton = await canvas.findByRole('button', { name: /reset/i });
+
+    await waitFor(() => expect(getWatched()).toHaveTextContent('topic_5'));
+    await canvas.findByText('Topic 5 is not allowed');
+
+    await openAndSelect('Topic 7');
+    await waitFor(() => {
+      expect(
+        canvas.queryByText('Topic 5 is not allowed'),
+      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
+      expect(getWatched()).toHaveTextContent('topic_7');
+    });
+
+    await userEvent.click(resetButton);
+
+    await waitFor(() => {
+      expect(getWatched()).toHaveTextContent('—');
+      expect(
+        canvas.queryByText('Topic 5 is not allowed'),
+      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
+    });
+    await userEvent.click(resetButton);
+    await userEvent.click(document.body);
   },
 };

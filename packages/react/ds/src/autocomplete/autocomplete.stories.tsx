@@ -94,7 +94,7 @@ export const WithDefaultValue: Story = {
   render: (props: AutocompleteProps) => (
     <FormField className="gi-w-56">
       <FormFieldLabel>With Default Value</FormFieldLabel>
-      <Autocomplete {...props} defaultValue={options[1].value}>
+      <Autocomplete {...props} value={options[1].value}>
         {options.map(({ value, label }) => (
           <AutocompleteItem value={value} key={`${label}-${value}`}>
             {label}

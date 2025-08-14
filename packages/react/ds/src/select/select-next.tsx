@@ -38,68 +38,27 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       enableSearch,
       disabled,
       name,
+      onBlur,
       ...props
     },
     ref,
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [internalValue, setInternalValue] = useState(defaultValue);
+    const iconEndRef = useRef<HTMLDivElement>(null); // needed to ignore blur when clicking chevron
+    const listRef = useRef<HTMLDivElement>(null); // menu container
+    const isPointerDownOnMenu = useRef(false); // guards blur during mousedown -> focus transfer
 
-    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
-    const value =
-      controlledValue === undefined ? internalValue : controlledValue;
-
+    const [internalValue, setInternalValue] = useState(
+      defaultValue || controlledValue,
+    );
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
+
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
     const validOptions = Children.toArray(children).filter((child) =>
       isValidElement(child),
     ) as React.ReactElement[];
-
-    useEffect(() => {
-      // keep internalValue in sync when controlledValue changes
-      if (controlledValue !== undefined) {
-        setInternalValue(controlledValue);
-      }
-    }, [controlledValue]);
-
-    const handleOnClick = () => {
-      setIsOpen(true);
-      inputRef.current?.focus();
-    };
-
-    const handleOnOpenChange = (isOpen: boolean) => {
-      setIsOpen(isOpen);
-
-      if (onMenuClose && !isOpen) {
-        onMenuClose();
-      }
-    };
-
-    const handleOnSelectItem = (value_: string) => {
-      setIsOpen(false);
-
-      if (controlledValue === undefined) {
-        setInternalValue(value_);
-      }
-
-      if (onSelectNextChange) {
-        const event = {
-          target: {
-            name,
-            value: value_,
-          },
-          currentTarget: {
-            name,
-            value: value_,
-          },
-          type: 'change',
-          bubbles: true,
-        } as unknown as React.ChangeEvent<HTMLSelectElement>;
-        onSelectNextChange(event);
-      }
-    };
 
     useEffect(() => {
       let found: SelectNextOptionItemElement | undefined;
@@ -109,7 +68,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
 
         if (type === 'SelectItemNext') {
           const item = child as SelectNextOptionItemElement;
-          if (item.props.value === value) {
+          if (item.props.value === internalValue) {
             found = item;
             break;
           }
@@ -123,7 +82,8 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
               const subType = (subChild as any)?.type?.componentType;
               return (
                 subType === 'SelectItemNext' &&
-                (subChild as SelectNextOptionItemElement).props.value === value
+                (subChild as SelectNextOptionItemElement).props.value ===
+                  internalValue
               );
             },
           );
@@ -136,11 +96,59 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
 
       if (found) {
-        setInputValue(found.props.children?.toString() || '');
+        const foundValue = found.props.children?.toString() || '';
+        setInputValue(foundValue);
       } else {
         setInputValue('');
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
       }
-    }, [value, validOptions]);
+    }, [internalValue, validOptions]);
+
+    useEffect(() => {
+      if (controlledValue !== undefined) {
+        setInternalValue(controlledValue);
+      }
+    }, [controlledValue]);
+
+    const handleOnClick = () => {
+      setIsOpen(true);
+      inputRef.current?.focus();
+    };
+
+    const handleOnOpenChange = (open: boolean) => {
+      setIsOpen(open);
+      if (onMenuClose && !open) {
+        onMenuClose();
+      }
+    };
+
+    const handleOnSelectItem = (value_: string) => {
+      setIsOpen(false);
+      setInternalValue(value_);
+
+      if (onSelectNextChange) {
+        const event = {
+          target: { name, value: value_ },
+          currentTarget: { name, value: value_ },
+          type: 'change',
+          bubbles: true,
+        } as unknown as React.ChangeEvent<HTMLSelectElement>;
+
+        onSelectNextChange(event);
+
+        if (onBlur) {
+          const event = {
+            target: { name, value: value_ },
+            currentTarget: { name, value: value_ },
+            type: 'blur',
+            bubbles: true,
+          } as unknown as any;
+          onBlur?.(event);
+        }
+      }
+    };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
       if (event.key === 'Enter' && !disabled) {
@@ -148,14 +156,42 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       }
     };
 
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+      const relatedTarget = event.relatedTarget as Node | null;
+
+      // Ignore blur if focus moves into the popover menu or the chevron icon.
+      if (
+        (relatedTarget &&
+          (listRef.current?.contains(relatedTarget) ||
+            iconEndRef.current?.contains(relatedTarget))) ||
+        isPointerDownOnMenu.current
+      ) {
+        setTimeout(() => (isPointerDownOnMenu.current = false), 0);
+        return;
+      }
+
+      if (onBlur) {
+        const value = (controlledValue ?? internalValue ?? '') as string;
+        const synthetic = {
+          target: { name, value },
+          currentTarget: { name, value },
+          type: 'blur',
+          bubbles: true,
+        } as unknown as React.FocusEvent<HTMLInputElement>;
+        onBlur(synthetic);
+      }
+    };
+
     if (enableSearch) {
       return (
         <SelectSearch
           {...props}
-          value={controlledValue}
-          defaultValue={defaultValue}
+          value={internalValue}
           onChange={onSelectNextChange}
           disabled={disabled}
+          ref={inputRef}
+          onBlur={onBlur}
+          name={name}
         >
           {children}
         </SelectSearch>
@@ -183,12 +219,16 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           iconEnd="keyboard_arrow_down"
           onIconEndClick={handleOnClick}
           ref={inputRef}
+          iconEndRef={iconEndRef} // <-- so we can detect focus to icon
           value={inputValue}
           onClick={handleOnClick}
           onKeyDown={handleKeyDown}
+          onBlur={handleBlur} // <-- use guarded blur
+          name={name}
         />
         <Popover
           triggerRef={inputRef}
+          extraRefs={[iconEndRef]} // <-- popover should treat icon as "inside"
           onOpenChange={handleOnOpenChange}
           open={isOpen}
           maxHeight={304}
@@ -197,26 +237,27 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
             strategy: 'absolute',
             modifiers: [
               { name: 'offset', options: { offset: [0, 4] } },
-              {
-                name: 'flip',
-                options: { fallbackPlacements: ['top'] },
-              },
+              { name: 'flip', options: { fallbackPlacements: ['top'] } },
             ],
           }}
         >
-          <SelectMenu onChange={handleOnSelectItem} enableSearch={enableSearch}>
+          <SelectMenu
+            ref={listRef as any} // underlying container element
+            onChange={handleOnSelectItem}
+            enableSearch={enableSearch}
+          >
             {validOptions.map((child, optionIndex) => {
               const type = (child?.type as any)?.componentType;
 
               if (type === 'SelectItemNext') {
                 const typedChild = child as SelectNextOptionItemElement;
-
                 return (
                   <SelectMenuOption
                     key={`SelectItemNext-${typedChild.props.value.toString()}`}
                     {...typedChild.props}
                     selected={
-                      value.toString() === typedChild.props.value.toString()
+                      internalValue?.toString() ===
+                      typedChild.props.value.toString()
                     }
                     index={optionIndex}
                   />
@@ -235,7 +276,8 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
                         key={`SelectGroupItemNext-SelectItemNext-${optionProps.value.toString()}`}
                         {...optionProps}
                         selected={
-                          value.toString() === optionProps.value.toString()
+                          internalValue?.toString() ===
+                          optionProps.value.toString()
                         }
                         onChange={handleOnSelectItem}
                         index={index}
