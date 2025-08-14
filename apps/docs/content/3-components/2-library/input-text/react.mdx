@@ -22,12 +22,12 @@ component:
           description: 'Custom class name for styling the input element.'
           required: false
         - name: 'iconStart'
-          ofType: 'IconId'
-          description: 'ID of an icon to display at the start of the input.'
+          ofType: 'IconId | React.ReactNode'
+          description: 'ID of an icon to display at the start of the input. Can also be a React node.'
           required: false
         - name: 'iconEnd'
-          ofType: 'IconId'
-          description: 'ID of an icon to display at the end of the input.'
+          ofType: 'IconId | React.ReactNode'
+          description: 'ID of an icon to display at the end of the input. Can also be a React node.'
           required: false
         - name: 'inputActionButton'
           ofType: 'InputActionButtonProps'

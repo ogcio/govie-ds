@@ -2,7 +2,7 @@
 
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Input as PrimitiveInput } from '../primitives/input.js';
 import type {
@@ -108,7 +108,15 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               onClick={onIconStartClick}
               data-prefix={!!prefix}
             >
-              <Icon icon={iconStart} size="md" disabled={disabled} />
+              {typeof iconStart === 'string' ? (
+                <Icon
+                  icon={iconStart as IconId}
+                  size="md"
+                  disabled={disabled}
+                />
+              ) : (
+                iconStart
+              )}
             </div>
           )}
           <PrimitiveInput
@@ -133,7 +141,11 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               onClick={onIconEndClick}
               ref={iconEndRef}
             >
-              <Icon icon={iconEnd} size="md" disabled={disabled} />
+              {typeof iconEnd === 'string' ? (
+                <Icon icon={iconEnd as IconId} size="md" disabled={disabled} />
+              ) : (
+                iconEnd
+              )}
             </div>
           )}
           {renderActionButton}
