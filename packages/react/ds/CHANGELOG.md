@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.15.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.0...react-lib-v1.15.1) (2025-08-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.2
+
+## [1.15.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.14.0...react-lib-v1.15.0) (2025-08-12)
+
+
+### Features
+
+* add data grid header with slots AB[#30128](https://github.com/ogcio/govie-ds/issues/30128) ([#677](https://github.com/ogcio/govie-ds/issues/677)) ([80e3a90](https://github.com/ogcio/govie-ds/commit/80e3a9016111f4bc98c86ab179a191ac90511240))
+* add three slot table footer AB[#30127](https://github.com/ogcio/govie-ds/issues/30127) ([#670](https://github.com/ogcio/govie-ds/issues/670)) ([dbee0fc](https://github.com/ogcio/govie-ds/commit/dbee0fc551ea7cb26673bbb4776d45d5a5666789))
+
+
+### Bug Fixes
+
+* Show Header Slot on click ([#674](https://github.com/ogcio/govie-ds/issues/674)) ([19efd5c](https://github.com/ogcio/govie-ds/commit/19efd5c21600cbc726544fc4acd534430a2b55c2))
+
+
+### Miscellaneous Chores
+
+* snapshot testing ([#668](https://github.com/ogcio/govie-ds/issues/668)) ([29974d0](https://github.com/ogcio/govie-ds/commit/29974d0c820296f4fb5fe268e369d9ef697f871b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.1
+
 ## [1.14.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.13.0...react-lib-v1.14.0) (2025-08-06)
 
 

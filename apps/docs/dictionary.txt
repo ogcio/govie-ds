@@ -51,6 +51,7 @@ HeaderProps
 HeadingProps
 ICT
 IconButtonProps
+IconId
 IconProps
 Iframe
 InputCheckbox
