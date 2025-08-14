@@ -29,6 +29,8 @@ export type ProgressStepperProps = {
   indicator?: ProgressStepperIndicatorType;
   className?: string;
   verticalGap?: number;
+  stepStates?: { completed?: boolean; current?: boolean; disabled?: boolean }[];
+  progression?: 'linear' | 'free';
 };
 
 export type InnerStepProps = {
