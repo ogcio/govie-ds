@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 export const useAriaHider = (
   refNode: HTMLElement | null,
   shouldActivate: boolean,
 ): void => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (shouldActivate !== true || refNode === null) {
       return;
     }

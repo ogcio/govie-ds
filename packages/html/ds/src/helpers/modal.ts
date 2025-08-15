@@ -178,8 +178,10 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
   const modalBody = document.createElement('div');
   modalInnerContainer.append(modalBody);
   modalBody.dataset.testid = 'modal-body';
+  modalBody.dataset.element = 'modal-body';
   modalBody.className = 'gi-modal-body';
   modalBody.innerHTML = arguments_.body;
+  modalBody.tabIndex = -1;
 
   if (arguments_.footer) {
     const modalFooter = document.createElement('div');
