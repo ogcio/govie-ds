@@ -30,7 +30,6 @@ export type ProgressStepperProps = {
   className?: string;
   verticalGap?: number;
   stepStates?: { completed?: boolean; current?: boolean; disabled?: boolean }[];
-  progression?: 'linear' | 'free';
 };
 
 export type InnerStepProps = {

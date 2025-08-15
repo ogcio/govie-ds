@@ -67,20 +67,13 @@ export const Default: Story = {
       type: { name: 'number', required: false },
       description: 'Vertical spacing between steps. Default value is 14',
     },
-    progression: {
-      control: { type: 'radio' },
-      options: ['linear', 'free'],
-      description:
-        'Navigation mode: linear (dependent) or free (independent). Default is "linear".',
-    },
     stepStates: {
       control: 'object',
       description:
-        'Free mode only: Array describing the state (completed/current/disabled) for each step.',
+        'Array describing the state (completed/current/disabled) for each step.',
     },
   },
   args: {
-    progression: 'linear',
     currentStepIndex: 1,
     children: [
       <StepItem key="default-step-1" label="Start Your Application" />,
@@ -93,43 +86,36 @@ export const Default: Story = {
   },
 };
 
-export const Linear: Story = {
+export const WithStepStates: Story = {
   args: {
     currentStepIndex: 1,
     indicator: 'number',
     children: [],
-    progression: 'linear',
   },
-  render: () => {
-    return (
-      <ProgressStepper>
-        <StepItem key="linear-step-1" label="Step 1" />
-        <StepItem key="linear-step-2" label="Step 2" />
-        <StepItem key="linear-step-3" label="Step 3" />
-      </ProgressStepper>
-    );
-  },
-};
-
-export const Free: Story = {
-  args: {
-    currentStepIndex: 1,
-    indicator: 'number',
-    children: [],
-    progression: 'free',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`stepStates` allows independent navigation between steps, where each step can be completed without following a strict order. This object can be used to control the state of each step with `completed`, `current`, and `disabled` properties.',
+      },
+    },
   },
   render: () => {
     const stepStates = [
+      { completed: false, disabled: false, current: true },
+      { completed: false, disabled: false, current: true },
       { completed: false, disabled: false, current: false },
       { completed: false, disabled: false, current: false },
-      { completed: false, disabled: false, current: false },
+      { completed: true, disabled: false, current: false },
     ];
 
     return (
-      <ProgressStepper stepStates={stepStates}>
-        <StepItem key="free-step-1" label="Step 1" />
-        <StepItem key="free-step-2" label="Step 2" />
-        <StepItem key="free-step-3" label="Step 3" />
+      <ProgressStepper stepStates={stepStates} orientation="vertical">
+        <StepItem key="with-step-states-step-1" label="Step 1" />
+        <StepItem key="with-step-states-step-2" label="Step 2" />
+        <StepItem key="with-step-states-step-3" label="Step 3" />
+        <StepItem key="with-step-states-step-4" label="Step 4" />
+        <StepItem key="with-step-states-step-5" label="Step 5" />
       </ProgressStepper>
     );
   },

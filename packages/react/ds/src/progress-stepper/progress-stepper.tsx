@@ -81,7 +81,7 @@ export const Step = ({
   isCurrentStep,
   isCompleted,
   isLastStep,
-  isDisabled = false, // NEW: added isDisabled prop with default false
+  isDisabled = false,
   stepNumber,
   orientation,
   children,
@@ -92,24 +92,19 @@ export const Step = ({
   ariaLabel,
   verticalGap,
 }: InnerStepProps & { isDisabled?: boolean }) => {
-  // NEW: extended props with isDisabled
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
   const hasLabel = Boolean(children);
 
   return (
-    <div
-      className={`gi-relative ${isDisabled ? 'gi-opacity-50 gi-pointer-events-none' : ''}`}
-    >
-      {' '}
-      {/* NEW: visual + interaction disable */}
+    <div className={`gi-relative ${isDisabled ? 'gi-disabled' : ''}`}>
       <div
         className="gi-progress-stepper-step-container"
         data-orientation={orientation}
         data-current={isCurrentStep}
         data-completed={isCompleted}
-        data-disabled={isDisabled} // NEW: data attribute for disabled
+        data-disabled={isDisabled}
         data-next={isNextStep}
         data-indicator={indicator}
         aria-labelledby={`step-label-${stepNumber}`}
@@ -167,8 +162,7 @@ export const ProgressStepper = ({
   orientation = 'horizontal',
   indicator = 'number',
   completeAll,
-  stepStates, // NEW: optional array to control steps
-  progression = 'free', // NEW: 'linear' | 'free'
+  stepStates,
   dataTestId,
   className,
   verticalGap = 14,
@@ -208,23 +202,15 @@ export const ProgressStepper = ({
           let isDisabled: boolean;
 
           if (stepStates && stepStates[index]) {
-            // NEW: allow explicit step states
-            isCurrentStep = !!stepStates[index].current; // NEW
-            isCompleted = !!stepStates[index].completed; // NEW
-            isDisabled = !!stepStates[index].disabled; // NEW
-          } else if (progression === 'linear') {
-            // NEW: check progression type
-            // Default linear behavior
-            isCurrentStep = !completeAll && currentStepIndex === index;
-            isCompleted =
-              completeAll ||
-              (index < currentStepIndex && index !== currentStepIndex);
-            isDisabled = !isCurrentStep && !isCompleted; // NEW: set disabled in linear
+            // Explicit state control (FREE mode)
+            isCurrentStep = !!stepStates[index].current;
+            isCompleted = !!stepStates[index].completed;
+            isDisabled = !!stepStates[index].disabled;
           } else {
-            // NEW: free progression fallback
-            isCurrentStep = currentStepIndex === index;
-            isCompleted = index < currentStepIndex;
-            isDisabled = false;
+            // Default LINEAR mode
+            isCurrentStep = !completeAll && currentStepIndex === index;
+            isCompleted = completeAll || index < currentStepIndex;
+            isDisabled = !isCurrentStep && !isCompleted;
           }
 
           const isLastStep = index === children.length - 1;
@@ -236,7 +222,7 @@ export const ProgressStepper = ({
                 stepNumber={index + 1}
                 isCurrentStep={isCurrentStep}
                 isCompleted={isCompleted}
-                isDisabled={isDisabled} // NEW
+                isDisabled={isDisabled}
                 orientation={orientation}
                 isLastStep={isLastStep}
                 verticalSlot={children[index]?.props?.children}
