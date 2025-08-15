@@ -88,27 +88,28 @@ export const Default: Story = {
 
 export const WithDefaultValue: Story = {
   args: {
-    defaultValue: '',
     children: [],
   },
-  render: (props: AutocompleteProps) => (
-    <FormField className="gi-w-56">
-      <FormFieldLabel>With Default Value</FormFieldLabel>
-      <Autocomplete {...props} value={options[1].value}>
-        {options.map(({ value, label }) => (
-          <AutocompleteItem value={value} key={`${label}-${value}`}>
-            {label}
-          </AutocompleteItem>
-        ))}
-      </Autocomplete>
-    </FormField>
-  ),
+  render: (props: AutocompleteProps) => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>With Default Value</FormFieldLabel>
+
+        <Autocomplete {...props} value={options[1].value}>
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </FormField>
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox') as HTMLInputElement;
-    expect(input?.value?.toLowerCase().replaceAll(/[^a-z]/gi, '')).toBe(
-      'backenddev',
-    );
+    console.log(input?.value);
+    await waitFor(() => expect(input?.value).toBe('Backend Dev.'));
   },
 };
 
