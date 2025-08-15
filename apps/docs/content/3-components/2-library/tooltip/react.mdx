@@ -1,0 +1,109 @@
+---
+title: 'Tooltip'
+description: 'Tooltip HTML Component React Component'
+status: 'stable'
+component:
+  id: 'tooltip-react'
+  link: '?path=/docs/application-tooltip--default'
+  status: 'stable'
+  properties:
+    - name: 'TooltipProps'
+      fields:
+        - name: 'text'
+          ofType: 'string'
+          description: 'Text displayed in the tooltip.'
+          required: true
+        - name: 'position'
+          ofType: "'top' | 'bottom' | 'left' | 'right'"
+          description: 'Tooltip placement relative to the trigger.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'Element that triggers the tooltip on hover/focus.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/application-tooltip--default'
+    - name: 'top-position'
+      url: '/story/application-tooltip--top-position'
+    - name: 'bottom-position'
+      url: '/story/application-tooltip--bottom-position'
+    - name: 'left-position'
+      url: '/story/application-tooltip--left-position'
+    - name: 'right-position'
+      url: '/story/application-tooltip--right-position'
+    - name: 'with-long-text'
+      url: '/story/application-tooltip--with-long-text'
+---
+
+<Section current="react">
+
+# Tooltip
+
+Brief, contextual helper that appears on hover or focus to clarify an element without cluttering the interface.
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="default"
+  />
+</ComponentPreview>
+
+### Top Position
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="top-position"
+  />
+</ComponentPreview>
+
+### Bottom Position
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="bottom-position"
+  />
+</ComponentPreview>
+
+### Left Position
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="left-position"
+  />
+</ComponentPreview>
+
+### Right Position
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="right-position"
+  />
+</ComponentPreview>
+
+### With Long Text
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="tooltip-react"
+    story="with-long-text"
+  />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="tooltip-react" />
+
+</Section>
