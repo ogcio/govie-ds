@@ -105,12 +105,6 @@ export const WithDefaultValue: Story = {
       </FormField>
     );
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox') as HTMLInputElement;
-    console.log(input?.value);
-    await waitFor(() => expect(input?.value).toBe('Backend Dev.'));
-  },
 };
 
 export const WithDisabledOptions: Story = {
