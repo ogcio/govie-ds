@@ -365,7 +365,7 @@ export const Controlled: StoryObj = {
     const list = await canvas.findByRole('list');
     const options = within(list).getAllByRole('option');
 
-    await userEvent.click(options[2]); // "Option 3"
+    await userEvent.click(options[2]);
 
     await waitFor(() => {
       expect(input).toHaveValue('Option 3');
