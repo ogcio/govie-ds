@@ -1,23 +1,28 @@
 import {
   createFocusTrap,
-  FocusTrap,
   Options as FocusTrapOptions,
+  FocusTrap,
 } from 'focus-trap';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 export const useFocusTrap = (
   element: HTMLElement | null,
   isActive: boolean,
   options?: FocusTrapOptions,
 ) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!element || !isActive) {
       return;
     }
 
-    const trap: FocusTrap = createFocusTrap(element, options);
+    const trap: FocusTrap = createFocusTrap(element, {
+      ...options,
+      initialFocus: options?.initialFocus ?? element,
+      fallbackFocus: options?.fallbackFocus ?? element,
+      returnFocusOnDeactivate: false,
+    });
 
-    setTimeout(trap.activate, 0);
+    trap.activate();
 
     return () => {
       trap.deactivate();
