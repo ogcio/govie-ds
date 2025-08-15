@@ -1,7 +1,9 @@
-"use client";
-import NextLink from "next/link";
-import { ComboBoxProps, CookieBannerProps } from "@/props";
-import { useForm, Controller, FormProvider } from "react-hook-form";
+'use client';
+import NextLink from 'next/link';
+import { ComboBoxProps, CookieBannerProps } from '@/props';
+import { useForm, Controller, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import {
   Alert,
   Autocomplete,
@@ -73,50 +75,51 @@ import {
   toaster,
   ToastProvider,
   ToastVariant,
-} from "@ogcio/design-system-react";
+} from '@ogcio/design-system-react';
+import { useEffect, useState } from 'react';
 
 const headerProps: HeaderProps = {
   items: [
     {
-      label: "Departments",
-      itemType: "link",
-      href: "#",
-      showItemMode: "desktop-only",
+      label: 'Departments',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Services",
-      itemType: "link",
-      href: "#",
-      showItemMode: "desktop-only",
+      label: 'Services',
+      itemType: 'link',
+      href: '#',
+      showItemMode: 'desktop-only',
     },
     {
-      itemType: "divider",
-      showItemMode: "desktop-only",
+      itemType: 'divider',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Home",
-      icon: "home",
-      itemType: "link",
-      href: "/item1",
-      showItemMode: "desktop-only",
+      label: 'Home',
+      icon: 'home',
+      itemType: 'link',
+      href: '/item1',
+      showItemMode: 'desktop-only',
     },
     {
-      label: "Search",
-      icon: "search",
-      itemType: "slot",
+      label: 'Search',
+      icon: 'search',
+      itemType: 'slot',
       component: <HeaderSearch />,
-      slotAppearance: "dropdown",
-      showItemMode: "desktop-only",
+      slotAppearance: 'dropdown',
+      showItemMode: 'desktop-only',
     },
   ],
   secondaryLinks: [
     {
-      href: "#",
-      label: "English",
+      href: '#',
+      label: 'English',
     },
     {
-      href: "#",
-      label: "Gaeilge",
+      href: '#',
+      label: 'Gaeilge',
     },
   ],
 };
@@ -138,17 +141,17 @@ const MyForm2 = () => {
           Form with register method of RHF
         </Heading>
         <TextArea
-          {...register("description")}
+          {...register('description')}
           maxChars={200}
           clearButtonEnabled
         />
         <InputText
-          {...register("inputtext")}
+          {...register('inputtext')}
           id="input-text-id"
           className="w-full"
           inputActionButton={{
-            icon: "info",
-            onClick: () => alert("Action button clicked"),
+            icon: 'info',
+            onClick: () => alert('Action button clicked'),
           }}
           type="text"
           placeholder="Placeholder"
@@ -165,38 +168,38 @@ const MyForm2 = () => {
 function MyForm() {
   const methods = useForm({
     defaultValues: {
-      myText: "",
-      inputText: "",
-      textArea: "",
-      selectOption: "",
-      legacySelect: "select-option",
-      password: "",
-      radioGroup: "",
-      buttonGroup: "",
+      myText: '',
+      inputText: '',
+      textArea: '',
+      selectOption: '',
+      legacySelect: 'select-option',
+      password: '',
+      radioGroup: '',
+      buttonGroup: '',
       checkboxGroup: [],
-      autocomplete: ''
+      autocomplete: '',
     },
   });
 
   const { handleSubmit, control, reset, register } = methods;
 
   const onSubmit = (data: any) => {
-    console.log("Form submitted successfully");
-    console.log("Form Data:", data);
+    console.log('Form submitted successfully');
+    console.log('Form Data:', data);
   };
 
   const handleClear = () => {
     reset();
-    console.log("Form cleared");
-    console.log("Form Data after clear:", methods.getValues());
+    console.log('Form cleared');
+    console.log('Form Data after clear:', methods.getValues());
   };
 
   const selectOptions: string[] = [
-    "Topic 1",
-    "Topic 2",
-    "Topic 3",
-    "Topic 4",
-    "Topic 5",
+    'Topic 1',
+    'Topic 2',
+    'Topic 3',
+    'Topic 4',
+    'Topic 5',
   ];
   const autocompleteOptions = [
     { value: 'frontend_dev', label: 'Frontend Dev.' },
@@ -235,7 +238,7 @@ function MyForm() {
 
             <Container className="flex flex-col items-center p-0 gap-4 w-full lg:w-[480px] mx-auto">
               {/* Input Text */}
-              <FormField label={{ text: "Input Text" }} className="w-full">
+              <FormField label={{ text: 'Input Text' }} className="w-full">
                 <Controller
                   control={control}
                   name="inputText"
@@ -250,7 +253,7 @@ function MyForm() {
               </FormField>
 
               {/* Text Area */}
-              <FormField label={{ text: "Text Area" }} className="w-full">
+              <FormField label={{ text: 'Text Area' }} className="w-full">
                 <Controller
                   control={control}
                   name="textArea"
@@ -269,7 +272,7 @@ function MyForm() {
               </FormField>
 
               {/* SelectNext */}
-              <FormField label={{ text: "SelectNext" }} className="w-full">
+              <FormField label={{ text: 'SelectNext' }} className="w-full">
                 <Controller
                   control={control}
                   name="selectOption"
@@ -293,7 +296,7 @@ function MyForm() {
               </FormField>
 
               {/* Legacy Select */}
-              <FormField label={{ text: "Select" }} className="w-full">
+              <FormField label={{ text: 'Select' }} className="w-full">
                 <Controller
                   control={control}
                   name="legacySelect"
@@ -311,7 +314,7 @@ function MyForm() {
               </FormField>
 
               {/* Radio Group */}
-              <FormField label={{ text: "Radio Group" }} className="w-full">
+              <FormField label={{ text: 'Radio Group' }} className="w-full">
                 <Controller
                   name="radioGroup"
                   control={control}
@@ -330,7 +333,7 @@ function MyForm() {
               </FormField>
 
               {/* Button Group */}
-              <FormField label={{ text: "Button Group" }} className="w-full">
+              <FormField label={{ text: 'Button Group' }} className="w-full">
                 <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
                 <Controller
                   name="buttonGroup"
@@ -388,7 +391,7 @@ function MyForm() {
               </FormField>
 
               {/* Password */}
-              <FormField label={{ text: "Password" }} className="w-full">
+              <FormField label={{ text: 'Password' }} className="w-full">
                 <Controller
                   control={control}
                   name="password"
@@ -426,18 +429,186 @@ function MyForm() {
   );
 }
 
+const SelectWithReactHookForms = () => {
+  const customerTypes: string[] = [
+    'Customer type 1',
+    'Customer type 2',
+    'Customer type 3',
+  ];
+
+  const categories: string[] = ['Category 1', 'Category 2', 'Category 3'];
+
+  const relatedTopics: string[] = [
+    'Related topic 1',
+    'Related topic 2',
+    'Related topic 3',
+  ];
+  const schema = z.object({
+    customerType: z.string().nonempty('Customer type is required'),
+    category: z.string().nonempty('Category is required'),
+    relatedTopic: z.string().nonempty('Related topic'),
+  });
+
+  const defaultValues = {
+    customerType: '',
+    category: '',
+    relatedTopic: '',
+  };
+  const [formData, setFormData] = useState('');
+  const methods = useForm({
+    resolver: zodResolver(schema),
+    defaultValues,
+    mode: 'onSubmit',
+  });
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = methods;
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset(defaultValues); // keep the placeholder (value="") after reset
+    }
+  }, [isSubmitSuccessful, reset]);
+
+  const onSubmit = (data: any) => {
+    setFormData(JSON.stringify(data));
+  };
+
+  return (
+    <Container>
+      <FormProvider {...methods}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Container>
+            <FormField>
+              <FormFieldLabel htmlFor="customerType">
+                Customer Type
+              </FormFieldLabel>
+              {errors.customerType?.message && (
+                <FormFieldError>{errors.customerType.message}</FormFieldError>
+              )}
+              <Controller
+                control={control}
+                name="customerType"
+                render={({ field }) => (
+                  <SelectNext
+                    id="customerType"
+                    name={field.name}
+                    value={field.value ?? ''}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    ref={field.ref as any}
+                  >
+                    <SelectItemNext value="">
+                      Select a customer type
+                    </SelectItemNext>
+                    {customerTypes.map((option) => (
+                      <SelectItemNext key={option} value={option}>
+                        {option}
+                      </SelectItemNext>
+                    ))}
+                  </SelectNext>
+                )}
+              />
+            </FormField>
+
+            <FormField>
+              <FormFieldLabel htmlFor="category">Category</FormFieldLabel>
+              {errors.category?.message && (
+                <FormFieldError>{errors.category.message}</FormFieldError>
+              )}
+              <Controller
+                control={control}
+                name="category"
+                render={({ field }) => (
+                  <SelectNext
+                    id="category"
+                    name={field.name}
+                    value={field.value ?? ''}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    ref={field.ref as any}
+                  >
+                    <SelectItemNext value="">Select a category</SelectItemNext>
+                    {categories.map((option) => (
+                      <SelectItemNext key={option} value={option}>
+                        {option}
+                      </SelectItemNext>
+                    ))}
+                  </SelectNext>
+                )}
+              />
+            </FormField>
+
+            <FormField>
+              <FormFieldLabel htmlFor="relatedTopic">
+                Related topic
+              </FormFieldLabel>
+              {errors.relatedTopic?.message && (
+                <FormFieldError>{errors.relatedTopic.message}</FormFieldError>
+              )}
+              <Controller
+                control={control}
+                name="relatedTopic"
+                render={({ field }) => (
+                  <SelectNext
+                    enableSearch={true}
+                    id="relatedTopic"
+                    name={field.name}
+                    value={field.value ?? ''}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    ref={field.ref as any}
+                  >
+                    <SelectItemNext value="">
+                      Select a related topic
+                    </SelectItemNext>
+                    {relatedTopics.map((option) => (
+                      <SelectItemNext key={option} value={option}>
+                        {option}
+                      </SelectItemNext>
+                    ))}
+                  </SelectNext>
+                )}
+              />
+            </FormField>
+
+            <br />
+            <div style={{ display: 'flex', gap: 8 }}>
+              <Button type="submit">Submit</Button>
+              <Button type="button" onClick={() => reset(defaultValues)}>
+                Reset
+              </Button>
+            </div>
+
+            {formData && (
+              <div style={{ marginTop: 12 }}>
+                Form data: <br />
+                {formData}
+              </div>
+            )}
+          </Container>
+        </Form>
+      </FormProvider>
+    </Container>
+  );
+};
+
 const handleCreateToast = (
   title: string,
   variant: ToastVariant,
-  slotAction?: any
+  slotAction?: any,
 ) =>
   toaster.create({
     title,
     variant,
-    description: "This is a toast notification.",
+    description: 'This is a toast notification.',
     position: {
-      x: "right",
-      y: "bottom",
+      x: 'right',
+      y: 'bottom',
     },
     duration: 3000,
     dismissible: true,
@@ -449,7 +620,7 @@ export default function Home() {
     <>
       {/* TODO: Investigate the issue regarding the Header component when running the application */}
       <Header
-        logo={{ href: "/" }}
+        logo={{ href: '/' }}
         items={headerProps.items}
         addDefaultMobileMenu
         secondaryLinks={headerProps.secondaryLinks}
@@ -525,28 +696,28 @@ export default function Home() {
           <SelectItemNext value="Option2">Option 2</SelectItemNext>
         </SelectNext>
         <br />
-        <Button onClick={() => handleCreateToast("Success", "success")}>
+        <Button onClick={() => handleCreateToast('Success', 'success')}>
           Trigger Success Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Error", "danger")}>
+        <Button onClick={() => handleCreateToast('Error', 'danger')}>
           Trigger Danger Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Info", "info")}>
+        <Button onClick={() => handleCreateToast('Info', 'info')}>
           Trigger Info Toast via callback
         </Button>
         <br />
-        <Button onClick={() => handleCreateToast("Warning", "warning")}>
+        <Button onClick={() => handleCreateToast('Warning', 'warning')}>
           Trigger Warning Toast via callback
         </Button>
         <br />
         <Button
           onClick={() =>
             handleCreateToast(
-              "Success",
-              "success",
-              <NextLink href="#">Custom Nextjs Link</NextLink>
+              'Success',
+              'success',
+              <NextLink href="#">Custom Nextjs Link</NextLink>,
             )
           }
         >
@@ -576,25 +747,25 @@ export default function Home() {
           <h2>Card</h2>
           <Card
             action={{
-              children: "Button",
-              type: "button",
-              variant: "secondary",
+              children: 'Button',
+              type: 'button',
+              variant: 'secondary',
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             href="#"
             inset="none"
             media={{
               config: {
-                alt: "Card Title",
-                aspectRatio: "4 / 3",
-                src: "https://placeholderjs.com/400x300",
+                alt: 'Card Title',
+                aspectRatio: '4 / 3',
+                src: 'https://placeholderjs.com/400x300',
               },
-              type: "image",
+              type: 'image',
             }}
             subTitle="Subheading"
             tag={{
-              text: "New",
-              type: "info",
+              text: 'New',
+              type: 'info',
             }}
             title="Card Title"
             type="horizontal"
@@ -602,10 +773,10 @@ export default function Home() {
           <h2>Card with Nextjs Link</h2>
           <Card
             action={{
-              children: "Learn More",
-              href: "#",
-              size: "md",
-              type: "link",
+              children: 'Learn More',
+              href: '#',
+              size: 'md',
+              type: 'link',
             }}
             content="Lorem ipsum dolor sit amet consectetur. Lectus aliquam morbi purus ac. Sollicitudin."
             title="Vertical Card Without Image"
@@ -627,8 +798,8 @@ export default function Home() {
           <Icon icon="thumb_up" />
           <IconButton
             icon={{
-              icon: "send",
-              ariaLabel: "Send",
+              icon: 'send',
+              ariaLabel: 'Send',
             }}
           />
           <Form>
@@ -693,6 +864,7 @@ export default function Home() {
             <FormFieldHint>Hint: This is a helpful hint.</FormFieldHint>
             <TextArea id="textarea-id2" maxChars={50} />
           </FormField>
+          <SelectWithReactHookForms />
           <span className="material-symbols-outlined">face</span>
 
           <br />
@@ -716,11 +888,11 @@ export default function Home() {
             </Drawer>
           </div>
 
-          <List items={["Item 1", "Item 2", "Item 3"]} type={"bullet"} />
+          <List items={['Item 1', 'Item 2', 'Item 3']} type={'bullet'} />
           <Chip label="Chip" onClose={() => null} />
           <div className="gi-h-[300px] gi-bg-gray-50 gi-overflow-auto gi-p-2">
             <Stack
-              direction={{ sm: "column", base: "row" }}
+              direction={{ sm: 'column', base: 'row' }}
               itemsAlignment="start"
               itemsDistribution="start"
               gap={5}

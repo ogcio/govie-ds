@@ -132,7 +132,9 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
 
       return showNoDataDelay ? (
         <div className="gi-select-menu-option-not-found">
-          {t('autocomplete.noData')}
+          {t('autocomplete.noData', {
+            defaultValue: 'No data found.',
+          })}
         </div>
       ) : (
         <ul>{filteredOptions}</ul>
