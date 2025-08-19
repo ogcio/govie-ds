@@ -61,10 +61,6 @@
   @apply gi-top-4 gi-left-4;
 }
 
-.gi-toast-portal[data-position='center-center'] {
-  @apply gi-top-1/2 gi-left-1/2 gi-translate-x-[-50%] gi-translate-y-[-50%];
-}
-
 .gi-toast-portal[data-position='bottom-right'] {
   @apply gi-bottom-4 gi-right-4;
 }
@@ -75,14 +71,6 @@
 
 .gi-toast-portal[data-position='top-center'] {
   @apply gi-top-4 gi-left-1/2 gi--translate-x-1/2 gi-items-center;
-}
-
-.gi-toast-portal[data-position='center-left'] {
-  @apply gi-top-1/2 gi-left-4 gi--translate-y-1/2 gi-items-start;
-}
-
-.gi-toast-portal[data-position='center-right'] {
-  @apply gi-top-1/2 gi-right-4 gi--translate-y-1/2 gi-items-end;
 }
 
 .gi-toast-portal[data-position='bottom-center'] {
