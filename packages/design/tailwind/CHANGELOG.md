@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.2...design-tailwind-v1.13.3) (2025-08-19)
+
+
+### Bug Fixes
+
+* Modal aria-hidden console warning AB[#30472](https://github.com/ogcio/govie-ds/issues/30472) ([#688](https://github.com/ogcio/govie-ds/issues/688)) ([c45fb27](https://github.com/ogcio/govie-ds/commit/c45fb27168a28f8c28b5353c55a79893dcb523c8))
+
 ## [1.13.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.1...design-tailwind-v1.13.2) (2025-08-13)
 
 
