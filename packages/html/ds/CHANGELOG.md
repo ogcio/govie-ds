@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.12.3](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.2...html-lib-v1.12.3) (2025-08-19)
+
+
+### Bug Fixes
+
+* Modal aria-hidden console warning AB[#30472](https://github.com/ogcio/govie-ds/issues/30472) ([#688](https://github.com/ogcio/govie-ds/issues/688)) ([c45fb27](https://github.com/ogcio/govie-ds/commit/c45fb27168a28f8c28b5353c55a79893dcb523c8))
+* toggle menu label visibility ([#682](https://github.com/ogcio/govie-ds/issues/682)) ([4bcf99b](https://github.com/ogcio/govie-ds/commit/4bcf99bf83bf10878500eb6be2e3833fd285961d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.3
+
 ## [1.12.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.1...html-lib-v1.12.2) (2025-08-13)
 
 
