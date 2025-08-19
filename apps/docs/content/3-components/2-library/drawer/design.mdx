@@ -1,0 +1,57 @@
+---
+title: 'Drawer'
+description: 'Drawer HTML Component'
+status: 'stable'
+component:
+  id: 'drawer'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8372-20360&p=f&m=dev'
+  status: 'stable'
+---
+
+# Drawer
+
+A Drawer is a temporary panel that slides in from the page edge to reveal supplementary UI—like navigation, filters, or actions—without taking users away from the current view. It overlays the interface, supports focus management, and typically includes a footer with actions.
+
+<Section current="design">
+
+<ComponentContainer>
+  <Drawer triggerButton={<Button>Open Drawer</Button>} position="right">
+    <DrawerBody>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </DrawerBody>
+    <DrawerFooter>
+      <Button variant="secondary" appearance="dark">
+        Cancel
+      </Button>
+      <Button>Primary</Button>
+    </DrawerFooter>
+  </Drawer>
+</ComponentContainer>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8372-20360&p=f&m=dev" />
+
+## Usage
+
+Use Drawers for non-blocking, contextual content like menus, details, and secondary actions. Prefer them when users should stay on the same page while performing a related task.
+
+### Do
+
+- Use for navigation, filters, or secondary workflows.
+- Keep content concise and scannable; group actions in the footer.
+
+### Don't
+
+- Don't place critical, time-sensitive, or destructive actions exclusively inside a Drawer.
+
+**Example:**
+
+<ComponentContainer>
+  <Drawer triggerButton={<Button>Dangerous Action</Button>}>
+    <DrawerBody>
+      Deleting all data here is irreversible. This should be in a modal dialog,
+      not a drawer.
+    </DrawerBody>
+  </Drawer>
+</ComponentContainer>
+
+</Section>
