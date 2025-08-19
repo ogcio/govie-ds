@@ -153,6 +153,7 @@ export const ModalWrapper = ({
             onClose();
           }
         }}
+        tabIndex={-1}
       >
         <div
           data-testid="modal-container"
@@ -310,7 +311,7 @@ const ModalPortal = ({
   }, []);
 
   useFocusTrap(modalRef?.current, isOpen && isMounted, {
-    initialFocus: false,
+    initialFocus: modalRef?.current ?? true,
     fallbackFocus: () => modalRef?.current,
   });
 

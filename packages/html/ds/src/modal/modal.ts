@@ -6,21 +6,48 @@ import {
 } from '../common/component';
 
 export const hideAriaOutside = (refNode: HTMLElement) => {
-  const documentContext = refNode.ownerDocument || document;
-  const bodyChildren = [...documentContext.body.children];
+  const newDocument = refNode.ownerDocument ?? document;
+  const bodyElement = newDocument.body;
 
-  const elementsToHide = bodyChildren.filter((element) => {
-    const isSameElement = element === refNode;
-    const alreadyHidden = element.getAttribute('aria-hidden') === 'true';
-    return !isSameElement && !alreadyHidden;
+  const findTopLevelHost = (node: HTMLElement): Element => {
+    let current: Element | null = node;
+    while (
+      current !== null &&
+      current.parentElement !== null &&
+      current.parentElement !== bodyElement
+    ) {
+      current = current.parentElement;
+    }
+    return current ?? bodyElement;
+  };
+
+  const topHost = findTopLevelHost(refNode);
+
+  const applied: Element[] = [];
+  let rafId: number | null = null;
+
+  topHost.removeAttribute('aria-hidden');
+
+  rafId = requestAnimationFrame(() => {
+    const children = [...bodyElement.children];
+
+    for (const element of children) {
+      if (element === topHost) {
+        continue;
+      }
+      if (element.getAttribute('aria-hidden') === 'true') {
+        continue;
+      }
+      element.setAttribute('aria-hidden', 'true');
+      applied.push(element);
+    }
   });
 
-  for (const element of elementsToHide) {
-    element.setAttribute('aria-hidden', 'true');
-  }
-
   return () => {
-    for (const element of elementsToHide) {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+    }
+    for (const element of applied) {
       element.removeAttribute('aria-hidden');
     }
   };
@@ -37,6 +64,8 @@ export class Modal extends BaseComponent<ModalOptions> {
   closeOnClick: boolean;
   closeOnOverlayClick: boolean;
   trap: FocusTrap;
+  modalControl: Element | null;
+  modalBody: any;
   ariaHiderCleanup: (() => void) | null = null;
 
   constructor(options: ModalOptions) {
@@ -53,6 +82,13 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.closeIcon = this.query.getByElement({
       name: 'modal-close-button',
     });
+    this.modalControl = this.query.getByElement({
+      name: 'modal-container',
+    });
+
+    this.modalBody = this.query.getByElement({
+      name: 'modal-body',
+    });
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
@@ -65,7 +101,9 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.bindCloseButtons();
 
     this.trap = createFocusTrap(this.modal as HTMLElement, {
-      initialFocus: false,
+      initialFocus: this.modalBody as HTMLElement,
+      fallbackFocus: () => this.modal as HTMLElement,
+      returnFocusOnDeactivate: false,
     });
   }
 
@@ -93,10 +131,13 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {
+    const newDocument = (this.modal as HTMLElement).ownerDocument ?? document;
+
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
+
       this.trap?.activate();
       this.ariaHiderCleanup = hideAriaOutside(this.modal as HTMLElement);
     } else if (
@@ -106,8 +147,20 @@ export class Modal extends BaseComponent<ModalOptions> {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
       this.modal.setAttribute('aria-hidden', 'true');
+
       this.trap?.deactivate();
       this.ariaHiderCleanup?.();
+
+      const bodyElement = newDocument.body as HTMLElement;
+      const hadTabIndex = bodyElement.hasAttribute('tabindex');
+
+      if (!hadTabIndex) {
+        bodyElement.setAttribute('tabindex', '-1');
+      }
+      bodyElement.focus({ preventScroll: true });
+      if (!hadTabIndex) {
+        bodyElement.removeAttribute('tabindex');
+      }
     }
   }
 
