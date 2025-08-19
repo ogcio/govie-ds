@@ -73,6 +73,8 @@ export type AutocompleteProps = PropsWithChildren<{
   onClose?: () => void;
   /** Controls whether the dropdown is open (controlled mode). */
   isOpen?: boolean;
+
+  value?: any;
 }> &
   Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
