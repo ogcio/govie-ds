@@ -159,12 +159,19 @@ export const useAutocompleteController = ({
   onOpen,
   onClose,
   onChange,
+  value,
 }: {
   onChange?: (input: string, name?: string) => void;
   ref?: any;
 } & Pick<
   AutocompleteProps,
-  'children' | 'defaultValue' | 'isOpen' | 'freeSolo' | 'onOpen' | 'onClose'
+  | 'children'
+  | 'defaultValue'
+  | 'isOpen'
+  | 'freeSolo'
+  | 'onOpen'
+  | 'onClose'
+  | 'value'
 >) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -179,7 +186,7 @@ export const useAutocompleteController = ({
   const [state, dispatch] = useReducer(reducer, null, () => {
     return {
       isOpen: !!isOpen,
-      value: defaultValue,
+      value,
       inputValue: defaultValue,
       autocompleteOptions: validChildren,
       isClearButtonEnabled: false,
@@ -211,6 +218,7 @@ export const useAutocompleteController = ({
     if (state.isOpen) {
       onOpen?.();
       focusInput();
+      dispatch({ type: SET_OPTIONS, payload: validChildren });
     } else {
       onClose?.();
       const label = getOptionLabelByValue(children, state.value);
@@ -220,7 +228,6 @@ export const useAutocompleteController = ({
           payload: label,
         });
         dispatch({ type: SET_IS_OPEN, payload: false });
-        onChange?.(state.value);
       } else if (!freeSolo) {
         dispatch({ type: ON_RESET });
         onChange?.('');
@@ -275,11 +282,6 @@ export const useAutocompleteController = ({
     [validChildren, state.isOpen, state.value, freeSolo],
   );
 
-  useEffect(() => {
-    debouncedFilter(state.inputValue);
-    return () => debouncedFilter.cancel();
-  }, [state.inputValue]);
-
   return {
     state,
     dispatch,
@@ -287,5 +289,6 @@ export const useAutocompleteController = ({
     listRef,
     validChildren,
     getOptionLabelByValue,
+    debouncedFilter,
   };
 };
