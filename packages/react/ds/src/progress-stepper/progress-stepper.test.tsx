@@ -89,6 +89,7 @@ describe('govieProgressStepper', () => {
 
     expect(stepElements.length).toBe(3);
   });
+
   it('should show slot content for the current and previous step index when vertical orientation', async () => {
     const screen = renderProgressStepper({
       currentStepIndex: 1,
@@ -236,5 +237,47 @@ describe('govieProgressStepper', () => {
     });
 
     await screen.axe();
+  });
+
+  it('should respect explicit stepStates when provided', () => {
+    const screen = renderComponent(
+      <ProgressStepper
+        stepStates={[
+          { completed: true },
+          { current: true },
+          { disabled: true },
+        ]}
+      >
+        <StepItem label="Step 1">
+          <div>Step 1 Content</div>
+        </StepItem>
+        <StepItem label="Step 2">
+          <div>Step 2 Content</div>
+        </StepItem>
+        <StepItem label="Step 3">
+          <div>Step 3 Content</div>
+        </StepItem>
+      </ProgressStepper>,
+    );
+
+    const stepperElement = screen.getByTestId('progress-stepper');
+    const stepElements = [
+      ...stepperElement.querySelectorAll('.gi-progress-stepper-step-container'),
+    ] as HTMLElement[];
+
+    // Step 1 - completed
+    expect(stepElements[0].dataset.completed).toBe('true');
+    expect(stepElements[0].dataset.current).not.toBe('true');
+    expect(stepElements[0].dataset.disabled).not.toBe('true');
+
+    // Step 2 - current
+    expect(stepElements[1].dataset.current).toBe('true');
+    expect(stepElements[1].dataset.completed).not.toBe('true');
+    expect(stepElements[1].dataset.disabled).not.toBe('true');
+
+    // Step 3 - disabled
+    expect(stepElements[2].dataset.disabled).toBe('true');
+    expect(stepElements[2].dataset.current).not.toBe('true');
+    expect(stepElements[2].dataset.completed).not.toBe('true');
   });
 });
