@@ -6,10 +6,10 @@ import {
   Controls,
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
-import { expect, waitFor, within } from 'storybook/test';
 import { ToastPosition } from './types.js';
 
 const meta: Meta<typeof Toast> = {
@@ -297,9 +297,9 @@ export const AllPositions: Story = {
     <>
       <ToastProvider />
       <Stack gap={4} direction="column">
-        {positions.map((pos, i) => (
+        {positions.map((pos, index) => (
           <Button
-            key={i}
+            key={index}
             onClick={() =>
               toaster.create({
                 title: `${pos.x}-${pos.y}`,
