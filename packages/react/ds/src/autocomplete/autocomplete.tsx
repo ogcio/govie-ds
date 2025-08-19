@@ -1,5 +1,5 @@
 'use client';
-import {
+import React, {
   FC,
   useRef,
   ChangeEvent,
@@ -7,6 +7,7 @@ import {
   Children,
   forwardRef,
   useImperativeHandle,
+  useEffect,
 } from 'react';
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
@@ -36,13 +37,15 @@ const {
   SET_IS_OPEN,
   TOGGLE_CLEAR_BUTTON,
   SET_HIGHLIGHTED_INDEX,
+  SET_VALUE,
 } = AUTOCOMPLETE_ACTIONS;
 
 const getIconEnd = (isOpen: boolean) =>
   isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
 const propagateOnChange =
-  (onChange: any, name?: string) => (inputValue: string) => {
+  (onChange: AutocompleteProps['onChange'], name?: string) =>
+  (inputValue: string) => {
     if (onChange) {
       const syntheticEvent = {
         target: {
@@ -53,10 +56,26 @@ const propagateOnChange =
           name,
           value: inputValue,
         },
+        type: 'change',
         bubbles: true,
         isTrusted: true,
       } as ChangeEvent<HTMLInputElement>;
-      onChange?.(syntheticEvent);
+      onChange(syntheticEvent);
+    }
+  };
+
+const propagateOnBlur =
+  (onBlur: AutocompleteProps['onBlur'], name?: string) =>
+  (inputValue: string) => {
+    if (onBlur) {
+      const syntheticEvent = {
+        target: { name, value: inputValue },
+        currentTarget: { name, value: inputValue },
+        type: 'blur',
+        bubbles: true,
+        isTrusted: true,
+      } as unknown as any;
+      onBlur(syntheticEvent);
     }
   };
 
@@ -71,16 +90,36 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       isLoading,
       freeSolo = false,
       onChange: onAutocompleteChange,
+      onBlur: onAutocompleteBlur,
       name,
+      value,
     } = props;
+    const isPointerDownOnMenu = useRef(false);
 
-    const { state, dispatch, inputRef, getOptionLabelByValue, listRef } =
-      useAutocompleteController({
-        ...props,
-        onChange: propagateOnChange(onAutocompleteChange, name),
-      });
+    const {
+      state,
+      dispatch,
+      inputRef,
+      getOptionLabelByValue,
+      listRef,
+      debouncedFilter,
+    } = useAutocompleteController({
+      ...props,
+      onChange: propagateOnChange(onAutocompleteChange, name),
+    });
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+
+    useEffect(() => {
+      if (value !== undefined) {
+        dispatch({ type: SET_VALUE, payload: value });
+        dispatch({
+          type: SET_INPUT_VALUE,
+          payload: getOptionLabelByValue(children, value),
+        });
+        dispatch({ type: TOGGLE_CLEAR_BUTTON });
+      }
+    }, [value]);
 
     const handleOnOpenChange = (isOpen: boolean) => {
       dispatch({ type: SET_IS_OPEN, payload: isOpen });
@@ -103,6 +142,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       if (value) {
         dispatch({ type: SET_IS_OPEN, payload: true });
       }
+
+      debouncedFilter(value);
     };
 
     const handleOnChange = (
@@ -144,9 +185,33 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           value,
         },
       });
-      if (onSelectItem) {
-        onSelectItem(value);
+
+      propagateOnChange(onAutocompleteChange, name)(value);
+      setTimeout(() => {
+        propagateOnBlur(onAutocompleteBlur, name)(value);
+        inputRef.current?.blur();
+      }, 0);
+      onSelectItem?.(value);
+    };
+
+    const handleOnBlur = (event: any) => {
+      const { relatedTarget } = event;
+
+      if (
+        (relatedTarget &&
+          (listRef.current?.contains(relatedTarget) ||
+            iconEndRef.current?.contains(relatedTarget))) ||
+        isPointerDownOnMenu.current
+      ) {
+        setTimeout(() => (isPointerDownOnMenu.current = false), 0);
+        return;
       }
+
+      const current =
+        (state.value as string | undefined) ??
+        (state.inputValue as string) ??
+        '';
+      propagateOnBlur(onAutocompleteBlur, name)(current);
     };
 
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -207,12 +272,18 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           onIconEndClick={handleOnIconEndClick}
           onChange={handleOnChange}
           onClick={handleOnClick}
+          onBlur={handleOnBlur}
           clearButtonEnabled={state.isClearButtonEnabled}
           inputActionPosition="beforeSuffix"
-          aria-label={t('autocomplete.placeholder')}
+          aria-label={t('autocomplete.placeholder', {
+            defaultValue: 'Type to Search',
+          })}
           aria-disabled={disabled}
           disabled={disabled}
-          placeholder={placeholder || t('autocomplete.placeholder')}
+          placeholder={
+            placeholder ||
+            t('autocomplete.placeholder', { defaultValue: 'Type to Search' })
+          }
           iconEndClassName={cn({
             'gi-cursor-pointer': !disabled && !freeSolo,
             'gi-cursor-not-allowed gi-pointer-events-none':
