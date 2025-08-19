@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.15.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.1...react-lib-v1.15.2) (2025-08-19)
+
+
+### Bug Fixes
+
+* add progress stepper step states AB[#30471](https://github.com/ogcio/govie-ds/issues/30471) ([#687](https://github.com/ogcio/govie-ds/issues/687)) ([e69d0ac](https://github.com/ogcio/govie-ds/commit/e69d0ac9d4559372a502db4b3da8ecaac9129cc2))
+* Modal aria-hidden console warning AB[#30472](https://github.com/ogcio/govie-ds/issues/30472) ([#688](https://github.com/ogcio/govie-ds/issues/688)) ([c45fb27](https://github.com/ogcio/govie-ds/commit/c45fb27168a28f8c28b5353c55a79893dcb523c8))
+* SelectNext with react-hook-forms AB[#30473](https://github.com/ogcio/govie-ds/issues/30473) ([#685](https://github.com/ogcio/govie-ds/issues/685)) ([6a1ddbd](https://github.com/ogcio/govie-ds/commit/6a1ddbdc803c690f84c97a82d590224434239f60))
+* toggle menu label visibility ([#682](https://github.com/ogcio/govie-ds/issues/682)) ([4bcf99b](https://github.com/ogcio/govie-ds/commit/4bcf99bf83bf10878500eb6be2e3833fd285961d))
+* update input text component to accept react node for icon start/end ([#683](https://github.com/ogcio/govie-ds/issues/683)) ([10e3e19](https://github.com/ogcio/govie-ds/commit/10e3e1953e4c02f827242af34c1703a8d0c7d469))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.3
+
 ## [1.15.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.0...react-lib-v1.15.1) (2025-08-13)
 
 
