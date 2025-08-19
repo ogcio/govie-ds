@@ -138,7 +138,7 @@ export class Modal extends BaseComponent<ModalOptions> {
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
 
-      this.trap.activate();
+      this.trap?.activate();
       this.ariaHiderCleanup = hideAriaOutside(this.modal as HTMLElement);
     } else if (
       (this.closeOnClick && this.closeOnOverlayClick) ||
