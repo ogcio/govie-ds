@@ -67,17 +67,57 @@ export const Default: Story = {
       type: { name: 'number', required: false },
       description: 'Vertical spacing between steps. Default value is 14',
     },
+    stepStates: {
+      control: 'object',
+      description:
+        'Array describing the state (completed/current/disabled) for each step.',
+    },
   },
   args: {
     currentStepIndex: 1,
     children: [
-      <StepItem label="Start Your Application" />,
-      <StepItem label="Personal Information" />,
-      <StepItem label="Eligibility Check" />,
-      <StepItem label="Documents Submission" />,
-      <StepItem label="Review" />,
-      <StepItem label="Complete & Submit" />,
+      <StepItem key="default-step-1" label="Start Your Application" />,
+      <StepItem key="default-step-2" label="Personal Information" />,
+      <StepItem key="default-step-3" label="Eligibility Check" />,
+      <StepItem key="default-step-4" label="Documents Submission" />,
+      <StepItem key="default-step-5" label="Review" />,
+      <StepItem key="default-step-6" label="Complete & Submit" />,
     ],
+  },
+};
+
+export const WithStepStates: Story = {
+  args: {
+    currentStepIndex: 1,
+    indicator: 'number',
+    children: [],
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`stepStates` allows independent navigation between steps, where each step can be completed without following a strict order. This object can be used to control the state of each step with `completed`, `current`, and `disabled` properties.',
+      },
+    },
+  },
+  render: () => {
+    const stepStates = [
+      { completed: false, disabled: false, current: true },
+      { completed: false, disabled: false, current: true },
+      { completed: false, disabled: false, current: false },
+      { completed: false, disabled: false, current: false },
+      { completed: true, disabled: false, current: false },
+    ];
+
+    return (
+      <ProgressStepper stepStates={stepStates} orientation="vertical">
+        <StepItem key="with-step-states-step-1" label="Step 1" />
+        <StepItem key="with-step-states-step-2" label="Step 2" />
+        <StepItem key="with-step-states-step-3" label="Step 3" />
+        <StepItem key="with-step-states-step-4" label="Step 4" />
+        <StepItem key="with-step-states-step-5" label="Step 5" />
+      </ProgressStepper>
+    );
   },
 };
 
@@ -86,12 +126,12 @@ export const WithNumbersIndicator: Story = {
     currentStepIndex: 2,
     indicator: 'number',
     children: [
-      <StepItem label="Start Your Application" />,
-      <StepItem label="Personal Information" />,
-      <StepItem label="Eligibility Check" />,
-      <StepItem label="Documents Submission" />,
-      <StepItem label="Review" />,
-      <StepItem label="Complete & Submit" />,
+      <StepItem key="with-numbers-step-1" label="Start Your Application" />,
+      <StepItem key="with-numbers-step-2" label="Personal Information" />,
+      <StepItem key="with-numbers-step-3" label="Eligibility Check" />,
+      <StepItem key="with-numbers-step-4" label="Documents Submission" />,
+      <StepItem key="with-numbers-step-5" label="Review" />,
+      <StepItem key="with-numbers-step-6" label="Complete & Submit" />,
     ],
   },
 };
@@ -105,11 +145,11 @@ export const WithoutLabels: Story = {
   render: () => {
     return (
       <ProgressStepper orientation="horizontal">
-        <StepItem ariaLabel="Step 1" />
-        <StepItem ariaLabel="Step 2" />
-        <StepItem ariaLabel="Step 3" />
-        <StepItem ariaLabel="Step 4" />
-        <StepItem ariaLabel="Step 5" />
+        <StepItem key="withoutlabels-step-1" ariaLabel="Step 1" />
+        <StepItem key="withoutlabels-step-2" ariaLabel="Step 2" />
+        <StepItem key="withoutlabels-step-3" ariaLabel="Step 3" />
+        <StepItem key="withoutlabels-step-4" ariaLabel="Step 4" />
+        <StepItem key="withoutlabels-step-5" ariaLabel="Step 5" />
       </ProgressStepper>
     );
   },
@@ -127,32 +167,47 @@ export const WithStepContent: Story = {
     return (
       <Stack aria-label="Progress Stepper with Content">
         <ProgressStepper currentStepIndex={currentIndex}>
-          <StepItem label="Start Your Application">
+          <StepItem
+            key="withstepcontent-start-your-application"
+            label="Start Your Application"
+          >
             <Stack gap={2} className="gi-pt-2">
               Begin your application by filling in basic details.
             </Stack>
           </StepItem>
-          <StepItem label="Personal Information">
+          <StepItem
+            key="withstepcontent-personal-information"
+            label="Personal Information"
+          >
             <Stack gap={2} className="gi-pt-2">
               Provide your personal information, such as name, age, etc.
             </Stack>
           </StepItem>
-          <StepItem label="Eligibility Check">
+          <StepItem
+            key="withstepcontent-eligibility-check"
+            label="Eligibility Check"
+          >
             <Stack gap={2} className="gi-pt-2">
               Ensure that you meet the eligibility criteria for the application.
             </Stack>
           </StepItem>
-          <StepItem label="Documents Submission">
+          <StepItem
+            key="withstepcontent-documents-submission"
+            label="Documents Submission"
+          >
             <Stack gap={2} className="gi-pt-2">
               Upload all required documents to proceed with the application.
             </Stack>
           </StepItem>
-          <StepItem label="Review">
+          <StepItem key="withstepcontent-review" label="Review">
             <Stack gap={2} className="gi-pt-2">
               Review all the information you’ve provided before submitting.
             </Stack>
           </StepItem>
-          <StepItem label="Complete & Submit">
+          <StepItem
+            key="withstepcontent-complete-submit"
+            label="Complete & Submit"
+          >
             <Stack gap={2} className="gi-pt-2">
               Once everything is confirmed, submit your application.
             </Stack>
@@ -188,11 +243,11 @@ export const WithVerticalOrientation: Story = {
   args: {
     currentStepIndex: 1,
     children: [
-      <StepItem label="Step 1" />,
-      <StepItem label="Step 2" />,
-      <StepItem label="Step 3" />,
-      <StepItem label="Step 4" />,
-      <StepItem label="Step 5" />,
+      <StepItem key="withverticalorientation-step-1" label="Step 1" />,
+      <StepItem key="withverticalorientation-step-2" label="Step 2" />,
+      <StepItem key="withverticalorientation-step-3" label="Step 3" />,
+      <StepItem key="withverticalorientation-step-4" label="Step 4" />,
+      <StepItem key="withverticalorientation-step-5" label="Step 5" />,
     ],
     orientation: 'vertical',
   },
@@ -225,22 +280,22 @@ export const WithContentStepVertical: Story = {
     return (
       <Stack aria-label="Progress Stepper with Vertical Content">
         <ProgressStepper currentStepIndex={currentIndex} orientation="vertical">
-          <StepItem label="Step 1">
+          <StepItem key="withcontentstepvertical-step-1" label="Step 1">
             <Stack>Here are the content for Step 1</Stack>
           </StepItem>
-          <StepItem label="Step 2">
+          <StepItem key="withcontentstepvertical-step-2" label="Step 2">
             <Stack>Here are the content for Step 2</Stack>
           </StepItem>
-          <StepItem label="Step 3">
+          <StepItem key="withcontentstepvertical-step-3" label="Step 3">
             <Stack>Here are the content for Step 3</Stack>
           </StepItem>
-          <StepItem label="Step 4">
+          <StepItem key="withcontentstepvertical-step-4" label="Step 4">
             <Stack>Here are the content for Step 4</Stack>
           </StepItem>
-          <StepItem label="Step 5">
+          <StepItem key="withcontentstepvertical-step-5" label="Step 5">
             <Stack>Here are the content for Step 5</Stack>
           </StepItem>
-          <StepItem label="Step 6">
+          <StepItem key="withcontentstepvertical-step-6" label="Step 6">
             <Stack>Here are the content for Step 6</Stack>
           </StepItem>
         </ProgressStepper>
@@ -285,6 +340,7 @@ export const WithFormContentStepVertical: Story = {
             orientation="vertical"
           >
             <StepItem
+              key="withformcontentstepvertical-step-1"
               label="This step is for requesting information, this is the first step the user needs to finish."
               defaultOpen
             >
@@ -320,7 +376,11 @@ export const WithFormContentStepVertical: Story = {
                 </FormField>
               </Stack>
             </StepItem>
-            <StepItem label="Step 2" defaultOpen>
+            <StepItem
+              key="withformcontentstepvertical-step-2"
+              label="Step 2"
+              defaultOpen
+            >
               <Stack gap={2}>
                 <Heading size="sm">Query Details</Heading>
                 <Paragraph>
@@ -367,7 +427,7 @@ export const WithFormContentStepVertical: Story = {
                 </FormField>
               </Stack>
             </StepItem>
-            <StepItem defaultOpen>
+            <StepItem key="withformcontentstepvertical-step-3" defaultOpen>
               <Stack gap={2}>
                 <Heading size="sm">Contact Details</Heading>
                 <Paragraph>
@@ -441,11 +501,26 @@ export const WithVerticalLongText: Story = {
   args: {
     currentStepIndex: 1,
     children: [
-      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
-      <StepItem label="This step is for requesting information, this is a long step the user needs to finish." />,
+      <StepItem
+        key="withverticallongtext-step-1"
+        label="This step is for requesting information, this is a long step the user needs to finish."
+      />,
+      <StepItem
+        key="withverticallongtext-step-2"
+        label="This step is for requesting information, this is a long step the user needs to finish."
+      />,
+      <StepItem
+        key="withverticallongtext-step-3"
+        label="This step is for requesting information, this is a long step the user needs to finish."
+      />,
+      <StepItem
+        key="withverticallongtext-step-4"
+        label="This step is for requesting information, this is a long step the user needs to finish."
+      />,
+      <StepItem
+        key="withverticallongtext-step-5"
+        label="This step is for requesting information, this is a long step the user needs to finish."
+      />,
     ],
     orientation: 'vertical',
   },
@@ -455,11 +530,11 @@ export const WithCustomVerticalGap: Story = {
   args: {
     currentStepIndex: 1,
     children: [
-      <StepItem label="Step 1" />,
-      <StepItem label="Step 2" />,
-      <StepItem label="Step 3" />,
-      <StepItem label="Step 4" />,
-      <StepItem label="Step 5" />,
+      <StepItem key="withcustomverticalgap-step-1" label="Step 1" />,
+      <StepItem key="withcustomverticalgap-step-2" label="Step 2" />,
+      <StepItem key="withcustomverticalgap-step-3" label="Step 3" />,
+      <StepItem key="withcustomverticalgap-step-4" label="Step 4" />,
+      <StepItem key="withcustomverticalgap-step-5" label="Step 5" />,
     ],
     orientation: 'vertical',
     verticalGap: 8,
