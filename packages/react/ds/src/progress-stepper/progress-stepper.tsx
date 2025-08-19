@@ -210,7 +210,7 @@ export const ProgressStepper = ({
             // Default LINEAR mode
             isCurrentStep = !completeAll && currentStepIndex === index;
             isCompleted = completeAll || index < currentStepIndex;
-            isDisabled = !isCurrentStep && !isCompleted;
+            isDisabled = false;
           }
 
           const isLastStep = index === children.length - 1;
