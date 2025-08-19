@@ -90,7 +90,7 @@ export const Default: Story = {
     variant: 'info',
     duration: 5000,
     position: {
-      x: 'center',
+      x: 'right',
       y: 'bottom',
     },
   },
