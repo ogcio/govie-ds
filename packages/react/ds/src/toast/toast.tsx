@@ -8,13 +8,10 @@ import type { ToastPosition, ToastProps } from './types.js';
 
 const positions: ToastPosition[] = [
   { x: 'left', y: 'top' },
-  { x: 'left', y: 'center' },
   { x: 'left', y: 'bottom' },
   { x: 'center', y: 'top' },
-  { x: 'center', y: 'center' },
   { x: 'center', y: 'bottom' },
   { x: 'right', y: 'top' },
-  { x: 'right', y: 'center' },
   { x: 'right', y: 'bottom' },
 ];
 

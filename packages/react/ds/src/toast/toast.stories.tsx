@@ -6,9 +6,11 @@ import {
   Controls,
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
+import { ToastPosition } from './types.js';
 
 const meta: Meta<typeof Toast> = {
   title: 'Application/Toast',
@@ -275,5 +277,68 @@ export const AllVariants: Story = {
         </Stack>
       </>
     );
+  },
+};
+
+const positions: ToastPosition[] = [
+  { x: 'left', y: 'top' },
+  { x: 'center', y: 'top' },
+  { x: 'right', y: 'top' },
+  { x: 'left', y: 'bottom' },
+  { x: 'center', y: 'bottom' },
+  { x: 'right', y: 'bottom' },
+];
+
+export const AllPositions: Story = {
+  render: () => (
+    <>
+      <ToastProvider />
+      <Stack gap={4} direction="column">
+        {positions.map((pos, index) => (
+          <Button
+            key={index}
+            onClick={() =>
+              toaster.create({
+                title: `${pos.x}-${pos.y}`,
+                description: 'Toast message',
+                animation: 'fadeinup',
+                variant: 'info',
+                duration: 2000,
+                position: pos,
+              })
+            }
+          >
+            Trigger {pos.x}-{pos.y}
+          </Button>
+        ))}
+      </Stack>
+    </>
+  ),
+  play: async () => {
+    for (const pos of positions) {
+      const event = new CustomEvent('govie:add-toast', {
+        detail: {
+          title: `${pos.x}-${pos.y}`,
+          description: 'Toast message',
+          animation: 'fadeinup',
+          variant: 'info',
+          duration: 2000,
+          position: pos,
+        },
+      });
+      globalThis.window.dispatchEvent(event);
+
+      await waitFor(() => {
+        const toastRegion = document.querySelector(
+          `[data-position='${pos.y}-${pos.x}']`,
+        );
+        expect(toastRegion).toBeInTheDocument();
+        expect(
+          within(toastRegion as HTMLElement).getByTestId(
+            `${pos.x}-${pos.y}-info`,
+          ),
+        ).toBeVisible();
+      });
+    }
   },
 };
