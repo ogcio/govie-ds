@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from 'storybook/test';
+import { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -522,4 +525,65 @@ export const InputSearch: Story = {
       <InputText {...props} />
     </FormField>
   ),
+};
+
+export const WithReactHookForm: Story = {
+  render: () => {
+    const methods = useForm<{ username: string }>({
+      defaultValues: { username: '' },
+    });
+    const [formData, setFormData] = useState('');
+
+    const onSubmit = methods.handleSubmit((data) => {
+      setFormData(JSON.stringify(data));
+      methods.reset();
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField data-testid="form-field-id">
+            {methods.formState.errors.username && (
+              <FormFieldError>
+                {methods.formState.errors.username.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="input-text-id">Username</FormFieldLabel>
+            <InputText
+              id="input-text-id"
+              {...methods.register('username', { required: 'Required' })}
+              data-testid="input-text-id"
+            />
+          </FormField>
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" data-testid="submit-btn">
+              Submit
+            </Button>
+            <Button onClick={() => methods.reset()} data-testid="reset-btn">
+              Reset
+            </Button>
+          </div>
+          <div>form data: {formData}</div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const input = canvas.getByTestId('input-text-id');
+    const submitButton = canvas.getByTestId('submit-btn');
+    const resetButton = canvas.getByTestId('reset-btn');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(input, 'Ramon');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(resetButton);
+    expect((input as HTMLInputElement).value).toBe('');
+  },
 };
