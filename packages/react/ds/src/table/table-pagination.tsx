@@ -1,6 +1,7 @@
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { SelectItem, SelectNative } from '../select/select-native.js';
 
 export type TablePaginationProps = {
   align?: 'start' | 'center' | 'end';
@@ -58,17 +59,32 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           icon: 'chevron_left',
         }}
       />
-      <div className="gi-table-pagination-label" aria-live="polite">
-        <span className="gi-font-bold">
+      <div
+        className="gi-table-pagination-label gi-space-x-2"
+        aria-live="polite"
+      >
+        <span>
           {t('table.pagination.page', {
-            currentPage,
-            defaultValue: `Page ${currentPage} `,
+            defaultValue: 'Page',
           })}
         </span>
-        {t('table.pagination.ofTotal', {
-          totalPages,
-          defaultValue: `of ${totalPages}`,
-        })}
+        <SelectNative
+          value={currentPage}
+          className="!gi-min-w-12"
+          onChange={(e) => onPageChange(Number(e.target.value))}
+        >
+          {Array.from({ length: totalPages }, (_, index) => (
+            <SelectItem key={index + 1} value={index + 1}>
+              {index + 1}
+            </SelectItem>
+          ))}
+        </SelectNative>
+        <span>
+          {t('table.pagination.ofTotal', {
+            totalPages,
+            defaultValue: `of ${totalPages}`,
+          })}
+        </span>
       </div>
       <IconButton
         onClick={handleNext}

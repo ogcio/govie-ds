@@ -47,6 +47,7 @@ import {
 } from '../data-grid-header.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
+import { SelectItem, SelectNative } from '../../select/select-native.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -458,9 +459,29 @@ export const WithReactHookForm = () => {
         </TableBody>
       </Table>
       <DataGridFooter>
+        <DataGridFooterStart className="gi-space-x-2">
+          <span>Rows per page</span>
+          <SelectNative
+            className="!gi-min-w-12"
+            value={pagination.pageSize}
+            onChange={(e) => {
+              const pageSize = Number(e.target.value);
+              const pageIndex = pagination.pageIndex;
+              setPagination({
+                pageIndex,
+                pageSize,
+              });
+            }}
+          >
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="20">20</SelectItem>
+            <SelectItem value="30">30</SelectItem>
+            <SelectItem value="40">40</SelectItem>
+          </SelectNative>
+        </DataGridFooterStart>
         <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
           <TablePagination
-            currentPage={table.getState().pagination.pageIndex + 1}
+            currentPage={pagination.pageIndex + 1}
             totalPages={table.getPageCount()}
             onPageChange={(page) => table.setPageIndex(page - 1)}
           />
