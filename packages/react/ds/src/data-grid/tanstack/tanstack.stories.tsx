@@ -548,7 +548,15 @@ export const DataGridFooterBasic: Story = {
         <span className="gi-text-md">DataGrid Footer Example</span>
       </DataGridFooterStart>
       <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
-        <span className="gi-text-md">Showing 1 of 10</span>
+        <DataGridFooterStart className="gi-space-x-2">
+          <span>Rows per page</span>
+          <SelectNative className="!gi-min-w-12">
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="20">20</SelectItem>
+            <SelectItem value="30">30</SelectItem>
+            <SelectItem value="40">40</SelectItem>
+          </SelectNative>
+        </DataGridFooterStart>
       </DataGridFooterCenter>
       <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
         <TablePagination
