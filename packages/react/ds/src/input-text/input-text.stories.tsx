@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
@@ -532,19 +531,17 @@ export const WithReactHookForm: Story = {
     const methods = useForm<{ username: string }>({
       defaultValues: { username: '' },
     });
-    const [formData, setFormData] = useState('');
 
-    const onSubmit = methods.handleSubmit((data) => {
-      setFormData(JSON.stringify(data));
-      methods.reset();
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset({ username: '' });
     });
 
     return (
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
-          <FormField data-testid="form-field-id">
+          <FormField>
             {methods.formState.errors.username && (
-              <FormFieldError>
+              <FormFieldError dataTestid="error-msg">
                 {methods.formState.errors.username.message}
               </FormFieldError>
             )}
@@ -556,14 +553,13 @@ export const WithReactHookForm: Story = {
             />
           </FormField>
           <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
-            <Button type="submit" data-testid="submit-btn">
+            <Button type="submit" dataTestid="submit-btn">
               Submit
             </Button>
-            <Button onClick={() => methods.reset()} data-testid="reset-btn">
+            <Button onClick={() => methods.reset()} dataTestid="reset-btn">
               Reset
             </Button>
           </div>
-          <div>form data: {formData}</div>
         </form>
       </FormProvider>
     );
@@ -574,16 +570,19 @@ export const WithReactHookForm: Story = {
 
     const input = canvas.getByTestId('input-text-id');
     const submitButton = canvas.getByTestId('submit-btn');
-    const resetButton = canvas.getByTestId('reset-btn');
 
-    await userEvent.click(submitButton);
-    expect(canvas.getByTestId('error-msg')).toBeDefined();
-
-    await userEvent.type(input, 'Ramon');
+    await userEvent.type(input, 'John');
     await userEvent.click(submitButton);
     expect(canvas.queryByTestId('error-msg')).toBeNull();
 
-    await userEvent.click(resetButton);
+    await userEvent.click(submitButton);
     expect((input as HTMLInputElement).value).toBe('');
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(input, 'John');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(document.body);
   },
 };
