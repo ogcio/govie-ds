@@ -71,7 +71,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
         <SelectNative
           value={currentPage}
           className="!gi-min-w-12"
-          onChange={(e) => onPageChange(Number(e.target.value))}
+          onChange={(event) => onPageChange(Number(event.target.value))}
         >
           {Array.from({ length: totalPages }, (_, index) => (
             <SelectItem key={index + 1} value={index + 1}>

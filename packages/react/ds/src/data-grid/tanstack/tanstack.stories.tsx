@@ -22,6 +22,7 @@ import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
+import { SelectItem, SelectNative } from '../../select/select-native.js';
 import {
   Table,
   TableHead,
@@ -47,7 +48,6 @@ import {
 } from '../data-grid-header.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
-import { SelectItem, SelectNative } from '../../select/select-native.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
@@ -464,8 +464,8 @@ export const WithReactHookForm = () => {
           <SelectNative
             className="!gi-min-w-12"
             value={pagination.pageSize}
-            onChange={(e) => {
-              const pageSize = Number(e.target.value);
+            onChange={(event) => {
+              const pageSize = Number(event.target.value);
               const pageIndex = pagination.pageIndex;
               setPagination({
                 pageIndex,
@@ -545,18 +545,16 @@ export const DataGridFooterBasic: Story = {
   render: () => (
     <DataGridFooter>
       <DataGridFooterStart className="gi-w-1/3">
-        <span className="gi-text-md">DataGrid Footer Example</span>
+        <span>Data Grid Example</span>
       </DataGridFooterStart>
-      <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
-        <DataGridFooterStart className="gi-space-x-2">
-          <span>Rows per page</span>
-          <SelectNative className="!gi-min-w-12">
-            <SelectItem value="10">10</SelectItem>
-            <SelectItem value="20">20</SelectItem>
-            <SelectItem value="30">30</SelectItem>
-            <SelectItem value="40">40</SelectItem>
-          </SelectNative>
-        </DataGridFooterStart>
+      <DataGridFooterCenter className="gi-w-1/3 gi-space-x-2">
+        <span>Rows per page</span>
+        <SelectNative className="!gi-min-w-12">
+          <SelectItem value="10">10</SelectItem>
+          <SelectItem value="20">20</SelectItem>
+          <SelectItem value="30">30</SelectItem>
+          <SelectItem value="40">40</SelectItem>
+        </SelectNative>
       </DataGridFooterCenter>
       <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
         <TablePagination
