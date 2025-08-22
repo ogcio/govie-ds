@@ -85,9 +85,6 @@ export type SelectNextProps = PropsWithChildren<
     value?: string;
     enableSearch?: boolean;
     disabled?: boolean;
-    /**
-     * Works only when `enableSearch` is set to `true`
-     */
     placeholder?: string;
   } & Omit<HTMLAttributes<HTMLDivElement>, `onChange`>
 >;

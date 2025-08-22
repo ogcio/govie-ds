@@ -75,10 +75,12 @@ export const Default: Story = {
   args: {
     defaultValue: '',
     children: [],
+    id: 'autocomplete-default-id',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
+    expect(input).toHaveAttribute('id', 'autocomplete-default-id');
     await userEvent.type(input, 'Backend', { delay: 100 });
     const option = await canvas.findByText('Backend Dev.');
     expect(option).toBeVisible();
@@ -95,7 +97,7 @@ export const WithDefaultValue: Story = {
       <FormField className="gi-w-56">
         <FormFieldLabel>With Default Value</FormFieldLabel>
 
-        <Autocomplete {...props} value={options[1].value}>
+        <Autocomplete {...props} value={options[1].value} id="test">
           {options.map(({ value, label }) => (
             <AutocompleteItem value={value} key={`${label}-${value}`}>
               {label}

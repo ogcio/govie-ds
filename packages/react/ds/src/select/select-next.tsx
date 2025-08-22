@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 import { InputText } from '../input-text/input-text.js';
 import { Popover } from '../popover/popover.js';
 import {
@@ -39,6 +40,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       disabled,
       name,
       onBlur,
+      placeholder,
       ...props
     },
     ref,
@@ -208,7 +210,10 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           aria-label="Select an option"
           aria-disabled={disabled}
           disabled={disabled}
-          placeholder={inputValue || 'Select'}
+          placeholder={
+            placeholder ??
+            t('select.next.placeholder', { defaultValue: 'Search' })
+          }
           readOnly
           inputClassName="gi-cursor-pointer"
           iconEndClassName={cn({
