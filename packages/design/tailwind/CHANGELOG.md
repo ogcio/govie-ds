@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.4](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.3...design-tailwind-v1.13.4) (2025-08-22)
+
+
+### Bug Fixes
+
+* add missing position styling and associated tests for Toast AB[#30509](https://github.com/ogcio/govie-ds/issues/30509) ([#690](https://github.com/ogcio/govie-ds/issues/690)) ([faec8f7](https://github.com/ogcio/govie-ds/commit/faec8f79594ddbb1d5919d514f7b6632965576e5))
+
 ## [1.13.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.2...design-tailwind-v1.13.3) (2025-08-19)
 
 
