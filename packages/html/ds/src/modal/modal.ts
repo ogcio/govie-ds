@@ -134,6 +134,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {
     const newDocument = (this.modal as HTMLElement).ownerDocument ?? document;
     this.isOpen = isOpen;
+    this.modal.setAttribute('data-open', String(isOpen));
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
