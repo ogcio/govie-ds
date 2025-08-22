@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.15.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.2...react-lib-v1.15.3) (2025-08-22)
+
+
+### Bug Fixes
+
+* add missing position styling and associated tests for Toast AB[#30509](https://github.com/ogcio/govie-ds/issues/30509) ([#690](https://github.com/ogcio/govie-ds/issues/690)) ([faec8f7](https://github.com/ogcio/govie-ds/commit/faec8f79594ddbb1d5919d514f7b6632965576e5))
+* Popover scroll AB[#30512](https://github.com/ogcio/govie-ds/issues/30512) ([#693](https://github.com/ogcio/govie-ds/issues/693)) ([93fdf54](https://github.com/ogcio/govie-ds/commit/93fdf54de1c25211a236df57196c9d8828d8038e))
+* SelectNext placeholder and adding id prop AB[#30571](https://github.com/ogcio/govie-ds/issues/30571) ([#697](https://github.com/ogcio/govie-ds/issues/697)) ([6be0ad3](https://github.com/ogcio/govie-ds/commit/6be0ad388dc4d27c81ee26e0f50c6e478c724c51))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.13.4
+
 ## [1.15.2](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.1...react-lib-v1.15.2) (2025-08-19)
 
 
