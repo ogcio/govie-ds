@@ -31,17 +31,6 @@
     "prepare": "husky",
     "typecheck": "pnpm -r typecheck"
   },
-  "lint-staged": {
-    "packages/html/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/design-system-html run lint --fix"
-    ],
-    "packages/react/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/design-system-react run lint --fix"
-    ],
-    "*.{json,md,mdx,css,scss,yml,yaml}": [
-      "pnpm exec prettier -w --ignore-unknown --"
-    ]
-  },
   "devDependencies": {
     "@chromatic-com/storybook": "4.0.1",
     "@commitlint/cli": "^19.8.1",

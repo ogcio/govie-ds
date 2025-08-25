@@ -1,3 +1,4 @@
 echo "Running pre-commit..."
-pnpm exec lint-staged --concurrent false
-pnpm typecheck || exit 1
+pnpm typecheck 
+pnpm format:check
+pnpm lint 
