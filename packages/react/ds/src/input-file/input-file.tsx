@@ -6,6 +6,7 @@ import type { InputFileProps } from './types.js';
 export const InputFile = forwardRef<HTMLInputElement, InputFileProps>(
   ({ className, ...props }, ref) => (
     <Input
+      data-testid={props.dataTestid}
       {...props}
       className={cn(className, 'gi-input-file')}
       type="file"

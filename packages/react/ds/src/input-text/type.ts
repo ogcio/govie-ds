@@ -41,6 +41,7 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   halfFluid?: boolean;
   clearButtonEnabled?: boolean;
   containerProps?: any;
+  dataTestId?: string;
 };
 
 export type InputTextTableCellProps = InputTextProps & {

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
+import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import {
@@ -424,5 +425,92 @@ export const Uncontrolled: Story = {
 
     const output = canvas.getByText('Value: Hello, world!');
     expect(output).toBeInTheDocument();
+  },
+};
+
+export const WithReactHookForm: Story = {
+  render: () => {
+    const methods = useForm<{ message: string }>({
+      defaultValues: { message: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset();
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField data-testid="form-field-id">
+            {methods.formState.errors.message && (
+              <FormFieldError data-testid="error-msg">
+                {methods.formState.errors.message.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="textarea-id-0">Message</FormFieldLabel>
+
+            <Controller
+              name="message"
+              control={methods.control}
+              rules={{ required: 'Required' }}
+              render={({ field }) => (
+                <TextArea
+                  id="textarea-id-0"
+                  rows={4}
+                  cols={100}
+                  maxChars={20}
+                  clearButtonEnabled
+                  data-testid="textarea-id-0"
+                  {...field}
+                />
+              )}
+            />
+          </FormField>
+
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" data-testid="submit-btn">
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={() => methods.reset()}
+              data-testid="reset-btn"
+            >
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textAreaElement = canvas.getByTestId(
+      'textarea-id-0',
+    ) as HTMLTextAreaElement;
+    const submitButton = canvas.getByTestId('submit-btn');
+    const resetButton = canvas.getByTestId('reset-btn');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(textAreaElement, 'Hello world');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    const remainingBeforeReset = canvas.getByText(
+      /^You have \d+ characters remaining$/,
+    );
+    expect(remainingBeforeReset).toBeTruthy();
+
+    await userEvent.click(resetButton);
+    expect(textAreaElement.value).toBe('');
+
+    const remainingAfterReset = canvas.getByText(
+      /^You have 20 characters remaining$/,
+    );
+    expect(remainingAfterReset).toBeTruthy();
   },
 };

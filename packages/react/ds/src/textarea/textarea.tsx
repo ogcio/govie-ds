@@ -40,6 +40,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       className,
       clearButtonEnabled,
       onChange,
+      name,
       ...props
     },
     externalRef,
@@ -79,9 +80,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         }
 
         const event = {
-          target: {
-            value: '',
-          },
+          target: { name, value: '' },
+          currentTarget: { name, value: '' },
+          type: 'change',
+          bubbles: true,
         } as React.ChangeEvent<HTMLTextAreaElement>;
 
         if (onChange) {
@@ -106,6 +108,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               </div>
             )}
             <textarea
+              name={name}
               rows={rows}
               cols={cols}
               autoComplete={autoComplete}

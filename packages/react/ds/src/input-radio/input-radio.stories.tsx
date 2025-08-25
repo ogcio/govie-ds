@@ -1,4 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { userEvent, within, expect } from 'storybook/test';
+import { Button } from '../button/button.js';
+import {
+  FormField,
+  FormFieldError,
+  FormFieldLabel,
+} from '../forms/form-field/form-field.js';
 import { InputRadio } from './input-radio.js';
 
 const meta = {
@@ -82,5 +90,101 @@ export const WithDefaultChecked: Story = {
     value: 'radio-with-default-checked',
     label: 'Default checked',
     checked: true,
+  },
+};
+
+export const WithReactHookForm: Story = {
+  render: () => {
+    const methods = useForm<{ contact: string }>({
+      defaultValues: { contact: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset();
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField data-testid="form-field-id">
+            {methods.formState.errors.contact && (
+              <FormFieldError dataTestid="error-msg">
+                {methods.formState.errors.contact.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel>Preferred contact</FormFieldLabel>
+
+            <Controller
+              name="contact"
+              control={methods.control}
+              rules={{ required: 'Select one option' }}
+              render={({ field }) => (
+                <div className="gi-flex gi-gap-3">
+                  <InputRadio
+                    id="contact-email"
+                    name={field.name}
+                    value="email"
+                    label="Email"
+                    checked={field.value === 'email'}
+                    onChange={() => field.onChange('email')}
+                  />
+                  <InputRadio
+                    id="contact-phone"
+                    name={field.name}
+                    value="phone"
+                    label="Phone"
+                    checked={field.value === 'phone'}
+                    onChange={() => field.onChange('phone')}
+                  />
+                  <InputRadio
+                    id="contact-other"
+                    name={field.name}
+                    value="other"
+                    label="Other"
+                    checked={field.value === 'other'}
+                    onChange={() => field.onChange('other')}
+                  />
+                </div>
+              )}
+            />
+          </FormField>
+
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" dataTestid="submit-btn">
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={() => methods.reset()}
+              dataTestid="reset-btn"
+            >
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const emailRadio = canvas.getByLabelText('Email');
+    const phoneRadio = canvas.getByLabelText('Phone');
+    const submitButton = canvas.getByTestId('submit-btn');
+    const resetButton = canvas.getByTestId('reset-btn');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.click(emailRadio);
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(resetButton);
+    expect((emailRadio as HTMLInputElement).checked).toBe(false);
+    expect((phoneRadio as HTMLInputElement).checked).toBe(false);
+
+    await userEvent.click(document.body);
   },
 };

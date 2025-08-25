@@ -1,3 +1,3 @@
-export type InputFileProps = React.InputHTMLAttributes<
-  Omit<HTMLInputElement, 'type'>
->;
+export type InputFileProps = {
+  dataTestid?: string;
+} & React.InputHTMLAttributes<Omit<HTMLInputElement, 'type'>>;
