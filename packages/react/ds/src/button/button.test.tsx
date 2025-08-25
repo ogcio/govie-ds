@@ -9,7 +9,6 @@ import { Button } from './button.js';
 import * as stories from './button.stories.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
-const composedStories = composeStories(stories);
 const standardProps: ButtonProps = {
   children: 'Button Label',
   variant: 'primary',
