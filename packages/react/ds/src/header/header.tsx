@@ -1,7 +1,10 @@
 'use client';
 import { useEffect, useMemo } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+
+import GovieLogoHarpBlackWithText from '../assets/logos/gov-of-ireland/harp-black.js';
 import GovieLogoHarpWithText from '../assets/logos/gov-of-ireland/harp-white.js';
+import GovieLogoHarpBlack from '../assets/logos/harp/harp-black.js';
 import GovieLogoHarp from '../assets/logos/harp/harp-white.js';
 import { cn } from '../cn.js';
 import { Container } from '../container/container.js';
@@ -11,13 +14,40 @@ import Anchor from '../primitives/anchor.js';
 import { MobileHeaderMenuItems } from './components/header-menu.js';
 import { SlotContainer, SlotItemAction } from './components/header-slot.js';
 import { attachEventsToItemActionTriggers } from './helper.js';
-import { HeaderItem, HeaderProps, SecondaryLink } from './types.js';
+import {
+  HeaderAppearance,
+  HeaderItem,
+  HeaderProps,
+  SecondaryLink,
+} from './types.js';
+import {
+  headerMenuVariants,
+  headerToolItemVariants,
+  headerVariants,
+  headerSecondaryLinksVariants,
+  headerSecondaryLinkItemVariants,
+  headerSecondaryLinkSlotItemVariants,
+  headerTitleVariants,
+  headerDividerVariants,
+  headerLogoVariants,
+} from './variants.js';
 
-function getLogo({ logo }: HeaderProps) {
-  const svgMobileString = btoa(renderToStaticMarkup(<GovieLogoHarp />));
+function getLogo({ logo, appearance = 'default' }: HeaderProps) {
+  const logoIcon = {
+    harp: {
+      default: <GovieLogoHarp />,
+      light: <GovieLogoHarpBlack />,
+    },
+    withText: {
+      default: <GovieLogoHarpWithText />,
+      light: <GovieLogoHarpBlackWithText />,
+    },
+  };
+  const svgMobileString = btoa(renderToStaticMarkup(logoIcon.harp[appearance]));
   const svgDataUriMobile = `data:image/svg+xml;base64,${svgMobileString}`;
+
   const svgDesktopString = btoa(
-    renderToStaticMarkup(<GovieLogoHarpWithText />),
+    renderToStaticMarkup(logoIcon.withText[appearance]),
   );
   const svgDataUriDesktop = `data:image/svg+xml;base64,${svgDesktopString}`;
 
@@ -60,26 +90,33 @@ const SecondaryLinkItem = ({
   label,
   slot,
   index,
-}: { index: number } & SecondaryLink) => (
+  appearance = 'default',
+}: { index: number; appearance: HeaderAppearance } & SecondaryLink) => (
   <li>
     {href ? (
       <Anchor
         aria-label={label}
         data-testid={`secondary-link-desktop-${index}`}
         href={href}
-        className="gi-header-secondary-item"
+        className={headerSecondaryLinkItemVariants({ appearance })}
       >
         {label}
       </Anchor>
     ) : (
-      <div className="gi-header-secondary-item-slot">{slot}</div>
+      <div
+        className={headerSecondaryLinkSlotItemVariants({ appearance })}
+        data-appearance={appearance}
+      >
+        {slot}
+      </div>
     )}
   </li>
 );
 
 const SecondaryLinks: React.FC<{
   links?: HeaderProps['secondaryLinks'];
-}> = ({ links }) => {
+  appearance: HeaderAppearance;
+}> = ({ links, appearance }) => {
   return (
     <ul>
       {links?.map((link, index) => (
@@ -87,6 +124,7 @@ const SecondaryLinks: React.FC<{
           {...link}
           index={index}
           key={`secondary-${link.label}-${index}`}
+          appearance={appearance}
         />
       ))}
     </ul>
@@ -104,14 +142,8 @@ export function Header({
   showMenuLabel = true,
   showTitleOnMobile,
   dataTestid,
+  appearance = 'default',
 }: HeaderProps) {
-  const headerClassNames = 'gi-header';
-  const secondaryBarClassNames = 'gi-header-secondary-bar';
-  const menuContainerClassNames = 'gi-header-menu';
-  const appTitleClassNames = 'gi-header-title';
-  const toolItemClassNames = 'gi-header-tool-item';
-  const menuDividerClassNames = 'gi-header-divider';
-
   useEffect(() => {
     attachEventsToItemActionTriggers();
   }, []);
@@ -125,12 +157,14 @@ export function Header({
   }) => {
     switch (item.itemType) {
       case 'slot': {
-        return <SlotItemAction index={index} item={item} />;
+        return (
+          <SlotItemAction index={index} item={item} appearance={appearance} />
+        );
       }
       case 'link': {
         return (
           <Anchor
-            className={toolItemClassNames}
+            className={headerToolItemVariants({ appearance })}
             href={item.href}
             onClick={item.onClick}
             aria-label={item.label || `link ${index}`}
@@ -144,14 +178,14 @@ export function Header({
       }
       case 'custom-link': {
         return (
-          <Anchor asChild className={toolItemClassNames}>
+          <Anchor asChild className={headerToolItemVariants({ appearance })}>
             {item.component}
           </Anchor>
         );
       }
       default: {
         // Divider
-        return <div className={menuDividerClassNames}></div>;
+        return <div className={headerDividerVariants({ appearance })}></div>;
       }
     }
   };
@@ -171,7 +205,7 @@ export function Header({
     <header
       id="GovieHeader"
       aria-label={t('header.siteHeader', { defaultValue: 'Site Header' })}
-      className={headerClassNames}
+      className={headerVariants({ appearance })}
       data-testid={dataTestid}
     >
       <Container
@@ -179,8 +213,8 @@ export function Header({
         className="gi-order-2"
         fullWidth={fullWidth}
       >
-        <div className={menuContainerClassNames}>
-          <div className="gi-header-logo">
+        <div className={headerMenuVariants({ appearance })}>
+          <div className={headerLogoVariants({ appearance })}>
             {logo?.href && (
               <Anchor
                 href={logo.href}
@@ -190,13 +224,13 @@ export function Header({
                 data-testid={`logo-link`}
                 external={logo.external}
               >
-                {getLogo({ logo })}
+                {getLogo({ logo, appearance })}
               </Anchor>
             )}
-            {!logo?.href && getLogo({ logo })}
+            {!logo?.href && getLogo({ logo, appearance })}
           </div>
           <div
-            className={cn(appTitleClassNames, {
+            className={cn(headerTitleVariants({ appearance }), {
               'gi-hidden': !showTitleOnMobile,
             })}
           >
@@ -225,12 +259,14 @@ export function Header({
       </Container>
 
       {secondaryLinks && (
-        <div className={cn(secondaryBarClassNames, 'gi-order-1')}>
+        <div className={headerSecondaryLinksVariants({ appearance })}>
           <Container
             className="gi-flex gi-justify-end gi-items-center"
             fullWidth={fullWidth}
           >
-            {secondaryLinks && <SecondaryLinks links={secondaryLinks} />}
+            {secondaryLinks && (
+              <SecondaryLinks links={secondaryLinks} appearance={appearance} />
+            )}
           </Container>
         </div>
       )}
@@ -246,6 +282,7 @@ export function Header({
                 key={`slot-container-${index}`}
                 slot={component}
                 index={index}
+                appearance={appearance}
               />
             );
           }

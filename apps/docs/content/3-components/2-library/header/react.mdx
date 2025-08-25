@@ -13,6 +13,8 @@ component:
       url: '/story/layout-header--with-secondary-links'
     - name: 'no-links'
       url: '/story/layout-header--no-links'
+    - name: 'light-theme'
+      url: '/story/layout-header--light'
   properties:
     - name: HeaderProps
       fields:
@@ -52,6 +54,11 @@ component:
           ofType: 'string'
           description: 'Custom test ID for the header.'
           required: false
+        - name: 'appearance'
+          ofType: 'string'
+          description: 'Controls the visual style of the component ("default", "light").'
+          required: false
+
     - name: HeaderItemProps
       fields:
         - name: 'itemType'
@@ -141,6 +148,14 @@ component:
   className="h-auto p-1"
   componentId="header-react"
   story="no-links"
+/>
+
+### Light Theme
+
+<StorybookFrame
+  className="h-auto p-1"
+  componentId="header-react"
+  story="light-theme"
 />
 
 ## Properties

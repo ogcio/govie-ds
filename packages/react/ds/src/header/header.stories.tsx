@@ -863,6 +863,59 @@ export const TestWithSecondaryLinks: Story = {
   },
 };
 
+export const Light: Story = {
+  decorators: (Story) => {
+    return (
+      <div className="gi-bg-black gi-p-4">
+        <Story />
+      </div>
+    );
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
+    mobileMenuLabel: 'Menu',
+    appearance: 'light',
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John | <a href="#">Logout</a>
+          </Paragraph>
+        ),
+      },
+    ],
+  },
+};
+
+export const LightWithTitle: Story = {
+  decorators: (Story) => {
+    return (
+      <div className="gi-bg-black gi-p-4">
+        <Story />
+      </div>
+    );
+  },
+  args: {
+    appearance: 'light',
+    title: 'Life Events',
+    logo: {
+      href: 'path',
+    },
+  },
+};
+
 export const HideMenuLabel: Story = {
   args: {
     showMenuLabel: false,

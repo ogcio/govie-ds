@@ -1,8 +1,15 @@
 .gi-header {
-  @apply gi-grid gi-relative gi-overflow-x-clip gi-bg-color-surface-system-primary-default gi-w-full gi-font-primary;
+  @apply gi-grid gi-relative 
+  gi-overflow-x-clip
+  gi-w-full gi-font-primary;
 }
+
 .gi-header-secondary-bar {
-  @apply gi-hidden lg:gi-flex gi-bg-color-surface-system-primary-subtle gi-h-10 gi-items-center;
+  @apply gi-hidden 
+  gi-h-10
+  gi-items-center
+  
+  lg:gi-flex;
 }
 
 .gi-header-secondary-bar ul {
@@ -10,33 +17,109 @@
 }
 .gi-header-secondary-item,
 .gi-header-secondary-item-slot a {
-  @apply gi-border gi-border-solid gi-border-transparent focus-visible:gi-outline-offset-0 focus-visible:gi-outline-none focus-visible:gi-border focus-visible:gi-border-solid focus-visible:gi-border-color-shadow-intent-focus-default focus:gi-border focus:gi-border-solid focus:gi-border-color-shadow-intent-focus-default gi-block gi-text-white gi-stroke-white hover:gi-bg-black hover:gi-bg-opacity-20 gi-py-1 gi-px-2 gi-rounded-sm;
+  @apply gi-block
+  gi-px-2
+  gi-py-1
+  gi-border-sm
+  gi-border-transparent  
+  gi-rounded-sm;
+}
+
+.gi-header-secondary-item-default:not(
+  .gi-header-secondary-item-slot[data-appearance='default']
+),
+.gi-header-secondary-item-slot[data-appearance='default'] a {
+  @apply focus:gi-outline-offset-0
+    hover:gi-bg-color-surface-tone-primary-fill-hover
+    hover:gi-border-transparent
+    focus:gi-bg-color-surface-tone-primary-fill-hover
+    focus:gi-border-color-shadow-intent-focus-default
+    focus:gi-border-sm
+    focus-visible:gi-outline-none;
+}
+
+.gi-header-secondary-item-light:not(
+  .gi-header-secondary-item-slot[data-appearance='light']
+),
+.gi-header-secondary-item-slot[data-appearance='light'] a {
+  @apply gi-border-none
+  hover:gi-bg-color-surface-tone-light-fill-hover
+  focus:gi-bg-color-surface-tone-light-fill-hover
+  focus:gi-shadow-color-border-intent-focus-default
+  focus:gi-shadow-[inset_0_0_0_2px]
+  gi-focus-state-outline
+  focus:gi-border-none
+  hover:gi-border-none;
 }
 
 .gi-header-secondary-item-slot > :first-child {
-  @apply gi-flex gi-items-center !gi-text-sm !gi-text-white;
+  @apply gi-flex
+  gi-items-center
+  !gi-text-sm;
 }
 
 .gi-header-menu {
-  @apply gi-h-20 gi-items-center gi-justify-between gi-flex gi-flex-row gi-flex-nowrap gi-bg-color-surface-system-primary-default gi-py-3 sm:gi-py-4;
+  @apply gi-h-20 gi-items-center 
+  gi-justify-between
+  gi-flex
+  gi-flex-row
+  gi-flex-nowrap
+  gi-py-3
+  
+  sm:gi-py-4;
 }
 
 .gi-header-logo {
-  @apply gi-flex-none gi-rounded-sm gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline;
+  @apply gi-flex-none
+  gi-rounded-sm;
 }
 
-.gi-header-logo a {
-  @apply gi-focus-state-outline gi-focus-within-state-outline gi-focus-visible-state-outline;
+.gi-header-logo-default,
+.gi-header-logo-default a {
+  @apply gi-focus-state-outline
+  gi-focus-within-state-outline
+  gi-focus-visible-state-outline;
+}
+
+.gi-header-logo-light,
+.gi-header-logo-light a {
+  @apply gi-focus-state-outline
+  gi-focus-within-state-outline gi-focus-visible-state-outline
+  focus-within:gi-outline-color-border-intent-focus-default
+  focus:gi-outline-color-border-intent-focus-default;
 }
 
 .gi-header-title {
-  @apply gi-min-w-0 gi-heading-sm gi-tracking-wider gi-text-white gi-stroke-white gi-ml-4 md:gi-ml-6 lg:gi-ml-12 gi-grow lg:gi-block gi-truncate gi-overflow-hidden gi-text-ellipsis;
+  @apply gi-min-w-0 gi-heading-sm gi-tracking-wider
+  gi-truncate
+  gi-overflow-hidden
+  gi-text-ellipsis
+  gi-ml-4 
+  
+  md:gi-ml-6
+  lg:gi-ml-12
+  lg:gi-block
+  gi-grow;
 }
 .gi-header-tool-item {
-  @apply gi-border gi-border-solid gi-border-transparent gi-text-white gi-stroke-white gi-flex gi-rounded-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2 gi-items-center gi-gap-md gi-cursor-pointer gi-whitespace-nowrap gi-overflow-hidden gi-text-ellipsis;
+  @apply gi-border 
+  gi-border-solid
+  gi-border-transparent
+  gi-flex gi-rounded-sm
+  
+  
+  gi-p-2
+  gi-items-center
+  gi-gap-md
+  gi-cursor-pointer
+  gi-whitespace-nowrap
+  gi-overflow-hidden
+  gi-text-ellipsis;
 }
 .gi-header-tool-item:first-child {
-  @apply lg:gi-flex gi-text-md gi-font-bold gi-text-white gi-stroke-white;
+  @apply lg:gi-flex
+  gi-text-md
+  gi-font-bold;
 }
 .gi-header-nav {
   @apply gi-hidden lg:gi-flex gi-gap-4 gi-text-white gi-stroke-white;
@@ -45,28 +128,51 @@
   @apply gi-border gi-border-solid gi-border-transparent gi-text-2md gi-font-bold gi-rounded-sm active:gi-underline active:gi-underline-offset-sm hover:gi-bg-black hover:gi-bg-opacity-20 gi-p-2;
 }
 
-.gi-header-tool-item input {
-  @apply gi-block gi-w-0 gi-absolute gi-h-0 gi-opacity-0 gi-appearance-none;
+.gi-header-tool-item-input {
+  @apply gi-block 
+  gi-w-0
+  gi-absolute
+  gi-h-0
+  gi-opacity-0
+  gi-appearance-none;
+}
+
+.gi-header-tool-item-default {
+  @apply hover:gi-bg-color-surface-tone-primary-fill-hover;
+}
+
+.gi-header-tool-item-light {
+  @apply gi-btn-primary-light 
+  focus-within:gi-shadow-color-border-intent-focus-default
+  focus-within:gi-shadow-[inset_0_0_0_2px]
+  focus-within:gi-bg-color-surface-tone-light-fill-hover
+  gi-focus-within-state-outline;
+}
+
+label.gi-header-tool-item-light {
+  @apply gi-focus-state-border-sm-rounded;
 }
 
 /* Nav components focus state */
-.gi-header-tool-item,
-.gi-header-secondary-item,
-.gi-header-secondary-item-slot a,
+.gi-header-tool-item-default,
 .gi-header-nav a {
-  @apply gi-focus-state-outline gi-focus-within-state-outline
-   focus:gi-bg-black focus-within:gi-bg-black 
-   focus:gi-bg-opacity-20 focus-within:gi-bg-opacity-20
-   focus:gi-border focus-within:gi-border
-   focus:gi-border-solid focus-within:gi-border-solid;
-}
-
-.gi-header-separator {
-  @apply gi-hidden lg:gi-block gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-6;
+  @apply gi-focus-state-outline
+  gi-focus-within-state-outline
+   focus:gi-bg-black
+   focus-within:gi-bg-black 
+   focus:gi-bg-opacity-20
+   focus-within:gi-bg-opacity-20
+   focus:gi-border 
+   focus-within:gi-border
+   focus:gi-border-solid 
+   focus-within:gi-border-solid;
 }
 
 .gi-header-divider {
-  @apply gi-border-l-xs gi-border-solid gi-border-white gi-h-8 gi-mx-2;
+  @apply gi-border-l-xs 
+  gi-border-solid    
+   gi-h-8 
+   gi-mx-2;
 }
 .gi-header-overlay {
   @apply gi-top-0 gi-z-900 gi-pointer-events-none gi-hidden gi-w-full gi-h-full gi-bg-black gi-opacity-20;
@@ -150,4 +256,12 @@
 a.gi-list-item:hover,
 .gi-list-item > a:hover {
   @apply hover:gi-underline hover:gi-underline-offset-sm;
+}
+
+.gi-header-slot-container {
+  @apply gi-border-b-2xl
+  gi-bg-gray-50
+  gi-py-4
+  gi-px-4  
+  gi-order-3;
 }
