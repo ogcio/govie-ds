@@ -1,0 +1,47 @@
+---
+title: 'Tag'
+description: 'Tags are used to visually categorise content. They can indicate the status of an item or represent a category of information.'
+status: 'stable'
+component:
+  id: 'tag'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1315-1284&p=f&m=dev'
+  status: 'stable'
+---
+
+# Tag
+
+Tags are used to visually categorise content. They can indicate the status of an item or represent a category of information. By default, tags have a blue background and text color.
+
+<Section current="design">
+
+<ComponentContainer>
+  <Tag text="Completed" type="info" />
+</ComponentContainer>
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=1315-1284&p=f&m=dev" />
+
+## Usage
+
+Use the tag component to visually represent the status of items, categorise content, or highlight important information. Tags are particularly useful for:
+
+- Indicating the completion status of tasks or projects (e.g., "Completed," "In Progress").
+- Categorising items in a list (e.g., labels for filtering content).
+- Displaying alert messages or notifications with visual distinction.
+
+### Do
+
+Use tags to provide clear, concise context about the state or category of content.
+
+<ComponentContainer>
+  <Tag text="Success" type="success" />
+</ComponentContainer>
+
+### Don’t
+
+Use tags for interactive actions like buttons or dropdowns.
+
+<ComponentContainer>
+  <button class="gi-tag gi-tag-error">Error</button>
+</ComponentContainer>
+
+</Section>

@@ -1,0 +1,89 @@
+---
+title: 'Toast'
+description: 'Toast HTML Component'
+status: 'stable'
+component:
+  id: 'toast'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3166-3459'
+  status: 'stable'
+---
+
+# Toast
+
+Toasts are brief, non-blocking notifications that inform users about the outcome of an action or system event. They appear temporarily and auto-dismiss after a short duration, without requiring user focus.
+
+<Section current="design">
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=3166-3459" />
+
+<ComponentContainer>
+  <Toast title="Default toast" description="Secondary line of text" />
+</ComponentContainer>
+
+# Variants
+
+Use variants to communicate intent:
+
+- **Info** — neutral updates.
+- **Success** — positive confirmations.
+- **Warning** — cautionary messages.
+- **Danger** — errors and blocking issues.
+
+<ComponentContainer>
+  <div className="gi-flex gi-gap-2">
+    <Toast title="Info" variant="info" />
+    <Toast title="Success" variant="success" />
+    <Toast title="Warning" variant="warning" />
+    <Toast title="Danger" variant="danger" />
+  </div>
+</ComponentContainer>
+
+# Placement & Position
+
+Toasts should not obscure critical UI. Preferred defaults:
+
+- Desktop: bottom-right
+- Tablet/Mobile: bottom (full width when space is tight)
+
+<ComponentContainer>
+  <div className="gi-flex gi-gap-2 gi-flex-wrap">
+    <Toast title="Top-Left" position={{ x: 'left', y: 'top' }} />
+    <Toast title="Top-Right" position={{ x: 'right', y: 'top' }} />
+    <Toast title="Bottom-Left" position={{ x: 'left', y: 'bottom' }} />
+    <Toast title="Bottom-Right" position={{ x: 'right', y: 'bottom' }} />
+  </div>
+</ComponentContainer>
+
+### Best Practices
+
+- Use dismissible toasts when the message is not critical.
+- Keep animations smooth and consistent with UI interactions.
+- Positioning matters: Important alerts should appear in prominent areas like top-right or center.
+
+## Do
+
+- System notifications (e.g., "Form submitted successfully.")
+- Warnings & Errors that require user attention.
+- Temporary alerts that disappear automatically.
+
+  <ComponentContainer>
+    <Toast
+      title="Saved"
+      description="Your changes were saved."
+      variant="success"
+    />
+  </ComponentContainer>
+
+## Don't
+
+- Permanent messages → Use modals or banners instead.
+- Multiple simultaneous alerts → Can overwhelm users.
+  <ComponentContainer>
+    <Toast
+      title="Don't: Overloaded toast"
+      description="This message is too verbose and includes multiple actions that belong elsewhere."
+      variant="warning"
+    />
+  </ComponentContainer>
+
+</Section>

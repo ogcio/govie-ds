@@ -51,6 +51,7 @@ HeaderProps
 HeadingProps
 ICT
 IconButtonProps
+IconId
 IconProps
 Iframe
 InputCheckbox
@@ -251,3 +252,4 @@ with-center-medium
 with-iframe-embed
 xl
 xs
+focusable

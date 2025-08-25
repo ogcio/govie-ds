@@ -8,6 +8,7 @@ import {
 } from '../forms/form-field/form-field.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
+import { Spinner } from '../spinner/spinner.js';
 import { InputText } from './input-text.js';
 
 const meta = {
@@ -45,7 +46,7 @@ const meta = {
       control: 'text',
       table: {
         category: 'Visual',
-        type: { summary: 'IconId' },
+        type: { summary: 'IconId | React.ReactNode' },
       },
     },
     iconEnd: {
@@ -53,7 +54,7 @@ const meta = {
       control: 'text',
       table: {
         category: 'Visual',
-        type: { summary: 'IconId' },
+        type: { summary: 'IconId | React.ReactNode' },
       },
     },
     inputActionButton: {
@@ -302,6 +303,16 @@ export const InputWithIcons: Story = {
         iconEnd="placeholder"
         placeholder="Placeholder"
       />
+    </FormField>
+  ),
+};
+
+export const InputWithLoadingIcon: Story = {
+  render: () => (
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
+      <InputText iconEnd={<Spinner size="md" />} placeholder="Placeholder" />
     </FormField>
   ),
 };

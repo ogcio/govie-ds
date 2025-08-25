@@ -150,7 +150,7 @@ export const Default: Story = {
     mobileMenuLabel: {
       control: 'text',
       description:
-        'Change the mobile menu label when "addDefaultMobileMenu" is set',
+        'Change the mobile menu label when "addDefaultMobileMenu" is set, if not provided it will default to "Menu"',
       table: {
         category: 'Header',
       },
@@ -163,6 +163,13 @@ export const Default: Story = {
         category: 'Header',
       },
     },
+    showMenuLabel: {
+      control: 'boolean',
+      description: 'If true, the menu label will be shown',
+      table: {
+        category: 'Header',
+      },
+    },
   },
   args: {
     logo: {
@@ -171,6 +178,7 @@ export const Default: Story = {
     items: headerProps.items,
     addDefaultMobileMenu: true,
     mobileMenuLabel: 'Menu',
+    showMenuLabel: true,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -905,5 +913,21 @@ export const LightWithTitle: Story = {
     logo: {
       href: 'path',
     },
+  },
+};
+
+export const HideMenuLabel: Story = {
+  args: {
+    showMenuLabel: false,
+    fullWidth: true,
+    logo: {
+      href: '/link',
+    },
+    ...defaultHeaderProps(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const menuLabel = canvas.queryByText('Menu');
+    expect(menuLabel).not.toBeInTheDocument();
   },
 };

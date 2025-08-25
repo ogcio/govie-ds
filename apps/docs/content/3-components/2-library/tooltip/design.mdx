@@ -1,0 +1,55 @@
+---
+title: 'Tooltip'
+description: 'Tooltip HTML Component'
+status: 'stable'
+component:
+  id: 'tooltip'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4137-828&p=f&m=dev'
+  status: 'stable'
+---
+
+<Section current="design">
+
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=4137-828&p=f&m=dev" />
+
+# Tooltip
+
+Brief, contextual helper that appears on hover or focus to clarify an element without cluttering the interface.
+
+## States
+
+### Default
+
+<ComponentContainer>
+  <Tooltip text="This is a tooltip" position="top">
+    <Button variant="primary">Hover me</Button>
+  </Tooltip>
+</ComponentContainer>
+
+## Usage
+
+- Keep copy short (a single phrase or sentence).
+- Prefer showing on hover **and** keyboard focus for accessibility.
+- Place so it doesn’t obscure important UI.
+
+## Do's and Don'ts
+
+**Do**
+
+- Ensure the trigger is focusable (keyboard and screen reader friendly).
+- Use for clarification, not critical instructions.
+
+**Don’t**
+
+- Put essential information in a tooltip.
+- Write long paragraphs in a tooltip.
+
+**Don’t example (too long):**
+
+<ComponentContainer>
+  <Tooltip text="This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.">
+    <Button variant="primary">Hover me</Button>
+  </Tooltip>
+</ComponentContainer>
+
+</Section>

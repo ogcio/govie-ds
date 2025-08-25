@@ -1,0 +1,141 @@
+---
+title: 'Drawer'
+description: 'Drawer React Component'
+status: 'stable'
+component:
+  id: 'drawer-react'
+  link: '/story/application-drawer--default'
+  status: 'stable'
+  properties:
+    - name: 'DrawerProps'
+      fields:
+        - name: 'closeButtonSize'
+          ofType: 'string'
+          description: 'Specifies the size of the close button. Default: large.'
+          required: false
+        - name: 'triggerButton'
+          ofType: 'ReactElement'
+          description: 'Button element that opens the drawer.'
+          required: true
+        - name: 'closeButtonLabel'
+          ofType: 'string'
+          description: 'Label for the close button. Default: Close.'
+          required: false
+        - name: 'children'
+          ofType: 'node'
+          description: 'Drawer content, typically DrawerBody and DrawerFooter.'
+          required: true
+        - name: 'position'
+          ofType: 'string'
+          description: 'Drawer position: left, right, or bottom.'
+          required: false
+    - name: 'DrawerBodyProps'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Main content of the drawer body.'
+          required: true
+    - name: 'DrawerFooterProps'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'Footer content, usually actions.'
+          required: true
+  stories:
+    - name: 'default'
+      url: '/story/application-drawer--default'
+    - name: 'drawer-right'
+      url: '/story/application-drawer--drawer-right'
+    - name: 'drawer-left'
+      url: '/story/application-drawer--drawer-left'
+    - name: 'drawer-bottom'
+      url: '/story/application-drawer--drawer-bottom'
+    - name: 'drawer-open'
+      url: '/story/application-drawer--drawer-open'
+    - name: 'drawer-menu-tablet'
+      url: '/story/application-drawer--drawer-menu-tablet'
+    - name: 'drawer-menu-mobile'
+      url: '/story/application-drawer--drawer-menu-mobile'
+---
+
+# Drawer
+
+A Drawer is a temporary panel that slides in from the page edge to reveal supplementary UI—like navigation, filters, or actions—without taking users away from the current view. It overlays the interface, supports focus management, and typically includes a footer with actions.
+
+<Section current="react">
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="default"
+  />
+</ComponentPreview>
+
+### Drawer Right
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-right"
+  />
+</ComponentPreview>
+
+### Drawer Left
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-left"
+  />
+</ComponentPreview>
+
+### Drawer Bottom
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-bottom"
+  />
+</ComponentPreview>
+
+### Drawer Open
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-open"
+  />
+</ComponentPreview>
+
+### Drawer Menu Tablet
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-menu-tablet"
+  />
+</ComponentPreview>
+
+### Drawer Menu Mobile
+
+<ComponentPreview>
+  <StorybookFrame
+    className="h-[248px] w-[504px]"
+    componentId="drawer-react"
+    story="drawer-menu-mobile"
+  />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="drawer-react" />
+
+</Section>

@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.13.4](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.3...design-tailwind-v1.13.4) (2025-08-22)
+
+
+### Bug Fixes
+
+* add missing position styling and associated tests for Toast AB[#30509](https://github.com/ogcio/govie-ds/issues/30509) ([#690](https://github.com/ogcio/govie-ds/issues/690)) ([faec8f7](https://github.com/ogcio/govie-ds/commit/faec8f79594ddbb1d5919d514f7b6632965576e5))
+
+## [1.13.3](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.2...design-tailwind-v1.13.3) (2025-08-19)
+
+
+### Bug Fixes
+
+* Modal aria-hidden console warning AB[#30472](https://github.com/ogcio/govie-ds/issues/30472) ([#688](https://github.com/ogcio/govie-ds/issues/688)) ([c45fb27](https://github.com/ogcio/govie-ds/commit/c45fb27168a28f8c28b5353c55a79893dcb523c8))
+
+## [1.13.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.1...design-tailwind-v1.13.2) (2025-08-13)
+
+
+### Bug Fixes
+
+* remove table styling from card image ([#680](https://github.com/ogcio/govie-ds/issues/680)) ([b30352a](https://github.com/ogcio/govie-ds/commit/b30352a69daaf08a3c14fb3e9b75a1c027d0a989))
+
 ## [1.13.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.0...design-tailwind-v1.13.1) (2025-08-12)
 
 

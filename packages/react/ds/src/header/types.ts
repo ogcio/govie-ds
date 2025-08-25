@@ -78,6 +78,7 @@ export type HeaderProps = {
   logo?: LogoProps;
   addDefaultMobileMenu?: boolean;
   mobileMenuLabel?: string;
+  showMenuLabel?: boolean;
   items?: HeaderItem[];
   secondaryLinks?: SecondaryLink[];
   fullWidth?: boolean;
