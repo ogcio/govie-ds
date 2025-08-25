@@ -137,6 +137,24 @@ export const ModalWrapper = ({
       !isModalComponent(ModalFooter, 'ModalFooter', child),
   );
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   return (
     <ModalPortal modalRef={modalRef} isOpen={isOpen}>
       <div
