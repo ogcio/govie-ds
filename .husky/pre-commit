@@ -1,0 +1,4 @@
+echo "Running pre-commit..."
+pnpm typecheck 
+pnpm format:check
+pnpm lint 

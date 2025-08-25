@@ -7,7 +7,7 @@ import { createEvents } from './events.js';
 import { initAccordion } from './accordion/accordion.js'; /* eslint-disable-line import-x/order */
 import { initAlert } from './alert/alert.js'; /* eslint-disable-line import-x/order */
 import { initHeader } from './header/header.js';
-import { initCheckboxes } from './input-checkbox/input-checkbox.js'; /* eslint-disable-line import-x/order */
+import { initCheckboxes } from './input-checkbox/input-checkbox.js';
 import { initComboBox } from './combo-box/combo-box.js'; /* eslint-disable-line import-x/order */
 import { initModal } from './modal/modal.js';
 import { initPassword } from './input-password/input-password.js'; /* eslint-disable-line import-x/order */

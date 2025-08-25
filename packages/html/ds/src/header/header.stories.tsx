@@ -407,7 +407,9 @@ const slotExample3 = () => `
   </select>
 `;
 
-const defaultHeaderItems = (external?: boolean) => [
+const defaultHeaderItems: (external?: boolean) => HeaderItem[] = (
+  external?: boolean,
+) => [
   {
     label: 'Departments',
     itemType: 'link',

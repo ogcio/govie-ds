@@ -192,6 +192,6 @@ export const WithUploadedFilesTable: Story = {
 
     formElement.append(table);
 
-    return parse(formElement.outerHTML);
+    return parse(formElement.outerHTML) as unknown as React.ReactElement;
   },
 };
