@@ -234,7 +234,7 @@ export const MobileView: Story = {
 };
 
 export const AllVariants: Story = {
-  render: (props) => {
+  render: () => {
     const common = {
       title: 'Default',
       description: 'Toast description',
