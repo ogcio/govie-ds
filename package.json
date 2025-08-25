@@ -38,9 +38,6 @@
     "packages/react/**/*.{js,ts,tsx}": [
       "pnpm -F @ogcio/design-system-react run lint --fix"
     ],
-    "examples/nextjs/**/*.{js,ts,tsx}": [
-      "pnpm -F @ogcio/examples-nextjs run lint --fix"
-    ],
     "*.{json,md,mdx,css,scss,yml,yaml}": [
       "pnpm exec prettier -w --ignore-unknown --"
     ]

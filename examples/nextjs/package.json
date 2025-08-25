@@ -9,15 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "@ogcio/design-system-react": "workspace:*",
     "@ogcio/theme-govie": "workspace:*",
     "next": "^15.4.3",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
-    "@ogcio/design-system-eslint-config": "workspace:*",
     "@next/eslint-plugin-next": "^15.4.3",
+    "@ogcio/design-system-eslint-config": "workspace:*",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.4.3",
     "postcss": "^8.4.40",

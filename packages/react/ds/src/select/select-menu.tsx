@@ -29,15 +29,7 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
     ref,
   ) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [showNoDataDelay, setShowNoDataDelay] = useState(false);
     const [filteredOptions, setFilteredOptions] = useState<any>([]);
-
-    useEffect(() => {
-      setShowNoDataDelay(false);
-      if (showNoData) {
-        setTimeout(() => setShowNoDataDelay(true), 0);
-      }
-    }, [showNoData]);
 
     useEffect(() => {
       const validChildren = Children.toArray(children).filter((child) =>
@@ -130,9 +122,11 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
         );
       }
 
-      return showNoDataDelay ? (
+      return showNoData ? (
         <div className="gi-select-menu-option-not-found">
-          {t('autocomplete.noData')}
+          {t('autocomplete.noData', {
+            defaultValue: 'No data found.',
+          })}
         </div>
       ) : (
         <ul>{filteredOptions}</ul>
