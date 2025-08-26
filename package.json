@@ -27,10 +27,32 @@
     "examples:nextjs": "pnpm build:libs && pnpm --filter @ogcio/examples-nextjs dev",
     "examples:angular": "pnpm build:libs && pnpm --filter @ogcio/examples-angular start",
     "examples:html": "pnpm build:libs && pnpm --filter @ogcio/examples-html dev",
-    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm -r exec rm -rf dist"
+    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm -r exec rm -rf dist",
+    "prepare": "husky",
+    "typecheck": "pnpm -r typecheck",
+    "lint:staged": "lint-staged"
+  },
+  "lint-staged": {
+    "packages/react/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/design-system-react run lint --fix"
+    ],
+    "packages/html/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/design-system-html run lint --fix"
+    ],
+    "examples/*/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/examples-nextjs run lint"
+    ],
+    "apps/docs/**/*.{ts,tsx}": [
+      "pnpm -F @ogcio/design-system-docs run lint:code --fix"
+    ],
+    "apps/docs/**/*.mdx": [
+      "pnpm -F @ogcio/design-system-docs run lint:spelling"
+    ]
   },
   "devDependencies": {
     "@chromatic-com/storybook": "4.0.1",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@storybook/addon-a11y": "9.0.17",
     "@storybook/addon-coverage": "2.0.0",
     "@storybook/addon-docs": "9.0.17",
@@ -55,6 +77,8 @@
     "@vitest/spy": "^3.2.4",
     "chromatic": "13.1.2",
     "http-server": "^14.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
     "playwright": "^1.54.1",
     "prettier": "^3.5.3",
     "storybook": "9.0.17",

@@ -113,7 +113,8 @@ export const WithComponents: Story = {
 };
 
 export const NestedStack: Story = {
-  render: () => `
+  render: () =>
+    `
     <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-col gi-gap-5 gi-flex-nowrap" role="region" aria-label="stack1" style="height: 100%;">
     <div class="gi-flex gi-w-full gi-justify-start gi-items-start gi-flex-row gi-flex-nowrap" role="region" aria-label="stack2" data-testid="govie-stack-item-0" style="height: 100%;">
         <div class="gi-h-[80px] gi-w-full gi-bg-gray-200" data-testid="govie-stack-item-0"></div>
@@ -135,5 +136,5 @@ export const NestedStack: Story = {
         </div>
     </div>
   </div>
-  `,
+  ` as unknown as React.ReactElement,
 };
