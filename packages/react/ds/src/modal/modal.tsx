@@ -102,6 +102,7 @@ export const ModalWrapper = ({
   className,
   children,
   closeButtonSize,
+  closeOnEscape,
   dataTestId,
   ...props
 }: ModalWrapperProps) => {
@@ -138,7 +139,7 @@ export const ModalWrapper = ({
   );
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen || !closeOnEscape) {
       return;
     }
 
@@ -153,7 +154,7 @@ export const ModalWrapper = ({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, closeOnEscape, onClose]);
 
   return (
     <ModalPortal modalRef={modalRef} isOpen={isOpen}>

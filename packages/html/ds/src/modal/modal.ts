@@ -63,6 +63,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   triggerButton: Element | null;
   closeOnClick: boolean;
   closeOnOverlayClick: boolean;
+  closeOnEscape: boolean;
   trap: FocusTrap;
   modalControl: Element | null;
   modalBody: any;
@@ -91,12 +92,15 @@ export class Modal extends BaseComponent<ModalOptions> {
       name: 'modal-body',
     });
     this.handleEscapeKey = this.escapeKeyListener.bind(this);
+
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
     this.closeOnClick =
       (this.modal as HTMLElement).dataset?.closeonclick === 'true';
     this.closeOnOverlayClick =
       (this.modal as HTMLElement).dataset?.closeonoverlayclick === 'true';
+    this.closeOnEscape =
+      (this.modal as HTMLElement).dataset?.closeonescape !== 'false';
 
     this.initModalState();
     this.bindCloseButtons();
@@ -183,7 +187,7 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   escapeKeyListener(event: KeyboardEvent) {
-    if (event.key === 'Escape' && this.isOpen) {
+    if (event.key === 'Escape' && this.isOpen && this.closeOnEscape) {
       event.stopPropagation();
       this.toggleModalState(false, { forceClose: true });
     }
@@ -196,7 +200,10 @@ export class Modal extends BaseComponent<ModalOptions> {
     );
     this.modal.addEventListener('click', this.modalEventListener);
     this.closeIcon?.addEventListener('click', this.closeButtonListener);
-    document.addEventListener('keydown', this.handleEscapeKey);
+
+    if (this.closeOnEscape) {
+      document.addEventListener('keydown', this.handleEscapeKey);
+    }
   }
 
   destroyComponent(): void {
@@ -207,7 +214,10 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modal.removeEventListener('click', this.modalEventListener);
     this.closeIcon?.removeEventListener('click', this.closeButtonListener);
     this.trap?.deactivate();
-    document.removeEventListener('keydown', this.handleEscapeKey);
+
+    if (this.closeOnEscape) {
+      document.removeEventListener('keydown', this.handleEscapeKey);
+    }
   }
 }
 
