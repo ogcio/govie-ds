@@ -29,7 +29,23 @@
     "examples:html": "pnpm build:libs && pnpm --filter @ogcio/examples-html dev",
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm -r exec rm -rf dist",
     "prepare": "husky",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "lint:staged": "lint-staged"
+  },
+  "lint-staged": {
+    "packages/react/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/design-system-react run lint --fix"
+    ],
+    "packages/html/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/design-system-html run lint --fix"
+    ],
+    "examples/*/**/*.{js,ts,tsx}": [
+      "pnpm -F @ogcio/examples-nextjs run lint"
+    ],
+    "apps/docs/**/*.{ts,tsx,mdx}": [
+      "pnpm -F @ogcio/design-system-docs run lint:code --fix",
+      "pnpm -F @ogcio/design-system-docs run lint:spelling"
+    ]
   },
   "devDependencies": {
     "@chromatic-com/storybook": "4.0.1",
