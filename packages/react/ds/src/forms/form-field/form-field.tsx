@@ -162,10 +162,16 @@ const FormFieldError = ({
   text,
   size,
   className,
+  ...props
 }: ErrorTextProps) => {
   useFormFieldContext('FormFieldError');
   return (
-    <ErrorText text={text} size={size} className={cn('gi-mb-1', className)}>
+    <ErrorText
+      text={text}
+      size={size}
+      className={cn('gi-mb-1', className)}
+      {...props}
+    >
       {children}
     </ErrorText>
   );
