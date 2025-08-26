@@ -130,6 +130,9 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
     arguments_.closeOnOverlayClick === undefined ||
     arguments_.closeOnOverlayClick
   ).toString();
+  modal.dataset.closeonescape = (
+    arguments_.closeOnEscape === undefined || arguments_.closeOnEscape
+  ).toString();
 
   modalContainer.className = `gi-modal-container-control gi-modal-container gi-modal-container-${position}`;
 
