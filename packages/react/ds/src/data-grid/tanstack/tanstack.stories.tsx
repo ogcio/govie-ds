@@ -462,6 +462,8 @@ export const WithReactHookForm = () => {
         <DataGridFooterStart className="gi-space-x-2">
           <span>Rows per page</span>
           <SelectNative
+            id="data-grid-rows-per-page"
+            aria-label="Select"
             className="!gi-min-w-12"
             value={pagination.pageSize}
             onChange={(event) => {
@@ -549,7 +551,11 @@ export const DataGridFooterBasic: Story = {
       </DataGridFooterStart>
       <DataGridFooterCenter className="gi-w-1/3 gi-space-x-2">
         <span>Rows per page</span>
-        <SelectNative className="!gi-min-w-12">
+        <SelectNative
+          className="!gi-min-w-12"
+          id="data-grid-footer-rows-per-page"
+          aria-label="Select"
+        >
           <SelectItem value="10">10</SelectItem>
           <SelectItem value="20">20</SelectItem>
           <SelectItem value="30">30</SelectItem>

@@ -69,6 +69,7 @@ export const TablePagination: React.FC<TablePaginationProps> = ({
           })}
         </span>
         <SelectNative
+          aria-label="Select page"
           value={currentPage}
           className="!gi-min-w-12"
           onChange={(event) => onPageChange(Number(event.target.value))}
