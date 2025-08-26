@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { LogoProps } from '../common/types.js';
 import { DrawerPosition } from '../drawer/drawer.js';
 import { IconId } from '../icon/icon.js';
@@ -6,6 +5,7 @@ import { IconId } from '../icon/icon.js';
 export type HeaderItemMode = 'always' | 'mobile-only' | 'desktop-only';
 export type HeaderItemAppearance = 'dropdown' | 'drawer';
 export type HeaderItemType = 'slot' | 'divider' | 'link' | 'custom-link';
+export type HeaderAppearance = 'default' | 'light';
 
 type CommonProps = { showItemMode?: HeaderItemMode };
 
@@ -84,4 +84,5 @@ export type HeaderProps = {
   fullWidth?: boolean;
   showTitleOnMobile?: boolean;
   dataTestid?: string;
+  appearance?: HeaderAppearance;
 };
