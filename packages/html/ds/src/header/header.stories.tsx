@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import parse from 'html-react-parser';
+import React from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { createIcon } from '../helpers/icons';
-import { createDrawer } from '../helpers/modal';
-import { HeaderItem, HeaderProps } from './types';
+import {
+  createElement,
+  defaultHeaderItems,
+  defaultHeaderProps,
+  mobileHeaderMenuItems,
+  slotSearch,
+} from '../helpers/header';
+import type { HeaderProps } from './types';
 
 const meta: Meta<HeaderProps> = {
   title: 'Layout/Header',
@@ -11,482 +16,6 @@ const meta: Meta<HeaderProps> = {
 
 export default meta;
 type Story = StoryObj<HeaderProps>;
-
-const mobileHeaderMenuItems = (
-  items: HeaderItem[],
-  secondaryLinks?: {
-    href?: string;
-    label?: string;
-  }[],
-) => {
-  function createListItem(
-    item:
-      | HeaderItem
-      | {
-          href?: string;
-          label?: string;
-        },
-  ) {
-    const li = document.createElement('li');
-
-    const listItem = document.createElement('a');
-    listItem.href = item.href!;
-    listItem.className = 'gi-list-item';
-    if ('external' in item && item.external) {
-      listItem.target = '_blank';
-      listItem.rel = 'noreferrer noopener';
-    }
-
-    const span = document.createElement('span');
-    span.className = 'gi-text-sm gi-ml-1';
-    span.textContent = item.label!;
-
-    listItem.append(span);
-    li.append(listItem);
-
-    mobileHeaderMenuItems.append(li);
-  }
-
-  const mobileHeaderMenuItems = document.createElement('ul');
-
-  for (const item of items) {
-    if (item.itemType === 'link') {
-      createListItem(item);
-    }
-  }
-
-  for (const item of secondaryLinks || []) {
-    createListItem(item);
-  }
-
-  return mobileHeaderMenuItems;
-};
-
-const buildDefaultMobileMenu = (
-  mobileMenuLabel: string,
-  items: HeaderItem[],
-  secondaryLinks: {
-    href?: string;
-    label?: string;
-  }[],
-) => {
-  const component = mobileHeaderMenuItems(items, secondaryLinks);
-
-  const mobileMenu: HeaderItem = {
-    label: mobileMenuLabel,
-    icon: 'menu',
-    itemType: 'slot',
-    component: component.outerHTML,
-    slotAppearance: 'drawer',
-    showItemMode: 'mobile-only',
-  };
-
-  return [...items, mobileMenu];
-};
-
-const createHeader = (arguments_: HeaderProps) => {
-  const items =
-    (arguments_.addDefaultMobileMenu
-      ? buildDefaultMobileMenu(
-          arguments_.mobileMenuLabel || '',
-          arguments_.items || [],
-          arguments_.secondaryLinks || [],
-        )
-      : arguments_.items) || [];
-
-  const containerClassName = arguments_.fullWidth
-    ? 'gi-layout-container-full-width'
-    : 'gi-layout-container';
-  const headerClassNames = 'gi-header';
-  const secondaryBarClassNames = 'gi-header-secondary-bar';
-  const secondaryItemClassNames = 'gi-header-secondary-item';
-  const menuContainerClassNames = 'gi-header-menu';
-  const appTitleClassNames = 'gi-header-title';
-  const toolItemClassNames = 'gi-header-tool-item';
-  const menuDividerClassNames = 'gi-header-divider';
-
-  const header = document.createElement('header');
-  header.id = 'GovieHeader';
-  header.className = headerClassNames;
-  header.dataset.module = 'gieds-header';
-
-  const container = document.createElement('div');
-  container.className = `${containerClassName} gi-order-2`;
-  header.append(container);
-
-  const menuContainer = document.createElement('div');
-  menuContainer.className = menuContainerClassNames;
-  container.append(menuContainer);
-
-  const logoWrapper = document.createElement('div');
-  logoWrapper.className = 'gi-header-logo';
-
-  const logo = document.createElement('picture');
-  const source = document.createElement('source');
-  source.srcset =
-    arguments_.logo?.imageLarge ||
-    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov-of-ireland/harp-white.svg';
-  source.media = '(min-width: 640px)';
-  const img = document.createElement('img');
-  img.src =
-    arguments_.logo?.imageSmall ||
-    'https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/harp/harp-white.svg';
-  img.alt = arguments_.logo?.alt || 'Gov.ie logo';
-  img.className = 'gi-h-10 sm:gi-h-14';
-  logo.append(source);
-  logo.append(img);
-
-  if (arguments_.logo?.href) {
-    const logoLink = document.createElement('a');
-    logoLink.dataset.testid = 'logo-link';
-    if (arguments_.logo.external) {
-      logoLink.target = '_blank';
-      logoLink.rel = 'noreferrer noopener';
-    }
-    logoLink.href = arguments_.logo.href;
-    logoLink.append(logo);
-    logoWrapper.append(logoLink);
-  } else {
-    logoWrapper.append(logo);
-  }
-
-  const titleWrapper = document.createElement('div');
-  titleWrapper.className = `${appTitleClassNames} ${arguments_.showTitleOnMobile ? '' : 'gi-hidden'}`;
-  if (arguments_.title) {
-    titleWrapper.textContent = arguments_.title;
-  }
-
-  const wrapper2 = document.createElement('div');
-  wrapper2.className =
-    'gi-flex gi-items-center gi-gap-2 md:gi-gap-4 gi-flex-none';
-
-  for (const [index, item] of items.entries()) {
-    const menuItem = document.createElement('div');
-    menuItem.className = 'gi-block';
-    if (item.showItemMode === 'mobile-only') {
-      menuItem.className = 'gi-block lg:gi-hidden';
-    } else if (item.showItemMode === 'desktop-only') {
-      menuItem.className = 'gi-hidden lg:gi-block';
-    }
-    wrapper2.append(menuItem);
-
-    switch (item.itemType) {
-      case 'link': {
-        const link = document.createElement('a');
-        link.className = toolItemClassNames;
-        link.href = item.href || '#';
-        link.textContent = item.label || '';
-        if (item.icon) {
-          const icon = createIcon({ icon: item.icon });
-          link.append(icon);
-        }
-        if (item.external) {
-          link.target = '_blank';
-          link.rel = 'noreferrer noopener';
-        }
-        menuItem.append(link);
-        break;
-      }
-      case 'slot': {
-        if (item.slotAppearance === 'drawer') {
-          const drawer = createDrawer({
-            body: item.component || '',
-            position: item.drawerPosition || 'right',
-            startsOpen: false,
-            isOpen: false,
-            footer: '',
-          });
-          drawer.id = `Drawer-${index}`;
-          header.append(drawer);
-        }
-
-        const label = document.createElement('label');
-        label.className = toolItemClassNames;
-        label.htmlFor = `ItemActionTrigger-${index}`;
-        label.ariaLabel = item.label || item.icon || 'menu';
-        label.id = `ItemActionLabel-${index}`;
-
-        const input = document.createElement('input');
-        label.append(input);
-        input.id = `ItemActionTrigger-${index}`;
-        input.dataset.testid = `ItemActionTrigger-${index}`;
-        input.type = 'button';
-        input.dataset.index = `${index}`;
-
-        // this code is needed only for storybook
-        if (item.slotAppearance === 'drawer') {
-          const script = document.createElement('script');
-          script.async = false;
-
-          const scriptCode = `
-          function toggleDrawer${index}() {
-            const element = document.getElementById('Drawer-${index}');
-            const elements = element.querySelectorAll('[data-element="modal"]');
-            const modal = elements[0];
-
-            if(modal){
-              modal.classList.add('gi-modal-open');
-              modal.classList.remove('gi-modal-close');
-              modal.setAttribute('aria-hidden', 'false');
-            }
-          }
-          setTimeout(() => {
-            const label = document.getElementById('ItemActionLabel-${index}');
-            label?.addEventListener('click', function() { toggleDrawer${index}(); })
-          }, 500);
-          `;
-
-          script.append(document.createTextNode(scriptCode));
-          document.body.append(script);
-        }
-
-        if (item.label) {
-          const span = document.createElement('span');
-          span.className = 'label';
-          span.textContent = item.label;
-          label.append(span);
-        }
-
-        if (item.icon) {
-          const icon = createIcon({ icon: item.icon });
-          icon.id = `ItemIconActionTrigger-${index}`;
-          icon.dataset.testid = `ItemIconActionTrigger-${index}`;
-          icon.ariaHidden = 'true';
-          label.append(icon);
-        }
-        const closeIcon = createIcon({
-          icon: 'close',
-          className: 'gi-hidden close-icon',
-        });
-        closeIcon.id = `ItemCloseTrigger-${index}`;
-        closeIcon.dataset.testid = `ItemCloseTrigger-${index}`;
-        closeIcon.ariaHidden = 'true';
-        label.append(closeIcon);
-        menuItem.append(label);
-        break;
-      }
-      case 'divider': {
-        const divider = document.createElement('div');
-        divider.className = menuDividerClassNames;
-        menuItem.append(divider);
-        break;
-      }
-    }
-  }
-  menuContainer.append(logoWrapper);
-  menuContainer.append(titleWrapper);
-  menuContainer.append(wrapper2);
-
-  if (arguments_.secondaryLinks?.length) {
-    const secondaryBar = document.createElement('div');
-    secondaryBar.className = `${secondaryBarClassNames} gi-order-1`;
-    header.append(secondaryBar);
-
-    const secondaryBarContainer = document.createElement('div');
-    secondaryBarContainer.className = `${containerClassName} gi-flex gi-justify-end gi-items-center`;
-    secondaryBar.append(secondaryBarContainer);
-
-    if (arguments_.secondaryLinks?.length) {
-      const list = document.createElement('ul');
-
-      for (const link of arguments_.secondaryLinks) {
-        const li = document.createElement('li');
-
-        if (link.slot) {
-          const slotWrapper = document.createElement('div');
-          slotWrapper.className = 'gi-header-secondary-item-slot';
-          slotWrapper.innerHTML = link.slot;
-          li.append(slotWrapper);
-        } else if (link.href && link.label) {
-          const secondaryLink = document.createElement('a');
-          secondaryLink.href = link.href;
-          secondaryLink.textContent = link.label;
-          secondaryLink.className = secondaryItemClassNames;
-
-          li.append(secondaryLink);
-        }
-        list.append(li);
-      }
-      secondaryBarContainer.append(list);
-    }
-  }
-
-  for (const [index, item] of items.entries()) {
-    if (item.itemType !== 'slot') {
-      continue;
-    }
-    if (item.slotAppearance !== 'dropdown') {
-      continue;
-    }
-    const slotContainer = document.createElement('div');
-    slotContainer.id = `SlotContainer-${index}`;
-    slotContainer.dataset.testid = `SlotContainer-${index}`;
-    slotContainer.dataset.index = `${index}`;
-    slotContainer.ariaLabel = `Slot Container ${index + 1}`;
-    slotContainer.className =
-      'gi-hidden gi-bg-gray-50 gi-py-4 gi-px-4 gi-border-b-2xl gi-border-b-color-surface-system-primary-default gi-order-3';
-    slotContainer.innerHTML = item.component || '';
-    header.append(slotContainer);
-  }
-
-  return header;
-};
-
-const createElement = (arguments_: HeaderProps) => {
-  const component = createHeader(arguments_);
-  return parse(component.outerHTML) as React.ReactElement;
-};
-
-const slotExample1 = () => `
-  <ul class="gi-list-bullet">
-    <li>
-      <a
-        href="#"
-        class="gi-link gi-link-sm"
-      >
-        Citizens Information - Services and Rights
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="gi-link gi-link-sm"
-      >
-        Revenue - Taxes and Payments
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="gi-link gi-link-sm"
-      >
-        Department of Social Protection
-      </a>
-    </li>
-  </ul>
-`;
-
-const slotSearch = () => `
-  <form class="gi-max-w-md gi-mx-auto">
-    <h4 class="gi-heading-sm">Search the website</h4>
-    <div class="gi-flex gi-items-end gi-mt-4">
-      <div class="gi-input-text-container gi-flex-auto">
-        <div class="gi-input-text-container">
-          <input
-            placeholder="Enter search term"
-            id="search"
-            type="text"
-            class="gi-border-gray-950 gi-w-full gi-input-text"
-            name="search_query"
-            aria-label="Search the website"
-          />
-        </div>
-      </div>
-      <div class="gi-ml-1 gi-flex-none">
-        <button class="gi-btn gi-btn-primary sm:gi-icon-btn-regular gi-btn-regular">
-          <span class="gi-hidden md:gi-block">Search</span>
-          <span class="gi-block md:gi-hidden material-symbols-outlined gi-text-[24px]" style="font-variation-settings: &quot;FILL&quot; 0, &quot;wght&quot; 400, &quot;GRAD&quot; 0, &quot;opsz&quot; 24;">search</span>
-        </button>
-      </div>
-    </div>
-  </form>
-`;
-
-const slotExample3 = () => `
-  <select
-    class="gi-select"
-    id="slot-example-2"
-    aria-label="slot-example-2"
-  >
-    <optgroup label="Languages">
-      <option class="gi-select-option" value="gaeilge">Gaeilge</option>
-      <option class="gi-select-option" value="english">English</option>
-      <option class="gi-select-option" value="spanish">Spanish</option>
-      <option class="gi-select-option" value="italian">Italian</option>
-    </optgroup>
-  </select>
-`;
-
-const defaultHeaderItems: (external?: boolean) => HeaderItem[] = (
-  external?: boolean,
-) => [
-  {
-    label: 'Departments',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    label: 'Services',
-    itemType: 'link',
-    href: '#',
-    external,
-    showItemMode: 'desktop-only',
-  },
-  {
-    itemType: 'divider',
-  },
-  {
-    icon: 'search',
-    label: 'Search',
-    itemType: 'slot',
-    component: slotSearch(),
-    slotAppearance: 'dropdown',
-  },
-];
-
-const defaultHeaderProps = () =>
-  ({
-    items: headerWithSlotsProps.items,
-    addDefaultMobileMenu: true,
-    mobileMenuLabel: 'Menu',
-  }) as HeaderProps;
-
-const headerWithSlotsProps: HeaderProps = {
-  items: [
-    {
-      label: 'Departments',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Services',
-      itemType: 'link',
-      href: '#',
-      showItemMode: 'desktop-only',
-    },
-    {
-      itemType: 'divider',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Faq',
-      icon: 'info',
-      itemType: 'slot',
-      component: slotExample1(),
-      slotAppearance: 'drawer',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Search',
-      icon: 'search',
-      itemType: 'slot',
-      component: slotSearch(),
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
-    },
-    {
-      label: 'Languages',
-      icon: 'mic',
-      itemType: 'slot',
-      component: slotExample3(),
-      slotAppearance: 'dropdown',
-      showItemMode: 'desktop-only',
-    },
-  ],
-};
 
 export const Default: Story = {
   argTypes: {
@@ -1020,11 +549,11 @@ export const WithUtilitySlot: Story = {
         label: 'Gaeilge',
       },
       {
-        slot: `<a href="#">English</a>`,
+        slot: `<a href="#" class="gi-header-secondary-item gi-text-white gi-stroke-white gi-header-secondary-item-default">English</a>`,
       },
       {
         slot: `
-          <p class="gi-paragraph-sm">Hello John | <a href="#">Logout</a></p>
+          <p class="gi-paragraph-sm">Hello John | <a href="#" class="gi-header-secondary-item gi-text-white gi-stroke-white gi-header-secondary-item-default">Logout</a></p>
         `,
       },
     ],
@@ -1088,7 +617,7 @@ export const WithCustomSecondaryLinks: Story = {
       },
     ],
     addDefaultMobileMenu: true,
-    items: [...defaultHeaderItems()],
+    items: [...(defaultHeaderItems() as any)],
   },
   render: createElement,
 };
@@ -1164,6 +693,60 @@ export const ShowMobileMenuForLanguages: Story = {
       },
     ],
     addDefaultMobileMenu: true,
+  },
+  render: createElement,
+};
+
+export const Light: Story = {
+  decorators: (story) => {
+    const storyElement = story();
+    return React.createElement(
+      'div',
+      { className: 'gi-bg-black gi-p-4' },
+      React.cloneElement(storyElement),
+    );
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    ...defaultHeaderProps(),
+    appearance: 'light',
+    mobileMenuLabel: 'Menu',
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: `
+          <p class="gi-paragraph-sm">Hello John | <a href="#" class="gi-header-secondary-item gi-header-secondary-item-light gi-text-gray-950">Logout</a></p>
+        `,
+      },
+    ],
+  },
+  render: createElement,
+};
+
+export const LightWithTitle: Story = {
+  decorators: (story) => {
+    const storyElement = story();
+    return React.createElement(
+      'div',
+      { className: 'gi-bg-black gi-p-4' },
+      React.cloneElement(storyElement),
+    );
+  },
+  args: {
+    appearance: 'light',
+    title: 'Life Events',
+    logo: {
+      href: 'path',
+    },
   },
   render: createElement,
 };
