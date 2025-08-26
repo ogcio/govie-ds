@@ -268,6 +268,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         className={cn('gi-autocomplete gi-not-prose', props.className)}
       >
         <InputText
+          autoComplete="off"
           id={id}
           name={name}
           onKeyDown={handleOnKeyDown}
