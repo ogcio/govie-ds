@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from 'storybook/test';
+import { FormProvider, useForm } from 'react-hook-form';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -522,4 +524,65 @@ export const InputSearch: Story = {
       <InputText {...props} />
     </FormField>
   ),
+};
+
+export const WithReactHookForm: Story = {
+  render: () => {
+    const methods = useForm<{ username: string }>({
+      defaultValues: { username: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset({ username: '' });
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField>
+            {methods.formState.errors.username && (
+              <FormFieldError dataTestid="error-msg">
+                {methods.formState.errors.username.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="input-text-id">Username</FormFieldLabel>
+            <InputText
+              id="input-text-id"
+              {...methods.register('username', { required: 'Required' })}
+              data-testid="input-text-id"
+            />
+          </FormField>
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" dataTestid="submit-btn">
+              Submit
+            </Button>
+            <Button onClick={() => methods.reset()} dataTestid="reset-btn">
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const input = canvas.getByTestId('input-text-id');
+    const submitButton = canvas.getByTestId('submit-btn');
+
+    await userEvent.type(input, 'John');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(submitButton);
+    expect((input as HTMLInputElement).value).toBe('');
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(input, 'John');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(document.body);
+  },
 };

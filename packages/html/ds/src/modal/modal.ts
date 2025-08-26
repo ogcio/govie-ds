@@ -63,10 +63,12 @@ export class Modal extends BaseComponent<ModalOptions> {
   triggerButton: Element | null;
   closeOnClick: boolean;
   closeOnOverlayClick: boolean;
+  closeOnEscape: boolean;
   trap: FocusTrap;
   modalControl: Element | null;
   modalBody: any;
   ariaHiderCleanup: (() => void) | null = null;
+  handleEscapeKey: (event: KeyboardEvent) => void;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -89,6 +91,7 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modalBody = this.query.getByElement({
       name: 'modal-body',
     });
+    this.handleEscapeKey = this.escapeKeyListener.bind(this);
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
@@ -96,6 +99,8 @@ export class Modal extends BaseComponent<ModalOptions> {
       (this.modal as HTMLElement).dataset?.closeonclick === 'true';
     this.closeOnOverlayClick =
       (this.modal as HTMLElement).dataset?.closeonoverlayclick === 'true';
+    this.closeOnEscape =
+      (this.modal as HTMLElement).dataset?.closeonescape !== 'false';
 
     this.initModalState();
     this.bindCloseButtons();
@@ -132,7 +137,8 @@ export class Modal extends BaseComponent<ModalOptions> {
 
   toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {
     const newDocument = (this.modal as HTMLElement).ownerDocument ?? document;
-
+    this.isOpen = isOpen;
+    (this.modal as HTMLElement).dataset.open = String(isOpen);
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
@@ -180,6 +186,13 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.toggleModalState(false, { forceClose: true });
   }
 
+  escapeKeyListener(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isOpen && this.closeOnEscape) {
+      event.stopPropagation();
+      this.toggleModalState(false, { forceClose: true });
+    }
+  }
+
   initComponent() {
     this.triggerButton?.addEventListener(
       'click',
@@ -187,6 +200,10 @@ export class Modal extends BaseComponent<ModalOptions> {
     );
     this.modal.addEventListener('click', this.modalEventListener);
     this.closeIcon?.addEventListener('click', this.closeButtonListener);
+
+    if (this.closeOnEscape) {
+      document.addEventListener('keydown', this.handleEscapeKey);
+    }
   }
 
   destroyComponent(): void {
@@ -197,6 +214,10 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.modal.removeEventListener('click', this.modalEventListener);
     this.closeIcon?.removeEventListener('click', this.closeButtonListener);
     this.trap?.deactivate();
+
+    if (this.closeOnEscape) {
+      document.removeEventListener('keydown', this.handleEscapeKey);
+    }
   }
 }
 
