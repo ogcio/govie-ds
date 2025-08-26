@@ -13,6 +13,7 @@ export type ModalChildren =
   | ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>;
 
 export type ModalWrapperProps = {
+  closeOnEscape?: boolean;
   isOpen: boolean;
   onClose: () => void;
   position?: ModalPositions;
