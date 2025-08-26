@@ -100,11 +100,12 @@ export const WithSelectMenu: Story = {
         </Button>
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <SelectMenu onChange={setSelectedValue} enableSearch>
-            {options.map(({ value, label }) => (
+            {options.map(({ value, label }, index) => (
               <SelectMenuOption
                 key={`${label}-${value}`}
                 value={value}
                 selected={selectedValue === value}
+                index={index}
               >
                 {label}
               </SelectMenuOption>

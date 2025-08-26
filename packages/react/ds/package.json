@@ -26,7 +26,8 @@
     "storybook:build": "storybook build --stats-json",
     "storybook:test": "vitest --project=storybook",
     "storybook:coverage": "vitest --project=storybook --coverage",
-    "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml"
+    "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "sideEffects": [
