@@ -43,7 +43,9 @@
 }
 
 .gi-tab-item:hover
-  .gi-tab-item-border:not(.gi-bg-color-border-tone-primary-accent-selected) {
+  .gi-tab-item-border:not(.gi-bg-color-border-tone-primary-accent-selected):not(
+    .gi-bg-color-text-system-neutral-interactive-default
+  ) {
   @apply gi-bg-color-surface-system-neutral-interactive-hover;
 }
 
