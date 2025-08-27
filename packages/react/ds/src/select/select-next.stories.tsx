@@ -119,9 +119,9 @@ export const Default: StoryObj = {
     });
     await userEvent.click(input);
     await waitFor(() => {
-      expect(canvas.getByRole('list')).toBeInTheDocument();
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
     expect(options.map((opt) => opt.textContent)).toEqual([
       'Option 1',
@@ -240,7 +240,7 @@ export const DisabledItem = {
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
 
     expect(options).toHaveLength(3);
@@ -273,7 +273,7 @@ export const WithSearchEnabled: StoryObj = {
     const searchBox = canvas.getByPlaceholderText('Type to Search');
     await userEvent.type(searchBox, 'Option 2');
 
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
 
     await waitFor(() => {
       const options = within(list).getAllByRole('option');
@@ -312,7 +312,7 @@ export const WithGroups = {
     await userEvent.click(input);
 
     await waitFor(() => {
-      expect(canvas.getByRole('list')).toBeInTheDocument();
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
 
     expect(canvas.getByText('Group 1')).toBeInTheDocument();
@@ -358,7 +358,7 @@ export const Controlled: StoryObj = {
 
     await userEvent.click(input);
 
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
 
     await userEvent.click(options[2]);

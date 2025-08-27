@@ -1,6 +1,7 @@
+import path from 'node:path';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { basename, resolve } from 'node:path';
 import {
+  configDefaults,
   coverageConfigDefaults,
   defineConfig,
   defineProject,
@@ -41,6 +42,7 @@ export default mergeConfig(
             environment: 'jsdom',
             css: true,
             setupFiles: ['./vitest-unit.setup.ts'],
+            exclude: [...configDefaults.exclude, 'tests/*.spec.ts'],
           },
         }),
         defineProject({
@@ -65,9 +67,11 @@ export default mergeConfig(
         }),
       ],
       resolveSnapshotPath: (testPath, snapExtension) => {
-        const testFileName = basename(testPath).replace(/\.(test)\.(tsx)$/, '');
+        const testFileName = path
+          .basename(testPath)
+          .replace(/\.(test)\.(tsx)$/, '');
 
-        return resolve(
+        return path.resolve(
           process.cwd(),
           '../../../snapshots',
           `${testFileName}${snapExtension}`,
