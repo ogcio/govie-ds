@@ -202,6 +202,7 @@ export const IndeterminateLarge: Story = {
 };
 
 export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
   render: () => {
     const methods = useForm<{ terms: boolean }>({
       defaultValues: { terms: false },

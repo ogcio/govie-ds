@@ -35,6 +35,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -94,6 +95,7 @@ export const WithoutFooter: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     className: 'gi-w-[600px]',
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -112,6 +114,7 @@ export const WithLongContent: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     className: 'gi-w-[600px]',
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -158,6 +161,7 @@ export const WithLongContent: Story = {
 export const WithAllFooterButtonVariants: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -179,6 +183,7 @@ export const WithAllFooterButtonVariants: Story = {
 export const ModalNotCloseOnClick: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     closeOnClick: false,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -196,6 +201,7 @@ export const ModalNotCloseOnClick: Story = {
 export const ModalNotCloseOnOverlayClick: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     closeOnOverlayClick: false,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -219,6 +225,7 @@ export const WithCenterLarge: Story = {
   args: {
     size: 'lg',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -240,6 +247,7 @@ export const WithCenterMedium: Story = {
   args: {
     size: 'md',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -261,6 +269,7 @@ export const WithCenterSmall: Story = {
   args: {
     size: 'sm',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">

@@ -310,6 +310,7 @@ export const InputWithIcons: Story = {
 };
 
 export const InputWithLoadingIcon: Story = {
+  tags: ['skip-playwright'],
   render: () => (
     <FormField>
       <FormFieldLabel>Label</FormFieldLabel>

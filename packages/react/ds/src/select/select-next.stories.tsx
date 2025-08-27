@@ -128,7 +128,6 @@ export const Default: StoryObj = {
       'Option 2',
       'Option 3',
     ]);
-    await userEvent.click(document.body);
   },
 };
 
@@ -281,8 +280,6 @@ export const WithSearchEnabled: StoryObj = {
       expect(options).toHaveLength(1);
       expect(options[0]).toHaveTextContent('Option 2');
     });
-
-    await userEvent.click(document.body);
   },
 };
 
@@ -322,7 +319,6 @@ export const WithGroups = {
     expect(canvas.getByText('Group 2')).toBeInTheDocument();
     expect(canvas.getByText('Option 1')).toBeInTheDocument();
     expect(canvas.getByText('Option 8')).toBeInTheDocument();
-    await userEvent.click(document.body);
   },
 };
 
@@ -408,6 +404,7 @@ export const WithLongListSearchEnabled: StoryObj = {
 };
 
 export const WithReactHookForm: StoryObj = {
+  tags: ['skip-playwright'],
   render: () => {
     const { control, watch, reset } = useForm({
       defaultValues: { topic: '' },

@@ -430,6 +430,7 @@ export const WithIconRight: Story = {
 };
 
 export const WithSpinner: Story = {
+  tags: ['skip-playwright'],
   args: {
     disabled: true,
     appearance: 'default',

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Tooltip } from './tooltip.js';
 
@@ -52,9 +53,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: 'This is a tooltip at the top.',
+    text: 'This is a tooltip.',
     position: 'top',
-    children: <Button variant="primary">Hover me (Top)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Top)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText('This is a tooltip.');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText('This is a tooltip.');
+    await expect(popoverContent).toBeInTheDocument();
   },
 };
 
@@ -62,7 +79,23 @@ export const TopPosition: Story = {
   args: {
     text: 'This is a tooltip at the top.',
     position: 'top',
-    children: <Button variant="primary">Hover me (Top)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Top)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText('This is a tooltip at the top.');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText('This is a tooltip at the top.');
+    await expect(popoverContent).toBeInTheDocument();
   },
 };
 
@@ -70,7 +103,23 @@ export const BottomPosition: Story = {
   args: {
     text: 'This is a tooltip at the bottom.',
     position: 'bottom',
-    children: <Button variant="primary">Hover me (Bottom)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Bottom)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText('This is a tooltip at the bottom.');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText('This is a tooltip at the bottom.');
+    await expect(popoverContent).toBeInTheDocument();
   },
 };
 
@@ -78,7 +127,23 @@ export const LeftPosition: Story = {
   args: {
     text: 'This is a tooltip on the left.',
     position: 'left',
-    children: <Button variant="primary">Hover me (Left)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Left)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText('This is a tooltip on the left.');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText('This is a tooltip on the left.');
+    await expect(popoverContent).toBeInTheDocument();
   },
 };
 
@@ -86,7 +151,23 @@ export const RightPosition: Story = {
   args: {
     text: 'This is a tooltip on the right.',
     position: 'right',
-    children: <Button variant="primary">Hover me (Right)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Right)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText('This is a tooltip on the right.');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText('This is a tooltip on the right.');
+    await expect(popoverContent).toBeInTheDocument();
   },
 };
 
@@ -94,6 +175,26 @@ export const WithLongText: Story = {
   args: {
     text: 'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text that tests the tooltip display.',
     position: 'top',
-    children: <Button variant="primary">Hover me (Top)</Button>,
+    children: (
+      <Button variant="primary" dataTestid="tooltip-trigger">
+        Hover me (Top)
+      </Button>
+    ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    let popoverContent = canvas.queryByText(
+      'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text th...',
+    );
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.getByTestId('tooltip-trigger');
+    await userEvent.hover(triggerButton);
+
+    popoverContent = canvas.queryByText(
+      'This is a very long tooltip text that tests the tooltip display. This is a very long tooltip text th...',
+    );
+    await expect(popoverContent).toBeInTheDocument();
   },
 };

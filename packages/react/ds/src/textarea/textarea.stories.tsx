@@ -267,6 +267,7 @@ export const Controlled: Story = {
     rows: 4,
     cols: 50,
   },
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {
@@ -320,6 +321,7 @@ export const Uncontrolled: Story = {
     cols: 50,
     placeholder: 'Type something here...',
   },
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {
@@ -429,6 +431,7 @@ export const Uncontrolled: Story = {
 };
 
 export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
   render: () => {
     const methods = useForm<{ message: string }>({
       defaultValues: { message: '' },

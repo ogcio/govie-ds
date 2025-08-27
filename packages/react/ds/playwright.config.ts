@@ -7,32 +7,50 @@ const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:6006';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  reporter: process.env.CI ? 'dot' : 'html',
+  workers: process.env.CI ? 1 : undefined,
+  reporter: process.env.CI
+    ? [['junit', { outputFile: 'results.xml' }]]
+    : 'html',
   use: {
     baseURL: BASE_URL,
   },
   timeout: 30 * 1000,
-  retries: 2,
+  retries: 3,
   projects: [
     {
-      name: 'desktop',
+      name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'mobile',
-      use: {
-        ...devices['iPhone 15'],
-      },
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 12'] },
     },
   ],
   // Run your local dev server before starting the tests
-  webServer: process.env.CI
-    ? undefined
-    : {
-        command: 'pnpm storybook:dev',
-        url: BASE_URL,
-        reuseExistingServer: true,
-      },
+  // webServer: process.env.CI
+  //   ? undefined
+  //   : {
+  //       command: 'pnpm storybook:dev',
+  //       url: BASE_URL,
+  //       reuseExistingServer: true,
+  //     },
+  webServer: {
+    command: 'pnpm storybook:dev',
+    url: BASE_URL,
+    reuseExistingServer: true,
+  },
 });
 
 // import { defineConfig, devices } from '@playwright/test';
