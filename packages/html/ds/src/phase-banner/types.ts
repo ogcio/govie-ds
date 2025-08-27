@@ -1,4 +1,6 @@
 export type PhaseBannerProps = {
-  content?: string;
   level: 'alpha' | 'beta';
+  content: any;
+  wrap?: 'none' | 'container' | 'container-full-width';
+  padding?: boolean;
 };
