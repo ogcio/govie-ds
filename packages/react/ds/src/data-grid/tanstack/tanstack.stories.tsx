@@ -22,6 +22,7 @@ import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
+import { SelectItem, SelectNative } from '../../select/select-native.js';
 import {
   Table,
   TableHead,
@@ -458,9 +459,31 @@ export const WithReactHookForm = () => {
         </TableBody>
       </Table>
       <DataGridFooter>
+        <DataGridFooterStart className="gi-space-x-2">
+          <span>Rows per page</span>
+          <SelectNative
+            id="data-grid-rows-per-page"
+            aria-label="Select"
+            className="!gi-min-w-12"
+            value={pagination.pageSize}
+            onChange={(event) => {
+              const pageSize = Number(event.target.value);
+              const pageIndex = pagination.pageIndex;
+              setPagination({
+                pageIndex,
+                pageSize,
+              });
+            }}
+          >
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="20">20</SelectItem>
+            <SelectItem value="30">30</SelectItem>
+            <SelectItem value="40">40</SelectItem>
+          </SelectNative>
+        </DataGridFooterStart>
         <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
           <TablePagination
-            currentPage={table.getState().pagination.pageIndex + 1}
+            currentPage={pagination.pageIndex + 1}
             totalPages={table.getPageCount()}
             onPageChange={(page) => table.setPageIndex(page - 1)}
           />
@@ -524,10 +547,20 @@ export const DataGridFooterBasic: Story = {
   render: () => (
     <DataGridFooter>
       <DataGridFooterStart className="gi-w-1/3">
-        <span className="gi-text-md">DataGrid Footer Example</span>
+        <span>Data Grid Example</span>
       </DataGridFooterStart>
-      <DataGridFooterCenter className="gi-w-1/3 gi-text-center">
-        <span className="gi-text-md">Showing 1 of 10</span>
+      <DataGridFooterCenter className="gi-w-1/3 gi-space-x-2">
+        <span>Rows per page</span>
+        <SelectNative
+          className="!gi-min-w-12"
+          id="data-grid-footer-rows-per-page"
+          aria-label="Select"
+        >
+          <SelectItem value="10">10</SelectItem>
+          <SelectItem value="20">20</SelectItem>
+          <SelectItem value="30">30</SelectItem>
+          <SelectItem value="40">40</SelectItem>
+        </SelectNative>
       </DataGridFooterCenter>
       <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
         <TablePagination
