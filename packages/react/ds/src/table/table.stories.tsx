@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
+import { expect, within } from 'storybook/test';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
 import { Link } from '../link/link.js';
@@ -14,7 +15,6 @@ import { TableHead } from './table-head.js';
 import { TableHeader } from './table-header.js';
 import { TableRow } from './table-row.js';
 import { Table } from './table.js';
-import { expect, within } from 'storybook/test';
 
 interface TableRowData {
   [key: string]: any;

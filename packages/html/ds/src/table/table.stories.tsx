@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
+import { expect, within } from 'storybook/test';
 import { createIconButton } from '../helpers/buttons';
 import { createCheckbox } from '../helpers/forms';
 import { createLink } from '../helpers/links';
@@ -7,7 +8,6 @@ import { createTable, createTableCell } from '../helpers/table';
 import { createTag } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TablePropsExtension } from './types';
-import { expect, within } from 'storybook/test';
 
 const basicTableRows = [
   [
