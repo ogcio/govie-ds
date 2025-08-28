@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
-import { userEvent, within } from 'storybook/test';
 import { createButton } from '../helpers/buttons';
 import { ButtonProps } from './types';
 
@@ -67,12 +66,6 @@ export const Default: Story = {
     size: 'medium',
   },
   render: (arguments_) => createElement(arguments_),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByText('Button');
-    await userEvent.hover(button);
-    await userEvent.click(button);
-  },
 };
 
 export const Primary: Story = {
