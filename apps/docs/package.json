@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-docs",
-  "version": "1.14.3",
+  "version": "1.14.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,7 +20,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "prettier": "@ogcio/design-system-prettier-config",
   "dependencies": {

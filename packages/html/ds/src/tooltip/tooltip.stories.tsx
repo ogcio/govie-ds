@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TooltipProps } from './types';
 
 const meta: Meta<TooltipProps> = {
   title: 'Application/Tooltip',
-  decorators: (story) =>
-    `
-    <div class="gi-flex gi-justify-center gi-my-20 gi-mx-20">
-      ${story()}
-    </div>
-  ` as any,
+  decorators: (story) => {
+    const storyElement = story();
+    return React.createElement(
+      'div',
+      { className: 'gi-flex gi-justify-center gi-my-20 gi-mx-20' },
+      React.cloneElement(storyElement),
+    );
+  },
 };
 
 export default meta;

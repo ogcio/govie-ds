@@ -93,6 +93,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
       onBlur: onAutocompleteBlur,
       name,
       value,
+      id,
     } = props;
     const isPointerDownOnMenu = useRef(false);
 
@@ -267,6 +268,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         className={cn('gi-autocomplete gi-not-prose', props.className)}
       >
         <InputText
+          autoComplete="off"
+          id={id}
           name={name}
           onKeyDown={handleOnKeyDown}
           onIconEndClick={handleOnIconEndClick}
@@ -281,7 +284,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           aria-disabled={disabled}
           disabled={disabled}
           placeholder={
-            placeholder ||
+            placeholder ??
             t('autocomplete.placeholder', { defaultValue: 'Type to Search' })
           }
           iconEndClassName={cn({

@@ -592,7 +592,8 @@ export const TableWithFooter: Story = {
 };
 
 export const AlignedColumns: Story = {
-  render: () => `
+  render: () =>
+    `
     <table class="gi-table gi-table-auto" data-row-size="md" role="table">
       <caption class="gi-table-caption-text gi-text-lg">
           Employee Salaries
@@ -644,7 +645,7 @@ export const AlignedColumns: Story = {
           </tr>
       </tbody>
     </table>
-`,
+` as unknown as React.ReactElement,
   parameters: {
     docs: {
       description: {

@@ -1,6 +1,6 @@
 {
   "name": "@ogcio/design-system-html",
-  "version": "1.12.3",
+  "version": "1.12.4",
   "description": "",
   "private": true,
   "type": "module",
@@ -32,7 +32,8 @@
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "STORYBOOK_ENV=prod storybook build --stats-json",
     "storybook:test": "vitest --project=storybook --reporter=basic --disable-console-intercept",
-    "storybook:coverage": "vitest --project=storybook --coverage"
+    "storybook:coverage": "vitest --project=storybook --coverage",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "files": [
     "dist"

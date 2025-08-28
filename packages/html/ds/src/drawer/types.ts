@@ -5,6 +5,7 @@ export type DrawerPosition = 'left' | 'right' | 'bottom';
 
 export type DrawerWrapperProps = {
   isOpen: boolean;
+  closeOnEscape?: boolean;
   onClose?: () => void;
   position?: DrawerPosition;
   closeButtonSize?: ButtonSize;

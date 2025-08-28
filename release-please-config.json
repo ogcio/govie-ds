@@ -1,138 +1,134 @@
 {
-    "group-pull-request-title-pattern": "chore(auto-release): release ${branch}",
-    "bootstrap-sha": "e59f6b9d0bab630cb9b4083a74c866c1b84b0ee4",
-    "include-component-in-tag": true,
-    "changelog-sections": [
-        {
-            "type": "feat",
-            "section": "Features"
-        },
-        {
-            "type": "fix",
-            "section": "Bug Fixes"
-        },
-        {
-            "type": "perf",
-            "section": "Performance Improvements"
-        },
-        {
-            "type": "revert",
-            "section": "Reverts",
-            "hidden": true
-        },
-        {
-            "type": "deprecate",
-            "section": "Deprecations"
-        },
-        {
-            "type": "docs",
-            "section": "Documentation",
-            "hidden": true
-        },
-        {
-            "type": "style",
-            "section": "Styles",
-            "hidden": true
-        },
-        {
-            "type": "chore",
-            "section": "Miscellaneous Chores"
-        },
-        {
-            "type": "refactor",
-            "section": "Code Refactoring",
-            "hidden": true
-        },
-        {
-            "type": "test",
-            "section": "Tests",
-            "hidden": true
-        },
-        {
-            "type": "build",
-            "section": "Build System",
-            "hidden": true
-        },
-        {
-            "type": "ci",
-            "section": "Continuous Integration",
-            "hidden": true
-        }
-    ],
-    "packages": {
-        "apps/docs": {
-            "component": "docs",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/build/eslint-config": {
-            "component": "eslint-config",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/build/prettier-config": {
-            "component": "prettier-config",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/design/deepmerge": {
-            "component": "design-deepmerge",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/design/tailwind": {
-            "component": "design-tailwind",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/design/theme-builder": {
-            "component": "design-theme-builder",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/html/ds": {
-            "component": "html-lib",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/react/ds": {
-            "component": "react-lib",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "packages/themes/govie": {
-            "component": "themes-govie",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md"
-        },
-        "tokens": {
-            "component": "tokens",
-            "release-type": "node",
-            "changelog-path": "CHANGELOG.md",
-            "extra-files": [
-                "tokens/light/brand/brand.json",
-                "tokens/light/primitive/color.json",
-                "tokens/light/semantic/color.json",
-                "tokens/light/semantic/heading.json",
-                "tokens/light/semantic/surface.json",
-                "tokens/light/semantic/text.json"
-            ]
-        }
+  "group-pull-request-title-pattern": "chore(auto-release): release ${branch}",
+  "bootstrap-sha": "e59f6b9d0bab630cb9b4083a74c866c1b84b0ee4",
+  "include-component-in-tag": true,
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "Features"
     },
-    "plugins": [
-        {
-            "type": "node-workspace",
-            "updateAllPackages": false
-        },
-        {
-            "type": "linked-versions",
-            "groupName": "tokens-group",
-            "components": [
-                "tokens",
-                "themes-govie",
-                "design-theme-builder"
-            ]
-        }
-    ],
-    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "perf",
+      "section": "Performance Improvements"
+    },
+    {
+      "type": "revert",
+      "section": "Reverts",
+      "hidden": true
+    },
+    {
+      "type": "deprecate",
+      "section": "Deprecations"
+    },
+    {
+      "type": "docs",
+      "section": "Documentation",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "section": "Styles",
+      "hidden": true
+    },
+    {
+      "type": "chore",
+      "section": "Miscellaneous Chores"
+    },
+    {
+      "type": "refactor",
+      "section": "Code Refactoring",
+      "hidden": true
+    },
+    {
+      "type": "test",
+      "section": "Tests",
+      "hidden": true
+    },
+    {
+      "type": "build",
+      "section": "Build System",
+      "hidden": true
+    },
+    {
+      "type": "ci",
+      "section": "Continuous Integration",
+      "hidden": true
+    }
+  ],
+  "packages": {
+    "apps/docs": {
+      "component": "docs",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/build/eslint-config": {
+      "component": "eslint-config",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/build/prettier-config": {
+      "component": "prettier-config",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/design/deepmerge": {
+      "component": "design-deepmerge",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/design/tailwind": {
+      "component": "design-tailwind",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/design/theme-builder": {
+      "component": "design-theme-builder",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/html/ds": {
+      "component": "html-lib",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/react/ds": {
+      "component": "react-lib",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/themes/govie": {
+      "component": "themes-govie",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "tokens": {
+      "component": "tokens",
+      "release-type": "node",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        "tokens/light/brand/brand.json",
+        "tokens/light/primitive/color.json",
+        "tokens/light/semantic/color.json",
+        "tokens/light/semantic/heading.json",
+        "tokens/light/semantic/surface.json",
+        "tokens/light/semantic/text.json"
+      ]
+    }
+  },
+  "plugins": [
+    {
+      "type": "node-workspace",
+      "updateAllPackages": false
+    },
+    {
+      "type": "linked-versions",
+      "groupName": "tokens-group",
+      "components": ["tokens", "themes-govie", "design-theme-builder"]
+    }
+  ],
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
