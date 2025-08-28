@@ -7,6 +7,7 @@ import { createTable, createTableCell } from '../helpers/table';
 import { createTag } from '../helpers/typography';
 import { beautifyHtmlNode } from '../storybook/storybook';
 import { TablePropsExtension } from './types';
+import { expect, within } from 'storybook/test';
 
 const basicTableRows = [
   [
@@ -46,6 +47,7 @@ const createElement = (arguments_: TablePropsExtension) => {
 
   return parse(component.outerHTML) as React.ReactElement;
 };
+
 export const Default: Story = {
   args: {
     captionText: 'Table Caption',
@@ -238,6 +240,38 @@ export const BasicTable: Story = {
   render: (arguments_) => createElement(arguments_),
 };
 
+export const BasicTableWithNoBorder: Story = {
+  args: {
+    noBorder: true,
+    captionText: 'Default Table Example',
+    headers: ['Name', 'Email', 'Role'],
+    rows: [
+      [
+        beautifyHtmlNode(createTableCell('John Doe')),
+        beautifyHtmlNode(createTableCell('john.doe@example.com')),
+        beautifyHtmlNode(createTableCell('Admin')),
+      ],
+      [
+        beautifyHtmlNode(createTableCell('Jane Smith')),
+        beautifyHtmlNode(createTableCell('jane.smith@example.com')),
+        beautifyHtmlNode(createTableCell('User')),
+      ],
+      [
+        beautifyHtmlNode(createTableCell('Sam Lee')),
+        beautifyHtmlNode(createTableCell('sam.lee@example.com')),
+        beautifyHtmlNode(createTableCell('Editor')),
+      ],
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const table = canvas.getByRole('table');
+
+    expect(table).toHaveClass('gi-table-no-border');
+  },
+};
+
 export const WithInteractiveElements: Story = {
   args: {
     captionText: 'Table with Interactive Elements',
@@ -331,6 +365,7 @@ export const WithInteractiveElements: Story = {
   },
   render: (arguments_) => createElement(arguments_),
 };
+
 export const NoHeaders: Story = {
   args: {
     captionText: 'Table Without Headers',
@@ -363,6 +398,7 @@ export const EmptyTable: Story = {
   },
   render: (arguments_) => createElement(arguments_),
 };
+
 export const TableWithFooter: Story = {
   args: {
     captionText: 'Interactive Table with Footer',

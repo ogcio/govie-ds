@@ -17,4 +17,5 @@ export type TablePropsExtension = TableProps & {
   foot?: TableFootCell[];
   stripped?: boolean;
   rowSize?: 'sm' | 'md' | 'lg';
+  noBorder?: boolean;
 };

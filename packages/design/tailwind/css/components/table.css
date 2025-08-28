@@ -1,9 +1,18 @@
 .gi-table {
-  @apply gi-w-full gi-border-spacing-0 gi-rounded-md gi-border-separate 
-  gi-text-md gi-border-[1px] gi-border-color-border-system-neutral-interactive-muted;
+  @apply gi-w-full gi-rounded-md
+  gi-text-md
+  gi-border-[1px]
+  gi-border-spacing-0
+  gi-border-separate
+  gi-border-color-border-system-neutral-interactive-muted;
 }
+
 .gi-table[data-no-border='true'] {
   @apply gi-border-0;
+}
+
+.gi-no-border {
+  @apply gi-border-0 gi-outline-none gi-shadow-none;
 }
 
 .gi-table-th,
