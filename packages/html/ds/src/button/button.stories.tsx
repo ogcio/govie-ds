@@ -69,7 +69,7 @@ export const Default: Story = {
   render: (arguments_) => createElement(arguments_),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
+    const button = canvas.getByText('Button');
     await userEvent.hover(button);
     await userEvent.click(button);
   },
