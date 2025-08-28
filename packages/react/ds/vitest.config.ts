@@ -45,7 +45,8 @@ export default mergeConfig(
             exclude: [...configDefaults.exclude, 'tests/*.spec.ts'],
           },
         }),
-        defineProject({
+        {
+          extends: true,
           test: {
             name: 'storybook',
             globals: true,
@@ -64,7 +65,7 @@ export default mergeConfig(
             // See options at: https://storybook.js.org/docs/writing-tests/vitest-plugin#storybooktest
             storybookTest({ configDir: '.storybook' }),
           ],
-        }),
+        },
       ],
       resolveSnapshotPath: (testPath, snapExtension) => {
         const testFileName = path
