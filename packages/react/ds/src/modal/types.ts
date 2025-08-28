@@ -48,4 +48,5 @@ export type ModalFooterProps = {
   dataTestId?: string;
   dataModalSize?: ModalSize;
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+  stacked?: boolean;
 };

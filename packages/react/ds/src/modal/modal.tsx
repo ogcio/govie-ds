@@ -193,7 +193,12 @@ export const ModalWrapper = ({
             className,
           )}
         >
-          <div>
+          <div
+            className={cn({
+              'gi-py-4': !closeButtonLabel,
+              'gi-py-2': !!closeButtonLabel,
+            })}
+          >
             {modalTitleClone}
             {closeOnClick && (
               <ModalCloseButton
@@ -255,6 +260,7 @@ export const ModalFooter = ({
   children,
   orientation,
   dataModalSize,
+  stacked,
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter((actionButton) => {
@@ -273,8 +279,9 @@ export const ModalFooter = ({
 
   const buttonClassName = cn({
     'gi-justify-center sm:gi-justify-start':
-      !orientation && dataModalSize !== 'sm',
-    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm',
+      !orientation && dataModalSize !== 'sm' && !stacked,
+    'gi-justify-center':
+      orientation === 'vertical' || dataModalSize === 'sm' || stacked,
     'gi-justify-start': orientation === 'horizontal',
   });
 
@@ -283,6 +290,7 @@ export const ModalFooter = ({
       className={cn(className, {
         'gi-pt-6': sortedButtons.length === 0,
         'gi-modal-footer': sortedButtons.length,
+        'gi-modal-footer-stacked': stacked,
       })}
     >
       {sortedButtons.length > 0 && (

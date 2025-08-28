@@ -24,6 +24,7 @@ export type DrawerProps = Omit<
 type DrawerSectionProps = {
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
   className?: string;
+  stacked?: boolean;
 };
 
 type DrawerBodySectionProps = {
@@ -97,8 +98,12 @@ export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
   <ModalBody className={cn('gi-drawer-body', className)}>{children}</ModalBody>
 );
 
-export const DrawerFooter = ({ children, className }: DrawerSectionProps) => (
-  <ModalFooter className={cn('gi-drawer-footer', className)}>
+export const DrawerFooter = ({
+  children,
+  className,
+  stacked,
+}: DrawerSectionProps) => (
+  <ModalFooter stacked={stacked} className={cn('gi-drawer-footer', className)}>
     {children}
   </ModalFooter>
 );
