@@ -7,7 +7,6 @@ const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:6006';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI
     ? [['junit', { outputFile: 'results.xml' }]]
     : 'html',
