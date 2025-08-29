@@ -129,7 +129,9 @@ export const SelectMenu = forwardRef<HTMLDivElement, SelectMenuProps>(
           })}
         </div>
       ) : (
-        <ul>{filteredOptions}</ul>
+        <ul aria-label="options" role="listbox">
+          {filteredOptions}
+        </ul>
       );
     };
 

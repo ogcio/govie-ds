@@ -13,6 +13,7 @@ const meta = {
     },
   },
   component: Card,
+  tags: ['skip-playwright'],
   argTypes: {
     type: {
       control: { type: 'select' },

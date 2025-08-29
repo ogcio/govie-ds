@@ -239,6 +239,7 @@ export const ModalBody = ({
     id="gi-modal-body"
     aria-label="Modal content"
     role="document"
+    tabIndex={0}
     className={cn(
       {
         'gi-modal-body': !className,

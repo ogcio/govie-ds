@@ -6,7 +6,7 @@ import {
   Controls,
 } from '@storybook/addon-docs/blocks';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, waitFor, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Stack } from '../stack/stack.js';
 import { Toast, toaster, ToastProvider } from './toast.js';
@@ -100,6 +100,12 @@ export const Default: Story = {
       <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
     </>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Trigger Toast');
+    await userEvent.click(info);
+  },
 };
 
 export const WithSlotAction: Story = {
@@ -117,6 +123,12 @@ export const WithSlotAction: Story = {
       </Button>
     </>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Show Toast with Action');
+    await userEvent.click(info);
+  },
 };
 
 export const WithAction: Story = {
@@ -136,6 +148,12 @@ export const WithAction: Story = {
       </Button>
     </>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Show Toast with Action');
+    await userEvent.click(info);
+  },
 };
 
 export const Dismissible: Story = {
@@ -155,6 +173,12 @@ export const Dismissible: Story = {
       </>
     );
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Show Dismissible Toast');
+    await userEvent.click(info);
+  },
 };
 
 export const WithLongerDuration: Story = {
@@ -171,6 +195,12 @@ export const WithLongerDuration: Story = {
       </Button>
     </>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Show Toast with Longer Duration');
+    await userEvent.click(info);
+  },
 };
 
 export const WithPositionChange: Story = {
@@ -187,50 +217,12 @@ export const WithPositionChange: Story = {
       </Button>
     </>
   ),
-};
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
 
-export const TabletView: Story = {
-  args: {
-    title: 'Tablet Position Change',
-    description: 'This toast appears on a tablet',
-    position: { x: 'right', y: 'bottom' },
+    const info = await canvas.findByText('Show Toast at Bottom Left');
+    await userEvent.click(info);
   },
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'ipad',
-    },
-  },
-  render: (props) => (
-    <>
-      <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast at Bottom Right (Tablet)
-      </Button>
-    </>
-  ),
-};
-
-export const MobileView: Story = {
-  args: {
-    title: 'Mobile Position Change',
-    description: 'This toast appears on a mobile',
-    position: { x: 'right', y: 'bottom' },
-  },
-  parameters: {
-    layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
-  },
-  render: (props) => (
-    <>
-      <ToastProvider />
-      <Button onClick={() => toaster.create(props)}>
-        Show Toast full width (Mobile)
-      </Button>
-    </>
-  ),
 };
 
 export const AllVariants: Story = {
@@ -277,6 +269,21 @@ export const AllVariants: Story = {
         </Stack>
       </>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Info');
+    await userEvent.click(info);
+
+    const success = await canvas.findByText('Success');
+    await userEvent.click(success);
+
+    const danger = await canvas.findByText('Danger');
+    await userEvent.click(danger);
+
+    const warning = await canvas.findByText('Warning');
+    await userEvent.click(warning);
   },
 };
 

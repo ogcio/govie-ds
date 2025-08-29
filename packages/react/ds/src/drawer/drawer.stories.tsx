@@ -32,6 +32,7 @@ export const Default: Story = {
   },
   args: {
     closeButtonSize: 'large',
+    startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
@@ -61,6 +62,7 @@ export const DrawerRight: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -91,6 +93,7 @@ export const DrawerLeft: Story = {
   args: {
     position: 'left',
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -121,6 +124,7 @@ export const DrawerBottom: Story = {
   args: {
     position: 'bottom',
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -149,8 +153,8 @@ export const DrawerBottom: Story = {
 
 export const DrawerOpen: Story = {
   args: {
-    startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -186,6 +190,7 @@ export const DrawerMenuTablet: Story = {
   },
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     closeButtonLabel: 'Close',
     children: [
       <DrawerBody
@@ -219,6 +224,7 @@ export const DrawerMenuMobile: Story = {
   },
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     closeButtonLabel: 'Close',
     children: [
       <DrawerBody

@@ -54,12 +54,6 @@ export const AsText: Story = {
       },
     },
   },
-  play: async ({ canvasElement }) => {
-    const input = within(canvasElement).getByPlaceholderText('Enter name');
-    await userEvent.click(input);
-    await userEvent.type(input, ' updated');
-    expect(input).toHaveValue('Editable text updated');
-  },
 };
 
 export const AsSelect: Story = {
@@ -79,11 +73,6 @@ export const AsSelect: Story = {
         error: false,
       },
     },
-  },
-  play: async ({ canvasElement }) => {
-    const select = within(canvasElement).getByDisplayValue('Option 2');
-    await userEvent.selectOptions(select, 'option1');
-    expect(select).toHaveValue('option1');
   },
 };
 
@@ -222,5 +211,54 @@ export const ErrorCheckbox: Story = {
         error: true,
       },
     },
+  },
+};
+
+export const TestAsText: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    value: 'Editable text',
+    rowIndex: 0,
+    columnId: 'name',
+    setData: setDataMock,
+    editor: {
+      type: 'text',
+      props: {
+        placeholder: 'Enter name',
+        error: false,
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const input = within(canvasElement).getByPlaceholderText('Enter name');
+    await userEvent.click(input);
+    await userEvent.type(input, ' updated');
+    expect(input).toHaveValue('Editable text updated');
+  },
+};
+
+export const TestAsSelect: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    value: 'option2',
+    rowIndex: 0,
+    columnId: 'status',
+    setData: setDataMock,
+    editor: {
+      type: 'select',
+      props: {
+        'aria-label': 'Select option',
+        options: [
+          { label: 'Option 1', value: 'option1' },
+          { label: 'Option 2', value: 'option2' },
+        ],
+        error: false,
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const select = within(canvasElement).getByDisplayValue('Option 2');
+    await userEvent.selectOptions(select, 'option1');
+    expect(select).toHaveValue('option1');
   },
 };

@@ -37,6 +37,7 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       server: {
+        allowedHosts: true,
         watch: {
           usePolling: true,
           interval: 1000,

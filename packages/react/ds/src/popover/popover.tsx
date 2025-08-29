@@ -165,7 +165,12 @@ export const Popover = ({
   }
 
   return (
-    <div ref={popoverRef} role="dialog" className={cn('gi-popover', className)}>
+    <div
+      ref={popoverRef}
+      aria-label="popover"
+      role="dialog"
+      className={cn('gi-popover', className)}
+    >
       {children}
     </div>
   );

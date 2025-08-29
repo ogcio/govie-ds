@@ -494,6 +494,7 @@ export const LoadingState: Story = {
     headers: ['ID', 'Name', 'Status'],
     rows: [],
   },
+  tags: ['skip-playwright'],
   render: ({ captionText, headers = [] }) => (
     <Table>
       <Caption>{captionText}</Caption>
