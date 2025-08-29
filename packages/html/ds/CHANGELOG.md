@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.13.0](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.4...html-lib-v1.13.0) (2025-08-29)
+
+
+### Features
+
+* Header light theme AB[#30232](https://github.com/ogcio/govie-ds/issues/30232) ([#676](https://github.com/ogcio/govie-ds/issues/676)) ([68d66c8](https://github.com/ogcio/govie-ds/commit/68d66c8ec6a74b8241df41ce50052049f71545c9))
+
+
+### Bug Fixes
+
+* add table with no border AB[#30709](https://github.com/ogcio/govie-ds/issues/30709) ([#704](https://github.com/ogcio/govie-ds/issues/704)) ([42743be](https://github.com/ogcio/govie-ds/commit/42743beaf8ca77d6c2646e30f49955ad2c182375))
+* close modal on escape key AB[#30184](https://github.com/ogcio/govie-ds/issues/30184) ([#698](https://github.com/ogcio/govie-ds/issues/698)) ([0ae3c2d](https://github.com/ogcio/govie-ds/commit/0ae3c2da9f8696bbdab389c5c013931c185c7db7))
+
+
+### Miscellaneous Chores
+
+* Add pre-commit lint-staged and typecheck AB[#30206](https://github.com/ogcio/govie-ds/issues/30206) ([#678](https://github.com/ogcio/govie-ds/issues/678)) ([d787533](https://github.com/ogcio/govie-ds/commit/d787533675ea6484eda00c6e26d753047806d932))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.0
+
 ## [1.12.4](https://github.com/ogcio/govie-ds/compare/html-lib-v1.12.3...html-lib-v1.12.4) (2025-08-22)
 
 ### Dependencies
