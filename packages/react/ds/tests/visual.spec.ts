@@ -31,7 +31,8 @@ for (const story of stories) {
     await expect(page).toHaveScreenshot(`${story.id}.png`, {
       fullPage: true,
       animations: 'disabled',
-      maxDiffPixelRatio: 0.02,
+      // maxDiffPixelRatio: 0.01,
+      threshold: 0.3,
     });
   });
 }

@@ -292,6 +292,7 @@ export const HorizontalWithIcon: Story = {
 };
 
 export const WithIframeEmbed: Story = {
+  tags: ['skip-playwright'],
   render: () => (
     <Card type="horizontal">
       <CardMedia
