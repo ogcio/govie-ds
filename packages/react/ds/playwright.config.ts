@@ -5,13 +5,15 @@ const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:6006';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI
-    ? [['junit', { outputFile: 'results.xml' }]]
+    ? [['junit', { outputFile: 'test-results/results.xml' }]]
     : 'html',
   use: {
     baseURL: BASE_URL,
   },
-  retries: 3,
   projects: [
     {
       name: 'chromium',
