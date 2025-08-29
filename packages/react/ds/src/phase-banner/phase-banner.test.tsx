@@ -13,7 +13,7 @@ describe('goviePhaseBanner', () => {
     });
     const pElement = screen.getByTestId('phase-banner');
     expect(pElement).toBeTruthy();
-    expect(pElement.firstElementChild?.textContent?.trim()).toBe('alpha');
+    expect(pElement.firstElementChild?.textContent?.trim()).toBe('Alpha');
   });
 
   it('should render a span with the correct content when props.as is "span"', () => {
@@ -23,7 +23,7 @@ describe('goviePhaseBanner', () => {
     });
     const pElement = screen.getByTestId('phase-banner');
     expect(pElement).toBeTruthy();
-    expect(pElement.firstElementChild?.textContent?.trim()).toBe('beta');
+    expect(pElement.firstElementChild?.textContent?.trim()).toBe('Beta');
   });
 
   it('should pass axe accessibility tests', async () => {

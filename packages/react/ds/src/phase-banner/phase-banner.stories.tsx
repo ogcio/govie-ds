@@ -54,7 +54,7 @@ export const Default: Story = {
     await expect(
       canvas.getByText('This is a phase banner.'),
     ).toBeInTheDocument();
-    await expect(canvas.getByText('alpha')).toBeInTheDocument();
+    await expect(canvas.getByText('Alpha')).toBeInTheDocument();
   },
 };
 
