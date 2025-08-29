@@ -194,6 +194,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
           ref={inputRef}
           onBlur={onBlur}
           name={name}
+          placeholder={placeholder}
         >
           {children}
         </SelectSearch>
@@ -207,6 +208,7 @@ export const SelectNext = forwardRef<HTMLInputElement, SelectNextProps>(
       >
         <InputText
           {...props}
+          autoComplete="off"
           aria-label="Select an option"
           aria-disabled={disabled}
           disabled={disabled}
