@@ -27,7 +27,7 @@ export const Default: Story = {
     },
     level: {
       control: 'radio',
-      options: ['alpha', 'beta'],
+      options: ['Alpha', 'Beta'],
       type: { name: 'string', required: false },
       description: 'Specifies the level of the phase banner.',
     },
@@ -47,7 +47,7 @@ export const Default: Story = {
   },
   args: {
     children: 'This is a phase banner.',
-    level: 'alpha',
+    level: 'Alpha',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

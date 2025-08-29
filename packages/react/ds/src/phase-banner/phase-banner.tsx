@@ -5,7 +5,7 @@ import { useBreakpoint } from '../hooks/use-breakpoint.js';
 import { Tag } from '../tag/tag.js';
 
 export type PhaseBannerProps = {
-  level: 'alpha' | 'beta';
+  level: 'Alpha' | 'Beta';
   children: React.ReactNode;
   wrap?: 'none' | 'container' | 'container-full-width';
   padding?: boolean;

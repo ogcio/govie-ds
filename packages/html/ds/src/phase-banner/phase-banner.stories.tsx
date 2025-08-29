@@ -13,7 +13,7 @@ const meta: Meta<PhaseBannerProps> = {
     },
     level: {
       control: 'radio',
-      options: ['alpha', 'beta'],
+      options: ['Alpha', 'Beta'],
       type: { name: 'string', required: false },
       description: 'Specifies the level of the phase banner.',
     },
@@ -53,7 +53,7 @@ const createElement = (arguments_: PhaseBannerProps) => {
 export const Default: Story = {
   args: {
     content: 'This is a phase banner.',
-    level: 'alpha',
+    level: 'Alpha',
   },
   render: (arguments_) => createElement(arguments_),
 };
