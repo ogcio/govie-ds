@@ -50,3 +50,8 @@ export type ModalFooterProps = {
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
   stacked?: boolean;
 };
+
+export type ModalHeaderProps = Pick<
+  ModalWrapperProps,
+  'closeButtonLabel' | 'closeOnClick' | 'onClose' | 'closeButtonSize' | 'size'
+> & { modalTitle: React.ReactNode };

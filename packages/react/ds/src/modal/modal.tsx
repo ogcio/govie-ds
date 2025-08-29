@@ -24,6 +24,7 @@ import type {
   ModalFooterProps,
   ModalProps,
   ModalWrapperProps,
+  ModalHeaderProps,
 } from './types.js';
 
 const isModalComponent = (
@@ -90,6 +91,30 @@ const ModalCloseButton = ({
     />
   );
 };
+
+const ModalHeader = ({
+  closeButtonLabel,
+  modalTitle,
+  closeOnClick,
+  onClose,
+  closeButtonSize,
+}: ModalHeaderProps) => (
+  <div
+    className={cn({
+      'gi-py-4 xs:gi-py-6': !closeButtonLabel,
+      'gi-py-2 xs:gi-py-4': !!closeButtonLabel,
+    })}
+  >
+    {modalTitle}
+    {closeOnClick && (
+      <ModalCloseButton
+        onClick={onClose}
+        label={closeButtonLabel}
+        size={closeButtonSize}
+      />
+    )}
+  </div>
+);
 
 export const ModalWrapper = ({
   position = 'center',
@@ -193,21 +218,13 @@ export const ModalWrapper = ({
             className,
           )}
         >
-          <div
-            className={cn({
-              'gi-py-4': !closeButtonLabel,
-              'gi-py-2': !!closeButtonLabel,
-            })}
-          >
-            {modalTitleClone}
-            {closeOnClick && (
-              <ModalCloseButton
-                onClick={onClose}
-                label={closeButtonLabel}
-                size={closeButtonSize}
-              />
-            )}
-          </div>
+          <ModalHeader
+            closeButtonLabel={closeButtonLabel}
+            modalTitle={modalTitleClone}
+            closeOnClick={closeOnClick}
+            onClose={onClose}
+            closeButtonSize={closeButtonSize}
+          />
           <div className={cn({ 'gi-pb-6': !modalFooter })}>
             {contentChildren}
             {modalFooterClone}
