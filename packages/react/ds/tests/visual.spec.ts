@@ -28,12 +28,9 @@ for (const story of stories) {
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(500);
 
-    await expect(page).toHaveScreenshot(
-      `${story.id}-${workerInfo.project.name}-${process.platform}.png`,
-      {
-        fullPage: true,
-        animations: 'disabled',
-      },
-    );
+    await expect(page).toHaveScreenshot(`${story.id}.png`, {
+      fullPage: true,
+      animations: 'disabled',
+    });
   });
 }
