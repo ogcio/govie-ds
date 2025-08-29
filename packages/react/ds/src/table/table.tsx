@@ -33,9 +33,10 @@ export function Table({
   ...props
 }: React.PropsWithChildren<TableProps>) {
   const layoutClasses = tableVariants({ layout });
+
   return (
     <table
-      className={cn(layoutClasses, className)}
+      className={cn(layoutClasses, className, noBorder && 'gi-table-no-border')}
       role="table"
       data-testid={dataTestid}
       data-row-size={rowSize}
