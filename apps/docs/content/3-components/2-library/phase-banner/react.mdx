@@ -1,0 +1,78 @@
+---
+title: 'Phase Banner'
+description: 'Phase Banner React Component'
+status: 'stable'
+component:
+  id: 'phase-banner-react'
+  link: '/story/typography-phasebanner--default'
+  status: 'stable'
+  properties:
+    - name: PhaseBannerProps
+      fields:
+        - name: 'children'
+          ofType: 'ReactNode'
+          description: 'The text content of the phase banner.'
+          required: true
+        - name: 'level'
+          ofType: 'string'
+          description: 'Specifies the level of the phase banner. Options: alpha or beta.'
+          required: true
+        - name: 'wrap'
+          ofType: 'string'
+          description: 'Defines how the phase banner is wrapped inside a container. Options: none, container, container-full-width.'
+          required: false
+        - name: 'padding'
+          ofType: 'boolean'
+          description: 'Whether the phase banner should include horizontal padding.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-phasebanner--default'
+    - name: 'without-padding'
+      url: '/story/typography-phasebanner--without-padding'
+    - name: 'wrapped-in-container'
+      url: '/story/typography-phasebanner--wrapped-in-container'
+---
+
+# Phase Banner
+
+Use the phase banner component to show users your service is still being worked on.  
+It helps communicate that the service is in an early stage (alpha or beta).
+
+<Section current="react">
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="phase-banner-react"
+    story="default"
+    className="w-[340px]"
+  />
+</ComponentPreview>
+
+### Without Padding
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="phase-banner-react"
+    story="without-padding"
+    className="w-[340px]"
+  />
+</ComponentPreview>
+
+### Wrapped In Container
+
+<ComponentPreview>
+  <StorybookFrame
+    componentId="phase-banner-react"
+    story="wrapped-in-container"
+    className="w-[340px]"
+  />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="phase-banner-react" />
+
+</Section>
