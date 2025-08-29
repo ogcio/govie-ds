@@ -16,9 +16,19 @@ type MenuItemAccordionProps = {
   index: number;
   item: { label?: string; slot: React.ReactNode };
 };
-
 export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen((previous) => !previous);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleAccordion();
+    }
+  };
 
   return (
     <div
@@ -28,15 +38,17 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       data-open={isOpen.toString()}
       role="region"
       aria-labelledby={`Accordion-header-${index}`}
-      onClick={() => setIsOpen(!isOpen)}
     >
       <div
         aria-label={item.label}
         id={`Accordion-header-${index}`}
         role="button"
-        aria-expanded="false"
+        aria-expanded={isOpen}
         aria-controls={`Accordion-slot-${index}`}
         className="gi-header-accordion-item-toggle"
+        tabIndex={0}
+        onClick={toggleAccordion}
+        onKeyDown={handleKeyDown}
       >
         <div>
           <span className="gi-text-sm gi-font-bold gi-ml-1">{item.label}</span>

@@ -6,7 +6,7 @@ export const drawerBody = `
     <li><a aria-label="Search" class="gi-list-item"><span class="gi-text-sm gi-ml-1">Search</span></a></li>
     <li><a aria-label="English" href="#" class="gi-list-item"><span class="gi-text-sm gi-ml-1">English</span></a></li>
     <li><a aria-label="Gaeilge" href="#" class="gi-list-item"><span class="gi-text-sm gi-ml-1">Gaeilge</span></a></li>
-    <li class="gi-mt-8 sm:gi-hidden">
+    <li class="gi-mt-8 xs:gi-hidden">
         <form class="gi-max-w-md gi-mx-auto" data-testid="header-search-form" aria-label="Search Form">
           <h4 class="gi-heading-sm">Search the website</h4>
           <div class="gi-flex gi-items-end gi-mt-4">

@@ -238,7 +238,25 @@ label.gi-header-tool-item-light {
 }
 
 .gi-header-accordion-item-toggle {
-  @apply hover:gi-no-underline hover:gi-underline-offset-sm hover:gi-cursor-pointer gi-block gi-py-4 gi-border-color-border-system-neutral-subtle gi-border-b-xs gi-border-solid;
+  @apply hover:gi-no-underline
+   hover:gi-underline-offset-sm
+   hover:gi-cursor-pointer
+   gi-block
+   gi-py-4
+   gi-border-color-border-system-neutral-subtle
+   gi-border-b-xs
+   gi-border-solid
+
+  gi-focus-state-outline
+  gi-focus-visible-state-outline
+  
+  focus:gi-shadow-[inset_0_0_0_2px]
+  focus:gi-shadow-gray-950
+  focus:gi-rounded-sm
+
+  focus-visible:gi-shadow-[inset_0_0_0_2px]
+  focus-visible:gi-shadow-gray-950
+  focus-visible:gi-rounded-sm;
 }
 
 .gi-header-accordion-item-toggle > div {

@@ -24,6 +24,7 @@ import type {
   ModalFooterProps,
   ModalProps,
   ModalWrapperProps,
+  ModalHeaderProps,
 } from './types.js';
 
 const isModalComponent = (
@@ -90,6 +91,30 @@ const ModalCloseButton = ({
     />
   );
 };
+
+const ModalHeader = ({
+  closeButtonLabel,
+  modalTitle,
+  closeOnClick,
+  onClose,
+  closeButtonSize,
+}: ModalHeaderProps) => (
+  <div
+    className={cn({
+      'gi-py-4 xs:gi-py-6': !closeButtonLabel,
+      'gi-py-2 xs:gi-py-4': !!closeButtonLabel,
+    })}
+  >
+    {modalTitle}
+    {closeOnClick && (
+      <ModalCloseButton
+        onClick={onClose}
+        label={closeButtonLabel}
+        size={closeButtonSize}
+      />
+    )}
+  </div>
+);
 
 export const ModalWrapper = ({
   position = 'center',
@@ -193,16 +218,13 @@ export const ModalWrapper = ({
             className,
           )}
         >
-          <div>
-            {modalTitleClone}
-            {closeOnClick && (
-              <ModalCloseButton
-                onClick={onClose}
-                label={closeButtonLabel}
-                size={closeButtonSize}
-              />
-            )}
-          </div>
+          <ModalHeader
+            closeButtonLabel={closeButtonLabel}
+            modalTitle={modalTitleClone}
+            closeOnClick={closeOnClick}
+            onClose={onClose}
+            closeButtonSize={closeButtonSize}
+          />
           <div className={cn({ 'gi-pb-6': !modalFooter })}>
             {contentChildren}
             {modalFooterClone}
@@ -255,6 +277,7 @@ export const ModalFooter = ({
   children,
   orientation,
   dataModalSize,
+  stacked,
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
   const filteredButtons = actionButtons.filter((actionButton) => {
@@ -273,8 +296,9 @@ export const ModalFooter = ({
 
   const buttonClassName = cn({
     'gi-justify-center sm:gi-justify-start':
-      !orientation && dataModalSize !== 'sm',
-    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm',
+      !orientation && dataModalSize !== 'sm' && !stacked,
+    'gi-justify-center':
+      orientation === 'vertical' || dataModalSize === 'sm' || stacked,
     'gi-justify-start': orientation === 'horizontal',
   });
 
@@ -283,6 +307,7 @@ export const ModalFooter = ({
       className={cn(className, {
         'gi-pt-6': sortedButtons.length === 0,
         'gi-modal-footer': sortedButtons.length,
+        'gi-modal-footer-stacked': stacked,
       })}
     >
       {sortedButtons.length > 0 && (

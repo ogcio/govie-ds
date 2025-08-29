@@ -34,52 +34,46 @@ export const TriggerButton = (
     Open Modal
   </button>
 );
-
 export const DrawerMenuExample = () => {
-  const navLinks = [
-    {
-      href: '#',
-      label: 'News',
-    },
-    {
-      href: '#',
-      label: 'Departments',
-    },
-    {
-      href: '#',
-      label: 'Services',
-    },
+  const secondaryItems = [
+    { href: '#', label: 'Secondary item' },
+    { href: '#', label: 'Secondary item' },
   ];
+
   const tools = [
     {
-      label: 'Search',
-      action: 'search_page',
-    },
-  ];
-  const languages = [
-    {
-      href: '#',
-      label: 'English',
+      label: 'Primary item',
+      slot: <div>Slot primary item</div>,
     },
     {
-      href: '#',
-      label: 'Gaeilge',
+      label: 'Primary item',
+      slot: <div>Slot primary item</div>,
+    },
+    {
+      label: 'Primary item',
+      slot: <div>Slot primary item</div>,
     },
   ];
-  const searchProps = {};
 
-  type LinkType = {
-    href?: string;
-    label: string;
-    action?: string;
-    external?: boolean;
-    slot?: React.ReactNode;
-    keepOnMobile?: boolean;
-  };
+  const MenuHeading = ({ children }: any) => (
+    <li className="gi-py-4 gi-text-sm gi-font-bold gi-text-brand-neutral-600">
+      {children}
+    </li>
+  );
 
   return (
     <ul>
-      {navLinks?.map((link: LinkType, index: number) => (
+      <MenuHeading>Primary items</MenuHeading>
+      {tools?.map(({ label, slot }: any, index: number) => {
+        return (
+          <li key={`toolItems-${label}-${index}`}>
+            <MenuItemAccordion index={index} item={{ label, slot }} />
+          </li>
+        );
+      })}
+
+      <MenuHeading>Secondary items</MenuHeading>
+      {secondaryItems?.map((link: any, index: number) => (
         <li key={`navLink-${link.label}-${index}`}>
           <ListItem
             href={link.href}
@@ -88,35 +82,6 @@ export const DrawerMenuExample = () => {
           />
         </li>
       ))}
-      {tools?.map(
-        (
-          { href, label, slot, keepOnMobile, external }: LinkType,
-          index: number,
-        ) => {
-          if (slot && !keepOnMobile) {
-            return null;
-          }
-          return (
-            <li key={`toolItems-${label}-${index}`}>
-              {slot ? (
-                <MenuItemAccordion index={index} item={{ label, slot }} />
-              ) : (
-                <ListItem href={href} label={label} external={external} />
-              )}
-            </li>
-          );
-        },
-      )}
-      {languages?.map((link: LinkType, index: number) => (
-        <li key={`secondary-${link.label}-${index}`}>
-          <ListItem href={link.href} label={link.label} bold={false} />
-        </li>
-      ))}
-      {searchProps && (
-        <li className="gi-mt-8 sm:gi-hidden">
-          <HeaderSearch {...searchProps} />
-        </li>
-      )}
     </ul>
   );
 };

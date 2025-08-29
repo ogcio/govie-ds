@@ -40,6 +40,8 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
   }
 
   if (arguments_.closeButtonLabel) {
+    modalHeader.classList.add('gi-py-2');
+    modalHeader.classList.add('xs:gi-py-4');
     const closeButton = createButton({
       onClick: arguments_.onClose,
       appearance: 'dark',
@@ -57,6 +59,8 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
     });
     modalHeader.append(closeButton);
   } else {
+    modalHeader.classList.add('gi-py-4');
+    modalHeader.classList.add('xs:gi-py-6');
     const closeButton = createIconButton({
       icon: {
         icon: 'close',
@@ -148,6 +152,8 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
   }
 
   if (arguments_.closeButtonLabel) {
+    modalHeader.classList.add('gi-py-2');
+    modalHeader.classList.add('xs:gi-py-4');
     const closeButton = createButton({
       onClick: onClose,
       appearance: 'dark',
@@ -161,6 +167,8 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
     closeButton.dataset.element = 'modal-close-button';
     modalHeader.append(closeButton);
   } else if (closeOnClick) {
+    modalHeader.classList.add('gi-py-4');
+    modalHeader.classList.add('xs:gi-py-6');
     const closeButton = createIconButton({
       icon: {
         icon: 'close',
