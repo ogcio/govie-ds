@@ -225,63 +225,75 @@ export const WithPositionChange: Story = {
   },
 };
 
-export const AllVariants: Story = {
-  render: () => {
-    const common = {
-      title: 'Default',
-      description: 'Toast description',
-      position: { x: 'right', y: 'bottom' },
-    };
-    const infoVariant = {
-      variant: 'info',
-      triggerButtonLabel: 'Info',
-      ...common,
-    };
-    const successVariant = {
-      variant: 'success',
-      triggerButtonLabel: 'Success',
-      ...common,
-    };
-    const dangerVariant = {
-      variant: 'danger',
-      triggerButtonLabel: 'Danger',
-      ...common,
-    };
-    const warningVariant = {
-      variant: 'warning',
-      triggerButtonLabel: 'Warning',
-      ...common,
-    };
-    return (
-      <>
-        <ToastProvider />
-        <Stack gap={4}>
-          {[infoVariant, successVariant, dangerVariant, warningVariant].map(
-            (props: any, index: number) => (
-              <Button
-                key={`${props.triggerButtonLabel}_${index}`}
-                onClick={() => toaster.create(props)}
-              >
-                {props.triggerButtonLabel}
-              </Button>
-            ),
-          )}
-        </Stack>
-      </>
-    );
+export const Success: Story = {
+  args: {
+    title: 'Default',
+    description: 'This is some content',
+    variant: 'success',
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
   },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const info = await canvas.findByText('Info');
-    const success = await canvas.findByText('Success');
-    const danger = await canvas.findByText('Danger');
-    const warning = await canvas.findByText('Warning');
-
+    const info = await canvas.findByText('Trigger Toast');
     await userEvent.click(info);
-    await userEvent.click(success);
-    await userEvent.click(danger);
-    await userEvent.click(warning);
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    title: 'Default',
+    description: 'This is some content',
+    variant: 'danger',
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Trigger Toast');
+    await userEvent.click(info);
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    title: 'Default',
+    description: 'This is some content',
+    variant: 'warning',
+    position: {
+      x: 'right',
+      y: 'bottom',
+    },
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>Trigger Toast</Button>
+    </>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const info = await canvas.findByText('Trigger Toast');
+    await userEvent.click(info);
   },
 };
 
