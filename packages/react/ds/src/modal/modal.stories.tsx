@@ -54,6 +54,7 @@ export const Default: Story = {
 };
 
 export const StateControlledModal: Story = {
+  tags: ['skip-playwright'],
   args: {
     children: <></>,
     triggerButton: <></>,

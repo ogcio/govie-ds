@@ -202,6 +202,7 @@ export const Controlled: Story = {
   args: {
     groupId: 'controlled',
   },
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {

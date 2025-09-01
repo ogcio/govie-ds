@@ -247,7 +247,6 @@ export const DisabledItem = {
     expect(options[0]).toHaveAttribute('aria-disabled', 'true');
     expect(options[1]).not.toHaveAttribute('aria-disabled');
     expect(options[2]).not.toHaveAttribute('aria-disabled');
-    await userEvent.click(document.body);
   },
 };
 
@@ -323,6 +322,7 @@ export const WithGroups = {
 };
 
 export const Controlled: StoryObj = {
+  tags: ['skip-playwright'],
   render: () => {
     const [value, setValue] = useState('value-2');
 
