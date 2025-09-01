@@ -27,14 +27,14 @@ export default defineConfig({
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     // },
-    {
-      name: 'android',
-      use: { ...devices['Pixel 5'] },
-    },
     // {
-    //   name: 'iphone',
-    //   use: { ...devices['iPhone 12'] },
+    //   name: 'android',
+    //   use: { ...devices['Pixel 5'] },
     // },
+    {
+      name: 'iphone',
+      use: { ...devices['iPhone 12'] },
+    },
   ],
   webServer: {
     command: 'pnpm storybook:dev',
