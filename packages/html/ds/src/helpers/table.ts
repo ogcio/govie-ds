@@ -10,6 +10,11 @@ export const createTable = (arguments_: TablePropsExtension) => {
     table.dataset.stripped = arguments_.stripped.toString();
   }
 
+  if (arguments_.noBorder) {
+    table.dataset.noBorder = 'true';
+    table.classList.add('gi-table-no-border');
+  }
+
   if (arguments_.captionText) {
     const caption = document.createElement('caption');
     caption.className = 'gi-table-caption-text gi-text-lg';

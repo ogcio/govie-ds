@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps } from 'react';
+import { expect, within } from 'storybook/test';
 import { IconButton } from '../icon-button/icon-button.js';
 import { InputCheckboxTableCell } from '../input-checkbox/input-checkbox.js';
 import { Link } from '../link/link.js';
@@ -157,6 +158,7 @@ export const Default: Story = {
     </Table>
   ),
 };
+
 export const BasicTable: Story = {
   args: {
     captionText: 'User Information',
@@ -203,6 +205,60 @@ export const BasicTable: Story = {
       </TableBody>
     </Table>
   ),
+};
+
+export const BasicTableWithNoBorder: Story = {
+  args: {
+    captionText: 'User Information',
+    headers: ['Name', 'Email', 'Role'],
+    rows: [
+      {
+        id: 1,
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        role: 'Admin',
+      },
+      {
+        id: 2,
+        name: 'Jane Smith',
+        email: 'jane.smith@example.com',
+        role: 'User',
+      },
+      {
+        id: 3,
+        name: 'Sam Lee',
+        email: 'sam.lee@example.com',
+        role: 'Editor',
+      },
+    ],
+  },
+  render: ({ captionText, headers, rows }) => (
+    <Table noBorder>
+      <Caption>{captionText}</Caption>
+      <TableHead>
+        <TableRow>
+          {headers?.map((heading, index) => (
+            <TableHeader key={`header-${index}`}>{heading}</TableHeader>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows?.map((row) => (
+          <TableRow key={`row-${row.id}`}>
+            <TableData>{row.name}</TableData>
+            <TableData>{row.email}</TableData>
+            <TableData>{row.role}</TableData>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const table = canvas.getByRole('table');
+
+    expect(table).toHaveClass('gi-table-no-border');
+  },
 };
 
 export const NoHeaders: Story = {
