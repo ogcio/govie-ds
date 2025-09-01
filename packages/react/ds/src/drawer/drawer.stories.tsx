@@ -224,6 +224,7 @@ export const DesktopButtonStacked: Story = {
     layout: 'fullscreen',
   },
   args: {
+    startsOpen: true,
     closeButtonSize: 'large',
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
