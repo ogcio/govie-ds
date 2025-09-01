@@ -80,6 +80,7 @@ Organize
 PaginationProps
 ParagraphProps
 PhaseBannerProps
+phasebanner
 Prioritize
 Programmatically
 ProgressBarProps

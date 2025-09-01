@@ -151,36 +151,6 @@ export const DrawerBottom: Story = {
   },
 };
 
-export const DrawerOpen: Story = {
-  args: {
-    triggerButton: <Button>Open drawer</Button>,
-    startsOpen: true,
-    children: [
-      <DrawerBody key="body">
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
-        </Paragraph>
-      </DrawerBody>,
-      <DrawerFooter key="footer">
-        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
-        </div>
-      </DrawerFooter>,
-    ],
-  },
-};
-
 export const DrawerMenuTablet: Story = {
   parameters: {
     layout: 'fullscreen',
@@ -243,6 +213,37 @@ export const DrawerMenuMobile: Story = {
         </Button>
         <Button className="gi-justify-center xs:gi-justify-start">
           Primary
+        </Button>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DesktopButtonStacked: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  args: {
+    closeButtonSize: 'large',
+    triggerButton: <Button>Open drawer</Button>,
+    closeButtonLabel: 'Close',
+    children: [
+      <DrawerBody
+        key="body"
+        className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
+      >
+        <DrawerMenuExample />
+      </DrawerBody>,
+      <DrawerFooter key="footer" stacked>
+        <Button>Primary</Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
+        </Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
+        </Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
         </Button>
       </DrawerFooter>,
     ],
