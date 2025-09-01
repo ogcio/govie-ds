@@ -1,5 +1,7 @@
 import React from 'react';
 import { cn } from '../cn.js';
+import { Chip } from '../chip/chip.js';
+import { translate as t } from '../i18n/utility.js';
 
 interface DataGridHeaderTypeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -9,10 +11,10 @@ interface DataGridHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-const isSection = (
+const isSection = <P,>(
   child: React.ReactNode,
-  sectionType: React.ComponentType<DataGridHeaderTypeProps>,
-): child is React.ReactElement<DataGridHeaderTypeProps> => {
+  sectionType: React.ComponentType<P>,
+): child is React.ReactElement<P> => {
   return React.isValidElement(child) && child.type === sectionType;
 };
 
@@ -21,9 +23,11 @@ export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
   className,
   ...props
 }) => {
-  const { search, filter, actions } = React.useMemo(() => {
+  const { search, filter, filterList, actions } = React.useMemo(() => {
     let search: React.ReactElement<DataGridHeaderTypeProps> | null = null;
     let filter: React.ReactElement<DataGridHeaderTypeProps> | null = null;
+    let filterList: React.ReactElement<DataGridHeaderFilterListProps> | null =
+      null;
     let actions: React.ReactElement<DataGridHeaderTypeProps> | null = null;
 
     React.Children.forEach(children, (child) => {
@@ -31,12 +35,14 @@ export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         search = child;
       } else if (isSection(child, DataGridHeaderFilter)) {
         filter = child;
+      } else if (isSection(child, DataGridHeaderFilterList)) {
+        filterList = child;
       } else if (isSection(child, DataGridHeaderActions)) {
         actions = child;
       }
     });
 
-    return { search, filter, actions };
+    return { search, filter, filterList, actions };
   }, [children]);
 
   return (
@@ -47,9 +53,13 @@ export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         className,
       )}
     >
-      {search}
-      {filter}
-      {actions}
+      <div className="gi-flex gi-flex-1 gi-gap-4 gi-items-center">
+        {search}
+        {filter}
+        {actions}
+      </div>
+
+      {filterList && <div className="gi-w-full">{filterList}</div>}
     </div>
   );
 };
@@ -98,6 +108,48 @@ DataGridHeaderFilter.displayName = 'DataGridHeaderFilter';
 
 Object.defineProperty(DataGridHeaderFilter, 'componentType', {
   value: 'DataGridHeaderFilter',
+  writable: false,
+  enumerable: false,
+});
+
+type DataGridHeaderFilterListProps = {
+  filters: { id: string; label: string }[];
+  onRemove?: (id: string) => void;
+  className?: string;
+};
+
+export const DataGridHeaderFilterList: React.FC<
+  DataGridHeaderFilterListProps
+> = ({ filters, onRemove, className, ...props }) => {
+  if (!filters || filters.length === 0) return null;
+
+  return (
+    <div
+      className={cn('gi-flex gi-items-center gi-gap-2 gi-flex-wrap', className)}
+      {...props}
+    >
+      <span className="gi-text-sm">
+        {t('dataGridHeader.filtersApplied', {
+          length: filters.length,
+          defaultValue: `Filters applied ${filters.length}:`,
+        })}
+      </span>
+
+      {filters.map((filter) => (
+        <Chip
+          key={filter.id}
+          onClose={() => onRemove?.(filter.id)}
+          label={filter.label}
+        />
+      ))}
+    </div>
+  );
+};
+
+DataGridHeaderFilterList.displayName = 'DataGridHeaderFilterList';
+
+Object.defineProperty(DataGridHeaderFilterList, 'componentType', {
+  value: 'DataGridHeaderFilterList',
   writable: false,
   enumerable: false,
 });
