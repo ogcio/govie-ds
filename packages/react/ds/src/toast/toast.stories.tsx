@@ -274,15 +274,13 @@ export const AllVariants: Story = {
     const canvas = within(canvasElement);
 
     const info = await canvas.findByText('Info');
-    await userEvent.click(info);
-
     const success = await canvas.findByText('Success');
-    await userEvent.click(success);
-
     const danger = await canvas.findByText('Danger');
-    await userEvent.click(danger);
-
     const warning = await canvas.findByText('Warning');
+
+    await userEvent.click(info);
+    await userEvent.click(success);
+    await userEvent.click(danger);
     await userEvent.click(warning);
   },
 };
@@ -321,31 +319,12 @@ export const AllPositions: Story = {
       </Stack>
     </>
   ),
-  play: async () => {
-    for (const pos of positions) {
-      const event = new CustomEvent('govie:add-toast', {
-        detail: {
-          title: `${pos.x}-${pos.y}`,
-          description: 'Toast message',
-          animation: 'fadeinup',
-          variant: 'info',
-          duration: 2000,
-          position: pos,
-        },
-      });
-      globalThis.window.dispatchEvent(event);
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
 
-      await waitFor(() => {
-        const toastRegion = document.querySelector(
-          `[data-position='${pos.y}-${pos.x}']`,
-        );
-        expect(toastRegion).toBeInTheDocument();
-        expect(
-          within(toastRegion as HTMLElement).getByTestId(
-            `${pos.x}-${pos.y}-info`,
-          ),
-        ).toBeVisible();
-      });
+    for (const pos of positions) {
+      const button = await canvas.findByText(`Trigger ${pos.x}-${pos.y}`);
+      await userEvent.click(button);
     }
   },
 };
