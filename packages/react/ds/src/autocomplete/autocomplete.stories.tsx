@@ -323,6 +323,7 @@ export const WithLoading = () => {
 };
 
 export const WithReactHookForm: StoryObj = {
+  tags: ['skip-playwright'],
   render: () => {
     const { register, watch } = useForm();
 

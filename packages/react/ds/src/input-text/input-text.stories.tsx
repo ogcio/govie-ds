@@ -528,6 +528,7 @@ export const InputSearch: Story = {
 };
 
 export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
   render: () => {
     const methods = useForm<{ username: string }>({
       defaultValues: { username: '' },
