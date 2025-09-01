@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import parse from 'html-react-parser';
+import { createPhaseBanner } from '../helpers/phase-banner';
 import { PhaseBannerProps } from './types';
 
 const meta: Meta<PhaseBannerProps> = {
@@ -12,9 +13,22 @@ const meta: Meta<PhaseBannerProps> = {
     },
     level: {
       control: 'radio',
-      options: ['alpha', 'beta'],
+      options: ['Alpha', 'Beta'],
       type: { name: 'string', required: false },
       description: 'Specifies the level of the phase banner.',
+    },
+    wrap: {
+      control: 'radio',
+      options: ['none', 'container', 'container-full-width'],
+      type: { name: 'string', required: false },
+      description:
+        'Defines how the phase banner is wrapped inside a container.',
+    },
+    padding: {
+      control: 'boolean',
+      type: { name: 'boolean', required: false },
+      description:
+        'Whether the phase banner should include horizontal padding.',
     },
   },
   parameters: {
@@ -30,24 +44,6 @@ const meta: Meta<PhaseBannerProps> = {
 export default meta;
 type Story = StoryObj<PhaseBannerProps>;
 
-const createPhaseBanner = (arguments_: PhaseBannerProps) => {
-  const banner = document.createElement('div');
-  banner.className = 'gi-phase-banner-container';
-
-  const tag = document.createElement('div');
-  tag.className = 'gi-phase-banner';
-  tag.textContent = arguments_.level;
-  banner.append(tag);
-
-  if (arguments_.content) {
-    const content = document.createElement('div');
-    content.innerHTML = arguments_.content;
-    banner.append(content);
-  }
-
-  return banner;
-};
-
 const createElement = (arguments_: PhaseBannerProps) => {
   const component = createPhaseBanner(arguments_);
 
@@ -57,7 +53,23 @@ const createElement = (arguments_: PhaseBannerProps) => {
 export const Default: Story = {
   args: {
     content: 'This is a phase banner.',
-    level: 'alpha',
+    level: 'Alpha',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WrappedInContainer: Story = {
+  args: {
+    ...Default.args,
+    wrap: 'container',
+  },
+  render: (arguments_) => createElement(arguments_),
+};
+
+export const WithoutPadding: Story = {
+  args: {
+    ...Default.args,
+    padding: false,
   },
   render: (arguments_) => createElement(arguments_),
 };
