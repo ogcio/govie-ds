@@ -1,3 +1,4 @@
+import { cloneElement } from 'react';
 import { Breakpoint, BreakpointType } from '../hooks/use-breakpoint.js';
 
 type DisplayPage = number | -1 | -2;
@@ -82,4 +83,12 @@ export const getDisplayPages = (
   }
 
   return displayedPages;
+};
+
+export const safeCloneElement = (
+  element: React.ReactElement,
+  props: Record<string, any> = {},
+) => {
+  const { __type, ...restProps } = element.props as any;
+  return cloneElement(element, { ...restProps, ...props });
 };

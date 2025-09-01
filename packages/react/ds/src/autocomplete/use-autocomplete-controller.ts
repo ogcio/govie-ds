@@ -1,7 +1,6 @@
 import { debounce } from 'lodash';
 import {
   Children,
-  cloneElement,
   isValidElement,
   useEffect,
   useMemo,
@@ -9,6 +8,7 @@ import {
   useRef,
 } from 'react';
 import { useScrollHighlightedItem } from '../hooks/use-scroll-highlighted-item.js';
+import { safeCloneElement } from '../utils/utilities.js';
 import {
   AUTOCOMPLETE_ACTIONS,
   AutocompleteAction,
@@ -89,7 +89,7 @@ const isAutocompleteItem = (
   child: React.ReactNode,
 ): child is AutocompleteOptionItemElement => {
   const type =
-    (child as any)?.type?.componentType || (child as any)?.props?.__mdxType;
+    (child as any)?.type?.componentType || (child as any)?.props?.__type;
 
   return (
     isValidElement(child) &&
@@ -114,7 +114,7 @@ const getOptionLabelByValue = (children: any, value: string): string => {
   const valid = getValidChildren(children) as any;
 
   for (const child of valid) {
-    const type = child.type?.componentType || child.props?.__mdxType;
+    const type = child.type?.componentType || child.props?.__type;
 
     if (child.props?.value === value) {
       return child.props.children?.toString() || '';
@@ -141,7 +141,7 @@ const detectOptionType = (children: any) => {
   if (valid?.length) {
     const allGroup = valid.every(
       (child: any) =>
-        child.props.__mdxType === 'AutocompleteGroupItem' ||
+        child.props.__type === 'AutocompleteGroupItem' ||
         child.type?.componentType === 'AutocompleteGroupItem',
     );
 
@@ -242,7 +242,7 @@ export const useAutocompleteController = ({
         if (input) {
           const filtered = validChildren
             .map((child: any) => {
-              const type = child.type?.componentType || child.props?.__mdxType;
+              const type = child.type?.componentType || child.props?.__type;
               const isGroupItem =
                 optionType === 'AutocompleteGroupItem' &&
                 type === 'AutocompleteGroupItem';
@@ -257,7 +257,7 @@ export const useAutocompleteController = ({
                 );
 
                 if (matched.length > 0) {
-                  return cloneElement(child, { children: matched });
+                  return safeCloneElement(child, { children: matched });
                 }
 
                 return null;

@@ -17,9 +17,9 @@ The Select component allows users to choose a single option from a predefined li
   <FormField>
     <FormFieldLabel>Label</FormFieldLabel>
     <Select aria-label="Select">
-      <SelectItem value="value-1">Option 1</SelectItem>
-      <SelectItem value="value-2">Option 2</SelectItem>
-      <SelectItem value="value-3">Option 3</SelectItem>
+      <SelectItem value="value-1" children="Option 1" />
+      <SelectItem value="value-2" children="Option 2" />
+      <SelectItem value="value-3" children="Option 3" />
     </Select>
   </FormField>
 </ComponentContainer>
@@ -33,9 +33,9 @@ The Select component allows users to choose a single option from a predefined li
   <FormField>
     <FormFieldLabel>Label</FormFieldLabel>
     <Select aria-label="Select">
-      <SelectItem value="value-1">Option 1</SelectItem>
-      <SelectItem value="value-2">Option 2</SelectItem>
-      <SelectItem value="value-3">Option 3</SelectItem>
+      <SelectItem value="value-1" children="Option 1" />
+      <SelectItem value="value-2" children="Option 2" />
+      <SelectItem value="value-3" children="Option 3" />
     </Select>
   </FormField>
 </ComponentContainer>
@@ -44,51 +44,43 @@ The Select component allows users to choose a single option from a predefined li
 
 <ComponentContainer>
   <Select aria-label="Select" defaultValue="select-option" disabled>
-    <SelectItem value="select-option" hidden>
-      Select Option
-    </SelectItem>
-    <SelectItem value="value-1">Option 1</SelectItem>
-    <SelectItem value="value-2">Option 2</SelectItem>
-    <SelectItem value="value-3">Option 3</SelectItem>
+    <SelectItem value="select-option" hidden children="Select Option" />
+    <SelectItem value="value-1" children="Option 1" />
+    <SelectItem value="value-2" children="Option 2" />
+    <SelectItem value="value-3" children="Option 3" />
   </Select>
 </ComponentContainer>
 
 ### With Group
 
 <ComponentContainer>
-   <Select
-      aria-label="Select"
-      data-testid="select"
-      defaultValue="select-option"
-    >
-      <SelectGroupItem label="Group 1" data-testid="select-group">
-        <SelectItem value="select-option" hidden>
-          Select Option
-        </SelectItem>
-        <SelectItem value="value-1">Option 1</SelectItem>
-        <SelectItem value="value-2">Option 2</SelectItem>
-        <SelectItem value="value-3">Option 3</SelectItem>
-      </SelectGroupItem>
+  <Select
+    aria-label="Select"
+    data-testid="select"
+    defaultValue="select-option"
+  >
+    <SelectGroupItem label="Group 1" data-testid="select-group">
+      <SelectItem value="select-option" hidden children="Select Option" />
+      <SelectItem value="value-1" children="Option 1" />
+      <SelectItem value="value-2" children="Option 2" />
+      <SelectItem value="value-3" children="Option 3" />
+    </SelectGroupItem>
 
-      <SelectGroupItem label="Group 2">
-        <SelectItem value="select-option" hidden>
-          Select Option
-        </SelectItem>
-        <SelectItem value="value-4">Option 4</SelectItem>
-        <SelectItem value="value-5">Option 5</SelectItem>
-        <SelectItem value="value-6">Option 6</SelectItem>
-      </SelectGroupItem>
+    <SelectGroupItem label="Group 2">
+      <SelectItem value="select-option" hidden children="Select Option" />
+      <SelectItem value="value-4" children="Option 4" />
+      <SelectItem value="value-5" children="Option 5" />
+      <SelectItem value="value-6" children="Option 6" />
+    </SelectGroupItem>
 
-      <SelectGroupItem label="Group 3">
-        <SelectItem value="select-option" hidden>
-          Select Option
-        </SelectItem>
-        <SelectItem value="value-7">Option 7</SelectItem>
-        <SelectItem value="value-8">Option 8</SelectItem>
-        <SelectItem value="value-9">Option 9</SelectItem>
-      </SelectGroupItem>
-    </Select>
+    <SelectGroupItem label="Group 3">
+      <SelectItem value="select-option" hidden children="Select Option" />
+      <SelectItem value="value-7" children="Option 7" />
+      <SelectItem value="value-8" children="Option 8" />
+      <SelectItem value="value-9" children="Option 9" />
+    </SelectGroupItem>
 
+  </Select>
 </ComponentContainer>
 
 ## Usage
@@ -108,20 +100,18 @@ The select component should only be used as a last resort in public-facing servi
     <FormField>
       <FormFieldLabel>Country</FormFieldLabel>
       <Select aria-label="Country" defaultValue="">
-        <SelectItem value="" hidden>
-          Select a country
-        </SelectItem>
-        <SelectItem value="us">United States</SelectItem>
-        <SelectItem value="ca">Canada</SelectItem>
-        <SelectItem value="mx">Mexico</SelectItem>
+        <SelectItem value="" hidden children="Select a country" />
+        <SelectItem value="us" children="United States" />
+        <SelectItem value="ca" children="Canada" />
+        <SelectItem value="mx" children="Mexico" />
       </Select>
     </FormField>
     <FormField>
       <FormFieldLabel>Favorite Color</FormFieldLabel>
       <Select aria-label="Favorite Color" defaultValue="blue">
-        <SelectItem value="red">Red</SelectItem>
-        <SelectItem value="blue">Blue</SelectItem>
-        <SelectItem value="green">Green</SelectItem>
+        <SelectItem value="red" children="Red" />
+        <SelectItem value="blue" children="Blue" />
+        <SelectItem value="green" children="Green" />
       </Select>
     </FormField>
   </div>
@@ -140,18 +130,17 @@ The select component should only be used as a last resort in public-facing servi
     <FormField>
       <FormFieldLabel>Is active</FormFieldLabel>
       <Select aria-label="Is Active?" defaultValue="yes">
-        <SelectItem value="yes">Yes</SelectItem>
-        <SelectItem value="no">No</SelectItem>
+        <SelectItem value="yes" children="Yes" />
+        <SelectItem value="no" children="No" />
       </Select>
     </FormField>
     <FormField>
       <FormFieldLabel>Save document</FormFieldLabel>
       <Select aria-label="Save Document" defaultValue="save">
-        <SelectItem value="save">Save Document</SelectItem>
-        <SelectItem value="cancel">Cancel</SelectItem>
+        <SelectItem value="save" children="Save Document" />
+        <SelectItem value="cancel" children="Cancel" />
       </Select>
     </FormField>
   </div>
 </ComponentContainer>
-
 </Section>
