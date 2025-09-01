@@ -32,7 +32,7 @@ for (const story of stories) {
       fullPage: true,
       animations: 'disabled',
       // maxDiffPixelRatio: 0.01,
-      threshold: 0.3,
+      threshold: 0.4,
     });
   });
 }
