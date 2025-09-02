@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 export type Person = {
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -28,6 +29,7 @@ const createRandomCitizen = (): Person => {
     ]),
   ];
   return {
+    id: faker.string.uuid(),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
