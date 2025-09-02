@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.15.0](https://github.com/ogcio/govie-ds/compare/docs-v1.14.4...docs-v1.15.0) (2025-09-01)
+
+
+### Features
+
+* Drawer sync with Figma AB[#30653](https://github.com/ogcio/govie-ds/issues/30653) ([#705](https://github.com/ogcio/govie-ds/issues/705)) ([585281b](https://github.com/ogcio/govie-ds/commit/585281b5c49f4ff16138c7355046544031b7056f))
+* Header light theme AB[#30232](https://github.com/ogcio/govie-ds/issues/30232) ([#676](https://github.com/ogcio/govie-ds/issues/676)) ([68d66c8](https://github.com/ogcio/govie-ds/commit/68d66c8ec6a74b8241df41ce50052049f71545c9))
+* Phasebanner component sync with Figma AB[#30646](https://github.com/ogcio/govie-ds/issues/30646) ([#703](https://github.com/ogcio/govie-ds/issues/703)) ([75d986f](https://github.com/ogcio/govie-ds/commit/75d986ffcef1ea45e8ee47d76404730e5f70af60))
+
+
+### Miscellaneous Chores
+
+* Add pre-commit lint-staged and typecheck AB[#30206](https://github.com/ogcio/govie-ds/issues/30206) ([#678](https://github.com/ogcio/govie-ds/issues/678)) ([d787533](https://github.com/ogcio/govie-ds/commit/d787533675ea6484eda00c6e26d753047806d932))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.16.0
+    * @ogcio/design-system-tailwind bumped to 1.14.0
+
 ## [1.14.4](https://github.com/ogcio/govie-ds/compare/docs-v1.14.3...docs-v1.14.4) (2025-08-22)
 
 ### Dependencies
