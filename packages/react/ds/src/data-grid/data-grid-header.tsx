@@ -1,6 +1,7 @@
 import React from 'react';
-import { cn } from '../cn.js';
 import { Chip } from '../chip/chip.js';
+import { cn } from '../cn.js';
+import { Heading } from '../heading/heading.js';
 import { translate as t } from '../i18n/utility.js';
 
 interface DataGridHeaderTypeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -64,14 +65,6 @@ export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
   );
 };
 
-DataGridHeader.displayName = 'DataGridHeader';
-
-Object.defineProperty(DataGridHeader, 'componentType', {
-  value: 'DataGridHeader',
-  writable: false,
-  enumerable: false,
-});
-
 export const DataGridHeaderSearch: React.FC<DataGridHeaderTypeProps> = ({
   children,
   className,
@@ -84,13 +77,20 @@ export const DataGridHeaderSearch: React.FC<DataGridHeaderTypeProps> = ({
   );
 };
 
-DataGridHeaderSearch.displayName = 'DataGridHeaderSearch';
-
-Object.defineProperty(DataGridHeaderSearch, 'componentType', {
-  value: 'DataGridHeaderSearch',
-  writable: false,
-  enumerable: false,
-});
+export const DataGridHeaderActions: React.FC<DataGridHeaderTypeProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={cn('gi-flex gi-items-center gi-ml-auto gi-gap-4', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
 
 export const DataGridHeaderFilter: React.FC<DataGridHeaderTypeProps> = ({
   children,
@@ -104,13 +104,57 @@ export const DataGridHeaderFilter: React.FC<DataGridHeaderTypeProps> = ({
   );
 };
 
-DataGridHeaderFilter.displayName = 'DataGridHeaderFilter';
+export const DataGridHeaderFilterTitle: React.FC<DataGridHeaderTypeProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <div className={cn('gi-border-b gi-px-6 gi-py-4', className)} {...props}>
+      <Heading as="h6">{children}</Heading>
+    </div>
+  );
+};
 
-Object.defineProperty(DataGridHeaderFilter, 'componentType', {
-  value: 'DataGridHeaderFilter',
-  writable: false,
-  enumerable: false,
-});
+export const DataGridHeaderFilterContent: React.FC<DataGridHeaderTypeProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={cn('gi-flex gi-flex-col gi-gap-2 gi-px-6', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+export const DataGridHeaderFilterContentTitle: React.FC<
+  DataGridHeaderTypeProps
+> = ({ children, className, ...props }) => {
+  return (
+    <div className={cn('gi-py-2 gi-font-medium', className)} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export const DataGridHeaderFilterActions: React.FC<DataGridHeaderTypeProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={cn('gi-flex gi-justify-end gi-gap-2 gi-p-6', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
 
 type DataGridHeaderFilterListProps = {
   filters: { id: string; label: string }[];
@@ -121,7 +165,9 @@ type DataGridHeaderFilterListProps = {
 export const DataGridHeaderFilterList: React.FC<
   DataGridHeaderFilterListProps
 > = ({ filters, onRemove, className, ...props }) => {
-  if (!filters || filters.length === 0) return null;
+  if (!filters || filters.length === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -146,33 +192,41 @@ export const DataGridHeaderFilterList: React.FC<
   );
 };
 
-DataGridHeaderFilterList.displayName = 'DataGridHeaderFilterList';
-
-Object.defineProperty(DataGridHeaderFilterList, 'componentType', {
-  value: 'DataGridHeaderFilterList',
-  writable: false,
-  enumerable: false,
-});
-
-export const DataGridHeaderActions: React.FC<DataGridHeaderTypeProps> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <div
-      className={cn('gi-flex gi-items-center gi-ml-auto', className)}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
-
+DataGridHeader.displayName = 'DataGridHeader';
+DataGridHeaderSearch.displayName = 'DataGridHeaderSearch';
 DataGridHeaderActions.displayName = 'DataGridHeaderActions';
+DataGridHeaderFilter.displayName = 'DataGridHeaderFilter';
+DataGridHeaderFilterList.displayName = 'DataGridHeaderFilterList';
+DataGridHeaderFilterTitle.displayName = 'DataGridHeaderFilterTitle';
+DataGridHeaderFilterContent.displayName = 'DataGridHeaderFilterContent';
+DataGridHeaderFilterContentTitle.displayName =
+  'DataGridHeaderFilterContentTitle';
+DataGridHeaderFilterActions.displayName = 'DataGridHeaderFilterActions';
 
+Object.defineProperty(DataGridHeader, 'componentType', {
+  value: 'DataGridHeader',
+});
+Object.defineProperty(DataGridHeaderSearch, 'componentType', {
+  value: 'DataGridHeaderSearch',
+});
 Object.defineProperty(DataGridHeaderActions, 'componentType', {
   value: 'DataGridHeaderActions',
-  writable: false,
-  enumerable: false,
+});
+Object.defineProperty(DataGridHeaderFilter, 'componentType', {
+  value: 'DataGridHeaderFilter',
+});
+Object.defineProperty(DataGridHeaderFilterList, 'componentType', {
+  value: 'DataGridHeaderFilterList',
+});
+Object.defineProperty(DataGridHeaderFilterTitle, 'componentType', {
+  value: 'DataGridHeaderFilterTitle',
+});
+Object.defineProperty(DataGridHeaderFilterContent, 'componentType', {
+  value: 'DataGridHeaderFilterContent',
+});
+Object.defineProperty(DataGridHeaderFilterContentTitle, 'componentType', {
+  value: 'DataGridHeaderFilterContentTitle',
+});
+Object.defineProperty(DataGridHeaderFilterActions, 'componentType', {
+  value: 'DataGridHeaderFilterActions',
 });
