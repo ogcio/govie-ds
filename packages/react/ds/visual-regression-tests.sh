@@ -8,6 +8,7 @@ fi
 
 docker run ${ARGS} --rm \
  -p 9323:9323 \
+ -e "TEST_BASE_URL=http://host.docker.internal:6006" \
  -v "$PWD/storybook-static:/app/storybook-static" \
  -v "$PWD/tests/:/app/tests" \
  -v "$PWD/playwright.config.ts:/app/playwright.config.ts" \
