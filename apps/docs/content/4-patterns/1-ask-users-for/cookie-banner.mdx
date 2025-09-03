@@ -2,30 +2,53 @@
 title: Cookie Banner
 description: Cookie Banner
 status: stable
+component:
+  id: 'cookie-banner'
+  link: '/docs/feedback-cookiebanner--docs'
+  status: 'stable'
+  properties:
+    - name: CookieBannerProps
+      fields:
+        - name: 'showConsent'
+          ofType: 'boolean'
+          description: 'A boolean that determines whether the consent banner should be displayed.'
+          required: true
+        - name: 'children'
+          ofType: 'node'
+          description: 'React nodes representing the content to be displayed inside the banner.'
+          required: true
+        - name: 'accept'
+          ofType: 'element'
+          description: 'A React element of type ButtonProps that represents the accept button.'
+          required: true
+        - name: 'reject'
+          ofType: 'element'
+          description: 'A React element of type ButtonProps that represents the reject button.'
+          required: true
+        - name: 'cookieLink'
+          ofType: 'element'
+          description: 'An optional React element of type LinkProps that links to the cookie policy.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'A string used to assign a custom test ID to the cookie banner for testing purposes.'
+          required: false
 ---
 
 # Cookie Banner
 
-The Cookie Banner component is used to inform users about the use of cookies on a website and to obtain their consent for non-essential cookies. 
+The Cookie Banner component is used to inform users about the use of cookies on a website and to obtain their consent for non-essential cookies.
 It provides options for users to accept all cookies or only necessary cookies.
 
 <ComponentContainer>
   <CookieBanner
     showConsent={true}
-    accept={
-      <Button variant="primary">
-        Accept all cookies
-      </Button>
-    }
-    reject={
-      <Button variant="primary">
-        Necessary cookies only
-      </Button>
-    }
+    accept={<Button variant="primary">Accept all cookies</Button>}
+    reject={<Button variant="primary">Necessary cookies only</Button>}
   >
     <>
       <Heading as="h3">A notice about cookies</Heading>
-      <Paragraph className="my-4">This website uses cookies to collect information about how you use this site. This information is used to make the website work as well as possible. More details available in our{' '} <Link href="/cookies-policy/">cookie and privacy policies</Link>.</Paragraph>
+      <Paragraph className="my-4">{'This website uses cookies to collect information about how you use this site. This information is used to make the website work as well as possible. More details available in our '}<Link href="/cookies-policy/">cookie and privacy policies</Link>.</Paragraph>
     </>
   </CookieBanner>
 </ComponentContainer>
@@ -43,8 +66,7 @@ It provides options for users to accept all cookies or only necessary cookies.
         <div id="cookie-banner-description">
           <h3 class="gi-heading-md">A notice about cookies</h3>
           <p class="gi-paragraph-md gi-text-start gi-whitespace-normal my-4">
-            This website uses cookies to collect information about how you use this site. 
-            This information is used to make the website work as well as possible. More details available in our <a class="gi-link" href="/cookies-policy/">cookie and privacy policies</a>.
+            {'This website uses cookies to collect information about how you use this site. This information is used to make the website work as well as possible. More details available in our '}<a class="gi-link" href="/cookies-policy/">cookie and privacy policies</a>.
           </p>
         </div>
         <div class="gi-cookie-banner-buttons">
@@ -84,6 +106,7 @@ It provides options for users to accept all cookies or only necessary cookies.
       </>
     </CookieBanner>
     ```
+
   </TabPanel>
 </Tabs>
 
@@ -95,9 +118,9 @@ It provides options for users to accept all cookies or only necessary cookies.
 
 ## Usage
 
-A cookie banner is required whenever your application or website manages user information or tracks user behaviour. 
-This includes scenarios where cookies or similar technologies are used to collect analytics, personalise content, or store user preferences. 
+A cookie banner is required whenever your application or website manages user information or tracks user behaviour.
+This includes scenarios where cookies or similar technologies are used to collect analytics, personalise content, or store user preferences.
 Informing users and obtaining their consent is essential for compliance with privacy regulations and for building user trust.
 
-According to GDPR legislation, the consent acquired from users must be stored securely and in a way that can be audited if required. 
+According to GDPR legislation, the consent acquired from users must be stored securely and in a way that can be audited if required.
 Ensure your implementation records the user's consent decision and provides a mechanism to retrieve or update this information if necessary.

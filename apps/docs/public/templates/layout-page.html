@@ -16,8 +16,8 @@
     >
       <div class="gi-layout-container gi-order-2">
         <div class="gi-header-menu gi-bg-color-surface-system-primary-default">
-          <div class="gi-header-logo">
-            <a href="#">
+          <div class="gi-header-logo gi-header-logo-default">
+            <a data-testid="logo-link" href="#">
               <picture>
                 <source
                   srcset="
@@ -26,9 +26,9 @@
                   media="(min-width: 640px)"
                 />
                 <img
-                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
                   alt="Gov.ie logo"
                   class="gi-h-10 sm:gi-h-14"
+                  src="https://raw.githubusercontent.com/ogcio/govie-ds/refs/heads/main/assets/logos/gov.ie/harp-gold-text-white.svg"
                 />
               </picture>
             </a>
@@ -53,25 +53,34 @@
                 >Services</a
               >
             </div>
+            <div class="gi-hidden lg:gi-block">
+              <div class="gi-header-divider gi-border-white"></div>
+            </div>
+            <div class="gi-block">
+              <a
+                class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
+                href="#"
+                >Gaelige</a
+              >
+            </div>
             <div class="gi-block lg:gi-hidden">
               <label
                 class="gi-header-tool-item gi-text-white gi-stroke-white gi-header-tool-item-default"
-                for="ItemActionTrigger-2"
-                aria-label="Menu"
-                id="ItemActionLabel-2"
+                for="ItemActionTrigger-4"
+                aria-label="menu"
+                id="ItemActionLabel-4"
                 ><input
                   class="gi-header-tool-item-input"
-                  id="ItemActionTrigger-2"
-                  data-testid="ItemActionTrigger-2"
-                  data-index="2"
+                  id="ItemActionTrigger-4"
+                  data-testid="ItemActionTrigger-4"
+                  data-index="4"
                   type="button"
                   data-open="false"
-                /><span class="label">Menu</span
-                ><span
+                /><span
                   class="material-symbols-outlined gi-text-[24px] gi-block"
                   role="alert"
-                  id="ItemIconActionTrigger-2"
-                  data-testid="ItemIconActionTrigger-2"
+                  id="ItemIconActionTrigger-4"
+                  data-testid="ItemIconActionTrigger-4"
                   aria-hidden="true"
                   style="
                     font-variation-settings:
@@ -84,8 +93,8 @@
                 ><span
                   class="material-symbols-outlined gi-text-[24px] gi-block gi-hidden close-icon"
                   role="alert"
-                  id="ItemCloseTrigger-2"
-                  data-testid="ItemCloseTrigger-2"
+                  id="ItemCloseTrigger-4"
+                  data-testid="ItemCloseTrigger-4"
                   aria-hidden="true"
                   style="
                     font-variation-settings:
@@ -101,7 +110,7 @@
           </div>
         </div>
       </div>
-      <div data-module="gieds-drawer" id="Drawer-2">
+      <div data-module="gieds-drawer" id="Drawer-4">
         <div
           data-element="modal"
           data-testid="modal"
@@ -115,7 +124,7 @@
             data-testid="modal-container"
             class="gi-modal-container-control gi-modal-container gi-modal-container-right gi-drawer-container"
           >
-            <div class="gi-py-4">
+            <div class="gi-py-4 xs:gi-py-6">
               <button
                 class="gi-btn gi-icon-btn-small gi-btn-flat-dark gi-modal-icon"
               >
@@ -138,38 +147,23 @@
                 <ul>
                   <li>
                     <a href="#" class="gi-list-item"
-                      ><span class="gi-text-sm gi-ml-1">Departments</span></a
-                    >
+                      ><span class="gi-text-sm gi-ml-1">Departments</span>
+                    </a>
                   </li>
                   <li>
                     <a href="#" class="gi-list-item"
-                      ><span class="gi-text-sm gi-ml-1">Services</span></a
-                    >
+                      ><span class="gi-text-sm gi-ml-1">Services</span>
+                    </a>
                   </li>
                   <li>
                     <a href="#" class="gi-list-item"
-                      ><span class="gi-text-sm gi-ml-1">Gaeilge</span></a
-                    >
+                      ><span class="gi-text-sm gi-ml-1">Gaelige</span>
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div
-        class="gi-header-secondary-bar gi-order-1 gi-bg-color-surface-system-primary-subtle"
-      >
-        <div class="gi-layout-container gi-flex gi-justify-end gi-items-center">
-          <ul>
-            <li>
-              <a
-                href="#"
-                class="gi-header-secondary-item gi-text-white gi-stroke-white gi-header-secondary-item-default"
-                >Gaeilge</a
-              >
-            </li>
-          </ul>
         </div>
       </div>
     </header>
