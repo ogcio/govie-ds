@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.16.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.3...react-lib-v1.16.0) (2025-09-01)
+
+
+### Features
+
+* Drawer sync with Figma AB[#30653](https://github.com/ogcio/govie-ds/issues/30653) ([#705](https://github.com/ogcio/govie-ds/issues/705)) ([585281b](https://github.com/ogcio/govie-ds/commit/585281b5c49f4ff16138c7355046544031b7056f))
+* Header light theme AB[#30232](https://github.com/ogcio/govie-ds/issues/30232) ([#676](https://github.com/ogcio/govie-ds/issues/676)) ([68d66c8](https://github.com/ogcio/govie-ds/commit/68d66c8ec6a74b8241df41ce50052049f71545c9))
+* Phasebanner component sync with Figma AB[#30646](https://github.com/ogcio/govie-ds/issues/30646) ([#703](https://github.com/ogcio/govie-ds/issues/703)) ([75d986f](https://github.com/ogcio/govie-ds/commit/75d986ffcef1ea45e8ee47d76404730e5f70af60))
+
+
+### Bug Fixes
+
+* add table with no border AB[#30709](https://github.com/ogcio/govie-ds/issues/30709) ([#704](https://github.com/ogcio/govie-ds/issues/704)) ([42743be](https://github.com/ogcio/govie-ds/commit/42743beaf8ca77d6c2646e30f49955ad2c182375))
+* close modal on escape key AB[#30184](https://github.com/ogcio/govie-ds/issues/30184) ([#698](https://github.com/ogcio/govie-ds/issues/698)) ([0ae3c2d](https://github.com/ogcio/govie-ds/commit/0ae3c2da9f8696bbdab389c5c013931c185c7db7))
+* SelectNext placeholder and autocomplete="off" AB[#30655](https://github.com/ogcio/govie-ds/issues/30655) ([#702](https://github.com/ogcio/govie-ds/issues/702)) ([2f83fae](https://github.com/ogcio/govie-ds/commit/2f83fae8d2d08f4ac926bb2050ed184046966c8a))
+* update data grid pagination with select AB[#30388](https://github.com/ogcio/govie-ds/issues/30388) ([#696](https://github.com/ogcio/govie-ds/issues/696)) ([fa27d21](https://github.com/ogcio/govie-ds/commit/fa27d212a8223f9adde987286e38709095b1c45f))
+
+
+### Miscellaneous Chores
+
+* Add pre-commit lint-staged and typecheck AB[#30206](https://github.com/ogcio/govie-ds/issues/30206) ([#678](https://github.com/ogcio/govie-ds/issues/678)) ([d787533](https://github.com/ogcio/govie-ds/commit/d787533675ea6484eda00c6e26d753047806d932))
+* Adding form input tests with HRF AB[#30236](https://github.com/ogcio/govie-ds/issues/30236) ([#699](https://github.com/ogcio/govie-ds/issues/699)) ([734640e](https://github.com/ogcio/govie-ds/commit/734640e5d3ac33a38d104769611f81998a4783f6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.0
+
 ## [1.15.3](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.2...react-lib-v1.15.3) (2025-08-22)
 
 ### Bug Fixes
