@@ -27,6 +27,7 @@ Color
 Combobox
 ComboboxProps
 ContainerProps
+CookieBannerProps
 Customize
 DOM
 Deque
@@ -43,6 +44,7 @@ DropdownItemProps
 Favicon
 Figma
 Frontend
+feedback-cookiebanner
 GDPR
 GovTech
 HeaderItem
@@ -207,6 +209,7 @@ isOpen
 labeled
 labeling
 lifecycle
+LinkProps
 md
 navigation-sidenav
 no-color

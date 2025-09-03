@@ -14,7 +14,7 @@ export const ClientOnly = ({
   useEffect(() => {
     setMounted(true);
     onClientReady(true);
-  }, []);
+  }, [onClientReady, setMounted]);
 
   if (!isMounted) return null;
 
