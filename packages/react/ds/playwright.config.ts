@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const BASE_URL = process.env.TEST_BASE_URL || 'http://localhost:6006';
+const BASE_URL =
+  process.env.TEST_BASE_URL || 'http://host.docker.internal:6006';
 
 export default defineConfig({
   testDir: './tests',
@@ -36,9 +37,4 @@ export default defineConfig({
       use: { ...devices['iPhone 12'] },
     },
   ],
-  webServer: {
-    command: 'pnpm storybook:dev',
-    url: BASE_URL,
-    reuseExistingServer: true,
-  },
 });
