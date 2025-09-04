@@ -16,6 +16,8 @@
       "cookieBanner.rejectCookies": "Reject cookies",
       "cookieBanner.dismissCookieBanner": "Dismiss cookie banner",
       "dataGridHeader.filtersApplied": "Filters applied ({{ length }}):",
+      "dataGrid.selectedRows_one": "{{count}} Row selected",
+      "dataGrid.selectedRows_other": "{{count}} Rows selected",
       "dropdownItem.noResultFound": "No results found.",
       "dropdownItem.search": "Search.",
       "header.headerSlot": "Slot Container {{index}}",

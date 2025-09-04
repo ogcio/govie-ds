@@ -56,9 +56,9 @@ import {
   DataGridHeaderFilterTitle,
   DataGridHeaderSearch,
 } from '../data-grid-header.js';
+import { DataGridSelectedRowsBanner } from '../data-grid-selected-rows.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
-import { DataGridSelectedRowsBanner } from '../data-grid-selected-rows.js';
 
 declare module '@tanstack/react-table' {
   interface FilterFns {
