@@ -108,6 +108,7 @@ export const Controlled: Story = {
   args: {
     groupId: 'controlled-checkbox-group',
   },
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {

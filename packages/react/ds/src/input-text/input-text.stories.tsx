@@ -310,6 +310,7 @@ export const InputWithIcons: Story = {
 };
 
 export const InputWithLoadingIcon: Story = {
+  tags: ['skip-playwright'],
   render: () => (
     <FormField>
       <FormFieldLabel>Label</FormFieldLabel>
@@ -527,6 +528,7 @@ export const InputSearch: Story = {
 };
 
 export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
   render: () => {
     const methods = useForm<{ username: string }>({
       defaultValues: { username: '' },

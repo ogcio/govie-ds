@@ -1041,7 +1041,7 @@ export default function Home() {
 
                   <div>
                     <h5 className="font-semibold mb-2">Phase Banner </h5>
-                    <PhaseBanner level="alpha">
+                    <PhaseBanner level="Alpha">
                       This is a pre-release version
                     </PhaseBanner>
                   </div>

@@ -12,3 +12,10 @@ accessibility-audit.html
 .vscode
 !.vscode/extensions.json
 info.log
+
+
+# Playwright
+test-results
+playwright-report
+blob-report
+playwright/.cache

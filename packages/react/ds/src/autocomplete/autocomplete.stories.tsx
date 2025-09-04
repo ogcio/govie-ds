@@ -84,7 +84,6 @@ export const Default: Story = {
     await userEvent.type(input, 'Backend', { delay: 100 });
     const option = await canvas.findByText('Backend Dev.');
     expect(option).toBeVisible();
-    await userEvent.click(document.body);
   },
 };
 
@@ -139,7 +138,6 @@ export const WithDisabledOptions: Story = {
     expect(disabledOption).toBeVisible();
     const parentWithAria = disabledOption.closest('[aria-disabled]');
     expect(parentWithAria).toHaveAttribute('aria-disabled', 'true');
-    await userEvent.click(document.body);
   },
 };
 
@@ -189,6 +187,7 @@ export const WithFreeSolo: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
     expect(input).not.toBeDisabled();
+    await userEvent.click(input);
   },
 };
 
@@ -324,6 +323,7 @@ export const WithLoading = () => {
 };
 
 export const WithReactHookForm: StoryObj = {
+  tags: ['skip-playwright'],
   render: () => {
     const { register, watch } = useForm();
 
@@ -360,5 +360,36 @@ export const WithReactHookForm: StoryObj = {
     waitFor(() =>
       expect(watchedValueLabel).toHaveTextContent('Watched value: backend_dev'),
     );
+  },
+};
+
+export const Test: Story = {
+  render: (props: AutocompleteProps) => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Label</FormFieldLabel>
+        <Autocomplete {...props}>
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </FormField>
+    );
+  },
+  args: {
+    defaultValue: '',
+    children: [],
+    id: 'autocomplete-default-id',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).toHaveAttribute('id', 'autocomplete-default-id');
+    await userEvent.type(input, 'Backend', { delay: 100 });
+    const option = await canvas.findByText('Backend Dev.');
+    expect(option).toBeVisible();
+    await userEvent.click(document.body);
   },
 };

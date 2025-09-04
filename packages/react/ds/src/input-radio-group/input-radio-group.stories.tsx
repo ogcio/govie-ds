@@ -178,6 +178,7 @@ export const WithConditionalInput: Story = {
   args: {
     groupId: 'contact',
   },
+  tags: ['skip-playwright'],
   render: (arguments_) => (
     <FormField>
       <FormFieldLabel>How would you prefer to be contacted?</FormFieldLabel>
@@ -201,6 +202,7 @@ export const Controlled: Story = {
   args: {
     groupId: 'controlled',
   },
+  tags: ['skip-playwright'],
   parameters: {
     docs: {
       description: {
