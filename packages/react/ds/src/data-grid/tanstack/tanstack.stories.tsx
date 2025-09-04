@@ -46,6 +46,7 @@ import {
   DataGridHeaderFilter,
   DataGridHeaderSearch,
 } from '../data-grid-header.js';
+import { DataGridSelectedRowsBanner } from '../data-grid-selected-rows.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -372,6 +373,7 @@ export const WithReactHookForm = () => {
     declined: TagTypeEnum.Error,
     'in progress': TagTypeEnum.Warning,
   };
+  const selectedRows = table.getSelectedRowModel().rows;
 
   return (
     <div className="gi-p-2">
@@ -406,6 +408,25 @@ export const WithReactHookForm = () => {
           </Button>
         </DataGridHeaderActions>
       </DataGridHeader>
+      {selectedRows.length > 0 && (
+        <DataGridSelectedRowsBanner
+          selectedCount={selectedRows.length}
+          actions={
+            <>
+              <Button appearance="light" size="medium" variant="flat">
+                Button
+              </Button>
+              <Button appearance="light" size="medium" variant="flat">
+                Button
+              </Button>
+              <Button appearance="light" size="medium" variant="flat">
+                Button
+              </Button>
+            </>
+          }
+        />
+      )}
+
       <Table layout="auto" rowSize="md" stripped className="gi-mt-4 gi-w-full">
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
