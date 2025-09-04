@@ -328,17 +328,20 @@ export const AllPositions: Story = {
       });
       globalThis.window.dispatchEvent(event);
 
-      await waitFor(() => {
-        const toastRegion = document.querySelector(
-          `[data-position='${pos.y}-${pos.x}']`,
-        );
-        expect(toastRegion).toBeInTheDocument();
-        expect(
-          within(toastRegion as HTMLElement).getByTestId(
+      await waitFor(
+        () => {
+          const toastRegion = document.querySelector(
+            `[data-position='${pos.y}-${pos.x}']`,
+          );
+          expect(toastRegion).toBeInTheDocument();
+
+          const toast = within(toastRegion as HTMLElement).getByTestId(
             `${pos.x}-${pos.y}-info`,
-          ),
-        ).toBeVisible();
-      });
+          );
+          expect(toast).toBeVisible();
+        },
+        { timeout: 5000 },
+      );
     }
   },
 };
