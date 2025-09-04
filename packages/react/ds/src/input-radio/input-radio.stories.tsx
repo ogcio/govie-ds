@@ -89,7 +89,7 @@ export const WithDefaultChecked: Story = {
   args: {
     value: 'radio-with-default-checked',
     label: 'Default checked',
-    checked: true,
+    defaultChecked: true,
   },
 };
 
