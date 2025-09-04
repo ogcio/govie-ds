@@ -303,7 +303,7 @@ export const AllPositions: Story = {
                 description: 'Toast message',
                 animation: 'fadeinup',
                 variant: 'info',
-                duration: 2000,
+                duration: 5000,
                 position: pos,
               })
             }
@@ -314,7 +314,11 @@ export const AllPositions: Story = {
       </Stack>
     </>
   ),
-  play: async () => {
+  play: async ({ canvasElement }) => {
+    await waitFor(() => {
+      expect(canvasElement).toBeInTheDocument();
+    });
+
     for (const pos of positions) {
       const event = new CustomEvent('govie:add-toast', {
         detail: {
