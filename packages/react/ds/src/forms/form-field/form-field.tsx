@@ -40,9 +40,7 @@ function getSpecialComponentType(child: ReactNode): string | null {
   }
 
   return (
-    (child.type as any)?.componentType ||
-    (child.props as any)?.__mdxType ||
-    null
+    (child.type as any)?.componentType || (child.props as any)?.__type || null
   );
 }
 
