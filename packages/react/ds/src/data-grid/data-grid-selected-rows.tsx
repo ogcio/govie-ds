@@ -1,4 +1,5 @@
 import { cn } from '../cn.js';
+import { translate as t } from '../i18n/utility.js';
 
 export type DataGridSelectedRowsBannerProps = {
   selectedCount: number;
@@ -18,7 +19,10 @@ export const DataGridSelectedRowsBanner: React.FC<
       {...props}
     >
       <span className="gi-text-sm gi-font-medium gi-text-white">
-        {selectedCount} Row{selectedCount === 1 ? '' : 's'} selected
+        {t('dataGrid.selectedRows', {
+          count: selectedCount,
+          defaultValue: ` (${selectedCount} Row${selectedCount === 1 ? '' : 's'} selected)`,
+        })}
       </span>
 
       <div className="gi-flex gi-gap-2">{actions}</div>
