@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.1](https://github.com/ogcio/govie-ds/compare/docs-v1.15.0...docs-v1.15.1) (2025-09-04)
+
+
+### Miscellaneous Chores
+
+* Removing warnings AB[#30207](https://github.com/ogcio/govie-ds/issues/30207) ([#708](https://github.com/ogcio/govie-ds/issues/708)) ([61e00c5](https://github.com/ogcio/govie-ds/commit/61e00c5900efbad9dcd7d122b77335303530473b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.16.1
+
 ## [1.15.0](https://github.com/ogcio/govie-ds/compare/docs-v1.14.4...docs-v1.15.0) (2025-09-01)
 
 

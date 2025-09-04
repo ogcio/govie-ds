@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.16.0...react-lib-v1.16.1) (2025-09-04)
+
+
+### Miscellaneous Chores
+
+* Removing warnings AB[#30207](https://github.com/ogcio/govie-ds/issues/30207) ([#708](https://github.com/ogcio/govie-ds/issues/708)) ([61e00c5](https://github.com/ogcio/govie-ds/commit/61e00c5900efbad9dcd7d122b77335303530473b))
+
 ## [1.16.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.3...react-lib-v1.16.0) (2025-09-01)
 
 
