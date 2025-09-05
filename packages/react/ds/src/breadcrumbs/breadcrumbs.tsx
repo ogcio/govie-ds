@@ -32,25 +32,30 @@ export const BreadcrumbCurrentLink = (props: BreadcrumbLinkProps) => (
   <BreadcrumbLink {...props} aria-current="page" />
 );
 
+const BreadcrumbSeparator = () => (
+  <span className="gi-breadcrumbs-separator">/</span>
+);
+
 export const Breadcrumbs = ({ children, iconStart }: BreadcrumbProps) => {
+  const items = Array.isArray(children) ? children : [children];
+
   return (
     <nav
       aria-label={t('breadcrumbs.breadcrumbs', { defaultValue: 'Breadcrumbs' })}
       className="gi-breadcrumbs"
     >
-      {iconStart && (
-        <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
-      )}
       <ol role="list">
-        {Array.isArray(children) ? (
-          children.map((Component, index) => (
-            <li role="listitem" key={`breadcrumb_item_${index}`}>
-              {Component}
-            </li>
-          ))
-        ) : (
-          <li role="listitem">{children}</li>
+        {iconStart && (
+          <li role="listitem" className="gi-pr-1">
+            <Icon aria-label="chevron-left" icon="chevron_left" size="sm" />
+          </li>
         )}
+        {items.map((component, index) => (
+          <li role="listitem" key={`breadcrumb_item_${index}`}>
+            {component}
+            {index < items.length - 1 && <BreadcrumbSeparator />}
+          </li>
+        ))}
       </ol>
     </nav>
   );

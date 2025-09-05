@@ -40,4 +40,16 @@ Use breadcrumbs to help users understand their location within a website or appl
 - Don’t include unnecessary levels just to fill space.
 - Don’t overload breadcrumbs with icons or complex elements.
 
+## Mobile Guidelines
+
+On mobile, space is limited, so breadcrumbs should remain lightweight and unobtrusive.  
+The recommended approach is:
+
+- Show only the most relevant levels (for example, the current page and one or two parent levels).
+- Use ellipsis (`…`) to collapse intermediate paths when the hierarchy is long.
+- Ensure touch targets remain large enough for easy tapping.
+- Avoid wrapping breadcrumbs into multiple lines.
+
+The developer is responsible for controlling which breadcrumb items are rendered in mobile. The component itself does not manage item reduction or truncation — this logic must be implemented in your app.
+
 </Section>

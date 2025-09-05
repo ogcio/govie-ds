@@ -70,3 +70,26 @@ export const WithCustomLink: Story = {
     ],
   },
 };
+
+export const MultipleLevels: Story = {
+  args: {
+    children: [
+      <BreadcrumbLink asChild>
+        <a href="/departments">Departments</a>
+      </BreadcrumbLink>,
+      <BreadcrumbEllipsis />,
+      <BreadcrumbLink asChild>
+        <a href="/docs">Level 2</a>
+      </BreadcrumbLink>,
+      <BreadcrumbLink asChild>
+        <a href="/docs">Level 3</a>
+      </BreadcrumbLink>,
+      <BreadcrumbLink asChild>
+        <a href="/docs">Level 4</a>
+      </BreadcrumbLink>,
+      <BreadcrumbCurrentLink asChild>
+        <a href="/travel">Level 5</a>
+      </BreadcrumbCurrentLink>,
+    ],
+  },
+};

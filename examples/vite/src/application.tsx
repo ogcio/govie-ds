@@ -170,7 +170,7 @@ export function App() {
             </FormFieldWithTag>
           </TabPanel>
           <TabPanel value="tab2">
-            <PhaseBanner level="alpha">
+            <PhaseBanner level="Alpha">
               This is a pre-release version
             </PhaseBanner>
             <span className="material-symbols-outlined">face</span>

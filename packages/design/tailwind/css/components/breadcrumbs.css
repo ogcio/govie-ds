@@ -3,7 +3,7 @@
 }
 
 .gi-breadcrumbs > ol {
-  @apply gi-inline-flex gi-list-none gi-gap-7;
+  @apply gi-flex gi-list-none gi-flex-wrap;
 }
 
 .gi-breadcrumbs > ol > :not([hidden]) ~ :not([hidden]) {
@@ -11,14 +11,13 @@
 }
 
 .gi-breadcrumbs > ol > li {
-  @apply gi-relative gi-inline-flex;
-}
-
-.gi-breadcrumbs > ol > li:not(:first-child)::before {
-  @apply gi-block gi-absolute gi-bottom-0 gi-left-[-17px] gi-text-gray-500 gi-font-bold gi-text-sm;
-  content: '/';
+  @apply gi-flex gi-items-center;
 }
 
 .gi-breadcrumbs-link {
-  @apply gi-text-ellipsis gi-whitespace-normal gi-line-clamp-1;
+  @apply gi-text-ellipsis gi-whitespace-nowrap gi-line-clamp-1;
+}
+
+.gi-breadcrumbs-separator {
+  @apply gi-px-3 gi-text-gray-500;
 }
