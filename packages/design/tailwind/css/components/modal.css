@@ -11,7 +11,11 @@
 }
 
 .gi-modal-footer > div[data-orientation='unset'] {
-  @apply gi-flex sm:gi-flex-row gi-flex-col-reverse gi-gap-4 sm:gi-gap-6 gi-justify-end;
+  @apply gi-flex xs:gi-flex-row gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 gi-justify-end;
+}
+
+.gi-modal-footer-stacked > div[data-orientation='unset'] {
+  @apply gi-flex gi-gap-4 gi-justify-end gi-flex-col-reverse;
 }
 
 .gi-modal-footer > div[data-modal-size='sm'] {
@@ -35,7 +39,11 @@
 }
 
 .gi-modal-container-control {
-  @apply gi-bg-white gi-absolute gi-w-fit;
+  @apply gi-bg-white gi-absolute gi-w-fit
+  focus:gi-outline-none 
+  focus:gi-shadow-none
+  focus-visible:gi-outline-none
+  focus-visible:gi-shadow-none;
 }
 
 .gi-modal-container[data-position='bottom'][data-size='lg'],
@@ -55,7 +63,7 @@
 }
 
 .gi-modal-container-control > :first-child {
-  @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-py-4 gi-px-6;
+  @apply gi-flex gi-justify-end gi-items-center gi-w-full gi-px-6;
 }
 
 .gi-modal-container-control > :nth-child(2) {

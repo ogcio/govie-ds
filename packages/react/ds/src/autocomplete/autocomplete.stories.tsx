@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within, userEvent } from '@storybook/test';
+import { debounce } from 'lodash';
+import { useEffect, useMemo, useReducer } from 'react';
+import { useForm } from 'react-hook-form';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { FormField, FormFieldLabel } from '../forms/form-field/form-field.js';
+import { Label } from '../label/label.js';
 import { Autocomplete, AutocompleteItem } from './autocomplete.js';
 import { AutocompleteProps } from './types.js';
 
@@ -18,7 +22,7 @@ const meta = {
   component: Autocomplete,
   decorators: (Story) => {
     return (
-      <div className="gi-h-[335px]">
+      <div className="gi-h-[400px]">
         <Story />
       </div>
     );
@@ -71,38 +75,36 @@ export const Default: Story = {
   args: {
     defaultValue: '',
     children: [],
+    id: 'autocomplete-default-id',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
+    expect(input).toHaveAttribute('id', 'autocomplete-default-id');
     await userEvent.type(input, 'Backend', { delay: 100 });
     const option = await canvas.findByText('Backend Dev.');
     expect(option).toBeVisible();
-    await userEvent.click(document.body);
   },
 };
 
 export const WithDefaultValue: Story = {
   args: {
-    defaultValue: '',
     children: [],
   },
-  render: (props: AutocompleteProps) => (
-    <FormField className="gi-w-56">
-      <FormFieldLabel>With Default Value</FormFieldLabel>
-      <Autocomplete {...props} defaultValue={options[1].value}>
-        {options.map(({ value, label }) => (
-          <AutocompleteItem value={value} key={`${label}-${value}`}>
-            {label}
-          </AutocompleteItem>
-        ))}
-      </Autocomplete>
-    </FormField>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const input = canvas.getByRole('textbox');
-    expect(input).toHaveValue('Backend Dev.');
+  render: (props: AutocompleteProps) => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>With Default Value</FormFieldLabel>
+
+        <Autocomplete {...props} value={options[1].value} id="test">
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </FormField>
+    );
   },
 };
 
@@ -136,7 +138,6 @@ export const WithDisabledOptions: Story = {
     expect(disabledOption).toBeVisible();
     const parentWithAria = disabledOption.closest('[aria-disabled]');
     expect(parentWithAria).toHaveAttribute('aria-disabled', 'true');
-    await userEvent.click(document.body);
   },
 };
 
@@ -161,5 +162,234 @@ export const WithDisabled: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole('textbox');
     expect(input).toBeDisabled();
+  },
+};
+
+export const WithFreeSolo: Story = {
+  args: {
+    defaultValue: '',
+    freeSolo: true,
+    children: [],
+  },
+  render: (props: AutocompleteProps) => (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>With Free Solo</FormFieldLabel>
+      <Autocomplete {...props}>
+        {options.map(({ value, label }) => (
+          <AutocompleteItem value={value} key={`${label}-${value}`}>
+            {label}
+          </AutocompleteItem>
+        ))}
+      </Autocomplete>
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).not.toBeDisabled();
+    await userEvent.click(input);
+  },
+};
+
+export const WithLoading = () => {
+  const names = [
+    "Aoife O'Sullivan",
+    'Conor McCarthy',
+    "Niamh O'Brien",
+    'Sean Gallagher',
+    'Ciara Murphy',
+    "Cian O'Reilly",
+    'Saoirse Kennedy',
+    'Liam Doyle',
+    'Orla Byrne',
+    'Eoin Fitzpatrick',
+    'Róisín Kavanagh',
+    'Padraig Keane',
+    'Maeve Nolan',
+    'Darragh Quinn',
+    'Aisling Brady',
+    'Fionn MacNamara',
+    'Gráinne Flynn',
+    'Cathal Dunne',
+    'Eimear Ryan',
+    'Tadhg McDonagh',
+  ];
+
+  const ACTIONS = {
+    TOGGLE_OPEN: 'TOGGLE_OPEN',
+    SET_QUERY: 'SET_QUERY',
+    SET_RESULTS: 'SET_RESULTS',
+    SET_LOADING: 'SET_LOADING',
+  };
+
+  const reducer = (state: any, action: any) => {
+    switch (action.type) {
+      case ACTIONS.TOGGLE_OPEN: {
+        return { ...state, isOpen: action.payload };
+      }
+      case ACTIONS.SET_QUERY: {
+        return { ...state, query: action.payload };
+      }
+      case ACTIONS.SET_LOADING: {
+        if (action.payload) {
+          return { ...state, isLoading: action.payload, results: [] };
+        }
+        return { ...state, isLoading: action.payload };
+      }
+      case ACTIONS.SET_RESULTS: {
+        const children = action.payload.map((name: string) => (
+          <AutocompleteItem
+            key={name}
+            value={name.toLowerCase()?.replace(/\s+/g, '-')}
+          >
+            {name}
+          </AutocompleteItem>
+        ));
+        return { ...state, results: children, isLoading: false };
+      }
+      default: {
+        return state;
+      }
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, {
+    query: '',
+    isOpen: false,
+    isLoading: false,
+    results: [],
+  });
+
+  const debouncedFetch = useMemo(
+    () =>
+      debounce(async (query) => {
+        const filtered = await new Promise((resolve) => {
+          // Fake fetch
+          setTimeout(() => {
+            const results = names
+              .filter((name) =>
+                name.toLowerCase().includes(query.toLowerCase()),
+              )
+              .slice(0, 10);
+            resolve(results);
+          }, 600);
+        });
+
+        dispatch({ type: ACTIONS.SET_RESULTS, payload: filtered });
+      }, 500),
+    [],
+  );
+
+  const startFetch = () => {
+    dispatch({ type: ACTIONS.SET_LOADING, payload: true });
+    debouncedFetch(state.query);
+  };
+
+  useEffect(() => {
+    if (state.query) {
+      startFetch();
+    }
+  }, [state.query]);
+
+  const handleOpen = () => {
+    startFetch();
+  };
+
+  const handleClose = () => {
+    dispatch({ type: ACTIONS.SET_RESULTS, payload: [] });
+  };
+
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { value },
+    } = event;
+    dispatch({ type: ACTIONS.SET_QUERY, payload: value });
+  };
+
+  return (
+    <FormField className="gi-w-56">
+      <FormFieldLabel>Async Search</FormFieldLabel>
+      <Autocomplete
+        isOpen={state.isOpen}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        onChange={handleOnChange}
+        isLoading={state.isLoading}
+      >
+        {state.results}
+      </Autocomplete>
+    </FormField>
+  );
+};
+
+export const WithReactHookForm: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const { register, watch } = useForm();
+
+    const topicValue = watch('example');
+
+    return (
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Select with watcher</FormFieldLabel>
+          <Autocomplete {...register('example')}>
+            {options.map(({ value, label }) => (
+              <AutocompleteItem value={value} key={`${label}-${value}`}>
+                {label}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+        </FormField>
+        <Label>Watched value: {topicValue}</Label>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await userEvent.type(input, 'Backend', { delay: 100 });
+
+    const option = await canvas.findByText('Backend Dev.');
+    expect(option).toBeVisible();
+
+    await userEvent.click(option);
+    const watchedValueLabel = await canvas.findByText(/Watched value:/);
+
+    waitFor(() =>
+      expect(watchedValueLabel).toHaveTextContent('Watched value: backend_dev'),
+    );
+  },
+};
+
+export const Test: Story = {
+  render: (props: AutocompleteProps) => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Label</FormFieldLabel>
+        <Autocomplete {...props}>
+          {options.map(({ value, label }) => (
+            <AutocompleteItem value={value} key={`${label}-${value}`}>
+              {label}
+            </AutocompleteItem>
+          ))}
+        </Autocomplete>
+      </FormField>
+    );
+  },
+  args: {
+    defaultValue: '',
+    children: [],
+    id: 'autocomplete-default-id',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+    expect(input).toHaveAttribute('id', 'autocomplete-default-id');
+    await userEvent.type(input, 'Backend', { delay: 100 });
+    const option = await canvas.findByText('Backend Dev.');
+    expect(option).toBeVisible();
+    await userEvent.click(document.body);
   },
 };

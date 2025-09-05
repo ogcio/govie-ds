@@ -4,6 +4,7 @@ import { Spinner } from './spinner.js';
 const meta = {
   title: 'indicators/Spinner',
   component: Spinner,
+  tags: ['skip-playwright'],
 } satisfies Meta<typeof Spinner>;
 
 export default meta;

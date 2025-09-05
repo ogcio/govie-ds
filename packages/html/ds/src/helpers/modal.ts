@@ -40,6 +40,8 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
   }
 
   if (arguments_.closeButtonLabel) {
+    modalHeader.classList.add('gi-py-2');
+    modalHeader.classList.add('xs:gi-py-4');
     const closeButton = createButton({
       onClick: arguments_.onClose,
       appearance: 'dark',
@@ -57,6 +59,8 @@ export const createDrawer = (arguments_: DrawerWrapperProps) => {
     });
     modalHeader.append(closeButton);
   } else {
+    modalHeader.classList.add('gi-py-4');
+    modalHeader.classList.add('xs:gi-py-6');
     const closeButton = createIconButton({
       icon: {
         icon: 'close',
@@ -130,6 +134,9 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
     arguments_.closeOnOverlayClick === undefined ||
     arguments_.closeOnOverlayClick
   ).toString();
+  modal.dataset.closeonescape = (
+    arguments_.closeOnEscape === undefined || arguments_.closeOnEscape
+  ).toString();
 
   modalContainer.className = `gi-modal-container-control gi-modal-container gi-modal-container-${position}`;
 
@@ -145,6 +152,8 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
   }
 
   if (arguments_.closeButtonLabel) {
+    modalHeader.classList.add('gi-py-2');
+    modalHeader.classList.add('xs:gi-py-4');
     const closeButton = createButton({
       onClick: onClose,
       appearance: 'dark',
@@ -155,8 +164,11 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
         arguments_.closeButtonLabel +
         ' <span data-testid="govie-icon" role="presentation" class="material-symbols-outlined gi-block gi-text-[16px]">close</span>',
     });
+    closeButton.dataset.element = 'modal-close-button';
     modalHeader.append(closeButton);
   } else if (closeOnClick) {
+    modalHeader.classList.add('gi-py-4');
+    modalHeader.classList.add('xs:gi-py-6');
     const closeButton = createIconButton({
       icon: {
         icon: 'close',
@@ -167,6 +179,7 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
       className: 'gi-modal-icon',
       variant: 'flat',
     });
+    closeButton.dataset.element = 'modal-close-button';
     modalHeader.append(closeButton);
   }
 
@@ -176,8 +189,10 @@ export const createModal = (arguments_: ModalWrapperPropsExtension) => {
   const modalBody = document.createElement('div');
   modalInnerContainer.append(modalBody);
   modalBody.dataset.testid = 'modal-body';
+  modalBody.dataset.element = 'modal-body';
   modalBody.className = 'gi-modal-body';
   modalBody.innerHTML = arguments_.body;
+  modalBody.tabIndex = -1;
 
   if (arguments_.footer) {
     const modalFooter = document.createElement('div');

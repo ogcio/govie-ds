@@ -24,16 +24,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
+        data-testid={dataTestid}
         {...props}
-        data-testid={dataTestid || 'govie-button'}
         ref={ref}
         aria-disabled={disabled}
         disabled={disabled}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),
-          getSizeClass(size),
           isButtonDisabled({ disabled, variant, appearance }),
+          getSizeClass(size),
           className,
         )}
       >
@@ -44,3 +44,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
+Object.defineProperty(Button, 'componentType', {
+  value: 'Button',
+  writable: false,
+  enumerable: false,
+});

@@ -4,7 +4,6 @@ import { useId } from 'react';
 import { cn } from '../cn.js';
 import { HintText } from '../hint-text/hint-text.js';
 import { InputText } from '../input-text/input-text.js';
-import type { InputTextProps } from '../input-text/type.js';
 import { Label } from '../label/label.js';
 import { Input } from '../primitives/input.js';
 import {
@@ -35,16 +34,6 @@ export const getRadioWidth = (size?: InputRadioSizeType) => {
   return widthClass;
 };
 
-const addConditionalDivider = (
-  conditionalInput: InputTextProps | undefined,
-  checked?: boolean,
-) => {
-  if (conditionalInput && checked) {
-    return checked ? 'gi-block' : 'gi-invisible';
-  }
-  return 'gi-invisible';
-};
-
 export const InputRadio: React.FC<InputRadioProps> = ({
   label,
   hint,
@@ -61,7 +50,9 @@ export const InputRadio: React.FC<InputRadioProps> = ({
         <Input
           type="radio"
           id={radioId}
-          checked={checked}
+          {...(checked === undefined
+            ? { defaultChecked: props.defaultChecked }
+            : { checked, onChange: props.onChange })}
           className={getRadioSize(size)}
           aria-describedby={hint ? `${radioId}-hint` : undefined}
           aria-required={conditionalInput ? 'true' : 'false'}

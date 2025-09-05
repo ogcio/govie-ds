@@ -2,6 +2,8 @@
   "en": {
     "translation": {
       "alert.dismissAlert": "Dismiss Alert",
+      "autocomplete.noData": "No data found.",
+      "autocomplete.placeholder": "Type to Search",
       "breadcrumbs.breadcrumbs": "Breadcrumbs",
       "card.cardTitle": "Card {{title}}",
       "card.actionLink": "Action link: {{children}}",
@@ -25,6 +27,9 @@
       "header.mobileNavigationMenu": "Mobile Navigation Menu",
       "header.siteHeader": "Site Header",
       "header.goToHomePage": "Go to the home page",
+      "header.drawer.close": "Close",
+      "header.menu": "Menu",
+      "input.search": "Search",
       "footer.goToHomePage": "Go to the home page",
       "footer.footer": "Footer",
       "footer.primarySlot": "Primary footer slot",
@@ -36,14 +41,17 @@
       "summaryList.linkAction": "Link action: {{children}}",
       "summaryList.summaryList": "Summary List",
       "sectionBreak.sectionBreak": "Section Break",
-      "toast.position": "Toasts-{{position.y}}-{{position.x}}",
+      "table.pagination.page": "Page",
+      "table.pagination.ofTotal": "of {{totalPages}}",
+      "toast.position": "Toasts-{{x}}-{{y}}",
       "textarea.remainingChars": "You have {{remainingChars}} characters remaining",
       "pagination.previous": "Previous",
       "pagination.next": "Next",
       "pagination.page": "Page {{currentPage}} of {{totalPages}}",
       "pagination.goToPage": "Go to page {{page}}",
       "pagination.goToPrevious": "Go to previous",
-      "pagination.goToNext": "Go to next"
+      "pagination.goToNext": "Go to next",
+      "select.next.placeholder": "Search"
     }
   }
 }

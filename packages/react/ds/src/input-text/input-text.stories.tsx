@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { FormProvider, useForm } from 'react-hook-form';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -8,6 +10,7 @@ import {
 } from '../forms/form-field/form-field.js';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
+import { Spinner } from '../spinner/spinner.js';
 import { InputText } from './input-text.js';
 
 const meta = {
@@ -45,7 +48,7 @@ const meta = {
       control: 'text',
       table: {
         category: 'Visual',
-        type: { summary: 'IconId' },
+        type: { summary: 'IconId | React.ReactNode' },
       },
     },
     iconEnd: {
@@ -53,7 +56,7 @@ const meta = {
       control: 'text',
       table: {
         category: 'Visual',
-        type: { summary: 'IconId' },
+        type: { summary: 'IconId | React.ReactNode' },
       },
     },
     inputActionButton: {
@@ -113,11 +116,18 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: { id: 'input-text-id' },
   render: (props) => (
-    <FormField>
+    <FormField data-testid="form-field-id">
       <FormFieldLabel htmlFor="input-text-id">Label</FormFieldLabel>
       <InputText {...props} data-testid="input-text-id" />
     </FormField>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const formField = canvas.getByTestId(
+      'form-field-id',
+    ) as HTMLFieldSetElement;
+    expect(formField).toBeDefined();
+  },
 };
 
 export const Focus: Story = {
@@ -176,6 +186,39 @@ export const WithLabelHintAndError: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
+    expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
+      'rgb(187, 37, 13)',
+    );
+    expect(canvas.getByText('Label')).toHaveClass('gi-label');
+    expect(canvas.getByText('Hint: This is a helpful hint.')).toHaveClass(
+      'gi-hint-text',
+    );
+    expect(canvas.getByText('Error: Please correct this issue.')).toHaveClass(
+      'gi-error-text',
+    );
+  },
+};
+
+export const WithLabelHintAndErrorLegacy: Story = {
+  args: { id: 'input-text-id', suffix: 'KG' },
+  render: (props) => (
+    <FormField
+      data-testid="form-field-id"
+      label={{ text: 'Label', htmlFor: 'input-text-id' }}
+      hint={{ text: 'Hint: This is a helpful hint.' }}
+      error={{ text: 'Error: Please correct this issue.' }}
+    >
+      <InputText {...props} data-testid="input-text-id" />
+    </FormField>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const formField = canvas.getByTestId(
+      'form-field-id',
+    ) as HTMLFieldSetElement;
+    expect(formField).toBeDefined();
+
     const textInput = canvas.getByTestId('input-text-id') as HTMLInputElement;
     expect(globalThis.window.getComputedStyle(textInput).borderColor).toBe(
       'rgb(187, 37, 13)',
@@ -262,6 +305,17 @@ export const InputWithIcons: Story = {
         iconEnd="placeholder"
         placeholder="Placeholder"
       />
+    </FormField>
+  ),
+};
+
+export const InputWithLoadingIcon: Story = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <FormFieldHint>Support text</FormFieldHint>
+      <InputText iconEnd={<Spinner size="md" />} placeholder="Placeholder" />
     </FormField>
   ),
 };
@@ -458,4 +512,79 @@ export const WithRichLabelText: Story = {
       <InputText type="search" placeholder="Placeholder" />
     </FormField>
   ),
+};
+
+export const InputSearch: Story = {
+  args: {
+    type: 'search',
+    placeholder: 'Placeholder',
+  },
+  render: (props) => (
+    <FormField>
+      <FormFieldLabel>Label</FormFieldLabel>
+      <InputText {...props} />
+    </FormField>
+  ),
+};
+
+export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const methods = useForm<{ username: string }>({
+      defaultValues: { username: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset({ username: '' });
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField>
+            {methods.formState.errors.username && (
+              <FormFieldError dataTestid="error-msg">
+                {methods.formState.errors.username.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="input-text-id">Username</FormFieldLabel>
+            <InputText
+              id="input-text-id"
+              {...methods.register('username', { required: 'Required' })}
+              data-testid="input-text-id"
+            />
+          </FormField>
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" dataTestid="submit-btn">
+              Submit
+            </Button>
+            <Button onClick={() => methods.reset()} dataTestid="reset-btn">
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const input = canvas.getByTestId('input-text-id');
+    const submitButton = canvas.getByTestId('submit-btn');
+
+    await userEvent.type(input, 'John');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(submitButton);
+    expect((input as HTMLInputElement).value).toBe('');
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(input, 'John');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(document.body);
+  },
 };

@@ -4,23 +4,22 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 
   addons: [
+    '@storybook/addon-docs',
     '@chromatic-com/storybook',
     '@storybook/addon-a11y',
     '@storybook/addon-coverage',
-    '@storybook/addon-essentials',
     '@storybook/addon-links',
-    '@storybook/addon-viewport',
-    '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
-    '@storybook/experimental-addon-test',
+    '@storybook/addon-vitest',
   ],
+
+  core: {
+    builder: '@storybook/builder-vite',
+  },
 
   build: {
     test: {
-      disabledAddons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-essentials/docs',
-      ],
+      disabledAddons: ['@storybook/addon-docs'],
     },
   },
 
@@ -38,6 +37,7 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       server: {
+        allowedHosts: true,
         watch: {
           usePolling: true,
           interval: 1000,

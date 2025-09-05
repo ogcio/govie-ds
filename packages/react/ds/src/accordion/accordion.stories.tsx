@@ -123,6 +123,12 @@ export const WithIconStart = {
         voluptatum omnis harum quaerat eius praesentium a at perferendis
         quisquam hic.
       </AccordionItem>
+      <AccordionItem disabled label="Label 5">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus
+        eveniet ex officiis accusantium sint eius deleniti cumque? Iste
+        voluptatum omnis harum quaerat eius praesentium a at perferendis
+        quisquam hic.
+      </AccordionItem>
     </Accordion>
   ),
 };

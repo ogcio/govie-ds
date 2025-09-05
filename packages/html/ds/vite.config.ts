@@ -6,10 +6,14 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [
     react(),
-    dts({ include: ['src'], exclude: ['src/**/*.stories.ts'] }),
+    dts({
+      include: ['src'],
+      exclude: ['src/**/*.stories.ts', 'src/**/*.stories.tsx'],
+    }),
   ],
   build: {
     copyPublicDir: false,
+    sourcemap: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'umd'],
@@ -26,6 +30,5 @@ export default defineConfig({
       },
       name: 'GovieFrontend',
     },
-    sourcemap: true,
   },
 });

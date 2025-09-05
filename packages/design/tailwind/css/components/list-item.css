@@ -1,0 +1,17 @@
+.gi-list-item {
+  @apply gi-block gi-py-4 gi-border-color-border-system-neutral-subtle 
+  gi-border-b-xs 
+  gi-border-solid 
+  !gi-text-sm
+  
+  gi-focus-state-outline
+  gi-focus-visible-state-outline
+  
+  focus:gi-shadow-[inset_0_0_0_2px]
+  focus:gi-shadow-gray-950
+  focus:gi-rounded-sm
+
+  focus-visible:gi-shadow-[inset_0_0_0_2px]
+  focus-visible:gi-shadow-gray-950
+  focus-visible:gi-rounded-sm;
+}

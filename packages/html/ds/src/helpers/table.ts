@@ -4,6 +4,17 @@ export const createTable = (arguments_: TablePropsExtension) => {
   const table = document.createElement('table');
   table.className = `gi-table ${arguments_.layout === 'fixed' ? 'gi-table-fixed' : 'gi-table-auto'}`;
 
+  table.dataset.rowSize = arguments_.rowSize || 'md';
+
+  if (arguments_.stripped) {
+    table.dataset.stripped = arguments_.stripped.toString();
+  }
+
+  if (arguments_.noBorder) {
+    table.dataset.noBorder = 'true';
+    table.classList.add('gi-table-no-border');
+  }
+
   if (arguments_.captionText) {
     const caption = document.createElement('caption');
     caption.className = 'gi-table-caption-text gi-text-lg';
@@ -19,6 +30,7 @@ export const createTable = (arguments_: TablePropsExtension) => {
       const th = document.createElement('th');
       th.textContent = header;
       th.className = 'gi-table-th gi-text-left gi-align-middle';
+      th.dataset.headerString = 'true';
       tr.append(th);
     }
     thead.append(tr);
@@ -30,6 +42,7 @@ export const createTable = (arguments_: TablePropsExtension) => {
 
     for (const row of arguments_.rows) {
       const tr = document.createElement('tr');
+      tr.className = 'gi-table-tr';
       for (const cell of row) {
         const td = document.createElement('td');
         td.innerHTML = cell;
@@ -92,4 +105,13 @@ export const createTable = (arguments_: TablePropsExtension) => {
   }
 
   return table;
+};
+
+export const createTableCell = (value: any) => {
+  const div = document.createElement('div');
+
+  div.className = 'gi-table-data-cell';
+  div.innerHTML = value;
+
+  return div;
 };

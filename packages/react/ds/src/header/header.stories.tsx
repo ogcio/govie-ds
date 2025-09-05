@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, expect, userEvent } from '@storybook/test';
+import { within, expect, userEvent, screen } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Heading } from '../heading/heading.js';
 import { Link } from '../link/link.js';
@@ -150,7 +150,7 @@ export const Default: Story = {
     mobileMenuLabel: {
       control: 'text',
       description:
-        'Change the mobile menu label when "addDefaultMobileMenu" is set',
+        'Change the mobile menu label when "addDefaultMobileMenu" is set, if not provided it will default to "Menu"',
       table: {
         category: 'Header',
       },
@@ -163,6 +163,13 @@ export const Default: Story = {
         category: 'Header',
       },
     },
+    showMenuLabel: {
+      control: 'boolean',
+      description: 'If true, the menu label will be shown',
+      table: {
+        category: 'Header',
+      },
+    },
   },
   args: {
     logo: {
@@ -171,6 +178,30 @@ export const Default: Story = {
     items: headerProps.items,
     addDefaultMobileMenu: true,
     mobileMenuLabel: 'Menu',
+    showMenuLabel: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttontrigger = canvas.getByTestId('ItemActionTrigger-5');
+
+    const slotContainer = canvas.queryByTestId('SlotContainer-5');
+    await expect(slotContainer).not.toBeVisible();
+
+    await userEvent.click(buttontrigger);
+
+    const openedSlot = canvas.getByTestId('SlotContainer-5');
+    await expect(openedSlot).toBeInTheDocument();
+    await expect(openedSlot).toBeVisible();
+
+    const closeIcon = canvas.queryByTestId('ItemCloseTrigger-5');
+    await expect(closeIcon).toBeVisible();
+
+    await userEvent.click(buttontrigger);
+    await expect(slotContainer).not.toBeVisible();
+    await expect(closeIcon).not.toBeVisible();
+
+    await userEvent.click(document.body);
   },
 };
 
@@ -204,6 +235,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'left',
         showItemMode: 'always',
+        ariaLabel: 'left drawer',
       },
       {
         icon: 'chevron_right',
@@ -212,6 +244,7 @@ export const DesktopDrawerCustom: Story = {
         slotAppearance: 'drawer',
         drawerPosition: 'right',
         showItemMode: 'always',
+        ariaLabel: 'right drawer',
       },
       {
         label: 'Bottom',
@@ -549,10 +582,10 @@ export const MobileWithExternalLinks: Story = {
 
     await userEvent.click(headerMobileMenu);
 
-    const internalNav = canvas.getByRole('link', { name: 'Internal Nav' });
-    const externalNav = canvas.getByRole('link', { name: 'External Nav' });
-    const externalTool = canvas.getByRole('link', { name: 'External Tool' });
-    const internalTool = canvas.getByRole('link', { name: 'Internal Tool' });
+    const internalNav = screen.getByRole('link', { name: 'Internal Nav' });
+    const externalNav = screen.getByRole('link', { name: 'External Nav' });
+    const externalTool = screen.getByRole('link', { name: 'External Tool' });
+    const internalTool = screen.getByRole('link', { name: 'Internal Tool' });
 
     await expect(internalNav).not.toHaveAttribute('target', '_blank');
     await expect(internalNav).not.toHaveAttribute('rel', 'noreferrer noopener');
@@ -795,5 +828,106 @@ export const ShowMobileMenuForLanguages: Story = {
       },
     ],
     addDefaultMobileMenu: true,
+  },
+};
+
+export const TestWithSecondaryLinks: Story = {
+  args: {
+    logo: {
+      href: '/path',
+    },
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+    ],
+    items: [
+      {
+        icon: 'search',
+        label: 'Search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+      },
+    ],
+  },
+  parameters: {
+    pseudo: {
+      hover: '.gi-header-secondary-item',
+    },
+  },
+};
+
+export const Light: Story = {
+  decorators: (Story) => {
+    return (
+      <div className="gi-bg-black gi-p-4">
+        <Story />
+      </div>
+    );
+  },
+  args: {
+    logo: {
+      href: '/link',
+    },
+    items: headerProps.items,
+    addDefaultMobileMenu: true,
+    mobileMenuLabel: 'Menu',
+    appearance: 'light',
+    secondaryLinks: [
+      {
+        href: '#',
+        label: 'English',
+      },
+      {
+        href: '#',
+        label: 'Gaeilge',
+      },
+      {
+        slot: (
+          <Paragraph>
+            Hello John | <a href="#">Logout</a>
+          </Paragraph>
+        ),
+      },
+    ],
+  },
+};
+
+export const LightWithTitle: Story = {
+  decorators: (Story) => {
+    return (
+      <div className="gi-bg-black gi-p-4">
+        <Story />
+      </div>
+    );
+  },
+  args: {
+    appearance: 'light',
+    title: 'Life Events',
+    logo: {
+      href: 'path',
+    },
+  },
+};
+
+export const HideMenuLabel: Story = {
+  args: {
+    showMenuLabel: false,
+    fullWidth: true,
+    logo: {
+      href: '/link',
+    },
+    ...defaultHeaderProps(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const menuLabel = canvas.queryByText('Menu');
+    expect(menuLabel).not.toBeInTheDocument();
   },
 };

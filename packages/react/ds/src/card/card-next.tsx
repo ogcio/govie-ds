@@ -162,7 +162,7 @@ export const CardHeader: FC<CardHeaderProps> = ({ children }) => {
     }
 
     const type =
-      (child?.type as any)?.componentType || (child.props as any)?.__mdxType;
+      (child?.type as any)?.componentType || (child.props as any)?.__type;
 
     if (type === 'CardTag') {
       tags.push(child);

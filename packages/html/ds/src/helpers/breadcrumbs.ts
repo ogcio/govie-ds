@@ -1,5 +1,4 @@
 import { BreadcrumbsProps } from '../breadcrumbs/breadcrumbs.schema';
-import { beautifyHtmlNode } from '../storybook/storybook';
 import { createIcon } from './icons';
 import { createLink } from './links';
 
@@ -59,5 +58,5 @@ export const createBreadcrumbs = (arguments_: BreadcrumbsProps) => {
   nav.append(ol);
   container.append(nav);
 
-  return beautifyHtmlNode(container);
+  return container;
 };

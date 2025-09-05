@@ -22,21 +22,24 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       appearance,
       size,
       disabled,
-      dataTestid,
       onClick,
       className = '',
+      type = 'button',
+      ...props
     },
     ref,
   ) => {
     const iconSize = size === 'small' ? 'sm' : 'md';
+
     return (
       <button
         ref={ref}
+        type={type}
         aria-disabled={disabled}
         disabled={disabled}
         role="button"
         onClick={onClick}
-        data-testid={dataTestid}
+        {...props}
         className={cn(
           'gi-btn',
           getVariantAppearanceClass({ disabled, variant, appearance }),

@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from '@storybook/test';
+import { useRef, useState } from 'react';
+import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -256,4 +259,261 @@ export const CustomRowsAndColumns: Story = {
       <TextArea {...props} />
     </FormField>
   ),
+};
+
+export const Controlled: Story = {
+  args: {
+    id: 'textarea-controlled',
+    rows: 4,
+    cols: 50,
+  },
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows a controlled TextArea component where the value is managed by React state. The current value is displayed below the textarea and updates as the user types.',
+      },
+    },
+  },
+  render: (props) => {
+    const [value, setValue] = useState('Initial value');
+
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="textarea-controlled">
+          Controlled Label
+        </FormFieldLabel>
+        <TextArea
+          {...props}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          data-testid="textarea-controlled"
+        />
+        <FormFieldHint>Current: {value}</FormFieldHint>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId(
+      'textarea-controlled',
+    ) as HTMLTextAreaElement;
+
+    expect(textarea.value).toBe('Initial value');
+
+    await textarea.focus();
+    await userEvent.clear(textarea);
+    await userEvent.type(textarea, 'New controlled text');
+
+    expect(textarea.value).toBe('New controlled text');
+
+    const hint = canvas.getByText(/Current:/);
+    expect(hint).toHaveTextContent('Current: New controlled text');
+  },
+};
+
+export const Uncontrolled: Story = {
+  args: {
+    id: 'textarea-uncontrolled',
+    rows: 4,
+    cols: 50,
+    placeholder: 'Type something here...',
+  },
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows an uncontrolled TextArea component where the value is managed internally by the component. The state is accessed via ref.',
+      },
+      source: {
+        code: `
+          import { useRef, useState } from 'react';
+          import { TextArea } from './textarea';
+          import {
+            FormField,
+            FormFieldLabel,
+            FormFieldHint,
+          } from '../forms/form-field/form-field';
+          import { Button } from '../button/button';
+
+          export function Example() {
+            const ref = useRef<HTMLTextAreaElement>(null);
+            const [value, setValue] = useState('');
+
+            const handleShowValue = () => {
+              if (ref.current) {
+                setValue(ref.current.value);
+              }
+            };
+
+            return (
+              <FormField>
+                <FormFieldLabel htmlFor="textarea-uncontrolled">
+                  Uncontrolled Label
+                </FormFieldLabel>
+                <TextArea
+                  id="textarea-uncontrolled"
+                  ref={ref}
+                  rows={4}
+                  cols={50}
+                  placeholder="Type something here..."
+                  data-testid="textarea-uncontrolled"
+                />
+                <Button
+                  className="gi-mt-1"
+                  data-testid="show-value-button"
+                  onClick={handleShowValue}
+                >
+                  Show Value
+                </Button>
+                <FormFieldHint data-testid="uncontrolled-output">
+                  Value: {value}
+                </FormFieldHint>
+              </FormField>
+            );
+          }
+        `.trim(),
+      },
+    },
+  },
+  render: (props) => {
+    const ref = useRef<HTMLTextAreaElement>(null);
+    const [value, setValue] = useState('');
+
+    const handleShowValue = () => {
+      if (ref.current) {
+        setValue(ref.current.value);
+      }
+    };
+
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="textarea-uncontrolled">
+          Uncontrolled Label
+        </FormFieldLabel>
+        <TextArea
+          {...props}
+          ref={ref}
+          clearButtonEnabled
+          data-testid="textarea-uncontrolled"
+        />
+        <Button
+          className="gi-mt-1"
+          onClick={handleShowValue}
+          dataTestid="show-value-button"
+        >
+          Show Value
+        </Button>
+        <FormFieldHint data-testid="uncontrolled-output">
+          Value: {value}
+        </FormFieldHint>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textarea = canvas.getByTestId(
+      'textarea-uncontrolled',
+    ) as HTMLTextAreaElement;
+
+    await userEvent.type(textarea, 'Hello, world!');
+
+    const button = canvas.getByTestId('show-value-button');
+    await userEvent.click(button);
+
+    const output = canvas.getByText('Value: Hello, world!');
+    expect(output).toBeInTheDocument();
+  },
+};
+
+export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const methods = useForm<{ message: string }>({
+      defaultValues: { message: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset();
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField data-testid="form-field-id">
+            {methods.formState.errors.message && (
+              <FormFieldError data-testid="error-msg">
+                {methods.formState.errors.message.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="textarea-id-0">Message</FormFieldLabel>
+
+            <Controller
+              name="message"
+              control={methods.control}
+              rules={{ required: 'Required' }}
+              render={({ field }) => (
+                <TextArea
+                  id="textarea-id-0"
+                  rows={4}
+                  cols={100}
+                  maxChars={20}
+                  clearButtonEnabled
+                  data-testid="textarea-id-0"
+                  {...field}
+                />
+              )}
+            />
+          </FormField>
+
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" data-testid="submit-btn">
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={() => methods.reset()}
+              data-testid="reset-btn"
+            >
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const textAreaElement = canvas.getByTestId(
+      'textarea-id-0',
+    ) as HTMLTextAreaElement;
+    const submitButton = canvas.getByTestId('submit-btn');
+    const resetButton = canvas.getByTestId('reset-btn');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(textAreaElement, 'Hello world');
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    const remainingBeforeReset = canvas.getByText(
+      /^You have \d+ characters remaining$/,
+    );
+    expect(remainingBeforeReset).toBeTruthy();
+
+    await userEvent.click(resetButton);
+    expect(textAreaElement.value).toBe('');
+
+    const remainingAfterReset = canvas.getByText(
+      /^You have 20 characters remaining$/,
+    );
+    expect(remainingAfterReset).toBeTruthy();
+  },
 };

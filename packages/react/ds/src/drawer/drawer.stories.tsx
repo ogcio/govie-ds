@@ -32,6 +32,7 @@ export const Default: Story = {
   },
   args: {
     closeButtonSize: 'large',
+    startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
     children: [
@@ -61,6 +62,7 @@ export const DrawerRight: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -91,6 +93,7 @@ export const DrawerLeft: Story = {
   args: {
     position: 'left',
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -121,36 +124,7 @@ export const DrawerBottom: Story = {
   args: {
     position: 'bottom',
     triggerButton: <Button>Open drawer</Button>,
-    children: [
-      <DrawerBody key="body">
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
-        </Paragraph>
-      </DrawerBody>,
-      <DrawerFooter key="footer">
-        <div className="gi-flex gi-flex-col-reverse gi-gap-4 xs:gi-gap-6 xs:gi-justify-end xs:gi-flex-row">
-          <Button
-            variant="secondary"
-            appearance="dark"
-            className="gi-justify-center xs:gi-justify-start"
-          >
-            Cancel
-          </Button>
-          <Button className="gi-justify-center xs:gi-justify-start">
-            Primary
-          </Button>
-        </div>
-      </DrawerFooter>,
-    ],
-  },
-};
-
-export const DrawerOpen: Story = {
-  args: {
     startsOpen: true,
-    triggerButton: <Button>Open drawer</Button>,
     children: [
       <DrawerBody key="body">
         <Paragraph>
@@ -186,6 +160,7 @@ export const DrawerMenuTablet: Story = {
   },
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     closeButtonLabel: 'Close',
     children: [
       <DrawerBody
@@ -219,6 +194,7 @@ export const DrawerMenuMobile: Story = {
   },
   args: {
     triggerButton: <Button>Open drawer</Button>,
+    startsOpen: true,
     closeButtonLabel: 'Close',
     children: [
       <DrawerBody
@@ -237,6 +213,38 @@ export const DrawerMenuMobile: Story = {
         </Button>
         <Button className="gi-justify-center xs:gi-justify-start">
           Primary
+        </Button>
+      </DrawerFooter>,
+    ],
+  },
+};
+
+export const DesktopButtonStacked: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  args: {
+    startsOpen: true,
+    closeButtonSize: 'large',
+    triggerButton: <Button>Open drawer</Button>,
+    closeButtonLabel: 'Close',
+    children: [
+      <DrawerBody
+        key="body"
+        className="gi-border-t-xs gi-border-color-border-system-neutral-subtle"
+      >
+        <DrawerMenuExample />
+      </DrawerBody>,
+      <DrawerFooter key="footer" stacked>
+        <Button>Primary</Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
+        </Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
+        </Button>
+        <Button variant="secondary" appearance="dark">
+          Cancel
         </Button>
       </DrawerFooter>,
     ],

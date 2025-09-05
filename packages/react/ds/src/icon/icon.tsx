@@ -171,11 +171,11 @@ export function Icon({
 
   return (
     <span
-      {...props}
       data-testid="govie-icon"
+      {...props}
       onClick={onClick}
       aria-hidden={ariaHidden || undefined}
-      aria-label={ariaLabel || icon}
+      aria-label={ariaLabel}
       role={ariaLabel ? 'img' : 'presentation'}
       className={cn(
         { 'gi-block': !inline, 'gi-text-gray-700': disabled },

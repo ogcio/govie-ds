@@ -81,6 +81,7 @@ export const Step = ({
   isCurrentStep,
   isCompleted,
   isLastStep,
+  isDisabled = false,
   stepNumber,
   orientation,
   children,
@@ -90,22 +91,22 @@ export const Step = ({
   dataTestId,
   ariaLabel,
   verticalGap,
-}: InnerStepProps) => {
+}: InnerStepProps & { isDisabled?: boolean }) => {
   const isNextStep = !isCompleted && !isCurrentStep;
   const showVerticalSlots =
     orientation === 'vertical' && (isCurrentStep || defaultOpen || isCompleted);
   const hasLabel = Boolean(children);
 
   return (
-    <div className="gi-relative">
+    <div className={`gi-relative ${isDisabled ? 'gi-disabled' : ''}`}>
       <div
         className="gi-progress-stepper-step-container"
         data-orientation={orientation}
         data-current={isCurrentStep}
         data-completed={isCompleted}
+        data-disabled={isDisabled}
         data-next={isNextStep}
         data-indicator={indicator}
-        role="listitem"
         aria-labelledby={`step-label-${stepNumber}`}
         data-testid={dataTestId || `step-label-${stepNumber}`}
         aria-label={hasLabel ? undefined : ariaLabel}
@@ -153,7 +154,6 @@ export const Step = ({
   );
 };
 
-// Component needed to pick the props inside ProgressStepper component
 export const StepItem: FC<StepItemProps> = () => null;
 
 export const ProgressStepper = ({
@@ -162,6 +162,7 @@ export const ProgressStepper = ({
   orientation = 'horizontal',
   indicator = 'number',
   completeAll,
+  stepStates,
   dataTestId,
   className,
   verticalGap = 14,
@@ -171,6 +172,7 @@ export const ProgressStepper = ({
 
   return (
     <div
+      role="presentation"
       className={cn('gi-w-full', {
         'gi-flex': orientation === 'vertical',
       })}
@@ -193,21 +195,34 @@ export const ProgressStepper = ({
             label = '',
             defaultOpen,
             ariaLabel,
-          } = child.props as unknown as StepItemProps;
-          const [isCurrentStep, isLastStep, isCompleted] = [
-            !completeAll && currentStepIndex === index,
-            index === children.length - 1,
-            completeAll ||
-              (index < currentStepIndex && index !== currentStepIndex),
-          ];
+          } = child.props as StepItemProps;
+
+          let isCurrentStep: boolean;
+          let isCompleted: boolean;
+          let isDisabled: boolean;
+
+          if (stepStates && stepStates[index]) {
+            // Explicit state control (FREE mode)
+            isCurrentStep = !!stepStates[index].current;
+            isCompleted = !!stepStates[index].completed;
+            isDisabled = !!stepStates[index].disabled;
+          } else {
+            // Default LINEAR mode
+            isCurrentStep = !completeAll && currentStepIndex === index;
+            isCompleted = completeAll || index < currentStepIndex;
+            isDisabled = false;
+          }
+
+          const isLastStep = index === children.length - 1;
 
           return (
-            <div className="gi-w-full">
+            <div className="gi-w-full" role="listitem">
               <Step
                 key={dataTestId || `progress-stepper-step-${index}`}
                 stepNumber={index + 1}
                 isCurrentStep={isCurrentStep}
                 isCompleted={isCompleted}
+                isDisabled={isDisabled}
                 orientation={orientation}
                 isLastStep={isLastStep}
                 verticalSlot={children[index]?.props?.children}

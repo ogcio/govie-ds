@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within } from 'storybook/test';
 import { Icon } from '../icon/icon.js';
 import { Button } from './button.js';
 
 const meta = {
   title: 'Form/Button',
   decorators: (Story, context) => {
-    const isLight = context?.args?.appearance === 'light' && 'gi-bg-black';
+    const isLight = context?.args?.appearance === 'light' ? 'gi-bg-black' : '';
     return (
       <div className={`gi-p-4 ${isLight} gi-w-fit`}>
         <Story />
@@ -428,7 +429,8 @@ export const WithIconRight: Story = {
   },
 };
 
-export const ButtonWithSpinner: Story = {
+export const WithSpinner: Story = {
+  tags: ['skip-playwright'],
   args: {
     disabled: true,
     appearance: 'default',

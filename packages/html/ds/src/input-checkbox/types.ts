@@ -15,6 +15,7 @@ export type CheckboxProps = {
   id?: string;
   size?: CheckboxSizeEnumType;
   label?: string;
+  ariaLabel?: string;
   hint?: string;
   dataElement?: string;
   value?: string;
@@ -22,6 +23,9 @@ export type CheckboxProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   name?: string;
+  indeterminate?: boolean;
+  className?: string;
+  dataTableCell?: any;
 };
 
 export type CheckboxGroupProps = {

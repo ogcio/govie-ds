@@ -1,10 +1,6 @@
+/* eslint-disable import-x/order */
 import '@ogcio/theme-doete/light.css';
 import '@ogcio/theme-govie/theme.css';
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import {
-  INITIAL_VIEWPORTS,
-  MINIMAL_VIEWPORTS,
-} from '@storybook/addon-viewport';
 import {
   Controls,
   Description,
@@ -12,9 +8,11 @@ import {
   Stories,
   Subtitle,
   Title,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 import i18n from 'i18next';
+import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from 'storybook/viewport';
 import enTranslations from '../src/i18n/translations/en.json';
 import '../styles.css';
 import './global.css';
@@ -52,9 +50,7 @@ const preview: Preview = {
         </>
       ),
     },
-    a11y: {
-      options: {},
-    },
+    a11y: { test: 'error' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

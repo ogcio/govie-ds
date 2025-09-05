@@ -1,16 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, waitFor, within } from '@storybook/test';
+import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+
+import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
   FormFieldHint,
   FormFieldLabel,
 } from '../forms/form-field/form-field.js';
+import { Label } from '../label/label.js';
 import {
   SelectGroupItemNext,
   SelectItemNext,
   SelectNext,
 } from './select-next.js';
+
+const topics = Array.from({ length: 8 }, (_, index) => ({
+  value: `topic_${index + 1}`,
+  label: `Topic ${index + 1}`,
+}));
 
 const meta = {
   title: 'Form/Select/SelectNext',
@@ -109,16 +119,15 @@ export const Default: StoryObj = {
     });
     await userEvent.click(input);
     await waitFor(() => {
-      expect(canvas.getByRole('list')).toBeInTheDocument();
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
     expect(options.map((opt) => opt.textContent)).toEqual([
       'Option 1',
       'Option 2',
       'Option 3',
     ]);
-    await userEvent.click(document.body);
   },
 };
 
@@ -231,14 +240,13 @@ export const DisabledItem = {
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
-    const list = await canvas.findByRole('list');
+    const list = await canvas.findByRole('listbox');
     const options = within(list).getAllByRole('option');
 
     expect(options).toHaveLength(3);
     expect(options[0]).toHaveAttribute('aria-disabled', 'true');
     expect(options[1]).not.toHaveAttribute('aria-disabled');
     expect(options[2]).not.toHaveAttribute('aria-disabled');
-    await userEvent.click(document.body);
   },
 };
 
@@ -246,7 +254,7 @@ export const WithSearchEnabled: StoryObj = {
   render: () => (
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
-      <SelectNext aria-label="Select" defaultValue="select-option" enableSearch>
+      <SelectNext aria-label="Select" enableSearch>
         <SelectItemNext value="select-option" hidden>
           Select Option
         </SelectItemNext>
@@ -261,15 +269,16 @@ export const WithSearchEnabled: StoryObj = {
     const input = canvas.getByRole('textbox');
     await userEvent.click(input);
 
-    const searchBox = canvas.getByPlaceholderText('Search');
+    const searchBox = canvas.getByPlaceholderText('Type to Search');
     await userEvent.type(searchBox, 'Option 2');
 
-    const list = await canvas.findByRole('list');
-    const options = within(list).getAllByRole('option');
+    const list = await canvas.findByRole('listbox');
 
-    expect(options).toHaveLength(1);
-    expect(options[0]).toHaveTextContent('Option 2');
-    await userEvent.click(document.body);
+    await waitFor(() => {
+      const options = within(list).getAllByRole('option');
+      expect(options).toHaveLength(1);
+      expect(options[0]).toHaveTextContent('Option 2');
+    });
   },
 };
 
@@ -278,10 +287,10 @@ export const WithGroups = {
     <FormField className="gi-w-56">
       <FormFieldLabel>Label</FormFieldLabel>
       <SelectNext
-        enableSearch
         aria-label="Select"
         data-testid="select"
         defaultValue="value-1"
+        enableSearch
       >
         <SelectGroupItemNext label="Group 1" data-testid="select-group">
           <SelectItemNext value="value-1">Option 1</SelectItemNext>
@@ -302,13 +311,203 @@ export const WithGroups = {
     await userEvent.click(input);
 
     await waitFor(() => {
-      expect(canvas.getByRole('list')).toBeInTheDocument();
+      expect(canvas.getByRole('listbox')).toBeInTheDocument();
     });
 
     expect(canvas.getByText('Group 1')).toBeInTheDocument();
     expect(canvas.getByText('Group 2')).toBeInTheDocument();
     expect(canvas.getByText('Option 1')).toBeInTheDocument();
     expect(canvas.getByText('Option 8')).toBeInTheDocument();
+  },
+};
+
+export const Controlled: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [value, setValue] = useState('value-2');
+
+    return (
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-56">
+          <FormFieldLabel>Controlled Select</FormFieldLabel>
+          <SelectNext
+            aria-label="Select"
+            id="select-controlled"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+          >
+            <SelectItemNext value="select-option" hidden>
+              Select Option
+            </SelectItemNext>
+            <SelectItemNext value="value-1">Option 1</SelectItemNext>
+            <SelectItemNext value="value-2">Option 2</SelectItemNext>
+            <SelectItemNext value="value-3">Option 3</SelectItemNext>
+          </SelectNext>
+        </FormField>
+        <Label>Controlled value: {value}</Label>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await waitFor(() => {
+      expect(input).toHaveValue('Option 2');
+    });
+
+    await userEvent.click(input);
+
+    const list = await canvas.findByRole('listbox');
+    const options = within(list).getAllByRole('option');
+
+    await userEvent.click(options[2]);
+
+    await waitFor(() => {
+      expect(input).toHaveValue('Option 3');
+    });
+  },
+};
+
+export const WithLongList: StoryObj = {
+  render: () => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Long List Select</FormFieldLabel>
+        <SelectNext aria-label="Select" id="select-controlled">
+          {topics.map(({ label, value }) => (
+            <SelectItemNext key={value} value={value}>
+              {label}
+            </SelectItemNext>
+          ))}
+        </SelectNext>
+      </FormField>
+    );
+  },
+};
+
+export const WithLongListSearchEnabled: StoryObj = {
+  render: () => {
+    return (
+      <FormField className="gi-w-56">
+        <FormFieldLabel>Long List Select Search</FormFieldLabel>
+        <SelectNext aria-label="Select" id="select-controlled" enableSearch>
+          {topics.map(({ label, value }) => (
+            <SelectItemNext key={value} value={value}>
+              {label}
+            </SelectItemNext>
+          ))}
+        </SelectNext>
+      </FormField>
+    );
+  },
+};
+
+export const WithReactHookForm: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const { control, watch, reset } = useForm({
+      defaultValues: { topic: '' },
+      mode: 'onBlur',
+    });
+
+    const topicValue = watch('topic');
+
+    return (
+      <div className="gi-flex gi-gap-4 gi-flex-col">
+        <FormField className="gi-w-[300px]">
+          <FormFieldLabel>Select with React Hook Form</FormFieldLabel>
+
+          <Controller
+            control={control}
+            name="topic"
+            rules={{
+              required: 'Topic is required',
+              validate: (value) =>
+                value !== 'topic_5' || 'Topic 5 is not allowed',
+            }}
+            render={({ field, fieldState }) => (
+              <>
+                {fieldState.error?.message && (
+                  <FormFieldError>{fieldState.error.message}</FormFieldError>
+                )}
+                <SelectNext
+                  aria-label="Select"
+                  id="select-rhf"
+                  enableSearch={false}
+                  aria-invalid={!!fieldState.error}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  ref={field.ref as any}
+                >
+                  <SelectItemNext value="">Select a topic</SelectItemNext>
+                  {topics.map(({ value, label }) => (
+                    <SelectItemNext key={value} value={value}>
+                      {label}
+                    </SelectItemNext>
+                  ))}
+                </SelectNext>
+              </>
+            )}
+          />
+        </FormField>
+
+        <Label className="gi-font-bold">
+          Watched value: {topicValue || '—'}
+        </Label>
+        <Label>Validation included (topic_5 is not allowed)</Label>
+
+        <Button type="button" onClick={() => reset()} className="gi-w-fit">
+          Reset
+        </Button>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const getWatched = () => canvas.getByText(/Watched value:/i);
+    const openAndSelect = async (label: string) => {
+      await userEvent.click(await canvas.findByRole('textbox'));
+      const option = await canvas.findByRole('option', { name: label });
+      await userEvent.click(option);
+    };
+
+    await expect(getWatched()).toHaveTextContent('—');
+
+    const input = await canvas.findByRole('textbox');
+    await userEvent.click(input);
+
+    await userEvent.click(document.body);
+
+    await canvas.findByText('Topic is required');
+    await openAndSelect('Topic 5');
+
+    const resetButton = await canvas.findByRole('button', { name: /reset/i });
+
+    await waitFor(() => expect(getWatched()).toHaveTextContent('topic_5'));
+    await canvas.findByText('Topic 5 is not allowed');
+
+    await openAndSelect('Topic 7');
+    await waitFor(() => {
+      expect(
+        canvas.queryByText('Topic 5 is not allowed'),
+      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
+      expect(getWatched()).toHaveTextContent('topic_7');
+    });
+
+    await userEvent.click(resetButton);
+
+    await waitFor(() => {
+      expect(getWatched()).toHaveTextContent('—');
+      expect(
+        canvas.queryByText('Topic 5 is not allowed'),
+      ).not.toBeInTheDocument();
+      expect(canvas.queryByText('Topic is required')).not.toBeInTheDocument();
+    });
+    await userEvent.click(resetButton);
     await userEvent.click(document.body);
   },
 };

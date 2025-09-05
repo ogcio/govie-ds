@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { userEvent, within, expect } from 'storybook/test';
+import { Button } from '../button/button.js';
 import {
   FormField,
   FormFieldError,
@@ -74,5 +77,76 @@ export const AllVariants: Story = {
     pseudo: {
       focus: '.focus-input',
     },
+  },
+};
+
+export const WithReactHookForm: Story = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const methods = useForm<{ password: string }>({
+      defaultValues: { password: '' },
+    });
+
+    const onSubmit = methods.handleSubmit((_) => {
+      methods.reset();
+    });
+
+    return (
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit}>
+          <FormField data-testid="form-field-id">
+            {methods.formState.errors.password && (
+              <FormFieldError data-testid="error-msg">
+                {methods.formState.errors.password.message}
+              </FormFieldError>
+            )}
+            <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
+            <InputPassword
+              id="text-password-id"
+              placeholder="Placeholder"
+              dataTestId="text-password-id"
+              {...methods.register('password', { required: 'Required' })}
+            />
+          </FormField>
+
+          <div className="gi-flex gi-flex-cols gi-gap-2 gi-pt-4">
+            <Button type="submit" dataTestid="submit-btn">
+              Submit
+            </Button>
+            <Button
+              type="button"
+              onClick={() => methods.reset()}
+              dataTestid="reset-btn"
+            >
+              Reset
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    );
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const passwordInput = canvas.getByTestId('text-password-id');
+    const submitButton = canvas.getByTestId('submit-btn');
+    const resetButton = canvas.getByTestId('reset-btn');
+
+    await userEvent.click(submitButton);
+    expect(canvas.getByTestId('error-msg')).toBeDefined();
+
+    await userEvent.type(passwordInput, 'MySecret123!');
+    const formField = canvas.getByTestId('form-field-id');
+    const visibilityButton = within(formField).getByRole('button');
+    await userEvent.click(visibilityButton);
+    expect((passwordInput as HTMLInputElement).type).toBe('text');
+
+    await userEvent.click(submitButton);
+    expect(canvas.queryByTestId('error-msg')).toBeNull();
+
+    await userEvent.click(resetButton);
+    expect((passwordInput as HTMLInputElement).value).toBe('');
+    await userEvent.click(document.body);
   },
 };

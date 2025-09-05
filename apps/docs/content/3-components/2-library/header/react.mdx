@@ -13,6 +13,8 @@ component:
       url: '/story/layout-header--with-secondary-links'
     - name: 'no-links'
       url: '/story/layout-header--no-links'
+    - name: 'light-theme'
+      url: '/story/layout-header--light'
   properties:
     - name: HeaderProps
       fields:
@@ -52,6 +54,11 @@ component:
           ofType: 'string'
           description: 'Custom test ID for the header.'
           required: false
+        - name: 'appearance'
+          ofType: 'string'
+          description: 'Controls the visual style of the component ("default", "light").'
+          required: false
+
     - name: HeaderItemProps
       fields:
         - name: 'itemType'
@@ -143,8 +150,39 @@ component:
   story="no-links"
 />
 
+### Light Theme
+
+<StorybookFrame
+  className="h-auto p-1"
+  componentId="header-react"
+  story="light-theme"
+/>
+
 ## Properties
 
 <ComponentPropertiesTable componentId="header-react" />
+
+## i18n Keys
+
+The Header component supports localisation through i18n keys in React, [find i18n setup here](/components/setup-guides/react/#internationalisation-i18n-guidelines). Below is the list of keys and their default text:
+
+```json
+{
+  "header.headerSlot": "Slot Container {{index}}",
+  "header.toggleActionItem": "Toggle item action for {{item}}",
+  "header.search": "Search",
+  "header.searchTheWebsite": "Search the website",
+  "header.searchForm": "Search Form",
+  "header.submitSearch": "Submit search",
+  "header.closeMobileMenu": "Close Mobile Menu",
+  "header.mobileNavigationMenu": "Mobile Navigation Menu",
+  "header.siteHeader": "Site Header",
+  "header.goToHomePage": "Go to the home page",
+  "header.drawer.close": "Close",
+  "header.menu": "Menu"
+}
+```
+
+These keys represent visible text elements. You can customise their translations for each locale to enable multilingual support.
 
 </Section>

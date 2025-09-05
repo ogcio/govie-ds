@@ -10,14 +10,16 @@ export type InputActionButtonProps = {
   ref?: React.Ref<HTMLButtonElement>;
 };
 
+type IconProp = IconId | React.ReactNode;
+
 export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   inputClassName?: string;
-  iconStart?: IconId;
+  iconStart?: IconProp;
   onIconStartClick?: () => void;
   iconStartClassName?: string;
-  iconEnd?: IconId;
+  iconEnd?: IconProp;
   iconEndClassName?: string;
   onIconEndClick?: () => void;
   inputActionButton?: InputActionButtonProps;
@@ -38,4 +40,11 @@ export type InputTextProps = React.InputHTMLAttributes<HTMLInputElement> & {
     | 'search';
   halfFluid?: boolean;
   clearButtonEnabled?: boolean;
+  containerProps?: any;
+  dataTestId?: string;
+};
+
+export type InputTextTableCellProps = InputTextProps & {
+  error?: boolean;
+  disabled?: boolean;
 };

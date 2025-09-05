@@ -48,7 +48,7 @@ export function List({
     <ul
       role={type === ListTypeEnum.None ? 'list' : undefined}
       className={getListClass({ spaced, type })}
-      data-testId={props.dataTestid}
+      data-testid={props.dataTestid}
       {...props}
     >
       {items.map((item, index) => {

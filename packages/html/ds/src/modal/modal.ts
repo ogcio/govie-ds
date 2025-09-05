@@ -1,8 +1,57 @@
+import { createFocusTrap, FocusTrap } from 'focus-trap';
 import {
   BaseComponent,
   BaseComponentOptions,
   initialiseModule,
 } from '../common/component';
+
+export const hideAriaOutside = (refNode: HTMLElement) => {
+  const newDocument = refNode.ownerDocument ?? document;
+  const bodyElement = newDocument.body;
+
+  const findTopLevelHost = (node: HTMLElement): Element => {
+    let current: Element | null = node;
+    while (
+      current !== null &&
+      current.parentElement !== null &&
+      current.parentElement !== bodyElement
+    ) {
+      current = current.parentElement;
+    }
+    return current ?? bodyElement;
+  };
+
+  const topHost = findTopLevelHost(refNode);
+
+  const applied: Element[] = [];
+  let rafId: number | null = null;
+
+  topHost.removeAttribute('aria-hidden');
+
+  rafId = requestAnimationFrame(() => {
+    const children = [...bodyElement.children];
+
+    for (const element of children) {
+      if (element === topHost) {
+        continue;
+      }
+      if (element.getAttribute('aria-hidden') === 'true') {
+        continue;
+      }
+      element.setAttribute('aria-hidden', 'true');
+      applied.push(element);
+    }
+  });
+
+  return () => {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+    }
+    for (const element of applied) {
+      element.removeAttribute('aria-hidden');
+    }
+  };
+};
 
 export type ModalOptions = BaseComponentOptions;
 
@@ -14,6 +63,12 @@ export class Modal extends BaseComponent<ModalOptions> {
   triggerButton: Element | null;
   closeOnClick: boolean;
   closeOnOverlayClick: boolean;
+  closeOnEscape: boolean;
+  trap: FocusTrap;
+  modalControl: Element | null;
+  modalBody: any;
+  ariaHiderCleanup: (() => void) | null = null;
+  handleEscapeKey: (event: KeyboardEvent) => void;
 
   constructor(options: ModalOptions) {
     super(options);
@@ -27,8 +82,16 @@ export class Modal extends BaseComponent<ModalOptions> {
     });
     this.modal = this.query.getByElement({ name: 'modal' });
     this.closeIcon = this.query.getByElement({
+      name: 'modal-close-button',
+    });
+    this.modalControl = this.query.getByElement({
       name: 'modal-container',
-    }).firstElementChild;
+    });
+
+    this.modalBody = this.query.getByElement({
+      name: 'modal-body',
+    });
+    this.handleEscapeKey = this.escapeKeyListener.bind(this);
 
     this.position = (this.modal as HTMLElement).dataset?.position || 'center';
     this.isOpen = (this.modal as HTMLElement).dataset?.open === 'true';
@@ -36,9 +99,17 @@ export class Modal extends BaseComponent<ModalOptions> {
       (this.modal as HTMLElement).dataset?.closeonclick === 'true';
     this.closeOnOverlayClick =
       (this.modal as HTMLElement).dataset?.closeonoverlayclick === 'true';
+    this.closeOnEscape =
+      (this.modal as HTMLElement).dataset?.closeonescape !== 'false';
 
     this.initModalState();
     this.bindCloseButtons();
+
+    this.trap = createFocusTrap(this.modal as HTMLElement, {
+      initialFocus: this.modalBody as HTMLElement,
+      fallbackFocus: () => this.modal as HTMLElement,
+      returnFocusOnDeactivate: false,
+    });
   }
 
   initModalState() {
@@ -56,12 +127,8 @@ export class Modal extends BaseComponent<ModalOptions> {
     for (const button of buttons) {
       button.addEventListener('click', (event) => {
         queueMicrotask(() => {
-          const buttonText = button.textContent?.trim();
           if (!event.defaultPrevented) {
             this.toggleModalState(false, { forceClose: true });
-            if (buttonText) {
-              console.log(buttonText.toLowerCase());
-            }
           }
         });
       });
@@ -69,10 +136,16 @@ export class Modal extends BaseComponent<ModalOptions> {
   }
 
   toggleModalState(isOpen: boolean, props?: { forceClose?: boolean }) {
+    const newDocument = (this.modal as HTMLElement).ownerDocument ?? document;
+    this.isOpen = isOpen;
+    (this.modal as HTMLElement).dataset.open = String(isOpen);
     if (isOpen) {
       this.modal.classList.add('gi-modal-open');
       this.modal.classList.remove('gi-modal-close');
       this.modal.setAttribute('aria-hidden', 'false');
+
+      this.trap?.activate();
+      this.ariaHiderCleanup = hideAriaOutside(this.modal as HTMLElement);
     } else if (
       (this.closeOnClick && this.closeOnOverlayClick) ||
       props?.forceClose
@@ -80,6 +153,20 @@ export class Modal extends BaseComponent<ModalOptions> {
       this.modal.classList.add('gi-modal-close');
       this.modal.classList.remove('gi-modal-open');
       this.modal.setAttribute('aria-hidden', 'true');
+
+      this.trap?.deactivate();
+      this.ariaHiderCleanup?.();
+
+      const bodyElement = newDocument.body as HTMLElement;
+      const hadTabIndex = bodyElement.hasAttribute('tabindex');
+
+      if (!hadTabIndex) {
+        bodyElement.setAttribute('tabindex', '-1');
+      }
+      bodyElement.focus({ preventScroll: true });
+      if (!hadTabIndex) {
+        bodyElement.removeAttribute('tabindex');
+      }
     }
   }
 
@@ -99,6 +186,13 @@ export class Modal extends BaseComponent<ModalOptions> {
     this.toggleModalState(false, { forceClose: true });
   }
 
+  escapeKeyListener(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isOpen && this.closeOnEscape) {
+      event.stopPropagation();
+      this.toggleModalState(false, { forceClose: true });
+    }
+  }
+
   initComponent() {
     this.triggerButton?.addEventListener(
       'click',
@@ -106,6 +200,10 @@ export class Modal extends BaseComponent<ModalOptions> {
     );
     this.modal.addEventListener('click', this.modalEventListener);
     this.closeIcon?.addEventListener('click', this.closeButtonListener);
+
+    if (this.closeOnEscape) {
+      document.addEventListener('keydown', this.handleEscapeKey);
+    }
   }
 
   destroyComponent(): void {
@@ -115,6 +213,11 @@ export class Modal extends BaseComponent<ModalOptions> {
     );
     this.modal.removeEventListener('click', this.modalEventListener);
     this.closeIcon?.removeEventListener('click', this.closeButtonListener);
+    this.trap?.deactivate();
+
+    if (this.closeOnEscape) {
+      document.removeEventListener('keydown', this.handleEscapeKey);
+    }
   }
 }
 

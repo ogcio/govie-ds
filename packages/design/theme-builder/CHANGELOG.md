@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.6.0...design-theme-builder-v1.7.0) (2025-08-06)
+
+
+### Features
+
+* Sync Tabs component with Figma ([#669](https://github.com/ogcio/govie-ds/issues/669)) ([30db276](https://github.com/ogcio/govie-ds/commit/30db276eacabc83bdf0510bdb6ac0b0f7d62f0ef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-tokens bumped to 1.7.0
+
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.5.3...design-theme-builder-v1.6.0) (2025-07-29)
+
+
+### Features
+
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-deepmerge bumped to 1.0.7
+    * @ogcio/design-system-eslint-config bumped to 1.2.6
+    * @ogcio/design-system-tokens bumped to 1.6.0
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/design-theme-builder-v1.5.2...design-theme-builder-v1.5.3) (2025-07-04)
 
 

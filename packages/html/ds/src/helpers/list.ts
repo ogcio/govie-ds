@@ -1,5 +1,4 @@
 import { ListProps } from '../list/types';
-import { beautifyHtmlNode } from '../storybook/storybook';
 
 export const createList = (arguments_: ListProps) => {
   const container = document.createElement('div');
@@ -31,5 +30,5 @@ export const createList = (arguments_: ListProps) => {
 
   container.append(component);
 
-  return beautifyHtmlNode(container);
+  return container;
 };

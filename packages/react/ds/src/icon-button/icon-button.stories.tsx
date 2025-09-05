@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { fn, expect } from 'storybook/test';
 import { IconButton } from './icon-button.js';
 
 const meta = {
@@ -63,6 +63,11 @@ export const Default: Story = {
     icon: {
       icon: 'thumb_up',
     },
+  },
+  play: async ({ canvasElement }) => {
+    const button = canvasElement.querySelector('button');
+    expect(button).toBeTruthy();
+    expect(button?.getAttribute('type')).toBe('button');
   },
 };
 

@@ -1,10 +1,12 @@
+import { composeStories } from '@storybook/react-vite';
 import { Icon } from '../icon/icon.js';
 import {
-  renderComponent,
   cleanup,
+  renderComponent,
   testVariantsAxe,
 } from '../test-utilities.js';
 import { Button } from './button.js';
+import * as stories from './button.stories.js';
 import { ButtonProps, ButtonVariant, ButtonVariants } from './types.js';
 
 const standardProps: ButtonProps = {
@@ -129,4 +131,18 @@ describe('button', () => {
     const screen = renderButton(standardProps);
     await screen.axe();
   });
+});
+
+describe('Snapshots', () => {
+  afterEach(cleanup);
+
+  const composedStories = composeStories(stories);
+  for (const key of Object.keys(composedStories).sort() as Array<
+    keyof typeof composedStories
+  >) {
+    it(`Snapshot - ${key}`, async () => {
+      await composedStories[key].run();
+      expect(document.body.firstChild).toMatchSnapshot();
+    });
+  }
 });

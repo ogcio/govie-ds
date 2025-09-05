@@ -1,37 +1,47 @@
 'use client';
-import React, {
+import {
   cloneElement,
   ReactNode,
   Children,
   isValidElement,
   ReactElement,
   useState,
+  useRef,
+  useEffect,
 } from 'react';
-
+import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
 import { cn } from '../cn.js';
 import { Heading, HeadingProps } from '../heading/heading.js';
+import { useAriaHider } from '../hooks/use-aria-hider.js';
+import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+
 import type {
   ModalCloseButtonProps,
   ModalFooterButton,
   ModalFooterProps,
   ModalProps,
   ModalWrapperProps,
+  ModalHeaderProps,
 } from './types.js';
 
 const isModalComponent = (
   modalComponent: React.ElementType,
-  modalTitle: string,
+  componentName: string,
   child: ReactNode,
 ): boolean => {
   if (!isValidElement(child)) {
     return false;
   }
   const childType = child.type;
-  // @ts-expect-error The TS error says there is no _owner but there is
-  return childType === modalComponent || child?._owner?.name === modalTitle;
+  return (
+    childType === modalComponent ||
+    // @ts-expect-error The TS error says there is no _owner but there is
+    child?._owner?.name === componentName ||
+    (childType as any).componentType === componentName
+  );
 };
 
 const VARIANT_ORDER: Record<ModalFooterButton['variant'], number> = {
@@ -82,6 +92,30 @@ const ModalCloseButton = ({
   );
 };
 
+const ModalHeader = ({
+  closeButtonLabel,
+  modalTitle,
+  closeOnClick,
+  onClose,
+  closeButtonSize,
+}: ModalHeaderProps) => (
+  <div
+    className={cn({
+      'gi-py-4 xs:gi-py-6': !closeButtonLabel,
+      'gi-py-2 xs:gi-py-4': !!closeButtonLabel,
+    })}
+  >
+    {modalTitle}
+    {closeOnClick && (
+      <ModalCloseButton
+        onClick={onClose}
+        label={closeButtonLabel}
+        size={closeButtonSize}
+      />
+    )}
+  </div>
+);
+
 export const ModalWrapper = ({
   position = 'center',
   size = 'lg',
@@ -93,14 +127,19 @@ export const ModalWrapper = ({
   className,
   children,
   closeButtonSize,
+  closeOnEscape,
   dataTestId,
   ...props
 }: ModalWrapperProps) => {
+  const modalRef = useRef(null);
+  useAriaHider(modalRef.current, isOpen);
+
   const childrenArray = Children.toArray(children);
 
   const modalTitle = childrenArray.find((child) =>
     isModalComponent(ModalTitle, 'ModalTitle', child),
   );
+
   const modalFooter = childrenArray.find((child) =>
     isModalComponent(ModalFooter, 'ModalFooter', child),
   );
@@ -111,84 +150,105 @@ export const ModalWrapper = ({
       })
     : null;
 
-  const otherChildren = childrenArray
-    .map((child) =>
-      modalFooter
-        ? cloneElement(child as ReactElement<ModalFooterProps>, {
-            dataModalSize: size,
-          })
-        : child,
-    )
-    .filter((child) => !isModalComponent(ModalTitle, 'ModalTitle', child));
+  const modalFooterClone = modalFooter
+    ? cloneElement(modalFooter as ReactElement<ModalFooterProps>, {
+        dataModalSize: size,
+      })
+    : null;
+
+  // Get all children that are NOT title or footer
+  const contentChildren = childrenArray.filter(
+    (child) =>
+      !isModalComponent(ModalTitle, 'ModalTitle', child) &&
+      !isModalComponent(ModalFooter, 'ModalFooter', child),
+  );
+
+  useEffect(() => {
+    if (!isOpen || !closeOnEscape) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, closeOnEscape, onClose]);
 
   return (
-    <div
-      {...props}
-      className={cn('gi-modal', {
-        'gi-modal-open': isOpen,
-        'gi-modal-close': !isOpen,
-      })}
-      data-testid={dataTestId || 'modal'}
-      data-element="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-describedby="gi-modal-body"
-      onClick={(event) => {
-        const target = event.target as HTMLDivElement;
-        if (
-          target.dataset.element === 'modal' &&
-          closeOnClick &&
-          closeOnOverlayClick
-        ) {
-          onClose();
-        }
-      }}
-    >
+    <ModalPortal modalRef={modalRef} isOpen={isOpen}>
       <div
-        data-testid="modal-container"
-        data-size={size}
-        data-position={position}
-        className={cn(
-          'gi-modal-container-control',
-          {
-            'gi-modal-container': !className,
-            'gi-modal-container-center': position === 'center',
-            'gi-modal-container-left': position === 'left',
-            'gi-modal-container-right': position === 'right',
-            'gi-modal-container-bottom': position === 'bottom',
-          },
-          className,
-        )}
+        {...props}
+        ref={modalRef}
+        className={cn('gi-modal', {
+          'gi-modal-open': isOpen,
+          'gi-modal-close': !isOpen,
+        })}
+        data-testid={dataTestId || 'modal'}
+        onClick={(event) => {
+          const isOverlayClick = event.currentTarget === event.target;
+          if (isOverlayClick && closeOnClick && closeOnOverlayClick) {
+            onClose();
+          }
+        }}
+        tabIndex={-1}
       >
-        <div>
-          {modalTitleClone}
-          {closeOnClick && (
-            <ModalCloseButton
-              onClick={onClose}
-              label={closeButtonLabel}
-              size={closeButtonSize}
-            />
-          )}
-        </div>
         <div
-          className={cn({
-            'gi-pb-6': !modalFooter,
-          })}
+          data-testid="modal-container"
+          role="dialog"
+          aria-modal="true"
+          aria-label="dialog"
+          data-size={size}
+          data-position={position}
+          className={cn(
+            'gi-modal-container-control',
+            {
+              'gi-modal-container': !className,
+              'gi-modal-container-center': position === 'center',
+              'gi-modal-container-left': position === 'left',
+              'gi-modal-container-right': position === 'right',
+              'gi-modal-container-bottom': position === 'bottom',
+            },
+            className,
+          )}
         >
-          {otherChildren}
+          <ModalHeader
+            closeButtonLabel={closeButtonLabel}
+            modalTitle={modalTitleClone}
+            closeOnClick={closeOnClick}
+            onClose={onClose}
+            closeButtonSize={closeButtonSize}
+          />
+          <div className={cn({ 'gi-pb-6': !modalFooter })}>
+            {contentChildren}
+            {modalFooterClone}
+          </div>
         </div>
       </div>
-    </div>
+    </ModalPortal>
   );
 };
 
 export const ModalTitle = ({ children, as = 'h4', ...props }: HeadingProps) => (
-  <div className="gi-flex-1" id="gi-modal-title">
+  <div className="gi-flex-1" id={props.id} aria-label={children?.toString()}>
     <Heading as={as} {...props}>
       {children}
     </Heading>
   </div>
 );
+
+Object.defineProperty(ModalTitle, 'componentType', {
+  value: 'ModalTitle',
+  writable: false,
+  enumerable: false,
+});
+ModalTitle.displayName = 'ModalTitle';
 
 export const ModalBody = ({
   children,
@@ -199,6 +259,9 @@ export const ModalBody = ({
 }) => (
   <div
     id="gi-modal-body"
+    aria-label="Modal content"
+    role="document"
+    tabIndex={0}
     className={cn(
       {
         'gi-modal-body': !className,
@@ -215,12 +278,17 @@ export const ModalFooter = ({
   children,
   orientation,
   dataModalSize,
+  stacked,
 }: ModalFooterProps) => {
   const actionButtons = Array.isArray(children) ? children : [children];
-  const filteredButtons = actionButtons.filter(
-    (actionButton) =>
-      isValidElement(actionButton) && actionButton.type === Button,
-  );
+  const filteredButtons = actionButtons.filter((actionButton) => {
+    return (
+      isValidElement(actionButton) &&
+      (actionButton.type === Button ||
+        (actionButton.type as any)?.displayName === 'Button' ||
+        (actionButton.props as any)?.['data-button'])
+    );
+  });
   const sortedButtons = filteredButtons.sort((a, b) => {
     const variantA = a.props.variant ?? 'primary';
     const variantB = b.props.variant ?? 'primary';
@@ -229,8 +297,9 @@ export const ModalFooter = ({
 
   const buttonClassName = cn({
     'gi-justify-center sm:gi-justify-start':
-      !orientation && dataModalSize !== 'sm',
-    'gi-justify-center': orientation === 'vertical' || dataModalSize === 'sm',
+      !orientation && dataModalSize !== 'sm' && !stacked,
+    'gi-justify-center':
+      orientation === 'vertical' || dataModalSize === 'sm' || stacked,
     'gi-justify-start': orientation === 'horizontal',
   });
 
@@ -239,6 +308,7 @@ export const ModalFooter = ({
       className={cn(className, {
         'gi-pt-6': sortedButtons.length === 0,
         'gi-modal-footer': sortedButtons.length,
+        'gi-modal-footer-stacked': stacked,
       })}
     >
       {sortedButtons.length > 0 && (
@@ -246,8 +316,14 @@ export const ModalFooter = ({
           data-orientation={orientation || 'unset'}
           data-modal-size={dataModalSize}
         >
-          {sortedButtons.map((button) =>
+          {sortedButtons.map((button, index) =>
             cloneElement(button, {
+              key:
+                button.key ||
+                button.props.id ||
+                button.props['dataTestid'] ||
+                `modal-footer-button-${index}`,
+              id: button.props.id || `modal-footer-button-${index}`,
               className: cn(button?.props?.className, buttonClassName),
             }),
           ) || null}
@@ -257,6 +333,40 @@ export const ModalFooter = ({
   );
 };
 
+Object.defineProperty(ModalFooter, 'componentType', {
+  value: 'ModalFooter',
+  writable: false,
+  enumerable: false,
+});
+ModalFooter.displayName = 'ModalFooter';
+
+const ModalPortal = ({
+  children,
+  modalRef,
+  isOpen,
+}: {
+  children: ReactNode;
+  modalRef: any;
+  isOpen: boolean;
+}) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useFocusTrap(modalRef?.current, isOpen && isMounted, {
+    initialFocus: modalRef?.current ?? true,
+    fallbackFocus: () => modalRef?.current,
+  });
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return createPortal(children, document.body);
+};
+
 export const Modal = ({
   children,
   triggerButton,
@@ -264,7 +374,6 @@ export const Modal = ({
   ...props
 }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(!!startsOpen);
-
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 

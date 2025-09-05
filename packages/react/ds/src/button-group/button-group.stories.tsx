@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
+
 import {
   FormField,
   FormFieldHint,
@@ -143,5 +146,64 @@ export const ExplicitItems: Story = {
     name: 'customer-status',
     size: 'medium',
     defaultValue: 'no',
+  },
+};
+
+export const Controlled: Story = {
+  name: 'Yes/No Question (Controlled)',
+  render: (arguments_) => {
+    const [value, setValue] = useState(
+      arguments_.value || arguments_.defaultValue,
+    );
+
+    const handleChange = (newValue: string) => {
+      setValue(newValue);
+      arguments_.onChange?.(newValue);
+      console.log('Value changed to:', newValue);
+    };
+
+    return (
+      <FormField>
+        <FormFieldLabel>Are you currently a customer?</FormFieldLabel>
+        <ButtonGroup
+          name={arguments_.name}
+          size={arguments_.size}
+          value={value}
+          onChange={handleChange}
+        >
+          <ButtonGroupItem value="yes">Yes</ButtonGroupItem>
+          <ButtonGroupItem value="no">No</ButtonGroupItem>
+        </ButtonGroup>
+      </FormField>
+    );
+  },
+
+  args: {
+    name: 'customer-status',
+    size: 'medium',
+    value: 'no',
+    defaultValue: 'no',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "This story demonstrates the ButtonGroup component in controlled mode. The component's value is managed by React state, making it suitable for use with form libraries like React Hook Form.",
+        language: 'tsx',
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const yesButton = await canvas.getByText('Yes');
+    const noButton = await canvas.getByText('No');
+
+    await userEvent.click(yesButton);
+
+    await waitFor(() => {
+      expect(yesButton).toBeChecked();
+      expect(noButton).not.toBeChecked();
+    });
   },
 };

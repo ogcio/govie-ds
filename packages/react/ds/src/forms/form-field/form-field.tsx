@@ -40,9 +40,7 @@ function getSpecialComponentType(child: ReactNode): string | null {
   }
 
   return (
-    (child.type as any)?.componentType ||
-    (child.props as any)?.__mdxType ||
-    null
+    (child.type as any)?.componentType || (child.props as any)?.__type || null
   );
 }
 
@@ -63,7 +61,7 @@ const FormField = (props: FormFieldProps) => {
 
     return (
       <FormFieldContext.Provider value={true}>
-        <FormFieldBase>
+        <FormFieldBase {...props}>
           {props.label && <FormFieldLabel {...props.label} />}
           {props.hint && <FormFieldHint {...props.hint} />}
           {props.error && <FormFieldError {...props.error} />}
@@ -75,7 +73,7 @@ const FormField = (props: FormFieldProps) => {
 
   return (
     <FormFieldContext.Provider value={true}>
-      <FormFieldBase>{props.children}</FormFieldBase>
+      <FormFieldBase {...props}>{props.children}</FormFieldBase>
     </FormFieldContext.Provider>
   );
 };
@@ -162,10 +160,16 @@ const FormFieldError = ({
   text,
   size,
   className,
+  ...props
 }: ErrorTextProps) => {
   useFormFieldContext('FormFieldError');
   return (
-    <ErrorText text={text} size={size} className={cn('gi-mb-1', className)}>
+    <ErrorText
+      text={text}
+      size={size}
+      className={cn('gi-mb-1', className)}
+      {...props}
+    >
       {children}
     </ErrorText>
   );

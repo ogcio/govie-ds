@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
 import { useRef, useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { SelectMenu, SelectMenuOption } from '../select/select-menu.js';
 import { Popover } from './popover.js';
@@ -61,17 +61,6 @@ export const Default: Story = {
       'This is a popover content',
     );
     await expect(openPopoverContent).toBeVisible();
-    await userEvent.click(document.body);
-
-    await expect(openPopoverContent).not.toBeInTheDocument();
-
-    await userEvent.click(triggerButton);
-    const reOpenPopoverContent = await canvas.findByText(
-      'This is a popover content',
-    );
-    await expect(reOpenPopoverContent).toBeVisible();
-    await userEvent.keyboard('{Escape}');
-    await expect(reOpenPopoverContent).not.toBeInTheDocument();
   },
 };
 
@@ -100,11 +89,12 @@ export const WithSelectMenu: Story = {
         </Button>
         <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
           <SelectMenu onChange={setSelectedValue} enableSearch>
-            {options.map(({ value, label }) => (
+            {options.map(({ value, label }, index) => (
               <SelectMenuOption
                 key={`${label}-${value}`}
                 value={value}
                 selected={selectedValue === value}
+                index={index}
               >
                 {label}
               </SelectMenuOption>
@@ -113,5 +103,70 @@ export const WithSelectMenu: Story = {
         </Popover>
       </div>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const popoverContent = canvas.queryByText('This is a popover content');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.findByRole('button', {
+      name: /Open Popover/i,
+    });
+    await userEvent.click(triggerButton);
+  },
+};
+
+export const Test: Story = {
+  args: {
+    children: null,
+    onOpenChange: () => null,
+    open: false,
+    triggerRef: null,
+  },
+  render: () => {
+    const triggerRef = useRef<HTMLButtonElement>(null!);
+    const [open, setOpen] = useState(false);
+
+    return (
+      <div className="gi-h-20">
+        <Button ref={triggerRef} onClick={() => setOpen(!open)}>
+          Open Popover
+        </Button>
+
+        <Popover triggerRef={triggerRef} open={open} onOpenChange={setOpen}>
+          <div className="gi-text-sm gi-text-gray-800 gi-p-4">
+            This is a popover content
+          </div>
+        </Popover>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const popoverContent = canvas.queryByText('This is a popover content');
+    await expect(popoverContent).not.toBeInTheDocument();
+
+    const triggerButton = await canvas.findByRole('button', {
+      name: /Open Popover/i,
+    });
+    await userEvent.click(triggerButton);
+
+    const openPopoverContent = await canvas.findByText(
+      'This is a popover content',
+    );
+    await expect(openPopoverContent).toBeVisible();
+    await userEvent.click(document.body);
+
+    await expect(openPopoverContent).not.toBeInTheDocument();
+
+    await userEvent.click(triggerButton);
+    const reOpenPopoverContent = await canvas.findByText(
+      'This is a popover content',
+    );
+    await expect(reOpenPopoverContent).toBeVisible();
+    await userEvent.keyboard('{Escape}');
+    await expect(reOpenPopoverContent).not.toBeInTheDocument();
   },
 };

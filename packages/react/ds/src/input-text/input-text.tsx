@@ -2,10 +2,14 @@
 
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import { cn } from '../cn.js';
-import { Icon } from '../icon/icon.js';
+import { Icon, IconId } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
 import { Input as PrimitiveInput } from '../primitives/input.js';
-import type { InputActionButtonProps, InputTextProps } from './type.js';
+import type {
+  InputActionButtonProps,
+  InputTextProps,
+  InputTextTableCellProps,
+} from './type.js';
 
 const InputTextWithClear = forwardRef<HTMLInputElement, InputTextProps>(
   ({ onChange, ...props }, externalRef) => {
@@ -63,6 +67,7 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
       disabled,
       inputClassName,
       iconEndRef,
+      containerProps,
       ...props
     },
     ref,
@@ -83,7 +88,10 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
     }, [inputActionButton]);
 
     return (
-      <div className={cn(className, 'gi-input-text-container')}>
+      <div
+        className={cn(className, 'gi-input-text-container')}
+        {...containerProps}
+      >
         {prefix && (
           <div className="gi-input-text-prefix" data-disabled={disabled}>
             {prefix}
@@ -100,7 +108,15 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               onClick={onIconStartClick}
               data-prefix={!!prefix}
             >
-              <Icon icon={iconStart} size="md" disabled={disabled} />
+              {typeof iconStart === 'string' ? (
+                <Icon
+                  icon={iconStart as IconId}
+                  size="md"
+                  disabled={disabled}
+                />
+              ) : (
+                iconStart
+              )}
             </div>
           )}
           <PrimitiveInput
@@ -110,7 +126,8 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
             data-end-element={!!inputActionButton}
             data-prefix={!!prefix}
             data-suffix={!!suffix}
-            className={cn(inputClassName, 'gi-input-text')}
+            data-testid={props.dataTestId}
+            className={cn('gi-input-text', inputClassName)}
             ref={ref}
             disabled={disabled}
             {...props}
@@ -125,7 +142,11 @@ const Input = forwardRef<HTMLInputElement, InputTextProps>(
               onClick={onIconEndClick}
               ref={iconEndRef}
             >
-              <Icon icon={iconEnd} size="md" disabled={disabled} />
+              {typeof iconEnd === 'string' ? (
+                <Icon icon={iconEnd as IconId} size="md" disabled={disabled} />
+              ) : (
+                iconEnd
+              )}
             </div>
           )}
           {renderActionButton}
@@ -170,7 +191,10 @@ export const InputActionButton = ({
 
 export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   ({ type = 'text', clearButtonEnabled, ...props }, ref) => {
-    if (clearButtonEnabled) {
+    const showInputTextWithClearButton =
+      clearButtonEnabled || type === 'search';
+
+    if (showInputTextWithClearButton) {
       return <InputTextWithClear ref={ref} type={type} {...props} />;
     }
 
@@ -179,3 +203,18 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 );
 
 InputText.displayName = 'InputText';
+
+export const InputTextTableCell = forwardRef<
+  HTMLInputElement,
+  InputTextTableCellProps
+>(({ type = 'text', error, ...props }, ref) => (
+  <InputText
+    {...props}
+    containerProps={{
+      'data-table-cell': true,
+      'data-table-cell-error-state': error?.toString(),
+    }}
+    ref={ref}
+    type={type}
+  />
+));

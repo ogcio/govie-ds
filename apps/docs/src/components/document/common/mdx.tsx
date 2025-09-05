@@ -190,7 +190,7 @@ const documentComponents: MDXComponents = {
   Alert,
   Autocomplete,
   AutocompleteItem: (props) => {
-    return <AutocompleteItem {...props} __mdxType="AutocompleteItem" />;
+    return <AutocompleteItem {...props} __type="AutocompleteItem" />;
   },
   Blockquote,
   BorderRadiusTable,
@@ -213,8 +213,8 @@ const documentComponents: MDXComponents = {
   CardTitle,
   CardSubtitle,
   CardTag: (props) => {
-    // Adding __mdxType so we can detect this component in MDX, where real component types are lost.
-    return <CardTag {...props} __mdxType="CardTag" />;
+    // Adding __type so we can detect this component in MDX, where real component types are lost.
+    return <CardTag {...props} __type="CardTag" />;
   },
   CardContainer,
   CardAction,
@@ -267,13 +267,13 @@ const documentComponents: MDXComponents = {
   Form,
   FormField,
   FormFieldLabel: (props) => {
-    return <FormFieldLabel {...props} __mdxType="FormFieldLabel" />;
+    return <FormFieldLabel {...props} __type="FormFieldLabel" />;
   },
   FormFieldError: (props) => {
-    return <FormFieldError {...props} __mdxType="FormFieldError" />;
+    return <FormFieldError {...props} __type="FormFieldError" />;
   },
   FormFieldHint: (props) => {
-    return <FormFieldHint {...props} __mdxType="FormFieldHint" />;
+    return <FormFieldHint {...props} __type="FormFieldHint" />;
   },
   Footer,
   GridPrimitives,
@@ -300,8 +300,12 @@ const documentComponents: MDXComponents = {
   Logos,
   Modal,
   ModalBody,
-  ModalFooter,
-  ModalTitle,
+  ModalFooter: (props) => {
+    return <ModalFooter {...props} __type="ModalFooter" />;
+  },
+  ModalTitle: (props) => {
+    return <ModalTitle {...props} __type="ModalTitle" />;
+  },
   ModalWrapper: ModalWrapperSample,
   NextLink,
   OpacityTable,

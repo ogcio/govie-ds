@@ -283,7 +283,11 @@
               },
               "disabled-surface": {
                 "$type": "color",
-                "$value": "{brand.color.neutral.600}"
+                "$value": "{brand.color.neutral.700}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.950}"
               }
             }
           }
@@ -955,9 +959,17 @@
                 "$type": "color",
                 "$value": "{brand.color.neutral.950}"
               },
+              "hover-muted": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.200}"
+              },
               "disabled": {
                 "$type": "color",
                 "$value": "{brand.color.neutral.400}"
+              },
+              "disabled-surface": {
+                "$type": "color",
+                "$value": "{brand.color.neutral.700}"
               }
             }
           }

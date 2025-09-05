@@ -85,6 +85,27 @@ input[type='text'] {
 
 /* General Input disable state */
 .gi-input-disabled-state {
-  @apply disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled disabled:gi-cursor-not-allowed;
+  @apply disabled:gi-bg-color-surface-system-neutral-interactive-disabled disabled:gi-border-color-border-system-neutral-interactive-disabled disabled:gi-text-color-text-system-neutral-interactive-disabled-surface disabled:gi-cursor-not-allowed;
 }
 /* General Input disable state */
+
+/* Remove default X icon */
+
+/* WebKit (Chrome, Safari) */
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* Firefox (fallback, no cancel button shown by default) */
+input[type='search']::-moz-search-clear-button {
+  display: none;
+}
+
+/* Optional: Edge (legacy) */
+input[type='search']::-ms-clear {
+  display: none;
+}
+
+/* Remove default X icon */

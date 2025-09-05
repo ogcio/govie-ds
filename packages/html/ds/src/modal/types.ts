@@ -8,6 +8,7 @@ export type ModalWrapperProps = {
   onClose: () => void;
   position?: ModalPositions;
   closeButtonSize?: ButtonSize;
+  closeOnEscape?: boolean;
 } & Omit<ModalProps, 'triggerButton'>;
 
 export type ModalSize = 'sm' | 'md' | 'lg';

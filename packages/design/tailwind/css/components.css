@@ -21,6 +21,9 @@
 @import './components/icon-button.css';
 @import './components/input-group.css';
 @import './components/label.css';
+@import './components/link.css';
+@import './components/list.css';
+@import './components/list-item.css';
 @import './components/modal.css';
 @import './components/pagination.css';
 @import './components/phase-banner.css';
@@ -32,6 +35,7 @@
 @import './components/select.css';
 @import './components/score-select.css';
 @import './components/side-nav.css';
+@import './components/summary-list.css';
 @import './components/table.css';
 @import './components/tabs.css';
 @import './components/tag.css';
@@ -39,3 +43,9 @@
 @import './components/input-text.css';
 @import './components/toast.css';
 @import './components/tootlip.css';
+
+@layer base {
+  body {
+    @apply gi-font-primary;
+  }
+}

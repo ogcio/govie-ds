@@ -13,6 +13,7 @@ export type ModalChildren =
   | ReactElement<typeof ModalTitle | typeof ModalBody | typeof ModalFooter>;
 
 export type ModalWrapperProps = {
+  closeOnEscape?: boolean;
   isOpen: boolean;
   onClose: () => void;
   position?: ModalPositions;
@@ -47,4 +48,10 @@ export type ModalFooterProps = {
   dataTestId?: string;
   dataModalSize?: ModalSize;
   children: React.ReactElement<ButtonProps> | React.ReactElement<ButtonProps>[];
+  stacked?: boolean;
 };
+
+export type ModalHeaderProps = Pick<
+  ModalWrapperProps,
+  'closeButtonLabel' | 'closeOnClick' | 'onClose' | 'closeButtonSize' | 'size'
+> & { modalTitle: React.ReactNode };

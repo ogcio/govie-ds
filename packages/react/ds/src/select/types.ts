@@ -9,6 +9,7 @@ import {
   ReactNode,
   SelectHTMLAttributes,
 } from 'react';
+import { InputTextProps } from '../input-text/type.js';
 
 /**
  * @deprecated Use `SelectNextProps` instead of `SelectProps`.
@@ -35,6 +36,8 @@ export type SelectMenuProps = {
   className?: string;
   onChange?: (value: string) => void;
   enableSearch?: boolean;
+  isLoading?: boolean;
+  showNoData?: boolean;
 };
 
 export type SelectMenuOptionReactElement = ReactElement<{
@@ -58,6 +61,7 @@ export type SelectMenuOptionProps = {
   hidden?: boolean;
   enableSearch?: boolean;
   isHighlighted?: boolean;
+  index: number;
 };
 export type SelectMenuGroupOptionProps = {
   children: ReactNode;
@@ -74,12 +78,15 @@ export type SelectNextGroupItemElement =
   ReactElement<SelectMenuGroupOptionProps>;
 export type SelectNextProps = PropsWithChildren<
   {
+    name?: string;
     onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     onMenuClose?: () => void;
     defaultValue?: string;
+    value?: string;
     enableSearch?: boolean;
     disabled?: boolean;
-  } & Omit<HTMLAttributes<HTMLDivElement>, `on${string}`>
+    placeholder?: string;
+  } & Omit<HTMLAttributes<HTMLDivElement>, `onChange`>
 >;
 
 export type SelectNextOptionProps = PropsWithChildren<{
@@ -94,3 +101,13 @@ export type SelectNextGroupProps = PropsWithChildren<{
   label?: string;
   children: ReactNode;
 }>;
+
+export type SelectTableCellProps = Omit<SelectProps, 'children'> & {
+  options: { label: string; value: string }[];
+  error?: boolean;
+};
+
+export type SelectNextTableCellProps = SelectNextProps & {
+  options: { label: string; value: string }[];
+  error?: boolean;
+} & Pick<InputTextProps, 'iconEnd' | 'iconStart'>;

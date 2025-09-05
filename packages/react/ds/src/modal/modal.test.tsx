@@ -1,6 +1,11 @@
 import { act } from 'react';
 import { Button } from '../button/button.js';
-import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
+import {
+  renderComponent,
+  cleanup,
+  waitFor,
+  within,
+} from '../test-utilities.js';
 import { HtmlContent, TriggerButton } from './modal.content.js';
 import { Modal, ModalFooter } from './modal.js';
 
@@ -12,14 +17,14 @@ describe('modal', () => {
   const renderModal = (props: ModalProps) =>
     renderComponent(<Modal {...props} />);
 
-  it('should render the modal on load if startsOpen is true', () => {
+  it('should render the modal on load if startsOpen is true', async () => {
     const screen = renderModal({
       children: HtmlContent,
       triggerButton: TriggerButton,
       startsOpen: true,
     });
 
-    const modalElement = screen.getByTestId('modal');
+    const modalElement = await within(document.body).findByTestId('modal');
     const modalContainerElement = screen.getByTestId('modal-container');
 
     expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
@@ -35,11 +40,12 @@ describe('modal', () => {
     const triggerButtonElement = screen.getByTestId(
       'modal-trigger-button-container',
     );
+
     triggerButtonElement.click();
 
     await waitFor(() => {
-      const modalElement = screen.getByTestId('modal');
-      expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      const modalElement = document.querySelector('[data-testid="modal"]');
+      expect(modalElement?.classList.contains('gi-modal-open')).toBe(true);
     });
   });
 
@@ -49,7 +55,8 @@ describe('modal', () => {
       triggerButton: TriggerButton,
     });
 
-    const modalElement = screen.getByTestId('modal');
+    const modalElement = await within(document.body).findByTestId('modal');
+
     const triggerButtonElement = screen.getByTestId(
       'modal-trigger-button-container',
     );
@@ -86,15 +93,14 @@ describe('modal', () => {
     );
 
     triggerButtonElement.click();
+    let modalElement = await within(document.body).findByTestId('modal');
 
     await waitFor(() => {
-      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
       modalElement.click();
     });
-
+    modalElement = await within(document.body).findByTestId('modal');
     await waitFor(() => {
-      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
     });
   });

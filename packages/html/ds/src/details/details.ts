@@ -20,8 +20,6 @@ export class Details extends BaseComponent<DetailsOptions> {
       this.summaryEl?.querySelector<HTMLElement>(
         '.material-symbols-outlined',
       ) || null;
-
-    console.log('test');
   }
 
   initComponent() {

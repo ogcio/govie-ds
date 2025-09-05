@@ -17,36 +17,14 @@ const getElements = () => {
   };
 };
 
-const closeAllSlotContainers = (searchTarget: HTMLInputElement) => {
-  const { itemSlotActions } = getElements();
-
-  if (searchTarget.checked) {
-    for (const container of itemSlotActions) {
-      const item = container as HTMLInputElement;
-      item.checked = false;
-      item.dispatchEvent(
-        new CustomEvent('change', {
-          detail: {
-            fromSearchTrigger: true,
-          },
-        }),
-      );
-    }
-  }
-};
-
-const handleSearchChange = (event: Event) => {
-  closeAllSlotContainers(event.target as HTMLInputElement);
-};
-
 export const attachEventsToItemActionTriggers = () => {
   const { itemSlotActions, slotContainers, searchTrigger } = getElements();
 
   if (itemSlotActions.length > 0) {
     const toggleIcons = (
       currentTrigger: HTMLInputElement,
-      fromFilteredItems: boolean,
-      fromSearchTrigger: boolean,
+      fromFilteredItems?: boolean,
+      fromSearchTrigger?: boolean,
     ) => {
       const index = currentTrigger.dataset.index || '';
       const icon = document.querySelector(
@@ -67,40 +45,37 @@ export const attachEventsToItemActionTriggers = () => {
         }
       }
 
-      if (currentTrigger.checked && !fromFilteredItems) {
+      if (currentTrigger.dataset.open === 'false' && !fromFilteredItems) {
         icon.classList.add(hidden);
         closeIcon.classList.add(block);
         closeIcon.classList.remove(hidden);
 
         slot.classList.remove(hidden);
         slot.classList.add(block);
+
+        currentTrigger.dataset.open = 'true';
       } else {
         closeIcon.classList.add(hidden);
         closeIcon.classList.remove(block);
         icon.classList.add(block);
         icon.classList.remove(hidden);
+
+        currentTrigger.dataset.open = 'false';
         return;
       }
 
       const filteredItems = [...itemSlotActions].filter(
-        (element) =>
-          (element as HTMLInputElement).checked &&
-          element.id !== currentTrigger.id,
+        (element) => element.id !== currentTrigger.id,
       );
 
       for (const element of filteredItems) {
-        (element as HTMLInputElement).checked = false;
-        element.dispatchEvent(
-          new CustomEvent('change', {
-            detail: {
-              fromFilteredItems: true,
-            },
-          }),
-        );
+        const elementItem = element as HTMLInputElement;
+        elementItem.dataset.open = 'false';
+        toggleIcons(elementItem, true);
       }
     };
 
-    const handleChange = (event: Event) => {
+    const handleClick = (event: Event) => {
       const customEvent = event as CustomEvent;
       const fromFilteredItems = customEvent?.detail?.fromFilteredItems;
       const fromSearchTrigger = customEvent?.detail?.fromSearchTrigger;
@@ -110,32 +85,19 @@ export const attachEventsToItemActionTriggers = () => {
 
       if (searchTrigger?.checked && target?.checked) {
         searchTrigger.checked = false;
-        searchTrigger.dispatchEvent(new Event('change', { bubbles: true }));
+        searchTrigger.dispatchEvent(new Event('click', { bubbles: true }));
       }
     };
 
     for (const container of itemSlotActions) {
-      container?.addEventListener('change', handleChange);
+      (container as HTMLInputElement).dataset.open = 'false';
+      container?.addEventListener('click', handleClick);
     }
 
     return () => {
       for (const container of itemSlotActions) {
-        container?.removeEventListener('change', handleChange);
+        container?.removeEventListener('click', handleClick);
       }
     };
   }
-};
-
-export const attachEventsToSearchTrigger = () => {
-  const searchTrigger = document.querySelector(`#SearchTrigger`);
-
-  if (searchTrigger) {
-    searchTrigger.addEventListener('change', handleSearchChange);
-  }
-
-  return () => {
-    if (searchTrigger) {
-      searchTrigger.removeEventListener('change', handleSearchChange);
-    }
-  };
 };

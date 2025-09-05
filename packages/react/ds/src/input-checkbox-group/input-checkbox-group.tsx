@@ -1,22 +1,42 @@
 'use client';
-import { Children, cloneElement, isValidElement, useState } from 'react';
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useState,
+  useEffect,
+} from 'react';
 import { InputCheckboxSizeEnumType } from '../input-checkbox/types.js';
 import { InputRadioSizeType } from '../input-radio/types.js';
 import { InputCheckboxGroupProps } from './types.js';
 
 export const InputCheckboxGroup: React.FC<
   React.PropsWithChildren<InputCheckboxGroupProps>
-> = ({ size, groupId, inline, onChange, children }) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+> = ({ size, groupId, inline, onChange, children, values: externalValues }) => {
+  const [internalValues, setInternalValues] = useState<string[]>(
+    externalValues || [],
+  );
+
+  // Sync internal state with external value (for React Hook Form reset)
+  useEffect(() => {
+    setInternalValues(externalValues || []);
+  }, [externalValues]);
+
+  const currentValues =
+    externalValues === undefined ? internalValues : externalValues;
 
   const handleCheckboxChange = (value: string) => {
     let newValues = [];
 
-    newValues = selectedValues.includes(value)
-      ? selectedValues.filter((selectedValue) => selectedValue !== value)
-      : [...selectedValues, value];
+    newValues = currentValues.includes(value)
+      ? currentValues.filter((selectedValue) => selectedValue !== value)
+      : [...currentValues, value];
 
-    setSelectedValues(newValues);
+    // Only update internal state if not controlled
+    if (externalValues === undefined) {
+      setInternalValues(newValues);
+    }
+
     onChange?.(newValues);
   };
 
@@ -38,13 +58,14 @@ export const InputCheckboxGroup: React.FC<
         name: string;
       }>(element, {
         onChange: () => handleCheckboxChange(element.props.value),
-        checked: selectedValues.includes(element.props.value),
+        checked: currentValues.includes(element.props.value),
         size,
         name: groupId,
       });
     }
     return element;
   });
+
   return (
     <div className="gi-input-group-container">
       <div className="gi-input-group-options-container">

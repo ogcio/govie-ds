@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import {
   FormField,
   FormFieldError,
@@ -100,4 +102,65 @@ export const WithLabelHintAndError: Story = {
       </InputCheckboxGroup>
     </FormField>
   ),
+};
+
+export const Controlled: Story = {
+  args: {
+    groupId: 'controlled-checkbox-group',
+  },
+  tags: ['skip-playwright'],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "This story demonstrates a controlled input checkbox group where users can select multiple hobbies. The selected values are managed in the component's state, allowing for dynamic updates as checkboxes are checked or unchecked.",
+      },
+    },
+  },
+  render: (props) => {
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
+
+    return (
+      <FormField>
+        <FormFieldLabel>Select your hobbies</FormFieldLabel>
+        <InputCheckboxGroup
+          {...props}
+          values={selectedValues}
+          onChange={setSelectedValues}
+        >
+          <InputCheckbox
+            value="reading"
+            label="Reading"
+            id="controlled-check1"
+            checked={selectedValues.includes('reading')}
+          />
+          <InputCheckbox
+            value="traveling"
+            label="Traveling"
+            id="controlled-check2"
+            checked={selectedValues.includes('traveling')}
+          />
+          <InputCheckbox
+            value="gaming"
+            label="Gaming"
+            id="controlled-check3"
+            checked={selectedValues.includes('gaming')}
+          />
+        </InputCheckboxGroup>
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const readingCheckbox = await canvas.getByLabelText('Reading');
+    const travelingCheckbox = await canvas.getByLabelText('Traveling');
+
+    await userEvent.click(readingCheckbox);
+    await userEvent.click(travelingCheckbox);
+
+    await waitFor(() => {
+      expect(readingCheckbox).toBeChecked();
+      expect(travelingCheckbox).toBeChecked();
+    });
+  },
 };

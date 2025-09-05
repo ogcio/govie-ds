@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.7.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.6.0...tokens-v1.7.0) (2025-08-06)
+
+
+### Features
+
+* Sync Tabs component with Figma ([#669](https://github.com/ogcio/govie-ds/issues/669)) ([30db276](https://github.com/ogcio/govie-ds/commit/30db276eacabc83bdf0510bdb6ac0b0f7d62f0ef))
+
+## [1.6.0](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.3...tokens-v1.6.0) (2025-07-29)
+
+
+### Features
+
+* Data Grid Row, Cell and Header ([#643](https://github.com/ogcio/govie-ds/issues/643)) ([4d81855](https://github.com/ogcio/govie-ds/commit/4d818557b1058f860ee03cf9bde199c1d324558d))
+
+
+### Miscellaneous Chores
+
+* remove nx ([#656](https://github.com/ogcio/govie-ds/issues/656)) ([8fb1cbd](https://github.com/ogcio/govie-ds/commit/8fb1cbdc69b1b21d8bb4408837ba334d23303fe3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-prettier-config bumped to 1.0.6
+
 ## [1.5.3](https://github.com/ogcio/govie-ds/compare/tokens-v1.5.2...tokens-v1.5.3) (2025-07-04)
 
 

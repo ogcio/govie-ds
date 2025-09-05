@@ -35,6 +35,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -53,6 +54,7 @@ export const Default: Story = {
 };
 
 export const StateControlledModal: Story = {
+  tags: ['skip-playwright'],
   args: {
     children: <></>,
     triggerButton: <></>,
@@ -94,6 +96,7 @@ export const WithoutFooter: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     className: 'gi-w-[600px]',
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -112,6 +115,7 @@ export const WithLongContent: Story = {
   argTypes: {},
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     className: 'gi-w-[600px]',
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -158,6 +162,7 @@ export const WithLongContent: Story = {
 export const WithAllFooterButtonVariants: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -179,6 +184,7 @@ export const WithAllFooterButtonVariants: Story = {
 export const ModalNotCloseOnClick: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     closeOnClick: false,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -196,6 +202,7 @@ export const ModalNotCloseOnClick: Story = {
 export const ModalNotCloseOnOverlayClick: Story = {
   args: {
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     closeOnOverlayClick: false,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
@@ -215,32 +222,11 @@ export const ModalNotCloseOnOverlayClick: Story = {
   },
 };
 
-export const ModalOpen: Story = {
-  args: {
-    startsOpen: true,
-    triggerButton: <Button>Open modal</Button>,
-    children: [
-      <ModalTitle key="title">Modal Title</ModalTitle>,
-      <ModalBody key="body">
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt esse
-          magnam quis sit soluta cupiditate at deserunt exercitationem voluptas
-          doloribus asperiores.
-        </Paragraph>
-      </ModalBody>,
-      <ModalFooter key="footer">
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="primary">Submit</Button>
-      </ModalFooter>,
-    ],
-  },
-};
-
 export const WithCenterLarge: Story = {
   args: {
-    startsOpen: true,
     size: 'lg',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -260,9 +246,9 @@ export const WithCenterLarge: Story = {
 
 export const WithCenterMedium: Story = {
   args: {
-    startsOpen: true,
     size: 'md',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
@@ -282,9 +268,9 @@ export const WithCenterMedium: Story = {
 
 export const WithCenterSmall: Story = {
   args: {
-    startsOpen: true,
     size: 'sm',
     triggerButton: <Button>Open modal</Button>,
+    startsOpen: true,
     children: [
       <ModalTitle key="title">Modal Title</ModalTitle>,
       <ModalBody key="body">
