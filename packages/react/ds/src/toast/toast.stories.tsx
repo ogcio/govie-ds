@@ -320,7 +320,7 @@ export const AllPositions: Story = {
                 description: 'Toast message',
                 animation: 'fadeinup',
                 variant: 'info',
-                duration: 5000,
+                duration: 2000,
                 position: pos,
               })
             }
