@@ -26,6 +26,13 @@ pnpm ds
 | `pnpm examples:vite`   | Run Vite example component usage        |
 | `pnpm examples:nextjs` | Run Next.js example component usage     |
 
+## Visual regression testing
+
+To run Visual regression testing locally you need to create a Docker image in your local machine running the command `make build-visual-tests-image`.
+Once the image has been created, you can run the tests with the command `make tests`.
+If you are developing a new feature or making some adjustment to the style of existing components, you might need to update the snapshots to the latest version; to do so, you just have to run `make update-screenshots` to refresh all the screenshot in the repository.
+Once you're done, you can run `make stop-react-storybook` to close the Storybook instance that is running in the background.
+
 ## Build Figma tokens
 
 Make token changes in `tokens/tokens` or `packages/themes/<packagename>` in [Design Token Format Module](https://design-tokens.github.io/community-group/format/) format.

@@ -24,8 +24,8 @@
     "build:ts": "vite build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build --stats-json",
-    "storybook:test": "vitest --project=storybook",
-    "storybook:coverage": "vitest --project=storybook --coverage",
+    "playwright:test": "playwright test",
+    "playwright:update-snapshots": "playwright test --update-snapshots",
     "percy": "pnpm storybook:build && percy storybook ./storybook-static --config percy.yaml",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

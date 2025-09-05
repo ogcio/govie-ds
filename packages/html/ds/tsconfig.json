@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "./vitest.setup.ts"]
+  "include": ["src", "vitest-unit.setup.ts"]
 }

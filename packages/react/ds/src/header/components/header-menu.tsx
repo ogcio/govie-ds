@@ -36,8 +36,7 @@ export const MenuItemAccordion = ({ index, item }: MenuItemAccordionProps) => {
       id={`Accordion-item-${index}`}
       className="gi-accordion-item-container"
       data-open={isOpen.toString()}
-      role="region"
-      aria-labelledby={`Accordion-header-${index}`}
+      role="presentation"
     >
       <div
         aria-label={item.label}

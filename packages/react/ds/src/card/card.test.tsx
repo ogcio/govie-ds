@@ -1,4 +1,6 @@
-import { renderComponent, cleanup } from '../test-utilities.js';
+import { composeStories } from '@storybook/react-vite';
+import { cleanup, renderComponent } from '../test-utilities.js';
+import * as stories from './card-next.stories.js';
 import { Card } from './card.js';
 import { CardProps } from './types.js';
 
@@ -191,4 +193,18 @@ describe('govieCard', () => {
 
     await screen.axe();
   });
+});
+
+describe('Snapshots', () => {
+  afterEach(cleanup);
+
+  const composedStories = composeStories(stories);
+  for (const key of Object.keys(composedStories).sort() as Array<
+    keyof typeof composedStories
+  >) {
+    it(`Snapshot - ${key}`, async () => {
+      await composedStories[key].run();
+      expect(document.body.firstChild).toMatchSnapshot();
+    });
+  }
 });
