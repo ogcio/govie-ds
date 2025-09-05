@@ -1,0 +1,77 @@
+---
+title: 'List'
+description: 'The List component organises text and links in a simple vertical format, supporting bullets, numbers, and spacing options.'
+status: 'stable'
+component:
+  id: 'list'
+  status: 'stable'
+---
+
+# List
+
+The List component organises text and links in a simple vertical format, supporting bullets, numbers, and spacing options.
+
+<Section current="design">
+
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} />
+</ComponentContainer>
+
+## States
+
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} />
+</ComponentContainer>
+
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
+</ComponentContainer>
+
+<ComponentContainer>
+  <List items={['Item 1', 'Item 2', 'Item 3']} type="number" />
+</ComponentContainer>
+
+<ComponentContainer>
+  <List spaced items={['Long item 1', 'Long item 2', 'Long item 3']} />
+</ComponentContainer>
+
+<ComponentContainer>
+  <List
+    type="bullet"
+    spaced
+    items={[
+      <Link href="/">Link 1</Link>,
+      <Link href="/">Link 2</Link>,
+      <Link href="/">Link 3</Link>,
+    ]}
+  />
+</ComponentContainer>
+
+## Usage
+
+Use the List component when you need to display a series of related items, such as text or links, in an organised format.  
+It's useful for lists where items can be plain text or links, and you can customise the list style with `type` options like bullet, number, or none.  
+If spacing between items is needed, the `spaced` option can be used.
+
+### Do
+
+- Use for simple lists of text or links.
+- Use `bullet` for unordered lists and `number` when sequence matters.
+
+### Don't
+
+- Don’t use for complex layouts like grids or interactive lists.
+
+**Example of what not to do:**
+
+<ComponentContainer>
+  <List
+    items={[
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <span>Grid inside list - avoid</span>
+      </div>,
+    ]}
+  />
+</ComponentContainer>
+
+</Section>
