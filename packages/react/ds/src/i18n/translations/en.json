@@ -15,6 +15,7 @@
       "cookieBanner.acceptCookies": "Accept cookies",
       "cookieBanner.rejectCookies": "Reject cookies",
       "cookieBanner.dismissCookieBanner": "Dismiss cookie banner",
+      "dataGridHeader.filtersApplied": "Filters applied ({{ length }}):",
       "dropdownItem.noResultFound": "No results found.",
       "dropdownItem.search": "Search.",
       "header.headerSlot": "Slot Container {{index}}",
