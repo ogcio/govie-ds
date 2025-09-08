@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker';
 
+faker.seed(1234);
+
 export type Person = {
   firstName: string;
   lastName: string;
