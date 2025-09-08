@@ -52,7 +52,7 @@ describe('govieBreadcrumbs', () => {
       </Breadcrumbs>,
     );
 
-    const iconElement = container.querySelector('div > nav > span');
+    const iconElement = container.querySelector('div > nav > ol > li');
     expect(iconElement?.textContent).toBe('chevron_left');
   });
 

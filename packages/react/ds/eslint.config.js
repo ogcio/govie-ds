@@ -9,4 +9,10 @@ export default defineConfig([
     files: ['**/*.ts', '**/*.tsx'],
     extends: [eslintConfig],
   },
+  {
+    files: ['**/.storybook/main.ts'],
+    rules: {
+      'storybook/no-uninstalled-addons': 'off',
+    },
+  },
 ]);
