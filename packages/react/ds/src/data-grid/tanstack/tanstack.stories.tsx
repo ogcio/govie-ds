@@ -523,6 +523,7 @@ export const WithReactHookForm: Story = {
       }
       setFilterOpen(open);
     };
+    const selectedRows = table.getSelectedRowModel().rows;
 
     return (
       <div className="gi-p-2">
@@ -610,6 +611,24 @@ export const WithReactHookForm: Story = {
             onRemove={handleRemoveFilter}
           />
         </DataGridHeader>
+        {selectedRows.length > 0 && (
+          <DataGridSelectedRowsBanner
+            selectedCount={selectedRows.length}
+            actions={
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Button
+                </Button>
+                <Button appearance="light" size="medium" variant="flat">
+                  Button
+                </Button>
+                <Button appearance="light" size="medium" variant="flat">
+                  Button
+                </Button>
+              </>
+            }
+          />
+        )}
         <Table
           layout="auto"
           rowSize="md"
