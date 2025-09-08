@@ -1,0 +1,111 @@
+---
+title: Supported Browsers
+description: Browser support policy for our application
+status: stable
+---
+
+# Supported Browsers
+
+## Desktop Browsers
+
+<Table layout="fixed">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Browser</TableHeader>
+      <TableHeader>Minimum Version</TableHeader>
+      <TableHeader>Operating System</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>Chrome</TableData>
+      <TableData>109</TableData>
+      <TableData>Windows, macOS, Linux</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Firefox</TableData>
+      <TableData>128</TableData>
+      <TableData>Windows, macOS, Linux</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Safari</TableData>
+      <TableData>18</TableData>
+      <TableData>macOS</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Edge</TableData>
+      <TableData>136</TableData>
+      <TableData>Windows</TableData>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Mobile Browsers
+
+<Table layout="fixed">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Browser</TableHeader>
+      <TableHeader>Minimum Version</TableHeader>
+      <TableHeader>Operating System</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableData>Chrome</TableData>
+      <TableData>138</TableData>
+      <TableData>Android, iOS</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Safari</TableData>
+      <TableData>18</TableData>
+      <TableData>iOS</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Firefox</TableData>
+      <TableData>140</TableData>
+      <TableData>Android</TableData>
+    </TableRow>
+    <TableRow>
+      <TableData>Samsung Internet</TableData>
+      <TableData>27</TableData>
+      <TableData>Android</TableData>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Why We Support These Versions
+
+Our browser support policy reflects the following principles:
+
+- **Usage Trends**: We focus on browsers and versions with significant user adoption based on analytics and market share.
+- **Security and Performance**: Older browsers often lack important security updates and modern performance improvements.
+- **Developer Productivity**: Supporting outdated browsers increases maintenance costs and hinders the use of modern web standards.
+
+## Notes on Browser Support
+
+- **Graceful Degradation**: Our application is designed to provide a functional experience even in unsupported or partially supported browsers. Users may encounter limited features, but the core functionality will remain accessible.
+- **Progressive Enhancement**: We prioritise building our application to work on the latest browsers while ensuring that users with older versions still have access to essential features.
+
+## Unsupported Browsers and Devices
+
+We do not officially support:
+
+- Internet Explorer (any version)
+- Obsolete browser versions below the specified minimums
+- Proprietary in-app browsers on unsupported devices
+- Non-standard mobile operating systems
+
+Some functionality may still work on these platforms, but no guarantees are provided.
+
+## Testing Guidelines
+
+When developing or testing features, please:
+
+- Validate functionality on all supported browsers and OS combinations.
+- Use device emulators as a supplement, not a replacement, for real device testing.
+- Report and document any browser-specific bugs.
+
+## Policy Agreement
+
+This browser support policy was established to align with industry standards and best practices, ensuring broad compatibility and a consistent user experience. By following these guidelines, our team ensures that users get the best possible experience regardless of their platform.
