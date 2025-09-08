@@ -1,4 +1,5 @@
 'use client';
+
 import type { Meta, StoryObj } from '@storybook/react';
 import { RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
@@ -14,14 +15,18 @@ import {
 } from '@tanstack/react-table';
 import type { ExpandedState } from '@tanstack/react-table';
 import { debounce } from 'lodash';
-import { FC, Fragment, useEffect, useMemo, useState } from 'react';
+import { FC, Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm, FieldErrors, FieldError } from 'react-hook-form';
 
 import { Button } from '../../button/button.js';
-import { InputCheckboxTableCell } from '../../input-checkbox/input-checkbox.js';
+import {
+  InputCheckbox,
+  InputCheckboxTableCell,
+} from '../../input-checkbox/input-checkbox.js';
 import { InputText } from '../../input-text/input-text.js';
 import { Label } from '../../label/label.js';
 import { Link } from '../../link/link.js';
+import { Popover } from '../../popover/popover.js';
 import { SelectItem, SelectNative } from '../../select/select-native.js';
 import {
   Table,
@@ -44,6 +49,11 @@ import {
   DataGridHeader,
   DataGridHeaderActions,
   DataGridHeaderFilter,
+  DataGridHeaderFilterActions,
+  DataGridHeaderFilterContent,
+  DataGridHeaderFilterContentTitle,
+  DataGridHeaderFilterList,
+  DataGridHeaderFilterTitle,
   DataGridHeaderSearch,
 } from '../data-grid-header.js';
 import { EditableTableCell } from '../editable-table-cell.js';
@@ -57,16 +67,6 @@ declare module '@tanstack/react-table' {
     itemRank: RankingInfo;
   }
 }
-
-const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
-  const itemRank = rankItem(row.getValue(columnId), value);
-
-  addMeta({
-    itemRank,
-  });
-
-  return itemRank.passed;
-};
 
 const meta = {
   title: 'Data Grid/TanStack',
@@ -91,26 +91,64 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export type Person = {
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
   age: number;
   city: string;
   status: 'pending' | 'in progress' | 'accepted' | 'declined';
+  isActive: boolean;
   disabledFields?: string[];
 };
 
 const getFieldError = (
-  errors: FieldErrors<Record<number, any>>,
-  rowIndex: number,
-  columnId: any,
-): FieldError | undefined =>
-  (errors?.[rowIndex] as Record<string, FieldError | undefined>)?.[columnId];
+  errors: FieldErrors<Record<string, any>>,
+  rowId: string | number,
+  columnId: string,
+): FieldError | undefined => {
+  const rowErrors = errors?.[String(rowId)] as Record<
+    string,
+    FieldError | undefined
+  >;
+  if (rowErrors && rowErrors[columnId]) {
+    return rowErrors[columnId];
+  }
+  return undefined;
+};
+
+const fakeData = makeData(100);
+
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  const itemRank = rankItem(row.getValue(columnId), value);
+  addMeta({ itemRank });
+  return itemRank.passed;
+};
+
+const statusInFilter: FilterFn<any> = (row, columnId, filterValue) => {
+  if (!filterValue || filterValue.length === 0) {
+    return true;
+  }
+  const value = String(row.getValue(columnId));
+  for (const current of filterValue) {
+    if (current === value) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const booleanTrueFilter: FilterFn<any> = (row, columnId, filterValue) => {
+  if (filterValue !== true) {
+    return true;
+  }
+  return row.getValue<boolean>(columnId) === true;
+};
 
 export const WithReactHookForm: Story = {
   tags: ['skip-playwright'],
   render: () => {
-    const [data, setData] = useState(makeData(100));
+    const [data, setData] = useState(fakeData);
     const [expanded, setExpanded] = useState<ExpandedState>({});
     const [globalFilter, setGlobalFilter] = useState('');
     const [inputGlobalFilter, setInputGlobalFilter] = useState('');
@@ -118,17 +156,34 @@ export const WithReactHookForm: Story = {
       pageIndex: 0,
       pageSize: 10,
     });
+    const [columnFilters, setColumnFilters] = useState<any>([]);
+    const [filterOpen, setFilterOpen] = useState(false);
+    const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+    const [temporarySelectedFilters, setTemporarySelectedFilters] = useState<
+      string[]
+    >([]);
+
+    const triggerRef = useRef<HTMLButtonElement>(null!);
+
+    const filterOptions = [
+      { id: 'pending', label: 'Pending Status', value: 'pending' },
+      { id: 'in-progress', label: 'In Progress Status', value: 'in progress' },
+      { id: 'accepted', label: 'Accepted Status', value: 'accepted' },
+      { id: 'declined', label: 'Declined Status', value: 'declined' },
+      { id: 'active-only', label: 'Active Users Only', value: 'active' },
+    ];
 
     const methods = useForm({
       defaultValues: data.reduce(
-        (previous, current, index) => {
-          previous[index] = current;
+        (previous, current: any) => {
+          previous[current.id] = current;
           return previous;
         },
-        {} as Record<number, Person>,
+        {} as Record<string, Person>,
       ),
       mode: 'onChange',
     });
+
     const {
       register,
       formState: { errors },
@@ -141,6 +196,15 @@ export const WithReactHookForm: Story = {
         }, 500),
       [],
     );
+
+    const handleTemporaryCheckboxChange = (value: string) => {
+      setTemporarySelectedFilters((previous) => {
+        if (previous.includes(value)) {
+          return previous.filter((current) => current !== value);
+        }
+        return [...previous, value];
+      });
+    };
 
     const columns = useMemo<ColumnDef<Person>[]>(() => {
       return [
@@ -176,7 +240,6 @@ export const WithReactHookForm: Story = {
             />
           ),
         },
-
         {
           accessorFn: (row) => `${row.firstName} ${row.lastName}`,
           id: 'fullName',
@@ -197,21 +260,21 @@ export const WithReactHookForm: Story = {
                 type: 'text',
                 props: {
                   'aria-label': 'Email input',
-                  ...register(`${row.index}.${column.id}` as never, {
+                  ...register(`${row.original.id}.${column.id}` as never, {
                     required: true,
                     pattern: /.+@.+\..+/,
                   }),
                   iconEnd:
-                    row.original?.disabledFields?.includes('email') || false
+                    row.original?.disabledFields?.includes('email') === true
                       ? 'block'
                       : undefined,
                   iconStart:
-                    row.original?.disabledFields?.includes('email') || false
+                    row.original?.disabledFields?.includes('email') === true
                       ? undefined
                       : 'edit',
-                  error: !!getFieldError(errors, row.index, column.id),
+                  error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('email') || false,
+                    row.original?.disabledFields?.includes('email') === true,
                   placeholder: 'Email',
                 },
               }}
@@ -234,19 +297,19 @@ export const WithReactHookForm: Story = {
                   'aria-label': 'Age input',
                   type: 'number',
                   iconStart:
-                    row.original?.disabledFields?.includes('age') || false
+                    row.original?.disabledFields?.includes('age') === true
                       ? undefined
                       : 'accessibility_new',
                   iconEnd:
-                    row.original?.disabledFields?.includes('age') || false
+                    row.original?.disabledFields?.includes('age') === true
                       ? 'block'
                       : undefined,
-                  ...register(`${row.index}.${column.id}` as never, {
+                  ...register(`${row.original.id}.${column.id}` as never, {
                     required: true,
                   }),
-                  error: !!getFieldError(errors, row.index, column.id),
+                  error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('age') || false,
+                    row.original?.disabledFields?.includes('age') === true,
                   placeholder: 'Age',
                 },
               }}
@@ -266,19 +329,19 @@ export const WithReactHookForm: Story = {
                 type: 'text',
                 props: {
                   'aria-label': 'City input',
-                  ...register(`${row.index}.${column.id}` as never, {
+                  ...register(`${row.original.id}.${column.id}` as never, {
                     required: true,
                   }),
-                  error: !!getFieldError(errors, row.index, column.id),
+                  error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('city') || false,
+                    row.original?.disabledFields?.includes('city') === true,
                   placeholder: 'City',
                   iconEnd:
-                    row.original?.disabledFields?.includes('city') || false
+                    row.original?.disabledFields?.includes('city') === true
                       ? 'block'
                       : undefined,
                   iconStart:
-                    row.original?.disabledFields?.includes('city') || false
+                    row.original?.disabledFields?.includes('city') === true
                       ? undefined
                       : 'placeholder',
                 },
@@ -300,19 +363,19 @@ export const WithReactHookForm: Story = {
                 type: 'checkbox',
                 props: {
                   'aria-label': 'Active status',
-                  ...register(`${row.index}.${column.id}` as never, {
+                  ...register(`${row.original.id}.${column.id}` as never, {
                     validate: (value) => {
                       return value === true;
                     },
                   }),
-                  error: !!getFieldError(errors, row.index, column.id),
+                  error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('isActive') || false,
+                    row.original?.disabledFields?.includes('isActive') === true,
                 },
               }}
             />
           ),
-          filterFn: 'includesString',
+          filterFn: booleanTrueFilter,
         },
         {
           accessorKey: 'status',
@@ -327,20 +390,21 @@ export const WithReactHookForm: Story = {
                 type: 'select',
                 props: {
                   'aria-label': 'Select status',
-                  ...register(`${row.index}.${column.id}` as never),
+                  ...register(`${row.original.id}.${column.id}` as never),
                   options: [
                     { value: 'pending', label: 'Pending' },
                     { value: 'in progress', label: 'In Progress' },
                     { value: 'accepted', label: 'Accepted' },
                     { value: 'declined', label: 'Declined' },
                   ],
-                  error: !!getFieldError(errors, row.index, column.id),
+                  error: !!getFieldError(errors, row.original.id, column.id),
                   disabled:
-                    row.original?.disabledFields?.includes('status') || false,
+                    row.original?.disabledFields?.includes('status') === true,
                 },
               }}
             />
           ),
+          filterFn: statusInFilter,
         },
       ];
     }, [setData, register, errors, expanded]);
@@ -348,16 +412,25 @@ export const WithReactHookForm: Story = {
     const table = useReactTable({
       data,
       columns,
-      filterFns: { fuzzy: fuzzyFilter },
-      state: { globalFilter, pagination, expanded },
+      getRowId: (row) => String(row.id),
+      filterFns: {
+        fuzzy: fuzzyFilter,
+      },
+      state: {
+        globalFilter,
+        columnFilters,
+        pagination,
+        expanded,
+      },
       onGlobalFilterChange: setGlobalFilter,
+      onColumnFiltersChange: setColumnFilters,
       globalFilterFn: 'fuzzy',
       getCoreRowModel: getCoreRowModel(),
       getFilteredRowModel: getFilteredRowModel(),
       getSortedRowModel: getSortedRowModel(),
       getPaginationRowModel: getPaginationRowModel(),
       onPaginationChange: setPagination,
-      autoResetPageIndex: false,
+      autoResetPageIndex: true,
       getRowCanExpand: () => true,
       onExpandedChange: setExpanded,
     });
@@ -375,6 +448,81 @@ export const WithReactHookForm: Story = {
       'in progress': TagTypeEnum.Warning,
     };
 
+    const applyFiltersToTable = (selected: string[]) => {
+      const statusValues: string[] = [];
+      let activeSelected = false;
+
+      for (const value of selected) {
+        if (value === 'active') {
+          activeSelected = true;
+        }
+        if (
+          value === 'pending' ||
+          value === 'in progress' ||
+          value === 'accepted' ||
+          value === 'declined'
+        ) {
+          statusValues.push(value);
+        }
+      }
+
+      const statusColumn = table.getColumn('status');
+      if (statusColumn) {
+        statusColumn.setFilterValue(
+          statusValues.length > 0 ? statusValues : undefined,
+        );
+      }
+
+      const activeColumn = table.getColumn('isActive');
+      if (activeColumn) {
+        activeColumn.setFilterValue(activeSelected === true ? true : undefined);
+      }
+
+      table.setPageIndex(0);
+    };
+
+    const handleApplyFilter = () => {
+      setAppliedFilters([...temporarySelectedFilters]);
+      applyFiltersToTable(temporarySelectedFilters);
+      setFilterOpen(false);
+    };
+
+    const handleClearFilters = () => {
+      setTemporarySelectedFilters([]);
+      setAppliedFilters([]);
+
+      const statusColumn = table.getColumn('status');
+      if (statusColumn) {
+        statusColumn.setFilterValue(undefined);
+      }
+      const activeColumn = table.getColumn('isActive');
+      if (activeColumn) {
+        activeColumn.setFilterValue(undefined);
+      }
+
+      table.setPageIndex(0);
+      setFilterOpen(false);
+    };
+
+    const handleRemoveFilter = (id: string) => {
+      const newApplied = appliedFilters.filter((current) => current !== id);
+      setAppliedFilters(newApplied);
+      setTemporarySelectedFilters(newApplied);
+      applyFiltersToTable(newApplied);
+    };
+
+    const handleFilterOpen = () => {
+      setTemporarySelectedFilters([...appliedFilters]);
+      setFilterOpen(true);
+    };
+
+    const handlePopoverOpenChange = (open: boolean) => {
+      if (open) {
+        setTemporarySelectedFilters([...appliedFilters]);
+      }
+      setFilterOpen(open);
+    };
+
     return (
       <div className="gi-p-2">
         <DataGridHeader>
@@ -389,14 +537,61 @@ export const WithReactHookForm: Story = {
               placeholder="Search all columns..."
             />
           </DataGridHeaderSearch>
-
           <DataGridHeaderFilter>
-            <Button onClick={() => null} variant="secondary" appearance="dark">
+            <Button
+              ref={triggerRef}
+              onClick={handleFilterOpen}
+              variant="secondary"
+              appearance="dark"
+            >
               Filters
             </Button>
+            <Popover
+              triggerRef={triggerRef}
+              open={filterOpen}
+              onOpenChange={handlePopoverOpenChange}
+              className="!gi-bg-white"
+            >
+              <div className="gi-w-64">
+                <DataGridHeaderFilterTitle>Filters</DataGridHeaderFilterTitle>
+                <DataGridHeaderFilterContent>
+                  <DataGridHeaderFilterContentTitle>
+                    Status & Activity
+                  </DataGridHeaderFilterContentTitle>
+                  {filterOptions.map((option) => (
+                    <InputCheckbox
+                      key={option.id}
+                      id={`checkbox-${option.id}`}
+                      label={option.label}
+                      value={option.id}
+                      checked={temporarySelectedFilters.includes(option.value)}
+                      onChange={() =>
+                        handleTemporaryCheckboxChange(option.value)
+                      }
+                      size="md"
+                    />
+                  ))}
+                </DataGridHeaderFilterContent>
+                <DataGridHeaderFilterActions>
+                  <Button
+                    onClick={handleClearFilters}
+                    variant="flat"
+                    appearance="dark"
+                  >
+                    Clear
+                  </Button>
+                  <Button
+                    onClick={handleApplyFilter}
+                    variant="secondary"
+                    appearance="dark"
+                  >
+                    Apply
+                  </Button>
+                </DataGridHeaderFilterActions>
+              </div>
+            </Popover>
           </DataGridHeaderFilter>
-
-          <DataGridHeaderActions className="gi-gap-4">
+          <DataGridHeaderActions>
             <Button onClick={() => null} variant="secondary">
               Delete
             </Button>
@@ -407,6 +602,12 @@ export const WithReactHookForm: Story = {
               Add
             </Button>
           </DataGridHeaderActions>
+          <DataGridHeaderFilterList
+            filters={filterOptions
+              .filter((option) => appliedFilters.includes(option.value))
+              .map((option) => ({ id: option.value, label: option.label }))}
+            onRemove={handleRemoveFilter}
+          />
         </DataGridHeader>
         <Table
           layout="auto"
@@ -446,7 +647,7 @@ export const WithReactHookForm: Story = {
                     </TableData>
                   ))}
                 </TableRow>
-                {row.getIsExpanded() && (
+                {row.getIsExpanded() === true && (
                   <TableRow>
                     <TableDataSlot colSpan={columns.length + 1}>
                       <div className="gi-text-sm">
@@ -480,10 +681,7 @@ export const WithReactHookForm: Story = {
               onChange={(event) => {
                 const pageSize = Number(event.target.value);
                 const pageIndex = pagination.pageIndex;
-                setPagination({
-                  pageIndex,
-                  pageSize,
-                });
+                setPagination({ pageIndex, pageSize });
               }}
             >
               <SelectItem value="10">10</SelectItem>
@@ -515,6 +713,49 @@ export const DataGridHeaderBasic: Story = {
     },
   },
   render: () => {
+    const triggerRef = useRef<HTMLButtonElement>(null!);
+    const [open, setOpen] = useState(false);
+    const [appliedFilters, setAppliedFilters] = useState<string[]>([]);
+    const [temporaryFilters, setTemporaryFilters] = useState<string[]>([]);
+
+    const options = [
+      { id: 'value-1', label: 'Option 1', value: 'value-1' },
+      { id: 'value-2', label: 'Option 2', value: 'value-2' },
+      { id: 'value-3', label: 'Option 3', value: 'value-3' },
+    ];
+
+    const handleCheckboxChange = (value: string) => {
+      setTemporaryFilters((previous) =>
+        previous.includes(value)
+          ? previous.filter((v) => v !== value)
+          : [...previous, value],
+      );
+    };
+
+    const handleApply = () => {
+      setAppliedFilters([...temporaryFilters]);
+      setOpen(false);
+    };
+
+    const handleClear = () => {
+      setTemporaryFilters([]);
+      setAppliedFilters([]);
+      setOpen(false);
+    };
+
+    const handleRemoveFilter = (id: string) => {
+      const newAppliedFilters = appliedFilters.filter((v) => v !== id);
+      setAppliedFilters(newAppliedFilters);
+      setTemporaryFilters(newAppliedFilters);
+    };
+
+    const handleFilterToggle = () => {
+      if (!open) {
+        setTemporaryFilters([...appliedFilters]);
+      }
+      setOpen(!open);
+    };
+
     return (
       <DataGridHeader>
         <DataGridHeaderSearch className="gi-max-w-52">
@@ -524,14 +765,60 @@ export const DataGridHeaderBasic: Story = {
             placeholder="Search all columns..."
           />
         </DataGridHeaderSearch>
-
         <DataGridHeaderFilter>
-          <Button onClick={() => null} variant="secondary" appearance="dark">
+          <Button
+            ref={triggerRef}
+            onClick={handleFilterToggle}
+            variant="secondary"
+            appearance="dark"
+          >
             Filters
           </Button>
+          <Popover
+            triggerRef={triggerRef}
+            open={open}
+            onOpenChange={(open) => {
+              if (open) {
+                setTemporaryFilters([...appliedFilters]);
+              }
+              setOpen(open);
+            }}
+            className="!gi-bg-white"
+          >
+            <div className="gi-w-64">
+              <DataGridHeaderFilterTitle>Filters</DataGridHeaderFilterTitle>
+              <DataGridHeaderFilterContent>
+                <DataGridHeaderFilterContentTitle>
+                  Category
+                </DataGridHeaderFilterContentTitle>
+                {options.map((opt) => (
+                  <InputCheckbox
+                    key={opt.id}
+                    id={`checkbox-${opt.id}`}
+                    label={opt.label}
+                    value={opt.id}
+                    checked={temporaryFilters.includes(opt.value)}
+                    onChange={() => handleCheckboxChange(opt.value)}
+                    size="md"
+                  />
+                ))}
+              </DataGridHeaderFilterContent>
+              <DataGridHeaderFilterActions>
+                <Button onClick={handleClear} variant="flat" appearance="dark">
+                  Clear
+                </Button>
+                <Button
+                  onClick={handleApply}
+                  variant="secondary"
+                  appearance="dark"
+                >
+                  Apply
+                </Button>
+              </DataGridHeaderFilterActions>
+            </div>
+          </Popover>
         </DataGridHeaderFilter>
-
-        <DataGridHeaderActions className="gi-gap-4">
+        <DataGridHeaderActions>
           <Button onClick={() => null} variant="secondary">
             Delete
           </Button>
@@ -542,6 +829,15 @@ export const DataGridHeaderBasic: Story = {
             Add
           </Button>
         </DataGridHeaderActions>
+        <DataGridHeaderFilterList
+          filters={options
+            .filter((opt) => appliedFilters.includes(opt.value))
+            .map((opt) => ({
+              id: opt.id,
+              label: opt.label,
+            }))}
+          onRemove={handleRemoveFilter}
+        />
       </DataGridHeader>
     );
   },
