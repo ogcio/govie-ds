@@ -222,6 +222,7 @@ onboarding
 organization
 organize
 organizing
+Pre
 pre-fill
 pre-made
 prebuilt
@@ -254,6 +255,10 @@ well-organized
 whitespace
 with-center-medium
 with-iframe-embed
+whitespace-pre
+whitespace-pre-wrap
+whitespace-break-spaces
+Whitespace
 xl
 xs
 focusable
