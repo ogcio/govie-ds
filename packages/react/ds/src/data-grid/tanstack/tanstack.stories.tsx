@@ -216,8 +216,12 @@ export const WithReactHookForm: Story = {
               id="all"
               value="all"
               aria-label="Select all rows"
-              checked={table.getIsAllRowsSelected()}
-              onChange={table.getToggleAllRowsSelectedHandler()}
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                table.getIsSomePageRowsSelected()
+              }
+              onChange={table.getToggleAllPageRowsSelectedHandler()}
+              indeterminate={table.getIsSomePageRowsSelected()}
             />
           ),
           cell: ({ row }) => (
@@ -523,11 +527,13 @@ export const WithReactHookForm: Story = {
       }
       setFilterOpen(open);
     };
+
     const selectedRows = table.getSelectedRowModel().rows;
+    const isSelectedRows = selectedRows.length > 0;
 
     return (
       <div className="gi-p-2">
-        <DataGridHeader>
+        <DataGridHeader showHeader={!isSelectedRows}>
           <DataGridHeaderSearch className="gi-max-w-52">
             <InputText
               value={inputGlobalFilter}
@@ -595,35 +601,36 @@ export const WithReactHookForm: Story = {
           </DataGridHeaderFilter>
           <DataGridHeaderActions>
             <Button onClick={() => null} variant="secondary">
-              Delete
-            </Button>
-            <Button onClick={() => null} variant="secondary">
               Export
             </Button>
             <Button onClick={() => null} variant="primary">
               Add
             </Button>
           </DataGridHeaderActions>
+
           <DataGridHeaderFilterList
             filters={filterOptions
               .filter((option) => appliedFilters.includes(option.value))
               .map((option) => ({ id: option.value, label: option.label }))}
             onRemove={handleRemoveFilter}
+            onClear={handleClearFilters}
           />
         </DataGridHeader>
-        {selectedRows.length > 0 && (
+        {isSelectedRows && (
           <DataGridSelectedRowsBanner
             selectedCount={selectedRows.length}
             actions={
               <>
                 <Button appearance="light" size="medium" variant="flat">
-                  Button
+                  Delete
                 </Button>
-                <Button appearance="light" size="medium" variant="flat">
-                  Button
-                </Button>
-                <Button appearance="light" size="medium" variant="flat">
-                  Button
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
                 </Button>
               </>
             }
@@ -857,6 +864,7 @@ export const DataGridHeaderBasic: Story = {
               label: opt.label,
             }))}
           onRemove={handleRemoveFilter}
+          onClear={handleClear}
         />
       </DataGridHeader>
     );

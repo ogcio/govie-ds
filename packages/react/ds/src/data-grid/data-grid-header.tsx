@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../button/button.js';
 import { Chip } from '../chip/chip.js';
 import { cn } from '../cn.js';
 import { Heading } from '../heading/heading.js';
@@ -10,6 +11,8 @@ interface DataGridHeaderTypeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 interface DataGridHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  showHeader?: boolean;
+  showFilter?: boolean;
 }
 
 const isSection = <P,>(
@@ -22,6 +25,8 @@ const isSection = <P,>(
 export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
   children,
   className,
+  showHeader = true,
+  showFilter = true,
   ...props
 }) => {
   const { search, filter, filterList, actions } = React.useMemo(() => {
@@ -54,13 +59,17 @@ export const DataGridHeader: React.FC<DataGridHeaderProps> = ({
         className,
       )}
     >
-      <div className="gi-flex gi-flex-1 gi-gap-4 gi-items-center">
-        {search}
-        {filter}
-        {actions}
-      </div>
+      {showHeader && (
+        <div className="gi-flex gi-flex-1 gi-gap-4 gi-items-center">
+          {search}
+          {filter}
+          {actions}
+        </div>
+      )}
 
-      {filterList && <div className="gi-w-full">{filterList}</div>}
+      {filterList && showFilter && (
+        <div className="gi-w-full">{filterList}</div>
+      )}
     </div>
   );
 };
@@ -159,12 +168,13 @@ export const DataGridHeaderFilterActions: React.FC<DataGridHeaderTypeProps> = ({
 type DataGridHeaderFilterListProps = {
   filters: { id: string; label: string }[];
   onRemove?: (id: string) => void;
+  onClear?: () => void;
   className?: string;
 };
 
 export const DataGridHeaderFilterList: React.FC<
   DataGridHeaderFilterListProps
-> = ({ filters, onRemove, className, ...props }) => {
+> = ({ filters, onRemove, onClear, className, ...props }) => {
   if (!filters || filters.length === 0) {
     return null;
   }
@@ -188,6 +198,17 @@ export const DataGridHeaderFilterList: React.FC<
           label={filter.label}
         />
       ))}
+
+      <Button
+        appearance="dark"
+        size="medium"
+        variant="flat"
+        onClick={() => {
+          onClear?.();
+        }}
+      >
+        {t('dataGridHeader.clearAllFilters', { defaultValue: 'Clear all' })}
+      </Button>
     </div>
   );
 };
