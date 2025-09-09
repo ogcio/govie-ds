@@ -207,7 +207,9 @@ export const DataGridHeaderFilterList: React.FC<
           onClear?.();
         }}
       >
-        {t('dataGridHeader.clearAllFilters', { defaultValue: 'Clear all' })}
+        {t('dataGridHeader.clearAllFilters', {
+          defaultValue: 'Clear all filters',
+        })}
       </Button>
     </div>
   );
