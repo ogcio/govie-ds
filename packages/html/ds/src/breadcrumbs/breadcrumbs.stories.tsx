@@ -68,3 +68,17 @@ export const WithSingleItemAndIconStart: Story = {
   },
   render: (arguments_) => createElement(arguments_),
 };
+
+export const MultipleLevels: Story = {
+  args: {
+    navItems: [
+      { label: 'Departments', href: '/departments' },
+      { ellipsis: true },
+      { label: 'Level 2', href: '/lv1' },
+      { label: 'Level 3', href: '/lv3' },
+      { label: 'Level 4', href: '/lv4' },
+      { label: 'Level 5', href: '/lv5', currentPage: true },
+    ],
+  },
+  render: (arguments_) => createElement(arguments_),
+};

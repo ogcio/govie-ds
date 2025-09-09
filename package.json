@@ -43,7 +43,7 @@
       "pnpm -F @ogcio/examples-nextjs run lint --dir"
     ],
     "apps/docs/**/*.{ts,tsx}": [
-      "pnpm -F @ogcio/design-system-docs run lint:code --fix"
+      "pnpm -F @ogcio/design-system-docs run lint:code"
     ],
     "apps/docs/**/*.mdx": [
       "pnpm -F @ogcio/design-system-docs run lint:spelling"
