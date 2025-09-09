@@ -1,0 +1,60 @@
+---
+title: 'Spinner'
+description: 'Progress circles indicate a background activity'
+status: 'stable'
+component:
+  id: 'spinner'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8988-29014'
+  status: 'stable'
+---
+
+# Spinner
+
+A spinner is a rotating circle that indicates the status or state of completion for a process that's part of a user flow, such as verifying personal information or sending a request. The circles can indicate that a process is underway.
+
+<Section current="design">
+
+<ComponentPreview>
+  <ComponentContainer>
+    <Spinner />
+  </ComponentContainer>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=8988-29014" />
+
+## Usage
+
+<ComponentContainer>
+  <Button disabled={true}>
+    Loading...
+    <Spinner inline={true} />
+  </Button>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Modal triggerButton={<Button>Open Modal</Button>}>
+    <div className="grid gap-4 px-4 justify-items-center">
+      <Spinner size="xl" />
+      <span>Loading...</span>
+    </div>
+  </Modal>
+</ComponentContainer>
+
+### Do's
+
+- Use spinners for short waits (under 10 seconds).
+- Provide context, e.g., “Loading your profile…”.
+- Place the spinner prominently with sufficient contrast.
+- Prefer skeletons or progress bars for longer tasks.
+
+### Don'ts
+
+- Don't show multiple spinners on the same context.
+- Don't leave users waiting without timeout/error handling or a retry option.
+
+<ComponentContainer>
+  <Spinner />
+  <Spinner />
+  <Spinner />
+</ComponentContainer>
+
+</Section>

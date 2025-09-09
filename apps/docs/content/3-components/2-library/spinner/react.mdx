@@ -1,0 +1,74 @@
+---
+title: 'Spinner'
+description: 'Progress circles indicate a background activity React Component'
+status: 'stable'
+component:
+  id: 'spinner-react'
+  link: '/story/indicators-spinner--default'
+  status: 'stable'
+  properties:
+    - name: 'SpinnerProps'
+      fields:
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the spinner. Available options: sm, md, lg, xl.'
+          required: false
+        - name: 'inline'
+          ofType: 'boolean'
+          description: 'If true, the spinner will be displayed inline with other content. If false, it will be displayed as a block element.'
+          required: false
+        - name: 'dataTestid'
+          ofType: 'string'
+          description: 'Defines the test id for testing proposals.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/indicators-spinner--default'
+    - name: 'small'
+      url: '/story/indicators-spinner--small'
+    - name: 'large'
+      url: '/story/indicators-spinner--large'
+    - name: 'extra-large'
+      url: '/story/indicators-spinner--extra-large'
+---
+
+# Spinner
+
+A spinner is a rotating circle that indicates the status or state of completion for a process that's part of a user flow, such as verifying personal information or sending a request. The circles can indicate that a process is underway.
+
+<Section current="react">
+<ComponentPreview>
+  <ComponentContainer>
+    <Spinner />
+  </ComponentContainer>
+</ComponentPreview>
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame componentId="spinner-react" story="default" />
+</ComponentPreview>
+
+### Small
+
+<ComponentPreview>
+  <StorybookFrame componentId="spinner-react" story="small" />
+</ComponentPreview>
+
+### Large
+
+<ComponentPreview>
+  <StorybookFrame componentId="spinner-react" story="large" />
+</ComponentPreview>
+
+### Extra Large
+
+<ComponentPreview>
+  <StorybookFrame componentId="spinner-react" story="extra-large" />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="spinner-react" />
+
+</Section>
