@@ -576,7 +576,7 @@ export const WithReactHookForm: Story = {
                       onChange={() =>
                         handleTemporaryCheckboxChange(option.value)
                       }
-                      size="md"
+                      size="sm"
                     />
                   ))}
                 </DataGridHeaderFilterContent>
@@ -699,7 +699,7 @@ export const WithReactHookForm: Story = {
         </Table>
         <DataGridFooter>
           <DataGridFooterStart className="gi-space-x-2">
-            <span>Rows per page</span>
+            <span className="gi-text-sm">Rows per page</span>
             <SelectNative
               id="data-grid-rows-per-page"
               aria-label="Select"
