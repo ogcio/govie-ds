@@ -533,6 +533,26 @@ export const WithReactHookForm: Story = {
 
     return (
       <div className="gi-p-2">
+        {isSelectedRows && (
+          <DataGridSelectedRowsBanner
+            selectedCount={selectedRows.length}
+            actions={
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Delete
+                </Button>
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
+                </Button>
+              </>
+            }
+          />
+        )}
         <DataGridHeader showHeader={!isSelectedRows}>
           <DataGridHeaderSearch className="gi-max-w-52">
             <InputText
@@ -545,6 +565,7 @@ export const WithReactHookForm: Story = {
               placeholder="Search all columns..."
             />
           </DataGridHeaderSearch>
+
           <DataGridHeaderFilter>
             <Button
               ref={triggerRef}
@@ -599,12 +620,13 @@ export const WithReactHookForm: Story = {
               </div>
             </Popover>
           </DataGridHeaderFilter>
+
           <DataGridHeaderActions>
             <Button onClick={() => null} variant="secondary">
-              Export
+              Export table
             </Button>
             <Button onClick={() => null} variant="primary">
-              Add
+              Create new
             </Button>
           </DataGridHeaderActions>
 
@@ -616,26 +638,7 @@ export const WithReactHookForm: Story = {
             onClear={handleClearFilters}
           />
         </DataGridHeader>
-        {isSelectedRows && (
-          <DataGridSelectedRowsBanner
-            selectedCount={selectedRows.length}
-            actions={
-              <>
-                <Button appearance="light" size="medium" variant="flat">
-                  Delete
-                </Button>
-                <Button
-                  appearance="light"
-                  size="medium"
-                  variant="flat"
-                  onClick={() => table.resetRowSelection()}
-                >
-                  Clear Selection
-                </Button>
-              </>
-            }
-          />
-        )}
+
         <Table
           layout="auto"
           rowSize="md"
@@ -847,13 +850,10 @@ export const DataGridHeaderBasic: Story = {
         </DataGridHeaderFilter>
         <DataGridHeaderActions>
           <Button onClick={() => null} variant="secondary">
-            Delete
-          </Button>
-          <Button onClick={() => null} variant="secondary">
-            Export
+            Export table
           </Button>
           <Button onClick={() => null} variant="primary">
-            Add
+            Create new
           </Button>
         </DataGridHeaderActions>
         <DataGridHeaderFilterList
