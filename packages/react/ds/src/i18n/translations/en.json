@@ -17,6 +17,7 @@
       "cookieBanner.dismissCookieBanner": "Dismiss cookie banner",
       "dataGridHeader.filtersApplied": "Filters applied ({{ length }}):",
       "dataGrid.clearAllFilters": "Clear all filters",
+      "dataGrid.clearSelection": "Clear selection",
       "dataGrid.selectedRows_one": "{{count}} Row selected",
       "dataGrid.selectedRows_other": "{{count}} Rows selected",
       "dropdownItem.noResultFound": "No results found.",
