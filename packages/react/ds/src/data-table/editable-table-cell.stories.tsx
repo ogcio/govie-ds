@@ -3,7 +3,7 @@ import { userEvent, within, expect } from 'storybook/test';
 import { EditableTableCell } from './editable-table-cell.js';
 
 const meta = {
-  title: 'Data Grid/EditableTableCell',
+  title: 'Data Table/EditableTableCell',
   component: EditableTableCell,
   parameters: {
     layout: 'fullscreen',

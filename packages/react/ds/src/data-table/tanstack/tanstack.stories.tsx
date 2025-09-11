@@ -40,22 +40,23 @@ import { TableExpandIcon, TableDataSlot } from '../../table/table-data.js';
 import { TablePagination } from '../../table/table-pagination.js';
 import { Tag, TagTypeEnum } from '../../tag/tag.js';
 import {
-  DataGridFooter,
-  DataGridFooterCenter,
-  DataGridFooterEnd,
-  DataGridFooterStart,
-} from '../data-grid-footer.js';
+  DataTableFooter,
+  DataTableFooterCenter,
+  DataTableFooterEnd,
+  DataTableFooterStart,
+} from '../data-table-footer.js';
 import {
-  DataGridHeader,
-  DataGridHeaderActions,
-  DataGridHeaderFilter,
-  DataGridHeaderFilterActions,
-  DataGridHeaderFilterContent,
-  DataGridHeaderFilterContentTitle,
-  DataGridHeaderFilterList,
-  DataGridHeaderFilterTitle,
-  DataGridHeaderSearch,
-} from '../data-grid-header.js';
+  DataTableHeader,
+  DataTableHeaderActions,
+  DataTableHeaderFilter,
+  DataTableHeaderFilterActions,
+  DataTableHeaderFilterContent,
+  DataTableHeaderFilterContentTitle,
+  DataTableHeaderFilterList,
+  DataTableHeaderFilterTitle,
+  DataTableHeaderSearch,
+} from '../data-table-header.js';
+import { DataTableSelectedRowsBanner } from '../data-table-selected-rows.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -69,7 +70,7 @@ declare module '@tanstack/react-table' {
 }
 
 const meta = {
-  title: 'Data Grid/TanStack',
+  title: 'Data Table/TanStack',
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -215,8 +216,12 @@ export const WithReactHookForm: Story = {
               id="all"
               value="all"
               aria-label="Select all rows"
-              checked={table.getIsAllRowsSelected()}
-              onChange={table.getToggleAllRowsSelectedHandler()}
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                table.getIsSomePageRowsSelected()
+              }
+              onChange={table.getToggleAllPageRowsSelectedHandler()}
+              indeterminate={table.getIsSomePageRowsSelected()}
             />
           ),
           cell: ({ row }) => (
@@ -523,21 +528,45 @@ export const WithReactHookForm: Story = {
       setFilterOpen(open);
     };
 
+    const selectedRows = table.getSelectedRowModel().rows;
+    const isSelectedRows = selectedRows.length > 0;
+
     return (
       <div className="gi-p-2">
-        <DataGridHeader>
-          <DataGridHeaderSearch className="gi-max-w-52">
+        {isSelectedRows && (
+          <DataTableSelectedRowsBanner
+            selectedCount={selectedRows.length}
+            actions={
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Delete
+                </Button>
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
+                </Button>
+              </>
+            }
+          />
+        )}
+        <DataTableHeader showHeader={!isSelectedRows}>
+          <DataTableHeaderSearch className="gi-max-w-52">
             <InputText
               value={inputGlobalFilter}
-              id="data-grid-global-filter"
+              id="data-table-global-filter"
               onChange={(event) => {
                 setInputGlobalFilter(event.target.value);
                 debouncedUpdateData(event.target.value);
               }}
               placeholder="Search all columns..."
             />
-          </DataGridHeaderSearch>
-          <DataGridHeaderFilter>
+          </DataTableHeaderSearch>
+
+          <DataTableHeaderFilter>
             <Button
               ref={triggerRef}
               onClick={handleFilterOpen}
@@ -553,11 +582,11 @@ export const WithReactHookForm: Story = {
               className="!gi-bg-white"
             >
               <div className="gi-w-64">
-                <DataGridHeaderFilterTitle>Filters</DataGridHeaderFilterTitle>
-                <DataGridHeaderFilterContent>
-                  <DataGridHeaderFilterContentTitle>
+                <DataTableHeaderFilterTitle>Filters</DataTableHeaderFilterTitle>
+                <DataTableHeaderFilterContent>
+                  <DataTableHeaderFilterContentTitle>
                     Status & Activity
-                  </DataGridHeaderFilterContentTitle>
+                  </DataTableHeaderFilterContentTitle>
                   {filterOptions.map((option) => (
                     <InputCheckbox
                       key={option.id}
@@ -568,11 +597,11 @@ export const WithReactHookForm: Story = {
                       onChange={() =>
                         handleTemporaryCheckboxChange(option.value)
                       }
-                      size="md"
+                      size="sm"
                     />
                   ))}
-                </DataGridHeaderFilterContent>
-                <DataGridHeaderFilterActions>
+                </DataTableHeaderFilterContent>
+                <DataTableHeaderFilterActions>
                   <Button
                     onClick={handleClearFilters}
                     variant="flat"
@@ -587,28 +616,29 @@ export const WithReactHookForm: Story = {
                   >
                     Apply
                   </Button>
-                </DataGridHeaderFilterActions>
+                </DataTableHeaderFilterActions>
               </div>
             </Popover>
-          </DataGridHeaderFilter>
-          <DataGridHeaderActions>
+          </DataTableHeaderFilter>
+
+          <DataTableHeaderActions>
             <Button onClick={() => null} variant="secondary">
-              Delete
-            </Button>
-            <Button onClick={() => null} variant="secondary">
-              Export
+              Export table
             </Button>
             <Button onClick={() => null} variant="primary">
-              Add
+              Create new
             </Button>
-          </DataGridHeaderActions>
-          <DataGridHeaderFilterList
+          </DataTableHeaderActions>
+
+          <DataTableHeaderFilterList
             filters={filterOptions
               .filter((option) => appliedFilters.includes(option.value))
               .map((option) => ({ id: option.value, label: option.label }))}
             onRemove={handleRemoveFilter}
+            onClear={handleClearFilters}
           />
-        </DataGridHeader>
+        </DataTableHeader>
+
         <Table
           layout="auto"
           rowSize="md"
@@ -670,11 +700,11 @@ export const WithReactHookForm: Story = {
             ))}
           </TableBody>
         </Table>
-        <DataGridFooter>
-          <DataGridFooterStart className="gi-space-x-2">
-            <span>Rows per page</span>
+        <DataTableFooter>
+          <DataTableFooterStart className="gi-space-x-2">
+            <span className="gi-text-sm">Rows per page</span>
             <SelectNative
-              id="data-grid-rows-per-page"
+              id="data-table-rows-per-page"
               aria-label="Select"
               className="!gi-min-w-12"
               value={pagination.pageSize}
@@ -689,26 +719,26 @@ export const WithReactHookForm: Story = {
               <SelectItem value="30">30</SelectItem>
               <SelectItem value="40">40</SelectItem>
             </SelectNative>
-          </DataGridFooterStart>
-          <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+          </DataTableFooterStart>
+          <DataTableFooterEnd className="gi-w-1/2 gi-text-right">
             <TablePagination
               currentPage={pagination.pageIndex + 1}
               totalPages={table.getPageCount()}
               onPageChange={(page) => table.setPageIndex(page - 1)}
             />
-          </DataGridFooterEnd>
-        </DataGridFooter>
+          </DataTableFooterEnd>
+        </DataTableFooter>
       </div>
     );
   },
 };
 
-export const DataGridHeaderBasic: Story = {
+export const DataTableHeaderBasic: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Basic usage of the DataGridHeader component with search, filter, and action buttons.',
+          'Basic usage of the DataTableHeader component with search, filter, and action buttons.',
       },
     },
   },
@@ -757,15 +787,15 @@ export const DataGridHeaderBasic: Story = {
     };
 
     return (
-      <DataGridHeader>
-        <DataGridHeaderSearch className="gi-max-w-52">
+      <DataTableHeader>
+        <DataTableHeaderSearch className="gi-max-w-52">
           <InputText
-            id="data-grid-global-filter"
+            id="data-table-global-filter"
             onChange={() => null}
             placeholder="Search all columns..."
           />
-        </DataGridHeaderSearch>
-        <DataGridHeaderFilter>
+        </DataTableHeaderSearch>
+        <DataTableHeaderFilter>
           <Button
             ref={triggerRef}
             onClick={handleFilterToggle}
@@ -786,11 +816,11 @@ export const DataGridHeaderBasic: Story = {
             className="!gi-bg-white"
           >
             <div className="gi-w-64">
-              <DataGridHeaderFilterTitle>Filters</DataGridHeaderFilterTitle>
-              <DataGridHeaderFilterContent>
-                <DataGridHeaderFilterContentTitle>
+              <DataTableHeaderFilterTitle>Filters</DataTableHeaderFilterTitle>
+              <DataTableHeaderFilterContent>
+                <DataTableHeaderFilterContentTitle>
                   Category
-                </DataGridHeaderFilterContentTitle>
+                </DataTableHeaderFilterContentTitle>
                 {options.map((opt) => (
                   <InputCheckbox
                     key={opt.id}
@@ -802,8 +832,8 @@ export const DataGridHeaderBasic: Story = {
                     size="md"
                   />
                 ))}
-              </DataGridHeaderFilterContent>
-              <DataGridHeaderFilterActions>
+              </DataTableHeaderFilterContent>
+              <DataTableHeaderFilterActions>
                 <Button onClick={handleClear} variant="flat" appearance="dark">
                   Clear
                 </Button>
@@ -814,22 +844,19 @@ export const DataGridHeaderBasic: Story = {
                 >
                   Apply
                 </Button>
-              </DataGridHeaderFilterActions>
+              </DataTableHeaderFilterActions>
             </div>
           </Popover>
-        </DataGridHeaderFilter>
-        <DataGridHeaderActions>
+        </DataTableHeaderFilter>
+        <DataTableHeaderActions>
           <Button onClick={() => null} variant="secondary">
-            Delete
-          </Button>
-          <Button onClick={() => null} variant="secondary">
-            Export
+            Export table
           </Button>
           <Button onClick={() => null} variant="primary">
-            Add
+            Create new
           </Button>
-        </DataGridHeaderActions>
-        <DataGridHeaderFilterList
+        </DataTableHeaderActions>
+        <DataTableHeaderFilterList
           filters={options
             .filter((opt) => appliedFilters.includes(opt.value))
             .map((opt) => ({
@@ -837,31 +864,32 @@ export const DataGridHeaderBasic: Story = {
               label: opt.label,
             }))}
           onRemove={handleRemoveFilter}
+          onClear={handleClear}
         />
-      </DataGridHeader>
+      </DataTableHeader>
     );
   },
 };
 
-export const DataGridFooterBasic: Story = {
+export const DataTableFooterBasic: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'A basic footer for DataGrid Table, demonstrating how to use the footer components with DataGridFooter, DataGridFooterStart, DataGridFooterCenter, and DataGridFooterEnd.',
+          'A basic footer for DataTable, demonstrating how to use the footer components with DataTableFooter, DataTableFooterStart, DataTableFooterCenter, and DataTableFooterEnd.',
       },
     },
   },
   render: () => (
-    <DataGridFooter>
-      <DataGridFooterStart className="gi-w-1/3">
-        <span>Data Grid Example</span>
-      </DataGridFooterStart>
-      <DataGridFooterCenter className="gi-w-1/3 gi-space-x-2">
+    <DataTableFooter>
+      <DataTableFooterStart className="gi-w-1/3">
+        <span>Data Table Example</span>
+      </DataTableFooterStart>
+      <DataTableFooterCenter className="gi-w-1/3 gi-space-x-2">
         <span>Rows per page</span>
         <SelectNative
           className="!gi-min-w-12"
-          id="data-grid-footer-rows-per-page"
+          id="data-table-footer-rows-per-page"
           aria-label="Select"
         >
           <SelectItem value="10">10</SelectItem>
@@ -869,15 +897,15 @@ export const DataGridFooterBasic: Story = {
           <SelectItem value="30">30</SelectItem>
           <SelectItem value="40">40</SelectItem>
         </SelectNative>
-      </DataGridFooterCenter>
-      <DataGridFooterEnd className="gi-w-1/2 gi-text-right">
+      </DataTableFooterCenter>
+      <DataTableFooterEnd className="gi-w-1/2 gi-text-right">
         <TablePagination
           currentPage={1}
           totalPages={10}
           onPageChange={() => null}
         />
-      </DataGridFooterEnd>
-    </DataGridFooter>
+      </DataTableFooterEnd>
+    </DataTableFooter>
   ),
 };
 
