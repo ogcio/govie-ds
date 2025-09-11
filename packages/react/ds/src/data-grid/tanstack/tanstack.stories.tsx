@@ -536,11 +536,20 @@ export const WithReactHookForm: Story = {
         {isSelectedRows && (
           <DataGridSelectedRowsBanner
             selectedCount={selectedRows.length}
-            onClearSelection={() => table.resetRowSelection()}
             actions={
-              <Button appearance="light" size="medium" variant="flat">
-                Delete
-              </Button>
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Delete
+                </Button>
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
+                </Button>
+              </>
             }
           />
         )}
