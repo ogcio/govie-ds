@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.14.0...design-tailwind-v1.14.1) (2025-09-11)
+
+
+### Bug Fixes
+
+* Breadcrums on mobile AB[#30766](https://github.com/ogcio/govie-ds/issues/30766) ([#710](https://github.com/ogcio/govie-ds/issues/710)) ([3f8e421](https://github.com/ogcio/govie-ds/commit/3f8e421e092774343295cc2853285e4a0b83ce3e))
+
 ## [1.14.0](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.13.4...design-tailwind-v1.14.0) (2025-09-01)
 
 
