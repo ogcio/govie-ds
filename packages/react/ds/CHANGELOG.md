@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.17.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.16.0...react-lib-v1.17.0) (2025-09-11)
+
+
+### Features
+
+* add data grid filter options AB[#30385](https://github.com/ogcio/govie-ds/issues/30385) ([#706](https://github.com/ogcio/govie-ds/issues/706)) ([073a0e6](https://github.com/ogcio/govie-ds/commit/073a0e6d29b8dc56220e99885104cf428d132fe8))
+* data grid - selected rows banner AB[#30647](https://github.com/ogcio/govie-ds/issues/30647) ([#712](https://github.com/ogcio/govie-ds/issues/712)) ([696a37a](https://github.com/ogcio/govie-ds/commit/696a37ac9e9aef2560dd468be47e9db5492966de))
+
+
+### Bug Fixes
+
+* Breadcrums on mobile AB[#30766](https://github.com/ogcio/govie-ds/issues/30766) ([#710](https://github.com/ogcio/govie-ds/issues/710)) ([3f8e421](https://github.com/ogcio/govie-ds/commit/3f8e421e092774343295cc2853285e4a0b83ce3e))
+* rename data grid to data table AB[#30858](https://github.com/ogcio/govie-ds/issues/30858) ([#716](https://github.com/ogcio/govie-ds/issues/716)) ([88f62a3](https://github.com/ogcio/govie-ds/commit/88f62a3084bf65e5283c11f5773b9bd52990a434))
+
+
+### Miscellaneous Chores
+
+* make test fake data static ([38f127d](https://github.com/ogcio/govie-ds/commit/38f127d14906eca57bc4fdcbdf34395a6bab45fb))
+* Removing warnings AB[#30207](https://github.com/ogcio/govie-ds/issues/30207) ([#708](https://github.com/ogcio/govie-ds/issues/708)) ([61e00c5](https://github.com/ogcio/govie-ds/commit/61e00c5900efbad9dcd7d122b77335303530473b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.1
+
 ## [1.16.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.15.3...react-lib-v1.16.0) (2025-09-01)
 
 
