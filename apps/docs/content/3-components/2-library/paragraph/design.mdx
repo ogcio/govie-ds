@@ -1,0 +1,69 @@
+---
+title: 'Paragraph'
+description: 'Paragraph Component'
+status: 'stable'
+component:
+  id: 'paragraph'
+  link: 'https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4'
+  status: 'stable'
+---
+
+# Paragraph
+
+The Paragraph component provides consistent, responsive typography for body and inline text. It ensures readability and spacing across applications, with flexible size and element options (`p` or `span`).
+
+<Section current="design">
+
+<ComponentPreview>
+  <Paragraph>This is a paragraph</Paragraph>
+</ComponentPreview>
+<FigmaPreviewButton href="https://www.figma.com/design/ZEqfpXhocdZs1K5YfsE5ws/Design-system?node-id=32-923&t=Re0xIRAmWNDNItHY-4" />
+
+## Variants
+
+### Sizes
+
+<ComponentContainer>
+  <Paragraph size="sm">Small paragraph</Paragraph>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Paragraph size="md">Medium paragraph (default)</Paragraph>
+</ComponentContainer>
+
+<ComponentContainer>
+  <Paragraph size="lg">Large paragraph</Paragraph>
+</ComponentContainer>
+
+## Usage
+
+Use the Paragraph component to create clear, consistent text blocks across your application. It supports both block (`<p>`) and inline (`<span>`) elements, offers size variants (`sm`, `md`, `lg`), and provides alignment and whitespace options to adapt text for different contexts while maintaining readability.
+
+## Do's and Don'ts
+
+### Do
+
+- Use the Paragraph component to display text content with consistent styling across your application.
+- Use `<p>` for block text and `as="span"` for inline text.
+- Adjust the `size` property (`lg`, `md`, `sm`) to create hierarchy between headings, subheadings, and body text.
+- Keep text blocks readable and well-spaced to follow the design system guidelines.
+
+<ComponentContainer>
+  <Paragraph size="md" align="start">
+    {`Use Paragraph for body text to ensure consistency and readability.`}
+  </Paragraph>
+</ComponentContainer>
+
+### Don't
+
+- Don't use Paragraph as a replacement for headings or labels that have their own components.
+- Don't center large blocks of text unless there is a strong design reason — it reduces readability.
+- Don't rely on Paragraph for highly customised text styles or complex formatting needs.
+
+  <ComponentContainer>
+    <Paragraph size="lg" align="center">
+      {`Avoid centering large text blocks — it hurts readability.`}
+    </Paragraph>
+  </ComponentContainer>
+
+</Section>

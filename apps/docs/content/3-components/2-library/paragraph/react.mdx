@@ -1,0 +1,121 @@
+---
+title: 'Paragraph'
+description: 'Paragraph Component React Component'
+status: 'stable'
+component:
+  id: 'paragraph-react'
+  link: '/story/typography-paragraph--default'
+  status: 'stable'
+  properties:
+    - name: 'ParagraphProps'
+      fields:
+        - name: 'children'
+          ofType: 'node'
+          description: 'The text content of the paragraph.'
+          required: true
+        - name: 'as'
+          ofType: 'string'
+          description: 'Specifies the HTML element to render the component as. Options: p, span.'
+          required: false
+        - name: 'size'
+          ofType: 'string'
+          description: 'Specifies the size of the paragraph. Options: lg, md, sm.'
+          required: false
+        - name: 'align'
+          ofType: 'string'
+          description: 'Specifies the alignment of the paragraph. Options: start, center, end, justify.'
+          required: false
+        - name: 'whitespace'
+          ofType: 'string'
+          description: 'Specifies the whitespace property. Options: normal, pre, pre-wrap, break-spaces.'
+          required: false
+  stories:
+    - name: 'default'
+      url: '/story/typography-paragraph--default'
+    - name: 'right-alignment'
+      url: '/story/typography-paragraph--right-alignment'
+    - name: 'whitespace-pre'
+      url: '/story/typography-paragraph--whitespace-pre'
+    - name: 'whitespace-pre-wrap'
+      url: '/story/typography-paragraph--whitespace-pre-wrap'
+    - name: 'whitespace-break-spaces'
+      url: '/story/typography-paragraph--whitespace-break-spaces'
+    - name: 'as-span'
+      url: '/story/typography-paragraph--as-span'
+---
+
+# Paragraph
+
+The Paragraph component provides consistent, responsive typography for body and inline text. It ensures readability and spacing across applications, with flexible size and element options (`p` or `span`).
+
+<Section current="react">
+
+<ComponentPreview>
+  <Paragraph>This is a paragraph</Paragraph>
+</ComponentPreview>
+
+### Default
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px]"
+    componentId="paragraph-react"
+    story="default"
+  />
+</ComponentPreview>
+
+### Right Alignment
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px]"
+    componentId="paragraph-react"
+    story="right-alignment"
+  />
+</ComponentPreview>
+
+### Whitespace Pre
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px] h-[200px]"
+    componentId="paragraph-react"
+    story="whitespace-pre"
+  />
+</ComponentPreview>
+
+### Whitespace Pre Wrap
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px] h-[200px]"
+    componentId="paragraph-react"
+    story="whitespace-pre-wrap"
+  />
+</ComponentPreview>
+
+### Whitespace Break Spaces
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px] h-[200px]"
+    componentId="paragraph-react"
+    story="whitespace-break-spaces"
+  />
+</ComponentPreview>
+
+### As Span
+
+<ComponentPreview>
+  <StorybookFrame
+    className="w-[640px]"
+    componentId="paragraph-react"
+    story="as-span"
+  />
+</ComponentPreview>
+
+## Properties
+
+<ComponentPropertiesTable componentId="paragraph-react" />
+
+</Section>

@@ -13,40 +13,41 @@ The List component organises text and links in a simple vertical format, support
 
 <Section current="design">
 
-<ComponentContainer>
+<ComponentPreview>
   <List items={['Item 1', 'Item 2', 'Item 3']} />
-</ComponentContainer>
+</ComponentPreview>
 
 ## States
 
-<ComponentContainer>
-  <List items={['Item 1', 'Item 2', 'Item 3']} />
-</ComponentContainer>
+<ComponentPreviewLayout>
+  <ComponentPreview>
+    <List items={['Item 1', 'Item 2', 'Item 3']} />
+  </ComponentPreview>
 
-<ComponentContainer>
+<ComponentPreview>
   <List items={['Item 1', 'Item 2', 'Item 3']} type="bullet" />
-</ComponentContainer>
+</ComponentPreview>
 
-<ComponentContainer>
+<ComponentPreview>
   <List items={['Item 1', 'Item 2', 'Item 3']} type="number" />
-</ComponentContainer>
+</ComponentPreview>
 
-<ComponentContainer>
-  <List spaced items={['Long item 1', 'Long item 2', 'Long item 3']} />
-</ComponentContainer>
+<ComponentPreview>
+  <List spaced items={['Spaced item 1', 'Spaced item 2', 'Spaced item 3']} />
+</ComponentPreview>
 
-<ComponentContainer>
-  <List
-    type="bullet"
-    spaced
-    items={[
-      <Link href="/">Link 1</Link>,
-      <Link href="/">Link 2</Link>,
-      <Link href="/">Link 3</Link>,
-    ]}
-  />
-</ComponentContainer>
-
+  <ComponentPreview>
+    <List
+      type="bullet"
+      spaced
+      items={[
+        <Link href="/">Link 1</Link>,
+        <Link href="/">Link 2</Link>,
+        <Link href="/">Link 3</Link>,
+      ]}
+    />
+  </ComponentPreview>
+</ComponentPreviewLayout>
 ## Usage
 
 Use the List component when you need to display a series of related items, such as text or links, in an organised format.  
@@ -60,7 +61,7 @@ If spacing between items is needed, the `spaced` option can be used.
 
 ### Don't
 
-- Don’t use for complex layouts like grids or interactive lists.
+- Don't use for complex layouts like grids or interactive lists.
 
 **Example of what not to do:**
 
