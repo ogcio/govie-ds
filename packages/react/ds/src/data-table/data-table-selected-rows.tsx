@@ -1,14 +1,14 @@
 import { cn } from '../cn.js';
 import { translate as t } from '../i18n/utility.js';
 
-export type DataGridSelectedRowsBannerProps = {
+export type DataTableSelectedRowsBannerProps = {
   selectedCount: number;
   actions?: React.ReactNode;
   className?: string;
 };
 
-export const DataGridSelectedRowsBanner: React.FC<
-  DataGridSelectedRowsBannerProps
+export const DataTableSelectedRowsBanner: React.FC<
+  DataTableSelectedRowsBannerProps
 > = ({ selectedCount, actions, className, ...props }) => {
   return (
     <div
@@ -19,7 +19,7 @@ export const DataGridSelectedRowsBanner: React.FC<
       {...props}
     >
       <span className="gi-text-sm gi-font-medium gi-text-white">
-        {t('dataGrid.selectedRows', {
+        {t('dataTable.selectedRows', {
           count: selectedCount,
           defaultValue: ` (${selectedCount} Row${selectedCount === 1 ? '' : 's'} selected)`,
         })}

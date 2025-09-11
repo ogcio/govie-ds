@@ -1,11 +1,42 @@
+---
+title: Data Table
+description: Data Table pattern
+status: draft
+---
+
+# Data Table
+
+This guidance is for government teams creating data table for digital services.
+
+The examples below are using the Tanstack Table library to create a data table using Design System components.
+
+## Setup
+
+Follow this [guide](https://tanstack.com/table/latest/docs/installation) to set up the Tanstack Table library in your project.
+
+Once the library is installed, you can use the following examples to create a data table.
+
+## Examples
+
+### Basic Data Table
+
+This example is based on the following [Tanstack Table example](https://github.com/tanstack/table/tree/main/examples/react/filters-fuzzy).
+It includes a data table with pagination, sorting, and filtering.
+
+<DataTableSample />
+
+#### Code
+
+```jsx
 'use client';
 import {
+  Button,
+  Checkbox,
   Table as DSTable,
   Icon,
   IconButton,
-  InputCheckbox,
   Pagination,
-  Select,
+  SelectComposable,
   SelectItem,
   TableBody,
   TableData,
@@ -76,15 +107,14 @@ const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
     : direction;
 };
 
-export function DataGridSample() {
+export function DataTableSample() {
   const columns = React.useMemo<ColumnDef<Person>[]>(
     () => [
       {
         id: 'select',
         header: ({ table }) => (
           <div className="px-[3px]">
-            <InputCheckbox
-              size="sm"
+            <Checkbox
               id={'all'}
               value={'all'}
               {...{
@@ -95,8 +125,7 @@ export function DataGridSample() {
           </div>
         ),
         cell: ({ row }) => (
-          <InputCheckbox
-            size="sm"
+          <Checkbox
             id={row.id}
             value={row.id}
             {...{
@@ -237,7 +266,7 @@ function DataGridTable({
         />
         <div className="grow"></div>
         <div>
-          <Select
+          <SelectComposable
             id={'filter-status'}
             onChange={(event) => {
               table.setColumnFilters([
@@ -253,7 +282,7 @@ function DataGridTable({
             <SelectItem value={'in progress'}>In Progress</SelectItem>
             <SelectItem value={'accepted'}>Accepted</SelectItem>
             <SelectItem value={'declined'}>Declined</SelectItem>
-          </Select>
+          </SelectComposable>
         </div>
       </div>
 
@@ -343,7 +372,7 @@ function DebouncedInput({
     }, debounce);
 
     return () => clearTimeout(timeout);
-  }, [value, debounce, onChange]);
+  }, [value]);
 
   return (
     <TextInput
@@ -355,3 +384,4 @@ function DebouncedInput({
     />
   );
 }
+```
