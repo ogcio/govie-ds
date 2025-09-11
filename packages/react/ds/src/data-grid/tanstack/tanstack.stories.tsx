@@ -56,6 +56,7 @@ import {
   DataGridHeaderFilterTitle,
   DataGridHeaderSearch,
 } from '../data-grid-header.js';
+import { DataGridSelectedRowsBanner } from '../data-grid-selected-rows.js';
 import { EditableTableCell } from '../editable-table-cell.js';
 import { makeData } from './tanstack-helpers.js';
 
@@ -215,8 +216,12 @@ export const WithReactHookForm: Story = {
               id="all"
               value="all"
               aria-label="Select all rows"
-              checked={table.getIsAllRowsSelected()}
-              onChange={table.getToggleAllRowsSelectedHandler()}
+              checked={
+                table.getIsAllPageRowsSelected() ||
+                table.getIsSomePageRowsSelected()
+              }
+              onChange={table.getToggleAllPageRowsSelectedHandler()}
+              indeterminate={table.getIsSomePageRowsSelected()}
             />
           ),
           cell: ({ row }) => (
@@ -523,9 +528,32 @@ export const WithReactHookForm: Story = {
       setFilterOpen(open);
     };
 
+    const selectedRows = table.getSelectedRowModel().rows;
+    const isSelectedRows = selectedRows.length > 0;
+
     return (
       <div className="gi-p-2">
-        <DataGridHeader>
+        {isSelectedRows && (
+          <DataGridSelectedRowsBanner
+            selectedCount={selectedRows.length}
+            actions={
+              <>
+                <Button appearance="light" size="medium" variant="flat">
+                  Delete
+                </Button>
+                <Button
+                  appearance="light"
+                  size="medium"
+                  variant="flat"
+                  onClick={() => table.resetRowSelection()}
+                >
+                  Clear Selection
+                </Button>
+              </>
+            }
+          />
+        )}
+        <DataGridHeader showHeader={!isSelectedRows}>
           <DataGridHeaderSearch className="gi-max-w-52">
             <InputText
               value={inputGlobalFilter}
@@ -537,6 +565,7 @@ export const WithReactHookForm: Story = {
               placeholder="Search all columns..."
             />
           </DataGridHeaderSearch>
+
           <DataGridHeaderFilter>
             <Button
               ref={triggerRef}
@@ -568,7 +597,7 @@ export const WithReactHookForm: Story = {
                       onChange={() =>
                         handleTemporaryCheckboxChange(option.value)
                       }
-                      size="md"
+                      size="sm"
                     />
                   ))}
                 </DataGridHeaderFilterContent>
@@ -591,24 +620,25 @@ export const WithReactHookForm: Story = {
               </div>
             </Popover>
           </DataGridHeaderFilter>
+
           <DataGridHeaderActions>
             <Button onClick={() => null} variant="secondary">
-              Delete
-            </Button>
-            <Button onClick={() => null} variant="secondary">
-              Export
+              Export table
             </Button>
             <Button onClick={() => null} variant="primary">
-              Add
+              Create new
             </Button>
           </DataGridHeaderActions>
+
           <DataGridHeaderFilterList
             filters={filterOptions
               .filter((option) => appliedFilters.includes(option.value))
               .map((option) => ({ id: option.value, label: option.label }))}
             onRemove={handleRemoveFilter}
+            onClear={handleClearFilters}
           />
         </DataGridHeader>
+
         <Table
           layout="auto"
           rowSize="md"
@@ -672,7 +702,7 @@ export const WithReactHookForm: Story = {
         </Table>
         <DataGridFooter>
           <DataGridFooterStart className="gi-space-x-2">
-            <span>Rows per page</span>
+            <span className="gi-text-sm">Rows per page</span>
             <SelectNative
               id="data-grid-rows-per-page"
               aria-label="Select"
@@ -820,13 +850,10 @@ export const DataGridHeaderBasic: Story = {
         </DataGridHeaderFilter>
         <DataGridHeaderActions>
           <Button onClick={() => null} variant="secondary">
-            Delete
-          </Button>
-          <Button onClick={() => null} variant="secondary">
-            Export
+            Export table
           </Button>
           <Button onClick={() => null} variant="primary">
-            Add
+            Create new
           </Button>
         </DataGridHeaderActions>
         <DataGridHeaderFilterList
@@ -837,6 +864,7 @@ export const DataGridHeaderBasic: Story = {
               label: opt.label,
             }))}
           onRemove={handleRemoveFilter}
+          onClear={handleClear}
         />
       </DataGridHeader>
     );
