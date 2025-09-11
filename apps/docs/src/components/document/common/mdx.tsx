@@ -117,7 +117,7 @@ import { ModalWrapperSample } from '../components/modal-wrapper-sample';
 import { Section } from '../components/section';
 import { StorybookFrame } from '../components/storybook-frame';
 import { Toast } from '../components/toast';
-import { DataGridSample } from '../data-grid/data-grid-sample';
+import { DataTableSample } from '../data-table/data-table-sample';
 import { Faq, Faqs } from '../faqs/faqs';
 import { SystemElements } from '../get-started/system-elements';
 import { GridPrimitives } from '../grid/grid-primitives';
@@ -245,9 +245,9 @@ const documentComponents: MDXComponents = {
   CookieConsentCheckbox,
   DownloadTheme,
   ThemeBuilder,
-  DataGridSample: () => (
+  DataTableSample: () => (
     <div className="gi-not-prose">
-      <DataGridSample />
+      <DataTableSample />
     </div>
   ),
   DesignSystemBenefits,

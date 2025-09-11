@@ -1,25 +1,26 @@
 import React from 'react';
 import { cn } from '../cn.js';
 
-interface DataGridFooterTypeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableFooterTypeProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-interface DataGridFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DataTableFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export type { DataGridFooterProps, DataGridFooterTypeProps };
+export type { DataTableFooterProps, DataTableFooterTypeProps };
 
-const isDataGridFooterSection = (
+const isDataTableFooterSection = (
   child: React.ReactNode,
-  sectionType: React.ComponentType<DataGridFooterTypeProps>,
-): child is React.ReactElement<DataGridFooterTypeProps> => {
+  sectionType: React.ComponentType<DataTableFooterTypeProps>,
+): child is React.ReactElement<DataTableFooterTypeProps> => {
   return React.isValidElement(child) && child.type === sectionType;
 };
 
 const renderFooterType = (
-  section: React.ReactElement<DataGridFooterTypeProps> | null,
+  section: React.ReactElement<DataTableFooterTypeProps> | null,
   baseClassName: string,
   conditionalClassName?: string,
 ): React.ReactNode => {
@@ -41,40 +42,40 @@ const renderFooterType = (
   );
 };
 
-export const DataGridFooterStart: React.FC<DataGridFooterTypeProps> = ({
+export const DataTableFooterStart: React.FC<DataTableFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-DataGridFooterStart.displayName = 'DataGridFooterStart';
+DataTableFooterStart.displayName = 'DataTableFooterStart';
 
-export const DataGridFooterCenter: React.FC<DataGridFooterTypeProps> = ({
+export const DataTableFooterCenter: React.FC<DataTableFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-DataGridFooterCenter.displayName = 'DataGridFooterCenter';
+DataTableFooterCenter.displayName = 'DataTableFooterCenter';
 
-export const DataGridFooterEnd: React.FC<DataGridFooterTypeProps> = ({
+export const DataTableFooterEnd: React.FC<DataTableFooterTypeProps> = ({
   children,
   ...props
 }) => <div {...props}>{children}</div>;
-DataGridFooterEnd.displayName = 'DataGridFooterEnd';
+DataTableFooterEnd.displayName = 'DataTableFooterEnd';
 
-export const DataGridFooter: React.FC<DataGridFooterProps> = ({
+export const DataTableFooter: React.FC<DataTableFooterProps> = ({
   children,
   className,
   ...props
 }) => {
   const sections = React.useMemo(() => {
-    let start: React.ReactElement<DataGridFooterTypeProps> | null = null;
-    let center: React.ReactElement<DataGridFooterTypeProps> | null = null;
-    let end: React.ReactElement<DataGridFooterTypeProps> | null = null;
+    let start: React.ReactElement<DataTableFooterTypeProps> | null = null;
+    let center: React.ReactElement<DataTableFooterTypeProps> | null = null;
+    let end: React.ReactElement<DataTableFooterTypeProps> | null = null;
 
     React.Children.forEach(children, (child) => {
-      if (isDataGridFooterSection(child, DataGridFooterStart)) {
+      if (isDataTableFooterSection(child, DataTableFooterStart)) {
         start = child;
-      } else if (isDataGridFooterSection(child, DataGridFooterCenter)) {
+      } else if (isDataTableFooterSection(child, DataTableFooterCenter)) {
         center = child;
-      } else if (isDataGridFooterSection(child, DataGridFooterEnd)) {
+      } else if (isDataTableFooterSection(child, DataTableFooterEnd)) {
         end = child;
       }
     });
@@ -111,4 +112,4 @@ export const DataGridFooter: React.FC<DataGridFooterProps> = ({
   );
 };
 
-DataGridFooter.displayName = 'DataGridFooter';
+DataTableFooter.displayName = 'DataTableFooter';

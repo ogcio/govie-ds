@@ -206,15 +206,15 @@ export { TabPanel } from './tabs/tab-panel.js';
 export { Tabs } from './tabs/tabs.js';
 export type { TabItemProps, TabsProps, TabPanelProps } from './tabs/types.js';
 export type {
-  DataGridFooterProps,
-  DataGridFooterTypeProps,
-} from './data-grid/data-grid-footer.js';
+  DataTableFooterProps,
+  DataTableFooterTypeProps,
+} from './data-table/data-table-footer.js';
 export {
-  DataGridFooter,
-  DataGridFooterStart,
-  DataGridFooterCenter,
-  DataGridFooterEnd,
-} from './data-grid/data-grid-footer.js';
+  DataTableFooter,
+  DataTableFooterStart,
+  DataTableFooterCenter,
+  DataTableFooterEnd,
+} from './data-table/data-table-footer.js';
 export { Tag, TagTypeEnum, type TagProps, type TagType } from './tag/tag.js';
 export { TextInput, type TextInputProps } from './text-input/text-input.js';
 export { TextArea, type TextAreaProps } from './textarea/textarea.js';
@@ -227,8 +227,8 @@ export type {
   ToastVerticalPosition,
 } from './toast/types.js';
 export { Tooltip, type TooltipProps } from './tooltip/tooltip.js';
-export { EditableTableCell } from './data-grid/editable-table-cell.js';
+export { EditableTableCell } from './data-table/editable-table-cell.js';
 export type {
   EditorTableCellConfig,
   EditorTableCellProps,
-} from './data-grid/types.js';
+} from './data-table/types.js';
