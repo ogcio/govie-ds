@@ -60,13 +60,13 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    size: HintSize.Small,
+    size: HintSize.Medium,
     text: 'This is hint text',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('This is hint text');
-    expect(hint).toHaveClass('gi-hint-text-sm');
+    expect(hint).toHaveClass('gi-hint-text-md');
   },
 };
 export const Large: Story = {

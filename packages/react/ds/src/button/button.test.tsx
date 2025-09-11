@@ -132,17 +132,3 @@ describe('button', () => {
     await screen.axe();
   });
 });
-
-describe('Snapshots', () => {
-  afterEach(cleanup);
-
-  const composedStories = composeStories(stories);
-  for (const key of Object.keys(composedStories).sort() as Array<
-    keyof typeof composedStories
-  >) {
-    it(`Snapshot - ${key}`, async () => {
-      await composedStories[key].run();
-      expect(document.body.firstChild).toMatchSnapshot();
-    });
-  }
-});

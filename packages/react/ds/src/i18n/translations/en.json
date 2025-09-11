@@ -17,7 +17,7 @@
       "cookieBanner.dismissCookieBanner": "Dismiss cookie banner",
       "dataGridHeader.filtersApplied": "Filters applied ({{ length }}):",
       "dropdownItem.noResultFound": "No results found.",
-      "dropdownItem.search": "Search.",
+      "dropdownItem.search": "Search",
       "header.headerSlot": "Slot Container {{index}}",
       "header.toggleActionItem": "Toggle item action for {{item}}",
       "header.search": "Search",

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 import {
@@ -78,10 +78,35 @@ export const Default: Story = {
     size: 'large',
     defaultValue: '6',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonOneElement = canvas.getByText('Opt 1');
+    const buttonTwoElement = canvas.getByText('Opt 2');
+    const buttonThreeElement = canvas.getByText('Opt 3');
+    const buttonFourElement = canvas.getByText('Opt 4');
+
+    await userEvent.click(buttonOneElement);
+
+    expect(buttonOneElement).toBeInTheDocument();
+    expect(buttonOneElement).toHaveClass('gi-btn-primary-dark');
+    expect(buttonOneElement).toHaveAttribute('aria-checked', 'true');
+
+    expect(buttonTwoElement).toBeInTheDocument();
+    expect(buttonTwoElement).not.toHaveClass('gi-btn-primary-dark');
+    expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
+
+    expect(buttonThreeElement).toBeInTheDocument();
+    expect(buttonThreeElement).not.toHaveClass('gi-btn-primary-dark');
+    expect(buttonThreeElement).toHaveAttribute('aria-checked', 'false');
+
+    expect(buttonFourElement).toBeInTheDocument();
+    expect(buttonFourElement).not.toHaveClass('gi-btn-primary-dark');
+    expect(buttonFourElement).toHaveAttribute('aria-checked', 'false');
+  },
 };
 
 export const OpinionScale: Story = {
-  name: 'Opinion Scale',
   render: (arguments_) => {
     const options = [
       { label: '1', value: '1' },
@@ -159,7 +184,6 @@ export const Controlled: Story = {
     const handleChange = (newValue: string) => {
       setValue(newValue);
       arguments_.onChange?.(newValue);
-      console.log('Value changed to:', newValue);
     };
 
     return (
@@ -196,8 +220,8 @@ export const Controlled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const yesButton = await canvas.getByText('Yes');
-    const noButton = await canvas.getByText('No');
+    const yesButton = canvas.getByText('Yes');
+    const noButton = canvas.getByText('No');
 
     await userEvent.click(yesButton);
 
@@ -205,5 +229,45 @@ export const Controlled: Story = {
       expect(yesButton).toBeChecked();
       expect(noButton).not.toBeChecked();
     });
+  },
+};
+
+export const TestNoFormSubmitOnClick: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const submissionProbeReference = useRef<HTMLSpanElement | null>(null);
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (submissionProbeReference.current) {
+        submissionProbeReference.current.dataset.submitted = 'true';
+      }
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <ButtonGroup name="test" size="medium" defaultValue="1">
+          <ButtonGroupItem value="1">Button 1</ButtonGroupItem>
+          <ButtonGroupItem value="2">Button 2</ButtonGroupItem>
+        </ButtonGroup>
+        <span
+          ref={submissionProbeReference}
+          data-testid="submit-probe"
+          data-submitted="false"
+        />
+      </form>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonOneElement = canvas.getByText('Button 1');
+    const buttonTwoElement = canvas.getByText('Button 2');
+
+    await userEvent.click(buttonOneElement);
+    await userEvent.click(buttonTwoElement);
+
+    const probeElement = canvas.getByTestId('submit-probe');
+    expect(probeElement.dataset.submitted).not.toBe('true');
   },
 };
