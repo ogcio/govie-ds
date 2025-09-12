@@ -8,6 +8,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useMemo,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
@@ -17,6 +18,7 @@ import { useAriaHider } from '../hooks/use-aria-hider.js';
 import { useFocusTrap } from '../hooks/use-focus-trap.js';
 import { Icon, IconSize } from '../icon/icon.js';
 import { IconButton } from '../icon-button/icon-button.js';
+import { splitAriaProps } from '../utils/utilities.js';
 
 import type {
   ModalCloseButtonProps,
@@ -133,6 +135,10 @@ export const ModalWrapper = ({
 }: ModalWrapperProps) => {
   const modalRef = useRef(null);
   useAriaHider(modalRef.current, isOpen);
+  const [ariaProps, rest] = useMemo(
+    () => splitAriaProps(props as Record<string, unknown>),
+    [props],
+  );
 
   const childrenArray = Children.toArray(children);
 
@@ -184,7 +190,7 @@ export const ModalWrapper = ({
   return (
     <ModalPortal modalRef={modalRef} isOpen={isOpen}>
       <div
-        {...props}
+        {...rest}
         ref={modalRef}
         className={cn('gi-modal', {
           'gi-modal-open': isOpen,
@@ -200,6 +206,7 @@ export const ModalWrapper = ({
         tabIndex={-1}
       >
         <div
+          {...ariaProps}
           data-testid="modal-container"
           role="dialog"
           aria-modal="true"
@@ -262,12 +269,7 @@ export const ModalBody = ({
     aria-label="Modal content"
     role="document"
     tabIndex={0}
-    className={cn(
-      {
-        'gi-modal-body': !className,
-      },
-      className,
-    )}
+    className={cn('gi-modal-body', className)}
   >
     {children}
   </div>
