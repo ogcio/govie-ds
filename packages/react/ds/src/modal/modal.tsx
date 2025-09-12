@@ -260,16 +260,17 @@ ModalTitle.displayName = 'ModalTitle';
 export const ModalBody = ({
   children,
   className,
+  includeModalClass = true,
 }: {
   children: ReactNode;
   className?: string;
+  includeModalClass?: boolean;
 }) => (
   <div
-    id="gi-modal-body"
     aria-label="Modal content"
     role="document"
     tabIndex={0}
-    className={cn('gi-modal-body', className)}
+    className={cn(includeModalClass && 'gi-modal-body', className)}
   >
     {children}
   </div>
