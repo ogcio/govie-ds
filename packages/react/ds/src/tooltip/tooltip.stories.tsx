@@ -228,4 +228,3 @@ export const WithLongText: Story = {
     await expect(popoverContent).toBeInTheDocument();
   },
 };
-
