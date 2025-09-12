@@ -92,3 +92,16 @@ export const safeCloneElement = (
   const { __type, ...restProps } = element.props as any;
   return cloneElement(element, { ...restProps, ...props });
 };
+
+export const splitAriaProps = (props: any = {}) => {
+  const aria: Record<string, unknown> = {};
+  const rest: Record<string, unknown> = {};
+  for (const key in props) {
+    if (key === 'role' || key.startsWith('aria-')) {
+      aria[key] = (props as any)[key];
+    } else {
+      rest[key] = (props as any)[key];
+    }
+  }
+  return [aria, rest] as const;
+};
