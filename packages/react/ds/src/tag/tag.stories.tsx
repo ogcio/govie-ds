@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { Tag, TagTypeEnum } from './tag.js';
 
 const meta = {
@@ -48,12 +49,29 @@ export const Default: Story = {
     text: 'Completed',
     type: TagTypeEnum.Info,
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a tag with the correct content', async () => {
+      const element = canvas.getByText('Completed');
+      expect(element).toBeInTheDocument();
+      expect(element.tagName).toBe('STRONG');
+    });
+  },
 };
 
 export const Info: Story = {
   args: {
     text: 'Info Tag',
     type: TagTypeEnum.Info,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should have the correct class for Info', async () => {
+      const element = canvas.getByText('Info Tag');
+      expect(element.classList.contains('gi-tag-info')).toBe(true);
+    });
   },
 };
 
@@ -62,6 +80,14 @@ export const Success: Story = {
     text: 'Success Tag',
     type: TagTypeEnum.Success,
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should have the correct class for Success', async () => {
+      const element = canvas.getByText('Success Tag');
+      expect(element.classList.contains('gi-tag-success')).toBe(true);
+    });
+  },
 };
 
 export const Warning: Story = {
@@ -69,12 +95,28 @@ export const Warning: Story = {
     text: 'Warning Tag',
     type: TagTypeEnum.Warning,
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should have the correct class for Warning', async () => {
+      const element = canvas.getByText('Warning Tag');
+      expect(element.classList.contains('gi-tag-warning')).toBe(true);
+    });
+  },
 };
 
 export const Error: Story = {
   args: {
     text: 'Error Tag',
     type: TagTypeEnum.Error,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should have the correct class for Error', async () => {
+      const element = canvas.getByText('Error Tag');
+      expect(element.classList.contains('gi-tag-error')).toBe(true);
+    });
   },
 };
 

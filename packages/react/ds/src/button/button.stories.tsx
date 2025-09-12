@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { Icon } from '../icon/icon.js';
 import { Button } from './button.js';
 
@@ -482,5 +482,94 @@ export const WithSpinner: Story = {
         </svg>
       </>
     ),
+  },
+};
+
+export const TestButtonAll: Story = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <div className="gi-flex gi-flex-col gi-gap-2">
+      <Button dataTestid="govie-button-label" variant="primary">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-secondary" variant="secondary">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-flat" variant="flat">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-appearance-default" appearance="default">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-appearance-light" appearance="light">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-appearance-dark" appearance="dark">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-small" size="small">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-large" size="large">
+        Button
+      </Button>
+      <Button dataTestid="govie-button-disabled" disabled>
+        Button
+      </Button>
+      <Button dataTestid="govie-button-icon">
+        <Icon icon="thumb_up" />
+      </Button>
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a secondary button', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-secondary');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a flat button', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-flat');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a button with default appearance', async () => {
+      const buttonElement = canvas.getByTestId(
+        'govie-button-appearance-default',
+      );
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a button with light appearance', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-appearance-light');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a button with dark appearance', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-appearance-dark');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a small button', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-small');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a large button', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-large');
+      expect(buttonElement).toBeInTheDocument();
+    });
+
+    await step('should render a disabled button', async () => {
+      const buttonElement = canvas.getByTestId('govie-button-disabled');
+      expect(buttonElement).toBeInTheDocument();
+      expect(buttonElement).toBeDisabled();
+    });
+
+    await step('should render a button with icon', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      expect(iconElement).toBeInTheDocument();
+    });
   },
 };

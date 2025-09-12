@@ -78,32 +78,6 @@ export const Default: Story = {
     size: 'large',
     defaultValue: '6',
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    const buttonOneElement = canvas.getByText('Opt 1');
-    const buttonTwoElement = canvas.getByText('Opt 2');
-    const buttonThreeElement = canvas.getByText('Opt 3');
-    const buttonFourElement = canvas.getByText('Opt 4');
-
-    await userEvent.click(buttonOneElement);
-
-    expect(buttonOneElement).toBeInTheDocument();
-    expect(buttonOneElement).toHaveClass('gi-btn-primary-dark');
-    expect(buttonOneElement).toHaveAttribute('aria-checked', 'true');
-
-    expect(buttonTwoElement).toBeInTheDocument();
-    expect(buttonTwoElement).not.toHaveClass('gi-btn-primary-dark');
-    expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
-
-    expect(buttonThreeElement).toBeInTheDocument();
-    expect(buttonThreeElement).not.toHaveClass('gi-btn-primary-dark');
-    expect(buttonThreeElement).toHaveAttribute('aria-checked', 'false');
-
-    expect(buttonFourElement).toBeInTheDocument();
-    expect(buttonFourElement).not.toHaveClass('gi-btn-primary-dark');
-    expect(buttonFourElement).toHaveAttribute('aria-checked', 'false');
-  },
 };
 
 export const OpinionScale: Story = {
@@ -183,7 +157,9 @@ export const Controlled: Story = {
 
     const handleChange = (newValue: string) => {
       setValue(newValue);
-      arguments_.onChange?.(newValue);
+      if (arguments_.onChange) {
+        arguments_.onChange(newValue);
+      }
     };
 
     return (
@@ -232,6 +208,34 @@ export const Controlled: Story = {
   },
 };
 
+export const TestRenderDefaultSelection: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    return (
+      <ButtonGroup name="test" size="medium" defaultValue="1">
+        <ButtonGroupItem value="1">Button 1</ButtonGroupItem>
+        <ButtonGroupItem value="2">Button 2</ButtonGroupItem>
+      </ButtonGroup>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render the button group', async () => {
+      const buttonOneElement = canvas.getByText('Button 1');
+      const buttonTwoElement = canvas.getByText('Button 2');
+
+      expect(buttonOneElement).toBeInTheDocument();
+      expect(buttonOneElement).toHaveClass('gi-btn-primary-dark');
+      expect(buttonOneElement).toHaveAttribute('aria-checked', 'true');
+
+      expect(buttonTwoElement).toBeInTheDocument();
+      expect(buttonTwoElement).not.toHaveClass('gi-btn-primary-dark');
+      expect(buttonTwoElement).toHaveAttribute('aria-checked', 'false');
+    });
+  },
+};
+
 export const TestNoFormSubmitOnClick: StoryObj = {
   tags: ['skip-playwright'],
   render: () => {
@@ -252,22 +256,27 @@ export const TestNoFormSubmitOnClick: StoryObj = {
         </ButtonGroup>
         <span
           ref={submissionProbeReference}
-          data-testid="submit-probe"
+          data-testid="submit"
           data-submitted="false"
         />
       </form>
     );
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    const buttonOneElement = canvas.getByText('Button 1');
-    const buttonTwoElement = canvas.getByText('Button 2');
+    await step(
+      'should not submit the form on press a button group items',
+      async () => {
+        const buttonOneElement = canvas.getByText('Button 1');
+        const buttonTwoElement = canvas.getByText('Button 2');
 
-    await userEvent.click(buttonOneElement);
-    await userEvent.click(buttonTwoElement);
+        await userEvent.click(buttonOneElement);
+        await userEvent.click(buttonTwoElement);
 
-    const probeElement = canvas.getByTestId('submit-probe');
-    expect(probeElement.dataset.submitted).not.toBe('true');
+        const probeElement = canvas.getByTestId('submit');
+        expect(probeElement.dataset.submitted).not.toBe('true');
+      },
+    );
   },
 };

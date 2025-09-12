@@ -61,68 +61,6 @@ export const Default: StoryObj = {
       </Combobox>
     </Form>
   ),
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-
-    await step('renders with title and options', async () => {
-      const categoriesGroupElement = canvas.getByRole('group', {
-        name: /Categories dropdown/i,
-      });
-      expect(categoriesGroupElement).toBeInTheDocument();
-      expect(canvas.getByText('Categories')).toBeInTheDocument();
-    });
-
-    await step('toggles open and closed on button click', async () => {
-      const categoriesGroupElement = canvas.getByRole('group', {
-        name: /Categories dropdown/i,
-      });
-      const categoriesToggleButtonElement = within(
-        categoriesGroupElement,
-      ).getByRole('button');
-      await userEvent.click(categoriesToggleButtonElement);
-      expect(
-        within(categoriesGroupElement).getByPlaceholderText('Search'),
-      ).toBeInTheDocument();
-
-      await userEvent.click(categoriesToggleButtonElement);
-      const searchInputMaybe = within(
-        categoriesGroupElement,
-      ).queryByPlaceholderText('Search');
-      expect(searchInputMaybe).not.toBeVisible();
-    });
-
-    await step('shows no results when search yields none', async () => {
-      const categoriesGroupElement = canvas.getByRole('group', {
-        name: /Categories dropdown/i,
-      });
-      const categoriesToggleButtonElement = within(
-        categoriesGroupElement,
-      ).getByRole('button');
-      await userEvent.click(categoriesToggleButtonElement);
-
-      const searchInputElement = within(
-        categoriesGroupElement,
-      ).getByPlaceholderText('Search');
-      await userEvent.clear(searchInputElement);
-      await userEvent.type(searchInputElement, 'abcd');
-
-      expect(
-        within(categoriesGroupElement).getByText('No results found.'),
-      ).toBeInTheDocument();
-    });
-
-    await step('disables search when noSearch is true', async () => {
-      const topicGroupElement = canvas.getByRole('group', {
-        name: /Topic \(without search\) dropdown/i,
-      });
-      const topicToggleButtonElement =
-        within(topicGroupElement).getByRole('button');
-      await userEvent.click(topicToggleButtonElement);
-      expect(
-        within(topicGroupElement).queryByPlaceholderText('Search'),
-      ).not.toBeInTheDocument();
-    });
-  },
 };
 
 export const ControlledAndUncontrolled = {
@@ -319,6 +257,83 @@ export const TestOnSearchCallback: StoryObj = {
 
       const outputElement = canvas.getByTestId('search-value');
       expect(outputElement).toHaveTextContent('Des');
+    });
+  },
+};
+
+export const TestDefault: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <Form>
+      <Combobox className="gi-mx-auto">
+        <DropdownItem options={organisationOptions}>Organisations</DropdownItem>
+        <DropdownItem options={categoryOptions}>Categories</DropdownItem>
+        <DropdownItem options={topicOptions} noSearch>
+          Topic (without search)
+        </DropdownItem>
+      </Combobox>
+    </Form>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('renders with title and options', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      expect(categoriesGroupElement).toBeInTheDocument();
+      expect(canvas.getByText('Categories')).toBeInTheDocument();
+    });
+
+    await step('toggles open and closed on button click', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const categoriesToggleButtonElement = within(
+        categoriesGroupElement,
+      ).getByRole('button');
+      await userEvent.click(categoriesToggleButtonElement);
+      expect(
+        within(categoriesGroupElement).getByPlaceholderText('Search'),
+      ).toBeInTheDocument();
+
+      await userEvent.click(categoriesToggleButtonElement);
+      const searchInputMaybe = within(
+        categoriesGroupElement,
+      ).queryByPlaceholderText('Search');
+      expect(searchInputMaybe).not.toBeVisible();
+    });
+
+    await step('shows no results when search yields none', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const categoriesToggleButtonElement = within(
+        categoriesGroupElement,
+      ).getByRole('button');
+      await userEvent.click(categoriesToggleButtonElement);
+
+      const searchInputElement = within(
+        categoriesGroupElement,
+      ).getByPlaceholderText('Search');
+      await userEvent.clear(searchInputElement);
+      await userEvent.type(searchInputElement, 'abcd');
+
+      expect(
+        within(categoriesGroupElement).getByText('No results found.'),
+      ).toBeInTheDocument();
+    });
+
+    await step('disables search when noSearch is true', async () => {
+      const topicGroupElement = canvas.getByRole('group', {
+        name: /Topic \(without search\) dropdown/i,
+      });
+      const topicToggleButtonElement =
+        within(topicGroupElement).getByRole('button');
+      await userEvent.click(topicToggleButtonElement);
+      expect(
+        within(topicGroupElement).queryByPlaceholderText('Search'),
+      ).not.toBeInTheDocument();
     });
   },
 };
