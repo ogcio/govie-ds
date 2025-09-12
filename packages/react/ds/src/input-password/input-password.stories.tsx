@@ -150,3 +150,90 @@ export const WithReactHookForm: Story = {
     await userEvent.click(document.body);
   },
 };
+
+const inputPasswordRefCallback = (element: HTMLInputElement | null) => {
+  if (element) {
+    (
+      globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }
+    ).__inputPasswordRef = element;
+    element.dataset.refSeen = 'true';
+  }
+};
+
+export const TestRefForwarding: Story = {
+  tags: ['skip-playwright'],
+  render: () => {
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="ref-input-id">Password Input</FormFieldLabel>
+        <InputPassword id="ref-input-id" ref={inputPasswordRefCallback} />
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should support ref forwarding to the underlying input element',
+      async () => {
+        const inputElement = canvas.getByLabelText(
+          'Password Input',
+        ) as HTMLInputElement;
+        const storedRef = (
+          globalThis as unknown as { __inputPasswordRef?: HTMLInputElement }
+        ).__inputPasswordRef;
+
+        expect(storedRef).toBe(inputElement);
+      },
+    );
+  },
+};
+
+export const TestVisibility: Story = {
+  tags: ['skip-playwright'],
+  args: {},
+  render: () => {
+    return (
+      <FormField>
+        <FormFieldLabel htmlFor="text-password-id">Password</FormFieldLabel>
+        <InputPassword
+          placeholder="Placeholder"
+          data-testid="text-password-id"
+        />
+      </FormField>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render a password input with a visibility toggle button',
+      async () => {
+        const passwordInputElement = canvas.getByTestId(
+          'text-password-id',
+        ) as HTMLInputElement;
+        const visibilityToggleButtonElement = canvas.getByRole('button');
+
+        expect(passwordInputElement).toBeInTheDocument();
+        expect(passwordInputElement.type).toBe('password');
+        expect(visibilityToggleButtonElement).toBeInTheDocument();
+      },
+    );
+
+    await step(
+      'should toggle input type between password and text when clicking the visibility button',
+      async () => {
+        const passwordInputElement = canvas.getByTestId(
+          'text-password-id',
+        ) as HTMLInputElement;
+        const visibilityToggleButtonElement = canvas.getByRole('button');
+
+        await userEvent.click(visibilityToggleButtonElement);
+        expect(passwordInputElement.type).toBe('text');
+
+        await userEvent.click(visibilityToggleButtonElement);
+        expect(passwordInputElement.type).toBe('password');
+      },
+    );
+  },
+};

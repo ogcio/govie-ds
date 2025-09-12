@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn, expect } from 'storybook/test';
+import { fn, expect, within } from 'storybook/test';
 import { IconButton } from './icon-button.js';
 
 const meta = {
@@ -63,11 +63,23 @@ export const Default: Story = {
     icon: {
       icon: 'thumb_up',
     },
+    dataTestid: 'govieIconButton',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
     const button = canvasElement.querySelector('button');
     expect(button).toBeTruthy();
     expect(button?.getAttribute('type')).toBe('button');
+
+    await step('should render a regular icon button', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      const buttonElement = canvas.getByTestId('govieIconButton');
+
+      expect(iconElement).toHaveStyle('font-size: 24px');
+      expect(buttonElement.classList.contains('gi-icon-btn-regular')).toBe(
+        true,
+      );
+    });
   },
 };
 
@@ -77,6 +89,19 @@ export const Small: Story = {
       icon: 'thumb_up',
     },
     size: 'small',
+    dataTestid: 'govieIconButton',
+  },
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a small icon button', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      const buttonElement = canvas.getByTestId('govieIconButton');
+
+      expect(iconElement).toHaveStyle('font-size: 16px');
+      expect(buttonElement.classList.contains('gi-icon-btn-small')).toBe(true);
+    });
   },
 };
 
@@ -86,6 +111,18 @@ export const Large: Story = {
       icon: 'thumb_up',
     },
     size: 'large',
+    dataTestid: 'govieIconButton',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a large icon button', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      const buttonElement = canvas.getByTestId('govieIconButton');
+
+      expect(iconElement).toHaveStyle('font-size: 24px');
+      expect(buttonElement.classList.contains('gi-icon-btn-large')).toBe(true);
+    });
   },
 };
 

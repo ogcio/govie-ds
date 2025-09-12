@@ -931,3 +931,123 @@ export const HideMenuLabel: Story = {
     expect(menuLabel).not.toBeInTheDocument();
   },
 };
+
+export const TestStandardProps: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    logo: { href: '/home' },
+    items: [
+      {
+        label: 'Search',
+        icon: 'search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+        showItemMode: 'desktop-only',
+      },
+      { itemType: 'divider', showItemMode: 'desktop-only' },
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+    secondaryLinks: [{ href: '#', label: 'Gaeilge' }],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should show the nav link', async () => {
+      for (let index = 0; index <= 4; index++) {
+        const element = canvas.getByTestId(`header-item-${index}`);
+        await expect(element).toBeTruthy();
+      }
+    });
+
+    await step('should show the language links', async () => {
+      const element = canvas.getByTestId('secondary-link-desktop-0');
+      await expect(element).toBeTruthy();
+    });
+
+    await step('should show the search button', async () => {
+      const element = canvas.getByTestId('header-search-form');
+      await expect(element).toBeTruthy();
+    });
+  },
+};
+
+export const TestMenuSlots: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    items: [
+      {
+        itemType: 'slot',
+        icon: 'thumb_up',
+        label: 'Slot',
+        component: <div>Here is a slot component</div>,
+        slotAppearance: 'dropdown',
+      },
+      {
+        itemType: 'slot',
+        label: 'Slot 2',
+        icon: 'info',
+        component: <div>Here is a slot component 2</div>,
+        slotAppearance: 'dropdown',
+      },
+      {
+        label: 'Search',
+        icon: 'search',
+        itemType: 'slot',
+        component: <HeaderSearch />,
+        slotAppearance: 'dropdown',
+        showItemMode: 'desktop-only',
+      },
+      { itemType: 'divider', showItemMode: 'desktop-only' },
+      {
+        label: 'News',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Departments',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+      {
+        label: 'Services',
+        itemType: 'link',
+        href: '#',
+        showItemMode: 'desktop-only',
+      },
+    ],
+    secondaryLinks: [{ href: '#', label: 'Gaeilge' }],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render header menu slots', async () => {
+      const firstTriggerElement = canvas.getByTestId('ItemActionTrigger-0');
+      await expect(firstTriggerElement).toBeInTheDocument();
+      await expect(canvas.getByText('Slot')).toBeInTheDocument();
+
+      const secondTriggerElement = canvas.getByTestId('ItemActionTrigger-1');
+      await expect(secondTriggerElement).toBeInTheDocument();
+      await expect(canvas.getByText('Slot 2')).toBeInTheDocument();
+    });
+  },
+};

@@ -52,7 +52,6 @@ export const AccordionItem = ({
         data-icon-start={!!iconStart}
         onClick={() => !disabled && setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
-        aria-expanded={isExpanded}
         tabIndex={0}
         className="gi-accordion"
       >

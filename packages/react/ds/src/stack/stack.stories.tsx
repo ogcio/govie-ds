@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Link } from '../link/link.js';
 import { Stack } from './stack.js';
@@ -179,6 +180,53 @@ export const NestedStack: Story = {
           </Stack>
         </Stack>
       </Stack>
+    );
+  },
+};
+
+export const TestItemsRenderCorrectly: Story = {
+  tags: ['skip-playwright', 'testsOnly'],
+  args: {
+    direction: 'column',
+    itemsAlignment: 'center',
+    itemsDistribution: 'end',
+    gap: 1,
+    children,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should Stack items render correctly', async () => {
+      const item0 = canvas.getByTestId('govie-stack-item-0');
+      const item1 = canvas.getByTestId('govie-stack-item-1');
+      const item2 = canvas.getByTestId('govie-stack-item-2');
+      expect(item0).toBeInTheDocument();
+      expect(item1).toBeInTheDocument();
+      expect(item2).toBeInTheDocument();
+    });
+  },
+};
+
+export const TestItemsRenderWithBreakpoints: Story = {
+  tags: ['skip-playwright', 'testsOnly'],
+  args: {
+    direction: { base: 'column', md: 'row' },
+    gap: { sm: 2, xs: 1, md: 3 },
+    itemsAlignment: 'start',
+    itemsDistribution: 'start',
+    children,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should Stack items render correctly with breakpoint configuration',
+      async () => {
+        const item0 = canvas.getByTestId('govie-stack-item-0');
+        const item1 = canvas.getByTestId('govie-stack-item-1');
+        const item2 = canvas.getByTestId('govie-stack-item-2');
+        expect(item0).toBeInTheDocument();
+        expect(item1).toBeInTheDocument();
+        expect(item2).toBeInTheDocument();
+      },
     );
   },
 };

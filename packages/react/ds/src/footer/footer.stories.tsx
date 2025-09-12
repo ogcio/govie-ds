@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { Icon } from '../icon/icon.js';
 import { Link } from '../link/link.js';
 import { SectionBreak } from '../section-break/section-break.js';
@@ -269,6 +270,42 @@ export const CompleteFooter: Story = {
       </Stack>
     ),
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render the footer with default props', async () => {
+      const footerElement = canvas.getByRole('contentinfo');
+      expect(footerElement).toBeInTheDocument();
+      expect(footerElement).toHaveAttribute('aria-label', 'Footer');
+      expect(footerElement).toHaveAttribute('data-testid', 'gi-footer');
+      expect(footerElement).toHaveClass('gi-footer');
+    });
+
+    await step(
+      'should not render primary nav when primarySlot is not provided',
+      async () => {
+        const navigationElement = canvas.queryByLabelText(
+          'Primary footer navigation',
+        );
+        expect(navigationElement).not.toBeInTheDocument();
+      },
+    );
+
+    await step(
+      'should not render secondary nav when secondarySlot is not provided',
+      async () => {
+        const navigationElement = canvas.queryByLabelText(
+          'Secondary footer navigation',
+        );
+        expect(navigationElement).not.toBeInTheDocument();
+      },
+    );
+
+    await step('should render secondary slot when provided', async () => {
+      const element = canvas.getByTestId('gi-footer');
+      expect(element).toBeInTheDocument();
+    });
+  },
 };
 
 export const SimpleFooter: Story = {
@@ -432,5 +469,36 @@ export const GovieFooter: Story = {
         </div>
       </div>
     ),
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should not render utility section when utilitySlot is not provided',
+      async () => {
+        const utilitySectionElement = canvas.queryByLabelText('Utility links');
+        expect(utilitySectionElement).not.toBeInTheDocument();
+      },
+    );
+  },
+};
+
+export const TestAllSlots: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    primarySlot: <div data-testid="primary">Primary</div>,
+    secondarySlot: <div data-testid="secondary">Secondary</div>,
+    utilitySlot: <div data-testid="utility">Utility</div>,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render all slots when provided', async () => {
+      const primaryElement = canvas.getByTestId('primary');
+      const secondaryElement = canvas.getByTestId('secondary');
+      const utilityElement = canvas.getByTestId('utility');
+      expect(primaryElement).toBeInTheDocument();
+      expect(secondaryElement).toBeInTheDocument();
+      expect(utilityElement).toBeInTheDocument();
+    });
   },
 };

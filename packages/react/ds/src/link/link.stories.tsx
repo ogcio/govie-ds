@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { Link, LinkProps } from './link.js';
 
 const meta = {
@@ -125,6 +126,29 @@ export const Default: Story = {
   args: {
     ...baseProps,
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const linkElement = canvas.getByRole('link');
+
+    await step('should render link text', async () => {
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement).toHaveTextContent('Link text');
+    });
+
+    await step('should have correct href', async () => {
+      expect(linkElement.getAttribute('href')).toBe('#');
+    });
+
+    await step('should not open in a new tab if not external', async () => {
+      expect(linkElement.getAttribute('target')).not.toBe('_blank');
+    });
+
+    await step('should have visited style', async () => {
+      expect(linkElement.classList.contains('visited:gi-text-blue-700')).toBe(
+        false,
+      );
+    });
+  },
 };
 
 export const WithIconStart: Story = {
@@ -174,6 +198,14 @@ export const LinkAsButton: Story = {
       size: 'medium',
       variant: 'primary',
     },
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const linkElement = canvas.getByRole('link');
+
+    await step('should not gi-link if styled as button', async () => {
+      expect(linkElement.classList.contains('gi-link')).toBe(false);
+    });
   },
 };
 
@@ -262,5 +294,43 @@ export const StateFocusWithIcons: Story = {
   args: {
     ...withIcons(baseProps),
     className: 'link-hover link-focus',
+  },
+};
+
+export const TestExternal: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    href: 'https://example.com',
+    children: 'Example Link',
+    external: true,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const linkElement = canvas.getByRole('link');
+
+    await step('should open in a new tab if external', async () => {
+      expect(linkElement.getAttribute('target')).toBe('_blank');
+      expect(linkElement.getAttribute('rel')).toBe('noreferrer noopener');
+    });
+  },
+};
+
+export const TestNoVisited: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    href: 'https://example.com',
+    children: 'Example Link',
+    noVisited: true,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const linkElement = canvas.getByRole('link');
+
+    await step(
+      'should not have visited style if noVisited is true',
+      async () => {
+        expect(linkElement.classList.contains('gi-link-no-visited')).toBe(true);
+      },
+    );
   },
 };

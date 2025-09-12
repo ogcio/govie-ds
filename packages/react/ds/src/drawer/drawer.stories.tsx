@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect, waitFor, screen, userEvent } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { DrawerMenuExample } from './drawer.content.js';
@@ -32,6 +33,7 @@ export const Default: Story = {
   },
   args: {
     closeButtonSize: 'large',
+    dataTestId: 'drawer',
     startsOpen: true,
     triggerButton: <Button>Open drawer</Button>,
     closeButtonLabel: 'Close',
@@ -55,6 +57,22 @@ export const Default: Story = {
         </Button>
       </DrawerFooter>,
     ],
+  },
+  play: async ({ step }) => {
+    await waitFor(() => {
+      expect(screen.getByTestId('modal')).toBeInTheDocument();
+    });
+
+    await step(
+      'should render the drawer on load if startsOpen is true',
+      async () => {
+        const modalElement = await screen.findByTestId('modal');
+        const modalContainerElement =
+          await screen.findByTestId('modal-container');
+        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+        expect(modalContainerElement).toBeTruthy();
+      },
+    );
   },
 };
 
@@ -154,10 +172,8 @@ export const DrawerBottom: Story = {
 export const DrawerMenuTablet: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'ipad',
-    },
   },
+  globals: { viewport: { value: 'tablet' } },
   args: {
     triggerButton: <Button>Open drawer</Button>,
     startsOpen: true,
@@ -188,10 +204,8 @@ export const DrawerMenuTablet: Story = {
 export const DrawerMenuMobile: Story = {
   parameters: {
     layout: 'fullscreen',
-    viewport: {
-      defaultViewport: 'mobile2',
-    },
   },
+  globals: { viewport: { value: 'mobile1' } },
   args: {
     triggerButton: <Button>Open drawer</Button>,
     startsOpen: true,
@@ -248,5 +262,64 @@ export const DesktopButtonStacked: Story = {
         </Button>
       </DrawerFooter>,
     ],
+  },
+};
+
+export const TestOpenCloseInteractions: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    startsOpen: false,
+    triggerButton: <Button>Open drawer</Button>,
+    children: [
+      <DrawerBody key="body">
+        <Paragraph>Here is the body content of the drawer.</Paragraph>
+      </DrawerBody>,
+      <DrawerFooter key="footer">
+        <Button>Close Drawer</Button>
+      </DrawerFooter>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should open the drawer on button trigger', async () => {
+      const triggerButtonElement = await canvas.findByTestId(
+        'drawer-trigger-button-container',
+      );
+      await userEvent.click(triggerButtonElement);
+      await waitFor(() => {
+        const modalElement = screen.getByTestId('modal');
+        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      });
+    });
+
+    await step('should close the drawer on icon click', async () => {
+      const modalContainerElement =
+        await screen.findByTestId('modal-container');
+      const iconElement = modalContainerElement.querySelector('.gi-modal-icon');
+      expect(iconElement).toBeTruthy();
+      await userEvent.click(iconElement as Element);
+      await waitFor(() => {
+        const modalElement = screen.getByTestId('modal');
+        expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
+      });
+    });
+
+    await step('should close the drawer on overlay click', async () => {
+      const triggerButtonElement = await canvas.findByTestId(
+        'drawer-trigger-button-container',
+      );
+      await userEvent.click(triggerButtonElement);
+      await waitFor(() => {
+        const modalElement = screen.getByTestId('modal');
+        expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
+      });
+      const modalElement = await screen.findByTestId('modal');
+      await userEvent.click(modalElement);
+      await waitFor(() => {
+        const element = screen.getByTestId('modal');
+        expect(element.classList.contains('gi-modal-open')).toBe(false);
+      });
+    });
   },
 };

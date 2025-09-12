@@ -23,9 +23,7 @@ const meta = {
     type: {
       options: [ListTypeEnum.None, ListTypeEnum.Bullet, ListTypeEnum.Number],
       control: { type: 'radio' },
-      table: {
-        defaultValue: { summary: 'normal' },
-      },
+      table: { defaultValue: { summary: 'normal' } },
       description:
         '`bullet`: Introduce bulleted lists with a lead-in line ending in a colon.<br>`number`: Use numbered lists instead of bulleted lists when the order of the items is relevant.',
     },
@@ -46,10 +44,24 @@ export const Default: Story = {
     dataTestid: 'list',
     items: ['Item 1', 'Item 2', 'Item 3'],
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const heading = canvas.getByTestId('list');
-    expect(heading).toHaveClass('gi-list');
+
+    await step('should render a list correctly with items', async () => {
+      const listElement = canvas.getByRole('list');
+      expect(listElement).toBeInTheDocument();
+      expect(canvas.getByText('Item 1')).toBeInTheDocument();
+      expect(canvas.getByText('Item 2')).toBeInTheDocument();
+      expect(canvas.getByText('Item 3')).toBeInTheDocument();
+    });
+
+    await step(
+      'should have correct className for default type "normal"',
+      async () => {
+        const listContainerElement = canvas.getByTestId('list');
+        expect(listContainerElement.classList.contains('gi-list')).toBe(true);
+      },
+    );
   },
 };
 
@@ -62,6 +74,21 @@ export const Links: Story = {
       <Link href="#">Link 3</Link>,
     ],
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a list of links correctly', async () => {
+      const listElement = canvas.getByRole('list');
+      expect(listElement).toBeInTheDocument();
+
+      const linkElements = canvas.getAllByRole('link');
+      for (const linkElement of linkElements) {
+        const linkHref = linkElement.getAttribute('href');
+        expect(linkHref).toEqual('#');
+      }
+      expect(linkElements.length).toBe(3);
+    });
+  },
 };
 
 export const Bullet: Story = {
@@ -70,10 +97,17 @@ export const Bullet: Story = {
     type: ListTypeEnum.Bullet,
     items: ['apple', 'orange', 'pears'],
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const heading = canvas.getByTestId('list');
-    expect(heading).toHaveClass('gi-list-bullet');
+    await step(
+      'should have correct className when type is "bullet"',
+      async () => {
+        const listContainerElement = canvas.getByTestId('list');
+        expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(
+          true,
+        );
+      },
+    );
   },
 };
 
@@ -83,10 +117,17 @@ export const Numbered: Story = {
     type: ListTypeEnum.Number,
     items: ['Delivery address', 'Payment', 'Confirmation'],
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const heading = canvas.getByTestId('list');
-    expect(heading).toHaveClass('gi-list-number');
+    await step(
+      'should have correct className when type is "number"',
+      async () => {
+        const listContainerElement = canvas.getByTestId('list');
+        expect(listContainerElement.classList.contains('gi-list-number')).toBe(
+          true,
+        );
+      },
+    );
   },
 };
 
@@ -101,9 +142,57 @@ export const ExtraSpace: Story = {
       'Fusce tincidunt mi ac augue ultricies, id cursus libero dapibus. Phasellus a urna eget justo.',
     ],
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const heading = canvas.getByTestId('list');
-    expect(heading).toHaveClass('gi-list-spaced');
+    await step('should have correct className when is "spaced"', async () => {
+      const listContainerElement = canvas.getByTestId('list');
+      expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(
+        true,
+      );
+    });
+  },
+};
+
+export const TestTypeNone: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    dataTestid: 'list',
+    type: ListTypeEnum.None,
+    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should have correct className when type is "none"',
+      async () => {
+        const listContainerElement = canvas.getByTestId('list');
+        expect(listContainerElement.classList.contains('gi-list')).toBe(true);
+      },
+    );
+  },
+};
+
+export const TestSpacedBullet: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    dataTestid: 'list',
+    type: ListTypeEnum.Bullet,
+    spaced: true,
+    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should have correct "spaced" class combined with the "type" class',
+      async () => {
+        const listContainerElement = canvas.getByTestId('list');
+        expect(listContainerElement.classList.contains('gi-list-spaced')).toBe(
+          true,
+        );
+        expect(listContainerElement.classList.contains('gi-list-bullet')).toBe(
+          true,
+        );
+      },
+    );
   },
 };

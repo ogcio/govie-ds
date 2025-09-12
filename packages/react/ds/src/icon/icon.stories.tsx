@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import { Icon } from './icon.js';
 
 const meta = {
@@ -93,5 +94,63 @@ export const AriaLabel: Story = {
   args: {
     icon: 'thumb_up',
     ariaLabel: 'Thumbs up',
+  },
+};
+
+export const TestThumbDownDefault: Story = {
+  tags: ['skip-playwright'],
+  args: { icon: 'thumb_down', size: 'md' },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render the ThumbDown icon', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+    });
+  },
+};
+
+export const TestThumbDownDisabled: Story = {
+  tags: ['skip-playwright'],
+  args: { icon: 'thumb_down', size: 'md', disabled: true },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render the ThumbDown disabled', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+      expect(iconElement.classList.contains('gi-text-gray-700')).toBe(true);
+    });
+  },
+};
+
+export const TestThumbDownAria: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    icon: 'thumb_down',
+    size: 'md',
+    ariaHidden: true,
+    ariaLabel: 'ARIA-LABEL',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render the ThumbDown with ARIA', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+      expect(iconElement.hasAttribute('aria-hidden')).toBe(true);
+      expect(iconElement.hasAttribute('aria-label')).toBe(true);
+      expect(iconElement.getAttribute('aria-label')).toBe('ARIA-LABEL');
+    });
+  },
+};
+
+export const TestThumbDownLarge: Story = {
+  tags: ['skip-playwright'],
+  args: { icon: 'thumb_down', size: 'lg' },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render the ThumbDown icon large', async () => {
+      const iconElement = canvas.getByTestId('govie-icon');
+      expect(iconElement.textContent?.trim()).toBe('thumb_down');
+      expect(iconElement).toHaveStyle('font-size: 32px');
+    });
   },
 };
