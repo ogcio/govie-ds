@@ -140,6 +140,8 @@ export const TestExtraSmallBreakpoint: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
+    await canvas.findAllByText(/Page 5 of 10/);
+
     await step(
       'should render pagination buttons and page numbers when not on XS breakpoint',
       async () => {

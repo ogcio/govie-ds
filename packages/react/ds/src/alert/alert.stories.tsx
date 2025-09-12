@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Alert } from './alert.js';
 
@@ -113,10 +114,11 @@ export const TestRendersTitleAndMessage: Story = {
   play: async ({ canvasElement, step }) => {
     await step('renders title and message', async () => {
       const element = canvasElement.querySelector('[data-testid="alert"]');
-      assert(element, 'Alert element not found');
+      expect(element).not.toBeNull();
+
       const text = canvasElement.textContent ?? '';
-      assert(text.includes('Information'), 'Title text missing');
-      assert(text.includes('This is an info alert'), 'Message text missing');
+      expect(text.includes('Information')).toBe(true);
+      expect(text.includes('This is an info alert')).toBe(true);
     });
   },
 };
@@ -147,13 +149,14 @@ export const TestVariantsHaveCorrectClass: StoryObj = {
           `[data-testid="alert-${variant}"]`,
         ) as HTMLElement | null;
 
-        assert(element, `Alert (${variant}) not found`);
+        expect(element).not.toBeNull();
+
         const className = element?.className ?? '';
         const hasClass =
           className.includes(`gi-alert-${variant}`) ||
           [...(element?.classList ?? [])].includes(`gi-alert-${variant}`);
 
-        assert(hasClass, `Missing class gi-alert-${variant}`);
+        expect(hasClass).toBe(true);
       });
     }
   },

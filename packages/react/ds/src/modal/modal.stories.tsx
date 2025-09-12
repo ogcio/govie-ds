@@ -332,7 +332,9 @@ export const TestOpenOnTriggerAndCloseOnIcon: Story = {
       const triggerButtonElement = screen.getByTestId(
         'modal-trigger-button-container',
       );
-      const closeButton = await screen.findByRole('button');
+      const closeButton = await screen.findByRole('button', {
+        name: 'Close modal',
+      });
       await userEvent.click(closeButton);
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
 
