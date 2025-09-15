@@ -345,3 +345,46 @@ export const WithoutPadding: Story = {
     );
   },
 };
+
+export const TestTabs: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    ariaLabelledBy: 'tabs',
+    id: 'tab-1',
+    children: null,
+  },
+  render: (props) => (
+    <Tabs {...props}>
+      <TabList>
+        <TabItem value="tab1">Tab 1</TabItem>
+        <TabItem value="tab2">Tab 2</TabItem>
+      </TabList>
+      <TabPanel value="tab1">Tab 1 Content</TabPanel>
+      <TabPanel value="tab2">Tab 2 Content</TabPanel>
+    </Tabs>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render tabs', async () => {
+      expect(canvas.getByText('Tab 1 Content')).toBeTruthy();
+    });
+
+    await step('should render tabs', async () => {
+      expect(canvas.getByText('Tab 2 Content')).toBeTruthy();
+    });
+
+    await step('should allow selecting a tab', async () => {
+      const tablist = canvas.getByRole('tablist');
+      const tabButtons = tablist.querySelectorAll('button');
+
+      if (tabButtons) {
+        await userEvent.click(tabButtons[1]);
+
+        expect(tabButtons[1]).toHaveAttribute('aria-selected', 'true');
+        expect(tabButtons[0]).toHaveAttribute('aria-selected', 'false');
+        expect(canvas.getByText('Tab 2 Content')).toBeVisible();
+      }
+    });
+  },
+};

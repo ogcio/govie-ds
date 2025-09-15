@@ -57,7 +57,6 @@ const meta: Meta<typeof Toast> = {
       description: 'Specify the position of the toast',
     },
   },
-
   parameters: {
     docs: {
       page: () => (
@@ -102,7 +101,6 @@ export const Default: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Trigger Toast');
     await userEvent.click(info);
   },
@@ -125,7 +123,6 @@ export const WithSlotAction: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Show Toast with Action');
     await userEvent.click(info);
   },
@@ -150,7 +147,6 @@ export const WithAction: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Show Toast with Action');
     await userEvent.click(info);
   },
@@ -175,7 +171,6 @@ export const Dismissible: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Show Dismissible Toast');
     await userEvent.click(info);
   },
@@ -197,7 +192,6 @@ export const WithLongerDuration: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Show Toast with Longer Duration');
     await userEvent.click(info);
   },
@@ -219,7 +213,6 @@ export const WithPositionChange: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Show Toast at Bottom Left');
     await userEvent.click(info);
   },
@@ -243,7 +236,6 @@ export const Success: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Trigger Toast');
     await userEvent.click(info);
   },
@@ -267,7 +259,6 @@ export const Danger: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Trigger Toast');
     await userEvent.click(info);
   },
@@ -291,7 +282,6 @@ export const Warning: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const info = await canvas.findByText('Trigger Toast');
     await userEvent.click(info);
   },
@@ -333,10 +323,84 @@ export const AllPositions: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     for (const pos of positions) {
       const button = await canvas.findByText(`Trigger ${pos.x}-${pos.y}`);
       await userEvent.click(button);
     }
+  },
+};
+
+const variantList = ['info', 'success', 'warning', 'danger'] as const;
+
+export const TestRenderTitleAndMessage: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    title: 'Toast Title',
+    description: 'This is the toast content',
+  },
+  render: (props) => (
+    <>
+      <ToastProvider />
+      <Button onClick={() => toaster.create(props)}>
+        Trigger Title And Message
+      </Button>
+    </>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render toast with title and message', async () => {
+      const triggerButton = await canvas.findByText(
+        'Trigger Title And Message',
+      );
+      await userEvent.click(triggerButton);
+      await waitFor(() => {
+        const bodyScope = within(document.body);
+        expect(bodyScope.getByText('Toast Title')).toBeInTheDocument();
+        expect(
+          bodyScope.getByText('This is the toast content'),
+        ).toBeInTheDocument();
+      });
+    });
+  },
+};
+
+export const TestRenderAllVariants: Story = {
+  tags: ['skip-playwright'],
+  render: () => {
+    return (
+      <>
+        <ToastProvider />
+        <Stack gap={2} direction="column">
+          {[...variantList].map((variant) => (
+            <Button
+              key={variant}
+              onClick={() =>
+                toaster.create({
+                  title: 'Toast',
+                  description: 'This is a Toast',
+                  variant,
+                })
+              }
+            >
+              Trigger {variant}
+            </Button>
+          ))}
+        </Stack>
+      </>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render all different variants', async () => {
+      for (const variant of variantList) {
+        const triggerButton = await canvas.findByText(`Trigger ${variant}`);
+        await userEvent.click(triggerButton);
+        await waitFor(() => {
+          const bodyScope = within(document.body);
+          const testId = `Toast-${variant}`;
+          expect(bodyScope.getByTestId(testId)).toBeInTheDocument();
+        });
+      }
+    });
   },
 };

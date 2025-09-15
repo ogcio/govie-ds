@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import {
   SummaryList,
   SummaryListAction,
@@ -58,6 +59,24 @@ export const Default: Story = {
         <SummaryListAction href="/change">Change</SummaryListAction>
       </SummaryListRow>,
     ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render SummaryList and its rows correctly', async () => {
+      expect(canvas.getByText('Name')).toBeInTheDocument();
+      expect(canvas.getByText('Date of birth')).toBeInTheDocument();
+      expect(canvas.getByText('Address')).toBeInTheDocument();
+      expect(canvas.getByText('Contact details')).toBeInTheDocument();
+    });
+
+    await step('should render correctly with `withBorder` prop', async () => {
+      const labelElement = canvas.getByText('Name');
+      const containerElement = labelElement.closest('dl');
+      expect(containerElement).not.toBeNull();
+      if (containerElement !== null) {
+        expect(containerElement).toHaveAttribute('data-border', 'true');
+      }
+    });
   },
 };
 
@@ -160,5 +179,35 @@ export const WithCustomLinks: Story = {
         </SummaryListAction>
       </SummaryListRow>,
     ],
+  },
+};
+
+export const TestRenderWithoutAction: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    children: [
+      <SummaryListRow label="Address" key="1">
+        <SummaryListValue>
+          72 Guild Street
+          <br />
+          London
+          <br />
+          SE23 6FH
+        </SummaryListValue>
+      </SummaryListRow>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should render correctly a row without an action', async () => {
+      expect(canvas.getByText('Address')).toBeInTheDocument();
+      expect(
+        canvas.getByText('72 Guild Street', { exact: false }),
+      ).toBeInTheDocument();
+      expect(canvas.getByText('London', { exact: false })).toBeInTheDocument();
+      expect(
+        canvas.getByText('SE23 6FH', { exact: false }),
+      ).toBeInTheDocument();
+    });
   },
 };

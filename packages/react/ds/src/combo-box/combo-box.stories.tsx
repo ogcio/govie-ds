@@ -1,5 +1,6 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { userEvent, within, expect } from 'storybook/test';
 import { Form } from '../forms/form.js';
 import {
   organisationOptions,
@@ -23,7 +24,7 @@ const meta = {
 
 export default meta;
 
-export const Default = {
+export const Default: StoryObj = {
   argTypes: {
     children: {
       control: 'array',
@@ -86,7 +87,6 @@ export const ControlledAndUncontrolled = {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     const handleCategoryChange = (values: string[]) => {
-      console.log('Controlled Category Change:', values);
       setSelectedCategories(values);
     };
 
@@ -116,5 +116,224 @@ export const ControlledAndUncontrolled = {
         </Combobox>
       </Form>
     );
+  },
+};
+
+const testOptions = [
+  { label: 'Design', value: 'design' },
+  { label: 'Development', value: 'development' },
+  { label: 'Marketing', value: 'marketing' },
+];
+
+export const TestDefaultSelectedValues: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <Form>
+      <Combobox className="gi-mx-auto">
+        <DropdownItem options={testOptions} defaultValue={['design']}>
+          Categories
+        </DropdownItem>
+      </Combobox>
+    </Form>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('renders with default selected values', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const toggleButtonElement = within(categoriesGroupElement).getByRole(
+        'button',
+      );
+      await userEvent.click(toggleButtonElement);
+
+      const checkboxElement = within(categoriesGroupElement).getByLabelText(
+        'Design',
+      ) as HTMLInputElement;
+      expect(checkboxElement.checked).toBe(true);
+    });
+  },
+};
+
+export const TestUncontrolledOnChange: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
+    return (
+      <Form>
+        <Combobox className="gi-mx-auto">
+          <div
+            aria-live="polite"
+            data-testid="selected-values"
+            className="gi-hidden"
+          >
+            {selectedValues.join(',')}
+          </div>
+          <DropdownItem
+            options={testOptions}
+            defaultValue={[]}
+            onChange={(values: string[]) => {
+              setSelectedValues([...values]);
+            }}
+          >
+            Categories
+          </DropdownItem>
+        </Combobox>
+      </Form>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'fires onChange when checkbox is clicked (uncontrolled)',
+      async () => {
+        const categoriesGroupElement = canvas.getByRole('group', {
+          name: /Categories dropdown/i,
+        });
+        const toggleButtonElement = within(categoriesGroupElement).getByRole(
+          'button',
+        );
+        await userEvent.click(toggleButtonElement);
+
+        const developmentCheckboxElement = within(
+          categoriesGroupElement,
+        ).getByLabelText('Development');
+        await userEvent.click(developmentCheckboxElement);
+
+        const outputElement = canvas.getByTestId('selected-values');
+        expect(outputElement).toHaveTextContent('development');
+      },
+    );
+  },
+};
+
+export const TestOnSearchCallback: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => {
+    const [searchValue, setSearchValue] = useState('');
+    return (
+      <Form>
+        <Combobox className="gi-mx-auto">
+          <div
+            aria-live="polite"
+            data-testid="search-value"
+            className="gi-hidden"
+          >
+            {searchValue}
+          </div>
+          <DropdownItem
+            options={testOptions}
+            defaultValue={[]}
+            onChange={() => {}}
+            onSearch={(query: string) => {
+              setSearchValue(query);
+            }}
+          >
+            Categories
+          </DropdownItem>
+        </Combobox>
+      </Form>
+    );
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('calls onSearch callback when typing in search', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const toggleButtonElement = within(categoriesGroupElement).getByRole(
+        'button',
+      );
+      await userEvent.click(toggleButtonElement);
+
+      const searchInputElement = within(
+        categoriesGroupElement,
+      ).getByPlaceholderText('Search');
+      await userEvent.clear(searchInputElement);
+      await userEvent.type(searchInputElement, 'Des');
+
+      const outputElement = canvas.getByTestId('search-value');
+      expect(outputElement).toHaveTextContent('Des');
+    });
+  },
+};
+
+export const TestDefault: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <Form>
+      <Combobox className="gi-mx-auto">
+        <DropdownItem options={organisationOptions}>Organisations</DropdownItem>
+        <DropdownItem options={categoryOptions}>Categories</DropdownItem>
+        <DropdownItem options={topicOptions} noSearch>
+          Topic (without search)
+        </DropdownItem>
+      </Combobox>
+    </Form>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('renders with title and options', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      expect(categoriesGroupElement).toBeInTheDocument();
+      expect(canvas.getByText('Categories')).toBeInTheDocument();
+    });
+
+    await step('toggles open and closed on button click', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const categoriesToggleButtonElement = within(
+        categoriesGroupElement,
+      ).getByRole('button');
+      await userEvent.click(categoriesToggleButtonElement);
+      expect(
+        within(categoriesGroupElement).getByPlaceholderText('Search'),
+      ).toBeInTheDocument();
+
+      await userEvent.click(categoriesToggleButtonElement);
+      const searchInputMaybe = within(
+        categoriesGroupElement,
+      ).queryByPlaceholderText('Search');
+      expect(searchInputMaybe).not.toBeVisible();
+    });
+
+    await step('shows no results when search yields none', async () => {
+      const categoriesGroupElement = canvas.getByRole('group', {
+        name: /Categories dropdown/i,
+      });
+      const categoriesToggleButtonElement = within(
+        categoriesGroupElement,
+      ).getByRole('button');
+      await userEvent.click(categoriesToggleButtonElement);
+
+      const searchInputElement = within(
+        categoriesGroupElement,
+      ).getByPlaceholderText('Search');
+      await userEvent.clear(searchInputElement);
+      await userEvent.type(searchInputElement, 'abcd');
+
+      expect(
+        within(categoriesGroupElement).getByText('No results found.'),
+      ).toBeInTheDocument();
+    });
+
+    await step('disables search when noSearch is true', async () => {
+      const topicGroupElement = canvas.getByRole('group', {
+        name: /Topic \(without search\) dropdown/i,
+      });
+      const topicToggleButtonElement =
+        within(topicGroupElement).getByRole('button');
+      await userEvent.click(topicToggleButtonElement);
+      expect(
+        within(topicGroupElement).queryByPlaceholderText('Search'),
+      ).not.toBeInTheDocument();
+    });
   },
 };

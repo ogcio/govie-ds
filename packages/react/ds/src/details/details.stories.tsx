@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect, userEvent } from 'storybook/test';
 import { Details } from './details.js';
 
 const meta = {
@@ -53,6 +54,23 @@ export const Default: Story = {
     children:
       'We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.',
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should toggle open state on summary click', async () => {
+      const detailsElement = canvas.getByTestId('govie-details');
+      const summaryElement = canvas.getByTestId('govie-details-summary');
+
+      expect(detailsElement).toBeInTheDocument();
+      expect(detailsElement).not.toHaveAttribute('open');
+
+      await userEvent.click(summaryElement);
+      expect(detailsElement).toHaveAttribute('open');
+
+      await userEvent.click(summaryElement);
+      expect(detailsElement).not.toHaveAttribute('open');
+    });
+  },
 };
 
 export const WithMultipleDetailsGrouped: Story = {
@@ -99,5 +117,58 @@ export const StartsOpen: Story = {
     children: `This details component is open by default when the page loads. Use the
     "open" attribute to control the initial state.`,
     open: true,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render with open set to true', async () => {
+      const detailsElement = canvas.getByTestId('govie-details');
+      expect(detailsElement).toBeInTheDocument();
+      expect(detailsElement).toHaveAttribute('open');
+    });
+  },
+};
+
+export const TestLabel: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    label: 'Help with Details',
+    children: 'Here is the body content of the details element.',
+    open: false,
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render the details element with the correct label',
+      async () => {
+        const detailsElement = canvas.getByTestId('govie-details');
+        const summaryElement = canvas.getByTestId('govie-details-summary');
+        expect(detailsElement).toBeInTheDocument();
+        expect(summaryElement).toHaveTextContent('Help with Details');
+      },
+    );
+  },
+};
+
+export const TestChildrenVisible: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    label: 'Help with Details',
+    open: true,
+    children: 'Here is the body content of the details element.',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render the children inside the details element',
+      async () => {
+        const contentElement = canvas.getByText(
+          'Here is the body content of the details element.',
+        );
+        expect(contentElement).toBeInTheDocument();
+      },
+    );
   },
 };
