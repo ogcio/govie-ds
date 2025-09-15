@@ -381,8 +381,9 @@ export const TestCloseOnOverlayClick: Story = {
 
       await waitFor(() => {
         expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-        modalElement.click();
       });
+
+      await userEvent.click(modalElement);
 
       modalElement = await screen.findByTestId('modal');
 
