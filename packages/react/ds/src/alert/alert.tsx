@@ -30,7 +30,7 @@ const alertVariants = tv({
       },
       warning: {
         base: 'gi-alert-warning',
-        baseDismissible: 'gi-alert-success',
+        baseDismissible: 'gi-alert-warning',
       },
     },
   },
@@ -45,6 +45,7 @@ type AlertProps = {
   children?: ReactNode;
   dismissible?: boolean;
   dataTestid?: string;
+  className?: string;
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -77,6 +78,7 @@ function Alert({
   dismissible,
   onClose,
   dataTestid,
+  className,
 }: AlertProps) {
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -91,7 +93,7 @@ function Alert({
   }
   return (
     <div
-      className={cn(baseVariant(), 'gi-not-prose')}
+      className={cn(baseVariant(), className, 'gi-not-prose')}
       data-testid={dataTestid}
       role="alert"
       aria-live="assertive"
