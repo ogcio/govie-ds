@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.13.2](https://github.com/ogcio/govie-ds/compare/html-lib-v1.13.1...html-lib-v1.13.2) (2025-09-15)
+
+
+### Miscellaneous Chores
+
+* Clean up test suite AB[#30853](https://github.com/ogcio/govie-ds/issues/30853) ([#717](https://github.com/ogcio/govie-ds/issues/717)) ([b16a8c6](https://github.com/ogcio/govie-ds/commit/b16a8c65c9a075e6110360bc880c8ec5b11ec3e7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.2
+
 ## [1.13.1](https://github.com/ogcio/govie-ds/compare/html-lib-v1.13.0...html-lib-v1.13.1) (2025-09-11)
 
 

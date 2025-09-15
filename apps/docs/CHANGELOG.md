@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.16.1](https://github.com/ogcio/govie-ds/compare/docs-v1.16.0...docs-v1.16.1) (2025-09-15)
+
+
+### Bug Fixes
+
+* Modal overlay click a11y issue AB[#31075](https://github.com/ogcio/govie-ds/issues/31075) ([#721](https://github.com/ogcio/govie-ds/issues/721)) ([8f62ae4](https://github.com/ogcio/govie-ds/commit/8f62ae4644b981c216ccba372c38e5a1b62e9a42))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ogcio/design-system-react bumped to 1.17.1
+    * @ogcio/design-system-tailwind bumped to 1.14.2
+
 ## [1.16.0](https://github.com/ogcio/govie-ds/compare/docs-v1.15.0...docs-v1.16.0) (2025-09-11)
 
 
