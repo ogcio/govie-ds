@@ -1,4 +1,5 @@
 import { act } from 'react';
+import { userEvent } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { renderComponent, cleanup, waitFor } from '../test-utilities.js';
 import { HtmlContent, TriggerButton } from './drawer.content.js';
@@ -91,12 +92,13 @@ describe('drawer', () => {
     );
 
     triggerButtonElement.click();
+    const modalElement = screen.getByTestId('modal');
 
     await waitFor(() => {
-      const modalElement = screen.getByTestId('modal');
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-      modalElement.click();
     });
+
+    await userEvent.click(modalElement);
 
     await waitFor(() => {
       const modalElement = screen.getByTestId('modal');

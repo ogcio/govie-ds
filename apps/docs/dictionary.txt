@@ -217,6 +217,7 @@ noColor
 noUnderline
 noopener
 noreferrer
+nps
 ofType
 onboarding
 organization

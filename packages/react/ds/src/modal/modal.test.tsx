@@ -1,4 +1,5 @@
 import { act } from 'react';
+import { userEvent } from 'storybook/test';
 import { Button } from '../button/button.js';
 import {
   renderComponent,
@@ -97,8 +98,8 @@ describe('modal', () => {
 
     await waitFor(() => {
       expect(modalElement.classList.contains('gi-modal-open')).toBe(true);
-      modalElement.click();
     });
+    userEvent.click(modalElement);
     modalElement = await within(document.body).findByTestId('modal');
     await waitFor(() => {
       expect(modalElement.classList.contains('gi-modal-open')).toBe(false);
