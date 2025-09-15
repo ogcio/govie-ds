@@ -71,10 +71,12 @@ export const Small: Story = {
     size: LabelSize.Small,
     text: 'This is label text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const label = canvas.getByText('This is label text');
-    expect(label).toHaveClass('gi-text-sm');
+    await step('should have the correct size class for "sm"', async () => {
+      const labelElement = canvas.getByText('This is label text');
+      expect(labelElement).toHaveClass('gi-text-sm');
+    });
   },
 };
 
@@ -83,10 +85,13 @@ export const Medium: Story = {
     size: LabelSize.Medium,
     text: 'This is label text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const label = canvas.getByText('This is label text');
-    expect(label).toHaveClass('gi-text-md');
+
+    await step('should have the correct size class for "md"', async () => {
+      const labelElement = canvas.getByText('This is label text');
+      expect(labelElement).toHaveClass('gi-text-md');
+    });
   },
 };
 
@@ -95,10 +100,13 @@ export const Large: Story = {
     size: LabelSize.Large,
     text: 'This is label text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const label = canvas.getByText('This is label text');
-    expect(label).toHaveClass('gi-text-lg');
+
+    await step('should have the correct size class for "lg"', async () => {
+      const labelElement = canvas.getByText('This is label text');
+      expect(labelElement).toHaveClass('gi-text-lg');
+    });
   },
 };
 
@@ -116,5 +124,32 @@ export const WithRichText: Story = {
     const canvas = within(canvasElement);
     const hint = canvas.getByText('Here is a rich label');
     expect(hint).toHaveClass('gi-flex');
+  },
+};
+
+export const TestCorrectContent: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    text: 'This is a label',
+    size: LabelSize.Medium,
+    htmlFor: 'input-id',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a label with the correct content', async () => {
+      const labelElement = canvas.getByText('This is a label');
+      expect(labelElement).toBeTruthy();
+      expect(labelElement.tagName).toBe('LABEL');
+      expect(labelElement.getAttribute('for')).toBe('input-id');
+    });
+
+    await step(
+      'should associate the label with the correct input field using "for"',
+      async () => {
+        const labelElement = canvas.getByText('This is a label');
+        expect(labelElement.getAttribute('for')).toBe('input-id');
+      },
+    );
   },
 };

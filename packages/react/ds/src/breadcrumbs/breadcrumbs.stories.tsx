@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, expect } from 'storybook/test';
 import {
   Breadcrumbs,
   BreadcrumbCurrentLink,
@@ -31,6 +32,29 @@ export const Default: Story = {
       <BreadcrumbCurrentLink href="/docs">Documentation</BreadcrumbCurrentLink>,
     ],
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const navigationElement = canvas.getByRole('navigation', {
+      name: /breadcrumb/i,
+    });
+    expect(navigationElement).toBeInTheDocument();
+
+    const listItemElements = canvas.getAllByRole('listitem');
+    expect(listItemElements).toHaveLength(4);
+
+    expect(listItemElements[0]).toHaveTextContent('Home');
+    expect(listItemElements[1]).toBeInTheDocument();
+    expect(listItemElements[2]).toHaveTextContent('Travel');
+    expect(listItemElements[3]).toHaveTextContent('Documentation');
+
+    const ellipsisElement = canvas.getByText('more_horiz');
+    expect(ellipsisElement).toBeInTheDocument();
+    expect(ellipsisElement.parentElement).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
+  },
 };
 
 export const WithoutEllipsis: Story = {
@@ -50,6 +74,11 @@ export const WithSingleItemAndIconStart: Story = {
     children: [
       <BreadcrumbLink href="/home">Back to [Previous page]</BreadcrumbLink>,
     ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const listItemElements = canvas.getAllByRole('listitem');
+    expect(listItemElements[0]).toHaveTextContent('chevron_left');
   },
 };
 

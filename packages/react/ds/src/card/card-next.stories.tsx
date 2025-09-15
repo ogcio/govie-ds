@@ -97,16 +97,55 @@ export const Default: Story = {
       </CardContainer>
     </Card>
   ),
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     const card = await canvas.findByTestId('card');
-    await expect(card).toBeInTheDocument();
-    await expect(await canvas.findByText('Card Title')).toBeInTheDocument();
-    await expect(await canvas.findByText('Subheading')).toBeInTheDocument();
-    await expect(await canvas.findByRole('img')).toHaveAttribute(
-      'src',
-      'https://placeholderjs.com/400x300',
+
+    await step('should render a card with title and content', async () => {
+      const cardElement = await canvas.findByTestId('card');
+      await expect(cardElement).toBeInTheDocument();
+      await expect(await canvas.findByText('Card Title')).toBeInTheDocument();
+      await expect(
+        await canvas.findByText(/Lorem ipsum dolor sit amet/i),
+      ).toBeInTheDocument();
+    });
+
+    await step(
+      'should render an image when media type is "image"',
+      async () => {
+        const imageElement = await canvas.findByRole('img');
+        await expect(imageElement).toHaveAttribute(
+          'src',
+          'https://placeholderjs.com/400x300',
+        );
+        await expect(imageElement).toHaveAttribute('alt', 'Card Title');
+      },
     );
+
+    await step('should render a tag if "tag" prop is provided', async () => {
+      const tagElement = await canvas.findByText('New');
+      await expect(tagElement).toBeInTheDocument();
+    });
+
+    await step(
+      'should render actions if actions prop is provided',
+      async () => {
+        const buttonElement = await canvas.findByRole('button', {
+          name: 'Button',
+        });
+        await userEvent.click(buttonElement);
+        await expect(buttonElement).toBeEnabled();
+      },
+    );
+
+    await step(
+      'should render a subtitle if "subTitle" prop is provided',
+      async () => {
+        await expect(await canvas.findByText('Subheading')).toBeInTheDocument();
+      },
+    );
+
+    await expect(card).toBeInTheDocument();
     const button = await canvas.findByRole('button', { name: 'Button' });
     await userEvent.click(button);
     await expect(button).toBeEnabled();
@@ -207,6 +246,7 @@ export const VerticalWithButton: Story = {
     </Card>
   ),
 };
+
 export const Horizontal: Story = {
   render: () => (
     <Card type="horizontal">
@@ -238,6 +278,27 @@ export const Horizontal: Story = {
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a horizontal card layout', async () => {
+      const titleElement = await canvas.findByText('Horizontal Card');
+      const horizontalContainer = titleElement.closest(
+        '.gi-card-horizontal',
+      ) as HTMLElement | null;
+      await expect(horizontalContainer).not.toBeNull();
+    });
+
+    await step(
+      'should render a link if "href" prop is provided for title',
+      async () => {
+        const titleLinkElement = canvas.getAllByRole('link', {
+          name: 'Horizontal Card',
+        });
+        await expect(titleLinkElement[1]).toHaveAttribute('href', '#');
+      },
+    );
+  },
 };
 
 export const HorizontalWithoutImage: Story = {
@@ -260,6 +321,18 @@ export const HorizontalWithoutImage: Story = {
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render a subtitle if "subTitle" prop is provided',
+      async () => {
+        await expect(
+          await canvas.findByText('Subtitle Here'),
+        ).toBeInTheDocument();
+      },
+    );
+  },
 };
 
 export const HorizontalWithIcon: Story = {
@@ -289,6 +362,45 @@ export const HorizontalWithIcon: Story = {
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    step('should render an icon when media type is "icon"', async () => {
+      const iconElement = await canvas.findByTestId('govie-icon');
+      await expect(iconElement).toBeInTheDocument();
+      await expect(iconElement.textContent?.trim()).toBe('download');
+      await expect(iconElement.classList.contains('gi-text-gray-500')).toBe(
+        true,
+      );
+    });
+  },
+};
+
+export const VerticalLayout: Story = {
+  tags: ['skip-playwright'],
+  render: (props) => (
+    <Card {...props} type="vertical" dataTestid="card">
+      <CardContainer inset="none">
+        <CardHeader>
+          <CardTitle>Vertical Layout</CardTitle>
+        </CardHeader>
+        <CardDescription>
+          Ensures vertical layout class is applied
+        </CardDescription>
+      </CardContainer>
+    </Card>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('should render a vertical card layout', async () => {
+      const titleElement = await canvas.findByText('Vertical Layout');
+      const verticalContainer = titleElement.closest(
+        '.gi-card-vertical',
+      ) as HTMLElement | null;
+      await expect(verticalContainer).not.toBeNull();
+    });
+  },
 };
 
 export const WithIframeEmbed: Story = {
@@ -324,6 +436,22 @@ export const WithIframeEmbed: Story = {
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render an iframe when media type is "iframe"',
+      async () => {
+        const iframeElement = await canvas.findByTitle('Sample YouTube Video');
+
+        expect(iframeElement).toBeTruthy();
+        expect(iframeElement.getAttribute('title')).toBe(
+          'Sample YouTube Video',
+        );
+        expect(iframeElement.getAttribute('allowFullScreen')).not.toBeNull();
+      },
+    );
+  },
 };
 
 export const MediaImageWithAspectRatio: Story = {
@@ -355,6 +483,19 @@ export const MediaImageWithAspectRatio: Story = {
       </CardContainer>
     </Card>
   ),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render an image with aspect ratio when provided',
+      async () => {
+        const imageElement = await canvas.findByRole('img', {
+          name: /aspect ratio image/i,
+        });
+        await expect(imageElement).toHaveStyle('aspect-ratio: 16 / 9');
+      },
+    );
+  },
 };
 
 export const WithCustomTitleLink: Story = {

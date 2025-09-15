@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, within, waitFor } from 'storybook/test';
 import { Button } from '../button/button.js';
 import { Tooltip } from './tooltip.js';
 
@@ -41,11 +41,13 @@ const meta = {
       },
     },
   },
-  decorators: (Story) => (
-    <div className="gi-flex gi-justify-center gi-my-20 gi-mx-20">
-      <Story />
-    </div>
-  ),
+  decorators: [
+    (Story) => (
+      <div className="gi-flex gi-justify-center gi-my-20 gi-mx-20">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;
@@ -61,17 +63,41 @@ export const Default: Story = {
       </Button>
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    let popoverContent = canvas.queryByText('This is a tooltip.');
-    await expect(popoverContent).not.toBeInTheDocument();
+    await step('should render the child component', async () => {
+      const triggerButton = canvas.getByTestId('tooltip-trigger');
+      await expect(triggerButton).toBeInTheDocument();
+    });
 
-    const triggerButton = await canvas.getByTestId('tooltip-trigger');
-    await userEvent.hover(triggerButton);
+    await step('should not show tooltip initially', async () => {
+      const tooltipTextElement = canvas.queryByText('This is a tooltip.');
+      await expect(tooltipTextElement).not.toBeInTheDocument();
+    });
 
-    popoverContent = canvas.queryByText('This is a tooltip.');
-    await expect(popoverContent).toBeInTheDocument();
+    await step('should show tooltip on mouse enter', async () => {
+      const triggerButton = await canvas.getByTestId('tooltip-trigger');
+      await userEvent.hover(triggerButton);
+      const tooltipTextElement = await canvas.findByText('This is a tooltip.');
+      await expect(tooltipTextElement).toBeInTheDocument();
+    });
+
+    await step('should hide tooltip on mouse leave', async () => {
+      const triggerButton = canvas.getByTestId('tooltip-trigger');
+      await userEvent.unhover(triggerButton);
+      await waitFor(() => {
+        const tooltipTextElement = canvas.queryByText('This is a tooltip.');
+        expect(tooltipTextElement).not.toBeInTheDocument();
+      });
+    });
+
+    await step('should render tooltip with correct text', async () => {
+      const triggerButton = await canvas.getByTestId('tooltip-trigger');
+      await userEvent.hover(triggerButton);
+      const tooltipTextElement = await canvas.findByText('This is a tooltip.');
+      await expect(tooltipTextElement).toHaveTextContent('This is a tooltip.');
+    });
   },
 };
 
@@ -85,17 +111,18 @@ export const TopPosition: Story = {
       </Button>
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    let popoverContent = canvas.queryByText('This is a tooltip at the top.');
-    await expect(popoverContent).not.toBeInTheDocument();
-
-    const triggerButton = await canvas.getByTestId('tooltip-trigger');
-    await userEvent.hover(triggerButton);
-
-    popoverContent = canvas.queryByText('This is a tooltip at the top.');
-    await expect(popoverContent).toBeInTheDocument();
+    await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
+    await step(
+      'should apply correct position class for top position',
+      async () => {
+        const tooltipElement = await canvas.findByText(
+          'This is a tooltip at the top.',
+        );
+        await expect(tooltipElement).toHaveClass('gi-tooltip-top');
+      },
+    );
   },
 };
 
@@ -109,17 +136,18 @@ export const BottomPosition: Story = {
       </Button>
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    let popoverContent = canvas.queryByText('This is a tooltip at the bottom.');
-    await expect(popoverContent).not.toBeInTheDocument();
-
-    const triggerButton = await canvas.getByTestId('tooltip-trigger');
-    await userEvent.hover(triggerButton);
-
-    popoverContent = canvas.queryByText('This is a tooltip at the bottom.');
-    await expect(popoverContent).toBeInTheDocument();
+    await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
+    await step(
+      'should apply correct position class for bottom position',
+      async () => {
+        const tooltipElement = await canvas.findByText(
+          'This is a tooltip at the bottom.',
+        );
+        await expect(tooltipElement).toHaveClass('gi-tooltip-bottom');
+      },
+    );
   },
 };
 
@@ -133,17 +161,18 @@ export const LeftPosition: Story = {
       </Button>
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    let popoverContent = canvas.queryByText('This is a tooltip on the left.');
-    await expect(popoverContent).not.toBeInTheDocument();
-
-    const triggerButton = await canvas.getByTestId('tooltip-trigger');
-    await userEvent.hover(triggerButton);
-
-    popoverContent = canvas.queryByText('This is a tooltip on the left.');
-    await expect(popoverContent).toBeInTheDocument();
+    await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
+    await step(
+      'should apply correct position class for left position',
+      async () => {
+        const tooltipElement = await canvas.findByText(
+          'This is a tooltip on the left.',
+        );
+        await expect(tooltipElement).toHaveClass('gi-tooltip-left');
+      },
+    );
   },
 };
 
@@ -157,17 +186,18 @@ export const RightPosition: Story = {
       </Button>
     ),
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-
-    let popoverContent = canvas.queryByText('This is a tooltip on the right.');
-    await expect(popoverContent).not.toBeInTheDocument();
-
-    const triggerButton = await canvas.getByTestId('tooltip-trigger');
-    await userEvent.hover(triggerButton);
-
-    popoverContent = canvas.queryByText('This is a tooltip on the right.');
-    await expect(popoverContent).toBeInTheDocument();
+    await userEvent.hover(await canvas.getByTestId('tooltip-trigger'));
+    await step(
+      'should apply correct position class for right position',
+      async () => {
+        const tooltipElement = await canvas.findByText(
+          'This is a tooltip on the right.',
+        );
+        await expect(tooltipElement).toHaveClass('gi-tooltip-right');
+      },
+    );
   },
 };
 

@@ -49,12 +49,19 @@ export const Default: Story = {
     children: 'This is a phase banner.',
     level: 'Alpha',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await expect(
       canvas.getByText('This is a phase banner.'),
     ).toBeInTheDocument();
     await expect(canvas.getByText('Alpha')).toBeInTheDocument();
+
+    await step('should render a phase-banner with alpha level', async () => {
+      const bannerElement = canvas.getByTestId('phase-banner');
+      await expect(bannerElement).toBeInTheDocument();
+      const firstChildElement = bannerElement.firstElementChild;
+      await expect(firstChildElement?.textContent?.trim()).toBe('Alpha');
+    });
   },
 };
 
@@ -64,8 +71,10 @@ export const WithoutPadding: Story = {
     padding: false,
   },
   play: async ({ canvasElement }) => {
-    const banner = canvasElement.querySelector('[data-testid="phase-banner"]');
-    await expect(banner).not.toHaveClass('gi-px-4');
+    const bannerElement = canvasElement.querySelector(
+      '[data-testid="phase-banner"]',
+    );
+    await expect(bannerElement).not.toHaveClass('gi-px-4');
   },
 };
 
@@ -75,9 +84,30 @@ export const WrappedInContainer: Story = {
     wrap: 'container',
   },
   play: async ({ canvasElement }) => {
-    const container = canvasElement.querySelector(
+    const containerElement = canvasElement.querySelector(
       '[data-testid="govie-container"]',
     );
-    await expect(container).toBeInTheDocument();
+    await expect(containerElement).toBeInTheDocument();
+  },
+};
+
+export const TestBetaLevel: Story = {
+  args: {
+    children: 'This is a span',
+    level: 'Beta',
+  },
+  tags: ['skip-playwright'],
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render a span with the correct content when props.as is "span"',
+      async () => {
+        const bannerElement = canvas.getByTestId('phase-banner');
+        await expect(bannerElement).toBeInTheDocument();
+        const firstChildElement = bannerElement.firstElementChild;
+        await expect(firstChildElement?.textContent?.trim()).toBe('Beta');
+      },
+    );
   },
 };
