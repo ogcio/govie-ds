@@ -1049,7 +1049,10 @@ export default function Home() {
                   <div>
                     <h5 className="font-semibold mb-2">Modals and Drawers</h5>
                     <div className="flex gap-4">
-                      <Modal triggerButton={<Button>Open Modal</Button>}>
+                      <Modal
+                        triggerButton={<Button>Open Modal</Button>}
+                        aria-describedby="Modal example"
+                      >
                         <ModalTitle>Modal Title</ModalTitle>
                         <ModalBody>
                           <Paragraph>

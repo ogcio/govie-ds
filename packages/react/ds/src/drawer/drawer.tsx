@@ -95,7 +95,12 @@ export const Drawer = ({
 };
 
 export const DrawerBody = ({ children, className }: DrawerBodySectionProps) => (
-  <ModalBody className={cn('gi-drawer-body', className)}>{children}</ModalBody>
+  <ModalBody
+    includeModalClass={false}
+    className={cn('gi-drawer-body', className)}
+  >
+    {children}
+  </ModalBody>
 );
 
 export const DrawerFooter = ({
