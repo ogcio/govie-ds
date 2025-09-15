@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.17.1](https://github.com/ogcio/govie-ds/compare/react-lib-v1.17.0...react-lib-v1.17.1) (2025-09-15)
+
+
+### Bug Fixes
+
+* Fix for dismissible warning variant + adding className property AB[#31076](https://github.com/ogcio/govie-ds/issues/31076) ([#719](https://github.com/ogcio/govie-ds/issues/719)) ([9a924b1](https://github.com/ogcio/govie-ds/commit/9a924b12f31ac66c0f6dd132cba5c4c143a51621))
+* Modal className in body + aria attributes AB[#31075](https://github.com/ogcio/govie-ds/issues/31075) ([#718](https://github.com/ogcio/govie-ds/issues/718)) ([2b536b2](https://github.com/ogcio/govie-ds/commit/2b536b2efd386cad8cd64b36171a0013b18c7c44))
+* Modal overlay click a11y issue AB[#31075](https://github.com/ogcio/govie-ds/issues/31075) ([#721](https://github.com/ogcio/govie-ds/issues/721)) ([8f62ae4](https://github.com/ogcio/govie-ds/commit/8f62ae4644b981c216ccba372c38e5a1b62e9a42))
+
+
+### Miscellaneous Chores
+
+* Clean up test suite AB[#30853](https://github.com/ogcio/govie-ds/issues/30853) ([#717](https://github.com/ogcio/govie-ds/issues/717)) ([b16a8c6](https://github.com/ogcio/govie-ds/commit/b16a8c65c9a075e6110360bc880c8ec5b11ec3e7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @ogcio/design-system-tailwind bumped to 1.14.2
+
 ## [1.17.0](https://github.com/ogcio/govie-ds/compare/react-lib-v1.16.0...react-lib-v1.17.0) (2025-09-11)
 
 
