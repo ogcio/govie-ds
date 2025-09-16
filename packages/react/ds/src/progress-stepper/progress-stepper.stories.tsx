@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { within, expect } from 'storybook/test';
 import { Button } from '../button/button.js';
 import {
   FormField,
@@ -83,6 +84,24 @@ export const Default: Story = {
       <StepItem key="default-step-5" label="Review" />,
       <StepItem key="default-step-6" label="Complete & Submit" />,
     ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should render a horizontal progress stepper correctly',
+      async () => {
+        const stepperElement = canvas.getByTestId('progress-stepper');
+        const stepElements = [
+          ...stepperElement.querySelectorAll(
+            '.gi-progress-stepper-step-container',
+          ),
+        ] as HTMLElement[];
+        expect(stepElements.length).toBe(6);
+        expect(stepElements[0].dataset.completed).toBe('true');
+        expect(stepElements[1].dataset.current).toBe('true');
+        expect(stepElements[2].dataset.next).toBe('true');
+      },
+    );
   },
 };
 
@@ -250,6 +269,21 @@ export const WithVerticalOrientation: Story = {
       <StepItem key="withverticalorientation-step-5" label="Step 5" />,
     ],
     orientation: 'vertical',
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should render a vertical progress stepper correctly',
+      async () => {
+        const stepperElement = canvas.getByTestId('progress-stepper');
+        const stepElements = [
+          ...stepperElement.querySelectorAll(
+            '.gi-progress-stepper-step-container',
+          ),
+        ] as HTMLElement[];
+        expect(stepElements[1].dataset.current).toBe('true');
+      },
+    );
   },
 };
 
@@ -538,5 +572,252 @@ export const WithCustomVerticalGap: Story = {
     ],
     orientation: 'vertical',
     verticalGap: 8,
+  },
+};
+
+export const TestVerticalSlotsCurrentPrevious: StoryObj = {
+  tags: ['skip-playwright'],
+  args: {
+    currentStepIndex: 1,
+    orientation: 'vertical',
+    children: [
+      <StepItem label="Step 1" key="test-vs-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-vs-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-vs-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should show slot content for the current and previous step index when vertical orientation',
+      async () => {
+        const stepperElement1 = canvas.getByTestId('vertical-step-slot-0');
+        const stepperElement2 = canvas.getByTestId('vertical-step-slot-1');
+        const stepperElement3 = canvas.queryByTestId('vertical-step-slot-2');
+        expect(stepperElement1).toBeInTheDocument();
+        expect(stepperElement2).toBeInTheDocument();
+        expect(stepperElement3).toBeNull();
+      },
+    );
+  },
+};
+
+export const TestHorizontalSlotCurrentOnly: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    currentStepIndex: 0,
+    children: [
+      <StepItem label="Step 1" key="test-hs-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-hs-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-hs-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should show slot content for the current step index',
+      async () => {
+        const stepperElement1 = canvas.getByTestId('horizontal-step-slot-0');
+        const stepperElement2 = canvas.queryByTestId('horizontal-step-slot-1');
+        const stepperElement3 = canvas.queryByTestId('horizontal-step-slot-2');
+        expect(stepperElement1).toBeInTheDocument();
+        expect(stepperElement2).toBeNull();
+        expect(stepperElement3).toBeNull();
+      },
+    );
+  },
+};
+
+export const TestVerticalDefaultOpenSlots: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    orientation: 'vertical',
+    children: [
+      <StepItem label="Step 1" key="test-vdo-1" defaultOpen>
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-vdo-2" defaultOpen>
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-vdo-3" defaultOpen>
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should default open slot content while vertical orientation when "defaultOpen" is true',
+      async () => {
+        const stepperElement1 = canvas.getByTestId('vertical-step-slot-0');
+        const stepperElement2 = canvas.getByTestId('vertical-step-slot-1');
+        const stepperElement3 = canvas.getByTestId('vertical-step-slot-2');
+        expect(stepperElement1).toBeInTheDocument();
+        expect(stepperElement2).toBeInTheDocument();
+        expect(stepperElement3).toBeInTheDocument();
+      },
+    );
+  },
+};
+
+export const TestIndicatorNumbersAllNumeric: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    indicator: 'number',
+    currentStepIndex: 0,
+    children: [
+      <StepItem label="Step 1" key="test-n-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-n-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-n-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should check step numbers when "indicator" is a number',
+      async () => {
+        const steps = canvas.getAllByRole('listitem');
+        for (const stepElement of steps) {
+          const content = stepElement
+            .querySelector('.gi-progress-stepper-step')
+            ?.textContent?.trim();
+          expect(!Number.isNaN(Number(content))).toBe(true);
+        }
+      },
+    );
+  },
+};
+
+export const TestIndicatorChecksWhenCompleted: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    indicator: 'number',
+    currentStepIndex: 2,
+    children: [
+      <StepItem label="Step 1" key="test-nc-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-nc-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-nc-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should have a check icon for the completed steps when "indicator" is a number',
+      async () => {
+        const listItems = canvas.getAllByRole('listitem');
+        const contents = listItems.map((listItem) =>
+          listItem
+            .querySelector('.gi-progress-stepper-step')
+            ?.textContent?.trim(),
+        );
+        const [content1, content2, currentStep] = contents;
+        expect(content1).toBe('check');
+        expect(content2).toBe('check');
+        expect(currentStep).toBe('3');
+      },
+    );
+  },
+};
+
+export const TestExplicitStepStates: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    stepStates: [{ completed: true }, { current: true }, { disabled: true }],
+    children: [
+      <StepItem label="Step 1" key="test-es-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-es-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-es-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('should respect explicit stepStates when provided', async () => {
+      const stepperElement = canvas.getByTestId('progress-stepper');
+      const stepElements = [
+        ...stepperElement.querySelectorAll(
+          '.gi-progress-stepper-step-container',
+        ),
+      ] as HTMLElement[];
+
+      expect(stepElements[0].dataset.completed).toBe('true');
+      expect(stepElements[0].dataset.current).not.toBe('true');
+      expect(stepElements[0].dataset.disabled).not.toBe('true');
+
+      expect(stepElements[1].dataset.current).toBe('true');
+      expect(stepElements[1].dataset.completed).not.toBe('true');
+      expect(stepElements[1].dataset.disabled).not.toBe('true');
+
+      expect(stepElements[2].dataset.disabled).toBe('true');
+      expect(stepElements[2].dataset.current).not.toBe('true');
+      expect(stepElements[2].dataset.completed).not.toBe('true');
+    });
+  },
+};
+
+export const TestCompleteAll: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    completeAll: true,
+    children: [
+      <StepItem label="Step 1" key="test-c-1">
+        <div>Step 1 Content</div>
+      </StepItem>,
+      <StepItem label="Step 2" key="test-c-2">
+        <div>Step 2 Content</div>
+      </StepItem>,
+      <StepItem label="Step 3" key="test-c-3">
+        <div>Step 3 Content</div>
+      </StepItem>,
+    ],
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step(
+      'should mark all steps as completed when completeAll is true',
+      async () => {
+        const stepperElement = canvas.getByTestId('progress-stepper');
+        const stepElements = [
+          ...stepperElement.querySelectorAll(
+            '.gi-progress-stepper-step-container',
+          ),
+        ] as HTMLElement[];
+        for (const stepElement of stepElements) {
+          expect(stepElement.dataset.completed).toBe('true');
+          expect(stepElement.dataset.current).not.toBe('true');
+          expect(stepElement.dataset.next).not.toBe('true');
+        }
+        expect(stepElements.length).toBe(3);
+      },
+    );
   },
 };

@@ -9,6 +9,7 @@ import {
   useRef,
   useEffect,
   useMemo,
+  useId,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from '../button/button.js';
@@ -150,9 +151,14 @@ export const ModalWrapper = ({
     isModalComponent(ModalFooter, 'ModalFooter', child),
   );
 
+  const titleUid = useId();
+  const computedTitleId =
+    (modalTitle as any)?.props?.id || `gi-modal-title-${titleUid}`;
+
   const modalTitleClone = modalTitle
     ? cloneElement(modalTitle as ReactElement<HeadingProps>, {
         as: size === 'sm' ? 'h5' : 'h4',
+        id: computedTitleId,
       })
     : null;
 
@@ -187,57 +193,77 @@ export const ModalWrapper = ({
     };
   }, [isOpen, closeOnEscape, onClose]);
 
-  return (
-    <ModalPortal modalRef={modalRef} isOpen={isOpen}>
+  useEffect(() => {
+    if (!isOpen || !closeOnClick || !closeOnOverlayClick) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const container = (modalRef as any).current?.querySelector(
+        '.gi-modal-container-control',
+      ) as HTMLElement | null;
+      if (!container) {
+        return;
+      }
+      if (!container.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown, true);
+    return () =>
+      document.removeEventListener('pointerdown', handlePointerDown, true);
+  }, [isOpen, closeOnClick, closeOnOverlayClick, onClose]);
+
+  const Overlay = (
+    <div
+      {...rest}
+      ref={modalRef}
+      className={cn('gi-modal', {
+        'gi-modal-open': isOpen,
+        'gi-modal-close': !isOpen,
+      })}
+      data-testid={dataTestId || 'modal'}
+      tabIndex={-1}
+    >
       <div
-        {...rest}
-        ref={modalRef}
-        className={cn('gi-modal', {
-          'gi-modal-open': isOpen,
-          'gi-modal-close': !isOpen,
-        })}
-        data-testid={dataTestId || 'modal'}
-        onClick={(event) => {
-          const isOverlayClick = event.currentTarget === event.target;
-          if (isOverlayClick && closeOnClick && closeOnOverlayClick) {
-            onClose();
-          }
-        }}
-        tabIndex={-1}
+        data-testid="modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-label="dialog"
+        {...ariaProps}
+        data-size={size}
+        data-position={position}
+        className={cn(
+          'gi-modal-container-control',
+          {
+            'gi-modal-container': !className,
+            'gi-modal-container-center': position === 'center',
+            'gi-modal-container-left': position === 'left',
+            'gi-modal-container-right': position === 'right',
+            'gi-modal-container-bottom': position === 'bottom',
+          },
+          className,
+        )}
       >
-        <div
-          {...ariaProps}
-          data-testid="modal-container"
-          role="dialog"
-          aria-modal="true"
-          aria-label="dialog"
-          data-size={size}
-          data-position={position}
-          className={cn(
-            'gi-modal-container-control',
-            {
-              'gi-modal-container': !className,
-              'gi-modal-container-center': position === 'center',
-              'gi-modal-container-left': position === 'left',
-              'gi-modal-container-right': position === 'right',
-              'gi-modal-container-bottom': position === 'bottom',
-            },
-            className,
-          )}
-        >
-          <ModalHeader
-            closeButtonLabel={closeButtonLabel}
-            modalTitle={modalTitleClone}
-            closeOnClick={closeOnClick}
-            onClose={onClose}
-            closeButtonSize={closeButtonSize}
-          />
-          <div className={cn({ 'gi-pb-6': !modalFooter })}>
-            {contentChildren}
-            {modalFooterClone}
-          </div>
+        <ModalHeader
+          closeButtonLabel={closeButtonLabel}
+          modalTitle={modalTitleClone}
+          closeOnClick={closeOnClick}
+          onClose={onClose}
+          closeButtonSize={closeButtonSize}
+        />
+        <div className={cn({ 'gi-pb-6': !modalFooter })}>
+          {contentChildren}
+          {modalFooterClone}
         </div>
       </div>
+    </div>
+  );
+
+  return (
+    <ModalPortal modalRef={modalRef} isOpen={isOpen}>
+      {Overlay}
     </ModalPortal>
   );
 };

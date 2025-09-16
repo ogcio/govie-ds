@@ -25,6 +25,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       onClick,
       className = '',
       type = 'button',
+      dataTestid,
       ...props
     },
     ref,
@@ -39,6 +40,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         role="button"
         onClick={onClick}
+        data-testid={dataTestid}
         {...props}
         className={cn(
           'gi-btn',

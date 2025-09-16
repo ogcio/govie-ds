@@ -43,6 +43,18 @@ export const Default: Story = {
     text: 'Error',
     size: ErrorSize.Medium,
   },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step(
+      'should render error text with the correct content',
+      async () => {
+        const errorElement = canvas.getByText('Error');
+        expect(errorElement).toBeTruthy();
+        expect(errorElement.tagName).toBe('DIV');
+      },
+    );
+  },
 };
 
 export const Small: Story = {
@@ -50,10 +62,13 @@ export const Small: Story = {
     size: ErrorSize.Small,
     text: 'This is error text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const error = canvas.getByText('This is error text');
-    expect(error).toHaveClass('gi-error-text-sm');
+
+    await step('should render error text with "sm" size', async () => {
+      const errorElement = canvas.getByText('This is error text');
+      expect(errorElement).toHaveClass('gi-error-text-sm');
+    });
   },
 };
 
@@ -62,10 +77,13 @@ export const Medium: Story = {
     size: ErrorSize.Medium,
     text: 'This is error text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const error = canvas.getByText('This is error text');
-    expect(error).toHaveClass('gi-error-text-md');
+
+    await step('should render error text with "sm" size', async () => {
+      const errorElement = canvas.getByText('This is error text');
+      expect(errorElement).toHaveClass('gi-error-text-md');
+    });
   },
 };
 
@@ -74,10 +92,13 @@ export const Large: Story = {
     size: ErrorSize.Large,
     text: 'This is error text',
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const error = canvas.getByText('This is error text');
-    expect(error).toHaveClass('gi-error-text-lg');
+
+    await step('should render error text with "sm" size', async () => {
+      const errorElement = canvas.getByText('This is error text');
+      expect(errorElement).toHaveClass('gi-error-text-lg');
+    });
   },
 };
 

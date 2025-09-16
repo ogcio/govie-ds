@@ -21,7 +21,7 @@
       "dataTable.selectedRows_one": "{{count}} Row selected",
       "dataTable.selectedRows_other": "{{count}} Rows selected",
       "dropdownItem.noResultFound": "No results found.",
-      "dropdownItem.search": "Search.",
+      "dropdownItem.search": "Search",
       "header.headerSlot": "Slot Container {{index}}",
       "header.toggleActionItem": "Toggle item action for {{item}}",
       "header.search": "Search",

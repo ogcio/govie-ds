@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect } from 'storybook/test';
 import { Paragraph } from '../paragraph/paragraph.js';
 import { Alert } from './alert.js';
 
@@ -99,5 +100,64 @@ export const IsDismissible: Story = {
         <Paragraph>Content</Paragraph>
       </>
     ),
+  },
+};
+
+export const TestRendersTitleAndMessage: Story = {
+  tags: ['skip-playwright'],
+  args: {
+    variant: 'info',
+    title: 'Information',
+    children: 'This is an info alert',
+    dataTestid: 'alert',
+  },
+  play: async ({ canvasElement, step }) => {
+    await step('renders title and message', async () => {
+      const element = canvasElement.querySelector('[data-testid="alert"]');
+      expect(element).not.toBeNull();
+
+      const text = canvasElement.textContent ?? '';
+      expect(text.includes('Information')).toBe(true);
+      expect(text.includes('This is an info alert')).toBe(true);
+    });
+  },
+};
+
+export const TestVariantsHaveCorrectClass: StoryObj = {
+  tags: ['skip-playwright'],
+  render: () => (
+    <div>
+      <Alert variant="info" title="info alert" dataTestid="alert-info">
+        This is a info alert
+      </Alert>
+      <Alert variant="success" title="success alert" dataTestid="alert-success">
+        This is a success alert
+      </Alert>
+      <Alert variant="warning" title="warning alert" dataTestid="alert-warning">
+        This is a warning alert
+      </Alert>
+      <Alert variant="danger" title="danger alert" dataTestid="alert-danger">
+        This is a danger alert
+      </Alert>
+    </div>
+  ),
+  play: async ({ canvasElement, step }) => {
+    const variants = ['info', 'success', 'warning', 'danger'] as const;
+    for (const variant of variants) {
+      await step(`applies class for ${variant}`, async () => {
+        const element = canvasElement.querySelector(
+          `[data-testid="alert-${variant}"]`,
+        ) as HTMLElement | null;
+
+        expect(element).not.toBeNull();
+
+        const className = element?.className ?? '';
+        const hasClass =
+          className.includes(`gi-alert-${variant}`) ||
+          [...(element?.classList ?? [])].includes(`gi-alert-${variant}`);
+
+        expect(hasClass).toBe(true);
+      });
+    }
   },
 };

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.14.1...design-tailwind-v1.14.2) (2025-09-15)
+
+
+### Bug Fixes
+
+* Modal overlay click a11y issue AB[#31075](https://github.com/ogcio/govie-ds/issues/31075) ([#721](https://github.com/ogcio/govie-ds/issues/721)) ([8f62ae4](https://github.com/ogcio/govie-ds/commit/8f62ae4644b981c216ccba372c38e5a1b62e9a42))
+
 ## [1.14.1](https://github.com/ogcio/govie-ds/compare/design-tailwind-v1.14.0...design-tailwind-v1.14.1) (2025-09-11)
 
 
