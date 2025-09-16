@@ -1,0 +1,49 @@
+---
+title: 'Score Select'
+description: 'Score Select HTML Component HTML Component'
+status: 'stable'
+component:
+  id: 'score-select-html'
+  link: '?path=/docs/components-scoreselect--docs'
+  status: 'stable'
+  stories:
+    - name: 'opinion-scale-1-5'
+      url: '/story/components-scoreselect--opinion-scale-5'
+    - name: 'net-promoter-score-0-10'
+      url: '/story/components-scoreselect--nps'
+---
+
+# Score Select
+
+Score Select is used to collect a rating score from users, typically in the form of Net Promoter Score (NPS). It displays a horizontal row of buttons representing numeric values from 0 to 10, and includes labels on either side to help frame the scale.
+
+<Section current="html">
+<ComponentPreview>
+  <ScoreSelect
+    label="How satisfied are you with your experience?"
+    leftLabel="Very Dissatisfied"
+    name="opinion-scale-7"
+    rightLabel="Very Satisfied"
+    size="large"
+    type="1-7"
+  />
+</ComponentPreview>
+## Examples
+
+### Opinion Scale (1–5)
+
+<StorybookFrame
+  className="h-[200px] w-full"
+  componentId="score-select-html"
+  story="opinion-scale-1-5"
+/>
+
+### Net Promoter Score (0–10)
+
+<StorybookFrame
+  className="h-[200px] w-full"
+  componentId="score-select-html"
+  story="net-promoter-score-0-10"
+/>
+
+</Section>
